@@ -41,10 +41,8 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create review pull request
+      - name: Push review branch
         if: steps.diff.outputs.changed == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           BRANCH="automation/qa-corpus-${GITHUB_RUN_ID}"
@@ -54,8 +52,10 @@ jobs:
           git add data/qa-corpus.json data/qa-corpus-meta.json
           git commit -m "data: refresh MHLW Q&A corpus"
           git push origin "$BRANCH"
-          gh pr create \
-            --base main \
-            --head "$BRANCH" \
-            --title "Refresh MHLW Q&A corpus" \
-            --body "Generated from the official MHLW Q&A workbook. Includes service scopes 01 (all services), 02 (home services), 06 (day-service common), and 16 (day service). Items remain INGESTED_UNREVIEWED until linked to current rule/notice nodes. This PR is intentionally not auto-merged."
+          {
+            echo "## Q&A corpus update ready for review"
+            echo ""
+            echo "Branch: `$BRANCH`"
+            echo ""
+            echo "Open a pull request from this branch after reviewing the generated metadata and counts."
+          } >> "$GITHUB_STEP_SUMMARY"

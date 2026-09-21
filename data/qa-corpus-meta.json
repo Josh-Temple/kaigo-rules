@@ -1,6 +1,5 @@
 {
   "format_version": 1,
-  "generated_at": "2026-09-21T22:19:25.068815+00:00",
   "source_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
   "source_workbook": "https://www.mhlw.go.jp/content/12300000/001751835.xlsx",
   "source_format": "xlsx",
@@ -12,10 +11,10 @@
     "16"
   ],
   "scope_by_code": {
+    "16": "通所介護事業",
     "01": "全サービス共通",
     "02": "居宅サービス共通",
-    "06": "通所系サービス共通",
-    "16": "通所介護事業"
+    "06": "通所系サービス共通"
   },
   "workbook_sheets": [
     "介護サービスQ＆A集（令和8年9月掲載）"
@@ -26,10 +25,10 @@
   "rows_scanned": 3739,
   "rows_included": 843,
   "counts_by_service": {
+    "16": 252,
     "01": 480,
     "02": 47,
-    "06": 64,
-    "16": 252
+    "06": 64
   },
   "review_status": "INGESTED_UNREVIEWED"
 }
