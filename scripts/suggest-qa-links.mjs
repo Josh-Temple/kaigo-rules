@@ -72,7 +72,7 @@ function scoreItem(question, item) {
   return { score: Math.round(score * 10) / 10, matched };
 }
 
-const candidates = questions.map((question) => {
+const groups = questions.map((question) => {
   const ranked = corpus
     .map((item) => ({ item, ...scoreItem(question, item) }))
     .filter((entry) => entry.score >= 4 && entry.matched.length > 0)
@@ -93,7 +93,7 @@ const candidates = questions.map((question) => {
     question_slug: question.slug,
     question_title: question.title,
     status: "CANDIDATE_UNREVIEWED",
-    candidates,
+    candidates: matches,
   };
 });
 
@@ -102,7 +102,7 @@ const output = {
   corpus_sha256: meta.source_sha256,
   method: "deterministic_phrase_match_v1",
   status: "CANDIDATE_UNREVIEWED",
-  candidates,
+  candidates: groups,
 };
 
 fs.writeFileSync(
@@ -111,5 +111,5 @@ fs.writeFileSync(
   "utf8"
 );
 
-const total = candidates.reduce((sum, item) => sum + item.candidates.length, 0);
-console.log(`Q&A link candidates generated: ${total} candidates for ${candidates.length} questions.`);
+const total = groups.reduce((sum, item) => sum + item.candidates.length, 0);
+console.log(`Q&A link candidates generated: ${total} candidates for ${groups.length} questions.`);
