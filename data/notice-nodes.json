@@ -1,35 +1,7 @@
 [
-  {
-    "id": "notice.dayservice.root",
-    "document": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
-    "service": "通所介護",
-    "path": ["通所介護"],
-    "verification_status": "UNKNOWN",
-    "official_text": null,
-    "effective_from": null,
-    "effective_to": null,
-    "source_ids": []
-  },
-  {
-    "id": "notice.dayservice.personnel",
-    "document": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
-    "service": "通所介護",
-    "path": ["通所介護", "人員に関する基準"],
-    "verification_status": "UNKNOWN",
-    "official_text": null,
-    "effective_from": null,
-    "effective_to": null,
-    "source_ids": []
-  },
-  {
-    "id": "notice.dayservice.operation",
-    "document": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
-    "service": "通所介護",
-    "path": ["通所介護", "運営に関する基準"],
-    "verification_status": "UNKNOWN",
-    "official_text": null,
-    "effective_from": null,
-    "effective_to": null,
-    "source_ids": []
-  }
+  {"id":"notice.dayservice.root","document":"指定居宅サービス等及び指定介護予防サービス等に関する基準について","service":"通所介護","path":["通所介護"],"verification_status":"UNKNOWN","official_text":null,"effective_from":null,"effective_to":null,"source_ids":[]},
+  {"id":"notice.dayservice.personnel","document":"指定居宅サービス等及び指定介護予防サービス等に関する基準について","service":"通所介護","path":["通所介護","人員に関する基準"],"verification_status":"UNKNOWN","official_text":null,"effective_from":null,"effective_to":null,"source_ids":[]},
+  {"id":"notice.dayservice.operation","document":"指定居宅サービス等及び指定介護予防サービス等に関する基準について","service":"通所介護","path":["通所介護","運営に関する基準"],"verification_status":"UNKNOWN","official_text":null,"effective_from":null,"effective_to":null,"source_ids":[]},
+  {"id":"notice.dayservice.nurse.external-linkage","document":"指定居宅サービス等及び指定介護予防サービス等に関する基準について","service":"通所介護","path":["通所介護","人員に関する基準","看護職員","外部連携"],"verification_status":"KNOWN_AFTER_TEXT","official_text":null,"editorial_summary":"看護職員は、事業所の従業者による確保に加え、病院、診療所、訪問看護ステーションとの連携により確保することも可能。外部連携の場合は、営業日ごとの健康状態の確認と、提供時間帯を通じた密接かつ適切な連携が必要。","effective_from":"2015-04-01","effective_to":null,"source_ids":["mhlw-interpretation-nurse-linkage","mhlw-qa"]},
+  {"id":"notice.dayservice.staffing.schedule","document":"指定居宅サービス等及び指定介護予防サービス等に関する基準について","service":"通所介護","path":["通所介護","運営に関する基準","勤務体制の確保等"],"verification_status":"VERIFIED_SOURCE_TEXT","official_text":null,"editorial_summary":"勤務表では、通所介護従業者の日々の勤務時間、常勤・非常勤の別、専従の生活相談員・看護職員・介護職員の配置、管理者との兼務関係等を明確にする。","effective_from":null,"effective_to":null,"source_ids":["mhlw-interpretation-html"]}
 ]

@@ -14,14 +14,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <header className="site-header">
           <Link className="brand" href="/">介護ルール</Link>
           <nav>
-            <Link href="/">質問から探す</Link>
+            <Link href="/">質問</Link>
+            <Link href="/start">これから始める</Link>
+            <Link href="/qa">国Q&A</Link>
             <Link href="/sources">根拠資料</Link>
           </nav>
         </header>
         <main>{children}</main>
-        <footer>
-          厚生労働省等の公開資料をもとに構造化しています。未確認事項は推測して回答しません。
-        </footer>
+        <footer>厚生労働省等の公開資料をもとに構造化しています。未確認事項は推測して回答しません。</footer>
       </body>
     </html>
   );
