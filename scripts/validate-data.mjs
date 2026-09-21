@@ -35,6 +35,10 @@ const ordinanceScopePath = path.join(root, "data", "ordinance37-scope.json");
 const ordinanceScope = fs.existsSync(ordinanceScopePath)
   ? JSON.parse(fs.readFileSync(ordinanceScopePath, "utf8"))
   : null;
+const ordinanceReviewPath = path.join(root, "data", "ordinance37-review.json");
+const ordinanceReview = fs.existsSync(ordinanceReviewPath)
+  ? JSON.parse(fs.readFileSync(ordinanceReviewPath, "utf8"))
+  : { reviewed_articles: [], reviewed_application_rules: [] };
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -155,6 +159,32 @@ if (ordinanceNodes.length) {
       if (!articleIds.has(`ordinance37.article.${number}`)) {
         errors.push(`ordinance37 scope: missing article ${number}`);
       }
+    }
+  }
+
+  const nodeById = new Map(ordinanceNodes.map((node) => [node.id, node]));
+  const applicationById = new Map(ordinanceApplications.map((rule) => [rule.id, rule]));
+
+  for (const review of ordinanceReview.reviewed_articles || []) {
+    const node = nodeById.get(review.article_id);
+    if (!node || node.node_type !== "article") {
+      errors.push(`ordinance37 review: missing article ${review.article_id}`);
+      continue;
+    }
+    if (review.text_sha256 !== node.text_sha256) {
+      errors.push(`ordinance37 review ${review.article_id}: reviewed hash is stale`);
+    }
+    if (review.status !== "HUMAN_VERIFIED_AGAINST_OFFICIAL_SOURCE") {
+      errors.push(`ordinance37 review ${review.article_id}: unexpected status ${review.status}`);
+    }
+  }
+
+  for (const review of ordinanceReview.reviewed_application_rules || []) {
+    if (!applicationById.has(review.application_rule_id)) {
+      errors.push(`ordinance37 review: missing application rule ${review.application_rule_id}`);
+    }
+    if (review.status !== "HUMAN_VERIFIED_AGAINST_OFFICIAL_SOURCE") {
+      errors.push(`ordinance37 application review ${review.application_rule_id}: unexpected status ${review.status}`);
     }
   }
 }

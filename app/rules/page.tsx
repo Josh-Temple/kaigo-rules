@@ -1,6 +1,7 @@
 import Link from "next/link";
 import nodesData from "../../data/ordinance37-nodes.json";
 import metaData from "../../data/ordinance37-meta.json";
+import reviewData from "../../data/ordinance37-review.json";
 
 type RuleNode = {
   id: string;
@@ -16,6 +17,7 @@ type RuleNode = {
 
 const nodes = nodesData as RuleNode[];
 const meta = metaData as any;
+const review = reviewData as any;
 
 const articleKey = (value: string) =>
   value.split("-").map((part) => Number.parseInt(part, 10) || 0);
@@ -70,6 +72,18 @@ export default function RulesPage() {
         <div><strong>{meta.counts.articles_total}</strong><span>対象条文</span></div>
         <div><strong>{meta.counts.direct_articles}</strong><span>直接規定</span></div>
         <div><strong>{meta.counts.incorporated_articles}</strong><span>準用規定</span></div>
+      </section>
+
+      <section className="section">
+        <h2>人手チェック状況</h2>
+        <p>
+          確認済み：
+          <strong>{(review.reviewed_articles || []).length} / {meta.counts.articles_total}条</strong>
+        </p>
+        <p className="meta">
+          確認結果は生成データとは別のレビュー台帳に保存します。
+          確認済み条文の本文SHA-256がe-Gov再取得後に変わった場合、データ検証を失敗させて再確認を要求します。
+        </p>
       </section>
 
       <section className="section">
