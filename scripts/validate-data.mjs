@@ -19,6 +19,22 @@ const qaCandidatesPath = path.join(root, "data", "qa-link-candidates.json");
 const qaCandidates = fs.existsSync(qaCandidatesPath)
   ? JSON.parse(fs.readFileSync(qaCandidatesPath, "utf8"))
   : { candidates: [] };
+const ordinancePath = path.join(root, "data", "ordinance37-nodes.json");
+const ordinanceNodes = fs.existsSync(ordinancePath)
+  ? JSON.parse(fs.readFileSync(ordinancePath, "utf8"))
+  : [];
+const ordinanceRelationsPath = path.join(root, "data", "ordinance37-relations.json");
+const ordinanceRelations = fs.existsSync(ordinanceRelationsPath)
+  ? JSON.parse(fs.readFileSync(ordinanceRelationsPath, "utf8"))
+  : [];
+const ordinanceApplicationsPath = path.join(root, "data", "ordinance37-application-rules.json");
+const ordinanceApplications = fs.existsSync(ordinanceApplicationsPath)
+  ? JSON.parse(fs.readFileSync(ordinanceApplicationsPath, "utf8"))
+  : [];
+const ordinanceScopePath = path.join(root, "data", "ordinance37-scope.json");
+const ordinanceScope = fs.existsSync(ordinanceScopePath)
+  ? JSON.parse(fs.readFileSync(ordinanceScopePath, "utf8"))
+  : null;
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -37,6 +53,8 @@ unique(rules, "id", "rules");
 unique(notices, "id", "notices");
 unique(qa, "id", "qa");
 unique(qaCorpus, "id", "qa-corpus");
+unique(ordinanceNodes, "id", "ordinance37-nodes");
+unique(ordinanceApplications, "id", "ordinance37-applications");
 
 const sourceIds = new Set(sources.map((x) => x.id));
 const ruleIds = new Set(rules.map((x) => x.id));
@@ -103,11 +121,49 @@ for (const group of qaCandidates.candidates || []) {
   }
 }
 
+if (ordinanceNodes.length) {
+  const ordinanceIds = new Set(ordinanceNodes.map((node) => node.id));
+  const articleIds = new Set(
+    ordinanceNodes.filter((node) => node.node_type === "article").map((node) => node.id)
+  );
+
+  for (const node of ordinanceNodes) {
+    for (const field of ["node_type", "law_id", "article_num", "official_text", "service_scope", "source_url", "verification_status"]) {
+      if (!node[field]) errors.push(`ordinance37 node ${node.id}: missing ${field}`);
+    }
+    if (node.verification_status !== "IMPORTED_NEEDS_HUMAN_CHECK" && node.verification_status !== "VERIFIED_CURRENT") {
+      errors.push(`ordinance37 node ${node.id}: unexpected status ${node.verification_status}`);
+    }
+    if (node.parent_id && !ordinanceIds.has(node.parent_id)) {
+      errors.push(`ordinance37 node ${node.id}: missing parent ${node.parent_id}`);
+    }
+  }
+
+  for (const relation of ordinanceRelations) {
+    if (!ordinanceIds.has(relation.from)) errors.push(`ordinance37 relation: missing from ${relation.from}`);
+    if (!ordinanceIds.has(relation.to)) errors.push(`ordinance37 relation: missing to ${relation.to}`);
+  }
+
+  for (const rule of ordinanceApplications) {
+    if (!articleIds.has(rule.via_article_id)) errors.push(`ordinance37 application ${rule.id}: missing via article ${rule.via_article_id}`);
+    if (!articleIds.has(rule.target_article_id)) errors.push(`ordinance37 application ${rule.id}: missing target article ${rule.target_article_id}`);
+    if (!Array.isArray(rule.substitutions) || rule.substitutions.length === 0) errors.push(`ordinance37 application ${rule.id}: missing substitutions`);
+  }
+
+  if (ordinanceScope) {
+    for (const number of [...ordinanceScope.direct_articles, ...ordinanceScope.incorporated_articles]) {
+      if (!articleIds.has(`ordinance37.article.${number}`)) {
+        errors.push(`ordinance37 scope: missing article ${number}`);
+      }
+    }
+  }
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
 
 console.log(
-  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${sources.length} sources.`
+  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${sources.length} sources.`
 );

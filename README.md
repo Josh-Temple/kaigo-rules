@@ -41,7 +41,7 @@ Vercel build の前にも自動実行し、参照切れがある場合は fail c
 
 - `data/questions.json`: 実務質問、検索用言い換え、検証済み回答
 - `data/sources.json`: 公式資料台帳と収載範囲
-- `data/rule-nodes.json`: 条・項・号単位の検証済み制度ノード
+- `data/rule-nodes.json`: 回答ページへ接続済みの検証済み制度ノード\n- `data/ordinance37-nodes.json`: e-Gov現行XMLから生成する基準省令第37号の通所介護関連ノード\n- `data/ordinance37-relations.json`: 条・項・号の包含関係と第105条の準用関係\n- `data/ordinance37-application-rules.json`: 第105条の読替え規則\n- `data/ordinance37-meta.json`: e-Gov取得元、SHA-256、現行改正情報、件数、レビュー状態\n- `data/ordinance37-scope.json`: 通所介護DBとして取り込む条文範囲の正本
 - `data/notice-nodes.json`: 解釈通知の構造化ノード
 - `data/qa-items.json`: 回答ページへ接続済みのQ&A\n- `data/qa-corpus.json`: 公式XLSから機械取り込みしたQ&A（未レビューを含む）\n- `data/qa-corpus-meta.json`: 取得元URL、ハッシュ、抽出件数などの取り込み証跡
 - `data/relationships.json`: 質問と制度ノードの関係
@@ -68,3 +68,17 @@ Q&Aは単独で制度上の結論とせず、法令・通知との関係を保�
 `npm run suggest:qa-links` は、12問のタイトル・検索用言い換えと国Q&Aの本文を決定論的に照合し、`data/qa-link-candidates.json` にレビュー候補を出力します。
 
 候補はすべて `CANDIDATE_UNREVIEWED` です。候補になっただけでは回答ページの根拠には使いません。現行法令・解釈通知との整合を確認し、採用するものだけ `data/qa-items.json` と各質問の `qa_item_ids` に接続します。
+
+
+## 基準省令データベース
+
+基準省令（平成11年厚生省令第37号）は、手作業で本文を転記せず、e-Gov法令APIの現行XMLから生成します。
+
+初期スコープは次のとおりです。
+
+- 通所介護の直接規定：第92条〜第105条（第104条の2〜4を含む）
+- 第105条で準用される共通規定：第8条〜第17条、第19条、第21条、第26条、第27条、第30条の2、第32条〜第36条、第37条の2、第38条、第52条
+- 共生型通所介護（第105条の2・3）と基準該当通所介護（第106条〜第109条）は初期DBから分離
+
+`npm run import:ordinance37` で、条・項・号の構造、準用関係、読替え規則、e-Govの改正情報を生成します。
+生成直後の状態は `IMPORTED_NEEDS_HUMAN_CHECK` です。機械取り込みの成功だけで `VERIFIED_CURRENT` には昇格しません。
