@@ -10,7 +10,7 @@ const questions = read("questions.json");
 const sources = read("sources.json");
 const rules = read("rule-nodes.json");
 const notices = read("notice-nodes.json");
-const qa = read("qa-items.json");
+const qa = read("qa-items.json");\nconst qaCorpusPath = path.join(root, "data", "qa-corpus.json");\nconst qaCorpus = fs.existsSync(qaCorpusPath) ? JSON.parse(fs.readFileSync(qaCorpusPath, "utf8")) : [];
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -26,7 +26,7 @@ unique(questions, "slug", "questions");
 unique(sources, "id", "sources");
 unique(rules, "id", "rules");
 unique(notices, "id", "notices");
-unique(qa, "id", "qa");
+unique(qa, "id", "qa");\nunique(qaCorpus, "id", "qa-corpus");
 
 const sourceIds = new Set(sources.map(x => x.id));
 const ruleIds = new Set(rules.map(x => x.id));
@@ -49,10 +49,10 @@ for (const r of rules) {
   if (r.verification_status === "VERIFIED_CURRENT" && !r.official_text) errors.push(`rule ${r.id}: VERIFIED_CURRENT without text`);
 }
 for (const n of notices) for (const id of n.source_ids || []) if (!sourceIds.has(id)) errors.push(`notice ${n.id}: missing source ${id}`);
-for (const item of qa) if (!sourceIds.has(item.source_id)) errors.push(`Q&A ${item.id}: missing source ${item.source_id}`);
+for (const item of qa) if (!sourceIds.has(item.source_id)) errors.push(`Q&A ${item.id}: missing source ${item.source_id}`);\nfor (const item of qaCorpus) {\n  if (!sourceIds.has(item.source_id)) errors.push(`Q&A corpus ${item.id}: missing source ${item.source_id}`);\n  for (const field of ["service_code", "standard_code", "question", "answer", "ingestion_status"]) {\n    if (!item[field]) errors.push(`Q&A corpus ${item.id || "(missing id)"}: missing ${field}`);\n  }\n  if (!["01", "02", "06", "16"].includes(item.service_code)) errors.push(`Q&A corpus ${item.id}: unexpected service_code ${item.service_code}`);\n}
 
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} Q&A items, ${sources.length} sources.`);
+console.log(`Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${sources.length} sources.`);

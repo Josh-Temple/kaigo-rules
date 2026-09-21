@@ -43,7 +43,7 @@ Vercel build の前にも自動実行し、参照切れがある場合は fail c
 - `data/sources.json`: 公式資料台帳と収載範囲
 - `data/rule-nodes.json`: 条・項・号単位の検証済み制度ノード
 - `data/notice-nodes.json`: 解釈通知の構造化ノード
-- `data/qa-items.json`: 厚生労働省Q&Aの構造化データ
+- `data/qa-items.json`: 回答ページへ接続済みのQ&A\n- `data/qa-corpus.json`: 公式XLSから機械取り込みしたQ&A（未レビューを含む）\n- `data/qa-corpus-meta.json`: 取得元URL、ハッシュ、抽出件数などの取り込み証跡
 - `data/relationships.json`: 質問と制度ノードの関係
 - `data/startup-steps.json`: 開設準備の導線
 - `data/amendments.json`: 改正イベント
