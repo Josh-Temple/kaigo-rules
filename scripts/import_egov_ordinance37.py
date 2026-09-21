@@ -36,7 +36,7 @@ def text_of(el):
     if el is None:
         return ""
     raw = "".join(el.itertext())
-    return re.sub(r"\\s+", " ", raw).strip()
+    return " ".join(raw.split())
 
 def canonical_num(value):
     return str(value or "").strip().replace("_", "-")
@@ -283,7 +283,7 @@ def main():
             "relations": len(relations),
             "application_rules": len(application_rules)
         },
-        "text_normalization": "NFKC-preserving XML text with whitespace runs collapsed to one space",
+        "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
         "review_status": "IMPORTED_NEEDS_HUMAN_CHECK"
     }
 
