@@ -1,0 +1,35 @@
+[
+  {
+    "id": "notice.dayservice.root",
+    "document": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+    "service": "通所介護",
+    "path": ["通所介護"],
+    "verification_status": "UNKNOWN",
+    "official_text": null,
+    "effective_from": null,
+    "effective_to": null,
+    "source_ids": []
+  },
+  {
+    "id": "notice.dayservice.personnel",
+    "document": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+    "service": "通所介護",
+    "path": ["通所介護", "人員に関する基準"],
+    "verification_status": "UNKNOWN",
+    "official_text": null,
+    "effective_from": null,
+    "effective_to": null,
+    "source_ids": []
+  },
+  {
+    "id": "notice.dayservice.operation",
+    "document": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+    "service": "通所介護",
+    "path": ["通所介護", "運営に関する基準"],
+    "verification_status": "UNKNOWN",
+    "official_text": null,
+    "effective_from": null,
+    "effective_to": null,
+    "source_ids": []
+  }
+]

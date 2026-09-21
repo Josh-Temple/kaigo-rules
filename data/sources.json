@@ -1,0 +1,34 @@
+[
+  {
+    "id": "egov-care-insurance-act",
+    "layer": "法令",
+    "title": "介護保険法",
+    "publisher": "e-Gov法令検索",
+    "url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+    "status": "registry"
+  },
+  {
+    "id": "egov-home-care-standards",
+    "layer": "基準省令",
+    "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準",
+    "publisher": "e-Gov法令検索",
+    "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+    "status": "registry"
+  },
+  {
+    "id": "mhlw-qa",
+    "layer": "Q&A",
+    "title": "介護サービス関係Q&A",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+    "status": "registry"
+  },
+  {
+    "id": "mhlw-application-forms",
+    "layer": "様式",
+    "title": "介護サービス事業者の指定申請等のウェブ入力・電子申請",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
+    "status": "registry"
+  }
+]
