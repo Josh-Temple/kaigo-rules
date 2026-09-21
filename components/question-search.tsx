@@ -30,7 +30,9 @@ export default function QuestionSearch() {
           <article className="question" key={q.slug}>
             <span className="meta">{q.category}</span>
             <Link href={"/questions/" + q.slug}>{q.title}</Link>
-            <span className="status">根拠確認中</span>
+            <span className={q.status === "verified" ? "status verified" : "status"}>
+              {q.status === "verified" ? "確認済み" : "根拠確認中"}
+            </span>
           </article>
         )) : (
           <p className="notice">確認済みの候補ページがありません。AIが推測して回答することはありません。</p>
