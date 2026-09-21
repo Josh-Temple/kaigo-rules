@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "validate:data": "node scripts/validate-data.mjs",
+    "prebuild": "npm run validate:data"
   },
   "dependencies": {
     "next": "^16.0.0",

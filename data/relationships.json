@@ -1,17 +1,182 @@
 [
-  {"from":"question:manager-concurrent-role","relation":"answered_by","to":"ordinance37.article94"},
-  {"from":"question:life-counselor-staffing","relation":"answered_by","to":"ordinance37.article93.1.1"},
-  {"from":"question:life-counselor-staffing","relation":"qualified_by","to":"ordinance37.article93.6"},
-  {"from":"question:care-plan-signature","relation":"answered_by","to":"ordinance37.article99.3"},
-  {"from":"question:care-plan-signature","relation":"requires_delivery_under","to":"ordinance37.article99.4"},
-  {"from":"question:care-plan-signature","relation":"electronic_option_under","to":"ordinance37.article217.2"},
-  {"from":"question:nurse-staffing","relation":"answered_by","to":"ordinance37.article93.1.2"},
-  {"from":"question:nurse-staffing","relation":"interpreted_by","to":"notice.dayservice.nurse.external-linkage"},
-  {"from":"question:nurse-staffing","relation":"clarified_by","to":"qa.dayservice.nurse.external.2015.50"},
-  {"from":"question:multiple-roles","relation":"qualified_by","to":"ordinance37.article93.3"},
-  {"from":"question:multiple-roles","relation":"qualified_by","to":"ordinance37.article93.5"},
-  {"from":"question:multiple-roles","relation":"qualified_by","to":"ordinance37.article94"},
-  {"from":"question:multiple-roles","relation":"documented_by","to":"notice.dayservice.staffing.schedule"},
-  {"from":"question:care-plan-seal","relation":"answered_by","to":"ordinance37.article99.3"},
-  {"from":"question:care-plan-seal","relation":"answered_by","to":"ordinance37.article99.4"}
+  {
+    "from": "question:manager-concurrent-role",
+    "relation": "answered_by",
+    "to": "ordinance37.article94"
+  },
+  {
+    "from": "question:life-counselor-staffing",
+    "relation": "answered_by",
+    "to": "ordinance37.article93.1.1"
+  },
+  {
+    "from": "question:life-counselor-staffing",
+    "relation": "qualified_by",
+    "to": "ordinance37.article93.6"
+  },
+  {
+    "from": "question:care-plan-signature",
+    "relation": "answered_by",
+    "to": "ordinance37.article99.3"
+  },
+  {
+    "from": "question:care-plan-signature",
+    "relation": "requires_delivery_under",
+    "to": "ordinance37.article99.4"
+  },
+  {
+    "from": "question:care-plan-signature",
+    "relation": "electronic_option_under",
+    "to": "ordinance37.article217.2"
+  },
+  {
+    "from": "question:nurse-staffing",
+    "relation": "answered_by",
+    "to": "ordinance37.article93.1.2"
+  },
+  {
+    "from": "question:nurse-staffing",
+    "relation": "interpreted_by",
+    "to": "notice.dayservice.nurse.external-linkage"
+  },
+  {
+    "from": "question:nurse-staffing",
+    "relation": "clarified_by",
+    "to": "qa.dayservice.nurse.external.2015.50"
+  },
+  {
+    "from": "question:multiple-roles",
+    "relation": "qualified_by",
+    "to": "ordinance37.article93.3"
+  },
+  {
+    "from": "question:multiple-roles",
+    "relation": "qualified_by",
+    "to": "ordinance37.article93.5"
+  },
+  {
+    "from": "question:multiple-roles",
+    "relation": "qualified_by",
+    "to": "ordinance37.article94"
+  },
+  {
+    "from": "question:multiple-roles",
+    "relation": "documented_by",
+    "to": "notice.dayservice.staffing.schedule"
+  },
+  {
+    "from": "question:care-plan-seal",
+    "relation": "answered_by",
+    "to": "ordinance37.article99.3"
+  },
+  {
+    "from": "question:care-plan-seal",
+    "relation": "answered_by",
+    "to": "ordinance37.article99.4"
+  },
+  {
+    "from": "question:dining-training-area",
+    "relation": "answered_by",
+    "to": "ordinance37.article95.1-2"
+  },
+  {
+    "from": "question:operation-rules-content",
+    "relation": "answered_by",
+    "to": "ordinance37.article100"
+  },
+  {
+    "from": "question:important-matters-content",
+    "relation": "applies_via",
+    "to": "ordinance37.article105"
+  },
+  {
+    "from": "question:important-matters-content",
+    "relation": "answered_by",
+    "to": "ordinance37.article8.1"
+  },
+  {
+    "from": "question:important-matters-content",
+    "relation": "published_under",
+    "to": "ordinance37.article32.1-3"
+  },
+  {
+    "from": "question:important-matters-content",
+    "relation": "interpreted_by",
+    "to": "notice.common.important-matters.explanation"
+  },
+  {
+    "from": "question:care-plan-content",
+    "relation": "answered_by",
+    "to": "ordinance37.article99.1"
+  },
+  {
+    "from": "question:care-plan-content",
+    "relation": "aligned_with",
+    "to": "ordinance37.article99.2"
+  },
+  {
+    "from": "question:care-plan-content",
+    "relation": "consent_under",
+    "to": "ordinance37.article99.3"
+  },
+  {
+    "from": "question:care-plan-content",
+    "relation": "delivered_under",
+    "to": "ordinance37.article99.4"
+  },
+  {
+    "from": "question:care-plan-content",
+    "relation": "tracked_under",
+    "to": "ordinance37.article99.5"
+  },
+  {
+    "from": "question:annual-training",
+    "relation": "required_by",
+    "to": "ordinance37.article101.3"
+  },
+  {
+    "from": "question:annual-training",
+    "relation": "required_by",
+    "to": "ordinance37.article104.2.3"
+  },
+  {
+    "from": "question:annual-training",
+    "relation": "required_by",
+    "to": "ordinance37.article30-2.2"
+  },
+  {
+    "from": "question:annual-training",
+    "relation": "required_by",
+    "to": "ordinance37.article37-2.3"
+  },
+  {
+    "from": "question:annual-training",
+    "relation": "interpreted_by",
+    "to": "notice.dayservice.bcp.frequency"
+  },
+  {
+    "from": "question:annual-training",
+    "relation": "interpreted_by",
+    "to": "notice.dayservice.infection.frequency"
+  },
+  {
+    "from": "question:annual-training",
+    "relation": "interpreted_by",
+    "to": "notice.dayservice.abuse.frequency"
+  },
+  {
+    "from": "question:bcp-training",
+    "relation": "required_by",
+    "to": "ordinance37.article30-2.2"
+  },
+  {
+    "from": "question:bcp-training",
+    "relation": "applies_via",
+    "to": "ordinance37.article105"
+  },
+  {
+    "from": "question:bcp-training",
+    "relation": "interpreted_by",
+    "to": "notice.dayservice.bcp.frequency"
+  }
 ]

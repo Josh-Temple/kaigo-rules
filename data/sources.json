@@ -1,13 +1,117 @@
 [
-  {"id":"egov-care-insurance-act","layer":"法令","title":"介護保険法","publisher":"e-Gov法令検索","url":"https://laws.e-gov.go.jp/law/409AC0000000123","status":"registry"},
-  {"id":"egov-home-care-standards","layer":"基準省令","title":"指定居宅サービス等の事業の人員、設備及び運営に関する基準","publisher":"e-Gov法令検索","url":"https://laws.e-gov.go.jp/law/411M50000100037","status":"registry"},
-  {"id":"mhlw-home-care-standards-current","layer":"基準省令","title":"指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）","publisher":"厚生労働省","url":"https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2","status":"verified_source","note":"通所介護の第92条から第109条を含む現行表示。"},
-  {"id":"mhlw-home-care-standards-electronic","layer":"基準省令","title":"指定居宅サービス等の事業の人員、設備及び運営に関する基準（雑則・電磁的記録等）","publisher":"厚生労働省","url":"https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=4","status":"verified_source","note":"第217条の電磁的記録・電磁的方法に関する規定。"},
-  {"id":"mhlw-2024-interpretation-redline","layer":"解釈通知","title":"指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）","publisher":"厚生労働省","url":"https://www.mhlw.go.jp/content/12300000/001227935.pdf","status":"partial_source","note":"老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"},
-  {"id":"mhlw-2020-consent-review","layer":"制度整理資料","title":"介護分野の文書負担軽減に関する制度整理資料（各サービス計画等の同意の取扱い）","publisher":"厚生労働省","url":"https://www.mhlw.go.jp/content/12300000/000703105.pdf","status":"reference_only","note":"通所介護計画について「同意は必要。手段の定めはない」と整理した参考資料。法令そのものではない。"},
-  {"id":"mhlw-qa","layer":"Q&A","title":"介護サービス関係Q&A","publisher":"厚生労働省","url":"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html","status":"registry","note":"2026年9月確認時点で介護保険最新情報vol.1479まで収載。"},
-  {"id":"mhlw-application-forms","layer":"様式","title":"介護事業所の指定申請等のウェブ入力・電子申請導入","publisher":"厚生労働省","url":"https://www.mhlw.go.jp/stf/kaigo-shinsei.html","status":"registry"},
-  {"id":"mhlw-interpretation-html","layer":"解釈通知","title":"指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）","publisher":"厚生労働省","url":"https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1","status":"partial_source","note":"通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"},
-  {"id":"mhlw-interpretation-nurse-linkage","layer":"解釈通知","title":"通所介護の看護職員確保に関する解釈通知改正資料","publisher":"厚生労働省","url":"https://www.mhlw.go.jp/content/12300000/000869798.pdf","status":"partial_source","note":"病院・診療所・訪問看護ステーションとの連携による看護職員確保の取扱いを確認できる改正資料。"},
-  {"id":"mhlw-regional-dayservice-overview","layer":"制度概要","title":"地域密着型通所介護の概要","publisher":"厚生労働省 介護サービス情報公表システム","url":"https://www.kaigokensaku.mhlw.go.jp/publish/group25.html","status":"verified_source","note":"利用定員19人未満の地域密着型通所介護の概要を確認できる。"}
+  {
+    "id": "egov-care-insurance-act",
+    "layer": "法令",
+    "title": "介護保険法",
+    "publisher": "e-Gov法令検索",
+    "url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+    "status": "registry"
+  },
+  {
+    "id": "egov-home-care-standards",
+    "layer": "基準省令",
+    "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準",
+    "publisher": "e-Gov法令検索",
+    "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+    "status": "registry"
+  },
+  {
+    "id": "mhlw-home-care-standards-current",
+    "layer": "基準省令",
+    "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+    "status": "verified_source",
+    "note": "通所介護の第92条から第109条を含む現行表示。"
+  },
+  {
+    "id": "mhlw-home-care-standards-electronic",
+    "layer": "基準省令",
+    "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（雑則・電磁的記録等）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=4",
+    "status": "verified_source",
+    "note": "第217条の電磁的記録・電磁的方法に関する規定。"
+  },
+  {
+    "id": "mhlw-2024-interpretation-redline",
+    "layer": "解釈通知",
+    "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+    "status": "partial_source",
+    "note": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+  },
+  {
+    "id": "mhlw-2020-consent-review",
+    "layer": "制度整理資料",
+    "title": "介護分野の文書負担軽減に関する制度整理資料（各サービス計画等の同意の取扱い）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/000703105.pdf",
+    "status": "reference_only",
+    "note": "通所介護計画について「同意は必要。手段の定めはない」と整理した参考資料。法令そのものではない。"
+  },
+  {
+    "id": "mhlw-qa",
+    "layer": "Q&A",
+    "title": "介護サービス関係Q&A",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+    "status": "registry",
+    "note": "厚生労働省の公式Q&A集。公式ページの収載注記は、2026-09-22確認時点で介護保険最新情報vol.1167まで。新しいQ&Aは別途取り込む前提で管理する。",
+    "coverage_status": "PARTIAL_BY_OFFICIAL_INDEX"
+  },
+  {
+    "id": "mhlw-application-forms",
+    "layer": "様式",
+    "title": "介護事業所の指定申請等のウェブ入力・電子申請導入",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
+    "status": "registry"
+  },
+  {
+    "id": "mhlw-interpretation-html",
+    "layer": "解釈通知",
+    "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+    "status": "partial_source",
+    "note": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+  },
+  {
+    "id": "mhlw-interpretation-nurse-linkage",
+    "layer": "解釈通知",
+    "title": "通所介護の看護職員確保に関する解釈通知改正資料",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+    "status": "partial_source",
+    "note": "病院・診療所・訪問看護ステーションとの連携による看護職員確保の取扱いを確認できる改正資料。"
+  },
+  {
+    "id": "mhlw-regional-dayservice-overview",
+    "layer": "制度概要",
+    "title": "地域密着型通所介護の概要",
+    "publisher": "厚生労働省 介護サービス情報公表システム",
+    "url": "https://www.kaigokensaku.mhlw.go.jp/publish/group25.html",
+    "status": "verified_source",
+    "note": "利用定員19人未満の地域密着型通所介護の概要を確認できる。"
+  },
+  {
+    "id": "mhlw-home-care-standards-common",
+    "layer": "基準省令",
+    "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（共通規定）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+    "status": "verified_source",
+    "note": "通所介護に第105条で準用される第8条、第30条の2、第32条、第37条の2等を含む現行表示。"
+  },
+  {
+    "id": "mhlw-2021-interpretation-redline",
+    "layer": "解釈通知",
+    "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+    "status": "partial_source",
+    "note": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+  }
 ]
