@@ -15,6 +15,10 @@ const qaCorpusPath = path.join(root, "data", "qa-corpus.json");
 const qaCorpus = fs.existsSync(qaCorpusPath)
   ? JSON.parse(fs.readFileSync(qaCorpusPath, "utf8"))
   : [];
+const qaCandidatesPath = path.join(root, "data", "qa-link-candidates.json");
+const qaCandidates = fs.existsSync(qaCandidatesPath)
+  ? JSON.parse(fs.readFileSync(qaCandidatesPath, "utf8"))
+  : { candidates: [] };
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -70,6 +74,8 @@ for (const item of qa) {
   if (!sourceIds.has(item.source_id)) errors.push(`Q&A ${item.id}: missing source ${item.source_id}`);
 }
 
+const corpusIds = new Set(qaCorpus.map((item) => item.id));
+
 for (const item of qaCorpus) {
   if (!sourceIds.has(item.source_id)) errors.push(`Q&A corpus ${item.id}: missing source ${item.source_id}`);
   for (const field of ["service_code", "standard_code", "question", "answer", "ingestion_status"]) {
@@ -80,11 +86,28 @@ for (const item of qaCorpus) {
   }
 }
 
+for (const group of qaCandidates.candidates || []) {
+  if (!questions.some((q) => q.slug === group.question_slug)) {
+    errors.push(`Q&A candidate group: missing question ${group.question_slug}`);
+  }
+  if (group.status !== "CANDIDATE_UNREVIEWED") {
+    errors.push(`Q&A candidate group ${group.question_slug}: unexpected status ${group.status}`);
+  }
+  for (const candidate of group.candidates || []) {
+    if (!corpusIds.has(candidate.qa_id)) {
+      errors.push(`Q&A candidate ${group.question_slug}: missing corpus item ${candidate.qa_id}`);
+    }
+    if (candidate.status !== "CANDIDATE_UNREVIEWED") {
+      errors.push(`Q&A candidate ${candidate.qa_id}: unexpected status ${candidate.status}`);
+    }
+  }
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
 
 console.log(
-  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${sources.length} sources.`
+  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${sources.length} sources.`
 );
