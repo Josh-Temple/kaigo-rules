@@ -9,8 +9,10 @@ import urllib.request
 from collections import Counter
 from datetime import datetime, timezone
 from html.parser import HTMLParser
+from io import BytesIO
 from pathlib import Path
 
+import openpyxl
 import xlrd
 
 DEFAULT_PAGE = "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html"
@@ -30,22 +32,49 @@ class XlsLinkParser(HTMLParser):
         if tag.lower() != "a":
             return
         href = dict(attrs).get("href")
-        if href and ".xls" in href.lower():
+        if href and re.search(r"\.xlsx?(?:$|\?)", href, re.I):
             self.links.append(href)
 
+class SheetAdapter:
+    def __init__(self, name, rows):
+        self.name = name
+        self.rows = rows
+        self.nrows = len(rows)
+        self.ncols = max((len(r) for r in rows), default=0)
+    def cell_value(self, rowx, colx):
+        if rowx >= len(self.rows) or colx >= len(self.rows[rowx]):
+            return ""
+        value = self.rows[rowx][colx]
+        return "" if value is None else value
+
 def fetch(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "kaigo-rules/1.0 (+https://github.com/Josh-Temple/kaigo-rules)"})
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "kaigo-rules/1.0 (+https://github.com/Josh-Temple/kaigo-rules)"},
+    )
     with urllib.request.urlopen(req, timeout=60) as res:
         return res.read()
 
-def discover_xls(page_url: str) -> str:
+def discover_workbook(page_url: str) -> str:
     html = fetch(page_url).decode("utf-8", errors="replace")
     parser = XlsLinkParser()
     parser.feed(html)
     if not parser.links:
-        raise RuntimeError("No .xls link found on the MHLW Q&A page")
-    # The official page lists the Q&A corpus XLS before the document-index XLS.
+        raise RuntimeError("No Excel Q&A link found on the MHLW Q&A page")
     return urllib.parse.urljoin(page_url, parser.links[0])
+
+def load_sheets(payload: bytes):
+    if payload[:2] == b"PK":
+        book = openpyxl.load_workbook(BytesIO(payload), read_only=True, data_only=True)
+        sheets = []
+        for ws in book.worksheets:
+            rows = [tuple(row) for row in ws.iter_rows(values_only=True)]
+            sheets.append(SheetAdapter(ws.title, rows))
+        return book.sheetnames, sheets, "xlsx"
+
+    book = xlrd.open_workbook(file_contents=payload)
+    sheets = [SheetAdapter(s.name, [tuple(s.row_values(r)) for r in range(s.nrows)]) for s in book.sheets()]
+    return book.sheet_names(), sheets, "xls"
 
 def clean(value) -> str:
     if value is None:
@@ -64,7 +93,7 @@ def leading_code(value: str, width: int) -> str:
 
 def find_header(sheet):
     required = {"service", "criterion", "question", "answer"}
-    for rowx in range(min(sheet.nrows, 30)):
+    for rowx in range(min(sheet.nrows, 40)):
         values = [norm(sheet.cell_value(rowx, colx)) for colx in range(sheet.ncols)]
         mapping = {}
         for colx, value in enumerate(values):
@@ -98,12 +127,12 @@ def stable_id(row: dict) -> str:
     return "qa.mhlw." + hashlib.sha256(basis.encode("utf-8")).hexdigest()[:20]
 
 def parse_workbook(payload: bytes):
-    book = xlrd.open_workbook(file_contents=payload)
+    sheet_names, sheets, workbook_format = load_sheets(payload)
     items = []
     scanned = 0
     used_sheets = []
 
-    for sheet in book.sheets():
+    for sheet in sheets:
         header_row, cols = find_header(sheet)
         if cols is None:
             continue
@@ -113,16 +142,19 @@ def parse_workbook(payload: bytes):
 
         for rowx in range(header_row + 1, sheet.nrows):
             scanned += 1
+
             def get(name):
                 col = cols.get(name)
                 return clean(sheet.cell_value(rowx, col)) if col is not None else ""
 
-            service_raw = get("service") or last_service
-            criterion_raw = get("criterion") or last_criterion
-            if get("service"):
-                last_service = get("service")
-            if get("criterion"):
-                last_criterion = get("criterion")
+            raw_service = get("service")
+            raw_criterion = get("criterion")
+            service_raw = raw_service or last_service
+            criterion_raw = raw_criterion or last_criterion
+            if raw_service:
+                last_service = raw_service
+            if raw_criterion:
+                last_criterion = raw_criterion
 
             question = get("question")
             answer = get("answer")
@@ -156,13 +188,19 @@ def parse_workbook(payload: bytes):
     if len(items) < 10:
         raise RuntimeError(f"Only {len(items)} target rows were parsed; refusing to overwrite corpus")
 
-    dedup = {}
-    for item in items:
-        dedup[item["id"]] = item
-    items = sorted(dedup.values(), key=lambda x: (
-        x["service_code"], x["standard_code"], x["topic"], x["issued_source"], x["number"], x["id"]
-    ))
-    return book.sheet_names(), used_sheets, scanned, items
+    dedup = {item["id"]: item for item in items}
+    items = sorted(
+        dedup.values(),
+        key=lambda x: (
+            x["service_code"],
+            x["standard_code"],
+            x["topic"],
+            x["issued_source"],
+            x["number"],
+            x["id"],
+        ),
+    )
+    return sheet_names, used_sheets, scanned, items, workbook_format
 
 def main():
     ap = argparse.ArgumentParser()
@@ -172,10 +210,10 @@ def main():
     ap.add_argument("--meta-out", default="data/qa-corpus-meta.json")
     args = ap.parse_args()
 
-    xls_url = args.xls_url or discover_xls(args.page_url)
-    payload = fetch(xls_url)
+    workbook_url = args.xls_url or discover_workbook(args.page_url)
+    payload = fetch(workbook_url)
     sha = hashlib.sha256(payload).hexdigest()
-    sheet_names, used_sheets, scanned, items = parse_workbook(payload)
+    sheet_names, used_sheets, scanned, items, workbook_format = parse_workbook(payload)
     counts = Counter(item["service_code"] for item in items)
 
     out = Path(args.out)
@@ -188,7 +226,8 @@ def main():
         "format_version": 1,
         "generated_at": generated,
         "source_page": args.page_url,
-        "source_xls": xls_url,
+        "source_workbook": workbook_url,
+        "source_format": workbook_format,
         "source_sha256": sha,
         "target_service_codes": sorted(TARGET_SERVICE_CODES),
         "scope_by_code": SCOPE_BY_CODE,
