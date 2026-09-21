@@ -7,19 +7,10 @@
     "status": "verified",
     "last_verified": "2026-09-21",
     "short_answer": "できます。通所介護の管理者は常勤・専従が原則ですが、事業所の管理上支障がない場合は、同じ事業所の他の職務だけでなく、他の事業所・施設等の職務にも従事できます。",
-    "practical_steps": [
-      "兼務させる前に、管理業務に支障がない勤務体制かを確認します。",
-      "管理者として必要な指揮命令・職員管理・緊急時対応を行える状態を維持します。",
-      "勤務形態一覧表などでは、管理者としての勤務と兼務先の職務が分かるように整理します。"
-    ],
-    "cautions": [
-      "「兼務できる」ことと「どのような兼務でもよい」ことは同じではありません。判断基準は管理上の支障の有無です。",
-      "指定権者が勤務表の記載方法などについて取扱いを示している場合は、その取扱いも確認してください。"
-    ],
+    "practical_steps": ["兼務させる前に、管理業務に支障がない勤務体制かを確認します。","管理者として必要な指揮命令・職員管理・緊急時対応を行える状態を維持します。","勤務形態一覧表などでは、管理者としての勤務と兼務先の職務が分かるように整理します。"],
+    "cautions": ["「兼務できる」ことと「どのような兼務でもよい」ことは同じではありません。判断基準は管理上の支障の有無です。","指定権者が勤務表の記載方法などについて取扱いを示している場合は、その取扱いも確認してください。"],
     "rule_node_ids": ["ordinance37.article94"],
-    "source_refs": [
-      {"source_id": "mhlw-home-care-standards-current", "locator": "第94条"}
-    ]
+    "source_refs": [{"source_id": "mhlw-home-care-standards-current", "locator": "第94条"}]
   },
   {
     "slug": "life-counselor-staffing",
@@ -29,63 +20,45 @@
     "status": "verified",
     "last_verified": "2026-09-21",
     "short_answer": "単純に「1人置けばよい」という基準ではありません。提供日ごとに、サービス提供時間帯に生活相談員が勤務した合計時間を、その日のサービス提供時間で割った数が1以上になるよう配置する必要があります。",
-    "practical_steps": [
-      "その日の通所介護のサービス提供時間を確認します。",
-      "その時間帯に、専ら通所介護の提供に当たる生活相談員の勤務時間を合計します。",
-      "「生活相談員の勤務時間合計 ÷ サービス提供時間」が1以上になることを確認します。例えば提供時間が8時間なら、合計8時間以上の生活相談員勤務が必要です。",
-      "さらに、生活相談員または介護職員のうち少なくとも1人は常勤である必要があります。"
-    ],
-    "cautions": [
-      "生活相談員の必要人数は、頭数ではなく勤務時間数で判定する基準です。",
-      "生活相談員として配置できる資格・要件は指定権者の条例等も関係するため、このページとは別論点として確認が必要です。"
-    ],
+    "practical_steps": ["その日の通所介護のサービス提供時間を確認します。","その時間帯に、専ら通所介護の提供に当たる生活相談員の勤務時間を合計します。","「生活相談員の勤務時間合計 ÷ サービス提供時間」が1以上になることを確認します。例えば提供時間が8時間なら、合計8時間以上の生活相談員勤務が必要です。","さらに、生活相談員または介護職員のうち少なくとも1人は常勤である必要があります。"],
+    "cautions": ["生活相談員の必要人数は、頭数ではなく勤務時間数で判定する基準です。","生活相談員として配置できる資格・要件は指定権者の条例等も関係するため、このページとは別論点として確認が必要です。"],
     "rule_node_ids": ["ordinance37.article93.1.1", "ordinance37.article93.6"],
-    "source_refs": [
-      {"source_id": "mhlw-home-care-standards-current", "locator": "第93条第1項第1号・第6項"}
-    ]
+    "source_refs": [{"source_id": "mhlw-home-care-standards-current", "locator": "第93条第1項第1号・第6項"}]
   },
   {
     "slug": "nurse-staffing",
     "category": "人員・勤務",
     "title": "看護職員は何人必要ですか？",
-    "aliases": ["看護師 人数", "看護職員 配置"],
-    "status": "researching"
+    "aliases": ["看護師 人数", "看護職員 配置", "看護師 常駐", "看護師 毎日", "外部 看護師"],
+    "status": "verified",
+    "last_verified": "2026-09-21",
+    "verification_note": "基準省令の現行表示と、厚生労働省が現在公開しているQ&A集・解釈通知改正資料で確認した範囲です。解釈通知全体の現行統合版は別途再構成中です。",
+    "short_answer": "通所介護では、原則として単位ごとに看護職員を1人以上確保する必要があります。ただし、提供時間帯を通じて事業所内に常駐する必要まではなく、病院・診療所・訪問看護ステーションとの連携で確保する方法も認められています。",
+    "practical_steps": ["まず、通所介護の単位ごとに看護職員を確保する体制を決めます。","事業所の看護職員で確保する場合でも、提供時間帯を通じた常駐までは求められていませんが、提供時間帯を通じて密接かつ適切な連携を保ちます。","病院・診療所・訪問看護ステーションとの連携で確保する場合は、営業日ごとに利用者の健康状態を確認できる体制と、提供時間帯を通じた連絡・対応体制を整えます。","連携方法や勤務体制は、勤務表や契約・連携記録などで確認できるようにします。"],
+    "cautions": ["「看護職員1以上」は、必ずしも営業中ずっと事業所内に1人常駐するという意味ではありません。","外部連携を使う場合でも、単に電話番号を登録しておくだけではなく、健康状態の確認と密接・適切な連携が必要です。","具体的な連携体制については、指定権者への事前確認を行う方が安全です。"],
+    "rule_node_ids": ["ordinance37.article93.1.2"],
+    "notice_node_ids": ["notice.dayservice.nurse.external-linkage"],
+    "qa_item_ids": ["qa.dayservice.nurse.external.2015.50"],
+    "source_refs": [{"source_id":"mhlw-home-care-standards-current","locator":"第93条第1項第2号"},{"source_id":"mhlw-interpretation-nurse-linkage","locator":"通所介護・看護職員の確保方法"},{"source_id":"mhlw-qa","locator":"通所介護事業／人員／看護職員の配置基準の緩和"}]
   },
   {
     "slug": "multiple-roles",
     "category": "人員・勤務",
     "title": "同じ職員が複数の職種を兼務できますか？",
-    "aliases": ["兼務", "複数職種"],
-    "status": "researching"
+    "aliases": ["兼務", "複数職種", "生活相談員 介護職員 兼務", "機能訓練指導員 兼務", "同じ人 兼務"],
+    "status": "verified",
+    "last_verified": "2026-09-21",
+    "short_answer": "一律に「兼務できる・できない」とは決まりません。通所介護では職種ごとに専従要件や兼務規定が異なるため、兼務させたい職種の組合せと勤務時間帯ごとに確認する必要があります。",
+    "practical_steps": ["まず、兼務させたい職種を具体的に特定します。","各職種について「専ら従事」「常時配置」「常勤」などの要件を確認します。","機能訓練指導員は、基準省令上、事業所の他の職務に従事できます。","介護職員は、利用者の処遇に支障がない場合、他の通所介護単位の介護職員として従事できる規定があります。","管理者については、管理上支障がない場合に他職務との兼務が認められています。","勤務表には、職種ごとの勤務時間と兼務関係が分かるように記載します。"],
+    "cautions": ["資格を持っていることだけでは兼務できるとは限りません。各職種の配置時間・専従要件を同時に満たす必要があります。","同じ時間を複数職種の配置時間として重複計上できるかは、職種と業務内容によって異なります。","具体的な勤務表を作った段階で、指定権者に確認すると判断しやすくなります。"],
+    "rule_node_ids": ["ordinance37.article93.3", "ordinance37.article93.5", "ordinance37.article94"],
+    "notice_node_ids": ["notice.dayservice.staffing.schedule"],
+    "source_refs": [{"source_id":"mhlw-home-care-standards-current","locator":"第93条第3項・第5項、第94条"},{"source_id":"mhlw-interpretation-html","locator":"通所介護／勤務体制の確保等"}]
   },
-  {
-    "slug": "dining-training-area",
-    "category": "設備",
-    "title": "食堂・機能訓練室にはどのくらいの面積が必要ですか？",
-    "aliases": ["食堂 面積", "機能訓練室 面積"],
-    "status": "researching"
-  },
-  {
-    "slug": "operation-rules-content",
-    "category": "運営",
-    "title": "運営規程には何を記載する必要がありますか？",
-    "aliases": ["運営規程 記載", "運営規定"],
-    "status": "researching"
-  },
-  {
-    "slug": "important-matters-content",
-    "category": "運営",
-    "title": "重要事項説明書には何を記載する必要がありますか？",
-    "aliases": ["重要事項説明書 記載"],
-    "status": "researching"
-  },
-  {
-    "slug": "care-plan-content",
-    "category": "計画・記録",
-    "title": "通所介護計画には何を記載すればよいですか？",
-    "aliases": ["通所介護計画 記載", "計画書 書き方"],
-    "status": "researching"
-  },
+  {"slug":"dining-training-area","category":"設備","title":"食堂・機能訓練室にはどのくらいの面積が必要ですか？","aliases":["食堂 面積","機能訓練室 面積"],"status":"researching"},
+  {"slug":"operation-rules-content","category":"運営","title":"運営規程には何を記載する必要がありますか？","aliases":["運営規程 記載","運営規定"],"status":"researching"},
+  {"slug":"important-matters-content","category":"運営","title":"重要事項説明書には何を記載する必要がありますか？","aliases":["重要事項説明書 記載"],"status":"researching"},
+  {"slug":"care-plan-content","category":"計画・記録","title":"通所介護計画には何を記載すればよいですか？","aliases":["通所介護計画 記載","計画書 書き方"],"status":"researching"},
   {
     "slug": "care-plan-signature",
     "category": "説明・同意・署名",
@@ -94,43 +67,25 @@
     "status": "verified",
     "last_verified": "2026-09-21",
     "short_answer": "国の基準省令では、通所介護計画の内容を説明して利用者の同意を得ることは必須ですが、署名そのものを同意の必須手段とは定めていません。",
-    "practical_steps": [
-      "通所介護計画の内容を利用者または家族に説明し、利用者の同意を得ます。",
-      "同意を得た事実を後から確認できるよう、事業所の運用に合った方法で記録を残します。",
-      "通所介護計画を利用者に交付します。",
-      "電磁的方法で同意等を行う場合は、相手方の承諾を得た上で行います。"
-    ],
-    "cautions": [
-      "「署名が国基準の明文要件ではない」ことと、「利用者の同意が不要」であることは全く別です。同意は必須です。",
-      "厚生労働省の制度整理資料でも、通所介護計画は「同意は必要。手段の定めはない」と整理されています。",
-      "指定権者が同意確認の方法や様式について取扱いを示している場合は、その取扱いも確認してください。"
-    ],
+    "practical_steps": ["通所介護計画の内容を利用者または家族に説明し、利用者の同意を得ます。","同意を得た事実を後から確認できるよう、事業所の運用に合った方法で記録を残します。","通所介護計画を利用者に交付します。","電磁的方法で同意等を行う場合は、相手方の承諾を得た上で行います。"],
+    "cautions": ["「署名が国基準の明文要件ではない」ことと、「利用者の同意が不要」であることは全く別です。同意は必須です。","厚生労働省の制度整理資料でも、通所介護計画は「同意は必要。手段の定めはない」と整理されています。","指定権者が同意確認の方法や様式について取扱いを示している場合は、その取扱いも確認してください。"],
     "rule_node_ids": ["ordinance37.article99.3", "ordinance37.article99.4", "ordinance37.article217.2"],
-    "source_refs": [
-      {"source_id": "mhlw-home-care-standards-current", "locator": "第99条第3項・第4項"},
-      {"source_id": "mhlw-home-care-standards-electronic", "locator": "第217条第2項"},
-      {"source_id": "mhlw-2020-consent-review", "locator": "各サービス計画等の同意の取扱い（通所介護）"}
-    ]
+    "source_refs": [{"source_id":"mhlw-home-care-standards-current","locator":"第99条第3項・第4項"},{"source_id":"mhlw-home-care-standards-electronic","locator":"第217条第2項"},{"source_id":"mhlw-2020-consent-review","locator":"各サービス計画等の同意の取扱い（通所介護）"}]
   },
   {
     "slug": "care-plan-seal",
     "category": "説明・同意・署名",
     "title": "通所介護計画書に押印は必要ですか？",
-    "aliases": ["押印", "捺印", "ハンコ", "印鑑"],
-    "status": "researching"
+    "aliases": ["押印", "捺印", "ハンコ", "印鑑", "計画書 押印", "計画書 ハンコ"],
+    "status": "verified",
+    "last_verified": "2026-09-21",
+    "verification_note": "国の基準省令と厚生労働省の制度整理資料における全国共通部分について確認しています。自治体独自の様式運用は別途確認が必要です。",
+    "short_answer": "国の基準省令では、通所介護計画書への押印を必須とする規定は確認できません。必要なのは、計画内容の説明、利用者の同意、計画の交付です。",
+    "practical_steps": ["通所介護計画の内容を説明し、利用者の同意を得ます。","同意したことを後から確認できる形で記録します。","押印を事業所内の確認方法として使うこと自体はできますが、国基準上の必須要件とは区別して扱います。","利用者へ通所介護計画を交付します。"],
+    "cautions": ["押印が不要でも、利用者の同意そのものは必要です。","契約書など、通所介護計画とは別の文書については、それぞれの法令・契約実務を確認してください。","指定権者が独自様式や確認方法を示している場合は、その取扱いも確認してください。"],
+    "rule_node_ids": ["ordinance37.article99.3", "ordinance37.article99.4"],
+    "source_refs": [{"source_id":"mhlw-home-care-standards-current","locator":"第99条第3項・第4項"},{"source_id":"mhlw-2020-consent-review","locator":"各サービス計画等の同意の取扱い（通所介護）"}]
   },
-  {
-    "slug": "annual-training",
-    "category": "研修・委員会・訓練",
-    "title": "通所介護で毎年実施する必要がある研修は何ですか？",
-    "aliases": ["毎年 研修", "年間 研修", "法定研修"],
-    "status": "researching"
-  },
-  {
-    "slug": "bcp-training",
-    "category": "研修・委員会・訓練",
-    "title": "BCPの研修はどのくらいの頻度で行いますか？",
-    "aliases": ["BCP 研修", "業務継続計画 研修"],
-    "status": "researching"
-  }
+  {"slug":"annual-training","category":"研修・委員会・訓練","title":"通所介護で毎年実施する必要がある研修は何ですか？","aliases":["毎年 研修","年間 研修","法定研修"],"status":"researching"},
+  {"slug":"bcp-training","category":"研修・委員会・訓練","title":"BCPの研修はどのくらいの頻度で行いますか？","aliases":["BCP 研修","業務継続計画 研修"],"status":"researching"}
 ]
