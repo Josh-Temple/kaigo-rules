@@ -34,6 +34,26 @@ const PAGE_SIZE = 30;
 const normalize = (value: string) =>
   value.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 
+const synonymGroups = [
+  ["看護師", "看護職員", "准看護師"],
+  ["生活相談員", "相談員"],
+  ["ハンコ", "判子", "押印", "捺印", "印鑑"],
+  ["サイン", "署名", "自署"],
+  ["bcp", "業務継続計画"],
+  ["デイサービス", "通所介護"],
+  ["計画書", "通所介護計画", "計画"],
+  ["機能訓練室", "機能訓練"],
+  ["常勤換算", "常勤換算方法"],
+] as const;
+
+const expandTerm = (term: string) => {
+  const normalized = normalize(term);
+  const group = synonymGroups.find((items) =>
+    items.some((item) => normalize(item) === normalized)
+  );
+  return group ? group.map((item) => normalize(item)) : [normalized];
+};
+
 const serviceOptions = [
   ["", "すべて"],
   ["16", "通所介護"],
@@ -54,6 +74,11 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
   ).sort((a, b) => a.localeCompare(b, "ja"));
 
   const terms = normalize(q).split(" ").filter(Boolean);
+  const expandedTerms = terms.map(expandTerm);
+  const appliedSynonyms = expandedTerms
+    .filter((group, index) => group.length > 1 && !group.every((term) => term === terms[index]))
+    .flatMap((group) => group)
+    .filter((term, index, all) => all.indexOf(term) === index);
 
   const filtered = qaCorpus.filter((item) => {
     if (service && item.service_code !== service) return false;
@@ -71,7 +96,9 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
       item.number,
     ].join(" "));
 
-    return terms.every((term) => haystack.includes(term));
+    return expandedTerms.every((alternatives) =>
+      alternatives.some((term) => haystack.includes(term))
+    );
   });
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
@@ -129,7 +156,12 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
       </form>
 
       <div className="qa-search-summary">
-        <p><strong>{filtered.length.toLocaleString("ja-JP")}件</strong> 見つかりました</p>
+        <div>
+          <p><strong>{filtered.length.toLocaleString("ja-JP")}件</strong> 見つかりました</p>
+          {q && appliedSynonyms.length ? (
+            <p className="meta">関連語も検索：{appliedSynonyms.join(" / ")}</p>
+          ) : null}
+        </div>
         {(q || service || standard) ? <Link href="/qa">条件をクリア</Link> : null}
       </div>
 
