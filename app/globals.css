@@ -6,6 +6,7 @@
   --link: #1f5c8f;
   --surface: #ffffff;
   --warning: #8a5b10;
+  --verified: #23653f;
 }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
@@ -44,6 +45,7 @@ h2 { font-size: 1.35rem; margin-top: 42px; }
 .question a { color: var(--text); font-weight: 650; text-decoration: none; }
 .meta, .status { color: var(--muted); font-size: .85rem; }
 .status { white-space: nowrap; }
+.verified { color: var(--verified); font-weight: 700; }
 .answer-page { max-width: 760px; padding: 58px 0 80px; }
 .answer-page h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
 .notice {
@@ -51,8 +53,16 @@ h2 { font-size: 1.35rem; margin-top: 42px; }
   padding: 12px 18px; background: #fffaf0; margin: 28px 0;
 }
 .section { padding: 22px 0; border-top: 1px solid var(--line); }
+.answer-summary p { font-size: 1.14rem; font-weight: 620; }
+.steps { padding-left: 1.4rem; }
+.steps li, .source-list li { margin: 10px 0; }
 .source-list { padding-left: 1.2rem; }
-.source-list li { margin: 12px 0; }
+.source-card {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+.source-card:first-of-type { border-top: 0; }
+.source-card p { margin: 6px 0 10px; }
 footer {
   border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem;
   padding: 28px max(20px, calc((100vw - 1040px) / 2)); margin-top: 80px;

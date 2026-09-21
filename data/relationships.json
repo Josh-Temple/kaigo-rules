@@ -1,0 +1,8 @@
+[
+  {"from": "question:manager-concurrent-role", "relation": "answered_by", "to": "ordinance37.article94"},
+  {"from": "question:life-counselor-staffing", "relation": "answered_by", "to": "ordinance37.article93.1.1"},
+  {"from": "question:life-counselor-staffing", "relation": "qualified_by", "to": "ordinance37.article93.6"},
+  {"from": "question:care-plan-signature", "relation": "answered_by", "to": "ordinance37.article99.3"},
+  {"from": "question:care-plan-signature", "relation": "requires_delivery_under", "to": "ordinance37.article99.4"},
+  {"from": "question:care-plan-signature", "relation": "electronic_option_under", "to": "ordinance37.article217.2"}
+]

@@ -16,6 +16,42 @@
     "status": "registry"
   },
   {
+    "id": "mhlw-home-care-standards-current",
+    "layer": "基準省令",
+    "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+    "status": "verified_source",
+    "note": "通所介護の第92条から第109条を含む現行表示。"
+  },
+  {
+    "id": "mhlw-home-care-standards-electronic",
+    "layer": "基準省令",
+    "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（雑則・電磁的記録等）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=4",
+    "status": "verified_source",
+    "note": "第217条の電磁的記録・電磁的方法に関する規定。"
+  },
+  {
+    "id": "mhlw-2024-interpretation-redline",
+    "layer": "解釈通知",
+    "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+    "status": "partial_source",
+    "note": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+  },
+  {
+    "id": "mhlw-2020-consent-review",
+    "layer": "制度整理資料",
+    "title": "介護分野の文書負担軽減に関する制度整理資料（各サービス計画等の同意の取扱い）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/000703105.pdf",
+    "status": "reference_only",
+    "note": "通所介護計画について「同意は必要。手段の定めはない」と整理した参考資料。法令そのものではない。"
+  },
+  {
     "id": "mhlw-qa",
     "layer": "Q&A",
     "title": "介護サービス関係Q&A",
