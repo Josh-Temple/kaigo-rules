@@ -1,0 +1,13 @@
+{
+  "format_version": 1,
+  "policy": "Generated ordinance nodes are immutable import output. Human verification is stored here as an overlay and is valid only while the stored text_sha256 matches the current imported article text.",
+  "review_status": "NOT_STARTED",
+  "reviewed_articles": [],
+  "reviewed_application_rules": [],
+  "review_method_required": [
+    "Open the current official e-Gov source",
+    "Compare the article text and hierarchy against the imported node",
+    "For Article 105 incorporation/read-as rules, compare targets and substitutions separately",
+    "Record the current imported text_sha256 with reviewer date"
+  ]
+}
