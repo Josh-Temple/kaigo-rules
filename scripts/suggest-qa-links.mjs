@@ -93,7 +93,7 @@ const groups = questions.map((question) => {
     question_slug: question.slug,
     question_title: question.title,
     status: "CANDIDATE_UNREVIEWED",
-    candidates: matches,
+    candidates: ranked,
   };
 });
 
