@@ -7,7 +7,6 @@ import unicodedata
 import urllib.parse
 import urllib.request
 from collections import Counter
-from datetime import datetime, timezone
 from html.parser import HTMLParser
 from io import BytesIO
 from pathlib import Path
@@ -219,12 +218,9 @@ def main():
     out = Path(args.out)
     meta_out = Path(args.meta_out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    generated = datetime.now(timezone.utc).isoformat()
-
     out.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     meta = {
         "format_version": 1,
-        "generated_at": generated,
         "source_page": args.page_url,
         "source_workbook": workbook_url,
         "source_format": workbook_format,
