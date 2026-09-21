@@ -1,20 +1,183 @@
-import qaItems from "../../data/qa-items.json";
-import sources from "../../data/sources.json";
+import Link from "next/link";
+import qaCorpusData from "../../data/qa-corpus.json";
+import qaMetaData from "../../data/qa-corpus-meta.json";
+import sourcesData from "../../data/sources.json";
 
-export default function QaPage() {
+type QaItem = {
+  id: string;
+  service_code: string;
+  service_label: string;
+  scope: string;
+  standard_code: string;
+  standard_label: string;
+  topic: string;
+  question: string;
+  answer: string;
+  issued_source: string;
+  number: string;
+  source_id: string;
+  ingestion_status: string;
+};
+
+type SearchParams = Promise<{
+  q?: string;
+  service?: string;
+  standard?: string;
+  page?: string;
+}>;
+
+const qaCorpus = qaCorpusData as QaItem[];
+const qaMeta = qaMetaData as any;
+const sources = sourcesData as Array<any>;
+const PAGE_SIZE = 30;
+
+const normalize = (value: string) =>
+  value.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+
+const serviceOptions = [
+  ["", "すべて"],
+  ["16", "通所介護"],
+  ["06", "通所系共通"],
+  ["02", "居宅サービス共通"],
+  ["01", "全サービス共通"],
+] as const;
+
+export default async function QaPage({ searchParams }: { searchParams: SearchParams }) {
+  const params = await searchParams;
+  const q = (params.q || "").trim();
+  const service = params.service || "";
+  const standard = params.standard || "";
+  const requestedPage = Math.max(1, Number.parseInt(params.page || "1", 10) || 1);
+
+  const standards = Array.from(
+    new Set(qaCorpus.map((item) => item.standard_label).filter(Boolean))
+  ).sort((a, b) => a.localeCompare(b, "ja"));
+
+  const terms = normalize(q).split(" ").filter(Boolean);
+
+  const filtered = qaCorpus.filter((item) => {
+    if (service && item.service_code !== service) return false;
+    if (standard && item.standard_label !== standard) return false;
+    if (!terms.length) return true;
+
+    const haystack = normalize([
+      item.scope,
+      item.service_label,
+      item.standard_label,
+      item.topic,
+      item.question,
+      item.answer,
+      item.issued_source,
+      item.number,
+    ].join(" "));
+
+    return terms.every((term) => haystack.includes(term));
+  });
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const page = Math.min(requestedPage, totalPages);
+  const start = (page - 1) * PAGE_SIZE;
+  const visible = filtered.slice(start, start + PAGE_SIZE);
+  const officialSource = sources.find((source) => source.id === "mhlw-qa");
+
+  const pageHref = (nextPage: number) => {
+    const sp = new URLSearchParams();
+    if (q) sp.set("q", q);
+    if (service) sp.set("service", service);
+    if (standard) sp.set("standard", standard);
+    sp.set("page", String(nextPage));
+    return `/qa?${sp.toString()}`;
+  };
+
   return (
-    <article className="answer-page wide-page">
+    <article className="answer-page wide-page qa-corpus-page">
       <p className="eyebrow">MHLW Q&A CORPUS</p>
-      <h1>国Q&A</h1>
-      <p className="lead">厚生労働省が過去に発出した介護サービス関係Q&Aを、サービス種別・基準種別・論点・発出時期・文書番号で構造化していきます。</p>
-      <div className="notice">現在はデータ構造の検証段階です。Q&Aだけで結論を出さず、法令・基準・通知と一緒に確認します。</div>
-      <div className="qa-list">
-        {qaItems.map((item) => {
-          const source = sources.find((s) => s.id === item.source_id);
-          return <section className="qa-row" key={item.id}><p className="meta">{item.service.join(" / ")} ・ {item.standard_category} ・ {item.issued_at}</p><h2>{item.topic.join(" / ")}</h2><p><strong>質問の要旨：</strong>{item.question_summary}</p><p><strong>回答の要旨：</strong>{item.answer_summary}</p><p className="meta">{item.source_document} / {item.source_number}</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省のQ&A集を確認</a> : null}</section>;
-        })}
+      <h1>国Q&Aを検索</h1>
+      <p className="lead">
+        厚生労働省の介護サービス関係Q&Aから、通所介護に関係する範囲を構造化して検索できます。
+        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を収載しています。
+      </p>
+
+      <div className="notice">
+        <strong>Q&Aの「収載」と「現行性確認」は別です。</strong>
+        <br />
+        この検索結果は公式Q&A集から取り込んだ内容ですが、個々のQ&Aが現在の法令・通知でも有効かは未確認のものを含みます。
+        回答ページの根拠として使うのは、別途確認したものだけです。
       </div>
-      <section className="section"><h2>取り込み方針</h2><p>Q&A本文を単純に並べるのではなく、元の発出文書と番号を保持し、現在の法令・通知ノードへ接続します。将来は「古いQ&Aが現在も使えるか」を改正履歴から判定できる形を目指します。</p></section>
+
+      <form className="qa-search-form" method="get" action="/qa">
+        <label className="qa-search-main">
+          <span>キーワード</span>
+          <input name="q" defaultValue={q} placeholder="例：看護職員、送迎、計画、署名" />
+        </label>
+        <label>
+          <span>対象範囲</span>
+          <select name="service" defaultValue={service}>
+            {serviceOptions.map(([value, label]) => (
+              <option key={value || "all"} value={value}>{label}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span>基準種別</span>
+          <select name="standard" defaultValue={standard}>
+            <option value="">すべて</option>
+            {standards.map((value) => <option key={value} value={value}>{value}</option>)}
+          </select>
+        </label>
+        <button type="submit">検索する</button>
+      </form>
+
+      <div className="qa-search-summary">
+        <p><strong>{filtered.length.toLocaleString("ja-JP")}件</strong> 見つかりました</p>
+        {(q || service || standard) ? <Link href="/qa">条件をクリア</Link> : null}
+      </div>
+
+      <div className="qa-list">
+        {visible.map((item) => (
+          <section className="qa-row" key={item.id}>
+            <div className="qa-row-head">
+              <p className="meta">{item.scope} ・ {item.standard_label || "基準種別なし"}</p>
+              <span className="corpus-status">収載済み・現行性未確認</span>
+            </div>
+            {item.topic ? <p className="qa-topic">{item.topic}</p> : null}
+            <h2>{item.question}</h2>
+            <p className="qa-answer">{item.answer}</p>
+            <p className="meta">{[item.issued_source, item.number].filter(Boolean).join(" / ")}</p>
+          </section>
+        ))}
+        {!visible.length ? (
+          <section className="qa-empty">
+            <h2>該当するQ&Aが見つかりませんでした</h2>
+            <p>語を短くするか、対象範囲・基準種別を「すべて」に戻して検索してください。</p>
+          </section>
+        ) : null}
+      </div>
+
+      {totalPages > 1 ? (
+        <nav className="qa-pagination" aria-label="Q&A検索結果のページ">
+          {page > 1 ? <Link href={pageHref(page - 1)}>← 前へ</Link> : <span />}
+          <span>{page} / {totalPages}ページ</span>
+          {page < totalPages ? <Link href={pageHref(page + 1)}>次へ →</Link> : <span />}
+        </nav>
+      ) : null}
+
+      <section className="section qa-corpus-meta">
+        <h2>このデータについて</h2>
+        <p>
+          公式XLSXの {qaMeta.rows_scanned?.toLocaleString("ja-JP")} 行を走査し、
+          「全サービス共通」「居宅サービス共通」「通所系共通」「通所介護」を抽出しています。
+        </p>
+        <dl>
+          {serviceOptions.filter(([code]) => code).map(([code, label]) => (
+            <div key={code}><dt>{label}</dt><dd>{qaMeta.counts_by_service?.[code]?.toLocaleString("ja-JP") || 0}件</dd></div>
+          ))}
+        </dl>
+        {officialSource ? (
+          <p><a href={officialSource.url} target="_blank" rel="noreferrer">厚生労働省の介護サービス関係Q&Aを確認</a></p>
+        ) : null}
+        <p className="meta">取得元ファイルのSHA-256も保存し、更新時に同じファイルか確認できるようにしています。</p>
+      </section>
     </article>
   );
 }
