@@ -1,7 +1,1182 @@
 {
   "format_version": 1,
-  "corpus_sha256": "",
+  "corpus_sha256": "2b3e658d1659b42423fe1d3f7cc8b2fd24b58914ce65a6d15d16d0b64fc26c6b",
   "method": "deterministic_phrase_match_v1",
   "status": "CANDIDATE_UNREVIEWED",
-  "candidates": []
+  "candidates": [
+    {
+      "question_slug": "manager-concurrent-role",
+      "question_title": "管理者は他の職務と兼務できますか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.749ca43b6096d305a35e",
+          "score": 18.3,
+          "matched_terms": [
+            "管理者",
+            "兼務"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "管理者と機能訓練指導員の兼務",
+          "question_preview": "通所介護等事業所において配置が義務づけられている管理者は、機能訓練指導員を兼ねることができるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.b1e96b13d78bac74bb0f",
+          "score": 16.3,
+          "matched_terms": [
+            "管理者",
+            "兼務"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "管理者が専ら機能訓練指導員の職務に従事する理学療法士等を兼務した場合の個別機能訓練加算(Ⅰ)イ又はロの算定",
+          "question_preview": "個別機能訓練加算(Ⅰ)イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、指定通所介護（指定地域密着型通所介護）事業所に配置が義務づけられている管理者がこれを兼ねることは可能か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.86129614600999a21b13",
+          "score": 12,
+          "matched_terms": [
+            "兼務"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "1 人員",
+          "topic": "旧一部ユニット型施設・事業所の兼務職員の常勤・非常勤の取扱い",
+          "question_preview": "一部ユニット型施設・事業所について、当該施設・事業所のユニット型部分とユニット型以外の部分をそれぞれ別施設・事業所として指定した場合、双方の施設を兼務する職員の常勤・非常勤の取扱いはどのようにすべきか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.a3ceb95affec100c3cc3",
+          "score": 11.8,
+          "matched_terms": [
+            "管理者"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "3 運営",
+          "topic": "管理者の責務",
+          "question_preview": "管理者に求められる具体的な役割は何か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.4dd2cd802620ff93cdf6",
+          "score": 10.3,
+          "matched_terms": [
+            "管理者"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "1 人員",
+          "topic": "常勤要件について",
+          "question_preview": "各事業所の「管理者」についても、育児・介護休業法第23条第１項に規定する所定労働時間の短縮措置の適用対象となるのか？",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.1e52b7c129bcc40922a4",
+          "score": 9.5,
+          "matched_terms": [
+            "管理者",
+            "兼務"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "認知症加算について",
+          "question_preview": "認知症加算について、認知症介護実践者研修等の修了者の配置が求められているが、当該研修修了者は、介護職員以外の職種（管理者、生活相談員、看護職員等）でもよいのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.3c31fb1c9cd881f2d13c",
+          "score": 8.5,
+          "matched_terms": [
+            "兼務"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "個別機能訓練加算",
+          "question_preview": "通所介護の看護職員が機能訓練指導員を兼務した場合であっても個別の機能訓練実施計画を策定すれば個別機能訓練加算は算定可能か。また、当該職員が、介護予防通所介護の選択的サービスに必要な機能訓練指導員を兼務できるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.abd27867b82c4c7f8dad",
+          "score": 8.5,
+          "matched_terms": [
+            "兼務"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "個別機能訓練加算(Ⅰ)イ又はロと第一号通所事業の運動器機能向上加算との関係",
+          "question_preview": "第一号通所事業と一体的に運営される通所介護において、個別機能訓練加算(Ⅰ)イ又はロを算定するために配置された機能訓練指導員が、第一号通所事業の運動器機能向上加算を算定するために配置された機能訓練指導員を兼務できるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "life-counselor-staffing",
+      "question_title": "生活相談員は何人配置すればよいですか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.09387a7f7b6c9726887a",
+          "score": 50.5,
+          "matched_terms": [
+            "生活相談員",
+            "相談員",
+            "配置",
+            "配置基準"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "生活相談員及び介護職員の配置基準",
+          "question_preview": "生活相談員及び介護職員の配置基準について、「生活相談員又は介護職員のうち１人以上は、常勤でなければならない」こととなっているが、営業日ごと又は単位ごとに常勤職員を配置する必要があるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.3cf34cdf74e63388a801",
+          "score": 28.5,
+          "matched_terms": [
+            "生活相談員",
+            "相談員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "人員基準の弾力化",
+          "question_preview": "生活相談員及び介護職員の具体的な人員配置の方法はどのようなものなのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.bed5148c4af01939c01d",
+          "score": 25,
+          "matched_terms": [
+            "生活相談員",
+            "相談員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "人員配置",
+          "question_preview": "通所介護事業所の生活相談員がサービス担当者会議に出席するための時間については確保すべき勤務延時間数に含めることができるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.db05aeca55e4d44f957e",
+          "score": 25,
+          "matched_terms": [
+            "配置",
+            "配置基準"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "1 人員",
+          "topic": "人員配置基準における両立支援",
+          "question_preview": "人員配置基準や報酬算定において「常勤」での配置が求められる職員が、産前産後休業や育児・介護休業等を取得した場合に、同等の資質を有する複数の非常勤職員を常勤換算することで、人員配置基準を満たすことを認めるとあるが、「 同等の資質を有する 」かについてどのように判断するのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.1e566db76e190e3c1ca7",
+          "score": 23,
+          "matched_terms": [
+            "配置",
+            "配置基準"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "3 運営",
+          "topic": "人員配置基準等に関するいわゆるローカルルール",
+          "question_preview": "人員配置基準等に関するいわゆるローカルルールについて、どのような取扱いとするべきか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.12ea0446384303b415fa",
+          "score": 22.5,
+          "matched_terms": [
+            "生活相談員",
+            "相談員",
+            "配置",
+            "配置基準"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "個別機能訓練加算(Ⅰ)イ及びロの人員配置要件",
+          "question_preview": "個別機能訓練加算(Ⅰ)イ及びロにおいては、個別機能訓練計画を作成するにあたり、利用者の居宅を訪問し、利用者の居宅での生活状況の確認等を行うこととなっているが、利用者の居宅を訪問している時間については、人員配置基準上、確保すべき勤務延時間数に含めることとしてもよいか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.1e52b7c129bcc40922a4",
+          "score": 22.5,
+          "matched_terms": [
+            "生活相談員",
+            "相談員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "認知症加算について",
+          "question_preview": "認知症加算について、認知症介護実践者研修等の修了者の配置が求められているが、当該研修修了者は、介護職員以外の職種（管理者、生活相談員、看護職員等）でもよいのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.337577b0a5b20a4e386f",
+          "score": 20,
+          "matched_terms": [
+            "生活相談員",
+            "相談員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "5 その他",
+          "topic": "地域連携の拠点としての機能の充実",
+          "question_preview": "生活相談員の勤務延時間に、「地域の町内会、自治会、ボランティア団体等と連携し、利用者に必要な生活支援を担ってもらうなど社会資源の発掘、活用のための時間」が認められたが、具体的にはどのようなものが想定されるのか。また、事業所外での勤務に関しては、活動実績などの記録を保管しておく必要があるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "nurse-staffing",
+      "question_title": "看護職員は何人必要ですか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.19ff5348270062de7154",
+          "score": 23.5,
+          "matched_terms": [
+            "看護職員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "看護職員と機能訓練指導員の兼務",
+          "question_preview": "通所介護等事業所において配置が義務づけられている看護職員は、機能訓練指導員を兼ねることができるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.cc936d2dc9027f2f8758",
+          "score": 21.5,
+          "matched_terms": [
+            "看護職員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "看護職員かつ機能訓練指導員である者が、専ら機能訓練指導員の職務に従事する理学療法士等を兼務した場合の個別機能訓練加算(Ⅰ)イ又はロの算定",
+          "question_preview": "個別機能訓練加算(Ⅰ)イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、通所介護（地域密着型通所介護）事業所に配置が義務づけられている看護職員かつ機能訓練指導員である者がこれを兼ねることは可能か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.d86f9a368b0a343ef8b9",
+          "score": 21.5,
+          "matched_terms": [
+            "看護職員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "看護職員が専ら機能訓練指導員の職務に従事する理学療法士等を兼務した場合の個別機能訓練加算(Ⅰ)イ又はロの算定",
+          "question_preview": "個別機能訓練加算(Ⅰ)イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、通所介護（地域密着型通所介護）事業所に配置が義務づけられている看護職員がこれを兼ねることは可能か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.d39e1a671c4be5f3b74a",
+          "score": 18,
+          "matched_terms": [
+            "看護職員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "看護職員の配置基準の緩和",
+          "question_preview": "病院、診療所又は訪問看護ステーションとの契約で確保した看護職員は、営業日ごとに事業所内で利用者の健康状態の確認を行う必要があるが、その場合どの程度の従事時間が必要か。また、事業所に駆けつけることができる体制とは、距離的にどの程度離れた範囲までを想定しているのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.109c1d703c22cd7b38a9",
+          "score": 17.5,
+          "matched_terms": [
+            "看護職員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "介護予防通所介護・通所リハビリテーション\n（選択的サービス：運動器機能向上加算）",
+          "question_preview": "介護予防通所リハビリテーションにおける運動器機能向上加算を算定するための人員の配置は、PT,OT,STではなく、看護職員ではいけないのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.16f1c3b5418e493563a1",
+          "score": 17.5,
+          "matched_terms": [
+            "看護職員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "認知症加算・中重度者ケア体制加算について",
+          "question_preview": "指定通所介護の中重度者ケア体制加算と認知症加算を併算定する場合、認知症介護に係る研修を修了している看護職員１人を、指定通所介護を行う時間帯を通じて配置すれば、認知症介護に係る研修を修了している看護職員１人の配置でそれぞれの加算を算定できるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.5459d4e45e460032d572",
+          "score": 17.5,
+          "matched_terms": [
+            "看護職員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "個別機能訓練加算(Ⅰ)イ又はロと中重度者ケア体制加算を併算定する場合の取扱い",
+          "question_preview": "個別機能訓練加算(Ⅰ)イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、中重度者ケア体制加算を算定する場合に配置が必要となる看護職員がこれを兼ねることは可能か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.5651b736a72357ce948e",
+          "score": 17.5,
+          "matched_terms": [
+            "看護職員",
+            "配置"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "介護予防通所介護・通所リハビリテーション\n（選択的サービス：運動器機能向上加算）",
+          "question_preview": "介護予防通所介護における運動器機能向上加算の人員配置は、人員基準に定める看護職員以外に利用時間を通じて1名以上の配置が必要か。また、1名の看護職員で、運動器機能向上加算、口腔機能向上加算の両方の加算を算定してもかまわないか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "multiple-roles",
+      "question_title": "同じ職員が複数の職種を兼務できますか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.09387a7f7b6c9726887a",
+          "score": 31.8,
+          "matched_terms": [
+            "生活相談員",
+            "介護職員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "生活相談員及び介護職員の配置基準",
+          "question_preview": "生活相談員及び介護職員の配置基準について、「生活相談員又は介護職員のうち１人以上は、常勤でなければならない」こととなっているが、営業日ごと又は単位ごとに常勤職員を配置する必要があるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.9437b9cb343b7e7324c6",
+          "score": 27.8,
+          "matched_terms": [
+            "生活相談員",
+            "介護職員",
+            "機能訓練指導員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "個別機能訓練加算について",
+          "question_preview": "個別機能訓練計画の作成及び居宅での生活状況の確認について、「その他の職種の者」は、機能訓練指導員、看護職員、介護職員又は生活相談員以外に、どんな職種を想定しているのか。また、個別機能訓練計画作成者と居宅の訪問者は同一人物でなくてもよいか。さらに、居宅を訪問する者が毎回変わってしまってもよいのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.19ff5348270062de7154",
+          "score": 24.8,
+          "matched_terms": [
+            "兼務",
+            "介護職員",
+            "機能訓練指導員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "看護職員と機能訓練指導員の兼務",
+          "question_preview": "通所介護等事業所において配置が義務づけられている看護職員は、機能訓練指導員を兼ねることができるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.cc936d2dc9027f2f8758",
+          "score": 24.3,
+          "matched_terms": [
+            "兼務",
+            "介護職員",
+            "機能訓練指導員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "看護職員かつ機能訓練指導員である者が、専ら機能訓練指導員の職務に従事する理学療法士等を兼務した場合の個別機能訓練加算(Ⅰ)イ又はロの算定",
+          "question_preview": "個別機能訓練加算(Ⅰ)イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、通所介護（地域密着型通所介護）事業所に配置が義務づけられている看護職員かつ機能訓練指導員である者がこれを兼ねることは可能か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.3cf34cdf74e63388a801",
+          "score": 23.3,
+          "matched_terms": [
+            "生活相談員",
+            "介護職員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "人員基準の弾力化",
+          "question_preview": "生活相談員及び介護職員の具体的な人員配置の方法はどのようなものなのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.749ca43b6096d305a35e",
+          "score": 22.8,
+          "matched_terms": [
+            "兼務",
+            "機能訓練指導員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "1 人員",
+          "topic": "管理者と機能訓練指導員の兼務",
+          "question_preview": "通所介護等事業所において配置が義務づけられている管理者は、機能訓練指導員を兼ねることができるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.d86f9a368b0a343ef8b9",
+          "score": 22.8,
+          "matched_terms": [
+            "兼務",
+            "介護職員",
+            "機能訓練指導員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "看護職員が専ら機能訓練指導員の職務に従事する理学療法士等を兼務した場合の個別機能訓練加算(Ⅰ)イ又はロの算定",
+          "question_preview": "個別機能訓練加算(Ⅰ)イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、通所介護（地域密着型通所介護）事業所に配置が義務づけられている看護職員がこれを兼ねることは可能か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.012fdfa8b64a3b333d4e",
+          "score": 20.8,
+          "matched_terms": [
+            "兼務",
+            "機能訓練指導員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "機能訓練 指導員が専ら機能訓練指導員の職務に従事する理学療法士等を兼務した場合の個別機能訓練加算 （Ⅰ）イ又はロの算定",
+          "question_preview": "個別機能訓練加算 （Ⅰ）イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、通所介護事業所（地域密着型通所介護事業所）において配置が義務づけられている機能訓練指導員に加えて、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "dining-training-area",
+      "question_title": "食堂・機能訓練室にはどのくらいの面積が必要ですか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.91959c3555dce399f7b8",
+          "score": 26.5,
+          "matched_terms": [
+            "食堂",
+            "面積",
+            "機能訓練室"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "2 設備",
+          "topic": "機能訓練室等の確保",
+          "question_preview": "居宅サービス運営基準解釈通知で食堂や機能訓練室について狭隘な部屋を多数設置することで面積を確保するべきではないが、指定通所介護の単位をさらにグループ分けして効果的な指定通所介護の提供が期待される場合はこの限りでないとされている。\n例えば、既存の建物を利用するため1室では食堂及び機能訓練室の面積基準を満たさないが複数の部屋の面積を合計すれば面積基準を満たすよう",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.1fa39601f41ed7e00437",
+          "score": 16.5,
+          "matched_terms": [
+            "食堂",
+            "機能訓練室"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "指定通所介護事業所等の設備を利用した宿泊サービス",
+          "question_preview": "宿泊サービスの届出要件として、「指定通所介護事業所の設備を利用し」とあるが、指定通所介護事業所として届け出ている食堂、機能訓練室、静養室、相談室、事務室以外の部屋や隣接する建物等で宿泊サービスを提供する場合の扱いはどうなるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.fdce9af8e0f8227fe06f",
+          "score": 12.5,
+          "matched_terms": [
+            "面積",
+            "機能訓練室",
+            "3m2",
+            "定員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "介護予防通所介護・通所リハビリテーション\n（サービスの提供方法）",
+          "question_preview": "午前と午後に分けてサービス提供を行った場合に、例えば午前中にサービス提供を受けた利用者について、午後は引き続き同一の事業所にいてもらっても構わないか。その場合には、当該利用者を定員に含める必要があるのか。また、当該利用者が事業所に引き続きいられることについて負担を求めることは可能か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.4926c85200c8291384e0",
+          "score": 11.5,
+          "matched_terms": [
+            "定員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "共生型サービスの定員超過減算について",
+          "question_preview": "共生型通所介護（障害福祉制度の生活介護事業所等が、要介護者へ通所介護を行う場合）の場合、定員超過の減算はどちらを対象に、どのように見るべきか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.5e04a0c73e3024abd22d",
+          "score": 11.5,
+          "matched_terms": [
+            "定員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "定員関係",
+          "question_preview": "通所サービスと介護予防通所サービスについて、それぞれの定員を定めるのか、それとも全体の定員の枠内で、介護と予防が適時振り分けられれば良いものか。その場合、定員超過の減算はどちらを対象に、どのように見るべきか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.a4a4dab6582666e0bdb5",
+          "score": 11.5,
+          "matched_terms": [
+            "定員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "定員関係",
+          "question_preview": "通所介護における定員遵守規定に、「ただし、災害その他のやむを得ない事情がある場合はこの限りではない」との規定が加えられた趣旨如何。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.ee373cdb1403676ffe48",
+          "score": 11.5,
+          "matched_terms": [
+            "定員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "定員関係",
+          "question_preview": "小規模、通常規模通所介護費を算定している事業所については、月平均の利用者数で定員超過した場合となっているが、今回の改正で月平均の利用者数とされた趣旨は。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.5c1be0073f9a5a2a4fe5",
+          "score": 8.5,
+          "matched_terms": [
+            "定員"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "（地域密着型）通所介護と第一号通所事業が一体的に行われている場合",
+          "question_preview": "（地域密着型）通所介護と第一号通所事業（指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）第93条第１項第３号に規定する第一号通所事業をいう。以下同じ。）を一体的に行う事業所にあっては、それぞれの事業ごとに利用定員を定めるのか。それとも両事業の利用者を合算して利用定員を定めるのか。また、利用者の数が利用定員を超える場合（い",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "operation-rules-content",
+      "question_title": "運営規程には何を記載する必要がありますか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.45ef70083cb1e0d98dfe",
+          "score": 16.5,
+          "matched_terms": [
+            "記載",
+            "項目"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "課題分析標準項目の改正\n【全体に関連する内容】",
+          "question_preview": "「項目の主な内容（例）」に記載されている内容について、その全てを必ず把握しないとならないものなのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.bddf06abbd7cae56e776",
+          "score": 16.5,
+          "matched_terms": [
+            "記載",
+            "項目"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "介護サービス計画書の様式及び課題分析標準項目",
+          "question_preview": "「「介護サービス計画書の様式及び課題分析標準項目の提示について」の一部改正について」（令和６年７月４日付け老認発0704 第１号厚生労働省老健局認知症施策・地域介護推進課長通知）において、居宅サービス計画書の様式に「用具名称（機種名）」及び｢TAIS コード・届出コード｣の項目が追加されたが、これらの項目について、記載は必須とされるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.ce308a4364eb523144e3",
+          "score": 16.5,
+          "matched_terms": [
+            "記載",
+            "項目"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "課題分析標準項目の改正\n【№２３ その他留意すべき事項・状況】",
+          "question_preview": "本項目に記載すべき内容は、具体的にどのようなものが想定されるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.87bba14a2bbb61a24d73",
+          "score": 15.5,
+          "matched_terms": [
+            "運営規程"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "3 運営",
+          "topic": "運営規程について",
+          "question_preview": "令和３年度改定において、運営基準等で経過措置期間を定め、介護サービス事業所等に義務づけられたものがあるが、これらについて運営規程においてはどのように扱うのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.5f979371e297d20cccfd",
+          "score": 15,
+          "matched_terms": [
+            "記載",
+            "項目"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "課題分析標準項目の改正\n【№５ 日常生活自立度（障害）】\n【№６ 日常生活自立度（認知症）】",
+          "question_preview": "項目の名称が変わっているが、収集する項目の種別が変わるのか。現在の要介護認定を受けた際の判定と、アセスメントを行っている介護支援専門員の状態の判定と異なる二つの時点での状態像を記載するのはなぜか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.cf1f41e18146b4351923",
+          "score": 15,
+          "matched_terms": [
+            "記載",
+            "項目"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "課題分析標準項目の改正\n【№１０ 健康状態】",
+          "question_preview": "「項目の主な内容（例）」の記載がだいぶ増えているが、これまでと把握すべき内容は変わらないという認識で問題無いか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.8907181bd77c77f37cde",
+          "score": 13.5,
+          "matched_terms": [
+            "記載",
+            "項目"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "ケアプランデータ連携標準仕様",
+          "question_preview": "各項目の記載内容のマニュアルはないのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.8408a750dd8209c6523e",
+          "score": 13,
+          "matched_terms": [
+            "運営規程"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "食費関係",
+          "question_preview": "通所系のサービスで、利用者が「ご飯」を自宅から持参し、「おかず」のみを事業所が提供する場合、他の利用者と食費の価格を異ならせることは可能か。また、このような場合、運営規程においてはどのように規定すればよいか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "important-matters-content",
+      "question_title": "重要事項説明書には何を記載する必要がありますか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.004e0c44dc8d76345ffc",
+          "score": 12,
+          "matched_terms": [
+            "記載",
+            "説明"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "介護職員等処遇改善加算\n【キャリアパス要件Ⅳ】",
+          "question_preview": "キャリアパス要件Ⅳの改善後の年額賃金要件について、「例外的に当該賃金改善が困難な場合であって、合理的な説明がある場合はこの限りではない」との記載があるが、「合理的な説明」とはどのようなものを想定しているのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.b8c94d9c8e7796935eec",
+          "score": 12,
+          "matched_terms": [
+            "記載",
+            "説明"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "介護職員等処遇改善加算\n【キャリアパス要件Ⅳ】",
+          "question_preview": "キャリアパス要件Ⅳの改善後の年額賃金要件について、「例外的に当該賃金改善が困難な場合であって、合理的な説明がある場合はこの限りではない」との記載があるが、「合理的な説明」とはどのようなものを想定しているのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.2f753447f60463ee2d00",
+          "score": 11.5,
+          "matched_terms": [
+            "重要事項説明",
+            "重要事項",
+            "説明"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "介護報酬改定の施行時期について",
+          "question_preview": "令和６年度介護報酬改定において、\n・訪問看護・訪問リハビリテーション・居宅療養管理指導・通所リハビリテーションに係る見直しは令和６年６月施行\n・その他のサービスに係る見直しは令和６年４月施行\n・処遇改善加算の一本化等（加算率引き上げ含む）はサービス一律で令和６年６月施行\nとされたが、利用者・家族等に対して、改定内容の説明をいつどのように行うべきか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.52b7b8bfbed1d3f0292f",
+          "score": 11,
+          "matched_terms": [
+            "説明"
+          ],
+          "scope": "通所系サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "３％加算及び規模区分の特例（利用者又はその家族への説明・同意の取得）",
+          "question_preview": "３％加算や規模区分の特例を適用するにあたり、通所介護事業所等において利用者又はその家族への説明や同意の取得を行う必要はあるか。また、利用者又はその家族への説明や同意の取得が必要な場合、利用者又はその家族への説明を行ったことや、利用者又はその家族から同意を受けたことを記録する必要はあるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.43db119b922c77059879",
+          "score": 10.3,
+          "matched_terms": [
+            "重要事項説明書",
+            "重要事項説明",
+            "重要事項",
+            "説明"
+          ],
+          "scope": "通所系サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "所要時間区分の設定",
+          "question_preview": "所要時間区分（６時間以上７時間未満、７時間以上８時間未満等）は、あらかじめ事業所が確定させておかなければならないのか。利用者ごとに所要時間区分を定めることはできないのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.e8d82f5a046e815ea157",
+          "score": 10.3,
+          "matched_terms": [
+            "重要事項説明書",
+            "重要事項説明",
+            "重要事項",
+            "説明"
+          ],
+          "scope": "通所系サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "サービスの提供時間",
+          "question_preview": "所要時間区分（５時間以上７時間未満、７時間以上９時間未満等）は、あらかじめ事業所が確定させておかなければならないのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.247a691e634bc1d7dbc7",
+          "score": 8.5,
+          "matched_terms": [
+            "説明"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "介護予防通所介護・通所リハビリテーション\n（選択的サービス：事業所評価加算）",
+          "question_preview": "(事業所評価加算関係）事業所の利用者の要支援状態の維持・改善が図られたことに対する評価であると認識するが、利用者の側に立てば、自己負担額が増加することになり、利用者に対する説明に苦慮することとなると考えるが見解如何。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.9a10fd3bbd04f8f9e2ec",
+          "score": 8.5,
+          "matched_terms": [
+            "記載"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "曜日により個別機能訓練加算(Ⅰ)イとロの算定が異なる場合",
+          "question_preview": "個別機能訓練加算(Ⅰ)イ又はロについては、例えば特定の曜日だけ当該加算の人員配置要件を満たしている場合においては、その曜日において理学療法士等から直接訓練の提供を受けた利用者のみが当該加算の算定対象となることとしているが、曜日によって個別機能訓練加算(Ⅰ)イとロのいずれを算定するかが異なる事業所にあっては、「指定居宅サービスに要する費用の額の算定に関する基準",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "care-plan-content",
+      "question_title": "通所介護計画には何を記載すればよいですか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.4c3f7984da4267206455",
+          "score": 24,
+          "matched_terms": [
+            "通所介護計画",
+            "ビス"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "介護予防サービス（定額報酬の範囲）",
+          "question_preview": "介護予防通所介護、介護予防訪問介護等の定額制のサービスを利用している者から、介護予防ケアマネジメント、介護予防通所介護計画等に基づくサービスとは別に、あくまで利用者の個人的な選好によるサービスの提供が当該事業者に対して求められた場合、当該サービスについては、定額報酬の対象外ということでよいか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.37837b59616436833236",
+          "score": 22,
+          "matched_terms": [
+            "通所介護計画",
+            "デイサ",
+            "ビス"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "通所サービス利用時の理美容サービスの利用",
+          "question_preview": "デイサービスセンター等において理美容サービスを受ける時間帯は、通所サービス開始前又は終了後に限られるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.5c6f65feab6c8aa93281",
+          "score": 21.3,
+          "matched_terms": [
+            "デイサ",
+            "ビス"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "通所サービス利用時の理美容サービスの利用",
+          "question_preview": "デイサービスセンター等の通所サービスの提供場所において、通所サービスに付随して理美容サービスを提供することはできるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.982bca9aecf46c99b05c",
+          "score": 20,
+          "matched_terms": [
+            "通所介護計画",
+            "ビス",
+            "内容"
+          ],
+          "scope": "通所系サービス共通",
+          "standard_label": "5 その他",
+          "topic": "サービス提供時間を短縮した場合の所要時間区分の考え方",
+          "question_preview": "「当日の利用者の心身の状況から、実際の通所サービスの提供が通所サービス計画上の所要時間よりもやむを得ず短くなった場合には通所サービス計画上の単位数を算定して差し支えない。」とされているが、具体的にどのような内容なのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.c3ad723336962d852a77",
+          "score": 18.3,
+          "matched_terms": [
+            "デイサ",
+            "ビス"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "食費関係",
+          "question_preview": "食費については、保険外負担となったことから、デイサービスやショートステイに弁当を持ってきてもよいのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.2e457c598fd9f339bea6",
+          "score": 17,
+          "matched_terms": [
+            "通所介護計画",
+            "ビス",
+            "内容"
+          ],
+          "scope": "通所系サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "所要時間を短縮した場合の算定",
+          "question_preview": "「当日の利用者の心身の状況から、実際の通所サービスの提供が通所サービス計画上の所要時間よりもやむを得ず短くなった場合には通所サービス計画上の単位数を算定して差し支えない。」とされているが、具体的にどのような内容なのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.45ef70083cb1e0d98dfe",
+          "score": 16.5,
+          "matched_terms": [
+            "記載",
+            "内容"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "課題分析標準項目の改正\n【全体に関連する内容】",
+          "question_preview": "「項目の主な内容（例）」に記載されている内容について、その全てを必ず把握しないとならないものなのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.93cca3d0e3f32df82960",
+          "score": 16.5,
+          "matched_terms": [
+            "デイサ",
+            "ビス"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "3 運営",
+          "topic": "食費関係",
+          "question_preview": "弁当を持ってくる利用者は、デイサービスやショートステイの利用を断ることはできるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "care-plan-signature",
+      "question_title": "通所介護計画書に利用者の署名は必要ですか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.f7e0b57f5fa8418eecb1",
+          "score": 8,
+          "matched_terms": [
+            "署名",
+            "サイン"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "5 その他",
+          "topic": "ケアプランデータ連携標準仕様",
+          "question_preview": "自治体からの指導により、第6 表について、利用者の同意が得られたサイン入りのものを事業所に交付している。ケアプランデータ連携システムで共有する場合は、どのように整理すればいいのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "care-plan-seal",
+      "question_title": "通所介護計画書に押印は必要ですか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.b9877646312116bf4b89",
+          "score": 8.5,
+          "matched_terms": [
+            "押印"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "口腔機能向上加算（通所サービス）",
+          "question_preview": "口腔機能向上サービスの開始又は継続にあたって必要な同意には、利用者又はその家族の自署又は押印は必ずしも必要ではないと考えるが如何。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.c8976fec5d7e549b942c",
+          "score": 8.5,
+          "matched_terms": [
+            "押印"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "栄養改善加算",
+          "question_preview": "栄養改善サービスに必要な同意には、利用者又はその家族の自署又は押印は必ずしも必要ではないと考えるが如何。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.fe100702d9ff0ab581db",
+          "score": 5.5,
+          "matched_terms": [
+            "押印"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "介護職員処遇改善加算",
+          "question_preview": "賃金改善等の処遇改善計画の介護職員への周知方法の確認について、回覧形式で判子を押印した計画書の写しを提出させること等が考えられるが、具体的にどのように周知すればよいか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "annual-training",
+      "question_title": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.06897759b3a9ecc97e7b",
+          "score": 12.5,
+          "matched_terms": [
+            "研修",
+            "年間"
+          ],
+          "scope": "居宅サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "高齢者施設等感染対策向上加算（Ⅱ）",
+          "question_preview": "高齢者施設等感染対策向上加算（Ⅱ）について、令和６年４月以前に新型コロナウイルス感染症等に対する感染対策として、医療機関の医師若しくは看護師等による実地指導又は厚生労働省の事業 ※において実施された実地研修を受けている場合は、実地指導又は実地研修を受けた日から起算して３年間算定してよいか。\n※令和３年度、令和４年度「介護サービス類型に応じた感染症対策向上によ",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.16c3cdc3c902054244e4",
+          "score": 12,
+          "matched_terms": [
+            "研修"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "3 運営",
+          "topic": "虐待防止委員会及び研修について",
+          "question_preview": "居宅療養管理指導や居宅介護支援 などの小規模な事業者 では、実質的に従業者が１名だけということがあり得る。 このような事業所でも虐待防止委員会の開催や研修を定期的にしなければならないのか 。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.aec8c76211c65f0ecb76",
+          "score": 11.5,
+          "matched_terms": [
+            "研修"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "入浴介助加算（Ⅰ） ①研修内容について",
+          "question_preview": "入浴介助に関する研修とは具体的にはどのような内容が想定されるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.2a271fc046ae0ccf9fd2",
+          "score": 10,
+          "matched_terms": [
+            "研修"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "1 人員",
+          "topic": "外国人介護職員への認知症介護基礎研修の義務付けについて",
+          "question_preview": "事業所が外国人技能実習生に認知症介護基礎研修を受講させる場合、入国後講習中や新型コロナウイルス感染症対策のための入国後14日間の自宅等待機期間中に受講させてもよいか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.73c5e28f812be3ac8cdb",
+          "score": 10,
+          "matched_terms": [
+            "研修"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "1 人員",
+          "topic": "認知症介護基礎研修の義務づけについて",
+          "question_preview": "認知症介護実践者研修の修了者については、義務づけの対象外とすることが可能か。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.99295bde35bd890ee999",
+          "score": 10,
+          "matched_terms": [
+            "研修",
+            "年間"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "1 人員",
+          "topic": "認知症介護基礎研修の義務づけについて",
+          "question_preview": "認知症介護基礎研修の義務付けの経過措置期間はいつまでか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.b42f7f7ef75acad2dab1",
+          "score": 10,
+          "matched_terms": [
+            "研修"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "1 人員",
+          "topic": "認知症介護基礎研修の義務づけについて",
+          "question_preview": "認知症介護基礎研修の教材について、母国語が日本語以外の者を対象としたものはあるか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.cb757044a29cdb7b8dbb",
+          "score": 10,
+          "matched_terms": [
+            "研修"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "1 人員",
+          "topic": "外国人介護職員への認知症介護基礎研修の義務付けについて",
+          "question_preview": "外国人技能実習生が認知症介護基礎研修を受講する場合、技能実習計画には記載する必要があるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "question_slug": "bcp-training",
+      "question_title": "BCPの研修はどのくらいの頻度で行いますか？",
+      "status": "CANDIDATE_UNREVIEWED",
+      "candidates": [
+        {
+          "qa_id": "qa.mhlw.48fb67e44f0f84d1d9ea",
+          "score": 19,
+          "matched_terms": [
+            "研修",
+            "業務継続計画",
+            "訓練"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "業務継続計画未策定減算について",
+          "question_preview": "業務継続計画未策定減算はどのような場合に適用となるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.ef2fea12a3ebc9cf3096",
+          "score": 19,
+          "matched_terms": [
+            "研修",
+            "業務継続計画",
+            "訓練"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "業務継続計画未策定減算について",
+          "question_preview": "業務継続計画未策定減算はどのような場合に適用となるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.46ccf97b6f22f5f3486c",
+          "score": 16,
+          "matched_terms": [
+            "業務継続計画"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "業務継続計画未策定減算について",
+          "question_preview": "行政機関による運営指導等で業務継続計画の未策定など不適切な運営が確認された場合、「事実が生じた時点 」まで遡及して当該減算を適用するのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.ebf00b3f2d3f8fef69e8",
+          "score": 16,
+          "matched_terms": [
+            "業務継続計画"
+          ],
+          "scope": "全サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "業務継続計画未策定減算について",
+          "question_preview": "業務継続計画未策定減算の施行時期はどのようになるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.1f11d4a6762c3f8ce4a9",
+          "score": 14,
+          "matched_terms": [
+            "研修",
+            "訓練"
+          ],
+          "scope": "居宅サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "高齢者施設等感染対策向上加算（Ⅰ）",
+          "question_preview": "高齢者施設等感染対策向上加算（Ⅰ）について、感染対策向上加算又は外来感染対策向上加算に係る届出を行った医療機関等が行う院内感染対策に関する研修又は訓練に１年に１回以上参加していることとあるが、令和７年３月 31 日までの間にあっては、３月 31 日までに研修 又は訓練に参加予定であれば算定してよいか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.afbf3e0d616cfb0d87f6",
+          "score": 14,
+          "matched_terms": [
+            "研修",
+            "訓練"
+          ],
+          "scope": "居宅サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "高齢者施設等感染対策向上加算（Ⅰ）",
+          "question_preview": "高齢者施設等感染対策向上加算（Ⅰ）について、診療報酬の感染対策向上加算又は外来感染対策向上加算に係る届出を行った医療機関が実施する院内感染対策に関するカンファレンス 及び訓練 や職員向けに実施する院内感染対策に関する研修、地域の医師会が定期的に主催する院内感染対策に関するカンファレンス 及び訓 練 とは具体的にどのような もの であるか。\nまた、これらの カ",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.06897759b3a9ecc97e7b",
+          "score": 13.5,
+          "matched_terms": [
+            "bcp",
+            "研修"
+          ],
+          "scope": "居宅サービス共通",
+          "standard_label": "4 報酬",
+          "topic": "高齢者施設等感染対策向上加算（Ⅱ）",
+          "question_preview": "高齢者施設等感染対策向上加算（Ⅱ）について、令和６年４月以前に新型コロナウイルス感染症等に対する感染対策として、医療機関の医師若しくは看護師等による実地指導又は厚生労働省の事業 ※において実施された実地研修を受けている場合は、実地指導又は実地研修を受けた日から起算して３年間算定してよいか。\n※令和３年度、令和４年度「介護サービス類型に応じた感染症対策向上によ",
+          "status": "CANDIDATE_UNREVIEWED"
+        },
+        {
+          "qa_id": "qa.mhlw.d43dca6106814269df9b",
+          "score": 13,
+          "matched_terms": [
+            "訓練",
+            "頻度"
+          ],
+          "scope": "通所介護事業",
+          "standard_label": "4 報酬",
+          "topic": "個別機能訓練加算について",
+          "question_preview": "はり師・きゅう師を機能訓練指導員とする際に求められる要件となる、「理学療法士、作業療法士、言語聴覚士、看護職員、柔道整復師又はあん摩マッサージ指圧師の資格を有する機能訓練指導員を配置した事業所で６月以上機能訓練指導に従事した経験」について、その実務時間・日数や実務内容に規定はあるのか。",
+          "status": "CANDIDATE_UNREVIEWED"
+        }
+      ]
+    }
+  ]
 }
