@@ -1,0 +1,58 @@
+name: Update Ordinance 37 database
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-ordinance37.yml"
+      - "scripts/import_egov_ordinance37.py"
+      - "data/ordinance37-scope.json"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Import current Ordinance 37 from e-Gov
+        run: python scripts/import_egov_ordinance37.py
+
+      - name: Validate data references
+        run: node scripts/validate-data.mjs
+
+      - name: Detect changes
+        id: diff
+        shell: bash
+        run: |
+          if git diff --quiet -- data/ordinance37-nodes.json data/ordinance37-relations.json data/ordinance37-application-rules.json data/ordinance37-meta.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Push review branch
+        if: steps.diff.outputs.changed == 'true'
+        shell: bash
+        run: |
+          BRANCH="automation/ordinance37-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add data/ordinance37-nodes.json data/ordinance37-relations.json data/ordinance37-application-rules.json data/ordinance37-meta.json
+          git commit -m "data: refresh Ordinance 37 database"
+          git push origin "$BRANCH"
+          {
+            echo "## Ordinance 37 database ready for review"
+            echo ""
+            echo "Branch: `$BRANCH`"
+            echo ""
+            echo "Generated data stays IMPORTED_NEEDS_HUMAN_CHECK until reviewed."
+          } >> "$GITHUB_STEP_SUMMARY"
