@@ -58,8 +58,10 @@
     "publisher": "厚生労働省",
     "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
     "status": "registry",
-    "note": "厚生労働省の公式Q&A集。公式ページの収載注記は、2026-09-22確認時点で介護保険最新情報vol.1167まで。新しいQ&Aは別途取り込む前提で管理する。",
-    "coverage_status": "PARTIAL_BY_OFFICIAL_INDEX"
+    "note": "厚生労働省の公式Q&A集。2026-09-22確認時点で介護保険最新情報vol.1479まで収載。XLS/PDFで公開されている。",
+    "coverage_status": "CURRENT_OFFICIAL_INDEX",
+    "coverage_checked_at": "2026-09-22",
+    "latest_included": "介護保険最新情報vol.1479"
   },
   {
     "id": "mhlw-application-forms",
