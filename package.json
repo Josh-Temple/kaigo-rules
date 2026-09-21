@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "validate:data": "node scripts/validate-data.mjs",
-    "prebuild": "npm run validate:data"
+    "prebuild": "npm run validate:data",
+    "suggest:qa-links": "node scripts/suggest-qa-links.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",
