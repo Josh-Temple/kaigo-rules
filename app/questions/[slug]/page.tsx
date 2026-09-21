@@ -45,7 +45,7 @@ export default async function QuestionPage({ params }: { params: Promise<{ slug:
               return <div className="source-card" key={node.id}><p className="source-kind">基準省令</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.official_text}</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">{source.publisher}の原文を確認</a> : null}</div>;
             })}
             {linkedNotices.map((node) => {
-              const source = sources.find((item) => item.id === node.source_ids?.[0]);
+              const source = sources.find((item) => node.source_ids?.includes(item.id));
               return <div className="source-card" key={node.id}><p className="source-kind">解釈通知</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.editorial_summary}</p><p className="meta">上記は当サイトの要約です。</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省資料を確認</a> : null}</div>;
             })}
             {linkedQa.map((item) => {
