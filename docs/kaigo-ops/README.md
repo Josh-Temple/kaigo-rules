@@ -57,6 +57,7 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Hairdressing / Visiting Medical checkpoint](./research/checkpoint-hairdressing-visiting-medical-v0.16-2026-09-23.md)
 - [Outdoor Service checkpoint](./research/checkpoint-outdoor-service-v0.15-2026-09-22.md)
 - [Municipal Claim Review checkpoint](./research/checkpoint-municipal-claim-review-v0.14-2026-09-22.md)
 - [Expanded External Query checkpoint](./research/checkpoint-external-query-v0.12-2026-09-22.md)
@@ -105,6 +106,8 @@ Evidence Review / 方法 / 検証
 
 ### Claim-level coverage
 
+- [Claim Registry v0.13](./research/claims/claims-v0.13.json)
+- [Claim Composition Registry v0.5](./research/claims/claim-compositions-v0.5.json)
 - [Claim Registry v0.11](./research/claims/claims-v0.11.json)
 - [Claim Registry v0.10](./research/claims/claims-v0.10.json)
 - [Claim Registry v0.8](./research/claims/claims-v0.8.json)
