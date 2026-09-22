@@ -353,7 +353,7 @@ if (noticeSkeleton.length) {
 if (feeSkeleton.length) {
   const feeIds = new Set(feeSkeleton.map((node) => node.id));
   const ordinanceIds = new Set(ordinanceNodes.map((node) => node.id));
-  const allowedFeeStatuses = new Set(["BASE_TEXT_REPLAY_PENDING","KNOWN_AFTER_TEXT","OUT_OF_CORE_SCOPE","VERIFIED_CURRENT","UNKNOWN"]);
+  const allowedFeeStatuses = new Set(["CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK","CURRENT_AFTER_TEXT_NEEDS_HUMAN_CHECK","OUT_OF_CORE_SCOPE","VERIFIED_CURRENT","UNKNOWN"]);
   for (const node of feeSkeleton) {
     if (!node.id || !node.title || !node.authority_layer || !node.service_scope || !node.verification_status || !node.source_id) {
       errors.push(`fee skeleton ${node.id || "(missing id)"}: missing required field`);
