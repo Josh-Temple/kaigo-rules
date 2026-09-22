@@ -1,13 +1,13 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.10 multi-claim composition gate complete**
+状態: **v0.11 current-suite claim coverage complete**
 
 ## 現在のsuite
 
-合計 **144ケース**。
+合計 **147ケース**。
 
-- `benchmark-v0.10.json`: 50
+- `benchmark-v0.11.json`: 50
 - `coverage-gap-v0.1.json`: 20
 - `false-answer-stress-v0.1.json`: 12
 - `external-qa-query-sample-v0.2.json`: 15
@@ -15,6 +15,7 @@
 - `claim-routing-natural-language-v0.1.json`: 12
 - `verified-claim-routing-probe-v0.1.json`: 28
 - `multi-claim-routing-v0.1.json`: 5
+- `important-matters-claim-routing-v0.1.json`: 3
 
 索引:
 
@@ -38,7 +39,9 @@
 - claim routing natural language: 12 / 12
 - verified Claim routing: 28 / 28
 - multi-claim routing: 5 / 5
-- classifier checks: 145 / 145
+- important matters Claim routing: 3 / 3
+- verified regression Issue fallback: 0 / 51
+- classifier checks: 148 / 148
 - verified regression: 51 / 51
 
 ### Safety prose
@@ -82,17 +85,18 @@ Source
 - `node scripts/research-coverage-classifier-v0.5.mjs`
 - `node scripts/research-coverage-classifier-v0.6.mjs`
 - `node scripts/research-coverage-classifier-v0.10.mjs`
+- `node scripts/research-coverage-classifier-v0.11.mjs`
+- `node scripts/research-claim-registry-validate-v0.6.mjs`
 - `node scripts/research-claim-compositions-validate-v0.2.mjs`
 - `node scripts/research-claim-registry-validate-v0.2.mjs`
 - `node scripts/research-claim-registry-validate-v0.3.mjs`
 
 ## 次の再開点
 
-1. 重要事項説明書の固定様式・ひな形claimを独立review
-2. 重要事項説明書の記載内容coverageをClaim単位で分解
-3. 残るIssue fallback 3件を、根拠が揃う場合だけ解消
-4. 外部queryで自然言語testを拡張
-5. human sign-off
-6. RAG comparison
+1. 外部queryを現行15件から拡張する
+2. expanded external setでabstentionとClaim resolutionを別々に測る
+3. safety proseのhuman sign-off
+4. source limitationのcurrent reconstructionを続ける
+5. claim-level coverageが外部queryでも安定してからRAG比較
 
 RAGはまだ実装しない。
