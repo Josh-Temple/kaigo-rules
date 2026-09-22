@@ -1,20 +1,21 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.5 external-query gate complete / paused before claim-level coverage model**
+状態: **v0.6 first claim promotion complete**
 
 ## 現在のsuite
 
-合計 **97ケース**。
+合計 **99ケース**。
 
 - `benchmark-v0.3.json`: 50
 - `coverage-gap-v0.1.json`: 20
 - `false-answer-stress-v0.1.json`: 12
-- `external-qa-query-sample-v0.1.json`: 15
+- `external-qa-query-sample-v0.2.json`: 15
+- `claim-promotion-benchmark-v0.1.json`: 2
 
 索引:
 
-- `benchmark-v0.5.json`
+- `benchmark-v0.6.json`
 
 ## 主結果
 
@@ -30,6 +31,8 @@
 - coverage gap: 20 / 20
 - false-ANSWER stress: 12 / 12
 - external MHLW Q&A query sample: 15 / 15
+- claim promotion paraphrase: 2 / 2
+- classifier checks: 100 / 100
 - verified regression: 51 / 51
 
 ### Safety prose
@@ -70,13 +73,15 @@ Source
 - `node scripts/research-issue-router-v0.1.mjs`
 - `node scripts/research-coverage-classifier-v0.2.mjs`
 - `node scripts/research-coverage-classifier-v0.3.mjs`
+- `node scripts/research-coverage-classifier-v0.5.mjs`
+- `node scripts/research-claim-registry-validate-v0.2.mjs`
 
 ## 次の再開点
 
-1. claim/subtopic registry schema
-2. Q&A candidate → reviewed claim promotion flow
-3. false-abstention test
-4. human sign-off
+1. false-abstention test
+2. verified claim routingの段階的拡張
+3. human sign-off
+4. source limitationのcurrent reconstruction
 5. RAG comparison
 
 RAGはまだ実装しない。
