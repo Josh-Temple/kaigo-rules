@@ -149,6 +149,10 @@ const feeGuidanceCandidatesPath = path.join(root, "data", "fee-guidance-text-can
 const feeGuidanceCandidates = fs.existsSync(feeGuidanceCandidatesPath)
   ? JSON.parse(fs.readFileSync(feeGuidanceCandidatesPath, "utf8"))
   : [];
+const feeGuidanceReplayCoveragePath = path.join(root, "data", "fee-guidance-replay-coverage.json");
+const feeGuidanceReplayCoverage = fs.existsSync(feeGuidanceReplayCoveragePath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceReplayCoveragePath, "utf8"))
+  : [];
 const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
 const careActNodes = fs.existsSync(careActPath)
   ? JSON.parse(fs.readFileSync(careActPath, "utf8"))
@@ -662,6 +666,31 @@ if (feeGuidance.length) {
     if (candidate.structured_facts && (typeof candidate.structured_facts !== "object" || Array.isArray(candidate.structured_facts) || Object.keys(candidate.structured_facts).length === 0)) {
       errors.push(`fee guidance candidate ${candidate.id}: invalid structured_facts`);
     }
+  }
+
+  const replayGuidanceIds = new Set();
+  for (const coverage of feeGuidanceReplayCoverage) {
+    for (const field of ["guidance_id","baseline","checkpoints","replay_status","coverage_as_of","human_verification_status"]) {
+      if (coverage[field] == null || (Array.isArray(coverage[field]) && coverage[field].length === 0)) {
+        errors.push(`fee guidance replay ${coverage.guidance_id || "(missing id)"}: missing ${field}`);
+      }
+    }
+    if (!guidanceIds.has(coverage.guidance_id)) errors.push(`fee guidance replay: missing guidance ${coverage.guidance_id}`);
+    if (replayGuidanceIds.has(coverage.guidance_id)) errors.push(`fee guidance replay: duplicate guidance ${coverage.guidance_id}`);
+    replayGuidanceIds.add(coverage.guidance_id);
+    if (coverage.human_verification_status !== "NOT_REVIEWED") errors.push(`fee guidance replay ${coverage.guidance_id}: unexpected human verification status`);
+    if (!coverage.baseline?.source_id || !sourceIds.has(coverage.baseline.source_id)) errors.push(`fee guidance replay ${coverage.guidance_id}: invalid baseline source`);
+    for (const checkpoint of coverage.checkpoints || []) {
+      for (const field of ["source_id","effective_from","effect","evidence","status"]) {
+        if (!checkpoint[field]) errors.push(`fee guidance replay ${coverage.guidance_id}: checkpoint missing ${field}`);
+      }
+      if (!sourceIds.has(checkpoint.source_id)) errors.push(`fee guidance replay ${coverage.guidance_id}: missing checkpoint source ${checkpoint.source_id}`);
+      if (checkpoint.status !== "CHECKED") errors.push(`fee guidance replay ${coverage.guidance_id}: unchecked checkpoint ${checkpoint.source_id}`);
+    }
+  }
+  const candidateGuidanceIds = new Set(feeGuidanceCandidates.map((candidate) => candidate.guidance_id));
+  for (const id of candidateGuidanceIds) {
+    if (!replayGuidanceIds.has(id)) errors.push(`fee guidance replay: missing coverage for candidate ${id}`);
   }
 
   if (feeGuidanceMeta) {
