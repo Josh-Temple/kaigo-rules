@@ -1,0 +1,686 @@
+[
+  {
+    "id": "fee.dayservice.root",
+    "parent_id": null,
+    "depth": 0,
+    "number_path": [
+      "6"
+    ],
+    "title": "通所介護費",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5-7 / 6 通所介護費",
+        "evidence_type": "r8_new_old_comparison"
+      }
+    ],
+    "note": "令和8年度改正資料ではイ〜ニは略、ホが改正対象。"
+  },
+  {
+    "id": "fee.dayservice.standard",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "イ"
+    ],
+    "title": "通常規模型通所介護費",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / イ",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.large1",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "ロ"
+    ],
+    "title": "大規模型通所介護費(Ⅰ)",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / ロ",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.large2",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "ハ"
+    ],
+    "title": "大規模型通所介護費(Ⅱ)",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / ハ",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.1",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "1"
+    ],
+    "title": "基本報酬の算定・利用者数／人員基準",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注1",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.2",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "2"
+    ],
+    "title": "高齢者虐待防止措置未実施減算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注2",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.3",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "3"
+    ],
+    "title": "業務継続計画未策定減算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注3",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.4",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "4"
+    ],
+    "title": "所要時間2時間以上3時間未満の算定",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注4",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.5",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "5"
+    ],
+    "title": "感染症・災害による利用者数減少時の加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注5",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.6",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "6"
+    ],
+    "title": "延長加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注6",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.7",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "7"
+    ],
+    "title": "共生型通所介護の減算",
+    "authority_layer": "報酬告示",
+    "service_scope": "共生型通所介護・コア範囲外",
+    "verification_status": "OUT_OF_CORE_SCOPE",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注7",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.8",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "8"
+    ],
+    "title": "生活相談員配置等加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "共生型通所介護・コア範囲外",
+    "verification_status": "OUT_OF_CORE_SCOPE",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注8",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.9",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "9"
+    ],
+    "title": "中山間地域等に居住する者へのサービス提供加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注9",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.10",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "10"
+    ],
+    "title": "入浴介助加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注10",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.11",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "11"
+    ],
+    "title": "中重度者ケア体制加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注11",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.12",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "12"
+    ],
+    "title": "生活機能向上連携加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注12",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.13",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "13"
+    ],
+    "title": "個別機能訓練加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注13",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.14",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "14"
+    ],
+    "title": "ADL維持等加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注14",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.15",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "15"
+    ],
+    "title": "認知症加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注15",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.16",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "16"
+    ],
+    "title": "若年性認知症利用者受入加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注16",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.17",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "17"
+    ],
+    "title": "栄養アセスメント加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注17",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.18",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "18"
+    ],
+    "title": "栄養改善加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注18",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.19",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "19"
+    ],
+    "title": "口腔・栄養スクリーニング加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注19",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.20",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "20"
+    ],
+    "title": "口腔機能向上加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注20",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.21",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "21"
+    ],
+    "title": "科学的介護推進体制加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注21",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.22",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "22"
+    ],
+    "title": "他サービス利用中の算定不可",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注22",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.23",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "23"
+    ],
+    "title": "同一建物減算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注23",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.note.24",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "注",
+      "24"
+    ],
+    "title": "送迎減算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / 注24",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.service-provision",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "ニ"
+    ],
+    "title": "サービス提供体制強化加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "BASE_TEXT_REPLAY_PENDING",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / ニ",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF p.5 / イ〜ニ（略）",
+        "evidence_type": "r8_structure_persistence"
+      }
+    ]
+  },
+  {
+    "id": "fee.dayservice.treatment-improvement",
+    "parent_id": "fee.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "6",
+      "ホ"
+    ],
+    "title": "介護職員等処遇改善加算",
+    "authority_layer": "報酬告示",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_locator": "6 通所介護費 / ホ",
+    "latest_amendment_evidence": [
+      {
+        "source_id": "mhlw-r8-fee-amendment87",
+        "locator": "PDF pp.5-7 / ホ",
+        "evidence_type": "r8_after_text_present"
+      }
+    ]
+  }
+]

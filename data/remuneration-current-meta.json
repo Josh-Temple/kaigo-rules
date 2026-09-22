@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "service_scope": "通所介護",
+  "document_family": "介護報酬",
+  "root_notice": "平成12年厚生省告示第19号",
+  "current_state": "SKELETON_BUILT_LATEST_REPLAY_PENDING",
+  "counts": {
+    "nodes": 30,
+    "base_rate_groups": 3,
+    "notes": 24,
+    "out_of_core_scope": 2,
+    "latest_after_text": 1,
+    "amendment_events": 2
+  },
+  "safeguards": [
+    "告示19・告示27・留意事項通知を別レイヤーとして保持する",
+    "令和8年度新旧対照表を現行統合全文として扱わない",
+    "共生型通所介護は指定通所介護のコア範囲と混在させない",
+    "単位数は最新改正の順方向再生と人手確認が終わるまで現行確定として表示しない"
+  ],
+  "review_status": "NOT_REVIEWED"
+}

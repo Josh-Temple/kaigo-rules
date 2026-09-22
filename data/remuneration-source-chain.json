@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "mhlw-fee-notice19-base",
+    "source_class": "base_notice_text",
+    "priority": 1,
+    "completeness": "base_text",
+    "use": "通所介護費の基礎構造・単位数・注・加算減算のベース",
+    "warning": "令和8年度改正の順方向再生完了前は現行統合版として扱わない"
+  },
+  {
+    "source_id": "mhlw-fee-notice27-base",
+    "source_class": "delegated_calculation_notice",
+    "priority": 2,
+    "completeness": "separate_notice",
+    "use": "利用者数・人員欠如等の算定方法",
+    "warning": "告示19と別の法源として保持する"
+  },
+  {
+    "source_id": "mhlw-r8-reform-landing",
+    "source_class": "official_landing",
+    "priority": 3,
+    "completeness": "index_only",
+    "use": "令和8年度改定資料への公式導線"
+  },
+  {
+    "source_id": "mhlw-r8-fee-amendment87",
+    "source_class": "amendment_comparison",
+    "priority": 4,
+    "completeness": "partial_new_old_comparison",
+    "use": "令和8年度の変更箇所と不変更構造の確認",
+    "warning": "新旧対照表を現行統合全文として扱わない"
+  },
+  {
+    "source_id": "mhlw-r8-fee-interpretation-amendment",
+    "source_class": "interpretation_amendment",
+    "priority": 5,
+    "completeness": "partial_new_old_comparison",
+    "use": "算定留意事項の令和8年度変更箇所",
+    "warning": "通所介護の留意事項全体を網羅する資料ではない"
+  }
+]

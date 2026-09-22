@@ -68,6 +68,22 @@ const noticeHistoryPath = path.join(root, "data", "notice-historical-backfill.js
 const noticeHistory = fs.existsSync(noticeHistoryPath)
   ? JSON.parse(fs.readFileSync(noticeHistoryPath, "utf8"))
   : [];
+const feeSkeletonPath = path.join(root, "data", "remuneration-current-skeleton.json");
+const feeSkeleton = fs.existsSync(feeSkeletonPath)
+  ? JSON.parse(fs.readFileSync(feeSkeletonPath, "utf8"))
+  : [];
+const feeRelationsPath = path.join(root, "data", "remuneration-relations.json");
+const feeRelations = fs.existsSync(feeRelationsPath)
+  ? JSON.parse(fs.readFileSync(feeRelationsPath, "utf8"))
+  : [];
+const feeAmendmentsPath = path.join(root, "data", "remuneration-amendment-events.json");
+const feeAmendments = fs.existsSync(feeAmendmentsPath)
+  ? JSON.parse(fs.readFileSync(feeAmendmentsPath, "utf8"))
+  : [];
+const feeSourceChainPath = path.join(root, "data", "remuneration-source-chain.json");
+const feeSourceChain = fs.existsSync(feeSourceChainPath)
+  ? JSON.parse(fs.readFileSync(feeSourceChainPath, "utf8"))
+  : [];
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -91,6 +107,8 @@ unique(ordinanceApplications, "id", "ordinance37-applications");
 unique(noticeSkeleton, "id", "notice-current-skeleton");
 unique(noticeAmendments, "id", "notice-amendment-events");
 unique(noticeHistory, "notice_id", "notice-historical-backfill");
+unique(feeSkeleton, "id", "remuneration-skeleton");
+unique(feeAmendments, "id", "remuneration-amendments");
 
 const sourceIds = new Set(sources.map((x) => x.id));
 const ruleIds = new Set(rules.map((x) => x.id));
@@ -332,11 +350,38 @@ if (noticeSkeleton.length) {
   }
 }
 
+if (feeSkeleton.length) {
+  const feeIds = new Set(feeSkeleton.map((node) => node.id));
+  const ordinanceIds = new Set(ordinanceNodes.map((node) => node.id));
+  const allowedFeeStatuses = new Set(["BASE_TEXT_REPLAY_PENDING","KNOWN_AFTER_TEXT","OUT_OF_CORE_SCOPE","VERIFIED_CURRENT","UNKNOWN"]);
+  for (const node of feeSkeleton) {
+    if (!node.id || !node.title || !node.authority_layer || !node.service_scope || !node.verification_status || !node.source_id) {
+      errors.push(`fee skeleton ${node.id || "(missing id)"}: missing required field`);
+    }
+    if (!allowedFeeStatuses.has(node.verification_status)) errors.push(`fee skeleton ${node.id}: unexpected status ${node.verification_status}`);
+    if (node.parent_id && !feeIds.has(node.parent_id)) errors.push(`fee skeleton ${node.id}: missing parent ${node.parent_id}`);
+    if (!sourceIds.has(node.source_id)) errors.push(`fee skeleton ${node.id}: missing source ${node.source_id}`);
+    for (const evidence of node.latest_amendment_evidence || []) {
+      if (!sourceIds.has(evidence.source_id)) errors.push(`fee skeleton ${node.id}: missing evidence source ${evidence.source_id}`);
+    }
+  }
+  for (const relation of feeRelations) {
+    if (!feeIds.has(relation.from_fee_id)) errors.push(`fee relation: missing fee node ${relation.from_fee_id}`);
+    if (relation.to_id && !ordinanceIds.has(relation.to_id)) errors.push(`fee relation: missing ordinance node ${relation.to_id}`);
+    if (relation.to_source_id && !sourceIds.has(relation.to_source_id)) errors.push(`fee relation: missing source ${relation.to_source_id}`);
+  }
+  for (const event of feeAmendments) {
+    if (!sourceIds.has(event.source_id)) errors.push(`fee amendment ${event.id}: missing source`);
+    for (const id of event.target_ids || []) if (!feeIds.has(id)) errors.push(`fee amendment ${event.id}: missing target ${id}`);
+  }
+  for (const entry of feeSourceChain) if (!sourceIds.has(entry.source_id)) errors.push(`fee source chain: missing source ${entry.source_id}`);
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
 
 console.log(
-  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${sources.length} sources.`
+  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${feeSkeleton.length} remuneration nodes, ${sources.length} sources.`
 );

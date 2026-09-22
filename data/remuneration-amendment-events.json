@@ -1,0 +1,27 @@
+[
+  {
+    "id": "fee.r8.dayservice.structure-persistence",
+    "effective_from": "2026-06-01",
+    "source_id": "mhlw-r8-fee-amendment87",
+    "target_ids": [
+      "fee.dayservice.standard",
+      "fee.dayservice.large1",
+      "fee.dayservice.large2",
+      "fee.dayservice.service-provision"
+    ],
+    "operation": "unchanged_in_comparison",
+    "summary": "令和8年度改正の新旧対照表では通所介護費のイ〜ニは「略」とされ、この改正で本文変更の対象ではない。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
+  },
+  {
+    "id": "fee.r8.dayservice.treatment-improvement",
+    "effective_from": "2026-06-01",
+    "source_id": "mhlw-r8-fee-amendment87",
+    "target_ids": [
+      "fee.dayservice.treatment-improvement"
+    ],
+    "operation": "replace",
+    "summary": "介護職員等処遇改善加算の区分・率を令和8年度改定で変更。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  }
+]
