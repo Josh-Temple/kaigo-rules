@@ -1,0 +1,99 @@
+{
+  "version": "0.13",
+  "created_at": "2026-09-22",
+  "status": "MUNICIPAL_EXTERNAL_QUERY_GATE_COMPLETE",
+  "total_suite_cases": 180,
+  "suites": [
+    {
+      "name": "benchmark_v0_3",
+      "file": "benchmark-v0.3.json",
+      "cases": 50
+    },
+    {
+      "name": "coverage_gap",
+      "file": "coverage-gap-v0.1.json",
+      "cases": 20
+    },
+    {
+      "name": "false_answer_stress",
+      "file": "false-answer-stress-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "external_mhlw_qa_query_sample",
+      "file": "external-qa-query-sample-v0.4.json",
+      "cases": 33
+    },
+    {
+      "name": "claim_promotion",
+      "file": "claim-promotion-benchmark-v0.1.json",
+      "cases": 2
+    },
+    {
+      "name": "claim_routing_natural_language",
+      "file": "claim-routing-natural-language-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "verified_claim_routing_probe",
+      "file": "verified-claim-routing-probe-v0.1.json",
+      "cases": 28
+    },
+    {
+      "name": "multi_claim_routing",
+      "file": "multi-claim-routing-v0.1.json",
+      "cases": 5
+    },
+    {
+      "name": "important_matters_claim_routing",
+      "file": "important-matters-claim-routing-v0.1.json",
+      "cases": 3
+    },
+    {
+      "name": "municipal_query_sample",
+      "file": "municipal-query-sample-v0.1.json",
+      "cases": 15
+    }
+  ],
+  "regression_checks": {
+    "verified_queries_and_canonical": 51,
+    "coverage_gap": 20,
+    "false_answer_stress": 12,
+    "external_qa_label_and_claim": 33,
+    "claim_promotion": 2,
+    "claim_routing_natural_language": 12,
+    "verified_claim_routing_probe": 28,
+    "multi_claim_routing": 5,
+    "important_matters_claim_routing": 3,
+    "municipal_query_label_and_provenance": 15,
+    "total_classifier_checks": 181
+  },
+  "latest_results": {
+    "verified_regression": "51/51",
+    "coverage_gap": "20/20",
+    "false_answer_stress": "12/12",
+    "external_qa_label_and_claim": "33/33",
+    "claim_promotion": "2/2",
+    "claim_routing_natural_language": "12/12",
+    "verified_claim_routing_probe": "28/28",
+    "multi_claim_routing": "5/5",
+    "important_matters_claim_routing": "3/3",
+    "municipal_query_label_and_provenance": "15/15",
+    "total_classifier_checks": "181/181"
+  },
+  "routing_state": {
+    "registry": "claims-v0.9.json",
+    "composition_registry": "claim-compositions-v0.3.json",
+    "classifier": "research-coverage-classifier-v0.15.mjs",
+    "registry_claims": 42,
+    "verified_regression_issue_fallback": "0/51",
+    "caution": "Municipal public answers are not national ground truth. Municipal materials are used as query-language stress inputs only, except municipality-specific queries which are expected LOCAL."
+  },
+  "next_gate": [
+    "independently review selected municipal-query coverage gaps such as important-matters change consent and functional-training-instructor placement timing",
+    "expand external queries to another municipality/source family",
+    "human sign-off on safety prose",
+    "continue current-source reconstruction for source-limited claims",
+    "controlled RAG comparison remains deferred"
+  ]
+}
