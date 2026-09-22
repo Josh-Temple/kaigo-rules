@@ -1,141 +1,82 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.3 complete / paused before coverage-gap expansion**
+状態: **v0.5 external-query gate complete / paused before claim-level coverage model**
 
-## 目的
+## 現在のsuite
 
-介護ルールを使って、
+合計 **97ケース**。
 
-- navigation
-- full-text / keyword search
-- structured FAQ
-- Issue routing + linked-source expansion
-- source-grounded RAG
+- `benchmark-v0.3.json`: 50
+- `coverage-gap-v0.1.json`: 20
+- `false-answer-stress-v0.1.json`: 12
+- `external-qa-query-sample-v0.1.json`: 15
 
-を同じground truthで比較する。
+索引:
 
-## 現在地
+- `benchmark-v0.5.json`
 
-### v0.1
-- 20 core questions
-- safety seed
-- simple deterministic retrieval
+## 主結果
 
-### v0.2
-- unseen natural-language 18
-- multi-source 6
-- safety 11
-- answer scoring rubric
+### Known coverage
 
-### v0.3
-合計 **50 case**。
-
-- retrieval / synthesis: 39
-- fail-closed safety: 11
-
-Files:
-
-- `benchmark-v0.3.json`
-- `baseline-v0.3.md`
-- `router-design-v0.1.md`
-- `scripts/research-issue-router-v0.1.mjs`
-
-再現:
-
-```bash
-node scripts/research-issue-router-v0.1.mjs
-```
-
-## v0.3 headline result
-
-39 retrieval cases:
-
-- FAQ / Issue Hit@1: 92.3%
-- FAQ / Issue Hit@3: 100%
-- direct source mean Recall@5: 89.5%
+- Issue Hit@1: 92.3%
+- Issue Hit@3: 100%
 - direct source Complete@5: 82.1%
-- top-3 Issue → linked-source complete: 100%
+- linked-source complete: 100%
 
-11 safety cases:
+### Coverage / safety
 
-- deterministic decision baseline: 11 / 11
+- coverage gap: 20 / 20
+- false-ANSWER stress: 12 / 12
+- external MHLW Q&A query sample: 15 / 15
+- verified regression: 51 / 51
 
-ただし11/11は生成文章の品質ではない。
+### Safety prose
 
-評価対象は、
+- research-session template review: 11 / 11 PASS
+- human sign-off: PENDING
 
-- answer
-- abstain
-- clarify
-- metadata-status answer
+## 最重要の設計変更
 
-のdecision layer。
+Issue単位で `verified` とするだけでは粗い。
 
-## Strong non-RAG baseline
+今後は:
 
 ```text
-query
+Issue
  ↓
-fail-closed guards
+Claim / Subtopic
  ↓
-Issue router
+Review state
  ↓
-top 3
- ↓
-ambiguity handling
- ↓
-linked-source expansion
- ↓
-verification / currentness filter
- ↓
-verified answer components
+Source
 ```
 
-現段階では、RAGを入れる前にこのbaselineを比較対象として維持する。
+を正本にする方向。
 
-## 重要な限界
+例:
 
-v0.3の質問は依然として、現在のverified coverageを理解した上で作成している。
+```text
+生活相談員
+ ├─ 基本配置                     VERIFIED
+ ├─ 勤務時間基準                 VERIFIED
+ ├─ サービス担当者会議の時間     UNREVIEWED
+ └─ 地域連携活動の時間           UNREVIEWED
+```
 
-つまり、
+## 再現script
 
-> 「既知の12 Issueへroutingする性能」
-
-を中心に測っている。
-
-実利用のcoverageを代表しているわけではない。
+- `node scripts/research-issue-router-v0.1.mjs`
+- `node scripts/research-coverage-classifier-v0.2.mjs`
+- `node scripts/research-coverage-classifier-v0.3.mjs`
 
 ## 次の再開点
 
-### 1. Coverage-gap benchmark
+1. claim/subtopic registry schema
+2. Q&A candidate → reviewed claim promotion flow
+3. false-abstention test
+4. human sign-off
+5. RAG comparison
 
-現在の12 Issueでは答えられない、または部分回答になる質問を追加する。
-
-分類:
-
-- ANSWER
-- PARTIAL
-- REVIEW_REQUIRED
-- LOCAL
-- OUT_OF_SCOPE
-
-### 2. Human answer review
-
-11 safety caseについて、最終文章として
-
-- 条件を落としていないか
-- 余計なIssueを混ぜていないか
-- source statusを正確に説明しているか
-
-を人手採点する。
-
-### 3. RAG comparison
-
-上記2点を終えてから行う。
-
-RAGが、
-- coverage
-- synthesis
-- safety
-のどこを改善するのか確認できない場合は採用しない。
+RAGはまだ実装しない。
