@@ -1,0 +1,115 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import nodesData from "../../../data/remuneration-current-skeleton.json";
+import textData from "../../../data/remuneration-current-text.json";
+import textMetaData from "../../../data/remuneration-current-text-meta.json";
+import reviewData from "../../../data/remuneration-review.json";
+import relationsData from "../../../data/remuneration-relations.json";
+import sourcesData from "../../../data/sources.json";
+
+const nodes = nodesData as Array<any>;
+const texts = textData as Array<any>;
+const textMeta = textMetaData as any;
+const review = reviewData as any;
+const relations = relationsData as Array<any>;
+const sources = sourcesData as Array<any>;
+
+const routeKey = (id: string) => id.replace("fee.dayservice.", "");
+
+export function generateStaticParams() {
+  return nodes
+    .filter((node) => node.parent_id === "fee.dayservice.root")
+    .map((node) => ({ node: routeKey(node.id) }));
+}
+
+export default async function FeeDetailPage({ params }: { params: Promise<{ node: string }> }) {
+  const { node: key } = await params;
+  const feeId = `fee.dayservice.${key}`;
+  const node = nodes.find((item) => item.id === feeId);
+  if (!node) notFound();
+
+  const currentText = texts.find((item) => item.fee_id === feeId);
+  const reviewed = (review.reviewed_nodes || []).find((item:any) => item.fee_id === feeId);
+  const source = currentText
+    ? sources.find((item) => item.id === currentText.source_id)
+    : sources.find((item) => item.id === node.source_id);
+  const linkedRelations = relations.filter((item) => item.from_fee_id === feeId);
+  const isOutOfCore = node.verification_status === "OUT_OF_CORE_SCOPE";
+
+  const ordinanceHref = (id: string) => {
+    const match = String(id).match(/^ordinance37\.article\.([0-9-]+)/);
+    return match ? `/rules/${match[1]}` : "/rules";
+  };
+
+  return (
+    <article className="answer-page rules-page fee-detail-page">
+      <p className="eyebrow">{node.service_scope}</p>
+      <h1>{node.title}</h1>
+      <p className="meta">{node.number_path.join(" / ")} / {node.id}</p>
+
+      {isOutOfCore ? (
+        <div className="notice">
+          <strong>この項目は指定通所介護のコア範囲外です。</strong><br/>
+          共生型通所介護に固有の取扱いとして保持しています。通常の指定通所介護と混同しないでください。
+        </div>
+      ) : reviewed ? (
+        <div className="notice fee-reviewed-notice">
+          <strong>人手確認済み</strong><br/>
+          公式資料との照合記録があります。
+        </div>
+      ) : (
+        <div className="notice">
+          <strong>現行公式本文を取込済み・人手確認待ち</strong><br/>
+          厚生労働省の現行HTMLから機械抽出した本文です。単位数や率を含め、まだ人手による原文照合は完了していません。
+        </div>
+      )}
+
+      <section className="section">
+        <h2>現行公式本文</h2>
+        {currentText ? (
+          <>
+            <div className="fee-official-text">{currentText.official_text}</div>
+            <p className="meta">取込状態：{currentText.import_status}</p>
+          </>
+        ) : (
+          <p className="notice-hole">現行本文の機械取込がありません。</p>
+        )}
+      </section>
+
+      {linkedRelations.length ? (
+        <section className="section">
+          <h2>関連する制度ノード</h2>
+          <div className="relation-list">
+            {linkedRelations.map((relation, index) => (
+              <div className="relation-row" key={`${relation.relation}-${index}`}>
+                <span className="meta">{relation.relation}</span>
+                <div>
+                  {relation.to_id ? (
+                    <Link href={ordinanceHref(relation.to_id)}>{relation.to_id}</Link>
+                  ) : relation.to_source_id ? (
+                    <span>{relation.to_source_id}</span>
+                  ) : null}
+                  <p className="meta">{relation.status}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="section">
+        <h2>取得証跡</h2>
+        <dl className="rule-meta">
+          <div><dt>取得元</dt><dd>{source?.title || currentText?.source_id || node.source_id}</dd></div>
+          <div><dt>最新改正</dt><dd>{textMeta.current_amendment || "—"}</dd></div>
+          <div><dt>施行日</dt><dd>{textMeta.current_amendment_effective_from || "—"}</dd></div>
+          <div><dt>本文SHA-256</dt><dd className="hash">{currentText?.text_sha256 || "—"}</dd></div>
+          <div><dt>人手確認</dt><dd>{reviewed ? "確認済み" : "未確認"}</dd></div>
+        </dl>
+        {source ? <p><a href={source.url} target="_blank" rel="noreferrer">厚生労働省の原文を確認</a></p> : null}
+      </section>
+
+      <p><Link href="/fees">報酬DB一覧へ戻る</Link></p>
+    </article>
+  );
+}
