@@ -1,0 +1,965 @@
+{
+  "format_version": 1,
+  "created_at": "2026-09-22",
+  "service_scope": "指定通所介護を中心とする初期研究scope",
+  "policy": "Claim-level status is authoritative for answerability. Broad Issue verification must not be used to infer verification of an unreviewed subtopic.",
+  "claims": [
+    {
+      "claim_id": "claim.staff.manager.concurrent.core",
+      "issue_id": "manager-concurrent-role",
+      "subtopic": "管理者の兼務",
+      "statement": "管理上支障がない場合、通所介護事業所の管理者は当該事業所の他の職務または他の事業所・施設等の職務に従事できる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article94"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "管理者の具体的責務や、不在時の代替管理者の要否までをこのclaimから推測しない。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.staff.life-counselor.time-ratio",
+      "issue_id": "life-counselor-staffing",
+      "subtopic": "生活相談員の基本配置",
+      "statement": "提供日ごとに、サービス提供時間帯に生活相談員が勤務した合計時間をサービス提供時間で除した数が1以上となるために必要な数を確保する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article93.1.1"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "サービス担当者会議への出席時間や地域連携活動時間を勤務延時間へ算入できるかは別subtopic。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.staff.life-counselor-or-care-worker.fulltime",
+      "issue_id": "life-counselor-staffing",
+      "subtopic": "生活相談員または介護職員の常勤要件",
+      "statement": "生活相談員または介護職員のうち1人以上は常勤でなければならない。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article93.6"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "介護職員の人数計算全体をこのclaimだけで回答しない。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.staff.nurse.unit-one",
+      "issue_id": "nurse-staffing",
+      "subtopic": "看護職員の基本配置",
+      "statement": "通所介護の単位ごとに、専らサービス提供に当たる看護職員が1人以上確保されるために必要な数を置く。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article93.1.2"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "外部連携時の具体的な従事時間・距離は別claimと合わせて扱う。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.staff.nurse.external-linkage",
+      "issue_id": "nurse-staffing",
+      "subtopic": "看護職員の外部連携",
+      "statement": "病院・診療所・訪問看護ステーションとの連携により看護職員を確保する方法があり、営業日ごとの健康状態確認と提供時間帯を通じた密接かつ適切な連携が必要となる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_WITH_SOURCE_LIMITATION",
+      "source_node_ids": [
+        "notice.dayservice.nurse.external-linkage",
+        "qa.dayservice.nurse.external.2015.50"
+      ],
+      "source_ids": [
+        "mhlw-interpretation-nurse-linkage",
+        "mhlw-qa"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.d39e1a671c4be5f3b74a"
+      ],
+      "boundaries": [
+        "解釈通知全体の現行統合版は再構成中。外部連携の具体的運用は指定権者確認を推奨。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "検証済みIssueへ接続済みの通知断片とSTRUCTURED Q&Aを利用。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.staff.care-worker.cross-unit",
+      "issue_id": "multiple-roles",
+      "subtopic": "介護職員の他単位兼務",
+      "statement": "利用者の処遇に支障がない場合、介護職員は他の通所介護単位の介護職員として従事できる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article93.3"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "介護職員の必要人数や資格要件はこのclaimでは回答しない。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.staff.functional-instructor.other-duties",
+      "issue_id": "multiple-roles",
+      "subtopic": "機能訓練指導員の他職務従事",
+      "statement": "機能訓練指導員は、必要な能力を有する者であり、通所介護事業所の他の職務に従事できる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article93.5"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.19ff5348270062de7154"
+      ],
+      "boundaries": [
+        "機能訓練指導員になれる資格の一覧や、報酬加算上の専従要件は別subtopic。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.staff.schedule-clarity",
+      "issue_id": "multiple-roles",
+      "subtopic": "勤務表の明確化",
+      "statement": "勤務表では日々の勤務時間、常勤・非常勤の別、専従配置、管理者との兼務関係等を明確にする。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_SOURCE_TEXT",
+      "source_node_ids": [
+        "notice.dayservice.staffing.schedule"
+      ],
+      "source_ids": [
+        "mhlw-interpretation-html"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [],
+      "reviewed_at": "2026-09-22",
+      "review_note": "検証済み通知source textを基礎とする。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.facility.dining-training.area",
+      "issue_id": "dining-training-area",
+      "subtopic": "食堂・機能訓練室の基本面積",
+      "statement": "食堂と機能訓練室はそれぞれ必要な広さを有し、その合計面積は3平方メートルに利用定員を乗じた面積以上とする。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article95.1-2"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "複数の別室を合算して面積を満たす解釈は未レビュー。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.facility.dining-training.same-place",
+      "issue_id": "dining-training-area",
+      "subtopic": "食堂・機能訓練室の同一場所利用",
+      "statement": "食事提供と機能訓練の実施にそれぞれ支障がない広さを確保できる場合、食堂と機能訓練室を同一の場所とすることができる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article95.1-2"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "複数室合算とは別論点。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.operation.rules.required-items",
+      "issue_id": "operation-rules-content",
+      "subtopic": "運営規程の記載事項",
+      "statement": "運営規程には目的・方針、従業者、営業時間、利用定員、サービス内容・費用、通常の実施地域、利用上の留意事項、緊急時対応、非常災害対策、虐待防止等を定める。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article100"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.87bba14a2bbb61a24d73",
+        "qa.mhlw.8408a750dd8209c6523e"
+      ],
+      "boundaries": [
+        "経過措置事項の書き方や個別の食費規定などQ&A固有論点は未レビュー。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.important.before-start",
+      "issue_id": "important-matters-content",
+      "subtopic": "提供開始前の説明・同意",
+      "statement": "サービス提供開始に際し、あらかじめ重要事項を記した文書を交付して説明し、利用申込者の同意を得る。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article8.1",
+        "ordinance37.article105"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [],
+      "reviewed_at": "2026-09-22",
+      "review_note": "準用関係を含む検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.important.posting-web",
+      "issue_id": "important-matters-content",
+      "subtopic": "掲示・閲覧・ウェブ掲載",
+      "statement": "重要事項は事業所の見やすい場所に掲示し、書面の備付け・自由閲覧で掲示に代えることができ、原則としてウェブサイトにも掲載する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article32.1-3",
+        "ordinance37.article105"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [],
+      "reviewed_at": "2026-09-22",
+      "review_note": "準用関係を含む検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.important.accident-complaint",
+      "issue_id": "important-matters-content",
+      "subtopic": "重要事項に示す事故・苦情対応",
+      "statement": "重要事項の文書では、事故発生時の対応や苦情処理体制など、利用者がサービスを選択するために必要な事項を分かりやすく示す。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_SOURCE_TEXT",
+      "source_node_ids": [
+        "notice.common.important-matters.explanation"
+      ],
+      "source_ids": [
+        "mhlw-interpretation-html"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "事故発生後の具体的な自治体報告先・報告期限は別論点。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "検証済み通知source textを基礎とする。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.care-plan.content",
+      "issue_id": "care-plan-content",
+      "subtopic": "通所介護計画の記載内容",
+      "statement": "利用者の心身状況、希望、環境を踏まえ、機能訓練等の目標と目標達成のための具体的サービス内容等を記載する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article99.1"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.care-plan.align-home-plan",
+      "issue_id": "care-plan-content",
+      "subtopic": "居宅サービス計画との整合",
+      "statement": "居宅サービス計画が作成されている場合、通所介護計画はその内容に沿って作成する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article99.2"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.care-plan.explain-consent",
+      "issue_id": "care-plan-content",
+      "subtopic": "説明・同意",
+      "statement": "通所介護計画の作成に当たり、その内容を利用者または家族に説明し、利用者の同意を得る。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article99.3"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.care-plan.deliver",
+      "issue_id": "care-plan-content",
+      "subtopic": "計画の交付",
+      "statement": "通所介護計画を作成した際は、利用者へ交付する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article99.4"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.care-plan.progress-record",
+      "issue_id": "care-plan-content",
+      "subtopic": "実施状況・目標達成状況の記録",
+      "statement": "利用者ごとに、通所介護計画に従ったサービスの実施状況と目標の達成状況を記録する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article99.5"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "記録全般の保存年限は別subtopic。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.care-plan.electronic-method",
+      "issue_id": "care-plan-signature",
+      "subtopic": "電磁的方法",
+      "statement": "書面による交付・説明・同意等が規定・想定されるものは、相手方の承諾を得て電磁的方法によることができる。",
+      "service_scope": "指定居宅サービス共通・通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article217.2"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-electronic"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.care-plan.signature-not-prescribed",
+      "issue_id": "care-plan-signature",
+      "subtopic": "署名の要否",
+      "statement": "国基準では計画内容の説明と利用者の同意は必要だが、署名そのものを同意の必須手段とは定めていない。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_INTERPRETATION",
+      "source_node_ids": [
+        "ordinance37.article99.3",
+        "ordinance37.article99.4"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-2020-consent-review"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "指定権者独自の様式・確認方法は別途確認する。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "基準省令と厚労省制度整理資料に基づくverified questionからclaim化。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.care-plan.seal-not-required",
+      "issue_id": "care-plan-seal",
+      "subtopic": "押印の要否",
+      "statement": "国基準では通所介護計画書への押印を必須とする規定は確認できず、必要なのは説明・同意・交付である。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_INTERPRETATION",
+      "source_node_ids": [
+        "ordinance37.article99.3",
+        "ordinance37.article99.4"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-2020-consent-review"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "指定権者独自の様式・確認方法は別途確認する。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "基準省令と厚労省制度整理資料に基づくverified questionからclaim化。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.training.bcp.periodic",
+      "issue_id": "bcp-training",
+      "subtopic": "BCP研修・訓練の定期実施",
+      "statement": "従業者へBCPを周知し、必要な研修と訓練を定期的に実施する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article30-2.2",
+        "ordinance37.article105"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "具体的な年1回以上という頻度は別claim。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "準用関係を含む検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.training.bcp.annual-frequency",
+      "issue_id": "bcp-training",
+      "subtopic": "BCP研修・訓練の具体的頻度",
+      "statement": "解釈通知の改正後文ではBCPの職員教育は年1回以上、新規採用時の研修が望ましく、訓練も年1回以上とされる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_WITH_SOURCE_LIMITATION",
+      "source_node_ids": [
+        "notice.dayservice.bcp.frequency"
+      ],
+      "source_ids": [
+        "mhlw-2021-interpretation-redline"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "解釈通知全体の現行統合版は再構成中。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "改正後文を確認した部分source。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.training.infection.periodic",
+      "issue_id": "annual-training",
+      "subtopic": "感染症研修・訓練の定期実施",
+      "statement": "感染症の予防・まん延防止のための研修と訓練を定期的に実施する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article104.2.3"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "具体的な年1回以上という頻度は別claim。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "現行基準省令の検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.training.infection.annual-frequency",
+      "issue_id": "annual-training",
+      "subtopic": "感染症研修・訓練の具体的頻度",
+      "statement": "解釈通知の改正後文では感染症研修は年1回以上の教育、新規採用時の研修が望ましく、訓練は年1回以上とされる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_WITH_SOURCE_LIMITATION",
+      "source_node_ids": [
+        "notice.dayservice.infection.frequency"
+      ],
+      "source_ids": [
+        "mhlw-2021-interpretation-redline"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "解釈通知全体の現行統合版は再構成中。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "改正後文を確認した部分source。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.training.abuse.periodic",
+      "issue_id": "annual-training",
+      "subtopic": "虐待防止研修の定期実施",
+      "statement": "従業者に対し、虐待防止のための研修を定期的に実施する。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_CURRENT",
+      "source_node_ids": [
+        "ordinance37.article37-2.3",
+        "ordinance37.article105"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-home-care-standards-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "具体的な年1回以上・新規採用時の頻度は別claim。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "準用関係を含む検証済みnode。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "claim.training.abuse.annual-newhire",
+      "issue_id": "annual-training",
+      "subtopic": "虐待防止研修の具体的頻度",
+      "statement": "解釈通知の改正後文では虐待防止研修を年1回以上実施し、新規採用時にも研修を実施することが重要とされる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_WITH_SOURCE_LIMITATION",
+      "source_node_ids": [
+        "notice.dayservice.abuse.frequency"
+      ],
+      "source_ids": [
+        "mhlw-2021-interpretation-redline"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "解釈通知全体の現行統合版は再構成中。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "改正後文を確認した部分source。",
+      "superseded_by": null
+    },
+    {
+      "claim_id": "candidate.staff.manager.responsibilities",
+      "issue_id": "manager-concurrent-role",
+      "subtopic": "管理者の具体的責務",
+      "statement": "管理者に求められる具体的役割の整理。",
+      "service_scope": "指定通所介護",
+      "answerability": "REVIEW_REQUIRED",
+      "verification_status": "CANDIDATE_UNREVIEWED",
+      "source_node_ids": [],
+      "source_ids": [
+        "mhlw-qa"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.a3ceb95affec100c3cc3"
+      ],
+      "boundaries": [
+        "管理者の兼務claimから具体的責務を推測しない。"
+      ],
+      "reviewed_at": null,
+      "review_note": "Q&A question preview由来。回答本文未レビュー。",
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "管理者"
+          ],
+          [
+            "具体的な役割",
+            "具体的役割",
+            "責務",
+            "何をする",
+            "役割"
+          ]
+        ],
+        "excluded_terms": [
+          "兼務",
+          "兼ねる",
+          "兼ね"
+        ]
+      }
+    },
+    {
+      "claim_id": "candidate.staff.life-counselor.service-meeting-time",
+      "issue_id": "life-counselor-staffing",
+      "subtopic": "サービス担当者会議時間の算入",
+      "statement": "指定通所介護事業所の生活相談員がサービス担当者会議に出席するための時間は、確保すべき勤務延時間数に含めることができる。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_WITH_SOURCE_LIMITATION",
+      "source_node_ids": [],
+      "source_ids": [
+        "mhlw-qa"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.bed5148c4af01939c01d"
+      ],
+      "boundaries": [
+        "サービス担当者会議以外の事業所外活動一般へこのclaimを自動拡張しない。",
+        "指定通所介護を対象とし、他サービスへの適用は別途確認する。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "厚生労働省「平成24年度介護報酬改定に関するQ&A（Vol.2）」問12の回答本文を確認。2026-09-22時点の厚生労働省「介護サービス関係Q&A」公式索引が現行Q&A集を掲載していることも確認した。ただし、解釈通知の現行統合全文のローカル再構成は未完了のため VERIFIED_WITH_SOURCE_LIMITATION とする。",
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "生活相談員"
+          ],
+          [
+            "サービス担当者会議",
+            "担当者会議"
+          ],
+          [
+            "時間",
+            "勤務延時間",
+            "含める",
+            "算入"
+          ]
+        ],
+        "fallback_guard_terms": [
+          "会議"
+        ]
+      }
+    },
+    {
+      "claim_id": "candidate.staff.life-counselor.community-time",
+      "issue_id": "life-counselor-staffing",
+      "subtopic": "地域連携活動時間の算入",
+      "statement": "町内会等との地域連携活動時間を生活相談員の勤務延時間へ含められるか。",
+      "service_scope": "指定通所介護",
+      "answerability": "REVIEW_REQUIRED",
+      "verification_status": "CANDIDATE_UNREVIEWED",
+      "source_node_ids": [],
+      "source_ids": [
+        "mhlw-qa"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.337577b0a5b20a4e386f"
+      ],
+      "boundaries": [
+        "基本配置claimから回答しない。"
+      ],
+      "reviewed_at": null,
+      "review_note": "Q&A question preview由来。回答本文未レビュー。",
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "生活相談員"
+          ],
+          [
+            "町内会",
+            "自治会",
+            "ボランティア",
+            "社会資源",
+            "地域連携"
+          ],
+          [
+            "時間",
+            "勤務延時間",
+            "含める",
+            "算入"
+          ]
+        ],
+        "fallback_guard_terms": [
+          "町内会",
+          "自治会",
+          "ボランティア",
+          "地域連携",
+          "社会資源"
+        ]
+      }
+    },
+    {
+      "claim_id": "candidate.staff.life-care-worker.combined-placement",
+      "issue_id": "life-counselor-staffing",
+      "subtopic": "生活相談員・介護職員の具体的人員配置",
+      "statement": "生活相談員と介護職員を合わせた具体的人員配置方法。",
+      "service_scope": "指定通所介護",
+      "answerability": "PARTIAL",
+      "verification_status": "CANDIDATE_UNREVIEWED",
+      "source_node_ids": [
+        "ordinance37.article93.1.1",
+        "ordinance37.article93.6"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-qa"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.3cf34cdf74e63388a801"
+      ],
+      "boundaries": [
+        "生活相談員部分のみverified。介護職員の人数計算全体は未レビュー。"
+      ],
+      "reviewed_at": null,
+      "review_note": "Q&A question preview由来。部分的なverified sourceあり。",
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "生活相談員"
+          ],
+          [
+            "介護職員"
+          ],
+          [
+            "人員配置",
+            "配置基準",
+            "具体的な人員配置",
+            "具体的配置"
+          ]
+        ]
+      }
+    },
+    {
+      "claim_id": "candidate.facility.dining-training.multi-room",
+      "issue_id": "dining-training-area",
+      "subtopic": "複数室の面積合算",
+      "statement": "指定通所介護の食堂・機能訓練室は、狭隘な部屋を多数設置して面積を確保する方法は原則として認められない。ただし、指定通所介護の単位をさらにグループ分けし、効果的な指定通所介護の提供が期待される場合は例外となり、厚生労働省Q&Aではこの条件を満たす複数室合算の具体例が認められている。",
+      "service_scope": "指定通所介護",
+      "answerability": "ANSWER",
+      "verification_status": "VERIFIED_WITH_SOURCE_LIMITATION",
+      "source_node_ids": [
+        "ordinance37.article95.1-2"
+      ],
+      "source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-interpretation-html",
+        "mhlw-qa",
+        "mhlw-r6-reform-landing"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.91959c3555dce399f7b8"
+      ],
+      "boundaries": [
+        "複数室の面積を無条件に合算できるとは回答しない。",
+        "グループ分けと効果的な指定通所介護の提供が期待されることが例外条件となる。",
+        "個別の平面計画について指定権者が行う審査判断まではこのclaimだけで確定しない。"
+      ],
+      "reviewed_at": "2026-09-22",
+      "review_note": "厚生労働省の基準省令第95条、解釈通知の設備基準(2)①、介護サービス関係Q&A集No.599を確認。Q&Aでは、1室では基準未達でも複数室合計で基準を満たし、グループごとに職員を配置してマンツーマンに近い機能訓練等を行う具体例を「貴見のとおり」としている。令和6年度改定ページで居宅の解釈通知が現行資料として案内されていることも確認したが、ローカルの解釈通知統合全文再構成は未完了のため VERIFIED_WITH_SOURCE_LIMITATION とする。",
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "食堂",
+            "機能訓練室"
+          ],
+          [
+            "複数の部屋",
+            "複数室",
+            "部屋の面積",
+            "面積を合計",
+            "合計して",
+            "狭隘",
+            "合算",
+            "合計面積",
+            "面積を足して",
+            "面積を足す",
+            "2室",
+            "二室",
+            "2部屋",
+            "二部屋"
+          ]
+        ],
+        "fallback_guard_terms": [
+          "合算",
+          "合計面積",
+          "複数室",
+          "2室",
+          "二室",
+          "2部屋",
+          "二部屋"
+        ]
+      }
+    },
+    {
+      "claim_id": "candidate.operation.capacity-disaster-exception",
+      "issue_id": null,
+      "subtopic": "定員遵守の災害等例外",
+      "statement": "災害その他やむを得ない事情がある場合の定員遵守規定の例外。",
+      "service_scope": "指定通所介護",
+      "answerability": "REVIEW_REQUIRED",
+      "verification_status": "CANDIDATE_UNREVIEWED",
+      "source_node_ids": [],
+      "source_ids": [
+        "mhlw-qa"
+      ],
+      "candidate_qa_ids": [
+        "qa.mhlw.a4a4dab6582666e0bdb5"
+      ],
+      "boundaries": [],
+      "reviewed_at": null,
+      "review_note": "Q&A question preview由来。現在のverified Issueなし。",
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "定員"
+          ],
+          [
+            "災害",
+            "やむを得ない事情"
+          ],
+          [
+            "例外",
+            "遵守規定",
+            "超えて"
+          ]
+        ]
+      }
+    },
+    {
+      "claim_id": "review.remuneration.base-and-addons",
+      "issue_id": null,
+      "subtopic": "基本報酬・加算・減算",
+      "statement": "通所介護の基本報酬、加算、減算の現行要件。",
+      "service_scope": "指定通所介護",
+      "answerability": "REVIEW_REQUIRED",
+      "verification_status": "REVIEW_REQUIRED",
+      "source_node_ids": [],
+      "source_ids": [
+        "mhlw-fee-notice19-base",
+        "mhlw-fee-criteria95-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "機械取込済みでもhuman review完了まで確定回答しない。"
+      ],
+      "reviewed_at": null,
+      "review_note": "remuneration-review.json = NOT_STARTED。",
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "基本報酬",
+            "加算",
+            "減算",
+            "LIFE",
+            "単位数",
+            "算定"
+          ]
+        ]
+      }
+    },
+    {
+      "claim_id": "review.unit-price.region-and-rate",
+      "issue_id": null,
+      "subtopic": "地域区分・一単位単価",
+      "statement": "自治体の地域区分と通所介護の一単位単価。",
+      "service_scope": "指定通所介護",
+      "answerability": "REVIEW_REQUIRED",
+      "verification_status": "REVIEW_REQUIRED",
+      "source_node_ids": [],
+      "source_ids": [
+        "mhlw-unit-price-current"
+      ],
+      "candidate_qa_ids": [],
+      "boundaries": [
+        "機械抽出値をhuman verification前に確定値表示しない。"
+      ],
+      "reviewed_at": null,
+      "review_note": "unit-price-review.json = NOT_STARTED。",
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "一単位単価",
+            "1単位",
+            "級地",
+            "地域区分"
+          ]
+        ]
+      }
+    }
+  ]
+}
