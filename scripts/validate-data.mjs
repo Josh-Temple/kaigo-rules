@@ -112,6 +112,39 @@ const unitRegionAssignmentsMetaPath = path.join(root, "data", "unit-price-region
 const unitRegionAssignmentsMeta = fs.existsSync(unitRegionAssignmentsMetaPath)
   ? JSON.parse(fs.readFileSync(unitRegionAssignmentsMetaPath, "utf8"))
   : null;
+const unitPriceMetaPath = path.join(root, "data", "unit-price-dayservice-meta.json");
+const unitPriceMeta = fs.existsSync(unitPriceMetaPath)
+  ? JSON.parse(fs.readFileSync(unitPriceMetaPath, "utf8"))
+  : null;
+const unitPriceReviewPath = path.join(root, "data", "unit-price-review.json");
+const unitPriceReview = fs.existsSync(unitPriceReviewPath)
+  ? JSON.parse(fs.readFileSync(unitPriceReviewPath, "utf8"))
+  : { reviewed_rate_ids: [], reviewed_assignment_ids: [], reviewed_default_rule: false };
+
+const feeGuidancePath = path.join(root, "data", "fee-guidance-current-skeleton.json");
+const feeGuidance = fs.existsSync(feeGuidancePath)
+  ? JSON.parse(fs.readFileSync(feeGuidancePath, "utf8"))
+  : [];
+const feeGuidanceRelationsPath = path.join(root, "data", "fee-guidance-relations.json");
+const feeGuidanceRelations = fs.existsSync(feeGuidanceRelationsPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceRelationsPath, "utf8"))
+  : [];
+const feeGuidanceEventsPath = path.join(root, "data", "fee-guidance-amendment-events.json");
+const feeGuidanceEvents = fs.existsSync(feeGuidanceEventsPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceEventsPath, "utf8"))
+  : [];
+const feeGuidanceChainPath = path.join(root, "data", "fee-guidance-source-chain.json");
+const feeGuidanceChain = fs.existsSync(feeGuidanceChainPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceChainPath, "utf8"))
+  : [];
+const feeGuidanceMetaPath = path.join(root, "data", "fee-guidance-current-meta.json");
+const feeGuidanceMeta = fs.existsSync(feeGuidanceMetaPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceMetaPath, "utf8"))
+  : null;
+const feeGuidanceReviewPath = path.join(root, "data", "fee-guidance-review.json");
+const feeGuidanceReview = fs.existsSync(feeGuidanceReviewPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceReviewPath, "utf8"))
+  : { reviewed_nodes: [], reviewed_relations: [] };
 const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
 const careActNodes = fs.existsSync(careActPath)
   ? JSON.parse(fs.readFileSync(careActPath, "utf8"))
@@ -157,6 +190,8 @@ unique(feeCurrentText, "fee_id", "remuneration-current-text");
 unique(delegatedFeeNodes, "id", "remuneration-delegated-nodes");
 unique(unitPrices, "id", "unit-price-dayservice");
 unique(unitRegionAssignments, "id", "unit-price-region-assignments");
+unique(feeGuidance, "id", "fee-guidance-current-skeleton");
+unique(feeGuidanceEvents, "id", "fee-guidance-amendment-events");
 unique(careActNodes, "id", "care-insurance-act-nodes");
 
 const sourceIds = new Set(sources.map((x) => x.id));
@@ -528,6 +563,66 @@ if (unitRegionAssignments.length) {
   }
 }
 
+
+if (unitPriceReview) {
+  const rateIds = new Set(unitPrices.map((row) => row.id));
+  const assignmentIds = new Set(unitRegionAssignments.map((row) => row.id));
+  const sameHashes = (a, b) => JSON.stringify(a || []) === JSON.stringify(b || []);
+
+  if ((unitPriceReview.reviewed_rate_ids || []).length || (unitPriceReview.reviewed_assignment_ids || []).length || unitPriceReview.reviewed_default_rule) {
+    if (!sameHashes(unitPriceReview.source_sha256, unitPriceMeta?.source_sha256)) {
+      errors.push("unit price review: rate source hash is stale");
+    }
+    if (!sameHashes(unitPriceReview.assignment_source_sha256, unitRegionAssignmentsMeta?.source_sha256)) {
+      errors.push("unit price review: assignment source hash is stale");
+    }
+  }
+
+  for (const id of unitPriceReview.reviewed_rate_ids || []) {
+    if (!rateIds.has(id)) errors.push(`unit price review: missing rate ${id}`);
+  }
+  for (const id of unitPriceReview.reviewed_assignment_ids || []) {
+    if (!assignmentIds.has(id)) errors.push(`unit price review: missing assignment ${id}`);
+  }
+}
+
+if (feeGuidance.length) {
+  const guidanceIds = new Set(feeGuidance.map((node) => node.id));
+  const feeIds = new Set(feeSkeleton.map((node) => node.id));
+  const allowed = new Set(["KNOWN_AFTER_TEXT","INHERITED_UNVERIFIED","UNKNOWN","VERIFIED_CURRENT"]);
+
+  for (const node of feeGuidance) {
+    for (const field of ["id","number_path","title","service_scope","verification_status","structure_status"]) {
+      if (!node[field] || (Array.isArray(node[field]) && node[field].length === 0)) {
+        errors.push(`fee guidance ${node.id || "(missing id)"}: missing ${field}`);
+      }
+    }
+    if (!allowed.has(node.verification_status)) errors.push(`fee guidance ${node.id}: unexpected status ${node.verification_status}`);
+    if (node.parent_id && !guidanceIds.has(node.parent_id)) errors.push(`fee guidance ${node.id}: missing parent ${node.parent_id}`);
+    for (const feeId of node.related_fee_ids || []) if (!feeIds.has(feeId)) errors.push(`fee guidance ${node.id}: missing fee ${feeId}`);
+    for (const evidence of node.evidence || []) if (!sourceIds.has(evidence.source_id)) errors.push(`fee guidance ${node.id}: missing source ${evidence.source_id}`);
+  }
+
+  for (const relation of feeGuidanceRelations) {
+    if (!guidanceIds.has(relation.from_guidance_id)) errors.push(`fee guidance relation: missing from ${relation.from_guidance_id}`);
+    if (!feeIds.has(relation.to_fee_id)) errors.push(`fee guidance relation: missing fee ${relation.to_fee_id}`);
+  }
+  for (const event of feeGuidanceEvents) {
+    if (!sourceIds.has(event.source_id)) errors.push(`fee guidance event ${event.id}: missing source ${event.source_id}`);
+    for (const id of event.target_ids || []) if (!guidanceIds.has(id)) errors.push(`fee guidance event ${event.id}: missing target ${id}`);
+  }
+  for (const item of feeGuidanceChain) if (!sourceIds.has(item.source_id)) errors.push(`fee guidance source chain: missing source ${item.source_id}`);
+  for (const item of feeGuidanceReview.reviewed_nodes || []) if (!guidanceIds.has(item.guidance_id)) errors.push(`fee guidance review: missing node ${item.guidance_id}`);
+
+  if (feeGuidanceMeta) {
+    if (feeGuidanceMeta.counts?.total !== feeGuidance.length) errors.push("fee guidance meta: total mismatch");
+    const actual = feeGuidance.reduce((acc,node)=>{acc[node.verification_status]=(acc[node.verification_status]||0)+1;return acc;},{});
+    for (const [status,count] of Object.entries(actual)) {
+      if (feeGuidanceMeta.counts?.[status] !== count) errors.push(`fee guidance meta: ${status} count mismatch`);
+    }
+  }
+}
+
 if (careActNodes.length) {
   const careIds = new Set(careActNodes.map((node) => node.id));
   const careArticleIds = new Set(careActNodes.filter((node) => node.node_type === "article").map((node) => node.id));
@@ -577,5 +672,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${feeSkeleton.length} remuneration nodes, ${feeCurrentText.length} current remuneration texts, ${careActNodes.length} Care Insurance Act nodes, ${sources.length} sources.`
+  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${feeSkeleton.length} remuneration nodes, ${feeCurrentText.length} current remuneration texts, ${feeGuidance.length} fee-guidance nodes, ${careActNodes.length} Care Insurance Act nodes, ${sources.length} sources.`
 );

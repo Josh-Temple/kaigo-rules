@@ -1,0 +1,17 @@
+{
+  "format_version": 1,
+  "source_id": "mhlw-unit-price-current",
+  "source_sha256": [
+    "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395",
+    "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+  ],
+  "assignment_source_sha256": [
+    "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395",
+    "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+  ],
+  "review_status": "NOT_STARTED",
+  "reviewed_rate_ids": [],
+  "reviewed_assignment_ids": [],
+  "reviewed_default_rule": false,
+  "policy": "生成データと人手確認を分離する。公式ソースのSHA-256が変わった場合、既存レビューはstaleとして再確認する。"
+}

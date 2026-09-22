@@ -1,0 +1,40 @@
+[
+  {
+    "source_id": "mhlw-r6-reform-landing",
+    "source_class": "official_landing",
+    "issued_period": "2024",
+    "priority": 1,
+    "use": "令和6年度の留意事項通知改正資料への公式導線"
+  },
+  {
+    "source_id": "mhlw-r6-fee-guidance-redline",
+    "source_class": "amendment_comparison",
+    "issued_period": "2024",
+    "priority": 2,
+    "use": "通所介護費の現行側骨格・追加項目・改正後文の確認",
+    "warning": "新旧対照表（抄）であり現行統合全文ではない"
+  },
+  {
+    "source_id": "mhlw-fee-interpretation-historical",
+    "source_class": "historical_reference",
+    "issued_period": "historical",
+    "priority": 3,
+    "use": "略された項目の見出し・本文を遡るバックフィル候補",
+    "warning": "現在有効な全文とみなさない"
+  },
+  {
+    "source_id": "mhlw-r8-reform-landing",
+    "source_class": "official_landing",
+    "issued_period": "2026",
+    "priority": 4,
+    "use": "令和8年度の留意事項改正資料への公式導線"
+  },
+  {
+    "source_id": "mhlw-r8-fee-interpretation-amendment",
+    "source_class": "amendment_comparison",
+    "issued_period": "2026",
+    "priority": 5,
+    "use": "令和8年度に公表された変更範囲を確認",
+    "warning": "1ページの新旧対照表であり老企第36号の現行統合全文ではない"
+  }
+]

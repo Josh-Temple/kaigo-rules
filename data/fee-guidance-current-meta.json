@@ -1,0 +1,21 @@
+{
+  "format_version": 1,
+  "document_id": "rouki36",
+  "title": "指定居宅サービスに要する費用の額の算定に関する基準等の実施上の留意事項について",
+  "notice_number": "平成12年3月1日 老企第36号",
+  "service_scope": "通所介護費",
+  "reconstruction_method": "r6_current_side_skeleton_then_historical_backfill_then_forward_replay",
+  "current_state": "SKELETON_BUILT_BACKFILL_PENDING",
+  "public_label_policy": "forward replayと人手確認が終わるまで「現行統合版」と表示しない",
+  "counts": {
+    "total": 29,
+    "KNOWN_AFTER_TEXT": 21,
+    "UNKNOWN": 8
+  },
+  "safeguards": [
+    "令和6年度新旧対照表の「略」は本文確定とみなさない",
+    "令和7年3月31日までの経過措置を2026年の現行本文へ残さない",
+    "令和8年度改正資料に通所介護節がないことだけで不変を断定しない",
+    "未確認項目は見出しを推測せずUNKNOWNの穴として保持する"
+  ]
+}

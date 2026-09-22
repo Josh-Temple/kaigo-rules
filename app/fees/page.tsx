@@ -102,6 +102,7 @@ export default function FeesPage() {
         </p>
         <p><Link href="/fees/criteria">告示27号・95号の構造化データを見る →</Link></p>
         <p><Link href="/fees/unit-price">通所介護の一単位単価を見る →</Link></p>
+        <p><Link href="/fees/guidance">算定上の留意事項（老企第36号）の再構成状況を見る →</Link></p>
       </section>
 
       <section className="section">
