@@ -16,15 +16,21 @@ export default function QuestionSearch() {
 
   return (
     <>
-      <div className="search">
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="例：計画書にハンコは必要？"
-          aria-label="通所介護の質問を検索"
-        />
-        <small>通常検索のみ。AIによる回答生成は行いません。</small>
-      </div>
+      <form className="search" action="/search" method="get">
+        <div className="home-search-row">
+          <input
+            name="q"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="例：計画書にハンコは必要？"
+            aria-label="通所介護を検索"
+          />
+          <button type="submit">横断検索</button>
+        </div>
+        <small>
+          入力中は確認済みの実務ページを絞り込みます。横断検索では基準省令・報酬・国Q&Aも検索します。
+        </small>
+      </form>
       <div className="question-list">
         {results.length ? results.map((q) => (
           <article className="question" key={q.slug}>
@@ -35,7 +41,9 @@ export default function QuestionSearch() {
             </span>
           </article>
         )) : (
-          <p className="notice">確認済みの候補ページがありません。AIが推測して回答することはありません。</p>
+          <p className="notice">
+            確認済みの候補ページにはありません。横断検索で基準省令・報酬・国Q&Aを探せます。
+          </p>
         )}
       </div>
     </>
