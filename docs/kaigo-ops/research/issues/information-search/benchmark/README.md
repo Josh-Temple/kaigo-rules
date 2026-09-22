@@ -1,16 +1,16 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.11 current-suite claim coverage complete**
+状態: **v0.12 expanded external query gate complete**
 
 ## 現在のsuite
 
-合計 **147ケース**。
+合計 **165ケース**。
 
-- `benchmark-v0.11.json`: 50
+- `benchmark-v0.12.json`: 50
 - `coverage-gap-v0.1.json`: 20
 - `false-answer-stress-v0.1.json`: 12
-- `external-qa-query-sample-v0.2.json`: 15
+- `external-qa-query-sample-v0.4.json`: 33
 - `claim-promotion-benchmark-v0.1.json`: 2
 - `claim-routing-natural-language-v0.1.json`: 12
 - `verified-claim-routing-probe-v0.1.json`: 28
@@ -34,14 +34,15 @@
 
 - coverage gap: 20 / 20
 - false-ANSWER stress: 12 / 12
-- external MHLW Q&A query sample: 15 / 15
+- external MHLW Q&A label + Claim: 33 / 33
 - claim promotion paraphrase: 2 / 2
 - claim routing natural language: 12 / 12
 - verified Claim routing: 28 / 28
 - multi-claim routing: 5 / 5
 - important matters Claim routing: 3 / 3
+- external ANSWER expected Claim ID: 6 / 6
 - verified regression Issue fallback: 0 / 51
-- classifier checks: 148 / 148
+- classifier checks: 166 / 166
 - verified regression: 51 / 51
 
 ### Safety prose
@@ -86,6 +87,8 @@ Source
 - `node scripts/research-coverage-classifier-v0.6.mjs`
 - `node scripts/research-coverage-classifier-v0.10.mjs`
 - `node scripts/research-coverage-classifier-v0.11.mjs`
+- `node scripts/research-coverage-classifier-v0.14.mjs`
+- `node scripts/research-claim-registry-validate-v0.8.mjs`
 - `node scripts/research-claim-registry-validate-v0.6.mjs`
 - `node scripts/research-claim-compositions-validate-v0.2.mjs`
 - `node scripts/research-claim-registry-validate-v0.2.mjs`
@@ -93,10 +96,11 @@ Source
 
 ## 次の再開点
 
-1. 外部queryを現行15件から拡張する
-2. expanded external setでabstentionとClaim resolutionを別々に測る
-3. safety proseのhuman sign-off
-4. source limitationのcurrent reconstructionを続ける
-5. claim-level coverageが外部queryでも安定してからRAG比較
+1. Q&A-link candidate pool以外の外部query源を追加する
+2. 自治体公開FAQ等はquery inputとしてのみ利用し、自治体固有回答を国基準ground truthにしない
+3. expanded external setでlabel / Claim provenance / abstentionを別々に測る
+4. human safety prose sign-off
+5. source limitationのcurrent reconstruction
+6. その後にcontrolled RAG comparison
 
 RAGはまだ実装しない。
