@@ -62,6 +62,8 @@ Evidence Review / 方法 / 検証
 - [World care DX / AI map plan](./world-care-dx-map-plan.md)
 - [Initial landscape](./research/world-care-dx-map/initial-landscape.md)
 - [Global source register](./research/world-care-dx-map/source-register.csv)
+- [Structured case register](./research/world-care-dx-map/case-register.csv)
+- [Japan transferability review](./research/world-care-dx-map/japan-transferability-v0.1.md)
 - [Search log 2026-09-22](./research/world-care-dx-map/search-log-2026-09-22.md)
 
 ### Japan
@@ -72,7 +74,10 @@ Evidence Review / 方法 / 検証
 
 - [必要な情報を探すのに時間がかかる](./research/issues/information-search/README.md)
 - [Evidence register](./research/issues/information-search/evidence-register.csv)
-- [介護ルール情報探索benchmark](./research/issues/information-search/experiment-plan.md)
+- [Source coverage audit](./research/issues/information-search/source-coverage-audit.md)
+- [実験計画](./research/issues/information-search/experiment-plan.md)
+- [Benchmark v0.1](./research/issues/information-search/benchmark/README.md)
+- [Deterministic baseline v0.1](./research/issues/information-search/benchmark/baseline-v0.1.md)
 
 ### Methods
 
@@ -80,3 +85,8 @@ Evidence Review / 方法 / 検証
 - [Research protocol](./research-protocol.md)
 - [Evidence Register Schema](./research/evidence-schema.md)
 - [Roadmap](./roadmap.md)
+
+## Reproducible research tools
+
+- `node scripts/research-retrieval-baseline.mjs`
+  - verified question / rule corpusに対する決定論的retrieval baseline
