@@ -1,0 +1,68 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-22",
+  "purpose": "Verify deterministic multi-claim composition for verified questions that legitimately span more than one atomic claim.",
+  "cases": [
+    {
+      "id": "MC-001",
+      "source_case_id": "KU-003",
+      "question": "看護師はサービス提供中ずっと事業所にいないと基準違反になりますか？",
+      "expected": "ANSWER",
+      "expected_composition_id": "composition.staff.nurse.presence-and-linkage",
+      "expected_claim_ids": [
+        "claim.staff.nurse.unit-one",
+        "claim.staff.nurse.external-linkage"
+      ]
+    },
+    {
+      "id": "MC-002",
+      "source_case_id": "KU-004",
+      "question": "一人の職員を複数の役割で配置したいのですが、まとめて考えていいですか？",
+      "expected": "ANSWER",
+      "expected_composition_id": "composition.staff.multiple-roles.general",
+      "expected_claim_ids": [
+        "claim.staff.manager.concurrent.core",
+        "claim.staff.care-worker.cross-unit",
+        "claim.staff.functional-instructor.other-duties",
+        "claim.staff.schedule-clarity"
+      ]
+    },
+    {
+      "id": "MC-003",
+      "source_case_id": "CAN-004",
+      "question": "同じ職員が複数の職種を兼務できますか？",
+      "expected": "ANSWER",
+      "expected_composition_id": "composition.staff.multiple-roles.general",
+      "expected_claim_ids": [
+        "claim.staff.manager.concurrent.core",
+        "claim.staff.care-worker.cross-unit",
+        "claim.staff.functional-instructor.other-duties",
+        "claim.staff.schedule-clarity"
+      ]
+    },
+    {
+      "id": "MC-004",
+      "source_case_id": "KM-006",
+      "question": "通所介護計画には何を書き、利用者にどう説明し、作成後は何を記録すればよいですか？",
+      "expected": "ANSWER",
+      "expected_composition_id": "composition.care-plan.content-explain-record",
+      "expected_claim_ids": [
+        "claim.care-plan.content",
+        "claim.care-plan.explain-consent",
+        "claim.care-plan.progress-record"
+      ]
+    },
+    {
+      "id": "MC-005",
+      "source_case_id": "CAN-011",
+      "question": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "expected": "ANSWER",
+      "expected_composition_id": "composition.training.annual-core",
+      "expected_claim_ids": [
+        "claim.training.bcp.annual-frequency",
+        "claim.training.infection.annual-frequency",
+        "claim.training.abuse.annual-newhire"
+      ]
+    }
+  ]
+}
