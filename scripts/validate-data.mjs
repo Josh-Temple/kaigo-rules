@@ -145,6 +145,10 @@ const feeGuidanceReviewPath = path.join(root, "data", "fee-guidance-review.json"
 const feeGuidanceReview = fs.existsSync(feeGuidanceReviewPath)
   ? JSON.parse(fs.readFileSync(feeGuidanceReviewPath, "utf8"))
   : { reviewed_nodes: [], reviewed_relations: [] };
+const feeGuidanceCandidatesPath = path.join(root, "data", "fee-guidance-text-candidates.json");
+const feeGuidanceCandidates = fs.existsSync(feeGuidanceCandidatesPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceCandidatesPath, "utf8"))
+  : [];
 const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
 const careActNodes = fs.existsSync(careActPath)
   ? JSON.parse(fs.readFileSync(careActPath, "utf8"))
@@ -644,6 +648,18 @@ if (feeGuidance.length) {
   }
   for (const item of feeGuidanceChain) if (!sourceIds.has(item.source_id)) errors.push(`fee guidance source chain: missing source ${item.source_id}`);
   for (const item of feeGuidanceReview.reviewed_nodes || []) if (!guidanceIds.has(item.guidance_id)) errors.push(`fee guidance review: missing node ${item.guidance_id}`);
+
+  const candidateIds = new Set();
+  for (const candidate of feeGuidanceCandidates) {
+    for (const field of ["id","guidance_id","candidate_kind","source_id","source_locator","source_period","candidate_summary","replay_status","human_verification_status"]) {
+      if (!candidate[field]) errors.push(`fee guidance candidate ${candidate.id || "(missing id)"}: missing ${field}`);
+    }
+    if (candidateIds.has(candidate.id)) errors.push(`fee guidance candidate: duplicate id ${candidate.id}`);
+    candidateIds.add(candidate.id);
+    if (!guidanceIds.has(candidate.guidance_id)) errors.push(`fee guidance candidate ${candidate.id}: missing guidance ${candidate.guidance_id}`);
+    if (!sourceIds.has(candidate.source_id)) errors.push(`fee guidance candidate ${candidate.id}: missing source ${candidate.source_id}`);
+    if (candidate.human_verification_status !== "NOT_REVIEWED") errors.push(`fee guidance candidate ${candidate.id}: unexpected human verification status`);
+  }
 
   if (feeGuidanceMeta) {
     if (feeGuidanceMeta.counts?.total !== feeGuidance.length) errors.push("fee guidance meta: total mismatch");
