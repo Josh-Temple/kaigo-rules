@@ -1,5 +1,20 @@
 {
   "format_version": 1,
-  "status": "NOT_GENERATED",
+  "sources": {
+    "notice27": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+      "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+    },
+    "notice95": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618"
+    }
+  },
+  "counts": {
+    "nodes": 17,
+    "relations": 11,
+    "notice27_nodes": 3,
+    "notice95_nodes": 14
+  },
   "review_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
 }

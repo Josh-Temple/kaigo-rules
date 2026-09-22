@@ -1,1 +1,68 @@
-[]
+[
+  {
+    "from_id": "criteria95.dayservice.24",
+    "relation": "incorporates_by_reference",
+    "to_id": "criteria95.shared.4",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.note.1",
+    "relation": "calculation_controlled_by",
+    "to_id": "calc27.dayservice.1.capacity",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.note.1",
+    "relation": "calculation_controlled_by",
+    "to_id": "calc27.dayservice.1.staffing",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.note.10",
+    "relation": "criteria_set_by",
+    "to_id": "criteria95.dayservice.14-6",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.note.11",
+    "relation": "criteria_set_by",
+    "to_id": "criteria95.dayservice.15",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.note.13",
+    "relation": "criteria_set_by",
+    "to_id": "criteria95.dayservice.16",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.note.15",
+    "relation": "criteria_set_by",
+    "to_id": "criteria95.dayservice.17",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.note.17",
+    "relation": "criteria_set_by",
+    "to_id": "criteria95.dayservice.18-2",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.note.18",
+    "relation": "criteria_set_by",
+    "to_id": "criteria95.dayservice.19",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.service-provision",
+    "relation": "criteria_set_by",
+    "to_id": "criteria95.dayservice.23",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_id": "fee.dayservice.treatment-improvement",
+    "relation": "criteria_set_by",
+    "to_id": "criteria95.dayservice.24",
+    "status": "IMPORTED_MAPPING_NEEDS_HUMAN_CHECK"
+  }
+]
