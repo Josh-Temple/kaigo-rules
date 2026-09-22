@@ -92,6 +92,14 @@ const feeReviewPath = path.join(root, "data", "remuneration-review.json");
 const feeReview = fs.existsSync(feeReviewPath)
   ? JSON.parse(fs.readFileSync(feeReviewPath, "utf8"))
   : { reviewed_nodes: [], reviewed_relations: [] };
+const delegatedFeeNodesPath = path.join(root, "data", "remuneration-delegated-nodes.json");
+const delegatedFeeNodes = fs.existsSync(delegatedFeeNodesPath)
+  ? JSON.parse(fs.readFileSync(delegatedFeeNodesPath, "utf8"))
+  : [];
+const delegatedFeeRelationsPath = path.join(root, "data", "remuneration-delegated-relations.json");
+const delegatedFeeRelations = fs.existsSync(delegatedFeeRelationsPath)
+  ? JSON.parse(fs.readFileSync(delegatedFeeRelationsPath, "utf8"))
+  : [];
 const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
 const careActNodes = fs.existsSync(careActPath)
   ? JSON.parse(fs.readFileSync(careActPath, "utf8"))
@@ -134,6 +142,7 @@ unique(noticeHistory, "notice_id", "notice-historical-backfill");
 unique(feeSkeleton, "id", "remuneration-skeleton");
 unique(feeAmendments, "id", "remuneration-amendments");
 unique(feeCurrentText, "fee_id", "remuneration-current-text");
+unique(delegatedFeeNodes, "id", "remuneration-delegated-nodes");
 unique(careActNodes, "id", "care-insurance-act-nodes");
 
 const sourceIds = new Set(sources.map((x) => x.id));
@@ -434,6 +443,26 @@ if (feeSkeleton.length) {
     if (review.status !== "HUMAN_VERIFIED") {
       errors.push(`fee relation review ${review.from_fee_id}: unexpected status ${review.status}`);
     }
+  }
+}
+
+if (delegatedFeeNodes.length) {
+  const delegatedIds = new Set(delegatedFeeNodes.map((node) => node.id));
+  const feeIds = new Set(feeSkeleton.map((node) => node.id));
+  for (const node of delegatedFeeNodes) {
+    for (const field of ["id","source_id","source_url","heading","official_text","text_sha256","service_scope","verification_status"]) {
+      if (!node[field]) errors.push(`delegated fee node ${node.id || "(missing id)"}: missing ${field}`);
+    }
+    if (!sourceIds.has(node.source_id)) errors.push(`delegated fee node ${node.id}: missing source ${node.source_id}`);
+    if (node.verification_status !== "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK" && node.verification_status !== "VERIFIED_CURRENT") {
+      errors.push(`delegated fee node ${node.id}: unexpected status ${node.verification_status}`);
+    }
+    for (const feeId of node.related_fee_ids || []) if (!feeIds.has(feeId)) errors.push(`delegated fee node ${node.id}: missing fee ${feeId}`);
+  }
+  for (const relation of delegatedFeeRelations) {
+    const fromKnown = feeIds.has(relation.from_id) || delegatedIds.has(relation.from_id);
+    if (!fromKnown) errors.push(`delegated fee relation: missing from ${relation.from_id}`);
+    if (!delegatedIds.has(relation.to_id)) errors.push(`delegated fee relation: missing to ${relation.to_id}`);
   }
 }
 

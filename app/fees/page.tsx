@@ -95,6 +95,15 @@ export default function FeesPage() {
       </section>
 
       <section className="section">
+        <h2>別告示の算定基準</h2>
+        <p>
+          定員超過・人員欠如時の算定方法や、「別に厚生労働大臣が定める基準」とされた加算要件は
+          報酬告示19号とは別の告示にあります。
+        </p>
+        <p><Link href="/fees/criteria">告示27号・95号の構造化データを見る →</Link></p>
+      </section>
+
+      <section className="section">
         <h2>スコープ上の扱い</h2>
         <p>
           注7「共生型通所介護の減算」と、それを前提とする注8「生活相談員配置等加算」は、
