@@ -103,12 +103,14 @@
     "source_id": "mhlw-r6-fee-guidance-redline",
     "source_locator": "令和6年度新旧対照表 / 通所リハビリテーション費から通所介護7(24)を参照",
     "source_period": "2024",
-    "candidate_summary": "令和6年度資料上、通所介護7(24)が定員超過利用時の所定単位数算定を扱う項目として現行側から参照されることを確認できる。本文自体は省略されているため、現行本文候補の抽出は別途必要。",
-    "replay_status": "CURRENT_CROSS_REFERENCE_CAPTURED_BODY_PENDING",
+    "candidate_summary": "令和6年度資料上、通所介護7(24)が定員超過利用時の所定単位数算定を扱う項目として現行側から参照される。本文自体は令和6年度資料では省略されるが、H27基礎本文とH30・R3・R6以降の改正経路を別候補・replay coverageで確保している。",
+    "replay_status": "CURRENT_CROSS_REFERENCE_CAPTURED_BASELINE_AVAILABLE",
     "human_verification_status": "NOT_REVIEWED",
     "structured_facts": {
       "topic": "定員超過利用時の所定単位数算定",
-      "current_body_extraction_pending": true
+      "r6_body_omitted": true,
+      "historical_baseline_candidate_id": "fee-guidance-candidate.dayservice.24.h27",
+      "replay_coverage_available": true
     }
   },
   {
@@ -131,7 +133,9 @@
       "valid_job_posting_copy_required": true,
       "public_or_free_job_placement_use_required": true,
       "own_recruitment_effort_recommended": true,
-      "workload_management_required": true
+      "workload_management_required": true,
+      "historical_baseline_candidate_id": "fee-guidance-candidate.dayservice.25.h27",
+      "replay_coverage_available": true
     }
   },
   {
