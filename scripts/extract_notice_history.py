@@ -20,10 +20,10 @@ MARKERS = [
     ("notice.dayservice.personnel.life-counselor", "(2) 生活相談員"),
     ("notice.dayservice.personnel.function-training", "(3) 機能訓練指導員"),
     ("notice.dayservice.personnel.manager", "(4) 管理者"),
-    ("notice.dayservice.equipment", "2 設備に関する基準"),
+    (None, "2 設備に関する基準"),
     ("notice.dayservice.equipment.office", "(1) 事業所"),
     ("notice.dayservice.equipment.dining-training-room", "(2) 食堂及び機能訓練室"),
-    ("notice.dayservice.operation", "3 運営に関する基準"),
+    (None, "3 運営に関する基準"),
     ("notice.dayservice.operation.fees", "(1) 利用料等の受領"),
     ("notice.dayservice.operation.policy", "(2) 指定通所介護の基本取扱方針及び具体的取扱方針"),
     ("notice.dayservice.operation.plan", "(3) 通所介護計画の作成"),
@@ -85,6 +85,8 @@ def main():
     candidates = []
     for position, (node_id, heading, index) in enumerate(found):
         next_index = found[position + 1][2] if position + 1 < len(found) else len(section)
+        if node_id is None:
+            continue
         body_lines = section[index + 1:next_index]
         body = "\n".join(body_lines).strip()
         if not body:
