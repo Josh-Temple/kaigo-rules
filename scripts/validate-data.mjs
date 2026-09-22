@@ -703,6 +703,12 @@ if (feeGuidance.length) {
 
   if (feeGuidanceSourceManifest) {
     const segmentIds = new Set();
+    const sourceLayouts = feeGuidanceSourceManifest.source_layouts || {};
+    for (const [sourceId, layout] of Object.entries(sourceLayouts)) {
+      if (!sourceIds.has(sourceId)) errors.push(`fee guidance source manifest: layout source missing ${sourceId}`);
+      if (!["left","right"].includes(layout?.current_column)) errors.push(`fee guidance source manifest: invalid current column for ${sourceId}`);
+      if (!layout?.header_semantics) errors.push(`fee guidance source manifest: missing header semantics for ${sourceId}`);
+    }
     for (const segment of feeGuidanceSourceManifest.segments || []) {
       for (const field of ["id","guidance_ids","source_id","role","page_start","page_end"]) {
         if (segment[field] == null || (Array.isArray(segment[field]) && segment[field].length === 0)) {
@@ -712,6 +718,7 @@ if (feeGuidance.length) {
       if (segmentIds.has(segment.id)) errors.push(`fee guidance source manifest: duplicate segment ${segment.id}`);
       segmentIds.add(segment.id);
       if (!sourceIds.has(segment.source_id)) errors.push(`fee guidance source manifest ${segment.id}: missing source ${segment.source_id}`);
+      if (!sourceLayouts[segment.source_id]) errors.push(`fee guidance source manifest ${segment.id}: missing source layout ${segment.source_id}`);
       for (const id of segment.guidance_ids || []) if (!guidanceIds.has(id)) errors.push(`fee guidance source manifest ${segment.id}: missing guidance ${id}`);
       if (!Number.isInteger(segment.page_start) || !Number.isInteger(segment.page_end) || segment.page_start < 1 || segment.page_end < segment.page_start) {
         errors.push(`fee guidance source manifest ${segment.id}: invalid page range`);
@@ -730,6 +737,13 @@ if (feeGuidance.length) {
       if (!manifestSegment) errors.push(`fee guidance snapshots: segment not in manifest ${snapshot.id}`);
       if (!sourceIds.has(snapshot.source_id)) errors.push(`fee guidance snapshots ${snapshot.id}: missing source ${snapshot.source_id}`);
       if (!snapshot.text || !snapshot.text_sha256) errors.push(`fee guidance snapshots ${snapshot.id}: missing text/hash`);
+      if ((feeGuidanceSnapshots.format_version || 1) >= 2) {
+        if (!snapshot.current_side_text || !snapshot.current_side_text_sha256) errors.push(`fee guidance snapshots ${snapshot.id}: missing current-side text/hash`);
+        if (!["left","right"].includes(snapshot.current_column)) errors.push(`fee guidance snapshots ${snapshot.id}: invalid current column`);
+        if (manifestSegment && snapshot.current_column !== feeGuidanceSourceManifest?.source_layouts?.[snapshot.source_id]?.current_column) {
+          errors.push(`fee guidance snapshots ${snapshot.id}: current column differs from manifest`);
+        }
+      }
       if (snapshot.verification_status !== "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK") errors.push(`fee guidance snapshots ${snapshot.id}: unsafe verification status`);
     }
   }
