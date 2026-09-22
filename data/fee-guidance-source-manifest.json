@@ -1,0 +1,182 @@
+{
+  "format_version": 1,
+  "output_path": "data/fee-guidance-source-snapshots.json",
+  "policy": "Official PDF page snapshots are machine-extracted reconstruction material only. They never change human-review status or current official_text by themselves.",
+  "segments": [
+    {
+      "id": "dayservice-4-h27-baseline",
+      "guidance_ids": [
+        "fee-guidance.dayservice.4"
+      ],
+      "source_id": "mhlw-h27-fee-guidance-redline",
+      "role": "historical_baseline",
+      "page_start": 60,
+      "page_end": 61,
+      "must_contain": [
+        "2時間以上3時間未満"
+      ],
+      "note": "短時間利用の基礎本文候補"
+    },
+    {
+      "id": "dayservice-5-h30-baseline",
+      "guidance_ids": [
+        "fee-guidance.dayservice.5"
+      ],
+      "source_id": "mhlw-h30-fee-guidance-redline",
+      "role": "historical_amendment_state",
+      "page_start": 29,
+      "page_end": 30,
+      "must_contain": [
+        "8時間以上9時間未満"
+      ],
+      "note": "延長サービスの平成30年度改正後候補"
+    },
+    {
+      "id": "dayservice-6-r3-baseline",
+      "guidance_ids": [
+        "fee-guidance.dayservice.6"
+      ],
+      "source_id": "mhlw-r3-fee-guidance-redline",
+      "role": "historical_amendment_state",
+      "page_start": 34,
+      "page_end": 35,
+      "must_contain": [
+        "事業所規模による区分"
+      ],
+      "note": "事業所規模区分の令和3年度候補"
+    },
+    {
+      "id": "dayservice-7-h27-baseline",
+      "guidance_ids": [
+        "fee-guidance.dayservice.7"
+      ],
+      "source_id": "mhlw-h27-fee-guidance-redline",
+      "role": "historical_baseline",
+      "page_start": 63,
+      "page_end": 64,
+      "must_contain": [
+        "災害時等の取扱い"
+      ],
+      "note": "災害時等の取扱いの基礎本文候補"
+    },
+    {
+      "id": "dayservice-7-2-r3-baseline",
+      "guidance_ids": [
+        "fee-guidance.dayservice.7-2"
+      ],
+      "source_id": "mhlw-r3-fee-guidance-redline",
+      "role": "historical_amendment_state",
+      "page_start": 35,
+      "page_end": 36,
+      "must_contain": [
+        "感染症",
+        "災害"
+      ],
+      "note": "利用者数減少時特例の導入時候補"
+    },
+    {
+      "id": "dayservice-18-r3-baseline",
+      "guidance_ids": [
+        "fee-guidance.dayservice.18"
+      ],
+      "source_id": "mhlw-r3-fee-guidance-redline",
+      "role": "historical_amendment_state",
+      "page_start": 52,
+      "page_end": 54,
+      "must_contain": [
+        "栄養改善加算"
+      ],
+      "note": "栄養改善加算の令和3年度候補"
+    },
+    {
+      "id": "dayservice-24-h27-baseline",
+      "guidance_ids": [
+        "fee-guidance.dayservice.24"
+      ],
+      "source_id": "mhlw-h27-fee-guidance-redline",
+      "role": "historical_baseline",
+      "page_start": 74,
+      "page_end": 75,
+      "must_contain": [
+        "定員超過利用に該当する場合"
+      ],
+      "note": "定員超過利用の基礎本文候補"
+    },
+    {
+      "id": "dayservice-25-h27-baseline",
+      "guidance_ids": [
+        "fee-guidance.dayservice.25"
+      ],
+      "source_id": "mhlw-h27-fee-guidance-redline",
+      "role": "historical_baseline",
+      "page_start": 75,
+      "page_end": 76,
+      "must_contain": [
+        "人員基準欠如に該当する場合"
+      ],
+      "note": "人員基準欠如の基礎本文候補"
+    },
+    {
+      "id": "dayservice-r6-front-continuity",
+      "guidance_ids": [
+        "fee-guidance.dayservice.4",
+        "fee-guidance.dayservice.5",
+        "fee-guidance.dayservice.6",
+        "fee-guidance.dayservice.7",
+        "fee-guidance.dayservice.7-2"
+      ],
+      "source_id": "mhlw-r6-fee-guidance-redline",
+      "role": "continuity_checkpoint",
+      "page_start": 43,
+      "page_end": 44,
+      "must_contain": [
+        "通所介護費"
+      ],
+      "note": "令和6年度の番号移動・略表示確認"
+    },
+    {
+      "id": "dayservice-r6-18-continuity",
+      "guidance_ids": [
+        "fee-guidance.dayservice.18"
+      ],
+      "source_id": "mhlw-r6-fee-guidance-redline",
+      "role": "continuity_checkpoint",
+      "page_start": 50,
+      "page_end": 51,
+      "must_contain": [
+        "通所介護費"
+      ],
+      "note": "令和6年度の16〜18周辺確認"
+    },
+    {
+      "id": "dayservice-r6-24-25-continuity",
+      "guidance_ids": [
+        "fee-guidance.dayservice.24",
+        "fee-guidance.dayservice.25"
+      ],
+      "source_id": "mhlw-r6-fee-guidance-redline",
+      "role": "continuity_checkpoint",
+      "page_start": 52,
+      "page_end": 53,
+      "must_contain": [
+        "通所介護費"
+      ],
+      "note": "令和6年度の24・25周辺確認"
+    },
+    {
+      "id": "dayservice-25-r8-patch",
+      "guidance_ids": [
+        "fee-guidance.dayservice.25"
+      ],
+      "source_id": "mhlw-r8-fee-guidance-may-amendment",
+      "role": "current_amendment_fragment",
+      "page_start": 5,
+      "page_end": 6,
+      "must_contain": [
+        "人員基準欠如",
+        "別紙様式7"
+      ],
+      "note": "令和8年6月算定分からの人員基準欠如特例"
+    }
+  ]
+}
