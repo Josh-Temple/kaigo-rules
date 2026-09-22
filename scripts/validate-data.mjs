@@ -40,6 +40,31 @@ const ordinanceReview = fs.existsSync(ordinanceReviewPath)
   ? JSON.parse(fs.readFileSync(ordinanceReviewPath, "utf8"))
   : { reviewed_articles: [], reviewed_application_rules: [] };
 
+const noticeSkeletonPath = path.join(root, "data", "notice-current-skeleton.json");
+const noticeSkeleton = fs.existsSync(noticeSkeletonPath)
+  ? JSON.parse(fs.readFileSync(noticeSkeletonPath, "utf8"))
+  : [];
+const noticeRelationsPath = path.join(root, "data", "notice-ordinance-relations.json");
+const noticeRelations = fs.existsSync(noticeRelationsPath)
+  ? JSON.parse(fs.readFileSync(noticeRelationsPath, "utf8"))
+  : [];
+const noticeAmendmentsPath = path.join(root, "data", "notice-amendment-events.json");
+const noticeAmendments = fs.existsSync(noticeAmendmentsPath)
+  ? JSON.parse(fs.readFileSync(noticeAmendmentsPath, "utf8"))
+  : [];
+const noticeSourceChainPath = path.join(root, "data", "notice-source-chain.json");
+const noticeSourceChain = fs.existsSync(noticeSourceChainPath)
+  ? JSON.parse(fs.readFileSync(noticeSourceChainPath, "utf8"))
+  : [];
+const noticeCurrentMetaPath = path.join(root, "data", "notice-current-meta.json");
+const noticeCurrentMeta = fs.existsSync(noticeCurrentMetaPath)
+  ? JSON.parse(fs.readFileSync(noticeCurrentMetaPath, "utf8"))
+  : null;
+const noticeCurrentReviewPath = path.join(root, "data", "notice-current-review.json");
+const noticeCurrentReview = fs.existsSync(noticeCurrentReviewPath)
+  ? JSON.parse(fs.readFileSync(noticeCurrentReviewPath, "utf8"))
+  : { reviewed_nodes: [], reviewed_relations: [] };
+
 const errors = [];
 const unique = (items, key, label) => {
   const seen = new Set();
@@ -59,6 +84,8 @@ unique(qa, "id", "qa");
 unique(qaCorpus, "id", "qa-corpus");
 unique(ordinanceNodes, "id", "ordinance37-nodes");
 unique(ordinanceApplications, "id", "ordinance37-applications");
+unique(noticeSkeleton, "id", "notice-current-skeleton");
+unique(noticeAmendments, "id", "notice-amendment-events");
 
 const sourceIds = new Set(sources.map((x) => x.id));
 const ruleIds = new Set(rules.map((x) => x.id));
@@ -189,11 +216,107 @@ if (ordinanceNodes.length) {
   }
 }
 
+
+if (noticeSkeleton.length) {
+  const noticeSkeletonIds = new Set(noticeSkeleton.map((node) => node.id));
+  const ordinanceIds = new Set(ordinanceNodes.map((node) => node.id));
+  const allowedStatuses = new Set([
+    "VERIFIED_CURRENT",
+    "KNOWN_AFTER_TEXT",
+    "INHERITED_UNVERIFIED",
+    "UNKNOWN",
+    "DELETED",
+    "NOT_APPLICABLE",
+  ]);
+
+  for (const node of noticeSkeleton) {
+    for (const field of ["id", "number_path", "title", "service_scope", "verification_status", "structure_status"]) {
+      if (!node[field] || (Array.isArray(node[field]) && node[field].length === 0)) {
+        errors.push(`notice skeleton ${node.id || "(missing id)"}: missing ${field}`);
+      }
+    }
+    if (!allowedStatuses.has(node.verification_status)) {
+      errors.push(`notice skeleton ${node.id}: unexpected status ${node.verification_status}`);
+    }
+    if (node.parent_id && !noticeSkeletonIds.has(node.parent_id)) {
+      errors.push(`notice skeleton ${node.id}: missing parent ${node.parent_id}`);
+    }
+    if (node.verification_status === "VERIFIED_CURRENT" && !node.official_text) {
+      errors.push(`notice skeleton ${node.id}: VERIFIED_CURRENT without official_text`);
+    }
+    for (const ordinanceId of node.related_ordinance_ids || []) {
+      if (!ordinanceIds.has(ordinanceId)) {
+        errors.push(`notice skeleton ${node.id}: missing ordinance node ${ordinanceId}`);
+      }
+    }
+    for (const evidence of node.evidence || []) {
+      if (!sourceIds.has(evidence.source_id)) {
+        errors.push(`notice skeleton ${node.id}: missing evidence source ${evidence.source_id}`);
+      }
+      if (!evidence.locator || !evidence.evidence_type) {
+        errors.push(`notice skeleton ${node.id}: incomplete evidence record`);
+      }
+    }
+  }
+
+  for (const relation of noticeRelations) {
+    if (!noticeSkeletonIds.has(relation.from_notice_id)) {
+      errors.push(`notice relation: missing notice ${relation.from_notice_id}`);
+    }
+    if (!ordinanceIds.has(relation.to_ordinance_id)) {
+      errors.push(`notice relation: missing ordinance ${relation.to_ordinance_id}`);
+    }
+    if (relation.verification_status !== "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK" &&
+        relation.verification_status !== "HUMAN_VERIFIED") {
+      errors.push(`notice relation ${relation.from_notice_id}: unexpected status ${relation.verification_status}`);
+    }
+  }
+
+  for (const event of noticeAmendments) {
+    if (!sourceIds.has(event.source_id)) {
+      errors.push(`notice amendment ${event.id}: missing source ${event.source_id}`);
+    }
+    if (!noticeSkeletonIds.has(event.target_node_id)) {
+      errors.push(`notice amendment ${event.id}: missing target ${event.target_node_id}`);
+    }
+    if (!event.operation || !event.effective_from || !event.summary || !event.verification_status) {
+      errors.push(`notice amendment ${event.id}: incomplete event`);
+    }
+  }
+
+  for (const entry of noticeSourceChain) {
+    if (!sourceIds.has(entry.source_id)) {
+      errors.push(`notice source chain: missing source ${entry.source_id}`);
+    }
+  }
+
+  for (const review of noticeCurrentReview.reviewed_nodes || []) {
+    if (!noticeSkeletonIds.has(review.notice_id)) {
+      errors.push(`notice review: missing node ${review.notice_id}`);
+    }
+  }
+
+  if (noticeCurrentMeta) {
+    if (noticeCurrentMeta.counts?.total !== noticeSkeleton.length) {
+      errors.push(`notice meta: total count ${noticeCurrentMeta.counts?.total} does not match ${noticeSkeleton.length}`);
+    }
+    const actualCounts = noticeSkeleton.reduce((acc, node) => {
+      acc[node.verification_status] = (acc[node.verification_status] || 0) + 1;
+      return acc;
+    }, {});
+    for (const [status, count] of Object.entries(actualCounts)) {
+      if (noticeCurrentMeta.counts?.[status] !== count) {
+        errors.push(`notice meta: ${status} count mismatch`);
+      }
+    }
+  }
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
 
 console.log(
-  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${sources.length} sources.`
+  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${sources.length} sources.`
 );

@@ -42,7 +42,13 @@ Vercel build の前にも自動実行し、参照切れがある場合は fail c
 - `data/questions.json`: 実務質問、検索用言い換え、検証済み回答
 - `data/sources.json`: 公式資料台帳と収載範囲
 - `data/rule-nodes.json`: 回答ページへ接続済みの検証済み制度ノード\n- `data/ordinance37-nodes.json`: e-Gov現行XMLから生成する基準省令第37号の通所介護関連ノード\n- `data/ordinance37-relations.json`: 条・項・号の包含関係と第105条の準用関係\n- `data/ordinance37-application-rules.json`: 第105条の読替え規則\n- `data/ordinance37-meta.json`: e-Gov取得元、SHA-256、現行改正情報、件数、レビュー状態\n- `data/ordinance37-review.json`: 人手確認のオーバーレイ台帳。確認時の条文SHA-256を保持\n- `data/ordinance37-scope.json`: 通所介護DBとして取り込む条文範囲の正本
-- `data/notice-nodes.json`: 解釈通知の構造化ノード
+- `data/notice-nodes.json`: 回答ページへ接続済みの解釈通知ノード
+- `data/notice-current-skeleton.json`: 老企第25号の現行骨格（通所介護・共通定義）
+- `data/notice-source-chain.json`: 再構成に使う公式資料チェーンと完全性区分
+- `data/notice-ordinance-relations.json`: 解釈通知ノードと基準省令ノードの対応候補
+- `data/notice-amendment-events.json`: 2021年・2024年等の改正イベント
+- `data/notice-current-meta.json`: 再構成状態・件数・安全条件
+- `data/notice-current-review.json`: 人手確認のオーバーレイ台帳
 - `data/qa-items.json`: 回答ページへ接続済みのQ&A\n- `data/qa-corpus.json`: 公式XLSから機械取り込みしたQ&A（未レビューを含む）\n- `data/qa-corpus-meta.json`: 取得元URL、ハッシュ、抽出件数などの取り込み証跡
 - `data/relationships.json`: 質問と制度ノードの関係
 - `data/startup-steps.json`: 開設準備の導線
@@ -89,3 +95,18 @@ Q&Aは単独で制度上の結論とせず、法令・通知との関係を保�
 e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果を書き込みません。
 確認済み情報は `ordinance37-review.json` に別管理し、条文ID・確認時の `text_sha256`・確認日を記録します。
 その後のe-Gov更新で確認済み条文のハッシュが変わった場合は、`validate:data` が stale review として失敗し、再確認が必要になります。
+
+
+## 解釈通知の現行再構成
+
+老企第25号は、令和6年度改正資料を「現行統合全文」として扱いません。公式資料は新旧対照表であり、現行骨格の確認に使える箇所と、過去資料を遡らないと本文が得られない箇所を分離します。
+
+再構成は次の順です。
+
+1. 最新の新旧対照表から現行側の番号・見出し・改正後文を配置する
+2. 空いている箇所を令和3年度以前の資料から `INHERITED_UNVERIFIED` として補完する
+3. 信頼できる過去版から改正イベントを順方向に再生する
+4. 現在の骨格・本文と一致したものだけ人手確認へ進める
+5. 順方向再生完了前は「現行統合版」と表示しない
+
+`/notices` はこの再構成状況を確認するためのレビュー画面です。
