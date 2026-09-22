@@ -57,6 +57,9 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Multi-Claim Composition checkpoint](./research/checkpoint-multi-claim-composition-v0.1-2026-09-22.md)
+- [Issue Fallback Audit checkpoint](./research/checkpoint-issue-fallback-audit-v0.1-2026-09-22.md)
+- [Verified Claim Routing checkpoint](./research/checkpoint-verified-claim-routing-v0.1-2026-09-22.md)
 - [Claim Routing Natural-Language checkpoint](./research/checkpoint-claim-routing-natural-language-v0.1-2026-09-22.md)
 - [First Claim Promotion checkpoint](./research/checkpoint-claim-promotion-v0.2-2026-09-22.md)
 - [Claim-aware Router v0.1 checkpoint](./research/checkpoint-claim-aware-router-v0.1-2026-09-22.md)
@@ -98,6 +101,8 @@ Evidence Review / 方法 / 検証
 
 ### Claim-level coverage
 
+- [Claim Registry v0.5](./research/claims/claims-v0.5.json)
+- [Claim Composition Registry v0.2](./research/claims/claim-compositions-v0.2.json)
 - [Claim Registry v0.3](./research/claims/claims-v0.3.json)
 - [Claim Registry v0.2](./research/claims/claims-v0.2.json)
 - [Claim Registry v0.1](./research/claims/claims-v0.1.json)
