@@ -812,7 +812,7 @@ if (feeGuidance.length) {
     const scale = currentCandidateById.get("fee-guidance.dayservice.6");
     if (scale) {
       const text = compactCandidate(scale.candidate_text);
-      if (!text.includes("⑤感染症又は災害の発生を理由とする利用者数の減少が一定以上生じている場合の事業所規模別の報酬区分の決定に係る特例については、別途通知を参照すること。")) {
+      if (!text.includes(compactCandidate("⑤感染症又は災害の発生を理由とする利用者数の減少が一定以上生じている場合の事業所規模別の報酬区分の決定に係る特例については、別途通知を参照すること。"))) {
         errors.push("fee guidance current candidate 6: independently verified item ⑤ is missing");
       }
     }
@@ -820,13 +820,13 @@ if (feeGuidance.length) {
     const disaster = currentCandidateById.get("fee-guidance.dayservice.7");
     if (disaster) {
       const text = compactCandidate(disaster.candidate_text);
-      if (!text.includes("災害時等の取扱い災害その他のやむを得ない理由による定員超過利用については、")) {
+      if (!text.includes(compactCandidate("災害時等の取扱い災害その他のやむを得ない理由による定員超過利用については、"))) {
         errors.push("fee guidance current candidate 7: verified opening text differs");
       }
-      if (text.includes("災害時等の取扱い、災害その他")) {
+      if (text.includes(compactCandidate("災害時等の取扱い、災害その他"))) {
         errors.push("fee guidance current candidate 7: spurious leading comma returned");
       }
-      if (!text.includes("場合は翌月も含む。）の翌月から所定単位数の減算を行う")) {
+      if (!text.includes(compactCandidate("場合は翌月も含む。）の翌月から所定単位数の減算を行う"))) {
         errors.push("fee guidance current candidate 7: verified closing parenthesis is missing");
       }
     }
@@ -837,10 +837,10 @@ if (feeGuidance.length) {
       if (pageLabelArtifact.test(capacity.candidate_text)) {
         errors.push("fee guidance current candidate 24: PDF page label artifact returned");
       }
-      if (!text.includes("第27号。以下「通所介護費等の算定方法」という。）において、")) {
+      if (!text.includes(compactCandidate("第27号。以下「通所介護費等の算定方法」という。）において、"))) {
         errors.push("fee guidance current candidate 24: first verified closing parenthesis is missing");
       }
-      if (!text.includes("場合は翌月も含む。）の翌月から所定単位数の減算を行う")) {
+      if (!text.includes(compactCandidate("場合は翌月も含む。）の翌月から所定単位数の減算を行う"))) {
         errors.push("fee guidance current candidate 24: second verified closing parenthesis is missing");
       }
     }
