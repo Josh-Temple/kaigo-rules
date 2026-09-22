@@ -268,11 +268,25 @@
   {
     "guidance_id": "fee-guidance.dayservice.24",
     "baseline": {
-      "source_id": "mhlw-r6-fee-guidance-redline",
-      "period": "2024",
-      "status": "CURRENT_NUMBER_AND_TOPIC_ONLY_BODY_MISSING"
+      "source_id": "mhlw-h27-fee-guidance-redline",
+      "period": "2015",
+      "status": "BASELINE_TEXT_CAPTURED"
     },
     "checkpoints": [
+      {
+        "source_id": "mhlw-h30-fee-guidance-redline",
+        "effective_from": "2018-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN_NUMBERING_SHIFT_ONLY",
+        "evidence": "通所介護費の新欄(19)〜(22)は略。定員超過項目は旧7(16)系統から新7(20)系統へ番号移動し、本文変更は示されていない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r3-fee-guidance-redline",
+        "effective_from": "2021-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN_NUMBERING_SHIFT_ONLY",
+        "evidence": "通所介護費の新欄(22)・(23)は略。定員超過項目は新7(22)として本文変更なし。",
+        "status": "CHECKED"
+      },
       {
         "source_id": "mhlw-r6-fee-guidance-redline",
         "effective_from": "2024-04-01",
@@ -303,18 +317,32 @@
         "status": "CHECKED"
       }
     ],
-    "replay_status": "BASE_BODY_SOURCE_PENDING",
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
     "coverage_as_of": "2026-09-22",
     "human_verification_status": "NOT_REVIEWED"
   },
   {
     "guidance_id": "fee-guidance.dayservice.25",
     "baseline": {
-      "source_id": "mhlw-r6-fee-guidance-redline",
-      "period": "2024",
-      "status": "CURRENT_NUMBER_AND_TOPIC_ONLY_BODY_MISSING"
+      "source_id": "mhlw-h27-fee-guidance-redline",
+      "period": "2015",
+      "status": "BASELINE_TEXT_CAPTURED"
     },
     "checkpoints": [
+      {
+        "source_id": "mhlw-h30-fee-guidance-redline",
+        "effective_from": "2018-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN_NUMBERING_SHIFT_ONLY",
+        "evidence": "通所介護費の新欄(19)〜(22)は略。人員基準欠如項目は旧7(17)系統から新7(21)系統へ番号移動し、本文変更は示されていない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r3-fee-guidance-redline",
+        "effective_from": "2021-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN_NUMBERING_SHIFT_ONLY",
+        "evidence": "通所介護費の新欄(22)・(23)は略。人員基準欠如項目は新7(23)として本文変更なし。",
+        "status": "CHECKED"
+      },
       {
         "source_id": "mhlw-r6-fee-guidance-redline",
         "effective_from": "2024-04-01",
@@ -345,7 +373,7 @@
         "status": "CHECKED"
       }
     ],
-    "replay_status": "BASE_BODY_SOURCE_PENDING_CURRENT_PATCH_CAPTURED",
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_CURRENT_PATCH_CAPTURED_EXACT_TEXT_PENDING",
     "coverage_as_of": "2026-09-22",
     "human_verification_status": "NOT_REVIEWED"
   }
