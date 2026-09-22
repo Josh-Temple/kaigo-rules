@@ -1,0 +1,246 @@
+{
+  "format_version": 1,
+  "generator": "scripts/assemble_fee_guidance_current_candidates.py",
+  "policy": "Candidates are deterministic reconstructions from official-source item snapshots and replay coverage. They are not official consolidated text and must not be promoted to human-verified status automatically.",
+  "effective_as_of": "2026-09-22",
+  "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+  "items": [
+    {
+      "guidance_id": "fee-guidance.dayservice.4",
+      "number_path": [
+        "第2",
+        "7",
+        "4"
+      ],
+      "title": "2時間以上3時間未満の通所介護を行う場合の取扱い",
+      "effective_as_of": "2026-09-22",
+      "baseline_snapshot_id": "dayservice-4-h27-baseline",
+      "patch_snapshot_ids": [],
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+      "replay_coverage_as_of": "2026-09-22",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "evidence": [
+        {
+          "snapshot_id": "dayservice-4-h27-baseline",
+          "source_id": "mhlw-h27-fee-guidance-redline",
+          "role": "baseline",
+          "page_start": 60,
+          "page_end": 61,
+          "item_text_sha256": "953fce60c7811569750a43586280f920a83b7146359c7e8f4b2068a4d1da55c8"
+        }
+      ],
+      "candidate_text_sha256": "953fce60c7811569750a43586280f920a83b7146359c7e8f4b2068a4d1da55c8",
+      "candidate_text": "２時間以上３時間未満の通所介護を行う場合の取扱い\n        ２時間以上３時間未満の通所介護の単位数を算定できる利用者\n       は、心身の状況から、長時間のサービス利用が困難である者、病\n       後等で短時間の利用から始めて長時間利用に結びつけていく必要\n       がある者など、利用者側のやむを得ない事情により長時間のサー\n       ビス利用が困難な者（利用者等告示第14号）であること。なお、\n       ２時間以上３時間未満の通所介護であっても、通所介護の本来の\n       目的に照らし、単に入浴サービスのみといった利用は適当ではな\n       く、利用者の日常生活動作能力などの向上のため、日常生活を通\n       じた機能訓練等が実施されるべきものであること。\n"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.5",
+      "number_path": [
+        "第2",
+        "7",
+        "5"
+      ],
+      "title": "8時間以上9時間未満の通所介護の前後に連続して延長サービスを行った場合の加算の取扱い",
+      "effective_as_of": "2026-09-22",
+      "baseline_snapshot_id": "dayservice-5-h30-baseline",
+      "patch_snapshot_ids": [],
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+      "replay_coverage_as_of": "2026-09-22",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "evidence": [
+        {
+          "snapshot_id": "dayservice-5-h30-baseline",
+          "source_id": "mhlw-h30-fee-guidance-redline",
+          "role": "baseline",
+          "page_start": 29,
+          "page_end": 30,
+          "item_text_sha256": "dd4de3a67e9412c986e8c37221484808c8e0cfaccb09d38eef85fa9ed06c84f3"
+        }
+      ],
+      "candidate_text_sha256": "dd4de3a67e9412c986e8c37221484808c8e0cfaccb09d38eef85fa9ed06c84f3",
+      "candidate_text": "８時間以上９時間未満の通所介護の前後に連続して延長サービスを行った場合の加算の\n    取扱い\n     延長加算は、所要時間８時間以上９時間未満の通所介護の前後に連続して日常生活上の世話\n    を行う場合について、５時間を限度として算定されるものであり、例えば、\n    ①～③ （略）\n"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.6",
+      "number_path": [
+        "第2",
+        "7",
+        "6"
+      ],
+      "title": "事業所規模による区分の取扱い",
+      "effective_as_of": "2026-09-22",
+      "baseline_snapshot_id": "dayservice-6-r3-baseline",
+      "patch_snapshot_ids": [],
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+      "replay_coverage_as_of": "2026-09-22",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "evidence": [
+        {
+          "snapshot_id": "dayservice-6-r3-baseline",
+          "source_id": "mhlw-r3-fee-guidance-redline",
+          "role": "baseline",
+          "page_start": 34,
+          "page_end": 35,
+          "item_text_sha256": "25fb2708f1334ba9a3630c0fe8217865325b6dd59dec0f4fbab47b612440c65f"
+        }
+      ],
+      "candidate_text_sha256": "25fb2708f1334ba9a3630c0fe8217865325b6dd59dec0f4fbab47b612440c65f",
+      "candidate_text": "事業所規模による区分の取扱い\n  ① 事業所規模による区分については、施設基準第５号イ⑴に基づき、前\n   年度の１月当たりの平均利用延人員数により算定すべき通所介護費を\n   区分しているところであるが、当該平均利用延人員数の計算に当たって\n   は、同号の規定により、当該指定通所介護事業所に係る指定通所介護事\n   業者が第一号通所事業（指定居宅サービス等基準第 93 条第１項第３号\n   に規定する第一号通所事業をいう。以下同じ。）の指定を併せて受け一\n   体的に事業を実施している場合は、当該第一号通所事業における前年度\n   の１月当たりの平均利用延人員数を含むこととされているところであ\n   る。したがって、仮に指定通所介護事業者が第一号通所事業の指定を併\n   せて受けている場合であっても、事業が一体的に実施されず、実態とし\n   て両事業が分離されて実施されている場合には、当該平均利用延人員数\n   には当該第一号通所事業の平均利用延人員数は含めない取扱いとする。\n\n\n\n\n ②    平均利用延人員数の計算に当たっては、３時間以上４時間未満、４時\n     間以上５時間未満の報酬を算定している利用者（２時間以上３時間未満\n     の報酬を算定している利用者を含む。）については、利用者数に２分の\n     １を乗じて得た数とし、５時間以上６時間未満、６時間以上７時間未満\n     の報酬を算定している利用者については利用者数に４分の３を乗じて\n     得た数とする。また、平均利用延人員数に含むこととされた第一号通所\n     事業の利用者の計算に当たっては、第一号通所事業の利用時間が５時間\n     未満の利用者については、利用者数に２分の１を乗じて得た数とし、利\n     用時間が５時間以上６時間未満、６時間以上７時間未満の利用者につい\n     ては、利用者数に４分の３を乗じて得た数とする。ただし、第一号通所\n     事業の利用者については、同時にサービスの提供を受けた者の最大数を\n     営業日ごとに加えていく方法によって計算しても差し支えない。\n      また、１月間（暦月）、正月等の特別な期間を除いて毎日事業を実施\n     した月における平均利用延人員数については、当該月の平均利用延人員\n     数に７分の６を乗じた数によるものとする。\n\n\n\n\n ③・④（略）\n"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.7",
+      "number_path": [
+        "第2",
+        "7",
+        "7"
+      ],
+      "title": "災害時等の取扱い",
+      "effective_as_of": "2026-09-22",
+      "baseline_snapshot_id": "dayservice-7-h27-baseline",
+      "patch_snapshot_ids": [],
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+      "replay_coverage_as_of": "2026-09-22",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "evidence": [
+        {
+          "snapshot_id": "dayservice-7-h27-baseline",
+          "source_id": "mhlw-h27-fee-guidance-redline",
+          "role": "baseline",
+          "page_start": 63,
+          "page_end": 64,
+          "item_text_sha256": "a7b21ff05dce5f15c92505b23ba0e7661fbd6282d028db4ed9f72feb7c496725"
+        }
+      ],
+      "candidate_text_sha256": "a7b21ff05dce5f15c92505b23ba0e7661fbd6282d028db4ed9f72feb7c496725",
+      "candidate_text": "災害時等の取扱い\n、       災害その他のやむを得ない理由による定員超過利用については、\n       当該定員超過利用が開始した月（災害等が生じた時期が月末であ\n       って、定員超過利用が翌月まで継続することがやむを得ないと認\n       められる場合は翌月も含む の翌月から所定単位数の減算を行う\n       ことはせず、やむを得ない理由がないにもかかわらずその翌月ま\n       で定員を超過した状態が継続している場合に、災害等が生じた月\n       の翌々月から所定単位数の減算を行うものとする。また、この場\n       合にあっては、やむを得ない理由により受け入れた利用者につい\n       ては、その利用者を明確に区分した上で、平均利用延人員数に含\n       まないこととする。\n"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.7-2",
+      "number_path": [
+        "第2",
+        "7",
+        "7の2"
+      ],
+      "title": "感染症又は災害の発生を理由とする利用者数の減少が一定以上生じている場合の取扱いについて",
+      "effective_as_of": "2026-09-22",
+      "baseline_snapshot_id": "dayservice-7-2-r3-baseline",
+      "patch_snapshot_ids": [],
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+      "replay_coverage_as_of": "2026-09-22",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "evidence": [
+        {
+          "snapshot_id": "dayservice-7-2-r3-baseline",
+          "source_id": "mhlw-r3-fee-guidance-redline",
+          "role": "baseline",
+          "page_start": 35,
+          "page_end": 36,
+          "item_text_sha256": "889bc5c82bd620fe503433dd2f652971d10faed7bb95f67880a42b06ae654cf9"
+        }
+      ],
+      "candidate_text_sha256": "889bc5c82bd620fe503433dd2f652971d10faed7bb95f67880a42b06ae654cf9",
+      "candidate_text": "感染症又は災害の発生を理由とする利用者数の減少が一定以上生\n じている場合の取扱いについて\n  感染症又は災害の発生を理由とする利用者数の減少が一定以上生じて\n いる場合の基本報酬への加算の内容については、別途通知を参照するこ\n と。\n"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.18",
+      "number_path": [
+        "第2",
+        "7",
+        "18"
+      ],
+      "title": "栄養改善加算について",
+      "effective_as_of": "2026-09-22",
+      "baseline_snapshot_id": "dayservice-18-r3-baseline",
+      "patch_snapshot_ids": [],
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+      "replay_coverage_as_of": "2026-09-22",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "evidence": [
+        {
+          "snapshot_id": "dayservice-18-r3-baseline",
+          "source_id": "mhlw-r3-fee-guidance-redline",
+          "role": "baseline",
+          "page_start": 52,
+          "page_end": 54,
+          "item_text_sha256": "c33e37325085b1e81b341280203f24fd16206d1ec2cea2844c488b2c6e4bc8f0"
+        }
+      ],
+      "candidate_text_sha256": "c33e37325085b1e81b341280203f24fd16206d1ec2cea2844c488b2c6e4bc8f0",
+      "candidate_text": "栄養改善加算について\n\n ① （略）\n ② 当該事業所の職員として、又は外部（他の介護事業所（栄養改善加算\n  の対象事業所に限る。）\n            、医療機関、介護保険施設（栄養マネジメント強\n  化加算の算定要件として規定する員数を超えて管理栄養士を置いてい\n  るもの又は常勤の管理栄養士を１名以上配置しているものに限る。）又\n  は公益社団法人日本栄養士会若しくは都道府県栄養士会が設置し、運営\n  する「栄養ケア・ステーション」）との連携により、管理栄養士を１名\n  以上配置して行うものであること。\n ③ （略）\n ④ 栄養改善サービスの提供は、以下のイからヘまでに掲げる手順を経て\n  なされる。\n  イ～ハ （略）\n  ニ 栄養改善サービスの提供に当たり、居宅における食事の状況を聞き\n   取った結果、課題がある場合は、当該課題を解決するため、利用者又\n   はその家族の同意を得て、当該利用者の居宅を訪問し、居宅での食事\n   状況・食事環境等の具体的な課題の把握や、主として食事の準備をす\n   る者に対する栄養食事相談等の栄養改善サービスを提供すること。\n  ホ・ヘ （略）\n ⑤ （略）\n"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.24",
+      "number_path": [
+        "第2",
+        "7",
+        "24"
+      ],
+      "title": "定員超過利用に該当する場合の所定単位数の算定について",
+      "effective_as_of": "2026-09-22",
+      "baseline_snapshot_id": "dayservice-24-h27-baseline",
+      "patch_snapshot_ids": [],
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+      "replay_coverage_as_of": "2026-09-22",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "evidence": [
+        {
+          "snapshot_id": "dayservice-24-h27-baseline",
+          "source_id": "mhlw-h27-fee-guidance-redline",
+          "role": "baseline",
+          "page_start": 74,
+          "page_end": 75,
+          "item_text_sha256": "1cf136b78aa581918d1154676419eab68ca34a41a4addad0862946da836d8186"
+        }
+      ],
+      "candidate_text_sha256": "1cf136b78aa581918d1154676419eab68ca34a41a4addad0862946da836d8186",
+      "candidate_text": "定員超過利用に該当する場合の所定単位数の算定について\n       ① 当該事業所の利用定員を上回る利用者を利用させている、い\n        わゆる定員超過利用に対し、介護給付費の減額を行うこととし、\n        厚生労働大臣が定める利用者等の数の基準及び看護職員等の員\n        数の基準並びに通所介護費等の算定方法（平成12年厚生省告示\n        第27号。以下「通所介護費等の算定方法」という において、\n        定員超過利用の基準及び単位数の算定方法を明らかにしている\n        ところであるが、これは、適正なサービスの提供を確保するた\n        めの規定であり、定員超過利用の未然防止を図るよう努めるも\n        のとする。\n       ② この場合の利用者の数は、１月間(暦月)の利用者の数の平均\n        を用いる。この場合、１月間の利用者の数の平均は、当該月に\n        おけるサービス提供日ごとの同時にサービスの提供を受けた者\n        の最大数の合計を、当該月のサービス提供日数で除して得た数\n        とする。この平均利用者数の算定に当たっては、小数点以下を\n        切り上げるものとする。\n\n\n\n4 -\n       ③ 利用者の数が、通所介護費等の算定方法に規定する定員超過\n        利用の基準に該当することとなった事業所については、その翌\n        月から定員超過利用が解消されるに至った月まで、利用者の全\n        員について、所定単位数が通所介護費等の算定方法に規定する\n        算定方法に従って減算され、定員超過利用が解消されるに至っ\n        た月の翌月から通常の所定単位数が算定される。\n       ④ 都道府県知事は、定員超過利用が行われている事業所に対し\n        ては、その解消を行うよう指導すること。当該指導に従わず、\n        定員超過利用が２月以上継続する場合には、特別な事情がある\n        場合を除き、指定の取消しを検討するものとする。\n       ⑤ 災害、虐待の受入れ等やむを得ない理由による定員超過利用\n        については、当該定員超過利用が開始した月（災害等が生じた\n        時期が月末であって、定員超過利用が翌月まで継続することが\n        やむを得ないと認められる場合は翌月も含む の翌月から所定\n        単位数の減算を行うことはせず、やむを得ない理由がないにも\n        かかわらずその翌月まで定員を超過した状態が継続している場\n        合に、災害等が生じた月の翌々月から所定単位数の減算を行う\n        ものとする。\n"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.25",
+      "number_path": [
+        "第2",
+        "7",
+        "25"
+      ],
+      "title": "人員基準欠如に該当する場合の所定単位数の算定について",
+      "effective_as_of": "2026-09-22",
+      "baseline_snapshot_id": "dayservice-25-h27-baseline",
+      "patch_snapshot_ids": [
+        "dayservice-25-r8-patch"
+      ],
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_CURRENT_PATCH_CAPTURED_EXACT_TEXT_PENDING",
+      "replay_coverage_as_of": "2026-09-22",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "evidence": [
+        {
+          "snapshot_id": "dayservice-25-h27-baseline",
+          "source_id": "mhlw-h27-fee-guidance-redline",
+          "role": "baseline",
+          "page_start": 75,
+          "page_end": 76,
+          "item_text_sha256": "50249a56de7361ede61c4a2e4b61be58432387c9dc8b81a1a4ca581276edef3a"
+        },
+        {
+          "snapshot_id": "dayservice-25-r8-patch",
+          "source_id": "mhlw-r8-fee-guidance-may-amendment",
+          "role": "patch",
+          "page_start": 5,
+          "page_end": 6,
+          "patch_text_sha256": "4ea3e385bf06f35d33a8f57bcaf1ad47e3321b540d0413bf8dbee54ba8e5434b",
+          "operation": "insert_before",
+          "baseline_anchor": "③ 都道府県知事は",
+          "note": "令和8年5月8日改正で7(25)②に新設されたホを③の前へ挿入"
+        }
+      ],
+      "candidate_text_sha256": "e825efc01186f5182fdd16e2a0a57c430cb0fc8b46568434aa9b08b5acb5a55c",
+      "candidate_text": "人員基準欠如に該当する場合の所定単位数の算定について\n       ① 当該事業所の看護職員及び介護職員の配置数が人員基準上満\n        たすべき員数を下回っている、いわゆる人員基準欠如に対し、\n        介護給付費の減額を行うこととし、通所介護費等の算定方法に\n        おいて、人員基準欠如の基準及び単位数の算定方法を明らかに\n        しているところであるが、これは、適正なサービスの提供を確\n        保するための規定であり、人員基準欠如の未然防止を図るよう\n        努めるものとする。\n       ② 人員基準欠如についての具体的取扱いは次のとおりとする。\n        イ 看護職員の数は、１月間の職員の数の平均を用いる。この\n         場合、１月間の職員の平均は、当該月のサービス提供日に配\n         置された延べ人数を当該月のサービス提供日数で除して得た\n         数とする。\n        ロ 介護職員の数は、利用者数及び提供時間数から算出する勤\n         務延時間数（サービス提供時間数に関する具体的な取扱いは、\n         「指定居宅サービス等及び指定介護予防サービス等に関する\n         基準について」第三の六の１⑴を参照すること。）を用いる。\n\n\n\n5 -\n            この場合、１月間の勤務延時間数は、配置された職員の１月\n            の勤務延時間数を、当該月において本来確保すべき勤務延時\n            間数で除して得た数とする。\n\n        ハ  人員基準上必要とされる員数から１割を超えて減少した場\n         合にはその翌月から人員基準欠如が解消されるに至った月ま\n         で、利用者全員について所定単位数が通所介護費等の算定方\n         法に規定する算定方法に従って減算する。\n         ・（看護職員の算定式）\n              サービス提供日に配置された延べ人数\n                                   ＜0.9\n                   サービス提供日数\n         ・（介護職員の算定式）\n              当該月に配置された職員の勤務延時間数\n                                  ＜0.9\n              当該月に配置すべき職員の勤務延時間数\n        ニ １割の範囲内で減少した場合には、その翌々月から人員基\n         準欠如が解消されるに至った月まで、利用者等の全員につい\n         て所定単位数が通所介護費等の算定方法に規定する算定方法\n         に従って減算される（ただし、翌月の末日において人員基準\n         を満たすに至っている場合を除く。）。\n         ・（看護職員の算定式）\n                サービス提供日に配置された延べ人数\n          0.9≦                         ＜1.0\n                     サービス提供日数\n         ・（介護職員の算定式）\n                当該月に配置された職員の勤務延時間数\n          0.9≦                         ＜1.0\n                当該月に配置すべき職員の勤務延時間数\nホ 突発的で想定が困難な事象によりやむを得ない事情が\n           生じ、人員基準上必要とされる員数から１割の範囲内で\n           減少した場合であって、次の a から d までの全てに該当\n           するときは、ニの規定にかかわらず、１年に１回に限り、\n           人員欠如の発生が生じた日の属する月の翌々月までの\n           間、通所介護費等の算定方法に規定する算定方法に基づ\n           く減算の適用を猶予する。\n             この場合、職員の確保に係る取組及び一時的に職員を\n           確保できないやむを得ない事情であることを別紙様式７\n           に記載し、人員欠如の発生が生じた日の属する月の翌月\n           までに速やかに都道府県知事に報告すること。なお、別\n           紙様式７には、報告する時点で有効な求人票の写しを添\n           付すること。\n\n\n          ａ 職業安定法（昭和 22 年法律第 141 号）第８条に定め\n           る公共職業安定所（以下単に「公共職業安定所」とい\n           う。）又は都道府県ナースセンター、福祉人材センター\n           等の同法第 33 条に定める無料の職業紹介事業（以下単\n           に「無料職業紹介事業」という。）を活用して職員の確\n           保に係る取組を行っていること。なお、やむを得ない\n           事情が生じていない場合においても、職員の求人を行\n           う場合には、公共職業安定所又は無料職業紹介事業の\n           活用等の職員の確保に係る取組を行っていることが望\n           ましい。\n          ｂ 職員の確保に係る取組に当たって民間職業紹介事業\n           者を利用する場合においては、医療・介護・保育分野に\n           おける適正な有料職業紹介事業者認定制度による適正\n           認定事業者を含むこと。\n          ｃ 公共職業安定所、無料職業紹介事業等を活用して職\n           員の確保に係る取組を行っている場合においても、当\n           該事業所が自ら採用情報をウェブサイトで公表する\n           等、職員の確保に係る取組を積極的に行っていること\n           が望ましい。\n          ｄ やむを得ない事情が生じた場合であっても一時的に\n           職員の確保ができないことにより、一部の職員へ過度\n           な業務負担とならないよう、当該事業所は職員の適正\n           な労働時間管理を行い、体制の整備を図るよう努める\n           こと。\n③ 都道府県知事は、著しい人員基準欠如が継続する場合には、\n        職員の増員、利用定員等の見直し、事業の休止等を指導するこ\n        と。当該指導に従わない場合には、特別な事情がある場合をの\n        ぞき、指定の取消しを検討するものとする。\n"
+    }
+  ]
+}
