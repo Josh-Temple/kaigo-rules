@@ -64,6 +64,10 @@ const noticeCurrentReviewPath = path.join(root, "data", "notice-current-review.j
 const noticeCurrentReview = fs.existsSync(noticeCurrentReviewPath)
   ? JSON.parse(fs.readFileSync(noticeCurrentReviewPath, "utf8"))
   : { reviewed_nodes: [], reviewed_relations: [] };
+const noticeHistoryPath = path.join(root, "data", "notice-historical-backfill.json");
+const noticeHistory = fs.existsSync(noticeHistoryPath)
+  ? JSON.parse(fs.readFileSync(noticeHistoryPath, "utf8"))
+  : [];
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -86,6 +90,7 @@ unique(ordinanceNodes, "id", "ordinance37-nodes");
 unique(ordinanceApplications, "id", "ordinance37-applications");
 unique(noticeSkeleton, "id", "notice-current-skeleton");
 unique(noticeAmendments, "id", "notice-amendment-events");
+unique(noticeHistory, "notice_id", "notice-historical-backfill");
 
 const sourceIds = new Set(sources.map((x) => x.id));
 const ruleIds = new Set(rules.map((x) => x.id));
@@ -296,6 +301,21 @@ if (noticeSkeleton.length) {
     }
   }
 
+  for (const candidate of noticeHistory) {
+    if (!noticeSkeletonIds.has(candidate.notice_id)) {
+      errors.push(`notice history: missing skeleton node ${candidate.notice_id}`);
+    }
+    if (!sourceIds.has(candidate.source_id)) {
+      errors.push(`notice history ${candidate.notice_id}: missing source ${candidate.source_id}`);
+    }
+    if (!candidate.historical_text || !candidate.historical_text_sha256) {
+      errors.push(`notice history ${candidate.notice_id}: missing text or hash`);
+    }
+    if (candidate.candidate_status !== "HISTORICAL_BACKFILL_CANDIDATE" || candidate.requires_forward_replay !== true) {
+      errors.push(`notice history ${candidate.notice_id}: unsafe promotion state`);
+    }
+  }
+
   if (noticeCurrentMeta) {
     if (noticeCurrentMeta.counts?.total !== noticeSkeleton.length) {
       errors.push(`notice meta: total count ${noticeCurrentMeta.counts?.total} does not match ${noticeSkeleton.length}`);
@@ -318,5 +338,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${sources.length} sources.`
+  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${sources.length} sources.`
 );

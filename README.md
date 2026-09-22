@@ -49,6 +49,8 @@ Vercel build の前にも自動実行し、参照切れがある場合は fail c
 - `data/notice-amendment-events.json`: 2021年・2024年等の改正イベント
 - `data/notice-current-meta.json`: 再構成状態・件数・安全条件
 - `data/notice-current-review.json`: 人手確認のオーバーレイ台帳
+- `data/notice-historical-backfill.json`: 過去HTMLから機械抽出した本文候補（現行扱い禁止）
+- `data/notice-historical-backfill-meta.json`: 過去HTML取得元・SHA-256・抽出件数
 - `data/qa-items.json`: 回答ページへ接続済みのQ&A\n- `data/qa-corpus.json`: 公式XLSから機械取り込みしたQ&A（未レビューを含む）\n- `data/qa-corpus-meta.json`: 取得元URL、ハッシュ、抽出件数などの取り込み証跡
 - `data/relationships.json`: 質問と制度ノードの関係
 - `data/startup-steps.json`: 開設準備の導線
@@ -110,3 +112,11 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 5. 順方向再生完了前は「現行統合版」と表示しない
 
 `/notices` はこの再構成状況を確認するためのレビュー画面です。
+
+
+### 過去HTMLからのバックフィル
+
+`Extract historical notice backfill candidates` workflow は、厚生労働省の老企第25号HTMLから旧「通所介護に関する基準」部分を機械抽出します。
+抽出先は `notice-historical-backfill.json` で、状態は必ず `HISTORICAL_BACKFILL_CANDIDATE` です。
+
+この本文はそのまま現行本文へ昇格させません。2021年・2024年等の改正イベントを順方向に再生し、現在側の資料と整合した場合に限って次の確認段階へ進めます。
