@@ -57,6 +57,8 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Claim Registry v0.1 checkpoint](./research/checkpoint-claim-registry-v0.1-2026-09-22.md)
+
 - [Research checkpoint 2026-09-22](./research/checkpoint-2026-09-22.md)
 - [Benchmark v0.2 checkpoint](./research/checkpoint-benchmark-v0.2-2026-09-22.md)
 - [Benchmark v0.3 checkpoint](./research/checkpoint-benchmark-v0.3-2026-09-22.md)
@@ -85,9 +87,17 @@ Evidence Review / 方法 / 検証
 - [Benchmark v0.1](./research/issues/information-search/benchmark/README.md)
 - [Deterministic baseline v0.1](./research/issues/information-search/benchmark/baseline-v0.1.md)
 - [Deterministic baseline v0.2](./research/issues/information-search/benchmark/baseline-v0.2.md)
+- [Pre-RAG benchmark suite v0.5](./research/issues/information-search/benchmark/benchmark-v0.5.json)
+- [External MHLW Q&A query review](./research/issues/information-search/benchmark/external-qa-query-review-v0.1.md)
 - [50-case non-RAG baseline v0.3](./research/issues/information-search/benchmark/baseline-v0.3.md)
 - [Non-RAG Issue Router design](./research/issues/information-search/router-design-v0.1.md)
 - [Benchmark v0.2 scoring](./research/issues/information-search/benchmark/scoring-v0.2.md)
+
+### Claim-level coverage
+
+- [Claim Registry v0.1](./research/claims/claims-v0.1.json)
+- [Claim Registry schema](./research/claims/claim-registry.schema.json)
+- [Claim promotion flow](./research/claims/claim-promotion-flow.md)
 
 ### Methods
 
