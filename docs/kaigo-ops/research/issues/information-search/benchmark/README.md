@@ -1,22 +1,22 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.15 outdoor service claim boundary complete**
+状態: **v0.16 hairdressing / visiting-medical boundary complete**
 
 ## 現在のsuite
 
 合計 **180ケース**。
 
-- `benchmark-v0.15.json`: 50
+- `benchmark-v0.16.json`: 50
 - `coverage-gap-v0.1.json`: 20
 - `false-answer-stress-v0.1.json`: 12
-- `external-qa-query-sample-v0.4.json`: 33
+- `external-qa-query-sample-v0.5.json`: 33
 - `claim-promotion-benchmark-v0.1.json`: 2
 - `claim-routing-natural-language-v0.1.json`: 12
 - `verified-claim-routing-probe-v0.1.json`: 28
 - `multi-claim-routing-v0.1.json`: 5
 - `important-matters-claim-routing-v0.1.json`: 3
-- `municipal-query-sample-v0.3.json`: 15
+- `municipal-query-sample-v0.4.json`: 15
 
 索引:
 
@@ -92,6 +92,9 @@ Source
 - `node scripts/research-coverage-classifier-v0.14.mjs`
 - `node scripts/research-coverage-classifier-v0.16.mjs`
 - `node scripts/research-coverage-classifier-v0.17.mjs`
+- `node scripts/research-coverage-classifier-v0.19.mjs`
+- `node scripts/research-claim-registry-validate-v0.13.mjs`
+- `node scripts/research-claim-compositions-validate-v0.5.mjs`
 - `node scripts/research-claim-registry-validate-v0.11.mjs`
 - `node scripts/research-claim-registry-validate-v0.10.mjs`
 - `node scripts/research-claim-registry-validate-v0.8.mjs`
@@ -102,11 +105,9 @@ Source
 
 ## 次の再開点
 
-1. 理美容の提供者・資格境界を独立review
-2. 訪問診療・訪問歯科を独立review
-3. 別自治体のqueryを追加
-4. human safety prose sign-off
-5. source limitationのcurrent reconstruction
-6. controlled RAG comparison
+1. 別自治体の外部queryを追加
+2. safety proseのhuman sign-off
+3. source limitationのcurrent reconstruction
+4. controlled RAG comparison
 
 RAGはまだ実装しない。
