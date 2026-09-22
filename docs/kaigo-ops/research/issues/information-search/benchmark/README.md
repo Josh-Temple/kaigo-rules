@@ -1,13 +1,13 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.16 hairdressing / visiting-medical boundary complete**
+状態: **v0.17 second municipal source gate complete**
 
 ## 現在のsuite
 
-合計 **180ケース**。
+合計 **190ケース**。
 
-- `benchmark-v0.16.json`: 50
+- `benchmark-v0.17.json`: 50
 - `coverage-gap-v0.1.json`: 20
 - `false-answer-stress-v0.1.json`: 12
 - `external-qa-query-sample-v0.5.json`: 33
@@ -16,7 +16,7 @@
 - `verified-claim-routing-probe-v0.1.json`: 28
 - `multi-claim-routing-v0.1.json`: 5
 - `important-matters-claim-routing-v0.1.json`: 3
-- `municipal-query-sample-v0.4.json`: 15
+- `municipal-query-sample-v0.5.json`: 25
 
 索引:
 
@@ -44,7 +44,7 @@
 - external ANSWER expected Claim ID: 6 / 6
 - municipal query label + provenance: 15 / 15
 - verified regression Issue fallback: 0 / 51
-- classifier checks: 181 / 181
+- classifier checks: 191 / 191
 - verified regression: 51 / 51
 
 ### Safety prose
@@ -93,6 +93,7 @@ Source
 - `node scripts/research-coverage-classifier-v0.16.mjs`
 - `node scripts/research-coverage-classifier-v0.17.mjs`
 - `node scripts/research-coverage-classifier-v0.19.mjs`
+- `node scripts/research-coverage-classifier-v0.20.mjs`
 - `node scripts/research-claim-registry-validate-v0.13.mjs`
 - `node scripts/research-claim-compositions-validate-v0.5.mjs`
 - `node scripts/research-claim-registry-validate-v0.11.mjs`
@@ -105,9 +106,9 @@ Source
 
 ## 次の再開点
 
-1. 別自治体の外部queryを追加
-2. safety proseのhuman sign-off
-3. source limitationのcurrent reconstruction
+1. safety proseのhuman sign-off
+2. source limitationのcurrent reconstruction
+3. 3自治体目は新しいsemantic familyがある場合だけ追加
 4. controlled RAG comparison
 
 RAGはまだ実装しない。
