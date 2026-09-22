@@ -1,0 +1,56 @@
+name: Verify remuneration sources independently
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/verify_remuneration_independent.py"
+      - "scripts/import_current_remuneration.py"
+      - "scripts/import_remuneration_delegated.py"
+      - "data/remuneration-current-text.json"
+      - "data/remuneration-current-text-meta.json"
+      - "data/remuneration-delegated-nodes.json"
+      - "data/remuneration-delegated-meta.json"
+      - ".github/workflows/verify-remuneration-independent.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/verify_remuneration_independent.py"
+      - "scripts/import_current_remuneration.py"
+      - "scripts/import_remuneration-delegated.py"
+      - "data/remuneration-current-text.json"
+      - "data/remuneration-current-text-meta.json"
+      - "data/remuneration-delegated-nodes.json"
+      - "data/remuneration-delegated-meta.json"
+      - ".github/workflows/verify-remuneration-independent.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Reparse current MHLW remuneration sources independently
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_remuneration_independent.py --report remuneration-independent-verification.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: remuneration-independent-verification
+          path: remuneration-independent-verification.json
+          if-no-files-found: warn
+      - name: Fail on verification differences
+        if: steps.verify.outputs.exit_code != '0'
+        run: exit 1

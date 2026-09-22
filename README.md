@@ -133,6 +133,14 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 
 `Update current day-service remuneration text` workflow は、厚生労働省の現行告示19 HTMLから「6 通所介護費」を抽出し、基本報酬3区分・注1〜24・ニ・ホの計29区画へ分割します。生成状態は `IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK` で、人手照合前に確認済みへ昇格しません。
 
+### 報酬ソースの独立機械照合
+
+`scripts/verify_remuneration_independent.py` は、告示19号・27号・95号の現行厚生労働省HTMLを、取込スクリプトとは別のPython標準ライブラリHTMLパーサーで再解析します。
+
+告示19号は通所介護費29区画、告示27号は通所介護関係3区画、告示95号は通所介護関係13区画と処遇改善加算の準用元1区画を独立抽出し、コミット済み本文を空白・文字幅の差を除いて比較します。公式HTMLのSHA-256と件数も照合し、差異があればfail closedで失敗します。
+
+この照合は独立した機械検証であり、人手確認済み・`VERIFIED_CURRENT` への昇格には使いません。通常の報酬更新workflowでも、生成結果を保存する前に独立照合を実行します。
+
 
 ## 介護保険法レイヤー
 
