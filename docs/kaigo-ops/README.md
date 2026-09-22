@@ -55,6 +55,10 @@ Evidence Review / 方法 / 検証
 7. 高頻度更新を目的化しない。初回の深い調査と、定期的な再調査・差分更新を重視する。
 8. サイト数はKPIにしない。介護で型を検証してから他業界への展開を判断する。
 
+## Current checkpoint
+
+- [Research checkpoint 2026-09-22](./research/checkpoint-2026-09-22.md)
+
 ## Research outputs
 
 ### World landscape
