@@ -187,5 +187,23 @@
     "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
     "status": "current_official_source",
     "note": "地域区分とサービス種類に応じた一単位の単価を定める告示。通所介護の単位数を金額へ換算する際に参照する別法源。"
+  },
+  {
+    "id": "mhlw-fee-criteria95-current",
+    "layer": "厚生労働大臣基準告示",
+    "title": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+    "status": "current_official_source",
+    "note": "通所介護のサービス提供体制強化加算、介護職員等処遇改善加算など、報酬告示から委任される基準を含む別告示。"
+  },
+  {
+    "id": "mhlw-fee-interpretation-historical",
+    "layer": "報酬留意事項通知",
+    "title": "指定居宅サービスに要する費用の額の算定に関する基準等の実施上の留意事項について（老企第36号・厚生労働省HTML）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4378&dataType=1&pageNo=1",
+    "status": "historical_reference",
+    "note": "通所介護費の旧取扱いを確認できる厚生労働省HTML。現行の統合通知とはみなさず、後年の改正通知を順方向に再生する際の過去参照としてのみ使用する。"
   }
 ]
