@@ -58,6 +58,7 @@ Evidence Review / 方法 / 検証
 ## Current checkpoint
 
 - [Research checkpoint 2026-09-22](./research/checkpoint-2026-09-22.md)
+- [Benchmark v0.2 checkpoint](./research/checkpoint-benchmark-v0.2-2026-09-22.md)
 
 ## Research outputs
 
@@ -82,6 +83,8 @@ Evidence Review / 方法 / 検証
 - [実験計画](./research/issues/information-search/experiment-plan.md)
 - [Benchmark v0.1](./research/issues/information-search/benchmark/README.md)
 - [Deterministic baseline v0.1](./research/issues/information-search/benchmark/baseline-v0.1.md)
+- [Deterministic baseline v0.2](./research/issues/information-search/benchmark/baseline-v0.2.md)
+- [Benchmark v0.2 scoring](./research/issues/information-search/benchmark/scoring-v0.2.md)
 
 ### Methods
 
