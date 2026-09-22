@@ -1,21 +1,22 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.6 first claim promotion complete**
+状態: **v0.7 claim routing natural-language gate complete**
 
 ## 現在のsuite
 
-合計 **99ケース**。
+合計 **111ケース**。
 
 - `benchmark-v0.3.json`: 50
 - `coverage-gap-v0.1.json`: 20
 - `false-answer-stress-v0.1.json`: 12
 - `external-qa-query-sample-v0.2.json`: 15
 - `claim-promotion-benchmark-v0.1.json`: 2
+- `claim-routing-natural-language-v0.1.json`: 12
 
 索引:
 
-- `benchmark-v0.6.json`
+- `benchmark-v0.7.json`
 
 ## 主結果
 
@@ -32,7 +33,8 @@
 - false-ANSWER stress: 12 / 12
 - external MHLW Q&A query sample: 15 / 15
 - claim promotion paraphrase: 2 / 2
-- classifier checks: 100 / 100
+- claim routing natural language: 12 / 12
+- classifier checks: 112 / 112
 - verified regression: 51 / 51
 
 ### Safety prose
@@ -74,14 +76,17 @@ Source
 - `node scripts/research-coverage-classifier-v0.2.mjs`
 - `node scripts/research-coverage-classifier-v0.3.mjs`
 - `node scripts/research-coverage-classifier-v0.5.mjs`
+- `node scripts/research-coverage-classifier-v0.6.mjs`
 - `node scripts/research-claim-registry-validate-v0.2.mjs`
+- `node scripts/research-claim-registry-validate-v0.3.mjs`
 
 ## 次の再開点
 
-1. false-abstention test
+1. natural-language queryを外部・実利用由来へ広げる
 2. verified claim routingの段階的拡張
-3. human sign-off
-4. source limitationのcurrent reconstruction
-5. RAG comparison
+3. Issue-level fallback依存率を測る
+4. human sign-off
+5. source limitationのcurrent reconstruction
+6. RAG comparison
 
 RAGはまだ実装しない。
