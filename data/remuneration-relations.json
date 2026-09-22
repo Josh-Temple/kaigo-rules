@@ -1,0 +1,38 @@
+[
+  {
+    "from_fee_id": "fee.dayservice.root",
+    "relation": "defined_service_by",
+    "to_id": "ordinance37.article.92",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.note.1",
+    "relation": "staffing_calculation_delegated_to",
+    "to_source_id": "mhlw-fee-notice27-base",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.note.2",
+    "relation": "operational_basis_related_to",
+    "to_id": "ordinance37.article.105",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.note.3",
+    "relation": "operational_basis_related_to",
+    "to_id": "ordinance37.article.30-2",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.note.13",
+    "relation": "related_to",
+    "to_id": "ordinance37.article.99",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.note.15",
+    "relation": "related_to",
+    "to_id": "ordinance37.article.98",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  }
+]
