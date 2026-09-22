@@ -1,0 +1,352 @@
+[
+  {
+    "guidance_id": "fee-guidance.dayservice.4",
+    "baseline": {
+      "source_id": "mhlw-historical-fee-guidance-pdf",
+      "period": "historical",
+      "status": "TEXT_SOURCE_IDENTIFIED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NUMBERING_CONTINUITY_WITH_BODY_OMITTED",
+        "mapping": "旧7(2)系統→現行7(4)",
+        "evidence": "令和6年度新欄で7(4)〜7(7の2)は略。2項目新設に伴う番号移動を確認。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r7-fee-guidance-may-amendment",
+        "effective_from": "2025-05-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "別紙で7〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-interpretation-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "令和8年3月13日改正資料で6〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_THIS_ITEM",
+        "evidence": "7(1)〜(24)は新旧とも略。7(25)のみ改正。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+    "coverage_as_of": "2026-09-22",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "guidance_id": "fee-guidance.dayservice.5",
+    "baseline": {
+      "source_id": "mhlw-h30-fee-guidance-redline",
+      "period": "2018",
+      "status": "AMENDMENT_STATE_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-r3-fee-guidance-redline",
+        "effective_from": "2021-04-01",
+        "effect": "NO_LATER_TEXT_CHANGE_IDENTIFIED_IN_CAPTURED_RANGE",
+        "evidence": "令和3年度資料で通所介護費の当該前半項目は改正対象として本文変更が示されていない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NUMBERING_CONTINUITY_WITH_BODY_OMITTED",
+        "mapping": "旧7(3)系統→現行7(5)",
+        "evidence": "令和6年度新欄で7(4)〜7(7の2)は略。番号移動後も見出し位置を維持。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r7-fee-guidance-may-amendment",
+        "effective_from": "2025-05-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "別紙で7〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-interpretation-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "令和8年3月13日改正資料で6〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_THIS_ITEM",
+        "evidence": "7(1)〜(24)は新旧とも略。7(25)のみ改正。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+    "coverage_as_of": "2026-09-22",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "guidance_id": "fee-guidance.dayservice.6",
+    "baseline": {
+      "source_id": "mhlw-r3-fee-guidance-redline",
+      "period": "2021",
+      "status": "AMENDMENT_STATE_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NUMBERING_CONTINUITY_WITH_BODY_OMITTED",
+        "mapping": "旧7(4)→現行7(6)",
+        "evidence": "令和6年度新欄で7(4)〜7(7の2)は略。2項目新設による番号移動を確認。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r7-fee-guidance-may-amendment",
+        "effective_from": "2025-05-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "別紙で7〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-interpretation-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "令和8年3月13日改正資料で6〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_THIS_ITEM",
+        "evidence": "7(1)〜(24)は新旧とも略。7(25)のみ改正。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+    "coverage_as_of": "2026-09-22",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "guidance_id": "fee-guidance.dayservice.7",
+    "baseline": {
+      "source_id": "mhlw-historical-fee-guidance-pdf",
+      "period": "historical",
+      "status": "TEXT_SOURCE_IDENTIFIED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-r3-fee-guidance-redline",
+        "effective_from": "2021-04-01",
+        "effect": "HEADING_CONTINUITY_CONFIRMED",
+        "evidence": "令和3年度時点で災害時等の取扱いが通所介護費の項目として継続。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NUMBERING_CONTINUITY_WITH_BODY_OMITTED",
+        "mapping": "旧7(5)→現行7(7)",
+        "evidence": "令和6年度新欄で7(4)〜7(7の2)は略。番号移動を確認。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r7-fee-guidance-may-amendment",
+        "effective_from": "2025-05-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "別紙で7〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-interpretation-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "令和8年3月13日改正資料で6〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_THIS_ITEM",
+        "evidence": "7(1)〜(24)は新旧とも略。7(25)のみ改正。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+    "coverage_as_of": "2026-09-22",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "guidance_id": "fee-guidance.dayservice.7-2",
+    "baseline": {
+      "source_id": "mhlw-r3-fee-guidance-redline",
+      "period": "2021",
+      "status": "INTRODUCTION_STATE_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NUMBERING_CONTINUITY_WITH_BODY_OMITTED",
+        "mapping": "旧7(5)の2→現行7(7)の2",
+        "evidence": "令和6年度新欄で7(4)〜7(7の2)は略。番号移動を確認。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r7-fee-guidance-may-amendment",
+        "effective_from": "2025-05-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "別紙で7〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-interpretation-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "令和8年3月13日改正資料で6〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_THIS_ITEM",
+        "evidence": "7(1)〜(24)は新旧とも略。7(25)のみ改正。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+    "coverage_as_of": "2026-09-22",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "guidance_id": "fee-guidance.dayservice.18",
+    "baseline": {
+      "source_id": "mhlw-r3-fee-guidance-redline",
+      "period": "2021",
+      "status": "AMENDMENT_STATE_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NUMBERING_CONTINUITY_WITH_BODY_OMITTED",
+        "mapping": "旧7(16)→現行7(18)",
+        "evidence": "令和6年度新欄で7(16)〜7(18)は略、旧欄は7(14)〜7(16)が略。番号移動を確認。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r7-fee-guidance-may-amendment",
+        "effective_from": "2025-05-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "別紙で7〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-interpretation-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "令和8年3月13日改正資料で6〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_THIS_ITEM",
+        "evidence": "7(1)〜(24)は新旧とも略。7(25)のみ改正。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
+    "coverage_as_of": "2026-09-22",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "guidance_id": "fee-guidance.dayservice.24",
+    "baseline": {
+      "source_id": "mhlw-r6-fee-guidance-redline",
+      "period": "2024",
+      "status": "CURRENT_NUMBER_AND_TOPIC_ONLY_BODY_MISSING"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NUMBERING_CONTINUITY_WITH_BODY_OMITTED",
+        "mapping": "旧7(22)→現行7(24)",
+        "evidence": "令和6年度新欄で7(24)・7(25)は略。通所リハ側の参照から現行7(24)の主題を確認。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r7-fee-guidance-may-amendment",
+        "effective_from": "2025-05-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "別紙で7〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-interpretation-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "令和8年3月13日改正資料で6〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_THIS_ITEM",
+        "evidence": "7(1)〜(24)は新旧とも略。7(25)のみ改正。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "BASE_BODY_SOURCE_PENDING",
+    "coverage_as_of": "2026-09-22",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "guidance_id": "fee-guidance.dayservice.25",
+    "baseline": {
+      "source_id": "mhlw-r6-fee-guidance-redline",
+      "period": "2024",
+      "status": "CURRENT_NUMBER_AND_TOPIC_ONLY_BODY_MISSING"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NUMBERING_CONTINUITY_WITH_BODY_OMITTED",
+        "mapping": "旧7(23)→現行7(25)",
+        "evidence": "令和6年度新欄で7(24)・7(25)は略。番号移動を確認。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r7-fee-guidance-may-amendment",
+        "effective_from": "2025-05-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "別紙で7〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-interpretation-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "NO_CHANGE_SHOWN_FOR_DAY_SERVICE_SECTION",
+        "evidence": "令和8年3月13日改正資料で6〜9は新旧とも略",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "effective_from": "2026-06-01",
+        "effect": "MODIFIED",
+        "evidence": "7(25)②にホを新設。1割以内の一時的人員欠如について一定条件下の減算猶予を追加。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "BASE_BODY_SOURCE_PENDING_CURRENT_PATCH_CAPTURED",
+    "coverage_as_of": "2026-09-22",
+    "human_verification_status": "NOT_REVIEWED"
+  }
+]
