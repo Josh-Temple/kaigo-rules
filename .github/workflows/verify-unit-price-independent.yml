@@ -2,6 +2,8 @@ name: Verify day-service unit price independently
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "11 3 * * 1"
   pull_request:
     paths:
       - "scripts/verify_unit_price_independent.py"
