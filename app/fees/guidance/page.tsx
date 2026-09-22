@@ -31,7 +31,8 @@ const label:Record<string,string>={
 const replayLabel:Record<string,string>={
   CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING:"改正履歴確認済み・原文抽出待ち",
   BASE_BODY_SOURCE_PENDING:"基礎本文の取得待ち",
-  BASE_BODY_SOURCE_PENDING_CURRENT_PATCH_CAPTURED:"基礎本文待ち・最新改正取得済み"
+  BASE_BODY_SOURCE_PENDING_CURRENT_PATCH_CAPTURED:"基礎本文待ち・最新改正取得済み",
+  CHECKPOINT_CHAIN_COMPLETE_CURRENT_PATCH_CAPTURED_EXACT_TEXT_PENDING:"改正履歴確認済み・最新改正取得済み・原文統合待ち"
 };
 
 const feeHref=(id:string)=>"/fees/"+id.replace("fee.dayservice.","");
@@ -140,8 +141,8 @@ export default function FeeGuidancePage(){
     <section className="section">
       <h2>次の工程</h2>
       <p>
-        改正履歴の通過確認ができた6項目は、根拠PDFから本文を正確に抽出して現行本文候補を作ります。
-        7(24)・7(25)は基礎本文の公式ソースを追加で確保し、7(25)には令和8年5月8日改正を重ねたうえで、人手確認用の候補へ進めます。
+        8項目すべてで基礎資料と後続改正の経路を確保しました。次は根拠PDFの本文を項目単位で正確に統合し、
+        7(25)には令和8年5月8日改正を重ねたうえで、人手確認用の現行本文候補を作ります。
       </p>
     </section>
   </article>;
