@@ -737,10 +737,12 @@ if (feeGuidance.length) {
       if (!manifestSegment) errors.push(`fee guidance snapshots: segment not in manifest ${snapshot.id}`);
       if (!sourceIds.has(snapshot.source_id)) errors.push(`fee guidance snapshots ${snapshot.id}: missing source ${snapshot.source_id}`);
       if (!snapshot.text || !snapshot.text_sha256) errors.push(`fee guidance snapshots ${snapshot.id}: missing text/hash`);
-      if (!snapshot.current_side_text || !snapshot.current_side_text_sha256) errors.push(`fee guidance snapshots ${snapshot.id}: missing current-side text/hash`);
-      if (!["left","right"].includes(snapshot.current_column)) errors.push(`fee guidance snapshots ${snapshot.id}: invalid current column`);
-      if (manifestSegment && snapshot.current_column !== feeGuidanceSourceManifest?.source_layouts?.[snapshot.source_id]?.current_column) {
-        errors.push(`fee guidance snapshots ${snapshot.id}: current column differs from manifest`);
+      if ((feeGuidanceSnapshots.format_version || 1) >= 2) {
+        if (!snapshot.current_side_text || !snapshot.current_side_text_sha256) errors.push(`fee guidance snapshots ${snapshot.id}: missing current-side text/hash`);
+        if (!["left","right"].includes(snapshot.current_column)) errors.push(`fee guidance snapshots ${snapshot.id}: invalid current column`);
+        if (manifestSegment && snapshot.current_column !== feeGuidanceSourceManifest?.source_layouts?.[snapshot.source_id]?.current_column) {
+          errors.push(`fee guidance snapshots ${snapshot.id}: current column differs from manifest`);
+        }
       }
       if (snapshot.verification_status !== "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK") errors.push(`fee guidance snapshots ${snapshot.id}: unsafe verification status`);
     }
