@@ -73,11 +73,11 @@ class VisibleTextParser(HTMLParser):
         self.suppressed_depth = 0
 
     def handle_starttag(self, tag: str, attrs) -> None:
-        if tag.lower() in {"script", "style"}:
+        if tag.lower() in {"script", "style", "rt", "rp"}:
             self.suppressed_depth += 1
 
     def handle_endtag(self, tag: str) -> None:
-        if tag.lower() in {"script", "style"} and self.suppressed_depth:
+        if tag.lower() in {"script", "style", "rt", "rp"} and self.suppressed_depth:
             self.suppressed_depth -= 1
 
     def handle_data(self, data: str) -> None:
