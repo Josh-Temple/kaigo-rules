@@ -1,6 +1,13 @@
 {
   "format_version": 1,
   "review_status": "NOT_STARTED",
+  "policy": "Human verification is stored separately from generated remuneration text. A review remains valid only while the reviewed text_sha256 matches the current imported official text.",
   "reviewed_nodes": [],
-  "reviewed_relations": []
+  "reviewed_relations": [],
+  "review_method_required": [
+    "Open the current official MHLW source for the remuneration node",
+    "Compare heading, units/rates, conditions, exclusions and hierarchy",
+    "Check delegated criteria in separate notices when the text says 別に厚生労働大臣が定める基準",
+    "Record the current imported text_sha256 and review date"
+  ]
 }

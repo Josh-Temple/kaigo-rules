@@ -132,3 +132,10 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 ### 現行報酬本文の機械取込
 
 `Update current day-service remuneration text` workflow は、厚生労働省の現行告示19 HTMLから「6 通所介護費」を抽出し、基本報酬3区分・注1〜24・ニ・ホの計29区画へ分割します。生成状態は `IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK` で、人手照合前に確認済みへ昇格しません。
+
+
+### 報酬DBの人手レビュー
+
+`remuneration-review.json` は機械取込本文とは分離した確認台帳です。確認済みノードには `fee_id` と確認時の `text_sha256` を保存します。厚生労働省の現行HTMLが更新され、同じノードの本文ハッシュが変わった場合は `validate:data` が stale review として失敗し、再確認を要求します。
+
+`/fees/[id]` では、現行公式本文、告示19号から別告示・基準省令への関係、令和8年度改定の証跡、本文ハッシュを確認できます。

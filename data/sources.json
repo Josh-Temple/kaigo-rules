@@ -178,5 +178,14 @@
     "url": "https://www.mhlw.go.jp/content/12404000/001682729.pdf",
     "status": "partial_source",
     "note": "令和8年度改正に係る新旧対照表。通所介護の留意事項を網羅する統合全文ではない。"
+  },
+  {
+    "id": "mhlw-unit-price-current",
+    "layer": "一単位単価告示",
+    "title": "厚生労働大臣が定める一単位の単価（厚生労働省告示第93号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+    "status": "current_official_source",
+    "note": "地域区分とサービス種類に応じた一単位の単価を定める告示。通所介護の円換算に必要な別法源。"
   }
 ]

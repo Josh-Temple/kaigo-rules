@@ -88,6 +88,10 @@ const feeCurrentTextPath = path.join(root, "data", "remuneration-current-text.js
 const feeCurrentText = fs.existsSync(feeCurrentTextPath)
   ? JSON.parse(fs.readFileSync(feeCurrentTextPath, "utf8"))
   : [];
+const feeReviewPath = path.join(root, "data", "remuneration-review.json");
+const feeReview = fs.existsSync(feeReviewPath)
+  ? JSON.parse(fs.readFileSync(feeReviewPath, "utf8"))
+  : { reviewed_nodes: [], reviewed_relations: [] };
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -380,11 +384,39 @@ if (feeSkeleton.length) {
     for (const id of event.target_ids || []) if (!feeIds.has(id)) errors.push(`fee amendment ${event.id}: missing target ${id}`);
   }
   for (const entry of feeSourceChain) if (!sourceIds.has(entry.source_id)) errors.push(`fee source chain: missing source ${entry.source_id}`);
+  const feeTextById = new Map(feeCurrentText.map((record) => [record.fee_id, record]));
   for (const record of feeCurrentText) {
     if (!feeIds.has(record.fee_id)) errors.push(`fee current text: missing skeleton node ${record.fee_id}`);
     if (!sourceIds.has(record.source_id)) errors.push(`fee current text ${record.fee_id}: missing source ${record.source_id}`);
     if (!record.official_text || !record.text_sha256) errors.push(`fee current text ${record.fee_id}: missing text/hash`);
     if (record.import_status !== "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK") errors.push(`fee current text ${record.fee_id}: unexpected status`);
+  }
+
+  for (const review of feeReview.reviewed_nodes || []) {
+    if (!feeIds.has(review.fee_id)) {
+      errors.push(`fee review: missing node ${review.fee_id}`);
+      continue;
+    }
+    const current = feeTextById.get(review.fee_id);
+    if (!current) {
+      errors.push(`fee review ${review.fee_id}: no imported current text`);
+      continue;
+    }
+    if (review.text_sha256 !== current.text_sha256) {
+      errors.push(`fee review ${review.fee_id}: reviewed hash is stale`);
+    }
+    if (review.status !== "HUMAN_VERIFIED_AGAINST_OFFICIAL_SOURCE") {
+      errors.push(`fee review ${review.fee_id}: unexpected status ${review.status}`);
+    }
+  }
+
+  for (const review of feeReview.reviewed_relations || []) {
+    if (!review.from_fee_id || !feeIds.has(review.from_fee_id)) {
+      errors.push(`fee relation review: missing fee node ${review.from_fee_id}`);
+    }
+    if (review.status !== "HUMAN_VERIFIED") {
+      errors.push(`fee relation review ${review.from_fee_id}: unexpected status ${review.status}`);
+    }
   }
 }
 
