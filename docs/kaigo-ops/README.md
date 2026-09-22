@@ -55,15 +55,28 @@ Evidence Review / 方法 / 検証
 7. 高頻度更新を目的化しない。初回の深い調査と、定期的な再調査・差分更新を重視する。
 8. サイト数はKPIにしない。介護で型を検証してから他業界への展開を判断する。
 
-## 関連文書
+## Research outputs
+
+### World landscape
+
+- [World care DX / AI map plan](./world-care-dx-map-plan.md)
+- [Initial landscape](./research/world-care-dx-map/initial-landscape.md)
+- [Global source register](./research/world-care-dx-map/source-register.csv)
+- [Search log 2026-09-22](./research/world-care-dx-map/search-log-2026-09-22.md)
+
+### Japan
+
+- [日本の介護DX・ICT — 定量Evidence整理](./research/japan/japan-quantitative-evidence-2026-09-22.md)
+
+### First deep Issue
+
+- [必要な情報を探すのに時間がかかる](./research/issues/information-search/README.md)
+- [Evidence register](./research/issues/information-search/evidence-register.csv)
+- [介護ルール情報探索benchmark](./research/issues/information-search/experiment-plan.md)
+
+### Methods
 
 - [Product strategy](./product-strategy.md)
 - [Research protocol](./research-protocol.md)
-- [World care DX / AI map plan](./world-care-dx-map-plan.md)
-- [World care DX / AI initial landscape](./research/world-care-dx-map/initial-landscape.md)
-- [World care DX / AI source register](./research/world-care-dx-map/source-register.csv)
-- [Search log 2026-09-22](./research/world-care-dx-map/search-log-2026-09-22.md)
-- [First deep Issue: 必要な情報を探すのに時間がかかる](./research/issues/information-search/README.md)
-- [First Issue evidence register](./research/issues/information-search/evidence-register.csv)
-- [介護ルールを使った情報探索benchmark案](./research/issues/information-search/experiment-plan.md)
+- [Evidence Register Schema](./research/evidence-schema.md)
 - [Roadmap](./roadmap.md)
