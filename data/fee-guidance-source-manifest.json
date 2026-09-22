@@ -1,5 +1,5 @@
 {
-  "format_version": 1,
+  "format_version": 2,
   "output_path": "data/fee-guidance-source-snapshots.json",
   "policy": "Official PDF page snapshots are machine-extracted reconstruction material only. They never change human-review status or current official_text by themselves.",
   "segments": [
@@ -131,5 +131,27 @@
       ],
       "note": "令和8年6月算定分からの人員基準欠如特例"
     }
-  ]
+  ],
+  "source_layouts": {
+    "mhlw-h27-fee-guidance-redline": {
+      "current_column": "right",
+      "header_semantics": "改正前|改正後",
+      "evidence_note": "H27 PDF page 1 header places 改正前 on the left and 改正後 on the right."
+    },
+    "mhlw-h30-fee-guidance-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "H30 PDF header places 新 on the left and 旧 on the right."
+    },
+    "mhlw-r3-fee-guidance-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "R3 amendment table uses new text on the left and old text on the right."
+    },
+    "mhlw-r8-fee-guidance-may-amendment": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "R8 May amendment table places 新 on the left and 旧 on the right."
+    }
+  }
 }
