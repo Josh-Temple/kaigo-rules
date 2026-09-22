@@ -187,6 +187,14 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 
 `/fees/guidance` で骨格と報酬告示との対応を確認できます。
 
+## 一単位単価の独立機械照合
+
+`scripts/verify_unit_price_independent.py` は、取込処理 `scripts/import_unit_price.py` を再利用せず、Python標準ライブラリのHTMLパーサーで厚生労働省の現行HTMLを別経路から再解析します。
+
+8地域区分の単価、明示指定された市区町村、`その他` のデフォルト規則、公式HTMLのSHA-256をコミット済みデータと比較し、差異があれば失敗します。この結果は独立した機械照合であり、人手確認済み・`VERIFIED_CURRENT` への昇格には使いません。
+
+`Verify day-service unit price independently` workflow は単価データや検証器の変更時に実行します。また、通常の単価更新workflowでも、生成結果を保存する前にこの独立照合を通します。
+
 ## 一単位単価の人手レビュー
 
 `unit-price-review.json` は、8地域区分の単価と市区町村割当の人手確認を生成データとは別に保持します。確認済みデータがある状態で公式ソースSHA-256が変化した場合、`validate:data` は stale review として失敗します。
