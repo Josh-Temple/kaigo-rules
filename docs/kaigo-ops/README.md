@@ -60,4 +60,7 @@ Evidence Review / 方法 / 検証
 - [Product strategy](./product-strategy.md)
 - [Research protocol](./research-protocol.md)
 - [World care DX / AI map plan](./world-care-dx-map-plan.md)
+- [World care DX / AI initial landscape](./research/world-care-dx-map/initial-landscape.md)
+- [World care DX / AI source register](./research/world-care-dx-map/source-register.csv)
+- [Search log 2026-09-22](./research/world-care-dx-map/search-log-2026-09-22.md)
 - [Roadmap](./roadmap.md)
