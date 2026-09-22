@@ -1,0 +1,134 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-22",
+  "policy": "Composition rules may combine only independently verified ANSWER claims. A composition does not broaden any component claim beyond its own boundaries.",
+  "compositions": [
+    {
+      "composition_id": "composition.staff.nurse.presence-and-linkage",
+      "issue_id": "nurse-staffing",
+      "description": "看護職員の基本配置と、提供時間帯を通じた常駐の要否・外部連携をまとめて説明する。",
+      "answerability": "ANSWER",
+      "required_groups": [
+        [
+          "看護職員",
+          "看護師"
+        ],
+        [
+          "ずっと",
+          "常駐",
+          "サービス提供中",
+          "提供時間中"
+        ],
+        [
+          "事業所",
+          "いる必要",
+          "いないと",
+          "基準違反"
+        ]
+      ],
+      "claim_ids": [
+        "claim.staff.nurse.unit-one",
+        "claim.staff.nurse.external-linkage"
+      ],
+      "boundaries": [
+        "外部連携の具体的な距離・駆けつけ時間を一律基準として推測しない。"
+      ]
+    },
+    {
+      "composition_id": "composition.staff.multiple-roles.general",
+      "issue_id": "multiple-roles",
+      "description": "職種を特定していない一般的な兼務質問に、職種別のverified claimを組み合わせて答える。",
+      "answerability": "ANSWER",
+      "required_groups": [
+        [
+          "複数の役割",
+          "複数の職種",
+          "複数職種",
+          "兼務"
+        ],
+        [
+          "一人の職員",
+          "1人の職員",
+          "同じ職員",
+          "同じ人",
+          "まとめて"
+        ]
+      ],
+      "claim_ids": [
+        "claim.staff.manager.concurrent.core",
+        "claim.staff.care-worker.cross-unit",
+        "claim.staff.functional-instructor.other-duties",
+        "claim.staff.schedule-clarity"
+      ],
+      "boundaries": [
+        "特定の職種組合せが示された場合は、その組合せに必要なClaimだけを優先する。",
+        "同一時間の重複計上可否を一般化しない。"
+      ]
+    },
+    {
+      "composition_id": "composition.care-plan.content-explain-record",
+      "issue_id": "care-plan-content",
+      "description": "通所介護計画の記載内容、説明、作成後の記録を一括で尋ねる質問。",
+      "answerability": "ANSWER",
+      "required_groups": [
+        [
+          "通所介護計画",
+          "計画書"
+        ],
+        [
+          "何を書き",
+          "何を書く",
+          "記載内容"
+        ],
+        [
+          "説明"
+        ],
+        [
+          "記録",
+          "作成後"
+        ]
+      ],
+      "claim_ids": [
+        "claim.care-plan.content",
+        "claim.care-plan.explain-consent",
+        "claim.care-plan.progress-record"
+      ],
+      "boundaries": [
+        "署名・押印の要否は別Claim。",
+        "交付まで質問されている場合は交付Claimも別途追加する。"
+      ]
+    },
+    {
+      "composition_id": "composition.training.annual-core",
+      "issue_id": "annual-training",
+      "description": "全国共通の基準で毎年確認する主要研修をまとめる。",
+      "answerability": "ANSWER",
+      "required_groups": [
+        [
+          "研修"
+        ],
+        [
+          "毎年",
+          "年1回",
+          "年間"
+        ],
+        [
+          "何ですか",
+          "何が",
+          "一覧",
+          "どんな",
+          "必要"
+        ]
+      ],
+      "claim_ids": [
+        "claim.training.bcp.annual-frequency",
+        "claim.training.infection.annual-frequency",
+        "claim.training.abuse.annual-newhire"
+      ],
+      "boundaries": [
+        "認知症介護基礎研修など、対象者や受講時期が異なる研修を『毎年1回』と一般化しない。",
+        "消防法や自治体独自の訓練・研修は別scope。"
+      ]
+    }
+  ]
+}
