@@ -9,8 +9,8 @@ const chain = chainData as Array<any>;
 const sources = sourcesData as Array<any>;
 
 const labels: Record<string,string> = {
-  BASE_TEXT_REPLAY_PENDING:"ベース本文・最新改正再生待ち",
-  KNOWN_AFTER_TEXT:"令和8年改正後文あり",
+  CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK:"現行構造・人手確認待ち",
+  CURRENT_AFTER_TEXT_NEEDS_HUMAN_CHECK:"令和8年改正後文・人手確認待ち",
   OUT_OF_CORE_SCOPE:"コア範囲外",
   VERIFIED_CURRENT:"現行確認済み",
   UNKNOWN:"未確認"
@@ -25,11 +25,11 @@ export default function FeesPage() {
       <h1>通所介護の報酬DB</h1>
       <p className="lead">
         介護報酬は、基準省令とは別に、報酬告示・算定方法告示・留意事項通知を分けて構造化します。
-        現在は通所介護費の骨格を作成し、令和8年度改定を順方向に重ねている段階です。
+        現在は厚生労働省の現行統合HTMLを基礎に、通所介護費の骨格を構造化している段階です。
       </p>
       <div className="notice">
         <strong>単位数を「現行確定」として表示する段階ではありません。</strong><br/>
-        厚生省告示第19号のベース本文と令和8年度の新旧対照表を分離して保持し、改正再生と人手確認の後に確定表示します。
+        厚生労働省の現行HTMLには令和8年告示第87号まで反映されていますが、各ノードの機械抽出と人手照合が終わるまでは確認済み表示にしません。
       </div>
       <section className="rules-stats">
         <div><strong>{meta.counts.nodes}</strong><span>骨格ノード</span></div>
