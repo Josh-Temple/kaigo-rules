@@ -101,6 +101,7 @@ export default function FeesPage() {
           報酬告示19号とは別の告示にあります。
         </p>
         <p><Link href="/fees/criteria">告示27号・95号の構造化データを見る →</Link></p>
+        <p><Link href="/fees/unit-price">通所介護の一単位単価を見る →</Link></p>
       </section>
 
       <section className="section">
