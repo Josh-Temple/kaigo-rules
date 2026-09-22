@@ -86,6 +86,36 @@ def page_size_points(pdf_path: pathlib.Path, page: int) -> tuple[float, float]:
             return float(match.group(1)), float(match.group(2))
     raise RuntimeError(f"Could not determine page size for {pdf_path} page {page}")
 
+def normalize_with_map(value: str) -> tuple[str, list[int]]:
+    chars = []
+    positions = []
+    for index, source_char in enumerate(value):
+        for char in unicodedata.normalize("NFKC", source_char):
+            if char.isspace():
+                continue
+            chars.append(char)
+            positions.append(index)
+    return "".join(chars), positions
+
+def slice_by_normalized_markers(value: str, start_marker: str, end_marker: str) -> str:
+    normalized_value, positions = normalize_with_map(value)
+    start_needle = normalized(start_marker)
+    end_needle = normalized(end_marker)
+    start = normalized_value.find(start_needle)
+    if start < 0:
+        raise RuntimeError(f"Start marker not found: {start_marker}")
+    end = normalized_value.find(end_needle, start + len(start_needle))
+    if end < 0:
+        raise RuntimeError(f"End marker not found after start: {end_marker}")
+    next_start = normalized_value.find(start_needle, start + len(start_needle))
+    if next_start >= 0 and next_start < end:
+        raise RuntimeError(
+            f"Ambiguous item boundary: start marker repeats before end marker: {start_marker}"
+        )
+    start_original = positions[start]
+    end_original = positions[end]
+    return value[start_original:end_original].strip() + "\n"
+
 def extract_current_column(
     pdf_path: pathlib.Path,
     first: int,
@@ -201,7 +231,13 @@ def main() -> None:
                     f"{current_column} column, pages {first}-{last}: {missing_anchors}"
                 )
 
-            segment_records.append({
+            item_text = slice_by_normalized_markers(
+                current_side_text,
+                segment["item_start"],
+                segment["item_end"]
+            )
+
+            record = {
                 "id": segment["id"],
                 "guidance_ids": segment["guidance_ids"],
                 "source_id": source_id,
@@ -212,15 +248,28 @@ def main() -> None:
                 "current_column": current_column,
                 "text_sha256": hashlib.sha256(full_text.encode("utf-8")).hexdigest(),
                 "current_side_text_sha256": hashlib.sha256(current_side_text.encode("utf-8")).hexdigest(),
+                "item_text_sha256": hashlib.sha256(item_text.encode("utf-8")).hexdigest(),
                 "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
                 "text": full_text,
-                "current_side_text": current_side_text
-            })
+                "current_side_text": current_side_text,
+                "item_text": item_text
+            }
+
+            if segment.get("patch_start") and segment.get("patch_end"):
+                patch_text = slice_by_normalized_markers(
+                    current_side_text,
+                    segment["patch_start"],
+                    segment["patch_end"]
+                )
+                record["patch_text_sha256"] = hashlib.sha256(patch_text.encode("utf-8")).hexdigest()
+                record["patch_text"] = patch_text
+
+            segment_records.append(record)
 
     result = {
-        "format_version": 2,
+        "format_version": 3,
         "generator": "scripts/import_fee_guidance_snapshots.py",
-        "extraction_engine": "pdftotext -layout + declared-column crop",
+        "extraction_engine": "pdftotext -layout + declared-column crop + normalized item boundaries",
         "policy": manifest["policy"],
         "sources": source_records,
         "segments": segment_records

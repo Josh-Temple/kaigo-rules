@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "..");
@@ -160,6 +161,14 @@ const feeGuidanceSourceManifest = fs.existsSync(feeGuidanceSourceManifestPath)
 const feeGuidanceSnapshotsPath = path.join(root, "data", "fee-guidance-source-snapshots.json");
 const feeGuidanceSnapshots = fs.existsSync(feeGuidanceSnapshotsPath)
   ? JSON.parse(fs.readFileSync(feeGuidanceSnapshotsPath, "utf8"))
+  : null;
+const feeGuidanceAssemblyPath = path.join(root, "data", "fee-guidance-current-assembly.json");
+const feeGuidanceAssembly = fs.existsSync(feeGuidanceAssemblyPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceAssemblyPath, "utf8"))
+  : null;
+const feeGuidanceCurrentCandidatesPath = path.join(root, "data", "fee-guidance-current-text-candidates.json");
+const feeGuidanceCurrentCandidates = fs.existsSync(feeGuidanceCurrentCandidatesPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceCurrentCandidatesPath, "utf8"))
   : null;
 const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
 const careActNodes = fs.existsSync(careActPath)
@@ -710,7 +719,7 @@ if (feeGuidance.length) {
       if (!layout?.header_semantics) errors.push(`fee guidance source manifest: missing header semantics for ${sourceId}`);
     }
     for (const segment of feeGuidanceSourceManifest.segments || []) {
-      for (const field of ["id","guidance_ids","source_id","role","page_start","page_end"]) {
+      for (const field of ["id","guidance_ids","source_id","role","page_start","page_end","item_start","item_end"]) {
         if (segment[field] == null || (Array.isArray(segment[field]) && segment[field].length === 0)) {
           errors.push(`fee guidance source manifest ${segment.id || "(missing id)"}: missing ${field}`);
         }
@@ -744,7 +753,57 @@ if (feeGuidance.length) {
           errors.push(`fee guidance snapshots ${snapshot.id}: current column differs from manifest`);
         }
       }
+      if ((feeGuidanceSnapshots.format_version || 1) >= 3) {
+        if (!snapshot.item_text || !snapshot.item_text_sha256) errors.push(`fee guidance snapshots ${snapshot.id}: missing item text/hash`);
+        if (manifestSegment?.patch_start || manifestSegment?.patch_end) {
+          if (!manifestSegment?.patch_start || !manifestSegment?.patch_end) errors.push(`fee guidance source manifest ${snapshot.id}: incomplete patch boundaries`);
+          if (!snapshot.patch_text || !snapshot.patch_text_sha256) errors.push(`fee guidance snapshots ${snapshot.id}: missing patch text/hash`);
+        }
+      }
       if (snapshot.verification_status !== "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK") errors.push(`fee guidance snapshots ${snapshot.id}: unsafe verification status`);
+    }
+  }
+
+  if (feeGuidanceAssembly) {
+    const snapshotIds = new Set((feeGuidanceSnapshots?.segments || []).map((snapshot) => snapshot.id));
+    const assembledGuidanceIds = new Set();
+    for (const item of feeGuidanceAssembly.items || []) {
+      if (!item.guidance_id || !guidanceIds.has(item.guidance_id)) errors.push(`fee guidance assembly: invalid guidance ${item.guidance_id}`);
+      if (assembledGuidanceIds.has(item.guidance_id)) errors.push(`fee guidance assembly: duplicate guidance ${item.guidance_id}`);
+      assembledGuidanceIds.add(item.guidance_id);
+      if (!snapshotIds.has(item.baseline_snapshot_id)) errors.push(`fee guidance assembly ${item.guidance_id}: missing baseline snapshot ${item.baseline_snapshot_id}`);
+      for (const patch of item.patches || []) {
+        if (!snapshotIds.has(patch.snapshot_id)) errors.push(`fee guidance assembly ${item.guidance_id}: missing patch snapshot ${patch.snapshot_id}`);
+        if (patch.operation !== "insert_before" || !patch.baseline_anchor) errors.push(`fee guidance assembly ${item.guidance_id}: invalid patch operation`);
+      }
+    }
+    const expected = new Set(["fee-guidance.dayservice.4","fee-guidance.dayservice.5","fee-guidance.dayservice.6","fee-guidance.dayservice.7","fee-guidance.dayservice.7-2","fee-guidance.dayservice.18","fee-guidance.dayservice.24","fee-guidance.dayservice.25"]);
+    for (const id of expected) if (!assembledGuidanceIds.has(id)) errors.push(`fee guidance assembly: missing scoped guidance ${id}`);
+    if (assembledGuidanceIds.size !== expected.size) errors.push("fee guidance assembly: unexpected scoped guidance count");
+  }
+
+  if (feeGuidanceCurrentCandidates) {
+    const sha256 = (value) => createHash("sha256").update(value, "utf8").digest("hex");
+    if (feeGuidanceCurrentCandidates.policy !== feeGuidanceAssembly?.policy) errors.push("fee guidance current candidates: policy differs from assembly");
+    if (feeGuidanceCurrentCandidates.reconstruction_status !== "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK") errors.push("fee guidance current candidates: unsafe reconstruction status");
+    const candidateIds = new Set();
+    for (const item of feeGuidanceCurrentCandidates.items || []) {
+      if (!guidanceIds.has(item.guidance_id)) errors.push(`fee guidance current candidate: missing guidance ${item.guidance_id}`);
+      if (candidateIds.has(item.guidance_id)) errors.push(`fee guidance current candidate: duplicate guidance ${item.guidance_id}`);
+      candidateIds.add(item.guidance_id);
+      if (!item.candidate_text || !item.candidate_text_sha256) errors.push(`fee guidance current candidate ${item.guidance_id}: missing text/hash`);
+      else if (sha256(item.candidate_text) !== item.candidate_text_sha256) errors.push(`fee guidance current candidate ${item.guidance_id}: text hash mismatch`);
+      if (item.reconstruction_status !== "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK") errors.push(`fee guidance current candidate ${item.guidance_id}: unsafe status`);
+      if (item.human_verification_status !== "NOT_REVIEWED") errors.push(`fee guidance current candidate ${item.guidance_id}: unexpected human verification status`);
+      if (!replayGuidanceIds.has(item.guidance_id)) errors.push(`fee guidance current candidate ${item.guidance_id}: missing replay coverage`);
+      if (!item.evidence?.length) errors.push(`fee guidance current candidate ${item.guidance_id}: missing evidence`);
+    }
+    const configuredIds = new Set((feeGuidanceAssembly?.items || []).map((item) => item.guidance_id));
+    for (const id of configuredIds) if (!candidateIds.has(id)) errors.push(`fee guidance current candidates: missing configured item ${id}`);
+    const staffing = (feeGuidanceCurrentCandidates.items || []).find((item) => item.guidance_id === "fee-guidance.dayservice.25");
+    if (staffing) {
+      if (!(staffing.patch_snapshot_ids || []).includes("dayservice-25-r8-patch")) errors.push("fee guidance current candidate 25: missing R8 patch citation");
+      if (!staffing.candidate_text.includes("別紙様式７") && !staffing.candidate_text.includes("別紙様式7")) errors.push("fee guidance current candidate 25: R8 report form missing");
     }
   }
 
