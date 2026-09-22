@@ -249,6 +249,7 @@ def main() -> None:
                 segment["item_start"],
                 segment["item_end"]
             ))
+            item_text = apply_verified_image_corrections(item_text, segment)
 
             record = {
                 "id": segment["id"],
@@ -263,6 +264,7 @@ def main() -> None:
                 "current_side_text_sha256": hashlib.sha256(current_side_text.encode("utf-8")).hexdigest(),
                 "item_text_sha256": hashlib.sha256(item_text.encode("utf-8")).hexdigest(),
                 "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+                "verified_image_corrections": segment.get("verified_image_corrections", []),
                 "text": full_text,
                 "current_side_text": current_side_text,
                 "item_text": item_text
