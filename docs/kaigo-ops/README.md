@@ -57,6 +57,7 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Municipal Claim Review checkpoint](./research/checkpoint-municipal-claim-review-v0.14-2026-09-22.md)
 - [Expanded External Query checkpoint](./research/checkpoint-external-query-v0.12-2026-09-22.md)
 - [Important Matters Claims checkpoint](./research/checkpoint-important-matters-claims-v0.1-2026-09-22.md)
 - [Multi-Claim Composition checkpoint](./research/checkpoint-multi-claim-composition-v0.1-2026-09-22.md)
@@ -103,6 +104,7 @@ Evidence Review / 方法 / 検証
 
 ### Claim-level coverage
 
+- [Claim Registry v0.10](./research/claims/claims-v0.10.json)
 - [Claim Registry v0.8](./research/claims/claims-v0.8.json)
 - [Claim Registry v0.6](./research/claims/claims-v0.6.json)
 - [Claim Registry v0.5](./research/claims/claims-v0.5.json)
