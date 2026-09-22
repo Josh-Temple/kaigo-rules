@@ -1,0 +1,58 @@
+[
+  {
+    "id": "rouki25.r3.dayservice.insert-bcp",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.operation.bcp",
+    "operation": "insert",
+    "before_number": null,
+    "after_number": "(6)",
+    "summary": "業務継続計画の策定等を新設。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
+  },
+  {
+    "id": "rouki25.r3.dayservice.renumber-disaster-hygiene",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.operation",
+    "operation": "renumber",
+    "summary": "BCP新設に伴い、非常災害対策を(6)→(7)、衛生管理等を(7)→(8)へ繰下げ。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
+  },
+  {
+    "id": "rouki25.r3.dayservice.add-community-abuse-records",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.operation",
+    "operation": "insert_multiple",
+    "summary": "地域との連携等、虐待の防止、記録の整備等を追加し、事故発生時の対応・準用を含む運営項目を(13)まで再編。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
+  },
+  {
+    "id": "rouki25.r6.dayservice.physical-restraint",
+    "source_id": "mhlw-2024-interpretation-redline",
+    "effective_from": "2024-04-01",
+    "target_node_id": "notice.dayservice.operation.policy",
+    "operation": "replace_or_insert_fragment",
+    "summary": "基本取扱方針・具体的取扱方針に身体的拘束等に関する説明・記録の取扱いを追加。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.r6.dayservice.bcp-update",
+    "source_id": "mhlw-2024-interpretation-redline",
+    "effective_from": "2024-04-01",
+    "target_node_id": "notice.dayservice.operation.bcp",
+    "operation": "replace_fragment",
+    "summary": "経過措置終了に伴う記載整理やガイドライン表現等を更新。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.r6.dayservice.incorporation-web",
+    "source_id": "mhlw-2024-interpretation-redline",
+    "effective_from": "2024-04-01",
+    "target_node_id": "notice.dayservice.operation.incorporation",
+    "operation": "insert_fragment",
+    "summary": "準用に関連してウェブサイト掲載の取扱いを追記。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  }
+]

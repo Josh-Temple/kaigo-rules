@@ -115,5 +115,23 @@
     "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
     "status": "partial_source",
     "note": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+  },
+  {
+    "id": "mhlw-r6-reform-landing",
+    "layer": "公式改定ページ",
+    "title": "令和6年度介護報酬改定について",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+    "status": "verified_source",
+    "note": "令和6年度の基準省令・解釈通知等への公式導線。居宅の解釈通知リンクは新旧対照表であり、現行統合全文ではない。"
+  },
+  {
+    "id": "mhlw-r3-reform-landing",
+    "layer": "公式改定ページ",
+    "title": "令和3年度介護報酬改定について",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00034.html",
+    "status": "verified_source",
+    "note": "令和3年度の解釈通知改正資料への公式導線。居宅の資料は新旧対照表。"
   }
 ]
