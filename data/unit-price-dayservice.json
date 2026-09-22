@@ -1,1 +1,82 @@
-[]
+[
+  {
+    "id": "unitprice.dayservice.1",
+    "region_class": "一級地",
+    "service": "通所介護",
+    "ratio_text": "千分の千九十",
+    "ratio_per_thousand": 1090,
+    "unit_price_yen": 10.9,
+    "source_id": "mhlw-unit-price-current",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "id": "unitprice.dayservice.2",
+    "region_class": "二級地",
+    "service": "通所介護",
+    "ratio_text": "千分の千七十二",
+    "ratio_per_thousand": 1072,
+    "unit_price_yen": 10.72,
+    "source_id": "mhlw-unit-price-current",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "id": "unitprice.dayservice.3",
+    "region_class": "三級地",
+    "service": "通所介護",
+    "ratio_text": "千分の千六十八",
+    "ratio_per_thousand": 1068,
+    "unit_price_yen": 10.68,
+    "source_id": "mhlw-unit-price-current",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "id": "unitprice.dayservice.4",
+    "region_class": "四級地",
+    "service": "通所介護",
+    "ratio_text": "千分の千五十四",
+    "ratio_per_thousand": 1054,
+    "unit_price_yen": 10.54,
+    "source_id": "mhlw-unit-price-current",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "id": "unitprice.dayservice.5",
+    "region_class": "五級地",
+    "service": "通所介護",
+    "ratio_text": "千分の千四十五",
+    "ratio_per_thousand": 1045,
+    "unit_price_yen": 10.45,
+    "source_id": "mhlw-unit-price-current",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "id": "unitprice.dayservice.6",
+    "region_class": "六級地",
+    "service": "通所介護",
+    "ratio_text": "千分の千二十七",
+    "ratio_per_thousand": 1027,
+    "unit_price_yen": 10.27,
+    "source_id": "mhlw-unit-price-current",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "id": "unitprice.dayservice.7",
+    "region_class": "七級地",
+    "service": "通所介護",
+    "ratio_text": "千分の千十四",
+    "ratio_per_thousand": 1014,
+    "unit_price_yen": 10.14,
+    "source_id": "mhlw-unit-price-current",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "id": "unitprice.dayservice.other",
+    "region_class": "その他",
+    "service": "通所介護",
+    "ratio_text": "千分の千",
+    "ratio_per_thousand": 1000,
+    "unit_price_yen": 10.0,
+    "source_id": "mhlw-unit-price-current",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  }
+]
