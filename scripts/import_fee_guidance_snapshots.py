@@ -99,14 +99,19 @@ def normalize_with_map(value: str) -> tuple[str, list[int]]:
 
 def slice_by_normalized_markers(value: str, start_marker: str, end_marker: str) -> str:
     normalized_value, positions = normalize_with_map(value)
-    start = normalized_value.find(normalized(start_marker))
+    start_needle = normalized(start_marker)
+    end_needle = normalized(end_marker)
+    start = normalized_value.find(start_needle)
     if start < 0:
         raise RuntimeError(f"Start marker not found: {start_marker}")
-    end = normalized_value.find(normalized(end_marker), start + 1)
+    end = normalized_value.find(end_needle, start + len(start_needle))
     if end < 0:
         raise RuntimeError(f"End marker not found after start: {end_marker}")
-    if normalized_value.find(normalized(start_marker), start + 1) >= 0:
-        raise RuntimeError(f"Start marker is not unique: {start_marker}")
+    next_start = normalized_value.find(start_needle, start + len(start_needle))
+    if next_start >= 0 and next_start < end:
+        raise RuntimeError(
+            f"Ambiguous item boundary: start marker repeats before end marker: {start_marker}"
+        )
     start_original = positions[start]
     end_original = positions[end]
     return value[start_original:end_original].strip() + "\n"
