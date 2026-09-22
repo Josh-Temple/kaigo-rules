@@ -659,6 +659,9 @@ if (feeGuidance.length) {
     if (!guidanceIds.has(candidate.guidance_id)) errors.push(`fee guidance candidate ${candidate.id}: missing guidance ${candidate.guidance_id}`);
     if (!sourceIds.has(candidate.source_id)) errors.push(`fee guidance candidate ${candidate.id}: missing source ${candidate.source_id}`);
     if (candidate.human_verification_status !== "NOT_REVIEWED") errors.push(`fee guidance candidate ${candidate.id}: unexpected human verification status`);
+    if (candidate.structured_facts && (typeof candidate.structured_facts !== "object" || Array.isArray(candidate.structured_facts) || Object.keys(candidate.structured_facts).length === 0)) {
+      errors.push(`fee guidance candidate ${candidate.id}: invalid structured_facts`);
+    }
   }
 
   if (feeGuidanceMeta) {
