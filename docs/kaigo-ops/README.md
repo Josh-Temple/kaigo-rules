@@ -59,6 +59,7 @@ Evidence Review / 方法 / 検証
 
 - [Research checkpoint 2026-09-22](./research/checkpoint-2026-09-22.md)
 - [Benchmark v0.2 checkpoint](./research/checkpoint-benchmark-v0.2-2026-09-22.md)
+- [Benchmark v0.3 checkpoint](./research/checkpoint-benchmark-v0.3-2026-09-22.md)
 
 ## Research outputs
 
@@ -84,6 +85,8 @@ Evidence Review / 方法 / 検証
 - [Benchmark v0.1](./research/issues/information-search/benchmark/README.md)
 - [Deterministic baseline v0.1](./research/issues/information-search/benchmark/baseline-v0.1.md)
 - [Deterministic baseline v0.2](./research/issues/information-search/benchmark/baseline-v0.2.md)
+- [50-case non-RAG baseline v0.3](./research/issues/information-search/benchmark/baseline-v0.3.md)
+- [Non-RAG Issue Router design](./research/issues/information-search/router-design-v0.1.md)
 - [Benchmark v0.2 scoring](./research/issues/information-search/benchmark/scoring-v0.2.md)
 
 ### Methods
