@@ -1,13 +1,13 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.17 second municipal source gate complete**
+状態: **v0.18 current-source reconstruction gate complete**
 
 ## 現在のsuite
 
 合計 **190ケース**。
 
-- `benchmark-v0.17.json`: 50
+- `benchmark-v0.18.json`: 50
 - `coverage-gap-v0.1.json`: 20
 - `false-answer-stress-v0.1.json`: 12
 - `external-qa-query-sample-v0.5.json`: 33
@@ -44,7 +44,7 @@
 - external ANSWER expected Claim ID: 6 / 6
 - municipal query label + provenance: 15 / 15
 - verified regression Issue fallback: 0 / 51
-- classifier checks: 191 / 191
+- classifier checks baseline: 191 / 191
 - verified regression: 51 / 51
 
 ### Safety prose
@@ -94,6 +94,8 @@ Source
 - `node scripts/research-coverage-classifier-v0.17.mjs`
 - `node scripts/research-coverage-classifier-v0.19.mjs`
 - `node scripts/research-coverage-classifier-v0.20.mjs`
+- `node scripts/research-coverage-classifier-v0.21.mjs`
+- `node scripts/research-claim-registry-validate-v0.14.mjs`
 - `node scripts/research-claim-registry-validate-v0.13.mjs`
 - `node scripts/research-claim-compositions-validate-v0.5.mjs`
 - `node scripts/research-claim-registry-validate-v0.11.mjs`
@@ -107,8 +109,8 @@ Source
 ## 次の再開点
 
 1. safety proseのhuman sign-off
-2. source limitationのcurrent reconstruction
-3. 3自治体目は新しいsemantic familyがある場合だけ追加
-4. controlled RAG comparison
+2. 屋外サービス1件のcurrent integrated source reconstruction
+3. controlled RAG comparison
 
+`VERIFIED_WITH_SOURCE_LIMITATION` は現在1件のみ。
 RAGはまだ実装しない。
