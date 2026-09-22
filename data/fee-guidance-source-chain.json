@@ -62,6 +62,22 @@
     "warning": "現在有効な統合全文ではない"
   },
   {
+    "source_id": "mhlw-historical-fee-guidance-pdf",
+    "source_class": "historical_reference",
+    "issued_period": "historical",
+    "priority": 6,
+    "use": "短時間利用・災害時等の旧本文を本文再構成候補として確認",
+    "warning": "旧版であり現行統合本文ではない"
+  },
+  {
+    "source_id": "mhlw-r3-volume-decline-guidance",
+    "source_class": "supporting_notice",
+    "issued_period": "2021",
+    "priority": 7,
+    "use": "感染症・災害による利用者減少時の3％加算・規模区分特例の具体的運用を確認",
+    "warning": "老企第36号本文そのものではなく関連通知"
+  },
+  {
     "source_id": "mhlw-r8-fee-guidance-may-amendment",
     "source_class": "current_amendment",
     "issued_period": "2026-05",
