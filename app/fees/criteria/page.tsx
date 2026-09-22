@@ -44,7 +44,7 @@ export default function FeeCriteriaPage(){
           <div className="delegated-list">
             {group.items.map(item=>{
               const source=sources.find(s=>s.id===item.source_id);
-              return <details className="delegated-node" key={item.id}>
+              return <details className="delegated-node" id={item.id} key={item.id}>
                 <summary>
                   <span>{item.heading}</span>
                   <small>取込済み・確認待ち</small>

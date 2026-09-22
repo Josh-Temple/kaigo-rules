@@ -170,3 +170,10 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 - 告示95号第24号から準用される第4号（処遇改善加算の共通基準）
 
 生成状態は `IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK` です。 `/fees/criteria` で原文候補と対応関係を確認できます。
+
+
+### 別告示の機械取込
+
+`Update delegated remuneration criteria` workflow は、厚生労働省の現行HTMLから、告示27号の通所介護に関する定員超過・人員欠如算定と、告示95号の通所介護関係基準を抽出します。
+
+生成先は `remuneration-delegated-nodes.json` と `remuneration-delegated-relations.json` です。科学的介護推進体制加算など、報酬告示本文だけで成立し告示95号への委任がない項目は誤接続しません。
