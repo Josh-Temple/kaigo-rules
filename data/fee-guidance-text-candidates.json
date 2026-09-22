@@ -1,0 +1,90 @@
+[
+  {
+    "id": "fee-guidance-candidate.dayservice.4.historical",
+    "guidance_id": "fee-guidance.dayservice.4",
+    "candidate_kind": "historical_baseline",
+    "source_id": "mhlw-historical-fee-guidance-pdf",
+    "source_locator": "旧版PDF / 通所介護費「2時間以上3時間未満の通所介護を行う場合の取扱い」",
+    "source_period": "historical",
+    "candidate_summary": "短時間利用は、長時間の利用が困難など利用者側のやむを得ない事情がある場合を想定し、入浴だけを目的とする利用ではなく、日常生活動作の向上につながる機能訓練等を含む取扱いとして整理されている。",
+    "replay_status": "HISTORICAL_BASELINE_CAPTURED_REPLAY_PENDING",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.5.h30",
+    "guidance_id": "fee-guidance.dayservice.5",
+    "candidate_kind": "historical_amendment_state",
+    "source_id": "mhlw-h30-fee-guidance-redline",
+    "source_locator": "PDF p.29 / 7(3) 改正後",
+    "source_period": "2018",
+    "candidate_summary": "平成30年度改正後は、8時間以上9時間未満の通所介護の前後に連続して延長サービスを行う場合を対象とし、延長部分は5時間を上限として算定する構造が示されている。",
+    "replay_status": "H30_STATE_CAPTURED_REPLAY_PENDING",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.6.r3",
+    "guidance_id": "fee-guidance.dayservice.6",
+    "candidate_kind": "historical_amendment_state",
+    "source_id": "mhlw-r3-fee-guidance-redline",
+    "source_locator": "PDF p.34以降 / 7(4)",
+    "source_period": "2021",
+    "candidate_summary": "事業所規模は前年度の1月当たり平均利用延人員数を基礎に区分し、第一号通所事業を一体的に実施する場合はその利用実績を含め、実態として分離している場合は含めない取扱いが示されている。",
+    "replay_status": "R3_STATE_CAPTURED_REPLAY_PENDING",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.7.historical",
+    "guidance_id": "fee-guidance.dayservice.7",
+    "candidate_kind": "historical_baseline",
+    "source_id": "mhlw-historical-fee-guidance-pdf",
+    "source_locator": "旧版PDF / 通所介護費「災害時等の取扱い」",
+    "source_period": "historical",
+    "candidate_summary": "災害その他のやむを得ない理由による定員超過利用について、通常の定員超過減算と同じ扱いにせず、発生時期を踏まえた例外的な取扱いを置く構造が確認できる。現行化には後続改正の再生が必要。",
+    "replay_status": "HISTORICAL_BASELINE_CAPTURED_REPLAY_PENDING",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.7-2.r3",
+    "guidance_id": "fee-guidance.dayservice.7-2",
+    "candidate_kind": "supporting_notice",
+    "source_id": "mhlw-r3-volume-decline-guidance",
+    "source_locator": "介護保険最新情報Vol.937 / 別紙",
+    "source_period": "2021",
+    "candidate_summary": "感染症や災害により利用延人員数が一定以上減少した場合に、基本報酬への3％加算または事業所規模区分の特例を適用する仕組みが示されている。通常規模型は3％加算、大規模型は加算または規模区分特例のいずれかを適用する構造。",
+    "replay_status": "SUPPORTING_NOTICE_CAPTURED_REPLAY_PENDING",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.18.r3",
+    "guidance_id": "fee-guidance.dayservice.18",
+    "candidate_kind": "historical_amendment_state",
+    "source_id": "mhlw-r3-fee-guidance-redline",
+    "source_locator": "PDF p.53 / 7(16) 栄養改善加算",
+    "source_period": "2021",
+    "candidate_summary": "管理栄養士を事業所内または一定の外部機関との連携で1名以上確保すること、必要に応じて居宅の食事状況を把握し、家族等の同意を得て居宅訪問による栄養改善支援を行う流れが示されている。",
+    "replay_status": "R3_STATE_CAPTURED_REPLAY_PENDING",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.24.r6",
+    "guidance_id": "fee-guidance.dayservice.24",
+    "candidate_kind": "current_cross_reference",
+    "source_id": "mhlw-r6-fee-guidance-redline",
+    "source_locator": "令和6年度新旧対照表 / 通所リハビリテーション費から通所介護7(24)を参照",
+    "source_period": "2024",
+    "candidate_summary": "令和6年度資料上、通所介護7(24)が定員超過利用時の所定単位数算定を扱う項目として現行側から参照されることを確認できる。本文自体は省略されているため、現行本文候補の抽出は別途必要。",
+    "replay_status": "CURRENT_CROSS_REFERENCE_CAPTURED_BODY_PENDING",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.25.r8",
+    "guidance_id": "fee-guidance.dayservice.25",
+    "candidate_kind": "current_amendment_fragment",
+    "source_id": "mhlw-r8-fee-guidance-may-amendment",
+    "source_locator": "別紙1 / 7(25) / 令和8年6月算定分から適用",
+    "source_period": "2026-06",
+    "candidate_summary": "人員基準上必要な員数から1割以内の一時的な不足が、突発的で想定困難な事情による場合、一定の職員確保策・報告等の条件を満たせば、1年に1回に限り翌々月まで減算適用を猶予する特例が追加された。",
+    "replay_status": "CURRENT_AMENDMENT_FRAGMENT_CAPTURED",
+    "human_verification_status": "NOT_REVIEWED"
+  }
+]
