@@ -88,6 +88,22 @@ const feeCurrentTextPath = path.join(root, "data", "remuneration-current-text.js
 const feeCurrentText = fs.existsSync(feeCurrentTextPath)
   ? JSON.parse(fs.readFileSync(feeCurrentTextPath, "utf8"))
   : [];
+const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
+const careActNodes = fs.existsSync(careActPath)
+  ? JSON.parse(fs.readFileSync(careActPath, "utf8"))
+  : [];
+const careActRelationsPath = path.join(root, "data", "care-insurance-act-relations.json");
+const careActRelations = fs.existsSync(careActRelationsPath)
+  ? JSON.parse(fs.readFileSync(careActRelationsPath, "utf8"))
+  : [];
+const careActScopePath = path.join(root, "data", "care-insurance-act-scope.json");
+const careActScope = fs.existsSync(careActScopePath)
+  ? JSON.parse(fs.readFileSync(careActScopePath, "utf8"))
+  : null;
+const careActReviewPath = path.join(root, "data", "care-insurance-act-review.json");
+const careActReview = fs.existsSync(careActReviewPath)
+  ? JSON.parse(fs.readFileSync(careActReviewPath, "utf8"))
+  : { reviewed_articles: [], reviewed_relations: [] };
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -114,6 +130,7 @@ unique(noticeHistory, "notice_id", "notice-historical-backfill");
 unique(feeSkeleton, "id", "remuneration-skeleton");
 unique(feeAmendments, "id", "remuneration-amendments");
 unique(feeCurrentText, "fee_id", "remuneration-current-text");
+unique(careActNodes, "id", "care-insurance-act-nodes");
 
 const sourceIds = new Set(sources.map((x) => x.id));
 const ruleIds = new Set(rules.map((x) => x.id));
@@ -388,11 +405,54 @@ if (feeSkeleton.length) {
   }
 }
 
+if (careActNodes.length) {
+  const careIds = new Set(careActNodes.map((node) => node.id));
+  const careArticleIds = new Set(careActNodes.filter((node) => node.node_type === "article").map((node) => node.id));
+  const ordinanceIds = new Set(ordinanceNodes.map((node) => node.id));
+  const feeIds = new Set(feeSkeleton.map((node) => node.id));
+  const noticeIdsCurrent = new Set(noticeSkeleton.map((node) => node.id));
+
+  for (const node of careActNodes) {
+    for (const field of ["node_type","law_id","article_num","official_text","service_scope","source_url","verification_status"]) {
+      if (!node[field]) errors.push(`care act node ${node.id}: missing ${field}`);
+    }
+    if (!["IMPORTED_NEEDS_HUMAN_CHECK","VERIFIED_CURRENT"].includes(node.verification_status)) {
+      errors.push(`care act node ${node.id}: unexpected status ${node.verification_status}`);
+    }
+    if (node.parent_id && !careIds.has(node.parent_id)) errors.push(`care act node ${node.id}: missing parent ${node.parent_id}`);
+  }
+
+  for (const relation of careActRelations) {
+    if (!careIds.has(relation.from)) errors.push(`care act relation: missing from ${relation.from}`);
+    if (relation.target_layer === "care_insurance_act" && !careIds.has(relation.to)) errors.push(`care act relation: missing law target ${relation.to}`);
+    if (relation.target_layer === "ordinance37" && !ordinanceIds.has(relation.to)) errors.push(`care act relation: missing ordinance target ${relation.to}`);
+    if (relation.target_layer === "remuneration" && !feeIds.has(relation.to)) errors.push(`care act relation: missing fee target ${relation.to}`);
+    if (relation.target_layer === "interpretation_notice" && !noticeIdsCurrent.has(relation.to)) errors.push(`care act relation: missing notice target ${relation.to}`);
+  }
+
+  if (careActScope) {
+    for (const number of careActScope.articles || []) {
+      if (!careArticleIds.has(`careact.article.${number}`)) errors.push(`care act scope: missing article ${number}`);
+    }
+  }
+
+  const careById = new Map(careActNodes.map((node) => [node.id,node]));
+  for (const item of careActReview.reviewed_articles || []) {
+    const node = careById.get(item.article_id);
+    if (!node || node.node_type !== "article") {
+      errors.push(`care act review: missing article ${item.article_id}`);
+      continue;
+    }
+    if (item.text_sha256 !== node.text_sha256) errors.push(`care act review ${item.article_id}: reviewed hash is stale`);
+    if (item.status !== "HUMAN_VERIFIED_AGAINST_OFFICIAL_SOURCE") errors.push(`care act review ${item.article_id}: unexpected status ${item.status}`);
+  }
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
 
 console.log(
-  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${feeSkeleton.length} remuneration nodes, ${feeCurrentText.length} current remuneration texts, ${sources.length} sources.`
+  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${feeSkeleton.length} remuneration nodes, ${feeCurrentText.length} current remuneration texts, ${careActNodes.length} Care Insurance Act nodes, ${sources.length} sources.`
 );

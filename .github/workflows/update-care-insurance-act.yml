@@ -1,0 +1,53 @@
+name: Update Care Insurance Act database
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-care-insurance-act.yml"
+      - "scripts/import_egov_care_insurance_act.py"
+      - "data/care-insurance-act-scope.json"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Import current Care Insurance Act from e-Gov
+        run: python scripts/import_egov_care_insurance_act.py
+      - name: Validate data references
+        run: node scripts/validate-data.mjs
+      - name: Detect changes
+        id: diff
+        shell: bash
+        run: |
+          if git diff --quiet -- data/care-insurance-act-nodes.json data/care-insurance-act-relations.json data/care-insurance-act-meta.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Push review branch
+        if: steps.diff.outputs.changed == 'true'
+        shell: bash
+        run: |
+          BRANCH="automation/care-act-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add data/care-insurance-act-nodes.json data/care-insurance-act-relations.json data/care-insurance-act-meta.json
+          git commit -m "data: refresh Care Insurance Act database"
+          git push origin "$BRANCH"
+          {
+            echo "## Care Insurance Act database ready for review"
+            echo ""
+            echo "Branch: `$BRANCH`"
+            echo ""
+            echo "Generated data stays IMPORTED_NEEDS_HUMAN_CHECK until reviewed."
+          } >> "$GITHUB_STEP_SUMMARY"
