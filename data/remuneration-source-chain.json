@@ -16,16 +16,24 @@
     "warning": "告示19と別の法源として保持する"
   },
   {
+    "source_id": "mhlw-unit-price-current",
+    "source_class": "unit_price_notice",
+    "priority": 3,
+    "completeness": "separate_current_notice",
+    "use": "単位数を地域区分別の金額へ換算する一単位単価",
+    "warning": "報酬単位数表とは別の法源として保持する"
+  },
+  {
     "source_id": "mhlw-r8-reform-landing",
     "source_class": "official_landing",
-    "priority": 3,
+    "priority": 4,
     "completeness": "index_only",
     "use": "令和8年度改定資料への公式導線"
   },
   {
     "source_id": "mhlw-r8-fee-amendment87",
     "source_class": "amendment_comparison",
-    "priority": 4,
+    "priority": 5,
     "completeness": "partial_new_old_comparison",
     "use": "令和8年度の変更箇所と不変更構造の確認",
     "warning": "新旧対照表を現行統合全文として扱わない"
@@ -33,7 +41,7 @@
   {
     "source_id": "mhlw-r8-fee-interpretation-amendment",
     "source_class": "interpretation_amendment",
-    "priority": 5,
+    "priority": 6,
     "completeness": "partial_new_old_comparison",
     "use": "算定留意事項の令和8年度変更箇所",
     "warning": "通所介護の留意事項全体を網羅する資料ではない"

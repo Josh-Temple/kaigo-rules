@@ -34,5 +34,17 @@
     "relation": "related_to",
     "to_id": "ordinance37.article.98",
     "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.root",
+    "relation": "currency_conversion_uses",
+    "to_source_id": "mhlw-unit-price-current",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.root",
+    "relation": "latest_interpretation_amendment_evidence",
+    "to_source_id": "mhlw-r8-fee-interpretation-amendment",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
   }
 ]

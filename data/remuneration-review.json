@@ -1,6 +1,13 @@
 {
   "format_version": 1,
   "review_status": "NOT_STARTED",
+  "policy": "Machine-imported remuneration text and human verification are stored separately. A review is valid only while its text_sha256 matches the current imported official text.",
   "reviewed_nodes": [],
-  "reviewed_relations": []
+  "reviewed_relations": [],
+  "review_method_required": [
+    "厚生労働省の現行公式本文を開く",
+    "見出し・単位数または率・算定条件・除外条件を取込本文と照合する",
+    "「別に厚生労働大臣が定める基準」がある場合は委任先告示を別に確認する",
+    "確認時のtext_sha256と確認日をレビュー台帳へ記録する"
+  ]
 }
