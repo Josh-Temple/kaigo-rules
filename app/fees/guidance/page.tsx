@@ -19,6 +19,7 @@ const fees=feeData as Array<any>;
 
 const label:Record<string,string>={
   KNOWN_AFTER_TEXT:"現行側の見出し・断片を確認",
+  INHERITED_UNVERIFIED:"過去資料から見出し補完・本文未統合",
   UNKNOWN:"未確認・穴",
   VERIFIED_CURRENT:"現行確認済み"
 };
@@ -35,14 +36,14 @@ export default function FeeGuidancePage(){
 
     <div className="notice">
       <strong>現行統合版ではありません。</strong><br/>
-      令和6年度資料は新旧対照表（抄）です。「略」とされた部分は推測せず空欄にし、
-      過去資料のバックフィルと改正の順方向再生を行ってから確認済みにします。
+      令和6年度資料で「略」とされた見出しは、過去の厚生労働省改正資料まで遡って補完しました。
+      ただし本文の現行統合と人手確認は未完了であり、見出し補完だけで「確認済み」とは扱いません。
     </div>
 
     <section className="rules-stats">
       <div><strong>{meta.counts.total}</strong><span>骨格ノード</span></div>
       <div><strong>{meta.counts.KNOWN_AFTER_TEXT || 0}</strong><span>現行側確認</span></div>
-      <div><strong>{meta.counts.UNKNOWN || 0}</strong><span>未確認の穴</span></div>
+      <div><strong>{meta.counts.INHERITED_UNVERIFIED || 0}</strong><span>見出し補完・本文未統合</span></div>
       <div><strong>{(review.reviewed_nodes || []).length}</strong><span>人手確認済み</span></div>
     </section>
 
@@ -103,8 +104,8 @@ export default function FeeGuidancePage(){
     <section className="section">
       <h2>次の工程</h2>
       <p>
-        UNKNOWNの項目を過去の老企第36号から補い、令和6年度までの改正を順方向に再生します。
-        BCP減算の令和7年3月31日までの経過措置など、期限切れ文言を2026年の現行本文へ残さないことも検証します。
+        補完した見出しごとに過去本文を取り込み、令和6年度・令和8年度までの改正を順方向に再生します。
+        BCP減算の令和7年3月31日までの経過措置を除外し、令和8年5月8日改正の人員基準欠如特例を反映したうえで、現行本文として人手確認できる候補を作ります。
       </p>
     </section>
   </article>;
