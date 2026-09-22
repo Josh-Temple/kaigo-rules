@@ -1,7 +1,21 @@
 # 世界の介護DX・AI活用 全体地図 — 調査計画
 
 更新日: 2026-09-22
-状態: Planned
+状態: Active — initial landscape completed
+
+## 現在地
+
+2026-09-22にfirst-pass landscapeを実施した。
+
+成果物:
+
+- [Initial landscape](./research/world-care-dx-map/initial-landscape.md)
+- [Source register](./research/world-care-dx-map/source-register.csv)
+- [Search log](./research/world-care-dx-map/search-log-2026-09-22.md)
+
+初回調査では、日本、England、Australia、Denmark、Singapore、United States、Europeの公的資料と、LTC / aged care関連のsystematic reviewを横断した。
+
+暫定的に、First deep Issueは「必要な情報を探すのに時間がかかる」を第一候補とした。これは確定ではなく、追加調査で更新する。
 
 ## 目的
 
@@ -118,20 +132,26 @@
 5. **Issue priority**
    - 介護業務改善サイトで次に深掘りすべきテーマ。
 
-## 初回の成果物
+## 初回調査から追加された視点
 
-初回調査では、完全な網羅を目標にしない。
+初回調査により、次の区別を明示する必要が分かった。
 
-まず:
+- technology adoption と care outcome
+- fall detection と fall prevention
+- provider-reported result と independent evidence
+- narrow AI と general-purpose / generative AI
+- pilot と scaled operation
+- technology capability と implementation capability
 
-- 主要カテゴリ
-- 各カテゴリの代表事例
-- 主要国
-- 代表的な学術Evidence
-- 既知の失敗条件
-- 日本への適用論点
+今後のsource registerでは、この区別を可能な限り構造化する。
 
-を1つの地図として作り、その後Issueごとに深掘りする。
+## 次の調査
+
+1. 日本の令和7年度・8年度効果測定資料から定量outcomeを抽出する。
+2. 「必要な情報を探すのに時間がかかる」をFirst deep Issueとして検索範囲を広げる。
+3. Australia / England / Denmarkの代表例についてJapan transferabilityを具体的に比較する。
+4. Generative AIのcase-note / knowledge searchについて独立評価研究を探す。
+5. Fall / monitoringは研究量が多いため独立Evidence Review候補とする。
 
 ## 期待する使い方
 
