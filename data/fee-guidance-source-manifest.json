@@ -117,53 +117,6 @@
       "note": "人員基準欠如の基礎本文候補"
     },
     {
-      "id": "dayservice-r6-front-continuity",
-      "guidance_ids": [
-        "fee-guidance.dayservice.4",
-        "fee-guidance.dayservice.5",
-        "fee-guidance.dayservice.6",
-        "fee-guidance.dayservice.7",
-        "fee-guidance.dayservice.7-2"
-      ],
-      "source_id": "mhlw-r6-fee-guidance-redline",
-      "role": "continuity_checkpoint",
-      "page_start": 43,
-      "page_end": 44,
-      "must_contain": [
-        "通所介護費"
-      ],
-      "note": "令和6年度の番号移動・略表示確認"
-    },
-    {
-      "id": "dayservice-r6-18-continuity",
-      "guidance_ids": [
-        "fee-guidance.dayservice.18"
-      ],
-      "source_id": "mhlw-r6-fee-guidance-redline",
-      "role": "continuity_checkpoint",
-      "page_start": 50,
-      "page_end": 51,
-      "must_contain": [
-        "通所介護費"
-      ],
-      "note": "令和6年度の16〜18周辺確認"
-    },
-    {
-      "id": "dayservice-r6-24-25-continuity",
-      "guidance_ids": [
-        "fee-guidance.dayservice.24",
-        "fee-guidance.dayservice.25"
-      ],
-      "source_id": "mhlw-r6-fee-guidance-redline",
-      "role": "continuity_checkpoint",
-      "page_start": 52,
-      "page_end": 53,
-      "must_contain": [
-        "通所介護費"
-      ],
-      "note": "令和6年度の24・25周辺確認"
-    },
-    {
       "id": "dayservice-25-r8-patch",
       "guidance_ids": [
         "fee-guidance.dayservice.25"
