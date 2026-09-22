@@ -103,12 +103,14 @@
     "source_id": "mhlw-r6-fee-guidance-redline",
     "source_locator": "令和6年度新旧対照表 / 通所リハビリテーション費から通所介護7(24)を参照",
     "source_period": "2024",
-    "candidate_summary": "令和6年度資料上、通所介護7(24)が定員超過利用時の所定単位数算定を扱う項目として現行側から参照されることを確認できる。本文自体は省略されているため、現行本文候補の抽出は別途必要。",
-    "replay_status": "CURRENT_CROSS_REFERENCE_CAPTURED_BODY_PENDING",
+    "candidate_summary": "令和6年度資料上、通所介護7(24)が定員超過利用時の所定単位数算定を扱う項目として現行側から参照される。本文自体は令和6年度資料では省略されるが、H27基礎本文とH30・R3・R6以降の改正経路を別候補・replay coverageで確保している。",
+    "replay_status": "CURRENT_CROSS_REFERENCE_CAPTURED_BASELINE_AVAILABLE",
     "human_verification_status": "NOT_REVIEWED",
     "structured_facts": {
       "topic": "定員超過利用時の所定単位数算定",
-      "current_body_extraction_pending": true
+      "r6_body_omitted": true,
+      "historical_baseline_candidate_id": "fee-guidance-candidate.dayservice.24.h27",
+      "replay_coverage_available": true
     }
   },
   {
@@ -131,7 +133,50 @@
       "valid_job_posting_copy_required": true,
       "public_or_free_job_placement_use_required": true,
       "own_recruitment_effort_recommended": true,
-      "workload_management_required": true
+      "workload_management_required": true,
+      "historical_baseline_candidate_id": "fee-guidance-candidate.dayservice.25.h27",
+      "replay_coverage_available": true
+    }
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.24.h27",
+    "guidance_id": "fee-guidance.dayservice.24",
+    "candidate_kind": "historical_baseline",
+    "source_id": "mhlw-h27-fee-guidance-redline",
+    "source_locator": "PDF pp.74-75 / 改正後7(16) 定員超過利用に該当する場合の所定単位数の算定について",
+    "source_period": "2015",
+    "candidate_summary": "定員超過利用は月平均利用者数で判定し、サービス提供日ごとの同時利用者最大数の合計を提供日数で除して小数点以下を切り上げる。基準該当後は翌月から解消月まで全利用者を減算し、解消翌月から通常算定に戻す。都道府県知事による解消指導、2か月以上継続時の指定取消し検討、災害・虐待受入れ等のやむを得ない場合の例外も置かれている。",
+    "replay_status": "H27_BASELINE_CAPTURED_REPLAY_PENDING",
+    "human_verification_status": "NOT_REVIEWED",
+    "structured_facts": {
+      "monthly_average_basis": "各サービス提供日の同時利用者最大数の合計 ÷ サービス提供日数",
+      "average_fraction_rounding": "小数点以下切上げ",
+      "reduction_start": "定員超過基準該当の翌月",
+      "reduction_end": "定員超過利用が解消された月",
+      "normal_rate_resume": "解消月の翌月",
+      "governor_guidance_required": true,
+      "cancellation_consideration_after_months": 2,
+      "unavoidable_disaster_or_abuse_exception": true
+    }
+  },
+  {
+    "id": "fee-guidance-candidate.dayservice.25.h27",
+    "guidance_id": "fee-guidance.dayservice.25",
+    "candidate_kind": "historical_baseline",
+    "source_id": "mhlw-h27-fee-guidance-redline",
+    "source_locator": "PDF pp.75-76 / 改正後7(17) 人員基準欠如に該当する場合の所定単位数の算定について",
+    "source_period": "2015",
+    "candidate_summary": "看護職員は月間の配置延べ人数をサービス提供日数で除した平均、介護職員は月間勤務延時間数を本来確保すべき勤務延時間数で除した割合で判定する。必要員数から1割超の不足は翌月から、1割以内の不足は原則翌々月から、解消月まで全利用者を減算する。著しい人員基準欠如が続く場合は都道府県知事が増員・定員見直し・休止等を指導する。",
+    "replay_status": "H27_BASELINE_CAPTURED_REPLAY_PENDING",
+    "human_verification_status": "NOT_REVIEWED",
+    "structured_facts": {
+      "nurse_ratio_basis": "月間のサービス提供日に配置された延べ人数 ÷ サービス提供日数",
+      "care_worker_ratio_basis": "月間の配置勤務延時間数 ÷ 本来確保すべき勤務延時間数",
+      "shortage_over_10_percent_reduction_start": "翌月",
+      "shortage_within_10_percent_reduction_start": "翌々月",
+      "within_10_percent_exception": "翌月末までに人員基準を満たした場合は減算しない",
+      "reduction_end": "人員基準欠如が解消された月",
+      "governor_guidance_for_serious_continuing_shortage": true
     }
   }
 ]
