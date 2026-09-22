@@ -31,7 +31,18 @@
       "fee-guidance.dayservice.root"
     ],
     "operation": "document_scope_observation",
-    "summary": "令和8年度の公表された留意事項改正新旧対照表には通所介護費の節が掲載されていない。これだけを根拠に現行統合本文の不変を断定しない。",
+    "summary": "令和8年度に先行して公表された当該留意事項改正資料には通所介護費の節が掲載されていなかった。後続の令和8年5月8日改正では通所介護費7(25)が改正されているため、この観察だけで令和8年度中の不変を断定しない。",
     "verification_status": "SOURCE_SCOPE_CONFIRMED"
+  },
+  {
+    "id": "fee-guidance.r8-may.dayservice.staffing-shortage-exception",
+    "source_id": "mhlw-r8-fee-guidance-may-amendment",
+    "effective_from": "2026-06-01",
+    "target_ids": [
+      "fee-guidance.dayservice.25"
+    ],
+    "operation": "modify",
+    "summary": "人員基準欠如の具体的取扱いに、突発的で想定が困難な事象による一時的人員欠如について一定条件下で減算適用を猶予する特例を追加。令和8年6月算定分から適用。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
   }
 ]

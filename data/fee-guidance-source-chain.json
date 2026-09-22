@@ -23,11 +23,27 @@
     "warning": "現在有効な全文とみなさない"
   },
   {
+    "source_id": "mhlw-h27-fee-guidance-redline",
+    "source_class": "historical_amendment_reference",
+    "issued_period": "2015",
+    "priority": 3,
+    "use": "令和6年度資料で省略された通所介護費の旧見出し・番号を遡って確認",
+    "warning": "現在有効な統合全文ではない"
+  },
+  {
     "source_id": "mhlw-r8-reform-landing",
     "source_class": "official_landing",
     "issued_period": "2026",
     "priority": 4,
     "use": "令和8年度の留意事項改正資料への公式導線"
+  },
+  {
+    "source_id": "mhlw-h30-fee-guidance-redline",
+    "source_class": "historical_amendment_reference",
+    "issued_period": "2018",
+    "priority": 4,
+    "use": "延長加算の対象時間帯の改正後見出しを確認",
+    "warning": "現在有効な統合全文ではない"
   },
   {
     "source_id": "mhlw-r8-fee-interpretation-amendment",
@@ -36,5 +52,21 @@
     "priority": 5,
     "use": "令和8年度に公表された変更範囲を確認",
     "warning": "1ページの新旧対照表であり老企第36号の現行統合全文ではない"
+  },
+  {
+    "source_id": "mhlw-r3-fee-guidance-redline",
+    "source_class": "historical_amendment_reference",
+    "issued_period": "2021",
+    "priority": 5,
+    "use": "事業所規模・感染症災害特例・栄養改善加算などの見出しと番号関係を確認",
+    "warning": "現在有効な統合全文ではない"
+  },
+  {
+    "source_id": "mhlw-r8-fee-guidance-may-amendment",
+    "source_class": "current_amendment",
+    "issued_period": "2026-05",
+    "priority": 9,
+    "use": "通所介護費7(25)人員基準欠如の令和8年6月適用改正を確認",
+    "warning": "差分資料であり現行統合全文ではない"
   }
 ]
