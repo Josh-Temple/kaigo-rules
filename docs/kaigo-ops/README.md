@@ -57,6 +57,7 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [First Claim Promotion checkpoint](./research/checkpoint-claim-promotion-v0.2-2026-09-22.md)
 - [Claim-aware Router v0.1 checkpoint](./research/checkpoint-claim-aware-router-v0.1-2026-09-22.md)
 - [Claim Registry v0.1 checkpoint](./research/checkpoint-claim-registry-v0.1-2026-09-22.md)
 
@@ -96,6 +97,7 @@ Evidence Review / 方法 / 検証
 
 ### Claim-level coverage
 
+- [Claim Registry v0.2](./research/claims/claims-v0.2.json)
 - [Claim Registry v0.1](./research/claims/claims-v0.1.json)
 - [Claim Registry schema](./research/claims/claim-registry.schema.json)
 - [Claim promotion flow](./research/claims/claim-promotion-flow.md)
