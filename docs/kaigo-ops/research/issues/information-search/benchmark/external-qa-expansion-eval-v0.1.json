@@ -1,0 +1,59 @@
+{
+  "version": "0.1",
+  "evaluated_at": "2026-09-22",
+  "source_sample": "external-qa-query-sample-v0.4.json",
+  "source_policy": "MHLW Q&A question text or minimally normalized/shortened public previews only. Q&A answer text is not benchmark ground truth.",
+  "expansion": {
+    "previous_cases": 15,
+    "added_unique_cases": 18,
+    "current_cases": 33,
+    "duplicate_question_texts_excluded": true
+  },
+  "first_pass_on_added_18": {
+    "passed": 14,
+    "total": 18,
+    "failures": [
+      {
+        "id": "EQ-017",
+        "type": "scope_false_answer",
+        "cause": "unit-type facility query fell through to generic multiple-role Issue fallback"
+      },
+      {
+        "id": "EQ-018",
+        "type": "verified_claim_shadowed",
+        "cause": "unreviewed combined staffing candidate outranked the verified full-time requirement claim"
+      },
+      {
+        "id": "EQ-019",
+        "type": "mixed_scope_misclassification",
+        "cause": "mixed core/community-based remuneration query was classified wholly OUT_OF_SCOPE"
+      },
+      {
+        "id": "EQ-020",
+        "type": "mixed_scope_misclassification",
+        "cause": "mixed core/community-based remuneration query was classified wholly OUT_OF_SCOPE"
+      }
+    ]
+  },
+  "fixes": [
+    "Explicitly classify unit-type facility questions outside the current designated day-service core scope.",
+    "Exclude 常勤 / 1人以上 wording from the unreviewed combined life-counselor/care-worker staffing candidate.",
+    "Detect remuneration questions that mention both core day service and an outside service; hold them at REVIEW_REQUIRED instead of treating the whole question as OUT_OF_SCOPE."
+  ],
+  "provenance_audit": {
+    "answer_cases": 6,
+    "initial_label_correct_but_provenance_incomplete": [
+      "EQ-001 manager x functional-training instructor",
+      "EQ-006 external nurse time/distance",
+      "EQ-007 nurse x functional-training instructor"
+    ],
+    "official_review_result": "Three narrow claims were added after direct MHLW Q&A review.",
+    "expected_claim_id_pass": "6/6"
+  },
+  "final_results": {
+    "external_label_and_claim_checks": "33/33",
+    "full_classifier_checks": "166/166",
+    "verified_regression_issue_fallback": "0/51"
+  },
+  "conclusion": "Expanded external queries exposed routing and provenance defects that the internal suites did not reveal. Label accuracy alone was insufficient; exact Claim provenance found three additional claim-coverage gaps."
+}
