@@ -6,6 +6,7 @@ import chainData from "../../../data/fee-guidance-source-chain.json";
 import metaData from "../../../data/fee-guidance-current-meta.json";
 import reviewData from "../../../data/fee-guidance-review.json";
 import candidatesData from "../../../data/fee-guidance-text-candidates.json";
+import currentCandidatesData from "../../../data/fee-guidance-current-text-candidates.json";
 import replayCoverageData from "../../../data/fee-guidance-replay-coverage.json";
 import sourcesData from "../../../data/sources.json";
 import feeData from "../../../data/remuneration-current-skeleton.json";
@@ -17,6 +18,7 @@ const chain=chainData as Array<any>;
 const meta=metaData as any;
 const review=reviewData as any;
 const candidates=candidatesData as Array<any>;
+const currentCandidates=(currentCandidatesData as any).items as Array<any>;
 const replayCoverage=replayCoverageData as Array<any>;
 const sources=sourcesData as Array<any>;
 const fees=feeData as Array<any>;
@@ -48,7 +50,7 @@ export default function FeeGuidancePage(){
     <div className="notice">
       <strong>現行統合版ではありません。</strong><br/>
       令和6年度資料で「略」とされた見出しは、過去の厚生労働省改正資料まで遡って補完しました。
-      ただし本文の現行統合と人手確認は未完了であり、見出し補完だけで「確認済み」とは扱いません。
+      8項目は公式PDFスナップショットと改正履歴から現行本文候補を機械再構成済みですが、人手確認は未完了です。機械再構成だけで「確認済み」とは扱いません。
     </div>
 
     <section className="rules-stats">
@@ -107,10 +109,10 @@ export default function FeeGuidancePage(){
     </section>
 
     <section className="section">
-      <h2>本文再構成の進捗</h2>
+      <h2>再構成に使った根拠候補</h2>
       <p>
-        令和6年度資料で省略された8項目について、過去の公式資料や後続改正から本文候補を収集しています。
-        ここにある内容は現行統合本文ではなく、人手確認前の再構成材料です。
+        令和6年度資料で省略された8項目について、過去の公式資料と後続改正の確認経路を保持しています。
+        以下は現行本文候補を組み立てるための根拠であり、それ自体を現行統合本文とは扱いません。
       </p>
       <div className="source-chain">
         {candidates.map(candidate=>{
@@ -131,6 +133,36 @@ export default function FeeGuidancePage(){
     </section>
 
     <section className="section">
+      <h2>人手確認用の現行本文候補</h2>
+      <p>
+        8項目は、項目単位で抽出した公式PDF本文と確認済みの改正履歴から決定論的に組み立てています。
+        ここに表示する本文は <code>MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK</code> であり、人手確認前の候補です。
+      </p>
+      <div className="fee-guidance-list">
+        {currentCandidates.map(candidate=>{
+          const node=nodes.find(n=>n.id===candidate.guidance_id);
+          return <section className="fee-guidance-row" key={candidate.guidance_id}>
+            <div className="fee-guidance-head">
+              <div>
+                <p className="meta">{candidate.number_path.join(" / ")}</p>
+                <h3>{node?.title || candidate.title || candidate.guidance_id}</h3>
+              </div>
+              <span className="fee-status">機械再構成・人手未確認</span>
+            </div>
+            <div className="guidance-candidate-text">{candidate.candidate_text}</div>
+            <p className="meta">
+              根拠：{candidate.evidence.map((e:any,index:number)=>{
+                const source=sources.find(s=>s.id===e.source_id);
+                return <span key={e.snapshot_id}>{index>0?" / ":""}{source?.title || e.source_id} p.{e.page_start}{e.page_end!==e.page_start?"–"+e.page_end:""}</span>;
+              })}
+            </p>
+            <p className="meta">本文SHA-256：<code>{candidate.candidate_text_sha256}</code></p>
+          </section>;
+        })}
+      </div>
+    </section>
+
+    <section className="section">
       <h2>改正イベント</h2>
       {events.map(event=><div className="source-card" key={event.id}>
         <p className="meta">{event.effective_from}{event.effective_to?" 〜 "+event.effective_to:""}</p>
@@ -141,8 +173,9 @@ export default function FeeGuidancePage(){
     <section className="section">
       <h2>次の工程</h2>
       <p>
-        8項目すべてで基礎資料と後続改正の経路を確保しました。次は根拠PDFの本文を項目単位で正確に統合し、
-        7(25)には令和8年5月8日改正を重ねたうえで、人手確認用の現行本文候補を作ります。
+        8項目の現行本文候補は機械再構成済みです。次は各候補を表示された根拠PDFと項目単位で人手照合し、
+        確認時の本文SHA-256と確認日をレビュー台帳へ記録します。人手確認が完了するまで、現行統合版や
+        <code>VERIFIED_CURRENT</code> には昇格させません。
       </p>
     </section>
   </article>;
