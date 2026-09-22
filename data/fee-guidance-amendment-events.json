@@ -1,0 +1,37 @@
+[
+  {
+    "id": "fee-guidance.r6.dayservice.add-abuse-bcp",
+    "source_id": "mhlw-r6-fee-guidance-redline",
+    "effective_from": "2024-04-01",
+    "target_ids": [
+      "fee-guidance.dayservice.2",
+      "fee-guidance.dayservice.3"
+    ],
+    "operation": "insert",
+    "summary": "高齢者虐待防止措置未実施減算と業務継続計画未策定減算の留意事項を新設し、後続項目を繰り下げ。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
+  },
+  {
+    "id": "fee-guidance.r6.dayservice.bcp-transition",
+    "source_id": "mhlw-r6-fee-guidance-redline",
+    "effective_from": "2024-04-01",
+    "effective_to": "2025-03-31",
+    "target_ids": [
+      "fee-guidance.dayservice.3"
+    ],
+    "operation": "temporary_transition",
+    "summary": "業務継続計画未策定減算について令和7年3月31日までの経過措置を記載。2026年時点の現行本文へそのまま残してはならない。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "fee-guidance.r8.published-diff-no-dayservice-section",
+    "source_id": "mhlw-r8-fee-interpretation-amendment",
+    "effective_from": "2026-06-01",
+    "target_ids": [
+      "fee-guidance.dayservice.root"
+    ],
+    "operation": "document_scope_observation",
+    "summary": "令和8年度の公表された留意事項改正新旧対照表には通所介護費の節が掲載されていない。これだけを根拠に現行統合本文の不変を断定しない。",
+    "verification_status": "SOURCE_SCOPE_CONFIRMED"
+  }
+]

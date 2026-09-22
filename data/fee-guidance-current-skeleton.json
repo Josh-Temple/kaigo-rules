@@ -1,0 +1,684 @@
+[
+  {
+    "id": "fee-guidance.dayservice.root",
+    "parent_id": null,
+    "number_path": [
+      "第2",
+      "7"
+    ],
+    "title": "通所介護費",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_SECTION_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.root"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.42 / 新欄「7 通所介護費」",
+        "evidence_type": "current_section_heading"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.1",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "1"
+    ],
+    "title": "所要時間による区分の取扱い",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.standard",
+      "fee.dayservice.large1",
+      "fee.dayservice.large2",
+      "fee.dayservice.note.4"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF pp.42-43 / 7(1)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.2",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "2"
+    ],
+    "title": "高齢者虐待防止措置未実施減算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.2"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 7(2)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.3",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "3"
+    ],
+    "title": "業務継続計画未策定減算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.3"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 7(3)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.4",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "4"
+    ],
+    "title": "項目4（見出し・本文要再生）",
+    "service_scope": "通所介護",
+    "verification_status": "UNKNOWN",
+    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "official_text": null,
+    "related_fee_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
+        "evidence_type": "current_number_range_omitted"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.5",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "5"
+    ],
+    "title": "項目5（見出し・本文要再生）",
+    "service_scope": "通所介護",
+    "verification_status": "UNKNOWN",
+    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "official_text": null,
+    "related_fee_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
+        "evidence_type": "current_number_range_omitted"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.6",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "6"
+    ],
+    "title": "項目6（見出し・本文要再生）",
+    "service_scope": "通所介護",
+    "verification_status": "UNKNOWN",
+    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "official_text": null,
+    "related_fee_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
+        "evidence_type": "current_number_range_omitted"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.7",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "7"
+    ],
+    "title": "項目7（見出し・本文要再生）",
+    "service_scope": "通所介護",
+    "verification_status": "UNKNOWN",
+    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "official_text": null,
+    "related_fee_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
+        "evidence_type": "current_number_range_omitted"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.7-2",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "7の2"
+    ],
+    "title": "項目7の2（見出し・本文要再生）",
+    "service_scope": "通所介護",
+    "verification_status": "UNKNOWN",
+    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "official_text": null,
+    "related_fee_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
+        "evidence_type": "current_number_range_omitted"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.8",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "8"
+    ],
+    "title": "生活相談員配置等加算について",
+    "service_scope": "共生型通所介護・コア範囲外",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.8"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 7(8)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.9",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "9"
+    ],
+    "title": "注9の取扱い",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.9"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43 / 7(9)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.10",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "10"
+    ],
+    "title": "入浴介助加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.10"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.43以降 / 7(10)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.11",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "11"
+    ],
+    "title": "中重度者ケア体制加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.11"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF 通所介護費 / 7(11)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.12",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "12"
+    ],
+    "title": "生活機能向上連携加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.12"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF 通所介護費 / 7(12)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.13",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "13"
+    ],
+    "title": "個別機能訓練加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.13"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF 通所介護費 / 7(13)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.14",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "14"
+    ],
+    "title": "ADL維持等加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.14"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF 通所介護費 / 7(14)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.15",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "15"
+    ],
+    "title": "認知症加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.15"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.50 / 7(15)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.16",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "16"
+    ],
+    "title": "若年性認知症利用者受入加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.16"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.60 / 通所リハ現行側が通所介護7(16)を参照",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.17",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "17"
+    ],
+    "title": "栄養アセスメント加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.17"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.60 / 通所リハ現行側が通所介護7(17)を参照",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.18",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "18"
+    ],
+    "title": "項目18（見出し・本文要再生）",
+    "service_scope": "通所介護",
+    "verification_status": "UNKNOWN",
+    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "official_text": null,
+    "related_fee_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.50 / 「(16)〜(18)（略）」",
+        "evidence_type": "current_number_range_omitted"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.19",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "19"
+    ],
+    "title": "口腔・栄養スクリーニング加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.19"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.50以降 / 7(19)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.20",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "20"
+    ],
+    "title": "口腔機能向上加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.20"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF 通所介護費 / 7(20)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.21",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "21"
+    ],
+    "title": "科学的介護推進体制加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.21"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.52 / 7(21)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.22",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "22"
+    ],
+    "title": "事業所と同一の建物に居住する利用者又は同一建物から通う利用者に通所介護を行う場合の取扱い",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.23"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.52 / 7(22)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.23",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "23"
+    ],
+    "title": "送迎を行わない場合の減算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.note.24"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.52 / 7(23)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.24",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "24"
+    ],
+    "title": "項目24（見出し・本文要再生）",
+    "service_scope": "通所介護",
+    "verification_status": "UNKNOWN",
+    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "official_text": null,
+    "related_fee_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.52 / 「(24)・(25)（略）」",
+        "evidence_type": "current_number_range_omitted"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.25",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "25"
+    ],
+    "title": "項目25（見出し・本文要再生）",
+    "service_scope": "通所介護",
+    "verification_status": "UNKNOWN",
+    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "official_text": null,
+    "related_fee_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.52 / 「(24)・(25)（略）」",
+        "evidence_type": "current_number_range_omitted"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.26",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "26"
+    ],
+    "title": "サービス提供体制強化加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.service-provision"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.52 / 7(26)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  },
+  {
+    "id": "fee-guidance.dayservice.27",
+    "parent_id": "fee-guidance.dayservice.root",
+    "number_path": [
+      "第2",
+      "7",
+      "27"
+    ],
+    "title": "介護職員等処遇改善加算について",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R6_REDLINE",
+    "official_text": null,
+    "related_fee_ids": [
+      "fee.dayservice.treatment-improvement"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "PDF p.52 / 7(27)",
+        "evidence_type": "current_side_heading_or_cross_reference"
+      }
+    ]
+  }
+]

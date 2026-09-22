@@ -2,12 +2,14 @@ import ratesData from "../../../data/unit-price-dayservice.json";
 import metaData from "../../../data/unit-price-dayservice-meta.json";
 import assignmentsData from "../../../data/unit-price-region-assignments.json";
 import assignmentMetaData from "../../../data/unit-price-region-assignments-meta.json";
+import reviewData from "../../../data/unit-price-review.json";
 import sourcesData from "../../../data/sources.json";
 
 const rates = ratesData as Array<any>;
 const meta = metaData as any;
 const assignments = assignmentsData as Array<any>;
 const assignmentMeta = assignmentMetaData as any;
+const review = reviewData as any;
 const sources = sourcesData as Array<any>;
 
 const normalize = (value: string) =>
@@ -130,6 +132,16 @@ export default async function UnitPricePage({
           <div><dt>その他</dt><dd>{assignmentMeta.default_rule_present ? "フォールバック規則あり" : "未取込"}</dd></div>
           <div><dt>確認状態</dt><dd>{assignmentMeta.review_status || meta.review_status || "—"}</dd></div>
         </dl>
+      </section>
+
+      <section className="section">
+        <h2>人手チェック状況</h2>
+        <dl className="rule-meta">
+          <div><dt>単価</dt><dd>{(review.reviewed_rate_ids || []).length} / {rates.length}件</dd></div>
+          <div><dt>地域割当</dt><dd>{(review.reviewed_assignment_ids || []).length} / {assignments.length}件</dd></div>
+          <div><dt>「その他」規則</dt><dd>{review.reviewed_default_rule ? "確認済み" : "未確認"}</dd></div>
+        </dl>
+        <p className="meta">確認結果は生成データとは別台帳で管理し、公式ソースが更新された場合は再確認を要求します。</p>
       </section>
 
       <section className="section">

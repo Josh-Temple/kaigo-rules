@@ -1,0 +1,146 @@
+[
+  {
+    "from_guidance_id": "fee-guidance.dayservice.root",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.root",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.1",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.standard",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.1",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.large1",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.1",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.large2",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.1",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.4",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.2",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.2",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.3",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.3",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.8",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.8",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.9",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.9",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.10",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.10",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.11",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.11",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.12",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.12",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.13",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.13",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.14",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.14",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.15",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.15",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.16",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.16",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.17",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.17",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.19",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.19",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.20",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.20",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.21",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.21",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.22",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.23",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.23",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.note.24",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.26",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.service-provision",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_guidance_id": "fee-guidance.dayservice.27",
+    "relation": "explains_calculation_of",
+    "to_fee_id": "fee.dayservice.treatment-improvement",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  }
+]
