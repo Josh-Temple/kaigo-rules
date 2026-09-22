@@ -1,7 +1,7 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: v0.1 seed + deterministic baseline completed
+状態: **v0.2 complete / paused before RAG**
 
 ## 目的
 
@@ -10,112 +10,104 @@
 - navigation
 - full-text / keyword search
 - structured FAQ
+- Issue routing + linked-source expansion
 - source-grounded RAG
 
 を同じground truthで比較する。
 
-## Files
+## v0.1
 
-- `questions-v0.1.csv`
-  - 現在の検証済み12問
-  - そのうち8問のparaphrase
-  - 計20問
-- `challenges-v0.1.csv`
-  - 11件のsafety / scope / currentness / ambiguity challenge
-- `baseline-v0.1.md`
-  - deterministic retrievalの初回結果
-- `baseline-results-v0.1.csv`
-  - question別の結果
+- `questions-v0.1.csv`: 20問
+- `challenges-v0.1.csv`: safety challenge
+- `baseline-v0.1.md`: title / alias由来seedの最初のbaseline
 
-## Reproduce
+v0.1ではclean small corpusでsimple retrievalがかなり強いことを確認した。
 
-repo root:
+## v0.2
+
+- `benchmark-v0.2.json`
+  - unseen natural-language: 18
+  - multi-source: 6
+  - safety: 11
+- `scoring-v0.2.md`
+  - answer-level rubric
+  - hard fail条件
+- `baseline-v0.2.md`
+  - deterministic baseline結果
+
+再現:
 
 ```bash
-node scripts/research-retrieval-baseline.mjs
+node scripts/research-retrieval-benchmark-v0.2.mjs
 ```
 
-dependencyは不要。
+## v0.2 result
 
-## Rule
+24 retrieval tests:
 
-### Ground truthは先に固定する
+- FAQ Hit@1: 95.8%
+- FAQ Hit@3: 100%
+- direct trusted-source mean Recall@5: 91.3%
+- direct trusted-source Complete@5: 79.2%
+- FAQ routing + Top3 linked-source union Complete: 100%
 
-回答systemの出力を見てgold answerを変更しない。
+この結果から、現段階ではRAGより先に、
 
-### verified sourceだけで採点する
+```text
+query
+ ↓
+Issue router
+ ↓
+top-k ambiguity handling
+ ↓
+linked source graph expansion
+ ↓
+status / currentness filter
+ ↓
+answer
+```
 
-`INGESTED_UNREVIEWED` や `NOT_STARTED` review layerを、
-正解根拠へ勝手に昇格させない。
+を強いnon-RAG baselineとする。
 
-### Answerabilityも採点対象
+## 重要な注意
 
-正答だけでなく、
+v0.2もproduction benchmarkではない。
 
-- abstain
-- ask for missing condition
-- point to local authority
-- distinguish unreviewed source
+- 現在のverified coverageを見て手作業で作成
+- corpusが小さい
+- real user query logではない
+- answer generation未評価
 
-が正解になるquestionを含める。
+したがって100%を性能保証として使わない。
 
-## v0.1 deterministic result
+## Safety
 
-20問seedに対するcharacter-bigram TF-IDF:
+11 challenge:
 
-- curated FAQ Hit@1: 95%
-- curated FAQ Hit@3: 100%
-- raw VERIFIED_CURRENT rule Hit@1: 95%
-- raw VERIFIED_CURRENT rule Hit@3: 100%
+- local rule
+- out-of-scope
+- unreviewed source
+- stale source
+- provenance status
+- condition loss
+- false premise
+- ambiguity
 
-ただし既存title/aliasから作ったseedなのでproduction performanceではない。
+これらはretrieval-only scriptでは採点しない。
 
-重要なのは、**clean small corpusではsimple retrievalがすでに強い**こと。
+将来のanswer systemに対して、
+`scoring-v0.2.md` のrubricでhuman-reviewed evaluationを行う。
 
-RAGは、単純なretrieval hitではなく、
+## 次の再開点
 
-- multi-source synthesis
-- condition handling
-- currentness
-- citation correctness
-- contradiction
-- no-answer / abstention
+RAG実装はまだ行わない。
 
-で追加価値を示す必要がある。
+次は:
 
-## v0.1 evaluation
+1. benchmarkを50問程度へ拡張
+2. 現在のcoverageを知らない第三者的なqueryを増やす
+3. safety 11問でanswer-level baselineを取る
+4. Issue router + linked-source expansionを実装候補として評価
+5. その後RAG candidateを同条件で比較
 
-### Core
-20 questions.
-
-Measure:
-- exact/semantic answer correctness
-- required condition retention
-- source correctness
-- citation entailment
-- time to correct source
-
-### Safety
-11 challenges.
-
-Measure:
-- inappropriate answer rate
-- stale-source use
-- out-of-scope leakage
-- unreviewed-source promotion
-- false-premise acceptance
-- ambiguity handling
-- abstention accuracy
-
-## Next
-
-1. challenge setを実行可能なscoring形式にする
-2. current navigation baselineを計測
-3. simple keyword/full-text baselineを固定
-4. curated FAQ answer baseline
-5. source-grounded RAG candidate
-6. 同一question setで比較
-7. independent / unseen queryを追加
-8. 50問へ拡張
-
-50問化はDB coverageとhuman reviewの前進に合わせて行う。
+RAGがこのbaselineを上回らなければ、導入しない。
