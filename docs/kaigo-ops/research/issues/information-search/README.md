@@ -1,246 +1,298 @@
 # First Deep Issue — 必要な情報を探すのに時間がかかる
 
 調査開始: 2026-09-22  
-状態: Discovery / initial evidence review
+状態: Discovery / evidence review v0.2
 
 ## 1. Issue definition
 
-介護現場では「情報がない」だけでなく、
+介護現場の「情報探索」には少なくとも二種類ある。
 
-- 情報が複数の場所にある
-- 最新版が分からない
-- 同じ内容を紙とシステムの両方で管理する
-- 制度情報と事業所内ルールが混在する
-- 誰に聞けばよいかが属人化する
-- 検索できても現場で使える答えに変換できない
+### Type A — codified knowledge retrieval
 
-ことで、探索・確認・転記・問い合わせに時間がかかる。
+- 法令・基準
+- 通知
+- Q&A
+- manual
+- policy / procedure
+- 製品・補助制度情報
+- 事業所内FAQ
 
-このIssueでは、単に「AI chatbotを導入すればよい」とは置かない。
+これはsourceを限定しやすく、ordinary search、taxonomy、RAG等で比較しやすい。
 
-## 2. 初期仮説
+### Type B — person-specific care information
 
-### H1: 問題の中心は検索エンジン性能ではなく、情報アーキテクチャとworkflow fragmentationである
+- 現在の状態
+- 生活歴
+- 家族関係
+- care goals
+- QoL
+- sensitive information
+- 他施設・病院からのhandoff
 
-CanadaのLTC施設を対象にした情報フロー研究では、RNがpersonal notes、facility forms、care plans、medication records、reporting software、books、人への問い合わせなど多数のinformation resources / spacesを併用していた。[I01]
+これは「検索」の問題だけではない。
 
-紙と電子が混在し、同じ情報を複数の場所へ記録する状況も観察されている。[I01]
+capture、記録粒度、standardization、timeliness、privacy、相互理解が関係する。[I14]
+
+**最初のbenchmarkはType Aに限定する。**
+
+---
+
+## 2. Evidenceから見える問題構造
+
+### H1: 問題の中心は検索性能だけでなく、情報アーキテクチャとworkflow fragmentation
+
+CanadaのLTC施設研究では、personal notes、facility forms、care plans、medication records、reporting software、books、人への問い合わせなど多数のinformation spacesが併存し、全siteで一定の紙運用が残っていた。[I01]
+
+日本でも、2025年度の全国調査で介護記録software利用回答者3,670件の**44.7%**が、記録から請求までに手入力転記が発生していると回答した。[I11]
 
 したがって、
 
-> 「検索を速くする」だけではなく、「どの情報を正本にするか」「どこへ統合するか」を先に設計する必要がある
+> 検索を速くする前に、正本・入力元・重複・連携を確認する
 
-という仮説を置く。
+ことを標準手順にする。
 
-### H2: デジタル化そのものは時間削減を保証しない
+### H2: digitizationだけでは時間削減を保証しない
 
-nursing homeでelectronic nursing documentation導入前後を比較した研究では、導入によってdocumentation timeが単純には減らず、6か月時点で増加し、12か月後に元の水準へ戻った。紙のdocumentationが残っていたことが一因として指摘された。[I02]
+Australiaのnursing home前後研究では、electronic documentation導入後にdocumentation timeが単純には減らず、hybrid paper/electronic workflowが負担を残した。[I02]
 
-古い研究ではあるが、
+一方、日本の2025年度実証では、介護記録softwareとworkflow変更を合わせた後、
 
-> **paper → digitalへの置換だけでは、workflowが二重化すれば効果を失う**
+- 記録・文書: 43.1 → 30.4分 / 480分
+- 転記: 21.5 → 8.2分 / 480分
 
-という失敗パターンとして重要。
+となった。[I10]
 
-### H3: AI knowledge assistantは、低リスクのauthoritative knowledgeから始めると実装しやすい
+対立ではなく、条件差と考える。
 
-AustraliaのUnitingは、pain pointを組織横断で収集し、最初のGenAI use caseとして441件のpolicies and proceduresを対象にした。[I05]
+**一気通貫化・重複廃止・mobile access等まで含めたworkflow redesignが重要**という仮説が強まった。
 
-選定理由:
-- 自組織が作成した情報
-- 最新であることを確認できる
-- PIIを含まない
-- security riskを限定できる
+### H3: 情報の「検索性」には実務価値がある
+
+令和3年度ICT導入支援事業の導入事業所5,058件の自己申告では、
+
+- 情報共有しやすくなった: 90.3%
+- 過去文書の検索性向上: 72.4%
+- 文書作成時間短縮: 81.9%
+
+と報告された。[I12]
+
+ただし補助事業参加者によるself-reportなので、独立した効果量として扱わない。
+
+### H4: AI knowledge assistantは、低リスクauthoritative knowledgeから始めやすい
+
+AustraliaのUnitingは、最初のGenAI use caseとして441件のpolicies/proceduresを対象にした。[I05]
+
+- 自組織作成
+- current versionを管理可能
+- PIIなし
+- security riskを限定
 - scaleしやすい
 
-その後、point-of-careでのcare plan access、incident reporting、case-note supportへ広げる設計だが、PII/PHIを扱う領域はdata classificationとaccess controlを整えてから進めている。[I05]
+という条件を持つ。
 
-この順番は日本の介護事業所にも移植可能性が高い。
+これは介護ルールと相性がよい。
 
-### H4: 「詳しい人への問い合わせ」をAIで一部代替する用途は、実務価値が測りやすい
+### H5: 「詳しい人への問い合わせ」の一部を検索可能にする価値がある
 
-Peterborough City CouncilのAdult Social Careでは、特定職員Geraldineへの頻繁な問い合わせを背景に、AI assistant「Hey Geraldine」を構築した。[I06]
+Peterboroughの“Hey Geraldine”では、特定のexpertに集中していた質問をassistant化し、case report上では1,200超のtest questionsとOT conversationあたり15分の時間削減が報告されている。[I06]
 
-公開case reportでは:
-- testing期間に1,200超の質問
-- OT teamで1 conversationあたり15分の時間削減と報告
-- backendから内容を更新可能
-- query dataからknowledge gapを把握
+ただしcontrolled independent evaluationではない。
 
-とされている。[I06]
+このため、Kaigo Opsでは「成功事例」としてではなく、
 
-ただしLGA case studyによる運用報告であり、独立したcontrolled evaluationではない。
+> expert bottleneckをmeasurement可能なIssueへ変換した実装例
 
-### H5: codified knowledgeとtacit knowledgeを分ける必要がある
+として扱う。
 
-care-home managersのknowledge useに関するqualitative studyでは、research evidenceだけでなく、tacit knowledge、実践知、状況判断が強く重視されていた。[I03]
+### H6: codified knowledgeとtacit knowledgeは分ける
 
-よってAI/RAGで検索できるようにすべき対象は、
+care-home managersの研究では、研究Evidence以外にtacit knowledge・実践知・状況判断が重視される。[I03]
+
+日本の2026 transitional-care研究でも、QoLやperson-specific情報にはstandardizationしにくいもの、記録しづらいsensitive informationがある。[I14]
+
+したがってAI/RAGの最初の対象は、
 
 - rules
 - policies
 - procedures
 - manuals
 - FAQs
-- product / equipment knowledge
 - official guidance
 
-などのcodified knowledgeを中心にする。
+に寄せる。
 
-「経験豊富な職員の判断をすべてAIに置き換える」という設計は避ける。
+### H7: source qualityが悪ければRAGを足しても解決しない
 
-## 3. 解決策の階層
+2025年のLTC documentation systematic reviewや、residential-aged-care LLM評価は、documentation qualityやrobustness/context relevance自体が重要な問題であることを示す。[I18][I20]
 
-このIssueは次の順番で解く。
+RAG benchmarkではmodel qualityだけでなく、
 
-### Level 0 — 情報を減らす
+- version
+- currentness
+- source coverage
+- contradiction
+- missing source
 
-- 重複文書をなくす
-- 古い版を廃止する
-- 不要な手順を減らす
+を試験対象にする。
+
+---
+
+## 3. 日本で特に見えた三つの分断
+
+### 3.1 文書内の分断
+
+同じ利用者・業務情報が複数文書に散る。
+
+### 3.2 system間の分断
+
+介護記録softwareを使っていても手入力転記が残る。[I11]
+
+### 3.3 組織間の分断
+
+病院と介護施設では必要な情報の重点が違い、標準化だけでは解けないhandoff gapがある。[I14]
+
+この三つを同じ「検索問題」として扱わない。
+
+---
+
+## 4. 解決策の階層
+
+### Level 0 — 不要情報・不要業務を減らす
+
+- 重複文書廃止
+- 古い版廃止
+- 不要な転記廃止
+- 不要な確認手順廃止
 
 ### Level 1 — 正本を決める
 
+最低限:
+
 - authoritative source
 - owner
-- update date
 - version
-- applicable scope
+- updated_at
+- applicable_scope
+- superseded_by
 
-を固定する。
-
-### Level 2 — 普通の検索・navigationを改善する
+### Level 2 — ordinary retrievalを改善
 
 - taxonomy
-- tag
+- tags
 - full-text search
-- service type filter
 - task-oriented navigation
-- FAQ
+- structured FAQ
+- source filters
 
-AIを使わなくても解決する部分を先に確認する。
+ここで十分ならAIを足さない。
 
-### Level 3 — AI / RAGで自然言語アクセスを追加する
+### Level 3 — source-grounded RAG
 
-利用者の自然な質問からauthoritative sourceを検索し、
+自然言語質問に対し、
 
-- 短い回答
-- 根拠
-- 原文該当箇所
-- 更新日
-- 適用範囲
+- short answer
+- source
+- exact relevant section
+- publication/update date
+- scope
+- uncertainty / no-answer
 
 を返す。
 
-### Level 4 — personal / clinical dataを扱う
+### Level 4 — workflow integration
 
-care plans、case notes、利用者個人情報等。
+検索結果を業務へつなぐ。
 
-ここはLevel 0–3とは別のrisk classとして扱う。
+例:
+- checklist
+- form
+- opening procedure
+- training
+- change alert
 
-## 4. 介護ルールとの接続
+### Level 5 — personal / clinical information
 
-既存の「介護ルール」は、このIssueを検証するための非常に良い基盤になる。
+care plan、case note、利用者情報。
 
-理由:
+別risk class。
 
-- source provenanceを保持している
-- 公開情報中心
-- 法令・告示・Q&A等のauthoritative sourceを持てる
-- 個人情報なしで検証できる
-- 検索結果の正誤を人間が確認しやすい
+human review、privacy、retention、access control、consent/objection等を前提にする。
 
-つまり、介護ルールは単なる公開サイトではなく、
+NewcastleのMagic Notes透明性記録では、AIはdraft transcript/summaryを作るだけで、practitionerによるreviewを必須とし、自動判断を行わない設計になっている。[I17]
 
-> **介護分野のauthoritative knowledge retrievalを検証するtestbed**
+---
+
+## 5. このIssueに対するKaigo Rulesの役割
+
+既存「介護ルール」は、
+
+> authoritative knowledge retrievalを検証するtestbed
 
 として使える。
 
-## 5. サイトに載せると価値がありそうな内容
+強み:
 
-公開ページは「AI検索を導入しよう」という記事ではなく、
+- public source
+- provenance
+- 法令・告示・Q&A
+- 人間が正誤判定しやすい
+- 個人情報を使わずに実験できる
 
-### 困りごと
-必要な制度・手順・事業所内情報を探すのに時間がかかる。
+ここでordinary search vs RAGを比較し、RAGが勝たなければ無理に入れない。
 
-### まず確認
-- 情報源はいくつあるか
-- 正本は決まっているか
-- 更新者は決まっているか
-- 同じ情報が重複していないか
-- 問い合わせ先が一人に集中していないか
+---
 
-### 解決パターン
-1. 整理
-2. taxonomy / search
-3. FAQ
-4. RAG
-5. workflow integration
+## 6. Kaigo Ops自体が解ける情報ペイン
 
-### AIが向く条件
-- sourceが限定できる
-- 最新版を管理できる
-- 参照元を表示できる
-- 誤答時に原典確認へ戻れる
-- 高リスク判断をAI単独で確定しない
+2026年の愛知県LTC施設調査[I09]:
 
-### AIを入れる前に直す条件
-- 文書が古い
-- 正本が複数ある
-- 誰も更新していない
-- access permissionが不明
-- 業務そのものが不要
+- 導入施設でも利用可能な機器の情報不足: 55.2%
+- 未導入施設でも情報不足: 55.7%
+- 未導入施設の費用制約: 91.1%
+- 費用対効果への懸念: 62.1%
 
-という構造にする。
+つまり利用者は、
 
-## 6. 日本での別の情報ペイン
+> 「どんなtechnologyがあり、どの条件なら意味があるのか」
 
-2026年に公表された日本のLTC facility surveyでは、介護テクノロジー導入済み施設でも「利用可能な機器の情報不足」、未導入施設でも「情報不足」がbarrierとして報告されている。[I09]
+を探すこと自体に困っている。
 
-これは現場内部のknowledge retrievalとは別の問題だが、
+Kaigo Opsの世界事例・Evidence・日本への適用条件DBは、その問題へ直接価値を出せる可能性がある。
 
-> **介護事業者が「使える技術・制度・補助・Evidence」を探しにくい**
+---
 
-という本サイト自体が解けるIssueを示している。
+## 7. 現時点で言えること
 
-したがって「介護業務改善」サイトには将来的に、
+- LTCの情報は複数媒体・複数systemに分散しやすい。[I01][I11]
+- digitizationだけではworkload reductionは保証されない。[I02]
+- workflow redesignと一体になった日本の公的実証では、記録・転記時間減少が観測されている。[I10]
+- 導入事業所は検索性・情報共有改善を多く自己申告している。[I12]
+- training/support/interoperabilityが重要な導入条件である。[I04][I12][I15][I16]
+- low-risk authoritative knowledgeはGenAIの初期use caseとして実装されている。[I05]
+- personal care informationには検索性以外の構造問題がある。[I14]
 
-- 困りごと
-- 技術カテゴリ
-- 国内外事例
-- Evidence
-- 導入条件
-- 補助・制度
+## 8. まだ言えないこと
 
-を横断して探せる価値がある。
+- RAGが日本の介護ルール検索でordinary searchより優れるか
+- 何分の短縮になるか
+- hallucination / stale answerを実務許容水準まで抑えられるか
+- small providerでの費用対効果
+- 長期使用時の効果維持
+- knowledge assistantの効果がcare qualityへ波及するか
 
-## 7. 現時点で言えること / 言えないこと
+---
 
-### 言えそうなこと
+## 9. 次の実証
 
-- LTCのinformation flowは複数媒体・複数場所に分散しやすい。[I01]
-- digitizationだけではworkload reductionが生じない場合がある。[I02]
-- low-risk authoritative knowledgeを対象にAI assistantを始める実運用例がある。[I05]
-- social careでknowledge assistantの時間削減を報告するcaseがある。[I06]
-- successful adoptionにはtraining、usefulness、organizational support等が影響する。[I04]
+[experiment-plan.md](./experiment-plan.md) に従い、
 
-### まだ言えないこと
+1. 介護ルールDB coverage audit
+2. benchmark 30〜50問
+3. navigation / full-text / structured FAQ / RAG比較
+4. unsupported answer / stale source / conflicting source / no-answer試験
+5. human correction effort測定
 
-- RAGが日本の介護現場で何分短縮するか
-- ordinary searchよりGenAIが優れているか
-- hallucinationを実務許容水準まで抑えられるか
-- small providerでも費用対効果があるか
-- 長期利用しても効果が維持されるか
-
-これらは今後の検証対象。
-
-## 8. 次の調査
-
-1. LTC / aged careのknowledge assistant事例を追加探索する。
-2. generative AI documentationとknowledge retrievalを分離してEvidenceを集める。
-3. Japanの介護現場で「何を探すのに時間がかかるか」の公開調査を探す。
-4. ordinary search vs RAGの比較研究を介護外も含めて確認する。
-5. 介護ルールを使った小規模benchmarkを作る。
+を行う。
 
 ## Sources
 
