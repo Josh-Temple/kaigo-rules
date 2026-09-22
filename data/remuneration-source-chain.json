@@ -3,9 +3,9 @@
     "source_id": "mhlw-fee-notice19-base",
     "source_class": "base_notice_text",
     "priority": 1,
-    "completeness": "base_text",
-    "use": "通所介護費の基礎構造・単位数・注・加算減算のベース",
-    "warning": "令和8年度改正の順方向再生完了前は現行統合版として扱わない"
+    "completeness": "official_current_consolidated_html",
+    "use": "通所介護費の現行本文・単位数・注・加算減算の取得元",
+    "warning": "機械構造化した各ノードは人手照合完了までVERIFIED_CURRENTにしない"
   },
   {
     "source_id": "mhlw-fee-notice27-base",
