@@ -104,6 +104,14 @@ const unitPricePath = path.join(root, "data", "unit-price-dayservice.json");
 const unitPrices = fs.existsSync(unitPricePath)
   ? JSON.parse(fs.readFileSync(unitPricePath, "utf8"))
   : [];
+const unitRegionAssignmentsPath = path.join(root, "data", "unit-price-region-assignments.json");
+const unitRegionAssignments = fs.existsSync(unitRegionAssignmentsPath)
+  ? JSON.parse(fs.readFileSync(unitRegionAssignmentsPath, "utf8"))
+  : [];
+const unitRegionAssignmentsMetaPath = path.join(root, "data", "unit-price-region-assignments-meta.json");
+const unitRegionAssignmentsMeta = fs.existsSync(unitRegionAssignmentsMetaPath)
+  ? JSON.parse(fs.readFileSync(unitRegionAssignmentsMetaPath, "utf8"))
+  : null;
 const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
 const careActNodes = fs.existsSync(careActPath)
   ? JSON.parse(fs.readFileSync(careActPath, "utf8"))
@@ -148,6 +156,7 @@ unique(feeAmendments, "id", "remuneration-amendments");
 unique(feeCurrentText, "fee_id", "remuneration-current-text");
 unique(delegatedFeeNodes, "id", "remuneration-delegated-nodes");
 unique(unitPrices, "id", "unit-price-dayservice");
+unique(unitRegionAssignments, "id", "unit-price-region-assignments");
 unique(careActNodes, "id", "care-insurance-act-nodes");
 
 const sourceIds = new Set(sources.map((x) => x.id));
@@ -482,6 +491,41 @@ if (unitPrices.length) {
     expected.delete(row.region_class);
   }
   if (expected.size) errors.push(`unit price: missing regions ${[...expected].join(",")}`);
+}
+
+if (unitRegionAssignments.length) {
+  const rateIds = new Set(unitPrices.map((row) => row.id));
+  const allowedRegions = new Set(["一級地","二級地","三級地","四級地","五級地","六級地","七級地"]);
+  const explicitRegions = new Set();
+  const localityKeys = new Set();
+
+  for (const row of unitRegionAssignments) {
+    for (const field of ["id","assignment_type","prefecture","locality","region_class","unit_price_id","source_id","verification_status"]) {
+      if (!row[field]) errors.push(`unit region ${row.id || "(missing id)"}: missing ${field}`);
+    }
+    if (row.assignment_type !== "explicit") errors.push(`unit region ${row.id}: unexpected assignment_type`);
+    if (!allowedRegions.has(row.region_class)) errors.push(`unit region ${row.id}: unexpected region ${row.region_class}`);
+    if (!rateIds.has(row.unit_price_id)) errors.push(`unit region ${row.id}: missing unit price ${row.unit_price_id}`);
+    if (!sourceIds.has(row.source_id)) errors.push(`unit region ${row.id}: missing source ${row.source_id}`);
+    if (row.verification_status !== "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK" && row.verification_status !== "VERIFIED_CURRENT") {
+      errors.push(`unit region ${row.id}: unexpected status ${row.verification_status}`);
+    }
+    const key = `${row.prefecture}|${row.locality}`;
+    if (localityKeys.has(key)) errors.push(`unit region: duplicate locality ${key}`);
+    localityKeys.add(key);
+    explicitRegions.add(row.region_class);
+  }
+
+  for (const region of allowedRegions) {
+    if (!explicitRegions.has(region)) errors.push(`unit region: missing explicit assignments for ${region}`);
+  }
+
+  if (!unitRegionAssignmentsMeta?.default_rule_present) errors.push("unit region: missing default その他 rule");
+  const defaultRule = unitRegionAssignmentsMeta?.default_rule;
+  if (defaultRule) {
+    if (defaultRule.region_class !== "その他") errors.push("unit region: default rule must point to その他");
+    if (!rateIds.has(defaultRule.unit_price_id)) errors.push("unit region: default rule missing unit price");
+  }
 }
 
 if (careActNodes.length) {
