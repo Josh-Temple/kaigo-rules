@@ -57,6 +57,7 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Claim-aware Router v0.1 checkpoint](./research/checkpoint-claim-aware-router-v0.1-2026-09-22.md)
 - [Claim Registry v0.1 checkpoint](./research/checkpoint-claim-registry-v0.1-2026-09-22.md)
 
 - [Research checkpoint 2026-09-22](./research/checkpoint-2026-09-22.md)

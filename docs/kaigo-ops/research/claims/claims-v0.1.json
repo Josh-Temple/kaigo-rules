@@ -645,7 +645,26 @@
       ],
       "reviewed_at": null,
       "review_note": "Q&A question preview由来。回答本文未レビュー。",
-      "superseded_by": null
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "管理者"
+          ],
+          [
+            "具体的な役割",
+            "具体的役割",
+            "責務",
+            "何をする",
+            "役割"
+          ]
+        ],
+        "excluded_terms": [
+          "兼務",
+          "兼ねる",
+          "兼ね"
+        ]
+      }
     },
     {
       "claim_id": "candidate.staff.life-counselor.service-meeting-time",
@@ -667,7 +686,24 @@
       ],
       "reviewed_at": null,
       "review_note": "Q&A question preview由来。回答本文未レビュー。",
-      "superseded_by": null
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "生活相談員"
+          ],
+          [
+            "サービス担当者会議",
+            "担当者会議"
+          ],
+          [
+            "時間",
+            "勤務延時間",
+            "含める",
+            "算入"
+          ]
+        ]
+      }
     },
     {
       "claim_id": "candidate.staff.life-counselor.community-time",
@@ -689,7 +725,27 @@
       ],
       "reviewed_at": null,
       "review_note": "Q&A question preview由来。回答本文未レビュー。",
-      "superseded_by": null
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "生活相談員"
+          ],
+          [
+            "町内会",
+            "自治会",
+            "ボランティア",
+            "社会資源",
+            "地域連携"
+          ],
+          [
+            "時間",
+            "勤務延時間",
+            "含める",
+            "算入"
+          ]
+        ]
+      }
     },
     {
       "claim_id": "candidate.staff.life-care-worker.combined-placement",
@@ -715,7 +771,23 @@
       ],
       "reviewed_at": null,
       "review_note": "Q&A question preview由来。部分的なverified sourceあり。",
-      "superseded_by": null
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "生活相談員"
+          ],
+          [
+            "介護職員"
+          ],
+          [
+            "人員配置",
+            "配置基準",
+            "具体的な人員配置",
+            "具体的配置"
+          ]
+        ]
+      }
     },
     {
       "claim_id": "candidate.facility.dining-training.multi-room",
@@ -740,7 +812,23 @@
       ],
       "reviewed_at": null,
       "review_note": "Q&A question preview由来。回答本文未レビュー。",
-      "superseded_by": null
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "食堂",
+            "機能訓練室"
+          ],
+          [
+            "複数の部屋",
+            "複数室",
+            "部屋の面積",
+            "面積を合計",
+            "合計して",
+            "狭隘"
+          ]
+        ]
+      }
     },
     {
       "claim_id": "candidate.operation.capacity-disaster-exception",
@@ -760,7 +848,23 @@
       "boundaries": [],
       "reviewed_at": null,
       "review_note": "Q&A question preview由来。現在のverified Issueなし。",
-      "superseded_by": null
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "定員"
+          ],
+          [
+            "災害",
+            "やむを得ない事情"
+          ],
+          [
+            "例外",
+            "遵守規定",
+            "超えて"
+          ]
+        ]
+      }
     },
     {
       "claim_id": "review.remuneration.base-and-addons",
@@ -781,7 +885,19 @@
       ],
       "reviewed_at": null,
       "review_note": "remuneration-review.json = NOT_STARTED。",
-      "superseded_by": null
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "基本報酬",
+            "加算",
+            "減算",
+            "LIFE",
+            "単位数",
+            "算定"
+          ]
+        ]
+      }
     },
     {
       "claim_id": "review.unit-price.region-and-rate",
@@ -801,7 +917,17 @@
       ],
       "reviewed_at": null,
       "review_note": "unit-price-review.json = NOT_STARTED。",
-      "superseded_by": null
+      "superseded_by": null,
+      "routing": {
+        "required_groups": [
+          [
+            "一単位単価",
+            "1単位",
+            "級地",
+            "地域区分"
+          ]
+        ]
+      }
     }
   ]
 }

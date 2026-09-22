@@ -104,6 +104,36 @@ for (const claim of registry.claims) {
   }
 }
 
+for (const claim of registry.claims) {
+  if (claim.routing === undefined) continue;
+
+  const groups = claim.routing.required_groups;
+  if (!Array.isArray(groups) || groups.length === 0) {
+    errors.push(`routing.required_groups missing: ${claim.claim_id}`);
+    continue;
+  }
+
+  groups.forEach((group, groupIndex) => {
+    if (
+      !Array.isArray(group) ||
+      group.length === 0 ||
+      group.some((term) => typeof term !== "string" || term.length === 0)
+    ) {
+      errors.push(
+        `invalid routing group ${groupIndex}: ${claim.claim_id}`,
+      );
+    }
+  });
+
+  const excluded = claim.routing.excluded_terms ?? [];
+  if (
+    !Array.isArray(excluded) ||
+    excluded.some((term) => typeof term !== "string" || term.length === 0)
+  ) {
+    errors.push(`invalid routing.excluded_terms: ${claim.claim_id}`);
+  }
+}
+
 const summary = {};
 for (const claim of registry.claims) {
   const key = claim.verification_status;
@@ -115,6 +145,7 @@ console.log(
     {
       claims: registry.claims.length,
       status_counts: summary,
+      routable_claims: registry.claims.filter((claim) => claim.routing !== undefined).length,
       errors,
       valid: errors.length === 0,
     },
