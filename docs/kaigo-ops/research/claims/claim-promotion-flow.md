@@ -1,7 +1,7 @@
 # Claim Promotion Flow
 
 更新日: 2026-09-22  
-状態: Draft v0.1
+状態: v0.1 / first promotion trial completed 2026-09-22
 
 ## 目的
 
@@ -140,3 +140,15 @@ retrievable corpus ≠ answerable corpus
 
 未レビュー資料を探索候補として検索することはあっても、
 verified claimへ昇格するまでは最終回答の根拠にしない。
+
+
+## 実地検証
+
+2026-09-22に以下2件で初回promotionを実施した。
+
+- 生活相談員のサービス担当者会議時間
+- 食堂・機能訓練室の複数室合算
+
+いずれも、公式資料確認 → claim固定 → boundary固定 → source limitation付与 → benchmark追加 → ANSWER化、の順で処理した。
+
+履歴保持のため、昇格前snapshotは上書きせず、Claim Registry v0.2へ進めた。
