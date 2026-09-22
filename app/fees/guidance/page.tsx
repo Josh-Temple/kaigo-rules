@@ -6,6 +6,7 @@ import chainData from "../../../data/fee-guidance-source-chain.json";
 import metaData from "../../../data/fee-guidance-current-meta.json";
 import reviewData from "../../../data/fee-guidance-review.json";
 import candidatesData from "../../../data/fee-guidance-text-candidates.json";
+import replayCoverageData from "../../../data/fee-guidance-replay-coverage.json";
 import sourcesData from "../../../data/sources.json";
 import feeData from "../../../data/remuneration-current-skeleton.json";
 
@@ -16,6 +17,7 @@ const chain=chainData as Array<any>;
 const meta=metaData as any;
 const review=reviewData as any;
 const candidates=candidatesData as Array<any>;
+const replayCoverage=replayCoverageData as Array<any>;
 const sources=sourcesData as Array<any>;
 const fees=feeData as Array<any>;
 
@@ -24,6 +26,12 @@ const label:Record<string,string>={
   INHERITED_UNVERIFIED:"過去資料から見出し補完・本文未統合",
   UNKNOWN:"未確認・穴",
   VERIFIED_CURRENT:"現行確認済み"
+};
+
+const replayLabel:Record<string,string>={
+  CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING:"改正履歴確認済み・原文抽出待ち",
+  BASE_BODY_SOURCE_PENDING:"基礎本文の取得待ち",
+  BASE_BODY_SOURCE_PENDING_CURRENT_PATCH_CAPTURED:"基礎本文待ち・最新改正取得済み"
 };
 
 const feeHref=(id:string)=>"/fees/"+id.replace("fee.dayservice.","");
@@ -107,12 +115,14 @@ export default function FeeGuidancePage(){
         {candidates.map(candidate=>{
           const node=nodes.find(n=>n.id===candidate.guidance_id);
           const source=sources.find(s=>s.id===candidate.source_id);
+          const replay=replayCoverage.find(r=>r.guidance_id===candidate.guidance_id);
           return <div className="source-chain-row" key={candidate.id}>
             <span className="meta">{candidate.source_period}</span>
             <div>
               <strong>{node?.title || candidate.guidance_id}</strong>
               <p>{candidate.candidate_summary}</p>
               <p className="meta">出典：{source?.title || candidate.source_id} / 候補・人手未確認</p>
+              {replay?<p className="meta">改正履歴：{replay.checkpoints.length}時点確認 / {replayLabel[replay.replay_status] || replay.replay_status}</p>:null}
             </div>
           </div>;
         })}
@@ -130,8 +140,8 @@ export default function FeeGuidancePage(){
     <section className="section">
       <h2>次の工程</h2>
       <p>
-        補完した見出しごとに過去本文を取り込み、令和6年度・令和8年度までの改正を順方向に再生します。
-        BCP減算の令和7年3月31日までの経過措置を除外し、令和8年5月8日改正の人員基準欠如特例を反映したうえで、現行本文として人手確認できる候補を作ります。
+        改正履歴の通過確認ができた6項目は、根拠PDFから本文を正確に抽出して現行本文候補を作ります。
+        7(24)・7(25)は基礎本文の公式ソースを追加で確保し、7(25)には令和8年5月8日改正を重ねたうえで、人手確認用の候補へ進めます。
       </p>
     </section>
   </article>;
