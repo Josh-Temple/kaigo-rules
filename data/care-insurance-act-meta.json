@@ -1,12 +1,120 @@
 {
   "format_version": 1,
-  "status": "NOT_GENERATED",
   "law_id": "409AC0000000123",
+  "law_num": "平成九年法律第百二十三号",
   "law_title": "介護保険法",
+  "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/409AC0000000123",
+  "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/409AC0000000123",
+  "source_page": "https://laws.e-gov.go.jp/law/409AC0000000123",
+  "xml_sha256": "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc",
+  "revision_response_sha256": "a30265e1e840d9d1ca540b49c81d4faa988d75b6adabbd31bcf8b595dca98486",
+  "current_revision": {
+    "law_revision_id": "409AC0000000123_20260903_508AC0000000027",
+    "law_title": "介護保険法",
+    "amendment_law_id": "508AC0000000027",
+    "amendment_law_num": "令和八年法律第二十七号",
+    "amendment_promulgate_date": "2026-06-03",
+    "amendment_enforcement_date": "2026-09-03",
+    "amendment_scheduled_enforcement_date": null,
+    "current_revision_status": "CurrentEnforced",
+    "repeal_status": "None",
+    "mission": "New",
+    "updated": "2026-09-03T00:21:53+09:00"
+  },
+  "revision_count": 56,
+  "scope": {
+    "articles": [
+      "8",
+      "41",
+      "70",
+      "70-2",
+      "73",
+      "74",
+      "75",
+      "76",
+      "76-2",
+      "77",
+      "78"
+    ],
+    "focus_paragraphs": {
+      "8": [
+        "1",
+        "7"
+      ],
+      "41": [
+        "1",
+        "4",
+        "5",
+        "8",
+        "9",
+        "12"
+      ],
+      "70": [
+        "1",
+        "2"
+      ],
+      "73": [
+        "1",
+        "2"
+      ],
+      "74": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "75": [
+        "1",
+        "2"
+      ],
+      "76": [
+        "1",
+        "2"
+      ],
+      "77": [
+        "1",
+        "2"
+      ],
+      "78": [
+        "1"
+      ],
+      "70-2": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "76-2": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "excluded_initial_scope": [
+      {
+        "article": "71",
+        "reason": "病院等のみなし指定。通所介護本体の初期実務導線では優先度が低い。"
+      },
+      {
+        "article": "72",
+        "reason": "介護老人保健施設・介護医療院のみなし指定。通所介護本体から分離。"
+      },
+      {
+        "article": "72-2",
+        "reason": "共生型居宅サービスの特例。共生型通所介護はコア範囲外として分離。"
+      }
+    ]
+  },
   "counts": {
-    "nodes_total": 0,
-    "articles_total": 0,
-    "relations_total": 0,
-    "cross_layer_relations": 0
-  }
+    "nodes_total": 137,
+    "articles_total": 11,
+    "relations_total": 150,
+    "cross_layer_relations": 20
+  },
+  "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
+  "review_status": "IMPORTED_NEEDS_HUMAN_CHECK"
 }
