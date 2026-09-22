@@ -57,6 +57,7 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Second Municipal Source checkpoint](./research/checkpoint-second-municipal-source-v0.17-2026-09-23.md)
 - [Hairdressing / Visiting Medical checkpoint](./research/checkpoint-hairdressing-visiting-medical-v0.16-2026-09-23.md)
 - [Outdoor Service checkpoint](./research/checkpoint-outdoor-service-v0.15-2026-09-22.md)
 - [Municipal Claim Review checkpoint](./research/checkpoint-municipal-claim-review-v0.14-2026-09-22.md)
