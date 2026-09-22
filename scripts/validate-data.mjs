@@ -100,6 +100,10 @@ const delegatedFeeRelationsPath = path.join(root, "data", "remuneration-delegate
 const delegatedFeeRelations = fs.existsSync(delegatedFeeRelationsPath)
   ? JSON.parse(fs.readFileSync(delegatedFeeRelationsPath, "utf8"))
   : [];
+const unitPricePath = path.join(root, "data", "unit-price-dayservice.json");
+const unitPrices = fs.existsSync(unitPricePath)
+  ? JSON.parse(fs.readFileSync(unitPricePath, "utf8"))
+  : [];
 const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
 const careActNodes = fs.existsSync(careActPath)
   ? JSON.parse(fs.readFileSync(careActPath, "utf8"))
@@ -143,6 +147,7 @@ unique(feeSkeleton, "id", "remuneration-skeleton");
 unique(feeAmendments, "id", "remuneration-amendments");
 unique(feeCurrentText, "fee_id", "remuneration-current-text");
 unique(delegatedFeeNodes, "id", "remuneration-delegated-nodes");
+unique(unitPrices, "id", "unit-price-dayservice");
 unique(careActNodes, "id", "care-insurance-act-nodes");
 
 const sourceIds = new Set(sources.map((x) => x.id));
@@ -464,6 +469,19 @@ if (delegatedFeeNodes.length) {
     if (!fromKnown) errors.push(`delegated fee relation: missing from ${relation.from_id}`);
     if (!delegatedIds.has(relation.to_id)) errors.push(`delegated fee relation: missing to ${relation.to_id}`);
   }
+}
+
+if (unitPrices.length) {
+  const expected = new Set(["一級地","二級地","三級地","四級地","五級地","六級地","七級地","その他"]);
+  for (const row of unitPrices) {
+    if (!expected.has(row.region_class)) errors.push(`unit price ${row.id}: unexpected region ${row.region_class}`);
+    if (row.service !== "通所介護") errors.push(`unit price ${row.id}: unexpected service`);
+    if (!sourceIds.has(row.source_id)) errors.push(`unit price ${row.id}: missing source ${row.source_id}`);
+    if (!Number.isFinite(row.ratio_per_thousand) || !Number.isFinite(row.unit_price_yen)) errors.push(`unit price ${row.id}: invalid numeric value`);
+    if (row.verification_status !== "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK" && row.verification_status !== "VERIFIED_CURRENT") errors.push(`unit price ${row.id}: unexpected status`);
+    expected.delete(row.region_class);
+  }
+  if (expected.size) errors.push(`unit price: missing regions ${[...expected].join(",")}`);
 }
 
 if (careActNodes.length) {
