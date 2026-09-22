@@ -120,7 +120,9 @@ def clean_item_text(value: str) -> str:
     lines = []
     for line in value.replace("\f", "").split("\n"):
         stripped = line.strip()
-        if re.fullmatch(r"\d{1,3}", stripped or ""):
+        # pdftotext may expose page labels as "34", "4 -", "5 -" or "- 60 -".
+        # These are layout artifacts, not legal text.
+        if re.fullmatch(r"(?:-\s*)?\d{1,3}\s*-?", stripped or ""):
             continue
         lines.append(line.rstrip())
     while lines and not lines[0].strip():
@@ -128,6 +130,41 @@ def clean_item_text(value: str) -> str:
     while lines and not lines[-1].strip():
         lines.pop()
     return "\n".join(lines) + ("\n" if lines else "")
+
+def replace_normalized_once(value: str, before: str, after: str, label: str) -> str:
+    normalized_value, positions = normalize_with_map(value)
+    needle = normalized(before)
+    first = normalized_value.find(needle)
+    if first < 0:
+        raise RuntimeError(f"{label}: verified image correction source text not found: {before}")
+    second = normalized_value.find(needle, first + len(needle))
+    if second >= 0:
+        raise RuntimeError(f"{label}: verified image correction source text is not unique: {before}")
+    start_original = positions[first]
+    end_normalized = first + len(needle) - 1
+    end_original = positions[end_normalized] + 1
+    return value[:start_original] + after + value[end_original:]
+
+def apply_verified_image_corrections(value: str, segment: dict) -> str:
+    corrected = value
+    for index, correction in enumerate(segment.get("verified_image_corrections", []), start=1):
+        for field in ("page", "before", "after", "reason"):
+            if correction.get(field) in (None, ""):
+                raise RuntimeError(
+                    f"{segment['id']}: verified image correction {index} missing {field}"
+                )
+        page = int(correction["page"])
+        if page < int(segment["page_start"]) or page > int(segment["page_end"]):
+            raise RuntimeError(
+                f"{segment['id']}: verified image correction page {page} is outside segment range"
+            )
+        corrected = replace_normalized_once(
+            corrected,
+            correction["before"],
+            correction["after"],
+            f"{segment['id']} correction {index}"
+        )
+    return corrected
 
 def extract_current_column(
     pdf_path: pathlib.Path,
