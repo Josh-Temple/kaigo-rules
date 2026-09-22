@@ -1,0 +1,26 @@
+name: Validate ops site
+
+on:
+  pull_request:
+    paths:
+      - "ops-site/**"
+      - ".github/workflows/validate-ops-site.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "ops-site/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ops-site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run build
