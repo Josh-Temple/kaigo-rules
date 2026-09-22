@@ -1,0 +1,54 @@
+{
+  "version": "0.1",
+  "reviewed_at": "2026-09-23",
+  "topic": "通所介護提供時間中の理美容・訪問診療/訪問歯科",
+  "decisions": [
+    {
+      "query_id": "MQ-002",
+      "question": "通所介護サービスの提供時間中に、介護職員が利用者の散髪を行うことはできますか？",
+      "decision": "ANSWER_BY_COMPOSITION",
+      "composition_id": "composition.service.hairdressing.by-care-worker",
+      "claim_ids": [
+        "claim.service.hairdressing.not-covered",
+        "claim.hairdressing.license-required",
+        "claim.hairdressing.outcall-location-conditions"
+      ],
+      "findings": [
+        "理美容は介護保険の通所サービスに含まれず、別サービスとして区分する。",
+        "理容・美容を業として行うには対応する免許が必要で、介護職員資格だけでは代替できない。",
+        "理容所・美容所以外で実施する場合は、法令上の出張要件または自治体条例の確認が必要。"
+      ],
+      "boundary": "介護職員が理容師・美容師免許を持つ場合でも、介護保険上の区分と出張場所要件は別途満たす必要がある。"
+    },
+    {
+      "query_id": "EQ-028",
+      "question": "デイサービスセンター等において理美容サービスを受ける時間帯は、通所サービス開始前又は終了後に限られるか。",
+      "decision": "PROMOTE_TO_ANSWER",
+      "claim_id": "claim.service.hairdressing.not-covered",
+      "finding": "開始前・終了後だけに限られず、通所介護を一旦中断して別サービスとして理美容を提供し、その後再開できる。理美容時間は通所介護の提供時間に含めない。"
+    },
+    {
+      "query_id": "MQ-003",
+      "question": "サービス提供時間中に医師又は歯科医師による訪問診療を受けることは可能ですか？",
+      "decision": "KEEP_REVIEW_REQUIRED",
+      "claim_id": "review.service.visiting-medical-dental.in-service",
+      "findings": [
+        "併設医療機関の受診はサービス提供時間帯では緊急やむを得ない場合に限るという国Q&Aがある。",
+        "巡回健診、予防接種、採血は平成30年通知で通所介護を中断した保険外サービスとして別扱いが示される。",
+        "オンライン診療には別の国指針がある。"
+      ],
+      "boundary": "これらの個別取扱いを、一般的な対面の訪問診療・訪問歯科へ一律に一般化しない。"
+    }
+  ],
+  "structural_change": {
+    "issue_independent_composition": true,
+    "reason": "理美容queryは既存Issue taxonomyに自然な親Issueがなく、誤ったIssueへ紐付けるよりClaim語彙で直接compositionする方がprovenance上安全。",
+    "composition_registry": "claim-compositions-v0.5.json"
+  },
+  "regression": {
+    "full_classifier_checks": "181/181",
+    "external": "33/33",
+    "municipal": "15/15",
+    "verified_regression": "51/51"
+  }
+}
