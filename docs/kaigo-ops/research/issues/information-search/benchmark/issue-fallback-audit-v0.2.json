@@ -1,0 +1,52 @@
+{
+  "version": "0.2",
+  "created_at": "2026-09-22",
+  "current_issue_fallback": "3/51",
+  "resolved_by_composition": [
+    {
+      "source_case_ids": [
+        "KU-003"
+      ],
+      "composition_id": "composition.staff.nurse.presence-and-linkage"
+    },
+    {
+      "source_case_ids": [
+        "KU-004",
+        "CAN-004"
+      ],
+      "composition_id": "composition.staff.multiple-roles.general"
+    },
+    {
+      "source_case_ids": [
+        "KM-006"
+      ],
+      "composition_id": "composition.care-plan.content-explain-record"
+    },
+    {
+      "source_case_ids": [
+        "CAN-011"
+      ],
+      "composition_id": "composition.training.annual-core"
+    }
+  ],
+  "remaining": [
+    {
+      "ids": [
+        "KU-015",
+        "KN-007"
+      ],
+      "category": "CLAIM_COVERAGE_GAP",
+      "topic": "重要事項説明書に国の固定様式・ひな形があるか",
+      "next_action": "現行基準と解釈通知を独立reviewし、不存在の解釈をVERIFIED_INTERPRETATIONとして固定できるか確認する。"
+    },
+    {
+      "ids": [
+        "CAN-007"
+      ],
+      "category": "CLAIM_COVERAGE_GAP_OR_COMPOSITION",
+      "topic": "重要事項説明書の記載内容全体",
+      "next_action": "文書内容そのもののClaim coverageを分解し、開始前手続や掲示義務と混同しないよう再reviewする。"
+    }
+  ],
+  "principle": "Remaining Issue fallback is now treated as a review queue signal, not a production-quality answer path to optimize away mechanically."
+}
