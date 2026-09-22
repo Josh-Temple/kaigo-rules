@@ -1,7 +1,11 @@
 {
   "format_version": 1,
-  "status": "NOT_GENERATED",
   "source_id": "mhlw-interpretation-html",
-  "candidate_count": 0,
-  "candidate_status": "HISTORICAL_BACKFILL_CANDIDATE"
+  "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+  "source_sha256": "e9e3c9d45f0f12c9b25079e7c1696de1ea5e19a927236b061000574f63ea18f0",
+  "source_class": "historical_reference",
+  "section": "第八 通所介護に関する基準",
+  "candidate_count": 14,
+  "candidate_status": "HISTORICAL_BACKFILL_CANDIDATE",
+  "currentness_warning": "This source is historical. Extracted text is never current by extraction alone."
 }
