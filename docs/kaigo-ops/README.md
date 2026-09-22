@@ -63,4 +63,7 @@ Evidence Review / 方法 / 検証
 - [World care DX / AI initial landscape](./research/world-care-dx-map/initial-landscape.md)
 - [World care DX / AI source register](./research/world-care-dx-map/source-register.csv)
 - [Search log 2026-09-22](./research/world-care-dx-map/search-log-2026-09-22.md)
+- [First deep Issue: 必要な情報を探すのに時間がかかる](./research/issues/information-search/README.md)
+- [First Issue evidence register](./research/issues/information-search/evidence-register.csv)
+- [介護ルールを使った情報探索benchmark案](./research/issues/information-search/experiment-plan.md)
 - [Roadmap](./roadmap.md)
