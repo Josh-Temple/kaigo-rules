@@ -1,6 +1,27 @@
 {
   "format_version": 1,
-  "status": "NOT_GENERATED",
   "source_id": "mhlw-unit-price-current",
-  "review_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  "source_urls": [
+    "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+    "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+  ],
+  "source_sha256": [
+    "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395",
+    "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+  ],
+  "effective_reference_date": "2024-04-01",
+  "explicit_assignment_count": 427,
+  "default_rule_present": true,
+  "default_rule": {
+    "id": "unitregion.default.other",
+    "assignment_type": "default_fallback",
+    "region_class": "その他",
+    "unit_price_id": "unitprice.dayservice.other",
+    "rule_text": "告示に明示された一級地から七級地以外の地域は「その他」とする。",
+    "source_id": "mhlw-unit-price-current",
+    "effective_reference_date": "2024-04-01",
+    "verification_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK"
+  },
+  "review_status": "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK",
+  "note": "告示本文は、表に明示した一級地〜七級地と、それ以外の「その他の地域」という構造。明示地域のみ個別レコード化する。"
 }
