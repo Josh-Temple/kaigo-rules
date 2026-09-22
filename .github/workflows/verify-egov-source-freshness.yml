@@ -1,0 +1,50 @@
+name: Verify e-Gov source freshness
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "31 3 * * 1"
+  pull_request:
+    paths:
+      - "scripts/verify_egov_source_freshness.py"
+      - "data/ordinance37-meta.json"
+      - "data/care-insurance-act-meta.json"
+      - ".github/workflows/verify-egov-source-freshness.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/verify_egov_source_freshness.py"
+      - "data/ordinance37-meta.json"
+      - "data/care-insurance-act-meta.json"
+      - ".github/workflows/verify-egov-source-freshness.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Compare live e-Gov sources with committed metadata
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_egov_source_freshness.py --report egov-source-freshness.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload freshness report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: egov-source-freshness
+          path: egov-source-freshness.json
+          if-no-files-found: warn
+      - name: Fail when source drift is detected
+        if: steps.verify.outputs.exit_code != '0'
+        run: exit 1
