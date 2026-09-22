@@ -6,6 +6,8 @@ import textMetaData from "../../../data/remuneration-current-text-meta.json";
 import reviewData from "../../../data/remuneration-review.json";
 import relationsData from "../../../data/remuneration-relations.json";
 import sourcesData from "../../../data/sources.json";
+import delegatedData from "../../../data/remuneration-delegated-nodes.json";
+import delegatedRelationsData from "../../../data/remuneration-delegated-relations.json";
 
 const nodes = nodesData as Array<any>;
 const texts = textData as Array<any>;
@@ -13,6 +15,8 @@ const textMeta = textMetaData as any;
 const review = reviewData as any;
 const relations = relationsData as Array<any>;
 const sources = sourcesData as Array<any>;
+const delegated = delegatedData as Array<any>;
+const delegatedRelations = delegatedRelationsData as Array<any>;
 
 const routeKey = (id: string) => id.replace("fee.dayservice.", "");
 
@@ -48,6 +52,10 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
     : sources.find((item) => item.id === node.source_id);
   const linkedRelations = relations.filter((item) => item.from_fee_id === feeId);
   const isOutOfCore = node.verification_status === "OUT_OF_CORE_SCOPE";
+  const delegatedTargets = delegatedRelations
+    .filter((item) => item.from_id === feeId)
+    .map((item) => delegated.find((target) => target.id === item.to_id))
+    .filter(Boolean);
 
   const ordinanceHref = (id: string) => {
     const match = String(id).match(/^ordinance37\.article\.([0-9-]+)/);
@@ -88,6 +96,24 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
           <p className="notice-hole">現行本文の機械取込がありません。</p>
         )}
       </section>
+
+      {delegatedTargets.length ? (
+        <section className="section">
+          <h2>別告示で定める基準</h2>
+          <p>報酬告示本文から委任される基準です。報酬本文とは別法源として保持しています。</p>
+          <div className="relation-list">
+            {delegatedTargets.map((target:any) => (
+              <div className="relation-row" key={target.id}>
+                <span className="meta">{target.source_id}</span>
+                <div>
+                  <Link href={`/fees/criteria#${encodeURIComponent(target.id)}`}>{target.heading}</Link>
+                  <p className="meta">取込済み・人手確認待ち</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {linkedRelations.length ? (
         <section className="section">
