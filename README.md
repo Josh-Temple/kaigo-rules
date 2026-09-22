@@ -132,3 +132,12 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 ### 現行報酬本文の機械取込
 
 `Update current day-service remuneration text` workflow は、厚生労働省の現行告示19 HTMLから「6 通所介護費」を抽出し、基本報酬3区分・注1〜24・ニ・ホの計29区画へ分割します。生成状態は `IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK` で、人手照合前に確認済みへ昇格しません。
+
+
+## 介護保険法レイヤー
+
+介護保険法は全条文を複製せず、通所介護から直接たどる上位法令だけをe-Gov法令APIから生成します。
+
+初期対象は、第8条（定義）、第41条（居宅介護サービス費）、第70条・第70条の2（指定・更新）、第73条・第74条（指定居宅サービスの基準）、第75条（変更届等）、第76条・第76条の2（報告・勧告命令）、第77条（取消し等）、第78条（公示）です。
+
+`care-insurance-act-relations.json` では、第41条から報酬告示、第74条から基準省令、第74条から解釈通知など、法令レイヤーを跨ぐ関係を保持します。機械取込直後は `IMPORTED_NEEDS_HUMAN_CHECK` とし、人手確認は `care-insurance-act-review.json` に別管理します。
