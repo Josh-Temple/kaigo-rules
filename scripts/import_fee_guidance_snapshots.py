@@ -116,6 +116,19 @@ def slice_by_normalized_markers(value: str, start_marker: str, end_marker: str) 
     end_original = positions[end]
     return value[start_original:end_original].strip() + "\n"
 
+def clean_item_text(value: str) -> str:
+    lines = []
+    for line in value.replace("\f", "").split("\n"):
+        stripped = line.strip()
+        if re.fullmatch(r"\d{1,3}", stripped or ""):
+            continue
+        lines.append(line.rstrip())
+    while lines and not lines[0].strip():
+        lines.pop(0)
+    while lines and not lines[-1].strip():
+        lines.pop()
+    return "\n".join(lines) + ("\n" if lines else "")
+
 def extract_current_column(
     pdf_path: pathlib.Path,
     first: int,
@@ -231,11 +244,11 @@ def main() -> None:
                     f"{current_column} column, pages {first}-{last}: {missing_anchors}"
                 )
 
-            item_text = slice_by_normalized_markers(
+            item_text = clean_item_text(slice_by_normalized_markers(
                 current_side_text,
                 segment["item_start"],
                 segment["item_end"]
-            )
+            ))
 
             record = {
                 "id": segment["id"],
@@ -256,11 +269,11 @@ def main() -> None:
             }
 
             if segment.get("patch_start") and segment.get("patch_end"):
-                patch_text = slice_by_normalized_markers(
+                patch_text = clean_item_text(slice_by_normalized_markers(
                     current_side_text,
                     segment["patch_start"],
                     segment["patch_end"]
-                )
+                ))
                 record["patch_text_sha256"] = hashlib.sha256(patch_text.encode("utf-8")).hexdigest()
                 record["patch_text"] = patch_text
 
