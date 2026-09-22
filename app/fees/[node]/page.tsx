@@ -29,7 +29,9 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
   if (!node) notFound();
 
   const currentText = texts.find((item) => item.fee_id === feeId);
-  const reviewed = (review.reviewed_nodes || []).find((item:any) => item.fee_id === feeId);
+  const reviewed = (review.reviewed_nodes || []).find((item:any) =>
+    item.fee_id === feeId && currentText && item.text_sha256 === currentText.text_sha256
+  );
   const source = currentText
     ? sources.find((item) => item.id === currentText.source_id)
     : sources.find((item) => item.id === node.source_id);
@@ -85,15 +87,37 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
                 <span className="meta">{relation.relation}</span>
                 <div>
                   {relation.to_id ? (
-                    <Link href={ordinanceHref(relation.to_id)}>{relation.to_id}</Link>
-                  ) : relation.to_source_id ? (
-                    <span>{relation.to_source_id}</span>
-                  ) : null}
+                    <Link href={ordinanceHref(relation.to_id)}>
+                      {relation.to_id.replace("ordinance37.article.", "基準省令 第")}条
+                    </Link>
+                  ) : relation.to_source_id ? (() => {
+                    const linkedSource = sources.find((item) => item.id === relation.to_source_id);
+                    return linkedSource
+                      ? <a href={linkedSource.url} target="_blank" rel="noreferrer">{linkedSource.title}</a>
+                      : <span>{relation.to_source_id}</span>;
+                  })() : null}
                   <p className="meta">{relation.status}</p>
                 </div>
               </div>
             ))}
           </div>
+        </section>
+      ) : null}
+
+      {node.latest_amendment_evidence?.length ? (
+        <section className="section">
+          <h2>最新改定の証跡</h2>
+          {node.latest_amendment_evidence.map((evidence:any, index:number) => {
+            const evidenceSource = sources.find((item) => item.id === evidence.source_id);
+            return (
+              <p key={index}>
+                {evidenceSource
+                  ? <a href={evidenceSource.url} target="_blank" rel="noreferrer">{evidenceSource.title}</a>
+                  : evidence.source_id}
+                <br/><span className="meta">{evidence.locator} / {evidence.evidence_type}</span>
+              </p>
+            );
+          })}
         </section>
       ) : null}
 
