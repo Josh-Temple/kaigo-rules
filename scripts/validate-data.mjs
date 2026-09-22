@@ -800,8 +800,54 @@ if (feeGuidance.length) {
     }
     const configuredIds = new Set((feeGuidanceAssembly?.items || []).map((item) => item.guidance_id));
     for (const id of configuredIds) if (!candidateIds.has(id)) errors.push(`fee guidance current candidates: missing configured item ${id}`);
-    const staffing = (feeGuidanceCurrentCandidates.items || []).find((item) => item.guidance_id === "fee-guidance.dayservice.25");
+
+    // Regression guards from the 2026-09-23 independent primary-source audit.
+    // These assert source-text facts only; they do not promote any verification status.
+    const compactCandidate = (value) => String(value || "").normalize("NFKC").replace(/\s+/g, "");
+    const currentCandidateById = new Map(
+      (feeGuidanceCurrentCandidates.items || []).map((item) => [item.guidance_id, item])
+    );
+    const pageLabelArtifact = /(^|\n)\s*(?:-\s*)?\d{1,3}\s*-\s*(?=\n|$)/;
+
+    const scale = currentCandidateById.get("fee-guidance.dayservice.6");
+    if (scale) {
+      const text = compactCandidate(scale.candidate_text);
+      if (!text.includes(compactCandidate("⑤感染症又は災害の発生を理由とする利用者数の減少が一定以上生じている場合の事業所規模別の報酬区分の決定に係る特例については、別途通知を参照すること。"))) {
+        errors.push("fee guidance current candidate 6: independently verified item ⑤ is missing");
+      }
+    }
+
+    const disaster = currentCandidateById.get("fee-guidance.dayservice.7");
+    if (disaster) {
+      const text = compactCandidate(disaster.candidate_text);
+      if (!text.includes(compactCandidate("災害時等の取扱い災害その他のやむを得ない理由による定員超過利用については、"))) {
+        errors.push("fee guidance current candidate 7: verified opening text differs");
+      }
+      if (text.includes(compactCandidate("災害時等の取扱い、災害その他"))) {
+        errors.push("fee guidance current candidate 7: spurious leading comma returned");
+      }
+      if (!text.includes(compactCandidate("場合は翌月も含む。）の翌月から所定単位数の減算を行う"))) {
+        errors.push("fee guidance current candidate 7: verified closing parenthesis is missing");
+      }
+    }
+
+    const capacity = currentCandidateById.get("fee-guidance.dayservice.24");
+    if (capacity) {
+      const text = compactCandidate(capacity.candidate_text);
+      if (pageLabelArtifact.test(capacity.candidate_text)) {
+        errors.push("fee guidance current candidate 24: PDF page label artifact returned");
+      }
+      if (!text.includes(compactCandidate("第27号。以下「通所介護費等の算定方法」という。）において、"))) {
+        errors.push("fee guidance current candidate 24: first verified closing parenthesis is missing");
+      }
+      if (!text.includes(compactCandidate("場合は翌月も含む。）の翌月から所定単位数の減算を行う"))) {
+        errors.push("fee guidance current candidate 24: second verified closing parenthesis is missing");
+      }
+    }
+
+    const staffing = currentCandidateById.get("fee-guidance.dayservice.25");
     if (staffing) {
+      if (pageLabelArtifact.test(staffing.candidate_text)) errors.push("fee guidance current candidate 25: PDF page label artifact returned");
       if (!(staffing.patch_snapshot_ids || []).includes("dayservice-25-r8-patch")) errors.push("fee guidance current candidate 25: missing R8 patch citation");
       if (!staffing.candidate_text.includes("別紙様式７") && !staffing.candidate_text.includes("別紙様式7")) errors.push("fee guidance current candidate 25: R8 report form missing");
     }
