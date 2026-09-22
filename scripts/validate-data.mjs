@@ -153,6 +153,14 @@ const feeGuidanceReplayCoveragePath = path.join(root, "data", "fee-guidance-repl
 const feeGuidanceReplayCoverage = fs.existsSync(feeGuidanceReplayCoveragePath)
   ? JSON.parse(fs.readFileSync(feeGuidanceReplayCoveragePath, "utf8"))
   : [];
+const feeGuidanceSourceManifestPath = path.join(root, "data", "fee-guidance-source-manifest.json");
+const feeGuidanceSourceManifest = fs.existsSync(feeGuidanceSourceManifestPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceSourceManifestPath, "utf8"))
+  : null;
+const feeGuidanceSnapshotsPath = path.join(root, "data", "fee-guidance-source-snapshots.json");
+const feeGuidanceSnapshots = fs.existsSync(feeGuidanceSnapshotsPath)
+  ? JSON.parse(fs.readFileSync(feeGuidanceSnapshotsPath, "utf8"))
+  : null;
 const careActPath = path.join(root, "data", "care-insurance-act-nodes.json");
 const careActNodes = fs.existsSync(careActPath)
   ? JSON.parse(fs.readFileSync(careActPath, "utf8"))
@@ -691,6 +699,39 @@ if (feeGuidance.length) {
   const candidateGuidanceIds = new Set(feeGuidanceCandidates.map((candidate) => candidate.guidance_id));
   for (const id of candidateGuidanceIds) {
     if (!replayGuidanceIds.has(id)) errors.push(`fee guidance replay: missing coverage for candidate ${id}`);
+  }
+
+  if (feeGuidanceSourceManifest) {
+    const segmentIds = new Set();
+    for (const segment of feeGuidanceSourceManifest.segments || []) {
+      for (const field of ["id","guidance_ids","source_id","role","page_start","page_end"]) {
+        if (segment[field] == null || (Array.isArray(segment[field]) && segment[field].length === 0)) {
+          errors.push(`fee guidance source manifest ${segment.id || "(missing id)"}: missing ${field}`);
+        }
+      }
+      if (segmentIds.has(segment.id)) errors.push(`fee guidance source manifest: duplicate segment ${segment.id}`);
+      segmentIds.add(segment.id);
+      if (!sourceIds.has(segment.source_id)) errors.push(`fee guidance source manifest ${segment.id}: missing source ${segment.source_id}`);
+      for (const id of segment.guidance_ids || []) if (!guidanceIds.has(id)) errors.push(`fee guidance source manifest ${segment.id}: missing guidance ${id}`);
+      if (!Number.isInteger(segment.page_start) || !Number.isInteger(segment.page_end) || segment.page_start < 1 || segment.page_end < segment.page_start) {
+        errors.push(`fee guidance source manifest ${segment.id}: invalid page range`);
+      }
+    }
+  }
+
+  if (feeGuidanceSnapshots) {
+    if (feeGuidanceSnapshots.policy !== feeGuidanceSourceManifest?.policy) errors.push("fee guidance snapshots: policy differs from manifest");
+    const manifestById = new Map((feeGuidanceSourceManifest?.segments || []).map((segment) => [segment.id, segment]));
+    const snapshotIds = new Set();
+    for (const snapshot of feeGuidanceSnapshots.segments || []) {
+      if (snapshotIds.has(snapshot.id)) errors.push(`fee guidance snapshots: duplicate segment ${snapshot.id}`);
+      snapshotIds.add(snapshot.id);
+      const manifestSegment = manifestById.get(snapshot.id);
+      if (!manifestSegment) errors.push(`fee guidance snapshots: segment not in manifest ${snapshot.id}`);
+      if (!sourceIds.has(snapshot.source_id)) errors.push(`fee guidance snapshots ${snapshot.id}: missing source ${snapshot.source_id}`);
+      if (!snapshot.text || !snapshot.text_sha256) errors.push(`fee guidance snapshots ${snapshot.id}: missing text/hash`);
+      if (snapshot.verification_status !== "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK") errors.push(`fee guidance snapshots ${snapshot.id}: unsafe verification status`);
+    }
   }
 
   if (feeGuidanceMeta) {
