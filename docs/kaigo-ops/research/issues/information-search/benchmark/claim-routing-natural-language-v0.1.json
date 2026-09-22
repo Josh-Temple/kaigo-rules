@@ -1,0 +1,85 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-22",
+  "status": "SYNTHETIC_ROUTING_PROBE",
+  "methodology": "Hand-written natural-language variants for the two promoted claims. Cases are separated into unambiguous paraphrases that should resolve to a verified claim and deliberately underspecified variants that should abstain. This suite measures both answerability and claim resolution; it is not external user-query evidence.",
+  "cases": [
+    {
+      "id": "FA-A01",
+      "question": "生活相談員がサービス担当者会議に出ている時間も勤務延時間に数えられますか",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.staff.life-counselor.service-meeting-time"
+    },
+    {
+      "id": "FA-A02",
+      "question": "生活相談員の担当者会議への出席時間は配置時間に入れてよいですか",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.staff.life-counselor.service-meeting-time"
+    },
+    {
+      "id": "FA-A03",
+      "question": "デイの生活相談員がケアマネ主催の担当者会議へ行く時間も勤務時間として扱えますか",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.staff.life-counselor.service-meeting-time"
+    },
+    {
+      "id": "FA-A04",
+      "question": "生活相談員が利用者のサービス調整会議に参加した時間を人員基準の時間に算入できますか",
+      "expected": "REVIEW_REQUIRED",
+      "expected_claim_id": null,
+      "note": "サービス担当者会議と同一とは断定しない。"
+    },
+    {
+      "id": "FA-A05",
+      "question": "生活相談員が会議に出席する間を配置時間に含めてよいですか",
+      "expected": "REVIEW_REQUIRED",
+      "expected_claim_id": null,
+      "note": "会議の種類が不明。"
+    },
+    {
+      "id": "FA-A06",
+      "question": "生活相談員がケアマネとの会議に出た時間は基準上カウントできますか",
+      "expected": "REVIEW_REQUIRED",
+      "expected_claim_id": null,
+      "note": "サービス担当者会議かどうか不明。"
+    },
+    {
+      "id": "FA-B01",
+      "question": "複数の部屋の面積を合計して食堂と機能訓練室の基準を満たせますか",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.facility.dining-training.multi-room"
+    },
+    {
+      "id": "FA-B02",
+      "question": "食堂・機能訓練室が複数室に分かれている場合、面積を足してよいですか",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.facility.dining-training.multi-room"
+    },
+    {
+      "id": "FA-B03",
+      "question": "デイの食堂と訓練室が別々の部屋です。面積は合算できますか",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.facility.dining-training.multi-room"
+    },
+    {
+      "id": "FA-B04",
+      "question": "通所介護の機能訓練のスペースが2部屋に分かれています。広さを足して基準を満たせますか",
+      "expected": "REVIEW_REQUIRED",
+      "expected_claim_id": null,
+      "note": "食堂・機能訓練室の合算論点と断定する情報が不足。"
+    },
+    {
+      "id": "FA-B05",
+      "question": "デイサービスの訓練用の部屋が2つあります。合計の広さで3平方メートル×定員を満たせますか",
+      "expected": "REVIEW_REQUIRED",
+      "expected_claim_id": null,
+      "note": "訓練用の部屋が基準上の食堂・機能訓練室か不明。"
+    },
+    {
+      "id": "FA-B06",
+      "question": "デイサービスで食堂とは別に機能訓練の部屋が2室あります。合計面積で判断できますか",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.facility.dining-training.multi-room"
+    }
+  ]
+}
