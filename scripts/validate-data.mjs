@@ -517,11 +517,19 @@ if (delegatedFeeNodes.length) {
 
 if (unitPrices.length) {
   const expected = new Set(["一級地","二級地","三級地","四級地","五級地","六級地","七級地","その他"]);
+  const seenRegions = new Set();
   for (const row of unitPrices) {
-    if (!expected.has(row.region_class)) errors.push(`unit price ${row.id}: unexpected region ${row.region_class}`);
+    if (!expected.has(row.region_class) && !seenRegions.has(row.region_class)) errors.push(`unit price ${row.id}: unexpected region ${row.region_class}`);
+    if (seenRegions.has(row.region_class)) errors.push(`unit price: duplicate region ${row.region_class}`);
+    seenRegions.add(row.region_class);
     if (row.service !== "通所介護") errors.push(`unit price ${row.id}: unexpected service`);
     if (!sourceIds.has(row.source_id)) errors.push(`unit price ${row.id}: missing source ${row.source_id}`);
-    if (!Number.isFinite(row.ratio_per_thousand) || !Number.isFinite(row.unit_price_yen)) errors.push(`unit price ${row.id}: invalid numeric value`);
+    if (!Number.isFinite(row.ratio_per_thousand) || !Number.isFinite(row.unit_price_yen)) {
+      errors.push(`unit price ${row.id}: invalid numeric value`);
+    } else {
+      const calculated = 10 * row.ratio_per_thousand / 1000;
+      if (Math.abs(calculated - row.unit_price_yen) > 1e-9) errors.push(`unit price ${row.id}: ratio and yen value mismatch`);
+    }
     if (row.verification_status !== "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK" && row.verification_status !== "VERIFIED_CURRENT") errors.push(`unit price ${row.id}: unexpected status`);
     expected.delete(row.region_class);
   }
@@ -530,18 +538,29 @@ if (unitPrices.length) {
 
 if (unitRegionAssignments.length) {
   const rateIds = new Set(unitPrices.map((row) => row.id));
+  const rateById = new Map(unitPrices.map((row) => [row.id, row]));
   const allowedRegions = new Set(["一級地","二級地","三級地","四級地","五級地","六級地","七級地"]);
   const explicitRegions = new Set();
   const localityKeys = new Set();
 
   for (const row of unitRegionAssignments) {
-    for (const field of ["id","assignment_type","prefecture","locality","region_class","unit_price_id","source_id","verification_status"]) {
+    for (const field of ["id","assignment_type","prefecture","locality","region_class","unit_price_id","source_id","effective_reference_date","verification_status"]) {
       if (!row[field]) errors.push(`unit region ${row.id || "(missing id)"}: missing ${field}`);
     }
     if (row.assignment_type !== "explicit") errors.push(`unit region ${row.id}: unexpected assignment_type`);
     if (!allowedRegions.has(row.region_class)) errors.push(`unit region ${row.id}: unexpected region ${row.region_class}`);
-    if (!rateIds.has(row.unit_price_id)) errors.push(`unit region ${row.id}: missing unit price ${row.unit_price_id}`);
+    if (!rateIds.has(row.unit_price_id)) {
+      errors.push(`unit region ${row.id}: missing unit price ${row.unit_price_id}`);
+    } else if (rateById.get(row.unit_price_id)?.region_class !== row.region_class) {
+      errors.push(`unit region ${row.id}: region and unit price mismatch`);
+    }
     if (!sourceIds.has(row.source_id)) errors.push(`unit region ${row.id}: missing source ${row.source_id}`);
+    if (unitRegionAssignmentsMeta?.source_id && row.source_id !== unitRegionAssignmentsMeta.source_id) {
+      errors.push(`unit region ${row.id}: source differs from assignment metadata`);
+    }
+    if (unitRegionAssignmentsMeta?.effective_reference_date && row.effective_reference_date !== unitRegionAssignmentsMeta.effective_reference_date) {
+      errors.push(`unit region ${row.id}: reference date differs from assignment metadata`);
+    }
     if (row.verification_status !== "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK" && row.verification_status !== "VERIFIED_CURRENT") {
       errors.push(`unit region ${row.id}: unexpected status ${row.verification_status}`);
     }
@@ -549,6 +568,10 @@ if (unitRegionAssignments.length) {
     if (localityKeys.has(key)) errors.push(`unit region: duplicate locality ${key}`);
     localityKeys.add(key);
     explicitRegions.add(row.region_class);
+  }
+
+  if (Number.isFinite(unitRegionAssignmentsMeta?.explicit_assignment_count) && unitRegionAssignmentsMeta.explicit_assignment_count !== unitRegionAssignments.length) {
+    errors.push("unit region: explicit assignment count mismatch");
   }
 
   for (const region of allowedRegions) {
@@ -559,7 +582,15 @@ if (unitRegionAssignments.length) {
   const defaultRule = unitRegionAssignmentsMeta?.default_rule;
   if (defaultRule) {
     if (defaultRule.region_class !== "その他") errors.push("unit region: default rule must point to その他");
-    if (!rateIds.has(defaultRule.unit_price_id)) errors.push("unit region: default rule missing unit price");
+    if (!rateIds.has(defaultRule.unit_price_id)) {
+      errors.push("unit region: default rule missing unit price");
+    } else if (rateById.get(defaultRule.unit_price_id)?.region_class !== "その他") {
+      errors.push("unit region: default rule unit price must point to その他");
+    }
+    if (!sourceIds.has(defaultRule.source_id)) errors.push("unit region: default rule missing source");
+    if (unitRegionAssignmentsMeta?.effective_reference_date && defaultRule.effective_reference_date !== unitRegionAssignmentsMeta.effective_reference_date) {
+      errors.push("unit region: default rule reference date differs from assignment metadata");
+    }
   }
 }
 
