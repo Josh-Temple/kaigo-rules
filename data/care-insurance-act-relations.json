@@ -1,1 +1,933 @@
-[]
+[
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.10",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.11",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.12",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.5",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.6",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.7",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.8",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41",
+    "relation": "contains",
+    "to": "careact.article.41.p.9",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41.p.4",
+    "relation": "contains",
+    "to": "careact.article.41.p.4.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41.p.4",
+    "relation": "contains",
+    "to": "careact.article.41.p.4.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.41.p.4.i.1",
+    "relation": "authorizes_fee_standard_for",
+    "to": "fee.dayservice.root",
+    "target_layer": "remuneration",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.10",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.11",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.5",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.6",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.7",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.8",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "contains",
+    "to": "careact.article.70.p.9",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70",
+    "relation": "designation_requires_standards",
+    "to": "careact.article.74",
+    "target_layer": "care_insurance_act",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.70-2",
+    "relation": "contains",
+    "to": "careact.article.70-2.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70-2",
+    "relation": "contains",
+    "to": "careact.article.70-2.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70-2",
+    "relation": "contains",
+    "to": "careact.article.70-2.p.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70-2",
+    "relation": "contains",
+    "to": "careact.article.70-2.p.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.10",
+    "relation": "contains",
+    "to": "careact.article.70.p.10.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.10",
+    "relation": "contains",
+    "to": "careact.article.70.p.10.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.10",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.10-2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.11",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.12",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.5",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.5-2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.5-3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.6",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.6-2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.6-3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.7",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.7-2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.8",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.70.p.2",
+    "relation": "contains",
+    "to": "careact.article.70.p.2.i.9",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.73",
+    "relation": "contains",
+    "to": "careact.article.73.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.73",
+    "relation": "contains",
+    "to": "careact.article.73.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.73",
+    "relation": "requires_compliance_with",
+    "to": "careact.article.74",
+    "target_layer": "care_insurance_act",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "contains",
+    "to": "careact.article.74.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "contains",
+    "to": "careact.article.74.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "contains",
+    "to": "careact.article.74.p.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "contains",
+    "to": "careact.article.74.p.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "contains",
+    "to": "careact.article.74.p.5",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "contains",
+    "to": "careact.article.74.p.6",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.100",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.101",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.102",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.103",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.104",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.104-2",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.104-3",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.104-4",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.105",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.92",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.93",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.94",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.95",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.96",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.97",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.98",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "delegates_standards_to",
+    "to": "ordinance37.article.99",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74",
+    "relation": "interpreted_by",
+    "to": "notice.dayservice.root",
+    "target_layer": "interpretation_notice",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.74.p.3",
+    "relation": "contains",
+    "to": "careact.article.74.p.3.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74.p.3",
+    "relation": "contains",
+    "to": "careact.article.74.p.3.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74.p.3",
+    "relation": "contains",
+    "to": "careact.article.74.p.3.i.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.74.p.3",
+    "relation": "contains",
+    "to": "careact.article.74.p.3.i.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.75",
+    "relation": "contains",
+    "to": "careact.article.75.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.75",
+    "relation": "contains",
+    "to": "careact.article.75.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76",
+    "relation": "contains",
+    "to": "careact.article.76.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76",
+    "relation": "contains",
+    "to": "careact.article.76.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.5",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2",
+    "relation": "enforces",
+    "to": "careact.article.74",
+    "target_layer": "care_insurance_act",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.76-2.p.1",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.1.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2.p.1",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.1.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2.p.1",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.1.i.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.76-2.p.1",
+    "relation": "contains",
+    "to": "careact.article.76-2.p.1.i.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77",
+    "relation": "contains",
+    "to": "careact.article.77.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77",
+    "relation": "contains",
+    "to": "careact.article.77.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77",
+    "relation": "sanctions_noncompliance_with",
+    "to": "careact.article.74",
+    "target_layer": "care_insurance_act",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.10",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.11",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.12",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.13",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.5",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.6",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.7",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.8",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.77.p.1",
+    "relation": "contains",
+    "to": "careact.article.77.p.1.i.9",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.78",
+    "relation": "contains",
+    "to": "careact.article.78.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.78.p.1",
+    "relation": "contains",
+    "to": "careact.article.78.p.1.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.78.p.1",
+    "relation": "contains",
+    "to": "careact.article.78.p.1.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.78.p.1",
+    "relation": "contains",
+    "to": "careact.article.78.p.1.i.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.10",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.11",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.12",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.13",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.14",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.15",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.16",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.17",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.18",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.19",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.20",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.21",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.22",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.23",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.24",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.25",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.26",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.27",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.28",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.29",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.3",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.4",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.5",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.6",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.7",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.8",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8",
+    "relation": "contains",
+    "to": "careact.article.8.p.9",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8.p.15",
+    "relation": "contains",
+    "to": "careact.article.8.p.15.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8.p.15",
+    "relation": "contains",
+    "to": "careact.article.8.p.15.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8.p.23",
+    "relation": "contains",
+    "to": "careact.article.8.p.23.i.1",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8.p.23",
+    "relation": "contains",
+    "to": "careact.article.8.p.23.i.2",
+    "target_layer": "care_insurance_act"
+  },
+  {
+    "from": "careact.article.8.p.7",
+    "relation": "defines_service_for",
+    "to": "fee.dayservice.root",
+    "target_layer": "remuneration",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from": "careact.article.8.p.7",
+    "relation": "defines_service_for",
+    "to": "ordinance37.article.92",
+    "target_layer": "ordinance37",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  }
+]
