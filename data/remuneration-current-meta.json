@@ -3,7 +3,7 @@
   "service_scope": "通所介護",
   "document_family": "介護報酬",
   "root_notice": "平成12年厚生省告示第19号",
-  "current_state": "SKELETON_BUILT_LATEST_REPLAY_PENDING",
+  "current_state": "CURRENT_OFFICIAL_SOURCE_STRUCTURE_BUILT_HUMAN_CHECK_PENDING",
   "counts": {
     "nodes": 30,
     "base_rate_groups": 3,
@@ -16,7 +16,14 @@
     "告示19・告示27・留意事項通知を別レイヤーとして保持する",
     "令和8年度新旧対照表を現行統合全文として扱わない",
     "共生型通所介護は指定通所介護のコア範囲と混在させない",
-    "単位数は最新改正の順方向再生と人手確認が終わるまで現行確定として表示しない"
+    "単位数は公式現行HTMLから取得できるが、機械抽出と人手照合が終わるまで確認済み表示にしない"
   ],
-  "review_status": "NOT_REVIEWED"
+  "review_status": "NOT_REVIEWED",
+  "current_official_source": "mhlw-fee-notice19-base",
+  "current_source_checked_at": "2026-09-22",
+  "current_amendment": {
+    "amendment_law_num": "令和8年厚生労働省告示第87号",
+    "promulgated": "2026-03-13",
+    "effective_from": "2026-06-01"
+  }
 }
