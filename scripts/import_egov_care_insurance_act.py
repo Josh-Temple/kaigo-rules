@@ -191,7 +191,6 @@ def add_cross_relations(relations, article_ids, node_ids):
     add("careact.article.73","requires_compliance_with","careact.article.74","care_insurance_act")
     for num in ["92","93","94","95","96","97","98","99","100","101","102","103","104","104-2","104-3","104-4","105"]:
         add("careact.article.74","delegates_standards_to",f"ordinance37.article.{num}","ordinance37")
-    add("careact.article.74","interpreted_by","notice.dayservice.root","interpretation_notice")
     add("careact.article.76-2","enforces","careact.article.74","care_insurance_act")
     add("careact.article.77","sanctions_noncompliance_with","careact.article.74","care_insurance_act")
 
