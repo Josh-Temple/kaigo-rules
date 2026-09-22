@@ -5,6 +5,7 @@ import eventsData from "../../../data/fee-guidance-amendment-events.json";
 import chainData from "../../../data/fee-guidance-source-chain.json";
 import metaData from "../../../data/fee-guidance-current-meta.json";
 import reviewData from "../../../data/fee-guidance-review.json";
+import candidatesData from "../../../data/fee-guidance-text-candidates.json";
 import sourcesData from "../../../data/sources.json";
 import feeData from "../../../data/remuneration-current-skeleton.json";
 
@@ -14,6 +15,7 @@ const events=eventsData as Array<any>;
 const chain=chainData as Array<any>;
 const meta=metaData as any;
 const review=reviewData as any;
+const candidates=candidatesData as Array<any>;
 const sources=sourcesData as Array<any>;
 const fees=feeData as Array<any>;
 
@@ -69,6 +71,7 @@ export default function FeeGuidancePage(){
       <div className="fee-guidance-list">
         {nodes.map(node=>{
           const linked=relations.filter(r=>r.from_guidance_id===node.id);
+          const textCandidates=candidates.filter(c=>c.guidance_id===node.id);
           return <section className="fee-guidance-row" key={node.id}>
             <div className="fee-guidance-head">
               <div>
@@ -82,6 +85,7 @@ export default function FeeGuidancePage(){
             {node.verification_status==="UNKNOWN"
               ? <p className="notice-hole">令和6年度の新旧対照表では本文・見出しが省略されています。過去資料から再生します。</p>
               : <p className="meta">本文はまだ統合していません。現在側の見出し・参照関係のみ保持しています。</p>}
+            {textCandidates.length?<p className="meta">本文再構成候補：{textCandidates.length}件収集済み（人手未確認）</p>:null}
             {linked.length?<p className="meta">対応する報酬項目：{
               linked.map((rel,index)=>{
                 const fee=fees.find(f=>f.id===rel.to_fee_id);
@@ -89,6 +93,28 @@ export default function FeeGuidancePage(){
               })
             }</p>:null}
           </section>;
+        })}
+      </div>
+    </section>
+
+    <section className="section">
+      <h2>本文再構成の進捗</h2>
+      <p>
+        令和6年度資料で省略された8項目について、過去の公式資料や後続改正から本文候補を収集しています。
+        ここにある内容は現行統合本文ではなく、人手確認前の再構成材料です。
+      </p>
+      <div className="source-chain">
+        {candidates.map(candidate=>{
+          const node=nodes.find(n=>n.id===candidate.guidance_id);
+          const source=sources.find(s=>s.id===candidate.source_id);
+          return <div className="source-chain-row" key={candidate.id}>
+            <span className="meta">{candidate.source_period}</span>
+            <div>
+              <strong>{node?.title || candidate.guidance_id}</strong>
+              <p>{candidate.candidate_summary}</p>
+              <p className="meta">出典：{source?.title || candidate.source_id} / 候補・人手未確認</p>
+            </div>
+          </div>;
         })}
       </div>
     </section>
