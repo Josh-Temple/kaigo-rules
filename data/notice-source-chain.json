@@ -1,0 +1,45 @@
+[
+  {
+    "source_id": "mhlw-r6-reform-landing",
+    "source_class": "official_landing",
+    "issued_period": "2024",
+    "priority": 1,
+    "completeness": "index_only",
+    "use": "公式な令和6年度改正資料への導線"
+  },
+  {
+    "source_id": "mhlw-2024-interpretation-redline",
+    "source_class": "amendment_comparison",
+    "issued_period": "2024",
+    "priority": 2,
+    "completeness": "partial_new_old_comparison",
+    "use": "新欄に現れる現行側断片と、番号・構造の存続確認",
+    "warning": "現行統合全文として扱わない"
+  },
+  {
+    "source_id": "mhlw-r3-reform-landing",
+    "source_class": "official_landing",
+    "issued_period": "2021",
+    "priority": 3,
+    "completeness": "index_only",
+    "use": "公式な令和3年度改正資料への導線"
+  },
+  {
+    "source_id": "mhlw-2021-interpretation-redline",
+    "source_class": "amendment_comparison",
+    "issued_period": "2021",
+    "priority": 4,
+    "completeness": "partial_new_old_comparison",
+    "use": "令和3年改正後の通所介護セクション構造と追加項目の確認",
+    "warning": "令和6年以後の現行統合全文ではない"
+  },
+  {
+    "source_id": "mhlw-interpretation-html",
+    "source_class": "historical_reference",
+    "issued_period": "historical",
+    "priority": 5,
+    "completeness": "historical_text",
+    "use": "古い節名・項目名・本文のバックフィル候補",
+    "warning": "現在有効な全文とみなさない"
+  }
+]

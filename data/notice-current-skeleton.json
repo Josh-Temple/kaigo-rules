@@ -1,0 +1,852 @@
+[
+  {
+    "id": "notice.common.definitions",
+    "parent_id": null,
+    "depth": 0,
+    "number_path": [
+      "第2",
+      "2"
+    ],
+    "title": "用語の定義",
+    "service_scope": "通所介護を含む共通",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.1 新欄",
+        "evidence_type": "current_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.common.definitions.fte",
+    "parent_id": "notice.common.definitions",
+    "depth": 1,
+    "number_path": [
+      "第2",
+      "2",
+      "(1)"
+    ],
+    "title": "常勤換算方法",
+    "service_scope": "通所介護を含む共通",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.93"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF pp.1–2 新欄",
+        "evidence_type": "current_after_text_present"
+      }
+    ]
+  },
+  {
+    "id": "notice.common.definitions.extended-hours",
+    "parent_id": "notice.common.definitions",
+    "depth": 1,
+    "number_path": [
+      "第2",
+      "2",
+      "(2)"
+    ],
+    "title": "勤務延時間数",
+    "service_scope": "通所介護を含む共通",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_HISTORICAL",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.93"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.1 (2)略",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-interpretation-html",
+        "locator": "用語の定義 / 勤務延時間数",
+        "evidence_type": "historical_title"
+      }
+    ]
+  },
+  {
+    "id": "notice.common.definitions.fulltime",
+    "parent_id": "notice.common.definitions",
+    "depth": 1,
+    "number_path": [
+      "第2",
+      "2",
+      "(3)"
+    ],
+    "title": "常勤",
+    "service_scope": "通所介護を含む共通",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.93",
+      "ordinance37.article.94"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF pp.2–3 新欄",
+        "evidence_type": "current_after_text_present"
+      }
+    ]
+  },
+  {
+    "id": "notice.common.definitions.dedicated",
+    "parent_id": "notice.common.definitions",
+    "depth": 1,
+    "number_path": [
+      "第2",
+      "2",
+      "(4)"
+    ],
+    "title": "「専ら従事する」「専ら提供に当たる」",
+    "service_scope": "通所介護を含む共通",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.93"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.2 (4)略",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF pp.2–3 新欄",
+        "evidence_type": "prior_after_text"
+      }
+    ]
+  },
+  {
+    "id": "notice.common.definitions.previous-year-average",
+    "parent_id": "notice.common.definitions",
+    "depth": 1,
+    "number_path": [
+      "第2",
+      "2",
+      "(5)"
+    ],
+    "title": "前年度の平均値",
+    "service_scope": "通所介護を含む共通",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.3 新欄",
+        "evidence_type": "current_after_text_present"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.root",
+    "parent_id": null,
+    "depth": 0,
+    "number_path": [
+      "第3",
+      "六"
+    ],
+    "title": "通所介護",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.92",
+      "ordinance37.article.105"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20 新欄「六 通所介護」",
+        "evidence_type": "current_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.personnel",
+    "parent_id": "notice.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "第3",
+      "六",
+      "1"
+    ],
+    "title": "人員に関する基準",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.93",
+      "ordinance37.article.94"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20「1・2（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.30 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.personnel.staffing",
+    "parent_id": "notice.dayservice.personnel",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "1",
+      "(1)"
+    ],
+    "title": "従業者の員数",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.93"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF pp.30–31 新欄「(1) 従業者の員数（居宅基準第93条）」",
+        "evidence_type": "prior_after_text"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20「1・2（略）」",
+        "evidence_type": "current_section_preserved"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.personnel.life-counselor",
+    "parent_id": "notice.dayservice.personnel",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "1",
+      "(2)"
+    ],
+    "title": "生活相談員",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_SECTION_PRESERVED_HISTORICAL_TITLE",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.93"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.31「(2)〜(4)（略）」",
+        "evidence_type": "prior_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-interpretation-html",
+        "locator": "通所介護 / 人員に関する基準 / 生活相談員",
+        "evidence_type": "historical_title"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20「1・2（略）」",
+        "evidence_type": "current_section_preserved"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.personnel.function-training",
+    "parent_id": "notice.dayservice.personnel",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "1",
+      "(3)"
+    ],
+    "title": "機能訓練指導員",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_SECTION_PRESERVED_HISTORICAL_TITLE",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.93"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.31「(2)〜(4)（略）」",
+        "evidence_type": "prior_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-interpretation-html",
+        "locator": "通所介護 / 人員に関する基準 / 機能訓練指導員",
+        "evidence_type": "historical_title"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.personnel.manager",
+    "parent_id": "notice.dayservice.personnel",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "1",
+      "(4)"
+    ],
+    "title": "管理者",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_SECTION_PRESERVED_HISTORICAL_TITLE",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.94"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.31「(2)〜(4)（略）」",
+        "evidence_type": "prior_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-interpretation-html",
+        "locator": "通所介護 / 人員に関する基準 / 管理者",
+        "evidence_type": "historical_title"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.equipment",
+    "parent_id": "notice.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "第3",
+      "六",
+      "2"
+    ],
+    "title": "設備に関する基準",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_HISTORICAL",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.95"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20「1・2（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-interpretation-html",
+        "locator": "通所介護 / 設備に関する基準（基準第95条）",
+        "evidence_type": "historical_title"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.equipment.office",
+    "parent_id": "notice.dayservice.equipment",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "2",
+      "(1)"
+    ],
+    "title": "事業所",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "HISTORICAL_TITLE_NEEDS_REPLAY",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.95"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-interpretation-html",
+        "locator": "通所介護 / 設備に関する基準 / (1) 事業所",
+        "evidence_type": "historical_title"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.equipment.dining-training-room",
+    "parent_id": "notice.dayservice.equipment",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "2",
+      "(2)"
+    ],
+    "title": "食堂及び機能訓練室",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "HISTORICAL_TITLE_NEEDS_REPLAY",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.95"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-interpretation-html",
+        "locator": "通所介護 / 設備に関する基準 / (2) 食堂及び機能訓練室",
+        "evidence_type": "historical_title"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation",
+    "parent_id": "notice.dayservice.root",
+    "depth": 1,
+    "number_path": [
+      "第3",
+      "六",
+      "3"
+    ],
+    "title": "運営に関する基準",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.96",
+      "ordinance37.article.105"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20 新欄「3 運営に関する基準」",
+        "evidence_type": "current_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.fees",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(1)"
+    ],
+    "title": "利用料等の受領",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.96"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20「(1)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.31 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.policy",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(2)"
+    ],
+    "title": "指定通所介護の基本取扱方針及び具体的取扱方針",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.97",
+      "ordinance37.article.98"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF pp.20–21 新欄",
+        "evidence_type": "current_after_text_present"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.plan",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(3)"
+    ],
+    "title": "通所介護計画の作成",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.99"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.21「(3)〜(5)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.31 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.rules",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(4)"
+    ],
+    "title": "運営規程",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.100"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.21「(3)〜(5)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF pp.31–32 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.staffing",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(5)"
+    ],
+    "title": "勤務体制の確保等",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.101"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.21「(3)〜(5)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.32 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.bcp",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(6)"
+    ],
+    "title": "業務継続計画の策定等",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.105",
+      "ordinance37.article.30-2"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF pp.21–22 新欄",
+        "evidence_type": "current_after_text_present"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF pp.32–34 新欄",
+        "evidence_type": "prior_after_text"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.disaster",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(7)"
+    ],
+    "title": "非常災害対策",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.103"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.22「(7)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.34 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.hygiene",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(8)"
+    ],
+    "title": "衛生管理等",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.104"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.22 新欄",
+        "evidence_type": "current_after_text_present"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF pp.34–36 新欄",
+        "evidence_type": "prior_after_text"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.community",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(9)"
+    ],
+    "title": "地域との連携等",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.104-2"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.22「(9)〜(12)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF pp.36–37 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.accident",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(10)"
+    ],
+    "title": "事故発生時の対応",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.104-3"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.22「(9)〜(12)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.37 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.abuse",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(11)"
+    ],
+    "title": "虐待の防止",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.105",
+      "ordinance37.article.37-2"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.22「(9)〜(12)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.37 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.records",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(12)"
+    ],
+    "title": "記録の整備",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_2021",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.104-4"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.22「(9)〜(12)（略）」",
+        "evidence_type": "current_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF pp.37–38 新欄",
+        "evidence_type": "prior_heading"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.operation.incorporation",
+    "parent_id": "notice.dayservice.operation",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "3",
+      "(13)"
+    ],
+    "title": "準用",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.105"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.22 新欄",
+        "evidence_type": "current_after_text_present"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "PDF p.38 新欄",
+        "evidence_type": "prior_after_text"
+      }
+    ]
+  }
+]

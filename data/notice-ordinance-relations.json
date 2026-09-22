@@ -1,0 +1,206 @@
+[
+  {
+    "from_notice_id": "notice.common.definitions.fte",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.93",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.common.definitions.extended-hours",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.93",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.common.definitions.fulltime",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.93",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.common.definitions.fulltime",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.94",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.common.definitions.dedicated",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.93",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.root",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.92",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.root",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.105",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.personnel",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.93",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.personnel",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.94",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.personnel.staffing",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.93",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.personnel.life-counselor",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.93",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.personnel.function-training",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.93",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.personnel.manager",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.94",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.equipment",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.95",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.equipment.office",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.95",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.equipment.dining-training-room",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.95",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.96",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.105",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.fees",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.96",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.policy",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.97",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.policy",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.98",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.plan",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.99",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.rules",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.100",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.staffing",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.101",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.bcp",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.105",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.bcp",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.30-2",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.disaster",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.103",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.hygiene",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.104",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.community",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.104-2",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.accident",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.104-3",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.abuse",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.105",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.abuse",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.37-2",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.records",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.104-4",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_notice_id": "notice.dayservice.operation.incorporation",
+    "relation": "interprets_or_explains",
+    "to_ordinance_id": "ordinance37.article.105",
+    "verification_status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  }
+]
