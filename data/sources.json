@@ -214,5 +214,41 @@
     "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
     "status": "partial_source",
     "note": "老企第36号の令和6年度改正に係る新旧対照表（抄）。「7 通所介護費」の現行側骨格・改正後文を確認できるが、現行統合全文ではない。"
+  },
+  {
+    "id": "mhlw-noninsurance-combination-2018",
+    "layer": "通知",
+    "title": "介護保険サービスと保険外サービスを組み合わせて提供する場合の取扱いについて",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc3681&dataType=1",
+    "status": "verified_source",
+    "note": "通所介護と理美容等の保険外サービスの区分、提供時間、利用者保護、人員基準等を確認できる通知。"
+  },
+  {
+    "id": "mhlw-barber-act-overview",
+    "layer": "理容師法",
+    "title": "理容師法の概要",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000124762.html",
+    "status": "verified_source",
+    "note": "理容の定義、免許、無免許営業禁止、理容所以外で業務を行える場合の概要。"
+  },
+  {
+    "id": "mhlw-beautician-act-overview",
+    "layer": "美容師法",
+    "title": "美容師法の概要",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000124874.html",
+    "status": "verified_source",
+    "note": "美容の定義、免許、無免許営業禁止、美容所以外で業務を行える場合の概要。"
+  },
+  {
+    "id": "mhlw-outcall-hairdressing-2026",
+    "layer": "通知",
+    "title": "理容師法施行令第4条第1号及び美容師法施行令第4条第1号に基づく出張理容・出張美容の対象等について（一部改正）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00td0052&dataType=1&pageNo=1",
+    "status": "verified_source",
+    "note": "令和8年3月26日改正。出張理容・出張美容の全国共通の対象整理と、条例による追加対象の余地を確認できる。"
   }
 ]
