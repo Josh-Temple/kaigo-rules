@@ -250,5 +250,55 @@
     "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00td0052&dataType=1&pageNo=1",
     "status": "verified_source",
     "note": "令和8年3月26日改正。出張理容・出張美容の全国共通の対象整理と、条例による追加対象の余地を確認できる。"
+  },
+  {
+    "id": "mhlw-r6-home-care-interpretation-redline-current",
+    "layer": "解釈通知",
+    "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・別紙8新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12304250/001225792.pdf",
+    "status": "verified_source",
+    "note": "通所介護の感染症研修・訓練について年1回以上等の改正後文を直接確認できる令和6年度の公式新旧対照表。",
+    "coverage_checked_at": "2026-09-23"
+  },
+  {
+    "id": "mhlw-bcp-support-current",
+    "layer": "厚生労働省研修資料",
+    "title": "介護施設・事業所における業務継続計画（BCP）作成支援に関する研修資料・動画",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/douga_00002.html",
+    "status": "verified_source",
+    "note": "現行掲載ページ。通所系・訪問系は研修年1回、訓練年1回とする厚労省委託研修資料を掲載。",
+    "coverage_checked_at": "2026-09-23"
+  },
+  {
+    "id": "mhlw-r8-abuse-frequency-qa",
+    "layer": "Q&A",
+    "title": "高齢者虐待防止措置未実施減算の適用について",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/001498780.pdf",
+    "status": "verified_source",
+    "note": "通所介護の虐待防止研修回数を年1回以上と明示する現行Q&A資料。",
+    "coverage_checked_at": "2026-09-23"
+  },
+  {
+    "id": "mhlw-abuse-prevention-current-guide",
+    "layer": "厚生労働省研修・検証資料",
+    "title": "施設・事業所における高齢者虐待防止のための体制整備・研修資料",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12304250/001687719.pdf",
+    "status": "verified_source",
+    "note": "定期的研修の頻度区分（在宅系年1回以上）と、新規採用時には必ず虐待防止研修を実施することが重要である旨を示す現行掲載資料。",
+    "coverage_checked_at": "2026-09-23"
+  },
+  {
+    "id": "mhlw-r6-qa-dayservice-nurse-linkage",
+    "layer": "Q&A",
+    "title": "令和6年度介護報酬改定に関するQ&A（通所介護・看護職員の配置基準の緩和）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/001246407.pdf",
+    "status": "verified_source",
+    "note": "病院・診療所・訪問看護ステーションとの契約で看護職員を確保し、営業日ごとに健康状態確認を行う運用を前提として、従事時間・距離を説明する令和6年度Q&A。",
+    "coverage_checked_at": "2026-09-23"
   }
 ]
