@@ -84,6 +84,10 @@ const feeSourceChainPath = path.join(root, "data", "remuneration-source-chain.js
 const feeSourceChain = fs.existsSync(feeSourceChainPath)
   ? JSON.parse(fs.readFileSync(feeSourceChainPath, "utf8"))
   : [];
+const feeCurrentTextPath = path.join(root, "data", "remuneration-current-text.json");
+const feeCurrentText = fs.existsSync(feeCurrentTextPath)
+  ? JSON.parse(fs.readFileSync(feeCurrentTextPath, "utf8"))
+  : [];
 
 const errors = [];
 const unique = (items, key, label) => {
@@ -109,6 +113,7 @@ unique(noticeAmendments, "id", "notice-amendment-events");
 unique(noticeHistory, "notice_id", "notice-historical-backfill");
 unique(feeSkeleton, "id", "remuneration-skeleton");
 unique(feeAmendments, "id", "remuneration-amendments");
+unique(feeCurrentText, "fee_id", "remuneration-current-text");
 
 const sourceIds = new Set(sources.map((x) => x.id));
 const ruleIds = new Set(rules.map((x) => x.id));
@@ -375,6 +380,12 @@ if (feeSkeleton.length) {
     for (const id of event.target_ids || []) if (!feeIds.has(id)) errors.push(`fee amendment ${event.id}: missing target ${id}`);
   }
   for (const entry of feeSourceChain) if (!sourceIds.has(entry.source_id)) errors.push(`fee source chain: missing source ${entry.source_id}`);
+  for (const record of feeCurrentText) {
+    if (!feeIds.has(record.fee_id)) errors.push(`fee current text: missing skeleton node ${record.fee_id}`);
+    if (!sourceIds.has(record.source_id)) errors.push(`fee current text ${record.fee_id}: missing source ${record.source_id}`);
+    if (!record.official_text || !record.text_sha256) errors.push(`fee current text ${record.fee_id}: missing text/hash`);
+    if (record.import_status !== "IMPORTED_CURRENT_SOURCE_NEEDS_HUMAN_CHECK") errors.push(`fee current text ${record.fee_id}: unexpected status`);
+  }
 }
 
 if (errors.length) {
@@ -383,5 +394,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${feeSkeleton.length} remuneration nodes, ${sources.length} sources.`
+  `Data validation PASS: ${questions.length} questions, ${rules.length} rules, ${notices.length} notice nodes, ${qa.length} curated Q&A items, ${qaCorpus.length} imported Q&A rows, ${(qaCandidates.candidates || []).reduce((n, g) => n + (g.candidates || []).length, 0)} review-only Q&A candidates, ${ordinanceNodes.length} ordinance nodes, ${noticeSkeleton.length} notice-skeleton nodes, ${noticeHistory.length} historical notice candidates, ${feeSkeleton.length} remuneration nodes, ${feeCurrentText.length} current remuneration texts, ${sources.length} sources.`
 );
