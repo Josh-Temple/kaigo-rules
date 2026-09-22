@@ -16,6 +16,17 @@ const sources = sourcesData as Array<any>;
 
 const routeKey = (id: string) => id.replace("fee.dayservice.", "");
 
+const relationLabel: Record<string,string> = {
+  defined_service_by: "サービス定義",
+  staffing_calculation_delegated_to: "利用者数・人員欠如等の算定方法",
+  operational_basis_related_to: "運営基準との関係",
+  related_to: "関連する基準",
+  currency_conversion_uses: "一単位単価",
+  latest_interpretation_amendment_evidence: "最新の留意事項改正",
+  delegated_criteria_to: "厚生労働大臣基準への委任",
+  historically_interpreted_by: "過去の留意事項通知"
+};
+
 export function generateStaticParams() {
   return nodes
     .filter((node) => node.parent_id === "fee.dayservice.root")
@@ -84,7 +95,7 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
           <div className="relation-list">
             {linkedRelations.map((relation, index) => (
               <div className="relation-row" key={`${relation.relation}-${index}`}>
-                <span className="meta">{relation.relation}</span>
+                <span className="meta">{relationLabel[relation.relation] || relation.relation}</span>
                 <div>
                   {relation.to_id ? (
                     <Link href={ordinanceHref(relation.to_id)}>

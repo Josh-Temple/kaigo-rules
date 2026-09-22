@@ -46,5 +46,23 @@
     "relation": "latest_interpretation_amendment_evidence",
     "to_source_id": "mhlw-r8-fee-interpretation-amendment",
     "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.service-provision",
+    "relation": "delegated_criteria_to",
+    "to_source_id": "mhlw-fee-criteria95-current",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.treatment-improvement",
+    "relation": "delegated_criteria_to",
+    "to_source_id": "mhlw-fee-criteria95-current",
+    "status": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK"
+  },
+  {
+    "from_fee_id": "fee.dayservice.root",
+    "relation": "historically_interpreted_by",
+    "to_source_id": "mhlw-fee-interpretation-historical",
+    "status": "HISTORICAL_REFERENCE_ONLY"
   }
 ]

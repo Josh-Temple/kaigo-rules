@@ -31,6 +31,14 @@
     "use": "令和8年度改定資料への公式導線"
   },
   {
+    "source_id": "mhlw-fee-criteria95-current",
+    "source_class": "delegated_criteria_notice",
+    "priority": 4,
+    "completeness": "separate_current_notice",
+    "use": "加算・減算のうち「別に厚生労働大臣が定める基準」とされた要件の委任先",
+    "warning": "報酬告示本文とは別法源として保持する"
+  },
+  {
     "source_id": "mhlw-r8-fee-amendment87",
     "source_class": "amendment_comparison",
     "priority": 5,
@@ -45,5 +53,13 @@
     "completeness": "partial_new_old_comparison",
     "use": "算定留意事項の令和8年度変更箇所",
     "warning": "通所介護の留意事項全体を網羅する資料ではない"
+  },
+  {
+    "source_id": "mhlw-fee-interpretation-historical",
+    "source_class": "historical_interpretation_notice",
+    "priority": 8,
+    "completeness": "historical_text",
+    "use": "通所介護費の留意事項通知を再構成する際の過去本文候補",
+    "warning": "現行の統合留意事項通知として扱わない"
   }
 ]
