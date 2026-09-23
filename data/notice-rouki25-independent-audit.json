@@ -63,7 +63,7 @@
       {
         "category": "currentness/source coverage",
         "finding": "令和6年版以後の対象項目を網羅する現行統合本文・公式な全改正履歴を確認できない。001453049.pdfは令和7年3月改訂国マニュアルで掲載され、令和8年3月改訂ページでも再掲されているが部分参照。",
-        "impact": "22項目をHOLDとし、歴史資料からの一致を現行性の証明にしない。"
+        "impact": "22項目をHOLDとし、歴史資料や再掲からの一致を現行性の証明にしない。"
       },
       {
         "category": "stale verification provenance",
