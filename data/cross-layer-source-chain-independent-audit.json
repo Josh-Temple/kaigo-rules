@@ -1,0 +1,152 @@
+{
+  "format_version": 1,
+  "scope": "careact-to-remuneration-and-ordinance37-source-chains",
+  "audit_kind": "INDEPENDENT_CROSS_LAYER_SOURCE_CHAIN_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-24",
+  "audit_run": {
+    "workflow": "Verify cross-layer source chains independently",
+    "run_id": 35931363483,
+    "head_sha": "9b3eb34fd5e8a665a424431d5a08907b355a50e1",
+    "result": "PASS",
+    "parsers": {
+      "egov_xml": "python_xml_dom_minidom",
+      "mhlw_html": "python_stdlib_html_parser"
+    },
+    "artifact_id": 10781192129,
+    "artifact_digest": "sha256:2889e2b7a491a8a428538fbcd60b9edc97875a15544139fa2418f6151a4da875"
+  },
+  "checks": [
+    {
+      "id": "careact41-to-notice19-dayservice-fee",
+      "relation": "authorizes_fee_standard_for",
+      "source_id": "careact.article.41.p.4.i.1",
+      "target_id": "fee.dayservice.root",
+      "result": "PASS",
+      "careact_source_sha256": "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc",
+      "notice19_source_sha256": "e189120c253f72d2d5dab24dfe7118bad7d602f0baba3d8cdf98a58c7ecc5bbd",
+      "careact_evidence": {
+        "required_phrases": [
+          "通所介護",
+          "厚生労働大臣が定める基準"
+        ],
+        "source_text_sha256": "f1c72ee438938ea1b026dfc1f5031d1bb6c444559735cb6b60aba4d2b5ea5c8b"
+      },
+      "notice19_evidence": {
+        "title_evidence": "・指定居宅サービスに要する費用の額の算定に関する基準(◆平成12年02月10日厚生省告示第19号)",
+        "dayservice_section_evidence": "6 通所介護費"
+      },
+      "differences": []
+    },
+    {
+      "id": "careact74-to-ordinance37-dayservice-direct-standards",
+      "relation": "delegates_standards_to",
+      "source_id": "careact.article.74",
+      "target_layer": "ordinance37",
+      "result": "PASS",
+      "careact_source_sha256": "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc",
+      "ordinance37_source_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
+      "careact_evidence": {
+        "required_phrase": "厚生労働省令で定める基準",
+        "source_text_sha256": "3e0f9566da51f96d49d4c05fabc6011c80dab5309085d36a7943de3c4c866b32"
+      },
+      "ordinance37_evidence": {
+        "law_title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準",
+        "chapter_title": "第七章 通所介護",
+        "selected_sections": [
+          {
+            "title": "第一節 基本方針",
+            "normalized_title": "基本方針"
+          },
+          {
+            "title": "第二節 人員に関する基準",
+            "normalized_title": "人員に関する基準"
+          },
+          {
+            "title": "第三節 設備に関する基準",
+            "normalized_title": "設備に関する基準"
+          },
+          {
+            "title": "第四節 運営に関する基準",
+            "normalized_title": "運営に関する基準"
+          }
+        ],
+        "independently_observed_direct_articles": [
+          "92",
+          "93",
+          "94",
+          "95",
+          "96",
+          "97",
+          "98",
+          "99",
+          "100",
+          "101",
+          "102",
+          "103",
+          "104",
+          "104-2",
+          "104-3",
+          "104-4",
+          "105"
+        ]
+      },
+      "committed_relation_targets": [
+        "92",
+        "93",
+        "94",
+        "95",
+        "96",
+        "97",
+        "98",
+        "99",
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "104-2",
+        "104-3",
+        "104-4",
+        "105"
+      ],
+      "relation_count": 17,
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "relations_in_this_lane": 18,
+    "relations_passed": 18,
+    "previous_explicit_relations_independently_verified": 27,
+    "aggregate_relations_independently_verified": 45,
+    "non_contains_semantic_or_cross_layer_relations_current_inventory": 163,
+    "remaining_semantic_or_cross_layer_relations_not_independently_verified": 118
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
+    "data/care-insurance-act-nodes.json": "5679279462390862405d60f00b25603f8be3522e",
+    "data/careact-internal-relation-independent-audit.json": "f261ec48dd2ee1eb8ac0b3c0fcc4254c0b476d47",
+    "data/relation-semantic-independent-audit.json": "8a5c068631d75ab4b1d84a2e93b528d4821baf71",
+    "data/ordinance37-meta.json": "460cbbbceefb90a6ca19088e37c75c3a89b1433b",
+    "data/ordinance37-scope.json": "45adecbd77aea07f2a55837b0b713b2a462efc45",
+    "data/remuneration-current-skeleton.json": "4caef5d7c34c1658e442db137fed20944ebfeb06",
+    "data/sources.json": "06779a3f95f48cc6069d1f23bdeccea5dfe82711",
+    "scripts/verify_cross_layer_source_chains_independent.py": "e00928729e4675c5143919151bcd10fcacc406b5",
+    "data/care-insurance-act-meta.json": "fe96d6ba31a58763362e36cc9a9106647f5bd41b",
+    "data/remuneration-current-text-meta.json": "81ef0083b42f42062f7f0ec8e215b9ffd392d6d8"
+  },
+  "conclusion": "One Care Insurance Act fee-authority relation and 17 Article 74 to Ordinance 37 direct day-service standard relations matched independent live primary-source chains.",
+  "limitations": [
+    "PASS is source-chain consistency, not a human legal interpretation.",
+    "The Article 74 lane proves the chain from statutory delegation to Ordinance 37 title/chapter/section structure and the 17 committed direct-article targets.",
+    "The remaining 118 non-contains semantic or cross-layer relations are not independently verified by the three relation-audit lanes.",
+    "This audit does not promote HUMAN_VERIFIED or VERIFIED_CURRENT.",
+    "Later changes to pinned inputs or verifier require a refreshed audit record."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_other_semantic_mappings": false
+  }
+}
