@@ -1,12 +1,27 @@
 {
-  "format_version": 1,
+  "format_version": 2,
   "scope": "rouki25-dayservice-22-currentness",
   "checked_at": "2026-09-23",
-  "fresh_main_sha_at_start": "ddde7c2c0dd7947bbb5eb121ef2513d500807b54",
+  "fresh_main_sha_at_start": "c3903ba1254525600a0b85969e826d4f2ec6a0d1",
   "conclusion": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
   "effect_on_22_items": "KEEP_HOLD",
   "automatic_promotion_allowed": false,
   "blocking_requirement": "HUMAN_VERIFIED / VERIFIED_CURRENTへ進めるには、令和6年改正後から確認時点までの老企第25号・第3の六に関する後続改正を網羅できる厚生労働省一次資料、または現行統合本文等による確認が必要。検索結果の不在や部分参照資料だけでは解除しない。",
+  "source_date_provenance_conflicts": [
+    {
+      "source_id": "mhlw-2026-rouki25-reference-redline",
+      "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
+      "repository_period_claim": "2026-03",
+      "repository_label_claim": "令和8年3月掲載参照資料",
+      "official_parent_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00003.html",
+      "official_parent_context": "厚生労働省の親ページは当該PDFを「市町村・都道府県における高齢者虐待への対応と養護者支援について（令和7年3月改訂）」の「本編内の通知」として掲載している。",
+      "companion_notice_url": "https://www.mhlw.go.jp/content/12304250/001461227.pdf",
+      "companion_notice_date": "2025-03-25",
+      "status": "DATE_PROVENANCE_UNRESOLVED",
+      "safety_effect": "2026-03という時期を現在性や後続改正不存在の根拠に使用しない。source IDは互換性のため当面維持し、実際の発出・改正・掲載時期を一次資料で確定してからmetadataを訂正する。",
+      "tracking_issue": "https://github.com/Josh-Temple/kaigo-rules/issues/85"
+    }
+  ],
   "routes": [
     {
       "route_id": "mhlw-r6-reform-final",
@@ -15,6 +30,14 @@
       "observation": "令和6年度介護報酬改定ページの「基準省令に関する通知（解釈通知等）」に、老企第25号「指定居宅サービス等及び指定介護予防サービス等に関する基準について」の改正PDFへの公式導線がある。",
       "use": "令和6年改正の一次資料への公式導線として使用する。",
       "limitation": "令和6年改正時点の資料であり、その後に当該通知の改正が存在しないことまでは証明しない。"
+    },
+    {
+      "route_id": "mhlw-r7-abuse-manual-reference",
+      "kind": "OFFICIAL_PARENT_CONTEXT_DATE_CONFLICT",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00003.html",
+      "observation": "厚生労働省の「令和7年3月改訂」国マニュアルページの「本編内の通知」から001453049.pdfへ直接リンクされている。同ページの改訂周知通知は令和7年3月25日付である。",
+      "use": "001453049.pdfの掲載・時期metadataを再検証する一次的な親ページ文脈として使用する。",
+      "limitation": "親ページの文脈だけではPDF内の新旧対照表そのものの正式な改正日を確定できない。したがって2025-03へ即断して置換せず、現在の2026-03主張を未検証として扱う。"
     },
     {
       "route_id": "mhlw-r8-reform-page",
@@ -58,6 +81,6 @@
   "status_policy": {
     "machine_text_match": "22/22の順方向replay一致は本文再構成の整合性を示すが、現行性の証明ではない。",
     "human_review": "この調査だけでは人手確認は完了しない。",
-    "currentness": "網羅的な後続改正確認が閉じるまで22項目をHOLDのまま維持する。"
+    "currentness": "網羅的な後続改正確認が閉じ、かつ時期metadataの未解決矛盾が解消するまで22項目をHOLDのまま維持する。"
   }
 }
