@@ -693,13 +693,13 @@ def bbox_column_text(pdf_path: pathlib.Path, first: int, last: int, column: str)
         stderr=subprocess.PIPE,
     )
     root = ET.fromstring(proc.stdout.decode("utf-8", errors="strict"))
-    output = []
+    output_lines = []
     for page in root.iter():
         if local_name(page.tag) != "page":
             continue
         width = float(page.attrib["width"])
         midpoint = width / 2.0
-        words = []
+        grouped = {}
         for word in page.iter():
             if local_name(word.tag) != "word":
                 continue
@@ -708,13 +708,23 @@ def bbox_column_text(pdf_path: pathlib.Path, first: int, last: int, column: str)
                 continue
             xmin = float(word.attrib["xMin"])
             xmax = float(word.attrib["xMax"])
-            ymin = float(word.attrib["yMin"])
+            ymin = round(float(word.attrib["yMin"]), 1)
             center = (xmin + xmax) / 2.0
             if (column == "left" and center < midpoint) or (column == "right" and center > midpoint):
-                words.append((round(ymin, 2), xmin, text))
-        words.sort(key=lambda row: (row[0], row[1]))
-        output.extend(text for _, _, text in words)
-    return compact("".join(output))
+                grouped.setdefault(ymin, []).append((xmin, text))
+        for ymin in sorted(grouped):
+            line = "".join(text for _, text in sorted(grouped[ymin], key=lambda row: row[0]))
+            normalized_line = compact(line)
+            if not normalized_line:
+                continue
+            if re.fullmatch(r"-?\\d{1,3}-?", normalized_line):
+                continue
+            if "指定居宅サービス等及び指定介護予防サービス等に関する基準について(抄)" in normalized_line:
+                continue
+            if normalized_line in {"新", "旧", "改正後", "改正前"}:
+                continue
+            output_lines.append(normalized_line)
+    return "".join(output_lines)
 
 def slice_between(value: str, start_marker: str, end_marker: str) -> str:
     start_needle = compact(start_marker)
