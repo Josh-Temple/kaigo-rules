@@ -10,6 +10,7 @@ PATH = ROOT / "data" / "notice-rouki25-currentness-investigation.json"
 
 ALLOWED_KINDS = {
     "PRIMARY_SOURCE_FINAL_AMENDMENT_ROUTE",
+    "OFFICIAL_PARENT_CONTEXT_DATE_CONFLICT",
     "OFFICIAL_REFORM_INDEX_SUPPORTING_ONLY",
     "OFFICIAL_INDEX_SUPPORTING_ONLY",
     "HISTORICAL_ORIGINAL_NOT_CONSOLIDATED",
@@ -38,9 +39,24 @@ def main() -> None:
     if not data.get("blocking_requirement"):
         fail("blocking requirement is missing")
 
+    conflicts = data.get("source_date_provenance_conflicts", [])
+    if len(conflicts) != 1:
+        fail("expected one recorded source-date provenance conflict")
+    conflict = conflicts[0]
+    if conflict.get("source_id") != "mhlw-2026-rouki25-reference-redline":
+        fail("unexpected source-date conflict target")
+    if conflict.get("repository_period_claim") != "2026-03":
+        fail("recorded repository period claim changed unexpectedly")
+    if conflict.get("status") != "DATE_PROVENANCE_UNRESOLVED":
+        fail("reference-PDF date provenance must remain unresolved until primary-source provenance is established")
+    if "2026-03" not in conflict.get("safety_effect", ""):
+        fail("date-provenance conflict must explicitly block use of the 2026-03 claim")
+    if not conflict.get("tracking_issue", "").endswith("/issues/85"):
+        fail("date-provenance conflict must remain traceable to issue 85")
+
     routes = data.get("routes", [])
-    if len(routes) < 5:
-        fail("expected the checked official/search routes")
+    if len(routes) < 6:
+        fail("expected the checked official/search routes including the parent-page date conflict")
     route_ids = [route.get("route_id") for route in routes]
     if len(route_ids) != len(set(route_ids)):
         fail("duplicate route_id")
@@ -54,6 +70,14 @@ def main() -> None:
             fail(f"{route.get('route_id')}: route must be an MHLW URL")
         if not route.get("observation") or not route.get("use") or not route.get("limitation"):
             fail(f"{route.get('route_id')}: observation/use/limitation must be explicit")
+
+    parent = by_id.get("mhlw-r7-abuse-manual-reference", {})
+    if parent.get("kind") != "OFFICIAL_PARENT_CONTEXT_DATE_CONFLICT":
+        fail("R7 parent-page context must remain recorded as a date-provenance conflict")
+    if "2025-03" not in conflict.get("companion_notice_date", ""):
+        fail("companion notice date is missing")
+    if "即断して置換せず" not in parent.get("limitation", ""):
+        fail("parent-page context must not be over-interpreted as the exact redline amendment date")
 
     law_db = by_id.get("mhlw-law-database-rouki25", {})
     if law_db.get("kind") != "HISTORICAL_ORIGINAL_NOT_CONSOLIDATED":
@@ -78,8 +102,10 @@ def main() -> None:
         fail("machine text match must not be described as proof of currentness")
     if "HOLD" not in policy.get("currentness", ""):
         fail("currentness policy must preserve HOLD")
+    if "時期metadataの未解決矛盾" not in policy.get("currentness", ""):
+        fail("currentness policy must preserve the unresolved date-provenance blocker")
 
-    print("rouki25 currentness investigation: OK (coverage unresolved; 22 items remain HOLD)")
+    print("rouki25 currentness investigation: OK (coverage/date provenance unresolved; 22 items remain HOLD)")
 
 
 if __name__ == "__main__":
