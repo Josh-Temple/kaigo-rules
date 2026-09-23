@@ -695,10 +695,14 @@ def bbox_column_text(pdf_path: pathlib.Path, first: int, last: int, column: str)
     )
     root = ET.fromstring(proc.stdout.decode("utf-8", errors="strict"))
     output_lines = []
+    page_offset = 0
     for page in root.iter():
         if local_name(page.tag) != "page":
             continue
+        source_page_number = first + page_offset
+        page_offset += 1
         width = float(page.attrib["width"])
+        height = float(page.attrib["height"])
         midpoint = width / 2.0
         grouped = {}
         for word in page.iter():
@@ -709,7 +713,14 @@ def bbox_column_text(pdf_path: pathlib.Path, first: int, last: int, column: str)
                 continue
             xmin = float(word.attrib["xMin"])
             xmax = float(word.attrib["xMax"])
-            ymin = round(float(word.attrib["yMin"]), 1)
+            raw_ymin = float(word.attrib["yMin"])
+            ymin = round(raw_ymin, 1)
+            normalized_word = compact(text)
+            if raw_ymin > height * 0.90 and (
+                normalized_word == str(source_page_number)
+                or normalized_word in {"-", "−", "–", "—"}
+            ):
+                continue
             center = (xmin + xmax) / 2.0
             if (column == "left" and center < midpoint) or (column == "right" and center > midpoint):
                 grouped.setdefault(ymin, []).append((xmin, text))
