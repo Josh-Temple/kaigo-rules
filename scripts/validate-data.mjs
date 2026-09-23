@@ -751,10 +751,11 @@ if (noticeSkeleton.length) {
     const staffing = candidateById.get("notice.dayservice.personnel.staffing");
     if (staffing) {
       const compact = String(staffing.candidate_text || "").normalize("NFKC").replace(/\s+/g, "");
-      if (!compact.includes("②8時間以上9時間未満の指定通所介護の前後に連続して延長サービス")) {
+      const normalizedNeedle = (value) => String(value).normalize("NFKC").replace(/\s+/g, "");
+      if (!compact.includes(normalizedNeedle("②８時間以上９時間未満の指定通所介護の前後に連続して延長サービス"))) {
         errors.push("notice personnel staffing: H30 extended-hours wording missing");
       }
-      if (compact.includes("②7時間以上9時間未満の通所介護の前後に連続して延長サービス")) {
+      if (compact.includes(normalizedNeedle("②７時間以上９時間未満の通所介護の前後に連続して延長サービス"))) {
         errors.push("notice personnel staffing: pre-H30 extended-hours wording returned");
       }
       for (const phrase of [
