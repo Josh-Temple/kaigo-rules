@@ -716,12 +716,13 @@ def bbox_column_text(pdf_path: pathlib.Path, first: int, last: int, column: str)
             raw_ymin = float(word.attrib["yMin"])
             ymin = round(raw_ymin, 1)
             normalized_word = compact(text)
-            if raw_ymin > height * 0.90 and (
+            center = (xmin + xmax) / 2.0
+            near_page_center = abs(center - midpoint) < width * 0.16
+            if raw_ymin > height * 0.72 and near_page_center and (
                 normalized_word == str(source_page_number)
                 or normalized_word in {"-", "−", "–", "—"}
             ):
                 continue
-            center = (xmin + xmax) / 2.0
             if (column == "left" and center < midpoint) or (column == "right" and center > midpoint):
                 grouped.setdefault(ymin, []).append((xmin, text))
         for ymin in sorted(grouped):
