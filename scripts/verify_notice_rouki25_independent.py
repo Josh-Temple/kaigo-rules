@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import difflib
 import pathlib
 import re
 import shutil
@@ -860,6 +861,20 @@ def compare() -> dict:
         text_differences.append({"notice_id": notice_id, "difference": "unexpected_independent_candidate"})
     for notice_id in sorted(observed_ids & expected_ids):
         if observed[notice_id] != expected[notice_id]:
+            matcher = difflib.SequenceMatcher(a=expected[notice_id], b=observed[notice_id], autojunk=False)
+            opcodes = []
+            for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+                if tag == "equal":
+                    continue
+                opcodes.append({
+                    "tag": tag,
+                    "expected_range": [i1, i2],
+                    "observed_range": [j1, j2],
+                    "expected_text": expected[notice_id][max(0, i1-30):min(len(expected[notice_id]), i2+30)],
+                    "observed_text": observed[notice_id][max(0, j1-30):min(len(observed[notice_id]), j2+30)],
+                })
+                if len(opcodes) >= 5:
+                    break
             text_differences.append({
                 "notice_id": notice_id,
                 "difference": "semantic_text_mismatch",
@@ -867,6 +882,7 @@ def compare() -> dict:
                 "observed_semantic_sha256": hashlib.sha256(observed[notice_id].encode("utf-8")).hexdigest(),
                 "expected_compact_chars": len(expected[notice_id]),
                 "observed_compact_chars": len(observed[notice_id]),
+                "diff_opcodes": opcodes,
             })
 
     result = "PASS" if not source_differences and not text_differences else "FAIL"
