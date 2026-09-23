@@ -1,0 +1,64 @@
+{
+  "format_version": 1,
+  "scope": "dayservice-remuneration-notices-19-27-95",
+  "audit_kind": "INDEPENDENT_MACHINE_REPARSE_PLUS_FRESH_PRIMARY_SOURCE_READ",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-23",
+  "audited_main_sha": "2503a08579dda3c24cb3efa3f58856da9d9172e8",
+  "audit_issue": {
+    "number": 74,
+    "url": "https://github.com/Josh-Temple/kaigo-rules/issues/74",
+    "title": "Independent audit: remuneration notices 19, 27 and 95 (2026-09-23)"
+  },
+  "full_verification_run": {
+    "workflow": "Verify remuneration sources independently",
+    "run_id": 35738301488,
+    "head_sha": "81031be8a21af9a58f18e8f4b97b5bafab2c9bae",
+    "result": "PASS",
+    "parser": "python_stdlib_html_parser",
+    "verification_kind": "INDEPENDENT_MACHINE_REPARSE"
+  },
+  "sources": {
+    "notice19": {
+      "title": "指定居宅サービスに要する費用の額の算定に関する基準",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+      "sha256": "e189120c253f72d2d5dab24dfe7118bad7d602f0baba3d8cdf98a58c7ecc5bbd"
+    },
+    "notice27": {
+      "title": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+      "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+    },
+    "notice95": {
+      "title": "厚生労働大臣が定める基準",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618"
+    }
+  },
+  "observed_counts": {
+    "notice19_records": 29,
+    "notice27_nodes": 3,
+    "notice95_nodes": 14,
+    "delegated_nodes_total": 17,
+    "semantic_text_differences": 0,
+    "metadata_differences": 0
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/remuneration-current-text.json": "ec517d81c7b6fb5c4e05430bde26bd19c8dc2887",
+    "data/remuneration-current-text-meta.json": "81ef0083b42f42062f7f0ec8e215b9ffd392d6d8",
+    "data/remuneration-delegated-nodes.json": "49cdac5fa6e07e13a5f805795b44de4047cad8d3",
+    "data/remuneration-delegated-meta.json": "85a2d42d1ff20f5a5f9ba9ba690f5e23e9edd7a6",
+    "scripts/verify_remuneration_independent.py": "61362290891dad128ffec6f4b1454937450aea44"
+  },
+  "conclusion": "Independent machine reparse and fresh official-source read found no text, metadata, source-chain, or relation correction required for the audited scope.",
+  "limitations": [
+    "This record preserves the result of the cited audit and verifier run; the scheduled verifier remains responsible for detecting later live-source drift.",
+    "Independent machine/AI verification is not HUMAN_VERIFIED and must not be relabelled as VERIFIED_CURRENT.",
+    "If any pinned canonical input or verifier changes, this record requires refresh."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
