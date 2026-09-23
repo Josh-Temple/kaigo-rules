@@ -1,13 +1,13 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.18 current-source reconstruction gate complete**
+状態: **v0.20 safety prose ready / controlled RAG protocol fixed**
 
 ## 現在のsuite
 
 合計 **190ケース**。
 
-- `benchmark-v0.18.json`: 50
+- `benchmark-v0.3.json`: 50
 - `coverage-gap-v0.1.json`: 20
 - `false-answer-stress-v0.1.json`: 12
 - `external-qa-query-sample-v0.5.json`: 33
@@ -95,6 +95,8 @@ Source
 - `node scripts/research-coverage-classifier-v0.19.mjs`
 - `node scripts/research-coverage-classifier-v0.20.mjs`
 - `node scripts/research-coverage-classifier-v0.21.mjs`
+- `node scripts/research-coverage-classifier-v0.22.mjs`
+- `node scripts/research-claim-registry-validate-v0.15.mjs`
 - `node scripts/research-claim-registry-validate-v0.14.mjs`
 - `node scripts/research-claim-registry-validate-v0.13.mjs`
 - `node scripts/research-claim-compositions-validate-v0.5.mjs`
@@ -106,11 +108,17 @@ Source
 - `node scripts/research-claim-registry-validate-v0.2.mjs`
 - `node scripts/research-claim-registry-validate-v0.3.mjs`
 
+## Controlled RAG comparison
+
+比較条件は `controlled-rag-comparison-protocol-v0.1.md` と `controlled-rag-eval-contract-v0.1.json` に固定した。
+RAG code / vector DB / embeddingはまだ導入していない。
+
 ## 次の再開点
 
-1. safety proseのhuman sign-off
-2. 屋外サービス1件のcurrent integrated source reconstruction
-3. controlled RAG comparison
+1. new external holdout 30〜50件の作成
+2. safety proseのhuman sign-off
+3. 屋外サービス1件のcurrent integrated source reconstruction
+4. gate通過後にcontrolled RAG comparisonを実装
 
 `VERIFIED_WITH_SOURCE_LIMITATION` は現在1件のみ。
 RAGはまだ実装しない。
