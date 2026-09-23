@@ -1,0 +1,63 @@
+name: Verify explicit legal-reference relations independently
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "12 4 * * 1"
+  pull_request:
+    paths:
+      - "scripts/verify_relation_semantics_independent.py"
+      - "data/ordinance37-nodes.json"
+      - "data/ordinance37-relations.json"
+      - "data/care-insurance-act-relations.json"
+      - "data/fee-guidance-relations.json"
+      - "data/notice-ordinance-relations.json"
+      - "data/relationships.json"
+      - "data/remuneration-delegated-relations.json"
+      - "data/remuneration-relations.json"
+      - ".github/workflows/verify-relation-semantics-independent.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/verify_relation_semantics_independent.py"
+      - "data/ordinance37-nodes.json"
+      - "data/ordinance37-relations.json"
+      - "data/care-insurance-act-relations.json"
+      - "data/fee-guidance-relations.json"
+      - "data/notice-ordinance-relations.json"
+      - "data/relationships.json"
+      - "data/remuneration-delegated-relations.json"
+      - "data/remuneration-relations.json"
+      - ".github/workflows/verify-relation-semantics-independent.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Independently verify explicit legal-reference relations
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_relation_semantics_independent.py --report relation-semantic-independent-verification.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload independent relation verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relation-semantic-independent-verification
+          path: relation-semantic-independent-verification.json
+          if-no-files-found: warn
+      - name: Fail on explicit-reference differences
+        if: steps.verify.outputs.exit_code != '0'
+        run: exit 1
