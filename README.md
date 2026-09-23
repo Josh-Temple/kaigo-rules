@@ -229,3 +229,18 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 - 管理者：平成27年改正後本文を取得し、後続資料の略記による存続を確認
 
 `npm run import:notice-personnel-snapshots` と `npm run assemble:notice-personnel-current` で再生成できます。生成物は `MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK` / `NOT_REVIEWED` のまま保持し、`notice-current-skeleton.json` の `official_text` や人手確認ステータスを自動更新しません。
+
+
+### 老企第25号・運営基準の機械再構成（第1段階）
+
+通所介護の「運営に関する基準」のうち、令和3年度改正で新設・再編された項目と、令和6年度改正・令和8年3月厚生労働省参照資料まで追跡できる(6)〜(13)を先行して再構成します。
+
+- (6) 業務継続計画の策定等：令和3年本文をbaselineとし、令和6年改正で経過措置終了、感染症BCPガイドライン表現、一体策定の取扱いを更新
+- (7) 非常災害対策：令和3年改正後本文を取得し、令和6年・令和8年3月資料の略記による存続を確認
+- (8) 衛生管理等：令和3年本文をbaselineとし、令和6年改正で「令和6年3月31日まで努力義務」の期限切れ文言を削除
+- (9) 地域との連携等、(10) 事故発生時の対応、(11) 虐待の防止、(12) 記録の整備：令和3年改正後本文を取得し、後続資料の略記による存続を確認
+- (13) 準用：令和8年3月の厚生労働省参照資料に現れる現行側本文を取得し、令和6年追加のウェブサイト掲載の取扱いを保持
+
+`npm run import:notice-operation-modern-snapshots` と `npm run assemble:notice-operation-modern-current` で再生成できます。
+
+生成物は `MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK` / `NOT_REVIEWED` のままとし、`notice-current-skeleton.json` の `official_text` や人手確認ステータスを自動更新しません。(1)〜(5)は平成27年・平成30年の改正履歴をさらに遡る必要があるため、別の再構成段階として扱います。

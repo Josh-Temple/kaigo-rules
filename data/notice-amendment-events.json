@@ -108,6 +108,15 @@
     "verification_status": "KNOWN_AFTER_TEXT"
   },
   {
+    "id": "rouki25.r6.dayservice.hygiene-transition-expiry",
+    "source_id": "mhlw-2024-interpretation-redline",
+    "effective_from": "2024-04-01",
+    "target_node_id": "notice.dayservice.operation.hygiene",
+    "operation": "delete_expired_transition_fragment",
+    "summary": "衛生管理等(8)②から、令和6年3月31日まで努力義務とする令和3年改正省令附則の経過措置文を削除。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
     "id": "rouki25.r6.dayservice.incorporation-web",
     "source_id": "mhlw-2024-interpretation-redline",
     "effective_from": "2024-04-01",

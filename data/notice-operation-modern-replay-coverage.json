@@ -1,0 +1,218 @@
+[
+  {
+    "notice_id": "notice.dayservice.operation.bcp",
+    "baseline": {
+      "source_id": "mhlw-2021-interpretation-redline",
+      "period": "2021",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "PATCH_APPLIED",
+        "evidence": "①の経過措置文を削除し、②のガイドライン表現・一体策定記述を更新。イ・ロ、③・④は略記により存続。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "R6_CURRENT_FRAGMENTS_CONFIRMED",
+        "evidence": "2026年3月厚労省参照資料の新欄がR6改正後①・②と一致し、イ・ロ、③・④を略記で保持。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.operation.disaster",
+    "baseline": {
+      "source_id": "mhlw-2021-interpretation-redline",
+      "period": "2021",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "R6新欄で当該項目は略記され、本文変更対象ではない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "2026年3月厚労省参照資料で当該項目は略記またはR6改正後断片と整合。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.operation.hygiene",
+    "baseline": {
+      "source_id": "mhlw-2021-interpretation-redline",
+      "period": "2021",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "PATCH_APPLIED",
+        "evidence": "②から令和6年3月31日までの経過措置文を削除。イ〜ハは略記により存続。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "R6_CURRENT_FRAGMENT_CONFIRMED",
+        "evidence": "2026年3月厚労省参照資料の新欄が経過措置削除後の②と一致し、イ〜ハを略記で保持。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.operation.community",
+    "baseline": {
+      "source_id": "mhlw-2021-interpretation-redline",
+      "period": "2021",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "R6新欄で当該項目は略記され、本文変更対象ではない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "2026年3月厚労省参照資料で当該項目は略記またはR6改正後断片と整合。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.operation.accident",
+    "baseline": {
+      "source_id": "mhlw-2021-interpretation-redline",
+      "period": "2021",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "R6新欄で当該項目は略記され、本文変更対象ではない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "2026年3月厚労省参照資料で当該項目は略記またはR6改正後断片と整合。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.operation.abuse",
+    "baseline": {
+      "source_id": "mhlw-2021-interpretation-redline",
+      "period": "2021",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "R6新欄で当該項目は略記され、本文変更対象ではない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "2026年3月厚労省参照資料で当該項目は略記またはR6改正後断片と整合。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.operation.records",
+    "baseline": {
+      "source_id": "mhlw-2021-interpretation-redline",
+      "period": "2021",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "R6新欄で当該項目は略記され、本文変更対象ではない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "2026年3月厚労省参照資料で当該項目は略記またはR6改正後断片と整合。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.operation.incorporation",
+    "baseline": {
+      "source_id": "mhlw-2026-rouki25-reference-redline",
+      "period": "2026-03",
+      "status": "CURRENT_REFERENCE_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "R6_WEB_FRAGMENT_INTRODUCED",
+        "evidence": "R6でウェブサイト掲載の取扱いを追記。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "CURRENT_REFERENCE_TEXT_CAPTURED",
+        "evidence": "2026年3月厚労省参照資料の新欄から(13)全文を取得。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  }
+]
