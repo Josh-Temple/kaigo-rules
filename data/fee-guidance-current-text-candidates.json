@@ -44,8 +44,8 @@
       "effective_as_of": "2026-09-22",
       "baseline_snapshot_id": "dayservice-5-h30-baseline",
       "patch_snapshot_ids": [],
-      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
-      "replay_coverage_as_of": "2026-09-22",
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+      "replay_coverage_as_of": "2026-09-23",
       "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
       "human_verification_status": "NOT_REVIEWED",
       "evidence": [
@@ -91,8 +91,8 @@
       "effective_as_of": "2026-09-22",
       "baseline_snapshot_id": "dayservice-6-r3-baseline",
       "patch_snapshot_ids": [],
-      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
-      "replay_coverage_as_of": "2026-09-22",
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+      "replay_coverage_as_of": "2026-09-23",
       "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
       "human_verification_status": "NOT_REVIEWED",
       "evidence": [
@@ -166,8 +166,8 @@
       "effective_as_of": "2026-09-22",
       "baseline_snapshot_id": "dayservice-7-2-r3-baseline",
       "patch_snapshot_ids": [],
-      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
-      "replay_coverage_as_of": "2026-09-22",
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+      "replay_coverage_as_of": "2026-09-23",
       "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
       "human_verification_status": "NOT_REVIEWED",
       "evidence": [
@@ -194,8 +194,8 @@
       "effective_as_of": "2026-09-22",
       "baseline_snapshot_id": "dayservice-18-r3-baseline",
       "patch_snapshot_ids": [],
-      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
-      "replay_coverage_as_of": "2026-09-22",
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+      "replay_coverage_as_of": "2026-09-23",
       "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
       "human_verification_status": "NOT_REVIEWED",
       "evidence": [
@@ -247,8 +247,8 @@
       "effective_as_of": "2026-09-22",
       "baseline_snapshot_id": "dayservice-24-h27-baseline",
       "patch_snapshot_ids": [],
-      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
-      "replay_coverage_as_of": "2026-09-22",
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+      "replay_coverage_as_of": "2026-09-23",
       "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
       "human_verification_status": "NOT_REVIEWED",
       "evidence": [
@@ -277,8 +277,8 @@
       "patch_snapshot_ids": [
         "dayservice-25-r8-patch"
       ],
-      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_CURRENT_PATCH_CAPTURED_EXACT_TEXT_PENDING",
-      "replay_coverage_as_of": "2026-09-22",
+      "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+      "replay_coverage_as_of": "2026-09-23",
       "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
       "human_verification_status": "NOT_REVIEWED",
       "evidence": [
