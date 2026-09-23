@@ -1,0 +1,57 @@
+{
+  "format_version": 1,
+  "output_path": "data/fee-guidance-current-text-candidates.json",
+  "effective_as_of": "2026-09-22",
+  "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+  "policy": "Candidates are deterministic reconstructions from official-source item snapshots and replay coverage. They are not official consolidated text and must not be promoted to human-verified status automatically.",
+  "items": [
+    {
+      "guidance_id": "fee-guidance.dayservice.4",
+      "baseline_snapshot_id": "dayservice-4-h27-baseline",
+      "patches": []
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.5",
+      "baseline_snapshot_id": "dayservice-5-h30-baseline",
+      "patches": []
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.6",
+      "baseline_snapshot_id": "dayservice-6-r3-baseline",
+      "patches": []
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.7",
+      "baseline_snapshot_id": "dayservice-7-h27-baseline",
+      "patches": []
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.7-2",
+      "baseline_snapshot_id": "dayservice-7-2-r3-baseline",
+      "patches": []
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.18",
+      "baseline_snapshot_id": "dayservice-18-r3-baseline",
+      "patches": []
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.24",
+      "baseline_snapshot_id": "dayservice-24-h27-baseline",
+      "patches": []
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.25",
+      "baseline_snapshot_id": "dayservice-25-h27-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-25-r8-patch",
+          "patch_field": "patch_text",
+          "operation": "insert_before",
+          "baseline_anchor": "③ 都道府県知事は",
+          "note": "令和8年5月8日改正で7(25)②に新設されたホを③の前へ挿入"
+        }
+      ]
+    }
+  ]
+}

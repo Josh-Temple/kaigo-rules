@@ -5,17 +5,21 @@
   "notice_number": "平成12年3月1日 老企第36号",
   "service_scope": "通所介護費",
   "reconstruction_method": "r6_current_side_skeleton_then_historical_backfill_then_forward_replay",
-  "current_state": "SKELETON_BUILT_BACKFILL_PENDING",
+  "current_state": "MACHINE_CURRENT_TEXT_CANDIDATES_BUILT_HUMAN_CHECK_PENDING",
   "public_label_policy": "forward replayと人手確認が終わるまで「現行統合版」と表示しない",
   "counts": {
     "total": 29,
-    "KNOWN_AFTER_TEXT": 21,
-    "UNKNOWN": 8
+    "KNOWN_AFTER_TEXT": 22,
+    "INHERITED_UNVERIFIED": 7,
+    "UNKNOWN": 0
   },
   "safeguards": [
     "令和6年度新旧対照表の「略」は本文確定とみなさない",
     "令和7年3月31日までの経過措置を2026年の現行本文へ残さない",
-    "令和8年度改正資料に通所介護節がないことだけで不変を断定しない",
-    "未確認項目は見出しを推測せずUNKNOWNの穴として保持する"
+    "令和8年度は複数の改正資料を時系列で確認し、先行資料に通所介護節がないことだけで不変を断定しない",
+    "令和8年5月8日改正による通所介護費7(25)の変更を2026年6月算定分以降へ反映する",
+    "過去資料から復元した見出し・本文候補は人手確認済みとみなさない",
+    "8項目の現行本文候補は公式PDFスナップショットと改正履歴から決定論的に組み立てる",
+    "機械再構成本文は人手確認が終わるまで現行統合版・VERIFIED_CURRENTへ昇格させない"
   ]
 }

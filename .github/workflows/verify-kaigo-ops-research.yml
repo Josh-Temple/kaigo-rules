@@ -11,6 +11,7 @@ on:
       - "data/sources.json"
       - "data/unit-price-*.json"
       - "data/remuneration-*.json"
+      - "data/fee-guidance-*.json"
       - ".github/workflows/verify-kaigo-ops-research.yml"
   pull_request:
     paths:
@@ -20,6 +21,7 @@ on:
       - "data/sources.json"
       - "data/unit-price-*.json"
       - "data/remuneration-*.json"
+      - "data/fee-guidance-*.json"
       - ".github/workflows/verify-kaigo-ops-research.yml"
   workflow_dispatch:
 
@@ -101,6 +103,9 @@ jobs:
 
       - name: Validate remuneration delegated review ledger
         run: node scripts/research-remuneration-delegated-review-validate-v0.1.mjs
+
+      - name: Validate fee-guidance reconstruction sync
+        run: node scripts/research-fee-guidance-sync-validate-v0.1.mjs
 
       - name: Upload classifier result
         if: always()

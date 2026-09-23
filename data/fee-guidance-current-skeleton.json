@@ -105,10 +105,10 @@
       "7",
       "4"
     ],
-    "title": "項目4（見出し・本文要再生）",
+    "title": "2時間以上3時間未満の通所介護を行う場合の取扱い",
     "service_scope": "通所介護",
-    "verification_status": "UNKNOWN",
-    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "HISTORICAL_HEADING_BACKFILLED_REPLAY_PENDING",
     "official_text": null,
     "related_fee_ids": [],
     "evidence": [
@@ -116,6 +116,11 @@
         "source_id": "mhlw-r6-fee-guidance-redline",
         "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
         "evidence_type": "current_number_range_omitted"
+      },
+      {
+        "source_id": "mhlw-h27-fee-guidance-redline",
+        "locator": "PDF p.60 / 7(2)",
+        "evidence_type": "historical_heading_backfill"
       }
     ]
   },
@@ -127,10 +132,10 @@
       "7",
       "5"
     ],
-    "title": "項目5（見出し・本文要再生）",
+    "title": "8時間以上9時間未満の通所介護の前後に連続して延長サービスを行った場合の加算の取扱い",
     "service_scope": "通所介護",
-    "verification_status": "UNKNOWN",
-    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "HISTORICAL_HEADING_BACKFILLED_REPLAY_PENDING",
     "official_text": null,
     "related_fee_ids": [],
     "evidence": [
@@ -138,6 +143,11 @@
         "source_id": "mhlw-r6-fee-guidance-redline",
         "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
         "evidence_type": "current_number_range_omitted"
+      },
+      {
+        "source_id": "mhlw-h30-fee-guidance-redline",
+        "locator": "PDF p.29 / 7(3) 改正後",
+        "evidence_type": "historical_heading_backfill"
       }
     ]
   },
@@ -149,10 +159,10 @@
       "7",
       "6"
     ],
-    "title": "項目6（見出し・本文要再生）",
+    "title": "事業所規模による区分の取扱い",
     "service_scope": "通所介護",
-    "verification_status": "UNKNOWN",
-    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "HISTORICAL_HEADING_BACKFILLED_REPLAY_PENDING",
     "official_text": null,
     "related_fee_ids": [],
     "evidence": [
@@ -160,6 +170,11 @@
         "source_id": "mhlw-r6-fee-guidance-redline",
         "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
         "evidence_type": "current_number_range_omitted"
+      },
+      {
+        "source_id": "mhlw-r3-fee-guidance-redline",
+        "locator": "PDF p.34 / 7(4)",
+        "evidence_type": "historical_heading_backfill"
       }
     ]
   },
@@ -171,10 +186,10 @@
       "7",
       "7"
     ],
-    "title": "項目7（見出し・本文要再生）",
+    "title": "災害時等の取扱い",
     "service_scope": "通所介護",
-    "verification_status": "UNKNOWN",
-    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "HISTORICAL_HEADING_BACKFILLED_REPLAY_PENDING",
     "official_text": null,
     "related_fee_ids": [],
     "evidence": [
@@ -182,6 +197,11 @@
         "source_id": "mhlw-r6-fee-guidance-redline",
         "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
         "evidence_type": "current_number_range_omitted"
+      },
+      {
+        "source_id": "mhlw-h27-fee-guidance-redline",
+        "locator": "PDF p.63 / 7(5)",
+        "evidence_type": "historical_heading_backfill"
       }
     ]
   },
@@ -193,10 +213,10 @@
       "7",
       "7の2"
     ],
-    "title": "項目7の2（見出し・本文要再生）",
+    "title": "感染症又は災害の発生を理由とする利用者数の減少が一定以上生じている場合の取扱いについて",
     "service_scope": "通所介護",
-    "verification_status": "UNKNOWN",
-    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "HISTORICAL_HEADING_BACKFILLED_REPLAY_PENDING",
     "official_text": null,
     "related_fee_ids": [],
     "evidence": [
@@ -204,6 +224,11 @@
         "source_id": "mhlw-r6-fee-guidance-redline",
         "locator": "PDF p.43 / 「(4)〜(7)の2（略）」",
         "evidence_type": "current_number_range_omitted"
+      },
+      {
+        "source_id": "mhlw-r3-fee-guidance-redline",
+        "locator": "PDF p.35 / 7(5)の2",
+        "evidence_type": "historical_heading_backfill"
       }
     ]
   },
@@ -455,10 +480,10 @@
       "7",
       "18"
     ],
-    "title": "項目18（見出し・本文要再生）",
+    "title": "栄養改善加算について",
     "service_scope": "通所介護",
-    "verification_status": "UNKNOWN",
-    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "HISTORICAL_HEADING_BACKFILLED_REPLAY_PENDING",
     "official_text": null,
     "related_fee_ids": [],
     "evidence": [
@@ -466,6 +491,11 @@
         "source_id": "mhlw-r6-fee-guidance-redline",
         "locator": "PDF p.50 / 「(16)〜(18)（略）」",
         "evidence_type": "current_number_range_omitted"
+      },
+      {
+        "source_id": "mhlw-r3-fee-guidance-redline",
+        "locator": "PDF p.52 / 7(16)",
+        "evidence_type": "historical_heading_backfill"
       }
     ]
   },
@@ -597,10 +627,10 @@
       "7",
       "24"
     ],
-    "title": "項目24（見出し・本文要再生）",
+    "title": "定員超過利用に該当する場合の所定単位数の算定について",
     "service_scope": "通所介護",
-    "verification_status": "UNKNOWN",
-    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_CROSS_REFERENCE_BACKFILLED_REPLAY_PENDING",
     "official_text": null,
     "related_fee_ids": [],
     "evidence": [
@@ -608,6 +638,11 @@
         "source_id": "mhlw-r6-fee-guidance-redline",
         "locator": "PDF p.52 / 「(24)・(25)（略）」",
         "evidence_type": "current_number_range_omitted"
+      },
+      {
+        "source_id": "mhlw-r6-fee-guidance-redline",
+        "locator": "通所リハビリテーション費の現行側から通所介護7(24)を参照",
+        "evidence_type": "current_cross_reference"
       }
     ]
   },
@@ -619,10 +654,10 @@
       "7",
       "25"
     ],
-    "title": "項目25（見出し・本文要再生）",
+    "title": "人員基準欠如に該当する場合の所定単位数の算定について",
     "service_scope": "通所介護",
-    "verification_status": "UNKNOWN",
-    "structure_status": "NUMBER_PRESENT_BUT_R6_REDLINE_OMITS_TEXT",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED_FROM_R8_MAY_REDLINE",
     "official_text": null,
     "related_fee_ids": [],
     "evidence": [
@@ -630,6 +665,11 @@
         "source_id": "mhlw-r6-fee-guidance-redline",
         "locator": "PDF p.52 / 「(24)・(25)（略）」",
         "evidence_type": "current_number_range_omitted"
+      },
+      {
+        "source_id": "mhlw-r8-fee-guidance-may-amendment",
+        "locator": "別紙1 / 7(25)",
+        "evidence_type": "current_side_heading_and_amendment"
       }
     ]
   },
