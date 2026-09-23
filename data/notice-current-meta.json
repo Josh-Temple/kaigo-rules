@@ -6,17 +6,19 @@
   "service_scope": "通所介護 + 通所介護に必要な共通定義",
   "reconstruction_method": "latest_skeleton_then_backward_fill_then_forward_replay",
   "public_label_policy": "現行統合版（当サイト編集）と表示するのはforward replay完了後のみ",
-  "current_state": "SKELETON_BUILT_TEXT_RECONSTRUCTION_PENDING",
+  "current_state": "SKELETON_SCOPE_CORRECTED_FORWARD_REPLAY_PENDING",
   "counts": {
-    "total": 29,
-    "KNOWN_AFTER_TEXT": 10,
-    "INHERITED_UNVERIFIED": 19
+    "total": 32,
+    "KNOWN_AFTER_TEXT": 11,
+    "INHERITED_UNVERIFIED": 21
   },
   "review_status": "NOT_REVIEWED",
   "safeguards": [
     "新旧対照表の新欄を現行統合全文として扱わない",
     "過去HTML本文を現在有効な全文として扱わない",
     "未確認本文はofficial_textをnullのまま保持する",
-    "過去資料から補完した本文はforward replayが終わるまでVERIFIED_CURRENTにしない"
+    "過去資料から補完した本文はforward replayが終わるまでVERIFIED_CURRENTにしない",
+    "通所介護の設備に関する基準は(1)〜(5)を保持し、略記された項目も骨格から落とさない",
+    "現行本文の順方向再生では平成27年・平成30年・令和3年・令和6年の改正履歴を確認する"
   ]
 }
