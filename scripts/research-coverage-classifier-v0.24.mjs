@@ -762,7 +762,7 @@ console.log(
       municipal_query_sample: evaluateExpectedProvenance(municipal.cases),
       verified_regression: evaluate(verifiedRegression),
       note:
-        "External Q&A answer text is not used. Only the public question preview is used to stress current coverage boundaries. Claim routing metadata is authoritative where present; all current ANSWER claims have explicit routing metadata in claims-v0.5. Verified Claim composition resolves multi-claim cases without inventing umbrella claims. Composition rules exclude queries that name a single covered subtopic, so atomic Claim routing keeps precedence in practice. The external gates use claims-v0.15 and composition-v0.5. Municipal regression uses municipal-query-sample-v0.5 (25 cases). The remaining outdoor-service claim retains VERIFIED_WITH_SOURCE_LIMITATION; source-only updates did not change routing or answerability.",
+        "External Q&A answer text is not used. Only the public question preview is used to stress current coverage boundaries. Claim routing metadata is authoritative where present; all current ANSWER claims have explicit routing metadata in claims-v0.5. Verified Claim composition resolves multi-claim cases without inventing umbrella claims. Composition rules exclude queries that name a single covered subtopic, so atomic Claim routing keeps precedence in practice. The external gates use claims-v0.16 and composition-v0.5. Municipal regression uses municipal-query-sample-v0.5 (25 cases). EQ-002 and EQ-005 were promoted through source review without adding classifier special cases. The remaining outdoor-service claim retains VERIFIED_WITH_SOURCE_LIMITATION.",
     },
     null,
     2,
