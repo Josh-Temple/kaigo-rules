@@ -1,5 +1,65 @@
 [
   {
+    "id": "rouki25.h27.dayservice.add-overnight-service",
+    "source_id": "mhlw-h27-interpretation-redline",
+    "effective_from": "2015-04-01",
+    "target_node_id": "notice.dayservice.equipment.overnight-service",
+    "operation": "insert",
+    "before_number": null,
+    "after_number": "(4)",
+    "summary": "設備基準に、通所介護事業所の設備を利用して夜間・深夜に宿泊サービスを提供する場合の届出等の取扱いを新設。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
+  },
+  {
+    "id": "rouki25.h30.dayservice.extended-hours",
+    "source_id": "mhlw-h30-interpretation-redline",
+    "effective_from": "2018-04-01",
+    "target_node_id": "notice.dayservice.personnel.staffing",
+    "operation": "replace_fragment",
+    "summary": "延長サービスに係る人員配置の対象時間を「7時間以上9時間未満」から「8時間以上9時間未満」へ更新。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.h30.dayservice.function-training-acupuncture",
+    "source_id": "mhlw-h30-interpretation-redline",
+    "effective_from": "2018-04-01",
+    "target_node_id": "notice.dayservice.personnel.function-training",
+    "operation": "replace_fragment",
+    "summary": "一定の実務経験を有するはり師・きゅう師を機能訓練指導員の資格対象へ追加。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.h30.dayservice.renumber-overnight-service",
+    "source_id": "mhlw-h30-interpretation-redline",
+    "effective_from": "2018-04-01",
+    "target_node_id": "notice.dayservice.equipment.overnight-service",
+    "operation": "renumber",
+    "before_number": "(4)",
+    "after_number": "(5)",
+    "summary": "設備に係る共用の新設に伴い、宿泊サービス関係項目を(4)から(5)へ繰下げ。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
+  },
+  {
+    "id": "rouki25.h30.dayservice.shared-equipment",
+    "source_id": "mhlw-h30-interpretation-redline",
+    "effective_from": "2018-04-01",
+    "target_node_id": "notice.dayservice.equipment.shared-equipment",
+    "operation": "insert",
+    "before_number": null,
+    "after_number": "(4)",
+    "summary": "設備に係る共用を(4)として新設し、併設事業所等との設備共用条件を整理。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.r3.dayservice.add-community-abuse-records",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.operation",
+    "operation": "insert_multiple",
+    "summary": "地域との連携等、虐待の防止、記録の整備等を追加し、事故発生時の対応・準用を含む運営項目を(13)まで再編。",
+    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
+  },
+  {
     "id": "rouki25.r3.dayservice.insert-bcp",
     "source_id": "mhlw-2021-interpretation-redline",
     "effective_from": "2021-04-01",
@@ -20,24 +80,6 @@
     "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
   },
   {
-    "id": "rouki25.r3.dayservice.add-community-abuse-records",
-    "source_id": "mhlw-2021-interpretation-redline",
-    "effective_from": "2021-04-01",
-    "target_node_id": "notice.dayservice.operation",
-    "operation": "insert_multiple",
-    "summary": "地域との連携等、虐待の防止、記録の整備等を追加し、事故発生時の対応・準用を含む運営項目を(13)まで再編。",
-    "verification_status": "STRUCTURAL_EVENT_CONFIRMED"
-  },
-  {
-    "id": "rouki25.r6.dayservice.physical-restraint",
-    "source_id": "mhlw-2024-interpretation-redline",
-    "effective_from": "2024-04-01",
-    "target_node_id": "notice.dayservice.operation.policy",
-    "operation": "replace_or_insert_fragment",
-    "summary": "基本取扱方針・具体的取扱方針に身体的拘束等に関する説明・記録の取扱いを追加。",
-    "verification_status": "KNOWN_AFTER_TEXT"
-  },
-  {
     "id": "rouki25.r6.dayservice.bcp-update",
     "source_id": "mhlw-2024-interpretation-redline",
     "effective_from": "2024-04-01",
@@ -53,6 +95,15 @@
     "target_node_id": "notice.dayservice.operation.incorporation",
     "operation": "insert_fragment",
     "summary": "準用に関連してウェブサイト掲載の取扱いを追記。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.r6.dayservice.physical-restraint",
+    "source_id": "mhlw-2024-interpretation-redline",
+    "effective_from": "2024-04-01",
+    "target_node_id": "notice.dayservice.operation.policy",
+    "operation": "replace_or_insert_fragment",
+    "summary": "基本取扱方針・具体的取扱方針に身体的拘束等に関する説明・記録の取扱いを追加。",
     "verification_status": "KNOWN_AFTER_TEXT"
   }
 ]
