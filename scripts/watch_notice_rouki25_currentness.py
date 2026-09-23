@@ -138,6 +138,7 @@ def main() -> int:
         "pinned_pdf_checks": [],
         "new_kaigo_info_entries": [],
         "page_term_checks": [],
+        "law_database_amendment_lists": [],
         "review_triggers": [],
         "limitations": [
             "PASS means only that configured watch signals were not detected.",
@@ -258,6 +259,58 @@ def main() -> int:
         except Exception as exc:
             report["source_errors"].append(
                 {"source": url, "stage": f"{key}_scan", "error": str(exc)}
+            )
+
+    # Scan the latest MHLW law-database notification amendment list(s).
+    # This is supporting-only because the database itself is documented as covering the ministry's "主な" notifications.
+    update_url = pages.get("law_database_update")
+    if update_url:
+        try:
+            update_bytes = fetch(update_url)
+            update_links = anchors(update_url, update_bytes)
+            amendment_urls = sorted(
+                {
+                    row["url"]
+                    for row in update_links
+                    if re.search(r"/hourei/new/update/kai\\d+t\\.pdf$", row["url"])
+                }
+            )
+            if not amendment_urls:
+                raise RuntimeError("no notification amendment-list PDF link found on MHLW update page")
+            for amendment_url in amendment_urls:
+                entry = {
+                    "url": amendment_url,
+                    "matches": [],
+                    "scan": "NOT_RUN",
+                    "scope_limit": "MHLW notification database covers 主な notifications; a clean scan is supporting-only.",
+                }
+                try:
+                    body = fetch(amendment_url)
+                    text = extract_text(amendment_url, body)
+                    entry["matches"] = matching_terms(text, terms)
+                    entry["scan"] = "OK"
+                except Exception as exc:
+                    entry["scan"] = "ERROR"
+                    entry["error"] = str(exc)
+                    report["source_errors"].append(
+                        {
+                            "source": amendment_url,
+                            "stage": "law_database_amendment_list_scan",
+                            "error": str(exc),
+                        }
+                    )
+                report["law_database_amendment_lists"].append(entry)
+                if entry["matches"]:
+                    report["review_triggers"].append(
+                        {
+                            "kind": "TARGET_TERM_IN_LAW_DATABASE_AMENDMENT_LIST",
+                            "url": amendment_url,
+                            "matches": entry["matches"],
+                        }
+                    )
+        except Exception as exc:
+            report["source_errors"].append(
+                {"source": update_url, "stage": "law_database_update_scan", "error": str(exc)}
             )
 
     if report["source_errors"]:
