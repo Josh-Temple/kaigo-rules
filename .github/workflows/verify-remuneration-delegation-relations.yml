@@ -1,0 +1,47 @@
+name: Verify remuneration delegation relations independently
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "28 4 * * 1"
+  pull_request:
+    paths:
+      - "scripts/verify_remuneration_delegation_relations.py"
+      - "scripts/validate_remuneration_delegation_relation_independent_audit.py"
+      - "data/remuneration-delegated-relations.json"
+      - "data/remuneration-delegation-relation-independent-audit.json"
+      - "data/cross-layer-source-chain-independent-audit.json"
+      - ".github/workflows/verify-remuneration-delegation-relations.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/verify_remuneration_delegation_relations.py"
+      - "scripts/validate_remuneration_delegation_relation_independent_audit.py"
+      - "data/remuneration-delegated-relations.json"
+      - "data/remuneration-delegation-relation-independent-audit.json"
+      - "data/cross-layer-source-chain-independent-audit.json"
+      - ".github/workflows/verify-remuneration-delegation-relations.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Verify remuneration delegation relations
+        run: python scripts/verify_remuneration_delegation_relations.py --report remuneration-delegation-relation-verification.json
+      - name: Validate pinned audit provenance
+        run: python scripts/validate_remuneration_delegation_relation_independent_audit.py
+      - name: Upload verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: remuneration-delegation-relation-verification
+          path: remuneration-delegation-relation-verification.json
+          if-no-files-found: warn
