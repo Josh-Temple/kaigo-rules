@@ -363,5 +363,25 @@
     "url": "https://www.mhlw.go.jp/content/001484663.pdf",
     "status": "amendment_scope_reference",
     "note": "令和7年5月算定分から適用。中山間地域等の加算要件弾力化に関する改正で、別紙では通所介護費を含む7〜9は新旧とも「略」とされ、この改正による通所介護費の変更は示されていない。"
+  },
+  {
+    "id": "mhlw-r6-qa-manager-responsibility",
+    "layer": "Q&A",
+    "title": "令和6年度介護報酬改定に関するQ&A（Vol.1）問184・管理者の責務",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/001246407.pdf",
+    "status": "verified_source",
+    "note": "問184。管理者の具体的役割として、現場の事象を把握しながら職員・業務を一元管理し、指定基準遵守のため必要な指揮命令を行うことを示す。",
+    "coverage_checked_at": "2026-09-23"
+  },
+  {
+    "id": "mhlw-h27-qa-life-counselor-community",
+    "layer": "Q&A",
+    "title": "平成27年度介護報酬改定に関するQ&A 問49・生活相談員の地域連携活動",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf",
+    "status": "verified_source_currently_retained",
+    "note": "生活相談員の勤務延時間に算入できる地域連携活動の具体例と、事業所外活動の記録要件を示す。令和8年9月掲載の現行厚労省Q&A workbook由来corpusにも同じ質問・回答が収載されていることを2026-09-23に確認。",
+    "coverage_checked_at": "2026-09-23"
   }
 ]
