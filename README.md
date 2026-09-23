@@ -244,3 +244,20 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 `npm run import:notice-operation-modern-snapshots` と `npm run assemble:notice-operation-modern-current` で再生成できます。
 
 生成物は `MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK` / `NOT_REVIEWED` のままとし、`notice-current-skeleton.json` の `official_text` や人手確認ステータスを自動更新しません。(1)〜(5)は平成27年・平成30年の改正履歴をさらに遡る必要があるため、別の再構成段階として扱います。
+
+
+### 老企第25号・運営基準の機械再構成（第2段階）
+
+運営基準の残り(1)〜(5)は、平成27年度改正後本文をbaselineとし、平成30年・令和3年・令和6年の新旧対照資料を順方向に再生します。
+
+- (1) 利用料等の受領：令和3年の訪問介護側参照番号変更を反映
+- (2) 基本取扱方針・具体的取扱方針：令和6年の身体的拘束等に関する新③を追加し、従来の③④を④⑤へ繰下げ
+- (3) 通所介護計画：平成30年・令和3年の記録保存条文参照変更と、令和3年の訪問介護計画参照番号変更を反映
+- (4) 運営規程：平成30年の延長サービス時間変更、令和3年の対象号数・非常災害参照変更を反映
+- (5) 勤務体制の確保等：令和3年の第101条第3項・第4項に関する留意事項③④を追加
+
+H27 PDFの段組み抽出で確認された文字分断は、対象snapshotに宣言した `layout_replacements` が1回だけ一致する場合に限り補正し、汎用的な文字置換は行いません。
+
+`npm run import:notice-operation-legacy-snapshots` と `npm run assemble:notice-operation-legacy-current` で再生成できます。生成物は `MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK` / `NOT_REVIEWED` のままとし、現行本文や人手確認ステータスを自動昇格しません。
+
+これにより、老企第25号の通所介護について、人員4項目・設備5項目・運営13項目の全22項目が機械再構成candidateを持つ状態になります。

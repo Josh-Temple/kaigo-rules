@@ -133,5 +133,59 @@
     "operation": "replace_or_insert_fragment",
     "summary": "基本取扱方針・具体的取扱方針に身体的拘束等に関する説明・記録の取扱いを追加。",
     "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.h30.dayservice.plan-record-reference",
+    "source_id": "mhlw-h30-interpretation-redline",
+    "effective_from": "2018-04-01",
+    "target_node_id": "notice.dayservice.operation.plan",
+    "operation": "replace_fragment",
+    "summary": "通所介護計画④の保存記録参照を居宅基準第104条の2第2項から第104条の3第2項へ更新。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.h30.dayservice.rules-extended-hours",
+    "source_id": "mhlw-h30-interpretation-redline",
+    "effective_from": "2018-04-01",
+    "target_node_id": "notice.dayservice.operation.rules",
+    "operation": "replace_fragment",
+    "summary": "運営規程①の延長サービス対象時間を7時間以上9時間未満から8時間以上9時間未満へ更新。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.r3.dayservice.fees-reference",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.operation.fees",
+    "operation": "replace_fragment",
+    "summary": "利用料等の受領①の訪問介護側参照番号を⑽から⑾へ更新。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.r3.dayservice.plan-references",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.operation.plan",
+    "operation": "replace_multiple_fragments",
+    "summary": "通所介護計画④の保存記録参照を第104条の4へ、⑥の訪問介護側参照番号を⒁へ更新。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.r3.dayservice.rules-references",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.operation.rules",
+    "operation": "replace_multiple_fragments",
+    "summary": "運営規程の対象号数を第1号から第11号までへ更新し、非常災害対策⑤の参照を⑹から⑺へ更新。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
+    "id": "rouki25.r3.dayservice.staffing-additions",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.operation.staffing",
+    "operation": "append_fragments",
+    "summary": "勤務体制の確保等に、居宅基準第101条第3項・第4項に関する留意事項③④を追加。",
+    "verification_status": "KNOWN_AFTER_TEXT"
   }
 ]

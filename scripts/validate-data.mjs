@@ -129,6 +129,26 @@ const noticeOperationModernCandidatesPath = path.join(root, "data", "notice-oper
 const noticeOperationModernCandidates = fs.existsSync(noticeOperationModernCandidatesPath)
   ? JSON.parse(fs.readFileSync(noticeOperationModernCandidatesPath, "utf8"))
   : null;
+const noticeOperationLegacyManifestPath = path.join(root, "data", "notice-operation-legacy-source-manifest.json");
+const noticeOperationLegacyManifest = fs.existsSync(noticeOperationLegacyManifestPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationLegacyManifestPath, "utf8"))
+  : null;
+const noticeOperationLegacySnapshotsPath = path.join(root, "data", "notice-operation-legacy-source-snapshots.json");
+const noticeOperationLegacySnapshots = fs.existsSync(noticeOperationLegacySnapshotsPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationLegacySnapshotsPath, "utf8"))
+  : null;
+const noticeOperationLegacyAssemblyPath = path.join(root, "data", "notice-operation-legacy-current-assembly.json");
+const noticeOperationLegacyAssembly = fs.existsSync(noticeOperationLegacyAssemblyPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationLegacyAssemblyPath, "utf8"))
+  : null;
+const noticeOperationLegacyReplayPath = path.join(root, "data", "notice-operation-legacy-replay-coverage.json");
+const noticeOperationLegacyReplay = fs.existsSync(noticeOperationLegacyReplayPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationLegacyReplayPath, "utf8"))
+  : null;
+const noticeOperationLegacyCandidatesPath = path.join(root, "data", "notice-operation-legacy-current-text-candidates.json");
+const noticeOperationLegacyCandidates = fs.existsSync(noticeOperationLegacyCandidatesPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationLegacyCandidatesPath, "utf8"))
+  : null;
 const feeSkeletonPath = path.join(root, "data", "remuneration-current-skeleton.json");
 const feeSkeleton = fs.existsSync(feeSkeletonPath)
   ? JSON.parse(fs.readFileSync(feeSkeletonPath, "utf8"))
@@ -1033,6 +1053,203 @@ if (noticeSkeleton.length) {
     const incorporation = candidateById.get("notice.dayservice.operation.incorporation");
     if (incorporation && incorporation.baseline_snapshot_id !== "dayservice-operation-incorporation-2026") {
       errors.push("notice operation-modern incorporation: current 2026 MHLW reference is not the baseline snapshot");
+    }
+  }
+
+  const requiredRouki25OperationLegacyIds = [
+    "notice.dayservice.operation.fees",
+    "notice.dayservice.operation.policy",
+    "notice.dayservice.operation.plan",
+    "notice.dayservice.operation.rules",
+    "notice.dayservice.operation.staffing",
+  ];
+  for (const id of requiredRouki25OperationLegacyIds) {
+    if (!noticeSkeletonIds.has(id)) {
+      errors.push(`notice skeleton: missing required legacy operation node ${id}`);
+    }
+  }
+
+  const requiredLegacyEvents = [
+    ["rouki25.h30.dayservice.plan-record-reference", "notice.dayservice.operation.plan"],
+    ["rouki25.h30.dayservice.rules-extended-hours", "notice.dayservice.operation.rules"],
+    ["rouki25.r3.dayservice.fees-reference", "notice.dayservice.operation.fees"],
+    ["rouki25.r3.dayservice.plan-references", "notice.dayservice.operation.plan"],
+    ["rouki25.r3.dayservice.rules-references", "notice.dayservice.operation.rules"],
+    ["rouki25.r3.dayservice.staffing-additions", "notice.dayservice.operation.staffing"],
+    ["rouki25.r6.dayservice.physical-restraint", "notice.dayservice.operation.policy"],
+  ];
+  for (const [eventId, targetId] of requiredLegacyEvents) {
+    const event = noticeAmendments.find((entry) => entry.id === eventId);
+    if (!event || event.target_node_id !== targetId) {
+      errors.push(`notice amendment events: missing or mis-targeted ${eventId}`);
+    }
+  }
+
+  const operationLegacyPipelineParts = [
+    noticeOperationLegacyManifest,
+    noticeOperationLegacySnapshots,
+    noticeOperationLegacyAssembly,
+    noticeOperationLegacyReplay,
+    noticeOperationLegacyCandidates,
+  ];
+  if (operationLegacyPipelineParts.some(Boolean) && !operationLegacyPipelineParts.every(Boolean)) {
+    errors.push("notice operation-legacy reconstruction: incomplete pipeline files");
+  }
+  if (operationLegacyPipelineParts.every(Boolean)) {
+    const expectedLegacyIds = new Set(requiredRouki25OperationLegacyIds);
+    const sameLegacyIdSet = (values) => {
+      const actual = new Set(values);
+      return actual.size === expectedLegacyIds.size &&
+        [...expectedLegacyIds].every((id) => actual.has(id));
+    };
+
+    const manifestSegments = noticeOperationLegacyManifest.segments || [];
+    if (!sameLegacyIdSet(manifestSegments.map((segment) => segment.notice_id))) {
+      errors.push("notice operation-legacy manifest: unexpected operation coverage");
+    }
+    const manifestSegmentIds = new Set();
+    for (const segment of manifestSegments) {
+      if (manifestSegmentIds.has(segment.id)) {
+        errors.push(`notice operation-legacy manifest: duplicate segment ${segment.id}`);
+      }
+      manifestSegmentIds.add(segment.id);
+      if (!sourceIds.has(segment.source_id)) {
+        errors.push(`notice operation-legacy manifest ${segment.id}: missing source ${segment.source_id}`);
+      }
+      if (!segment.body_start || !segment.body_end || !segment.page_start || !segment.page_end) {
+        errors.push(`notice operation-legacy manifest ${segment.id}: incomplete extraction boundary`);
+      }
+      for (const replacement of segment.layout_replacements || []) {
+        if (!replacement.from || !replacement.to || !replacement.reason) {
+          errors.push(`notice operation-legacy manifest ${segment.id}: incomplete layout replacement declaration`);
+        }
+      }
+    }
+
+    const snapshots = noticeOperationLegacySnapshots.segments || [];
+    const snapshotById = new Map(snapshots.map((item) => [item.id, item]));
+    if (!sameLegacyIdSet(snapshots.map((item) => item.notice_id))) {
+      errors.push("notice operation-legacy snapshots: unexpected operation coverage");
+    }
+    for (const snapshot of snapshots) {
+      if (!sourceIds.has(snapshot.source_id)) {
+        errors.push(`notice operation-legacy snapshot ${snapshot.id}: missing source ${snapshot.source_id}`);
+      }
+      if (snapshot.verification_status !== "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK") {
+        errors.push(`notice operation-legacy snapshot ${snapshot.id}: unsafe verification status`);
+      }
+      if (!snapshot.body_text || !snapshot.body_text_sha256 ||
+          createHash("sha256").update(snapshot.body_text, "utf8").digest("hex") !== snapshot.body_text_sha256) {
+        errors.push(`notice operation-legacy snapshot ${snapshot.id}: body text/hash mismatch`);
+      }
+      if ((snapshot.body_text || "").includes("事業。所") || (snapshot.body_text || "").includes("置かれ、ている")) {
+        errors.push(`notice operation-legacy snapshot ${snapshot.id}: known PDF layout artifact returned`);
+      }
+    }
+
+    if (!sameLegacyIdSet((noticeOperationLegacyAssembly.items || []).map((item) => item.notice_id))) {
+      errors.push("notice operation-legacy assembly: unexpected operation coverage");
+    }
+
+    const replayById = new Map((noticeOperationLegacyReplay || []).map((item) => [item.notice_id, item]));
+    if (!sameLegacyIdSet((noticeOperationLegacyReplay || []).map((item) => item.notice_id))) {
+      errors.push("notice operation-legacy replay: unexpected operation coverage");
+    }
+    for (const coverage of noticeOperationLegacyReplay || []) {
+      if (coverage.human_verification_status !== "NOT_REVIEWED") {
+        errors.push(`notice operation-legacy replay ${coverage.notice_id}: unexpected human verification status`);
+      }
+      for (const checkpoint of coverage.checkpoints || []) {
+        if (!sourceIds.has(checkpoint.source_id)) {
+          errors.push(`notice operation-legacy replay ${coverage.notice_id}: missing checkpoint source ${checkpoint.source_id}`);
+        }
+        if (checkpoint.status !== "CHECKED") {
+          errors.push(`notice operation-legacy replay ${coverage.notice_id}: unchecked checkpoint ${checkpoint.source_id}`);
+        }
+      }
+    }
+
+    const candidates = noticeOperationLegacyCandidates.items || [];
+    if (!sameLegacyIdSet(candidates.map((item) => item.notice_id))) {
+      errors.push("notice operation-legacy candidates: unexpected operation coverage");
+    }
+    const candidateById = new Map(candidates.map((item) => [item.notice_id, item]));
+    for (const candidate of candidates) {
+      if (candidate.reconstruction_status !== "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK" ||
+          candidate.human_verification_status !== "NOT_REVIEWED") {
+        errors.push(`notice operation-legacy candidate ${candidate.notice_id}: unsafe status`);
+      }
+      if (!candidate.candidate_text || !candidate.candidate_text_sha256 ||
+          createHash("sha256").update(candidate.candidate_text, "utf8").digest("hex") !== candidate.candidate_text_sha256) {
+        errors.push(`notice operation-legacy candidate ${candidate.notice_id}: text/hash mismatch`);
+      }
+      const baseline = snapshotById.get(candidate.baseline_snapshot_id);
+      if (!baseline || baseline.notice_id !== candidate.notice_id) {
+        errors.push(`notice operation-legacy candidate ${candidate.notice_id}: baseline snapshot mismatch`);
+      }
+      for (const patchId of candidate.patch_snapshot_ids || []) {
+        const patch = snapshotById.get(patchId);
+        if (!patch || patch.notice_id !== candidate.notice_id) {
+          errors.push(`notice operation-legacy candidate ${candidate.notice_id}: patch snapshot mismatch ${patchId}`);
+        }
+      }
+      const coverage = replayById.get(candidate.notice_id);
+      if (!coverage || coverage.replay_status !== candidate.replay_status) {
+        errors.push(`notice operation-legacy candidate ${candidate.notice_id}: replay coverage mismatch`);
+      }
+    }
+
+    const compact = (value) => String(value || "").normalize("NFKC").replace(/\s+/g, "");
+    const requireLegacyText = (id, phrase, label) => {
+      const item = candidateById.get(id);
+      if (!item || !compact(item.candidate_text).includes(compact(phrase))) {
+        errors.push(`notice operation-legacy candidate ${id}: ${label}`);
+      }
+    };
+    const forbidLegacyText = (id, phrase, label) => {
+      const item = candidateById.get(id);
+      if (item && compact(item.candidate_text).includes(compact(phrase))) {
+        errors.push(`notice operation-legacy candidate ${id}: ${label}`);
+      }
+    };
+
+    requireLegacyText("notice.dayservice.operation.fees", "第３の一の３の⑾の①、②及び④", "R3 current reference target missing");
+    requireLegacyText("notice.dayservice.operation.fees", "ハ食事の提供に要する費用", "H27 fee item wording missing");
+    forbidLegacyText("notice.dayservice.operation.fees", "第三の一の３の⑽の①、②及び④", "pre-R3 cross-reference returned");
+
+    for (const phrase of [
+      "③指定通所介護の提供に当たっては",
+      "身体的拘束等を行ってはならず",
+      "切迫性、非代替性及び一時性",
+      "当該記録は、２年間保存しなければならない",
+      "④認知症の状態にある要介護者",
+      "⑤指定通所介護は、事業所内でサービスを提供することが原則",
+    ]) {
+      requireLegacyText("notice.dayservice.operation.policy", phrase, `R6 policy wording/order missing: ${phrase}`);
+    }
+    forbidLegacyText("notice.dayservice.operation.policy", "事業。所", "PDF layout artifact returned");
+
+    requireLegacyText("notice.dayservice.operation.plan", "居宅基準第104条の４第２項", "R3 record-retention reference missing");
+    requireLegacyText("notice.dayservice.operation.plan", "第３の一の３の⒁の⑥を準用する", "R3 visit-care reference missing");
+    forbidLegacyText("notice.dayservice.operation.plan", "居宅基準第104条の２第２項", "pre-H30 record reference returned");
+    forbidLegacyText("notice.dayservice.operation.plan", "居宅基準第104条の３第２項", "H30-only record reference returned");
+    forbidLegacyText("notice.dayservice.operation.plan", "第三の一の３の⒀の⑥", "pre-R3 visit-care reference returned");
+    forbidLegacyText("notice.dayservice.operation.plan", "置かれ、ている", "PDF layout artifact returned");
+
+    requireLegacyText("notice.dayservice.operation.rules", "同条第１号から第11号まで", "R3 rule-number range missing");
+    requireLegacyText("notice.dayservice.operation.rules", "８時間以上９時間未満の指定通所介護", "H30 extended-hours wording missing");
+    requireLegacyText("notice.dayservice.operation.rules", "⑺の非常災害に関する具体的計画", "R3 disaster-reference update missing");
+    forbidLegacyText("notice.dayservice.operation.rules", "７時間以上９時間未満の通所介護", "pre-H30 extended-hours wording returned");
+    forbidLegacyText("notice.dayservice.operation.rules", "同条第１号から第10号まで", "pre-R3 rule-number range returned");
+    forbidLegacyText("notice.dayservice.operation.rules", "⑹の非常災害に関する具体的計画", "pre-R3 disaster reference returned");
+
+    for (const phrase of [
+      "原則として月ごとの勤務表を作成",
+      "機能訓練指導員の配置",
+      "居宅基準第53条の２第３項",
+      "居宅基準第30条第４項",
+    ]) {
+      requireLegacyText("notice.dayservice.operation.staffing", phrase, `staffing wording missing: ${phrase}`);
     }
   }
 

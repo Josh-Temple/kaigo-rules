@@ -1,0 +1,260 @@
+{
+  "format_version": 1,
+  "output_path": "data/notice-operation-legacy-source-snapshots.json",
+  "policy": "Official PDF source segments are machine-extracted reconstruction material only. They do not change notice-current-skeleton official_text or any human-review status.",
+  "scope": "Day-service operation legacy items (1)-(5), reconstructed from H27/H30/R3/R6 sources.",
+  "segments": [
+    {
+      "id": "dayservice-operation-fees-h27-baseline",
+      "notice_id": "notice.dayservice.operation.fees",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 51,
+      "page_end": 51,
+      "must_contain": [
+        "① 居宅基準第96条第１項、第２項及び第５項",
+        "② 同条第３項は",
+        "ハ 食事の提供に要する費用"
+      ],
+      "body_start": "① 居宅基準第96条第１項、第２項及び第５項の規定は",
+      "body_end": "⑵ 指定通所介護の基本取扱方針及び具体的取扱方針",
+      "note": "H27改正後の(1)全文。R3で①の参照先だけ更新。"
+    },
+    {
+      "id": "dayservice-operation-fees-r3-item1",
+      "notice_id": "notice.dayservice.operation.fees",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 31,
+      "page_end": 31,
+      "must_contain": [
+        "第３の一の３の⑾の①、②及び④を参照されたい"
+      ],
+      "body_start": "① 居宅基準第96条第１項、第２項及び第５項の規定は",
+      "body_end": "② （略）",
+      "note": "R3改正後①。訪問介護側の参照番号を⑽→⑾へ更新。"
+    },
+    {
+      "id": "dayservice-operation-policy-h27-baseline",
+      "notice_id": "notice.dayservice.operation.policy",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 51,
+      "page_end": 52,
+      "must_contain": [
+        "① 指定通所介護は、個々の利用者に応じて作成された通所介護計画",
+        "③ 認知症の状態にある要介護者",
+        "④ 指定通所介護は、事業所内でサービスを提供することが原則"
+      ],
+      "body_start": "指定通所介護の基本取扱方針及び具体的取扱方針については",
+      "body_end": "⑶ 通所介護計画の作成",
+      "note": "H27改正後の(2)本文。R6で身体的拘束等の新③が入り、旧③④が④⑤へ繰下げ。",
+      "layout_replacements": [
+        {
+          "from": "事業。所",
+          "to": "事業所",
+          "reason": "pdftotext column/page layout artifact; source image shows 事業所"
+        }
+      ]
+    },
+    {
+      "id": "dayservice-operation-policy-r6-restraint",
+      "notice_id": "notice.dayservice.operation.policy",
+      "source_id": "mhlw-2024-interpretation-redline",
+      "role": "amendment_insertion",
+      "page_start": 20,
+      "page_end": 21,
+      "must_contain": [
+        "③ 指定通所介護の提供に当たっては",
+        "身体的拘束等を行ってはならず",
+        "２年間保存しなければならない"
+      ],
+      "body_start": "③ 指定通所介護の提供に当たっては",
+      "body_end": "④・⑤（略）",
+      "note": "R6新設③。旧③④は④⑤へ繰下げ。"
+    },
+    {
+      "id": "dayservice-operation-plan-h27-baseline",
+      "notice_id": "notice.dayservice.operation.plan",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 52,
+      "page_end": 53,
+      "must_contain": [
+        "① 居宅基準第99条で定める通所介護計画",
+        "⑤ 通所介護計画の目標及び内容について",
+        "⑥ 居宅サービス計画に基づきサービスを提供している指定通所介護事業者"
+      ],
+      "body_start": "① 居宅基準第99条で定める通所介護計画については",
+      "body_end": "⑷ 運営規程",
+      "note": "H27改正後の(3)全文。H30とR3の④、R3の⑥を順方向に更新するbaseline。",
+      "layout_replacements": [
+        {
+          "from": "置かれ、ている",
+          "to": "置かれている",
+          "reason": "pdftotext column/page layout artifact; source image shows 置かれている"
+        }
+      ]
+    },
+    {
+      "id": "dayservice-operation-plan-h30-item4",
+      "notice_id": "notice.dayservice.operation.plan",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 14,
+      "page_end": 14,
+      "must_contain": [
+        "居宅基準第104条の３第２項の規定に基づき、２年間保存"
+      ],
+      "body_start": "④ 通所介護計画は利用者の心身の状況、希望及びその置かれている環境を踏まえて作成され",
+      "body_end": "⑤・⑥ （略）",
+      "note": "H30改正後④。記録保存の参照先を第104条の2→第104条の3へ更新。"
+    },
+    {
+      "id": "dayservice-operation-plan-r3-item4",
+      "notice_id": "notice.dayservice.operation.plan",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 31,
+      "page_end": 31,
+      "must_contain": [
+        "居宅基準第104条の４第２項の規定",
+        "２年間保存しなければならない"
+      ],
+      "body_start": "④ 通所介護計画は利用者の心身の状況、希望及びその置かれている環境",
+      "body_end": "⑤ （略）",
+      "note": "R3改正後④。記録保存の参照先を第104条の3→第104条の4へ更新。"
+    },
+    {
+      "id": "dayservice-operation-plan-r3-item6",
+      "notice_id": "notice.dayservice.operation.plan",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 31,
+      "page_end": 31,
+      "must_contain": [
+        "第３の一の３の⒁の⑥を準用する",
+        "訪問介護計画",
+        "通所介護計画"
+      ],
+      "body_start": "⑥ 居宅サービス計画に基づきサービスを提供している指定通所介護事業者については",
+      "body_end": "⑷ 運営規程",
+      "note": "R3改正後⑥。訪問介護側の参照番号を⒀→⒁へ更新。"
+    },
+    {
+      "id": "dayservice-operation-rules-h27-baseline",
+      "notice_id": "notice.dayservice.operation.rules",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 53,
+      "page_end": 54,
+      "must_contain": [
+        "居宅基準第100条は",
+        "７時間以上９時間未満の通所介護",
+        "⑤ 非常災害対策（第９号）"
+      ],
+      "body_start": "居宅基準第100条は、指定通所介護の事業の適正な運営及び利用者に対する適切な指定通所介護の提供を確保するため",
+      "body_end": "⑸ 勤務体制の確保等",
+      "note": "H27改正後の(4)全文。H30で①、R3で導入部と⑤を更新。"
+    },
+    {
+      "id": "dayservice-operation-rules-h30-item1",
+      "notice_id": "notice.dayservice.operation.rules",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 15,
+      "page_end": 15,
+      "must_contain": [
+        "８時間以上９時間未満の指定通所介護",
+        "提供時間帯（９時間）"
+      ],
+      "body_start": "① 営業日及び営業時間（第３号）",
+      "body_end": "②～⑤ （略）",
+      "note": "H30改正後①。延長サービス対象時間を7時間以上9時間未満→8時間以上9時間未満へ更新。"
+    },
+    {
+      "id": "dayservice-operation-rules-r3-intro",
+      "notice_id": "notice.dayservice.operation.rules",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 32,
+      "page_end": 32,
+      "must_contain": [
+        "同条第１号から第11号までに掲げる事項",
+        "指定通所介護事業所ごとに義務づけた"
+      ],
+      "body_start": "居宅基準第100条は、指定通所介護の事業の適正な運営及び利用者に対する適切な指定通所介護の提供を確保するため",
+      "body_end": "①～④ （略）",
+      "note": "R3改正後導入部。運営規程の列挙を第1号〜第11号へ更新。"
+    },
+    {
+      "id": "dayservice-operation-rules-r3-item5",
+      "notice_id": "notice.dayservice.operation.rules",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 32,
+      "page_end": 32,
+      "must_contain": [
+        "⑤ 非常災害対策（第９号）",
+        "⑺の非常災害に関する具体的計画"
+      ],
+      "body_start": "⑤ 非常災害対策（第９号）",
+      "body_end": "⑸ 勤務体制の確保等",
+      "note": "R3改正後⑤。BCP新設に伴い非常災害対策の参照を⑹→⑺へ更新。"
+    },
+    {
+      "id": "dayservice-operation-staffing-h27-baseline",
+      "notice_id": "notice.dayservice.operation.staffing",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 54,
+      "page_end": 54,
+      "must_contain": [
+        "① 指定通所介護事業所ごとに、原則として月ごとの勤務表",
+        "② 同条第２項は、原則として"
+      ],
+      "body_start": "居宅基準第101条は、利用者に対する適切な指定通所介護の提供を確保するため",
+      "body_end": "⑹ 非常災害対策",
+      "note": "H27改正後の(5)本文①②。R3で③④を追加。"
+    },
+    {
+      "id": "dayservice-operation-staffing-r3-additions",
+      "notice_id": "notice.dayservice.operation.staffing",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "amendment_append",
+      "page_start": 32,
+      "page_end": 32,
+      "must_contain": [
+        "③ 同条第３項の規定は",
+        "居宅基準第53条の２第３項",
+        "④ 同条第４項の規定は",
+        "居宅基準第30条第４項"
+      ],
+      "body_start": "③ 同条第３項の規定は",
+      "body_end": "⑹ 業務継続計画の策定等",
+      "note": "R3で追加された③④。"
+    }
+  ],
+  "source_layouts": {
+    "mhlw-h27-interpretation-redline": {
+      "current_column": "right",
+      "header_semantics": "改正前|改正後",
+      "evidence_note": "H27新旧対照表は改正後欄が右側。"
+    },
+    "mhlw-h30-interpretation-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "H30新旧対照表は新欄が左側。"
+    },
+    "mhlw-2021-interpretation-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "R3新旧対照表は新欄が左側。"
+    },
+    "mhlw-2024-interpretation-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "R6新旧対照表は新欄が左側。"
+    }
+  }
+}
