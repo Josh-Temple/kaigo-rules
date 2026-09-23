@@ -171,6 +171,60 @@ def main() -> None:
     if not pdf_scan.get("next_blocker"):
         fail("post-R6 PDF-body scan must preserve the remaining currentness blocker")
 
+    lawdb = data.get("mhlw_law_database_coverage_check", {})
+    if lawdb.get("fresh_main_sha_at_start") != "e235ee114958cc79a19bd6b73f316619a746f349":
+        fail("MHLW law-database coverage check must record its fresh main SHA")
+    official_db = lawdb.get("official_database", {})
+    if official_db.get("notification_scope") != "厚生労働省所管の主な訓令、通知、公示等":
+        fail("MHLW notification database scope must remain explicit")
+    if official_db.get("update_frequency") != "MONTHLY":
+        fail("MHLW notification database update frequency must remain explicit")
+    if official_db.get("latest_notification_amendment_count") != 7:
+        fail("latest checked notification amendment-list count must remain traceable")
+    if "主な" not in official_db.get("coverage_limit", "") or "証明しない" not in official_db.get("coverage_limit", ""):
+        fail("MHLW law database must not be treated as exhaustive")
+
+    original = lawdb.get("original_record_check", {})
+    if original.get("classification") != "HISTORICAL_ORIGINAL_NOT_CONSOLIDATED":
+        fail("MHLW old企25 database record must remain historical-only")
+    if original.get("current_markers_found") != []:
+        fail("historical old企25 record must not be represented as current integrated text")
+
+    r6_redline = lawdb.get("r6_official_redline_check", {})
+    if r6_redline.get("classification") != "R6_AMENDMENT_REDLINE_NOT_CONSOLIDATED":
+        fail("R6 official target PDF must remain classified as a redline, not consolidated text")
+    if "現行統合全文ではない" not in r6_redline.get("observation", ""):
+        fail("R6 redline limitation must remain explicit")
+
+    lawdb_result = lawdb.get("result", {})
+    if lawdb_result.get("official_discovery_coverage_strengthened") is not True:
+        fail("MHLW law database coverage work must record strengthened discovery coverage")
+    if lawdb_result.get("database_is_exhaustive_for_all_notifications") is not False:
+        fail("MHLW law database must not be represented as exhaustive for all notifications")
+    if lawdb_result.get("current_integrated_text_found") is not False:
+        fail("no authoritative current integrated text has been established")
+    if lawdb_result.get("verified_post_r6_amendment_candidate_identified") is not False:
+        fail("no verified post-R6 amendment candidate is established by the law database check")
+    if lawdb_result.get("decision_effect") != "HOLD_UNCHANGED":
+        fail("MHLW law database check must not lift HOLD")
+
+    matrix = {row.get("lane"): row for row in lawdb.get("coverage_matrix", [])}
+    required_lanes = {
+        "R6_BASELINE",
+        "KAIGO_LATEST_INFO_AND_R8_REFORM",
+        "MHLW_LAW_DB_REGISTERED_MAIN_NOTICES",
+        "MHLW_LAW_DB_PENDING_MAIN_NOTICES",
+        "CURRENT_INTEGRATED_TEXT",
+    }
+    if set(matrix) != required_lanes:
+        fail("MHLW currentness coverage matrix is incomplete or changed")
+    if matrix["CURRENT_INTEGRATED_TEXT"].get("status") != "NOT_FOUND":
+        fail("current integrated text must remain unresolved")
+    if "網羅的証明にはしない" not in lawdb.get("inference_limit", ""):
+        fail("law-database absence must not be treated as exhaustive proof")
+    if not lawdb.get("next_blocker"):
+        fail("law-database coverage check must preserve the final blocker")
+
     policy = data.get("status_policy", {})
     if "現行性の証明ではない" not in policy.get("machine_text_match", ""):
         fail("machine text match must not be described as proof of currentness")
@@ -179,7 +233,7 @@ def main() -> None:
     if "2025-03へ訂正済み" not in policy.get("currentness", ""):
         fail("currentness policy must record the corrected reference period")
 
-    print("rouki25 currentness investigation: OK (reference period corrected; post-R6 official index and PDF-body scans recorded; exhaustive coverage unresolved; 22 items remain HOLD)")
+    print("rouki25 currentness investigation: OK (post-R6 index/PDF/law-database coverage recorded; exhaustive coverage unresolved; 22 items remain HOLD)")
 
 
 if __name__ == "__main__":
