@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "validate:data": "node scripts/validate-data.mjs && python scripts/build_notice_review_packet.py --check && python scripts/validate_notice_review.py && python scripts/build_notice_rouki25_audit_report.py --check && python scripts/validate_notice_rouki25_audit.py",
+    "validate:data": "node scripts/validate-data.mjs && python scripts/build_notice_review_packet.py --check && python scripts/validate_notice_review.py && python scripts/build_notice_rouki25_audit_report.py --check && python scripts/validate_notice_rouki25_audit.py && python scripts/validate_notice_currentness_investigation.py",
     "prebuild": "npm run validate:data",
     "suggest:qa-links": "node scripts/suggest-qa-links.mjs",
     "import:ordinance37": "python scripts/import_egov_ordinance37.py",
@@ -24,7 +24,8 @@
     "verify:notice-rouki25-independent": "python scripts/verify_notice_rouki25_independent.py",
     "build:notice-review-packet": "python scripts/build_notice_review_packet.py",
     "check:notice-review-packet": "python scripts/build_notice_review_packet.py --check",
-    "validate:notice-review": "python scripts/validate_notice_review.py"
+    "validate:notice-review": "python scripts/validate_notice_review.py",
+    "validate:notice-currentness": "python scripts/validate_notice_currentness_investigation.py"
   },
   "dependencies": {
     "next": "^16.0.0",
@@ -33,8 +34,8 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
     "typescript": "^5.9.0"
   }
 }
