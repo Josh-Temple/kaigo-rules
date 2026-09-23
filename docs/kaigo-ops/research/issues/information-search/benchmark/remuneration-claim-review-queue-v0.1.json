@@ -30,16 +30,27 @@
         57,
         58
       ],
-      "status": "REVIEW_REQUIRED",
+      "status": "COMPLETE",
       "primary_sources": [
+        "mhlw-r6-qa-individual-functional-training",
         "mhlw-fee-criteria95-current",
         "mhlw-fee-notice19-base",
-        "current MHLW Q&A corpus"
+        "current MHLW Q&A index"
       ],
       "related_nodes": [
         "criteria95.dayservice.16"
       ],
-      "target": "配置時間、2名配置、Ⅰイ/Ⅰロの切替、外部連携、算定対象時間帯、基準配置との兼務をatomic claimへ分けてreviewする。"
+      "target": "配置時間、2名配置、Ⅰイ/Ⅰロの切替、外部連携、算定対象時間帯、基準配置との兼務をatomic claimへ分けてreviewする。",
+      "reviewed_at": "2026-09-23",
+      "claim_ids": [
+        "claim.remuneration.individual-functional-training.placement-time",
+        "claim.remuneration.individual-functional-training.simultaneous-two",
+        "claim.remuneration.individual-functional-training.fallback-i-a",
+        "claim.remuneration.individual-functional-training.no-external-linkage",
+        "claim.remuneration.individual-functional-training.i-b-time-window",
+        "claim.remuneration.individual-functional-training.baseline-instructor-counts"
+      ],
+      "result": "RH2-001〜006を6個のatomic ClaimとしてANSWER / VERIFIED_CURRENTへ昇格。広い報酬Claimは閉じたまま。"
     },
     {
       "group_id": "remuneration.bathing-assistance",
@@ -141,10 +152,12 @@
   ],
   "counts": {
     "groups": 5,
-    "holdout_cases": 20
+    "holdout_cases": 20,
+    "complete_groups": 1,
+    "answerable_holdout_cases": 6,
+    "remaining_review_required": 14
   },
   "next_priority": [
-    "remuneration.individual-functional-training",
     "remuneration.bathing-assistance",
     "remuneration.transport-reduction",
     "remuneration.three-percent-scale-exception",

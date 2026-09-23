@@ -383,5 +383,42 @@
     "status": "verified_source_currently_retained",
     "note": "生活相談員の勤務延時間に算入できる地域連携活動の具体例と、事業所外活動の記録要件を示す。令和8年9月掲載の現行厚労省Q&A workbook由来corpusにも同じ質問・回答が収載されていることを2026-09-23に確認。",
     "coverage_checked_at": "2026-09-23"
+  },
+  {
+    "id": "mhlw-h27-interpretation-redline",
+    "layer": "解釈通知改正",
+    "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+    "status": "historical_amendment_reference",
+    "note": "老企第25号の平成27年度改正に係る新旧対照表。通所介護の人員・設備・運営基準の改正後状態と宿泊サービス関係項目の新設を確認する履歴資料。現行統合全文とはみなさない。"
+  },
+  {
+    "id": "mhlw-h30-interpretation-redline",
+    "layer": "解釈通知改正",
+    "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成30年度改正・新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+    "status": "historical_amendment_reference",
+    "note": "老企第25号の平成30年度改正に係る新旧対照表。通所介護の機能訓練指導員、設備共用、宿泊サービス項目の繰下げ等を確認する履歴資料。現行統合全文とはみなさない。"
+  },
+  {
+    "id": "mhlw-2026-rouki25-reference-redline",
+    "layer": "解釈通知・現行参照資料",
+    "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（厚生労働省・令和8年3月掲載参照資料）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
+    "status": "current_reference_partial_source",
+    "note": "令和8年3月改訂の厚生労働省国マニュアルから参照される老企第25号関係資料。通所介護では「1・2（略）」を確認できる。現行統合全文や網羅的な改正履歴とはみなさない。"
+  },
+  {
+    "id": "mhlw-r6-qa-individual-functional-training",
+    "layer": "Q&A",
+    "title": "令和6年度介護報酬改定に関するQ&A（Vol.1）問53〜58・個別機能訓練加算（修正版）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/001227740.pdf",
+    "status": "verified_source",
+    "note": "通所介護・地域密着型通所介護の個別機能訓練加算(I)イ・ロについて、配置時間、同時2名配置、IロからIイへの切替、外部連携、算定対象時間帯、基準配置の機能訓練指導員の取扱いを示す問53〜58。令和3年度Q&Aの該当問を修正する令和6年度Q&A。2026-09-23に現行告示第95号、厚労省の現行Q&A掲載ページ、令和8年度改定ページと突合し、当該論点を変更する後続資料は確認されなかった。",
+    "coverage_checked_at": "2026-09-23"
   }
 ]

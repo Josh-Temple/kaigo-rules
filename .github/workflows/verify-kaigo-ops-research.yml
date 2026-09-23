@@ -39,7 +39,7 @@ jobs:
           node-version: "22"
 
       - name: Run current classifier regression
-        run: node scripts/research-coverage-classifier-v0.29.mjs > research-classifier-result.json
+        run: node scripts/research-coverage-classifier-v0.30.mjs > research-classifier-result.json
 
       - name: Assert classifier regression
         run: |
@@ -90,10 +90,10 @@ jobs:
           NODE
 
       - name: Validate Claim Registry
-        run: node scripts/research-claim-registry-validate-v0.21.mjs
+        run: node scripts/research-claim-registry-validate-v0.22.mjs
 
       - name: Validate Claim Compositions
-        run: node scripts/research-claim-compositions-validate-v0.8.mjs
+        run: node scripts/research-claim-compositions-validate-v0.9.mjs
 
       - name: Validate unit-price review ledger
         run: node scripts/research-unit-price-review-validate-v0.1.mjs
