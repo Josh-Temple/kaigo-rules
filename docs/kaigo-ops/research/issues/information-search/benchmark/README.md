@@ -172,7 +172,7 @@ GitHub Actions:
 - classifier / Claim Registry / Composition Registryを検証
 - Vercel deployとは独立
 
-2026-09-23、head `9629ba14905f9b1569f2bda467e93397f10e75dc` のGitHub Actions run #15（35810802502）でclassifier v0.26の191 / 191 PASSを実測した。Claim Registry v0.18 validatorもvalid=true。なお、その後の静的監査でComposition validator v0.5が古いclaims-v0.12を参照していることを発見したため、v0.6でcurrent Claim Registry参照へ修正し、再度CIで確認する。
+2026-09-23、head `9629ba14905f9b1569f2bda467e93397f10e75dc` のGitHub Actions run #15（35810802502）でclassifier v0.26の191 / 191 PASSを実測した。Claim Registry v0.18 validatorもvalid=true。その後、Composition validator v0.5が古いclaims-v0.12を参照していたことを発見し、v0.6でclaims-v0.19参照へ修正した。head `635bce98758ed2c998c99dd444fef376545dd220` のrun #16（35814522582）でclassifier v0.27は191 / 191 PASS、Claim Registry v0.19とComposition validator v0.6はいずれもvalid=trueを確認した。
 
 
 ## Claim coverage update — 2026-09-23

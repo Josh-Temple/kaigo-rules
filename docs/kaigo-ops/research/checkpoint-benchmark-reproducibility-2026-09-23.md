@@ -1,7 +1,7 @@
 # Kaigo Ops Research Checkpoint — Benchmark Reproducibility Audit
 
 更新日: 2026-09-23  
-状態: **classifier 191 / 191実測済み / composition current-registry dependency fix pending CI**
+状態: **current harness 191 / 191実測済み / current-registry validators CLOSED**
 
 ## 旧不整合
 
@@ -60,7 +60,18 @@ current Claim Registry v0.18ではなく、古い `claims-v0.12.json` を参照�
 
 - classifier reproducibility: **CLOSED**
 - Claim Registry validator: **CLOSED for v0.18 run #15**
-- Composition current-registry validation: **post-fix CI pending**
+- Composition current-registry validation: **CLOSED**
 - RAG implementation: **HOLD**
 
-post-fix CIが成功するまで、compositionについてはcurrent-registry検証完了と表現しない。
+## post-fix CI
+
+research branch head `635bce98758ed2c998c99dd444fef376545dd220` に対する
+GitHub Actions run #16（run id `35814522582`）を確認した。
+
+実ログ:
+- classifier v0.27: **191 / 191 PASS**
+- Claim Registry v0.19: 49 claims / VERIFIED_INTERPRETATION 5 / REVIEW_REQUIRED 4 / errors 0 / valid true
+- Composition validator v0.6: 5 compositions / errors 0 / valid true
+
+v0.6は `claims-v0.19.json` を参照しており、古いv0.12依存は解消した。
+これによりcurrent-registry validationもCLOSEDとする。
