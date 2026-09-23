@@ -1,0 +1,63 @@
+{
+  "format_version": 1,
+  "scope": "rouki25-dayservice-22-currentness",
+  "checked_at": "2026-09-23",
+  "fresh_main_sha_at_start": "ddde7c2c0dd7947bbb5eb121ef2513d500807b54",
+  "conclusion": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
+  "effect_on_22_items": "KEEP_HOLD",
+  "automatic_promotion_allowed": false,
+  "blocking_requirement": "HUMAN_VERIFIED / VERIFIED_CURRENTへ進めるには、令和6年改正後から確認時点までの老企第25号・第3の六に関する後続改正を網羅できる厚生労働省一次資料、または現行統合本文等による確認が必要。検索結果の不在や部分参照資料だけでは解除しない。",
+  "routes": [
+    {
+      "route_id": "mhlw-r6-reform-final",
+      "kind": "PRIMARY_SOURCE_FINAL_AMENDMENT_ROUTE",
+      "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "observation": "令和6年度介護報酬改定ページの「基準省令に関する通知（解釈通知等）」に、老企第25号「指定居宅サービス等及び指定介護予防サービス等に関する基準について」の改正PDFへの公式導線がある。",
+      "use": "令和6年改正の一次資料への公式導線として使用する。",
+      "limitation": "令和6年改正時点の資料であり、その後に当該通知の改正が存在しないことまでは証明しない。"
+    },
+    {
+      "route_id": "mhlw-r8-reform-page",
+      "kind": "OFFICIAL_REFORM_INDEX_SUPPORTING_ONLY",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "observation": "「令和8年度介護報酬改定に関する通知等の改正」には、費用算定の実施上の留意事項、介護予防の費用算定留意事項、届出留意点、処遇改善加算関係等が掲載されている。確認時点の同一覧に老企第25号は掲載されていない。",
+      "use": "令和8年度介護報酬改定に伴う公式な通知改正一覧の確認経路として使用する。",
+      "limitation": "この改定ページの掲載範囲外で行われた改正や、別時期の改正が存在しないことまでは証明しない。老企第25号が一覧にないことだけで不改正とは判定しない。"
+    },
+    {
+      "route_id": "mhlw-kaigo-latest-info",
+      "kind": "OFFICIAL_INDEX_SUPPORTING_ONLY",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "observation": "確認時点の介護保険最新情報には、令和8年3月13日のvol.1476〜1478として、報酬告示、費用算定の留意事項、届出留意点等の改正が掲載されている。",
+      "use": "近時の介護保険関係通知を探索する公式索引として使用する。",
+      "limitation": "老企第25号の制定以来の完全な改正履歴を保証する専用台帳ではないため、ここで見つからないことを不改正の証拠にしない。"
+    },
+    {
+      "route_id": "mhlw-law-database-rouki25",
+      "kind": "HISTORICAL_ORIGINAL_NOT_CONSOLIDATED",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "observation": "厚生労働省の法令等データベースには平成11年9月17日・老企第25号の本文が掲載されているが、表示本文は制定当初の用語・構成を含む旧い本文で、現在の通所介護22項目を統合した現行本文としては扱えない。",
+      "use": "通知の原文・歴史資料の確認経路としてのみ使用する。",
+      "limitation": "現行統合本文や完全な改正履歴の代替にはならない。candidateの現在性判定には直接使用しない。"
+    },
+    {
+      "route_id": "mhlw-domain-exact-title-search",
+      "kind": "SEARCH_SUPPORTING_ONLY",
+      "url": "https://www.mhlw.go.jp/",
+      "queries": [
+        "site:mhlw.go.jp \"指定居宅サービス等及び指定介護予防サービス等に関する基準について\" \"令和7年\"",
+        "site:mhlw.go.jp \"指定居宅サービス等及び指定介護予防サービス等に関する基準について\" \"令和8年\"",
+        "site:mhlw.go.jp \"老企第25号\" \"一部改正\" \"令和7年\"",
+        "site:mhlw.go.jp \"老企第25号\" \"一部改正\" \"令和8年\""
+      ],
+      "observation": "確認した検索結果では、令和6年度改正後に第3の六・通所介護22項目を更新する老企第25号の一部改正通知は特定できなかった。",
+      "use": "後続資料の候補探索に使用する。",
+      "limitation": "検索結果の不在は変更不存在の証拠ではない。索引漏れ、別表題、未検索資料の可能性があるため、HOLD解除には使わない。"
+    }
+  ],
+  "status_policy": {
+    "machine_text_match": "22/22の順方向replay一致は本文再構成の整合性を示すが、現行性の証明ではない。",
+    "human_review": "この調査だけでは人手確認は完了しない。",
+    "currentness": "網羅的な後続改正確認が閉じるまで22項目をHOLDのまま維持する。"
+  }
+}
