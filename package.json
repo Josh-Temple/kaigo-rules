@@ -33,7 +33,8 @@
     "validate:remuneration-independent-audit": "python scripts/validate_remuneration_independent_audit.py",
     "validate:unit-price-independent-audit": "python scripts/validate_unit_price_independent_audit.py",
     "build:verification-registry": "python scripts/build_verification_registry.py",
-    "check:verification-registry": "python scripts/build_verification_registry.py --check"
+    "check:verification-registry": "python scripts/build_verification_registry.py --check",
+    "verify:egov-content-independent": "python scripts/verify_egov_content_independent.py"
   },
   "dependencies": {
     "next": "^16.0.0",
