@@ -32,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             重要な判断は原典と所管行政庁等で確認してください。
           </p>
           <div className="footer-links">
-            <Link href="/about">利用上の注意</Link>
+            <Link href="/about">利用上の注意・免責事項</Link>
             <SiteFeedbackLink />
           </div>
         </footer>
