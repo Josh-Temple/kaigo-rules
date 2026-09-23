@@ -300,5 +300,68 @@
     "status": "verified_source",
     "note": "病院・診療所・訪問看護ステーションとの契約で看護職員を確保し、営業日ごとに健康状態確認を行う運用を前提として、従事時間・距離を説明する令和6年度Q&A。",
     "coverage_checked_at": "2026-09-23"
+  },
+  {
+    "id": "mhlw-h27-fee-guidance-redline",
+    "layer": "報酬留意事項通知改正",
+    "title": "指定居宅サービスに要する費用の額の算定に関する基準等の実施上の留意事項について（平成27年度改正・新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080856.pdf",
+    "status": "historical_amendment_reference",
+    "note": "平成27年度改正時の老企第36号新旧対照表（抄）。通所介護費の旧番号・見出しを遡るための資料であり、現在有効な統合全文とはみなさない。"
+  },
+  {
+    "id": "mhlw-h30-fee-guidance-redline",
+    "layer": "報酬留意事項通知改正",
+    "title": "指定居宅サービスに要する費用の額の算定に関する基準等の実施上の留意事項について（平成30年度改正・新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12404000/1.pdf",
+    "status": "historical_amendment_reference",
+    "note": "平成30年度改正時の老企第36号新旧対照表（抄）。通所介護の延長加算見出しが「8時間以上9時間未満」に改正されたことを確認する履歴資料。現在有効な統合全文とはみなさない。"
+  },
+  {
+    "id": "mhlw-r3-fee-guidance-redline",
+    "layer": "報酬留意事項通知改正",
+    "title": "指定居宅サービスに要する費用の額の算定に関する基準等の実施上の留意事項について（令和3年度改正・新旧対照表）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12404000/000772367.pdf",
+    "status": "historical_amendment_reference",
+    "note": "令和3年度改正時の老企第36号新旧対照表（抄）。通所介護費の事業所規模、感染症・災害特例、栄養改善加算等の見出し・番号関係を再構成するために使用。現在有効な統合全文とはみなさない。"
+  },
+  {
+    "id": "mhlw-r8-fee-guidance-may-amendment",
+    "layer": "報酬留意事項通知改正",
+    "title": "老企第36号等の一部改正について（令和8年5月8日・介護保険最新情報Vol.1502）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/001698614.pdf",
+    "status": "current_amendment",
+    "note": "令和8年5月8日通知。令和8年6月算定分から適用し、通所介護費7(25)の人員基準欠如について、突発的で想定困難な事象に対する特例的な減算猶予を追加。"
+  },
+  {
+    "id": "mhlw-historical-fee-guidance-pdf",
+    "layer": "報酬留意事項通知",
+    "title": "老企第36号（旧版PDF・通所介護費を含む）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c01.pdf",
+    "status": "historical_reference",
+    "note": "旧版の老企第36号。2時間以上3時間未満の通所介護、災害時等の取扱いなどの歴史的本文を確認するために使用し、現行統合本文とはみなさない。"
+  },
+  {
+    "id": "mhlw-r3-volume-decline-guidance",
+    "layer": "報酬関連通知",
+    "title": "通所介護等において感染症又は災害の発生を理由とする利用者数の減少が一定以上生じている場合の評価に係る基本的な考え方等",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/000763789.pdf",
+    "status": "supporting_notice",
+    "note": "介護保険最新情報Vol.937。3％加算と事業所規模区分の特例の要件・事務処理を示す。"
+  },
+  {
+    "id": "mhlw-r7-fee-guidance-may-amendment",
+    "layer": "報酬留意事項通知改正",
+    "title": "老企第36号の一部改正について（令和7年5月2日・介護保険最新情報Vol.1382）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/001484663.pdf",
+    "status": "amendment_scope_reference",
+    "note": "令和7年5月算定分から適用。中山間地域等の加算要件弾力化に関する改正で、別紙では通所介護費を含む7〜9は新旧とも「略」とされ、この改正による通所介護費の変更は示されていない。"
   }
 ]
