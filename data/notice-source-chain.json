@@ -34,10 +34,28 @@
     "warning": "令和6年以後の現行統合全文ではない"
   },
   {
+    "source_id": "mhlw-h30-interpretation-redline",
+    "source_class": "amendment_comparison",
+    "issued_period": "2018",
+    "priority": 5,
+    "completeness": "partial_new_old_comparison",
+    "use": "平成30年度改正後の通所介護セクション、設備に係る共用の新設、宿泊サービス項目の繰下げ等を確認",
+    "warning": "令和3年・令和6年以後の現行統合全文ではない"
+  },
+  {
+    "source_id": "mhlw-h27-interpretation-redline",
+    "source_class": "amendment_comparison",
+    "issued_period": "2015",
+    "priority": 6,
+    "completeness": "partial_new_old_comparison",
+    "use": "平成27年度改正後の通所介護セクションと設備(1)〜(4)、宿泊サービス関係項目の新設を確認",
+    "warning": "平成30年以後の現行統合全文ではない"
+  },
+  {
     "source_id": "mhlw-interpretation-html",
     "source_class": "historical_reference",
     "issued_period": "historical",
-    "priority": 5,
+    "priority": 7,
     "completeness": "historical_text",
     "use": "古い節名・項目名・本文のバックフィル候補",
     "warning": "現在有効な全文とみなさない"
