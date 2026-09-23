@@ -1,8 +1,188 @@
 {
-  "format_version": 1,
-  "review_status": "NOT_STARTED",
-  "policy": "Machine-imported remuneration text and human verification are stored separately. A review is valid only while its text_sha256 matches the current imported official text.",
-  "reviewed_nodes": [],
+  "format_version": 2,
+  "review_status": "IN_PROGRESS",
+  "policy": "Machine-imported remuneration text and human verification are stored separately. A review remains valid only while the reviewed source SHA-256 and each reviewed node text SHA-256 match the current imported official text.",
+  "base_notice_review": {
+    "status": "COMPLETE",
+    "source_id": "mhlw-fee-notice19-base",
+    "source_sha256": "e189120c253f72d2d5dab24dfe7118bad7d602f0baba3d8cdf98a58c7ecc5bbd",
+    "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+    "section": "6 通所介護費",
+    "reviewed_at": "2026-09-23",
+    "current_amendment": "令和8年厚生労働省告示第87号",
+    "current_amendment_effective_from": "2026-06-01",
+    "reviewed_nodes": [
+      {
+        "fee_id": "fee.dayservice.standard",
+        "text_sha256": "9211c3078f055beea833c4bb9d7594cec166cb7dc2aba77fdba7077f849331c6"
+      },
+      {
+        "fee_id": "fee.dayservice.large1",
+        "text_sha256": "5f79c8111ab05bac1c6818f09694a7d8ccdea0afa5f3bd1ab4ba4aed3f167f8a"
+      },
+      {
+        "fee_id": "fee.dayservice.large2",
+        "text_sha256": "5eb28830fa8a180cd4d301e7f4558917d5aad8c0538d459a06efaccea2ad08b0"
+      },
+      {
+        "fee_id": "fee.dayservice.note.1",
+        "text_sha256": "43f49d486e944da4d1bc9899e607e90bfc2e91d28a4b9152bbdc9f1fa1c4ca2c"
+      },
+      {
+        "fee_id": "fee.dayservice.note.2",
+        "text_sha256": "00001108d41228ebd95e3dff8fa13d4006859a3cb462c9ce0f8d8386790059da"
+      },
+      {
+        "fee_id": "fee.dayservice.note.3",
+        "text_sha256": "959d6b67adbd46196ba7d766acbfa79c439cfbdfe4776cc31212c8cb3135441f"
+      },
+      {
+        "fee_id": "fee.dayservice.note.4",
+        "text_sha256": "bec515907998c741eb05d5b03467182df23a020a931415b8b674ff20283a29b6"
+      },
+      {
+        "fee_id": "fee.dayservice.note.5",
+        "text_sha256": "02b480130f6484154984e68f1a65caaa941745a7bbc8aff7caf8bd9f02752bdd"
+      },
+      {
+        "fee_id": "fee.dayservice.note.6",
+        "text_sha256": "6743dad71d97eee08683922540f5e84dc345ab97446094b3c7b6e0229d642bf3"
+      },
+      {
+        "fee_id": "fee.dayservice.note.7",
+        "text_sha256": "f0d5272b47ce22f703072d3f986c253fe5a4b6921727b3cede2e3579d18759b3"
+      },
+      {
+        "fee_id": "fee.dayservice.note.8",
+        "text_sha256": "7f5519452b3409962cbd4243dc3a0250980a62a5913693766943760295278b90"
+      },
+      {
+        "fee_id": "fee.dayservice.note.9",
+        "text_sha256": "933ed7ec0bb0775fedb7cb12fc6674a4719d6f10198ac9d55d892cfe8906490c"
+      },
+      {
+        "fee_id": "fee.dayservice.note.10",
+        "text_sha256": "c300b7d204691727f5f832dd4882fbbb44b94036226e9e73f73c2083c29ebdaf"
+      },
+      {
+        "fee_id": "fee.dayservice.note.11",
+        "text_sha256": "6649349d97c10699f919880f00344fb409187e8963662c3149ba645c12c9d28a"
+      },
+      {
+        "fee_id": "fee.dayservice.note.12",
+        "text_sha256": "ad1a89bd55922ce6ddafdb8fa7b5c2f1495602f43516b9cf798d90dcf473b893"
+      },
+      {
+        "fee_id": "fee.dayservice.note.13",
+        "text_sha256": "1df7112a87adf8ed23e695adc77c357839a4a48b6f404b1313ace9c78d082f75"
+      },
+      {
+        "fee_id": "fee.dayservice.note.14",
+        "text_sha256": "674619bb5e77eefea45cb26588aea06b432cd1d3a9818eaba2c8daa63b7898ee"
+      },
+      {
+        "fee_id": "fee.dayservice.note.15",
+        "text_sha256": "736b5bb4cd8ff2e72c7ea6efb5741bf27a87f22a8679054ac1cb8872fdd977e5"
+      },
+      {
+        "fee_id": "fee.dayservice.note.16",
+        "text_sha256": "e35a1b98d1d25ddab5b07e2e3eb5601e7a870e4a08064cdc583b147d5f42350a"
+      },
+      {
+        "fee_id": "fee.dayservice.note.17",
+        "text_sha256": "9349df715dad01511c4c02538000f7a83dfbac1189d0cc202f6f22da9839e797"
+      },
+      {
+        "fee_id": "fee.dayservice.note.18",
+        "text_sha256": "24a902a8666ca8761ac539e54809a58048b73db45dfe678f28b47acb545e2973"
+      },
+      {
+        "fee_id": "fee.dayservice.note.19",
+        "text_sha256": "9d9c8087c568dacdd13d57d9db63455eef1d4d139eddf678349de08a59a14521"
+      },
+      {
+        "fee_id": "fee.dayservice.note.20",
+        "text_sha256": "77db90a7b1f2579798ff9c94c9fd1ed12800767e28201a9fb8838a1116ae84a3"
+      },
+      {
+        "fee_id": "fee.dayservice.note.21",
+        "text_sha256": "dddf235cd976ace76d366eeb22296dc90075ceb0b108dc178260a202d3a611f5"
+      },
+      {
+        "fee_id": "fee.dayservice.note.22",
+        "text_sha256": "74f682286299f34ee498fcb49bac12f9c639c5e61d8d1a011600cf87a2923056"
+      },
+      {
+        "fee_id": "fee.dayservice.note.23",
+        "text_sha256": "cfa32698e35a5af8300a6c618bfecfb0de0093522834878035cc2257ea8dd55b"
+      },
+      {
+        "fee_id": "fee.dayservice.note.24",
+        "text_sha256": "faeeec4f4c8bf5683de00a0ead7d0873f684a40809a0d006ad46aa923f34f689"
+      },
+      {
+        "fee_id": "fee.dayservice.service-provision",
+        "text_sha256": "e9a06a2b0505bb137e175e84cace3c66200dec39466449f49664fbea5a84f433"
+      },
+      {
+        "fee_id": "fee.dayservice.treatment-improvement",
+        "text_sha256": "b077fbe014fb294bd5000c51e01a379ac2d1a2b7d19b8fd518d1c22de0a0ee9f"
+      }
+    ],
+    "review_method": [
+      "厚生労働省の現行統合HTMLで「6 通所介護費」を直接確認",
+      "通常規模型・大規模型I・大規模型IIの全時間区分と要介護1〜5の単位数を確認",
+      "注1〜24の現行本文を確認",
+      "サービス提供体制強化加算の区分・単位数を確認",
+      "令和8年6月1日施行後の介護職員等処遇改善加算の区分・率を確認",
+      "取込済み29レコードのfee_idとtext_sha256をレビュー台帳に固定"
+    ]
+  },
+  "delegated_review": {
+    "status": "IN_PROGRESS",
+    "source_ids": [
+      "mhlw-fee-notice27-base",
+      "mhlw-fee-criteria95-current"
+    ],
+    "source_structure_checked_at": "2026-09-23",
+    "note": "告示第27号・第95号の現行公式HTMLと主要通所介護見出しは確認済み。各委任条項の全本文照合を終えるまではCOMPLETEにしない。"
+  },
+  "fee_guidance_review": {
+    "status": "PENDING",
+    "source_id": "mhlw-fee-interpretation-historical",
+    "note": "老企第36号の現行再構成・人手照合は別review ledgerで進める。"
+  },
+  "reviewed_nodes": [
+    "fee.dayservice.standard",
+    "fee.dayservice.large1",
+    "fee.dayservice.large2",
+    "fee.dayservice.note.1",
+    "fee.dayservice.note.2",
+    "fee.dayservice.note.3",
+    "fee.dayservice.note.4",
+    "fee.dayservice.note.5",
+    "fee.dayservice.note.6",
+    "fee.dayservice.note.7",
+    "fee.dayservice.note.8",
+    "fee.dayservice.note.9",
+    "fee.dayservice.note.10",
+    "fee.dayservice.note.11",
+    "fee.dayservice.note.12",
+    "fee.dayservice.note.13",
+    "fee.dayservice.note.14",
+    "fee.dayservice.note.15",
+    "fee.dayservice.note.16",
+    "fee.dayservice.note.17",
+    "fee.dayservice.note.18",
+    "fee.dayservice.note.19",
+    "fee.dayservice.note.20",
+    "fee.dayservice.note.21",
+    "fee.dayservice.note.22",
+    "fee.dayservice.note.23",
+    "fee.dayservice.note.24",
+    "fee.dayservice.service-provision",
+    "fee.dayservice.treatment-improvement"
+  ],
   "reviewed_relations": [],
   "review_method_required": [
     "厚生労働省の現行公式本文を開く",

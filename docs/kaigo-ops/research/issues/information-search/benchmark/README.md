@@ -303,3 +303,22 @@ Claim Registry v0.21 expected:
 - 屋外サービス提供時間境界（独立review済みHOLD）
 
 RAGは引き続き実装しない。
+
+
+## Remuneration base notice review — 2026-09-23
+
+`data/remuneration-review.json` をv2へ更新。
+
+- overall: IN_PROGRESS
+- 告示第19号「6 通所介護費」本文: COMPLETE
+- 委任先告示第27号・第95号: IN_PROGRESS
+- 老企第36号: PENDING
+
+告示第19号のcurrent official HTMLと、`remuneration-current-text.json` の29 / 29 fee nodeを照合済み。
+source SHAと各fee nodeのtext SHAをreview ledgerへ固定した。
+
+`research-remuneration-base-review-validate-v0.1.mjs` により、
+current importが変化した場合はCIをfailさせる。
+
+委任先告示と留意事項が閉じるまではoverallをCOMPLETEにせず、
+報酬queryのREVIEW_REQUIREDを維持する。

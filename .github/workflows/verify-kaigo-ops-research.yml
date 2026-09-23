@@ -10,6 +10,7 @@ on:
       - "data/questions.json"
       - "data/sources.json"
       - "data/unit-price-*.json"
+      - "data/remuneration-*.json"
       - ".github/workflows/verify-kaigo-ops-research.yml"
   pull_request:
     paths:
@@ -18,6 +19,7 @@ on:
       - "data/questions.json"
       - "data/sources.json"
       - "data/unit-price-*.json"
+      - "data/remuneration-*.json"
       - ".github/workflows/verify-kaigo-ops-research.yml"
   workflow_dispatch:
 
@@ -93,6 +95,9 @@ jobs:
 
       - name: Validate unit-price review ledger
         run: node scripts/research-unit-price-review-validate-v0.1.mjs
+
+      - name: Validate remuneration base review ledger
+        run: node scripts/research-remuneration-base-review-validate-v0.1.mjs
 
       - name: Upload classifier result
         if: always()
