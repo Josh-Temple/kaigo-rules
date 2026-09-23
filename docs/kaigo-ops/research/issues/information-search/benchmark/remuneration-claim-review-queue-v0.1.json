@@ -67,16 +67,25 @@
         62,
         63
       ],
-      "status": "REVIEW_REQUIRED",
+      "status": "COMPLETE",
       "primary_sources": [
+        "mhlw-r6-qa-bathing-assistance",
         "mhlw-fee-criteria95-current",
         "mhlw-fee-notice19-base",
-        "current MHLW Q&A corpus"
+        "current MHLW Q&A index"
       ],
       "related_nodes": [
         "criteria95.dayservice.14-6"
       ],
-      "target": "研修内容、ICTを用いた評価、居宅の範囲、住宅改修の専門知識を有する者をatomic claim化する。"
+      "target": "研修内容、ICTを用いた評価、居宅の範囲、住宅改修の専門知識を有する者をatomic claim化する。",
+      "reviewed_at": "2026-09-23",
+      "claim_ids": [
+        "claim.remuneration.bathing-assistance.training-content",
+        "claim.remuneration.bathing-assistance.ict-asynchronous-evaluation",
+        "claim.remuneration.bathing-assistance.home-scope",
+        "claim.remuneration.bathing-assistance.home-modification-expert"
+      ],
+      "result": "RH2-007〜010を4個のatomic ClaimとしてANSWER / VERIFIED_CURRENTへ昇格。広い報酬Claimは閉じたまま。"
     },
     {
       "group_id": "remuneration.duration-weather",
@@ -153,12 +162,11 @@
   "counts": {
     "groups": 5,
     "holdout_cases": 20,
-    "complete_groups": 1,
-    "answerable_holdout_cases": 6,
-    "remaining_review_required": 14
+    "complete_groups": 2,
+    "answerable_holdout_cases": 10,
+    "remaining_review_required": 10
   },
   "next_priority": [
-    "remuneration.bathing-assistance",
     "remuneration.transport-reduction",
     "remuneration.three-percent-scale-exception",
     "remuneration.duration-weather"

@@ -15,8 +15,8 @@
     "No case was removed or relabeled to improve class balance."
   ],
   "class_distribution": {
-    "ANSWER": 6,
-    "REVIEW_REQUIRED": 14
+    "ANSWER": 10,
+    "REVIEW_REQUIRED": 10
   },
   "cases": [
     {
@@ -77,33 +77,37 @@
       "id": "RH2-007",
       "qno": 60,
       "question": "入浴介助加算(Ⅰ)で求める入浴介助に関する研修とは、具体的にどのような内容ですか。",
-      "expected": "REVIEW_REQUIRED",
+      "expected": "ANSWER",
       "topic": "入浴介助加算",
-      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+      "rationale": "令和6年度介護報酬改定Q&A（Vol.1）問60〜63の回答本文、現行告示第95号十四の六、現行報酬告示を独立確認し、当該質問だけを扱うatomic ClaimをVERIFIED_CURRENTへ昇格。広い報酬Claimは引き続きREVIEW_REQUIRED。",
+      "expected_claim_id": "claim.remuneration.bathing-assistance.training-content"
     },
     {
       "id": "RH2-008",
       "qno": 61,
       "question": "入浴介助加算(Ⅱ)で情報通信機器等を活用して居宅を訪問する場合、訪問する介護職員と評価する医師等が画面を通して同時進行で評価・助言する必要がありますか。",
-      "expected": "REVIEW_REQUIRED",
+      "expected": "ANSWER",
       "topic": "入浴介助加算",
-      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+      "rationale": "令和6年度介護報酬改定Q&A（Vol.1）問60〜63の回答本文、現行告示第95号十四の六、現行報酬告示を独立確認し、当該質問だけを扱うatomic ClaimをVERIFIED_CURRENTへ昇格。広い報酬Claimは引き続きREVIEW_REQUIRED。",
+      "expected_claim_id": "claim.remuneration.bathing-assistance.ict-asynchronous-evaluation"
     },
     {
       "id": "RH2-009",
       "qno": 62,
       "question": "入浴介助加算(Ⅱ)でいう「居宅」には、どのような場所が含まれますか。",
-      "expected": "REVIEW_REQUIRED",
+      "expected": "ANSWER",
       "topic": "入浴介助加算",
-      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+      "rationale": "令和6年度介護報酬改定Q&A（Vol.1）問60〜63の回答本文、現行告示第95号十四の六、現行報酬告示を独立確認し、当該質問だけを扱うatomic ClaimをVERIFIED_CURRENTへ昇格。広い報酬Claimは引き続きREVIEW_REQUIRED。",
+      "expected_claim_id": "claim.remuneration.bathing-assistance.home-scope"
     },
     {
       "id": "RH2-010",
       "qno": 63,
       "question": "入浴介助加算(Ⅱ)で利用者の居宅を訪問して浴室環境等を評価できる「住宅改修に関する専門的知識及び経験を有する者」とは、どのような者ですか。",
-      "expected": "REVIEW_REQUIRED",
+      "expected": "ANSWER",
       "topic": "入浴介助加算",
-      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+      "rationale": "令和6年度介護報酬改定Q&A（Vol.1）問60〜63の回答本文、現行告示第95号十四の六、現行報酬告示を独立確認し、当該質問だけを扱うatomic ClaimをVERIFIED_CURRENTへ昇格。広い報酬Claimは引き続きREVIEW_REQUIRED。",
+      "expected_claim_id": "claim.remuneration.bathing-assistance.home-modification-expert"
     },
     {
       "id": "RH2-011",
