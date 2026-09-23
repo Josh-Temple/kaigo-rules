@@ -1,66 +1,66 @@
 # Kaigo Ops Research Checkpoint — Benchmark Reproducibility Audit
 
 更新日: 2026-09-23  
-状態: **harness defect fixed / 191-check rerun pending**
+状態: **classifier 191 / 191実測済み / composition current-registry dependency fix pending CI**
 
-## 発見した不整合
+## 旧不整合
 
-benchmark/checkpointでは自治体queryを25件として扱い、classifier checksを191件として記録していた。
+旧harnessでは、checkpoint上は自治体queryを25件として191 checksを記録していた一方、
+`research-coverage-classifier-v0.19.mjs`〜`v0.22.mjs` は
+`municipal-query-sample-v0.4.json`（15件）を読み込んでいた。
 
-しかし、`research-coverage-classifier-v0.19.mjs` から `v0.22.mjs` までを確認すると、実際に読み込んでいたのは
+そのため、過去の191 / 191はcurrent harnessでの再現値として扱わず、
+v0.23以降で以下をfail closedにした。
 
-`municipal-query-sample-v0.4.json` = 15件
+- municipal sample: v0.5（25件）
+- suite cardinality検査
+- expected total checks: 191
 
-だった。
+## 実測結果
 
-現在の正本は
+2026-09-23、research branch head
+`9629ba14905f9b1569f2bda467e93397f10e75dc`
+に対するGitHub Actions:
 
-`municipal-query-sample-v0.5.json` = 25件
+- workflow: `.github/workflows/verify-kaigo-ops-research.yml`
+- run: #15
+- run id: `35810802502`
+- event: push
+- conclusion: success
 
-であり、大阪市由来のMQ-016〜MQ-025が追加されている。
+実ログ:
 
-したがって、旧harnessをそのまま実行した場合の総チェック数は181件で、記録上の191件とは一致しない。
+- classifier: v0.26
+- total: **191**
+- result: **PASS**
+- Claim Registry v0.18: 49 claims / errors 0 / valid true
+- Composition Registry v0.5 validator: 5 compositions / errors 0 / valid true
 
-## 対応
+これにより、classifierのcurrent harnessについては191 / 191を再現済みとして扱える。
 
-`research-coverage-classifier-v0.23.mjs` を作成。
+## 追加監査で見つけたvalidator依存関係
 
-変更:
-- municipal sample: v0.4 → v0.5
-- classifier version表示: 0.23
-- Claim Registry表記: v0.15
-- suite cardinalityをfail-closedで検査
-- expected total checks: 191 をharness metadataへ明記
+CI成功後にvalidator本体を静的確認したところ、
+`scripts/research-claim-compositions-validate-v0.5.mjs` は
+current Claim Registry v0.18ではなく、古い `claims-v0.12.json` を参照していた。
 
-classifierのanswerability/routingロジック自体は変更していない。
+したがって、run #15のcomposition step成功を
+「current Claim Registryとのcomposition整合性確認済み」とまでは扱わない。
 
-## 追加10件の静的確認
+対応:
 
-MQ-016〜MQ-025は全て、
-- 「大阪市」という明示的な自治体context
-- 指定事業者 / 指定申請 / 指定前 / 先に指定 / 営業開始 等
+- `research-claim-compositions-validate-v0.6.mjs` を作成
+- current Claim Registry `claims-v0.19.json` を参照
+- workflowをv0.6へ更新
+- classifier v0.27 / Claim validator v0.19と合わせてCI再実行
 
-を含む。
+研究ロジックをPASSさせるための変更ではなく、validatorの参照先をcurrent registryへ合わせる修正である。
 
-現行の `isLocalAuthoritySpecific()` の条件には静的には一致するため、expected `LOCAL` と整合する。
+## 判定
 
-ただし、これはコード読解による確認であり、実行結果ではない。
+- classifier reproducibility: **CLOSED**
+- Claim Registry validator: **CLOSED for v0.18 run #15**
+- Composition current-registry validation: **post-fix CI pending**
+- RAG implementation: **HOLD**
 
-## 数値の扱い
-
-旧記録:
-- 191 / 191
-
-現在の扱い:
-- **historically reported**
-- **current harnessでの再現未確認**
-
-再実行するまで、新たに「191/191 PASS」とは記録しない。
-
-## 次
-
-1. Node実行可能な環境でv0.23を実行
-2. 実測結果を保存
-3. その後、raw RAG holdout 30件の独立ラベル付けを進める
-
-再現性が閉じるまでRAG実装には進まない。
+post-fix CIが成功するまで、compositionについてはcurrent-registry検証完了と表現しない。

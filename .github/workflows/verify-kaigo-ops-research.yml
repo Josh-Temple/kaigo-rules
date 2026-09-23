@@ -33,7 +33,7 @@ jobs:
           node-version: "22"
 
       - name: Run current classifier regression
-        run: node scripts/research-coverage-classifier-v0.26.mjs > research-classifier-result.json
+        run: node scripts/research-coverage-classifier-v0.27.mjs > research-classifier-result.json
 
       - name: Assert classifier regression
         run: |
@@ -84,10 +84,10 @@ jobs:
           NODE
 
       - name: Validate Claim Registry
-        run: node scripts/research-claim-registry-validate-v0.18.mjs
+        run: node scripts/research-claim-registry-validate-v0.19.mjs
 
       - name: Validate Claim Compositions
-        run: node scripts/research-claim-compositions-validate-v0.5.mjs
+        run: node scripts/research-claim-compositions-validate-v0.6.mjs
 
       - name: Upload classifier result
         if: always()
