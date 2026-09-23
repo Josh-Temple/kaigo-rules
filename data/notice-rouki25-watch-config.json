@@ -1,5 +1,5 @@
 {
-  "format_version": 1,
+  "format_version": 2,
   "watch_id": "rouki25-currentness-watch",
   "baseline": {
     "currentness_ledger": "data/notice-rouki25-currentness-ledger.json",
@@ -15,14 +15,16 @@
     "official_pages": {
       "kaigo_latest_info": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
       "r8_reform_notifications": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
-      "notification_new_index": "https://www.mhlw.go.jp/hourei/new/tsuchi/newindex.html"
+      "notification_new_index": "https://www.mhlw.go.jp/hourei/new/tsuchi/newindex.html",
+      "law_database_update": "https://www.mhlw.go.jp/hourei/new/update/data.html"
     }
   },
   "policy": {
     "read_only": true,
     "automatic_promotion_allowed": false,
     "pass_meaning": "No configured watch trigger was detected. PASS does not prove that no unindexed amendment exists.",
-    "review_trigger": "A target term appears in a newly listed 介護保険最新情報 item or watched official page, or a pinned official PDF hash changes.",
-    "failure_mode": "Network/parser/source access failure is fail-closed and requires review."
+    "review_trigger": "A target term appears in a newly listed 介護保険最新情報 item, watched official page, or the latest MHLW law-database notification-amendment PDF; or a pinned official PDF hash changes.",
+    "failure_mode": "Network/parser/source access failure is fail-closed and requires review.",
+    "law_database_scope_limit": "The MHLW notification database covers the ministry's '主な' notifications. A clean watch result is supporting evidence only and never proves exhaustive absence of amendments."
   }
 }

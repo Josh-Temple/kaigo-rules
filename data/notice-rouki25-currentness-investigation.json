@@ -1,5 +1,5 @@
 {
-  "format_version": 5,
+  "format_version": 6,
   "scope": "rouki25-dayservice-22-currentness",
   "checked_at": "2026-09-23",
   "fresh_main_sha_at_start": "5cdb9fceb90f446c4cf4de170385b08e39d96db6",
@@ -196,5 +196,84 @@
     "inference_limit": "PDF本文検索を追加しても、検索エンジンや公開索引が全資料を網羅する保証はない。後続改正を網羅する一次資料上の改正履歴、または現行統合本文を確認できるまでは、改正候補が見つからないことを改正不存在の証明にしない。",
     "decision_effect": "HOLD_UNCHANGED",
     "next_blocker": "令和6年3月15日後から確認時点までを網羅する厚生労働省一次資料上の改正履歴、または老企第25号の現行統合本文を確認できる経路。"
+  },
+  "mhlw_law_database_coverage_check": {
+    "checked_at": "2026-09-23",
+    "fresh_main_sha_at_start": "e235ee114958cc79a19bd6b73f316619a746f349",
+    "purpose": "厚生労働省法令等データベースが、令和6年3月15日後の老企第25号について網羅的な改正履歴または現行統合本文を提供する経路になり得るか確認する。",
+    "official_database": {
+      "top_url": "https://www.mhlw.go.jp/hourei/",
+      "notification_scope": "厚生労働省所管の主な訓令、通知、公示等",
+      "latest_registered_notification_date": "2026-07-17",
+      "database_update_date": "2026-09-02",
+      "update_frequency": "MONTHLY",
+      "pending_notifications_url": "https://www.mhlw.go.jp/hourei/new/tsuchi/newindex.html",
+      "pending_observation": "確認時点の「老健局 新着の通知」欄には掲載項目がなく、ページ本文にも「老企第25号」および対象通知の正式名称の一致を確認できなかった。",
+      "monthly_update_url": "https://www.mhlw.go.jp/hourei/new/update/data.html",
+      "latest_notification_amendment_list_url": "https://www.mhlw.go.jp/hourei/new/update/kai241t.pdf",
+      "latest_notification_amendment_count": 7,
+      "latest_update_observation": "令和8年8月定期データ更新内容の「通知改正一覧」7件を確認したが、老企第25号は含まれていなかった。",
+      "coverage_limit": "通知検索の対象が厚生労働省自身の説明で「主な」訓令・通知・公示等とされているため、このデータベースおよび登載準備中・通知改正一覧の不在だけで全通知の改正不存在を証明しない。"
+    },
+    "original_record_check": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "classification": "HISTORICAL_ORIGINAL_NOT_CONSOLIDATED",
+      "markers_checked": [
+        "身体的拘束",
+        "業務継続計画",
+        "ウェブサイト",
+        "令和六"
+      ],
+      "current_markers_found": [],
+      "observation": "老企第25号の法令等データベース本文は制定当初の歴史本文として確認でき、令和6年度改正後の通所介護本文を統合した現行本文とは確認できなかった。",
+      "currentness_use": "歴史資料としてのみ使用し、candidateの現行性証明には使用しない。"
+    },
+    "r6_official_redline_check": {
+      "landing_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "redline_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+      "observation": "令和6年度介護報酬改定ページから対象通知への公式導線は確認できるが、リンク先は「別紙10」「（抄）」の新旧対照表であり、令和6年改正時点の改正資料であって現行統合全文ではない。",
+      "classification": "R6_AMENDMENT_REDLINE_NOT_CONSOLIDATED"
+    },
+    "result": {
+      "official_discovery_coverage_strengthened": true,
+      "database_is_exhaustive_for_all_notifications": false,
+      "current_integrated_text_found": false,
+      "verified_post_r6_amendment_candidate_identified": false,
+      "decision_effect": "HOLD_UNCHANGED"
+    },
+    "coverage_matrix": [
+      {
+        "lane": "R6_BASELINE",
+        "status": "COVERED",
+        "claim": "令和6年3月15日の老企第25号改正と別紙10への公式導線を確認。",
+        "limitation": "その後の改正不存在は示さない。"
+      },
+      {
+        "lane": "KAIGO_LATEST_INFO_AND_R8_REFORM",
+        "status": "SEARCHED_NO_TARGET_CANDIDATE",
+        "claim": "令和7・8年の公式索引と令和8年度改定ページで後続改正候補を探索。",
+        "limitation": "索引外・別表題・PDF本文のみの改正を排除できない。"
+      },
+      {
+        "lane": "MHLW_LAW_DB_REGISTERED_MAIN_NOTICES",
+        "status": "SEARCHED_SUPPORTING_ONLY",
+        "claim": "法令等データベースと最新の通知改正一覧を確認。",
+        "limitation": "対象範囲が「主な通知」であり全通知を網羅する保証がない。"
+      },
+      {
+        "lane": "MHLW_LAW_DB_PENDING_MAIN_NOTICES",
+        "status": "SEARCHED_NO_TARGET_CANDIDATE",
+        "claim": "登載準備中の新着通知を確認し、老健局の掲載項目および対象語の一致を確認できなかった。",
+        "limitation": "同じく「主な通知」系統の補助経路であり、完全性の証明にはならない。"
+      },
+      {
+        "lane": "CURRENT_INTEGRATED_TEXT",
+        "status": "NOT_FOUND",
+        "claim": "厚労省法令等データベースの老企第25号本文は歴史本文で、R6公式PDFも新旧対照表（抄）。",
+        "limitation": "権威ある現行統合本文は未確認。"
+      }
+    ],
+    "inference_limit": "厚生労働省の公式データベース・登載準備中・通知改正一覧を組み合わせることで探索経路は強化できるが、公式説明自体が対象を「主な通知」としている。したがって、対象通知が見つからないことを後続改正不存在の網羅的証明にはしない。",
+    "next_blocker": "全通知を対象とすることが明示された一次資料上の完全な改正履歴、または老企第25号の権威ある現行統合本文。"
   }
 }
