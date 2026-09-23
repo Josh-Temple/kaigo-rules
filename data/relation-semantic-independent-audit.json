@@ -1,0 +1,108 @@
+{
+  "format_version": 1,
+  "scope": "explicit-legal-reference-relations-ordinance37-article105",
+  "audit_kind": "INDEPENDENT_EXPLICIT_LEGAL_REFERENCE_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-24",
+  "audit_run": {
+    "workflow": "Verify explicit legal-reference relations independently",
+    "run_id": 35929830286,
+    "head_sha": "dd8e10b7fc6d186f33537cb79fa7252fdfbde5a4",
+    "parser": "python_xml_dom_minidom_plus_independent_japanese_article_reference_parser",
+    "result": "PASS",
+    "artifact_id": 10780636260,
+    "artifact_digest": "sha256:c79f4415ea3c7014fe4f5982578230ee05d78ca801940c8aea6a4439101a92f5"
+  },
+  "checks": [
+    {
+      "id": "ordinance37-article105-incorporation",
+      "source_url": "https://laws.e-gov.go.jp/api/1/lawdata/411M50000100037",
+      "source_xml_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
+      "source_article_id": "ordinance37.article.105",
+      "relation": "incorporates_by_reference",
+      "result": "PASS",
+      "relation_count": 23,
+      "observed_article_targets": [
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "19",
+        "21",
+        "26",
+        "27",
+        "30-2",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37-2",
+        "38",
+        "52"
+      ],
+      "expected_relation_targets": [
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "19",
+        "21",
+        "26",
+        "27",
+        "30-2",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37-2",
+        "38",
+        "52"
+      ],
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "source_derived_structural_contains_relations": 268,
+    "non_contains_semantic_or_cross_layer_relations": 163,
+    "explicit_legal_reference_relations_independently_verified": 23,
+    "semantic_or_cross_layer_relations_not_yet_independently_verified": 140
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/ordinance37-nodes.json": "238a2e77799a4aa5626c39d26d54b6a6e46eeef9",
+    "data/ordinance37-relations.json": "9c1596d8d0d4f8dac27854d954f72fec2b69f42c",
+    "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
+    "data/fee-guidance-relations.json": "caa6b1f9e93164c066dca3e345008b10914a5b2d",
+    "data/notice-ordinance-relations.json": "83a63383e63c37eec2bd1ce67e6b2a1975256d72",
+    "data/relationships.json": "870df418e53bd7e76713bf038d9c883fa2c69466",
+    "data/remuneration-delegated-relations.json": "6d4f7047fb78a399b4a4a543266003e9c223e481",
+    "data/remuneration-relations.json": "c0148b44987f638888a2c1d7f5bdb1dbe2369252",
+    "scripts/verify_relation_semantics_independent.py": "b8f77602d1f378a77938f976ab3cb8f533b8e74e"
+  },
+  "conclusion": "Ordinance 37 Article 105 explicitly enumerates the same 23 incorporated articles as the committed incorporates_by_reference relations, independently reconstructed from live e-Gov XML.",
+  "limitations": [
+    "PASS applies only to the 23 explicit Article 105 incorporates_by_reference relations.",
+    "The remaining 140 non-contains semantic or cross-layer relations are not independently verified by this audit.",
+    "This audit does not promote HUMAN_VERIFIED or VERIFIED_CURRENT.",
+    "Later changes to pinned inputs or verifier require a refreshed audit record."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_unverified_semantic_mappings": false
+  }
+}
