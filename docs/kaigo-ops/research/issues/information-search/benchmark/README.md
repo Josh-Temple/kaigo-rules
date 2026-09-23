@@ -1,7 +1,7 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **Claim Registry v0.16 / corrected regression harness v0.24 / RAG deferred**
+状態: **Claim Registry v0.18 / corrected regression harness v0.26 / RAG deferred**
 
 ## 現在のsuite
 
@@ -95,8 +95,8 @@ Source
 - `node scripts/research-coverage-classifier-v0.19.mjs`
 - `node scripts/research-coverage-classifier-v0.20.mjs`
 - `node scripts/research-coverage-classifier-v0.21.mjs`
-- `node scripts/research-coverage-classifier-v0.24.mjs`
-- `node scripts/research-claim-registry-validate-v0.16.mjs`
+- `node scripts/research-coverage-classifier-v0.26.mjs`
+- `node scripts/research-claim-registry-validate-v0.18.mjs`
 - `node scripts/research-claim-registry-validate-v0.14.mjs`
 - `node scripts/research-claim-registry-validate-v0.13.mjs`
 - `node scripts/research-claim-compositions-validate-v0.5.mjs`
@@ -156,7 +156,7 @@ RAGはcoverage拡張より先に実装しない。
 - 生活相談員の地域連携活動時間
 
 external sampleは `external-qa-query-sample-v0.6.json`。
-classifierは `research-coverage-classifier-v0.24.mjs`。
+classifierは `research-coverage-classifier-v0.26.mjs`。
 
 ## Reproducibility
 
@@ -173,3 +173,18 @@ GitHub Actions:
 - Vercel deployとは独立
 
 再実行結果を確認するまでは191/191を新規PASSとして扱わない。
+
+
+## Claim coverage update — 2026-09-23
+
+`claims-v0.18.json` で、生活相談員・介護職員の具体的人員配置を
+PARTIAL / CANDIDATE_UNREVIEWED から ANSWER / VERIFIED_CURRENT へ昇格した。
+
+- EQ-003: PARTIAL → ANSWER
+- external sample: `external-qa-query-sample-v0.8.json`
+- classifier: `research-coverage-classifier-v0.26.mjs`
+
+現在:
+- CANDIDATE_UNREVIEWED: 0
+- PARTIAL: 0
+- 残るREVIEW_REQUIREDは、報酬・単価・重要事項変更時同意・屋外時間境界・訪問診療等の5論点。
