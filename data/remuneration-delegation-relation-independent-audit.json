@@ -1,0 +1,135 @@
+{
+  "format_version": 1,
+  "scope": "remuneration-delegation-relations-explicit-primary-source",
+  "audit_kind": "INDEPENDENT_REMUNERATION_DELEGATION_RELATION_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-24",
+  "audit_run": {
+    "workflow": "Verify remuneration delegation relations independently",
+    "run_id": 35931965818,
+    "head_sha": "556b765ecc565511f8004ed98270ce4c03fcc284",
+    "parser": "python_stdlib_htmlparser_plus_explicit_title_and_reference_rules",
+    "result": "PASS",
+    "artifact_id": 10781402980,
+    "artifact_digest": "sha256:3f57c1e55b1ea9eb1f01a1a2bac8f19185d05c0ed975c27e94db0ebffddcfa6f"
+  },
+  "sources": {
+    "notice19": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+      "sha256": "e189120c253f72d2d5dab24dfe7118bad7d602f0baba3d8cdf98a58c7ecc5bbd"
+    },
+    "notice27": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+      "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+    },
+    "notice95": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618"
+    }
+  },
+  "checks": [
+    {
+      "from_id": "fee.dayservice.note.1",
+      "relation": "calculation_controlled_by",
+      "to_id": "calc27.dayservice.1.capacity",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.note.1",
+      "relation": "calculation_controlled_by",
+      "to_id": "calc27.dayservice.1.staffing",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.note.10",
+      "relation": "criteria_set_by",
+      "to_id": "criteria95.dayservice.14-6",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.note.11",
+      "relation": "criteria_set_by",
+      "to_id": "criteria95.dayservice.15",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.note.13",
+      "relation": "criteria_set_by",
+      "to_id": "criteria95.dayservice.16",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.note.15",
+      "relation": "criteria_set_by",
+      "to_id": "criteria95.dayservice.17",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.note.17",
+      "relation": "criteria_set_by",
+      "to_id": "criteria95.dayservice.18-2",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.note.18",
+      "relation": "criteria_set_by",
+      "to_id": "criteria95.dayservice.19",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.service-provision",
+      "relation": "criteria_set_by",
+      "to_id": "criteria95.dayservice.23",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "fee.dayservice.treatment-improvement",
+      "relation": "criteria_set_by",
+      "to_id": "criteria95.dayservice.24",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "from_id": "criteria95.dayservice.24",
+      "relation": "incorporates_by_reference",
+      "to_id": "criteria95.shared.4",
+      "result": "PASS",
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "relations_in_this_lane": 11,
+    "relations_passed": 11,
+    "previous_explicit_relations_independently_verified": 45,
+    "aggregate_explicit_relations_independently_verified": 56,
+    "non_contains_semantic_or_cross_layer_relations_current_inventory": 163,
+    "remaining_semantic_or_cross_layer_relations_not_independently_verified": 107
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/remuneration-delegated-relations.json": "6d4f7047fb78a399b4a4a543266003e9c223e481",
+    "data/cross-layer-source-chain-independent-audit.json": "2b86a5c666576c2dd30407f877d4924ce014dbb3",
+    "scripts/verify_remuneration_delegation_relations.py": "4efb369c5ac4b3d4dc2916184a0a2553655ba7c7"
+  },
+  "conclusion": "All 11 remuneration delegation/cross-reference relations in the covered lane matched explicit wording or named criteria in live MHLW primary-source HTML.",
+  "limitations": [
+    "PASS is limited to the 11 covered explicit remuneration delegation/cross-reference relations.",
+    "The remaining 107 non-contains semantic or cross-layer relations are not independently verified by this audit.",
+    "This audit does not promote HUMAN_VERIFIED or VERIFIED_CURRENT.",
+    "Later changes to pinned inputs or verifier require a refreshed audit record."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_other_semantic_mappings": false
+  }
+}
