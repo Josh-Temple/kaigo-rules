@@ -1,0 +1,84 @@
+name: Update notice personnel snapshots
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "feat/**"
+    paths:
+      - ".github/workflows/update-notice-personnel-snapshots.yml"
+      - "data/notice-personnel-source-manifest.json"
+      - "data/notice-personnel-current-assembly.json"
+      - "data/notice-personnel-replay-coverage.json"
+      - "data/notice-current-skeleton.json"
+      - "data/notice-amendment-events.json"
+      - "data/notice-source-chain.json"
+      - "data/sources.json"
+      - "scripts/import_notice_personnel_snapshots.py"
+      - "scripts/assemble_notice_personnel_current_candidates.py"
+      - "scripts/validate-data.mjs"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-notice-personnel-snapshots.yml"
+      - "data/notice-personnel-source-manifest.json"
+      - "data/notice-personnel-current-assembly.json"
+      - "data/notice-personnel-replay-coverage.json"
+      - "data/notice-personnel-source-snapshots.json"
+      - "data/notice-personnel-current-text-candidates.json"
+      - "data/notice-current-skeleton.json"
+      - "data/notice-amendment-events.json"
+      - "data/notice-source-chain.json"
+      - "data/sources.json"
+      - "scripts/import_notice_personnel_snapshots.py"
+      - "scripts/assemble_notice_personnel_current_candidates.py"
+      - "scripts/validate-data.mjs"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Rebuild official notice personnel snapshots
+        run: python scripts/import_notice_personnel_snapshots.py
+      - name: Assemble notice personnel current-text candidates
+        run: python scripts/assemble_notice_personnel_current_candidates.py
+      - name: Validate data
+        run: node scripts/validate-data.mjs
+      - name: Detect generated changes
+        id: diff
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain -- data/notice-personnel-source-snapshots.json data/notice-personnel-current-text-candidates.json)" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Commit generated evidence on feature branch
+        if: github.event_name == 'push' && steps.diff.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/notice-personnel-source-snapshots.json data/notice-personnel-current-text-candidates.json
+          git commit -m "data: generate rouki25 personnel evidence and candidates"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Require generated files to be current on pull request
+        if: github.event_name == 'pull_request' && steps.diff.outputs.changed == 'true'
+        run: |
+          echo "Generated notice personnel evidence/candidates are stale." >&2
+          exit 1
+      - name: Summarize
+        if: always()
+        run: |
+          echo "Machine extraction/reconstruction only; no HUMAN_VERIFIED or VERIFIED_CURRENT status is changed." >> "$GITHUB_STEP_SUMMARY"

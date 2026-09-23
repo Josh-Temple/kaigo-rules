@@ -1,0 +1,159 @@
+[
+  {
+    "notice_id": "notice.dayservice.personnel.staffing",
+    "baseline": {
+      "source_id": "mhlw-h27-interpretation-redline",
+      "period": "2015",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-h30-interpretation-redline",
+        "effective_from": "2018-04-01",
+        "effect": "PATCH_APPLIED",
+        "evidence": "②の延長サービス対象時間を8時間以上9時間未満へ変更。③〜⑧は略。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "effective_from": "2021-04-01",
+        "effect": "PATCH_APPLIED",
+        "evidence": "⑥の看護職員確保方法を事業所従業者による場合と医療機関等との連携による場合に分けて整理。①〜⑤、⑦・⑧は略。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "PERSONNEL_SECTION_PRESERVED",
+        "evidence": "通所介護「1・2（略）」で人員節を変更対象としていない。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_PERSONNEL_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "厚労省掲載の参照資料でも通所介護「1・2（略）」。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.personnel.life-counselor",
+    "baseline": {
+      "source_id": "mhlw-h27-interpretation-redline",
+      "period": "2015",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-h30-interpretation-redline",
+        "effective_from": "2018-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "H30新欄の人員(2)は「略」。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "effective_from": "2021-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "R3新欄の(2)〜(4)は「略」。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "PERSONNEL_SECTION_PRESERVED",
+        "evidence": "通所介護「1・2（略）」。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_PERSONNEL_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "厚労省掲載の参照資料でも通所介護「1・2（略）」。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.personnel.function-training",
+    "baseline": {
+      "source_id": "mhlw-h30-interpretation-redline",
+      "period": "2018",
+      "status": "AMENDMENT_STATE_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "effective_from": "2021-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "R3新欄の(2)〜(4)は「略」。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "PERSONNEL_SECTION_PRESERVED",
+        "evidence": "通所介護「1・2（略）」。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_PERSONNEL_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "厚労省掲載の参照資料でも通所介護「1・2（略）」。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  },
+  {
+    "notice_id": "notice.dayservice.personnel.manager",
+    "baseline": {
+      "source_id": "mhlw-h27-interpretation-redline",
+      "period": "2015",
+      "status": "AFTER_TEXT_CAPTURED"
+    },
+    "checkpoints": [
+      {
+        "source_id": "mhlw-h30-interpretation-redline",
+        "effective_from": "2018-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "H30新欄の人員(4)は「略」。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "effective_from": "2021-04-01",
+        "effect": "NO_TEXT_CHANGE_SHOWN",
+        "evidence": "R3新欄の(2)〜(4)は「略」。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "effective_from": "2024-04-01",
+        "effect": "PERSONNEL_SECTION_PRESERVED",
+        "evidence": "通所介護「1・2（略）」。",
+        "status": "CHECKED"
+      },
+      {
+        "source_id": "mhlw-2026-rouki25-reference-redline",
+        "reference_period": "2026-03",
+        "effect": "NO_CONFLICTING_PERSONNEL_CHANGE_IN_CURRENT_MHLW_REFERENCE",
+        "evidence": "厚労省掲載の参照資料でも通所介護「1・2（略）」。",
+        "status": "CHECKED"
+      }
+    ],
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_MACHINE_RECONSTRUCTED",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "NOT_REVIEWED"
+  }
+]

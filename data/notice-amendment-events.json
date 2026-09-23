@@ -61,6 +61,15 @@
     "verification_status": "KNOWN_AFTER_TEXT"
   },
   {
+    "id": "rouki25.r3.dayservice.nurse-staffing-structure",
+    "source_id": "mhlw-2021-interpretation-redline",
+    "effective_from": "2021-04-01",
+    "target_node_id": "notice.dayservice.personnel.staffing",
+    "operation": "replace_fragment",
+    "summary": "看護職員の確保方法について、事業所の従業者により確保する場合と、病院・診療所・訪問看護ステーションとの連携により確保する場合をア・イに分けて具体化。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
     "id": "rouki25.r3.dayservice.add-community-abuse-records",
     "source_id": "mhlw-2021-interpretation-redline",
     "effective_from": "2021-04-01",

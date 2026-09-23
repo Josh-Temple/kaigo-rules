@@ -1,0 +1,44 @@
+{
+  "format_version": 1,
+  "output_path": "data/notice-personnel-current-text-candidates.json",
+  "effective_as_of": "2026-09-23",
+  "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+  "policy": "Candidates are deterministic reconstructions from official-source body snapshots and ordered amendment replay. They are not official consolidated text and must not update HUMAN_VERIFIED or VERIFIED_CURRENT automatically.",
+  "items": [
+    {
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "baseline_snapshot_id": "dayservice-personnel-staffing-h27-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-personnel-staffing-h30-hours-patch",
+          "operation": "replace_between",
+          "start_anchor": "② ７時間以上９時間未満の通所介護の前後に連続して延長サービス",
+          "end_anchor": "③ 居宅基準第93条第１項第１号",
+          "note": "H30で7時間以上9時間未満→8時間以上9時間未満へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-personnel-staffing-r3-nurse-patch",
+          "operation": "replace_between",
+          "start_anchor": "⑥ 看護職員については、提供時間帯を通じて専従する必要はないが、",
+          "end_anchor": "⑦ 利用者の数又は利用定員は",
+          "note": "R3で看護職員の確保方法をア・イに分けて再構成"
+        }
+      ]
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.life-counselor",
+      "baseline_snapshot_id": "dayservice-personnel-life-counselor-h27",
+      "patches": []
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.function-training",
+      "baseline_snapshot_id": "dayservice-personnel-function-training-h30",
+      "patches": []
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.manager",
+      "baseline_snapshot_id": "dayservice-personnel-manager-h27",
+      "patches": []
+    }
+  ]
+}
