@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -32,6 +33,19 @@ def git_blob_sha1(path: Path) -> str:
 
 def sort_article(value: str):
     return tuple(int(part) for part in value.split("-"))
+
+
+def equivalent_mhlw_doc_route(left: str, right: str) -> bool:
+    a = urlparse(left)
+    b = urlparse(right)
+    if (a.scheme, a.netloc, a.path) != (b.scheme, b.netloc, b.path):
+        return False
+    qa = parse_qs(a.query)
+    qb = parse_qs(b.query)
+    return (
+        qa.get("dataId") == qb.get("dataId")
+        and qa.get("dataType") == qb.get("dataType")
+    )
 
 
 def main() -> None:
@@ -101,7 +115,10 @@ def main() -> None:
     )
     if source_row is None:
         fail("Notice 19 source manifest row missing")
-    if source_row.get("url") != fee_meta.get("source_url"):
+    if not equivalent_mhlw_doc_route(
+        str(source_row.get("url", "")),
+        str(fee_meta.get("source_url", "")),
+    ):
         fail("Notice 19 source route changed")
 
     root = next((row for row in skeleton if row.get("id") == "fee.dayservice.root"), None)
