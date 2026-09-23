@@ -57,6 +57,7 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Outdoor Service Source Audit v0.19](./research/checkpoint-outdoor-source-audit-v0.19-2026-09-23.md)
 - [Current-Source Reconstruction checkpoint](./research/checkpoint-current-source-reconstruction-v0.18-2026-09-23.md)
 - [Second Municipal Source checkpoint](./research/checkpoint-second-municipal-source-v0.17-2026-09-23.md)
 - [Hairdressing / Visiting Medical checkpoint](./research/checkpoint-hairdressing-visiting-medical-v0.16-2026-09-23.md)
@@ -108,6 +109,7 @@ Evidence Review / 方法 / 検証
 
 ### Claim-level coverage
 
+- [Claim Registry v0.15](./research/claims/claims-v0.15.json)
 - [Claim Registry v0.14](./research/claims/claims-v0.14.json)
 - [Claim Registry v0.13](./research/claims/claims-v0.13.json)
 - [Claim Composition Registry v0.5](./research/claims/claim-compositions-v0.5.json)
