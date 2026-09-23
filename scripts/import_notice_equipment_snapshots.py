@@ -121,14 +121,19 @@ def clean_body_text(value: str) -> str:
     lines = []
     for line in value.replace("\f", "").split("\n"):
         stripped = line.strip()
-        if re.fullmatch(r"(?:-\s*)?\d{1,3}\s*-?", stripped or ""):
+        if not stripped:
             continue
-        lines.append(line.rstrip())
-    while lines and not lines[0].strip():
-        lines.pop(0)
-    while lines and not lines[-1].strip():
-        lines.pop()
-    return "\n".join(lines) + ("\n" if lines else "")
+        if re.fullmatch(r"(?:-\s*)?\d{1,3}\s*-?", stripped):
+            continue
+        if "指定居宅サービス等及び指定介護予防サービス等に関する基準について（抄）" in stripped:
+            continue
+        if stripped in {"新", "旧", "改正後", "改正前"}:
+            continue
+        lines.append(stripped)
+    # PDF line wrapping and column layout insert whitespace inside Japanese legal text.
+    # Store a layout-independent character stream; source page/column hashes remain evidence.
+    compact = re.sub(r"\s+", "", "".join(lines))
+    return compact + ("\n" if compact else "")
 
 def main() -> None:
     parser = argparse.ArgumentParser()
