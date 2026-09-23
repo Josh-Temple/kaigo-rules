@@ -9,6 +9,7 @@ SNAPSHOTS_PATH = ROOT / "data" / "fee-guidance-source-snapshots.json"
 ASSEMBLY_PATH = ROOT / "data" / "fee-guidance-current-assembly.json"
 SKELETON_PATH = ROOT / "data" / "fee-guidance-current-skeleton.json"
 REPLAY_PATH = ROOT / "data" / "fee-guidance-replay-coverage.json"
+SUPPLEMENTS_PATH = ROOT / "data" / "fee-guidance-verified-text-supplements.json"
 
 def normalize_with_map(value: str):
     chars = []
@@ -37,6 +38,20 @@ def insert_before_normalized(value: str, anchor: str, insertion: str) -> str:
     suffix = value[source_index:].lstrip()
     return prefix + "\n" + insertion.strip() + "\n" + suffix
 
+def replace_normalized_once(value: str, before: str, after: str, label: str) -> str:
+    normalized_value, positions = normalize_with_map(value)
+    needle = normalized(before)
+    first = normalized_value.find(needle)
+    if first < 0:
+        raise RuntimeError(f"{label}: replacement marker not found: {before}")
+    second = normalized_value.find(needle, first + len(needle))
+    if second >= 0:
+        raise RuntimeError(f"{label}: replacement marker is not unique: {before}")
+    start_original = positions[first]
+    end_normalized = first + len(needle) - 1
+    end_original = positions[end_normalized] + 1
+    return value[:start_original] + after + value[end_original:]
+
 def sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
@@ -45,6 +60,7 @@ def main() -> None:
     assembly = json.loads(ASSEMBLY_PATH.read_text(encoding="utf-8"))
     skeleton = json.loads(SKELETON_PATH.read_text(encoding="utf-8"))
     replay = json.loads(REPLAY_PATH.read_text(encoding="utf-8"))
+    supplements = json.loads(SUPPLEMENTS_PATH.read_text(encoding="utf-8"))
 
     if int(snapshots.get("format_version", 0)) < 3:
         raise RuntimeError("fee-guidance-source-snapshots.json format_version >= 3 is required")
@@ -52,6 +68,9 @@ def main() -> None:
     snapshot_by_id = {item["id"]: item for item in snapshots["segments"]}
     guidance_by_id = {item["id"]: item for item in skeleton}
     replay_by_id = {item["guidance_id"]: item for item in replay}
+    supplements_by_guidance = {}
+    for supplement in supplements.get("supplements", []):
+        supplements_by_guidance.setdefault(supplement["guidance_id"], []).append(supplement)
 
     output = []
     seen = set()
@@ -111,6 +130,31 @@ def main() -> None:
                 "operation": patch["operation"],
                 "baseline_anchor": patch["baseline_anchor"],
                 "note": patch.get("note")
+            })
+
+        for supplement in supplements_by_guidance.get(guidance_id, []):
+            for index, replacement in enumerate(supplement.get("replacements", []), start=1):
+                candidate_text = replace_normalized_once(
+                    candidate_text,
+                    replacement["before"],
+                    replacement["after"],
+                    f"{supplement['id']} replacement {index}"
+                )
+            candidate_text = candidate_text.strip() + "\n"
+            evidence.append({
+                "supplement_id": supplement["id"],
+                "role": "verified_text_supplement",
+                "source_ids": supplement["source_ids"],
+                "source_urls": supplement.get("source_urls", []),
+                "page_ranges": supplement.get("page_ranges", []),
+                "verified_at": supplement["verified_at"],
+                "note": supplement.get("note"),
+                "replacement_sha256": sha256_text(
+                    "\n".join(
+                        replacement["after"]
+                        for replacement in supplement.get("replacements", [])
+                    )
+                )
             })
 
         output.append({

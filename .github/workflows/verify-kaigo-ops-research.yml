@@ -117,3 +117,14 @@ jobs:
           name: kaigo-ops-research-classifier-result
           path: research-classifier-result.json
           if-no-files-found: error
+
+
+      - name: Rebuild fee-guidance candidates (bootstrap)
+        run: python scripts/assemble_fee_guidance_current_candidates.py
+
+      - name: Upload rebuilt fee-guidance candidates (bootstrap)
+        uses: actions/upload-artifact@v4
+        with:
+          name: rebuilt-fee-guidance-current-text-candidates
+          path: data/fee-guidance-current-text-candidates.json
+          if-no-files-found: error
