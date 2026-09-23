@@ -21,12 +21,12 @@ INFO={
  "mhlw-h30-interpretation-redline":("2018","平成30年度改正後・新旧対照表","新|旧","left"),
  "mhlw-2021-interpretation-redline":("2021","令和3年度改正後文を含む新旧対照表","新|旧","left"),
  "mhlw-2024-interpretation-redline":("2024","令和6年度改正後・新旧対照表","新|旧","left"),
- "mhlw-2026-rouki25-reference-redline":("2026-03","令和8年3月の部分的参照資料","新|旧","left"),
+ "mhlw-2026-rouki25-reference-redline":("2025-03","令和7年3月改訂国マニュアル掲載の部分参照資料","新|旧","left"),
 }
 ROUTES=[
  {"route":"厚労省・令和6年度介護報酬改定ページ","url":"https://www.mhlw.go.jp/stf/newpage_38790.html","finding":"令和6年版の解釈通知PDFへの公式導線。統合現行全文ではない。"},
  {"route":"厚労省・令和6年度改正後PDF","url":"https://www.mhlw.go.jp/content/12300000/001227935.pdf","finding":"対象patchの改正後欄を確認。令和6年改正比較資料。"},
- {"route":"厚労省・令和8年3月部分参照PDF","url":"https://www.mhlw.go.jp/content/12304250/001453049.pdf","finding":"SHA-256は各source snapshotに記録。部分参照としてだけ使用。"},
+ {"route":"厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF","url":"https://www.mhlw.go.jp/content/12304250/001453049.pdf","finding":"令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"},
  {"route":"厚労省・令和8年度介護報酬改定ページ","url":"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html","finding":"改定告示等を確認。通所介護22項目の完全な現行解釈通知は確認できず。"},
  {"route":"厚労省・介護保険最新情報掲載ページ群","url":"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html","additional_urls":["https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00029.html","https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00031.html"],"finding":"令和7・8年資料と通知名を検索。網羅的な対象通知改正履歴ではない。"},
  {"route":"厚労省ドメイン限定の改正通知検索","queries":['site:mhlw.go.jp "指定居宅サービス等及び指定介護予防サービス等に関する基準について" 令和7年','site:mhlw.go.jp "老企第25号" 令和7年 改正 通所介護','site:mhlw.go.jp "老企第25号" 令和8年 通所介護 改正','site:mhlw.go.jp 令和7年 "老企第25号の一部改正"','site:mhlw.go.jp 令和8年 "老企第25号の一部改正"'],"finding":"確認した検索結果に令和6年版より後の対象本文の一部改正通知は見つからず。検索結果の不在は変更不存在の証拠としない。"},
@@ -219,13 +219,13 @@ def build():
    },
    "currentness":{
     "status":"UNRESOLVED_EXHAUSTIVE_COVERAGE","latest_applied_or_baseline_source_period":full_trace[-1]["issued_period"],
-    "latest_official_partial_reference_period":"2026-03","2026_partial_reference_coverage":coverage,
+    "latest_official_partial_reference_period":"2025-03","2026_partial_reference_coverage":coverage,
     "later_amendment_search":"公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-    "hold_reason":"2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+    "hold_reason":"2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
     "routes":ROUTES,
    },
    "decision_reason":"候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
-   "residual_risks":["後続改正の網羅性を一次資料で確証できていない。","2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。","PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"],
+   "residual_risks":["後続改正の網羅性を一次資料で確証できていない。","001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。","PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"],
    "reviewer_should_check":[
     "後続改正を網羅する厚労省一次資料または現行統合本文を入手し、令和6年以降も確認する。",
     f"baseline PDF p.{base['page_start']}-{base['page_end']}を表示し、改正後欄、前後見出し、頁跨ぎ、項目境界を確認する。",
@@ -246,7 +246,7 @@ def build():
    "counts":counts,"candidate_text_replay_match_count":matches,"candidate_text_mismatch_count":22-matches,"currentness_unresolved_count":22,
    "highest_risk_items":[{"notice_id":x["notice_id"],"title":x["title"],**x["risk"]} for x in sorted(out,key=lambda a:(-a["risk"]["score"],a["notice_id"]))[:5]],
    "common_findings":[
-    {"category":"currentness/source coverage","finding":"令和6年版以後の対象項目を網羅する現行統合本文・公式な全改正履歴を確認できない。令和8年3月資料は部分参照。","impact":"22項目をHOLDとし、歴史資料からの一致を現行性の証明にしない。"},
+    {"category":"currentness/source coverage","finding":"令和6年版以後の対象項目を網羅する現行統合本文・公式な全改正履歴を確認できない。001453049.pdfは令和7年3月改訂国マニュアルで掲載され、令和8年3月改訂ページでも再掲されているが部分参照。","impact":"22項目をHOLDとし、歴史資料や再掲からの一致を現行性の証明にしない。"},
     {"category":"stale verification provenance","finding":f"既存PASS記録はSHA {rec.get('verified_main_sha')}。fresh read main SHA {AUDIT_SHA}とは異なる。","impact":"既存PASSを今回の結論に使用していない。"},
     {"category":"unsupported current-as-of metadata","finding":"packetのeffective_as_of=2026-09-23は再構成日を示すメタデータであり、この監査で現行性を裏付ける資料ではない。","impact":"現在性の証拠が足りない項目はHOLD。"},
     {"category":"visual/extraction coverage","finding":"別抽出テキストとMHLW PDF表示を代表的な改正箇所で確認したが、全22項目・全ページを人が目視した監査ではない。","impact":"OCR、左右段組み、頁跨ぎ、脚注の残存リスクを個別記録。"},
@@ -256,7 +256,7 @@ def build():
   },
   "reproducibility":{
    "command":"python3 scripts/build_notice_rouki25_audit_report.py --check && python3 scripts/validate_notice_rouki25_audit.py && npm run validate:data",
-   "method":["candidate本文を見ずにsource snapshotの公式PDF由来body_textから再構成を開始。","assemblyのpatch定義を別のPython replay関数で順方向に適用し、anchorの一意性を検証。","基準年から後続改正年へ順方向適用。2026年3月PDFは部分参照のみとして扱う。","候補比較はUnicode whitespaceのみ除去。数字・句読点・括弧・条番号・列挙記号は保持。","本文差があればMISMATCH。本文一致でも現行性網羅が未確認ならHOLD。PASSへは自動昇格しない。"],
+   "method":["candidate本文を見ずにsource snapshotの公式PDF由来body_textから再構成を開始。","assemblyのpatch定義を別のPython replay関数で順方向に適用し、anchorの一意性を検証。","基準年から後続改正年へ順方向適用。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料として扱い、令和8年3月改訂ページでの再掲を後続改正不存在の証拠にはしない。","候補比較はUnicode whitespaceのみ除去。数字・句読点・括弧・条番号・列挙記号は保持。","本文差があればMISMATCH。本文一致でも現行性網羅が未確認ならHOLD。PASSへは自動昇格しない。"],
    "input_files":["data/notice-review-packet.json","data/notice-current-review.json","data/notice-current-skeleton.json","data/notice-source-chain.json","data/notice-amendment-events.json"]+[p for paths in FAMILIES.values() for p in paths],
    "source_sha256_values":{k:v.get("sha256") for k,v in sorted(sources.items())},
    "method_limits":["PDF SHA-256はsource snapshot/source manifestの記録値であり、この監査でPDFの再ダウンロード・再hashはしていない。","builderはsource snapshot body_textを読み、PDFの再ダウンロード・再抽出はしない。","既存bbox座標抽出verifierは異なる方式だが、そのPASS記録は旧main SHAであり今回の結論に使用しない。","本監査で表示確認したPDFは代表的な5ページ。全ページの人による目視確認ではない。"],
@@ -301,13 +301,13 @@ def markdown(r):
    lines.append("- baseline後の公式赤線資料（未適用は不改正の証明にしない）:")
    for z in x["later_official_redline_inventory"]:
     lines.append(f"  - {z['issued_period']} {z['source_label']} p.{z['pdf_pages']}: {z['review_result']}")
-  lines += [f"- 2026年3月部分参照: {x['currentness']['2026_partial_reference_coverage']}",
+  lines += [f"- 2025年3月掲載の部分参照: {x['currentness']['2026_partial_reference_coverage']}",
    f"- currentness: 未解決。{x['currentness']['hold_reason']}",
    f"- 残存リスク: {' '.join(x['residual_risks'])}",
    f"- reviewer確認点: {' '.join(x['reviewer_should_check'])}",
    "- baseline本文、独立再構成全文、patchの旧文・新文はmachine JSONに保存。"]
  lines += ["","## 調査経路と再現","",
-  "一次資料は厚生労働省公開PDF。各項目のPDF URL、SHA-256、ページ、改正後列、baseline本文とpatchの旧文／新文をmachine JSONに記録した。2026年3月PDFは部分参照としてのみ使用。",
+  "一次資料は厚生労働省公開PDF。各項目のPDF URL、SHA-256、ページ、改正後列、baseline本文とpatchの旧文／新文をmachine JSONに記録した。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料としてのみ使用し、令和8年3月改訂ページでも同じURLが再掲されている。",
   "",
   "既存independent verifierのPASS記録（main SHAは古い）を今回の結論には使用していない。追加replayはsource snapshot本文から開始した。ただし本builder自体はPDFの再ダウンロード・再抽出を行わず、全22項目の全ページ目視でもない。",
   "",
