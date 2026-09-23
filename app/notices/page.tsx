@@ -3,7 +3,6 @@ import nodesData from "../../data/notice-current-skeleton.json";
 import metaData from "../../data/notice-current-meta.json";
 import chainData from "../../data/notice-source-chain.json";
 import sourcesData from "../../data/sources.json";
-import reviewData from "../../data/notice-current-review.json";
 import reviewPacketData from "../../data/notice-review-packet.json";
 
 type NoticeNode = {
@@ -24,7 +23,6 @@ const nodes = nodesData as NoticeNode[];
 const meta = metaData as any;
 const chain = chainData as Array<any>;
 const sources = sourcesData as Array<any>;
-const review = reviewData as any;
 const reviewPacket = reviewPacketData as any;
 
 const statusLabel: Record<string, string> = {
@@ -109,9 +107,9 @@ function NoticeTree({ parentId }: { parentId: string | null }) {
 }
 
 export default function NoticesPage() {
-  const verified = (review.reviewed_nodes || []).length;
   const machineCandidates = (reviewPacket.items || []).length;
   const independentPass = (reviewPacket.items || []).filter((item: any) => item.independent_verification?.result === "PASS").length;
+  const verified = (reviewPacket.items || []).filter((item: any) => item.reviewer_decision && item.reviewed_candidate_sha256 === item.candidate_text_sha256).length;
   return (
     <article className="answer-page notice-db-page">
       <p className="eyebrow">INTERPRETATION NOTICE DATABASE</p>
