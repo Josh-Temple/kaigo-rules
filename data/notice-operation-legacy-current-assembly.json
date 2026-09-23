@@ -52,21 +52,21 @@
         {
           "snapshot_id": "dayservice-operation-plan-h30-item4",
           "operation": "replace_between",
-          "start_anchor": "④ 通所介護計画は利用者の心身の状況、希望及びその置かれている環境",
+          "start_anchor": "④ 通所介護計画は",
           "end_anchor": "⑤ 通所介護計画の目標及び内容については",
           "note": "H30で保存記録の参照条文を第104条の3へ更新"
         },
         {
           "snapshot_id": "dayservice-operation-plan-r3-item4",
           "operation": "replace_between",
-          "start_anchor": "④ 通所介護計画は利用者の心身の状況、希望及びその置かれている環境",
+          "start_anchor": "④ 通所介護計画は",
           "end_anchor": "⑤ 通所介護計画の目標及び内容については",
           "note": "R3で保存記録の参照条文を第104条の4へ更新"
         },
         {
           "snapshot_id": "dayservice-operation-plan-r3-item6",
           "operation": "replace_to_end",
-          "start_anchor": "⑥ 居宅サービス計画に基づきサービスを提供している指定通所介護事業者については",
+          "start_anchor": "⑥ 居宅サービス計画に基づきサービスを提供している指定通所介護事業者",
           "note": "R3で訪問介護側の参照番号を⒀→⒁へ更新"
         }
       ]
