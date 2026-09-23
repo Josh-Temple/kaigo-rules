@@ -459,3 +459,34 @@ current candidate:
 - その後にのみ報酬answerability gateの開放を再判定
 
 RAGは引き続きHOLD。
+
+
+## Source-review closure CI — run #29
+
+head:
+`c4679f92c3d586ff5e18ab3d9dbf3a1233b75e00`
+
+GitHub Actions:
+- run #29
+- run id: `35827746991`
+- conclusion: success
+
+実測:
+- classifier v0.29: **191 / 191 PASS**
+- Claim Registry validator: valid
+- Claim Composition validator: valid
+- unit-price review validator: valid
+- remuneration base notice review: COMPLETE / valid
+- remuneration delegated review: COMPLETE / valid
+- fee-guidance reconstruction sync: human_review = COMPLETE / valid
+- fee-guidance human review: **8 COMPLETE / 0 REVIEW_REQUIRED / valid**
+- deterministic regeneration: candidate 8件を再生成し、checked-in JSONとの差分ゼロ
+
+これにより報酬source layerはCLOSEDとする。
+
+ただしanswerabilityは別:
+- `source_review_status = COMPLETE`
+- `answerability_gate_status = CLAIM_COVERAGE_PENDING`
+- `review_status = IN_PROGRESS`
+
+広い報酬gateを開放せず、national holdout 20件をClaim単位でreviewする。
