@@ -57,6 +57,7 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Combined Staffing Claim Promotion](./research/checkpoint-combined-staffing-promotion-2026-09-23.md)
 - [Claim Promotion v0.23](./research/checkpoint-claim-promotion-v0.23-2026-09-23.md)
 - [Benchmark Reproducibility Audit](./research/checkpoint-benchmark-reproducibility-2026-09-23.md)
 - [National RAG Holdout Labeling](./research/checkpoint-rag-holdout-national-labeling-v0.1-2026-09-23.md)
@@ -114,6 +115,7 @@ Evidence Review / 方法 / 検証
 
 ### Claim-level coverage
 
+- [Claim Registry v0.18](./research/claims/claims-v0.18.json)
 - [Claim Registry v0.16](./research/claims/claims-v0.16.json)
 - [Claim Registry v0.15](./research/claims/claims-v0.15.json)
 - [Safety answer templates v0.2](./research/issues/information-search/benchmark/safety-answer-templates-v0.2.json)
