@@ -98,16 +98,31 @@ def col_index(cell_ref: str) -> int:
     return result - 1
 
 
+def displayed_string_text(container) -> str:
+    """Return the cell's displayed base text while excluding Excel phonetic runs.
+
+    openpyxl exposes the base string and does not append <rPh> ruby/phonetic text.
+    XLSX stores those phonetics inside the same shared-string item, so a naive
+    descendant <t> scan incorrectly changes headers, stable IDs, and row values.
+    """
+    chunks: list[str] = []
+    for child in list(container):
+        if child.tag == q(NS_MAIN, "t"):
+            chunks.append(child.text or "")
+        elif child.tag == q(NS_MAIN, "r"):
+            text_node = child.find(q(NS_MAIN, "t"))
+            if text_node is not None:
+                chunks.append(text_node.text or "")
+        # Intentionally ignore rPh / phoneticPr.
+    return "".join(chunks)
+
+
 def shared_strings(archive: zipfile.ZipFile) -> list[str]:
     try:
         root = ET.fromstring(archive.read("xl/sharedStrings.xml"))
     except KeyError:
         return []
-    values = []
-    for si in root.findall(q(NS_MAIN, "si")):
-        chunks = [node.text or "" for node in si.iter(q(NS_MAIN, "t"))]
-        values.append("".join(chunks))
-    return values
+    return [displayed_string_text(si) for si in root.findall(q(NS_MAIN, "si"))]
 
 
 def date_style_indexes(archive: zipfile.ZipFile) -> set[int]:
@@ -196,7 +211,7 @@ def cell_value(cell, shared: list[str], date_styles: set[int], date1904: bool):
         inline = cell.find(q(NS_MAIN, "is"))
         if inline is None:
             return ""
-        return "".join(node.text or "" for node in inline.iter(q(NS_MAIN, "t")))
+        return displayed_string_text(inline)
 
     value_node = cell.find(q(NS_MAIN, "v"))
     raw = value_node.text if value_node is not None and value_node.text is not None else ""
