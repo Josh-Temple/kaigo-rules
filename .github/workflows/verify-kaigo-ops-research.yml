@@ -26,7 +26,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify:
@@ -128,3 +128,15 @@ jobs:
           name: rebuilt-fee-guidance-current-text-candidates
           path: data/fee-guidance-current-text-candidates.json
           if-no-files-found: error
+
+      - name: Commit rebuilt fee-guidance candidates (bootstrap)
+        run: |
+          if git diff --quiet -- data/fee-guidance-current-text-candidates.json; then
+            echo "No candidate diff"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/fee-guidance-current-text-candidates.json
+          git commit -m "[skip ci] data: regenerate fee-guidance candidates"
+          git push
