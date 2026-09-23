@@ -261,3 +261,14 @@ H27 PDFの段組み抽出で確認された文字分断は、対象snapshotに�
 `npm run import:notice-operation-legacy-snapshots` と `npm run assemble:notice-operation-legacy-current` で再生成できます。生成物は `MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK` / `NOT_REVIEWED` のままとし、現行本文や人手確認ステータスを自動昇格しません。
 
 これにより、老企第25号の通所介護について、人員4項目・設備5項目・運営13項目の全22項目が機械再構成candidateを持つ状態になります。
+
+
+### 老企第25号・22項目の独立機械照合
+
+`scripts/verify_notice_rouki25_independent.py` は、人員4項目・設備5項目・運営13項目の計22 candidateを、通常の取込・再構成処理とは別経路で照合します。
+
+通常系が `pdftotext -layout` と列cropを使うのに対し、独立検証器は厚生労働省の公式PDFを再取得し、`pdftotext -bbox-layout` の座標付きXHTMLをPython標準ライブラリ `ElementTree` で解析します。検証器は実行時に `notice-*-source-manifest.json`、snapshot、assembly、通常のimporter/assemblerを読みません。検証器内に固定した境界・改正順序から22本文を再構成し、コミット済みcandidateと空白・文字幅を正規化して比較します。
+
+同時に、使用する5つの公式PDFのSHA-256も固定値と照合します。公式PDFが差し替わった場合や22件のいずれかの本文が一致しない場合はfail closedで失敗します。
+
+`Verify rouki25 day-service reconstruction independently` workflowはPR時・関連ファイルのmain更新時・週次で実行します。この結果は独立した機械照合であり、`HUMAN_VERIFIED` や `VERIFIED_CURRENT` への昇格には使いません。

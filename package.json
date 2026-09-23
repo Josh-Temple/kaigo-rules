@@ -20,7 +20,8 @@
     "import:notice-operation-modern-snapshots": "python scripts/import_notice_operation_modern_snapshots.py",
     "assemble:notice-operation-modern-current": "python scripts/assemble_notice_operation_modern_current_candidates.py",
     "import:notice-operation-legacy-snapshots": "python scripts/import_notice_operation_legacy_snapshots.py",
-    "assemble:notice-operation-legacy-current": "python scripts/assemble_notice_operation_legacy_current_candidates.py"
+    "assemble:notice-operation-legacy-current": "python scripts/assemble_notice_operation_legacy_current_candidates.py",
+    "verify:notice-rouki25-independent": "python scripts/verify_notice_rouki25_independent.py"
   },
   "dependencies": {
     "next": "^16.0.0",
