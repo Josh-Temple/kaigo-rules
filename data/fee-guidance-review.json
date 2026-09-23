@@ -1,7 +1,119 @@
 {
-  "format_version": 1,
-  "review_status": "NOT_STARTED",
-  "reviewed_nodes": [],
-  "reviewed_relations": [],
-  "policy": "骨格、本文、報酬告示との対応を別々に確認する。改正後に根拠が変わった場合は再確認する。"
+  "format_version": 2,
+  "review_status": "IN_PROGRESS",
+  "reviewed_at": "2026-09-23",
+  "policy": "骨格、本文、改正履歴、報酬告示との対応を分離して確認する。現行本文として確定するのは、baseline本文が欠落なく確認でき、そこからcurrentまでの改正連鎖を一次資料で追跡できた項目に限る。生成候補の存在だけではhuman verificationを成立させない。",
+  "currentness_review": {
+    "checked_at": "2026-09-23",
+    "official_latest_info_checked_through": "介護保険最新情報Vol.1544（2026-09-18）",
+    "latest_relevant_text_amendment": "介護保険最新情報Vol.1502（2026-05-08）",
+    "latest_relevant_text_amendment_source_id": "mhlw-r8-fee-guidance-may-amendment",
+    "later_materials_reviewed": [
+      {
+        "item": "介護保険最新情報Vol.1523",
+        "date": "2026-07-13",
+        "type": "Q&A",
+        "finding": "協力医療機関連携加算に関するQ&Aであり、通所介護費7(4)〜7(25)の通知本文変更ではない。"
+      },
+      {
+        "item": "介護保険最新情報Vol.1524",
+        "date": "2026-07-14",
+        "type": "Q&A",
+        "finding": "訪問リハビリテーション・介護老人保健施設等のQ&Aであり、通所介護費7(4)〜7(25)の通知本文変更ではない。"
+      }
+    ],
+    "finding": "2026-09-23時点の厚生労働省掲載一覧を確認した範囲で、Vol.1502より後に老企第36号の通所介護費7(4)〜7(25)本文を改める通知は確認できなかった。"
+  },
+  "items": [
+    {
+      "guidance_id": "fee-guidance.dayservice.4",
+      "title": "2時間以上3時間未満の通所介護を行う場合の取扱い",
+      "human_review_status": "REVIEW_REQUIRED",
+      "candidate_text_sha256": "953fce60c7811569750a43586280f920a83b7146359c7e8f4b2068a4d1da55c8",
+      "baseline_snapshot_id": "dayservice-4-h27-baseline",
+      "patch_snapshot_ids": [],
+      "reason": "候補本文は一次資料上確認できるが、baselineからcurrentまでの中間改正連鎖がreview ledger上で十分に明示されていないため、現行全文としては固定しない。"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.5",
+      "title": "8時間以上9時間未満の通所介護の前後に連続して延長サービスを行った場合の加算の取扱い",
+      "human_review_status": "REVIEW_REQUIRED",
+      "candidate_text_sha256": "dd4de3a67e9412c986e8c37221484808c8e0cfaccb09d38eef85fa9ed06c84f3",
+      "baseline_snapshot_id": "dayservice-5-h30-baseline",
+      "patch_snapshot_ids": [],
+      "reason": "baseline候補そのものに「略」が残り、全文候補として不足するため現行全文として固定しない。"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.6",
+      "title": "事業所規模による区分の取扱い",
+      "human_review_status": "REVIEW_REQUIRED",
+      "candidate_text_sha256": "a80086d48a01f40b0b74baa48f90259d19d76d4d84048bade46052100ed01ab8",
+      "baseline_snapshot_id": "dayservice-6-r3-baseline",
+      "patch_snapshot_ids": [],
+      "reason": "baseline候補そのものに「略」が残り、全文候補として不足するため現行全文として固定しない。"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.7",
+      "title": "災害時等の取扱い",
+      "human_review_status": "REVIEW_REQUIRED",
+      "candidate_text_sha256": "99bb42d59dc56461fa57c0e206c105395cff1909c21fbcd731e6f21fb1c17417",
+      "baseline_snapshot_id": "dayservice-7-h27-baseline",
+      "patch_snapshot_ids": [],
+      "reason": "候補本文は一次資料上確認できるが、baselineからcurrentまでの中間改正連鎖がreview ledger上で十分に明示されていないため、現行全文としては固定しない。"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.7-2",
+      "title": "感染症又は災害の発生を理由とする利用者数の減少が一定以上生じている場合の取扱いについて",
+      "human_review_status": "COMPLETE",
+      "candidate_text_sha256": "889bc5c82bd620fe503433dd2f652971d10faed7bb95f67880a42b06ae654cf9",
+      "baseline_snapshot_id": "dayservice-7-2-r3-baseline",
+      "patch_snapshot_ids": [],
+      "reason": "R3導入時の全文とR6・R7・R8の改正連鎖を一次資料で確認し、後続改正で本文変更が示されていないことを確認。"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.18",
+      "title": "栄養改善加算について",
+      "human_review_status": "REVIEW_REQUIRED",
+      "candidate_text_sha256": "c33e37325085b1e81b341280203f24fd16206d1ec2cea2844c488b2c6e4bc8f0",
+      "baseline_snapshot_id": "dayservice-18-r3-baseline",
+      "patch_snapshot_ids": [],
+      "reason": "baseline候補そのものに「略」が残り、全文候補として不足するため現行全文として固定しない。"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.24",
+      "title": "定員超過利用に該当する場合の所定単位数の算定について",
+      "human_review_status": "COMPLETE",
+      "candidate_text_sha256": "94ff666fb351f24ee9081321d7aefdaac1f00afab078264e5570c0b7f5a885c4",
+      "baseline_snapshot_id": "dayservice-24-h27-baseline",
+      "patch_snapshot_ids": [],
+      "reason": "baseline全文とH30・R3・R6・R7・R8の改正連鎖を一次資料で確認し、後続改正で本文変更が示されていないことを確認。"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.25",
+      "title": "人員基準欠如に該当する場合の所定単位数の算定について",
+      "human_review_status": "COMPLETE",
+      "candidate_text_sha256": "7a2ebce94e4700736c6db527a095c4373581328eeacea435818c39b904b32031",
+      "baseline_snapshot_id": "dayservice-25-h27-baseline",
+      "patch_snapshot_ids": [
+        "dayservice-25-r8-patch"
+      ],
+      "reason": "baseline全文、H30・R3・R6・R7・R8の改正連鎖、2026-05-08追加ホのpatch位置と本文を一次資料で確認。"
+    }
+  ],
+  "reviewed_nodes": [
+    "fee-guidance.dayservice.7-2",
+    "fee-guidance.dayservice.24",
+    "fee-guidance.dayservice.25"
+  ],
+  "blocked_nodes": [
+    "fee-guidance.dayservice.4",
+    "fee-guidance.dayservice.7",
+    "fee-guidance.dayservice.5",
+    "fee-guidance.dayservice.6",
+    "fee-guidance.dayservice.18"
+  ],
+  "reviewed_relations": [
+    "fee-guidance.dayservice.24 -> calc27.dayservice.1.capacity",
+    "fee-guidance.dayservice.25 -> calc27.dayservice.1.staffing"
+  ]
 }

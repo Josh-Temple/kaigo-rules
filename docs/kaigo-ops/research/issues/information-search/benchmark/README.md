@@ -350,3 +350,38 @@ source SHAと17 nodeのtext SHAをcurrent importへ固定。
 
 overall remuneration reviewは引き続きIN_PROGRESS。
 残る主要ゲートは老企第36号の現行再構成・留意事項review。
+
+
+## Fee-guidance partial human review — 2026-09-23
+
+老企第36号の8つのmachine-reconstructed candidateを一次資料から人手reviewした。
+
+overall:
+- `data/fee-guidance-review.json`: IN_PROGRESS
+- remuneration overall: IN_PROGRESS
+- RAG: HOLD
+
+human COMPLETE:
+- `fee-guidance.dayservice.7-2`
+- `fee-guidance.dayservice.24`
+- `fee-guidance.dayservice.25`
+
+REVIEW_REQUIRED:
+- `fee-guidance.dayservice.4`: 本文候補は確認済みだが中間改正連鎖がreview ledger上で不足
+- `fee-guidance.dayservice.7`: 本文候補は確認済みだがH30を含む中間改正連鎖が不足
+- `fee-guidance.dayservice.5`: baselineに「略」
+- `fee-guidance.dayservice.6`: baselineに「略」
+- `fee-guidance.dayservice.18`: baselineに「略」
+
+currentness:
+- 厚労省の介護保険最新情報掲載一覧を2026-09-23時点（Vol.1544まで）確認
+- 通所介護費7(4)〜7(25)の本文に関する最新の確認済み改正は2026-05-08 Vol.1502
+- 2026-07-13 Vol.1523と2026-07-14 Vol.1524はQ&Aで、当該通所介護本文の改正ではない
+
+`research-fee-guidance-review-validate-v0.1.mjs`:
+- COMPLETE 3件のcandidate hash / baseline / patchを固定
+- REVIEW_REQUIRED 5件を明示
+- 「略」が残る3件をCOMPLETEへ誤昇格させない
+- remuneration review側とのID整合も検査
+
+fee-guidance全体をCOMPLETEにするには、残る5件の証拠連鎖を閉じる必要がある。
