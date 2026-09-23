@@ -1,0 +1,112 @@
+{
+  "format_version": 1,
+  "output_path": "data/notice-operation-legacy-current-text-candidates.json",
+  "effective_as_of": "2026-09-23",
+  "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+  "policy": "Candidates are deterministic reconstructions from official-source body snapshots and ordered amendment replay. They are not official consolidated text and must not update HUMAN_VERIFIED or VERIFIED_CURRENT automatically.",
+  "scope": "Day-service operation legacy items (1)-(5).",
+  "items": [
+    {
+      "notice_id": "notice.dayservice.operation.fees",
+      "baseline_snapshot_id": "dayservice-operation-fees-h27-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-operation-fees-r3-item1",
+          "operation": "replace_between",
+          "start_anchor": "① 居宅基準第96条第１項、第２項及び第５項の規定は",
+          "end_anchor": "② 同条第３項は",
+          "note": "R3で訪問介護側の参照番号を⑽→⑾へ更新"
+        }
+      ]
+    },
+    {
+      "notice_id": "notice.dayservice.operation.policy",
+      "baseline_snapshot_id": "dayservice-operation-policy-h27-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "operation": "replace_literal",
+          "old_text": "③認知症の状態にある要介護者で",
+          "new_text": "④認知症の状態にある要介護者で",
+          "note": "R6新③挿入に伴う旧③→④"
+        },
+        {
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "operation": "replace_literal",
+          "old_text": "④指定通所介護は、事業所内でサービスを提供することが原則",
+          "new_text": "⑤指定通所介護は、事業所内でサービスを提供することが原則",
+          "note": "R6新③挿入に伴う旧④→⑤"
+        },
+        {
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "operation": "insert_before",
+          "anchor": "④認知症の状態にある要介護者で",
+          "note": "R6の身体的拘束等に関する新③を挿入"
+        }
+      ]
+    },
+    {
+      "notice_id": "notice.dayservice.operation.plan",
+      "baseline_snapshot_id": "dayservice-operation-plan-h27-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-operation-plan-h30-item4",
+          "operation": "replace_between",
+          "start_anchor": "④ 通所介護計画は利用者の心身の状況、希望及びその置かれている環境",
+          "end_anchor": "⑤ 通所介護計画の目標及び内容については",
+          "note": "H30で保存記録の参照条文を第104条の3へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-operation-plan-r3-item4",
+          "operation": "replace_between",
+          "start_anchor": "④ 通所介護計画は利用者の心身の状況、希望及びその置かれている環境",
+          "end_anchor": "⑤ 通所介護計画の目標及び内容については",
+          "note": "R3で保存記録の参照条文を第104条の4へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-operation-plan-r3-item6",
+          "operation": "replace_to_end",
+          "start_anchor": "⑥ 居宅サービス計画に基づきサービスを提供している指定通所介護事業者については",
+          "note": "R3で訪問介護側の参照番号を⒀→⒁へ更新"
+        }
+      ]
+    },
+    {
+      "notice_id": "notice.dayservice.operation.rules",
+      "baseline_snapshot_id": "dayservice-operation-rules-h27-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-operation-rules-h30-item1",
+          "operation": "replace_between",
+          "start_anchor": "① 営業日及び営業時間（第３号）",
+          "end_anchor": "② 指定通所介護の利用定員（第４号）",
+          "note": "H30で延長サービス対象時間を8時間以上9時間未満へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-operation-rules-r3-intro",
+          "operation": "replace_between",
+          "start_anchor": "居宅基準第100条は、指定通所介護の事業の適正な運営及び利用者に対する適切な指定通所介護の提供を確保するため",
+          "end_anchor": "① 営業日及び営業時間（第３号）",
+          "note": "R3で列挙号数を第1号〜第11号へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-operation-rules-r3-item5",
+          "operation": "replace_to_end",
+          "start_anchor": "⑤ 非常災害対策（第９号）",
+          "note": "R3で非常災害対策の参照を⑺へ更新"
+        }
+      ]
+    },
+    {
+      "notice_id": "notice.dayservice.operation.staffing",
+      "baseline_snapshot_id": "dayservice-operation-staffing-h27-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-operation-staffing-r3-additions",
+          "operation": "append",
+          "note": "R3で③④を追加"
+        }
+      ]
+    }
+  ]
+}
