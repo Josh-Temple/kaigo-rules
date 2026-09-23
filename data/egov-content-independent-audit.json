@@ -1,0 +1,69 @@
+{
+  "format_version": 1,
+  "scope": "egov-scoped-content-ordinance37-care-insurance-act",
+  "audit_kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-24",
+  "audit_run": {
+    "workflow": "Verify e-Gov scoped content independently",
+    "run_id": 35885767337,
+    "head_sha": "ba526154a36de1c50a332147d276531c2c757760",
+    "parser": "python_xml_dom_minidom",
+    "result": "PASS"
+  },
+  "checks": [
+    {
+      "id": "ordinance37",
+      "law_id": "411M50000100037",
+      "observed_xml_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
+      "result": "PASS",
+      "observed": {
+        "nodes": 182,
+        "articles": 40,
+        "paragraphs": 91,
+        "items": 47,
+        "subitems": 4,
+        "contains_relations": 142
+      },
+      "excluded_non_contains_relations": 23
+    },
+    {
+      "id": "care-insurance-act",
+      "law_id": "409AC0000000123",
+      "observed_xml_sha256": "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc",
+      "result": "PASS",
+      "observed": {
+        "nodes": 137,
+        "articles": 11,
+        "paragraphs": 76,
+        "items": 50,
+        "subitems": 0,
+        "contains_relations": 126
+      },
+      "excluded_non_contains_relations": 24
+    }
+  ],
+  "input_git_blob_shas_at_audit": {
+    "data/ordinance37-scope.json": "45adecbd77aea07f2a55837b0b713b2a462efc45",
+    "data/ordinance37-nodes.json": "238a2e77799a4aa5626c39d26d54b6a6e46eeef9",
+    "data/ordinance37-relations.json": "9c1596d8d0d4f8dac27854d954f72fec2b69f42c",
+    "data/ordinance37-meta.json": "460cbbbceefb90a6ca19088e37c75c3a89b1433b",
+    "data/care-insurance-act-scope.json": "8af02781b721c811b377ff0525f74ba64646181d",
+    "data/care-insurance-act-nodes.json": "5679279462390862405d60f00b25603f8be3522e",
+    "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
+    "data/care-insurance-act-meta.json": "fe96d6ba31a58763362e36cc9a9106647f5bd41b",
+    "scripts/verify_egov_content_independent.py": "2d40f5f1323fcd56ac9dfb64629d92d0764abb83"
+  },
+  "conclusion": "Scoped official text, node IDs, parent structure and source-derived containment matched live e-Gov XML for both laws using an independent XML parser.",
+  "limitations": [
+    "The audit covers source-derived scoped text and containment only.",
+    "Hand-authored legal-semantic and cross-layer relations are excluded and remain separately reviewable.",
+    "Independent machine verification is not HUMAN_VERIFIED or VERIFIED_CURRENT.",
+    "Later source/data/verifier changes require refresh of this record."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
