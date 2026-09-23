@@ -13,6 +13,8 @@ on:
       - "data/unit-price-region-assignments.json"
       - "data/unit-price-region-assignments-meta.json"
       - ".github/workflows/verify-unit-price-independent.yml"
+      - "data/unit-price-independent-audit.json"
+      - "scripts/validate_unit_price_independent_audit.py"
   push:
     branches: [main]
     paths:
@@ -23,6 +25,8 @@ on:
       - "data/unit-price-region-assignments.json"
       - "data/unit-price-region-assignments-meta.json"
       - ".github/workflows/verify-unit-price-independent.yml"
+      - "data/unit-price-independent-audit.json"
+      - "scripts/validate_unit_price_independent_audit.py"
 
 permissions:
   contents: read
@@ -44,6 +48,8 @@ jobs:
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
+      - name: Validate pinned audit provenance
+        run: python scripts/validate_unit_price_independent_audit.py
       - name: Upload verification report
         if: always()
         uses: actions/upload-artifact@v4
