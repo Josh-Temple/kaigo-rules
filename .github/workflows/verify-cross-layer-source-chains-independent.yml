@@ -14,6 +14,8 @@ on:
       - "data/remuneration-current-skeleton.json"
       - "data/sources.json"
       - ".github/workflows/verify-cross-layer-source-chains-independent.yml"
+      - "data/cross-layer-source-chain-independent-audit.json"
+      - "scripts/validate_cross_layer_source_chain_independent_audit.py"
   push:
     branches: [main]
     paths:
@@ -25,6 +27,8 @@ on:
       - "data/remuneration-current-skeleton.json"
       - "data/sources.json"
       - ".github/workflows/verify-cross-layer-source-chains-independent.yml"
+      - "data/cross-layer-source-chain-independent-audit.json"
+      - "scripts/validate_cross_layer_source_chain_independent_audit.py"
 
 permissions:
   contents: read
@@ -47,6 +51,8 @@ jobs:
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
+      - name: Validate pinned audit provenance
+        run: python scripts/validate_cross_layer_source_chain_independent_audit.py
       - name: Upload independent source-chain report
         if: always()
         uses: actions/upload-artifact@v4
