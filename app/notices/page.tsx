@@ -4,6 +4,7 @@ import metaData from "../../data/notice-current-meta.json";
 import chainData from "../../data/notice-source-chain.json";
 import sourcesData from "../../data/sources.json";
 import reviewData from "../../data/notice-current-review.json";
+import reviewPacketData from "../../data/notice-review-packet.json";
 
 type NoticeNode = {
   id: string;
@@ -24,6 +25,7 @@ const meta = metaData as any;
 const chain = chainData as Array<any>;
 const sources = sourcesData as Array<any>;
 const review = reviewData as any;
+const reviewPacket = reviewPacketData as any;
 
 const statusLabel: Record<string, string> = {
   VERIFIED_CURRENT: "現行確認済み",
@@ -108,6 +110,8 @@ function NoticeTree({ parentId }: { parentId: string | null }) {
 
 export default function NoticesPage() {
   const verified = (review.reviewed_nodes || []).length;
+  const machineCandidates = (reviewPacket.items || []).length;
+  const independentPass = (reviewPacket.items || []).filter((item: any) => item.independent_verification?.result === "PASS").length;
   return (
     <article className="answer-page notice-db-page">
       <p className="eyebrow">INTERPRETATION NOTICE DATABASE</p>
@@ -124,11 +128,19 @@ export default function NoticesPage() {
       </div>
 
       <section className="rules-stats notice-stats">
-        <div><strong>{meta.counts.total}</strong><span>骨格ノード</span></div>
-        <div><strong>{meta.counts.KNOWN_AFTER_TEXT || 0}</strong><span>改正後文あり</span></div>
-        <div><strong>{meta.counts.INHERITED_UNVERIFIED || 0}</strong><span>継承候補</span></div>
+        <div><strong>{machineCandidates}</strong><span>本文候補</span></div>
+        <div><strong>{independentPass}</strong><span>独立機械照合PASS</span></div>
         <div><strong>{verified}</strong><span>人手確認済み</span></div>
+        <div><strong>{machineCandidates - verified}</strong><span>レビュー残り</span></div>
       </section>
+
+      <div className="notice-review-entry">
+        <div>
+          <strong>22項目の人手確認用packetを用意しています。</strong>
+          <p>本文候補、一次資料の該当ページ、改正適用順、hash、独立照合結果を1項目ずつ確認できます。</p>
+        </div>
+        <Link href="/notices/review">レビュー画面を開く →</Link>
+      </div>
 
       <section className="section">
         <h2>再構成の進め方</h2>
@@ -137,7 +149,8 @@ export default function NoticesPage() {
           <span>3 改正を順方向に再生</span><b>→</b><span>4 人手確認</span>
         </div>
         <p className="meta">
-          現在：{meta.current_state}。順方向再生が完了するまでは「現行統合版」と表示しません。
+          骨格データの状態：{meta.current_state}。本文候補22項目は機械再構成と独立機械照合まで完了していますが、
+          人手確認が終わるまでは「現行統合版」と表示しません。
         </p>
       </section>
 
@@ -172,9 +185,10 @@ export default function NoticesPage() {
       <section className="section">
         <h2>次の工程</h2>
         <p>
-          継承候補の本文を過去資料から埋めた後、2021年・2024年などの改正イベントを古い版から現在へ順に再適用し、
-          削除・挿入・繰下げを含めて整合を確認します。
+          機械再構成した22項目について、一次資料の該当ページと改正適用順を人が照合します。
+          確認したcandidateのhashを記録し、後から本文が変わった場合は過去の確認を自動的に無効化します。
         </p>
+        <p><Link href="/notices/review">22項目のレビュー画面へ →</Link></p>
       </section>
     </article>
   );
