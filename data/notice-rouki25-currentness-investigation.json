@@ -1,5 +1,5 @@
 {
-  "format_version": 4,
+  "format_version": 5,
   "scope": "rouki25-dayservice-22-currentness",
   "checked_at": "2026-09-23",
   "fresh_main_sha_at_start": "5cdb9fceb90f446c4cf4de170385b08e39d96db6",
@@ -144,5 +144,57 @@
     "inference_limit": "公式索引ページ本文で対象名称が見つからないことは、別表題の包括通知、索引外資料、PDF本文内だけでの改正等が存在しないことの証明にはならない。",
     "decision_effect": "HOLD_UNCHANGED",
     "next_blocker": "後続改正を網羅する一次資料上の改正履歴、または現行統合本文を確認できる経路が必要。"
+  },
+  "post_r6_pdf_body_scan": {
+    "checked_at": "2026-09-23",
+    "fresh_main_sha_at_start": "ff2cbf9fb92735a7fef726334010305fb164827d",
+    "purpose": "令和6年度改正後の老企第25号について、索引ページの表題だけでなく厚生労働省PDF本文・改正表現・資料の時期根拠を確認し、後続改正候補と単なる参照・歴史資料を区別する。",
+    "method": [
+      "対象通知の正式名称、老企第25号、「一部改正」を組み合わせて令和7年・令和8年の厚生労働省公開資料を探索した。",
+      "候補PDFは本文を確認し、通知日、改正を命じる本文、別紙の位置づけ、過去資料との内容対応を確認した。",
+      "検索結果の公開・クロール時期やcontent URLの番号だけを改正時期の根拠にしない。"
+    ],
+    "evidence": [
+      {
+        "evidence_id": "r6-baseline-vol1213",
+        "classification": "R6_BASELINE_AMENDMENT",
+        "url": "https://www.mhlw.go.jp/content/001227724.pdf",
+        "observation": "介護保険最新情報Vol.1213の令和6年3月15日付通知は、基準省令に関する通知の一つとして老企第25号を「別紙10のとおり改正する」と明示している。",
+        "currentness_use": "令和6年度改正の基準線として使用する。",
+        "limitation": "令和6年3月15日より後の改正不存在は証明しない。"
+      },
+      {
+        "evidence_id": "r7-vol1455-current-reference",
+        "classification": "POST_R6_REFERENCE_NON_AMENDMENT",
+        "url": "https://www.mhlw.go.jp/content/001623781.pdf",
+        "document_date": "2025-12-26",
+        "observation": "介護保険最新情報Vol.1455「訪問介護事業所の出張所（いわゆる「サテライト」）の設置について」は、老企第25号を現行の取扱い根拠として引用しているが、同通知を改正する旨は記載していない。",
+        "currentness_use": "令和7年12月時点で厚生労働省が老企第25号を参照していることの補助証拠としてのみ扱う。",
+        "limitation": "通所介護22項目の現行本文や、令和6年3月15日以後の改正不存在を証明しない。"
+      },
+      {
+        "evidence_id": "recent-content-url-historical-redline",
+        "classification": "HISTORICAL_REDLINE_BODY_MATCH",
+        "url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+        "historical_comparator_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199105.pdf",
+        "observation": "001623023.pdfは41ページの「別紙5」新旧対照表で、平成30年4月1日等の経過措置を含む。厚生労働省が平成30年度改定時に公開した0000199105.pdfと、ページ数（41）・抽出行数（2420）・確認した本文およびページ構成が一致した。",
+        "comparison_scope": "TEXT_AND_PAGE_STRUCTURE_MATCH_NOT_BYTE_HASH",
+        "currentness_use": "最近のcontent URLや検索上の新しさだけでは後続改正候補と認定しない、という誤検出防止例として記録する。",
+        "limitation": "バイト単位の同一性は確認していない。001623023.pdfの再掲載日時そのものも、老企第25号の改正日を意味しない。"
+      }
+    ],
+    "search_result": {
+      "verified_post_r6_amendment_candidates": [],
+      "post_r6_non_amendment_references_identified": [
+        "r7-vol1455-current-reference"
+      ],
+      "historical_or_rehosted_material_excluded_from_post_r6_candidates": [
+        "recent-content-url-historical-redline"
+      ],
+      "exact_amendment_searches_for_r7_r8_returned_verified_candidate": false
+    },
+    "inference_limit": "PDF本文検索を追加しても、検索エンジンや公開索引が全資料を網羅する保証はない。後続改正を網羅する一次資料上の改正履歴、または現行統合本文を確認できるまでは、改正候補が見つからないことを改正不存在の証明にしない。",
+    "decision_effect": "HOLD_UNCHANGED",
+    "next_blocker": "令和6年3月15日後から確認時点までを網羅する厚生労働省一次資料上の改正履歴、または老企第25号の現行統合本文を確認できる経路。"
   }
 }
