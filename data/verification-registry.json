@@ -154,36 +154,39 @@
       "id": "qa-corpus",
       "title": "厚生労働省 介護サービスQ&A",
       "content_verification": {
-        "status": "NOT_INDEPENDENTLY_AUDITED",
+        "status": "PASS",
+        "kind": "INDEPENDENT_QA_XLSX_OOXML_REPARSE",
         "rows_scanned": 3739,
-        "rows_included": 843
+        "rows_included": 843,
+        "counts_by_service": {
+          "16": 252,
+          "01": 480,
+          "02": 47,
+          "06": 64
+        },
+        "evidence": "data/qa-corpus-independent-audit.json"
       },
       "currentness": {
-        "status": "SOURCE_FRESHNESS_MONITORED",
+        "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
         "source_sha256": "2b3e658d1659b42423fe1d3f7cc8b2fd24b58914ce65a6d15d16d0b64fc26c6b"
       },
       "monitoring": {
         "status": "ACTIVE",
-        "workflow": ".github/workflows/verify-qa-source-freshness.yml"
+        "workflow": ".github/workflows/verify-qa-corpus-independent.yml",
+        "additional_workflow": ".github/workflows/verify-qa-source-freshness.yml"
       },
       "human_review": {
         "status": "INGESTED_UNREVIEWED"
       },
-      "assurance": "SOURCE_FRESHNESS_ONLY"
+      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
     }
   ],
-  "gaps": [
-    {
-      "id": "qa-corpus-independent-parse-audit",
-      "layer_id": "qa-corpus",
-      "required": "Independent workbook parse and comparison of the 843 included Q&A rows and service-code filtering."
-    }
-  ],
+  "gaps": [],
   "summary": {
     "layers_total": 7,
-    "independent_audit_or_reconstruction": 6,
+    "independent_audit_or_reconstruction": 7,
     "currentness_or_live_source_monitoring_active": 7,
-    "source_freshness_only_without_independent_content_audit": 1,
+    "source_freshness_only_without_independent_content_audit": 0,
     "human_verified_layers": 0
   }
 }

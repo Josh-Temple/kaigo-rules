@@ -1,0 +1,61 @@
+{
+  "format_version": 1,
+  "scope": "mhlw-qa-corpus-target-service-codes-01-02-06-16",
+  "audit_kind": "INDEPENDENT_QA_XLSX_OOXML_REPARSE",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-24",
+  "audit_run": {
+    "workflow": "Verify MHLW Q&A corpus independently",
+    "run_id": 35887602131,
+    "head_sha": "ab3277c2d8e822b4aa3291ce15633943f104c711",
+    "parser": "python_stdlib_zipfile_elementtree",
+    "result": "PASS"
+  },
+  "source": {
+    "page_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+    "workbook_url": "https://www.mhlw.go.jp/content/12300000/001751835.xlsx",
+    "workbook_sha256": "2b3e658d1659b42423fe1d3f7cc8b2fd24b58914ce65a6d15d16d0b64fc26c6b",
+    "sheet_names": [
+      "介護サービスQ＆A集（令和8年9月掲載）"
+    ],
+    "parsed_sheets": [
+      "介護サービスQ＆A集（令和8年9月掲載）"
+    ]
+  },
+  "observed": {
+    "rows_scanned": 3739,
+    "rows_included": 843,
+    "counts_by_service": {
+      "16": 252,
+      "01": 480,
+      "02": 47,
+      "06": 64
+    },
+    "row_differences": 0,
+    "source_hash_difference": false
+  },
+  "method": [
+    "本番importerのopenpyxl/xlrdを使用せず、XLSX ZIP/OOXMLをPython標準ライブラリで直接解析した。",
+    "sharedStrings・worksheet・styles・workbook relationshipsを独立に読み、ヘッダー検出、サービス/基準区分の前方補完、対象サービスコード絞込み、stable ID、重複除去、並び順を再現した。",
+    "Excelのphonetic/ruby run（rPh）は表示本文ではないため除外し、openpyxlが返すbase stringと同じ意味の表示文字列として比較した。",
+    "843件すべてについてIDと主要行フィールドをcommitted corpusと比較し、差分0を確認した。"
+  ],
+  "input_git_blob_shas_at_audit": {
+    "data/qa-corpus.json": "6a469ffc20cc6bd71167860be926c6e5d9e95923",
+    "data/qa-corpus-meta.json": "e7f18024549d7dbdc60c72020508d45e4eeeace3",
+    "scripts/import_mhlw_qa.py": "0ddb3e809625841a3a8993a0a4403100a89e4e14",
+    "scripts/verify_qa_corpus_independent.py": "d9acfd65ab042fa1c9e25aed66f9a7b723b431c1"
+  },
+  "conclusion": "The 843-row scoped Q&A corpus is reproducible from the official MHLW XLSX through an implementation independent from the production workbook libraries.",
+  "limitations": [
+    "このPASSはXLSXからcorpusへの抽出・絞込み・構造化の一致を示すもので、各Q&A内容の法的妥当性を人が承認したことを意味しない。",
+    "source freshnessは別workflowで監視し、workbook差替え時は再取込・再監査が必要。",
+    "qa-items.jsonの手作業要約等は今回の843件corpus監査範囲外。",
+    "HUMAN_VERIFIEDまたはVERIFIED_CURRENTへの自動昇格は行わない。"
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
