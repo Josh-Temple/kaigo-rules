@@ -131,7 +131,9 @@
     "data/ordinance37-scope.json": "45adecbd77aea07f2a55837b0b713b2a462efc45",
     "data/remuneration-current-skeleton.json": "4caef5d7c34c1658e442db137fed20944ebfeb06",
     "data/sources.json": "06779a3f95f48cc6069d1f23bdeccea5dfe82711",
-    "scripts/verify_cross_layer_source_chains_independent.py": "e00928729e4675c5143919151bcd10fcacc406b5"
+    "scripts/verify_cross_layer_source_chains_independent.py": "e00928729e4675c5143919151bcd10fcacc406b5",
+    "data/care-insurance-act-meta.json": "fe96d6ba31a58763362e36cc9a9106647f5bd41b",
+    "data/remuneration-current-text-meta.json": "81ef0083b42f42062f7f0ec8e215b9ffd392d6d8"
   },
   "conclusion": "One Care Insurance Act fee-authority relation and 17 Article 74 to Ordinance 37 direct day-service standard relations matched independent live primary-source chains.",
   "limitations": [
