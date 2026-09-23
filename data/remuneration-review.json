@@ -239,16 +239,16 @@
     "current_text_complete_ids": [
       "fee-guidance.dayservice.7-2",
       "fee-guidance.dayservice.24",
-      "fee-guidance.dayservice.25"
+      "fee-guidance.dayservice.25",
+      "fee-guidance.dayservice.4",
+      "fee-guidance.dayservice.7"
     ],
     "review_required_ids": [
-      "fee-guidance.dayservice.4",
-      "fee-guidance.dayservice.7",
       "fee-guidance.dayservice.5",
       "fee-guidance.dayservice.6",
       "fee-guidance.dayservice.18"
     ],
-    "note": "8候補のうち3件を現行本文としてhuman review COMPLETE。5件は中間改正連鎖不足またはbaseline本文の省略によりREVIEW_REQUIRED。overall remuneration reviewはIN_PROGRESSを維持する。"
+    "note": "8候補のうち5件を現行本文としてhuman review COMPLETE。残る3件はbaseline本文の省略によりREVIEW_REQUIRED。overall remuneration reviewはIN_PROGRESSを維持する。"
   },
   "reviewed_nodes": [
     "fee.dayservice.standard",

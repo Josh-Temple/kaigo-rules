@@ -28,11 +28,11 @@
     {
       "guidance_id": "fee-guidance.dayservice.4",
       "title": "2時間以上3時間未満の通所介護を行う場合の取扱い",
-      "human_review_status": "REVIEW_REQUIRED",
+      "human_review_status": "COMPLETE",
       "candidate_text_sha256": "953fce60c7811569750a43586280f920a83b7146359c7e8f4b2068a4d1da55c8",
       "baseline_snapshot_id": "dayservice-4-h27-baseline",
       "patch_snapshot_ids": [],
-      "reason": "候補本文は一次資料上確認できるが、baselineからcurrentまでの中間改正連鎖がreview ledger上で十分に明示されていないため、現行全文としては固定しない。"
+      "reason": "H27 baseline本文、H30・R3で本文変更なし、R6で2項目新設に伴う現行7(4)への番号移動、R7・R8で当該項目の変更なしを一次資料で確認。"
     },
     {
       "guidance_id": "fee-guidance.dayservice.5",
@@ -55,11 +55,11 @@
     {
       "guidance_id": "fee-guidance.dayservice.7",
       "title": "災害時等の取扱い",
-      "human_review_status": "REVIEW_REQUIRED",
+      "human_review_status": "COMPLETE",
       "candidate_text_sha256": "99bb42d59dc56461fa57c0e206c105395cff1909c21fbcd731e6f21fb1c17417",
       "baseline_snapshot_id": "dayservice-7-h27-baseline",
       "patch_snapshot_ids": [],
-      "reason": "候補本文は一次資料上確認できるが、baselineからcurrentまでの中間改正連鎖がreview ledger上で十分に明示されていないため、現行全文としては固定しない。"
+      "reason": "H27 baseline本文、H30で本文変更なし、R3で本文変更なし、R6で2項目新設に伴う現行7(7)への番号移動、R7・R8で当該項目の変更なしを一次資料で確認。"
     },
     {
       "guidance_id": "fee-guidance.dayservice.7-2",
@@ -103,11 +103,11 @@
   "reviewed_nodes": [
     "fee-guidance.dayservice.7-2",
     "fee-guidance.dayservice.24",
-    "fee-guidance.dayservice.25"
+    "fee-guidance.dayservice.25",
+    "fee-guidance.dayservice.4",
+    "fee-guidance.dayservice.7"
   ],
   "blocked_nodes": [
-    "fee-guidance.dayservice.4",
-    "fee-guidance.dayservice.7",
     "fee-guidance.dayservice.5",
     "fee-guidance.dayservice.6",
     "fee-guidance.dayservice.18"

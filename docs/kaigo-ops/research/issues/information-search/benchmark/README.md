@@ -385,3 +385,33 @@ currentness:
 - remuneration review側とのID整合も検査
 
 fee-guidance全体をCOMPLETEにするには、残る5件の証拠連鎖を閉じる必要がある。
+
+
+## Fee-guidance intermediate replay closure — 2026-09-23
+
+追加の一次資料確認により、次の2件をREVIEW_REQUIREDからhuman COMPLETEへ昇格。
+
+- `fee-guidance.dayservice.4`（2時間以上3時間未満）
+- `fee-guidance.dayservice.7`（災害時等）
+
+補完した改正連鎖:
+- H30新旧対照表
+  - 7(1)・7(2)は新旧とも「略」→短時間利用の本文変更なし
+  - 7(5)は新旧とも「略」→災害時等の本文変更なし
+- R3新旧対照表
+  - 7(1)〜7(3)は新旧とも「略」→短時間利用の本文変更なし
+  - 7(5)は新旧とも「略」→災害時等の本文変更なし
+- R6で高齢者虐待防止措置未実施減算・BCP未策定減算が7(2)・7(3)に新設され、
+  旧7(2)系統は現行7(4)、旧7(5)系統は現行7(7)へ番号移動
+- R7・R8では当該本文の変更なし
+
+現時点の老企第36号8候補:
+- human COMPLETE: 5
+- REVIEW_REQUIRED: 3
+
+残る3件はいずれもbaseline候補自体に「略」が残る:
+- dayservice.5 延長加算
+- dayservice.6 事業所規模
+- dayservice.18 栄養改善
+
+overall fee-guidance / remuneration reviewはまだIN_PROGRESS。

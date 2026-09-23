@@ -10,15 +10,15 @@ const remuneration = readJson("data/remuneration-review.json");
 
 const errors=[];
 const completeExpected=[
+  "fee-guidance.dayservice.4",
+  "fee-guidance.dayservice.7",
   "fee-guidance.dayservice.7-2",
   "fee-guidance.dayservice.24",
   "fee-guidance.dayservice.25",
 ];
 const blockedExpected=[
-  "fee-guidance.dayservice.4",
   "fee-guidance.dayservice.5",
   "fee-guidance.dayservice.6",
-  "fee-guidance.dayservice.7",
   "fee-guidance.dayservice.18",
 ];
 const sameSet=(a,b)=>{

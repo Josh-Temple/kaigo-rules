@@ -43,9 +43,10 @@ for(const item of candidates.items??[]){
  if(item.human_verification_status!=="NOT_REVIEWED") errors.push("unexpected candidate review status: "+item.guidance_id);
  if(!item.candidate_text_sha256 || !item.candidate_text) errors.push("missing candidate text/hash: "+item.guidance_id);
 }
+const replayReviewAllowed=new Set(["NOT_REVIEWED","HUMAN_REVIEW_COMPLETE"]);
 for(const item of replay??[]){
  if(!String(item.replay_status||"").startsWith("CHECKPOINT_CHAIN_COMPLETE")) errors.push("incomplete replay: "+item.guidance_id);
- if(item.human_verification_status!=="NOT_REVIEWED") errors.push("unexpected replay review status: "+item.guidance_id);
+ if(!replayReviewAllowed.has(item.human_verification_status)) errors.push("unexpected replay review status: "+item.guidance_id);
 }
 
 const byId=new Map((candidates.items??[]).map(x=>[x.guidance_id,x]));
@@ -70,7 +71,7 @@ console.log(JSON.stringify({
  current_state:meta.current_state,
  candidates:(candidates.items??[]).length,
  replay_items:(replay??[]).length,
- human_review:"PENDING",
+ human_review:"PARTIAL",
  errors,
  valid:errors.length===0
 },null,2));
