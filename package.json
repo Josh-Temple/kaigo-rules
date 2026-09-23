@@ -35,7 +35,8 @@
     "build:verification-registry": "python scripts/build_verification_registry.py",
     "check:verification-registry": "python scripts/build_verification_registry.py --check",
     "verify:egov-content-independent": "python scripts/verify_egov_content_independent.py",
-    "validate:egov-content-independent-audit": "python scripts/validate_egov_content_independent_audit.py"
+    "validate:egov-content-independent-audit": "python scripts/validate_egov_content_independent_audit.py",
+    "verify:qa-corpus-independent": "python scripts/verify_qa_corpus_independent.py"
   },
   "dependencies": {
     "next": "^16.0.0",
