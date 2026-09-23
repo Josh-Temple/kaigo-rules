@@ -29,6 +29,7 @@ def build() -> dict:
     ordinance = load("ordinance37-meta.json")
     care = load("care-insurance-act-meta.json")
     qa = load("qa-corpus-meta.json")
+    qa_audit = load("qa-corpus-independent-audit.json")
     egov_audit = load("egov-content-independent-audit.json")
     egov_checks = {row["id"]: row for row in egov_audit.get("checks", [])}
 
@@ -180,30 +181,28 @@ def build() -> dict:
             "id": "qa-corpus",
             "title": "厚生労働省 介護サービスQ&A",
             "content_verification": {
-                "status": "NOT_INDEPENDENTLY_AUDITED",
-                "rows_scanned": qa["rows_scanned"],
-                "rows_included": qa["rows_included"],
+                "status": qa_audit["audit_result"],
+                "kind": qa_audit["audit_kind"],
+                "rows_scanned": qa_audit["observed"]["rows_scanned"],
+                "rows_included": qa_audit["observed"]["rows_included"],
+                "counts_by_service": qa_audit["observed"]["counts_by_service"],
+                "evidence": "data/qa-corpus-independent-audit.json",
             },
             "currentness": {
-                "status": "SOURCE_FRESHNESS_MONITORED",
+                "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
                 "source_sha256": qa["source_sha256"],
             },
             "monitoring": {
                 "status": "ACTIVE",
-                "workflow": ".github/workflows/verify-qa-source-freshness.yml",
+                "workflow": ".github/workflows/verify-qa-corpus-independent.yml",
+                "additional_workflow": ".github/workflows/verify-qa-source-freshness.yml",
             },
             "human_review": {"status": qa["review_status"]},
-            "assurance": "SOURCE_FRESHNESS_ONLY",
+            "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
         },
     ]
 
-    gaps = [
-        {
-            "id": "qa-corpus-independent-parse-audit",
-            "layer_id": "qa-corpus",
-            "required": "Independent workbook parse and comparison of the 843 included Q&A rows and service-code filtering.",
-        },
-    ]
+    gaps = []
 
     return {
         "format_version": 1,
