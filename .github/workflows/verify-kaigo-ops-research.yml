@@ -1,0 +1,98 @@
+name: Verify Kaigo Ops research
+
+on:
+  push:
+    branches:
+      - docs/kaigo-ops-research-plan
+    paths:
+      - "docs/kaigo-ops/research/**"
+      - "scripts/research-*.mjs"
+      - "data/questions.json"
+      - "data/sources.json"
+      - ".github/workflows/verify-kaigo-ops-research.yml"
+  pull_request:
+    paths:
+      - "docs/kaigo-ops/research/**"
+      - "scripts/research-*.mjs"
+      - "data/questions.json"
+      - "data/sources.json"
+      - ".github/workflows/verify-kaigo-ops-research.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run current classifier regression
+        run: node scripts/research-coverage-classifier-v0.24.mjs > research-classifier-result.json
+
+      - name: Assert classifier regression
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+          const report = JSON.parse(fs.readFileSync("research-classifier-result.json", "utf8"));
+          const keys = [
+            "coverage_gap",
+            "false_answer_stress",
+            "external_qa_query_sample",
+            "claim_promotion",
+            "claim_routing_natural_language",
+            "verified_claim_routing",
+            "multi_claim_routing",
+            "important_matters_claim_routing",
+            "municipal_query_sample",
+            "verified_regression",
+          ];
+          const failures = [];
+          let total = 0;
+          for (const key of keys) {
+            const result = report[key];
+            if (!result || typeof result.total !== "number" || !Array.isArray(result.failures)) {
+              failures.push({ key, reason: "missing evaluation block" });
+              continue;
+            }
+            total += result.total;
+            if (result.failures.length > 0) {
+              failures.push({ key, failures: result.failures });
+            }
+          }
+          if (total !== report.harness.expected_total_checks) {
+            failures.push({
+              reason: "total check mismatch",
+              expected: report.harness.expected_total_checks,
+              actual: total,
+            });
+          }
+          if (failures.length > 0) {
+            console.error(JSON.stringify({ total, failures }, null, 2));
+            process.exit(1);
+          }
+          console.log(JSON.stringify({
+            classifier_version: report.classifier_version,
+            total,
+            result: "PASS"
+          }, null, 2));
+          NODE
+
+      - name: Validate Claim Registry
+        run: node scripts/research-claim-registry-validate-v0.16.mjs
+
+      - name: Validate Claim Compositions
+        run: node scripts/research-claim-compositions-validate-v0.5.mjs
+
+      - name: Upload classifier result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kaigo-ops-research-classifier-result
+          path: research-classifier-result.json
+          if-no-files-found: error
