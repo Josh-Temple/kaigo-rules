@@ -1,0 +1,114 @@
+{
+  "format_version": 1,
+  "output_path": "data/notice-personnel-source-snapshots.json",
+  "policy": "Official PDF source segments are machine-extracted reconstruction material only. They do not change notice-current-skeleton official_text or any human-review status.",
+  "segments": [
+    {
+      "id": "dayservice-personnel-staffing-h27-baseline",
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 45,
+      "page_end": 49,
+      "must_contain": [
+        "指定通所介護の単位とは、同時に、一体的に提供される指定通所介護をいう",
+        "提供日ごとに確保すべき勤務延時間数＝提供時間数",
+        "看護職員については、提供時間帯を通じて専従する必要はない"
+      ],
+      "body_start": "① 指定通所介護の単位とは、同時に、一体的に提供される指定通所介護をいう",
+      "body_end": "⑵ 生活相談員",
+      "note": "H27改正後欄の従業者の員数①〜⑧。H30とR3の後続改正を順方向に適用するbaseline。"
+    },
+    {
+      "id": "dayservice-personnel-staffing-h30-hours-patch",
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 12,
+      "page_end": 12,
+      "must_contain": [
+        "８時間以上９時間未満の指定通所介護の前後に連続して延長サービス"
+      ],
+      "body_start": "② ８時間以上９時間未満の指定通所介護の前後に連続して延長サービス",
+      "body_end": "③～⑧ （略）",
+      "note": "H30改正後欄。延長サービスに係る②だけを差し替えるpatch。"
+    },
+    {
+      "id": "dayservice-personnel-staffing-r3-nurse-patch",
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 30,
+      "page_end": 31,
+      "must_contain": [
+        "⑥ 看護職員については、指定通所介護事業所の従業者により確保することに加え",
+        "ア 指定通所介護事業所の従業者により確保する場合",
+        "イ 病院、診療所、訪問看護ステーションとの連携により確保する場合"
+      ],
+      "body_start": "⑥ 看護職員については、指定通所介護事業所の従業者により確保することに加え",
+      "body_end": "⑦・⑧ （略）",
+      "note": "R3改正後欄。看護職員の確保方法をア・イに分けて明確化した⑥を差し替えるpatch。"
+    },
+    {
+      "id": "dayservice-personnel-life-counselor-h27",
+      "notice_id": "notice.dayservice.personnel.life-counselor",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 49,
+      "page_end": 49,
+      "must_contain": [
+        "生活相談員については、特別養護老人ホームの設備及び運営に関する基準"
+      ],
+      "body_start": "生活相談員については、特別養護老人ホームの設備及び運営に関する基準",
+      "body_end": "⑶ 機能訓練指導員",
+      "note": "H27改正後欄。その後H30/R3/R6では本文変更を示さず略記。"
+    },
+    {
+      "id": "dayservice-personnel-function-training-h30",
+      "notice_id": "notice.dayservice.personnel.function-training",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "historical_amendment_state",
+      "page_start": 12,
+      "page_end": 13,
+      "must_contain": [
+        "機能訓練指導員は、日常生活を営むのに必要な機能の減退を防止するための訓練を行う能力を有する者",
+        "はり師及びきゅう師については",
+        "６月以上機能訓練指導に従事した経験を有する者"
+      ],
+      "body_start": "機能訓練指導員は、日常生活を営むのに必要な機能の減退を防止するための訓練を行う能力を有する者",
+      "body_end": "（４） （略）",
+      "note": "H30改正後欄。はり師・きゅう師に関する資格要件追加後の本文。"
+    },
+    {
+      "id": "dayservice-personnel-manager-h27",
+      "notice_id": "notice.dayservice.personnel.manager",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 49,
+      "page_end": 49,
+      "must_contain": [
+        "訪問介護の場合と同趣旨であるため、第三の一の１の⑶を参照されたい"
+      ],
+      "body_start": "訪問介護の場合と同趣旨であるため、第三の一の１の⑶を参照されたい",
+      "body_end": "２ 設備に関する基準",
+      "note": "H27改正後欄。その後の通所介護人員節改正で本文変更を示されていない。"
+    }
+  ],
+  "source_layouts": {
+    "mhlw-h27-interpretation-redline": {
+      "current_column": "right",
+      "header_semantics": "改正前|改正後",
+      "evidence_note": "H27新旧対照表は改正後欄が右側。"
+    },
+    "mhlw-h30-interpretation-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "H30新旧対照表は新欄が左側。"
+    },
+    "mhlw-2021-interpretation-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "R3新旧対照表は新欄が左側。"
+    }
+  }
+}

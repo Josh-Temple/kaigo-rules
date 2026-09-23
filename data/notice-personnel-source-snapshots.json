@@ -1,0 +1,118 @@
+{
+  "format_version": 1,
+  "generator": "scripts/import_notice_personnel_snapshots.py",
+  "extraction_engine": "pdftotext -layout + declared-column crop + normalized body boundaries",
+  "policy": "Official PDF source segments are machine-extracted reconstruction material only. They do not change notice-current-skeleton official_text or any human-review status.",
+  "sources": [
+    {
+      "source_id": "mhlw-2021-interpretation-redline",
+      "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+      "sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+      "byte_length": 483252,
+      "current_column": "left",
+      "header_semantics": "新|旧"
+    },
+    {
+      "source_id": "mhlw-h27-interpretation-redline",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+      "sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+      "byte_length": 2018242,
+      "current_column": "right",
+      "header_semantics": "改正前|改正後"
+    },
+    {
+      "source_id": "mhlw-h30-interpretation-redline",
+      "url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+      "sha256": "7a3a439fca5bfadd04aa4e46058326e6e643d92e66f18e2f893e1b40ce6eabaa",
+      "byte_length": 435527,
+      "current_column": "left",
+      "header_semantics": "新|旧"
+    }
+  ],
+  "segments": [
+    {
+      "id": "dayservice-personnel-staffing-h27-baseline",
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 45,
+      "page_end": 49,
+      "current_column": "right",
+      "note": "H27改正後欄の従業者の員数①〜⑧。H30とR3の後続改正を順方向に適用するbaseline。",
+      "column_text_sha256": "3ef57597777d3d223f753ad89805eb92599bc6cbc8363b0a4015e3bd5ff0e6b0",
+      "body_text_sha256": "97d0e77580d54c317ada4c84eea0d5f130834f13a32f1b3e9c206437ec398a9e",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "①指定通所介護の単位とは、同時に、一体的に提供される指定通所介護をいうものであることから、例えば、次のような場合は、２単位として扱われ、それぞれの単位ごとに必要な従業者を確保する必要がある。イ指定通所介護が同時に一定の距離を置いた２つの場所で行われ、これらのサービスの提供が一体的に行われているといえない場合ロ午前と午後とで別の利用者に対して指定通所介護を提供する場合また、利用者ごとに策定した通所介護計画に位置づけられた内容の通所介護が一体的に提供されていると認められる場合は、同一単位で提供時間数の異なる利用者に対して通所介護を行うことも可能である。なお、同時一体的に行われているとは認められない場合は、別単位となることに留意すること。②７時間以上９時間未満の通所介護の前後に連続して延長サービスを行う場合にあっては、事業所の実情に応じて、適当数の従業者を配置するものとする。③居宅基準第93条第１項第１号の生活相談員、同項第３号の介護職員及び同条第２項の看護職員又は介護職員の人員配置については、当該職種の従業員がサービス提供時間内に勤務する時間数の合計（以下「勤務延時間数」という。）を提供時間数で除して得た数が基準において定められた数以上となるよう、勤務延時間数を確保するよう定めたものであり、必要な勤務延時間数が確保されれば当該職種の従業者の員数は問わないものである。④生活相談員については、指定通所介護の単位の数にかかわらず、次の計算式のとおり指定通所介護事業所における提供時間数に応じた生活相談員の配置が必要になるものである。ここでいう提供時間数とは、当該事業所におけるサービス提供開始時刻から終了時刻まで（サービスが提供されていない時間帯を除く。）とする。（確保すべき生活相談員の勤務延時間数の計算式）提供日ごとに確保すべき勤務延時間数＝提供時間数例えば、１単位の指定通所介護を実施している事業所の提供時間数を６時間とした場合、生活相談員の勤務延時間数を、提供時間数である６時間で除して得た数が１以上となるよう確保すればよいことから、従業者の員数にかかわらず６時間の勤務延時間数分の配置が必要となる。また、例えば午前９時から正午、午後１時から午後６時の２単位の指定通所介護を実施している事業所の場合、当該事業所におけるサービス提供時間は午前９時から午後６時（正午から午後１時までを除く。）となり、提供時間数は８時間となることから、従業者の員数にかかわらず８時間の勤務延時間数分の配置が必要となる。なお、指定通所介護事業所が、利用者の地域での暮らしを支えるため、医療機関、他の居宅サービス事業者、地域の住民活動等と連携し、指定通所介護事業所を利用しない日でも利用者の地域生活を支える地域連携の拠点としての機能を展開できるように、生活相談員の確保すべき勤務延時間数には、「サービス担当者会議や地域ケア会議に出席するための時間」、「利用者宅を訪問し、在宅生活の状況を確認した上で、利用者の家族も含めた相談・援助のための時間」、「地域の町内会、自治会、ボランティア団体等と連携し、利用者に必要な生活支援を担ってもらうなどの社会資源の発掘・活用のための時間」など、利用者の地域生活を支える取組のために必要な時間も含めることができる。ただし、生活相談員は、利用者の生活の向上を図るため適切な相談・援助等を行う必要があり、これらに支障がない範囲で認められるものである。⑤居宅基準第93条第１項第３号にいう介護職員（第２項の適用を受ける場合の看護職員又は介護職員を含む。以下⑤について同じ。）については、指定通所介護の単位ごとに、提供時間数に応じた配置が必要となるものであり、確保すべき勤務延時間数は、次の計算式のとおり提供時間数及び利用者数から算出される。なお、ここでいう提供時間数とは、当該単位における平均提供時間数（利用者ごとの提供時間数の合計を利用者数で除して得た数）とする。（確保すべき介護職員の勤務延時間数の計算式）・利用者数15人まで単位ごとに確保すべき勤務延時間数＝平均提供時間数・利用者数16人以上単位ごとに確保すべき勤務延時間数＝（（利用者数－15）÷５＋１）×平均提供時間数※平均提供時間数＝利用者ごとの提供時間数の合計÷利用者数例えば、利用者数18人、提供時間数を５時間とした場合、（18－15）÷５＋１＝1.6となり、５時間の勤務時間数を1.6名分確保すればよいことから、従業員の員数にかかわらず、５×1.6＝８時間の勤務延時間数分の人員配置が必要となる。利用者数と平均提供時間数に応じて確保すべき勤務延時間数の具体例を別表二に示すものとする。なお、介護職員については、指定通所介護の単位ごとに常時１名以上確保することとされているが、これは、介護職員が常に確保されるよう必要な配置を行うよう定めたものであり、例えば、計算式により算出した確保すべき勤務延時間数が、当該事業所におけるサービス提供開始時刻から終了時刻までの時間数に満たない場合であっても、常時１名以上が確保されるよう配置を行う必要があることに留意すること。また、介護職員は、利用者の処遇に支障がない場合は他の指定通所介護の単位の介護職員として従事することができるとされたことから、例えば複数の単位の指定通所介護を同じ時間帯に実施している場合、単位ごとに介護職員等が常に１名以上確保されている限りにおいては、単位を超えて柔軟な配置が可能である。⑥看護職員については、提供時間帯を通じて専従する必要はないが、当該看護職員は提供時間帯を通じて指定通所介護事業所と密接かつ適切な連携を図るものとする。また、病院、診療所、訪問看護ステーションとの連携により、看護職員が指定通所介護事業所の営業日ごとに利用者の健康状態の確認を行い、病院、診療所、訪問看護ステーションと指定通所介護事業所が提供時間帯を通じて密接かつ適切な連携を図っている場合には、看護職員が確保されているものとする。なお、「密接かつ適切な連携」とは、指定通所介護事業所へ駆けつけることができる体制や適切な指示ができる連絡体制などを確保することである。⑦利用者の数又は利用定員は、単位ごとの指定通所介護についての利用者の数又は利用定員をいうものであり、利用者の数は実人員、利用定員は、あらかじめ定めた利用者の数の上限をいうものである。従って、例えば、１日のうちの午前の提供時間帯に利用者10人に対して指定通所介護を提供し、午後の提供時間帯に別の利用者10人に対して指定通所介護を提供する場合であって、それぞれの指定通所介護の定員が10人である場合には、当該事業所の利用定員は10人、必要となる介護職員は午前午後それぞれにおいて利用者10人に応じた数ということとなり、人員算定上午前の利用者の数と午後の利用者の数が合算されるものではない。⑧同一事業所で複数の単位の指定通所介護を同時に行う場合であっても、常勤の従業者は事業所ごとに確保すれば足りるものである（居宅基準第93条第７項関係）。\n"
+    },
+    {
+      "id": "dayservice-personnel-staffing-h30-hours-patch",
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 12,
+      "page_end": 12,
+      "current_column": "left",
+      "note": "H30改正後欄。延長サービスに係る②だけを差し替えるpatch。",
+      "column_text_sha256": "fd7491141fa0595ad6dd31238828b025ef32db216ae52cc80d905ef6d6697d8e",
+      "body_text_sha256": "c0f75c142ad9366e537c75b2a4475b085aa5970a7116621065642c777935054d",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "②８時間以上９時間未満の指定通所介護の前後に連続して延長サービスを行う場合にあっては、事業所の実情に応じて、適当数の従業者を配置するものとする。\n"
+    },
+    {
+      "id": "dayservice-personnel-staffing-r3-nurse-patch",
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 30,
+      "page_end": 31,
+      "current_column": "left",
+      "note": "R3改正後欄。看護職員の確保方法をア・イに分けて明確化した⑥を差し替えるpatch。",
+      "column_text_sha256": "b7b0ab10b625e4cf0dc82688bacaec9aaaf4d1e37eed30c75a0b812282bf3ea9",
+      "body_text_sha256": "adb6e3a6ac2978914c44a0ca2957faf79c6a0729b39505c4d8d09681dbdea5a8",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "⑥看護職員については、指定通所介護事業所の従業者により確保することに加え、病院、診療所、訪問看護ステーションとの連携により確保することも可能である。具体的な取扱いは以下のとおりとする。ア指定通所介護事業所の従業者により確保する場合提供時間帯を通じて、専ら当該指定通所介護の提供に当たる必要はないが、当該看護職員は提供時間帯を通じて、指定通所介護事業所と密接かつ適切な連携を図るものとする。イ病院、診療所、訪問看護ステーションとの連携により確保する場合看護職員が指定通所介護事業所の営業日ごとに利用者の健康状態の確認を行い、病院、診療所、訪問看護ステーションと指定通所介護事業所が提供時間帯を通じて密接かつ適切な連携を図るものとする。なお、アとイにおける「密接かつ適切な連携」とは、指定通所介護事業所へ駆けつけることができる体制や適切な指示ができる連絡体制などを確保することである。\n"
+    },
+    {
+      "id": "dayservice-personnel-life-counselor-h27",
+      "notice_id": "notice.dayservice.personnel.life-counselor",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 49,
+      "page_end": 49,
+      "current_column": "right",
+      "note": "H27改正後欄。その後H30/R3/R6では本文変更を示さず略記。",
+      "column_text_sha256": "4ed3223e584e1d75339680f870afa0f6fc207fd70947a957bf37af49c3149d22",
+      "body_text_sha256": "fbd9bfa5fd410c45faaa5fb51150ba36e6d683667dd9bd4a6a0154f77b02c291",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "生活相談員については、特別養護老人ホームの設備及び運営に関する基準（平成11年厚生省令第46号）第５条第２項に定める生活相談員に準ずるものである。\n"
+    },
+    {
+      "id": "dayservice-personnel-function-training-h30",
+      "notice_id": "notice.dayservice.personnel.function-training",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "historical_amendment_state",
+      "page_start": 12,
+      "page_end": 13,
+      "current_column": "left",
+      "note": "H30改正後欄。はり師・きゅう師に関する資格要件追加後の本文。",
+      "column_text_sha256": "b1afd8e61944eb74b3a26cd43b6400938d6c02f6b5a63d3a3bd34187f9500d03",
+      "body_text_sha256": "382d6eb740a2fd95e3bac8dd58a80b4635b44ea039433a89984e4c4cc9780dec",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "機能訓練指導員は、日常生活を営むのに必要な機能の減退を防止するための訓練を行う能力を有する者とされたが、この「訓練を行う能力を有する者」とは、理学療法士、作業療法士、言語聴覚士、看護職員、柔道整復師、あん摩マッサージ指圧師、はり師又はきゅう師の資格を有する者（はり師及びきゅう師については、理学療法士、作業療法士、言語聴覚士、看護職員、柔道整復師又はあん摩マッサージ指圧師の資格を有する機能訓練指導員を配置した事業所で６月以上機能訓練指導に従事した経験を有する者に限る。）とする。ただし、利用者の日常生活やレクリエーション、行事を通じて行う機能訓練については、当該事業所の生活相談員又は介護職員が兼務して行っても差し支えない。\n"
+    },
+    {
+      "id": "dayservice-personnel-manager-h27",
+      "notice_id": "notice.dayservice.personnel.manager",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 49,
+      "page_end": 49,
+      "current_column": "right",
+      "note": "H27改正後欄。その後の通所介護人員節改正で本文変更を示されていない。",
+      "column_text_sha256": "4ed3223e584e1d75339680f870afa0f6fc207fd70947a957bf37af49c3149d22",
+      "body_text_sha256": "3ebd100c715f289ecea6d7c4ab3edd4f33db26a609f131b7075ac083c845d644",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "訪問介護の場合と同趣旨であるため、第三の一の１の⑶を参照されたい。\n"
+    }
+  ]
+}

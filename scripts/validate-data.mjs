@@ -89,6 +89,26 @@ const noticeEquipmentCandidatesPath = path.join(root, "data", "notice-equipment-
 const noticeEquipmentCandidates = fs.existsSync(noticeEquipmentCandidatesPath)
   ? JSON.parse(fs.readFileSync(noticeEquipmentCandidatesPath, "utf8"))
   : null;
+const noticePersonnelManifestPath = path.join(root, "data", "notice-personnel-source-manifest.json");
+const noticePersonnelManifest = fs.existsSync(noticePersonnelManifestPath)
+  ? JSON.parse(fs.readFileSync(noticePersonnelManifestPath, "utf8"))
+  : null;
+const noticePersonnelSnapshotsPath = path.join(root, "data", "notice-personnel-source-snapshots.json");
+const noticePersonnelSnapshots = fs.existsSync(noticePersonnelSnapshotsPath)
+  ? JSON.parse(fs.readFileSync(noticePersonnelSnapshotsPath, "utf8"))
+  : null;
+const noticePersonnelAssemblyPath = path.join(root, "data", "notice-personnel-current-assembly.json");
+const noticePersonnelAssembly = fs.existsSync(noticePersonnelAssemblyPath)
+  ? JSON.parse(fs.readFileSync(noticePersonnelAssemblyPath, "utf8"))
+  : null;
+const noticePersonnelReplayPath = path.join(root, "data", "notice-personnel-replay-coverage.json");
+const noticePersonnelReplay = fs.existsSync(noticePersonnelReplayPath)
+  ? JSON.parse(fs.readFileSync(noticePersonnelReplayPath, "utf8"))
+  : null;
+const noticePersonnelCandidatesPath = path.join(root, "data", "notice-personnel-current-text-candidates.json");
+const noticePersonnelCandidates = fs.existsSync(noticePersonnelCandidatesPath)
+  ? JSON.parse(fs.readFileSync(noticePersonnelCandidatesPath, "utf8"))
+  : null;
 const feeSkeletonPath = path.join(root, "data", "remuneration-current-skeleton.json");
 const feeSkeleton = fs.existsSync(feeSkeletonPath)
   ? JSON.parse(fs.readFileSync(feeSkeletonPath, "utf8"))
@@ -605,6 +625,176 @@ if (noticeSkeleton.length) {
       "休止又は廃止の日の１月前まで",
       "verified overnight-service suspension/closure deadline missing"
     );
+  }
+
+  const requiredRouki25PersonnelIds = [
+    "notice.dayservice.personnel.staffing",
+    "notice.dayservice.personnel.life-counselor",
+    "notice.dayservice.personnel.function-training",
+    "notice.dayservice.personnel.manager",
+  ];
+  for (const id of requiredRouki25PersonnelIds) {
+    if (!noticeSkeletonIds.has(id)) {
+      errors.push(`notice skeleton: missing required day-service personnel node ${id}`);
+    }
+  }
+
+  const r3NurseStaffingEvent = noticeAmendments.find(
+    (event) => event.id === "rouki25.r3.dayservice.nurse-staffing-structure"
+  );
+  if (!r3NurseStaffingEvent ||
+      r3NurseStaffingEvent.operation !== "replace_fragment" ||
+      r3NurseStaffingEvent.target_node_id !== "notice.dayservice.personnel.staffing") {
+    errors.push("notice amendment events: missing R3 nurse-staffing restructure");
+  }
+
+  const personnelPipelineParts = [
+    noticePersonnelManifest,
+    noticePersonnelSnapshots,
+    noticePersonnelAssembly,
+    noticePersonnelReplay,
+    noticePersonnelCandidates,
+  ];
+  if (personnelPipelineParts.some(Boolean) && !personnelPipelineParts.every(Boolean)) {
+    errors.push("notice personnel reconstruction: incomplete pipeline files");
+  }
+  if (personnelPipelineParts.every(Boolean)) {
+    const expectedPersonnelIds = new Set(requiredRouki25PersonnelIds);
+    const samePersonnelIdSet = (values) => {
+      const actual = new Set(values);
+      return actual.size === expectedPersonnelIds.size &&
+        [...expectedPersonnelIds].every((id) => actual.has(id));
+    };
+
+    const manifestSegments = noticePersonnelManifest.segments || [];
+    if (!samePersonnelIdSet(manifestSegments.map((segment) => segment.notice_id))) {
+      errors.push("notice personnel manifest: unexpected personnel coverage");
+    }
+    const manifestSegmentIds = new Set();
+    for (const segment of manifestSegments) {
+      if (manifestSegmentIds.has(segment.id)) errors.push(`notice personnel manifest: duplicate segment ${segment.id}`);
+      manifestSegmentIds.add(segment.id);
+      if (!sourceIds.has(segment.source_id)) errors.push(`notice personnel manifest ${segment.id}: missing source ${segment.source_id}`);
+      if (!segment.body_start || !segment.body_end || !segment.page_start || !segment.page_end) {
+        errors.push(`notice personnel manifest ${segment.id}: incomplete extraction boundary`);
+      }
+    }
+
+    const snapshots = noticePersonnelSnapshots.segments || [];
+    const snapshotById = new Map(snapshots.map((item) => [item.id, item]));
+    if (!samePersonnelIdSet(snapshots.map((item) => item.notice_id))) {
+      errors.push("notice personnel snapshots: unexpected personnel coverage");
+    }
+    for (const snapshot of snapshots) {
+      if (!sourceIds.has(snapshot.source_id)) errors.push(`notice personnel snapshot ${snapshot.id}: missing source ${snapshot.source_id}`);
+      if (snapshot.verification_status !== "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK") {
+        errors.push(`notice personnel snapshot ${snapshot.id}: unsafe verification status`);
+      }
+      if (!snapshot.body_text || !snapshot.body_text_sha256 ||
+          createHash("sha256").update(snapshot.body_text, "utf8").digest("hex") !== snapshot.body_text_sha256) {
+        errors.push(`notice personnel snapshot ${snapshot.id}: body text/hash mismatch`);
+      }
+    }
+
+    if (!samePersonnelIdSet((noticePersonnelAssembly.items || []).map((item) => item.notice_id))) {
+      errors.push("notice personnel assembly: unexpected personnel coverage");
+    }
+
+    const replayById = new Map((noticePersonnelReplay || []).map((item) => [item.notice_id, item]));
+    if (!samePersonnelIdSet((noticePersonnelReplay || []).map((item) => item.notice_id))) {
+      errors.push("notice personnel replay: unexpected personnel coverage");
+    }
+    for (const coverage of noticePersonnelReplay || []) {
+      if (coverage.human_verification_status !== "NOT_REVIEWED") {
+        errors.push(`notice personnel replay ${coverage.notice_id}: unexpected human verification status`);
+      }
+      for (const checkpoint of coverage.checkpoints || []) {
+        if (!sourceIds.has(checkpoint.source_id)) {
+          errors.push(`notice personnel replay ${coverage.notice_id}: missing checkpoint source ${checkpoint.source_id}`);
+        }
+        if (checkpoint.status !== "CHECKED") {
+          errors.push(`notice personnel replay ${coverage.notice_id}: unchecked checkpoint ${checkpoint.source_id}`);
+        }
+      }
+    }
+
+    const candidates = noticePersonnelCandidates.items || [];
+    if (!samePersonnelIdSet(candidates.map((item) => item.notice_id))) {
+      errors.push("notice personnel candidates: unexpected personnel coverage");
+    }
+    const candidateById = new Map(candidates.map((item) => [item.notice_id, item]));
+    for (const candidate of candidates) {
+      if (candidate.reconstruction_status !== "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK" ||
+          candidate.human_verification_status !== "NOT_REVIEWED") {
+        errors.push(`notice personnel candidate ${candidate.notice_id}: unsafe status`);
+      }
+      if (!candidate.candidate_text || !candidate.candidate_text_sha256 ||
+          createHash("sha256").update(candidate.candidate_text, "utf8").digest("hex") !== candidate.candidate_text_sha256) {
+        errors.push(`notice personnel candidate ${candidate.notice_id}: text/hash mismatch`);
+      }
+      const baseline = snapshotById.get(candidate.baseline_snapshot_id);
+      if (!baseline || baseline.notice_id !== candidate.notice_id) {
+        errors.push(`notice personnel candidate ${candidate.notice_id}: baseline snapshot mismatch`);
+      }
+      for (const patchId of candidate.patch_snapshot_ids || []) {
+        const patch = snapshotById.get(patchId);
+        if (!patch || patch.notice_id !== candidate.notice_id) {
+          errors.push(`notice personnel candidate ${candidate.notice_id}: patch snapshot mismatch ${patchId}`);
+        }
+      }
+      const coverage = replayById.get(candidate.notice_id);
+      if (!coverage || candidate.replay_status !== coverage.replay_status) {
+        errors.push(`notice personnel candidate ${candidate.notice_id}: replay coverage mismatch`);
+      }
+    }
+
+    const staffing = candidateById.get("notice.dayservice.personnel.staffing");
+    if (staffing) {
+      const compact = String(staffing.candidate_text || "").normalize("NFKC").replace(/\s+/g, "");
+      const normalizedNeedle = (value) => String(value).normalize("NFKC").replace(/\s+/g, "");
+      if (!compact.includes(normalizedNeedle("②８時間以上９時間未満の指定通所介護の前後に連続して延長サービス"))) {
+        errors.push("notice personnel staffing: H30 extended-hours wording missing");
+      }
+      if (compact.includes(normalizedNeedle("②７時間以上９時間未満の通所介護の前後に連続して延長サービス"))) {
+        errors.push("notice personnel staffing: pre-H30 extended-hours wording returned");
+      }
+      for (const phrase of [
+        "ア指定通所介護事業所の従業者により確保する場合",
+        "イ病院、診療所、訪問看護ステーションとの連携により確保する場合",
+        "サービス担当者会議や地域ケア会議に出席するための時間",
+      ]) {
+        if (!compact.includes(phrase.normalize("NFKC").replace(/\s+/g, ""))) {
+          errors.push(`notice personnel staffing: verified wording missing: ${phrase}`);
+        }
+      }
+      const patches = staffing.patch_snapshot_ids || [];
+      for (const patchId of [
+        "dayservice-personnel-staffing-h30-hours-patch",
+        "dayservice-personnel-staffing-r3-nurse-patch",
+      ]) {
+        if (!patches.includes(patchId)) errors.push(`notice personnel staffing: missing patch ${patchId}`);
+      }
+    }
+
+    const lifeCounselor = candidateById.get("notice.dayservice.personnel.life-counselor");
+    if (lifeCounselor && !String(lifeCounselor.candidate_text).includes("特別養護老人ホームの設備及び運営に関する基準")) {
+      errors.push("notice personnel life-counselor: verified qualification reference missing");
+    }
+
+    const functionTraining = candidateById.get("notice.dayservice.personnel.function-training");
+    if (functionTraining) {
+      const compact = String(functionTraining.candidate_text || "").normalize("NFKC").replace(/\s+/g, "");
+      for (const phrase of ["はり師又はきゅう師", "6月以上機能訓練指導に従事した経験"]) {
+        if (!compact.includes(phrase.normalize("NFKC").replace(/\s+/g, ""))) {
+          errors.push(`notice personnel function-training: H30 wording missing: ${phrase}`);
+        }
+      }
+    }
+
+    const manager = candidateById.get("notice.dayservice.personnel.manager");
+    if (manager && !String(manager.candidate_text).normalize("NFKC").replace(/\s+/g, "").includes("第三の一の1の(3)を参照されたい")) {
+      errors.push("notice personnel manager: verified cross-reference missing");
+    }
   }
 
   for (const review of noticeCurrentReview.reviewed_nodes || []) {
