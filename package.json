@@ -28,7 +28,8 @@
     "validate:notice-currentness": "python scripts/validate_notice_currentness_investigation.py",
     "validate:notice-currentness-ledger": "python scripts/validate_notice_rouki25_currentness_ledger.py",
     "watch:notice-currentness": "python scripts/watch_notice_rouki25_currentness.py",
-    "validate:fee-guidance-independent": "python scripts/validate_fee_guidance_independent_verification.py"
+    "validate:fee-guidance-independent": "python scripts/validate_fee_guidance_independent_verification.py",
+    "watch:fee-guidance-currentness": "python scripts/watch_fee_guidance_currentness.py"
   },
   "dependencies": {
     "next": "^16.0.0",
