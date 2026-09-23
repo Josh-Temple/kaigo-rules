@@ -109,6 +109,30 @@ def main() -> None:
     if "変更不存在の証拠ではない" not in search_route.get("limitation", ""):
         fail("search absence must not be treated as proof of no change")
 
+    scan = data.get("post_r6_official_index_scan", {})
+    if scan.get("candidate_post_r6_amendment_identified") is not False:
+        fail("post-R6 index scan must not claim an amendment candidate unless evidence is recorded")
+    if scan.get("decision_effect") != "HOLD_UNCHANGED":
+        fail("post-R6 index scan must not lift HOLD")
+    if scan.get("exact_title_page_text_match_after_r6") is not False:
+        fail("unexpected exact-title match state")
+    if scan.get("rouki25_page_text_match_after_r6") is not False:
+        fail("unexpected 老企第25号 match state")
+    checked = scan.get("checked_routes", [])
+    required_scan_routes = {
+        "mhlw-kaigo-latest-info-current",
+        "mhlw-kaigo-latest-info-adjacent-index-31",
+        "mhlw-kaigo-latest-info-adjacent-index-29",
+        "mhlw-r8-reform-notification-list",
+        "mhlw-r6-reform-baseline",
+    }
+    if {item.get("route_id") for item in checked} != required_scan_routes:
+        fail("post-R6 official index scan route set is incomplete or changed")
+    if "存在しないことの証明にはならない" not in scan.get("inference_limit", ""):
+        fail("official-index absence must not be treated as proof of no amendment")
+    if not scan.get("next_blocker"):
+        fail("post-R6 scan must preserve the remaining currentness blocker")
+
     policy = data.get("status_policy", {})
     if "現行性の証明ではない" not in policy.get("machine_text_match", ""):
         fail("machine text match must not be described as proof of currentness")
@@ -117,7 +141,7 @@ def main() -> None:
     if "2025-03へ訂正済み" not in policy.get("currentness", ""):
         fail("currentness policy must record the corrected reference period")
 
-    print("rouki25 currentness investigation: OK (reference period corrected; exhaustive coverage unresolved; 22 items remain HOLD)")
+    print("rouki25 currentness investigation: OK (reference period corrected; post-R6 official index scan recorded; exhaustive coverage unresolved; 22 items remain HOLD)")
 
 
 if __name__ == "__main__":
