@@ -294,6 +294,7 @@ def parse_xlsx(payload: bytes):
 
     sheet_names = [name for name, _ in sheet_defs]
     used_sheets = []
+    header_probes = []
     scanned = 0
     items = []
 
@@ -301,6 +302,14 @@ def parse_xlsx(payload: bytes):
         rows, nrows, ncols = load_sheet_rows(archive, path, shared, date_styles, date1904)
         header_row, cols = find_header(rows, ncols)
         if cols is None:
+            probe = []
+            for row in rows[:40]:
+                values = [clean(value) for value in row[:16]]
+                if any(values):
+                    probe.append(values)
+                if len(probe) >= 10:
+                    break
+            header_probes.append({"sheet": name, "rows": probe})
             continue
         used_sheets.append(name)
         last_service = ""
@@ -364,7 +373,7 @@ def parse_xlsx(payload: bytes):
             x["id"],
         ),
     )
-    return sheet_names, used_sheets, scanned, items
+    return sheet_names, used_sheets, header_probes, scanned, items
 
 
 def main() -> int:
@@ -385,15 +394,17 @@ def main() -> int:
         observed = []
         sheet_names = []
         used_sheets = []
+        header_probes = []
         scanned = 0
     else:
         try:
-            sheet_names, used_sheets, scanned, observed = parse_xlsx(payload)
+            sheet_names, used_sheets, header_probes, scanned, observed = parse_xlsx(payload)
         except Exception as exc:
             errors.append(str(exc))
             observed = []
             sheet_names = []
             used_sheets = []
+            header_probes = []
             scanned = 0
 
     if observed_sha != meta.get("source_sha256"):
@@ -470,6 +481,7 @@ def main() -> int:
         "observed": {
             "sheet_names": sheet_names,
             "parsed_sheets": used_sheets,
+            "header_probes": header_probes,
             "rows_scanned": scanned,
             "rows_included": len(observed),
             "counts_by_service": observed_counts,
