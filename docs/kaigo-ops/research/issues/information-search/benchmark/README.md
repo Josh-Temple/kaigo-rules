@@ -322,3 +322,31 @@ current importが変化した場合はCIをfailさせる。
 
 委任先告示と留意事項が閉じるまではoverallをCOMPLETEにせず、
 報酬queryのREVIEW_REQUIREDを維持する。
+
+
+## Remuneration delegated notice review — 2026-09-23
+
+`data/remuneration-review.json` の委任先告示reviewを COMPLETEへ更新。
+
+- 告示第27号: 3 / 3 node
+- 告示第95号: 14 / 14 node
+- total: 17 / 17
+
+確認した主な関係:
+- 利用定員超過: 所定単位数の70%
+- 看護職員・介護職員の人員欠如: 所定単位数の70%
+- 高齢者虐待防止措置未実施減算
+- BCP未策定減算
+- 入浴介助加算
+- 中重度者ケア体制加算
+- 個別機能訓練加算
+- 認知症加算
+- 栄養・口腔関連加算
+- サービス提供体制強化加算
+- 介護職員等処遇改善加算
+
+`research-remuneration-delegated-review-validate-v0.1.mjs` で
+source SHAと17 nodeのtext SHAをcurrent importへ固定。
+
+overall remuneration reviewは引き続きIN_PROGRESS。
+残る主要ゲートは老企第36号の現行再構成・留意事項review。

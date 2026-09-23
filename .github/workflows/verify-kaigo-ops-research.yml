@@ -99,6 +99,9 @@ jobs:
       - name: Validate remuneration base review ledger
         run: node scripts/research-remuneration-base-review-validate-v0.1.mjs
 
+      - name: Validate remuneration delegated review ledger
+        run: node scripts/research-remuneration-delegated-review-validate-v0.1.mjs
+
       - name: Upload classifier result
         if: always()
         uses: actions/upload-artifact@v4

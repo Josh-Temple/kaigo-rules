@@ -139,13 +139,98 @@
     ]
   },
   "delegated_review": {
-    "status": "IN_PROGRESS",
-    "source_ids": [
-      "mhlw-fee-notice27-base",
-      "mhlw-fee-criteria95-current"
-    ],
-    "source_structure_checked_at": "2026-09-23",
-    "note": "告示第27号・第95号の現行公式HTMLと主要通所介護見出しは確認済み。各委任条項の全本文照合を終えるまではCOMPLETEにしない。"
+    "status": "COMPLETE",
+    "reviewed_at": "2026-09-23",
+    "sources": {
+      "mhlw-fee-notice27-base": {
+        "status": "COMPLETE",
+        "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+        "source_sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3",
+        "reviewed_nodes": [
+          {
+            "id": "calc27.dayservice.1",
+            "text_sha256": "c92fe15f9e635e1c15666558e44e7c9a0a116335895bca23b43de4509b8e247c"
+          },
+          {
+            "id": "calc27.dayservice.1.capacity",
+            "text_sha256": "c9d01c45c871e40d3062d7235c3ef70f1661ed5fd24f2fc3df3987985072623e"
+          },
+          {
+            "id": "calc27.dayservice.1.staffing",
+            "text_sha256": "0ecb45ea7fe6460212c28df90b23f4890b0860e72f33d6f29cbfc5e3dbb296b4"
+          }
+        ]
+      },
+      "mhlw-fee-criteria95-current": {
+        "status": "COMPLETE",
+        "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+        "source_sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618",
+        "reviewed_nodes": [
+          {
+            "id": "criteria95.dayservice.14-3",
+            "text_sha256": "5fc924a62e2ba3fd9dbd6431c4962742587b7452aea0a1c161eeca651fc02486"
+          },
+          {
+            "id": "criteria95.dayservice.14-4",
+            "text_sha256": "8f25318ea4817f3cf5e2a240274967efc2932660643ebf769ee0b8e213bfb7e6"
+          },
+          {
+            "id": "criteria95.dayservice.14-5",
+            "text_sha256": "545a7371f8064f917027c6f86dc76e7af3def0228b1a62f7b1d69d882c9b7d36"
+          },
+          {
+            "id": "criteria95.dayservice.14-6",
+            "text_sha256": "d3494778fb96d9f060bb6df7b8a0d35c98f6c3a4dc6f7e8abed46ef59e029489"
+          },
+          {
+            "id": "criteria95.dayservice.15",
+            "text_sha256": "b0afcca14c2a438f2c519187dd029fd656d5bb3953751bbd57310648c04423b6"
+          },
+          {
+            "id": "criteria95.dayservice.16",
+            "text_sha256": "bd59cfb5a8f61bfde42c309aa5dc15ded81e3890e89e740e81155b17b708bd6b"
+          },
+          {
+            "id": "criteria95.dayservice.17",
+            "text_sha256": "84d853fe0d8a0c23f520cfdf5b55a599dad76a34197e559e0f166eea155e7bda"
+          },
+          {
+            "id": "criteria95.dayservice.18-2",
+            "text_sha256": "497d978d28e91e9cc1dd4d29b497d7218deb994bc00855535a11579245dacc8f"
+          },
+          {
+            "id": "criteria95.dayservice.19",
+            "text_sha256": "16e13bffb851a629637668da0054b88ef85672afe38223f5b65a8e643391db3f"
+          },
+          {
+            "id": "criteria95.dayservice.19-2",
+            "text_sha256": "5a4aa284bea82b3229802b67dc5523de25e6e775023442fa3b4594eb84921dcf"
+          },
+          {
+            "id": "criteria95.dayservice.20",
+            "text_sha256": "6dfc0fdc5e67b2776c850ee503a052b034d2b9ee29d17fedc54cd41c7304fb0a"
+          },
+          {
+            "id": "criteria95.dayservice.23",
+            "text_sha256": "a5da1cccba0124c404953ed423b73a240a3e60f5b3ba039ba81dcf16053e7fea"
+          },
+          {
+            "id": "criteria95.dayservice.24",
+            "text_sha256": "9991e386846ab7de0fd91291fba2a34eab99cf7da20c82b007086bc288099a7a"
+          },
+          {
+            "id": "criteria95.shared.4",
+            "text_sha256": "e513f845ee76ab41e358b67b90812eb40d6c7b8431adc0706a39f8618256a3f4"
+          }
+        ]
+      }
+    },
+    "review_method": [
+      "厚生労働省の告示第27号現行公式HTMLで通所介護の利用定員超過・看護職員/介護職員欠如時の算定を照合",
+      "厚生労働省の告示第95号現行公式HTMLで通所介護に係る14の委任基準nodeを条項単位で照合",
+      "告示第24号が第4号を準用する処遇改善加算の参照関係を確認",
+      "各reviewed nodeのtext_sha256をcurrent imported delegated dataに固定"
+    ]
   },
   "fee_guidance_review": {
     "status": "PENDING",
@@ -183,7 +268,11 @@
     "fee.dayservice.service-provision",
     "fee.dayservice.treatment-improvement"
   ],
-  "reviewed_relations": [],
+  "reviewed_relations": [
+    "fee.dayservice.note.1 -> mhlw-fee-notice27-base",
+    "fee.dayservice.service-provision -> mhlw-fee-criteria95-current",
+    "fee.dayservice.treatment-improvement -> mhlw-fee-criteria95-current"
+  ],
   "review_method_required": [
     "厚生労働省の現行公式本文を開く",
     "見出し・単位数または率・算定条件・除外条件を取込本文と照合する",
