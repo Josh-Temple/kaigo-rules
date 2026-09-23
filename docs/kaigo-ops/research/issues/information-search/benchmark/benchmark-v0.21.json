@@ -1,0 +1,40 @@
+{
+  "version": "0.21",
+  "created_at": "2026-09-23",
+  "status": "REPRODUCIBILITY_HARNESS_FIXED_RERUN_REQUIRED",
+  "total_suite_cases": 190,
+  "historical_result": {
+    "reported_classifier_checks": "191/191",
+    "status": "NOT_REPRODUCED_BY_PREVIOUS_CURRENT_HARNESS",
+    "reason": "research-coverage-classifier-v0.19 through v0.22 referenced municipal-query-sample-v0.4 (15 cases) while checkpoints and benchmark metadata counted v0.5 (25 cases)."
+  },
+  "corrected_harness": {
+    "classifier": "research-coverage-classifier-v0.23.mjs",
+    "municipal_sample": "municipal-query-sample-v0.5.json",
+    "municipal_cases": 25,
+    "expected_total_checks": 191,
+    "cardinality_guards": true,
+    "execution_status": "PENDING"
+  },
+  "invariant_analysis": {
+    "new_municipal_cases": "MQ-016..MQ-025",
+    "expected_label": "LOCAL",
+    "deterministic_rule_match": "All ten contain explicit Osaka City context plus local designation-procedure vocabulary matched by isLocalAuthoritySpecific().",
+    "note": "This is static logic inspection, not an executed PASS result."
+  },
+  "routing_state": {
+    "registry": "claims-v0.15.json",
+    "composition_registry": "claim-compositions-v0.5.json",
+    "classifier": "research-coverage-classifier-v0.23.mjs",
+    "external_sample": "external-qa-query-sample-v0.5.json",
+    "municipal_sample": "municipal-query-sample-v0.5.json",
+    "registry_claims": 49,
+    "verified_with_source_limitation": 1
+  },
+  "next_gate": [
+    "execute classifier v0.23 in a working Node/Git checkout and record the real 191-check result",
+    "label the frozen 30-case RAG holdout independently",
+    "human sign-off on safety prose remains pending",
+    "do not implement RAG until the evaluation harness is reproducible"
+  ]
+}
