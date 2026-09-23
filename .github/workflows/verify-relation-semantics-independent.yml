@@ -16,6 +16,8 @@ on:
       - "data/remuneration-delegated-relations.json"
       - "data/remuneration-relations.json"
       - ".github/workflows/verify-relation-semantics-independent.yml"
+      - "data/relation-semantic-independent-audit.json"
+      - "scripts/validate_relation_semantic_independent_audit.py"
   push:
     branches: [main]
     paths:
@@ -29,6 +31,8 @@ on:
       - "data/remuneration-delegated-relations.json"
       - "data/remuneration-relations.json"
       - ".github/workflows/verify-relation-semantics-independent.yml"
+      - "data/relation-semantic-independent-audit.json"
+      - "scripts/validate_relation_semantic_independent_audit.py"
 
 permissions:
   contents: read
@@ -51,6 +55,8 @@ jobs:
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
+      - name: Validate pinned audit provenance
+        run: python scripts/validate_relation_semantic_independent_audit.py
       - name: Upload independent relation verification report
         if: always()
         uses: actions/upload-artifact@v4
