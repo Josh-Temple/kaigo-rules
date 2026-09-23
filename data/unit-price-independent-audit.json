@@ -1,0 +1,71 @@
+{
+  "format_version": 1,
+  "scope": "dayservice-unit-price-and-427-region-assignments",
+  "audit_kind": "INDEPENDENT_MACHINE_REPARSE_PLUS_FRESH_PRIMARY_SOURCE_READ",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-23",
+  "audited_main_sha": "2503a08579dda3c24cb3efa3f58856da9d9172e8",
+  "audit_issue": {
+    "number": 73,
+    "url": "https://github.com/Josh-Temple/kaigo-rules/issues/73",
+    "title": "Independent audit: day-service unit prices and 427 regional assignments (2026-09-23)"
+  },
+  "full_verification_run": {
+    "workflow": "Verify day-service unit price independently",
+    "run_id": 35738301404,
+    "head_sha": "81031be8a21af9a58f18e8f4b97b5bafab2c9bae",
+    "result": "PASS",
+    "parser": "python_stdlib_html_parser",
+    "verification_kind": "INDEPENDENT_MACHINE_REPARSE"
+  },
+  "sources": [
+    {
+      "page": 1,
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+      "sha256": "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395"
+    },
+    {
+      "page": 2,
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2",
+      "sha256": "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+    }
+  ],
+  "observed_counts": {
+    "rate_count": 8,
+    "explicit_assignment_count": 427,
+    "default_rule_present": true,
+    "rate_differences": 0,
+    "missing_assignments": 0,
+    "unexpected_assignments": 0,
+    "metadata_differences": 0
+  },
+  "assignment_counts_by_region": {
+    "一級地": 1,
+    "二級地": 7,
+    "三級地": 29,
+    "四級地": 24,
+    "五級地": 59,
+    "六級地": 137,
+    "七級地": 170
+  },
+  "effective_reference_date": "2024-04-01",
+  "input_git_blob_shas_at_audit": {
+    "data/unit-price-dayservice.json": "987a8992b1a4b55c7b43c610adfa15bf54e619ed",
+    "data/unit-price-dayservice-meta.json": "5e057c36589eac3effd5f84e339227ee4d104698",
+    "data/unit-price-region-assignments.json": "6f1630df8d1fac30f3ee382235275826b38f289c",
+    "data/unit-price-region-assignments-meta.json": "c332caa7f1c7d2a3a5835e8933c03ba59e8414eb",
+    "scripts/verify_unit_price_independent.py": "4a4ad36feeb10065d116273e1fc1b1a041d66cd7"
+  },
+  "conclusion": "Independent reparse found the 8 day-service unit prices, all 427 explicit regional assignments, and the default fallback rule consistent with the official MHLW source.",
+  "limitations": [
+    "This record preserves the result of the cited audit and verifier run; the scheduled verifier remains responsible for detecting later live-source drift.",
+    "The source defines locality names/areas by the stated reference date; later municipal name changes do not silently rewrite the audited source table.",
+    "Independent machine/AI verification is not HUMAN_VERIFIED and must not be relabelled as VERIFIED_CURRENT.",
+    "If any pinned canonical input or verifier changes, this record requires refresh."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
