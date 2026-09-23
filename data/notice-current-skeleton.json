@@ -423,6 +423,114 @@
     ]
   },
   {
+    "id": "notice.dayservice.equipment.fire-safety",
+    "parent_id": "notice.dayservice.equipment",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "2",
+      "(3)"
+    ],
+    "title": "消火設備その他の非常災害に際して必要な設備",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_H27",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.95"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-h27-interpretation-redline",
+        "locator": "PDF pp.49–50 改正後欄「(3) 消火設備その他の非常災害に際して必要な設備」",
+        "evidence_type": "prior_after_text"
+      },
+      {
+        "source_id": "mhlw-h30-interpretation-redline",
+        "locator": "PDF p.13 新欄「(3)（略）」",
+        "evidence_type": "later_number_confirmed"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20「1・2（略）」",
+        "evidence_type": "current_section_preserved"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.equipment.shared-equipment",
+    "parent_id": "notice.dayservice.equipment",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "2",
+      "(4)"
+    ],
+    "title": "設備に係る共用",
+    "service_scope": "通所介護",
+    "verification_status": "KNOWN_AFTER_TEXT",
+    "structure_status": "CURRENT_CONFIRMED",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.95"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-h30-interpretation-redline",
+        "locator": "PDF pp.13–14 新欄「(4) 設備に係る共用」",
+        "evidence_type": "prior_after_text"
+      },
+      {
+        "source_id": "mhlw-2021-interpretation-redline",
+        "locator": "通所介護「2（略）」",
+        "evidence_type": "later_section_preserved"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20「1・2（略）」",
+        "evidence_type": "current_section_preserved"
+      }
+    ]
+  },
+  {
+    "id": "notice.dayservice.equipment.overnight-service",
+    "parent_id": "notice.dayservice.equipment",
+    "depth": 2,
+    "number_path": [
+      "第3",
+      "六",
+      "2",
+      "(5)"
+    ],
+    "title": "指定通所介護事業所の設備を利用し、夜間及び深夜に指定通所介護以外のサービスを提供する場合",
+    "service_scope": "通所介護",
+    "verification_status": "INHERITED_UNVERIFIED",
+    "structure_status": "CURRENT_NUMBER_CONFIRMED_TITLE_FROM_H27",
+    "official_text": null,
+    "related_ordinance_ids": [
+      "ordinance37.article.95"
+    ],
+    "evidence": [
+      {
+        "source_id": "mhlw-h27-interpretation-redline",
+        "locator": "PDF pp.49–50 改正後欄「(4) 指定通所介護事業所の設備を利用し…」",
+        "evidence_type": "prior_after_text"
+      },
+      {
+        "source_id": "mhlw-h30-interpretation-redline",
+        "locator": "PDF p.14 新欄「(5)（略）」・旧欄「(4)（略）」",
+        "evidence_type": "renumber_confirmed"
+      },
+      {
+        "source_id": "mhlw-2024-interpretation-redline",
+        "locator": "PDF p.20「1・2（略）」",
+        "evidence_type": "current_section_preserved"
+      }
+    ]
+  },
+  {
     "id": "notice.dayservice.operation",
     "parent_id": "notice.dayservice.root",
     "depth": 1,
