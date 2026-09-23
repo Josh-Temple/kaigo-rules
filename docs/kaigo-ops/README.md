@@ -57,6 +57,9 @@ Evidence Review / 方法 / 検証
 
 ## Current checkpoint
 
+- [Claim Promotion v0.23](./research/checkpoint-claim-promotion-v0.23-2026-09-23.md)
+- [Benchmark Reproducibility Audit](./research/checkpoint-benchmark-reproducibility-2026-09-23.md)
+- [National RAG Holdout Labeling](./research/checkpoint-rag-holdout-national-labeling-v0.1-2026-09-23.md)
 - [Controlled RAG Protocol v0.21](./research/checkpoint-controlled-rag-protocol-v0.21-2026-09-23.md)
 - [Safety Prose v0.20 checkpoint](./research/checkpoint-safety-prose-v0.20-2026-09-23.md)
 - [Outdoor Service Source Audit v0.19](./research/checkpoint-outdoor-source-audit-v0.19-2026-09-23.md)
@@ -111,6 +114,7 @@ Evidence Review / 方法 / 検証
 
 ### Claim-level coverage
 
+- [Claim Registry v0.16](./research/claims/claims-v0.16.json)
 - [Claim Registry v0.15](./research/claims/claims-v0.15.json)
 - [Safety answer templates v0.2](./research/issues/information-search/benchmark/safety-answer-templates-v0.2.json)
 - [Safety prose human sign-off v0.1](./research/issues/information-search/benchmark/safety-prose-human-signoff-v0.1.md)
