@@ -1,0 +1,1655 @@
+{
+  "format_version": 1,
+  "scope": "rouki25-dayservice-22",
+  "policy": "Machine reconstruction and independent machine verification do not constitute human verification. Human review state remains separate and is invalidated when the reviewed candidate hash no longer matches.",
+  "independent_verification_record": {
+    "result": "PASS",
+    "verifier": "scripts/verify_notice_rouki25_independent.py",
+    "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+    "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+    "verified_at": "2026-09-23",
+    "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+  },
+  "items": [
+    {
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "family": "personnel",
+      "section": "人員に関する基準",
+      "title": "従業者の員数",
+      "number_path": [
+        "第3",
+        "六",
+        "1",
+        "(1)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "①指定通所介護の単位とは、同時に、一体的に提供される指定通所介護をいうものであることから、例えば、次のような場合は、２単位として扱われ、それぞれの単位ごとに必要な従業者を確保する必要がある。イ指定通所介護が同時に一定の距離を置いた２つの場所で行われ、これらのサービスの提供が一体的に行われているといえない場合ロ午前と午後とで別の利用者に対して指定通所介護を提供する場合また、利用者ごとに策定した通所介護計画に位置づけられた内容の通所介護が一体的に提供されていると認められる場合は、同一単位で提供時間数の異なる利用者に対して通所介護を行うことも可能である。なお、同時一体的に行われているとは認められない場合は、別単位となることに留意すること。②８時間以上９時間未満の指定通所介護の前後に連続して延長サービスを行う場合にあっては、事業所の実情に応じて、適当数の従業者を配置するものとする。③居宅基準第93条第１項第１号の生活相談員、同項第３号の介護職員及び同条第２項の看護職員又は介護職員の人員配置については、当該職種の従業員がサービス提供時間内に勤務する時間数の合計（以下「勤務延時間数」という。）を提供時間数で除して得た数が基準において定められた数以上となるよう、勤務延時間数を確保するよう定めたものであり、必要な勤務延時間数が確保されれば当該職種の従業者の員数は問わないものである。④生活相談員については、指定通所介護の単位の数にかかわらず、次の計算式のとおり指定通所介護事業所における提供時間数に応じた生活相談員の配置が必要になるものである。ここでいう提供時間数とは、当該事業所におけるサービス提供開始時刻から終了時刻まで（サービスが提供されていない時間帯を除く。）とする。（確保すべき生活相談員の勤務延時間数の計算式）提供日ごとに確保すべき勤務延時間数＝提供時間数例えば、１単位の指定通所介護を実施している事業所の提供時間数を６時間とした場合、生活相談員の勤務延時間数を、提供時間数である６時間で除して得た数が１以上となるよう確保すればよいことから、従業者の員数にかかわらず６時間の勤務延時間数分の配置が必要となる。また、例えば午前９時から正午、午後１時から午後６時の２単位の指定通所介護を実施している事業所の場合、当該事業所におけるサービス提供時間は午前９時から午後６時（正午から午後１時までを除く。）となり、提供時間数は８時間となることから、従業者の員数にかかわらず８時間の勤務延時間数分の配置が必要となる。なお、指定通所介護事業所が、利用者の地域での暮らしを支えるため、医療機関、他の居宅サービス事業者、地域の住民活動等と連携し、指定通所介護事業所を利用しない日でも利用者の地域生活を支える地域連携の拠点としての機能を展開できるように、生活相談員の確保すべき勤務延時間数には、「サービス担当者会議や地域ケア会議に出席するための時間」、「利用者宅を訪問し、在宅生活の状況を確認した上で、利用者の家族も含めた相談・援助のための時間」、「地域の町内会、自治会、ボランティア団体等と連携し、利用者に必要な生活支援を担ってもらうなどの社会資源の発掘・活用のための時間」など、利用者の地域生活を支える取組のために必要な時間も含めることができる。ただし、生活相談員は、利用者の生活の向上を図るため適切な相談・援助等を行う必要があり、これらに支障がない範囲で認められるものである。⑤居宅基準第93条第１項第３号にいう介護職員（第２項の適用を受ける場合の看護職員又は介護職員を含む。以下⑤について同じ。）については、指定通所介護の単位ごとに、提供時間数に応じた配置が必要となるものであり、確保すべき勤務延時間数は、次の計算式のとおり提供時間数及び利用者数から算出される。なお、ここでいう提供時間数とは、当該単位における平均提供時間数（利用者ごとの提供時間数の合計を利用者数で除して得た数）とする。（確保すべき介護職員の勤務延時間数の計算式）・利用者数15人まで単位ごとに確保すべき勤務延時間数＝平均提供時間数・利用者数16人以上単位ごとに確保すべき勤務延時間数＝（（利用者数－15）÷５＋１）×平均提供時間数※平均提供時間数＝利用者ごとの提供時間数の合計÷利用者数例えば、利用者数18人、提供時間数を５時間とした場合、（18－15）÷５＋１＝1.6となり、５時間の勤務時間数を1.6名分確保すればよいことから、従業員の員数にかかわらず、５×1.6＝８時間の勤務延時間数分の人員配置が必要となる。利用者数と平均提供時間数に応じて確保すべき勤務延時間数の具体例を別表二に示すものとする。なお、介護職員については、指定通所介護の単位ごとに常時１名以上確保することとされているが、これは、介護職員が常に確保されるよう必要な配置を行うよう定めたものであり、例えば、計算式により算出した確保すべき勤務延時間数が、当該事業所におけるサービス提供開始時刻から終了時刻までの時間数に満たない場合であっても、常時１名以上が確保されるよう配置を行う必要があることに留意すること。また、介護職員は、利用者の処遇に支障がない場合は他の指定通所介護の単位の介護職員として従事することができるとされたことから、例えば複数の単位の指定通所介護を同じ時間帯に実施している場合、単位ごとに介護職員等が常に１名以上確保されている限りにおいては、単位を超えて柔軟な配置が可能である。⑥看護職員については、指定通所介護事業所の従業者により確保することに加え、病院、診療所、訪問看護ステーションとの連携により確保することも可能である。具体的な取扱いは以下のとおりとする。ア指定通所介護事業所の従業者により確保する場合提供時間帯を通じて、専ら当該指定通所介護の提供に当たる必要はないが、当該看護職員は提供時間帯を通じて、指定通所介護事業所と密接かつ適切な連携を図るものとする。イ病院、診療所、訪問看護ステーションとの連携により確保する場合看護職員が指定通所介護事業所の営業日ごとに利用者の健康状態の確認を行い、病院、診療所、訪問看護ステーションと指定通所介護事業所が提供時間帯を通じて密接かつ適切な連携を図るものとする。なお、アとイにおける「密接かつ適切な連携」とは、指定通所介護事業所へ駆けつけることができる体制や適切な指示ができる連絡体制などを確保することである。⑦利用者の数又は利用定員は、単位ごとの指定通所介護についての利用者の数又は利用定員をいうものであり、利用者の数は実人員、利用定員は、あらかじめ定めた利用者の数の上限をいうものである。従って、例えば、１日のうちの午前の提供時間帯に利用者10人に対して指定通所介護を提供し、午後の提供時間帯に別の利用者10人に対して指定通所介護を提供する場合であって、それぞれの指定通所介護の定員が10人である場合には、当該事業所の利用定員は10人、必要となる介護職員は午前午後それぞれにおいて利用者10人に応じた数ということとなり、人員算定上午前の利用者の数と午後の利用者の数が合算されるものではない。⑧同一事業所で複数の単位の指定通所介護を同時に行う場合であっても、常勤の従業者は事業所ごとに確保すれば足りるものである（居宅基準第93条第７項関係）。\n",
+      "candidate_text_sha256": "abc3729d4687d2d11581103a8e9bbfb8fb4d48fefae285e8aa82604b532cace9",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-personnel-staffing-h27-baseline",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-personnel-staffing-h27-baseline",
+          "operation": "baseline"
+        },
+        {
+          "step": 1,
+          "snapshot_id": "dayservice-personnel-staffing-h30-hours-patch",
+          "operation": "replace_between",
+          "note": "H30で7時間以上9時間未満→8時間以上9時間未満へ更新"
+        },
+        {
+          "step": 2,
+          "snapshot_id": "dayservice-personnel-staffing-r3-nurse-patch",
+          "operation": "replace_between",
+          "note": "R3で看護職員の確保方法をア・イに分けて再構成"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-personnel-staffing-h27-baseline",
+          "role": "baseline",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 45,
+          "page_end": 49,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "97d0e77580d54c317ada4c84eea0d5f130834f13a32f1b3e9c206437ec398a9e",
+          "operation": null,
+          "note": "H27改正後欄の従業者の員数①〜⑧。H30とR3の後続改正を順方向に適用するbaseline。"
+        },
+        {
+          "snapshot_id": "dayservice-personnel-staffing-h30-hours-patch",
+          "role": "patch",
+          "source_id": "mhlw-h30-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成30年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+          "page_start": 12,
+          "page_end": 12,
+          "source_pdf_sha256": "7a3a439fca5bfadd04aa4e46058326e6e643d92e66f18e2f893e1b40ce6eabaa",
+          "snapshot_body_sha256": "c0f75c142ad9366e537c75b2a4475b085aa5970a7116621065642c777935054d",
+          "operation": "replace_between",
+          "note": "H30で7時間以上9時間未満→8時間以上9時間未満へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-personnel-staffing-r3-nurse-patch",
+          "role": "patch",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 30,
+          "page_end": 31,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "adb6e3a6ac2978914c44a0ca2957faf79c6a0729b39505c4d8d09681dbdea5a8",
+          "operation": "replace_between",
+          "note": "R3で看護職員の確保方法をア・イに分けて再構成"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "abc3729d4687d2d11581103a8e9bbfb8fb4d48fefae285e8aa82604b532cace9",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.life-counselor",
+      "family": "personnel",
+      "section": "人員に関する基準",
+      "title": "生活相談員",
+      "number_path": [
+        "第3",
+        "六",
+        "1",
+        "(2)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "生活相談員については、特別養護老人ホームの設備及び運営に関する基準（平成11年厚生省令第46号）第５条第２項に定める生活相談員に準ずるものである。\n",
+      "candidate_text_sha256": "fbd9bfa5fd410c45faaa5fb51150ba36e6d683667dd9bd4a6a0154f77b02c291",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-personnel-life-counselor-h27",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-personnel-life-counselor-h27",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-personnel-life-counselor-h27",
+          "role": "baseline",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 49,
+          "page_end": 49,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "fbd9bfa5fd410c45faaa5fb51150ba36e6d683667dd9bd4a6a0154f77b02c291",
+          "operation": null,
+          "note": "H27改正後欄。その後H30/R3/R6では本文変更を示さず略記。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "fbd9bfa5fd410c45faaa5fb51150ba36e6d683667dd9bd4a6a0154f77b02c291",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.function-training",
+      "family": "personnel",
+      "section": "人員に関する基準",
+      "title": "機能訓練指導員",
+      "number_path": [
+        "第3",
+        "六",
+        "1",
+        "(3)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "機能訓練指導員は、日常生活を営むのに必要な機能の減退を防止するための訓練を行う能力を有する者とされたが、この「訓練を行う能力を有する者」とは、理学療法士、作業療法士、言語聴覚士、看護職員、柔道整復師、あん摩マッサージ指圧師、はり師又はきゅう師の資格を有する者（はり師及びきゅう師については、理学療法士、作業療法士、言語聴覚士、看護職員、柔道整復師又はあん摩マッサージ指圧師の資格を有する機能訓練指導員を配置した事業所で６月以上機能訓練指導に従事した経験を有する者に限る。）とする。ただし、利用者の日常生活やレクリエーション、行事を通じて行う機能訓練については、当該事業所の生活相談員又は介護職員が兼務して行っても差し支えない。\n",
+      "candidate_text_sha256": "382d6eb740a2fd95e3bac8dd58a80b4635b44ea039433a89984e4c4cc9780dec",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-personnel-function-training-h30",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-personnel-function-training-h30",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-personnel-function-training-h30",
+          "role": "baseline",
+          "source_id": "mhlw-h30-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成30年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+          "page_start": 12,
+          "page_end": 13,
+          "source_pdf_sha256": "7a3a439fca5bfadd04aa4e46058326e6e643d92e66f18e2f893e1b40ce6eabaa",
+          "snapshot_body_sha256": "382d6eb740a2fd95e3bac8dd58a80b4635b44ea039433a89984e4c4cc9780dec",
+          "operation": null,
+          "note": "H30改正後欄。はり師・きゅう師に関する資格要件追加後の本文。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "382d6eb740a2fd95e3bac8dd58a80b4635b44ea039433a89984e4c4cc9780dec",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.manager",
+      "family": "personnel",
+      "section": "人員に関する基準",
+      "title": "管理者",
+      "number_path": [
+        "第3",
+        "六",
+        "1",
+        "(4)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "訪問介護の場合と同趣旨であるため、第三の一の１の⑶を参照されたい。\n",
+      "candidate_text_sha256": "3ebd100c715f289ecea6d7c4ab3edd4f33db26a609f131b7075ac083c845d644",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-personnel-manager-h27",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-personnel-manager-h27",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-personnel-manager-h27",
+          "role": "baseline",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 49,
+          "page_end": 49,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "3ebd100c715f289ecea6d7c4ab3edd4f33db26a609f131b7075ac083c845d644",
+          "operation": null,
+          "note": "H27改正後欄。その後の通所介護人員節改正で本文変更を示されていない。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "3ebd100c715f289ecea6d7c4ab3edd4f33db26a609f131b7075ac083c845d644",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.office",
+      "family": "equipment",
+      "section": "設備に関する基準",
+      "title": "事業所",
+      "number_path": [
+        "第3",
+        "六",
+        "2",
+        "(1)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "事業所とは、指定通所介護を提供するための設備及び備品を備えた場所をいう。原則として一の建物につき、一の事業所とするが、利用者の利便のため、利用者に身近な社会資源（既存施設）を活用して、事業所の従業者が当該既存施設に出向いて指定通所介護を提供する場合については、これらを事業所の一部とみなして設備基準を適用するものである。\n",
+      "candidate_text_sha256": "2e66494484b422ae15e2f9ff0a03689281c1f2901ed46f19eadc671160ef5492",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-equipment-office-h27",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-equipment-office-h27",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-equipment-office-h27",
+          "role": "historical_after_state",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 49,
+          "page_end": 49,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "2e66494484b422ae15e2f9ff0a03689281c1f2901ed46f19eadc671160ef5492",
+          "operation": null,
+          "note": "H27改正後欄。H30以後は当該項目を略として保持。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "2e66494484b422ae15e2f9ff0a03689281c1f2901ed46f19eadc671160ef5492",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.dining-training-room",
+      "family": "equipment",
+      "section": "設備に関する基準",
+      "title": "食堂及び機能訓練室",
+      "number_path": [
+        "第3",
+        "六",
+        "2",
+        "(2)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "指定通所介護事業所の食堂及び機能訓練室（以下「指定通所介護の機能訓練室等」という。）については、３平方メートルに利用定員を乗じて得た面積以上とすることとされたが、指定通所介護が原則として同時に複数の利用者に対し介護を提供するものであることに鑑み、狭隘な部屋を多数設置することにより面積を確保すべきではないものである。ただし、指定通所介護の単位をさらにグループ分けして効果的な指定通所介護の提供が期待される場合はこの限りではない。\n",
+      "candidate_text_sha256": "44a948061e780d24c9cba1727139c0eb8f451e6e6017780e8cd31600c932ca01",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-equipment-dining-h30",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-equipment-dining-h30",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-equipment-dining-h30",
+          "role": "historical_amendment_state",
+          "source_id": "mhlw-h30-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成30年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+          "page_start": 13,
+          "page_end": 13,
+          "source_pdf_sha256": "7a3a439fca5bfadd04aa4e46058326e6e643d92e66f18e2f893e1b40ce6eabaa",
+          "snapshot_body_sha256": "44a948061e780d24c9cba1727139c0eb8f451e6e6017780e8cd31600c932ca01",
+          "operation": null,
+          "note": "H30新欄。(2)旧②の共用記述は削除され、新設(4)へ再構成された後の本文。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "44a948061e780d24c9cba1727139c0eb8f451e6e6017780e8cd31600c932ca01",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.fire-safety",
+      "family": "equipment",
+      "section": "設備に関する基準",
+      "title": "消火設備その他の非常災害に際して必要な設備",
+      "number_path": [
+        "第3",
+        "六",
+        "2",
+        "(3)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "消火設備その他の非常災害に際して必要な設備とは、消防法その他の法令等に規定された設備を示しており、それらの設備を確実に設置しなければならないものである。\n",
+      "candidate_text_sha256": "4039debb83727a49cac04ab90b4f2519c8fc409e19689bec2630b73e9bfe7cdc",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-equipment-fire-h27",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-equipment-fire-h27",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-equipment-fire-h27",
+          "role": "historical_after_state",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 50,
+          "page_end": 50,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "4039debb83727a49cac04ab90b4f2519c8fc409e19689bec2630b73e9bfe7cdc",
+          "operation": null,
+          "note": "H27改正後欄。H30新欄では(3)を略として保持。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "4039debb83727a49cac04ab90b4f2519c8fc409e19689bec2630b73e9bfe7cdc",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.shared-equipment",
+      "family": "equipment",
+      "section": "設備に関する基準",
+      "title": "設備に係る共用",
+      "number_path": [
+        "第3",
+        "六",
+        "2",
+        "(4)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "指定通所介護事業所と指定居宅サービス事業所等を併設している場合に、利用者へのサービス提供に支障がない場合は、設備基準上両方のサービスに規定があるもの（指定訪問介護事業所の場合は事務室）は共用が可能である。ただし、指定通所介護事業所の機能訓練室等と、指定通所介護事業所と併設の関係にある病院、診療所、介護老人保健施設又は介護医療院における指定通所リハビリテーション等を行うためのスペースについて共用する場合にあっては、以下の条件に適合することをもって、これらが同一の部屋等であっても差し支えないものとする。イ当該部屋等において、指定通所介護事業所の機能訓練室等と指定通所リハビリテーション等を行うためのスペースが明確に区分されていること。ロ指定通所介護事業所の機能訓練室等として使用される区分が、指定通所介護事業所の設備基準を満たし、かつ、指定通所リハビリテーション等を行うためのスペースとして使用される区分が、指定通所リハビリテーション事業所等の設備基準を満たすこと。また、玄関、廊下、階段、送迎車両など、基準上は規定がないが、設置されるものについても、利用者へのサービス提供に支障がない場合は、共用が可能である。なお、設備を共用する場合、居宅基準第104条第２項において、指定通所介護事業者は、事業所において感染症が発生し、又はまん延しないように必要な措置を講じるよう努めなければならないと定めているところであるが、衛生管理等に一層努めること。\n",
+      "candidate_text_sha256": "174bf34fb6a0451b20770a507e86e793053d495017dc5fec2a0ce6c346c49c60",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-equipment-shared-h30",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-equipment-shared-h30",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-equipment-shared-h30",
+          "role": "historical_amendment_state",
+          "source_id": "mhlw-h30-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成30年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+          "page_start": 13,
+          "page_end": 14,
+          "source_pdf_sha256": "7a3a439fca5bfadd04aa4e46058326e6e643d92e66f18e2f893e1b40ce6eabaa",
+          "snapshot_body_sha256": "174bf34fb6a0451b20770a507e86e793053d495017dc5fec2a0ce6c346c49c60",
+          "operation": null,
+          "note": "H30新設(4)の改正後本文。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "174bf34fb6a0451b20770a507e86e793053d495017dc5fec2a0ce6c346c49c60",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.overnight-service",
+      "family": "equipment",
+      "section": "設備に関する基準",
+      "title": "指定通所介護事業所の設備を利用し、夜間及び深夜に指定通所介護以外のサービスを提供する場合",
+      "number_path": [
+        "第3",
+        "六",
+        "2",
+        "(5)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "指定通所介護の提供以外の目的で、指定通所介護事業所の設備を利用し、夜間及び深夜に指定通所介護以外のサービス（以下「宿泊サービス」という。）を提供する場合には、当該サービスの内容を当該サービスの提供開始前に当該指定通所介護事業者に係る指定を行った都道府県知事、指定都市又は中核市の市長（以下「指定権者」という。）に届け出る必要があり、当該サービスの届出内容については、別紙様式によるものとする。また、指定通所介護事業者は宿泊サービスの届出内容に係る介護サービス情報を都道府県に報告し、都道府県は情報公表制度を活用し宿泊サービスの内容を公表することとする。指定通所介護事業者は届け出た宿泊サービスの内容に変更がある場合は、変更の事由が生じてから10日以内に指定権者に届け出るよう努めることとする。また、宿泊サービスを休止又は廃止する場合は、その休止又は廃止の日の１月前までに指定権者に届け出るよう努めることとする。\n",
+      "candidate_text_sha256": "fd775ba78801b82202c02f079e81a01c2e9c6fdeadddc3fa4d6ebabb2e0ac845",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-equipment-overnight-h27",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-equipment-overnight-h27",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-equipment-overnight-h27",
+          "role": "historical_insertion_state",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 50,
+          "page_end": 51,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "fd775ba78801b82202c02f079e81a01c2e9c6fdeadddc3fa4d6ebabb2e0ac845",
+          "operation": null,
+          "note": "H27新設(4)の本文。H30で本文変更を示さず(5)へ繰下げ。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "fd775ba78801b82202c02f079e81a01c2e9c6fdeadddc3fa4d6ebabb2e0ac845",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.fees",
+      "family": "operation_legacy",
+      "section": "運営に関する基準",
+      "title": "利用料等の受領",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(1)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "①居宅基準第96条第１項、第２項及び第５項の規定は、指定訪問介護に係る第20条第１項、第２項及び第４項の規定と同趣旨であるため、第３の一の３の⑾の①、②及び④を参照されたい。②同条第３項は、指定通所介護事業者は、指定通所介護の提供に関して、イ利用者の選定により通常の事業の実施地域以外の地域に居住する利用者に対して行う送迎に要する費用ロ指定通所介護に通常要する時間を超える指定通所介護であって利用者の選定に係るものの提供に伴い必要となる費用の範囲内において、通常の指定通所介護に係る居宅介護サービス費用基準額を超える費用ハ食事の提供に要する費用ニおむつ代ホ前各号に掲げるもののほか、通所介護の提供において提供される便宜のうち、日常生活においても通常必要となるものに係る費用であって、その利用者に負担させることが適当と認められるものについては、前２項の利用料のほかに利用者から支払を受けることができることとし、保険給付の対象となっているサービスと明確に区分されないあいまいな名目による費用の支払を受けることは認めないこととしたものである。なお、ハの費用については、居住、滞在及び宿泊並びに食事の提供に係る利用料等に関する指針（平成17年厚生労働省告示第419号。以下「指針」という。）の定めるところによるものとし、ホの費用の具体的な範囲については、別に通知するところによるものとする。\n",
+      "candidate_text_sha256": "fbd7941a972a46acbba8e528485034f121c81089015ca1df90d4e361ee81a9a1",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-fees-h27-baseline",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-fees-h27-baseline",
+          "operation": "baseline"
+        },
+        {
+          "step": 1,
+          "snapshot_id": "dayservice-operation-fees-r3-item1",
+          "operation": "replace_between",
+          "note": "R3で訪問介護側の参照番号を⑽→⑾へ更新"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-fees-h27-baseline",
+          "role": "baseline",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 51,
+          "page_end": 51,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "01a363bab9a89e8c264379853311ad79a71e23cd5be1cf5808abf1c6be23e8fc",
+          "operation": null,
+          "note": "H27改正後の(1)全文。R3で①の参照先だけ更新。"
+        },
+        {
+          "snapshot_id": "dayservice-operation-fees-r3-item1",
+          "role": "patch",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 31,
+          "page_end": 31,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "00f169198d07747f854ac74eaabb98cec699217e4664cb5dfbbc5a13f08a47e0",
+          "operation": "replace_between",
+          "note": "R3で訪問介護側の参照番号を⑽→⑾へ更新"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "fbd7941a972a46acbba8e528485034f121c81089015ca1df90d4e361ee81a9a1",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.policy",
+      "family": "operation_legacy",
+      "section": "運営に関する基準",
+      "title": "指定通所介護の基本取扱方針及び具体的取扱方針",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(2)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "指定通所介護の基本取扱方針及び具体的取扱方針については、居宅基準第97条及び第98条の定めるところによるほか、次の点に留意するものとする。①指定通所介護は、個々の利用者に応じて作成された通所介護計画に基づいて行われるものであるが、グループごとにサービス提供が行われることを妨げるものではないこと。②居宅基準第98条第２号で定める「サービスの提供方法等」とは、通所介護計画の目標及び内容や利用日の行事及び日課等も含むものであること。③指定通所介護の提供に当たっては、当該利用者又は他の利用者等の生命又は身体を保護するため緊急やむを得ない場合を除き、身体的拘束等を行ってはならず、緊急やむを得ない場合に身体的拘束等を行う場合にあっても、その態様及び時間、その際の利用者の心身の状況並びに緊急やむを得ない理由を記録しなければならないこととしたものである。また、緊急やむを得ない理由については、切迫性、非代替性及び一時性の３つの要件を満たすことについて、組織等としてこれらの要件の確認等の手続きを極めて慎重に行うこととし、その具体的な内容について記録しておくことが必要である。なお、居宅基準第104条の４第２項の規定に基づき、当該記録は、２年間保存しなければならない。④認知症の状態にある要介護者で、他の要介護者と同じグループとして、指定通所介護を提供することが困難な場合には、必要に応じグループを分けて対応すること。⑤指定通所介護は、事業所内でサービスを提供することが原則であるが、次に掲げる条件を満たす場合においては、事業所の屋外でサービスを提供することができるものであること。イあらかじめ通所介護計画に位置付けられていること。ロ効果的な機能訓練等のサービスが提供できること。\n",
+      "candidate_text_sha256": "dbf79626dc9cbabfb63a973d2e77275233066ad5626ed892cd4887116b6ba0da",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-policy-h27-baseline",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-policy-h27-baseline",
+          "operation": "baseline"
+        },
+        {
+          "step": 1,
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "operation": "replace_literal",
+          "note": "R6新③挿入に伴う旧③→④"
+        },
+        {
+          "step": 2,
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "operation": "replace_literal",
+          "note": "R6新③挿入に伴う旧④→⑤"
+        },
+        {
+          "step": 3,
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "operation": "insert_before",
+          "note": "R6の身体的拘束等に関する新③を挿入"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-policy-h27-baseline",
+          "role": "baseline",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 51,
+          "page_end": 52,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "8690890709400b0c6fd53187e235c67ab8e1ccf68159d40f585883dcec43c72d",
+          "operation": null,
+          "note": "H27改正後の(2)本文。R6で身体的拘束等の新③が入り、旧③④が④⑤へ繰下げ。"
+        },
+        {
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "role": "patch",
+          "source_id": "mhlw-2024-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "page_start": 20,
+          "page_end": 21,
+          "source_pdf_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+          "snapshot_body_sha256": "b4a8183a101e8da5bdaf6e254a2b7d857c4086e9000e6065cf597225976ee744",
+          "operation": "replace_literal",
+          "note": "R6新③挿入に伴う旧③→④"
+        },
+        {
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "role": "patch",
+          "source_id": "mhlw-2024-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "page_start": 20,
+          "page_end": 21,
+          "source_pdf_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+          "snapshot_body_sha256": "b4a8183a101e8da5bdaf6e254a2b7d857c4086e9000e6065cf597225976ee744",
+          "operation": "replace_literal",
+          "note": "R6新③挿入に伴う旧④→⑤"
+        },
+        {
+          "snapshot_id": "dayservice-operation-policy-r6-restraint",
+          "role": "patch",
+          "source_id": "mhlw-2024-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "page_start": 20,
+          "page_end": 21,
+          "source_pdf_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+          "snapshot_body_sha256": "b4a8183a101e8da5bdaf6e254a2b7d857c4086e9000e6065cf597225976ee744",
+          "operation": "insert_before",
+          "note": "R6の身体的拘束等に関する新③を挿入"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "dbf79626dc9cbabfb63a973d2e77275233066ad5626ed892cd4887116b6ba0da",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.plan",
+      "family": "operation_legacy",
+      "section": "運営に関する基準",
+      "title": "通所介護計画の作成",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(3)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "①居宅基準第99条で定める通所介護計画については、介護の提供に係る計画等の作成に関し経験のある者や、介護の提供について豊富な知識及び経験を有する者にそのとりまとめを行わせるものとし、当該事業所に介護支援専門員の資格を有する者がいる場合は、その者に当該計画のとりまとめを行わせることが望ましい。②通所介護計画は、サービスの提供に関わる従業者が共同して個々の利用者ごとに作成するものである。③通所介護計画は、居宅サービス計画に沿って作成されなければならないこととしたものである。なお、通所介護計画を作成後に居宅サービス計画が作成された場合は、当該通所介護計画が居宅サービス計画に沿ったものであるか確認し、必要に応じて変更するものとする。④通所介護計画は利用者の心身の状況、希望及びその置かれている環境を踏まえて作成されなければならないものであり、サービス内容等への利用者の意向の反映の機会を保障するため、指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容等を説明した上で利用者の同意を得なければならず、また、当該通所介護計画を利用者に交付しなければならない。なお、交付した通所介護計画は、居宅基準第104条の４第２項の規定に基づき、２年間保存しなければならない。⑤通所介護計画の目標及び内容については、利用者又は家族に説明を行うとともに、その実施状況や評価についても説明を行うものとする。⑥居宅サービス計画に基づきサービスを提供している指定通所介護事業者については、第３の一の３の⒁の⑥を準用する。この場合において、「訪問介護計画」とあるのは「通所介護計画」と読み替える。\n",
+      "candidate_text_sha256": "f7ee9ba310e079af629257f4f2a93719c93ee2ffc17724cade256a10ee220483",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-plan-h27-baseline",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-plan-h27-baseline",
+          "operation": "baseline"
+        },
+        {
+          "step": 1,
+          "snapshot_id": "dayservice-operation-plan-h30-item4",
+          "operation": "replace_between",
+          "note": "H30で保存記録の参照条文を第104条の3へ更新"
+        },
+        {
+          "step": 2,
+          "snapshot_id": "dayservice-operation-plan-r3-item4",
+          "operation": "replace_between",
+          "note": "R3で保存記録の参照条文を第104条の4へ更新"
+        },
+        {
+          "step": 3,
+          "snapshot_id": "dayservice-operation-plan-r3-item6",
+          "operation": "replace_to_end",
+          "note": "R3で訪問介護側の参照番号を⒀→⒁へ更新"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-plan-h27-baseline",
+          "role": "baseline",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 52,
+          "page_end": 53,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "cb1dbeb2960f3ee122fa1039032aa89605782554194369513ff5310ea11e2595",
+          "operation": null,
+          "note": "H27改正後の(3)全文。H30とR3の④、R3の⑥を順方向に更新するbaseline。"
+        },
+        {
+          "snapshot_id": "dayservice-operation-plan-h30-item4",
+          "role": "patch",
+          "source_id": "mhlw-h30-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成30年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+          "page_start": 14,
+          "page_end": 14,
+          "source_pdf_sha256": "7a3a439fca5bfadd04aa4e46058326e6e643d92e66f18e2f893e1b40ce6eabaa",
+          "snapshot_body_sha256": "8f0dc997940473ef0017ab7789fecb8797ac2dff367029dc706af13b2ef68889",
+          "operation": "replace_between",
+          "note": "H30で保存記録の参照条文を第104条の3へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-operation-plan-r3-item4",
+          "role": "patch",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 31,
+          "page_end": 31,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "dd2eaef91ee9789d1fbc0bb5f6b7e511821b3f21c2006eeb906e19b8eb526393",
+          "operation": "replace_between",
+          "note": "R3で保存記録の参照条文を第104条の4へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-operation-plan-r3-item6",
+          "role": "patch",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 31,
+          "page_end": 31,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "0c2c5629a4b62707bef4d2efdf8354b3f5a7e41e049a404704f0d193780d9572",
+          "operation": "replace_to_end",
+          "note": "R3で訪問介護側の参照番号を⒀→⒁へ更新"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "f7ee9ba310e079af629257f4f2a93719c93ee2ffc17724cade256a10ee220483",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.rules",
+      "family": "operation_legacy",
+      "section": "運営に関する基準",
+      "title": "運営規程",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(4)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "居宅基準第100条は、指定通所介護の事業の適正な運営及び利用者に対する適切な指定通所介護の提供を確保するため、同条第１号から第11号までに掲げる事項を内容とする規程を定めることを指定通所介護事業所ごとに義務づけたものであるが、特に次の点に留意するものとする。①営業日及び営業時間（第３号）指定通所介護の営業日及び営業時間を記載すること。なお、８時間以上９時間未満の指定通所介護の前後に連続して延長サービスを行う指定通所介護事業所にあっては、サービス提供時間とは別に当該延長サービスを行う時間を運営規程に明記すること（居宅基準第117条第３号についても同趣旨）。例えば、提供時間帯（９時間）の前に連続して１時間、後に連続して２時間、合計３時間の延長サービスを行う指定通所介護事業所にあっては、当該指定通所介護事業所の営業時間は12時間であるが、運営規程には、提供時間帯９時間、延長サービスを行う時間３時間とそれぞれ記載するものとすること（居宅基準第117条第３号の「営業日及び営業時間」についても同趣旨）。②指定通所介護の利用定員（第４号）利用定員とは、当該指定通所介護事業所において同時に指定通所介護の提供を受けることができる利用者の数の上限をいうものであること（居宅基準第117条第４号の「指定通所リハビリテーションの利用定員」についても同趣旨）。③指定通所介護の内容及び利用料その他の費用の額（第５号）「指定通所介護の内容」については、入浴、食事の有無等のサービスの内容を指すものであること（居宅基準第117条第５号の「指定通所リハビリテーションの内容」についても同趣旨）。④サービス利用に当たっての留意事項（第７号）利用者が指定通所介護の提供を受ける際に、利用者側が留意すべき事項（機能訓練室を利用する際の注意事項等）を指すものであること（居宅基準第117条第７号についても同趣旨）。⑤非常災害対策（第９号）⑺の非常災害に関する具体的計画を指すものであること（居宅基準第117条第８号、第137条第８号、第153条第６号及び第189条第８号についても同趣旨）。\n",
+      "candidate_text_sha256": "5e3d5b7d3e1254fe44184a924baa3ae8df8153d8235df31fc3cccfa7773fac9f",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-rules-h27-baseline",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-rules-h27-baseline",
+          "operation": "baseline"
+        },
+        {
+          "step": 1,
+          "snapshot_id": "dayservice-operation-rules-h30-item1",
+          "operation": "replace_between",
+          "note": "H30で延長サービス対象時間を8時間以上9時間未満へ更新"
+        },
+        {
+          "step": 2,
+          "snapshot_id": "dayservice-operation-rules-r3-intro",
+          "operation": "replace_between",
+          "note": "R3で列挙号数を第1号〜第11号へ更新"
+        },
+        {
+          "step": 3,
+          "snapshot_id": "dayservice-operation-rules-r3-item5",
+          "operation": "replace_to_end",
+          "note": "R3で非常災害対策の参照を⑺へ更新"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-rules-h27-baseline",
+          "role": "baseline",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 53,
+          "page_end": 54,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "bfd0261ad6d560f93d2b0b42464a6cdcb8ca6fd2aaff159964ccb7e35020d403",
+          "operation": null,
+          "note": "H27改正後の(4)全文。H30で①、R3で導入部と⑤を更新。"
+        },
+        {
+          "snapshot_id": "dayservice-operation-rules-h30-item1",
+          "role": "patch",
+          "source_id": "mhlw-h30-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成30年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+          "page_start": 15,
+          "page_end": 15,
+          "source_pdf_sha256": "7a3a439fca5bfadd04aa4e46058326e6e643d92e66f18e2f893e1b40ce6eabaa",
+          "snapshot_body_sha256": "c828d4a7a63ff8fc46a2ef728b669ad4b574230b3e69905b622853dc9c39588d",
+          "operation": "replace_between",
+          "note": "H30で延長サービス対象時間を8時間以上9時間未満へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-operation-rules-r3-intro",
+          "role": "patch",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 32,
+          "page_end": 32,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "1d4183aabc22a5a7c6c82a7125d7b701e25d2aff32bfbe452db1f328eb6d95d3",
+          "operation": "replace_between",
+          "note": "R3で列挙号数を第1号〜第11号へ更新"
+        },
+        {
+          "snapshot_id": "dayservice-operation-rules-r3-item5",
+          "role": "patch",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 32,
+          "page_end": 32,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "2638ee15fd82e18d47e830da6b96adfe03563cdd2f2fcb7b741e3834c7281778",
+          "operation": "replace_to_end",
+          "note": "R3で非常災害対策の参照を⑺へ更新"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "5e3d5b7d3e1254fe44184a924baa3ae8df8153d8235df31fc3cccfa7773fac9f",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.staffing",
+      "family": "operation_legacy",
+      "section": "運営に関する基準",
+      "title": "勤務体制の確保等",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(5)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "居宅基準第101条は、利用者に対する適切な指定通所介護の提供を確保するため、職員の勤務体制等について規定したものであるが、このほか次の点に留意するものとする。①指定通所介護事業所ごとに、原則として月ごとの勤務表を作成し、通所介護従業者の日々の勤務時間、常勤・非常勤の別、専従の生活相談員、看護職員、介護職員及び機能訓練指導員の配置、管理者との兼務関係等を明確にすること。②同条第２項は、原則として、当該指定通所介護事業所の従業者たる通所介護従業者によって指定通所介護を提供するべきであるが、調理、洗濯等の利用者の処遇に直接影響を及ぼさない業務については、第三者への委託等を行うことを認めるものであること。③同条第３項の規定は、指定訪問入浴介護に係る居宅基準第53条の２第３項と基本的に同趣旨であるため、第３の二の３の⑹③を参照されたいこと。④同条第４項の規定は、指定訪問介護に係る居宅基準第30条第４項の規定と基本的に同趣旨であるため、第３の一の３の(21)④を参照されたいこと。\n",
+      "candidate_text_sha256": "ffadabb22e707d80aa4b5ed968872b547046dc74a802a4bc6382f2d7d8024321",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-staffing-h27-baseline",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-staffing-h27-baseline",
+          "operation": "baseline"
+        },
+        {
+          "step": 1,
+          "snapshot_id": "dayservice-operation-staffing-r3-additions",
+          "operation": "append",
+          "note": "R3で③④を追加"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-staffing-h27-baseline",
+          "role": "baseline",
+          "source_id": "mhlw-h27-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（平成27年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "page_start": 54,
+          "page_end": 54,
+          "source_pdf_sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+          "snapshot_body_sha256": "8f6dbb016c853840866caa7591e9ac2328058969a06bfaff14b047a240b516d7",
+          "operation": null,
+          "note": "H27改正後の(5)本文①②。R3で③④を追加。"
+        },
+        {
+          "snapshot_id": "dayservice-operation-staffing-r3-additions",
+          "role": "patch",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 32,
+          "page_end": 32,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "8fec484ff5d63729b81e9cd938793515d223b6c03fa3cec331920afc3b23c882",
+          "operation": "append",
+          "note": "R3で③④を追加"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "ffadabb22e707d80aa4b5ed968872b547046dc74a802a4bc6382f2d7d8024321",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.bcp",
+      "family": "operation_modern",
+      "section": "運営に関する基準",
+      "title": "業務継続計画の策定等",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(6)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "①居宅基準第105条の規定により指定通所介護の事業について準用される居宅基準第30条の２は、指定通所介護事業者は、感染症や災害が発生した場合にあっても、利用者が継続して指定通所介護の提供を受けられるよう、業務継続計画を策定するとともに、当該業務継続計画に従い、通所介護従業者に対して、必要な研修及び訓練（シミュレーション）を実施しなければならないこととしたものである。なお、業務継続計画の策定、研修及び訓練の実施については、居宅基準第105条の規定により指定通所介護の事業について準用される居宅基準第30条の２に基づき事業所に実施が求められるものであるが、他のサービス事業者との連携等により行うことも差し支えない。また、感染症や災害が発生した場合には、従業者が連携し取り組むことが求められることから、研修及び訓練の実施にあたっては、全ての従業者が参加できるようにすることが望ましい。②業務継続計画には、以下の項目等を記載すること。なお、各項目の記載内容については、「介護施設・事業所における感染症発生時の業務継続ガイドライン」及び「介護施設・事業所における自然災害発生時の業務継続ガイドライン」を参照されたい。また、想定される災害等は地域によって異なるものであることから、項目については実態に応じて設定すること。なお、感染症及び災害の業務継続計画を一体的に策定することを妨げるものではない。さらに、感染症に係る業務継続計画、感染症の予防及びまん延の防止のための指針、災害に係る業務継続計画並びに非常災害に関する具体的計画については、それぞれに対応する項目を適切に設定している場合には、一体的に策定することとして差し支えない。イ感染症に係る業務継続計画ａ平時からの備え（体制構築・整備、感染症防止に向けた取組の実施、備蓄品の確保等）ｂ初動対応ｃ感染拡大防止体制の確立（保健所との連携、濃厚接触者への対応、関係者との情報共有等）ロ災害に係る業務継続計画ａ平常時の対応（建物・設備の安全対策、電気・水道等のライフラインが停止した場合の対策、必要品の備蓄等）ｂ緊急時の対応（業務継続計画発動基準、対応体制等）ｃ他施設及び地域との連携③研修の内容は、感染症及び災害に係る業務継続計画の具体的内容を職員間に共有するとともに、平常時の対応の必要性や、緊急時の対応にかかる理解の励行を行うものとする。職員教育を組織的に浸透させていくために、定期的（年１回以上）な教育を開催するとともに、新規採用時には別に研修を実施することが望ましい。また、研修の実施内容についても記録すること。なお、感染症の業務継続計画に係る研修については、感染症の予防及びまん延の防止のための研修と一体的に実施することも差し支えない。④訓練（シミュレーション）においては、感染症や災害が発生した場合において迅速に行動できるよう、業務継続計画に基づき、事業所内の役割分担の確認、感染症や災害が発生した場合に実践するケアの演習等を定期的（年１回以上）に実施するものとする。なお、感染症の業務継続計画に係る訓練については、感染症の予防及びまん延の防止のための訓練と一体的に実施することも差し支えない。また、災害の業務継続計画に係る訓練については、非常災害対策に係る訓練と一体的に実施することも差し支えない。訓練の実施は、机上を含めその実施手法は問わないものの、机上及び実地で実施するものを適切に組み合わせながら実施することが適切である。\n",
+      "candidate_text_sha256": "fb03a61a735c93ec0b36d4997736ac48dcfbd22e2a5ce04d23c2da982cf4452c",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-bcp-r3-baseline",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-bcp-r3-baseline",
+          "operation": "baseline"
+        },
+        {
+          "step": 1,
+          "snapshot_id": "dayservice-operation-bcp-r6-patch-1",
+          "operation": "replace_between",
+          "note": "R6: 経過措置終了文を除いた①に置換"
+        },
+        {
+          "step": 2,
+          "snapshot_id": "dayservice-operation-bcp-r6-patch-2-prefix",
+          "operation": "replace_between",
+          "note": "R6: ②導入部を更新し、R3のイ・ロと③・④を継承"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-bcp-r3-baseline",
+          "role": "baseline",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 32,
+          "page_end": 34,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "21164646666da71140e975d7c7a82b0d8150c20e975ec98f2c274e7c137bddc9",
+          "operation": null,
+          "note": "R3新設(6)の改正後全文。R6で①・②の一部が更新されるためbaselineとして利用。"
+        },
+        {
+          "snapshot_id": "dayservice-operation-bcp-r6-patch-1",
+          "role": "patch",
+          "source_id": "mhlw-2024-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "page_start": 21,
+          "page_end": 21,
+          "source_pdf_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+          "snapshot_body_sha256": "0efe7677c658776ecf9633bc42bd9351fba32127d896b819ede1627a107644ed",
+          "operation": "replace_between",
+          "note": "R6: 経過措置終了文を除いた①に置換"
+        },
+        {
+          "snapshot_id": "dayservice-operation-bcp-r6-patch-2-prefix",
+          "role": "patch",
+          "source_id": "mhlw-2024-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "page_start": 21,
+          "page_end": 22,
+          "source_pdf_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+          "snapshot_body_sha256": "e34985cec55f258800708265219884e82948f27c71f001ba99aab0a6591aa796",
+          "operation": "replace_between",
+          "note": "R6: ②導入部を更新し、R3のイ・ロと③・④を継承"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "fb03a61a735c93ec0b36d4997736ac48dcfbd22e2a5ce04d23c2da982cf4452c",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.disaster",
+      "family": "operation_modern",
+      "section": "運営に関する基準",
+      "title": "非常災害対策",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(7)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "①居宅基準第103条は、指定通所介護事業者は、非常災害に際して必要な具体的計画の策定、関係機関への通報及び連携体制の整備、避難、救出訓練の実施等の対策の万全を期さなければならないこととしたものである。関係機関への通報及び連携体制の整備とは、火災等の災害時に、地域の消防機関へ速やかに通報する体制をとるよう従業員に周知徹底するとともに、日頃から消防団や地域住民との連携を図り、火災等の際に消火・避難等に協力してもらえるような体制作りを求めることとしたものである。なお「非常災害に関する具体的計画」とは、消防法施行規則第３条に規定する消防計画（これに準ずる計画を含む。）及び風水害、地震等の災害に対処するための計画をいう。この場合、消防計画の策定及びこれに基づく消防業務の実施は、消防法第８条の規定により防火管理者を置くこととされている指定通所介護事業所にあってはその者に行わせるものとする。また、防火管理者を置かなくてもよいこととされている指定通所介護事業所においても、防火管理について責任者を定め、その者に消防計画に準ずる計画の樹立等の業務を行わせるものとする。②同条第２項は、指定通所介護事業者が前項に規定する避難、救出その他の訓練の実施に当たって、できるだけ地域住民の参加が得られるよう努めることとしたものであり、そのためには、日頃から地域住民との密接な連携体制を確保するなど、訓練の実施に協力を得られる体制づくりに努めることが必要である。訓練の実施に当たっては、消防関係者の参加を促し、具体的な指示を仰ぐなど、より実効性のあるものとすること。\n",
+      "candidate_text_sha256": "30761dfe8e638f4e930dde13c4f0da309a01d62c2bd6aa5cbf0e6638fe89c8e0",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-disaster-r3",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-disaster-r3",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-disaster-r3",
+          "role": "baseline",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 34,
+          "page_end": 35,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "30761dfe8e638f4e930dde13c4f0da309a01d62c2bd6aa5cbf0e6638fe89c8e0",
+          "operation": null,
+          "note": "R3改正後(7)本文。R6・2026では(7)略として保持。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "30761dfe8e638f4e930dde13c4f0da309a01d62c2bd6aa5cbf0e6638fe89c8e0",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.hygiene",
+      "family": "operation_modern",
+      "section": "運営に関する基準",
+      "title": "衛生管理等",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(8)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "①居宅基準第104条は、指定通所介護事業所の必要最低限の衛生管理等について規定したものであるが、このほか、次の点に留意するものとする。イ指定通所介護事業者は、食中毒及び感染症の発生を防止するための措置等について、必要に応じて保健所の助言、指導を求めるとともに、常に密接な連携を保つこと。ロ特にインフルエンザ対策、腸管出血性大腸菌感染症対策、レジオネラ症対策等については、その発生及びまん延を防止するための措置について、別途通知等が発出されているので、これに基づき、適切な措置を講じること。ハ空調設備等により施設内の適温の確保に努めること。②同条第２項に規定する感染症が発生し、又はまん延しないように講ずるべき措置については、具体的には次のイからハまでの取扱いとすること。各事項について、同項に基づき事業所に実施が求められるものであるが、他のサービス事業者との連携等により行うことも差し支えない。イ感染症の予防及びまん延の防止のための対策を検討する委員会当該事業所における感染対策委員会であり、感染対策の知識を有する者を含む、幅広い職種により構成することが望ましく、特に、感染症対策の知識を有する者については外部の者も含め積極的に参画を得ることが望ましい。構成メンバーの責任及び役割分担を明確にするとともに、感染対策担当者を決めておくことが必要である。感染対策委員会は、利用者の状況など事業所の状況に応じ、おおむね６月に１回以上、定期的に開催するとともに、感染症が流行する時期等を勘案して必要に応じ随時開催する必要がある。感染対策委員会は、テレビ電話装置等を活用して行うことができるものとする。この際、個人情報保護委員会・厚生労働省「医療・介護関係事業者における個人情報の適切な取扱いのためのガイダンス」、厚生労働省「医療情報システムの安全管理に関するガイドライン」等を遵守すること。なお、感染対策委員会は、他の会議体を設置している場合、これと一体的に設置・運営することとして差し支えない。また、事業所に実施が求められるものであるが、他のサービス事業者との連携等により行うことも差し支えない。ロ感染症の予防及びまん延の防止のための指針当該事業所における「感染症の予防及びまん延の防止のための指針」には、平常時の対策及び発生時の対応を規定する。平常時の対策としては、事業所内の衛生管理（環境の整備等）、ケアにかかる感染対策（手洗い、標準的な予防策）等、発生時の対応としては、発生状況の把握、感染拡大の防止、医療機関や保健所、市町村における事業所関係課等の関係機関との連携、行政等への報告等が想定される。また、発生時における事業所内の連絡体制や上記の関係機関への連絡体制を整備し、明記しておくことも必要である。なお、それぞれの項目の記載内容の例については、「介護現場における感染対策の手引き」を参照されたい。ハ感染症の予防及びまん延の防止のための研修及び訓練通所介護従業者に対する「感染症の予防及びまん延の防止のための研修」の内容は、感染対策の基礎的内容等の適切な知識を普及・啓発するとともに、当該事業所における指針に基づいた衛生管理の徹底や衛生的なケアの励行を行うものとする。職員教育を組織的に浸透させていくためには、当該事業所が定期的な教育（年１回以上）を開催するとともに、新規採用時には感染対策研修を実施することが望ましい。また、研修の実施内容についても記録することが必要である。なお、研修の実施は、厚生労働省「介護施設・事業所の職員向け感染症対策力向上のための研修教材」等を活用するなど、事業所内で行うものでも差し支えなく、当該事業所の実態に応じ行うこと。また、平時から、実際に感染症が発生した場合を想定し、発生時の対応について、訓練（シミュレーション）を定期的（年１回以上）に行うことが必要である。訓練においては、感染症発生時において迅速に行動できるよう、発生時の対応を定めた指針及び研修内容に基づき、事業所内の役割分担の確認や、感染対策をした上でのケアの演習などを実施するものとする。訓練の実施は、机上を含めその実施手法は問わないものの、机上及び実地で実施するものを適切に組み合わせながら実施することが適切である。\n",
+      "candidate_text_sha256": "738776321efe1d14275b46dee7a4f9dea686530fc065b85192d83145c8787849",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-hygiene-r3-baseline",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-hygiene-r3-baseline",
+          "operation": "baseline"
+        },
+        {
+          "step": 1,
+          "snapshot_id": "dayservice-operation-hygiene-r6-prefix",
+          "operation": "replace_between",
+          "note": "R6: 経過措置終了文を削除した②導入部に置換"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-hygiene-r3-baseline",
+          "role": "baseline",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 34,
+          "page_end": 36,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "e529f072606042f3f2b882f91109964673ce57373dc0d1d4ef11b2027250f03a",
+          "operation": null,
+          "note": "R3改正後(8)全文。R6で②の経過措置文のみ削除されるためbaselineとして利用。"
+        },
+        {
+          "snapshot_id": "dayservice-operation-hygiene-r6-prefix",
+          "role": "patch",
+          "source_id": "mhlw-2024-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "page_start": 22,
+          "page_end": 22,
+          "source_pdf_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+          "snapshot_body_sha256": "96f0442b3bc270cd0df5c9e69807585740ad3d1af1da0209c1b652e512ca8015",
+          "operation": "replace_between",
+          "note": "R6: 経過措置終了文を削除した②導入部に置換"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "738776321efe1d14275b46dee7a4f9dea686530fc065b85192d83145c8787849",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.community",
+      "family": "operation_modern",
+      "section": "運営に関する基準",
+      "title": "地域との連携等",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(9)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "①居宅基準第104条の２第１項は、指定通所介護の事業が地域に開かれた事業として行われるよう、指定通所介護事業者は、地域の住民やボランティア団体等との連携及び協力を行う等の地域との交流に努めなければならないこととしたものである。②同条第２項は、居宅基準第３条第２項の趣旨に基づき、介護サービス相談員を派遣する事業を積極的に受け入れる等、市町村との密接な連携に努めることを規定したものである。なお、「市町村が実施する事業」には、介護サービス相談員派遣事業のほか、広く市町村が老人クラブ、婦人会その他の非営利団体や住民の協力を得て行う事業が含まれるものである。③同条第３項の規定は、指定訪問介護に係る居宅基準第36条の２第２項と基本的に同趣旨であるため、第３の一の３の（29）②を参照されたい。\n",
+      "candidate_text_sha256": "b92867657a8cad57deefa53aaca2c547bfdd517cf83ce090eb63771a13b3e276",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-community-r3",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-community-r3",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-community-r3",
+          "role": "baseline",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 36,
+          "page_end": 37,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "b92867657a8cad57deefa53aaca2c547bfdd517cf83ce090eb63771a13b3e276",
+          "operation": null,
+          "note": "R3で新設・再編された(9)本文。R6・2026では(9)〜(12)略として保持。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "b92867657a8cad57deefa53aaca2c547bfdd517cf83ce090eb63771a13b3e276",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.accident",
+      "family": "operation_modern",
+      "section": "運営に関する基準",
+      "title": "事故発生時の対応",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(10)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "居宅基準第104条の３は、利用者が安心して指定通所介護の提供を受けられるよう、事故発生時の速やかな対応を規定したものである。指定通所介護事業者は、利用者に対する指定通所介護の提供により事故が発生した場合は、市町村、当該利用者の家族、当該利用者に係る居宅介護支援事業者等に対して連絡を行う等の必要な措置を講じるべきこととするとともに、当該事故の状況及び事故に際して採った処置について記録しなければならないこととしたものである。また、利用者に対する指定通所介護の提供により賠償すべき事故が発生した場合は、損害賠償を速やかに行わなければならないこととしたものである。なお、居宅基準第104条の４第２項の規定に基づき、事故の状況及び事故に際して採った処置についての記録は、２年間保存しなければならない。このほか、以下の点に留意するものとする。①～③（略）\n",
+      "candidate_text_sha256": "e6bf847bec769dcd5b124e8301b2e41a5c01dda620ad4f67cae33a7c20923988",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-accident-r3",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-accident-r3",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-accident-r3",
+          "role": "baseline",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 37,
+          "page_end": 37,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "e6bf847bec769dcd5b124e8301b2e41a5c01dda620ad4f67cae33a7c20923988",
+          "operation": null,
+          "note": "R3改正後(10)本文。R6・2026では(9)〜(12)略として保持。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "e6bf847bec769dcd5b124e8301b2e41a5c01dda620ad4f67cae33a7c20923988",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.abuse",
+      "family": "operation_modern",
+      "section": "運営に関する基準",
+      "title": "虐待の防止",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(11)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "居宅基準第105条の規定により指定通所介護の事業について準用される居宅基準第37条の２の規定については、訪問介護と同様であるので、第３の一の３の(31)を参照されたい。\n",
+      "candidate_text_sha256": "9afcfcfaec9f6b90cc0d59f0a2586e1438997d889d998e1a8531c37274367322",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-abuse-r3",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-abuse-r3",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-abuse-r3",
+          "role": "baseline",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 37,
+          "page_end": 37,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "9afcfcfaec9f6b90cc0d59f0a2586e1438997d889d998e1a8531c37274367322",
+          "operation": null,
+          "note": "R3新設(11)本文。R6・2026では(9)〜(12)略として保持。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "9afcfcfaec9f6b90cc0d59f0a2586e1438997d889d998e1a8531c37274367322",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.records",
+      "family": "operation_modern",
+      "section": "運営に関する基準",
+      "title": "記録の整備",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(12)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "居宅基準第104条の４第２項は、指定通所介護事業者が同項各号に規定する記録を整備し、２年間保存しなければならないこととしたものである。なお、「その完結の日」とは、個々の利用者につき、契約終了（契約の解約・解除、他の施設への入所、利用者の死亡、利用者の自立等）により一連のサービス提供が終了した日を指すものとする。\n",
+      "candidate_text_sha256": "f221bf8da5cc08bcefc34d88ed80993529e1cb1d0f3e8f54a8c55e83df34db29",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-records-r3",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-records-r3",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-records-r3",
+          "role": "baseline",
+          "source_id": "mhlw-2021-interpretation-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "page_start": 37,
+          "page_end": 38,
+          "source_pdf_sha256": "83a9c86d0ad03c9399fbc1fd599ab53c9b5f78a449abd04cf0e3dcb6d187b486",
+          "snapshot_body_sha256": "f221bf8da5cc08bcefc34d88ed80993529e1cb1d0f3e8f54a8c55e83df34db29",
+          "operation": null,
+          "note": "R3新設(12)本文。R6・2026では(9)〜(12)略として保持。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "f221bf8da5cc08bcefc34d88ed80993529e1cb1d0f3e8f54a8c55e83df34db29",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    },
+    {
+      "notice_id": "notice.dayservice.operation.incorporation",
+      "family": "operation_modern",
+      "section": "運営に関する基準",
+      "title": "準用",
+      "number_path": [
+        "第3",
+        "六",
+        "3",
+        "(13)"
+      ],
+      "effective_as_of": "2026-09-23",
+      "candidate_text": "居宅基準第105条の規定により、居宅基準第８条から第17条まで、第19条、第21条、第26条、第27条、第30条の２、第32条から第34条まで、第35条、第36条、第37条の２、第38条及び第52条は、指定通所介護の事業について準用されるものであるため、第３の一の３の⑵から⑻まで、⑽、⑿、⒂、⒃、(24)、(25)、(27)、(28)及び(32)並びに第３の二の３の⑷を参照されたい。なお、居住、滞在及び宿泊並びに食事の提供に係る利用料等に関する指針（平成17年厚生労働省告示第419号）一のハに規定するウェブサイトへの掲載に関する取扱いは、準用される居宅基準第32条に関する第３の一の３の(24)の①に準ずるものとする。\n",
+      "candidate_text_sha256": "24dc8d78aa074711d32b295b462a452c6b44c334ae5b98805d1a5c1c17cc88bb",
+      "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+      "human_verification_status": "NOT_REVIEWED",
+      "baseline_snapshot_id": "dayservice-operation-incorporation-2026",
+      "replay_order": [
+        {
+          "step": 0,
+          "snapshot_id": "dayservice-operation-incorporation-2026",
+          "operation": "baseline"
+        }
+      ],
+      "source_evidence": [
+        {
+          "snapshot_id": "dayservice-operation-incorporation-2026",
+          "role": "baseline",
+          "source_id": "mhlw-2026-rouki25-reference-redline",
+          "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（厚生労働省・令和8年3月掲載参照資料）",
+          "publisher": "厚生労働省",
+          "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
+          "page_start": 22,
+          "page_end": 22,
+          "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
+          "snapshot_body_sha256": "24dc8d78aa074711d32b295b462a452c6b44c334ae5b98805d1a5c1c17cc88bb",
+          "operation": null,
+          "note": "2026年3月厚労省参照資料の新欄に現れる(13)準用の現行側全文。"
+        }
+      ],
+      "independent_verification": {
+        "result": "PASS",
+        "recorded_candidate_sha256": "24dc8d78aa074711d32b295b462a452c6b44c334ae5b98805d1a5c1c17cc88bb",
+        "verifier": "scripts/verify_notice_rouki25_independent.py",
+        "workflow": ".github/workflows/verify-notice-rouki25-independent.yml",
+        "workflow_run_url": "https://github.com/Josh-Temple/kaigo-rules/actions/runs/35828730239",
+        "verified_at": "2026-09-23",
+        "verified_main_sha": "dc92f9c82555e8fcb70dcff3c6dca07166d58af3"
+      },
+      "reviewer_checklist": [
+        "candidate本文が一次資料の該当箇所と一致する",
+        "baselineとpatchの適用順序が妥当である",
+        "後続改正で当該項目が変更されていないことを確認した",
+        "独立機械照合の対象hashと現在のcandidate hashが一致する"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null,
+      "reviewed_candidate_sha256": null
+    }
+  ]
+}
