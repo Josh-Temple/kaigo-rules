@@ -1,0 +1,766 @@
+{
+  "format_version": 1,
+  "ledger_id": "rouki25-currentness-2026-09-23",
+  "scope": "老企第25号「指定居宅サービス等及び指定介護予防サービス等に関する基準について」第3・六（通所介護）22 candidateのcurrentness",
+  "audit_kind": "独立機械監査。人手の確認記録ではない。",
+  "checked_at": "2026-09-23",
+  "fresh_main_sha_at_start": "3b8cd04916d8a06f1d1c2ebd0699eac91141f333",
+  "search_coverage": {
+    "coverage_start": "2024-03-14",
+    "coverage_start_basis": "公式R6 PDFの埋込CreationDateは2024-03-14 15:03:55 EDT（日本時間2024-03-15 04:03:55）。親ページに日単位の掲載・更新時刻が見えないため、資料の日本時間日付より1日早い2024-03-14から保守的に探索期間を開始した。",
+    "coverage_end": "2026-09-23",
+    "search_performed_on": "2026-09-23",
+    "overall_limit": "複数の厚労省公式経路で同じcheckpoint後期間を探索したが、各indexには公表済みの網羅性限界がある。検索結果の不存在を単独の「改正なし」証明には用いない。"
+  },
+  "checkpoint": {
+    "status": "NOT_FULLTEXT",
+    "label_applied": null,
+    "required_label_if_full_text": "R6_OFFICIAL_FULLTEXT_CHECKPOINT",
+    "official_page_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+    "official_page_title": "令和6年度介護報酬改定について",
+    "publication_context": "ページ内「基準省令に関する通知（解釈通知等）」の「解釈通知（居宅）」として掲載。資料名は「指定居宅サービス等及び指定介護予防サービス等に関する基準について」。",
+    "pdf_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+    "pdf_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+    "pdf_byte_length": 1433351,
+    "pdf_page_count": 79,
+    "pdf_embedded_creation_date": "2024-03-14 (EDT as printed in PDF metadata)",
+    "notification_number_printed": "平成11年9月17日老企第25号",
+    "amending_notification_number_printed_in_excerpt": null,
+    "document_character": "改正新旧対照表（抄）。表の左欄が新、右欄が旧。",
+    "history_markers": [
+      "（抄）",
+      "新",
+      "旧"
+    ],
+    "full_integrated_text": false,
+    "contains_dayservice_section": true,
+    "dayservice_scope_observed": "第3・六「通所介護」は含むが、一部本文は「1・2（略）」などと省略される。未改正本文全体を収録しない。",
+    "can_directly_check_all_22_candidates": false,
+    "directly_checkable_changed_item_fragments": 4,
+    "not_directly_checkable_items": 18,
+    "decision": "full checkpointとして不採用。R6改正の部分的な一次資料としてのみ利用。",
+    "existing_source_manifest_id": "mhlw-2024-interpretation-redline",
+    "source_manifest_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+    "comparison_note": "4項目の可視改正断片はcandidateと矛盾する具体例を認めなかった。18項目は未改正本文が省略されるため直接比較できない。",
+    "pdf_embedded_creation_datetime": "2024-03-14T15:03:55-04:00",
+    "pdf_embedded_creation_datetime_japan": "2024-03-15T04:03:55+09:00",
+    "checkpoint_date": "2024-03-15",
+    "checkpoint_date_basis": "PDF埋込CreationDateを日本時間へ換算した日付。公式親ページには別の掲載・更新日が表示されないため、発出日そのものとは断定せず、資料日付のproxyとして記録。coverageはさらに保守的に2024-03-14開始。"
+  },
+  "secondary_reference_context": {
+    "source_id": "mhlw-2026-rouki25-reference-redline",
+    "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
+    "sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
+    "repository_claimed_period": "2025-03",
+    "official_parent_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00003.html",
+    "official_parent_context": "令和7年3月改訂（令和6年度版）の高齢者虐待対応マニュアル公式ページで「本編内の通知」として掲載。2026年3月改訂ページでも同じPDF URLが再掲されている。",
+    "date_provenance": "reference periodは、確認できる最古の公式親ページ掲載文脈として2025-03に訂正済み。PDF内新旧対照表そのものの正式な改正日は確定せず、currentness判定には使用しない。",
+    "comparison": "該当するR6 PDFのページ本文は公式R6 PDFと同一。独立した2026改正や改正なしの証拠としては扱わない。",
+    "previous_repository_period_claim": "2026-03",
+    "period_semantics": "earliest_confirmed_official_parent_publication_context",
+    "official_r7_notice_date": "2025-03-25",
+    "official_r8_parent_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00004.html",
+    "official_r8_notice_date": "2026-03-31",
+    "same_pdf_url_reused_across_r7_and_r8_parent_pages": true,
+    "underlying_redline_amendment_date": "UNRESOLVED_NOT_USED_AS_REFERENCE_PERIOD"
+  },
+  "official_indexes_searched": [
+    {
+      "index_id": "mhlw-kaigo-latest-info-archive",
+      "source_or_index_name": "厚生労働省 介護保険最新情報（2021-01-01以降の掲載一覧）",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "date_range": "2024-03-14..2026-09-23",
+      "searched_on": "2026-09-23",
+      "queries": [
+        {
+          "query": "老企第25号",
+          "result_summary": "一覧上の表題に一致する関連掲載なし。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+          "result_summary": "一覧上の表題に一致する掲載なし。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 一部改正",
+          "result_summary": "一覧上の表題に一致する掲載なし。"
+        }
+      ],
+      "related_hits": [
+        "Vol.1455（2025-12-26）: 老企第25号を引用する訪問介護のサテライト取扱通知。改正指示なし。",
+        "Vol.1477（2026-03-13）: 老企第36号（報酬算定留意事項）改正。",
+        "Vol.1502（2026-05-08）: 老企第36号関連の報酬留意事項・Q&A。",
+        "Vol.1523（2026-07-13）: 老企第36号のQ&A。",
+        "Vol.1535（2026-08-14）: 介護サービス情報の公表制度。",
+        "Vol.1537（2026-08-21）: 地域支援事業・総合事業ガイドライン関係。",
+        "2026-09-18掲載Vol.1544が確認時点の一覧末尾。"
+      ],
+      "direct_rouki25_amendment_found": false,
+      "exclusion_reason": "一覧は掲載情報の公式索引であり、通知本文を全文検索する改正台帳ではない。個々の候補は一次資料を確認し、引用・別通知の改正を除外。9/19〜9/23の一覧未掲載期間も残る。",
+      "coverage_note": "厚労省ページは同一覧に2021-01-01以降の最新情報を掲載すると説明。確認時点で最新掲載は2026-09-18。"
+    },
+    {
+      "index_id": "mhlw-r6-r7-r8-reform-pages",
+      "source_or_index_name": "厚生労働省 令和6年度・令和7年度・令和8年度 介護報酬改定関連ページ",
+      "urls": [
+        "https://www.mhlw.go.jp/stf/newpage_38790.html",
+        "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html"
+      ],
+      "date_range": "2024-03-14..2026-09-23",
+      "searched_on": "2026-09-23",
+      "queries": [
+        {
+          "query": "令和6年度介護報酬改定について / 基準省令に関する通知（解釈通知等）",
+          "result_summary": "老企第25号のR6新旧対照表が掲載。"
+        },
+        {
+          "query": "令和7年度 介護報酬改定 老企第25号",
+          "result_summary": "令和7年度の独立した改定ページは正確な検索で特定できず。"
+        },
+        {
+          "query": "令和8年度介護報酬改定に関する通知等の改正 老企第25号",
+          "result_summary": "費用算定通知等が掲載。老企第36号を確認し、老企第25号改正は掲載なし。"
+        }
+      ],
+      "related_hits": [
+        "R6: 老企第25号の抄・新旧対照表（checkpoint候補、full textではない）。",
+        "R8: 老企第36号「介護報酬の解釈/費用算定」改正資料。"
+      ],
+      "direct_rouki25_amendment_found": false,
+      "exclusion_reason": "R8の掲載文書は老企第36号等の報酬算定留意事項で、老企第25号の解釈通知ではない。R7の専用ページが検索で見つからないこと自体は不改正の根拠にしない。"
+    },
+    {
+      "index_id": "mhlw-notification-body-search",
+      "source_or_index_name": "厚生労働省 法令等データベースサービス 通知本文検索",
+      "url": "https://www.mhlw.go.jp/hourei/",
+      "search_endpoint": "https://www.mhlw.go.jp/web/t_docsrch_keyword",
+      "date_range": "全収録期間を検索。結果を2024-03-14以降で確認。DB収録最新日は2026-07-17。",
+      "searched_on": "2026-09-23",
+      "queries": [
+        {
+          "query": "老企第25号",
+          "result_summary": "6件。2001/2003/2009/2011/2018年の歴史的関連通知。2024-03-14以降は0件。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+          "result_summary": "4件。2009/2011/2012/2018年。checkpoint後は0件。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 一部改正",
+          "result_summary": "3件。2009/2011/2012年。checkpoint後は0件。"
+        },
+        {
+          "query": "老企第25号 令和6年",
+          "result_summary": "0件。"
+        },
+        {
+          "query": "老企第25号 令和7年",
+          "result_summary": "0件。"
+        },
+        {
+          "query": "老企第25号 令和8年",
+          "result_summary": "0件。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 令和6年",
+          "result_summary": "0件。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 令和7年",
+          "result_summary": "0件。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 令和8年",
+          "result_summary": "0件。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 一部改正 令和6年",
+          "result_summary": "0件。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 一部改正 令和7年",
+          "result_summary": "0件。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 一部改正 令和8年",
+          "result_summary": "0件。"
+        }
+      ],
+      "related_hits": [
+        "検索結果の歴史的通知は全てcoverage startより前。平成21年等の一部改正通知、平成23年通知、平成24年構造改革通知、平成30年通知の表題・本文を確認。平成15年用語置換通知と平成13年グループホーム関連通知は引用/適用文脈。"
+      ],
+      "direct_rouki25_amendment_found": false,
+      "exclusion_reason": "検索結果はDBに収録された旧通知で、checkpoint後の改正通知ではない。DB公式説明は「主な通知」の収録で全件ではなく、一覧の最新日は2026-07-17。したがって不在だけから改正なしとは結論しない。",
+      "index_limit": "公式readmeは厚労省の全ての法令・通知がデータベースに収録されるものではないと明示。"
+    },
+    {
+      "index_id": "mhlw-notification-new-index",
+      "source_or_index_name": "厚生労働省 法令等データベース 新着通知（老健局）",
+      "url": "https://www.mhlw.go.jp/hourei/new/tsuchi/newindex.html",
+      "date_range": "当該新着一覧の掲載期間。ページ表示は2026-09-17まで。",
+      "searched_on": "2026-09-23",
+      "queries": [
+        {
+          "query": "老健局 新着の通知",
+          "result_summary": "表示セクションは空欄。"
+        }
+      ],
+      "related_hits": [],
+      "direct_rouki25_amendment_found": false,
+      "exclusion_reason": "公式一覧は新着案内に過ぎず、別ページ掲載の通知も存在するため、空欄を網羅的な不改正証拠とはしない。"
+    },
+    {
+      "index_id": "mhlw-site-internal-search",
+      "source_or_index_name": "厚生労働省サイト内検索",
+      "url": "https://www.mhlw.go.jp/search.html",
+      "date_range": "2024-03-14..2026-09-23",
+      "searched_on": "2026-09-23",
+      "queries": [
+        {
+          "query": "老企第25号",
+          "result_summary": "サイト内検索URL/クライアント側検索を確認。結果一覧を静的HTMLから取得できず。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+          "result_summary": "結果一覧を静的HTMLから取得できず。"
+        },
+        {
+          "query": "指定居宅サービス等及び指定介護予防サービス等に関する基準について 一部改正",
+          "result_summary": "結果一覧を静的HTMLから取得できず。"
+        },
+        {
+          "query": "上記正式題名 + 令和6年",
+          "result_summary": "結果一覧を静的HTMLから取得できず。"
+        },
+        {
+          "query": "上記正式題名 + 令和7年",
+          "result_summary": "結果一覧を静的HTMLから取得できず。"
+        },
+        {
+          "query": "上記正式題名 + 令和8年",
+          "result_summary": "結果一覧を静的HTMLから取得できず。"
+        }
+      ],
+      "related_hits": [
+        "検索サービスがクライアント側Google CSEとして描画されるため、取得HTMLには検索結果が含まれない。"
+      ],
+      "direct_rouki25_amendment_found": null,
+      "exclusion_reason": "この経路は結果を再現可能な形で抽出できず、negative evidenceの根拠から除外。site:mhlw.go.jp を使う補助検索で候補を探索し、最終根拠は厚労省一次資料に戻した。"
+    },
+    {
+      "index_id": "mhlw-domain-restricted-discovery",
+      "source_or_index_name": "厚労省ドメイン限定の補助検索（発見用途のみ）",
+      "url": "https://www.mhlw.go.jp/",
+      "date_range": "2024-03-14..2026-09-23",
+      "searched_on": "2026-09-23",
+      "queries": [
+        {
+          "query": "site:mhlw.go.jp \"老企第25号\" \"令和7年\"",
+          "result_summary": "後続候補は特定されず。"
+        },
+        {
+          "query": "site:mhlw.go.jp \"老企第25号\" \"令和8年\"",
+          "result_summary": "2026年8月の老発0820第2号（ガイドライン改正）が候補に出現。"
+        },
+        {
+          "query": "site:mhlw.go.jp \"指定居宅サービス等及び指定介護予防サービス等に関する基準について\" \"一部改正\" 令和7 OR 令和8",
+          "result_summary": "直接改正候補を特定せず。"
+        },
+        {
+          "query": "site:mhlw.go.jp \"指定居宅サービス等及び指定介護予防サービス等に関する基準について\" \"令和6年\"",
+          "result_summary": "R6改定ページ・対照表を発見。"
+        }
+      ],
+      "related_hits": [
+        "2026-08-20老発0820第2号を発見し、公式PDF本文を確認。これは老企第25号第2(3)を引用するが、別の総合事業ガイドラインの一部改正。"
+      ],
+      "direct_rouki25_amendment_found": false,
+      "exclusion_reason": "検索エンジンは発見補助であり、検索結果の有無・表示順位を根拠に判定しない。各関連候補の最終分類は厚労省公式通知本文による。"
+    }
+  ],
+  "discovered_amendments": {
+    "checkpoint_embedded_r6_changes": [
+      {
+        "event_id": "rouki25.r6.dayservice.bcp-update",
+        "effective_from": "2024-04-01",
+        "target_node_id": "notice.dayservice.operation.bcp",
+        "summary": "経過措置終了に伴う記載整理やガイドライン表現等を更新。",
+        "source_id": "mhlw-2024-interpretation-redline",
+        "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "included_in_checkpoint": true
+      },
+      {
+        "event_id": "rouki25.r6.dayservice.hygiene-transition-expiry",
+        "effective_from": "2024-04-01",
+        "target_node_id": "notice.dayservice.operation.hygiene",
+        "summary": "衛生管理等(8)②から、令和6年3月31日まで努力義務とする令和3年改正省令附則の経過措置文を削除。",
+        "source_id": "mhlw-2024-interpretation-redline",
+        "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "included_in_checkpoint": true
+      },
+      {
+        "event_id": "rouki25.r6.dayservice.incorporation-web",
+        "effective_from": "2024-04-01",
+        "target_node_id": "notice.dayservice.operation.incorporation",
+        "summary": "準用に関連してウェブサイト掲載の取扱いを追記。",
+        "source_id": "mhlw-2024-interpretation-redline",
+        "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "included_in_checkpoint": true
+      },
+      {
+        "event_id": "rouki25.r6.dayservice.physical-restraint",
+        "effective_from": "2024-04-01",
+        "target_node_id": "notice.dayservice.operation.policy",
+        "summary": "基本取扱方針・具体的取扱方針に身体的拘束等に関する説明・記録の取扱いを追加。",
+        "source_id": "mhlw-2024-interpretation-redline",
+        "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "included_in_checkpoint": true
+      }
+    ],
+    "post_checkpoint_rouki25_amendments_found": [],
+    "post_checkpoint_search_conclusion": "探索した公式経路内で、checkpoint後に老企第25号を改正する後続通知を特定しなかった。coverageの限界が残るため「存在しない」とは断定しない。"
+  },
+  "later_related_notices": [
+    {
+      "date": "2025-03-31",
+      "title": "外国人介護人材に関するQ&A（厚労省公式PDF）",
+      "url": "https://www.mhlw.go.jp/content/12000000/001470209.pdf",
+      "relationship_to_rouki25": "本文が老企第25号に言及",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "訪問系サービス等の取扱いに関するQ&Aとして引用。老企第25号の一部改正指示なし。"
+    },
+    {
+      "date": "2025-12-26",
+      "title": "介護保険最新情報Vol.1455 サテライト事業所関係通知",
+      "url": "https://www.mhlw.go.jp/content/001623781.pdf",
+      "relationship_to_rouki25": "老企第25号を引用",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "訪問介護等のサテライト取扱い通知。本文に改正対象としての老企第25号の指示なし。"
+    },
+    {
+      "date": "2026-03-13",
+      "title": "介護保険最新情報Vol.1477",
+      "url": "https://www.mhlw.go.jp/content/001682746.pdf",
+      "relationship_to_rouki25": "関連する介護報酬通知の改正",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "本文・別紙で改正対象を老企第36号（報酬算定留意事項）と確認。老企第25号の解釈通知とは別。"
+    },
+    {
+      "date": "2026-05-08",
+      "title": "介護保険最新情報Vol.1502",
+      "url": "https://www.mhlw.go.jp/content/001698614.pdf",
+      "relationship_to_rouki25": "報酬留意事項・Q&A",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "一次資料は老企第36号関係の算定留意事項と確認。"
+    },
+    {
+      "date": "2026-07-13",
+      "title": "介護保険最新情報Vol.1523",
+      "url": "https://www.mhlw.go.jp/content/001722713.pdf",
+      "relationship_to_rouki25": "報酬留意事項Q&A",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "一次資料は老企第36号に係るQ&A。"
+    },
+    {
+      "date": "2026-08-14",
+      "title": "介護保険最新情報Vol.1535 介護サービス情報の公表制度関係",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "relationship_to_rouki25": "介護関係の近時通知",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "介護サービス情報の公表制度の掲載。老企第25号の改正ではない。"
+    },
+    {
+      "date": "2026-08-20",
+      "title": "老発0820第2号「介護予防・日常生活支援総合事業のガイドラインについて」の一部改正",
+      "url": "https://www.mhlw.go.jp/content/12300000/001741381.pdf",
+      "relationship_to_rouki25": "老企第25号第2(3)を引用",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "改正対象は老発0605第5号の総合事業ガイドライン。老企第25号は引用元であり改正対象ではない。"
+    },
+    {
+      "date": "2026-08-21",
+      "title": "介護保険最新情報Vol.1537 地域支援事業・総合事業ガイドライン改正概要",
+      "url": "https://www.mhlw.go.jp/content/001741393.pdf",
+      "relationship_to_rouki25": "近時の介護関係改正資料",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "改正対象は地域支援事業実施通知・総合事業ガイドライン。老企第25号の改正ではない。"
+    },
+    {
+      "date": "2026-09-18",
+      "title": "介護保険最新情報 archive末尾 Vol.1544",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "relationship_to_rouki25": "coverage ceiling/index boundary",
+      "directly_amends_rouki25": false,
+      "exclusion_reason": "一覧末尾の日付・巻号をcoverage境界として記録。今回の題名検索では老企第25号の改正表題なし。個別本文を老企第25号改正候補として特定していない。"
+    }
+  ],
+  "historical_notification_search_hits": [
+    {
+      "period": "2001",
+      "classification": "HISTORICAL_CITATION_OR_APPLICABILITY",
+      "direct_rouki25_amendment": false,
+      "summary": "グループホーム関連通知2件。老企第25号の引用・適用関係。対象の通所介護22項目を改正する後続通知ではない。"
+    },
+    {
+      "period": "2003",
+      "classification": "HISTORICAL_TERMINOLOGY_APPLICATION",
+      "direct_rouki25_amendment": false,
+      "summary": "介護報酬用語変更の適用通知。老企第25号を対象通知として列挙するが、通所介護22項目の本文を改正するものではない。"
+    },
+    {
+      "period": "2009",
+      "classification": "HISTORICAL_PRECHECKPOINT_AMENDMENT",
+      "direct_rouki25_amendment": true,
+      "summary": "老企第25号一部改正通知。coverage startより前。"
+    },
+    {
+      "period": "2011",
+      "classification": "HISTORICAL_PRECHECKPOINT_AMENDMENT",
+      "direct_rouki25_amendment": true,
+      "summary": "基準通知の一部改正通知。coverage startより前。添付資料の全対象箇所は今回のcurrentness判定に使用していない。"
+    },
+    {
+      "period": "2012",
+      "classification": "HISTORICAL_PRECHECKPOINT_AMENDMENT",
+      "direct_rouki25_amendment": true,
+      "summary": "構造改革関連の老企第25号一部改正。本文で施設・短期入所の防火等を扱い、coverage startより前。"
+    },
+    {
+      "period": "2018",
+      "classification": "HISTORICAL_REFERENCE_OR_COMBINATION_GUIDANCE",
+      "direct_rouki25_amendment": false,
+      "summary": "保険・保険外サービスの組合せに関する通知で、老企第25号を参照。後続改正ではなくcoverage startより前。"
+    }
+  ],
+  "items": [
+    {
+      "notice_id": "notice.dayservice.personnel.staffing",
+      "title": "従業者の員数",
+      "candidate_text_sha256": "abc3729d4687d2d11581103a8e9bbfb8fb4d48fefae285e8aa82604b532cace9",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.life-counselor",
+      "title": "生活相談員",
+      "candidate_text_sha256": "fbd9bfa5fd410c45faaa5fb51150ba36e6d683667dd9bd4a6a0154f77b02c291",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.function-training",
+      "title": "機能訓練指導員",
+      "candidate_text_sha256": "382d6eb740a2fd95e3bac8dd58a80b4635b44ea039433a89984e4c4cc9780dec",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.personnel.manager",
+      "title": "管理者",
+      "candidate_text_sha256": "3ebd100c715f289ecea6d7c4ab3edd4f33db26a609f131b7075ac083c845d644",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.office",
+      "title": "事業所",
+      "candidate_text_sha256": "2e66494484b422ae15e2f9ff0a03689281c1f2901ed46f19eadc671160ef5492",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.dining-training-room",
+      "title": "食堂及び機能訓練室",
+      "candidate_text_sha256": "44a948061e780d24c9cba1727139c0eb8f451e6e6017780e8cd31600c932ca01",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.fire-safety",
+      "title": "消火設備その他の非常災害に際して必要な設備",
+      "candidate_text_sha256": "4039debb83727a49cac04ab90b4f2519c8fc409e19689bec2630b73e9bfe7cdc",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.shared-equipment",
+      "title": "設備に係る共用",
+      "candidate_text_sha256": "174bf34fb6a0451b20770a507e86e793053d495017dc5fec2a0ce6c346c49c60",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.overnight-service",
+      "title": "指定通所介護事業所の設備を利用し、夜間及び深夜に指定通所介護以外のサービスを提供する場合",
+      "candidate_text_sha256": "fd775ba78801b82202c02f079e81a01c2e9c6fdeadddc3fa4d6ebabb2e0ac845",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.fees",
+      "title": "利用料等の受領",
+      "candidate_text_sha256": "fbd7941a972a46acbba8e528485034f121c81089015ca1df90d4e361ee81a9a1",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.policy",
+      "title": "指定通所介護の基本取扱方針及び具体的取扱方針",
+      "candidate_text_sha256": "dbf79626dc9cbabfb63a973d2e77275233066ad5626ed892cd4887116b6ba0da",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "PARTIAL_VISIBLE_FRAGMENT_CONSISTENT",
+      "checkpoint_comparison_note": "老企第25号PDFの「新」欄に身体的拘束等の記載は見える。candidate全体の照合ではない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.plan",
+      "title": "通所介護計画の作成",
+      "candidate_text_sha256": "f7ee9ba310e079af629257f4f2a93719c93ee2ffc17724cade256a10ee220483",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.rules",
+      "title": "運営規程",
+      "candidate_text_sha256": "5e3d5b7d3e1254fe44184a924baa3ae8df8153d8235df31fc3cccfa7773fac9f",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.staffing",
+      "title": "勤務体制の確保等",
+      "candidate_text_sha256": "ffadabb22e707d80aa4b5ed968872b547046dc74a802a4bc6382f2d7d8024321",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.bcp",
+      "title": "業務継続計画の策定等",
+      "candidate_text_sha256": "fb03a61a735c93ec0b36d4997736ac48dcfbd22e2a5ce04d23c2da982cf4452c",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "PARTIAL_VISIBLE_FRAGMENT_CONSISTENT",
+      "checkpoint_comparison_note": "PDFの「新」欄でBCPの改正箇所は見える。未改正部分を含む統合全文ではない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.disaster",
+      "title": "非常災害対策",
+      "candidate_text_sha256": "30761dfe8e638f4e930dde13c4f0da309a01d62c2bd6aa5cbf0e6638fe89c8e0",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.hygiene",
+      "title": "衛生管理等",
+      "candidate_text_sha256": "738776321efe1d14275b46dee7a4f9dea686530fc065b85192d83145c8787849",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "PARTIAL_VISIBLE_FRAGMENT_CONSISTENT",
+      "checkpoint_comparison_note": "PDFの「新」欄で経過措置終了に伴う削除箇所は見える。candidate全体の照合ではない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.community",
+      "title": "地域との連携等",
+      "candidate_text_sha256": "b92867657a8cad57deefa53aaca2c547bfdd517cf83ce090eb63771a13b3e276",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.accident",
+      "title": "事故発生時の対応",
+      "candidate_text_sha256": "e6bf847bec769dcd5b124e8301b2e41a5c01dda620ad4f67cae33a7c20923988",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.abuse",
+      "title": "虐待の防止",
+      "candidate_text_sha256": "9afcfcfaec9f6b90cc0d59f0a2586e1438997d889d998e1a8531c37274367322",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.records",
+      "title": "記録の整備",
+      "candidate_text_sha256": "f221bf8da5cc08bcefc34d88ed80993529e1cb1d0f3e8f54a8c55e83df34db29",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "NOT_DIRECTLY_VERIFIABLE_FULLTEXT_OMITTED",
+      "checkpoint_comparison_note": "R6資料では未改正本文が「略」等で省略されるため、candidate本文を直接照合できない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    },
+    {
+      "notice_id": "notice.dayservice.operation.incorporation",
+      "title": "準用",
+      "candidate_text_sha256": "24dc8d78aa074711d32b295b462a452c6b44c334ae5b98805d1a5c1c17cc88bb",
+      "human_verification_status_at_start": "NOT_REVIEWED",
+      "checkpoint_comparison": "PARTIAL_VISIBLE_FRAGMENT_CONSISTENT",
+      "checkpoint_comparison_note": "PDFの「新」欄でウェブ掲載等の準用関連追加は見える。candidate全体の照合ではない。",
+      "post_checkpoint_amendment_found": false,
+      "audit_classification": "HOLD",
+      "classification_reason": "後続改正を変更する通知はcoverage内で特定できなかったが、R6資料が統合全文ではなく、改正履歴の索引にも網羅性の限界が残る。"
+    }
+  ],
+  "final_audit_classification": {
+    "counts": {
+      "AUDIT_PASS": 0,
+      "AUDIT_PASS_WITH_LIMITATION": 0,
+      "HOLD": 22,
+      "MISMATCH": 0
+    },
+    "decision": "HOLD",
+    "decision_reason": "令和6年公式資料が抄・新旧対照表で全22項目を直接確認できず、法令等データベースは全通知を網羅せず最新収録日も2026-07-17、介護保険最新情報一覧は2026-09-18まで、厚労省サイト内検索結果も静的に再現できない。複数の独立経路は後続の直接改正を見つけなかったが、current textを再現可能とする公式coverageが十分に閉じていない。",
+    "specific_gap": "full integrated checkpointがなく、R6以後の老企第25号改正履歴を網羅した公式台帳・全件検索可能な通知履歴を確認できていない。さらに2026-09-19..2026-09-23の介護保険最新情報一覧coverageが未確定。",
+    "no_mismatch_found": "確認済み資料でcandidateと公式本文の具体的な不一致は発見していない。未確認・省略を一致と扱っていない。",
+    "human_verification_status": "NOT_REVIEWED",
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  },
+  "remaining_gaps": [
+    "未改正本文を含む老企第25号の公式統合全文、またはR6以後の改正を漏れなく再現できる公式履歴がない。",
+    "法令等データベースは全通知を収録せず、収録最新日が2026-07-17。",
+    "介護保険最新情報一覧の確認範囲は2026-09-18までで、9/19〜9/23に関するcoverageを確定できない。",
+    "厚労省サイト内検索はクライアント描画のため検索結果を静的に再現できず、補助検索は発見用途にとどまる。",
+    "22 candidate全文の人手によるPDF目視確認は実施していない。"
+  ],
+  "validator_provenance": {
+    "packet_path": "data/notice-review-packet.json",
+    "checkpoint_source_manifest_path": "data/notice-operation-modern-source-snapshots.json",
+    "amendment_events_path": "data/notice-amendment-events.json",
+    "r6_embedded_event_ids": [
+      "rouki25.r6.dayservice.bcp-update",
+      "rouki25.r6.dayservice.hygiene-transition-expiry",
+      "rouki25.r6.dayservice.incorporation-web",
+      "rouki25.r6.dayservice.physical-restraint"
+    ],
+    "r6_embedded_events_canonical_sha256": "bfda8fc51bf3e9de9135603b5f8887e49dbab61eb9b97adfe53aac3580884381",
+    "amendment_events_file_sha256_at_audit": "2b0d8a1a838022ab19e1e0d294f2b8c6ee67592a017c0ba3c05417150e0c7060",
+    "candidate_hashes_are_pinned_per_item": true,
+    "freshness_policy": "候補hash、checkpoint snapshot hash、またはcoverage対象イベントが変わった場合は台帳のcurrentness判定を無効化する。coverage_endを過ぎた後は結論をHOLDのまま期限切れとして表示し、PASS系ならvalidatorを失敗させる。検索結果不在をCIで永続的に証明しない。"
+  },
+  "reconciled_with_main_sha": "668a96d7c6b3756d8dddbd646822b3b3e14d0a85",
+  "reconciliation_note": "PR #87 のcurrentness ledgerを、mainで先行したPR #88（001453049.pdfのreference period訂正）とPR #89（post-R6公式索引scan）に整合させて再収録。元の調査結論HOLD 22は変更しない。",
+  "post_r6_official_index_scan": {
+    "checked_at": "2026-09-23",
+    "purpose": "令和6年度改正後に老企第25号・第3の六を更新する後続改正候補を、厚生労働省の公式介護保険通知索引と令和8年度介護報酬改定ページから探索する。",
+    "exact_target_names": [
+      "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+      "老企第25号"
+    ],
+    "checked_routes": [
+      {
+        "route_id": "mhlw-kaigo-latest-info-current",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+        "finding": "令和7年・令和8年の介護保険最新情報を確認。ページ本文上、対象通知の正式名称および「老企第25号」の一致は確認できなかった。",
+        "relevant_non_target_notices": [
+          "Vol.1382（令和7年5月2日）：老企第36号系の費用算定留意事項の一部改正",
+          "Vol.1477（令和8年3月13日）：老企第36号系および介護予防の費用算定留意事項の一部改正",
+          "Vol.1478（令和8年3月13日）：介護給付費算定に係る届出留意点の一部改正",
+          "Vol.1502（令和8年5月8日）：費用算定留意事項等の一部改正通知・Q&A",
+          "Vol.1523（令和8年7月13日）：費用算定留意事項等の一部改正に伴うQ&A"
+        ]
+      },
+      {
+        "route_id": "mhlw-kaigo-latest-info-adjacent-index-31",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00031.html",
+        "finding": "ページ本文上、対象通知の正式名称および「老企第25号」の一致は確認できなかった。令和7年5月のVol.1382等は費用算定留意事項系であり対象外。"
+      },
+      {
+        "route_id": "mhlw-kaigo-latest-info-adjacent-index-29",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00029.html",
+        "finding": "令和6年介護報酬改定期の介護保険最新情報を確認。基準省令改正や報酬算定通知は掲載されているが、ページ本文上、対象通知の正式名称および「老企第25号」の一致は確認できなかった。"
+      },
+      {
+        "route_id": "mhlw-r8-reform-notification-list",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+        "finding": "「令和8年度介護報酬改定に関する通知等の改正」に列挙されているのは、費用算定留意事項、介護予防の費用算定留意事項、届出留意点、処遇改善加算関係等であり、老企第25号は列挙されていない。"
+      },
+      {
+        "route_id": "mhlw-r6-reform-baseline",
+        "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+        "finding": "令和6年度介護報酬改定ページには対象通知「指定居宅サービス等及び指定介護予防サービス等に関する基準について」への公式導線があるため、令和6年改正時点のbaselineとして使用可能。"
+      }
+    ],
+    "exact_title_page_text_match_after_r6": false,
+    "rouki25_page_text_match_after_r6": false,
+    "candidate_post_r6_amendment_identified": false,
+    "inference_limit": "公式索引ページ本文で対象名称が見つからないことは、別表題の包括通知、索引外資料、PDF本文内だけでの改正等が存在しないことの証明にはならない。",
+    "decision_effect": "HOLD_UNCHANGED",
+    "next_blocker": "後続改正を網羅する一次資料上の改正履歴、または現行統合本文を確認できる経路が必要。"
+  }
+}
