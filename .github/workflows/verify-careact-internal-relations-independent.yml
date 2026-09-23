@@ -1,0 +1,51 @@
+name: Verify Care Insurance Act internal relations independently
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "27 4 * * 1"
+  pull_request:
+    paths:
+      - "scripts/verify_careact_internal_relations_independent.py"
+      - "data/care-insurance-act-nodes.json"
+      - "data/care-insurance-act-relations.json"
+      - ".github/workflows/verify-careact-internal-relations-independent.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/verify_careact_internal_relations_independent.py"
+      - "data/care-insurance-act-nodes.json"
+      - "data/care-insurance-act-relations.json"
+      - ".github/workflows/verify-careact-internal-relations-independent.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Independently verify Care Insurance Act internal relations
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_careact_internal_relations_independent.py --report careact-internal-relation-independent-verification.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload independent verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: careact-internal-relation-independent-verification
+          path: careact-internal-relation-independent-verification.json
+          if-no-files-found: warn
+      - name: Fail on relation differences
+        if: steps.verify.outputs.exit_code != '0'
+        run: exit 1
