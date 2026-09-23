@@ -1,5 +1,6 @@
 import Link from "next/link";
 import packetData from "../../../data/notice-review-packet.json";
+import currentnessData from "../../../data/notice-rouki25-currentness-ledger.json";
 
 type Evidence = {
   snapshot_id: string;
@@ -63,6 +64,7 @@ type ReviewPacket = {
 };
 
 const packet = packetData as unknown as ReviewPacket;
+const currentness = currentnessData as any;
 
 const sectionOrder = ["人員に関する基準", "設備に関する基準", "運営に関する基準"];
 
@@ -89,6 +91,10 @@ export default function NoticeReviewPage() {
       item.reviewer_decision &&
       item.reviewed_candidate_sha256 === item.candidate_text_sha256
   ).length;
+  const currentnessById = new Map(
+    (currentness.items || []).map((item: any) => [item.notice_id, item])
+  );
+  const currentnessHold = currentness.final_audit_classification?.counts?.HOLD || 0;
 
   const groups = sectionOrder.map((section) => ({
     section,
@@ -110,11 +116,17 @@ export default function NoticeReviewPage() {
       </div>
 
       <section className="rules-stats notice-review-stats" aria-label="レビュー進捗">
-        <div><strong>{packet.items.length}</strong><span>レビュー対象</span></div>
+        <div><strong>{packet.items.length}</strong><span>対象</span></div>
         <div><strong>{independentPass}</strong><span>独立機械照合PASS</span></div>
+        <div><strong>{currentnessHold}</strong><span>現行性coverage未完了</span></div>
         <div><strong>{reviewed}</strong><span>人手確認済み</span></div>
-        <div><strong>{packet.items.length - reviewed}</strong><span>残り</span></div>
       </section>
+
+      <div className="notice">
+        <strong>「独立機械照合PASS」は「現行性確認済み」を意味しません。</strong><br />
+        本文再構成では具体的不一致を確認していませんが、後続改正の網羅性を証明できる公式coverageが閉じていないため、
+        currentness監査は22項目ともHOLDです。
+      </div>
 
       <section className="section review-procedure">
         <div className="review-section-head">
@@ -127,9 +139,10 @@ export default function NoticeReviewPage() {
         <ol>
           <li>本文候補を読む。</li>
           <li>baseline と patch の一次資料を、記載ページから確認する。</li>
-          <li>改正の適用順と、後続改正で当該項目が変わっていないことを確認する。</li>
+          <li>改正の適用順を確認する。</li>
+          <li>currentness ledgerのcoverageと残る制約を確認する。人の目視だけで「後続改正なし」とは判定しない。</li>
           <li>独立機械照合の hash と現在の candidate hash が一致していることを確認する。</li>
-          <li>確認後に、確認した candidate hash をレビュー台帳へ記録する。</li>
+          <li>実際に人が確認した場合だけ、その candidate hash をレビュー台帳へ記録する。</li>
         </ol>
       </section>
 
@@ -153,6 +166,7 @@ export default function NoticeReviewPage() {
 
           <div className="review-item-list">
             {group.items.map((item, index) => {
+              const currentnessItem = currentnessById.get(item.notice_id) as any;
               const reviewCurrent =
                 Boolean(item.reviewer_decision) &&
                 item.reviewed_candidate_sha256 === item.candidate_text_sha256;
@@ -181,8 +195,12 @@ export default function NoticeReviewPage() {
                       <span className={independentCurrent ? "review-chip review-chip-pass" : "review-chip"}>
                         独立照合 {independentCurrent ? "PASS" : "要再確認"}
                       </span>
+                      <span className="review-chip">現行性 {currentnessItem?.audit_classification || "未監査"}</span>
                       <span className="review-chip">基準日 {item.effective_as_of || "不明"}</span>
                     </div>
+                    {currentnessItem?.classification_reason ? (
+                      <p className="meta">{currentnessItem.classification_reason}</p>
+                    ) : null}
 
                     <section className="review-candidate" aria-labelledby={`${item.notice_id}-candidate`}>
                       <div className="review-subhead">
@@ -261,6 +279,17 @@ export default function NoticeReviewPage() {
           </div>
         </section>
       ))}
+
+      <section className="section">
+        <h2>現行性の監査状態</h2>
+        <p>
+          R6公式資料は新旧対照表（抄）で、22項目を収録した統合全文ではありません。
+          2026年9月23日まで複数の厚生労働省公式経路を確認しましたが、
+          後続改正を網羅する公式台帳としてはcoverageが閉じていません。
+          そのため、本文再構成の一致とは別に22項目をHOLDとしています。
+        </p>
+        <p className="meta">coverage end: {currentness.search_coverage?.coverage_end || "—"}</p>
+      </section>
 
       <section className="section">
         <h2>独立機械照合</h2>
