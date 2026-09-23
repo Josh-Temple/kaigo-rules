@@ -91,8 +91,8 @@ export default function NoticeReviewPage() {
       item.reviewer_decision &&
       item.reviewed_candidate_sha256 === item.candidate_text_sha256
   ).length;
-  const currentnessById = new Map(
-    (currentness.items || []).map((item: any) => [item.notice_id, item])
+  const currentnessById = new Map<string, any>(
+    (currentness.items || []).map((item: any) => [item.notice_id, item] as [string, any])
   );
   const currentnessHold = currentness.final_audit_classification?.counts?.HOLD || 0;
 
