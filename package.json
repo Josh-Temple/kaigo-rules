@@ -12,7 +12,9 @@
     "import:ordinance37": "python scripts/import_egov_ordinance37.py",
     "import:care-act": "python scripts/import_egov_care_insurance_act.py",
     "import:fee-guidance-snapshots": "python scripts/import_fee_guidance_snapshots.py",
-    "assemble:fee-guidance-current": "python scripts/assemble_fee_guidance_current_candidates.py"
+    "assemble:fee-guidance-current": "python scripts/assemble_fee_guidance_current_candidates.py",
+    "import:notice-equipment-snapshots": "python scripts/import_notice_equipment_snapshots.py",
+    "assemble:notice-equipment-current": "python scripts/assemble_notice_equipment_current_candidates.py"
   },
   "dependencies": {
     "next": "^16.0.0",

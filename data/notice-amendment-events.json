@@ -51,6 +51,16 @@
     "verification_status": "KNOWN_AFTER_TEXT"
   },
   {
+    "id": "rouki25.h30.dayservice.restructure-equipment-sharing",
+    "source_id": "mhlw-h30-interpretation-redline",
+    "effective_from": "2018-04-01",
+    "target_node_id": "notice.dayservice.equipment.dining-training-room",
+    "operation": "split_and_relocate_fragment",
+    "related_target_node_id": "notice.dayservice.equipment.shared-equipment",
+    "summary": "設備(2)の旧②にあった併設施設との共用記述を(2)から外し、対象範囲を拡張した「設備に係る共用」を新(4)として独立。改正後の(2)は旧①相当の本文のみ。",
+    "verification_status": "KNOWN_AFTER_TEXT"
+  },
+  {
     "id": "rouki25.r3.dayservice.add-community-abuse-records",
     "source_id": "mhlw-2021-interpretation-redline",
     "effective_from": "2021-04-01",
