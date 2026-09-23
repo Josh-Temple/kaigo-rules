@@ -4,6 +4,7 @@ import metaData from "../../data/notice-current-meta.json";
 import chainData from "../../data/notice-source-chain.json";
 import sourcesData from "../../data/sources.json";
 import reviewPacketData from "../../data/notice-review-packet.json";
+import currentnessLedgerData from "../../data/notice-rouki25-currentness-ledger.json";
 
 type NoticeNode = {
   id: string;
@@ -24,6 +25,7 @@ const meta = metaData as any;
 const chain = chainData as Array<any>;
 const sources = sourcesData as Array<any>;
 const reviewPacket = reviewPacketData as any;
+const currentnessLedger = currentnessLedgerData as any;
 
 const statusLabel: Record<string, string> = {
   VERIFIED_CURRENT: "現行確認済み",
@@ -110,6 +112,8 @@ export default function NoticesPage() {
   const machineCandidates = (reviewPacket.items || []).length;
   const independentPass = (reviewPacket.items || []).filter((item: any) => item.independent_verification?.result === "PASS").length;
   const verified = (reviewPacket.items || []).filter((item: any) => item.reviewer_decision && item.reviewed_candidate_sha256 === item.candidate_text_sha256).length;
+  const currentnessHold = currentnessLedger.final_audit_classification?.counts?.HOLD || 0;
+  const mismatch = currentnessLedger.final_audit_classification?.counts?.MISMATCH || 0;
   return (
     <article className="answer-page notice-db-page">
       <p className="eyebrow">INTERPRETATION NOTICE DATABASE</p>
@@ -128,9 +132,15 @@ export default function NoticesPage() {
       <section className="rules-stats notice-stats">
         <div><strong>{machineCandidates}</strong><span>本文候補</span></div>
         <div><strong>{independentPass}</strong><span>独立機械照合PASS</span></div>
-        <div><strong>{verified}</strong><span>人手確認済み</span></div>
-        <div><strong>{machineCandidates - verified}</strong><span>レビュー残り</span></div>
+        <div><strong>{currentnessHold}</strong><span>現行性coverage未完了</span></div>
+        <div><strong>{mismatch}</strong><span>具体的不一致</span></div>
       </section>
+
+      <div className="notice">
+        <strong>本文再構成の整合性と、現在有効な本文であることの証明は分けて扱っています。</strong><br />
+        22項目は機械再構成・独立機械照合で具体的不一致を確認していません。
+        一方、厚生労働省の後続改正を網羅できる公式経路が閉じていないため、現行性は22項目とも未確定です。
+      </div>
 
       <div className="notice-review-entry">
         <div>
@@ -147,8 +157,8 @@ export default function NoticesPage() {
           <span>3 改正を順方向に再生</span><b>→</b><span>4 人手確認</span>
         </div>
         <p className="meta">
-          骨格データの状態：{meta.current_state}。本文候補22項目は機械再構成と独立機械照合まで完了していますが、
-          人手確認が終わるまでは「現行統合版」と表示しません。
+          骨格データの状態：{meta.current_state}。本文候補22項目は機械再構成と独立機械照合まで完了しています。
+          ただし、後続改正coverageが未完了のため「現行統合版」とは表示しません。
         </p>
       </section>
 
@@ -183,10 +193,10 @@ export default function NoticesPage() {
       <section className="section">
         <h2>次の工程</h2>
         <p>
-          機械再構成した22項目について、一次資料の該当ページと改正適用順を人が照合します。
-          確認したcandidateのhashを記録し、後から本文が変わった場合は過去の確認を自動的に無効化します。
+          同じ22項目を繰り返し再監査するのではなく、新しい一次資料・改正通知・統合本文が確認できたときに
+          currentness ledgerを更新します。人による確認は、具体的な不一致や疑義が出た箇所を中心に行います。
         </p>
-        <p><Link href="/notices/review">22項目のレビュー画面へ →</Link></p>
+        <p><Link href="/notices/review">22項目の根拠と監査状態を見る →</Link></p>
       </section>
     </article>
   );
