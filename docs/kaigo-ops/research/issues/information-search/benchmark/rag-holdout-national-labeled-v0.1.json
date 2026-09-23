@@ -1,0 +1,182 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-23",
+  "status": "INDEPENDENT_LABELING_COMPLETE",
+  "raw_source": "rag-holdout-national-raw-v0.1.json",
+  "source_review_state": {
+    "remuneration_review": "NOT_STARTED",
+    "fee_guidance_review": "NOT_STARTED",
+    "verified_on_main": "2026-09-23"
+  },
+  "labeling_policy": [
+    "Q&A answer text alone is not used to promote answerability.",
+    "Questions whose conclusion depends on remuneration/add-on/reduction rules remain REVIEW_REQUIRED while the corresponding human review ledgers are not complete.",
+    "A question may contain a separately verified staffing fact, but the requested remuneration conclusion is not decomposed into ANSWER unless the remuneration condition itself is reviewed.",
+    "No case was removed or relabeled to improve class balance."
+  ],
+  "class_distribution": {
+    "REVIEW_REQUIRED": 20
+  },
+  "cases": [
+    {
+      "id": "RH2-001",
+      "qno": 53,
+      "question": "個別機能訓練加算(Ⅰ)イ・ロの「専ら機能訓練指導員の職務に従事する理学療法士等」について、具体的な配置時間の定めはありますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "個別機能訓練加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-002",
+      "qno": 54,
+      "question": "個別機能訓練加算(Ⅰ)ロでは、専ら機能訓練指導員の職務に従事する理学療法士等を合計で同時に2名以上配置する必要がありますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "個別機能訓練加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-003",
+      "qno": 55,
+      "question": "個別機能訓練加算(Ⅰ)ロの要件を満たす理学療法士等を1名しか確保できない日は、(Ⅰ)ロに代えて(Ⅰ)イを算定できますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "個別機能訓練加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-004",
+      "qno": 56,
+      "question": "個別機能訓練加算(Ⅰ)イ・ロに必要な理学療法士等を、病院・診療所・訪問看護ステーション等との連携により確保してもよいですか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "個別機能訓練加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-005",
+      "qno": 57,
+      "question": "個別機能訓練加算(Ⅰ)ロは、専ら機能訓練指導員の職務に従事する理学療法士等を2名以上配置している時間帯に訓練を受けた利用者だけ算定できますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "個別機能訓練加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-006",
+      "qno": 58,
+      "question": "通所介護事業所の配置基準により置いている機能訓練指導員が、個別機能訓練加算(Ⅰ)イ・ロの「専ら機能訓練指導員の職務に従事する理学療法士等」の要件も満たす場合、別にもう1名配置する必要がありますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "個別機能訓練加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-007",
+      "qno": 60,
+      "question": "入浴介助加算(Ⅰ)で求める入浴介助に関する研修とは、具体的にどのような内容ですか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "入浴介助加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-008",
+      "qno": 61,
+      "question": "入浴介助加算(Ⅱ)で情報通信機器等を活用して居宅を訪問する場合、訪問する介護職員と評価する医師等が画面を通して同時進行で評価・助言する必要がありますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "入浴介助加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-009",
+      "qno": 62,
+      "question": "入浴介助加算(Ⅱ)でいう「居宅」には、どのような場所が含まれますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "入浴介助加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-010",
+      "qno": 63,
+      "question": "入浴介助加算(Ⅱ)で利用者の居宅を訪問して浴室環境等を評価できる「住宅改修に関する専門的知識及び経験を有する者」とは、どのような者ですか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "入浴介助加算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-011",
+      "qno": 64,
+      "question": "通所介護の所要時間区分で例示される「急な気象状況の悪化等」には、豪雨なども含まれますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "所要時間区分",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-012",
+      "qno": 65,
+      "question": "通所系サービスで、事業所から利用者の居宅以外の場所（親族宅など）へ送迎した場合、送迎減算を適用しないことはできますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "送迎減算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-013",
+      "qno": 66,
+      "question": "A事業所の利用者をB事業所の従業者が送迎した場合、送迎減算は適用されますか。また、A事業所とB事業所の利用者を同乗させることはできますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "送迎減算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-014",
+      "qno": 67,
+      "question": "通所介護事業所が送迎業務を第三者へ委託した場合、送迎減算は適用されますか。また、複数事業所が共同で送迎を委託して利用者を同乗させることはできますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "送迎減算",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-015",
+      "qno": 68,
+      "question": "3％加算や事業所規模別の報酬区分の特例について、感染症や災害の影響と想定される利用延人員数の減少が一定以上生じていれば、減少の具体的な理由は問われませんか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "3％加算・事業所規模別特例",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-016",
+      "qno": 69,
+      "question": "感染症拡大防止のため都道府県等から休業要請を受けて休業した期間を、利用延人員数の算定上の「正月等の特別な期間」として扱えますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "3％加算・事業所規模別特例",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-017",
+      "qno": 70,
+      "question": "規模区分の特例適用の届出は年度内に1度しか行えませんか。いったん終了後に再び利用延人員数が減少した場合、再度届出できますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "3％加算・事業所規模別特例",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-018",
+      "qno": 71,
+      "question": "3％加算・規模区分の特例について、利用延人員数が減少した月の翌月15日までに届出をしなかった場合でも算定・適用できますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "3％加算・事業所規模別特例",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-019",
+      "qno": 72,
+      "question": "感染症や災害の影響で休業した他事業所の利用者を臨時受入れした場合、その利用者を平均利用延人員数に含めないことはできますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "3％加算・事業所規模別特例",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    },
+    {
+      "id": "RH2-020",
+      "qno": 73,
+      "question": "感染症や災害で利用延人員数が減少した場合、3％加算の届出・算定は年度内に1度だけですか。いったん終了後に再度減少した場合、再度算定できますか。",
+      "expected": "REVIEW_REQUIRED",
+      "topic": "3％加算・事業所規模別特例",
+      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+    }
+  ]
+}
