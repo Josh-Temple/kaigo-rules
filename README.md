@@ -217,3 +217,15 @@ e-Govから生成した `ordinance37-nodes.json` 自体には人手確認結果�
 ## 一単位単価の人手レビュー
 
 `unit-price-review.json` は、8地域区分の単価と市区町村割当の人手確認を生成データとは別に保持します。確認済みデータがある状態で公式ソースSHA-256が変化した場合、`validate:data` は stale review として失敗します。
+
+
+### 老企第25号・人員基準の機械再構成
+
+通所介護の「人員に関する基準」4項目は、設備基準と同様に、公式の新旧対照PDFから本文断片を取得し、改正履歴を順方向に再生して別レイヤーの候補本文を生成します。
+
+- 従業者の員数：平成27年改正後本文をbaselineとし、平成30年の延長サービス時間変更、令和3年の看護職員確保方法の再構成を順に適用
+- 生活相談員：平成27年改正後本文を取得し、後続資料の略記による存続を確認
+- 機能訓練指導員：平成30年改正後本文（はり師・きゅう師の要件を含む）を取得
+- 管理者：平成27年改正後本文を取得し、後続資料の略記による存続を確認
+
+`npm run import:notice-personnel-snapshots` と `npm run assemble:notice-personnel-current` で再生成できます。生成物は `MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK` / `NOT_REVIEWED` のまま保持し、`notice-current-skeleton.json` の `official_text` や人手確認ステータスを自動更新しません。
