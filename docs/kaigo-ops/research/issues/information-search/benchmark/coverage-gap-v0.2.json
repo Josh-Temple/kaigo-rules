@@ -1,0 +1,213 @@
+{
+  "version": "0.2",
+  "created_at": "2026-09-23",
+  "purpose": "Coverage-gap benchmark for deciding whether a query should be answered, partially answered, held for review, delegated to a local authority, or treated as out of scope before retrieval.",
+  "labels": {
+    "ANSWER": "Current reviewed data is sufficient for the core answer.",
+    "PARTIAL": "A useful national-level answer exists, but important local/operational details are outside current coverage.",
+    "REVIEW_REQUIRED": "Relevant official data exists or is ingested, but human/currentness review is incomplete.",
+    "LOCAL": "The answer depends materially on the designated local authority or local procedure.",
+    "OUT_OF_SCOPE": "The service/topic is outside the current initial scope and must not inherit day-service rules by analogy."
+  },
+  "cases": [
+    {
+      "id": "CG-001",
+      "question": "横浜市で通所介護を開設する場合、指定申請の締切日はいつですか？",
+      "expected": "LOCAL",
+      "basis": [
+        "startup-steps.authority"
+      ],
+      "note": "指定申請運用は指定権者ごとに異なる。"
+    },
+    {
+      "id": "CG-002",
+      "question": "横浜市独自の指定申請様式はどこから入手できますか？",
+      "expected": "LOCAL",
+      "basis": [
+        "startup-steps.authority",
+        "startup-steps.application"
+      ],
+      "note": "国の標準様式と自治体追加様式を分ける。"
+    },
+    {
+      "id": "CG-003",
+      "question": "利用定員18人で始める場合も通常の通所介護として申請できますか？",
+      "expected": "ANSWER",
+      "basis": [
+        "startup-steps.service-type",
+        "mhlw-regional-dayservice-overview"
+      ],
+      "note": "startup dataに19人未満は地域密着型通所介護と明示。"
+    },
+    {
+      "id": "CG-004",
+      "question": "地域密着型通所介護の人員基準をまとめて教えてください。",
+      "expected": "OUT_OF_SCOPE",
+      "basis": [
+        "ordinance37-meta.excluded_initial_scope"
+      ],
+      "note": "サービス区分の境界説明は可能だが詳細基準は初期scope外。"
+    },
+    {
+      "id": "CG-005",
+      "question": "共生型通所介護の報酬要件をまとめて教えてください。",
+      "expected": "OUT_OF_SCOPE",
+      "basis": [
+        "remuneration-current-meta.safeguards"
+      ],
+      "note": "指定通所介護のコア範囲と混在させない。"
+    },
+    {
+      "id": "CG-006",
+      "question": "通常規模型通所介護の基本報酬は何単位ですか？",
+      "expected": "REVIEW_REQUIRED",
+      "basis": [
+        "remuneration-current-meta",
+        "remuneration-review"
+      ],
+      "note": "現行公式本文は機械取込済みだがhuman check未完了。"
+    },
+    {
+      "id": "CG-007",
+      "question": "入浴介助加算を算定する要件を教えてください。",
+      "expected": "REVIEW_REQUIRED",
+      "basis": [
+        "remuneration-current-meta",
+        "remuneration-review",
+        "fee-guidance-review"
+      ],
+      "note": "報酬・留意事項のhuman review前。"
+    },
+    {
+      "id": "CG-008",
+      "question": "個別機能訓練加算の算定要件を最新の内容で教えてください。",
+      "expected": "REVIEW_REQUIRED",
+      "basis": [
+        "remuneration-current-meta",
+        "remuneration-review",
+        "fee-guidance-review"
+      ],
+      "note": "最新要件の確定表示はまだ行わない。"
+    },
+    {
+      "id": "CG-009",
+      "question": "LIFEを使う加算にはどんなものがありますか？",
+      "expected": "REVIEW_REQUIRED",
+      "basis": [
+        "remuneration-current-meta",
+        "remuneration-review"
+      ],
+      "note": "報酬DBのreview未完了。"
+    },
+    {
+      "id": "CG-010",
+      "question": "横浜市の通所介護は何級地で、1単位はいくらですか？",
+      "expected": "ANSWER",
+      "basis": [
+        "unit-price-region-assignments-meta",
+        "unit-price-review"
+      ],
+      "note": "現行告示を全件review済み。横浜市は二級地、通所介護は1単位10.72円。",
+      "expected_claim_id": "review.unit-price.region-and-rate"
+    },
+    {
+      "id": "CG-011",
+      "question": "その他地域の通所介護の1単位単価はいくらですか？",
+      "expected": "ANSWER",
+      "basis": [
+        "unit-price-review"
+      ],
+      "note": "現行告示を全件review済み。その他地域の通所介護は1単位10.00円。",
+      "expected_claim_id": "review.unit-price.region-and-rate"
+    },
+    {
+      "id": "CG-012",
+      "question": "BCP未策定減算の経過措置は今も使えますか？",
+      "expected": "REVIEW_REQUIRED",
+      "basis": [
+        "fee-guidance-current-meta",
+        "fee-guidance-review"
+      ],
+      "note": "時点依存。現行統合版再構成・review前。"
+    },
+    {
+      "id": "CG-013",
+      "question": "看護職員を訪問看護ステーションとの連携で確保する場合の考え方を教えてください。",
+      "expected": "ANSWER",
+      "basis": [
+        "nurse-staffing",
+        "notice.dayservice.nurse.external-linkage",
+        "qa.dayservice.nurse.external.2015.50"
+      ],
+      "note": "既にverified Issueへ接続済み。"
+    },
+    {
+      "id": "CG-014",
+      "question": "通所介護を開設するまでの大まかな準備順を教えてください。",
+      "expected": "PARTIAL",
+      "basis": [
+        "startup-steps"
+      ],
+      "note": "全国共通の大枠は回答可能。申請時期・事前相談等はlocal。"
+    },
+    {
+      "id": "CG-015",
+      "question": "物件を契約する前に、設備基準以外で何を確認すべきですか？",
+      "expected": "PARTIAL",
+      "basis": [
+        "startup-steps.property",
+        "startup-steps.authority"
+      ],
+      "note": "国基準以外に自治体・建築・消防等の個別確認が必要になり得る。"
+    },
+    {
+      "id": "CG-016",
+      "question": "指定申請で使う国の標準様式やチェックリストはありますか？",
+      "expected": "PARTIAL",
+      "basis": [
+        "startup-steps.application",
+        "mhlw-application-forms"
+      ],
+      "note": "国の標準セットは案内可能。指定権者の追加要件はlocal。"
+    },
+    {
+      "id": "CG-017",
+      "question": "国のQ&Aで、送迎時の人員配置についてどのような取扱いがありますか？",
+      "expected": "REVIEW_REQUIRED",
+      "basis": [
+        "qa-corpus-meta"
+      ],
+      "note": "843件corpusはINGESTED_UNREVIEWED。該当Q&Aをreviewしてから回答。"
+    },
+    {
+      "id": "CG-018",
+      "question": "同一建物減算の対象条件を最新の内容で教えてください。",
+      "expected": "REVIEW_REQUIRED",
+      "basis": [
+        "remuneration-review",
+        "fee-guidance-review"
+      ],
+      "note": "報酬・留意事項review前。"
+    },
+    {
+      "id": "CG-019",
+      "question": "地域区分は事業所所在地と利用者住所のどちらで決まりますか？",
+      "expected": "ANSWER",
+      "basis": [
+        "unit-price-region-assignments-meta",
+        "unit-price-review"
+      ],
+      "note": "告示本文は事業所又は介護保険施設が所在する地域区分を基礎とすると明示。",
+      "expected_claim_id": "review.unit-price.region-and-rate"
+    },
+    {
+      "id": "CG-020",
+      "question": "療養通所介護の人員・設備基準もこのDBで確認できますか？",
+      "expected": "OUT_OF_SCOPE",
+      "basis": [
+        "initial service scope"
+      ],
+      "note": "現在の初期DBは指定通所介護を中心とする。"
+    }
+  ]
+}

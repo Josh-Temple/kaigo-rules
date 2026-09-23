@@ -1,7 +1,7 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **Claim Registry v0.20 / corrected regression harness v0.28 / RAG deferred**
+状態: **Claim Registry v0.21 / corrected regression harness v0.29 / RAG deferred**
 
 ## 現在のsuite
 
@@ -95,12 +95,15 @@ Source
 - `node scripts/research-coverage-classifier-v0.19.mjs`
 - `node scripts/research-coverage-classifier-v0.20.mjs`
 - `node scripts/research-coverage-classifier-v0.21.mjs`
+- `node scripts/research-coverage-classifier-v0.29.mjs`
 - `node scripts/research-coverage-classifier-v0.28.mjs`
 - `node scripts/research-coverage-classifier-v0.27.mjs`
+- `node scripts/research-claim-registry-validate-v0.21.mjs`
 - `node scripts/research-claim-registry-validate-v0.20.mjs`
 - `node scripts/research-claim-registry-validate-v0.19.mjs`
 - `node scripts/research-claim-registry-validate-v0.14.mjs`
 - `node scripts/research-claim-registry-validate-v0.13.mjs`
+- `node scripts/research-claim-compositions-validate-v0.8.mjs`
 - `node scripts/research-claim-compositions-validate-v0.7.mjs`
 - `node scripts/research-claim-compositions-validate-v0.6.mjs`
 - `node scripts/research-claim-registry-validate-v0.11.mjs`
@@ -159,7 +162,7 @@ RAGはcoverage拡張より先に実装しない。
 - 生活相談員の地域連携活動時間
 
 external sampleは `external-qa-query-sample-v0.8.json`。
-classifierは `research-coverage-classifier-v0.28.mjs`。
+classifierは `research-coverage-classifier-v0.29.mjs`。
 
 ## Reproducibility
 
@@ -248,3 +251,55 @@ Claim Registry v0.20:
 - 地域区分・一単位単価
 のreview ledger。
 RAG実装は引き続き保留。
+
+
+## Unit-price human review closure — 2026-09-23
+
+`data/unit-price-review.json` を COMPLETE へ更新した。
+
+独立確認元:
+- 厚生労働大臣が定める一単位の単価（平成27年厚生労働省告示第93号）
+- current official HTML: https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1
+
+通所介護の一単位単価:
+- 一級地 10.90円
+- 二級地 10.72円
+- 三級地 10.68円
+- 四級地 10.54円
+- 五級地 10.45円
+- 六級地 10.27円
+- 七級地 10.14円
+- その他 10.00円
+
+地域割当:
+- 明示割当 427件を都道府県単位で公式表と全件照合
+- 区分別件数: 1 / 7 / 29 / 24 / 59 / 137 / 170
+- その他地域default ruleを確認
+- 地域名称・区域は令和6年4月1日時点を基準とする備考を確認
+
+`review.unit-price.region-and-rate`:
+- REVIEW_REQUIRED → ANSWER
+- verification: VERIFIED_CURRENT
+
+coverage-gap:
+- CG-010 横浜市: ANSWER（二級地 / 10.72円）
+- CG-011 その他地域: ANSWER（10.00円）
+- CG-019 地域区分の基準: ANSWER（事業所等の所在地）
+
+fail-closed safeguard:
+- `research-unit-price-review-validate-v0.1.mjs`
+- source SHA、8 rates、427 assignments、default ruleをcurrent generated dataと照合
+- source/data drift時はCIをfailさせる
+
+Claim Registry v0.21 expected:
+- ANSWER: 46
+- REVIEW_REQUIRED: 3
+- PARTIAL: 0
+- CANDIDATE_UNREVIEWED: 0
+
+残るREVIEW_REQUIRED:
+- 基本報酬・加算・減算
+- 通所介護提供時間中の対面訪問診療・訪問歯科（独立review済みHOLD）
+- 屋外サービス提供時間境界（独立review済みHOLD）
+
+RAGは引き続き実装しない。

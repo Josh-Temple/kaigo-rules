@@ -9,6 +9,7 @@ on:
       - "scripts/research-*.mjs"
       - "data/questions.json"
       - "data/sources.json"
+      - "data/unit-price-*.json"
       - ".github/workflows/verify-kaigo-ops-research.yml"
   pull_request:
     paths:
@@ -16,6 +17,7 @@ on:
       - "scripts/research-*.mjs"
       - "data/questions.json"
       - "data/sources.json"
+      - "data/unit-price-*.json"
       - ".github/workflows/verify-kaigo-ops-research.yml"
   workflow_dispatch:
 
@@ -33,7 +35,7 @@ jobs:
           node-version: "22"
 
       - name: Run current classifier regression
-        run: node scripts/research-coverage-classifier-v0.28.mjs > research-classifier-result.json
+        run: node scripts/research-coverage-classifier-v0.29.mjs > research-classifier-result.json
 
       - name: Assert classifier regression
         run: |
@@ -84,10 +86,13 @@ jobs:
           NODE
 
       - name: Validate Claim Registry
-        run: node scripts/research-claim-registry-validate-v0.20.mjs
+        run: node scripts/research-claim-registry-validate-v0.21.mjs
 
       - name: Validate Claim Compositions
-        run: node scripts/research-claim-compositions-validate-v0.7.mjs
+        run: node scripts/research-claim-compositions-validate-v0.8.mjs
+
+      - name: Validate unit-price review ledger
+        run: node scripts/research-unit-price-review-validate-v0.1.mjs
 
       - name: Upload classifier result
         if: always()
