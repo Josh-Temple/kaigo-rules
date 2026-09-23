@@ -1,0 +1,129 @@
+{
+  "format_version": 1,
+  "scope": "rouki36-dayservice-8",
+  "document": {
+    "title": "指定居宅サービスに要する費用の額の算定に関する基準等の実施上の留意事項について",
+    "common_name": "老企第36号",
+    "section": "7 通所介護費"
+  },
+  "audit_kind": "INDEPENDENT_AI_MACHINE_ASSISTED_PRIMARY_SOURCE_AUDIT",
+  "audit_result": "TEXT_RECONSTRUCTION_PASS",
+  "audited_at": "2026-09-23",
+  "verified_through": "2026-09-22",
+  "audited_main_sha": "2503a08579dda3c24cb3efa3f58856da9d9172e8",
+  "audit_issue": {
+    "number": 72,
+    "url": "https://github.com/Josh-Temple/kaigo-rules/issues/72",
+    "title": "Independent audit: 8 reconstructed day-service fee-guidance candidates (2026-09-23)"
+  },
+  "method": [
+    "候補本文を正解として扱わず、厚生労働省一次資料から独立して再構成した。",
+    "H27・H30・R3・R6・R7-05・R8-03・R8-05-08の改正資料を順方向に確認した。",
+    "PDF text layerが不十分な箇所は公式PDFページ画像を確認した。",
+    "独立再構成後にcandidateと比較し、具体的不一致がない場合のみPASSとした。",
+    "この記録は本文再構成の独立照合であり、HUMAN_VERIFIEDまたはVERIFIED_CURRENTを意味しない。"
+  ],
+  "primary_sources": [
+    {
+      "period": "H27",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080856.pdf"
+    },
+    {
+      "period": "H30",
+      "url": "https://www.mhlw.go.jp/content/12404000/1.pdf"
+    },
+    {
+      "period": "R3",
+      "url": "https://www.mhlw.go.jp/content/12404000/000772367.pdf"
+    },
+    {
+      "period": "R6",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf"
+    },
+    {
+      "period": "R7-05",
+      "url": "https://www.mhlw.go.jp/content/001484663.pdf"
+    },
+    {
+      "period": "R8-03",
+      "url": "https://www.mhlw.go.jp/content/12404000/001682729.pdf"
+    },
+    {
+      "period": "R8-05-08",
+      "url": "https://www.mhlw.go.jp/content/001698614.pdf"
+    }
+  ],
+  "input_git_blob_shas_at_audit": {
+    "data/fee-guidance-source-snapshots.json": "504261bcea378993267f94e9b62f37df0eb341f4",
+    "data/fee-guidance-source-manifest.json": "afa7805da6689647dfca0abafd85be0a37010b59",
+    "data/fee-guidance-current-assembly.json": "0ffbcea2dabb52283c4084050665f48c9fe69db3",
+    "data/fee-guidance-replay-coverage.json": "6f81dccb4e0dfc35445299fe08352201529e1f45",
+    "data/fee-guidance-amendment-events.json": "c0333b53f05a59585658ab50078fd79a446dde9a"
+  },
+  "items": [
+    {
+      "guidance_id": "fee-guidance.dayservice.4",
+      "candidate_text_sha256": "953fce60c7811569750a43586280f920a83b7146359c7e8f4b2068a4d1da55c8",
+      "result": "PASS",
+      "source_chain": "H27 text → later no substantive change → R6 numbering shift to current 7(4)"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.5",
+      "candidate_text_sha256": "dd4de3a67e9412c986e8c37221484808c8e0cfaccb09d38eef85fa9ed06c84f3",
+      "result": "PASS",
+      "source_chain": "H30 new-side text shows 8–9 hours → later no substantive change → R6 numbering shift to current 7(5)"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.6",
+      "candidate_text_sha256": "a80086d48a01f40b0b74baa48f90259d19d76d4d84048bade46052100ed01ab8",
+      "result": "PASS",
+      "source_chain": "R3 text including ⑤ → R6 numbering shift to current 7(6)"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.7",
+      "candidate_text_sha256": "99bb42d59dc56461fa57c0e206c105395cff1909c21fbcd731e6f21fb1c17417",
+      "result": "PASS",
+      "source_chain": "H27 text + official-page-image punctuation check → R6 numbering shift to current 7(7)"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.7-2",
+      "candidate_text_sha256": "889bc5c82bd620fe503433dd2f652971d10faed7bb95f67880a42b06ae654cf9",
+      "result": "PASS",
+      "source_chain": "R3 introduction text → R6 numbering shift to current 7(7の2)"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.18",
+      "candidate_text_sha256": "c33e37325085b1e81b341280203f24fd16206d1ec2cea2844c488b2c6e4bc8f0",
+      "result": "PASS",
+      "source_chain": "R3 current-side 栄養改善加算 text → R6 numbering shift to current 7(18)"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.24",
+      "candidate_text_sha256": "94ff666fb351f24ee9081321d7aefdaac1f00afab078264e5570c0b7f5a885c4",
+      "result": "PASS",
+      "source_chain": "H27 baseline + official-page-image punctuation check → H30/R3/R6 numbering continuity"
+    },
+    {
+      "guidance_id": "fee-guidance.dayservice.25",
+      "candidate_text_sha256": "7a2ebce94e4700736c6db527a095c4373581328eeacea435818c39b904b32031",
+      "result": "PASS",
+      "source_chain": "H27 baseline → H30/R3/R6 continuity → R8-05-08 ホ insertion"
+    }
+  ],
+  "observations": [
+    "H27 PDF text layerだけでは .7 と .24 の句読点・括弧を完全に確認できず、公式ページ画像で補完確認した。",
+    "H30二段組みはtext extractionだけでは新旧欄の順序が曖昧になり得るため、.5は新欄を目視確認した。",
+    "R6は番号連続性の確認には使えるが「略」が多く、単独のexact-text sourceとしては扱わない。",
+    "R8-05-08は7(1)〜(24)を略とし、7(25)を変更していることを確認した。"
+  ],
+  "limitations": [
+    "このPASSは独立再構成した本文とcandidateの一致を示す。人間によるレビューではない。",
+    "verified_through以後の改正不存在を永久に保証するものではない。",
+    "入力資料またはcandidate hashが変わった場合、この記録は再確認が必要。"
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
