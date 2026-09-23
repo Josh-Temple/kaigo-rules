@@ -1,7 +1,7 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **v0.20 safety prose ready / controlled RAG protocol fixed**
+状態: **Claim Registry v0.16 / corrected regression harness v0.24 / RAG deferred**
 
 ## 現在のsuite
 
@@ -95,8 +95,8 @@ Source
 - `node scripts/research-coverage-classifier-v0.19.mjs`
 - `node scripts/research-coverage-classifier-v0.20.mjs`
 - `node scripts/research-coverage-classifier-v0.21.mjs`
-- `node scripts/research-coverage-classifier-v0.22.mjs`
-- `node scripts/research-claim-registry-validate-v0.15.mjs`
+- `node scripts/research-coverage-classifier-v0.24.mjs`
+- `node scripts/research-claim-registry-validate-v0.16.mjs`
 - `node scripts/research-claim-registry-validate-v0.14.mjs`
 - `node scripts/research-claim-registry-validate-v0.13.mjs`
 - `node scripts/research-claim-compositions-validate-v0.5.mjs`
@@ -122,3 +122,54 @@ RAG code / vector DB / embeddingはまだ導入していない。
 
 `VERIFIED_WITH_SOURCE_LIMITATION` は現在1件のみ。
 RAGはまだ実装しない。
+
+
+## Controlled RAG external holdout
+
+### Batch 1 — municipal / local boundary
+
+- `rag-holdout-raw-v0.1.json`: raw 30 queries
+- `rag-holdout-labeled-v0.1.json`: independent labels
+- distribution: LOCAL 26 / OUT_OF_SCOPE 3 / REVIEW_REQUIRED 1
+
+### Batch 2 — national MHLW Q&A
+
+- `rag-holdout-national-raw-v0.1.json`: raw 20 queries
+- `rag-holdout-national-labeled-v0.1.json`: independent labels
+- distribution: REVIEW_REQUIRED 20
+
+Combined 50-query holdout:
+- ANSWER: 0
+- PARTIAL: 0
+- REVIEW_REQUIRED: 21
+- LOCAL: 26
+- OUT_OF_SCOPE: 3
+
+この結果はretrieval failureではなく、current reviewed Claim coverageの不足を示す。
+RAGはcoverage拡張より先に実装しない。
+
+## Current Claim promotion
+
+`claims-v0.16.json` で以下をANSWERへ昇格:
+
+- 管理者の具体的責務
+- 生活相談員の地域連携活動時間
+
+external sampleは `external-qa-query-sample-v0.6.json`。
+classifierは `research-coverage-classifier-v0.24.mjs`。
+
+## Reproducibility
+
+`research-coverage-classifier-v0.19.mjs`〜`v0.22.mjs` が自治体sample v0.4（15件）を読んでいた一方、checkpointはv0.5（25件）として191 checksを記録していた不整合を確認した。
+
+`v0.23` 以降:
+- municipal sample v0.5を使用
+- suite cardinalityをfail closedで検査
+- expected total checks = 191
+
+GitHub Actions:
+- `.github/workflows/verify-kaigo-ops-research.yml`
+- classifier / Claim Registry / Composition Registryを検証
+- Vercel deployとは独立
+
+再実行結果を確認するまでは191/191を新規PASSとして扱わない。
