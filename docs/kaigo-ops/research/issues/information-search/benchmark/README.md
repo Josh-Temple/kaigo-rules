@@ -1,7 +1,7 @@
 # Information Retrieval Benchmark
 
 作成日: 2026-09-22  
-状態: **Claim Registry v0.19 / corrected regression harness v0.27 / RAG deferred**
+状態: **Claim Registry v0.20 / corrected regression harness v0.28 / RAG deferred**
 
 ## 現在のsuite
 
@@ -95,10 +95,13 @@ Source
 - `node scripts/research-coverage-classifier-v0.19.mjs`
 - `node scripts/research-coverage-classifier-v0.20.mjs`
 - `node scripts/research-coverage-classifier-v0.21.mjs`
+- `node scripts/research-coverage-classifier-v0.28.mjs`
 - `node scripts/research-coverage-classifier-v0.27.mjs`
+- `node scripts/research-claim-registry-validate-v0.20.mjs`
 - `node scripts/research-claim-registry-validate-v0.19.mjs`
 - `node scripts/research-claim-registry-validate-v0.14.mjs`
 - `node scripts/research-claim-registry-validate-v0.13.mjs`
+- `node scripts/research-claim-compositions-validate-v0.7.mjs`
 - `node scripts/research-claim-compositions-validate-v0.6.mjs`
 - `node scripts/research-claim-registry-validate-v0.11.mjs`
 - `node scripts/research-claim-registry-validate-v0.10.mjs`
@@ -156,7 +159,7 @@ RAGはcoverage拡張より先に実装しない。
 - 生活相談員の地域連携活動時間
 
 external sampleは `external-qa-query-sample-v0.8.json`。
-classifierは `research-coverage-classifier-v0.27.mjs`。
+classifierは `research-coverage-classifier-v0.28.mjs`。
 
 ## Reproducibility
 
@@ -210,3 +213,38 @@ Claim Registry v0.19:
 - REVIEW_REQUIRED: 4
 - PARTIAL: 0
 - CANDIDATE_UNREVIEWED: 0
+
+
+## Explicit HOLD review — visiting medical/dental + outdoor time boundary — 2026-09-23
+
+`claims-v0.20.json` では、残るREVIEW_REQUIREDのうち次の2件をcurrent一次資料から独立reviewした。
+
+- `review.service.visiting-medical-dental.in-service`
+- `review.service.outdoor.time-boundary`
+
+結論はいずれも **REVIEW_REQUIRED維持**。
+
+訪問診療・訪問歯科:
+- 2018年厚労省通知は、通所介護中の併設医療機関受診、巡回健診等、保険外サービスとの組合せを具体的に整理している。
+- ただし、一般的な対面訪問診療・訪問歯科を直接扱う全国共通条項は確認できない。
+- 令和8年度医科・歯科診療報酬の訪問診療算定要件は確認したが、算定可否から診療行為自体の一律可否を推測しない。
+
+屋外サービスの時間境界:
+- 屋外提供の実体条件（計画への位置付け + 効果的な機能訓練等）は厚労省資料で確認できる。
+- 保険外の個別外出支援は通所介護を中断し、その時間を通所介護の提供時間へ含めない。
+- しかし、この保険外ルールを反転して、保険内屋外活動の時間境界を全国一律に固定しない。
+
+MQ-003 / MQ-005 はともに expected = REVIEW_REQUIRED のまま。
+これは未調査ではなく、current national evidenceを確認した上でのfail-closed判定。
+
+Claim Registry v0.20:
+- ANSWER: 45
+- REVIEW_REQUIRED: 4
+- PARTIAL: 0
+- CANDIDATE_UNREVIEWED: 0
+
+次の大きなreview候補は、
+- 基本報酬・加算・減算
+- 地域区分・一単位単価
+のreview ledger。
+RAG実装は引き続き保留。
