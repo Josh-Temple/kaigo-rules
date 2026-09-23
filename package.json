@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "validate:data": "node scripts/validate-data.mjs && python scripts/build_notice_review_packet.py --check && python scripts/validate_notice_review.py && python scripts/build_notice_rouki25_audit_report.py --check && python scripts/validate_notice_rouki25_audit.py && python scripts/validate_notice_currentness_investigation.py && python scripts/validate_notice_rouki25_currentness_ledger.py && python scripts/validate_fee_guidance_independent_verification.py && python scripts/validate_remuneration_independent_audit.py && python scripts/validate_unit_price_independent_audit.py && python scripts/build_verification_registry.py --check && python scripts/validate_egov_content_independent_audit.py && python scripts/validate_qa_corpus_independent_audit.py && python scripts/validate_relation_semantic_independent_audit.py && python scripts/validate_careact_internal_relation_independent_audit.py && python scripts/validate_cross_layer_source_chain_independent_audit.py",
+    "validate:data": "node scripts/validate-data.mjs && python scripts/build_notice_review_packet.py --check && python scripts/validate_notice_review.py && python scripts/build_notice_rouki25_audit_report.py --check && python scripts/validate_notice_rouki25_audit.py && python scripts/validate_notice_currentness_investigation.py && python scripts/validate_notice_rouki25_currentness_ledger.py && python scripts/validate_fee_guidance_independent_verification.py && python scripts/validate_remuneration_independent_audit.py && python scripts/validate_unit_price_independent_audit.py && python scripts/build_verification_registry.py --check && python scripts/validate_egov_content_independent_audit.py && python scripts/validate_qa_corpus_independent_audit.py && python scripts/validate_relation_semantic_independent_audit.py && python scripts/validate_careact_internal_relation_independent_audit.py && python scripts/validate_cross_layer_source_chain_independent_audit.py && python scripts/validate_remuneration_delegation_relation_independent_audit.py",
     "prebuild": "npm run validate:data",
     "suggest:qa-links": "node scripts/suggest-qa-links.mjs",
     "import:ordinance37": "python scripts/import_egov_ordinance37.py",
@@ -43,7 +43,9 @@
     "verify:careact-internal-relations-independent": "python scripts/verify_careact_internal_relations_independent.py",
     "validate:careact-internal-relation-independent-audit": "python scripts/validate_careact_internal_relation_independent_audit.py",
     "verify:cross-layer-source-chains-independent": "python scripts/verify_cross_layer_source_chains_independent.py",
-    "validate:cross-layer-source-chain-independent-audit": "python scripts/validate_cross_layer_source_chain_independent_audit.py"
+    "validate:cross-layer-source-chain-independent-audit": "python scripts/validate_cross_layer_source_chain_independent_audit.py",
+    "verify:remuneration-delegation-relations-independent": "python scripts/verify_remuneration_delegation_relations.py",
+    "validate:remuneration-delegation-relation-independent-audit": "python scripts/validate_remuneration_delegation_relation_independent_audit.py"
   },
   "dependencies": {
     "next": "^16.0.0",
