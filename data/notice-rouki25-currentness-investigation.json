@@ -1,7 +1,7 @@
 {
   "format_version": 6,
   "scope": "rouki25-dayservice-22-currentness",
-  "checked_at": "2026-09-23",
+  "checked_at": "2026-09-24",
   "fresh_main_sha_at_start": "5cdb9fceb90f446c4cf4de170385b08e39d96db6",
   "conclusion": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
   "effect_on_22_items": "KEEP_HOLD",
@@ -69,6 +69,14 @@
       "observation": "確認した検索結果では、令和6年度改正後に第3の六・通所介護22項目を更新する老企第25号の一部改正通知は特定できなかった。",
       "use": "後続資料の候補探索に使用する。",
       "limitation": "検索結果の不在は変更不存在の証拠ではない。索引漏れ、別表題、未検索資料の可能性があるため、HOLD解除には使わない。"
+    },
+    {
+      "route_id": "mhlw-law-database-systematic-search",
+      "kind": "OFFICIAL_INTERNAL_SEARCH_SUPPORTING_ONLY",
+      "url": "https://www.mhlw.go.jp/hourei/html/tsuchi/contents.html",
+      "observation": "厚生労働省法令等データベースの通知検索には、本文検索・情報詳細検索とは別に目次（体系）検索があり、老健系の体系検索結果から老企第25号の原通知レコードへ到達できる。",
+      "use": "既存の法令等DB調査を、別の内部検索導線から補完する。",
+      "limitation": "同じ法令等データベースサービスの検索導線であり、利用上の注意が全通知を網羅しないと明記しているため、後続改正不存在の完全な証明には使わない。"
     }
   ],
   "status_policy": {
@@ -198,8 +206,8 @@
     "next_blocker": "令和6年3月15日後から確認時点までを網羅する厚生労働省一次資料上の改正履歴、または老企第25号の現行統合本文を確認できる経路。"
   },
   "mhlw_law_database_coverage_check": {
-    "checked_at": "2026-09-23",
-    "fresh_main_sha_at_start": "e235ee114958cc79a19bd6b73f316619a746f349",
+    "checked_at": "2026-09-24",
+    "fresh_main_sha_at_start": "81439978d45a10189118a077d81da9d3b2f1f880",
     "purpose": "厚生労働省法令等データベースが、令和6年3月15日後の老企第25号について網羅的な改正履歴または現行統合本文を提供する経路になり得るか確認する。",
     "official_database": {
       "top_url": "https://www.mhlw.go.jp/hourei/",
@@ -213,7 +221,12 @@
       "latest_notification_amendment_list_url": "https://www.mhlw.go.jp/hourei/new/update/kai241t.pdf",
       "latest_notification_amendment_count": 7,
       "latest_update_observation": "令和8年8月定期データ更新内容の「通知改正一覧」7件を確認したが、老企第25号は含まれていなかった。",
-      "coverage_limit": "通知検索の対象が厚生労働省自身の説明で「主な」訓令・通知・公示等とされているため、このデータベースおよび登載準備中・通知改正一覧の不在だけで全通知の改正不存在を証明しない。"
+      "coverage_limit": "通知検索の対象は厚生労働省自身の説明で「主な」訓令・通知・公示等であり、利用上の注意でも「全ての法令・通知・公示等を網羅しているわけではありません」と明示されている。目次（体系）検索、本文検索、情報詳細検索、登載準備中、通知改正一覧を組み合わせても、対象が見つからないことだけで全通知の改正不存在を証明しない。",
+      "coverage_notice_url": "https://www.mhlw.go.jp/hourei/readme.html",
+      "coverage_notice_statement": "本システムに登載されているデータは、厚生労働省所管の全ての法令・通知・公示等を網羅しているわけではありません。",
+      "systematic_search_url": "https://www.mhlw.go.jp/hourei/html/tsuchi/contents.html",
+      "systematic_search_result_url": "https://www.mhlw.go.jp/web/t_taikeisrch?page=0&sort=3&taikeicode=100105&type=1",
+      "systematic_search_observation": "通知検索の目次（体系）検索から老健系の体系内を確認し、老企第25号の原通知レコードへの導線を確認した。ただし、この体系検索も法令等データベースサービス内の通知検索であり、利用上の注意で全通知を網羅しないことが明示されている。内部導線を追加で確認しても完全な改正履歴にはならない。"
     },
     "original_record_check": {
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
@@ -267,13 +280,19 @@
         "limitation": "同じく「主な通知」系統の補助経路であり、完全性の証明にはならない。"
       },
       {
+        "lane": "MHLW_LAW_DB_SYSTEMATIC_SEARCH",
+        "status": "SEARCHED_SUPPORTING_ONLY",
+        "claim": "通知検索の目次（体系）検索から老健系体系を確認し、老企第25号の原通知レコードへの導線を確認。",
+        "limitation": "同じ法令等DB内の検索経路であり、DB自体が全通知を網羅しないことを公式に明記している。"
+      },
+      {
         "lane": "CURRENT_INTEGRATED_TEXT",
         "status": "NOT_FOUND",
         "claim": "厚労省法令等データベースの老企第25号本文は歴史本文で、R6公式PDFも新旧対照表（抄）。",
         "limitation": "権威ある現行統合本文は未確認。"
       }
     ],
-    "inference_limit": "厚生労働省の公式データベース・登載準備中・通知改正一覧を組み合わせることで探索経路は強化できるが、公式説明自体が対象を「主な通知」としている。したがって、対象通知が見つからないことを後続改正不存在の網羅的証明にはしない。",
+    "inference_limit": "厚生労働省の公式データベースについて、目次（体系）検索まで含む内部検索導線、登載準備中、通知改正一覧を確認した。しかし公式の利用上の注意が、本システムは厚生労働省所管の全ての法令・通知・公示等を網羅しているわけではないと明記している。したがって、対象通知が見つからないことを後続改正不存在の網羅的証明にはしない。",
     "next_blocker": "全通知を対象とすることが明示された一次資料上の完全な改正履歴、または老企第25号の権威ある現行統合本文。"
   }
 }
