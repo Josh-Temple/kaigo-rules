@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteFeedbackLink from "../components/site-feedback-link";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,7 +26,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </nav>
         </header>
         <main>{children}</main>
-        <footer>厚生労働省等の公開資料をもとに構造化しています。未確認事項は推測して回答しません。</footer>
+        <footer className="site-footer">
+          <p>
+            厚生労働省・e-Gov等の公開資料をもとに整理しています。公式な解釈や個別案件への判断を示すものではありません。
+            重要な判断は原典と所管行政庁等で確認してください。
+          </p>
+          <div className="footer-links">
+            <Link href="/about">利用上の注意</Link>
+            <SiteFeedbackLink />
+          </div>
+        </footer>
       </body>
     </html>
   );
