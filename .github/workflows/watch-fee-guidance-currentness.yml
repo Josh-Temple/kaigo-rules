@@ -1,0 +1,62 @@
+name: Watch 老企第36号 currentness sources
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "56 3 * * 1"
+  pull_request:
+    paths:
+      - "scripts/watch_fee_guidance_currentness.py"
+      - "data/fee-guidance-currentness-watch-config.json"
+      - "data/fee-guidance-independent-verification.json"
+      - ".github/workflows/watch-fee-guidance-currentness.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/watch_fee_guidance_currentness.py"
+      - "data/fee-guidance-currentness-watch-config.json"
+      - "data/fee-guidance-independent-verification.json"
+      - ".github/workflows/watch-fee-guidance-currentness.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Check official sources for currentness triggers
+        id: watch
+        shell: bash
+        run: |
+          set +e
+          python scripts/watch_fee_guidance_currentness.py --report fee-guidance-currentness-watch.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload watch report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fee-guidance-currentness-watch
+          path: fee-guidance-currentness-watch.json
+          if-no-files-found: warn
+      - name: Summarize
+        if: always()
+        run: |
+          echo "## 老企第36号 currentness watch" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Read-only monitoring only. PASS does not prove absence of unindexed amendments." >> "$GITHUB_STEP_SUMMARY"
+          echo "No HUMAN_VERIFIED / VERIFIED_CURRENT state is changed." >> "$GITHUB_STEP_SUMMARY"
+      - name: Require review when a watch trigger is detected
+        if: steps.watch.outputs.exit_code != '0'
+        run: exit 1
