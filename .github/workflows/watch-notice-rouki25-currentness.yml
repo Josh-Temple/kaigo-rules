@@ -1,0 +1,63 @@
+name: Watch 老企第25号 currentness sources
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "51 3 * * 1"
+  pull_request:
+    paths:
+      - "scripts/watch_notice_rouki25_currentness.py"
+      - "data/notice-rouki25-watch-config.json"
+      - "data/notice-rouki25-currentness-ledger.json"
+      - ".github/workflows/watch-notice-rouki25-currentness.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/watch_notice_rouki25_currentness.py"
+      - "data/notice-rouki25-watch-config.json"
+      - "data/notice-rouki25-currentness-ledger.json"
+      - ".github/workflows/watch-notice-rouki25-currentness.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Check official sources for currentness triggers
+        id: watch
+        shell: bash
+        run: |
+          set +e
+          python scripts/watch_notice_rouki25_currentness.py --report rouki25-currentness-watch.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload watch report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rouki25-currentness-watch
+          path: rouki25-currentness-watch.json
+          if-no-files-found: warn
+      - name: Summarize
+        if: always()
+        shell: bash
+        run: |
+          echo "## 老企第25号 currentness watch" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Read-only monitoring only. This workflow never promotes HUMAN_VERIFIED or VERIFIED_CURRENT." >> "$GITHUB_STEP_SUMMARY"
+          echo "A failure means source drift, a configured target signal, or source-access/parsing failure requires review." >> "$GITHUB_STEP_SUMMARY"
+      - name: Require review when a watch trigger is detected
+        if: steps.watch.outputs.exit_code != '0'
+        run: exit 1
