@@ -26,7 +26,8 @@
     "check:notice-review-packet": "python scripts/build_notice_review_packet.py --check",
     "validate:notice-review": "python scripts/validate_notice_review.py",
     "validate:notice-currentness": "python scripts/validate_notice_currentness_investigation.py",
-    "validate:notice-currentness-ledger": "python scripts/validate_notice_rouki25_currentness_ledger.py"
+    "validate:notice-currentness-ledger": "python scripts/validate_notice_rouki25_currentness_ledger.py",
+    "watch:notice-currentness": "python scripts/watch_notice_rouki25_currentness.py"
   },
   "dependencies": {
     "next": "^16.0.0",
