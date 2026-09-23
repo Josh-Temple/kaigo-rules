@@ -25,7 +25,7 @@ snapshotからの順方向replayでは 22/22 件が、空白除去後に候補�
 
 ## 共通所見
 
-- currentness/source coverage: 令和6年版以後の対象項目を網羅する現行統合本文・公式な全改正履歴を確認できない。001453049.pdfは令和7年3月改訂国マニュアルで掲載され、令和8年3月改訂ページでも再掲されているが部分参照。 22項目をHOLDとし、歴史資料からの一致を現行性の証明にしない。
+- currentness/source coverage: 令和6年版以後の対象項目を網羅する現行統合本文・公式な全改正履歴を確認できない。001453049.pdfは令和7年3月改訂国マニュアルで掲載され、令和8年3月改訂ページでも再掲されているが部分参照。 22項目をHOLDとし、歴史資料や再掲からの一致を現行性の証明にしない。
 - stale verification provenance: 既存PASS記録はSHA dc92f9c82555e8fcb70dcff3c6dca07166d58af3。fresh read main SHA 02147c9dcfe53c5702e47ddbc08a5326004db116とは異なる。 既存PASSを今回の結論に使用していない。
 - unsupported current-as-of metadata: packetのeffective_as_of=2026-09-23は再構成日を示すメタデータであり、この監査で現行性を裏付ける資料ではない。 現在性の証拠が足りない項目はHOLD。
 - visual/extraction coverage: 別抽出テキストとMHLW PDF表示を代表的な改正箇所で確認したが、全22項目・全ページを人が目視した監査ではない。 OCR、左右段組み、頁跨ぎ、脚注の残存リスクを個別記録。
