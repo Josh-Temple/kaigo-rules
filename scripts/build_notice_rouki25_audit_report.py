@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministically replay and report the 22 day-service notice candidates."""
 from __future__ import annotations
-import argparse, hashlib, json, re
+import argparse, difflib, hashlib, json, re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -324,7 +324,14 @@ def main():
   bad=[]
   if not OUT_JSON.exists() or OUT_JSON.read_text(encoding="utf-8")!=jt: bad.append(str(OUT_JSON))
   if not OUT_MD.exists() or OUT_MD.read_text(encoding="utf-8")!=mt: bad.append(str(OUT_MD))
-  if bad: raise SystemExit("Audit outputs are stale or missing: "+", ".join(bad))
+  if bad:
+   print("Audit outputs are stale or missing: "+", ".join(bad))
+   for path,expected in ((OUT_JSON,jt),(OUT_MD,mt)):
+    if path.exists() and path.read_text(encoding="utf-8")!=expected:
+     actual=path.read_text(encoding="utf-8")
+     diff=list(difflib.unified_diff(actual.splitlines(),expected.splitlines(),fromfile=str(path)+" (committed)",tofile=str(path)+" (expected)",n=2))
+     print("\n".join(diff[:200]))
+   raise SystemExit(1)
   print("notice rouki25 audit report: OK"); return
  OUT_JSON.parent.mkdir(parents=True,exist_ok=True); OUT_MD.parent.mkdir(parents=True,exist_ok=True)
  OUT_JSON.write_text(jt,encoding="utf-8"); OUT_MD.write_text(mt,encoding="utf-8")
