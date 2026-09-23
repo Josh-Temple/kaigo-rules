@@ -1,0 +1,29 @@
+{
+  "format_version": 1,
+  "output_path": "data/notice-equipment-current-text-candidates.json",
+  "effective_as_of": "2026-09-23",
+  "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+  "policy": "Candidates are deterministic reconstructions from official-source body snapshots and replay coverage. They are not official consolidated text and must not update HUMAN_VERIFIED or VERIFIED_CURRENT automatically.",
+  "items": [
+    {
+      "notice_id": "notice.dayservice.equipment.office",
+      "baseline_snapshot_id": "dayservice-equipment-office-h27"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.dining-training-room",
+      "baseline_snapshot_id": "dayservice-equipment-dining-h30"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.fire-safety",
+      "baseline_snapshot_id": "dayservice-equipment-fire-h27"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.shared-equipment",
+      "baseline_snapshot_id": "dayservice-equipment-shared-h30"
+    },
+    {
+      "notice_id": "notice.dayservice.equipment.overnight-service",
+      "baseline_snapshot_id": "dayservice-equipment-overnight-h27"
+    }
+  ]
+}

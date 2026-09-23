@@ -1,0 +1,94 @@
+{
+  "format_version": 1,
+  "output_path": "data/notice-equipment-source-snapshots.json",
+  "policy": "Official PDF source segments are machine-extracted reconstruction material only. They do not change notice-current-skeleton official_text or any human-review status.",
+  "segments": [
+    {
+      "id": "dayservice-equipment-office-h27",
+      "notice_id": "notice.dayservice.equipment.office",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 49,
+      "page_end": 49,
+      "must_contain": [
+        "事業所とは、指定通所介護を提供するための設備及び備品を備えた場所をいう。"
+      ],
+      "body_start": "事業所とは、指定通所介護を提供するための設備及び備品を備えた場所をいう。",
+      "body_end": "（２） 食堂及び機能訓練室",
+      "note": "H27改正後欄。H30以後は当該項目を略として保持。"
+    },
+    {
+      "id": "dayservice-equipment-dining-h30",
+      "notice_id": "notice.dayservice.equipment.dining-training-room",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "historical_amendment_state",
+      "page_start": 13,
+      "page_end": 13,
+      "must_contain": [
+        "指定通所介護事業所の食堂及び機能訓練室",
+        "狭隘な部屋を多数設置することにより面積を確保すべきではない"
+      ],
+      "body_start": "指定通所介護事業所の食堂及び機能訓練室（以下「指定通所介護の機能訓練室等」という。）",
+      "body_end": "（３） （略）",
+      "note": "H30新欄。(2)旧②の共用記述は削除され、新設(4)へ再構成された後の本文。"
+    },
+    {
+      "id": "dayservice-equipment-fire-h27",
+      "notice_id": "notice.dayservice.equipment.fire-safety",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 50,
+      "page_end": 50,
+      "must_contain": [
+        "消火設備その他の非常災害に際して必要な設備とは"
+      ],
+      "body_start": "消火設備その他の非常災害に際して必要な設備とは、消防法その他の法令等に規定された設備を示しており、",
+      "body_end": "（４） 指定通所介護事業所の設備を利用し、夜間及び深夜に指定通所介護以外のサービスを提供する場合",
+      "note": "H27改正後欄。H30新欄では(3)を略として保持。"
+    },
+    {
+      "id": "dayservice-equipment-shared-h30",
+      "notice_id": "notice.dayservice.equipment.shared-equipment",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "historical_amendment_state",
+      "page_start": 13,
+      "page_end": 14,
+      "must_contain": [
+        "設備に係る共用",
+        "玄関、廊下、階段、送迎車両",
+        "衛生管理等に一層努めること"
+      ],
+      "body_start": "指定通所介護事業所と指定居宅サービス事業所等を併設している場合に、利用者へのサービス提供に支障がない場合は、",
+      "body_end": "（５） （略）",
+      "note": "H30新設(4)の改正後本文。"
+    },
+    {
+      "id": "dayservice-equipment-overnight-h27",
+      "notice_id": "notice.dayservice.equipment.overnight-service",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_insertion_state",
+      "page_start": 50,
+      "page_end": 51,
+      "must_contain": [
+        "宿泊サービス",
+        "変更の事由が生じてから10日以内",
+        "休止又は廃止の日の１月前まで"
+      ],
+      "body_start": "指定通所介護の提供以外の目的で、指定通所介護事業所の設備を利用し、夜間及び深夜に指定通所介護以外のサービス",
+      "body_end": "３ 運営に関する基準",
+      "note": "H27新設(4)の本文。H30で本文変更を示さず(5)へ繰下げ。"
+    }
+  ],
+  "source_layouts": {
+    "mhlw-h27-interpretation-redline": {
+      "current_column": "right",
+      "header_semantics": "改正前|改正後",
+      "evidence_note": "H27新旧対照表は改正後欄が右側。"
+    },
+    "mhlw-h30-interpretation-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "H30新旧対照表は新欄が左側。"
+    }
+  }
+}
