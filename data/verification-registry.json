@@ -104,43 +104,51 @@
       "id": "ordinance37",
       "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（省令37号）",
       "content_verification": {
-        "status": "NOT_INDEPENDENTLY_AUDITED",
-        "imported_nodes": 182,
-        "articles": 40
+        "status": "PASS",
+        "kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
+        "nodes": 182,
+        "articles": 40,
+        "contains_relations": 142,
+        "evidence": "data/egov-content-independent-audit.json"
       },
       "currentness": {
-        "status": "SOURCE_FRESHNESS_MONITORED",
+        "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
         "current_revision_id": "411M50000100037_20250401_506M60000100164"
       },
       "monitoring": {
         "status": "ACTIVE",
-        "workflow": ".github/workflows/verify-egov-source-freshness.yml"
+        "workflow": ".github/workflows/verify-egov-content-independent.yml",
+        "additional_workflow": ".github/workflows/verify-egov-source-freshness.yml"
       },
       "human_review": {
         "status": "IMPORTED_NEEDS_HUMAN_CHECK"
       },
-      "assurance": "SOURCE_FRESHNESS_ONLY"
+      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
     },
     {
       "id": "care-insurance-act",
       "title": "介護保険法",
       "content_verification": {
-        "status": "NOT_INDEPENDENTLY_AUDITED",
-        "imported_nodes": 137,
-        "articles": 11
+        "status": "PASS",
+        "kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
+        "nodes": 137,
+        "articles": 11,
+        "contains_relations": 126,
+        "evidence": "data/egov-content-independent-audit.json"
       },
       "currentness": {
-        "status": "SOURCE_FRESHNESS_MONITORED",
+        "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
         "current_revision_id": "409AC0000000123_20260903_508AC0000000027"
       },
       "monitoring": {
         "status": "ACTIVE",
-        "workflow": ".github/workflows/verify-egov-source-freshness.yml"
+        "workflow": ".github/workflows/verify-egov-content-independent.yml",
+        "additional_workflow": ".github/workflows/verify-egov-source-freshness.yml"
       },
       "human_review": {
         "status": "IMPORTED_NEEDS_HUMAN_CHECK"
       },
-      "assurance": "SOURCE_FRESHNESS_ONLY"
+      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
     },
     {
       "id": "qa-corpus",
@@ -166,16 +174,6 @@
   ],
   "gaps": [
     {
-      "id": "ordinance37-independent-content-audit",
-      "layer_id": "ordinance37",
-      "required": "Independent reparse/re-extraction of the imported scoped articles and relations from live e-Gov source."
-    },
-    {
-      "id": "care-insurance-act-independent-content-audit",
-      "layer_id": "care-insurance-act",
-      "required": "Independent reparse/re-extraction of the imported scoped articles and relations from live e-Gov source."
-    },
-    {
       "id": "qa-corpus-independent-parse-audit",
       "layer_id": "qa-corpus",
       "required": "Independent workbook parse and comparison of the 843 included Q&A rows and service-code filtering."
@@ -183,9 +181,9 @@
   ],
   "summary": {
     "layers_total": 7,
-    "independent_audit_or_reconstruction": 4,
+    "independent_audit_or_reconstruction": 6,
     "currentness_or_live_source_monitoring_active": 7,
-    "source_freshness_only_without_independent_content_audit": 3,
+    "source_freshness_only_without_independent_content_audit": 1,
     "human_verified_layers": 0
   }
 }
