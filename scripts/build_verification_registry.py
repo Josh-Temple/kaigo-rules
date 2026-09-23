@@ -29,6 +29,8 @@ def build() -> dict:
     ordinance = load("ordinance37-meta.json")
     care = load("care-insurance-act-meta.json")
     qa = load("qa-corpus-meta.json")
+    egov_audit = load("egov-content-independent-audit.json")
+    egov_checks = {row["id"]: row for row in egov_audit.get("checks", [])}
 
     notice_reviewed = sum(
         1
@@ -132,39 +134,47 @@ def build() -> dict:
             "id": "ordinance37",
             "title": ordinance["law_title"] + "（省令37号）",
             "content_verification": {
-                "status": "NOT_INDEPENDENTLY_AUDITED",
-                "imported_nodes": ordinance["counts"]["nodes_total"],
-                "articles": ordinance["counts"]["articles_total"],
+                "status": egov_checks["ordinance37"]["result"],
+                "kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
+                "nodes": egov_checks["ordinance37"]["observed"]["nodes"],
+                "articles": egov_checks["ordinance37"]["observed"]["articles"],
+                "contains_relations": egov_checks["ordinance37"]["observed"]["contains_relations"],
+                "evidence": "data/egov-content-independent-audit.json",
             },
             "currentness": {
-                "status": "SOURCE_FRESHNESS_MONITORED",
+                "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
                 "current_revision_id": ordinance["current_revision"]["law_revision_id"],
             },
             "monitoring": {
                 "status": "ACTIVE",
-                "workflow": ".github/workflows/verify-egov-source-freshness.yml",
+                "workflow": ".github/workflows/verify-egov-content-independent.yml",
+                "additional_workflow": ".github/workflows/verify-egov-source-freshness.yml",
             },
             "human_review": {"status": ordinance["review_status"]},
-            "assurance": "SOURCE_FRESHNESS_ONLY",
+            "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
         },
         {
             "id": "care-insurance-act",
             "title": care["law_title"],
             "content_verification": {
-                "status": "NOT_INDEPENDENTLY_AUDITED",
-                "imported_nodes": care["counts"]["nodes_total"],
-                "articles": care["counts"]["articles_total"],
+                "status": egov_checks["care-insurance-act"]["result"],
+                "kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
+                "nodes": egov_checks["care-insurance-act"]["observed"]["nodes"],
+                "articles": egov_checks["care-insurance-act"]["observed"]["articles"],
+                "contains_relations": egov_checks["care-insurance-act"]["observed"]["contains_relations"],
+                "evidence": "data/egov-content-independent-audit.json",
             },
             "currentness": {
-                "status": "SOURCE_FRESHNESS_MONITORED",
+                "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
                 "current_revision_id": care["current_revision"]["law_revision_id"],
             },
             "monitoring": {
                 "status": "ACTIVE",
-                "workflow": ".github/workflows/verify-egov-source-freshness.yml",
+                "workflow": ".github/workflows/verify-egov-content-independent.yml",
+                "additional_workflow": ".github/workflows/verify-egov-source-freshness.yml",
             },
             "human_review": {"status": care["review_status"]},
-            "assurance": "SOURCE_FRESHNESS_ONLY",
+            "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
         },
         {
             "id": "qa-corpus",
@@ -188,16 +198,6 @@ def build() -> dict:
     ]
 
     gaps = [
-        {
-            "id": "ordinance37-independent-content-audit",
-            "layer_id": "ordinance37",
-            "required": "Independent reparse/re-extraction of the imported scoped articles and relations from live e-Gov source.",
-        },
-        {
-            "id": "care-insurance-act-independent-content-audit",
-            "layer_id": "care-insurance-act",
-            "required": "Independent reparse/re-extraction of the imported scoped articles and relations from live e-Gov source.",
-        },
         {
             "id": "qa-corpus-independent-parse-audit",
             "layer_id": "qa-corpus",
