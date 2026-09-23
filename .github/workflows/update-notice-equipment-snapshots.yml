@@ -16,6 +16,7 @@ on:
       - "data/sources.json"
       - "scripts/import_notice_equipment_snapshots.py"
       - "scripts/assemble_notice_equipment_current_candidates.py"
+      - "scripts/validate-data.mjs"
   pull_request:
     branches: [main]
     paths:
@@ -31,6 +32,7 @@ on:
       - "data/sources.json"
       - "scripts/import_notice_equipment_snapshots.py"
       - "scripts/assemble_notice_equipment_current_candidates.py"
+      - "scripts/validate-data.mjs"
 
 permissions:
   contents: write

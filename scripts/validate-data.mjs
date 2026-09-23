@@ -69,6 +69,26 @@ const noticeHistoryPath = path.join(root, "data", "notice-historical-backfill.js
 const noticeHistory = fs.existsSync(noticeHistoryPath)
   ? JSON.parse(fs.readFileSync(noticeHistoryPath, "utf8"))
   : [];
+const noticeEquipmentManifestPath = path.join(root, "data", "notice-equipment-source-manifest.json");
+const noticeEquipmentManifest = fs.existsSync(noticeEquipmentManifestPath)
+  ? JSON.parse(fs.readFileSync(noticeEquipmentManifestPath, "utf8"))
+  : null;
+const noticeEquipmentSnapshotsPath = path.join(root, "data", "notice-equipment-source-snapshots.json");
+const noticeEquipmentSnapshots = fs.existsSync(noticeEquipmentSnapshotsPath)
+  ? JSON.parse(fs.readFileSync(noticeEquipmentSnapshotsPath, "utf8"))
+  : null;
+const noticeEquipmentAssemblyPath = path.join(root, "data", "notice-equipment-current-assembly.json");
+const noticeEquipmentAssembly = fs.existsSync(noticeEquipmentAssemblyPath)
+  ? JSON.parse(fs.readFileSync(noticeEquipmentAssemblyPath, "utf8"))
+  : null;
+const noticeEquipmentReplayPath = path.join(root, "data", "notice-equipment-replay-coverage.json");
+const noticeEquipmentReplay = fs.existsSync(noticeEquipmentReplayPath)
+  ? JSON.parse(fs.readFileSync(noticeEquipmentReplayPath, "utf8"))
+  : null;
+const noticeEquipmentCandidatesPath = path.join(root, "data", "notice-equipment-current-text-candidates.json");
+const noticeEquipmentCandidates = fs.existsSync(noticeEquipmentCandidatesPath)
+  ? JSON.parse(fs.readFileSync(noticeEquipmentCandidatesPath, "utf8"))
+  : null;
 const feeSkeletonPath = path.join(root, "data", "remuneration-current-skeleton.json");
 const feeSkeleton = fs.existsSync(feeSkeletonPath)
   ? JSON.parse(fs.readFileSync(feeSkeletonPath, "utf8"))
@@ -439,6 +459,152 @@ if (noticeSkeleton.length) {
     if (!noticeSourceChainIds.has(sourceId)) {
       errors.push(`notice source chain: missing required forward-replay source ${sourceId}`);
     }
+  }
+
+  const h30SharingRestructure = noticeAmendments.find(
+    (event) => event.id === "rouki25.h30.dayservice.restructure-equipment-sharing"
+  );
+  if (!h30SharingRestructure ||
+      h30SharingRestructure.operation !== "split_and_relocate_fragment" ||
+      h30SharingRestructure.related_target_node_id !== "notice.dayservice.equipment.shared-equipment") {
+    errors.push("notice amendment events: missing H30 equipment-sharing restructure");
+  }
+
+  const equipmentPipelineParts = [
+    noticeEquipmentManifest,
+    noticeEquipmentSnapshots,
+    noticeEquipmentAssembly,
+    noticeEquipmentReplay,
+    noticeEquipmentCandidates,
+  ];
+  if (equipmentPipelineParts.some(Boolean) && !equipmentPipelineParts.every(Boolean)) {
+    errors.push("notice equipment reconstruction: incomplete pipeline files");
+  }
+  if (equipmentPipelineParts.every(Boolean)) {
+    const expectedEquipmentIds = new Set(requiredRouki25EquipmentIds);
+    const sameIdSet = (values) =>
+      values.length === expectedEquipmentIds.size &&
+      values.every((id) => expectedEquipmentIds.has(id));
+
+    const manifestSegments = noticeEquipmentManifest.segments || [];
+    if (!sameIdSet(manifestSegments.map((segment) => segment.notice_id))) {
+      errors.push("notice equipment manifest: unexpected equipment coverage");
+    }
+    for (const segment of manifestSegments) {
+      if (!sourceIds.has(segment.source_id)) errors.push(`notice equipment manifest ${segment.id}: missing source ${segment.source_id}`);
+      if (!segment.body_start || !segment.body_end || !segment.page_start || !segment.page_end) {
+        errors.push(`notice equipment manifest ${segment.id}: incomplete extraction boundary`);
+      }
+    }
+
+    const snapshotById = new Map((noticeEquipmentSnapshots.segments || []).map((item) => [item.id, item]));
+    if (!sameIdSet((noticeEquipmentSnapshots.segments || []).map((item) => item.notice_id))) {
+      errors.push("notice equipment snapshots: unexpected equipment coverage");
+    }
+    for (const snapshot of noticeEquipmentSnapshots.segments || []) {
+      if (!sourceIds.has(snapshot.source_id)) errors.push(`notice equipment snapshot ${snapshot.id}: missing source ${snapshot.source_id}`);
+      if (snapshot.verification_status !== "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK") {
+        errors.push(`notice equipment snapshot ${snapshot.id}: unsafe verification status`);
+      }
+      if (!snapshot.body_text || !snapshot.body_text_sha256 ||
+          createHash("sha256").update(snapshot.body_text, "utf8").digest("hex") !== snapshot.body_text_sha256) {
+        errors.push(`notice equipment snapshot ${snapshot.id}: body text/hash mismatch`);
+      }
+    }
+
+    if (!sameIdSet((noticeEquipmentAssembly.items || []).map((item) => item.notice_id))) {
+      errors.push("notice equipment assembly: unexpected equipment coverage");
+    }
+
+    const replayById = new Map((noticeEquipmentReplay || []).map((item) => [item.notice_id, item]));
+    if (!sameIdSet((noticeEquipmentReplay || []).map((item) => item.notice_id))) {
+      errors.push("notice equipment replay: unexpected equipment coverage");
+    }
+    for (const coverage of noticeEquipmentReplay || []) {
+      if (coverage.human_verification_status !== "NOT_REVIEWED") {
+        errors.push(`notice equipment replay ${coverage.notice_id}: unexpected human verification status`);
+      }
+      for (const checkpoint of coverage.checkpoints || []) {
+        if (!sourceIds.has(checkpoint.source_id)) {
+          errors.push(`notice equipment replay ${coverage.notice_id}: missing checkpoint source ${checkpoint.source_id}`);
+        }
+        if (checkpoint.status !== "CHECKED") {
+          errors.push(`notice equipment replay ${coverage.notice_id}: unchecked checkpoint ${checkpoint.source_id}`);
+        }
+      }
+    }
+
+    const candidates = noticeEquipmentCandidates.items || [];
+    if (!sameIdSet(candidates.map((item) => item.notice_id))) {
+      errors.push("notice equipment candidates: unexpected equipment coverage");
+    }
+    const candidateById = new Map(candidates.map((item) => [item.notice_id, item]));
+    for (const candidate of candidates) {
+      if (candidate.reconstruction_status !== "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK" ||
+          candidate.human_verification_status !== "NOT_REVIEWED") {
+        errors.push(`notice equipment candidate ${candidate.notice_id}: unsafe status`);
+      }
+      if (!candidate.candidate_text || !candidate.candidate_text_sha256 ||
+          createHash("sha256").update(candidate.candidate_text, "utf8").digest("hex") !== candidate.candidate_text_sha256) {
+        errors.push(`notice equipment candidate ${candidate.notice_id}: text/hash mismatch`);
+      }
+      const snapshot = snapshotById.get(candidate.baseline_snapshot_id);
+      if (!snapshot || snapshot.notice_id !== candidate.notice_id ||
+          snapshot.body_text_sha256 !== candidate.candidate_text_sha256) {
+        errors.push(`notice equipment candidate ${candidate.notice_id}: baseline snapshot mismatch`);
+      }
+      const coverage = replayById.get(candidate.notice_id);
+      if (!coverage || candidate.replay_status !== coverage.replay_status) {
+        errors.push(`notice equipment candidate ${candidate.notice_id}: replay coverage mismatch`);
+      }
+    }
+
+    const compact = (value) => String(value || "").normalize("NFKC").replace(/\s+/g, "");
+    const requireCandidateText = (id, needle, label) => {
+      const item = candidateById.get(id);
+      if (!item || !compact(item.candidate_text).includes(compact(needle))) {
+        errors.push(`notice equipment candidate ${id}: ${label}`);
+      }
+    };
+    requireCandidateText(
+      "notice.dayservice.equipment.office",
+      "原則として一の建物につき、一の事業所とする",
+      "verified office wording missing"
+    );
+    requireCandidateText(
+      "notice.dayservice.equipment.dining-training-room",
+      "狭隘な部屋を多数設置することにより面積を確保すべきではない",
+      "verified dining/training-room wording missing"
+    );
+    const dining = candidateById.get("notice.dayservice.equipment.dining-training-room");
+    if (dining && compact(dining.candidate_text).includes(compact("指定通所リハビリテーション"))) {
+      errors.push("notice equipment candidate dining-training-room: removed H30 shared-space fragment returned");
+    }
+    requireCandidateText(
+      "notice.dayservice.equipment.fire-safety",
+      "消防法その他の法令等に規定された設備",
+      "verified fire-safety wording missing"
+    );
+    requireCandidateText(
+      "notice.dayservice.equipment.shared-equipment",
+      "病院、診療所、介護老人保健施設又は介護医療院",
+      "verified H30 shared-equipment scope missing"
+    );
+    requireCandidateText(
+      "notice.dayservice.equipment.shared-equipment",
+      "玄関、廊下、階段、送迎車両",
+      "verified H30 common-equipment examples missing"
+    );
+    requireCandidateText(
+      "notice.dayservice.equipment.overnight-service",
+      "変更の事由が生じてから10日以内",
+      "verified overnight-service change deadline missing"
+    );
+    requireCandidateText(
+      "notice.dayservice.equipment.overnight-service",
+      "休止又は廃止の日の１月前まで",
+      "verified overnight-service suspension/closure deadline missing"
+    );
   }
 
   for (const review of noticeCurrentReview.reviewed_nodes || []) {
