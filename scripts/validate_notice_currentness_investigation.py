@@ -133,6 +133,44 @@ def main() -> None:
     if not scan.get("next_blocker"):
         fail("post-R6 scan must preserve the remaining currentness blocker")
 
+    pdf_scan = data.get("post_r6_pdf_body_scan", {})
+    if pdf_scan.get("fresh_main_sha_at_start") != "ff2cbf9fb92735a7fef726334010305fb164827d":
+        fail("post-R6 PDF-body scan must record the fresh main SHA used at start")
+    if pdf_scan.get("decision_effect") != "HOLD_UNCHANGED":
+        fail("post-R6 PDF-body scan must not lift HOLD")
+    search_result = pdf_scan.get("search_result", {})
+    if search_result.get("verified_post_r6_amendment_candidates") != []:
+        fail("no verified post-R6 amendment candidate is currently established")
+    if search_result.get("exact_amendment_searches_for_r7_r8_returned_verified_candidate") is not False:
+        fail("R7/R8 amendment search result must remain conservative")
+
+    evidence = {item.get("evidence_id"): item for item in pdf_scan.get("evidence", [])}
+    required_pdf_evidence = {
+        "r6-baseline-vol1213": "R6_BASELINE_AMENDMENT",
+        "r7-vol1455-current-reference": "POST_R6_REFERENCE_NON_AMENDMENT",
+        "recent-content-url-historical-redline": "HISTORICAL_REDLINE_BODY_MATCH",
+    }
+    for evidence_id, classification in required_pdf_evidence.items():
+        if evidence.get(evidence_id, {}).get("classification") != classification:
+            fail(f"{evidence_id}: missing or unsafe PDF-body classification")
+
+    r7_reference = evidence["r7-vol1455-current-reference"]
+    if r7_reference.get("document_date") != "2025-12-26":
+        fail("Vol.1455 reference date must remain explicit")
+    if "改正する旨は記載していない" not in r7_reference.get("observation", ""):
+        fail("Vol.1455 must not be misclassified as an amendment")
+
+    historical = evidence["recent-content-url-historical-redline"]
+    if historical.get("comparison_scope") != "TEXT_AND_PAGE_STRUCTURE_MATCH_NOT_BYTE_HASH":
+        fail("historical redline comparison scope must remain bounded")
+    if "改正日を意味しない" not in historical.get("limitation", ""):
+        fail("recent content URL must not be treated as amendment-date evidence")
+
+    if "改正不存在の証明にしない" not in pdf_scan.get("inference_limit", ""):
+        fail("PDF search absence must not be treated as proof of no amendment")
+    if not pdf_scan.get("next_blocker"):
+        fail("post-R6 PDF-body scan must preserve the remaining currentness blocker")
+
     policy = data.get("status_policy", {})
     if "現行性の証明ではない" not in policy.get("machine_text_match", ""):
         fail("machine text match must not be described as proof of currentness")
@@ -141,7 +179,7 @@ def main() -> None:
     if "2025-03へ訂正済み" not in policy.get("currentness", ""):
         fail("currentness policy must record the corrected reference period")
 
-    print("rouki25 currentness investigation: OK (reference period corrected; post-R6 official index scan recorded; exhaustive coverage unresolved; 22 items remain HOLD)")
+    print("rouki25 currentness investigation: OK (reference period corrected; post-R6 official index and PDF-body scans recorded; exhaustive coverage unresolved; 22 items remain HOLD)")
 
 
 if __name__ == "__main__":
