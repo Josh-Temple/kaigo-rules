@@ -1,8 +1,8 @@
 {
-  "format_version": 3,
+  "format_version": 4,
   "scope": "rouki25-dayservice-22-currentness",
   "checked_at": "2026-09-23",
-  "fresh_main_sha_at_start": "3b8cd04916d8a06f1d1c2ebd0699eac91141f333",
+  "fresh_main_sha_at_start": "5cdb9fceb90f446c4cf4de170385b08e39d96db6",
   "conclusion": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
   "effect_on_22_items": "KEEP_HOLD",
   "automatic_promotion_allowed": false,
@@ -74,7 +74,7 @@
   "status_policy": {
     "machine_text_match": "22/22の順方向replay一致は本文再構成の整合性を示すが、現行性の証明ではない。",
     "human_review": "この調査だけでは人手確認は完了しない。",
-    "currentness": "網羅的な後続改正確認が閉じるまで22項目をHOLDのまま維持する。001453049.pdfのreference periodは2025-03へ訂正済みだが、再掲のみでHOLD解除しない。"
+    "currentness": "令和6年改正後の厚労省公式介護保険通知索引・令和8年度改定ページを追加確認したが、対象通知の後続改正候補は特定できていない。検索・索引上の不在だけでは不存在を証明できないため、22項目をHOLDのまま維持する。001453049.pdfのreference periodは2025-03へ訂正済み。"
   },
   "source_date_provenance_resolution": {
     "source_id": "mhlw-2026-rouki25-reference-redline",
@@ -96,5 +96,53 @@
     "status": "RESOLVED_FOR_REFERENCE_PERIOD",
     "safety_effect": "001453049.pdfは少なくとも2025年3月25日時点の公式親ページ文脈で掲載が確認でき、2026年3月改訂ページでも同じURLが再掲されている。2025-03はPDF内新旧対照表そのものの正式改正日ではなく、確認できた最古の公式親ページ掲載文脈として扱う。再掲だけを後続改正不存在の証拠にはしない。",
     "tracking_issue": "https://github.com/Josh-Temple/kaigo-rules/issues/85"
+  },
+  "post_r6_official_index_scan": {
+    "checked_at": "2026-09-23",
+    "purpose": "令和6年度改正後に老企第25号・第3の六を更新する後続改正候補を、厚生労働省の公式介護保険通知索引と令和8年度介護報酬改定ページから探索する。",
+    "exact_target_names": [
+      "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+      "老企第25号"
+    ],
+    "checked_routes": [
+      {
+        "route_id": "mhlw-kaigo-latest-info-current",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+        "finding": "令和7年・令和8年の介護保険最新情報を確認。ページ本文上、対象通知の正式名称および「老企第25号」の一致は確認できなかった。",
+        "relevant_non_target_notices": [
+          "Vol.1382（令和7年5月2日）：老企第36号系の費用算定留意事項の一部改正",
+          "Vol.1477（令和8年3月13日）：老企第36号系および介護予防の費用算定留意事項の一部改正",
+          "Vol.1478（令和8年3月13日）：介護給付費算定に係る届出留意点の一部改正",
+          "Vol.1502（令和8年5月8日）：費用算定留意事項等の一部改正通知・Q&A",
+          "Vol.1523（令和8年7月13日）：費用算定留意事項等の一部改正に伴うQ&A"
+        ]
+      },
+      {
+        "route_id": "mhlw-kaigo-latest-info-adjacent-index-31",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00031.html",
+        "finding": "ページ本文上、対象通知の正式名称および「老企第25号」の一致は確認できなかった。令和7年5月のVol.1382等は費用算定留意事項系であり対象外。"
+      },
+      {
+        "route_id": "mhlw-kaigo-latest-info-adjacent-index-29",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00029.html",
+        "finding": "令和6年介護報酬改定期の介護保険最新情報を確認。基準省令改正や報酬算定通知は掲載されているが、ページ本文上、対象通知の正式名称および「老企第25号」の一致は確認できなかった。"
+      },
+      {
+        "route_id": "mhlw-r8-reform-notification-list",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+        "finding": "「令和8年度介護報酬改定に関する通知等の改正」に列挙されているのは、費用算定留意事項、介護予防の費用算定留意事項、届出留意点、処遇改善加算関係等であり、老企第25号は列挙されていない。"
+      },
+      {
+        "route_id": "mhlw-r6-reform-baseline",
+        "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+        "finding": "令和6年度介護報酬改定ページには対象通知「指定居宅サービス等及び指定介護予防サービス等に関する基準について」への公式導線があるため、令和6年改正時点のbaselineとして使用可能。"
+      }
+    ],
+    "exact_title_page_text_match_after_r6": false,
+    "rouki25_page_text_match_after_r6": false,
+    "candidate_post_r6_amendment_identified": false,
+    "inference_limit": "公式索引ページ本文で対象名称が見つからないことは、別表題の包括通知、索引外資料、PDF本文内だけでの改正等が存在しないことの証明にはならない。",
+    "decision_effect": "HOLD_UNCHANGED",
+    "next_blocker": "後続改正を網羅する一次資料上の改正履歴、または現行統合本文を確認できる経路が必要。"
   }
 }
