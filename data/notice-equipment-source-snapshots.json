@@ -1,0 +1,96 @@
+{
+  "format_version": 1,
+  "generator": "scripts/import_notice_equipment_snapshots.py",
+  "extraction_engine": "pdftotext -layout + declared-column crop + normalized body boundaries",
+  "policy": "Official PDF source segments are machine-extracted reconstruction material only. They do not change notice-current-skeleton official_text or any human-review status.",
+  "sources": [
+    {
+      "source_id": "mhlw-h27-interpretation-redline",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+      "sha256": "b4eb9f73695e05b1a4b15d3109ff2712b7561ebe47700d01aa151a3722065568",
+      "byte_length": 2018242,
+      "current_column": "right",
+      "header_semantics": "改正前|改正後"
+    },
+    {
+      "source_id": "mhlw-h30-interpretation-redline",
+      "url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+      "sha256": "7a3a439fca5bfadd04aa4e46058326e6e643d92e66f18e2f893e1b40ce6eabaa",
+      "byte_length": 435527,
+      "current_column": "left",
+      "header_semantics": "新|旧"
+    }
+  ],
+  "segments": [
+    {
+      "id": "dayservice-equipment-office-h27",
+      "notice_id": "notice.dayservice.equipment.office",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 49,
+      "page_end": 49,
+      "current_column": "right",
+      "note": "H27改正後欄。H30以後は当該項目を略として保持。",
+      "column_text_sha256": "4ed3223e584e1d75339680f870afa0f6fc207fd70947a957bf37af49c3149d22",
+      "body_text_sha256": "29bc7194822ae94c1b357e70dc83a6d62b314d6f02c4a6d874040c00408af44a",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "事業所とは、指定通所介護を提供するための設備及び備品を\n        備えた場所をいう。原則として一の建物につき、一の事業所と\n        するが、利用者の利便のため、利用者に身近な社会資源（既存\n        施設）を活用して、事業所の従業者が当該既存施設に出向いて\n        指定通所介護を提供する場合については、これらを事業所の一\n        部とみなして設備基準を適用するものである。\n"
+    },
+    {
+      "id": "dayservice-equipment-dining-h30",
+      "notice_id": "notice.dayservice.equipment.dining-training-room",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "historical_amendment_state",
+      "page_start": 13,
+      "page_end": 13,
+      "current_column": "left",
+      "note": "H30新欄。(2)旧②の共用記述は削除され、新設(4)へ再構成された後の本文。",
+      "column_text_sha256": "f986f8da954d4d0f29af9bbf5bd0f4ae0d2f35c6a17f8e0a8df168c62c2e0b7b",
+      "body_text_sha256": "7f6879c630462c5ad66bb10aa59af3581f92b834912a5c87feb08f65f95fd827",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "指定通所介護事業所の食堂及び機能訓練室（以下「指定通所介護の機能訓練室等」という。）\n     については、３平方メートルに利用定員を乗じて得た面積以上とすることとされたが、指定\n     通所介護が原則として同時に複数の利用者に対し介護を提供するものであることに鑑み、狭\n     隘な部屋を多数設置することにより面積を確保すべきではないものである。ただし、指定通\n     所介護の単位をさらにグループ分けして効果的な指定通所介護の提供が期待される場合はこ\n     の限りではない。\n"
+    },
+    {
+      "id": "dayservice-equipment-fire-h27",
+      "notice_id": "notice.dayservice.equipment.fire-safety",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 50,
+      "page_end": 50,
+      "current_column": "right",
+      "note": "H27改正後欄。H30新欄では(3)を略として保持。",
+      "column_text_sha256": "82ae77939ca41c19f7382a480d710313930cc2ba119be4bddfe25434182d25ea",
+      "body_text_sha256": "4749a067734a8b44d50dd16862b950238e94e92377f8a8239c42984f14424112",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "消火設備その\n       他の非常災害に際して必要な設備とは、消防法その他の法令等\n       に規定された設備を示しており、それらの設備を確実に設置し\n       なければならないものである。\n"
+    },
+    {
+      "id": "dayservice-equipment-shared-h30",
+      "notice_id": "notice.dayservice.equipment.shared-equipment",
+      "source_id": "mhlw-h30-interpretation-redline",
+      "role": "historical_amendment_state",
+      "page_start": 13,
+      "page_end": 14,
+      "current_column": "left",
+      "note": "H30新設(4)の改正後本文。",
+      "column_text_sha256": "93df7ca7f454c875b9b8bc180ec8d10dd10b418eb577bb3f5362beedd8090d16",
+      "body_text_sha256": "b78bf81ed4069c3528c1865b35f77421db6d19bc6c5a11b1c678ecc2af361d2e",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "指定通所介護事業所と指定居宅サービス事業所等を併設している場合に、利用者へのサービ\n    ス提供に支障がない場合は、設備基準上両方のサービスに規定があるもの（指定訪問介護事業\n    所の場合は事務室）は共用が可能である。ただし、指定通所介護事業所の機能訓練室等と、指\n    定通所介護事業所と併設の関係にある病院、診療所、介護老人保健施設又は介護医療院におけ\n    る指定通所リハビリテーション等を行うためのスペースについて共用する場合にあっては、以\n    下の条件に適合することをもって、これらが同一の部屋等であっても差し支えないものとする。\n     イ   当該部屋等において、指定通所介護事業所の機能訓練室等と指定通所リハビリテーショ\n      ン等を行うためのスペースが明確に区分されていること。\n     ロ   指定通所介護事業所の機能訓練室等として使用される区分が、指定通所介護事業所の設\n      備基準を満たし、かつ、指定通所リハビリテーション等を行うためのスペースとして使用\n\n\n          ○    指定居宅サービス等及び指定介護予防サービス等に関する基準について（抄）\n\n\n                           新\n        される区分が、指定通所リハビリテーション事業所等の設備基準を満たすこと。\n    また、玄関、廊下、階段、送迎車両など、基準上は規定がないが、設置されるものについて\n    も、利用者へのサービス提供に支障がない場合は、共用が可能である。\n    なお、設備を共用する場合、居宅基準第 104 条第２項において、指定通所介護事業者は、事\n    業所において感染症が発生し、又はまん延しないように必要な措置を講じるよう努めなければ\n    ならないと定めているところであるが、衛生管理等に一層努めること。\n"
+    },
+    {
+      "id": "dayservice-equipment-overnight-h27",
+      "notice_id": "notice.dayservice.equipment.overnight-service",
+      "source_id": "mhlw-h27-interpretation-redline",
+      "role": "historical_insertion_state",
+      "page_start": 50,
+      "page_end": 51,
+      "current_column": "right",
+      "note": "H27新設(4)の本文。H30で本文変更を示さず(5)へ繰下げ。",
+      "column_text_sha256": "431a18ed07ac79b1cba5fd35e546a81fb0a9cf3bdc0316183f4f11bc55590a28",
+      "body_text_sha256": "cb095ce9204e7871fc945ca2a67a6cdde2be8ca12c2b4d0e3f41c29d0c6846b9",
+      "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
+      "body_text": "指定通所介護の提供以外の目的で、指定通所介護事業所の設\n       備を利用し、夜間及び深夜に指定通所介護以外のサービス（以\n       下「宿泊サービス」という 。）を提供する場合には、当該サー\n       ビスの内容を当該サービスの提供開始前に当該指定通所介護事\n       業者に係る指定を行った都道府県知事、指定都市又は中核市の\n       市長（以下「指定権者」という 。）に届け出る必要があり、当\n       該サービスの届出内容については 、別紙様式によるものとする 。\n       また、指定通所介護事業者は宿泊サービスの届出内容に係る介\n       護サービス情報を都道府県に報告し、都道府県は情報公表制度\n       を活用し宿泊サービスの内容を公表することとする。\n        指定通所介護事業者は届け出た宿泊サービスの内容に変更が\n\n\n\n        ある場合は、変更の事由が生じてから10日以内に指定権者に届\n        け出るよう努めることとする。また、宿泊サービスを休止又は\n        廃止する場合は、その休止又は廃止の日の１月前までに指定権\n        者に届け出るよう努めることとする。\n"
+    }
+  ]
+}
