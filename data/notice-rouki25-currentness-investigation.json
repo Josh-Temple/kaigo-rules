@@ -1,27 +1,12 @@
 {
-  "format_version": 2,
+  "format_version": 3,
   "scope": "rouki25-dayservice-22-currentness",
   "checked_at": "2026-09-23",
-  "fresh_main_sha_at_start": "c3903ba1254525600a0b85969e826d4f2ec6a0d1",
+  "fresh_main_sha_at_start": "3b8cd04916d8a06f1d1c2ebd0699eac91141f333",
   "conclusion": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
   "effect_on_22_items": "KEEP_HOLD",
   "automatic_promotion_allowed": false,
   "blocking_requirement": "HUMAN_VERIFIED / VERIFIED_CURRENTへ進めるには、令和6年改正後から確認時点までの老企第25号・第3の六に関する後続改正を網羅できる厚生労働省一次資料、または現行統合本文等による確認が必要。検索結果の不在や部分参照資料だけでは解除しない。",
-  "source_date_provenance_conflicts": [
-    {
-      "source_id": "mhlw-2026-rouki25-reference-redline",
-      "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-      "repository_period_claim": "2026-03",
-      "repository_label_claim": "令和8年3月掲載参照資料",
-      "official_parent_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00003.html",
-      "official_parent_context": "厚生労働省の親ページは当該PDFを「市町村・都道府県における高齢者虐待への対応と養護者支援について（令和7年3月改訂）」の「本編内の通知」として掲載している。",
-      "companion_notice_url": "https://www.mhlw.go.jp/content/12304250/001461227.pdf",
-      "companion_notice_date": "2025-03-25",
-      "status": "DATE_PROVENANCE_UNRESOLVED",
-      "safety_effect": "2026-03という時期を現在性や後続改正不存在の根拠に使用しない。source IDは互換性のため当面維持し、実際の発出・改正・掲載時期を一次資料で確定してからmetadataを訂正する。",
-      "tracking_issue": "https://github.com/Josh-Temple/kaigo-rules/issues/85"
-    }
-  ],
   "routes": [
     {
       "route_id": "mhlw-r6-reform-final",
@@ -32,12 +17,20 @@
       "limitation": "令和6年改正時点の資料であり、その後に当該通知の改正が存在しないことまでは証明しない。"
     },
     {
-      "route_id": "mhlw-r7-abuse-manual-reference",
-      "kind": "OFFICIAL_PARENT_CONTEXT_DATE_CONFLICT",
+      "route_id": "mhlw-r7-manual-reference",
+      "kind": "OFFICIAL_PARENT_PUBLICATION_CONTEXT",
       "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00003.html",
-      "observation": "厚生労働省の「令和7年3月改訂」国マニュアルページの「本編内の通知」から001453049.pdfへ直接リンクされている。同ページの改訂周知通知は令和7年3月25日付である。",
-      "use": "001453049.pdfの掲載・時期metadataを再検証する一次的な親ページ文脈として使用する。",
-      "limitation": "親ページの文脈だけではPDF内の新旧対照表そのものの正式な改正日を確定できない。したがって2025-03へ即断して置換せず、現在の2026-03主張を未検証として扱う。"
+      "observation": "令和7年3月改訂（令和6年度版）の国マニュアル公式ページの「本編内の通知」から001453049.pdfへ直接リンクされている。改訂周知通知は令和7年3月25日付。",
+      "use": "001453049.pdfについて確認できる最古の公式親ページ掲載文脈を2025-03として記録する根拠に使用する。",
+      "limitation": "親ページ掲載時期はPDF内新旧対照表そのものの正式な改正日を意味しない。"
+    },
+    {
+      "route_id": "mhlw-r8-manual-reference-reuse",
+      "kind": "OFFICIAL_REPUBLICATION_CONTEXT",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00004.html",
+      "observation": "令和8年3月改訂の国マニュアル公式ページでも、同じ001453049.pdfが「本編内の通知」として再掲されている。改訂周知通知は令和8年3月31日付。",
+      "use": "同PDFが令和8年3月改訂ページでも参照資料として継続掲載されている事実を記録する。",
+      "limitation": "同じPDFの再掲は、老企第25号第3の六について2025年3月以後に改正が存在しないことの網羅的証明にはならない。"
     },
     {
       "route_id": "mhlw-r8-reform-page",
@@ -81,6 +74,27 @@
   "status_policy": {
     "machine_text_match": "22/22の順方向replay一致は本文再構成の整合性を示すが、現行性の証明ではない。",
     "human_review": "この調査だけでは人手確認は完了しない。",
-    "currentness": "網羅的な後続改正確認が閉じ、かつ時期metadataの未解決矛盾が解消するまで22項目をHOLDのまま維持する。"
+    "currentness": "網羅的な後続改正確認が閉じるまで22項目をHOLDのまま維持する。001453049.pdfのreference periodは2025-03へ訂正済みだが、再掲のみでHOLD解除しない。"
+  },
+  "source_date_provenance_resolution": {
+    "source_id": "mhlw-2026-rouki25-reference-redline",
+    "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
+    "legacy_source_id_note": "source_idは既存参照との互換性のため当面維持するが、2026年に新規発出されたことを意味しない。",
+    "previous_repository_period_claim": "2026-03",
+    "corrected_reference_period": "2025-03",
+    "period_semantics": "earliest_confirmed_official_parent_publication_context",
+    "official_r7_parent_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00003.html",
+    "official_r7_parent_heading": "市町村・都道府県における高齢者虐待への対応と養護者支援について（令和7年3月改訂）",
+    "official_r7_notice_url": "https://www.mhlw.go.jp/content/12304250/001461227.pdf",
+    "official_r7_notice_date": "2025-03-25",
+    "official_r8_parent_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00004.html",
+    "official_r8_parent_heading": "市町村・都道府県における高齢者虐待への対応と養護者支援について（令和8年3月改訂）",
+    "official_r8_notice_url": "https://www.mhlw.go.jp/content/12304250/001684236.pdf",
+    "official_r8_notice_date": "2026-03-31",
+    "same_pdf_url_reused_across_r7_and_r8_parent_pages": true,
+    "underlying_redline_amendment_date": "UNRESOLVED_NOT_USED_AS_REFERENCE_PERIOD",
+    "status": "RESOLVED_FOR_REFERENCE_PERIOD",
+    "safety_effect": "001453049.pdfは少なくとも2025年3月25日時点の公式親ページ文脈で掲載が確認でき、2026年3月改訂ページでも同じURLが再掲されている。2025-03はPDF内新旧対照表そのものの正式改正日ではなく、確認できた最古の公式親ページ掲載文脈として扱う。再掲だけを後続改正不存在の証拠にはしない。",
+    "tracking_issue": "https://github.com/Josh-Temple/kaigo-rules/issues/85"
   }
 }

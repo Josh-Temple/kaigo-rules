@@ -2,11 +2,12 @@
   {
     "source_id": "mhlw-2026-rouki25-reference-redline",
     "source_class": "current_mhlw_reference",
-    "issued_period": "2026-03",
+    "issued_period": "2025-03",
+    "period_semantics": "earliest_confirmed_official_parent_publication_context",
     "priority": 1,
     "completeness": "partial_reference",
-    "use": "2026年3月厚労省掲載資料で、人員・設備の存続、運営(1)(3)〜(5)の略記存続、運営(2)のR6身体的拘束等追加後状態、BCP・衛生管理・準用の現行側断片を確認",
-    "warning": "現行統合全文でも網羅的な改正履歴でもない。後続改正不存在の単独証拠として扱わない"
+    "use": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認できる資料として、人員・設備の存続、運営(1)(3)〜(5)の略記存続、運営(2)のR6身体的拘束等追加後状態、BCP・衛生管理・準用の参照断片を確認。令和8年3月改訂ページでも同じPDF URLを再掲",
+    "warning": "issued_periodはPDF内新旧対照表の正式改正日ではなく、確認できた最古の公式親ページ掲載文脈。現行統合全文でも網羅的な改正履歴でもなく、令和8年3月ページでの再掲も後続改正不存在の単独証拠として扱わない"
   },
   {
     "source_id": "mhlw-r6-reform-landing",

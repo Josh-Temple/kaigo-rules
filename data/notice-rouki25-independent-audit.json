@@ -62,8 +62,8 @@
     "common_findings": [
       {
         "category": "currentness/source coverage",
-        "finding": "令和6年版以後の対象項目を網羅する現行統合本文・公式な全改正履歴を確認できない。令和8年3月資料は部分参照。",
-        "impact": "22項目をHOLDとし、歴史資料からの一致を現行性の証明にしない。"
+        "finding": "令和6年版以後の対象項目を網羅する現行統合本文・公式な全改正履歴を確認できない。001453049.pdfは令和7年3月改訂国マニュアルで掲載され、令和8年3月改訂ページでも再掲されているが部分参照。",
+        "impact": "22項目をHOLDとし、歴史資料や再掲からの一致を現行性の証明にしない。"
       },
       {
         "category": "stale verification provenance",
@@ -97,7 +97,7 @@
     "method": [
       "candidate本文を見ずにsource snapshotの公式PDF由来body_textから再構成を開始。",
       "assemblyのpatch定義を別のPython replay関数で順方向に適用し、anchorの一意性を検証。",
-      "基準年から後続改正年へ順方向適用。2026年3月PDFは部分参照のみとして扱う。",
+      "基準年から後続改正年へ順方向適用。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料として扱い、令和8年3月改訂ページでの再掲を後続改正不存在の証拠にはしない。",
       "候補比較はUnicode whitespaceのみ除去。数字・句読点・括弧・条番号・列挙記号は保持。",
       "本文差があればMISMATCH。本文一致でも現行性網羅が未確認ならHOLD。PASSへは自動昇格しない。"
     ],
@@ -186,9 +186,9 @@
         "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
       },
       {
-        "route": "厚労省・令和8年3月部分参照PDF",
+        "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
         "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-        "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+        "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
       },
       {
         "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -400,8 +400,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -423,10 +423,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -439,9 +439,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -478,7 +478,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -592,8 +592,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -615,10 +615,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2015",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -631,9 +631,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -670,7 +670,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -791,8 +791,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -814,10 +814,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2018",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -830,9 +830,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -869,7 +869,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -983,8 +983,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -1006,10 +1006,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2015",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -1022,9 +1022,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -1061,7 +1061,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -1175,8 +1175,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -1198,10 +1198,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2015",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -1214,9 +1214,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -1253,7 +1253,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -1374,8 +1374,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -1397,10 +1397,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2018",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -1413,9 +1413,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -1452,7 +1452,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -1566,8 +1566,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -1589,10 +1589,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2015",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -1605,9 +1605,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -1644,7 +1644,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -1781,8 +1781,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -1804,10 +1804,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2018",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -1820,9 +1820,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -1859,7 +1859,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -2003,8 +2003,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -2026,10 +2026,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2015",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -2042,9 +2042,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -2081,7 +2081,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -2268,8 +2268,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -2291,10 +2291,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -2307,9 +2307,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -2346,7 +2346,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -2569,8 +2569,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -2592,10 +2592,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2024",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "fragment_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -2608,9 +2608,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -2647,7 +2647,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -2895,8 +2895,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -2918,10 +2918,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -2934,9 +2934,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -2973,7 +2973,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -3221,8 +3221,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -3244,10 +3244,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -3260,9 +3260,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -3299,7 +3299,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -3486,8 +3486,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -3509,10 +3509,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -3525,9 +3525,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -3564,7 +3564,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -3768,8 +3768,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -3791,10 +3791,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2024",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "fragment_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -3807,9 +3807,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -3846,7 +3846,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -3973,8 +3973,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -3996,10 +3996,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -4012,9 +4012,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -4051,7 +4051,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -4218,8 +4218,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -4241,10 +4241,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2024",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "fragment_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -4257,9 +4257,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -4296,7 +4296,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -4423,8 +4423,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -4446,10 +4446,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -4462,9 +4462,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -4501,7 +4501,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -4628,8 +4628,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -4651,10 +4651,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -4667,9 +4667,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -4706,7 +4706,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -4833,8 +4833,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -4856,10 +4856,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -4872,9 +4872,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -4911,7 +4911,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -5038,8 +5038,8 @@
         },
         {
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "pdf_pages": null,
@@ -5061,10 +5061,10 @@
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
         "latest_applied_or_baseline_source_period": "2021",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "not_full_target_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -5077,9 +5077,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -5116,7 +5116,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
@@ -5155,7 +5155,7 @@
         "snapshot_id": "dayservice-operation-incorporation-2026",
         "source_id": "mhlw-2026-rouki25-reference-redline",
         "source_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
-        "source_label": "令和8年3月の部分的参照資料",
+        "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
         "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
         "pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
         "pdf_pages": [
@@ -5177,8 +5177,8 @@
         {
           "step": 0,
           "source_id": "mhlw-2026-rouki25-reference-redline",
-          "issued_period": "2026-03",
-          "source_label": "令和8年3月の部分的参照資料",
+          "issued_period": "2025-03",
+          "source_label": "令和7年3月改訂国マニュアル掲載の部分参照資料",
           "source_url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
           "source_pdf_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
           "source_sha256_provenance": "repository source snapshot/manifest; this audit did not freshly re-download and rehash the PDF",
@@ -5251,11 +5251,11 @@
       },
       "currentness": {
         "status": "UNRESOLVED_EXHAUSTIVE_COVERAGE",
-        "latest_applied_or_baseline_source_period": "2026-03",
-        "latest_official_partial_reference_period": "2026-03",
+        "latest_applied_or_baseline_source_period": "2025-03",
+        "latest_official_partial_reference_period": "2025-03",
         "2026_partial_reference_coverage": "full_text_in_2026_partial_reference",
         "later_amendment_search": "公式MHLW通知・改定ページ、アーカイブ索引、通知名・老企第25号の検索を2026-09-23まで実施。後続の対象通知改正は見つからなかったが、検索結果の不在を変更不存在の証拠としない。",
-        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。2026年3月資料は部分参照のみ。",
+        "hold_reason": "2024年以後の対象項目を網羅する現行統合通知または公式な完全改正履歴を確認できない。001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料で、令和8年3月改訂ページでも再掲されているが、網羅性の証明にはならない。",
         "routes": [
           {
             "route": "厚労省・令和6年度介護報酬改定ページ",
@@ -5268,9 +5268,9 @@
             "finding": "対象patchの改正後欄を確認。令和6年改正比較資料。"
           },
           {
-            "route": "厚労省・令和8年3月部分参照PDF",
+            "route": "厚労省・令和7年3月改訂国マニュアル掲載の部分参照PDF",
             "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
-            "finding": "SHA-256は各source snapshotに記録。部分参照としてだけ使用。"
+            "finding": "令和7年3月改訂国マニュアルの公式親ページで掲載を確認。令和8年3月改訂ページでも同じPDF URLを再掲。PDF内新旧対照表の正式改正日とは区別し、部分参照としてだけ使用。"
           },
           {
             "route": "厚労省・令和8年度介護報酬改定ページ",
@@ -5307,7 +5307,7 @@
       "decision_reason": "候補と順方向replayは一致したが、後続改正の網羅性と完全な現行一次資料を確認できないためHOLD。",
       "residual_risks": [
         "後続改正の網羅性を一次資料で確証できていない。",
-        "2026年3月資料は部分参照であり、対象の現在性を単独で保証しない。",
+        "001453049.pdfは2025年3月の公式親ページ掲載を確認できる部分参照資料であり、令和8年3月改訂ページで再掲されていても対象の現在性を単独で保証しない。",
         "PDF全該当ページの左右欄・改ページ・脚注・項目境界を全件目視した状態ではない。"
       ],
       "reviewer_should_check": [
