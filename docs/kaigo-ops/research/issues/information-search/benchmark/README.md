@@ -415,3 +415,47 @@ fee-guidance全体をCOMPLETEにするには、残る5件の証拠連鎖を閉�
 - dayservice.18 栄養改善
 
 overall fee-guidance / remuneration reviewはまだIN_PROGRESS。
+
+
+## Fee-guidance 8/8 source review closure — 2026-09-23
+
+老企第36号「7 通所介護費」のmachine-reconstructed 8候補について、
+primary-source supplementと改正履歴replayを用いて **8 / 8 human review COMPLETE** まで進めた。
+
+今回閉じた3件:
+- `fee-guidance.dayservice.5` 延長加算
+- `fee-guidance.dayservice.6` 事業所規模
+- `fee-guidance.dayservice.18` 栄養改善
+
+再構成方法:
+- machine extractに残る「略」を直接手修正しない
+- `data/fee-guidance-verified-text-supplements.json` に一次資料の補足本文と出典を分離
+- assemblerが明示された省略マーカーだけをfail-closedで置換
+- replacement markerが見つからない・重複する場合は生成失敗
+- CIで再生成し、checked-in candidateとの差分ゼロを必須化
+
+current candidate:
+- 8 / 8で「略」なし
+- human review ledger: COMPLETE
+- currentness: 2026-09-23確認
+- latest relevant text amendment: Vol.1502（2026-05-08）
+
+ただし、**remuneration answerability gateは開けない**。
+
+理由:
+- 告示第19号・第27号・第95号・老企第36号の対象source reviewはCOMPLETE
+- 一方、外部holdoutには個別機能訓練、入浴、送迎、3%加算等の細かなQ&A 20件があり、
+  広い `review.remuneration.base-and-addons` だけではClaim粒度が不足
+- source review COMPLETE と query answerability COMPLETE を同一視しない
+
+`data/remuneration-review.json`:
+- `source_review_status = COMPLETE`
+- `answerability_gate_status = CLAIM_COVERAGE_PENDING`
+- `review_status = IN_PROGRESS`
+
+次:
+- national holdout 20件をClaim単位へ分解
+- primary source / current Q&AごとにClaimを個別review
+- その後にのみ報酬answerability gateの開放を再判定
+
+RAGは引き続きHOLD。

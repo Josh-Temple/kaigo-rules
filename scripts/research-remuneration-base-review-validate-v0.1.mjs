@@ -10,7 +10,9 @@ const textMeta = readJson("data/remuneration-current-text-meta.json");
 const textRows = readJson("data/remuneration-current-text.json");
 
 const errors = [];
-if (review.review_status !== "IN_PROGRESS") errors.push("overall review must remain IN_PROGRESS");
+if (review.review_status !== "IN_PROGRESS") errors.push("answerability review must remain IN_PROGRESS");
+if (review.source_review_status !== "COMPLETE") errors.push("source review is not COMPLETE");
+if (review.answerability_gate_status !== "CLAIM_COVERAGE_PENDING") errors.push("claim coverage gate is not pending");
 if (review.base_notice_review?.status !== "COMPLETE") errors.push("base review is not COMPLETE");
 if (review.base_notice_review?.source_id !== textMeta.source_id) errors.push("source_id mismatch");
 if (review.base_notice_review?.source_sha256 !== textMeta.source_sha256) errors.push("source SHA mismatch");

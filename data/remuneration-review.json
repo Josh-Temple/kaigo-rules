@@ -233,22 +233,21 @@
     ]
   },
   "fee_guidance_review": {
-    "status": "IN_PROGRESS",
+    "status": "COMPLETE",
     "reviewed_at": "2026-09-23",
     "review_ledger": "data/fee-guidance-review.json",
     "current_text_complete_ids": [
-      "fee-guidance.dayservice.7-2",
-      "fee-guidance.dayservice.24",
-      "fee-guidance.dayservice.25",
       "fee-guidance.dayservice.4",
-      "fee-guidance.dayservice.7"
-    ],
-    "review_required_ids": [
       "fee-guidance.dayservice.5",
       "fee-guidance.dayservice.6",
-      "fee-guidance.dayservice.18"
+      "fee-guidance.dayservice.7",
+      "fee-guidance.dayservice.7-2",
+      "fee-guidance.dayservice.18",
+      "fee-guidance.dayservice.24",
+      "fee-guidance.dayservice.25"
     ],
-    "note": "8候補のうち5件を現行本文としてhuman review COMPLETE。残る3件はbaseline本文の省略によりREVIEW_REQUIRED。overall remuneration reviewはIN_PROGRESSを維持する。"
+    "review_required_ids": [],
+    "note": "老企第36号の対象8候補をhuman review COMPLETE。"
   },
   "reviewed_nodes": [
     "fee.dayservice.standard",
@@ -291,5 +290,8 @@
     "見出し・単位数または率・算定条件・除外条件を取込本文と照合する",
     "「別に厚生労働大臣が定める基準」がある場合は委任先告示を別に確認する",
     "確認時のtext_sha256と確認日をレビュー台帳へ記録する"
-  ]
+  ],
+  "source_review_status": "COMPLETE",
+  "answerability_gate_status": "CLAIM_COVERAGE_PENDING",
+  "review_note": "告示第19号、委任先告示第27号・第95号、老企第36号8候補の一次資料レビューは完了。ただし、個別機能訓練・入浴・送迎等の細かなQ&Aを広い報酬Claimだけで一括ANSWERにしないため、Claim単位のcoverage整備が完了するまでanswerability gateはIN_PROGRESSを維持する。"
 }

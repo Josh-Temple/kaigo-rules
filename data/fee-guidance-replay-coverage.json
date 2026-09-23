@@ -100,9 +100,10 @@
         "status": "CHECKED"
       }
     ],
-    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
-    "coverage_as_of": "2026-09-22",
-    "human_verification_status": "NOT_REVIEWED"
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "HUMAN_REVIEW_COMPLETE",
+    "human_review_note": "H30現行側の本文候補に対し、H27改正後欄の①〜③・宿泊時除外をprimary-source supplementとして補完。H30で延長加算の時間区分改正を確認し、R3・R6・R7・R8で後続本文変更が示されていないことを確認。"
   },
   {
     "guidance_id": "fee-guidance.dayservice.6",
@@ -142,9 +143,10 @@
         "status": "CHECKED"
       }
     ],
-    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
-    "coverage_as_of": "2026-09-22",
-    "human_verification_status": "NOT_REVIEWED"
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "HUMAN_REVIEW_COMPLETE",
+    "human_review_note": "R3現行側候補に残っていた③④の省略をH27改正後欄の全文で補完。H30/R3/R6の新旧対照とR7/R8を追跡し、③④の後続本文変更が示されていないことを確認。"
   },
   {
     "guidance_id": "fee-guidance.dayservice.7",
@@ -282,9 +284,10 @@
         "status": "CHECKED"
       }
     ],
-    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_EXACT_TEXT_PENDING",
-    "coverage_as_of": "2026-09-22",
-    "human_verification_status": "NOT_REVIEWED"
+    "replay_status": "CHECKPOINT_CHAIN_COMPLETE_HUMAN_REVIEWED_CURRENT",
+    "coverage_as_of": "2026-09-23",
+    "human_verification_status": "HUMAN_REVIEW_COMPLETE",
+    "human_review_note": "R3現行側候補で省略された不変部分をH27全文から補完し、H30では②（外部管理栄養士）のみ改正、R3では②と④ニの変更を現行候補側で保持。R6・R7・R8で当該本文の後続変更が示されていないことを確認。"
   },
   {
     "guidance_id": "fee-guidance.dayservice.24",

@@ -1,6 +1,6 @@
 {
   "format_version": 2,
-  "review_status": "IN_PROGRESS",
+  "review_status": "COMPLETE",
   "reviewed_at": "2026-09-23",
   "policy": "骨格、本文、改正履歴、報酬告示との対応を分離して確認する。現行本文として確定するのは、baseline本文が欠落なく確認でき、そこからcurrentまでの改正連鎖を一次資料で追跡できた項目に限る。生成候補の存在だけではhuman verificationを成立させない。",
   "currentness_review": {
@@ -37,20 +37,20 @@
     {
       "guidance_id": "fee-guidance.dayservice.5",
       "title": "8時間以上9時間未満の通所介護の前後に連続して延長サービスを行った場合の加算の取扱い",
-      "human_review_status": "REVIEW_REQUIRED",
-      "candidate_text_sha256": "dd4de3a67e9412c986e8c37221484808c8e0cfaccb09d38eef85fa9ed06c84f3",
+      "human_review_status": "COMPLETE",
+      "candidate_text_sha256": "52299586ab944552d50be716a41824cf72ff8a9ab4ef637cd3bfa9e96ce87d69",
       "baseline_snapshot_id": "dayservice-5-h30-baseline",
       "patch_snapshot_ids": [],
-      "reason": "baseline候補そのものに「略」が残り、全文候補として不足するため現行全文として固定しない。"
+      "reason": "H30現行本文＋H27全文補足で省略を解消し、R3・R6・R7・R8までの改正連鎖を確認。"
     },
     {
       "guidance_id": "fee-guidance.dayservice.6",
       "title": "事業所規模による区分の取扱い",
-      "human_review_status": "REVIEW_REQUIRED",
-      "candidate_text_sha256": "a80086d48a01f40b0b74baa48f90259d19d76d4d84048bade46052100ed01ab8",
+      "human_review_status": "COMPLETE",
+      "candidate_text_sha256": "ab291bceb57f5bbf6afb2e3ea07893d04df7a31973d639af98d6556224b258c2",
       "baseline_snapshot_id": "dayservice-6-r3-baseline",
       "patch_snapshot_ids": [],
-      "reason": "baseline候補そのものに「略」が残り、全文候補として不足するため現行全文として固定しない。"
+      "reason": "R3現行本文＋H27③④補足で省略を解消し、H30/R3/R6/R7/R8の改正連鎖を確認。"
     },
     {
       "guidance_id": "fee-guidance.dayservice.7",
@@ -73,11 +73,11 @@
     {
       "guidance_id": "fee-guidance.dayservice.18",
       "title": "栄養改善加算について",
-      "human_review_status": "REVIEW_REQUIRED",
-      "candidate_text_sha256": "c33e37325085b1e81b341280203f24fd16206d1ec2cea2844c488b2c6e4bc8f0",
+      "human_review_status": "COMPLETE",
+      "candidate_text_sha256": "feacaff9cc903477ca248e9611fa5ee2bec333672701a0e9a08a5288cbf0717a",
       "baseline_snapshot_id": "dayservice-18-r3-baseline",
       "patch_snapshot_ids": [],
-      "reason": "baseline候補そのものに「略」が残り、全文候補として不足するため現行全文として固定しない。"
+      "reason": "R3変更部分を保持しつつH27の不変部分を補足し、H30・R3の改正内容とR6・R7・R8の継続性を確認。"
     },
     {
       "guidance_id": "fee-guidance.dayservice.24",
@@ -101,19 +101,19 @@
     }
   ],
   "reviewed_nodes": [
-    "fee-guidance.dayservice.7-2",
-    "fee-guidance.dayservice.24",
-    "fee-guidance.dayservice.25",
     "fee-guidance.dayservice.4",
-    "fee-guidance.dayservice.7"
-  ],
-  "blocked_nodes": [
     "fee-guidance.dayservice.5",
     "fee-guidance.dayservice.6",
-    "fee-guidance.dayservice.18"
+    "fee-guidance.dayservice.7",
+    "fee-guidance.dayservice.7-2",
+    "fee-guidance.dayservice.18",
+    "fee-guidance.dayservice.24",
+    "fee-guidance.dayservice.25"
   ],
+  "blocked_nodes": [],
   "reviewed_relations": [
     "fee-guidance.dayservice.24 -> calc27.dayservice.1.capacity",
     "fee-guidance.dayservice.25 -> calc27.dayservice.1.staffing"
-  ]
+  ],
+  "completion_note": "8 / 8 machine-reconstructed candidateについて、本文、補足一次資料、改正履歴、currentnessをhuman review済み。生成candidate自体のhuman_verification_statusは機械層との分離のためNOT_REVIEWEDのまま保持する。"
 }

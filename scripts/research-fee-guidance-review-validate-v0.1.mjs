@@ -11,22 +11,21 @@ const remuneration = readJson("data/remuneration-review.json");
 const errors=[];
 const completeExpected=[
   "fee-guidance.dayservice.4",
+  "fee-guidance.dayservice.5",
+  "fee-guidance.dayservice.6",
   "fee-guidance.dayservice.7",
   "fee-guidance.dayservice.7-2",
+  "fee-guidance.dayservice.18",
   "fee-guidance.dayservice.24",
   "fee-guidance.dayservice.25",
 ];
-const blockedExpected=[
-  "fee-guidance.dayservice.5",
-  "fee-guidance.dayservice.6",
-  "fee-guidance.dayservice.18",
-];
+const blockedExpected=[];
 const sameSet=(a,b)=>{
   const aa=[...new Set(a)].sort(), bb=[...new Set(b)].sort();
   return aa.length===bb.length && aa.every((x,i)=>x===bb[i]);
 };
 
-if(review.review_status!=="IN_PROGRESS") errors.push("fee-guidance overall review must remain IN_PROGRESS");
+if(review.review_status!=="COMPLETE") errors.push("fee-guidance overall review is not COMPLETE");
 if(!sameSet(review.reviewed_nodes??[],completeExpected)) errors.push("reviewed_nodes mismatch");
 if(!sameSet(review.blocked_nodes??[],blockedExpected)) errors.push("blocked_nodes mismatch");
 if(review.currentness_review?.latest_relevant_text_amendment_source_id!=="mhlw-r8-fee-guidance-may-amendment"){
@@ -64,14 +63,9 @@ for(const id of completeExpected){
     errors.push("complete candidate still contains omitted text marker: "+id);
   }
 }
-for(const id of [
-  "fee-guidance.dayservice.5",
-  "fee-guidance.dayservice.6",
-  "fee-guidance.dayservice.18",
-]){
-  const candidate=candidateById.get(id);
-  if(!candidate || !/略/.test(candidate.candidate_text??"")){
-    errors.push("expected omitted-text blocker missing: "+id);
+for(const candidate of candidates.items??[]){
+  if(/略/.test(candidate.candidate_text??"")){
+    errors.push("COMPLETE candidate still contains omitted-text marker: "+candidate.guidance_id);
   }
 }
 const staffing=candidateById.get("fee-guidance.dayservice.25");
@@ -84,8 +78,17 @@ if(!sameSet(remuneration.fee_guidance_review?.current_text_complete_ids??[],comp
 if(!sameSet(remuneration.fee_guidance_review?.review_required_ids??[],blockedExpected)){
   errors.push("remuneration blocked IDs mismatch");
 }
+if(remuneration.fee_guidance_review?.status!=="COMPLETE"){
+  errors.push("remuneration fee-guidance review is not COMPLETE");
+}
+if(remuneration.source_review_status!=="COMPLETE"){
+  errors.push("remuneration source review is not COMPLETE");
+}
+if(remuneration.answerability_gate_status!=="CLAIM_COVERAGE_PENDING"){
+  errors.push("remuneration answerability gate must remain CLAIM_COVERAGE_PENDING");
+}
 if(remuneration.review_status!=="IN_PROGRESS"){
-  errors.push("overall remuneration review must remain IN_PROGRESS");
+  errors.push("overall remuneration answerability review must remain IN_PROGRESS");
 }
 
 console.log(JSON.stringify({
