@@ -109,6 +109,26 @@ const noticePersonnelCandidatesPath = path.join(root, "data", "notice-personnel-
 const noticePersonnelCandidates = fs.existsSync(noticePersonnelCandidatesPath)
   ? JSON.parse(fs.readFileSync(noticePersonnelCandidatesPath, "utf8"))
   : null;
+const noticeOperationModernManifestPath = path.join(root, "data", "notice-operation-modern-source-manifest.json");
+const noticeOperationModernManifest = fs.existsSync(noticeOperationModernManifestPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationModernManifestPath, "utf8"))
+  : null;
+const noticeOperationModernSnapshotsPath = path.join(root, "data", "notice-operation-modern-source-snapshots.json");
+const noticeOperationModernSnapshots = fs.existsSync(noticeOperationModernSnapshotsPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationModernSnapshotsPath, "utf8"))
+  : null;
+const noticeOperationModernAssemblyPath = path.join(root, "data", "notice-operation-modern-current-assembly.json");
+const noticeOperationModernAssembly = fs.existsSync(noticeOperationModernAssemblyPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationModernAssemblyPath, "utf8"))
+  : null;
+const noticeOperationModernReplayPath = path.join(root, "data", "notice-operation-modern-replay-coverage.json");
+const noticeOperationModernReplay = fs.existsSync(noticeOperationModernReplayPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationModernReplayPath, "utf8"))
+  : null;
+const noticeOperationModernCandidatesPath = path.join(root, "data", "notice-operation-modern-current-text-candidates.json");
+const noticeOperationModernCandidates = fs.existsSync(noticeOperationModernCandidatesPath)
+  ? JSON.parse(fs.readFileSync(noticeOperationModernCandidatesPath, "utf8"))
+  : null;
 const feeSkeletonPath = path.join(root, "data", "remuneration-current-skeleton.json");
 const feeSkeleton = fs.existsSync(feeSkeletonPath)
   ? JSON.parse(fs.readFileSync(feeSkeletonPath, "utf8"))
@@ -794,6 +814,225 @@ if (noticeSkeleton.length) {
     const manager = candidateById.get("notice.dayservice.personnel.manager");
     if (manager && !String(manager.candidate_text).normalize("NFKC").replace(/\s+/g, "").includes("第三の一の1の(3)を参照されたい")) {
       errors.push("notice personnel manager: verified cross-reference missing");
+    }
+  }
+
+  const requiredRouki25OperationModernIds = [
+    "notice.dayservice.operation.bcp",
+    "notice.dayservice.operation.disaster",
+    "notice.dayservice.operation.hygiene",
+    "notice.dayservice.operation.community",
+    "notice.dayservice.operation.accident",
+    "notice.dayservice.operation.abuse",
+    "notice.dayservice.operation.records",
+    "notice.dayservice.operation.incorporation",
+  ];
+  for (const id of requiredRouki25OperationModernIds) {
+    if (!noticeSkeletonIds.has(id)) {
+      errors.push(`notice skeleton: missing required modern operation node ${id}`);
+    }
+  }
+
+  const r6HygieneTransitionExpiry = noticeAmendments.find(
+    (event) => event.id === "rouki25.r6.dayservice.hygiene-transition-expiry"
+  );
+  if (!r6HygieneTransitionExpiry ||
+      r6HygieneTransitionExpiry.operation !== "delete_expired_transition_fragment" ||
+      r6HygieneTransitionExpiry.target_node_id !== "notice.dayservice.operation.hygiene") {
+    errors.push("notice amendment events: missing R6 hygiene transition-expiry event");
+  }
+
+  const operationModernPipelineParts = [
+    noticeOperationModernManifest,
+    noticeOperationModernSnapshots,
+    noticeOperationModernAssembly,
+    noticeOperationModernReplay,
+    noticeOperationModernCandidates,
+  ];
+  if (operationModernPipelineParts.some(Boolean) && !operationModernPipelineParts.every(Boolean)) {
+    errors.push("notice operation-modern reconstruction: incomplete pipeline files");
+  }
+  if (operationModernPipelineParts.every(Boolean)) {
+    const expectedOperationModernIds = new Set(requiredRouki25OperationModernIds);
+    const sameOperationModernIdSet = (values) => {
+      const actual = new Set(values);
+      return actual.size === expectedOperationModernIds.size &&
+        [...expectedOperationModernIds].every((id) => actual.has(id));
+    };
+
+    const manifestSegments = noticeOperationModernManifest.segments || [];
+    if (!sameOperationModernIdSet(manifestSegments.map((segment) => segment.notice_id))) {
+      errors.push("notice operation-modern manifest: unexpected operation coverage");
+    }
+    const manifestSegmentIds = new Set();
+    for (const segment of manifestSegments) {
+      if (manifestSegmentIds.has(segment.id)) {
+        errors.push(`notice operation-modern manifest: duplicate segment ${segment.id}`);
+      }
+      manifestSegmentIds.add(segment.id);
+      if (!sourceIds.has(segment.source_id)) {
+        errors.push(`notice operation-modern manifest ${segment.id}: missing source ${segment.source_id}`);
+      }
+      if (!segment.body_start || !segment.body_end || !segment.page_start || !segment.page_end) {
+        errors.push(`notice operation-modern manifest ${segment.id}: incomplete extraction boundary`);
+      }
+    }
+
+    const snapshots = noticeOperationModernSnapshots.segments || [];
+    const snapshotById = new Map(snapshots.map((item) => [item.id, item]));
+    if (!sameOperationModernIdSet(snapshots.map((item) => item.notice_id))) {
+      errors.push("notice operation-modern snapshots: unexpected operation coverage");
+    }
+    for (const snapshot of snapshots) {
+      if (!sourceIds.has(snapshot.source_id)) {
+        errors.push(`notice operation-modern snapshot ${snapshot.id}: missing source ${snapshot.source_id}`);
+      }
+      if (snapshot.verification_status !== "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK") {
+        errors.push(`notice operation-modern snapshot ${snapshot.id}: unsafe verification status`);
+      }
+      if (!snapshot.body_text || !snapshot.body_text_sha256 ||
+          createHash("sha256").update(snapshot.body_text, "utf8").digest("hex") !== snapshot.body_text_sha256) {
+        errors.push(`notice operation-modern snapshot ${snapshot.id}: body text/hash mismatch`);
+      }
+    }
+
+    if (!sameOperationModernIdSet((noticeOperationModernAssembly.items || []).map((item) => item.notice_id))) {
+      errors.push("notice operation-modern assembly: unexpected operation coverage");
+    }
+
+    const replayById = new Map((noticeOperationModernReplay || []).map((item) => [item.notice_id, item]));
+    if (!sameOperationModernIdSet((noticeOperationModernReplay || []).map((item) => item.notice_id))) {
+      errors.push("notice operation-modern replay: unexpected operation coverage");
+    }
+    for (const coverage of noticeOperationModernReplay || []) {
+      if (coverage.human_verification_status !== "NOT_REVIEWED") {
+        errors.push(`notice operation-modern replay ${coverage.notice_id}: unexpected human verification status`);
+      }
+      for (const checkpoint of coverage.checkpoints || []) {
+        if (!sourceIds.has(checkpoint.source_id)) {
+          errors.push(`notice operation-modern replay ${coverage.notice_id}: missing checkpoint source ${checkpoint.source_id}`);
+        }
+        if (checkpoint.status !== "CHECKED") {
+          errors.push(`notice operation-modern replay ${coverage.notice_id}: unchecked checkpoint ${checkpoint.source_id}`);
+        }
+      }
+    }
+
+    const candidates = noticeOperationModernCandidates.items || [];
+    if (!sameOperationModernIdSet(candidates.map((item) => item.notice_id))) {
+      errors.push("notice operation-modern candidates: unexpected operation coverage");
+    }
+    const candidateById = new Map(candidates.map((item) => [item.notice_id, item]));
+    for (const candidate of candidates) {
+      if (candidate.reconstruction_status !== "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK" ||
+          candidate.human_verification_status !== "NOT_REVIEWED") {
+        errors.push(`notice operation-modern candidate ${candidate.notice_id}: unsafe status`);
+      }
+      if (!candidate.candidate_text || !candidate.candidate_text_sha256 ||
+          createHash("sha256").update(candidate.candidate_text, "utf8").digest("hex") !== candidate.candidate_text_sha256) {
+        errors.push(`notice operation-modern candidate ${candidate.notice_id}: text/hash mismatch`);
+      }
+      const baseline = snapshotById.get(candidate.baseline_snapshot_id);
+      if (!baseline || baseline.notice_id !== candidate.notice_id) {
+        errors.push(`notice operation-modern candidate ${candidate.notice_id}: baseline snapshot mismatch`);
+      }
+      for (const patchId of candidate.patch_snapshot_ids || []) {
+        const patch = snapshotById.get(patchId);
+        if (!patch || patch.notice_id !== candidate.notice_id) {
+          errors.push(`notice operation-modern candidate ${candidate.notice_id}: patch snapshot mismatch ${patchId}`);
+        }
+      }
+      const coverage = replayById.get(candidate.notice_id);
+      if (!coverage || candidate.replay_status !== coverage.replay_status) {
+        errors.push(`notice operation-modern candidate ${candidate.notice_id}: replay coverage mismatch`);
+      }
+    }
+
+    const compact = (value) => String(value || "").normalize("NFKC").replace(/\s+/g, "");
+    const requireOperationText = (id, phrase, label) => {
+      const item = candidateById.get(id);
+      if (!item || !compact(item.candidate_text).includes(compact(phrase))) {
+        errors.push(`notice operation-modern candidate ${id}: ${label}`);
+      }
+    };
+    const forbidOperationText = (id, phrase, label) => {
+      const item = candidateById.get(id);
+      if (item && compact(item.candidate_text).includes(compact(phrase))) {
+        errors.push(`notice operation-modern candidate ${id}: ${label}`);
+      }
+    };
+
+    for (const phrase of [
+      "介護施設・事業所における感染症発生時の業務継続ガイドライン",
+      "一体的に策定することとして差し支えない",
+      "定期的（年１回以上）な教育",
+      "訓練（シミュレーション）",
+    ]) {
+      requireOperationText("notice.dayservice.operation.bcp", phrase, `verified BCP wording missing: ${phrase}`);
+    }
+    forbidOperationText(
+      "notice.dayservice.operation.bcp",
+      "令和６年３月31日までの間は、努力義務",
+      "expired R3 BCP transition wording returned"
+    );
+    forbidOperationText(
+      "notice.dayservice.operation.bcp",
+      "新型コロナウイルス感染症発生時",
+      "pre-R6 BCP guideline title returned"
+    );
+
+    requireOperationText(
+      "notice.dayservice.operation.disaster",
+      "できるだけ地域住民の参加が得られるよう努める",
+      "R3 disaster regional-participation wording missing"
+    );
+
+    for (const phrase of [
+      "感染症の予防及びまん延の防止のための対策を検討する委員会",
+      "定期的な教育（年１回以上）",
+      "訓練（シミュレーション）を定期的（年１回以上）",
+    ]) {
+      requireOperationText("notice.dayservice.operation.hygiene", phrase, `verified hygiene wording missing: ${phrase}`);
+    }
+    forbidOperationText(
+      "notice.dayservice.operation.hygiene",
+      "令和６年３月31日までの間は、努力義務",
+      "expired R3 hygiene transition wording returned"
+    );
+
+    requireOperationText(
+      "notice.dayservice.operation.community",
+      "地域の住民やボランティア団体等との連携及び協力",
+      "community linkage wording missing"
+    );
+    requireOperationText(
+      "notice.dayservice.operation.community",
+      "介護サービス相談員を派遣する事業",
+      "community consultation-program wording missing"
+    );
+    requireOperationText(
+      "notice.dayservice.operation.accident",
+      "事故の状況及び事故に際して採った処置についての記録は、２年間保存",
+      "accident record-retention wording missing"
+    );
+    requireOperationText(
+      "notice.dayservice.operation.abuse",
+      "居宅基準第37条の２",
+      "abuse prevention cross-reference missing"
+    );
+    requireOperationText(
+      "notice.dayservice.operation.records",
+      "一連のサービス提供が終了した日",
+      "records completion-date definition missing"
+    );
+    requireOperationText(
+      "notice.dayservice.operation.incorporation",
+      "ウェブサイトへの掲載に関する取扱い",
+      "R6 website-publication wording missing"
+    );
+    const incorporation = candidateById.get("notice.dayservice.operation.incorporation");
+    if (incorporation && incorporation.baseline_snapshot_id !== "dayservice-operation-incorporation-2026") {
+      errors.push("notice operation-modern incorporation: current 2026 MHLW reference is not the baseline snapshot");
     }
   }
 
