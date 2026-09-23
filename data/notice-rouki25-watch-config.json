@@ -1,0 +1,28 @@
+{
+  "format_version": 1,
+  "watch_id": "rouki25-currentness-watch",
+  "baseline": {
+    "currentness_ledger": "data/notice-rouki25-currentness-ledger.json",
+    "latest_confirmed_kaigo_info_volume": 1544,
+    "latest_confirmed_kaigo_info_date": "2026-09-18",
+    "basis": "2026-09-23 currentness investigation recorded Vol.1544 (2026-09-18) as the latest confirmed listing."
+  },
+  "targets": {
+    "exact_terms": [
+      "老企第25号",
+      "指定居宅サービス等及び指定介護予防サービス等に関する基準について"
+    ],
+    "official_pages": {
+      "kaigo_latest_info": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "r8_reform_notifications": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "notification_new_index": "https://www.mhlw.go.jp/hourei/new/tsuchi/newindex.html"
+    }
+  },
+  "policy": {
+    "read_only": true,
+    "automatic_promotion_allowed": false,
+    "pass_meaning": "No configured watch trigger was detected. PASS does not prove that no unindexed amendment exists.",
+    "review_trigger": "A target term appears in a newly listed 介護保険最新情報 item or watched official page, or a pinned official PDF hash changes.",
+    "failure_mode": "Network/parser/source access failure is fail-closed and requires review."
+  }
+}
