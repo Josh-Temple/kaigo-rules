@@ -422,6 +422,25 @@ if (noticeSkeleton.length) {
     }
   }
 
+  const requiredRouki25EquipmentIds = [
+    "notice.dayservice.equipment.office",
+    "notice.dayservice.equipment.dining-training-room",
+    "notice.dayservice.equipment.fire-safety",
+    "notice.dayservice.equipment.shared-equipment",
+    "notice.dayservice.equipment.overnight-service",
+  ];
+  for (const id of requiredRouki25EquipmentIds) {
+    if (!noticeSkeletonIds.has(id)) {
+      errors.push(`notice skeleton: missing required day-service equipment node ${id}`);
+    }
+  }
+  const noticeSourceChainIds = new Set(noticeSourceChain.map((entry) => entry.source_id));
+  for (const sourceId of ["mhlw-h27-interpretation-redline", "mhlw-h30-interpretation-redline"]) {
+    if (!noticeSourceChainIds.has(sourceId)) {
+      errors.push(`notice source chain: missing required forward-replay source ${sourceId}`);
+    }
+  }
+
   for (const review of noticeCurrentReview.reviewed_nodes || []) {
     if (!noticeSkeletonIds.has(review.notice_id)) {
       errors.push(`notice review: missing node ${review.notice_id}`);
