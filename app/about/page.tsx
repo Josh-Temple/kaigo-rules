@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "利用上の注意・免責事項 | 介護ルール",
+  description: "介護ルールの情報を利用する際の注意事項と免責事項です。",
+};
 
 export default function AboutPage() {
   return (
     <section className="answer-page wide-page info-page">
-      <p className="eyebrow">利用上の注意</p>
+      <p className="eyebrow">利用上の注意・免責事項</p>
       <h1>このサイトの情報を使うときに確認してほしいこと</h1>
       <p className="lead">
         介護ルールは、通所介護の実務で公式資料へたどり着きやすくするための情報整理サイトです。
@@ -39,6 +45,14 @@ export default function AboutPage() {
         <p>
           本サイトは一般的な情報提供と資料確認の支援を目的としています。
           個別案件について、適法性、算定可否、指定基準への適合等を保証するものではありません。
+        </p>
+      </div>
+
+      <div className="section">
+        <h2>重要な判断は本サイトだけで完結させないでください</h2>
+        <p>
+          本サイトの情報のみを根拠に、申請、報酬請求、人員配置、設備、運営基準等に関する重要な判断を行わないでください。
+          原典と個別事情を確認し、必要に応じて所管行政庁や専門家へ確認してください。
         </p>
       </div>
 
