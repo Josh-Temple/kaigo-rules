@@ -300,10 +300,10 @@ def main() -> int:
         "coverage": {
             "relations_in_this_lane": 11,
             "relations_passed": passed,
-            "previous_explicit_relations_independently_verified": 27,
-            "aggregate_explicit_relations_independently_verified": 27 + passed,
+            "previous_explicit_relations_independently_verified": 45,
+            "aggregate_explicit_relations_independently_verified": 45 + passed,
             "non_contains_semantic_or_cross_layer_relations_current_inventory": 163,
-            "remaining_semantic_or_cross_layer_relations_not_independently_verified": 163 - 27 - passed,
+            "remaining_semantic_or_cross_layer_relations_not_independently_verified": 163 - 45 - passed,
         },
         "safety": {
             "promotes_human_review": False,
