@@ -1,0 +1,196 @@
+{
+  "format_version": 1,
+  "output_path": "data/notice-operation-modern-source-snapshots.json",
+  "policy": "Official PDF source segments are machine-extracted reconstruction material only. They do not change notice-current-skeleton official_text or any human-review status.",
+  "scope": "Day-service operation items introduced/restructured in R3 or directly current-visible in R6/2026: (6)-(13).",
+  "segments": [
+    {
+      "id": "dayservice-operation-bcp-r3-baseline",
+      "notice_id": "notice.dayservice.operation.bcp",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 32,
+      "page_end": 34,
+      "must_contain": [
+        "業務継続計画の策定等",
+        "令和６年３月31日までの間は、努力義務",
+        "研修（年１回以上）",
+        "訓練（シミュレーション）"
+      ],
+      "body_start": "① 居宅基準第105条の規定により指定通所介護の事業について準用される居宅基準第30条の２は",
+      "body_end": "(7) 非常災害対策",
+      "note": "R3新設(6)の改正後全文。R6で①・②の一部が更新されるためbaselineとして利用。"
+    },
+    {
+      "id": "dayservice-operation-bcp-r6-patch-1",
+      "notice_id": "notice.dayservice.operation.bcp",
+      "source_id": "mhlw-2024-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 21,
+      "page_end": 21,
+      "must_contain": [
+        "① 居宅基準第 105 条の規定により指定通所介護の事業について準用される居宅基準第 30 条の２は",
+        "全ての従業者が参加できるようにすることが望ましい"
+      ],
+      "body_start": "① 居宅基準第105条の規定により指定通所介護の事業について準用される居宅基準第30条の２は",
+      "body_end": "② 業務継続計画には",
+      "note": "R6新欄。R3の経過措置文を除いた現行①。"
+    },
+    {
+      "id": "dayservice-operation-bcp-r6-patch-2-prefix",
+      "notice_id": "notice.dayservice.operation.bcp",
+      "source_id": "mhlw-2024-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 21,
+      "page_end": 22,
+      "must_contain": [
+        "介護施設・事業所における感染症発生時の業務継続ガイドライン",
+        "一体的に策定することとして差し支えない"
+      ],
+      "body_start": "② 業務継続計画には、以下の項目等を記載すること",
+      "body_end": "イ・ロ （略）",
+      "note": "R6新欄の②導入部。R3のイ・ロ本文と③・④は略記により存続。"
+    },
+    {
+      "id": "dayservice-operation-disaster-r3",
+      "notice_id": "notice.dayservice.operation.disaster",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 34,
+      "page_end": 35,
+      "must_contain": [
+        "非常災害対策",
+        "できるだけ地域住民の参加が得られるよう努める"
+      ],
+      "body_start": "① 居宅基準第103条は",
+      "body_end": "(8) 衛生管理等",
+      "note": "R3改正後(7)本文。R6・2026では(7)略として保持。"
+    },
+    {
+      "id": "dayservice-operation-hygiene-r3-baseline",
+      "notice_id": "notice.dayservice.operation.hygiene",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 34,
+      "page_end": 36,
+      "must_contain": [
+        "衛生管理等",
+        "感染症の予防及びまん延の防止のための対策を検討する委員会",
+        "研修を定期的（年１回以上）",
+        "訓練（シミュレーション）を定期的（年１回以上）"
+      ],
+      "body_start": "① 居宅基準第104条は",
+      "body_end": "(9) 地域との連携等",
+      "note": "R3改正後(8)全文。R6で②の経過措置文のみ削除されるためbaselineとして利用。"
+    },
+    {
+      "id": "dayservice-operation-hygiene-r6-prefix",
+      "notice_id": "notice.dayservice.operation.hygiene",
+      "source_id": "mhlw-2024-interpretation-redline",
+      "role": "amendment_patch",
+      "page_start": 22,
+      "page_end": 22,
+      "must_contain": [
+        "② 同条第２項に規定する感染症が発生し、又はまん延しないように講ずるべき措置",
+        "他のサービス事業者との連携等により行うことも差し支えない"
+      ],
+      "body_start": "② 同条第２項に規定する感染症が発生し、又はまん延しないように講ずるべき措置",
+      "body_end": "イ～ハ （略）",
+      "note": "R6新欄の②導入部。経過措置終了文を削除し、R3のイ〜ハ本文を継承。"
+    },
+    {
+      "id": "dayservice-operation-community-r3",
+      "notice_id": "notice.dayservice.operation.community",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "historical_insertion_state",
+      "page_start": 36,
+      "page_end": 37,
+      "must_contain": [
+        "地域との連携等",
+        "地域の住民やボランティア団体等との連携及び協力",
+        "介護サービス相談員を派遣する事業"
+      ],
+      "body_start": "① 居宅基準第104条の２第１項は",
+      "body_end": "(10) 事故発生時の対応",
+      "note": "R3で新設・再編された(9)本文。R6・2026では(9)〜(12)略として保持。"
+    },
+    {
+      "id": "dayservice-operation-accident-r3",
+      "notice_id": "notice.dayservice.operation.accident",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "historical_after_state",
+      "page_start": 37,
+      "page_end": 37,
+      "must_contain": [
+        "事故発生時の対応",
+        "事故の状況及び事故に際して採った処置についての記録は、２年間保存"
+      ],
+      "body_start": "居宅基準第104条の３は",
+      "body_end": "(11) 虐待の防止",
+      "note": "R3改正後(10)本文。R6・2026では(9)〜(12)略として保持。"
+    },
+    {
+      "id": "dayservice-operation-abuse-r3",
+      "notice_id": "notice.dayservice.operation.abuse",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "historical_insertion_state",
+      "page_start": 37,
+      "page_end": 37,
+      "must_contain": [
+        "虐待の防止",
+        "居宅基準第37条の２"
+      ],
+      "body_start": "居宅基準第105条の規定により指定通所介護の事業について準用される居宅基準第37条の２",
+      "body_end": "(12) 記録の整備",
+      "note": "R3新設(11)本文。R6・2026では(9)〜(12)略として保持。"
+    },
+    {
+      "id": "dayservice-operation-records-r3",
+      "notice_id": "notice.dayservice.operation.records",
+      "source_id": "mhlw-2021-interpretation-redline",
+      "role": "historical_insertion_state",
+      "page_start": 37,
+      "page_end": 38,
+      "must_contain": [
+        "記録の整備",
+        "２年間保存",
+        "一連のサービス提供が終了した日"
+      ],
+      "body_start": "居宅基準第104条の４第２項は",
+      "body_end": "(13) 準用",
+      "note": "R3新設(12)本文。R6・2026では(9)〜(12)略として保持。"
+    },
+    {
+      "id": "dayservice-operation-incorporation-2026",
+      "notice_id": "notice.dayservice.operation.incorporation",
+      "source_id": "mhlw-2026-rouki25-reference-redline",
+      "role": "current_reference_state",
+      "page_start": 22,
+      "page_end": 22,
+      "must_contain": [
+        "居宅基準第105条の規定により",
+        "ウェブサイトへの掲載に関する取扱い"
+      ],
+      "body_start": "居宅基準第105条の規定により、居宅基準第８条から第17条まで",
+      "body_end": "４ 共生型通所介護に関する基準",
+      "note": "2026年3月厚労省参照資料の新欄に現れる(13)準用の現行側全文。"
+    }
+  ],
+  "source_layouts": {
+    "mhlw-2021-interpretation-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "R3新旧対照表は新欄が左側。"
+    },
+    "mhlw-2024-interpretation-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "R6新旧対照表は新欄が左側。"
+    },
+    "mhlw-2026-rouki25-reference-redline": {
+      "current_column": "left",
+      "header_semantics": "新|旧",
+      "evidence_note": "2026年3月厚労省参照資料は新欄が左側。現行統合全文とは扱わない。"
+    }
+  }
+}

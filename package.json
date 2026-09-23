@@ -16,7 +16,9 @@
     "import:notice-equipment-snapshots": "python scripts/import_notice_equipment_snapshots.py",
     "assemble:notice-equipment-current": "python scripts/assemble_notice_equipment_current_candidates.py",
     "import:notice-personnel-snapshots": "python scripts/import_notice_personnel_snapshots.py",
-    "assemble:notice-personnel-current": "python scripts/assemble_notice_personnel_current_candidates.py"
+    "assemble:notice-personnel-current": "python scripts/assemble_notice_personnel_current_candidates.py",
+    "import:notice-operation-modern-snapshots": "python scripts/import_notice_operation_modern_snapshots.py",
+    "assemble:notice-operation-modern-current": "python scripts/assemble_notice_operation_modern_current_candidates.py"
   },
   "dependencies": {
     "next": "^16.0.0",

@@ -1,0 +1,73 @@
+{
+  "format_version": 1,
+  "output_path": "data/notice-operation-modern-current-text-candidates.json",
+  "effective_as_of": "2026-09-23",
+  "reconstruction_status": "MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK",
+  "policy": "Candidates are deterministic reconstructions from official-source body snapshots and ordered amendment replay. They are not official consolidated text and must not update HUMAN_VERIFIED or VERIFIED_CURRENT automatically.",
+  "scope": "Day-service operation items (6)-(13). Legacy items (1)-(5) remain outside this phase.",
+  "items": [
+    {
+      "notice_id": "notice.dayservice.operation.bcp",
+      "baseline_snapshot_id": "dayservice-operation-bcp-r3-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-operation-bcp-r6-patch-1",
+          "operation": "replace_between",
+          "start_anchor": "① 居宅基準第105条の規定により指定通所介護の事業について準用される居宅基準第30条の２は",
+          "end_anchor": "② 業務継続計画には",
+          "note": "R6: 経過措置終了文を除いた①に置換"
+        },
+        {
+          "snapshot_id": "dayservice-operation-bcp-r6-patch-2-prefix",
+          "operation": "replace_between",
+          "start_anchor": "② 業務継続計画には",
+          "end_anchor": "イ 感染症に係る業務継続計画",
+          "note": "R6: ②導入部を更新し、R3のイ・ロと③・④を継承"
+        }
+      ]
+    },
+    {
+      "notice_id": "notice.dayservice.operation.disaster",
+      "baseline_snapshot_id": "dayservice-operation-disaster-r3",
+      "patches": []
+    },
+    {
+      "notice_id": "notice.dayservice.operation.hygiene",
+      "baseline_snapshot_id": "dayservice-operation-hygiene-r3-baseline",
+      "patches": [
+        {
+          "snapshot_id": "dayservice-operation-hygiene-r6-prefix",
+          "operation": "replace_between",
+          "start_anchor": "② 同条第２項に規定する感染症が発生し、又はまん延しないように講ずるべき措置",
+          "end_anchor": "イ 感染症の予防及びまん延の防止のための対策を検討する委員会",
+          "note": "R6: 経過措置終了文を削除した②導入部に置換"
+        }
+      ]
+    },
+    {
+      "notice_id": "notice.dayservice.operation.community",
+      "baseline_snapshot_id": "dayservice-operation-community-r3",
+      "patches": []
+    },
+    {
+      "notice_id": "notice.dayservice.operation.accident",
+      "baseline_snapshot_id": "dayservice-operation-accident-r3",
+      "patches": []
+    },
+    {
+      "notice_id": "notice.dayservice.operation.abuse",
+      "baseline_snapshot_id": "dayservice-operation-abuse-r3",
+      "patches": []
+    },
+    {
+      "notice_id": "notice.dayservice.operation.records",
+      "baseline_snapshot_id": "dayservice-operation-records-r3",
+      "patches": []
+    },
+    {
+      "notice_id": "notice.dayservice.operation.incorporation",
+      "baseline_snapshot_id": "dayservice-operation-incorporation-2026",
+      "patches": []
+    }
+  ]
+}
