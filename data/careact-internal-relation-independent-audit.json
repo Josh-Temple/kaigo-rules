@@ -1,0 +1,118 @@
+{
+  "format_version": 1,
+  "scope": "care-insurance-act-internal-relations-to-article74",
+  "audit_kind": "INDEPENDENT_CAREACT_INTERNAL_RELATION_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-24",
+  "audit_run": {
+    "workflow": "Verify Care Insurance Act internal relations independently",
+    "run_id": 35930443080,
+    "head_sha": "54c49e94f46b4e46bf1d23f9a016f61ab699ff96",
+    "parser": "python_xml_dom_minidom_plus_explicit_reference_evidence_rules",
+    "result": "PASS",
+    "artifact_id": 10780728116,
+    "artifact_digest": "sha256:6d5c4ea0402d62e866a0bc008ed37e2ac2c90ef324b079dfecee7f646d9da424"
+  },
+  "source": {
+    "law_id": "409AC0000000123",
+    "url": "https://laws.e-gov.go.jp/api/1/lawdata/409AC0000000123",
+    "xml_sha256": "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc"
+  },
+  "checks": [
+    {
+      "id": "careact-article70-designation-requires-standards",
+      "source_article_id": "careact.article.70",
+      "relation": "designation_requires_standards",
+      "target_id": "careact.article.74",
+      "source_text_sha256": "80d07e74c767f6bbed5b16d8f715936ef4ce84fef90d1cb06adaa682aceab289",
+      "required_all_patterns": [
+        "第七十四条第一項",
+        "第七十四条第二項"
+      ],
+      "required_any_patterns": [
+        "指定をしてはならない"
+      ],
+      "relative_next_article_target": null,
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "careact-article73-requires-compliance-with",
+      "source_article_id": "careact.article.73",
+      "relation": "requires_compliance_with",
+      "target_id": "careact.article.74",
+      "source_text_sha256": "56183bb4c3910f9a2e3ba84bbbc29bb56cedd692125f2794e77593cfdf691a1b",
+      "required_all_patterns": [
+        "次条第二項に規定する指定居宅サービスの事業の設備及び運営に関する基準に従い"
+      ],
+      "required_any_patterns": [],
+      "relative_next_article_target": "74",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "careact-article76-2-enforces",
+      "source_article_id": "careact.article.76-2",
+      "relation": "enforces",
+      "target_id": "careact.article.74",
+      "source_text_sha256": "a3e6936f2530020e24a4fe83579311bfc59efe140798092de9d63f3571c6a05b",
+      "required_all_patterns": [
+        "第七十四条第一項",
+        "第七十四条第二項"
+      ],
+      "required_any_patterns": [
+        "勧告することができる",
+        "命ずることができる"
+      ],
+      "relative_next_article_target": null,
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "careact-article77-sanctions-noncompliance",
+      "source_article_id": "careact.article.77",
+      "relation": "sanctions_noncompliance_with",
+      "target_id": "careact.article.74",
+      "source_text_sha256": "e876a0c3f324ed21811e2b8548a221d92f8d289581a0e8d61f5beaff6fba433a",
+      "required_all_patterns": [
+        "第七十四条第一項",
+        "第七十四条第二項"
+      ],
+      "required_any_patterns": [
+        "指定を取り消し",
+        "効力を停止"
+      ],
+      "relative_next_article_target": null,
+      "result": "PASS",
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "relations_in_this_lane": 4,
+    "relations_passed": 4,
+    "phase1_explicit_relations_independently_verified": 23,
+    "aggregate_explicit_relations_independently_verified": 27,
+    "non_contains_semantic_or_cross_layer_relations_current_inventory": 163,
+    "remaining_semantic_or_cross_layer_relations_not_independently_verified": 136
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/care-insurance-act-nodes.json": "5679279462390862405d60f00b25603f8be3522e",
+    "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
+    "data/relation-semantic-independent-audit.json": "8a5c068631d75ab4b1d84a2e93b528d4821baf71",
+    "scripts/verify_careact_internal_relations_independent.py": "920005ed31e625b0e71a557d1f72437020b3d50b"
+  },
+  "conclusion": "Four Care Insurance Act internal relations to Article 74 matched live e-Gov source evidence and committed relation rows under an independent parser/evidence path.",
+  "limitations": [
+    "PASS applies only to the four Care Insurance Act internal relations listed in checks.",
+    "Article 73 resolves the relative reference 次条 to Article 74 using live article order.",
+    "The remaining 136 non-contains semantic or cross-layer relations are not independently verified by this audit set.",
+    "This audit does not promote HUMAN_VERIFIED or VERIFIED_CURRENT.",
+    "Later changes to pinned inputs or verifier require a refreshed audit record."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_other_semantic_mappings": false
+  }
+}
