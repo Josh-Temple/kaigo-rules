@@ -48,7 +48,14 @@
       ],
       "body_start": "指定通所介護の基本取扱方針及び具体的取扱方針については",
       "body_end": "⑶ 通所介護計画の作成",
-      "note": "H27改正後の(2)本文。R6で身体的拘束等の新③が入り、旧③④が④⑤へ繰下げ。"
+      "note": "H27改正後の(2)本文。R6で身体的拘束等の新③が入り、旧③④が④⑤へ繰下げ。",
+      "layout_replacements": [
+        {
+          "from": "事業。所",
+          "to": "事業所",
+          "reason": "pdftotext column/page layout artifact; source image shows 事業所"
+        }
+      ]
     },
     {
       "id": "dayservice-operation-policy-r6-restraint",
@@ -80,7 +87,14 @@
       ],
       "body_start": "① 居宅基準第99条で定める通所介護計画については",
       "body_end": "⑷ 運営規程",
-      "note": "H27改正後の(3)全文。H30とR3の④、R3の⑥を順方向に更新するbaseline。"
+      "note": "H27改正後の(3)全文。H30とR3の④、R3の⑥を順方向に更新するbaseline。",
+      "layout_replacements": [
+        {
+          "from": "置かれ、ている",
+          "to": "置かれている",
+          "reason": "pdftotext column/page layout artifact; source image shows 置かれている"
+        }
+      ]
     },
     {
       "id": "dayservice-operation-plan-h30-item4",

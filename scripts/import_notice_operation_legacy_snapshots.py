@@ -195,6 +195,17 @@ def main() -> None:
             body_text = clean_body_text(slice_by_normalized_markers(
                 column_text, segment["body_start"], segment["body_end"]
             ))
+            applied_layout_replacements = []
+            for replacement in segment.get("layout_replacements", []):
+                old = replacement["from"]
+                new = replacement["to"]
+                count = body_text.count(old)
+                if count != 1:
+                    raise RuntimeError(
+                        f"{segment['id']}: expected layout artifact exactly once: {old!r}; found {count}"
+                    )
+                body_text = body_text.replace(old, new, 1)
+                applied_layout_replacements.append(replacement)
             segment_records.append({
                 "id": segment["id"],
                 "notice_id": segment["notice_id"],
@@ -204,6 +215,7 @@ def main() -> None:
                 "page_end": last,
                 "current_column": current_column,
                 "note": segment.get("note"),
+                "layout_replacements": applied_layout_replacements,
                 "column_text_sha256": hashlib.sha256(column_text.encode("utf-8")).hexdigest(),
                 "body_text_sha256": hashlib.sha256(body_text.encode("utf-8")).hexdigest(),
                 "verification_status": "IMPORTED_OFFICIAL_PDF_NEEDS_HUMAN_CHECK",
