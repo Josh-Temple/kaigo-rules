@@ -172,7 +172,7 @@ def main() -> None:
         fail("post-R6 PDF-body scan must preserve the remaining currentness blocker")
 
     lawdb = data.get("mhlw_law_database_coverage_check", {})
-    if lawdb.get("fresh_main_sha_at_start") != "e235ee114958cc79a19bd6b73f316619a746f349":
+    if lawdb.get("fresh_main_sha_at_start") != "81439978d45a10189118a077d81da9d3b2f1f880":
         fail("MHLW law-database coverage check must record its fresh main SHA")
     official_db = lawdb.get("official_database", {})
     if official_db.get("notification_scope") != "厚生労働省所管の主な訓令、通知、公示等":
@@ -183,6 +183,15 @@ def main() -> None:
         fail("latest checked notification amendment-list count must remain traceable")
     if "主な" not in official_db.get("coverage_limit", "") or "証明しない" not in official_db.get("coverage_limit", ""):
         fail("MHLW law database must not be treated as exhaustive")
+    if official_db.get("coverage_notice_url") != "https://www.mhlw.go.jp/hourei/readme.html":
+        fail("MHLW law database non-exhaustive notice URL must remain pinned")
+    coverage_notice = official_db.get("coverage_notice_statement", "")
+    if "全て" not in coverage_notice or "網羅しているわけではありません" not in coverage_notice:
+        fail("MHLW law database official non-exhaustive notice must remain explicit")
+    if official_db.get("systematic_search_url") != "https://www.mhlw.go.jp/hourei/html/tsuchi/contents.html":
+        fail("MHLW notification systematic-search route must remain explicit")
+    if "完全な改正履歴にはならない" not in official_db.get("systematic_search_observation", ""):
+        fail("MHLW systematic search must not be treated as exhaustive")
 
     original = lawdb.get("original_record_check", {})
     if original.get("classification") != "HISTORICAL_ORIGINAL_NOT_CONSOLIDATED":
@@ -214,10 +223,13 @@ def main() -> None:
         "KAIGO_LATEST_INFO_AND_R8_REFORM",
         "MHLW_LAW_DB_REGISTERED_MAIN_NOTICES",
         "MHLW_LAW_DB_PENDING_MAIN_NOTICES",
+        "MHLW_LAW_DB_SYSTEMATIC_SEARCH",
         "CURRENT_INTEGRATED_TEXT",
     }
     if set(matrix) != required_lanes:
         fail("MHLW currentness coverage matrix is incomplete or changed")
+    if matrix["MHLW_LAW_DB_SYSTEMATIC_SEARCH"].get("status") != "SEARCHED_SUPPORTING_ONLY":
+        fail("MHLW systematic search must remain supporting-only")
     if matrix["CURRENT_INTEGRATED_TEXT"].get("status") != "NOT_FOUND":
         fail("current integrated text must remain unresolved")
     if "網羅的証明にはしない" not in lawdb.get("inference_limit", ""):
@@ -233,7 +245,7 @@ def main() -> None:
     if "2025-03へ訂正済み" not in policy.get("currentness", ""):
         fail("currentness policy must record the corrected reference period")
 
-    print("rouki25 currentness investigation: OK (post-R6 index/PDF/law-database coverage recorded; exhaustive coverage unresolved; 22 items remain HOLD)")
+    print("rouki25 currentness investigation: OK (post-R6 index/PDF/law-database systematic coverage recorded; official non-exhaustive limit pinned; 22 items remain HOLD)")
 
 
 if __name__ == "__main__":
