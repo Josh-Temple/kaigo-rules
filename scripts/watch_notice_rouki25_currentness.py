@@ -272,7 +272,7 @@ def main() -> int:
                 {
                     row["url"]
                     for row in update_links
-                    if re.search(r"/hourei/new/update/kai\\d+t\\.pdf$", row["url"])
+                    if re.search(r"/hourei/new/update/kai\d+t\.pdf$", row["url"])
                 }
             )
             if not amendment_urls:
