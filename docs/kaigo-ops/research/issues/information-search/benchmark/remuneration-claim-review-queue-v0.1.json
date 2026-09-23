@@ -118,14 +118,24 @@
         66,
         67
       ],
-      "status": "REVIEW_REQUIRED",
+      "status": "COMPLETE",
       "primary_sources": [
+        "mhlw-r6-qa-transport-reduction",
+        "mhlw-r6-transport-efficiency-joint-ride",
         "mhlw-fee-notice19-base",
-        "current MHLW Q&A corpus",
-        "current fee-guidance"
+        "current MHLW Q&A index"
       ],
-      "related_nodes": [],
-      "target": "居宅以外への送迎、他事業所従業者による送迎、第三者委託・共同送迎を分けてreviewする。"
+      "related_nodes": [
+        "fee.dayservice.note.24"
+      ],
+      "target": "居宅以外への送迎、他事業所従業者による送迎、第三者委託・共同送迎を分けてreviewする。",
+      "reviewed_at": "2026-09-23",
+      "claim_ids": [
+        "claim.remuneration.transport-reduction.other-residence",
+        "claim.remuneration.transport-reduction.other-business-employee",
+        "claim.remuneration.transport-reduction.third-party-outsourcing"
+      ],
+      "result": "RH2-012〜014を3個のatomic ClaimとしてANSWER / VERIFIED_CURRENTへ昇格。広い報酬Claimは閉じたまま。"
     },
     {
       "group_id": "remuneration.three-percent-scale-exception",
@@ -162,12 +172,11 @@
   "counts": {
     "groups": 5,
     "holdout_cases": 20,
-    "complete_groups": 2,
-    "answerable_holdout_cases": 10,
-    "remaining_review_required": 10
+    "complete_groups": 3,
+    "answerable_holdout_cases": 13,
+    "remaining_review_required": 7
   },
   "next_priority": [
-    "remuneration.transport-reduction",
     "remuneration.three-percent-scale-exception",
     "remuneration.duration-weather"
   ]

@@ -15,8 +15,8 @@
     "No case was removed or relabeled to improve class balance."
   ],
   "class_distribution": {
-    "ANSWER": 10,
-    "REVIEW_REQUIRED": 10
+    "ANSWER": 13,
+    "REVIEW_REQUIRED": 7
   },
   "cases": [
     {
@@ -121,25 +121,28 @@
       "id": "RH2-012",
       "qno": 65,
       "question": "通所系サービスで、事業所から利用者の居宅以外の場所（親族宅など）へ送迎した場合、送迎減算を適用しないことはできますか。",
-      "expected": "REVIEW_REQUIRED",
+      "expected": "ANSWER",
       "topic": "送迎減算",
-      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+      "rationale": "令和6年度介護報酬改定Q&A（Vol.1）問65〜67の回答本文、現行告示第19号注24、後続の送迎効率化通知を独立確認し、当該質問だけを扱うatomic ClaimをVERIFIED_CURRENTへ昇格。広い報酬Claimは引き続きREVIEW_REQUIRED。",
+      "expected_claim_id": "claim.remuneration.transport-reduction.other-residence"
     },
     {
       "id": "RH2-013",
       "qno": 66,
       "question": "A事業所の利用者をB事業所の従業者が送迎した場合、送迎減算は適用されますか。また、A事業所とB事業所の利用者を同乗させることはできますか。",
-      "expected": "REVIEW_REQUIRED",
+      "expected": "ANSWER",
       "topic": "送迎減算",
-      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+      "rationale": "令和6年度介護報酬改定Q&A（Vol.1）問65〜67の回答本文、現行告示第19号注24、後続の送迎効率化通知を独立確認し、当該質問だけを扱うatomic ClaimをVERIFIED_CURRENTへ昇格。広い報酬Claimは引き続きREVIEW_REQUIRED。",
+      "expected_claim_id": "claim.remuneration.transport-reduction.other-business-employee"
     },
     {
       "id": "RH2-014",
       "qno": 67,
       "question": "通所介護事業所が送迎業務を第三者へ委託した場合、送迎減算は適用されますか。また、複数事業所が共同で送迎を委託して利用者を同乗させることはできますか。",
-      "expected": "REVIEW_REQUIRED",
+      "expected": "ANSWER",
       "topic": "送迎減算",
-      "rationale": "質問の結論は報酬加算・減算・所要時間区分・事業所規模特例などの算定要件に依存する。current mainではremuneration-review.jsonおよびfee-guidance-review.jsonがNOT_STARTEDであり、機械取込・独立機械照合済みであっても人手確認済みの確定情報へ昇格させない。Q&A回答本文だけを根拠にANSWERへ昇格しない。"
+      "rationale": "令和6年度介護報酬改定Q&A（Vol.1）問65〜67の回答本文、現行告示第19号注24、後続の送迎効率化通知を独立確認し、当該質問だけを扱うatomic ClaimをVERIFIED_CURRENTへ昇格。広い報酬Claimは引き続きREVIEW_REQUIRED。",
+      "expected_claim_id": "claim.remuneration.transport-reduction.third-party-outsourcing"
     },
     {
       "id": "RH2-015",
