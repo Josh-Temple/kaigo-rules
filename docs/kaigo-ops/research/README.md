@@ -28,6 +28,23 @@ The recovered benchmark README records a later historical state including remune
 
 Therefore, statements in recovered notes such as “source layer CLOSED”, “human review COMPLETE”, or specific historical CI run results must be treated as historical evidence until replayed against current `main`.
 
+## Current canonical independent-audit state
+
+Fresh reconciliation on 2026-09-25 found that current `main` preserves strong independent-audit evidence separately from the human-review ledgers.
+
+- `data/fee-guidance-independent-verification.json`: all 8 current 老企第36号 day-service candidates are `TEXT_RECONSTRUCTION_PASS` against primary-source reconstruction.
+- `data/remuneration-independent-audit.json`: notices 19, 27, and 95 are `PASS` against an independent machine reparse plus fresh primary-source read.
+- `data/unit-price-independent-audit.json`: 8 day-service rates, 427 explicit regional assignments, and the default rule are `PASS`.
+- All three independent-audit records explicitly keep `human_verified=false`, `verified_current=false`, and `automatic_promotion_allowed=false`.
+- The current human-review ledgers remain fail-closed: `data/remuneration-review.json`, `data/fee-guidance-review.json`, and `data/unit-price-review.json` are `NOT_STARTED`.
+- Current `package.json` runs validators for all three independent audits inside `validate:data`. The latest `main` Validate build run #542 passed at commit `d4ba5d793e4edbdf9a63ccdc73cc9e9af195a975`.
+
+This means the correct current statement is:
+
+> the machine/AI independent audit evidence is preserved and continuously guarded against repository drift, while human/current verification remains intentionally unopened.
+
+Do not convert the independent-audit PASS results into `HUMAN_VERIFIED`, `VERIFIED_CURRENT`, or an open answerability gate.
+
 ## What remains reusable
 
 The recovered assets are still useful as research inputs, especially:
