@@ -1,3 +1,4 @@
+import VerificationSummary from "../../components/verification-summary";
 import Link from "next/link";
 import nodesData from "../../data/ordinance37-nodes.json";
 import metaData from "../../data/ordinance37-meta.json";
@@ -66,6 +67,8 @@ export default function RulesPage() {
         e-Govの現行法令XMLから生成し、構造・参照整合は自動検査していますが、
         全182ノードの人手照合はまだ完了していません。
       </div>
+
+      <VerificationSummary layerId="ordinance37" />
 
       <section className="rules-stats" aria-label="基準DBの収載状況">
         <div><strong>{meta.counts.nodes_total}</strong><span>ノード</span></div>
