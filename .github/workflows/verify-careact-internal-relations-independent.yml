@@ -9,6 +9,8 @@ on:
       - "scripts/verify_careact_internal_relations_independent.py"
       - "data/care-insurance-act-nodes.json"
       - "data/care-insurance-act-relations.json"
+      - "data/careact-internal-relation-independent-audit.json"
+      - "scripts/validate_careact_internal_relation_independent_audit.py"
       - ".github/workflows/verify-careact-internal-relations-independent.yml"
   push:
     branches: [main]
@@ -16,6 +18,8 @@ on:
       - "scripts/verify_careact_internal_relations_independent.py"
       - "data/care-insurance-act-nodes.json"
       - "data/care-insurance-act-relations.json"
+      - "data/careact-internal-relation-independent-audit.json"
+      - "scripts/validate_careact_internal_relation_independent_audit.py"
       - ".github/workflows/verify-careact-internal-relations-independent.yml"
 
 permissions:

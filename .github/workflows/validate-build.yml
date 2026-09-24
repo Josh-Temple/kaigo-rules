@@ -3,6 +3,7 @@ name: Validate build
 on:
   push:
     branches:
+      - main
       - "feat/**"
       - "fix/**"
       - "automation/**"
@@ -10,12 +11,17 @@ on:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: validate-build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
@@ -25,3 +31,44 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Validate and build
         run: npm run build
+      - name: Smoke test key routes
+        shell: bash
+        run: |
+          npm start > /tmp/kaigo-rules-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+
+          ready=0
+          for _ in {1..30}; do
+            if curl --fail --silent --show-error http://127.0.0.1:3000/ >/dev/null; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ready" -ne 1 ]; then
+            cat /tmp/kaigo-rules-next.log
+            exit 1
+          fi
+
+          routes=(
+            "/"
+            "/search"
+            "/start"
+            "/qa"
+            "/law"
+            "/rules"
+            "/notices"
+            "/notices/review"
+            "/fees"
+            "/sources"
+            "/about"
+            "/feedback"
+          )
+          for route in "${routes[@]}"; do
+            echo "GET $route"
+            curl --fail --silent --show-error "http://127.0.0.1:3000$route" >/dev/null || {
+              cat /tmp/kaigo-rules-next.log
+              exit 1
+            }
+          done
