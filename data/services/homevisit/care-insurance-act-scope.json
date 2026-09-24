@@ -1,0 +1,34 @@
+{
+  "format_version": 1,
+  "service_id": "homevisit",
+  "status": "SCOPE_DEFINED_NOT_INGESTED",
+  "law_id": "409AC0000000123",
+  "law_num": "平成九年法律第百二十三号",
+  "title": "介護保険法",
+  "shared_core": "data/services/shared/designated-home-service-core.json",
+  "service_definition": {
+    "article": "8",
+    "paragraphs": ["1", "2"],
+    "reason": "第8条第1項が居宅サービスの範囲、第2項が訪問介護の定義を定める。"
+  },
+  "excluded_initial_scope": [
+    {
+      "article": "71",
+      "reason": "みなし指定に関する特例であり、通常の指定訪問介護の最小scopeから分離する。"
+    },
+    {
+      "article": "72",
+      "reason": "介護老人保健施設・介護医療院のみなし指定であり、通常の指定訪問介護から分離する。"
+    },
+    {
+      "article": "72-2",
+      "reason": "共生型居宅サービスの特例であり、共生型訪問介護は別scopeとする。"
+    }
+  ],
+  "evidence": {
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=1",
+    "checked_on": "2026-09-25",
+    "observed_fact": "介護保険法第8条第2項に訪問介護の定義が置かれている。"
+  },
+  "automatic_verification_promotion_allowed": false
+}

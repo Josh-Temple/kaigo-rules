@@ -17,13 +17,14 @@
       "label": "通所介護",
       "status": "ACTIVE_MVP",
       "config": "data/services/dayservice.json"
+    },
+    {
+      "service_id": "homevisit",
+      "label": "訪問介護",
+      "status": "SCOPE_DEFINED_NOT_INGESTED",
+      "config": "data/services/homevisit.json"
     }
   ],
-  "next_service_candidate": {
-    "service_id": "homevisit",
-    "label": "訪問介護",
-    "status": "NOT_ADDED"
-  },
   "migration": {
     "phase_1": "Add one service descriptor plus one isolated service config. Do not copy shared source corpora.",
     "phase_2": "Add only service-specific scopes and verification implementations required by the real service.",

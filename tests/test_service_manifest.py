@@ -122,6 +122,48 @@ class ServiceManifestTests(unittest.TestCase):
             errors = validation_errors(root, check_registry=True)
             self.assertTrue(any("id namespace" in error for error in errors))
 
+    def test_non_active_service_route_is_rejected_when_enabled(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._fixture(root, service_count=2)
+            path = root / "data/services/service-1.json"
+            config = json.loads(path.read_text(encoding="utf-8"))
+            config["routing"]["future_service_base_enabled"] = True
+            self._write(root, "data/services/service-1.json", config)
+            errors = validation_errors(root, check_registry=True)
+            self.assertTrue(any("non-active service route" in error for error in errors))
+
+    def test_repository_homevisit_stays_unpublished_and_unverified(self):
+        root = Path(__file__).resolve().parents[1]
+        manifest = json.loads(
+            (root / "data/services/manifest.json").read_text(encoding="utf-8")
+        )
+        homevisit = json.loads(
+            (root / "data/services/homevisit.json").read_text(encoding="utf-8")
+        )
+        registry = json.loads(
+            (root / "data/verification-registry.json").read_text(encoding="utf-8")
+        )
+
+        descriptor = next(
+            item for item in manifest["services"]
+            if item["service_id"] == "homevisit"
+        )
+        self.assertEqual("SCOPE_DEFINED_NOT_INGESTED", descriptor["status"])
+        self.assertFalse(homevisit["routing"]["future_service_base_enabled"])
+        self.assertFalse(homevisit["publication_gate"]["public_routes_enabled"])
+        self.assertFalse(homevisit["publication_gate"]["content_ingested"])
+        self.assertFalse(
+            homevisit["publication_gate"]["independent_verification_complete"]
+        )
+        self.assertEqual([], homevisit["verification_layer_ids"])
+        self.assertFalse(
+            any(
+                "homevisit" in layer.get("service_ids", [])
+                for layer in registry["layers"]
+            )
+        )
+
     def test_registry_service_coverage_drift_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
