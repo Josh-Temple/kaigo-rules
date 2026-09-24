@@ -25,31 +25,15 @@ jobs:
       - name: Generate ops lockfile
         working-directory: ops-site
         run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-      - name: Switch CI to npm ci
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          for name in [
-              ".github/workflows/validate-build.yml",
-              ".github/workflows/validate-ops-site.yml",
-          ]:
-              path = Path(name)
-              text = path.read_text(encoding="utf-8")
-              updated = text.replace(
-                  "npm install --no-audit --no-fund",
-                  "npm ci --no-audit --no-fund",
-              )
-              if updated == text:
-                  raise SystemExit(f"expected npm install command not found in {name}")
-              path.write_text(updated, encoding="utf-8")
-          PY
       - name: Commit generated lockfiles
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git rm .github/workflows/generate-package-locks-temp.yml
-          git add package-lock.json ops-site/package-lock.json             .github/workflows/validate-build.yml             .github/workflows/validate-ops-site.yml
+          git add package-lock.json ops-site/package-lock.json
           git diff --cached --check
-          git commit -m "Pin npm dependency graphs"
+          if git diff --cached --quiet; then
+            echo "Lockfiles are already current."
+            exit 0
+          fi
+          git commit -m "Generate npm lockfiles"
           git push origin "HEAD:${GITHUB_HEAD_REF}"
