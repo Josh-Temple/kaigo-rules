@@ -8,7 +8,11 @@ import json
 from pathlib import Path
 
 from relation_verification_coverage import build_relation_coverage
-from service_manifest import enrich_verification_layers, load_service_catalog
+from service_manifest import (
+    enrich_verification_layers,
+    load_normalized_verification_layers,
+    load_service_catalog,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -210,6 +214,7 @@ def build() -> dict:
         },
     ]
 
+    layers.extend(load_normalized_verification_layers(service_catalog, ROOT))
     layers = enrich_verification_layers(layers, service_catalog)
     service_descriptors = [
         {
