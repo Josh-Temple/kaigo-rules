@@ -1,0 +1,736 @@
+{
+  "format_version": 1,
+  "generated_at": "2026-09-24T22:48:00+09:00",
+  "base_main_sha": "b802b013213b485f26f54ca187b0bf53d79e8c18",
+  "policy": "Delete only branch refs whose current tip still equals the recorded SHA and whose recorded PR is still merged with the same head ref/SHA. Any mismatch aborts before deletion.",
+  "branches": [
+    {
+      "branch": "audit/remuneration-delegated-relations-current-main",
+      "sha": "77172bd933ff72ac304d22caf119ec48bdac88ff",
+      "pr": 111,
+      "merged_at": "2026-09-23T23:13:04Z",
+      "title": "Independently audit remuneration delegation relations"
+    },
+    {
+      "branch": "audit/rouki25-independent-machine-2026-09",
+      "sha": "585c1121af44fc30f7e02599e7b568ca38c01ff8",
+      "pr": 83,
+      "merged_at": "2026-09-23T09:38:45Z",
+      "title": "独立機械監査: 老企第25号 通所介護22項目"
+    },
+    {
+      "branch": "automation/care-act-35673216784",
+      "sha": "21f9b7aafe9f114721e3f2ef9fa895b2c24b14d9",
+      "pr": 33,
+      "merged_at": "2026-09-22T00:46:38Z",
+      "title": "Store current Care Insurance Act data"
+    },
+    {
+      "branch": "automation/fee-guidance-current-side-extraction",
+      "sha": "5f96c017d4dc86e3b5644e694a1332cae5b09881",
+      "pr": 58,
+      "merged_at": "2026-09-22T06:12:44Z",
+      "title": "Extract the current side of fee guidance redlines"
+    },
+    {
+      "branch": "automation/fee-guidance-snapshot-pipeline",
+      "sha": "1241935a32bc6eeab4a5825a562d28cddb9fd601",
+      "pr": 56,
+      "merged_at": "2026-09-22T05:54:29Z",
+      "title": "Add reproducible fee guidance PDF snapshot pipeline"
+    },
+    {
+      "branch": "automation/fee-guidance-snapshots-35692558539",
+      "sha": "339f7f53029b67334c0c21aeae829c557f35638a",
+      "pr": 57,
+      "merged_at": "2026-09-22T05:56:53Z",
+      "title": "Add initial fee guidance PDF snapshots"
+    },
+    {
+      "branch": "automation/fee-guidance-snapshots-35693831963",
+      "sha": "b37a6bdc83d288f3d92aea1d036d865d762d9378",
+      "pr": 59,
+      "merged_at": "2026-09-22T06:14:49Z",
+      "title": "Refresh fee guidance snapshots with current-side extraction"
+    },
+    {
+      "branch": "automation/fee-guidance-snapshots-35700872518",
+      "sha": "799ca1232f66e517a9a0c81ad126cedab24619da",
+      "pr": 63,
+      "merged_at": "2026-09-22T07:44:05Z",
+      "title": "Add reconstructed current-text candidates for fee guidance"
+    },
+    {
+      "branch": "automation/fee-guidance-snapshots-35794459344",
+      "sha": "b1d2b743a9ab62eb63db69d5c74e4fafab03430c",
+      "pr": 70,
+      "merged_at": "2026-09-22T22:52:20Z",
+      "title": "Refresh fee-guidance candidates after independent-review fixes"
+    },
+    {
+      "branch": "automation/notice-history-35671363003",
+      "sha": "085dac77c73fe7dc076906d961f9278e9ecfc30a",
+      "pr": 27,
+      "merged_at": "2026-09-22T00:18:58Z",
+      "title": "Store historical notice backfill candidates"
+    },
+    {
+      "branch": "automation/ordinance37-35668508741",
+      "sha": "cbfbdb5c1d0a8c8059d4ed054d18cf18a001c443",
+      "pr": 21,
+      "merged_at": "2026-09-21T23:39:49Z",
+      "title": "Import current day-service Ordinance 37 database"
+    },
+    {
+      "branch": "automation/qa-corpus-35662040654",
+      "sha": "d6472e8199f669ac51de84d55f48cdd0ac09a2d2",
+      "pr": 9,
+      "merged_at": "2026-09-21T22:21:20Z",
+      "title": "Refresh MHLW Q&A corpus"
+    },
+    {
+      "branch": "automation/qa-corpus-35662347639",
+      "sha": "77555bd7667a3243b8ed5985f862575274450476",
+      "pr": 11,
+      "merged_at": "2026-09-21T22:25:07Z",
+      "title": "Normalize Q&A corpus metadata ordering"
+    },
+    {
+      "branch": "automation/qa-corpus-35665270026",
+      "sha": "12e3a0cb15369cf46df6a0adbb2e1ba2541e06d5",
+      "pr": 16,
+      "merged_at": "2026-09-21T22:58:24Z",
+      "title": "Store review-only Q&A link candidates"
+    },
+    {
+      "branch": "automation/remuneration-35672196642",
+      "sha": "462ee4827758cc5cd01f719aeb0d23ea30307504",
+      "pr": 29,
+      "merged_at": "2026-09-22T00:30:55Z",
+      "title": "Store current day-service remuneration text"
+    },
+    {
+      "branch": "automation/unit-price-35679526309",
+      "sha": "7fd6041e8ad32a5b4e61b0aef28ba8c48cdd205c",
+      "pr": 42,
+      "merged_at": "2026-09-22T02:52:05Z",
+      "title": "Store current day-service unit prices"
+    },
+    {
+      "branch": "automation/unit-price-35681436975",
+      "sha": "8ce55611cfb67f6b0a87f7b2631060e8bc3d5f1a",
+      "pr": 44,
+      "merged_at": "2026-09-22T03:00:36Z",
+      "title": "Store current municipality region assignments"
+    },
+    {
+      "branch": "chore/npm-lockfiles-20260924",
+      "sha": "d208884791ab6bef4121d63fc47c2a523a2e6421",
+      "pr": 125,
+      "merged_at": "2026-09-24T00:48:40Z",
+      "title": "Pin npm dependency graphs and use npm ci"
+    },
+    {
+      "branch": "chore/refresh-github-actions-pins-20260924",
+      "sha": "2333088436814b8c20c662c803ffd22c3752cbd1",
+      "pr": 128,
+      "merged_at": "2026-09-24T13:02:08Z",
+      "title": "Refresh GitHub Actions pins and monitoring provenance"
+    },
+    {
+      "branch": "chore/repository-hardening-v2-20260924",
+      "sha": "767c6ba0b238cdcd948f80e9ba3eba97d58e740f",
+      "pr": 118,
+      "merged_at": "2026-09-24T00:40:41Z",
+      "title": "Harden repository maintenance and relation audit validation"
+    },
+    {
+      "branch": "data/fee-guidance-24-25-baseline",
+      "sha": "3d17e11c40dac305b35ed5772a7c16d42e59b703",
+      "pr": 55,
+      "merged_at": "2026-09-22T05:25:05Z",
+      "title": "Complete baseline chain for fee guidance 24 and 25"
+    },
+    {
+      "branch": "data/fee-guidance-heading-backfill",
+      "sha": "0992616842d18ebca3e9e33ccc584f990ca2c7a8",
+      "pr": 50,
+      "merged_at": "2026-09-22T05:01:04Z",
+      "title": "Backfill omitted day-service guidance headings"
+    },
+    {
+      "branch": "data/fee-guidance-replay-coverage",
+      "sha": "33762fa0905816ef69b890e3677ba664afd378bf",
+      "pr": 54,
+      "merged_at": "2026-09-22T05:19:28Z",
+      "title": "Track fee guidance amendment replay coverage"
+    },
+    {
+      "branch": "data/fee-guidance-structured-facts",
+      "sha": "48277e64487e5158477d5f47323abd3fa08f64e7",
+      "pr": 53,
+      "merged_at": "2026-09-22T05:10:28Z",
+      "title": "Structure key facts from fee guidance candidates"
+    },
+    {
+      "branch": "data/fee-guidance-text-candidates",
+      "sha": "fadddd6bb0761157300f34156369e5248ddff84e",
+      "pr": 52,
+      "merged_at": "2026-09-22T05:07:59Z",
+      "title": "Add fee guidance text reconstruction candidates"
+    },
+    {
+      "branch": "feat/care-insurance-act-db",
+      "sha": "5f0defa1e17cc769e46028de44f6c737662aea5d",
+      "pr": 31,
+      "merged_at": "2026-09-22T00:42:41Z",
+      "title": "Add Care Insurance Act data layer"
+    },
+    {
+      "branch": "feat/careact-internal-relation-audit",
+      "sha": "e660818c56e2bbfb23843c4e5af67fca59408e9a",
+      "pr": 108,
+      "merged_at": "2026-09-23T22:52:39Z",
+      "title": "Independently audit Care Insurance Act internal relations"
+    },
+    {
+      "branch": "feat/complete-twelve-questions",
+      "sha": "486595109bda9ae910ca90f70797e45dee405fbd",
+      "pr": 5,
+      "merged_at": "2026-09-21T21:49:09Z",
+      "title": "Complete all 12 verified MVP questions"
+    },
+    {
+      "branch": "feat/cross-layer-source-chain-audit",
+      "sha": "68d22554023c0e0338d87426dd39222d85602f25",
+      "pr": 109,
+      "merged_at": "2026-09-23T23:05:05Z",
+      "title": "Independently audit cross-layer legal source chains"
+    },
+    {
+      "branch": "feat/cross-source-search",
+      "sha": "b133e0c3e69d9ed817d577e8ea46a640a1513d2f",
+      "pr": 49,
+      "merged_at": "2026-09-22T04:02:21Z",
+      "title": "Add cross-source search for day-service rules"
+    },
+    {
+      "branch": "feat/fee-guidance-and-unit-review",
+      "sha": "d641b6acb05e6f3fb3b08d88b86494013bae0a37",
+      "pr": 45,
+      "merged_at": "2026-09-22T03:12:30Z",
+      "title": "Add fee guidance skeleton and unit-price review ledger"
+    },
+    {
+      "branch": "feat/fee-guidance-independent-verification-record",
+      "sha": "4e68bc179d3e552b4dd7eb65e9fa7e6d3a734b13",
+      "pr": 93,
+      "merged_at": "2026-09-23T14:00:31Z",
+      "title": "Record independent verification of eight fee-guidance candidates"
+    },
+    {
+      "branch": "feat/mvp-foundation",
+      "sha": "d74004b41f6a75768b7fcefcde6cf83843654150",
+      "pr": 1,
+      "merged_at": "2026-09-21T12:23:15Z",
+      "title": "Add day-service MVP foundation"
+    },
+    {
+      "branch": "feat/notice-current-skeleton",
+      "sha": "a0c822d3730ffc79e01812fb460b6b31b0d0dc89",
+      "pr": 24,
+      "merged_at": "2026-09-22T00:13:23Z",
+      "title": "Add current interpretation-notice skeleton"
+    },
+    {
+      "branch": "feat/notice-currentness-status-ui",
+      "sha": "2073bdb425468738ecfe732c61f1d3fe90b98aea",
+      "pr": 91,
+      "merged_at": "2026-09-23T13:29:15Z",
+      "title": "Separate notice reconstruction support from currentness status"
+    },
+    {
+      "branch": "feat/notice-historical-backfill",
+      "sha": "f7137e5f0a592a7c4fc385ea60483c5709ad733c",
+      "pr": 25,
+      "merged_at": "2026-09-22T00:16:20Z",
+      "title": "Add historical notice backfill pipeline"
+    },
+    {
+      "branch": "feat/notice-human-review-packet",
+      "sha": "f39fb1b272d3e73275c2ed1a80574112c10ac09d",
+      "pr": 81,
+      "merged_at": "2026-09-23T07:25:08Z",
+      "title": "Add rouki25 human review packet and stale-review guard"
+    },
+    {
+      "branch": "feat/notice-review-ui",
+      "sha": "7b5ecad115b663d7c4e8ef134d2d949eaceb33e1",
+      "pr": 82,
+      "merged_at": "2026-09-23T07:50:30Z",
+      "title": "Add mobile-first notice human review workspace"
+    },
+    {
+      "branch": "feat/ordinance-review-ledger",
+      "sha": "bd3537671b336b4125b20a46f83699b536202fa3",
+      "pr": 23,
+      "merged_at": "2026-09-21T23:47:53Z",
+      "title": "Add human review ledger for standards DB"
+    },
+    {
+      "branch": "feat/ordinance37-database",
+      "sha": "1ca8c3c285e3c78a2103b0a3411ef93940c23cd4",
+      "pr": 18,
+      "merged_at": "2026-09-21T23:35:02Z",
+      "title": "Add e-Gov Ordinance 37 database pipeline"
+    },
+    {
+      "branch": "feat/pin-egov-content-audit",
+      "sha": "1044fd9fd54226cc0044516116b75ff2d25d14e5",
+      "pr": 101,
+      "merged_at": "2026-09-23T16:07:34Z",
+      "title": "Pin e-Gov independent content audit and update registry"
+    },
+    {
+      "branch": "feat/pin-qa-independent-audit",
+      "sha": "d59bcabe35ac01d10fc0746857d4b95a019769f1",
+      "pr": 103,
+      "merged_at": "2026-09-23T16:21:01Z",
+      "title": "Pin Q&A independent audit and complete verification registry"
+    },
+    {
+      "branch": "feat/pin-remuneration-unit-price-audits",
+      "sha": "86f67418a1176fb808b6a3956e4fc9cb6ab1b323",
+      "pr": 97,
+      "merged_at": "2026-09-23T14:15:47Z",
+      "title": "Pin independent audits for remuneration and unit prices"
+    },
+    {
+      "branch": "feat/qa-import-pipeline",
+      "sha": "7f2173cb42ee215a31aec28bf6a162191753b355",
+      "pr": 7,
+      "merged_at": "2026-09-21T22:16:57Z",
+      "title": "Add MHLW Q&A import pipeline"
+    },
+    {
+      "branch": "feat/qa-search-synonyms",
+      "sha": "9fe6cb1bbd86f09c77f5af7aa80b2b88c54c04b1",
+      "pr": 17,
+      "merged_at": "2026-09-21T23:02:05Z",
+      "title": "Expand practical synonyms in Q&A search"
+    },
+    {
+      "branch": "feat/qa-search-ui",
+      "sha": "f27f35afa1089bdf7a61ce2b8ff8bc5b2682ce9d",
+      "pr": 12,
+      "merged_at": "2026-09-21T22:52:23Z",
+      "title": "Add searchable MHLW Q&A corpus"
+    },
+    {
+      "branch": "feat/qa-source-freshness-monitor",
+      "sha": "fb0a3c8a8e20fb542c82452deae8c03e295c8aa2",
+      "pr": 68,
+      "merged_at": "2026-09-22T20:16:02Z",
+      "title": "Add weekly MHLW Q&A source freshness monitoring"
+    },
+    {
+      "branch": "feat/qa-startup-next-answers",
+      "sha": "fe90dc534185daf418f872395ccb22983291b8c3",
+      "pr": 3,
+      "merged_at": "2026-09-21T13:59:16Z",
+      "title": "Add national Q&A layer and startup guide"
+    },
+    {
+      "branch": "feat/relation-semantic-independent-audit",
+      "sha": "92f0fe8bb08800f7c7dfc3c85ea82f6d827bfe2b",
+      "pr": 107,
+      "merged_at": "2026-09-23T22:45:36Z",
+      "title": "Independently audit explicit legal-reference relations"
+    },
+    {
+      "branch": "feat/remuneration-db-skeleton",
+      "sha": "00bd2a40d84f24a3eb25ed7d9979e51b8d3bd116",
+      "pr": 28,
+      "merged_at": "2026-09-22T00:29:50Z",
+      "title": "Add day-service remuneration database skeleton"
+    },
+    {
+      "branch": "feat/remuneration-delegated-criteria-db",
+      "sha": "fbdda3f1192876459a85d2fb559127da0e3704d3",
+      "pr": 36,
+      "merged_at": "2026-09-22T01:31:11Z",
+      "title": "Add delegated remuneration criteria database"
+    },
+    {
+      "branch": "feat/remuneration-delegated-integration-v2",
+      "sha": "c4d6d8912fbbae49752f51a9ec841aca9424e1db",
+      "pr": 39,
+      "merged_at": "2026-09-22T02:23:37Z",
+      "title": "Integrate delegated remuneration criteria"
+    },
+    {
+      "branch": "feat/remuneration-independent-verifier",
+      "sha": "8ccbacf46665bd1d19c3b92499eb872d863bf07d",
+      "pr": 66,
+      "merged_at": "2026-09-22T14:04:57Z",
+      "title": "Add independent verification for remuneration sources"
+    },
+    {
+      "branch": "feat/remuneration-review-complete",
+      "sha": "d9bc994f3016313e48ebd033087e8120d3cfbc90",
+      "pr": 35,
+      "merged_at": "2026-09-22T01:25:48Z",
+      "title": "Complete remuneration database review layer"
+    },
+    {
+      "branch": "feat/remuneration-review-ui",
+      "sha": "9f6f673c1000d0cf9c3fa7ef6017d4d9f5e5c629",
+      "pr": 30,
+      "merged_at": "2026-09-22T00:36:06Z",
+      "title": "Add remuneration review detail pages"
+    },
+    {
+      "branch": "feat/remuneration-review-v2",
+      "sha": "19d51e6a422b743aa4093237b68306215ac159d6",
+      "pr": 34,
+      "merged_at": "2026-09-22T00:53:21Z",
+      "title": "Complete remuneration review layer"
+    },
+    {
+      "branch": "feat/rouki25-currentness-watch",
+      "sha": "68111107851d7decf9a03c4c96b311e84d8b4dae",
+      "pr": 92,
+      "merged_at": "2026-09-23T13:55:28Z",
+      "title": "Add weekly rouki25 currentness source watch"
+    },
+    {
+      "branch": "feat/rouki25-equipment-reconstruction",
+      "sha": "6905ad5b09d8126da85d524a5e357adde7244320",
+      "pr": 76,
+      "merged_at": "2026-09-23T04:29:34Z",
+      "title": "Reconstruct rouki25 day-service equipment text"
+    },
+    {
+      "branch": "feat/rouki25-independent-verifier",
+      "sha": "e0644b51e1f9b67a2b3ca71c21e668ea4ed60eb8",
+      "pr": 80,
+      "merged_at": "2026-09-23T06:51:22Z",
+      "title": "Independently verify rouki25 day-service reconstruction"
+    },
+    {
+      "branch": "feat/rouki25-operation-legacy-reconstruction",
+      "sha": "af88132790c4b79e06a7327be49bddc2fc3a03a6",
+      "pr": 79,
+      "merged_at": "2026-09-23T06:19:22Z",
+      "title": "Reconstruct rouki25 legacy day-service operation text"
+    },
+    {
+      "branch": "feat/rouki25-operation-modern-reconstruction",
+      "sha": "98438c57e273dde6ff3fa535ba8d47ff3d6a8815",
+      "pr": 78,
+      "merged_at": "2026-09-23T05:48:27Z",
+      "title": "Reconstruct rouki25 modern day-service operation text"
+    },
+    {
+      "branch": "feat/rouki25-personnel-reconstruction",
+      "sha": "3e9c02efdf6d1263c7a25b034c6a78306cc40de6",
+      "pr": 77,
+      "merged_at": "2026-09-23T04:46:58Z",
+      "title": "Reconstruct rouki25 day-service personnel text"
+    },
+    {
+      "branch": "feat/rules-review-ui",
+      "sha": "2f9d8a143a383e65c83c676ff5c00c33324825f7",
+      "pr": 22,
+      "merged_at": "2026-09-21T23:44:13Z",
+      "title": "Add standards database review UI"
+    },
+    {
+      "branch": "feat/site-feedback-disclaimer-20260924",
+      "sha": "854b54eeb5c34acd886bd68969d98af50e59dd8c",
+      "pr": 104,
+      "merged_at": "2026-09-23T22:06:46Z",
+      "title": "Add user feedback and usage guidance"
+    },
+    {
+      "branch": "feat/source-drift-monitoring",
+      "sha": "19ddf4426a28ca069adfd525c8533a498d6a291a",
+      "pr": 67,
+      "merged_at": "2026-09-22T14:09:03Z",
+      "title": "Add weekly read-only source drift monitoring"
+    },
+    {
+      "branch": "feat/unit-price-independent-verifier",
+      "sha": "5471b21cf8347e0fad62ec64797470bad3480868",
+      "pr": 65,
+      "merged_at": "2026-09-22T13:59:14Z",
+      "title": "Add independent verifier for day-service unit prices"
+    },
+    {
+      "branch": "feat/unit-price-integration-v2",
+      "sha": "06cee8e425e86171347a610aedd93c77f8f95fc2",
+      "pr": 40,
+      "merged_at": "2026-09-22T02:27:26Z",
+      "title": "Add day-service unit price database"
+    },
+    {
+      "branch": "feat/unit-price-region-assignments",
+      "sha": "75186cf4e1830946b75062d0772b04d27206615b",
+      "pr": 43,
+      "merged_at": "2026-09-22T02:58:37Z",
+      "title": "Add municipality region assignments to unit-price DB"
+    },
+    {
+      "branch": "feat/verification-registry",
+      "sha": "47db44219dcd88ba8f8114e9b0d260acdfe65157",
+      "pr": 99,
+      "merged_at": "2026-09-23T15:56:58Z",
+      "title": "Add cross-layer verification registry"
+    },
+    {
+      "branch": "feat/verified-core-questions",
+      "sha": "9c84d868fce99cf72c387cf1bae7f0a1df026ae5",
+      "pr": 2,
+      "merged_at": "2026-09-21T13:39:22Z",
+      "title": "Add three verified core answers"
+    },
+    {
+      "branch": "feat/verify-egov-content-independently",
+      "sha": "ba526154a36de1c50a332147d276531c2c757760",
+      "pr": 100,
+      "merged_at": "2026-09-23T16:03:17Z",
+      "title": "Independently verify scoped e-Gov law content"
+    },
+    {
+      "branch": "feat/verify-qa-corpus-independently",
+      "sha": "ab3277c2d8e822b4aa3291ce15633943f104c711",
+      "pr": 102,
+      "merged_at": "2026-09-23T16:18:02Z",
+      "title": "Independently verify MHLW Q&A corpus"
+    },
+    {
+      "branch": "feature/ops-site-scaffold",
+      "sha": "5127d895101ff6ea599aac4481a36056d75b8615",
+      "pr": 41,
+      "merged_at": "2026-09-22T02:37:30Z",
+      "title": "Add separate caregiving operations improvement site scaffold"
+    },
+    {
+      "branch": "fix/care-act-authority-chain",
+      "sha": "242931565443f8ec7f9caf5d42ad5a222a4a7395",
+      "pr": 32,
+      "merged_at": "2026-09-22T00:44:56Z",
+      "title": "Keep Care Act authority chain explicit"
+    },
+    {
+      "branch": "fix/current-qa-coverage",
+      "sha": "c7e23aa0d0d72d51367afc44e6446f9ad172b52a",
+      "pr": 6,
+      "merged_at": "2026-09-21T21:50:43Z",
+      "title": "Update national Q&A corpus coverage"
+    },
+    {
+      "branch": "fix/fee-guidance-item-boundaries",
+      "sha": "dec7dc2b1843aaf8600545d322a266121d7f3b8f",
+      "pr": 62,
+      "merged_at": "2026-09-22T07:41:26Z",
+      "title": "Tighten fee guidance item boundaries"
+    },
+    {
+      "branch": "fix/fee-guidance-review-surface",
+      "sha": "bb63b1b7a56f37e10e7e3cb4f3b8bca6a59d975a",
+      "pr": 64,
+      "merged_at": "2026-09-22T13:09:10Z",
+      "title": "Expose reconstructed fee-guidance candidates for review"
+    },
+    {
+      "branch": "fix/fee-guidance-work-review-findings",
+      "sha": "17e6c5f60df9eeb7b4754ba3a3ef382a8df1a369",
+      "pr": 69,
+      "merged_at": "2026-09-22T22:50:15Z",
+      "title": "Fix fee-guidance reconstruction findings from independent review"
+    },
+    {
+      "branch": "fix/notice-history-boundaries",
+      "sha": "0c5147c2fc335b4879c52df6c8582d94fda1ed86",
+      "pr": 26,
+      "merged_at": "2026-09-22T00:17:53Z",
+      "title": "Fix historical notice extraction boundaries"
+    },
+    {
+      "branch": "fix/notice-primary-source-link",
+      "sha": "57dc80447f6a82e165fc92bdccf7ca3f68e27652",
+      "pr": 4,
+      "merged_at": "2026-09-21T14:03:15Z",
+      "title": "Fix interpretation notice source link"
+    },
+    {
+      "branch": "fix/ordinance37-text-normalization",
+      "sha": "33960c512eb56871ea6df7c5633c736a90addb82",
+      "pr": 19,
+      "merged_at": "2026-09-21T23:36:59Z",
+      "title": "Normalize Ordinance 37 imported text"
+    },
+    {
+      "branch": "fix/ordinance37-whitespace-v2",
+      "sha": "c3c927567194bc46c00079e0e55ab97d8229bf30",
+      "pr": 20,
+      "merged_at": "2026-09-21T23:38:48Z",
+      "title": "Fix Ordinance 37 XML whitespace normalization"
+    },
+    {
+      "branch": "fix/qa-candidate-linker",
+      "sha": "cbbc62a420c789738956d913f5e2d050cbd3d565",
+      "pr": 13,
+      "merged_at": "2026-09-21T22:53:47Z",
+      "title": "Fix Q&A candidate generation"
+    },
+    {
+      "branch": "fix/qa-candidate-linker-v2",
+      "sha": "0e77b50a4bdde86d25c38393d0d4d26ae77c1ae6",
+      "pr": 14,
+      "merged_at": "2026-09-21T22:55:08Z",
+      "title": "Return generated Q&A candidates correctly"
+    },
+    {
+      "branch": "fix/qa-candidate-quality",
+      "sha": "8d55bfc9c6617f55650f323d75a54bffe509ffa3",
+      "pr": 15,
+      "merged_at": "2026-09-21T22:57:29Z",
+      "title": "Refine Q&A candidate matching"
+    },
+    {
+      "branch": "fix/qa-import-xlsx",
+      "sha": "518d8cbc51fd74ed685bc0e57780ecba54c4017a",
+      "pr": 8,
+      "merged_at": "2026-09-21T22:19:10Z",
+      "title": "Support current MHLW XLSX Q&A workbook"
+    },
+    {
+      "branch": "fix/qa-refresh-stability",
+      "sha": "b95f55537ef219ff0d844525759ca54c7dd4e219",
+      "pr": 10,
+      "merged_at": "2026-09-21T22:22:39Z",
+      "title": "Stabilize Q&A refresh workflow"
+    },
+    {
+      "branch": "fix/relation-coverage-identity-union-20260924",
+      "sha": "c93ade1f93378711924fe7b7372891d839b0e173",
+      "pr": 126,
+      "merged_at": "2026-09-24T12:52:03Z",
+      "title": "Derive relation audit coverage from verified identities"
+    },
+    {
+      "branch": "fix/repository-hardening-20260924",
+      "sha": "4f2541b1eefaf876f567934d8ccaea11e9cbf390",
+      "pr": 112,
+      "merged_at": "2026-09-24T00:34:29Z",
+      "title": "Harden CI and verification coverage"
+    },
+    {
+      "branch": "fix/rouki25-equipment-scope",
+      "sha": "cc9f38beb1b26f2ec791d11f320e7643560d50f8",
+      "pr": 75,
+      "merged_at": "2026-09-23T02:07:41Z",
+      "title": "Fix rouki25 day-service equipment scope and replay chain"
+    },
+    {
+      "branch": "fix/rouki25-reference-date-provenance",
+      "sha": "942f9c4fe0dbb987b04c81fb1fe343c5856a2f15",
+      "pr": 86,
+      "merged_at": "2026-09-23T10:24:46Z",
+      "title": "Flag unresolved date provenance for rouki25 reference PDF"
+    },
+    {
+      "branch": "fix/rouki25-reference-period-2025-03",
+      "sha": "ab60d793b142e8cc251c14dd9db859a2749f2453",
+      "pr": 88,
+      "merged_at": "2026-09-23T12:48:46Z",
+      "title": "Correct rouki25 partial-reference period to 2025-03 context"
+    },
+    {
+      "branch": "fix/unit-price-validation-invariants",
+      "sha": "2f064ccdabef759dee4cfa1dfa394d75968e843d",
+      "pr": 48,
+      "merged_at": "2026-09-22T03:59:14Z",
+      "title": "Strengthen unit-price data invariants"
+    },
+    {
+      "branch": "fix/vercel-ignore-missing-previous-sha-20260924",
+      "sha": "a1f2c60ab44a3b1572273146a87870fdc9242105",
+      "pr": 105,
+      "merged_at": "2026-09-23T22:13:01Z",
+      "title": "Fix Vercel production ignore-step failure"
+    },
+    {
+      "branch": "fix/vercel-monorepo-build-scope",
+      "sha": "faac7dc0290a387ba286847869d236d42f99bb77",
+      "pr": 47,
+      "merged_at": "2026-09-22T03:55:47Z",
+      "title": "Scope Vercel builds by site"
+    },
+    {
+      "branch": "reconcile/fee-guidance-currentness-watch",
+      "sha": "f6896a8511f5d1a8c3be7a9ae1ab3d13b789eeac",
+      "pr": 96,
+      "merged_at": "2026-09-23T14:05:43Z",
+      "title": "Add weekly fee-guidance currentness watch on latest main"
+    },
+    {
+      "branch": "reconcile/kaigo-ops-research-artifacts-20260924",
+      "sha": "9c68f37034763077a51a36b729d8c0ec5adea956",
+      "pr": 130,
+      "merged_at": "2026-09-24T13:11:29Z",
+      "title": "Recover unique Kaigo Ops research artifacts from archived PR #51"
+    },
+    {
+      "branch": "reconcile/rouki25-currentness-ledger",
+      "sha": "860c14a0f0111abe1eb33a40836285d30b534f31",
+      "pr": 90,
+      "merged_at": "2026-09-23T13:25:54Z",
+      "title": "Reconcile rouki25 currentness ledger with latest main"
+    },
+    {
+      "branch": "research/rouki25-currentness-routes-2026-09",
+      "sha": "53e17b365d47d4498581d1d3acd92d058f769d3f",
+      "pr": 84,
+      "merged_at": "2026-09-23T10:18:09Z",
+      "title": "Record rouki25 currentness source investigation"
+    },
+    {
+      "branch": "research/rouki25-lawdb-systematic-search-20260924",
+      "sha": "69c682d73d3831e4a4866089107b62a60120cd82",
+      "pr": 106,
+      "merged_at": "2026-09-23T22:43:53Z",
+      "title": "Pin MHLW law database non-exhaustive coverage boundary"
+    },
+    {
+      "branch": "research/rouki25-mhlw-lawdb-coverage",
+      "sha": "dab0b1700483983e03678b80906e6d1cdd80f004",
+      "pr": 98,
+      "merged_at": "2026-09-23T14:23:08Z",
+      "title": "Add MHLW law-database coverage lane for rouki25"
+    },
+    {
+      "branch": "research/rouki25-post-r6-official-index-scan",
+      "sha": "7e89d1ab0fca7520cea893dd797523962e41d7ae",
+      "pr": 89,
+      "merged_at": "2026-09-23T12:53:25Z",
+      "title": "Record post-R6 official index scan for rouki25"
+    },
+    {
+      "branch": "research/rouki25-post-r6-pdf-body-scan",
+      "sha": "f7b97f659f14aab4b6ceea713a645562d7d314ad",
+      "pr": 94,
+      "merged_at": "2026-09-23T14:01:39Z",
+      "title": "Record post-R6 rouki25 PDF-body currentness scan"
+    },
+    {
+      "branch": "test/fee-guidance-review-regressions",
+      "sha": "4d4f91f15795d9b380fb371e6e2d2c835ddc06bf",
+      "pr": 71,
+      "merged_at": "2026-09-22T22:55:11Z",
+      "title": "Add regression guards for independently verified fee-guidance fixes"
+    }
+  ]
+}

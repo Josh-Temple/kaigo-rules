@@ -1,0 +1,129 @@
+name: Prune verified merged branches once
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/prune-verified-merged-branches-once.yml"
+      - ".github/branch-cleanup/merged-pr-branches-20260924.json"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/prune-verified-merged-branches-once.yml"
+      - ".github/branch-cleanup/merged-pr-branches-20260924.json"
+
+concurrency:
+  group: prune-verified-merged-branches-once
+  cancel-in-progress: false
+
+jobs:
+  verify-manifest:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Verify cleanup manifest and current refs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          manifest=".github/branch-cleanup/merged-pr-branches-20260924.json"
+
+          python - "$manifest" <<'PY'
+          import json, sys
+          p=sys.argv[1]
+          d=json.load(open(p,encoding="utf-8"))
+          rows=d["branches"]
+          assert len(rows)==104, len(rows)
+          names=[r["branch"] for r in rows]
+          assert "main" not in names
+          assert len(names)==len(set(names))
+          for r in rows:
+              assert len(r["sha"])==40
+              assert isinstance(r["pr"], int) and r["pr"] > 0
+          print(f"manifest structure PASS: {len(rows)} branches")
+          PY
+
+          while IFS=$'\t' read -r branch expected pr; do
+            current="$(git ls-remote --heads origin "refs/heads/$branch" | awk '{print $1}')"
+            if [ -z "$current" ]; then
+              echo "already absent: $branch"
+              continue
+            fi
+            if [ "$current" != "$expected" ]; then
+              echo "::error::branch tip moved: $branch expected=$expected current=$current"
+              exit 1
+            fi
+
+            response="$(curl --fail-with-body --silent --show-error \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$GH_REPOSITORY/pulls/$pr")"
+            printf '%s' "$response" | python -c 'import json,sys; branch,expected,pr=sys.argv[1],sys.argv[2],int(sys.argv[3]); data=json.load(sys.stdin); assert data.get("number")==pr, (data.get("number"),pr); assert data.get("merged_at"), f"PR #{pr} is not merged"; assert data.get("head",{}).get("ref")==branch, (data.get("head",{}).get("ref"),branch); assert data.get("head",{}).get("sha")==expected, (data.get("head",{}).get("sha"),expected)' "$branch" "$expected" "$pr"
+          done < <(python - "$manifest" <<'PY'
+          import json, sys
+          for r in json.load(open(sys.argv[1],encoding="utf-8"))["branches"]:
+              print(f'{r["branch"]}\t{r["sha"]}\t{r["pr"]}')
+          PY
+          )
+
+          echo "All existing refs still match merged PR heads."
+
+  delete-branches:
+    if: github.event_name == 'push'
+    needs: verify-manifest
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Revalidate then atomically delete refs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          manifest=".github/branch-cleanup/merged-pr-branches-20260924.json"
+          delete_args=()
+
+          while IFS=$'\t' read -r branch expected pr; do
+            current="$(git ls-remote --heads origin "refs/heads/$branch" | awk '{print $1}')"
+            if [ -z "$current" ]; then
+              echo "already absent: $branch"
+              continue
+            fi
+            if [ "$current" != "$expected" ]; then
+              echo "::error::branch tip moved after validation: $branch expected=$expected current=$current"
+              exit 1
+            fi
+
+            response="$(curl --fail-with-body --silent --show-error \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$GH_REPOSITORY/pulls/$pr")"
+            printf '%s' "$response" | python -c 'import json,sys; branch,expected,pr=sys.argv[1],sys.argv[2],int(sys.argv[3]); data=json.load(sys.stdin); assert data.get("merged_at"), f"PR #{pr} is not merged"; assert data.get("head",{}).get("ref")==branch; assert data.get("head",{}).get("sha")==expected' "$branch" "$expected" "$pr"
+            delete_args+=("$branch")
+          done < <(python - "$manifest" <<'PY'
+          import json, sys
+          for r in json.load(open(sys.argv[1],encoding="utf-8"))["branches"]:
+              print(f'{r["branch"]}\t{r["sha"]}\t{r["pr"]}')
+          PY
+          )
+
+          if [ "${#delete_args[@]}" -eq 0 ]; then
+            echo "No branch refs remain to delete."
+            exit 0
+          fi
+
+          git push --atomic origin --delete "${delete_args[@]}"
+          echo "Deleted ${#delete_args[@]} verified merged branches."
