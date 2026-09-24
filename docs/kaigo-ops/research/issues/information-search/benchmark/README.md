@@ -1,5 +1,15 @@
 # Information Retrieval Benchmark
 
+> **2026-09-25 current-main reconciliation**
+>
+> This file was recovered from archived PR #51 and contains historical research progress. Treat the detailed completion labels and old CI results below as historical unless they agree with current canonical state.
+>
+> Current `main` keeps the relevant human-review ledgers fail-closed: `data/remuneration-review.json`, `data/fee-guidance-review.json`, and `data/unit-price-review.json` are `NOT_STARTED`.
+>
+> Separate canonical independent audits are valid and CI-guarded: remuneration notices 19/27/95 = `PASS`; unit price 8 rates + 427 assignments + default rule = `PASS`; 老企第36号 8 current candidates = `TEXT_RECONSTRUCTION_PASS`. These audit records explicitly state `human_verified=false`, `verified_current=false`, and `automatic_promotion_allowed=false`.
+>
+> The old `.github/workflows/verify-kaigo-ops-research.yml` referenced later in this document is not an active workflow on current `main`; its recovered copy is archived. See `docs/kaigo-ops/research/README.md` for source-of-truth precedence.
+
 作成日: 2026-09-22  
 状態: **Claim Registry v0.21 / corrected regression harness v0.29 / RAG deferred**
 
