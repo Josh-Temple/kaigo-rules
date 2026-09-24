@@ -1,0 +1,197 @@
+{
+  "version": "0.5",
+  "created_at": "2026-09-22",
+  "purpose": "Stress Claim-aware routing with public, real-world phrasing outside the existing MHLW Q&A candidate pool.",
+  "methodology": "Official municipal question text or question-like prompts are used as external query inputs. Municipal answers are not national ground truth. For questions whose local context is only implicit in the source document, the authority name may be minimally prefixed so the benchmark preserves the real user context. Osaka City designation-procedure questions are therefore expected LOCAL, not ANSWER from national claims.",
+  "sources": [
+    {
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "authority": "横浜市",
+      "date": "2026-07",
+      "title": "介護保険事業者向けQ&A集 第15版",
+      "source_note": "The source explicitly states that some answers reflect Yokohama-specific judgments."
+    },
+    {
+      "source_id": "tokyo-day-service-designation",
+      "authority": "東京都",
+      "date": "2026-09-22-accessed",
+      "title": "通所介護 新規指定申請・指定後手続きページ",
+      "source_note": "Used only for municipality-specific procedural query phrasing."
+    },
+    {
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "authority": "大阪市",
+      "date": "2026-05",
+      "title": "新規介護保険事業者の指定前の確認について（Q&A）",
+      "source_note": "Official Osaka City pre-designation Q&A. Used only for municipal-procedure query phrasing; answers are not national ground truth."
+    }
+  ],
+  "cases": [
+    {
+      "id": "MQ-001",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "重要事項説明書の内容が変わったときの文書での同意は、すべて必要ですか？",
+      "expected": "REVIEW_REQUIRED",
+      "expected_claim_id": "review.important.change-consent"
+    },
+    {
+      "id": "MQ-002",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "通所介護サービスの提供時間中に、介護職員が利用者の散髪を行うことはできますか？",
+      "expected": "ANSWER",
+      "expected_composition_id": "composition.service.hairdressing.by-care-worker",
+      "expected_claim_ids": [
+        "claim.service.hairdressing.not-covered",
+        "claim.hairdressing.license-required",
+        "claim.hairdressing.outcall-location-conditions"
+      ]
+    },
+    {
+      "id": "MQ-003",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "サービス提供時間中に医師又は歯科医師による訪問診療を受けることは可能ですか？",
+      "expected": "REVIEW_REQUIRED",
+      "expected_claim_id": "review.service.visiting-medical-dental.in-service"
+    },
+    {
+      "id": "MQ-004",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "通所介護サービスのメニューとして外出レクリエーションを実施してもよいですか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.service.outdoor.conditions"
+    },
+    {
+      "id": "MQ-005",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "外出レクリエーションはサービス提供時間の範囲に限られますか？",
+      "expected": "REVIEW_REQUIRED",
+      "expected_claim_id": "review.service.outdoor.time-boundary"
+    },
+    {
+      "id": "MQ-006",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "サービス提供時間の人員配置について、看護師がどうしてもその時間に抜けざるを得ないことがあります。抜けた場合は人員欠如となりますか？",
+      "expected": "ANSWER",
+      "expected_composition_id": "composition.staff.nurse.presence-and-linkage",
+      "expected_claim_ids": [
+        "claim.staff.nurse.unit-one",
+        "claim.staff.nurse.external-linkage"
+      ]
+    },
+    {
+      "id": "MQ-007",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "機能訓練指導員の配置はサービス提供日ごと、単位ごとに必要ですか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.functional-instructor.not-per-day-unit"
+    },
+    {
+      "id": "MQ-008",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "生活相談員が勤務予定だったが急病で勤務できないため欠員となった場合、減算になりますか？",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "MQ-009",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "自らの希望で歩いて通所している利用者が途中で事故にあった場合、責任は事業所側にありますか？",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "MQ-010",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "通所介護の体験利用を無料で実施することは可能ですか？",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "MQ-011",
+      "source_id": "yokohama-kaigo-provider-qa-v15",
+      "question": "口腔機能向上加算を利用している通所リハと通所介護のそれぞれの事業所で算定してよいですか？",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "MQ-012",
+      "source_id": "tokyo-day-service-designation",
+      "question": "東京都で通所介護事業所を移転したり専用区画を変更したりする場合、事前相談が必要ですか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-013",
+      "source_id": "tokyo-day-service-designation",
+      "question": "東京都で通所介護を新規指定申請する際、建物の用途変更手続きが必要か事前に確認する必要がありますか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-014",
+      "source_id": "tokyo-day-service-designation",
+      "question": "東京都では、食堂と機能訓練室の面積は内法で算出しますか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-015",
+      "source_id": "tokyo-day-service-designation",
+      "question": "東京都で通所介護の新規指定を受ける前に、管理者は新規指定前研修を受講する必要がありますか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-016",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市で介護保険の指定事業者になるために必要な要件は何ですか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-017",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市で介護保険の指定事業者になるための手続きはどうなっていますか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-018",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市では法人の設立前でも指定申請予約申込はできますか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-019",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市で法人の吸収合併・吸収分割がある場合、指定申請は必要ですか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-020",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市では先に指定を受けておいて、体制が整ってから営業を開始することは可能ですか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-021",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市の指定申請予約申込はすべての項目を入力する必要がありますか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-022",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市の指定申請審査事務手数料はいつ支払いますか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-023",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市で指定申請予約申込後に申請するサービス事業種別が誤っていたことが分かった場合、どうすればよいですか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-024",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市で指定申請書類を提出する方法は何ですか？",
+      "expected": "LOCAL"
+    },
+    {
+      "id": "MQ-025",
+      "source_id": "osaka-city-pre-designation-qa-2026",
+      "question": "大阪市で介護保険事業者の指定前に確認しておくべきことは何ですか？",
+      "expected": "LOCAL"
+    }
+  ]
+}

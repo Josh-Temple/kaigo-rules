@@ -1,0 +1,146 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-22",
+  "baseline": {
+    "claims_v0_3_issue_fallback": "51/51",
+    "claims_v0_4_issue_fallback": "17/51",
+    "claims_v0_5_issue_fallback": "8/51"
+  },
+  "resolved_by_safe_routing_expansion": [
+    {
+      "ids": [
+        "KU-002",
+        "KN-002",
+        "CAN-002"
+      ],
+      "claim_id": "claim.staff.life-counselor.time-ratio",
+      "reason": "生活相談員の頭数質問・分割勤務例を、勤務時間比率claimの自然な言い換えとして安全に扱える。"
+    },
+    {
+      "ids": [
+        "CAN-003"
+      ],
+      "claim_id": "claim.staff.nurse.unit-one",
+      "reason": "看護職員の何人必要かという質問は基本配置claimへ直接対応する。"
+    },
+    {
+      "ids": [
+        "KU-005"
+      ],
+      "claim_id": "claim.facility.dining-training.same-place",
+      "reason": "食堂と機能訓練の場所を別室にする必要があるかは、同一場所利用claimの否定形の言い換え。"
+    },
+    {
+      "ids": [
+        "CAN-005"
+      ],
+      "claim_id": "claim.facility.dining-training.area",
+      "reason": "必要面積を尋ねるcanonical queryを基本面積claimへ接続。"
+    },
+    {
+      "ids": [
+        "KU-018"
+      ],
+      "claim_id": "claim.important.before-start",
+      "reason": "サービス開始後でもよいかという質問は、開始前説明・同意claimの否定形。"
+    },
+    {
+      "ids": [
+        "KU-013"
+      ],
+      "claim_id": "claim.training.infection.annual-frequency",
+      "reason": "年に何回という表現を具体的頻度claimへ接続。"
+    },
+    {
+      "ids": [
+        "KU-014"
+      ],
+      "claim_id": "claim.training.abuse.annual-newhire",
+      "reason": "新しく採用した職員という表現を新規採用時研修claimへ接続。"
+    }
+  ],
+  "remaining": [
+    {
+      "id": "KU-003",
+      "category": "MULTI_CLAIM_COMPOSITION",
+      "question": "看護師はサービス提供中ずっと事業所にいないと基準違反になりますか？",
+      "relevant_claim_ids": [
+        "claim.staff.nurse.unit-one",
+        "claim.staff.nurse.external-linkage"
+      ],
+      "action": "単一Claimへ無理に固定せず、複数Claimを束ねる回答componentを実装する。"
+    },
+    {
+      "id": "KU-004",
+      "category": "MULTI_CLAIM_COMPOSITION",
+      "question": "一人の職員を複数の役割で配置したいのですが、まとめて考えていいですか？",
+      "relevant_claim_ids": [
+        "claim.staff.manager.concurrent.core",
+        "claim.staff.care-worker.cross-unit",
+        "claim.staff.functional-instructor.other-duties",
+        "claim.staff.schedule-clarity"
+      ],
+      "action": "職種組合せを特定してから複数Claimを返す。"
+    },
+    {
+      "id": "KM-006",
+      "category": "MULTI_CLAIM_COMPOSITION",
+      "question": "通所介護計画には何を書き、利用者にどう説明し、作成後は何を記録すればよいですか？",
+      "relevant_claim_ids": [
+        "claim.care-plan.content",
+        "claim.care-plan.explain-consent",
+        "claim.care-plan.progress-record"
+      ],
+      "action": "複数Claimを同時に採用できるrouter/output構造が必要。"
+    },
+    {
+      "id": "CAN-004",
+      "category": "MULTI_CLAIM_COMPOSITION",
+      "question": "同じ職員が複数の職種を兼務できますか？",
+      "relevant_claim_ids": [
+        "claim.staff.manager.concurrent.core",
+        "claim.staff.care-worker.cross-unit",
+        "claim.staff.functional-instructor.other-duties",
+        "claim.staff.schedule-clarity"
+      ],
+      "action": "Issue-levelの総論を単一Claimとして捏造せず、職種別Claimの組合せで扱う。"
+    },
+    {
+      "id": "CAN-011",
+      "category": "MULTI_CLAIM_COMPOSITION",
+      "question": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "relevant_claim_ids": [
+        "claim.training.bcp.annual-frequency",
+        "claim.training.infection.annual-frequency",
+        "claim.training.abuse.annual-newhire"
+      ],
+      "action": "複数の研修Claimをまとめて回答する。追加の研修論点は別Claim coverageを確認する。"
+    },
+    {
+      "id": "KU-015",
+      "category": "CLAIM_COVERAGE_GAP",
+      "question": "重要事項説明書は国が決めた様式をそのまま使わなければいけませんか？",
+      "proposed_claim": "重要事項を記した文書に国の固定様式があるか",
+      "action": "不存在の解釈を含むため、現行基準・解釈通知を独立reviewしてVERIFIED_INTERPRETATION候補として扱う。"
+    },
+    {
+      "id": "KN-007",
+      "category": "CLAIM_COVERAGE_GAP",
+      "question": "重要事項説明書って国の決まったひな形じゃないとだめですか？",
+      "proposed_claim": "重要事項を記した文書に国の固定様式があるか",
+      "action": "KU-015と同じclaim候補。routingだけでANSWER化しない。"
+    },
+    {
+      "id": "CAN-007",
+      "category": "CLAIM_COVERAGE_GAP_OR_COMPOSITION",
+      "question": "重要事項説明書には何を記載する必要がありますか？",
+      "relevant_claim_ids": [
+        "claim.important.before-start",
+        "claim.important.accident-complaint",
+        "claim.important.posting-web"
+      ],
+      "action": "文書の内容、提供開始前手続、掲示・ウェブ掲載を分離し、文書内容のclaim coverageが十分かreviewする。"
+    }
+  ],
+  "principle": "Issue fallback must not be driven to zero as a KPI. Retain it when the query legitimately spans multiple verified claims or when claim-level coverage is incomplete."
+}

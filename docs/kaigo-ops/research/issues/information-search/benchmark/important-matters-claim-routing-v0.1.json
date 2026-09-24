@@ -1,0 +1,28 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-22",
+  "purpose": "Verify newly reviewed important-matters document claims and remove the last Issue-fallback cases only where claim-level evidence now exists.",
+  "cases": [
+    {
+      "id": "IM-001",
+      "source_case_id": "KU-015",
+      "question": "重要事項説明書は国が決めた様式をそのまま使わなければいけませんか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.important.no-fixed-national-form"
+    },
+    {
+      "id": "IM-002",
+      "source_case_id": "KN-007",
+      "question": "重要事項説明書って国の決まったひな形じゃないとだめですか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.important.no-fixed-national-form"
+    },
+    {
+      "id": "IM-003",
+      "source_case_id": "CAN-007",
+      "question": "重要事項説明書には何を記載する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.important.document-content-core"
+    }
+  ]
+}

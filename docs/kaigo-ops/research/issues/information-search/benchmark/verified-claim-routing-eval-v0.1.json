@@ -1,0 +1,45 @@
+{
+  "version": "0.1",
+  "evaluated_at": "2026-09-22",
+  "scope": "verified ANSWER claims without explicit routing metadata in claims-v0.3",
+  "before": {
+    "classifier": "research-coverage-classifier-v0.6.mjs",
+    "claim_registry": "claims-v0.3.json",
+    "probe_cases": 28,
+    "answer_label_pass": "27/28",
+    "exact_claim_resolution": "0/28",
+    "issue_fallback_answers": 26,
+    "wrong_explicit_claims": [
+      "VR-009 -> candidate.facility.dining-training.multi-room"
+    ],
+    "false_abstentions": [
+      "VR-003"
+    ]
+  },
+  "after": {
+    "classifier": "research-coverage-classifier-v0.7.mjs",
+    "claim_registry": "claims-v0.4.json",
+    "probe_cases": 28,
+    "answer_label_pass": "28/28",
+    "exact_claim_resolution": "28/28",
+    "issue_fallback_answers": 0
+  },
+  "verified_regression_fallback_dependency": {
+    "before_claims_v0_3": {
+      "claim_resolved": 0,
+      "issue_fallback_answer": 51,
+      "total": 51
+    },
+    "after_claims_v0_4": {
+      "claim_resolved": 34,
+      "issue_fallback_answer": 17,
+      "total": 51
+    }
+  },
+  "safety_fixes": [
+    "Manager concurrent-role routing excludes 勤務表 so schedule-clarity queries do not resolve to the manager claim.",
+    "Care-plan delivery routing excludes 電子/電磁 so electronic-method queries do not resolve to the simple delivery claim.",
+    "Multi-room routing requires an explicit multiple-room signal; generic 合計面積 alone no longer resolves to the multi-room claim."
+  ],
+  "conclusion": "All current ANSWER claims now have explicit routing metadata, but the existing verified regression still contains 17/51 ANSWER paths that rely on Issue-level fallback. The next task is to identify which queries need broader safe Claim routing versus which tests are too coarse to demand exact Claim resolution."
+}

@@ -1,0 +1,52 @@
+{
+  "version": "0.1",
+  "reviewed_at": "2026-09-22",
+  "topic": "指定通所介護の重要事項文書",
+  "official_sources": [
+    {
+      "source_id": "mhlw-home-care-standards-common",
+      "locator": "第8条第1項",
+      "finding": "重要事項を記した文書を交付して説明し、提供開始について同意を得ることを要求する。特定の固定様式は規定していない。"
+    },
+    {
+      "source_id": "mhlw-home-care-standards-current",
+      "locator": "第105条",
+      "finding": "第8条を指定通所介護へ準用する。"
+    },
+    {
+      "source_id": "mhlw-interpretation-html",
+      "locator": "内容及び手続の説明及び同意",
+      "finding": "運営規程の概要、勤務体制、事故対応、苦情処理体制等を、わかりやすい説明書やパンフレット等の文書で説明する趣旨を示す。"
+    },
+    {
+      "source_id": "mhlw-paid-elderly-home-guidance",
+      "locator": "有料老人ホームの設置運営標準指導指針・別紙様式",
+      "finding": "別制度である有料老人ホームでは、厚生労働省が明示的に別紙様式の重要事項説明書を定めている。指定通所介護の基準と混同しない。"
+    }
+  ],
+  "promoted_claims": [
+    {
+      "claim_id": "claim.important.no-fixed-national-form",
+      "verification_status": "VERIFIED_INTERPRETATION",
+      "answerability": "ANSWER",
+      "boundary": "全国共通の指定通所介護基準に関する命題。自治体の標準例・独自様式や、国が参考様式を一切公開していないという主張までは含めない。"
+    },
+    {
+      "claim_id": "claim.important.document-content-core",
+      "verification_status": "VERIFIED_SOURCE_TEXT",
+      "answerability": "ANSWER",
+      "boundary": "解釈通知の列挙は「等」を含むため、完全な全国共通チェックリストとは断定しない。"
+    }
+  ],
+  "benchmark_effect": {
+    "previous_issue_fallback_ids": [
+      "KU-015",
+      "KN-007",
+      "CAN-007"
+    ],
+    "current_issue_fallback_ids": [],
+    "new_tests": "3/3",
+    "full_classifier_checks": "148/148"
+  },
+  "conclusion": "The final three Issue-fallback cases were claim-coverage gaps, not retrieval failures. Independent source review supported two narrowly scoped claims, allowing removal of fallback for the current suite without widening similarity-based answerability."
+}

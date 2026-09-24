@@ -1,0 +1,93 @@
+{
+  "version": "0.12",
+  "created_at": "2026-09-22",
+  "status": "EXPANDED_EXTERNAL_QUERY_GATE_COMPLETE",
+  "total_suite_cases": 165,
+  "suites": [
+    {
+      "name": "benchmark_v0_3",
+      "file": "benchmark-v0.3.json",
+      "cases": 50
+    },
+    {
+      "name": "coverage_gap",
+      "file": "coverage-gap-v0.1.json",
+      "cases": 20
+    },
+    {
+      "name": "false_answer_stress",
+      "file": "false-answer-stress-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "external_mhlw_qa_query_sample",
+      "file": "external-qa-query-sample-v0.4.json",
+      "cases": 33
+    },
+    {
+      "name": "claim_promotion",
+      "file": "claim-promotion-benchmark-v0.1.json",
+      "cases": 2
+    },
+    {
+      "name": "claim_routing_natural_language",
+      "file": "claim-routing-natural-language-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "verified_claim_routing_probe",
+      "file": "verified-claim-routing-probe-v0.1.json",
+      "cases": 28
+    },
+    {
+      "name": "multi_claim_routing",
+      "file": "multi-claim-routing-v0.1.json",
+      "cases": 5
+    },
+    {
+      "name": "important_matters_claim_routing",
+      "file": "important-matters-claim-routing-v0.1.json",
+      "cases": 3
+    }
+  ],
+  "regression_checks": {
+    "verified_queries_and_canonical": 51,
+    "coverage_gap": 20,
+    "false_answer_stress": 12,
+    "external_qa_label_and_claim": 33,
+    "claim_promotion": 2,
+    "claim_routing_natural_language": 12,
+    "verified_claim_routing_probe": 28,
+    "multi_claim_routing": 5,
+    "important_matters_claim_routing": 3,
+    "total_classifier_checks": 166
+  },
+  "latest_results": {
+    "verified_regression": "51/51",
+    "coverage_gap": "20/20",
+    "false_answer_stress": "12/12",
+    "external_qa_label_and_claim": "33/33",
+    "external_answer_claim_ids": "6/6",
+    "claim_promotion": "2/2",
+    "claim_routing_natural_language": "12/12",
+    "verified_claim_routing_probe": "28/28",
+    "multi_claim_routing": "5/5",
+    "important_matters_claim_routing": "3/3",
+    "total_classifier_checks": "166/166"
+  },
+  "routing_state": {
+    "registry_claims": 41,
+    "answer_claims": 35,
+    "compositions": 4,
+    "verified_regression_issue_fallback": "0/51",
+    "external_query_cases": 33,
+    "caution": "Current-suite success is not a production-coverage guarantee. External questions remain a small, Q&A-derived sample."
+  },
+  "next_gate": [
+    "obtain additional external queries from sources other than the existing Q&A-link candidate pool",
+    "measure abstention precision and Claim provenance on those queries",
+    "human sign-off on safety prose",
+    "continue reconstruction of source-limited interpretation notices",
+    "only then begin a controlled RAG comparison"
+  ]
+}

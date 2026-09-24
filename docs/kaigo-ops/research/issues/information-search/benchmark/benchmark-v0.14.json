@@ -1,0 +1,101 @@
+{
+  "version": "0.14",
+  "created_at": "2026-09-22",
+  "status": "MUNICIPAL_CLAIM_REVIEW_GATE_COMPLETE",
+  "total_suite_cases": 180,
+  "suites": [
+    {
+      "name": "benchmark_v0_3",
+      "file": "benchmark-v0.3.json",
+      "cases": 50
+    },
+    {
+      "name": "coverage_gap",
+      "file": "coverage-gap-v0.1.json",
+      "cases": 20
+    },
+    {
+      "name": "false_answer_stress",
+      "file": "false-answer-stress-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "external_mhlw_qa_query_sample",
+      "file": "external-qa-query-sample-v0.4.json",
+      "cases": 33
+    },
+    {
+      "name": "claim_promotion",
+      "file": "claim-promotion-benchmark-v0.1.json",
+      "cases": 2
+    },
+    {
+      "name": "claim_routing_natural_language",
+      "file": "claim-routing-natural-language-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "verified_claim_routing_probe",
+      "file": "verified-claim-routing-probe-v0.1.json",
+      "cases": 28
+    },
+    {
+      "name": "multi_claim_routing",
+      "file": "multi-claim-routing-v0.1.json",
+      "cases": 5
+    },
+    {
+      "name": "important_matters_claim_routing",
+      "file": "important-matters-claim-routing-v0.1.json",
+      "cases": 3
+    },
+    {
+      "name": "municipal_query_sample",
+      "file": "municipal-query-sample-v0.2.json",
+      "cases": 15
+    }
+  ],
+  "regression_checks": {
+    "verified_queries_and_canonical": 51,
+    "coverage_gap": 20,
+    "false_answer_stress": 12,
+    "external_qa_label_and_claim": 33,
+    "claim_promotion": 2,
+    "claim_routing_natural_language": 12,
+    "verified_claim_routing_probe": 28,
+    "multi_claim_routing": 5,
+    "important_matters_claim_routing": 3,
+    "municipal_query_label_and_provenance": 15,
+    "total_classifier_checks": 181
+  },
+  "latest_results": {
+    "verified_regression": "51/51",
+    "coverage_gap": "20/20",
+    "false_answer_stress": "12/12",
+    "external_qa_label_and_claim": "33/33",
+    "claim_promotion": "2/2",
+    "claim_routing_natural_language": "12/12",
+    "verified_claim_routing_probe": "28/28",
+    "multi_claim_routing": "5/5",
+    "important_matters_claim_routing": "3/3",
+    "municipal_query_label_and_provenance": "15/15",
+    "total_classifier_checks": "181/181"
+  },
+  "routing_state": {
+    "registry": "claims-v0.10.json",
+    "composition_registry": "claim-compositions-v0.3.json",
+    "classifier": "research-coverage-classifier-v0.16.mjs",
+    "municipal_sample": "municipal-query-sample-v0.2.json",
+    "registry_claims": 43,
+    "answer_claims": 36,
+    "verified_regression_issue_fallback": "0/51"
+  },
+  "next_gate": [
+    "review outdoor-service Claim boundaries using the current MHLW interpretation notice and 2018 combined-service notice",
+    "separately review hairdressing provider/licensing question rather than reusing the timing Q&A",
+    "keep visiting medical/dental care REVIEW_REQUIRED until a sufficiently specific national source is found",
+    "expand municipal queries to another authority/source family",
+    "human sign-off on safety prose",
+    "controlled RAG comparison remains deferred"
+  ]
+}

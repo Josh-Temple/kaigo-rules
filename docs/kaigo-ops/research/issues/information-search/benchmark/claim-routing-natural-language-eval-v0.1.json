@@ -1,0 +1,39 @@
+{
+  "version": "0.1",
+  "evaluated_at": "2026-09-22",
+  "suite": "claim-routing-natural-language-v0.1.json",
+  "before": {
+    "classifier": "research-coverage-classifier-v0.5.mjs",
+    "passed": 7,
+    "total": 12,
+    "failures": {
+      "false_answer": [
+        "FA-A04",
+        "FA-A05",
+        "FA-A06"
+      ],
+      "claim_resolution_miss": [
+        "FA-B03",
+        "FA-B06"
+      ]
+    },
+    "note": "FA-B04 and FA-B05 are deliberately underspecified and are correctly abstained; they are not counted as false abstentions."
+  },
+  "after": {
+    "classifier": "research-coverage-classifier-v0.6.mjs",
+    "claim_registry": "claims-v0.3.json",
+    "passed": 12,
+    "total": 12,
+    "failures": []
+  },
+  "full_regression": {
+    "verified_regression": "51/51",
+    "coverage_gap": "20/20",
+    "false_answer_stress": "12/12",
+    "external_qa": "15/15",
+    "claim_promotion": "2/2",
+    "claim_routing_natural_language": "12/12",
+    "total_classifier_checks": "112/112"
+  },
+  "conclusion": "Do not optimize answer recall alone. Ambiguous natural language should abstain when the verified claim boundary is not established; explicit registry guards can prevent Issue-level fallback from converting near-match ambiguity into ANSWER."
+}

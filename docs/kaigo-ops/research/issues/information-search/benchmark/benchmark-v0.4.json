@@ -1,0 +1,52 @@
+{
+  "version": "0.4",
+  "created_at": "2026-09-22",
+  "status": "PRE_RAG_GATE_COMPLETE",
+  "total_cases": 82,
+  "suites": [
+    {
+      "name": "verified_retrieval_and_safety",
+      "file": "benchmark-v0.3.json",
+      "cases": 50,
+      "purpose": "Known-coverage routing, multi-source retrieval, and 11 fail-closed safety decisions."
+    },
+    {
+      "name": "coverage_gap",
+      "file": "coverage-gap-v0.1.json",
+      "cases": 20,
+      "purpose": "ANSWER / PARTIAL / REVIEW_REQUIRED / LOCAL / OUT_OF_SCOPE classification."
+    },
+    {
+      "name": "false_answer_stress",
+      "file": "false-answer-stress-v0.1.json",
+      "cases": 12,
+      "purpose": "Prevent lexical-neighbor questions from being incorrectly promoted to ANSWER."
+    }
+  ],
+  "headline_results": {
+    "verified_issue_hit_at_3": 1,
+    "linked_source_complete": 1,
+    "v03_safety_decision_pass": "11/11",
+    "coverage_gap_classification_pass": "20/20",
+    "verified_intent_regression_pass": "51/51",
+    "false_answer_stress_before_intent_gate": "7/12",
+    "false_answer_stress_after_intent_gate": "12/12",
+    "safety_prose_research_review": "11/11 PASS; human sign-off pending"
+  },
+  "current_architecture": [
+    "coverage/scope/review/currentness gate",
+    "Issue similarity routing",
+    "verified intent signature",
+    "top-k ambiguity handling",
+    "explicit linked-source expansion",
+    "verified answer components",
+    "optional generation only after all previous gates"
+  ],
+  "next_gate": [
+    "external/realistic query sampling",
+    "human sign-off on safety prose",
+    "false-abstention measurement",
+    "coverage expansion by review rather than by model inference",
+    "only then compare a RAG candidate"
+  ]
+}

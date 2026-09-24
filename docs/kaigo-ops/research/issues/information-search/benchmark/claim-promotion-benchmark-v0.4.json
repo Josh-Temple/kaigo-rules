@@ -1,0 +1,97 @@
+{
+  "version": "0.4",
+  "created_at": "2026-09-23",
+  "purpose": "Verify that independently promoted claims become answerable through Claim Registry routing without broadening unrelated coverage.",
+  "cases": [
+    {
+      "id": "CP-001",
+      "question": "生活相談員がサービス担当者会議に参加している時間は、配置基準の勤務延時間に算入できますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.staff.life-counselor.service-meeting-time"
+    },
+    {
+      "id": "CP-002",
+      "question": "食堂と機能訓練室が複数の部屋に分かれている場合、面積を合計して3平方メートル×利用定員の基準を満たせますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.facility.dining-training.multi-room"
+    },
+    {
+      "id": "RH2-001",
+      "question": "個別機能訓練加算(Ⅰ)イ・ロの「専ら機能訓練指導員の職務に従事する理学療法士等」について、具体的な配置時間の定めはありますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.individual-functional-training.placement-time"
+    },
+    {
+      "id": "RH2-002",
+      "question": "個別機能訓練加算(Ⅰ)ロでは、専ら機能訓練指導員の職務に従事する理学療法士等を合計で同時に2名以上配置する必要がありますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.individual-functional-training.simultaneous-two"
+    },
+    {
+      "id": "RH2-003",
+      "question": "個別機能訓練加算(Ⅰ)ロの要件を満たす理学療法士等を1名しか確保できない日は、(Ⅰ)ロに代えて(Ⅰ)イを算定できますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.individual-functional-training.fallback-i-a"
+    },
+    {
+      "id": "RH2-004",
+      "question": "個別機能訓練加算(Ⅰ)イ・ロに必要な理学療法士等を、病院・診療所・訪問看護ステーション等との連携により確保してもよいですか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.individual-functional-training.no-external-linkage"
+    },
+    {
+      "id": "RH2-005",
+      "question": "個別機能訓練加算(Ⅰ)ロは、専ら機能訓練指導員の職務に従事する理学療法士等を2名以上配置している時間帯に訓練を受けた利用者だけ算定できますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.individual-functional-training.i-b-time-window"
+    },
+    {
+      "id": "RH2-006",
+      "question": "通所介護事業所の配置基準により置いている機能訓練指導員が、個別機能訓練加算(Ⅰ)イ・ロの「専ら機能訓練指導員の職務に従事する理学療法士等」の要件も満たす場合、別にもう1名配置する必要がありますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.individual-functional-training.baseline-instructor-counts"
+    },
+    {
+      "id": "RH2-007",
+      "question": "入浴介助加算(Ⅰ)で求める入浴介助に関する研修とは、具体的にどのような内容ですか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.bathing-assistance.training-content"
+    },
+    {
+      "id": "RH2-008",
+      "question": "入浴介助加算(Ⅱ)で情報通信機器等を活用して居宅を訪問する場合、訪問する介護職員と評価する医師等が画面を通して同時進行で評価・助言する必要がありますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.bathing-assistance.ict-asynchronous-evaluation"
+    },
+    {
+      "id": "RH2-009",
+      "question": "入浴介助加算(Ⅱ)でいう「居宅」には、どのような場所が含まれますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.bathing-assistance.home-scope"
+    },
+    {
+      "id": "RH2-010",
+      "question": "入浴介助加算(Ⅱ)で利用者の居宅を訪問して浴室環境等を評価できる「住宅改修に関する専門的知識及び経験を有する者」とは、どのような者ですか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.bathing-assistance.home-modification-expert"
+    },
+    {
+      "id": "RH2-012",
+      "question": "通所系サービスで、事業所から利用者の居宅以外の場所（親族宅など）へ送迎した場合、送迎減算を適用しないことはできますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.transport-reduction.other-residence"
+    },
+    {
+      "id": "RH2-013",
+      "question": "A事業所の利用者をB事業所の従業者が送迎した場合、送迎減算は適用されますか。また、A事業所とB事業所の利用者を同乗させることはできますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.transport-reduction.other-business-employee"
+    },
+    {
+      "id": "RH2-014",
+      "question": "通所介護事業所が送迎業務を第三者へ委託した場合、送迎減算は適用されますか。また、複数事業所が共同で送迎を委託して利用者を同乗させることはできますか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.remuneration.transport-reduction.third-party-outsourcing"
+    }
+  ]
+}

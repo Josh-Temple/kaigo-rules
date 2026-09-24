@@ -1,0 +1,19 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-22",
+  "purpose": "Verify that independently promoted claims become answerable through Claim Registry routing without broadening unrelated coverage.",
+  "cases": [
+    {
+      "id": "CP-001",
+      "question": "生活相談員がサービス担当者会議に参加している時間は、配置基準の勤務延時間に算入できますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.staff.life-counselor.service-meeting-time"
+    },
+    {
+      "id": "CP-002",
+      "question": "食堂と機能訓練室が複数の部屋に分かれている場合、面積を合計して3平方メートル×利用定員の基準を満たせますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.facility.dining-training.multi-room"
+    }
+  ]
+}
