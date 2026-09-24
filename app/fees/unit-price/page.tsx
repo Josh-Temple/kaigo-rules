@@ -1,3 +1,4 @@
+import VerificationSummary from "../../../components/verification-summary";
 import ratesData from "../../../data/unit-price-dayservice.json";
 import metaData from "../../../data/unit-price-dayservice-meta.json";
 import assignmentsData from "../../../data/unit-price-region-assignments.json";
@@ -51,6 +52,8 @@ export default async function UnitPricePage({
         厚生労働省の現行告示HTMLから、単価と地域区分の明示地域を抽出しています。
         原文照合が終わるまでは「確認済み」と表示しません。
       </div>
+
+      <VerificationSummary layerId="unit-price" />
 
       <section className="section">
         <h2>地域区分別</h2>
