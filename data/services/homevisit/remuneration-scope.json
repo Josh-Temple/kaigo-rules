@@ -1,0 +1,39 @@
+{
+  "format_version": 1,
+  "service_id": "homevisit",
+  "status": "SCOPE_DEFINED_NOT_INGESTED",
+  "primary_fee_schedule": {
+    "notice_number": "平成12年厚生省告示第19号",
+    "selector": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費",
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1"
+  },
+  "shared_delegated_sources": [
+    {
+      "notice_number": "平成27年厚生労働省告示第93号",
+      "role": "一単位の単価",
+      "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0"
+    },
+    {
+      "notice_number": "平成27年厚生労働省告示第94号",
+      "role": "厚生労働大臣が定める基準に適合する利用者等",
+      "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4583&dataType=0&pageNo=1"
+    },
+    {
+      "notice_number": "平成27年厚生労働省告示第95号",
+      "role": "厚生労働大臣が定める基準",
+      "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1"
+    },
+    {
+      "notice_number": "平成27年厚生労働省告示第96号",
+      "role": "厚生労働大臣が定める施設基準",
+      "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0&pageNo=1"
+    }
+  ],
+  "currentness_context": {
+    "checked_on": "2026-09-25",
+    "latest_identified_amendment": "令和8年厚生労働省告示第87号",
+    "effective_date": "2026-06-01",
+    "note": "scope定義時点で令和8年度介護報酬改定ページと現行告示本文に訪問介護費の改正反映を確認。本文の独立再構成・件数照合は未実施。"
+  },
+  "automatic_verification_promotion_allowed": false
+}
