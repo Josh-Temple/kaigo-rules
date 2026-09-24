@@ -9,6 +9,11 @@
         "service_id": "dayservice",
         "label": "通所介護",
         "status": "ACTIVE_MVP"
+      },
+      {
+        "service_id": "homevisit",
+        "label": "訪問介護",
+        "status": "SCOPE_DEFINED_NOT_INGESTED"
       }
     ]
   },
@@ -264,7 +269,7 @@
     }
   ],
   "summary": {
-    "services_total": 1,
+    "services_total": 2,
     "active_services_total": 1,
     "layers_total": 7,
     "independent_audit_or_reconstruction": 7,
