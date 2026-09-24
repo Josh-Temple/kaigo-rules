@@ -2,6 +2,16 @@
   "format_version": 1,
   "generated_by": "scripts/build_verification_registry.py",
   "policy": "Verification layers are reported separately. Independent machine/AI audit, source freshness/currentness monitoring, and human verification are never collapsed into one status.",
+  "service_catalog": {
+    "default_service_id": "dayservice",
+    "services": [
+      {
+        "service_id": "dayservice",
+        "label": "通所介護",
+        "status": "ACTIVE_MVP"
+      }
+    ]
+  },
   "layers": [
     {
       "id": "rouki25-dayservice",
@@ -28,7 +38,11 @@
         "reviewed_items": 0,
         "total_items": 22
       },
-      "assurance": "INDEPENDENT_TEXT_PASS_CURRENTNESS_HOLD"
+      "assurance": "INDEPENDENT_TEXT_PASS_CURRENTNESS_HOLD",
+      "service_ids": [
+        "dayservice"
+      ],
+      "scope_kind": "SERVICE_SPECIFIC"
     },
     {
       "id": "rouki36-dayservice",
@@ -52,7 +66,11 @@
         "reviewed_items": 0,
         "total_items": 8
       },
-      "assurance": "INDEPENDENT_TEXT_PASS_PLUS_WATCH"
+      "assurance": "INDEPENDENT_TEXT_PASS_PLUS_WATCH",
+      "service_ids": [
+        "dayservice"
+      ],
+      "scope_kind": "SERVICE_SPECIFIC"
     },
     {
       "id": "remuneration-notices",
@@ -75,7 +93,11 @@
       "human_review": {
         "status": "NOT_STARTED"
       },
-      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
+      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
+      "service_ids": [
+        "dayservice"
+      ],
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"
     },
     {
       "id": "unit-price",
@@ -98,7 +120,11 @@
       "human_review": {
         "status": "NOT_STARTED"
       },
-      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
+      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
+      "service_ids": [
+        "dayservice"
+      ],
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"
     },
     {
       "id": "ordinance37",
@@ -123,7 +149,11 @@
       "human_review": {
         "status": "IMPORTED_NEEDS_HUMAN_CHECK"
       },
-      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
+      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
+      "service_ids": [
+        "dayservice"
+      ],
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"
     },
     {
       "id": "care-insurance-act",
@@ -148,7 +178,11 @@
       "human_review": {
         "status": "IMPORTED_NEEDS_HUMAN_CHECK"
       },
-      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
+      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
+      "service_ids": [
+        "dayservice"
+      ],
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"
     },
     {
       "id": "qa-corpus",
@@ -178,7 +212,11 @@
       "human_review": {
         "status": "INGESTED_UNREVIEWED"
       },
-      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
+      "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
+      "service_ids": [
+        "dayservice"
+      ],
+      "scope_kind": "SHARED_CORPUS_SERVICE_FILTER"
     }
   ],
   "relation_verification": {
@@ -226,6 +264,8 @@
     }
   ],
   "summary": {
+    "services_total": 1,
+    "active_services_total": 1,
     "layers_total": 7,
     "independent_audit_or_reconstruction": 7,
     "currentness_or_live_source_monitoring_active": 7,
