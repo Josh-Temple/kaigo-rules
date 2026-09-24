@@ -83,8 +83,8 @@ class ServiceManifestTests(unittest.TestCase):
             {
                 "format_version": 1,
                 "layers": [
-                    {"id": "shared-law", "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"},
-                    {"id": "shared-qa", "scope_kind": "SHARED_CORPUS_SERVICE_FILTER"},
+                    {"id": "shared-law", "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE", "provider": "legacy"},
+                    {"id": "shared-qa", "scope_kind": "SHARED_CORPUS_SERVICE_FILTER", "provider": "legacy"},
                 ],
             },
         )
