@@ -80,7 +80,7 @@ export default function FeesPage() {
           {children.map(node=>{
             const imported=texts.some(item=>item.fee_id===node.id);
             const isReviewed=reviewedIds.has(node.id);
-            return <Link className="fee-row fee-row-link" href={`/fees/${routeKey(node.id)}`} key={node.id}>
+            return <Link id={node.id} className="fee-row fee-row-link" href={`/fees/${routeKey(node.id)}`} key={node.id}>
               <div>
                 <p className="meta">{node.number_path.join(" / ")}</p>
                 <h3>{node.title}</h3>
