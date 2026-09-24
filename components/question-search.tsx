@@ -4,15 +4,17 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import questions from "../data/questions.json";
 
-export default function QuestionSearch() {
+export default function QuestionSearch({ initialLimit }: { initialLimit?: number }) {
   const [query, setQuery] = useState("");
   const normalized = query.trim().toLowerCase();
   const results = useMemo(() => {
-    if (!normalized) return questions;
-    return questions.filter((q) =>
-      [q.title, q.category, ...q.aliases].join(" ").toLowerCase().includes(normalized)
-    );
-  }, [normalized]);
+    const matched = normalized
+      ? questions.filter((q) =>
+          [q.title, q.category, ...q.aliases].join(" ").toLowerCase().includes(normalized)
+        )
+      : questions;
+    return !normalized && initialLimit ? matched.slice(0, initialLimit) : matched;
+  }, [initialLimit, normalized]);
 
   return (
     <>
@@ -28,7 +30,7 @@ export default function QuestionSearch() {
           <button type="submit">横断検索</button>
         </div>
         <small>
-          入力中は確認済みの実務ページを絞り込みます。横断検索では基準省令・報酬・国Q&Aも検索します。
+          入力中は厳選した実務ページを絞り込みます。横断検索では基準省令・報酬・国Q&Aも検索します。
         </small>
       </form>
       <div className="question-list">
