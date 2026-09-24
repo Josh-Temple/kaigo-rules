@@ -1,0 +1,1727 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_question_context_packages.py",
+  "service_id": "dayservice",
+  "package_kind": "CURATED_PRACTICAL_QUESTION_CONTEXT",
+  "policy": {
+    "faq_is_navigation_layer": true,
+    "direct_evidence_preferred": true,
+    "relation_verification_kept_separate": true,
+    "automatic_legal_conclusion_expansion_allowed": false,
+    "unverified_relation_promotion_allowed": false
+  },
+  "counts": {
+    "packages": 12,
+    "packages_with_direct_evidence": 12,
+    "relation_edges": 36,
+    "independently_verified_relation_edges": 0
+  },
+  "packages": [
+    {
+      "package_id": "dayservice.question.annual-training",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "annual-training",
+        "category": "研修・委員会・訓練",
+        "title": "通所介護で毎年実施する必要がある研修は何ですか？",
+        "aliases": [
+          "毎年 研修",
+          "年間 研修",
+          "法定研修",
+          "年1回 研修",
+          "必須研修",
+          "研修 一覧"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-22",
+        "verification_note": "「年1回以上」という数値は、基準省令の『定期的』という義務を具体化する解釈通知の改正後文で確認しています。解釈通知全体の現行統合版は再構成中のため、通知由来の頻度は出典状態を分けて表示しています。"
+      },
+      "answer": {
+        "short_answer": "全国共通の基準で、定期実施が求められ、解釈通知で年1回以上の頻度が示されている主な研修は、BCP、感染症の予防・まん延防止、虐待防止です。これとは別に、従業者の資質向上のための研修機会の確保や、対象者への認知症介護基礎研修の受講措置も必要です。",
+        "practical_steps": [
+          "BCP研修を年間計画に入れます。解釈通知では年1回以上の教育が示されています。",
+          "感染症の予防・まん延防止研修を年間計画に入れます。解釈通知では年1回以上の教育が示されています。",
+          "虐待防止研修を年間計画に入れます。解釈通知では年1回以上の定期研修と、新規採用時の研修が示されています。",
+          "BCP訓練、感染症訓練、非常災害の避難・救出訓練は『研修』とは別に実施要件を確認します。",
+          "資格要件に該当しない職員について、認知症介護基礎研修の受講漏れがないか確認します。"
+        ],
+        "cautions": [
+          "『毎年必要な研修』と『採用時・対象者に一度受講させる研修』を分けて管理すると漏れを防ぎやすくなります。",
+          "BCP研修と感染症研修は、内容を満たす場合に一体的に実施できる旨が解釈通知で示されています。",
+          "消防法等に基づく訓練や自治体独自の指導事項は、この全国共通リストとは別に確認してください。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article101.3",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第101条",
+              "第3項"
+            ],
+            "official_text": "指定通所介護事業者は、通所介護従業者の資質の向上のために、その研修の機会を確保しなければならない。その際、一定の資格を有する者等を除く全ての通所介護従業者に対し、認知症介護に係る基礎的な研修を受講させるために必要な措置を講じなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22",
+            "text_form": "faithful_condensation"
+          },
+          {
+            "id": "ordinance37.article104.2.3",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第104条",
+              "第2項",
+              "第3号"
+            ],
+            "official_text": "当該指定通所介護事業所において、通所介護従業者に対し、感染症の予防及びまん延の防止のための研修及び訓練を定期的に実施すること。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22"
+          },
+          {
+            "id": "ordinance37.article105",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第105条"
+            ],
+            "official_text": "第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22"
+          },
+          {
+            "id": "ordinance37.article30-2.2",
+            "kind": "ordinance37",
+            "path": [
+              "第2章 訪問介護",
+              "第30条の2",
+              "第2項",
+              "通所介護に第105条で準用"
+            ],
+            "official_text": "事業者は、従業者に対し、業務継続計画について周知するとともに、必要な研修及び訓練を定期的に実施しなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-common",
+            "verified_at": "2026-09-22",
+            "text_form": "read_as_applied_to_dayservice"
+          },
+          {
+            "id": "ordinance37.article37-2.3",
+            "kind": "ordinance37",
+            "path": [
+              "第2章 訪問介護",
+              "第37条の2",
+              "第3号",
+              "通所介護に第105条で準用"
+            ],
+            "official_text": "事業所において、従業者に対し、虐待の防止のための研修を定期的に実施すること。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-common",
+            "verified_at": "2026-09-22",
+            "text_form": "read_as_applied_to_dayservice"
+          }
+        ],
+        "notices": [
+          {
+            "id": "notice.dayservice.bcp.frequency",
+            "kind": "interpretation_notice",
+            "path": [
+              "通所介護",
+              "準用",
+              "業務継続計画の策定等",
+              "研修・訓練"
+            ],
+            "official_text": null,
+            "editorial_summary": "省令はBCP研修・訓練の定期実施を求める。解釈通知の改正後文では、職員教育は年1回以上の開催とし、新規採用時には別に研修を行うことが望ましいとされ、訓練も年1回以上とされている。",
+            "verification_status": "KNOWN_AFTER_TEXT",
+            "source_ids": [
+              "mhlw-2021-interpretation-redline"
+            ]
+          },
+          {
+            "id": "notice.dayservice.infection.frequency",
+            "kind": "interpretation_notice",
+            "path": [
+              "通所介護",
+              "衛生管理等",
+              "感染症研修・訓練"
+            ],
+            "official_text": null,
+            "editorial_summary": "感染症の予防・まん延防止研修について、解釈通知の改正後文では年1回以上の教育と新規採用時の研修が望ましいとされ、訓練は年1回以上行うことが必要とされている。",
+            "verification_status": "KNOWN_AFTER_TEXT",
+            "source_ids": [
+              "mhlw-2021-interpretation-redline"
+            ]
+          },
+          {
+            "id": "notice.dayservice.abuse.frequency",
+            "kind": "interpretation_notice",
+            "path": [
+              "共通運営基準",
+              "虐待の防止",
+              "従業者研修"
+            ],
+            "official_text": null,
+            "editorial_summary": "虐待防止研修について、解釈通知の改正後文では、指針に基づく研修プログラムを作成し、年1回以上の定期研修を実施するとともに、新規採用時には必ず研修を実施することが重要とされている。",
+            "verification_status": "KNOWN_AFTER_TEXT",
+            "source_ids": [
+              "mhlw-2021-interpretation-redline"
+            ]
+          }
+        ],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第101条第3項・第104条第2項第3号・第105条",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          },
+          {
+            "source_id": "mhlw-home-care-standards-common",
+            "locator": "第30条の2第2項・第37条の2第3号",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（共通規定）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+            "source_status": "verified_source",
+            "source_note": "通所介護に第105条で準用される第8条、第30条の2、第32条、第37条の2等を含む現行表示。"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "locator": "BCP・感染症・虐待防止の研修頻度に関する改正後文",
+            "layer": "解釈通知",
+            "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "source_status": "partial_source",
+            "source_note": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:annual-training",
+          "relation": "interpreted_by",
+          "target_id": "notice.dayservice.abuse.frequency",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:annual-training",
+          "relation": "interpreted_by",
+          "target_id": "notice.dayservice.bcp.frequency",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:annual-training",
+          "relation": "interpreted_by",
+          "target_id": "notice.dayservice.infection.frequency",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:annual-training",
+          "relation": "required_by",
+          "target_id": "ordinance37.article101.3",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:annual-training",
+          "relation": "required_by",
+          "target_id": "ordinance37.article104.2.3",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:annual-training",
+          "relation": "required_by",
+          "target_id": "ordinance37.article30-2.2",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:annual-training",
+          "relation": "required_by",
+          "target_id": "ordinance37.article37-2.3",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 7,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 7,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "通所介護で毎年実施する必要がある研修は何ですか？",
+          "研修・委員会・訓練",
+          "毎年 研修",
+          "年間 研修",
+          "法定研修",
+          "年1回 研修",
+          "必須研修",
+          "研修 一覧"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.bcp-training",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "bcp-training",
+        "category": "研修・委員会・訓練",
+        "title": "BCPの研修はどのくらいの頻度で行いますか？",
+        "aliases": [
+          "BCP 研修",
+          "業務継続計画 研修",
+          "BCP 年1回",
+          "BCP 訓練",
+          "BCP 研修 頻度"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-22",
+        "verification_note": "省令本文は『定期的』と規定し、解釈通知の改正後文で年1回以上の教育・訓練が示されています。通知は部分ソースとして管理しています。"
+      },
+      "answer": {
+        "short_answer": "通所介護ではBCPについて必要な研修と訓練を定期的に実施する義務があります。解釈通知では、研修は年1回以上の教育を開催し、新規採用時には別に研修を行うことが望ましいとされ、訓練も年1回以上とされています。",
+        "practical_steps": [
+          "感染症BCPと災害BCPの内容を職員が理解できる研修を年1回以上の計画で実施します。",
+          "新規採用者には、通常の定期研修とは別にBCP研修を行う運用を組み込みます。",
+          "BCPに基づく訓練（シミュレーション）も年1回以上実施します。",
+          "研修・訓練の実施日、参加者、内容を記録します。",
+          "感染症BCPの研修・訓練は、感染症対策の研修・訓練と一体的に実施することもできます。"
+        ],
+        "cautions": [
+          "省令上の文言は『定期的』であり、『年1回以上』は解釈通知で示される具体的な頻度です。",
+          "BCPの研修とBCPの訓練は別の要件です。研修だけで訓練を省略しないようにします。",
+          "災害BCPの訓練は、非常災害対策の訓練と一体的に実施できる場合があります。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article105",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第105条"
+            ],
+            "official_text": "第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22"
+          },
+          {
+            "id": "ordinance37.article30-2.2",
+            "kind": "ordinance37",
+            "path": [
+              "第2章 訪問介護",
+              "第30条の2",
+              "第2項",
+              "通所介護に第105条で準用"
+            ],
+            "official_text": "事業者は、従業者に対し、業務継続計画について周知するとともに、必要な研修及び訓練を定期的に実施しなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-common",
+            "verified_at": "2026-09-22",
+            "text_form": "read_as_applied_to_dayservice"
+          }
+        ],
+        "notices": [
+          {
+            "id": "notice.dayservice.bcp.frequency",
+            "kind": "interpretation_notice",
+            "path": [
+              "通所介護",
+              "準用",
+              "業務継続計画の策定等",
+              "研修・訓練"
+            ],
+            "official_text": null,
+            "editorial_summary": "省令はBCP研修・訓練の定期実施を求める。解釈通知の改正後文では、職員教育は年1回以上の開催とし、新規採用時には別に研修を行うことが望ましいとされ、訓練も年1回以上とされている。",
+            "verification_status": "KNOWN_AFTER_TEXT",
+            "source_ids": [
+              "mhlw-2021-interpretation-redline"
+            ]
+          }
+        ],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-common",
+            "locator": "第30条の2第2項・第105条",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（共通規定）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+            "source_status": "verified_source",
+            "source_note": "通所介護に第105条で準用される第8条、第30条の2、第32条、第37条の2等を含む現行表示。"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "locator": "通所介護／業務継続計画の策定等／研修・訓練",
+            "layer": "解釈通知",
+            "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "source_status": "partial_source",
+            "source_note": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:bcp-training",
+          "relation": "applies_via",
+          "target_id": "ordinance37.article105",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:bcp-training",
+          "relation": "interpreted_by",
+          "target_id": "notice.dayservice.bcp.frequency",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:bcp-training",
+          "relation": "required_by",
+          "target_id": "ordinance37.article30-2.2",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 3,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 3,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "BCPの研修はどのくらいの頻度で行いますか？",
+          "研修・委員会・訓練",
+          "BCP 研修",
+          "業務継続計画 研修",
+          "BCP 年1回",
+          "BCP 訓練",
+          "BCP 研修 頻度"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.care-plan-content",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "care-plan-content",
+        "category": "計画・記録",
+        "title": "通所介護計画には何を記載すればよいですか？",
+        "aliases": [
+          "通所介護計画 記載",
+          "計画書 書き方",
+          "通所介護計画 何を書く",
+          "デイサービス 計画書 内容"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-22",
+        "verification_note": null
+      },
+      "answer": {
+        "short_answer": "通所介護計画には、利用者の心身の状況・希望・置かれている環境を踏まえ、機能訓練等の目標と、その目標を達成するための具体的なサービス内容等を記載します。居宅サービス計画がある場合は、その内容に沿って作成します。",
+        "practical_steps": [
+          "利用者の心身の状況、希望、生活環境を確認します。",
+          "機能訓練等について具体的な目標を設定します。",
+          "目標達成のために提供する具体的なサービス内容を記載します。",
+          "居宅サービス計画がある場合は内容との整合を確認します。",
+          "計画内容を説明して利用者の同意を得て、計画を交付します。",
+          "計画に沿ったサービスの実施状況と目標の達成状況を記録します。"
+        ],
+        "cautions": [
+          "単にサービスメニューを並べるだけではなく、利用者ごとの状況・希望・環境と目標のつながりが分かるようにします。",
+          "署名や押印そのものは別論点です。このサイトでは「同意」「署名」「押印」を分けて確認できるようにしています。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article99.1",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第1項"
+            ],
+            "official_text": "指定通所介護事業所の管理者は、利用者の心身の状況、希望及びその置かれている環境を踏まえて、機能訓練等の目標、当該目標を達成するための具体的なサービスの内容等を記載した通所介護計画を作成しなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22"
+          },
+          {
+            "id": "ordinance37.article99.2",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第2項"
+            ],
+            "official_text": "通所介護計画は、既に居宅サービス計画が作成されている場合は、当該居宅サービス計画の内容に沿って作成しなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22"
+          },
+          {
+            "id": "ordinance37.article99.3",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第3項"
+            ],
+            "official_text": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          },
+          {
+            "id": "ordinance37.article99.4",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第4項"
+            ],
+            "official_text": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          },
+          {
+            "id": "ordinance37.article99.5",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第5項"
+            ],
+            "official_text": "通所介護従業者は、それぞれの利用者について、通所介護計画に従ったサービスの実施状況及び目標の達成状況の記録を行う。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22"
+          }
+        ],
+        "notices": [],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第99条第1項〜第5項",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:care-plan-content",
+          "relation": "aligned_with",
+          "target_id": "ordinance37.article99.2",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:care-plan-content",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article99.1",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:care-plan-content",
+          "relation": "consent_under",
+          "target_id": "ordinance37.article99.3",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:care-plan-content",
+          "relation": "delivered_under",
+          "target_id": "ordinance37.article99.4",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:care-plan-content",
+          "relation": "tracked_under",
+          "target_id": "ordinance37.article99.5",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 5,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 5,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "通所介護計画には何を記載すればよいですか？",
+          "計画・記録",
+          "通所介護計画 記載",
+          "計画書 書き方",
+          "通所介護計画 何を書く",
+          "デイサービス 計画書 内容"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.care-plan-seal",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "care-plan-seal",
+        "category": "説明・同意・署名",
+        "title": "通所介護計画書に押印は必要ですか？",
+        "aliases": [
+          "押印",
+          "捺印",
+          "ハンコ",
+          "印鑑",
+          "計画書 押印",
+          "計画書 ハンコ"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-21",
+        "verification_note": "国の基準省令と厚生労働省の制度整理資料における全国共通部分について確認しています。自治体独自の様式運用は別途確認が必要です。"
+      },
+      "answer": {
+        "short_answer": "国の基準省令では、通所介護計画書への押印を必須とする規定は確認できません。必要なのは、計画内容の説明、利用者の同意、計画の交付です。",
+        "practical_steps": [
+          "通所介護計画の内容を説明し、利用者の同意を得ます。",
+          "同意したことを後から確認できる形で記録します。",
+          "押印を事業所内の確認方法として使うこと自体はできますが、国基準上の必須要件とは区別して扱います。",
+          "利用者へ通所介護計画を交付します。"
+        ],
+        "cautions": [
+          "押印が不要でも、利用者の同意そのものは必要です。",
+          "契約書など、通所介護計画とは別の文書については、それぞれの法令・契約実務を確認してください。",
+          "指定権者が独自様式や確認方法を示している場合は、その取扱いも確認してください。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article99.3",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第3項"
+            ],
+            "official_text": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          },
+          {
+            "id": "ordinance37.article99.4",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第4項"
+            ],
+            "official_text": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          }
+        ],
+        "notices": [],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第99条第3項・第4項",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          },
+          {
+            "source_id": "mhlw-2020-consent-review",
+            "locator": "各サービス計画等の同意の取扱い（通所介護）",
+            "layer": "制度整理資料",
+            "title": "介護分野の文書負担軽減に関する制度整理資料（各サービス計画等の同意の取扱い）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/content/12300000/000703105.pdf",
+            "source_status": "reference_only",
+            "source_note": "通所介護計画について「同意は必要。手段の定めはない」と整理した参考資料。法令そのものではない。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:care-plan-seal",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article99.3",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:care-plan-seal",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article99.4",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 2,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 2,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "通所介護計画書に押印は必要ですか？",
+          "説明・同意・署名",
+          "押印",
+          "捺印",
+          "ハンコ",
+          "印鑑",
+          "計画書 押印",
+          "計画書 ハンコ"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.care-plan-signature",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "care-plan-signature",
+        "category": "説明・同意・署名",
+        "title": "通所介護計画書に利用者の署名は必要ですか？",
+        "aliases": [
+          "署名",
+          "サイン",
+          "計画書 サイン",
+          "計画書 署名"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-21",
+        "verification_note": null
+      },
+      "answer": {
+        "short_answer": "国の基準省令では、通所介護計画の内容を説明して利用者の同意を得ることは必須ですが、署名そのものを同意の必須手段とは定めていません。",
+        "practical_steps": [
+          "通所介護計画の内容を利用者または家族に説明し、利用者の同意を得ます。",
+          "同意を得た事実を後から確認できるよう、事業所の運用に合った方法で記録を残します。",
+          "通所介護計画を利用者に交付します。",
+          "電磁的方法で同意等を行う場合は、相手方の承諾を得た上で行います。"
+        ],
+        "cautions": [
+          "「署名が国基準の明文要件ではない」ことと、「利用者の同意が不要」であることは全く別です。同意は必須です。",
+          "厚生労働省の制度整理資料でも、通所介護計画は「同意は必要。手段の定めはない」と整理されています。",
+          "指定権者が同意確認の方法や様式について取扱いを示している場合は、その取扱いも確認してください。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article99.3",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第3項"
+            ],
+            "official_text": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          },
+          {
+            "id": "ordinance37.article99.4",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第99条",
+              "第4項"
+            ],
+            "official_text": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          },
+          {
+            "id": "ordinance37.article217.2",
+            "kind": "ordinance37",
+            "path": [
+              "第15章 雑則",
+              "第217条",
+              "第2項"
+            ],
+            "official_text": "指定居宅サービス事業者及び指定居宅サービスの提供に当たる者は、交付、説明、同意、承諾、締結その他これらに類するもののうち、この省令の規定において書面で行うことが規定されている又は想定されるものについては、当該交付等の相手方の承諾を得て、書面に代えて、電磁的方法によることができる。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-electronic",
+            "verified_at": "2026-09-21"
+          }
+        ],
+        "notices": [],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第99条第3項・第4項",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          },
+          {
+            "source_id": "mhlw-home-care-standards-electronic",
+            "locator": "第217条第2項",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（雑則・電磁的記録等）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=4",
+            "source_status": "verified_source",
+            "source_note": "第217条の電磁的記録・電磁的方法に関する規定。"
+          },
+          {
+            "source_id": "mhlw-2020-consent-review",
+            "locator": "各サービス計画等の同意の取扱い（通所介護）",
+            "layer": "制度整理資料",
+            "title": "介護分野の文書負担軽減に関する制度整理資料（各サービス計画等の同意の取扱い）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/content/12300000/000703105.pdf",
+            "source_status": "reference_only",
+            "source_note": "通所介護計画について「同意は必要。手段の定めはない」と整理した参考資料。法令そのものではない。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:care-plan-signature",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article99.3",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:care-plan-signature",
+          "relation": "electronic_option_under",
+          "target_id": "ordinance37.article217.2",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:care-plan-signature",
+          "relation": "requires_delivery_under",
+          "target_id": "ordinance37.article99.4",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 3,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 3,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "通所介護計画書に利用者の署名は必要ですか？",
+          "説明・同意・署名",
+          "署名",
+          "サイン",
+          "計画書 サイン",
+          "計画書 署名"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.dining-training-area",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "dining-training-area",
+        "category": "設備",
+        "title": "食堂・機能訓練室にはどのくらいの面積が必要ですか？",
+        "aliases": [
+          "食堂 面積",
+          "機能訓練室 面積",
+          "3平方メートル",
+          "3㎡",
+          "定員 面積",
+          "食堂と機能訓練室 同じ"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-22",
+        "verification_note": null
+      },
+      "answer": {
+        "short_answer": "食堂と機能訓練室は、それぞれ必要な広さを確保した上で、合計面積が「3㎡ × 利用定員」以上必要です。食事と機能訓練を行う際にそれぞれ支障のない広さを確保できる場合は、同じ場所を兼用できます。",
+        "practical_steps": [
+          "同時にサービス提供を受けられる利用者数の上限である「利用定員」を確認します。",
+          "3㎡ × 利用定員で必要な合計面積を計算します。",
+          "食堂と機能訓練室として実際に利用できる面積が基準を満たすか確認します。",
+          "同一スペースを兼用する場合は、食事時と機能訓練時の双方で支障のない広さを確保できる運用にします。"
+        ],
+        "cautions": [
+          "食堂・機能訓練室の面積だけで設備基準が完結するわけではなく、静養室、相談室、事務室等も必要です。",
+          "建築基準法、消防法、自治体条例など介護保険以外の要件は別途確認が必要です。",
+          "面積の算定方法や図面上の取扱いは、物件契約や改修前に指定権者へ確認すると安全です。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article95.1-2",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第3節 設備に関する基準",
+              "第95条",
+              "第1項・第2項"
+            ],
+            "official_text": "指定通所介護事業所は、食堂、機能訓練室、静養室、相談室及び事務室を有するほか、消火設備その他の非常災害に際して必要な設備並びに指定通所介護の提供に必要なその他の設備及び備品等を備えなければならない。食堂及び機能訓練室は、それぞれ必要な広さを有するものとし、その合計した面積は、三平方メートルに当該指定通所介護事業所の利用定員を乗じて得た面積以上とする。食事の提供及び機能訓練の実施にそれぞれ支障がない広さを確保できる場合は、同一の場所とすることができる。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22"
+          }
+        ],
+        "notices": [],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第95条第1項・第2項",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:dining-training-area",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article95.1-2",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 1,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 1,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "食堂・機能訓練室にはどのくらいの面積が必要ですか？",
+          "設備",
+          "食堂 面積",
+          "機能訓練室 面積",
+          "3平方メートル",
+          "3㎡",
+          "定員 面積",
+          "食堂と機能訓練室 同じ"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.important-matters-content",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "important-matters-content",
+        "category": "運営",
+        "title": "重要事項説明書には何を記載する必要がありますか？",
+        "aliases": [
+          "重要事項説明書 記載",
+          "重要事項説明書 何を書く",
+          "重要事項 説明",
+          "重要事項 ウェブ掲載",
+          "重要事項 掲示"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-22",
+        "verification_note": null
+      },
+      "answer": {
+        "short_answer": "国の基準は「重要事項説明書」という固定様式を定めているわけではありません。サービス開始前に、運営規程の概要、従業者の勤務体制、事故発生時の対応、苦情処理体制など、利用者がサービスを選ぶために必要な重要事項を文書で示して説明し、サービス提供の開始について同意を得る必要があります。",
+        "practical_steps": [
+          "運営規程の概要、職員の勤務体制、サービス内容・料金など、利用判断に必要な事項を整理します。",
+          "事故発生時の対応と苦情相談・処理の体制を明記します。",
+          "サービス提供開始前に文書を交付して分かりやすく説明し、提供開始について同意を得ます。",
+          "同じ重要事項について、事業所内の掲示または自由閲覧できる書面の備付けを行い、原則としてウェブサイトにも掲載します。"
+        ],
+        "cautions": [
+          "契約書、運営規程、重要事項を記した文書は役割が異なります。内容の不整合がないよう管理してください。",
+          "指定権者が標準例や追加記載事項を示している場合は、その取扱いも確認してください。",
+          "ウェブ掲載義務は、通所介護に準用される掲示規定に基づくものです。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article105",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第105条"
+            ],
+            "official_text": "第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22"
+          },
+          {
+            "id": "ordinance37.article8.1",
+            "kind": "ordinance37",
+            "path": [
+              "第2章 訪問介護",
+              "第8条",
+              "第1項",
+              "通所介護に第105条で準用"
+            ],
+            "official_text": "提供の開始に際し、あらかじめ、利用申込者又はその家族に対し、運営規程の概要、従業者の勤務の体制その他の利用申込者のサービスの選択に資すると認められる重要事項を記した文書を交付して説明を行い、当該提供の開始について利用申込者の同意を得なければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-common",
+            "verified_at": "2026-09-22",
+            "text_form": "read_as_applied_to_dayservice"
+          },
+          {
+            "id": "ordinance37.article32.1-3",
+            "kind": "ordinance37",
+            "path": [
+              "第2章 訪問介護",
+              "第32条",
+              "第1項〜第3項",
+              "通所介護に第105条で準用"
+            ],
+            "official_text": "事業所の見やすい場所に、運営規程の概要、従業者の勤務の体制その他の利用申込者のサービスの選択に資すると認められる重要事項を掲示しなければならない。重要事項を記載した書面を事業所に備え付け、関係者に自由に閲覧させることにより掲示に代えることができる。原則として、重要事項をウェブサイトに掲載しなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-common",
+            "verified_at": "2026-09-22",
+            "text_form": "structured_verbatim_condensation"
+          }
+        ],
+        "notices": [
+          {
+            "id": "notice.common.important-matters.explanation",
+            "kind": "interpretation_notice",
+            "path": [
+              "共通運営基準",
+              "内容及び手続の説明及び同意"
+            ],
+            "official_text": null,
+            "editorial_summary": "重要事項の文書には、運営規程の概要、従業者の勤務体制に加え、事故発生時の対応、苦情処理の体制など、利用申込者がサービスを選択するために必要な事項を分かりやすく示す。",
+            "verification_status": "VERIFIED_SOURCE_TEXT",
+            "source_ids": [
+              "mhlw-interpretation-html"
+            ]
+          }
+        ],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-common",
+            "locator": "第8条第1項・第32条・第105条",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（共通規定）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+            "source_status": "verified_source",
+            "source_note": "通所介護に第105条で準用される第8条、第30条の2、第32条、第37条の2等を含む現行表示。"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "locator": "内容及び手続の説明及び同意",
+            "layer": "解釈通知",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "source_status": "partial_source",
+            "source_note": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:important-matters-content",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article8.1",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:important-matters-content",
+          "relation": "applies_via",
+          "target_id": "ordinance37.article105",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:important-matters-content",
+          "relation": "interpreted_by",
+          "target_id": "notice.common.important-matters.explanation",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:important-matters-content",
+          "relation": "published_under",
+          "target_id": "ordinance37.article32.1-3",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 4,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 4,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "重要事項説明書には何を記載する必要がありますか？",
+          "運営",
+          "重要事項説明書 記載",
+          "重要事項説明書 何を書く",
+          "重要事項 説明",
+          "重要事項 ウェブ掲載",
+          "重要事項 掲示"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.life-counselor-staffing",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "life-counselor-staffing",
+        "category": "人員・勤務",
+        "title": "生活相談員は何人配置すればよいですか？",
+        "aliases": [
+          "生活相談員 人数",
+          "相談員 配置",
+          "生活相談員 配置基準"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-21",
+        "verification_note": null
+      },
+      "answer": {
+        "short_answer": "単純に「1人置けばよい」という基準ではありません。提供日ごとに、サービス提供時間帯に生活相談員が勤務した合計時間を、その日のサービス提供時間で割った数が1以上になるよう配置する必要があります。",
+        "practical_steps": [
+          "その日の通所介護のサービス提供時間を確認します。",
+          "その時間帯に、専ら通所介護の提供に当たる生活相談員の勤務時間を合計します。",
+          "「生活相談員の勤務時間合計 ÷ サービス提供時間」が1以上になることを確認します。例えば提供時間が8時間なら、合計8時間以上の生活相談員勤務が必要です。",
+          "さらに、生活相談員または介護職員のうち少なくとも1人は常勤である必要があります。"
+        ],
+        "cautions": [
+          "生活相談員の必要人数は、頭数ではなく勤務時間数で判定する基準です。",
+          "生活相談員として配置できる資格・要件は指定権者の条例等も関係するため、このページとは別論点として確認が必要です。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article93.1.1",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第2節 人員に関する基準",
+              "第93条",
+              "第1項",
+              "第1号"
+            ],
+            "official_text": "生活相談員　指定通所介護の提供日ごとに、当該指定通所介護を提供している時間帯に生活相談員（専ら当該指定通所介護の提供に当たる者に限る。）が勤務している時間数の合計数を当該指定通所介護を提供している時間帯の時間数で除して得た数が一以上確保されるために必要と認められる数",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          },
+          {
+            "id": "ordinance37.article93.6",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第2節 人員に関する基準",
+              "第93条",
+              "第6項"
+            ],
+            "official_text": "第一項の生活相談員又は介護職員のうち一人以上は、常勤でなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          }
+        ],
+        "notices": [],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第93条第1項第1号・第6項",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:life-counselor-staffing",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article93.1.1",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:life-counselor-staffing",
+          "relation": "qualified_by",
+          "target_id": "ordinance37.article93.6",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 2,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 2,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "生活相談員は何人配置すればよいですか？",
+          "人員・勤務",
+          "生活相談員 人数",
+          "相談員 配置",
+          "生活相談員 配置基準"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.manager-concurrent-role",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "manager-concurrent-role",
+        "category": "人員・勤務",
+        "title": "管理者は他の職務と兼務できますか？",
+        "aliases": [
+          "管理者 兼務",
+          "管理者 他職種",
+          "管理者 掛け持ち"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-21",
+        "verification_note": null
+      },
+      "answer": {
+        "short_answer": "できます。通所介護の管理者は常勤・専従が原則ですが、事業所の管理上支障がない場合は、同じ事業所の他の職務だけでなく、他の事業所・施設等の職務にも従事できます。",
+        "practical_steps": [
+          "兼務させる前に、管理業務に支障がない勤務体制かを確認します。",
+          "管理者として必要な指揮命令・職員管理・緊急時対応を行える状態を維持します。",
+          "勤務形態一覧表などでは、管理者としての勤務と兼務先の職務が分かるように整理します。"
+        ],
+        "cautions": [
+          "「兼務できる」ことと「どのような兼務でもよい」ことは同じではありません。判断基準は管理上の支障の有無です。",
+          "指定権者が勤務表の記載方法などについて取扱いを示している場合は、その取扱いも確認してください。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article94",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第2節 人員に関する基準",
+              "第94条"
+            ],
+            "official_text": "指定通所介護事業者は、指定通所介護事業所ごとに専らその職務に従事する常勤の管理者を置かなければならない。ただし、指定通所介護事業所の管理上支障がない場合は、当該指定通所介護事業所の他の職務に従事し、又は他の事業所、施設等の職務に従事することができるものとする。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          }
+        ],
+        "notices": [],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第94条",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:manager-concurrent-role",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article94",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 1,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 1,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "管理者は他の職務と兼務できますか？",
+          "人員・勤務",
+          "管理者 兼務",
+          "管理者 他職種",
+          "管理者 掛け持ち"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.multiple-roles",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "multiple-roles",
+        "category": "人員・勤務",
+        "title": "同じ職員が複数の職種を兼務できますか？",
+        "aliases": [
+          "兼務",
+          "複数職種",
+          "生活相談員 介護職員 兼務",
+          "機能訓練指導員 兼務",
+          "同じ人 兼務"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-21",
+        "verification_note": null
+      },
+      "answer": {
+        "short_answer": "一律に「兼務できる・できない」とは決まりません。通所介護では職種ごとに専従要件や兼務規定が異なるため、兼務させたい職種の組合せと勤務時間帯ごとに確認する必要があります。",
+        "practical_steps": [
+          "まず、兼務させたい職種を具体的に特定します。",
+          "各職種について「専ら従事」「常時配置」「常勤」などの要件を確認します。",
+          "機能訓練指導員は、基準省令上、事業所の他の職務に従事できます。",
+          "介護職員は、利用者の処遇に支障がない場合、他の通所介護単位の介護職員として従事できる規定があります。",
+          "管理者については、管理上支障がない場合に他職務との兼務が認められています。",
+          "勤務表には、職種ごとの勤務時間と兼務関係が分かるように記載します。"
+        ],
+        "cautions": [
+          "資格を持っていることだけでは兼務できるとは限りません。各職種の配置時間・専従要件を同時に満たす必要があります。",
+          "同じ時間を複数職種の配置時間として重複計上できるかは、職種と業務内容によって異なります。",
+          "具体的な勤務表を作った段階で、指定権者に確認すると判断しやすくなります。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article93.3",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第2節 人員に関する基準",
+              "第93条",
+              "第3項"
+            ],
+            "official_text": "第一項の規定にかかわらず、介護職員は、利用者の処遇に支障がない場合は、他の指定通所介護の単位の介護職員として従事することができるものとする。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          },
+          {
+            "id": "ordinance37.article93.5",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第2節 人員に関する基準",
+              "第93条",
+              "第5項"
+            ],
+            "official_text": "第一項第四号の機能訓練指導員は、日常生活を営むのに必要な機能の減退を防止するための訓練を行う能力を有する者とし、当該指定通所介護事業所の他の職務に従事することができるものとする。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          },
+          {
+            "id": "ordinance37.article94",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第2節 人員に関する基準",
+              "第94条"
+            ],
+            "official_text": "指定通所介護事業者は、指定通所介護事業所ごとに専らその職務に従事する常勤の管理者を置かなければならない。ただし、指定通所介護事業所の管理上支障がない場合は、当該指定通所介護事業所の他の職務に従事し、又は他の事業所、施設等の職務に従事することができるものとする。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          }
+        ],
+        "notices": [
+          {
+            "id": "notice.dayservice.staffing.schedule",
+            "kind": "interpretation_notice",
+            "path": [
+              "通所介護",
+              "運営に関する基準",
+              "勤務体制の確保等"
+            ],
+            "official_text": null,
+            "editorial_summary": "勤務表では、通所介護従業者の日々の勤務時間、常勤・非常勤の別、専従の生活相談員・看護職員・介護職員の配置、管理者との兼務関係等を明確にする。",
+            "verification_status": "VERIFIED_SOURCE_TEXT",
+            "source_ids": [
+              "mhlw-interpretation-html"
+            ]
+          }
+        ],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第93条第3項・第5項、第94条",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "locator": "通所介護／勤務体制の確保等",
+            "layer": "解釈通知",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "source_status": "partial_source",
+            "source_note": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:multiple-roles",
+          "relation": "documented_by",
+          "target_id": "notice.dayservice.staffing.schedule",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:multiple-roles",
+          "relation": "qualified_by",
+          "target_id": "ordinance37.article93.3",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:multiple-roles",
+          "relation": "qualified_by",
+          "target_id": "ordinance37.article93.5",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:multiple-roles",
+          "relation": "qualified_by",
+          "target_id": "ordinance37.article94",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 4,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 4,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "同じ職員が複数の職種を兼務できますか？",
+          "人員・勤務",
+          "兼務",
+          "複数職種",
+          "生活相談員 介護職員 兼務",
+          "機能訓練指導員 兼務",
+          "同じ人 兼務"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.nurse-staffing",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "nurse-staffing",
+        "category": "人員・勤務",
+        "title": "看護職員は何人必要ですか？",
+        "aliases": [
+          "看護師 人数",
+          "看護職員 配置",
+          "看護師 常駐",
+          "看護師 毎日",
+          "外部 看護師"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-21",
+        "verification_note": "基準省令の現行表示と、厚生労働省が現在公開しているQ&A集・解釈通知改正資料で確認した範囲です。解釈通知全体の現行統合版は別途再構成中です。"
+      },
+      "answer": {
+        "short_answer": "通所介護では、原則として単位ごとに看護職員を1人以上確保する必要があります。ただし、提供時間帯を通じて事業所内に常駐する必要まではなく、病院・診療所・訪問看護ステーションとの連携で確保する方法も認められています。",
+        "practical_steps": [
+          "まず、通所介護の単位ごとに看護職員を確保する体制を決めます。",
+          "事業所の看護職員で確保する場合でも、提供時間帯を通じた常駐までは求められていませんが、提供時間帯を通じて密接かつ適切な連携を保ちます。",
+          "病院・診療所・訪問看護ステーションとの連携で確保する場合は、営業日ごとに利用者の健康状態を確認できる体制と、提供時間帯を通じた連絡・対応体制を整えます。",
+          "連携方法や勤務体制は、勤務表や契約・連携記録などで確認できるようにします。"
+        ],
+        "cautions": [
+          "「看護職員1以上」は、必ずしも営業中ずっと事業所内に1人常駐するという意味ではありません。",
+          "外部連携を使う場合でも、単に電話番号を登録しておくだけではなく、健康状態の確認と密接・適切な連携が必要です。",
+          "具体的な連携体制については、指定権者への事前確認を行う方が安全です。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article93.1.2",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第2節 人員に関する基準",
+              "第93条",
+              "第1項",
+              "第2号"
+            ],
+            "official_text": "看護師又は准看護師（以下この章において「看護職員」という。）　指定通所介護の単位ごとに、専ら当該指定通所介護の提供に当たる看護職員が一以上確保されるために必要と認められる数",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-21"
+          }
+        ],
+        "notices": [
+          {
+            "id": "notice.dayservice.nurse.external-linkage",
+            "kind": "interpretation_notice",
+            "path": [
+              "通所介護",
+              "人員に関する基準",
+              "看護職員",
+              "外部連携"
+            ],
+            "official_text": null,
+            "editorial_summary": "看護職員は、事業所の従業者による確保に加え、病院、診療所、訪問看護ステーションとの連携により確保することも可能。外部連携の場合は、営業日ごとの健康状態の確認と、提供時間帯を通じた密接かつ適切な連携が必要。",
+            "verification_status": "KNOWN_AFTER_TEXT",
+            "source_ids": [
+              "mhlw-interpretation-nurse-linkage",
+              "mhlw-qa"
+            ]
+          }
+        ],
+        "qa_items": [
+          {
+            "id": "qa.dayservice.nurse.external.2015.50",
+            "kind": "mhlw_qa",
+            "question_summary": "病院・診療所・訪問看護ステーションとの契約で看護職員を確保する場合、健康状態確認の時間や、駆けつけられる距離に一律の基準があるか。",
+            "answer_summary": "一律の時間・距離は示されていない。事業所規模に応じて利用者全員の健康状態を適切に確認できる契約とし、容態急変時に適切な指示を受けられる連絡体制など、地域の実情に応じた密接かつ適切な連携を確保する。",
+            "status": "STRUCTURED",
+            "source_id": "mhlw-qa",
+            "source_document": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日）",
+            "source_number": "問50"
+          }
+        ],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第93条第1項第2号",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          },
+          {
+            "source_id": "mhlw-interpretation-nurse-linkage",
+            "locator": "通所介護・看護職員の確保方法",
+            "layer": "解釈通知",
+            "title": "通所介護の看護職員確保に関する解釈通知改正資料",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "source_status": "partial_source",
+            "source_note": "病院・診療所・訪問看護ステーションとの連携による看護職員確保の取扱いを確認できる改正資料。"
+          },
+          {
+            "source_id": "mhlw-qa",
+            "locator": "通所介護事業／人員／看護職員の配置基準の緩和",
+            "layer": "Q&A",
+            "title": "介護サービス関係Q&A",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+            "source_status": "registry",
+            "source_note": "厚生労働省の公式Q&A集。2026-09-22確認時点で介護保険最新情報vol.1479まで収載。XLS/PDFで公開されている。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:nurse-staffing",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article93.1.2",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:nurse-staffing",
+          "relation": "clarified_by",
+          "target_id": "qa.dayservice.nurse.external.2015.50",
+          "independent_verification": "NOT_AUDITED"
+        },
+        {
+          "source_id": "question:nurse-staffing",
+          "relation": "interpreted_by",
+          "target_id": "notice.dayservice.nurse.external-linkage",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 3,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 3,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "看護職員は何人必要ですか？",
+          "人員・勤務",
+          "看護師 人数",
+          "看護職員 配置",
+          "看護師 常駐",
+          "看護師 毎日",
+          "外部 看護師"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    },
+    {
+      "package_id": "dayservice.question.operation-rules-content",
+      "service_id": "dayservice",
+      "question": {
+        "slug": "operation-rules-content",
+        "category": "運営",
+        "title": "運営規程には何を記載する必要がありますか？",
+        "aliases": [
+          "運営規程 記載",
+          "運営規定",
+          "運営規程 項目",
+          "運営規程 何を書く"
+        ],
+        "status": "verified",
+        "last_verified": "2026-09-22",
+        "verification_note": null
+      },
+      "answer": {
+        "short_answer": "国の基準省令では、通所介護の運営規程に11項目を定めておく必要があります。目的・方針、人員、営業日・時間、利用定員、サービス内容・料金、実施地域、利用上の留意事項、緊急時対応、非常災害対策、虐待防止、その他重要事項です。",
+        "practical_steps": [
+          "第100条の11項目を見出しとして運営規程を点検します。",
+          "実際の勤務体制、営業時間、定員、料金、実施地域と記載内容が一致しているか確認します。",
+          "非常災害計画や虐待防止の仕組みなど、別に整備している文書との内容をそろえます。",
+          "変更時は、指定権者への変更届が必要かも併せて確認します。"
+        ],
+        "cautions": [
+          "国基準の11項目は最低限の枠組みです。指定権者の条例や申請様式で追加事項が示されることがあります。",
+          "運営規程だけを更新して、重要事項説明書やウェブ掲載内容が古いままにならないよう一体で管理すると安全です。"
+        ]
+      },
+      "evidence": {
+        "rules": [
+          {
+            "id": "ordinance37.article100",
+            "kind": "ordinance37",
+            "path": [
+              "第7章 通所介護",
+              "第4節 運営に関する基準",
+              "第100条"
+            ],
+            "official_text": "運営規程には、①事業の目的及び運営の方針、②従業者の職種・員数・職務の内容、③営業日及び営業時間、④利用定員、⑤通所介護の内容及び利用料その他の費用の額、⑥通常の事業の実施地域、⑦サービス利用に当たっての留意事項、⑧緊急時等における対応方法、⑨非常災害対策、⑩虐待の防止のための措置に関する事項、⑪その他運営に関する重要事項を定めておかなければならない。",
+            "verification_status": "VERIFIED_CURRENT",
+            "source_id": "mhlw-home-care-standards-current",
+            "verified_at": "2026-09-22",
+            "text_form": "structured_verbatim_list"
+          }
+        ],
+        "notices": [],
+        "qa_items": [],
+        "sources": [
+          {
+            "source_id": "mhlw-home-care-standards-current",
+            "locator": "第100条",
+            "layer": "基準省令",
+            "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+            "publisher": "厚生労働省",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+            "source_status": "verified_source",
+            "source_note": "通所介護の第92条から第109条を含む現行表示。"
+          }
+        ]
+      },
+      "relations": [
+        {
+          "source_id": "question:operation-rules-content",
+          "relation": "answered_by",
+          "target_id": "ordinance37.article100",
+          "independent_verification": "NOT_AUDITED"
+        }
+      ],
+      "assurance": {
+        "question_content_status": "verified",
+        "relation_edges_total": 1,
+        "relation_edges_independently_verified": 0,
+        "relation_edges_not_independently_audited": 1,
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+      },
+      "retrieval": {
+        "terms": [
+          "運営規程には何を記載する必要がありますか？",
+          "運営",
+          "運営規程 記載",
+          "運営規定",
+          "運営規程 項目",
+          "運営規程 何を書く"
+        ],
+        "preferred_scope": "curated_direct_evidence_first"
+      }
+    }
+  ]
+}
