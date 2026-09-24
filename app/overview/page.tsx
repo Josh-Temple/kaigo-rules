@@ -38,13 +38,27 @@ const sourceRows = [
   },
   {
     number: "04",
-    title: "報酬告示・算定留意事項",
+    title: "報酬告示",
     href: "/fees",
     layerId: "remuneration-notices",
-    role: "基本報酬、加算・減算、算定上の条件や関連告示を確認します。",
+    role: "基本報酬、加算・減算、算定方法に関する告示を確認します。",
   },
   {
     number: "05",
+    title: "算定上の留意事項",
+    href: "/fees/guidance",
+    layerId: "rouki36-dayservice",
+    role: "報酬告示を実務で適用する際の取扱いを、老企第36号から確認します。",
+  },
+  {
+    number: "06",
+    title: "一単位単価・地域区分",
+    href: "/fees/unit-price",
+    layerId: "unit-price",
+    role: "地域区分ごとの一単位単価と自治体の区分を確認します。",
+  },
+  {
+    number: "07",
     title: "厚生労働省Q&A",
     href: "/qa",
     layerId: "qa-corpus",
@@ -54,7 +68,7 @@ const sourceRows = [
 
 const label = (value?: string) => {
   const labels: Record<string, string> = {
-    PASS: "PASS",
+    PASS: "独立確認済み",
     HOLD: "未確定",
     LIVE_SOURCE_REPARSE_SCHEDULED: "継続監視",
     MONITORED_NOT_HUMAN_VERIFIED: "継続監視",

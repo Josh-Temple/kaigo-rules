@@ -65,6 +65,8 @@ jobs:
             "/notices"
             "/notices/review"
             "/fees"
+            "/fees/guidance"
+            "/fees/unit-price"
             "/sources"
             "/about"
             "/feedback"
@@ -76,6 +78,18 @@ jobs:
               exit 1
             }
           done
+
+          curl --fail --silent --show-error http://127.0.0.1:3000/overview \
+            | grep -F "算定上の留意事項" >/dev/null || {
+              echo "overview does not expose fee-guidance as a first-class source layer"
+              exit 1
+            }
+
+          curl --fail --silent --show-error http://127.0.0.1:3000/overview \
+            | grep -F "独立確認済み" >/dev/null || {
+              echo "overview does not expose user-facing independent verification status"
+              exit 1
+            }
 
           curl --fail --silent --show-error http://127.0.0.1:3000/rules/93 \
             | grep -F "看護職員は何人必要ですか？" >/dev/null || {
