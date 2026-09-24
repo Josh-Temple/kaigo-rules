@@ -15,6 +15,19 @@
 - 正本: GitHub
 - 公開先: Vercel
 
+
+## Current verification status
+
+2026-09-24時点の検証状態は、データレイヤーとrelationを分けて管理します。
+
+- 主要データレイヤー: 7/7で独立監査・再構成あり、7/7でcurrentness / live-source monitoringが有効
+- 人手確認済みレイヤー: 0
+- 老企第25号 通所介護22項目: 本文再構成は独立照合PASS、currentnessは22項目すべてHOLD、MISMATCH 0
+- semantic / cross-layer relation: 163件中56件を独立確認済み、107件は未独立確認
+- relationの独立監査PASSは、`HUMAN_VERIFIED` や `VERIFIED_CURRENT` への自動昇格を意味しない
+
+集約状態は `data/verification-registry.json` と `data/relation-verification-registry.json` を正本として確認します。
+
 ## Product entry points
 
 1. 実務上の疑問から探す
@@ -41,7 +54,13 @@ Vercel build の前にも自動実行し、参照切れがある場合は fail c
 
 - `data/questions.json`: 実務質問、検索用言い換え、検証済み回答
 - `data/sources.json`: 公式資料台帳と収載範囲
-- `data/rule-nodes.json`: 回答ページへ接続済みの検証済み制度ノード\n- `data/ordinance37-nodes.json`: e-Gov現行XMLから生成する基準省令第37号の通所介護関連ノード\n- `data/ordinance37-relations.json`: 条・項・号の包含関係と第105条の準用関係\n- `data/ordinance37-application-rules.json`: 第105条の読替え規則\n- `data/ordinance37-meta.json`: e-Gov取得元、SHA-256、現行改正情報、件数、レビュー状態\n- `data/ordinance37-review.json`: 人手確認のオーバーレイ台帳。確認時の条文SHA-256を保持\n- `data/ordinance37-scope.json`: 通所介護DBとして取り込む条文範囲の正本
+- `data/rule-nodes.json`: 回答ページへ接続済みの検証済み制度ノード
+- `data/ordinance37-nodes.json`: e-Gov現行XMLから生成する基準省令第37号の通所介護関連ノード
+- `data/ordinance37-relations.json`: 条・項・号の包含関係と第105条の準用関係
+- `data/ordinance37-application-rules.json`: 第105条の読替え規則
+- `data/ordinance37-meta.json`: e-Gov取得元、SHA-256、現行改正情報、件数、レビュー状態
+- `data/ordinance37-review.json`: 人手確認のオーバーレイ台帳。確認時の条文SHA-256を保持
+- `data/ordinance37-scope.json`: 通所介護DBとして取り込む条文範囲の正本
 - `data/notice-nodes.json`: 回答ページへ接続済みの解釈通知ノード
 - `data/notice-current-skeleton.json`: 老企第25号の現行骨格（通所介護・共通定義）
 - `data/notice-source-chain.json`: 再構成に使う公式資料チェーンと完全性区分
@@ -51,7 +70,9 @@ Vercel build の前にも自動実行し、参照切れがある場合は fail c
 - `data/notice-current-review.json`: 人手確認のオーバーレイ台帳
 - `data/notice-historical-backfill.json`: 過去HTMLから機械抽出した本文候補（現行扱い禁止）
 - `data/notice-historical-backfill-meta.json`: 過去HTML取得元・SHA-256・抽出件数
-- `data/qa-items.json`: 回答ページへ接続済みのQ&A\n- `data/qa-corpus.json`: 公式XLSから機械取り込みしたQ&A（未レビューを含む）\n- `data/qa-corpus-meta.json`: 取得元URL、ハッシュ、抽出件数などの取り込み証跡
+- `data/qa-items.json`: 回答ページへ接続済みのQ&A
+- `data/qa-corpus.json`: 公式XLSから機械取り込みしたQ&A（未レビューを含む）
+- `data/qa-corpus-meta.json`: 取得元URL、ハッシュ、抽出件数などの取り込み証跡
 - `data/relationships.json`: 質問と制度ノードの関係
 - `data/startup-steps.json`: 開設準備の導線
 - `data/amendments.json`: 改正イベント
@@ -75,12 +96,11 @@ Q&Aは単独で制度上の結論とせず、法令・通知との関係を保�
 
 ## Next
 
-1. 厚生労働省Q&Aの公式XLSを取り込み、通所介護・通所系共通・居宅サービス共通・全サービス共通を構造化する
-2. Q&A集の公式収載範囲より新しいQ&Aを別ソースから追加する
-3. 基準省令の通所介護関連条文を体系的に全件構造化する
-4. 解釈通知の通所介護部分を穴あき構造で再構成する
-5. 開設準備ページを指定権者・申請書類へつなげる
-6. 12問の型をもとに50問へ拡張する
+1. relation未独立確認107件を、一次資料から機械的に検証できるものと人手判断が必要なものへ分類する
+2. 老企第25号22項目のcurrentness HOLDを解消できる一次資料経路を継続調査する
+3. 人手レビューを進め、機械監査・currentness・human reviewを混同しない表示を維持する
+4. 更新workflow・CI・branch運用を整理し、監査基盤の保守負担を抑える
+5. 実利用フィードバックを収集し、検索・導線・説明の改善へ反映する
 
 ## Q&A candidate linking
 
