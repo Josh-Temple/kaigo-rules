@@ -155,6 +155,28 @@ def main() -> None:
     if actual_event_file_hash != ledger.get("validator_provenance", {}).get("amendment_events_file_sha256_at_audit"):
         fail("amendment-events file changed; inspect and refresh currentness review")
 
+    followups = {row.get("checked_at"): row for row in ledger.get("follow_up_checks", [])}
+    follow = followups.get("2026-09-24", {})
+    if follow.get("fresh_main_sha_at_start") != "b802b013213b485f26f54ca187b0bf53d79e8c18":
+        fail("2026-09-24 follow-up must record the fresh main SHA")
+    if follow.get("verified_post_r6_amendment_candidate_identified") is not False:
+        fail("2026-09-24 follow-up must not claim a post-R6 amendment candidate")
+    if follow.get("current_integrated_text_found") is not False:
+        fail("2026-09-24 follow-up must not claim current integrated text")
+    if follow.get("decision_effect") != "HOLD_UNCHANGED":
+        fail("2026-09-24 follow-up must preserve HOLD")
+    if "2026-09-19から2026-09-24" not in follow.get("unresolved_gap", ""):
+        fail("2026-09-24 follow-up must preserve the unresolved publication gap")
+    route_ids = {row.get("route_id") for row in follow.get("checks", [])}
+    required_follow_routes = {
+        "mhlw-kaigo-latest-info-current-20260924",
+        "mhlw-r8-reform-page-20260924",
+        "mhlw-r8-manual-reference-pdf-20260924",
+        "mhlw-domain-exact-search-20260924",
+    }
+    if route_ids != required_follow_routes:
+        fail("2026-09-24 follow-up route set is incomplete or changed")
+
     coverage_end = date.fromisoformat(ledger["search_coverage"]["coverage_end"])
     today = datetime.now(ZoneInfo("Asia/Tokyo")).date()
     pass_count = final["counts"]["AUDIT_PASS"] + final["counts"]["AUDIT_PASS_WITH_LIMITATION"]
