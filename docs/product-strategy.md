@@ -1,104 +1,108 @@
-# Kaigo Rules product strategy
+# Kaigo Rules プロダクト方針
 
-Updated: 2026-09-25
+更新日：2026-09-25
 
-## Problem to solve
+## 解決したい課題
 
-Kaigo Rules is not primarily a FAQ site.
+Kaigo Rulesの中心は、FAQを大量に並べることではない。
 
-The underlying problem is that official long-term-care information exists, but the structure is difficult to follow in practice. Laws, ministerial ordinances, fee schedules, interpretation notices, Q&A, and amendment history are published separately, so users often cannot tell which document answers which question or how the sources relate.
+介護制度では、必要な情報そのものが存在しないというより、介護保険法、基準省令、報酬告示、解釈通知、Q&A、改正資料などが別々に公開されており、実務上の疑問に対して「どの資料を確認すればよいか」「資料同士がどう関係するか」が分かりにくいことが大きな課題である。
 
-A second problem is practical. Repeated inquiries from providers reveal a smaller set of questions that people actually get stuck on. That operational knowledge is valuable, but it should be used as an entry point into the official information structure rather than expanded into an unbounded answer collection.
+もう一つの課題は、事業所から繰り返し寄せられる実務上の質問である。日々の問い合わせ対応から、実際にどこで判断に迷いやすいかは把握できる。この知見には独自の価値があるが、FAQを際限なく増やすのではなく、制度情報へ入るための入口として使う。
 
-## Product value
+## サイトの中心価値
 
-Kaigo Rules should connect two layers.
+Kaigo Rulesは、次の二層をつなぐ。
 
-### Layer 1 —制度情報基盤
+### 第1層：制度情報基盤
 
-The primary product is a service-specific information foundation that lets a user trace:
+中心となるのは、サービスごとに次の資料をたどれる情報基盤である。
 
 1. 介護保険法
 2. 基準省令
 3. 解釈通知
 4. 報酬告示・算定留意事項
 5. 厚生労働省Q&A
-6. related official sources and amendment evidence
+6. 関連する公式資料・改正根拠
 
-The site should make the role of each source, its relationship to other sources, and its verification/currentness state visible.
+単に資料を収集するのではなく、それぞれの役割、他の資料との関係、本文確認・現行性・人手確認の状態を分けて示す。
 
-### Layer 2 —実務上の疑問
+### 第2層：実務上の疑問
 
-FAQ is a curated navigation layer over the information foundation.
+FAQは、制度情報基盤への入口として厳選する。
 
-It should not aim to reproduce every possible question. It should prioritize questions that meet one or more of these conditions:
+すべての疑問を網羅することは目指さず、次のいずれかに当てはまるものを優先する。
 
-- providers ask about them repeatedly;
-- an incorrect interpretation can materially affect staffing, operations, claims, or compliance;
-- the ordinance text alone does not resolve the practical question;
-- several source types must be read together;
-- the issue commonly results in an inquiry to the designated authority.
+- 事業所から繰り返し問い合わせがある
+- 誤った判断が、人員、運営、請求、法令遵守などに大きく影響する
+- 基準省令だけを読んでも実務上の判断が難しい
+- 複数の資料を組み合わせないと確認できない
+- 指定権者への問い合わせにつながりやすい
 
-A useful FAQ should lead back to the relevant official sources and show what conditions must be checked. It should not become a substitute for the source structure.
+FAQでは結論だけを示さず、確認すべき条件と根拠資料へ戻れるようにする。
 
-## Product principle
+## プロダクトの位置づけ
 
-The product is best described as:
+Kaigo Rulesは、
 
-> 介護制度を検索するだけでなく、制度の構造と実務で迷うポイントをつなぐ情報基盤。
+> 介護制度を検索するだけでなく、制度の構造と実務で迷うポイントをつなぐ情報基盤
 
-The differentiator is not the volume of copied official information or the number of FAQ entries. It is the combination of:
+として育てる。
 
-- first-party source traceability;
-- service-specific structure;
-- explicit relation between law / ordinance / notice / fee / Q&A;
-- separated verification, currentness, and human-review states;
-- practical prioritization informed by real provider inquiries.
+差別化の中心は、掲載件数ではなく、次の組み合わせに置く。
 
-## Information architecture
+- 一次資料へ戻れること
+- サービス別に制度を整理していること
+- 法令・基準・通知・報酬・Q&Aの関係が分かること
+- 本文確認、現行性、人手確認を混同しないこと
+- 実際の問い合わせ経験をもとに、実務上重要な論点を選ぶこと
 
-The public site should have two clear entry modes:
+## 公開サイトの入口
 
-1. 制度からたどる
-   - see the source hierarchy;
-   - open the relevant database;
-   - move between related layers;
-   - inspect source and verification state.
+公開サイトには、二つの入口を明確に用意する。
 
-2. 実務の疑問から入る
-   - start from a curated operational question;
-   - see a concise answer with conditions and cautions;
-   - return to the underlying official sources.
+### 制度からたどる
 
-The first mode is the foundation. The second is an accelerator.
+- 制度全体の構造を見る
+- 該当する制度DBを開く
+- 関連する別レイヤーへ移動する
+- 原典と確認状態を確認する
 
-## FAQ scope policy
+### 実務の疑問から入る
 
-Do not scale FAQ by raw count.
+- 厳選した実務上の疑問から入る
+- 短い回答、条件、注意点を確認する
+- 基準・通知・Q&Aなどの根拠へ戻る
 
-For the current MVP:
+前者を基盤とし、後者はその利用を速くする入口とする。
 
-- keep the existing curated set small;
-- do not add questions only to increase coverage;
-- add a question when practical inquiry experience or usage evidence shows recurring value;
-- avoid near-duplicate questions that differ only in wording;
-- prefer one strong page that explains conditions over several shallow answers;
-- every published FAQ should retain source links and verification state.
+## FAQの掲載方針
 
-A future FAQ backlog may be large internally, but publication should remain selective.
+FAQは件数をKPIにしない。
 
-## Near-term priority
+当面は次のルールで運用する。
 
-1. Strengthen the information foundation and make its structure visible in the UI.
-2. Connect existing law / ordinance / notice / fee / Q&A layers more clearly.
-3. Complete the second-service ingestion pattern without copying service-specific infrastructure.
-4. Keep the existing FAQ set curated and improve source navigation from each question.
-5. Add new FAQ only when practical value is demonstrated.
+- 現在の厳選FAQを小さく維持する
+- 網羅率を上げるだけのために質問を追加しない
+- 問い合わせ経験や利用状況から繰り返し価値があると確認できた論点を追加する
+- 表現だけが違う類似質問を増やさない
+- 浅い回答を複数作るより、条件分岐を含めた一つの強いページを優先する
+- 公開FAQには原典へのリンクと確認状態を残す
 
-## Non-goals
+内部ではFAQ候補を多く持ってもよいが、公開は選別する。
 
-- becoming a generic article or SEO content site;
-- reproducing every MHLW Q&A as a hand-written FAQ;
-- hiding uncertainty or currentness gaps to make the site appear complete;
-- replacing official sources or designated-authority decisions;
-- adding service breadth by duplicating repositories, workflows, or source corpora.
+## 当面の優先順位
+
+1. 制度情報基盤を整え、サイト上でも構造が分かるようにする
+2. 介護保険法・基準省令・解釈通知・報酬・Q&Aの横断関係を強化する
+3. 2サービス目の取込を、サービス別コピーを増やさずに成立させる
+4. FAQは現在の厳選範囲を維持し、各ページから根拠へ移動しやすくする
+5. 新しいFAQは実務上の価値が確認できたものだけ追加する
+
+## 目指さないもの
+
+- 一般的な介護記事やSEO記事を大量に作ること
+- 厚生労働省Q&Aをすべて手書きFAQに置き換えること
+- サイトを完成して見せるために不確実性や現行性の未確認を隠すこと
+- 厚生労働省、e-Gov、指定権者等の公式情報を置き換えること
+- サービス追加のたびにリポジトリ、workflow、法令データを複製すること
