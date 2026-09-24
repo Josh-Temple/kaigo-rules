@@ -53,6 +53,7 @@ jobs:
 
           routes=(
             "/"
+            "/overview"
             "/search"
             "/start"
             "/qa"

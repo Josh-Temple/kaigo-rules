@@ -4,8 +4,8 @@ import SiteFeedbackLink from "../components/site-feedback-link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "介護ルール | 通所介護の実務確認",
-  description: "通所介護の実務上の疑問を、公式資料へ戻れる形で整理するMVPです。",
+  title: "介護ルール | 制度の根拠と実務をつなぐ",
+  description: "介護保険法、基準省令、解釈通知、報酬、厚生労働省Q&Aを関係付け、実務上の疑問から公式の根拠へたどれるように整理します。",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -15,6 +15,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <header className="site-header">
           <Link className="brand" href="/">介護ルール</Link>
           <nav>
+            <Link href="/overview">制度の見取り図</Link>
             <Link href="/search">横断検索</Link>
             <Link href="/start">これから始める</Link>
             <Link href="/qa">国Q&A</Link>
