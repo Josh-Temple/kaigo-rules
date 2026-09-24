@@ -1,0 +1,159 @@
+name: Daily conditional Vercel production deploy
+
+on:
+  schedule:
+    # 21:00 JST
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs:
+      force_rules:
+        description: "Force kaigo-rules deploy even when no relevant changes are detected"
+        required: false
+        type: boolean
+        default: false
+      force_ops:
+        description: "Force kaigo-ops deploy even when no relevant changes are detected"
+        required: false
+        type: boolean
+        default: false
+  pull_request:
+    paths:
+      - ".github/workflows/daily-vercel-production-deploy.yml"
+      - "vercel.json"
+      - "ops-site/vercel.json"
+
+concurrency:
+  group: daily-vercel-production-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      rules_changed: ${{ steps.plan.outputs.rules_changed }}
+      ops_changed: ${{ steps.plan.outputs.ops_changed }}
+      head_sha: ${{ steps.plan.outputs.head_sha }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Detect project-specific changes
+        id: plan
+        shell: bash
+        env:
+          FORCE_RULES: ${{ github.event.inputs.force_rules || 'false' }}
+          FORCE_OPS: ${{ github.event.inputs.force_ops || 'false' }}
+          RULES_FALLBACK_SHA: "e0debb93a0efa82feae65e64a46fc860b74202a7"
+          OPS_FALLBACK_SHA: "0e87c65d89bfb7292ac7d68400e94df28fb4a1e0"
+        run: |
+          set -euo pipefail
+
+          HEAD_SHA="$(git rev-parse HEAD)"
+          echo "head_sha=$HEAD_SHA" >> "$GITHUB_OUTPUT"
+
+          marker_or_fallback() {
+            local ref_name="$1"
+            local fallback="$2"
+            local remote_sha
+
+            remote_sha="$(git ls-remote --heads origin "refs/heads/$ref_name" | awk '{print $1}')"
+            if [ -n "$remote_sha" ]; then
+              echo "$remote_sha"
+            else
+              echo "$fallback"
+            fi
+          }
+
+          RULES_BASE="$(marker_or_fallback 'deploy-state/kaigo-rules' "$RULES_FALLBACK_SHA")"
+          OPS_BASE="$(marker_or_fallback 'deploy-state/kaigo-ops' "$OPS_FALLBACK_SHA")"
+
+          git cat-file -e "${RULES_BASE}^{commit}"
+          git cat-file -e "${OPS_BASE}^{commit}"
+
+          rules_changed=false
+          ops_changed=false
+
+          if [ "$FORCE_RULES" = "true" ]; then
+            rules_changed=true
+          elif ! git diff --quiet "$RULES_BASE"...HEAD -- \
+            app components data scripts public \
+            package.json package-lock.json tsconfig.json next-env.d.ts vercel.json; then
+            rules_changed=true
+          fi
+
+          if [ "$FORCE_OPS" = "true" ]; then
+            ops_changed=true
+          elif ! git diff --quiet "$OPS_BASE"...HEAD -- ops-site; then
+            ops_changed=true
+          fi
+
+          echo "rules_changed=$rules_changed" >> "$GITHUB_OUTPUT"
+          echo "ops_changed=$ops_changed" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## Daily Vercel deployment plan"
+            echo ""
+            echo "- HEAD: `$HEAD_SHA`"
+            echo "- kaigo-rules baseline: `$RULES_BASE`"
+            echo "- kaigo-rules deploy needed: `$rules_changed`"
+            echo "- kaigo-ops baseline: `$OPS_BASE`"
+            echo "- kaigo-ops deploy needed: `$ops_changed`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    if: github.event_name != 'pull_request' && (needs.plan.outputs.rules_changed == 'true' || needs.plan.outputs.ops_changed == 'true')
+    needs: plan
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Trigger kaigo-rules production deploy
+        if: needs.plan.outputs.rules_changed == 'true'
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
+        run: |
+          set -euo pipefail
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::error::Missing secret VERCEL_DEPLOY_HOOK_KAIGO_RULES"
+            exit 1
+          fi
+          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
+          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
+          echo "kaigo-rules deploy hook accepted."
+
+      - name: Record kaigo-rules deploy request
+        if: needs.plan.outputs.rules_changed == 'true'
+        run: |
+          git push --force origin "HEAD:refs/heads/deploy-state/kaigo-rules"
+
+      - name: Trigger kaigo-ops production deploy
+        if: needs.plan.outputs.ops_changed == 'true'
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_OPS }}
+        run: |
+          set -euo pipefail
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::error::Missing secret VERCEL_DEPLOY_HOOK_KAIGO_OPS"
+            exit 1
+          fi
+          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
+          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
+          echo "kaigo-ops deploy hook accepted."
+
+      - name: Record kaigo-ops deploy request
+        if: needs.plan.outputs.ops_changed == 'true'
+        run: |
+          git push --force origin "HEAD:refs/heads/deploy-state/kaigo-ops"
+
+      - name: No deployment needed
+        if: needs.plan.outputs.rules_changed != 'true' && needs.plan.outputs.ops_changed != 'true'
+        run: echo "No relevant changes since the last requested deployment."
