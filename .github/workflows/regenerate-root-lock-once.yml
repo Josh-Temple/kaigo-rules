@@ -27,9 +27,28 @@ jobs:
         run: npm install --package-lock-only --ignore-scripts
       - name: Verify npm ci accepts regenerated lockfile
         run: npm ci --ignore-scripts
-      - name: Upload regenerated lockfile
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: regenerated-root-package-lock
-          path: package-lock.json
-          if-no-files-found: error
+      - name: Commit regenerated lockfile through GitHub Contents API
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          lock_sha="$(git rev-parse HEAD:package-lock.json)"
+          content="$(base64 -w0 package-lock.json)"
+          python - "$lock_sha" "$content" > /tmp/update-lock.json <<'PY'
+          import json, sys
+          sha, content = sys.argv[1], sys.argv[2]
+          print(json.dumps({
+              "message": "Regenerate package lock for type updates",
+              "content": content,
+              "sha": sha,
+              "branch": "chore/fresh-types-updates-20260924",
+          }))
+          PY
+          curl --fail-with-body --silent --show-error \
+            -X PUT \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/$GH_REPOSITORY/contents/package-lock.json" \
+            --data-binary @/tmp/update-lock.json
