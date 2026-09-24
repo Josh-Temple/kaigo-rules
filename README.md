@@ -28,6 +28,8 @@
 
 集約状態は `data/verification-registry.json` を正本として確認します。
 
+GitHub Actionsのartifactは実行時の期限付き証跡として扱います。長期の監査根拠は、リポジトリに固定したaudit JSON・digest・source hashを正本として保持します。
+
 ## Product entry points
 
 1. 実務上の疑問から探す
