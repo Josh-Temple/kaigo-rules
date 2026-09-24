@@ -23,112 +23,112 @@ jobs:
         run: |
           set -euo pipefail
           cat > /tmp/stale-branches.txt <<'BRANCHES'
-audit/remuneration-delegated-relations-current-main|77172bd933ff72ac304d22caf119ec48bdac88ff|merged-pr-111
-audit/rouki25-independent-machine-2026-09|585c1121af44fc30f7e02599e7b568ca38c01ff8|merged-pr-83
-automation/care-act-35673216784|21f9b7aafe9f114721e3f2ef9fa895b2c24b14d9|merged-pr-33
-automation/fee-guidance-current-side-extraction|5f96c017d4dc86e3b5644e694a1332cae5b09881|merged-pr-58
-automation/fee-guidance-snapshot-pipeline|1241935a32bc6eeab4a5825a562d28cddb9fd601|merged-pr-56
-automation/fee-guidance-snapshots-35692558539|339f7f53029b67334c0c21aeae829c557f35638a|merged-pr-57
-automation/fee-guidance-snapshots-35693831963|b37a6bdc83d288f3d92aea1d036d865d762d9378|merged-pr-59
-automation/fee-guidance-snapshots-35700872518|799ca1232f66e517a9a0c81ad126cedab24619da|merged-pr-63
-automation/fee-guidance-snapshots-35794459344|b1d2b743a9ab62eb63db69d5c74e4fafab03430c|merged-pr-70
-automation/notice-history-35671363003|085dac77c73fe7dc076906d961f9278e9ecfc30a|merged-pr-27
-automation/ordinance37-35668508741|cbfbdb5c1d0a8c8059d4ed054d18cf18a001c443|merged-pr-21
-automation/qa-corpus-35662040654|d6472e8199f669ac51de84d55f48cdd0ac09a2d2|merged-pr-9
-automation/qa-corpus-35662347639|77555bd7667a3243b8ed5985f862575274450476|merged-pr-11
-automation/qa-corpus-35665270026|12e3a0cb15369cf46df6a0adbb2e1ba2541e06d5|merged-pr-16
-automation/remuneration-35672196642|462ee4827758cc5cd01f719aeb0d23ea30307504|merged-pr-29
-automation/unit-price-35679526309|7fd6041e8ad32a5b4e61b0aef28ba8c48cdd205c|merged-pr-42
-automation/unit-price-35681436975|8ce55611cfb67f6b0a87f7b2631060e8bc3d5f1a|merged-pr-44
-chore/npm-lockfiles-20260924|d208884791ab6bef4121d63fc47c2a523a2e6421|merged-pr-125
-chore/refresh-github-actions-pins-20260924|2333088436814b8c20c662c803ffd22c3752cbd1|merged-pr-128
-chore/repository-hardening-v2-20260924|767c6ba0b238cdcd948f80e9ba3eba97d58e740f|merged-pr-118
-data/fee-guidance-24-25-baseline|3d17e11c40dac305b35ed5772a7c16d42e59b703|merged-pr-55
-data/fee-guidance-heading-backfill|0992616842d18ebca3e9e33ccc584f990ca2c7a8|merged-pr-50
-data/fee-guidance-replay-coverage|33762fa0905816ef69b890e3677ba664afd378bf|merged-pr-54
-data/fee-guidance-structured-facts|48277e64487e5158477d5f47323abd3fa08f64e7|merged-pr-53
-data/fee-guidance-text-candidates|fadddd6bb0761157300f34156369e5248ddff84e|merged-pr-52
-docs/kaigo-ops-research-plan|556c4953e6954b33d0865bf95d52f37f5f8e0c2c|recovered-by-pr-130
-feat/care-insurance-act-db|5f0defa1e17cc769e46028de44f6c737662aea5d|merged-pr-31
-feat/careact-internal-relation-audit|e660818c56e2bbfb23843c4e5af67fca59408e9a|merged-pr-108
-feat/complete-twelve-questions|486595109bda9ae910ca90f70797e45dee405fbd|merged-pr-5
-feat/cross-layer-source-chain-audit|68d22554023c0e0338d87426dd39222d85602f25|merged-pr-109
-feat/cross-source-search|b133e0c3e69d9ed817d577e8ea46a640a1513d2f|merged-pr-49
-feat/fee-guidance-and-unit-review|d641b6acb05e6f3fb3b08d88b86494013bae0a37|merged-pr-45
-feat/fee-guidance-independent-verification-record|4e68bc179d3e552b4dd7eb65e9fa7e6d3a734b13|merged-pr-93
-feat/mvp-foundation|d74004b41f6a75768b7fcefcde6cf83843654150|merged-pr-1
-feat/notice-current-skeleton|a0c822d3730ffc79e01812fb460b6b31b0d0dc89|merged-pr-24
-feat/notice-currentness-status-ui|2073bdb425468738ecfe732c61f1d3fe90b98aea|merged-pr-91
-feat/notice-historical-backfill|f7137e5f0a592a7c4fc385ea60483c5709ad733c|merged-pr-25
-feat/notice-human-review-packet|f39fb1b272d3e73275c2ed1a80574112c10ac09d|merged-pr-81
-feat/notice-review-ui|7b5ecad115b663d7c4e8ef134d2d949eaceb33e1|merged-pr-82
-feat/ordinance-review-ledger|bd3537671b336b4125b20a46f83699b536202fa3|merged-pr-23
-feat/ordinance37-database|1ca8c3c285e3c78a2103b0a3411ef93940c23cd4|merged-pr-18
-feat/pin-egov-content-audit|1044fd9fd54226cc0044516116b75ff2d25d14e5|merged-pr-101
-feat/pin-qa-independent-audit|d59bcabe35ac01d10fc0746857d4b95a019769f1|merged-pr-103
-feat/pin-remuneration-unit-price-audits|86f67418a1176fb808b6a3956e4fc9cb6ab1b323|merged-pr-97
-feat/qa-import-pipeline|7f2173cb42ee215a31aec28bf6a162191753b355|merged-pr-7
-feat/qa-search-synonyms|9fe6cb1bbd86f09c77f5af7aa80b2b88c54c04b1|merged-pr-17
-feat/qa-search-ui|f27f35afa1089bdf7a61ce2b8ff8bc5b2682ce9d|merged-pr-12
-feat/qa-source-freshness-monitor|fb0a3c8a8e20fb542c82452deae8c03e295c8aa2|merged-pr-68
-feat/qa-startup-next-answers|fe90dc534185daf418f872395ccb22983291b8c3|merged-pr-3
-feat/relation-semantic-independent-audit|92f0fe8bb08800f7c7dfc3c85ea82f6d827bfe2b|merged-pr-107
-feat/remuneration-db-skeleton|00bd2a40d84f24a3eb25ed7d9979e51b8d3bd116|merged-pr-28
-feat/remuneration-delegated-criteria-db|fbdda3f1192876459a85d2fb559127da0e3704d3|merged-pr-36
-feat/remuneration-delegated-integration-v2|c4d6d8912fbbae49752f51a9ec841aca9424e1db|merged-pr-39
-feat/remuneration-independent-verifier|8ccbacf46665bd1d19c3b92499eb872d863bf07d|merged-pr-66
-feat/remuneration-review-complete|d9bc994f3016313e48ebd033087e8120d3cfbc90|merged-pr-35
-feat/remuneration-review-ui|9f6f673c1000d0cf9c3fa7ef6017d4d9f5e5c629|merged-pr-30
-feat/remuneration-review-v2|19d51e6a422b743aa4093237b68306215ac159d6|merged-pr-34
-feat/rouki25-currentness-watch|68111107851d7decf9a03c4c96b311e84d8b4dae|merged-pr-92
-feat/rouki25-equipment-reconstruction|6905ad5b09d8126da85d524a5e357adde7244320|merged-pr-76
-feat/rouki25-independent-verifier|e0644b51e1f9b67a2b3ca71c21e668ea4ed60eb8|merged-pr-80
-feat/rouki25-operation-legacy-reconstruction|af88132790c4b79e06a7327be49bddc2fc3a03a6|merged-pr-79
-feat/rouki25-operation-modern-reconstruction|98438c57e273dde6ff3fa535ba8d47ff3d6a8815|merged-pr-78
-feat/rouki25-personnel-reconstruction|3e9c02efdf6d1263c7a25b034c6a78306cc40de6|merged-pr-77
-feat/rules-review-ui|2f9d8a143a383e65c83c676ff5c00c33324825f7|merged-pr-22
-feat/site-feedback-disclaimer-20260924|854b54eeb5c34acd886bd68969d98af50e59dd8c|merged-pr-104
-feat/source-drift-monitoring|19ddf4426a28ca069adfd525c8533a498d6a291a|merged-pr-67
-feat/unit-price-independent-verifier|5471b21cf8347e0fad62ec64797470bad3480868|merged-pr-65
-feat/unit-price-integration-v2|06cee8e425e86171347a610aedd93c77f8f95fc2|merged-pr-40
-feat/unit-price-region-assignments|75186cf4e1830946b75062d0772b04d27206615b|merged-pr-43
-feat/verification-registry|47db44219dcd88ba8f8114e9b0d260acdfe65157|merged-pr-99
-feat/verified-core-questions|9c84d868fce99cf72c387cf1bae7f0a1df026ae5|merged-pr-2
-feat/verify-egov-content-independently|ba526154a36de1c50a332147d276531c2c757760|merged-pr-100
-feat/verify-qa-corpus-independently|ab3277c2d8e822b4aa3291ce15633943f104c711|merged-pr-102
-feature/ops-site-scaffold|5127d895101ff6ea599aac4481a36056d75b8615|merged-pr-41
-fix/care-act-authority-chain|242931565443f8ec7f9caf5d42ad5a222a4a7395|merged-pr-32
-fix/current-qa-coverage|c7e23aa0d0d72d51367afc44e6446f9ad172b52a|merged-pr-6
-fix/fee-guidance-item-boundaries|dec7dc2b1843aaf8600545d322a266121d7f3b8f|merged-pr-62
-fix/fee-guidance-review-surface|bb63b1b7a56f37e10e7e3cb4f3b8bca6a59d975a|merged-pr-64
-fix/fee-guidance-work-review-findings|17e6c5f60df9eeb7b4754ba3a3ef382a8df1a369|merged-pr-69
-fix/notice-history-boundaries|0c5147c2fc335b4879c52df6c8582d94fda1ed86|merged-pr-26
-fix/notice-primary-source-link|57dc80447f6a82e165fc92bdccf7ca3f68e27652|merged-pr-4
-fix/ordinance37-text-normalization|33960c512eb56871ea6df7c5633c736a90addb82|merged-pr-19
-fix/ordinance37-whitespace-v2|c3c927567194bc46c00079e0e55ab97d8229bf30|merged-pr-20
-fix/qa-candidate-linker|cbbc62a420c789738956d913f5e2d050cbd3d565|merged-pr-13
-fix/qa-candidate-linker-v2|0e77b50a4bdde86d25c38393d0d4d26ae77c1ae6|merged-pr-14
-fix/qa-candidate-quality|8d55bfc9c6617f55650f323d75a54bffe509ffa3|merged-pr-15
-fix/qa-import-xlsx|518d8cbc51fd74ed685bc0e57780ecba54c4017a|merged-pr-8
-fix/qa-refresh-stability|b95f55537ef219ff0d844525759ca54c7dd4e219|merged-pr-10
-fix/relation-coverage-identity-union-20260924|c93ade1f93378711924fe7b7372891d839b0e173|merged-pr-126
-fix/repository-hardening-20260924|4f2541b1eefaf876f567934d8ccaea11e9cbf390|merged-pr-112
-fix/rouki25-equipment-scope|cc9f38beb1b26f2ec791d11f320e7643560d50f8|merged-pr-75
-fix/rouki25-reference-date-provenance|942f9c4fe0dbb987b04c81fb1fe343c5856a2f15|merged-pr-86
-fix/rouki25-reference-period-2025-03|ab60d793b142e8cc251c14dd9db859a2749f2453|merged-pr-88
-fix/unit-price-validation-invariants|2f064ccdabef759dee4cfa1dfa394d75968e843d|merged-pr-48
-fix/vercel-ignore-missing-previous-sha-20260924|a1f2c60ab44a3b1572273146a87870fdc9242105|merged-pr-105
-fix/vercel-monorepo-build-scope|faac7dc0290a387ba286847869d236d42f99bb77|merged-pr-47
-reconcile/fee-guidance-currentness-watch|f6896a8511f5d1a8c3be7a9ae1ab3d13b789eeac|merged-pr-96
-reconcile/kaigo-ops-research-artifacts-20260924|9c68f37034763077a51a36b729d8c0ec5adea956|merged-pr-130
-reconcile/rouki25-currentness-ledger|860c14a0f0111abe1eb33a40836285d30b534f31|merged-pr-90
-research/rouki25-currentness-routes-2026-09|53e17b365d47d4498581d1d3acd92d058f769d3f|merged-pr-84
-research/rouki25-lawdb-systematic-search-20260924|69c682d73d3831e4a4866089107b62a60120cd82|merged-pr-106
-research/rouki25-mhlw-lawdb-coverage|dab0b1700483983e03678b80906e6d1cdd80f004|merged-pr-98
-research/rouki25-post-r6-official-index-scan|7e89d1ab0fca7520cea893dd797523962e41d7ae|merged-pr-89
-research/rouki25-post-r6-pdf-body-scan|f7b97f659f14aab4b6ceea713a645562d7d314ad|merged-pr-94
-test/fee-guidance-review-regressions|4d4f91f15795d9b380fb371e6e2d2c835ddc06bf|merged-pr-71
-BRANCHES
+          audit/remuneration-delegated-relations-current-main|77172bd933ff72ac304d22caf119ec48bdac88ff|merged-pr-111
+          audit/rouki25-independent-machine-2026-09|585c1121af44fc30f7e02599e7b568ca38c01ff8|merged-pr-83
+          automation/care-act-35673216784|21f9b7aafe9f114721e3f2ef9fa895b2c24b14d9|merged-pr-33
+          automation/fee-guidance-current-side-extraction|5f96c017d4dc86e3b5644e694a1332cae5b09881|merged-pr-58
+          automation/fee-guidance-snapshot-pipeline|1241935a32bc6eeab4a5825a562d28cddb9fd601|merged-pr-56
+          automation/fee-guidance-snapshots-35692558539|339f7f53029b67334c0c21aeae829c557f35638a|merged-pr-57
+          automation/fee-guidance-snapshots-35693831963|b37a6bdc83d288f3d92aea1d036d865d762d9378|merged-pr-59
+          automation/fee-guidance-snapshots-35700872518|799ca1232f66e517a9a0c81ad126cedab24619da|merged-pr-63
+          automation/fee-guidance-snapshots-35794459344|b1d2b743a9ab62eb63db69d5c74e4fafab03430c|merged-pr-70
+          automation/notice-history-35671363003|085dac77c73fe7dc076906d961f9278e9ecfc30a|merged-pr-27
+          automation/ordinance37-35668508741|cbfbdb5c1d0a8c8059d4ed054d18cf18a001c443|merged-pr-21
+          automation/qa-corpus-35662040654|d6472e8199f669ac51de84d55f48cdd0ac09a2d2|merged-pr-9
+          automation/qa-corpus-35662347639|77555bd7667a3243b8ed5985f862575274450476|merged-pr-11
+          automation/qa-corpus-35665270026|12e3a0cb15369cf46df6a0adbb2e1ba2541e06d5|merged-pr-16
+          automation/remuneration-35672196642|462ee4827758cc5cd01f719aeb0d23ea30307504|merged-pr-29
+          automation/unit-price-35679526309|7fd6041e8ad32a5b4e61b0aef28ba8c48cdd205c|merged-pr-42
+          automation/unit-price-35681436975|8ce55611cfb67f6b0a87f7b2631060e8bc3d5f1a|merged-pr-44
+          chore/npm-lockfiles-20260924|d208884791ab6bef4121d63fc47c2a523a2e6421|merged-pr-125
+          chore/refresh-github-actions-pins-20260924|2333088436814b8c20c662c803ffd22c3752cbd1|merged-pr-128
+          chore/repository-hardening-v2-20260924|767c6ba0b238cdcd948f80e9ba3eba97d58e740f|merged-pr-118
+          data/fee-guidance-24-25-baseline|3d17e11c40dac305b35ed5772a7c16d42e59b703|merged-pr-55
+          data/fee-guidance-heading-backfill|0992616842d18ebca3e9e33ccc584f990ca2c7a8|merged-pr-50
+          data/fee-guidance-replay-coverage|33762fa0905816ef69b890e3677ba664afd378bf|merged-pr-54
+          data/fee-guidance-structured-facts|48277e64487e5158477d5f47323abd3fa08f64e7|merged-pr-53
+          data/fee-guidance-text-candidates|fadddd6bb0761157300f34156369e5248ddff84e|merged-pr-52
+          docs/kaigo-ops-research-plan|556c4953e6954b33d0865bf95d52f37f5f8e0c2c|recovered-by-pr-130
+          feat/care-insurance-act-db|5f0defa1e17cc769e46028de44f6c737662aea5d|merged-pr-31
+          feat/careact-internal-relation-audit|e660818c56e2bbfb23843c4e5af67fca59408e9a|merged-pr-108
+          feat/complete-twelve-questions|486595109bda9ae910ca90f70797e45dee405fbd|merged-pr-5
+          feat/cross-layer-source-chain-audit|68d22554023c0e0338d87426dd39222d85602f25|merged-pr-109
+          feat/cross-source-search|b133e0c3e69d9ed817d577e8ea46a640a1513d2f|merged-pr-49
+          feat/fee-guidance-and-unit-review|d641b6acb05e6f3fb3b08d88b86494013bae0a37|merged-pr-45
+          feat/fee-guidance-independent-verification-record|4e68bc179d3e552b4dd7eb65e9fa7e6d3a734b13|merged-pr-93
+          feat/mvp-foundation|d74004b41f6a75768b7fcefcde6cf83843654150|merged-pr-1
+          feat/notice-current-skeleton|a0c822d3730ffc79e01812fb460b6b31b0d0dc89|merged-pr-24
+          feat/notice-currentness-status-ui|2073bdb425468738ecfe732c61f1d3fe90b98aea|merged-pr-91
+          feat/notice-historical-backfill|f7137e5f0a592a7c4fc385ea60483c5709ad733c|merged-pr-25
+          feat/notice-human-review-packet|f39fb1b272d3e73275c2ed1a80574112c10ac09d|merged-pr-81
+          feat/notice-review-ui|7b5ecad115b663d7c4e8ef134d2d949eaceb33e1|merged-pr-82
+          feat/ordinance-review-ledger|bd3537671b336b4125b20a46f83699b536202fa3|merged-pr-23
+          feat/ordinance37-database|1ca8c3c285e3c78a2103b0a3411ef93940c23cd4|merged-pr-18
+          feat/pin-egov-content-audit|1044fd9fd54226cc0044516116b75ff2d25d14e5|merged-pr-101
+          feat/pin-qa-independent-audit|d59bcabe35ac01d10fc0746857d4b95a019769f1|merged-pr-103
+          feat/pin-remuneration-unit-price-audits|86f67418a1176fb808b6a3956e4fc9cb6ab1b323|merged-pr-97
+          feat/qa-import-pipeline|7f2173cb42ee215a31aec28bf6a162191753b355|merged-pr-7
+          feat/qa-search-synonyms|9fe6cb1bbd86f09c77f5af7aa80b2b88c54c04b1|merged-pr-17
+          feat/qa-search-ui|f27f35afa1089bdf7a61ce2b8ff8bc5b2682ce9d|merged-pr-12
+          feat/qa-source-freshness-monitor|fb0a3c8a8e20fb542c82452deae8c03e295c8aa2|merged-pr-68
+          feat/qa-startup-next-answers|fe90dc534185daf418f872395ccb22983291b8c3|merged-pr-3
+          feat/relation-semantic-independent-audit|92f0fe8bb08800f7c7dfc3c85ea82f6d827bfe2b|merged-pr-107
+          feat/remuneration-db-skeleton|00bd2a40d84f24a3eb25ed7d9979e51b8d3bd116|merged-pr-28
+          feat/remuneration-delegated-criteria-db|fbdda3f1192876459a85d2fb559127da0e3704d3|merged-pr-36
+          feat/remuneration-delegated-integration-v2|c4d6d8912fbbae49752f51a9ec841aca9424e1db|merged-pr-39
+          feat/remuneration-independent-verifier|8ccbacf46665bd1d19c3b92499eb872d863bf07d|merged-pr-66
+          feat/remuneration-review-complete|d9bc994f3016313e48ebd033087e8120d3cfbc90|merged-pr-35
+          feat/remuneration-review-ui|9f6f673c1000d0cf9c3fa7ef6017d4d9f5e5c629|merged-pr-30
+          feat/remuneration-review-v2|19d51e6a422b743aa4093237b68306215ac159d6|merged-pr-34
+          feat/rouki25-currentness-watch|68111107851d7decf9a03c4c96b311e84d8b4dae|merged-pr-92
+          feat/rouki25-equipment-reconstruction|6905ad5b09d8126da85d524a5e357adde7244320|merged-pr-76
+          feat/rouki25-independent-verifier|e0644b51e1f9b67a2b3ca71c21e668ea4ed60eb8|merged-pr-80
+          feat/rouki25-operation-legacy-reconstruction|af88132790c4b79e06a7327be49bddc2fc3a03a6|merged-pr-79
+          feat/rouki25-operation-modern-reconstruction|98438c57e273dde6ff3fa535ba8d47ff3d6a8815|merged-pr-78
+          feat/rouki25-personnel-reconstruction|3e9c02efdf6d1263c7a25b034c6a78306cc40de6|merged-pr-77
+          feat/rules-review-ui|2f9d8a143a383e65c83c676ff5c00c33324825f7|merged-pr-22
+          feat/site-feedback-disclaimer-20260924|854b54eeb5c34acd886bd68969d98af50e59dd8c|merged-pr-104
+          feat/source-drift-monitoring|19ddf4426a28ca069adfd525c8533a498d6a291a|merged-pr-67
+          feat/unit-price-independent-verifier|5471b21cf8347e0fad62ec64797470bad3480868|merged-pr-65
+          feat/unit-price-integration-v2|06cee8e425e86171347a610aedd93c77f8f95fc2|merged-pr-40
+          feat/unit-price-region-assignments|75186cf4e1830946b75062d0772b04d27206615b|merged-pr-43
+          feat/verification-registry|47db44219dcd88ba8f8114e9b0d260acdfe65157|merged-pr-99
+          feat/verified-core-questions|9c84d868fce99cf72c387cf1bae7f0a1df026ae5|merged-pr-2
+          feat/verify-egov-content-independently|ba526154a36de1c50a332147d276531c2c757760|merged-pr-100
+          feat/verify-qa-corpus-independently|ab3277c2d8e822b4aa3291ce15633943f104c711|merged-pr-102
+          feature/ops-site-scaffold|5127d895101ff6ea599aac4481a36056d75b8615|merged-pr-41
+          fix/care-act-authority-chain|242931565443f8ec7f9caf5d42ad5a222a4a7395|merged-pr-32
+          fix/current-qa-coverage|c7e23aa0d0d72d51367afc44e6446f9ad172b52a|merged-pr-6
+          fix/fee-guidance-item-boundaries|dec7dc2b1843aaf8600545d322a266121d7f3b8f|merged-pr-62
+          fix/fee-guidance-review-surface|bb63b1b7a56f37e10e7e3cb4f3b8bca6a59d975a|merged-pr-64
+          fix/fee-guidance-work-review-findings|17e6c5f60df9eeb7b4754ba3a3ef382a8df1a369|merged-pr-69
+          fix/notice-history-boundaries|0c5147c2fc335b4879c52df6c8582d94fda1ed86|merged-pr-26
+          fix/notice-primary-source-link|57dc80447f6a82e165fc92bdccf7ca3f68e27652|merged-pr-4
+          fix/ordinance37-text-normalization|33960c512eb56871ea6df7c5633c736a90addb82|merged-pr-19
+          fix/ordinance37-whitespace-v2|c3c927567194bc46c00079e0e55ab97d8229bf30|merged-pr-20
+          fix/qa-candidate-linker|cbbc62a420c789738956d913f5e2d050cbd3d565|merged-pr-13
+          fix/qa-candidate-linker-v2|0e77b50a4bdde86d25c38393d0d4d26ae77c1ae6|merged-pr-14
+          fix/qa-candidate-quality|8d55bfc9c6617f55650f323d75a54bffe509ffa3|merged-pr-15
+          fix/qa-import-xlsx|518d8cbc51fd74ed685bc0e57780ecba54c4017a|merged-pr-8
+          fix/qa-refresh-stability|b95f55537ef219ff0d844525759ca54c7dd4e219|merged-pr-10
+          fix/relation-coverage-identity-union-20260924|c93ade1f93378711924fe7b7372891d839b0e173|merged-pr-126
+          fix/repository-hardening-20260924|4f2541b1eefaf876f567934d8ccaea11e9cbf390|merged-pr-112
+          fix/rouki25-equipment-scope|cc9f38beb1b26f2ec791d11f320e7643560d50f8|merged-pr-75
+          fix/rouki25-reference-date-provenance|942f9c4fe0dbb987b04c81fb1fe343c5856a2f15|merged-pr-86
+          fix/rouki25-reference-period-2025-03|ab60d793b142e8cc251c14dd9db859a2749f2453|merged-pr-88
+          fix/unit-price-validation-invariants|2f064ccdabef759dee4cfa1dfa394d75968e843d|merged-pr-48
+          fix/vercel-ignore-missing-previous-sha-20260924|a1f2c60ab44a3b1572273146a87870fdc9242105|merged-pr-105
+          fix/vercel-monorepo-build-scope|faac7dc0290a387ba286847869d236d42f99bb77|merged-pr-47
+          reconcile/fee-guidance-currentness-watch|f6896a8511f5d1a8c3be7a9ae1ab3d13b789eeac|merged-pr-96
+          reconcile/kaigo-ops-research-artifacts-20260924|9c68f37034763077a51a36b729d8c0ec5adea956|merged-pr-130
+          reconcile/rouki25-currentness-ledger|860c14a0f0111abe1eb33a40836285d30b534f31|merged-pr-90
+          research/rouki25-currentness-routes-2026-09|53e17b365d47d4498581d1d3acd92d058f769d3f|merged-pr-84
+          research/rouki25-lawdb-systematic-search-20260924|69c682d73d3831e4a4866089107b62a60120cd82|merged-pr-106
+          research/rouki25-mhlw-lawdb-coverage|dab0b1700483983e03678b80906e6d1cdd80f004|merged-pr-98
+          research/rouki25-post-r6-official-index-scan|7e89d1ab0fca7520cea893dd797523962e41d7ae|merged-pr-89
+          research/rouki25-post-r6-pdf-body-scan|f7b97f659f14aab4b6ceea713a645562d7d314ad|merged-pr-94
+          test/fee-guidance-review-regressions|4d4f91f15795d9b380fb371e6e2d2c835ddc06bf|merged-pr-71
+          BRANCHES
 
           checked=0
           present=0
