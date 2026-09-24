@@ -12,7 +12,9 @@
   "scope_files": {
     "care_insurance_act_core": "data/services/shared/designated-home-service-core.json",
     "care_insurance_act": "data/services/homevisit/care-insurance-act-scope.json",
-    "ordinance37": "data/services/homevisit/ordinance37-scope.json"
+    "ordinance37": "data/services/homevisit/ordinance37-scope.json",
+    "rouki25": "data/services/homevisit/rouki25-scope.json",
+    "remuneration": "data/services/homevisit/remuneration-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
