@@ -1,0 +1,23 @@
+{
+  "format_version": 1,
+  "scope_id": "care-insurance-act.designated-home-service-core",
+  "source_role": "SHARED_LAW_SCOPE",
+  "law_id": "409AC0000000123",
+  "law_num": "平成九年法律第百二十三号",
+  "title": "介護保険法",
+  "articles": [
+    "41",
+    "70",
+    "70-2",
+    "73",
+    "74",
+    "75",
+    "76",
+    "76-2",
+    "77",
+    "78"
+  ],
+  "purpose": "指定居宅サービスに共通する給付、指定・更新、基準、変更届、指導監督、取消し・公示の骨格を一度だけ定義し、サービス固有の定義条項から参照する。",
+  "status": "SCOPE_DEFINITION_ONLY",
+  "automatic_verification_promotion_allowed": false
+}
