@@ -1,3 +1,4 @@
+import VerificationSummary from "../../components/verification-summary";
 import Link from "next/link";
 import nodesData from "../../data/remuneration-current-skeleton.json";
 import textData from "../../data/remuneration-current-text.json";
@@ -42,6 +43,8 @@ export default function FeesPage() {
         厚生労働省の現行HTMLには令和8年告示第87号まで反映されています。
         個々の単位数・加算率は、原文照合が終わるまで「確認済み」とは表示しません。
       </div>
+
+      <VerificationSummary layerId="remuneration-notices" />
 
       <section className="rules-stats fee-stats">
         <div><strong>{meta.counts.nodes}</strong><span>骨格ノード</span></div>
