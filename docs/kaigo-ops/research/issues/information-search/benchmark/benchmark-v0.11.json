@@ -1,0 +1,92 @@
+{
+  "version": "0.11",
+  "created_at": "2026-09-22",
+  "status": "CURRENT_SUITE_CLAIM_COVERAGE_COMPLETE",
+  "total_suite_cases": 147,
+  "suites": [
+    {
+      "name": "benchmark_v0_3",
+      "file": "benchmark-v0.3.json",
+      "cases": 50
+    },
+    {
+      "name": "coverage_gap",
+      "file": "coverage-gap-v0.1.json",
+      "cases": 20
+    },
+    {
+      "name": "false_answer_stress",
+      "file": "false-answer-stress-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "external_mhlw_qa_query_sample",
+      "file": "external-qa-query-sample-v0.2.json",
+      "cases": 15
+    },
+    {
+      "name": "claim_promotion",
+      "file": "claim-promotion-benchmark-v0.1.json",
+      "cases": 2
+    },
+    {
+      "name": "claim_routing_natural_language",
+      "file": "claim-routing-natural-language-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "verified_claim_routing_probe",
+      "file": "verified-claim-routing-probe-v0.1.json",
+      "cases": 28
+    },
+    {
+      "name": "multi_claim_routing",
+      "file": "multi-claim-routing-v0.1.json",
+      "cases": 5
+    },
+    {
+      "name": "important_matters_claim_routing",
+      "file": "important-matters-claim-routing-v0.1.json",
+      "cases": 3
+    }
+  ],
+  "regression_checks": {
+    "verified_queries_and_canonical": 51,
+    "coverage_gap": 20,
+    "false_answer_stress": 12,
+    "external_qa": 15,
+    "claim_promotion": 2,
+    "claim_routing_natural_language": 12,
+    "verified_claim_routing_probe": 28,
+    "multi_claim_routing": 5,
+    "important_matters_claim_routing": 3,
+    "total_classifier_checks": 148
+  },
+  "latest_results": {
+    "verified_regression": "51/51",
+    "coverage_gap": "20/20",
+    "false_answer_stress": "12/12",
+    "external_qa": "15/15",
+    "claim_promotion": "2/2",
+    "claim_routing_natural_language": "12/12",
+    "verified_claim_routing_probe": "28/28",
+    "multi_claim_routing": "5/5",
+    "important_matters_claim_routing": "3/3",
+    "total_classifier_checks": "148/148"
+  },
+  "routing_state": {
+    "registry_claims": 38,
+    "answer_claims": 32,
+    "answer_claims_with_explicit_routing": 32,
+    "compositions": 4,
+    "verified_regression_issue_fallback": "0/51",
+    "caution": "Zero Issue fallback is a property of the current test suite, not a production-coverage guarantee or KPI."
+  },
+  "next_gate": [
+    "expand externally sourced natural-language queries beyond the current 15 MHLW Q&A previews",
+    "measure abstention and Claim resolution separately on the expanded external set",
+    "human sign-off on safety prose",
+    "continue current-source reconstruction for source-limited claims",
+    "compare RAG only after broader external-query validation"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-23",
+  "status": "PROTOCOL_FIXED_RAG_NOT_IMPLEMENTED",
+  "baseline": {
+    "claim_registry": "claims-v0.15.json",
+    "composition_registry": "claim-compositions-v0.5.json",
+    "classifier": "research-coverage-classifier-v0.22.mjs",
+    "frozen_suite_cases": 190,
+    "last_executed_classifier_checks": "191/191",
+    "note": "Source-only updates after the last execution did not change Claim decision fields or classifier decision logic."
+  },
+  "stages": [
+    {
+      "id": "stage_1",
+      "name": "retrieval_only",
+      "generation": false
+    },
+    {
+      "id": "stage_2",
+      "name": "answer_composition",
+      "generation": true,
+      "requires_stage_1_pass": true
+    }
+  ],
+  "arms": [
+    {
+      "id": "A",
+      "name": "claim_aware_non_rag",
+      "production_candidate": true
+    },
+    {
+      "id": "B",
+      "name": "verified_only_rag",
+      "production_candidate": true,
+      "answerability_gate": "deterministic_before_retrieval"
+    },
+    {
+      "id": "C",
+      "name": "broad_corpus_negative_control",
+      "production_candidate": false,
+      "generation": false
+    }
+  ],
+  "forbidden_answer_corpus_states": [
+    "INGESTED_UNREVIEWED",
+    "CANDIDATE_UNREVIEWED",
+    "REVIEW_REQUIRED"
+  ],
+  "holdout": {
+    "target_cases_range": [
+      30,
+      50
+    ],
+    "collect_before_labeling": true,
+    "source_requirement": "external public queries not used for router tuning",
+    "do_not_tune_on_holdout": true
+  },
+  "hard_failures": [
+    "FALSE_ANSWER",
+    "LOCAL_AS_NATIONAL",
+    "OUT_OF_SCOPE_INFERENCE",
+    "REVIEW_REQUIRED_PROMOTED",
+    "CURRENTNESS_VIOLATION",
+    "UNREVIEWED_SOURCE_LEAKAGE",
+    "SEMANTIC_CLAIM_SUBSTITUTION"
+  ],
+  "metrics": [
+    "answerability_accuracy",
+    "expected_claim_hit_at_1",
+    "expected_claim_hit_at_3",
+    "multi_claim_complete",
+    "trusted_source_recall_at_5",
+    "trusted_source_complete_at_5",
+    "false_abstention",
+    "provenance_contamination_rate"
+  ],
+  "next_step": "build_new_external_holdout_before_implementing_rag"
+}

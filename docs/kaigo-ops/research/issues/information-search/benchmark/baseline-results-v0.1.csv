@@ -1,0 +1,21 @@
+id,kind,query,gold_question,faq_top1,faq_hit1,rule_top1,rule_hit1,rule_hit3,rule_hit5
+KQ-001,canonical,管理者は他の職務と兼務できますか？,manager-concurrent-role,manager-concurrent-role,TRUE,ordinance37.article94,TRUE,TRUE,TRUE
+KQ-002,canonical,生活相談員は何人配置すればよいですか？,life-counselor-staffing,life-counselor-staffing,TRUE,ordinance37.article93.1.1,TRUE,TRUE,TRUE
+KQ-003,canonical,看護職員は何人必要ですか？,nurse-staffing,nurse-staffing,TRUE,ordinance37.article93.1.2,TRUE,TRUE,TRUE
+KQ-004,canonical,同じ職員が複数の職種を兼務できますか？,multiple-roles,multiple-roles,TRUE,ordinance37.article93.3,TRUE,TRUE,TRUE
+KQ-005,canonical,食堂・機能訓練室にはどのくらいの面積が必要ですか？,dining-training-area,dining-training-area,TRUE,ordinance37.article95.1-2,TRUE,TRUE,TRUE
+KQ-006,canonical,運営規程には何を記載する必要がありますか？,operation-rules-content,operation-rules-content,TRUE,ordinance37.article100,TRUE,TRUE,TRUE
+KQ-007,canonical,重要事項説明書には何を記載する必要がありますか？,important-matters-content,important-matters-content,TRUE,ordinance37.article8.1,TRUE,TRUE,TRUE
+KQ-008,canonical,通所介護計画には何を記載すればよいですか？,care-plan-content,care-plan-content,TRUE,ordinance37.article99.4,TRUE,TRUE,TRUE
+KQ-009,canonical,通所介護計画書に利用者の署名は必要ですか？,care-plan-signature,care-plan-signature,TRUE,ordinance37.article99.4,TRUE,TRUE,TRUE
+KQ-010,canonical,通所介護計画書に押印は必要ですか？,care-plan-seal,care-plan-seal,TRUE,ordinance37.article99.4,TRUE,TRUE,TRUE
+KQ-011,canonical,通所介護で毎年実施する必要がある研修は何ですか？,annual-training,annual-training,TRUE,ordinance37.article37-2.3,TRUE,TRUE,TRUE
+KQ-012,canonical,BCPの研修はどのくらいの頻度で行いますか？,bcp-training,bcp-training,TRUE,ordinance37.article30-2.2,TRUE,TRUE,TRUE
+KQ-013,paraphrase,管理者 兼務について教えてください。,manager-concurrent-role,manager-concurrent-role,TRUE,ordinance37.article94,TRUE,TRUE,TRUE
+KQ-014,paraphrase,生活相談員 人数について教えてください。,life-counselor-staffing,life-counselor-staffing,TRUE,ordinance37.article93.1.1,TRUE,TRUE,TRUE
+KQ-015,paraphrase,看護師 人数について教えてください。,nurse-staffing,nurse-staffing,TRUE,ordinance37.article93.1.2,TRUE,TRUE,TRUE
+KQ-016,paraphrase,兼務について教えてください。,multiple-roles,manager-concurrent-role,FALSE,ordinance37.article94,TRUE,TRUE,TRUE
+KQ-017,paraphrase,食堂 面積について教えてください。,dining-training-area,dining-training-area,TRUE,ordinance37.article95.1-2,TRUE,TRUE,TRUE
+KQ-018,paraphrase,運営規程 記載について教えてください。,operation-rules-content,operation-rules-content,TRUE,ordinance37.article99.1,FALSE,TRUE,TRUE
+KQ-019,paraphrase,重要事項説明書 記載について教えてください。,important-matters-content,important-matters-content,TRUE,ordinance37.article8.1,TRUE,TRUE,TRUE
+KQ-020,paraphrase,通所介護計画 記載について教えてください。,care-plan-content,care-plan-content,TRUE,ordinance37.article99.1,TRUE,TRUE,TRUE

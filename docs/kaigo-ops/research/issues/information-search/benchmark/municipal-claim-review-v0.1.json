@@ -1,0 +1,71 @@
+{
+  "version": "0.1",
+  "reviewed_at": "2026-09-22",
+  "scope": "municipal external-query follow-up",
+  "decisions": [
+    {
+      "query_id": "MQ-001",
+      "topic": "重要事項変更時の再説明・同意",
+      "decision": "KEEP_REVIEW_REQUIRED",
+      "claim_id": "review.important.change-consent",
+      "national_source_findings": [
+        "Current Article 8 / Article 105 clearly require explanation and consent before service starts.",
+        "MHLW document-burden materials depict important-matters documents at change points, but do not establish a binding rule that every post-contract change requires renewed written consent."
+      ],
+      "boundary": "Do not extrapolate pre-start consent requirements to every later change."
+    },
+    {
+      "query_id": "MQ-007",
+      "topic": "機能訓練指導員の提供日・単位ごとの配置",
+      "decision": "PROMOTE",
+      "claim_id": "claim.staff.functional-instructor.not-per-day-unit",
+      "verification_status": "VERIFIED_INTERPRETATION",
+      "national_source_findings": [
+        "Article 93 defines staffing as employees to be placed at each designated day-service establishment.",
+        "Functional-training instructor is stated simply as one or more.",
+        "The same article explicitly states per-service-day requirements for life counselors and per-unit requirements for nurses/care workers, but does not use those qualifiers for functional-training instructors."
+      ],
+      "boundary": "This is the basic staffing standard only. Add-on-specific exclusive staffing/time requirements are separate."
+    },
+    {
+      "query_id": "MQ-002",
+      "related_external_id": "EQ-028",
+      "topic": "サービス提供時間中の理美容",
+      "decision": "KEEP_MUNICIPAL_QUERY_REVIEW_REQUIRED",
+      "national_source_findings": [
+        "MHLW Q&A states hairdressing/beauty service need not be limited to before or after day service when clearly separated from the insured service.",
+        "The 2018 combined insured/non-insured service notice also permits clearly separated hairdressing/beauty service during a temporary interruption of day service."
+      ],
+      "boundary": "MQ-002 asks whether a care worker may itself cut hair. That adds professional/licensing and provider-role questions not resolved by the timing Q&A."
+    },
+    {
+      "query_id": "MQ-003",
+      "topic": "サービス提供時間中の訪問診療",
+      "decision": "KEEP_REVIEW_REQUIRED",
+      "national_source_findings": [
+        "MHLW Q&A says use of a co-located medical institution during the day-service service period is generally not allowed except in urgent unavoidable cases.",
+        "Current guidance also addresses online care and off-insurance health services, but does not by itself settle every in-person visiting-physician/dentist scenario represented by MQ-003."
+      ],
+      "boundary": "Do not generalize a co-located medical-institution Q&A to all forms of visiting medical/dental care."
+    },
+    {
+      "query_ids": [
+        "MQ-004",
+        "MQ-005"
+      ],
+      "topic": "外出レクリエーション",
+      "decision": "REVIEW_CANDIDATE_WITH_NATIONAL_SUPPORT",
+      "national_source_findings": [
+        "MHLW interpretation notice states day service is generally provided inside the establishment but may be provided outside when specified conditions are met.",
+        "MHLW 2018 notice distinguishes planned functional-training outings from individual off-insurance outings."
+      ],
+      "boundary": "A future Claim should separate insured planned outdoor service from personal off-insurance outings and should not infer all recreation/time arrangements from the general rule."
+    }
+  ],
+  "regression_after_review": {
+    "municipal": "15/15",
+    "full_classifier_checks": "181/181",
+    "MQ_001_resolution": "REVIEW_REQUIRED -> review.important.change-consent",
+    "MQ_007_resolution": "ANSWER -> claim.staff.functional-instructor.not-per-day-unit"
+  }
+}

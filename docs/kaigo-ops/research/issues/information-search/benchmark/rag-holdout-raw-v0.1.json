@@ -1,0 +1,197 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-23",
+  "status": "RAW_QUERY_COLLECTION_FROZEN_UNLABELED",
+  "purpose": "New external holdout for controlled RAG comparison. Questions are frozen before expected answerability / Claim / source labels are assigned.",
+  "methodology": [
+    "Use public question text from official municipal websites not previously used for router tuning.",
+    "Keep questions verbatim or minimally normalize punctuation/service naming only.",
+    "Do not use municipal answers as national ground truth.",
+    "Do not assign expected labels during collection.",
+    "After this raw set is frozen, perform a separate source review to assign expected answerability / Claim / source."
+  ],
+  "sources": [
+    {
+      "source_id": "nagoya-public-service-qa-2026",
+      "authority": "名古屋市",
+      "source_type": "official municipal HTML Q&A / service pages",
+      "urls": [
+        "https://www.kaigo-wel.city.nagoya.jp/view/kaigo/service/visit/kaigo.html",
+        "https://www.kaigo-wel.city.nagoya.jp/view/kaigo/faq/docs/2013070400562/",
+        "https://www.kaigo-wel.city.nagoya.jp/view/kaigo/service/visit/",
+        "https://www.kaigo-wel.city.nagoya.jp/view/kaigo/service/combine/"
+      ],
+      "accessed_at": "2026-09-23"
+    },
+    {
+      "source_id": "kobe-sougou-qa-2026",
+      "authority": "神戸市",
+      "source_type": "official municipal HTML Q&A",
+      "url": "https://www.city.kobe.lg.jp/a46210/business/annaitsuchi/kaigoservice/sougouzigyou/qa.html",
+      "source_updated_at": "2026-04-07",
+      "accessed_at": "2026-09-23"
+    },
+    {
+      "source_id": "sendai-community-service-preapplication-qa",
+      "authority": "仙台市",
+      "source_type": "official municipal HTML Q&A",
+      "url": "https://www.city.sendai.jp/korekikaku-shisetsu/jigyosha/fukushi/fukushi/koresha/tetsuzuki.html",
+      "source_updated_at": "2024-08-27",
+      "accessed_at": "2026-09-23"
+    }
+  ],
+  "cases": [
+    {
+      "id": "RH-001",
+      "source_id": "nagoya-public-service-qa-2026",
+      "question": "デイサービスの提供時間内に併設の医療機関の受診はできますか？"
+    },
+    {
+      "id": "RH-002",
+      "source_id": "nagoya-public-service-qa-2026",
+      "question": "通常の通所介護と認知症対応型通所介護を混在して利用することはできますか？"
+    },
+    {
+      "id": "RH-003",
+      "source_id": "nagoya-public-service-qa-2026",
+      "question": "小規模多機能型居宅介護を利用しながら、毎週火曜日のみ友達が利用している通所介護（デイサービス）に行くことができますか？"
+    },
+    {
+      "id": "RH-004",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "介護予防通所サービスについて、サービスの必要性を感じない方が利用の継続を強く望んだ場合はサービスの利用対象者にあてはまるのか。"
+    },
+    {
+      "id": "RH-005",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "介護予防通所サービスでは、必ず入浴と機能訓練を行わなければならないのか。入浴や体操を希望しない場合は利用できないのか。"
+    },
+    {
+      "id": "RH-006",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "介護予防通所サービスの「生活機能の向上のトレーニング」とは、具体的にどのような内容が該当するのか。"
+    },
+    {
+      "id": "RH-007",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "通所介護と介護予防通所サービスを一体的に運営する場合の基準は。"
+    },
+    {
+      "id": "RH-008",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "通所介護の定員数は、通所介護と介護予防通所サービスを合わせた定員数で構わないのか。"
+    },
+    {
+      "id": "RH-009",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "「通所介護と通所リハビリテーションの併用はできない」「複数の通所介護事業所のサービスは併用できない」というのは総合事業でも同じか。"
+    },
+    {
+      "id": "RH-010",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "自宅と事業所が同一建物ではないが、事業所の職員が歩いて利用者に付き添って自宅から事業所まで送り迎えしている場合には減算になるのか。"
+    },
+    {
+      "id": "RH-011",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "ケアプラン上「送迎なし」の利用者がある日送迎を利用した場合、また「送迎あり」の利用者がある日送迎を利用しなかった場合はどうなるのか。"
+    },
+    {
+      "id": "RH-012",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "令和6年度介護報酬改定で運動器機能向上加算が廃止されたが、加算算定時に必要だった手続きは不要となるのか。"
+    },
+    {
+      "id": "RH-013",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "介護予防通所サービスの回数区分は予定と実績のどちらで算定するのか。週によって回数が異なる場合はどう考えるのか。"
+    },
+    {
+      "id": "RH-014",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "本人が週3回以上の介護予防通所サービス利用を希望している場合、介護保険上で利用は可能か。"
+    },
+    {
+      "id": "RH-015",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "市外の事業所でも、神戸市の介護予防通所サービスの指定を受けることは可能か。"
+    },
+    {
+      "id": "RH-016",
+      "source_id": "kobe-sougou-qa-2026",
+      "question": "市外の事業所が神戸市の被保険者を受け入れており、利用者が要介護から要支援となった場合、必要な手続きはあるか。"
+    },
+    {
+      "id": "RH-017",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "同一法人が、複数の地区に事前申出を行うことは可能ですか。"
+    },
+    {
+      "id": "RH-018",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事業所は、新築及び既存建物の増改築のどちらも可能ですか。"
+    },
+    {
+      "id": "RH-019",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事業所及び事業予定地は、賃貸も可能ですか。"
+    },
+    {
+      "id": "RH-020",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事前申出の時点で、事業予定地を特定しなければなりませんか。"
+    },
+    {
+      "id": "RH-021",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "複数の地域密着型サービスを併設する場合、事前申出は各事業ごとに提出するのですか。"
+    },
+    {
+      "id": "RH-022",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "介護事業の実績のない法人でも事前申出は可能ですか。"
+    },
+    {
+      "id": "RH-023",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事前申出の時点で職員を確保している必要はありますか。"
+    },
+    {
+      "id": "RH-024",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事前申出の時点で、基準上定められている研修を修了していなければなりませんか。"
+    },
+    {
+      "id": "RH-025",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事前申出時において法人として登記している必要はありますか。"
+    },
+    {
+      "id": "RH-026",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事前協議ではどういったことを協議するのですか。また、どの程度の期間を必要としますか。"
+    },
+    {
+      "id": "RH-027",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "仙台市の整備基準は、どのようになっていますか。"
+    },
+    {
+      "id": "RH-028",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事業所内のトイレの数はどれくらいが妥当ですか。"
+    },
+    {
+      "id": "RH-029",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "指定小規模多機能型居宅介護事業所と指定通所介護事業所を併設する場合、設備を共用することは可能ですか。"
+    },
+    {
+      "id": "RH-030",
+      "source_id": "sendai-community-service-preapplication-qa",
+      "question": "事業所はビルの高層階に位置していても構いませんか。"
+    }
+  ],
+  "labeling_status": "NOT_STARTED",
+  "note": "The raw set is intentionally not balanced by expected class. Class balance must be observed after independent labeling, not engineered while collecting questions."
+}

@@ -1,0 +1,89 @@
+{
+  "version": "0.1",
+  "reviewed_at": "2026-09-23",
+  "purpose": "Close current-source limitations without changing answer boundaries.",
+  "before": {
+    "registry": "claims-v0.13.json",
+    "verified_with_source_limitation": 7
+  },
+  "after": {
+    "registry": "claims-v0.14.json",
+    "verified_with_source_limitation": 1
+  },
+  "promoted": [
+    {
+      "claim_id": "claim.staff.nurse.external-linkage",
+      "to": "VERIFIED_CURRENT",
+      "evidence": [
+        "current Ministerial Ordinance Article 93",
+        "FY2024 MHLW Q&A question 59 on externally contracted nurses",
+        "current official MHLW Q&A index"
+      ]
+    },
+    {
+      "claim_id": "claim.training.bcp.annual-frequency",
+      "to": "VERIFIED_CURRENT",
+      "evidence": [
+        "current MHLW BCP support page",
+        "MHLW training material: day/visit services annual training and annual drill"
+      ]
+    },
+    {
+      "claim_id": "claim.training.infection.annual-frequency",
+      "to": "VERIFIED_CURRENT",
+      "evidence": [
+        "current Ministerial Ordinance Article 104",
+        "FY2024 MHLW interpretation redline: day-service training annually or more, new-hire training desirable, drill annually or more"
+      ]
+    },
+    {
+      "claim_id": "claim.training.abuse.annual-newhire",
+      "to": "VERIFIED_CURRENT",
+      "evidence": [
+        "current MHLW abuse-prevention Q&A: day service annual training or more",
+        "current MHLW abuse-prevention training material: home-based services annual or more and new-hire training important"
+      ]
+    },
+    {
+      "claim_id": "candidate.staff.life-counselor.service-meeting-time",
+      "to": "VERIFIED_CURRENT",
+      "evidence": [
+        "MHLW FY2012 Q&A Vol.2 question 12",
+        "continued inclusion in current official MHLW Q&A collection"
+      ]
+    },
+    {
+      "claim_id": "candidate.facility.dining-training.multi-room",
+      "to": "VERIFIED_CURRENT",
+      "evidence": [
+        "current Ministerial Ordinance Article 95",
+        "current MHLW interpretation wording on cramped rooms / grouping exception",
+        "continued inclusion of the accepted multi-room example in official MHLW Q&A collection"
+      ]
+    }
+  ],
+  "retained": [
+    {
+      "claim_id": "claim.service.outdoor.conditions",
+      "status": "VERIFIED_WITH_SOURCE_LIMITATION",
+      "reason": "The substantive outdoor-service conditions remain supported, but this review did not directly reconstruct the relevant clause from a current integrated interpretation notice. Do not upgrade merely from an older/full-text fragment plus later partial redlines."
+    }
+  ],
+  "decision_invariance": {
+    "compared": "claims-v0.13.json -> claims-v0.14.json",
+    "claim_count_before": 49,
+    "claim_count_after": 49,
+    "decision_fields_checked": [
+      "issue_id",
+      "answerability",
+      "routing",
+      "superseded_by"
+    ],
+    "decision_field_differences": 0,
+    "implication": "Classifier decisions are invariant because the changed statuses remain inside the verified-status set and no routing/answerability fields changed."
+  },
+  "baseline_regression": {
+    "previous_full_classifier_checks": "191/191",
+    "note": "No decision-affecting fields changed; v0.21 only points the same classifier logic at claims-v0.14."
+  }
+}

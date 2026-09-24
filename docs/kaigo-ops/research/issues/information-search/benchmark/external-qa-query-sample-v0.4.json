@@ -1,0 +1,213 @@
+{
+  "version": "0.4",
+  "created_at": "2026-09-22",
+  "source": "data/qa-link-candidates.json derived from MHLW Q&A corpus",
+  "source_status": "CANDIDATE_UNREVIEWED",
+  "methodology": "Only public MHLW Q&A question text or minimally normalized/shortened previews are used as external queries. Q&A answer text is not used as benchmark ground truth. Expected labels and expected Claim IDs are determined from separately reviewed current Kaigo Rules claims; three provenance gaps identified during external-query audit were independently reviewed against official MHLW Q&A before adding expected Claim IDs.",
+  "cases": [
+    {
+      "id": "EQ-001",
+      "source_qa_id": "qa.mhlw.749ca43b6096d305a35e",
+      "question": "通所介護等事業所において配置が義務づけられている管理者は、機能訓練指導員を兼ねることができるか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.manager-functional-instructor.concurrent"
+    },
+    {
+      "id": "EQ-002",
+      "source_qa_id": "qa.mhlw.a3ceb95affec100c3cc3",
+      "question": "管理者に求められる具体的な役割は何か。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-003",
+      "source_qa_id": "qa.mhlw.3cf34cdf74e63388a801",
+      "question": "生活相談員及び介護職員の具体的な人員配置の方法はどのようなものなのか。",
+      "expected": "PARTIAL"
+    },
+    {
+      "id": "EQ-004",
+      "source_qa_id": "qa.mhlw.bed5148c4af01939c01d",
+      "question": "通所介護事業所の生活相談員がサービス担当者会議に出席するための時間については確保すべき勤務延時間数に含めることができるか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.staff.life-counselor.service-meeting-time"
+    },
+    {
+      "id": "EQ-005",
+      "source_qa_id": "qa.mhlw.337577b0a5b20a4e386f",
+      "question": "生活相談員の勤務延時間に、地域の町内会等と連携するための時間を含めることができるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-006",
+      "source_qa_id": "qa.mhlw.d39e1a671c4be5f3b74a",
+      "question": "病院、診療所又は訪問看護ステーションとの契約で確保した看護職員について、必要な従事時間や駆けつけられる距離に一律基準はあるか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.nurse.external-linkage.time-distance"
+    },
+    {
+      "id": "EQ-007",
+      "source_qa_id": "qa.mhlw.19ff5348270062de7154",
+      "question": "通所介護等事業所において配置が義務づけられている看護職員は、機能訓練指導員を兼ねることができるか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.nurse-functional-instructor.concurrent"
+    },
+    {
+      "id": "EQ-008",
+      "source_qa_id": "qa.mhlw.b1e96b13d78bac74bb0f",
+      "question": "個別機能訓練加算において、管理者が専ら機能訓練指導員の職務に従事する者を兼務できるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-009",
+      "source_qa_id": "qa.mhlw.9437b9cb343b7e7324c6",
+      "question": "個別機能訓練計画の作成者と居宅の訪問者は同一人物でなくてもよいか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-010",
+      "source_qa_id": "qa.mhlw.91959c3555dce399f7b8",
+      "question": "複数の部屋の面積を合計して食堂・機能訓練室の面積基準を満たすことはできるか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "candidate.facility.dining-training.multi-room"
+    },
+    {
+      "id": "EQ-011",
+      "source_qa_id": "qa.mhlw.a4a4dab6582666e0bdb5",
+      "question": "災害その他やむを得ない事情がある場合の定員遵守規定の例外はどのように考えるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-012",
+      "source_qa_id": "qa.mhlw.87bba14a2bbb61a24d73",
+      "question": "経過措置期間を定めて義務づけられた事項を運営規程ではどのように扱うか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-013",
+      "source_qa_id": "qa.mhlw.8408a750dd8209c6523e",
+      "question": "利用者がご飯を持参し、おかずのみ事業所が提供する場合、運営規程にはどのように規定すればよいか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-014",
+      "source_qa_id": "qa.mhlw.43db119b922c77059879",
+      "question": "所要時間区分は利用者ごとに定めることができるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-015",
+      "source_qa_id": "qa.mhlw.982bca9aecf46c99b05c",
+      "question": "通所介護で予定よりサービス提供時間が短くなった場合、どの所要時間区分で算定するか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-016",
+      "source_qa_id": "qa.mhlw.1e52b7c129bcc40922a4",
+      "question": "認知症加算について、認知症介護実践者研修等の修了者の配置が求められているが、当該研修修了者は、介護職員以外の職種（管理者、生活相談員、看護職員等）でもよいのか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-017",
+      "source_qa_id": "qa.mhlw.86129614600999a21b13",
+      "question": "一部ユニット型施設・事業所について、当該施設・事業所のユニット型部分とユニット型以外の部分をそれぞれ別施設・事業所として指定した場合、双方の施設を兼務する職員の常勤・非常勤の取扱いはどのようにすべきか。",
+      "expected": "OUT_OF_SCOPE"
+    },
+    {
+      "id": "EQ-018",
+      "source_qa_id": "qa.mhlw.09387a7f7b6c9726887a",
+      "question": "生活相談員及び介護職員の配置基準について、「生活相談員又は介護職員のうち１人以上は、常勤でなければならない」こととなっているが、営業日ごと又は単位ごとに常勤職員を配置する必要があるのか。",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.life-counselor-or-care-worker.fulltime"
+    },
+    {
+      "id": "EQ-019",
+      "source_qa_id": "qa.mhlw.cc936d2dc9027f2f8758",
+      "question": "個別機能訓練加算(Ⅰ)イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、通所介護（地域密着型通所介護）事業所に配置が義務づけられている看護職員かつ機能訓練指導員である者がこれを兼ねることは可能か。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-020",
+      "source_qa_id": "qa.mhlw.d86f9a368b0a343ef8b9",
+      "question": "個別機能訓練加算(Ⅰ)イ又はロにおいては、専ら機能訓練指導員の職務に従事する理学療法士等を配置する必要があるが、通所介護（地域密着型通所介護）事業所に配置が義務づけられている看護職員がこれを兼ねることは可能か。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-021",
+      "source_qa_id": "qa.mhlw.fdce9af8e0f8227fe06f",
+      "question": "午前と午後に分けてサービス提供を行った場合に、例えば午前中にサービス提供を受けた利用者について、午後は引き続き同一の事業所にいてもらっても構わないか。その場合には、当該利用者を定員に含める必要があるのか。また、当該利用者が事業所に引き続きいられることについて負担を求めることは可能か。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-022",
+      "source_qa_id": "qa.mhlw.1fa39601f41ed7e00437",
+      "question": "宿泊サービスの届出要件として、「指定通所介護事業所の設備を利用し」とあるが、指定通所介護事業所として届け出ている食堂、機能訓練室、静養室、相談室、事務室以外の部屋や隣接する建物等で宿泊サービスを提供する場合の扱いはどうなるのか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-023",
+      "source_qa_id": "qa.mhlw.5e04a0c73e3024abd22d",
+      "question": "通所サービスと介護予防通所サービスについて、それぞれの定員を定めるのか、それとも全体の定員の枠内で、介護と予防が適時振り分けられれば良いものか。その場合、定員超過の減算はどちらを対象に、どのように見るべきか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-024",
+      "source_qa_id": "qa.mhlw.dfe28f158b8d6751e791",
+      "question": "通所介護（通所リハビリテーション）で、食材料費を徴収しないことがあるが、このような取扱いはよろしいか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-025",
+      "source_qa_id": "qa.mhlw.e8d82f5a046e815ea157",
+      "question": "所要時間区分（５時間以上７時間未満、７時間以上９時間未満等）は、あらかじめ事業所が確定させておかなければならないのか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-026",
+      "source_qa_id": "qa.mhlw.2f753447f60463ee2d00",
+      "question": "令和６年度介護報酬改定において、訪問看護等の見直しや処遇改善加算の一本化等が行われたが、利用者・家族等に対して改定内容の説明をいつどのように行うべきか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-027",
+      "source_qa_id": "qa.mhlw.4c3f7984da4267206455",
+      "question": "介護予防通所介護等の定額制サービスについて、介護予防通所介護計画等に基づくサービスとは別に利用者の個人的な選好によるサービスを求められた場合、そのサービスは定額報酬の対象外ということでよいか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-028",
+      "source_qa_id": "qa.mhlw.37837b59616436833236",
+      "question": "デイサービスセンター等において理美容サービスを受ける時間帯は、通所サービス開始前又は終了後に限られるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-029",
+      "source_qa_id": "qa.mhlw.f7e0b57f5fa8418eecb1",
+      "question": "自治体からの指導により、第6表について利用者の同意が得られたサイン入りのものを事業所に交付している。ケアプランデータ連携システムで共有する場合は、どのように整理すればいいのか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-030",
+      "source_qa_id": "qa.mhlw.48fb67e44f0f84d1d9ea",
+      "question": "業務継続計画未策定減算はどのような場合に適用となるのか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-031",
+      "source_qa_id": "qa.mhlw.46ccf97b6f22f5f3486c",
+      "question": "行政機関による運営指導等で業務継続計画の未策定など不適切な運営が確認された場合、「事実が生じた時点」まで遡及して当該減算を適用するのか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-032",
+      "source_qa_id": "qa.mhlw.ebf00b3f2d3f8fef69e8",
+      "question": "業務継続計画未策定減算の施行時期はどのようになるのか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-033",
+      "source_qa_id": "qa.mhlw.06897759b3a9ecc97e7b",
+      "question": "高齢者施設等感染対策向上加算（Ⅱ）について、過去に医療機関等による実地指導・実地研修を受けている場合、受けた日から起算して３年間算定してよいか。",
+      "expected": "REVIEW_REQUIRED"
+    }
+  ]
+}

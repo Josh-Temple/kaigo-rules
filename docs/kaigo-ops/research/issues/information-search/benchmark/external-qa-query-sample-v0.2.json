@@ -1,0 +1,99 @@
+{
+  "version": "0.2",
+  "created_at": "2026-09-22",
+  "source": "data/qa-link-candidates.json derived from MHLW Q&A corpus",
+  "source_status": "CANDIDATE_UNREVIEWED",
+  "methodology": "Only public question previews are used as query samples. Candidate answers are not used as ground truth. Expected coverage labels are determined from separately reviewed current Kaigo Rules claims. EQ-004 and EQ-010 change from REVIEW_REQUIRED to ANSWER only because their claims were independently promoted after official-source review.",
+  "cases": [
+    {
+      "id": "EQ-001",
+      "source_qa_id": "qa.mhlw.749ca43b6096d305a35e",
+      "question": "通所介護等事業所において配置が義務づけられている管理者は、機能訓練指導員を兼ねることができるか。",
+      "expected": "ANSWER"
+    },
+    {
+      "id": "EQ-002",
+      "source_qa_id": "qa.mhlw.a3ceb95affec100c3cc3",
+      "question": "管理者に求められる具体的な役割は何か。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-003",
+      "source_qa_id": "qa.mhlw.3cf34cdf74e63388a801",
+      "question": "生活相談員及び介護職員の具体的な人員配置の方法はどのようなものなのか。",
+      "expected": "PARTIAL"
+    },
+    {
+      "id": "EQ-004",
+      "source_qa_id": "qa.mhlw.bed5148c4af01939c01d",
+      "question": "通所介護事業所の生活相談員がサービス担当者会議に出席するための時間については確保すべき勤務延時間数に含めることができるか。",
+      "expected": "ANSWER"
+    },
+    {
+      "id": "EQ-005",
+      "source_qa_id": "qa.mhlw.337577b0a5b20a4e386f",
+      "question": "生活相談員の勤務延時間に、地域の町内会等と連携するための時間を含めることができるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-006",
+      "source_qa_id": "qa.mhlw.d39e1a671c4be5f3b74a",
+      "question": "病院、診療所又は訪問看護ステーションとの契約で確保した看護職員について、必要な従事時間や駆けつけられる距離に一律基準はあるか。",
+      "expected": "ANSWER"
+    },
+    {
+      "id": "EQ-007",
+      "source_qa_id": "qa.mhlw.19ff5348270062de7154",
+      "question": "通所介護等事業所において配置が義務づけられている看護職員は、機能訓練指導員を兼ねることができるか。",
+      "expected": "ANSWER"
+    },
+    {
+      "id": "EQ-008",
+      "source_qa_id": "qa.mhlw.b1e96b13d78bac74bb0f",
+      "question": "個別機能訓練加算において、管理者が専ら機能訓練指導員の職務に従事する者を兼務できるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-009",
+      "source_qa_id": "qa.mhlw.9437b9cb343b7e7324c6",
+      "question": "個別機能訓練計画の作成者と居宅の訪問者は同一人物でなくてもよいか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-010",
+      "source_qa_id": "qa.mhlw.91959c3555dce399f7b8",
+      "question": "複数の部屋の面積を合計して食堂・機能訓練室の面積基準を満たすことはできるか。",
+      "expected": "ANSWER"
+    },
+    {
+      "id": "EQ-011",
+      "source_qa_id": "qa.mhlw.a4a4dab6582666e0bdb5",
+      "question": "災害その他やむを得ない事情がある場合の定員遵守規定の例外はどのように考えるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-012",
+      "source_qa_id": "qa.mhlw.87bba14a2bbb61a24d73",
+      "question": "経過措置期間を定めて義務づけられた事項を運営規程ではどのように扱うか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-013",
+      "source_qa_id": "qa.mhlw.8408a750dd8209c6523e",
+      "question": "利用者がご飯を持参し、おかずのみ事業所が提供する場合、運営規程にはどのように規定すればよいか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-014",
+      "source_qa_id": "qa.mhlw.43db119b922c77059879",
+      "question": "所要時間区分は利用者ごとに定めることができるか。",
+      "expected": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "EQ-015",
+      "source_qa_id": "qa.mhlw.982bca9aecf46c99b05c",
+      "question": "通所介護で予定よりサービス提供時間が短くなった場合、どの所要時間区分で算定するか。",
+      "expected": "REVIEW_REQUIRED"
+    }
+  ]
+}

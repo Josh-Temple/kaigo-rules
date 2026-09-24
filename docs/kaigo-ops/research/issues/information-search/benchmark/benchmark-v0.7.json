@@ -1,0 +1,64 @@
+{
+  "version": "0.7",
+  "created_at": "2026-09-22",
+  "status": "CLAIM_ROUTING_NATURAL_LANGUAGE_GATE_COMPLETE",
+  "total_suite_cases": 111,
+  "suites": [
+    {
+      "name": "benchmark_v0_3",
+      "file": "benchmark-v0.3.json",
+      "cases": 50
+    },
+    {
+      "name": "coverage_gap",
+      "file": "coverage-gap-v0.1.json",
+      "cases": 20
+    },
+    {
+      "name": "false_answer_stress",
+      "file": "false-answer-stress-v0.1.json",
+      "cases": 12
+    },
+    {
+      "name": "external_mhlw_qa_query_sample",
+      "file": "external-qa-query-sample-v0.2.json",
+      "cases": 15
+    },
+    {
+      "name": "claim_promotion",
+      "file": "claim-promotion-benchmark-v0.1.json",
+      "cases": 2
+    },
+    {
+      "name": "claim_routing_natural_language",
+      "file": "claim-routing-natural-language-v0.1.json",
+      "cases": 12
+    }
+  ],
+  "regression_checks": {
+    "verified_queries_and_canonical": 51,
+    "coverage_gap": 20,
+    "false_answer_stress": 12,
+    "external_qa": 15,
+    "claim_promotion": 2,
+    "claim_routing_natural_language": 12,
+    "total_classifier_checks": 112
+  },
+  "latest_results": {
+    "verified_regression": "51/51",
+    "coverage_gap": "20/20",
+    "false_answer_stress": "12/12",
+    "external_qa": "15/15",
+    "claim_promotion": "2/2",
+    "claim_routing_natural_language": "12/12",
+    "total_classifier_checks": "112/112"
+  },
+  "routing_change": "claims-v0.3 adds registry-owned fallback_guard_terms and narrow paraphrase aliases. Classifier v0.6 checks explicit Claim routing first, then Claim Registry fallback guards, then Issue-level fallback.",
+  "next_gate": [
+    "expand natural-language testing beyond the two promoted claims using independently sourced or human-written queries",
+    "add routing metadata to verified claims and reduce Issue-level fallback",
+    "human sign-off on safety prose",
+    "continue current-source reconstruction for partial interpretation sources",
+    "RAG comparison only after claim-level coverage is explicit"
+  ]
+}

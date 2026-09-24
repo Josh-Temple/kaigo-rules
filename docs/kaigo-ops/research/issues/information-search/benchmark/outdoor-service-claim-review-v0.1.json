@@ -1,0 +1,43 @@
+{
+  "version": "0.1",
+  "reviewed_at": "2026-09-22",
+  "topic": "指定通所介護の事業所屋外サービス",
+  "national_sources": [
+    {
+      "source_id": "mhlw-2024-interpretation-redline",
+      "finding": "指定通所介護は事業所内提供が原則だが、あらかじめ通所介護計画に位置付けられ、効果的な機能訓練等のサービスを提供できる場合は屋外提供が可能。"
+    },
+    {
+      "source_id": "mhlw-home-care-standards-current",
+      "finding": "通所介護計画には、利用者の状況・希望・環境を踏まえた機能訓練等の目標と具体的サービス内容を記載する。"
+    },
+    {
+      "source_id": "mhlw-interpretation-html",
+      "finding": "現行統合全文とは扱わないが、通所介護計画に基づくサービス提供という解釈通知の構造を補助確認。"
+    }
+  ],
+  "decisions": [
+    {
+      "query_id": "MQ-004",
+      "question": "通所介護サービスのメニューとして外出レクリエーションを実施してもよいですか？",
+      "decision": "PROMOTE_NARROW_CONDITIONAL_CLAIM",
+      "claim_id": "claim.service.outdoor.conditions",
+      "verification_status": "VERIFIED_WITH_SOURCE_LIMITATION",
+      "answerability": "ANSWER",
+      "boundary": "外出レクリエーションという名称だけでは足りず、計画への事前位置付けと効果的な機能訓練等としての実質が必要。"
+    },
+    {
+      "query_id": "MQ-005",
+      "question": "外出レクリエーションはサービス提供時間の範囲に限られますか？",
+      "decision": "KEEP_REVIEW_REQUIRED",
+      "claim_id": "review.service.outdoor.time-boundary",
+      "reason": "屋外提供の条件は確認できたが、サービス提供時間の境界を直接固定する全国一律根拠までは確認できない。"
+    }
+  ],
+  "regression": {
+    "municipal": "15/15",
+    "full_classifier_checks": "181/181",
+    "MQ_004_resolution": "ANSWER -> claim.service.outdoor.conditions",
+    "MQ_005_resolution": "REVIEW_REQUIRED -> review.service.outdoor.time-boundary"
+  }
+}

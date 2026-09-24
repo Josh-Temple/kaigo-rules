@@ -1,0 +1,46 @@
+{
+  "version": "0.1",
+  "evaluated_at": "2026-09-22",
+  "classifier": "scripts/research-coverage-classifier-v0.4.mjs",
+  "claim_registry": "docs/kaigo-ops/research/claims/claims-v0.1.json",
+  "evaluation_method": "Deterministic replay of the v0.4 decision logic against the branch JSON fixtures during the implementation session; this is not a GitHub Actions or production-runtime test.",
+  "checks": {
+    "verified_regression": {
+      "passed": 51,
+      "total": 51
+    },
+    "coverage_gap": {
+      "passed": 20,
+      "total": 20
+    },
+    "false_answer_stress": {
+      "passed": 12,
+      "total": 12
+    },
+    "external_qa_query_sample": {
+      "passed": 15,
+      "total": 15
+    }
+  },
+  "total": {
+    "passed": 98,
+    "total": 98
+  },
+  "result": "PASS",
+  "migrated_boundaries": [
+    "管理者の具体的責務",
+    "生活相談員のサービス担当者会議時間",
+    "生活相談員の地域連携活動時間",
+    "生活相談員・介護職員の具体的人員配置",
+    "食堂・機能訓練室の複数室合算",
+    "災害時の定員例外",
+    "基本報酬・加算・減算 routing metadata",
+    "地域区分・一単位単価 routing metadata"
+  ],
+  "limitations": [
+    "Only claims with routing metadata can make an explicit claim-level routing decision in v0.4.",
+    "Verified claims without routing metadata still use the existing issue-level intent-signature fallback.",
+    "Similarity ranking is used only to propose claim candidates; similarity alone does not make a question answerable.",
+    "No RAG or free-form answer generation is evaluated."
+  ]
+}

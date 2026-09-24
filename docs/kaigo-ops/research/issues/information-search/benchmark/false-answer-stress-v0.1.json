@@ -1,0 +1,79 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-22",
+  "purpose": "False-ANSWER stress set: questions lexically close to verified Issues but not currently covered well enough for a confirmed answer.",
+  "cases": [
+    {
+      "id": "FU-001",
+      "question": "介護職員は利用者15人に対して何人必要ですか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "nearby_staffing_issue"
+    },
+    {
+      "id": "FU-002",
+      "question": "機能訓練指導員になれる資格を全部教えてください。",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "role_vs_qualification"
+    },
+    {
+      "id": "FU-003",
+      "question": "通所介護の記録は何年間保存する必要がありますか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "unreviewed_record_retention"
+    },
+    {
+      "id": "FU-004",
+      "question": "非常災害対策計画には何を書けばよいですか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "plan_keyword_collision"
+    },
+    {
+      "id": "FU-005",
+      "question": "送迎中に事故が起きた場合、どこへ報告する必要がありますか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "incident_reporting_not_covered"
+    },
+    {
+      "id": "FU-006",
+      "question": "苦情対応の記録はどのくらい保存しますか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "complaint_record_retention"
+    },
+    {
+      "id": "FU-007",
+      "question": "従業者の健康診断は毎年必須ですか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "annual_keyword_collision"
+    },
+    {
+      "id": "FU-008",
+      "question": "非常口はいくつ必要ですか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "building_fire_rule_not_covered"
+    },
+    {
+      "id": "FU-009",
+      "question": "定員を超えて受け入れた場合はどうなりますか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "capacity_consequence_not_reviewed"
+    },
+    {
+      "id": "FU-010",
+      "question": "介護職員の資格要件はありますか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "staff_role_collision"
+    },
+    {
+      "id": "FU-011",
+      "question": "営業時間を変更するときは変更届が必要ですか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "operation_rules_vs_change_notification"
+    },
+    {
+      "id": "FU-012",
+      "question": "管理者が休みの日は必ず代わりの管理者を置く必要がありますか？",
+      "expected": "REVIEW_REQUIRED",
+      "risk": "manager_keyword_collision"
+    }
+  ]
+}

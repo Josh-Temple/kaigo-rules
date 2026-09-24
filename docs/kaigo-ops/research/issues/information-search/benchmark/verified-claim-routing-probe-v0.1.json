@@ -1,0 +1,176 @@
+{
+  "version": "0.1",
+  "created_at": "2026-09-22",
+  "status": "SYNTHETIC_VERIFIED_CLAIM_ROUTING_PROBE",
+  "methodology": "One hand-written, unambiguous natural-language query per verified ANSWER claim that did not yet have explicit routing metadata in claims-v0.3. Queries are constrained to the already-reviewed claim meaning. The primary metric is exact claim resolution, not merely ANSWER.",
+  "cases": [
+    {
+      "id": "VR-001",
+      "question": "通所介護の管理者は、管理に支障がなければ同じ事業所の別の職務や別事業所の仕事を兼務できますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.manager.concurrent.core"
+    },
+    {
+      "id": "VR-002",
+      "question": "生活相談員は、サービス提供時間に対する勤務時間の合計で配置基準を満たす考え方ですか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.life-counselor.time-ratio"
+    },
+    {
+      "id": "VR-003",
+      "question": "生活相談員か介護職員のどちらか1人以上は常勤である必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.life-counselor-or-care-worker.fulltime"
+    },
+    {
+      "id": "VR-004",
+      "question": "通所介護の看護職員は、単位ごとに1人以上確保する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.nurse.unit-one"
+    },
+    {
+      "id": "VR-005",
+      "question": "通所介護の看護職員は、訪問看護ステーションなどとの連携で確保できますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.nurse.external-linkage"
+    },
+    {
+      "id": "VR-006",
+      "question": "介護職員は、利用者の処遇に支障がなければ別の通所介護単位の介護職員も兼務できますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.care-worker.cross-unit"
+    },
+    {
+      "id": "VR-007",
+      "question": "機能訓練指導員は通所介護事業所の別の職務も担当できますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.functional-instructor.other-duties"
+    },
+    {
+      "id": "VR-008",
+      "question": "勤務表には勤務時間、常勤・非常勤、専従、管理者との兼務関係まで明確にする必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.staff.schedule-clarity"
+    },
+    {
+      "id": "VR-009",
+      "question": "食堂と機能訓練室の合計面積は、利用定員1人あたり3平方メートル以上必要ですか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.facility.dining-training.area"
+    },
+    {
+      "id": "VR-010",
+      "question": "食堂と機能訓練室は、十分な広さがあれば同じ場所を使えますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.facility.dining-training.same-place"
+    },
+    {
+      "id": "VR-011",
+      "question": "通所介護の運営規程には、営業時間や定員、サービス内容、非常災害対策、虐待防止などを記載する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.operation.rules.required-items"
+    },
+    {
+      "id": "VR-012",
+      "question": "重要事項はサービス提供を始める前に文書で説明し、利用者の同意を得る必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.important.before-start"
+    },
+    {
+      "id": "VR-013",
+      "question": "重要事項は事業所での掲示や閲覧に加えて、原則ウェブサイトにも掲載する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.important.posting-web"
+    },
+    {
+      "id": "VR-014",
+      "question": "重要事項説明書には事故発生時の対応や苦情処理体制も示す必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.important.accident-complaint"
+    },
+    {
+      "id": "VR-015",
+      "question": "通所介護計画には利用者の状況や希望を踏まえた目標と具体的なサービス内容を記載する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.care-plan.content"
+    },
+    {
+      "id": "VR-016",
+      "question": "居宅サービス計画がある場合、通所介護計画はその内容に沿って作る必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.care-plan.align-home-plan"
+    },
+    {
+      "id": "VR-017",
+      "question": "通所介護計画の内容は利用者や家族に説明し、利用者の同意を得る必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.care-plan.explain-consent"
+    },
+    {
+      "id": "VR-018",
+      "question": "作成した通所介護計画は利用者に交付する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.care-plan.deliver"
+    },
+    {
+      "id": "VR-019",
+      "question": "通所介護計画に沿ったサービスの実施状況と目標の達成状況は記録する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.care-plan.progress-record"
+    },
+    {
+      "id": "VR-020",
+      "question": "通所介護計画の説明や同意、交付は、相手の承諾があれば電磁的方法で行えますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.care-plan.electronic-method"
+    },
+    {
+      "id": "VR-021",
+      "question": "国の基準上、通所介護計画への署名そのものが同意の必須手段ですか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.care-plan.signature-not-prescribed"
+    },
+    {
+      "id": "VR-022",
+      "question": "国の基準上、通所介護計画書への押印は必須ですか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.care-plan.seal-not-required"
+    },
+    {
+      "id": "VR-023",
+      "question": "BCPについて、職員への研修と訓練は定期的に実施する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.training.bcp.periodic"
+    },
+    {
+      "id": "VR-024",
+      "question": "BCPの研修と訓練は年1回以上実施する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.training.bcp.annual-frequency"
+    },
+    {
+      "id": "VR-025",
+      "question": "感染症対策の研修と訓練は定期的に実施する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.training.infection.periodic"
+    },
+    {
+      "id": "VR-026",
+      "question": "感染症対策の研修と訓練は年1回以上必要ですか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.training.infection.annual-frequency"
+    },
+    {
+      "id": "VR-027",
+      "question": "虐待防止のための職員研修は定期的に実施する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.training.abuse.periodic"
+    },
+    {
+      "id": "VR-028",
+      "question": "虐待防止研修は年1回以上に加えて、新規採用時にも実施する必要がありますか？",
+      "expected": "ANSWER",
+      "expected_claim_id": "claim.training.abuse.annual-newhire"
+    }
+  ]
+}
