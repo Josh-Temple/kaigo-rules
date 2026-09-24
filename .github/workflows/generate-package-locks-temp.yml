@@ -1,0 +1,32 @@
+name: Generate npm lockfiles (temporary)
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/generate-package-locks-temp.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Generate root lockfile
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Generate ops lockfile
+        working-directory: ops-site
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Upload lockfiles
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-package-locks
+          path: |
+            package-lock.json
+            ops-site/package-lock.json
+          if-no-files-found: error
