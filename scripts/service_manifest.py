@@ -43,6 +43,27 @@ def derive_layer_service_ids(catalog: dict) -> dict[str, list[str]]:
     return {layer_id: sorted(service_ids) for layer_id, service_ids in coverage.items()}
 
 
+def load_normalized_verification_layers(
+    catalog: dict, root: Path = ROOT
+) -> list[dict]:
+    layers = []
+    for definition in catalog["layer_catalog"].get("layers", []):
+        if definition.get("provider") != "normalized_report":
+            continue
+        report_ref = definition.get("report_file")
+        if not report_ref:
+            raise ValueError(
+                f"verification layer {definition.get('id')} missing report_file"
+            )
+        report = _read_json(root / report_ref)
+        if report.get("id") != definition.get("id"):
+            raise ValueError(
+                f"verification report id mismatch: {report.get('id')} != {definition.get('id')}"
+            )
+        layers.append(report)
+    return layers
+
+
 def enrich_verification_layers(layers: list[dict], catalog: dict) -> list[dict]:
     layer_defs = {
         item["id"]: item
@@ -111,6 +132,8 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
 
     service_ids: set[str] = set()
     future_paths: set[str] = set()
+    legacy_paths: dict[str, str] = {}
+    config_refs: set[str] = set()
     namespace_prefixes: dict[str, str] = {}
     configs: dict[str, dict] = {}
 
@@ -130,6 +153,9 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
         if not isinstance(config_ref, str) or not config_ref.startswith("data/services/"):
             errors.append(f"service catalog {service_id}: invalid config path")
             continue
+        if config_ref in config_refs:
+            errors.append(f"service catalog {service_id}: duplicate config path {config_ref}")
+        config_refs.add(config_ref)
 
         config_path = root / config_ref
         if not config_path.exists():
@@ -143,6 +169,8 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
             continue
         configs[service_id] = config
 
+        if config.get("format_version") != 1:
+            errors.append(f"service catalog {service_id}: config format_version must be 1")
         if config.get("service_id") != service_id:
             errors.append(f"service catalog {service_id}: config service_id mismatch")
 
@@ -161,6 +189,13 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
         for legacy_path in routing.get("legacy_entry_points", []):
             if not isinstance(legacy_path, str) or not legacy_path.startswith("/"):
                 errors.append(f"service catalog {service_id}: invalid legacy route {legacy_path!r}")
+                continue
+            owner = legacy_paths.get(legacy_path)
+            if owner and owner != service_id:
+                errors.append(
+                    f"service catalog: legacy route {legacy_path} shared by {owner} and {service_id}"
+                )
+            legacy_paths[legacy_path] = service_id
 
         for key, prefix in config.get("id_namespaces", {}).items():
             if not isinstance(prefix, str) or not prefix:
@@ -171,6 +206,13 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
                 errors.append(
                     f"service catalog: id namespace {prefix} shared by {previous} and {service_id}"
                 )
+            for existing_prefix, existing_service in namespace_prefixes.items():
+                if existing_service != service_id and (
+                    prefix.startswith(existing_prefix) or existing_prefix.startswith(prefix)
+                ):
+                    errors.append(
+                        f"service catalog: overlapping id namespaces {existing_prefix} ({existing_service}) and {prefix} ({service_id})"
+                    )
             namespace_prefixes[prefix] = service_id
 
         for name, relative_path in config.get("scope_files", {}).items():
@@ -185,6 +227,12 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
     default_service_id = manifest.get("default_service_id")
     if default_service_id not in service_ids:
         errors.append("service catalog: default_service_id is not registered")
+    else:
+        default_descriptor = next(
+            item for item in descriptors if item.get("service_id") == default_service_id
+        )
+        if not str(default_descriptor.get("status", "")).startswith("ACTIVE"):
+            errors.append("service catalog: default service must be ACTIVE")
 
     layer_ref = manifest.get("verification_layers_file")
     if not isinstance(layer_ref, str):
@@ -221,6 +269,21 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
             errors.append(
                 f"service catalog: invalid scope_kind for verification layer {layer_id}"
             )
+        provider = item.get("provider")
+        if provider not in {"legacy", "normalized_report"}:
+            errors.append(
+                f"service catalog: invalid provider for verification layer {layer_id}"
+            )
+        if provider == "normalized_report":
+            report_ref = item.get("report_file")
+            if not isinstance(report_ref, str) or not report_ref.startswith("data/verification/layers/"):
+                errors.append(
+                    f"service catalog: normalized report path invalid for {layer_id}"
+                )
+            elif not (root / report_ref).exists():
+                errors.append(
+                    f"service catalog: normalized report missing for {layer_id}: {report_ref}"
+                )
 
     coverage: dict[str, list[str]] = {}
     for service_id, config in configs.items():
