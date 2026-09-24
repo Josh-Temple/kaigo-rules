@@ -4,6 +4,11 @@ import nodesData from "../../../data/ordinance37-nodes.json";
 import relationsData from "../../../data/ordinance37-relations.json";
 import applicationData from "../../../data/ordinance37-application-rules.json";
 import metaData from "../../../data/ordinance37-meta.json";
+import noticeNodesData from "../../../data/notice-current-skeleton.json";
+import feeNodesData from "../../../data/remuneration-current-skeleton.json";
+import questionsData from "../../../data/questions.json";
+import careActNodesData from "../../../data/care-insurance-act-nodes.json";
+import { incomingEdges } from "../../../lib/knowledge-relations";
 
 type RuleNode = {
   id: string;
@@ -30,6 +35,10 @@ const nodes = nodesData as RuleNode[];
 const relations = relationsData as Array<{ from: string; relation: string; to: string }>;
 const applications = applicationData as Array<any>;
 const meta = metaData as any;
+const noticeNodes = noticeNodesData as Array<any>;
+const feeNodes = feeNodesData as Array<any>;
+const questions = questionsData as Array<any>;
+const careActNodes = careActNodesData as Array<any>;
 
 export function generateStaticParams() {
   return nodes
@@ -84,6 +93,30 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
     .filter(Boolean) as RuleNode[];
 
   const readAs = applications.filter((rule) => rule.target_article_id === articleNode.id);
+  const relationEdges = incomingEdges(articleNode.id);
+  const relatedNotices = relationEdges
+    .filter((edge) => edge.source_id.startsWith("notice."))
+    .map((edge) => ({ edge, node: noticeNodes.find((item) => item.id === edge.source_id) }))
+    .filter((item) => item.node);
+  const relatedFees = relationEdges
+    .filter((edge) => edge.source_id.startsWith("fee.dayservice."))
+    .map((edge) => ({ edge, node: feeNodes.find((item) => item.id === edge.source_id) }))
+    .filter((item) => item.node);
+  const relatedQuestions = relationEdges
+    .filter((edge) => edge.source_id.startsWith("question:"))
+    .map((edge) => ({
+      edge,
+      question: questions.find((item) => `question:${item.slug}` === edge.source_id),
+    }))
+    .filter((item) => item.question);
+  const relatedLaw = relationEdges
+    .filter((edge) => edge.source_id.startsWith("careact.article."))
+    .map((edge) => ({
+      edge,
+      node: careActNodes.find((item) => item.id === edge.source_id),
+    }))
+    .filter((item) => item.node);
+
   const revision = meta.current_revision || {};
 
   return (
@@ -148,6 +181,45 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
                 <span className="rule-number">{target.article_title}</span>
                 <span className="rule-title">{target.caption || "題名なし"}</span>
                 <span className="rule-status">第105条で準用</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {(relatedLaw.length || relatedNotices.length || relatedFees.length || relatedQuestions.length) ? (
+        <section className="section">
+          <h2>この条文につながる情報</h2>
+          <p className="meta">
+            relationデータから逆引きしています。独立監査済みの関係と、構造上の対応付けで確認待ちの関係を区別して表示します。
+          </p>
+          <div className="knowledge-link-list">
+            {relatedLaw.map(({ edge, node }: any) => (
+              <Link className="knowledge-link-row" href={`/law/${node.article_num}`} key={`law-${edge.source_id}-${edge.relation}`}>
+                <span className="knowledge-kind">上位法</span>
+                <span><strong>{node.article_title} {node.caption || ""}</strong><small>介護保険法からこの基準への委任関係</small></span>
+                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>{edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}</span>
+              </Link>
+            ))}
+            {relatedNotices.map(({ edge, node }: any) => (
+              <Link className="knowledge-link-row" href={`/notices#${node.id}`} key={`notice-${edge.source_id}-${edge.relation}`}>
+                <span className="knowledge-kind">解釈通知</span>
+                <span><strong>{node.title}</strong><small>{node.number_path?.join(" / ")}</small></span>
+                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>{edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}</span>
+              </Link>
+            ))}
+            {relatedFees.map(({ edge, node }: any) => (
+              <Link className="knowledge-link-row" href={`/fees/${node.id.replace("fee.dayservice.", "")}`} key={`fee-${edge.source_id}-${edge.relation}`}>
+                <span className="knowledge-kind">報酬</span>
+                <span><strong>{node.title}</strong><small>{node.number_path?.join(" / ")}</small></span>
+                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>{edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}</span>
+              </Link>
+            ))}
+            {relatedQuestions.map(({ edge, question }: any) => (
+              <Link className="knowledge-link-row" href={`/questions/${question.slug}`} key={`question-${edge.source_id}-${edge.relation}`}>
+                <span className="knowledge-kind">実務FAQ</span>
+                <span><strong>{question.title}</strong><small>{question.category}</small></span>
+                <span className="knowledge-status">{question.status === "verified" ? "FAQ根拠確認済み" : "根拠確認中"}</span>
               </Link>
             ))}
           </div>
