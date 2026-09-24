@@ -207,6 +207,8 @@ def build() -> dict:
     return {
         "format_version": 1,
         "generated_by": "scripts/build_verification_registry.py",
+        "scope_note": "This registry covers seven major data layers only. Semantic/cross-layer relation audit coverage is tracked separately.",
+        "related_registries": {"semantic_relations": "data/relation-verification-registry.json"},
         "policy": "Verification layers are reported separately. Independent machine/AI audit, source freshness/currentness monitoring, and human verification are never collapsed into one status.",
         "layers": layers,
         "gaps": gaps,
