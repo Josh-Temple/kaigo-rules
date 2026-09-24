@@ -1,3 +1,4 @@
+import VerificationSummary from "../../components/verification-summary";
 import Link from "next/link";
 import qaCorpusData from "../../data/qa-corpus.json";
 import qaMetaData from "../../data/qa-corpus-meta.json";
@@ -131,6 +132,8 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         この検索結果は公式Q&A集から取り込んだ内容ですが、個々のQ&Aが現在の法令・通知でも有効かは未確認のものを含みます。
         回答ページの根拠として使うのは、別途確認したものだけです。
       </div>
+
+      <VerificationSummary layerId="qa-corpus" />
 
       <form className="qa-search-form" method="get" action="/qa">
         <label className="qa-search-main">
