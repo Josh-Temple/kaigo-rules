@@ -55,7 +55,7 @@ jobs:
         run: python scripts/validate_cross_layer_source_chain_independent_audit.py
       - name: Upload independent source-chain report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cross-layer-source-chain-independent-verification
           path: cross-layer-source-chain-independent-verification.json

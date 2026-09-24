@@ -49,7 +49,7 @@ jobs:
         run: python scripts/validate_qa_corpus_independent_audit.py
       - name: Upload independent verification report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qa-corpus-independent-verification
           path: qa-corpus-independent-verification.json

@@ -52,7 +52,7 @@ jobs:
         run: python scripts/validate_unit_price_independent_audit.py
       - name: Upload verification report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: unit-price-independent-verification
           path: unit-price-independent-verification.json

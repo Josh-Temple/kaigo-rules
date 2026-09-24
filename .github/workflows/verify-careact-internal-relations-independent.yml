@@ -47,7 +47,7 @@ jobs:
         run: python scripts/validate_careact_internal_relation_independent_audit.py
       - name: Upload independent verification report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: careact-internal-relation-independent-verification
           path: careact-internal-relation-independent-verification.json

@@ -59,7 +59,7 @@ jobs:
         run: python scripts/validate_relation_semantic_independent_audit.py
       - name: Upload independent relation verification report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: relation-semantic-independent-verification
           path: relation-semantic-independent-verification.json
