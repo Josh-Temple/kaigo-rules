@@ -65,15 +65,7 @@ jobs:
               -H "Authorization: Bearer $GH_TOKEN" \
               -H "Accept: application/vnd.github+json" \
               "https://api.github.com/repos/$GH_REPOSITORY/pulls/$pr")"
-            printf '%s' "$response" | python - "$branch" "$expected" "$pr" <<'PY'
-          import json, sys
-          branch, expected, pr = sys.argv[1], sys.argv[2], int(sys.argv[3])
-          data=json.load(sys.stdin)
-          assert data.get("number")==pr, (data.get("number"), pr)
-          assert data.get("merged_at"), f"PR #{pr} is not merged"
-          assert data.get("head",{}).get("ref")==branch, (data.get("head",{}).get("ref"), branch)
-          assert data.get("head",{}).get("sha")==expected, (data.get("head",{}).get("sha"), expected)
-          PY
+            printf '%s' "$response" | python -c 'import json,sys; branch,expected,pr=sys.argv[1],sys.argv[2],int(sys.argv[3]); data=json.load(sys.stdin); assert data.get("number")==pr, (data.get("number"),pr); assert data.get("merged_at"), f"PR #{pr} is not merged"; assert data.get("head",{}).get("ref")==branch, (data.get("head",{}).get("ref"),branch); assert data.get("head",{}).get("sha")==expected, (data.get("head",{}).get("sha"),expected)' "$branch" "$expected" "$pr"
           done < <(python - "$manifest" <<'PY'
           import json, sys
           for r in json.load(open(sys.argv[1],encoding="utf-8"))["branches"]:
@@ -119,14 +111,7 @@ jobs:
               -H "Authorization: Bearer $GH_TOKEN" \
               -H "Accept: application/vnd.github+json" \
               "https://api.github.com/repos/$GH_REPOSITORY/pulls/$pr")"
-            printf '%s' "$response" | python - "$branch" "$expected" "$pr" <<'PY'
-          import json, sys
-          branch, expected, pr = sys.argv[1], sys.argv[2], int(sys.argv[3])
-          data=json.load(sys.stdin)
-          assert data.get("merged_at"), f"PR #{pr} is not merged"
-          assert data.get("head",{}).get("ref")==branch
-          assert data.get("head",{}).get("sha")==expected
-          PY
+            printf '%s' "$response" | python -c 'import json,sys; branch,expected,pr=sys.argv[1],sys.argv[2],int(sys.argv[3]); data=json.load(sys.stdin); assert data.get("merged_at"), f"PR #{pr} is not merged"; assert data.get("head",{}).get("ref")==branch; assert data.get("head",{}).get("sha")==expected' "$branch" "$expected" "$pr"
             delete_args+=("$branch")
           done < <(python - "$manifest" <<'PY'
           import json, sys
