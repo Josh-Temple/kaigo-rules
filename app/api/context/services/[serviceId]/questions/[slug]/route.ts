@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import contextData from "../../../../../../data/context-packages/dayservice-questions.generated.json";
+import contextData from "../../../../../../../data/context-packages/dayservice-questions.generated.json";
 
 type Params = Promise<{ serviceId: string; slug: string }>;
 
