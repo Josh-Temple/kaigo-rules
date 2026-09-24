@@ -1,0 +1,41 @@
+name: Regenerate root package lock once
+
+on:
+  push:
+    branches:
+      - chore/fresh-types-updates-20260924
+    paths:
+      - "package.json"
+      - ".github/workflows/regenerate-root-lock-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: chore/fresh-types-updates-20260924
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Regenerate package-lock.json
+        run: npm install --package-lock-only --ignore-scripts
+      - name: Verify npm ci accepts regenerated lockfile
+        run: npm ci --ignore-scripts
+      - name: Commit regenerated lockfile
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          if git diff --cached --quiet; then
+            echo "No lockfile changes required."
+            exit 0
+          fi
+          git commit -m "Regenerate package lock for type updates"
+          git push origin HEAD:chore/fresh-types-updates-20260924
