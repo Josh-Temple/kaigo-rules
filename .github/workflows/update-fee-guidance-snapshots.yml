@@ -26,10 +26,65 @@ on:
       - "scripts/assemble_fee_guidance_current_candidates.py"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
+  validate:
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install PDF text extractor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Rebuild official PDF snapshots
+        run: python scripts/import_fee_guidance_snapshots.py
+      - name: Assemble current-text candidates
+        run: python scripts/assemble_fee_guidance_current_candidates.py
+      - name: Validate data
+        run: node scripts/validate-data.mjs
+      - name: Detect snapshot changes
+        id: diff
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain -- data/fee-guidance-source-snapshots.json data/fee-guidance-current-text-candidates.json)" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Summarize pull request validation
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          echo "Snapshot importer and current-text candidate assembly completed successfully." >> "$GITHUB_STEP_SUMMARY"
+          echo "Generated evidence/candidates changed: ${{ steps.diff.outputs.changed }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "No human-review status is modified by this workflow." >> "$GITHUB_STEP_SUMMARY"
+      - name: Push review branch
+        if: github.event_name != 'pull_request' && steps.diff.outputs.changed == 'true'
+        shell: bash
+        run: |
+          BRANCH="automation/fee-guidance-snapshots-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add data/fee-guidance-source-snapshots.json data/fee-guidance-current-text-candidates.json
+          git commit -m "data: refresh fee guidance evidence and candidates"
+          git push origin "$BRANCH"
+          echo "Generated review branch: $BRANCH" >> "$GITHUB_STEP_SUMMARY"
+      - name: Summarize no change
+        if: github.event_name != 'pull_request' && steps.diff.outputs.changed != 'true'
+        run: echo "Official PDF snapshots and current-text candidates are unchanged." >> "$GITHUB_STEP_SUMMARY"
+
   update:
+    if: github.event_name != 'pull_request'
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
