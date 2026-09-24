@@ -61,7 +61,10 @@ export default async function QuestionPage({ params }: { params: Promise<{ slug:
         </>
       )}
       <section className="section"><h2>検索用の言い換え</h2><p>{question.aliases.join(" / ")}</p><p><Link href={`/qa?q=${encodeURIComponent(question.aliases?.[0] || question.title)}&service=16`}>この論点で国Q&Aを検索する →</Link></p></section>
-      <p><Link href="/">質問一覧へ戻る</Link></p>
+      <div className="entry-links">
+        <Link className="entry-row" href="/search"><span>別の実務上の疑問を探す</span><small>横断検索 →</small></Link>
+        <Link className="entry-row" href="/overview"><span>制度の全体像から確認する</span><small>制度の見取り図 →</small></Link>
+      </div>
     </article>
   );
 }
