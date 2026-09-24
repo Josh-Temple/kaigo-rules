@@ -172,20 +172,32 @@ if (edges.length !== expectedTotal || actualVerified !== expectedVerified) {
 
 export const knowledgeEdges = edges;
 
+export function ordinanceArticleId(value: string): string | null {
+  const canonical = value.match(/^ordinance37\.article\.([0-9]+(?:-[0-9]+)?)(?:\.|$)/);
+  if (canonical) return `ordinance37.article.${canonical[1]}`;
+
+  const legacy = value.match(/^ordinance37\.article([0-9]+(?:-[0-9]+)?)(?:\.|$)/);
+  if (legacy) return `ordinance37.article.${legacy[1]}`;
+
+  return null;
+}
+
+function matchesPrefix(value: string, targetPrefix: string) {
+  if (value === targetPrefix || value.startsWith(`${targetPrefix}.`)) return true;
+
+  const normalizedValue = ordinanceArticleId(value);
+  const normalizedTarget = ordinanceArticleId(targetPrefix);
+  return Boolean(normalizedValue && normalizedTarget && normalizedValue === normalizedTarget);
+}
+
 export function edgesTouching(targetPrefix: string) {
   return knowledgeEdges.filter(
     (edge) =>
-      edge.source_id === targetPrefix ||
-      edge.source_id.startsWith(`${targetPrefix}.`) ||
-      edge.target_id === targetPrefix ||
-      edge.target_id.startsWith(`${targetPrefix}.`)
+      matchesPrefix(edge.source_id, targetPrefix) ||
+      matchesPrefix(edge.target_id, targetPrefix)
   );
 }
 
 export function incomingEdges(targetPrefix: string) {
-  return knowledgeEdges.filter(
-    (edge) =>
-      edge.target_id === targetPrefix ||
-      edge.target_id.startsWith(`${targetPrefix}.`)
-  );
+  return knowledgeEdges.filter((edge) => matchesPrefix(edge.target_id, targetPrefix));
 }

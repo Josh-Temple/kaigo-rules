@@ -61,6 +61,7 @@ jobs:
             "/rules"
             "/rules/93"
             "/rules/99"
+            "/api/context/services/dayservice/questions/nurse-staffing"
             "/notices"
             "/notices/review"
             "/fees"
@@ -75,3 +76,15 @@ jobs:
               exit 1
             }
           done
+
+          curl --fail --silent --show-error http://127.0.0.1:3000/rules/93 \
+            | grep -F "看護職員は何人必要ですか？" >/dev/null || {
+              echo "legacy FAQ relation ID was not normalized onto /rules/93"
+              exit 1
+            }
+
+          curl --fail --silent --show-error http://127.0.0.1:3000/api/context/services/dayservice/questions/nurse-staffing \
+            | grep -F '"package_id":"dayservice.question.nurse-staffing"' >/dev/null || {
+              echo "question context API did not return the expected package"
+              exit 1
+            }
