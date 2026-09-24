@@ -188,6 +188,17 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
             errors.append(f"service catalog {service_id}: config service_id mismatch")
 
         routing = config.get("routing", {})
+        descriptor_status = str(descriptor.get("status", ""))
+        if not descriptor_status.startswith("ACTIVE") and routing.get("future_service_base_enabled"):
+            errors.append(
+                f"service catalog {service_id}: non-active service route must stay disabled"
+            )
+        publication_gate = config.get("publication_gate", {})
+        if publication_gate.get("public_routes_enabled") and not routing.get("future_service_base_enabled"):
+            errors.append(
+                f"service catalog {service_id}: publication gate and route enablement disagree"
+            )
+
         future_path = routing.get("future_service_base_path")
         expected_future_path = f"/services/{service_id}"
         if future_path != expected_future_path:
