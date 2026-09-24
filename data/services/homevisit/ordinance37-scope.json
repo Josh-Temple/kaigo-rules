@@ -1,0 +1,43 @@
+{
+  "format_version": 1,
+  "service_id": "homevisit",
+  "status": "SCOPE_DEFINED_NOT_INGESTED",
+  "law_id": "411M50000100037",
+  "law_num": "平成十一年厚生省令第三十七号",
+  "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準",
+  "source_role": "SHARED_LAW_SERVICE_SCOPE",
+  "chapter": {
+    "number": "2",
+    "title": "訪問介護"
+  },
+  "direct_scope": {
+    "article_range": {
+      "start": "4",
+      "end": "39",
+      "include_inserted_articles": true
+    },
+    "sections": [
+      {"name": "基本方針", "range": "4"},
+      {"name": "人員に関する基準", "range": "5-6"},
+      {"name": "設備に関する基準", "range": "7"},
+      {"name": "運営に関する基準", "range": "8-39"}
+    ]
+  },
+  "excluded_initial_scope": [
+    {
+      "range": "39-2--39-3",
+      "reason": "共生型訪問介護は通常の指定訪問介護と分離して扱う。"
+    },
+    {
+      "range": "40--43",
+      "reason": "基準該当訪問介護は通常の指定訪問介護と分離して扱う。"
+    }
+  ],
+  "selection_policy": "固定した条番号列挙ではなく章内の範囲を正本とし、後から中間条が追加された場合もscope候補から脱落させない。実取込時は現行法令XMLの章構造と照合してfail closedとする。",
+  "evidence": {
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+    "checked_on": "2026-09-25",
+    "observed_fact": "第二章は訪問介護で、第4条が基本方針、第5・6条が人員、第7条が設備、第8〜39条が運営。第39条の2・3は共生型、第40〜43条は基準該当。"
+  },
+  "automatic_verification_promotion_allowed": false
+}
