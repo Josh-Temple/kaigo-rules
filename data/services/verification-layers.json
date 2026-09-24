@@ -3,31 +3,38 @@
   "layers": [
     {
       "id": "rouki25-dayservice",
-      "scope_kind": "SERVICE_SPECIFIC"
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "legacy"
     },
     {
       "id": "rouki36-dayservice",
-      "scope_kind": "SERVICE_SPECIFIC"
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "legacy"
     },
     {
       "id": "remuneration-notices",
-      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+      "provider": "legacy"
     },
     {
       "id": "unit-price",
-      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+      "provider": "legacy"
     },
     {
       "id": "ordinance37",
-      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+      "provider": "legacy"
     },
     {
       "id": "care-insurance-act",
-      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE"
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+      "provider": "legacy"
     },
     {
       "id": "qa-corpus",
-      "scope_kind": "SHARED_CORPUS_SERVICE_FILTER"
+      "scope_kind": "SHARED_CORPUS_SERVICE_FILTER",
+      "provider": "legacy"
     }
   ]
 }
