@@ -1,0 +1,61 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_relation_verification_registry.py",
+  "policy": "Lane-level audits are independently pinned. Aggregate coverage is computed here and never promotes HUMAN_VERIFIED or VERIFIED_CURRENT.",
+  "lanes": [
+    {
+      "id": "ordinance37-article105-explicit-references",
+      "status": "PASS",
+      "audit_kind": "INDEPENDENT_EXPLICIT_LEGAL_REFERENCE_AUDIT",
+      "verified_relations": 23,
+      "evidence": "data/relation-semantic-independent-audit.json",
+      "audited_at": "2026-09-24",
+      "human_verified": false,
+      "verified_current": false
+    },
+    {
+      "id": "careact-internal-article74-relations",
+      "status": "PASS",
+      "audit_kind": "INDEPENDENT_CAREACT_INTERNAL_RELATION_AUDIT",
+      "verified_relations": 4,
+      "evidence": "data/careact-internal-relation-independent-audit.json",
+      "audited_at": "2026-09-24",
+      "human_verified": false,
+      "verified_current": false
+    },
+    {
+      "id": "careact-cross-layer-source-chains",
+      "status": "PASS",
+      "audit_kind": "INDEPENDENT_CROSS_LAYER_SOURCE_CHAIN_AUDIT",
+      "verified_relations": 18,
+      "evidence": "data/cross-layer-source-chain-independent-audit.json",
+      "audited_at": "2026-09-24",
+      "human_verified": false,
+      "verified_current": false
+    },
+    {
+      "id": "remuneration-delegation-relations",
+      "status": "PASS",
+      "audit_kind": "INDEPENDENT_REMUNERATION_DELEGATION_RELATION_AUDIT",
+      "verified_relations": 11,
+      "evidence": "data/remuneration-delegation-relation-independent-audit.json",
+      "audited_at": "2026-09-24",
+      "human_verified": false,
+      "verified_current": false
+    }
+  ],
+  "summary": {
+    "non_contains_semantic_or_cross_layer_relations": 163,
+    "independently_verified_relations": 56,
+    "remaining_not_independently_verified": 107,
+    "coverage_percent": 34.36,
+    "human_verified_relations": 0
+  },
+  "gaps": [
+    {
+      "kind": "RELATION_INDEPENDENT_AUDIT_INCOMPLETE",
+      "remaining_relations": 107,
+      "note": "Uncovered relations remain unpromoted and require separate independent audit lanes."
+    }
+  ]
+}
