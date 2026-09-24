@@ -27,6 +27,18 @@
         "fee_guidance": "fee-guidance.dayservice.",
         "notice": "notice.dayservice."
       }
+    },
+    {
+      "service_id": "homevisit",
+      "label": "訪問介護",
+      "status": "SCOPE_DEFINED_NOT_INGESTED",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/homevisit",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {}
     }
   ]
 }
