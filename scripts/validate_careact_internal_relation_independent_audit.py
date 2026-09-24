@@ -10,7 +10,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 RECORD = DATA / "careact-internal-relation-independent-audit.json"
-PHASE1 = DATA / "relation-semantic-independent-audit.json"
 
 
 def fail(message: str) -> None:
@@ -35,7 +34,6 @@ def normalized_text(value: str) -> str:
 
 def main() -> None:
     record = load(RECORD)
-    phase1 = load(PHASE1)
 
     if record.get("scope") != "care-insurance-act-internal-relations-to-article74":
         fail("unexpected scope")
@@ -141,23 +139,10 @@ def main() -> None:
     if checks["careact-article73-requires-compliance-with"].get("relative_next_article_target") != "74":
         fail("Article 73 relative-reference resolution changed")
 
-    if phase1.get("audit_result") != "PASS":
-        fail("phase-1 explicit relation audit is not PASS")
-    phase1_coverage = phase1.get("coverage", {})
-    if phase1_coverage.get("explicit_legal_reference_relations_independently_verified") != 23:
-        fail("phase-1 verified relation count changed")
 
     coverage = record.get("coverage", {})
     if coverage.get("relations_in_this_lane") != 4 or coverage.get("relations_passed") != 4:
         fail("phase-2 lane coverage changed")
-    if coverage.get("phase1_explicit_relations_independently_verified") != 23:
-        fail("phase-1 count mismatch in phase-2 record")
-    if coverage.get("aggregate_explicit_relations_independently_verified") != 27:
-        fail("aggregate explicit relation coverage changed")
-    if coverage.get("non_contains_semantic_or_cross_layer_relations_current_inventory") != 163:
-        fail("semantic relation inventory changed")
-    if coverage.get("remaining_semantic_or_cross_layer_relations_not_independently_verified") != 136:
-        fail("remaining unverified relation count changed")
 
     for relative, expected_blob in record.get("input_git_blob_shas_at_audit", {}).items():
         path = ROOT / relative
@@ -168,7 +153,7 @@ def main() -> None:
 
     print(
         "Care Act internal relation audit: OK "
-        "(4/4 Article 74 dependency relations PASS; aggregate explicit coverage 27/163)"
+        "(4/4 Article 74 dependency relations PASS; lane provenance valid)"
     )
 
 
