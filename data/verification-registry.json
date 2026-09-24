@@ -181,12 +181,58 @@
       "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE"
     }
   ],
-  "gaps": [],
+  "relation_verification": {
+    "status": "PARTIAL",
+    "inventory_relations": 163,
+    "independently_verified_relations": 56,
+    "remaining_unverified_relations": 107,
+    "lanes": [
+      {
+        "id": "explicit-legal-reference",
+        "status": "PASS",
+        "verified_relations": 23,
+        "evidence": "data/relation-semantic-independent-audit.json"
+      },
+      {
+        "id": "careact-internal",
+        "status": "PASS",
+        "verified_relations": 4,
+        "evidence": "data/careact-internal-relation-independent-audit.json"
+      },
+      {
+        "id": "cross-layer-source-chain",
+        "status": "PASS",
+        "verified_relations": 18,
+        "evidence": "data/cross-layer-source-chain-independent-audit.json"
+      },
+      {
+        "id": "remuneration-delegation",
+        "status": "PASS",
+        "verified_relations": 11,
+        "evidence": "data/remuneration-delegation-relation-independent-audit.json"
+      }
+    ],
+    "automatic_promotion_allowed": false,
+    "assurance": "INDEPENDENT_RELATION_AUDIT_PARTIAL"
+  },
+  "gaps": [
+    {
+      "id": "semantic-cross-layer-relations",
+      "status": "PARTIAL",
+      "independently_verified": 56,
+      "total": 163,
+      "remaining": 107,
+      "note": "Remaining semantic/cross-layer relations are not independently verified and are not auto-promoted."
+    }
+  ],
   "summary": {
     "layers_total": 7,
     "independent_audit_or_reconstruction": 7,
     "currentness_or_live_source_monitoring_active": 7,
     "source_freshness_only_without_independent_content_audit": 0,
-    "human_verified_layers": 0
+    "human_verified_layers": 0,
+    "semantic_or_cross_layer_relations_total": 163,
+    "semantic_or_cross_layer_relations_independently_verified": 56,
+    "semantic_or_cross_layer_relations_remaining": 107
   }
 }

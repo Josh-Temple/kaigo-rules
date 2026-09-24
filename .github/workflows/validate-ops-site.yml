@@ -10,17 +10,41 @@ on:
       - main
     paths:
       - "ops-site/**"
+      - ".github/workflows/validate-ops-site.yml"
+
+concurrency:
+  group: validate-ops-site-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: ops-site
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - run: npm install
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
       - run: npm run build
+      - name: Smoke test ops root
+        shell: bash
+        run: |
+          npm start > /tmp/kaigo-ops-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+
+          for _ in {1..30}; do
+            if curl --fail --silent --show-error http://127.0.0.1:3000/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/kaigo-ops-next.log
+          exit 1

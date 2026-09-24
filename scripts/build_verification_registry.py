@@ -32,6 +32,10 @@ def build() -> dict:
     qa_audit = load("qa-corpus-independent-audit.json")
     egov_audit = load("egov-content-independent-audit.json")
     egov_checks = {row["id"]: row for row in egov_audit.get("checks", [])}
+    relation_semantic = load("relation-semantic-independent-audit.json")
+    careact_relations = load("careact-internal-relation-independent-audit.json")
+    cross_layer_relations = load("cross-layer-source-chain-independent-audit.json")
+    remuneration_relations = load("remuneration-delegation-relation-independent-audit.json")
 
     notice_reviewed = sum(
         1
@@ -202,13 +206,67 @@ def build() -> dict:
         },
     ]
 
+    relation_inventory = relation_semantic["coverage"]["non_contains_semantic_or_cross_layer_relations"]
+    relation_lanes = [
+        {
+            "id": "explicit-legal-reference",
+            "status": relation_semantic["audit_result"],
+            "verified_relations": relation_semantic["coverage"]["explicit_legal_reference_relations_independently_verified"],
+            "evidence": "data/relation-semantic-independent-audit.json",
+        },
+        {
+            "id": "careact-internal",
+            "status": careact_relations["audit_result"],
+            "verified_relations": careact_relations["coverage"]["relations_passed"],
+            "evidence": "data/careact-internal-relation-independent-audit.json",
+        },
+        {
+            "id": "cross-layer-source-chain",
+            "status": cross_layer_relations["audit_result"],
+            "verified_relations": cross_layer_relations["coverage"]["relations_passed"],
+            "evidence": "data/cross-layer-source-chain-independent-audit.json",
+        },
+        {
+            "id": "remuneration-delegation",
+            "status": remuneration_relations["audit_result"],
+            "verified_relations": remuneration_relations["coverage"]["relations_passed"],
+            "evidence": "data/remuneration-delegation-relation-independent-audit.json",
+        },
+    ]
+    relation_verified = sum(lane["verified_relations"] for lane in relation_lanes)
+    relation_remaining = relation_inventory - relation_verified
+    if relation_remaining < 0:
+        raise ValueError("relation audit coverage exceeds semantic/cross-layer inventory")
+
+    relation_verification = {
+        "status": "PASS" if relation_remaining == 0 else "PARTIAL",
+        "inventory_relations": relation_inventory,
+        "independently_verified_relations": relation_verified,
+        "remaining_unverified_relations": relation_remaining,
+        "lanes": relation_lanes,
+        "automatic_promotion_allowed": False,
+        "assurance": "INDEPENDENT_RELATION_AUDIT_PARTIAL" if relation_remaining else "INDEPENDENT_RELATION_AUDIT_COMPLETE",
+    }
+
     gaps = []
+    if relation_remaining:
+        gaps.append(
+            {
+                "id": "semantic-cross-layer-relations",
+                "status": "PARTIAL",
+                "independently_verified": relation_verified,
+                "total": relation_inventory,
+                "remaining": relation_remaining,
+                "note": "Remaining semantic/cross-layer relations are not independently verified and are not auto-promoted.",
+            }
+        )
 
     return {
         "format_version": 1,
         "generated_by": "scripts/build_verification_registry.py",
         "policy": "Verification layers are reported separately. Independent machine/AI audit, source freshness/currentness monitoring, and human verification are never collapsed into one status.",
         "layers": layers,
+        "relation_verification": relation_verification,
         "gaps": gaps,
         "summary": {
             "layers_total": len(layers),
@@ -223,6 +281,9 @@ def build() -> dict:
                 1 for layer in layers if layer["assurance"] == "SOURCE_FRESHNESS_ONLY"
             ),
             "human_verified_layers": 0,
+            "semantic_or_cross_layer_relations_total": relation_inventory,
+            "semantic_or_cross_layer_relations_independently_verified": relation_verified,
+            "semantic_or_cross_layer_relations_remaining": relation_remaining,
         },
     }
 

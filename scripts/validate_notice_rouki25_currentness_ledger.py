@@ -8,8 +8,9 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = ROOT / "data" / "notice-rouki25-currentness-ledger.json"
@@ -155,7 +156,7 @@ def main() -> None:
         fail("amendment-events file changed; inspect and refresh currentness review")
 
     coverage_end = date.fromisoformat(ledger["search_coverage"]["coverage_end"])
-    today = date.today()
+    today = datetime.now(ZoneInfo("Asia/Tokyo")).date()
     pass_count = final["counts"]["AUDIT_PASS"] + final["counts"]["AUDIT_PASS_WITH_LIMITATION"]
     if today > coverage_end:
         if pass_count:
