@@ -60,6 +60,19 @@ def load_normalized_verification_layers(
             raise ValueError(
                 f"verification report id mismatch: {report.get('id')} != {definition.get('id')}"
             )
+        required = [
+            "title",
+            "content_verification",
+            "currentness",
+            "monitoring",
+            "human_review",
+            "assurance",
+        ]
+        missing = [field for field in required if field not in report]
+        if missing:
+            raise ValueError(
+                f"verification report {report.get('id')} missing fields: {missing}"
+            )
         layers.append(report)
     return layers
 
