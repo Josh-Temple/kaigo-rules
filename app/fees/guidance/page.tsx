@@ -1,3 +1,4 @@
+import VerificationSummary from "../../../components/verification-summary";
 import Link from "next/link";
 import nodesData from "../../../data/fee-guidance-current-skeleton.json";
 import relationsData from "../../../data/fee-guidance-relations.json";
@@ -52,6 +53,8 @@ export default function FeeGuidancePage(){
       令和6年度資料で「略」とされた見出しは、過去の厚生労働省改正資料まで遡って補完しました。
       8項目は公式PDFスナップショットと改正履歴から現行本文候補を機械再構成済みですが、人手確認は未完了です。機械再構成だけで「確認済み」とは扱いません。
     </div>
+
+      <VerificationSummary layerId="rouki36-dayservice" />
 
     <section className="rules-stats">
       <div><strong>{meta.counts.total}</strong><span>骨格ノード</span></div>

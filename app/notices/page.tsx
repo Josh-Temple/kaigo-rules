@@ -1,3 +1,4 @@
+import VerificationSummary from "../../components/verification-summary";
 import Link from "next/link";
 import nodesData from "../../data/notice-current-skeleton.json";
 import metaData from "../../data/notice-current-meta.json";
@@ -128,6 +129,8 @@ export default function NoticesPage() {
         新旧対照表・過去資料から現行の骨格を組み立てている途中です。
         未確認部分は空欄のまま残し、推測で本文を補いません。
       </div>
+
+      <VerificationSummary layerId="rouki25-dayservice" />
 
       <section className="rules-stats notice-stats">
         <div><strong>{machineCandidates}</strong><span>本文候補</span></div>

@@ -1,3 +1,4 @@
+import VerificationSummary from "../../components/verification-summary";
 import Link from "next/link";
 import nodesData from "../../data/care-insurance-act-nodes.json";
 import metaData from "../../data/care-insurance-act-meta.json";
@@ -26,6 +27,8 @@ export default function LawPage(){
       <strong>全条文を複製するDBではありません。</strong><br/>
       通所介護から到達する条文だけをe-Govの現行法令XMLから取り込み、基準省令・報酬告示・解釈通知への関係を付けます。
     </div>
+
+      <VerificationSummary layerId="care-insurance-act" />
     <section className="rules-stats">
       <div><strong>{meta.counts?.articles_total||articles.length}</strong><span>対象条文</span></div>
       <div><strong>{meta.counts?.nodes_total||nodes.length}</strong><span>構造ノード</span></div>

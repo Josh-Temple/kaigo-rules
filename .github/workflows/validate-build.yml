@@ -91,6 +91,22 @@ jobs:
               exit 1
             }
 
+          verification_routes=(
+            "/law"
+            "/rules"
+            "/notices"
+            "/fees"
+            "/fees/guidance"
+            "/fees/unit-price"
+            "/qa"
+          )
+          for route in "${verification_routes[@]}"; do
+            if ! curl --fail --silent --show-error "http://127.0.0.1:3000$route" | grep -F "本文の独立確認" >/dev/null; then
+              echo "verification summary missing from $route"
+              exit 1
+            fi
+          done
+
           curl --fail --silent --show-error http://127.0.0.1:3000/rules/93 \
             | grep -F "看護職員は何人必要ですか？" >/dev/null || {
               echo "legacy FAQ relation ID was not normalized onto /rules/93"
