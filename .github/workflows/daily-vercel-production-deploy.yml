@@ -30,6 +30,28 @@ permissions:
   contents: read
 
 jobs:
+  secret-preflight:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Require deploy hook secrets before merge
+        shell: bash
+        env:
+          RULES_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
+          OPS_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_OPS }}
+        run: |
+          set -euo pipefail
+          missing=0
+          if [ -z "$RULES_HOOK" ]; then
+            echo "::error::Missing repository secret VERCEL_DEPLOY_HOOK_KAIGO_RULES"
+            missing=1
+          fi
+          if [ -z "$OPS_HOOK" ]; then
+            echo "::error::Missing repository secret VERCEL_DEPLOY_HOOK_KAIGO_OPS"
+            missing=1
+          fi
+          exit "$missing"
+
   plan:
     runs-on: ubuntu-24.04
     outputs:
