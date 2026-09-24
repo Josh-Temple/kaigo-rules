@@ -1,0 +1,32 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_service_catalog.py",
+  "default_service_id": "dayservice",
+  "services": [
+    {
+      "service_id": "dayservice",
+      "label": "通所介護",
+      "status": "ACTIVE_MVP",
+      "routing": {
+        "current_mode": "LEGACY_ROOT",
+        "legacy_base_path": "/",
+        "legacy_entry_points": [
+          "/",
+          "/search",
+          "/rules",
+          "/notices",
+          "/fees",
+          "/qa",
+          "/start"
+        ],
+        "future_service_base_path": "/services/dayservice",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {
+        "fee": "fee.dayservice.",
+        "fee_guidance": "fee-guidance.dayservice.",
+        "notice": "notice.dayservice."
+      }
+    }
+  ]
+}
