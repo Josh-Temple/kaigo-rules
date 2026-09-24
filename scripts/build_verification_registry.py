@@ -206,37 +206,17 @@ def build() -> dict:
         },
     ]
 
-    relation_inventory = relation_semantic["coverage"]["non_contains_semantic_or_cross_layer_relations"]
-    relation_lanes = [
-        {
-            "id": "explicit-legal-reference",
-            "status": relation_semantic["audit_result"],
-            "verified_relations": relation_semantic["coverage"]["explicit_legal_reference_relations_independently_verified"],
-            "evidence": "data/relation-semantic-independent-audit.json",
-        },
-        {
-            "id": "careact-internal",
-            "status": careact_relations["audit_result"],
-            "verified_relations": careact_relations["coverage"]["relations_passed"],
-            "evidence": "data/careact-internal-relation-independent-audit.json",
-        },
-        {
-            "id": "cross-layer-source-chain",
-            "status": cross_layer_relations["audit_result"],
-            "verified_relations": cross_layer_relations["coverage"]["relations_passed"],
-            "evidence": "data/cross-layer-source-chain-independent-audit.json",
-        },
-        {
-            "id": "remuneration-delegation",
-            "status": remuneration_relations["audit_result"],
-            "verified_relations": remuneration_relations["coverage"]["relations_passed"],
-            "evidence": "data/remuneration-delegation-relation-independent-audit.json",
-        },
-    ]
-    relation_verified = sum(lane["verified_relations"] for lane in relation_lanes)
-    relation_remaining = relation_inventory - relation_verified
-    if relation_remaining < 0:
-        raise ValueError("relation audit coverage exceeds semantic/cross-layer inventory")
+    relation_coverage = build_relation_coverage()
+    relation_inventory = len(relation_coverage["inventory"])
+    relation_verified = len(relation_coverage["verified"])
+    relation_remaining = len(relation_coverage["remaining"])
+    relation_lanes = relation_coverage["lanes"]
+
+    declared_inventory = relation_semantic["coverage"]["non_contains_semantic_or_cross_layer_relations"]
+    if relation_inventory != declared_inventory:
+        raise ValueError(
+            f"canonical semantic/cross-layer inventory changed: {relation_inventory} != {declared_inventory}"
+        )
 
     relation_verification = {
         "status": "PASS" if relation_remaining == 0 else "PARTIAL",
