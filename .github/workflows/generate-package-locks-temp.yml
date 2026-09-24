@@ -31,9 +31,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add package-lock.json ops-site/package-lock.json
           git diff --cached --check
-          if git diff --cached --quiet; then
-            echo "Lockfiles are already current."
-            exit 0
-          fi
-          git commit -m "Generate npm lockfiles"
+          git commit -m "Pin npm dependency graphs"
           git push origin "HEAD:${GITHUB_HEAD_REF}"
