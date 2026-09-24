@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 
 from relation_verification_coverage import build_relation_coverage
+from service_manifest import enrich_verification_layers, load_service_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -19,6 +20,7 @@ def load(name: str):
 
 
 def build() -> dict:
+    service_catalog = load_service_catalog(ROOT)
     notice_verify = load("notice-rouki25-independent-verification.json")
     notice_current = load("notice-rouki25-currentness-ledger.json")
     notice_packet = load("notice-review-packet.json")
@@ -208,6 +210,16 @@ def build() -> dict:
         },
     ]
 
+    layers = enrich_verification_layers(layers, service_catalog)
+    service_descriptors = [
+        {
+            "service_id": item["service_id"],
+            "label": item["label"],
+            "status": item["status"],
+        }
+        for item in service_catalog["manifest"].get("services", [])
+    ]
+
     relation_coverage = build_relation_coverage()
     relation_inventory = len(relation_coverage["inventory"])
     relation_verified = len(relation_coverage["verified"])
@@ -247,10 +259,19 @@ def build() -> dict:
         "format_version": 1,
         "generated_by": "scripts/build_verification_registry.py",
         "policy": "Verification layers are reported separately. Independent machine/AI audit, source freshness/currentness monitoring, and human verification are never collapsed into one status.",
+        "service_catalog": {
+            "default_service_id": service_catalog["manifest"]["default_service_id"],
+            "services": service_descriptors,
+        },
         "layers": layers,
         "relation_verification": relation_verification,
         "gaps": gaps,
         "summary": {
+            "services_total": len(service_descriptors),
+            "active_services_total": sum(
+                1 for service in service_descriptors
+                if str(service["status"]).startswith("ACTIVE")
+            ),
             "layers_total": len(layers),
             "independent_audit_or_reconstruction": sum(
                 1 for layer in layers
