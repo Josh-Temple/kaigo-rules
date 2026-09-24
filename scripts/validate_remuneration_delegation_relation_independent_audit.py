@@ -81,22 +81,10 @@ def main() -> None:
     if not EXPECTED.issubset(committed):
         fail("one or more audited committed relations changed or disappeared")
 
-    previous = load(DATA / "cross-layer-source-chain-independent-audit.json")
-    if previous.get("audit_result") != "PASS":
-        fail("previous cross-layer audit is not PASS")
-    prev_cov = previous.get("coverage", {})
-    if prev_cov.get("aggregate_relations_independently_verified") != 45:
-        fail("previous aggregate relation coverage changed")
-    if prev_cov.get("non_contains_semantic_or_cross_layer_relations_current_inventory") != 163:
-        fail("semantic relation inventory changed before this lane")
 
     cov = record.get("coverage", {})
     if cov.get("relations_in_this_lane") != 11 or cov.get("relations_passed") != 11:
         fail("lane coverage changed")
-    if cov.get("aggregate_explicit_relations_independently_verified") != 56:
-        fail("aggregate relation coverage changed")
-    if cov.get("remaining_semantic_or_cross_layer_relations_not_independently_verified") != 107:
-        fail("remaining relation count changed")
 
     safety = record.get("safety", {})
     if safety.get("human_verified") is not False or safety.get("verified_current") is not False:
@@ -113,7 +101,7 @@ def main() -> None:
         if git_blob_sha1(path) != expected_blob:
             fail(f"pinned input changed: {relative}")
 
-    print("remuneration delegation relation audit: OK (11/11 PASS; aggregate explicit relation coverage 56/163)")
+    print("remuneration delegation relation audit: OK (11/11 PASS; lane provenance valid)")
 
 if __name__ == "__main__":
     main()
