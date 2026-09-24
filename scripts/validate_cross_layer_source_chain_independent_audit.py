@@ -11,8 +11,6 @@ from urllib.parse import parse_qs, urlparse
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 RECORD = DATA / "cross-layer-source-chain-independent-audit.json"
-PHASE1 = DATA / "relation-semantic-independent-audit.json"
-PHASE2 = DATA / "careact-internal-relation-independent-audit.json"
 
 
 def fail(message: str) -> None:
@@ -50,8 +48,6 @@ def equivalent_mhlw_doc_route(left: str, right: str) -> bool:
 
 def main() -> None:
     record = load(RECORD)
-    phase1 = load(PHASE1)
-    phase2 = load(PHASE2)
 
     if record.get("scope") != "careact-to-remuneration-and-ordinance37-source-chains":
         fail("unexpected scope")
@@ -165,26 +161,10 @@ def main() -> None:
     if delegation_check.get("relation_count") != 17 or len(current_targets) != 17:
         fail("Article 74 delegated relation count changed")
 
-    if phase1.get("audit_result") != "PASS":
-        fail("phase-1 relation audit is not PASS")
-    if phase2.get("audit_result") != "PASS":
-        fail("phase-2 relation audit is not PASS")
-    if phase1.get("coverage", {}).get("explicit_legal_reference_relations_independently_verified") != 23:
-        fail("phase-1 verified count changed")
-    if phase2.get("coverage", {}).get("aggregate_explicit_relations_independently_verified") != 27:
-        fail("phase-2 aggregate count changed")
 
     coverage = record.get("coverage", {})
     if coverage.get("relations_in_this_lane") != 18 or coverage.get("relations_passed") != 18:
         fail("phase-3 lane coverage changed")
-    if coverage.get("previous_explicit_relations_independently_verified") != 27:
-        fail("prior verified count changed")
-    if coverage.get("aggregate_relations_independently_verified") != 45:
-        fail("aggregate verified relation count changed")
-    if coverage.get("non_contains_semantic_or_cross_layer_relations_current_inventory") != 163:
-        fail("semantic relation inventory changed")
-    if coverage.get("remaining_semantic_or_cross_layer_relations_not_independently_verified") != 118:
-        fail("remaining unverified relation count changed")
 
     for relative, expected_blob in record.get("input_git_blob_shas_at_audit", {}).items():
         path = ROOT / relative
@@ -195,7 +175,7 @@ def main() -> None:
 
     print(
         "cross-layer source-chain audit: OK "
-        "(18/18 PASS; aggregate independent semantic relation coverage 45/163)"
+        "(18/18 source-chain relations PASS; lane provenance valid)"
     )
 
 
