@@ -1,0 +1,43 @@
+{
+  "format_version": 1,
+  "service_id": "dayservice",
+  "routing": {
+    "current_mode": "LEGACY_ROOT",
+    "legacy_base_path": "/",
+    "legacy_entry_points": [
+      "/",
+      "/search",
+      "/rules",
+      "/notices",
+      "/fees",
+      "/qa",
+      "/start"
+    ],
+    "future_service_base_path": "/services/dayservice",
+    "future_service_base_enabled": false
+  },
+  "id_namespaces": {
+    "fee": "fee.dayservice.",
+    "fee_guidance": "fee-guidance.dayservice.",
+    "notice": "notice.dayservice."
+  },
+  "scope_files": {
+    "care_insurance_act": "data/care-insurance-act-scope.json",
+    "ordinance37": "data/ordinance37-scope.json",
+    "questions": "data/questions.json",
+    "rule_nodes": "data/rule-nodes.json",
+    "notice_review_packet": "data/notice-review-packet.json",
+    "remuneration_skeleton": "data/remuneration-current-skeleton.json",
+    "fee_guidance": "data/fee-guidance-current-skeleton.json",
+    "qa_corpus": "data/qa-corpus.json"
+  },
+  "verification_layer_ids": [
+    "rouki25-dayservice",
+    "rouki36-dayservice",
+    "remuneration-notices",
+    "unit-price",
+    "ordinance37",
+    "care-insurance-act",
+    "qa-corpus"
+  ]
+}

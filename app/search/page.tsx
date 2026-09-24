@@ -6,6 +6,7 @@ import rulesReviewData from "../../data/ordinance37-review.json";
 import feeNodesData from "../../data/remuneration-current-skeleton.json";
 import feeTextsData from "../../data/remuneration-current-text.json";
 import feeReviewData from "../../data/remuneration-review.json";
+import { feeHref, getDefaultService } from "../../lib/service-catalog";
 
 const questions = questionsData as Array<any>;
 const qaCorpus = qaCorpusData as Array<any>;
@@ -52,7 +53,7 @@ const excerpt = (value: string, max = 180) => {
   return clean.length > max ? clean.slice(0, max) + "…" : clean;
 };
 
-const feeHref = (id: string) => "/fees/" + id.replace("fee.dayservice.", "");
+const defaultService = getDefaultService();
 
 export default async function SearchPage({
   searchParams,
@@ -133,7 +134,7 @@ export default async function SearchPage({
   return (
     <article className="answer-page wide-page">
       <p className="eyebrow">CROSS-SOURCE SEARCH</p>
-      <h1>通所介護を横断検索</h1>
+      <h1>{defaultService.label}を横断検索</h1>
       <p className="lead">
         確認済みの実務ページ、基準省令、報酬告示、厚生労働省Q&Aを同じ語で探します。
         検索結果の表示と、内容の現行性確認は分けて扱います。
@@ -205,7 +206,7 @@ export default async function SearchPage({
                 {feeMatches.slice(0, LIMIT).map((node) => {
                   const text = feeTextById.get(node.id)?.official_text || "";
                   return (
-                    <Link className="fee-row fee-row-link" href={feeHref(node.id)} key={node.id}>
+                    <Link className="fee-row fee-row-link" href={feeHref(defaultService.service_id, node.id)} key={node.id}>
                       <div>
                         <p className="meta">{(node.number_path || []).join(" / ")}</p>
                         <h3>{node.title}</h3>
