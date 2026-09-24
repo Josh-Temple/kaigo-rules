@@ -1,117 +1,41 @@
 {
-  "format_version": 1,
-  "status": "FOUNDATION_ONLY",
+  "format_version": 2,
+  "status": "FOUNDATION_ACTIVE",
   "default_service_id": "dayservice",
+  "verification_layers_file": "data/services/verification-layers.json",
   "policies": {
     "existing_ids_are_stable": true,
     "existing_routes_are_stable": true,
     "shared_sources_are_not_duplicated_per_service": true,
     "verification_dimensions_remain_separate": true,
-    "notification_pipelines_are_not_generalized_before_a_second_service": true
+    "service_configs_are_isolated": true,
+    "notification_pipelines_are_not_generalized_before_real_duplication": true
   },
   "services": [
     {
       "service_id": "dayservice",
       "label": "通所介護",
       "status": "ACTIVE_MVP",
-      "routing": {
-        "current_mode": "LEGACY_ROOT",
-        "legacy_base_path": "/",
-        "legacy_entry_points": [
-          "/",
-          "/search",
-          "/rules",
-          "/notices",
-          "/fees",
-          "/qa",
-          "/start"
-        ],
-        "future_service_base_path": "/services/dayservice",
-        "future_service_base_enabled": false
-      },
-      "scope_files": {
-        "care_insurance_act": "data/care-insurance-act-scope.json",
-        "ordinance37": "data/ordinance37-scope.json",
-        "questions": "data/questions.json",
-        "rule_nodes": "data/rule-nodes.json",
-        "notice_review_packet": "data/notice-review-packet.json",
-        "remuneration_skeleton": "data/remuneration-current-skeleton.json",
-        "fee_guidance": "data/fee-guidance-current-skeleton.json",
-        "qa_corpus": "data/qa-corpus.json"
-      },
-      "verification_layer_ids": [
-        "rouki25-dayservice",
-        "rouki36-dayservice",
-        "remuneration-notices",
-        "unit-price",
-        "ordinance37",
-        "care-insurance-act",
-        "qa-corpus"
-      ]
-    }
-  ],
-  "verification_layers": [
-    {
-      "id": "rouki25-dayservice",
-      "service_ids": ["dayservice"],
-      "scope_kind": "SERVICE_SPECIFIC",
-      "registry_source": "data/verification-registry.json"
-    },
-    {
-      "id": "rouki36-dayservice",
-      "service_ids": ["dayservice"],
-      "scope_kind": "SERVICE_SPECIFIC",
-      "registry_source": "data/verification-registry.json"
-    },
-    {
-      "id": "remuneration-notices",
-      "service_ids": ["dayservice"],
-      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-      "registry_source": "data/verification-registry.json"
-    },
-    {
-      "id": "unit-price",
-      "service_ids": ["dayservice"],
-      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-      "registry_source": "data/verification-registry.json"
-    },
-    {
-      "id": "ordinance37",
-      "service_ids": ["dayservice"],
-      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-      "registry_source": "data/verification-registry.json"
-    },
-    {
-      "id": "care-insurance-act",
-      "service_ids": ["dayservice"],
-      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-      "registry_source": "data/verification-registry.json"
-    },
-    {
-      "id": "qa-corpus",
-      "service_ids": ["dayservice"],
-      "scope_kind": "SHARED_CORPUS_SERVICE_FILTER",
-      "registry_source": "data/verification-registry.json"
+      "config": "data/services/dayservice.json"
     }
   ],
   "next_service_candidate": {
     "service_id": "homevisit",
     "label": "訪問介護",
-    "status": "NOT_ADDED",
-    "rule": "Do not add service data until this boundary has been proven without changing current dayservice behavior."
+    "status": "NOT_ADDED"
   },
   "migration": {
-    "phase_0": "This manifest only. Do not change runtime routing, existing IDs, verification status, or current pipelines.",
-    "phase_1": "Add one second service definition plus only the service-specific scope files needed to expose real differences.",
-    "phase_2": "Make loaders and routing service-aware while preserving every current dayservice legacy URL.",
-    "phase_3": "Commonize only code and validation paths that are duplicated by two real services."
+    "phase_1": "Add one service descriptor plus one isolated service config. Do not copy shared source corpora.",
+    "phase_2": "Add only service-specific scopes and verification implementations required by the real service.",
+    "phase_3": "Make runtime loaders and routes service-aware while preserving legacy dayservice URLs.",
+    "phase_4": "Generalize only behavior that is duplicated by at least two real services."
   },
   "non_goals": [
-    "No database introduction.",
+    "No database introduction solely for multi-service support.",
     "No existing ID renames.",
     "No service-specific repository split.",
-    "No workflow duplication per service.",
-    "No blanket refactor of the current dayservice pipelines.",
+    "No workflow copy per service.",
+    "No blanket refactor of existing dayservice pipelines.",
     "No automatic promotion of machine verification into human verification or currentness."
   ]
 }
