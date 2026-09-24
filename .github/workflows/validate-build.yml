@@ -101,11 +101,10 @@ jobs:
             "/qa"
           )
           for route in "${verification_routes[@]}"; do
-            curl --fail --silent --show-error "http://127.0.0.1:3000$route" \\
-              | grep -F "本文の独立確認" >/dev/null || {
-                echo "verification summary missing from $route"
-                exit 1
-              }
+            if ! curl --fail --silent --show-error "http://127.0.0.1:3000$route" | grep -F "本文の独立確認" >/dev/null; then
+              echo "verification summary missing from $route"
+              exit 1
+            fi
           done
 
           curl --fail --silent --show-error http://127.0.0.1:3000/rules/93 \
