@@ -40,7 +40,7 @@ jobs:
           p=sys.argv[1]
           d=json.load(open(p,encoding="utf-8"))
           rows=d["branches"]
-          assert len(rows)==104, len(rows)
+          assert len(rows)==d["expected_count"], (len(rows), d["expected_count"])
           names=[r["branch"] for r in rows]
           assert "main" not in names
           assert len(names)==len(set(names))
