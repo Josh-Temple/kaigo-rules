@@ -1,3 +1,8 @@
+# Archived from the closed PR #51 research branch during Issue #116 recovery.
+# This workflow is intentionally inactive on current main because several validators
+# assert historical human-review overlays that current canonical state keeps unreviewed.
+# Preserve for provenance; reconcile individual checks before reactivating them.
+
 name: Verify Kaigo Ops research
 
 on:
