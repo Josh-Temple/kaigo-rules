@@ -294,5 +294,43 @@
     ],
     "inference_limit": "厚生労働省の公式データベースについて、目次（体系）検索まで含む内部検索導線、登載準備中、通知改正一覧を確認した。しかし公式の利用上の注意が、本システムは厚生労働省所管の全ての法令・通知・公示等を網羅しているわけではないと明記している。したがって、対象通知が見つからないことを後続改正不存在の網羅的証明にはしない。",
     "next_blocker": "全通知を対象とすることが明示された一次資料上の完全な改正履歴、または老企第25号の権威ある現行統合本文。"
-  }
+  },
+  "follow_up_checks": [
+    {
+      "checked_at": "2026-09-24",
+      "fresh_main_sha_at_start": "b802b013213b485f26f54ca187b0bf53d79e8c18",
+      "purpose": "前日監査後の厚生労働省一次資料の更新有無を再確認し、老企第25号・第3の六の後続改正候補または現行統合本文が新たに確認できるかを追跡する。",
+      "checks": [
+        {
+          "route_id": "mhlw-kaigo-latest-info-current-20260924",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+          "observation": "2026-09-24確認時点でも一覧先頭は介護保険最新情報Vol.1544（令和8年9月18日）。9月19日以降の新規掲載は確認できず、対象通知の正式名称または老企第25号を改正する掲載も確認できなかった。",
+          "limitation": "一覧の未掲載期間や索引外資料まで含む改正不存在の証明にはならない。"
+        },
+        {
+          "route_id": "mhlw-r8-reform-page-20260924",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+          "observation": "令和8年度介護報酬改定の通知等の改正一覧を再確認したが、老企第25号は列挙されていない。",
+          "limitation": "改定特設ページに列挙されていないことだけで別経路の改正不存在は証明しない。"
+        },
+        {
+          "route_id": "mhlw-r8-manual-reference-pdf-20260924",
+          "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
+          "observation": "令和8年3月改訂の国マニュアルから再掲される81ページの新旧対照表を確認。第3・六「通所介護」は収録されるが、1・2は略記され、全22項目の現行統合本文ではない。通所介護の可視箇所は既存candidateと矛盾する新たな改正断片を示さなかった。",
+          "limitation": "再掲資料であり、PDFの正式な改正日や令和6年以降の改正履歴の完全性を確定する根拠にはしない。"
+        },
+        {
+          "route_id": "mhlw-domain-exact-search-20260924",
+          "url": "https://www.mhlw.go.jp/",
+          "observation": "厚労省ドメイン限定で正式名称、老企第25号、一部改正、令和7年・令和8年を組み合わせて再探索した。直接の後続改正候補は特定できなかった。",
+          "limitation": "検索エンジンの不存在結果は一次資料上の網羅的な改正履歴ではない。"
+        }
+      ],
+      "verified_post_r6_amendment_candidate_identified": false,
+      "current_integrated_text_found": false,
+      "decision_effect": "HOLD_UNCHANGED",
+      "unresolved_gap": "介護保険最新情報一覧は2026-09-18掲載のVol.1544が最新で、2026-09-19から2026-09-24までの空白を埋める網羅的な一次資料上の改正履歴は確認できない。現行統合全文も未確認。",
+      "next_blocker": "令和6年3月15日後から確認時点までを網羅する厚生労働省一次資料上の改正履歴、または老企第25号の現行統合全文。"
+    }
+  ]
 }

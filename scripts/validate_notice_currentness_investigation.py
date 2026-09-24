@@ -238,6 +238,21 @@ def main() -> None:
     if not lawdb.get("next_blocker"):
         fail("law-database coverage check must preserve the final blocker")
 
+    followups = {row.get("checked_at"): row for row in data.get("follow_up_checks", [])}
+    follow = followups.get("2026-09-24", {})
+    if follow.get("fresh_main_sha_at_start") != "b802b013213b485f26f54ca187b0bf53d79e8c18":
+        fail("2026-09-24 follow-up must record the fresh main SHA")
+    if follow.get("verified_post_r6_amendment_candidate_identified") is not False:
+        fail("2026-09-24 follow-up must not promote a post-R6 amendment candidate")
+    if follow.get("current_integrated_text_found") is not False:
+        fail("2026-09-24 follow-up must keep current integrated text unresolved")
+    if follow.get("decision_effect") != "HOLD_UNCHANGED":
+        fail("2026-09-24 follow-up must preserve HOLD")
+    if "2026-09-19から2026-09-24" not in follow.get("unresolved_gap", ""):
+        fail("2026-09-24 follow-up must record the remaining publication gap")
+    if not follow.get("next_blocker"):
+        fail("2026-09-24 follow-up must preserve the next blocker")
+
     policy = data.get("status_policy", {})
     if "現行性の証明ではない" not in policy.get("machine_text_match", ""):
         fail("machine text match must not be described as proof of currentness")
