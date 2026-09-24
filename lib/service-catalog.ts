@@ -46,6 +46,9 @@ export function serviceBasePath(serviceId: string): string {
   ) {
     return service.routing.legacy_base_path || "/";
   }
+  if (!service.routing.future_service_base_enabled) {
+    throw new Error(`Service route is not enabled: ${serviceId}`);
+  }
   return service.routing.future_service_base_path;
 }
 
