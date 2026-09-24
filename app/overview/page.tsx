@@ -109,6 +109,21 @@ export default function OverviewPage() {
       </section>
 
       <section className="section">
+        <p className="eyebrow">RELATION GRAPH</p>
+        <h2>資料同士の関係も、確認状態を分けて管理</h2>
+        <p>
+          現在、基準の準用、上位法から基準への委任、報酬の委任・参照、FAQから根拠への接続など
+          <strong>{registry.relation_verification?.inventory_relations || 0}件</strong>の関係を保持しています。
+          このうち<strong>{registry.relation_verification?.independently_verified_relations || 0}件</strong>は
+          一次資料から独立照合済みです。残りは関係候補として保持し、確認済みとは表示しません。
+        </p>
+        <p className="meta">
+          このrelation層を、画面の横断導線と将来のAI検索・回答生成で共通利用します。
+        </p>
+        <p><Link href="/rules/93">例：人員基準から関連情報をたどる →</Link></p>
+      </section>
+
+      <section className="section">
         <p className="eyebrow">PRACTICAL QUESTIONS</p>
         <h2>実務FAQは、制度情報への入口</h2>
         <p>

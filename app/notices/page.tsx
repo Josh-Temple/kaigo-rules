@@ -58,7 +58,7 @@ function NoticeTree({ parentId }: { parentId: string | null }) {
   return (
     <div className={parentId ? "notice-tree notice-tree-nested" : "notice-tree"}>
       {children.map((node) => (
-        <section className={`notice-node notice-depth-${node.depth}`} key={node.id}>
+        <section id={node.id} className={`notice-node notice-depth-${node.depth}`} key={node.id}>
           <div className="notice-node-head">
             <div>
               <p className="meta">{node.number_path.join(" / ")}</p>
