@@ -94,6 +94,8 @@ Q&Aは単独で制度上の結論とせず、法令・通知との関係を保�
 
 公式側だけが更新された場合も検出できます。週次監視はデータを自動更新せず、差異があればfail closedで失敗します。
 
+GitHub Actions のartifactは実行確認用の期限付き証跡として扱い、長期的な検証記録の正本にはしません。長期保存する監査結果は、repositoryに固定したaudit JSON・source digest・verification registryを使用します。
+
 ## Next
 
 1. relation未独立確認107件を、一次資料から機械的に検証できるものと人手判断が必要なものへ分類する
