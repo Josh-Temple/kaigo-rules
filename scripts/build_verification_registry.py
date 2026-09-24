@@ -7,6 +7,8 @@ import argparse
 import json
 from pathlib import Path
 
+from relation_verification_coverage import build_relation_coverage
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUTPUT = DATA / "verification-registry.json"
