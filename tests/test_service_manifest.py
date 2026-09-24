@@ -34,7 +34,7 @@ class ServiceManifestTests(unittest.TestCase):
                 {
                     "service_id": service_id,
                     "label": f"サービス{index}",
-                    "status": "PLANNED",
+                    "status": "ACTIVE_MVP" if index == 0 else "PLANNED",
                     "config": f"data/services/{service_id}.json",
                 }
             )
