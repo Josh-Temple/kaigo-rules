@@ -1,0 +1,103 @@
+{
+  "format_version": 1,
+  "pilot_id": "kaigo-ops-information-search-field-validation-v0.1",
+  "created_at": "2026-09-25",
+  "service_id": "dayservice",
+  "issue": "必要な情報を探すのに時間がかかる",
+  "canonical_question_source": "data/questions.json",
+  "selection_policy": {
+    "question_count": 10,
+    "verified_only": true,
+    "avoid_near_duplicate_topics": true,
+    "cover_multiple_categories": true,
+    "include_single_source_and_multi_source_questions": true,
+    "excluded_as_near_duplicates": [
+      "multiple-roles",
+      "care-plan-seal"
+    ]
+  },
+  "questions": [
+    {
+      "id": "FV-01",
+      "slug": "manager-concurrent-role",
+      "category": "人員・勤務",
+      "snapshot_title": "管理者は他の職務と兼務できますか？",
+      "snapshot_last_verified": "2026-09-21",
+      "complexity": "single-source"
+    },
+    {
+      "id": "FV-02",
+      "slug": "life-counselor-staffing",
+      "category": "人員・勤務",
+      "snapshot_title": "生活相談員は何人配置すればよいですか？",
+      "snapshot_last_verified": "2026-09-21",
+      "complexity": "single-source"
+    },
+    {
+      "id": "FV-03",
+      "slug": "nurse-staffing",
+      "category": "人員・勤務",
+      "snapshot_title": "看護職員は何人必要ですか？",
+      "snapshot_last_verified": "2026-09-21",
+      "complexity": "multi-source"
+    },
+    {
+      "id": "FV-04",
+      "slug": "dining-training-area",
+      "category": "設備",
+      "snapshot_title": "食堂・機能訓練室にはどのくらいの面積が必要ですか？",
+      "snapshot_last_verified": "2026-09-22",
+      "complexity": "single-source"
+    },
+    {
+      "id": "FV-05",
+      "slug": "operation-rules-content",
+      "category": "運営",
+      "snapshot_title": "運営規程には何を記載する必要がありますか？",
+      "snapshot_last_verified": "2026-09-22",
+      "complexity": "single-source"
+    },
+    {
+      "id": "FV-06",
+      "slug": "important-matters-content",
+      "category": "運営",
+      "snapshot_title": "重要事項説明書には何を記載する必要がありますか？",
+      "snapshot_last_verified": "2026-09-22",
+      "complexity": "multi-source"
+    },
+    {
+      "id": "FV-07",
+      "slug": "care-plan-content",
+      "category": "計画・記録",
+      "snapshot_title": "通所介護計画には何を記載すればよいですか？",
+      "snapshot_last_verified": "2026-09-22",
+      "complexity": "single-source"
+    },
+    {
+      "id": "FV-08",
+      "slug": "care-plan-signature",
+      "category": "説明・同意・署名",
+      "snapshot_title": "通所介護計画書に利用者の署名は必要ですか？",
+      "snapshot_last_verified": "2026-09-21",
+      "complexity": "multi-source"
+    },
+    {
+      "id": "FV-09",
+      "slug": "annual-training",
+      "category": "研修・委員会・訓練",
+      "snapshot_title": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "snapshot_last_verified": "2026-09-22",
+      "complexity": "multi-source"
+    },
+    {
+      "id": "FV-10",
+      "slug": "bcp-training",
+      "category": "研修・委員会・訓練",
+      "snapshot_title": "BCPの研修はどのくらいの頻度で行いますか？",
+      "snapshot_last_verified": "2026-09-22",
+      "complexity": "multi-source"
+    }
+  ],
+  "result_state": "NOT_RUN",
+  "promotion_policy": "Do not publish effectiveness claims until measured attempts are recorded and reviewed."
+}
