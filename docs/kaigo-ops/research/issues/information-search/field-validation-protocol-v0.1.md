@@ -82,6 +82,17 @@ Kaigo Rules の検索・ナビゲーション・実務質問ページを利用�
 
 少なくとも2人で1セットとし、参加者数が増えても質問セット自体は変更しない。
 
+## 記録と採点の分離
+
+探索中は正誤判定を行わず、まず生データとして回答文・根拠URL・該当箇所を保存する。
+
+回答品質は全試行終了後、`field-validation-scoring-v0.1.md` に従って condition と時間情報を伏せて採点する。
+
+- 生データ: `field-validation-run-template-v0.1.csv`
+- 採点: `field-validation-adjudication-template-v0.1.csv`
+
+これにより、Condition A / B を知った状態で正誤を付けることによる観察者バイアスを減らす。
+
 ## 計測項目
 
 各試行について次を記録する。
@@ -90,20 +101,24 @@ Kaigo Rules の検索・ナビゲーション・実務質問ページを利用�
    - 正しい一次資料または公的資料へ最初に到達するまでの秒数
 2. `time_to_correct_answer_sec`
    - 必要な条件を落とさず、回答を確定できるまでの秒数
-3. `authoritative_source_reached`
-   - 正しい根拠へ到達できたか
-4. `answer_correct`
-   - canonical short answer と矛盾しないか
-5. `conditions_preserved`
-   - 「常駐不要」「頭数ではない」等の重要条件を落としていないか
-6. `source_correct`
-   - 根拠資料と該当箇所が適切か
-7. `clicks`
-8. `query_reformulations`
-9. `human_correction_sec`
-   - 誤りや不足を修正する追加時間
-10. `confidence_1_5`
-    - 回答者自身の確信度。正しさとは別に記録する
+3. `answer_text`
+   - 回答者が確定した回答そのもの
+4. `source_url`
+   - 到達した根拠資料のURL
+5. `source_locator`
+   - 条・項、資料内見出し、ページ等の該当箇所
+6. `clicks`
+7. `query_reformulations`
+8. `confidence_1_5`
+   - 回答者自身の確信度。正しさとは別に記録する
+
+次は採点時に付与する。
+
+9. `authoritative_source_reached`
+10. `answer_correct`
+11. `conditions_preserved`
+12. `source_correct`
+13. `human_correction_sec`
 
 ## 最重要指標
 
@@ -147,7 +162,7 @@ Kaigo Rules を次段階へ進める目安:
 
 ## 結果の扱い
 
-結果は `field-validation-run-template-v0.1.csv` を複製して記録する。
+生データは `field-validation-run-template-v0.1.csv`、採点結果は `field-validation-adjudication-template-v0.1.csv` を使う。
 
 v0.1 の計測前に、公開サイトで「時間が短縮した」「効率化できた」とは記載しない。
 

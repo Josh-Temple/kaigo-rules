@@ -60,9 +60,13 @@ verified 質問ページでは、質問に紐づく範囲で次を表示する�
 
 - 実施手順
 - 固定10問と P1 / P2 の counterbalance
-- 20試行分の記録欄
-- TRUE / FALSE および confidence の入力制約
-- Condition A / B の自動集計
+- 20試行分の生データ記録欄
+- 回答文・根拠URL・根拠箇所の保存欄
+- Condition と時間情報を伏せた独立採点欄
+- confidence の入力制約
+- Condition A / B の集計
+
+回答品質は探索中に採点せず、全試行終了後に blind adjudication を行う。
 
 Google Sheet は個人 Drive の運用資料であり、公開リポジトリには URL を保存しない。
 
