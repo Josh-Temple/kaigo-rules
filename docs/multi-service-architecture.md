@@ -56,7 +56,7 @@ The current default service keeps its legacy root URLs. Non-default services use
 
 ## Current second-service probe: homevisit
 
-`homevisit` is intentionally registered as `SCOPE_DEFINED_NOT_INGESTED`.
+`homevisit` is registered as `PARTIAL_INGESTION`.
 
 Its initial scope defines:
 
@@ -65,6 +65,16 @@ Its initial scope defines:
 - Rouki 25, Section 3
 - Remuneration Notice 19, fee schedule item 1, plus identified shared delegated notices
 
-It is not yet ingested, independently verified, human reviewed, or publicly routed.
+The first ingestion step is complete for the Care Insurance Act only.  
+`data/services/homevisit/care-insurance-act-index.generated.json` deterministically selects 106 node references from the shared Care Insurance Act corpus without copying legal text.
 
-The purpose of this stage is to prove that a second real service can enter the repository without copying the day-service implementation or overstating verification.
+This does **not** mean the service is fully ingested or verified.
+
+- service-specific independent verification: NOT_RUN
+- service-specific currentness verification: NOT_RUN
+- human review: NOT_RUN
+- public routing: disabled
+
+The Ordinance 37 shared corpus currently contains 22 Chapter 2 article nodes that were already needed by dayservice, but it lacks 16 homevisit-specific direct articles, including Articles 4–7. The service therefore remains partially ingested until that source corpus is expanded and separately verified.
+
+The purpose of this stage is to prove that a second real service can reuse shared source corpora incrementally without copying the day-service implementation or overstating verification.
