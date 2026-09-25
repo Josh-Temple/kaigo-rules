@@ -1,6 +1,6 @@
 # Kaigo Ops 情報探索 Field Validation v0.1 — 実施準備状況
 
-更新日時: 2026-09-25 JST
+更新日時: 2026-09-26 JST
 
 ## 状態
 
@@ -22,29 +22,42 @@
 
 Machine Retrieval Benchmark の結果だけでは、これらの主張は行わない。
 
-## 現在の代替進行路
+## 現在の機械評価状態
 
-参加者を必要としない `Machine Retrieval Benchmark v0.1` を主な次工程とする。
+参加者を必要としない `Machine Retrieval Benchmark v0.1` はproduction再評価まで完了した。
 
-評価対象:
+同じ固定10問 × 3言い換え = 30 queryで、
 
-1. 固定10問 × 3言い換え = 30 query の production search到達率
-2. 対象questionの検索順位
-3. AI向け context API のquestion / answer / canonical source保持
-4. question別、single/multi-source別の弱点抽出
+- 初回production: search / full pass 10/30 = 33.3%
+- 更新後production: search / top-3 / full pass 30/30 = 100%
+- context integrity: 初回・更新後とも10/10 = 100%
 
-人間評価はこの機械評価と独立しており、後から追加できる。
+となった。
+
+証跡は `machine-retrieval-production-comparison-2026-09-26.md` と対応JSONを参照する。
+
+この結果により、固定benchmark上の検索導線とcontext保持はproductionで再現できた。
+一方、人間の原典到達時間、操作負担、使いやすさは未検証のままであり、Field Validationとは独立している。
+
+参加者を確保できない間も、情報基盤整備、サービス範囲拡張、独立検証、機械的な検索回帰は継続できる。
 
 ## 人間評価を再開する条件
 
 実施する場合のみ、次を確認する。
 
 1. current main の `Validate build` が成功
-2. production `/api/version` が current main SHA と一致
-3. production field-validation gate がPASS
-4. 固定10問のvalidatorがPASS
-5. 少なくとも2人の実参加者を確保
-6. 20試行中は同じproduction SHAを原則維持
+2. production `/api/version` が `deploy-state/kaigo-rules` のSHAと一致
+3. production SHAから実測開始時mainまでに、daily deploy対象パスの未反映差分がない
+4. production field-validation gate がproduction SHA指定でPASS
+5. 固定10問のvalidatorがPASS
+6. 少なくとも2人の実参加者を確保
+7. 20試行中は同じproduction SHAを原則維持
+
+production SHAとcurrent main SHAの完全一致は必須にしない。
+差分が `docs/` 等のproduction非対象ファイルだけなら、production挙動は同一として実測開始を妨げない。
+一方、`app` / `components` / `data` / `scripts` / `public` およびbuild設定等に未反映差分がある場合は開始しない。
+
+実測開始時のmain SHAは `study_main_sha`、実際のproduction SHAは `production_sha` として別々に固定・記録する。
 
 実測データを推定・代替生成しない。
 

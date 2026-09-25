@@ -103,6 +103,17 @@ Kaigo Rules の検索・ナビゲーション・実務質問ページを利用�
 
 これにより、Condition A / B を知った状態で正誤を付けることによる観察者バイアスを減らす。
 
+## productionの固定
+
+人間評価では、実際に参加者が使うproductionを `production_sha` として固定する。
+実測開始時のGitHub mainは `study_main_sha` として別に記録する。
+
+`production_sha` と `study_main_sha` の完全一致は要求しない。
+docs-only等、daily production deployの対象外ファイルしか差分がない場合はproduction挙動が変わらないためである。
+ただしproduction対象パスに未反映差分がある場合は実測を開始しない。
+
+具体的な対象パス、確認方法、途中でSHAが変わった場合のHold手順は `field-validation-runbook-v0.1.md` を正本とする。
+
 ## 実施上限
 
 1試行の上限は600秒（10分）とする。詳細な開始・終了、時間切れ、記録方法は `field-validation-runbook-v0.1.md` を正本とする。
