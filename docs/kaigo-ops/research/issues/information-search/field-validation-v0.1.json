@@ -99,5 +99,7 @@
     }
   ],
   "result_state": "NOT_RUN",
-  "promotion_policy": "Do not publish effectiveness claims until measured attempts are recorded and reviewed."
+  "promotion_policy": "Do not publish human effectiveness claims until measured human attempts are recorded and reviewed. The absence of human participants does not block machine retrieval validation, information-foundation work, or service-scope expansion.",
+  "execution_policy": "OPTIONAL_EXTERNAL_VALIDATION_NOT_RELEASE_BLOCKER",
+  "relation_to_machine_benchmark": "Machine Retrieval Benchmark v0.1 may proceed independently. Human Field Validation remains the only evidence path for claims about human time savings or usability."
 }

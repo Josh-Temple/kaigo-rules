@@ -1,0 +1,321 @@
+{
+  "format_version": 1,
+  "benchmark_id": "kaigo-ops-machine-retrieval-v0.1",
+  "created_at": "2026-09-25",
+  "service_id": "dayservice",
+  "issue": "必要な情報を探すのに時間がかかる",
+  "purpose": "Kaigo Rules productionで、自然な言い換えから固定質問へ到達できるか、かつAI向けcontext APIがcanonical questionとsource_refsを保持して返すかを機械評価する。",
+  "relation_to_human_validation": "COMPLEMENTARY_NOT_SUBSTITUTE",
+  "evaluation": {
+    "case_count": 30,
+    "variants_per_question": 3,
+    "search_metrics": [
+      "search_hit_rate",
+      "top3_hit_rate",
+      "search_rank"
+    ],
+    "context_metrics": [
+      "context_integrity_rate"
+    ],
+    "combined_metric": "full_pass_rate",
+    "interpretation": "人間の探索時間や使いやすさの証拠ではない。検索導線と構造化contextの機械的再現性だけを評価する。"
+  },
+  "cases": [
+    {
+      "id": "MR-01-A",
+      "field_validation_id": "FV-01",
+      "query": "管理者 兼務",
+      "expected_question_slug": "manager-concurrent-role",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-01-B",
+      "field_validation_id": "FV-01",
+      "query": "管理者は介護職員も兼ねられる？",
+      "expected_question_slug": "manager-concurrent-role",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-01-C",
+      "field_validation_id": "FV-01",
+      "query": "デイサービスの管理者が別の仕事をしても大丈夫？",
+      "expected_question_slug": "manager-concurrent-role",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-02-A",
+      "field_validation_id": "FV-02",
+      "query": "生活相談員 人数",
+      "expected_question_slug": "life-counselor-staffing",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-02-B",
+      "field_validation_id": "FV-02",
+      "query": "デイサービスの相談員は何人必要？",
+      "expected_question_slug": "life-counselor-staffing",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-02-C",
+      "field_validation_id": "FV-02",
+      "query": "生活相談員の配置基準を知りたい",
+      "expected_question_slug": "life-counselor-staffing",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-03-A",
+      "field_validation_id": "FV-03",
+      "query": "看護師 常駐",
+      "expected_question_slug": "nurse-staffing",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-interpretation-nurse-linkage",
+        "mhlw-qa"
+      ]
+    },
+    {
+      "id": "MR-03-B",
+      "field_validation_id": "FV-03",
+      "query": "デイサービスの看護師は毎日ずっと必要？",
+      "expected_question_slug": "nurse-staffing",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-interpretation-nurse-linkage",
+        "mhlw-qa"
+      ]
+    },
+    {
+      "id": "MR-03-C",
+      "field_validation_id": "FV-03",
+      "query": "外部の訪問看護の看護師でも配置できますか",
+      "expected_question_slug": "nurse-staffing",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-interpretation-nurse-linkage",
+        "mhlw-qa"
+      ]
+    },
+    {
+      "id": "MR-04-A",
+      "field_validation_id": "FV-04",
+      "query": "食堂 面積",
+      "expected_question_slug": "dining-training-area",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-04-B",
+      "field_validation_id": "FV-04",
+      "query": "機能訓練室は何平米必要？",
+      "expected_question_slug": "dining-training-area",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-04-C",
+      "field_validation_id": "FV-04",
+      "query": "デイサービス 定員 面積",
+      "expected_question_slug": "dining-training-area",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-05-A",
+      "field_validation_id": "FV-05",
+      "query": "運営規程 何を書く",
+      "expected_question_slug": "operation-rules-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-05-B",
+      "field_validation_id": "FV-05",
+      "query": "運営規定の必須項目は？",
+      "expected_question_slug": "operation-rules-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-05-C",
+      "field_validation_id": "FV-05",
+      "query": "デイサービスの運営規程に必要な内容",
+      "expected_question_slug": "operation-rules-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-06-A",
+      "field_validation_id": "FV-06",
+      "query": "重要事項説明書 何を書く",
+      "expected_question_slug": "important-matters-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-interpretation-html"
+      ]
+    },
+    {
+      "id": "MR-06-B",
+      "field_validation_id": "FV-06",
+      "query": "重要事項はホームページに載せる必要がある？",
+      "expected_question_slug": "important-matters-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-interpretation-html"
+      ]
+    },
+    {
+      "id": "MR-06-C",
+      "field_validation_id": "FV-06",
+      "query": "デイサービスの重要事項説明で必要な項目",
+      "expected_question_slug": "important-matters-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-interpretation-html"
+      ]
+    },
+    {
+      "id": "MR-07-A",
+      "field_validation_id": "FV-07",
+      "query": "計画書 書き方",
+      "expected_question_slug": "care-plan-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-07-B",
+      "field_validation_id": "FV-07",
+      "query": "デイサービスの計画書には何を書く？",
+      "expected_question_slug": "care-plan-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-07-C",
+      "field_validation_id": "FV-07",
+      "query": "通所介護計画の記載内容",
+      "expected_question_slug": "care-plan-content",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current"
+      ]
+    },
+    {
+      "id": "MR-08-A",
+      "field_validation_id": "FV-08",
+      "query": "計画書 署名",
+      "expected_question_slug": "care-plan-signature",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-home-care-standards-electronic",
+        "mhlw-2020-consent-review"
+      ]
+    },
+    {
+      "id": "MR-08-B",
+      "field_validation_id": "FV-08",
+      "query": "通所介護計画はサイン必須？",
+      "expected_question_slug": "care-plan-signature",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-home-care-standards-electronic",
+        "mhlw-2020-consent-review"
+      ]
+    },
+    {
+      "id": "MR-08-C",
+      "field_validation_id": "FV-08",
+      "query": "利用者の署名がない計画書でもよい？",
+      "expected_question_slug": "care-plan-signature",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-home-care-standards-electronic",
+        "mhlw-2020-consent-review"
+      ]
+    },
+    {
+      "id": "MR-09-A",
+      "field_validation_id": "FV-09",
+      "query": "毎年 研修",
+      "expected_question_slug": "annual-training",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-home-care-standards-common",
+        "mhlw-2021-interpretation-redline"
+      ]
+    },
+    {
+      "id": "MR-09-B",
+      "field_validation_id": "FV-09",
+      "query": "デイサービスで年1回必要な研修は？",
+      "expected_question_slug": "annual-training",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-home-care-standards-common",
+        "mhlw-2021-interpretation-redline"
+      ]
+    },
+    {
+      "id": "MR-09-C",
+      "field_validation_id": "FV-09",
+      "query": "法定研修の一覧を確認したい",
+      "expected_question_slug": "annual-training",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-current",
+        "mhlw-home-care-standards-common",
+        "mhlw-2021-interpretation-redline"
+      ]
+    },
+    {
+      "id": "MR-10-A",
+      "field_validation_id": "FV-10",
+      "query": "BCP 研修",
+      "expected_question_slug": "bcp-training",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-2021-interpretation-redline"
+      ]
+    },
+    {
+      "id": "MR-10-B",
+      "field_validation_id": "FV-10",
+      "query": "業務継続計画の研修は年何回？",
+      "expected_question_slug": "bcp-training",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-2021-interpretation-redline"
+      ]
+    },
+    {
+      "id": "MR-10-C",
+      "field_validation_id": "FV-10",
+      "query": "BCP訓練と研修の頻度",
+      "expected_question_slug": "bcp-training",
+      "expected_source_ids": [
+        "mhlw-home-care-standards-common",
+        "mhlw-2021-interpretation-redline"
+      ]
+    }
+  ],
+  "result_state": "NOT_RUN",
+  "promotion_policy": "Machine benchmark results may support claims about retrieval reproducibility only. Do not convert them into claims about human time savings, usability, or productivity."
+}
