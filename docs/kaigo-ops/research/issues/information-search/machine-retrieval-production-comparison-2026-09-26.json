@@ -1,0 +1,49 @@
+{
+  "format_version": 1,
+  "comparison_id": "kaigo-ops-machine-retrieval-production-comparison-2026-09-26",
+  "benchmark_id": "kaigo-ops-machine-retrieval-v0.1",
+  "comparison_policy": "Same frozen 30 queries and same context-integrity contract. Percentage-point changes are descriptive machine-retrieval results only.",
+  "baseline": {
+    "observed_at": "2026-09-25T21:40:47+09:00",
+    "production_sha": "eb7ef817e05372b4a38baee353271d7c42f5ed34",
+    "workflow_run_id": 36136235293,
+    "artifact_id": 10864586181,
+    "artifact_digest": "sha256:6f06c7053f14b6eb8f2095c3fbce7b3e34d1c8e01cded8b1f22571e3be4fc66e",
+    "metrics": {
+      "search_hit_rate": 0.3333333333333333,
+      "top3_hit_rate": 0.3333333333333333,
+      "context_integrity_rate": 1,
+      "full_pass_rate": 0.3333333333333333
+    }
+  },
+  "followup": {
+    "observed_at": "2026-09-26T02:09:33+09:00",
+    "production_sha": "530c6ec226e1822472691984bdd6d4074820331d",
+    "workflow_run_id": 36165237901,
+    "artifact_id": 10877841329,
+    "artifact_digest": "sha256:33f702a8d0d04ead2ae68faa4e12ec925314e223ef3ae3b754c53f4bfbacc959",
+    "metrics": {
+      "search_hit_rate": 1,
+      "top3_hit_rate": 1,
+      "context_integrity_rate": 1,
+      "full_pass_rate": 1
+    },
+    "misses": [],
+    "context_integrity_failures": []
+  },
+  "delta_percentage_points": {
+    "search_hit_rate": 66.66666666666667,
+    "top3_hit_rate": 66.66666666666667,
+    "context_integrity_rate": 0,
+    "full_pass_rate": 66.66666666666667
+  },
+  "deployment_schedule_observation": {
+    "nominal_cron_utc": "2026-09-25T12:17:00Z",
+    "nominal_cron_jst": "2026-09-25T21:17:00+09:00",
+    "workflow_created_at_utc": "2026-09-25T17:08:33Z",
+    "workflow_created_at_jst": "2026-09-26T02:08:33+09:00",
+    "observed_start_lag_seconds": 17493,
+    "interpretation": "Observed scheduling delay only. No root cause is asserted by this receipt."
+  },
+  "scope_limit": "This does not establish human time savings, usability, productivity, or legal correctness beyond the benchmark's fixed retrieval/context checks."
+}
