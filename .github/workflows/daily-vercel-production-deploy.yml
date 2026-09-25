@@ -2,8 +2,8 @@ name: Daily conditional Vercel production deploy
 
 on:
   schedule:
-    # 21:00 JST
-    - cron: "0 12 * * *"
+    # 21:17 JST. Avoid the top of the hour because GitHub documents higher schedule-event load and possible delays there.
+    - cron: "17 12 * * *"
   workflow_dispatch:
     inputs:
       force_rules:
