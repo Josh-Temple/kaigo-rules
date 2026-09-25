@@ -21,7 +21,7 @@
     {
       "service_id": "homevisit",
       "label": "訪問介護",
-      "status": "SCOPE_DEFINED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/homevisit.json"
     }
   ],

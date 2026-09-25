@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "service_id": "homevisit",
-  "readiness": "SCOPE_DEFINED_NOT_INGESTED",
+  "readiness": "PARTIAL_INGESTION",
   "routing": {
     "current_mode": "SERVICE_ROOT_RESERVED",
     "legacy_entry_points": [],
@@ -22,5 +22,67 @@
     "content_ingested": false,
     "independent_verification_complete": false,
     "human_review_complete": false
+  },
+  "ingestion_indexes": {
+    "care_insurance_act": "data/services/homevisit/care-insurance-act-index.generated.json"
+  },
+  "ingestion_layers": {
+    "care_insurance_act": {
+      "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
+      "selected_nodes": 106,
+      "note": "訪問介護の定義（第8条第1・2項）と指定居宅サービス共通骨格を、共有介護保険法コーパスから本文複製なしで参照する。"
+    },
+    "ordinance37": {
+      "status": "SHARED_CORPUS_INCOMPLETE_FOR_HOMEVISIT",
+      "present_direct_article_numbers": [
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "19",
+        "21",
+        "26",
+        "27",
+        "30-2",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37-2",
+        "38"
+      ],
+      "missing_direct_article_numbers": [
+        "4",
+        "5",
+        "6",
+        "7",
+        "18",
+        "20",
+        "22",
+        "23",
+        "24",
+        "25",
+        "28",
+        "29",
+        "30",
+        "31",
+        "37",
+        "39"
+      ],
+      "note": "現共有コーパスは通所介護で準用する条文中心。訪問介護固有条文を追加取得するまで層全体のingested扱いにしない。"
+    },
+    "rouki25": {
+      "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED"
+    },
+    "remuneration": {
+      "status": "SCOPE_DEFINED_NOT_INGESTED"
+    }
   }
 }
