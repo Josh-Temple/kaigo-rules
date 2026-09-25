@@ -3,16 +3,59 @@
 
 from __future__ import annotations
 
+import csv
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = ROOT / "docs" / "kaigo-ops" / "research" / "issues" / "information-search" / "field-validation-v0.1.json"
 QUESTIONS = ROOT / "data" / "questions.json"
+RUN_TEMPLATE = ROOT / "docs" / "kaigo-ops" / "research" / "issues" / "information-search" / "field-validation-run-template-v0.1.csv"
+ADJUDICATION_TEMPLATE = ROOT / "docs" / "kaigo-ops" / "research" / "issues" / "information-search" / "field-validation-adjudication-template-v0.1.csv"
+
+RUN_HEADERS = [
+    "attempt_id",
+    "participant_id",
+    "assignment_pattern",
+    "question_id",
+    "question_slug",
+    "condition",
+    "time_to_first_authoritative_source_sec",
+    "time_to_answer_submission_sec",
+    "answer_text",
+    "source_url",
+    "source_locator",
+    "clicks",
+    "query_reformulations",
+    "confidence_1_5",
+    "observer_notes",
+]
+
+ADJUDICATION_HEADERS = [
+    "attempt_id",
+    "question_id",
+    "question_slug",
+    "answer_text",
+    "source_url",
+    "source_locator",
+    "authoritative_source_reached",
+    "answer_correct",
+    "conditions_preserved",
+    "source_correct",
+    "human_correction_sec",
+    "adjudicator_id",
+    "adjudication_notes",
+]
 
 
 def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        return list(reader.fieldnames or []), list(reader)
 
 
 def main() -> None:
@@ -92,12 +135,46 @@ def main() -> None:
             "field validation: result_state must remain NOT_RUN until measured results are separately reviewed"
         )
 
+    run_headers, run_rows = load_csv(RUN_TEMPLATE)
+    if run_headers != RUN_HEADERS:
+        errors.append("field validation: run template headers drifted")
+    if len(run_rows) != 20:
+        errors.append(f"field validation: expected 20 raw attempts, found {len(run_rows)}")
+
+    attempt_ids = [row.get("attempt_id") for row in run_rows]
+    if len(set(attempt_ids)) != len(attempt_ids):
+        errors.append("field validation: duplicate attempt_id in run template")
+
+    conditions = [row.get("condition") for row in run_rows]
+    if conditions.count("A") != 10 or conditions.count("B") != 10:
+        errors.append(
+            f"field validation: expected balanced A/B attempts (10/10), found "
+            f"{conditions.count('A')}/{conditions.count('B')}"
+        )
+
+    adjudication_headers, adjudication_rows = load_csv(ADJUDICATION_TEMPLATE)
+    if adjudication_headers != ADJUDICATION_HEADERS:
+        errors.append("field validation: adjudication template headers drifted")
+    if len(adjudication_rows) != 20:
+        errors.append(
+            f"field validation: expected 20 adjudication attempts, found {len(adjudication_rows)}"
+        )
+
+    adjudication_attempts = [row.get("attempt_id") for row in adjudication_rows]
+    if adjudication_attempts != attempt_ids:
+        errors.append("field validation: adjudication attempts do not match raw attempts")
+
+    forbidden_blind_fields = {"condition", "participant_id", "confidence_1_5"}
+    if forbidden_blind_fields.intersection(adjudication_headers):
+        errors.append("field validation: adjudication template exposes blinded fields")
+
     if errors:
         raise SystemExit("\n".join(errors))
 
     print(
         "Kaigo Ops field validation v0.1: valid "
-        f"({len(rows)} questions / {len(categories)} categories / {multi_source} multi-source)"
+        f"({len(rows)} questions / {len(categories)} categories / {multi_source} multi-source / "
+        f"{len(run_rows)} balanced attempts / blinded adjudication)"
     )
 
 
