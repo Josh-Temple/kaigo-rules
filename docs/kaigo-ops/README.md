@@ -105,6 +105,8 @@ Evidence Review / 方法 / 検証
 - [必要な情報を探すのに時間がかかる](./research/issues/information-search/README.md)
 - [Field Validation v0.1 — 固定10問](./research/issues/information-search/field-validation-v0.1.json)
 - [Field Validation v0.1 — 実施プロトコル](./research/issues/information-search/field-validation-protocol-v0.1.md)
+- [Field Validation v0.1 — blind scoring](./research/issues/information-search/field-validation-scoring-v0.1.md)
+- [Field Validation v0.1 — 採点テンプレート](./research/issues/information-search/field-validation-adjudication-template-v0.1.csv)
 - [Field Validation v0.1 — 実施準備状況 / deployment gate](./research/issues/information-search/field-validation-readiness-2026-09-25.md)
 - [Field Validation v0.1 — 記録テンプレート](./research/issues/information-search/field-validation-run-template-v0.1.csv)
 - [Evidence register](./research/issues/information-search/evidence-register.csv)
