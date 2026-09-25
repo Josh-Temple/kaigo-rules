@@ -226,7 +226,6 @@ def prepare_records(
             adj,
             "human_correction_sec",
             attempt_id,
-            maximum=600.0,
         )
         assert correction_sec is not None
         adjudicator_id = required_text(adj, "adjudicator_id", attempt_id)
@@ -460,6 +459,31 @@ def markdown_report(report: dict[str, Any]) -> str:
         else:
             rendered = "NA" if value is None else f"{value:+.1f}"
         lines.append(f"- {key}: {rendered}")
+
+    lines.extend(
+        [
+            "",
+            "## By complexity",
+            "",
+            "| Complexity | Condition | n | Reach rate | First-source median sec among reached | Submission median sec | Conditions preserved | Source correct |",
+            "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+        ]
+    )
+    for complexity, conditions in report["by_complexity"].items():
+        for condition in ("A", "B"):
+            summary = conditions[condition]
+            lines.append(
+                "| {complexity} | {condition} | {n} | {reach} | {first} | {submit} | {preserved} | {source} |".format(
+                    complexity=complexity,
+                    condition=condition,
+                    n=summary["n"],
+                    reach=fmt_rate(summary["authoritative_source_reach_rate"]),
+                    first=fmt_num(summary["median_first_source_sec_among_reached"]),
+                    submit=fmt_num(summary["median_submission_sec"]),
+                    preserved=fmt_rate(summary["conditions_preserved_rate"]),
+                    source=fmt_rate(summary["source_correct_rate"]),
+                )
+            )
 
     lines.extend(["", "## By question", "", "| ID | Complexity | A reach | B reach | B-A first-source median sec |", "| --- | --- | ---: | ---: | ---: |"])
     for row in report["by_question"]:
