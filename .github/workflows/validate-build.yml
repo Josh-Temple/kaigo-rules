@@ -130,6 +130,34 @@ jobs:
             exit 1
           }
 
+          field_validation_routes=(
+            "/questions/manager-concurrent-role"
+            "/questions/life-counselor-staffing"
+            "/questions/nurse-staffing"
+            "/questions/dining-training-area"
+            "/questions/operation-rules-content"
+            "/questions/important-matters-content"
+            "/questions/care-plan-content"
+            "/questions/care-plan-signature"
+            "/questions/annual-training"
+            "/questions/bcp-training"
+          )
+          for route in "${field_validation_routes[@]}"; do
+            page="$(curl --fail --silent --show-error "http://127.0.0.1:3000$route")" || {
+              echo "field validation route failed: $route"
+              cat /tmp/kaigo-rules-next.log
+              exit 1
+            }
+            echo "$page" | grep -F "FAQ根拠対応を確認済み" >/dev/null || {
+              echo "field validation route is not verified: $route"
+              exit 1
+            }
+            echo "$page" | grep -E "原文を確認|資料を確認|Q&A集を確認" >/dev/null || {
+              echo "field validation route has no authoritative-source link: $route"
+              exit 1
+            }
+          done
+
           curl --fail --silent --show-error http://127.0.0.1:3000/rules/93 \
             | grep -F "看護職員は何人必要ですか？" >/dev/null || {
               echo "legacy FAQ relation ID was not normalized onto /rules/93"
