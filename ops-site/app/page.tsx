@@ -1,5 +1,11 @@
 const issues = [
   {
+    title: "必要な情報を探すのに時間がかかる",
+    body: "制度、通知、事業所内資料など、散らばった情報への到達時間を短くする。",
+    status: "調査公開",
+    href: "/issues/information-search",
+  },
+  {
     title: "記録・文書作成に時間がかかる",
     body: "記録、報告、会議資料など、繰り返し発生する文書作業をどう減らせるか。",
     status: "準備中",
@@ -7,11 +13,6 @@ const issues = [
   {
     title: "職員教育・引き継ぎが属人化する",
     body: "マニュアル、研修、質問対応を、現場で使える形に整理する方法を探る。",
-    status: "準備中",
-  },
-  {
-    title: "必要な情報を探すのに時間がかかる",
-    body: "制度、通知、事業所内資料など、散らばった情報への到達時間を短くする。",
     status: "準備中",
   },
   {
@@ -72,7 +73,10 @@ export default function Home() {
                 <h3>{issue.title}</h3>
                 <p>{issue.body}</p>
               </div>
-              <span className="status">{issue.status}</span>
+              <div className="issueAction">
+                <span className="status">{issue.status}</span>
+                {issue.href ? <a className="issueOpen" href={issue.href}>読む →</a> : null}
+              </div>
             </article>
           ))}
         </div>
