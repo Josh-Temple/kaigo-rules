@@ -1,0 +1,200 @@
+{
+  "format_version": 1,
+  "holdout_id": "kaigo-ops-machine-retrieval-holdout-v0.2",
+  "created_at": "2026-09-25",
+  "service_id": "dayservice",
+  "purpose": "PR #164で追加したalias改善後のcurrent mainについて、v0.1およびdevelopment setとは異なる30queryでcanonical question retrievalを再評価する。",
+  "relation_to_v0_1": "DISJOINT_QUERY_SET_FOR_SAME_10_CANONICAL_QUESTIONS",
+  "relation_to_dev_v0_1": "DISJOINT_QUERY_SET",
+  "construction_policy": [
+    "machine-retrieval-holdout-v0.1.jsonおよびmachine-retrieval-dev-v0.1.jsonと完全一致するqueryを含めない。",
+    "各Field Validation質問につき3query、計30queryを固定する。",
+    "採点後に結果改善を目的としたquery削除・差替え・expected slug変更を行わない。",
+    "このv0.2を今後の検索調整に使った場合、以後は回帰セットとして扱い、次の独立評価には新versionを作る。"
+  ],
+  "independence_limit": "NOT_FULLY_BLINDED: v0.2はPR #164のalias改善後に作成され、current search designを把握した同一セッションで評価した。v0.1・development setとはqueryが分離されているが、完全なblind evaluator由来ではない。",
+  "evaluation_metric": "expected_question_slugがrankQuestionMatchesのtop 3に入る割合",
+  "case_count": 30,
+  "cases": [
+    {
+      "id": "H2-01-A",
+      "field_validation_id": "FV-01",
+      "query": "デイの管理者が介護業務を手伝っても問題ないですか",
+      "expected_question_slug": "manager-concurrent-role"
+    },
+    {
+      "id": "H2-01-B",
+      "field_validation_id": "FV-01",
+      "query": "管理者は別の事業所にも勤務できますか",
+      "expected_question_slug": "manager-concurrent-role"
+    },
+    {
+      "id": "H2-01-C",
+      "field_validation_id": "FV-01",
+      "query": "管理者は専従でなければいけませんか",
+      "expected_question_slug": "manager-concurrent-role"
+    },
+    {
+      "id": "H2-02-A",
+      "field_validation_id": "FV-02",
+      "query": "相談員を配置する時間の基準はどうなっていますか",
+      "expected_question_slug": "life-counselor-staffing"
+    },
+    {
+      "id": "H2-02-B",
+      "field_validation_id": "FV-02",
+      "query": "生活相談員は営業中ずっと必要ですか",
+      "expected_question_slug": "life-counselor-staffing"
+    },
+    {
+      "id": "H2-02-C",
+      "field_validation_id": "FV-02",
+      "query": "生活相談員は常時一人必要なのでしょうか",
+      "expected_question_slug": "life-counselor-staffing"
+    },
+    {
+      "id": "H2-03-A",
+      "field_validation_id": "FV-03",
+      "query": "デイの看護職員を訪問看護との連携で確保できますか",
+      "expected_question_slug": "nurse-staffing"
+    },
+    {
+      "id": "H2-03-B",
+      "field_validation_id": "FV-03",
+      "query": "看護師はサービス提供中ずっといる必要がありますか",
+      "expected_question_slug": "nurse-staffing"
+    },
+    {
+      "id": "H2-03-C",
+      "field_validation_id": "FV-03",
+      "query": "看護職員の最低配置数を確認したい",
+      "expected_question_slug": "nurse-staffing"
+    },
+    {
+      "id": "H2-04-A",
+      "field_validation_id": "FV-04",
+      "query": "食事スペースと機能訓練の場所は兼ねてもいいですか",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "H2-04-B",
+      "field_validation_id": "FV-04",
+      "query": "訓練室の必要面積を教えてください",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "H2-04-C",
+      "field_validation_id": "FV-04",
+      "query": "利用定員に応じた食堂と訓練室の広さは？",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "H2-05-A",
+      "field_validation_id": "FV-05",
+      "query": "運営規程には営業日や利用定員まで書きますか",
+      "expected_question_slug": "operation-rules-content"
+    },
+    {
+      "id": "H2-05-B",
+      "field_validation_id": "FV-05",
+      "query": "デイの運営規程で決めておく事項を知りたい",
+      "expected_question_slug": "operation-rules-content"
+    },
+    {
+      "id": "H2-05-C",
+      "field_validation_id": "FV-05",
+      "query": "運営規程の記載事項はいくつありますか",
+      "expected_question_slug": "operation-rules-content"
+    },
+    {
+      "id": "H2-06-A",
+      "field_validation_id": "FV-06",
+      "query": "サービス開始前に利用者へ説明する重要な事項は？",
+      "expected_question_slug": "important-matters-content"
+    },
+    {
+      "id": "H2-06-B",
+      "field_validation_id": "FV-06",
+      "query": "重要事項の掲示はネット掲載も必要ですか",
+      "expected_question_slug": "important-matters-content"
+    },
+    {
+      "id": "H2-06-C",
+      "field_validation_id": "FV-06",
+      "query": "重要事項説明の中身を確認したい",
+      "expected_question_slug": "important-matters-content"
+    },
+    {
+      "id": "H2-07-A",
+      "field_validation_id": "FV-07",
+      "query": "デイの計画にはどんな目標を書くのですか",
+      "expected_question_slug": "care-plan-content"
+    },
+    {
+      "id": "H2-07-B",
+      "field_validation_id": "FV-07",
+      "query": "通所介護計画の具体的なサービス内容の書き方を知りたい",
+      "expected_question_slug": "care-plan-content"
+    },
+    {
+      "id": "H2-07-C",
+      "field_validation_id": "FV-07",
+      "query": "ケアプランがある利用者の通所介護計画はどう作る？",
+      "expected_question_slug": "care-plan-content"
+    },
+    {
+      "id": "H2-08-A",
+      "field_validation_id": "FV-08",
+      "query": "計画の同意を紙の署名でもらわないといけませんか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "H2-08-B",
+      "field_validation_id": "FV-08",
+      "query": "利用者の同意方法はサインに限られますか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "H2-08-C",
+      "field_validation_id": "FV-08",
+      "query": "計画書への署名がない場合はどう扱いますか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "H2-09-A",
+      "field_validation_id": "FV-09",
+      "query": "通所介護で毎年やる研修を一通り教えて",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "H2-09-B",
+      "field_validation_id": "FV-09",
+      "query": "職員向けに定期開催が必要な研修は何がありますか",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "H2-09-C",
+      "field_validation_id": "FV-09",
+      "query": "感染症・虐待防止・BCPの研修は年何回ですか",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "H2-10-A",
+      "field_validation_id": "FV-10",
+      "query": "業務継続計画の職員研修はどの頻度ですか",
+      "expected_question_slug": "bcp-training"
+    },
+    {
+      "id": "H2-10-B",
+      "field_validation_id": "FV-10",
+      "query": "BCP訓練は年に何度必要ですか",
+      "expected_question_slug": "bcp-training"
+    },
+    {
+      "id": "H2-10-C",
+      "field_validation_id": "FV-10",
+      "query": "BCPの研修と訓練の回数を確認したい",
+      "expected_question_slug": "bcp-training"
+    }
+  ]
+}
