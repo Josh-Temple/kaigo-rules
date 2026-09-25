@@ -61,6 +61,7 @@ jobs:
             "/rules"
             "/rules/93"
             "/rules/99"
+            "/questions/nurse-staffing"
             "/api/context/services/dayservice/questions/nurse-staffing"
             "/notices"
             "/notices/review"
@@ -110,6 +111,24 @@ jobs:
               exit 1
             fi
           done
+
+          faq_page="$(curl --fail --silent --show-error http://127.0.0.1:3000/questions/nurse-staffing)"
+          echo "$faq_page" | grep -F "FAQ根拠対応を確認済み" >/dev/null || {
+            echo "FAQ verification scope label missing"
+            exit 1
+          }
+          echo "$faq_page" | grep -F "根拠資料全体の確認状態は別です" >/dev/null || {
+            echo "FAQ verification scope explanation missing"
+            exit 1
+          }
+          echo "$faq_page" | grep -F "基準省令DBで現在の条文と確認状態を見る" >/dev/null || {
+            echo "FAQ canonical ordinance link missing"
+            exit 1
+          }
+          echo "$faq_page" | grep -F "解釈通知DBの再構成・現行性を見る" >/dev/null || {
+            echo "FAQ notice currentness link missing"
+            exit 1
+          }
 
           curl --fail --silent --show-error http://127.0.0.1:3000/rules/93 \
             | grep -F "看護職員は何人必要ですか？" >/dev/null || {
