@@ -25,8 +25,23 @@ def main() -> None:
 
     if benchmark.get("format_version") != 1:
         errors.append("machine retrieval: unsupported format_version")
-    if benchmark.get("result_state") != "NOT_RUN":
-        errors.append("machine retrieval: result_state must remain NOT_RUN until a production run is reviewed")
+    result_state = benchmark.get("result_state")
+    if result_state not in {"NOT_RUN", "BASELINE_RECORDED"}:
+        errors.append("machine retrieval: unsupported result_state")
+    if result_state == "BASELINE_RECORDED":
+        baseline = benchmark.get("baseline") or {}
+        production_sha = str(baseline.get("production_sha") or "")
+        if len(production_sha) != 40 or any(ch not in "0123456789abcdef" for ch in production_sha):
+            errors.append("machine retrieval: recorded baseline requires a full lowercase production SHA")
+        metrics = baseline.get("metrics") or {}
+        for name in ("search_hit_rate", "top3_hit_rate", "context_integrity_rate", "full_pass_rate"):
+            value = metrics.get(name)
+            if not isinstance(value, (int, float)) or not 0 <= value <= 1:
+                errors.append(f"machine retrieval: invalid baseline metric {name}")
+        case_ids = {row.get("id") for row in benchmark.get("cases", [])}
+        miss_ids = baseline.get("search_miss_ids") or []
+        if len(set(miss_ids)) != len(miss_ids) or not set(miss_ids).issubset(case_ids):
+            errors.append("machine retrieval: baseline search_miss_ids are invalid")
     if benchmark.get("relation_to_human_validation") != "COMPLEMENTARY_NOT_SUBSTITUTE":
         errors.append("machine retrieval: human-validation relationship drifted")
 
