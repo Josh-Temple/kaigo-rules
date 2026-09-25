@@ -1,0 +1,199 @@
+{
+  "format_version": 1,
+  "holdout_id": "kaigo-ops-machine-retrieval-holdout-v0.1",
+  "created_at": "2026-09-25",
+  "service_id": "dayservice",
+  "purpose": "PR #162で改善した実務質問検索が、既存の固定30queryとは異なる自然文・表記揺れ・余分語を含むqueryにも一般化するかを評価する。",
+  "relation_to_machine_retrieval_v0_1": "DISJOINT_QUERY_HOLDOUT_FOR_SAME_10_CANONICAL_QUESTIONS",
+  "construction_policy": [
+    "既存machine-retrieval-benchmark-v0.1.jsonの30queryと完全一致するqueryは含めない。",
+    "各Field Validation質問につき3query、計30queryを固定する。",
+    "最初の採点後に、結果改善を目的としたqueryの削除・差替え・expected slug変更を行わない。",
+    "評価結果を検索ロジックの調整に使った後は、このv0.1を未使用holdoutとして扱わず、次の独立評価では別versionを作る。"
+  ],
+  "independence_limit": "NOT_FULLY_BLINDED: queryはPR #162とは別に採点前固定したが、作成セッションはcurrent search implementationを確認済み。PR #162の調整には未使用だが、完全なblind evaluator由来ではない。",
+  "evaluation_metric": "expected_question_slugがrankQuestionMatchesのtop 3に入る割合",
+  "case_count": 30,
+  "cases": [
+    {
+      "id": "HO-01-A",
+      "field_validation_id": "FV-01",
+      "query": "通所介護の管理者は現場の介護にも入れますか",
+      "expected_question_slug": "manager-concurrent-role"
+    },
+    {
+      "id": "HO-01-B",
+      "field_validation_id": "FV-01",
+      "query": "管理者が別事業所の仕事を兼ねるのは可能ですか",
+      "expected_question_slug": "manager-concurrent-role"
+    },
+    {
+      "id": "HO-01-C",
+      "field_validation_id": "FV-01",
+      "query": "管理者を専任にしないとだめ？",
+      "expected_question_slug": "manager-concurrent-role"
+    },
+    {
+      "id": "HO-02-A",
+      "field_validation_id": "FV-02",
+      "query": "生活相談員って1人いれば足りますか",
+      "expected_question_slug": "life-counselor-staffing"
+    },
+    {
+      "id": "HO-02-B",
+      "field_validation_id": "FV-02",
+      "query": "相談員の必要な配置時間を教えて",
+      "expected_question_slug": "life-counselor-staffing"
+    },
+    {
+      "id": "HO-02-C",
+      "field_validation_id": "FV-02",
+      "query": "提供時間中ずっと生活相談員がいないといけない？",
+      "expected_question_slug": "life-counselor-staffing"
+    },
+    {
+      "id": "HO-03-A",
+      "field_validation_id": "FV-03",
+      "query": "看護職員は営業時間ずっと事業所にいないとだめですか",
+      "expected_question_slug": "nurse-staffing"
+    },
+    {
+      "id": "HO-03-B",
+      "field_validation_id": "FV-03",
+      "query": "病院と連携して看護師を確保する形でもいい？",
+      "expected_question_slug": "nurse-staffing"
+    },
+    {
+      "id": "HO-03-C",
+      "field_validation_id": "FV-03",
+      "query": "看護職員の配置人数の基準は？",
+      "expected_question_slug": "nurse-staffing"
+    },
+    {
+      "id": "HO-04-A",
+      "field_validation_id": "FV-04",
+      "query": "食堂と訓練スペースを一緒にしてもいい？",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "HO-04-B",
+      "field_validation_id": "FV-04",
+      "query": "利用者1人あたり必要な広さは何平方メートル？",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "HO-04-C",
+      "field_validation_id": "FV-04",
+      "query": "定員20人のデイなら食堂と機能訓練室は何㎡必要？",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "HO-05-A",
+      "field_validation_id": "FV-05",
+      "query": "通所介護の運営規程に入れるべき事項を確認したい",
+      "expected_question_slug": "operation-rules-content"
+    },
+    {
+      "id": "HO-05-B",
+      "field_validation_id": "FV-05",
+      "query": "運営規程で定めることは何項目ありますか",
+      "expected_question_slug": "operation-rules-content"
+    },
+    {
+      "id": "HO-05-C",
+      "field_validation_id": "FV-05",
+      "query": "営業時間や定員は運営規程に書く必要がありますか",
+      "expected_question_slug": "operation-rules-content"
+    },
+    {
+      "id": "HO-06-A",
+      "field_validation_id": "FV-06",
+      "query": "重要事項説明書に載せる内容を確認したい",
+      "expected_question_slug": "important-matters-content"
+    },
+    {
+      "id": "HO-06-B",
+      "field_validation_id": "FV-06",
+      "query": "重要事項は事業所内に掲示だけでいいですか",
+      "expected_question_slug": "important-matters-content"
+    },
+    {
+      "id": "HO-06-C",
+      "field_validation_id": "FV-06",
+      "query": "利用開始前に説明する事項は何ですか",
+      "expected_question_slug": "important-matters-content"
+    },
+    {
+      "id": "HO-07-A",
+      "field_validation_id": "FV-07",
+      "query": "通所介護計画には目標とサービス内容を書くの？",
+      "expected_question_slug": "care-plan-content"
+    },
+    {
+      "id": "HO-07-B",
+      "field_validation_id": "FV-07",
+      "query": "デイの個別計画には何を盛り込むべき？",
+      "expected_question_slug": "care-plan-content"
+    },
+    {
+      "id": "HO-07-C",
+      "field_validation_id": "FV-07",
+      "query": "居宅サービス計画がある場合の通所介護計画の作り方は？",
+      "expected_question_slug": "care-plan-content"
+    },
+    {
+      "id": "HO-08-A",
+      "field_validation_id": "FV-08",
+      "query": "計画への同意は署名じゃないと認められませんか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "HO-08-B",
+      "field_validation_id": "FV-08",
+      "query": "通所介護計画に押印は必要ですか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "HO-08-C",
+      "field_validation_id": "FV-08",
+      "query": "利用者から口頭同意だけでも計画は有効ですか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "HO-09-A",
+      "field_validation_id": "FV-09",
+      "query": "デイサービスで定期的にやる研修をまとめて知りたい",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "HO-09-B",
+      "field_validation_id": "FV-09",
+      "query": "BCP以外に年1回以上の研修はありますか",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "HO-09-C",
+      "field_validation_id": "FV-09",
+      "query": "感染症や虐待防止の研修頻度を確認したい",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "HO-10-A",
+      "field_validation_id": "FV-10",
+      "query": "BCPの教育と訓練はそれぞれ何回必要ですか",
+      "expected_question_slug": "bcp-training"
+    },
+    {
+      "id": "HO-10-B",
+      "field_validation_id": "FV-10",
+      "query": "新しく採用した職員にもBCP研修は必要ですか",
+      "expected_question_slug": "bcp-training"
+    },
+    {
+      "id": "HO-10-C",
+      "field_validation_id": "FV-10",
+      "query": "業務継続の訓練は毎年やる必要がありますか",
+      "expected_question_slug": "bcp-training"
+    }
+  ]
+}
