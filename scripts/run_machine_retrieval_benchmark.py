@@ -9,6 +9,7 @@ import json
 import urllib.error
 import urllib.parse
 import urllib.request
+import re
 from collections import defaultdict
 from html.parser import HTMLParser
 from pathlib import Path
@@ -16,6 +17,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BENCHMARK = ROOT / "docs" / "kaigo-ops" / "research" / "issues" / "information-search" / "machine-retrieval-benchmark-v0.1.json"
+SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 
 
 class LinkParser(HTMLParser):
@@ -48,6 +50,31 @@ def fetch(url: str, timeout: float) -> tuple[int, str]:
             return response.status, response.read().decode("utf-8", errors="replace")
     except urllib.error.HTTPError as exc:
         return exc.code, exc.read().decode("utf-8", errors="replace")
+
+
+def get_production_version(base_url: str, timeout: float) -> dict[str, Any]:
+    status, body = fetch(f"{base_url.rstrip('/')}/api/version", timeout)
+    if status != 200:
+        raise RuntimeError(f"/api/version returned HTTP {status}")
+    try:
+        payload = json.loads(body)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"/api/version returned invalid JSON: {exc}") from exc
+    commit_sha = str(payload.get("commit_sha") or "").strip()
+    if not SHA_RE.fullmatch(commit_sha):
+        raise RuntimeError(f"/api/version returned invalid commit_sha: {commit_sha!r}")
+    return payload
+
+
+def require_expected_sha(actual_sha: str, expected_sha: str | None) -> None:
+    if expected_sha is None:
+        return
+    if not SHA_RE.fullmatch(expected_sha):
+        raise ValueError("--expected-sha must be a full 40-character lowercase Git SHA")
+    if actual_sha != expected_sha:
+        raise RuntimeError(
+            f"production SHA mismatch: expected {expected_sha}, got {actual_sha}"
+        )
 
 
 def question_link_order(body: str) -> list[str]:
@@ -130,8 +157,15 @@ def check_context(
     return result
 
 
-def run(benchmark: dict[str, Any], base_url: str, timeout: float) -> dict[str, Any]:
+def run(
+    benchmark: dict[str, Any],
+    base_url: str,
+    timeout: float,
+    expected_sha: str | None = None,
+) -> dict[str, Any]:
     base_url = base_url.rstrip("/")
+    production_version = get_production_version(base_url, timeout)
+    require_expected_sha(production_version["commit_sha"], expected_sha)
     context_cache: dict[str, dict[str, Any]] = {}
     case_results: list[dict[str, Any]] = []
 
@@ -189,6 +223,7 @@ def run(benchmark: dict[str, Any], base_url: str, timeout: float) -> dict[str, A
     return {
         "benchmark_id": benchmark["benchmark_id"],
         "base_url": base_url,
+        "production_version": production_version,
         "case_count": total,
         "question_count": len(context_cache),
         "interpretation": benchmark["evaluation"]["interpretation"],
@@ -209,10 +244,16 @@ def main() -> None:
     parser.add_argument("--benchmark", type=Path, default=DEFAULT_BENCHMARK)
     parser.add_argument("--base-url", default="https://kaigo-rules.vercel.app")
     parser.add_argument("--timeout-seconds", type=float, default=20.0)
+    parser.add_argument("--expected-sha")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
 
-    report = run(load_json(args.benchmark), args.base_url, args.timeout_seconds)
+    report = run(
+        load_json(args.benchmark),
+        args.base_url,
+        args.timeout_seconds,
+        expected_sha=args.expected_sha,
+    )
     rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     if args.output:
         args.output.write_text(rendered, encoding="utf-8")
