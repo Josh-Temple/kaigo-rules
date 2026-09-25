@@ -19,6 +19,7 @@ const statusLabel = (value?: string) => {
     NOT_STARTED: "未実施",
     IMPORTED_NEEDS_HUMAN_CHECK: "確認待ち",
     INGESTED_UNREVIEWED: "確認待ち",
+    PARTIAL: "一部実施",
   };
   return value ? labels[value] || value : "—";
 };
@@ -30,9 +31,9 @@ export default function VerificationSummary({ layerId }: { layerId: string }) {
   }
 
   return (
-    <section className="section verification-summary" aria-label="確認状態">
+    <section className="section verification-summary" aria-label="データ層全体の確認状態">
       <p className="eyebrow">VERIFICATION STATE</p>
-      <h2>確認状態</h2>
+      <h2>データ層全体の確認状態</h2>
       <dl className="rule-meta">
         <div>
           <dt>本文の独立確認</dt>
@@ -48,7 +49,7 @@ export default function VerificationSummary({ layerId }: { layerId: string }) {
         </div>
       </dl>
       <p className="meta">
-        独立確認は、一次資料からの再取得・再構成による照合結果です。人手確認とは別に管理しています。
+        独立確認は、一次資料からの再取得・再構成による照合結果です。人手確認とは別に管理しています。個別項目の人手確認状況は、ページ内の表示を確認してください。
       </p>
     </section>
   );

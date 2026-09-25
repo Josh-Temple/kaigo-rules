@@ -1,3 +1,4 @@
+import VerificationSummary from "../../../components/verification-summary";
 import nodesData from "../../../data/remuneration-delegated-nodes.json";
 import relationsData from "../../../data/remuneration-delegated-relations.json";
 import metaData from "../../../data/remuneration-delegated-meta.json";
@@ -31,6 +32,8 @@ export default function FeeCriteriaPage(){
         <strong>機械取込済み・人手確認待ち</strong><br/>
         現行公式HTMLから直接抽出していますが、個々の区切り・参照関係は人手確認前です。
       </div>
+
+      <VerificationSummary layerId="remuneration-notices" />
       <section className="rules-stats">
         <div><strong>{meta.counts?.nodes || nodes.length}</strong><span>ノード</span></div>
         <div><strong>{meta.counts?.notice27_nodes || 0}</strong><span>告示27号</span></div>

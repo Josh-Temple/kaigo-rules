@@ -1,3 +1,4 @@
+import VerificationSummary from "../../../components/verification-summary";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import nodesData from "../../../data/remuneration-current-skeleton.json";
@@ -84,6 +85,8 @@ export default async function FeeDetailPage({ params }: { params: Promise<{ node
           厚生労働省の現行HTMLから機械抽出した本文です。単位数や率を含め、まだ人手による原文照合は完了していません。
         </div>
       )}
+
+      <VerificationSummary layerId="remuneration-notices" />
 
       <section className="section">
         <h2>現行公式本文</h2>

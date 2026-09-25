@@ -1,3 +1,4 @@
+import VerificationSummary from "../../../components/verification-summary";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import nodesData from "../../../data/ordinance37-nodes.json";
@@ -129,6 +130,8 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
         <strong>取込済み・人手確認待ち</strong><br />
         e-Gov現行XMLから取得した本文です。構造検証は済んでいますが、この条文を人手で原文照合したという意味ではありません。
       </div>
+
+      <VerificationSummary layerId="ordinance37" />
 
       {articleNode.applicable_via ? (
         <section className="rule-application-note">

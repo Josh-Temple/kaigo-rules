@@ -93,9 +93,13 @@ jobs:
 
           verification_routes=(
             "/law"
+            "/law/41"
             "/rules"
+            "/rules/93"
             "/notices"
             "/fees"
+            "/fees/standard"
+            "/fees/criteria"
             "/fees/guidance"
             "/fees/unit-price"
             "/qa"
