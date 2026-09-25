@@ -1,6 +1,5 @@
 import Link from "next/link";
 import QuestionSearch from "../components/question-search";
-import { getDefaultService } from "../lib/service-catalog";
 
 const foundationLinks = [
   { label: "介護保険法", detail: "制度の定義・指定・給付", href: "/law" },
@@ -10,17 +9,22 @@ const foundationLinks = [
   { label: "国Q&A", detail: "個別論点の行政解釈", href: "/qa" },
 ];
 
-export default function HomePage() {
-  const service = getDefaultService();
+const targetScopes = [
+  "居宅サービス（対応する介護予防サービスを含む）",
+  "地域密着型サービス（対応する地域密着型介護予防サービスを含む）",
+  "居宅介護支援",
+  "介護予防支援",
+];
 
+export default function HomePage() {
   return (
     <>
       <section className="hero foundation-hero">
-        <p className="eyebrow">{service.label} / 制度情報基盤</p>
+        <p className="eyebrow">介護制度 / 情報基盤</p>
         <h1>介護制度を、<br />根拠からたどれるように。</h1>
         <p className="lead">
-          法令、基準省令、解釈通知、報酬、国Q&Aを分断せず、
-          {service.label}の実務で必要な範囲を関係付けて整理します。
+          介護保険法、基準省令、解釈通知、報酬、国Q&Aを分断せず、
+          サービスごとに関係付けて整理します。現在は通所介護から公開範囲を広げています。
         </p>
         <div className="entry-links foundation-entry-links">
           <Link className="entry-row" href="/overview">
@@ -54,6 +58,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="home-section">
+        <p className="eyebrow">INITIAL SCOPE</p>
+        <h2>在宅・地域生活を支えるサービスから整備</h2>
+        <p className="lead">
+          初期対象は、居宅系・地域密着型とケアマネジメントです。施設サービスは初期対象外とし、
+          まず事業所数が多く、複数の制度資料を横断して確認する場面の多い領域を優先します。
+        </p>
+        <div className="scope-list">
+          {targetScopes.map((scope) => <span key={scope}>{scope}</span>)}
+        </div>
+        <p className="meta">
+          現在公開している制度データは通所介護が中心です。未整備のサービスを確認済みとして表示したり、
+          通所介護の検証結果を他サービスへ流用したりしません。
+        </p>
+      </section>
+
       <section className="home-section practical-entry">
         <p className="eyebrow">CURATED PRACTICAL QUESTIONS</p>
         <h2>実務でよく迷う論点</h2>
@@ -68,8 +88,8 @@ export default function HomePage() {
       <section className="home-section">
         <div className="entry-links">
           <Link className="entry-row" href="/start">
-            <span>これから通所介護を始めたい</span>
-            <small>開設準備の順番を確認する →</small>
+            <span>通所介護の開設準備を見る</span>
+            <small>現在公開中の開設ガイド →</small>
           </Link>
         </div>
       </section>
