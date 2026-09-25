@@ -1,6 +1,6 @@
 # Kaigo Ops 情報探索 Field Validation v0.1 — 実施準備状況
 
-更新日時: 2026-09-25 JST
+更新日時: 2026-09-26 JST
 
 ## 状態
 
@@ -40,11 +40,18 @@ Machine Retrieval Benchmark の結果だけでは、これらの主張は行わ�
 実施する場合のみ、次を確認する。
 
 1. current main の `Validate build` が成功
-2. production `/api/version` が current main SHA と一致
-3. production field-validation gate がPASS
-4. 固定10問のvalidatorがPASS
-5. 少なくとも2人の実参加者を確保
-6. 20試行中は同じproduction SHAを原則維持
+2. production `/api/version` が `deploy-state/kaigo-rules` のSHAと一致
+3. production SHAから実測開始時mainまでに、daily deploy対象パスの未反映差分がない
+4. production field-validation gate がproduction SHA指定でPASS
+5. 固定10問のvalidatorがPASS
+6. 少なくとも2人の実参加者を確保
+7. 20試行中は同じproduction SHAを原則維持
+
+production SHAとcurrent main SHAの完全一致は必須にしない。
+差分が `docs/` 等のproduction非対象ファイルだけなら、production挙動は同一として実測開始を妨げない。
+一方、`app` / `components` / `data` / `scripts` / `public` およびbuild設定等に未反映差分がある場合は開始しない。
+
+実測開始時のmain SHAは `study_main_sha`、実際のproduction SHAは `production_sha` として別々に固定・記録する。
 
 実測データを推定・代替生成しない。
 
