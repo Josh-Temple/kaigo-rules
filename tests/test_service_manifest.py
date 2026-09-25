@@ -149,10 +149,26 @@ class ServiceManifestTests(unittest.TestCase):
             item for item in manifest["services"]
             if item["service_id"] == "homevisit"
         )
-        self.assertEqual("SCOPE_DEFINED_NOT_INGESTED", descriptor["status"])
+        self.assertEqual("PARTIAL_INGESTION", descriptor["status"])
         self.assertFalse(homevisit["routing"]["future_service_base_enabled"])
         self.assertFalse(homevisit["publication_gate"]["public_routes_enabled"])
         self.assertFalse(homevisit["publication_gate"]["content_ingested"])
+        self.assertEqual(
+            "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
+            homevisit["ingestion_layers"]["care_insurance_act"]["status"],
+        )
+        index = json.loads(
+            (
+                root
+                / "data/services/homevisit/care-insurance-act-index.generated.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(106, index["counts"]["selected_nodes_total"])
+        self.assertFalse(index["assurance"]["legal_text_duplicated"])
+        self.assertEqual(
+            "NOT_RUN",
+            index["assurance"]["service_specific_independent_verification"],
+        )
         self.assertFalse(
             homevisit["publication_gate"]["independent_verification_complete"]
         )
