@@ -146,9 +146,22 @@ URLだけでなく、第三者が同じ根拠を再確認できる粒度で残�
 ## 20試行終了後
 
 1. raw run dataを固定する。
-2. condition・時間・clicks・query_reformulations・confidenceを含まないadjudication用データを作る。
-3. `field-validation-scoring-v0.1.md` と
+2. `scripts/prepare_kaigo_ops_field_adjudication.py` で、raw run dataからblind adjudication CSVを生成する。手作業で列を削除・転記しない。
+3. 生成CSVに `condition`・時間・clicks・query_reformulations・confidence・observer_notes が含まれていないことを確認する。
+4. `field-validation-scoring-v0.1.md` と
    `field-validation-scoring-calibration-v0.1.md` に従って採点する。
-4. 全採点終了後にのみraw dataと結合する。
-5. `scripts/analyze_kaigo_ops_field_validation.py` で集計する。
-6. 小標本のため、スクリプトは記述統計を出すだけで、成功判定や有意差判定を自動で行わない。
+5. 全採点終了後にのみraw dataと結合する。
+6. `scripts/analyze_kaigo_ops_field_validation.py` で集計する。
+7. 小標本のため、スクリプトは記述統計を出すだけで、成功判定や有意差判定を自動で行わない。
+
+### blind adjudication CSV の生成
+
+実測後にGoogle Sheetの「記録」をCSVとして保存し、次を実行する。
+
+```bash
+python scripts/prepare_kaigo_ops_field_adjudication.py \
+  --run /path/to/field-validation-run.csv \
+  --output /path/to/field-validation-adjudication-blind.csv
+```
+
+このスクリプトは、固定20試行の attempt / question 対応とraw schemaを検証し、採点に必要な6列だけを転記する。採点フラグ・adjudicator欄は空欄のまま出力する。
