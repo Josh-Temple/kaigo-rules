@@ -31,6 +31,9 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Validate and build
         run: npm run build
+      - name: Compile production gate verifier
+        run: python -m py_compile scripts/verify_field_validation_production.py
+
       - name: Smoke test key routes
         shell: bash
         run: |
@@ -55,6 +58,7 @@ jobs:
             "/"
             "/overview"
             "/search"
+            "/api/version"
             "/start"
             "/qa"
             "/law"

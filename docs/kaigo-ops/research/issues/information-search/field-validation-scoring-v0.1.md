@@ -38,6 +38,8 @@ Condition A / B の違いを見た採点バイアスを減らすため、探索�
 
 採点開始前に `scripts/validate_kaigo_ops_field_validation.py` が成功していることを確認する。
 
+判定境界のキャリブレーション例は `field-validation-scoring-calibration-v0.1.md` を参照する。これは判定項目や成功条件を変更せず、既存基準の適用方法を固定するための補助資料とする。
+
 ## 判定項目
 
 ### authoritative_source_reached
