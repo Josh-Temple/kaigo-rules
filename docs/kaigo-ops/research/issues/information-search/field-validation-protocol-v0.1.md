@@ -99,8 +99,8 @@ Kaigo Rules の検索・ナビゲーション・実務質問ページを利用�
 
 1. `time_to_first_authoritative_source_sec`
    - 正しい一次資料または公的資料へ最初に到達するまでの秒数
-2. `time_to_correct_answer_sec`
-   - 必要な条件を落とさず、回答を確定できるまでの秒数
+2. `time_to_answer_submission_sec`
+   - 回答者が回答文と根拠を確定して提出するまでの秒数
 3. `answer_text`
    - 回答者が確定した回答そのもの
 4. `source_url`
