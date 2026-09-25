@@ -1,7 +1,7 @@
 # Kaigo Ops 情報探索 Field Validation v0.1
 
 作成日: 2026-09-25  
-状態: Protocol fixed / result NOT_RUN
+状態: Protocol fixed / result NOT_RUN / optional external validation
 
 ## 目的
 
@@ -12,6 +12,14 @@ Kaigo Ops の最初の Deep Issue「必要な情報を探すのに時間がか�
 を小規模に検証する。
 
 AI導入の有無を評価する試験ではない。最初は、現在の一般的な原典探索と Kaigo Rules を使った探索を比較する。
+
+## プロジェクト上の位置づけ
+
+この人間評価は、2026-09-25以降、サイト改善やサービス範囲拡張の必須ゲートにはしない。
+参加者を確保できる場合に行う外部妥当性確認として保持する。
+
+参加者を確保できない間は、`Machine Retrieval Benchmark v0.1` を独立して進める。
+ただし機械評価の結果を、人間の探索時間・使いやすさ・生産性の効果へ読み替えない。
 
 ## 固定した質問
 
