@@ -1,3 +1,4 @@
+import VerificationSummary from "../../../components/verification-summary";
 import Link from "next/link";
 import {notFound} from "next/navigation";
 import nodesData from "../../../data/care-insurance-act-nodes.json";
@@ -44,6 +45,8 @@ export default async function LawArticlePage({params}:{params:Promise<{article:s
       <strong>{reviewed?"人手確認済み":"e-Gov現行XMLから取込済み・人手確認待ち"}</strong><br/>
       法令本文の取込と、基準省令・報酬告示等への関係確認は別に管理します。
     </div>
+
+      <VerificationSummary layerId="care-insurance-act" />
     <section className="section">
       <h2>条文</h2>
       <div className="rule-tree">
