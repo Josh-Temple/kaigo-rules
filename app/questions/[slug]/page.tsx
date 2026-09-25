@@ -3,14 +3,27 @@ import { notFound } from "next/navigation";
 import questionsData from "../../../data/questions.json";
 import sourcesData from "../../../data/sources.json";
 import ruleNodesData from "../../../data/rule-nodes.json";
+import currentRuleNodesData from "../../../data/ordinance37-nodes.json";
 import noticeNodesData from "../../../data/notice-nodes.json";
 import qaItemsData from "../../../data/qa-items.json";
 
 const questions = questionsData as Array<any>;
 const sources = sourcesData as Array<any>;
 const ruleNodes = ruleNodesData as Array<any>;
+const currentRuleNodes = currentRuleNodesData as Array<any>;
 const noticeNodes = noticeNodesData as Array<any>;
 const qaItems = qaItemsData as Array<any>;
+
+const ruleDatabaseHref = (legacyId: string) => {
+  const match = legacyId.match(/^ordinance37\.article([0-9-]+)/);
+  if (!match) return null;
+  const article = match[1];
+  return currentRuleNodes.some(
+    (node) => node.node_type === "article" && node.article_num === article
+  )
+    ? `/rules/${article}`
+    : null;
+};
 
 export function generateStaticParams() {
   return questions.map((q) => ({ slug: q.slug }));
@@ -30,10 +43,17 @@ export default async function QuestionPage({ params }: { params: Promise<{ slug:
     <article className="answer-page">
       <p className="eyebrow">通所介護 / {question.category}</p>
       <h1>{question.title}</h1>
-      <p className="meta">全国共通事項を対象 / 状態：<span className={isVerified ? "verified" : ""}>{isVerified ? "一次資料確認済み" : "根拠確認中"}</span>{isVerified && question.last_verified ? ` / 最終確認 ${question.last_verified}` : ""}</p>
+      <p className="meta">全国共通事項を対象 / 状態：<span className={isVerified ? "verified" : ""}>{isVerified ? "FAQ根拠対応を確認済み" : "根拠対応確認中"}</span>{isVerified && question.last_verified ? ` / 最終確認 ${question.last_verified}` : ""}</p>
       {isVerified && question.verification_note ? <p className="scope-note">{question.verification_note}</p> : null}
+      {isVerified ? (
+        <div className="notice">
+          <strong>FAQの確認状態と、根拠資料全体の確認状態は別です。</strong><br />
+          「FAQ根拠対応を確認済み」は、このFAQの結論と掲載根拠の対応を確認したことを示します。
+          各根拠資料の現行性やデータ層全体の人手確認状況は、制度DBで別に管理しています。
+        </div>
+      ) : null}
 
-      {!isVerified ? <div className="notice">この質問は現在、一次資料との対応関係を確認中です。確認が完了するまで制度上の結論は掲載しません。</div> : (
+      {!isVerified ? <div className="notice">この質問は現在、根拠資料との対応関係を確認中です。確認が完了するまで制度上の結論は掲載しません。</div> : (
         <>
           <section className="section answer-summary"><h2>結論</h2><p>{question.short_answer}</p></section>
           <section className="section"><h2>実務では</h2><ol className="steps">{question.practical_steps?.map((step: string) => <li key={step}>{step}</li>)}</ol></section>
@@ -42,15 +62,16 @@ export default async function QuestionPage({ params }: { params: Promise<{ slug:
             <h2>根拠</h2>
             {linkedRules.map((node) => {
               const source = sources.find((item) => item.id === node.source_id);
-              return <div className="source-card" key={node.id}><p className="source-kind">基準省令</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.official_text}</p>{node.text_form ? <p className="meta">上記は適用関係や列挙を読みやすくするため当サイトで構造化しています。逐語的な原文はリンク先で確認してください。</p> : null}{source ? <a href={source.url} target="_blank" rel="noreferrer">{source.publisher}の原文を確認</a> : null}</div>;
+              const databaseHref = ruleDatabaseHref(node.id);
+              return <div className="source-card" key={node.id}><p className="source-kind">基準省令</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.official_text}</p>{node.text_form ? <p className="meta">上記は適用関係や列挙を読みやすくするため当サイトで構造化しています。逐語的な原文はリンク先で確認してください。</p> : null}{source ? <a href={source.url} target="_blank" rel="noreferrer">{source.publisher}の原文を確認</a> : null}{databaseHref ? <p><Link href={databaseHref}>基準省令DBで現在の条文と確認状態を見る →</Link></p> : null}</div>;
             })}
             {linkedNotices.map((node) => {
               const source = sources.find((item) => node.source_ids?.includes(item.id));
-              return <div className="source-card" key={node.id}><p className="source-kind">解釈通知</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.editorial_summary}</p><p className="meta">上記は当サイトの要約です。</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省資料を確認</a> : null}</div>;
+              return <div className="source-card" key={node.id}><p className="source-kind">解釈通知</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.editorial_summary}</p><p className="meta">上記は当サイトの要約です。</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省資料を確認</a> : null}<p><Link href="/notices">解釈通知DBの再構成・現行性を見る →</Link></p></div>;
             })}
             {linkedQa.map((item) => {
               const source = sources.find((s) => s.id === item.source_id);
-              return <div className="source-card" key={item.id}><p className="source-kind">国Q&A</p><p className="meta">{item.source_document} / {item.source_number}</p><p><strong>質問の要旨：</strong>{item.question_summary}</p><p><strong>回答の要旨：</strong>{item.answer_summary}</p><p className="meta">上記は検索しやすいよう当サイトで要約しています。</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省Q&A集を確認</a> : null}</div>;
+              return <div className="source-card" key={item.id}><p className="source-kind">国Q&A</p><p className="meta">{item.source_document} / {item.source_number}</p><p><strong>質問の要旨：</strong>{item.question_summary}</p><p><strong>回答の要旨：</strong>{item.answer_summary}</p><p className="meta">上記は検索しやすいよう当サイトで要約しています。</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省Q&A集を確認</a> : null}<p><Link href={`/qa?q=${encodeURIComponent(item.source_number || item.topic || "")}&service=16`}>国Q&A DBで収載状態を見る →</Link></p></div>;
             })}
             {question.source_refs?.filter((ref: any) => !linkedRules.some((node) => node.source_id === ref.source_id) && !linkedNotices.some((node) => node.source_ids?.includes(ref.source_id)) && !linkedQa.some((item) => item.source_id === ref.source_id)).map((ref: any) => {
               const source = sources.find((item) => item.id === ref.source_id);
