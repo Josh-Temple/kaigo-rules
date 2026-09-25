@@ -7,6 +7,7 @@ import feeNodesData from "../../data/remuneration-current-skeleton.json";
 import feeTextsData from "../../data/remuneration-current-text.json";
 import feeReviewData from "../../data/remuneration-review.json";
 import { feeHref, getDefaultService } from "../../lib/service-catalog";
+import { rankQuestionMatches } from "../../lib/question-search";
 
 const questions = questionsData as Array<any>;
 const qaCorpus = qaCorpusData as Array<any>;
@@ -73,13 +74,8 @@ export default async function SearchPage({
   );
   const feeTextById = new Map(feeTexts.map((item) => [item.fee_id, item]));
 
-  const questionMatches = terms.length
-    ? questions.filter((item) =>
-        hasAllTerms(
-          [item.title, item.category, ...(item.aliases || []), item.short_answer || ""].join(" "),
-          expandedTerms
-        )
-      )
+  const questionMatches = query
+    ? rankQuestionMatches(questions, query)
     : [];
 
   const articleNodes = rules.filter((node) => node.node_type === "article");
@@ -155,7 +151,7 @@ export default async function SearchPage({
 
       {!terms.length ? (
         <div className="notice">
-          キーワードを入力してください。複数語はすべてを含む結果に絞り込み、代表的な関連語も検索します。
+          キーワードを入力してください。確認済みの実務ページは自然文や代表的な言い換えも含めて順位付けし、基準省令などは複数語をすべて含む結果に絞り込みます。
         </div>
       ) : (
         <>

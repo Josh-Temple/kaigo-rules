@@ -316,6 +316,42 @@
       ]
     }
   ],
-  "result_state": "NOT_RUN",
-  "promotion_policy": "Machine benchmark results may support claims about retrieval reproducibility only. Do not convert them into claims about human time savings, usability, or productivity."
+  "result_state": "BASELINE_RECORDED",
+  "promotion_policy": "Machine benchmark results may support claims about retrieval reproducibility only. Do not convert them into claims about human time savings, usability, or productivity.",
+  "baseline": {
+    "observed_at": "2026-09-25T21:40:47+09:00",
+    "production_sha": "eb7ef817e05372b4a38baee353271d7c42f5ed34",
+    "workflow_run_id": 36136235293,
+    "artifact_id": 10864586181,
+    "artifact_digest": "sha256:6f06c7053f14b6eb8f2095c3fbce7b3e34d1c8e01cded8b1f22571e3be4fc66e",
+    "metrics": {
+      "search_hit_rate": 0.3333333333333333,
+      "top3_hit_rate": 0.3333333333333333,
+      "context_integrity_rate": 1,
+      "full_pass_rate": 0.3333333333333333
+    },
+    "search_miss_ids": [
+      "MR-01-B",
+      "MR-01-C",
+      "MR-02-B",
+      "MR-02-C",
+      "MR-03-B",
+      "MR-03-C",
+      "MR-04-B",
+      "MR-04-C",
+      "MR-05-B",
+      "MR-05-C",
+      "MR-06-B",
+      "MR-06-C",
+      "MR-07-B",
+      "MR-07-C",
+      "MR-08-B",
+      "MR-08-C",
+      "MR-09-B",
+      "MR-09-C",
+      "MR-10-B",
+      "MR-10-C"
+    ],
+    "context_integrity_failures": []
+  }
 }
