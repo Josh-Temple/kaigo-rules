@@ -17,16 +17,39 @@
 参加者へ最初の質問を見せる前に、次をすべて満たす。
 
 1. current GitHub main の `Validate build` が成功している。
-2. production の `/api/version` が、その current main の40桁SHAと完全一致する。
-3. `scripts/verify_field_validation_production.py` が固定10問を含めてPASSする。
-4. `scripts/validate_kaigo_ops_field_validation.py` がPASSする。
-5. 固定質問・canonical answer・sourceに未解決の変更がない。
+2. production の `/api/version` の40桁SHAが、`deploy-state/kaigo-rules` のSHAと一致する。
+3. production SHAから実測開始時のmain SHAまでに、production挙動へ影響する未反映差分がない。
+4. `scripts/verify_field_validation_production.py --expected-sha <production_sha>` が固定10問を含めてPASSする。
+5. `scripts/validate_kaigo_ops_field_validation.py` がPASSする。
+6. 固定質問・canonical answer・sourceに未解決の変更がない。
 
-production SHAは各試行の `observer_notes` に
-`production_sha=<40桁SHA>`
-として記録する。同一の20試行では原則として同じSHAを使う。
+3の確認では、daily production deployと同じproduction対象パスを使う。
 
+- `app`
+- `components`
+- `data`
+- `scripts`
+- `public`
+- `package.json`
+- `package-lock.json`
+- `tsconfig.json`
+- `next-env.d.ts`
+- `vercel.json`
+
+production SHAとcurrent main SHAが異なっていても、差分が `docs/` 等のproduction非対象ファイルだけであれば開始条件を満たせる。
+逆に、上記production対象パスに差分がある場合は、SHAが近くても実測を開始しない。
+
+実測開始時に次の2つを固定する。
+
+- `study_main_sha=<40桁SHA>`
+- `production_sha=<40桁SHA>`
+
+各試行の `observer_notes` には少なくとも `production_sha=<40桁SHA>` を残す。
+pilot全体の管理記録には `study_main_sha` も残す。
+
+同一の20試行ではproduction SHAを原則として固定する。
 途中でproduction SHAが変わった場合は、そのまま継続せずHoldして影響を確認する。
+mainがdocs-onlyで進んだだけの場合はpilotを自動Holdしないが、production対象パスに変更が入った場合は影響確認が終わるまで再開しない。
 
 ## 実施環境
 
