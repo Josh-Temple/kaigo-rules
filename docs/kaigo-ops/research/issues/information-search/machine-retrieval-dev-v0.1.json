@@ -1,0 +1,70 @@
+{
+  "format_version": 1,
+  "dev_set_id": "kaigo-ops-machine-retrieval-dev-v0.1",
+  "created_at": "2026-09-25",
+  "purpose": "Machine Retrieval holdout v0.1で観測された弱点の種類を踏まえつつ、holdoutの実queryを直接テストケースとして使わず、別表現で検索改善を開発・回帰確認する。",
+  "status": "DEVELOPMENT_SET_NOT_HOLDOUT",
+  "evaluation_metric": "expected_question_slugがrankQuestionMatchesのtop 3に入ること",
+  "cases": [
+    {
+      "id": "DEV-04-1",
+      "query": "食堂と訓練する場所は兼用できますか",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "DEV-04-2",
+      "query": "機能訓練用のスペースの広さを知りたい",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "DEV-04-3",
+      "query": "食事する場所と訓練室は同じ場所でよいですか",
+      "expected_question_slug": "dining-training-area"
+    },
+    {
+      "id": "DEV-08-1",
+      "query": "計画は本人の同意だけあればよいのですか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "DEV-08-2",
+      "query": "書面で同意をもらうことは必須ですか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "DEV-08-3",
+      "query": "計画書の同意方法に決まりはありますか",
+      "expected_question_slug": "care-plan-signature"
+    },
+    {
+      "id": "DEV-09-1",
+      "query": "デイで定期研修として何をやる必要がありますか",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "DEV-09-2",
+      "query": "必要な研修をまとめて確認したい",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "DEV-09-3",
+      "query": "職員研修の年間予定に入れるべきものは？",
+      "expected_question_slug": "annual-training"
+    },
+    {
+      "id": "DEV-10-1",
+      "query": "業務継続に関する訓練の実施回数を知りたい",
+      "expected_question_slug": "bcp-training"
+    },
+    {
+      "id": "DEV-10-2",
+      "query": "BCPは研修と訓練を毎年実施するのですか",
+      "expected_question_slug": "bcp-training"
+    },
+    {
+      "id": "DEV-10-3",
+      "query": "業務継続の教育はどのくらいの頻度ですか",
+      "expected_question_slug": "bcp-training"
+    }
+  ]
+}
