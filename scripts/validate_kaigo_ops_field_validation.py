@@ -65,7 +65,17 @@ def main() -> None:
             errors.append(f"{slug}: verified canonical question has no source_refs")
 
         categories.add(source.get("category"))
-        if source.get("notice_node_ids") or source.get("qa_item_ids"):
+        source_ref_ids = {
+            ref.get("source_id")
+            for ref in source.get("source_refs", [])
+            if ref.get("source_id")
+        }
+        is_multi_source = (
+            len(source_ref_ids) > 1
+            or bool(source.get("notice_node_ids"))
+            or bool(source.get("qa_item_ids"))
+        )
+        if is_multi_source:
             multi_source += 1
             if row.get("complexity") != "multi-source":
                 errors.append(f"{slug}: expected complexity=multi-source")
