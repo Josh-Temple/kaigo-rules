@@ -77,8 +77,13 @@ productionがcurrent mainへ反映された後:
 ```bash
 python scripts/run_machine_retrieval_benchmark.py \
   --base-url https://kaigo-rules.vercel.app \
+  --expected-sha <current-main-40-character-sha> \
   --output /tmp/kaigo-machine-retrieval-v0.1.json
 ```
+
+日次production deployでは、exact-SHA gate通過後に同じrunnerを自動実行する。
+結果JSONはGitHub Actions artifactとしてSHA付きの名前で90日保持し、job summaryにも主要指標と失敗caseを残す。
+初回結果を確認後、必要に応じて恒久保存先へ移す。
 
 fixtureの整合性確認:
 
