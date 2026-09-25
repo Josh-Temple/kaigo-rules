@@ -53,7 +53,8 @@
     "validate:kaigo-ops-field": "python scripts/validate_kaigo_ops_field_validation.py",
     "validate:faq-evidence-support": "python scripts/validate_faq_evidence_support.py",
     "verify:field-production": "python scripts/verify_field_validation_production.py",
-    "analyze:kaigo-ops-field": "python scripts/analyze_kaigo_ops_field_validation.py"
+    "analyze:kaigo-ops-field": "python scripts/analyze_kaigo_ops_field_validation.py",
+    "prepare:kaigo-ops-field-adjudication": "python scripts/prepare_kaigo_ops_field_adjudication.py"
   },
   "dependencies": {
     "next": "^16.0.0",

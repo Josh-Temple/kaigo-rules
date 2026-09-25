@@ -16,6 +16,8 @@ Condition A / B の違いを見た採点バイアスを減らすため、探索�
 - query_reformulations
 - confidence_1_5
 
+採点用ファイルは `scripts/prepare_kaigo_ops_field_adjudication.py` でraw run CSVから生成し、手作業で列を削除しない。
+
 採点に渡すのは次だけとする。
 
 - attempt_id
@@ -37,6 +39,8 @@ Condition A / B の違いを見た採点バイアスを減らすため、探索�
 とする。
 
 採点開始前に `scripts/validate_kaigo_ops_field_validation.py` が成功していることを確認する。
+
+blind adjudication CSV生成時は、固定20試行の attempt_id / question_id / question_slug がtemplateと一致し、`condition`・時間・操作量・confidence・observer_notesが出力列に存在しないことをスクリプト側でfail-closedに確認する。
 
 判定境界のキャリブレーション例は `field-validation-scoring-calibration-v0.1.md` を参照する。これは判定項目や成功条件を変更せず、既存基準の適用方法を固定するための補助資料とする。
 
