@@ -22,18 +22,24 @@
 
 Machine Retrieval Benchmark の結果だけでは、これらの主張は行わない。
 
-## 現在の代替進行路
+## 現在の機械評価状態
 
-参加者を必要としない `Machine Retrieval Benchmark v0.1` を主な次工程とする。
+参加者を必要としない `Machine Retrieval Benchmark v0.1` はproduction再評価まで完了した。
 
-評価対象:
+同じ固定10問 × 3言い換え = 30 queryで、
 
-1. 固定10問 × 3言い換え = 30 query の production search到達率
-2. 対象questionの検索順位
-3. AI向け context API のquestion / answer / canonical source保持
-4. question別、single/multi-source別の弱点抽出
+- 初回production: search / full pass 10/30 = 33.3%
+- 更新後production: search / top-3 / full pass 30/30 = 100%
+- context integrity: 初回・更新後とも10/10 = 100%
 
-人間評価はこの機械評価と独立しており、後から追加できる。
+となった。
+
+証跡は `machine-retrieval-production-comparison-2026-09-26.md` と対応JSONを参照する。
+
+この結果により、固定benchmark上の検索導線とcontext保持はproductionで再現できた。
+一方、人間の原典到達時間、操作負担、使いやすさは未検証のままであり、Field Validationとは独立している。
+
+参加者を確保できない間も、情報基盤整備、サービス範囲拡張、独立検証、機械的な検索回帰は継続できる。
 
 ## 人間評価を再開する条件
 
