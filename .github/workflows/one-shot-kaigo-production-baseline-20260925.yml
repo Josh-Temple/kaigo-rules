@@ -1,0 +1,112 @@
+name: One-shot Kaigo production baseline 2026-09-25
+
+on:
+  push:
+    branches:
+      - ops/production-baseline-20260925
+    paths:
+      - ".github/workflows/one-shot-kaigo-production-baseline-20260925.yml"
+
+concurrency:
+  group: daily-vercel-production-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-and-benchmark:
+    runs-on: ubuntu-24.04
+    env:
+      EXPECTED_SHA: eb7ef817e05372b4a38baee353271d7c42f5ed34
+      BASE_URL: https://kaigo-rules.vercel.app
+    steps:
+      - name: Checkout exact production candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          ref: eb7ef817e05372b4a38baee353271d7c42f5ed34
+
+      - name: Fail if main moved
+        shell: bash
+        run: |
+          set -euo pipefail
+          remote_main="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [ "$remote_main" != "$EXPECTED_SHA" ]; then
+            echo "::error::main moved: expected $EXPECTED_SHA, got $remote_main"
+            exit 1
+          fi
+
+      - name: Trigger kaigo-rules production deploy
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::error::Missing secret VERCEL_DEPLOY_HOOK_KAIGO_RULES"
+            exit 1
+          fi
+          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
+          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
+          echo "kaigo-rules deploy hook accepted."
+
+      - name: Verify exact-SHA production gate
+        run: |
+          python scripts/verify_field_validation_production.py \
+            --base-url "$BASE_URL" \
+            --expected-sha "$EXPECTED_SHA" \
+            --wait-seconds 600 \
+            --interval-seconds 15
+
+      - name: Run Machine Retrieval Benchmark v0.1
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/run_machine_retrieval_benchmark.py \
+            --base-url "$BASE_URL" \
+            --expected-sha "$EXPECTED_SHA" \
+            --output artifacts/machine-retrieval-v0.1.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          report = json.loads(
+              Path("artifacts/machine-retrieval-v0.1.json").read_text(encoding="utf-8")
+          )
+          metrics = report["metrics"]
+          misses = [row["id"] for row in report["cases"] if not row["search_hit"]]
+          context_failures = [
+              slug
+              for slug, row in report["context_results"].items()
+              if not row["integrity_ok"]
+          ]
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as handle:
+              handle.write("\n## Machine Retrieval Benchmark v0.1\n\n")
+              handle.write(f"- production SHA: `{report['production_version']['commit_sha']}`\n")
+              handle.write(f"- search hit rate: {metrics['search_hit_rate']:.1%}\n")
+              handle.write(f"- top-3 hit rate: {metrics['top3_hit_rate']:.1%}\n")
+              handle.write(f"- context integrity rate: {metrics['context_integrity_rate']:.1%}\n")
+              handle.write(f"- full pass rate: {metrics['full_pass_rate']:.1%}\n")
+              handle.write(f"- search misses: {', '.join(misses) if misses else 'none'}\n")
+              handle.write(
+                  f"- context integrity failures: {', '.join(context_failures) if context_failures else 'none'}\n"
+              )
+              handle.write(
+                  "- scope: machine retrieval only; not evidence of human time savings or usability.\n"
+              )
+          PY
+
+      - name: Upload benchmark artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: machine-retrieval-v0.1-eb7ef817e05372b4a38baee353271d7c42f5ed34
+          path: artifacts/machine-retrieval-v0.1.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Record exact deployed SHA
+        shell: bash
+        run: |
+          git push --force origin "$EXPECTED_SHA:refs/heads/deploy-state/kaigo-rules"
