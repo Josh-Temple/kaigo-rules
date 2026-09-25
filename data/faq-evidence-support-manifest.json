@@ -1,0 +1,53 @@
+{
+  "format_version": 1,
+  "contract": "FAQ_PRESENTATION_SUPPORT",
+  "canonical_authority": false,
+  "purpose": "Curated evidence snippets used by practical FAQ pages and question context packages. These files are navigation/presentation support and are not the canonical source of layer-wide currentness or human-review status.",
+  "policy": {
+    "faq_verified_means": "The FAQ conclusion and its listed evidence mapping were checked for the stated scope.",
+    "may_drive_curated_faq_answer": true,
+    "may_assert_layer_currentness": false,
+    "may_assert_layer_human_review_completion": false,
+    "must_keep_layer_assurance_separate": true,
+    "must_link_back_to_canonical_layer_when_available": true
+  },
+  "files": [
+    {
+      "path": "data/rule-nodes.json",
+      "kind": "ORDINANCE37_CURATED_FAQ_EVIDENCE",
+      "canonical_dataset": "data/ordinance37-nodes.json",
+      "canonical_route": "/rules/[article]",
+      "mapping_policy": "ARTICLE_ROUTE_WHEN_IN_CANONICAL_SCOPE",
+      "status_semantics": "FAQ_EVIDENCE_LOCAL_ONLY",
+      "canonical_scope_exceptions": [
+        {
+          "id": "ordinance37.article217.2",
+          "reason": "Article 217 is outside the current day-service Ordinance 37 canonical scope. Keep the curated FAQ evidence and official-source link without inventing a canonical DB route."
+        }
+      ]
+    },
+    {
+      "path": "data/notice-nodes.json",
+      "kind": "INTERPRETATION_NOTICE_CURATED_FAQ_EVIDENCE",
+      "canonical_dataset": "data/notice-current-skeleton.json",
+      "canonical_route": "/notices",
+      "mapping_policy": "LAYER_ROUTE_ONLY",
+      "status_semantics": "FAQ_EVIDENCE_LOCAL_ONLY",
+      "canonical_scope_exceptions": []
+    },
+    {
+      "path": "data/qa-items.json",
+      "kind": "MHLW_QA_CURATED_FAQ_EVIDENCE",
+      "canonical_dataset": "data/qa-corpus.json",
+      "canonical_route": "/qa",
+      "mapping_policy": "LAYER_ROUTE_ONLY",
+      "status_semantics": "FAQ_EVIDENCE_LOCAL_ONLY",
+      "canonical_scope_exceptions": []
+    }
+  ],
+  "known_consumers": [
+    "app/questions/[slug]/page.tsx",
+    "scripts/build_question_context_packages.py",
+    "scripts/validate-data.mjs"
+  ]
+}
