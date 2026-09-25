@@ -152,6 +152,17 @@ jobs:
           echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
           echo "kaigo-rules deploy hook accepted."
 
+      - name: Verify kaigo-rules production field-validation gate
+        if: needs.plan.outputs.rules_changed == 'true'
+        env:
+          EXPECTED_SHA: ${{ needs.plan.outputs.head_sha }}
+          BASE_URL: https://kaigo-rules.vercel.app
+        run: |
+          python scripts/verify_field_validation_production.py \
+            --base-url "$BASE_URL" \
+            --expected-sha "$EXPECTED_SHA" \
+            --wait-seconds 600 \
+            --interval-seconds 15
       - name: Record kaigo-rules deploy request
         if: needs.plan.outputs.rules_changed == 'true'
         run: |

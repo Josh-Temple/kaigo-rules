@@ -51,7 +51,8 @@
     "build:question-context": "python scripts/build_question_context_packages.py",
     "check:question-context": "python scripts/build_question_context_packages.py --check",
     "validate:kaigo-ops-field": "python scripts/validate_kaigo_ops_field_validation.py",
-    "validate:faq-evidence-support": "python scripts/validate_faq_evidence_support.py"
+    "validate:faq-evidence-support": "python scripts/validate_faq_evidence_support.py",
+    "verify:field-production": "python scripts/verify_field_validation_production.py"
   },
   "dependencies": {
     "next": "^16.0.0",
