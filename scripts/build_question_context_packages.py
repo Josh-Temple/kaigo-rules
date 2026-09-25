@@ -44,6 +44,8 @@ def evidence_item(node: dict, kind: str) -> dict:
     ):
         if field in node:
             base[field] = node[field]
+    base["evidence_role"] = "FAQ_PRESENTATION_SUPPORT"
+    base["canonical_authority"] = False
     return base
 
 
@@ -168,6 +170,7 @@ def build() -> dict:
                         len(edge_rows) - independently_verified_edges
                     ),
                     "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+                    "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY",
                 },
                 "retrieval": {
                     "terms": list(dict.fromkeys(
@@ -190,6 +193,8 @@ def build() -> dict:
             "relation_verification_kept_separate": True,
             "automatic_legal_conclusion_expansion_allowed": False,
             "unverified_relation_promotion_allowed": False,
+            "faq_evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "support_evidence_is_canonical_layer_status": False,
         },
         "counts": {
             "packages": len(packages),
