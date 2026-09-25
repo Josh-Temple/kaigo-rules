@@ -33,18 +33,40 @@ jobs:
           node-version: "22"
       - run: npm ci --no-audit --no-fund
       - run: npm run build
-      - name: Smoke test ops root
+      - name: Smoke test key ops routes
         shell: bash
         run: |
           npm start > /tmp/kaigo-ops-next.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
 
+          ready=0
           for _ in {1..30}; do
             if curl --fail --silent --show-error http://127.0.0.1:3000/ >/dev/null; then
-              exit 0
+              ready=1
+              break
             fi
             sleep 1
           done
-          cat /tmp/kaigo-ops-next.log
-          exit 1
+          if [ "$ready" -ne 1 ]; then
+            cat /tmp/kaigo-ops-next.log
+            exit 1
+          fi
+
+          routes=(
+            "/"
+            "/issues/information-search"
+          )
+          for route in "${routes[@]}"; do
+            echo "GET $route"
+            curl --fail --silent --show-error "http://127.0.0.1:3000$route" >/dev/null || {
+              cat /tmp/kaigo-ops-next.log
+              exit 1
+            }
+          done
+
+          curl --fail --silent --show-error http://127.0.0.1:3000/issues/information-search \
+            | grep -F "先に整えるのは、AIではなく情報の土台です。" >/dev/null || {
+              echo "information-search issue page missing expected conclusion"
+              exit 1
+            }

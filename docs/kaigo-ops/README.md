@@ -1,6 +1,6 @@
 # 介護業務改善 / Research & Product Notes
 
-更新日: 2026-09-22
+更新日: 2026-09-25
 
 このディレクトリは、介護業務改善サイトと、その背後にある調査・更新方針を残すための記録です。
 
@@ -100,7 +100,12 @@ Evidence Review / 方法 / 検証
 
 ### First deep Issue
 
+2026-09-25時点では、current `data/questions.json` の verified 質問から10問を固定し、Kaigo Rulesによって正しい原典への到達負担を減らせるかを測る小規模検証を準備済み。結果はまだ `NOT_RUN` であり、効果の主張は行わない。
+
 - [必要な情報を探すのに時間がかかる](./research/issues/information-search/README.md)
+- [Field Validation v0.1 — 固定10問](./research/issues/information-search/field-validation-v0.1.json)
+- [Field Validation v0.1 — 実施プロトコル](./research/issues/information-search/field-validation-protocol-v0.1.md)
+- [Field Validation v0.1 — 記録テンプレート](./research/issues/information-search/field-validation-run-template-v0.1.csv)
 - [Evidence register](./research/issues/information-search/evidence-register.csv)
 - [Source coverage audit](./research/issues/information-search/source-coverage-audit.md)
 - [実験計画](./research/issues/information-search/experiment-plan.md)
