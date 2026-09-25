@@ -31,26 +31,27 @@ export default function VerificationSummary({ layerId }: { layerId: string }) {
   }
 
   return (
-    <section className="section verification-summary" aria-label="データ層全体の確認状態">
-      <p className="eyebrow">VERIFICATION STATE</p>
-      <h2>データ層全体の確認状態</h2>
-      <dl className="rule-meta">
-        <div>
-          <dt>本文の独立確認</dt>
-          <dd>{statusLabel(layer.content_verification?.status)}</dd>
-        </div>
-        <div>
-          <dt>現行性</dt>
-          <dd>{statusLabel(layer.currentness?.status)}</dd>
-        </div>
-        <div>
-          <dt>人手確認</dt>
-          <dd>{statusLabel(layer.human_review?.status)}</dd>
-        </div>
-      </dl>
-      <p className="meta">
-        独立確認は、一次資料からの再取得・再構成による照合結果です。人手確認とは別に管理しています。個別項目の人手確認状況は、ページ内の表示を確認してください。
-      </p>
-    </section>
+    <details className="verification-summary">
+      <summary>このデータの確認状態</summary>
+      <div className="verification-summary-body">
+        <dl className="rule-meta">
+          <div>
+            <dt>本文の独立確認</dt>
+            <dd>{statusLabel(layer.content_verification?.status)}</dd>
+          </div>
+          <div>
+            <dt>現行性</dt>
+            <dd>{statusLabel(layer.currentness?.status)}</dd>
+          </div>
+          <div>
+            <dt>人手確認</dt>
+            <dd>{statusLabel(layer.human_review?.status)}</dd>
+          </div>
+        </dl>
+        <p className="meta">
+          独立確認は、一次資料からの再取得・再構成による照合結果です。現行性の確認や人手確認とは別に管理しています。
+        </p>
+      </div>
+    </details>
   );
 }
