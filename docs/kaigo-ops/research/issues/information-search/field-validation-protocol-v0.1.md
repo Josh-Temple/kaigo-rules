@@ -90,8 +90,15 @@ Kaigo Rules の検索・ナビゲーション・実務質問ページを利用�
 
 - 生データ: `field-validation-run-template-v0.1.csv`
 - 採点: `field-validation-adjudication-template-v0.1.csv`
+- 実施手順: `field-validation-runbook-v0.1.md`
+- 集計: `scripts/analyze_kaigo_ops_field_validation.py`
 
 これにより、Condition A / B を知った状態で正誤を付けることによる観察者バイアスを減らす。
+
+## 実施上限
+
+1試行の上限は600秒（10分）とする。詳細な開始・終了、時間切れ、記録方法は `field-validation-runbook-v0.1.md` を正本とする。
+この運用条件は最初の実測開始前に固定し、A/Bで同一とする。
 
 ## 計測項目
 
