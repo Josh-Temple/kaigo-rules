@@ -8,7 +8,9 @@
     "direct_evidence_preferred": true,
     "relation_verification_kept_separate": true,
     "automatic_legal_conclusion_expansion_allowed": false,
-    "unverified_relation_promotion_allowed": false
+    "unverified_relation_promotion_allowed": false,
+    "faq_evidence_role": "FAQ_PRESENTATION_SUPPORT",
+    "support_evidence_is_canonical_layer_status": false
   },
   "counts": {
     "packages": 12,
@@ -66,7 +68,9 @@
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
             "verified_at": "2026-09-22",
-            "text_form": "faithful_condensation"
+            "text_form": "faithful_condensation",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article104.2.3",
@@ -81,7 +85,9 @@
             "official_text": "当該指定通所介護事業所において、通所介護従業者に対し、感染症の予防及びまん延の防止のための研修及び訓練を定期的に実施すること。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-22"
+            "verified_at": "2026-09-22",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article105",
@@ -94,7 +100,9 @@
             "official_text": "第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-22"
+            "verified_at": "2026-09-22",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article30-2.2",
@@ -109,7 +117,9 @@
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-common",
             "verified_at": "2026-09-22",
-            "text_form": "read_as_applied_to_dayservice"
+            "text_form": "read_as_applied_to_dayservice",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article37-2.3",
@@ -124,7 +134,9 @@
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-common",
             "verified_at": "2026-09-22",
-            "text_form": "read_as_applied_to_dayservice"
+            "text_form": "read_as_applied_to_dayservice",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [
@@ -142,7 +154,9 @@
             "verification_status": "KNOWN_AFTER_TEXT",
             "source_ids": [
               "mhlw-2021-interpretation-redline"
-            ]
+            ],
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "notice.dayservice.infection.frequency",
@@ -157,7 +171,9 @@
             "verification_status": "KNOWN_AFTER_TEXT",
             "source_ids": [
               "mhlw-2021-interpretation-redline"
-            ]
+            ],
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "notice.dayservice.abuse.frequency",
@@ -172,7 +188,9 @@
             "verification_status": "KNOWN_AFTER_TEXT",
             "source_ids": [
               "mhlw-2021-interpretation-redline"
-            ]
+            ],
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "qa_items": [],
@@ -258,7 +276,8 @@
         "relation_edges_total": 7,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 7,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -320,7 +339,9 @@
             "official_text": "第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-22"
+            "verified_at": "2026-09-22",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article30-2.2",
@@ -335,7 +356,9 @@
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-common",
             "verified_at": "2026-09-22",
-            "text_form": "read_as_applied_to_dayservice"
+            "text_form": "read_as_applied_to_dayservice",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [
@@ -353,7 +376,9 @@
             "verification_status": "KNOWN_AFTER_TEXT",
             "source_ids": [
               "mhlw-2021-interpretation-redline"
-            ]
+            ],
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "qa_items": [],
@@ -405,7 +430,8 @@
         "relation_edges_total": 3,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 3,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -466,7 +492,9 @@
             "official_text": "指定通所介護事業所の管理者は、利用者の心身の状況、希望及びその置かれている環境を踏まえて、機能訓練等の目標、当該目標を達成するための具体的なサービスの内容等を記載した通所介護計画を作成しなければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-22"
+            "verified_at": "2026-09-22",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article99.2",
@@ -480,7 +508,9 @@
             "official_text": "通所介護計画は、既に居宅サービス計画が作成されている場合は、当該居宅サービス計画の内容に沿って作成しなければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-22"
+            "verified_at": "2026-09-22",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article99.3",
@@ -494,7 +524,9 @@
             "official_text": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article99.4",
@@ -508,7 +540,9 @@
             "official_text": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article99.5",
@@ -522,7 +556,9 @@
             "official_text": "通所介護従業者は、それぞれの利用者について、通所介護計画に従ったサービスの実施状況及び目標の達成状況の記録を行う。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-22"
+            "verified_at": "2026-09-22",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [],
@@ -577,7 +613,8 @@
         "relation_edges_total": 5,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 5,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -638,7 +675,9 @@
             "official_text": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article99.4",
@@ -652,7 +691,9 @@
             "official_text": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [],
@@ -699,7 +740,8 @@
         "relation_edges_total": 2,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 2,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -760,7 +802,9 @@
             "official_text": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article99.4",
@@ -774,7 +818,9 @@
             "official_text": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article217.2",
@@ -787,7 +833,9 @@
             "official_text": "指定居宅サービス事業者及び指定居宅サービスの提供に当たる者は、交付、説明、同意、承諾、締結その他これらに類するもののうち、この省令の規定において書面で行うことが規定されている又は想定されるものについては、当該交付等の相手方の承諾を得て、書面に代えて、電磁的方法によることができる。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-electronic",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [],
@@ -850,7 +898,8 @@
         "relation_edges_total": 3,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 3,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -911,7 +960,9 @@
             "official_text": "指定通所介護事業所は、食堂、機能訓練室、静養室、相談室及び事務室を有するほか、消火設備その他の非常災害に際して必要な設備並びに指定通所介護の提供に必要なその他の設備及び備品等を備えなければならない。食堂及び機能訓練室は、それぞれ必要な広さを有するものとし、その合計した面積は、三平方メートルに当該指定通所介護事業所の利用定員を乗じて得た面積以上とする。食事の提供及び機能訓練の実施にそれぞれ支障がない広さを確保できる場合は、同一の場所とすることができる。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-22"
+            "verified_at": "2026-09-22",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [],
@@ -942,7 +993,8 @@
         "relation_edges_total": 1,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 1,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -1003,7 +1055,9 @@
             "official_text": "第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-22"
+            "verified_at": "2026-09-22",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article8.1",
@@ -1018,7 +1072,9 @@
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-common",
             "verified_at": "2026-09-22",
-            "text_form": "read_as_applied_to_dayservice"
+            "text_form": "read_as_applied_to_dayservice",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article32.1-3",
@@ -1033,7 +1089,9 @@
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-common",
             "verified_at": "2026-09-22",
-            "text_form": "structured_verbatim_condensation"
+            "text_form": "structured_verbatim_condensation",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [
@@ -1049,7 +1107,9 @@
             "verification_status": "VERIFIED_SOURCE_TEXT",
             "source_ids": [
               "mhlw-interpretation-html"
-            ]
+            ],
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "qa_items": [],
@@ -1107,7 +1167,8 @@
         "relation_edges_total": 4,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 4,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -1166,7 +1227,9 @@
             "official_text": "生活相談員　指定通所介護の提供日ごとに、当該指定通所介護を提供している時間帯に生活相談員（専ら当該指定通所介護の提供に当たる者に限る。）が勤務している時間数の合計数を当該指定通所介護を提供している時間帯の時間数で除して得た数が一以上確保されるために必要と認められる数",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article93.6",
@@ -1180,7 +1243,9 @@
             "official_text": "第一項の生活相談員又は介護職員のうち一人以上は、常勤でなければならない。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [],
@@ -1217,7 +1282,8 @@
         "relation_edges_total": 2,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 2,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -1271,7 +1337,9 @@
             "official_text": "指定通所介護事業者は、指定通所介護事業所ごとに専らその職務に従事する常勤の管理者を置かなければならない。ただし、指定通所介護事業所の管理上支障がない場合は、当該指定通所介護事業所の他の職務に従事し、又は他の事業所、施設等の職務に従事することができるものとする。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [],
@@ -1302,7 +1370,8 @@
         "relation_edges_total": 1,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 1,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -1363,7 +1432,9 @@
             "official_text": "第一項の規定にかかわらず、介護職員は、利用者の処遇に支障がない場合は、他の指定通所介護の単位の介護職員として従事することができるものとする。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article93.5",
@@ -1377,7 +1448,9 @@
             "official_text": "第一項第四号の機能訓練指導員は、日常生活を営むのに必要な機能の減退を防止するための訓練を行う能力を有する者とし、当該指定通所介護事業所の他の職務に従事することができるものとする。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           },
           {
             "id": "ordinance37.article94",
@@ -1390,7 +1463,9 @@
             "official_text": "指定通所介護事業者は、指定通所介護事業所ごとに専らその職務に従事する常勤の管理者を置かなければならない。ただし、指定通所介護事業所の管理上支障がない場合は、当該指定通所介護事業所の他の職務に従事し、又は他の事業所、施設等の職務に従事することができるものとする。",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [
@@ -1407,7 +1482,9 @@
             "verification_status": "VERIFIED_SOURCE_TEXT",
             "source_ids": [
               "mhlw-interpretation-html"
-            ]
+            ],
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "qa_items": [],
@@ -1465,7 +1542,8 @@
         "relation_edges_total": 4,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 4,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -1527,7 +1605,9 @@
             "official_text": "看護師又は准看護師（以下この章において「看護職員」という。）　指定通所介護の単位ごとに、専ら当該指定通所介護の提供に当たる看護職員が一以上確保されるために必要と認められる数",
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
-            "verified_at": "2026-09-21"
+            "verified_at": "2026-09-21",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [
@@ -1546,7 +1626,9 @@
             "source_ids": [
               "mhlw-interpretation-nurse-linkage",
               "mhlw-qa"
-            ]
+            ],
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "qa_items": [
@@ -1558,7 +1640,9 @@
             "status": "STRUCTURED",
             "source_id": "mhlw-qa",
             "source_document": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日）",
-            "source_number": "問50"
+            "source_number": "問50",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "sources": [
@@ -1619,7 +1703,8 @@
         "relation_edges_total": 3,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 3,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
@@ -1678,7 +1763,9 @@
             "verification_status": "VERIFIED_CURRENT",
             "source_id": "mhlw-home-care-standards-current",
             "verified_at": "2026-09-22",
-            "text_form": "structured_verbatim_list"
+            "text_form": "structured_verbatim_list",
+            "evidence_role": "FAQ_PRESENTATION_SUPPORT",
+            "canonical_authority": false
           }
         ],
         "notices": [],
@@ -1709,7 +1796,8 @@
         "relation_edges_total": 1,
         "relation_edges_independently_verified": 0,
         "relation_edges_not_independently_audited": 1,
-        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified."
+        "policy": "Direct evidence and relation-edge assurance are separate. Do not treat an unaudited relation as independently verified.",
+        "evidence_status_scope": "FAQ_PRESENTATION_SUPPORT_ONLY"
       },
       "retrieval": {
         "terms": [
