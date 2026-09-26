@@ -132,7 +132,7 @@ export default async function SearchPage({
       <p className="eyebrow">CROSS-SOURCE SEARCH</p>
       <h1>{defaultService.label}を横断検索</h1>
       <p className="lead">
-        確認済みの実務ページ、基準省令、報酬告示、厚生労働省Q&Aを同じ語で探します。
+        根拠対応確認済みの実務ページ、基準省令、報酬告示、厚生労働省Q&Aを同じ語で探します。
         検索結果の表示と、内容の現行性確認は分けて扱います。
       </p>
 
@@ -151,7 +151,7 @@ export default async function SearchPage({
 
       {!terms.length ? (
         <div className="notice">
-          キーワードを入力してください。確認済みの実務ページは自然文や代表的な言い換えも含めて順位付けし、基準省令などは複数語をすべて含む結果に絞り込みます。
+          キーワードを入力してください。根拠対応確認済みの実務ページは自然文や代表的な言い換えも含めて順位付けし、基準省令などは複数語をすべて含む結果に絞り込みます。
         </div>
       ) : (
         <>
@@ -161,7 +161,7 @@ export default async function SearchPage({
           </div>
 
           <section className="section">
-            <h2>確認済みの実務ページ <span className="meta">({questionMatches.length}件)</span></h2>
+            <h2>根拠対応確認済みの実務ページ <span className="meta">({questionMatches.length}件)</span></h2>
             {questionMatches.length ? (
               <div className="question-list">
                 {questionMatches.slice(0, LIMIT).map((item) => (
@@ -169,7 +169,7 @@ export default async function SearchPage({
                     <span className="meta">{item.category}</span>
                     <Link href={"/questions/" + item.slug}>{item.title}</Link>
                     <span className={item.status === "verified" ? "status verified" : "status"}>
-                      {item.status === "verified" ? "確認済み" : "根拠確認中"}
+                      {item.status === "verified" ? "根拠対応確認済み" : "根拠確認中"}
                     </span>
                   </article>
                 ))}
