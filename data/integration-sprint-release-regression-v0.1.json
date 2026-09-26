@@ -1,0 +1,117 @@
+{
+  "format_version": 1,
+  "gate_id": "integration-sprint-release-regression-v0.1",
+  "issue": 173,
+  "service_id": "dayservice",
+  "purpose": "Black-box release regression for the Integration Sprint. It checks the integrated public surfaces without importing another Worker's implementation.",
+  "integration_dependencies": [
+    {
+      "issue": 170,
+      "prs": [179, 180],
+      "capability": "canonical service scope and service-facing isolation"
+    },
+    {
+      "issue": 171,
+      "prs": [178],
+      "capability": "verification wording and scoped counts"
+    },
+    {
+      "issue": 172,
+      "prs": [176],
+      "capability": "FAQ-to-authority expansion and gated notice search"
+    }
+  ],
+  "run_contract": {
+    "exact_deployment_sha_required": true,
+    "gate_result": "all cases must pass",
+    "machine_scope_only": true,
+    "human_effectiveness_claims_supported": false,
+    "note": "This gate checks integrated product behavior and wording. It does not establish human time savings, usability, productivity, legal correctness beyond recorded states, or verification inheritance across services."
+  },
+  "required_coverage": [
+    "service_isolation",
+    "verification_wording",
+    "scoped_counts",
+    "faq_to_authority_expansion",
+    "notice_retrieval"
+  ],
+  "cases": [
+    {
+      "id": "IR-01",
+      "coverage": "service_isolation",
+      "title": "dayservice detail fails closed for a homevisit-only Ordinance 37 article",
+      "path": "/rules/18",
+      "expect_status": 404
+    },
+    {
+      "id": "IR-02",
+      "coverage": "service_isolation",
+      "title": "shared Ordinance 37 article remains reachable for dayservice",
+      "path": "/rules/10",
+      "expect_status": 200,
+      "contains_text": [
+        "通所介護への適用",
+        "第105条"
+      ]
+    },
+    {
+      "id": "IR-03",
+      "coverage": "verification_wording",
+      "title": "FAQ verification wording is scoped to evidence correspondence",
+      "path": "/search?q=看護師",
+      "expect_status": 200,
+      "contains_text": [
+        "根拠対応確認済みの実務ページ",
+        "根拠対応確認済み"
+      ]
+    },
+    {
+      "id": "IR-04",
+      "coverage": "scoped_counts",
+      "title": "shared corpus counts are separated from dayservice counts",
+      "path": "/rules",
+      "expect_status": 200,
+      "contains_text": [
+        "共有コーパス条文",
+        "通所介護対象条文"
+      ],
+      "regex_text": [
+        "56\\s*共有コーパス条文",
+        "40\\s*通所介護対象条文"
+      ]
+    },
+    {
+      "id": "IR-05",
+      "coverage": "faq_to_authority_expansion",
+      "title": "matched nurse FAQ expands only to explicit authority links",
+      "path": "/search?q=看護師 常駐",
+      "expect_status": 200,
+      "contains_text": [
+        "実務FAQからたどれる根拠",
+        "明示relation:",
+        "基準省令",
+        "解釈通知",
+        "国Q&A"
+      ],
+      "href_contains": [
+        "/rules/93",
+        "/notices",
+        "/qa?"
+      ]
+    },
+    {
+      "id": "IR-06",
+      "coverage": "notice_retrieval",
+      "title": "gated interpretation-notice search surfaces provenance and currentness wording",
+      "path": "/search?q=看護師 外部",
+      "expect_status": 200,
+      "contains_text": [
+        "解釈通知",
+        "外部連携",
+        "構造化状態：KNOWN_AFTER_TEXT",
+        "現行性は別途確認が必要",
+        "厚生労働省の資料を確認"
+      ]
+    }
+  ]
+}
