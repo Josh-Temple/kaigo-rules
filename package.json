@@ -57,7 +57,7 @@
     "prepare:kaigo-ops-field-adjudication": "python scripts/prepare_kaigo_ops_field_adjudication.py",
     "validate:machine-retrieval": "python scripts/validate_machine_retrieval_benchmark.py",
     "run:machine-retrieval": "python scripts/run_machine_retrieval_benchmark.py",
-    "test:question-search": "node --experimental-strip-types --test tests/question-search-ranking.test.mjs tests/integration-sprint-c-search-inventory.test.mjs tests/question-authority-expansion.test.mjs tests/notice-search.test.mjs",
+    "test:question-search": "node --experimental-strip-types --test tests/question-search-ranking.test.mjs tests/integration-sprint-c-search-inventory.test.mjs tests/question-authority-expansion.test.mjs tests/notice-search.test.mjs tests/integration-sprint-c-retrieval-bridge.test.mjs",
     "build:homevisit-careact-index": "python scripts/build_homevisit_careact_index.py",
     "check:homevisit-careact-index": "python scripts/build_homevisit_careact_index.py --check",
     "build:homevisit-ordinance37-index": "python scripts/build_homevisit_ordinance37_index.py",
