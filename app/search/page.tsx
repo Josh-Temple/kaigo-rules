@@ -1,4 +1,5 @@
 import Link from "next/link";
+import QuestionAuthorityPanel from "../../components/question-authority-panel";
 import questionsData from "../../data/questions.json";
 import qaCorpusData from "../../data/qa-corpus.json";
 import rulesData from "../../data/ordinance37-nodes.json";
@@ -6,9 +7,12 @@ import rulesReviewData from "../../data/ordinance37-review.json";
 import feeNodesData from "../../data/remuneration-current-skeleton.json";
 import feeTextsData from "../../data/remuneration-current-text.json";
 import feeReviewData from "../../data/remuneration-review.json";
+import noticeNodesData from "../../data/notice-nodes.json";
+import sourcesData from "../../data/sources.json";
 import { feeHref, getDefaultService } from "../../lib/service-catalog";
 import { filterRecordsForService } from "../../lib/service-scope";
 import { rankQuestionMatches } from "../../lib/question-search";
+import { getSearchableNotices, matchesNoticeTerms } from "../../lib/notice-search";
 
 const questions = questionsData as Array<any>;
 const qaCorpus = qaCorpusData as Array<any>;
@@ -17,6 +21,8 @@ const rulesReview = rulesReviewData as any;
 const feeNodes = feeNodesData as Array<any>;
 const feeTexts = feeTextsData as Array<any>;
 const feeReview = feeReviewData as any;
+const noticeNodes = noticeNodesData as Array<any>;
+const sources = sourcesData as Array<any>;
 
 const LIMIT = 8;
 
@@ -84,6 +90,16 @@ export default async function SearchPage({
   const questionMatches = query
     ? rankQuestionMatches(questions, query)
     : [];
+  const searchableNotices = getSearchableNotices({
+    notices: noticeNodes,
+    questions,
+    sources,
+  });
+  const noticeMatches = terms.length
+    ? searchableNotices.filter((notice) =>
+        matchesNoticeTerms(notice, expandedTerms)
+      )
+    : [];
 
   const articleNodes = scopedRules.filter((node) => node.node_type === "article");
   const ruleMatches = terms.length
@@ -132,14 +148,18 @@ export default async function SearchPage({
     : [];
 
   const total =
-    questionMatches.length + ruleMatches.length + feeMatches.length + qaMatches.length;
+    questionMatches.length +
+    noticeMatches.length +
+    ruleMatches.length +
+    feeMatches.length +
+    qaMatches.length;
 
   return (
     <article className="answer-page wide-page">
       <p className="eyebrow">CROSS-SOURCE SEARCH</p>
       <h1>{defaultService.label}を横断検索</h1>
       <p className="lead">
-        確認済みの実務ページ、基準省令、報酬告示、厚生労働省Q&Aを同じ語で探します。
+        根拠対応確認済みの実務ページ、基準省令、解釈通知、報酬告示、厚生労働省Q&Aを同じ語で探します。
         検索結果の表示と、内容の現行性確認は分けて扱います。
       </p>
 
@@ -158,7 +178,7 @@ export default async function SearchPage({
 
       {!terms.length ? (
         <div className="notice">
-          キーワードを入力してください。確認済みの実務ページは自然文や代表的な言い換えも含めて順位付けし、基準省令などは複数語をすべて含む結果に絞り込みます。
+          キーワードを入力してください。根拠対応確認済みの実務ページは自然文や代表的な言い換えも含めて順位付けし、基準省令などは複数語をすべて含む結果に絞り込みます。
         </div>
       ) : (
         <>
@@ -168,7 +188,7 @@ export default async function SearchPage({
           </div>
 
           <section className="section">
-            <h2>確認済みの実務ページ <span className="meta">({questionMatches.length}件)</span></h2>
+            <h2>根拠対応確認済みの実務ページ <span className="meta">({questionMatches.length}件)</span></h2>
             {questionMatches.length ? (
               <div className="question-list">
                 {questionMatches.slice(0, LIMIT).map((item) => (
@@ -176,12 +196,49 @@ export default async function SearchPage({
                     <span className="meta">{item.category}</span>
                     <Link href={"/questions/" + item.slug}>{item.title}</Link>
                     <span className={item.status === "verified" ? "status verified" : "status"}>
-                      {item.status === "verified" ? "確認済み" : "根拠確認中"}
+                      {item.status === "verified" ? "根拠対応確認済み" : "根拠確認中"}
                     </span>
                   </article>
                 ))}
               </div>
             ) : <p className="meta">該当なし</p>}
+          </section>
+
+          <QuestionAuthorityPanel
+            questions={questionMatches.slice(0, LIMIT)}
+            serviceId={defaultService.service_id}
+          />
+
+          <section className="section">
+            <h2>解釈通知 <span className="meta">({noticeMatches.length}件)</span></h2>
+            {noticeMatches.length ? (
+              <div className="source-chain">
+                {noticeMatches.slice(0, LIMIT).map((notice) => {
+                  const evidenceSources = sources.filter((source) =>
+                    (notice.source_ids || []).includes(source.id)
+                  );
+                  return (
+                    <article className="source-card" key={notice.id}>
+                      <p className="meta">{(notice.path || []).join(" ＞ ")}</p>
+                      <h3>{notice.path?.at(-1) || notice.document || notice.id}</h3>
+                      <p>{excerpt(notice.editorial_summary || "")}</p>
+                      <p className="meta">
+                        構造化状態：{notice.verification_status} / 現行性は別途確認が必要
+                      </p>
+                      {evidenceSources.map((source) => (
+                        <p key={source.id}>
+                          <a href={source.url} target="_blank" rel="noreferrer">
+                            {source.publisher}の資料を確認
+                          </a>
+                          {source.note ? <span className="meta"> / {source.note}</span> : null}
+                        </p>
+                      ))}
+                    </article>
+                  );
+                })}
+              </div>
+            ) : <p className="meta">該当なし</p>}
+            {noticeMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
           <section className="section">
