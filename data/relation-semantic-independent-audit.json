@@ -3,15 +3,15 @@
   "scope": "explicit-legal-reference-relations-ordinance37-article105",
   "audit_kind": "INDEPENDENT_EXPLICIT_LEGAL_REFERENCE_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-09-24",
+  "audited_at": "2026-09-26",
   "audit_run": {
     "workflow": "Verify explicit legal-reference relations independently",
-    "run_id": 35929830286,
-    "head_sha": "dd8e10b7fc6d186f33537cb79fa7252fdfbde5a4",
+    "run_id": 36210164064,
+    "head_sha": "c27fc15010e89899416edc9173c0e6a474cd0c98",
     "parser": "python_xml_dom_minidom_plus_independent_japanese_article_reference_parser",
     "result": "PASS",
-    "artifact_id": 10780636260,
-    "artifact_digest": "sha256:c79f4415ea3c7014fe4f5982578230ee05d78ca801940c8aea6a4439101a92f5"
+    "artifact_id": 10894219773,
+    "artifact_digest": "sha256:b0d6d61d8d29db9a04b2b0470e7c0edd7ec0d136ea04e941212ae531f2703277"
   },
   "checks": [
     {
@@ -76,14 +76,14 @@
     }
   ],
   "coverage": {
-    "source_derived_structural_contains_relations": 268,
+    "source_derived_structural_contains_relations": 341,
     "non_contains_semantic_or_cross_layer_relations": 163,
     "explicit_legal_reference_relations_independently_verified": 23,
     "semantic_or_cross_layer_relations_not_yet_independently_verified": 140
   },
   "input_git_blob_shas_at_audit": {
-    "data/ordinance37-nodes.json": "238a2e77799a4aa5626c39d26d54b6a6e46eeef9",
-    "data/ordinance37-relations.json": "9c1596d8d0d4f8dac27854d954f72fec2b69f42c",
+    "data/ordinance37-nodes.json": "e1d42f60ed0ab36590ec2c6f19f6bda8fcba6206",
+    "data/ordinance37-relations.json": "e95091d7b0b2cd5860505a5cfd7f0e04135fb5bd",
     "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
     "data/fee-guidance-relations.json": "caa6b1f9e93164c066dca3e345008b10914a5b2d",
     "data/notice-ordinance-relations.json": "83a63383e63c37eec2bd1ce67e6b2a1975256d72",
