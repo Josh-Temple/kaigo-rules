@@ -11,6 +11,8 @@ on:
       - "data/care-insurance-act-nodes.json"
       - "data/ordinance37-meta.json"
       - "data/ordinance37-scope.json"
+      - "data/relation-semantic-independent-audit.json"
+      - "data/careact-internal-relation-independent-audit.json"
       - "data/remuneration-current-skeleton.json"
       - "data/sources.json"
       - ".github/workflows/verify-cross-layer-source-chains-independent.yml"
