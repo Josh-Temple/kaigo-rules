@@ -260,3 +260,17 @@ export function filterRecordsForService<T>(
     isRecordApplicableToService(serviceId, layer, recordId(record)),
   );
 }
+
+export function findRecordForService<T>(
+  serviceId: string,
+  layer: ServiceScopeLayer,
+  records: readonly T[],
+  recordId: (record: T) => string,
+  predicate: (record: T) => boolean,
+): T | undefined {
+  return records.find(
+    (record) =>
+      predicate(record) &&
+      isRecordApplicableToService(serviceId, layer, recordId(record)),
+  );
+}
