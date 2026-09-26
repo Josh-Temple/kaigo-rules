@@ -1,0 +1,86 @@
+name: Integration Sprint 174 production release gate
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: integration-sprint-174-production-release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-and-gate:
+    if: contains(github.event.head_commit.message, '[integration-174-release]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Trigger kaigo-rules production deploy
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
+        run: |
+          set -euo pipefail
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::error::Missing secret VERCEL_DEPLOY_HOOK_KAIGO_RULES"
+            exit 1
+          fi
+          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
+          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
+          echo "kaigo-rules deploy hook accepted."
+
+      - name: Verify exact production SHA and field-validation gate
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+          BASE_URL: https://kaigo-rules.vercel.app
+        run: |
+          python scripts/verify_field_validation_production.py \
+            --base-url "$BASE_URL" \
+            --expected-sha "$EXPECTED_SHA" \
+            --wait-seconds 600 \
+            --interval-seconds 15
+
+      - name: Run Integration Sprint D4 production release regression
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+          BASE_URL: https://kaigo-rules.vercel.app
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python scripts/run_integration_sprint_release_regression.py \
+            --base-url "$BASE_URL" \
+            --expected-sha "$EXPECTED_SHA" \
+            --output artifacts/integration-sprint-release-regression.json
+          cat artifacts/integration-sprint-release-regression.json
+
+      - name: Run machine retrieval benchmark on production
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+          BASE_URL: https://kaigo-rules.vercel.app
+        run: |
+          set -euo pipefail
+          python scripts/run_machine_retrieval_benchmark.py \
+            --base-url "$BASE_URL" \
+            --expected-sha "$EXPECTED_SHA" \
+            --output artifacts/machine-retrieval-v0.1.json
+          cat artifacts/machine-retrieval-v0.1.json
+
+      - name: Upload release-gate artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: integration-sprint-174-release-${{ github.sha }}
+          path: |
+            artifacts/integration-sprint-release-regression.json
+            artifacts/machine-retrieval-v0.1.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Record successful kaigo-rules deployment
+        run: |
+          git push --force origin "HEAD:refs/heads/deploy-state/kaigo-rules"
