@@ -1,0 +1,104 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_product_value_snapshot.py",
+  "metric_spec": "data/product-value-metrics-v0.1.json",
+  "service_id": "dayservice",
+  "scope": {
+    "public_route_mode": "LEGACY_ROOT",
+    "service_config": "data/services/dayservice.json",
+    "excluded_services": [
+      "homevisit"
+    ]
+  },
+  "metrics": {
+    "practical_questions_with_evidence_path": {
+      "questions_total": 12,
+      "questions_with_evidence_path": 12,
+      "coverage_rate": 1.0,
+      "missing_question_slugs": []
+    },
+    "public_items_with_complete_evidence_state": {
+      "public_items_total": 946,
+      "public_items_complete": 946,
+      "coverage_rate": 1.0,
+      "missing_source_items": [],
+      "missing_scope_items": [],
+      "missing_verification_state_items": [],
+      "breakdown": {
+        "practical_questions": {
+          "items_total": 12,
+          "items_complete": 12,
+          "source_complete": 12,
+          "scope_complete": 12,
+          "verification_state_complete": 12
+        },
+        "ordinance_articles": {
+          "items_total": 40,
+          "items_complete": 40,
+          "source_complete": 40,
+          "scope_complete": 40,
+          "verification_state_complete": 40
+        },
+        "notice_items": {
+          "items_total": 22,
+          "items_complete": 22,
+          "source_complete": 22,
+          "scope_complete": 22,
+          "verification_state_complete": 22
+        },
+        "remuneration_items": {
+          "items_total": 29,
+          "items_complete": 29,
+          "source_complete": 29,
+          "scope_complete": 29,
+          "verification_state_complete": 29
+        },
+        "qa_corpus_items": {
+          "items_total": 843,
+          "items_complete": 843,
+          "source_complete": 843,
+          "scope_complete": 843,
+          "verification_state_complete": 843
+        }
+      }
+    },
+    "unresolved_or_unverified_relations": {
+      "relations_total": 163,
+      "relations_independently_verified": 56,
+      "relations_remaining_unverified": 107,
+      "remaining_rate": 0.656442,
+      "lane_breakdown": [
+        {
+          "id": "explicit-legal-reference",
+          "status": "PASS",
+          "verified_relations": 23,
+          "evidence": "data/relation-semantic-independent-audit.json"
+        },
+        {
+          "id": "careact-internal",
+          "status": "PASS",
+          "verified_relations": 4,
+          "evidence": "data/careact-internal-relation-independent-audit.json"
+        },
+        {
+          "id": "cross-layer-source-chain",
+          "status": "PASS",
+          "verified_relations": 18,
+          "evidence": "data/cross-layer-source-chain-independent-audit.json"
+        },
+        {
+          "id": "remuneration-delegation",
+          "status": "PASS",
+          "verified_relations": 11,
+          "evidence": "data/remuneration-delegation-relation-independent-audit.json"
+        }
+      ]
+    }
+  },
+  "claims_excluded": [
+    "human task-time improvement",
+    "human effectiveness improvement",
+    "legal correctness beyond the recorded verification states",
+    "verification or publication inheritance across services"
+  ]
+}
