@@ -57,11 +57,11 @@ def main() -> None:
         fail("audit result is not PASS")
 
     run = record.get("audit_run", {})
-    if run.get("run_id") != 35931363483:
+    if run.get("run_id") != 36210342650:
         fail("unexpected audit run")
-    if run.get("head_sha") != "9b3eb34fd5e8a665a424431d5a08907b355a50e1":
+    if run.get("head_sha") != "e3d6ddb31d27332a8e4831371013701ce29b6620":
         fail("unexpected audited head SHA")
-    if run.get("artifact_digest") != "sha256:2889e2b7a491a8a428538fbcd60b9edc97875a15544139fa2418f6151a4da875":
+    if run.get("artifact_digest") != "sha256:21b194afa41170ad338b704dc30eb5832876ab9851753e64f9d1b05e98b18db7":
         fail("unexpected audit artifact digest")
     parsers = run.get("parsers", {})
     if parsers.get("egov_xml") != "python_xml_dom_minidom":
