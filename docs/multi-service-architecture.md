@@ -65,8 +65,12 @@ Its initial scope defines:
 - Rouki 25, Section 3
 - Remuneration Notice 19, fee schedule item 1, plus identified shared delegated notices
 
-The first ingestion step is complete for the Care Insurance Act only.  
-`data/services/homevisit/care-insurance-act-index.generated.json` deterministically selects 106 node references from the shared Care Insurance Act corpus without copying legal text.
+Two shared-law ingestion steps are now complete.
+
+- Care Insurance Act: `data/services/homevisit/care-insurance-act-index.generated.json` selects 106 existing node references.
+- Ordinance 37: `data/services/homevisit/ordinance37-index.generated.json` selects 165 node references covering 38 ordinary homevisit articles in Chapter 2.
+
+The Ordinance 37 shared corpus itself was expanded from 40 to 56 article nodes. The 16 newly added articles are homevisit-only within the current two-service scope; existing dayservice node semantics were preserved.
 
 This does **not** mean the service is fully ingested or verified.
 
@@ -74,7 +78,7 @@ This does **not** mean the service is fully ingested or verified.
 - service-specific currentness verification: NOT_RUN
 - human review: NOT_RUN
 - public routing: disabled
+- Rouki 25: scope defined, not reconstructed
+- remuneration: scope defined, not ingested
 
-The Ordinance 37 shared corpus currently contains 22 Chapter 2 article nodes that were already needed by dayservice, but it lacks 16 homevisit-specific direct articles, including Articles 4–7. The service therefore remains partially ingested until that source corpus is expanded and separately verified.
-
-The purpose of this stage is to prove that a second real service can reuse shared source corpora incrementally without copying the day-service implementation or overstating verification.
+The purpose of this stage is to prove that a second real service can reuse and incrementally expand shared source corpora without copying the day-service implementation or overstating verification.
