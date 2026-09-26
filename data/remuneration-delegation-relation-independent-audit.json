@@ -3,15 +3,15 @@
   "scope": "remuneration-delegation-relations-explicit-primary-source",
   "audit_kind": "INDEPENDENT_REMUNERATION_DELEGATION_RELATION_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-09-24",
+  "audited_at": "2026-09-26",
   "audit_run": {
     "workflow": "Verify remuneration delegation relations independently",
-    "run_id": 35931965818,
-    "head_sha": "556b765ecc565511f8004ed98270ce4c03fcc284",
+    "run_id": 36210655389,
+    "head_sha": "8880a09e971fc17a16075c29e831ccb64103f84d",
     "parser": "python_stdlib_htmlparser_plus_explicit_title_and_reference_rules",
     "result": "PASS",
-    "artifact_id": 10781402980,
-    "artifact_digest": "sha256:3f57c1e55b1ea9eb1f01a1a2bac8f19185d05c0ed975c27e94db0ebffddcfa6f"
+    "artifact_id": 10895875419,
+    "artifact_digest": "sha256:80818fffa4421add2c754b3748987167df714e15be5e9a7b91978c2e1a8f79ad"
   },
   "sources": {
     "notice19": {
@@ -116,7 +116,7 @@
   },
   "input_git_blob_shas_at_audit": {
     "data/remuneration-delegated-relations.json": "6d4f7047fb78a399b4a4a543266003e9c223e481",
-    "data/cross-layer-source-chain-independent-audit.json": "2b86a5c666576c2dd30407f877d4924ce014dbb3",
+    "data/cross-layer-source-chain-independent-audit.json": "54335a960be718524b1c42c740178168f2f37263",
     "scripts/verify_remuneration_delegation_relations.py": "4efb369c5ac4b3d4dc2916184a0a2553655ba7c7"
   },
   "conclusion": "All 11 remuneration delegation/cross-reference relations in the covered lane matched explicit wording or named criteria in live MHLW primary-source HTML.",
