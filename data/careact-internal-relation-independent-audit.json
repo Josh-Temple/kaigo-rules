@@ -3,15 +3,15 @@
   "scope": "care-insurance-act-internal-relations-to-article74",
   "audit_kind": "INDEPENDENT_CAREACT_INTERNAL_RELATION_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-09-24",
+  "audited_at": "2026-09-26",
   "audit_run": {
     "workflow": "Verify Care Insurance Act internal relations independently",
-    "run_id": 35930443080,
-    "head_sha": "54c49e94f46b4e46bf1d23f9a016f61ab699ff96",
+    "run_id": 36210557915,
+    "head_sha": "9fa541d874a41ab800b9b4e8f1644899807bfed4",
     "parser": "python_xml_dom_minidom_plus_explicit_reference_evidence_rules",
     "result": "PASS",
-    "artifact_id": 10780728116,
-    "artifact_digest": "sha256:6d5c4ea0402d62e866a0bc008ed37e2ac2c90ef324b079dfecee7f646d9da424"
+    "artifact_id": 10895456783,
+    "artifact_digest": "sha256:aa7f5e51f9adbc99aed7ebc395d77c7ee60814ef043139dc376ea4a05002add1"
   },
   "source": {
     "law_id": "409AC0000000123",
@@ -98,7 +98,7 @@
   "input_git_blob_shas_at_audit": {
     "data/care-insurance-act-nodes.json": "5679279462390862405d60f00b25603f8be3522e",
     "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
-    "data/relation-semantic-independent-audit.json": "8a5c068631d75ab4b1d84a2e93b528d4821baf71",
+    "data/relation-semantic-independent-audit.json": "3dcdcf5ac144833e242a9ace1b4af640e81c9a3e",
     "scripts/verify_careact_internal_relations_independent.py": "920005ed31e625b0e71a557d1f72437020b3d50b"
   },
   "conclusion": "Four Care Insurance Act internal relations to Article 74 matched live e-Gov source evidence and committed relation rows under an independent parser/evidence path.",
