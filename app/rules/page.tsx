@@ -3,6 +3,8 @@ import Link from "next/link";
 import nodesData from "../../data/ordinance37-nodes.json";
 import metaData from "../../data/ordinance37-meta.json";
 import reviewData from "../../data/ordinance37-review.json";
+import { getDefaultService } from "../../lib/service-catalog";
+import { filterRecordsForService, serviceApplicability } from "../../lib/service-scope";
 
 type RuleNode = {
   id: string;
@@ -34,8 +36,33 @@ const compareArticle = (a: RuleNode, b: RuleNode) => {
 };
 
 const articles = nodes.filter((node) => node.node_type === "article").sort(compareArticle);
-const direct = articles.filter((node) => node.service_scope === "通所介護・直接規定");
-const incorporated = articles.filter((node) => node.service_scope === "通所介護・第105条準用");
+const defaultService = getDefaultService();
+const dayServiceArticles = filterRecordsForService(
+  defaultService.service_id,
+  "ordinance37",
+  articles,
+  (node) => node.id,
+);
+const direct = dayServiceArticles.filter(
+  (node) =>
+    serviceApplicability(
+      defaultService.service_id,
+      "ordinance37",
+      node.id,
+    ).basis === "DIRECT_SCOPE",
+);
+const incorporated = dayServiceArticles.filter(
+  (node) =>
+    serviceApplicability(
+      defaultService.service_id,
+      "ordinance37",
+      node.id,
+    ).basis === "INCORPORATED_SCOPE",
+);
+const dayServiceArticleIds = new Set(dayServiceArticles.map((node) => node.id));
+const reviewedDayServiceArticles = (review.reviewed_articles || []).filter(
+  (item: any) => dayServiceArticleIds.has(item.article_id || item.id),
+);
 
 function ArticleList({ items }: { items: RuleNode[] }) {
   return (
@@ -65,23 +92,23 @@ export default function RulesPage() {
       <div className="notice">
         <strong>現在は「機械取込済み・人手確認待ち」です。</strong><br />
         e-Govの現行法令XMLから生成し、構造・参照整合は自動検査していますが、
-        全182ノードの人手照合はまだ完了していません。
+        通所介護に適用される収載条文の人手照合はまだ完了していません。
       </div>
 
       <VerificationSummary layerId="ordinance37" />
 
       <section className="rules-stats" aria-label="基準DBの収載状況">
-        <div><strong>{meta.counts.nodes_total}</strong><span>ノード</span></div>
-        <div><strong>{meta.counts.articles_total}</strong><span>対象条文</span></div>
-        <div><strong>{meta.counts.direct_articles}</strong><span>直接規定</span></div>
-        <div><strong>{meta.counts.incorporated_articles}</strong><span>準用規定</span></div>
+        <div><strong>{meta.counts.nodes_total}</strong><span>共有コーパスノード</span></div>
+        <div><strong>{meta.counts.articles_total}</strong><span>共有コーパス条文</span></div>
+        <div><strong>{dayServiceArticles.length}</strong><span>通所介護対象条文</span></div>
+        <div><strong>{reviewedDayServiceArticles.length}</strong><span>通所介護・人手確認済み</span></div>
       </section>
 
       <section className="section">
         <h2>人手チェック状況</h2>
         <p>
           確認済み：
-          <strong>{(review.reviewed_articles || []).length} / {meta.counts.articles_total}条</strong>
+          <strong>{reviewedDayServiceArticles.length} / {dayServiceArticles.length}条</strong>
         </p>
         <p className="meta">
           確認結果は生成データとは別のレビュー台帳に保存します。
@@ -103,7 +130,7 @@ export default function RulesPage() {
       <section className="section">
         <p className="eyebrow">DIRECT RULES</p>
         <h2>通所介護の直接規定</h2>
-        <p>第92条から第105条までのうち、指定通所介護本体に適用される17条です。</p>
+        <p>第92条から第105条までのうち、指定通所介護本体に適用される{direct.length}条です。</p>
         <ArticleList items={direct} />
       </section>
 
@@ -111,7 +138,7 @@ export default function RulesPage() {
         <p className="eyebrow">INCORPORATED RULES</p>
         <h2>第105条で準用される共通規定</h2>
         <p>
-          訪問介護の章などに置かれている規定のうち、第105条によって通所介護にも適用される23条です。
+          訪問介護の章などに置かれている規定のうち、第105条によって通所介護にも適用される{incorporated.length}条です。
           一部は「訪問介護員等」を「通所介護従業者」と読むなどの読替えがあります。
         </p>
         <ArticleList items={incorporated} />
