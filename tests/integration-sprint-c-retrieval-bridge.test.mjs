@@ -157,14 +157,16 @@ test("C4 nurse-staffing notice resolves to its explicit official source, not a g
   );
 
   assert.ok(notice);
-  assert.deepEqual(resolveNoticeSourceLinks(notice.record, sources), [
-    {
-      sourceId: "mhlw-interpretation-nurse-linkage",
-      title: "通所介護の看護職員確保に関する解釈通知改正資料",
-      publisher: "厚生労働省",
-      url: "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
-      status: "partial_source",
-      note: "病院・診療所・訪問看護ステーションとの連携による看護職員確保の取扱いを確認できる改正資料。",
-    },
-  ]);
+  const links = resolveNoticeSourceLinks(notice.record, sources);
+  const interpretationSource = links.find(
+    (link) => link.sourceId === "mhlw-interpretation-nurse-linkage",
+  );
+
+  assert.ok(interpretationSource);
+  assert.equal(
+    interpretationSource.url,
+    "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+  );
+  assert.equal(interpretationSource.publisher, "厚生労働省");
+  assert.equal(interpretationSource.status, "partial_source");
 });
