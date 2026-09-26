@@ -1,4 +1,5 @@
 import Link from "next/link";
+import QuestionAuthorityPanel from "../../components/question-authority-panel";
 import questionsData from "../../data/questions.json";
 import qaCorpusData from "../../data/qa-corpus.json";
 import rulesData from "../../data/ordinance37-nodes.json";
@@ -176,6 +177,11 @@ export default async function SearchPage({
               </div>
             ) : <p className="meta">該当なし</p>}
           </section>
+
+          <QuestionAuthorityPanel
+            questions={questionMatches.slice(0, LIMIT)}
+            serviceId={defaultService.service_id}
+          />
 
           <section className="section">
             <h2>基準省令 <span className="meta">({ruleMatches.length}条)</span></h2>
