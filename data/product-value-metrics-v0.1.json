@@ -43,13 +43,31 @@
       "label": "Public items with source, scope, and verification-state completeness",
       "unit": "public_item",
       "denominator": {
-        "selector": "items reachable through currently enabled public routes for a service",
-        "service_boundary": "data/services/manifest.json plus the selected service config; services with public routes disabled are excluded from the public-item denominator"
+        "selector": "canonical record families rendered as service-facing public product items on currently enabled dayservice routes",
+        "service_boundary": "shared Care Insurance Act and Ordinance 37 membership MUST come from lib/service-scope.ts; isolated service-specific datasets retain their explicit committed scope markers",
+        "record_granularity": "count the canonical rows rendered/listed/searched as product records; nested legal child nodes shown only inside an article detail are not a second denominator row, but their service isolation is separately release-regressed",
+        "included_public_families": [
+          "practical_questions",
+          "care_insurance_act_articles",
+          "ordinance_articles",
+          "notice_items",
+          "remuneration_items",
+          "remuneration_delegated_criteria",
+          "fee_guidance_items",
+          "unit_price_records",
+          "qa_corpus_items"
+        ],
+        "excluded_duplicate_or_global_surfaces": [
+          "cross-source /search duplicates the same underlying families and is not counted again",
+          "question context API duplicates practical_questions and is not counted again",
+          "/overview and /sources are global-by-design support surfaces, not service-item families",
+          "/start is an editorial guide rather than a canonical structured evidence-item family"
+        ]
       },
       "numerator": {
         "criterion": "public item satisfies source_complete AND scope_complete AND verification_state_complete",
         "source_complete": "an official source reference or canonical source-chain reference resolves",
-        "scope_complete": "the item is explicitly in the selected service scope; shared-source content must have an explicit service-scope mapping",
+        "scope_complete": "service applicability/publication scope is explicitly represented; shared legal corpora use the canonical service-scope contract and isolated datasets use explicit committed service/scope markers",
         "verification_state_complete": "the relevant layer or item exposes explicit content-verification, currentness, and human-review state, even when a state is HOLD, NOT_STARTED, NOT_REVIEWED, or equivalent"
       },
       "report_fields": [
@@ -58,13 +76,15 @@
         "coverage_rate",
         "missing_source_items",
         "missing_scope_items",
-        "missing_verification_state_items"
+        "missing_verification_state_items",
+        "breakdown"
       ],
       "guards": [
         "publication does not imply verification",
         "PASS is not required for state completeness",
         "HOLD or NOT_REVIEWED is complete state representation when explicitly recorded",
-        "service scope must not be inferred from another service"
+        "service scope must not be inferred from another service",
+        "Care Insurance Act Article 8 paragraph membership must follow canonical focus-paragraph scope rather than article presence or display labels"
       ]
     },
     {

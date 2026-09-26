@@ -46,6 +46,32 @@ class ProductValueMetricSpecTest(unittest.TestCase):
         self.assertIn("PASS is not required", guards)
         self.assertIn("service scope must not be inferred", guards)
 
+    def test_public_denominator_enumerates_every_service_item_family(self):
+        families = self.metrics[
+            "public_items_with_complete_evidence_state"
+        ]["denominator"]["included_public_families"]
+        self.assertEqual(
+            families,
+            [
+                "practical_questions",
+                "care_insurance_act_articles",
+                "ordinance_articles",
+                "notice_items",
+                "remuneration_items",
+                "remuneration_delegated_criteria",
+                "fee_guidance_items",
+                "unit_price_records",
+                "qa_corpus_items",
+            ],
+        )
+
+    def test_shared_legal_scope_must_use_canonical_contract(self):
+        metric = self.metrics["public_items_with_complete_evidence_state"]
+        boundary = metric["denominator"]["service_boundary"]
+        self.assertIn("lib/service-scope.ts", boundary)
+        guards = " ".join(metric["guards"])
+        self.assertIn("Article 8 paragraph membership", guards)
+
     def test_relation_metric_uses_registry_remaining_count(self):
         metric = self.metrics["unresolved_or_unverified_relations"]
         self.assertEqual(

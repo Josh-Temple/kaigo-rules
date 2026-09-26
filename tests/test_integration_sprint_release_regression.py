@@ -31,13 +31,49 @@ class IntegrationSprintReleaseRegressionTest(unittest.TestCase):
             },
         )
 
-    def test_service_isolation_has_fail_closed_and_shared_control_cases(self):
-        service_cases = [
-            case
+    def test_dependencies_include_final_scope_and_count_stacks(self):
+        deps = {
+            row["issue"]: set(row["prs"])
+            for row in self.fixture["integration_dependencies"]
+        }
+        self.assertTrue({179, 180, 182}.issubset(deps[170]))
+        self.assertTrue({178, 181}.issubset(deps[171]))
+        self.assertIn(176, deps[172])
+
+    def test_service_isolation_has_rule_and_care_act_boundaries(self):
+        service_cases = {
+            case["id"]: case
             for case in self.fixture["cases"]
             if case["coverage"] == "service_isolation"
-        ]
-        self.assertEqual({case["expect_status"] for case in service_cases}, {200, 404})
+        }
+        self.assertEqual(service_cases["IR-01"]["expect_status"], 404)
+        self.assertEqual(service_cases["IR-02"]["expect_status"], 200)
+        self.assertIn(
+            "この法律において「通所介護」とは",
+            service_cases["IR-07"]["contains_text"],
+        )
+        self.assertIn(
+            "この法律において「訪問介護」とは",
+            service_cases["IR-07"]["not_contains_text"],
+        )
+
+    def test_scoped_counts_cover_rules_and_law(self):
+        count_cases = {
+            case["id"]: case
+            for case in self.fixture["cases"]
+            if case["coverage"] == "scoped_counts"
+        }
+        self.assertIn(r"40\s*通所介護対象条文", count_cases["IR-04"]["regex_text"])
+        self.assertIn(r"11\s*対象条文", count_cases["IR-08"]["regex_text"])
+        self.assertIn(r"89\s*構造ノード", count_cases["IR-08"]["regex_text"])
+
+    def test_faq_authority_requires_concrete_notice_source(self):
+        case = next(row for row in self.fixture["cases"] if row["id"] == "IR-05")
+        self.assertNotIn("/notices", case["href_contains"])
+        self.assertIn(
+            "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            case["href_contains"],
+        )
 
     def test_human_effectiveness_claims_remain_disabled(self):
         contract = self.fixture["run_contract"]
@@ -63,6 +99,22 @@ class IntegrationSprintReleaseRegressionTest(unittest.TestCase):
         """
         result = evaluate_case(case, 200, body)
         self.assertTrue(result["passed"], result["errors"])
+
+    def test_evaluator_checks_forbidden_text(self):
+        case = {
+            "id": "T",
+            "coverage": "service_isolation",
+            "title": "synthetic",
+            "path": "/law/8",
+            "expect_status": 200,
+            "contains_text": ["通所介護"],
+            "not_contains_text": ["訪問介護"],
+        }
+        good = evaluate_case(case, 200, "<main>通所介護</main>")
+        bad = evaluate_case(case, 200, "<main>通所介護 訪問介護</main>")
+        self.assertTrue(good["passed"], good["errors"])
+        self.assertFalse(bad["passed"])
+        self.assertIn("forbidden text present: 訪問介護", bad["errors"])
 
     def test_evaluator_fails_when_expected_surface_is_missing(self):
         case = {

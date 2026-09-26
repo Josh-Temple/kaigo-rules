@@ -6,6 +6,18 @@
   "scope": {
     "public_route_mode": "LEGACY_ROOT",
     "service_config": "data/services/dayservice.json",
+    "canonical_service_scope_contract": "lib/service-scope.ts",
+    "public_item_families": [
+      "practical_questions",
+      "care_insurance_act_articles",
+      "ordinance_articles",
+      "notice_items",
+      "remuneration_items",
+      "remuneration_delegated_criteria",
+      "fee_guidance_items",
+      "unit_price_records",
+      "qa_corpus_items"
+    ],
     "excluded_services": [
       "homevisit"
     ]
@@ -14,13 +26,13 @@
     "practical_questions_with_evidence_path": {
       "questions_total": 12,
       "questions_with_evidence_path": 12,
-      "coverage_rate": 1.0,
+      "coverage_rate": 1,
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
-      "public_items_total": 946,
-      "public_items_complete": 946,
-      "coverage_rate": 1.0,
+      "public_items_total": 1438,
+      "public_items_complete": 1438,
+      "coverage_rate": 1,
       "missing_source_items": [],
       "missing_scope_items": [],
       "missing_verification_state_items": [],
@@ -31,6 +43,13 @@
           "source_complete": 12,
           "scope_complete": 12,
           "verification_state_complete": 12
+        },
+        "care_insurance_act_articles": {
+          "items_total": 11,
+          "items_complete": 11,
+          "source_complete": 11,
+          "scope_complete": 11,
+          "verification_state_complete": 11
         },
         "ordinance_articles": {
           "items_total": 40,
@@ -52,6 +71,27 @@
           "source_complete": 29,
           "scope_complete": 29,
           "verification_state_complete": 29
+        },
+        "remuneration_delegated_criteria": {
+          "items_total": 17,
+          "items_complete": 17,
+          "source_complete": 17,
+          "scope_complete": 17,
+          "verification_state_complete": 17
+        },
+        "fee_guidance_items": {
+          "items_total": 29,
+          "items_complete": 29,
+          "source_complete": 29,
+          "scope_complete": 29,
+          "verification_state_complete": 29
+        },
+        "unit_price_records": {
+          "items_total": 435,
+          "items_complete": 435,
+          "source_complete": 435,
+          "scope_complete": 435,
+          "verification_state_complete": 435
         },
         "qa_corpus_items": {
           "items_total": 843,

@@ -63,6 +63,7 @@ jobs:
             "/qa"
             "/law"
             "/rules"
+            "/rules/10"
             "/rules/93"
             "/rules/99"
             "/questions/nurse-staffing"
@@ -83,6 +84,28 @@ jobs:
               exit 1
             }
           done
+
+          shared_status="$(curl --silent --output /dev/null --write-out "%{http_code}" http://127.0.0.1:3000/rules/10)"
+          if [ "$shared_status" != "200" ]; then
+            echo "legitimate shared ordinance route was not available: /rules/10 ($shared_status)"
+            exit 1
+          fi
+
+          exclusive_status="$(curl --silent --output /dev/null --write-out "%{http_code}" http://127.0.0.1:3000/rules/18)"
+          if [ "$exclusive_status" != "404" ]; then
+            echo "homevisit-only ordinance route leaked into dayservice surface: /rules/18 ($exclusive_status)"
+            exit 1
+          fi
+
+          careact8_page="$(curl --fail --silent --show-error http://127.0.0.1:3000/law/8)"
+          echo "$careact8_page" | grep -F 'この法律において「通所介護」とは' >/dev/null || {
+            echo "dayservice Article 8 paragraph 7 is missing from /law/8"
+            exit 1
+          }
+          if echo "$careact8_page" | grep -F 'この法律において「訪問介護」とは' >/dev/null; then
+            echo "homevisit Article 8 paragraph 2 leaked into dayservice /law/8"
+            exit 1
+          fi
 
           curl --fail --silent --show-error http://127.0.0.1:3000/overview \
             | grep -F "算定上の留意事項" >/dev/null || {

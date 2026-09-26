@@ -38,6 +38,33 @@ class ProductValueSnapshotTest(unittest.TestCase):
         self.assertEqual(breakdown_total, metric["public_items_total"])
         self.assertEqual(breakdown_complete, metric["public_items_complete"])
 
+    def test_enabled_public_item_families_are_all_counted(self):
+        metric = self.snapshot["metrics"]["public_items_with_complete_evidence_state"]
+        self.assertEqual(metric["public_items_total"], 1438)
+        self.assertEqual(
+            set(metric["breakdown"]),
+            set(self.builder.EXPECTED_PUBLIC_FAMILIES),
+        )
+        self.assertEqual(
+            metric["breakdown"]["care_insurance_act_articles"]["items_total"],
+            11,
+        )
+        self.assertEqual(
+            metric["breakdown"]["fee_guidance_items"]["items_total"],
+            29,
+        )
+        self.assertEqual(
+            metric["breakdown"]["unit_price_records"]["items_total"],
+            435,
+        )
+
+    def test_canonical_scope_export_preserves_article8_focus_boundary(self):
+        scoped = self.builder.load_canonical_service_scope("dayservice")
+        node_ids = set(scoped["care_insurance_act"]["node_ids"])
+        self.assertIn("careact.article.8.p.7", node_ids)
+        self.assertNotIn("careact.article.8.p.2", node_ids)
+        self.assertEqual(scoped["contract"], "lib/service-scope.ts")
+
     def test_unpublished_service_is_excluded(self):
         self.assertEqual(self.snapshot["service_id"], "dayservice")
         self.assertIn("homevisit", self.snapshot["scope"]["excluded_services"])

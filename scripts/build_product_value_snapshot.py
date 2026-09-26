@@ -5,18 +5,32 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "data" / "product-value-metrics-v0.1.json"
 OUTPUT_PATH = ROOT / "data" / "product-value-snapshot-v0.1.json"
+SCOPE_EXPORTER = ROOT / "scripts" / "export_product_value_scope.mjs"
 
 REQUIRED_METRIC_IDS = {
     "practical_questions_with_evidence_path",
     "public_items_with_complete_evidence_state",
     "unresolved_or_unverified_relations",
 }
+
+EXPECTED_PUBLIC_FAMILIES = [
+    "practical_questions",
+    "care_insurance_act_articles",
+    "ordinance_articles",
+    "notice_items",
+    "remuneration_items",
+    "remuneration_delegated_criteria",
+    "fee_guidance_items",
+    "unit_price_records",
+    "qa_corpus_items",
+]
 
 
 def load_json(relative_path: str | Path) -> Any:
@@ -30,7 +44,32 @@ def ratio(numerator: int, denominator: int) -> float:
 
 def layer_state_complete(layer_by_id: dict[str, dict[str, Any]], layer_id: str) -> bool:
     layer = layer_by_id.get(layer_id) or {}
-    return all(key in layer for key in ("content_verification", "currentness", "human_review"))
+    return all(
+        key in layer
+        for key in ("content_verification", "currentness", "human_review")
+    )
+
+
+def load_canonical_service_scope(service_id: str) -> dict[str, Any]:
+    completed = subprocess.run(
+        [
+            "node",
+            "--experimental-strip-types",
+            str(SCOPE_EXPORTER),
+            "--service-id",
+            service_id,
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    payload = json.loads(completed.stdout)
+    if payload.get("contract") != "lib/service-scope.ts":
+        raise RuntimeError("canonical service-scope exporter contract drifted")
+    if payload.get("service_id") != service_id:
+        raise RuntimeError("canonical service-scope exporter returned wrong service")
+    return payload
 
 
 def question_has_evidence_path(
@@ -83,13 +122,35 @@ def question_state_complete(
     )
 
 
+def row(
+    item_id: str,
+    *,
+    source_complete: bool,
+    scope_complete: bool,
+    verification_state_complete: bool,
+) -> dict[str, Any]:
+    return {
+        "id": item_id,
+        "source_complete": bool(source_complete),
+        "scope_complete": bool(scope_complete),
+        "verification_state_complete": bool(verification_state_complete),
+    }
+
+
 def build_snapshot() -> dict[str, Any]:
     spec = load_json(SPEC_PATH)
-    metric_ids = {metric["id"] for metric in spec["metrics"]}
-    if metric_ids != REQUIRED_METRIC_IDS:
+    metrics_by_id = {metric["id"]: metric for metric in spec["metrics"]}
+    if set(metrics_by_id) != REQUIRED_METRIC_IDS:
         raise RuntimeError(
             f"metric spec mismatch: expected {sorted(REQUIRED_METRIC_IDS)}, "
-            f"got {sorted(metric_ids)}"
+            f"got {sorted(metrics_by_id)}"
+        )
+    public_spec = metrics_by_id["public_items_with_complete_evidence_state"]
+    included_families = public_spec["denominator"].get("included_public_families")
+    if included_families != EXPECTED_PUBLIC_FAMILIES:
+        raise RuntimeError(
+            "public family contract drifted: "
+            f"expected {EXPECTED_PUBLIC_FAMILIES}, got {included_families}"
         )
 
     service_manifest = load_json("data/services/manifest.json")
@@ -107,6 +168,8 @@ def build_snapshot() -> dict[str, Any]:
     )
     if not public_route_enabled:
         raise RuntimeError(f"default service public route is disabled: {default_service_id}")
+
+    canonical_scope = load_canonical_service_scope(default_service_id)
 
     questions = load_json("data/questions.json")
     sources = load_json("data/sources.json")
@@ -140,42 +203,53 @@ def build_snapshot() -> dict[str, Any]:
         service_config.get("scope_files", {}).get("questions")
         == "data/questions.json"
     )
-    question_public_rows = []
-    for item in questions:
-        slug = item["slug"]
-        source_complete = question_evidence[slug]
-        state_complete = question_state_complete(item, layer_by_id)
-        question_public_rows.append(
-            {
-                "id": f"question:{slug}",
-                "source_complete": source_complete,
-                "scope_complete": question_scope_complete,
-                "verification_state_complete": state_complete,
-            }
+    question_public_rows = [
+        row(
+            f"question:{item['slug']}",
+            source_complete=question_evidence[item["slug"]],
+            scope_complete=question_scope_complete,
+            verification_state_complete=question_state_complete(item, layer_by_id),
         )
+        for item in questions
+    ]
+
+    care_act_nodes = load_json("data/care-insurance-act-nodes.json")
+    care_act_article_ids = set(
+        canonical_scope["care_insurance_act"]["article_ids"]
+    )
+    care_act_items = [
+        item
+        for item in care_act_nodes
+        if item.get("node_type") == "article" and item.get("id") in care_act_article_ids
+    ]
+    care_act_state_complete = layer_state_complete(
+        layer_by_id, "care-insurance-act"
+    )
+    care_act_public_rows = [
+        row(
+            f"law:{item['id']}",
+            source_complete=bool(item.get("source_url")),
+            scope_complete=True,
+            verification_state_complete=care_act_state_complete,
+        )
+        for item in care_act_items
+    ]
 
     ordinance_nodes = load_json("data/ordinance37-nodes.json")
-    ordinance_meta = load_json("data/ordinance37-meta.json")
-    dayservice_article_nums = set(ordinance_meta["scope"]["direct_articles"]) | set(
-        ordinance_meta["scope"]["incorporated_articles"]
-    )
+    ordinance_article_ids = set(canonical_scope["ordinance37"]["article_ids"])
     rule_items = [
         item
         for item in ordinance_nodes
-        if item.get("node_type") == "article"
-        and item.get("article_num") in dayservice_article_nums
+        if item.get("node_type") == "article" and item.get("id") in ordinance_article_ids
     ]
-    rule_source_complete = bool(
-        ordinance_meta.get("source_page") or ordinance_meta.get("source_api_v1")
-    )
     rule_state_complete = layer_state_complete(layer_by_id, "ordinance37")
     rule_public_rows = [
-        {
-            "id": f"rule:{item['id']}",
-            "source_complete": rule_source_complete,
-            "scope_complete": bool(item.get("service_scope")),
-            "verification_state_complete": rule_state_complete,
-        }
+        row(
+            f"rule:{item['id']}",
+            source_complete=bool(item.get("source_url")),
+            scope_complete=True,
+            verification_state_complete=rule_state_complete,
+        )
         for item in rule_items
     ]
 
@@ -195,12 +269,12 @@ def build_snapshot() -> dict[str, Any]:
             for evidence in item.get("source_evidence", [])
         )
         notice_public_rows.append(
-            {
-                "id": f"notice:{item['notice_id']}",
-                "source_complete": source_complete,
-                "scope_complete": notice_scope_complete,
-                "verification_state_complete": notice_state_complete,
-            }
+            row(
+                f"notice:{item['notice_id']}",
+                source_complete=source_complete,
+                scope_complete=notice_scope_complete,
+                verification_state_complete=notice_state_complete,
+            )
         )
 
     fee_nodes = load_json("data/remuneration-current-skeleton.json")
@@ -213,14 +287,77 @@ def build_snapshot() -> dict[str, Any]:
     )
     fee_state_complete = layer_state_complete(layer_by_id, "remuneration-notices")
     fee_public_rows = [
-        {
-            "id": f"fee:{item['id']}",
-            "source_complete": fee_source_complete,
-            "scope_complete": bool(fee_namespace and item["id"].startswith(fee_namespace)),
-            "verification_state_complete": fee_state_complete,
-        }
+        row(
+            f"fee:{item['id']}",
+            source_complete=fee_source_complete,
+            scope_complete=bool(fee_namespace and item["id"].startswith(fee_namespace)),
+            verification_state_complete=fee_state_complete,
+        )
         for item in fee_items
     ]
+
+    delegated_nodes = load_json("data/remuneration-delegated-nodes.json")
+    delegated_public_rows = [
+        row(
+            f"fee-criteria:{item['id']}",
+            source_complete=(
+                item.get("source_id") in source_ids and bool(item.get("source_url"))
+            ),
+            scope_complete=bool(str(item.get("service_scope") or "").strip()),
+            verification_state_complete=fee_state_complete,
+        )
+        for item in delegated_nodes
+    ]
+
+    guidance_nodes = load_json("data/fee-guidance-current-skeleton.json")
+    guidance_scope_complete = (
+        service_config.get("scope_files", {}).get("fee_guidance")
+        == "data/fee-guidance-current-skeleton.json"
+    )
+    guidance_state_complete = layer_state_complete(
+        layer_by_id, "rouki36-dayservice"
+    )
+    guidance_public_rows = []
+    for item in guidance_nodes:
+        evidence = item.get("evidence", [])
+        source_complete = bool(evidence) and all(
+            isinstance(entry, dict) and entry.get("source_id") in source_ids
+            for entry in evidence
+        )
+        guidance_public_rows.append(
+            row(
+                f"fee-guidance:{item['id']}",
+                source_complete=source_complete,
+                scope_complete=(
+                    guidance_scope_complete
+                    and bool(str(item.get("service_scope") or "").strip())
+                ),
+                verification_state_complete=guidance_state_complete,
+            )
+        )
+
+    unit_rates = load_json("data/unit-price-dayservice.json")
+    unit_assignments = load_json("data/unit-price-region-assignments.json")
+    rate_ids = {item["id"] for item in unit_rates}
+    unit_state_complete = layer_state_complete(layer_by_id, "unit-price")
+    unit_price_public_rows = [
+        row(
+            f"unit-price:{item['id']}",
+            source_complete=item.get("source_id") in source_ids,
+            scope_complete=item.get("service") == "通所介護",
+            verification_state_complete=unit_state_complete,
+        )
+        for item in unit_rates
+    ]
+    unit_price_public_rows.extend(
+        row(
+            f"unit-region:{item['id']}",
+            source_complete=item.get("source_id") in source_ids,
+            scope_complete=item.get("unit_price_id") in rate_ids,
+            verification_state_complete=unit_state_complete,
+        )
+        for item in unit_assignments
+    )
 
     qa_corpus = load_json("data/qa-corpus.json")
     qa_meta = load_json("data/qa-corpus-meta.json")
@@ -236,27 +373,34 @@ def build_snapshot() -> dict[str, Any]:
     )
     qa_state_complete = layer_state_complete(layer_by_id, "qa-corpus")
     qa_public_rows = [
-        {
-            "id": f"qa-corpus:{index + 1}",
-            "source_complete": qa_source_complete,
-            "scope_complete": qa_scope_complete,
-            "verification_state_complete": qa_state_complete,
-        }
+        row(
+            f"qa-corpus:{index + 1}",
+            source_complete=qa_source_complete,
+            scope_complete=qa_scope_complete,
+            verification_state_complete=qa_state_complete,
+        )
         for index in range(len(qa_corpus))
     ]
 
     families = {
         "practical_questions": question_public_rows,
+        "care_insurance_act_articles": care_act_public_rows,
         "ordinance_articles": rule_public_rows,
         "notice_items": notice_public_rows,
         "remuneration_items": fee_public_rows,
+        "remuneration_delegated_criteria": delegated_public_rows,
+        "fee_guidance_items": guidance_public_rows,
+        "unit_price_records": unit_price_public_rows,
         "qa_corpus_items": qa_public_rows,
     }
-    all_public_rows = [row for rows in families.values() for row in rows]
+    if list(families) != EXPECTED_PUBLIC_FAMILIES:
+        raise RuntimeError("builder public family order/contract drifted")
 
-    def is_complete(row: dict[str, Any]) -> bool:
+    all_public_rows = [item for rows in families.values() for item in rows]
+
+    def is_complete(item: dict[str, Any]) -> bool:
         return all(
-            row[key]
+            item[key]
             for key in (
                 "source_complete",
                 "scope_complete",
@@ -265,28 +409,28 @@ def build_snapshot() -> dict[str, Any]:
         )
 
     public_total = len(all_public_rows)
-    public_complete = sum(1 for row in all_public_rows if is_complete(row))
+    public_complete = sum(1 for item in all_public_rows if is_complete(item))
     missing_source = sorted(
-        row["id"] for row in all_public_rows if not row["source_complete"]
+        item["id"] for item in all_public_rows if not item["source_complete"]
     )
     missing_scope = sorted(
-        row["id"] for row in all_public_rows if not row["scope_complete"]
+        item["id"] for item in all_public_rows if not item["scope_complete"]
     )
     missing_state = sorted(
-        row["id"]
-        for row in all_public_rows
-        if not row["verification_state_complete"]
+        item["id"]
+        for item in all_public_rows
+        if not item["verification_state_complete"]
     )
 
     public_breakdown = {}
     for family, rows in families.items():
         public_breakdown[family] = {
             "items_total": len(rows),
-            "items_complete": sum(1 for row in rows if is_complete(row)),
-            "source_complete": sum(1 for row in rows if row["source_complete"]),
-            "scope_complete": sum(1 for row in rows if row["scope_complete"]),
+            "items_complete": sum(1 for item in rows if is_complete(item)),
+            "source_complete": sum(1 for item in rows if item["source_complete"]),
+            "scope_complete": sum(1 for item in rows if item["scope_complete"]),
             "verification_state_complete": sum(
-                1 for row in rows if row["verification_state_complete"]
+                1 for item in rows if item["verification_state_complete"]
             ),
         }
 
@@ -305,6 +449,8 @@ def build_snapshot() -> dict[str, Any]:
         "scope": {
             "public_route_mode": routing.get("current_mode"),
             "service_config": service_config_path,
+            "canonical_service_scope_contract": canonical_scope["contract"],
+            "public_item_families": EXPECTED_PUBLIC_FAMILIES,
             "excluded_services": [
                 item["service_id"]
                 for item in service_manifest["services"]

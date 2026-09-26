@@ -7,17 +7,26 @@
   "integration_dependencies": [
     {
       "issue": 170,
-      "prs": [179, 180],
-      "capability": "canonical service scope and service-facing isolation"
+      "prs": [
+        179,
+        180,
+        182
+      ],
+      "capability": "canonical service scope, service-facing isolation, and cross-service regressions"
     },
     {
       "issue": 171,
-      "prs": [178],
-      "capability": "verification wording and scoped counts"
+      "prs": [
+        178,
+        181
+      ],
+      "capability": "verification wording and canonical scoped counts"
     },
     {
       "issue": 172,
-      "prs": [176],
+      "prs": [
+        176
+      ],
       "capability": "FAQ-to-authority expansion and gated notice search"
     }
   ],
@@ -68,7 +77,7 @@
     {
       "id": "IR-04",
       "coverage": "scoped_counts",
-      "title": "shared corpus counts are separated from dayservice counts",
+      "title": "shared Ordinance 37 corpus counts are separated from dayservice counts",
       "path": "/rules",
       "expect_status": 200,
       "contains_text": [
@@ -83,7 +92,7 @@
     {
       "id": "IR-05",
       "coverage": "faq_to_authority_expansion",
-      "title": "matched nurse FAQ expands only to explicit authority links",
+      "title": "matched nurse FAQ expands through explicit relations to concrete authority destinations",
       "path": "/search?q=看護師 常駐",
       "expect_status": 200,
       "contains_text": [
@@ -95,7 +104,7 @@
       ],
       "href_contains": [
         "/rules/93",
-        "/notices",
+        "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
         "/qa?"
       ]
     },
@@ -111,6 +120,34 @@
         "構造化状態：KNOWN_AFTER_TEXT",
         "現行性は別途確認が必要",
         "厚生労働省の資料を確認"
+      ]
+    },
+    {
+      "id": "IR-07",
+      "coverage": "service_isolation",
+      "title": "Care Insurance Act Article 8 keeps dayservice paragraph 7 and excludes homevisit paragraph 2",
+      "path": "/law/8",
+      "expect_status": 200,
+      "contains_text": [
+        "この法律において「通所介護」とは"
+      ],
+      "not_contains_text": [
+        "この法律において「訪問介護」とは"
+      ]
+    },
+    {
+      "id": "IR-08",
+      "coverage": "scoped_counts",
+      "title": "Care Insurance Act list uses canonical dayservice scope counts",
+      "path": "/law",
+      "expect_status": 200,
+      "contains_text": [
+        "対象条文",
+        "構造ノード"
+      ],
+      "regex_text": [
+        "11\\s*対象条文",
+        "89\\s*構造ノード"
       ]
     }
   ]
