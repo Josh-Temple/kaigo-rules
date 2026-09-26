@@ -1,3 +1,4 @@
+// #171 B3/B4 regression: service-specific counts must use #170's canonical scope contract.
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
