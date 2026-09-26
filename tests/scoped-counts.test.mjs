@@ -1,3 +1,4 @@
+// Revalidated against revised A2 head 74f5b4c4723dd50974107798d8c01d42339e191a.
 // #171 B3/B4 regression: service-specific counts must use #170's canonical scope contract.
 import test from "node:test";
 import assert from "node:assert/strict";
