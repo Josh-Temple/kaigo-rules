@@ -44,6 +44,7 @@ type Ordinance37Scope = {
 
 type CareActScope = {
   articles?: string[];
+  focus_paragraphs?: Record<string, string[]>;
 };
 
 type HomevisitCareActIndex = {
@@ -84,6 +85,11 @@ const careActHomevisitDefinitionNodeIds = new Set(
 const careActHomevisitSharedCoreNodeIds = new Set(
   (homevisitCareActIndex.node_ids?.shared_core || []).map(String),
 );
+
+const careActParagraphNumber = (recordId: string): string | null => {
+  const match = recordId.match(/^careact\.article\.[0-9]+(?:-[0-9]+)?\.p\.([0-9]+(?:-[0-9]+)?)(?:\.|$)/);
+  return match?.[1] || null;
+};
 
 const articleNumber = (
   layer: ServiceScopeLayer,
@@ -141,7 +147,16 @@ const resolveCareInsuranceAct = (recordId: string) => {
   if (!article) return memberships;
 
   if (careActDayserviceArticles.has(article)) {
-    addMembership(memberships, "dayservice", "SERVICE_SCOPE");
+    const articleRoot = `careact.article.${article}`;
+    if (recordId === articleRoot) {
+      addMembership(memberships, "dayservice", "SERVICE_SCOPE");
+    } else {
+      const paragraph = careActParagraphNumber(recordId);
+      const focusParagraphs = careActScope.focus_paragraphs?.[article] || [];
+      if (paragraph && focusParagraphs.includes(paragraph)) {
+        addMembership(memberships, "dayservice", "SERVICE_SCOPE");
+      }
+    }
   }
 
   if (careActHomevisitDefinitionNodeIds.has(recordId)) {
