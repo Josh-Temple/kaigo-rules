@@ -1,4 +1,5 @@
 import Link from "next/link";
+import QuestionAuthorityPanel from "../../components/question-authority-panel";
 import questionsData from "../../data/questions.json";
 import qaCorpusData from "../../data/qa-corpus.json";
 import rulesData from "../../data/ordinance37-nodes.json";
@@ -6,8 +7,11 @@ import rulesReviewData from "../../data/ordinance37-review.json";
 import feeNodesData from "../../data/remuneration-current-skeleton.json";
 import feeTextsData from "../../data/remuneration-current-text.json";
 import feeReviewData from "../../data/remuneration-review.json";
+import noticeNodesData from "../../data/notice-nodes.json";
+import sourcesData from "../../data/sources.json";
 import { feeHref, getDefaultService } from "../../lib/service-catalog";
 import { rankQuestionMatches } from "../../lib/question-search";
+import { getSearchableNotices, matchesNoticeTerms } from "../../lib/notice-search";
 
 const questions = questionsData as Array<any>;
 const qaCorpus = qaCorpusData as Array<any>;
@@ -16,6 +20,8 @@ const rulesReview = rulesReviewData as any;
 const feeNodes = feeNodesData as Array<any>;
 const feeTexts = feeTextsData as Array<any>;
 const feeReview = feeReviewData as any;
+const noticeNodes = noticeNodesData as Array<any>;
+const sources = sourcesData as Array<any>;
 
 const LIMIT = 8;
 
@@ -77,6 +83,16 @@ export default async function SearchPage({
   const questionMatches = query
     ? rankQuestionMatches(questions, query)
     : [];
+  const searchableNotices = getSearchableNotices({
+    notices: noticeNodes,
+    questions,
+    sources,
+  });
+  const noticeMatches = terms.length
+    ? searchableNotices.filter((notice) =>
+        matchesNoticeTerms(notice, expandedTerms)
+      )
+    : [];
 
   const articleNodes = rules.filter((node) => node.node_type === "article");
   const ruleMatches = terms.length
@@ -125,7 +141,11 @@ export default async function SearchPage({
     : [];
 
   const total =
-    questionMatches.length + ruleMatches.length + feeMatches.length + qaMatches.length;
+    questionMatches.length +
+    noticeMatches.length +
+    ruleMatches.length +
+    feeMatches.length +
+    qaMatches.length;
 
   return (
     <article className="answer-page wide-page">
@@ -175,6 +195,43 @@ export default async function SearchPage({
                 ))}
               </div>
             ) : <p className="meta">該当なし</p>}
+          </section>
+
+          <QuestionAuthorityPanel
+            questions={questionMatches.slice(0, LIMIT)}
+            serviceId={defaultService.service_id}
+          />
+
+          <section className="section">
+            <h2>解釈通知 <span className="meta">({noticeMatches.length}件)</span></h2>
+            {noticeMatches.length ? (
+              <div className="source-chain">
+                {noticeMatches.slice(0, LIMIT).map((notice) => {
+                  const evidenceSources = sources.filter((source) =>
+                    (notice.source_ids || []).includes(source.id)
+                  );
+                  return (
+                    <article className="source-card" key={notice.id}>
+                      <p className="meta">{(notice.path || []).join(" ＞ ")}</p>
+                      <h3>{notice.path?.at(-1) || notice.document || notice.id}</h3>
+                      <p>{excerpt(notice.editorial_summary || "")}</p>
+                      <p className="meta">
+                        構造化状態：{notice.verification_status} / 現行性は別途確認が必要
+                      </p>
+                      {evidenceSources.map((source) => (
+                        <p key={source.id}>
+                          <a href={source.url} target="_blank" rel="noreferrer">
+                            {source.publisher}の資料を確認
+                          </a>
+                          {source.note ? <span className="meta"> / {source.note}</span> : null}
+                        </p>
+                      ))}
+                    </article>
+                  );
+                })}
+              </div>
+            ) : <p className="meta">該当なし</p>}
+            {noticeMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
           <section className="section">
