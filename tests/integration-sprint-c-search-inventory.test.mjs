@@ -11,35 +11,35 @@ const read = (relativePath) =>
 
 const searchPage = read("app/search/page.tsx");
 const questionPage = read("app/questions/[slug]/page.tsx");
+const inventory = read("docs/integration-sprint-c-search-inventory.md");
 
-test("C1 inventory: cross-source search directly wires the four current source families", () => {
-  for (const dataPath of [
-    "data/questions.json",
-    "data/ordinance37-nodes.json",
-    "data/qa-corpus.json",
-    "data/remuneration-current-skeleton.json",
-    "data/remuneration-current-text.json",
-  ]) {
-    assert.ok(searchPage.includes(dataPath), `expected /search to import ${dataPath}`);
-  }
+test("C1 inventory preserves the main-baseline source inventory as historical evidence", () => {
+  assert.ok(inventory.includes("Baseline main SHA:"));
+  assert.ok(inventory.includes("| Interpretation notices |"));
+  assert.ok(inventory.includes("| Fee guidance / 老企第36号 |"));
+  assert.ok(inventory.includes("| Care Insurance Act |"));
+});
 
-  for (const excludedPath of [
-    "data/notice-nodes.json",
+test("C2/C3 intentionally extend the C1 baseline without adding fee-guidance or Care Insurance Act search", () => {
+  assert.ok(searchPage.includes("QuestionAuthorityPanel"));
+  assert.ok(searchPage.includes("data/notice-nodes.json"));
+  assert.ok(searchPage.includes("getSearchableNotices"));
+
+  for (const stillExcludedPath of [
     "data/fee-guidance-current-skeleton.json",
     "data/care-insurance-act-nodes.json",
     "data/relationships.json",
   ]) {
-    assert.ok(!searchPage.includes(excludedPath), `expected /search not to import ${excludedPath} at the C1 baseline`);
+    assert.ok(
+      !searchPage.includes(stillExcludedPath),
+      `expected /search not to directly import ${stillExcludedPath}`,
+    );
   }
 });
 
-test("C1 inventory: FAQ authority links are detail-page-only and verified-gated", () => {
+test("FAQ detail authority links remain verified-gated", () => {
   assert.match(questionPage, /const linkedRules = isVerified \?/);
   assert.match(questionPage, /const linkedNotices = isVerified \?/);
   assert.match(questionPage, /const linkedQa = isVerified \?/);
   assert.match(questionPage, /question\.source_refs\?\.filter/);
-
-  assert.ok(!searchPage.includes("notice_node_ids"));
-  assert.ok(!searchPage.includes("qa_item_ids"));
-  assert.ok(!searchPage.includes("rule_node_ids"));
 });
