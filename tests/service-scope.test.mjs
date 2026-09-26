@@ -71,7 +71,31 @@ test("shared Care Insurance Act core is explicit for both services", () => {
   ]);
 });
 
-test("homevisit service-definition index does not inherit all Article 8 nodes", () => {
+test("mixed-scope Care Insurance Act Article 8 keeps node-level service isolation", () => {
+  assert.equal(
+    isRecordApplicableToService(
+      "dayservice",
+      "care_insurance_act",
+      "careact.article.8",
+    ),
+    true,
+  );
+  assert.equal(
+    isRecordApplicableToService(
+      "dayservice",
+      "care_insurance_act",
+      "careact.article.8.p.7",
+    ),
+    true,
+  );
+  assert.equal(
+    isRecordApplicableToService(
+      "dayservice",
+      "care_insurance_act",
+      "careact.article.8.p.2",
+    ),
+    false,
+  );
   assert.equal(
     isRecordApplicableToService(
       "homevisit",
@@ -87,14 +111,6 @@ test("homevisit service-definition index does not inherit all Article 8 nodes", 
       "careact.article.8.p.7",
     ),
     false,
-  );
-  assert.equal(
-    isRecordApplicableToService(
-      "dayservice",
-      "care_insurance_act",
-      "careact.article.8.p.7",
-    ),
-    true,
   );
 });
 
