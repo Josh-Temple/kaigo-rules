@@ -3,7 +3,7 @@ name: Update Ordinance 37 database
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, feat/homevisit-ordinance37-corpus-expansion-20260926]
     paths:
       - ".github/workflows/update-ordinance37.yml"
       - "scripts/import_egov_ordinance37.py"
