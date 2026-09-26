@@ -48,7 +48,11 @@ The exact node index is used for homevisit so a service never receives a child n
 
 For `dayservice`:
 
-- `SERVICE_SCOPE`: the article is in `data/care-insurance-act-scope.json#articles`.
+- the article root is applicable when the article is in `data/care-insurance-act-scope.json#articles`;
+- descendant nodes are applicable only when their paragraph is explicitly listed in `focus_paragraphs` for that article;
+- an article being in `articles` does **not** make every descendant node applicable.
+
+This keeps mixed-scope articles isolated. For Article 8, the dayservice root remains available as a container, paragraph 7 is applicable, and paragraph 2 is excluded.
 
 For `homevisit`:
 
@@ -79,8 +83,10 @@ Likewise, the Care Insurance Act designated-home-service core can be shared whil
 The contract derives applicability from committed scope/index evidence:
 
 1. service-specific generated node indexes where they exist;
-2. committed service/layer scope files;
+2. committed service/layer scope files, including paragraph-level selectors such as `focus_paragraphs`;
 3. service catalog only for validating whether a `service_id` is known.
+
+For hierarchical legal corpora, parent membership must not be widened to all descendants unless descendant applicability is explicitly committed.
 
 It deliberately does **not** derive applicability from:
 
