@@ -45,6 +45,30 @@ def main() -> None:
     if benchmark.get("relation_to_human_validation") != "COMPLEMENTARY_NOT_SUBSTITUTE":
         errors.append("machine retrieval: human-validation relationship drifted")
 
+    reporting = benchmark.get("reporting_contract") or {}
+    machine_reporting = reporting.get("machine_retrieval") or {}
+    human_reporting = reporting.get("human_effectiveness") or {}
+    if machine_reporting.get("status") != "MEASURED":
+        errors.append("machine retrieval: machine reporting status must be MEASURED")
+    if machine_reporting.get("evaluation_kind") != "FIXED_QUERY_MACHINE_RETRIEVAL":
+        errors.append("machine retrieval: evaluation_kind drifted")
+    if not machine_reporting.get("claims_supported"):
+        errors.append("machine retrieval: machine claims_supported must be explicit")
+    if human_reporting.get("status") != "NOT_EVALUATED":
+        errors.append("machine retrieval: human effectiveness must remain NOT_EVALUATED")
+    if human_reporting.get("metrics") != []:
+        errors.append("machine retrieval: human effectiveness metrics must stay empty")
+    unsupported = set(human_reporting.get("claims_not_supported") or [])
+    required_unsupported = {
+        "human task-time improvement",
+        "human usability improvement",
+        "human productivity or workflow-effectiveness improvement",
+    }
+    if not required_unsupported.issubset(unsupported):
+        errors.append("machine retrieval: human-effectiveness exclusions are incomplete")
+    if not str(human_reporting.get("required_evidence") or "").strip():
+        errors.append("machine retrieval: human effectiveness requires separate evidence")
+
     pilot_rows = pilot.get("questions", [])
     pilot_by_id = {row["id"]: row for row in pilot_rows}
     if len(pilot_by_id) != 10:
