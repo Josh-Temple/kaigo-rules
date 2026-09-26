@@ -57,7 +57,7 @@ def sentence_text(container, sentence_tag):
     target = container.find(sentence_tag)
     return text_of(target)
 
-def collect_items(parent, article_num, paragraph_num, parent_id, path, nodes, relations, service_scope, source_locator):
+def collect_items(parent, article_num, paragraph_num, parent_id, path, nodes, relations, service_scope, applicable_via, source_locator):
     tag_levels = {f"Subitem{i}": f"s{i}" for i in range(1, 11)}
     for child in list(parent):
         if child.tag == "Item":
@@ -99,16 +99,16 @@ def collect_items(parent, article_num, paragraph_num, parent_id, path, nodes, re
             "official_text": body,
             "text_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest(),
             "service_scope": service_scope,
-            "applicable_via": None if service_scope == "通所介護・直接規定" else "ordinance37.article.105",
+            "applicable_via": applicable_via,
             "source_url": SOURCE_PAGE,
             "source_locator": source_locator + " " + " ".join(node_path[-2:]),
             "verification_status": "IMPORTED_NEEDS_HUMAN_CHECK",
             "parent_id": parent_id
         })
         relations.append({"from": parent_id, "relation": "contains", "to": nid})
-        collect_items(child, article_num, paragraph_num, nid, node_path, nodes, relations, service_scope, source_locator)
+        collect_items(child, article_num, paragraph_num, nid, node_path, nodes, relations, service_scope, applicable_via, source_locator)
 
-def parse_article(article, structural_path, service_scope, nodes, relations):
+def parse_article(article, structural_path, service_scope, applicable_via, nodes, relations):
     article_num = canonical_num(article.attrib.get("Num"))
     article_title = direct_child_text(article, "ArticleTitle")
     caption = direct_child_text(article, "ArticleCaption")
@@ -152,16 +152,16 @@ def parse_article(article, structural_path, service_scope, nodes, relations):
             "official_text": body,
             "text_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest(),
             "service_scope": service_scope,
-            "applicable_via": None if service_scope == "通所介護・直接規定" else "ordinance37.article.105",
+            "applicable_via": applicable_via,
             "source_url": SOURCE_PAGE,
             "source_locator": locator + f" 第{pnum}項",
             "verification_status": "IMPORTED_NEEDS_HUMAN_CHECK",
             "parent_id": aid
         })
         relations.append({"from": aid, "relation": "contains", "to": pid})
-        collect_items(paragraph, article_num, pnum, pid, ppath, nodes, relations, service_scope, locator)
+        collect_items(paragraph, article_num, pnum, pid, ppath, nodes, relations, service_scope, applicable_via, locator)
 
-def walk(element, path, targets, direct_set, common_set, nodes, relations, found):
+def walk(element, path, targets, direct_set, common_set, additional_service_scopes, nodes, relations, found):
     current_path = list(path)
     if element.tag in STRUCTURAL:
         title = direct_child_text(element, STRUCTURAL[element.tag])
@@ -171,8 +171,32 @@ def walk(element, path, targets, direct_set, common_set, nodes, relations, found
     if element.tag == "Article":
         num = canonical_num(element.attrib.get("Num"))
         if num in targets:
-            scope = "通所介護・直接規定" if num in direct_set else "通所介護・第105条準用"
-            parse_article(element, current_path, scope, nodes, relations)
+            if num in direct_set:
+                service_scope = "通所介護・直接規定"
+                applicable_via = None
+            elif num in common_set:
+                service_scope = "通所介護・第105条準用"
+                applicable_via = "ordinance37.article.105"
+            else:
+                matches = [
+                    item
+                    for item in additional_service_scopes
+                    if num in set(item.get("articles", []))
+                ]
+                if len(matches) != 1:
+                    raise RuntimeError(
+                        f"Article {num} has ambiguous additional service scope: {len(matches)} matches"
+                    )
+                service_scope = f"{matches[0]['service_label']}・直接規定"
+                applicable_via = None
+            parse_article(
+                element,
+                current_path,
+                service_scope,
+                applicable_via,
+                nodes,
+                relations,
+            )
             found.add(num)
         return
 
@@ -182,7 +206,7 @@ def walk(element, path, targets, direct_set, common_set, nodes, relations, found
     for child in list(element):
         if child.tag in {"TOC", "SupplProvision"}:
             continue
-        walk(child, current_path, targets, direct_set, common_set, nodes, relations, found)
+        walk(child, current_path, targets, direct_set, common_set, additional_service_scopes, nodes, relations, found)
 
 def current_revision_info(payload):
     revisions = payload.get("revisions") if isinstance(payload, dict) else None
@@ -212,7 +236,18 @@ def main():
     scope = json.loads(SCOPE_PATH.read_text(encoding="utf-8"))
     direct_set = set(scope["direct_articles"])
     common_set = set(scope["incorporated_articles"])
-    targets = direct_set | common_set
+    additional_service_scopes = scope.get("additional_service_direct_scopes", [])
+    additional_targets = set()
+    for item in additional_service_scopes:
+        if not item.get("service_id") or not item.get("service_label"):
+            raise RuntimeError("additional service scope requires service_id and service_label")
+        articles = set(item.get("articles", []))
+        if not articles:
+            raise RuntimeError(
+                f"additional service scope {item.get('service_id')} has no articles"
+            )
+        additional_targets |= articles
+    targets = direct_set | common_set | additional_targets
 
     xml_bytes = fetch(API_V1)
     revisions_bytes = fetch(REVISIONS_V2)
@@ -229,7 +264,7 @@ def main():
     nodes = []
     relations = []
     found = set()
-    walk(main_provision, [], targets, direct_set, common_set, nodes, relations, found)
+    walk(main_provision, [], targets, direct_set, common_set, additional_service_scopes, nodes, relations, found)
 
     missing = sorted(targets - found)
     if missing:
@@ -273,13 +308,18 @@ def main():
         "scope": {
             "direct_articles": scope["direct_articles"],
             "incorporated_articles": scope["incorporated_articles"],
-            "excluded_initial_scope": scope["excluded_initial_scope"]
+            "excluded_initial_scope": scope["excluded_initial_scope"],
+            "additional_service_direct_scopes": scope.get("additional_service_direct_scopes", [])
         },
         "counts": {
             "nodes_total": len(nodes),
             "articles_total": len(article_nodes),
             "direct_articles": len([n for n in article_nodes if n["service_scope"] == "通所介護・直接規定"]),
             "incorporated_articles": len([n for n in article_nodes if n["service_scope"] == "通所介護・第105条準用"]),
+            "additional_service_only_articles": len([
+                n for n in article_nodes
+                if n["service_scope"] not in {"通所介護・直接規定", "通所介護・第105条準用"}
+            ]),
             "relations": len(relations),
             "application_rules": len(application_rules)
         },
