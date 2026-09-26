@@ -46,13 +46,13 @@ def main() -> None:
         fail("audit result is not PASS")
 
     run = record.get("audit_run", {})
-    if run.get("run_id") != 35931965818:
+    if run.get("run_id") != 36210655389:
         fail("unexpected audit run")
-    if run.get("head_sha") != "556b765ecc565511f8004ed98270ce4c03fcc284":
+    if run.get("head_sha") != "8880a09e971fc17a16075c29e831ccb64103f84d":
         fail("unexpected audited head SHA")
     if run.get("parser") != "python_stdlib_htmlparser_plus_explicit_title_and_reference_rules":
         fail("unexpected parser")
-    if run.get("artifact_digest") != "sha256:3f57c1e55b1ea9eb1f01a1a2bac8f19185d05c0ed975c27e94db0ebffddcfa6f":
+    if run.get("artifact_digest") != "sha256:80818fffa4421add2c754b3748987167df714e15be5e9a7b91978c2e1a8f79ad":
         fail("unexpected artifact digest")
 
     expected_hashes = {
