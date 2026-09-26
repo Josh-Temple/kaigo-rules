@@ -22,3 +22,37 @@ This inventory covers the user-visible verification wording on the top page, cro
 ## Boundary for this work unit
 
 This unit changes only the ambiguous FAQ list/search wording and adds regression coverage. It does not change currentness, provenance, relation verification, publication gates, or service-scope logic. Scoped corpus/service counts remain for B3 after the Sprint A service-scope contract is available.
+
+
+## B3/B4 handoff to Sprint A canonical scope contract
+
+As of PR #179, Sprint A defines the canonical helper in `lib/service-scope.ts`.
+
+B must not duplicate that logic before it lands on main. Once available on the B branch, the remaining B3/B4 integration should use the helper directly:
+
+```ts
+const dayServiceArticles = filterRecordsForService(
+  defaultService.service_id,
+  "ordinance37",
+  articles,
+  (node) => node.id,
+);
+```
+
+The service-specific count denominator must be derived from that filtered collection, not from:
+
+- `meta.counts.articles_total` (shared corpus total);
+- fixed historical values such as 182 nodes;
+- Japanese `service_scope` labels;
+- corpus presence alone.
+
+The final B4 regression should assert through the canonical helper that:
+
+- `ordinance37.article.18` is excluded from dayservice;
+- `ordinance37.article.10` remains included for dayservice as an incorporated/shared article;
+- `ordinance37.article.100` remains included for dayservice as a direct article;
+- the current dayservice article count is 40;
+- the shared corpus article count remains separately visible as 56;
+- adding or retaining homevisit-only records cannot increase the dayservice denominator.
+
+This handoff does not change verification/currentness/human-review/publication state. It only ensures that B's service-specific counts consume the same applicability contract that Sprint A will use for search/detail isolation.
