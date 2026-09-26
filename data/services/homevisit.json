@@ -24,7 +24,8 @@
     "human_review_complete": false
   },
   "ingestion_indexes": {
-    "care_insurance_act": "data/services/homevisit/care-insurance-act-index.generated.json"
+    "care_insurance_act": "data/services/homevisit/care-insurance-act-index.generated.json",
+    "ordinance37": "data/services/homevisit/ordinance37-index.generated.json"
   },
   "ingestion_layers": {
     "care_insurance_act": {
@@ -33,50 +34,10 @@
       "note": "訪問介護の定義（第8条第1・2項）と指定居宅サービス共通骨格を、共有介護保険法コーパスから本文複製なしで参照する。"
     },
     "ordinance37": {
-      "status": "SHARED_CORPUS_INCOMPLETE_FOR_HOMEVISIT",
-      "present_direct_article_numbers": [
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "19",
-        "21",
-        "26",
-        "27",
-        "30-2",
-        "32",
-        "33",
-        "34",
-        "35",
-        "36",
-        "37-2",
-        "38"
-      ],
-      "missing_direct_article_numbers": [
-        "4",
-        "5",
-        "6",
-        "7",
-        "18",
-        "20",
-        "22",
-        "23",
-        "24",
-        "25",
-        "28",
-        "29",
-        "30",
-        "31",
-        "37",
-        "39"
-      ],
-      "note": "現共有コーパスは通所介護で準用する条文中心。訪問介護固有条文を追加取得するまで層全体のingested扱いにしない。"
+      "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
+      "selected_nodes": 165,
+      "selected_articles": 38,
+      "note": "通常の指定訪問介護（第二章第4条〜第39条。共生型・基準該当を除く）を共有省令37号コーパスから本文複製なしで参照する。独立検証・currentness・human reviewは訪問介護として別途実施する。"
     },
     "rouki25": {
       "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED"
