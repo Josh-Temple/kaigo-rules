@@ -1,0 +1,98 @@
+{
+  "format_version": 1,
+  "issue": 173,
+  "title": "Kaigo Rules product-value metrics v0.1",
+  "purpose": "Measure whether structured repository data becomes usable public product coverage without collapsing provenance, service scope, verification, currentness, or human-review states.",
+  "global_guards": [
+    "These are repository-state coverage metrics, not claims about human task time, user effectiveness, clinical correctness, or legal advice quality.",
+    "A complete verification state means the relevant state is explicitly represented; it does not mean PASS, HUMAN_VERIFIED, or VERIFIED_CURRENT.",
+    "Verification or publication state from one service must never be inherited by another service.",
+    "Relations lacking independent audit coverage are counted as unresolved/unverified, not as incorrect."
+  ],
+  "metrics": [
+    {
+      "id": "practical_questions_with_evidence_path",
+      "label": "Practical questions with an evidence path",
+      "unit": "question",
+      "denominator": {
+        "dataset": "data/questions.json",
+        "selector": "all entries"
+      },
+      "numerator": {
+        "criterion": "question has at least one resolvable evidence path to an official source or canonical authority node",
+        "accepted_paths": [
+          "source_refs[].source_id resolves in data/sources.json",
+          "rule_node_ids[] resolves to data/rule-nodes.json and that node resolves to an official source",
+          "notice_node_ids[] resolves to data/notice-nodes.json and that node resolves to an official source",
+          "qa_item_ids[] resolves to data/qa-items.json and that item resolves to an official source"
+        ]
+      },
+      "report_fields": [
+        "questions_total",
+        "questions_with_evidence_path",
+        "coverage_rate",
+        "missing_question_slugs"
+      ],
+      "guards": [
+        "questions.status=verified alone does not satisfy the evidence-path criterion",
+        "FAQ presentation-support data is not treated as canonical layer-wide verification"
+      ]
+    },
+    {
+      "id": "public_items_with_complete_evidence_state",
+      "label": "Public items with source, scope, and verification-state completeness",
+      "unit": "public_item",
+      "denominator": {
+        "selector": "items reachable through currently enabled public routes for a service",
+        "service_boundary": "data/services/manifest.json plus the selected service config; services with public routes disabled are excluded from the public-item denominator"
+      },
+      "numerator": {
+        "criterion": "public item satisfies source_complete AND scope_complete AND verification_state_complete",
+        "source_complete": "an official source reference or canonical source-chain reference resolves",
+        "scope_complete": "the item is explicitly in the selected service scope; shared-source content must have an explicit service-scope mapping",
+        "verification_state_complete": "the relevant layer or item exposes explicit content-verification, currentness, and human-review state, even when a state is HOLD, NOT_STARTED, NOT_REVIEWED, or equivalent"
+      },
+      "report_fields": [
+        "public_items_total",
+        "public_items_complete",
+        "coverage_rate",
+        "missing_source_items",
+        "missing_scope_items",
+        "missing_verification_state_items"
+      ],
+      "guards": [
+        "publication does not imply verification",
+        "PASS is not required for state completeness",
+        "HOLD or NOT_REVIEWED is complete state representation when explicitly recorded",
+        "service scope must not be inferred from another service"
+      ]
+    },
+    {
+      "id": "unresolved_or_unverified_relations",
+      "label": "Unresolved or unverified semantic/cross-layer relations",
+      "unit": "relation",
+      "denominator": {
+        "dataset": "data/verification-registry.json",
+        "field": "relation_verification.inventory_relations",
+        "scope": "non-contains semantic or cross-layer relations tracked by the verification registry"
+      },
+      "numerator": {
+        "dataset": "data/verification-registry.json",
+        "field": "relation_verification.remaining_unverified_relations",
+        "criterion": "relation is in the tracked semantic/cross-layer inventory and is not covered by an independent relation-verification lane"
+      },
+      "report_fields": [
+        "relations_total",
+        "relations_independently_verified",
+        "relations_remaining_unverified",
+        "remaining_rate",
+        "lane_breakdown"
+      ],
+      "guards": [
+        "source-derived structural contains relations are excluded from this metric",
+        "remaining_unverified does not mean known-wrong",
+        "automatic promotion to verified is forbidden"
+      ]
+    }
+  ]
+}
