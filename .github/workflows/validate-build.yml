@@ -198,11 +198,17 @@ jobs:
             }
 
           echo "Run Integration Sprint D4 black-box gate against local exact SHA"
+          set +e
           python scripts/run_integration_sprint_release_regression.py \
             --base-url http://127.0.0.1:3000 \
             --expected-sha "$GITHUB_SHA" \
             --output /tmp/integration-sprint-release-regression.json
+          d4_rc=$?
+          set -e
           cat /tmp/integration-sprint-release-regression.json
+          if [ "$d4_rc" -ne 0 ]; then
+            exit "$d4_rc"
+          fi
 
           echo "Run machine retrieval benchmark against local exact SHA"
           python scripts/run_machine_retrieval_benchmark.py \
