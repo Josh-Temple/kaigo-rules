@@ -4,7 +4,8 @@ import ruleNodesData from "../data/rule-nodes.json";
 import noticeNodesData from "../data/notice-nodes.json";
 import qaItemsData from "../data/qa-items.json";
 import feeNodesData from "../data/remuneration-current-skeleton.json";
-import { expandQuestionAuthorities } from "../lib/question-authority-expansion";
+import sourcesData from "../data/sources.json";
+import { expandQuestionAuthorities, resolveNoticeSourceLinks } from "../lib/question-authority-expansion";
 import { feeHref } from "../lib/service-catalog";
 
 const relationships = relationshipsData as Array<any>;
@@ -12,6 +13,7 @@ const ruleNodes = ruleNodesData as Array<any>;
 const noticeNodes = noticeNodesData as Array<any>;
 const qaItems = qaItemsData as Array<any>;
 const feeNodes = feeNodesData as Array<any>;
+const sources = sourcesData as Array<any>;
 
 const kindLabel: Record<string, string> = {
   standard: "基準省令",
@@ -32,7 +34,7 @@ const qaHref = (item: any) => {
 
 const authorityHref = (kind: string, record: any, serviceId: string) => {
   if (kind === "standard") return ruleHref(record.id);
-  if (kind === "notice") return "/notices";
+  if (kind === "notice") return null;
   if (kind === "qa") return qaHref(record);
   if (kind === "fee") return feeHref(serviceId, record.id);
   return null;
@@ -86,7 +88,19 @@ export default function QuestionAuthorityPanel({
                 return (
                   <li key={authority.targetId}>
                     <span className="source-kind">{kindLabel[authority.kind]}</span>{" "}
-                    {href ? <Link href={href}>{title}</Link> : title}
+                    {authority.kind === "notice" ? (
+                      <>
+                        {title}
+                        {resolveNoticeSourceLinks(authority.record, sources).map((source) => (
+                          <span key={source.sourceId}>
+                            {" / "}
+                            <a href={source.url} target="_blank" rel="noreferrer">
+                              {source.publisher || "公式"}資料
+                            </a>
+                          </span>
+                        ))}
+                      </>
+                    ) : href ? <Link href={href}>{title}</Link> : title}
                     <span className="meta"> / 明示relation: {authority.relation}</span>
                   </li>
                 );
