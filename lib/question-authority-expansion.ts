@@ -96,3 +96,46 @@ export function expandQuestionAuthorities({
     }))
     .filter((group) => group.authorities.length > 0);
 }
+
+
+export type AuthoritySource = {
+  id: string;
+  title?: string;
+  publisher?: string;
+  url?: string;
+  status?: string;
+  note?: string;
+};
+
+export type AuthoritySourceLink = {
+  sourceId: string;
+  title: string;
+  publisher: string;
+  url: string;
+  status?: string;
+  note?: string;
+};
+
+export function resolveNoticeSourceLinks(
+  notice: AuthorityRecord,
+  sources: AuthoritySource[],
+): AuthoritySourceLink[] {
+  const sourceIds = Array.isArray(notice.source_ids)
+    ? notice.source_ids.filter((value): value is string => typeof value === "string")
+    : [];
+  if (!sourceIds.length) return [];
+
+  const byId = new Map(sources.map((source) => [source.id, source]));
+  return sourceIds.flatMap((sourceId) => {
+    const source = byId.get(sourceId);
+    if (!source?.url) return [];
+    return [{
+      sourceId,
+      title: source.title || sourceId,
+      publisher: source.publisher || "",
+      url: source.url,
+      status: source.status,
+      note: source.note,
+    }];
+  });
+}
