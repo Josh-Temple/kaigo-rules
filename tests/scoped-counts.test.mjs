@@ -12,8 +12,8 @@ import {
 import { getDefaultService } from "../lib/service-catalog.ts";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const nodes = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "data/ordinance37-nodes.json"), "utf8"),
+const scope = JSON.parse(
+  fs.readFileSync(path.join(ROOT, "data/ordinance37-scope.json"), "utf8"),
 );
 const meta = JSON.parse(
   fs.readFileSync(path.join(ROOT, "data/ordinance37-meta.json"), "utf8"),
@@ -21,16 +21,30 @@ const meta = JSON.parse(
 
 test("day-service article count uses the canonical service-scope contract", () => {
   const serviceId = getDefaultService().service_id;
-  const articles = nodes.filter((node) => node.node_type === "article");
+  const dayServiceArticleNumbers = [
+    ...(scope.direct_articles || []),
+    ...(scope.incorporated_articles || []),
+  ];
+  const records = [
+    ...dayServiceArticleNumbers.map((article) => ({
+      id: `ordinance37.article.${article}`,
+    })),
+    { id: "ordinance37.article.18" },
+  ];
   const scoped = filterRecordsForService(
     serviceId,
     "ordinance37",
-    articles,
-    (node) => node.id,
+    records,
+    (record) => record.id,
   );
 
   assert.equal(serviceId, "dayservice");
+  assert.equal(dayServiceArticleNumbers.length, 40);
   assert.equal(scoped.length, 40);
+  assert.equal(
+    scoped.some((record) => record.id === "ordinance37.article.18"),
+    false,
+  );
   assert.equal(meta.counts.articles_total, 56);
 
   assert.equal(
