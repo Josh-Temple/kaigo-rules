@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { rankQuestionMatches } from "../lib/question-search.ts";
-import { expandQuestionAuthorities } from "../lib/question-authority-expansion.ts";
+import { expandQuestionAuthorities, resolveNoticeSourceLinks } from "../lib/question-authority-expansion.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -17,6 +17,7 @@ const relationships = load("data/relationships.json");
 const rules = load("data/rule-nodes.json");
 const notices = load("data/notice-nodes.json");
 const qaItems = load("data/qa-items.json");
+const sources = load("data/sources.json");
 const fees = load("data/remuneration-current-skeleton.json").filter(
   (node) => node.service_scope === "通所介護",
 );
@@ -78,6 +79,32 @@ test("C4 frozen natural-language queries preserve FAQ relevance and explicit aut
         `${scenario.id}: expected source ${sourceId} was not reachable through explicit relations`,
       );
     }
+
+    const noticeAuthorities = expectedGroup.authorities.filter(
+      (authority) => authority.kind === "notice",
+    );
+    assert.ok(
+      noticeAuthorities.length > 0,
+      `${scenario.id}: expected at least one notice authority`,
+    );
+    for (const authority of noticeAuthorities) {
+      const links = resolveNoticeSourceLinks(authority.record, sources);
+      assert.ok(
+        links.length > 0,
+        `${scenario.id}: notice ${authority.targetId} had no concrete source URL`,
+      );
+      for (const link of links) {
+        assert.ok(
+          scenario.expected_source_ids.includes(link.sourceId),
+          `${scenario.id}: notice source ${link.sourceId} was outside the frozen expected-source set`,
+        );
+        assert.match(
+          link.url,
+          /^https:\/\/www\.mhlw\.go\.jp\//,
+          `${scenario.id}: notice source must resolve to an official MHLW URL`,
+        );
+      }
+    }
   }
 });
 
@@ -110,4 +137,34 @@ test("C4 relation expansion never substitutes for FAQ lexical matching", () => {
   });
 
   assert.deepEqual(groups, []);
+});
+
+
+test("C4 nurse-staffing notice resolves to its explicit official source, not a generic notice index", () => {
+  const scenario = cases.find((item) => item.id === "MR-03-B");
+  const ranked = rankQuestionMatches(questions, scenario.query);
+  const groups = expandQuestionAuthorities({
+    questions: ranked.slice(0, 3),
+    relations: relationships,
+    rules,
+    notices,
+    qaItems,
+    feeNodes: fees,
+  });
+  const nurse = groups.find((group) => group.questionSlug === "nurse-staffing");
+  const notice = nurse.authorities.find(
+    (authority) => authority.targetId === "notice.dayservice.nurse.external-linkage",
+  );
+
+  assert.ok(notice);
+  assert.deepEqual(resolveNoticeSourceLinks(notice.record, sources), [
+    {
+      sourceId: "mhlw-interpretation-nurse-linkage",
+      title: "通所介護の看護職員確保に関する解釈通知改正資料",
+      publisher: "厚生労働省",
+      url: "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+      status: "partial_source",
+      note: "病院・診療所・訪問看護ステーションとの連携による看護職員確保の取扱いを確認できる改正資料。",
+    },
+  ]);
 });
