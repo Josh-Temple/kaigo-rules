@@ -169,6 +169,19 @@ class ServiceManifestTests(unittest.TestCase):
             "NOT_RUN",
             index["assurance"]["service_specific_independent_verification"],
         )
+        ordinance_index = json.loads(
+            (
+                root
+                / "data/services/homevisit/ordinance37-index.generated.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(38, ordinance_index["counts"]["selected_articles"])
+        self.assertEqual(165, ordinance_index["counts"]["selected_nodes_total"])
+        self.assertFalse(ordinance_index["assurance"]["legal_text_duplicated"])
+        self.assertEqual(
+            "NOT_RUN",
+            ordinance_index["assurance"]["service_specific_independent_verification"],
+        )
         self.assertFalse(
             homevisit["publication_gate"]["independent_verification_complete"]
         )
