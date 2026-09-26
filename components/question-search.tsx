@@ -39,12 +39,12 @@ export default function QuestionSearch({ initialLimit }: { initialLimit?: number
             <span className="meta">{q.category}</span>
             <Link href={"/questions/" + q.slug}>{q.title}</Link>
             <span className={q.status === "verified" ? "status verified" : "status"}>
-              {q.status === "verified" ? "確認済み" : "根拠確認中"}
+              {q.status === "verified" ? "根拠対応確認済み" : "根拠確認中"}
             </span>
           </article>
         )) : (
           <p className="notice">
-            確認済みの候補ページにはありません。横断検索で基準省令・報酬・国Q&Aを探せます。
+            根拠対応確認済みの候補ページにはありません。横断検索で基準省令・報酬・国Q&Aを探せます。
           </p>
         )}
       </div>
