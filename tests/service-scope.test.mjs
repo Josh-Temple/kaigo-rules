@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 
 import {
   filterRecordsForService,
+  findRecordForService,
   isRecordApplicableToService,
   resolveServiceScope,
   serviceApplicability,
@@ -157,5 +158,35 @@ test("the same contract can filter service-facing collections", () => {
       (record) => record.id,
     ).map((record) => record.label),
     ["shared", "homevisit only"],
+  );
+});
+
+test("service-facing detail lookup fails closed outside the selected service", () => {
+  const records = [
+    { id: "ordinance37.article.10", article_num: "10" },
+    { id: "ordinance37.article.18", article_num: "18" },
+    { id: "ordinance37.article.100", article_num: "100" },
+  ];
+
+  assert.equal(
+    findRecordForService(
+      "dayservice",
+      "ordinance37",
+      records,
+      (record) => record.id,
+      (record) => record.article_num === "18",
+    ),
+    undefined,
+  );
+
+  assert.deepEqual(
+    findRecordForService(
+      "dayservice",
+      "ordinance37",
+      records,
+      (record) => record.id,
+      (record) => record.article_num === "10",
+    ),
+    { id: "ordinance37.article.10", article_num: "10" },
   );
 });
