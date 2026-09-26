@@ -62,7 +62,7 @@
     "check:homevisit-careact-index": "python scripts/build_homevisit_careact_index.py --check",
     "build:homevisit-ordinance37-index": "python scripts/build_homevisit_ordinance37_index.py",
     "check:homevisit-ordinance37-index": "python scripts/build_homevisit_ordinance37_index.py --check",
-    "test:service-scope": "node --experimental-strip-types --test tests/service-scope.test.mjs"
+    "test:service-scope": "node --experimental-strip-types --test tests/service-scope.test.mjs tests/scoped-counts.test.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",
