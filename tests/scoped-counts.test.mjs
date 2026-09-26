@@ -10,7 +10,6 @@ import {
   isRecordApplicableToService,
   serviceApplicability,
 } from "../lib/service-scope.ts";
-import { getDefaultService } from "../lib/service-catalog.ts";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const scope = JSON.parse(
@@ -21,7 +20,7 @@ const meta = JSON.parse(
 );
 
 test("day-service article count uses the canonical service-scope contract", () => {
-  const serviceId = getDefaultService().service_id;
+  const serviceId = "dayservice";
   const dayServiceArticleNumbers = [
     ...(scope.direct_articles || []),
     ...(scope.incorporated_articles || []),
