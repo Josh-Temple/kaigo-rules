@@ -77,6 +77,33 @@ def require_expected_sha(actual_sha: str, expected_sha: str | None) -> None:
         )
 
 
+def build_evaluation_domains(
+    benchmark: dict[str, Any],
+    machine_metrics: dict[str, float],
+) -> dict[str, Any]:
+    contract = benchmark.get("reporting_contract") or {}
+    machine_contract = contract.get("machine_retrieval") or {}
+    human_contract = contract.get("human_effectiveness") or {}
+
+    return {
+        "machine_retrieval": {
+            "status": "MEASURED",
+            "evaluation_kind": machine_contract.get(
+                "evaluation_kind", "FIXED_QUERY_MACHINE_RETRIEVAL"
+            ),
+            "metrics": machine_metrics,
+            "claims_supported": machine_contract.get("claims_supported", []),
+        },
+        "human_effectiveness": {
+            "status": "NOT_EVALUATED",
+            "metrics": {},
+            "claims_supported": [],
+            "claims_not_supported": human_contract.get("claims_not_supported", []),
+            "required_evidence": human_contract.get("required_evidence"),
+        },
+    }
+
+
 def question_link_order(body: str) -> list[str]:
     parser = LinkParser()
     parser.feed(body)
@@ -220,6 +247,14 @@ def run(
         1 for value in context_cache.values() if value["integrity_ok"]
     )
 
+    machine_metrics = {
+        "search_hit_rate": sum(1 for row in case_results if row["search_hit"]) / total,
+        "top3_hit_rate": sum(1 for row in case_results if row["top3_hit"]) / total,
+        "context_integrity_rate": context_ok_questions / len(context_cache),
+        "full_pass_rate": sum(1 for row in case_results if row["full_pass"]) / total,
+    }
+    evaluation_domains = build_evaluation_domains(benchmark, machine_metrics)
+
     return {
         "benchmark_id": benchmark["benchmark_id"],
         "base_url": base_url,
@@ -227,12 +262,9 @@ def run(
         "case_count": total,
         "question_count": len(context_cache),
         "interpretation": benchmark["evaluation"]["interpretation"],
-        "metrics": {
-            "search_hit_rate": sum(1 for row in case_results if row["search_hit"]) / total,
-            "top3_hit_rate": sum(1 for row in case_results if row["top3_hit"]) / total,
-            "context_integrity_rate": context_ok_questions / len(context_cache),
-            "full_pass_rate": sum(1 for row in case_results if row["full_pass"]) / total,
-        },
+        "metrics_scope": "MACHINE_RETRIEVAL_ONLY",
+        "metrics": machine_metrics,
+        "evaluation_domains": evaluation_domains,
         "by_question": by_question,
         "context_results": context_cache,
         "cases": case_results,

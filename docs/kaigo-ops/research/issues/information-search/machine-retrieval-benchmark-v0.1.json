@@ -353,5 +353,26 @@
       "MR-10-C"
     ],
     "context_integrity_failures": []
+  },
+  "reporting_contract": {
+    "machine_retrieval": {
+      "status": "MEASURED",
+      "evaluation_kind": "FIXED_QUERY_MACHINE_RETRIEVAL",
+      "claims_supported": [
+        "fixed-query search hit/top-3 rates",
+        "fixed-question context integrity",
+        "fixed-query full-pass rate"
+      ]
+    },
+    "human_effectiveness": {
+      "status": "NOT_EVALUATED",
+      "metrics": [],
+      "claims_not_supported": [
+        "human task-time improvement",
+        "human usability improvement",
+        "human productivity or workflow-effectiveness improvement"
+      ],
+      "required_evidence": "separate human field validation with recorded task time and blind adjudication"
+    }
   }
 }

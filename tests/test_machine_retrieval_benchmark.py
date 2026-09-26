@@ -1,6 +1,7 @@
 import unittest
 
 from scripts.run_machine_retrieval_benchmark import (
+    build_evaluation_domains,
     question_link_order,
     require_expected_sha,
 )
@@ -29,6 +30,34 @@ class MachineRetrievalParserTest(unittest.TestCase):
     def test_expected_sha_must_be_full_lowercase_sha(self):
         with self.assertRaises(ValueError):
             require_expected_sha("a" * 40, "abc")
+
+    def test_machine_and_human_evaluation_domains_are_separate(self):
+        benchmark = {
+            "reporting_contract": {
+                "machine_retrieval": {
+                    "evaluation_kind": "FIXED_QUERY_MACHINE_RETRIEVAL",
+                    "claims_supported": ["fixed-query top-3 rate"],
+                },
+                "human_effectiveness": {
+                    "status": "NOT_EVALUATED",
+                    "metrics": [],
+                    "claims_not_supported": [
+                        "human task-time improvement",
+                        "human usability improvement",
+                    ],
+                    "required_evidence": "separate human field validation",
+                },
+            }
+        }
+        metrics = {"top3_hit_rate": 1.0}
+
+        domains = build_evaluation_domains(benchmark, metrics)
+
+        self.assertEqual(domains["machine_retrieval"]["status"], "MEASURED")
+        self.assertEqual(domains["machine_retrieval"]["metrics"], metrics)
+        self.assertEqual(domains["human_effectiveness"]["status"], "NOT_EVALUATED")
+        self.assertEqual(domains["human_effectiveness"]["metrics"], {})
+        self.assertEqual(domains["human_effectiveness"]["claims_supported"], [])
 
 
 if __name__ == "__main__":
