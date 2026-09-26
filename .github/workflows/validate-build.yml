@@ -37,7 +37,7 @@ jobs:
       - name: Smoke test key routes
         shell: bash
         run: |
-          npm start > /tmp/kaigo-rules-next.log 2>&1 &
+          VERCEL_GIT_COMMIT_SHA="$GITHUB_SHA" VERCEL_GIT_COMMIT_REF="$GITHUB_REF_NAME" npm start > /tmp/kaigo-rules-next.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
 
@@ -196,3 +196,17 @@ jobs:
               echo "question context API did not return the expected package"
               exit 1
             }
+
+          echo "Run Integration Sprint D4 black-box gate against local exact SHA"
+          python scripts/run_integration_sprint_release_regression.py \
+            --base-url http://127.0.0.1:3000 \
+            --expected-sha "$GITHUB_SHA" \
+            --output /tmp/integration-sprint-release-regression.json
+          cat /tmp/integration-sprint-release-regression.json
+
+          echo "Run machine retrieval benchmark against local exact SHA"
+          python scripts/run_machine_retrieval_benchmark.py \
+            --base-url http://127.0.0.1:3000 \
+            --expected-sha "$GITHUB_SHA" \
+            --output /tmp/machine-retrieval-benchmark.json
+          cat /tmp/machine-retrieval-benchmark.json
