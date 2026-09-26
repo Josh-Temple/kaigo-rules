@@ -5,15 +5,45 @@ import nodesData from "../../../data/care-insurance-act-nodes.json";
 import relationsData from "../../../data/care-insurance-act-relations.json";
 import reviewData from "../../../data/care-insurance-act-review.json";
 import metaData from "../../../data/care-insurance-act-meta.json";
+import { getDefaultService } from "../../../lib/service-catalog";
+import {
+  filterRecordsForService,
+  findRecordForService,
+  isRecordApplicableToService,
+} from "../../../lib/service-scope";
 
 const nodes=nodesData as Array<any>;
 const relations=relationsData as Array<any>;
 const review=reviewData as any;
 const meta=metaData as any;
+const defaultService=getDefaultService();
 
 export function generateStaticParams(){
-  return nodes.filter(n=>n.node_type==="article").map(n=>({article:n.article_num}));
+  return filterRecordsForService(
+    defaultService.service_id,
+    "care_insurance_act",
+    nodes.filter(n=>n.node_type==="article"),
+    n=>n.id,
+  ).map(n=>({article:n.article_num}));
 }
+
+const relationTargetIsInServiceScope=(relation:any)=>{
+  if(relation.target_layer==="care_insurance_act"){
+    return isRecordApplicableToService(
+      defaultService.service_id,
+      "care_insurance_act",
+      String(relation.to),
+    );
+  }
+  if(relation.target_layer==="ordinance37"){
+    return isRecordApplicableToService(
+      defaultService.service_id,
+      "ordinance37",
+      String(relation.to),
+    );
+  }
+  return true;
+};
 
 const targetHref=(relation:any)=>{
   if(relation.target_layer==="care_insurance_act"){
@@ -32,11 +62,24 @@ const targetHref=(relation:any)=>{
 export default async function LawArticlePage({params}:{params:Promise<{article:string}>}){
   const {article}=await params;
   const aid=`careact.article.${article}`;
-  const root=nodes.find(n=>n.id===aid&&n.node_type==="article");
+  const root=findRecordForService(
+    defaultService.service_id,
+    "care_insurance_act",
+    nodes,
+    n=>n.id,
+    n=>n.id===aid&&n.node_type==="article",
+  );
   if(!root) notFound();
-  const children=nodes.filter(n=>n.parent_id===aid);
+  const children=filterRecordsForService(
+    defaultService.service_id,
+    "care_insurance_act",
+    nodes.filter(n=>n.parent_id===aid),
+    n=>n.id,
+  );
   const reviewed=(review.reviewed_articles||[]).find((r:any)=>r.article_id===aid);
-  const outgoing=relations.filter(r=>r.from===aid || String(r.from).startsWith(aid+".p."));
+  const outgoing=relations
+    .filter(r=>r.from===aid || String(r.from).startsWith(aid+".p."))
+    .filter(relationTargetIsInServiceScope);
   return <article className="answer-page rules-page">
     <p className="eyebrow">介護保険法 / 通所介護関連</p>
     <h1>{root.article_title} {root.caption||""}</h1>
@@ -53,7 +96,12 @@ export default async function LawArticlePage({params}:{params:Promise<{article:s
         {children.map(p=><section className="rule-node" key={p.id}>
           <span className="rule-node-label">{p.label||("第"+p.paragraph_num+"項")}</span>
           <p>{p.official_text}</p>
-          {nodes.filter(n=>n.parent_id===p.id).map(i=><div className="rule-node rule-node-item" key={i.id}>
+          {filterRecordsForService(
+            defaultService.service_id,
+            "care_insurance_act",
+            nodes.filter(n=>n.parent_id===p.id),
+            n=>n.id,
+          ).map(i=><div className="rule-node rule-node-item" key={i.id}>
             <span className="rule-node-label">{i.label}</span><p>{i.official_text}</p>
           </div>)}
         </section>)}

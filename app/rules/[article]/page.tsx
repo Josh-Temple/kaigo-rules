@@ -10,6 +10,12 @@ import feeNodesData from "../../../data/remuneration-current-skeleton.json";
 import questionsData from "../../../data/questions.json";
 import careActNodesData from "../../../data/care-insurance-act-nodes.json";
 import { incomingEdges } from "../../../lib/knowledge-relations";
+import { getDefaultService } from "../../../lib/service-catalog";
+import {
+  filterRecordsForService,
+  findRecordForService,
+  isRecordApplicableToService,
+} from "../../../lib/service-scope";
 
 type RuleNode = {
   id: string;
@@ -40,11 +46,15 @@ const noticeNodes = noticeNodesData as Array<any>;
 const feeNodes = feeNodesData as Array<any>;
 const questions = questionsData as Array<any>;
 const careActNodes = careActNodesData as Array<any>;
+const defaultService = getDefaultService();
 
 export function generateStaticParams() {
-  return nodes
-    .filter((node) => node.node_type === "article")
-    .map((node) => ({ article: node.article_num }));
+  return filterRecordsForService(
+    defaultService.service_id,
+    "ordinance37",
+    nodes.filter((node) => node.node_type === "article"),
+    (node) => node.id,
+  ).map((node) => ({ article: node.article_num }));
 }
 
 const levelRank: Record<string, number> = { p: 0, i: 1, s1: 2, s2: 3, s3: 4, s4: 5, s5: 6 };
@@ -79,19 +89,37 @@ function NodeLabel({ node }: { node: RuleNode }) {
 
 export default async function RuleArticlePage({ params }: { params: Promise<{ article: string }> }) {
   const { article } = await params;
-  const articleNode = nodes.find(
-    (node) => node.node_type === "article" && node.article_num === article
+  const articleNode = findRecordForService(
+    defaultService.service_id,
+    "ordinance37",
+    nodes,
+    (node) => node.id,
+    (node) => node.node_type === "article" && node.article_num === article,
   );
   if (!articleNode) notFound();
 
-  const children = nodes
-    .filter((node) => node.article_num === article && node.node_type !== "article")
-    .sort(compareNodes);
+  const children = filterRecordsForService(
+    defaultService.service_id,
+    "ordinance37",
+    nodes.filter(
+      (node) => node.article_num === article && node.node_type !== "article",
+    ),
+    (node) => node.id,
+  ).sort(compareNodes);
 
-  const incorporationTargets = relations
-    .filter((relation) => relation.from === articleNode.id && relation.relation === "incorporates_by_reference")
-    .map((relation) => nodes.find((node) => node.id === relation.to))
-    .filter(Boolean) as RuleNode[];
+  const incorporationTargets = filterRecordsForService(
+    defaultService.service_id,
+    "ordinance37",
+    relations
+      .filter(
+        (relation) =>
+          relation.from === articleNode.id &&
+          relation.relation === "incorporates_by_reference",
+      )
+      .map((relation) => nodes.find((node) => node.id === relation.to))
+      .filter(Boolean) as RuleNode[],
+    (node) => node.id,
+  );
 
   const readAs = applications.filter((rule) => rule.target_article_id === articleNode.id);
   const relationEdges = incomingEdges(articleNode.id);
@@ -116,7 +144,15 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
       edge,
       node: careActNodes.find((item) => item.id === edge.source_id),
     }))
-    .filter((item) => item.node);
+    .filter(
+      (item) =>
+        item.node &&
+        isRecordApplicableToService(
+          defaultService.service_id,
+          "care_insurance_act",
+          item.node.id,
+        ),
+    );
 
   const revision = meta.current_revision || {};
 

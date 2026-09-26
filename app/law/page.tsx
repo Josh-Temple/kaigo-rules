@@ -4,18 +4,43 @@ import nodesData from "../../data/care-insurance-act-nodes.json";
 import metaData from "../../data/care-insurance-act-meta.json";
 import scopeData from "../../data/care-insurance-act-scope.json";
 import reviewData from "../../data/care-insurance-act-review.json";
+import relationsData from "../../data/care-insurance-act-relations.json";
+import { getDefaultService } from "../../lib/service-catalog";
+import { filterRecordsForService, isRecordApplicableToService } from "../../lib/service-scope";
 
 const nodes=nodesData as Array<any>;
 const meta=metaData as any;
 const scope=scopeData as any;
 const review=reviewData as any;
+const relations=relationsData as Array<any>;
+const defaultService=getDefaultService();
 
 const articleNumberLabel=(num:string)=>"第"+num.replace("-","条の")+"条";
 const articleHref=(num:string)=>"/law/"+num;
 
 export default function LawPage(){
-  const articles=nodes.filter(n=>n.node_type==="article");
-  const reviewed=new Set((review.reviewed_articles||[]).map((r:any)=>r.article_id));
+  const scopedNodes=filterRecordsForService(
+    defaultService.service_id,
+    "care_insurance_act",
+    nodes,
+    n=>n.id,
+  );
+  const articles=scopedNodes.filter(n=>n.node_type==="article");
+  const articleIds=new Set(articles.map(article=>article.id));
+  const reviewed=new Set(
+    (review.reviewed_articles||[])
+      .map((r:any)=>r.article_id)
+      .filter((id:string)=>articleIds.has(id)),
+  );
+  const scopedCrossLayerRelations=relations.filter(
+    relation=>
+      relation.target_layer!=="care_insurance_act" &&
+      isRecordApplicableToService(
+        defaultService.service_id,
+        "care_insurance_act",
+        String(relation.from),
+      ),
+  );
   return <article className="answer-page rules-page">
     <p className="eyebrow">CARE INSURANCE ACT</p>
     <h1>介護保険法DB</h1>
@@ -30,9 +55,9 @@ export default function LawPage(){
 
       <VerificationSummary layerId="care-insurance-act" />
     <section className="rules-stats">
-      <div><strong>{meta.counts?.articles_total||articles.length}</strong><span>対象条文</span></div>
-      <div><strong>{meta.counts?.nodes_total||nodes.length}</strong><span>構造ノード</span></div>
-      <div><strong>{meta.counts?.cross_layer_relations||0}</strong><span>他レイヤー接続</span></div>
+      <div><strong>{articles.length}</strong><span>対象条文</span></div>
+      <div><strong>{scopedNodes.length}</strong><span>構造ノード</span></div>
+      <div><strong>{scopedCrossLayerRelations.length}</strong><span>他レイヤー接続</span></div>
       <div><strong>{reviewed.size}</strong><span>人手確認済み</span></div>
     </section>
     <section className="section">
