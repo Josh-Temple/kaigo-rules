@@ -1,8 +1,8 @@
-import careActScopeData from "../data/care-insurance-act-scope.json";
-import homevisitCareActIndexData from "../data/services/homevisit/care-insurance-act-index.generated.json";
-import homevisitOrdinance37IndexData from "../data/services/homevisit/ordinance37-index.generated.json";
-import ordinance37ScopeData from "../data/ordinance37-scope.json";
-import { getService } from "./service-catalog";
+import careActScopeData from "../data/care-insurance-act-scope.json" with { type: "json" };
+import homevisitCareActIndexData from "../data/services/homevisit/care-insurance-act-index.generated.json" with { type: "json" };
+import homevisitOrdinance37IndexData from "../data/services/homevisit/ordinance37-index.generated.json" with { type: "json" };
+import ordinance37ScopeData from "../data/ordinance37-scope.json" with { type: "json" };
+import serviceCatalogData from "../data/services/catalog.generated.json" with { type: "json" };
 
 export type ServiceScopeLayer = "ordinance37" | "care_insurance_act";
 
@@ -97,14 +97,11 @@ const articleNumber = (
   return match?.[1] || null;
 };
 
-const isKnownService = (serviceId: string) => {
-  try {
-    getService(serviceId);
-    return true;
-  } catch {
-    return false;
-  }
-};
+const knownServiceIds = new Set(
+  (serviceCatalogData.services || []).map((service) => service.service_id),
+);
+
+const isKnownService = (serviceId: string) => knownServiceIds.has(serviceId);
 
 const addMembership = (
   memberships: Map<string, ServiceApplicabilityBasis>,
