@@ -192,6 +192,8 @@ def compare_target(config: dict) -> dict:
 
     if config["id"] == "ordinance37":
         target_articles = set(scope["direct_articles"]) | set(scope["incorporated_articles"])
+        for service_scope in scope.get("additional_service_direct_scopes", []):
+            target_articles |= set(service_scope.get("articles", []))
     else:
         target_articles = set(scope["articles"])
 
