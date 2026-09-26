@@ -7,6 +7,7 @@ import feeNodesData from "../../data/remuneration-current-skeleton.json";
 import feeTextsData from "../../data/remuneration-current-text.json";
 import feeReviewData from "../../data/remuneration-review.json";
 import { feeHref, getDefaultService } from "../../lib/service-catalog";
+import { filterRecordsForService } from "../../lib/service-scope";
 import { rankQuestionMatches } from "../../lib/question-search";
 
 const questions = questionsData as Array<any>;
@@ -55,6 +56,12 @@ const excerpt = (value: string, max = 180) => {
 };
 
 const defaultService = getDefaultService();
+const scopedRules = filterRecordsForService(
+  defaultService.service_id,
+  "ordinance37",
+  rules,
+  (node) => node.id,
+);
 
 export default async function SearchPage({
   searchParams,
@@ -78,10 +85,10 @@ export default async function SearchPage({
     ? rankQuestionMatches(questions, query)
     : [];
 
-  const articleNodes = rules.filter((node) => node.node_type === "article");
+  const articleNodes = scopedRules.filter((node) => node.node_type === "article");
   const ruleMatches = terms.length
     ? articleNodes.filter((article) => {
-        const relatedText = rules
+        const relatedText = scopedRules
           .filter((node) => node.article_num === article.article_num)
           .map((node) => node.official_text || "")
           .join(" ");
