@@ -34,7 +34,7 @@ def main() -> None:
         fail("unexpected scope")
     if record.get("audit_result") != "PASS":
         fail("audit result is not PASS")
-    if record.get("audit_run", {}).get("run_id") != 35885767337:
+    if record.get("audit_run", {}).get("run_id") != 36210164036:
         fail("unexpected audit run")
     if record.get("audit_run", {}).get("parser") != "python_xml_dom_minidom":
         fail("unexpected independent parser")
