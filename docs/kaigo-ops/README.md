@@ -124,6 +124,12 @@ Evidence Review / 方法 / 検証
 - [職員教育・引き継ぎが属人化する — Evidence synthesis v0.1](./research/issues/training-handover/README.md)
 - 公開ページ: `/issues/training-handover`
 - 主な論点: 質問log、正本化、microlearning、peer learning、AI検索、expert escalation
+
+### Fourth Issue
+
+- [問い合わせ・連携の負担が大きい — Evidence synthesis v0.1](./research/issues/communication-collaboration/README.md)
+- 公開ページ: `/issues/communication-collaboration`
+- 主な論点: 問い合わせlog、self-service、minimum information set、network adoption、escalation、AI routing
 - [Source coverage audit](./research/issues/information-search/source-coverage-audit.md)
 - [実験計画](./research/issues/information-search/experiment-plan.md)
 - [Benchmark v0.1](./research/issues/information-search/benchmark/README.md)
