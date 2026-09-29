@@ -67,7 +67,7 @@ Kaigo Opsの公開Issueを、トップページ・横断navigation・将来の�
 
 ## 利用計測 v0.1
 
-Vercel Web Analyticsのpage view計測を導入する。
+Vercel Web Analyticsのclient codeはproductionへ導入済み。ただし2026-09-30時点ではproject-level Web Analyticsの有効化は未確認で、tracking script endpointは404のため、page view収集開始前の状態と扱う。
 
 v0.1で見るもの:
 
