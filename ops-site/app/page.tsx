@@ -13,8 +13,9 @@ const issues = [
   },
   {
     title: "職員教育・引き継ぎが属人化する",
-    body: "マニュアル、研修、質問対応を、現場で使える形に整理する方法を探る。",
-    status: "候補",
+    body: "研修、質問対応、引き継ぎを、正本・短い教材・peer learningで支える方法を整理する。",
+    status: "調査公開",
+    href: "/issues/training-handover",
   },
   {
     title: "問い合わせ・連携の負担が大きい",
