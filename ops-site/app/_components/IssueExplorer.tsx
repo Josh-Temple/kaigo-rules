@@ -54,7 +54,7 @@ export default function IssueExplorer() {
         </div>
       </div>
 
-      <p className="issueResultCount">
+      <p className="issueResultCount" aria-live="polite">
         {filteredIssues.length} / {issueRegistry.length} Issue
       </p>
 
