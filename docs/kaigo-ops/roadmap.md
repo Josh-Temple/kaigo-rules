@@ -202,7 +202,7 @@ PVやページ数だけを主要KPIにしない。
 ## 直近の優先順位
 
 1. 共通registry・分類・keyword検索をproductionへ反映し、mobileを含む公開動作を確認
-2. Vercel Web Analytics等でpage view・Issue遷移・原典/Kaigo Rules遷移を最小限計測する
-3. 検索0件や閲覧偏りを見てkeywords / groupを調整する
+2. Vercel Web Analyticsのpage view計測をproductionへ反映し、Issue別閲覧偏りを確認する
+3. page viewで不足する場合だけcustom eventを検討し、検索語・外部遷移等を最小限追加する
 4. 令和8年度介護事業経営実態調査の集計結果が公表されたら「収支・コスト構造」を再評価
 5. 利用データとフィードバックを基に、再調査・事業化候補を判断
