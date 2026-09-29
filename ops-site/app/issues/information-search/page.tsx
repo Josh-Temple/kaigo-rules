@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import IssueNavigation from "../_components/IssueNavigation";
 
 export const metadata: Metadata = {
   title: "必要な情報を探すのに時間がかかる | 介護業務改善",
@@ -71,6 +72,8 @@ export default function InformationSearchIssuePage() {
           </a>
         </nav>
       </header>
+
+      <IssueNavigation current="/issues/information-search" />
 
       <article className="issueDetail">
         <section className="issueHero">

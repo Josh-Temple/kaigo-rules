@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import IssueNavigation from "../_components/IssueNavigation";
 
 export const metadata: Metadata = {
   title: "職員教育・引き継ぎが属人化する | 介護業務改善",
@@ -94,6 +95,8 @@ export default function TrainingHandoverIssuePage() {
           </a>
         </nav>
       </header>
+
+      <IssueNavigation current="/issues/training-handover" />
 
       <article className="issueDetail">
         <section className="issueHero">

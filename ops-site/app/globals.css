@@ -201,3 +201,37 @@ footer {
   .experimentGrid { grid-template-columns: 1fr; }
   .sourceRow { grid-template-columns: 36px 1fr auto; gap: 12px; }
 }
+
+
+.issueNav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+}
+.issueNavItem {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 16px 14px;
+  border-left: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--muted);
+}
+.issueNavItem:first-child { border-left: 0; }
+.issueNavItem span {
+  color: var(--accent);
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+}
+.issueNavItem strong { font-size: 13px; }
+.issueNavItem.isCurrent {
+  color: var(--ink);
+  background: var(--soft);
+}
+
+@media (max-width: 720px) {
+  .issueNav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .issueNavItem:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
+  .issueNavItem:nth-child(4) { border-top: 1px solid var(--line); }
+}
