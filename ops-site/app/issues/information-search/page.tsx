@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "必要な情報を探すのに時間がかかる | 介護業務改善",
   description:
-    "制度・通知・Q&A・事業所内資料など、散らばった情報をどう整理し、必要な根拠へ早く到達できるようにするかを、調査結果と実務上の改善手順から整理します。",
+    "制度・通知・Q&A・事業所内資料など、散らばった情報をどう整理し、必要な根拠へ早く到達できるようにするかを、調査結果・機械評価・実務上の改善手順から整理します。",
 };
 
 const findings = [
@@ -20,7 +20,7 @@ const findings = [
       "厚生労働省の2025年度調査では、介護記録ソフト利用回答者3,670件の44.7%が、記録から請求までに手入力転記が発生すると回答しています。システム導入だけで一気通貫になるとは限りません。",
   },
   {
-    label: "改善",
+    label: "実装",
     title: "業務の組み替えと一体で考える",
     body:
       "厚生労働省の実証では、介護記録ソフトと業務フロー変更を組み合わせた事例で、記録・文書と転記に要する時間の減少が観測されています。単なるツール追加ではなく、重複作業の廃止まで含めて設計する必要があります。",
@@ -82,8 +82,8 @@ export default function InformationSearchIssuePage() {
             このページでは、検索ツールを増やす前に確認したい構造と、小さく改善する順序を整理します。
           </p>
           <div className="issueMeta">
-            <span>調査公開: 2026-09-25</span>
-            <span>対象: 公開された制度・業務知識</span>
+            <span>最終更新: 2026-09-29</span>
+            <span>主要な機械評価: 2026-09-26</span>
             <span>個人のケア情報は対象外</span>
           </div>
         </section>
@@ -142,13 +142,53 @@ export default function InformationSearchIssuePage() {
           </ol>
         </section>
 
+        <section className="section">
+          <div className="sectionHead">
+            <p className="eyebrow">Machine evaluation</p>
+            <h2>固定30クエリでは、productionの検索導線を再現できました。</h2>
+            <p>
+              固定10問について、それぞれ3種類の言い換えを用いたMachine Retrieval Benchmarkをproductionで実行しました。
+              更新後productionでは、検索hit・top-3 hit・full passが30/30、context integrityが10/10でした。
+            </p>
+          </div>
+          <div className="findingList">
+            <div className="findingRow">
+              <span className="findingLabel">30/30</span>
+              <div>
+                <h3>検索hit / top-3 / full pass</h3>
+                <p>
+                  固定benchmarkでは、対象ページへの検索導線と必要な構造化contextの取得が全queryで成立しました。
+                </p>
+              </div>
+            </div>
+            <div className="findingRow">
+              <span className="findingLabel">10/10</span>
+              <div>
+                <h3>Context integrity</h3>
+                <p>
+                  10問すべてでcanonical sourceを含む必要なcontextが保持されました。
+                </p>
+              </div>
+            </div>
+            <div className="findingRow">
+              <span className="findingLabel">未検証</span>
+              <div>
+                <h3>人間の探索時間・使いやすさ</h3>
+                <p>
+                  人間によるField Validationはまだ実施していません。この結果から「探索時間を短縮した」「業務効率が上がった」とは判断しません。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="section experiment">
           <p className="eyebrow">Small experiment</p>
-          <h2>最初の一歩は、よく聞かれる10問で十分です。</h2>
+          <h2>自分の現場では、よく聞かれる10問から測れます。</h2>
           <p>
             まず、職員や事業所から繰り返し出る質問を10問程度選びます。
             それぞれについて「正しい原典」「該当箇所」「条件」「現在の版」を固定し、
-            今の探し方でどれくらい時間がかかるかを測ります。
+            今の探し方でどれくらい負担があるかを測ります。
           </p>
           <div className="experimentGrid">
             <div>
@@ -213,20 +253,21 @@ export default function InformationSearchIssuePage() {
           <p className="eyebrow">What we still do not know</p>
           <h2>まだ結論を出していないこと</h2>
           <ul>
-            <li>AI検索が、よく設計された通常検索より実務上優れるか。</li>
-            <li>介護事業所で実際に何分の探索時間を減らせるか。</li>
-            <li>古い資料や根拠不足の質問に、十分な精度で回答を控えられるか。</li>
+            <li>固定benchmark以外の実利用queryでも同じ検索性能が再現するか。</li>
+            <li>Kaigo Rulesを使うことで、人間が正しい原典へ到達する時間が短くなるか。</li>
+            <li>操作負担や使いやすさが改善するか。</li>
+            <li>AI検索が、よく設計された通常検索より実務上優れる領域はどこか。</li>
             <li>小規模事業所でも費用対効果が成立するか。</li>
           </ul>
           <p>
-            ここは推測で埋めず、同じ質問セットを使った比較実験で確認していきます。
+            ここは推測で埋めず、独立した将来queryや、参加者を確保できた場合のField Validationで確認します。
           </p>
         </section>
       </article>
 
       <footer>
         <span>介護業務改善 — evidence-informed prototype</span>
-        <span>最終調査日: 2026-09-25</span>
+        <span>最終更新: 2026-09-29</span>
       </footer>
     </main>
   );
