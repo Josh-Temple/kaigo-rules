@@ -23,6 +23,12 @@ const issues = [
     status: "調査公開",
     href: "/issues/communication-collaboration",
   },
+  {
+    title: "稼働率・生産性を改善したい",
+    body: "直接ケア、間接業務、待ち・調整、staffingを分け、質と負担を損なわず改善する。",
+    status: "調査公開",
+    href: "/issues/productivity-utilization",
+  },
 ];
 
 const steps = [
