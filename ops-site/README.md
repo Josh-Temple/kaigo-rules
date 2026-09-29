@@ -71,7 +71,9 @@ Kaigo Rulesとは公開面を分離します。
 - 情報探索Issueを最新の検証状態へ同期
 - 5 Issueを共通registryで管理し、トップページと横断navigationの定義を一元化
 - トップページでkeyword検索と「日常業務 / 人材・組織 / 経営・生産性」の軽量filterを検証
-- Vercel Web Analyticsでpage view計測を行い、Issue別の閲覧偏りを確認
-- custom eventはまだ追加せず、必要性が確認できてから拡張
+- Vercel Web Analyticsのclient codeはproductionへ反映済み
+- 2026-09-30時点ではproject-level Web Analyticsの有効化は未確認で、tracking endpointは404
+- project側を有効化した後にpage viewを収集し、Issue別の閲覧偏りを確認
+- custom eventはまだ追加せず、page viewで必要性が確認できてから拡張
 - 「収支・コスト構造」は令和8年度介護事業経営実態調査の集計結果公表後に更新
 - 利用状況を見て再調査、更新通知、テンプレート、Evidence Brief等の事業化候補を判断
