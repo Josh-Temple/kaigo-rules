@@ -65,24 +65,32 @@ Kaigo Opsの公開Issueを、トップページ・横断navigation・将来の�
 
 5 Issueの段階では、検索infraを増やさずclient-side filteringで十分かを確認する。
 
-## 今後の計測
+## 利用計測 v0.1
 
-最初に必要な指標は以下。
+Vercel Web Analyticsのpage view計測を導入する。
 
-1. Issue page view
-2. トップページから各Issueへの遷移
-3. 原典リンクのclick
-4. Kaigo Rulesへの遷移
-5. 検索語 / group filterの利用
-6. 0件検索
+v0.1で見るもの:
 
-ただし、独自tracking基盤を先に作らない。
+1. トップページpage view
+2. Issue別page view
+3. routeごとの閲覧偏り
+4. referrer / device等、Vercel Web Analyticsが匿名化・集約して提供する標準指標
 
-Vercel Web Analytics等の既存のprivacy-friendlyな仕組みを優先し、
-取得するeventは利用価値の判断に必要な最小限にする。
+現段階ではcustom eventを追加しない。
 
-検索語をeventとして保存する場合は、個人情報や利用者情報を入力しない旨をUIでも明示するか、
-raw queryを保存せずcategory / query-present等へ集約する。
+そのため、以下はまだ直接計測しない。
+
+- 検索語
+- group filter click
+- トップページ上のIssue click
+- 原典リンクclick
+- Kaigo Rules遷移
+- 0件検索
+
+まずpage viewだけでIssue需要の偏りを確認し、追加eventが意思決定に必要と分かった場合にだけ拡張する。
+
+検索語を将来eventとして扱う場合も、raw queryをそのまま保存せず、
+個人情報・利用者情報を送らない設計を優先する。
 
 ## 変更ルール
 
