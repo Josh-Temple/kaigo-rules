@@ -1,35 +1,4 @@
-const issues = [
-  {
-    title: "必要な情報を探すのに時間がかかる",
-    body: "制度、通知、事業所内資料など、散らばった情報への到達時間を短くする。",
-    status: "調査公開",
-    href: "/issues/information-search",
-  },
-  {
-    title: "記録・文書作成に時間がかかる",
-    body: "記録、報告、転記など、繰り返し発生する文書作業をどこから減らすか。",
-    status: "調査公開",
-    href: "/issues/documentation",
-  },
-  {
-    title: "職員教育・引き継ぎが属人化する",
-    body: "研修、質問対応、引き継ぎを、正本・短い教材・peer learningで支える方法を整理する。",
-    status: "調査公開",
-    href: "/issues/training-handover",
-  },
-  {
-    title: "問い合わせ・連携の負担が大きい",
-    body: "電話、FAX、確認の往復を、self-service・structured exchange・適切なescalationで減らす。",
-    status: "調査公開",
-    href: "/issues/communication-collaboration",
-  },
-  {
-    title: "稼働率・生産性を改善したい",
-    body: "直接ケア、間接業務、待ち・調整、staffingを分け、質と負担を損なわず改善する。",
-    status: "調査公開",
-    href: "/issues/productivity-utilization",
-  },
-];
+import IssueExplorer from "./_components/IssueExplorer";
 
 const steps = [
   ["01", "困りごとを具体化", "誰が、どの作業で、どのような判断に困っているかを整理します。"],
@@ -77,21 +46,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="issueList">
-          {issues.map((issue, index) => (
-            <article className="issueRow" key={issue.title}>
-              <span className="issueNumber">{String(index + 1).padStart(2, "0")}</span>
-              <div>
-                <h3>{issue.title}</h3>
-                <p>{issue.body}</p>
-              </div>
-              <div className="issueAction">
-                <span className="status">{issue.status}</span>
-                {issue.href ? <a className="issueOpen" href={issue.href}>読む →</a> : null}
-              </div>
-            </article>
-          ))}
-        </div>
+        <IssueExplorer />
       </section>
 
       <section className="section muted" id="approach">

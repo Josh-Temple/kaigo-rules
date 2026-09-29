@@ -113,7 +113,7 @@ Phase 2の残り:
 - 介護ルールへの制度確認リンク
 - 原典・最終調査日
 
-5 Issueに到達し、共通Issue navigationも5項目へ拡張した。Issue数を増やすだけの段階は一旦区切り、今後は実際の5 Issueから共通schema、分類、検索、利用検証の必要範囲を判断する。
+5 Issueに到達し、公開Issueの定義を共通registryへ統合した。トップページにはkeyword検索と3分類の軽量filterを追加し、横断navigationも同じregistryから生成する。Issue数を増やすだけの段階は一旦区切り、今後は利用計測と再調査に重心を移す。
 
 ## Phase 4 — 再調査ループ
 
@@ -201,8 +201,8 @@ PVやページ数だけを主要KPIにしない。
 
 ## 直近の優先順位
 
-1. 5 Issueをproductionへ反映し、公開routeと横断navigationを確認
-2. 5 Issueの共通要素から、分類・検索・共通schemaの必要範囲を決める
-3. 利用状況を計測できる最小限の仕組みを整える
+1. 共通registry・分類・keyword検索をproductionへ反映し、mobileを含む公開動作を確認
+2. Vercel Web Analytics等でpage view・Issue遷移・原典/Kaigo Rules遷移を最小限計測する
+3. 検索0件や閲覧偏りを見てkeywords / groupを調整する
 4. 令和8年度介護事業経営実態調査の集計結果が公表されたら「収支・コスト構造」を再評価
 5. 利用データとフィードバックを基に、再調査・事業化候補を判断
