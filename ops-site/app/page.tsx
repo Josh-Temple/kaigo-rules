@@ -19,8 +19,9 @@ const issues = [
   },
   {
     title: "問い合わせ・連携の負担が大きい",
-    body: "定型的な確認、社内外の問い合わせ、申し送りの負担を減らす方法を考える。",
-    status: "候補",
+    body: "電話、FAX、確認の往復を、self-service・structured exchange・適切なescalationで減らす。",
+    status: "調査公開",
+    href: "/issues/communication-collaboration",
   },
 ];
 
