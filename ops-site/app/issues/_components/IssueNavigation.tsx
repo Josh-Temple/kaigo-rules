@@ -3,6 +3,7 @@ const issues = [
   { number: "02", title: "記録・文書", href: "/issues/documentation" },
   { number: "03", title: "教育・引き継ぎ", href: "/issues/training-handover" },
   { number: "04", title: "問い合わせ・連携", href: "/issues/communication-collaboration" },
+  { number: "05", title: "稼働率・生産性", href: "/issues/productivity-utilization" },
 ];
 
 export default function IssueNavigation({ current }: { current: string }) {
