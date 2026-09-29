@@ -1,0 +1,38 @@
+name: Prepare Kaigo Ops Web Analytics dependency
+
+on:
+  push:
+    branches: [kaigo-ops-web-analytics-20260930]
+    paths:
+      - ".github/workflows/prepare-kaigo-ops-analytics.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: kaigo-ops-web-analytics-20260930
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: ops-site/package-lock.json
+      - name: Install Vercel Web Analytics
+        working-directory: ops-site
+        run: npm install @vercel/analytics@2.0.1 --save-exact --no-audit --no-fund
+      - name: Commit generated dependency files
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ops-site/package.json ops-site/package-lock.json
+          if git diff --cached --quiet; then
+            echo "Dependency files already current."
+            exit 0
+          fi
+          git commit -m "build: add Vercel Web Analytics dependency"
+          git push origin HEAD:kaigo-ops-web-analytics-20260930
