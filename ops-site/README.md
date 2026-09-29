@@ -69,8 +69,8 @@ Kaigo Rulesとは公開面を分離します。
 ## Next
 
 - 情報探索Issueを最新の検証状態へ同期
-- 5 Issueの公開・運用確認
-- 共通Issue navigationを使い、横断導線を検証
+- 5 Issueを共通registryで管理し、トップページと横断navigationの定義を一元化
+- トップページでkeyword検索と「日常業務 / 人材・組織 / 経営・生産性」の軽量filterを検証
+- 利用計測は独自基盤を作らず、Vercel Web Analytics等の既存手段を優先
 - 「収支・コスト構造」は令和8年度介護事業経営実態調査の集計結果公表後に更新
-- 5 Issueから、共通schema・分類・検索の必要範囲を決める
 - 利用状況を見て再調査、更新通知、テンプレート、Evidence Brief等の事業化候補を判断
