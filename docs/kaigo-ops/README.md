@@ -1,6 +1,6 @@
 # 介護業務改善 / Research & Product Notes
 
-更新日: 2026-09-29
+更新日: 2026-09-30
 
 このディレクトリは、介護業務改善サイトと、その背後にある調査・更新方針を残すための記録です。
 
@@ -130,6 +130,12 @@ Evidence Review / 方法 / 検証
 - [問い合わせ・連携の負担が大きい — Evidence synthesis v0.1](./research/issues/communication-collaboration/README.md)
 - 公開ページ: `/issues/communication-collaboration`
 - 主な論点: 問い合わせlog、self-service、minimum information set、network adoption、escalation、AI routing
+
+### Fifth Issue
+
+- [稼働率・生産性を改善したい — Evidence synthesis v0.1](./research/issues/productivity-utilization/README.md)
+- 公開ページ: `/issues/productivity-utilization`
+- 主な論点: time allocation、indirect work、friction、resilience、staffing / skill mix、service-specific utilization
 - [Source coverage audit](./research/issues/information-search/source-coverage-audit.md)
 - [実験計画](./research/issues/information-search/experiment-plan.md)
 - [Benchmark v0.1](./research/issues/information-search/benchmark/README.md)
