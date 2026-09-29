@@ -102,7 +102,7 @@ Evidence Review / 方法 / 検証
 
 ### First deep Issue
 
-2026-09-25時点では、current `data/questions.json` の verified 質問から10問を固定し、Kaigo Rulesによって正しい原典への到達負担を減らせるかを測る小規模検証を準備済み。結果はまだ `NOT_RUN` であり、効果の主張は行わない。
+情報探索Issueは公開済み。人間Field Validationは `OPTIONAL_EXTERNAL_VALIDATION / NOT_RUN` のまま維持し、固定10問 × 3言い換えのMachine Retrieval Benchmarkでは更新後productionで30/30 full pass、context integrity 10/10を確認している。これは人間の時間短縮・使いやすさを示すものではない。
 
 - [必要な情報を探すのに時間がかかる](./research/issues/information-search/README.md)
 - [Field Validation v0.1 — 固定10問](./research/issues/information-search/field-validation-v0.1.json)
@@ -112,6 +112,12 @@ Evidence Review / 方法 / 検証
 - [Field Validation v0.1 — 実施準備状況 / deployment gate](./research/issues/information-search/field-validation-readiness-2026-09-25.md)
 - [Field Validation v0.1 — 記録テンプレート](./research/issues/information-search/field-validation-run-template-v0.1.csv)
 - [Evidence register](./research/issues/information-search/evidence-register.csv)
+
+### Second Issue
+
+- [記録・文書作成に時間がかかる — Evidence synthesis v0.1](./research/issues/documentation/README.md)
+- 公開ページ: `/issues/documentation`
+- 主な論点: 重複記録、転記、data reuse、mobile / voice input、AI draft、人間確認
 - [Source coverage audit](./research/issues/information-search/source-coverage-audit.md)
 - [実験計画](./research/issues/information-search/experiment-plan.md)
 - [Benchmark v0.1](./research/issues/information-search/benchmark/README.md)
