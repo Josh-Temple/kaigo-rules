@@ -173,6 +173,7 @@ Evidence Review / 方法 / 検証
 
 ### Methods
 
+- [Issue Registry v0.1](./issue-registry-v0.1.md)
 - [Product strategy](./product-strategy.md)
 - [Research protocol](./research-protocol.md)
 - [Evidence Register Schema](./research/evidence-schema.md)
