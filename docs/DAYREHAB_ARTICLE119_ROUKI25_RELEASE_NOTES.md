@@ -40,3 +40,14 @@ The public product now counts:
 The new Article 119 lane adds 25 relations to the tracked relation inventory and independently verifies all 25, so the pre-existing 107 unverified relations do not increase.
 
 Shortstay-life remains unpublished. Care Insurance Act, remuneration, and fee-guidance publication for dayrehab remain outside this release.
+
+
+## Fresh verification run
+
+The 2026-10-01 integration refresh (GitHub Actions run 36790961204) regenerated the three pinned receipts against the partitioned service index:
+
+- direct Chapter 8 text/structure: PASS, 69 nodes / 11 articles;
+- current Article 119 relations: PASS, 25/25;
+- bounded Rouki 25 historical-source text: PASS, 9/9 principal items.
+
+The three receipts share the same feature input SHA for this refresh. No human-review or VERIFIED_CURRENT state was promoted.
