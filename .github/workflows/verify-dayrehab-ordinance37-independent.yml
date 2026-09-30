@@ -1,0 +1,58 @@
+name: Verify dayrehab Ordinance 37 independently
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 3 * * 1"
+  pull_request:
+    paths:
+      - "data/ordinance37-scope.json"
+      - "data/ordinance37-nodes.json"
+      - "data/ordinance37-relations.json"
+      - "data/ordinance37-meta.json"
+      - "data/services/dayrehab/ordinance37-scope.json"
+      - "data/services/dayrehab/ordinance37-index.generated.json"
+      - "data/dayrehab-ordinance37-independent-audit.json"
+      - "scripts/verify_dayrehab_ordinance37_independent.py"
+      - "scripts/validate_dayrehab_ordinance37_independent_audit.py"
+      - ".github/workflows/verify-dayrehab-ordinance37-independent.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/ordinance37-scope.json"
+      - "data/ordinance37-nodes.json"
+      - "data/ordinance37-relations.json"
+      - "data/ordinance37-meta.json"
+      - "data/services/dayrehab/ordinance37-scope.json"
+      - "data/services/dayrehab/ordinance37-index.generated.json"
+      - "data/dayrehab-ordinance37-independent-audit.json"
+      - "scripts/verify_dayrehab_ordinance37_independent.py"
+      - "scripts/validate_dayrehab_ordinance37_independent_audit.py"
+      - ".github/workflows/verify-dayrehab-ordinance37-independent.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Independently reparse live e-Gov dayrehab scope
+        run: |
+          python scripts/verify_dayrehab_ordinance37_independent.py \
+            --report dayrehab-ordinance37-verification.json
+      - name: Validate pinned dayrehab audit provenance
+        run: python scripts/validate_dayrehab_ordinance37_independent_audit.py
+      - name: Upload verification report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: dayrehab-ordinance37-verification
+          path: dayrehab-ordinance37-verification.json
+          if-no-files-found: warn
+          retention-days: 90
