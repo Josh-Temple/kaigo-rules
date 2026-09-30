@@ -1,0 +1,91 @@
+name: One-time dayrehab Article 119 and notice refresh
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/one-time-dayrehab-second-layer-refresh.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-feature-branch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          ref: feature/dayrehab-119-notice
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "22"
+
+      - name: Capture feature input SHA
+        run: echo "FEATURE_HEAD_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Build canonical Article 119 relation set and service index
+        run: |
+          python scripts/build_dayrehab_article119_relations.py
+          python scripts/build_dayrehab_ordinance37_index.py
+
+      - name: Import bounded historical Rouki 25 section
+        run: python scripts/import_dayrehab_rouki25_historical.py
+
+      - name: Verify and pin Article 119 relations
+        run: |
+          mkdir -p artifacts
+          python scripts/verify_dayrehab_article119_relations_independent.py \
+            --report artifacts/dayrehab-article119-verification.json
+          python scripts/build_dayrehab_article119_relation_audit.py \
+            --verification-report artifacts/dayrehab-article119-verification.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_dayrehab_article119_relation_audit.py
+
+      - name: Verify and pin historical interpretation source
+        run: |
+          python scripts/verify_dayrehab_rouki25_historical_independent.py \
+            --report artifacts/dayrehab-rouki25-historical-verification.json
+          python scripts/build_dayrehab_rouki25_historical_audit.py \
+            --verification-report artifacts/dayrehab-rouki25-historical-verification.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_dayrehab_rouki25_historical_audit.py
+
+      - name: Rebuild derived service and product state
+        run: |
+          python scripts/build_service_catalog.py
+          python scripts/build_verification_registry.py
+          python scripts/build_product_value_snapshot.py
+
+      - name: Commit generated state to feature branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/services/dayrehab/ordinance37-relations.generated.json \
+            data/services/dayrehab/ordinance37-index.generated.json \
+            data/services/dayrehab/rouki25-historical.generated.json \
+            data/dayrehab-article119-relation-independent-audit.json \
+            data/dayrehab-rouki25-historical-independent-audit.json \
+            data/services/catalog.generated.json \
+            data/verification-registry.json \
+            data/product-value-snapshot-v0.1.json
+          git commit -m "Generate dayrehab Article 119 and notice evidence state"
+          git push origin HEAD:feature/dayrehab-119-notice
+
+      - name: Upload verification reports
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: dayrehab-second-layer-verification
+          path: |
+            artifacts/dayrehab-article119-verification.json
+            artifacts/dayrehab-rouki25-historical-verification.json
+          if-no-files-found: error
+          retention-days: 90
