@@ -44,6 +44,9 @@ def build() -> dict:
     careact_relations = load("careact-internal-relation-independent-audit.json")
     cross_layer_relations = load("cross-layer-source-chain-independent-audit.json")
     remuneration_relations = load("remuneration-delegation-relation-independent-audit.json")
+    dayrehab_article119 = load("dayrehab-article119-relation-independent-audit.json")
+    dayrehab_notice = load("dayrehab-rouki25-historical-independent-audit.json")
+    dayrehab_notice_data = load("services/dayrehab/rouki25-historical.generated.json")
 
     notice_reviewed = sum(
         1
@@ -214,6 +217,33 @@ def build() -> dict:
         },
     ]
 
+    layers.append(
+        {
+            "id": "rouki25-dayrehab",
+            "title": "老企第25号 通所リハビリテーション 旧HTML 9項目",
+            "content_verification": {
+                "status": dayrehab_notice["audit_result"],
+                "kind": "INDEPENDENT_HISTORICAL_SOURCE_MATCH",
+                "items": dayrehab_notice["coverage"]["items_passed"],
+                "evidence": "data/dayrehab-rouki25-historical-independent-audit.json",
+            },
+            "currentness": {
+                "status": "GAP_HISTORICAL_SOURCE_ONLY",
+                "note": "公式旧HTMLとの本文一致は確認済み。令和6年度新旧対照は別証拠であり、現行統合本文は未構成。",
+            },
+            "monitoring": {
+                "status": "ACTIVE",
+                "workflow": ".github/workflows/verify-dayrehab-rouki25-historical-independent.yml",
+            },
+            "human_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_items": 0,
+                "total_items": dayrehab_notice_data["item_count"],
+            },
+            "assurance": "HISTORICAL_SOURCE_TEXT_PASS_CURRENTNESS_GAP",
+        }
+    )
+
     layers.extend(load_normalized_verification_layers(service_catalog, ROOT))
     layers = enrich_verification_layers(layers, service_catalog)
     service_descriptors = [
@@ -231,7 +261,9 @@ def build() -> dict:
     relation_remaining = len(relation_coverage["remaining"])
     relation_lanes = relation_coverage["lanes"]
 
-    declared_inventory = relation_semantic["coverage"]["non_contains_semantic_or_cross_layer_relations"]
+    base_declared_inventory = relation_semantic["coverage"]["non_contains_semantic_or_cross_layer_relations"]
+    article119_declared = dayrehab_article119["coverage"]["relations_in_this_lane"]
+    declared_inventory = base_declared_inventory + article119_declared
     if relation_inventory != declared_inventory:
         raise ValueError(
             f"canonical semantic/cross-layer inventory changed: {relation_inventory} != {declared_inventory}"
