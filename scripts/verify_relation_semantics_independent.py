@@ -17,6 +17,8 @@ import argparse
 import hashlib
 import json
 import sys
+import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 from xml.dom import Node, minidom
@@ -61,8 +63,22 @@ def fetch(url: str) -> bytes:
             "User-Agent": "kaigo-rules-independent-relation-verifier/1.0 (+https://github.com/Josh-Temple/kaigo-rules)"
         },
     )
-    with urllib.request.urlopen(request, timeout=90) as response:
-        return response.read()
+    retryable_statuses = {404, 429, 500, 502, 503, 504}
+    last_error = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=90) as response:
+                return response.read()
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in retryable_statuses or attempt == 2:
+                raise
+        except urllib.error.URLError as exc:
+            last_error = exc
+            if attempt == 2:
+                raise
+        time.sleep(2 ** attempt)
+    raise RuntimeError(f"source fetch failed after retries: {last_error}")
 
 
 def load(name: str):
