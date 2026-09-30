@@ -19,7 +19,9 @@
       "qa_corpus_items"
     ],
     "excluded_services": [
-      "homevisit"
+      "homevisit",
+      "dayrehab",
+      "shortstay-life"
     ]
   },
   "metrics": {
