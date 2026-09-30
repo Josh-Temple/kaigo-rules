@@ -97,5 +97,5 @@ test("dayrehab Rouki 25 route exposes historical-source text without currentness
   assert.equal(audit.audit_result, "PASS");
   assert.equal(audit.safety.current_integrated_text, false);
   assert.match(page, /これは現行統合本文ではありません/);
-  assert.match(page, /currentness GAP/);
+  assert.match(page, /現行性はGAP/);
 });
