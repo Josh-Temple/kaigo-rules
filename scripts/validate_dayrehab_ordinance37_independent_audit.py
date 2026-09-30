@@ -73,7 +73,9 @@ def main() -> None:
     if record.get("source", {}).get("current_revision_id") != meta.get("current_revision", {}).get("law_revision_id"):
         fail("audited revision differs from committed current revision")
 
-    node_ids = set(index.get("node_ids", []))
+    node_ids = set(
+        index.get("node_ids_by_basis", {}).get("direct", index.get("node_ids", []))
+    )
     selected = [row for row in nodes if row.get("id") in node_ids]
     contains = [
         row for row in relations

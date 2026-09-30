@@ -11,10 +11,12 @@
   "id_namespaces": {},
   "scope_files": {
     "standards_index": "data/services/dayrehab/standards-index.json",
-    "ordinance37": "data/services/dayrehab/ordinance37-scope.json"
+    "ordinance37": "data/services/dayrehab/ordinance37-scope.json",
+    "rouki25": "data/services/dayrehab/rouki25-scope.json"
   },
   "verification_layer_ids": [
-    "ordinance37-dayrehab"
+    "ordinance37-dayrehab",
+    "rouki25-dayrehab"
   ],
   "publication_gate": {
     "public_routes_enabled": true,
@@ -24,17 +26,23 @@
   },
   "ingestion_layers": {
     "work_control": {
-      "status": "ACCEPTED_RESULTS_PARTIALLY_PUBLISHED",
-      "note": "Cycle 3の5レイヤー受理済み。基準省令11条は共有e-Govコーパスへ統合し独立再照合PASS、全文公開へ移行。他4レイヤーは公開統合前。"
+      "status": "ACCEPTED_RESULTS_TWO_LAYERS_PUBLISHED",
+      "note": "Cycle 3の5レイヤー受理済み。基準省令は第八章11条本文に加え第119条の現行準用関係を独立検証付きで展開。基準解釈通知は公式旧HTML9項目を歴史的本文として公開し、現行統合版とは扱わない。残る介護保険法・報酬基準・算定留意事項は公開統合前。"
     },
     "ordinance37": {
-      "status": "SHARED_CORPUS_INDEPENDENTLY_VERIFIED",
+      "status": "DIRECT_TEXT_PLUS_VERIFIED_ARTICLE119_SCOPE",
       "selected_nodes": 69,
       "selected_articles": 11,
-      "note": "第110条〜第119条（第118条の2を含む）を共有省令37号コーパスから本文複製なしで参照し、別XMLパーサによる独立再照合がPASS。人手確認は未実施。"
+      "note": "第110条〜第119条の直接本文は独立e-Gov再照合PASS。第119条の現行準用25条は別relation laneで独立検証し、共有コーパスに既存の24条を本文複製なしで参照。第64条は共有本文未収載として明示。"
+    },
+    "rouki25": {
+      "status": "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+      "principal_items": 9,
+      "note": "老企第25号の公式旧HTML『第九 通所リハビリテーション』9 principal itemsを公式source一致確認付きで公開。令和6年度新旧対照は別証拠として扱い、現行統合本文は生成しない。"
     }
   },
   "ingestion_indexes": {
-    "ordinance37": "data/services/dayrehab/ordinance37-index.generated.json"
+    "ordinance37": "data/services/dayrehab/ordinance37-index.generated.json",
+    "rouki25": "data/services/dayrehab/rouki25-historical.generated.json"
   }
 }

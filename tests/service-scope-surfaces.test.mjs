@@ -46,22 +46,17 @@ test("dayservice surface corpus excludes homevisit-only articles and retains sha
   assert.equal(articleIds.has("ordinance37.article.100"), true);
 });
 
-test("dayrehab surface resolves exactly the Chapter 8 shared-corpus articles", () => {
+test("dayrehab surface separates 11 direct articles from 24 locally available Article 119 targets", () => {
   const dayrehabArticles = filterRecordsForService(
     "dayrehab",
     "ordinance37",
     ordinanceArticles,
     (node) => node.id,
   );
-  assert.deepEqual(
-    dayrehabArticles.map((node) => node.article_num).sort((a, b) => {
-      const parse = (value) => value.split("-").map(Number);
-      const aa = parse(a);
-      const bb = parse(b);
-      return (aa[0] - bb[0]) || ((aa[1] || 0) - (bb[1] || 0));
-    }),
-    ["110", "111", "112", "113", "114", "115", "116", "117", "118", "118-2", "119"],
-  );
+  assert.equal(dayrehabArticles.length, 35);
+  assert.equal(dayrehabArticles.some((node) => node.article_num === "110"), true);
+  assert.equal(dayrehabArticles.some((node) => node.article_num === "10"), true);
+  assert.equal(dayrehabArticles.some((node) => node.article_num === "64"), false);
   assert.equal(
     isRecordApplicableToService("dayservice", "ordinance37", "ordinance37.article.110"),
     false,

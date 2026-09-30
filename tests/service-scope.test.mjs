@@ -41,9 +41,10 @@ test("shared Ordinance 37 nodes keep per-service legal applicability", () => {
     "ordinance37.article.10.p.1",
   );
 
-  assert.deepEqual(scope.service_ids, ["dayservice", "homevisit"]);
+  assert.deepEqual(scope.service_ids, ["dayrehab", "dayservice", "homevisit"]);
   assert.equal(scope.sharing, "SHARED");
   assert.deepEqual(scope.memberships, [
+    { service_id: "dayrehab", basis: "INCORPORATED_SCOPE" },
     { service_id: "dayservice", basis: "INCORPORATED_SCOPE" },
     { service_id: "homevisit", basis: "DIRECT_SCOPE" },
   ]);
@@ -224,6 +225,20 @@ test("dayrehab Ordinance 37 scope is explicit and isolated", () => {
     ).reason,
     "OUTSIDE_SERVICE_SCOPE",
   );
+});
+
+test("dayrehab Article 119 incorporated nodes have an explicit separate basis", () => {
+  const shared = resolveServiceScope("ordinance37", "ordinance37.article.10");
+  assert.deepEqual(shared.memberships, [
+    { service_id: "dayrehab", basis: "INCORPORATED_SCOPE" },
+    { service_id: "dayservice", basis: "INCORPORATED_SCOPE" },
+    { service_id: "homevisit", basis: "DIRECT_SCOPE" },
+  ]);
+  const directElsewhere = resolveServiceScope("ordinance37", "ordinance37.article.101");
+  assert.deepEqual(directElsewhere.memberships, [
+    { service_id: "dayrehab", basis: "INCORPORATED_SCOPE" },
+    { service_id: "dayservice", basis: "DIRECT_SCOPE" },
+  ]);
 });
 
 test("shortstay-life remains registered but unscoped", () => {

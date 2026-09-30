@@ -58,6 +58,10 @@ type HomevisitCareActIndex = {
 
 type HomevisitOrdinance37Index = {
   node_ids?: string[];
+  node_ids_by_basis?: {
+    direct?: string[];
+    incorporated?: string[];
+  };
 };
 
 const ordinance37Scope = ordinance37ScopeData as Ordinance37Scope;
@@ -78,8 +82,15 @@ const ordinance37DayserviceIncorporated = new Set(
 const ordinance37HomevisitNodeIds = new Set(
   (homevisitOrdinance37Index.node_ids || []).map(String),
 );
-const ordinance37DayrehabNodeIds = new Set(
-  (dayrehabOrdinance37Index.node_ids || []).map(String),
+const ordinance37DayrehabDirectNodeIds = new Set(
+  (
+    dayrehabOrdinance37Index.node_ids_by_basis?.direct ||
+    dayrehabOrdinance37Index.node_ids ||
+    []
+  ).map(String),
+);
+const ordinance37DayrehabIncorporatedNodeIds = new Set(
+  (dayrehabOrdinance37Index.node_ids_by_basis?.incorporated || []).map(String),
 );
 
 const careActDayserviceArticles = new Set(
@@ -143,8 +154,10 @@ const resolveOrdinance37 = (recordId: string) => {
   if (ordinance37HomevisitNodeIds.has(recordId)) {
     addMembership(memberships, "homevisit", "DIRECT_SCOPE");
   }
-  if (ordinance37DayrehabNodeIds.has(recordId)) {
+  if (ordinance37DayrehabDirectNodeIds.has(recordId)) {
     addMembership(memberships, "dayrehab", "DIRECT_SCOPE");
+  } else if (ordinance37DayrehabIncorporatedNodeIds.has(recordId)) {
+    addMembership(memberships, "dayrehab", "INCORPORATED_SCOPE");
   }
 
   return memberships;

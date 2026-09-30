@@ -17,7 +17,8 @@
       "fee_guidance_items",
       "unit_price_records",
       "qa_corpus_items",
-      "dayrehab_standard_articles"
+      "dayrehab_standard_articles",
+      "dayrehab_notice_items"
     ],
     "excluded_services": [
       "homevisit",
@@ -32,8 +33,8 @@
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
-      "public_items_total": 1449,
-      "public_items_complete": 1449,
+      "public_items_total": 1482,
+      "public_items_complete": 1482,
       "coverage_rate": 1.0,
       "missing_source_items": [],
       "missing_scope_items": [],
@@ -103,25 +104,38 @@
           "verification_state_complete": 843
         },
         "dayrehab_standard_articles": {
-          "items_total": 11,
-          "items_complete": 11,
-          "source_complete": 11,
-          "scope_complete": 11,
-          "verification_state_complete": 11
+          "items_total": 35,
+          "items_complete": 35,
+          "source_complete": 35,
+          "scope_complete": 35,
+          "verification_state_complete": 35
+        },
+        "dayrehab_notice_items": {
+          "items_total": 9,
+          "items_complete": 9,
+          "source_complete": 9,
+          "scope_complete": 9,
+          "verification_state_complete": 9
         }
       }
     },
     "unresolved_or_unverified_relations": {
-      "relations_total": 163,
-      "relations_independently_verified": 56,
+      "relations_total": 188,
+      "relations_independently_verified": 81,
       "relations_remaining_unverified": 107,
-      "remaining_rate": 0.656442,
+      "remaining_rate": 0.569149,
       "lane_breakdown": [
         {
           "id": "explicit-legal-reference",
           "status": "PASS",
           "verified_relations": 23,
           "evidence": "data/relation-semantic-independent-audit.json"
+        },
+        {
+          "id": "dayrehab-article119",
+          "status": "PASS",
+          "verified_relations": 25,
+          "evidence": "data/dayrehab-article119-relation-independent-audit.json"
         },
         {
           "id": "careact-internal",

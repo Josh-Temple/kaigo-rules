@@ -1,0 +1,176 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/import_dayrehab_rouki25_historical.py",
+  "service_id": "dayrehab",
+  "layer": "standards_interpretation",
+  "document_id": "rouki25",
+  "source_section": "第九 通所リハビリテーション",
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604",
+    "state": "OFFICIAL_HISTORICAL_HTML"
+  },
+  "boundary": {
+    "start_heading": "第九 通所リハビリテーション",
+    "end_before_heading": "第一〇 短期入所生活介護"
+  },
+  "items": [
+    {
+      "id": "dayrehab.rouki25.1.1",
+      "group_number": "1",
+      "group_heading": "人員に関する基準",
+      "marker": "(1)",
+      "title": "病院・診療所の場合",
+      "body_text": "(1) 指定通所リハビリテーション事業所が病院又は診療所である場合(ただし(2)の診療所である場合を除く)(基準第一一一条第一項)\n1 医師(第一号)\nイ 専任の常勤医師が一人以上勤務していること。\nロ 利用者数は、専任の常勤医師一人に対し一日四〇人以内であること。\n2 理学療法士若しくは作業療法士又は看護婦、看護士、准看護婦若しくは准看護士(以下「従事者」という。)(第二号)\nイ 利用者数は、専従する従事者二人に対し一単位二〇人以内とし、一日二単位を限度とすること。\nロ 専従する従事者二人のうち一人については、作業療法士若しくは理学療法士又は経験を有する看護婦であること。\nハ ロの従事者が経験を有する看護婦である場合(要するに、理学療法士又は作業療法士が専従する従業者に含まれない場合)にあっては、一単位につき週一日以上作業療法士又は理学療法士が勤務していること。\nニ 経験を有する看護婦とは、老人保健法の規定による医療に要する費用の額の算定に関する基準(以下「老人診療報酬点数表」という。)に定める老人デイケア、重度痴呆患者デイケア、精神科デイケア、作業療法(老人作業療法を含む。)、理学療法(老人理学療法を含む。)に係る施設設備の届出を行った保険医療機関等において、それらに一年以上従事した者であること。\nホ 専従する従業者二人のうちロの従事者以外の者については、看護職員で差し支えないものであること。\n3 介護職員(第三号)\n利用者の要介護状態等の実情を勘案して適当な数を配置すること。",
+      "body_sha256": "e68f4c35c54ac255b6ba4c23076715e7c048381f1d87a6ed8f547fb22406b8c9",
+      "source_locator": "第九 通所リハビリテーション / 1 人員に関する基準 / (1)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "dayrehab.rouki25.1.2",
+      "group_number": "1",
+      "group_heading": "人員に関する基準",
+      "marker": "(2)",
+      "title": "診療所の特例",
+      "body_text": "(2) 指定通所リハビリテーション事業所が診療所である場合(基準第一一一条第二項)\n1 医師(第一号)\nイ 専任の医師が一人勤務していること。\nロ 患者数は、専任の医師一人に対し一日四〇人以内であること。\n2 理学療法士若しくは作業療法士又は看護婦、看護士、准看護婦若しくは准看護士(以下「従事者」という。)(第二号)\nイ 利用者数は、専従する従事者二人に対し一単位一〇人以内とし、一日二単位を限度とする。\nロ 専従する従事者二人のうち一人については、作業療法士若しくは理学療法士又は経験を有する看護婦であること。\nハ 経験を有する看護婦とは、老人診療報酬点数表に定める老人デイケア・重度痴呆患者デイケア、精神科デイケア、作業療法(老人作業療法を含む。)、理学療法(老人理学療法を含む。)に係る施設基準の届出を行った保険医療機関等において、それらに一年以上従事した者であること。\nニ 専従する従事者二人のうち前記2以外の者については、看護職員又は介護職員で差し支えないこと。",
+      "body_sha256": "f61e508d98bf867b961d4bcefb760daea9b000990c8071ffa69c7895ce7b9425",
+      "source_locator": "第九 通所リハビリテーション / 1 人員に関する基準 / (2)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "dayrehab.rouki25.1.3",
+      "group_number": "1",
+      "group_heading": "人員に関する基準",
+      "marker": "(3)",
+      "title": "介護老人保健施設の場合",
+      "body_text": "(3) 指定通所リハビリテーション事業所が介護老人保健施設である場合(基準第一一一条第三項)\n介護老人保健施設が行う指定通所リハビリテーション事業における人員に関する基準については、基準上は、指定通所リハビリテーションに係る人員についてのみの規定としているが、介護老人保健施設の入所者に係る人員の員数の合計は、以下のとおりとなるものである。\n1 医師(第一号)\nイ 入所定員が一〇〇人に満たない介護老人保健施設で、常勤医師が一人以上配置されている場合にあっては、一人に加え、一〇〇から入所定員を除いた数に入所定員の三割を加えた数を超える利用者の数を二〇〇で除した数以上の医師が常勤又は非常勤で配置されていることが必要であること。例えば、入所定員八〇人の介護老人保健施設の場合で五四人の利用者がある場合は、介護老人保健施設の基準において必要な一人に、〔54-{(100-80)+80×3割}〕/200の計算による〇・〇五人分を加えた一・〇五人分が必要であること。\nロ イ以外の介護老人保健施設の場合にあっては、介護老人保健施設の基準において最低限配置することとされている医師の数に加え、入所定員の三割を超える利用者の数を二〇〇で除した数以上の医師が常勤又は非常勤で配置されていることが必要であること。例えば、入所定員一二〇人の介護老人保健施設で五六人の利用者がある場合は、介護老人保健施設の基準において必要な一・二人の医師に、(56-120×3割)/200の計算による〇・一人分を加えた一・三人分の配置が必要であること。\n2 理学療法士又は作業療法士(第二号)\n常勤換算方法で、利用者数に入所者数を加えた合計数を一〇〇で除して得た数以上の員数を配置するものである。\n3 看護職員又は介護職員(第三号)\nイ 専従の看護・介護職員は、指定通所リハビリテーションの提供時間帯以外の時間帯において介護老人保健施設の入所者に対するサービスの提供に当たることは、差し支えないものである。ただし、介護老人保健施設の看護・介護職員の常勤換算方法における勤務延時間数に、指定通所リハビリテーションに従事した勤務時間は含まれないものである。\nロ 専従の従事者の中に看護職員が含まれていない場合においても、専任の看護職員を少なくとも一名配置するものとする。ただし、当該専任の看護職員は、通所リハビリテーション業務に支障がない限り、入所者に対する業務と兼務しても差し支えない。\n4 支援相談員(第四号)\n常勤換算方法で、利用者数に入所者数を加えた合計数を一〇〇で除して得た数以上の員数を配置するものである。",
+      "body_sha256": "d52f551bab30a48fc648f4fb4f32b33751e6897c36464d42625fba4bb38b2c3b",
+      "source_locator": "第九 通所リハビリテーション / 1 人員に関する基準 / (3)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "dayrehab.rouki25.2.1",
+      "group_number": "2",
+      "group_heading": "設備に関する基準",
+      "marker": "(1)",
+      "title": "設備・共用条件",
+      "body_text": "(1) 指定通所リハビリテーション事業を行う事業所ごとに備える設備については、専ら当該事業の用に供するものでなければならないこととされているが、病院、診療所、介護老人保健施設が互いに併設される場合(同一敷地内にある場合、又は公道をはさんで隣接している場合をいう。)であって、そのうちの複数の施設において、指定通所リハビリテーション事業を行う場合には、以下の条件に適合するときは、それぞれの指定通所リハビリテーションを行うためのスペースが同一の部屋等であっても差し支えないものとする。\n1 当該部屋等において、それぞれの指定通所リハビリテーションを行うためのスペースが明確に区分されていること。\n2 それぞれの指定通所リハビリテーションを行うためのスペースが、次に掲げる面積要件(基準第一一二条各号)を満たしていること。\nイ 病院又は診療所(基準第一一一条第二項の適用を受けるものを除く。)の場合 利用定員が一五人までは四五平方メートル以上、それ以上利用定員が一人増すごとに三平方メートルを加えた面積以上のものを有すること。\nロ 基準第一一一条第二項の適用を受ける診療所の場合 利用定員が一〇人までは三〇平方メートル以上、それ以上利用定員が一人増すごとに三平方メートル加えた面積以上のものを有すること。\nハ 介護老人保健施設の場合 当該部屋等の面積と利用者用に確保されている食堂の面積の合計が、三平方メートルに利用定員数を乗じて得た面積以上であるものを有すること。",
+      "body_sha256": "e87deec45358e1709931b28e62e40cf9440f7e0fe17e95dc2be35cae03c89780",
+      "source_locator": "第九 通所リハビリテーション / 2 設備に関する基準 / (1)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "dayrehab.rouki25.2.2",
+      "group_number": "2",
+      "group_heading": "設備に関する基準",
+      "marker": "(2)",
+      "title": "併設施設等の取扱い",
+      "body_text": "(2) 指定通所リハビリテーションを行うためのスペースと、当該指定通所リハビリテーション事業所と併設の関係にある特別養護老人ホーム、社会福祉施設等における指定通所介護の機能訓練室等との関係については、第八の2の(2)の2を参照されたい。",
+      "body_sha256": "3b53dd749eee87e8b300729b60263f9915cd70324013ba8a886b95b707659b2a",
+      "source_locator": "第九 通所リハビリテーション / 2 設備に関する基準 / (2)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "dayrehab.rouki25.3.1",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(1)",
+      "title": "具体的取扱方針・計画",
+      "body_text": "(1) 通所リハビリテーションの具体的取扱方針及び通所リハビリテーション計画の作成\n基準第一一四条及び第一一五条に定めるところによるほか、次の点に留意するものとする。\n1 指定通所リハビリテーションは、個々の利用者に応じて作成された通所リハビリテーション計画に基づいて行われるものであるが、グループごとにサービス提供が行われることを妨げるものではないこと。\n2 指定通所リハビリテーション計画は、医師の診察内容及び運動機能検査等の結果を基に、指定通所リハビリテーションの提供に関わる従業者が共同して個々の利用者ごとに作成するものであること。\n3 指定通所リハビリテーション計画の目標及び内容については、利用者又は家族に説明を行うとともに、その実施状況や評価についても説明を行うこと。\n4 痴呆の状態にある要介護者等で、他の要介護者と同じグループとして、指定通所リハビリテーションを提供することが困難な場合には、必要に応じグループを分けて対応すること。\n5 指定通所リハビリテーションをより効果的に実施するため、支援相談員や医療ソーシャルワーカー等の協力を得て実施することが望ましいこと。\n6 主として痴呆等の精神障害を有する利用者を対象とした指定通所リハビリテーションにあっては、作業療法士等の従業者により、主として脳血管疾患等に起因する運動障害を有する利用者にあっては、理学療法士等の従業者により効果的に実施されるべきものであること。",
+      "body_sha256": "218f323420990c38a02aa3f8cfc6ec2193e30e864d590a795026dbcef8c4aa0e",
+      "source_locator": "第九 通所リハビリテーション / 3 運営に関する基準 / (1)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "dayrehab.rouki25.3.2",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(2)",
+      "title": "管理者等の責務",
+      "body_text": "(2) 管理者等の責務\n基準第一一六条第一項は、指定通所リハビリテーション事業所の管理者は、医師、理学療法士、作業療法士又は専ら指定通所リハビリテーションの提供に当たる看護婦又は看護士のうちから選任した者に、必要な管理の代行をさせることができる旨を明記したものであること。この場合、組織図等により、指揮命令系統を明確にしておく必要がある。",
+      "body_sha256": "d4124751da0bcdfe770eb70ea0aff04d4bb70ab5b8cc2a3baf4ce3f70a276f9b",
+      "source_locator": "第九 通所リハビリテーション / 3 運営に関する基準 / (2)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "dayrehab.rouki25.3.3",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(3)",
+      "title": "衛生管理等",
+      "body_text": "(3) 衛生管理等\n基準第一一八条第一項は、指定通所リハビリテーション事業所の必要最低限の衛生管理等を規定したものであるが、このほか、次の点に留意するものとする。\n1 指定通所リハビリテーション事業者は、食中毒及び感染症の発生を防止するための措置等について、必要に応じ保健所の助言、指導を求めるとともに、密接な連携を保つこと。\n2 医薬品の管理については、当該指定通所リハビリテーション事業所の実情に応じ、地域の薬局の薬剤師の協力を得て行うことも考えられること。\n3 空調設備等により施設内の適温の確保に努めること。",
+      "body_sha256": "9d451a60e43510edc9afb0e7f12bdffa77693f78943588469cdd2517e50aefb5",
+      "source_locator": "第九 通所リハビリテーション / 3 運営に関する基準 / (3)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "dayrehab.rouki25.3.4",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(4)",
+      "title": "準用",
+      "body_text": "(4) 準用\n基準第一一九条の規定により、基準第八条から第一三条まで、第一五条から第一七条まで、第一九条、第二一条、第二六条、第二七条、第三二条、第三三条、第三五条から第三九条まで、第六四条、第六五条、第九六条及び第一〇一条から第一〇三条までの規定は、指定通所リハビリテーションの事業について準用されるものであることから、第三の3の(1)から(7)まで、(9)、(11)、(14)、(15)及び(20)から(25)まで、第五の3の(2)並びに第八の3の(1)、(5)及び(6)を参照されたい。この場合において、特に次の点に留意するものとする。\n1 基準第一三条中「心身の状況」とあるのは「心身の状況、病歴」と読み替えられることに留意されたいこと。\n2 準用される基準第三九条により、整備すべき記録は以下のとおりであること。\nイ 指定通所リハビリテーションに関する記録\na 通所リハビリテーション計画書\nb 診療記録その他の提供した個々の指定通所リハビリテーションに係る記録\nロ 準用される基準第二六条に係る市町村への通知に係る記録\n3 準用される基準第六五条は、指定通所リハビリテーションの提供に当たっては、これまでどおり健康手帳の医療に関するページに、指定通所リハビリテーションの提供開始日及び指定通所リハビリテーション事業者の名称を記載することとしたものであること。ただし、特定疾病の患者等で健康手帳を有さない要介護者については、記載しなくてもよいこととなったこと。\n4 準用される基準第一〇一条第一項については、指定通所リハビリテーション事業所ごとに、通所リハビリテーション従業者の日々の勤務時間、常勤・非常勤の別、専従の理学療法士、作業療法士、経験看護婦等、看護職員及び介護職員の配置、管理者との兼務関係等を勤務表上明確にし、人員に関する基準が満たされていることを明らかにする必要があること。",
+      "body_sha256": "9bcbdda87cbbbf27853d91da8f92e5c81a46d54027c65551acfbef88c7f7b3e5",
+      "source_locator": "第九 通所リハビリテーション / 3 運営に関する基準 / (4)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    }
+  ],
+  "item_count": 9,
+  "amendment_evidence": {
+    "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+    "source_label": "令和6年度 居宅サービス基準解釈通知 新旧対照表",
+    "section": "七 通所リハビリテーション",
+    "handling": "SOURCE_SPECIFIC_PATCH_HIERARCHY_ONLY",
+    "policy": "（略）（新設）（削る）は原資料の状態のまま扱い、旧HTMLへ機械的に適用して現行統合本文を生成しない。"
+  },
+  "work_control": {
+    "result": "/Kaigo Rules/Work Control/Outputs/STANDARDS_INTERPRETATION/PACKET_STDINT_0003_DAYREHAB_FULL_SECTION_RESULT.md",
+    "committer_review": "/Kaigo Rules/Work Control/COMMITTER_REVIEW_CYCLE3_DAYREHAB.md",
+    "canonical_queue_tasks": [
+      "KR2-12-B001",
+      "KR2-12-B002",
+      "KR2-12-B003",
+      "KR2-12-B004",
+      "KR2-12-B005",
+      "KR2-12-B006",
+      "KR2-12-B007",
+      "KR2-12-B008",
+      "KR2-12-B009",
+      "KR2-12-B010"
+    ]
+  },
+  "assurance": {
+    "historical_source_text": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}

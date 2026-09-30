@@ -41,6 +41,11 @@
       "scope_kind": "SERVICE_SPECIFIC",
       "provider": "normalized_report",
       "report_file": "data/verification/layers/ordinance37-dayrehab.json"
+    },
+    {
+      "id": "rouki25-dayrehab",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "legacy"
     }
   ]
 }

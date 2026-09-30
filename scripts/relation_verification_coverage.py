@@ -17,6 +17,7 @@ RELATION_FILES = (
     "relationships.json",
     "remuneration-delegated-relations.json",
     "remuneration-relations.json",
+    "services/dayrehab/ordinance37-relations.generated.json",
 )
 FROM_KEYS = ("from", "from_id", "from_guidance_id", "from_notice_id", "from_fee_id")
 TO_KEYS = ("to", "to_id", "to_fee_id", "to_ordinance_id", "to_source_id")
@@ -95,6 +96,25 @@ def explicit_reference_identities(audit: dict) -> set[tuple[str, str, str]]:
         raise ValueError("explicit-legal-reference identity count changed")
     return identities
 
+
+
+def dayrehab_article119_identities(audit: dict) -> set[tuple[str, str, str]]:
+    if audit.get("audit_result") != "PASS":
+        raise ValueError("dayrehab Article 119 audit is not PASS")
+    identities = set()
+    for check in audit.get("checks", []):
+        require_clean_check(check, "dayrehab-article119")
+        for target in check.get("expected_relation_targets", []):
+            identities.add(
+                make_identity(
+                    check.get("source_article_id"),
+                    check.get("relation"),
+                    f"ordinance37.article.{target}",
+                )
+            )
+    if len(identities) != audit.get("coverage", {}).get("relations_passed"):
+        raise ValueError("dayrehab Article 119 identity count changed")
+    return identities
 
 def careact_internal_identities(audit: dict) -> set[tuple[str, str, str]]:
     if audit.get("audit_result") != "PASS":
@@ -175,6 +195,13 @@ def build_relation_coverage() -> dict:
             "explicit-legal-reference",
             "data/relation-semantic-independent-audit.json",
             explicit_reference_identities(load("relation-semantic-independent-audit.json")),
+        ),
+        (
+            "dayrehab-article119",
+            "data/dayrehab-article119-relation-independent-audit.json",
+            dayrehab_article119_identities(
+                load("dayrehab-article119-relation-independent-audit.json")
+            ),
         ),
         (
             "careact-internal",

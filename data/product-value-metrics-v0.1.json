@@ -56,7 +56,8 @@
           "fee_guidance_items",
           "unit_price_records",
           "qa_corpus_items",
-          "dayrehab_standard_articles"
+          "dayrehab_standard_articles",
+          "dayrehab_notice_items"
         ],
         "excluded_duplicate_or_global_surfaces": [
           "cross-source /search duplicates the same underlying families and is not counted again",

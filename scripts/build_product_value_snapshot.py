@@ -31,6 +31,7 @@ EXPECTED_PUBLIC_FAMILIES = [
     "unit_price_records",
     "qa_corpus_items",
     "dayrehab_standard_articles",
+    "dayrehab_notice_items",
 ]
 
 
@@ -398,18 +399,64 @@ def build_snapshot() -> dict[str, Any]:
                 for item in ordinance_nodes
                 if item.get("node_type") == "article" and item.get("id") in article_ids
             ]
-            state_complete = layer_state_complete(
+            dayrehab_index = load_json(
+                "data/services/dayrehab/ordinance37-index.generated.json"
+            )
+            direct_ids = set(
+                dayrehab_index.get("node_ids_by_basis", {}).get("direct", [])
+            )
+            incorporated_ids = set(
+                dayrehab_index.get("node_ids_by_basis", {}).get("incorporated", [])
+            )
+            direct_state_complete = layer_state_complete(
                 layer_by_id, "ordinance37-dayrehab"
+            )
+            article119_lane = next(
+                (
+                    lane
+                    for lane in verification_registry["relation_verification"].get("lanes", [])
+                    if lane.get("id") == "dayrehab-article119"
+                ),
+                None,
+            )
+            incorporated_state_complete = (
+                layer_state_complete(layer_by_id, "ordinance37")
+                and bool(article119_lane)
+                and article119_lane.get("status") == "PASS"
+                and article119_lane.get("verified_relations") == 25
             )
             dayrehab_public_rows = [
                 row(
                     f"dayrehab-standard:{item['article_num']}",
                     source_complete=bool(item.get("source_url")),
-                    scope_complete=True,
-                    verification_state_complete=state_complete,
+                    scope_complete=(
+                        item["id"] in direct_ids or item["id"] in incorporated_ids
+                    ),
+                    verification_state_complete=(
+                        direct_state_complete
+                        if item["id"] in direct_ids
+                        else incorporated_state_complete
+                    ),
                 )
                 for item in dayrehab_articles
             ]
+
+    dayrehab_notice_public_rows = []
+    if dayrehab_entry and dayrehab_config.get("routing", {}).get("future_service_base_enabled"):
+        dayrehab_notice_data = load_json("data/services/dayrehab/rouki25-historical.generated.json")
+        dayrehab_notice_state_complete = layer_state_complete(layer_by_id, "rouki25-dayrehab")
+        dayrehab_notice_public_rows = [
+            row(
+                f"dayrehab-notice:{item['id']}",
+                source_complete=bool(item.get("source_url")),
+                scope_complete=(
+                    dayrehab_notice_data.get("service_id") == "dayrehab"
+                    and item.get("source_state") == "OFFICIAL_HISTORICAL_HTML"
+                ),
+                verification_state_complete=dayrehab_notice_state_complete,
+            )
+            for item in dayrehab_notice_data.get("items", [])
+        ]
 
     families = {
         "practical_questions": question_public_rows,
@@ -422,6 +469,7 @@ def build_snapshot() -> dict[str, Any]:
         "unit_price_records": unit_price_public_rows,
         "qa_corpus_items": qa_public_rows,
         "dayrehab_standard_articles": dayrehab_public_rows,
+        "dayrehab_notice_items": dayrehab_notice_public_rows,
     }
     if list(families) != EXPECTED_PUBLIC_FAMILIES:
         raise RuntimeError("builder public family order/contract drifted")
