@@ -40,7 +40,7 @@ class ProductValueSnapshotTest(unittest.TestCase):
 
     def test_enabled_public_item_families_are_all_counted(self):
         metric = self.snapshot["metrics"]["public_items_with_complete_evidence_state"]
-        self.assertEqual(metric["public_items_total"], 1438)
+        self.assertEqual(metric["public_items_total"], 1449)
         self.assertEqual(
             set(metric["breakdown"]),
             set(self.builder.EXPECTED_PUBLIC_FAMILIES),
@@ -57,6 +57,10 @@ class ProductValueSnapshotTest(unittest.TestCase):
             metric["breakdown"]["unit_price_records"]["items_total"],
             435,
         )
+        self.assertEqual(
+            metric["breakdown"]["dayrehab_standard_articles"]["items_total"],
+            11,
+        )
 
     def test_canonical_scope_export_preserves_article8_focus_boundary(self):
         scoped = self.builder.load_canonical_service_scope("dayservice")
@@ -68,6 +72,7 @@ class ProductValueSnapshotTest(unittest.TestCase):
     def test_unpublished_service_is_excluded(self):
         self.assertEqual(self.snapshot["service_id"], "dayservice")
         self.assertIn("homevisit", self.snapshot["scope"]["excluded_services"])
+        self.assertNotIn("dayrehab", self.snapshot["scope"]["excluded_services"])
 
     def test_relation_counts_reconcile(self):
         metric = self.snapshot["metrics"]["unresolved_or_unverified_relations"]
