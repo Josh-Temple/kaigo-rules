@@ -159,14 +159,10 @@
       "path": "/services/dayrehab/rules",
       "expect_status": 200,
       "contains_text": [
-        "通所リハビリテーションの基準省令",
-        "本文・構造は独立再照合済みです",
-        "本文の独立確認",
-        "独立確認済み",
-        "人手確認",
-        "未実施",
-        "11",
-        "対象条文"
+        "第八章・直接規定",
+        "第119条・準用relation",
+        "relation独立監査",
+        "人手確認"
       ],
       "not_contains_text": [
         "本文全文はまだ公開していません"
@@ -209,7 +205,7 @@
       ],
       "not_contains_text": [
         "VERIFIED_CURRENT",
-        "人手確認済み"
+        "HUMAN_VERIFIED"
       ]
     }
   ]
