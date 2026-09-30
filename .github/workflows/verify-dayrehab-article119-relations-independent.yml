@@ -1,0 +1,59 @@
+name: Verify dayrehab Article 119 relations independently
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "19 5 * * 2"
+  pull_request:
+    paths:
+      - "data/services/dayrehab/ordinance37-scope.json"
+      - "data/services/dayrehab/ordinance37-relations.generated.json"
+      - "data/dayrehab-article119-relation-independent-audit.json"
+      - "data/ordinance37-nodes.json"
+      - "scripts/verify_dayrehab_article119_relations_independent.py"
+      - "scripts/validate_dayrehab_article119_relation_audit.py"
+      - ".github/workflows/verify-dayrehab-article119-relations-independent.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/services/dayrehab/ordinance37-scope.json"
+      - "data/services/dayrehab/ordinance37-relations.generated.json"
+      - "data/dayrehab-article119-relation-independent-audit.json"
+      - "data/ordinance37-nodes.json"
+      - "scripts/verify_dayrehab_article119_relations_independent.py"
+      - "scripts/validate_dayrehab_article119_relation_audit.py"
+      - ".github/workflows/verify-dayrehab-article119-relations-independent.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Independently verify Article 119 relations
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_dayrehab_article119_relations_independent.py --report article119-verification.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Validate pinned audit provenance
+        run: python scripts/validate_dayrehab_article119_relation_audit.py
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: dayrehab-article119-verification
+          path: article119-verification.json
+          if-no-files-found: warn
+      - name: Fail on relation differences
+        if: steps.verify.outputs.exit_code != '0'
+        run: exit 1
