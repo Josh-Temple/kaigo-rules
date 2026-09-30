@@ -18,20 +18,25 @@ class VerificationRegistryTests(unittest.TestCase):
         relation = registry["relation_verification"]
         summary = registry["summary"]
 
-        self.assertEqual(len(coverage["inventory"]), 163)
-        self.assertEqual(len(coverage["verified"]), 56)
+        self.assertEqual(len(coverage["inventory"]), 188)
+        self.assertEqual(len(coverage["verified"]), 81)
         self.assertEqual(len(coverage["remaining"]), 107)
         self.assertEqual(coverage["overlap_relations"], 0)
         self.assertEqual(coverage["identity_validation"], "PASS")
         self.assertTrue(coverage["verified"].issubset(coverage["inventory"]))
 
-        self.assertEqual(relation["inventory_relations"], 163)
-        self.assertEqual(relation["independently_verified_relations"], 56)
+        self.assertEqual(relation["inventory_relations"], 188)
+        self.assertEqual(relation["independently_verified_relations"], 81)
         self.assertEqual(relation["remaining_unverified_relations"], 107)
         self.assertEqual(
             sum(lane["verified_relations"] for lane in relation["lanes"]),
             len(coverage["verified"]),
         )
+        article119_lane = next(
+            lane for lane in relation["lanes"] if lane["id"] == "dayrehab-article119"
+        )
+        self.assertEqual(article119_lane["verified_relations"], 25)
+        self.assertEqual(article119_lane["status"], "PASS")
         self.assertEqual(summary["semantic_or_cross_layer_relations_remaining"], 107)
         self.assertEqual(registry["gaps"][0]["remaining"], 107)
         self.assertFalse(relation["automatic_promotion_allowed"])
