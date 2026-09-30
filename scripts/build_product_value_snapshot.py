@@ -31,6 +31,7 @@ EXPECTED_PUBLIC_FAMILIES = [
     "unit_price_records",
     "qa_corpus_items",
     "dayrehab_standard_articles",
+    "dayrehab_notice_items",
 ]
 
 
@@ -411,6 +412,23 @@ def build_snapshot() -> dict[str, Any]:
                 for item in dayrehab_articles
             ]
 
+    dayrehab_notice_public_rows = []
+    if dayrehab_entry and dayrehab_config.get("routing", {}).get("future_service_base_enabled"):
+        dayrehab_notice_data = load_json("data/services/dayrehab/rouki25-historical.generated.json")
+        dayrehab_notice_state_complete = layer_state_complete(layer_by_id, "rouki25-dayrehab")
+        dayrehab_notice_public_rows = [
+            row(
+                f"dayrehab-notice:{item['id']}",
+                source_complete=bool(item.get("source_url")),
+                scope_complete=(
+                    dayrehab_notice_data.get("service_id") == "dayrehab"
+                    and item.get("source_state") == "OFFICIAL_HISTORICAL_HTML"
+                ),
+                verification_state_complete=dayrehab_notice_state_complete,
+            )
+            for item in dayrehab_notice_data.get("items", [])
+        ]
+
     families = {
         "practical_questions": question_public_rows,
         "care_insurance_act_articles": care_act_public_rows,
@@ -422,6 +440,7 @@ def build_snapshot() -> dict[str, Any]:
         "unit_price_records": unit_price_public_rows,
         "qa_corpus_items": qa_public_rows,
         "dayrehab_standard_articles": dayrehab_public_rows,
+        "dayrehab_notice_items": dayrehab_notice_public_rows,
     }
     if list(families) != EXPECTED_PUBLIC_FAMILIES:
         raise RuntimeError("builder public family order/contract drifted")
