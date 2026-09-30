@@ -3,18 +3,17 @@
   "scope": "careact-to-remuneration-and-ordinance37-source-chains",
   "audit_kind": "INDEPENDENT_CROSS_LAYER_SOURCE_CHAIN_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-09-26",
+  "audited_at": "2026-09-30",
   "audit_run": {
     "workflow": "Verify cross-layer source chains independently",
-    "run_id": 36210617933,
-    "head_sha": "e54fccdeadf01f699a01614087d8c82ead437154",
+    "run_id": 36787107347,
+    "head_sha": "e07fc740b0cfcc18b1f923479c6cc1372898eec1",
     "result": "PASS",
     "parsers": {
       "egov_xml": "python_xml_dom_minidom",
       "mhlw_html": "python_stdlib_html_parser"
     },
-    "artifact_id": 10895750541,
-    "artifact_digest": "sha256:3c7bc0b8e69d660517900a7e508eecf7210a794823cddd47ddbc98f43f689e84"
+    "verification_report_sha256": "d884a410df0e5e0ab170cb39cb008d957d0fabdabee7be0148c04516cc500988"
   },
   "checks": [
     {
@@ -23,7 +22,7 @@
       "source_id": "careact.article.41.p.4.i.1",
       "target_id": "fee.dayservice.root",
       "result": "PASS",
-      "careact_source_sha256": "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc",
+      "careact_source_sha256": "16935a64750d05314e16149b869b029c542f98a2bb271d87449d2a8258e54f20",
       "notice19_source_sha256": "e189120c253f72d2d5dab24dfe7118bad7d602f0baba3d8cdf98a58c7ecc5bbd",
       "careact_evidence": {
         "required_phrases": [
@@ -44,7 +43,7 @@
       "source_id": "careact.article.74",
       "target_layer": "ordinance37",
       "result": "PASS",
-      "careact_source_sha256": "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc",
+      "careact_source_sha256": "16935a64750d05314e16149b869b029c542f98a2bb271d87449d2a8258e54f20",
       "ordinance37_source_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
       "careact_evidence": {
         "required_phrase": "厚生労働省令で定める基準",
@@ -125,23 +124,22 @@
   "input_git_blob_shas_at_audit": {
     "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
     "data/care-insurance-act-nodes.json": "5679279462390862405d60f00b25603f8be3522e",
-    "data/careact-internal-relation-independent-audit.json": "4787fc5c4cc25ce30009b2379e8ecb674754788c",
-    "data/relation-semantic-independent-audit.json": "3dcdcf5ac144833e242a9ace1b4af640e81c9a3e",
-    "data/ordinance37-meta.json": "81ff695803efb6c6c5525336b1d09a935599ca3c",
-    "data/ordinance37-scope.json": "3f5dbf976c0bc039ebe211ed5faf41fee1800610",
+    "data/careact-internal-relation-independent-audit.json": "6fac324770cc60e8b0ed9a4a1e2a6683f971fd8c",
+    "data/relation-semantic-independent-audit.json": "0f319192cc90ad86856d30a6ae37c3020c0b6e89",
+    "data/ordinance37-meta.json": "83d0af49feffe0279f23d6b6eb73a96f79498087",
+    "data/ordinance37-scope.json": "97273de6d703a04fc8fcb99f90c880cbdefa2ea4",
     "data/remuneration-current-skeleton.json": "4caef5d7c34c1658e442db137fed20944ebfeb06",
     "data/sources.json": "06779a3f95f48cc6069d1f23bdeccea5dfe82711",
     "scripts/verify_cross_layer_source_chains_independent.py": "e00928729e4675c5143919151bcd10fcacc406b5",
-    "data/care-insurance-act-meta.json": "fe96d6ba31a58763362e36cc9a9106647f5bd41b",
+    "data/care-insurance-act-meta.json": "ec89e91dac2fcaf165735ae7b61993b2024b1c64",
     "data/remuneration-current-text-meta.json": "81ef0083b42f42062f7f0ec8e215b9ffd392d6d8"
   },
-  "conclusion": "One Care Insurance Act fee-authority relation and 17 Article 74 to Ordinance 37 direct day-service standard relations matched independent live primary-source chains.",
+  "conclusion": "One Care Insurance Act fee-authority relation and 17 Article 74 to Ordinance 37 direct day-service standard relations matched fresh primary-source chains.",
   "limitations": [
     "PASS is source-chain consistency, not a human legal interpretation.",
-    "The Article 74 lane proves the chain from statutory delegation to Ordinance 37 title/chapter/section structure and the 17 committed direct-article targets.",
-    "The remaining 118 non-contains semantic or cross-layer relations are not independently verified by the three relation-audit lanes.",
-    "This audit does not promote HUMAN_VERIFIED or VERIFIED_CURRENT.",
-    "Later changes to pinned inputs or verifier require a refreshed audit record."
+    "The Article 74 lane remains limited to the 17 committed dayservice direct-article targets.",
+    "Other semantic or cross-layer relations remain outside this lane unless separately audited.",
+    "This audit does not promote HUMAN_VERIFIED or VERIFIED_CURRENT."
   ],
   "safety": {
     "human_verified": false,

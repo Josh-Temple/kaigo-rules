@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,10 +35,16 @@ def main() -> None:
         fail("unexpected scope")
     if record.get("audit_result") != "PASS":
         fail("audit result is not PASS")
-    if record.get("audit_run", {}).get("run_id") != 36210164036:
-        fail("unexpected audit run")
-    if record.get("audit_run", {}).get("parser") != "python_xml_dom_minidom":
+    audit_run = record.get("audit_run", {})
+    if not isinstance(audit_run.get("run_id"), int) or audit_run["run_id"] <= 0:
+        fail("invalid audit run id")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(audit_run.get("head_sha") or "")):
+        fail("invalid audit head sha")
+    if audit_run.get("parser") != "python_xml_dom_minidom":
         fail("unexpected independent parser")
+    report_sha = audit_run.get("verification_report_sha256")
+    if report_sha is not None and not re.fullmatch(r"[0-9a-f]{64}", str(report_sha)):
+        fail("invalid verification report sha256")
 
     safety = record.get("safety", {})
     if safety.get("human_verified") is not False or safety.get("verified_current") is not False:

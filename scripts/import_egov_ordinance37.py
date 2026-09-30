@@ -128,7 +128,7 @@ def parse_article(article, structural_path, service_scope, applicable_via, nodes
         "official_text": article_text,
         "text_sha256": hashlib.sha256(article_text.encode("utf-8")).hexdigest(),
         "service_scope": service_scope,
-        "applicable_via": None if service_scope == "通所介護・直接規定" else "ordinance37.article.105",
+        "applicable_via": applicable_via,
         "source_url": SOURCE_PAGE,
         "source_locator": locator,
         "verification_status": "IMPORTED_NEEDS_HUMAN_CHECK",

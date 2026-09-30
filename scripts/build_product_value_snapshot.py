@@ -391,24 +391,24 @@ def build_snapshot() -> dict[str, Any]:
     if dayrehab_entry:
         dayrehab_config = load_json(dayrehab_entry["config"])
         if dayrehab_config.get("routing", {}).get("future_service_base_enabled"):
-            index_ref = dayrehab_config.get("scope_files", {}).get("standards_index")
-            if not index_ref:
-                raise RuntimeError("enabled dayrehab route missing standards_index scope")
-            dayrehab_index = load_json(index_ref)
-            if dayrehab_index.get("service_id") != "dayrehab":
-                raise RuntimeError("dayrehab standards index service_id mismatch")
+            dayrehab_scope = load_canonical_service_scope("dayrehab")
+            article_ids = set(dayrehab_scope["ordinance37"]["article_ids"])
+            dayrehab_articles = [
+                item
+                for item in ordinance_nodes
+                if item.get("node_type") == "article" and item.get("id") in article_ids
+            ]
             state_complete = layer_state_complete(
-                layer_by_id, "ordinance37-dayrehab-preview"
+                layer_by_id, "ordinance37-dayrehab"
             )
-            source_complete = bool(dayrehab_index.get("sources"))
             dayrehab_public_rows = [
                 row(
-                    f"dayrehab-standard:{item['article_number']}",
-                    source_complete=(source_complete and bool(item.get("source_locator"))),
+                    f"dayrehab-standard:{item['article_num']}",
+                    source_complete=bool(item.get("source_url")),
                     scope_complete=True,
                     verification_state_complete=state_complete,
                 )
-                for item in dayrehab_index.get("articles", [])
+                for item in dayrehab_articles
             ]
 
     families = {

@@ -192,22 +192,54 @@ test("service-facing detail lookup fails closed outside the selected service", (
 });
 
 
-test("registered but unscoped services fail closed", () => {
-  for (const serviceId of ["dayrehab", "shortstay-life"]) {
-    const unresolved = serviceApplicability(
-      serviceId,
+test("dayrehab Ordinance 37 scope is explicit and isolated", () => {
+  const scope = resolveServiceScope(
+    "ordinance37",
+    "ordinance37.article.110.p.1",
+  );
+  assert.deepEqual(scope.memberships, [
+    { service_id: "dayrehab", basis: "DIRECT_SCOPE" },
+  ]);
+  assert.equal(
+    isRecordApplicableToService(
+      "dayrehab",
       "ordinance37",
-      "ordinance37.article.9999",
-    );
-    assert.equal(unresolved.applicable, false);
-    assert.equal(unresolved.reason, "NO_COMMITTED_SCOPE_EVIDENCE");
-
-    const outsideExistingScope = serviceApplicability(
-      serviceId,
+      "ordinance37.article.110.p.1",
+    ),
+    true,
+  );
+  assert.equal(
+    isRecordApplicableToService(
+      "dayservice",
+      "ordinance37",
+      "ordinance37.article.110.p.1",
+    ),
+    false,
+  );
+  assert.equal(
+    serviceApplicability(
+      "dayrehab",
       "ordinance37",
       "ordinance37.article.100",
-    );
-    assert.equal(outsideExistingScope.applicable, false);
-    assert.equal(outsideExistingScope.reason, "OUTSIDE_SERVICE_SCOPE");
-  }
+    ).reason,
+    "OUTSIDE_SERVICE_SCOPE",
+  );
+});
+
+test("shortstay-life remains registered but unscoped", () => {
+  const unresolved = serviceApplicability(
+    "shortstay-life",
+    "ordinance37",
+    "ordinance37.article.9999",
+  );
+  assert.equal(unresolved.applicable, false);
+  assert.equal(unresolved.reason, "NO_COMMITTED_SCOPE_EVIDENCE");
+
+  const outsideExistingScope = serviceApplicability(
+    "shortstay-life",
+    "ordinance37",
+    "ordinance37.article.110",
+  );
+  assert.equal(outsideExistingScope.applicable, false);
+  assert.equal(outsideExistingScope.reason, "OUTSIDE_SERVICE_SCOPE");
 });

@@ -30,7 +30,7 @@ export default function ServicesPage() {
               : servicePath(service.service_id, "/rules");
           const detail =
             service.service_id === "dayrehab"
-              ? "基準省令11条のインデックスを公開中"
+              ? "基準省令11条の本文を公開中"
               : "介護保険法・基準・通知・報酬・Q&Aを公開中";
           return (
             <Link className="foundation-row" href={href} key={service.service_id}>

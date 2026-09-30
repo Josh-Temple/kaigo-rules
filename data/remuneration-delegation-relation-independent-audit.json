@@ -3,15 +3,14 @@
   "scope": "remuneration-delegation-relations-explicit-primary-source",
   "audit_kind": "INDEPENDENT_REMUNERATION_DELEGATION_RELATION_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-09-26",
+  "audited_at": "2026-09-30",
   "audit_run": {
     "workflow": "Verify remuneration delegation relations independently",
-    "run_id": 36210655389,
-    "head_sha": "8880a09e971fc17a16075c29e831ccb64103f84d",
+    "run_id": 36787107347,
+    "head_sha": "e07fc740b0cfcc18b1f923479c6cc1372898eec1",
     "parser": "python_stdlib_htmlparser_plus_explicit_title_and_reference_rules",
     "result": "PASS",
-    "artifact_id": 10895875419,
-    "artifact_digest": "sha256:80818fffa4421add2c754b3748987167df714e15be5e9a7b91978c2e1a8f79ad"
+    "verification_report_sha256": "4f10a909f4d66c621c27df4ca514163a427bf71db7c03077f4fd05d7d187b9d6"
   },
   "sources": {
     "notice19": {
@@ -29,76 +28,116 @@
   },
   "checks": [
     {
+      "id": "note1-to-calc27.dayservice.1.capacity",
       "from_id": "fee.dayservice.note.1",
       "relation": "calculation_controlled_by",
       "to_id": "calc27.dayservice.1.capacity",
       "result": "PASS",
-      "differences": []
+      "differences": [],
+      "source_evidence": {
+        "notice19_phrase": [
+          "利用者の数又は看護職員若しくは介護職員の員数",
+          "別に厚生労働大臣が定めるところにより算定する"
+        ],
+        "notice27_required": [
+          "利用者の数",
+          "通所介護費については"
+        ]
+      }
     },
     {
+      "id": "note1-to-calc27.dayservice.1.staffing",
       "from_id": "fee.dayservice.note.1",
       "relation": "calculation_controlled_by",
       "to_id": "calc27.dayservice.1.staffing",
       "result": "PASS",
-      "differences": []
+      "differences": [],
+      "source_evidence": {
+        "notice19_phrase": [
+          "利用者の数又は看護職員若しくは介護職員の員数",
+          "別に厚生労働大臣が定めるところにより算定する"
+        ],
+        "notice27_required": [
+          "看護職員",
+          "介護職員",
+          "通所介護費については"
+        ]
+      }
     },
     {
+      "id": "fee.dayservice.note.10-to-criteria95.dayservice.14-6",
       "from_id": "fee.dayservice.note.10",
       "relation": "criteria_set_by",
       "to_id": "criteria95.dayservice.14-6",
+      "title_key": "入浴介助加算",
       "result": "PASS",
       "differences": []
     },
     {
+      "id": "fee.dayservice.note.11-to-criteria95.dayservice.15",
       "from_id": "fee.dayservice.note.11",
       "relation": "criteria_set_by",
       "to_id": "criteria95.dayservice.15",
+      "title_key": "中重度者ケア体制加算",
       "result": "PASS",
       "differences": []
     },
     {
+      "id": "fee.dayservice.note.13-to-criteria95.dayservice.16",
       "from_id": "fee.dayservice.note.13",
       "relation": "criteria_set_by",
       "to_id": "criteria95.dayservice.16",
+      "title_key": "個別機能訓練加算",
       "result": "PASS",
       "differences": []
     },
     {
+      "id": "fee.dayservice.note.15-to-criteria95.dayservice.17",
       "from_id": "fee.dayservice.note.15",
       "relation": "criteria_set_by",
       "to_id": "criteria95.dayservice.17",
+      "title_key": "認知症加算",
       "result": "PASS",
       "differences": []
     },
     {
+      "id": "fee.dayservice.note.17-to-criteria95.dayservice.18-2",
       "from_id": "fee.dayservice.note.17",
       "relation": "criteria_set_by",
       "to_id": "criteria95.dayservice.18-2",
+      "title_key": "栄養アセスメント加算",
       "result": "PASS",
       "differences": []
     },
     {
+      "id": "fee.dayservice.note.18-to-criteria95.dayservice.19",
       "from_id": "fee.dayservice.note.18",
       "relation": "criteria_set_by",
       "to_id": "criteria95.dayservice.19",
+      "title_key": "栄養改善加算",
       "result": "PASS",
       "differences": []
     },
     {
+      "id": "fee.dayservice.service-provision-to-criteria95.dayservice.23",
       "from_id": "fee.dayservice.service-provision",
       "relation": "criteria_set_by",
       "to_id": "criteria95.dayservice.23",
+      "title_key": "サービス提供体制強化加算",
       "result": "PASS",
       "differences": []
     },
     {
+      "id": "fee.dayservice.treatment-improvement-to-criteria95.dayservice.24",
       "from_id": "fee.dayservice.treatment-improvement",
       "relation": "criteria_set_by",
       "to_id": "criteria95.dayservice.24",
+      "title_key": "介護職員等処遇改善加算",
       "result": "PASS",
       "differences": []
     },
     {
+      "id": "criteria95-dayservice24-incorporates-shared4",
       "from_id": "criteria95.dayservice.24",
       "relation": "incorporates_by_reference",
       "to_id": "criteria95.shared.4",
@@ -116,15 +155,14 @@
   },
   "input_git_blob_shas_at_audit": {
     "data/remuneration-delegated-relations.json": "6d4f7047fb78a399b4a4a543266003e9c223e481",
-    "data/cross-layer-source-chain-independent-audit.json": "54335a960be718524b1c42c740178168f2f37263",
+    "data/cross-layer-source-chain-independent-audit.json": "05e069e8747da98056ae95ba76fcb0eab6be8eee",
     "scripts/verify_remuneration_delegation_relations.py": "4efb369c5ac4b3d4dc2916184a0a2553655ba7c7"
   },
-  "conclusion": "All 11 remuneration delegation/cross-reference relations in the covered lane matched explicit wording or named criteria in live MHLW primary-source HTML.",
+  "conclusion": "All 11 covered remuneration delegation/cross-reference relations matched explicit wording or named criteria in live MHLW primary-source HTML.",
   "limitations": [
-    "PASS is limited to the 11 covered explicit remuneration delegation/cross-reference relations.",
-    "The remaining 107 non-contains semantic or cross-layer relations are not independently verified by this audit.",
+    "PASS is limited to the 11 covered explicit remuneration relations.",
     "This audit does not promote HUMAN_VERIFIED or VERIFIED_CURRENT.",
-    "Later changes to pinned inputs or verifier require a refreshed audit record."
+    "Later pinned-input changes require a refreshed audit record."
   ],
   "safety": {
     "human_verified": false,

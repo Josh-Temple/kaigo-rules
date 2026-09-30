@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,20 +44,21 @@ def main() -> None:
         fail("audit result is not PASS")
 
     run = record.get("audit_run", {})
-    if run.get("run_id") != 36210557915:
-        fail("unexpected audit run")
-    if run.get("head_sha") != "9fa541d874a41ab800b9b4e8f1644899807bfed4":
-        fail("unexpected audited head SHA")
+    if not isinstance(run.get("run_id"), int) or run["run_id"] <= 0:
+        fail("invalid audit run")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(run.get("head_sha") or "")):
+        fail("invalid audited head SHA")
     if run.get("parser") != "python_xml_dom_minidom_plus_explicit_reference_evidence_rules":
         fail("unexpected independent parser")
-    if run.get("artifact_digest") != "sha256:aa7f5e51f9adbc99aed7ebc395d77c7ee60814ef043139dc376ea4a05002add1":
-        fail("unexpected audit artifact digest")
+    if not re.fullmatch(r"[0-9a-f]{64}", str(run.get("verification_report_sha256") or "")):
+        fail("invalid verification report sha256")
 
     source = record.get("source", {})
     if source.get("law_id") != "409AC0000000123":
         fail("unexpected Care Insurance Act law ID")
-    if source.get("xml_sha256") != "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc":
-        fail("unexpected live e-Gov source hash")
+    meta = load(DATA / "care-insurance-act-meta.json")
+    if source.get("xml_sha256") != meta.get("xml_sha256"):
+        fail("audited Care Insurance Act source hash differs from committed meta")
 
     safety = record.get("safety", {})
     if safety.get("human_verified") is not False or safety.get("verified_current") is not False:

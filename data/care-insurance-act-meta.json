@@ -6,20 +6,20 @@
   "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/409AC0000000123",
   "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/409AC0000000123",
   "source_page": "https://laws.e-gov.go.jp/law/409AC0000000123",
-  "xml_sha256": "e323026237027e02f02cb883548c36c725126915afc36cd9f8a46fccc28dc6dc",
-  "revision_response_sha256": "a30265e1e840d9d1ca540b49c81d4faa988d75b6adabbd31bcf8b595dca98486",
+  "xml_sha256": "16935a64750d05314e16149b869b029c542f98a2bb271d87449d2a8258e54f20",
+  "revision_response_sha256": "3953babd288b1e1e78b7a8d1ba3734261920d28b5866e8bf27f63ca556fe49d3",
   "current_revision": {
-    "law_revision_id": "409AC0000000123_20260903_508AC0000000027",
+    "law_revision_id": "409AC0000000123_20261001_507AC0000000087",
     "law_title": "介護保険法",
-    "amendment_law_id": "508AC0000000027",
-    "amendment_law_num": "令和八年法律第二十七号",
-    "amendment_promulgate_date": "2026-06-03",
-    "amendment_enforcement_date": "2026-09-03",
+    "amendment_law_id": "507AC0000000087",
+    "amendment_law_num": "令和七年法律第八十七号",
+    "amendment_promulgate_date": "2025-12-12",
+    "amendment_enforcement_date": "2026-10-01",
     "amendment_scheduled_enforcement_date": null,
     "current_revision_status": "CurrentEnforced",
     "repeal_status": "None",
     "mission": "New",
-    "updated": "2026-09-03T00:21:53+09:00"
+    "updated": "2026-10-01T04:21:31+09:00"
   },
   "revision_count": 56,
   "scope": {

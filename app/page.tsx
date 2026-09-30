@@ -24,7 +24,7 @@ export default function HomePage() {
         <h1>介護制度を、<br />根拠からたどれるように。</h1>
         <p className="lead">
           介護保険法、基準省令、解釈通知、報酬、国Q&Aを分断せず、
-          サービスごとに関係付けて整理します。通所介護に加え、通所リハビリテーションの基準省令インデックスをプレビュー公開しています。
+          サービスごとに関係付けて整理します。通所介護に加え、通所リハビリテーションの基準省令本文をプレビュー公開しています。
         </p>
         <div className="entry-links foundation-entry-links">
           <Link className="entry-row" href="/overview">
@@ -73,7 +73,7 @@ export default function HomePage() {
           {targetScopes.map((scope) => <span key={scope}>{scope}</span>)}
         </div>
         <p className="meta">
-          通所介護は複数レイヤーを公開中です。通所リハビリテーションは基準省令11条のインデックスのみをプレビュー公開しています。
+          通所介護は複数レイヤーを公開中です。通所リハビリテーションは基準省令11条の本文を、独立再照合済みの共有コーパスからプレビュー公開しています。
           未整備のサービスを確認済みとして表示したり、通所介護の検証結果を他サービスへ流用したりしません。
         </p>
       </section>

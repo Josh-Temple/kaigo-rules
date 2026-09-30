@@ -10,21 +10,31 @@
   },
   "id_namespaces": {},
   "scope_files": {
-    "standards_index": "data/services/dayrehab/standards-index.json"
+    "standards_index": "data/services/dayrehab/standards-index.json",
+    "ordinance37": "data/services/dayrehab/ordinance37-scope.json"
   },
   "verification_layer_ids": [
-    "ordinance37-dayrehab-preview"
+    "ordinance37-dayrehab"
   ],
   "publication_gate": {
     "public_routes_enabled": true,
     "content_ingested": true,
-    "independent_verification_complete": false,
+    "independent_verification_complete": true,
     "human_review_complete": false
   },
   "ingestion_layers": {
     "work_control": {
       "status": "ACCEPTED_RESULTS_PARTIALLY_PUBLISHED",
-      "note": "Cycle 3の基準省令11条をmetadata-only公開インデックスとして反映。全文共有コーパス、介護保険法、解釈通知、報酬、算定留意事項の公開統合は未完了。"
+      "note": "Cycle 3の5レイヤー受理済み。基準省令11条は共有e-Govコーパスへ統合し独立再照合PASS、全文公開へ移行。他4レイヤーは公開統合前。"
+    },
+    "ordinance37": {
+      "status": "SHARED_CORPUS_INDEPENDENTLY_VERIFIED",
+      "selected_nodes": 69,
+      "selected_articles": 11,
+      "note": "第110条〜第119条（第118条の2を含む）を共有省令37号コーパスから本文複製なしで参照し、別XMLパーサによる独立再照合がPASS。人手確認は未実施。"
     }
+  },
+  "ingestion_indexes": {
+    "ordinance37": "data/services/dayrehab/ordinance37-index.generated.json"
   }
 }

@@ -147,9 +147,9 @@
       "content_verification": {
         "status": "PASS",
         "kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
-        "nodes": 271,
-        "articles": 56,
-        "contains_relations": 215,
+        "nodes": 340,
+        "articles": 67,
+        "contains_relations": 273,
         "evidence": "data/egov-content-independent-audit.json"
       },
       "currentness": {
@@ -183,7 +183,7 @@
       },
       "currentness": {
         "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
-        "current_revision_id": "409AC0000000123_20260903_508AC0000000027"
+        "current_revision_id": "409AC0000000123_20261001_507AC0000000087"
       },
       "monitoring": {
         "status": "ACTIVE",
@@ -234,27 +234,32 @@
       "scope_kind": "SHARED_CORPUS_SERVICE_FILTER"
     },
     {
-      "id": "ordinance37-dayrehab-preview",
-      "title": "基準省令 通所リハビリテーション 第110条〜第119条 公開インデックス",
+      "id": "ordinance37-dayrehab",
+      "title": "基準省令 通所リハビリテーション 第110条〜第119条",
       "content_verification": {
-        "status": "ACCEPTED_WORK_CONTROL_RECEIPT",
-        "kind": "COMMITTER_ACCEPTED_PRIMARY_SOURCE_EXTRACTION",
-        "items": 11,
-        "evidence": "data/services/dayrehab/standards-index.json"
+        "status": "PASS",
+        "kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
+        "nodes": 69,
+        "articles": 11,
+        "contains_relations": 58,
+        "evidence": "data/dayrehab-ordinance37-independent-audit.json"
       },
       "currentness": {
-        "status": "GAP",
-        "reason": "Accepted extraction used the MHLW consolidated display; independent e-Gov current-revision reparse for the dayrehab scope is not yet complete."
+        "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
+        "current_revision_id": "411M50000100037_20250401_506M60000100164",
+        "note": "Independent content reparse matched the live e-Gov current-revision payload at the audit run. This is not HUMAN_VERIFIED or a claim of exhaustive future/uncommenced amendment review."
       },
       "monitoring": {
-        "status": "NOT_STARTED"
+        "status": "ACTIVE",
+        "workflow": ".github/workflows/verify-dayrehab-ordinance37-independent.yml",
+        "additional_workflow": ".github/workflows/verify-egov-source-freshness.yml"
       },
       "human_review": {
         "status": "NOT_REVIEWED",
         "reviewed_items": 0,
         "total_items": 11
       },
-      "assurance": "ACCEPTED_EXTRACTION_CURRENTNESS_GAP_NO_INHERITED_VERIFICATION",
+      "assurance": "INDEPENDENT_EGOV_TEXT_AND_STRUCTURE_PASS_PLUS_LIVE_SOURCE_WATCH",
       "service_ids": [
         "dayrehab"
       ],
@@ -309,8 +314,8 @@
     "services_total": 4,
     "active_services_total": 2,
     "layers_total": 8,
-    "independent_audit_or_reconstruction": 7,
-    "currentness_or_live_source_monitoring_active": 7,
+    "independent_audit_or_reconstruction": 8,
+    "currentness_or_live_source_monitoring_active": 8,
     "source_freshness_only_without_independent_content_audit": 0,
     "human_verified_layers": 0,
     "semantic_or_cross_layer_relations_total": 163,

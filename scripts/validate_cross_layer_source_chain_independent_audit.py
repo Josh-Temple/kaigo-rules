@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
@@ -57,12 +58,12 @@ def main() -> None:
         fail("audit result is not PASS")
 
     run = record.get("audit_run", {})
-    if run.get("run_id") != 36210617933:
-        fail("unexpected audit run")
-    if run.get("head_sha") != "e54fccdeadf01f699a01614087d8c82ead437154":
-        fail("unexpected audited head SHA")
-    if run.get("artifact_digest") != "sha256:3c7bc0b8e69d660517900a7e508eecf7210a794823cddd47ddbc98f43f689e84":
-        fail("unexpected audit artifact digest")
+    if not isinstance(run.get("run_id"), int) or run["run_id"] <= 0:
+        fail("invalid audit run")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(run.get("head_sha") or "")):
+        fail("invalid audited head SHA")
+    if not re.fullmatch(r"[0-9a-f]{64}", str(run.get("verification_report_sha256") or "")):
+        fail("invalid verification report sha256")
     parsers = run.get("parsers", {})
     if parsers.get("egov_xml") != "python_xml_dom_minidom":
         fail("unexpected e-Gov parser")

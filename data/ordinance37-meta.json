@@ -121,16 +121,35 @@
         ],
         "source_scope": "data/services/homevisit/ordinance37-scope.json",
         "policy": "既存の通所介護scopeと重なる条文は既存のservice_scope/applicable_viaを保持し、訪問介護だけで追加される条文のみ訪問介護・直接規定として共有コーパスへ追加する。"
+      },
+      {
+        "service_id": "dayrehab",
+        "service_label": "通所リハビリテーション",
+        "articles": [
+          "110",
+          "111",
+          "112",
+          "113",
+          "114",
+          "115",
+          "116",
+          "117",
+          "118",
+          "118-2",
+          "119"
+        ],
+        "source_scope": "data/services/dayrehab/ordinance37-scope.json",
+        "policy": "第八章の11条を共有コーパスへ追加し、本文は複製しない。公開・独立検証・currentness・human reviewはdayrehabとして別管理する。"
       }
     ]
   },
   "counts": {
-    "nodes_total": 271,
-    "articles_total": 56,
+    "nodes_total": 340,
+    "articles_total": 67,
     "direct_articles": 17,
     "incorporated_articles": 23,
-    "additional_service_only_articles": 16,
-    "relations": 238,
+    "additional_service_only_articles": 27,
+    "relations": 296,
     "application_rules": 5
   },
   "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
