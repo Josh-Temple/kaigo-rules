@@ -5,11 +5,13 @@ import ordinanceRelationsData from "../data/ordinance37-relations.json";
 import questionRelationsData from "../data/relationships.json";
 import remunerationDelegatedRelationsData from "../data/remuneration-delegated-relations.json";
 import remunerationRelationsData from "../data/remuneration-relations.json";
+import dayrehabArticle119RelationsData from "../data/services/dayrehab/ordinance37-relations.generated.json";
 
 import explicitAuditData from "../data/relation-semantic-independent-audit.json";
 import careActAuditData from "../data/careact-internal-relation-independent-audit.json";
 import crossLayerAuditData from "../data/cross-layer-source-chain-independent-audit.json";
 import remunerationAuditData from "../data/remuneration-delegation-relation-independent-audit.json";
+import dayrehabArticle119AuditData from "../data/dayrehab-article119-relation-independent-audit.json";
 import registryData from "../data/verification-registry.json";
 
 export type KnowledgeEdge = {
@@ -50,6 +52,7 @@ const relationSources: Array<[string, RawRelation[]]> = [
   ["data/relationships.json", questionRelationsData as RawRelation[]],
   ["data/remuneration-delegated-relations.json", remunerationDelegatedRelationsData as RawRelation[]],
   ["data/remuneration-relations.json", remunerationRelationsData as RawRelation[]],
+  ["data/services/dayrehab/ordinance37-relations.generated.json", dayrehabArticle119RelationsData as RawRelation[]],
 ];
 
 const firstString = (row: RawRelation, keys: readonly string[]) => {
@@ -83,6 +86,19 @@ for (const check of explicitAudit.checks || []) {
       check.relation,
       `ordinance37.article.${target}`,
       "explicit-legal-reference"
+    );
+  }
+}
+
+const dayrehabArticle119Audit = dayrehabArticle119AuditData as any;
+for (const check of dayrehabArticle119Audit.checks || []) {
+  if (check.result !== "PASS" || (check.differences || []).length) continue;
+  for (const target of check.expected_relation_targets || []) {
+    addVerified(
+      check.source_article_id,
+      check.relation,
+      `ordinance37.article.${target}`,
+      "dayrehab-article119"
     );
   }
 }
