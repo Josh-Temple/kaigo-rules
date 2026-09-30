@@ -1,0 +1,63 @@
+{
+  "format_version": 1,
+  "service_id": "dayrehab",
+  "layer": "ordinance37",
+  "audit_kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-30",
+  "audit_run": {
+    "workflow": "Refresh dayrehab e-Gov corpus once",
+    "run_id": 36778941494,
+    "head_sha": "d7be4778a41d1290ac58ad809e8687c171d47124",
+    "parser": "python_xml_dom_minidom",
+    "verification_report_sha256": "bf28557c1a4e5ad2552b60e319fe4ef50f328b4b490269f46ffa1763609d7f82"
+  },
+  "source": {
+    "law_id": "411M50000100037",
+    "url": "https://laws.e-gov.go.jp/api/1/lawdata/411M50000100037",
+    "observed_xml_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
+    "current_revision_id": "411M50000100037_20250401_506M60000100164"
+  },
+  "target_articles": [
+    "110",
+    "111",
+    "112",
+    "113",
+    "114",
+    "115",
+    "116",
+    "117",
+    "118",
+    "118-2",
+    "119"
+  ],
+  "observed": {
+    "nodes": 69,
+    "articles": 11,
+    "paragraphs": 27,
+    "items": 29,
+    "subitems": 2,
+    "contains_relations": 58
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/ordinance37-scope.json": "97273de6d703a04fc8fcb99f90c880cbdefa2ea4",
+    "data/ordinance37-nodes.json": "f4f13acc92d484804cce3575f8496d79b42511ca",
+    "data/ordinance37-relations.json": "c07311b5deaf56b8acea0f28b0275a6abca42ac6",
+    "data/ordinance37-meta.json": "83d0af49feffe0279f23d6b6eb73a96f79498087",
+    "data/services/dayrehab/ordinance37-scope.json": "b70b5a92b3dbdf534d691ed909693054508ffa31",
+    "data/services/dayrehab/ordinance37-index.generated.json": "52fa59cc81815461237dd81285caf08e821dc02d",
+    "scripts/verify_dayrehab_ordinance37_independent.py": "8971db89e53d7065ae7e34a358292bea8d0a49c9"
+  },
+  "conclusion": "The dayrehab Chapter 8 slice in the shared Ordinance 37 corpus matched live e-Gov XML using an independent minidom reparse.",
+  "limitations": [
+    "This audit covers source-derived dayrehab text and containment only.",
+    "Semantic/cross-layer relations are not audited here.",
+    "PASS does not mean HUMAN_VERIFIED.",
+    "PASS does not independently establish exhaustive future/uncommenced amendment history."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
