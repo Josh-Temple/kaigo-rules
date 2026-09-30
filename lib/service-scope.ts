@@ -1,6 +1,7 @@
 import careActScopeData from "../data/care-insurance-act-scope.json" with { type: "json" };
 import homevisitCareActIndexData from "../data/services/homevisit/care-insurance-act-index.generated.json" with { type: "json" };
 import homevisitOrdinance37IndexData from "../data/services/homevisit/ordinance37-index.generated.json" with { type: "json" };
+import dayrehabOrdinance37IndexData from "../data/services/dayrehab/ordinance37-index.generated.json" with { type: "json" };
 import ordinance37ScopeData from "../data/ordinance37-scope.json" with { type: "json" };
 import serviceCatalogData from "../data/services/catalog.generated.json" with { type: "json" };
 
@@ -65,6 +66,8 @@ const homevisitCareActIndex =
   homevisitCareActIndexData as HomevisitCareActIndex;
 const homevisitOrdinance37Index =
   homevisitOrdinance37IndexData as HomevisitOrdinance37Index;
+const dayrehabOrdinance37Index =
+  dayrehabOrdinance37IndexData as HomevisitOrdinance37Index;
 
 const ordinance37DayserviceDirect = new Set(
   (ordinance37Scope.direct_articles || []).map(String),
@@ -74,6 +77,9 @@ const ordinance37DayserviceIncorporated = new Set(
 );
 const ordinance37HomevisitNodeIds = new Set(
   (homevisitOrdinance37Index.node_ids || []).map(String),
+);
+const ordinance37DayrehabNodeIds = new Set(
+  (dayrehabOrdinance37Index.node_ids || []).map(String),
 );
 
 const careActDayserviceArticles = new Set(
@@ -136,6 +142,9 @@ const resolveOrdinance37 = (recordId: string) => {
 
   if (ordinance37HomevisitNodeIds.has(recordId)) {
     addMembership(memberships, "homevisit", "DIRECT_SCOPE");
+  }
+  if (ordinance37DayrehabNodeIds.has(recordId)) {
+    addMembership(memberships, "dayrehab", "DIRECT_SCOPE");
   }
 
   return memberships;
