@@ -1,26 +1,30 @@
 {
   "format_version": 1,
   "service_id": "dayrehab",
-  "readiness": "PARTIAL_INGESTION",
+  "readiness": "PUBLIC_PREVIEW",
   "routing": {
-    "current_mode": "SERVICE_ROOT_RESERVED",
+    "current_mode": "SERVICE_ROOT_PREVIEW",
     "legacy_entry_points": [],
     "future_service_base_path": "/services/dayrehab",
-    "future_service_base_enabled": false
+    "future_service_base_enabled": true
   },
   "id_namespaces": {},
-  "scope_files": {},
-  "verification_layer_ids": [],
+  "scope_files": {
+    "standards_index": "data/services/dayrehab/standards-index.json"
+  },
+  "verification_layer_ids": [
+    "ordinance37-dayrehab-preview"
+  ],
   "publication_gate": {
-    "public_routes_enabled": false,
-    "content_ingested": false,
+    "public_routes_enabled": true,
+    "content_ingested": true,
     "independent_verification_complete": false,
     "human_review_complete": false
   },
   "ingestion_layers": {
     "work_control": {
-      "status": "ACCEPTED_RESULTS_NOT_REPOSITORY_INGESTED",
-      "note": "Work Control Cycle 3の5レイヤー受理済みResultがLibraryに存在する。repository側のservice-specific scope/adaptersは未登録で、公開・独立検証・human reviewは未実施。"
+      "status": "ACCEPTED_RESULTS_PARTIALLY_PUBLISHED",
+      "note": "Cycle 3の基準省令11条をmetadata-only公開インデックスとして反映。全文共有コーパス、介護保険法、解釈通知、報酬、算定留意事項の公開統合は未完了。"
     }
   }
 }
