@@ -6,8 +6,8 @@
   "audited_at": "2026-09-30",
   "audit_run": {
     "workflow": "Verify dayrehab Article 119 relations independently",
-    "run_id": 36790505326,
-    "head_sha": "06cb1020f0aaeb6249c52a8b72aff3784e62774b",
+    "run_id": 36790961204,
+    "head_sha": "4cd3eba34400315e1adf2dc9186f89a21e4ac935",
     "parser": "python_xml_dom_minidom_plus_independent_japanese_article_reference_parser",
     "verification_report_sha256": "bd25c3c213e66b4e9020dfc18a86cfd1030b31c3e562b6530e947ae3bcf9e51e"
   },

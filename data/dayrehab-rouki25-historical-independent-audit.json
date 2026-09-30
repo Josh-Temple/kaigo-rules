@@ -6,8 +6,8 @@
   "audited_at": "2026-09-30",
   "audit_run": {
     "workflow": "Verify dayrehab Rouki 25 historical source independently",
-    "run_id": 36790505326,
-    "head_sha": "06cb1020f0aaeb6249c52a8b72aff3784e62774b",
+    "run_id": 36790961204,
+    "head_sha": "4cd3eba34400315e1adf2dc9186f89a21e4ac935",
     "parser": "regex_html_text_extractor_independent_of_htmlparser_importer",
     "verification_report_sha256": "21c04cc2551c6e04283e272b194299e72b9d59003c8bcefdf7deb022e94b233b"
   },
