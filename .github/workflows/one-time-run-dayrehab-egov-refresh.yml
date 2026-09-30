@@ -29,6 +29,9 @@ jobs:
       - name: Rebuild shared Ordinance 37 corpus from live e-Gov
         run: python scripts/import_egov_ordinance37.py
 
+      - name: Refresh scoped Care Insurance Act corpus from live e-Gov
+        run: python scripts/import_egov_care_insurance_act.py
+
       - name: Build dayrehab shared-corpus index
         run: python scripts/build_dayrehab_ordinance37_index.py
 
@@ -68,7 +71,10 @@ jobs:
             data/ordinance37-meta.json \
             data/services/dayrehab/ordinance37-index.generated.json \
             data/dayrehab-ordinance37-independent-audit.json \
-            data/egov-content-independent-audit.json
+            data/egov-content-independent-audit.json \
+            data/care-insurance-act-nodes.json \
+            data/care-insurance-act-relations.json \
+            data/care-insurance-act-meta.json
           git commit -m "Refresh shared Ordinance 37 corpus for dayrehab"
           git push origin HEAD:feature/dayrehab-egov-full-text
 
