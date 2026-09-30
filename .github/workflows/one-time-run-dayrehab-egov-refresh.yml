@@ -59,6 +59,12 @@ jobs:
             --head-sha "$FEATURE_HEAD_SHA"
           python scripts/validate_egov_content_independent_audit.py
 
+      - name: Rebuild derived service and product state
+        run: |
+          python scripts/build_service_catalog.py
+          python scripts/build_verification_registry.py
+          python scripts/build_product_value_snapshot.py
+
       - name: Commit generated canonical data to feature branch
         run: |
           set -euo pipefail
@@ -74,7 +80,10 @@ jobs:
             data/egov-content-independent-audit.json \
             data/care-insurance-act-nodes.json \
             data/care-insurance-act-relations.json \
-            data/care-insurance-act-meta.json
+            data/care-insurance-act-meta.json \
+            data/services/catalog.generated.json \
+            data/verification-registry.json \
+            data/product-value-snapshot-v0.1.json
           git commit -m "Refresh shared Ordinance 37 corpus for dayrehab"
           git push origin HEAD:feature/dayrehab-egov-full-text
 
