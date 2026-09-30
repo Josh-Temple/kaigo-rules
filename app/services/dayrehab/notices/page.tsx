@@ -27,7 +27,7 @@ export default function DayrehabNoticesPage() {
         <div><strong>{notice.item_count}</strong><span>旧HTML principal item</span></div>
         <div><strong>{notice.item_count}</strong><span>公式source一致</span></div>
         <div><strong>GAP</strong><span>現行統合本文</span></div>
-        <div><strong>0</strong><span>人手確認済み</span></div>
+        <div><strong>0</strong><span>人手確認</span></div>
       </section>
 
       {groups.map((group: any) => {
