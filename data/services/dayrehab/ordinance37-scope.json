@@ -1,0 +1,74 @@
+{
+  "format_version": 1,
+  "service_id": "dayrehab",
+  "service_label": "通所リハビリテーション",
+  "law_id": "411M50000100037",
+  "law_num": "平成十一年厚生省令第三十七号",
+  "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準",
+  "source_role": "SHARED_LAW_SERVICE_SCOPE",
+  "chapter": {
+    "number": "8",
+    "title": "通所リハビリテーション"
+  },
+  "direct_scope": {
+    "article_numbers": [
+      "110",
+      "111",
+      "112",
+      "113",
+      "114",
+      "115",
+      "116",
+      "117",
+      "118",
+      "118-2",
+      "119"
+    ],
+    "sections": [
+      {
+        "name": "第一節 基本方針",
+        "articles": [
+          "110"
+        ]
+      },
+      {
+        "name": "第二節 人員に関する基準",
+        "articles": [
+          "111"
+        ]
+      },
+      {
+        "name": "第三節 設備に関する基準",
+        "articles": [
+          "112"
+        ]
+      },
+      {
+        "name": "第四節 運営に関する基準",
+        "articles": [
+          "113",
+          "114",
+          "115",
+          "116",
+          "117",
+          "118",
+          "118-2",
+          "119"
+        ]
+      }
+    ]
+  },
+  "boundary": {
+    "previous_article": "109",
+    "next_article": "120",
+    "next_chapter": "第九章 短期入所生活介護"
+  },
+  "evidence": {
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+    "work_control_receipt": "/Kaigo Rules/Work Control/Outputs/STANDARDS/PACKET_STD_0003_DAYREHAB_FULL_CHAPTER_RESULT.md",
+    "committer_review": "/Kaigo Rules/Work Control/COMMITTER_REVIEW_CYCLE3_DAYREHAB.md",
+    "observed_fact": "Cycle 3 Committer accepted Chapter 8 as Articles 110–119 including 118-2, bounded before Chapter 9 / Article 120."
+  },
+  "selection_policy": "共有e-Govコーパスでは上記11条だけをdayrehab直接scopeとして選択し、本文はサービス別に複製しない。service-specific verificationは独立laneで別管理する。",
+  "automatic_verification_promotion_allowed": false
+}
