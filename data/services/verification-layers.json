@@ -35,6 +35,12 @@
       "id": "qa-corpus",
       "scope_kind": "SHARED_CORPUS_SERVICE_FILTER",
       "provider": "legacy"
+    },
+    {
+      "id": "ordinance37-dayrehab-preview",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "normalized_report",
+      "report_file": "data/verification/layers/ordinance37-dayrehab-preview.json"
     }
   ]
 }

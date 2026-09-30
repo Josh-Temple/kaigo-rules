@@ -16,6 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Link className="brand" href="/">介護ルール</Link>
           <nav>
             <Link href="/overview">制度の見取り図</Link>
+            <Link href="/services">サービス別</Link>
             <Link href="/search">横断検索</Link>
             <Link href="/start">これから始める</Link>
             <Link href="/qa">国Q&A</Link>

@@ -18,7 +18,7 @@
       {
         "service_id": "dayrehab",
         "label": "通所リハビリテーション",
-        "status": "PARTIAL_INGESTION"
+        "status": "ACTIVE_PREVIEW"
       },
       {
         "service_id": "shortstay-life",
@@ -232,6 +232,33 @@
         "dayservice"
       ],
       "scope_kind": "SHARED_CORPUS_SERVICE_FILTER"
+    },
+    {
+      "id": "ordinance37-dayrehab-preview",
+      "title": "基準省令 通所リハビリテーション 第110条〜第119条 公開インデックス",
+      "content_verification": {
+        "status": "ACCEPTED_WORK_CONTROL_RECEIPT",
+        "kind": "COMMITTER_ACCEPTED_PRIMARY_SOURCE_EXTRACTION",
+        "items": 11,
+        "evidence": "data/services/dayrehab/standards-index.json"
+      },
+      "currentness": {
+        "status": "GAP",
+        "reason": "Accepted extraction used the MHLW consolidated display; independent e-Gov current-revision reparse for the dayrehab scope is not yet complete."
+      },
+      "monitoring": {
+        "status": "NOT_STARTED"
+      },
+      "human_review": {
+        "status": "NOT_REVIEWED",
+        "reviewed_items": 0,
+        "total_items": 11
+      },
+      "assurance": "ACCEPTED_EXTRACTION_CURRENTNESS_GAP_NO_INHERITED_VERIFICATION",
+      "service_ids": [
+        "dayrehab"
+      ],
+      "scope_kind": "SERVICE_SPECIFIC"
     }
   ],
   "relation_verification": {
@@ -280,8 +307,8 @@
   ],
   "summary": {
     "services_total": 4,
-    "active_services_total": 1,
-    "layers_total": 7,
+    "active_services_total": 2,
+    "layers_total": 8,
     "independent_audit_or_reconstruction": 7,
     "currentness_or_live_source_monitoring_active": 7,
     "source_freshness_only_without_independent_content_audit": 0,

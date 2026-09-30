@@ -43,7 +43,7 @@
       "label": "Public items with source, scope, and verification-state completeness",
       "unit": "public_item",
       "denominator": {
-        "selector": "canonical record families rendered as service-facing public product items on currently enabled dayservice routes",
+        "selector": "canonical record families rendered as service-facing public product items on currently enabled service routes",
         "service_boundary": "shared Care Insurance Act and Ordinance 37 membership MUST come from lib/service-scope.ts; isolated service-specific datasets retain their explicit committed scope markers",
         "record_granularity": "count the canonical rows rendered/listed/searched as product records; nested legal child nodes shown only inside an article detail are not a second denominator row, but their service isolation is separately release-regressed",
         "included_public_families": [
@@ -55,7 +55,8 @@
           "remuneration_delegated_criteria",
           "fee_guidance_items",
           "unit_price_records",
-          "qa_corpus_items"
+          "qa_corpus_items",
+          "dayrehab_standard_articles"
         ],
         "excluded_duplicate_or_global_surfaces": [
           "cross-source /search duplicates the same underlying families and is not counted again",

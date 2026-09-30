@@ -38,6 +38,10 @@ export function getDefaultService(): ServiceConfig {
   return getService(DEFAULT_SERVICE_ID);
 }
 
+export function listServices(): ServiceConfig[] {
+  return [...catalog.services];
+}
+
 export function serviceBasePath(serviceId: string): string {
   const service = getService(serviceId);
   if (

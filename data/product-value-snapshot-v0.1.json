@@ -16,11 +16,11 @@
       "remuneration_delegated_criteria",
       "fee_guidance_items",
       "unit_price_records",
-      "qa_corpus_items"
+      "qa_corpus_items",
+      "dayrehab_standard_articles"
     ],
     "excluded_services": [
       "homevisit",
-      "dayrehab",
       "shortstay-life"
     ]
   },
@@ -32,8 +32,8 @@
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
-      "public_items_total": 1438,
-      "public_items_complete": 1438,
+      "public_items_total": 1449,
+      "public_items_complete": 1449,
       "coverage_rate": 1,
       "missing_source_items": [],
       "missing_scope_items": [],
@@ -101,6 +101,13 @@
           "source_complete": 843,
           "scope_complete": 843,
           "verification_state_complete": 843
+        },
+        "dayrehab_standard_articles": {
+          "items_total": 11,
+          "items_complete": 11,
+          "source_complete": 11,
+          "scope_complete": 11,
+          "verification_state_complete": 11
         }
       }
     },

@@ -20,6 +20,8 @@ const statusLabel = (value?: string) => {
     IMPORTED_NEEDS_HUMAN_CHECK: "確認待ち",
     INGESTED_UNREVIEWED: "確認待ち",
     PARTIAL: "一部実施",
+    ACCEPTED_WORK_CONTROL_RECEIPT: "受理済み・独立再照合前",
+    GAP: "未確定",
   };
   return value ? labels[value] || value : "—";
 };

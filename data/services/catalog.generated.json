@@ -43,12 +43,12 @@
     {
       "service_id": "dayrehab",
       "label": "通所リハビリテーション",
-      "status": "PARTIAL_INGESTION",
+      "status": "ACTIVE_PREVIEW",
       "routing": {
-        "current_mode": "SERVICE_ROOT_RESERVED",
+        "current_mode": "SERVICE_ROOT_PREVIEW",
         "legacy_entry_points": [],
         "future_service_base_path": "/services/dayrehab",
-        "future_service_base_enabled": false
+        "future_service_base_enabled": true
       },
       "id_namespaces": {}
     },

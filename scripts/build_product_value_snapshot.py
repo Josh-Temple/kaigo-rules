@@ -30,6 +30,7 @@ EXPECTED_PUBLIC_FAMILIES = [
     "fee_guidance_items",
     "unit_price_records",
     "qa_corpus_items",
+    "dayrehab_standard_articles",
 ]
 
 
@@ -382,6 +383,34 @@ def build_snapshot() -> dict[str, Any]:
         for index in range(len(qa_corpus))
     ]
 
+    dayrehab_public_rows = []
+    dayrehab_entry = next(
+        (item for item in service_manifest["services"] if item["service_id"] == "dayrehab"),
+        None,
+    )
+    if dayrehab_entry:
+        dayrehab_config = load_json(dayrehab_entry["config"])
+        if dayrehab_config.get("routing", {}).get("future_service_base_enabled"):
+            index_ref = dayrehab_config.get("scope_files", {}).get("standards_index")
+            if not index_ref:
+                raise RuntimeError("enabled dayrehab route missing standards_index scope")
+            dayrehab_index = load_json(index_ref)
+            if dayrehab_index.get("service_id") != "dayrehab":
+                raise RuntimeError("dayrehab standards index service_id mismatch")
+            state_complete = layer_state_complete(
+                layer_by_id, "ordinance37-dayrehab-preview"
+            )
+            source_complete = bool(dayrehab_index.get("sources"))
+            dayrehab_public_rows = [
+                row(
+                    f"dayrehab-standard:{item['article_number']}",
+                    source_complete=(source_complete and bool(item.get("source_locator"))),
+                    scope_complete=True,
+                    verification_state_complete=state_complete,
+                )
+                for item in dayrehab_index.get("articles", [])
+            ]
+
     families = {
         "practical_questions": question_public_rows,
         "care_insurance_act_articles": care_act_public_rows,
@@ -392,6 +421,7 @@ def build_snapshot() -> dict[str, Any]:
         "fee_guidance_items": guidance_public_rows,
         "unit_price_records": unit_price_public_rows,
         "qa_corpus_items": qa_public_rows,
+        "dayrehab_standard_articles": dayrehab_public_rows,
     }
     if list(families) != EXPECTED_PUBLIC_FAMILIES:
         raise RuntimeError("builder public family order/contract drifted")

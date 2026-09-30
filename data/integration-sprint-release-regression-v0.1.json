@@ -151,6 +151,31 @@
         "11\\s*対象条文",
         "89\\s*構造ノード"
       ]
+    },
+    {
+      "id": "IR-09",
+      "coverage": "service_isolation",
+      "title": "dayrehab preview route exposes its own bounded verification state",
+      "path": "/services/dayrehab/rules",
+      "expect_status": 200,
+      "contains_text": [
+        "通所リハビリテーションの基準省令",
+        "本文全文はまだ公開していません",
+        "現行性",
+        "未確定",
+        "11",
+        "対象条文"
+      ],
+      "not_contains_text": [
+        "独立確認済み"
+      ]
+    },
+    {
+      "id": "IR-10",
+      "coverage": "service_isolation",
+      "title": "shortstay-life remains unpublished while its canonical integration is incomplete",
+      "path": "/services/shortstay-life",
+      "expect_status": 404
     }
   ]
 }
