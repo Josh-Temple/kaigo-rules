@@ -1,0 +1,165 @@
+{
+  "format_version": 1,
+  "service_id": "dayrehab",
+  "service_label": "通所リハビリテーション",
+  "layer": "STANDARD",
+  "source_receipt": "/Kaigo Rules/Work Control/Outputs/STANDARDS/PACKET_STD_0003_DAYREHAB_FULL_CHAPTER_RESULT.md",
+  "source_receipt_status": "EXTRACTED_WITH_GAPS",
+  "ordinance_identifier": "411M50000100037",
+  "ordinance_name": "指定居宅サービス等の事業の人員、設備及び運営に関する基準",
+  "chapter": "第八章 通所リハビリテーション",
+  "sources": [
+    "https://laws.e-gov.go.jp/law/411M50000100037",
+    "https://laws.e-gov.go.jp/law/411M50000100037?occasion_date=20260930",
+    "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0"
+  ],
+  "article_count": 11,
+  "articles": [
+    {
+      "article_number": "110",
+      "article_label": "第百十条",
+      "section": "第一節 基本方針",
+      "heading": "基本方針",
+      "source_locator": "MHLW lines 1661-1665",
+      "amendment_marker": "(平一八厚労令三三・平二七厚労令四・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "111",
+      "article_label": "第百十一条",
+      "section": "第二節 人員に関する基準",
+      "heading": "従業者の員数",
+      "source_locator": "MHLW lines 1671-1691",
+      "amendment_marker": "(平一五厚労令二八・全改、平一八厚労令三三・平二一厚労令三一・令六厚労令一六・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "112",
+      "article_label": "第百十二条",
+      "section": "第三節 設備に関する基準",
+      "heading": "設備に関する基準",
+      "source_locator": "MHLW lines 1695-1701",
+      "amendment_marker": "(平一五厚労令二八・全改、平一八厚労令三三・平三〇厚労令四・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "113",
+      "article_label": "第百十三条",
+      "section": "第四節 運営に関する基準",
+      "heading": "指定通所リハビリテーションの基本取扱方針",
+      "source_locator": "MHLW lines 1705-1711",
+      "amendment_marker": "(平一八厚労令三三・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "114",
+      "article_label": "第百十四条",
+      "section": "第四節 運営に関する基準",
+      "heading": "指定通所リハビリテーションの具体的取扱方針",
+      "source_locator": "MHLW lines 1713-1727",
+      "amendment_marker": "(平一七厚労令一〇四・平一八厚労令三三・平二七厚労令四・令六厚労令一六・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "115",
+      "article_label": "第百十五条",
+      "section": "第四節 運営に関する基準",
+      "heading": "通所リハビリテーション計画の作成",
+      "source_locator": "MHLW lines 1729-1743",
+      "amendment_marker": "(平一五厚労令二八・平二七厚労令四・令六厚労令一六・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "116",
+      "article_label": "第百十六条",
+      "section": "第四節 運営に関する基準",
+      "heading": "管理者等の責務",
+      "source_locator": "MHLW lines 1745-1750",
+      "amendment_marker": "(平一四厚労令一四・平三〇厚労令四・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "117",
+      "article_label": "第百十七条",
+      "section": "第四節 運営に関する基準",
+      "heading": "運営規程",
+      "source_locator": "MHLW lines 1752-1776",
+      "amendment_marker": "(令三厚労令九・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "118",
+      "article_label": "第百十八条",
+      "section": "第四節 運営に関する基準",
+      "heading": "衛生管理等",
+      "source_locator": "MHLW lines 1778-1789",
+      "amendment_marker": "(平一六厚労令一一二・令三厚労令九・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "118-2",
+      "article_label": "第百十八条の二",
+      "section": "第四節 運営に関する基準",
+      "heading": "記録の整備",
+      "source_locator": "MHLW lines 1791-1808",
+      "amendment_marker": "(平一五厚労令二八・追加、令六厚労令一六・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "article_number": "119",
+      "article_label": "第百十九条",
+      "section": "第四節 運営に関する基準",
+      "heading": "準用",
+      "source_locator": "MHLW lines 1810-1813",
+      "amendment_marker": "(平一五厚労令二八・平二〇厚労令七七・令三厚労令九・一部改正)",
+      "transcription_state": "VERBATIM_MHLW_DISPLAY",
+      "content_state": "ARTICLE_INDEXED_FROM_ACCEPTED_WORK_CONTROL_RECEIPT",
+      "currentness_state": "GAP",
+      "human_review_state": "NOT_REVIEWED"
+    }
+  ],
+  "verification_state": {
+    "content_verification": "ACCEPTED_WORK_CONTROL_RECEIPT",
+    "currentness": "GAP",
+    "human_review": "NOT_REVIEWED",
+    "independent_e_gov_reparse": "NOT_RUN"
+  },
+  "gap": {
+    "gap_id": "GAP-STD-001",
+    "scope": "Articles 110-119 currentness",
+    "issue": "e-Gov displayed-text page returned zero lines and e-Gov article API was inaccessible in this retrieval; MHLW page is a consolidated display but does not establish as-of-date law text, later revisions, or uncommenced amendments independently.",
+    "handling": "Recorded as unresolved currentness; continued extraction of all independent scoped provisions from MHLW text.",
+    "state": "OPEN"
+  },
+  "publication_note": "Accepted article index only. Full article text is not republished until the shared e-Gov corpus is extended and independently re-parsed."
+}
