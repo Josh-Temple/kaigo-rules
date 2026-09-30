@@ -234,6 +234,34 @@
       "scope_kind": "SHARED_CORPUS_SERVICE_FILTER"
     },
     {
+      "id": "rouki25-dayrehab",
+      "title": "老企第25号 通所リハビリテーション 旧HTML 9項目",
+      "content_verification": {
+        "status": "PASS",
+        "kind": "INDEPENDENT_HISTORICAL_SOURCE_MATCH",
+        "items": 9,
+        "evidence": "data/dayrehab-rouki25-historical-independent-audit.json"
+      },
+      "currentness": {
+        "status": "GAP_HISTORICAL_SOURCE_ONLY",
+        "note": "公式旧HTMLとの本文一致は確認済み。令和6年度新旧対照は別証拠であり、現行統合本文は未構成。"
+      },
+      "monitoring": {
+        "status": "ACTIVE",
+        "workflow": ".github/workflows/verify-dayrehab-rouki25-historical-independent.yml"
+      },
+      "human_review": {
+        "status": "NOT_REVIEWED",
+        "reviewed_items": 0,
+        "total_items": 9
+      },
+      "assurance": "HISTORICAL_SOURCE_TEXT_PASS_CURRENTNESS_GAP",
+      "service_ids": [
+        "dayrehab"
+      ],
+      "scope_kind": "SERVICE_SPECIFIC"
+    },
+    {
       "id": "ordinance37-dayrehab",
       "title": "基準省令 通所リハビリテーション 第110条〜第119条",
       "content_verification": {
@@ -268,8 +296,8 @@
   ],
   "relation_verification": {
     "status": "PARTIAL",
-    "inventory_relations": 163,
-    "independently_verified_relations": 56,
+    "inventory_relations": 188,
+    "independently_verified_relations": 81,
     "remaining_unverified_relations": 107,
     "lanes": [
       {
@@ -277,6 +305,12 @@
         "status": "PASS",
         "verified_relations": 23,
         "evidence": "data/relation-semantic-independent-audit.json"
+      },
+      {
+        "id": "dayrehab-article119",
+        "status": "PASS",
+        "verified_relations": 25,
+        "evidence": "data/dayrehab-article119-relation-independent-audit.json"
       },
       {
         "id": "careact-internal",
@@ -304,8 +338,8 @@
     {
       "id": "semantic-cross-layer-relations",
       "status": "PARTIAL",
-      "independently_verified": 56,
-      "total": 163,
+      "independently_verified": 81,
+      "total": 188,
       "remaining": 107,
       "note": "Remaining semantic/cross-layer relations are not independently verified and are not auto-promoted."
     }
@@ -313,13 +347,13 @@
   "summary": {
     "services_total": 4,
     "active_services_total": 2,
-    "layers_total": 8,
-    "independent_audit_or_reconstruction": 8,
-    "currentness_or_live_source_monitoring_active": 8,
+    "layers_total": 9,
+    "independent_audit_or_reconstruction": 9,
+    "currentness_or_live_source_monitoring_active": 9,
     "source_freshness_only_without_independent_content_audit": 0,
     "human_verified_layers": 0,
-    "semantic_or_cross_layer_relations_total": 163,
-    "semantic_or_cross_layer_relations_independently_verified": 56,
+    "semantic_or_cross_layer_relations_total": 188,
+    "semantic_or_cross_layer_relations_independently_verified": 81,
     "semantic_or_cross_layer_relations_remaining": 107
   }
 }

@@ -1,0 +1,105 @@
+{
+  "format_version": 1,
+  "scope": "dayrehab-rouki25-official-historical-html-section",
+  "audit_kind": "INDEPENDENT_DAYREHAB_ROUKI25_HISTORICAL_SOURCE_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-09-30",
+  "audit_run": {
+    "workflow": "Verify dayrehab Rouki 25 historical source independently",
+    "run_id": 36790505326,
+    "head_sha": "06cb1020f0aaeb6249c52a8b72aff3784e62774b",
+    "parser": "regex_html_text_extractor_independent_of_htmlparser_importer",
+    "verification_report_sha256": "21c04cc2551c6e04283e272b194299e72b9d59003c8bcefdf7deb022e94b233b"
+  },
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604"
+  },
+  "checks": [
+    {
+      "id": "dayrehab.rouki25.1.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "e68f4c35c54ac255b6ba4c23076715e7c048381f1d87a6ed8f547fb22406b8c9",
+      "source_locator": "第九 通所リハビリテーション / 1 人員に関する基準 / (1)"
+    },
+    {
+      "id": "dayrehab.rouki25.1.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "f61e508d98bf867b961d4bcefb760daea9b000990c8071ffa69c7895ce7b9425",
+      "source_locator": "第九 通所リハビリテーション / 1 人員に関する基準 / (2)"
+    },
+    {
+      "id": "dayrehab.rouki25.1.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "d52f551bab30a48fc648f4fb4f32b33751e6897c36464d42625fba4bb38b2c3b",
+      "source_locator": "第九 通所リハビリテーション / 1 人員に関する基準 / (3)"
+    },
+    {
+      "id": "dayrehab.rouki25.2.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "e87deec45358e1709931b28e62e40cf9440f7e0fe17e95dc2be35cae03c89780",
+      "source_locator": "第九 通所リハビリテーション / 2 設備に関する基準 / (1)"
+    },
+    {
+      "id": "dayrehab.rouki25.2.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "3b53dd749eee87e8b300729b60263f9915cd70324013ba8a886b95b707659b2a",
+      "source_locator": "第九 通所リハビリテーション / 2 設備に関する基準 / (2)"
+    },
+    {
+      "id": "dayrehab.rouki25.3.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "218f323420990c38a02aa3f8cfc6ec2193e30e864d590a795026dbcef8c4aa0e",
+      "source_locator": "第九 通所リハビリテーション / 3 運営に関する基準 / (1)"
+    },
+    {
+      "id": "dayrehab.rouki25.3.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "d4124751da0bcdfe770eb70ea0aff04d4bb70ab5b8cc2a3baf4ce3f70a276f9b",
+      "source_locator": "第九 通所リハビリテーション / 3 運営に関する基準 / (2)"
+    },
+    {
+      "id": "dayrehab.rouki25.3.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "9d451a60e43510edc9afb0e7f12bdffa77693f78943588469cdd2517e50aefb5",
+      "source_locator": "第九 通所リハビリテーション / 3 運営に関する基準 / (3)"
+    },
+    {
+      "id": "dayrehab.rouki25.3.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "9bcbdda87cbbbf27853d91da8f92e5c81a46d54027c65551acfbef88c7f7b3e5",
+      "source_locator": "第九 通所リハビリテーション / 3 運営に関する基準 / (4)"
+    }
+  ],
+  "coverage": {
+    "principal_items": 9,
+    "items_passed": 9
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/services/dayrehab/rouki25-scope.json": "a28127f257918889b106551e1fa857cd4c324e11",
+    "data/services/dayrehab/rouki25-historical.generated.json": "e6bef5ae2f3b27c03209dd143fef1dea28a16907",
+    "scripts/verify_dayrehab_rouki25_historical_independent.py": "8fd02a6ece6814c35498b0f30f4f99f7ed884c83"
+  },
+  "conclusion": "All nine principal items in the bounded dayrehab Rouki 25 historical HTML section matched the official MHLW source under an independent text-extraction path.",
+  "limitations": [
+    "This proves historical-source transcription, not current integrated notice text.",
+    "The R6 old/new comparison remains separate amendment evidence and omitted text is not reconstructed.",
+    "Human review and exhaustive currentness review are not complete."
+  ],
+  "safety": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
