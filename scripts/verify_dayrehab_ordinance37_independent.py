@@ -37,7 +37,7 @@ def main() -> int:
     meta = load("data/ordinance37-meta.json")
 
     target_articles = set(scope["direct_scope"]["article_numbers"])
-    indexed_ids = set(index["node_ids"])
+    indexed_ids = set(index.get("node_ids_by_basis", {}).get("direct", index["node_ids"]))
     expected_nodes = {row["id"]: row for row in nodes if row["id"] in indexed_ids}
     expected_contains = {
         (row["from"], row["to"])
