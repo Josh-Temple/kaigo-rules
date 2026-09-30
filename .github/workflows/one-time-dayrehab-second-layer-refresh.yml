@@ -36,6 +36,17 @@ jobs:
       - name: Import bounded historical Rouki 25 section
         run: python scripts/import_dayrehab_rouki25_historical.py
 
+      - name: Refresh direct Chapter 8 audit receipt
+        run: |
+          mkdir -p artifacts
+          python scripts/verify_dayrehab_ordinance37_independent.py \
+            --report artifacts/dayrehab-ordinance37-verification.json
+          python scripts/build_dayrehab_ordinance37_audit.py \
+            --verification-report artifacts/dayrehab-ordinance37-verification.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_dayrehab_ordinance37_independent_audit.py
+
       - name: Verify and pin Article 119 relations
         run: |
           mkdir -p artifacts
@@ -72,6 +83,7 @@ jobs:
             data/services/dayrehab/ordinance37-relations.generated.json \
             data/services/dayrehab/ordinance37-index.generated.json \
             data/services/dayrehab/rouki25-historical.generated.json \
+            data/dayrehab-ordinance37-independent-audit.json \
             data/dayrehab-article119-relation-independent-audit.json \
             data/dayrehab-rouki25-historical-independent-audit.json \
             data/services/catalog.generated.json \
@@ -85,6 +97,7 @@ jobs:
         with:
           name: dayrehab-second-layer-verification
           path: |
+            artifacts/dayrehab-ordinance37-verification.json
             artifacts/dayrehab-article119-verification.json
             artifacts/dayrehab-rouki25-historical-verification.json
           if-no-files-found: error
