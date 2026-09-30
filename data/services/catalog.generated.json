@@ -39,6 +39,30 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {}
+    },
+    {
+      "service_id": "dayrehab",
+      "label": "通所リハビリテーション",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/dayrehab",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {}
+    },
+    {
+      "service_id": "shortstay-life",
+      "label": "短期入所生活介護",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/shortstay-life",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {}
     }
   ]
 }
