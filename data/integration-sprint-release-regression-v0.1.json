@@ -178,6 +178,39 @@
       "title": "shortstay-life remains unpublished while its canonical integration is incomplete",
       "path": "/services/shortstay-life",
       "expect_status": 404
+    },
+    {
+      "id": "IR-11",
+      "coverage": "service_isolation",
+      "title": "dayrehab Article 119 exposes independently audited current incorporation map",
+      "path": "/services/dayrehab/rules/119",
+      "expect_status": 200,
+      "contains_text": [
+        "現行の準用先",
+        "25条",
+        "準用relation・独立監査済み",
+        "第119条の読み替え",
+        "第百十七条"
+      ]
+    },
+    {
+      "id": "IR-12",
+      "coverage": "verification_wording",
+      "title": "dayrehab interpretation layer exposes historical source without currentness overclaim",
+      "path": "/services/dayrehab/notices",
+      "expect_status": 200,
+      "contains_text": [
+        "これは現行統合本文ではありません",
+        "公式旧HTML",
+        "現行性",
+        "GAP",
+        "人手確認",
+        "未実施"
+      ],
+      "not_contains_text": [
+        "VERIFIED_CURRENT",
+        "人手確認済み"
+      ]
     }
   ]
 }
