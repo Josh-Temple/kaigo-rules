@@ -41,9 +41,10 @@ test("shared Ordinance 37 nodes keep per-service legal applicability", () => {
     "ordinance37.article.10.p.1",
   );
 
-  assert.deepEqual(scope.service_ids, ["dayservice", "homevisit"]);
+  assert.deepEqual(scope.service_ids, ["dayrehab", "dayservice", "homevisit"]);
   assert.equal(scope.sharing, "SHARED");
   assert.deepEqual(scope.memberships, [
+    { service_id: "dayrehab", basis: "INCORPORATED_SCOPE" },
     { service_id: "dayservice", basis: "INCORPORATED_SCOPE" },
     { service_id: "homevisit", basis: "DIRECT_SCOPE" },
   ]);
