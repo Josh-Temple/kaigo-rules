@@ -6,8 +6,8 @@
   "audited_at": "2026-09-30",
   "audit_run": {
     "workflow": "Verify e-Gov scoped content independently",
-    "run_id": 36780686826,
-    "head_sha": "1353ca3f5ffb64b8000f921042f4ffc067fc41a9",
+    "run_id": 36787107347,
+    "head_sha": "e07fc740b0cfcc18b1f923479c6cc1372898eec1",
     "parser": "python_xml_dom_minidom",
     "result": "PASS",
     "verification_report_sha256": "d4afdbc8333120771a320d86f799b5b9463825eee1949093bb291ad7f231b9b9"
