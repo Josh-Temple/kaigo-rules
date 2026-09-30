@@ -67,8 +67,82 @@
     "official_current_text_url": "https://laws.e-gov.go.jp/law/411M50000100037",
     "work_control_receipt": "/Kaigo Rules/Work Control/Outputs/STANDARDS/PACKET_STD_0003_DAYREHAB_FULL_CHAPTER_RESULT.md",
     "committer_review": "/Kaigo Rules/Work Control/COMMITTER_REVIEW_CYCLE3_DAYREHAB.md",
-    "observed_fact": "Cycle 3 Committer accepted Chapter 8 as Articles 110–119 including 118-2, bounded before Chapter 9 / Article 120."
+    "observed_fact": "Cycle 3 Committer accepted Chapter 8 as Articles 110–119 including 118-2, bounded before Chapter 9 / Article 120.",
+    "article119_relation_policy": "Article 119 current e-Gov text is the authority for incorporated targets and read-as rules. Historical Rouki 25 HTML is not used to define the current Article 119 target set."
   },
-  "selection_policy": "共有e-Govコーパスでは上記11条だけをdayrehab直接scopeとして選択し、本文はサービス別に複製しない。service-specific verificationは独立laneで別管理する。",
-  "automatic_verification_promotion_allowed": false
+  "selection_policy": "第八章11条を直接scopeとして共有コーパスから選択し、第119条の現行e-Gov明示準用25条は別のincorporated scopeとして扱う。本文は複製せず、準用relationは独立laneで検証する。共有コーパス未収載の準用先は未収載のまま明示し、推測で本文を生成しない。",
+  "automatic_verification_promotion_allowed": false,
+  "incorporated_scope": {
+    "via_article": "119",
+    "article_numbers": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "15",
+      "16",
+      "17",
+      "19",
+      "21",
+      "26",
+      "27",
+      "30-2",
+      "32",
+      "33",
+      "35",
+      "36",
+      "37",
+      "38",
+      "64",
+      "96",
+      "101",
+      "102",
+      "103"
+    ],
+    "read_as_rules": [
+      {
+        "scope": "all_incorporated_provisions_where_term_occurs",
+        "substitutions": [
+          {
+            "from": "訪問介護員等",
+            "to": "通所リハビリテーション従業者"
+          }
+        ]
+      },
+      {
+        "target_article": "8",
+        "target_paragraph": "1",
+        "substitutions": [
+          {
+            "from": "第二十九条",
+            "to": "第百十七条"
+          }
+        ]
+      },
+      {
+        "target_article": "13",
+        "substitutions": [
+          {
+            "from": "心身の状況",
+            "to": "心身の状況、病歴"
+          }
+        ]
+      },
+      {
+        "target_article": "101",
+        "target_paragraphs": [
+          "3",
+          "4"
+        ],
+        "substitutions": [
+          {
+            "from": "通所介護従業者",
+            "to": "通所リハビリテーション従業者"
+          }
+        ]
+      }
+    ]
+  }
 }
