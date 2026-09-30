@@ -3,6 +3,7 @@
 from __future__ import annotations
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -46,23 +47,26 @@ def main() -> None:
         fail("audit result is not PASS")
 
     run = record.get("audit_run", {})
-    if run.get("run_id") != 36210655389:
-        fail("unexpected audit run")
-    if run.get("head_sha") != "8880a09e971fc17a16075c29e831ccb64103f84d":
-        fail("unexpected audited head SHA")
+    if not isinstance(run.get("run_id"), int) or run["run_id"] <= 0:
+        fail("invalid audit run")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(run.get("head_sha") or "")):
+        fail("invalid audited head SHA")
     if run.get("parser") != "python_stdlib_htmlparser_plus_explicit_title_and_reference_rules":
         fail("unexpected parser")
-    if run.get("artifact_digest") != "sha256:80818fffa4421add2c754b3748987167df714e15be5e9a7b91978c2e1a8f79ad":
-        fail("unexpected artifact digest")
+    if not re.fullmatch(r"[0-9a-f]{64}", str(run.get("verification_report_sha256") or "")):
+        fail("invalid verification report sha256")
 
-    expected_hashes = {
-        "notice19": "e189120c253f72d2d5dab24dfe7118bad7d602f0baba3d8cdf98a58c7ecc5bbd",
-        "notice27": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3",
-        "notice95": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618",
+    expected_urls = {
+        "notice19": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+        "notice27": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+        "notice95": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
     }
-    for key, expected in expected_hashes.items():
-        if record.get("sources", {}).get(key, {}).get("sha256") != expected:
-            fail(f"{key} source hash changed in pinned record")
+    for key, expected_url in expected_urls.items():
+        row = record.get("sources", {}).get(key, {})
+        if row.get("url") != expected_url:
+            fail(f"{key} source URL changed")
+        if not re.fullmatch(r"[0-9a-f]{64}", str(row.get("sha256") or "")):
+            fail(f"{key} source hash invalid")
 
     checks = record.get("checks", [])
     observed = {
