@@ -190,3 +190,24 @@ test("service-facing detail lookup fails closed outside the selected service", (
     { id: "ordinance37.article.10", article_num: "10" },
   );
 });
+
+
+test("registered but unscoped services fail closed", () => {
+  for (const serviceId of ["dayrehab", "shortstay-life"]) {
+    const unresolved = serviceApplicability(
+      serviceId,
+      "ordinance37",
+      "ordinance37.article.9999",
+    );
+    assert.equal(unresolved.applicable, false);
+    assert.equal(unresolved.reason, "NO_COMMITTED_SCOPE_EVIDENCE");
+
+    const outsideExistingScope = serviceApplicability(
+      serviceId,
+      "ordinance37",
+      "ordinance37.article.100",
+    );
+    assert.equal(outsideExistingScope.applicable, false);
+    assert.equal(outsideExistingScope.reason, "OUTSIDE_SERVICE_SCOPE");
+  }
+});

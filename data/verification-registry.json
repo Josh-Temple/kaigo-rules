@@ -14,6 +14,16 @@
         "service_id": "homevisit",
         "label": "訪問介護",
         "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "dayrehab",
+        "label": "通所リハビリテーション",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "shortstay-life",
+        "label": "短期入所生活介護",
+        "status": "PARTIAL_INGESTION"
       }
     ]
   },
@@ -269,7 +279,7 @@
     }
   ],
   "summary": {
-    "services_total": 2,
+    "services_total": 4,
     "active_services_total": 1,
     "layers_total": 7,
     "independent_audit_or_reconstruction": 7,

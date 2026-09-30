@@ -23,6 +23,18 @@
       "label": "訪問介護",
       "status": "PARTIAL_INGESTION",
       "config": "data/services/homevisit.json"
+    },
+    {
+      "service_id": "dayrehab",
+      "label": "通所リハビリテーション",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/dayrehab.json"
+    },
+    {
+      "service_id": "shortstay-life",
+      "label": "短期入所生活介護",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/shortstay-life.json"
     }
   ],
   "migration": {

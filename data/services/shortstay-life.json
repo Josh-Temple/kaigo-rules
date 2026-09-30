@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "service_id": "shortstay-life",
+  "readiness": "PARTIAL_INGESTION",
+  "routing": {
+    "current_mode": "SERVICE_ROOT_RESERVED",
+    "legacy_entry_points": [],
+    "future_service_base_path": "/services/shortstay-life",
+    "future_service_base_enabled": false
+  },
+  "id_namespaces": {},
+  "scope_files": {},
+  "verification_layer_ids": [],
+  "publication_gate": {
+    "public_routes_enabled": false,
+    "content_ingested": false,
+    "independent_verification_complete": false,
+    "human_review_complete": false
+  },
+  "ingestion_layers": {
+    "work_control": {
+      "status": "ACCEPTED_RESULTS_NOT_REPOSITORY_INGESTED",
+      "note": "Work Control Cycle 4の5レイヤー受理済みResultがLibraryに存在する。repository側のservice-specific scope/adaptersは未登録で、公開・独立検証・human reviewは未実施。"
+    }
+  }
+}

@@ -114,6 +114,19 @@ A service-facing caller should filter/resolve scope before applying search ranki
 
 The underlying relation graph may remain global. The renderer is responsible for checking whether the source/target record is applicable to the selected service.
 
+## Registered but unscoped services
+
+The service catalog may register a service identity before any repository scope adapter is committed.
+
+Currently registered in this state:
+
+- `dayrehab` — 通所リハビリテーション
+- `shortstay-life` — 短期入所生活介護
+
+Registration only establishes a stable `service_id` and reserved future route. It does not make any existing legal record applicable to that service. Until service-specific scope evidence is committed, `serviceApplicability` remains fail-closed: unresolved records return `NO_COMMITTED_SCOPE_EVIDENCE`, and records scoped only to another service return `OUTSIDE_SERVICE_SCOPE`.
+
+Public routes, verification coverage, currentness, and human-review state remain disabled/unassigned for these services.
+
 ## Q&A and future layers
 
 The current Q&A corpus already represents common scopes explicitly with source service codes such as all-service common and home-service common. A future Q&A adapter should translate those explicit codes into the same service-membership contract; absence of a service code must not mean "common to all".
