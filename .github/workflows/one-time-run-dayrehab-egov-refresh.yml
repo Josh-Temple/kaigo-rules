@@ -32,8 +32,11 @@ jobs:
       - name: Refresh scoped Care Insurance Act corpus from live e-Gov
         run: python scripts/import_egov_care_insurance_act.py
 
-      - name: Build dayrehab shared-corpus index
-        run: python scripts/build_dayrehab_ordinance37_index.py
+      - name: Rebuild shared-corpus service indexes
+        run: |
+          python scripts/build_homevisit_careact_index.py
+          python scripts/build_homevisit_ordinance37_index.py
+          python scripts/build_dayrehab_ordinance37_index.py
 
       - name: Independently reparse dayrehab scope
         run: |
@@ -59,6 +62,46 @@ jobs:
             --head-sha "$FEATURE_HEAD_SHA"
           python scripts/validate_egov_content_independent_audit.py
 
+      - name: Refresh explicit legal-reference relation audit
+        run: |
+          python scripts/verify_relation_semantics_independent.py \
+            --report artifacts/relation-semantic-independent-verification.json
+          python scripts/build_relation_semantic_independent_audit.py \
+            --verification-report artifacts/relation-semantic-independent-verification.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_relation_semantic_independent_audit.py
+
+      - name: Refresh Care Act internal relation audit
+        run: |
+          python scripts/verify_careact_internal_relations_independent.py \
+            --report artifacts/careact-internal-relation-independent-verification.json
+          python scripts/build_careact_internal_relation_independent_audit.py \
+            --verification-report artifacts/careact-internal-relation-independent-verification.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_careact_internal_relation_independent_audit.py
+
+      - name: Refresh cross-layer source-chain audit
+        run: |
+          python scripts/verify_cross_layer_source_chains_independent.py \
+            --report artifacts/cross-layer-source-chain-independent-verification.json
+          python scripts/build_cross_layer_source_chain_independent_audit.py \
+            --verification-report artifacts/cross-layer-source-chain-independent-verification.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_cross_layer_source_chain_independent_audit.py
+
+      - name: Refresh remuneration delegation relation audit
+        run: |
+          python scripts/verify_remuneration_delegation_relations.py \
+            --report artifacts/remuneration-delegation-independent-verification.json
+          python scripts/build_remuneration_delegation_relation_independent_audit.py \
+            --verification-report artifacts/remuneration-delegation-independent-verification.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_remuneration_delegation_relation_independent_audit.py
+
       - name: Rebuild derived service and product state
         run: |
           python scripts/build_service_catalog.py
@@ -75,9 +118,15 @@ jobs:
             data/ordinance37-relations.json \
             data/ordinance37-application-rules.json \
             data/ordinance37-meta.json \
+            data/services/homevisit/care-insurance-act-index.generated.json \
+            data/services/homevisit/ordinance37-index.generated.json \
             data/services/dayrehab/ordinance37-index.generated.json \
             data/dayrehab-ordinance37-independent-audit.json \
             data/egov-content-independent-audit.json \
+            data/relation-semantic-independent-audit.json \
+            data/careact-internal-relation-independent-audit.json \
+            data/cross-layer-source-chain-independent-audit.json \
+            data/remuneration-delegation-relation-independent-audit.json \
             data/care-insurance-act-nodes.json \
             data/care-insurance-act-relations.json \
             data/care-insurance-act-meta.json \
@@ -94,5 +143,9 @@ jobs:
           path: |
             artifacts/dayrehab-ordinance37-verification.json
             artifacts/egov-content-independent-verification.json
+            artifacts/relation-semantic-independent-verification.json
+            artifacts/careact-internal-relation-independent-verification.json
+            artifacts/cross-layer-source-chain-independent-verification.json
+            artifacts/remuneration-delegation-independent-verification.json
           if-no-files-found: error
           retention-days: 90
