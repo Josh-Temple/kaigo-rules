@@ -399,15 +399,44 @@ def build_snapshot() -> dict[str, Any]:
                 for item in ordinance_nodes
                 if item.get("node_type") == "article" and item.get("id") in article_ids
             ]
-            state_complete = layer_state_complete(
+            dayrehab_index = load_json(
+                "data/services/dayrehab/ordinance37-index.generated.json"
+            )
+            direct_ids = set(
+                dayrehab_index.get("node_ids_by_basis", {}).get("direct", [])
+            )
+            incorporated_ids = set(
+                dayrehab_index.get("node_ids_by_basis", {}).get("incorporated", [])
+            )
+            direct_state_complete = layer_state_complete(
                 layer_by_id, "ordinance37-dayrehab"
+            )
+            article119_lane = next(
+                (
+                    lane
+                    for lane in verification_registry["relation_verification"].get("lanes", [])
+                    if lane.get("id") == "dayrehab-article119"
+                ),
+                None,
+            )
+            incorporated_state_complete = (
+                layer_state_complete(layer_by_id, "ordinance37")
+                and bool(article119_lane)
+                and article119_lane.get("status") == "PASS"
+                and article119_lane.get("verified_relations") == 25
             )
             dayrehab_public_rows = [
                 row(
                     f"dayrehab-standard:{item['article_num']}",
                     source_complete=bool(item.get("source_url")),
-                    scope_complete=True,
-                    verification_state_complete=state_complete,
+                    scope_complete=(
+                        item["id"] in direct_ids or item["id"] in incorporated_ids
+                    ),
+                    verification_state_complete=(
+                        direct_state_complete
+                        if item["id"] in direct_ids
+                        else incorporated_state_complete
+                    ),
                 )
                 for item in dayrehab_articles
             ]
