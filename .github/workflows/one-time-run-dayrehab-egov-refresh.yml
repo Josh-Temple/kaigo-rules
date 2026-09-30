@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Capture feature branch input SHA
+        run: echo "FEATURE_HEAD_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
       - name: Rebuild shared Ordinance 37 corpus from live e-Gov
         run: python scripts/import_egov_ordinance37.py
 
@@ -40,8 +43,18 @@ jobs:
           python scripts/build_dayrehab_ordinance37_audit.py \
             --verification-report artifacts/dayrehab-ordinance37-verification.json \
             --run-id "$GITHUB_RUN_ID" \
-            --head-sha "$GITHUB_SHA"
+            --head-sha "$FEATURE_HEAD_SHA"
           python scripts/validate_dayrehab_ordinance37_independent_audit.py
+
+      - name: Independently reparse the full scoped e-Gov corpus
+        run: |
+          python scripts/verify_egov_content_independent.py \
+            --report artifacts/egov-content-independent-verification.json
+          python scripts/build_egov_content_independent_audit.py \
+            --verification-report artifacts/egov-content-independent-verification.json \
+            --run-id "$GITHUB_RUN_ID" \
+            --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_egov_content_independent_audit.py
 
       - name: Commit generated canonical data to feature branch
         run: |
@@ -54,7 +67,8 @@ jobs:
             data/ordinance37-application-rules.json \
             data/ordinance37-meta.json \
             data/services/dayrehab/ordinance37-index.generated.json \
-            data/dayrehab-ordinance37-independent-audit.json
+            data/dayrehab-ordinance37-independent-audit.json \
+            data/egov-content-independent-audit.json
           git commit -m "Refresh shared Ordinance 37 corpus for dayrehab"
           git push origin HEAD:feature/dayrehab-egov-full-text
 
@@ -62,6 +76,8 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: dayrehab-ordinance37-verification
-          path: artifacts/dayrehab-ordinance37-verification.json
+          path: |
+            artifacts/dayrehab-ordinance37-verification.json
+            artifacts/egov-content-independent-verification.json
           if-no-files-found: error
           retention-days: 90
