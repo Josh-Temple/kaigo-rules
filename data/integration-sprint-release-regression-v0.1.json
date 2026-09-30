@@ -85,7 +85,7 @@
         "通所介護対象条文"
       ],
       "regex_text": [
-        "56\\s*共有コーパス条文",
+        "67\\\\s*共有コーパス条文",
         "40\\s*通所介護対象条文"
       ]
     },
@@ -155,19 +155,22 @@
     {
       "id": "IR-09",
       "coverage": "service_isolation",
-      "title": "dayrehab preview route exposes its own bounded verification state",
+      "title": "dayrehab route publishes independently verified shared-corpus text without human-review overclaim",
       "path": "/services/dayrehab/rules",
       "expect_status": 200,
       "contains_text": [
         "通所リハビリテーションの基準省令",
-        "本文全文はまだ公開していません",
-        "現行性",
-        "未確定",
+        "本文・構造は独立再照合済みです",
+        "本文の独立確認",
+        "独立確認済み",
+        "人手確認",
+        "未実施",
         "11",
         "対象条文"
       ],
       "not_contains_text": [
-        "独立確認済み"
+        "本文全文はまだ公開していません",
+        "人手確認済み"
       ]
     },
     {
