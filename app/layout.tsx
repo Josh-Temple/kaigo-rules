@@ -2,7 +2,6 @@ import ServiceNavigation from "../components/service-navigation";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Link from "next/link";
-import { Suspense } from "react";
 import SiteFeedbackLink from "../components/site-feedback-link";
 import "./globals.css";
 
@@ -17,9 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <header className="site-header">
           <Link className="brand" href="/">介護ルール</Link>
-          <Suspense fallback={<nav aria-label="共通ナビゲーション" />}>
-            <ServiceNavigation />
-          </Suspense>
+          <ServiceNavigation />
         </header>
         <main>{children}</main>
         <Analytics />
