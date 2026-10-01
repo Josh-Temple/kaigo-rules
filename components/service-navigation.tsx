@@ -7,7 +7,7 @@ export default function ServiceNavigation() {
  return <nav aria-label={dayrehab ? "通所リハビリテーションのナビゲーション" : "共通ナビゲーション"}>
    <Link href="/services">サービス別</Link>
    <Link href={dayrehab ? base + "/search" : "/search"}>横断検索{dayrehab ? "（通所リハ）" : "（通所介護）"}</Link>
-   <Link href={dayrehab ? base + "/rules" : "/rules"}>基準DB</Link>
+   <Link href={dayrehab ? "/rules?service=dayrehab" : "/rules"}>基準DB</Link>
    <Link href={dayrehab ? base + "/notices" : "/notices"}>通知DB</Link>
    <Link href={dayrehab ? base + "/remuneration" : "/fees"}>報酬DB</Link>
    <Link href={dayrehab ? base + "/remuneration/guidance" : "/fees/guidance"}>算定上の留意事項</Link>
