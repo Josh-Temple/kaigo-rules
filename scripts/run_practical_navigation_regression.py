@@ -105,10 +105,10 @@ def main():
                     require(faq_links==['/questions/nurse-staffing'],'weak unrelated FAQs still expanded')
                 results.append({'id':case['id'],'status':'PASS','question':case['question'],'destination':case['expected_destination'],'canonical_id':case['canonical_id'],'primary_source':primary,'primary_sha256':hashlib.sha256(raw(primary)).hexdigest()})
             except Exception as exc:results.append({'id':case['id'],'status':'FAIL','error':str(exc)})
-        for route in ['/services/dayrehab','/services/dayrehab/rules','/services/dayrehab/notices','/services/dayrehab/remuneration','/services/dayrehab/remuneration/guidance']:
+        for route in ['/services/dayrehab','/rules?service=dayrehab','/notices?service=dayrehab','/services/dayrehab/remuneration','/services/dayrehab/remuneration/guidance']:
             try:
                 p=page(route)
-                for destination in ['/services/dayrehab/search','/rules?service=dayrehab','/services/dayrehab/notices','/services/dayrehab/remuneration']:
+                for destination in ['/services/dayrehab/search','/rules?service=dayrehab','/notices?service=dayrehab','/services/dayrehab/remuneration']:
                     require(destination in p.links,'service nav context lost: '+destination)
                 if 'remuneration' in route:require('GAP' in p.visible and '人手確認' in p.visible,'bounded publication state missing')
                 results.append({'id':route,'status':'PASS'})

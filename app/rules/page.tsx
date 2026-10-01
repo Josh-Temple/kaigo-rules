@@ -1,4 +1,5 @@
 import VerificationSummary from "../../components/verification-summary";
+import ServiceContextLinks from "../../components/service-context-links";
 import Link from "next/link";
 import nodesData from "../../data/ordinance37-nodes.json";
 import metaData from "../../data/ordinance37-meta.json";
@@ -169,6 +170,10 @@ export default async function RulesPage({
           </Link>
         ))}
       </nav>
+
+      {selectedServiceId === "dayservice" || selectedServiceId === "dayrehab" ? (
+        <ServiceContextLinks serviceId={selectedServiceId} />
+      ) : null}
 
       <p className="scope-note">
         {selectedService
