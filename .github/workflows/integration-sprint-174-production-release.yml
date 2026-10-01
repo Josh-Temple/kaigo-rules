@@ -71,6 +71,9 @@ jobs:
             --output artifacts/machine-retrieval-v0.1.json
           cat artifacts/machine-retrieval-v0.1.json
 
+      - name: Install PDF text extractor for primary-source locator verification
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
       - name: Verify practical question to primary-source journeys
         env:
           BASE_URL: https://kaigo-rules.vercel.app
