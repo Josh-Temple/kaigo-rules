@@ -18,7 +18,9 @@
       "unit_price_records",
       "qa_corpus_items",
       "dayrehab_standard_articles",
-      "dayrehab_notice_items"
+      "dayrehab_notice_items",
+      "dayrehab_remuneration_items",
+      "dayrehab_fee_guidance_items"
     ],
     "excluded_services": [
       "homevisit",
@@ -33,8 +35,8 @@
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
-      "public_items_total": 1482,
-      "public_items_complete": 1482,
+      "public_items_total": 1557,
+      "public_items_complete": 1557,
       "coverage_rate": 1.0,
       "missing_source_items": [],
       "missing_scope_items": [],
@@ -116,6 +118,20 @@
           "source_complete": 9,
           "scope_complete": 9,
           "verification_state_complete": 9
+        },
+        "dayrehab_remuneration_items": {
+          "items_total": 42,
+          "items_complete": 42,
+          "source_complete": 42,
+          "scope_complete": 42,
+          "verification_state_complete": 42
+        },
+        "dayrehab_fee_guidance_items": {
+          "items_total": 33,
+          "items_complete": 33,
+          "source_complete": 33,
+          "scope_complete": 33,
+          "verification_state_complete": 33
         }
       }
     },

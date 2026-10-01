@@ -1,0 +1,1022 @@
+{
+  "format_version": 1,
+  "service_id": "dayrehab",
+  "service_label": "通所リハビリテーション",
+  "layer": "REMUNERATION_STANDARD",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC",
+    "source_section": "告示第19号 別表7 通所リハビリテーション費",
+    "start_marker": "7 通所リハビリテーション費",
+    "end_marker": "8 短期入所生活介護費の直前",
+    "excluded_next_section": "8 短期入所生活介護費",
+    "public_routes": [
+      "/services/dayrehab/remuneration"
+    ]
+  },
+  "canonical_sources": [
+    {
+      "id": "dayrehab-notice19-mhlw-display",
+      "role": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "title": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+      "locator": "7 通所リハビリテーション費 lines 1013–1316; section 8 starts at line 1317",
+      "version_note": "取得時に厚生労働省が掲載していた表示。版の網羅性・現行性は未確認。"
+    },
+    {
+      "id": "dayrehab-notice87-r8-patch",
+      "role": "AMENDMENT_COMPARISON_ONLY",
+      "title": "厚生労働省告示第87号（令和8年3月13日）",
+      "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+      "locator": "PDF pp.7–9, section 7; p.144 enforcement clause",
+      "promulgated_on": "2026-03-13",
+      "effective_on": "2026-06-01",
+      "version_note": "7のイ〜ホは新旧両欄で（略）。ヘのみ明示された差分を独立patch記録。"
+    }
+  ],
+  "items": [
+    {
+      "id": "dayrehab-remuneration-イ-1",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "イ(1)",
+      "title": "イ 通常規模型リハビリテーション費 (1)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 イ(1); 要介護1〜5",
+      "duration": "1時間以上2時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 369,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 398,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 429,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 458,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 491,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "通常規模型リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-イ-2",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "イ(2)",
+      "title": "イ 通常規模型リハビリテーション費 (2)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 イ(2); 要介護1〜5",
+      "duration": "2時間以上3時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 383,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 439,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 498,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 555,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 612,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "通常規模型リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-イ-3",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "イ(3)",
+      "title": "イ 通常規模型リハビリテーション費 (3)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 イ(3); 要介護1〜5",
+      "duration": "3時間以上4時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 486,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 565,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 643,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 743,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 842,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "通常規模型リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-イ-4",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "イ(4)",
+      "title": "イ 通常規模型リハビリテーション費 (4)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 イ(4); 要介護1〜5",
+      "duration": "4時間以上5時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 553,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 642,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 730,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 844,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 957,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "通常規模型リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-イ-5",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "イ(5)",
+      "title": "イ 通常規模型リハビリテーション費 (5)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 イ(5); 要介護1〜5",
+      "duration": "5時間以上6時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 622,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 738,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 852,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 987,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 1120,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "通常規模型リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-イ-6",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "イ(6)",
+      "title": "イ 通常規模型リハビリテーション費 (6)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 イ(6); 要介護1〜5",
+      "duration": "6時間以上7時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 715,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 850,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 981,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 1137,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 1290,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "通常規模型リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-イ-7",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "イ(7)",
+      "title": "イ 通常規模型リハビリテーション費 (7)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 イ(7); 要介護1〜5",
+      "duration": "7時間以上8時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 762,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 903,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 1046,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 1215,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 1379,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "通常規模型リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-ロ-1",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "ロ(1)",
+      "title": "ロ 大規模型通所リハビリテーション費 (1)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 ロ(1); 要介護1〜5",
+      "duration": "1時間以上2時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 357,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 388,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 415,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 445,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 475,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "大規模型通所リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-ロ-2",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "ロ(2)",
+      "title": "ロ 大規模型通所リハビリテーション費 (2)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 ロ(2); 要介護1〜5",
+      "duration": "2時間以上3時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 372,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 427,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 482,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 536,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 591,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "大規模型通所リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-ロ-3",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "ロ(3)",
+      "title": "ロ 大規模型通所リハビリテーション費 (3)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 ロ(3); 要介護1〜5",
+      "duration": "3時間以上4時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 470,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 547,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 623,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 719,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 816,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "大規模型通所リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-ロ-4",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "ロ(4)",
+      "title": "ロ 大規模型通所リハビリテーション費 (4)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 ロ(4); 要介護1〜5",
+      "duration": "4時間以上5時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 525,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 611,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 696,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 805,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 912,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "大規模型通所リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-ロ-5",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "ロ(5)",
+      "title": "ロ 大規模型通所リハビリテーション費 (5)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 ロ(5); 要介護1〜5",
+      "duration": "5時間以上6時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 584,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 692,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 800,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 929,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 1053,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "大規模型通所リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-ロ-6",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "ロ(6)",
+      "title": "ロ 大規模型通所リハビリテーション費 (6)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 ロ(6); 要介護1〜5",
+      "duration": "6時間以上7時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 675,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 802,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 926,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 1077,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 1224,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "大規模型通所リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-ロ-7",
+      "kind": "BASE_TARIFF_ROW",
+      "marker": "ロ(7)",
+      "title": "ロ 大規模型通所リハビリテーション費 (7)",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 ロ(7); 要介護1〜5",
+      "duration": "7時間以上8時間未満",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "rates": [
+        {
+          "care_level": 1,
+          "units": 714,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 2,
+          "units": 847,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 3,
+          "units": 983,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 4,
+          "units": 1140,
+          "unit": "単位/回"
+        },
+        {
+          "care_level": 5,
+          "units": 1300,
+          "unit": "単位/回"
+        }
+      ],
+      "currentness": "GAP",
+      "group_title": "大規模型通所リハビリテーション費"
+    },
+    {
+      "id": "dayrehab-remuneration-注1",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注1",
+      "title": "基本報酬の算定方法",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 206–207",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "計画に位置付けた標準時間と要介護状態区分を基本とする算定。施設・人員条件等による別算定の参照あり。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注2",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注2",
+      "title": "高齢者虐待防止措置未実施減算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 209",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "所定単位数の1/100減算。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注3",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注3",
+      "title": "業務継続計画未策定減算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 210",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "所定単位数の1/100減算。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注4",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注4",
+      "title": "災害等による利用者減少時の加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 212",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "所定要件の下で所定単位数の3/100加算。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注5",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注5",
+      "title": "理学療法士等の配置に係る加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 213",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "1時間以上2時間未満の区分等に係る配置条件の記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注6",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注6",
+      "title": "延長サービスに係る加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 215–226",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "8時間以上14時間未満の時間帯ごとの加算区分。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注7",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注7",
+      "title": "リハビリテーション提供体制加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 228–238",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "標準時間区分ごとの加算区分。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注8",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注8",
+      "title": "通常の事業実施地域を越える場合",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 239",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "地域条件と所定単位数への加算割合を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注9",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注9",
+      "title": "入浴介助加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 241–245",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "加算Ⅰ・Ⅱの区分を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注10",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注10",
+      "title": "リハビリテーションマネジメント加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 246–263",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "区分・期間別の加算及び他加算との関係を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注11",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注11",
+      "title": "短期集中個別リハビリテーション実施加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 264",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "算定期間等を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注12",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注12",
+      "title": "認知症短期集中リハビリテーション実施加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 265–268",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "Ⅰ・Ⅱの区分と他加算との関係を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注13",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注13",
+      "title": "生活行為向上リハビリテーション実施加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 269",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "計画・会議要件と期間の記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注14",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注14",
+      "title": "若年性認知症利用者受入加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 270",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "加算区分を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注15",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注15",
+      "title": "栄養アセスメント加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 272–279",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "配置・多職種評価・情報提出等の内訳要件を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注16",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注16",
+      "title": "栄養改善加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 280",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "単位数、期間、回数の記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注17",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注17",
+      "title": "口腔・栄養スクリーニング加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 281–285",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "Ⅰ・Ⅱの区分と重複算定の関係を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注18",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注18",
+      "title": "口腔機能向上加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 286–293",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "Ⅰ・Ⅱの区分と回数、他加算との関係を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注19",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注19",
+      "title": "他サービス利用時の算定不可",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 295",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "対象となる他サービス群を列挙。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注20",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注20",
+      "title": "重度療養管理加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 297",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "対象者・算定条件・他区分との関係を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注21",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注21",
+      "title": "中重度者ケア体制加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 298",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "体制・対象に係る加算区分を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注22",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注22",
+      "title": "科学的介護推進体制加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 300–303",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "情報提出と提出後の活用に関する区分を記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注23",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注23",
+      "title": "同一建物等の利用者への減算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 305",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "同一建物条件と例外に係る記載。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-注24",
+      "kind": "NUMBERED_NOTE",
+      "marker": "注24",
+      "title": "送迎を行わない場合の減算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 line 307",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "片道単位による減算。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-ハ",
+      "kind": "LETTERED_ADD_ON",
+      "marker": "ハ",
+      "title": "退院時共同指導加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 309–310",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "退院前カンファレンス等での共同指導と計画反映に係る加算。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "base_rate_slots": [
+        {
+          "label": "退院につき1回",
+          "units": 600,
+          "unit": "単位"
+        }
+      ],
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-ニ",
+      "kind": "LETTERED_ADD_ON",
+      "marker": "ニ",
+      "title": "移行支援加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 312–313",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "移行支援に係る加算。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "base_rate_slots": [
+        {
+          "label": "1日",
+          "units": 12,
+          "unit": "単位"
+        }
+      ],
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-ホ",
+      "kind": "LETTERED_ADD_ON",
+      "marker": "ホ",
+      "title": "サービス提供体制強化加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 315–323",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "該当区分のいずれかを算定する加算。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "base_rate_slots": [
+        {
+          "label": "Ⅰ・1回",
+          "units": 22,
+          "unit": "単位"
+        },
+        {
+          "label": "Ⅱ・1回",
+          "units": 18,
+          "unit": "単位"
+        },
+        {
+          "label": "Ⅲ・1回",
+          "units": 6,
+          "unit": "単位"
+        }
+      ],
+      "currentness": "GAP"
+    },
+    {
+      "id": "dayrehab-remuneration-ヘ",
+      "kind": "LETTERED_ADD_ON",
+      "marker": "ヘ",
+      "title": "介護職員等処遇改善加算",
+      "source_id": "dayrehab-notice19-mhlw-display",
+      "source_locator": "告示19号掲載本文 §7 lines 324–337",
+      "source_version": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "summary": "令和8年告示第87号の区分別差分を独立patch台帳で管理。",
+      "summary_kind": "CYCLE3_EXTRACTION_DIGEST_NOT_SOURCE_TEXT",
+      "base_rate_slots": null,
+      "currentness": "GAP"
+    }
+  ],
+  "amendment_patches": [
+    {
+      "id": "dayrehab-r8-notice87-he",
+      "source_id": "dayrehab-notice87-r8-patch",
+      "scope": "7 ヘ",
+      "status": "EXPLICIT_PATCH_ONLY",
+      "effective_on": "2026-06-01",
+      "rates": [
+        {
+          "label": "(Ⅰ)イ",
+          "per_thousand": 103
+        },
+        {
+          "label": "(Ⅰ)ロ",
+          "per_thousand": 111
+        },
+        {
+          "label": "(Ⅱ)イ",
+          "per_thousand": 100
+        },
+        {
+          "label": "(Ⅱ)ロ",
+          "per_thousand": 108
+        },
+        {
+          "label": "(Ⅲ)",
+          "per_thousand": 83
+        },
+        {
+          "label": "(Ⅳ)",
+          "per_thousand": 70
+        }
+      ],
+      "deleted_prior_slot": "旧注2（Ⅴ）",
+      "omitted_sections": [
+        "イ",
+        "ロ",
+        "ハ",
+        "ニ",
+        "ホ"
+      ],
+      "omission_marker": "略",
+      "policy": "改正対照表の省略から改正なしとは推定しない。patchを掲載時点の基準値へ自動合成しない。"
+    }
+  ],
+  "states": {
+    "content_representation": "SOURCE_ITEM_INVENTORY_WITH_EXTRACTION_DIGESTS",
+    "source_text_reproduced": false,
+    "currentness": "GAP",
+    "independent_verification": "PASS_BOUNDED_SOURCE_INVENTORY_AND_RATE_REPARSE",
+    "human_review": "NOT_REVIEWED",
+    "verified_current": false,
+    "human_verified": false
+  },
+  "counts": {
+    "parent_items": 42,
+    "base_tariff_rows": 14,
+    "base_tariff_rate_values": 70,
+    "numbered_notes": 24,
+    "lettered_add_ons": 4,
+    "r8_patch_rates": 6,
+    "verified_current_items": 0
+  },
+  "gaps": [
+    {
+      "id": "GAP-FEE-001",
+      "scope": "all 42 parent items",
+      "reason": "告示第87号でイ〜ホが略記され、告示第87号以外の改正履歴・将来施行改正も網羅確認していない。現行本文へのpatch合成はしない。"
+    }
+  ]
+}

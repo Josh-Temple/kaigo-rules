@@ -1,0 +1,1068 @@
+{
+  "format_version": 1,
+  "service_id": "dayrehab",
+  "service_label": "通所リハビリテーション",
+  "layer": "FEE_GUIDANCE",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC",
+    "source_section": "老企第36号 第二／8 通所リハビリテーション費",
+    "start_marker": "8 通所リハビリテーション費",
+    "end_marker": "9 福祉用具貸与費の直前",
+    "excluded_next_section": "9 福祉用具貸与費",
+    "public_routes": [
+      "/services/dayrehab/remuneration/guidance"
+    ]
+  },
+  "canonical_sources": [
+    {
+      "id": "dayrehab-rouki36-r6-final-comparison",
+      "role": "R6_FINAL_OLD_NEW_COMPARISON",
+      "title": "老企第36号 令和6年度改定確定新旧対照",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+      "locator": "第二／8 通所リハビリテーション費 pp.52–66, extracted lines 2693–3329",
+      "version_note": "改正前後比較資料。省略表示を補完せず、全文統合本文とは扱わない。"
+    },
+    {
+      "id": "dayrehab-rouki36-legacy-html",
+      "role": "HISTORICAL_OLD_HTML_ONLY",
+      "title": "老企第36号 公式旧HTML",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4378&dataType=1&pageNo=1",
+      "locator": "旧HTML §8 lines 347–373; items (1)–(6)",
+      "version_note": "旧版固有の6項目。R6番号・本文へ流用しない。"
+    },
+    {
+      "id": "dayrehab-r6-context",
+      "role": "REVISION_CONTEXT",
+      "title": "令和6年度介護報酬改定について",
+      "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "locator": "改定関連資料の案内ページ",
+      "version_note": "版の文脈確認用。本文の根拠資料ではない。"
+    },
+    {
+      "id": "dayrehab-r8-context",
+      "role": "REVISION_CONTEXT",
+      "title": "令和8年度介護報酬改定について",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "locator": "通知改正リンク139",
+      "version_note": "リンク先の改正対照を特定する文脈資料。"
+    },
+    {
+      "id": "dayrehab-rouki36-r8-patch",
+      "role": "AMENDMENT_COMPARISON_ONLY",
+      "title": "老企第36号 令和8年通知改正対照",
+      "url": "https://www.mhlw.go.jp/content/12404000/001682729.pdf",
+      "locator": "p.1 lines 29–36; sections 6–9 are (略) in both columns",
+      "version_note": "第8節の明示本文なし。改正なしとは推定しない。"
+    },
+    {
+      "id": "dayrehab-rouki36-r6-proposal",
+      "role": "PROPOSAL_VERSION_ONLY",
+      "title": "令和6年度改定通知案（原案）",
+      "url": "https://www.mhlw.go.jp/content/12300000/001283848.pdf",
+      "locator": "pp.35–41",
+      "version_note": "改正案でありR6確定本文への置換・現行復元に使わない。"
+    },
+    {
+      "id": "dayrehab-rouki36-r7-patch",
+      "role": "AMENDMENT_COMPARISON_OMITS_SECTION",
+      "title": "老企第36号 令和7年通知改正対照",
+      "url": "https://www.mhlw.go.jp/content/001484663.pdf",
+      "locator": "p.3 lines 125–137; sections 7–9 omitted",
+      "version_note": "第8節の改正本文を示さない。改正なしとは推定しない。"
+    },
+    {
+      "id": "dayrehab-rouki36-2003-historical",
+      "role": "HISTORICAL_2003_ONLY",
+      "title": "老企第36号 旧版PDF（平成15年改正時）",
+      "url": "https://www.mhlw.go.jp/content/001555310.pdf",
+      "locator": "旧 §8",
+      "version_note": "2003年版。R6以後の内容復元に使わない。"
+    }
+  ],
+  "items": [
+    {
+      "id": "R6-8-01",
+      "slot": "8-(1)",
+      "title": "（略）",
+      "title_state": "OMITTED_IN_R6_COMPARISON",
+      "r6_source_state": "OMITTED_MARKER",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.52–53 lines 2693–2694",
+      "children": []
+    },
+    {
+      "id": "R6-8-02",
+      "slot": "8-(2)",
+      "title": "災害時等の取扱い",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "BODY_OR_CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53 lines 2695–2698",
+      "children": []
+    },
+    {
+      "id": "R6-8-03",
+      "slot": "8-(3)",
+      "title": "高齢者虐待防止措置未実施減算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "HEADING_AND_CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53 lines 2699–2701",
+      "children": []
+    },
+    {
+      "id": "R6-8-04",
+      "slot": "8-(4)",
+      "title": "業務継続計画未策定減算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "HEADING_AND_CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53 lines 2702–2704",
+      "children": []
+    },
+    {
+      "id": "R6-8-05",
+      "slot": "8-(5)",
+      "title": "（略）",
+      "title_state": "OMITTED_IN_R6_COMPARISON",
+      "r6_source_state": "OMITTED_MARKER",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53 line 2705",
+      "children": []
+    },
+    {
+      "id": "R6-8-06",
+      "slot": "8-(6)",
+      "title": "1時間以上2時間未満の指定通所リハビリテーションにおける理学療法士、作業療法士又は言語聴覚士を専従かつ常勤で2名以上配置している事業所の加算の取扱い",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "BODY_VISIBLE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53 lines 2706–2712",
+      "children": []
+    },
+    {
+      "id": "R6-8-07",
+      "slot": "8-(7)",
+      "title": "（略）",
+      "title_state": "OMITTED_IN_R6_COMPARISON",
+      "r6_source_state": "OMITTED_MARKER",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53 line 2720",
+      "children": []
+    },
+    {
+      "id": "R6-8-08",
+      "slot": "8-(8)",
+      "title": "（略）",
+      "title_state": "OMITTED_IN_R6_COMPARISON",
+      "r6_source_state": "OMITTED_MARKER",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53–54 lines 2725–2752",
+      "children": []
+    },
+    {
+      "id": "R6-8-09",
+      "slot": "8-(9)",
+      "title": "注8の取扱い",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53 lines 2721–2724",
+      "children": []
+    },
+    {
+      "id": "R6-8-10",
+      "slot": "8-(10)",
+      "title": "平均利用延人員数の取扱い",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "PARTIAL_WITH_LITERAL_OMISSIONS",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.53–54 lines 2725–2752",
+      "children": [
+        {
+          "id": "R6-8-10-01",
+          "marker": "①（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.53–54 ll.2725–2752"
+        },
+        {
+          "id": "R6-8-10-02",
+          "marker": "②（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.53–54 ll.2725–2752"
+        },
+        {
+          "id": "R6-8-10-03",
+          "marker": "③（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.53–54 ll.2725–2752"
+        },
+        {
+          "id": "R6-8-10-04",
+          "marker": "④（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.53–54 ll.2725–2752"
+        },
+        {
+          "id": "R6-8-10-05",
+          "marker": "⑤",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.53–54 ll.2725–2752"
+        },
+        {
+          "id": "R6-8-10-06",
+          "marker": "⑤-a",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.53–54 ll.2725–2752"
+        },
+        {
+          "id": "R6-8-10-07",
+          "marker": "⑤-b",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.53–54 ll.2725–2752"
+        },
+        {
+          "id": "R6-8-10-08",
+          "marker": "⑥（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.53–54 ll.2725–2752"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-11",
+      "slot": "8-(11)",
+      "title": "指定通所リハビリテーションの提供について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "PARTIAL_WITH_LITERAL_OMISSIONS",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.54–55 lines 2753–2811",
+      "children": [
+        {
+          "id": "R6-8-11-01",
+          "marker": "①（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.54–55 ll.2753–2811"
+        },
+        {
+          "id": "R6-8-11-02",
+          "marker": "②",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.54–55 ll.2753–2811"
+        },
+        {
+          "id": "R6-8-11-03",
+          "marker": "③（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.54–55 ll.2753–2811"
+        },
+        {
+          "id": "R6-8-11-04",
+          "marker": "④（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.54–55 ll.2753–2811"
+        },
+        {
+          "id": "R6-8-11-05",
+          "marker": "⑤",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.54–55 ll.2753–2811"
+        },
+        {
+          "id": "R6-8-11-06",
+          "marker": "⑥（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.54–55 ll.2753–2811"
+        },
+        {
+          "id": "R6-8-11-07",
+          "marker": "⑦（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.54–55 ll.2753–2811"
+        },
+        {
+          "id": "R6-8-11-08",
+          "marker": "⑧",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.54–55 ll.2753–2811"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-12",
+      "slot": "8-(12)",
+      "title": "入浴介助加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "PARTIAL_WITH_LITERAL_OMISSIONS",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.55–57 lines 2812–2926",
+      "children": [
+        {
+          "id": "R6-8-12-01",
+          "marker": "ア（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        },
+        {
+          "id": "R6-8-12-02",
+          "marker": "イ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        },
+        {
+          "id": "R6-8-12-03",
+          "marker": "イ-①",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        },
+        {
+          "id": "R6-8-12-04",
+          "marker": "イ-②",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        },
+        {
+          "id": "R6-8-12-05",
+          "marker": "イ-②-a",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        },
+        {
+          "id": "R6-8-12-06",
+          "marker": "イ-②-b（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        },
+        {
+          "id": "R6-8-12-07",
+          "marker": "イ-②-c",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        },
+        {
+          "id": "R6-8-12-08",
+          "marker": "イ-③",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        },
+        {
+          "id": "R6-8-12-09",
+          "marker": "イ-④",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.55–57 ll.2812–2925"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-13",
+      "slot": "8-(13)",
+      "title": "リハビリテーションマネジメント加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "PARTIAL_WITH_LITERAL_OMISSIONS",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.57–59 lines 2927–3047",
+      "children": [
+        {
+          "id": "R6-8-13-01",
+          "marker": "①",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-02",
+          "marker": "②-current-side",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-03",
+          "marker": "③",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-04",
+          "marker": "④",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-05",
+          "marker": "⑤-current-side",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-06",
+          "marker": "⑥（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-07",
+          "marker": "⑦",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-08",
+          "marker": "⑧",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-09",
+          "marker": "⑧-イ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-10",
+          "marker": "⑧-ロ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        },
+        {
+          "id": "R6-8-13-11",
+          "marker": "⑧-ハ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.57–59 ll.2927–3046"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-14",
+      "slot": "8-(14)",
+      "title": "（略）",
+      "title_state": "OMITTED_IN_R6_COMPARISON",
+      "r6_source_state": "OMITTED_MARKER",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.59 line 3047",
+      "children": []
+    },
+    {
+      "id": "R6-8-15",
+      "slot": "8-(15)",
+      "title": "認知症短期集中リハビリテーション実施加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "PARTIAL_WITH_LITERAL_OMISSIONS",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.59 lines 3048–3060",
+      "children": [
+        {
+          "id": "R6-8-15-01",
+          "marker": "①（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        },
+        {
+          "id": "R6-8-15-02",
+          "marker": "②（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        },
+        {
+          "id": "R6-8-15-03",
+          "marker": "③（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        },
+        {
+          "id": "R6-8-15-04",
+          "marker": "④",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        },
+        {
+          "id": "R6-8-15-05",
+          "marker": "⑤（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        },
+        {
+          "id": "R6-8-15-06",
+          "marker": "⑥（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        },
+        {
+          "id": "R6-8-15-07",
+          "marker": "⑦（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        },
+        {
+          "id": "R6-8-15-08",
+          "marker": "⑧（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        },
+        {
+          "id": "R6-8-15-09",
+          "marker": "⑨（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.59 ll.3048–3055"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-16",
+      "slot": "8-(16)",
+      "title": "（略）",
+      "title_state": "OMITTED_IN_R6_COMPARISON",
+      "r6_source_state": "OMITTED_MARKER",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.59 line 3060",
+      "children": []
+    },
+    {
+      "id": "R6-8-17",
+      "slot": "8-(17)",
+      "title": "若年性認知症利用者受入加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.59–60 lines 3061–3062",
+      "children": []
+    },
+    {
+      "id": "R6-8-18",
+      "slot": "8-(18)",
+      "title": "栄養アセスメント加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.60 lines 3063–3066",
+      "children": []
+    },
+    {
+      "id": "R6-8-19",
+      "slot": "8-(19)",
+      "title": "栄養改善加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "PARTIAL_VISIBLE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.60–62 lines 3067–3144",
+      "children": [
+        {
+          "id": "R6-8-19-01",
+          "marker": "①",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-02",
+          "marker": "②",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-03",
+          "marker": "③",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-04",
+          "marker": "③-イ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-05",
+          "marker": "③-ロ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-06",
+          "marker": "③-ハ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-07",
+          "marker": "③-ニ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-08",
+          "marker": "③-ホ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-09",
+          "marker": "④",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-10",
+          "marker": "④-イ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-11",
+          "marker": "④-ロ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-12",
+          "marker": "④-ハ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-13",
+          "marker": "④-ニ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-14",
+          "marker": "④-ホ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-15",
+          "marker": "④-ヘ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-16",
+          "marker": "⑤",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        },
+        {
+          "id": "R6-8-19-17",
+          "marker": "⑥",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.60–62 ll.3067–3144"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-20",
+      "slot": "8-(20)",
+      "title": "口腔・栄養スクリーニング加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.62 line 3145",
+      "children": []
+    },
+    {
+      "id": "R6-8-21",
+      "slot": "8-(21)",
+      "title": "口腔機能向上加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "PARTIAL_VISIBLE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.62–64 lines 3149–3232",
+      "children": [
+        {
+          "id": "R6-8-21-01",
+          "marker": "①",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-02",
+          "marker": "②",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-03",
+          "marker": "③",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-04",
+          "marker": "③-イ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-05",
+          "marker": "③-ロ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-06",
+          "marker": "③-ハ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-07",
+          "marker": "④",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-08",
+          "marker": "⑤",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-09",
+          "marker": "⑤-イ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-10",
+          "marker": "⑤-ロ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-11",
+          "marker": "⑤-ハ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-12",
+          "marker": "⑤-ニ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-13",
+          "marker": "⑤-ホ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-14",
+          "marker": "⑥",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-15",
+          "marker": "⑥-イ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-16",
+          "marker": "⑥-ロ",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-17",
+          "marker": "⑦",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        },
+        {
+          "id": "R6-8-21-18",
+          "marker": "⑧",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.62–64 ll.3149–3232"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-22",
+      "slot": "8-(22)",
+      "title": "（略）",
+      "title_state": "OMITTED_IN_R6_COMPARISON",
+      "r6_source_state": "OMITTED_MARKER",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.64 line 3233",
+      "children": []
+    },
+    {
+      "id": "R6-8-23",
+      "slot": "8-(23)",
+      "title": "中重度者ケア体制加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE_AND_READ_AS",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.64 lines 3234–3243",
+      "children": []
+    },
+    {
+      "id": "R6-8-24",
+      "slot": "8-(24)",
+      "title": "科学的介護推進体制加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.65 lines 3244–3245",
+      "children": []
+    },
+    {
+      "id": "R6-8-25",
+      "slot": "8-(25)",
+      "title": "事業所と同一の建物に居住する利用者又は同一建物から通う利用者に通所リハビリテーションを行う場合の取扱い",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.65 lines 3246–3251",
+      "children": []
+    },
+    {
+      "id": "R6-8-26",
+      "slot": "8-(26)",
+      "title": "送迎を行わない場合の減算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "BODY_VISIBLE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.65 lines 3252–3261",
+      "children": []
+    },
+    {
+      "id": "R6-8-27",
+      "slot": "8-(27)",
+      "title": "定員超過利用に該当する場合の所定単位数の算定について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.65 lines 3262–3265",
+      "children": []
+    },
+    {
+      "id": "R6-8-28",
+      "slot": "8-(28)",
+      "title": "（略）",
+      "title_state": "OMITTED_IN_R6_COMPARISON",
+      "r6_source_state": "OMITTED_MARKER",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.65 line 3266",
+      "children": []
+    },
+    {
+      "id": "R6-8-29",
+      "slot": "8-(29)",
+      "title": "退院時共同指導加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "BODY_VISIBLE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.65 lines 3267–3286",
+      "children": [
+        {
+          "id": "R6-8-29-01",
+          "marker": "①",
+          "state": "BODY_VISIBLE",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.65 ll.3267–3285"
+        },
+        {
+          "id": "R6-8-29-02",
+          "marker": "②",
+          "state": "BODY_VISIBLE",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.65 ll.3267–3285"
+        },
+        {
+          "id": "R6-8-29-03",
+          "marker": "③",
+          "state": "BODY_VISIBLE",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.65 ll.3267–3285"
+        },
+        {
+          "id": "R6-8-29-04",
+          "marker": "④",
+          "state": "BODY_VISIBLE",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.65 ll.3267–3285"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-30",
+      "slot": "8-(30)",
+      "title": "移行支援加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE_AND_READ_AS",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.65–66 lines 3287–3296",
+      "children": []
+    },
+    {
+      "id": "R6-8-31",
+      "slot": "8-(31)",
+      "title": "サービス提供体制強化加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "PARTIAL_WITH_LITERAL_OMISSIONS",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.66 lines 3297–3302",
+      "children": [
+        {
+          "id": "R6-8-31-01",
+          "marker": "①",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.66 ll.3297–3302"
+        },
+        {
+          "id": "R6-8-31-02",
+          "marker": "②（略）",
+          "state": "EXPLICIT_MARKER_OR_TEXT",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.66 ll.3297–3302"
+        }
+      ]
+    },
+    {
+      "id": "R6-8-32",
+      "slot": "8-(32)",
+      "title": "介護職員等処遇改善加算について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "CROSS_REFERENCE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.66 lines 3303–3310",
+      "children": []
+    },
+    {
+      "id": "R6-8-33",
+      "slot": "8-(33)",
+      "title": "記録の整備について",
+      "title_state": "PRINTED_IN_R6_COMPARISON",
+      "r6_source_state": "BODY_VISIBLE",
+      "source_id": "dayrehab-rouki36-r6-final-comparison",
+      "source_locator": "p.66 lines 3311–3328",
+      "children": [
+        {
+          "id": "R6-8-33-01",
+          "marker": "①",
+          "state": "BODY_VISIBLE",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.66 ll.3311–3328"
+        },
+        {
+          "id": "R6-8-33-02",
+          "marker": "②",
+          "state": "BODY_VISIBLE",
+          "source": "S2 R6 final comparison new/current column",
+          "locator": "p.66 ll.3311–3328"
+        }
+      ]
+    }
+  ],
+  "currentness_ledger": [
+    {
+      "id": "GAP-GUIDANCE-001",
+      "scope": "8-(1)–8-(33) and visible child slots",
+      "status": "GAP",
+      "reason": "R6確定新旧対照表の略・新設・削るを別資料へ適用していない。R8通知改正対照では第8節が新旧両欄とも略記され、改正なしの根拠にならない。PDFの二段組み視覚照合も未実施。"
+    }
+  ],
+  "state": {
+    "content_verification": "PASS_BOUNDED_SOURCE_INVENTORY_REPARSE",
+    "currentness": "GAP",
+    "human_review": "NOT_REVIEWED",
+    "verified_current": false,
+    "human_verified": false
+  },
+  "counts": {
+    "parent_items": 33,
+    "visible_child_items": 88,
+    "parents_with_literal_omission": 8,
+    "verified_current_items": 0
+  },
+  "policy": {
+    "publish_complete_text": false,
+    "combine_source_versions": false,
+    "expand_cross_references": false,
+    "fill_literal_omissions": false,
+    "interpret_r8_omission_as_no_change": false
+  }
+}

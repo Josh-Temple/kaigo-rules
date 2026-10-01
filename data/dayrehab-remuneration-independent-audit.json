@@ -1,0 +1,45 @@
+{
+  "format_version": 1,
+  "audit_id": "dayrehab-remuneration-bounded-source-audit",
+  "audit_kind": "INDEPENDENT_MHLW_SOURCE_INVENTORY_REPARSE",
+  "service_id": "dayrehab",
+  "audit_result": "PASS_BOUNDED_SCOPE_ONLY",
+  "scope": "告示第19号 §7 inventory markers and the 70 displayed base tariff values; R8告示第87号 §7ヘ six rates",
+  "source_ids": [
+    "dayrehab-notice19-mhlw-display",
+    "dayrehab-notice87-r8-patch"
+  ],
+  "verified_dimensions": {
+    "inventory_structure": "PASS",
+    "base_tariff_values": "PASS",
+    "r8_patch_rates": "PASS",
+    "currentness": "GAP",
+    "human_review": "NOT_REVIEWED"
+  },
+  "coverage": {
+    "parent_items": 42,
+    "base_tariff_rows": 14,
+    "base_tariff_values": 70,
+    "numbered_notes": 24,
+    "lettered_add_ons": 4,
+    "r8_patch_rates": 6,
+    "verified_current_items": 0
+  },
+  "method": "Official MHLW HTML and PDF were independently retrieved and text-reparsed. Scope is limited to the inventory boundary and printed tariff/rate values; this does not verify every descriptive digest or establish currentness.",
+  "safety": {
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "base_and_amendment_merged": false,
+    "shortstay_life_exposed": false
+  },
+  "sources": [
+    {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+      "locator": "lines 1013–1317"
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+      "locator": "pp.7–9"
+    }
+  ]
+}

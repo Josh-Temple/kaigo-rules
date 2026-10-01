@@ -207,6 +207,66 @@
         "VERIFIED_CURRENT",
         "HUMAN_VERIFIED"
       ]
+    },
+    {
+      "id": "IR-13",
+      "coverage": "verification_wording",
+      "title": "dayrehab remuneration keeps the base display and amendment patch separate with currentness GAP",
+      "path": "/services/dayrehab/remuneration",
+      "expect_status": 200,
+      "contains_text": [
+        "報酬基準",
+        "42",
+        "70",
+        "令和8年告示第87号",
+        "現行統合本文ではありません",
+        "現行性",
+        "GAP",
+        "人手確認",
+        "未実施"
+      ],
+      "not_contains_text": [
+        "VERIFIED_CURRENT",
+        "HUMAN_VERIFIED"
+      ]
+    },
+    {
+      "id": "IR-14",
+      "coverage": "verification_wording",
+      "title": "dayrehab fee guidance exposes bounded R6 inventory and R8 omission without synthetic text",
+      "path": "/services/dayrehab/remuneration/guidance",
+      "expect_status": 200,
+      "contains_text": [
+        "算定上の留意事項",
+        "33",
+        "88",
+        "令和6",
+        "令和8",
+        "第8節の変更有無を示しません",
+        "現行統合本文ではありません",
+        "GAP",
+        "未実施"
+      ],
+      "not_contains_text": [
+        "VERIFIED_CURRENT",
+        "HUMAN_VERIFIED"
+      ]
+    },
+    {
+      "id": "IR-15",
+      "coverage": "service_isolation",
+      "title": "dayrehab landing page links its two separate remuneration evidence routes",
+      "path": "/services/dayrehab",
+      "expect_status": 200,
+      "contains_text": [
+        "報酬基準を見る",
+        "算定上の留意事項を見る",
+        "現行性GAP"
+      ],
+      "href_contains": [
+        "/services/dayrehab/remuneration",
+        "/services/dayrehab/remuneration/guidance"
+      ]
     }
   ]
 }
