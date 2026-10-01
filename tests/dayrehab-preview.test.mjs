@@ -143,3 +143,12 @@ test("dayrehab fee layer additions do not publish shortstay-life", () => {
   assert.equal(shortstay.publication_gate.public_routes_enabled, false);
   assert.doesNotMatch(readText("app/services/page.tsx"), /shortstay-life.*href|href.*shortstay-life/);
 });
+
+test("dayrehab landing page exposes the four-layer cross-source search", () => {
+  const page = readText("app/services/dayrehab/page.tsx");
+  const searchPage = readText("app/services/dayrehab/search/page.tsx");
+  assert.match(page, /公開4レイヤーを横断検索/);
+  assert.match(page, /\/services\/dayrehab\/search/);
+  assert.match(searchPage, /基準省令、基準解釈通知、報酬基準、算定上の留意事項/);
+  assert.doesNotMatch(searchPage, /基準省令に限定しています/);
+});
