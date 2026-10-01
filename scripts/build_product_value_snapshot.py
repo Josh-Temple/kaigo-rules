@@ -32,6 +32,8 @@ EXPECTED_PUBLIC_FAMILIES = [
     "qa_corpus_items",
     "dayrehab_standard_articles",
     "dayrehab_notice_items",
+    "dayrehab_remuneration_items",
+    "dayrehab_fee_guidance_items",
 ]
 
 
@@ -458,6 +460,51 @@ def build_snapshot() -> dict[str, Any]:
             for item in dayrehab_notice_data.get("items", [])
         ]
 
+    dayrehab_remuneration_public_rows = []
+    dayrehab_fee_guidance_public_rows = []
+    if dayrehab_entry and dayrehab_config.get("routing", {}).get("future_service_base_enabled"):
+        remuneration_data = load_json("data/services/dayrehab/remuneration-index.json")
+        guidance_data = load_json("data/services/dayrehab/fee-guidance-index.json")
+        remuneration_source_ids = {source["id"] for source in remuneration_data.get("canonical_sources", [])}
+        guidance_source_ids = {source["id"] for source in guidance_data.get("canonical_sources", [])}
+        remuneration_state_complete = layer_state_complete(layer_by_id, "remuneration-dayrehab")
+        guidance_state_complete = layer_state_complete(layer_by_id, "fee-guidance-dayrehab")
+        dayrehab_remuneration_public_rows = [
+            row(
+                f"dayrehab-remuneration:{item['id']}",
+                source_complete=(
+                    item.get("source_id") in remuneration_source_ids
+                    and any(source.get("url", "").startswith("https://www.mhlw.go.jp/") for source in remuneration_data.get("canonical_sources", []) if source["id"] == item.get("source_id"))
+                ),
+                scope_complete=(
+                    remuneration_data.get("service_id") == "dayrehab"
+                    and item.get("source_version") == "MHLW_CONSOLIDATED_DISPLAY_CAPTURE"
+                    and item.get("currentness") == "GAP"
+                ),
+                verification_state_complete=remuneration_state_complete,
+            )
+            for item in remuneration_data.get("items", [])
+        ]
+        dayrehab_fee_guidance_public_rows = [
+            row(
+                f"dayrehab-fee-guidance:{item['id']}",
+                source_complete=(
+                    item.get("source_id") in guidance_source_ids
+                    and any(source.get("url", "").startswith("https://www.mhlw.go.jp/") for source in guidance_data.get("canonical_sources", []) if source["id"] == item.get("source_id"))
+                ),
+                scope_complete=(
+                    guidance_data.get("service_id") == "dayrehab"
+                    and item.get("r6_source_state") in {
+                        "OMITTED_MARKER", "BODY_OR_CROSS_REFERENCE", "HEADING_AND_CROSS_REFERENCE",
+                        "BODY_VISIBLE", "CROSS_REFERENCE", "PARTIAL_WITH_LITERAL_OMISSIONS",
+                        "PARTIAL_VISIBLE", "CROSS_REFERENCE_AND_READ_AS",
+                    }
+                ),
+                verification_state_complete=guidance_state_complete,
+            )
+            for item in guidance_data.get("items", [])
+        ]
+
     families = {
         "practical_questions": question_public_rows,
         "care_insurance_act_articles": care_act_public_rows,
@@ -470,6 +517,8 @@ def build_snapshot() -> dict[str, Any]:
         "qa_corpus_items": qa_public_rows,
         "dayrehab_standard_articles": dayrehab_public_rows,
         "dayrehab_notice_items": dayrehab_notice_public_rows,
+        "dayrehab_remuneration_items": dayrehab_remuneration_public_rows,
+        "dayrehab_fee_guidance_items": dayrehab_fee_guidance_public_rows,
     }
     if list(families) != EXPECTED_PUBLIC_FAMILIES:
         raise RuntimeError("builder public family order/contract drifted")

@@ -292,6 +292,68 @@
         "dayrehab"
       ],
       "scope_kind": "SERVICE_SPECIFIC"
+    },
+    {
+      "id": "remuneration-dayrehab",
+      "title": "告示第19号 §7 通所リハビリテーション費 42項目",
+      "content_verification": {
+        "status": "PASS_BOUNDED_SCOPE_ONLY",
+        "kind": "INDEPENDENT_MHLW_SOURCE_INVENTORY_REPARSE",
+        "items": 42,
+        "base_tariff_rows": 14,
+        "base_tariff_values": 70,
+        "r8_patch_rates": 6,
+        "evidence": "data/dayrehab-remuneration-independent-audit.json",
+        "boundary": "item/rate inventory and source-marker check; descriptive digests are not source text"
+      },
+      "currentness": {
+        "status": "GAP",
+        "note": "告示第87号はイ〜ホを略記。全改正履歴を確認しておらず、現行統合本文へ合成していない。"
+      },
+      "monitoring": {
+        "status": "NOT_CONFIGURED",
+        "note": "継続的な現行性監視は未設定。独立確認は公開時の限定監査。"
+      },
+      "human_review": {
+        "status": "NOT_REVIEWED",
+        "reviewed_items": 0,
+        "total_items": 42
+      },
+      "assurance": "BOUNDED_SOURCE_INVENTORY_PASS_CURRENTNESS_GAP",
+      "service_ids": [
+        "dayrehab"
+      ],
+      "scope_kind": "SERVICE_SPECIFIC"
+    },
+    {
+      "id": "fee-guidance-dayrehab",
+      "title": "老企第36号 第二／8 通所リハビリテーション費 33主項目",
+      "content_verification": {
+        "status": "PASS_BOUNDED_SCOPE_ONLY",
+        "kind": "INDEPENDENT_MHLW_SOURCE_INVENTORY_REPARSE",
+        "items": 33,
+        "visible_child_items": 88,
+        "evidence": "data/dayrehab-fee-guidance-independent-audit.json",
+        "boundary": "R6 comparison slots/markers and boundaries only; no complete text"
+      },
+      "currentness": {
+        "status": "GAP",
+        "note": "R6新旧対照の略を補完せず、R8対照で第8節が略記されたことを改正なしの根拠にしていない。"
+      },
+      "monitoring": {
+        "status": "NOT_CONFIGURED",
+        "note": "継続的な現行性監視は未設定。PDF二段組み視覚確認も未実施。"
+      },
+      "human_review": {
+        "status": "NOT_REVIEWED",
+        "reviewed_items": 0,
+        "total_items": 33
+      },
+      "assurance": "BOUNDED_SOURCE_INVENTORY_PASS_CURRENTNESS_GAP",
+      "service_ids": [
+        "dayrehab"
+      ],
+      "scope_kind": "SERVICE_SPECIFIC"
     }
   ],
   "relation_verification": {
@@ -347,7 +409,7 @@
   "summary": {
     "services_total": 4,
     "active_services_total": 2,
-    "layers_total": 9,
+    "layers_total": 11,
     "independent_audit_or_reconstruction": 9,
     "currentness_or_live_source_monitoring_active": 9,
     "source_freshness_only_without_independent_content_audit": 0,

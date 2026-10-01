@@ -54,7 +54,7 @@ test("dayrehab remains preview while shortstay-life remains unpublished", () => 
   assert.equal(dayrehabConfig.publication_gate.public_routes_enabled, true);
   assert.equal(dayrehabConfig.publication_gate.independent_verification_complete, true);
   assert.equal(dayrehabConfig.publication_gate.human_review_complete, false);
-  assert.deepEqual(dayrehabConfig.verification_layer_ids, ["ordinance37-dayrehab", "rouki25-dayrehab"]);
+  assert.deepEqual(dayrehabConfig.verification_layer_ids, ["ordinance37-dayrehab", "rouki25-dayrehab", "remuneration-dayrehab", "fee-guidance-dayrehab"]);
   assert.equal(shortstayConfig.routing.future_service_base_enabled, false);
   assert.equal(shortstayConfig.publication_gate.public_routes_enabled, false);
 });
@@ -98,4 +98,48 @@ test("dayrehab Rouki 25 route exposes historical-source text without currentness
   assert.equal(audit.safety.current_integrated_text, false);
   assert.match(page, /これは現行統合本文ではありません/);
   assert.match(page, /現行性はGAP/);
+});
+
+
+test("dayrehab remuneration publishes bounded source-specific inventory and a separate R8 patch", () => {
+  const data = readJson("data/services/dayrehab/remuneration-index.json");
+  const audit = readJson("data/dayrehab-remuneration-independent-audit.json");
+  const report = readJson("data/verification/layers/remuneration-dayrehab.json");
+  const page = readText("app/services/dayrehab/remuneration/page.tsx");
+  assert.equal(data.service_id, "dayrehab");
+  assert.equal(data.items.length, 42);
+  assert.equal(data.counts.base_tariff_rate_values, 70);
+  assert.equal(data.amendment_patches[0].rates.length, 6);
+  assert.deepEqual(data.amendment_patches[0].omitted_sections, ["イ", "ロ", "ハ", "ニ", "ホ"]);
+  assert.equal(audit.audit_result, "PASS_BOUNDED_SCOPE_ONLY");
+  assert.equal(report.content_verification.status, "PASS_BOUNDED_SCOPE_ONLY");
+  assert.equal(report.currentness.status, "GAP");
+  assert.equal(report.human_review.status, "NOT_REVIEWED");
+  assert.match(page, /これは現行統合本文ではありません/);
+  assert.match(page, /自動適用した表は作っていません/);
+});
+
+test("dayrehab fee guidance preserves R6 slots, child markers, and currentness gaps", () => {
+  const data = readJson("data/services/dayrehab/fee-guidance-index.json");
+  const audit = readJson("data/dayrehab-fee-guidance-independent-audit.json");
+  const report = readJson("data/verification/layers/fee-guidance-dayrehab.json");
+  const page = readText("app/services/dayrehab/remuneration/guidance/page.tsx");
+  assert.equal(data.service_id, "dayrehab");
+  assert.equal(data.items.length, 33);
+  assert.equal(data.items.reduce((n, item) => n + item.children.length, 0), 88);
+  assert.equal(data.currentness_ledger[0].status, "GAP");
+  assert.equal(audit.audit_result, "PASS_BOUNDED_SCOPE_ONLY");
+  assert.equal(report.currentness.status, "GAP");
+  assert.equal(report.human_review.status, "NOT_REVIEWED");
+  assert.equal(data.policy.combine_source_versions, false);
+  assert.equal(data.policy.interpret_r8_omission_as_no_change, false);
+  assert.match(page, /これは現行統合本文ではありません/);
+  assert.match(page, /第8節の変更有無を示しません/);
+});
+
+test("dayrehab fee layer additions do not publish shortstay-life", () => {
+  const shortstay = readJson("data/services/shortstay-life.json");
+  assert.equal(shortstay.routing.future_service_base_enabled, false);
+  assert.equal(shortstay.publication_gate.public_routes_enabled, false);
+  assert.doesNotMatch(readText("app/services/page.tsx"), /shortstay-life.*href|href.*shortstay-life/);
 });

@@ -46,6 +46,18 @@
       "id": "rouki25-dayrehab",
       "scope_kind": "SERVICE_SPECIFIC",
       "provider": "legacy"
+    },
+    {
+      "id": "remuneration-dayrehab",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "normalized_report",
+      "report_file": "data/verification/layers/remuneration-dayrehab.json"
+    },
+    {
+      "id": "fee-guidance-dayrehab",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "normalized_report",
+      "report_file": "data/verification/layers/fee-guidance-dayrehab.json"
     }
   ]
 }

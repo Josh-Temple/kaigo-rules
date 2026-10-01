@@ -1,0 +1,26 @@
+{
+  "id": "fee-guidance-dayrehab",
+  "title": "老企第36号 第二／8 通所リハビリテーション費 33主項目",
+  "content_verification": {
+    "status": "PASS_BOUNDED_SCOPE_ONLY",
+    "kind": "INDEPENDENT_MHLW_SOURCE_INVENTORY_REPARSE",
+    "items": 33,
+    "visible_child_items": 88,
+    "evidence": "data/dayrehab-fee-guidance-independent-audit.json",
+    "boundary": "R6 comparison slots/markers and boundaries only; no complete text"
+  },
+  "currentness": {
+    "status": "GAP",
+    "note": "R6新旧対照の略を補完せず、R8対照で第8節が略記されたことを改正なしの根拠にしていない。"
+  },
+  "monitoring": {
+    "status": "NOT_CONFIGURED",
+    "note": "継続的な現行性監視は未設定。PDF二段組み視覚確認も未実施。"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED",
+    "reviewed_items": 0,
+    "total_items": 33
+  },
+  "assurance": "BOUNDED_SOURCE_INVENTORY_PASS_CURRENTNESS_GAP"
+}

@@ -12,6 +12,7 @@ const registry = registryData as { layers?: VerificationLayer[] };
 const statusLabel = (value?: string) => {
   const labels: Record<string, string> = {
     PASS: "独立確認済み",
+    PASS_BOUNDED_SCOPE_ONLY: "範囲限定で一致",
     HOLD: "未確定",
     LIVE_SOURCE_REPARSE_SCHEDULED: "継続監視中",
     MONITORED_NOT_HUMAN_VERIFIED: "継続監視中",

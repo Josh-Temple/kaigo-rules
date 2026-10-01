@@ -1,0 +1,28 @@
+{
+  "id": "remuneration-dayrehab",
+  "title": "告示第19号 §7 通所リハビリテーション費 42項目",
+  "content_verification": {
+    "status": "PASS_BOUNDED_SCOPE_ONLY",
+    "kind": "INDEPENDENT_MHLW_SOURCE_INVENTORY_REPARSE",
+    "items": 42,
+    "base_tariff_rows": 14,
+    "base_tariff_values": 70,
+    "r8_patch_rates": 6,
+    "evidence": "data/dayrehab-remuneration-independent-audit.json",
+    "boundary": "item/rate inventory and source-marker check; descriptive digests are not source text"
+  },
+  "currentness": {
+    "status": "GAP",
+    "note": "告示第87号はイ〜ホを略記。全改正履歴を確認しておらず、現行統合本文へ合成していない。"
+  },
+  "monitoring": {
+    "status": "NOT_CONFIGURED",
+    "note": "継続的な現行性監視は未設定。独立確認は公開時の限定監査。"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED",
+    "reviewed_items": 0,
+    "total_items": 42
+  },
+  "assurance": "BOUNDED_SOURCE_INVENTORY_PASS_CURRENTNESS_GAP"
+}

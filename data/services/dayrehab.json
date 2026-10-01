@@ -12,11 +12,15 @@
   "scope_files": {
     "standards_index": "data/services/dayrehab/standards-index.json",
     "ordinance37": "data/services/dayrehab/ordinance37-scope.json",
-    "rouki25": "data/services/dayrehab/rouki25-scope.json"
+    "rouki25": "data/services/dayrehab/rouki25-scope.json",
+    "remuneration_index": "data/services/dayrehab/remuneration-index.json",
+    "fee_guidance_index": "data/services/dayrehab/fee-guidance-index.json"
   },
   "verification_layer_ids": [
     "ordinance37-dayrehab",
-    "rouki25-dayrehab"
+    "rouki25-dayrehab",
+    "remuneration-dayrehab",
+    "fee-guidance-dayrehab"
   ],
   "publication_gate": {
     "public_routes_enabled": true,
@@ -26,8 +30,8 @@
   },
   "ingestion_layers": {
     "work_control": {
-      "status": "ACCEPTED_RESULTS_TWO_LAYERS_PUBLISHED",
-      "note": "Cycle 3の5レイヤー受理済み。基準省令は第八章11条本文に加え第119条の現行準用関係を独立検証付きで展開。基準解釈通知は公式旧HTML9項目を歴史的本文として公開し、現行統合版とは扱わない。残る介護保険法・報酬基準・算定留意事項は公開統合前。"
+      "status": "CYCLE3_FIVE_LAYERS_ACCEPTED_TWO_MORE_DAYREHAB_LAYERS_PUBLISHED",
+      "note": "Cycle 3受理済み5レイヤーのうち、基準省令・第119条relation・基準解釈通知に加え、報酬基準と算定上の留意事項の出典別inventoryを公開。報酬基準は掲載表示と令和8告示差分を分離し、留意事項は令和6新旧対照表の33 slot/88 child markerと改正資料を別版で保持。現行統合本文は作成せず、現行性GAP・人手未確認を継続。介護保険法は公開統合前。"
     },
     "ordinance37": {
       "status": "DIRECT_TEXT_PLUS_VERIFIED_ARTICLE119_SCOPE",
@@ -39,10 +43,28 @@
       "status": "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
       "principal_items": 9,
       "note": "老企第25号の公式旧HTML『第九 通所リハビリテーション』9 principal itemsを公式source一致確認付きで公開。令和6年度新旧対照は別証拠として扱い、現行統合本文は生成しない。"
+    },
+    "remuneration": {
+      "status": "SOURCE_VERSIONED_INVENTORY_WITH_R8_PATCH_LEDGER",
+      "parent_items": 42,
+      "base_tariff_rows": 14,
+      "base_tariff_values": 70,
+      "r8_patch_rates": 6,
+      "currentness": "GAP",
+      "human_review": "NOT_REVIEWED"
+    },
+    "fee_guidance": {
+      "status": "R6_COMPARISON_SLOT_INVENTORY_WITH_R8_OMISSION_LEDGER",
+      "parent_items": 33,
+      "visible_child_items": 88,
+      "currentness": "GAP",
+      "human_review": "NOT_REVIEWED"
     }
   },
   "ingestion_indexes": {
     "ordinance37": "data/services/dayrehab/ordinance37-index.generated.json",
-    "rouki25": "data/services/dayrehab/rouki25-historical.generated.json"
+    "rouki25": "data/services/dayrehab/rouki25-historical.generated.json",
+    "remuneration": "data/services/dayrehab/remuneration-index.json",
+    "fee_guidance": "data/services/dayrehab/fee-guidance-index.json"
   }
 }

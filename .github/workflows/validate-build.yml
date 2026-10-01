@@ -29,6 +29,10 @@ jobs:
           node-version: "22"
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
+      - name: Install PDF text extractor for independent source reparse
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Independently verify dayrehab remuneration and guidance source inventories
+        run: python scripts/verify_dayrehab_fee_layers_independent.py --report /tmp/dayrehab-fee-layer-independent-report.json
       - name: Validate and build
         run: npm run build
       - name: Compile production gate verifier
@@ -76,6 +80,9 @@ jobs:
             "/sources"
             "/about"
             "/feedback"
+            "/services/dayrehab"
+            "/services/dayrehab/remuneration"
+            "/services/dayrehab/remuneration/guidance"
           )
           for route in "${routes[@]}"; do
             echo "GET $route"
@@ -131,6 +138,8 @@ jobs:
             "/fees/guidance"
             "/fees/unit-price"
             "/qa"
+            "/services/dayrehab/remuneration"
+            "/services/dayrehab/remuneration/guidance"
           )
           for route in "${verification_routes[@]}"; do
             if ! curl --fail --silent --show-error "http://127.0.0.1:3000$route" | grep -F "本文の独立確認" >/dev/null; then
@@ -140,6 +149,24 @@ jobs:
           done
 
           faq_page="$(curl --fail --silent --show-error http://127.0.0.1:3000/questions/nurse-staffing)"
+          for route in "/services/dayrehab/remuneration" "/services/dayrehab/remuneration/guidance"; do
+            page="$(curl --fail --silent --show-error "http://127.0.0.1:3000$route")"
+            echo "$page" | grep -F "これは現行統合本文ではありません" >/dev/null || {
+              echo "dayrehab fee route must disclose that it is not an integrated current text: $route"
+              exit 1
+            }
+            echo "$page" | grep -F "本文の独立確認" >/dev/null || {
+              echo "dayrehab fee route is missing verification summary: $route"
+              exit 1
+            }
+          done
+
+          shortstay_status="$(curl --silent --output /dev/null --write-out "%{http_code}" http://127.0.0.1:3000/services/shortstay-life)"
+          if [ "$shortstay_status" != "404" ]; then
+            echo "shortstay-life unexpectedly became public: HTTP $shortstay_status"
+            exit 1
+          fi
+
           echo "$faq_page" | grep -F "FAQ根拠対応を確認済み" >/dev/null || {
             echo "FAQ verification scope label missing"
             exit 1

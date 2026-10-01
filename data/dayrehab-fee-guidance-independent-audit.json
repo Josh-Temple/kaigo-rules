@@ -1,0 +1,46 @@
+{
+  "format_version": 1,
+  "audit_id": "dayrehab-fee-guidance-bounded-source-audit",
+  "audit_kind": "INDEPENDENT_MHLW_SOURCE_INVENTORY_REPARSE",
+  "service_id": "dayrehab",
+  "audit_result": "PASS_BOUNDED_SCOPE_ONLY",
+  "scope": "老企第36号 R6 final comparison §II/8 parent slots and visible child markers; R8 patch omission boundary",
+  "source_ids": [
+    "dayrehab-rouki36-r6-final-comparison",
+    "dayrehab-rouki36-r8-patch"
+  ],
+  "verified_dimensions": {
+    "parent_slot_inventory": "PASS",
+    "visible_child_marker_inventory": "PASS",
+    "section_boundary": "PASS",
+    "r8_patch_omission": "PASS",
+    "currentness": "GAP",
+    "human_review": "NOT_REVIEWED",
+    "pdf_visual_layout": "GAP"
+  },
+  "coverage": {
+    "parent_items": 33,
+    "visible_child_items": 88,
+    "parents_with_literal_omission": 8,
+    "verified_current_items": 0
+  },
+  "method": "The official R6 comparison PDF and R8 notification amendment PDF were independently retrieved and text-reparsed. The result verifies the bounded slot inventory and omission boundary only; no full current text or visual two-column equivalence is asserted.",
+  "safety": {
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "old_html_merged": false,
+    "amendment_merged": false,
+    "omission_treated_as_no_change": false,
+    "shortstay_life_exposed": false
+  },
+  "sources": [
+    {
+      "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+      "locator": "pp.52–66; lines 2693–3329"
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/12404000/001682729.pdf",
+      "locator": "p.1 lines 29–36"
+    }
+  ]
+}

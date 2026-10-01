@@ -18,7 +18,7 @@ export default function DayrehabPage() {
       <div className="notice">
         <strong>確認済みの範囲だけを広げています。</strong><br />
         第八章11条の本文は独立再照合済み、第119条の25の準用relationも独立監査済みです。
-        解釈通知9項目は公式旧HTMLとの本文一致まで確認していますが、現行統合本文ではなくcurrentness GAPです。
+        解釈通知は公式旧HTMLの旧版資料です。報酬基準と算定上の留意事項は、出典別の項目・改正差分を公開し、現行性は各レイヤーでGAPとして管理しています。
       </div>
 
       <VerificationSummary layerId="ordinance37-dayrehab" />
@@ -27,7 +27,7 @@ export default function DayrehabPage() {
         <div><strong>{index.counts.direct_articles}</strong><span>第八章・直接本文</span></div>
         <div><strong>{index.counts.incorporated_articles_total}</strong><span>第119条・準用relation</span></div>
         <div><strong>{notice.item_count}</strong><span>解釈通知・旧HTML項目</span></div>
-        <div><strong>3</strong><span>収集済み・公開統合前レイヤー</span></div>
+        <div><strong>1</strong><span>収集済み・未公開統合レイヤー</span></div>
       </section>
 
       <div className="entry-links">
@@ -39,15 +39,23 @@ export default function DayrehabPage() {
           <span>基準解釈通知を見る</span>
           <small>公式旧HTML 9項目 / 現行性GAP →</small>
         </Link>
+        <Link className="entry-row" href="/services/dayrehab/remuneration">
+          <span>報酬基準を見る</span>
+          <small>42項目 / 令和8告示差分は別表示 / 現行性GAP →</small>
+        </Link>
+        <Link className="entry-row" href="/services/dayrehab/remuneration/guidance">
+          <span>算定上の留意事項を見る</span>
+          <small>令和6対照表 33項目・88子項目 / 現行性GAP →</small>
+        </Link>
       </div>
 
       <section className="section">
         <h2>まだ公開統合していないもの</h2>
         <p>
-          介護保険法、報酬基準、算定上の留意事項はWork Controlで収集・Committer確認済みですが、service-specificな公開データへの統合はまだ行っていません。
+          介護保険法はWork Controlで収集・Committer確認済みですが、service-specificな公開データへの統合はまだ行っていません。
         </p>
         <p className="meta">
-          基準解釈通知は公開しましたが、公式旧HTMLと令和6年度新旧対照を統合した「現行全文」としては扱っていません。
+          各レイヤーは出典・版・確認状態を分けています。報酬基準の掲載表示と令和8年差分、留意事項の令和6年対照表と令和8年対照表を結合した「現行全文」は作成していません。
         </p>
       </section>
       <p><Link href="/services">サービス一覧へ戻る</Link></p>
