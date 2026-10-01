@@ -46,8 +46,11 @@ class IntegrationSprintReleaseRegressionTest(unittest.TestCase):
             for case in self.fixture["cases"]
             if case["coverage"] == "service_isolation"
         }
-        self.assertEqual(service_cases["IR-01"]["expect_status"], 404)
+        self.assertEqual(service_cases["IR-01"]["expect_status"], 200)
+        self.assertIn("共有法令コーパス", service_cases["IR-01"]["contains_text"])
         self.assertEqual(service_cases["IR-02"]["expect_status"], 200)
+        self.assertEqual(service_cases["IR-18"]["expect_status"], 200)
+        self.assertIn("第十八条", service_cases["IR-18"]["not_contains_text"])
         self.assertIn(
             "この法律において「通所介護」とは",
             service_cases["IR-07"]["contains_text"],
@@ -63,7 +66,8 @@ class IntegrationSprintReleaseRegressionTest(unittest.TestCase):
             for case in self.fixture["cases"]
             if case["coverage"] == "scoped_counts"
         }
-        self.assertIn(r"40\s*通所介護対象条文", count_cases["IR-04"]["regex_text"])
+        self.assertIn(r"67\s*共有コーパス条文", count_cases["IR-04"]["regex_text"])
+        self.assertIn(r"67\s*表示中の条文", count_cases["IR-04"]["regex_text"])
         self.assertIn(r"11\s*対象条文", count_cases["IR-08"]["regex_text"])
         self.assertIn(r"89\s*構造ノード", count_cases["IR-08"]["regex_text"])
 
