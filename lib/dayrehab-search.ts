@@ -2,7 +2,7 @@ import ordinanceNodes from "../data/ordinance37-nodes.json";
 import noticeData from "../data/services/dayrehab/rouki25-historical.generated.json";
 import remunerationData from "../data/services/dayrehab/remuneration-index.json";
 import guidanceData from "../data/services/dayrehab/fee-guidance-index.json";
-import { filterRecordsForService, serviceApplicability } from "./service-scope";
+import ordinanceIndexData from "../data/services/dayrehab/ordinance37-index.generated.json";
 
 export type DayrehabSearchLayer =
   | "ordinance37"
@@ -58,11 +58,16 @@ function excerpt(value: string, max = 150): string {
 }
 
 const allOrdinanceNodes = ordinanceNodes as Array<any>;
-const scopedOrdinanceNodes = filterRecordsForService(
-  "dayrehab",
-  "ordinance37",
-  allOrdinanceNodes,
-  (node) => node.id,
+const ordinanceIndex = ordinanceIndexData as any;
+const directNodeIds = new Set(
+  (ordinanceIndex.node_ids_by_basis?.direct || []).map(String),
+);
+const incorporatedNodeIds = new Set(
+  (ordinanceIndex.node_ids_by_basis?.incorporated || []).map(String),
+);
+const scopedNodeIds = new Set([...directNodeIds, ...incorporatedNodeIds]);
+const scopedOrdinanceNodes = allOrdinanceNodes.filter((node) =>
+  scopedNodeIds.has(String(node.id)),
 );
 
 function ordinanceResults(expandedTerms: string[][]): DayrehabSearchResult[] {
@@ -83,27 +88,25 @@ function ordinanceResults(expandedTerms: string[][]): DayrehabSearchResult[] {
       return matches(text, expandedTerms);
     })
     .map((article) => {
-      const applicability = serviceApplicability(
-        "dayrehab",
-        "ordinance37",
-        article.id,
-      );
+      const basis = directNodeIds.has(String(article.id))
+        ? "DIRECT_SCOPE"
+        : "INCORPORATED_SCOPE";
       return {
         id: article.id,
         layer: "ordinance37" as const,
         layerLabel: "基準省令",
         title: `${article.article_title} ${article.caption || ""}`.trim(),
         meta:
-          applicability.basis === "DIRECT_SCOPE"
+          basis === "DIRECT_SCOPE"
             ? "第八章・直接規定"
-            : "第119条・準用規定",
+            : "第119条・準用規定（relation独立監査済み）",
         excerpt: excerpt(article.official_text || ""),
         href: `/services/dayrehab/rules/${article.article_num}`,
         verificationLayerId:
-          applicability.basis === "DIRECT_SCOPE"
+          basis === "DIRECT_SCOPE"
             ? "ordinance37-dayrehab"
             : "ordinance37",
-        scopeBasis: applicability.basis,
+        scopeBasis: basis,
       };
     });
 }
