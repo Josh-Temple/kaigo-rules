@@ -1,3 +1,4 @@
+import ServiceNavigation from "../components/service-navigation";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Link from "next/link";
@@ -15,18 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <header className="site-header">
           <Link className="brand" href="/">介護ルール</Link>
-          <nav>
-            <Link href="/overview">制度の見取り図</Link>
-            <Link href="/services">サービス別</Link>
-            <Link href="/search">横断検索</Link>
-            <Link href="/start">これから始める</Link>
-            <Link href="/qa">国Q&A</Link>
-            <Link href="/law">介護保険法</Link>
-            <Link href="/rules">基準DB</Link>
-            <Link href="/notices">通知DB</Link>
-            <Link href="/fees">報酬DB</Link>
-            <Link href="/sources">根拠資料</Link>
-          </nav>
+          <ServiceNavigation />
         </header>
         <main>{children}</main>
         <Analytics />
@@ -44,3 +34,4 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+

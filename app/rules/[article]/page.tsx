@@ -273,7 +273,8 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
           <div><dt>施行日</dt><dd>{revision.amendment_enforcement_date || "—"}</dd></div>
           <div><dt>本文SHA-256</dt><dd className="hash">{articleNode.text_sha256}</dd></div>
         </dl>
-        <p><a href={articleNode.source_url} target="_blank" rel="noreferrer">e-Govで原文を確認</a></p>
+        <p className="meta">canonical ID: {articleNode.id} / {articleNode.source_locator}</p>
+        <p><a href={`${articleNode.source_url}#Mp-At_${articleNode.article_num.replaceAll("-", "_")}`} target="_blank" rel="noreferrer">e-Govで原文を確認</a></p>
       </section>
 
       <p><Link href="/rules">基準DB一覧へ戻る</Link></p>

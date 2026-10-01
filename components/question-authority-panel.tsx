@@ -6,6 +6,7 @@ import qaItemsData from "../data/qa-items.json";
 import feeNodesData from "../data/remuneration-current-skeleton.json";
 import sourcesData from "../data/sources.json";
 import { expandQuestionAuthorities, resolveNoticeSourceLinks } from "../lib/question-authority-expansion";
+import { qaDetailHref, noticeDetailHref } from "../lib/evidence-navigation";
 import { feeHref } from "../lib/service-catalog";
 
 const relationships = relationshipsData as Array<any>;
@@ -27,15 +28,10 @@ const ruleHref = (id: string) => {
   return match ? `/rules/${match[1]}` : null;
 };
 
-const qaHref = (item: any) => {
-  const query = item.source_number || item.topic?.[0] || item.question_summary || "";
-  return `/qa?q=${encodeURIComponent(query)}&service=16`;
-};
-
 const authorityHref = (kind: string, record: any, serviceId: string) => {
   if (kind === "standard") return ruleHref(record.id);
-  if (kind === "notice") return null;
-  if (kind === "qa") return qaHref(record);
+  if (kind === "notice") return noticeDetailHref(record.id);
+  if (kind === "qa") return qaDetailHref(record.id);
   if (kind === "fee") return feeHref(serviceId, record.id);
   return null;
 };
@@ -90,7 +86,7 @@ export default function QuestionAuthorityPanel({
                     <span className="source-kind">{kindLabel[authority.kind]}</span>{" "}
                     {authority.kind === "notice" ? (
                       <>
-                        {title}
+                        <Link href={noticeDetailHref(authority.record.id)}>{title}</Link>
                         {resolveNoticeSourceLinks(authority.record, sources).map((source) => (
                           <span key={source.sourceId}>
                             {" / "}
@@ -112,3 +108,4 @@ export default function QuestionAuthorityPanel({
     </section>
   );
 }
+

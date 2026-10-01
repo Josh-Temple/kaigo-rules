@@ -174,7 +174,7 @@ def validate() -> list[str]:
             "根拠資料全体の確認状態は別です",
             "基準省令DBで現在の条文と確認状態を見る",
             "解釈通知DBの再構成・現行性を見る",
-            "国Q&A DBで収載状態を見る",
+            "国Q&Aの該当問と修正資料を見る",
         ):
             if token not in page:
                 errors.append(f"FAQ detail page: missing contract text/link: {token}")

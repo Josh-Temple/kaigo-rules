@@ -30,7 +30,7 @@ const synonymGroups = [
 const normalize = (value: string) =>
   value.normalize("NFKC").toLowerCase();
 
-const canonicalize = (value: string) => {
+const canonicalize = (value: string, removeBoilerplate = true) => {
   let result = normalize(value);
   synonymGroups.forEach((group, index) => {
     const marker = `§${index}§`;
@@ -40,6 +40,7 @@ const canonicalize = (value: string) => {
         result = result.split(normalize(variant)).join(marker);
       });
   });
+  if (removeBoilerplate) result = result.replace(/する必要がありますか|必要がありますか|必要ですか|配置すればよいですか|できますか|記載する必要がありますか|ですか|ますか/g, "");
   return result.replace(/[?？!！。、・「」『』（）()\[\]【】\s]/g, "");
 };
 
@@ -51,9 +52,9 @@ const bigrams = (value: string) => {
   return output;
 };
 
-const fieldSimilarity = (query: string, value: string) => {
-  const q = canonicalize(query);
-  const v = canonicalize(value);
+const fieldSimilarity = (query: string, value: string, removeBoilerplate = true) => {
+  const q = canonicalize(query, removeBoilerplate);
+  const v = canonicalize(value, removeBoilerplate);
   if (!q || !v) return 0;
 
   const qgrams = bigrams(q);
@@ -85,7 +86,9 @@ export const scoreQuestionQuery = (
   const titleScore = fieldSimilarity(query, question.title || "");
   const answerScore = fieldSimilarity(query, question.short_answer || "");
 
-  return aliasScore * 3 + titleScore * 2 + answerScore * 0.3;
+  const legacyAlias = aliases.length ? Math.max(...aliases.map(alias => fieldSimilarity(query, alias, false))) : 0;
+  const legacy = legacyAlias * 3 + fieldSimilarity(query, question.title || "", false) * 2 + fieldSimilarity(query, question.short_answer || "", false) * 0.3;
+  return Math.max(legacy, aliasScore * 3 + titleScore * 2 + answerScore * 0.3);
 };
 
 export const rankQuestionMatches = <T extends SearchableQuestion>(
@@ -95,7 +98,7 @@ export const rankQuestionMatches = <T extends SearchableQuestion>(
 ) => {
   if (!query.trim()) return [];
 
-  return questions
+  const scored = questions
     .map((question, index) => ({
       question,
       index,
@@ -103,5 +106,8 @@ export const rankQuestionMatches = <T extends SearchableQuestion>(
     }))
     .filter((row) => row.score >= threshold)
     .sort((a, b) => b.score - a.score || a.index - b.index)
-    .map((row) => row.question);
+;
+  const best = scored[0]?.score || 0;
+  return scored.filter(row => row.score >= Math.max(threshold, best >= 3 ? best * 0.65 : threshold)).map(row => row.question);
 };
+

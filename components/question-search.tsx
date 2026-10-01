@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { rankQuestionMatches } from "../lib/question-search";
 import questions from "../data/questions.json";
 
 export default function QuestionSearch({ initialLimit }: { initialLimit?: number }) {
@@ -9,9 +10,7 @@ export default function QuestionSearch({ initialLimit }: { initialLimit?: number
   const normalized = query.trim().toLowerCase();
   const results = useMemo(() => {
     const matched = normalized
-      ? questions.filter((q) =>
-          [q.title, q.category, ...q.aliases].join(" ").toLowerCase().includes(normalized)
-        )
+      ? rankQuestionMatches(questions, query)
       : questions;
     return !normalized && initialLimit ? matched.slice(0, initialLimit) : matched;
   }, [initialLimit, normalized]);
@@ -51,3 +50,4 @@ export default function QuestionSearch({ initialLimit }: { initialLimit?: number
     </>
   );
 }
+

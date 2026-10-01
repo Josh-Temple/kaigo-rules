@@ -114,6 +114,7 @@ export type AuthoritySourceLink = {
   url: string;
   status?: string;
   note?: string;
+  locator?: string;
 };
 
 export function resolveNoticeSourceLinks(
@@ -128,14 +129,16 @@ export function resolveNoticeSourceLinks(
   const byId = new Map(sources.map((source) => [source.id, source]));
   return sourceIds.flatMap((sourceId) => {
     const source = byId.get(sourceId);
-    if (!source?.url) return [];
+    if (!source?.url || sourceId === "mhlw-qa") return [];
     return [{
       sourceId,
       title: source.title || sourceId,
       publisher: source.publisher || "",
-      url: source.url,
+      url: sourceId === "mhlw-interpretation-nurse-linkage" ? `${source.url}#page=30` : source.url,
+      locator: sourceId === "mhlw-interpretation-nurse-linkage" ? "老企第25号 新旧対照 / 六 通所介護 / 1(1)⑥ア・イ / PDF pp.30–31" : undefined,
       status: source.status,
       note: source.note,
     }];
   });
 }
+

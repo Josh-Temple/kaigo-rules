@@ -1,0 +1,61 @@
+{
+  "audit_kind": "INDEPENDENT_MHLW_SOURCE_INVENTORY_REPARSE",
+  "audit_result": "PASS_BOUNDED_SCOPE_ONLY",
+  "sources": {
+    "rem_base": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+      "bytes": 509135,
+      "sha256": "e189120c253f72d2d5dab24dfe7118bad7d602f0baba3d8cdf98a58c7ecc5bbd"
+    },
+    "rem_patch": {
+      "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+      "bytes": 1108602,
+      "sha256": "22dcf892db41a275c867760fc3fbfdaf40df74c3e0f00252c24c9a5b1ef8481e"
+    },
+    "guide_r6": {
+      "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+      "bytes": 1684646,
+      "sha256": "826dc8f8521ff8387fdde90f880290422ed9a846e71cc3277494b1ea38693241"
+    },
+    "guide_r8": {
+      "url": "https://www.mhlw.go.jp/content/12404000/001682729.pdf",
+      "bytes": 48423,
+      "sha256": "6b1fdda31a1e23cda5e8299ae88ec28f7bf7971535923a112da2ba44a8078eef"
+    }
+  },
+  "coverage": {
+    "remuneration": {
+      "parent_items": 42,
+      "base_tariff_rows_observed": 14,
+      "base_tariff_values_observed": 70,
+      "base_source_note_markers_observed": 24,
+      "r8_patch_rates_observed": 6,
+      "r8_omitted_sections": [
+        "イ",
+        "ロ",
+        "ハ",
+        "ニ",
+        "ホ"
+      ],
+      "currentness": "GAP"
+    },
+    "fee_guidance": {
+      "parent_items": 33,
+      "parent_slots_observed": 33,
+      "visible_child_items": 88,
+      "visible_child_markers_observed": 88,
+      "r8_section_omission_observed": true,
+      "visual_column_alignment": "NOT_VERIFIED",
+      "currentness": "GAP"
+    }
+  },
+  "safety": {
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "versions_merged": false,
+    "visual_pdf_layout_claimed": false
+  },
+  "differences": [],
+  "checked_at": "2026-10-01",
+  "source_base_sha": "df06dcf3cc348a5082b350ce55ea44c169c2759a"
+}

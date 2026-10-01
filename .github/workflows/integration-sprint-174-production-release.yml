@@ -71,6 +71,12 @@ jobs:
             --output artifacts/machine-retrieval-v0.1.json
           cat artifacts/machine-retrieval-v0.1.json
 
+      - name: Verify practical question to primary-source journeys
+        env:
+          BASE_URL: https://kaigo-rules.vercel.app
+          EXPECTED_SHA: ${{ github.sha }}
+        run: python scripts/run_practical_navigation_regression.py --base-url "$BASE_URL" --expected-sha "$EXPECTED_SHA" --output artifacts/practical-navigation.json
+
       - name: Upload release-gate artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
@@ -78,6 +84,7 @@ jobs:
           path: |
             artifacts/integration-sprint-release-regression.json
             artifacts/machine-retrieval-v0.1.json
+            artifacts/practical-navigation.json
           if-no-files-found: error
           retention-days: 90
 

@@ -1,3 +1,5 @@
+import { qaDetailHref, noticeDetailHref, officialRuleHref } from "../../../lib/evidence-navigation";
+import { resolveNoticeSourceLinks } from "../../../lib/question-authority-expansion";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import questionsData from "../../../data/questions.json";
@@ -63,15 +65,15 @@ export default async function QuestionPage({ params }: { params: Promise<{ slug:
             {linkedRules.map((node) => {
               const source = sources.find((item) => item.id === node.source_id);
               const databaseHref = ruleDatabaseHref(node.id);
-              return <div className="source-card" key={node.id}><p className="source-kind">基準省令</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.official_text}</p>{node.text_form ? <p className="meta">上記は適用関係や列挙を読みやすくするため当サイトで構造化しています。逐語的な原文はリンク先で確認してください。</p> : null}{source ? <a href={source.url} target="_blank" rel="noreferrer">{source.publisher}の原文を確認</a> : null}{databaseHref ? <p><Link href={databaseHref}>基準省令DBで現在の条文と確認状態を見る →</Link></p> : null}</div>;
+              return <div className="source-card" key={node.id}><p className="source-kind">基準省令</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.official_text}</p>{node.text_form ? <p className="meta">上記は適用関係や列挙を読みやすくするため当サイトで構造化しています。逐語的な原文はリンク先で確認してください。</p> : null}{source ? <a href={officialRuleHref(source.url, node.id)} target="_blank" rel="noreferrer">{source.publisher}の原文を確認</a> : null}{databaseHref ? <p><Link href={databaseHref}>基準省令DBで現在の条文と確認状態を見る →</Link></p> : null}</div>;
             })}
             {linkedNotices.map((node) => {
-              const source = sources.find((item) => node.source_ids?.includes(item.id));
-              return <div className="source-card" key={node.id}><p className="source-kind">解釈通知</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.editorial_summary}</p><p className="meta">上記は当サイトの要約です。</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省資料を確認</a> : null}<p><Link href="/notices">解釈通知DBの再構成・現行性を見る →</Link></p></div>;
+              const links = resolveNoticeSourceLinks(node, sources);
+              return <div className="source-card" key={node.id}><p className="source-kind">解釈通知</p><p className="meta">{node.path.join(" ＞ ")}</p><p>{node.editorial_summary}</p><p className="meta">上記は当サイトの要約です。</p>{links.map(source => <p key={source.sourceId}><a href={source.url} target="_blank" rel="noreferrer">厚生労働省資料を確認</a><span className="meta"> / {source.locator || node.path.join(" ＞ ")}</span></p>)}<p><Link href={noticeDetailHref(node.id)}>解釈通知の該当項目と出典を見る →</Link></p><p><Link href="/notices">解釈通知DBの再構成・現行性を見る →</Link></p></div>;
             })}
             {linkedQa.map((item) => {
               const source = sources.find((s) => s.id === item.source_id);
-              return <div className="source-card" key={item.id}><p className="source-kind">国Q&A</p><p className="meta">{item.source_document} / {item.source_number}</p><p><strong>質問の要旨：</strong>{item.question_summary}</p><p><strong>回答の要旨：</strong>{item.answer_summary}</p><p className="meta">上記は検索しやすいよう当サイトで要約しています。</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省Q&A集を確認</a> : null}<p><Link href={`/qa?q=${encodeURIComponent(item.source_number || item.topic || "")}&service=16`}>国Q&A DBで収載状態を見る →</Link></p></div>;
+              return <div className="source-card" key={item.id}><p className="source-kind">国Q&A</p><p className="meta">{item.source_document} / {item.source_number}</p><p className="meta">旧資料・修正あり：2015年問50は2024年問59で修正されています。</p><p><strong>質問の要旨：</strong>{item.question_summary}</p><p><strong>回答の要旨：</strong>{item.answer_summary}</p><p className="meta">上記は検索しやすいよう当サイトで要約しています。</p>{source ? <a href={source.url} target="_blank" rel="noreferrer">厚生労働省Q&A集を確認</a> : null}<p><Link href={qaDetailHref(item.id)}>国Q&Aの該当問と修正資料を見る →</Link></p></div>;
             })}
             {question.source_refs?.filter((ref: any) => !linkedRules.some((node) => node.source_id === ref.source_id) && !linkedNotices.some((node) => node.source_ids?.includes(ref.source_id)) && !linkedQa.some((item) => item.source_id === ref.source_id)).map((ref: any) => {
               const source = sources.find((item) => item.id === ref.source_id);
@@ -89,3 +91,4 @@ export default async function QuestionPage({ params }: { params: Promise<{ slug:
     </article>
   );
 }
+

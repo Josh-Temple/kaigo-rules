@@ -243,3 +243,7 @@ jobs:
             --expected-sha "$GITHUB_SHA" \
             --output /tmp/machine-retrieval-benchmark.json
           cat /tmp/machine-retrieval-benchmark.json
+
+          python scripts/run_practical_navigation_regression.py \
+            --base-url http://127.0.0.1:3000 --expected-sha "$GITHUB_SHA" \
+            --output /tmp/practical-navigation.json
