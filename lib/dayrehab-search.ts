@@ -133,7 +133,7 @@ function noticeResults(expandedTerms: string[][]): DayrehabSearchResult[] {
       title: `${item.marker} ${item.title}`,
       meta: `${item.group_number} ${item.group_heading} / 公式旧HTML`,
       excerpt: excerpt(item.body_text || ""),
-      href: `/services/dayrehab/notices#${encodeURIComponent(item.id)}`,
+      href: `/notices?service=dayrehab#${encodeURIComponent(item.id)}`,
       verificationLayerId: "rouki25-dayrehab",
     }));
 }
