@@ -101,7 +101,7 @@ function ordinanceResults(expandedTerms: string[][]): DayrehabSearchResult[] {
             ? "第八章・直接規定"
             : "第119条・準用規定（relation独立監査済み）",
         excerpt: excerpt(article.official_text || ""),
-        href: `/services/dayrehab/rules/${article.article_num}`,
+        href: `/rules/${article.article_num}?service=dayrehab`,
         verificationLayerId:
           basis === "DIRECT_SCOPE"
             ? "ordinance37-dayrehab"
