@@ -10,11 +10,12 @@ import feeNodesData from "../../../data/remuneration-current-skeleton.json";
 import questionsData from "../../../data/questions.json";
 import careActNodesData from "../../../data/care-insurance-act-nodes.json";
 import { incomingEdges } from "../../../lib/knowledge-relations";
-import { getDefaultService } from "../../../lib/service-catalog";
+import { listServices } from "../../../lib/service-catalog";
 import {
   filterRecordsForService,
-  findRecordForService,
   isRecordApplicableToService,
+  resolveServiceScope,
+  serviceApplicability,
 } from "../../../lib/service-scope";
 
 type RuleNode = {
@@ -30,11 +31,8 @@ type RuleNode = {
   path: string[];
   official_text: string;
   text_sha256: string;
-  service_scope: string;
-  applicable_via?: string | null;
   source_url: string;
   source_locator: string;
-  verification_status: string;
   parent_id?: string | null;
 };
 
@@ -46,18 +44,27 @@ const noticeNodes = noticeNodesData as Array<any>;
 const feeNodes = feeNodesData as Array<any>;
 const questions = questionsData as Array<any>;
 const careActNodes = careActNodesData as Array<any>;
-const defaultService = getDefaultService();
+
+const catalogServices = listServices();
+const publicFilterServices = catalogServices.filter(
+  (service) =>
+    service.routing.current_mode === "LEGACY_ROOT" ||
+    service.routing.future_service_base_enabled,
+);
+const publicFilterIds = new Set(publicFilterServices.map((service) => service.service_id));
+const serviceById = new Map(
+  catalogServices.map((service) => [service.service_id, service]),
+);
 
 export function generateStaticParams() {
-  return filterRecordsForService(
-    defaultService.service_id,
-    "ordinance37",
-    nodes.filter((node) => node.node_type === "article"),
-    (node) => node.id,
-  ).map((node) => ({ article: node.article_num }));
+  return nodes
+    .filter((node) => node.node_type === "article")
+    .map((node) => ({ article: node.article_num }));
 }
 
-const levelRank: Record<string, number> = { p: 0, i: 1, s1: 2, s2: 3, s3: 4, s4: 5, s5: 6 };
+const levelRank: Record<string, number> = {
+  p: 0, i: 1, s1: 2, s2: 3, s3: 4, s4: 5, s5: 6, s6: 7, s7: 8,
+};
 
 function nodeSortKey(node: RuleNode) {
   const prefix = `ordinance37.article.${node.article_num}`;
@@ -87,57 +94,129 @@ function NodeLabel({ node }: { node: RuleNode }) {
   return <span>{node.label || node.item_num}</span>;
 }
 
-export default async function RuleArticlePage({ params }: { params: Promise<{ article: string }> }) {
+function basisLabel(basis: string) {
+  if (basis === "DIRECT_SCOPE") return "直接規定";
+  if (basis === "INCORPORATED_SCOPE") return "準用";
+  return "適用scope";
+}
+
+export default async function RuleArticlePage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ article: string }>;
+  searchParams: Promise<{ service?: string }>;
+}) {
   const { article } = await params;
-  const articleNode = findRecordForService(
-    defaultService.service_id,
-    "ordinance37",
-    nodes,
-    (node) => node.id,
+  const { service = "" } = await searchParams;
+
+  const selectedService = publicFilterServices.find(
+    (item) => item.service_id === service,
+  );
+  const selectedServiceId = selectedService?.service_id;
+
+  const articleNode = nodes.find(
     (node) => node.node_type === "article" && node.article_num === article,
   );
   if (!articleNode) notFound();
 
-  const children = filterRecordsForService(
-    defaultService.service_id,
-    "ordinance37",
-    nodes.filter(
-      (node) => node.article_num === article && node.node_type !== "article",
-    ),
-    (node) => node.id,
+  if (
+    selectedServiceId &&
+    !isRecordApplicableToService(
+      selectedServiceId,
+      "ordinance37",
+      articleNode.id,
+    )
+  ) {
+    notFound();
+  }
+
+  const articleNodes = nodes.filter(
+    (node) => node.article_num === article && node.node_type !== "article",
+  );
+  const children = (
+    selectedServiceId
+      ? filterRecordsForService(
+          selectedServiceId,
+          "ordinance37",
+          articleNodes,
+          (node) => node.id,
+        )
+      : articleNodes
   ).sort(compareNodes);
 
-  const incorporationTargets = filterRecordsForService(
-    defaultService.service_id,
-    "ordinance37",
-    relations
-      .filter(
-        (relation) =>
-          relation.from === articleNode.id &&
-          relation.relation === "incorporates_by_reference",
-      )
-      .map((relation) => nodes.find((node) => node.id === relation.to))
-      .filter(Boolean) as RuleNode[],
-    (node) => node.id,
+  const scope = resolveServiceScope("ordinance37", articleNode.id);
+  const publicMemberships = scope.memberships.filter((membership) =>
+    publicFilterIds.has(membership.service_id),
   );
 
-  const readAs = applications.filter((rule) => rule.target_article_id === articleNode.id);
-  const relationEdges = incomingEdges(articleNode.id);
+  const selectedDecision = selectedServiceId
+    ? serviceApplicability(
+        selectedServiceId,
+        "ordinance37",
+        articleNode.id,
+      )
+    : undefined;
+
+  const dayserviceContext = !selectedServiceId || selectedServiceId === "dayservice";
+  const dayserviceApplicable = isRecordApplicableToService(
+    "dayservice",
+    "ordinance37",
+    articleNode.id,
+  );
+
+  const incorporationTargets =
+    selectedServiceId === "dayservice"
+      ? filterRecordsForService(
+          "dayservice",
+          "ordinance37",
+          relations
+            .filter(
+              (relation) =>
+                relation.from === articleNode.id &&
+                relation.relation === "incorporates_by_reference",
+            )
+            .map((relation) => nodes.find((node) => node.id === relation.to))
+            .filter(Boolean) as RuleNode[],
+          (node) => node.id,
+        )
+      : [];
+
+  const readAs =
+    selectedServiceId === "dayservice"
+      ? applications.filter((rule) => rule.target_article_id === articleNode.id)
+      : [];
+
+  const relationEdges = dayserviceContext && dayserviceApplicable
+    ? incomingEdges(articleNode.id)
+    : [];
+
   const relatedNotices = relationEdges
     .filter((edge) => edge.source_id.startsWith("notice."))
-    .map((edge) => ({ edge, node: noticeNodes.find((item) => item.id === edge.source_id) }))
+    .map((edge) => ({
+      edge,
+      node: noticeNodes.find((item) => item.id === edge.source_id),
+    }))
     .filter((item) => item.node);
+
   const relatedFees = relationEdges
     .filter((edge) => edge.source_id.startsWith("fee.dayservice."))
-    .map((edge) => ({ edge, node: feeNodes.find((item) => item.id === edge.source_id) }))
+    .map((edge) => ({
+      edge,
+      node: feeNodes.find((item) => item.id === edge.source_id),
+    }))
     .filter((item) => item.node);
+
   const relatedQuestions = relationEdges
     .filter((edge) => edge.source_id.startsWith("question:"))
     .map((edge) => ({
       edge,
-      question: questions.find((item) => `question:${item.slug}` === edge.source_id),
+      question: questions.find(
+        (item) => `question:${item.slug}` === edge.source_id,
+      ),
     }))
     .filter((item) => item.question);
+
   const relatedLaw = relationEdges
     .filter((edge) => edge.source_id.startsWith("careact.article."))
     .map((edge) => ({
@@ -148,32 +227,104 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
       (item) =>
         item.node &&
         isRecordApplicableToService(
-          defaultService.service_id,
+          "dayservice",
           "care_insurance_act",
           item.node.id,
         ),
     );
 
   const revision = meta.current_revision || {};
+  const verificationLayerId =
+    selectedServiceId === "dayrehab" ? "ordinance37-dayrehab" : "ordinance37";
+  const backHref = selectedServiceId
+    ? `/rules?service=${encodeURIComponent(selectedServiceId)}`
+    : "/rules";
 
   return (
     <article className="answer-page rules-page">
-      <p className="eyebrow">{articleNode.service_scope}</p>
+      <p className="eyebrow">
+        {selectedService
+          ? `${selectedService.label} / ORDINANCE DATABASE`
+          : "ORDINANCE DATABASE / SHARED CORPUS"}
+      </p>
       <h1>{articleNode.article_title} {articleNode.caption || ""}</h1>
       <p className="meta">{articleNode.path.join(" ＞ ")}</p>
 
       <div className="notice">
-        <strong>取込済み・人手確認待ち</strong><br />
-        e-Gov現行XMLから取得した本文です。構造検証は済んでいますが、この条文を人手で原文照合したという意味ではありません。
+        <strong>
+          {selectedService
+            ? `${selectedService.label}の適用scopeで表示しています。`
+            : "共有法令コーパスの条文を表示しています。"}
+        </strong><br />
+        e-Gov現行XMLから取得した本文です。サービスへの適用、現行性、人手確認は別の状態として管理しています。
       </div>
 
-      <VerificationSummary layerId="ordinance37" />
+      <nav className="rules-filter" aria-label="この条文をサービス別に見る">
+        <Link
+          className={!selectedServiceId ? "rules-filter-active" : ""}
+          href={`/rules/${article}`}
+        >
+          すべて
+        </Link>
+        {publicMemberships.map((membership) => {
+          const item = serviceById.get(membership.service_id);
+          return (
+            <Link
+              className={
+                selectedServiceId === membership.service_id
+                  ? "rules-filter-active"
+                  : ""
+              }
+              href={`/rules/${article}?service=${membership.service_id}`}
+              key={membership.service_id}
+            >
+              {item?.label || membership.service_id}
+            </Link>
+          );
+        })}
+      </nav>
 
-      {articleNode.applicable_via ? (
-        <section className="rule-application-note">
-          <strong>通所介護への適用：</strong>
-          <Link href="/rules/105">第105条</Link>により準用される規定です。
-        </section>
+      <section className="rule-application-note">
+        {selectedService && selectedDecision?.applicable ? (
+          <>
+            <strong>{selectedService.label}への適用：</strong>
+            {basisLabel(selectedDecision.basis || "")}
+            {selectedServiceId === "dayservice" &&
+            selectedDecision.basis === "INCORPORATED_SCOPE" ? (
+              <>（<Link href="/rules/105?service=dayservice">第105条</Link>による準用）</>
+            ) : null}
+            {selectedServiceId === "dayrehab" &&
+            selectedDecision.basis === "INCORPORATED_SCOPE" ? (
+              <>（<Link href="/rules/119?service=dayrehab">第119条</Link>による準用）</>
+            ) : null}
+          </>
+        ) : publicMemberships.length ? (
+          <>
+            <strong>公開中サービスでの適用：</strong>
+            {publicMemberships.map((membership, index) => (
+              <span key={membership.service_id}>
+                {index ? " / " : ""}
+                {serviceById.get(membership.service_id)?.label || membership.service_id}
+                ・{basisLabel(membership.basis)}
+              </span>
+            ))}
+          </>
+        ) : (
+          <>
+            <strong>サービス別表示：</strong>
+            この条文は共有コーパスに収載されていますが、現在公開中のサービスフィルタには含まれていません。
+          </>
+        )}
+      </section>
+
+      <VerificationSummary layerId={verificationLayerId} />
+
+      {selectedServiceId === "dayrehab" ? (
+        <p className="scope-note">
+          通所リハの準用relation・読み替えを含む詳細表示は
+          <Link href={`/services/dayrehab/rules/${article}`}>サービス別ページ</Link>
+          でも確認できます。
+        </p>
       ) : null}
 
       {readAs.length ? (
@@ -199,7 +350,10 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
         {children.length ? (
           <div className="rule-tree">
             {children.map((node) => (
-              <section className={`rule-node rule-node-${node.node_type}`} key={node.id}>
+              <section
+                className={`rule-node rule-node-${node.node_type}`}
+                key={node.id}
+              >
                 <p className="rule-node-label"><NodeLabel node={node} /></p>
                 <p>{node.official_text}</p>
                 <p className="meta">{node.id}</p>
@@ -216,7 +370,11 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
           <h2>この条文から準用される規定</h2>
           <div className="rules-list">
             {incorporationTargets.map((target) => (
-              <Link className="rule-row" href={`/rules/${target.article_num}`} key={target.id}>
+              <Link
+                className="rule-row"
+                href={`/rules/${target.article_num}?service=dayservice`}
+                key={target.id}
+              >
                 <span className="rule-number">{target.article_title}</span>
                 <span className="rule-title">{target.caption || "題名なし"}</span>
                 <span className="rule-status">第105条で準用</span>
@@ -226,39 +384,66 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
         </section>
       ) : null}
 
-      {(relatedLaw.length || relatedNotices.length || relatedFees.length || relatedQuestions.length) ? (
+      {(relatedLaw.length ||
+        relatedNotices.length ||
+        relatedFees.length ||
+        relatedQuestions.length) ? (
         <section className="section">
           <h2>この条文につながる情報</h2>
           <p className="meta">
-            relationデータから逆引きしています。独立監査済みの関係と、構造上の対応付けで確認待ちの関係を区別して表示します。
+            以下は通所介護のrelationデータです。サービスを通所リハで絞り込んだ場合は表示しません。
           </p>
           <div className="knowledge-link-list">
             {relatedLaw.map(({ edge, node }: any) => (
-              <Link className="knowledge-link-row" href={`/law/${node.article_num}`} key={`law-${edge.source_id}-${edge.relation}`}>
+              <Link
+                className="knowledge-link-row"
+                href={`/law/${node.article_num}`}
+                key={`law-${edge.source_id}-${edge.relation}`}
+              >
                 <span className="knowledge-kind">上位法</span>
                 <span><strong>{node.article_title} {node.caption || ""}</strong><small>介護保険法からこの基準への委任関係</small></span>
-                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>{edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}</span>
+                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>
+                  {edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}
+                </span>
               </Link>
             ))}
             {relatedNotices.map(({ edge, node }: any) => (
-              <Link className="knowledge-link-row" href={`/notices#${node.id}`} key={`notice-${edge.source_id}-${edge.relation}`}>
+              <Link
+                className="knowledge-link-row"
+                href={`/notices#${node.id}`}
+                key={`notice-${edge.source_id}-${edge.relation}`}
+              >
                 <span className="knowledge-kind">解釈通知</span>
                 <span><strong>{node.title}</strong><small>{node.number_path?.join(" / ")}</small></span>
-                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>{edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}</span>
+                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>
+                  {edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}
+                </span>
               </Link>
             ))}
             {relatedFees.map(({ edge, node }: any) => (
-              <Link className="knowledge-link-row" href={`/fees/${node.id.replace("fee.dayservice.", "")}`} key={`fee-${edge.source_id}-${edge.relation}`}>
+              <Link
+                className="knowledge-link-row"
+                href={`/fees/${node.id.replace("fee.dayservice.", "")}`}
+                key={`fee-${edge.source_id}-${edge.relation}`}
+              >
                 <span className="knowledge-kind">報酬</span>
                 <span><strong>{node.title}</strong><small>{node.number_path?.join(" / ")}</small></span>
-                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>{edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}</span>
+                <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>
+                  {edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}
+                </span>
               </Link>
             ))}
             {relatedQuestions.map(({ edge, question }: any) => (
-              <Link className="knowledge-link-row" href={`/questions/${question.slug}`} key={`question-${edge.source_id}-${edge.relation}`}>
+              <Link
+                className="knowledge-link-row"
+                href={`/questions/${question.slug}`}
+                key={`question-${edge.source_id}-${edge.relation}`}
+              >
                 <span className="knowledge-kind">実務FAQ</span>
                 <span><strong>{question.title}</strong><small>{question.category}</small></span>
-                <span className="knowledge-status">{question.status === "verified" ? "FAQ根拠確認済み" : "根拠確認中"}</span>
+                <span className="knowledge-status">
+                  {question.status === "verified" ? "FAQ根拠確認済み" : "根拠確認中"}
+                </span>
               </Link>
             ))}
           </div>
@@ -274,10 +459,18 @@ export default async function RuleArticlePage({ params }: { params: Promise<{ ar
           <div><dt>本文SHA-256</dt><dd className="hash">{articleNode.text_sha256}</dd></div>
         </dl>
         <p className="meta">canonical ID: {articleNode.id} / {articleNode.source_locator}</p>
-        <p><a href={`${articleNode.source_url}#Mp-At_${articleNode.article_num.replaceAll("-", "_")}`} target="_blank" rel="noreferrer">e-Govで原文を確認</a></p>
+        <p>
+          <a
+            href={`${articleNode.source_url}#Mp-At_${articleNode.article_num.replaceAll("-", "_")}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            e-Govで原文を確認
+          </a>
+        </p>
       </section>
 
-      <p><Link href="/rules">基準DB一覧へ戻る</Link></p>
+      <p><Link href={backHref}>基準DB一覧へ戻る</Link></p>
     </article>
   );
 }
