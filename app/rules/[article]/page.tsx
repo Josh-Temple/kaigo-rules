@@ -1,4 +1,5 @@
 import VerificationSummary from "../../../components/verification-summary";
+import ServiceContextLinks from "../../../components/service-context-links";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import nodesData from "../../../data/ordinance37-nodes.json";
@@ -283,6 +284,10 @@ export default async function RuleArticlePage({
           );
         })}
       </nav>
+
+      {selectedServiceId === "dayservice" || selectedServiceId === "dayrehab" ? (
+        <ServiceContextLinks serviceId={selectedServiceId} />
+      ) : null}
 
       <section className="rule-application-note">
         {selectedService && selectedDecision?.applicable ? (
