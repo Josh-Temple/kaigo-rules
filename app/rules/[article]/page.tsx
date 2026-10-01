@@ -287,7 +287,13 @@ export default async function RuleArticlePage({
       <section className="rule-application-note">
         {selectedService && selectedDecision?.applicable ? (
           <>
-            <strong>{selectedService.label}への適用：</strong>
+            {selectedServiceId === "dayservice" ? (
+              <strong>通所介護への適用：</strong>
+            ) : selectedServiceId === "dayrehab" ? (
+              <strong>通所リハビリテーションへの適用：</strong>
+            ) : (
+              <strong>選択したサービスへの適用：</strong>
+            )}
             {basisLabel(selectedDecision.basis || "")}
             {selectedServiceId === "dayservice" &&
             selectedDecision.basis === "INCORPORATED_SCOPE" ? (
