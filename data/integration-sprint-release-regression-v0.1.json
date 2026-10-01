@@ -200,14 +200,14 @@
     {
       "id": "IR-12",
       "coverage": "verification_wording",
-      "title": "dayrehab interpretation layer exposes historical source without currentness overclaim",
-      "path": "/services/dayrehab/notices",
+      "title": "shared notice DB preserves dayrehab historical-source assurance",
+      "path": "/notices?service=dayrehab",
       "expect_status": 200,
       "contains_text": [
-        "これは現行統合本文ではありません",
+        "通所リハビリテーションで絞り込み中",
         "公式旧HTML",
-        "現行性",
-        "GAP",
+        "現行統合本文ではありません",
+        "現行性GAP",
         "人手確認",
         "未実施"
       ],
@@ -311,8 +311,8 @@
         "現行性GAP"
       ],
       "href_contains": [
-        "/services/dayrehab/rules/116",
-        "/services/dayrehab/notices#dayrehab.rouki25.3.2"
+        "/rules/116?service=dayrehab",
+        "/notices?service=dayrehab#dayrehab.rouki25.3.2"
       ]
     },
     {
@@ -356,6 +356,59 @@
         "第119条",
         "準用",
         "サービス別ページ"
+      ]
+    },
+    {
+      "id": "IR-21",
+      "coverage": "scoped_counts",
+      "title": "global interpretation notice DB shows all published records by default",
+      "path": "/notices",
+      "expect_status": 200,
+      "contains_text": [
+        "基準解釈通知DB",
+        "31",
+        "公開通知項目",
+        "22",
+        "通所介護",
+        "9",
+        "通所リハ",
+        "31項目を同じ保証水準として扱いません"
+      ]
+    },
+    {
+      "id": "IR-22",
+      "coverage": "service_isolation",
+      "title": "dayservice notice filter preserves reconstructed-candidate HOLD assurance",
+      "path": "/notices?service=dayservice",
+      "expect_status": 200,
+      "contains_text": [
+        "通所介護で絞り込み中",
+        "22",
+        "表示中の項目",
+        "再構成本文候補",
+        "現行性HOLD"
+      ],
+      "not_contains_text": [
+        "公式旧HTML / 本文照合PASS / 現行性GAP"
+      ]
+    },
+    {
+      "id": "IR-23",
+      "coverage": "service_isolation",
+      "title": "dayrehab notice filter preserves historical-source GAP assurance",
+      "path": "/notices?service=dayrehab",
+      "expect_status": 200,
+      "contains_text": [
+        "通所リハビリテーションで絞り込み中",
+        "9",
+        "表示中の項目",
+        "公式旧HTML",
+        "現行性GAP",
+        "現行統合本文ではありません"
+      ],
+      "not_contains_text": [
+        "VERIFIED_CURRENT",
+        "HUMAN_VERIFIED"
       ]
     }
   ]
