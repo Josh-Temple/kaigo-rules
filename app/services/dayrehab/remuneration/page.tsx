@@ -37,7 +37,7 @@ export default function DayrehabRemunerationPage() {
         <h2>厚生労働省掲載表示の基本報酬</h2>
         <p className="meta">取得時表示の版をそのまま区分した値です。現行性は未確認で、令和8年告示第87号とは合成していません。</p>
         {tariffRows.map((item: any) => (
-          <section className="rule-node" key={item.id}>
+          <section className="rule-node" id={item.id} key={item.id}>
             <p className="rule-node-label">{item.marker} {item.group_title}・{item.duration}</p>
             <p>単位/回：{item.rates.map((rate: any) => "要介護" + rate.care_level + " " + Number(rate.units).toLocaleString("ja-JP")).join(" / ")}</p>
             <p className="meta">{item.source_locator}</p>
@@ -49,7 +49,7 @@ export default function DayrehabRemunerationPage() {
         <h2>注1〜24・追加項目ハ〜ヘ</h2>
         <p className="meta">以下はCycle 3抽出要約で、告示の全文引用ではありません。基準本文と届出・関連要件は厚生労働省の出典を確認してください。</p>
         {[...notes, ...addOns].map((item: any) => (
-          <section className="rule-node" key={item.id}>
+          <section className="rule-node" id={item.id} key={item.id}>
             <p className="rule-node-label">{item.marker} {item.title}</p>
             {item.summary ? <p>{item.summary}</p> : null}
             {item.base_rate_slots ? <p>{item.base_rate_slots.map((rate: any) => rate.label + " " + rate.units + " " + rate.unit).join(" / ")}</p> : null}
