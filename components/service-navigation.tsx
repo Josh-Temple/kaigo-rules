@@ -1,8 +1,13 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+
 export default function ServiceNavigation() {
- const dayrehab = usePathname().startsWith("/services/dayrehab");
+ const pathname = usePathname();
+ const searchParams = useSearchParams();
+ const dayrehab =
+   pathname.startsWith("/services/dayrehab") ||
+   searchParams.get("service") === "dayrehab";
  const base = "/services/dayrehab";
  return <nav aria-label={dayrehab ? "通所リハビリテーションのナビゲーション" : "共通ナビゲーション"}>
    <Link href="/services">サービス別</Link>
