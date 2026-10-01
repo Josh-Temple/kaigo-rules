@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import Link from "next/link";
 import SiteFeedbackLink from "../components/site-feedback-link";
 import "./globals.css";
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </nav>
         </header>
         <main>{children}</main>
+        <Analytics />
         <footer className="site-footer">
           <p>
             厚生労働省・e-Gov等の公開資料をもとに整理しています。公式な解釈や個別案件への判断を示すものではありません。
