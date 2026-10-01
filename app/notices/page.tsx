@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ServiceContextLinks from "../../components/service-context-links";
 import VerificationSummary from "../../components/verification-summary";
 import {
   filterPublicNotices,
@@ -108,6 +109,8 @@ export default async function NoticesPage({
           </Link>
         ))}
       </nav>
+
+      {selectedServiceId ? <ServiceContextLinks serviceId={selectedServiceId} /> : null}
 
       <p className="scope-note">
         {selectedService
