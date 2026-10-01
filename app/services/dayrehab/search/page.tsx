@@ -111,10 +111,10 @@ export default async function DayrehabSearchPage({
         <section className="section">
           <h2>検索対象</h2>
           <div className="entry-links">
-            <Link className="entry-row" href="/services/dayrehab/rules">
+            <Link className="entry-row" href="/rules?service=dayrehab">
               <span>基準省令</span><small>直接11条 + 第119条準用先 →</small>
             </Link>
-            <Link className="entry-row" href="/services/dayrehab/notices">
+            <Link className="entry-row" href="/notices?service=dayrehab">
               <span>基準解釈通知</span><small>公式旧HTML / 現行性GAP →</small>
             </Link>
             <Link className="entry-row" href="/services/dayrehab/remuneration">
