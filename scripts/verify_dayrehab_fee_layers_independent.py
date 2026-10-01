@@ -166,7 +166,7 @@ def check_remuneration(rem: dict, observed: dict, differences: list[str]) -> dic
         "parent_items": len(rem["items"]),
         "base_tariff_rows_observed": len(tariff_rows),
         "base_tariff_values_observed": len(found_rates),
-        "base_source_note_markers_observed": len(note_numbers),
+        "base_source_note_markers_observed": len(observed_note_numbers),
         "r8_patch_rates_observed": len(expected_fractions),
         "r8_omitted_sections": patch["omitted_sections"],
         "currentness": "GAP",
