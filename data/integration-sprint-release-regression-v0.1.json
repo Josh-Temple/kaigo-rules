@@ -267,6 +267,45 @@
         "/services/dayrehab/remuneration",
         "/services/dayrehab/remuneration/guidance"
       ]
+    },
+    {
+      "id": "IR-16",
+      "coverage": "service_isolation",
+      "title": "dayrehab search crosses remuneration and fee-guidance without leaving service context",
+      "path": "/services/dayrehab/search?q=入浴介助",
+      "expect_status": 200,
+      "contains_text": [
+        "通所リハビリテーションを横断検索",
+        "報酬基準",
+        "算定上の留意事項",
+        "入浴介助加算",
+        "原資料との機械照合済み",
+        "現行性GAP",
+        "人手確認未実施"
+      ],
+      "href_contains": [
+        "/services/dayrehab/remuneration#",
+        "/services/dayrehab/remuneration/guidance#R6-8-12"
+      ]
+    },
+    {
+      "id": "IR-17",
+      "coverage": "service_isolation",
+      "title": "dayrehab search crosses Ordinance 37 and historical interpretation notice",
+      "path": "/services/dayrehab/search?q=管理者",
+      "expect_status": 200,
+      "contains_text": [
+        "基準省令",
+        "基準解釈通知",
+        "第百十六条",
+        "管理者等の責務",
+        "公式旧HTML",
+        "現行性GAP"
+      ],
+      "href_contains": [
+        "/services/dayrehab/rules/116",
+        "/services/dayrehab/notices#dayrehab.rouki25.3.2"
+      ]
     }
   ]
 }
