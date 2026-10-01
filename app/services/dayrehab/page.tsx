@@ -31,6 +31,10 @@ export default function DayrehabPage() {
       </section>
 
       <div className="entry-links">
+        <Link className="entry-row" href="/services/dayrehab/search">
+          <span>公開4レイヤーを横断検索</span>
+          <small>基準省令・解釈通知・報酬基準・算定留意事項 →</small>
+        </Link>
         <Link className="entry-row" href="/services/dayrehab/rules">
           <span>基準省令と第119条の準用関係を見る</span>
           <small>直接11条 + 準用25条 →</small>
