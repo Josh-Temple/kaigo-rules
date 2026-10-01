@@ -165,8 +165,9 @@ test("C4 nurse-staffing notice resolves to its explicit official source, not a g
   assert.ok(interpretationSource);
   assert.equal(
     interpretationSource.url,
-    "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+    "https://www.mhlw.go.jp/content/12300000/000869798.pdf#page=30",
   );
   assert.equal(interpretationSource.publisher, "厚生労働省");
   assert.equal(interpretationSource.status, "partial_source");
 });
+
