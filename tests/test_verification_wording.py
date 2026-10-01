@@ -33,7 +33,7 @@ class VerificationWordingTest(unittest.TestCase):
         self.assertIn("FAQの確認状態と、根拠資料全体の確認状態は別です。", detail)
         self.assertIn("各根拠資料の現行性", detail)
 
-    def test_dayservice_rule_counts_exclude_homevisit_only_articles(self):
+    def test_global_rules_db_preserves_shared_corpus_and_service_filter_contract(self):
         nodes = json.loads((ROOT / "data/ordinance37-nodes.json").read_text(encoding="utf-8"))
         meta = json.loads((ROOT / "data/ordinance37-meta.json").read_text(encoding="utf-8"))
         rules_page = (ROOT / "app/rules/page.tsx").read_text(encoding="utf-8")
@@ -59,13 +59,15 @@ class VerificationWordingTest(unittest.TestCase):
 
         self.assertIn("共有コーパスノード", rules_page)
         self.assertIn("共有コーパス条文", rules_page)
-        self.assertIn("通所介護対象条文", rules_page)
-        self.assertIn("dayServiceArticles.length", rules_page)
+        self.assertIn("表示中の条文", rules_page)
+        self.assertIn("selectedServiceId", rules_page)
+        self.assertIn("filterRecordsForService(", rules_page)
+        self.assertIn(": articles;", rules_page)
+        self.assertIn("すべて", rules_page)
+        self.assertIn("公開中サービスフィルタ", rules_page)
+        self.assertNotIn("通所介護対象条文", rules_page)
+        self.assertNotIn("dayServiceArticles.length", rules_page)
         self.assertNotIn("全182ノード", rules_page)
-        self.assertNotIn(
-            "(review.reviewed_articles || []).length} / {meta.counts.articles_total",
-            rules_page,
-        )
 
 
 if __name__ == "__main__":

@@ -82,7 +82,7 @@ test("day-service article count uses the canonical service-scope contract", () =
   );
 });
 
-test("rules UI distinguishes shared corpus totals from day-service totals", () => {
+test("rules UI defaults to shared corpus totals and applies service scope only when selected", () => {
   const source = fs.readFileSync(
     path.join(ROOT, "app/rules/page.tsx"),
     "utf8",
@@ -91,11 +91,12 @@ test("rules UI distinguishes shared corpus totals from day-service totals", () =
   assert.match(source, /filterRecordsForService\(/);
   assert.match(source, /共有コーパスノード/);
   assert.match(source, /共有コーパス条文/);
-  assert.match(source, /通所介護対象条文/);
-  assert.match(source, /dayServiceArticles\.length/);
+  assert.match(source, /表示中の条文/);
+  assert.match(source, /selectedServiceId[\s\S]*\? filterRecordsForService\(/);
+  assert.match(source, /: articles;/);
+  assert.match(source, /すべて/);
+  assert.match(source, /公開中サービスフィルタ/);
+  assert.doesNotMatch(source, /通所介護対象条文/);
+  assert.doesNotMatch(source, /dayServiceArticles\.length/);
   assert.doesNotMatch(source, /全182ノード/);
-  assert.doesNotMatch(
-    source,
-    /reviewed_articles \|\| \[\]\)\.length} \/ \{meta\.counts\.articles_total/,
-  );
 });

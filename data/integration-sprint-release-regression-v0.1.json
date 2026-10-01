@@ -48,19 +48,24 @@
     {
       "id": "IR-01",
       "coverage": "service_isolation",
-      "title": "dayservice detail fails closed for a homevisit-only Ordinance 37 article",
+      "title": "global Ordinance 37 detail keeps homevisit-only shared-corpus articles reachable without asserting dayservice applicability",
       "path": "/rules/18",
-      "expect_status": 404
+      "expect_status": 200,
+      "contains_text": [
+        "共有法令コーパス",
+        "公開中のサービスフィルタには含まれていません"
+      ]
     },
     {
       "id": "IR-02",
       "coverage": "service_isolation",
-      "title": "shared Ordinance 37 article remains reachable for dayservice",
-      "path": "/rules/10",
+      "title": "shared Ordinance 37 article remains reachable with explicit dayservice applicability context",
+      "path": "/rules/10?service=dayservice",
       "expect_status": 200,
       "contains_text": [
         "通所介護への適用",
-        "第105条"
+        "第105条",
+        "準用"
       ]
     },
     {
@@ -77,16 +82,19 @@
     {
       "id": "IR-04",
       "coverage": "scoped_counts",
-      "title": "shared Ordinance 37 corpus counts are separated from dayservice counts",
+      "title": "global Ordinance 37 list shows the shared corpus by default",
       "path": "/rules",
       "expect_status": 200,
       "contains_text": [
         "共有コーパス条文",
-        "通所介護対象条文"
+        "表示中の条文",
+        "すべて",
+        "通所介護",
+        "通所リハビリテーション"
       ],
       "regex_text": [
         "67\\s*共有コーパス条文",
-        "40\\s*通所介護対象条文"
+        "67\\s*表示中の条文"
       ]
     },
     {
@@ -305,6 +313,49 @@
       "href_contains": [
         "/services/dayrehab/rules/116",
         "/services/dayrehab/notices#dayrehab.rouki25.3.2"
+      ]
+    },
+    {
+      "id": "IR-18",
+      "coverage": "service_isolation",
+      "title": "dayservice rules filter narrows the shared corpus to 40 applicable articles",
+      "path": "/rules?service=dayservice",
+      "expect_status": 200,
+      "contains_text": [
+        "通所介護で絞り込み中",
+        "直接規定と準用規定",
+        "40",
+        "表示中の条文"
+      ],
+      "not_contains_text": [
+        "第十八条"
+      ]
+    },
+    {
+      "id": "IR-19",
+      "coverage": "service_isolation",
+      "title": "dayrehab rules filter narrows the shared corpus to 35 locally available applicable articles",
+      "path": "/rules?service=dayrehab",
+      "expect_status": 200,
+      "contains_text": [
+        "通所リハビリテーションで絞り込み中",
+        "35",
+        "表示中の条文",
+        "第百十条",
+        "第百十九条"
+      ]
+    },
+    {
+      "id": "IR-20",
+      "coverage": "service_isolation",
+      "title": "service-filtered rule detail preserves dayrehab incorporated-scope context",
+      "path": "/rules/10?service=dayrehab",
+      "expect_status": 200,
+      "contains_text": [
+        "通所リハビリテーションの適用scope",
+        "第119条",
+        "準用",
+        "サービス別ページ"
       ]
     }
   ]

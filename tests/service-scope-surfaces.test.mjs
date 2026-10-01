@@ -135,18 +135,23 @@ test("cross-source search is wired to the scoped ordinance collection before mat
   );
 });
 
-test("ordinance detail route generation and lookup are wired to the same scope contract", () => {
+test("global ordinance detail generates the shared corpus and fails closed only when a selected service excludes the article", () => {
   const source = readText("app/rules/[article]/page.tsx");
 
   assert.match(
     source,
-    /generateStaticParams\(\)[\s\S]*filterRecordsForService\(/,
-    "static params must use the canonical scope filter",
+    /generateStaticParams\(\)[\s\S]*node_type === "article"/,
+    "global static params must cover the shared article corpus",
   );
   assert.match(
     source,
-    /const articleNode = findRecordForService\(/,
-    "detail lookup must fail closed through the canonical scope helper",
+    /selectedServiceId[\s\S]*!isRecordApplicableToService\(/,
+    "service-filtered detail must fail closed outside the selected service scope",
+  );
+  assert.match(
+    source,
+    /resolveServiceScope\("ordinance37", articleNode\.id\)/,
+    "global detail must expose committed service-scope membership",
   );
 });
 
@@ -193,4 +198,13 @@ test("Care Insurance Act detail route generation and lookup are wired to the sam
     /const root=findRecordForService\(/,
     "Care Insurance Act detail lookup must fail closed through the canonical scope helper",
   );
+});
+
+test("global rules list defaults to the shared corpus and exposes only published service filters", () => {
+  const source = readText("app/rules/page.tsx");
+  assert.match(source, /selectedServiceId[\s\S]*filterRecordsForService/);
+  assert.match(source, /: articles;/);
+  assert.match(source, /future_service_base_enabled/);
+  assert.match(source, /すべて/);
+  assert.match(source, /公開中の通所介護と通所リハビリテーション/);
 });
