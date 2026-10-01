@@ -35,6 +35,14 @@ class VisibleText(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.parts: list[str] = []
 
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag in {"br", "div", "li", "p", "section", "table", "tr"}:
+            self.parts.append("\n")
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in {"div", "li", "p", "section", "table", "tr"}:
+            self.parts.append("\n")
+
     def handle_data(self, data: str) -> None:
         self.parts.append(data)
 
@@ -108,12 +116,33 @@ def check_remuneration(rem: dict, observed: dict, differences: list[str]) -> dic
     expected_levels = [level for _ in tariff_rows for level in range(1, 6)]
     require([level for level, _ in found_rates] == expected_levels, "base tariff care-level ordering differs", differences)
 
-    note_numbers = {
-        int(value)
-        for value in re.findall(r"注\s*(\d+)(?=\s|\()", base_section)
-        if 1 <= int(value) <= 24
-    }
-    require(note_numbers == set(range(1, 25)), "source-visible note marker set is not 注1–注24", differences)
+    # MHLW's HTML renders a standalone 注 heading followed by numbered block
+    # paragraphs (1 ... 24); only the first number is directly adjacent to 注.
+    lines = observed["rem_base_lines"]
+    try:
+        note_heading = next(index for index, line in enumerate(lines) if line == "注")
+        note_lines = lines[note_heading + 1:]
+        observed_note_numbers: list[int] = []
+        expected_number = 1
+        for line in note_lines:
+            marker = re.match(r"^(\d{1,2})\s+.+$", line)
+            if not marker:
+                continue
+            number = int(marker.group(1))
+            if number == expected_number:
+                observed_note_numbers.append(number)
+                expected_number += 1
+                if expected_number == 25:
+                    break
+            elif expected_number < number <= 24:
+                break
+    except StopIteration:
+        observed_note_numbers = []
+    require(
+        observed_note_numbers == list(range(1, 25)),
+        "source-visible numbered note block is not the ordered sequence 1–24",
+        differences,
+    )
     for marker in ("ハ", "ニ", "ホ", "ヘ"):
         require(marker in base_section, f"source-visible additional item {marker} is missing", differences)
     require("短期入所生活介護費" not in base_section[:-40], "fee scope crosses into section 8", differences)
@@ -202,6 +231,7 @@ def main() -> int:
     payloads = {key: fetch(url) for key, url in SOURCES.items()}
     observed = {}
     observed["rem_base_text"] = normalize(VisibleTextText(payloads["rem_base"]))
+    observed["rem_base_lines"] = VisibleTextLines(payloads["rem_base"])
     observed["rem_patch_text"] = pdf_text(payloads["rem_patch"])
     observed["guide_r6_text"] = pdf_text(payloads["guide_r6"])
     observed["guide_r8_text"] = pdf_text(payloads["guide_r8"])
@@ -247,6 +277,12 @@ def VisibleTextText(payload: bytes) -> str:
     parser = VisibleText()
     parser.feed(payload.decode("utf-8", errors="replace"))
     return " ".join(parser.parts)
+
+
+def VisibleTextLines(payload: bytes) -> list[str]:
+    parser = VisibleText()
+    parser.feed(payload.decode("utf-8", errors="replace"))
+    return [line for raw in "".join(parser.parts).splitlines() if (line := normalize(raw))]
 
 
 if __name__ == "__main__":
