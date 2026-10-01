@@ -9,7 +9,9 @@ type VerificationLayer = {
 
 const registry = registryData as { layers?: VerificationLayer[] };
 
-const statusLabel = (value?: string) => {
+const statusLabel = (value: string | undefined, kind: "content" | "currentness" | "human") => {
+  if (kind === "human" && (value === "PASS" || value === "REVIEWED")) return "人手確認済み";
+  if (kind === "currentness" && value === "PASS") return "現行性確認済み";
   const labels: Record<string, string> = {
     PASS: "原文と独立機械照合済み",
     PASS_BOUNDED_SCOPE_ONLY: "限定範囲で原文と機械照合済み",
@@ -41,15 +43,15 @@ export default function VerificationSummary({ layerId }: { layerId: string }) {
         <dl className="rule-meta">
           <div>
             <dt>本文の独立確認</dt>
-            <dd>{statusLabel(layer.content_verification?.status)}</dd>
+            <dd>{statusLabel(layer.content_verification?.status, "content")}</dd>
           </div>
           <div>
             <dt>現行性</dt>
-            <dd>{statusLabel(layer.currentness?.status)}</dd>
+            <dd>{statusLabel(layer.currentness?.status, "currentness")}</dd>
           </div>
           <div>
             <dt>人手確認</dt>
-            <dd>{statusLabel(layer.human_review?.status)}</dd>
+            <dd>{statusLabel(layer.human_review?.status, "human")}</dd>
           </div>
         </dl>
         <p className="meta">現行性調査の対象末日：{layer.currentness?.coverage_end || "レイヤーの検証記録を参照"} / 照合記録：{layer.content_verification?.evidence || "記録なし"}</p>

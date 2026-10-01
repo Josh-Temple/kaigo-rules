@@ -84,7 +84,7 @@ def main():
                 section=official.visible.split(case['article_title'],1)[1]
                 section=re.split(r'第[一二三四五六七八九十百]+条',section,1)[0]
                 require(case.get('primary_article_condition',case['expected_key_condition_or_exception']) in section,'condition not in target official article')
-                require(not any('/services/dayrehab' in x for x in faq.links if x.startswith('/rules/')),'service scope leak')
+                require(not any(x.startswith('/services/dayrehab') for x in faq.links),'service scope leak')
                 if case['slug']=='nurse-staffing':
                     qa=follow(faq,'/qa/qa.dayservice.nurse.external.2015.50')
                     require('問50' in qa.visible and '旧資料・修正あり' in qa.visible,'old QA masquerades as current')
