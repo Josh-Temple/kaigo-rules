@@ -1,0 +1,30 @@
+{
+  "format_version": 1,
+  "service_id": "homenursing",
+  "readiness": "PARTIAL_INGESTION",
+  "routing": {
+    "current_mode": "SERVICE_ROOT_RESERVED",
+    "legacy_entry_points": [],
+    "future_service_base_path": "/services/homenursing",
+    "future_service_base_enabled": false
+  },
+  "id_namespaces": {},
+  "scope_files": {},
+  "verification_layer_ids": [],
+  "publication_gate": {
+    "public_routes_enabled": false,
+    "content_ingested": false,
+    "independent_verification_complete": false,
+    "human_review_complete": false
+  },
+  "ingestion_layers": {
+    "rouki25": {
+      "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+      "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+    },
+    "work_control": {
+      "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+      "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+    }
+  }
+}
