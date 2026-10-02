@@ -573,7 +573,20 @@ def build_snapshot() -> dict[str, Any]:
         "generated_by": "scripts/build_product_value_snapshot.py",
         "metric_spec": "data/product-value-metrics-v0.1.json",
         "service_id": default_service_id,
+        "service_id_role": "default_service_for_legacy_root_families",
         "scope": {
+            "coverage": "enabled_service_routes_plus_global_public_corpora",
+            "enabled_service_ids": [
+                item["service_id"]
+                for item in service_manifest["services"]
+                if item["service_id"] == default_service_id
+                or bool(
+                    load_json(item["config"])["routing"].get(
+                        "future_service_base_enabled"
+                    )
+                )
+            ],
+            "global_public_families": ["qa_corpus_items"],
             "public_route_mode": routing.get("current_mode"),
             "service_config": service_config_path,
             "canonical_service_scope_contract": canonical_scope["contract"],

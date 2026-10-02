@@ -45,6 +45,13 @@ class GlobalQaCorpusTest(unittest.TestCase):
         self.assertIn("current_service_scope", source)
         self.assertNotIn('["16", "通所介護"]', source)
 
+    def test_database_entry_reflects_global_qa_scope(self):
+        source = (ROOT / "app/databases/page.tsx").read_text(encoding="utf-8")
+        self.assertIn("全分類で収載", source)
+        self.assertIn("全サービス分類", source)
+        self.assertNotIn("現在は共通範囲と通所系・通所介護を収載", source)
+        self.assertNotIn("対象サービスを順次拡張", source)
+
     def test_dayservice_search_and_candidate_generation_remain_scoped(self):
         search = (ROOT / "app/search/page.tsx").read_text(encoding="utf-8")
         suggest = (ROOT / "scripts/suggest-qa-links.mjs").read_text(encoding="utf-8")

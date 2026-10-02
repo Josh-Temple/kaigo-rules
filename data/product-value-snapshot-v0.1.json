@@ -3,7 +3,16 @@
   "generated_by": "scripts/build_product_value_snapshot.py",
   "metric_spec": "data/product-value-metrics-v0.1.json",
   "service_id": "dayservice",
+  "service_id_role": "default_service_for_legacy_root_families",
   "scope": {
+    "coverage": "enabled_service_routes_plus_global_public_corpora",
+    "enabled_service_ids": [
+      "dayservice",
+      "dayrehab"
+    ],
+    "global_public_families": [
+      "qa_corpus_items"
+    ],
     "public_route_mode": "LEGACY_ROOT",
     "service_config": "data/services/dayservice.json",
     "canonical_service_scope_contract": "lib/service-scope.ts",

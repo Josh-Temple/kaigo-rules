@@ -85,8 +85,24 @@ class ProductValueSnapshotTest(unittest.TestCase):
         self.assertNotIn("careact.article.8.p.2", node_ids)
         self.assertEqual(scoped["contract"], "lib/service-scope.ts")
 
-    def test_unpublished_service_is_excluded(self):
+    def test_public_scope_distinguishes_default_service_and_global_families(self):
         self.assertEqual(self.snapshot["service_id"], "dayservice")
+        self.assertEqual(
+            self.snapshot["service_id_role"],
+            "default_service_for_legacy_root_families",
+        )
+        self.assertEqual(
+            self.snapshot["scope"]["coverage"],
+            "enabled_service_routes_plus_global_public_corpora",
+        )
+        self.assertEqual(
+            self.snapshot["scope"]["enabled_service_ids"],
+            ["dayservice", "dayrehab"],
+        )
+        self.assertEqual(
+            self.snapshot["scope"]["global_public_families"],
+            ["qa_corpus_items"],
+        )
         self.assertIn("homevisit", self.snapshot["scope"]["excluded_services"])
         self.assertIn("shortstay-life", self.snapshot["scope"]["excluded_services"])
         self.assertNotIn("dayrehab", self.snapshot["scope"]["excluded_services"])
