@@ -142,8 +142,8 @@
     {
       "id": "IR-07",
       "coverage": "service_isolation",
-      "title": "Care Insurance Act Article 8 keeps dayservice paragraph 7 and excludes homevisit paragraph 2",
-      "path": "/law/8",
+      "title": "Care Insurance Act dayservice filter keeps paragraph 7 and excludes homevisit paragraph 2",
+      "path": "/law/8?service=dayservice",
       "expect_status": 200,
       "contains_text": [
         "この法律において「通所介護」とは"
@@ -155,16 +155,17 @@
     {
       "id": "IR-08",
       "coverage": "scoped_counts",
-      "title": "Care Insurance Act list uses canonical dayservice scope counts",
+      "title": "Care Insurance Act global list exposes shared-corpus counts",
       "path": "/law",
       "expect_status": 200,
       "contains_text": [
-        "対象条文",
-        "構造ノード"
+        "共有コーパス条文",
+        "共有コーパスノード",
+        "共有コーパスを全体表示中"
       ],
       "regex_text": [
-        "11\\s*対象条文",
-        "89\\s*構造ノード"
+        "11\\s*共有コーパス条文",
+        "137\\s*共有コーパスノード"
       ]
     },
     {
@@ -416,6 +417,17 @@
       "not_contains_text": [
         "VERIFIED_CURRENT",
         "HUMAN_VERIFIED"
+      ]
+    },
+    {
+      "id": "IR-24",
+      "coverage": "service_isolation",
+      "title": "Care Insurance Act global Article 8 keeps multiple service definitions in the shared corpus",
+      "path": "/law/8",
+      "expect_status": 200,
+      "contains_text": [
+        "この法律において「通所介護」とは",
+        "この法律において「訪問介護」とは"
       ]
     }
   ]
