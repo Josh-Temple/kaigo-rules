@@ -55,13 +55,12 @@ const expandTerm = (term: string) => {
   return group ? group.map((item) => normalize(item)) : [normalized];
 };
 
-const serviceOptions = [
+const serviceOptions: Array<[string, string]> = [
   ["", "すべて"],
-  ["16", "通所介護"],
-  ["06", "通所系共通"],
-  ["02", "居宅サービス共通"],
-  ["01", "全サービス共通"],
-] as const;
+  ...Object.entries(qaMeta.scope_by_code || {})
+    .sort(([a], [b]) => Number(a) - Number(b))
+    .map(([code, label]) => [code, String(label)] as [string, string]),
+];
 
 export default async function QaPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
@@ -122,15 +121,15 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
       <p className="eyebrow">MHLW Q&A CORPUS</p>
       <h1>国Q&A DB</h1>
       <p className="lead">
-        厚生労働省の介護サービス関係Q&Aを、現在取り込み済みの範囲から横断検索します。
-        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を収載しており、対象サービスは順次拡張します。
+        厚生労働省の介護サービス関係Q&Aを、公式XLSXのサービス分類を保ったまま横断検索します。
+        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を収載しています。
       </p>
 
       <div className="notice">
-        <strong>現在の収載範囲は、全サービス共通・居宅サービス共通・通所系共通・通所介護です。</strong>
+        <strong>公式Q&A集でサービス種別コードが付いたQ&Aを、サービス横断で収載します。</strong>
         <br />
-        これはQ&A全件の収載完了を意味しません。また「収載」と「現行性確認」は別で、
-        個々のQ&Aが現在の法令・通知でも有効かは未確認のものを含みます。
+        「収載」と「現行性確認」は別です。個々のQ&Aが現在の法令・通知でも有効かは
+        未確認のものを含み、回答ページの根拠として使うものは別途確認します。
       </div>
 
       <VerificationSummary layerId="qa-corpus" />
@@ -201,8 +200,8 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         <h2>現在の収載範囲</h2>
         <p>
           公式XLSXの {qaMeta.rows_scanned?.toLocaleString("ja-JP")} 行を走査し、
-          現時点では「全サービス共通」「居宅サービス共通」「通所系共通」「通所介護」を収載しています。
-          全体版に向け、同じ公式データから対象サービスを順次追加します。
+          サービス種別コードを持つQ&Aを全分類で収載しています。
+          サービス分類は公式XLSXの表記を保持し、画面の対象範囲フィルターもこのメタデータから生成します。
         </p>
         <dl>
           {serviceOptions.filter(([code]) => code).map(([code, label]) => (
