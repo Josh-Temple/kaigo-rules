@@ -10,8 +10,8 @@
       "CURATED_QA": 1,
       "NOTICE": 7,
       "OFFICIAL_SOURCE_REGISTRY": 1,
-      "ORDINANCE_CANONICAL_NODE": 22,
-      "ORDINANCE_LEGACY_VERIFIED_NODE": 28
+      "ORDINANCE_CANONICAL_NODE": 49,
+      "ORDINANCE_LEGACY_VERIFIED_NODE": 1
     }
   },
   "review_contract": {
@@ -534,7 +534,7 @@
           "notice.dayservice.operation"
         ],
         "excerpt_kind": "editorial_summary_not_primary_text",
-        "excerpt": "",
+        "excerpt": "運営に関する基準",
         "source_url": null,
         "source_locator": "通所介護 > 運営に関する基準",
         "text_hashes": []
@@ -569,7 +569,7 @@
           "notice.dayservice.operation"
         ],
         "excerpt_kind": "editorial_summary_not_primary_text",
-        "excerpt": "",
+        "excerpt": "運営に関する基準",
         "source_url": null,
         "source_locator": "通所介護 > 運営に関する基準",
         "text_hashes": []
@@ -604,7 +604,7 @@
           "notice.dayservice.personnel"
         ],
         "excerpt_kind": "editorial_summary_not_primary_text",
-        "excerpt": "",
+        "excerpt": "人員に関する基準",
         "source_url": null,
         "source_locator": "通所介護 > 人員に関する基準",
         "text_hashes": []
@@ -639,7 +639,7 @@
           "notice.dayservice.personnel"
         ],
         "excerpt_kind": "editorial_summary_not_primary_text",
-        "excerpt": "",
+        "excerpt": "人員に関する基準",
         "source_url": null,
         "source_locator": "通所介護 > 人員に関する基準",
         "text_hashes": []
@@ -785,7 +785,7 @@
           "notice.dayservice.root"
         ],
         "excerpt_kind": "editorial_summary_not_primary_text",
-        "excerpt": "",
+        "excerpt": "通所介護",
         "source_url": null,
         "source_locator": "通所介護",
         "text_hashes": []
@@ -820,7 +820,7 @@
           "notice.dayservice.root"
         ],
         "excerpt_kind": "editorial_summary_not_primary_text",
-        "excerpt": "",
+        "excerpt": "通所介護",
         "source_url": null,
         "source_locator": "通所介護",
         "text_hashes": []
@@ -960,15 +960,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article101.3"
+          "ordinance37.article.101.p.3"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "指定通所介護事業者は、通所介護従業者の資質の向上のために、その研修の機会を確保しなければならない。その際、一定の資格を有する者等を除く全ての通所介護従業者に対し、認知症介護に係る基礎的な研修を受講させるために必要な措置を講じなければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第101条 > 第3項",
-        "text_hashes": []
+        "excerpt": "指定通所介護事業者は、通所介護従業者の資質の向上のために、その研修の機会を確保しなければならない。 その際、当該指定通所介護事業者は、全ての通所介護従業者（看護師、准看護師、介護福祉士、介護支援専門員、法第八条第二項に規定する政令で定める者等の資格を有する者その他これに類する者を除く。）に対し、認知症介護に係る基礎的な研修を受講させるために必要な措置を講じなければならない。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （勤務体制の確保等） ＞ 第百一条 第3項",
+        "text_hashes": [
+          "782a89ef4d26c44ceaf7fbf6de1437d62f59e2169845854dc15d9b4c739ac8bc"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -993,15 +995,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article104.2.3"
+          "ordinance37.article.104.p.2.i.3"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "当該指定通所介護事業所において、通所介護従業者に対し、感染症の予防及びまん延の防止のための研修及び訓練を定期的に実施すること。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第104条 > 第2項 > 第3号",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （衛生管理等） ＞ 第百四条 第2項 三",
+        "text_hashes": [
+          "7f8328561e18dff9ab7aeb70a17a476df94bddb081bb2a2a4241c8684ef34225"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1026,15 +1030,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article30-2.2"
+          "ordinance37.article.30-2.p.2"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "事業者は、従業者に対し、業務継続計画について周知するとともに、必要な研修及び訓練を定期的に実施しなければならない。",
-        "source_url": null,
-        "source_locator": "第2章 訪問介護 > 第30条の2 > 第2項 > 通所介護に第105条で準用",
-        "text_hashes": []
+        "excerpt": "指定訪問介護事業者は、訪問介護員等に対し、業務継続計画について周知するとともに、必要な研修及び訓練を定期的に実施しなければならない。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二 第2項",
+        "text_hashes": [
+          "7f82a1831719c0795e569c88615d03123d8dc7dde8528346891bfc2c5a25ef4d"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1059,15 +1065,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article37-2.3"
+          "ordinance37.article.37-2.p.1.i.3"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "事業所において、従業者に対し、虐待の防止のための研修を定期的に実施すること。",
-        "source_url": null,
-        "source_locator": "第2章 訪問介護 > 第37条の2 > 第3号 > 通所介護に第105条で準用",
-        "text_hashes": []
+        "excerpt": "当該指定訪問介護事業所において、訪問介護員等に対し、虐待の防止のための研修を定期的に実施すること。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （虐待の防止） ＞ 第三十七条の二 第1項 三",
+        "text_hashes": [
+          "7396a3121ac12ca309bb43a51f9f7a0ed3e3cd4279ad59fb927ec6a6abad2aa5"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1092,15 +1100,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article105"
+          "ordinance37.article.105"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第105条",
-        "text_hashes": []
+        "excerpt": "（準用） 第百五条 第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。 この場合において、第八条第一項中「第二十九条」とあるのは「第百条」と、同項、第二十七条、第三十条の二第二項、第三十二条第一項並びに第三十七条の二第一号及び第三号中「訪問介護員等」とあるのは「通所介護従業者」と読み替えるものとする。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+        "text_hashes": [
+          "22bfdcd6187d65aab33521800b9659b157dbae62433e19cb834cd36052e50c40"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1158,15 +1168,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article30-2.2"
+          "ordinance37.article.30-2.p.2"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "事業者は、従業者に対し、業務継続計画について周知するとともに、必要な研修及び訓練を定期的に実施しなければならない。",
-        "source_url": null,
-        "source_locator": "第2章 訪問介護 > 第30条の2 > 第2項 > 通所介護に第105条で準用",
-        "text_hashes": []
+        "excerpt": "指定訪問介護事業者は、訪問介護員等に対し、業務継続計画について周知するとともに、必要な研修及び訓練を定期的に実施しなければならない。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二 第2項",
+        "text_hashes": [
+          "7f82a1831719c0795e569c88615d03123d8dc7dde8528346891bfc2c5a25ef4d"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1191,15 +1203,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.2"
+          "ordinance37.article.99.p.2"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "通所介護計画は、既に居宅サービス計画が作成されている場合は、当該居宅サービス計画の内容に沿って作成しなければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第2項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第2項",
+        "text_hashes": [
+          "1181337990ad9b486366135e595b48f0f028feefcdac792f8cbbde837b3070de"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1224,15 +1238,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.1"
+          "ordinance37.article.99.p.1"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "指定通所介護事業所の管理者は、利用者の心身の状況、希望及びその置かれている環境を踏まえて、機能訓練等の目標、当該目標を達成するための具体的なサービスの内容等を記載した通所介護計画を作成しなければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第1項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第1項",
+        "text_hashes": [
+          "f5868b9133eceec330d6ae3d537dd11f8084b716968cb6c82fd1f58f6ee46099"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1257,15 +1273,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.3"
+          "ordinance37.article.99.p.3"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第3項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+        "text_hashes": [
+          "879b7562de5f239fe36f727aeac4daa895999de0b3efcd72d3d4bb7d574c6f95"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1290,15 +1308,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.4"
+          "ordinance37.article.99.p.4"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第4項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+        "text_hashes": [
+          "7aef7291f5055ce5d7b3b1e9d5ec7dd8347d4973a46ee10dc6e19dee992902cf"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1323,15 +1343,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.5"
+          "ordinance37.article.99.p.5"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "通所介護従業者は、それぞれの利用者について、通所介護計画に従ったサービスの実施状況及び目標の達成状況の記録を行う。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第5項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第5項",
+        "text_hashes": [
+          "eca5e83d792ba528484eb9590aeb99eb0d37e5b9326f204158defd5e08d80384"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1356,15 +1378,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.3"
+          "ordinance37.article.99.p.3"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第3項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+        "text_hashes": [
+          "879b7562de5f239fe36f727aeac4daa895999de0b3efcd72d3d4bb7d574c6f95"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1389,15 +1413,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.4"
+          "ordinance37.article.99.p.4"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第4項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+        "text_hashes": [
+          "7aef7291f5055ce5d7b3b1e9d5ec7dd8347d4973a46ee10dc6e19dee992902cf"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1422,15 +1448,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.3"
+          "ordinance37.article.99.p.3"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "指定通所介護事業所の管理者は、通所介護計画の作成に当たっては、その内容について利用者又はその家族に対して説明し、利用者の同意を得なければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第3項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+        "text_hashes": [
+          "879b7562de5f239fe36f727aeac4daa895999de0b3efcd72d3d4bb7d574c6f95"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1488,15 +1516,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article99.4"
+          "ordinance37.article.99.p.4"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "指定通所介護事業所の管理者は、通所介護計画を作成した際には、当該通所介護計画を利用者に交付しなければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第99条 > 第4項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+        "text_hashes": [
+          "7aef7291f5055ce5d7b3b1e9d5ec7dd8347d4973a46ee10dc6e19dee992902cf"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1521,15 +1551,19 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article95.1-2"
+          "ordinance37.article.95.p.1",
+          "ordinance37.article.95.p.2"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "指定通所介護事業所は、食堂、機能訓練室、静養室、相談室及び事務室を有するほか、消火設備その他の非常災害に際して必要な設備並びに指定通所介護の提供に必要なその他の設備及び備品等を備えなければならない。食堂及び機能訓練室は、それぞれ必要な広さを有するものとし、その合計した面積は、三平方メートルに当該指定通所介護事業所の利用定員を乗じて得た面積以上とする。食事の提供及び機能訓練の実施にそれぞれ支障がない広さを確保できる場合は、同一の場所とすることができる。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第3節 設備に関する基準 > 第95条 > 第1項・第2項",
-        "text_hashes": []
+        "excerpt": "指定通所介護事業所は、食堂、機能訓練室、静養室、相談室及び事務室を有するほか、消火設備その他の非常災害に際して必要な設備並びに指定通所介護の提供に必要なその他の設備及び備品等を備えなければならない。 前項に掲げる設備の基準は、次のとおりとする。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条 第1項 | 第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条 第2項",
+        "text_hashes": [
+          "41ffde2ccdadcd54693cc53602346680c36236fc8ecf24f84013a0a1b3f43c43",
+          "53dfa32992b469f72dab3ff59683486fd7756ff6ef51687d25984f17828b15a6"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1554,15 +1588,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article8.1"
+          "ordinance37.article.8.p.1"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "提供の開始に際し、あらかじめ、利用申込者又はその家族に対し、運営規程の概要、従業者の勤務の体制その他の利用申込者のサービスの選択に資すると認められる重要事項を記した文書を交付して説明を行い、当該提供の開始について利用申込者の同意を得なければならない。",
-        "source_url": null,
-        "source_locator": "第2章 訪問介護 > 第8条 > 第1項 > 通所介護に第105条で準用",
-        "text_hashes": []
+        "excerpt": "指定訪問介護事業者は、指定訪問介護の提供の開始に際し、あらかじめ、利用申込者又はその家族に対し、第二十九条に規定する運営規程の概要、訪問介護員等の勤務の体制その他の利用申込者のサービスの選択に資すると認められる重要事項を記した文書を交付して説明を行い、当該提供の開始について利用申込者の同意を得なければならない。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （内容及び手続の説明及び同意） ＞ 第八条 第1項",
+        "text_hashes": [
+          "a88d3b408ada44c35e8f4c22499e861a676a69d05bbce13fa9696fe3d340504c"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1587,15 +1623,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article105"
+          "ordinance37.article.105"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第105条",
-        "text_hashes": []
+        "excerpt": "（準用） 第百五条 第八条から第十七条まで、第十九条、第二十一条、第二十六条、第二十七条、第三十条の二、第三十二条から第三十四条まで、第三十五条、第三十六条、第三十七条の二、第三十八条及び第五十二条の規定は、指定通所介護の事業について準用する。 この場合において、第八条第一項中「第二十九条」とあるのは「第百条」と、同項、第二十七条、第三十条の二第二項、第三十二条第一項並びに第三十七条の二第一号及び第三号中「訪問介護員等」とあるのは「通所介護従業者」と読み替えるものとする。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+        "text_hashes": [
+          "22bfdcd6187d65aab33521800b9659b157dbae62433e19cb834cd36052e50c40"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1653,15 +1691,21 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article32.1-3"
+          "ordinance37.article.32.p.1",
+          "ordinance37.article.32.p.2",
+          "ordinance37.article.32.p.3"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "事業所の見やすい場所に、運営規程の概要、従業者の勤務の体制その他の利用申込者のサービスの選択に資すると認められる重要事項を掲示しなければならない。重要事項を記載した書面を事業所に備え付け、関係者に自由に閲覧させることにより掲示に代えることができる。原則として、重要事項をウェブサイトに掲載しなければならない。",
-        "source_url": null,
-        "source_locator": "第2章 訪問介護 > 第32条 > 第1項〜第3項 > 通所介護に第105条で準用",
-        "text_hashes": []
+        "excerpt": "指定訪問介護事業者は、指定訪問介護事業所の見やすい場所に、運営規程の概要、訪問介護員等の勤務の体制その他の利用申込者のサービスの選択に資すると認められる重要事項（以下この条において単に「重要事項」という。）を掲示しなければならない。 指定訪問介護事業者は、重要事項を記載した書面を当該指定訪問介護事業所に備え付け、かつ、これをいつでも関係者に自由に閲覧させることにより、前項の規定による掲示に代えることができる。 指定訪問介護事業者は、原則として、重要事項をウェブサイトに掲載しなければならない。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第1項 | 第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第2項 | 第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第3項",
+        "text_hashes": [
+          "0e8edd4772aa0109a1bdebdb495364815e724386d0b23113394a1925b78c2c49",
+          "87dc6485cd4c6c0ecf81328983b29606994286ec5896d0b49063cacb17f6656e",
+          "ca3f46cc7615b6ffb747b32db6da6eded522bb9cff9560f7ba2e8bb9aefe4f68"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1686,15 +1730,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article93.1.1"
+          "ordinance37.article.93.p.1.i.1"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "生活相談員 指定通所介護の提供日ごとに、当該指定通所介護を提供している時間帯に生活相談員（専ら当該指定通所介護の提供に当たる者に限る。）が勤務している時間数の合計数を当該指定通所介護を提供している時間帯の時間数で除して得た数が一以上確保されるために必要と認められる数",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第2節 人員に関する基準 > 第93条 > 第1項 > 第1号",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第1項 一",
+        "text_hashes": [
+          "71b51ed92027526e92bbc7213af34d5f2d41fe8e88a8554e9d7903489f63452c"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1719,15 +1765,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article93.6"
+          "ordinance37.article.93.p.6"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "第一項の生活相談員又は介護職員のうち一人以上は、常勤でなければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第2節 人員に関する基準 > 第93条 > 第6項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第6項",
+        "text_hashes": [
+          "1fe1c0d8fef7ff759edbb2600f18a86ee356eca424cb69a2086d7b0d60618d11"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1752,15 +1800,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article94"
+          "ordinance37.article.94"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "指定通所介護事業者は、指定通所介護事業所ごとに専らその職務に従事する常勤の管理者を置かなければならない。ただし、指定通所介護事業所の管理上支障がない場合は、当該指定通所介護事業所の他の職務に従事し、又は他の事業所、施設等の職務に従事することができるものとする。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第2節 人員に関する基準 > 第94条",
-        "text_hashes": []
+        "excerpt": "（管理者） 第九十四条 指定通所介護事業者は、指定通所介護事業所ごとに専らその職務に従事する常勤の管理者を置かなければならない。 ただし、指定通所介護事業所の管理上支障がない場合は、当該指定通所介護事業所の他の職務に従事し、又は他の事業所、施設等の職務に従事することができるものとする。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+        "text_hashes": [
+          "4a9b91bbc48cde3aedd5b337a3167576b113584655f5181f20a367ea505707bc"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1818,15 +1868,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article93.3"
+          "ordinance37.article.93.p.3"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "第一項の規定にかかわらず、介護職員は、利用者の処遇に支障がない場合は、他の指定通所介護の単位の介護職員として従事することができるものとする。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第2節 人員に関する基準 > 第93条 > 第3項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第3項",
+        "text_hashes": [
+          "75b246b5d29e46b97163fcc1d0ca6f81e8af515a9dba49c72514be1b0dcf1839"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1851,15 +1903,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article93.5"
+          "ordinance37.article.93.p.5"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "第一項第四号の機能訓練指導員は、日常生活を営むのに必要な機能の減退を防止するための訓練を行う能力を有する者とし、当該指定通所介護事業所の他の職務に従事することができるものとする。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第2節 人員に関する基準 > 第93条 > 第5項",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第5項",
+        "text_hashes": [
+          "9b4a2f88697e51530d3aef6ad029e62cca01279f0af216122bd36c9f115b8ef2"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1884,15 +1938,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article94"
+          "ordinance37.article.94"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "指定通所介護事業者は、指定通所介護事業所ごとに専らその職務に従事する常勤の管理者を置かなければならない。ただし、指定通所介護事業所の管理上支障がない場合は、当該指定通所介護事業所の他の職務に従事し、又は他の事業所、施設等の職務に従事することができるものとする。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第2節 人員に関する基準 > 第94条",
-        "text_hashes": []
+        "excerpt": "（管理者） 第九十四条 指定通所介護事業者は、指定通所介護事業所ごとに専らその職務に従事する常勤の管理者を置かなければならない。 ただし、指定通所介護事業所の管理上支障がない場合は、当該指定通所介護事業所の他の職務に従事し、又は他の事業所、施設等の職務に従事することができるものとする。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+        "text_hashes": [
+          "4a9b91bbc48cde3aedd5b337a3167576b113584655f5181f20a367ea505707bc"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -1917,15 +1973,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article93.1.2"
+          "ordinance37.article.93.p.1.i.2"
         ],
         "excerpt_kind": "official_text",
         "excerpt": "看護師又は准看護師（以下この章において「看護職員」という。） 指定通所介護の単位ごとに、専ら当該指定通所介護の提供に当たる看護職員が一以上確保されるために必要と認められる数",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第2節 人員に関する基準 > 第93条 > 第1項 > 第2号",
-        "text_hashes": []
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第1項 二",
+        "text_hashes": [
+          "f2d031018dc734926c4c068c32504b5e159fd69c5dd1319bf85d8b956dd41ef8"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
@@ -2016,15 +2074,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article100"
+          "ordinance37.article.100"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "運営規程には、①事業の目的及び運営の方針、②従業者の職種・員数・職務の内容、③営業日及び営業時間、④利用定員、⑤通所介護の内容及び利用料その他の費用の額、⑥通常の事業の実施地域、⑦サービス利用に当たっての留意事項、⑧緊急時等における対応方法、⑨非常災害対策、⑩虐待の防止のための措置に関する事項、⑪その他運営に関する重要事項を定めておかなければならない。",
-        "source_url": null,
-        "source_locator": "第7章 通所介護 > 第4節 運営に関する基準 > 第100条",
-        "text_hashes": []
+        "excerpt": "（運営規程） 第百条 指定通所介護事業者は、指定通所介護事業所ごとに、次に掲げる事業の運営についての重要事項に関する規程（以下この章（第五節を除く。）において「運営規程」という。）を定めておかなければならない。 一 事業の目的及び運営の方針 二 従業者の職種、員数及び職務の内容 三 営業日及び営業時間 四 指定通所介護の利用定員 五 指定通所介護の内容及び利用料その他の費用の額 六 通常の事業の実施地域 七 サービス利用に当たっての留意事項 八 緊急時等における対応方法 九 非常災害対策 十 虐待の防止のための措置に関する事項 十一 その他運営に関する重要事項",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （運営規程） ＞ 第百条",
+        "text_hashes": [
+          "00abbc47eb5ef1cdf28d824330d1dff026bc8c0f946bc1c57272b686c26263e3"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
