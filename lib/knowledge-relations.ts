@@ -13,6 +13,7 @@ import crossLayerAuditData from "../data/cross-layer-source-chain-independent-au
 import remunerationAuditData from "../data/remuneration-delegation-relation-independent-audit.json";
 import remunerationSourceLinkDerivedAuditData from "../data/remuneration-source-link-derived-audit.json";
 import feeGuidanceRelationAuditData from "../data/fee-guidance-relation-independent-audit.json";
+import noticeExplicitReferenceAuditData from "../data/notice-ordinance-explicit-reference-derived-audit.json";
 import dayrehabArticle119AuditData from "../data/dayrehab-article119-relation-independent-audit.json";
 import registryData from "../data/verification-registry.json";
 
@@ -153,6 +154,17 @@ for (const check of feeGuidanceRelationAudit.checks || []) {
     check.relation,
     check.to_fee_id,
     "fee-guidance-to-remuneration"
+  );
+}
+
+const noticeExplicitReferenceAudit = noticeExplicitReferenceAuditData as any;
+for (const check of noticeExplicitReferenceAudit.checks || []) {
+  if (check.result !== "PASS" || (check.differences || []).length) continue;
+  addVerified(
+    check.from_notice_id,
+    check.relation,
+    check.to_ordinance_id,
+    "notice-ordinance-explicit-reference"
   );
 }
 
