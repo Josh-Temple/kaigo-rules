@@ -33,7 +33,7 @@ export default function OverviewPage() {
         <h2>制度からたどる</h2>
         <div className="foundation-list">
           {sourceRows.map((row) => (
-            <div className="foundation-row" key={row.number}>
+            <div className="foundation-row foundation-row-static" key={row.number}>
               <span className="foundation-number">{row.number}</span>
               <span className="foundation-main">
                 <strong>{row.title}</strong>
