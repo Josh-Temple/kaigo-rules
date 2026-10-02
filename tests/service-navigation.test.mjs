@@ -9,6 +9,8 @@ test("global navigation is service-neutral", () => {
 
   assert.match(source, /サイト共通ナビゲーション/);
   assert.match(source, /サービス別/);
+  assert.match(source, /基準DB/);
+  assert.match(source, /通知DB/);
   assert.match(source, /制度の見取り図/);
   assert.match(source, /根拠資料/);
   assert.doesNotMatch(source, /通所介護|通所リハビリテーション|通所リハ/);
