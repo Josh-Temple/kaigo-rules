@@ -137,6 +137,7 @@ export default async function SearchPage({
           [
             item.scope,
             item.service_label,
+            item.current_service_scope,
             item.standard_label,
             item.topic,
             item.question,
