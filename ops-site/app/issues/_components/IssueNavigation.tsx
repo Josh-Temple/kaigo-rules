@@ -2,7 +2,7 @@ import { issueRegistry } from "../registry";
 
 export default function IssueNavigation({ current }: { current: string }) {
   return (
-    <nav className="issueNav" aria-label="公開Issue">
+    <nav className="issueNav" aria-label="公開中の困りごと">
       {issueRegistry.map((issue) => (
         <a
           key={issue.href}

@@ -77,7 +77,7 @@ export default function InformationSearchIssuePage() {
 
       <article className="issueDetail">
         <section className="issueHero">
-          <p className="eyebrow">Issue 01 / Information search</p>
+          <p className="eyebrow">困りごと 01</p>
           <h1>必要な情報を探すのに<br />時間がかかる。</h1>
           <p className="lead">
             制度、通知、Q&A、マニュアル、事業所内資料。情報が増えるほど、
@@ -92,7 +92,7 @@ export default function InformationSearchIssuePage() {
         </section>
 
         <section className="section issueSummary">
-          <p className="eyebrow">Conclusion</p>
+          <p className="eyebrow">結論</p>
           <h2>先に整えるのは、AIではなく情報の土台です。</h2>
           <p className="summaryLead">
             現時点の調査では、情報探索の負担は「検索が弱い」だけでは説明できません。
@@ -106,7 +106,7 @@ export default function InformationSearchIssuePage() {
 
         <section className="section">
           <div className="sectionHead">
-            <p className="eyebrow">What the evidence suggests</p>
+            <p className="eyebrow">根拠から分かること</p>
             <h2>見えてきた三つの論点</h2>
             <p>数値は効果を一般化するためではなく、問題の所在を把握する材料として扱います。</p>
           </div>
@@ -148,28 +148,28 @@ export default function InformationSearchIssuePage() {
         <section className="section">
           <div className="sectionHead">
             <p className="eyebrow">Machine evaluation</p>
-            <h2>固定30クエリでは、productionの検索導線を再現できました。</h2>
+            <h2>固定30クエリでは、本番環境の検索導線を再現できました。</h2>
             <p>
-              固定10問について、それぞれ3種類の言い換えを用いたMachine Retrieval Benchmarkをproductionで実行しました。
-              更新後productionでは、検索hit・top-3 hit・full passが30/30、context integrityが10/10でした。
+              固定10問について、それぞれ3種類の言い換えを用いた機械検索の再現性評価を本番環境で実行しました。
+              更新後本番環境では、検索成功・上位3件への到達・全項目の成功が30/30、参照情報の完全性が10/10でした。
             </p>
           </div>
           <div className="findingList">
             <div className="findingRow">
               <span className="findingLabel">30/30</span>
               <div>
-                <h3>検索hit / top-3 / full pass</h3>
+                <h3>検索成功・上位3件への到達・全項目の成功</h3>
                 <p>
-                  固定benchmarkでは、対象ページへの検索導線と必要な構造化contextの取得が全queryで成立しました。
+                  固定評価セットでは、対象ページへの検索導線と必要な構造化参照情報の取得が全検索語で成立しました。
                 </p>
               </div>
             </div>
             <div className="findingRow">
               <span className="findingLabel">10/10</span>
               <div>
-                <h3>Context integrity</h3>
+                <h3>参照情報の完全性</h3>
                 <p>
-                  10問すべてでcanonical sourceを含む必要なcontextが保持されました。
+                  10問すべてで正式な原典を含む必要な参照情報が保持されました。
                 </p>
               </div>
             </div>
@@ -178,7 +178,7 @@ export default function InformationSearchIssuePage() {
               <div>
                 <h3>人間の探索時間・使いやすさ</h3>
                 <p>
-                  人間によるField Validationはまだ実施していません。この結果から「探索時間を短縮した」「業務効率が上がった」とは判断しません。
+                  人間による人間による現場検証はまだ実施していません。この結果から「探索時間を短縮した」「業務効率が上がった」とは判断しません。
                 </p>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function InformationSearchIssuePage() {
         </section>
 
         <section className="section experiment">
-          <p className="eyebrow">Small experiment</p>
+          <p className="eyebrow">小さく試す</p>
           <h2>自分の現場では、よく聞かれる10問から測れます。</h2>
           <p>
             まず、職員や事業所から繰り返し出る質問を10問程度選びます。
@@ -218,7 +218,7 @@ export default function InformationSearchIssuePage() {
         </section>
 
         <section className="section boundary">
-          <p className="eyebrow">Safety boundary</p>
+          <p className="eyebrow">運用上の注意</p>
           <h2>制度情報は、検証状態を確認して使います。</h2>
           <p>
             介護ルールでは、機械取込・独立監査・人手確認を分けて管理しています。
@@ -232,7 +232,7 @@ export default function InformationSearchIssuePage() {
 
         <section className="section" id="evidence">
           <div className="sectionHead">
-            <p className="eyebrow">Evidence</p>
+            <p className="eyebrow">根拠</p>
             <h2>主な根拠</h2>
             <p>
               調査では国内外の資料を比較しています。ここでは、このページの主要な判断に使った資料を示します。
@@ -253,23 +253,23 @@ export default function InformationSearchIssuePage() {
         </section>
 
         <section className="section nextIssue">
-          <p className="eyebrow">What we still do not know</p>
+          <p className="eyebrow">まだ分からないこと</p>
           <h2>まだ結論を出していないこと</h2>
           <ul>
-            <li>固定benchmark以外の実利用queryでも同じ検索性能が再現するか。</li>
+            <li>固定評価セット以外の実利用検索語でも同じ検索性能が再現するか。</li>
             <li>Kaigo Rulesを使うことで、人間が正しい原典へ到達する時間が短くなるか。</li>
             <li>操作負担や使いやすさが改善するか。</li>
             <li>AI検索が、よく設計された通常検索より実務上優れる領域はどこか。</li>
             <li>小規模事業所でも費用対効果が成立するか。</li>
           </ul>
           <p>
-            ここは推測で埋めず、独立した将来queryや、参加者を確保できた場合のField Validationで確認します。
+            ここは推測で埋めず、独立した将来検索語や、参加者を確保できた場合の人間による現場検証で確認します。
           </p>
         </section>
       </article>
 
       <footer>
-        <span>介護業務改善 — evidence-informed prototype</span>
+        <span>介護業務改善 — 根拠に基づく試作版</span>
         <span>最終更新: 2026-09-29</span>
       </footer>
     </main>

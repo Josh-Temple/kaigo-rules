@@ -38,7 +38,7 @@ export default function Home() {
 
       <section className="section" id="issues">
         <div className="sectionHead">
-          <p className="eyebrow">Issues</p>
+          <p className="eyebrow">困りごと</p>
           <h2>まず、現場と事業運営の困りごとから。</h2>
           <p>
             製品名やAI機能ではなく、実際に時間、コスト、判断負担が発生している仕事から整理します。
@@ -82,7 +82,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <span>介護業務改善 — evidence-informed prototype</span>
+        <span>介護業務改善 — 根拠に基づく試作版</span>
         <span>公開情報・研究・事例をもとに、経営・運営・業務改善の判断材料を整理します。</span>
       </footer>
     </main>

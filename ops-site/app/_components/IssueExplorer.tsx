@@ -39,7 +39,7 @@ export default function IssueExplorer() {
           />
         </label>
 
-        <div className="issueFilters" aria-label="Issue分類">
+        <div className="issueFilters" aria-label="困りごとの分類">
           {(["すべて", ...issueGroups] as GroupFilter[]).map((item) => (
             <button
               key={item}
@@ -55,7 +55,7 @@ export default function IssueExplorer() {
       </div>
 
       <p className="issueResultCount" aria-live="polite">
-        {filteredIssues.length} / {issueRegistry.length} Issue
+        {filteredIssues.length} / {issueRegistry.length} 件
       </p>
 
       <div className="issueList">
@@ -78,9 +78,12 @@ export default function IssueExplorer() {
       </div>
 
       {filteredIssues.length === 0 ? (
-        <p className="issueEmpty">
-          該当するIssueはありません。検索語を短くするか、「すべて」に戻してください。
-        </p>
+        <div className="issueEmpty">
+          <p>
+          該当する困りごとはありません。検索語を短くするか、「すべて」に戻してください。
+          </p>
+          <button type="button" className="issueFilter" onClick={() => { setQuery(""); setGroup("すべて"); }}>検索・分類をリセット</button>
+        </div>
       ) : null}
     </div>
   );
