@@ -152,6 +152,9 @@ export default async function DatabaseSearchPage({
             <p><strong>{total.toLocaleString("ja-JP")}件</strong> 見つかりました</p>
             <Link href="/databases/search">条件をクリア</Link>
           </div>
+          <p className="meta">
+            各DB内では、見出し・質問文・トピックなどの直接一致を本文中の一致より優先した関連度順で表示します。
+          </p>
 
           <section className="section">
             <h2>介護保険法 <span className="meta">({lawMatches.length}条)</span></h2>
