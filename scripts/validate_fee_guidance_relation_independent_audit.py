@@ -7,6 +7,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -27,6 +28,23 @@ def load(path: Path):
 def git_blob_sha1(path: Path) -> str:
     data = path.read_bytes()
     return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
+
+
+def equivalent_source_url(left: str, right: str) -> bool:
+    if left == right:
+        return True
+    a = urlparse(left)
+    b = urlparse(right)
+    if (a.scheme, a.netloc, a.path) != (b.scheme, b.netloc, b.path):
+        return False
+    if a.path != "/web/t_doc":
+        return False
+    qa = parse_qs(a.query)
+    qb = parse_qs(b.query)
+    return (
+        qa.get("dataId") == qb.get("dataId")
+        and qa.get("dataType") == qb.get("dataType")
+    )
 
 
 def main() -> None:
@@ -54,14 +72,18 @@ def main() -> None:
         if not re.fullmatch(r"[0-9a-f]{64}", str(source.get("sha256") or "")):
             fail(f"{source_key}: invalid source SHA-256")
 
-    source_registry = {
-        row["url"]: row
+    source_registry = [
+        row
         for row in load(DATA / "sources.json")
         if isinstance(row, dict) and row.get("url")
-    }
+    ]
     for source in sources.values():
-        if source.get("url") not in source_registry:
-            fail(f"official source missing from sources registry: {source.get('url')}")
+        source_url = str(source.get("url") or "")
+        if not any(
+            equivalent_source_url(source_url, str(row.get("url") or ""))
+            for row in source_registry
+        ):
+            fail(f"official source missing from sources registry: {source_url}")
 
     safety = record.get("safety", {})
     if safety.get("human_verified") is not False:
