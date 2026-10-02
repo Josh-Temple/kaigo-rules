@@ -136,7 +136,7 @@ export default async function NoticesPage({
             href={`/notices?service=${option.service_id}`}
             key={option.service_id}
           >
-            {option.label}
+            {option.label}{option.record_count === 0 ? "（本文未収録）" : ""}
           </Link>
         ))}
       </nav>
@@ -250,7 +250,7 @@ export default async function NoticesPage({
         );
       })}
 
-      {!selectedServiceId || selectedServiceId === "dayservice" ? (
+      {!service || selectedServiceId === "dayservice" ? (
         <details className="notice-audit-details">
           <summary>通所介護22項目の再構成・監査情報</summary>
           <div className="notice-audit-body">
@@ -294,7 +294,7 @@ export default async function NoticesPage({
         </details>
       ) : null}
 
-      {!selectedServiceId || selectedServiceId === "dayrehab" ? (
+      {!service || selectedServiceId === "dayrehab" ? (
         <details className="notice-audit-details">
           <summary>通所リハ9項目の旧HTML・改正証拠</summary>
           <div className="notice-audit-body">
