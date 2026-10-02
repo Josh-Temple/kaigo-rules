@@ -48,6 +48,8 @@ def build() -> dict:
     dayrehab_article119 = load("dayrehab-article119-relation-independent-audit.json")
     dayrehab_notice = load("dayrehab-rouki25-historical-independent-audit.json")
     dayrehab_notice_data = load("services/dayrehab/rouki25-historical.generated.json")
+    homevisit_notice = load("homevisit-rouki25-historical-independent-audit.json")
+    homevisit_notice_data = load("services/homevisit/rouki25-historical.generated.json")
 
     notice_reviewed = sum(
         1
@@ -220,6 +222,33 @@ def build() -> dict:
             "assurance": "INDEPENDENT_AUDIT_PLUS_LIVE_SOURCE_REPARSE",
         },
     ]
+
+    layers.append(
+        {
+            "id": "rouki25-homevisit",
+            "title": "老企第25号 訪問介護 旧HTML 35項目",
+            "content_verification": {
+                "status": homevisit_notice["audit_result"],
+                "kind": "INDEPENDENT_HISTORICAL_SOURCE_MATCH",
+                "items": homevisit_notice["coverage"]["items_passed"],
+                "evidence": "data/homevisit-rouki25-historical-independent-audit.json",
+            },
+            "currentness": {
+                "status": "GAP_HISTORICAL_SOURCE_ONLY",
+                "note": "公式旧HTMLとの本文一致は確認済み。令和6年度新旧対照は別証拠であり、現行統合本文は未構成。",
+            },
+            "monitoring": {
+                "status": "ACTIVE",
+                "workflow": ".github/workflows/verify-homevisit-rouki25-historical-independent.yml",
+            },
+            "human_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_items": 0,
+                "total_items": homevisit_notice_data["item_count"],
+            },
+            "assurance": "HISTORICAL_SOURCE_TEXT_PASS_CURRENTNESS_GAP",
+        }
+    )
 
     layers.append(
         {
