@@ -120,17 +120,17 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
   return (
     <article className="answer-page wide-page qa-corpus-page">
       <p className="eyebrow">MHLW Q&A CORPUS</p>
-      <h1>国Q&Aを検索</h1>
+      <h1>国Q&A DB</h1>
       <p className="lead">
-        厚生労働省の介護サービス関係Q&Aから、通所介護に関係する範囲を構造化して検索できます。
-        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を収載しています。
+        厚生労働省の介護サービス関係Q&Aを、現在取り込み済みの範囲から横断検索します。
+        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を収載しており、対象サービスは順次拡張します。
       </p>
 
       <div className="notice">
-        <strong>Q&Aの「収載」と「現行性確認」は別です。</strong>
+        <strong>現在の収載範囲は、全サービス共通・居宅サービス共通・通所系共通・通所介護です。</strong>
         <br />
-        この検索結果は公式Q&A集から取り込んだ内容ですが、個々のQ&Aが現在の法令・通知でも有効かは未確認のものを含みます。
-        回答ページの根拠として使うのは、別途確認したものだけです。
+        これはQ&A全件の収載完了を意味しません。また「収載」と「現行性確認」は別で、
+        個々のQ&Aが現在の法令・通知でも有効かは未確認のものを含みます。
       </div>
 
       <VerificationSummary layerId="qa-corpus" />
@@ -198,10 +198,11 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
       ) : null}
 
       <section className="section qa-corpus-meta">
-        <h2>このデータについて</h2>
+        <h2>現在の収載範囲</h2>
         <p>
           公式XLSXの {qaMeta.rows_scanned?.toLocaleString("ja-JP")} 行を走査し、
-          「全サービス共通」「居宅サービス共通」「通所系共通」「通所介護」を抽出しています。
+          現時点では「全サービス共通」「居宅サービス共通」「通所系共通」「通所介護」を収載しています。
+          全体版に向け、同じ公式データから対象サービスを順次追加します。
         </p>
         <dl>
           {serviceOptions.filter(([code]) => code).map(([code, label]) => (
