@@ -28,6 +28,43 @@ DATA = ROOT / "data"
 META_PATH = DATA / "qa-corpus-meta.json"
 CORPUS_PATH = DATA / "qa-corpus.json"
 
+SERVICE_CODE_BY_SCOPE = {
+    "全サービス共通": "01",
+    "居宅サービス共通": "02",
+    "施設サービス共通": "03",
+    "地域密着型サービス共通": "04",
+    "訪問系サービス共通": "05",
+    "通所系サービス共通": "06",
+    "訪問介護事業": "11",
+    "訪問入浴介護事業": "12",
+    "訪問看護事業": "13",
+    "訪問リハビリテーション事業": "14",
+    "居宅療養管理指導事業": "15",
+    "通所介護事業": "16",
+    "通所リハビリテーション事業": "17",
+    "短期入所生活介護事業": "18",
+    "短期入所療養介護事業": "19",
+    "特定施設入居者生活介護事業": "20",
+    "福祉用具貸与事業": "21",
+    "特定福祉用具販売事業": "22",
+    "居宅介護支援事業": "23",
+    "介護老人福祉施設": "24",
+    "介護老人保健施設": "25",
+    "介護療養型医療施設": "26",
+    "住宅改修": "27",
+    "定期巡回・随時対応型訪問介護看護事業": "40",
+    "夜間対応型訪問介護事業": "41",
+    "認知症対応型通所介護事業": "42",
+    "小規模多機能型居宅介護事業": "43",
+    "認知症対応型共同生活介護事業": "44",
+    "地域密着型特定施設入居者生活介護事業": "45",
+    "地域密着型介護老人福祉施設": "46",
+    "看護小規模多機能型居宅介護": "47",
+    "地域密着型通所介護事業": "48",
+    "介護医療院": "49",
+}
+CANONICAL_SCOPE_BY_CODE = {code: scope for scope, code in SERVICE_CODE_BY_SCOPE.items()}
+
 NS_MAIN = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 NS_REL_DOC = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 NS_REL_PKG = "http://schemas.openxmlformats.org/package/2006/relationships"
@@ -77,6 +114,10 @@ def scope_label(value: str) -> str:
     text = unicodedata.normalize("NFKC", clean(value))
     first_line = text.splitlines()[0] if text else ""
     return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
+
+def canonical_service_code(value: str) -> str:
+    scope = scope_label(value)
+    return SERVICE_CODE_BY_SCOPE.get(scope) or leading_service_code(value)
 
 
 def stable_id(row: dict) -> str:
@@ -360,7 +401,7 @@ def parse_xlsx(payload: bytes):
             if not question or not answer:
                 continue
 
-            service_code = leading_service_code(service_raw)
+            service_code = canonical_service_code(service_raw)
             if not service_code:
                 unclassified_rows.append(rowx + 1)
                 continue
@@ -369,7 +410,7 @@ def parse_xlsx(payload: bytes):
             item = {
                 "service_code": service_code,
                 "service_label": service_raw,
-                "scope": scope_label(service_raw),
+                "scope": CANONICAL_SCOPE_BY_CODE.get(service_code, scope_label(service_raw)),
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
