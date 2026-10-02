@@ -49,6 +49,7 @@ SERVICE_CODE_BY_SCOPE = {
     "看護小規模多機能型居宅介護": "47",
     "地域密着型通所介護事業": "48",
     "介護医療院": "49",
+    "介護予防支援": "50",
 }
 CANONICAL_SCOPE_BY_CODE = {code: scope for scope, code in SERVICE_CODE_BY_SCOPE.items()}
 
@@ -121,32 +122,25 @@ def leading_code(value: str, width: int) -> str:
 
 def source_service_code(value: str) -> str:
     text = unicodedata.normalize("NFKC", value)
-    m = re.match(r"\s*(\d{1,2}|XX)", text, re.I)
-    if not m:
+    match = re.match(r"\\s*(\\d{1,2}|XX)", text, re.I)
+    if not match:
         return ""
-    return m.group(1).upper()
+    return match.group(1).upper()
 
 def scope_label(value: str) -> str:
     text = unicodedata.normalize("NFKC", clean(value))
     first_line = text.splitlines()[0] if text else ""
-    return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
-
-LEGACY_COMPATIBLE_CODES = {
-    "全サービス共通": "01",
-    "居宅サービス共通": "02",
-    "通所系サービス共通": "06",
-    "通所介護事業": "16",
-}
-
-def canonical_service_code(scope: str) -> str:
-    if scope in LEGACY_COMPATIBLE_CODES:
-        return LEGACY_COMPATIBLE_CODES[scope]
-    digest = hashlib.sha256(scope.encode("utf-8")).hexdigest()[:10]
-    return "scope-" + digest
+    return re.sub(r"^\\s*(?:\\d{1,2}|XX)\\s*[.．]?\\s*", "", first_line, flags=re.I).strip()
 
 def canonical_service_code(value: str) -> str:
     scope = scope_label(value)
-    return SERVICE_CODE_BY_SCOPE.get(scope) or leading_service_code(value)
+    if not scope:
+        return ""
+    known = SERVICE_CODE_BY_SCOPE.get(scope)
+    if known:
+        return known
+    digest = hashlib.sha256(scope.encode("utf-8")).hexdigest()[:10]
+    return "scope-" + digest
 
 def find_header(sheet):
     required = {"service", "criterion", "question", "answer"}
@@ -204,7 +198,9 @@ def parse_workbook(payload: bytes):
         if cols is None:
             continue
         used_sheets.append(sheet.name)
-        last_service = ""
+        last_service_old = ""
+        last_service_current = ""
+        active_service_period = ""
         last_criterion = ""
 
         for rowx in range(header_row + 1, sheet.nrows):
@@ -214,13 +210,23 @@ def parse_workbook(payload: bytes):
                 col = cols.get(name)
                 return clean(sheet.cell_value(rowx, col)) if col is not None else ""
 
-            raw_service = get("service")
-            current_service_scope = get("service_current")
+            raw_service_old = get("service")
+            raw_service_current = get("service_current")
             raw_criterion = get("criterion")
-            service_raw = raw_service or last_service
+
+            if raw_service_current:
+                last_service_current = raw_service_current
+                active_service_period = "POST_2019_03_15"
+            elif raw_service_old:
+                last_service_old = raw_service_old
+                active_service_period = "PRE_2019_03_15"
+
+            if active_service_period == "POST_2019_03_15":
+                service_raw = raw_service_current or last_service_current
+            else:
+                service_raw = raw_service_old or last_service_old
+
             criterion_raw = raw_criterion or last_criterion
-            if raw_service:
-                last_service = raw_service
             if raw_criterion:
                 last_criterion = raw_criterion
 
@@ -243,9 +249,10 @@ def parse_workbook(payload: bytes):
             standard_code = leading_code(criterion_raw, 1)
             row = {
                 "service_code": service_code,
+                "source_service_code": source_service_code(service_raw),
+                "service_classification_period": active_service_period,
                 "service_label": service_raw,
                 "scope": CANONICAL_SCOPE_BY_CODE.get(service_code, scope_label(service_raw)),
-                "current_service_scope": current_service_scope,
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
