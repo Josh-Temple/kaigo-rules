@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import difflib
 import json
 import re
 from collections import Counter
@@ -348,7 +349,16 @@ def main() -> None:
     args = parser.parse_args()
     rendered = json.dumps(build(), ensure_ascii=False, indent=2) + "\n"
     if args.check:
-        if not OUTPUT.exists() or OUTPUT.read_text(encoding="utf-8") != rendered:
+        committed = OUTPUT.read_text(encoding="utf-8") if OUTPUT.exists() else ""
+        if committed != rendered:
+            diff = difflib.unified_diff(
+                committed.splitlines(),
+                rendered.splitlines(),
+                fromfile=str(OUTPUT.relative_to(ROOT)) + " (committed)",
+                tofile=str(OUTPUT.relative_to(ROOT)) + " (generated)",
+                lineterm="",
+            )
+            print("\n".join(list(diff)[:240]))
             raise SystemExit("relation human-review evidence pack is stale; run builder")
         print("relation human-review evidence pack: current")
         return
