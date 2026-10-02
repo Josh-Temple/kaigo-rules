@@ -1,13 +1,13 @@
 import Link from "next/link";
 import QuestionSearch from "../components/question-search";
-import { publishedLayerLabels } from "../lib/service-catalog";
+import { DEFAULT_SERVICE_ID, listServices, publishedLayerLabels } from "../lib/service-catalog";
 
-const foundationLinks = [
-  { label: "介護保険法", detail: "制度の定義・指定・給付", href: "/law" },
-  { label: "基準省令", detail: "人員・設備・運営", href: "/rules" },
-  { label: "解釈通知", detail: "基準の具体的な読み方", href: "/notices" },
-  { label: "報酬", detail: "単位・加算減算・算定", href: "/fees" },
-  { label: "国Q&A", detail: "個別論点の行政解釈", href: "/qa" },
+const foundationLayers = [
+  { label: "介護保険法", detail: "制度の定義・指定・給付" },
+  { label: "基準省令", detail: "人員・設備・運営" },
+  { label: "解釈通知", detail: "基準の具体的な読み方" },
+  { label: "報酬", detail: "単位・加算減算・算定" },
+  { label: "国Q&A", detail: "個別論点の行政解釈" },
 ];
 
 const targetScopes = [
@@ -17,6 +17,13 @@ const targetScopes = [
   "介護予防支援",
 ];
 
+const publicServices = listServices().filter(
+  (service) =>
+    service.service_id === DEFAULT_SERVICE_ID ||
+    service.routing.future_service_base_enabled,
+);
+const publicServiceLabels = publicServices.map((service) => service.label).join("・");
+
 export default function HomePage() {
   return (
     <>
@@ -25,42 +32,43 @@ export default function HomePage() {
         <h1>介護制度を、<br />根拠からたどれるように。</h1>
         <p className="lead">
           介護保険法、基準省令、解釈通知、報酬、国Q&Aを分断せず、
-          サービスごとに関係付けて整理します。通所介護に加え、通所リハビリテーションの{publishedLayerLabels("dayrehab").join("・")}をプレビュー公開しています。
+          サービスごとに公開範囲と確認状態を分けて整理します。現在は{publicServiceLabels}を公開しています。
         </p>
         <div className="entry-links foundation-entry-links">
+          <Link className="entry-row" href="/services">
+            <span>サービスを選んで調べる</span>
+            <small>公開中のサービス一覧 →</small>
+          </Link>
           <Link className="entry-row" href="/overview">
-            <span>制度の全体像から確認する</span>
+            <span>制度情報の構造を確認する</span>
             <small>制度の見取り図 →</small>
           </Link>
-          <Link className="entry-row" href="/search">
-            <span>疑問から根拠を横断検索する</span>
-            <small>横断検索 →</small>
-          </Link>
-          <Link className="entry-row" href="/services">
-            <span>サービス別に制度を見る</span>
-            <small>通所介護・通所リハ →</small>
+          <Link className="entry-row" href="/sources">
+            <span>根拠資料と出典を確認する</span>
+            <small>根拠資料 →</small>
           </Link>
         </div>
       </section>
 
       <section className="home-section">
         <p className="eyebrow">SOURCE LAYERS</p>
-        <h2>制度から探す</h2>
+        <h2>制度資料を、サービスごとにつなぐ</h2>
         <p className="lead">
-          一つの資料だけで判断せず、論点に応じて上位法から通知・Q&Aまでたどります。
+          一つの資料だけで判断せず、対象サービスを起点に上位法から通知・Q&Aまでたどれる構造にします。
         </p>
         <div className="foundation-list">
-          {foundationLinks.map((item, index) => (
-            <Link className="foundation-row" href={item.href} key={item.href}>
+          {foundationLayers.map((item, index) => (
+            <div className="foundation-row foundation-row-static" key={item.label}>
               <span className="foundation-number">{String(index + 1).padStart(2, "0")}</span>
               <span className="foundation-main">
                 <strong>{item.label}</strong>
                 <small>{item.detail}</small>
               </span>
-              <span className="foundation-arrow">→</span>
-            </Link>
+              <span className="foundation-state"><small>サービス別に公開</small></span>
+            </div>
           ))}
         </div>
+        <p className="home-more-link"><Link href="/services">サービス別の公開情報を見る →</Link></p>
       </section>
 
       <section className="home-section">
@@ -74,29 +82,20 @@ export default function HomePage() {
           {targetScopes.map((scope) => <span key={scope}>{scope}</span>)}
         </div>
         <p className="meta">
-          通所介護は複数レイヤーを公開中です。通所リハビリテーションは{publishedLayerLabels("dayrehab").join("・")}を公開しています。資料ごとに本文照合・現行性・人手確認の状態を示します。
-          未整備のサービスを確認済みとして表示したり、通所介護の検証結果を他サービスへ流用したりしません。
+          通所介護は複数レイヤーを公開中です。通所リハビリテーションは{publishedLayerLabels("dayrehab").join("・")}を公開しています。
+          未整備のサービスを確認済みとして表示したり、あるサービスの検証結果を別サービスへ流用したりしません。
         </p>
       </section>
 
       <section className="home-section practical-entry">
-        <p className="eyebrow">CURATED PRACTICAL QUESTIONS</p>
-        <h2>実務でよく迷う論点</h2>
+        <p className="eyebrow">CURATED PRACTICAL QUESTIONS / DAY SERVICE</p>
+        <h2>通所介護でよく迷う論点</h2>
         <p className="lead">
-          FAQは網羅を目指しません。実際の問い合わせで繰り返し迷いやすい論点を絞り、
-          回答から公式の根拠へ戻れるものだけを掲載します。
+          実務FAQは現在、通所介護を中心に公開しています。回答だけで終わらせず、公式の根拠へ戻れる論点だけを掲載します。
+          他サービスは各サービスページの公開範囲に合わせて追加します。
         </p>
         <QuestionSearch initialLimit={6} />
-        <p className="home-more-link"><Link href="/search">すべての実務FAQと制度情報を検索する →</Link></p>
-      </section>
-
-      <section className="home-section">
-        <div className="entry-links">
-          <Link className="entry-row" href="/start">
-            <span>通所介護の開設準備を見る</span>
-            <small>現在公開中の開設ガイド →</small>
-          </Link>
-        </div>
+        <p className="home-more-link"><Link href="/services/dayservice">通所介護の公開情報を見る →</Link></p>
       </section>
     </>
   );

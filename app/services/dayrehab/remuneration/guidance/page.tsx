@@ -1,5 +1,6 @@
 import Link from "next/link";
 import VerificationSummary from "../../../../../components/verification-summary";
+import ServiceContextLinks from "../../../../../components/service-context-links";
 import data from "../../../../../data/services/dayrehab/fee-guidance-index.json";
 
 const layer = data as any;
@@ -25,6 +26,8 @@ export default function DayrehabFeeGuidancePage() {
       <p className="lead">
         老企第36号第二／8の令和6年度確定新旧対照表から、33の主項目と88の見える子項目を出典ローカルの番号で参照できます。
       </p>
+
+      <ServiceContextLinks serviceId="dayrehab" />
 
       <div className="notice">
         <strong>これは現行統合本文ではありません。</strong><br />

@@ -1,4 +1,5 @@
 import VerificationSummary from "../../../components/verification-summary";
+import ServiceContextLinks from "../../../components/service-context-links";
 import Link from "next/link";
 import nodesData from "../../../data/fee-guidance-current-skeleton.json";
 import relationsData from "../../../data/fee-guidance-relations.json";
@@ -47,6 +48,8 @@ export default function FeeGuidancePage(){
     <p className="lead">
       老企第36号のうち「7 通所介護費」を、令和6年度の改正資料を起点に穴あき構造で再構成しています。
     </p>
+
+      <ServiceContextLinks serviceId="dayservice" />
 
     <div className="notice">
       <strong>現行統合版ではありません。</strong><br/>

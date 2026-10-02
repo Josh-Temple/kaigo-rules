@@ -63,7 +63,7 @@
     "build:homevisit-ordinance37-index": "python scripts/build_homevisit_ordinance37_index.py",
     "check:homevisit-ordinance37-index": "python scripts/build_homevisit_ordinance37_index.py --check",
     "test:service-scope": "node --experimental-strip-types --test tests/service-scope.test.mjs tests/scoped-counts.test.mjs",
-    "test:service-scope-surfaces": "node --experimental-strip-types --test tests/service-scope-surfaces.test.mjs tests/dayrehab-preview.test.mjs",
+    "test:service-scope-surfaces": "node --experimental-strip-types --test tests/service-scope-surfaces.test.mjs tests/dayrehab-preview.test.mjs tests/service-navigation.test.mjs",
     "build:dayrehab-ordinance37-index": "python scripts/build_dayrehab_ordinance37_index.py",
     "check:dayrehab-ordinance37-index": "python scripts/build_dayrehab_ordinance37_index.py --check",
     "verify:dayrehab-ordinance37-independent": "python scripts/verify_dayrehab_ordinance37_independent.py",
