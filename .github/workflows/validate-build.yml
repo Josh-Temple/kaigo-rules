@@ -62,6 +62,7 @@ jobs:
             "/"
             "/overview"
             "/databases"
+            "/databases/search"
             "/search"
             "/api/version"
             "/start"
@@ -93,6 +94,16 @@ jobs:
               exit 1
             }
           done
+
+          database_search_page="$(curl --fail --silent --show-error "http://127.0.0.1:3000/databases/search?q=BCP")"
+          echo "$database_search_page" | grep -F "業務継続計画" >/dev/null || {
+            echo "global database search did not surface BCP-related shared records"
+            exit 1
+          }
+          echo "$database_search_page" | grep -F "基準解釈通知" >/dev/null || {
+            echo "global database search is missing the notice result section"
+            exit 1
+          }
 
           shared_status="$(curl --silent --output /dev/null --write-out "%{http_code}" http://127.0.0.1:3000/rules/10)"
           if [ "$shared_status" != "200" ]; then
