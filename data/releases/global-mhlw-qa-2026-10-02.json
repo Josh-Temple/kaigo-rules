@@ -1,0 +1,17 @@
+{
+  "release": "GLOBAL_MHLW_QA_CORPUS_2026-10-02",
+  "source_pr": 237,
+  "integrated_main_sha": "1d9936efb68cda31b54b2af6c297334f98744713",
+  "corpus": {
+    "rows_included": 3695,
+    "scope_mode": "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK",
+    "source_sha256": "2b3e658d1659b42423fe1d3f7cc8b2fd24b58914ce65a6d15d16d0b64fc26c6b",
+    "independent_audit": "PASS",
+    "currentness": "LIVE_SOURCE_REPARSE_SCHEDULED",
+    "human_review": "INGESTED_UNREVIEWED"
+  },
+  "deployment": {
+    "gate": "integration-sprint-174-production-release.yml",
+    "exact_sha_required": true
+  }
+}
