@@ -15,14 +15,6 @@ import openpyxl
 import xlrd
 
 DEFAULT_PAGE = "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html"
-TARGET_SERVICE_CODES = {"01", "02", "06", "16"}
-SCOPE_BY_CODE = {
-    "01": "全サービス共通",
-    "02": "居宅サービス共通",
-    "06": "通所系サービス共通",
-    "16": "通所介護事業",
-}
-
 class XlsLinkParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -90,6 +82,10 @@ def leading_code(value: str, width: int) -> str:
     m = re.match(r"\s*(\d{1,2})", text)
     return m.group(1).zfill(width) if m else ""
 
+def scope_label(value: str) -> str:
+    text = unicodedata.normalize("NFKC", clean(value))
+    return re.sub(r"^\s*\d{1,2}\s*[.．]?\s*", "", text).strip()
+
 def find_header(sheet):
     required = {"service", "criterion", "question", "answer"}
     for rowx in range(min(sheet.nrows, 40)):
@@ -130,6 +126,7 @@ def parse_workbook(payload: bytes):
     items = []
     scanned = 0
     used_sheets = []
+    unclassified_rows = []
 
     for sheet in sheets:
         header_row, cols = find_header(sheet)
@@ -161,14 +158,15 @@ def parse_workbook(payload: bytes):
                 continue
 
             service_code = leading_code(service_raw, 2)
-            if service_code not in TARGET_SERVICE_CODES:
+            if not service_code:
+                unclassified_rows.append(rowx + 1)
                 continue
 
             standard_code = leading_code(criterion_raw, 1)
             row = {
                 "service_code": service_code,
                 "service_label": service_raw,
-                "scope": SCOPE_BY_CODE[service_code],
+                "scope": scope_label(service_raw),
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
@@ -184,8 +182,11 @@ def parse_workbook(payload: bytes):
 
     if not used_sheets:
         raise RuntimeError("Could not find a Q&A table header in any worksheet")
+    if unclassified_rows:
+        preview = ", ".join(str(row) for row in unclassified_rows[:10])
+        raise RuntimeError(f"Q&A rows with question/answer but no service code: {preview}")
     if len(items) < 10:
-        raise RuntimeError(f"Only {len(items)} target rows were parsed; refusing to overwrite corpus")
+        raise RuntimeError(f"Only {len(items)} classified rows were parsed; refusing to overwrite corpus")
 
     dedup = {item["id"]: item for item in items}
     items = sorted(
@@ -214,6 +215,13 @@ def main():
     sha = hashlib.sha256(payload).hexdigest()
     sheet_names, used_sheets, scanned, items, workbook_format = parse_workbook(payload)
     counts = Counter(item["service_code"] for item in items)
+    scope_by_code = {}
+    for item in items:
+        previous = scope_by_code.setdefault(item["service_code"], item["scope"])
+        if previous != item["scope"]:
+            raise RuntimeError(
+                f"Inconsistent service label for {item['service_code']}: {previous!r} vs {item['scope']!r}"
+            )
 
     out = Path(args.out)
     meta_out = Path(args.meta_out)
@@ -225,8 +233,9 @@ def main():
         "source_workbook": workbook_url,
         "source_format": workbook_format,
         "source_sha256": sha,
-        "target_service_codes": sorted(TARGET_SERVICE_CODES),
-        "scope_by_code": SCOPE_BY_CODE,
+        "scope_mode": "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK",
+        "target_service_codes": sorted(scope_by_code),
+        "scope_by_code": dict(sorted(scope_by_code.items())),
         "workbook_sheets": sheet_names,
         "parsed_sheets": used_sheets,
         "rows_scanned": scanned,
