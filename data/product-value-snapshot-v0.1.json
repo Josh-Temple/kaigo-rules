@@ -31,13 +31,13 @@
     "practical_questions_with_evidence_path": {
       "questions_total": 12,
       "questions_with_evidence_path": 12,
-      "coverage_rate": 1.0,
+      "coverage_rate": 1,
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
-      "public_items_total": 1557,
-      "public_items_complete": 1557,
-      "coverage_rate": 1.0,
+      "public_items_total": 4409,
+      "public_items_complete": 4409,
+      "coverage_rate": 1,
       "missing_source_items": [],
       "missing_scope_items": [],
       "missing_verification_state_items": [],
@@ -99,11 +99,11 @@
           "verification_state_complete": 435
         },
         "qa_corpus_items": {
-          "items_total": 843,
-          "items_complete": 843,
-          "source_complete": 843,
-          "scope_complete": 843,
-          "verification_state_complete": 843
+          "items_total": 3695,
+          "items_complete": 3695,
+          "source_complete": 3695,
+          "scope_complete": 3695,
+          "verification_state_complete": 3695
         },
         "dayrehab_standard_articles": {
           "items_total": 35,
