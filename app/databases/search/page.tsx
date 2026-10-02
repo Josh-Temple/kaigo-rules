@@ -3,7 +3,7 @@ import careNodesData from "../../../data/care-insurance-act-nodes.json";
 import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
 import qaCorpusData from "../../../data/qa-corpus.json";
 import { publicNoticeRecords } from "../../../lib/notice-database";
-import { matchesDatabaseSearch } from "../../../lib/database-search";
+import { rankDatabaseSearch } from "../../../lib/database-search";
 
 const careNodes = careNodesData as Array<any>;
 const ordinanceNodes = ordinanceNodesData as Array<any>;
@@ -15,20 +15,34 @@ const excerpt = (value: string, max = 180) => {
   return clean.length > max ? clean.slice(0, max) + "…" : clean;
 };
 
-const articleSearchText = (article: any, nodes: Array<any>) =>
-  nodes
-    .filter((node) => node.article_num === article.article_num)
-    .map((node) =>
-      [
-        node.article_title,
-        node.caption,
-        ...(node.path || []),
-        node.official_text,
+const articleSearchFields = (article: any, nodes: Array<any>) => {
+  const articleNodes = nodes.filter(
+    (node) => node.article_num === article.article_num,
+  );
+  return [
+    {
+      value: [article.article_title, article.caption].filter(Boolean).join(" "),
+      weight: 8,
+    },
+    {
+      value: [
+        ...(article.path || []),
+        article.service_scope,
+        article.source_locator,
       ]
         .filter(Boolean)
         .join(" "),
-    )
-    .join(" ");
+      weight: 4,
+    },
+    {
+      value: articleNodes
+        .map((node) => node.official_text)
+        .filter(Boolean)
+        .join(" "),
+      weight: 1,
+    },
+  ];
+};
 
 export default async function DatabaseSearchPage({
   searchParams,
@@ -43,55 +57,57 @@ export default async function DatabaseSearchPage({
     (node) => node.node_type === "article",
   );
 
-  const lawMatches = query
-    ? lawArticles.filter((article) =>
-        matchesDatabaseSearch(articleSearchText(article, careNodes), query),
-      )
-    : [];
-  const ordinanceMatches = query
-    ? ordinanceArticles.filter((article) =>
-        matchesDatabaseSearch(
-          articleSearchText(article, ordinanceNodes),
-          query,
-        ),
-      )
-    : [];
-  const noticeMatches = query
-    ? publicNoticeRecords.filter((notice) =>
-        matchesDatabaseSearch(
-          [
-            notice.service_label,
-            notice.section,
-            ...(notice.number_path || []),
-            notice.title,
-            notice.body_text,
-          ]
-            .filter(Boolean)
-            .join(" "),
-          query,
-        ),
-      )
-    : [];
-  const qaMatches = query
-    ? qaCorpus.filter((item) =>
-        matchesDatabaseSearch(
-          [
-            item.scope,
-            item.service_label,
-            item.current_service_scope,
-            item.standard_label,
-            item.topic,
-            item.question,
-            item.answer,
-            item.issued_source,
-            item.number,
-          ]
-            .filter(Boolean)
-            .join(" "),
-          query,
-        ),
-      )
-    : [];
+  const lawMatches = rankDatabaseSearch(
+    lawArticles,
+    query,
+    (article) => articleSearchFields(article, careNodes),
+  );
+  const ordinanceMatches = rankDatabaseSearch(
+    ordinanceArticles,
+    query,
+    (article) => articleSearchFields(article, ordinanceNodes),
+  );
+  const noticeMatches = rankDatabaseSearch(
+    publicNoticeRecords,
+    query,
+    (notice) => [
+      { value: notice.title, weight: 8 },
+      {
+        value: [notice.service_label, notice.section]
+          .filter(Boolean)
+          .join(" "),
+        weight: 4,
+      },
+      { value: (notice.number_path || []).join(" "), weight: 2 },
+      { value: notice.body_text, weight: 1 },
+    ],
+  );
+  const qaMatches = rankDatabaseSearch(
+    qaCorpus,
+    query,
+    (item) => [
+      { value: item.question || "", weight: 8 },
+      { value: item.topic || "", weight: 6 },
+      {
+        value: [
+          item.scope,
+          item.service_label,
+          item.current_service_scope,
+        ]
+          .filter(Boolean)
+          .join(" "),
+        weight: 4,
+      },
+      { value: item.standard_label || "", weight: 3 },
+      { value: item.answer || "", weight: 1 },
+      {
+        value: [item.issued_source, item.number]
+          .filter(Boolean)
+          .join(" "),
+        weight: 0.5,
+      },
+    ],
+  );
 
   const total =
     lawMatches.length +
@@ -136,6 +152,9 @@ export default async function DatabaseSearchPage({
             <p><strong>{total.toLocaleString("ja-JP")}件</strong> 見つかりました</p>
             <Link href="/databases/search">条件をクリア</Link>
           </div>
+          <p className="meta">
+            各DB内では、見出し・質問文・トピックなどの直接一致を本文中の一致より優先した関連度順で表示します。
+          </p>
 
           <section className="section">
             <h2>介護保険法 <span className="meta">({lawMatches.length}条)</span></h2>
