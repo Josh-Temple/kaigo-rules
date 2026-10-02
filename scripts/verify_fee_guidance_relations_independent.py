@@ -53,7 +53,7 @@ SPECS = [
     ("fee-guidance.dayservice.19", "口腔・栄養スクリーニング加算について", "fee.dayservice.note.19", ["栄養スクリーニング加算"]),
     ("fee-guidance.dayservice.20", "口腔機能向上加算について", "fee.dayservice.note.20", ["機能向上加算"]),
     ("fee-guidance.dayservice.21", "科学的介護推進体制加算について", "fee.dayservice.note.21", ["科学的介護推進体制加算"]),
-    ("fee-guidance.dayservice.22", "事業所と同一の建物に居住する利用者又は同一建物から通う利用者に通所介護を行う場合の取扱い", "fee.dayservice.note.23", ["同一建物", "94単位"]),
+    ("fee-guidance.dayservice.22", "事業所と同一建物に居住する利用者又は同一建物から通う利用者に通所介護を行う場合について", "fee.dayservice.note.23", ["同一建物", "94単位"]),
     ("fee-guidance.dayservice.23", "送迎を行わない場合の減算について", "fee.dayservice.note.24", ["送迎を行わない場合", "47単位"]),
     ("fee-guidance.dayservice.26", "サービス提供体制強化加算について", "fee.dayservice.service-provision", ["サービス提供体制強化加算"]),
     ("fee-guidance.dayservice.27", "介護職員等処遇改善加算について", "fee.dayservice.treatment-improvement", ["介護職員等処遇改善加算"]),
@@ -191,7 +191,7 @@ def extract_guidance_current_column(pdf: Path) -> str:
             "pdftotext",
             "-r", "72",
             "-f", "42",
-            "-l", "53",
+            "-l", "61",
             "-layout",
             "-x", "0",
             "-y", "0",
@@ -248,6 +248,15 @@ def verify() -> dict:
         differences = []
         if compact(guidance_heading) not in guidance_compact:
             differences.append("guidance heading not found in R6 current/new column")
+
+        cross_reference_evidence = {
+            "fee-guidance.dayservice.16": ["通所介護と同様であるので", "7(16)", "参照されたい"],
+            "fee-guidance.dayservice.17": ["通所介護と同様であるので", "7(17)", "参照されたい"],
+        }.get(guidance_id, [])
+        for phrase in cross_reference_evidence:
+            if compact(phrase) not in guidance_compact:
+                differences.append(f"guidance cross-reference evidence missing: {phrase}")
+
         fee_text = notice_nodes.get(fee_id, "")
         if not fee_text:
             differences.append("fee target missing from live Notice 19 extraction")
@@ -282,7 +291,7 @@ def verify() -> dict:
         "format_version": 1,
         "verification_kind": "INDEPENDENT_PRIMARY_SOURCE_RELATION_REPARSE",
         "parser": {
-            "guidance_pdf": "pdftotext_current_left_column_pages_42_53",
+            "guidance_pdf": "pdftotext_current_left_column_pages_42_61",
             "notice19_html": "python_stdlib_html_parser",
         },
         "sources": {
