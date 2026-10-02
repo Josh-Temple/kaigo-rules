@@ -380,7 +380,7 @@
       "candidates": [
         {
           "qa_id": "qa.mhlw.91959c3555dce399f7b8",
-          "score": 29.5,
+          "score": 40,
           "anchor_terms": [
             "食堂",
             "面積",
@@ -389,7 +389,8 @@
           "matched_terms": [
             "食堂",
             "面積",
-            "機能訓練室"
+            "機能訓練室",
+            "訓練室"
           ],
           "scope": "通所介護事業",
           "standard_label": "2 設備",
@@ -399,7 +400,7 @@
         },
         {
           "qa_id": "qa.mhlw.fdce9af8e0f8227fe06f",
-          "score": 13.5,
+          "score": 15.3,
           "anchor_terms": [
             "面積",
             "機能訓練室",
@@ -409,7 +410,8 @@
             "面積",
             "機能訓練室",
             "3m2",
-            "定員"
+            "定員",
+            "訓練室"
           ],
           "scope": "通所介護事業",
           "standard_label": "3 運営",
@@ -419,14 +421,15 @@
         },
         {
           "qa_id": "qa.mhlw.1fa39601f41ed7e00437",
-          "score": 14.5,
+          "score": 21.5,
           "anchor_terms": [
             "食堂",
             "機能訓練室"
           ],
           "matched_terms": [
             "食堂",
-            "機能訓練室"
+            "機能訓練室",
+            "訓練室"
           ],
           "scope": "通所介護事業",
           "standard_label": "4 報酬",
@@ -644,7 +647,7 @@
       "candidates": [
         {
           "qa_id": "qa.mhlw.f7e0b57f5fa8418eecb1",
-          "score": 9.5,
+          "score": 20,
           "anchor_terms": [
             "署名",
             "サイン"
@@ -652,7 +655,10 @@
           "matched_terms": [
             "署名",
             "サイン",
-            "計画書"
+            "計画書",
+            "計画",
+            "同意",
+            "方法"
           ],
           "scope": "全サービス共通",
           "standard_label": "5 その他",
@@ -681,14 +687,16 @@
       "candidates": [
         {
           "qa_id": "qa.mhlw.48fb67e44f0f84d1d9ea",
-          "score": 14,
+          "score": 28,
           "anchor_terms": [
-            "業務継続計画"
+            "業務継続計画",
+            "業務継続"
           ],
           "matched_terms": [
             "研修",
             "業務継続計画",
-            "訓練"
+            "訓練",
+            "業務継続"
           ],
           "scope": "全サービス共通",
           "standard_label": "4 報酬",
@@ -698,14 +706,16 @@
         },
         {
           "qa_id": "qa.mhlw.ef2fea12a3ebc9cf3096",
-          "score": 14,
+          "score": 28,
           "anchor_terms": [
-            "業務継続計画"
+            "業務継続計画",
+            "業務継続"
           ],
           "matched_terms": [
             "研修",
             "業務継続計画",
-            "訓練"
+            "訓練",
+            "業務継続"
           ],
           "scope": "全サービス共通",
           "standard_label": "4 報酬",
@@ -715,12 +725,14 @@
         },
         {
           "qa_id": "qa.mhlw.46ccf97b6f22f5f3486c",
-          "score": 13,
+          "score": 27,
           "anchor_terms": [
-            "業務継続計画"
+            "業務継続計画",
+            "業務継続"
           ],
           "matched_terms": [
-            "業務継続計画"
+            "業務継続計画",
+            "業務継続"
           ],
           "scope": "全サービス共通",
           "standard_label": "4 報酬",
@@ -730,12 +742,14 @@
         },
         {
           "qa_id": "qa.mhlw.ebf00b3f2d3f8fef69e8",
-          "score": 13,
+          "score": 27,
           "anchor_terms": [
-            "業務継続計画"
+            "業務継続計画",
+            "業務継続"
           ],
           "matched_terms": [
-            "業務継続計画"
+            "業務継続計画",
+            "業務継続"
           ],
           "scope": "全サービス共通",
           "standard_label": "4 報酬",
@@ -745,13 +759,15 @@
         },
         {
           "qa_id": "qa.mhlw.06897759b3a9ecc97e7b",
-          "score": 6.5,
+          "score": 14.5,
           "anchor_terms": [
-            "bcp"
+            "bcp",
+            "業務継続"
           ],
           "matched_terms": [
             "bcp",
-            "研修"
+            "研修",
+            "業務継続"
           ],
           "scope": "居宅サービス共通",
           "standard_label": "4 報酬",
