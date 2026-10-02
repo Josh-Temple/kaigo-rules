@@ -41,8 +41,11 @@
         "status": "HOLD",
         "hold_items": 22,
         "mismatch_items": 0,
-        "coverage_end": "2026-09-23",
-        "evidence": "data/notice-rouki25-currentness-ledger.json"
+        "coverage_end": "2026-10-03",
+        "evidence": "data/notice-rouki25-currentness-ledger.json",
+        "latest_watch_evidence": "data/notice-rouki25-watch-latest.json",
+        "latest_watch_result": "PASS",
+        "latest_confirmed_kaigo_info_volume": 1545
       },
       "monitoring": {
         "status": "ACTIVE",
