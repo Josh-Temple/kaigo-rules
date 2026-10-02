@@ -58,7 +58,14 @@ const expandTerm = (term: string) => {
 const serviceOptions: Array<[string, string]> = [
   ["", "すべて"],
   ...Object.entries(qaMeta.scope_by_code || {})
-    .sort(([a], [b]) => Number(a) - Number(b))
+    .sort(([a], [b]) => {
+      const an = Number(a);
+      const bn = Number(b);
+      if (Number.isFinite(an) && Number.isFinite(bn)) return an - bn;
+      if (Number.isFinite(an)) return -1;
+      if (Number.isFinite(bn)) return 1;
+      return a.localeCompare(b, "ja");
+    })
     .map(([code, label]) => [code, String(label)] as [string, string]),
 ];
 
