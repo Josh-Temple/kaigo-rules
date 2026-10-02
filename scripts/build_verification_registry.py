@@ -260,6 +260,13 @@ def build() -> dict:
     relation_verified = len(relation_coverage["verified"])
     relation_remaining = len(relation_coverage["remaining"])
     relation_lanes = relation_coverage["lanes"]
+    relation_queue = load("relation-verification-queue.json")
+    if (
+        relation_queue.get("inventory_relations") != relation_inventory
+        or relation_queue.get("independently_covered_relations") != relation_verified
+        or relation_queue.get("remaining_relations") != relation_remaining
+    ):
+        raise ValueError("relation verification queue does not match canonical coverage")
 
     base_declared_inventory = relation_semantic["coverage"]["non_contains_semantic_or_cross_layer_relations"]
     article119_declared = dayrehab_article119["coverage"]["relations_in_this_lane"]
@@ -288,6 +295,8 @@ def build() -> dict:
                 "independently_verified": relation_verified,
                 "total": relation_inventory,
                 "remaining": relation_remaining,
+                "work_queue": "data/relation-verification-queue.json",
+                "classification_counts": relation_queue["classification_counts"],
                 "note": "Remaining semantic/cross-layer relations are not independently verified and are not auto-promoted.",
             }
         )
