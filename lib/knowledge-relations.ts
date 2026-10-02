@@ -14,6 +14,7 @@ import remunerationAuditData from "../data/remuneration-delegation-relation-inde
 import remunerationSourceLinkDerivedAuditData from "../data/remuneration-source-link-derived-audit.json";
 import feeGuidanceRelationAuditData from "../data/fee-guidance-relation-independent-audit.json";
 import noticeExplicitReferenceAuditData from "../data/notice-ordinance-explicit-reference-derived-audit.json";
+import remunerationSourceLinkIndependentAuditData from "../data/remuneration-source-link-independent-audit.json";
 import dayrehabArticle119AuditData from "../data/dayrehab-article119-relation-independent-audit.json";
 import registryData from "../data/verification-registry.json";
 
@@ -165,6 +166,17 @@ for (const check of noticeExplicitReferenceAudit.checks || []) {
     check.relation,
     check.to_ordinance_id,
     "notice-ordinance-explicit-reference"
+  );
+}
+
+const remunerationSourceLinkIndependentAudit = remunerationSourceLinkIndependentAuditData as any;
+for (const check of remunerationSourceLinkIndependentAudit.checks || []) {
+  if (check.result !== "PASS" || (check.differences || []).length) continue;
+  addVerified(
+    check.from_id,
+    check.relation,
+    check.to_source_id,
+    "remuneration-source-link-independent"
   );
 }
 
