@@ -27,6 +27,7 @@ def build() -> dict:
     service_catalog = load_service_catalog(ROOT)
     notice_verify = load("notice-rouki25-independent-verification.json")
     notice_current = load("notice-rouki25-currentness-ledger.json")
+    notice_watch = load("notice-rouki25-watch-latest.json")
     notice_packet = load("notice-review-packet.json")
     fee_verify = load("fee-guidance-independent-verification.json")
     fee_review = load("fee-guidance-review.json")
@@ -70,8 +71,11 @@ def build() -> dict:
                 "status": notice_current["final_audit_classification"]["decision"],
                 "hold_items": current_counts["HOLD"],
                 "mismatch_items": current_counts["MISMATCH"],
-                "coverage_end": notice_current["search_coverage"]["coverage_end"],
+                "coverage_end": notice_watch["checked_at_jst"][:10],
                 "evidence": "data/notice-rouki25-currentness-ledger.json",
+                "latest_watch_evidence": "data/notice-rouki25-watch-latest.json",
+                "latest_watch_result": notice_watch["result"],
+                "latest_confirmed_kaigo_info_volume": notice_watch["effect"]["baseline_advanced_to_volume"],
             },
             "monitoring": {
                 "status": "ACTIVE",
