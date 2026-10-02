@@ -1,0 +1,1517 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_relation_verification_queue.py",
+  "policy": "Classification selects a verification method only; it never promotes relation, currentness, or human-review state.",
+  "inventory_relations": 188,
+  "independently_covered_relations": 84,
+  "remaining_relations": 104,
+  "classification_counts": {
+    "MACHINE_SOURCE_REPARSE_CANDIDATE": 24,
+    "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 3,
+    "SEMANTIC_TEXT_CHECK_REQUIRED": 34,
+    "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 7,
+    "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
+  },
+  "priority_order": [
+    "MACHINE_SOURCE_REPARSE_CANDIDATE",
+    "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+    "SEMANTIC_TEXT_CHECK_REQUIRED",
+    "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+    "HUMAN_SEMANTIC_REVIEW_REQUIRED"
+  ],
+  "items": [
+    {
+      "identity": {
+        "from": "careact.article.8.p.7",
+        "relation": "defines_service_for",
+        "to": "fee.dayservice.root"
+      },
+      "source_file": "data/care-insurance-act-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "careact.article.8.p.7",
+        "relation": "defines_service_for",
+        "to": "ordinance37.article.92"
+      },
+      "source_file": "data/care-insurance-act-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.1",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.large1"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.1",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.large2"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.1",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.4"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.1",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.standard"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.10",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.10"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.11",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.11"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.12",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.12"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.13",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.13"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.14",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.14"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.15",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.15"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.16",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.16"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.17",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.17"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.19",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.19"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.2",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.2"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.20",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.20"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.21",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.21"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.22",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.23"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.23",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.24"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.26",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.service-provision"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.27",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.treatment-improvement"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.3",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.3"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.8",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.8"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.9",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.note.9"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee-guidance.dayservice.root",
+        "relation": "explains_calculation_of",
+        "to": "fee.dayservice.root"
+      },
+      "source_file": "data/fee-guidance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "MACHINE_SOURCE_REPARSE_CANDIDATE",
+      "verification_strategy": "Independently reparse the relevant official source and prove the guidance-to-fee alignment from explicit numbering, headings, or cross-references.",
+      "blockers": [
+        "Existing committed relation is structural; current independent audit does not yet cover this exact relation identity."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.note.13",
+        "relation": "related_to",
+        "to": "ordinance37.article.99"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.note.15",
+        "relation": "related_to",
+        "to": "ordinance37.article.98"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.note.2",
+        "relation": "operational_basis_related_to",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.note.3",
+        "relation": "operational_basis_related_to",
+        "to": "ordinance37.article.30-2"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "currency_conversion_uses",
+        "to": "mhlw-unit-price-current"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+      "verification_strategy": "Verify the source-level provenance claim against direct official evidence and, where the relation says latest/current, separately prove freshness.",
+      "blockers": [
+        "Source existence alone does not prove the relation semantics.",
+        "Freshness-sensitive labels must not be inferred from historical provenance."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "defined_service_by",
+        "to": "ordinance37.article.92"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "historically_interpreted_by",
+        "to": "mhlw-fee-interpretation-historical"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "HISTORICAL_REFERENCE_ONLY",
+      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+      "verification_strategy": "Verify the source-level provenance claim against direct official evidence and, where the relation says latest/current, separately prove freshness.",
+      "blockers": [
+        "Source existence alone does not prove the relation semantics.",
+        "Freshness-sensitive labels must not be inferred from historical provenance."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "latest_interpretation_amendment_evidence",
+        "to": "mhlw-r8-fee-guidance-may-amendment"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+      "verification_strategy": "Verify the source-level provenance claim against direct official evidence and, where the relation says latest/current, separately prove freshness.",
+      "blockers": [
+        "Source existence alone does not prove the relation semantics.",
+        "Freshness-sensitive labels must not be inferred from historical provenance."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.dedicated",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.extended-hours",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.fte",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.fulltime",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.fulltime",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.equipment",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.equipment.dining-training-room",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.equipment.office",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.96"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.abuse",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.abuse",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.37-2"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.accident",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.104-3"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.bcp",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.bcp",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.30-2"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.community",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.104-2"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.disaster",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.103"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.fees",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.96"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.hygiene",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.104"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.incorporation",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.plan",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.99"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.policy",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.97"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.policy",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.98"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.records",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.104-4"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.rules",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.100"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation.staffing",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.101"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel.function-training",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel.life-counselor",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel.manager",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel.staffing",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.root",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.root",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.92"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.abuse.frequency"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.bcp.frequency"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.infection.frequency"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article101.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article104.2.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article30-2.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article37-2.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "applies_via",
+        "to": "ordinance37.article105"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.bcp.frequency"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "required_by",
+        "to": "ordinance37.article30-2.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "aligned_with",
+        "to": "ordinance37.article99.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.1"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "consent_under",
+        "to": "ordinance37.article99.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "delivered_under",
+        "to": "ordinance37.article99.4"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "tracked_under",
+        "to": "ordinance37.article99.5"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-seal",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-seal",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.4"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "electronic_option_under",
+        "to": "ordinance37.article217.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "requires_delivery_under",
+        "to": "ordinance37.article99.4"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:dining-training-area",
+        "relation": "answered_by",
+        "to": "ordinance37.article95.1-2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article8.1"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "applies_via",
+        "to": "ordinance37.article105"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "interpreted_by",
+        "to": "notice.common.important-matters.explanation"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "published_under",
+        "to": "ordinance37.article32.1-3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:life-counselor-staffing",
+        "relation": "answered_by",
+        "to": "ordinance37.article93.1.1"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:life-counselor-staffing",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.6"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:manager-concurrent-role",
+        "relation": "answered_by",
+        "to": "ordinance37.article94"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "documented_by",
+        "to": "notice.dayservice.staffing.schedule"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.5"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article94"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "answered_by",
+        "to": "ordinance37.article93.1.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "clarified_by",
+        "to": "qa.dayservice.nurse.external.2015.50"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.nurse.external-linkage"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:operation-rules-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article100"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "verification_strategy": "Review whether the cited authority actually answers, qualifies, clarifies, or otherwise supports the practical question; preserve evidence links independently of currentness.",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    }
+  ]
+}

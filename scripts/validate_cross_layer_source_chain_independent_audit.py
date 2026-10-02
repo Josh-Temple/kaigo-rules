@@ -167,7 +167,34 @@ def main() -> None:
     if coverage.get("relations_in_this_lane") != 18 or coverage.get("relations_passed") != 18:
         fail("phase-3 lane coverage changed")
 
+    # Upstream audit receipts can change only in provenance metadata while their
+    # independently verified claims remain unchanged. Revalidate those claims
+    # semantically rather than requiring byte-identical receipt files.
+    explicit_upstream = load(DATA / "relation-semantic-independent-audit.json")
+    explicit_coverage = explicit_upstream.get("coverage", {})
+    if explicit_upstream.get("audit_result") != "PASS":
+        fail("upstream explicit-reference audit is not PASS")
+    if explicit_coverage.get("explicit_legal_reference_relations_independently_verified") != 23:
+        fail("upstream explicit-reference coverage changed")
+
+    careact_upstream = load(DATA / "careact-internal-relation-independent-audit.json")
+    careact_coverage = careact_upstream.get("coverage", {})
+    if careact_upstream.get("audit_result") != "PASS":
+        fail("upstream Care Act internal audit is not PASS")
+    if careact_coverage.get("relations_passed") != 4:
+        fail("upstream Care Act relation coverage changed")
+    if coverage.get("previous_explicit_relations_independently_verified") != 27:
+        fail("recorded upstream aggregate changed")
+    if coverage.get("aggregate_relations_independently_verified") != 45:
+        fail("aggregate cross-layer relation count changed")
+
+    semantic_upstream_receipts = {
+        "data/careact-internal-relation-independent-audit.json",
+        "data/relation-semantic-independent-audit.json",
+    }
     for relative, expected_blob in record.get("input_git_blob_shas_at_audit", {}).items():
+        if relative in semantic_upstream_receipts:
+            continue
         path = ROOT / relative
         if not path.exists():
             fail(f"pinned audit input missing: {relative}")

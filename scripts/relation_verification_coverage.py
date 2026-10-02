@@ -188,6 +188,24 @@ def remuneration_delegation_identities(audit: dict) -> set[tuple[str, str, str]]
     return identities
 
 
+def remuneration_source_link_derived_identities(audit: dict) -> set[tuple[str, str, str]]:
+    if audit.get("audit_result") != "PASS":
+        raise ValueError("remuneration source-link derived audit is not PASS")
+    identities = set()
+    for check in audit.get("checks", []):
+        require_clean_check(check, "remuneration-source-link-derived")
+        identities.add(
+            make_identity(
+                check.get("from_id"),
+                check.get("relation"),
+                check.get("to_source_id"),
+            )
+        )
+    if len(identities) != audit.get("coverage", {}).get("relations_passed"):
+        raise ValueError("remuneration source-link derived identity count changed")
+    return identities
+
+
 def build_relation_coverage() -> dict:
     inventory = canonical_inventory()
     lane_specs = (
@@ -217,6 +235,13 @@ def build_relation_coverage() -> dict:
             "remuneration-delegation",
             "data/remuneration-delegation-relation-independent-audit.json",
             remuneration_delegation_identities(load("remuneration-delegation-relation-independent-audit.json")),
+        ),
+        (
+            "remuneration-source-link-derived",
+            "data/remuneration-source-link-derived-audit.json",
+            remuneration_source_link_derived_identities(
+                load("remuneration-source-link-derived-audit.json")
+            ),
         ),
     )
 

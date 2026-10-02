@@ -11,6 +11,7 @@ import explicitAuditData from "../data/relation-semantic-independent-audit.json"
 import careActAuditData from "../data/careact-internal-relation-independent-audit.json";
 import crossLayerAuditData from "../data/cross-layer-source-chain-independent-audit.json";
 import remunerationAuditData from "../data/remuneration-delegation-relation-independent-audit.json";
+import remunerationSourceLinkDerivedAuditData from "../data/remuneration-source-link-derived-audit.json";
 import dayrehabArticle119AuditData from "../data/dayrehab-article119-relation-independent-audit.json";
 import registryData from "../data/verification-registry.json";
 
@@ -130,6 +131,17 @@ const remunerationAudit = remunerationAuditData as any;
 for (const check of remunerationAudit.checks || []) {
   if (check.result !== "PASS" || (check.differences || []).length) continue;
   addVerified(check.from_id, check.relation, check.to_id, "remuneration-delegation");
+}
+
+const remunerationSourceLinkDerivedAudit = remunerationSourceLinkDerivedAuditData as any;
+for (const check of remunerationSourceLinkDerivedAudit.checks || []) {
+  if (check.result !== "PASS" || (check.differences || []).length) continue;
+  addVerified(
+    check.from_id,
+    check.relation,
+    check.to_source_id,
+    "remuneration-source-link-derived"
+  );
 }
 
 const edges: KnowledgeEdge[] = [];

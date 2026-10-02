@@ -19,15 +19,15 @@ class VerificationRegistryTests(unittest.TestCase):
         summary = registry["summary"]
 
         self.assertEqual(len(coverage["inventory"]), 188)
-        self.assertEqual(len(coverage["verified"]), 81)
-        self.assertEqual(len(coverage["remaining"]), 107)
+        self.assertEqual(len(coverage["verified"]), 84)
+        self.assertEqual(len(coverage["remaining"]), 104)
         self.assertEqual(coverage["overlap_relations"], 0)
         self.assertEqual(coverage["identity_validation"], "PASS")
         self.assertTrue(coverage["verified"].issubset(coverage["inventory"]))
 
         self.assertEqual(relation["inventory_relations"], 188)
-        self.assertEqual(relation["independently_verified_relations"], 81)
-        self.assertEqual(relation["remaining_unverified_relations"], 107)
+        self.assertEqual(relation["independently_verified_relations"], 84)
+        self.assertEqual(relation["remaining_unverified_relations"], 104)
         self.assertEqual(
             sum(lane["verified_relations"] for lane in relation["lanes"]),
             len(coverage["verified"]),
@@ -37,8 +37,24 @@ class VerificationRegistryTests(unittest.TestCase):
         )
         self.assertEqual(article119_lane["verified_relations"], 25)
         self.assertEqual(article119_lane["status"], "PASS")
-        self.assertEqual(summary["semantic_or_cross_layer_relations_remaining"], 107)
-        self.assertEqual(registry["gaps"][0]["remaining"], 107)
+        derived_lane = next(
+            lane for lane in relation["lanes"]
+            if lane["id"] == "remuneration-source-link-derived"
+        )
+        self.assertEqual(derived_lane["verified_relations"], 3)
+        self.assertEqual(derived_lane["status"], "PASS")
+        self.assertEqual(summary["semantic_or_cross_layer_relations_remaining"], 104)
+        self.assertEqual(registry["gaps"][0]["remaining"], 104)
+        self.assertEqual(
+            registry["gaps"][0]["classification_counts"],
+            {
+                "MACHINE_SOURCE_REPARSE_CANDIDATE": 24,
+                "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 3,
+                "SEMANTIC_TEXT_CHECK_REQUIRED": 34,
+                "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 7,
+                "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36,
+            },
+        )
         self.assertFalse(relation["automatic_promotion_allowed"])
 
 

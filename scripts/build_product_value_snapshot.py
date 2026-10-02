@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import difflib
 import json
 import subprocess
 from pathlib import Path
@@ -646,7 +647,17 @@ def main() -> None:
 
     rendered = render_snapshot()
     if args.check:
-        if not OUTPUT_PATH.exists() or OUTPUT_PATH.read_text(encoding="utf-8") != rendered:
+        committed = OUTPUT_PATH.read_text(encoding="utf-8") if OUTPUT_PATH.exists() else ""
+        if committed != rendered:
+            diff = "".join(
+                difflib.unified_diff(
+                    committed.splitlines(keepends=True),
+                    rendered.splitlines(keepends=True),
+                    fromfile=str(OUTPUT_PATH.relative_to(ROOT)),
+                    tofile="generated product-value snapshot",
+                )
+            )
+            print(diff, end="")
             raise SystemExit("product-value snapshot is stale; run builder")
         print("product-value snapshot: current")
         return
