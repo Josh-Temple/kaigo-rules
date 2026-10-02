@@ -68,8 +68,8 @@ export default function QuestionAuthorityPanel({
     <section className="section">
       <h2>実務FAQからたどれる根拠</h2>
       <p className="meta">
-        FAQの検索一致とは別に、既存の明示relationだけを展開しています。
-        ここで表示すること自体は、relationの検証状態や各資料の現行性を自動的に引き上げるものではありません。
+        検索で見つかったFAQに、根拠として記録されている資料です。
+        資料同士の対応確認と、各資料の現行性・人手確認は別です。詳しい確認状態はリンク先で確認できます。
       </p>
       <div className="source-chain">
         {groups.map((group) => (
@@ -97,7 +97,7 @@ export default function QuestionAuthorityPanel({
                         ))}
                       </>
                     ) : href ? <Link href={href}>{title}</Link> : title}
-                    <span className="meta"> / 明示relation: {authority.relation}</span>
+                    <span className="meta"> / {authority.kind === "standard" ? "人員・設備・運営の基準" : authority.kind === "notice" ? "基準の具体的な取扱い" : authority.kind === "qa" ? "個別の問答・修正資料" : "単位数・算定条件"}</span>
                   </li>
                 );
               })}

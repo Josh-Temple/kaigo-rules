@@ -32,6 +32,7 @@ def build() -> dict:
                 "status": descriptor["status"],
                 "routing": config.get("routing", {}),
                 "id_namespaces": config.get("id_namespaces", {}),
+                "verification_layer_ids": config.get("verification_layer_ids", []),
             }
         )
 
