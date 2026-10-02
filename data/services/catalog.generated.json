@@ -101,6 +101,126 @@
       "verification_layer_ids": []
     },
     {
+      "service_id": "homebath",
+      "label": "訪問入浴介護",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/homebath",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
+      "service_id": "homenursing",
+      "label": "訪問看護",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/homenursing",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
+      "service_id": "homerehab",
+      "label": "訪問リハビリテーション",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/homerehab",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
+      "service_id": "homecaremanagement",
+      "label": "居宅療養管理指導",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/homecaremanagement",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
       "service_id": "dayrehab",
       "label": "通所リハビリテーション",
       "status": "ACTIVE_PREVIEW",
@@ -186,6 +306,156 @@
         "work_control": {
           "status": "ACCEPTED_RESULTS_NOT_REPOSITORY_INGESTED",
           "note": "Work Control Cycle 4の5レイヤー受理済みResultがLibraryに存在する。repository側のservice-specific scope/adaptersは未登録で、公開・独立検証・human reviewは未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
+      "service_id": "community-dayservice",
+      "label": "地域密着型通所介護",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/community-dayservice",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
+      "service_id": "regular-round",
+      "label": "定期巡回・随時対応型訪問介護看護",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/regular-round",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
+      "service_id": "night-homevisit",
+      "label": "夜間対応型訪問介護",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/night-homevisit",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
+      "service_id": "care-management",
+      "label": "居宅介護支援",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/care-management",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        }
+      },
+      "verification_layer_ids": []
+    },
+    {
+      "service_id": "preventive-support",
+      "label": "介護予防支援",
+      "status": "PARTIAL_INGESTION",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-support",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+        },
+        "work_control": {
+          "status": "STAGING_NOT_CLOSED_BLOCKED_PACKAGE_PRECHECK",
+          "note": "Structure QueueでPACKAGE / CONTRACT_PRECHECKが1件BLOCKED。通知レーン完了とは分離し、サービス全体の公開準備完了とは扱わない。"
         }
       },
       "verification_layer_ids": []
