@@ -60,6 +60,28 @@ export default function DatabasesPage() {
       </div>
 
       <section className="section">
+        <p className="eyebrow">DATABASE-WIDE SEARCH</p>
+        <h2>4つの共有DBを全体横断検索</h2>
+        <p>
+          介護保険法、基準省令、公開済みの基準解釈通知、国Q&Aを、
+          サービスを先に選ばず同じキーワードで検索します。
+        </p>
+        <form className="global-search-form" method="get" action="/databases/search">
+          <label>
+            <span>キーワード</span>
+            <input
+              name="q"
+              placeholder="例：業務継続計画、認知症、通所リハ"
+            />
+          </label>
+          <button type="submit">全体から検索する</button>
+        </form>
+        <p className="meta">
+          報酬基準・算定上の留意事項はサービス別の確認状態を保持するため、全体検索には混ぜません。
+        </p>
+      </section>
+
+      <section className="section">
         <h2>全体から見られるDB</h2>
         <div className="foundation-list">
           {databases.map((item) => (
