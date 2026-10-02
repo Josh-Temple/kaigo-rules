@@ -206,6 +206,24 @@ def remuneration_source_link_derived_identities(audit: dict) -> set[tuple[str, s
     return identities
 
 
+def fee_guidance_relation_identities(audit: dict) -> set[tuple[str, str, str]]:
+    if audit.get("audit_result") != "PASS":
+        raise ValueError("fee-guidance relation audit is not PASS")
+    identities = set()
+    for check in audit.get("checks", []):
+        require_clean_check(check, "fee-guidance-to-remuneration")
+        identities.add(
+            make_identity(
+                check.get("from_guidance_id"),
+                check.get("relation"),
+                check.get("to_fee_id"),
+            )
+        )
+    if len(identities) != audit.get("coverage", {}).get("relations_passed"):
+        raise ValueError("fee-guidance relation identity count changed")
+    return identities
+
+
 def build_relation_coverage() -> dict:
     inventory = canonical_inventory()
     lane_specs = (
@@ -241,6 +259,13 @@ def build_relation_coverage() -> dict:
             "data/remuneration-source-link-derived-audit.json",
             remuneration_source_link_derived_identities(
                 load("remuneration-source-link-derived-audit.json")
+            ),
+        ),
+        (
+            "fee-guidance-to-remuneration",
+            "data/fee-guidance-relation-independent-audit.json",
+            fee_guidance_relation_identities(
+                load("fee-guidance-relation-independent-audit.json")
             ),
         ),
     )
