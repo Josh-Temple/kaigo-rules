@@ -1,0 +1,2213 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_relation_human_review_packet.py",
+  "source_queue": "data/relation-verification-queue.json",
+  "policy": "This packet organizes unresolved relation review only. Blank reviewer fields must not be interpreted as rejection or approval. Packet generation never promotes independent verification, currentness, or human-review state.",
+  "summary": {
+    "items_total": 59,
+    "classification_counts": {
+      "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
+      "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
+      "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
+      "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
+      "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
+    },
+    "independently_covered_relations": 129,
+    "inventory_relations": 188
+  },
+  "review_contract": {
+    "allowed_decisions": [
+      "CONFIRM_RELATION",
+      "REJECT_RELATION",
+      "NEEDS_MORE_EVIDENCE"
+    ],
+    "automatic_promotion_allowed": false,
+    "requires_primary_source_check": true,
+    "currentness_is_separate": true
+  },
+  "items": [
+    {
+      "review_id": "REL-001",
+      "identity": {
+        "from": "fee.dayservice.note.13",
+        "relation": "related_to",
+        "to": "ordinance37.article.99"
+      },
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source": {
+        "id": "fee.dayservice.note.13",
+        "kind": "remuneration",
+        "label": "個別機能訓練加算",
+        "route": "/fees/note.13",
+        "state": "CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK"
+      },
+      "target": {
+        "id": "ordinance37.article.99",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "existing_blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-002",
+      "identity": {
+        "from": "fee.dayservice.note.15",
+        "relation": "related_to",
+        "to": "ordinance37.article.98"
+      },
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source": {
+        "id": "fee.dayservice.note.15",
+        "kind": "remuneration",
+        "label": "認知症加算",
+        "route": "/fees/note.15",
+        "state": "CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK"
+      },
+      "target": {
+        "id": "ordinance37.article.98",
+        "kind": "ordinance37",
+        "label": "第九十八条 （指定通所介護の具体的取扱方針）",
+        "route": "/rules/98",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.98",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "existing_blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-003",
+      "identity": {
+        "from": "fee.dayservice.note.2",
+        "relation": "operational_basis_related_to",
+        "to": "ordinance37.article.105"
+      },
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source": {
+        "id": "fee.dayservice.note.2",
+        "kind": "remuneration",
+        "label": "高齢者虐待防止措置未実施減算",
+        "route": "/fees/note.2",
+        "state": "CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK"
+      },
+      "target": {
+        "id": "ordinance37.article.105",
+        "kind": "ordinance37",
+        "label": "第百五条 （準用）",
+        "route": "/rules/105",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.105",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "existing_blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-004",
+      "identity": {
+        "from": "fee.dayservice.note.3",
+        "relation": "operational_basis_related_to",
+        "to": "ordinance37.article.30-2"
+      },
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source": {
+        "id": "fee.dayservice.note.3",
+        "kind": "remuneration",
+        "label": "業務継続計画未策定減算",
+        "route": "/fees/note.3",
+        "state": "CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK"
+      },
+      "target": {
+        "id": "ordinance37.article.30-2",
+        "kind": "ordinance37",
+        "label": "第三十条の二 （業務継続計画の策定等）",
+        "route": "/rules/30-2",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.30-2",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "existing_blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-005",
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "defined_service_by",
+        "to": "ordinance37.article.92"
+      },
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source": {
+        "id": "fee.dayservice.root",
+        "kind": "remuneration",
+        "label": "通所介護費",
+        "route": "/fees",
+        "state": "CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK"
+      },
+      "target": {
+        "id": "ordinance37.article.92",
+        "kind": "ordinance37",
+        "label": "第九十二条 （基本方針）",
+        "route": "/rules/92",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.92",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "existing_blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-006",
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "latest_interpretation_amendment_evidence",
+        "to": "mhlw-r8-fee-guidance-may-amendment"
+      },
+      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+      "source": {
+        "id": "fee.dayservice.root",
+        "kind": "remuneration",
+        "label": "通所介護費",
+        "route": "/fees",
+        "state": "CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK"
+      },
+      "target": {
+        "id": "mhlw-r8-fee-guidance-may-amendment",
+        "kind": "official_source",
+        "label": "老企第36号等の一部改正について（令和8年5月8日・介護保険最新情報Vol.1502）",
+        "route": "https://www.mhlw.go.jp/content/001698614.pdf",
+        "state": "current_amendment"
+      },
+      "review_prompt": "Is the source-link claim directly evidenced and, for a latest/current claim, is there sufficient update coverage to support freshness as of the review date?",
+      "existing_blockers": [
+        "Source existence alone does not prove the relation semantics.",
+        "Freshness-sensitive labels must not be inferred from historical provenance."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-007",
+      "identity": {
+        "from": "notice.common.definitions.dedicated",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.common.definitions.dedicated",
+        "kind": "interpretation_notice",
+        "label": "「専ら従事する」「専ら提供に当たる」",
+        "route": "/notices#notice.common.definitions.dedicated",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.93",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-008",
+      "identity": {
+        "from": "notice.common.definitions.extended-hours",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.common.definitions.extended-hours",
+        "kind": "interpretation_notice",
+        "label": "勤務延時間数",
+        "route": "/notices#notice.common.definitions.extended-hours",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.93",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-009",
+      "identity": {
+        "from": "notice.common.definitions.fte",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.common.definitions.fte",
+        "kind": "interpretation_notice",
+        "label": "常勤換算方法",
+        "route": "/notices#notice.common.definitions.fte",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "target": {
+        "id": "ordinance37.article.93",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-010",
+      "identity": {
+        "from": "notice.common.definitions.fulltime",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.common.definitions.fulltime",
+        "kind": "interpretation_notice",
+        "label": "常勤",
+        "route": "/notices#notice.common.definitions.fulltime",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "target": {
+        "id": "ordinance37.article.93",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-011",
+      "identity": {
+        "from": "notice.common.definitions.fulltime",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.common.definitions.fulltime",
+        "kind": "interpretation_notice",
+        "label": "常勤",
+        "route": "/notices#notice.common.definitions.fulltime",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "target": {
+        "id": "ordinance37.article.94",
+        "kind": "ordinance37",
+        "label": "第九十四条 （管理者）",
+        "route": "/rules/94",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.94",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-012",
+      "identity": {
+        "from": "notice.dayservice.equipment",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.equipment",
+        "kind": "interpretation_notice",
+        "label": "設備に関する基準",
+        "route": "/notices#notice.dayservice.equipment",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.95",
+        "kind": "ordinance37",
+        "label": "第九十五条 （設備及び備品等）",
+        "route": "/rules/95",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.95",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-013",
+      "identity": {
+        "from": "notice.dayservice.equipment.dining-training-room",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.equipment.dining-training-room",
+        "kind": "interpretation_notice",
+        "label": "食堂及び機能訓練室",
+        "route": "/notices#notice.dayservice.equipment.dining-training-room",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.95",
+        "kind": "ordinance37",
+        "label": "第九十五条 （設備及び備品等）",
+        "route": "/rules/95",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.95",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-014",
+      "identity": {
+        "from": "notice.dayservice.equipment.office",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.equipment.office",
+        "kind": "interpretation_notice",
+        "label": "事業所",
+        "route": "/notices#notice.dayservice.equipment.office",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.95",
+        "kind": "ordinance37",
+        "label": "第九十五条 （設備及び備品等）",
+        "route": "/rules/95",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.95",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-015",
+      "identity": {
+        "from": "notice.dayservice.operation",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.operation",
+        "kind": "interpretation_notice",
+        "label": "運営に関する基準",
+        "route": "/notices#notice.dayservice.operation",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "target": {
+        "id": "ordinance37.article.105",
+        "kind": "ordinance37",
+        "label": "第百五条 （準用）",
+        "route": "/rules/105",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.105",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-016",
+      "identity": {
+        "from": "notice.dayservice.operation",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.96"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.operation",
+        "kind": "interpretation_notice",
+        "label": "運営に関する基準",
+        "route": "/notices#notice.dayservice.operation",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "target": {
+        "id": "ordinance37.article.96",
+        "kind": "ordinance37",
+        "label": "第九十六条 （利用料等の受領）",
+        "route": "/rules/96",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.96",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-017",
+      "identity": {
+        "from": "notice.dayservice.personnel",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.personnel",
+        "kind": "interpretation_notice",
+        "label": "人員に関する基準",
+        "route": "/notices#notice.dayservice.personnel",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.93",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-018",
+      "identity": {
+        "from": "notice.dayservice.personnel",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.personnel",
+        "kind": "interpretation_notice",
+        "label": "人員に関する基準",
+        "route": "/notices#notice.dayservice.personnel",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.94",
+        "kind": "ordinance37",
+        "label": "第九十四条 （管理者）",
+        "route": "/rules/94",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.94",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-019",
+      "identity": {
+        "from": "notice.dayservice.personnel.function-training",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.personnel.function-training",
+        "kind": "interpretation_notice",
+        "label": "機能訓練指導員",
+        "route": "/notices#notice.dayservice.personnel.function-training",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.93",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-020",
+      "identity": {
+        "from": "notice.dayservice.personnel.life-counselor",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.personnel.life-counselor",
+        "kind": "interpretation_notice",
+        "label": "生活相談員",
+        "route": "/notices#notice.dayservice.personnel.life-counselor",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.93",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-021",
+      "identity": {
+        "from": "notice.dayservice.personnel.manager",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.personnel.manager",
+        "kind": "interpretation_notice",
+        "label": "管理者",
+        "route": "/notices#notice.dayservice.personnel.manager",
+        "state": "INHERITED_UNVERIFIED"
+      },
+      "target": {
+        "id": "ordinance37.article.94",
+        "kind": "ordinance37",
+        "label": "第九十四条 （管理者）",
+        "route": "/rules/94",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.94",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-022",
+      "identity": {
+        "from": "notice.dayservice.root",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.root",
+        "kind": "interpretation_notice",
+        "label": "通所介護",
+        "route": "/notices#notice.dayservice.root",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "target": {
+        "id": "ordinance37.article.105",
+        "kind": "ordinance37",
+        "label": "第百五条 （準用）",
+        "route": "/rules/105",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.105",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-023",
+      "identity": {
+        "from": "notice.dayservice.root",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.92"
+      },
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source": {
+        "id": "notice.dayservice.root",
+        "kind": "interpretation_notice",
+        "label": "通所介護",
+        "route": "/notices#notice.dayservice.root",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "target": {
+        "id": "ordinance37.article.92",
+        "kind": "ordinance37",
+        "label": "第九十二条 （基本方針）",
+        "route": "/rules/92",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.92",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "existing_blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-024",
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.abuse.frequency"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:annual-training",
+        "kind": "practical_question",
+        "label": "通所介護で毎年実施する必要がある研修は何ですか？",
+        "route": "/questions/annual-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "notice.dayservice.abuse.frequency",
+        "kind": "interpretation_notice",
+        "label": "notice.dayservice.abuse.frequency",
+        "route": "/notices#notice.dayservice.abuse.frequency",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-025",
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.bcp.frequency"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:annual-training",
+        "kind": "practical_question",
+        "label": "通所介護で毎年実施する必要がある研修は何ですか？",
+        "route": "/questions/annual-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "notice.dayservice.bcp.frequency",
+        "kind": "interpretation_notice",
+        "label": "notice.dayservice.bcp.frequency",
+        "route": "/notices#notice.dayservice.bcp.frequency",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-026",
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.infection.frequency"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:annual-training",
+        "kind": "practical_question",
+        "label": "通所介護で毎年実施する必要がある研修は何ですか？",
+        "route": "/questions/annual-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "notice.dayservice.infection.frequency",
+        "kind": "interpretation_notice",
+        "label": "notice.dayservice.infection.frequency",
+        "route": "/notices#notice.dayservice.infection.frequency",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-027",
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article101.3"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:annual-training",
+        "kind": "practical_question",
+        "label": "通所介護で毎年実施する必要がある研修は何ですか？",
+        "route": "/questions/annual-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article101.3",
+        "kind": "ordinance37",
+        "label": "第百一条 （勤務体制の確保等）",
+        "route": "/rules/101",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.101",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-028",
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article104.2.3"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:annual-training",
+        "kind": "practical_question",
+        "label": "通所介護で毎年実施する必要がある研修は何ですか？",
+        "route": "/questions/annual-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article104.2.3",
+        "kind": "ordinance37",
+        "label": "第百四条 （衛生管理等）",
+        "route": "/rules/104",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.104",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-029",
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article30-2.2"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:annual-training",
+        "kind": "practical_question",
+        "label": "通所介護で毎年実施する必要がある研修は何ですか？",
+        "route": "/questions/annual-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article30-2.2",
+        "kind": "ordinance37",
+        "label": "第三十条の二 （業務継続計画の策定等）",
+        "route": "/rules/30-2",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.30-2",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-030",
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article37-2.3"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:annual-training",
+        "kind": "practical_question",
+        "label": "通所介護で毎年実施する必要がある研修は何ですか？",
+        "route": "/questions/annual-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article37-2.3",
+        "kind": "ordinance37",
+        "label": "第三十七条の二 （虐待の防止）",
+        "route": "/rules/37-2",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.37-2",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-031",
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "applies_via",
+        "to": "ordinance37.article105"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:bcp-training",
+        "kind": "practical_question",
+        "label": "BCPの研修はどのくらいの頻度で行いますか？",
+        "route": "/questions/bcp-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article105",
+        "kind": "ordinance37",
+        "label": "第百五条 （準用）",
+        "route": "/rules/105",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.105",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-032",
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.bcp.frequency"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:bcp-training",
+        "kind": "practical_question",
+        "label": "BCPの研修はどのくらいの頻度で行いますか？",
+        "route": "/questions/bcp-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "notice.dayservice.bcp.frequency",
+        "kind": "interpretation_notice",
+        "label": "notice.dayservice.bcp.frequency",
+        "route": "/notices#notice.dayservice.bcp.frequency",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-033",
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "required_by",
+        "to": "ordinance37.article30-2.2"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:bcp-training",
+        "kind": "practical_question",
+        "label": "BCPの研修はどのくらいの頻度で行いますか？",
+        "route": "/questions/bcp-training",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article30-2.2",
+        "kind": "ordinance37",
+        "label": "第三十条の二 （業務継続計画の策定等）",
+        "route": "/rules/30-2",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.30-2",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-034",
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "aligned_with",
+        "to": "ordinance37.article99.2"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-content",
+        "kind": "practical_question",
+        "label": "通所介護計画には何を記載すればよいですか？",
+        "route": "/questions/care-plan-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.2",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-035",
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.1"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-content",
+        "kind": "practical_question",
+        "label": "通所介護計画には何を記載すればよいですか？",
+        "route": "/questions/care-plan-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.1",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-036",
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "consent_under",
+        "to": "ordinance37.article99.3"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-content",
+        "kind": "practical_question",
+        "label": "通所介護計画には何を記載すればよいですか？",
+        "route": "/questions/care-plan-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.3",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-037",
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "delivered_under",
+        "to": "ordinance37.article99.4"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-content",
+        "kind": "practical_question",
+        "label": "通所介護計画には何を記載すればよいですか？",
+        "route": "/questions/care-plan-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.4",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-038",
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "tracked_under",
+        "to": "ordinance37.article99.5"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-content",
+        "kind": "practical_question",
+        "label": "通所介護計画には何を記載すればよいですか？",
+        "route": "/questions/care-plan-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.5",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-039",
+      "identity": {
+        "from": "question:care-plan-seal",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.3"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-seal",
+        "kind": "practical_question",
+        "label": "通所介護計画書に押印は必要ですか？",
+        "route": "/questions/care-plan-seal",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.3",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-040",
+      "identity": {
+        "from": "question:care-plan-seal",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.4"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-seal",
+        "kind": "practical_question",
+        "label": "通所介護計画書に押印は必要ですか？",
+        "route": "/questions/care-plan-seal",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.4",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-041",
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.3"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-signature",
+        "kind": "practical_question",
+        "label": "通所介護計画書に利用者の署名は必要ですか？",
+        "route": "/questions/care-plan-signature",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.3",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-042",
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "electronic_option_under",
+        "to": "ordinance37.article217.2"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-signature",
+        "kind": "practical_question",
+        "label": "通所介護計画書に利用者の署名は必要ですか？",
+        "route": "/questions/care-plan-signature",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article217.2",
+        "kind": "ordinance37",
+        "label": "第217条",
+        "route": "/rules/217",
+        "state": null,
+        "article_root_id": null,
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-043",
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "requires_delivery_under",
+        "to": "ordinance37.article99.4"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:care-plan-signature",
+        "kind": "practical_question",
+        "label": "通所介護計画書に利用者の署名は必要ですか？",
+        "route": "/questions/care-plan-signature",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article99.4",
+        "kind": "ordinance37",
+        "label": "第九十九条 （通所介護計画の作成）",
+        "route": "/rules/99",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.99",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-044",
+      "identity": {
+        "from": "question:dining-training-area",
+        "relation": "answered_by",
+        "to": "ordinance37.article95.1-2"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:dining-training-area",
+        "kind": "practical_question",
+        "label": "食堂・機能訓練室にはどのくらいの面積が必要ですか？",
+        "route": "/questions/dining-training-area",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article95.1-2",
+        "kind": "ordinance37",
+        "label": "第九十五条 （設備及び備品等）",
+        "route": "/rules/95",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.95",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-045",
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article8.1"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:important-matters-content",
+        "kind": "practical_question",
+        "label": "重要事項説明書には何を記載する必要がありますか？",
+        "route": "/questions/important-matters-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article8.1",
+        "kind": "ordinance37",
+        "label": "第八条 （内容及び手続の説明及び同意）",
+        "route": "/rules/8",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.8",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-046",
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "applies_via",
+        "to": "ordinance37.article105"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:important-matters-content",
+        "kind": "practical_question",
+        "label": "重要事項説明書には何を記載する必要がありますか？",
+        "route": "/questions/important-matters-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article105",
+        "kind": "ordinance37",
+        "label": "第百五条 （準用）",
+        "route": "/rules/105",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.105",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-047",
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "interpreted_by",
+        "to": "notice.common.important-matters.explanation"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:important-matters-content",
+        "kind": "practical_question",
+        "label": "重要事項説明書には何を記載する必要がありますか？",
+        "route": "/questions/important-matters-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "notice.common.important-matters.explanation",
+        "kind": "interpretation_notice",
+        "label": "notice.common.important-matters.explanation",
+        "route": "/notices#notice.common.important-matters.explanation",
+        "state": "VERIFIED_SOURCE_TEXT"
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-048",
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "published_under",
+        "to": "ordinance37.article32.1-3"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:important-matters-content",
+        "kind": "practical_question",
+        "label": "重要事項説明書には何を記載する必要がありますか？",
+        "route": "/questions/important-matters-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article32.1-3",
+        "kind": "ordinance37",
+        "label": "第三十二条 （掲示）",
+        "route": "/rules/32",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.32",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-049",
+      "identity": {
+        "from": "question:life-counselor-staffing",
+        "relation": "answered_by",
+        "to": "ordinance37.article93.1.1"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:life-counselor-staffing",
+        "kind": "practical_question",
+        "label": "生活相談員は何人配置すればよいですか？",
+        "route": "/questions/life-counselor-staffing",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article93.1.1",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-050",
+      "identity": {
+        "from": "question:life-counselor-staffing",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.6"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:life-counselor-staffing",
+        "kind": "practical_question",
+        "label": "生活相談員は何人配置すればよいですか？",
+        "route": "/questions/life-counselor-staffing",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article93.6",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-051",
+      "identity": {
+        "from": "question:manager-concurrent-role",
+        "relation": "answered_by",
+        "to": "ordinance37.article94"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:manager-concurrent-role",
+        "kind": "practical_question",
+        "label": "管理者は他の職務と兼務できますか？",
+        "route": "/questions/manager-concurrent-role",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article94",
+        "kind": "ordinance37",
+        "label": "第九十四条 （管理者）",
+        "route": "/rules/94",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.94",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-052",
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "documented_by",
+        "to": "notice.dayservice.staffing.schedule"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:multiple-roles",
+        "kind": "practical_question",
+        "label": "同じ職員が複数の職種を兼務できますか？",
+        "route": "/questions/multiple-roles",
+        "state": "verified"
+      },
+      "target": {
+        "id": "notice.dayservice.staffing.schedule",
+        "kind": "interpretation_notice",
+        "label": "notice.dayservice.staffing.schedule",
+        "route": "/notices#notice.dayservice.staffing.schedule",
+        "state": "VERIFIED_SOURCE_TEXT"
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-053",
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.3"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:multiple-roles",
+        "kind": "practical_question",
+        "label": "同じ職員が複数の職種を兼務できますか？",
+        "route": "/questions/multiple-roles",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article93.3",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-054",
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.5"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:multiple-roles",
+        "kind": "practical_question",
+        "label": "同じ職員が複数の職種を兼務できますか？",
+        "route": "/questions/multiple-roles",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article93.5",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-055",
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article94"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:multiple-roles",
+        "kind": "practical_question",
+        "label": "同じ職員が複数の職種を兼務できますか？",
+        "route": "/questions/multiple-roles",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article94",
+        "kind": "ordinance37",
+        "label": "第九十四条 （管理者）",
+        "route": "/rules/94",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.94",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-056",
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "answered_by",
+        "to": "ordinance37.article93.1.2"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:nurse-staffing",
+        "kind": "practical_question",
+        "label": "看護職員は何人必要ですか？",
+        "route": "/questions/nurse-staffing",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article93.1.2",
+        "kind": "ordinance37",
+        "label": "第九十三条 （従業者の員数）",
+        "route": "/rules/93",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.93",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-057",
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "clarified_by",
+        "to": "qa.dayservice.nurse.external.2015.50"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:nurse-staffing",
+        "kind": "practical_question",
+        "label": "看護職員は何人必要ですか？",
+        "route": "/questions/nurse-staffing",
+        "state": "verified"
+      },
+      "target": {
+        "id": "qa.dayservice.nurse.external.2015.50",
+        "kind": "curated_qa",
+        "label": "qa.dayservice.nurse.external.2015.50",
+        "route": "/qa/qa.dayservice.nurse.external.2015.50",
+        "state": null
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-058",
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.nurse.external-linkage"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:nurse-staffing",
+        "kind": "practical_question",
+        "label": "看護職員は何人必要ですか？",
+        "route": "/questions/nurse-staffing",
+        "state": "verified"
+      },
+      "target": {
+        "id": "notice.dayservice.nurse.external-linkage",
+        "kind": "interpretation_notice",
+        "label": "notice.dayservice.nurse.external-linkage",
+        "route": "/notices#notice.dayservice.nurse.external-linkage",
+        "state": "KNOWN_AFTER_TEXT"
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    },
+    {
+      "review_id": "REL-059",
+      "identity": {
+        "from": "question:operation-rules-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article100"
+      },
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source": {
+        "id": "question:operation-rules-content",
+        "kind": "practical_question",
+        "label": "運営規程には何を記載する必要がありますか？",
+        "route": "/questions/operation-rules-content",
+        "state": "verified"
+      },
+      "target": {
+        "id": "ordinance37.article100",
+        "kind": "ordinance37",
+        "label": "第百条 （運営規程）",
+        "route": "/rules/100",
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.100",
+        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
+      },
+      "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "existing_blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ],
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewer_decision": null,
+      "reviewer_note": null,
+      "reviewed_at": null
+    }
+  ]
+}
