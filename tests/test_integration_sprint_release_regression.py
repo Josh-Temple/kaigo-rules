@@ -59,6 +59,11 @@ class IntegrationSprintReleaseRegressionTest(unittest.TestCase):
             "この法律において「訪問介護」とは",
             service_cases["IR-07"]["not_contains_text"],
         )
+        self.assertEqual(service_cases["IR-07"]["path"], "/law/8?service=dayservice")
+        self.assertIn(
+            "この法律において「訪問介護」とは",
+            service_cases["IR-24"]["contains_text"],
+        )
 
     def test_scoped_counts_cover_rules_and_law(self):
         count_cases = {
@@ -68,8 +73,8 @@ class IntegrationSprintReleaseRegressionTest(unittest.TestCase):
         }
         self.assertIn(r"67\s*共有コーパス条文", count_cases["IR-04"]["regex_text"])
         self.assertIn(r"67\s*表示中の条文", count_cases["IR-04"]["regex_text"])
-        self.assertIn(r"11\s*対象条文", count_cases["IR-08"]["regex_text"])
-        self.assertIn(r"89\s*構造ノード", count_cases["IR-08"]["regex_text"])
+        self.assertIn(r"11\s*共有コーパス条文", count_cases["IR-08"]["regex_text"])
+        self.assertIn(r"137\s*共有コーパスノード", count_cases["IR-08"]["regex_text"])
 
     def test_faq_authority_requires_concrete_notice_source(self):
         case = next(row for row in self.fixture["cases"] if row["id"] == "IR-05")

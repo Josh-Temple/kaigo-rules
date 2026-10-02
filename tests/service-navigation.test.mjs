@@ -4,17 +4,29 @@ import fs from "node:fs";
 
 const readText = (relativePath) => fs.readFileSync(relativePath, "utf8");
 
-test("global navigation is service-neutral", () => {
+test("global navigation is service-neutral and exposes one database entry", () => {
   const source = readText("components/service-navigation.tsx");
 
   assert.match(source, /サイト共通ナビゲーション/);
   assert.match(source, /サービス別/);
-  assert.match(source, /基準DB/);
-  assert.match(source, /通知DB/);
+  assert.match(source, /DB一覧/);
   assert.match(source, /制度の見取り図/);
   assert.match(source, /根拠資料/);
   assert.doesNotMatch(source, /通所介護|通所リハビリテーション|通所リハ/);
   assert.doesNotMatch(source, /usePathname/);
+});
+
+test("database hub exposes shared databases and service-specific remuneration routes", () => {
+  const source = readText("app/databases/page.tsx");
+
+  assert.match(source, /<h1>介護制度DB<\/h1>/);
+  assert.match(source, /介護保険法DB/);
+  assert.match(source, /基準省令DB/);
+  assert.match(source, /基準解釈通知DB/);
+  assert.match(source, /国Q&A DB/);
+  assert.match(source, /href="\/fees"/);
+  assert.match(source, /href="\/services\/dayrehab\/remuneration"/);
+  assert.match(source, /すべてのサービスが同じ確認状態で揃ったという意味ではありません/);
 });
 
 test("published services have dedicated service landing pages", () => {
@@ -27,10 +39,11 @@ test("published services have dedicated service landing pages", () => {
   assert.match(dayrehab, /<h1>通所リハビリテーション<\/h1>/);
 });
 
-test("home starts from service selection instead of a default-service database menu", () => {
+test("home exposes the database-wide entry before service-specific content", () => {
   const source = readText("app/page.tsx");
 
   assert.match(source, /サービスを選んで調べる/);
+  assert.match(source, /DB全体から調べる/);
+  assert.match(source, /href="\/databases"/);
   assert.match(source, /サービスごとに公開範囲と確認状態を分けて整理します/);
-  assert.doesNotMatch(source, /href="\/search"[\s\S]*疑問から根拠を横断検索する/);
 });
