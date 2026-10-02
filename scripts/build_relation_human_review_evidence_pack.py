@@ -132,7 +132,7 @@ def evidence(
             )
             hashes = [row.get("text_sha256")] if row.get("text_sha256") else []
             source_url = None
-            locator = " > ".join(row.get("path") or [])
+            locator = " > ".join(row.get("path") or []) or None
         return {
             "resolution_kind": "NOTICE",
             "canonical_ids": [value],
