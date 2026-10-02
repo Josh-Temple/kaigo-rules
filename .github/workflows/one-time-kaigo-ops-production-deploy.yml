@@ -1,0 +1,43 @@
+name: One-time Kaigo Ops worksheet production deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/one-time-kaigo-ops-production-deploy.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Trigger Kaigo Ops production deploy
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_OPS }}
+        run: |
+          set -euo pipefail
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::error::Missing secret VERCEL_DEPLOY_HOOK_KAIGO_OPS"
+            exit 1
+          fi
+          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
+          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
+          echo "Kaigo Ops deploy hook accepted."
+      - name: Verify production worksheet and all issue routes
+        working-directory: ops-site
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 40); do
+            if npm run verify:routes -- https://ops-site-pi.vercel.app; then
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::Production verification did not pass within 10 minutes."
+          exit 1

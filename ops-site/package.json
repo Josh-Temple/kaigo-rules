@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "verify:routes": "node --experimental-strip-types scripts/verify-routes.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",

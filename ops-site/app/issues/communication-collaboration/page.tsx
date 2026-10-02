@@ -4,7 +4,7 @@ import IssueNavigation from "../_components/IssueNavigation";
 export const metadata: Metadata = {
   title: "問い合わせ・連携の負担が大きい | 介護業務改善",
   description:
-    "電話、FAX、メール、ケアプラン共有、確認の往復など、介護現場の問い合わせ・連携負担を、workflow整理、self-service、data exchange、必要に応じたAI補助の順に改善する方法を整理します。",
+    "電話、FAX、メール、ケアプラン共有、確認の往復など、介護現場の問い合わせ・連携負担を、業務の流れ整理、自分で確認できる仕組み、data exchange、必要に応じたAI補助の順に改善する方法を整理します。",
 };
 
 const findings = [
@@ -30,23 +30,23 @@ const findings = [
 
 const types = [
   ["A", "定型問い合わせ", "様式、締切、提出先、status確認。FAQ、検索、status表示で減らしやすい。"],
-  ["B", "定型的な情報共有", "ケアプラン、提供票、報告など。structured formやdata exchangeを検討する。"],
-  ["C", "判断を伴う相談", "例外対応、状態変化、専門職間調整。人間へのescalationを前提にする。"],
+  ["B", "定型的な情報共有", "ケアプラン、提供票、報告など。入力項目をそろえた様式やdata exchangeを検討する。"],
+  ["C", "判断を伴う相談", "例外対応、状態変化、専門職間調整。人間への担当者への引き継ぎを前提にする。"],
   ["D", "緊急連絡", "急変・事故など。通常queueと分け、即時連絡経路を維持する。"],
 ];
 
 const steps = [
   ["0", "問い合わせを分類する", "誰から何について何回来るかをcategoryで把握する。"],
-  ["1", "反復問い合わせを減らす", "FAQ、guide、status表示などself-serviceへ移せるものを移す。"],
+  ["1", "反復問い合わせを減らす", "FAQ、guide、status表示など自分で確認できる仕組みへ移せるものを移す。"],
   ["2", "minimum information setを決める", "連携先ごとに、必須・任意・緊急時の情報を分ける。"],
-  ["3", "channelを用途別にする", "緊急、定型提出、非同期確認、status確認の経路を分ける。"],
-  ["4", "必要ならsystem・AIを加える", "network adoptionを確認し、AIは分類・要約・reply draft等の補助から試す。"],
+  ["3", "連絡手段を用途別にする", "緊急、定型提出、非同期確認、status確認の経路を分ける。"],
+  ["4", "必要ならシステム・AIを加える", "連携相手の導入状況を確認し、AIは分類・要約・返信の下書き等の補助から試す。"],
 ];
 
 const sources = [
   {
     title: "介護事業所におけるデータ連携による生産性向上に関する調査研究等一式 報告書",
-    note: "厚生労働省。ケアプラン・提供票共有の紙・FAX負担と、network adoptionの条件を確認。",
+    note: "厚生労働省。ケアプラン・提供票共有の紙・FAX負担と、連携相手の導入状況の条件を確認。",
     href: "https://www.mhlw.go.jp/content/12300000/R5_ICT_houkokusyo.pdf",
   },
   {
@@ -61,7 +61,7 @@ const sources = [
   },
   {
     title: "The Use of Health Information Exchange to Augment Patient Handoff in Long-Term Care",
-    note: "22研究のsystematic review。workflow integration、組織条件、missing dataなどを整理。",
+    note: "22研究のsystematic review。業務の流れ integration、組織条件、missing dataなどを整理。",
     href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6170191/",
   },
   {
@@ -89,7 +89,7 @@ export default function CommunicationCollaborationIssuePage() {
 
       <article className="issueDetail">
         <section className="issueHero">
-          <p className="eyebrow">Issue 04 / Communication & collaboration</p>
+          <p className="eyebrow">困りごと 04</p>
           <h1>問い合わせ・連携の<br />負担が大きい。</h1>
           <p className="lead">
             電話、FAX、メール、システム、確認の折り返し。
@@ -104,23 +104,23 @@ export default function CommunicationCollaborationIssuePage() {
         </section>
 
         <section className="section issueSummary">
-          <p className="eyebrow">Conclusion</p>
+          <p className="eyebrow">結論</p>
           <h2>減らすのは「必要な相談」ではなく、不要な往復です。</h2>
           <p className="summaryLead">
             まず、問い合わせと連携を種類ごとに分けます。定型確認はFAQやstatus表示へ、
-            定型共有はstructured formやdata exchangeへ、判断を伴う相談は人間へ、
+            定型共有は入力項目をそろえた様式やdata exchangeへ、判断を伴う相談は人間へ、
             緊急連絡は独立した経路へ残します。
           </p>
           <p>
             連携systemは自施設だけ導入しても価値が出ない場合があります。
-            相手側の採用、二重入力、fallbackまで含めて判断し、AIは分類・要約・draftなどの補助から始めます。
+            相手側の採用、二重入力、代替手順まで含めて判断し、AIは分類・要約・下書きなどの補助から始めます。
           </p>
         </section>
 
         <section className="section">
           <div className="sectionHead">
-            <p className="eyebrow">What the evidence suggests</p>
-            <h2>連携負担は、channelよりworkflowで決まります。</h2>
+            <p className="eyebrow">根拠から分かること</p>
+            <h2>連携負担は、連絡手段より業務の流れで決まります。</h2>
             <p>
               数値は調査対象・sample条件に依存します。全国の一般値や単独systemの効果としては扱いません。
             </p>
@@ -142,7 +142,7 @@ export default function CommunicationCollaborationIssuePage() {
           <div className="sectionHead">
             <p className="eyebrow">Four types</p>
             <h2>問い合わせ・連携を四つに分けます。</h2>
-            <p>全部を同じinbox、同じAI、同じsystemへ流さないことが最初の設計です。</p>
+            <p>全部を同じ受信窓口、同じAI、同じシステムへ流さないことが最初の設計です。</p>
           </div>
           <ol className="levelList">
             {types.map(([number, title, body]) => (
@@ -159,7 +159,7 @@ export default function CommunicationCollaborationIssuePage() {
 
         <section className="section">
           <div className="sectionHead">
-            <p className="eyebrow">Improvement order</p>
+            <p className="eyebrow">改善の順序</p>
             <h2>窓口を増やす前に、問い合わせを減らします。</h2>
           </div>
           <ol className="levelList">
@@ -177,16 +177,16 @@ export default function CommunicationCollaborationIssuePage() {
 
         <section className="section">
           <div className="sectionHead">
-            <p className="eyebrow">AI / non-AI</p>
-            <h2>AIより先に、channelと責任分担を整理します。</h2>
+            <p className="eyebrow">AIを使う方法・使わない方法</p>
+            <h2>AIより先に、連絡手段と責任分担を整理します。</h2>
           </div>
           <div className="findingList">
             <div className="findingRow">
               <span className="findingLabel">非AI</span>
               <div>
-                <h3>FAQ・shared inbox・structured form・data exchange</h3>
+                <h3>FAQ・shared 受信窓口・入力項目をそろえた様式・data exchange</h3>
                 <p>
-                  status page、contact matrix、escalation rule、templateなどで
+                  status page、contact matrix、担当者への引き継ぎ rule、定型様式などで
                   反復確認や二重連絡を減らせるなら、生成AIを追加しません。
                 </p>
               </div>
@@ -194,9 +194,9 @@ export default function CommunicationCollaborationIssuePage() {
             <div className="findingRow">
               <span className="findingLabel">AI</span>
               <div>
-                <h3>分類・要約・reply draftから</h3>
+                <h3>分類・要約・返信の下書きから</h3>
                 <p>
-                  AIを使う場合は、問い合わせ分類、FAQ候補、長文要約、返信下書き、escalation候補などから試します。
+                  AIを使う場合は、問い合わせ分類、FAQ候補、長文要約、返信下書き、担当者への引き継ぎ候補などから試します。
                   個別ケア判断、医療判断、制度上の確定判断はAI単独で返しません。
                 </p>
               </div>
@@ -205,7 +205,7 @@ export default function CommunicationCollaborationIssuePage() {
         </section>
 
         <section className="section experiment">
-          <p className="eyebrow">Small experiment</p>
+          <p className="eyebrow">小さく試す</p>
           <h2>2週間、問い合わせの「往復」を測ります。</h2>
           <p>
             通話内容や個人情報を保存する必要はありません。categoryと処理負担だけで十分です。
@@ -214,31 +214,31 @@ export default function CommunicationCollaborationIssuePage() {
             <div>
               <span>01</span>
               <strong>記録</strong>
-              <p>theme、channel、回答時間、往復回数を記録する。</p>
+              <p>theme、連絡手段、回答時間、往復回数を記録する。</p>
             </div>
             <div>
               <span>02</span>
               <strong>分類</strong>
-              <p>eliminate、self-service、structured exchange、human judgment、emergencyに分ける。</p>
+              <p>eliminate、自分で確認できる仕組み、様式をそろえた情報交換、human judgment、emergencyに分ける。</p>
             </div>
             <div>
               <span>03</span>
               <strong>上位3つだけ改善</strong>
-              <p>FAQ、form、status表示、channel整理など最小変更を入れる。</p>
+              <p>FAQ、form、status表示、連絡手段整理など最小変更を入れる。</p>
             </div>
             <div>
               <span>04</span>
               <strong>再測定</strong>
-              <p>件数、往復回数、response time、二重入力、escalationを比較する。</p>
+              <p>件数、往復回数、response time、二重入力、担当者への引き継ぎを比較する。</p>
             </div>
           </div>
         </section>
 
         <section className="section boundary">
-          <p className="eyebrow">Safety boundary</p>
+          <p className="eyebrow">運用上の注意</p>
           <h2>問い合わせ削減が、相談抑制にならないようにします。</h2>
           <p>
-            self-serviceや自動応答を強くしすぎると、必要な相談まで止まる可能性があります。
+            自分で確認できる仕組みや自動応答を強くしすぎると、必要な相談まで止まる可能性があります。
             急変・事故・専門判断などは通常queueと分け、すぐ人間へ到達できる経路を維持します。
           </p>
           <p>
@@ -252,7 +252,7 @@ export default function CommunicationCollaborationIssuePage() {
 
         <section className="section" id="evidence">
           <div className="sectionHead">
-            <p className="eyebrow">Evidence</p>
+            <p className="eyebrow">根拠</p>
             <h2>主な根拠</h2>
             <p>
               日本の公的調査、国内研究、systematic reviewを区別して扱います。
@@ -273,23 +273,23 @@ export default function CommunicationCollaborationIssuePage() {
         </section>
 
         <section className="section nextIssue">
-          <p className="eyebrow">What we still do not know</p>
+          <p className="eyebrow">まだ分からないこと</p>
           <h2>まだ結論を出していないこと</h2>
           <ul>
             <li>日本の介護事業所で、問い合わせ対応に実際どれだけ時間が使われているか。</li>
             <li>ケアマネジャー・サービス事業所間で、同じ情報が何回往復しているか。</li>
             <li>data exchangeのcurrent adoptionが、どの程度network valueを生んでいるか。</li>
-            <li>family communicationでは、どのchannel設計が負担と満足度を両立するか。</li>
-            <li>AIによるrouting・reply draftの修正時間まで含めて効果が残るか。</li>
+            <li>family communicationでは、どの連絡手段設計が負担と満足度を両立するか。</li>
+            <li>AIによる問い合わせの振り分け・返信の下書きの修正時間まで含めて効果が残るか。</li>
           </ul>
           <p>
-            ここは推測で埋めず、実利用log、公的調査、独立研究が得られた段階で更新します。
+            ここは推測で埋めず、実際の利用記録、公的調査、独立研究が得られた段階で更新します。
           </p>
         </section>
       </article>
 
       <footer>
-        <span>介護業務改善 — evidence-informed prototype</span>
+        <span>介護業務改善 — 根拠に基づく試作版</span>
         <span>初版: 2026-09-30</span>
       </footer>
     </main>

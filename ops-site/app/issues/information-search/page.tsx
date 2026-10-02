@@ -77,7 +77,7 @@ export default function InformationSearchIssuePage() {
 
       <article className="issueDetail">
         <section className="issueHero">
-          <p className="eyebrow">Issue 01 / Information search</p>
+          <p className="eyebrow">困りごと 01</p>
           <h1>必要な情報を探すのに<br />時間がかかる。</h1>
           <p className="lead">
             制度、通知、Q&A、マニュアル、事業所内資料。情報が増えるほど、
@@ -92,7 +92,7 @@ export default function InformationSearchIssuePage() {
         </section>
 
         <section className="section issueSummary">
-          <p className="eyebrow">Conclusion</p>
+          <p className="eyebrow">結論</p>
           <h2>先に整えるのは、AIではなく情報の土台です。</h2>
           <p className="summaryLead">
             現時点の調査では、情報探索の負担は「検索が弱い」だけでは説明できません。
@@ -106,7 +106,7 @@ export default function InformationSearchIssuePage() {
 
         <section className="section">
           <div className="sectionHead">
-            <p className="eyebrow">What the evidence suggests</p>
+            <p className="eyebrow">根拠から分かること</p>
             <h2>見えてきた三つの論点</h2>
             <p>数値は効果を一般化するためではなく、問題の所在を把握する材料として扱います。</p>
           </div>
@@ -186,7 +186,7 @@ export default function InformationSearchIssuePage() {
         </section>
 
         <section className="section experiment">
-          <p className="eyebrow">Small experiment</p>
+          <p className="eyebrow">小さく試す</p>
           <h2>自分の現場では、よく聞かれる10問から測れます。</h2>
           <p>
             まず、職員や事業所から繰り返し出る質問を10問程度選びます。
@@ -218,7 +218,7 @@ export default function InformationSearchIssuePage() {
         </section>
 
         <section className="section boundary">
-          <p className="eyebrow">Safety boundary</p>
+          <p className="eyebrow">運用上の注意</p>
           <h2>制度情報は、検証状態を確認して使います。</h2>
           <p>
             介護ルールでは、機械取込・独立監査・人手確認を分けて管理しています。
@@ -232,7 +232,7 @@ export default function InformationSearchIssuePage() {
 
         <section className="section" id="evidence">
           <div className="sectionHead">
-            <p className="eyebrow">Evidence</p>
+            <p className="eyebrow">根拠</p>
             <h2>主な根拠</h2>
             <p>
               調査では国内外の資料を比較しています。ここでは、このページの主要な判断に使った資料を示します。
@@ -253,7 +253,7 @@ export default function InformationSearchIssuePage() {
         </section>
 
         <section className="section nextIssue">
-          <p className="eyebrow">What we still do not know</p>
+          <p className="eyebrow">まだ分からないこと</p>
           <h2>まだ結論を出していないこと</h2>
           <ul>
             <li>固定benchmark以外の実利用queryでも同じ検索性能が再現するか。</li>
@@ -269,7 +269,7 @@ export default function InformationSearchIssuePage() {
       </article>
 
       <footer>
-        <span>介護業務改善 — evidence-informed prototype</span>
+        <span>介護業務改善 — 根拠に基づく試作版</span>
         <span>最終更新: 2026-09-29</span>
       </footer>
     </main>

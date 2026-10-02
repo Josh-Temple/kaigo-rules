@@ -4,7 +4,7 @@ import IssueNavigation from "../_components/IssueNavigation";
 export const metadata: Metadata = {
   title: "職員教育・引き継ぎが属人化する | 介護業務改善",
   description:
-    "介護現場の研修・引き継ぎ・質問対応を、正本化、検索、短い教材、peer learning、必要に応じたAI検索の順にどう改善するかを整理します。",
+    "介護現場の研修・引き継ぎ・質問対応を、正本化、検索、短い教材、職員同士の学び合い、必要に応じたAI検索の順にどう改善するかを整理します。",
 };
 
 const findings = [
@@ -16,15 +16,15 @@ const findings = [
   },
   {
     label: "19 reviews",
-    title: "継続教育・peer-led trainingには改善signal",
+    title: "継続教育・職員が教え合う研修には改善の傾向",
     body:
-      "2026年のLTC workforce umbrella reviewでは、19件のreviewを統合し、継続教育やpeer-led trainingが知識・competencyを改善する傾向を報告しました。ただしEvidenceの質とoutcomeはばらつきがあります。",
+      "2026年の長期ケア職員に関する複数のレビューをまとめた研究では、19件のレビューを統合し、継続教育や職員が教え合う研修が知識・実務能力を改善する傾向を報告しました。ただし根拠の質と評価した成果はばらつきがあります。",
   },
   {
     label: "3 studies",
     title: "digital toolの定着には教育と組織支援が必要",
     body:
-      "geriatric LTC nursing staffのdigital technology acceptanceを扱ったsystematic reviewでは、digital competence、training、leadership support、staff participationなどが要因として挙げられました。eligible studyは3件と少なく、一般化には限界があります。",
+      "高齢者の長期ケアに従事する看護職員のデジタル技術受容を扱った体系的な文献レビューでは、デジタル活用能力、研修、管理職の支援、職員の参加などが要因として挙げられました。対象研究は3件と少なく、一般化には限界があります。",
   },
 ];
 
@@ -42,7 +42,7 @@ const knowledgeTypes = [
   [
     "C",
     "経験知・専門判断",
-    "利用者ごとの状況判断、例外対応、対人調整。mentor、peer review、case discussionで扱い、AIの確定回答にしない。",
+    "利用者ごとの状況判断、例外対応、対人調整。指導担当者、職員同士の確認、事例検討で扱い、AIの確定回答にしない。",
   ],
 ];
 
@@ -50,7 +50,7 @@ const steps = [
   ["0", "質問を記録する", "誰が何を何度聞いているかを、個人情報を含めずcategoryで把握する。"],
   ["1", "正本を決める", "反復質問についてowner、version、updated_at、対象職種・場面を決める。"],
   ["2", "短く学べる形にする", "FAQ、checklist、microlearning、短い動画など、必要な場面で開ける形にする。"],
-  ["3", "peer learningを残す", "文書化しにくい経験知はmentor、case discussion、peer reviewで扱う。"],
+  ["3", "職員同士の学び合いを残す", "文書化しにくい経験知は指導担当者、事例検討、職員同士の確認で扱う。"],
   ["4", "必要ならAI検索を加える", "正本への入口として使い、source・version・scope・不確実性を確認できるようにする。"],
 ];
 
@@ -61,8 +61,8 @@ const sources = [
     href: "https://www.mhlw.go.jp/content/12300000/001712213.pdf",
   },
   {
-    title: "Strategies to improve recruitment, retention, working conditions, and skills among the long-term care workforce",
-    note: "2026年のumbrella review。19件のreviewを統合し、training・skills developmentのEvidenceを整理。",
+    title: "Strategies to improve recruitment, 保存期間, working conditions, and skills among the long-term care workforce",
+    note: "2026年の複数レビューを統合した研究。19件のレビューから、研修・技能開発の根拠を整理。",
     href: "https://www.sciencedirect.com/science/article/pii/S0168851025002507",
   },
   {
@@ -72,7 +72,7 @@ const sources = [
   },
   {
     title: "Communities of Practice in Long-Term Care—Exploring Frameworks, Barriers and Enablers",
-    note: "2026年のsystematic review。LTCでのpeer learningとevidence implementationの条件を整理。",
+    note: "2026年のsystematic review。LTCでの職員同士の学び合いとevidence implementationの条件を整理。",
     href: "https://onlinelibrary.wiley.com/doi/10.1111/ajag.70207",
   },
   {
@@ -100,7 +100,7 @@ export default function TrainingHandoverIssuePage() {
 
       <article className="issueDetail">
         <section className="issueHero">
-          <p className="eyebrow">Issue 03 / Training & handover</p>
+          <p className="eyebrow">困りごと 03</p>
           <h1>職員教育・引き継ぎが<br />属人化する。</h1>
           <p className="lead">
             「詳しい人に聞く」が続くと、その人が休むだけで仕事が止まります。
@@ -109,13 +109,13 @@ export default function TrainingHandoverIssuePage() {
           </p>
           <div className="issueMeta">
             <span>初版: 2026-09-30</span>
-            <span>対象: 研修・onboarding・質問対応・引き継ぎ</span>
+            <span>対象: 研修・新人受け入れ・質問対応・引き継ぎ</span>
             <span>個別ケア判断は自動化対象外</span>
           </div>
         </section>
 
         <section className="section issueSummary">
-          <p className="eyebrow">Conclusion</p>
+          <p className="eyebrow">結論</p>
           <h2>属人化は、「人の知識をAIに移す」だけでは解けません。</h2>
           <p className="summaryLead">
             まず、繰り返し質問される内容を記録し、文書化できるものだけを正本化します。
@@ -123,14 +123,14 @@ export default function TrainingHandoverIssuePage() {
             それでも残る自然言語の探索負担にAIを検討します。
           </p>
           <p>
-            一方、利用者ごとの判断や例外対応のような経験知は、mentor、peer review、case discussionなど、
+            一方、利用者ごとの判断や例外対応のような経験知は、指導担当者、職員同士の確認、事例検討など、
             人同士で学ぶ経路を残します。全部を検索可能にすることより、どこから人間へ戻すかを決める方が重要です。
           </p>
         </section>
 
         <section className="section">
           <div className="sectionHead">
-            <p className="eyebrow">What the evidence suggests</p>
+            <p className="eyebrow">根拠から分かること</p>
             <h2>研修量より、学べる仕組みと運用条件を見ます。</h2>
             <p>
               研修形式だけで優劣を決めず、参加可能性、実務への接続、組織支援、更新責任まで含めて評価します。
@@ -172,8 +172,8 @@ export default function TrainingHandoverIssuePage() {
 
         <section className="section">
           <div className="sectionHead">
-            <p className="eyebrow">Improvement order</p>
-            <h2>質問logから、必要なところだけ仕組みにします。</h2>
+            <p className="eyebrow">改善の順序</p>
+            <h2>質問記録から、必要なところだけ仕組みにします。</h2>
           </div>
           <ol className="levelList">
             {steps.map(([number, title, body]) => (
@@ -190,17 +190,17 @@ export default function TrainingHandoverIssuePage() {
 
         <section className="section">
           <div className="sectionHead">
-            <p className="eyebrow">AI / non-AI</p>
+            <p className="eyebrow">AIを使う方法・使わない方法</p>
             <h2>AIは、教育そのものより「正本へたどる入口」から。</h2>
           </div>
           <div className="findingList">
             <div className="findingRow">
               <span className="findingLabel">非AI</span>
               <div>
-                <h3>FAQ・wiki・checklist・mentor</h3>
+                <h3>FAQ・wiki・checklist・指導担当者</h3>
                 <p>
-                  searchable manual、microlearning、short video、onboarding checklist、office hours、
-                  peer reviewなどで十分ならAIを追加しません。
+                  searchable manual、microlearning、short video、新人受け入れ checklist、office hours、
+                  職員同士の確認などで十分ならAIを追加しません。
                 </p>
               </div>
             </div>
@@ -218,7 +218,7 @@ export default function TrainingHandoverIssuePage() {
         </section>
 
         <section className="section experiment">
-          <p className="eyebrow">Small experiment</p>
+          <p className="eyebrow">小さく試す</p>
           <h2>2週間、質問の流れだけを測ります。</h2>
           <p>
             個人情報を含めず、誰にどんな質問が集中しているかをcategoryで記録します。
@@ -226,7 +226,7 @@ export default function TrainingHandoverIssuePage() {
           <div className="experimentGrid">
             <div>
               <span>01</span>
-              <strong>質問log</strong>
+              <strong>質問記録</strong>
               <p>質問theme、頻度、回答者、回答までの時間を記録する。</p>
             </div>
             <div>
@@ -242,7 +242,7 @@ export default function TrainingHandoverIssuePage() {
             <div>
               <span>04</span>
               <strong>再測定</strong>
-              <p>同じ質問回数、回答時間、誤った自己解決、expert escalationを確認する。</p>
+              <p>同じ質問回数、回答時間、誤った自己解決、expert 担当者への引き継ぎを確認する。</p>
             </div>
           </div>
           <p>
@@ -251,7 +251,7 @@ export default function TrainingHandoverIssuePage() {
         </section>
 
         <section className="section boundary">
-          <p className="eyebrow">Safety boundary</p>
+          <p className="eyebrow">運用上の注意</p>
           <h2>経験知を「正解集」に変えすぎない。</h2>
           <p>
             ベテランが普段していることの中には、正式な手順だけでなく、状況依存の判断や非公式なworkaroundも含まれます。
@@ -267,7 +267,7 @@ export default function TrainingHandoverIssuePage() {
 
         <section className="section" id="evidence">
           <div className="sectionHead">
-            <p className="eyebrow">Evidence</p>
+            <p className="eyebrow">根拠</p>
             <h2>主な根拠</h2>
             <p>
               日本の公的調査、systematic / umbrella review、海外case reportを区別して扱います。
@@ -288,10 +288,10 @@ export default function TrainingHandoverIssuePage() {
         </section>
 
         <section className="section nextIssue">
-          <p className="eyebrow">What we still do not know</p>
+          <p className="eyebrow">まだ分からないこと</p>
           <h2>まだ結論を出していないこと</h2>
           <ul>
-            <li>日本の介護現場で、onboardingや質問対応に実際どれだけ時間が使われているか。</li>
+            <li>日本の介護現場で、新人受け入れや質問対応に実際どれだけ時間が使われているか。</li>
             <li>microlearningやblended learningが介護現場でどの条件なら定着するか。</li>
             <li>AI assistantがFAQより優れる質問の種類は何か。</li>
             <li>誤答や古い知識を見逃さず更新できる運用コストはどれくらいか。</li>
@@ -304,7 +304,7 @@ export default function TrainingHandoverIssuePage() {
       </article>
 
       <footer>
-        <span>介護業務改善 — evidence-informed prototype</span>
+        <span>介護業務改善 — 根拠に基づく試作版</span>
         <span>初版: 2026-09-30</span>
       </footer>
     </main>
