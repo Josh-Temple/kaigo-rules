@@ -146,7 +146,7 @@ def review_prompt(classification: str) -> str:
 def build() -> dict:
     queue = load("relation-verification-queue.json")
     questions = {row["slug"]: row for row in load("questions.json")}
-    notice_rows = load("notice-current-skeleton.json") + load("notice-nodes.json")
+    notice_rows = load("notice-nodes.json") + load("notice-current-skeleton.json")
     notices = {row["id"]: row for row in notice_rows}
     fees = {row["id"]: row for row in load("remuneration-current-skeleton.json")}
     ordinance_articles = {
