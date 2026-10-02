@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DEFAULT_SERVICE_ID, listServices, servicePath } from "../../lib/service-catalog";
+import { DEFAULT_SERVICE_ID, listServices, serviceBasePath, publishedLayerLabels } from "../../lib/service-catalog";
 
 const publicServices = listServices().filter(
   (service) =>
@@ -24,14 +24,10 @@ export default function ServicesPage() {
 
       <div className="foundation-list">
         {publicServices.map((service, index) => {
-          const href =
-            service.service_id === "dayrehab"
-              ? servicePath(service.service_id, "/rules")
-              : servicePath(service.service_id, "/rules");
-          const detail =
-            service.service_id === "dayrehab"
-              ? "基準省令11条の本文を公開中"
-              : "介護保険法・基準・通知・報酬・Q&Aを公開中";
+          const href = service.service_id === DEFAULT_SERVICE_ID
+            ? "/overview"
+            : serviceBasePath(service.service_id);
+          const detail = publishedLayerLabels(service.service_id).join("・") + "を公開中";
           return (
             <Link className="foundation-row" href={href} key={service.service_id}>
               <span className="foundation-number">{String(index + 1).padStart(2, "0")}</span>
@@ -48,7 +44,7 @@ export default function ServicesPage() {
       <section className="section">
         <h2>未公開のサービス</h2>
         <p className="meta">
-          データ収集やcanonical統合が進んでいても、公開route・service scope・確認状態の条件を満たすまでは一覧に出しません。
+          資料の収集や整理が進んでいても、サービスごとの公開範囲と確認状態が整うまでは一覧に出しません。
         </p>
       </section>
     </article>

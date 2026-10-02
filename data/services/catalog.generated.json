@@ -26,7 +26,16 @@
         "fee": "fee.dayservice.",
         "fee_guidance": "fee-guidance.dayservice.",
         "notice": "notice.dayservice."
-      }
+      },
+      "verification_layer_ids": [
+        "rouki25-dayservice",
+        "rouki36-dayservice",
+        "remuneration-notices",
+        "unit-price",
+        "ordinance37",
+        "care-insurance-act",
+        "qa-corpus"
+      ]
     },
     {
       "service_id": "homevisit",
@@ -38,7 +47,8 @@
         "future_service_base_path": "/services/homevisit",
         "future_service_base_enabled": false
       },
-      "id_namespaces": {}
+      "id_namespaces": {},
+      "verification_layer_ids": []
     },
     {
       "service_id": "dayrehab",
@@ -50,7 +60,13 @@
         "future_service_base_path": "/services/dayrehab",
         "future_service_base_enabled": true
       },
-      "id_namespaces": {}
+      "id_namespaces": {},
+      "verification_layer_ids": [
+        "ordinance37-dayrehab",
+        "rouki25-dayrehab",
+        "remuneration-dayrehab",
+        "fee-guidance-dayrehab"
+      ]
     },
     {
       "service_id": "shortstay-life",
@@ -62,7 +78,8 @@
         "future_service_base_path": "/services/shortstay-life",
         "future_service_base_enabled": false
       },
-      "id_namespaces": {}
+      "id_namespaces": {},
+      "verification_layer_ids": []
     }
   ]
 }

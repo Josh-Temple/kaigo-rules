@@ -12,6 +12,7 @@ export type ServiceConfig = {
     future_service_base_enabled: boolean;
   };
   id_namespaces: Record<string, string>;
+  verification_layer_ids: string[];
 };
 
 type ServiceCatalog = {
@@ -83,4 +84,19 @@ export function feeHref(serviceId: string, feeId: string): string {
     serviceId,
     `/fees/${stripServiceNamespace(serviceId, "fee", feeId)}`
   );
+}
+
+// Describe only the layers explicitly registered for this service.
+export function publishedLayerLabels(serviceId: string): string[] {
+  const labels: Record<string, string> = {
+    "care-insurance-act": "介護保険法", ordinance37: "基準省令",
+    rouki25: "解釈通知", rouki36: "算定上の留意事項", remuneration: "報酬基準",
+    "remuneration-notices": "報酬基準",
+    "fee-guidance": "算定上の留意事項", "unit-price": "一単位単価",
+    "qa-corpus": "国Q&A",
+  };
+  return getService(serviceId).verification_layer_ids.flatMap((id) => {
+    const base = id.replace(new RegExp(`-${serviceId}$`), "");
+    return labels[base] ? [labels[base]] : [];
+  });
 }

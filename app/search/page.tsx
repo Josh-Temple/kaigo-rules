@@ -201,7 +201,7 @@ export default async function SearchPage({
                   </article>
                 ))}
               </div>
-            ) : <p className="meta">該当なし</p>}
+            ) : <p className="meta">キーワードの直接一致なし</p>}
           </section>
 
           <QuestionAuthorityPanel
@@ -210,7 +210,7 @@ export default async function SearchPage({
           />
 
           <section className="section">
-            <h2>解釈通知 <span className="meta">({noticeMatches.length}件)</span></h2>
+            <h2>キーワードで一致した解釈通知 <span className="meta">({noticeMatches.length}件)</span></h2>
             {noticeMatches.length ? (
               <div className="source-chain">
                 {noticeMatches.slice(0, LIMIT).map((notice) => {
@@ -237,12 +237,12 @@ export default async function SearchPage({
                   );
                 })}
               </div>
-            ) : <p className="meta">該当なし</p>}
+            ) : <p className="meta">キーワードの直接一致なし</p>}
             {noticeMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
           <section className="section">
-            <h2>基準省令 <span className="meta">({ruleMatches.length}条)</span></h2>
+            <h2>キーワードで一致した基準省令 <span className="meta">({ruleMatches.length}条)</span></h2>
             {ruleMatches.length ? (
               <div className="rules-list">
                 {ruleMatches.slice(0, LIMIT).map((article) => (
@@ -255,12 +255,12 @@ export default async function SearchPage({
                   </Link>
                 ))}
               </div>
-            ) : <p className="meta">該当なし</p>}
+            ) : <p className="meta">キーワードの直接一致なし</p>}
             {ruleMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
           <section className="section">
-            <h2>報酬告示 <span className="meta">({feeMatches.length}項目)</span></h2>
+            <h2>キーワードで一致した報酬告示 <span className="meta">({feeMatches.length}項目)</span></h2>
             {feeMatches.length ? (
               <div className="fee-list">
                 {feeMatches.slice(0, LIMIT).map((node) => {
@@ -279,12 +279,12 @@ export default async function SearchPage({
                   );
                 })}
               </div>
-            ) : <p className="meta">該当なし</p>}
+            ) : <p className="meta">キーワードの直接一致なし</p>}
             {feeMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
           <section className="section">
-            <h2>国Q&A <span className="meta">({qaMatches.length}件)</span></h2>
+            <h2>キーワードで一致した国Q&A <span className="meta">({qaMatches.length}件)</span></h2>
             {qaMatches.length ? (
               <>
                 <div className="qa-list">
@@ -306,7 +306,7 @@ export default async function SearchPage({
                   </Link>
                 </p>
               </>
-            ) : <p className="meta">該当なし</p>}
+            ) : <p className="meta">キーワードの直接一致なし</p>}
           </section>
         </>
       )}

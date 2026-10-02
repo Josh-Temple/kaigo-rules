@@ -18,15 +18,12 @@
 
 ## Current verification status
 
-2026-09-24時点の検証状態は、主要データレイヤーとsemantic / cross-layer relationを分けて管理します。
+現在の検証状態は `data/verification-registry.json`、公開範囲の集計は
+`data/product-value-snapshot-v0.1.json` を正本として確認します。
 
-- 主要データレイヤー: 7/7で独立監査・再構成あり、7/7でcurrentness / live-source monitoringが有効
-- 人手確認済みレイヤー: 0
-- 老企第25号 通所介護22項目: 本文再構成は独立照合PASS、currentnessは22項目すべてHOLD、MISMATCH 0
-- semantic / cross-layer relation: 163件中56件を独立確認済み、107件は未独立確認
-- relation監査のPASSは、`HUMAN_VERIFIED` や `VERIFIED_CURRENT` への自動昇格を意味しない
-
-集約状態は `data/verification-registry.json` を正本として確認します。
+本文の独立機械照合、現行性、人手確認、relationの検証は別に管理します。
+根拠・scope・確認状態がすべて記録されていることは、内容の現行性や人手確認済みを意味しません。
+各サービスの確認結果は他サービスへ自動継承しません。
 
 ## Product entry points
 

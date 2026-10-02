@@ -50,6 +50,16 @@ jobs:
           name: fee-guidance-currentness-watch
           path: fee-guidance-currentness-watch.json
           if-no-files-found: warn
+      - name: Recheck dayrehab remuneration and guidance source inventory
+        if: always()
+        run: python scripts/verify_dayrehab_fee_layers_independent.py --report dayrehab-fee-source-watch.json
+      - name: Upload dayrehab source report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: dayrehab-fee-source-watch
+          path: dayrehab-fee-source-watch.json
+          if-no-files-found: warn
       - name: Summarize
         if: always()
         run: |
@@ -57,6 +67,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "Read-only monitoring only. PASS does not prove absence of unindexed amendments." >> "$GITHUB_STEP_SUMMARY"
           echo "No HUMAN_VERIFIED / VERIFIED_CURRENT state is changed." >> "$GITHUB_STEP_SUMMARY"
+          echo "Dayrehab remuneration and guidance: bounded official-source inventory recheck only; later amendment coverage remains unresolved." >> "$GITHUB_STEP_SUMMARY"
       - name: Require review when a watch trigger is detected
         if: steps.watch.outputs.exit_code != '0'
         run: exit 1
