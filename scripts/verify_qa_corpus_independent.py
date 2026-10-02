@@ -65,9 +65,18 @@ def leading_code(value: str, width: int) -> str:
     match = re.match(r"\s*(\d{1,2})", text)
     return match.group(1).zfill(width) if match else ""
 
+def leading_service_code(value: str) -> str:
+    text = unicodedata.normalize("NFKC", value)
+    match = re.match(r"\s*(\d{1,2}|XX)", text, re.I)
+    if not match:
+        return ""
+    token = match.group(1).upper()
+    return token.zfill(2) if token.isdigit() else token
+
 def scope_label(value: str) -> str:
     text = unicodedata.normalize("NFKC", clean(value))
-    return re.sub(r"^\s*\d{1,2}\s*[.．]?\s*", "", text).strip()
+    first_line = text.splitlines()[0] if text else ""
+    return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
 
 
 def stable_id(row: dict) -> str:
@@ -351,7 +360,7 @@ def parse_xlsx(payload: bytes):
             if not question or not answer:
                 continue
 
-            service_code = leading_code(service_raw, 2)
+            service_code = leading_service_code(service_raw)
             if not service_code:
                 unclassified_rows.append(rowx + 1)
                 continue
