@@ -1,0 +1,287 @@
+{
+  "format_version": 1,
+  "scope": "homevisit-rouki25-official-historical-html-section",
+  "audit_kind": "INDEPENDENT_HOMEVISIT_ROUKI25_HISTORICAL_SOURCE_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-03",
+  "audit_run": {
+    "workflow": "Materialize verified homevisit Rouki 25 dataset",
+    "run_id": 37079388166,
+    "head_sha": "29c24dd7ef7bcb38852cd01fe3d74dc3dccc4a8e",
+    "parser": "regex_html_text_extractor_independent_of_htmlparser_importer",
+    "verification_report_sha256": "178700b45128ffa4aa63e0277c2bdecf7989663061a7b8c2ba075671f70e05bd"
+  },
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604"
+  },
+  "checks": [
+    {
+      "id": "homevisit.rouki25.1.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "b09d7654770234bb1bee6925654085425abf4a2a24af925fa3e2a3710e9d523f",
+      "source_locator": "第三 訪問介護に関する基準 / 1 人員に関する基準 / (1)"
+    },
+    {
+      "id": "homevisit.rouki25.1.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "015500c78783d7d462ad2143c3f2efbb64ec26d7e2b2c30d591afffed43f0843",
+      "source_locator": "第三 訪問介護に関する基準 / 1 人員に関する基準 / (2)"
+    },
+    {
+      "id": "homevisit.rouki25.1.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "6abe53911472ae4315a188dea528d57f8a04e5dd504d0a24072da80fb24946bd",
+      "source_locator": "第三 訪問介護に関する基準 / 1 人員に関する基準 / (3)"
+    },
+    {
+      "id": "homevisit.rouki25.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "2ed69c324c5bebe81d55e600962f3991e89fe718cf96f27925360035304959c5",
+      "source_locator": "第三 訪問介護に関する基準 / 2 設備に関する基準"
+    },
+    {
+      "id": "homevisit.rouki25.3.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "7ed7b987967c9ab3b59e35ef8edccb1e2a09e0b706560430ac94027025158bad",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (1)"
+    },
+    {
+      "id": "homevisit.rouki25.3.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "2e0a15dd4f807fb94d540d9fe42dd6090b721525a588610406c6e9e04a9fdd10",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (2)"
+    },
+    {
+      "id": "homevisit.rouki25.3.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "7d7f2a4295ad2c66c0386671183bae6bd0459222b54157c3d4049fcc662abccc",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (3)"
+    },
+    {
+      "id": "homevisit.rouki25.3.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "b2284f8971e797c4c767933bcf64f0c68e5f1ed5fc3fcf181f1a08224a20fa34",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (4)"
+    },
+    {
+      "id": "homevisit.rouki25.3.5",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "8d21e8793e2b130399e4af7b4b31a2be6d50b52fe85254b5500975a75b947148",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (5)"
+    },
+    {
+      "id": "homevisit.rouki25.3.6",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "22935ab120283ddba8cb2f87e579599f2d0a3779125e9de3455e3317c0e913c4",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (6)"
+    },
+    {
+      "id": "homevisit.rouki25.3.7",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "e9919c36b9813250d19cb2c3facf883a019592f1ce8c22f5e658a603e2558af2",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (7)"
+    },
+    {
+      "id": "homevisit.rouki25.3.8",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "a538e8708123cec154b3cf8f7cf4f2fba1372418d2c459c71bc0874a97b6fa02",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (8)"
+    },
+    {
+      "id": "homevisit.rouki25.3.9",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "27243e56c0f6f98e950bb3d5fb6a1ba05350750a5d36b4419a4eb9061563362a",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (9)"
+    },
+    {
+      "id": "homevisit.rouki25.3.10",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "7cfaf686a9b03681d298578808784cb1b3eae7b6466c7acc6efa4ea18d39d437",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (10)"
+    },
+    {
+      "id": "homevisit.rouki25.3.11",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "1703c9686195cb1ddb9ab345c63483b32eeb2e8e3944e903fa57ee773809d556",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (11)"
+    },
+    {
+      "id": "homevisit.rouki25.3.12",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "743a428b387b2a5564bf2b121c8df47b0f4d7717bd447839376150282d840bdc",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (12)"
+    },
+    {
+      "id": "homevisit.rouki25.3.13",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "801c8262759ee49eb1c38407d8f936a86ca7b091fb26600d74067d82f0c6d8ad",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (13)"
+    },
+    {
+      "id": "homevisit.rouki25.3.14",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "9934f0e5e14cdb012fb1f3b153e7e723288b4bbdad7ebf6094b01ff391c64412",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (14)"
+    },
+    {
+      "id": "homevisit.rouki25.3.15",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "0a50e7bbc93e382eb09ec88d0594da406085655889084a39d98c78bddfe5a05a",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (15)"
+    },
+    {
+      "id": "homevisit.rouki25.3.16",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "263be5d0e59d341385e8a7d365f6d46fa36db250ac145b81ca4c526ffa1b34ec",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (16)"
+    },
+    {
+      "id": "homevisit.rouki25.3.17",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "285ff383817bf86fe4a835c65c244872eff8c49517215860d0bbe203f7775618",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (17)"
+    },
+    {
+      "id": "homevisit.rouki25.3.18",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "820cab97caae5640376c7f6dcb2e84d8858571be999ee96e90316266c8f5c6b3",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (18)"
+    },
+    {
+      "id": "homevisit.rouki25.3.19",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "d30e44da4b7c3796104c79f8b06a5e90e3dce9c01bc649b87472b3bbe362ff3c",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (19)"
+    },
+    {
+      "id": "homevisit.rouki25.3.20",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "f6416be6bd921b0b45a8b1df0c6476a59c6c56ba41c9ea0c456a1cb0c41db198",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (20)"
+    },
+    {
+      "id": "homevisit.rouki25.3.21",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "da3529a23b1e72e64028cd452b83adbf8fb7036dd7c1afc8fd20e69aedad9da5",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (21)"
+    },
+    {
+      "id": "homevisit.rouki25.3.22",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "ea5bac5ecc6186040d36059d6c839d25585ea667f7b66592ce436ef80d5889c0",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (22)"
+    },
+    {
+      "id": "homevisit.rouki25.3.23",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "0dd7ca18321f33cad600f706e46bf11e8fe3b0a0547de03055bc8313d1eb5448",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (23)"
+    },
+    {
+      "id": "homevisit.rouki25.3.24",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "424c9ed57e6fbbe50ad43e72305f6125a06ba51a7e9080b30eb90fe0c14ee0fe",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (24)"
+    },
+    {
+      "id": "homevisit.rouki25.3.25",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "c25bb969162f0d22bc687426943b5bc75d1c63f45f1d37685e894ba50781aed6",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (25)"
+    },
+    {
+      "id": "homevisit.rouki25.3.26",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "88f93e2763b1c2b1feba86b96d0e6dd562e399759fd684c1ae22e1231cd2abe3",
+      "source_locator": "第三 訪問介護に関する基準 / 3 運営に関する基準 / (26)"
+    },
+    {
+      "id": "homevisit.rouki25.4.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "ab1f5c38dcfffb659ed1667c76c21f606e403127e0e34dac74458020e14fb50a",
+      "source_locator": "第三 訪問介護に関する基準 / 4 基準該当訪問介護に関する基準 / (1)"
+    },
+    {
+      "id": "homevisit.rouki25.4.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "b88ff0f70ea574e152b7301a4cf4b057bdd27ae0577cc1a5ed3377e1f769adde",
+      "source_locator": "第三 訪問介護に関する基準 / 4 基準該当訪問介護に関する基準 / (2)"
+    },
+    {
+      "id": "homevisit.rouki25.4.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "365faa7ef906eab99049badeb80d9ab6aee3c89d9bebb8cae5b775e12c31ce36",
+      "source_locator": "第三 訪問介護に関する基準 / 4 基準該当訪問介護に関する基準 / (3)"
+    },
+    {
+      "id": "homevisit.rouki25.4.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "95a7929bb5c4d4fa4d3f372c96a36ce71c689883b6d4962e38192d4f3a5fd8c1",
+      "source_locator": "第三 訪問介護に関する基準 / 4 基準該当訪問介護に関する基準 / (4)"
+    },
+    {
+      "id": "homevisit.rouki25.4.5",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "d2527ff2fec8fe6be45231af21d41c0e653bd09524139d2ec59bd5424137665a",
+      "source_locator": "第三 訪問介護に関する基準 / 4 基準該当訪問介護に関する基準 / (5)"
+    }
+  ],
+  "coverage": {
+    "principal_items": 35,
+    "items_passed": 35
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/services/homevisit/rouki25-scope.json": "1f24351c04fb4a472632c9bd78e3c5945b32c499",
+    "data/services/homevisit/rouki25-historical.generated.json": "ba6450a143be61033bdcbbfcd167663149a0575e",
+    "scripts/verify_homevisit_rouki25_historical_independent.py": "842f89dab0f4c08cc18409c89849564101d34229"
+  },
+  "conclusion": "All 35 principal items in the bounded homevisit Rouki 25 historical HTML section matched the official MHLW source under an independent text-extraction path.",
+  "limitations": [
+    "This proves historical-source transcription, not current integrated notice text.",
+    "The R6 old/new comparison remains separate amendment evidence and omitted text is not reconstructed.",
+    "Human review and exhaustive currentness review are not complete."
+  ],
+  "safety": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
