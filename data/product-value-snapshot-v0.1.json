@@ -146,9 +146,9 @@
     },
     "unresolved_or_unverified_relations": {
       "relations_total": 188,
-      "relations_independently_verified": 108,
-      "relations_remaining_unverified": 80,
-      "remaining_rate": 0.425532,
+      "relations_independently_verified": 125,
+      "relations_remaining_unverified": 63,
+      "remaining_rate": 0.335106,
       "lane_breakdown": [
         {
           "id": "explicit-legal-reference",
@@ -191,6 +191,12 @@
           "status": "PASS",
           "verified_relations": 24,
           "evidence": "data/fee-guidance-relation-independent-audit.json"
+        },
+        {
+          "id": "notice-ordinance-explicit-reference",
+          "status": "PASS",
+          "verified_relations": 17,
+          "evidence": "data/notice-ordinance-explicit-reference-derived-audit.json"
         }
       ]
     }
