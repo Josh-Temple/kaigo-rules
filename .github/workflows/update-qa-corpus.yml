@@ -7,6 +7,7 @@ on:
     paths:
       - ".github/workflows/update-qa-corpus.yml"
       - "scripts/import_mhlw_qa.py"
+      - "scripts/verify_qa_corpus_independent.py"
       - "scripts/suggest-qa-links.mjs"
       - "scripts/validate-data.mjs"
 
