@@ -119,18 +119,30 @@ def leading_code(value: str, width: int) -> str:
     m = re.match(r"\s*(\d{1,2})", text)
     return m.group(1).zfill(width) if m else ""
 
-def leading_service_code(value: str) -> str:
+def source_service_code(value: str) -> str:
     text = unicodedata.normalize("NFKC", value)
     m = re.match(r"\s*(\d{1,2}|XX)", text, re.I)
     if not m:
         return ""
-    token = m.group(1).upper()
-    return token.zfill(2) if token.isdigit() else token
+    return m.group(1).upper()
 
 def scope_label(value: str) -> str:
     text = unicodedata.normalize("NFKC", clean(value))
     first_line = text.splitlines()[0] if text else ""
     return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
+
+LEGACY_COMPATIBLE_CODES = {
+    "全サービス共通": "01",
+    "居宅サービス共通": "02",
+    "通所系サービス共通": "06",
+    "通所介護事業": "16",
+}
+
+def canonical_service_code(scope: str) -> str:
+    if scope in LEGACY_COMPATIBLE_CODES:
+        return LEGACY_COMPATIBLE_CODES[scope]
+    digest = hashlib.sha256(scope.encode("utf-8")).hexdigest()[:10]
+    return "scope-" + digest
 
 def canonical_service_code(value: str) -> str:
     scope = scope_label(value)
@@ -161,6 +173,11 @@ def find_header(sheet):
             elif value == "番号" or value.endswith("番号"):
                 mapping.setdefault("number", colx)
         if required.issubset(mapping):
+            service_col = mapping["service"]
+            if rowx + 1 < sheet.nrows and service_col + 1 < sheet.ncols:
+                next_header = norm(sheet.cell_value(rowx + 1, service_col + 1))
+                if "qa以降" in next_header or "q&a以降" in next_header:
+                    mapping["service_new"] = service_col + 1
             return rowx, mapping
     return None, None
 
@@ -284,14 +301,7 @@ def main():
         previous = scope_by_code.setdefault(item["service_code"], item["scope"])
         if previous != item["scope"]:
             raise RuntimeError(
-                "Inconsistent service label for "
-                + item["service_code"]
-                + ": "
-                + repr(previous)
-                + " vs "
-                + repr(item["scope"])
-                + " / raw="
-                + repr(item["service_label"])
+                f"Canonical service-code collision for {item['service_code']}: {previous!r} vs {item['scope']!r}"
             )
 
     out = Path(args.out)
