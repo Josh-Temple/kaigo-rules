@@ -41,12 +41,6 @@
     "qa-corpus"
   ],
   "readiness": "ACTIVE_MVP",
-  "publication_gate": {
-    "public_routes_enabled": true,
-    "content_ingested": true,
-    "independent_verification_complete": true,
-    "human_review_complete": false
-  },
   "ingestion_layers": {
     "rouki25": {
       "status": "RECONSTRUCTED_CANDIDATES_PUBLISHED_CURRENTNESS_HOLD",
