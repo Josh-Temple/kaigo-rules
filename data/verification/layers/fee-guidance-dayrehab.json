@@ -14,8 +14,10 @@
     "note": "R6新旧対照の略を補完せず、R8対照で第8節が略記されたことを改正なしの根拠にしていない。"
   },
   "monitoring": {
-    "status": "NOT_CONFIGURED",
-    "note": "継続的な現行性監視は未設定。PDF二段組み視覚確認も未実施。"
+    "status": "ACTIVE",
+    "workflow": ".github/workflows/watch-fee-guidance-currentness.yml",
+    "note": "毎週・手動で公式資料の項目・境界を再照合する限定監視。後続改正の網羅性、現行性、人手確認を保証しない。",
+    "kind": "BOUNDED_LIVE_SOURCE_INVENTORY_RECHECK"
   },
   "human_review": {
     "status": "NOT_REVIEWED",

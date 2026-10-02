@@ -16,8 +16,10 @@
     "note": "告示第87号はイ〜ホを略記。全改正履歴を確認しておらず、現行統合本文へ合成していない。"
   },
   "monitoring": {
-    "status": "NOT_CONFIGURED",
-    "note": "継続的な現行性監視は未設定。独立確認は公開時の限定監査。"
+    "status": "ACTIVE",
+    "workflow": ".github/workflows/watch-fee-guidance-currentness.yml",
+    "note": "毎週・手動で公式資料の項目・境界を再照合する限定監視。後続改正の網羅性、現行性、人手確認を保証しない。",
+    "kind": "BOUNDED_LIVE_SOURCE_INVENTORY_RECHECK"
   },
   "human_review": {
     "status": "NOT_REVIEWED",

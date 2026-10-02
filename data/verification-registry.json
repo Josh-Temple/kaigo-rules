@@ -311,8 +311,10 @@
         "note": "告示第87号はイ〜ホを略記。全改正履歴を確認しておらず、現行統合本文へ合成していない。"
       },
       "monitoring": {
-        "status": "NOT_CONFIGURED",
-        "note": "継続的な現行性監視は未設定。独立確認は公開時の限定監査。"
+        "status": "ACTIVE",
+        "workflow": ".github/workflows/watch-fee-guidance-currentness.yml",
+        "note": "毎週・手動で公式資料の項目・境界を再照合する限定監視。後続改正の網羅性、現行性、人手確認を保証しない。",
+        "kind": "BOUNDED_LIVE_SOURCE_INVENTORY_RECHECK"
       },
       "human_review": {
         "status": "NOT_REVIEWED",
@@ -341,8 +343,10 @@
         "note": "R6新旧対照の略を補完せず、R8対照で第8節が略記されたことを改正なしの根拠にしていない。"
       },
       "monitoring": {
-        "status": "NOT_CONFIGURED",
-        "note": "継続的な現行性監視は未設定。PDF二段組み視覚確認も未実施。"
+        "status": "ACTIVE",
+        "workflow": ".github/workflows/watch-fee-guidance-currentness.yml",
+        "note": "毎週・手動で公式資料の項目・境界を再照合する限定監視。後続改正の網羅性、現行性、人手確認を保証しない。",
+        "kind": "BOUNDED_LIVE_SOURCE_INVENTORY_RECHECK"
       },
       "human_review": {
         "status": "NOT_REVIEWED",
@@ -411,7 +415,7 @@
     "active_services_total": 2,
     "layers_total": 11,
     "independent_audit_or_reconstruction": 9,
-    "currentness_or_live_source_monitoring_active": 9,
+    "currentness_or_live_source_monitoring_active": 11,
     "source_freshness_only_without_independent_content_audit": 0,
     "human_verified_layers": 0,
     "semantic_or_cross_layer_relations_total": 188,
