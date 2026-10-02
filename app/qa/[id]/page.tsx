@@ -12,6 +12,7 @@ export default async function QaDetail({params}: {params: Promise<{id: string}>}
   if (!item) notFound();
   return <article className="answer-page">
     <p className="eyebrow">{item.scope} / 国Q&A</p>
+    {item.current_service_scope ? <p className="meta">2019年以降のサービス分類：{item.current_service_scope}</p> : null}
     <h1>{evidence?.number || item.number || "問番号未収載"} {item.topic}</h1>
     <p className="meta">canonical ID: {id} / corpus ID: {item.id}</p>
     <p>{item.issued_source}</p>
