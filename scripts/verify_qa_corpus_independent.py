@@ -62,6 +62,7 @@ SERVICE_CODE_BY_SCOPE = {
     "看護小規模多機能型居宅介護": "47",
     "地域密着型通所介護事業": "48",
     "介護医療院": "49",
+    "介護予防支援": "50",
 }
 CANONICAL_SCOPE_BY_CODE = {code: scope for scope, code in SERVICE_CODE_BY_SCOPE.items()}
 
@@ -104,7 +105,7 @@ def leading_code(value: str, width: int) -> str:
 
 def source_service_code(value: str) -> str:
     text = unicodedata.normalize("NFKC", value)
-    match = re.match(r"\s*(\d{1,2}|XX)", text, re.I)
+    match = re.match(r"\\s*(\\d{1,2}|XX)", text, re.I)
     if not match:
         return ""
     return match.group(1).upper()
@@ -112,226 +113,17 @@ def source_service_code(value: str) -> str:
 def scope_label(value: str) -> str:
     text = unicodedata.normalize("NFKC", clean(value))
     first_line = text.splitlines()[0] if text else ""
-    return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
-
-LEGACY_COMPATIBLE_CODES = {
-    "全サービス共通": "01",
-    "居宅サービス共通": "02",
-    "通所系サービス共通": "06",
-    "通所介護事業": "16",
-}
-
-def canonical_service_code(scope: str) -> str:
-    if scope in LEGACY_COMPATIBLE_CODES:
-        return LEGACY_COMPATIBLE_CODES[scope]
-    digest = hashlib.sha256(scope.encode("utf-8")).hexdigest()[:10]
-    return "scope-" + digest
+    return re.sub(r"^\\s*(?:\\d{1,2}|XX)\\s*[.．]?\\s*", "", first_line, flags=re.I).strip()
 
 def canonical_service_code(value: str) -> str:
     scope = scope_label(value)
-    return SERVICE_CODE_BY_SCOPE.get(scope) or leading_service_code(value)
-
-
-def stable_id(row: dict) -> str:
-    basis = "\u241f".join(
-        [
-            row.get("service_code", ""),
-            row.get("standard_code", ""),
-            row.get("topic", ""),
-            row.get("issued_source", ""),
-            row.get("number", ""),
-            row.get("question", ""),
-        ]
-    )
-    return "qa.mhlw." + hashlib.sha256(basis.encode("utf-8")).hexdigest()[:20]
-
-
-def col_index(cell_ref: str) -> int:
-    match = re.match(r"([A-Z]+)", cell_ref or "")
-    if not match:
-        return 0
-    result = 0
-    for char in match.group(1):
-        result = result * 26 + (ord(char) - ord("A") + 1)
-    return result - 1
-
-
-def displayed_string_text(container) -> str:
-    """Return the cell's displayed base text while excluding Excel phonetic runs.
-
-    openpyxl exposes the base string and does not append <rPh> ruby/phonetic text.
-    XLSX stores those phonetics inside the same shared-string item, so a naive
-    descendant <t> scan incorrectly changes headers, stable IDs, and row values.
-    """
-    chunks: list[str] = []
-    for child in list(container):
-        if child.tag == q(NS_MAIN, "t"):
-            chunks.append(child.text or "")
-        elif child.tag == q(NS_MAIN, "r"):
-            text_node = child.find(q(NS_MAIN, "t"))
-            if text_node is not None:
-                chunks.append(text_node.text or "")
-        # Intentionally ignore rPh / phoneticPr.
-    return "".join(chunks)
-
-
-def shared_strings(archive: zipfile.ZipFile) -> list[str]:
-    try:
-        root = ET.fromstring(archive.read("xl/sharedStrings.xml"))
-    except KeyError:
-        return []
-    return [displayed_string_text(si) for si in root.findall(q(NS_MAIN, "si"))]
-
-
-def date_style_indexes(archive: zipfile.ZipFile) -> set[int]:
-    try:
-        root = ET.fromstring(archive.read("xl/styles.xml"))
-    except KeyError:
-        return set()
-
-    custom = {}
-    numfmts = root.find(q(NS_MAIN, "numFmts"))
-    if numfmts is not None:
-        for fmt in numfmts.findall(q(NS_MAIN, "numFmt")):
-            try:
-                custom[int(fmt.attrib.get("numFmtId", "0"))] = fmt.attrib.get("formatCode", "")
-            except ValueError:
-                pass
-
-    builtin_date_ids = set(range(14, 23)) | set(range(27, 37)) | set(range(45, 48)) | set(range(50, 59))
-    result = set()
-    cell_xfs = root.find(q(NS_MAIN, "cellXfs"))
-    if cell_xfs is None:
-        return result
-
-    for index, xf in enumerate(cell_xfs.findall(q(NS_MAIN, "xf"))):
-        try:
-            fmt_id = int(xf.attrib.get("numFmtId", "0"))
-        except ValueError:
-            continue
-        if fmt_id in builtin_date_ids:
-            result.add(index)
-            continue
-        code = custom.get(fmt_id, "").lower()
-        stripped = re.sub(r'"[^"]*"|\\.|\[[^\]]*\]', "", code)
-        if any(token in stripped for token in ("yy", "dd", "hh", "ss")):
-            result.add(index)
-    return result
-
-
-def workbook_date1904(archive: zipfile.ZipFile) -> bool:
-    root = ET.fromstring(archive.read("xl/workbook.xml"))
-    props = root.find(q(NS_MAIN, "workbookPr"))
-    return props is not None and props.attrib.get("date1904") in {"1", "true", "True"}
-
-
-def excel_datetime(serial: float, date1904: bool):
-    epoch = datetime(1904, 1, 1) if date1904 else datetime(1899, 12, 30)
-    value = epoch + timedelta(days=serial)
-    if value.time().hour == 0 and value.time().minute == 0 and value.time().second == 0 and value.microsecond == 0:
-        return value.date()
-    return value
-
-
-def workbook_sheets(archive: zipfile.ZipFile) -> list[tuple[str, str]]:
-    workbook = ET.fromstring(archive.read("xl/workbook.xml"))
-    rels = ET.fromstring(archive.read("xl/_rels/workbook.xml.rels"))
-    targets = {}
-    for rel in rels.findall(q(NS_REL_PKG, "Relationship")):
-        targets[rel.attrib.get("Id", "")] = rel.attrib.get("Target", "")
-
-    result = []
-    sheets = workbook.find(q(NS_MAIN, "sheets"))
-    if sheets is None:
-        return result
-    for sheet in sheets.findall(q(NS_MAIN, "sheet")):
-        rid = sheet.attrib.get(q(NS_REL_DOC, "id"), "")
-        target = targets.get(rid, "")
-        if target.startswith("/"):
-            path = target.lstrip("/")
-        elif target.startswith("xl/"):
-            path = target
-        else:
-            path = "xl/" + target.lstrip("/")
-        result.append((sheet.attrib.get("name", ""), path))
-    return result
-
-
-def cell_value(cell, shared: list[str], date_styles: set[int], date1904: bool):
-    cell_type = cell.attrib.get("t")
-    style_raw = cell.attrib.get("s")
-    try:
-        style = int(style_raw) if style_raw is not None else -1
-    except ValueError:
-        style = -1
-
-    if cell_type == "inlineStr":
-        inline = cell.find(q(NS_MAIN, "is"))
-        if inline is None:
-            return ""
-        return displayed_string_text(inline)
-
-    value_node = cell.find(q(NS_MAIN, "v"))
-    raw = value_node.text if value_node is not None and value_node.text is not None else ""
-
-    if cell_type == "s":
-        try:
-            return shared[int(raw)]
-        except (ValueError, IndexError):
-            return ""
-    if cell_type == "str":
-        return raw
-    if cell_type == "b":
-        return raw == "1"
-    if raw == "":
+    if not scope:
         return ""
-
-    try:
-        number = float(raw)
-    except ValueError:
-        return raw
-    if style in date_styles:
-        return excel_datetime(number, date1904)
-    return int(number) if number.is_integer() else number
-
-
-def load_sheet_rows(
-    archive: zipfile.ZipFile,
-    path: str,
-    shared: list[str],
-    date_styles: set[int],
-    date1904: bool,
-) -> tuple[list[list], int, int]:
-    root = ET.fromstring(archive.read(path))
-    sheet_data = root.find(q(NS_MAIN, "sheetData"))
-    if sheet_data is None:
-        return [], 0, 0
-
-    rows_by_index: dict[int, dict[int, object]] = {}
-    max_row = 0
-    max_col = 0
-    next_row = 1
-
-    for row in sheet_data.findall(q(NS_MAIN, "row")):
-        try:
-            row_index = int(row.attrib.get("r", str(next_row)))
-        except ValueError:
-            row_index = next_row
-        next_row = row_index + 1
-        max_row = max(max_row, row_index)
-        cells = {}
-        for cell in row.findall(q(NS_MAIN, "c")):
-            index = col_index(cell.attrib.get("r", ""))
-            max_col = max(max_col, index + 1)
-            cells[index] = cell_value(cell, shared, date_styles, date1904)
-        rows_by_index[row_index] = cells
-
-    rows = []
-    for row_index in range(1, max_row + 1):
-        cell_map = rows_by_index.get(row_index, {})
-        rows.append([cell_map.get(col, "") for col in range(max_col)])
-    return rows, max_row, max_col
-
+    known = SERVICE_CODE_BY_SCOPE.get(scope)
+    if known:
+        return known
+    digest = hashlib.sha256(scope.encode("utf-8")).hexdigest()[:10]
+    return "scope-" + digest
 
 def find_header(rows: list[list], ncols: int):
     required = {"service", "criterion", "question", "answer"}
@@ -411,13 +203,23 @@ def parse_xlsx(payload: bytes):
                 row = rows[rowx] if rowx < len(rows) else []
                 return clean(row[col] if col < len(row) else "")
 
-            raw_service = get("service")
-            current_service_scope = get("service_current")
+            raw_service_old = get("service")
+            raw_service_current = get("service_current")
             raw_criterion = get("criterion")
-            service_raw = raw_service or last_service
+
+            if raw_service_current:
+                last_service_current = raw_service_current
+                active_service_period = "POST_2019_03_15"
+            elif raw_service_old:
+                last_service_old = raw_service_old
+                active_service_period = "PRE_2019_03_15"
+
+            if active_service_period == "POST_2019_03_15":
+                service_raw = raw_service_current or last_service_current
+            else:
+                service_raw = raw_service_old or last_service_old
+
             criterion_raw = raw_criterion or last_criterion
-            if raw_service:
-                last_service = raw_service
             if raw_criterion:
                 last_criterion = raw_criterion
 
@@ -434,9 +236,10 @@ def parse_xlsx(payload: bytes):
             standard_code = leading_code(criterion_raw, 1)
             item = {
                 "service_code": service_code,
+                "source_service_code": source_service_code(service_raw),
+                "service_classification_period": active_service_period,
                 "service_label": service_raw,
                 "scope": CANONICAL_SCOPE_BY_CODE.get(service_code, scope_label(service_raw)),
-                "current_service_scope": current_service_scope,
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
