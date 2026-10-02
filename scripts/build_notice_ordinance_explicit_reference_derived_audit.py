@@ -63,6 +63,9 @@ def article_marker(target_id: str) -> str:
 
 
 def build() -> dict:
+    if len(set(EXPECTED)) != len(EXPECTED):
+        raise ValueError("duplicate identity in fixed explicit-reference allowlist")
+
     relations = load("notice-ordinance-relations.json")
     packet = load("notice-review-packet.json")
     candidates = {
@@ -83,8 +86,18 @@ def build() -> dict:
     for notice_id, target_id in EXPECTED:
         differences = []
         identity = (notice_id, "interprets_or_explains", target_id)
-        if identity not in relation_rows:
-            differences.append("committed relation identity missing")
+        relation_matches = [
+            row
+            for row in relations
+            if (
+                str(row.get("from_notice_id") or ""),
+                str(row.get("relation") or ""),
+                str(row.get("to_ordinance_id") or ""),
+            )
+            == identity
+        ]
+        if len(relation_matches) != 1:
+            differences.append("committed relation identity missing or duplicated")
 
         candidate = candidates.get(notice_id)
         if not candidate:
