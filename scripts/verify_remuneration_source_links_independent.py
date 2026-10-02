@@ -136,14 +136,19 @@ def verify() -> dict:
                 "一単位の単価",
                 "十円",
             ]
-            required_page2 = ["通所介護"]
+            required_document = [
+                "通所介護",
+                "千分の千九十",
+                "千分の千",
+            ]
             for phrase in required_page1:
                 if compact(phrase) not in page1:
                     differences.append(f"unit-price page 1 evidence missing: {phrase}")
-            for phrase in required_page2:
-                if compact(phrase) not in page2:
-                    differences.append(f"unit-price page 2 evidence missing: {phrase}")
-            evidence = required_page1 + required_page2
+            combined = page1 + page2
+            for phrase in required_document:
+                if compact(phrase) not in combined:
+                    differences.append(f"unit-price document evidence missing: {phrase}")
+            evidence = required_page1 + required_document
         elif spec["evidence_kind"] == "historical_guidance":
             historical = texts["historical_guidance"]
             required = [
