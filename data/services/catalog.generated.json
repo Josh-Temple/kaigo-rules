@@ -37,12 +37,7 @@
         "fee_guidance": "data/fee-guidance-current-skeleton.json",
         "qa_corpus": "data/qa-corpus.json"
       },
-      "publication_gate": {
-        "public_routes_enabled": true,
-        "content_ingested": true,
-        "independent_verification_complete": true,
-        "human_review_complete": false
-      },
+      "publication_gate": {},
       "ingestion_layers": {
         "rouki25": {
           "status": "RECONSTRUCTED_CANDIDATES_PUBLISHED_CURRENTNESS_HOLD",
