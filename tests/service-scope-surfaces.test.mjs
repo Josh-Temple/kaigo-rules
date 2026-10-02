@@ -155,48 +155,34 @@ test("global ordinance detail generates the shared corpus and fails closed only 
   );
 });
 
-test("Care Insurance Act list and counts use the canonical service scope", () => {
+test("Care Insurance Act list defaults to the shared corpus and filters only when a service is selected", () => {
   const source = readText("app/law/page.tsx");
 
-  assert.match(
-    source,
-    /const scopedNodes=filterRecordsForService\(/,
-    "law list must build its corpus through the canonical helper",
-  );
-  assert.match(
-    source,
-    /const articles=scopedNodes\.filter\(/,
-    "law list must render scoped articles rather than the shared corpus",
-  );
-  assert.match(
-    source,
-    /<strong>{articles\.length}<\/strong><span>対象条文<\/span>/,
-    "article count must use the scoped article collection",
-  );
-  assert.match(
-    source,
-    /<strong>{scopedNodes\.length}<\/strong><span>構造ノード<\/span>/,
-    "node count must use the scoped node collection",
-  );
-  assert.doesNotMatch(
-    source,
-    /meta\.counts\?\.articles_total|meta\.counts\?\.nodes_total/,
-    "service-facing counts must not fall back to shared-corpus totals",
-  );
+  assert.match(source, /selectedServiceId[\s\S]*filterRecordsForService/);
+  assert.match(source, /: nodes;/);
+  assert.match(source, /共有コーパスを全体表示中/);
+  assert.match(source, />すべて<\/Link>/);
+  assert.match(source, /meta\.counts\?\.articles_total/);
+  assert.match(source, /meta\.counts\?\.nodes_total/);
 });
 
-test("Care Insurance Act detail route generation and lookup are wired to the same scope contract", () => {
+test("Care Insurance Act detail generates the shared corpus and fails closed only for an explicit service filter", () => {
   const source = readText("app/law/[article]/page.tsx");
 
   assert.match(
     source,
-    /generateStaticParams\(\)[\s\S]*filterRecordsForService\(/,
-    "Care Insurance Act static params must use the canonical scope filter",
+    /generateStaticParams\(\)[\s\S]*node_type==="article"/,
+    "Care Insurance Act static params must cover the shared article corpus",
   );
   assert.match(
     source,
-    /const root=findRecordForService\(/,
-    "Care Insurance Act detail lookup must fail closed through the canonical scope helper",
+    /selectedServiceId && !isRecordApplicableToService\(/,
+    "service-filtered Care Insurance Act detail must fail closed outside scope",
+  );
+  assert.match(
+    source,
+    /selectedServiceId[\s\S]*filterRecordsForService/,
+    "child nodes must be filtered only when a service is selected",
   );
 });
 
