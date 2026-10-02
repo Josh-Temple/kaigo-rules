@@ -12,10 +12,24 @@ import {
 } from "../lib/notice-database.ts";
 
 test("notice database is catalog-driven across registered services", () => {
-  assert.equal(publicNoticeRegisteredServiceCount, 4);
+  assert.equal(publicNoticeRegisteredServiceCount, 13);
   assert.deepEqual(
     publicNoticeServiceOptions.map((service) => service.service_id),
-    ["dayservice", "homevisit", "dayrehab", "shortstay-life"],
+    [
+      "dayservice",
+      "homevisit",
+      "homebath",
+      "homenursing",
+      "homerehab",
+      "homecaremanagement",
+      "dayrehab",
+      "shortstay-life",
+      "community-dayservice",
+      "regular-round",
+      "night-homevisit",
+      "care-management",
+      "preventive-support",
+    ],
   );
   assert.equal(publicNoticePublishedServiceCount, 2);
   assert.equal(publicNoticeRecords.length, 31);
@@ -47,11 +61,19 @@ test("registered services without repository notice text fail closed at zero rec
   const homevisit = publicNoticeServiceOptions.find(
     (service) => service.service_id === "homevisit",
   );
+  const homebath = publicNoticeServiceOptions.find(
+    (service) => service.service_id === "homebath",
+  );
   const shortstay = publicNoticeServiceOptions.find(
     (service) => service.service_id === "shortstay-life",
   );
 
   assert.equal(homevisit?.notice_status, "SCOPE_DEFINED_NOT_RECONSTRUCTED");
+  assert.equal(homebath?.record_count, 0);
+  assert.equal(
+    homebath?.notice_status,
+    "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+  );
   assert.equal(
     shortstay?.notice_status,
     "WORK_CONTROL_ACCEPTED_NOT_REPOSITORY_INGESTED",
