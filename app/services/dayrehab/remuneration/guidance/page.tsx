@@ -57,7 +57,8 @@ export default function DayrehabFeeGuidancePage() {
         <p className="meta">以下は同資料の主項目・番号・状態インベントリです。本文・省略条項・他サービスへの参照を復元していません。</p>
         {layer.items.map((item: any) => (
           <section className="rule-node" id={item.id} key={item.id}>
-            <p className="rule-node-label">{item.slot}　{item.title}</p>
+            <p className="rule-node-label">{item.slot}</p>
+            <h3>{item.title}</h3>
             <p>資料上の状態：{sourceStateLabel[item.r6_source_state] || "記載範囲は原資料を確認"}</p>
             <p className="meta">{item.source_locator}</p>
             {sourcePageHref(item) ? <p><a href={sourcePageHref(item)!} target="_blank" rel="noreferrer">令和6年改正資料の該当ページを開く</a></p> : null}
