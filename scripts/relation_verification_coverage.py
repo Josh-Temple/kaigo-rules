@@ -242,6 +242,24 @@ def notice_ordinance_explicit_reference_identities(audit: dict) -> set[tuple[str
     return identities
 
 
+def remuneration_source_link_independent_identities(audit: dict) -> set[tuple[str, str, str]]:
+    if audit.get("audit_result") != "PASS":
+        raise ValueError("remuneration source-link independent audit is not PASS")
+    identities = set()
+    for check in audit.get("checks", []):
+        require_clean_check(check, "remuneration-source-link-independent")
+        identities.add(
+            make_identity(
+                check.get("from_id"),
+                check.get("relation"),
+                check.get("to_source_id"),
+            )
+        )
+    if len(identities) != audit.get("coverage", {}).get("relations_passed"):
+        raise ValueError("remuneration source-link independent identity count changed")
+    return identities
+
+
 def build_relation_coverage() -> dict:
     inventory = canonical_inventory()
     lane_specs = (
@@ -291,6 +309,13 @@ def build_relation_coverage() -> dict:
             "data/notice-ordinance-explicit-reference-derived-audit.json",
             notice_ordinance_explicit_reference_identities(
                 load("notice-ordinance-explicit-reference-derived-audit.json")
+            ),
+        ),
+        (
+            "remuneration-source-link-independent",
+            "data/remuneration-source-link-independent-audit.json",
+            remuneration_source_link_independent_identities(
+                load("remuneration-source-link-independent-audit.json")
             ),
         ),
     )
