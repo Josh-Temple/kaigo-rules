@@ -224,6 +224,24 @@ def fee_guidance_relation_identities(audit: dict) -> set[tuple[str, str, str]]:
     return identities
 
 
+def notice_ordinance_explicit_reference_identities(audit: dict) -> set[tuple[str, str, str]]:
+    if audit.get("audit_result") != "PASS":
+        raise ValueError("notice explicit-reference derived audit is not PASS")
+    identities = set()
+    for check in audit.get("checks", []):
+        require_clean_check(check, "notice-ordinance-explicit-reference")
+        identities.add(
+            make_identity(
+                check.get("from_notice_id"),
+                check.get("relation"),
+                check.get("to_ordinance_id"),
+            )
+        )
+    if len(identities) != audit.get("coverage", {}).get("relations_passed"):
+        raise ValueError("notice explicit-reference identity count changed")
+    return identities
+
+
 def build_relation_coverage() -> dict:
     inventory = canonical_inventory()
     lane_specs = (
@@ -266,6 +284,13 @@ def build_relation_coverage() -> dict:
             "data/fee-guidance-relation-independent-audit.json",
             fee_guidance_relation_identities(
                 load("fee-guidance-relation-independent-audit.json")
+            ),
+        ),
+        (
+            "notice-ordinance-explicit-reference",
+            "data/notice-ordinance-explicit-reference-derived-audit.json",
+            notice_ordinance_explicit_reference_identities(
+                load("notice-ordinance-explicit-reference-derived-audit.json")
             ),
         ),
     )
