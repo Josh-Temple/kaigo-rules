@@ -5,6 +5,11 @@
   "source_format": "xlsx",
   "source_sha256": "2b3e658d1659b42423fe1d3f7cc8b2fd24b58914ce65a6d15d16d0b64fc26c6b",
   "scope_mode": "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK",
+  "service_classification": {
+    "primary_column": "平成31年2月5日Q&A以前",
+    "current_scope_column": "平成31年3月15日Q&A以降",
+    "note": "Primary code/scope is retained for stable filtering; current_service_scope preserves the later applicability column verbatim when present."
+  },
   "target_service_codes": [
     "01",
     "02",
