@@ -576,6 +576,21 @@
     },
     {
       "identity": {
+        "from": "notice.dayservice.equipment",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
         "from": "notice.dayservice.equipment.dining-training-room",
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.95"
@@ -606,9 +621,24 @@
     },
     {
       "identity": {
-        "from": "notice.dayservice.equipment",
+        "from": "notice.dayservice.operation",
         "relation": "interprets_or_explains",
-        "to": "ordinance37.article.95"
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.96"
       },
       "source_file": "data/notice-ordinance-relations.json",
       "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
@@ -861,9 +891,9 @@
     },
     {
       "identity": {
-        "from": "notice.dayservice.operation",
+        "from": "notice.dayservice.personnel",
         "relation": "interprets_or_explains",
-        "to": "ordinance37.article.105"
+        "to": "ordinance37.article.93"
       },
       "source_file": "data/notice-ordinance-relations.json",
       "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
@@ -876,9 +906,9 @@
     },
     {
       "identity": {
-        "from": "notice.dayservice.operation",
+        "from": "notice.dayservice.personnel",
         "relation": "interprets_or_explains",
-        "to": "ordinance37.article.96"
+        "to": "ordinance37.article.94"
       },
       "source_file": "data/notice-ordinance-relations.json",
       "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
@@ -939,36 +969,6 @@
         "from": "notice.dayservice.personnel.staffing",
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.93"
-      },
-      "source_file": "data/notice-ordinance-relations.json",
-      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
-      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
-      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
-      "blockers": [
-        "The relation expresses interpretation, not mere document structure.",
-        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
-      ]
-    },
-    {
-      "identity": {
-        "from": "notice.dayservice.personnel",
-        "relation": "interprets_or_explains",
-        "to": "ordinance37.article.93"
-      },
-      "source_file": "data/notice-ordinance-relations.json",
-      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
-      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
-      "verification_strategy": "Compare notice text and ordinance text with explicit evidence for why the notice interprets the target provision; use machine assistance but require semantic adjudication.",
-      "blockers": [
-        "The relation expresses interpretation, not mere document structure.",
-        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
-      ]
-    },
-    {
-      "identity": {
-        "from": "notice.dayservice.personnel",
-        "relation": "interprets_or_explains",
-        "to": "ordinance37.article.94"
       },
       "source_file": "data/notice-ordinance-relations.json",
       "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
