@@ -36,8 +36,6 @@ def resolve_ordinance_nodes(
 ) -> list[dict]:
     if value in ordinance_by_id:
         return [ordinance_by_id[value]]
-    if value in legacy_by_id:
-        return [legacy_by_id[value]]
 
     match = re.match(
         r"^ordinance37\.article([0-9]+(?:-[0-9]+)?)(?:\.(.+))?$",
@@ -83,6 +81,9 @@ def resolve_ordinance_nodes(
     single_paragraph_item = f"{root}.p.1.i.{token}"
     if single_paragraph_item in ordinance_by_id:
         return [ordinance_by_id[single_paragraph_item]]
+
+    if value in legacy_by_id:
+        return [legacy_by_id[value]]
     return []
 
 
@@ -137,7 +138,12 @@ def evidence(
             "resolution_kind": "NOTICE",
             "canonical_ids": [value],
             "excerpt_kind": kind,
-            "excerpt": excerpt(text or row.get("title")),
+            "excerpt": excerpt(
+                text
+                or row.get("title")
+                or ((row.get("path") or [""])[-1])
+                or value
+            ),
             "source_url": source_url,
             "source_locator": locator,
             "text_hashes": [item for item in hashes if item],
