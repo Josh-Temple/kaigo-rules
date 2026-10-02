@@ -1,0 +1,68 @@
+{
+  "format_version": 1,
+  "audit_kind": "DERIVED_FROM_INDEPENDENT_PRIMARY_SOURCE_RELATION_AUDIT",
+  "audit_result": "PASS",
+  "basis_audit": "data/remuneration-delegation-relation-independent-audit.json",
+  "method": "A source-level relation is covered only when an independently audited finer-grained relation from the same fee node is PASS and every audited target belongs to the same committed official source named by the source-level relation.",
+  "checks": [
+    {
+      "id": "fee.dayservice.note.1-to-mhlw-fee-notice27-base",
+      "from_id": "fee.dayservice.note.1",
+      "relation": "staffing_calculation_delegated_to",
+      "to_source_id": "mhlw-fee-notice27-base",
+      "basis_relation_targets": [
+        "calc27.dayservice.1.capacity",
+        "calc27.dayservice.1.staffing"
+      ],
+      "basis_audit_checks": [
+        "note1-to-calc27.dayservice.1.capacity",
+        "note1-to-calc27.dayservice.1.staffing"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee.dayservice.service-provision-to-mhlw-fee-criteria95-current",
+      "from_id": "fee.dayservice.service-provision",
+      "relation": "delegated_criteria_to",
+      "to_source_id": "mhlw-fee-criteria95-current",
+      "basis_relation_targets": [
+        "criteria95.dayservice.23"
+      ],
+      "basis_audit_checks": [
+        "fee.dayservice.service-provision-to-criteria95.dayservice.23"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee.dayservice.treatment-improvement-to-mhlw-fee-criteria95-current",
+      "from_id": "fee.dayservice.treatment-improvement",
+      "relation": "delegated_criteria_to",
+      "to_source_id": "mhlw-fee-criteria95-current",
+      "basis_relation_targets": [
+        "criteria95.dayservice.24"
+      ],
+      "basis_audit_checks": [
+        "fee.dayservice.treatment-improvement-to-criteria95.dayservice.24"
+      ],
+      "result": "PASS",
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "relations_in_this_lane": 3,
+    "relations_passed": 3
+  },
+  "limitations": [
+    "This is derived coverage from an existing independent primary-source audit; it is not a second live-source parse.",
+    "Only the three listed source-level relations are covered.",
+    "No HUMAN_VERIFIED or VERIFIED_CURRENT state is promoted."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_unlisted_relations": false
+  }
+}
