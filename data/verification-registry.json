@@ -395,8 +395,8 @@
   "relation_verification": {
     "status": "PARTIAL",
     "inventory_relations": 188,
-    "independently_verified_relations": 81,
-    "remaining_unverified_relations": 107,
+    "independently_verified_relations": 84,
+    "remaining_unverified_relations": 104,
     "lanes": [
       {
         "id": "explicit-legal-reference",
@@ -427,6 +427,12 @@
         "status": "PASS",
         "verified_relations": 11,
         "evidence": "data/remuneration-delegation-relation-independent-audit.json"
+      },
+      {
+        "id": "remuneration-source-link-derived",
+        "status": "PASS",
+        "verified_relations": 3,
+        "evidence": "data/remuneration-source-link-derived-audit.json"
       }
     ],
     "automatic_promotion_allowed": false,
@@ -436,10 +442,18 @@
     {
       "id": "semantic-cross-layer-relations",
       "status": "PARTIAL",
-      "independently_verified": 81,
+      "independently_verified": 84,
       "total": 188,
-      "remaining": 107,
-      "note": "Remaining semantic/cross-layer relations are not independently verified and are not auto-promoted."
+      "remaining": 104,
+      "note": "Remaining semantic/cross-layer relations are not independently verified and are not auto-promoted.",
+      "work_queue": "data/relation-verification-queue.json",
+      "classification_counts": {
+        "MACHINE_SOURCE_REPARSE_CANDIDATE": 24,
+        "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 3,
+        "SEMANTIC_TEXT_CHECK_REQUIRED": 34,
+        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 7,
+        "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
+      }
     }
   ],
   "summary": {
@@ -451,7 +465,7 @@
     "source_freshness_only_without_independent_content_audit": 0,
     "human_verified_layers": 0,
     "semantic_or_cross_layer_relations_total": 188,
-    "semantic_or_cross_layer_relations_independently_verified": 81,
-    "semantic_or_cross_layer_relations_remaining": 107
+    "semantic_or_cross_layer_relations_independently_verified": 84,
+    "semantic_or_cross_layer_relations_remaining": 104
   }
 }
