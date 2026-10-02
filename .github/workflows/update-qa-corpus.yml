@@ -8,6 +8,7 @@ on:
       - ".github/workflows/update-qa-corpus.yml"
       - "scripts/import_mhlw_qa.py"
       - "scripts/suggest-qa-links.mjs"
+      - "scripts/validate-data.mjs"
 
 permissions:
   contents: write
