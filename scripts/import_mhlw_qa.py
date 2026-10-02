@@ -159,7 +159,13 @@ def parse_workbook(payload: bytes):
 
             service_code = leading_code(service_raw, 2)
             if not service_code:
-                unclassified_rows.append(rowx + 1)
+                unclassified_rows.append({
+                    "row": rowx + 1,
+                    "service": service_raw,
+                    "criterion": criterion_raw,
+                    "topic": get("topic"),
+                    "question": question[:120],
+                })
                 continue
 
             standard_code = leading_code(criterion_raw, 1)
@@ -183,8 +189,10 @@ def parse_workbook(payload: bytes):
     if not used_sheets:
         raise RuntimeError("Could not find a Q&A table header in any worksheet")
     if unclassified_rows:
-        preview = ", ".join(str(row) for row in unclassified_rows[:10])
-        raise RuntimeError(f"Q&A rows with question/answer but no service code: {preview}")
+        raise RuntimeError(
+            "Q&A rows with question/answer but no service code: "
+            + json.dumps(unclassified_rows[:10], ensure_ascii=False)
+        )
     if len(items) < 10:
         raise RuntimeError(f"Only {len(items)} classified rows were parsed; refusing to overwrite corpus")
 
