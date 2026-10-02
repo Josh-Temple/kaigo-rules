@@ -395,8 +395,8 @@
   "relation_verification": {
     "status": "PARTIAL",
     "inventory_relations": 188,
-    "independently_verified_relations": 108,
-    "remaining_unverified_relations": 80,
+    "independently_verified_relations": 125,
+    "remaining_unverified_relations": 63,
     "lanes": [
       {
         "id": "explicit-legal-reference",
@@ -439,6 +439,12 @@
         "status": "PASS",
         "verified_relations": 24,
         "evidence": "data/fee-guidance-relation-independent-audit.json"
+      },
+      {
+        "id": "notice-ordinance-explicit-reference",
+        "status": "PASS",
+        "verified_relations": 17,
+        "evidence": "data/notice-ordinance-explicit-reference-derived-audit.json"
       }
     ],
     "automatic_promotion_allowed": false,
@@ -448,14 +454,14 @@
     {
       "id": "semantic-cross-layer-relations",
       "status": "PARTIAL",
-      "independently_verified": 108,
+      "independently_verified": 125,
       "total": 188,
-      "remaining": 80,
+      "remaining": 63,
       "work_queue": "data/relation-verification-queue.json",
       "classification_counts": {
         "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
         "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 3,
-        "SEMANTIC_TEXT_CHECK_REQUIRED": 34,
+        "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
         "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 7,
         "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
       },
@@ -471,7 +477,7 @@
     "source_freshness_only_without_independent_content_audit": 0,
     "human_verified_layers": 0,
     "semantic_or_cross_layer_relations_total": 188,
-    "semantic_or_cross_layer_relations_independently_verified": 108,
-    "semantic_or_cross_layer_relations_remaining": 80
+    "semantic_or_cross_layer_relations_independently_verified": 125,
+    "semantic_or_cross_layer_relations_remaining": 63
   }
 }
