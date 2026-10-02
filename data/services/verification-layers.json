@@ -33,7 +33,7 @@
     },
     {
       "id": "qa-corpus",
-      "scope_kind": "SHARED_CORPUS_SERVICE_FILTER",
+      "scope_kind": "GLOBAL",
       "provider": "legacy"
     },
     {
