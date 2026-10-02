@@ -39,7 +39,7 @@ const databases = [
     title: "国Q&A DB",
     detail: "厚生労働省Q&Aを検索します。現在は共通範囲と通所系・通所介護を収載し、対象サービスを順次拡張します。",
     href: "/qa",
-    status: `${qaMeta.rows_included?.toLocaleString("ja-JP") || 0}件 / 収載範囲拡張中`,
+    status: `${qaMeta.rows_included?.toLocaleString("ja-JP") || 0}件 / 全サービス分類`,
   },
 ];
 
