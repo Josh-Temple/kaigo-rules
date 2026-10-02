@@ -488,7 +488,7 @@
       "identity": {
         "from": "fee.dayservice.root",
         "relation": "latest_interpretation_amendment_evidence",
-        "to": "mhlw-r8-fee-interpretation-amendment"
+        "to": "mhlw-r8-fee-guidance-may-amendment"
       },
       "source_file": "data/remuneration-relations.json",
       "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
