@@ -3,9 +3,9 @@
   "watch_id": "rouki25-currentness-watch",
   "baseline": {
     "currentness_ledger": "data/notice-rouki25-currentness-ledger.json",
-    "latest_confirmed_kaigo_info_volume": 1544,
-    "latest_confirmed_kaigo_info_date": "2026-09-18",
-    "basis": "2026-09-23 currentness investigation recorded Vol.1544 (2026-09-18) as the latest confirmed listing."
+    "latest_confirmed_kaigo_info_volume": 1545,
+    "latest_confirmed_kaigo_info_date": "2026-10-02",
+    "basis": "2026-10-03 bounded watch receipt data/notice-rouki25-watch-latest.json (workflow run 37027647516) scanned Vol.1545 body and configured official sources with no trigger; HOLD remains unchanged."
   },
   "targets": {
     "exact_terms": [

@@ -1,0 +1,83 @@
+{
+  "format_version": 1,
+  "receipt_id": "rouki25-currentness-watch-2026-10-03",
+  "verification_kind": "ROUKI25_CURRENTNESS_WATCH_RECEIPT",
+  "checked_at_jst": "2026-10-03T00:32:26+09:00",
+  "source_run": {
+    "workflow": ".github/workflows/watch-notice-rouki25-currentness.yml",
+    "run_id": 37027647516,
+    "head_sha": "1972171be3b9fefff37df132ea8c1d042a2d6328",
+    "artifact_id": 11236500247,
+    "artifact_sha256": "d491594bd169a7e4f0bc492f1810345862ce62699aa02ab55ab629c09cb232bc",
+    "result": "PASS"
+  },
+  "baseline_before": {
+    "latest_confirmed_kaigo_info_volume": 1544,
+    "latest_confirmed_kaigo_info_date": "2026-09-18",
+    "currentness_ledger": "data/notice-rouki25-currentness-ledger.json"
+  },
+  "observed": {
+    "latest_kaigo_info": {
+      "volume": 1545,
+      "listed_date": "2026-10-02",
+      "title": "介護保険最新情報Vol.1545（令和７年度介護保険事務調査の集計結果について）［558KB］",
+      "url": "https://www.mhlw.go.jp/content/001755179.pdf",
+      "body_scan": "OK",
+      "target_term_matches": []
+    },
+    "pinned_pdf_checks": [
+      {
+        "label": "R6 redline",
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "expected_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+        "observed_sha256": "eebad7611a307f02205dce894a5375634f8f84ca66d8555c9a9da0085750e4b4",
+        "match": true
+      },
+      {
+        "label": "secondary reference",
+        "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
+        "expected_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
+        "observed_sha256": "36dbf483345fa9e9512f6610249989ef4b4acbe8daa19030c12e2220a8a66791",
+        "match": true
+      }
+    ],
+    "watched_official_pages": [
+      {
+        "id": "r8_reform_notifications",
+        "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+        "target_term_matches": []
+      },
+      {
+        "id": "notification_new_index",
+        "url": "https://www.mhlw.go.jp/hourei/new/tsuchi/newindex.html",
+        "target_term_matches": []
+      }
+    ],
+    "law_database_amendment_list": {
+      "url": "https://www.mhlw.go.jp/hourei/new/update/kai242t.pdf",
+      "scan": "OK",
+      "target_term_matches": [],
+      "scope_limit": "MHLW notification database covers 主な notifications; a clean scan is supporting-only."
+    }
+  },
+  "result": "PASS",
+  "source_errors": [],
+  "review_triggers": [],
+  "effect": {
+    "currentness_decision": "HOLD_UNCHANGED",
+    "baseline_advanced_to_volume": 1545,
+    "baseline_advanced_to_date": "2026-10-02",
+    "coverage_note": "The configured read-only watch found no trigger between the committed Vol.1544 baseline and Vol.1545. This extends monitored evidence only and does not close the currentness gap."
+  },
+  "limitations": [
+    "PASS means only that configured watch signals were not detected.",
+    "The watcher does not prove completeness of MHLW indexes or absence of unindexed amendments.",
+    "The underlying currentness ledger remains HOLD because no official integrated full text or exhaustive amendment history has been established."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "hold_changed": false
+  }
+}
