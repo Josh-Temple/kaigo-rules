@@ -58,7 +58,7 @@ export default function HomePage() {
         </p>
         <div className="foundation-list">
           {foundationLayers.map((item, index) => (
-            <div className="foundation-row" key={item.label}>
+            <div className="foundation-row foundation-row-static" key={item.label}>
               <span className="foundation-number">{String(index + 1).padStart(2, "0")}</span>
               <span className="foundation-main">
                 <strong>{item.label}</strong>
