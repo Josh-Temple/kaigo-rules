@@ -3,17 +3,12 @@ import careNodesData from "../../../data/care-insurance-act-nodes.json";
 import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
 import qaCorpusData from "../../../data/qa-corpus.json";
 import { publicNoticeRecords } from "../../../lib/notice-database";
-import { rankDatabaseSearch } from "../../../lib/database-search";
+import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database-search";
 
 const careNodes = careNodesData as Array<any>;
 const ordinanceNodes = ordinanceNodesData as Array<any>;
 const qaCorpus = qaCorpusData as Array<any>;
 const LIMIT = 10;
-
-const excerpt = (value: string, max = 180) => {
-  const clean = String(value || "").replace(/\s+/g, " ").trim();
-  return clean.length > max ? clean.slice(0, max) + "…" : clean;
-};
 
 const articleSearchFields = (article: any, nodes: Array<any>) => {
   const articleNodes = nodes.filter(
@@ -196,7 +191,7 @@ export default async function DatabaseSearchPage({
                   <article className="source-card" key={notice.id}>
                     <p className="meta">{notice.service_label} / {notice.number_path.join(" / ")}</p>
                     <h3><Link href={"/notices#" + notice.id}>{notice.title}</Link></h3>
-                    <p>{excerpt(notice.body_text)}</p>
+                    <p>{databaseSearchExcerpt(notice.body_text, query)}</p>
                     <p className="meta">
                       本文照合：{notice.content_verification} / 現行性：{notice.currentness_state} / 人手確認：{notice.human_review_state}
                     </p>
@@ -220,7 +215,7 @@ export default async function DatabaseSearchPage({
                       </div>
                       {item.topic ? <p className="qa-topic">{item.topic}</p> : null}
                       <h2><Link href={"/qa/" + encodeURIComponent(item.id)}>{item.question}</Link></h2>
-                      <p className="qa-answer">{excerpt(item.answer)}</p>
+                      <p className="qa-answer">{databaseSearchExcerpt(item.answer, query)}</p>
                     </section>
                   ))}
                 </div>

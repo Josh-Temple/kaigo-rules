@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 
 import {
+  databaseSearchExcerpt,
   databaseSearchTerms,
   matchesDatabaseSearch,
   rankDatabaseSearch,
@@ -92,6 +93,29 @@ test("database-wide score rewards exact high-value field matches", () => {
   assert.ok(titleScore > bodyScore);
 });
 
+
+test("database-wide snippets show matched context instead of only the beginning", () => {
+  const text =
+    "前置き".repeat(80) +
+    "業務継続計画について、研修及び訓練を定期的に実施する。" +
+    "後続".repeat(80);
+
+  const snippet = databaseSearchExcerpt(text, "BCP", 120);
+
+  assert.match(snippet, /業務継続計画/);
+  assert.ok(snippet.startsWith("…"));
+  assert.ok(snippet.endsWith("…"));
+});
+
+test("database-wide snippets honor synonym matches", () => {
+  const text =
+    "説明".repeat(60) +
+    "看護職員は利用者の健康状態を確認する。" +
+    "補足".repeat(60);
+
+  assert.match(databaseSearchExcerpt(text, "看護師", 100), /看護職員/);
+});
+
 test("database hub exposes a service-neutral cross-database search", () => {
   const hub = fs.readFileSync("app/databases/page.tsx", "utf8");
   const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
@@ -103,6 +127,7 @@ test("database hub exposes a service-neutral cross-database search", () => {
   assert.match(search, /publicNoticeRecords/);
   assert.match(search, /qa-corpus\.json/);
   assert.match(search, /rankDatabaseSearch/);
+  assert.match(search, /databaseSearchExcerpt/);
   assert.match(search, /weight: 8/);
   assert.doesNotMatch(search, /dayserviceQaServiceCodes/);
   assert.doesNotMatch(search, /remuneration-current-skeleton/);

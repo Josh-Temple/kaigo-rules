@@ -106,6 +106,38 @@ export function rankDatabaseSearch<T>(
     .map((row) => row.record);
 }
 
+export function databaseSearchExcerpt(
+  value: string,
+  query: string,
+  max = 180,
+) {
+  const clean = String(value || "").replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+
+  const normalized = normalizeDatabaseSearch(clean);
+  const alternatives = databaseSearchTerms(query).flat();
+  const hitIndexes = alternatives
+    .map((term) => normalized.indexOf(term))
+    .filter((index) => index >= 0);
+  const firstHit = hitIndexes.length ? Math.min(...hitIndexes) : -1;
+
+  if (firstHit < 0) return clean.slice(0, max) + "…";
+
+  const contextBefore = Math.floor(max * 0.35);
+  let start = Math.max(0, firstHit - contextBefore);
+  let end = Math.min(clean.length, start + max);
+
+  if (end === clean.length) {
+    start = Math.max(0, end - max);
+  }
+
+  return [
+    start > 0 ? "…" : "",
+    clean.slice(start, end),
+    end < clean.length ? "…" : "",
+  ].join("");
+}
+
 export function matchesDatabaseSearch(value: string, query: string) {
   return scoreDatabaseSearch([{ value }], query) > 0;
 }
