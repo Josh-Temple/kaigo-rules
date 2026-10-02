@@ -3,13 +3,13 @@
   "generated_by": "scripts/build_relation_verification_queue.py",
   "policy": "Classification selects a verification method only; it never promotes relation, currentness, or human-review state.",
   "inventory_relations": 188,
-  "independently_covered_relations": 127,
-  "remaining_relations": 61,
+  "independently_covered_relations": 129,
+  "remaining_relations": 59,
   "classification_counts": {
     "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
     "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
     "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
-    "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 7,
+    "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
     "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
   },
   "priority_order": [
@@ -20,34 +20,6 @@
     "HUMAN_SEMANTIC_REVIEW_REQUIRED"
   ],
   "items": [
-    {
-      "identity": {
-        "from": "careact.article.8.p.7",
-        "relation": "defines_service_for",
-        "to": "fee.dayservice.root"
-      },
-      "source_file": "data/care-insurance-act-relations.json",
-      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
-      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
-      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
-      "blockers": [
-        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
-      ]
-    },
-    {
-      "identity": {
-        "from": "careact.article.8.p.7",
-        "relation": "defines_service_for",
-        "to": "ordinance37.article.92"
-      },
-      "source_file": "data/care-insurance-act-relations.json",
-      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
-      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
-      "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
-      "blockers": [
-        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
-      ]
-    },
     {
       "identity": {
         "from": "fee.dayservice.note.13",

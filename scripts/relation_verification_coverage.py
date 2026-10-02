@@ -260,6 +260,24 @@ def remuneration_source_link_independent_identities(audit: dict) -> set[tuple[st
     return identities
 
 
+def careact_service_identity_identities(audit: dict) -> set[tuple[str, str, str]]:
+    if audit.get("audit_result") != "PASS":
+        raise ValueError("Care Act service-identity audit is not PASS")
+    identities = set()
+    for check in audit.get("checks", []):
+        require_clean_check(check, "careact-service-identity")
+        identities.add(
+            make_identity(
+                check.get("from_id"),
+                check.get("relation"),
+                check.get("to_id"),
+            )
+        )
+    if len(identities) != audit.get("coverage", {}).get("relations_passed"):
+        raise ValueError("Care Act service-identity count changed")
+    return identities
+
+
 def build_relation_coverage() -> dict:
     inventory = canonical_inventory()
     lane_specs = (
@@ -316,6 +334,13 @@ def build_relation_coverage() -> dict:
             "data/remuneration-source-link-independent-audit.json",
             remuneration_source_link_independent_identities(
                 load("remuneration-source-link-independent-audit.json")
+            ),
+        ),
+        (
+            "careact-service-identity",
+            "data/careact-service-identity-derived-audit.json",
+            careact_service_identity_identities(
+                load("careact-service-identity-derived-audit.json")
             ),
         ),
     )

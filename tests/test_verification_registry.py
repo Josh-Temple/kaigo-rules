@@ -19,15 +19,15 @@ class VerificationRegistryTests(unittest.TestCase):
         summary = registry["summary"]
 
         self.assertEqual(len(coverage["inventory"]), 188)
-        self.assertEqual(len(coverage["verified"]), 127)
-        self.assertEqual(len(coverage["remaining"]), 61)
+        self.assertEqual(len(coverage["verified"]), 129)
+        self.assertEqual(len(coverage["remaining"]), 59)
         self.assertEqual(coverage["overlap_relations"], 0)
         self.assertEqual(coverage["identity_validation"], "PASS")
         self.assertTrue(coverage["verified"].issubset(coverage["inventory"]))
 
         self.assertEqual(relation["inventory_relations"], 188)
-        self.assertEqual(relation["independently_verified_relations"], 127)
-        self.assertEqual(relation["remaining_unverified_relations"], 61)
+        self.assertEqual(relation["independently_verified_relations"], 129)
+        self.assertEqual(relation["remaining_unverified_relations"], 59)
         self.assertEqual(
             sum(lane["verified_relations"] for lane in relation["lanes"]),
             len(coverage["verified"]),
@@ -61,15 +61,21 @@ class VerificationRegistryTests(unittest.TestCase):
         )
         self.assertEqual(source_link_lane["verified_relations"], 2)
         self.assertEqual(source_link_lane["status"], "PASS")
-        self.assertEqual(summary["semantic_or_cross_layer_relations_remaining"], 61)
-        self.assertEqual(registry["gaps"][0]["remaining"], 61)
+        service_identity_lane = next(
+            lane for lane in relation["lanes"]
+            if lane["id"] == "careact-service-identity"
+        )
+        self.assertEqual(service_identity_lane["verified_relations"], 2)
+        self.assertEqual(service_identity_lane["status"], "PASS")
+        self.assertEqual(summary["semantic_or_cross_layer_relations_remaining"], 59)
+        self.assertEqual(registry["gaps"][0]["remaining"], 59)
         self.assertEqual(
             registry["gaps"][0]["classification_counts"],
             {
                 "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
                 "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
                 "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
-                "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 7,
+                "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
                 "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36,
             },
         )
