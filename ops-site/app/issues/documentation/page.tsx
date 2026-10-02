@@ -158,7 +158,7 @@ export default function DocumentationIssuePage() {
               <div>
                 <h3>様式統合・入力項目をそろえた様式・情報の再利用</h3>
                 <p>
-                  チェック欄、定型様式、共通情報再利用、システム連携、紙の廃止、入力タイミング変更などで十分なら、
+                  チェック欄、定型様式、共通情報の再利用、システム連携、紙の廃止、入力タイミング変更などで十分なら、
                   生成AIを追加する必要はありません。
                 </p>
               </div>
@@ -277,3 +277,4 @@ export default function DocumentationIssuePage() {
     </main>
   );
 }
+

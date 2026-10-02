@@ -15,31 +15,31 @@ const findings = [
       "厚生労働省の令和7年度実証では、記録・転記や予定調整の時間が減る一方、直接介護・看護・リハ時間が増えた例があります。生産性は「人を減らす」より、時間の使い方がどう変わったかで見る必要があります。",
   },
   {
-    label: "11 trials",
-    title: "人員配置 interventionの効果は一様ではない",
+    label: "11件の試験",
+    title: "人員配置への介入の効果は一様ではない",
     body:
-      "2026年のrapid living systematic reviewでは11試験が効果推定に寄与し、skill-mix adjustmentはhospitalizationを減らす可能性がありましたがcertaintyはlowでした。QoLなど他outcomeはlittle to no effectまたはuncertainでした。",
+      "2026年の迅速に更新される系統的レビューでは11試験が効果推定に寄与し、職種・技能の構成調整は入院を減らす可能性がありましたが根拠の確実性は低い水準でした。生活の質など他結果指標は効果がほぼないか不確かでした。",
   },
   {
-    label: "76 studies",
-    title: "人員配置は人数だけでなくskill・contextを見る",
+    label: "76件の研究",
+    title: "人員配置は人数だけでなく技能・現場条件を見る",
     body:
-      "2026年のscoping reviewでは76研究を整理し、sufficient 人員配置と適切なskills / competenciesを改善の優先事項として示しています。単純な人員削減をproductivity改善と同一視しません。",
+      "2026年の研究範囲を整理するレビューでは76研究を整理し、十分な人員配置と適切な技能・能力を改善の優先事項として示しています。単純な人員削減を生産性改善と同一視しません。",
   },
 ];
 
 const workTypes = [
-  ["A", "Direct care", "利用者対応、ケア、看護、リハ。単純な削減対象ではない。"],
-  ["B", "Indirect work", "記録、転記、予定、調整、検索、report。改善効果を比較的測りやすい。"],
-  ["C", "Friction", "移動、待ち、approval、再確認、rework。process設計で減らせる余地がある。"],
-  ["D", "Resilience", "急変、欠勤、新人支援、緊急対応、quality review。余剰時間とみなして削らない。"],
+  ["A", "直接ケア", "利用者対応、ケア、看護、リハ。単純な削減対象ではない。"],
+  ["B", "間接業務", "記録、転記、予定、調整、検索、報告。改善効果を比較的測りやすい。"],
+  ["C", "待ち・調整・手戻り", "移動、待ち、承認、再確認、手戻り。業務の流れ設計で減らせる余地がある。"],
+  ["D", "緊急時への備え", "急変、欠勤、新人支援、緊急対応、品質確認。余剰時間とみなして削らない。"],
 ];
 
 const steps = [
-  ["0", "時間の使い方を測る", "direct care / indirect / waiting / reworkへ分ける。"],
-  ["1", "最大bottleneckを一つ選ぶ", "全部を同時にDXせず、最も大きい負担から着手する。"],
-  ["2", "廃止・標準化・再利用を先に試す", "automationの前に、不要作業や重複を減らす。"],
-  ["3", "削減時間の行き先を決める", "direct care、休憩、training、quality review、受け入れ能力のどこへ戻すか決める。"],
+  ["0", "時間の使い方を測る", "直接ケア / 間接業務 / 待ち / 手戻りへ分ける。"],
+  ["1", "最大の負担要因を一つ選ぶ", "全部を同時にDXせず、最も大きい負担から着手する。"],
+  ["2", "廃止・標準化・再利用を先に試す", "自動化の前に、不要作業や重複を減らす。"],
+  ["3", "削減時間の行き先を決める", "直接ケア、休憩、研修、品質確認、受け入れ能力のどこへ戻すか決める。"],
   ["4", "必要ならAI / 最適化を加える", "勤務・予定の作成支援、経路案の作成、可視化など限定用途で比較する。"],
 ];
 
@@ -50,13 +50,13 @@ const sources = [
     href: "https://www.mhlw.go.jp/content/12300000/001690572.pdf",
   },
   {
-    title: "The impact of 人員配置 structures in long-term care homes on the quality of work-life and work outcomes of care-workers",
-    note: "2026年のnarrative scoping review。76研究を整理し、人員配置 structureとworker outcomeを検討。",
+    title: "The impact of staffing structures in long-term care homes on the quality of work-life and work outcomes of care-workers",
+    note: "2026年の研究範囲を整理する記述的レビュー。76研究を整理し、人員配置の構造と職員への影響を検討。",
     href: "https://pubmed.ncbi.nlm.nih.gov/41319443/",
   },
   {
     title: "Effects of Structural Workforce Interventions on Resident and Staff Outcomes in Long-Term Care Facilities",
-    note: "2026年のrapid living systematic review。11試験の効果推定、implementation barriers / facilitatorsも整理。",
+    note: "2026年の迅速に更新される系統的レビュー。11試験の効果推定、実装を妨げる条件・支える条件も整理。",
     href: "https://pubmed.ncbi.nlm.nih.gov/41956438/",
   },
   {
@@ -103,7 +103,7 @@ export default function ProductivityUtilizationIssuePage() {
           <h2>生産性は、「少ない人数で回すこと」ではありません。</h2>
           <p className="summaryLead">
             最初に見るのは、直接ケア、記録・転記、調整、待ち、やり直しへ時間がどう配分されているかです。
-            間接業務が減った時間を、直接ケア、休憩、training、quality review、受け入れ能力のどこへ戻すかまで決めます。
+            間接業務が減った時間を、直接ケア、休憩、研修、品質確認、受け入れ能力のどこへ戻すかまで決めます。
           </p>
           <p>
             稼働率はサービスごとに受け入れ能力の意味が違うため、共通の目標値は置きません。
@@ -116,7 +116,7 @@ export default function ProductivityUtilizationIssuePage() {
             <p className="eyebrow">根拠から分かること</p>
             <h2>「削減時間」だけを成功指標にしません。</h2>
             <p>
-              productivity、quality、staff outcomeを同時に見ます。小規模実証やreviewの結果を、全事業所へそのまま一般化しません。
+              生産性、品質、職員への影響を同時に見ます。小規模実証やレビューの結果を、全事業所へそのまま一般化しません。
             </p>
           </div>
           <div className="findingList">
@@ -136,7 +136,7 @@ export default function ProductivityUtilizationIssuePage() {
           <div className="sectionHead">
             <p className="eyebrow">Time allocation</p>
             <h2>時間を四つに分けます。</h2>
-            <p>「空いている時間」に見えても、緊急対応や支援のために必要なbufferがあります。</p>
+            <p>「空いている時間」に見えても、緊急対応や支援のために必要な余力があります。</p>
           </div>
           <ol className="levelList">
             {workTypes.map(([number, title, body]) => (
@@ -179,20 +179,20 @@ export default function ProductivityUtilizationIssuePage() {
               <span className="findingLabel">通所</span>
               <div>
                 <h3>定員・営業日・利用枠</h3>
-                <p>cancellation、曜日差、送迎、職員配置を含めて受け入れ能力を考えます。</p>
+                <p>キャンセル、曜日差、送迎、職員配置を含めて受け入れ能力を考えます。</p>
               </div>
             </div>
             <div className="findingRow">
               <span className="findingLabel">訪問</span>
               <div>
                 <h3>職員時間・移動・資格・希望時間帯</h3>
-                <p>単純な予約枠ではなく、地理とconstraintが受け入れ能力を決めます。</p>
+                <p>単純な予約枠ではなく、地理と制約条件が受け入れ能力を決めます。</p>
               </div>
             </div>
             <div className="findingRow">
               <span className="findingLabel">入所</span>
               <div>
-                <h3>bed occupancy・入退所flow</h3>
+                <h3>ベッド稼働率・入退所の流れ</h3>
                 <p>空床だけでなく、入退所調整、医療対応、人員配置との組み合わせで見ます。</p>
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function ProductivityUtilizationIssuePage() {
               <div>
                 <h3>標準化・役割分担・情報の再利用</h3>
                 <p>
-                  予定 rule整理、meeting削減、form統合、layout変更、batch処理などで十分なら、
+                  予定のルール整理、会議削減、様式統合、配置変更、まとめて処理などで十分なら、
                   AIや高度な最適化を追加しません。
                 </p>
               </div>
@@ -230,27 +230,27 @@ export default function ProductivityUtilizationIssuePage() {
         <section className="section experiment">
           <p className="eyebrow">小さく試す</p>
           <h2>1週間の作業時間の内訳確認から始めます。</h2>
-          <p>2〜3職種だけを対象にし、大規模なsystem導入前にbottleneckを特定します。</p>
+          <p>2〜3職種だけを対象にし、大規模なシステム導入前に負担要因を特定します。</p>
           <div className="experimentGrid">
             <div>
               <span>01</span>
               <strong>分類</strong>
-              <p>direct care、indirect、waiting、reworkへ時間を分ける。</p>
+              <p>直接ケア、間接業務、待ち、手戻りへ時間を分ける。</p>
             </div>
             <div>
               <span>02</span>
               <strong>最大負担を一つ選ぶ</strong>
-              <p>最も大きいindirect / frictionだけを対象にする。</p>
+              <p>最も大きい間接業務・待ち・調整だけを対象にする。</p>
             </div>
             <div>
               <span>03</span>
               <strong>最小変更</strong>
-              <p>廃止、標準化、再利用、automationの順に試す。</p>
+              <p>廃止、標準化、再利用、自動化の順に試す。</p>
             </div>
             <div>
               <span>04</span>
               <strong>再測定</strong>
-              <p>対象時間、direct care、overtime、rework、staff burdenを比較する。</p>
+              <p>対象時間、直接ケア、残業、手戻り、職員の負担を比較する。</p>
             </div>
           </div>
         </section>
@@ -259,11 +259,11 @@ export default function ProductivityUtilizationIssuePage() {
           <p className="eyebrow">運用上の注意</p>
           <h2>「効率化」が、必要な余力の削減にならないようにします。</h2>
           <p>
-            急変、欠勤、新人支援、相談、quality reviewのための時間は、単なるidleとは限りません。
+            急変、欠勤、新人支援、相談、品質確認のための時間は、単なる空き時間とは限りません。
             人員配置削減、休憩削減、記録省略、相談抑制だけで数字を改善しないことを前提にします。
           </p>
           <p>
-            人員配置や配置に制度上の要件がある場合は、Kaigo Rules側の原典・検証状態で確認します。
+            人員配置に制度上の要件がある場合は、Kaigo Rules側の原典・検証状態で確認します。
           </p>
           <a className="textLink" href="https://kaigo-rules.vercel.app/" target="_blank" rel="noreferrer">
             介護ルールで制度・原典を確認する →
@@ -274,7 +274,7 @@ export default function ProductivityUtilizationIssuePage() {
           <div className="sectionHead">
             <p className="eyebrow">根拠</p>
             <h2>主な根拠</h2>
-            <p>日本の公的実証と、LTC workforceに関するreviewを分けて扱います。</p>
+            <p>日本の公的実証と、長期ケアの職員に関するレビューを分けて扱います。</p>
           </div>
           <div className="sourceList">
             {sources.map((source, index) => (
@@ -294,13 +294,13 @@ export default function ProductivityUtilizationIssuePage() {
           <p className="eyebrow">まだ分からないこと</p>
           <h2>まだ結論を出していないこと</h2>
           <ul>
-            <li>サービス種別ごとの適切な受け入れ能力 / utilization指標。</li>
-            <li>稼働率とstaff burden・qualityの関係。</li>
-            <li>予定 最適化の独立評価と実装cost。</li>
-            <li>productivity改善がovertime・欠勤・turnoverへどう影響するか。</li>
+            <li>サービス種別ごとの適切な受け入れ能力 / 稼働状況指標。</li>
+            <li>稼働率と職員の負担・品質の関係。</li>
+            <li>予定の最適化の独立評価と実装費用。</li>
+            <li>生産性改善が残業・欠勤・離職へどう影響するか。</li>
             <li>令和8年度介護事業経営実態調査の集計結果を踏まえた収支との接続。</li>
           </ul>
-          <p>ここは単一施設の成功事例から一般化せず、service-specific dataと最新公的調査で更新します。</p>
+          <p>ここは単一施設の成功事例から一般化せず、サービス種別ごとのデータと最新公的調査で更新します。</p>
         </section>
       </article>
 
@@ -311,3 +311,4 @@ export default function ProductivityUtilizationIssuePage() {
     </main>
   );
 }
+
