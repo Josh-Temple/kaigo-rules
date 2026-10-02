@@ -3,7 +3,7 @@ name: Update MHLW Q&A corpus
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, "data/global-qa-corpus-20261002"]
     paths:
       - ".github/workflows/update-qa-corpus.yml"
       - "scripts/import_mhlw_qa.py"
