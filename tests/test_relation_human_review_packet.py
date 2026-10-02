@@ -43,14 +43,12 @@ class RelationHumanReviewPacketTests(unittest.TestCase):
             self.assertIsNone(item["reviewed_at"])
             self.assertIsNotNone(item["source"]["route"])
             self.assertIsNotNone(item["target"]["route"])
-            self.assertIn(
+            self.assertEqual(
                 item["decision_options"],
                 [
-                    [
-                        "CONFIRM_RELATION",
-                        "REJECT_RELATION",
-                        "NEEDS_MORE_EVIDENCE",
-                    ]
+                    "CONFIRM_RELATION",
+                    "REJECT_RELATION",
+                    "NEEDS_MORE_EVIDENCE",
                 ],
             )
 
