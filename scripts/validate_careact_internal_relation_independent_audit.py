@@ -146,7 +146,26 @@ def main() -> None:
     if coverage.get("relations_in_this_lane") != 4 or coverage.get("relations_passed") != 4:
         fail("phase-2 lane coverage changed")
 
+    # The upstream Article 105 audit receipt may be refreshed for provenance-only
+    # changes. Validate its substantive claim instead of coupling this lane to
+    # the receipt blob SHA.
+    upstream = load(DATA / "relation-semantic-independent-audit.json")
+    upstream_coverage = upstream.get("coverage", {})
+    if upstream.get("audit_result") != "PASS":
+        fail("upstream explicit-reference audit is not PASS")
+    if upstream_coverage.get("explicit_legal_reference_relations_independently_verified") != 23:
+        fail("upstream explicit-reference coverage changed")
+    if coverage.get("previous_explicit_relations_independently_verified") != 23:
+        fail("recorded upstream relation count changed")
+    if coverage.get("aggregate_explicit_relations_independently_verified") != 27:
+        fail("aggregate explicit relation count changed")
+
+    semantic_upstream_receipts = {
+        "data/relation-semantic-independent-audit.json",
+    }
     for relative, expected_blob in record.get("input_git_blob_shas_at_audit", {}).items():
+        if relative in semantic_upstream_receipts:
+            continue
         path = ROOT / relative
         if not path.exists():
             fail(f"pinned audit input missing: {relative}")
