@@ -9,6 +9,9 @@ const read = (name) => JSON.parse(fs.readFileSync(path.join(root, "data", name),
 const questions = read("questions.json");
 const corpus = read("qa-corpus.json");
 const meta = read("qa-corpus-meta.json");
+const dayserviceCorpus = corpus.filter((item) =>
+  ["01", "02", "06", "16"].includes(item.service_code)
+);
 
 const normalize = (value = "") =>
   String(value)
@@ -102,7 +105,7 @@ function scoreItem(question, item) {
 }
 
 const groups = questions.map((question) => {
-  const ranked = corpus
+  const ranked = dayserviceCorpus
     .map((item) => ({ item, ...scoreItem(question, item) }))
     .filter((entry) => entry.score >= 6 && entry.anchors.length > 0)
     .sort((a, b) =>
