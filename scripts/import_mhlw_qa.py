@@ -142,6 +142,15 @@ def parse_workbook(payload: bytes):
         if cols is None:
             continue
         used_sheets.append(sheet.name)
+        print(json.dumps({
+            "diagnostic_sheet": sheet.name,
+            "header_row": header_row + 1,
+            "header_mapping": cols,
+            "header_window": [
+                [clean(sheet.cell_value(r, col)) for col in range(min(sheet.ncols, 12))]
+                for r in range(max(0, header_row - 1), min(sheet.nrows, header_row + 3))
+            ],
+        }, ensure_ascii=False))
         last_service = ""
         last_criterion = ""
 
