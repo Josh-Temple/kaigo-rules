@@ -252,7 +252,7 @@ def build() -> dict:
     questions = {row["slug"]: row for row in load("questions.json")}
     notices = {
         row["id"]: row
-        for row in load("notice-nodes.json") + load("notice-current-skeleton.json")
+        for row in load("notice-current-skeleton.json") + load("notice-nodes.json")
     }
     notice_reviews = {
         row["notice_id"]: row for row in load("notice-review-packet.json").get("items", [])
