@@ -92,7 +92,9 @@
     "check:relation-human-review-packet": "python scripts/build_relation_human_review_packet.py --check",
     "validate:notice-rouki25-watch-receipt": "python scripts/validate_notice_rouki25_watch_receipt.py",
     "build:relation-human-review-evidence-pack": "python scripts/build_relation_human_review_evidence_pack.py",
-    "check:relation-human-review-evidence-pack": "python scripts/build_relation_human_review_evidence_pack.py --check"
+    "check:relation-human-review-evidence-pack": "python scripts/build_relation_human_review_evidence_pack.py --check",
+    "import:homevisit-rouki25-historical": "python scripts/import_homevisit_rouki25_historical.py",
+    "verify:homevisit-rouki25-historical-independent": "python scripts/verify_homevisit_rouki25_historical_independent.py"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
