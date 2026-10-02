@@ -122,7 +122,7 @@ def leading_code(value: str, width: int) -> str:
 
 def source_service_code(value: str) -> str:
     text = unicodedata.normalize("NFKC", value)
-    match = re.match(r"\\s*(\\d{1,2}|XX)", text, re.I)
+    match = re.match(r"\s*(\d{1,2}|XX)", text, re.I)
     if not match:
         return ""
     return match.group(1).upper()
@@ -130,7 +130,7 @@ def source_service_code(value: str) -> str:
 def scope_label(value: str) -> str:
     text = unicodedata.normalize("NFKC", clean(value))
     first_line = text.splitlines()[0] if text else ""
-    return re.sub(r"^\\s*(?:\\d{1,2}|XX)\\s*[.．]?\\s*", "", first_line, flags=re.I).strip()
+    return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
 
 def canonical_service_code(value: str) -> str:
     scope = scope_label(value)
