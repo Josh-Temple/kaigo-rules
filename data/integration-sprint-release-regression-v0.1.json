@@ -455,6 +455,23 @@
       "not_contains_text": [
         "指定されたサービスはservice catalogに登録されていません"
       ]
+    },
+    {
+      "id": "IR-26",
+      "coverage": "notice_retrieval",
+      "title": "global database search can retrieve published homevisit historical notice records",
+      "path": "/databases/search?q=訪問介護員",
+      "expect_status": 200,
+      "contains_text": [
+        "訪問介護員等の員数",
+        "基準解釈通知",
+        "訪問介護"
+      ],
+      "regex_text": [],
+      "href_contains": [
+        "/notices?service=homevisit"
+      ],
+      "not_contains_text": []
     }
   ]
 }
