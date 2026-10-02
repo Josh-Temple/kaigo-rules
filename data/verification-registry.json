@@ -16,6 +16,26 @@
         "status": "PARTIAL_INGESTION"
       },
       {
+        "service_id": "homebath",
+        "label": "訪問入浴介護",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "homenursing",
+        "label": "訪問看護",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "homerehab",
+        "label": "訪問リハビリテーション",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "homecaremanagement",
+        "label": "居宅療養管理指導",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
         "service_id": "dayrehab",
         "label": "通所リハビリテーション",
         "status": "ACTIVE_PREVIEW"
@@ -23,6 +43,31 @@
       {
         "service_id": "shortstay-life",
         "label": "短期入所生活介護",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "community-dayservice",
+        "label": "地域密着型通所介護",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "regular-round",
+        "label": "定期巡回・随時対応型訪問介護看護",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "night-homevisit",
+        "label": "夜間対応型訪問介護",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "care-management",
+        "label": "居宅介護支援",
+        "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "preventive-support",
+        "label": "介護予防支援",
         "status": "PARTIAL_INGESTION"
       }
     ]
@@ -484,7 +529,7 @@
     }
   ],
   "summary": {
-    "services_total": 4,
+    "services_total": 13,
     "active_services_total": 2,
     "layers_total": 11,
     "independent_audit_or_reconstruction": 9,
