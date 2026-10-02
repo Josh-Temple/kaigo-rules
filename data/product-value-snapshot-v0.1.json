@@ -40,13 +40,13 @@
     "practical_questions_with_evidence_path": {
       "questions_total": 12,
       "questions_with_evidence_path": 12,
-      "coverage_rate": 1.0,
+      "coverage_rate": 1,
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
       "public_items_total": 4409,
       "public_items_complete": 4409,
-      "coverage_rate": 1.0,
+      "coverage_rate": 1,
       "missing_source_items": [],
       "missing_scope_items": [],
       "missing_verification_state_items": [],
@@ -146,9 +146,9 @@
     },
     "unresolved_or_unverified_relations": {
       "relations_total": 188,
-      "relations_independently_verified": 84,
-      "relations_remaining_unverified": 104,
-      "remaining_rate": 0.553191,
+      "relations_independently_verified": 108,
+      "relations_remaining_unverified": 80,
+      "remaining_rate": 0.425532,
       "lane_breakdown": [
         {
           "id": "explicit-legal-reference",
@@ -185,6 +185,12 @@
           "status": "PASS",
           "verified_relations": 3,
           "evidence": "data/remuneration-source-link-derived-audit.json"
+        },
+        {
+          "id": "fee-guidance-to-remuneration",
+          "status": "PASS",
+          "verified_relations": 24,
+          "evidence": "data/fee-guidance-relation-independent-audit.json"
         }
       ]
     }
