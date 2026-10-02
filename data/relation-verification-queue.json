@@ -3,11 +3,11 @@
   "generated_by": "scripts/build_relation_verification_queue.py",
   "policy": "Classification selects a verification method only; it never promotes relation, currentness, or human-review state.",
   "inventory_relations": 188,
-  "independently_covered_relations": 125,
-  "remaining_relations": 63,
+  "independently_covered_relations": 127,
+  "remaining_relations": 61,
   "classification_counts": {
     "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
-    "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 3,
+    "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
     "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
     "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 7,
     "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
@@ -107,21 +107,6 @@
     {
       "identity": {
         "from": "fee.dayservice.root",
-        "relation": "currency_conversion_uses",
-        "to": "mhlw-unit-price-current"
-      },
-      "source_file": "data/remuneration-relations.json",
-      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
-      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
-      "verification_strategy": "Verify the source-level provenance claim against direct official evidence and, where the relation says latest/current, separately prove freshness.",
-      "blockers": [
-        "Source existence alone does not prove the relation semantics.",
-        "Freshness-sensitive labels must not be inferred from historical provenance."
-      ]
-    },
-    {
-      "identity": {
-        "from": "fee.dayservice.root",
         "relation": "defined_service_by",
         "to": "ordinance37.article.92"
       },
@@ -131,21 +116,6 @@
       "verification_strategy": "Review the cross-layer legal meaning and record explicit primary-source evidence before adding an independent audit lane.",
       "blockers": [
         "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
-      ]
-    },
-    {
-      "identity": {
-        "from": "fee.dayservice.root",
-        "relation": "historically_interpreted_by",
-        "to": "mhlw-fee-interpretation-historical"
-      },
-      "source_file": "data/remuneration-relations.json",
-      "source_state": "HISTORICAL_REFERENCE_ONLY",
-      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
-      "verification_strategy": "Verify the source-level provenance claim against direct official evidence and, where the relation says latest/current, separately prove freshness.",
-      "blockers": [
-        "Source existence alone does not prove the relation semantics.",
-        "Freshness-sensitive labels must not be inferred from historical provenance."
       ]
     },
     {
