@@ -35,3 +35,11 @@ test("database hub exposes a service-neutral cross-database search", () => {
   assert.doesNotMatch(search, /dayserviceQaServiceCodes/);
   assert.doesNotMatch(search, /remuneration-current-skeleton/);
 });
+
+test("legacy cross-source search keeps its day-service scope contract", () => {
+  const legacy = fs.readFileSync("app/search/page.tsx", "utf8");
+
+  assert.match(legacy, /dayserviceQaServiceCodes/);
+  assert.match(legacy, /getDefaultService/);
+  assert.match(legacy, /filterRecordsForService/);
+});
