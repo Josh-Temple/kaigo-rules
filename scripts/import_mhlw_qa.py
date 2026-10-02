@@ -237,7 +237,14 @@ def main():
         previous = scope_by_code.setdefault(item["service_code"], item["scope"])
         if previous != item["scope"]:
             raise RuntimeError(
-                f"Inconsistent service label for {item['service_code']}: {previous!r} vs {item['scope']!r}"
+                "Inconsistent service label for "
+                + item["service_code"]
+                + ": "
+                + repr(previous)
+                + " vs "
+                + repr(item["scope"])
+                + " / raw="
+                + repr(item["service_label"])
             )
 
     out = Path(args.out)
