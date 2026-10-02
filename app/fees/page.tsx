@@ -1,4 +1,5 @@
 import VerificationSummary from "../../components/verification-summary";
+import ServiceContextLinks from "../../components/service-context-links";
 import Link from "next/link";
 import nodesData from "../../data/remuneration-current-skeleton.json";
 import textData from "../../data/remuneration-current-text.json";
@@ -38,6 +39,8 @@ export default function FeesPage() {
         介護報酬は、基準省令とは別に、報酬告示・算定方法告示・留意事項通知を分けて構造化します。
         厚生労働省の現行統合HTMLから通所介護費を区画ごとに取り込み、人手確認できる形にしています。
       </p>
+
+      <ServiceContextLinks serviceId="dayservice" />
       <div className="notice">
         <strong>公式現行本文は取り込み済みですが、人手確認は別工程です。</strong><br/>
         厚生労働省の現行HTMLには令和8年告示第87号まで反映されています。
