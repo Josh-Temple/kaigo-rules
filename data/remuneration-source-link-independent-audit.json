@@ -1,0 +1,89 @@
+{
+  "format_version": 1,
+  "scope": "dayservice-remuneration-source-links",
+  "audit_kind": "INDEPENDENT_MHLW_SOURCE_LINK_REPARSE",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-02",
+  "audit_run": {
+    "workflow": "Verify remuneration source links independently",
+    "run_id": 37023086252,
+    "head_sha": "64f342acc3a8b11b1df32e8a0c8c7135bc95fe95",
+    "result": "PASS"
+  },
+  "sources": {
+    "unit_price_page1": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+      "sha256": "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395"
+    },
+    "unit_price_page2": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2",
+      "sha256": "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+    },
+    "historical_guidance": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4378&dataType=1&pageNo=1",
+      "sha256": "3d158cd1db06b108e2c31ca909a7d76480e7c2eca4ad204e1743a44110489e8b"
+    }
+  },
+  "checks": [
+    {
+      "id": "fee.dayservice.root-to-mhlw-unit-price-current",
+      "from_id": "fee.dayservice.root",
+      "relation": "currency_conversion_uses",
+      "to_source_id": "mhlw-unit-price-current",
+      "evidence_kind": "unit_price",
+      "required_primary_source_phrases": [
+        "厚生労働大臣が定める一単位の単価",
+        "指定居宅サービスに要する費用の額の算定に関する基準",
+        "一単位の単価",
+        "十円",
+        "通所介護",
+        "千分の千九十",
+        "千分の千"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee.dayservice.root-to-mhlw-fee-interpretation-historical",
+      "from_id": "fee.dayservice.root",
+      "relation": "historically_interpreted_by",
+      "to_source_id": "mhlw-fee-interpretation-historical",
+      "evidence_kind": "historical_guidance",
+      "required_primary_source_phrases": [
+        "指定居宅サービスに要する費用の額の算定に関する基準",
+        "実施上の留意事項",
+        "通所介護"
+      ],
+      "result": "PASS",
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "relations_in_this_lane": 2,
+    "relations_passed": 2
+  },
+  "excluded_relation": {
+    "identity": {
+      "from": "fee.dayservice.root",
+      "relation": "latest_interpretation_amendment_evidence",
+      "to": "mhlw-r8-fee-guidance-may-amendment"
+    },
+    "reason": "Freshness-sensitive 'latest' semantics require separate exhaustive/currentness evidence and remain outside this audit lane."
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/remuneration-relations.json": "274c480264df6374fd40859b8d2561cda59b9ae8",
+    "scripts/verify_remuneration_source_links_independent.py": "c9c44ee8ae868f47c9deaab78bf7cb90faba7c41"
+  },
+  "limitations": [
+    "PASS applies only to the two listed source-link relation identities.",
+    "The freshness-sensitive latest-amendment relation is explicitly excluded.",
+    "Independent machine verification is not HUMAN_VERIFIED or VERIFIED_CURRENT."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_latest_claim": false,
+    "promotes_unlisted_relations": false
+  }
+}
