@@ -1,0 +1,344 @@
+{
+  "format_version": 1,
+  "scope": "dayservice-fee-guidance-to-remuneration-relations",
+  "audit_kind": "INDEPENDENT_PRIMARY_SOURCE_RELATION_REPARSE",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-02",
+  "audit_run": {
+    "workflow": "Verify fee-guidance relations independently",
+    "run_id": 37018147373,
+    "head_sha": "56ae6e02df83d9f302e2dcaa16596d1048d670aa",
+    "result": "PASS",
+    "parsers": {
+      "guidance_pdf": "pdftotext_current_left_column_pages_42_61",
+      "notice19_html": "python_stdlib_html_parser"
+    }
+  },
+  "sources": {
+    "guidance_r6_redline": {
+      "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+      "sha256": "826dc8f8521ff8387fdde90f880290422ed9a846e71cc3277494b1ea38693241"
+    },
+    "notice19": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+      "sha256": "e189120c253f72d2d5dab24dfe7118bad7d602f0baba3d8cdf98a58c7ecc5bbd"
+    }
+  },
+  "checks": [
+    {
+      "id": "fee-guidance.dayservice.root-to-fee.dayservice.root",
+      "from_guidance_id": "fee-guidance.dayservice.root",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.root",
+      "guidance_heading_evidence": "通所介護費",
+      "fee_required_phrases": [
+        "通所介護費"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.1-to-fee.dayservice.standard",
+      "from_guidance_id": "fee-guidance.dayservice.1",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.standard",
+      "guidance_heading_evidence": "所要時間による区分の取扱い",
+      "fee_required_phrases": [
+        "所要時間"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.1-to-fee.dayservice.large1",
+      "from_guidance_id": "fee-guidance.dayservice.1",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.large1",
+      "guidance_heading_evidence": "所要時間による区分の取扱い",
+      "fee_required_phrases": [
+        "所要時間"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.1-to-fee.dayservice.large2",
+      "from_guidance_id": "fee-guidance.dayservice.1",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.large2",
+      "guidance_heading_evidence": "所要時間による区分の取扱い",
+      "fee_required_phrases": [
+        "所要時間"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.1-to-fee.dayservice.note.4",
+      "from_guidance_id": "fee-guidance.dayservice.1",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.4",
+      "guidance_heading_evidence": "所要時間による区分の取扱い",
+      "fee_required_phrases": [
+        "所要時間",
+        "2時間以上3時間未満"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.2-to-fee.dayservice.note.2",
+      "from_guidance_id": "fee-guidance.dayservice.2",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.2",
+      "guidance_heading_evidence": "高齢者虐待防止措置未実施減算について",
+      "fee_required_phrases": [
+        "高齢者虐待防止措置未実施減算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.3-to-fee.dayservice.note.3",
+      "from_guidance_id": "fee-guidance.dayservice.3",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.3",
+      "guidance_heading_evidence": "業務継続計画未策定減算について",
+      "fee_required_phrases": [
+        "業務継続計画未策定減算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.8-to-fee.dayservice.note.8",
+      "from_guidance_id": "fee-guidance.dayservice.8",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.8",
+      "guidance_heading_evidence": "生活相談員配置等加算について",
+      "fee_required_phrases": [
+        "生活相談員配置等加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.9-to-fee.dayservice.note.9",
+      "from_guidance_id": "fee-guidance.dayservice.9",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.9",
+      "guidance_heading_evidence": "注9の取扱い",
+      "fee_required_phrases": [
+        "9",
+        "通常の事業の実施地域"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.10-to-fee.dayservice.note.10",
+      "from_guidance_id": "fee-guidance.dayservice.10",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.10",
+      "guidance_heading_evidence": "入浴介助加算について",
+      "fee_required_phrases": [
+        "入浴介助加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.11-to-fee.dayservice.note.11",
+      "from_guidance_id": "fee-guidance.dayservice.11",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.11",
+      "guidance_heading_evidence": "中重度者ケア体制加算について",
+      "fee_required_phrases": [
+        "中重度者ケア体制加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.12-to-fee.dayservice.note.12",
+      "from_guidance_id": "fee-guidance.dayservice.12",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.12",
+      "guidance_heading_evidence": "生活機能向上連携加算について",
+      "fee_required_phrases": [
+        "生活機能向上連携加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.13-to-fee.dayservice.note.13",
+      "from_guidance_id": "fee-guidance.dayservice.13",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.13",
+      "guidance_heading_evidence": "個別機能訓練加算について",
+      "fee_required_phrases": [
+        "個別機能訓練"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.14-to-fee.dayservice.note.14",
+      "from_guidance_id": "fee-guidance.dayservice.14",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.14",
+      "guidance_heading_evidence": "ADL維持等加算について",
+      "fee_required_phrases": [
+        "ADL",
+        "維持等加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.15-to-fee.dayservice.note.15",
+      "from_guidance_id": "fee-guidance.dayservice.15",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.15",
+      "guidance_heading_evidence": "認知症加算について",
+      "fee_required_phrases": [
+        "認知症加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.16-to-fee.dayservice.note.16",
+      "from_guidance_id": "fee-guidance.dayservice.16",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.16",
+      "guidance_heading_evidence": "若年性認知症利用者受入加算について",
+      "fee_required_phrases": [
+        "若年性認知症利用者"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.17-to-fee.dayservice.note.17",
+      "from_guidance_id": "fee-guidance.dayservice.17",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.17",
+      "guidance_heading_evidence": "栄養アセスメント加算について",
+      "fee_required_phrases": [
+        "栄養アセスメント"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.19-to-fee.dayservice.note.19",
+      "from_guidance_id": "fee-guidance.dayservice.19",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.19",
+      "guidance_heading_evidence": "口腔・栄養スクリーニング加算について",
+      "fee_required_phrases": [
+        "栄養スクリーニング加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.20-to-fee.dayservice.note.20",
+      "from_guidance_id": "fee-guidance.dayservice.20",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.20",
+      "guidance_heading_evidence": "口腔機能向上加算について",
+      "fee_required_phrases": [
+        "機能向上加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.21-to-fee.dayservice.note.21",
+      "from_guidance_id": "fee-guidance.dayservice.21",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.21",
+      "guidance_heading_evidence": "科学的介護推進体制加算について",
+      "fee_required_phrases": [
+        "科学的介護推進体制加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.22-to-fee.dayservice.note.23",
+      "from_guidance_id": "fee-guidance.dayservice.22",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.23",
+      "guidance_heading_evidence": "事業所と同一建物に居住する利用者又は同一建物から通う利用者に通所介護を行う場合について",
+      "fee_required_phrases": [
+        "同一建物",
+        "94単位"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.23-to-fee.dayservice.note.24",
+      "from_guidance_id": "fee-guidance.dayservice.23",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.note.24",
+      "guidance_heading_evidence": "送迎を行わない場合の減算について",
+      "fee_required_phrases": [
+        "送迎を行わない場合",
+        "47単位"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.26-to-fee.dayservice.service-provision",
+      "from_guidance_id": "fee-guidance.dayservice.26",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.service-provision",
+      "guidance_heading_evidence": "サービス提供体制強化加算について",
+      "fee_required_phrases": [
+        "サービス提供体制強化加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "fee-guidance.dayservice.27-to-fee.dayservice.treatment-improvement",
+      "from_guidance_id": "fee-guidance.dayservice.27",
+      "relation": "explains_calculation_of",
+      "to_fee_id": "fee.dayservice.treatment-improvement",
+      "guidance_heading_evidence": "介護職員等処遇改善加算について",
+      "fee_required_phrases": [
+        "介護職員等処遇改善加算"
+      ],
+      "result": "PASS",
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "relations_in_this_lane": 24,
+    "relations_passed": 24
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/fee-guidance-relations.json": "caa6b1f9e93164c066dca3e345008b10914a5b2d",
+    "scripts/verify_fee_guidance_relations_independent.py": "819e602bbbb4726f34f9c04e17a49de46a53e0f0"
+  },
+  "conclusion": "All 24 committed day-service fee-guidance to remuneration relation identities matched independent official-source evidence from the R6 current/new guidance column and live Notice 19 text.",
+  "limitations": [
+    "PASS applies only to the 24 listed relation identities.",
+    "This audit does not promote HUMAN_VERIFIED or VERIFIED_CURRENT.",
+    "The R6 redline is used only for explicit current-side heading/cross-reference evidence; it is not treated as a consolidated current guidance text.",
+    "Scheduled live-source verification remains responsible for later source drift."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_guidance_text_currentness": false,
+    "promotes_unlisted_relations": false
+  }
+}
