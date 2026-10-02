@@ -28,8 +28,8 @@ class RelationHumanReviewEvidencePackTests(unittest.TestCase):
                 "CURATED_QA": 1,
                 "NOTICE": 7,
                 "OFFICIAL_SOURCE_REGISTRY": 1,
-                "ORDINANCE_CANONICAL_NODE": 22,
-                "ORDINANCE_LEGACY_VERIFIED_NODE": 28,
+                "ORDINANCE_CANONICAL_NODE": 49,
+                "ORDINANCE_LEGACY_VERIFIED_NODE": 1,
             },
         )
         self.assertFalse(
