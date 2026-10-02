@@ -15,11 +15,13 @@ import {
 import currentnessLedgerData from "../../data/notice-rouki25-currentness-ledger.json";
 import chainData from "../../data/notice-source-chain.json";
 import sourcesData from "../../data/sources.json";
+import homevisitData from "../../data/services/homevisit/rouki25-historical.generated.json";
 import dayrehabData from "../../data/services/dayrehab/rouki25-historical.generated.json";
 
 const currentnessLedger = currentnessLedgerData as any;
 const chain = chainData as Array<any>;
 const sources = sourcesData as Array<any>;
+const homevisit = homevisitData as any;
 const dayrehab = dayrehabData as any;
 
 const pageLabel = (evidence: PublicNoticeEvidence) => {
@@ -291,6 +293,34 @@ export default async function NoticesPage({
                   );
                 })}
               </div>
+            </section>
+          </div>
+        </details>
+      ) : null}
+
+      {!service || selectedServiceId === "homevisit" ? (
+        <details className="notice-audit-details">
+          <summary>訪問介護35項目の旧HTML・改正証拠</summary>
+          <div className="notice-audit-body">
+            <section className="section">
+              <h2>現行統合本文ではありません</h2>
+              <p>
+                公式旧HTML「第三 訪問介護に関する基準」の35項目は独立照合済みですが、
+                令和6年度新旧対照の「略」「新設」「削る」を旧HTMLへ機械適用していません。
+                現行性はGAP、人手確認は未実施です。
+              </p>
+              <p>
+                <a href={homevisit.source?.url} target="_blank" rel="noreferrer">
+                  厚生労働省の公式旧HTMLを確認
+                </a>
+              </p>
+              {homevisit.amendment_evidence?.source_url ? (
+                <p>
+                  <a href={homevisit.amendment_evidence.source_url} target="_blank" rel="noreferrer">
+                    令和6年度新旧対照表を確認
+                  </a>
+                </p>
+              ) : null}
             </section>
           </div>
         </details>
