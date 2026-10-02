@@ -310,4 +310,3 @@ export default function TrainingHandoverIssuePage() {
     </main>
   );
 }
-
