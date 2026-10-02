@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ServiceContextLinks from "../../components/service-context-links";
 import QuestionAuthorityPanel from "../../components/question-authority-panel";
 import questionsData from "../../data/questions.json";
 import qaCorpusData from "../../data/qa-corpus.json";
@@ -162,6 +163,8 @@ export default async function SearchPage({
         根拠対応確認済みの実務ページ、基準省令、解釈通知、報酬告示、厚生労働省Q&Aを同じ語で探します。
         検索結果の表示と、内容の現行性確認は分けて扱います。
       </p>
+
+      <ServiceContextLinks serviceId="dayservice" />
 
       <form className="global-search-form" method="get" action="/search">
         <label>
