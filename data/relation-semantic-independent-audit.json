@@ -3,11 +3,11 @@
   "scope": "explicit-legal-reference-relations-ordinance37-article105",
   "audit_kind": "INDEPENDENT_EXPLICIT_LEGAL_REFERENCE_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-09-30",
+  "audited_at": "2026-10-02",
   "audit_run": {
     "workflow": "Verify explicit legal-reference relations independently",
-    "run_id": 36787107347,
-    "head_sha": "e07fc740b0cfcc18b1f923479c6cc1372898eec1",
+    "run_id": 37015596470,
+    "head_sha": "1e60d3781c140cc72410849758f9a125f9b2bbf6",
     "parser": "python_xml_dom_minidom_plus_independent_japanese_article_reference_parser",
     "result": "PASS",
     "verification_report_sha256": "3c1b4601ada548905004877fc4b43643a587c539e818a509d301713f3c873de5"
@@ -88,7 +88,7 @@
     "data/notice-ordinance-relations.json": "83a63383e63c37eec2bd1ce67e6b2a1975256d72",
     "data/relationships.json": "870df418e53bd7e76713bf038d9c883fa2c69466",
     "data/remuneration-delegated-relations.json": "6d4f7047fb78a399b4a4a543266003e9c223e481",
-    "data/remuneration-relations.json": "c0148b44987f638888a2c1d7f5bdb1dbe2369252",
+    "data/remuneration-relations.json": "274c480264df6374fd40859b8d2561cda59b9ae8",
     "scripts/verify_relation_semantics_independent.py": "595da0d07d8b683bfd401c153863e68f7c208fc7"
   },
   "conclusion": "The 23 explicit Article 105 incorporates_by_reference targets matched an independent parse of live e-Gov Article 105 text.",
