@@ -329,6 +329,11 @@ def find_header(rows: list[list], ncols: int):
         for colx, value in enumerate(values):
             if "サービス種別" in value or "サービス種類" in value:
                 mapping.setdefault("service", colx)
+                if rowx + 1 < len(rows) and colx + 1 < ncols:
+                    next_row = rows[rowx + 1]
+                    next_value = next_row[colx + 1] if colx + 1 < len(next_row) else ""
+                    if "qa以降" in norm(next_value):
+                        mapping.setdefault("service_current", colx + 1)
             elif "基準種別" in value or "基準種類" in value:
                 mapping.setdefault("criterion", colx)
             elif value == "項目" or "項目" in value:
@@ -388,6 +393,7 @@ def parse_xlsx(payload: bytes):
                 return clean(row[col] if col < len(row) else "")
 
             raw_service = get("service")
+            current_service_scope = get("service_current")
             raw_criterion = get("criterion")
             service_raw = raw_service or last_service
             criterion_raw = raw_criterion or last_criterion
@@ -411,6 +417,7 @@ def parse_xlsx(payload: bytes):
                 "service_code": service_code,
                 "service_label": service_raw,
                 "scope": CANONICAL_SCOPE_BY_CODE.get(service_code, scope_label(service_raw)),
+                "current_service_scope": current_service_scope,
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
@@ -511,6 +518,17 @@ def main() -> int:
                 "observed": row["scope"],
             })
     observed_scope_by_code = dict(sorted(observed_scope_by_code.items()))
+    expected_classification = {
+        "primary_column": "平成31年2月5日Q&A以前",
+        "current_scope_column": "平成31年3月15日Q&A以降",
+        "note": "Primary code/scope is retained for stable filtering; current_service_scope preserves the later applicability column verbatim when present.",
+    }
+    if meta.get("service_classification") != expected_classification:
+        differences.append({
+            "difference": "service_classification_contract_mismatch",
+            "expected": expected_classification,
+            "observed": meta.get("service_classification"),
+        })
     if meta.get("scope_mode") != "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK":
         differences.append({
             "difference": "scope_mode_mismatch",
@@ -550,7 +568,7 @@ def main() -> int:
         differences.append({"id": row_id, "difference": "unexpected_in_independent_parse"})
 
     fields = [
-        "service_code", "service_label", "scope", "standard_code", "standard_label",
+        "service_code", "service_label", "scope", "current_service_scope", "standard_code", "standard_label",
         "topic", "question", "answer", "issued_source", "number", "source_id",
         "ingestion_status",
     ]
