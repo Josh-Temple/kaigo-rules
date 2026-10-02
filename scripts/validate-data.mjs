@@ -16,6 +16,10 @@ const qaCorpusPath = path.join(root, "data", "qa-corpus.json");
 const qaCorpus = fs.existsSync(qaCorpusPath)
   ? JSON.parse(fs.readFileSync(qaCorpusPath, "utf8"))
   : [];
+const qaCorpusMetaPath = path.join(root, "data", "qa-corpus-meta.json");
+const qaCorpusMeta = fs.existsSync(qaCorpusMetaPath)
+  ? JSON.parse(fs.readFileSync(qaCorpusMetaPath, "utf8"))
+  : { target_service_codes: [], scope_by_code: {} };
 const qaCandidatesPath = path.join(root, "data", "qa-link-candidates.json");
 const qaCandidates = fs.existsSync(qaCandidatesPath)
   ? JSON.parse(fs.readFileSync(qaCandidatesPath, "utf8"))
@@ -336,14 +340,19 @@ for (const item of qa) {
 }
 
 const corpusIds = new Set(qaCorpus.map((item) => item.id));
+const qaServiceCodes = new Set(qaCorpusMeta.target_service_codes || []);
 
 for (const item of qaCorpus) {
   if (!sourceIds.has(item.source_id)) errors.push(`Q&A corpus ${item.id}: missing source ${item.source_id}`);
   for (const field of ["service_code", "standard_code", "question", "answer", "ingestion_status"]) {
     if (!item[field]) errors.push(`Q&A corpus ${item.id || "(missing id)"}: missing ${field}`);
   }
-  if (!["01", "02", "06", "16"].includes(item.service_code)) {
-    errors.push(`Q&A corpus ${item.id}: unexpected service_code ${item.service_code}`);
+  if (!qaServiceCodes.has(item.service_code)) {
+    errors.push(`Q&A corpus ${item.id}: service_code ${item.service_code} missing from qa-corpus-meta`);
+  }
+  const expectedScope = qaCorpusMeta.scope_by_code?.[item.service_code];
+  if (expectedScope && item.scope !== expectedScope) {
+    errors.push(`Q&A corpus ${item.id}: scope mismatch for ${item.service_code}`);
   }
 }
 

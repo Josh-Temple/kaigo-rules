@@ -15,13 +15,42 @@ import openpyxl
 import xlrd
 
 DEFAULT_PAGE = "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html"
-TARGET_SERVICE_CODES = {"01", "02", "06", "16"}
-SCOPE_BY_CODE = {
-    "01": "全サービス共通",
-    "02": "居宅サービス共通",
-    "06": "通所系サービス共通",
-    "16": "通所介護事業",
+SERVICE_CODE_BY_SCOPE = {
+    "全サービス共通": "01",
+    "居宅サービス共通": "02",
+    "施設サービス共通": "03",
+    "地域密着型サービス共通": "04",
+    "訪問系サービス共通": "05",
+    "通所系サービス共通": "06",
+    "訪問介護事業": "11",
+    "訪問入浴介護事業": "12",
+    "訪問看護事業": "13",
+    "訪問リハビリテーション事業": "14",
+    "居宅療養管理指導事業": "15",
+    "通所介護事業": "16",
+    "通所リハビリテーション事業": "17",
+    "短期入所生活介護事業": "18",
+    "短期入所療養介護事業": "19",
+    "特定施設入居者生活介護事業": "20",
+    "福祉用具貸与事業": "21",
+    "特定福祉用具販売事業": "22",
+    "居宅介護支援事業": "23",
+    "介護老人福祉施設": "24",
+    "介護老人保健施設": "25",
+    "介護療養型医療施設": "26",
+    "住宅改修": "27",
+    "定期巡回・随時対応型訪問介護看護事業": "40",
+    "夜間対応型訪問介護事業": "41",
+    "認知症対応型通所介護事業": "42",
+    "小規模多機能型居宅介護事業": "43",
+    "認知症対応型共同生活介護事業": "44",
+    "地域密着型特定施設入居者生活介護事業": "45",
+    "地域密着型介護老人福祉施設": "46",
+    "看護小規模多機能型居宅介護": "47",
+    "地域密着型通所介護事業": "48",
+    "介護医療院": "49",
 }
+CANONICAL_SCOPE_BY_CODE = {code: scope for scope, code in SERVICE_CODE_BY_SCOPE.items()}
 
 class XlsLinkParser(HTMLParser):
     def __init__(self):
@@ -90,6 +119,23 @@ def leading_code(value: str, width: int) -> str:
     m = re.match(r"\s*(\d{1,2})", text)
     return m.group(1).zfill(width) if m else ""
 
+def leading_service_code(value: str) -> str:
+    text = unicodedata.normalize("NFKC", value)
+    m = re.match(r"\s*(\d{1,2}|XX)", text, re.I)
+    if not m:
+        return ""
+    token = m.group(1).upper()
+    return token.zfill(2) if token.isdigit() else token
+
+def scope_label(value: str) -> str:
+    text = unicodedata.normalize("NFKC", clean(value))
+    first_line = text.splitlines()[0] if text else ""
+    return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
+
+def canonical_service_code(value: str) -> str:
+    scope = scope_label(value)
+    return SERVICE_CODE_BY_SCOPE.get(scope) or leading_service_code(value)
+
 def find_header(sheet):
     required = {"service", "criterion", "question", "answer"}
     for rowx in range(min(sheet.nrows, 40)):
@@ -98,6 +144,10 @@ def find_header(sheet):
         for colx, value in enumerate(values):
             if "サービス種別" in value or "サービス種類" in value:
                 mapping.setdefault("service", colx)
+                if rowx + 1 < sheet.nrows and colx + 1 < sheet.ncols:
+                    next_label = norm(sheet.cell_value(rowx + 1, colx + 1))
+                    if "qa以降" in next_label:
+                        mapping.setdefault("service_current", colx + 1)
             elif "基準種別" in value or "基準種類" in value:
                 mapping.setdefault("criterion", colx)
             elif value == "項目" or "項目" in value:
@@ -130,6 +180,7 @@ def parse_workbook(payload: bytes):
     items = []
     scanned = 0
     used_sheets = []
+    unclassified_rows = []
 
     for sheet in sheets:
         header_row, cols = find_header(sheet)
@@ -147,6 +198,7 @@ def parse_workbook(payload: bytes):
                 return clean(sheet.cell_value(rowx, col)) if col is not None else ""
 
             raw_service = get("service")
+            current_service_scope = get("service_current")
             raw_criterion = get("criterion")
             service_raw = raw_service or last_service
             criterion_raw = raw_criterion or last_criterion
@@ -160,15 +212,23 @@ def parse_workbook(payload: bytes):
             if not question or not answer:
                 continue
 
-            service_code = leading_code(service_raw, 2)
-            if service_code not in TARGET_SERVICE_CODES:
+            service_code = canonical_service_code(service_raw)
+            if not service_code:
+                unclassified_rows.append({
+                    "row": rowx + 1,
+                    "service": service_raw,
+                    "criterion": criterion_raw,
+                    "topic": get("topic"),
+                    "question": question[:120],
+                })
                 continue
 
             standard_code = leading_code(criterion_raw, 1)
             row = {
                 "service_code": service_code,
                 "service_label": service_raw,
-                "scope": SCOPE_BY_CODE[service_code],
+                "scope": CANONICAL_SCOPE_BY_CODE.get(service_code, scope_label(service_raw)),
+                "current_service_scope": current_service_scope,
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
@@ -184,8 +244,13 @@ def parse_workbook(payload: bytes):
 
     if not used_sheets:
         raise RuntimeError("Could not find a Q&A table header in any worksheet")
+    if unclassified_rows:
+        raise RuntimeError(
+            "Q&A rows with question/answer but no service code: "
+            + json.dumps(unclassified_rows[:10], ensure_ascii=False)
+        )
     if len(items) < 10:
-        raise RuntimeError(f"Only {len(items)} target rows were parsed; refusing to overwrite corpus")
+        raise RuntimeError(f"Only {len(items)} classified rows were parsed; refusing to overwrite corpus")
 
     dedup = {item["id"]: item for item in items}
     items = sorted(
@@ -214,6 +279,20 @@ def main():
     sha = hashlib.sha256(payload).hexdigest()
     sheet_names, used_sheets, scanned, items, workbook_format = parse_workbook(payload)
     counts = Counter(item["service_code"] for item in items)
+    scope_by_code = {}
+    for item in items:
+        previous = scope_by_code.setdefault(item["service_code"], item["scope"])
+        if previous != item["scope"]:
+            raise RuntimeError(
+                "Inconsistent service label for "
+                + item["service_code"]
+                + ": "
+                + repr(previous)
+                + " vs "
+                + repr(item["scope"])
+                + " / raw="
+                + repr(item["service_label"])
+            )
 
     out = Path(args.out)
     meta_out = Path(args.meta_out)
@@ -225,8 +304,14 @@ def main():
         "source_workbook": workbook_url,
         "source_format": workbook_format,
         "source_sha256": sha,
-        "target_service_codes": sorted(TARGET_SERVICE_CODES),
-        "scope_by_code": SCOPE_BY_CODE,
+        "scope_mode": "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK",
+        "service_classification": {
+            "primary_column": "平成31年2月5日Q&A以前",
+            "current_scope_column": "平成31年3月15日Q&A以降",
+            "note": "Primary code/scope is retained for stable filtering; current_service_scope preserves the later applicability column verbatim when present.",
+        },
+        "target_service_codes": sorted(scope_by_code),
+        "scope_by_code": dict(sorted(scope_by_code.items())),
         "workbook_sheets": sheet_names,
         "parsed_sheets": used_sheets,
         "rows_scanned": scanned,

@@ -206,12 +206,44 @@
         "status": "PASS",
         "kind": "INDEPENDENT_QA_XLSX_OOXML_REPARSE",
         "rows_scanned": 3739,
-        "rows_included": 843,
+        "rows_included": 3695,
         "counts_by_service": {
+          "11": 155,
+          "12": 19,
+          "13": 127,
+          "14": 101,
+          "15": 26,
           "16": 252,
+          "17": 265,
+          "18": 149,
+          "19": 59,
+          "20": 93,
+          "21": 29,
+          "22": 22,
+          "23": 160,
+          "24": 159,
+          "25": 124,
+          "26": 74,
+          "27": 45,
+          "40": 81,
+          "41": 38,
+          "42": 89,
+          "43": 80,
+          "44": 137,
+          "45": 40,
+          "46": 124,
+          "47": 67,
+          "48": 201,
+          "49": 40,
+          "50": 65,
+          "51": 1,
           "01": 480,
           "02": 47,
-          "06": 64
+          "03": 241,
+          "04": 31,
+          "05": 8,
+          "06": 64,
+          "XX": 2
         },
         "evidence": "data/qa-corpus-independent-audit.json"
       },
@@ -231,7 +263,7 @@
       "service_ids": [
         "dayservice"
       ],
-      "scope_kind": "SHARED_CORPUS_SERVICE_FILTER"
+      "scope_kind": "GLOBAL"
     },
     {
       "id": "rouki25-dayrehab",

@@ -9,6 +9,7 @@ type QaItem = {
   service_code: string;
   service_label: string;
   scope: string;
+  current_service_scope?: string;
   standard_code: string;
   standard_label: string;
   topic: string;
@@ -55,13 +56,19 @@ const expandTerm = (term: string) => {
   return group ? group.map((item) => normalize(item)) : [normalized];
 };
 
-const serviceOptions = [
+const serviceOptions: Array<[string, string]> = [
   ["", "すべて"],
-  ["16", "通所介護"],
-  ["06", "通所系共通"],
-  ["02", "居宅サービス共通"],
-  ["01", "全サービス共通"],
-] as const;
+  ...Object.entries(qaMeta.scope_by_code || {})
+    .sort(([a], [b]) => {
+      const an = Number(a);
+      const bn = Number(b);
+      if (Number.isFinite(an) && Number.isFinite(bn)) return an - bn;
+      if (Number.isFinite(an)) return -1;
+      if (Number.isFinite(bn)) return 1;
+      return a.localeCompare(b, "ja");
+    })
+    .map(([code, label]) => [code, String(label)] as [string, string]),
+];
 
 export default async function QaPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
@@ -89,6 +96,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
     const haystack = normalize([
       item.scope,
       item.service_label,
+      item.current_service_scope,
       item.standard_label,
       item.topic,
       item.question,
@@ -122,15 +130,15 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
       <p className="eyebrow">MHLW Q&A CORPUS</p>
       <h1>国Q&A DB</h1>
       <p className="lead">
-        厚生労働省の介護サービス関係Q&Aを、現在取り込み済みの範囲から横断検索します。
-        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を収載しており、対象サービスは順次拡張します。
+        厚生労働省の介護サービス関係Q&Aを、公式XLSXのサービス分類を保ったまま横断検索します。
+        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を収載しています。
       </p>
 
       <div className="notice">
-        <strong>現在の収載範囲は、全サービス共通・居宅サービス共通・通所系共通・通所介護です。</strong>
+        <strong>公式Q&A集でサービス種別コードが付いたQ&Aを、サービス横断で収載します。</strong>
         <br />
-        これはQ&A全件の収載完了を意味しません。また「収載」と「現行性確認」は別で、
-        個々のQ&Aが現在の法令・通知でも有効かは未確認のものを含みます。
+        「収載」と「現行性確認」は別です。個々のQ&Aが現在の法令・通知でも有効かは
+        未確認のものを含み、回答ページの根拠として使うものは別途確認します。
       </div>
 
       <VerificationSummary layerId="qa-corpus" />
@@ -172,7 +180,10 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         {visible.map((item) => (
           <section className="qa-row" key={item.id}>
             <div className="qa-row-head">
-              <p className="meta">{item.scope} ・ {item.standard_label || "基準種別なし"}</p>
+              <p className="meta">
+                {item.scope} ・ {item.standard_label || "基準種別なし"}
+                {item.current_service_scope ? ` / 2019年以降の分類：${item.current_service_scope}` : ""}
+              </p>
               <span className="corpus-status">収載済み・現行性未確認</span>
             </div>
             {item.topic ? <p className="qa-topic">{item.topic}</p> : null}
@@ -201,8 +212,9 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         <h2>現在の収載範囲</h2>
         <p>
           公式XLSXの {qaMeta.rows_scanned?.toLocaleString("ja-JP")} 行を走査し、
-          現時点では「全サービス共通」「居宅サービス共通」「通所系共通」「通所介護」を収載しています。
-          全体版に向け、同じ公式データから対象サービスを順次追加します。
+          サービス種別コードを持つQ&Aを全分類で収載しています。
+          主分類に加えて、公式XLSXに記載された2019年以降のサービス範囲も各Q&Aに保持します。
+          対象範囲フィルターは主分類を使います。
         </p>
         <dl>
           {serviceOptions.filter(([code]) => code).map(([code, label]) => (

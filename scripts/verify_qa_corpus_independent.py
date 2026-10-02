@@ -3,7 +3,7 @@
 
 The production importer uses openpyxl/xlrd. This verifier intentionally avoids
 those libraries and reads the XLSX ZIP/XML package with the Python standard
-library, then independently reproduces header detection, service-code filtering,
+library, then independently reproduces header detection, all classified service rows,
 stable IDs, de-duplication, and row content for the committed corpus.
 """
 
@@ -28,13 +28,42 @@ DATA = ROOT / "data"
 META_PATH = DATA / "qa-corpus-meta.json"
 CORPUS_PATH = DATA / "qa-corpus.json"
 
-TARGET_SERVICE_CODES = {"01", "02", "06", "16"}
-SCOPE_BY_CODE = {
-    "01": "全サービス共通",
-    "02": "居宅サービス共通",
-    "06": "通所系サービス共通",
-    "16": "通所介護事業",
+SERVICE_CODE_BY_SCOPE = {
+    "全サービス共通": "01",
+    "居宅サービス共通": "02",
+    "施設サービス共通": "03",
+    "地域密着型サービス共通": "04",
+    "訪問系サービス共通": "05",
+    "通所系サービス共通": "06",
+    "訪問介護事業": "11",
+    "訪問入浴介護事業": "12",
+    "訪問看護事業": "13",
+    "訪問リハビリテーション事業": "14",
+    "居宅療養管理指導事業": "15",
+    "通所介護事業": "16",
+    "通所リハビリテーション事業": "17",
+    "短期入所生活介護事業": "18",
+    "短期入所療養介護事業": "19",
+    "特定施設入居者生活介護事業": "20",
+    "福祉用具貸与事業": "21",
+    "特定福祉用具販売事業": "22",
+    "居宅介護支援事業": "23",
+    "介護老人福祉施設": "24",
+    "介護老人保健施設": "25",
+    "介護療養型医療施設": "26",
+    "住宅改修": "27",
+    "定期巡回・随時対応型訪問介護看護事業": "40",
+    "夜間対応型訪問介護事業": "41",
+    "認知症対応型通所介護事業": "42",
+    "小規模多機能型居宅介護事業": "43",
+    "認知症対応型共同生活介護事業": "44",
+    "地域密着型特定施設入居者生活介護事業": "45",
+    "地域密着型介護老人福祉施設": "46",
+    "看護小規模多機能型居宅介護": "47",
+    "地域密着型通所介護事業": "48",
+    "介護医療院": "49",
 }
+CANONICAL_SCOPE_BY_CODE = {code: scope for scope, code in SERVICE_CODE_BY_SCOPE.items()}
 
 NS_MAIN = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 NS_REL_DOC = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
@@ -72,6 +101,23 @@ def leading_code(value: str, width: int) -> str:
     text = unicodedata.normalize("NFKC", value)
     match = re.match(r"\s*(\d{1,2})", text)
     return match.group(1).zfill(width) if match else ""
+
+def leading_service_code(value: str) -> str:
+    text = unicodedata.normalize("NFKC", value)
+    match = re.match(r"\s*(\d{1,2}|XX)", text, re.I)
+    if not match:
+        return ""
+    token = match.group(1).upper()
+    return token.zfill(2) if token.isdigit() else token
+
+def scope_label(value: str) -> str:
+    text = unicodedata.normalize("NFKC", clean(value))
+    first_line = text.splitlines()[0] if text else ""
+    return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
+
+def canonical_service_code(value: str) -> str:
+    scope = scope_label(value)
+    return SERVICE_CODE_BY_SCOPE.get(scope) or leading_service_code(value)
 
 
 def stable_id(row: dict) -> str:
@@ -283,6 +329,11 @@ def find_header(rows: list[list], ncols: int):
         for colx, value in enumerate(values):
             if "サービス種別" in value or "サービス種類" in value:
                 mapping.setdefault("service", colx)
+                if rowx + 1 < len(rows) and colx + 1 < ncols:
+                    next_row = rows[rowx + 1]
+                    next_value = next_row[colx + 1] if colx + 1 < len(next_row) else ""
+                    if "qa以降" in norm(next_value):
+                        mapping.setdefault("service_current", colx + 1)
             elif "基準種別" in value or "基準種類" in value:
                 mapping.setdefault("criterion", colx)
             elif value == "項目" or "項目" in value:
@@ -312,6 +363,7 @@ def parse_xlsx(payload: bytes):
     header_probes = []
     scanned = 0
     items = []
+    unclassified_rows = []
 
     for name, path in sheet_defs:
         rows, nrows, ncols = load_sheet_rows(archive, path, shared, date_styles, date1904)
@@ -341,6 +393,7 @@ def parse_xlsx(payload: bytes):
                 return clean(row[col] if col < len(row) else "")
 
             raw_service = get("service")
+            current_service_scope = get("service_current")
             raw_criterion = get("criterion")
             service_raw = raw_service or last_service
             criterion_raw = raw_criterion or last_criterion
@@ -354,15 +407,17 @@ def parse_xlsx(payload: bytes):
             if not question or not answer:
                 continue
 
-            service_code = leading_code(service_raw, 2)
-            if service_code not in TARGET_SERVICE_CODES:
+            service_code = canonical_service_code(service_raw)
+            if not service_code:
+                unclassified_rows.append(rowx + 1)
                 continue
 
             standard_code = leading_code(criterion_raw, 1)
             item = {
                 "service_code": service_code,
                 "service_label": service_raw,
-                "scope": SCOPE_BY_CODE[service_code],
+                "scope": CANONICAL_SCOPE_BY_CODE.get(service_code, scope_label(service_raw)),
+                "current_service_scope": current_service_scope,
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
@@ -375,6 +430,10 @@ def parse_xlsx(payload: bytes):
             }
             item["id"] = stable_id(item)
             items.append(item)
+
+    if unclassified_rows:
+        preview = ", ".join(str(row) for row in unclassified_rows[:10])
+        raise RuntimeError(f"Q&A rows with question/answer but no service code: {preview}")
 
     dedup = {item["id"]: item for item in items}
     items = sorted(
@@ -448,6 +507,46 @@ def main() -> int:
         })
 
     observed_counts = dict(sorted(Counter(row["service_code"] for row in observed).items()))
+    observed_scope_by_code = {}
+    for row in observed:
+        previous = observed_scope_by_code.setdefault(row["service_code"], row["scope"])
+        if previous != row["scope"]:
+            differences.append({
+                "difference": "inconsistent_service_scope_label",
+                "service_code": row["service_code"],
+                "expected": previous,
+                "observed": row["scope"],
+            })
+    observed_scope_by_code = dict(sorted(observed_scope_by_code.items()))
+    expected_classification = {
+        "primary_column": "平成31年2月5日Q&A以前",
+        "current_scope_column": "平成31年3月15日Q&A以降",
+        "note": "Primary code/scope is retained for stable filtering; current_service_scope preserves the later applicability column verbatim when present.",
+    }
+    if meta.get("service_classification") != expected_classification:
+        differences.append({
+            "difference": "service_classification_contract_mismatch",
+            "expected": expected_classification,
+            "observed": meta.get("service_classification"),
+        })
+    if meta.get("scope_mode") != "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK":
+        differences.append({
+            "difference": "scope_mode_mismatch",
+            "expected": "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK",
+            "observed": meta.get("scope_mode"),
+        })
+    if meta.get("target_service_codes") != sorted(observed_scope_by_code):
+        differences.append({
+            "difference": "target_service_codes_mismatch",
+            "expected": meta.get("target_service_codes"),
+            "observed": sorted(observed_scope_by_code),
+        })
+    if meta.get("scope_by_code") != observed_scope_by_code:
+        differences.append({
+            "difference": "scope_by_code_mismatch",
+            "expected": meta.get("scope_by_code"),
+            "observed": observed_scope_by_code,
+        })
     if len(observed) != meta.get("rows_included"):
         differences.append({
             "difference": "rows_included_mismatch",
@@ -469,7 +568,7 @@ def main() -> int:
         differences.append({"id": row_id, "difference": "unexpected_in_independent_parse"})
 
     fields = [
-        "service_code", "service_label", "scope", "standard_code", "standard_label",
+        "service_code", "service_label", "scope", "current_service_scope", "standard_code", "standard_label",
         "topic", "question", "answer", "issued_source", "number", "source_id",
         "ingestion_status",
     ]
@@ -500,6 +599,7 @@ def main() -> int:
             "rows_scanned": scanned,
             "rows_included": len(observed),
             "counts_by_service": observed_counts,
+            "scope_by_code": observed_scope_by_code,
         },
         "expected": {
             "rows_included": len(expected),

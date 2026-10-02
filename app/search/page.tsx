@@ -26,6 +26,7 @@ const noticeNodes = noticeNodesData as Array<any>;
 const sources = sourcesData as Array<any>;
 
 const LIMIT = 8;
+const dayserviceQaServiceCodes = new Set(["01", "02", "06", "16"]);
 
 const normalize = (value: string) =>
   value.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
@@ -129,11 +130,14 @@ export default async function SearchPage({
     : [];
 
   const qaMatches = terms.length
-    ? qaCorpus.filter((item) =>
+    ? qaCorpus
+        .filter((item) => dayserviceQaServiceCodes.has(item.service_code))
+        .filter((item) =>
         hasAllTerms(
           [
             item.scope,
             item.service_label,
+            item.current_service_scope,
             item.standard_label,
             item.topic,
             item.question,
@@ -305,7 +309,7 @@ export default async function SearchPage({
                 </div>
                 <p>
                   <Link href={"/qa?q=" + encodeURIComponent(query)}>
-                    国Q&A検索で全{qaMatches.length.toLocaleString("ja-JP")}件を見る →
+                    国Q&A DBで同じキーワードを検索する →
                   </Link>
                 </p>
               </>
