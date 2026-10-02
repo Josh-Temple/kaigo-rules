@@ -57,6 +57,8 @@ const noticeStatusLabel = (status: string) => {
       "通知scope定義済み・本文未再構成",
     WORK_CONTROL_ACCEPTED_NOT_REPOSITORY_INGESTED:
       "Work Control成果受理済み・Repository未統合",
+    STAGING_COMPLETE_NOT_REPOSITORY_INGESTED:
+      "通知staging完了・Repository未統合",
     NOT_REPOSITORY_INGESTED:
       "Repositoryへの通知本文取り込み前",
   };
