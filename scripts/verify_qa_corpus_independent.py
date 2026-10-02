@@ -102,18 +102,30 @@ def leading_code(value: str, width: int) -> str:
     match = re.match(r"\s*(\d{1,2})", text)
     return match.group(1).zfill(width) if match else ""
 
-def leading_service_code(value: str) -> str:
+def source_service_code(value: str) -> str:
     text = unicodedata.normalize("NFKC", value)
     match = re.match(r"\s*(\d{1,2}|XX)", text, re.I)
     if not match:
         return ""
-    token = match.group(1).upper()
-    return token.zfill(2) if token.isdigit() else token
+    return match.group(1).upper()
 
 def scope_label(value: str) -> str:
     text = unicodedata.normalize("NFKC", clean(value))
     first_line = text.splitlines()[0] if text else ""
     return re.sub(r"^\s*(?:\d{1,2}|XX)\s*[.．]?\s*", "", first_line, flags=re.I).strip()
+
+LEGACY_COMPATIBLE_CODES = {
+    "全サービス共通": "01",
+    "居宅サービス共通": "02",
+    "通所系サービス共通": "06",
+    "通所介護事業": "16",
+}
+
+def canonical_service_code(scope: str) -> str:
+    if scope in LEGACY_COMPATIBLE_CODES:
+        return LEGACY_COMPATIBLE_CODES[scope]
+    digest = hashlib.sha256(scope.encode("utf-8")).hexdigest()[:10]
+    return "scope-" + digest
 
 def canonical_service_code(value: str) -> str:
     scope = scope_label(value)
@@ -347,6 +359,11 @@ def find_header(rows: list[list], ncols: int):
             elif value == "番号" or value.endswith("番号"):
                 mapping.setdefault("number", colx)
         if required.issubset(mapping):
+            service_col = mapping["service"]
+            if rowx + 1 < len(rows) and service_col + 1 < ncols:
+                next_header = norm(rows[rowx + 1][service_col + 1] if service_col + 1 < len(rows[rowx + 1]) else "")
+                if "qa以降" in next_header or "q&a以降" in next_header:
+                    mapping["service_new"] = service_col + 1
             return rowx, mapping
     return None, None
 
@@ -379,7 +396,9 @@ def parse_xlsx(payload: bytes):
             header_probes.append({"sheet": name, "rows": probe})
             continue
         used_sheets.append(name)
-        last_service = ""
+        last_service_old = ""
+        last_service_new = ""
+        active_service_period = ""
         last_criterion = ""
 
         for rowx in range(header_row + 1, nrows):
