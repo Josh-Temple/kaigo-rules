@@ -3,7 +3,7 @@
 
 The production importer uses openpyxl/xlrd. This verifier intentionally avoids
 those libraries and reads the XLSX ZIP/XML package with the Python standard
-library, then independently reproduces header detection, service-code filtering,
+library, then independently reproduces header detection, all classified service rows,
 stable IDs, de-duplication, and row content for the committed corpus.
 """
 
@@ -27,14 +27,6 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 META_PATH = DATA / "qa-corpus-meta.json"
 CORPUS_PATH = DATA / "qa-corpus.json"
-
-TARGET_SERVICE_CODES = {"01", "02", "06", "16"}
-SCOPE_BY_CODE = {
-    "01": "全サービス共通",
-    "02": "居宅サービス共通",
-    "06": "通所系サービス共通",
-    "16": "通所介護事業",
-}
 
 NS_MAIN = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 NS_REL_DOC = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
@@ -72,6 +64,10 @@ def leading_code(value: str, width: int) -> str:
     text = unicodedata.normalize("NFKC", value)
     match = re.match(r"\s*(\d{1,2})", text)
     return match.group(1).zfill(width) if match else ""
+
+def scope_label(value: str) -> str:
+    text = unicodedata.normalize("NFKC", clean(value))
+    return re.sub(r"^\s*\d{1,2}\s*[.．]?\s*", "", text).strip()
 
 
 def stable_id(row: dict) -> str:
@@ -312,6 +308,7 @@ def parse_xlsx(payload: bytes):
     header_probes = []
     scanned = 0
     items = []
+    unclassified_rows = []
 
     for name, path in sheet_defs:
         rows, nrows, ncols = load_sheet_rows(archive, path, shared, date_styles, date1904)
@@ -355,14 +352,15 @@ def parse_xlsx(payload: bytes):
                 continue
 
             service_code = leading_code(service_raw, 2)
-            if service_code not in TARGET_SERVICE_CODES:
+            if not service_code:
+                unclassified_rows.append(rowx + 1)
                 continue
 
             standard_code = leading_code(criterion_raw, 1)
             item = {
                 "service_code": service_code,
                 "service_label": service_raw,
-                "scope": SCOPE_BY_CODE[service_code],
+                "scope": scope_label(service_raw),
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
@@ -375,6 +373,10 @@ def parse_xlsx(payload: bytes):
             }
             item["id"] = stable_id(item)
             items.append(item)
+
+    if unclassified_rows:
+        preview = ", ".join(str(row) for row in unclassified_rows[:10])
+        raise RuntimeError(f"Q&A rows with question/answer but no service code: {preview}")
 
     dedup = {item["id"]: item for item in items}
     items = sorted(
@@ -448,6 +450,35 @@ def main() -> int:
         })
 
     observed_counts = dict(sorted(Counter(row["service_code"] for row in observed).items()))
+    observed_scope_by_code = {}
+    for row in observed:
+        previous = observed_scope_by_code.setdefault(row["service_code"], row["scope"])
+        if previous != row["scope"]:
+            differences.append({
+                "difference": "inconsistent_service_scope_label",
+                "service_code": row["service_code"],
+                "expected": previous,
+                "observed": row["scope"],
+            })
+    observed_scope_by_code = dict(sorted(observed_scope_by_code.items()))
+    if meta.get("scope_mode") != "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK":
+        differences.append({
+            "difference": "scope_mode_mismatch",
+            "expected": "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK",
+            "observed": meta.get("scope_mode"),
+        })
+    if meta.get("target_service_codes") != sorted(observed_scope_by_code):
+        differences.append({
+            "difference": "target_service_codes_mismatch",
+            "expected": meta.get("target_service_codes"),
+            "observed": sorted(observed_scope_by_code),
+        })
+    if meta.get("scope_by_code") != observed_scope_by_code:
+        differences.append({
+            "difference": "scope_by_code_mismatch",
+            "expected": meta.get("scope_by_code"),
+            "observed": observed_scope_by_code,
+        })
     if len(observed) != meta.get("rows_included"):
         differences.append({
             "difference": "rows_included_mismatch",
@@ -500,6 +531,7 @@ def main() -> int:
             "rows_scanned": scanned,
             "rows_included": len(observed),
             "counts_by_service": observed_counts,
+            "scope_by_code": observed_scope_by_code,
         },
         "expected": {
             "rows_included": len(expected),
