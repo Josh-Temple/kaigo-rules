@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - "scripts/watch_notice_rouki25_currentness.py"
+      - "scripts/validate_notice_rouki25_watch_receipt.py"
       - "data/notice-rouki25-watch-config.json"
       - "data/notice-rouki25-currentness-ledger.json"
       - "data/notice-rouki25-watch-latest.json"
@@ -15,6 +16,7 @@ on:
     branches: [main]
     paths:
       - "scripts/watch_notice_rouki25_currentness.py"
+      - "scripts/validate_notice_rouki25_watch_receipt.py"
       - "data/notice-rouki25-watch-config.json"
       - "data/notice-rouki25-currentness-ledger.json"
       - "data/notice-rouki25-watch-latest.json"
@@ -36,6 +38,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
+      - name: Validate committed watch receipt and HOLD boundary
+        run: python scripts/validate_notice_rouki25_watch_receipt.py
       - name: Check official sources for currentness triggers
         id: watch
         shell: bash
