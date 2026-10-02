@@ -1,5 +1,6 @@
 import Link from "next/link";
 import VerificationSummary from "../../../../components/verification-summary";
+import ServiceContextLinks from "../../../../components/service-context-links";
 import data from "../../../../data/services/dayrehab/remuneration-index.json";
 
 const layer = data as any;
@@ -16,6 +17,8 @@ export default function DayrehabRemunerationPage() {
       <p className="lead">
         告示第19号の掲載表示を42項目に分け、要介護度別の基本単位数70値を出典別に参照できます。
       </p>
+
+      <ServiceContextLinks serviceId="dayrehab" />
 
       <div className="notice">
         <strong>これは現行統合本文ではありません。</strong><br />
