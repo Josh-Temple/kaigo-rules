@@ -9,6 +9,7 @@ type QaItem = {
   service_code: string;
   service_label: string;
   scope: string;
+  current_service_scope?: string;
   standard_code: string;
   standard_label: string;
   topic: string;
@@ -95,6 +96,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
     const haystack = normalize([
       item.scope,
       item.service_label,
+      item.current_service_scope,
       item.standard_label,
       item.topic,
       item.question,
@@ -178,7 +180,10 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         {visible.map((item) => (
           <section className="qa-row" key={item.id}>
             <div className="qa-row-head">
-              <p className="meta">{item.scope} ・ {item.standard_label || "基準種別なし"}</p>
+              <p className="meta">
+                {item.scope} ・ {item.standard_label || "基準種別なし"}
+                {item.current_service_scope ? ` / 2019年以降の分類：${item.current_service_scope}` : ""}
+              </p>
               <span className="corpus-status">収載済み・現行性未確認</span>
             </div>
             {item.topic ? <p className="qa-topic">{item.topic}</p> : null}
@@ -208,7 +213,8 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         <p>
           公式XLSXの {qaMeta.rows_scanned?.toLocaleString("ja-JP")} 行を走査し、
           サービス種別コードを持つQ&Aを全分類で収載しています。
-          サービス分類は公式XLSXの表記を保持し、画面の対象範囲フィルターもこのメタデータから生成します。
+          主分類に加えて、公式XLSXに記載された2019年以降のサービス範囲も各Q&Aに保持します。
+          対象範囲フィルターは主分類を使います。
         </p>
         <dl>
           {serviceOptions.filter(([code]) => code).map(([code, label]) => (
