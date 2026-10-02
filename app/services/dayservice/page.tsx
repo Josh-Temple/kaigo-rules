@@ -26,11 +26,11 @@ export default function DayservicePage() {
             <span>制度資料の関係を確認する</span>
             <small>制度の見取り図 →</small>
           </Link>
-          <Link className="entry-row" href="/law">
+          <Link className="entry-row" href="/law?service=dayservice">
             <span>介護保険法を見る</span>
             <small>定義・指定・給付・監督 →</small>
           </Link>
-          <Link className="entry-row" href="/qa">
+          <Link className="entry-row" href="/qa?service=16">
             <span>厚生労働省Q&Aを見る</span>
             <small>個別論点の行政解釈 →</small>
           </Link>
