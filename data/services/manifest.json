@@ -25,6 +25,30 @@
       "config": "data/services/homevisit.json"
     },
     {
+      "service_id": "homebath",
+      "label": "訪問入浴介護",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/homebath.json"
+    },
+    {
+      "service_id": "homenursing",
+      "label": "訪問看護",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/homenursing.json"
+    },
+    {
+      "service_id": "homerehab",
+      "label": "訪問リハビリテーション",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/homerehab.json"
+    },
+    {
+      "service_id": "homecaremanagement",
+      "label": "居宅療養管理指導",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/homecaremanagement.json"
+    },
+    {
       "service_id": "dayrehab",
       "label": "通所リハビリテーション",
       "status": "ACTIVE_PREVIEW",
@@ -35,6 +59,36 @@
       "label": "短期入所生活介護",
       "status": "PARTIAL_INGESTION",
       "config": "data/services/shortstay-life.json"
+    },
+    {
+      "service_id": "community-dayservice",
+      "label": "地域密着型通所介護",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/community-dayservice.json"
+    },
+    {
+      "service_id": "regular-round",
+      "label": "定期巡回・随時対応型訪問介護看護",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/regular-round.json"
+    },
+    {
+      "service_id": "night-homevisit",
+      "label": "夜間対応型訪問介護",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/night-homevisit.json"
+    },
+    {
+      "service_id": "care-management",
+      "label": "居宅介護支援",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/care-management.json"
+    },
+    {
+      "service_id": "preventive-support",
+      "label": "介護予防支援",
+      "status": "PARTIAL_INGESTION",
+      "config": "data/services/preventive-support.json"
     }
   ],
   "migration": {

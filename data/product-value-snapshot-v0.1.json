@@ -33,7 +33,16 @@
     ],
     "excluded_services": [
       "homevisit",
-      "shortstay-life"
+      "homebath",
+      "homenursing",
+      "homerehab",
+      "homecaremanagement",
+      "shortstay-life",
+      "community-dayservice",
+      "regular-round",
+      "night-homevisit",
+      "care-management",
+      "preventive-support"
     ]
   },
   "metrics": {
