@@ -4,9 +4,13 @@ import VerificationSummary from "../../components/verification-summary";
 import {
   filterPublicNotices,
   noticeServiceCount,
+  publicNoticePublishedServiceCount,
+  publicNoticeRecords,
+  publicNoticeRegisteredServiceCount,
   publicNoticeServiceOptions,
   type PublicNoticeEvidence,
   type PublicNoticeRecord,
+  type PublicNoticeServiceOption,
 } from "../../lib/notice-database";
 import currentnessLedgerData from "../../data/notice-rouki25-currentness-ledger.json";
 import chainData from "../../data/notice-source-chain.json";
@@ -43,17 +47,45 @@ function groupedRecords(records: PublicNoticeRecord[]) {
   }, new Map<string, PublicNoticeRecord[]>());
 }
 
-function VerificationPanels({ service }: { service?: string }) {
-  if (service === "dayservice") {
-    return <VerificationSummary layerId="rouki25-dayservice" />;
-  }
-  if (service === "dayrehab") {
-    return <VerificationSummary layerId="rouki25-dayrehab" />;
-  }
+const noticeStatusLabel = (status: string) => {
+  const labels: Record<string, string> = {
+    RECONSTRUCTED_CANDIDATES_PUBLISHED_CURRENTNESS_HOLD:
+      "再構成本文候補を公開・現行性HOLD",
+    HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP:
+      "公式旧資料の本文を公開・現行性GAP",
+    SCOPE_DEFINED_NOT_RECONSTRUCTED:
+      "通知scope定義済み・本文未再構成",
+    WORK_CONTROL_ACCEPTED_NOT_REPOSITORY_INGESTED:
+      "Work Control成果受理済み・Repository未統合",
+    NOT_REPOSITORY_INGESTED:
+      "Repositoryへの通知本文取り込み前",
+  };
+  return labels[status] || status;
+};
+
+function VerificationPanels({
+  service,
+}: {
+  service?: PublicNoticeServiceOption;
+}) {
+  const services = service
+    ? [service]
+    : publicNoticeServiceOptions.filter((option) => option.record_count > 0);
+  const layerIds = [
+    ...new Set(
+      services
+        .map((option) => option.verification_layer_id)
+        .filter((layerId): layerId is string => Boolean(layerId)),
+    ),
+  ];
+
+  if (!layerIds.length) return null;
+
   return (
     <div className="notice-verification-stack">
-      <VerificationSummary layerId="rouki25-dayservice" />
-      <VerificationSummary layerId="rouki25-dayrehab" />
+      {layerIds.map((layerId) => (
+        <VerificationSummary layerId={layerId} key={layerId} />
+      ))}
     </div>
   );
 }
@@ -68,7 +100,7 @@ export default async function NoticesPage({
     (option) => option.service_id === service,
   );
   const selectedServiceId = selectedService?.service_id;
-  const records = filterPublicNotices(selectedServiceId);
+  const records = service ? filterPublicNotices(service) : filterPublicNotices();
   const grouped = groupedRecords(records);
   const currentnessHold =
     currentnessLedger.final_audit_classification?.counts?.HOLD || 0;
@@ -79,20 +111,19 @@ export default async function NoticesPage({
       <h1>基準解釈通知DB</h1>
       <p className="lead">
         老企第25号「指定居宅サービス等及び指定介護予防サービス等に関する基準について」を、
-        公開済みサービスの記録として一つの画面で参照します。通常は全体を表示し、
-        サービスを選ぶとそのサービスの記録だけへ絞り込みます。
+        service catalogに登録されたサービスを前提に一つのDBとして扱います。本文がRepositoryへ
+        取り込まれているサービスは本文を表示し、未収録のサービスも整備状態を隠さず表示します。
       </p>
 
       <div className="notice">
-        <strong>同じ通知でも、サービスごとに本文の取得状態・現行性が異なります。</strong><br />
-        通所介護22項目は公式改正資料からの再構成本文候補で独立機械照合PASS・現行性HOLD、
-        通所リハ9項目は公式旧HTMLとの一致確認済みですが現行統合本文ではなく現行性GAPです。
-        31項目を同じ保証水準として扱いません。
+        <strong>サービス登録、本文収録、本文照合、現行性、人手確認は別々に管理します。</strong><br />
+        「すべて」に表示されることやservice catalogへ登録されていること自体は、
+        そのサービスの通知本文が収録済み・現行・人手確認済みであることを意味しません。
       </div>
 
       <nav className="rules-filter" aria-label="サービスで基準解釈通知を絞り込む">
         <Link
-          className={!selectedServiceId ? "rules-filter-active" : ""}
+          className={!service ? "rules-filter-active" : ""}
           href="/notices"
         >
           すべて
@@ -105,45 +136,63 @@ export default async function NoticesPage({
             href={`/notices?service=${option.service_id}`}
             key={option.service_id}
           >
-            {option.label}
+            {option.label}{option.record_count === 0 ? "（本文未収録）" : ""}
           </Link>
         ))}
       </nav>
 
-      {selectedServiceId ? <ServiceContextLinks serviceId={selectedServiceId} /> : null}
+      {selectedServiceId === "dayservice" || selectedServiceId === "dayrehab" ? (
+        <ServiceContextLinks serviceId={selectedServiceId} />
+      ) : null}
 
       <p className="scope-note">
         {selectedService
-          ? `${selectedService.label}で絞り込み中。サービスscopeと保証状態を維持したまま表示しています。`
-          : "公開済み2サービスを表示中。「共通」や他サービスへの適用は、明示的なscope根拠が整うまで自動推定しません。"}
+          ? `${selectedService.label}で絞り込み中。通知DBの状態：${noticeStatusLabel(selectedService.notice_status)}。`
+          : `${publicNoticeRegisteredServiceCount}サービスをservice catalogに登録済み。本文公開済みは${publicNoticePublishedServiceCount}サービスです。「共通」や他サービスへの適用は自動推定しません。`}
       </p>
 
-      <VerificationPanels service={selectedServiceId} />
+      {service && !selectedService ? (
+        <div className="notice">
+          指定されたサービスはservice catalogに登録されていません。
+        </div>
+      ) : null}
+
+      {selectedService && selectedService.record_count === 0 ? (
+        <div className="notice">
+          <strong>{selectedService.label}の基準解釈通知本文は、まだRepositoryで公開していません。</strong><br />
+          {noticeStatusLabel(selectedService.notice_status)}
+          {selectedService.notice_note ? ` / ${selectedService.notice_note}` : ""}
+        </div>
+      ) : null}
+
+      <VerificationPanels service={selectedService} />
 
       <section className="rules-stats" aria-label="基準解釈通知DBの収載状況">
-        <div><strong>{noticeServiceCount("dayservice") + noticeServiceCount("dayrehab")}</strong><span>公開通知項目</span></div>
-        <div><strong>{noticeServiceCount("dayservice")}</strong><span>通所介護</span></div>
-        <div><strong>{noticeServiceCount("dayrehab")}</strong><span>通所リハ</span></div>
+        <div><strong>{publicNoticeRecords.length}</strong><span>公開通知項目</span></div>
+        <div><strong>{publicNoticeRegisteredServiceCount}</strong><span>登録サービス</span></div>
+        <div><strong>{publicNoticePublishedServiceCount}</strong><span>本文公開サービス</span></div>
         <div><strong>{records.length}</strong><span>表示中の項目</span></div>
       </section>
 
-      <nav className="notice-reader-nav" aria-label="解釈通知の目次">
-        <p className="eyebrow">CONTENTS</p>
-        {[...grouped.entries()].map(([key, sectionItems]) => (
-          <div className="notice-reader-nav-group" key={key}>
-            <strong>
-              {sectionItems[0].service_label} / {sectionItems[0].section}
-            </strong>
-            <div>
-              {sectionItems.map((item) => (
-                <a href={`#${item.id}`} key={item.id}>
-                  {item.number_path.at(-1)} {item.title}
-                </a>
-              ))}
+      {records.length ? (
+        <nav className="notice-reader-nav" aria-label="解釈通知の目次">
+          <p className="eyebrow">CONTENTS</p>
+          {[...grouped.entries()].map(([key, sectionItems]) => (
+            <div className="notice-reader-nav-group" key={key}>
+              <strong>
+                {sectionItems[0].service_label} / {sectionItems[0].section}
+              </strong>
+              <div>
+                {sectionItems.map((item) => (
+                  <a href={`#${item.id}`} key={item.id}>
+                    {item.number_path.at(-1)} {item.title}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </nav>
+          ))}
+        </nav>
+      ) : null}
 
       {[...grouped.entries()].map(([key, sectionItems]) => {
         const first = sectionItems[0];
@@ -201,7 +250,7 @@ export default async function NoticesPage({
         );
       })}
 
-      {!selectedServiceId || selectedServiceId === "dayservice" ? (
+      {!service || selectedServiceId === "dayservice" ? (
         <details className="notice-audit-details">
           <summary>通所介護22項目の再構成・監査情報</summary>
           <div className="notice-audit-body">
@@ -245,7 +294,7 @@ export default async function NoticesPage({
         </details>
       ) : null}
 
-      {!selectedServiceId || selectedServiceId === "dayrehab" ? (
+      {!service || selectedServiceId === "dayrehab" ? (
         <details className="notice-audit-details">
           <summary>通所リハ9項目の旧HTML・改正証拠</summary>
           <div className="notice-audit-body">

@@ -39,5 +39,13 @@
     "ordinance37",
     "care-insurance-act",
     "qa-corpus"
-  ]
+  ],
+  "readiness": "ACTIVE_MVP",
+  "ingestion_layers": {
+    "rouki25": {
+      "status": "RECONSTRUCTED_CANDIDATES_PUBLISHED_CURRENTNESS_HOLD",
+      "principal_items": 22,
+      "note": "老企第25号の通所介護22項目を公式改正資料から再構成し、独立機械照合PASSで公開。現行性はHOLD、人手確認は未実施。"
+    }
+  }
 }

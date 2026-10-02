@@ -1,7 +1,8 @@
 import reviewPacketData from "../data/notice-review-packet.json" with { type: "json" };
 import dayrehabData from "../data/services/dayrehab/rouki25-historical.generated.json" with { type: "json" };
+import serviceCatalogData from "../data/services/catalog.generated.json" with { type: "json" };
 
-export type PublicNoticeServiceId = "dayservice" | "dayrehab";
+export type PublicNoticeServiceId = string;
 
 export type PublicNoticeEvidence = {
   source_id: string;
@@ -25,8 +26,19 @@ export type PublicNoticeRecord = {
   content_verification: "PASS";
   currentness_state: "HOLD" | "GAP";
   human_review_state: "NOT_REVIEWED";
-  verification_layer_id: "rouki25-dayservice" | "rouki25-dayrehab";
+  verification_layer_id: string;
   source_evidence: PublicNoticeEvidence[];
+};
+
+export type PublicNoticeServiceOption = {
+  service_id: PublicNoticeServiceId;
+  label: string;
+  service_status: string;
+  route_enabled: boolean;
+  record_count: number;
+  notice_status: string;
+  notice_note?: string;
+  verification_layer_id?: string;
 };
 
 type ReviewItem = {
@@ -40,8 +52,29 @@ type ReviewItem = {
   independent_verification?: { result?: string };
 };
 
+type CatalogService = {
+  service_id: string;
+  label: string;
+  status: string;
+  routing?: {
+    future_service_base_enabled?: boolean;
+  };
+  verification_layer_ids?: string[];
+  ingestion_layers?: {
+    rouki25?: {
+      status?: string;
+      note?: string;
+    };
+    work_control?: {
+      status?: string;
+      note?: string;
+    };
+  };
+};
+
 const dayserviceReview = reviewPacketData as { items?: ReviewItem[] };
 const dayrehab = dayrehabData as any;
+const serviceCatalog = serviceCatalogData as { services?: CatalogService[] };
 
 const dayserviceRecords: PublicNoticeRecord[] = (dayserviceReview.items || []).map(
   (item) => ({
@@ -109,19 +142,81 @@ export const publicNoticeRecords: PublicNoticeRecord[] = [
   ...dayrehabRecords,
 ];
 
-export const publicNoticeServiceOptions = [
-  { service_id: "dayservice" as const, label: "通所介護" },
-  { service_id: "dayrehab" as const, label: "通所リハビリテーション" },
-];
+const noticeStateForService = (service: CatalogService, recordCount: number) => {
+  const noticeLayer = service.ingestion_layers?.rouki25;
+  if (noticeLayer?.status) {
+    return {
+      status: noticeLayer.status,
+      note: noticeLayer.note,
+    };
+  }
+
+  const workControl = service.ingestion_layers?.work_control;
+  if (
+    workControl?.status === "ACCEPTED_RESULTS_NOT_REPOSITORY_INGESTED"
+  ) {
+    return {
+      status: "WORK_CONTROL_ACCEPTED_NOT_REPOSITORY_INGESTED",
+      note: workControl.note,
+    };
+  }
+
+  if (recordCount > 0) {
+    return {
+      status: "PUBLISHED_RECORDS_STATUS_UNSPECIFIED",
+      note: undefined,
+    };
+  }
+
+  return {
+    status: "NOT_REPOSITORY_INGESTED",
+    note: undefined,
+  };
+};
+
+export const publicNoticeServiceOptions: PublicNoticeServiceOption[] = (
+  serviceCatalog.services || []
+).map((service) => {
+  const recordCount = publicNoticeRecords.filter(
+    (record) => record.service_id === service.service_id,
+  ).length;
+  const noticeState = noticeStateForService(service, recordCount);
+  return {
+    service_id: service.service_id,
+    label: service.label,
+    service_status: service.status,
+    route_enabled:
+      service.service_id === "dayservice" ||
+      Boolean(service.routing?.future_service_base_enabled),
+    record_count: recordCount,
+    notice_status: noticeState.status,
+    notice_note: noticeState.note,
+    verification_layer_id: (service.verification_layer_ids || []).find(
+      (layerId) => layerId.startsWith("rouki25-"),
+    ),
+  };
+});
+
+export const publicNoticeRegisteredServiceCount =
+  publicNoticeServiceOptions.length;
+
+export const publicNoticePublishedServiceCount =
+  publicNoticeServiceOptions.filter((service) => service.record_count > 0).length;
+
+export function findPublicNoticeService(serviceId?: string) {
+  if (!serviceId) return undefined;
+  return publicNoticeServiceOptions.find(
+    (service) => service.service_id === serviceId,
+  );
+}
 
 export function filterPublicNotices(serviceId?: string): PublicNoticeRecord[] {
   if (!serviceId) return publicNoticeRecords;
-  if (serviceId !== "dayservice" && serviceId !== "dayrehab") {
-    return publicNoticeRecords;
-  }
+  if (!findPublicNoticeService(serviceId)) return [];
   return publicNoticeRecords.filter((record) => record.service_id === serviceId);
 }
 
-export function noticeServiceCount(serviceId: PublicNoticeServiceId): number {
-  return publicNoticeRecords.filter((record) => record.service_id === serviceId).length;
+export function noticeServiceCount(serviceId: string): number {
+  return publicNoticeRecords.filter((record) => record.service_id === serviceId)
+    .length;
 }

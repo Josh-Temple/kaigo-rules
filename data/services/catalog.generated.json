@@ -27,6 +27,24 @@
         "fee_guidance": "fee-guidance.dayservice.",
         "notice": "notice.dayservice."
       },
+      "scope_files": {
+        "care_insurance_act": "data/care-insurance-act-scope.json",
+        "ordinance37": "data/ordinance37-scope.json",
+        "questions": "data/questions.json",
+        "rule_nodes": "data/rule-nodes.json",
+        "notice_review_packet": "data/notice-review-packet.json",
+        "remuneration_skeleton": "data/remuneration-current-skeleton.json",
+        "fee_guidance": "data/fee-guidance-current-skeleton.json",
+        "qa_corpus": "data/qa-corpus.json"
+      },
+      "publication_gate": {},
+      "ingestion_layers": {
+        "rouki25": {
+          "status": "RECONSTRUCTED_CANDIDATES_PUBLISHED_CURRENTNESS_HOLD",
+          "principal_items": 22,
+          "note": "老企第25号の通所介護22項目を公式改正資料から再構成し、独立機械照合PASSで公開。現行性はHOLD、人手確認は未実施。"
+        }
+      },
       "verification_layer_ids": [
         "rouki25-dayservice",
         "rouki36-dayservice",
@@ -48,6 +66,38 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
+      "scope_files": {
+        "care_insurance_act_core": "data/services/shared/designated-home-service-core.json",
+        "care_insurance_act": "data/services/homevisit/care-insurance-act-scope.json",
+        "ordinance37": "data/services/homevisit/ordinance37-scope.json",
+        "rouki25": "data/services/homevisit/rouki25-scope.json",
+        "remuneration": "data/services/homevisit/remuneration-scope.json"
+      },
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "care_insurance_act": {
+          "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
+          "selected_nodes": 106,
+          "note": "訪問介護の定義（第8条第1・2項）と指定居宅サービス共通骨格を、共有介護保険法コーパスから本文複製なしで参照する。"
+        },
+        "ordinance37": {
+          "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
+          "selected_nodes": 165,
+          "selected_articles": 38,
+          "note": "通常の指定訪問介護（第二章第4条〜第39条。共生型・基準該当を除く）を共有省令37号コーパスから本文複製なしで参照する。独立検証・currentness・human reviewは訪問介護として別途実施する。"
+        },
+        "rouki25": {
+          "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED"
+        },
+        "remuneration": {
+          "status": "SCOPE_DEFINED_NOT_INGESTED"
+        }
+      },
       "verification_layer_ids": []
     },
     {
@@ -61,6 +111,52 @@
         "future_service_base_enabled": true
       },
       "id_namespaces": {},
+      "scope_files": {
+        "standards_index": "data/services/dayrehab/standards-index.json",
+        "ordinance37": "data/services/dayrehab/ordinance37-scope.json",
+        "rouki25": "data/services/dayrehab/rouki25-scope.json",
+        "remuneration_index": "data/services/dayrehab/remuneration-index.json",
+        "fee_guidance_index": "data/services/dayrehab/fee-guidance-index.json"
+      },
+      "publication_gate": {
+        "public_routes_enabled": true,
+        "content_ingested": true,
+        "independent_verification_complete": true,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "work_control": {
+          "status": "CYCLE3_FIVE_LAYERS_ACCEPTED_TWO_MORE_DAYREHAB_LAYERS_PUBLISHED",
+          "note": "Cycle 3受理済み5レイヤーのうち、基準省令・第119条relation・基準解釈通知に加え、報酬基準と算定上の留意事項の出典別inventoryを公開。報酬基準は掲載表示と令和8告示差分を分離し、留意事項は令和6新旧対照表の33 slot/88 child markerと改正資料を別版で保持。現行統合本文は作成せず、現行性GAP・人手未確認を継続。介護保険法は公開統合前。"
+        },
+        "ordinance37": {
+          "status": "DIRECT_TEXT_PLUS_VERIFIED_ARTICLE119_SCOPE",
+          "selected_nodes": 69,
+          "selected_articles": 11,
+          "note": "第110条〜第119条の直接本文は独立e-Gov再照合PASS。第119条の現行準用25条は別relation laneで独立検証し、共有コーパスに既存の24条を本文複製なしで参照。第64条は共有本文未収載として明示。"
+        },
+        "rouki25": {
+          "status": "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+          "principal_items": 9,
+          "note": "老企第25号の公式旧HTML『第九 通所リハビリテーション』9 principal itemsを公式source一致確認付きで公開。令和6年度新旧対照は別証拠として扱い、現行統合本文は生成しない。"
+        },
+        "remuneration": {
+          "status": "SOURCE_VERSIONED_INVENTORY_WITH_R8_PATCH_LEDGER",
+          "parent_items": 42,
+          "base_tariff_rows": 14,
+          "base_tariff_values": 70,
+          "r8_patch_rates": 6,
+          "currentness": "GAP",
+          "human_review": "NOT_REVIEWED"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SLOT_INVENTORY_WITH_R8_OMISSION_LEDGER",
+          "parent_items": 33,
+          "visible_child_items": 88,
+          "currentness": "GAP",
+          "human_review": "NOT_REVIEWED"
+        }
+      },
       "verification_layer_ids": [
         "ordinance37-dayrehab",
         "rouki25-dayrehab",
@@ -79,6 +175,19 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {
+        "work_control": {
+          "status": "ACCEPTED_RESULTS_NOT_REPOSITORY_INGESTED",
+          "note": "Work Control Cycle 4の5レイヤー受理済みResultがLibraryに存在する。repository側のservice-specific scope/adaptersは未登録で、公開・独立検証・human reviewは未実施。"
+        }
+      },
       "verification_layer_ids": []
     }
   ]

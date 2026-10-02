@@ -369,18 +369,21 @@
     {
       "id": "IR-21",
       "coverage": "scoped_counts",
-      "title": "global interpretation notice DB shows all published records by default",
+      "title": "global interpretation notice DB is catalog-driven and preserves publication boundaries",
       "path": "/notices",
       "expect_status": 200,
       "contains_text": [
         "基準解釈通知DB",
         "31",
         "公開通知項目",
-        "22",
-        "通所介護",
-        "9",
-        "通所リハ",
-        "31項目を同じ保証水準として扱いません"
+        "4",
+        "登録サービス",
+        "2",
+        "本文公開サービス",
+        "サービス登録、本文収録、本文照合、現行性、人手確認は別々に管理します。",
+        "訪問介護",
+        "短期入所生活介護",
+        "本文未収録"
       ]
     },
     {

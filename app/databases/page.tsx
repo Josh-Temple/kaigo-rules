@@ -2,7 +2,10 @@ import Link from "next/link";
 import lawMetaData from "../../data/care-insurance-act-meta.json";
 import ordinanceMetaData from "../../data/ordinance37-meta.json";
 import qaMetaData from "../../data/qa-corpus-meta.json";
-import { noticeServiceCount } from "../../lib/notice-database";
+import {
+  publicNoticePublishedServiceCount,
+  publicNoticeRecords,
+} from "../../lib/notice-database";
 
 const lawMeta = lawMetaData as any;
 const ordinanceMeta = ordinanceMetaData as any;
@@ -31,7 +34,7 @@ const databases = [
     title: "基準解釈通知DB",
     detail: "公開済みサービスの解釈通知を一つの画面で表示し、サービス別に絞り込みます。",
     href: "/notices",
-    status: `${noticeServiceCount("dayservice") + noticeServiceCount("dayrehab")}項目 / 公開済み範囲`,
+    status: `${publicNoticeRecords.length}項目 / ${publicNoticePublishedServiceCount}サービス本文公開`,
   },
   {
     id: "qa",
