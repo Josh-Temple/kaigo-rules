@@ -43,7 +43,7 @@ export default function OverviewPage() {
             </div>
           ))}
         </div>
-        <p className="home-more-link"><Link href="/services">サービス別の公開情報を見る →</Link></p>
+        <p className="home-more-link"><Link href="/databases">制度DBをまとめて見る →</Link></p>
       </section>
 
       <section className="section">
