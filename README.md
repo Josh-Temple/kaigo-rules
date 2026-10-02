@@ -7,7 +7,7 @@
 - 全体DB入口: `/databases`
 - 共有コーパスを全体表示: 介護保険法 `/law`、基準省令 `/rules`
 - 公開済みサービスを横断表示: 基準解釈通知 `/notices`
-- 収載範囲を明示して拡張中: 国Q&A `/qa`
+- 全サービス分類を横断収載: 国Q&A `/qa`（公式XLSXの分類済み3,695件）
 - 報酬基準・算定上の留意事項: サービスごとの版・scope・確認状態を維持したまま、`/databases` から各サービスへ分岐
 - サービス別入口: `/services`
 
@@ -79,7 +79,7 @@ Vercel build の前にも自動実行し、参照切れがある場合は fail c
 - `data/notice-historical-backfill.json`: 過去HTMLから機械抽出した本文候補（現行扱い禁止）
 - `data/notice-historical-backfill-meta.json`: 過去HTML取得元・SHA-256・抽出件数
 - `data/qa-items.json`: 回答ページへ接続済みのQ&A
-- `data/qa-corpus.json`: 公式XLSから機械取り込みしたQ&A（未レビューを含む）
+- `data/qa-corpus.json`: 公式XLSXの分類済みQ&Aを全サービス分類で機械取り込みしたcorpus（3,695件、未レビューを含む）
 - `data/qa-corpus-meta.json`: 取得元URL、ハッシュ、抽出件数などの取り込み証跡
 - `data/relationships.json`: 質問と制度ノードの関係
 - `data/startup-steps.json`: 開設準備の導線
