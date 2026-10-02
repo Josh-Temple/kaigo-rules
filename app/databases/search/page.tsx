@@ -190,7 +190,11 @@ export default async function DatabaseSearchPage({
                 {noticeMatches.slice(0, LIMIT).map((notice) => (
                   <article className="source-card" key={notice.id}>
                     <p className="meta">{notice.service_label} / {notice.number_path.join(" / ")}</p>
-                    <h3><Link href={"/notices#" + notice.id}>{notice.title}</Link></h3>
+                    <h3>
+                      <Link href={"/notices?service=" + notice.service_id + "#" + notice.id}>
+                        {notice.title}
+                      </Link>
+                    </h3>
                     <p>{databaseSearchExcerpt(notice.body_text, query)}</p>
                     <p className="meta">
                       本文照合：{notice.content_verification} / 現行性：{notice.currentness_state} / 人手確認：{notice.human_review_state}
