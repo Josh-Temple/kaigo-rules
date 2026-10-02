@@ -144,6 +144,10 @@ def find_header(sheet):
         for colx, value in enumerate(values):
             if "サービス種別" in value or "サービス種類" in value:
                 mapping.setdefault("service", colx)
+                if rowx + 1 < sheet.nrows and colx + 1 < sheet.ncols:
+                    next_label = norm(sheet.cell_value(rowx + 1, colx + 1))
+                    if "qa以降" in next_label:
+                        mapping.setdefault("service_current", colx + 1)
             elif "基準種別" in value or "基準種類" in value:
                 mapping.setdefault("criterion", colx)
             elif value == "項目" or "項目" in value:
@@ -194,6 +198,7 @@ def parse_workbook(payload: bytes):
                 return clean(sheet.cell_value(rowx, col)) if col is not None else ""
 
             raw_service = get("service")
+            current_service_scope = get("service_current")
             raw_criterion = get("criterion")
             service_raw = raw_service or last_service
             criterion_raw = raw_criterion or last_criterion
@@ -223,6 +228,7 @@ def parse_workbook(payload: bytes):
                 "service_code": service_code,
                 "service_label": service_raw,
                 "scope": CANONICAL_SCOPE_BY_CODE.get(service_code, scope_label(service_raw)),
+                "current_service_scope": current_service_scope,
                 "standard_code": standard_code,
                 "standard_label": criterion_raw,
                 "topic": get("topic"),
@@ -299,6 +305,11 @@ def main():
         "source_format": workbook_format,
         "source_sha256": sha,
         "scope_mode": "ALL_CLASSIFIED_ROWS_IN_OFFICIAL_WORKBOOK",
+        "service_classification": {
+            "primary_column": "平成31年2月5日Q&A以前",
+            "current_scope_column": "平成31年3月15日Q&A以降",
+            "note": "Primary code/scope is retained for stable filtering; current_service_scope preserves the later applicability column verbatim when present.",
+        },
         "target_service_codes": sorted(scope_by_code),
         "scope_by_code": dict(sorted(scope_by_code.items())),
         "workbook_sheets": sheet_names,
