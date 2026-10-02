@@ -634,24 +634,6 @@ def main() -> None:
     rendered = render_snapshot()
     if args.check:
         if not OUTPUT_PATH.exists() or OUTPUT_PATH.read_text(encoding="utf-8") != rendered:
-            expected = json.loads(rendered)
-            actual = load_json(OUTPUT_PATH) if OUTPUT_PATH.exists() else None
-            def walk_diff(path, left, right):
-                if type(left) is not type(right):
-                    print(f"snapshot diff {path}: {left!r} != {right!r}")
-                    return
-                if isinstance(left, dict):
-                    for key in sorted(set(left) | set(right)):
-                        if key not in left or key not in right:
-                            print(f"snapshot diff {path}.{key}: missing")
-                        else:
-                            walk_diff(f"{path}.{key}", left[key], right[key])
-                elif isinstance(left, list):
-                    if left != right:
-                        print(f"snapshot diff {path}: list differs")
-                elif left != right:
-                    print(f"snapshot diff {path}: expected={left!r} actual={right!r}")
-            walk_diff("$", expected, actual)
             raise SystemExit("product-value snapshot is stale; run builder")
         print("product-value snapshot: current")
         return
