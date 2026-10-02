@@ -1,0 +1,46 @@
+{
+  "format_version": 1,
+  "audit_kind": "DERIVED_FROM_INDEPENDENT_SOURCE_SERVICE_IDENTITY",
+  "audit_result": "PASS",
+  "basis": {
+    "egov_content_audit": "data/egov-content-independent-audit.json",
+    "remuneration_audit": "data/remuneration-independent-audit.json"
+  },
+  "method": "Covers only the two fixed cross-layer identities where Care Insurance Act Article 8 paragraph 7 explicitly defines 通所介護 and the target layer explicitly names the same service. This verifies service-identity continuity only.",
+  "checks": [
+    {
+      "id": "careact.article.8.p.7-to-fee.dayservice.root",
+      "from_id": "careact.article.8.p.7",
+      "relation": "defines_service_for",
+      "to_id": "fee.dayservice.root",
+      "service_identity": "通所介護",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "careact.article.8.p.7-to-ordinance37.article.92",
+      "from_id": "careact.article.8.p.7",
+      "relation": "defines_service_for",
+      "to_id": "ordinance37.article.92",
+      "service_identity": "通所介護",
+      "result": "PASS",
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "relations_in_this_lane": 2,
+    "relations_passed": 2
+  },
+  "limitations": [
+    "This audit does not establish broader legal effect, priority, currentness, or applicability beyond the two listed identities.",
+    "It does not verify other semantic remuneration-to-ordinance mappings.",
+    "No HUMAN_VERIFIED or VERIFIED_CURRENT state is promoted."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_unlisted_relations": false,
+    "service_identity_only": true
+  }
+}
