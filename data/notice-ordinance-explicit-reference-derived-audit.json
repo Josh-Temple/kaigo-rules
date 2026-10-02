@@ -1,0 +1,217 @@
+{
+  "format_version": 1,
+  "audit_kind": "DERIVED_FROM_INDEPENDENT_NOTICE_TEXT_EXPLICIT_REFERENCE",
+  "audit_result": "PASS",
+  "basis": {
+    "notice_review_packet": "data/notice-review-packet.json",
+    "notice_relation_file": "data/notice-ordinance-relations.json",
+    "independent_verifier": "scripts/verify_notice_rouki25_independent.py"
+  },
+  "method": "Only fixed allowlisted relation identities are covered. Each source notice candidate must have independent PASS with a pinned candidate hash, and that same candidate text must explicitly cite the target Ordinance 37 article.",
+  "checks": [
+    {
+      "id": "notice.dayservice.personnel.staffing-to-ordinance37.article.93",
+      "from_notice_id": "notice.dayservice.personnel.staffing",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.93",
+      "explicit_citation": "第93条",
+      "candidate_text_sha256": "abc3729d4687d2d11581103a8e9bbfb8fb4d48fefae285e8aa82604b532cace9",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.fees-to-ordinance37.article.96",
+      "from_notice_id": "notice.dayservice.operation.fees",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.96",
+      "explicit_citation": "第96条",
+      "candidate_text_sha256": "fbd7941a972a46acbba8e528485034f121c81089015ca1df90d4e361ee81a9a1",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.policy-to-ordinance37.article.97",
+      "from_notice_id": "notice.dayservice.operation.policy",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.97",
+      "explicit_citation": "第97条",
+      "candidate_text_sha256": "dbf79626dc9cbabfb63a973d2e77275233066ad5626ed892cd4887116b6ba0da",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.policy-to-ordinance37.article.98",
+      "from_notice_id": "notice.dayservice.operation.policy",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.98",
+      "explicit_citation": "第98条",
+      "candidate_text_sha256": "dbf79626dc9cbabfb63a973d2e77275233066ad5626ed892cd4887116b6ba0da",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.plan-to-ordinance37.article.99",
+      "from_notice_id": "notice.dayservice.operation.plan",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.99",
+      "explicit_citation": "第99条",
+      "candidate_text_sha256": "f7ee9ba310e079af629257f4f2a93719c93ee2ffc17724cade256a10ee220483",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.rules-to-ordinance37.article.100",
+      "from_notice_id": "notice.dayservice.operation.rules",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.100",
+      "explicit_citation": "第100条",
+      "candidate_text_sha256": "5e3d5b7d3e1254fe44184a924baa3ae8df8153d8235df31fc3cccfa7773fac9f",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.staffing-to-ordinance37.article.101",
+      "from_notice_id": "notice.dayservice.operation.staffing",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.101",
+      "explicit_citation": "第101条",
+      "candidate_text_sha256": "ffadabb22e707d80aa4b5ed968872b547046dc74a802a4bc6382f2d7d8024321",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.bcp-to-ordinance37.article.105",
+      "from_notice_id": "notice.dayservice.operation.bcp",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.105",
+      "explicit_citation": "第105条",
+      "candidate_text_sha256": "fb03a61a735c93ec0b36d4997736ac48dcfbd22e2a5ce04d23c2da982cf4452c",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.bcp-to-ordinance37.article.30-2",
+      "from_notice_id": "notice.dayservice.operation.bcp",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.30-2",
+      "explicit_citation": "第30条の2",
+      "candidate_text_sha256": "fb03a61a735c93ec0b36d4997736ac48dcfbd22e2a5ce04d23c2da982cf4452c",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.disaster-to-ordinance37.article.103",
+      "from_notice_id": "notice.dayservice.operation.disaster",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.103",
+      "explicit_citation": "第103条",
+      "candidate_text_sha256": "30761dfe8e638f4e930dde13c4f0da309a01d62c2bd6aa5cbf0e6638fe89c8e0",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.hygiene-to-ordinance37.article.104",
+      "from_notice_id": "notice.dayservice.operation.hygiene",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.104",
+      "explicit_citation": "第104条",
+      "candidate_text_sha256": "738776321efe1d14275b46dee7a4f9dea686530fc065b85192d83145c8787849",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.community-to-ordinance37.article.104-2",
+      "from_notice_id": "notice.dayservice.operation.community",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.104-2",
+      "explicit_citation": "第104条の2",
+      "candidate_text_sha256": "b92867657a8cad57deefa53aaca2c547bfdd517cf83ce090eb63771a13b3e276",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.accident-to-ordinance37.article.104-3",
+      "from_notice_id": "notice.dayservice.operation.accident",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.104-3",
+      "explicit_citation": "第104条の3",
+      "candidate_text_sha256": "e6bf847bec769dcd5b124e8301b2e41a5c01dda620ad4f67cae33a7c20923988",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.abuse-to-ordinance37.article.105",
+      "from_notice_id": "notice.dayservice.operation.abuse",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.105",
+      "explicit_citation": "第105条",
+      "candidate_text_sha256": "9afcfcfaec9f6b90cc0d59f0a2586e1438997d889d998e1a8531c37274367322",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.abuse-to-ordinance37.article.37-2",
+      "from_notice_id": "notice.dayservice.operation.abuse",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.37-2",
+      "explicit_citation": "第37条の2",
+      "candidate_text_sha256": "9afcfcfaec9f6b90cc0d59f0a2586e1438997d889d998e1a8531c37274367322",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.records-to-ordinance37.article.104-4",
+      "from_notice_id": "notice.dayservice.operation.records",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.104-4",
+      "explicit_citation": "第104条の4",
+      "candidate_text_sha256": "f221bf8da5cc08bcefc34d88ed80993529e1cb1d0f3e8f54a8c55e83df34db29",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    },
+    {
+      "id": "notice.dayservice.operation.incorporation-to-ordinance37.article.105",
+      "from_notice_id": "notice.dayservice.operation.incorporation",
+      "relation": "interprets_or_explains",
+      "to_ordinance_id": "ordinance37.article.105",
+      "explicit_citation": "第105条",
+      "candidate_text_sha256": "24dc8d78aa074711d32b295b462a452c6b44c334ae5b98805d1a5c1c17cc88bb",
+      "basis_independent_verification": "PASS",
+      "result": "PASS",
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "relations_in_this_lane": 17,
+    "relations_passed": 17
+  },
+  "limitations": [
+    "This is derived coverage from previously independently verified notice candidate text; it is not a second live-source parse.",
+    "Only explicit article-number citations are covered; structurally plausible or semantically related mappings without explicit citations remain unverified.",
+    "rouki25-dayservice currentness remains HOLD and is not changed by this relation audit.",
+    "No HUMAN_VERIFIED or VERIFIED_CURRENT state is promoted."
+  ],
+  "safety": {
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false,
+    "promotes_unlisted_relations": false,
+    "promotes_notice_currentness": false
+  }
+}
