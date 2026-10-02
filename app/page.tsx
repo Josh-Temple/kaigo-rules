@@ -39,6 +39,10 @@ export default function HomePage() {
             <span>サービスを選んで調べる</span>
             <small>公開中のサービス一覧 →</small>
           </Link>
+          <Link className="entry-row" href="/databases">
+            <span>DB全体から調べる</span>
+            <small>介護制度DB →</small>
+          </Link>
           <Link className="entry-row" href="/overview">
             <span>制度情報の構造を確認する</span>
             <small>制度の見取り図 →</small>
@@ -68,7 +72,7 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-        <p className="home-more-link"><Link href="/services">サービス別の公開情報を見る →</Link></p>
+        <p className="home-more-link"><Link href="/databases">制度DBをまとめて見る →</Link></p>
       </section>
 
       <section className="home-section">
