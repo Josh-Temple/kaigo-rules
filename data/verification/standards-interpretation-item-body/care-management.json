@@ -8,7 +8,7 @@
     "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
     "scope_git_blob_sha": "be6b3bac23edfacde9c832f97e2df402daddc60f",
     "staging_git_blob_sha": "00801ba30c06f6ca7276b686dad090df20729bc2",
-    "source_inventory_git_blob_sha": "a455d5eae7e5cbd05d6dab196a5025fc00c56fed",
+    "source_inventory_git_blob_sha": "3c1c843b0811848d38eb1bfeb33170de23f23c2a",
     "task_count": 32,
     "structured_text_child_entries": 41,
     "note": "structured_text_child_entries counts YAML-like list entries in structured_text_raw. Range entries such as ④〜⑬ and ㉔・㉕ are one stored child entry and are not expanded into inferred subitems."
@@ -69,8 +69,8 @@
         "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf",
         "role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
         "status": "OFFICIAL_HISTORICAL_EVIDENCE",
-        "pinned_fetch": "PENDING_SOURCE_INVENTORY_REPIN",
-        "pinned_sha256": "PENDING_SOURCE_INVENTORY_REPIN"
+        "pinned_fetch": "PASS",
+        "pinned_sha256": "e1d5b9dead0b16f3e879a4fbcd08c8eca6ff3bfedb2779a72adcd29b44971ba2"
       }
     ]
   },
@@ -706,7 +706,7 @@
           "pinned_in_source_inventory": true,
           "note": "厚労省公式c07改正比較資料の旧番号(4)改正後欄に「介護支援専門員証」の携行・初回訪問時等の提示を直接確認。scope/source inventoryへ正式収載。",
           "fetched_in_pinned_inventory": true,
-          "pinned_sha256": "PENDING_SOURCE_INVENTORY_REPIN"
+          "pinned_sha256": "e1d5b9dead0b16f3e879a4fbcd08c8eca6ff3bfedb2779a72adcd29b44971ba2"
         }
       ],
       "finding": "R3で新設(1)が入った後の現行番号(5)に対応する旧番号(4)について、厚労省公式c07改正比較資料の改正後欄が「介護支援専門員証」の携行と初回訪問時等の提示を直接支持する。番号世代を分離したsource chainを明示したためcontent/evidence matchはPASS。currentnessは別工程。"
@@ -2189,8 +2189,9 @@
       "supports": [
         "KR2-09-B009"
       ],
-      "resolution": "PINNED_IN_SCOPE_AND_SOURCE_INVENTORY_PENDING_RECEIPT_REFRESH",
-      "finding": "介護支援専門員証の携行・初回訪問時等の提示を厚労省公式改正比較資料で直接確認し、scopeへ正式追加した。"
+      "resolution": "PINNED_IN_SCOPE_AND_SOURCE_INVENTORY",
+      "finding": "介護支援専門員証の携行・初回訪問時等の提示を厚労省公式改正比較資料で直接確認し、scopeへ正式追加した。",
+      "pinned_sha256": "e1d5b9dead0b16f3e879a4fbcd08c8eca6ff3bfedb2779a72adcd29b44971ba2"
     }
   ],
   "gap_closure_followup": {
@@ -2209,6 +2210,8 @@
     "currentness_promoted": false,
     "human_review_promoted": false,
     "publication_promoted": false,
-    "note": "B009は公式c07 source chain追加、B014/B016/B018はversion-aware locator明示により閉じた。本文未回収の4件は維持。"
+    "note": "B009は公式c07 source chain追加、B014/B016/B018はversion-aware locator明示により閉じた。本文未回収の4件は維持。",
+    "source_inventory_manifest_required_sources": 6,
+    "source_inventory_required_sources_fetchable": 6
   }
 }
