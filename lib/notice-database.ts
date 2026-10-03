@@ -1,6 +1,10 @@
 import reviewPacketData from "../data/notice-review-packet.json" with { type: "json" };
 import homevisitData from "../data/services/homevisit/rouki25-historical.generated.json" with { type: "json" };
 import homebathData from "../data/services/homebath/rouki25-historical.generated.json" with { type: "json" };
+import homenursingData from "../data/services/homenursing/rouki25-historical.generated.json" with { type: "json" };
+import homerehabData from "../data/services/homerehab/rouki25-historical.generated.json" with { type: "json" };
+import homecaremanagementData from "../data/services/homecaremanagement/rouki25-historical.generated.json" with { type: "json" };
+import shortstayLifeData from "../data/services/shortstay-life/rouki25-historical.generated.json" with { type: "json" };
 import dayrehabData from "../data/services/dayrehab/rouki25-historical.generated.json" with { type: "json" };
 import serviceCatalogData from "../data/services/catalog.generated.json" with { type: "json" };
 
@@ -99,6 +103,10 @@ type CatalogService = {
 const dayserviceReview = reviewPacketData as { items?: ReviewItem[] };
 const homevisit = homevisitData as HistoricalNoticeDataset;
 const homebath = homebathData as HistoricalNoticeDataset;
+const homenursing = homenursingData as HistoricalNoticeDataset;
+const homerehab = homerehabData as HistoricalNoticeDataset;
+const homecaremanagement = homecaremanagementData as HistoricalNoticeDataset;
+const shortstayLife = shortstayLifeData as HistoricalNoticeDataset;
 const dayrehab = dayrehabData as HistoricalNoticeDataset;
 const serviceCatalog = serviceCatalogData as { services?: CatalogService[] };
 
@@ -190,6 +198,34 @@ const homebathRecords = historicalNoticeRecords(homebath, {
   evidencePrefix: "homebath-rouki25",
 });
 
+const homenursingRecords = historicalNoticeRecords(homenursing, {
+  serviceId: "homenursing",
+  serviceLabel: "訪問看護",
+  verificationLayerId: "rouki25-homenursing",
+  evidencePrefix: "homenursing-rouki25",
+});
+
+const homerehabRecords = historicalNoticeRecords(homerehab, {
+  serviceId: "homerehab",
+  serviceLabel: "訪問リハビリテーション",
+  verificationLayerId: "rouki25-homerehab",
+  evidencePrefix: "homerehab-rouki25",
+});
+
+const homecaremanagementRecords = historicalNoticeRecords(homecaremanagement, {
+  serviceId: "homecaremanagement",
+  serviceLabel: "居宅療養管理指導",
+  verificationLayerId: "rouki25-homecaremanagement",
+  evidencePrefix: "homecaremanagement-rouki25",
+});
+
+const shortstayLifeRecords = historicalNoticeRecords(shortstayLife, {
+  serviceId: "shortstay-life",
+  serviceLabel: "短期入所生活介護",
+  verificationLayerId: "rouki25-shortstay-life",
+  evidencePrefix: "shortstay-life-rouki25",
+});
+
 const dayrehabRecords = historicalNoticeRecords(dayrehab, {
   serviceId: "dayrehab",
   serviceLabel: "通所リハビリテーション",
@@ -201,7 +237,11 @@ export const publicNoticeRecords: PublicNoticeRecord[] = [
   ...dayserviceRecords,
   ...homevisitRecords,
   ...homebathRecords,
+  ...homenursingRecords,
+  ...homerehabRecords,
+  ...homecaremanagementRecords,
   ...dayrehabRecords,
+  ...shortstayLifeRecords,
 ];
 
 const noticeStateForService = (service: CatalogService, recordCount: number) => {
