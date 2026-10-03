@@ -6,8 +6,8 @@
   "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Update Care Insurance Act database",
-    "run_id": 37116336783,
-    "head_sha": "df2c0cd27981a808b629b9b4157940ba61eae85e",
+    "run_id": 37116468612,
+    "head_sha": "2b90b3b7850248065fd4170819fc34a841028697",
     "parser": "python_xml_dom_minidom",
     "result": "PASS",
     "verification_report_sha256": "6f5d55e242a8a3706cdaff1c81c60682efcb2b6521a318fa95f4fa4eebefcd71"
