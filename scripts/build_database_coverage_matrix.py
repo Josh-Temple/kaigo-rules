@@ -307,14 +307,14 @@ def build_cell(
     explicit_public = publication_gate.get("public_routes_enabled")
     if explicit_public is False:
         publication_state = "BLOCKED"
-    elif explicit_public is True and ingestion_state in {"INGESTED", "PARTIAL"}:
+    elif explicit_public is True and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
         publication_state = "AVAILABLE"
-    elif route_enabled and ingestion_state in {"INGESTED", "PARTIAL"}:
+    elif route_enabled and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
         publication_state = "AVAILABLE"
     else:
         publication_state = "NOT_ESTABLISHED"
 
-    if route_enabled and ingestion_state in {"INGESTED", "PARTIAL"}:
+    if route_enabled and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
         route_state = "AVAILABLE"
     elif route_enabled:
         route_state = "NOT_ESTABLISHED"
