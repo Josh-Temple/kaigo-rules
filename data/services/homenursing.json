@@ -21,13 +21,16 @@
   },
   "ingestion_layers": {
     "rouki25": {
-      "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED",
+      "status": "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
       "principal_items": 12,
-      "note": "老企第25号の公式旧HTML「第五 訪問看護に関する基準」の12 principal itemsを、第二陣Bレーンの確定粒度に合わせてservice-specific scopeとして登録。本文取込・独立検証・currentness確認・human review・公開は未実施。"
+      "note": "老企第25号の公式旧HTML『第五 訪問看護に関する基準』12 principal itemsをRepositoryへmaterializeし、独立パーサーで公式sourceとの12/12一致を確認。現行統合本文・human review・公開は未実施。"
     },
     "work_control": {
       "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
       "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
     }
+  },
+  "ingestion_indexes": {
+    "rouki25": "data/services/homenursing/rouki25-historical.generated.json"
   }
 }
