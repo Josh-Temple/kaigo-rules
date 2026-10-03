@@ -38,7 +38,7 @@ assert targets
 act=load(ROOT/"data/care-insurance-act-nodes.json"); actids={x["id"] for x in act}
 std=load(ROOT/"data/shared/standards/community-based-standards/nodes.json")
 stdids={x["id"] for x in std}; byid={x["id"]:x for x in std}
-order=[x["article_num"] for x in std if x.get("node_type")=="article"]; pos={n:i for i,n in enumerate(order)}
+def article_order_key(value): return tuple(int(part) for part in str(value).split("-"))
 counts={"services":0,"care_act_scopes":0,"standards_scopes":0,"remuneration_scopes":0,"delegated_scopes":0,"unit_price_scopes":0,"unresolved_scopes":0,"applicability_verification_unfinished":0}
 for svc in targets:
     sid=svc["service_id"]; cfg=load(ROOT/svc["config"]); rel=f"data/services/{sid}/shared-corpus-scope.json"
@@ -59,9 +59,9 @@ for svc in targets:
             for n in (row["article_range"]["from"],row["article_range"]["through"]): assert f"careact.article.{n}" in actids
     st=s["governing_standards_ordinance"]
     for rg in st["direct_article_ranges"]:
-        a,b=rg["from"],rg["through"]; assert a in pos and b in pos and pos[a]<=pos[b], f"{sid}: invalid direct range {a}..{b}"
+        a,b=rg["from"],rg["through"]; assert f"standards34.article.{a}" in stdids and f"standards34.article.{b}" in stdids and article_order_key(a)<=article_order_key(b), f"{sid}: invalid direct range {a}..{b}"
     for sp in st.get("conditional_or_special",[]):
-        a,b=sp["range"]; assert a in pos and b in pos and pos[a]<=pos[b], f"{sid}: invalid special range {a}..{b}"
+        a,b=sp["range"]; assert f"standards34.article.{a}" in stdids and f"standards34.article.{b}" in stdids and article_order_key(a)<=article_order_key(b), f"{sid}: invalid special range {a}..{b}"
     for r in st["incorporation_relations"]:
         via=r["via_node_id"]; assert via in byid, f"{sid}: missing via {via}"
         text=byid[via].get("official_text",""); assert "準用" in text, f"{sid}: via is not 準用 {via}"
