@@ -1,21 +1,38 @@
 {
-  "format_version": 1,
-  "scope": "egov-scoped-content-ordinance37-care-insurance-act",
+  "format_version": 2,
+  "scope": "egov-shared-content-ordinance37-care-insurance-act",
   "audit_kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
   "audit_result": "PASS",
   "audited_at": "2026-10-03",
   "audit_run": {
-    "workflow": "Verify e-Gov scoped content independently",
-    "run_id": 37116753917,
-    "head_sha": "789c739454dbd47dc4a4a07fef2c1bd10414d29a",
+    "workflow": "Update Care Insurance Act database",
+    "run_id": 37125592322,
+    "head_sha": "93bf81ca604c12d62c795888e00801a80367c7d6",
     "parser": "python_xml_dom_minidom",
     "result": "PASS",
-    "verification_report_sha256": "27f13f3c0e6e8439236bc0d7689ad15060848c18983ca89023778a136f9050b4"
+    "verification_report_sha256": "e12d029b1739b8a0cf2f6366f2db08e1511f9143d534249f0e0885f2e6f2b877"
   },
   "checks": [
     {
+      "id": "care-insurance-act",
+      "law_id": "409AC0000000123",
+      "scope_file": "data/care-insurance-act-corpus-scope.json",
+      "observed_xml_sha256": "16935a64750d05314e16149b869b029c542f98a2bb271d87449d2a8258e54f20",
+      "result": "PASS",
+      "observed": {
+        "nodes": 1671,
+        "articles": 238,
+        "paragraphs": 815,
+        "items": 604,
+        "subitems": 14,
+        "contains_relations": 1433
+      },
+      "excluded_non_contains_relations": 24
+    },
+    {
       "id": "ordinance37",
       "law_id": "411M50000100037",
+      "scope_file": "data/ordinance37-scope.json",
       "observed_xml_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
       "result": "PASS",
       "observed": {
@@ -27,21 +44,6 @@
         "contains_relations": 1409
       },
       "excluded_non_contains_relations": 23
-    },
-    {
-      "id": "care-insurance-act",
-      "law_id": "409AC0000000123",
-      "observed_xml_sha256": "16935a64750d05314e16149b869b029c542f98a2bb271d87449d2a8258e54f20",
-      "result": "PASS",
-      "observed": {
-        "nodes": 137,
-        "articles": 11,
-        "paragraphs": 76,
-        "items": 50,
-        "subitems": 0,
-        "contains_relations": 126
-      },
-      "excluded_non_contains_relations": 24
     }
   ],
   "input_git_blob_shas_at_audit": {
@@ -49,22 +51,24 @@
     "data/ordinance37-nodes.json": "77924bcc5021c21c6d50ad5f76adea1fc40b8bf7",
     "data/ordinance37-relations.json": "b8634b745b81b90fed3e9168e884bf0964358133",
     "data/ordinance37-meta.json": "25c869e4f48cd5e44f621d717ce2e7b0bfeb7d91",
-    "data/care-insurance-act-scope.json": "8af02781b721c811b377ff0525f74ba64646181d",
-    "data/care-insurance-act-nodes.json": "5679279462390862405d60f00b25603f8be3522e",
-    "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
+    "data/care-insurance-act-corpus-scope.json": "4fc5aee80c44eb4e228f8ffd3e913c92b162f99a",
+    "data/care-insurance-act-nodes.json": "046da7e5a3ba1241d713ecf7eca089e55bb455e3",
+    "data/care-insurance-act-relations.json": "6cfb17acea1e2c546bf11e63f902ebcb7b1404ea",
     "data/care-insurance-act-meta.json": "64749db380de1ec11f69989f98b7c383ff2a73cb",
-    "scripts/verify_egov_content_independent.py": "a5bc75924f39e484f199bec3774ce9fcb4a86444"
+    "scripts/verify_egov_content_independent.py": "bc496d4d3c78b97225d55948f5c5e4049174b913"
   },
-  "conclusion": "Scoped official text, node IDs, parent structure and source-derived containment matched live e-Gov XML for Ordinance 37 and the Care Insurance Act using an independent XML parser. Ordinance 37 covers the full MainProvision as one shared source corpus without collapsing service applicability or verification state.",
+  "conclusion": "Source-derived official text, stable node IDs, parent structure and containment matched live e-Gov XML using an independent XML parser. The Care Insurance Act check covers the shared service-foundation corpus; service applicability remains in separate service scope/index files.",
   "limitations": [
-    "The audit covers source-derived text and containment only; Ordinance 37 is full MainProvision while the Care Insurance Act remains scoped.",
+    "The audit covers source-derived selected text and containment only.",
+    "Corpus presence does not establish applicability to any service.",
     "Hand-authored legal-semantic and cross-layer relations are excluded and remain separately reviewable.",
     "Independent machine verification is not HUMAN_VERIFIED or VERIFIED_CURRENT.",
-    "Later source/data/verifier changes require refresh of this record."
+    "Later source, data, scope, or verifier changes invalidate the pinned receipt and require a new independent run."
   ],
   "safety": {
     "human_verified": false,
     "verified_current": false,
+    "service_applicability_verified": false,
     "automatic_promotion_allowed": false
   }
 }

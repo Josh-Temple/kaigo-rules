@@ -69,6 +69,136 @@
         "service_id": "preventive-support",
         "label": "介護予防支援",
         "status": "PARTIAL_INGESTION"
+      },
+      {
+        "service_id": "shortstay-medical",
+        "label": "短期入所療養介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "specific-facility",
+        "label": "特定施設入居者生活介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "label": "福祉用具貸与",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "specific-welfare-equipment-sale",
+        "label": "特定福祉用具販売",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "label": "認知症対応型通所介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "small-scale-multifunctional",
+        "label": "小規模多機能型居宅介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "label": "認知症対応型共同生活介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "community-specific-facility",
+        "label": "地域密着型特定施設入居者生活介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "label": "地域密着型介護老人福祉施設入所者生活介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "nursing-small-scale-multifunctional",
+        "label": "看護小規模多機能型居宅介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "label": "介護老人福祉施設",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "elderly-health-facility",
+        "label": "介護老人保健施設",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "care-medical-institution",
+        "label": "介護医療院",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-homebath",
+        "label": "介護予防訪問入浴介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-homenursing",
+        "label": "介護予防訪問看護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-homerehab",
+        "label": "介護予防訪問リハビリテーション",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-homecaremanagement",
+        "label": "介護予防居宅療養管理指導",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-dayrehab",
+        "label": "介護予防通所リハビリテーション",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-shortstay-life",
+        "label": "介護予防短期入所生活介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-shortstay-medical",
+        "label": "介護予防短期入所療養介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-specific-facility",
+        "label": "介護予防特定施設入居者生活介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-welfare-equipment-rental",
+        "label": "介護予防福祉用具貸与",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "specific-preventive-welfare-equipment-sale",
+        "label": "特定介護予防福祉用具販売",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
+        "label": "介護予防認知症対応型通所介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "label": "介護予防小規模多機能型居宅介護",
+        "status": "REGISTERED_NOT_INGESTED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "label": "介護予防認知症対応型共同生活介護",
+        "status": "REGISTERED_NOT_INGESTED"
       }
     ]
   },
@@ -224,9 +354,9 @@
       "content_verification": {
         "status": "PASS",
         "kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
-        "nodes": 137,
-        "articles": 11,
-        "contains_relations": 126,
+        "nodes": 1671,
+        "articles": 238,
+        "contains_relations": 1433,
         "evidence": "data/egov-content-independent-audit.json"
       },
       "currentness": {
@@ -693,7 +823,7 @@
     }
   ],
   "summary": {
-    "services_total": 13,
+    "services_total": 39,
     "active_services_total": 2,
     "layers_total": 17,
     "independent_audit_or_reconstruction": 15,

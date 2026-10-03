@@ -11,7 +11,28 @@
       "automatic_verification_promotion_allowed": false
     },
     {
+      "service_id": "care-medical-institution",
+      "corpus_id": "long-term-care-medical-facility-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
       "service_id": "community-dayservice",
+      "corpus_id": "community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "corpus_id": "community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "community-specific-facility",
       "corpus_id": "community-based-standards",
       "scope_status": "SCOPE_NOT_DEFINED",
       "relation_verification": "NOT_SERVICE_VERIFIED",
@@ -28,6 +49,34 @@
       "service_id": "dayservice",
       "corpus_id": "ordinance37",
       "scope_status": "SCOPE_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "corpus_id": "community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "dementia-group-home",
+      "corpus_id": "community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "corpus_id": "geriatric-health-services-facility-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "corpus_id": "elderly-welfare-facility-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
@@ -74,8 +123,99 @@
       "automatic_verification_promotion_allowed": false
     },
     {
+      "service_id": "nursing-small-scale-multifunctional",
+      "corpus_id": "community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "corpus_id": "preventive-community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "corpus_id": "preventive-community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-homebath",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "corpus_id": "preventive-community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
       "service_id": "preventive-support",
       "corpus_id": "preventive-support-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "corpus_id": "preventive-services-standards",
       "scope_status": "SCOPE_NOT_DEFINED",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
@@ -89,6 +229,48 @@
     },
     {
       "service_id": "shortstay-life",
+      "corpus_id": "ordinance37",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "shortstay-medical",
+      "corpus_id": "ordinance37",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "corpus_id": "community-based-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "specific-facility",
+      "corpus_id": "ordinance37",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "corpus_id": "preventive-services-standards",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "corpus_id": "ordinance37",
+      "scope_status": "SCOPE_NOT_DEFINED",
+      "relation_verification": "NOT_SERVICE_VERIFIED",
+      "automatic_verification_promotion_allowed": false
+    },
+    {
+      "service_id": "welfare-equipment-rental",
       "corpus_id": "ordinance37",
       "scope_status": "SCOPE_NOT_DEFINED",
       "relation_verification": "NOT_SERVICE_VERIFIED",
