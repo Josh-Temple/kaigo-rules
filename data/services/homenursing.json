@@ -9,7 +9,9 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "rouki25": "data/services/homenursing/rouki25-scope.json"
+  },
   "verification_layer_ids": [],
   "publication_gate": {
     "public_routes_enabled": false,
@@ -19,8 +21,9 @@
   },
   "ingestion_layers": {
     "rouki25": {
-      "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
-      "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+      "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED",
+      "principal_items": 12,
+      "note": "老企第25号の公式旧HTML「第五 訪問看護に関する基準」の12 principal itemsを、第二陣Bレーンの確定粒度に合わせてservice-specific scopeとして登録。本文取込・独立検証・currentness確認・human review・公開は未実施。"
     },
     "work_control": {
       "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
