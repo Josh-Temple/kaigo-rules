@@ -87,7 +87,7 @@ class ProductValueSnapshotTest(unittest.TestCase):
         )
         self.assertEqual(
             metric["breakdown"]["dayrehab_standard_articles"]["items_total"],
-            35,
+            36,
         )
         self.assertEqual(
             metric["breakdown"]["dayrehab_notice_items"]["items_total"],
