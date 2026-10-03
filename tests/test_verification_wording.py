@@ -54,8 +54,10 @@ class VerificationWordingTest(unittest.TestCase):
 
         self.assertEqual(40, len(direct) + len(incorporated))
         self.assertEqual(16, len(homevisit_only))
-        self.assertEqual(67, meta["counts"]["articles_total"])
+        self.assertEqual(275, meta["counts"]["articles_total"])
         self.assertEqual(len(articles), meta["counts"]["articles_total"])
+        self.assertEqual("FULL_MAIN_PROVISION", meta["scope"]["mode"])
+        self.assertEqual(208, meta["counts"]["unmapped_shared_articles"])
 
         self.assertIn("共有コーパスノード", rules_page)
         self.assertIn("共有コーパス条文", rules_page)
