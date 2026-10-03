@@ -110,7 +110,10 @@ def build() -> dict:
                 "verified_through": fee_verify["verified_through"],
                 "evidence": "data/fee-guidance-independent-verification.json",
             },
-            "currentness": {"status": "MONITORED_NOT_HUMAN_VERIFIED"},
+            "currentness": {
+                "status": "MONITORED_NOT_HUMAN_VERIFIED",
+                "evidence": "data/verification/existing-service-currentness-wave.json",
+            },
             "monitoring": {
                 "status": "ACTIVE",
                 "workflow": ".github/workflows/watch-fee-guidance-currentness.yml",
@@ -246,10 +249,12 @@ def build() -> dict:
             "currentness": {
                 "status": "GAP_HISTORICAL_SOURCE_ONLY",
                 "note": "公式旧HTMLとの本文一致は確認済み。部分改正資料は別証拠であり、現行統合本文は未構成。",
+                "evidence": "data/verification/existing-service-currentness-wave.json",
             },
             "monitoring": {
                 "status": "ACTIVE",
                 "workflow": ".github/workflows/verify-homebath-rouki25-historical-independent.yml",
+                "additional_workflow": ".github/workflows/watch-notice-rouki25-currentness.yml",
             },
             "human_review": {
                 "status": "NOT_REVIEWED",
@@ -273,10 +278,12 @@ def build() -> dict:
             "currentness": {
                 "status": "GAP_HISTORICAL_SOURCE_ONLY",
                 "note": "公式旧HTMLとの本文一致は確認済み。令和6年度新旧対照は別証拠であり、現行統合本文は未構成。",
+                "evidence": "data/verification/existing-service-currentness-wave.json",
             },
             "monitoring": {
                 "status": "ACTIVE",
                 "workflow": ".github/workflows/verify-homevisit-rouki25-historical-independent.yml",
+                "additional_workflow": ".github/workflows/watch-notice-rouki25-currentness.yml",
             },
             "human_review": {
                 "status": "NOT_REVIEWED",
@@ -300,10 +307,12 @@ def build() -> dict:
             "currentness": {
                 "status": "GAP_HISTORICAL_SOURCE_ONLY",
                 "note": "公式旧HTMLとの本文一致は確認済み。令和6年度新旧対照は別証拠であり、現行統合本文は未構成。",
+                "evidence": "data/verification/existing-service-currentness-wave.json",
             },
             "monitoring": {
                 "status": "ACTIVE",
                 "workflow": ".github/workflows/verify-dayrehab-rouki25-historical-independent.yml",
+                "additional_workflow": ".github/workflows/watch-notice-rouki25-currentness.yml",
             },
             "human_review": {
                 "status": "NOT_REVIEWED",
@@ -358,9 +367,12 @@ def build() -> dict:
                 "currentness": {
                     "status": "GAP_HISTORICAL_SOURCE_ONLY",
                     "note": "公式旧HTMLとの本文一致は確認済み。改正資料は別証拠であり、現行統合本文は未構成。",
+                    "evidence": "data/verification/existing-service-currentness-wave.json",
                 },
                 "monitoring": {
-                    "status": "NOT_SCHEDULED",
+                    "status": "ACTIVE",
+                    "workflow": ".github/workflows/watch-notice-rouki25-currentness.yml",
+                    "kind": "FAMILY_LEVEL_READ_ONLY_CURRENTNESS_WATCH",
                 },
                 "human_review": {
                     "status": "NOT_REVIEWED",
