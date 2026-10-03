@@ -11,7 +11,7 @@
     "table_locator": "第一号 表（地域区分・サービス種類・割合）",
     "regional_classification_locator": "第二号 表（地域区分・都道府県・地域）",
     "repository_region_assignments": "data/unit-price-region-assignments.json",
-    "service_multiplier_rows_ingested_in_repository": false
+    "service_multiplier_rows_ingested_in_repository": true
   },
   "assurance": {
     "legal_text_duplicated": false,
