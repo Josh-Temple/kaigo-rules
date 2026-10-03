@@ -12,24 +12,17 @@ import {
 } from "../lib/notice-database.ts";
 
 test("notice database is catalog-driven across registered services", () => {
-  assert.equal(publicNoticeRegisteredServiceCount, 13);
+  const catalog = JSON.parse(
+    fs.readFileSync("data/services/catalog.generated.json", "utf8"),
+  );
+  const registeredServiceIds = catalog.services.map(
+    (service) => service.service_id,
+  );
+
+  assert.equal(publicNoticeRegisteredServiceCount, registeredServiceIds.length);
   assert.deepEqual(
     publicNoticeServiceOptions.map((service) => service.service_id),
-    [
-      "dayservice",
-      "homevisit",
-      "homebath",
-      "homenursing",
-      "homerehab",
-      "homecaremanagement",
-      "dayrehab",
-      "shortstay-life",
-      "community-dayservice",
-      "regular-round",
-      "night-homevisit",
-      "care-management",
-      "preventive-support",
-    ],
+    registeredServiceIds,
   );
   assert.equal(publicNoticePublishedServiceCount, 8);
   assert.equal(publicNoticeRecords.length, 141);
