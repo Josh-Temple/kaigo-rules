@@ -1,0 +1,117 @@
+{
+  "format_version": 1,
+  "service_id": "community-dayservice",
+  "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_SOURCE_INVENTORY",
+  "audit_result": "PASS_BOUNDED_SCOPE_ONLY",
+  "check_level": "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
+  "source_family": "community_based_services_standards_interpretation",
+  "audit_run": {
+    "workflow": "Verify standards interpretation source inventories",
+    "run_id": 37092391799,
+    "head_sha": "5a448a94e85c617834acb0926ab1b43b926611f5",
+    "verifier": "scripts/verify_standards_interpretation_sources_independent.py",
+    "report_sha256": "3d6f322deb5d145b838d03f1f60cd32f73e023733b1a4e1c3a44a1c28ce66c56"
+  },
+  "coverage": {
+    "expected_staging_items_or_tasks": 21,
+    "observed_staging_items_or_tasks": 21,
+    "referenced_sources": 8,
+    "sources_fetchable": 7,
+    "required_sources": 7,
+    "required_sources_fetchable": 7,
+    "supplemental_sources_unavailable": 1,
+    "sources_with_service_anchor": 6
+  },
+  "sources": [
+    {
+      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/mittyaku-dei.files/0182_20250225.pdf",
+      "fetch": "FAIL",
+      "error": "HTTP Error 404: Not Found",
+      "required_for_source_inventory": false
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/000763179.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 10156476,
+      "sha256": "9f30ddb074c24adc5daf72be0e0cbf0b206f77511f2a4ee454e0c4129fceb6e1",
+      "extracted_chars": 1182772,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 992679,
+      "sha256": "55269e60bc3e1e2822025055f85422365f7049f3af01fc18551f77c19a15c4f4",
+      "extracted_chars": 71590,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 22608427,
+      "sha256": "9adea2b845ada8c6d71e026c257b20d8aa68e77468d5ceedab3d345d2ca1b9c9",
+      "extracted_chars": 503,
+      "service_anchor_found": false,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 512025,
+      "sha256": "f2545c636cb3fdbd0328f4ec56081a8bd6d20870fd9920c16f0af23c9149b2ac",
+      "extracted_chars": 104565,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/12404000/001623024.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 358858,
+      "sha256": "0376351f05fffe7c76655cf17decebb68edbb5d0c925f73f5116a1509875a8e1",
+      "extracted_chars": 65591,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 374518,
+      "sha256": "d2f93fa48afb6dbf8f0619f798183ae67d76f169177176bb3e4d534ead8b9cd9",
+      "extracted_chars": 65591,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+      "fetch": "PASS",
+      "content_type": "text/html",
+      "bytes": 657896,
+      "sha256": "3f66651391ece0a5658f206af37edd9b8d380c8d41a523450ea4bed6d62ab7ff",
+      "extracted_chars": 161044,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    }
+  ],
+  "safety": {
+    "item_body_match_proven": false,
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "omitted_text_reconstructed": false,
+    "publication_permitted": false
+  },
+  "differences": [],
+  "input_git_blob_shas_at_audit": {
+    "data/services/community-dayservice/standards-interpretation-scope.json": "d8f80527e839920b29ad158721d5d170b0bc1129",
+    "data/services/community-dayservice/standards-interpretation-staging.json": "edcd22d08d463fbcbaaad8f5fdd316f8c0c0736c",
+    "scripts/verify_standards_interpretation_sources_independent.py": "14e03ccfb4e5a86dc840b6595fd7f6be25dfd301"
+  },
+  "conclusion": "Referenced required official sources were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
+}
