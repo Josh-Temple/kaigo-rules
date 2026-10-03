@@ -201,6 +201,84 @@ class ServiceManifestTests(unittest.TestCase):
         ]
         self.assertEqual(["rouki25-homevisit"], homevisit_layers)
 
+    def test_repository_homebath_service_root_stays_closed_while_notice_layer_is_verified(self):
+        root = Path(__file__).resolve().parents[1]
+        manifest = json.loads(
+            (root / "data/services/manifest.json").read_text(encoding="utf-8")
+        )
+        homebath = json.loads(
+            (root / "data/services/homebath.json").read_text(encoding="utf-8")
+        )
+        registry = json.loads(
+            (root / "data/verification-registry.json").read_text(encoding="utf-8")
+        )
+
+        descriptor = next(
+            item for item in manifest["services"]
+            if item["service_id"] == "homebath"
+        )
+        self.assertEqual("PARTIAL_INGESTION", descriptor["status"])
+        self.assertFalse(homebath["routing"]["future_service_base_enabled"])
+        self.assertFalse(homebath["publication_gate"]["public_routes_enabled"])
+        self.assertFalse(homebath["publication_gate"]["content_ingested"])
+        self.assertFalse(
+            homebath["publication_gate"]["independent_verification_complete"]
+        )
+        self.assertEqual(["rouki25-homebath"], homebath["verification_layer_ids"])
+        self.assertEqual(
+            "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+            homebath["ingestion_layers"]["rouki25"]["status"],
+        )
+        self.assertEqual(
+            13,
+            homebath["ingestion_layers"]["rouki25"]["principal_items"],
+        )
+        homebath_layers = [
+            layer["id"]
+            for layer in registry["layers"]
+            if "homebath" in layer.get("service_ids", [])
+        ]
+        self.assertEqual(["rouki25-homebath"], homebath_layers)
+
+    def test_repository_homebath_service_root_stays_closed_while_notice_layer_is_verified(self):
+        root = Path(__file__).resolve().parents[1]
+        manifest = json.loads(
+            (root / "data/services/manifest.json").read_text(encoding="utf-8")
+        )
+        homebath = json.loads(
+            (root / "data/services/homebath.json").read_text(encoding="utf-8")
+        )
+        registry = json.loads(
+            (root / "data/verification-registry.json").read_text(encoding="utf-8")
+        )
+
+        descriptor = next(
+            item for item in manifest["services"]
+            if item["service_id"] == "homebath"
+        )
+        self.assertEqual("PARTIAL_INGESTION", descriptor["status"])
+        self.assertFalse(homebath["routing"]["future_service_base_enabled"])
+        self.assertFalse(homebath["publication_gate"]["public_routes_enabled"])
+        self.assertFalse(homebath["publication_gate"]["content_ingested"])
+        self.assertFalse(
+            homebath["publication_gate"]["independent_verification_complete"]
+        )
+        self.assertEqual(["rouki25-homebath"], homebath["verification_layer_ids"])
+        self.assertEqual(
+            "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+            homebath["ingestion_layers"]["rouki25"]["status"],
+        )
+        self.assertEqual(
+            13,
+            homebath["ingestion_layers"]["rouki25"]["principal_items"],
+        )
+        homebath_layers = [
+            layer["id"]
+            for layer in registry["layers"]
+            if "homebath" in layer.get("service_ids", [])
+        ]
+        self.assertEqual(["rouki25-homebath"], homebath_layers)
+
     def test_registry_service_coverage_drift_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
