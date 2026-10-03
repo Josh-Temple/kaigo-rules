@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Independently re-fetch official sources referenced by a standards-interpretation staging dataset.
+"""Independently re-fetch required and referenced standards-interpretation sources.
 
-This bounded check proves source availability/extractability and a service anchor.
-It does not prove item-body equality, currentness, omitted-text completeness, or
-publication readiness.
+Every source-manifest row marked required_for_source_inventory=true is inspected,
+even when no current staging item references that URL. Referenced supplemental
+sources are also inspected. This bounded check proves availability/extractability
+and a service anchor; it does not prove item-body equality, currentness,
+omitted-text completeness, or publication readiness.
 """
 from __future__ import annotations
 
@@ -163,13 +165,20 @@ def main() -> int:
     if unpinned:
         differences.append(f"staging references unpinned source URLs: {unpinned}")
 
+    manifest_required_urls = sorted(
+        url
+        for url, row in manifest_rows.items()
+        if row.get("required_for_source_inventory") is True
+    )
+    urls_to_check = sorted(set(referenced_urls) | set(manifest_required_urls))
+
     anchor = normalize(str(config.get("service_anchor", "")))
     if not anchor:
         differences.append("service anchor is missing")
 
     source_reports = []
     anchor_matches = 0
-    for url in referenced_urls:
+    for url in urls_to_check:
         source_report = {"url": url}
         try:
             payload, content_type = fetch(url, service_id)
@@ -232,6 +241,8 @@ def main() -> int:
             "expected_staging_items_or_tasks": args.expected_items,
             "observed_staging_items_or_tasks": len(items),
             "referenced_sources": len(referenced_urls),
+            "manifest_required_sources": len(manifest_required_urls),
+            "inspected_sources": len(urls_to_check),
             "sources_fetchable": sum(1 for row in source_reports if row.get("fetch") == "PASS"),
             "required_sources": sum(
                 1

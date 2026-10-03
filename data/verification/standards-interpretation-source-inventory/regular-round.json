@@ -7,20 +7,22 @@
   "source_family": "community_based_services_standards_interpretation",
   "audit_run": {
     "workflow": "Verify standards interpretation source inventories",
-    "run_id": 37092391799,
-    "head_sha": "5a448a94e85c617834acb0926ab1b43b926611f5",
+    "run_id": 37096989736,
+    "head_sha": "96ba3eb74bbeafe881273f22c83279b8f6c087ff",
     "verifier": "scripts/verify_standards_interpretation_sources_independent.py",
-    "report_sha256": "63235bebfb82d00512d4acc1c3899dac4938c049d0c4eb440c8b330368ebb147"
+    "report_sha256": "917f09b7775a3b9bd632847facb58bb7024d84da13d8fab4a83dfbda4a04f730"
   },
   "coverage": {
     "expected_staging_items_or_tasks": 21,
     "observed_staging_items_or_tasks": 21,
     "referenced_sources": 3,
-    "sources_fetchable": 3,
-    "required_sources": 3,
-    "required_sources_fetchable": 3,
+    "manifest_required_sources": 5,
+    "inspected_sources": 5,
+    "sources_fetchable": 5,
+    "required_sources": 5,
+    "required_sources_fetchable": 5,
     "supplemental_sources_unavailable": 0,
-    "sources_with_service_anchor": 3
+    "sources_with_service_anchor": 5
   },
   "sources": [
     {
@@ -30,6 +32,26 @@
       "bytes": 992679,
       "sha256": "55269e60bc3e1e2822025055f85422365f7049f3af01fc18551f77c19a15c4f4",
       "extracted_chars": 71590,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 1092856,
+      "sha256": "191cd5d175e532fd2ad0c0a14bd86418c0ca5d0c1744a9fc675a7bab879d4c3d",
+      "extracted_chars": 81182,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 2202467,
+      "sha256": "ddd5c5b9f25de5caba4bc6485dc018ffe14400f7eba1d845493279c4f6de8115",
+      "extracted_chars": 303050,
       "service_anchor_found": true,
       "required_for_source_inventory": true
     },
@@ -65,7 +87,7 @@
   "input_git_blob_shas_at_audit": {
     "data/services/regular-round/standards-interpretation-scope.json": "5ef1a9b9110a2cf5fbc90da8d973c8985bce153e",
     "data/services/regular-round/standards-interpretation-staging.json": "9ae3e44a53b6cf706e014c0f0f54bc3e221911d4",
-    "scripts/verify_standards_interpretation_sources_independent.py": "14e03ccfb4e5a86dc840b6595fd7f6be25dfd301"
+    "scripts/verify_standards_interpretation_sources_independent.py": "9f65e258e64bd5d719f4e586e06430728aa5e196"
   },
-  "conclusion": "Referenced required official sources were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
+  "conclusion": "All manifest-required official sources, plus referenced supplemental sources, were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
 }

@@ -43,6 +43,7 @@ def main() -> None:
         / f"{service_id}.json"
     )
 
+    scope = load(scope_path)
     report = load(args.report)
     if report.get("service_id") != service_id:
         fail("report service mismatch")
@@ -58,8 +59,35 @@ def main() -> None:
         fail("expected item/task count mismatch")
     if coverage.get("observed_staging_items_or_tasks") != args.expected_items:
         fail("observed item/task count mismatch")
+
+    manifest_required_urls = sorted(
+        row["url"]
+        for row in scope.get("source_manifest", [])
+        if isinstance(row, dict)
+        and row.get("url")
+        and row.get("required_for_source_inventory") is True
+    )
+    if coverage.get("manifest_required_sources") != len(manifest_required_urls):
+        fail("manifest required-source count mismatch")
+    if coverage.get("required_sources") != len(manifest_required_urls):
+        fail("report does not cover every manifest-required source")
     if coverage.get("required_sources_fetchable") != coverage.get("required_sources"):
         fail("not all required sources were fetchable")
+
+    source_rows = {
+        row.get("url"): row
+        for row in report.get("sources", [])
+        if isinstance(row, dict) and row.get("url")
+    }
+    missing_required = sorted(set(manifest_required_urls) - set(source_rows))
+    if missing_required:
+        fail(f"manifest-required source rows missing: {missing_required}")
+    for url in manifest_required_urls:
+        row = source_rows[url]
+        if row.get("required_for_source_inventory") is not True:
+            fail(f"manifest-required source lost required flag: {url}")
+        if row.get("fetch") != "PASS":
+            fail(f"manifest-required source not fetchable: {url}")
 
     safety = report.get("safety", {})
     forbidden_true = [
@@ -96,8 +124,9 @@ def main() -> None:
             str(VERIFIER.relative_to(ROOT)): blob(VERIFIER),
         },
         "conclusion": (
-            "Referenced required official sources were independently re-fetched and "
-            "text-extracted, and the configured service anchor was observed in the "
+            "All manifest-required official sources, plus referenced supplemental sources, "
+            "were independently re-fetched and text-extracted, and the configured "
+            "service anchor was observed in the "
             "bounded source family. This receipt does not prove item-body equality, "
             "currentness, human review, omitted-text completeness, or publication readiness."
         ),

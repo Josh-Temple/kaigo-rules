@@ -7,22 +7,34 @@
   "source_family": "community_based_services_standards_interpretation",
   "audit_run": {
     "workflow": "Verify standards interpretation source inventories",
-    "run_id": 37092391799,
-    "head_sha": "5a448a94e85c617834acb0926ab1b43b926611f5",
+    "run_id": 37096989736,
+    "head_sha": "96ba3eb74bbeafe881273f22c83279b8f6c087ff",
     "verifier": "scripts/verify_standards_interpretation_sources_independent.py",
-    "report_sha256": "557146f8623c26dd21df99a0be845b48d0160deb99f4e29feb6c2f991b90c6a2"
+    "report_sha256": "29575af32db7662d01fc9e017260be8ae708b141671462132abc510f8ae714ec"
   },
   "coverage": {
     "expected_staging_items_or_tasks": 25,
     "observed_staging_items_or_tasks": 25,
     "referenced_sources": 3,
-    "sources_fetchable": 3,
-    "required_sources": 3,
-    "required_sources_fetchable": 3,
+    "manifest_required_sources": 4,
+    "inspected_sources": 4,
+    "sources_fetchable": 4,
+    "required_sources": 4,
+    "required_sources_fetchable": 4,
     "supplemental_sources_unavailable": 0,
-    "sources_with_service_anchor": 3
+    "sources_with_service_anchor": 4
   },
   "sources": [
+    {
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 1092856,
+      "sha256": "191cd5d175e532fd2ad0c0a14bd86418c0ca5d0c1744a9fc675a7bab879d4c3d",
+      "extracted_chars": 81182,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
     {
       "url": "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
       "fetch": "PASS",
@@ -65,7 +77,7 @@
   "input_git_blob_shas_at_audit": {
     "data/services/night-homevisit/standards-interpretation-scope.json": "2f290a9f03e17da47efa2dad851c349edae94ff4",
     "data/services/night-homevisit/standards-interpretation-staging.json": "925ff43e08a5d45a217b479289eacfcf963897c3",
-    "scripts/verify_standards_interpretation_sources_independent.py": "14e03ccfb4e5a86dc840b6595fd7f6be25dfd301"
+    "scripts/verify_standards_interpretation_sources_independent.py": "9f65e258e64bd5d719f4e586e06430728aa5e196"
   },
-  "conclusion": "Referenced required official sources were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
+  "conclusion": "All manifest-required official sources, plus referenced supplemental sources, were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
 }
