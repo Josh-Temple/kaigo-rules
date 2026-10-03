@@ -1,0 +1,124 @@
+name: Materialize verified homebath Rouki 25 dataset
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/materialize-homebath-rouki25-historical.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Generate bounded dataset
+        run: python scripts/import_rouki25_historical_service.py --service-id homebath
+      - name: Independently verify live MHLW source
+        run: |
+          python scripts/verify_rouki25_historical_service_independent.py \
+            --service-id homebath \
+            --report /tmp/homebath-rouki25-independent-report.json
+      - name: Build pinned audit receipt
+        env:
+          AUDIT_RUN_ID: ${{ github.run_id }}
+          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from datetime import datetime, timezone, timedelta
+          from pathlib import Path
+
+          service_id = "homebath"
+          expected = 13
+          report_path = Path("/tmp/homebath-rouki25-independent-report.json")
+          report_bytes = report_path.read_bytes()
+          report = json.loads(report_bytes)
+          if report.get("result") != "PASS":
+              raise SystemExit("independent report is not PASS")
+          if report.get("coverage") != {"principal_items": expected, "items_passed": expected}:
+              raise SystemExit("unexpected independent report coverage")
+
+          def blob(path: str) -> str:
+              return subprocess.check_output(["git", "hash-object", path], text=True).strip()
+
+          jst = timezone(timedelta(hours=9))
+          receipt = {
+              "format_version": 1,
+              "service_id": service_id,
+              "scope": f"{service_id}-rouki25-official-historical-html-section",
+              "audit_kind": "INDEPENDENT_SERVICE_ROUKI25_HISTORICAL_SOURCE_AUDIT",
+              "audit_result": "PASS",
+              "audited_at": datetime.now(jst).date().isoformat(),
+              "audit_run": {
+                  "workflow": "Materialize verified homebath Rouki 25 dataset",
+                  "run_id": int(os.environ["AUDIT_RUN_ID"]),
+                  "head_sha": os.environ["AUDIT_HEAD_SHA"],
+                  "parser": report["parser"],
+                  "verification_report_sha256": hashlib.sha256(report_bytes).hexdigest(),
+              },
+              "source": report["source"],
+              "checks": report["checks"],
+              "coverage": report["coverage"],
+              "input_git_blob_shas_at_audit": {
+                  "data/services/homebath/rouki25-scope.json": blob(
+                      "data/services/homebath/rouki25-scope.json"
+                  ),
+                  "data/services/homebath/rouki25-historical.generated.json": blob(
+                      "data/services/homebath/rouki25-historical.generated.json"
+                  ),
+                  "scripts/verify_rouki25_historical_service_independent.py": blob(
+                      "scripts/verify_rouki25_historical_service_independent.py"
+                  ),
+              },
+              "conclusion": (
+                  "All 13 principal items in the bounded homebath Rouki 25 "
+                  "historical HTML section matched the official MHLW source "
+                  "under an independent text-extraction path."
+              ),
+              "limitations": [
+                  "This proves historical-source transcription, not current integrated notice text.",
+                  "The R6 old/new comparison remains separate amendment evidence and omitted text is not reconstructed.",
+                  "Human review and exhaustive currentness review are not complete.",
+              ],
+              "safety": {
+                  "historical_source_only": True,
+                  "current_integrated_text": False,
+                  "human_verified": False,
+                  "verified_current": False,
+                  "automatic_promotion_allowed": False,
+              },
+          }
+          Path(f"data/{service_id}-rouki25-historical-independent-audit.json").write_text(
+              json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+      - name: Recheck dataset and audit invariants
+        run: |
+          python scripts/import_rouki25_historical_service.py --service-id homebath --check
+          python scripts/validate_rouki25_historical_service_audit.py --service-id homebath --expected-items 13
+      - name: Commit verified outputs to PR branch
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/services/homebath/rouki25-historical.generated.json data/homebath-rouki25-historical-independent-audit.json
+          if git diff --cached --quiet; then
+            echo "Verified outputs already materialized."
+            exit 0
+          fi
+          git commit -m "Materialize verified homebath Rouki 25 historical dataset"
+          git push origin "HEAD:${{ github.head_ref }}"
