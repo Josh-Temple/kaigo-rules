@@ -43,12 +43,12 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(cell["item_body_verification"]["state"], "PASS")
         self.assertEqual(cell["currentness"]["state"], "NOT_ESTABLISHED")
 
-    def test_route_exposure_requires_service_scope(self):
-        cell = self.cell("dayrehab", "national_qa")
+    def test_direct_qa_mapping_defines_scope_without_enabling_route(self):
+        cell = self.cell("shortstay-medical", "national_qa")
         self.assertEqual(cell["corpus_availability"]["state"], "AVAILABLE")
-        self.assertEqual(cell["service_scope"]["state"], "SCOPE_NOT_DEFINED")
-        self.assertEqual(cell["route_exposure"]["state"], "NOT_ESTABLISHED")
-        self.assertEqual(cell["publication"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(cell["service_scope"]["state"], "SCOPE_DEFINED")
+        self.assertEqual(cell["route_exposure"]["state"], "BLOCKED")
+        self.assertEqual(cell["publication"]["state"], "BLOCKED")
 
     def test_projection_is_fail_closed(self):
         policy = self.matrix["policy"]

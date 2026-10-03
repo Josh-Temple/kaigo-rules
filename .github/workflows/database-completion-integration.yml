@@ -1,0 +1,76 @@
+name: Database completion integration materializer
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "scripts/**"
+      - "tests/**"
+      - "package.json"
+      - ".github/workflows/database-completion-integration.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Independently verify combined shared corpora and relation lanes
+        run: |
+          python scripts/verify_egov_content_independent.py --report /tmp/egov.json
+          python scripts/record_egov_content_independent_audit.py --report /tmp/egov.json --run-id "$GITHUB_RUN_ID" --head-sha "$GITHUB_SHA"
+          python scripts/verify_relation_semantics_independent.py --report /tmp/relation-semantic.json
+          python scripts/build_relation_semantic_independent_audit.py --verification-report /tmp/relation-semantic.json --run-id "$GITHUB_RUN_ID" --head-sha "$GITHUB_SHA"
+          python scripts/verify_careact_internal_relations_independent.py --report /tmp/careact-internal.json
+          python scripts/build_careact_internal_relation_independent_audit.py --verification-report /tmp/careact-internal.json --run-id "$GITHUB_RUN_ID" --head-sha "$GITHUB_SHA"
+          python scripts/verify_cross_layer_source_chains_independent.py --report /tmp/cross-layer.json
+          python scripts/build_cross_layer_source_chain_independent_audit.py --verification-report /tmp/cross-layer.json --run-id "$GITHUB_RUN_ID" --head-sha "$GITHUB_SHA"
+          python scripts/verify_remuneration_delegation_relations.py --report /tmp/remuneration-delegation.json
+          python scripts/build_remuneration_delegation_relation_independent_audit.py --verification-report /tmp/remuneration-delegation.json --run-id "$GITHUB_RUN_ID" --head-sha "$GITHUB_SHA"
+      - name: Regenerate dependent projections
+        run: |
+          python scripts/build_service_catalog.py
+          python scripts/build_shared_standards_service_relations.py
+          python scripts/build_relation_verification_queue.py
+          python scripts/build_relation_human_review_packet.py
+          python scripts/build_relation_human_review_evidence_pack.py
+          python scripts/build_verification_registry.py
+          python scripts/build_product_value_snapshot.py
+          python scripts/build_database_coverage_matrix.py
+      - name: Validate integrated generated state
+        run: |
+          python scripts/validate_shared_standards.py
+          python scripts/validate_qa_service_mapping.py
+          python scripts/validate_egov_content_independent_audit.py
+          python scripts/validate_relation_semantic_independent_audit.py
+          python scripts/validate_careact_internal_relation_independent_audit.py
+          python scripts/validate_cross_layer_source_chain_independent_audit.py
+          python scripts/validate_remuneration_delegation_relation_independent_audit.py
+          python scripts/validate_database_coverage_matrix.py
+      - name: Upload regenerated integration artifacts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: database-completion-integration-artifacts
+          retention-days: 7
+          path: |
+            data/services/catalog.generated.json
+            data/shared/standards/service-relations.generated.json
+            data/egov-content-independent-audit.json
+            data/relation-semantic-independent-audit.json
+            data/careact-internal-relation-independent-audit.json
+            data/cross-layer-source-chain-independent-audit.json
+            data/remuneration-delegation-relation-independent-audit.json
+            data/relation-verification-queue.json
+            data/relation-human-review-packet.json
+            data/relation-human-review-evidence-pack.json
+            data/verification-registry.json
+            data/product-value-snapshot-v0.1.json
+            data/database-coverage-matrix.generated.json
+            docs/database-coverage-summary.generated.md

@@ -195,6 +195,7 @@ def build_cell(
     registry: dict,
     standards_gate: dict | None,
     relation_queue: dict,
+    shared_context: dict,
 ) -> dict:
     service_id = service["service_id"]
     scope_files = config.get("scope_files") or {}
@@ -211,6 +212,14 @@ def build_cell(
         for layer in layers
     )
     scope_defined = bool(declared_scope or layer_scoped)
+    mapped_standards_corpus = shared_context["standards_map"].get(service_id)
+    if family["id"] == "governing_standards_ordinance":
+        scope_state_row = shared_context["standards_scope_states"].get(service_id, {})
+        scope_defined = scope_state_row.get("scope_status") == "SCOPE_DEFINED"
+    if family["id"] == "national_qa" and service_id in shared_context["qa_direct_service_ids"]:
+        scope_defined = True
+        if "qa_service_mapping" not in declared_scope:
+            declared_scope.append("qa_service_mapping")
 
     ingestion_rows = [
         ingestion_layers[key]
@@ -221,7 +230,14 @@ def build_cell(
         str(row.get("status")) for row in ingestion_rows if row.get("status") is not None
     })
 
-    if shared_layers:
+    if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus:
+        corpus_state = "AVAILABLE"
+        corpus_kind = "SHARED"
+        corpus_evidence = [
+            "data/shared/standards/manifest.json",
+            f"data/shared/standards/service-ordinance-map.json#{service_id}",
+        ]
+    elif shared_layers:
         corpus_state = "AVAILABLE"
         corpus_kind = "SHARED"
         corpus_evidence = [f"data/verification-registry.json#{layer['id']}" for layer in shared_layers]
@@ -242,7 +258,10 @@ def build_cell(
         corpus_evidence = []
 
     scope_state = "SCOPE_DEFINED" if scope_defined else "SCOPE_NOT_DEFINED"
-    scope_evidence = sorted(str(scope_files[key]) for key in declared_scope)
+    scope_evidence = sorted(
+        "data/qa-service-mapping.json" if key == "qa_service_mapping" else str(scope_files[key])
+        for key in declared_scope
+    )
     if layer_scoped:
         scope_evidence.extend(
             f"data/verification-registry.json#{layer['id']}"
@@ -252,6 +271,8 @@ def build_cell(
         scope_evidence = sorted(set(scope_evidence))
 
     layer_present = bool(layers)
+    if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus:
+        layer_present = True
     ingestion_state = normalize_ingestion(
         raw_ingestion[0] if len(raw_ingestion) == 1 else (" | ".join(raw_ingestion) if raw_ingestion else None),
         scope_defined,
@@ -261,12 +282,19 @@ def build_cell(
     content_raw = raw_values(layers, ("content_verification", "status"))
     currentness_raw = raw_values(layers, ("currentness", "status"))
     human_raw = raw_values(layers, ("human_review", "status"))
+    if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus and mapped_standards_corpus != "ordinance37":
+        audit_row = shared_context["standards_audit"].get(mapped_standards_corpus)
+        content_raw = [audit_row.get("result")] if audit_row else []
+        currentness_raw = []
+        human_raw = []
 
     item_body_evidence = [
         str(layer.get("content_verification", {}).get("evidence"))
         for layer in layers
         if layer.get("content_verification", {}).get("evidence")
     ]
+    if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus and mapped_standards_corpus != "ordinance37":
+        item_body_evidence = ["data/shared/standards/independent-audit.json"]
     currentness_evidence = [
         str(layer.get("currentness", {}).get("evidence"))
         for layer in layers
@@ -330,6 +358,7 @@ def build_cell(
         "corpus_availability": {
             "state": corpus_state,
             "kind": corpus_kind,
+            "corpus_id": mapped_standards_corpus if family["id"] == "governing_standards_ordinance" else None,
             "evidence": sorted(set(corpus_evidence)),
         },
         "service_scope": {
@@ -389,6 +418,21 @@ def build() -> dict:
     gate_path = ROOT / "data/verification/standards-interpretation-gates.json"
     gates = load("data/verification/standards-interpretation-gates.json") if gate_path.exists() else {"services": []}
     gates_by_service = {row["service_id"]: row for row in gates.get("services", [])}
+    standards_map_data = load("data/shared/standards/service-ordinance-map.json")
+    standards_relations = load("data/shared/standards/service-relations.generated.json")
+    standards_audit_data = load("data/shared/standards/independent-audit.json")
+    qa_mapping = load("data/qa-service-mapping.json")
+    shared_context = {
+        "standards_map": {row["service_id"]: row["corpus_id"] for row in standards_map_data.get("relations", [])},
+        "standards_scope_states": {row["service_id"]: row for row in standards_relations.get("service_scope_states", [])},
+        "standards_audit": {row["id"]: row for row in standards_audit_data.get("checks", [])},
+        "qa_direct_service_ids": {
+            row["catalog_mapping"]["service_id"]
+            for row in qa_mapping.get("codes", [])
+            if row.get("classification") == "INDIVIDUAL_SERVICE"
+            and row.get("catalog_mapping", {}).get("state") == "MAPPED_CURRENT_CATALOG"
+        },
+    }
 
     manifest_ids = [row["service_id"] for row in manifest.get("services", [])]
     catalog_ids = [row["service_id"] for row in catalog.get("services", [])]
@@ -406,6 +450,7 @@ def build() -> dict:
                 registry,
                 gates_by_service.get(service["service_id"]),
                 relation_queue,
+                shared_context,
             )
             for family in SOURCE_FAMILIES
         ]
@@ -478,6 +523,11 @@ def build() -> dict:
             "data/verification-registry.json",
             "data/verification/standards-interpretation-gates.json",
             "data/relation-verification-queue.json",
+            "data/shared/standards/manifest.json",
+            "data/shared/standards/service-ordinance-map.json",
+            "data/shared/standards/service-relations.generated.json",
+            "data/shared/standards/independent-audit.json",
+            "data/qa-service-mapping.json",
         ],
         "source_families": [
             {"id": family["id"], "label": family["label"]}
