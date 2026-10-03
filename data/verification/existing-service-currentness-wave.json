@@ -1,0 +1,314 @@
+{
+  "format_version": 1,
+  "audit_kind": "EXISTING_SERVICE_CURRENTNESS_WAVE",
+  "verified_date": "2026-10-03",
+  "base_main_sha": "b22b2d4d5279932c1273ff55c157819fbae4f7d7",
+  "purpose": "Strengthen currentness evidence for already-ingested service-specific cells without changing service scope or conflating item-body verification, currentness, human review, publication, or route exposure.",
+  "target_selection": {
+    "projection": "data/database-coverage-matrix.generated.json",
+    "rule": "INGESTED + item-body evidence present + currentness non-PASS + service-specific corpus or service-specific ingestion marker",
+    "target_cells": 18,
+    "services": [
+      "care-management",
+      "community-dayservice",
+      "dayrehab",
+      "dayservice",
+      "homebath",
+      "homecaremanagement",
+      "homenursing",
+      "homerehab",
+      "homevisit",
+      "night-homevisit",
+      "preventive-support",
+      "regular-round",
+      "shortstay-life"
+    ],
+    "service_count": 13
+  },
+  "official_source_observations": [
+    {
+      "id": "mhlw-kaigo-info-vol1545",
+      "url": "https://www.mhlw.go.jp/content/001755179.pdf",
+      "parent_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "observed_date": "2026-10-03",
+      "listed_date": "2026-10-02",
+      "volume": 1545,
+      "classification": "POST_R6_DISCOVERY_SUPPORTING_ONLY",
+      "observation": "Vol.1545 concerns the FY2025 long-term care insurance administrative survey. No configured 老企第25号/老企第36号 target term was identified in the official PDF.",
+      "negative_discovery_proves_no_change": false
+    },
+    {
+      "id": "mhlw-rouki25-lawdb-html",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "classification": "HISTORICAL_OR_STALE_OFFICIAL_HTML_NOT_CURRENT_INTEGRATED_TEXT",
+      "observation": "The official law-database HTML contains historical terminology and expired transitional provisions; it is retained only as historical source evidence and is not treated as 2026 integrated current text.",
+      "currentness_established": false
+    },
+    {
+      "id": "mhlw-r6-reform-index",
+      "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "classification": "AMENDMENT_DISCOVERY_INDEX",
+      "observation": "The R6 page provides official routes to interpretation-notice and fee-guidance amendment materials, but comparison/excerpt materials do not by themselves provide exhaustive integrated current text.",
+      "currentness_established": false
+    },
+    {
+      "id": "mhlw-r8-reform-index",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "classification": "POST_R6_AMENDMENT_DISCOVERY_INDEX",
+      "observation": "The R8 page identifies remuneration and fee-guidance amendments. Absence of an 老企第25号 listing is supporting-only and is not treated as proof of no amendment.",
+      "negative_discovery_proves_no_change": false
+    },
+    {
+      "id": "mhlw-rouki36-lawdb-html",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4378&dataType=1&pageNo=1",
+      "classification": "HISTORICAL_OR_STALE_OFFICIAL_HTML_NOT_CURRENT_INTEGRATED_TEXT",
+      "observation": "The official law-database HTML is historical source text and is not used as a 2026 consolidated 老企第36号 text.",
+      "currentness_established": false
+    },
+    {
+      "id": "egov-ordinance37-live-reparse",
+      "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+      "classification": "LIVE_CURRENT_LAW_SOURCE_WITH_EXISTING_INDEPENDENT_REPARSE",
+      "repository_evidence": "data/dayrehab-ordinance37-independent-audit.json",
+      "current_revision_id": "411M50000100037_20250401_506M60000100164",
+      "observation": "The existing independent audit dated 2026-10-03 matched the live e-Gov XML for the dayrehab slice. Its own safety boundary does not assert VERIFIED_CURRENT, so this wave links the evidence but does not promote currentness."
+    },
+    {
+      "id": "mhlw-dayrehab-remuneration-current-source",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+      "classification": "OFFICIAL_CURRENT_CONSOLIDATED_REMUNERATION_SOURCE",
+      "repository_evidence": "data/dayrehab-remuneration-independent-audit.json",
+      "observation": "The repository audit is intentionally bounded to inventory/rate markers; therefore source availability alone does not establish currentness for every ingested item.",
+      "currentness_established": false
+    },
+    {
+      "id": "mhlw-dayrehab-fee-guidance-amendments",
+      "urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+        "https://www.mhlw.go.jp/content/12404000/001682729.pdf"
+      ],
+      "classification": "OFFICIAL_AMENDMENT_COMPARISONS_NOT_INTEGRATED_TEXT",
+      "repository_evidence": "data/dayrehab-fee-guidance-independent-audit.json",
+      "observation": "R6/R8 materials verify bounded slots and amendment scope but contain omissions and do not establish a full current integrated text.",
+      "currentness_established": false
+    }
+  ],
+  "cells": [
+    {
+      "service_id": "dayservice",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "BLOCKED",
+      "currentness_raw_before": [
+        "HOLD"
+      ],
+      "currentness_after": "BLOCKED",
+      "disposition": "PREEXISTING_EVIDENCE_CONFIRMED_STATE_MAINTAINED"
+    },
+    {
+      "service_id": "dayservice",
+      "source_family": "fee_calculation_guidance",
+      "item_body_state": "PASS",
+      "currentness_before": "PARTIAL",
+      "currentness_raw_before": [
+        "MONITORED_NOT_HUMAN_VERIFIED"
+      ],
+      "currentness_after": "PARTIAL",
+      "disposition": "ROUKI36_WATCH_EVIDENCE_ADDED_PARTIAL_MAINTAINED"
+    },
+    {
+      "service_id": "homevisit",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP_HISTORICAL_SOURCE_ONLY"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "ROUKI25_FAMILY_CURRENTNESS_EVIDENCE_ADDED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "homebath",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP_HISTORICAL_SOURCE_ONLY"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "ROUKI25_FAMILY_CURRENTNESS_EVIDENCE_ADDED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "homenursing",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP_HISTORICAL_SOURCE_ONLY"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "ROUKI25_FAMILY_CURRENTNESS_EVIDENCE_ADDED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "homerehab",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP_HISTORICAL_SOURCE_ONLY"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "ROUKI25_FAMILY_CURRENTNESS_EVIDENCE_ADDED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "homecaremanagement",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP_HISTORICAL_SOURCE_ONLY"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "ROUKI25_FAMILY_CURRENTNESS_EVIDENCE_ADDED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "dayrehab",
+      "source_family": "governing_standards_ordinance",
+      "item_body_state": "PASS",
+      "currentness_before": "PARTIAL",
+      "currentness_raw_before": [
+        "LIVE_SOURCE_REPARSE_SCHEDULED"
+      ],
+      "currentness_after": "PARTIAL",
+      "disposition": "LIVE_EGOV_REPARSE_EVIDENCE_LINKED_PARTIAL_MAINTAINED"
+    },
+    {
+      "service_id": "dayrehab",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP_HISTORICAL_SOURCE_ONLY"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "ROUKI25_FAMILY_CURRENTNESS_EVIDENCE_ADDED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "dayrehab",
+      "source_family": "remuneration_notification",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "BOUNDED_OFFICIAL_REMUNERATION_EVIDENCE_LINKED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "dayrehab",
+      "source_family": "delegated_remuneration_criteria",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "BOUNDED_OFFICIAL_REMUNERATION_EVIDENCE_LINKED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "dayrehab",
+      "source_family": "fee_calculation_guidance",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "BOUNDED_OFFICIAL_GUIDANCE_EVIDENCE_LINKED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "shortstay-life",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "GAP_HISTORICAL_SOURCE_ONLY"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "ROUKI25_FAMILY_CURRENTNESS_EVIDENCE_ADDED_GAP_MAINTAINED"
+    },
+    {
+      "service_id": "community-dayservice",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "NOT_ESTABLISHED"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "PREEXISTING_EVIDENCE_CONFIRMED_STATE_MAINTAINED"
+    },
+    {
+      "service_id": "regular-round",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "NOT_ESTABLISHED"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "PREEXISTING_EVIDENCE_CONFIRMED_STATE_MAINTAINED"
+    },
+    {
+      "service_id": "night-homevisit",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "NOT_ESTABLISHED"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "PREEXISTING_EVIDENCE_CONFIRMED_STATE_MAINTAINED"
+    },
+    {
+      "service_id": "care-management",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PASS",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "NOT_ESTABLISHED"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "PREEXISTING_EVIDENCE_CONFIRMED_STATE_MAINTAINED"
+    },
+    {
+      "service_id": "preventive-support",
+      "source_family": "standards_interpretation_notice",
+      "item_body_state": "PARTIAL",
+      "currentness_before": "NOT_ESTABLISHED",
+      "currentness_raw_before": [
+        "NOT_ESTABLISHED"
+      ],
+      "currentness_after": "NOT_ESTABLISHED",
+      "disposition": "PREEXISTING_EVIDENCE_CONFIRMED_STATE_MAINTAINED"
+    }
+  ],
+  "summary": {
+    "target_cells": 18,
+    "currentness_established": 0,
+    "hold_or_gap_maintained": 18,
+    "source_disappeared": 0,
+    "superseded_confirmed": 0,
+    "stale_historical_official_pages_confirmed": 2,
+    "unresolved": 18
+  },
+  "safety": {
+    "service_scope_changed": false,
+    "item_body_promoted": false,
+    "currentness_auto_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_enabled": false,
+    "negative_search_used_as_proof": false
+  }
+}
