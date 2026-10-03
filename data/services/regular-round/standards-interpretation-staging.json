@@ -1,0 +1,454 @@
+{
+  "format_version": 1,
+  "service_id": "regular-round",
+  "layer": "standards_interpretation",
+  "source_family": "community_based_services_standards_interpretation",
+  "dataset_role": "WORK_CONTROL_ACCEPTED_STAGING_ADAPTER",
+  "publication_state": "NOT_PUBLIC",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-07-B2_v1.md",
+    "detail_task_range": "KR2-07-B001..KR2-07-B021",
+    "rollup": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR2-07-E002_v1.md"
+  },
+  "source_policy": {
+    "summaries_are_not_official_notice_text": true,
+    "source_locator_must_be_reverified_before_publication": true,
+    "omitted_text_must_not_be_inferred": true,
+    "current_integrated_text_not_claimed": true
+  },
+  "item_count": 21,
+  "items": [
+    {
+      "id": "regular-round.notice.001",
+      "task_id": "KR2-07-B001",
+      "path": "第三/一",
+      "number": "一",
+      "heading": "定期巡回・随時対応型訪問介護看護",
+      "parent": "第3 地域密着型サービス",
+      "content_summary": "基本方針、人員、設備、運営、連携型事業の5区分からなるサービス通知節。現行基準省令では第3条の2〜第3条の42に対応する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／一 定期巡回・随時対応型訪問介護看護",
+      "extraction_method": "令和6年度厚労省改正資料の節位置と現行基準省令の第一章の二を突合し、サービス節の範囲を構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B001-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.002",
+      "task_id": "KR2-07-B002",
+      "path": "第三/一/1",
+      "number": "1",
+      "heading": "基本方針",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護",
+      "content_summary": "現行基準第3条の2・第3条の3に対応。利用者の尊厳を保持し、居宅で自立した生活を継続できるよう、定期巡回・随時対応・随時訪問・訪問看護を組み合わせて日中夜間を通じた支援を行う趣旨を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／1 基本方針 > （令和6年度改正資料では略）",
+      "extraction_method": "令和6年度資料で略記された範囲を、現行基準省令の基本方針等と厚労省旧版一次資料の通知構造で確認",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B002-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.003",
+      "task_id": "KR2-07-B003",
+      "path": "第三/一/2/(1)",
+      "number": "(1)",
+      "heading": "定期巡回・随時対応型訪問介護看護従業者の員数（基準第3条の4）",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/2 人員に関する基準",
+      "content_summary": "①オペレーター、②定期巡回サービスを行う訪問介護員等、③随時訪問サービスを行う訪問介護員等、④訪問看護サービスを行う看護師等、⑤計画作成責任者の配置・資格・兼務等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／2 人員に関する基準 > (1) （略）",
+      "extraction_method": "厚労省旧版一次資料で(1)の見出しと①〜⑤を確認し、現行基準第3条の4と令和6年度資料の略記位置を突合",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B003-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.004",
+      "task_id": "KR2-07-B004",
+      "path": "第三/一/2/(2)",
+      "number": "(2)",
+      "heading": "管理者（基準第3条の5）",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/2 人員に関する基準",
+      "content_summary": "管理者は常勤・専従を原則とし、事業所管理に支障がない場合の兼務を認める。令和6年度改正では、他事業所等との兼務はサービス提供場面の事象把握や従業者・業務の一元管理、指揮命令に支障がないこと等を踏まえて判断する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／2 人員に関する基準 > (2) 管理者（基準第3条の5）",
+      "extraction_method": "令和6年度厚労省改正資料の新欄と現行基準第3条の5を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B004-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.005",
+      "task_id": "KR2-07-B005",
+      "path": "第三/一/3",
+      "number": "3",
+      "heading": "設備等に関する基準（基準第3条の6）",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護",
+      "content_summary": "事業運営に必要な広さを有する専用区画、サービス提供に必要な設備・備品、利用者からの通報を受け付ける通信機器等を扱う。厚労省旧版通知では、利用者情報を随時把握できる通信・情報管理体制やケアコール端末等の留意事項が説明される。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／3 設備等に関する基準（基準第3条の6） > （令和6年度改正資料では略）",
+      "extraction_method": "令和6年度資料で略記された設備節を、現行基準第3条の6と厚労省旧版一次資料の設備等に関する基準で復元",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B005-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.006",
+      "task_id": "KR2-07-B006",
+      "path": "第三/一/4/(1)",
+      "number": "(1)",
+      "heading": "内容及び手続の説明及び同意",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の7周辺に対応する運営事項。令和6年度改正資料では(1)〜(14)が略記されるため、現行基準省令と厚労省旧版通知構造で項目scopeを復元した。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (1)〜(14) （略）",
+      "extraction_method": "令和6年度資料の略記範囲について、厚労省旧版一次資料の項目順序と現行基準第3条の7〜第3条の20を突合して見出しscopeを復元",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B006-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.007",
+      "task_id": "KR2-07-B007",
+      "path": "第三/一/4/(15)",
+      "number": "(15)",
+      "heading": "指定定期巡回・随時対応型訪問介護看護の基本的取扱方針及び具体的取扱方針",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の21・第3条の22に対応。定期巡回・訪問看護は目標を設定して計画的に行い、随時対応・随時訪問は通報へ適切に対応する。令和6年度改正では身体的拘束等の原則禁止と、緊急やむを得ず実施する場合の記録等が加わっている。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (15) 指定定期巡回・随時対応型訪問介護看護の基本的取扱方針及び具体的取扱方針",
+      "extraction_method": "令和6年度改正資料の(15)新欄と現行基準第3条の21・第3条の22を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B007-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.008",
+      "task_id": "KR2-07-B008",
+      "path": "第三/一/4/(16)",
+      "number": "(16)",
+      "heading": "主治医との関係（基準第3条の23）",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "主治医の指示に基づく訪問看護、計画・報告書の提出等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (16)〜(19) （略）",
+      "extraction_method": "令和6年度資料で略記された(16)〜(19)を、現行基準第3条の23〜第3条の26と厚労省旧版通知構造で復元",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B008-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.009",
+      "task_id": "KR2-07-B009",
+      "path": "第三/一/4/(20)",
+      "number": "(20)",
+      "heading": "管理者等の責務",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の28に対応。管理者による従業者・業務の一元管理と必要な指揮命令、計画作成責任者による利用申込調整等のサービス内容管理を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (20) 管理者等の責務",
+      "extraction_method": "令和6年度資料の(20)と現行基準第3条の28を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B009-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.010",
+      "task_id": "KR2-07-B010",
+      "path": "第三/一/4/(21)",
+      "number": "(21)",
+      "heading": "運営規程",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の29に対応。事業目的・運営方針、従業者、営業日・時間、サービス内容・利用料、通常の実施地域、緊急時対応、合鍵管理、虐待防止等の重要事項を定める。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (21) （略）",
+      "extraction_method": "令和6年度資料で略記された(21)を、現行基準第3条の29と厚労省旧版通知の項目順で復元",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B010-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.011",
+      "task_id": "KR2-07-B011",
+      "path": "第三/一/4/(22)",
+      "number": "(22)",
+      "heading": "勤務体制の確保等",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の30に対応。事業所ごとの勤務体制、従業者によるサービス提供、研修機会の確保等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (22) 勤務体制の確保等",
+      "extraction_method": "令和6年度改正資料の対象項目と現行基準省令を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B011-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.012",
+      "task_id": "KR2-07-B012",
+      "path": "第三/一/4/(23)",
+      "number": "(23)",
+      "heading": "業務継続計画の策定等",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の30の2に対応。感染症・災害時にもサービスを継続・早期再開できる業務継続計画、研修・訓練、定期的見直し等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (23) 業務継続計画の策定等",
+      "extraction_method": "令和6年度改正資料の対象項目と現行基準省令を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B012-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.013",
+      "task_id": "KR2-07-B013",
+      "path": "第三/一/4/(24)",
+      "number": "(24)",
+      "heading": "衛生管理等",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の31に対応。従業者の清潔保持・健康管理、設備・備品の衛生管理、感染症の予防・まん延防止等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (24) 衛生管理等",
+      "extraction_method": "令和6年度改正資料の対象項目と現行基準省令を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B013-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.014",
+      "task_id": "KR2-07-B014",
+      "path": "第三/一/4/(25)",
+      "number": "(25)",
+      "heading": "掲示",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の32に対応。運営規程概要・勤務体制等の重要事項の掲示・閲覧と、原則としてウェブサイト掲載を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (25) 掲示",
+      "extraction_method": "令和6年度改正資料の対象項目と現行基準省令を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B014-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.015",
+      "task_id": "KR2-07-B015",
+      "path": "第三/一/4/(26)",
+      "number": "(26)",
+      "heading": "秘密保持等",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の33に対応。従業者・退職者の秘密保持、サービス担当者会議等で個人情報を用いる場合の同意等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (26)・(27) （略）",
+      "extraction_method": "令和6年度資料で略記された(26)(27)を、現行基準第3条の33・第3条の34と厚労省旧版通知構造で復元",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B015-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.016",
+      "task_id": "KR2-07-B016",
+      "path": "第三/一/4/(28)",
+      "number": "(28)",
+      "heading": "苦情処理",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の36に対応。苦情受付窓口等の必要措置、苦情内容の記録、市町村・国保連の調査や指導への協力・改善を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (28) 苦情処理",
+      "extraction_method": "令和6年度資料の(28)と現行基準第3条の36を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B016-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.017",
+      "task_id": "KR2-07-B017",
+      "path": "第三/一/4/(29)",
+      "number": "(29)",
+      "heading": "地域との連携等",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の37に対応。介護・医療連携推進会議を概ね6月に1回以上開催し、提供状況の報告・評価、要望・助言を受けること、記録・公表、市町村事業への協力等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (29) 地域との連携等",
+      "extraction_method": "令和6年度資料の(29)と現行基準第3条の37を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B017-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.018",
+      "task_id": "KR2-07-B018",
+      "path": "第三/一/4/(30)",
+      "number": "(30)",
+      "heading": "事故発生時の対応",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の38に対応。事故時の市町村・家族・居宅介護支援事業者等への連絡、必要措置、事故記録、損害賠償を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (30) （略）",
+      "extraction_method": "令和6年度資料で略記された(30)を、現行基準第3条の38と厚労省旧版通知構造で復元",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B018-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.019",
+      "task_id": "KR2-07-B019",
+      "path": "第三/一/4/(31)",
+      "number": "(31)",
+      "heading": "虐待の防止",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の38の2に対応。虐待防止委員会の定期開催と周知、指針整備、研修、担当者配置を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (31) 虐待の防止",
+      "extraction_method": "令和6年度資料の(31)と現行基準第3条の38の2を突合",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B019-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.020",
+      "task_id": "KR2-07-B020",
+      "path": "第三/一/4/(32)",
+      "number": "(32)",
+      "heading": "会計の区分",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/4 運営に関する基準",
+      "content_summary": "現行基準第3条の39に対応。事業所ごとの経理区分と、定期巡回・随時対応型訪問介護看護事業の会計を他事業の会計から区分する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／4 運営に関する基準 > (32)・(33) （略）",
+      "extraction_method": "令和6年度資料で略記された(32)(33)を、現行基準第3条の39・第3条の40と厚労省旧版通知構造で復元",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B020-LIB-V1"
+    },
+    {
+      "id": "regular-round.notice.021",
+      "task_id": "KR2-07-B021",
+      "path": "第三/一/5/(1)",
+      "number": "(1)",
+      "heading": "連携型指定定期巡回・随時対応型訪問介護看護の基準",
+      "parent": "第3 地域密着型サービス/一 定期巡回・随時対応型訪問介護看護/5 連携型指定定期巡回・随時対応型訪問介護看護の事業",
+      "content_summary": "現行基準第3条の41に対応。連携型では訪問看護サービスを連携指定訪問看護事業所が担うため、訪問看護に係る一部の人員・運営規定が適用除外となる。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護／5 連携型指定定期巡回・随時対応型訪問介護看護の事業 > （令和6年度改正資料では略）",
+      "extraction_method": "令和6年度資料で全体が略記された連携型節を、現行基準第3条の41・第3条の42と厚労省旧版一次資料の(1)(2)で復元",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-07-B021-LIB-V1"
+    }
+  ]
+}
