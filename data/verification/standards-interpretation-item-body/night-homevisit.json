@@ -751,6 +751,8 @@
     ],
     "currentness_promoted": false,
     "human_review_promoted": false,
-    "publication_promoted": false
+    "publication_promoted": false,
+    "source_inventory_manifest_required_sources": 5,
+    "source_inventory_required_sources_fetchable": 5
   }
 }
