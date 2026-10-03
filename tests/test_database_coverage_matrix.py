@@ -33,7 +33,7 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         )
 
     def test_shared_corpus_does_not_imply_service_scope(self):
-        cell = self.cell("community-dayservice", "long_term_care_insurance_act")
+        cell = self.cell("community-dayservice", "care_insurance_act")
         self.assertEqual(cell["corpus_availability"]["state"], "AVAILABLE")
         self.assertEqual(cell["corpus_availability"]["kind"], "SHARED")
         self.assertEqual(cell["service_scope"]["state"], "SCOPE_NOT_DEFINED")
