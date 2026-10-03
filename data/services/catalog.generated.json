@@ -2,6 +2,58 @@
   "format_version": 1,
   "generated_by": "scripts/build_service_catalog.py",
   "default_service_id": "dayservice",
+  "service_universe": {
+    "as_of": "2026-10-03",
+    "basis": "CURRENT_LONG_TERM_CARE_INSURANCE_SERVICE_CATEGORIES",
+    "current_service_count": 39,
+    "source_urls": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=1",
+      "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html",
+      "https://www.mhlw.go.jp/content/12301000/001544646.pdf",
+      "https://www.mhlw.go.jp/content/12300000/001470543.pdf"
+    ],
+    "notes": [
+      "Current services are kept separate from abolished/transferred historical services and non-service special benefit/program categories.",
+      "Service registration does not imply source ingestion, applicability verification, currentness, human review, publication readiness, or route exposure."
+    ]
+  },
+  "historical_services": [
+    {
+      "service_id": "care-medical-facility",
+      "label": "介護療養型医療施設",
+      "status": "HISTORICAL_ABOLISHED",
+      "ended_on": "2024-03-31",
+      "note": "経過措置期限到来により廃止。現行39サービスには含めない。"
+    },
+    {
+      "service_id": "preventive-homevisit",
+      "label": "介護予防訪問介護",
+      "status": "HISTORICAL_TRANSFERRED_TO_COMMUNITY_SUPPORT_PROGRAM",
+      "ended_on": "2018-03-31",
+      "note": "予防給付としては終了し、総合事業の訪問型サービスへ移行。"
+    },
+    {
+      "service_id": "preventive-dayservice",
+      "label": "介護予防通所介護",
+      "status": "HISTORICAL_TRANSFERRED_TO_COMMUNITY_SUPPORT_PROGRAM",
+      "ended_on": "2018-03-31",
+      "note": "予防給付としては終了し、総合事業の通所型サービスへ移行。"
+    }
+  ],
+  "special_categories": [
+    {
+      "category_id": "housing-renovation",
+      "label": "居宅介護・介護予防住宅改修",
+      "status": "SPECIAL_BENEFIT_NOT_ARTICLE8_SERVICE",
+      "note": "介護保険給付上の重要対象だが、介護保険法第8条・第8条の2のサービス定義とは別枠で管理する。"
+    },
+    {
+      "category_id": "community-support-program",
+      "label": "介護予防・日常生活支援総合事業",
+      "status": "SPECIAL_MUNICIPAL_PROGRAM",
+      "note": "市町村事業であり、全国一律の単一サービスとして現行39サービスに混在させない。"
+    }
+  ],
   "services": [
     {
       "service_id": "dayservice",
@@ -53,7 +105,8 @@
         "ordinance37",
         "care-insurance-act",
         "qa-corpus"
-      ]
+      ],
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homevisit",
@@ -102,7 +155,8 @@
       },
       "verification_layer_ids": [
         "rouki25-homevisit"
-      ]
+      ],
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homebath",
@@ -135,7 +189,8 @@
       },
       "verification_layer_ids": [
         "rouki25-homebath"
-      ]
+      ],
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homenursing",
@@ -170,7 +225,8 @@
       },
       "verification_layer_ids": [
         "rouki25-homenursing"
-      ]
+      ],
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homerehab",
@@ -205,7 +261,8 @@
       },
       "verification_layer_ids": [
         "rouki25-homerehab"
-      ]
+      ],
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homecaremanagement",
@@ -240,7 +297,8 @@
       },
       "verification_layer_ids": [
         "rouki25-homecaremanagement"
-      ]
+      ],
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "dayrehab",
@@ -304,7 +362,8 @@
         "rouki25-dayrehab",
         "remuneration-dayrehab",
         "fee-guidance-dayrehab"
-      ]
+      ],
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "shortstay-life",
@@ -340,7 +399,8 @@
       },
       "verification_layer_ids": [
         "rouki25-shortstay-life"
-      ]
+      ],
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "community-dayservice",
@@ -384,7 +444,8 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json"
         }
       },
-      "verification_layer_ids": []
+      "verification_layer_ids": [],
+      "service_class": "COMMUNITY_BASED_SERVICE"
     },
     {
       "service_id": "regular-round",
@@ -428,7 +489,8 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/regular-round.json"
         }
       },
-      "verification_layer_ids": []
+      "verification_layer_ids": [],
+      "service_class": "COMMUNITY_BASED_SERVICE"
     },
     {
       "service_id": "night-homevisit",
@@ -472,7 +534,8 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/night-homevisit.json"
         }
       },
-      "verification_layer_ids": []
+      "verification_layer_ids": [],
+      "service_class": "COMMUNITY_BASED_SERVICE"
     },
     {
       "service_id": "care-management",
@@ -516,7 +579,8 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/care-management.json"
         }
       },
-      "verification_layer_ids": []
+      "verification_layer_ids": [],
+      "service_class": "CARE_MANAGEMENT"
     },
     {
       "service_id": "preventive-support",
@@ -560,7 +624,996 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/preventive-support.json"
         }
       },
-      "verification_layer_ids": []
+      "verification_layer_ids": [],
+      "service_class": "PREVENTIVE_SUPPORT"
+    },
+    {
+      "service_id": "shortstay-medical",
+      "label": "短期入所療養介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "HOME_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/shortstay-medical",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "短期入所療養介護",
+        "service_class": "HOME_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "specific-facility",
+      "label": "特定施設入居者生活介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "HOME_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/specific-facility",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "特定施設入居者生活介護",
+        "service_class": "HOME_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "label": "福祉用具貸与",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "HOME_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/welfare-equipment-rental",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "福祉用具貸与",
+        "service_class": "HOME_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "label": "特定福祉用具販売",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "HOME_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/specific-welfare-equipment-sale",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "特定福祉用具販売",
+        "service_class": "HOME_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "label": "認知症対応型通所介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/dementia-dayservice",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "認知症対応型通所介護",
+        "service_class": "COMMUNITY_BASED_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "label": "小規模多機能型居宅介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/small-scale-multifunctional",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "小規模多機能型居宅介護",
+        "service_class": "COMMUNITY_BASED_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "dementia-group-home",
+      "label": "認知症対応型共同生活介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/dementia-group-home",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "認知症対応型共同生活介護",
+        "service_class": "COMMUNITY_BASED_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "community-specific-facility",
+      "label": "地域密着型特定施設入居者生活介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/community-specific-facility",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "地域密着型特定施設入居者生活介護",
+        "service_class": "COMMUNITY_BASED_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "label": "地域密着型介護老人福祉施設入所者生活介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/community-elderly-facility",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "地域密着型介護老人福祉施設入所者生活介護",
+        "service_class": "COMMUNITY_BASED_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "label": "看護小規模多機能型居宅介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/nursing-small-scale-multifunctional",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "看護小規模多機能型居宅介護",
+        "service_class": "COMMUNITY_BASED_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "label": "介護老人福祉施設",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "FACILITY_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/elderly-welfare-facility",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護老人福祉施設",
+        "service_class": "FACILITY_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "label": "介護老人保健施設",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "FACILITY_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/elderly-health-facility",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護老人保健施設",
+        "service_class": "FACILITY_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "care-medical-institution",
+      "label": "介護医療院",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "FACILITY_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/care-medical-institution",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護医療院",
+        "service_class": "FACILITY_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "label": "介護予防訪問入浴介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-homebath",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防訪問入浴介護",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "label": "介護予防訪問看護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-homenursing",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防訪問看護",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "label": "介護予防訪問リハビリテーション",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-homerehab",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防訪問リハビリテーション",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "label": "介護予防居宅療養管理指導",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-homecaremanagement",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防居宅療養管理指導",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "label": "介護予防通所リハビリテーション",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-dayrehab",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防通所リハビリテーション",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "label": "介護予防短期入所生活介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-shortstay-life",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防短期入所生活介護",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "label": "介護予防短期入所療養介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-shortstay-medical",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防短期入所療養介護",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "label": "介護予防特定施設入居者生活介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-specific-facility",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防特定施設入居者生活介護",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "label": "介護予防福祉用具貸与",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-welfare-equipment-rental",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防福祉用具貸与",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "label": "特定介護予防福祉用具販売",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/specific-preventive-welfare-equipment-sale",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "特定介護予防福祉用具販売",
+        "service_class": "PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "label": "介護予防認知症対応型通所介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-dementia-dayservice",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防認知症対応型通所介護",
+        "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "label": "介護予防小規模多機能型居宅介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-small-scale-multifunctional",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防小規模多機能型居宅介護",
+        "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "label": "介護予防認知症対応型共同生活介護",
+      "status": "REGISTERED_NOT_INGESTED",
+      "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE",
+      "routing": {
+        "current_mode": "SERVICE_ROOT_RESERVED",
+        "legacy_entry_points": [],
+        "future_service_base_path": "/services/preventive-dementia-group-home",
+        "future_service_base_enabled": false
+      },
+      "id_namespaces": {},
+      "scope_files": {},
+      "publication_gate": {
+        "public_routes_enabled": false,
+        "content_ingested": false,
+        "independent_verification_complete": false,
+        "human_review_complete": false
+      },
+      "ingestion_layers": {},
+      "verification_layer_ids": [],
+      "identity": {
+        "label": "介護予防認知症対応型共同生活介護",
+        "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE"
+      },
+      "expected_source_families": [
+        "care_insurance_act",
+        "governing_standards_ordinance",
+        "standards_interpretation_notice",
+        "remuneration_notification",
+        "delegated_remuneration_criteria",
+        "fee_calculation_guidance",
+        "unit_price_regional_classification",
+        "national_qa",
+        "other_national_manuals_forms"
+      ],
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
     }
   ]
 }
