@@ -9,7 +9,9 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "rouki25": "data/services/shortstay-life/rouki25-scope.json"
+  },
   "verification_layer_ids": [],
   "publication_gate": {
     "public_routes_enabled": false,
@@ -21,6 +23,12 @@
     "work_control": {
       "status": "ACCEPTED_RESULTS_NOT_REPOSITORY_INGESTED",
       "note": "Work Control Cycle 4の5レイヤー受理済みResultがLibraryに存在する。repository側のservice-specific scope/adaptersは未登録で、公開・独立検証・human reviewは未実施。"
+    },
+    "rouki25": {
+      "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED",
+      "principal_items": 34,
+      "child_nodes_preserved_in_body": 49,
+      "note": "Work Control Cycle 4受理済みResultの老企第25号旧HTML『第一〇 短期入所生活介護』34 primary itemsをservice-specific scopeとして登録。49 child nodesは各primary item本文内に保持し、item数へ重複計上しない。本文取込・独立検証・currentness確認・human review・公開は未実施。"
     }
   }
 }
