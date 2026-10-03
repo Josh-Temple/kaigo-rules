@@ -29,7 +29,8 @@
   "ingestion_indexes": {
     "care_insurance_act": "data/services/homevisit/care-insurance-act-index.generated.json",
     "ordinance37": "data/services/homevisit/ordinance37-index.generated.json",
-    "rouki25": "data/services/homevisit/rouki25-historical.generated.json"
+    "rouki25": "data/services/homevisit/rouki25-historical.generated.json",
+    "remuneration": "data/services/homevisit/remuneration-index.json"
   },
   "ingestion_layers": {
     "care_insurance_act": {
@@ -49,7 +50,13 @@
       "note": "老企第25号の公式旧HTML『第三 訪問介護に関する基準』35 principal itemsを独立source一致確認付きで全体通知DBへ公開。令和6年度新旧対照は別証拠として扱い、現行統合本文は生成しない。"
     },
     "remuneration": {
-      "status": "SCOPE_DEFINED_NOT_INGESTED"
+      "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "top_level_items": 25,
+      "numeric_child_items": 21,
+      "total_index_entries": 46,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "平成12年厚生省告示第19号の厚生労働省統合表示から『1 訪問介護費』の構造と明示数値をサービス固有indexとして収載。法令本文は複製せずlocator参照とし、独立item-body verification・全改正履歴currentness・human review・公開routeは未昇格。"
     }
   }
 }
