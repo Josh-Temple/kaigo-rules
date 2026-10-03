@@ -31,6 +31,7 @@ EXPECTED_PUBLIC_FAMILIES = [
     "fee_guidance_items",
     "unit_price_records",
     "qa_corpus_items",
+    "homevisit_notice_items",
     "dayrehab_standard_articles",
     "dayrehab_notice_items",
     "dayrehab_remuneration_items",
@@ -387,6 +388,25 @@ def build_snapshot() -> dict[str, Any]:
         for index in range(len(qa_corpus))
     ]
 
+    homevisit_notice_data = load_json(
+        "data/services/homevisit/rouki25-historical.generated.json"
+    )
+    homevisit_notice_state_complete = layer_state_complete(
+        layer_by_id, "rouki25-homevisit"
+    )
+    homevisit_notice_public_rows = [
+        row(
+            f"homevisit-notice:{item['id']}",
+            source_complete=bool(item.get("source_url")),
+            scope_complete=(
+                homevisit_notice_data.get("service_id") == "homevisit"
+                and item.get("source_state") == "OFFICIAL_HISTORICAL_HTML"
+            ),
+            verification_state_complete=homevisit_notice_state_complete,
+        )
+        for item in homevisit_notice_data.get("items", [])
+    ]
+
     dayrehab_public_rows = []
     dayrehab_entry = next(
         (item for item in service_manifest["services"] if item["service_id"] == "dayrehab"),
@@ -516,6 +536,7 @@ def build_snapshot() -> dict[str, Any]:
         "fee_guidance_items": guidance_public_rows,
         "unit_price_records": unit_price_public_rows,
         "qa_corpus_items": qa_public_rows,
+        "homevisit_notice_items": homevisit_notice_public_rows,
         "dayrehab_standard_articles": dayrehab_public_rows,
         "dayrehab_notice_items": dayrehab_notice_public_rows,
         "dayrehab_remuneration_items": dayrehab_remuneration_public_rows,
@@ -587,7 +608,7 @@ def build_snapshot() -> dict[str, Any]:
                     )
                 )
             ],
-            "global_public_families": ["qa_corpus_items"],
+            "global_public_families": ["qa_corpus_items", "homevisit_notice_items"],
             "public_route_mode": routing.get("current_mode"),
             "service_config": service_config_path,
             "canonical_service_scope_contract": canonical_scope["contract"],

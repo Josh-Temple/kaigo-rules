@@ -92,13 +92,17 @@
           "note": "通常の指定訪問介護（第二章第4条〜第39条。共生型・基準該当を除く）を共有省令37号コーパスから本文複製なしで参照する。独立検証・currentness・human reviewは訪問介護として別途実施する。"
         },
         "rouki25": {
-          "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED"
+          "status": "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+          "principal_items": 35,
+          "note": "老企第25号の公式旧HTML『第三 訪問介護に関する基準』35 principal itemsを独立source一致確認付きで全体通知DBへ公開。令和6年度新旧対照は別証拠として扱い、現行統合本文は生成しない。"
         },
         "remuneration": {
           "status": "SCOPE_DEFINED_NOT_INGESTED"
         }
       },
-      "verification_layer_ids": []
+      "verification_layer_ids": [
+        "rouki25-homevisit"
+      ]
     },
     {
       "service_id": "homebath",

@@ -125,6 +125,7 @@ test("database hub exposes a service-neutral cross-database search", () => {
   assert.match(search, /care-insurance-act-nodes\.json/);
   assert.match(search, /ordinance37-nodes\.json/);
   assert.match(search, /publicNoticeRecords/);
+  assert.match(search, /\/notices\?service=/);
   assert.match(search, /qa-corpus\.json/);
   assert.match(search, /rankDatabaseSearch/);
   assert.match(search, /databaseSearchExcerpt/);

@@ -75,6 +75,7 @@ jobs:
             "/questions/nurse-staffing"
             "/api/context/services/dayservice/questions/nurse-staffing"
             "/notices"
+            "/notices?service=homevisit"
             "/notices/review"
             "/fees"
             "/fees/guidance"
@@ -96,6 +97,16 @@ jobs:
           done
 
           database_search_page="$(curl --fail --silent --show-error "http://127.0.0.1:3000/databases/search?q=BCP")"
+          homevisit_database_search_page="$(curl --fail --silent --show-error --get --data-urlencode "q=訪問介護員" "http://127.0.0.1:3000/databases/search")"
+          echo "$homevisit_database_search_page" | grep -F "訪問介護員等の員数" >/dev/null || {
+            echo "global database search did not surface the published homevisit notice records"
+            exit 1
+          }
+          echo "$homevisit_database_search_page" | grep -F "/notices?service=homevisit" >/dev/null || {
+            echo "global database search did not preserve the homevisit notice destination"
+            exit 1
+          }
+
           echo "$database_search_page" | grep -F "業務継続計画" >/dev/null || {
             echo "global database search did not surface BCP-related shared records"
             exit 1
@@ -161,6 +172,7 @@ jobs:
             "/rules"
             "/rules/93"
             "/notices"
+            "/notices?service=homevisit"
             "/fees"
             "/fees/standard"
             "/fees/criteria"

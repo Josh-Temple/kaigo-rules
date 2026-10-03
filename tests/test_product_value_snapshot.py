@@ -40,7 +40,7 @@ class ProductValueSnapshotTest(unittest.TestCase):
 
     def test_enabled_public_item_families_are_all_counted(self):
         metric = self.snapshot["metrics"]["public_items_with_complete_evidence_state"]
-        self.assertEqual(metric["public_items_total"], 4409)
+        self.assertEqual(metric["public_items_total"], 4444)
         self.assertEqual(
             set(metric["breakdown"]),
             set(self.builder.EXPECTED_PUBLIC_FAMILIES),
@@ -60,6 +60,10 @@ class ProductValueSnapshotTest(unittest.TestCase):
         self.assertEqual(
             metric["breakdown"]["qa_corpus_items"]["items_total"],
             3695,
+        )
+        self.assertEqual(
+            metric["breakdown"]["homevisit_notice_items"]["items_total"],
+            35,
         )
         self.assertEqual(
             metric["breakdown"]["dayrehab_standard_articles"]["items_total"],
@@ -101,7 +105,7 @@ class ProductValueSnapshotTest(unittest.TestCase):
         )
         self.assertEqual(
             self.snapshot["scope"]["global_public_families"],
-            ["qa_corpus_items"],
+            ["qa_corpus_items", "homevisit_notice_items"],
         )
         self.assertIn("homevisit", self.snapshot["scope"]["excluded_services"])
         self.assertIn("shortstay-life", self.snapshot["scope"]["excluded_services"])

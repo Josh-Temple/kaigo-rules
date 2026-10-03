@@ -11,7 +11,8 @@
       "dayrehab"
     ],
     "global_public_families": [
-      "qa_corpus_items"
+      "qa_corpus_items",
+      "homevisit_notice_items"
     ],
     "public_route_mode": "LEGACY_ROOT",
     "service_config": "data/services/dayservice.json",
@@ -26,6 +27,7 @@
       "fee_guidance_items",
       "unit_price_records",
       "qa_corpus_items",
+      "homevisit_notice_items",
       "dayrehab_standard_articles",
       "dayrehab_notice_items",
       "dayrehab_remuneration_items",
@@ -53,8 +55,8 @@
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
-      "public_items_total": 4409,
-      "public_items_complete": 4409,
+      "public_items_total": 4444,
+      "public_items_complete": 4444,
       "coverage_rate": 1.0,
       "missing_source_items": [],
       "missing_scope_items": [],
@@ -122,6 +124,13 @@
           "source_complete": 3695,
           "scope_complete": 3695,
           "verification_state_complete": 3695
+        },
+        "homevisit_notice_items": {
+          "items_total": 35,
+          "items_complete": 35,
+          "source_complete": 35,
+          "scope_complete": 35,
+          "verification_state_complete": 35
         },
         "dayrehab_standard_articles": {
           "items_total": 35,

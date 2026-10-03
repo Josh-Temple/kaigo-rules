@@ -133,7 +133,7 @@ class ServiceManifestTests(unittest.TestCase):
             errors = validation_errors(root, check_registry=True)
             self.assertTrue(any("non-active service route" in error for error in errors))
 
-    def test_repository_homevisit_stays_unpublished_and_unverified(self):
+    def test_repository_homevisit_service_root_stays_closed_while_notice_layer_is_verified(self):
         root = Path(__file__).resolve().parents[1]
         manifest = json.loads(
             (root / "data/services/manifest.json").read_text(encoding="utf-8")
@@ -185,13 +185,21 @@ class ServiceManifestTests(unittest.TestCase):
         self.assertFalse(
             homevisit["publication_gate"]["independent_verification_complete"]
         )
-        self.assertEqual([], homevisit["verification_layer_ids"])
-        self.assertFalse(
-            any(
-                "homevisit" in layer.get("service_ids", [])
-                for layer in registry["layers"]
-            )
+        self.assertEqual(["rouki25-homevisit"], homevisit["verification_layer_ids"])
+        self.assertEqual(
+            "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+            homevisit["ingestion_layers"]["rouki25"]["status"],
         )
+        self.assertEqual(
+            35,
+            homevisit["ingestion_layers"]["rouki25"]["principal_items"],
+        )
+        homevisit_layers = [
+            layer["id"]
+            for layer in registry["layers"]
+            if "homevisit" in layer.get("service_ids", [])
+        ]
+        self.assertEqual(["rouki25-homevisit"], homevisit_layers)
 
     def test_registry_service_coverage_drift_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
