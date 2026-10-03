@@ -25,7 +25,13 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "care_insurance_act": "data/services/specific-preventive-welfare-equipment-sale/care-insurance-act-scope.json",
+    "standards_index": "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json",
+    "remuneration": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
+    "delegated_remuneration_criteria": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
+    "unit_price_regional_classification": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json"
+  },
   "verification_layer_ids": [],
   "publication_gate": {
     "public_routes_enabled": false,
