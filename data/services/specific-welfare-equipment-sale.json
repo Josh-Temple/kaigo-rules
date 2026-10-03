@@ -25,7 +25,12 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "care_insurance_act": "data/services/specific-welfare-equipment-sale/care-insurance-act-scope.json",
+    "ordinance37": "data/services/specific-welfare-equipment-sale/ordinance37-scope.json",
+    "remuneration": "data/services/specific-welfare-equipment-sale/remuneration-scope.json",
+    "unit_price": "data/services/specific-welfare-equipment-sale/unit-price-scope.json"
+  },
   "verification_layer_ids": [],
   "publication_gate": {
     "public_routes_enabled": false,
