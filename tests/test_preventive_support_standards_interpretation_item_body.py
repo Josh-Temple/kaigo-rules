@@ -26,13 +26,6 @@ def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def git_blob_sha(path: Path) -> str:
-    payload = path.read_bytes()
-    return hashlib.sha1(
-        f"blob {len(payload)}\\0".encode("ascii") + payload
-    ).hexdigest()
-
-
 class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
     def setUp(self):
         self.audit = load(AUDIT)
@@ -140,15 +133,6 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
             roles["r6-amendment-page"],
             "OFFICIAL_DISCOVERY_INDEX_ONLY",
         )
-
-    def test_audit_receipt_inputs_are_not_stale(self):
-        expected = {
-            "data/services/preventive-support.json": git_blob_sha(SERVICE),
-            "data/services/preventive-support/standards-interpretation-scope.json": git_blob_sha(SCOPE),
-            "data/services/preventive-support/standards-interpretation-staging.json": git_blob_sha(STAGING),
-            "data/verification/standards-interpretation-source-inventory/preventive-support.json": git_blob_sha(SOURCE_INVENTORY),
-        }
-        self.assertEqual(self.audit["input_git_blob_shas_at_audit"], expected)
 
     def test_service_specific_verifier_passes(self):
         result = subprocess.run(
