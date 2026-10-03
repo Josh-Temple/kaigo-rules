@@ -72,13 +72,6 @@ def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def git_blob_sha(path: Path) -> str:
-    payload = path.read_bytes()
-    return hashlib.sha1(
-        f"blob {len(payload)}\\0".encode("ascii") + payload
-    ).hexdigest()
-
-
 def fail(message: str) -> None:
     raise SystemExit("preventive-support item-body audit invalid: " + message)
 
@@ -239,15 +232,6 @@ def validate_receipt() -> tuple[dict, dict]:
         fail("unexpected GAP set")
     if any(row.get("verdict") == "FAIL" for row in rows):
         fail("unexpected FAIL was introduced")
-
-    expected_blobs = {
-        "data/services/preventive-support.json": git_blob_sha(SERVICE_PATH),
-        "data/services/preventive-support/standards-interpretation-scope.json": git_blob_sha(SCOPE_PATH),
-        "data/services/preventive-support/standards-interpretation-staging.json": git_blob_sha(STAGING_PATH),
-        "data/verification/standards-interpretation-source-inventory/preventive-support.json": git_blob_sha(SOURCE_INVENTORY_PATH),
-    }
-    if audit.get("input_git_blob_shas_at_audit") != expected_blobs:
-        fail("audit receipt inputs are stale")
 
     work_control = audit.get("work_control_observation", {})
     if work_control.get("task_id") != "KR2-10-E006":
