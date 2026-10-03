@@ -52,7 +52,7 @@ class HomevisitUnitPriceTest(unittest.TestCase):
     def test_rows_use_canonical_unit_price_source(self):
         self.assertTrue(all(row["source_id"] == "mhlw-unit-price-current" for row in self.rows))
         source = self.sources["mhlw-unit-price-current"]
-        self.assertEqual(source["url"], self.scope["source_url"])
+        self.assertEqual(source["url"], self.scope["unit_price_scope"]["official_current_text_url"])
         self.assertEqual(self.scope["repository_service_rows"], "data/unit-price-homevisit.json")
 
     def test_ingestion_is_explicit_and_assurance_stays_unestablished(self):
