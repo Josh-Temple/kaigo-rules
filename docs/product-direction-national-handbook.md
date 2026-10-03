@@ -407,3 +407,115 @@ The preferred execution order is:
 The key operating rule is breadth first, then depth against the visible gaps.
 
 Deep verification work remains necessary, but it should be prioritized from the coverage matrix so that the project converges toward a complete cross-service database rather than a small number of exceptionally deep service silos.
+
+
+## 15. Prefer shared national corpora over per-service duplication
+
+The database completion plan should avoid rebuilding the same national legal text separately for each service when an authoritative structured source can be maintained once and reused safely.
+
+For source families that are naturally shared across services, the preferred model is:
+
+1. ingest and validate one shared national corpus,
+2. retain stable source-node identifiers,
+3. define service-specific applicability as scope and relations,
+4. add service-specific verification only where the applicability or interpretation itself requires verification.
+
+This applies especially to structured or structurally obtainable national materials such as:
+
+- the Long-Term Care Insurance Act,
+- governing ministerial ordinances,
+- major notifications / fee schedules where a shared corpus is practical,
+- the national Q&A corpus,
+- shared source registries and amendment metadata.
+
+The service-specific unit should therefore usually be the applicability mapping, not a copied source text.
+
+A service layer should answer questions such as:
+
+- which Act provisions define or govern the service,
+- which ordinance articles apply directly,
+- which provisions apply by reference,
+- what substitutions or reading rules apply,
+- which notice sections interpret those provisions,
+- which remuneration provisions apply,
+- which Q&A classifications or individual Q&A items apply,
+- what currentness or verification status is established for those relations.
+
+This model is preferable to re-ingesting the same legal corpus for each service because a national-source update can be handled once while preserving service-specific scope and downstream invalidation.
+
+## 16. Distinguish corpus availability from service coverage
+
+The coverage matrix should distinguish whether the underlying corpus already exists from whether a service has been mapped onto it.
+
+A missing service layer must not automatically be interpreted as missing source data.
+
+At minimum, shared-source coverage should distinguish states equivalent to:
+
+- `SHARED_CORPUS_AVAILABLE`,
+- `SERVICE_SCOPE_DEFINED`,
+- `SERVICE_SCOPE_PARTIAL`,
+- `SERVICE_SCOPE_NOT_DEFINED`,
+- `SERVICE_RELATIONS_VERIFIED`,
+- `SERVICE_RELATIONS_PENDING`,
+- `SERVICE_SPECIFIC_DATA_INGESTED`,
+- `SERVICE_SPECIFIC_DATA_NOT_INGESTED`.
+
+This distinction changes how remaining work is estimated.
+
+For example, adding a new service should not require re-fetching or duplicating the entire Long-Term Care Insurance Act, a shared ministerial-ordinance corpus, or the national Q&A workbook if those corpora already exist. The work may instead consist mainly of:
+
+1. adding the service descriptor,
+2. defining applicable source-node scope,
+3. defining direct, referenced, and substituted relations,
+4. linking the relevant Q&A classification,
+5. ingesting genuinely service-specific notice / remuneration / guidance data,
+6. independently verifying the service-specific applicability and currentness boundaries.
+
+## 17. Where service-by-service deep work remains necessary
+
+Shared corpora do not remove the need for service-specific verification.
+
+Deep service-by-service work remains appropriate where the evidence itself is service-specific or where applicability cannot be established by a simple structural selection.
+
+This includes, in particular:
+
+- standards interpretation notices,
+- service sections of remuneration notifications,
+- fee-calculation guidance,
+- amendment reconstruction,
+- incorporation by reference,
+- substitution / reading rules,
+- cross-layer relations,
+- service-specific currentness,
+- practical applicability of national Q&A.
+
+The project should therefore use two complementary work modes:
+
+### Shared-corpus work
+
+Build and maintain reusable national corpora once.
+
+### Service-applicability work
+
+Map, verify, and version the way each service uses those shared corpora, then add genuinely service-specific sources.
+
+The completion program should maximize the first mode before repeating work in the second.
+
+## 18. Revised completion sequence
+
+Given the shared-corpus strategy, the preferred database-completion sequence is refined to:
+
+1. enumerate the complete in-scope service universe,
+2. inventory which national source families can be maintained as shared corpora,
+3. complete or expand those shared corpora first,
+4. register all service descriptors,
+5. generate the coverage matrix with corpus-availability and service-scope states separated,
+6. define service applicability for the shared legal corpora,
+7. ingest genuinely service-specific interpretation / remuneration / guidance layers,
+8. verify service-specific applicability and item-body evidence,
+9. establish currentness where the primary evidence permits,
+10. resolve or explicitly bound cross-layer relation gaps,
+11. add freshness / drift monitoring,
+12. complete required human review and public database exposure.
+
+The practical objective is to reduce service expansion from repeated source ingestion to a smaller and more auditable problem of applicability, relations, service-specific evidence, and currentness.
