@@ -731,5 +731,31 @@
     "item-body receiptを共通verification registryやservice manifestへ接続する場合は、共通validator/package.json変更をIntegrator側で一括実施すること。本branchでは並列競合回避のため変更しない。",
     "PASSをcurrentness・human review・publication readinessへ自動昇格させないこと。"
   ],
-  "conclusion": "25項目すべてを項目単位で照合した。23件は公式通知本文・改正比較本文または通知内の明示準用先で主要内容を支持でき、2件は通知本文が略記のため基準省令による内容支持に留まりPARTIALとした。FAILはない。本結果はcurrentnessとは独立したcontent/evidence matchである。"
+  "conclusion": "25項目すべてを項目単位で照合した。23件は公式通知本文・改正比較本文または通知内の明示準用先で主要内容を支持でき、2件は通知本文が略記のため基準省令による内容支持に留まりPARTIALとした。FAILはない。本結果はcurrentnessとは独立したcontent/evidence matchである。",
+  "integration_summary": {
+    "schema_version": 1,
+    "worker_pr": 276,
+    "worker_head_sha": "38a37d5308b96c04c1b626e221f9b99a095c5447",
+    "audit_receipt": "data/verification/standards-interpretation-item-body/night-homevisit.json",
+    "verifier": "scripts/verify_night_homevisit_standards_interpretation_item_body.py",
+    "verification_status": "PARTIAL_WITH_GAPS",
+    "counts": {
+      "PASS": 23,
+      "PARTIAL": 2,
+      "GAP": 0,
+      "FAIL": 0
+    },
+    "expected_staging_items_or_tasks": 25,
+    "non_pass_items": 2,
+    "explicit_unresolved_records": 2,
+    "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
+    "currentness_state": "NOT_ESTABLISHED",
+    "human_review_state": "NOT_REVIEWED",
+    "publication_allowed": false,
+    "public_route_enabled": false,
+    "staging_summary_treated_as_official_notice_text": false,
+    "omitted_text_inferred": false,
+    "service_scope_expanded": false,
+    "package_blocker_state": "NOT_APPLICABLE"
+  }
 }

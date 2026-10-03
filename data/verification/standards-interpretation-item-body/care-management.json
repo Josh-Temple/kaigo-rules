@@ -2158,5 +2158,31 @@
       "finding": "Official MHLW historical comparison directly contains the '介護支援専門員証' wording, but it is not pinned in the current scope/source inventory.",
       "action": "INTEGRATOR_FOLLOWUP"
     }
-  ]
+  ],
+  "integration_summary": {
+    "schema_version": 1,
+    "worker_pr": 279,
+    "worker_head_sha": "1954dc25d4898ea921da28533cfa9a7555ca29f4",
+    "audit_receipt": "data/verification/standards-interpretation-item-body/care-management.json",
+    "verifier": "scripts/verify_care_management_standards_interpretation_item_body.py",
+    "verification_status": "PARTIAL_WITH_GAPS",
+    "counts": {
+      "PASS": 24,
+      "PARTIAL": 5,
+      "GAP": 3,
+      "FAIL": 0
+    },
+    "expected_staging_items_or_tasks": 32,
+    "non_pass_items": 8,
+    "explicit_unresolved_records": 8,
+    "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
+    "currentness_state": "NOT_ESTABLISHED",
+    "human_review_state": "NOT_REVIEWED",
+    "publication_allowed": false,
+    "public_route_enabled": false,
+    "staging_summary_treated_as_official_notice_text": false,
+    "omitted_text_inferred": false,
+    "service_scope_expanded": false,
+    "package_blocker_state": "NOT_APPLICABLE"
+  }
 }
