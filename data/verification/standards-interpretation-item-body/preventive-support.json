@@ -352,7 +352,7 @@
         {
           "source_manifest_id": "work-control-source-4",
           "source_version": "H18_FULL_NOTICE",
-          "locator": "第2／3／当時(3)〜(12)の本文",
+          "locator": "第2／3 運営に関する基準／H18 (3)〜(12)（current (4)〜(14)のうち後発新設を除く対応本文）",
           "role": "DIRECT_HISTORICAL_ITEM_BODY_FOR_OMITTED_CHILDREN",
           "directly_supports_staging_summary": true,
           "proves_currentness": false
@@ -360,8 +360,8 @@
         {
           "source_manifest_id": "r6-final-comparison",
           "source_version": "R6_FINAL_AMENDMENT_COMPARISON",
-          "locator": "第2／3／現行側(4)〜(15)",
-          "role": "LATER_VERSION_CHILD_LOCATORS_AND_DIRECT_CHANGED_BODY",
+          "locator": "第2／3 運営に関する基準／新欄 (4)〜(15)",
+          "role": "LATER_FINAL_VERSION_LOCATORS_AND_DIRECT_NEW_OR_CHANGED_BODY",
           "directly_supports_staging_summary": true,
           "proves_currentness": false
         }
@@ -369,109 +369,109 @@
       "child_item_body_evidence": [
         {
           "current_locator": "第二/3/(4)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(3) 要支援認定の申請に係る援助",
+          "later_final_version_locator": "第二/3/(4)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(4)",
-          "earlier_locator": "平成18年 第2/3/(3)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(5)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(4) 身分を証する書類の携行",
+          "later_final_version_locator": "第二/3/(5)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(5)",
-          "earlier_locator": "平成18年 第2/3/(4)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(6)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(5) 利用料等の受領",
+          "later_final_version_locator": "第二/3/(6)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(6)",
-          "earlier_locator": "平成18年 第2/3/(5)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(7)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(6) 保険給付の請求のための証明書の交付",
+          "later_final_version_locator": "第二/3/(7)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(7)",
-          "earlier_locator": "平成18年 第2/3/(6)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(8)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(7) 介護予防支援業務の委託について",
+          "later_final_version_locator": "第二/3/(8)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(8)",
-          "earlier_locator": "平成18年 第2/3/(7)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(9)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(8) 法定代理受領サービスに係る報告",
+          "later_final_version_locator": "第二/3/(9)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(9)",
-          "earlier_locator": "平成18年 第2/3/(8)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(10)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(9) 利用者に対する介護予防サービス計画等の書類の交付",
+          "later_final_version_locator": "第二/3/(10)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(10)",
-          "earlier_locator": "平成18年 第2/3/(9)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(11)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(10) 利用者に関する市町村への通知",
+          "later_final_version_locator": "第二/3/(11)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(11)",
-          "earlier_locator": "平成18年 第2/3/(10)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(12)",
-          "evidence_mode": "R6_DIRECT_CURRENT_SIDE_ITEM_BODY",
+          "earlier_version_locator": null,
+          "later_final_version_locator": "第二/3/(12)",
+          "evidence_mode": "R6_NEW_SIDE_DIRECT",
           "source_manifest_id": "r6-final-comparison",
-          "later_locator": "第二/3/(12)",
-          "earlier_locator": null,
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(13)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(11) 運営規程",
+          "later_final_version_locator": "第二/3/(13)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(13)",
-          "earlier_locator": "平成18年 第2/3/(11)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(14)",
-          "evidence_mode": "HISTORICAL_DIRECT_BODY_WITH_R6_LATER_LOCATOR",
+          "earlier_version_locator": "H18 第2/3/(12) 勤務体制の確保",
+          "later_final_version_locator": "第二/3/(14)",
+          "evidence_mode": "H18_FULL_NOTICE_DIRECT",
           "source_manifest_id": "work-control-source-4",
-          "later_locator": "第二/3/(14)",
-          "earlier_locator": "平成18年 第2/3/(12)",
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         },
         {
           "current_locator": "第二/3/(15)",
-          "evidence_mode": "R6_DIRECT_CURRENT_SIDE_ITEM_BODY",
+          "earlier_version_locator": null,
+          "later_final_version_locator": "第二/3/(15)",
+          "evidence_mode": "R6_NEW_SIDE_DIRECT",
           "source_manifest_id": "r6-final-comparison",
-          "later_locator": "第二/3/(15)",
-          "earlier_locator": null,
           "directly_supports_child_item_body": true,
           "proves_currentness": false
         }
@@ -1041,7 +1041,7 @@
         {
           "source_manifest_id": "work-control-source-4",
           "source_version": "H18_FULL_NOTICE",
-          "locator": "第2／4／(1)／当時⑫〜⑭（個別サービス提供状況・実施状況把握・評価）",
+          "locator": "第2／4／(1)／H18 ⑫〜⑭（個別サービス提供状況の把握を含む⑫後半、実施状況等の把握⑬、評価⑭）",
           "role": "DIRECT_HISTORICAL_ITEM_BODY",
           "directly_supports_staging_summary": true,
           "proves_currentness": false
@@ -1256,7 +1256,7 @@
         {
           "source_manifest_id": "work-control-source-4",
           "source_version": "H18_FULL_NOTICE",
-          "locator": "第2／4／(1)／当時㉑相当『介護予防短期入所生活介護及び介護予防短期入所療養介護の介護予防サービス計画への位置付け』",
+          "locator": "第2／4／(1)／『介護予防短期入所生活介護及び介護予防短期入所療養介護の介護予防サービス計画への位置付け（第22号）』",
           "role": "DIRECT_HISTORICAL_ITEM_BODY_SUPPLEMENTAL_VERIFICATION_SOURCE",
           "directly_supports_staging_summary": true,
           "proves_currentness": false
