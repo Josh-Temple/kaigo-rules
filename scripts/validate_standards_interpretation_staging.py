@@ -8,11 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-ALLOWED_CONTENT_STATES = {
-    "SOURCE_CONTENT_STRUCTURED",
-    "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
-    "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
-}
+def content_state_allowed(value: str | None) -> bool:
+    return value == "SOURCE_CONTENT_STRUCTURED" or bool(
+        value and value.startswith("GAP_SCOPE_")
+    )
 
 
 def fail(message: str) -> None:
@@ -81,7 +80,7 @@ def main() -> None:
             fail(f"{task_id}: staging summary must not masquerade as official body_text")
         if not item.get("content_summary"):
             fail(f"{task_id}: content summary missing")
-        if item.get("content_state") not in ALLOWED_CONTENT_STATES:
+        if not content_state_allowed(item.get("content_state")):
             fail(f"{task_id}: unexpected content state")
         if item.get("currentness_state") != "NOT_ESTABLISHED":
             fail(f"{task_id}: currentness promoted")

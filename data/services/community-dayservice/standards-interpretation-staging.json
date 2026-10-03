@@ -1,0 +1,442 @@
+{
+  "format_version": 1,
+  "service_id": "community-dayservice",
+  "layer": "standards_interpretation",
+  "source_family": "community_based_services_standards_interpretation",
+  "dataset_role": "WORK_CONTROL_ACCEPTED_STAGING_ADAPTER",
+  "publication_state": "NOT_PUBLIC",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-06-B2_v1.md",
+    "detail_task_range": "KR2-06-B001..KR2-06-B021",
+    "rollup": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR2-06-E002_v1.md"
+  },
+  "source_policy": {
+    "summaries_are_not_official_notice_text": true,
+    "source_locator_must_be_reverified_before_publication": true,
+    "omitted_text_must_not_be_inferred": true,
+    "current_integrated_text_not_claimed": true
+  },
+  "item_count": 21,
+  "items": [
+    {
+      "id": "community-dayservice.notice.001",
+      "task_id": "KR2-06-B001",
+      "path": "第三/二の二",
+      "number": "二の二",
+      "heading": "地域密着型通所",
+      "parent": "第三 地域密着型サービス",
+      "content_summary": "地域密着型通所介護、共生型地域密着型通所介護、指定療養通所介護を含む通知上のサービス節の範囲を示す。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／二の二 地域密着型通所",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B001-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.002",
+      "task_id": "KR2-06-B002",
+      "path": "第三/二の二/1/(1)",
+      "number": "(1)",
+      "heading": "従業者の員数（基準第20条）",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所介護/1 人員に関する基準",
+      "content_summary": "厚生労働省公式の改正資料で見出しを直接確認。指定地域密着型通所介護の単位、提供時間、必要従業者数等の考え方を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/001623024.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/mittyaku-dei.files/0182_20250225.pdf"
+      ],
+      "source_locator": "第三 地域密着型サービス／二の二 地域密着型通所介護／1 人員に関する基準／(1)〜(3)",
+      "extraction_method": "厚生労働省の改正新旧対照表と現行基準省令で(1)・(3)及び人員基準を確認し、改正資料で略記された(2)の見出しは自治体公式の運営資料で交差確認した。",
+      "content_state": "GAP_SCOPE_RESOLVED_WITH_PRIMARY_AND_OFFICIAL_LOCAL_CROSSCHECK",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B002-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.003",
+      "task_id": "KR2-06-B003",
+      "path": "第三/二の二/1/(4)",
+      "number": "(4)",
+      "heading": "管理者（基準第21条）",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/1 人員に関する基準",
+      "content_summary": "管理者は常勤・専従を原則とし、事業所管理に支障がない場合の兼務を認める。令和6年度改正資料では、他事業所等との兼務可否を、サービス提供場面の事象把握や一元的管理・指揮命令に支障がないこと等で判断する考え方が示される。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／1 人員に関する基準 > (4) 管理者（基準第21条）",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B003-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.004",
+      "task_id": "KR2-06-B004",
+      "path": "第三/二の二/2",
+      "number": "2",
+      "heading": "設備に関する基準（基準第22条）",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所介護",
+      "content_summary": "指定地域密着型通所介護を提供する設備・備品を備えた事業所の考え方を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/001623024.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第三 地域密着型サービス／二の二 地域密着型通所介護／2 設備に関する基準（基準第22条）",
+      "extraction_method": "厚生労働省公式改正資料で章見出し、(2)、(4)を直接確認し、現行基準省令と過去の通知構造を用いて略記箇所のscopeを復元した。改正資料で略記された本文は推測補完していない。",
+      "content_state": "GAP_SCOPE_PARTIALLY_RECONSTRUCTED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B004-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.005",
+      "task_id": "KR2-06-B005",
+      "path": "第三/二の二/3/(1)",
+      "number": "(1)",
+      "heading": "利用料等の受領",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所介護/3 運営に関する基準",
+      "content_summary": "令和3年度改正の厚生労働省公式新旧対照表で、省略されていた(1)の見出しが「利用料等の受領」であることを確認した。①は基準第24条第1項、第2項及び第5項を定期巡回・随時対応型訪問介護看護の利用料規定と同趣旨として参照する。②は同資料でも略記されているため、本文は推測補完しない。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "令和3年度改正新旧対照表／第三 地域密着型サービス／二の二 地域密着型通所介護／3 運営に関する基準／(1) 利用料等の受領",
+      "extraction_method": "厚生労働省公式の令和3年度改正新旧対照表で当該見出しを確認し、令和6年度改正資料で同位置が略記されていることと突合した。略記本文は補完していない。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIOR_PRIMARY_SOURCE",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B005-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.006",
+      "task_id": "KR2-06-B006",
+      "path": "第三/二の二/3/(2)",
+      "number": "(2)",
+      "heading": "指定地域密着型通所介護の基本取扱方針及び具体的取扱方針",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/3 運営に関する基準",
+      "content_summary": "基準第25条・第26条に基づく取扱方針の留意事項を示す。令和6年度改正では、緊急やむを得ない場合を除く身体的拘束等の禁止、実施時の態様・時間・心身状況・理由の記録、切迫性・非代替性・一時性の慎重な確認が追加されている。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／3 運営に関する基準 > (2) 指定地域密着型通所介護の基本取扱方針及び具体的取扱方針",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B006-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.007",
+      "task_id": "KR2-06-B007",
+      "path": "第三/二の二/3/(3)",
+      "number": "(3)",
+      "heading": "地域密着型通所介護計画の作成",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所介護/3 運営に関する基準",
+      "content_summary": "現行基準第27条に対応。利用者の心身状況・希望・環境を踏まえ、機能訓練等の目標と具体的サービス内容を記載した計画を作成し、居宅サービス計画との整合、利用者・家族への説明、同意、交付を行う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf"
+      ],
+      "source_locator": "第三 地域密着型サービス／二の二 地域密着型通所介護／3 運営に関する基準／(3) 地域密着型通所介護計画の作成",
+      "extraction_method": "厚生労働省の現行基準省令第27条で計画作成規定を確認し、令和3年度改正通知の当該節構造と突合した。",
+      "content_state": "GAP_SCOPE_RESOLVED_BY_PRIMARY_STANDARD_AND_NOTICE_STRUCTURE",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B007-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.008",
+      "task_id": "KR2-06-B008",
+      "path": "第三/二の二/3/(4)",
+      "number": "(4)",
+      "heading": "管理者の責務",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/3 運営に関する基準",
+      "content_summary": "管理者は、利用者へのサービス提供場面等で生じる事象を適時適切に把握し、従業者・業務を一元的に管理するとともに、運営基準を遵守させるため必要な指揮命令を行う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／3 運営に関する基準 > (4) 管理者の責務",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B008-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.009",
+      "task_id": "KR2-06-B009",
+      "path": "第三/二の二/3/(5)",
+      "number": "(5)",
+      "heading": "運営規程",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所介護/3 運営に関する基準",
+      "content_summary": "基準第29条に基づく運営規程。厚生労働省公式の平成30年度改正資料および令和3年度改正資料で見出しを確認できる。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第三 地域密着型サービス／二の二 地域密着型通所介護／3 運営に関する基準／(5) 運営規程、(6) 勤務体制の確保等",
+      "extraction_method": "平成30年度および令和3年度の厚生労働省公式改正資料で省略範囲の見出しを確認し、令和6年度資料の(5)・(6)略記と突合した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIOR_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B009-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.010",
+      "task_id": "KR2-06-B010",
+      "path": "第三/二の二/3/(7)",
+      "number": "(7)",
+      "heading": "業務継続計画の策定等",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/3 運営に関する基準",
+      "content_summary": "業務継続計画には感染症と自然災害に関する項目等を記載し、厚労省ガイドラインを参照する。地域の実態に応じた設定、一体的策定、関連する感染症指針・非常災害計画との一体化が可能であることを示す。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／3 運営に関する基準 > (7) 業務継続計画の策定等",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B010-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.011",
+      "task_id": "KR2-06-B011",
+      "path": "第三/二の二/3/(8)",
+      "number": "(8)",
+      "heading": "非常災害対策",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所介護/3 運営に関する基準",
+      "content_summary": "基準第32条に基づき、非常災害に関する具体的計画、通報・連携体制、避難・救出訓練等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+        "https://www.mhlw.go.jp/content/000763179.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "令和3年度改正新旧対照表／第三 地域密着型サービス／二の二 地域密着型通所介護／3 運営に関する基準／(8)〜(13)",
+      "extraction_method": "厚生労働省公式の令和3年度改正資料から(8)、(9)、(10)、(12)、(13)の見出しを直接確認し、厚生労働省公式資料で(11)「事故発生時の対応」を確認して、令和6年度資料の略記範囲と突合した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIOR_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B011-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.012",
+      "task_id": "KR2-06-B012",
+      "path": "第三/二の二/3/(14)",
+      "number": "(14)",
+      "heading": "準用",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/3 運営に関する基準",
+      "content_summary": "基準第37条により地域密着型通所介護へ準用される共通規定を列挙し、対応する通知箇所を参照する。令和6年度改正では、ウェブサイト掲載に関する取扱いの準用も明記されている。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／3 運営に関する基準 > (14) 準用",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B012-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.013",
+      "task_id": "KR2-06-B013",
+      "path": "第三/二の二/4/(1)",
+      "number": "(1)",
+      "heading": "従業者の員数及び管理者（基準第37条の2第1号、第37条の3）",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/4 共生型地域密着型通所介護に関する基準",
+      "content_summary": "①従業者、②管理者。障害福祉側事業所の必要人員を、共生型地域密着型通所介護の要介護利用者を含めた利用者数で満たすこと、管理者は地域密着型通所介護と同趣旨であること等を示す。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf",
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "平成30年度改正資料／第三 地域密着型サービス／二の二 地域密着型通所介護／4 共生型地域密着型通所介護に関する基準／(1)〜(3)",
+      "extraction_method": "厚生労働省公式の平成30年度改正資料で(1)〜(3)の見出し・階層・確認可能本文を直接取得し、令和3年度・令和6年度資料では同範囲が略記されていることを確認した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIOR_PRIMARY_SOURCE",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B013-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.014",
+      "task_id": "KR2-06-B014",
+      "path": "第三/二の二/4/(4)",
+      "number": "(4)",
+      "heading": "運営等に関する基準（基準第37条の3）",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/4 共生型地域密着型通所介護に関する基準",
+      "content_summary": "共生型地域密着型通所介護に準用される共通規定・地域密着型通所介護規定を列挙する。利用定員は介護給付対象と障害給付対象の利用者を合算した同時利用上限として扱うこと等を示す。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／4 共生型地域密着型通所介護に関する基準 > (4) 運営等に関する基準（基準第37条の3）",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B014-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.015",
+      "task_id": "KR2-06-B015",
+      "path": "第三/二の二/5/(1)",
+      "number": "(1)",
+      "heading": "指定療養通所介護の基本方針",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/5 指定療養通所介護",
+      "content_summary": "高度な医療・介護ニーズを有する利用者を対象とする指定療養通所介護について、主治医・訪問看護事業者等との密接な連携のもと、利用者の心身状況に応じた適切なサービスを提供する基本的考え方を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf"
+      ],
+      "source_locator": "指定療養通所介護／(1) 指定療養通所介護の基本方針",
+      "extraction_method": "厚生労働省の過去の解釈通知全文で見出しを確認し、地域密着型サービスへの移行後の現行基準省令第39条および令和3年度改正通知の節構造と突合した。",
+      "content_state": "GAP_SCOPE_RESOLVED_BY_HISTORICAL_PRIMARY_NOTICE_AND_CURRENT_STANDARD",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B015-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.016",
+      "task_id": "KR2-06-B016",
+      "path": "第三/二の二/5/(2)/①",
+      "number": "①",
+      "heading": "従業者の員数（基準第40条）",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/5 指定療養通所介護/(2) 人員に関する基準",
+      "content_summary": "令和3年度の厚生労働省公式改正通知で見出しを直接確認。利用者ごとの利用時間が異なる場合、必要な療養通所介護従業者の員数を利用時間数の合計値を1.5で除した値を基礎に算定する説明が示される。現行基準第40条では利用者1.5人に対して提供時間帯を通じて専従従業者1以上を確保し、うち1人以上を常勤専従看護師とする。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第三 地域密着型サービス／二の二／5 指定療養通所介護の事業／(2) 人員に関する基準／① 従業者の員数（基準第40条）",
+      "extraction_method": "令和3年度厚生労働省公式改正通知の新欄で①の見出しとハの説明を確認し、現行基準省令第40条の人員基準と突合した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B016-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.017",
+      "task_id": "KR2-06-B017",
+      "path": "第三/二の二/5/(2)/②",
+      "number": "②",
+      "heading": "管理者（基準第40条の2）",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/5 指定療養通所介護/(2) 人員に関する基準",
+      "content_summary": "指定療養通所介護の管理者は常勤・専従を原則とし、管理業務に支障がない範囲で他職務との兼務を認める。令和6年度改正資料では、他事業所等との兼務時に利用者へのサービス場面を適時把握でき、一元的管理・指揮命令に支障がないこと等を判断要素として示す。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／5 指定療養通所介護 > (2) 人員に関する基準 > ② 管理者（基準第40条の2）",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B017-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.018",
+      "task_id": "KR2-06-B018",
+      "path": "第三/二の二/5/(3)",
+      "number": "(3)",
+      "heading": "設備に関する基準",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/5 指定療養通所介護",
+      "content_summary": "利用定員の考え方を扱う。過去資料間で定員数の改正が確認できるため、数値は現行値として固定しない。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "平成30年度改正資料／第三 地域密着型サービス／二の二 地域密着型通所介護／5 指定療養通所介護の事業／(3) 設備に関する基準",
+      "extraction_method": "厚生労働省公式の平成30年度改正資料で(3)「設備に関する基準」、①「利用定員等」、②「設備及び備品等」を直接確認し、令和6年度資料の略記範囲と突合した。改正前後で利用定員数が変化しているため数値を現行値として採用していない。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIOR_PRIMARY_SOURCE",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B018-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.019",
+      "task_id": "KR2-06-B019",
+      "path": "第三/二の二/5/(4)/①",
+      "number": "①",
+      "heading": "内容及び手続の説明及び同意",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/5 指定療養通所介護/(4) 運営に関する基準",
+      "content_summary": "厚生労働省の過去の解釈通知全文で見出しと説明を確認。サービス開始前に運営規程、勤務体制、緊急時対応医療機関との連絡体制、苦情処理等の重要事項を文書で説明し同意を得る趣旨を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "指定療養通所介護／(4) 運営に関する基準／①・②",
+      "extraction_method": "厚生労働省の過去の解釈通知全文で①・②を復元し、令和3年度改正通知で①〜③が同じ位置に存在すること、現行基準第40条の5以下の運営規定と対応することを確認した。",
+      "content_state": "GAP_SCOPE_RESOLVED_BY_HISTORICAL_PRIMARY_NOTICE_AND_CURRENT_STANDARD",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B019-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.020",
+      "task_id": "KR2-06-B020",
+      "path": "第三/二の二/5/(4)/③",
+      "number": "③",
+      "heading": "指定療養通所介護の基本取扱方針及び具体的取扱方針",
+      "parent": "第三 地域密着型サービス/二の二 地域密着型通所/5 指定療養通所介護/(4) 運営に関する基準",
+      "content_summary": "基準第25条・第40条の8に基づく取扱方針の留意事項を示す。令和6年度改正では、身体的拘束等の原則禁止、緊急やむを得ず行う場合の記録と切迫性・非代替性・一時性の慎重な確認が追加されている。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001221586.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二の二 地域密着型通所／5 指定療養通所介護 > (4) 運営に関する基準 > ③ 指定療養通所介護の基本取扱方針及び具体的取扱方針",
+      "extraction_method": "厚生労働省公式の令和6年度改正新旧対照表をfresh readし、左側「新」欄の対象見出し・番号・本文断片を確認して構造化",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B020-LIB-V1"
+    },
+    {
+      "id": "community-dayservice.notice.021",
+      "task_id": "KR2-06-B021",
+      "path": "第三/二の二/5/(4)/④",
+      "number": "④",
+      "heading": "療養通所介護計画の作成",
+      "parent": "第三/二の二/5/(4)",
+      "content_summary": "令和3年度厚生労働省公式改正通知で見出しを直接確認。利用者ごとの計画作成、訪問看護計画との整合、説明・同意・交付等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第三 地域密着型サービス／二の二／5 指定療養通所介護の事業／(4) 運営に関する基準／④〜⑨",
+      "extraction_method": "令和3年度厚生労働省公式改正通知で④、⑥〜⑨を直接確認し、過去の厚生労働省解釈通知全文で⑤を含む連続構造を確認、現行基準省令第40条の9〜第40条の15等と突合した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_MULTIPLE_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-06-B021-LIB-V1"
+    }
+  ]
+}
