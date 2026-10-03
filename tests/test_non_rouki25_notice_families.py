@@ -28,7 +28,7 @@ class NonRouki25NoticeFamilyTest(unittest.TestCase):
                 self.assertEqual(layer["principal_items"], expected_items)
                 expected_status = (
                     "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING"
-                    if service_id in {"night-homevisit", "regular-round", "community-dayservice", "care-management"}
+                    if service_id in {"night-homevisit", "regular-round", "community-dayservice", "care-management", "preventive-support"}
                     else "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED"
                 )
                 self.assertEqual(layer["status"], expected_status)
