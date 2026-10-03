@@ -1,0 +1,115 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-dementia-dayservice",
+  "service_label": "介護予防認知症対応型通所介護",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+  "law_id": "409AC0000000123",
+  "law_num": "平成九年法律第百二十三号",
+  "title": "介護保険法",
+  "shared_corpus": "data/care-insurance-act-nodes.json",
+  "service_definition": {
+    "relation": "direct_applicability",
+    "source_node_ids": [
+      "careact.article.8-2.p.12",
+      "careact.article.8-2.p.13"
+    ],
+    "scope_status": "SCOPE_DEFINED"
+  },
+  "benefit_scope": {
+    "relation": "direct_applicability",
+    "article": "54-2",
+    "source_node_id": "careact.article.54-2",
+    "scope_status": "SCOPE_DEFINED"
+  },
+  "provider_governance_scope": {
+    "relation": "direct_applicability",
+    "article_numbers": [
+      "115-12",
+      "115-13",
+      "115-14",
+      "115-15",
+      "115-16",
+      "115-17",
+      "115-18",
+      "115-19",
+      "115-20",
+      "115-21"
+    ],
+    "source_node_ids": [
+      "careact.article.115-12",
+      "careact.article.115-13",
+      "careact.article.115-14",
+      "careact.article.115-15",
+      "careact.article.115-16",
+      "careact.article.115-17",
+      "careact.article.115-18",
+      "careact.article.115-19",
+      "careact.article.115-20",
+      "careact.article.115-21"
+    ],
+    "scope_status": "SCOPE_DEFINED"
+  },
+  "incorporation_relations": [
+    {
+      "relation": "incorporates_by_reference",
+      "via_article": "115-12",
+      "via_node_id": "careact.article.115-12",
+      "target_article": "78-2",
+      "target_scope": "paragraphs 9 through 11",
+      "source_node_id": "careact.article.78-2",
+      "technical_read_as_source": {
+        "instrument": "介護保険法施行令",
+        "article": "35-12",
+        "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999129&dataType=0"
+      },
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "relation": "incorporates_by_reference",
+      "via_article": "115-21",
+      "via_node_id": "careact.article.115-21",
+      "target_article": "70-2",
+      "source_node_id": "careact.article.70-2",
+      "read_as": [
+        {
+          "from": "前条",
+          "to": "第百十五条の十二"
+        }
+      ],
+      "technical_read_as_source": {
+        "instrument": "介護保険法施行令",
+        "article": "35-13",
+        "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999129&dataType=0"
+      },
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    }
+  ],
+  "conditional_special_provisions": [
+    {
+      "article": "115-12-2",
+      "source_node_id": "careact.article.115-12-2",
+      "kind": "cross-system_designation_special_case",
+      "scope_state": "APPLICABILITY_NOT_ESTABLISHED",
+      "reason": "条文は厚生労働省令で定める地域密着型介護予防サービスに限定するため、サービス別対象確定を別verificationとして残す。"
+    }
+  ],
+  "deemed_designation": {
+    "scope_state": "NOT_IDENTIFIED_IN_THIS_SECTION",
+    "note": "本scopeではサービス別のみなし指定を確定しない。"
+  },
+  "evidence": {
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0",
+    "checked_on": "2026-10-03",
+    "repository_corpus_meta": "data/care-insurance-act-meta.json"
+  },
+  "source_text_duplicated": false,
+  "applicability_verification": "NOT_SERVICE_VERIFIED",
+  "currentness": {
+    "status": "NOT_ESTABLISHED"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED"
+  },
+  "automatic_verification_promotion_allowed": false
+}

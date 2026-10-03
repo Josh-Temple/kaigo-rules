@@ -1,0 +1,63 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-dementia-dayservice",
+  "service_label": "介護予防認知症対応型通所介護",
+  "status": "SCOPE_DEFINED_SHARED_TARGETS_PARTIAL",
+  "scope_kind": "REMUNERATION_AND_DELEGATED_CRITERIA_SERVICE_SCOPE",
+  "primary_notice": {
+    "notice_number": "平成十八年厚生労働省告示第百二十八号",
+    "title": "指定地域密着型介護予防サービスに要する費用の額の算定に関する基準",
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7864&dataType=0&pageNo=1",
+    "fee_schedule_selector": "1 介護予防認知症対応型通所介護費",
+    "scope_status": "SCOPE_DEFINED",
+    "shared_corpus_relation": {
+      "state": "TARGET_NOTICE_NOT_INGESTED_IN_CURRENT_SHARED_REMUNERATION_CORPUS",
+      "current_repository_corpus": "data/remuneration-current-skeleton.json"
+    }
+  },
+  "delegated_criteria_scope": {
+    "scope_status": "PARTIAL_SCOPE_DEFINED",
+    "sources": [
+      {
+        "notice_number": "平成二十七年厚生労働省告示第九十四号",
+        "title": "厚生労働大臣が定める基準に適合する利用者等",
+        "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4583&dataType=0&pageNo=1",
+        "applicability": "SOURCE_DOCUMENT_REFERENCES_NOTICE128_ITEM_MAPPING_NOT_ESTABLISHED",
+        "shared_node_relation": "NOT_INGESTED"
+      },
+      {
+        "notice_number": "平成二十七年厚生労働省告示第九十五号",
+        "title": "厚生労働大臣が定める基準",
+        "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+        "applicability": "TARGET_SERVICE_LABEL_CONFIRMED_SOURCE_DOCUMENT",
+        "selector": "介護予防認知症対応型通所介護費",
+        "repository_shared_nodes": "data/remuneration-delegated-nodes.json",
+        "shared_node_relation": "PARTIAL_EXISTING_NODES_NOT_COMPLETE"
+      },
+      {
+        "notice_number": "平成二十七年厚生労働省告示第九十六号",
+        "title": "厚生労働大臣が定める施設基準",
+        "applicability": "REFERENCED_BY_FEE_SCHEDULE_ITEM_MAPPING_NOT_ESTABLISHED",
+        "shared_node_relation": "NOT_INGESTED",
+        "official_source_locator_state": "PRIMARY_SOURCE_IDENTITY_CONFIRMED_URL_NOT_PINNED"
+      }
+    ]
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "latest_amendment_observed_on_primary_notice": {
+      "amendment": "令和八年厚生労働省告示第八十七号",
+      "effective_from": "2026-06-01"
+    },
+    "note": "scope evidence only; currentness PASSを意味しない。"
+  },
+  "source_text_duplicated": false,
+  "applicability_verification": "NOT_SERVICE_VERIFIED",
+  "currentness": {
+    "status": "NOT_ESTABLISHED"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED"
+  },
+  "automatic_verification_promotion_allowed": false
+}

@@ -1,0 +1,236 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-dementia-group-home",
+  "service_label": "介護予防認知症対応型共同生活介護",
+  "status": "SCOPE_DEFINED_RELATIONS_NOT_SERVICE_VERIFIED",
+  "scope_kind": "SHARED_STANDARDS_SERVICE_SCOPE",
+  "corpus_id": "preventive-community-based-standards",
+  "law_id": "418M60000100036",
+  "law_num": "平成十八年厚生労働省令第三十六号",
+  "title": "指定地域密着型介護予防サービスの事業の人員、設備及び運営並びに指定地域密着型介護予防サービスに係る介護予防のための効果的な支援の方法に関する基準",
+  "shared_nodes": "data/shared/standards/preventive-community-based-standards/nodes.json",
+  "common_direct_scope": {
+    "relation": "direct_applicability",
+    "article_numbers": [
+      "1",
+      "2",
+      "3"
+    ],
+    "source_node_ids": [
+      "standards36.article.1",
+      "standards36.article.2",
+      "standards36.article.3"
+    ]
+  },
+  "service_chapter_direct_scope": {
+    "relation": "direct_applicability",
+    "chapter": "第四章 介護予防認知症対応型共同生活介護",
+    "article_numbers": [
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "77",
+      "78",
+      "79",
+      "80",
+      "81",
+      "82",
+      "83",
+      "84",
+      "85",
+      "86",
+      "87",
+      "88",
+      "89"
+    ],
+    "source_node_ids": [
+      "standards36.article.69",
+      "standards36.article.70",
+      "standards36.article.71",
+      "standards36.article.72",
+      "standards36.article.73",
+      "standards36.article.74",
+      "standards36.article.75",
+      "standards36.article.76",
+      "standards36.article.77",
+      "standards36.article.78",
+      "standards36.article.79",
+      "standards36.article.80",
+      "standards36.article.81",
+      "standards36.article.82",
+      "standards36.article.83",
+      "standards36.article.84",
+      "standards36.article.85",
+      "standards36.article.86",
+      "standards36.article.87",
+      "standards36.article.88",
+      "standards36.article.89"
+    ]
+  },
+  "incorporated_scope": {
+    "state": "DEFINED",
+    "relation": "incorporates_by_reference",
+    "via_article": "85",
+    "via_node_id": "standards36.article.85",
+    "article_numbers": [
+      "11",
+      "12",
+      "14",
+      "15",
+      "23",
+      "24",
+      "26",
+      "28-2",
+      "31",
+      "32",
+      "33",
+      "34",
+      "36",
+      "37",
+      "37-2",
+      "38",
+      "39",
+      "56",
+      "58-2",
+      "60",
+      "62-2"
+    ],
+    "source_node_ids": [
+      "standards36.article.11",
+      "standards36.article.12",
+      "standards36.article.14",
+      "standards36.article.15",
+      "standards36.article.23",
+      "standards36.article.24",
+      "standards36.article.26",
+      "standards36.article.28-2",
+      "standards36.article.31",
+      "standards36.article.32",
+      "standards36.article.33",
+      "standards36.article.34",
+      "standards36.article.36",
+      "standards36.article.37",
+      "standards36.article.37-2",
+      "standards36.article.38",
+      "standards36.article.39",
+      "standards36.article.56",
+      "standards36.article.58-2",
+      "standards36.article.60",
+      "standards36.article.62-2"
+    ],
+    "exclusions": [
+      {
+        "article": "37",
+        "paragraph": "4"
+      },
+      {
+        "article": "39",
+        "paragraph": "5"
+      }
+    ]
+  },
+  "read_as_rules": [
+    {
+      "selector": {
+        "article": "11",
+        "paragraph": "1"
+      },
+      "substitutions": [
+        {
+          "from": "第二十七条に規定する運営規程",
+          "to": "第七十九条に規定する重要事項に関する規程"
+        }
+      ]
+    },
+    {
+      "selector": {
+        "parts": [
+          "11.1",
+          "28-2.2",
+          "31.2.1",
+          "31.2.3",
+          "32.1",
+          "37-2.1",
+          "37-2.3"
+        ]
+      },
+      "substitutions": [
+        {
+          "from": "介護予防認知症対応型通所介護従業者",
+          "to": "介護従業者"
+        }
+      ]
+    },
+    {
+      "selector": {
+        "article": "26",
+        "paragraph": "2"
+      },
+      "substitutions": [
+        {
+          "from": "この節",
+          "to": "第四章第四節"
+        }
+      ]
+    },
+    {
+      "selector": {
+        "article": "39",
+        "paragraph": "1"
+      },
+      "substitutions": [
+        {
+          "from": "介護予防認知症対応型通所介護について知見を有する者",
+          "to": "介護予防認知症対応型共同生活介護について知見を有する者"
+        },
+        {
+          "from": "六月",
+          "to": "二月"
+        }
+      ]
+    },
+    {
+      "selector": {
+        "article": "56"
+      },
+      "substitutions": [
+        {
+          "from": "介護予防小規模多機能型居宅介護従業者",
+          "to": "介護従業者"
+        }
+      ]
+    },
+    {
+      "selector": {
+        "article": "58-2"
+      },
+      "substitutions": [
+        {
+          "from": "指定介護予防小規模多機能型居宅介護事業者",
+          "to": "指定介護予防認知症対応型共同生活介護事業者"
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7860&dataType=0&pageNo=1",
+    "checked_on": "2026-10-03",
+    "source_corpus_meta": "data/shared/standards/preventive-community-based-standards/meta.json",
+    "relation_basis_node": "standards36.article.85"
+  },
+  "source_text_duplicated": false,
+  "service_applicability": "DEFINED_NOT_VERIFIED",
+  "applicability_verification": "NOT_SERVICE_VERIFIED",
+  "currentness": {
+    "status": "NOT_ESTABLISHED"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED"
+  },
+  "automatic_verification_promotion_allowed": false
+}
