@@ -10,7 +10,7 @@ BASE=DATA/"shared/standards"
 OUTPUT=BASE/"service-relations.generated.json"
 
 def load(path): return json.loads(path.read_text(encoding="utf-8"))
-def article_id(num): return f"ordinance37.article.{str(num)}"
+def article_id(num): return f"ordinance37.article.{str(num)}"\nSTANDARDS_SCOPE_KEYS=("ordinance37","standards_index","governing_standards")
 
 def build():
     manifest=load(DATA/"services/manifest.json")
@@ -77,13 +77,18 @@ def build():
           "verification_status":"NOT_SERVICE_VERIFIED"
         })
 
-    defined={"dayservice","homevisit","dayrehab"}
     for svc in manifest["services"]:
         sid=svc["service_id"]
+        config=load(ROOT/svc["config"])
+        scope_files=config.get("scope_files") or {}
+        scope_source=next((scope_files[key] for key in STANDARDS_SCOPE_KEYS if scope_files.get(key)),None)
+        if scope_source and not (ROOT/scope_source).exists():
+            raise ValueError(f"{sid}: standards scope source missing: {scope_source}")
         states.append({
           "service_id":sid,
           "corpus_id":mapped.get(sid),
-          "scope_status":"SCOPE_DEFINED" if sid in defined else "SCOPE_NOT_DEFINED",
+          "scope_status":"SCOPE_DEFINED" if mapped.get(sid) and scope_source else "SCOPE_NOT_DEFINED",
+          "scope_source":scope_source,
           "relation_verification":"NOT_SERVICE_VERIFIED",
           "automatic_verification_promotion_allowed":False
         })
