@@ -1,5 +1,6 @@
 import reviewPacketData from "../data/notice-review-packet.json" with { type: "json" };
 import homevisitData from "../data/services/homevisit/rouki25-historical.generated.json" with { type: "json" };
+import homebathData from "../data/services/homebath/rouki25-historical.generated.json" with { type: "json" };
 import dayrehabData from "../data/services/dayrehab/rouki25-historical.generated.json" with { type: "json" };
 import serviceCatalogData from "../data/services/catalog.generated.json" with { type: "json" };
 
@@ -97,6 +98,7 @@ type CatalogService = {
 
 const dayserviceReview = reviewPacketData as { items?: ReviewItem[] };
 const homevisit = homevisitData as HistoricalNoticeDataset;
+const homebath = homebathData as HistoricalNoticeDataset;
 const dayrehab = dayrehabData as HistoricalNoticeDataset;
 const serviceCatalog = serviceCatalogData as { services?: CatalogService[] };
 
@@ -181,6 +183,13 @@ const homevisitRecords = historicalNoticeRecords(homevisit, {
   evidencePrefix: "homevisit-rouki25",
 });
 
+const homebathRecords = historicalNoticeRecords(homebath, {
+  serviceId: "homebath",
+  serviceLabel: "訪問入浴介護",
+  verificationLayerId: "rouki25-homebath",
+  evidencePrefix: "homebath-rouki25",
+});
+
 const dayrehabRecords = historicalNoticeRecords(dayrehab, {
   serviceId: "dayrehab",
   serviceLabel: "通所リハビリテーション",
@@ -191,6 +200,7 @@ const dayrehabRecords = historicalNoticeRecords(dayrehab, {
 export const publicNoticeRecords: PublicNoticeRecord[] = [
   ...dayserviceRecords,
   ...homevisitRecords,
+  ...homebathRecords,
   ...dayrehabRecords,
 ];
 
