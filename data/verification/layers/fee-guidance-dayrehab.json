@@ -11,7 +11,8 @@
   },
   "currentness": {
     "status": "GAP",
-    "note": "R6新旧対照の略を補完せず、R8対照で第8節が略記されたことを改正なしの根拠にしていない。"
+    "note": "R6新旧対照の略を補完せず、R8対照で第8節が略記されたことを改正なしの根拠にしていない。",
+    "evidence": "data/verification/existing-service-currentness-wave.json"
   },
   "monitoring": {
     "status": "ACTIVE",
@@ -25,4 +26,4 @@
     "total_items": 33
   },
   "assurance": "BOUNDED_SOURCE_INVENTORY_PASS_CURRENTNESS_GAP"
-}
+}\n
