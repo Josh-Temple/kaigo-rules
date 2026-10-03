@@ -41,7 +41,7 @@ def validation_errors(root:Path=ROOT):
    if k in scopes and not (root/scopes[k]).exists():errors.append(f"{sid}: missing scope file {k}")
   if (cfg.get("routing") or {}).get("future_service_base_enabled") is not False:errors.append(f"{sid}: route enabled")
   gate=cfg.get("publication_gate") or {}
-  for k in ("content_ingested","independent_verification","human_review","future_service_route_enabled"):
+  for k in ("public_routes_enabled","content_ingested","independent_verification_complete","human_review_complete"):
    if gate.get(k) is not False:errors.append(f"{sid}: publication gate promoted: {k}")
   ps=[root/f"data/services/{sid}/care-insurance-act-scope.json",root/f"data/services/{sid}/standards36-scope.json",root/f"data/services/{sid}/remuneration-scope.json",root/f"data/services/{sid}/unit-price-scope.json"]
   for p in ps:
