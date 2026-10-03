@@ -54,8 +54,8 @@ SOURCE_FAMILIES = (
         "label": "Delegated remuneration criteria",
         "shared_layer_ids": ("remuneration-notices",),
         "scope_keys": ("delegated_remuneration_criteria", "remuneration_skeleton", "remuneration", "remuneration_index"),
-        "ingestion_keys": ("remuneration",),
-        "verification_layer_ids": ("remuneration-notices", "remuneration-dayrehab"),
+        "ingestion_keys": ("delegated_remuneration_criteria",),
+        "verification_layer_ids": (),
     },
     {
         "id": "fee_calculation_guidance",

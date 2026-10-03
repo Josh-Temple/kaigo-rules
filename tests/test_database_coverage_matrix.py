@@ -59,6 +59,16 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
                 row["service_id"],
             )
 
+    def test_delegated_criteria_do_not_inherit_remuneration_ingestion_or_verification(self):
+        for service_id in ("dayservice", "dayrehab"):
+            remuneration = self.cell(service_id, "remuneration_notification")
+            delegated = self.cell(service_id, "delegated_remuneration_criteria")
+            self.assertEqual(remuneration["ingestion"]["state"], "INGESTED")
+            self.assertEqual(delegated["service_scope"]["state"], "SCOPE_DEFINED")
+            self.assertEqual(delegated["ingestion"]["state"], "NOT_INGESTED")
+            self.assertEqual(delegated["item_body_verification"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
+
     def test_item_body_pass_does_not_promote_currentness(self):
         cell = self.cell("community-dayservice", "standards_interpretation_notice")
         self.assertEqual(cell["item_body_verification"]["state"], "PASS")

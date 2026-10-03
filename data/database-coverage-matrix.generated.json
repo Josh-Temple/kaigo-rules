@@ -359,28 +359,21 @@
               "remuneration_skeleton"
             ],
             "evidence": [
-              "data/remuneration-current-skeleton.json",
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-current-skeleton.json"
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
+            "state": "NOT_INGESTED",
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "PASS",
-            "raw_status": [
-              "PASS"
-            ],
-            "evidence": [
-              "data/remuneration-independent-audit.json"
-            ]
+            "state": "NOT_ESTABLISHED",
+            "raw_status": [],
+            "evidence": []
           },
           "currentness": {
-            "state": "PARTIAL",
-            "raw_status": [
-              "LIVE_SOURCE_REPARSE_SCHEDULED"
-            ],
+            "state": "NOT_ESTABLISHED",
+            "raw_status": [],
             "evidence": []
           },
           "relation_verification": {
@@ -391,16 +384,14 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_STARTED"
-            ]
+            "raw_status": []
           },
           "publication": {
-            "state": "AVAILABLE",
+            "state": "NOT_ESTABLISHED",
             "raw_service_public_routes_enabled": null
           },
           "route_exposure": {
-            "state": "AVAILABLE",
+            "state": "NOT_ESTABLISHED",
             "raw_current_mode": "LEGACY_ROOT",
             "raw_future_service_base_enabled": false
           }
@@ -931,9 +922,7 @@
           },
           "ingestion": {
             "state": "NOT_INGESTED",
-            "raw_status": [
-              "SCOPE_DEFINED_NOT_INGESTED"
-            ]
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3547,33 +3536,22 @@
               "remuneration_index"
             ],
             "evidence": [
-              "data/services/dayrehab/remuneration-index.json",
-              "data/verification-registry.json#remuneration-dayrehab"
+              "data/services/dayrehab/remuneration-index.json"
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "SOURCE_VERSIONED_INVENTORY_WITH_R8_PATCH_LEDGER"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
-            "state": "PASS",
-            "raw_status": [
-              "PASS_BOUNDED_SCOPE_ONLY"
-            ],
-            "evidence": [
-              "data/dayrehab-remuneration-independent-audit.json"
-            ]
+            "state": "NOT_ESTABLISHED",
+            "raw_status": [],
+            "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [
-              "GAP"
-            ],
-            "evidence": [
-              "data/verification/existing-service-currentness-wave.json"
-            ]
+            "raw_status": [],
+            "evidence": []
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3583,16 +3561,14 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
-            "state": "AVAILABLE",
+            "state": "NOT_ESTABLISHED",
             "raw_service_public_routes_enabled": true
           },
           "route_exposure": {
-            "state": "AVAILABLE",
+            "state": "NOT_ESTABLISHED",
             "raw_current_mode": "SERVICE_ROOT_PREVIEW",
             "raw_future_service_base_enabled": true
           }
@@ -20190,16 +20166,13 @@
           "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "INGESTED": 2,
-          "NOT_INGESTED": 37
+          "NOT_INGESTED": 39
         },
         "item_body_verification": {
-          "NOT_ESTABLISHED": 37,
-          "PASS": 2
+          "NOT_ESTABLISHED": 39
         },
         "currentness": {
-          "NOT_ESTABLISHED": 38,
-          "PARTIAL": 1
+          "NOT_ESTABLISHED": 39
         },
         "relation_verification": {
           "NOT_ESTABLISHED": 39
@@ -20208,12 +20181,12 @@
           "NOT_REVIEWED": 39
         },
         "publication": {
-          "AVAILABLE": 2,
-          "BLOCKED": 37
+          "BLOCKED": 37,
+          "NOT_ESTABLISHED": 2
         },
         "route_exposure": {
-          "AVAILABLE": 2,
-          "BLOCKED": 37
+          "BLOCKED": 37,
+          "NOT_ESTABLISHED": 2
         }
       },
       "fee_calculation_guidance": {
@@ -20785,11 +20758,6 @@
       },
       {
         "service_id": "dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "PARTIAL"
-      },
-      {
-        "service_id": "dayservice",
         "source_family": "fee_calculation_guidance",
         "state": "PARTIAL"
       },
@@ -20896,11 +20864,6 @@
       {
         "service_id": "dayrehab",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dayrehab",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
