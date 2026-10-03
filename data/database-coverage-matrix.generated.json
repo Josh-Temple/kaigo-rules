@@ -3543,11 +3543,11 @@
             ]
           },
           "publication": {
-            "state": "AVAILABLE",
+            "state": "NOT_ESTABLISHED",
             "raw_service_public_routes_enabled": true
           },
           "route_exposure": {
-            "state": "AVAILABLE",
+            "state": "NOT_ESTABLISHED",
             "raw_current_mode": "SERVICE_ROOT_PREVIEW",
             "raw_future_service_base_enabled": true
           }
@@ -6754,12 +6754,14 @@
           "NOT_REVIEWED": 13
         },
         "publication": {
-          "AVAILABLE": 2,
-          "BLOCKED": 11
+          "AVAILABLE": 1,
+          "BLOCKED": 11,
+          "NOT_ESTABLISHED": 1
         },
         "route_exposure": {
-          "AVAILABLE": 2,
-          "BLOCKED": 11
+          "AVAILABLE": 1,
+          "BLOCKED": 11,
+          "NOT_ESTABLISHED": 1
         }
       },
       "other_national_manuals_forms": {
@@ -7435,6 +7437,11 @@
         "service_id": "homecaremanagement",
         "source_family": "national_qa",
         "state": "BLOCKED"
+      },
+      {
+        "service_id": "dayrehab",
+        "source_family": "national_qa",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "shortstay-life",
