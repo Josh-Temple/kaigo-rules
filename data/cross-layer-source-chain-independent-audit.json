@@ -6,8 +6,8 @@
   "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Verify cross-layer source chains independently",
-    "run_id": 37125592322,
-    "head_sha": "93bf81ca604c12d62c795888e00801a80367c7d6",
+    "run_id": 37127701311,
+    "head_sha": "211c17ec9eb30a020ae83e2ab9e5094472efce37",
     "result": "PASS",
     "parsers": {
       "egov_xml": "python_xml_dom_minidom",
@@ -124,8 +124,8 @@
   "input_git_blob_shas_at_audit": {
     "data/care-insurance-act-relations.json": "6cfb17acea1e2c546bf11e63f902ebcb7b1404ea",
     "data/care-insurance-act-nodes.json": "046da7e5a3ba1241d713ecf7eca089e55bb455e3",
-    "data/careact-internal-relation-independent-audit.json": "5f2ab394b688c124ab0d9c91b95eb4b4b6c96d40",
-    "data/relation-semantic-independent-audit.json": "2d04fb50046c1c62a4f714314bd4dab793a3f034",
+    "data/careact-internal-relation-independent-audit.json": "e4b0639b3e20c0998aba3a19b83891e12f2c0f55",
+    "data/relation-semantic-independent-audit.json": "429b2875cd1e7d68c59e971504eb0062999d369e",
     "data/ordinance37-meta.json": "25c869e4f48cd5e44f621d717ce2e7b0bfeb7d91",
     "data/ordinance37-scope.json": "f05ec80b8473ec89b5e2ed48f88fd30abb8d1cd5",
     "data/remuneration-current-skeleton.json": "4caef5d7c34c1658e442db137fed20944ebfeb06",
