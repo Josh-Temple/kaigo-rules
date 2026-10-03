@@ -7,15 +7,15 @@
   "source_family": "care_management_standards_interpretation",
   "audit_run": {
     "workflow": "Verify standards interpretation source inventories",
-    "run_id": 37109100608,
-    "head_sha": "f6f59f9afd08974e7c5782257d379ac759e07031",
+    "run_id": 37109341121,
+    "head_sha": "8843f8a766736aee15eb437a1ea32617ff15bd27",
     "verifier": "scripts/verify_standards_interpretation_sources_independent.py",
-    "report_sha256": "aaf83e8df712ed7f9a9643daa7d4375ccc87817bbaf12379191969ba51d52c5e"
+    "report_sha256": "1552c9c521bedbb52e6fb83bc82874d486401567ecd96d7bdda81f0e3fb43137"
   },
   "coverage": {
     "expected_staging_items_or_tasks": 32,
     "observed_staging_items_or_tasks": 32,
-    "referenced_sources": 6,
+    "referenced_sources": 8,
     "manifest_required_sources": 8,
     "inspected_sources": 8,
     "sources_fetchable": 8,
@@ -116,7 +116,7 @@
   "differences": [],
   "input_git_blob_shas_at_audit": {
     "data/services/care-management/standards-interpretation-scope.json": "90c170c822797f5317055fe1212753926029a324",
-    "data/services/care-management/standards-interpretation-staging.json": "00801ba30c06f6ca7276b686dad090df20729bc2",
+    "data/services/care-management/standards-interpretation-staging.json": "f8acbb5f74b2c2249acae0fdbadcb1dd2d209de4",
     "scripts/verify_standards_interpretation_sources_independent.py": "9f65e258e64bd5d719f4e586e06430728aa5e196"
   },
   "conclusion": "All manifest-required official sources, plus referenced supplemental sources, were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
