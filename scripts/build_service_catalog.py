@@ -25,24 +25,33 @@ def build() -> dict:
     for descriptor in manifest.get("services", []):
         service_id = descriptor["service_id"]
         config = configs[service_id]
-        services.append(
-            {
-                "service_id": service_id,
-                "label": descriptor["label"],
-                "status": descriptor["status"],
-                "routing": config.get("routing", {}),
-                "id_namespaces": config.get("id_namespaces", {}),
-                "scope_files": config.get("scope_files", {}),
-                "publication_gate": config.get("publication_gate", {}),
-                "ingestion_layers": config.get("ingestion_layers", {}),
-                "verification_layer_ids": config.get("verification_layer_ids", []),
-            }
-        )
+        item = {
+            "service_id": service_id,
+            "label": descriptor["label"],
+            "status": descriptor["status"],
+            "service_class": descriptor.get("service_class"),
+            "routing": config.get("routing", {}),
+            "id_namespaces": config.get("id_namespaces", {}),
+            "scope_files": config.get("scope_files", {}),
+            "publication_gate": config.get("publication_gate", {}),
+            "ingestion_layers": config.get("ingestion_layers", {}),
+            "verification_layer_ids": config.get("verification_layer_ids", []),
+        }
+        if "identity" in config:
+            item["identity"] = config["identity"]
+        if "expected_source_families" in config:
+            item["expected_source_families"] = config["expected_source_families"]
+        if "ingestion_state" in config:
+            item["ingestion_state"] = config["ingestion_state"]
+        services.append(item)
 
     return {
         "format_version": 1,
         "generated_by": "scripts/build_service_catalog.py",
         "default_service_id": manifest["default_service_id"],
+        "service_universe": manifest.get("service_universe", {}),
+        "historical_services": manifest.get("historical_services", []),
+        "special_categories": manifest.get("special_categories", []),
         "services": services,
     }
 
