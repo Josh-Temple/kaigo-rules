@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Independently reparse scoped e-Gov law content with xml.dom.minidom.
+"""Independently reparse shared e-Gov law content with xml.dom.minidom.
 
 Production importers use xml.etree.ElementTree. This verifier intentionally uses
 another XML implementation and reconstructs only source-derived node text and
-containment edges. Hand-authored cross-layer/legal-semantic relations are out
-of scope and remain separately reviewable.
+containment edges. Hand-authored legal-semantic and cross-layer relations are
+out of scope and remain separately reviewable.
 """
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ TARGETS = [
     {
         "id": "care-insurance-act",
         "prefix": "careact",
-        "scope_file": "care-insurance-act-scope.json",
+        "scope_file": "care-insurance-act-corpus-scope.json",
         "nodes_file": "care-insurance-act-nodes.json",
         "relations_file": "care-insurance-act-relations.json",
         "meta_file": "care-insurance-act-meta.json",
@@ -160,6 +160,58 @@ def parse_article(article, prefix: str, nodes: dict, contains: set):
         add_item_tree(paragraph, paragraph_id, article_num, pnum, nodes, contains)
 
 
+def collect_article_order(main_provision):
+    order: list[str] = []
+
+    def walk(node):
+        for child in elements(node):
+            if child.tagName in SKIP_TAGS:
+                continue
+            if child.tagName == "Article":
+                num = canonical_num(child.getAttribute("Num"))
+                if num and num not in order:
+                    order.append(num)
+                continue
+            walk(child)
+
+    walk(main_provision)
+    return order
+
+
+def resolve_shared_corpus_articles(scope: dict, main_provision) -> set[str]:
+    order = collect_article_order(main_provision)
+    position = {num: index for index, num in enumerate(order)}
+    selected: set[str] = set()
+
+    for group in scope.get("selection_groups", []):
+        explicit = group.get("articles")
+        if explicit:
+            for value in explicit:
+                article = canonical_num(value)
+                if article not in position:
+                    raise RuntimeError(
+                        f"shared Care Act verifier scope article missing: {article}"
+                    )
+                selected.add(article)
+            continue
+
+        start = canonical_num(group.get("from_article"))
+        end = canonical_num(group.get("through_article"))
+        if start not in position or end not in position:
+            raise RuntimeError(
+                f"shared Care Act verifier range boundary missing: {start}..{end}"
+            )
+        if position[start] > position[end]:
+            raise RuntimeError(
+                f"shared Care Act verifier range reversed: {start}..{end}"
+            )
+        selected.update(order[position[start] : position[end] + 1])
+
+    if not selected:
+        raise RuntimeError("shared Care Act verifier scope resolved to no articles")
+    return selected
+
+
 def collect_scoped(main_provision, target_articles: set[str], prefix: str):
     nodes: dict[str, dict] = {}
     contains: set[tuple[str, str]] = set()
@@ -190,13 +242,6 @@ def compare_target(config: dict) -> dict:
     expected_nodes = load(config["nodes_file"])
     expected_relations = load(config["relations_file"])
 
-    if config["id"] == "ordinance37":
-        target_articles = set(scope["direct_articles"]) | set(scope["incorporated_articles"])
-        for service_scope in scope.get("additional_service_direct_scopes", []):
-            target_articles |= set(service_scope.get("articles", []))
-    else:
-        target_articles = set(scope["articles"])
-
     url = f"https://laws.e-gov.go.jp/api/1/lawdata/{config['law_id']}"
     payload = fetch(url)
     observed_sha = hashlib.sha256(payload).hexdigest()
@@ -207,6 +252,15 @@ def compare_target(config: dict) -> dict:
     main_provision = first_descendant(law, "MainProvision")
     if main_provision is None:
         raise RuntimeError("MainProvision not found")
+
+    if config["id"] == "ordinance37":
+        target_articles = set(scope["direct_articles"]) | set(scope["incorporated_articles"])
+        for service_scope in scope.get("additional_service_direct_scopes", []):
+            target_articles |= set(service_scope.get("articles", []))
+    else:
+        if scope.get("scope_kind") != "SHARED_SOURCE_CORPUS":
+            raise RuntimeError("Care Act verifier requires SHARED_SOURCE_CORPUS scope")
+        target_articles = resolve_shared_corpus_articles(scope, main_provision)
 
     observed_nodes, observed_contains = collect_scoped(
         main_provision, target_articles, config["prefix"]
@@ -247,7 +301,9 @@ def compare_target(config: dict) -> dict:
                     "id": node_id,
                     "difference": "official_text_mismatch",
                     "expected_sha256": hashlib.sha256(expected_text.encode("utf-8")).hexdigest(),
-                    "observed_sha256": hashlib.sha256(observed["official_text"].encode("utf-8")).hexdigest(),
+                    "observed_sha256": hashlib.sha256(
+                        observed["official_text"].encode("utf-8")
+                    ).hexdigest(),
                 }
             )
 
@@ -276,14 +332,23 @@ def compare_target(config: dict) -> dict:
         "id": config["id"],
         "law_id": config["law_id"],
         "source_url": url,
+        "scope_file": f"data/{config['scope_file']}",
         "observed_xml_sha256": observed_sha,
         "result": result,
         "observed": {
             "nodes": len(observed_nodes),
-            "articles": sum(1 for row in observed_nodes.values() if row["node_type"] == "article"),
-            "paragraphs": sum(1 for row in observed_nodes.values() if row["node_type"] == "paragraph"),
-            "items": sum(1 for row in observed_nodes.values() if row["node_type"] == "item"),
-            "subitems": sum(1 for row in observed_nodes.values() if row["node_type"] == "subitem"),
+            "articles": sum(
+                1 for row in observed_nodes.values() if row["node_type"] == "article"
+            ),
+            "paragraphs": sum(
+                1 for row in observed_nodes.values() if row["node_type"] == "paragraph"
+            ),
+            "items": sum(
+                1 for row in observed_nodes.values() if row["node_type"] == "item"
+            ),
+            "subitems": sum(
+                1 for row in observed_nodes.values() if row["node_type"] == "subitem"
+            ),
             "contains_relations": len(observed_contains),
         },
         "expected": {
@@ -313,7 +378,9 @@ def main() -> int:
 
     result = (
         "PASS"
-        if not errors and len(checks) == len(TARGETS) and all(row["result"] == "PASS" for row in checks)
+        if not errors
+        and len(checks) == len(TARGETS)
+        and all(row["result"] == "PASS" for row in checks)
         else "FAIL"
     )
     report = {
@@ -327,7 +394,7 @@ def main() -> int:
             "promotes_human_review": False,
             "promotes_verified_current": False,
             "semantic_relations_audited": False,
-            "note": "This verifier independently checks live e-Gov scoped text and containment only.",
+            "note": "This verifier independently checks live e-Gov shared/scoped text and containment only.",
         },
     }
 
