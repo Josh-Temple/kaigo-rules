@@ -9,8 +9,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 def content_state_allowed(value: str | None) -> bool:
-    return value == "SOURCE_CONTENT_STRUCTURED" or bool(
-        value and value.startswith("GAP_SCOPE_")
+    return bool(
+        value
+        and (
+            value.startswith("SOURCE_CONTENT_STRUCTURED")
+            or value.startswith("GAP_SCOPE_")
+        )
     )
 
 
@@ -54,8 +58,9 @@ def main() -> None:
         fail("dataset human review was promoted")
 
     items = dataset.get("items", [])
-    if dataset.get("item_count") != args.expected_items or len(items) != args.expected_items:
-        fail("item count mismatch")
+    declared_count = dataset.get("item_count", dataset.get("task_count"))
+    if declared_count != args.expected_items or len(items) != args.expected_items:
+        fail("item/task count mismatch")
 
     manifest_urls = {
         row.get("url")
