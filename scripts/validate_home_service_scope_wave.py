@@ -16,7 +16,7 @@ STANDARDS_NEW = {
     "specific-welfare-equipment-sale",
 }
 REMUNERATION_NEW = set(STANDARDS_NEW)
-UNIT_NEW = HOME_SERVICE_IDS - {"dayservice"}
+UNIT_NEW = HOME_SERVICE_IDS
 
 def load(rel):
     return json.loads((ROOT / rel).read_text(encoding="utf-8"))
