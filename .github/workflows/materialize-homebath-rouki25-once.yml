@@ -1,0 +1,95 @@
+name: Materialize verified homebath Rouki 25 dataset
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/materialize-homebath-rouki25-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Generate homebath historical dataset
+        run: |
+          python scripts/import_rouki25_historical_service.py --service-id homebath
+      - name: Independently verify generated dataset
+        run: |
+          python scripts/verify_rouki25_historical_service_independent.py \
+            --service-id homebath \
+            --report /tmp/homebath-rouki25-independent-report.json
+      - name: Build pinned audit receipt
+        env:
+          RUN_ID: ${{ github.run_id }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+
+          report_path = Path("/tmp/homebath-rouki25-independent-report.json")
+          report = json.loads(report_path.read_text(encoding="utf-8"))
+          if report.get("result") != "PASS":
+              raise SystemExit("independent report is not PASS")
+          if report.get("coverage") != {"principal_items": 13, "items_passed": 13}:
+              raise SystemExit("unexpected homebath coverage")
+
+          receipt = {
+              "format_version": 1,
+              "scope": "homebath-rouki25-official-historical-html-section",
+              "audit_kind": report["verification_kind"],
+              "audit_result": report["result"],
+              "audited_at": "2026-10-03",
+              "audit_run": {
+                  "workflow": "Materialize verified homebath Rouki 25 dataset",
+                  "run_id": int(os.environ["RUN_ID"]),
+                  "head_sha": os.environ["HEAD_SHA"],
+                  "parser": report["parser"],
+                  "verification_report_sha256": hashlib.sha256(
+                      report_path.read_bytes()
+                  ).hexdigest(),
+              },
+              "source": report["source"],
+              "checks": report["checks"],
+              "errors": report["errors"],
+              "coverage": report["coverage"],
+              "safety": {
+                  "historical_source_only": True,
+                  "current_integrated_text": False,
+                  "human_verified": False,
+                  "verified_current": False,
+                  "automatic_promotion_allowed": False,
+              },
+          }
+          Path("data/homebath-rouki25-historical-independent-audit.json").write_text(
+              json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+      - name: Commit pinned dataset and receipt
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/services/homebath/rouki25-historical.generated.json \
+            data/homebath-rouki25-historical-independent-audit.json
+          if git diff --cached --quiet; then
+            echo "No generated changes."
+            exit 0
+          fi
+          git commit -m "Pin homebath Rouki 25 generated evidence [skip ci]"
+          git push origin "HEAD:$HEAD_REF"
