@@ -1,0 +1,45 @@
+name: Prepare homebath Rouki 25 historical ingestion
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/services/homebath/rouki25-scope.json"
+      - "scripts/import_rouki25_historical_service.py"
+      - "scripts/verify_rouki25_historical_service_independent.py"
+      - "tests/test_homebath_rouki25_ingestion.py"
+      - ".github/workflows/prepare-homebath-rouki25-historical.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Build bounded historical dataset from official MHLW HTML
+        run: python scripts/import_rouki25_historical_service.py --service-id homebath
+      - name: Independently verify generated text against official MHLW HTML
+        run: |
+          python scripts/verify_rouki25_historical_service_independent.py \
+            --service-id homebath \
+            --report homebath-rouki25-independent-report.json
+      - name: Emit generated dataset for review
+        shell: bash
+        run: |
+          echo "HOMEBATH_ROUKI25_DATASET_BEGIN"
+          cat data/services/homebath/rouki25-historical.generated.json
+          echo "HOMEBATH_ROUKI25_DATASET_END"
+      - name: Upload generated evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: homebath-rouki25-historical-ingestion
+          path: |
+            data/services/homebath/rouki25-historical.generated.json
+            homebath-rouki25-independent-report.json
+          if-no-files-found: error
