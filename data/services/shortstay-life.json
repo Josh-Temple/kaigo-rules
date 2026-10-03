@@ -10,7 +10,8 @@
   },
   "id_namespaces": {},
   "scope_files": {
-    "rouki25": "data/services/shortstay-life/rouki25-scope.json"
+    "rouki25": "data/services/shortstay-life/rouki25-scope.json",
+    "ordinance37": "data/services/shortstay-life/ordinance37-scope.json"
   },
   "verification_layer_ids": [
     "rouki25-shortstay-life"
@@ -31,6 +32,12 @@
       "principal_items": 34,
       "child_nodes_preserved_in_body": 49,
       "note": "老企第25号の公式旧HTMLに基づく34 principal itemsを独立source一致確認付きで全体通知DBへ公開。令和6年度等の改正資料は別証拠として扱い、現行統合本文は生成しない。"
+    },
+    "ordinance37": {
+      "status": "SCOPE_DEFINED_SHARED_CORPUS_EXPANSION_PENDING",
+      "current_text_articles": 42,
+      "deleted_article_slots": 10,
+      "note": "Cycle 4受理済み第九章scopeをservice-specificに固定。現行本文42条は共有e-Govコーパスから参照し、140条の16〜25は削除スロットとして保持する。共有コーパス再取込・独立再照合・準用relation検証は未完了。"
     }
   },
   "ingestion_indexes": {
