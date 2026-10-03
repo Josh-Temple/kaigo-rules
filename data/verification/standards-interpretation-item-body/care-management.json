@@ -1,0 +1,2162 @@
+{
+  "format_version": 1,
+  "service_id": "care-management",
+  "layer": "standards_interpretation",
+  "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION",
+  "audit_result": "PARTIAL_WITH_GAPS",
+  "audit_scope": {
+    "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
+    "scope_git_blob_sha": "15d43513a96fda55f588b2a8fcf857752ba85000",
+    "staging_git_blob_sha": "ad5bb2b00a039558e4ae434534ce1a135adaed1d",
+    "source_inventory_git_blob_sha": "30731136fb4b2ea29b30171b9079db1deb33a289",
+    "task_count": 32,
+    "structured_text_child_entries": 41,
+    "note": "structured_text_child_entries counts YAML-like list entries in structured_text_raw. Range entries such as ④〜⑬ and ㉔・㉕ are one stored child entry and are not expanded into inferred subitems."
+  },
+  "verification_boundaries": {
+    "current_integrated_notice_text_established": false,
+    "legal_currentness_promoted": false,
+    "human_review_promoted": false,
+    "publication_permitted": false,
+    "omitted_text_inferred": false,
+    "versions_silently_merged": false
+  },
+  "source_version_policy": {
+    "statement": "Each official document is treated as a separate version/evidence object. In particular, the final R6 comparison inserts/renumbers subitems relative to the earlier R6 material; locators are not silently normalized across versions and omitted bodies are not synthesized into current text.",
+    "source_roles": [
+      {
+        "id": "r6-final-comparison",
+        "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+        "role": "FINAL_R6_AMENDMENT_COMPARISON",
+        "status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+        "pinned_fetch": "PASS",
+        "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
+      },
+      {
+        "id": "r6-earlier-comparison",
+        "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+        "role": "EARLIER_R6_AMENDMENT_MATERIAL",
+        "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+        "pinned_fetch": "PASS",
+        "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+      },
+      {
+        "id": "work-control-source-3",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+        "role": "HISTORICAL_FULL_TEXT_REFERENCE",
+        "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+        "pinned_fetch": "PASS",
+        "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+      },
+      {
+        "id": "work-control-source-4",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999405",
+        "role": "HISTORICAL_OFFICIAL_REFERENCE",
+        "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+        "pinned_fetch": "PASS",
+        "pinned_sha256": "4daad40bbc72fe9d9fced08b6f7e258554460965dcddbc0a09602fac5606fd5f"
+      },
+      {
+        "id": "work-control-source-5",
+        "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+        "role": "HISTORICAL_AMENDMENT_EVIDENCE",
+        "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+        "pinned_fetch": "PASS",
+        "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+      }
+    ]
+  },
+  "summary": {
+    "task_results": {
+      "PASS": 24,
+      "PARTIAL": 5,
+      "GAP": 3,
+      "FAIL": 0
+    },
+    "child_entry_results": {
+      "PASS": 33,
+      "PARTIAL": 5,
+      "GAP": 3,
+      "FAIL": 0
+    }
+  },
+  "unresolved_gaps": [
+    {
+      "task_id": "KR2-09-B009",
+      "result": "PARTIAL",
+      "issue": "Exact '介護支援専門員証' support was found in an official MHLW historical comparison outside the current pinned scope manifest; declared source chain is incomplete."
+    },
+    {
+      "task_id": "KR2-09-B012",
+      "result": "PARTIAL",
+      "issue": "④〜⑬ are stored as one range summary; each current integrated subitem body has not been independently recovered item by item."
+    },
+    {
+      "task_id": "KR2-09-B014",
+      "result": "PARTIAL",
+      "issue": "Content is supported, but locator shifts from earlier-R6 ㉑ to final-R6-new ㉒."
+    },
+    {
+      "task_id": "KR2-09-B015",
+      "result": "GAP",
+      "issue": "Omitted body not recovered; omitted slot shifts from earlier-R6 ㉒ to final-R6-new ㉓."
+    },
+    {
+      "task_id": "KR2-09-B016",
+      "result": "PARTIAL",
+      "issue": "Content is supported, but locator shifts from earlier-R6 ㉓ to final-R6-new ㉔."
+    },
+    {
+      "task_id": "KR2-09-B017",
+      "result": "GAP",
+      "issue": "Omitted bodies not recovered; omitted slots shift from earlier-R6 ㉔・㉕ to final-R6-new ㉕・㉖."
+    },
+    {
+      "task_id": "KR2-09-B018",
+      "result": "PARTIAL",
+      "issue": "Content is supported, but locator shifts from earlier-R6 ㉖ to final-R6-new ㉗."
+    },
+    {
+      "task_id": "KR2-09-B019",
+      "result": "GAP",
+      "issue": "Underlying ordinance supports the cooperation obligation, but the notice body remains omitted; locator shifts from earlier-R6 ㉗ to final-R6-new ㉘."
+    }
+  ],
+  "integrator_followup": [
+    "Represent B014-B019 locators as source-version-specific values. Do not overwrite the earlier-R6 numbers with the final-R6 numbers or vice versa.",
+    "Decide whether to add/pin the official MHLW historical comparison https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf as supplemental evidence for B009, then rerun its source-chain audit.",
+    "Keep care-management item_body_verification at PENDING at the service level: this bounded audit has PARTIAL/GAP outcomes and does not establish current integrated notice text, legal currentness, human review, or publication readiness.",
+    "If parallel service workers converge on the same audit schema, centralize any shared validator/workflow only in an Integrator change; this worker intentionally changes no common validator/workflow/package files."
+  ],
+  "tasks": [
+    {
+      "item_id": "care-management.notice.001",
+      "task_id": "KR2-09-B001",
+      "title": "居宅介護支援: 解釈通知「1 （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第2/1",
+        "number": "\"1\"",
+        "heading": "基本方針",
+        "parent": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準",
+        "source_locator": "1 （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82999405"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/1",
+          "number": "1",
+          "heading": "基本方針",
+          "content_summary": "居宅介護支援を介護保険給付として位置付けた趣旨と、在宅生活の支援、利用者による選択、保健・医療・福祉サービスの総合的・効率的提供、利用者本位、公正中立を基本方針として示す範囲。令和6年度改正資料では当該範囲が「略」のため、厚生労働省の旧版公式通知本文から範囲を復元した。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        },
+        {
+          "source_id": "work-control-source-4",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999405",
+          "source_role": "HISTORICAL_OFFICIAL_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "4daad40bbc72fe9d9fced08b6f7e258554460965dcddbc0a09602fac5606fd5f"
+        }
+      ],
+      "finding": "R6 amendment material leaves section 1 omitted; the historical official notice supplies the basic-policy notice text and the official ordinance independently confirms the current basic-policy subject. The versions are retained separately."
+    },
+    {
+      "item_id": "care-management.notice.002",
+      "task_id": "KR2-09-B002",
+      "title": "居宅介護支援: 解釈通知「2 人員に関する基準 > (1) 介護支援専門員の員数」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第2/2/(1)",
+        "number": "\"(1)\"",
+        "heading": "介護支援専門員の員数",
+        "parent": "第2/2 人員に関する基準",
+        "source_locator": "2 人員に関する基準 > (1) 介護支援専門員の員数",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/2/(1)",
+          "number": "(1)",
+          "heading": "介護支援専門員の員数",
+          "content_summary": "指定居宅介護支援事業所ごとに常勤の介護支援専門員を1人以上置く趣旨、連絡体制、他業務との兼務の考え方、利用者数に応じた配置基準等を扱う。令和6年度改正資料の新欄では、指定介護予防支援の利用者数の換算、44人を基準とする配置、ケアプランデータ連携システム活用かつ事務職員配置時の49人基準、やむを得ず基準を超えた場合の取扱い等が示されている。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 amendment material directly supports the current personnel-count discussion, including the 44-user baseline, one-third preventive-support conversion, and the 49-user condition when the data-linkage system and clerical staff conditions are met; the historical notice is used only for unchanged background."
+    },
+    {
+      "item_id": "care-management.notice.003",
+      "task_id": "KR2-09-B003",
+      "title": "居宅介護支援: 解釈通知「2 人員に関する基準 > (2) 管理者」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第2/2/(2)",
+        "number": "\"(2)\"",
+        "heading": "管理者",
+        "parent": "第2/2 人員に関する基準",
+        "source_locator": "2 人員に関する基準 > (2) 管理者",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/2/(2)",
+          "number": "(2)",
+          "heading": "管理者",
+          "content_summary": "管理者を主任介護支援専門員とし、原則として管理業務に従事する常勤者とする取扱い、管理に支障がない範囲での介護支援専門員その他事業所等との兼務、営業時間中の利用申込等への対応体制、主任介護支援専門員要件に関する経過措置等を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 amendment material directly supports the manager item, including chief care-manager qualification, full-time management principle, bounded concurrent duties, contactability, and the transitional rule."
+    },
+    {
+      "item_id": "care-management.notice.004",
+      "task_id": "KR2-09-B004",
+      "title": "居宅介護支援: 解釈通知「2 人員に関する基準 > (3) 用語の定義」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第2/2/(3)",
+        "number": "\"(3)\"",
+        "heading": "用語の定義",
+        "parent": "第2/2 人員に関する基準",
+        "source_locator": "2 人員に関する基準 > (3) 用語の定義",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED_WITH_OMITTED_SUBITEM_RECOVERY",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/2/(3)",
+          "number": "(3)",
+          "heading": "用語の定義",
+          "content_summary": "「常勤」「専らその職務に従事する」「事業所」の意味を扱う。令和6年度改正資料では「常勤」について、育児・介護・治療等のための所定労働時間短縮措置、産前産後休業・育児休業・介護休業等の場合の常勤換算の取扱いが示され、②・③は略記されているため厚生労働省旧版公式通知で項目範囲を確認した。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 amendment material directly supports the amended definition of full-time work and explicitly omits the remaining definitions; the historical official notice independently supports the omitted definitions as historical text. No integrated-current-text claim is made."
+    },
+    {
+      "item_id": "care-management.notice.005",
+      "task_id": "KR2-09-B005",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (1) （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第2/3/(1)",
+        "number": "\"(1)\"",
+        "heading": "介護保険等関連情報の活用とPDCAサイクルの推進について",
+        "parent": "第2/3 運営に関する基準",
+        "source_locator": "3 運営に関する基準 > (1) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/3/(1)",
+          "number": "(1)",
+          "heading": "介護保険等関連情報の活用とPDCAサイクルの推進について",
+          "content_summary": "基準第1条の2第6項について、介護保険法第118条の2第1項に規定する介護保険等関連情報等を活用し、事業所単位でPDCAサイクルを構築・推進することにより、提供するサービスの質の向上に努める趣旨を示す項目。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        }
+      ],
+      "finding": "The R3 amendment comparison directly introduces the PDCA item and states use of care-insurance-related information under Article 118-2 and service-quality improvement; the R6 material preserves the later position without supplying integrated text."
+    },
+    {
+      "item_id": "care-management.notice.006",
+      "task_id": "KR2-09-B006",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (2) 内容及び手続きの説明及び同意」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第2/3/(2)",
+        "number": "\"(2)\"",
+        "heading": "内容及び手続きの説明及び同意",
+        "parent": "第2/3 運営に関する基準",
+        "source_locator": "3 運営に関する基準 > (2) 内容及び手続きの説明及び同意",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/3/(2)",
+          "number": "(2)",
+          "heading": "内容及び手続きの説明及び同意",
+          "content_summary": "利用申込時の重要事項の文書交付・説明・同意、利用者によるサービス選択、複数事業者の紹介や選定理由の説明を求めることが可能である旨の説明、公正中立な居宅介護支援、入院時に担当介護支援専門員の氏名・連絡先を医療機関へ伝えるよう事前に協力を求める取扱い等を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        }
+      ],
+      "finding": "The amendment materials directly support the explanation/consent item and the user-choice, multiple-provider, selection-reason, neutrality, and admission-contact explanation summarized in staging."
+    },
+    {
+      "item_id": "care-management.notice.007",
+      "task_id": "KR2-09-B007",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (3) （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第2/3/(3)",
+        "number": "\"(3)\"",
+        "heading": "提供拒否の禁止",
+        "parent": "第2/3 運営に関する基準",
+        "source_locator": "3 運営に関する基準 > (3) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/3/(3)",
+          "number": "(3)",
+          "heading": "提供拒否の禁止",
+          "content_summary": "居宅介護支援の公共性に鑑み、正当な理由なく利用申込を拒否してはならないことを扱う。正当な理由の例として、現員では申込に応じきれない場合、通常の事業実施地域外の場合、他の指定居宅介護支援事業者にも併せて依頼していることが明らかな場合等を示す。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 material shows the current item position as omitted; the R3 comparison establishes the numbering shift and the historical official notice supplies the refusal-prohibition body and examples. This is version-bounded recovery, not currentness."
+    },
+    {
+      "item_id": "care-management.notice.008",
+      "task_id": "KR2-09-B008",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (4) 要介護認定の申請に係る援助」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第2/3/(4)",
+        "number": "\"(4)\"",
+        "heading": "要介護認定等の申請に係る援助",
+        "parent": "第2/3 運営に関する基準",
+        "source_locator": "3 運営に関する基準 > (4) 要介護認定の申請に係る援助",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/3/(4)",
+          "number": "(4)",
+          "heading": "要介護認定等の申請に係る援助",
+          "content_summary": "被保険者から要介護認定等の申請代行を依頼された場合等の必要な協力や、認定更新申請が遅くとも有効期間満了日の30日前までに行われるよう必要な援助を行う取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 material supports the current position and the 30-day renewal-assistance rule; earlier official material and the historical notice are retained separately for prior wording."
+    },
+    {
+      "item_id": "care-management.notice.009",
+      "task_id": "KR2-09-B009",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (5)〜(7) （略）」の省略範囲を一次資料で解消する",
+      "result": "PARTIAL",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PARTIAL",
+        "source_url": "PARTIAL",
+        "child_items": "PARTIAL",
+        "content_summary": "PARTIAL",
+        "gap_resolution": "PARTIAL",
+        "source_version_separation": "PASS",
+        "evidence_support": "PARTIAL"
+      },
+      "staging_identity": {
+        "path": "第2/3/(5)",
+        "number": "\"(5)\"",
+        "heading": "身分を証する書類の携行",
+        "parent": "第2/3 運営に関する基準",
+        "source_locator": "3 運営に関する基準 > (5)〜(7) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第2/3/(5)",
+          "number": "(5)",
+          "heading": "身分を証する書類の携行",
+          "content_summary": "介護支援専門員に介護支援専門員証を携行させ、初回訪問時や利用者・家族から求められた場合に提示する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PARTIAL"
+        },
+        {
+          "path": "第2/3/(6)",
+          "number": "(6)",
+          "heading": "利用料等の受領",
+          "content_summary": "通常の事業実施地域外で指定居宅介護支援を行う場合の交通費等、保険給付対象サービスと明確に区分した費用の取扱いと、事前説明・同意を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第2/3/(7)",
+          "number": "(7)",
+          "heading": "保険給付の請求のための証明書の交付",
+          "content_summary": "居宅介護支援に係る保険給付が償還払いとなる場合に、利用者が保険給付請求を行うために必要な事項を記載した証明書を交付する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        },
+        {
+          "source_id": "supplemental-mhlw-c07",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf",
+          "source_role": "SUPPLEMENTAL_HISTORICAL_MHLW_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE_NOT_IN_SCOPE_MANIFEST",
+          "fetched_independently": true,
+          "pinned_in_source_inventory": false,
+          "supplemental_not_listed_on_task": true,
+          "note": "厚労省公式過去改正比較資料の(4)身分を証する書類の携行に『介護支援専門員証』と初回訪問時の提示を確認。現行scope manifestには未収載。"
+        }
+      ],
+      "finding": "Declared R6/R3 sources omit this range and the configured historical full-text source preserves older wording ('身分を証する証書や名刺等' plus the old training-completion certificate). A separate official MHLW historical comparison (c07.pdf), independently inspected, directly supports the staging phrase '介護支援専門員証' and initial-visit presentation. Because that source is not pinned in the current scope/source inventory, the task is PARTIAL rather than PASS."
+    },
+    {
+      "item_id": "care-management.notice.010",
+      "task_id": "KR2-09-B010",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ①・② （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/①",
+        "number": "①",
+        "heading": "介護支援専門員による居宅サービス計画の作成",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ①・② （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/①",
+          "number": "①",
+          "heading": "介護支援専門員による居宅サービス計画の作成",
+          "content_summary": "居宅サービス計画は介護支援専門員が作成するという基本的な責務を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/②",
+          "number": "②",
+          "heading": "利用者自身によるサービス選択",
+          "content_summary": "利用者の意思・主体的参加を尊重し、サービスや事業者の選択を支援する基本的な取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 comparison marks subitems ①・② omitted under the current care-plan item and maps the item to the prior version; the historical official notice supports the two stored child concepts."
+    },
+    {
+      "item_id": "care-management.notice.011",
+      "task_id": "KR2-09-B011",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ③ 身体的拘束等の原則禁止や身体的拘束等を行う場合の記録（第2の2号及び第2の3号）」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/③",
+        "number": "③",
+        "heading": "身体的拘束等の原則禁止・実施時の記録",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ③ 身体的拘束等の原則禁止や身体的拘束等を行う場合の記録（第2の2号及び第2の3号）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/③",
+          "number": "③",
+          "heading": "身体的拘束等の原則禁止・実施時の記録",
+          "content_summary": "緊急やむを得ない場合を除き身体的拘束等を行わず、実施した場合は態様・時間・利用者の状況・理由を記録する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        }
+      ],
+      "finding": "The R6 amendment material directly supplies the new physical-restraint rule: emergency exception, principle of non-restraint, and required record of manner, time, user condition, and reason."
+    },
+    {
+      "item_id": "care-management.notice.012",
+      "task_id": "KR2-09-B012",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ④〜⑬ （略）」の省略範囲を一次資料で解消する",
+      "result": "PARTIAL",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PARTIAL",
+        "content_summary": "PARTIAL",
+        "gap_resolution": "PARTIAL",
+        "source_version_separation": "PASS",
+        "evidence_support": "PARTIAL"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/④-⑬",
+        "number": "④〜⑬",
+        "heading": "ケアマネジメント過程に関する一連の取扱い",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ④〜⑬ （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": [
+          "CURRENT_INTEGRATED_SUBITEM_TEXT_NOT_FULLY_RECOVERED"
+        ]
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/④-⑬",
+          "number": "④〜⑬",
+          "heading": "ケアマネジメント過程に関する一連の取扱い",
+          "content_summary": "課題分析、居宅訪問・面接、計画原案、サービス担当者会議、説明・同意・交付、担当者への個別サービス計画提出依頼等を含む範囲。",
+          "recovery_state": "CURRENT_INTEGRATED_SUBITEM_TEXT_NOT_FULLY_RECOVERED",
+          "verification_result": "PARTIAL"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The source family supports the broad care-management process across ④〜⑬, but the current integrated text for each individual subitem is not fully recovered. The staging range summary is directionally supported, but item-by-item equality cannot be established."
+    },
+    {
+      "item_id": "care-management.notice.013",
+      "task_id": "KR2-09-B013",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ⑭ モニタリングの実施（第14号）」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/⑭",
+        "number": "⑭",
+        "heading": "モニタリングの実施",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ⑭ モニタリングの実施（第14号）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/⑭",
+          "number": "⑭",
+          "heading": "モニタリングの実施",
+          "content_summary": "居宅サービス計画実施後の継続的な状況把握・評価、利用者との面接・居宅訪問等、結果記録を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        }
+      ],
+      "finding": "The R6 amendment material directly supports monitoring as continuing status assessment/evaluation, interview/home-visit requirements, and recording of monitoring results."
+    },
+    {
+      "item_id": "care-management.notice.014",
+      "task_id": "KR2-09-B014",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉑ 主治の医師等の意見等（第19号・第19号の2・第20号）」を項目単位で構造化する",
+      "result": "PARTIAL",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PARTIAL",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PARTIAL"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/㉑",
+        "number": "㉑",
+        "heading": "主治の医師等の意見等",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉑ 主治の医師等の意見等（第19号・第19号の2・第20号）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/㉑",
+          "number": "㉑",
+          "heading": "主治の医師等の意見等",
+          "content_summary": "医療系サービスを計画へ位置付ける際の主治の医師等の指示・意見確認、計画交付、医学的留意事項の尊重等を扱う。",
+          "recovery_state": null,
+          "verification_result": "PARTIAL"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
+        }
+      ],
+      "finding": "The physician-opinion body is supported, but the locator is version-specific: the earlier R6 comparison labels it ㉑, while the final R6 new column labels the same heading/body ㉒ after an inserted preceding item. The content match passes; a single unversioned staging number does not."
+    },
+    {
+      "item_id": "care-management.notice.015",
+      "task_id": "KR2-09-B015",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉒ （略）」の省略範囲を一次資料で解消する",
+      "result": "GAP",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PARTIAL",
+        "source_url": "PASS",
+        "child_items": "GAP",
+        "content_summary": "GAP",
+        "gap_resolution": "GAP",
+        "source_version_separation": "PASS",
+        "evidence_support": "GAP"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/㉒",
+        "number": "㉒",
+        "heading": "本文未復元",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉒ （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
+        ],
+        "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": [
+          "PRIMARY_TEXT_NOT_RECOVERED"
+        ]
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/㉒",
+          "number": "㉒",
+          "heading": "本文未復元",
+          "content_summary": "正本改正資料では㉒が略記され、確認した一次資料だけでは当該版の本文を一意に確定できない。",
+          "recovery_state": "PRIMARY_TEXT_NOT_RECOVERED",
+          "verification_result": "GAP"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
+        }
+      ],
+      "finding": "The earlier R6 comparison shows ㉒ omitted. In the final R6 new column, the physician-opinion item moves into ㉒ and the omitted slot moves to ㉓. No body for the omitted subitem is independently recovered, so the gap remains and the locator is source-version-specific."
+    },
+    {
+      "item_id": "care-management.notice.016",
+      "task_id": "KR2-09-B016",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉓ 福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映（第22号・第23号）」を項目単位で構造化する",
+      "result": "PARTIAL",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PARTIAL",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PARTIAL"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/㉓",
+        "number": "㉓",
+        "heading": "福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉓ 福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映（第22号・第23号）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/㉓",
+          "number": "㉓",
+          "heading": "福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映",
+          "content_summary": "福祉用具の必要性を検討し、サービス担当者会議等を通じ必要理由を計画へ記載する。貸与継続時の検証等も扱う。",
+          "recovery_state": null,
+          "verification_result": "PARTIAL"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        }
+      ],
+      "finding": "The welfare-equipment planning body is supported. However, it is ㉓ in the earlier R6 comparison and ㉔ in the final R6 new column. The content match passes, while the staging locator is only valid for one source generation."
+    },
+    {
+      "item_id": "care-management.notice.017",
+      "task_id": "KR2-09-B017",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉔・㉕ （略）」の省略範囲を一次資料で解消する",
+      "result": "GAP",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PARTIAL",
+        "source_url": "PASS",
+        "child_items": "GAP",
+        "content_summary": "GAP",
+        "gap_resolution": "GAP",
+        "source_version_separation": "PASS",
+        "evidence_support": "GAP"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/㉔-㉕",
+        "number": "㉔・㉕",
+        "heading": "本文未復元",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉔・㉕ （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
+        ],
+        "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": [
+          "PRIMARY_TEXT_NOT_RECOVERED"
+        ]
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/㉔-㉕",
+          "number": "㉔・㉕",
+          "heading": "本文未復元",
+          "content_summary": "正本改正資料では㉔・㉕が略記され、確認した一次資料だけでは各小項目本文を一意に確定できない。",
+          "recovery_state": "PRIMARY_TEXT_NOT_RECOVERED",
+          "verification_result": "GAP"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
+        }
+      ],
+      "finding": "The earlier R6 comparison leaves ㉔・㉕ omitted. In the final R6 new column those omitted slots are renumbered ㉕・㉖. The bodies are not independently recovered and the locator is source-version-specific."
+    },
+    {
+      "item_id": "care-management.notice.018",
+      "task_id": "KR2-09-B018",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉖ 指定介護予防支援業務の受託に関する留意点（第26号）」を項目単位で構造化する",
+      "result": "PARTIAL",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PARTIAL",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PARTIAL"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/㉖",
+        "number": "㉖",
+        "heading": "指定介護予防支援業務の受託に関する留意点",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉖ 指定介護予防支援業務の受託に関する留意点（第26号）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/㉖",
+          "number": "㉖",
+          "heading": "指定介護予防支援業務の受託に関する留意点",
+          "content_summary": "受託業務量等を勘案し、本来の指定居宅介護支援業務の適正な実施に影響を及ぼさないよう配慮する。",
+          "recovery_state": null,
+          "verification_result": "PARTIAL"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        }
+      ],
+      "finding": "The delegated preventive-support-work body is supported. The earlier R6 comparison numbers it ㉖ and the final R6 new column numbers it ㉗. The content match passes, but the locator must remain source-version-specific."
+    },
+    {
+      "item_id": "care-management.notice.019",
+      "task_id": "KR2-09-B019",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉗ （略）」の省略範囲を一次資料で解消する",
+      "result": "GAP",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PARTIAL",
+        "source_url": "PARTIAL",
+        "child_items": "GAP",
+        "content_summary": "PARTIAL",
+        "gap_resolution": "GAP",
+        "source_version_separation": "PASS",
+        "evidence_support": "GAP"
+      },
+      "staging_identity": {
+        "path": "第二/3/(8)/㉗",
+        "number": "㉗",
+        "heading": "地域ケア会議への協力に関する範囲",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉗ （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": [
+          "SCOPE_RECOVERED_TEXT_NOT_CURRENTNESS_VERIFIED"
+        ]
+      },
+      "children": [
+        {
+          "path": "第二/3/(8)/㉗",
+          "number": "㉗",
+          "heading": "地域ケア会議への協力に関する範囲",
+          "content_summary": "地域ケア会議から資料・情報提供、意見開陳その他の協力を求められた場合の協力に関する範囲として確認した。",
+          "recovery_state": "SCOPE_RECOVERED_TEXT_NOT_CURRENTNESS_VERIFIED",
+          "verification_result": "GAP"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        },
+        {
+          "source_id": "work-control-source-4",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999405",
+          "source_role": "HISTORICAL_OFFICIAL_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "4daad40bbc72fe9d9fced08b6f7e258554460965dcddbc0a09602fac5606fd5f",
+          "supplemental_not_listed_on_task": true,
+          "note": "Official ordinance text supports the regional-care-conference cooperation obligation, but this URL is absent from KR2-09-B019 source_urls; this does not establish the omitted notice body."
+        }
+      ],
+      "finding": "The ordinance independently supports the regional-care-conference cooperation obligation, but that is not the omitted notice body. The earlier R6 notice comparison has ㉗ omitted, the final R6 new column moves that omitted slot to ㉘, and the configured historical notice does not recover the corresponding interpretation body. Item-body evidence therefore remains GAP; the ordinance is scope evidence only."
+    },
+    {
+      "item_id": "care-management.notice.020",
+      "task_id": "KR2-09-B020",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (9)〜(11) （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(9)",
+        "number": "(9)",
+        "heading": "法定代理受領サービスに係る報告",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (9)〜(11) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(9)",
+          "number": "(9)",
+          "heading": "法定代理受領サービスに係る報告",
+          "content_summary": "法定代理受領サービスに係る必要な報告を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(10)",
+          "number": "(10)",
+          "heading": "利用者に対する居宅サービス計画等の書類の交付",
+          "content_summary": "利用者に対する計画・記録等の書類交付を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(11)",
+          "number": "(11)",
+          "heading": "利用者に関する市町村への通知",
+          "content_summary": "所定事由がある場合の市町村への通知を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 comparison marks current items (9)〜(11) omitted and maps the shifted range; the historical official notice supports the three child subjects: proxy-receipt reporting, document delivery, and municipal notification."
+    },
+    {
+      "item_id": "care-management.notice.021",
+      "task_id": "KR2-09-B021",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (12) 管理者の責務」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(12)",
+        "number": "(12)",
+        "heading": "管理者の責務",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (12) 管理者の責務",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(12)",
+          "number": "(12)",
+          "heading": "管理者の責務",
+          "content_summary": "介護支援専門員等の管理、利用申込調整、業務実施状況の把握等を一元的に行い、基準遵守のため必要な指揮命令を行う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        }
+      ],
+      "finding": "The R6 amendment material directly supports the manager-responsibility item: unified management, application adjustment/implementation awareness, and necessary instructions for compliance."
+    },
+    {
+      "item_id": "care-management.notice.022",
+      "task_id": "KR2-09-B022",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (13)・(14) （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(13)",
+        "number": "(13)",
+        "heading": "運営規程",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (13)・(14) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(13)",
+          "number": "(13)",
+          "heading": "運営規程",
+          "content_summary": "事業目的・運営方針、職員体制、営業日・時間、提供方法・内容、通常の事業実施地域等の運営規程を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(14)",
+          "number": "(14)",
+          "heading": "勤務体制の確保",
+          "content_summary": "適切なサービス提供のための勤務体制、研修機会の確保等を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The amendment comparison establishes the shifted positions for operation rules and work arrangements, and the historical official notice supplies the corresponding bodies. The broad child summaries are supported without claiming integrated current text."
+    },
+    {
+      "item_id": "care-management.notice.023",
+      "task_id": "KR2-09-B023",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (15) 業務継続計画の策定等」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(15)",
+        "number": "(15)",
+        "heading": "業務継続計画の策定等",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (15) 業務継続計画の策定等",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(15)",
+          "number": "(15)",
+          "heading": "業務継続計画の策定等",
+          "content_summary": "感染症や災害発生時にも居宅介護支援を継続・早期再開できるよう、業務継続計画、研修・訓練、見直し等を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        }
+      ],
+      "finding": "The R6 amendment material directly supports current item (15), including business-continuity planning, training, drills, revision/implementation concepts and infection/disaster continuity."
+    },
+    {
+      "item_id": "care-management.notice.024",
+      "task_id": "KR2-09-B024",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (16) （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(16)",
+        "number": "(16)",
+        "heading": "設備及び備品等",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (16) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(16)",
+          "number": "(16)",
+          "heading": "設備及び備品等",
+          "content_summary": "指定居宅介護支援事業を行うために必要な設備・備品等の確保に関する範囲として確認した。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 comparison fixes the current omitted position for equipment/supplies; the historical official notice supports the equipment/supplies subject. The evidence is version-bounded and does not establish current integrated wording."
+    },
+    {
+      "item_id": "care-management.notice.025",
+      "task_id": "KR2-09-B025",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (17) 感染症の予防及びまん延の防止のための措置」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(17)",
+        "number": "(17)",
+        "heading": "感染症の予防及びまん延の防止のための措置",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (17) 感染症の予防及びまん延の防止のための措置",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(17)",
+          "number": "(17)",
+          "heading": "感染症の予防及びまん延の防止のための措置",
+          "content_summary": "感染対策委員会、指針、研修・訓練等、感染症の発生・まん延を防止するための措置を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        }
+      ],
+      "finding": "The R6 amendment material directly identifies current item (17) and supports committee, guideline, training and drill measures for infection prevention and spread control."
+    },
+    {
+      "item_id": "care-management.notice.026",
+      "task_id": "KR2-09-B026",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (18) 掲示」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(18)",
+        "number": "(18)",
+        "heading": "掲示",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (18) 掲示",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(18)",
+          "number": "(18)",
+          "heading": "掲示",
+          "content_summary": "運営規程の概要、介護支援専門員の勤務体制、事故・苦情対応等の重要事項を利用者が確認できるよう掲示等する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
+        }
+      ],
+      "finding": "The R6 earlier and final comparisons identify current item (18) and support posting/disclosure of important matters, including the web-site publication amendment. The final and earlier R6 materials are not conflated."
+    },
+    {
+      "item_id": "care-management.notice.027",
+      "task_id": "KR2-09-B027",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (19)・(20) （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(19)",
+        "number": "(19)",
+        "heading": "秘密保持等",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (19)・(20) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(19)",
+          "number": "(19)",
+          "heading": "秘密保持等",
+          "content_summary": "従業者等による利用者・家族の秘密保持、情報利用時の同意等を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(20)",
+          "number": "(20)",
+          "heading": "居宅サービス事業者等からの利益収受の禁止等",
+          "content_summary": "特定事業者への誘導や利益供与・収受を禁止し、公正中立な居宅介護支援を確保する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 comparison fixes current items (19)・(20) as omitted; the historical notice supports confidentiality/information-consent and prohibition on inducement/benefit receipt. The result is limited to the supported subject/body, not currentness."
+    },
+    {
+      "item_id": "care-management.notice.028",
+      "task_id": "KR2-09-B028",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (21) 苦情処理」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(21)",
+        "number": "(21)",
+        "heading": "苦情処理",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (21) 苦情処理",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(21)",
+          "number": "(21)",
+          "heading": "苦情処理",
+          "content_summary": "利用者・家族からの苦情に迅速かつ適切に対応する体制、相談窓口・手順等の明示、記録等を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
+        }
+      ],
+      "finding": "The R6 earlier and final comparisons identify current item (21) and support complaint-handling arrangements, contact/procedure disclosure, records and the R6 web-publication change."
+    },
+    {
+      "item_id": "care-management.notice.029",
+      "task_id": "KR2-09-B029",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (22) （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(22)",
+        "number": "(22)",
+        "heading": "事故発生時の対応",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (22) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(22)",
+          "number": "(22)",
+          "heading": "事故発生時の対応",
+          "content_summary": "事故発生時の市町村・家族等への連絡、必要な措置、事故状況・処置の記録、賠償等を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 comparison fixes current item (22) as omitted; the historical official notice supports municipal/family contact, necessary measures, recordkeeping and compensation concepts for accidents. Current integrated wording is not asserted."
+    },
+    {
+      "item_id": "care-management.notice.030",
+      "task_id": "KR2-09-B030",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (23) 虐待の防止」を項目単位で構造化する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(23)",
+        "number": "(23)",
+        "heading": "虐待の防止",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (23) 虐待の防止",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
+        ],
+        "content_state": "SOURCE_CONTENT_STRUCTURED",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(23)",
+          "number": "(23)",
+          "heading": "虐待の防止",
+          "content_summary": "虐待の未然防止・早期発見・迅速対応のため、委員会、指針、研修、担当者等の必要な措置を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
+        }
+      ],
+      "finding": "The R6 earlier and final comparisons identify current item (23) and support abuse prevention, early discovery, response, committee/guideline/training/person-in-charge measures. Version-specific amendments remain separate."
+    },
+    {
+      "item_id": "care-management.notice.031",
+      "task_id": "KR2-09-B031",
+      "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (24)・(25) （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/3/(24)",
+        "number": "(24)",
+        "heading": "会計の区分",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (24)・(25) （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/3/(24)",
+          "number": "(24)",
+          "heading": "会計の区分",
+          "content_summary": "指定居宅介護支援事業の会計を他の事業の会計と区分する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(25)",
+          "number": "(25)",
+          "heading": "記録の整備",
+          "content_summary": "従業者、居宅サービス計画、提供内容、市町村通知、苦情、事故等に関する記録の整備・保存を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        },
+        {
+          "source_id": "work-control-source-3",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
+        }
+      ],
+      "finding": "The R6 comparison fixes current items (24)・(25) as omitted; the R3 amendment material and historical notice support account separation and record-maintenance subjects, including the historical record-preservation explanation. No currentness promotion is made."
+    },
+    {
+      "item_id": "care-management.notice.032",
+      "task_id": "KR2-09-B032",
+      "title": "居宅介護支援: 解釈通知「4・5 （略）」の省略範囲を一次資料で解消する",
+      "result": "PASS",
+      "axes": {
+        "task_identity": "PASS",
+        "path_heading": "PASS",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
+        "source_version_separation": "PASS",
+        "evidence_support": "PASS"
+      },
+      "staging_identity": {
+        "path": "第二/4",
+        "number": "4",
+        "heading": "基準該当居宅介護支援に関する基準",
+        "parent": null,
+        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／4・5 （略）",
+        "source_urls": [
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82999405"
+        ],
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
+      },
+      "children": [
+        {
+          "path": "第二/4",
+          "number": "4",
+          "heading": "基準該当居宅介護支援に関する基準",
+          "content_summary": "基準該当居宅介護支援に関する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/5",
+          "number": "5",
+          "heading": "雑則",
+          "content_summary": "電磁的記録・電磁的方法等に関する共通的な取扱いを含む雑則を扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        }
+      ],
+      "official_evidence": [
+        {
+          "source_id": "r6-earlier-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+          "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        },
+        {
+          "source_id": "work-control-source-4",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999405",
+          "source_role": "HISTORICAL_OFFICIAL_REFERENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "4daad40bbc72fe9d9fced08b6f7e258554460965dcddbc0a09602fac5606fd5f"
+        }
+      ],
+      "finding": "The R6 material explicitly shows sections 4・5 omitted; the R3 amendment material directly introduces section 5 '雑則' and its electronic-record explanation, while the official ordinance independently confirms Chapter 4 qualified care management and Chapter 5 electronic-record provisions."
+    }
+  ],
+  "source_version_locator_differences": [
+    {
+      "task_id": "KR2-09-B014",
+      "earlier_r6": "㉑ 主治の医師等の意見等",
+      "final_r6_new": "㉒ 主治の医師等の意見等",
+      "effect": "PARTIAL_LOCATOR_CONTENT_SUPPORTED"
+    },
+    {
+      "task_id": "KR2-09-B015",
+      "earlier_r6": "㉒（略）",
+      "final_r6_new": "㉓（略）",
+      "effect": "GAP_BODY_UNRECOVERED"
+    },
+    {
+      "task_id": "KR2-09-B016",
+      "earlier_r6": "㉓ 福祉用具貸与及び特定福祉用具販売",
+      "final_r6_new": "㉔ 福祉用具貸与及び特定福祉用具販売",
+      "effect": "PARTIAL_LOCATOR_CONTENT_SUPPORTED"
+    },
+    {
+      "task_id": "KR2-09-B017",
+      "earlier_r6": "㉔・㉕（略）",
+      "final_r6_new": "㉕・㉖（略）",
+      "effect": "GAP_BODIES_UNRECOVERED"
+    },
+    {
+      "task_id": "KR2-09-B018",
+      "earlier_r6": "㉖ 指定介護予防支援業務の受託",
+      "final_r6_new": "㉗ 指定介護予防支援業務の受託",
+      "effect": "PARTIAL_LOCATOR_CONTENT_SUPPORTED"
+    },
+    {
+      "task_id": "KR2-09-B019",
+      "earlier_r6": "㉗（略）",
+      "final_r6_new": "㉘（略）",
+      "effect": "GAP_NOTICE_BODY_UNRECOVERED"
+    }
+  ],
+  "supplemental_source_findings": [
+    {
+      "id": "supplemental-mhlw-c07",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf",
+      "role": "SUPPLEMENTAL_HISTORICAL_MHLW_AMENDMENT_EVIDENCE",
+      "supports": [
+        "KR2-09-B009"
+      ],
+      "finding": "Official MHLW historical comparison directly contains the '介護支援専門員証' wording, but it is not pinned in the current scope/source inventory.",
+      "action": "INTEGRATOR_FOLLOWUP"
+    }
+  ]
+}
