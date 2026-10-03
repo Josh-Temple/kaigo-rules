@@ -52,4 +52,4 @@ No new service route is enabled by this integration.
 
 ## Integrator decision
 
-The A-E worker outputs are structurally reconcilable under the shared-corpus + service-scope/relation architecture. The combined-tree materializer independently re-ran the shared e-Gov corpus and relation verification lanes, regenerated dependent projections, and validated the integrated state successfully. Main merge remains gated on the final normal build check for the latest integrator HEAD.
+The A-E worker outputs are structurally reconcilable under the shared-corpus + service-scope/relation architecture. The combined-tree materializer independently re-ran the shared e-Gov corpus and relation verification lanes, regenerated dependent projections, and validated the integrated state successfully. The integration materializer has committed refreshed pinned receipts and generated projections after the final shared-Care-Act metadata fix. Main merge is gated only on the final CI pass for this latest normal integrator commit.
