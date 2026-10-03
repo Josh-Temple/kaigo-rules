@@ -1,0 +1,51 @@
+name: One-time relation projection refresh
+
+on:
+  push:
+    branches: [db/shared-standards-corpus]
+    paths:
+      - ".github/workflows/one-time-run-relation-projections-refresh.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          ref: db/shared-standards-corpus
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Rebuild relation projections
+        run: |
+          python scripts/build_relation_verification_queue.py
+          python scripts/build_relation_human_review_packet.py
+          python scripts/build_relation_human_review_evidence_pack.py
+          python scripts/build_verification_registry.py
+          python scripts/build_product_value_snapshot.py
+          python scripts/build_shared_standards_service_relations.py
+      - name: Check generated projections
+        run: |
+          python scripts/build_relation_verification_queue.py --check
+          python scripts/build_relation_human_review_packet.py --check
+          python scripts/build_relation_human_review_evidence_pack.py --check
+          python scripts/build_verification_registry.py --check
+          python scripts/build_product_value_snapshot.py --check
+          python scripts/build_shared_standards_service_relations.py --check
+      - name: Commit generated projections
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             data/relation-verification-queue.json             data/relation-human-review-packet.json             data/relation-human-review-evidence-pack.json             data/verification-registry.json             data/product-value-snapshot-v0.1.json             data/shared/standards/service-relations.generated.json
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git commit -m "Refresh relation review projections"
+          git push origin HEAD:db/shared-standards-corpus
