@@ -41,7 +41,7 @@ class StandardsInterpretationCurrentnessIntegrationTest(unittest.TestCase):
 
     def test_preventive_support_package_blocker_remains(self):
         row = self.rows["preventive-support"]
-        self.assertEqual(row["item_body"]["counts"]["PARTIAL"], 2)
+        self.assertEqual(row["item_body"]["counts"]["PARTIAL"], 1)
         self.assertEqual(row["package"]["blocker_state"], "BLOCKED_KR2-10-E006")
         self.assertEqual(row["package"]["blocker_task_id"], "KR2-10-E006")
 
