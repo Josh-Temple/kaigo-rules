@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-dementia-group-home",
+  "service_label": "介護予防認知症対応型共同生活介護",
+  "status": "SCOPE_DEFINED_SHARED_TARGET_NOT_INGESTED",
+  "scope_kind": "UNIT_PRICE_REGIONAL_CLASSIFICATION_SERVICE_SCOPE",
+  "source": {
+    "notice_number": "平成二十七年厚生労働省告示第九十三号",
+    "title": "厚生労働大臣が定める一単位の単価",
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+    "service_selector": "介護予防認知症対応型共同生活介護",
+    "scope_status": "SCOPE_DEFINED",
+    "regional_classification_table": "第一号の表及び第二号の地域区分表"
+  },
+  "repository_relation": {
+    "shared_import": "data/unit-price-dayservice.json",
+    "state": "TARGET_SERVICE_ROWS_NOT_INGESTED",
+    "note": "既存importは通所介護専用であり、対象サービスの行を存在すると扱わない。"
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "observed_applicability": "告示93号は告示128号に基づく指定地域密着型介護予防サービスを対象に含み、サービス種類表に対象サービス名を掲げる。"
+  },
+  "source_text_duplicated": false,
+  "applicability_verification": "NOT_SERVICE_VERIFIED",
+  "currentness": {
+    "status": "NOT_ESTABLISHED"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED"
+  },
+  "automatic_verification_promotion_allowed": false
+}
