@@ -3,10 +3,10 @@
   "watch_id": "rouki36-dayservice-currentness-watch",
   "baseline": {
     "independent_verification": "data/fee-guidance-independent-verification.json",
-    "latest_confirmed_kaigo_info_volume": 1544,
-    "latest_confirmed_kaigo_info_date": "2026-09-18",
-    "verified_through": "2026-09-22",
-    "basis": "Issue #72 independently followed the amendment chain through 2026-09-22; the official 介護保険最新情報 page showed Vol.1544 (2026-09-18) as the latest listing during the currentness work."
+    "latest_confirmed_kaigo_info_volume": 1545,
+    "latest_confirmed_kaigo_info_date": "2026-10-02",
+    "verified_through": "2026-10-03",
+    "basis": "The 2026-10-03 existing-service currentness wave checked official Vol.1545 (2026-10-02) and found no configured 老企第36号 target term. This advances bounded watch coverage only and does not establish currentness."
   },
   "targets": {
     "exact_terms": [
