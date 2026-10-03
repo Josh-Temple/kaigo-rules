@@ -82,10 +82,8 @@ def validate() -> list[str]:
         "FAIL": 0,
     }:
         errors.append("item-body verification counts drifted")
-    if layer.get("currentness_verification") != "HOLD_NOT_ESTABLISHED":
-        errors.append("service currentness_verification pointer state mismatch")
-    if layer.get("currentness_verification_receipt") != str(CURRENTNESS.relative_to(ROOT)):
-        errors.append("service currentness receipt pointer mismatch")
+    if layer.get("status") != "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING":
+        errors.append("service currentness boundary was promoted")
 
     if inventory.get("audit_result") != "PASS_BOUNDED_SCOPE_ONLY":
         errors.append("source inventory result changed")
