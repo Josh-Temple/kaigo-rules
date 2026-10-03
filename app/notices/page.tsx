@@ -16,11 +16,15 @@ import currentnessLedgerData from "../../data/notice-rouki25-currentness-ledger.
 import chainData from "../../data/notice-source-chain.json";
 import sourcesData from "../../data/sources.json";
 import dayrehabData from "../../data/services/dayrehab/rouki25-historical.generated.json";
+import homevisitData from "../../data/services/homevisit/rouki25-historical.generated.json";
 
 const currentnessLedger = currentnessLedgerData as any;
 const chain = chainData as Array<any>;
 const sources = sourcesData as Array<any>;
-const dayrehab = dayrehabData as any;
+const historicalNoticeDatasets = [
+  { service_id: "homevisit", label: "訪問介護", data: homevisitData as any },
+  { service_id: "dayrehab", label: "通所リハビリテーション", data: dayrehabData as any },
+];
 
 const pageLabel = (evidence: PublicNoticeEvidence) => {
   if (!evidence.page_start) return "";
@@ -296,33 +300,41 @@ export default async function NoticesPage({
         </details>
       ) : null}
 
-      {!service || selectedServiceId === "dayrehab" ? (
-        <details className="notice-audit-details">
-          <summary>通所リハ9項目の旧HTML・改正証拠</summary>
-          <div className="notice-audit-body">
-            <section className="section">
-              <h2>現行統合本文ではありません</h2>
-              <p>
-                公式旧HTMLとの本文一致は独立照合済みですが、令和6年度新旧対照の
-                「略」「新設」「削る」を旧HTMLへ機械適用していません。
-                現行性はGAP、人手確認は未実施です。
-              </p>
-              <p>
-                <a href={dayrehab.source?.url} target="_blank" rel="noreferrer">
-                  厚生労働省の公式旧HTMLを確認
-                </a>
-              </p>
-              {dayrehab.amendment_evidence?.source_url ? (
+      {historicalNoticeDatasets
+        .filter((entry) => !service || selectedServiceId === entry.service_id)
+        .map((entry) => (
+          <details className="notice-audit-details" key={entry.service_id}>
+            <summary>
+              {entry.label}{entry.data.item_count}項目の旧HTML・改正証拠
+            </summary>
+            <div className="notice-audit-body">
+              <section className="section">
+                <h2>現行統合本文ではありません</h2>
                 <p>
-                  <a href={dayrehab.amendment_evidence.source_url} target="_blank" rel="noreferrer">
-                    令和6年度新旧対照表を確認
+                  公式旧HTMLとの本文一致は独立照合済みですが、令和6年度新旧対照等の
+                  部分改正資料を旧HTMLへ機械適用していません。
+                  現行性はGAP、人手確認は未実施です。
+                </p>
+                <p>
+                  <a href={entry.data.source?.url} target="_blank" rel="noreferrer">
+                    厚生労働省の公式旧HTMLを確認
                   </a>
                 </p>
-              ) : null}
-            </section>
-          </div>
-        </details>
-      ) : null}
+                {entry.data.amendment_evidence?.source_url ? (
+                  <p>
+                    <a
+                      href={entry.data.amendment_evidence.source_url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      令和6年度改正資料を確認
+                    </a>
+                  </p>
+                ) : null}
+              </section>
+            </div>
+          </details>
+        ))}
     </article>
   );
 }
