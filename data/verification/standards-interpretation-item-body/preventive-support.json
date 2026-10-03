@@ -4,15 +4,15 @@
   "source_family": "preventive_support_standards_interpretation",
   "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION",
   "audit_result": "PARTIAL_WITH_GAPS",
-  "base_main_sha": "ec96394ae37d22d5222b97d3b401a0458e6aea7a",
+  "base_main_sha": "c8b53952b68f2790b86ca7beca4bcd813d8a17fc",
   "scope_boundary": "EXISTING_STAGING_TASKS_ONLY",
   "coverage": {
     "task_total": 34,
     "structured_text_raw_entries": 34,
     "numbered_child_units_checked": 55,
     "verdicts": {
-      "PASS": 32,
-      "PARTIAL": 2,
+      "PASS": 33,
+      "PARTIAL": 1,
       "GAP": 0,
       "FAIL": 0
     }
@@ -1305,28 +1305,53 @@
       "task_id": "KR2-10-B033",
       "staging_id": "preventive-support.notice.033",
       "path": "第二/4/(1)/㉕",
-      "heading": "認定審査会意見等の反映・要介護移行時の連携",
-      "verdict": "PARTIAL",
+      "heading": "認定審査会意見等の介護予防サービス計画への反映",
+      "verdict": "PASS",
       "numbered_child_units_checked": 1,
       "checked_child_locators": [
         "第二/4/(1)/㉕"
       ],
       "source_url_check": "PASS",
       "source_locator_check": "PASS",
-      "content_summary_check": "PARTIAL",
-      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "content_summary_check": "PASS",
+      "evidence_mode": "DIRECT_NOTICE_BODY_VERSION_SEPARATED_AFTER_SCOPE_CORRECTION",
       "stored_source_manifest_ids": [
         "r6-final-comparison",
+        "work-control-source-4",
         "work-control-source-5"
       ],
       "stored_source_urls": [
         "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
         "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
       ],
       "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ㉕ （略）",
-      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "evidence_support_note": "平成18年厚生労働省公式解釈通知の第2/4/(1)「認定審査会意見等の介護予防サービス計画への反映」でitem-bodyを直接確認し、令和6年度最終新旧対照の現行側㉕（旧側㉔）をlater locatorとして別保持した。従来staging summaryに含まれていた要介護移行時の連携は、同通知4(2)⑥の別項目であることを一次資料構造から確認して本taskから除外した。currentnessは未昇格。",
       "current_integrated_notice_body_claimed": false,
-      "residual_reason": "令和6年度資料は現行側㉕本文を略記。歴史的な解釈通知改正資料では認定審査会意見の反映部分を直接確認できるが、staging summaryに含まれる要介護移行時の連携まで同一item-bodyとして直接支持する解釈通知本文を今回確保できていない。基準省令の支持は代替にしないためPARTIAL維持。"
+      "version_separated_item_body_evidence": [
+        {
+          "source_manifest_id": "work-control-source-4",
+          "source_version": "H18_FULL_NOTICE",
+          "locator": "第2／4／(1)／23 認定審査会意見等の介護予防サービス計画への反映（第25号）",
+          "role": "DIRECT_HISTORICAL_ITEM_BODY",
+          "directly_supports_staging_summary": true,
+          "proves_currentness": false
+        },
+        {
+          "source_manifest_id": "r6-final-comparison",
+          "source_version": "R6_FINAL_AMENDMENT_COMPARISON",
+          "locator": "第2／4／(1)／現行側㉕（旧欄㉔）（略）",
+          "role": "LATER_VERSION_NUMBERING_BRIDGE",
+          "directly_supports_staging_summary": false,
+          "proves_currentness": false
+        }
+      ],
+      "scope_correction": {
+        "status": "CORRECTED_FROM_PRIMARY_NOTICE_STRUCTURE",
+        "removed_from_this_task": "要介護移行時の指定居宅介護支援事業者等との連携",
+        "reason": "平成18年公式解釈通知では4(2)⑥の別項目に置かれており、4(1)の認定審査会意見項目と同一item-bodyではない。",
+        "followup": "REVIEW_FULL_4_2_SCOPE_SEPARATELY_NO_SILENT_MERGE"
+      }
     },
     {
       "task_id": "KR2-10-B034",
@@ -1363,12 +1388,6 @@
       "note": "令和6年度資料は現行側(25)本文を略記。現行基準省令は記録整備内容を支持するが、解釈通知本文そのものの直接item-body evidenceを今回確保できていないためPARTIAL維持。"
     },
     {
-      "task_id": "KR2-10-B033",
-      "path": "第二/4/(1)/㉕",
-      "kind": "COMBINED_SUMMARY_ONLY_PARTIALLY_DIRECT_IN_NOTICE_BODY",
-      "note": "令和6年度資料は現行側㉕本文を略記。歴史的な解釈通知改正資料では認定審査会意見の反映部分を直接確認できるが、staging summaryに含まれる要介護移行時の連携まで同一item-bodyとして直接支持する解釈通知本文を今回確保できていない。基準省令の支持は代替にしないためPARTIAL維持。"
-    },
-    {
       "kind": "CURRENT_INTEGRATED_NOTICE_TEXT_NOT_ESTABLISHED",
       "note": "令和6年度新旧対照と歴史版通知全文は版を分離して使用し、合成して現行統合通知本文とはしていない。"
     }
@@ -1399,12 +1418,12 @@
       "note": "第二/3/(25)『記録の整備』は基準省令ではなく解釈通知本文の直接evidenceを追加探索する。"
     },
     {
-      "id": "RESOLVE_B033_COMBINED_SUMMARY",
-      "note": "㉕の認定審査会意見部分と要介護移行時連携の両方を同一解釈通知item-bodyで直接支持できるか確認し、必要なら将来task粒度を見直す。"
-    },
-    {
       "id": "RECHECK_PACKAGE_CONTRACT_PRECHECK_SEPARATELY",
       "note": "KR2-10-E006はNOTICE判定で解除しない。service登録・scope・source inventoryは現mainで存在するため旧理由はstaleだが、item-body PARTIAL、currentness、human review、public routeが残る。"
+    },
+    {
+      "id": "REVIEW_FULL_4_2_SCOPE_AFTER_B033_CORRECTION",
+      "note": "B033から除外した要介護移行時の連携は平成18年公式解釈通知4(2)⑥に属する。4(2)は複数の下位項目を持つため、⑥だけを既存taskへ混ぜず、4(2)全体のscopeを別途独立レビューする。"
     }
   ],
   "input_binding": {
@@ -1420,14 +1439,14 @@
     "verifier": "scripts/verify_preventive_support_standards_interpretation_item_body.py",
     "verification_status": "PARTIAL_WITH_GAPS",
     "counts": {
-      "PASS": 32,
-      "PARTIAL": 2,
+      "PASS": 33,
+      "PARTIAL": 1,
       "GAP": 0,
       "FAIL": 0
     },
     "expected_staging_items_or_tasks": 34,
-    "non_pass_items": 2,
-    "explicit_unresolved_records": 3,
+    "non_pass_items": 1,
+    "explicit_unresolved_records": 2,
     "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
     "currentness_state": "NOT_ESTABLISHED",
     "human_review_state": "NOT_REVIEWED",
@@ -1436,11 +1455,15 @@
     "staging_summary_treated_as_official_notice_text": false,
     "omitted_text_inferred": false,
     "service_scope_expanded": false,
-    "package_blocker_state": "BLOCKED_KR2-10-E006"
+    "package_blocker_state": "BLOCKED_KR2-10-E006",
+    "last_integrator_base_sha": "c8b53952b68f2790b86ca7beca4bcd813d8a17fc",
+    "scope_corrected_tasks": [
+      "KR2-10-B033"
+    ]
   },
   "residual_resolution": {
-    "role": "Preventive Support Standards-Interpretation Residual Verification Worker",
-    "base_main_sha": "ec96394ae37d22d5222b97d3b401a0458e6aea7a",
+    "role": "Preventive Support Standards-Interpretation Residual Verification Integrator",
+    "base_main_sha": "c8b53952b68f2790b86ca7beca4bcd813d8a17fc",
     "resolved_tasks": [
       "KR2-10-B004",
       "KR2-10-B008",
@@ -1452,14 +1475,14 @@
       "KR2-10-B025",
       "KR2-10-B027",
       "KR2-10-B029",
-      "KR2-10-B031"
-    ],
-    "remaining_partial_tasks": [
-      "KR2-10-B016",
+      "KR2-10-B031",
       "KR2-10-B033"
     ],
+    "remaining_partial_tasks": [
+      "KR2-10-B016"
+    ],
     "source_manifest_changed": false,
-    "staging_changed": false,
+    "staging_changed": true,
     "currentness_promoted": false,
     "human_review_promoted": false,
     "publication_promoted": false,
