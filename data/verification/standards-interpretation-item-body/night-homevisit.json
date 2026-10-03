@@ -1,0 +1,735 @@
+{
+  "format_version": 1,
+  "service_id": "night-homevisit",
+  "layer": "standards_interpretation",
+  "audit_kind": "INDEPENDENT_ITEM_BODY_VERIFICATION",
+  "audit_result": "COMPLETED_WITH_PARTIALS",
+  "verification_scope": "CONTENT_AND_EVIDENCE_MATCH_ONLY",
+  "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
+  "inputs": {
+    "staging_path": "data/services/night-homevisit/standards-interpretation-staging.json",
+    "staging_blob_sha": "925ff43e08a5d45a217b479289eacfcf963897c3",
+    "scope_path": "data/services/night-homevisit/standards-interpretation-scope.json"
+  },
+  "grading": {
+    "PASS": "当該staging項目の主要な要約が、公式通知本文・改正比較本文または通知が明示する準用先本文で直接支持される。",
+    "PARTIAL": "要約の実質は公式資料で支持されるが、当該通知本文が略記等で直接確認できず、基準省令等のクロスチェックに一部依存する。",
+    "GAP": "当該項目の主要な要約を公式一次資料の本文・明示準用先へ十分に結び付けられない。",
+    "FAIL": "公式一次資料とstaging項目のサービス境界・番号・見出し・主要内容に実質的な不一致がある。"
+  },
+  "source_roles": {
+    "r6-final-comparison": {
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "usage": "改正差分・見出し・当該項目の令和6年度変更点を確認するために使用。略記される本文を別世代から合成して現行本文とはしない。"
+    },
+    "r3-amendment-comparison": {
+      "url": "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+      "role": "R3_AMENDMENT_COMPARISON_BODY_AND_CROSS_REFERENCE_EVIDENCE",
+      "usage": "令和3年度の新旧対照表で、夜間対応型訪問介護節の本文断片・略記・明示準用先を確認。現行性の証明には使用しない。"
+    },
+    "older-amendment-reference": {
+      "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+      "role": "OLDER_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+      "usage": "R3で略記された項目の歴史的な通知本文を確認する補助一次資料。現行本文へ自動合成しない。"
+    },
+    "historical-official-html": {
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+      "role": "ORDINANCE_TEXT_CROSSCHECK_NOT_NOTICE_BODY",
+      "usage": "これは解釈通知本文ではなく、指定地域密着型サービス基準（厚生労働省令第34号）の公式HTML。略記項目の基準内容のクロスチェックにのみ使用し、通知本文の代替とは扱わない。"
+    }
+  },
+  "source_role_findings": [
+    "historical-official-html は解釈通知の旧版HTMLではなく、厚生労働省令第34号の基準本文HTMLとして扱う。",
+    "R3比較PDFとR6最終比較PDFの「略」は、それ自体を本文証拠としない。",
+    "older-amendment-reference はR3で略記された歴史的本文のgap-resolutionに使用するが、現行統合本文は構成しない。",
+    "R6最終新旧対照表は改正差分の確認用であり、そこにない本文を他世代資料から補ってcurrent textとはしない。"
+  ],
+  "coverage": {
+    "expected_items": 25,
+    "observed_items": 25,
+    "counts": {
+      "PASS": 23,
+      "PARTIAL": 2,
+      "GAP": 0,
+      "FAIL": 0
+    }
+  },
+  "items": [
+    {
+      "id": "night-homevisit.notice.001",
+      "task_id": "KR2-08-B001",
+      "path": "第三/二",
+      "number": "二",
+      "heading": "夜間対応型訪問介護",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "基本方針、人員、設備等、運営に関する基準からなる通知節。現行基準省令では第二章・第4条以下に対応する。",
+      "content_evidence_match_reason": "サービス節の境界と、基本方針・人員・設備・運営という章構成を公式資料で確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.16-22 / 第3 地域密着型サービス／二 夜間対応型訪問介護",
+          "evidence_summary": "夜間対応型訪問介護節と人員・運営の下位構造を確認"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第二章 夜間対応型訪問介護（第4条以下）",
+          "evidence_summary": "基準省令側の基本方針・人員・設備・運営の章構造を照合"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.002",
+      "task_id": "KR2-08-B002",
+      "path": "第三/二/1/(1)",
+      "number": "(1)",
+      "heading": "基本方針（基準第4条）",
+      "status": "PARTIAL",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "利用者が可能な限り居宅で自立した生活を営めるよう、夜間に定期巡回・随時対応・随時訪問を組み合わせ、安心して在宅生活を継続できるよう援助する基本方針を扱う。",
+      "content_evidence_match_reason": "基準第4条の内容は公式基準省令で直接確認できるが、R3比較表と旧改正比較資料では通知1(1)本文が「略」であり、解釈通知本文そのものは独立復元できない。",
+      "limitation": "通知本文一致は未証明。基準省令による内容支持に限定。",
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.16 / 二 夜間対応型訪問介護／1",
+          "evidence_summary": "1は略記"
+        },
+        {
+          "source_id": "older-amendment-reference",
+          "locator": "p.33 / 1 基本方針／(1)",
+          "evidence_summary": "(1)は略記"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第二章 第一節／第4条",
+          "evidence_summary": "居宅での自立生活、夜間の定期巡回・随時通報・緊急対応という基本方針を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.003",
+      "task_id": "KR2-08-B003",
+      "path": "第三/二/2/(1)/①/イ",
+      "number": "イ",
+      "heading": "イ（独立見出しなし）",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "オペレーターの資格要件を扱う。厚労省旧版通知では看護師、介護福祉士、医師、保健師、准看護師、社会福祉士、介護支援専門員等を示し、一定条件下でサービス提供責任者経験者を充てる取扱いが示されている。現行資格要件は基準第6条で別途確認する。",
+      "content_evidence_match_reason": "旧改正比較資料のオペレーター資格要件が要約を直接支持する。R3では当該イが略記のため、旧改正資料はhistorical gap-resolution evidenceとしてのみ使用した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "locator": "p.34 / 2(1)①イ",
+          "evidence_summary": "資格列挙と一定のサービス提供責任者経験者の取扱いを確認"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第6条",
+          "evidence_summary": "基準省令側のオペレーター資格規定を照合"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.004",
+      "task_id": "KR2-08-B004",
+      "path": "第三/二/2/(1)/①/ロ",
+      "number": "ロ",
+      "heading": "オペレーター",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "提供時間帯を通じ1以上を確保する。事業所常駐は必須ではなく、定期巡回への同行、ICT・転送機能を用いた事業所外対応、サテライト拠点を含む配置が一定条件下で認められる。利用状況・利用者数・業務量に応じ適切な員数を確保する。",
+      "content_evidence_match_reason": "R3比較表の新欄で、提供時間帯を通じた配置、常駐不要、巡回同行、ICT・転送、サテライト等の要点を直接確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.16-17 / 2(1)①ロ",
+          "evidence_summary": "配置数、事業所外対応、ICT等に関する本文を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.005",
+      "task_id": "KR2-08-B005",
+      "path": "第三/二/2/(1)/①/ハ",
+      "number": "ハ",
+      "heading": "ハ（独立見出しなし）",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "オペレーターの専従と兼務の取扱いを扱う。厚労省旧版改正資料では、原則として通報受付業務に専従しつつ、利用者の処遇に支障がない場合の定期巡回サービス・同一敷地内の訪問介護・定期巡回随時対応型サービス等との兼務や、他の通報受付業務への従事を示している。",
+      "content_evidence_match_reason": "R3ではハが略記だが、旧改正比較資料の対応箇所で専従原則、一定の兼務、他通報受付業務等の取扱いを確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "locator": "p.34-35 / 2(1)①ハ相当",
+          "evidence_summary": "専従原則と支障がない場合の兼務・通報受付業務の取扱いを確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.006",
+      "task_id": "KR2-08-B006",
+      "path": "第三/二/2/(1)/①/ニ",
+      "number": "ニ",
+      "heading": "オペレーター",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "利用者からの通報を受け訪問の要否等を判断する能力が必要であり、看護師・介護福祉士等の資格を有する者とする。オペレーションセンターを設置しない場合は、訪問介護員等の資格を有する者で差し支えない。",
+      "content_evidence_match_reason": "R3比較表のニ本文が、通報から訪問要否を判断する能力、資格要件、オペレーションセンター非設置時の取扱いを直接支持する。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.17 / 2(1)①ニ",
+          "evidence_summary": "判断能力・資格・非設置時の取扱いを確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.007",
+      "task_id": "KR2-08-B007",
+      "path": "第三/二/2/(1)/①/ホ",
+      "number": "ホ",
+      "heading": "オペレーター",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "オペレーターは、オペレーションセンターサービスに支障がない場合、随時訪問サービスを行う訪問介護員等として従事できる。ICT等により事業所外でも利用者情報確認と即時応答ができる体制が判断要素となる。",
+      "content_evidence_match_reason": "R3比較表のホ本文で、支障がない場合の随時訪問従事とICT・転送等による事業所外即応の要件を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.17 / 2(1)①ホ",
+          "evidence_summary": "随時訪問兼務とICT等による即応体制を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.008",
+      "task_id": "KR2-08-B008",
+      "path": "第三/二/2/(1)/①/ヘ",
+      "number": "ヘ",
+      "heading": "オペレーター",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "基準第6条第4項各号の施設等で入所者等の処遇に支障がない場合、資格要件を満たす当該施設職員をオペレーターに充てられる。ただし、定期巡回・随時訪問に従事した時間の施設側勤務時間への算入には制限がある。",
+      "content_evidence_match_reason": "R3比較表のヘ本文で、第6条第4項各号の施設等の職員をオペレーターに充てる条件と勤務時間算入上の留意を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.17 / 2(1)①ヘ",
+          "evidence_summary": "施設職員の兼務条件と勤務時間の取扱いを確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.009",
+      "task_id": "KR2-08-B009",
+      "path": "第三/二/2/(1)/①/ト",
+      "number": "ト",
+      "heading": "面接相談員",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "利用者からの通報に適切に対応できるよう、日中の面接等を通じて利用者状況を把握するため配置する。オペレーターと同様の資格又は同等の知識経験を有する者の配置に努め、必要人員を確保する。",
+      "content_evidence_match_reason": "R3比較表の面接相談員本文で、日中の面接等による状況把握、知識経験、必要人員の考え方を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.17-18 / 2(1)①ト 面接相談員",
+          "evidence_summary": "面接相談員の役割・資質・員数を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.010",
+      "task_id": "KR2-08-B010",
+      "path": "第三/二/2/(1)/②/イ",
+      "number": "イ",
+      "heading": "イ（定期巡回サービスを行う訪問介護員等）",
+      "status": "PARTIAL",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "定期巡回サービスを行う訪問介護員等の配置を扱う。現行基準第6条では、交通事情・訪問頻度等を勘案し利用者へ適切に定期巡回サービスを提供するために必要な数以上を置く。",
+      "content_evidence_match_reason": "定期巡回サービス担当者の必要数は基準第6条で直接確認できるが、R3比較表はイを略記し、旧改正比較資料もイ〜ロを略記しており、解釈通知本文一致は確認できない。",
+      "limitation": "通知本文一致は未証明。基準省令第6条による内容支持に限定。",
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.18 / 2(1)②イ",
+          "evidence_summary": "イは略記"
+        },
+        {
+          "source_id": "older-amendment-reference",
+          "locator": "p.35 / 2(1)②イ〜ロ",
+          "evidence_summary": "イ〜ロは略記"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第6条第1項第2号",
+          "evidence_summary": "交通事情・訪問頻度等を勘案した必要数を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.011",
+      "task_id": "KR2-08-B011",
+      "path": "第三/二/2/(1)/②/ロ",
+      "number": "ロ",
+      "heading": "随時訪問サービスを行う訪問介護員等",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "随時訪問サービス担当者は原則として専従かつ提供時間帯を通じ1以上を配置する。一定の兼務、オペレーター兼務、夜間の事業所外勤務、サテライト配置がサービス提供に支障がない条件で認められる。",
+      "content_evidence_match_reason": "R3比較表のロ本文が、専従・提供時間帯1以上、一定の兼務、オペレーター兼務、夜間事業所外勤務、サテライト配置を直接支持する。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.18 / 2(1)②ロ",
+          "evidence_summary": "随時訪問担当者の配置・兼務・事業所外勤務・サテライトを確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.012",
+      "task_id": "KR2-08-B012",
+      "path": "第三/二/2/(1)/②/ハ",
+      "number": "ハ",
+      "heading": "ハ（独立見出しなし）",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "厚労省旧版一次資料では、定期巡回・随時訪問を行う訪問介護員等の資格と看護師の取扱いを説明し、看護師資格者を訪問介護員等として雇用する場合の業務範囲に留意する旨を示している。",
+      "content_evidence_match_reason": "R3ではハ・ニが略記だが、旧改正比較資料のハ本文で訪問介護員等の資格と看護師資格者の取扱いを確認した。隣接するニの復元不能は本項ハの本文支持を妨げない。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "locator": "p.35 / 2(1)②ハ",
+          "evidence_summary": "訪問介護員等の資格と看護師資格者を雇用する場合の業務範囲を確認"
+        },
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.18 / 2(1)②ハ・ニ",
+          "evidence_summary": "R3ではハ・ニが略記であることを確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.013",
+      "task_id": "KR2-08-B013",
+      "path": "第三/二/2/(2)",
+      "number": "(2)",
+      "heading": "管理者（基準第7条）",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "管理者は常勤・専従を原則とし、管理に支障がない場合にオペレーションセンター従業者・訪問介護員等や一体運営する他サービス等との兼務を認める。",
+      "content_evidence_match_reason": "R3比較表とR6最終新旧対照表で、管理者の常勤・専従原則と管理上支障がない場合の兼務取扱いを確認した。R6は改正差分確認にのみ用い、統合現行本文は作成していない。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.18-19 / 2(2) 管理者",
+          "evidence_summary": "管理者の原則と当時の兼務規定を確認"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "locator": "p.10-11 / 2(2) 管理者",
+          "evidence_summary": "令和6年度最終改正の管理者兼務差分を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.014",
+      "task_id": "KR2-08-B014",
+      "path": "第三/二/4/(1)",
+      "number": "(1)",
+      "heading": "指定夜間対応型訪問介護の基本的取扱方針及び具体的取扱方針",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "現行基準の基本・具体的取扱方針に対応。利用者の状況に応じた適切な定期巡回・随時対応、サービス評価・改善、保健医療サービスとの連携等を扱う。厚労省旧版通知では同項見出しと留意事項を確認できる。",
+      "content_evidence_match_reason": "旧改正比較資料で基本的・具体的取扱方針の見出しと保健医療サービス連携等の通知本文を確認し、R6最終比較表で同項の改正差分を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "locator": "p.43 / 運営に関する基準(1)",
+          "evidence_summary": "取扱方針と保健医療サービス連携の留意事項を確認"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "locator": "p.11-12 / 4(1)",
+          "evidence_summary": "同項が令和6年度改正対象であることと差分を確認"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第9条・第10条",
+          "evidence_summary": "基準省令側の基本的・具体的取扱方針を照合"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.015",
+      "task_id": "KR2-08-B015",
+      "path": "第三/二/4/(2)/①",
+      "number": "①",
+      "heading": "①（計画作成・アセスメント）",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "オペレーションセンター従業者が利用者の状況を把握・分析し、援助の方向性・目標、担当者、具体的内容、所要時間、日程等を明確にした夜間対応型訪問介護計画を作成する。",
+      "content_evidence_match_reason": "R3では①〜⑤が略記だが、旧改正比較資料の①本文で、アセスメント、援助方向・目標、担当者、具体的内容、所要時間、日程を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "locator": "p.43 / 4(2)①相当",
+          "evidence_summary": "計画作成時の把握・分析と記載要素を確認"
+        },
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.19 / 4(2)①〜⑤",
+          "evidence_summary": "R3では①〜⑤が略記であることを確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.016",
+      "task_id": "KR2-08-B016",
+      "path": "第三/二/4/(2)/⑥",
+      "number": "⑥",
+      "heading": "居宅サービス計画に基づくサービス提供時の準用",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "居宅サービス計画に基づきサービス提供する事業者について、定期巡回・随時対応型訪問介護看護計画に関する所定の取扱いを、夜間対応型訪問介護計画へ読み替えて準用する。",
+      "content_evidence_match_reason": "R3比較表の⑥本文が、居宅サービス計画に基づく場合に定期巡回・随時対応型訪問介護看護計画の取扱いを読み替えて準用することを直接支持する。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.19 / 4(2)⑥",
+          "evidence_summary": "計画の読み替え準用を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.017",
+      "task_id": "KR2-08-B017",
+      "path": "第三/二/4/(3)",
+      "number": "(3)",
+      "heading": "緊急時等の対応",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "サービス提供中に利用者の病状急変等が生じた場合、運営規程に定める方法に基づき、速やかに主治医へ連絡する等の必要な措置を講じる。",
+      "content_evidence_match_reason": "R3では(3)(4)が略記だが、旧改正比較資料の緊急時等の対応本文と基準第12条で、病状急変時の主治医連絡等を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "locator": "p.44 / 緊急時等の対応",
+          "evidence_summary": "病状急変等の際の主治医連絡等を確認"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第12条",
+          "evidence_summary": "基準省令側の緊急時対応を照合"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.018",
+      "task_id": "KR2-08-B018",
+      "path": "第三/二/4/(5)",
+      "number": "(5)",
+      "heading": "運営規程",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "基準第14条に基づき、事業目的・運営方針、従業者、営業日・時間、オペレーションセンター・定期巡回・随時訪問の内容、利用料、通常の実施地域、緊急時対応等を規程に定める。",
+      "content_evidence_match_reason": "R3比較表の運営規程本文と基準第14条の列挙事項が要約を支持する。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.19 / 4(5) 運営規程",
+          "evidence_summary": "運営規程の義務とサービス内容の範囲を確認"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第14条",
+          "evidence_summary": "目的・従業者・営業時間・内容/利用料・実施地域・緊急時等の列挙を照合"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.019",
+      "task_id": "KR2-08-B019",
+      "path": "第三/二/4/(6)",
+      "number": "(6)",
+      "heading": "勤務体制の確保等",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "基準第15条に基づき勤務体制を定め、原則として事業所の従業者によりサービスを提供する。地域資源を活用した一部委託やオペレーションセンターサービスの一体実施に関する留意事項を含む。",
+      "content_evidence_match_reason": "R3比較表の勤務体制本文と基準第15条で、勤務体制、自事業所従業者による提供原則、一定条件下の一部委託・一体実施を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.19-21 / 4(6) 勤務体制の確保等",
+          "evidence_summary": "勤務体制、委託、一体実施に関する通知本文を確認"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第15条",
+          "evidence_summary": "勤務体制と一定条件下の他事業所従業者利用を照合"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.020",
+      "task_id": "KR2-08-B020",
+      "path": "第三/二/4/(7)",
+      "number": "(7)",
+      "heading": "業務継続計画の策定等",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "準用規定を通じ、感染症・非常災害時の業務継続計画、研修・訓練、定期的な見直し等を扱う。",
+      "content_evidence_match_reason": "夜間対応型訪問介護の(7)はR3で定期巡回・随時対応型訪問介護看護の(23)を明示準用しており、その参照先本文でBCP、研修・訓練、見直し等を確認した。service boundaryは明示的な通知内準用に限定した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.21 / 4(7) 業務継続計画の策定等",
+          "evidence_summary": "第3の一の4(23)への明示参照を確認"
+        },
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.6-8 / 第3の一の4(23)",
+          "evidence_summary": "感染症・災害BCP、研修、訓練、見直し等の参照先本文を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.021",
+      "task_id": "KR2-08-B021",
+      "path": "第三/二/4/(8)",
+      "number": "(8)",
+      "heading": "衛生管理等",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "準用規定を通じ、従業者の清潔保持・健康管理、設備・備品の衛生管理、感染症の予防・まん延防止等を扱う。",
+      "content_evidence_match_reason": "夜間対応型訪問介護の(8)はR3で定期巡回・随時対応型訪問介護看護の(24)を明示準用しており、参照先で清潔保持・健康管理・設備備品衛生・感染症対策を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.21 / 4(8) 衛生管理等",
+          "evidence_summary": "第3の一の4(24)への明示参照を確認"
+        },
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.8 / 第3の一の4(24)",
+          "evidence_summary": "清潔保持、健康管理、設備備品衛生、感染症対策の参照先本文を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.022",
+      "task_id": "KR2-08-B022",
+      "path": "第三/二/4/(9)",
+      "number": "(9)",
+      "heading": "地域との連携等",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "地域住民・地域活動等との連携、市町村事業への協力等、地域密着型サービスとしての連携を扱う。",
+      "content_evidence_match_reason": "R3の(9)本文と明示参照先で、地域への開放、市町村事業との連携・協力、集合住宅利用者だけに閉じない提供等を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.21-22 / 4(9) 地域との連携等",
+          "evidence_summary": "地域連携の夜間対応型訪問介護固有説明と明示参照を確認"
+        },
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.11-12 / 第3の一の4(29)④",
+          "evidence_summary": "市町村事業への協力や住民・非営利団体との関係を確認"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第16条",
+          "evidence_summary": "市町村事業への協力と地域利用者への提供努力を照合"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.023",
+      "task_id": "KR2-08-B023",
+      "path": "第三/二/4/(10)",
+      "number": "(10)",
+      "heading": "虐待の防止",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "虐待防止委員会、指針、研修、担当者配置等の虐待防止措置を扱う。",
+      "content_evidence_match_reason": "R3の(10)は定期巡回・随時対応型訪問介護看護の(31)を明示参照し、参照先本文で虐待防止措置の体系を確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.22 / 4(10) 虐待の防止",
+          "evidence_summary": "第3の一の4(31)への明示参照を確認"
+        },
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.12-13 / 第3の一の4(31)",
+          "evidence_summary": "虐待防止の必要措置、研修等を含む参照先本文を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.024",
+      "task_id": "KR2-08-B024",
+      "path": "第三/二/4/(11)",
+      "number": "(11)",
+      "heading": "記録の整備",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "従業者・設備・会計、夜間対応型訪問介護計画、サービス提供、苦情、事故等の記録整備・保存を扱う。",
+      "content_evidence_match_reason": "R3の(11)本文で記録整備・保存を確認し、基準第17条で従業者・設備・会計、計画、提供記録、苦情、事故等の対象を照合した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.22 / 4(11) 記録の整備",
+          "evidence_summary": "記録整備と保存に関する通知本文を確認"
+        },
+        {
+          "source_id": "historical-official-html",
+          "locator": "第17条",
+          "evidence_summary": "記録対象の列挙を基準省令側で照合"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    },
+    {
+      "id": "night-homevisit.notice.025",
+      "task_id": "KR2-08-B025",
+      "path": "第三/二/4/(12)",
+      "number": "(12)",
+      "heading": "準用",
+      "status": "PASS",
+      "service_scope_match": "PASS",
+      "staging_content_summary": "夜間対応型訪問介護に準用される共通規定を列挙し、対応する通知上の取扱いを参照する。",
+      "content_evidence_match_reason": "R3の(12)本文が、基準第18条により準用される共通規定と対応する通知参照先を列挙していることを直接確認した。",
+      "limitation": null,
+      "evidence": [
+        {
+          "source_id": "r3-amendment-comparison",
+          "locator": "p.22 / 4(12) 準用",
+          "evidence_summary": "準用条項と通知参照先の列挙を確認"
+        }
+      ],
+      "currentness_proven": false,
+      "human_review_proven": false,
+      "publication_permitted": false
+    }
+  ],
+  "unresolved_gaps": [
+    {
+      "id": "night-homevisit.notice.002",
+      "issue": "R3比較表および旧改正比較資料で通知1(1)本文が略記されており、基準第4条の内容は確認できるが解釈通知本文一致は未証明。"
+    },
+    {
+      "id": "night-homevisit.notice.010",
+      "issue": "R3比較表では2(1)②イ、旧改正比較資料ではイ〜ロが略記であり、基準第6条の人員数は確認できるが解釈通知本文一致は未証明。"
+    }
+  ],
+  "safety": {
+    "currentness_proven": false,
+    "integrated_current_text_constructed": false,
+    "omitted_text_auto_composed": false,
+    "human_review_promoted": false,
+    "publication_permitted": false,
+    "public_route_enabled": false
+  },
+  "integrator_followup": [
+    "stagingのextraction_method等で historical-official-html を「厚労省旧版通知」と読める記述があるため、統合時にこのURLを「基準省令公式HTML（通知本文ではない）」へ役割修正すること。",
+    "night-homevisit.notice.002 と .010 は、通知本文そのものを確認できる別の公式版・原典が取得できるまでPARTIALを維持すること。",
+    "item-body receiptを共通verification registryやservice manifestへ接続する場合は、共通validator/package.json変更をIntegrator側で一括実施すること。本branchでは並列競合回避のため変更しない。",
+    "PASSをcurrentness・human review・publication readinessへ自動昇格させないこと。"
+  ],
+  "conclusion": "25項目すべてを項目単位で照合した。23件は公式通知本文・改正比較本文または通知内の明示準用先で主要内容を支持でき、2件は通知本文が略記のため基準省令による内容支持に留まりPARTIALとした。FAILはない。本結果はcurrentnessとは独立したcontent/evidence matchである。"
+}
