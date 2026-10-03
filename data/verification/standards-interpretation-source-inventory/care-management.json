@@ -7,15 +7,17 @@
   "source_family": "care_management_standards_interpretation",
   "audit_run": {
     "workflow": "Verify standards interpretation source inventories",
-    "run_id": 37092391799,
-    "head_sha": "5a448a94e85c617834acb0926ab1b43b926611f5",
+    "run_id": 37096989736,
+    "head_sha": "96ba3eb74bbeafe881273f22c83279b8f6c087ff",
     "verifier": "scripts/verify_standards_interpretation_sources_independent.py",
-    "report_sha256": "03d45af107053148bfddd1cb1fbe7b6ea6a436a040764a08ece48c07e249f176"
+    "report_sha256": "476076abaa6b747025d16737fc06c153478ae89dad81b46fc526fee03f295e82"
   },
   "coverage": {
     "expected_staging_items_or_tasks": 32,
     "observed_staging_items_or_tasks": 32,
     "referenced_sources": 5,
+    "manifest_required_sources": 5,
+    "inspected_sources": 5,
     "sources_fetchable": 5,
     "required_sources": 5,
     "required_sources_fetchable": 5,
@@ -85,7 +87,7 @@
   "input_git_blob_shas_at_audit": {
     "data/services/care-management/standards-interpretation-scope.json": "15d43513a96fda55f588b2a8fcf857752ba85000",
     "data/services/care-management/standards-interpretation-staging.json": "ad5bb2b00a039558e4ae434534ce1a135adaed1d",
-    "scripts/verify_standards_interpretation_sources_independent.py": "14e03ccfb4e5a86dc840b6595fd7f6be25dfd301"
+    "scripts/verify_standards_interpretation_sources_independent.py": "9f65e258e64bd5d719f4e586e06430728aa5e196"
   },
-  "conclusion": "Referenced required official sources were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
+  "conclusion": "All manifest-required official sources, plus referenced supplemental sources, were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
 }
