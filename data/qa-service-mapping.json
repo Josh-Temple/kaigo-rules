@@ -17,7 +17,8 @@
     "unresolved_new_service_ids_remain_unresolved": true,
     "noncanonical_row_labels_are_not_auto_expanded": true,
     "verification_state_is_not_promoted": true,
-    "currentness_state_is_not_promoted": true
+    "currentness_state_is_not_promoted": true,
+    "shared_category_membership_model_is_external": true
   },
   "classification_definitions": {
     "INDIVIDUAL_SERVICE": "Q&A service code representing one current service category. Existing Kaigo Rules service IDs are mapped; missing catalog entries remain pending for Chat A/Integrator reconciliation.",
@@ -28,7 +29,7 @@
   },
   "query_contract": {
     "direct_individual_service": "Use the exact service_code relation after catalog mapping is resolved.",
-    "shared_common_category": "Resolve through explicit group membership. Do not infer membership solely from label text in this file.",
+    "shared_common_category": "Resolve through data/qa-group-relations.json explicit group membership. Treat the group relation as search scope only; row-level current_service_scope and qualified raw labels remain separate applicability constraints.",
     "qualified_raw_service_label": "When a corpus row's raw service_label differs from the canonical code label, preserve that row-level qualifier and fail closed unless an explicit parser/review establishes the narrower or composite scope.",
     "current_service_scope": "Preserve as source data when present; it must not overwrite the primary service_code mapping.",
     "historical_or_special": "Expose through their own taxonomy facet; do not attach to current services automatically."
@@ -46,7 +47,11 @@
     "mapped_existing_service_ids": 26,
     "pending_parallel_catalog_service_codes": 0,
     "rows_with_qualified_or_variant_raw_service_label": 297,
-    "mapped_individual_service_ids": 26
+    "mapped_individual_service_ids": 26,
+    "shared_group_count": 6,
+    "group_membership_relation_count": 74,
+    "auto_resolved_qualified_or_variant_rows": 295,
+    "unresolved_fail_closed_qualified_or_variant_rows": 2
   },
   "current_catalog_snapshot": {
     "manifest_service_ids": [
@@ -170,8 +175,9 @@
         "kind": "GROUP",
         "group_id": "qa.shared.all-services",
         "group_label": "全サービス共通",
-        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
-        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+        "membership_state": "EXPLICIT_RELATION_MODEL",
+        "note": "Membership is explicit in the shared relation model; do not copy Q&A bodies into services or treat group membership as item-level applicability verification.",
+        "relation_model": "data/qa-group-relations.json"
       }
     },
     {
@@ -194,8 +200,9 @@
         "kind": "GROUP",
         "group_id": "qa.shared.home-services",
         "group_label": "居宅サービス共通",
-        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
-        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+        "membership_state": "EXPLICIT_RELATION_MODEL",
+        "note": "Membership is explicit in the shared relation model; do not copy Q&A bodies into services or treat group membership as item-level applicability verification.",
+        "relation_model": "data/qa-group-relations.json"
       }
     },
     {
@@ -231,8 +238,9 @@
         "kind": "GROUP",
         "group_id": "qa.shared.facility-services",
         "group_label": "施設サービス共通",
-        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
-        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+        "membership_state": "EXPLICIT_RELATION_MODEL",
+        "note": "Membership is explicit in the shared relation model; do not copy Q&A bodies into services or treat group membership as item-level applicability verification.",
+        "relation_model": "data/qa-group-relations.json"
       }
     },
     {
@@ -260,8 +268,9 @@
         "kind": "GROUP",
         "group_id": "qa.shared.community-based-services",
         "group_label": "地域密着型サービス共通",
-        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
-        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+        "membership_state": "EXPLICIT_RELATION_MODEL",
+        "note": "Membership is explicit in the shared relation model; do not copy Q&A bodies into services or treat group membership as item-level applicability verification.",
+        "relation_model": "data/qa-group-relations.json"
       }
     },
     {
@@ -284,8 +293,9 @@
         "kind": "GROUP",
         "group_id": "qa.shared.visit-services",
         "group_label": "訪問系サービス共通",
-        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
-        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+        "membership_state": "EXPLICIT_RELATION_MODEL",
+        "note": "Membership is explicit in the shared relation model; do not copy Q&A bodies into services or treat group membership as item-level applicability verification.",
+        "relation_model": "data/qa-group-relations.json"
       }
     },
     {
@@ -308,8 +318,9 @@
         "kind": "GROUP",
         "group_id": "qa.shared.day-services",
         "group_label": "通所系サービス共通",
-        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
-        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+        "membership_state": "EXPLICIT_RELATION_MODEL",
+        "note": "Membership is explicit in the shared relation model; do not copy Q&A bodies into services or treat group membership as item-level applicability verification.",
+        "relation_model": "data/qa-group-relations.json"
       }
     },
     {
