@@ -82,25 +82,24 @@
       "36",
       "37",
       "38",
+      "64",
       "96",
       "101",
       "102",
       "103"
     ],
-    "missing_shared_corpus_articles": [
-      "64"
-    ]
+    "missing_shared_corpus_articles": []
   },
   "counts": {
-    "selected_nodes_total": 159,
-    "selected_articles": 35,
+    "selected_nodes_total": 162,
+    "selected_articles": 36,
     "direct_articles": 11,
-    "incorporated_articles_local": 24,
+    "incorporated_articles_local": 25,
     "incorporated_articles_total": 25,
-    "incorporated_articles_missing_local": 1,
+    "incorporated_articles_missing_local": 0,
     "by_type": {
-      "article": 35,
-      "paragraph": 80,
+      "article": 36,
+      "paragraph": 82,
       "item": 40,
       "subitem": 4
     }
@@ -239,6 +238,9 @@
     "ordinance37.article.37.p.3",
     "ordinance37.article.38",
     "ordinance37.article.38.p.1",
+    "ordinance37.article.64",
+    "ordinance37.article.64.p.1",
+    "ordinance37.article.64.p.2",
     "ordinance37.article.8",
     "ordinance37.article.8.p.1",
     "ordinance37.article.8.p.2",
@@ -403,6 +405,9 @@
       "ordinance37.article.37.p.3",
       "ordinance37.article.38",
       "ordinance37.article.38.p.1",
+      "ordinance37.article.64",
+      "ordinance37.article.64.p.1",
+      "ordinance37.article.64.p.2",
       "ordinance37.article.8",
       "ordinance37.article.8.p.1",
       "ordinance37.article.8.p.2",

@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "corpus_id": "long-term-care-medical-facility-standards",
+  "node_prefix": "standards-medical-facility",
+  "law_id": "430M60000100005",
+  "law_num": "平成三十年厚生労働省令第五号",
+  "law_title": "介護医療院の人員、施設及び設備並びに運営に関する基準",
+  "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/430M60000100005",
+  "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/430M60000100005",
+  "source_page": "https://laws.e-gov.go.jp/law/430M60000100005",
+  "xml_sha256": "f87bf66b72ddaa93ca02d649a63bedf75559608903660055910d68d1f51b061c",
+  "revision_response_sha256": "eded15d1a22ed995bd174c735e75129a5c4d8d4ada672d80c5d4cb3c796a7d89",
+  "current_revision": {
+    "law_revision_id": "430M60000100005_20251120_507M60000100103",
+    "law_title": "介護医療院の人員、施設及び設備並びに運営に関する基準",
+    "amendment_law_id": "507M60000100103",
+    "amendment_law_num": "令和七年厚生労働省令第百三号",
+    "amendment_promulgate_date": "2025-10-22",
+    "amendment_enforcement_date": "2025-11-20",
+    "amendment_scheduled_enforcement_date": null,
+    "current_revision_status": "CurrentEnforced",
+    "repeal_status": "None",
+    "mission": "New",
+    "updated": "2025-11-20T00:55:50+09:00"
+  },
+  "revision_count": 7,
+  "scope": "FULL_MAIN_PROVISION",
+  "counts": {
+    "nodes_total": 475,
+    "articles_total": 60,
+    "paragraphs_total": 185,
+    "items_total": 165,
+    "subitems_total": 65,
+    "contains_relations": 415
+  },
+  "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
+  "corpus_verification_status": "IMPORTED_NEEDS_INDEPENDENT_CHECK",
+  "service_applicability_status": "SEPARATE_NOT_IMPLIED",
+  "human_review_status": "NOT_REVIEWED",
+  "automatic_verification_promotion_allowed": false
+}

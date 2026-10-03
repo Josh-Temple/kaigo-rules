@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "corpus_id": "preventive-support-standards",
+  "node_prefix": "standards-preventive-support",
+  "law_id": "418M60000100037",
+  "law_num": "平成十八年厚生労働省令第三十七号",
+  "law_title": "指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準",
+  "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/418M60000100037",
+  "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/418M60000100037",
+  "source_page": "https://laws.e-gov.go.jp/law/418M60000100037",
+  "xml_sha256": "3e768f9cad728774c309666bd205521be5a27255a439b649c578ae7e18232621",
+  "revision_response_sha256": "f915e94a19815170312cd6b68b7fbc922738eeb2f9a622cf511f96716d230970",
+  "current_revision": {
+    "law_revision_id": "418M60000100037_20240401_506M60000100061",
+    "law_title": "指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準",
+    "amendment_law_id": "506M60000100061",
+    "amendment_law_num": "令和六年厚生労働省令第六十一号",
+    "amendment_promulgate_date": "2024-03-29",
+    "amendment_enforcement_date": "2024-04-01",
+    "amendment_scheduled_enforcement_date": null,
+    "current_revision_status": "CurrentEnforced",
+    "repeal_status": "None",
+    "mission": "New",
+    "updated": "2024-07-01T15:09:54+09:00"
+  },
+  "revision_count": 6,
+  "scope": "FULL_MAIN_PROVISION",
+  "counts": {
+    "nodes_total": 220,
+    "articles_total": 37,
+    "paragraphs_total": 82,
+    "items_total": 78,
+    "subitems_total": 23,
+    "contains_relations": 183
+  },
+  "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
+  "corpus_verification_status": "IMPORTED_NEEDS_INDEPENDENT_CHECK",
+  "service_applicability_status": "SEPARATE_NOT_IMPLIED",
+  "human_review_status": "NOT_REVIEWED",
+  "automatic_verification_promotion_allowed": false
+}

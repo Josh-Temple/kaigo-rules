@@ -1,0 +1,164 @@
+{
+  "format_version": 1,
+  "audit_kind": "INDEPENDENT_EGOV_SHARED_STANDARDS_REPARSE",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-03",
+  "audit_run": {
+    "run_id": 37116753917,
+    "head_sha": "789c739454dbd47dc4a4a07fef2c1bd10414d29a",
+    "parser": "python_xml_dom_minidom",
+    "verification_report_sha256": "5f022de1139a2c34c4470a56776b1daaa9b144e38b23637441fefe7bf4585555"
+  },
+  "checks": [
+    {
+      "id": "community-based-standards",
+      "law_id": "418M60000100034",
+      "observed_xml_sha256": "90741b00c7f04955f5359cef94c1d4c0fd4a0270cebed9d1878bce62ca4ecf55",
+      "result": "PASS",
+      "observed": {
+        "nodes": 1472,
+        "articles": 243,
+        "paragraphs": 717,
+        "items": 451,
+        "subitems": 61,
+        "contains_relations": 1229
+      }
+    },
+    {
+      "id": "preventive-services-standards",
+      "law_id": "418M60000100035",
+      "observed_xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+      "result": "PASS",
+      "observed": {
+        "nodes": 1521,
+        "articles": 245,
+        "paragraphs": 592,
+        "items": 578,
+        "subitems": 106,
+        "contains_relations": 1276
+      }
+    },
+    {
+      "id": "preventive-community-based-standards",
+      "law_id": "418M60000100036",
+      "observed_xml_sha256": "3e6634f51d46c75b724c4c0efa42681a7691d471c44b5bfc2249616b0413e851",
+      "result": "PASS",
+      "observed": {
+        "nodes": 498,
+        "articles": 94,
+        "paragraphs": 243,
+        "items": 153,
+        "subitems": 8,
+        "contains_relations": 404
+      }
+    },
+    {
+      "id": "care-management-standards",
+      "law_id": "411M50000100038",
+      "observed_xml_sha256": "f747b2b28db8cdfd810d2196e23e2d6f7f89364316d810e1f0f79c076a6f2c3b",
+      "result": "PASS",
+      "observed": {
+        "nodes": 197,
+        "articles": 35,
+        "paragraphs": 80,
+        "items": 66,
+        "subitems": 16,
+        "contains_relations": 162
+      }
+    },
+    {
+      "id": "preventive-support-standards",
+      "law_id": "418M60000100037",
+      "observed_xml_sha256": "3e768f9cad728774c309666bd205521be5a27255a439b649c578ae7e18232621",
+      "result": "PASS",
+      "observed": {
+        "nodes": 220,
+        "articles": 37,
+        "paragraphs": 82,
+        "items": 78,
+        "subitems": 23,
+        "contains_relations": 183
+      }
+    },
+    {
+      "id": "elderly-welfare-facility-standards",
+      "law_id": "411M50000100039",
+      "observed_xml_sha256": "9cd5318322c7470363b188681d00f58549cfaaf6213aebfb5f110e2624e46bdd",
+      "result": "PASS",
+      "observed": {
+        "nodes": 386,
+        "articles": 60,
+        "paragraphs": 188,
+        "items": 102,
+        "subitems": 36,
+        "contains_relations": 326
+      }
+    },
+    {
+      "id": "geriatric-health-services-facility-standards",
+      "law_id": "411M50000100040",
+      "observed_xml_sha256": "dce085ac4aae192660f7eea137a37034453c605a319b180f1ac2c25943ac60fd",
+      "result": "PASS",
+      "observed": {
+        "nodes": 447,
+        "articles": 60,
+        "paragraphs": 183,
+        "items": 152,
+        "subitems": 52,
+        "contains_relations": 387
+      }
+    },
+    {
+      "id": "long-term-care-medical-facility-standards",
+      "law_id": "430M60000100005",
+      "observed_xml_sha256": "f87bf66b72ddaa93ca02d649a63bedf75559608903660055910d68d1f51b061c",
+      "result": "PASS",
+      "observed": {
+        "nodes": 475,
+        "articles": 60,
+        "paragraphs": 185,
+        "items": 165,
+        "subitems": 65,
+        "contains_relations": 415
+      }
+    }
+  ],
+  "input_git_blob_shas_at_audit": {
+    "data/shared/standards/manifest.json": "5da257a0526efb04d2e519bf182ddf582cbb6a0a",
+    "scripts/verify_shared_standards_independent.py": "99296d7f84cb849d9687f62402f050c791380e32",
+    "data/shared/standards/community-based-standards/meta.json": "7d0d67d61d02043d3f97cfa882176bd0804b87fd",
+    "data/shared/standards/community-based-standards/nodes.json": "76293d7170c14d1b25ec006bac3c7a89bb3ec36e",
+    "data/shared/standards/community-based-standards/relations.json": "f32c39ad377cd5064a4f60b33adaefe0c7517606",
+    "data/shared/standards/preventive-services-standards/meta.json": "309655901e8dfc30fa455a20db0090d65516ffd6",
+    "data/shared/standards/preventive-services-standards/nodes.json": "48174342cafcaf0c031fc97c541236850da771e7",
+    "data/shared/standards/preventive-services-standards/relations.json": "461dd965454e2ceb99f600628ab96f401417fdc4",
+    "data/shared/standards/preventive-community-based-standards/meta.json": "73ea0ab2afa29044c43beb2426acd1c0255f8810",
+    "data/shared/standards/preventive-community-based-standards/nodes.json": "20b6f889e7d5ebad995de668e9bb5b09c802231c",
+    "data/shared/standards/preventive-community-based-standards/relations.json": "f83e6d9118bb96806ac568820c3f6828a8b6d0aa",
+    "data/shared/standards/care-management-standards/meta.json": "fc9e4ed390f088fe2719485a40f3b8e465e00547",
+    "data/shared/standards/care-management-standards/nodes.json": "741ce7f2f346641cf1ee3fcbb2b534dbfd1e0fc2",
+    "data/shared/standards/care-management-standards/relations.json": "6cf441c3fa2bff0d3259ad41f11dfab7d6b39a0a",
+    "data/shared/standards/preventive-support-standards/meta.json": "ce04f9ccfae40b847bb13262aaeba6631d663c91",
+    "data/shared/standards/preventive-support-standards/nodes.json": "558c5336a11b99ad4bd74f48fd8e24c09270dc21",
+    "data/shared/standards/preventive-support-standards/relations.json": "9cd6e4d1098eab4f584e447adace5e6b5df9f589",
+    "data/shared/standards/elderly-welfare-facility-standards/meta.json": "100168064766284516148ab9272d089606bc2009",
+    "data/shared/standards/elderly-welfare-facility-standards/nodes.json": "3e739a8de7f8242da717a244af9c1f98b9b8cebf",
+    "data/shared/standards/elderly-welfare-facility-standards/relations.json": "0807fe545cf62cb3cee07a6079d6f2fa6406f7a6",
+    "data/shared/standards/geriatric-health-services-facility-standards/meta.json": "4efdd90555326578050d12f0c08d6c0ce3baccaa",
+    "data/shared/standards/geriatric-health-services-facility-standards/nodes.json": "f9e8f4947a1e0a10007a84b94631cc30556b2198",
+    "data/shared/standards/geriatric-health-services-facility-standards/relations.json": "f9e079afcaf0f2ed0db6f12f1f6fb6ae635fbe07",
+    "data/shared/standards/long-term-care-medical-facility-standards/meta.json": "2e75e1e2bd7db2eba76fb2d2bea1584d495a46c1",
+    "data/shared/standards/long-term-care-medical-facility-standards/nodes.json": "88d7282603c867b9eb342e62665b07c25b82b027",
+    "data/shared/standards/long-term-care-medical-facility-standards/relations.json": "23d1566a746283d7d80020d2ad3dafae67782539"
+  },
+  "limitations": [
+    "Source text and XML containment only.",
+    "Service applicability, incorporation by reference, substitutions/read-as rules, currentness, human review and publication are not promoted."
+  ],
+  "safety": {
+    "service_verification": false,
+    "verified_current": false,
+    "human_verified": false,
+    "automatic_promotion_allowed": false
+  }
+}
