@@ -21,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SERVICE_ID = "care-management"
 EXPECTED_TASKS = 32
-EXPECTED_CHILD_ENTRIES = 41
+EXPECTED_CHILD_ENTRIES = 51
 ALLOWED_RESULTS = {"PASS", "PARTIAL", "GAP", "FAIL"}
 
 SCOPE = ROOT / "data/services/care-management/standards-interpretation-scope.json"
@@ -72,8 +72,8 @@ def validate_offline() -> dict:
         fail("service_id mismatch")
     if audit.get("audit_kind") != "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION":
         fail("unexpected audit_kind")
-    if audit.get("audit_result") != "PARTIAL_WITH_GAPS":
-        fail("audit_result must preserve bounded gaps")
+    if audit.get("audit_result") != "PASS_CONTENT_EVIDENCE_MATCH_ONLY":
+        fail("audit_result must be item-body evidence match only")
 
     audit_scope = audit.get("audit_scope", {})
     expected_blobs = {
@@ -154,8 +154,8 @@ def validate_offline() -> dict:
     if summary.get("child_entry_results") != child_counts:
         fail(f"child result summary mismatch: {child_counts}")
 
-    expected_task_counts = {"PASS": 28, "PARTIAL": 1, "GAP": 3, "FAIL": 0}
-    expected_child_counts = {"PASS": 37, "PARTIAL": 1, "GAP": 3, "FAIL": 0}
+    expected_task_counts = {"PASS": 32, "PARTIAL": 0, "GAP": 0, "FAIL": 0}
+    expected_child_counts = {"PASS": 51, "PARTIAL": 0, "GAP": 0, "FAIL": 0}
     if task_counts != expected_task_counts:
         fail(f"unexpected task outcomes: {task_counts}")
     if child_counts != expected_child_counts:
@@ -190,13 +190,8 @@ def validate_offline() -> dict:
             fail(f"pinned source hash drift: {url}")
 
     unresolved = {row.get("task_id"): row.get("result") for row in audit.get("unresolved_gaps", [])}
-    if unresolved != {
-        "KR2-09-B012": "PARTIAL",
-        "KR2-09-B015": "GAP",
-        "KR2-09-B017": "GAP",
-        "KR2-09-B019": "GAP",
-    }:
-        fail(f"unresolved gap set changed: {unresolved}")
+    if unresolved:
+        fail(f"unresolved item-body gaps remain: {unresolved}")
 
     locator_differences = audit.get("source_version_locator_differences", [])
     if [row.get("task_id") for row in locator_differences] != [
@@ -215,12 +210,34 @@ def validate_offline() -> dict:
         fail("R6 source-version locator evidence is incomplete")
 
     if audit.get("supplemental_source_findings", []) != []:
-        fail("resolved B009 evidence must not remain supplemental/unpinned")
-    resolved = audit.get("resolved_source_findings", [])
-    if len(resolved) != 1 or resolved[0].get("id") != "historical-c07-amendment-comparison":
-        fail("B009 resolved source finding is missing")
-    if resolved[0].get("supports") != ["KR2-09-B009"]:
-        fail("B009 resolved evidence scope changed")
+        fail("resolved evidence must be pinned rather than supplemental")
+    resolved = {row.get("id"): row for row in audit.get("resolved_source_findings", [])}
+    expected_resolved = {
+        "historical-c07-amendment-comparison": ["KR2-09-B009"],
+        "historical-2015-amendment-comparison": [
+            "KR2-09-B012",
+            "KR2-09-B015",
+            "KR2-09-B017",
+            "KR2-09-B019",
+        ],
+        "historical-2018-amendment-comparison": [
+            "KR2-09-B015",
+            "KR2-09-B017",
+            "KR2-09-B019",
+        ],
+    }
+    if set(resolved) != set(expected_resolved):
+        fail(f"resolved source finding set changed: {sorted(resolved)}")
+    for source_id, supports in expected_resolved.items():
+        finding = resolved[source_id]
+        if finding.get("supports") != supports:
+            fail(f"resolved evidence scope changed: {source_id}")
+        url = finding.get("url")
+        inventory_row = inventory_sources.get(url, {})
+        if inventory_row.get("fetch") != "PASS":
+            fail(f"resolved source is not fetchable: {source_id}")
+        if finding.get("pinned_sha256") != inventory_row.get("sha256"):
+            fail(f"resolved source hash drift: {source_id}")
 
     b009 = by_task["KR2-09-B009"]
     c07 = [
@@ -236,12 +253,24 @@ def validate_offline() -> dict:
     if c07[0].get("pinned_sha256") != inventory_sources[c07_url].get("sha256"):
         fail("B009 c07 evidence hash drift")
 
+    for task_id in ("KR2-09-B012", "KR2-09-B015", "KR2-09-B017", "KR2-09-B019"):
+        row = by_task[task_id]
+        if row.get("result") != "PASS":
+            fail(f"residual task is not PASS: {task_id}")
+        evidence_ids = {item.get("source_id") for item in row.get("official_evidence", [])}
+        if "historical-2015-amendment-comparison" not in evidence_ids:
+            fail(f"direct historical notice-body evidence missing: {task_id}")
+    for task_id in ("KR2-09-B015", "KR2-09-B017", "KR2-09-B019"):
+        evidence_ids = {item.get("source_id") for item in by_task[task_id].get("official_evidence", [])}
+        if "historical-2018-amendment-comparison" not in evidence_ids:
+            fail(f"version locator bridge missing: {task_id}")
+
     config = load(ROOT / "data/services/care-management.json")
     layer = config["ingestion_layers"]["standards_interpretation"]
-    if layer.get("item_body_verification") != "PARTIAL_WITH_GAPS":
-        fail("service-level item_body_verification must preserve the bounded partial result")
-    if layer.get("status") != "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN":
-        fail("service-level status must preserve unresolved item-body gaps")
+    if layer.get("item_body_verification") != "PASS_CONTENT_EVIDENCE_MATCH_ONLY":
+        fail("service-level item_body_verification must remain evidence-match-only")
+    if layer.get("status") != "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING":
+        fail("service-level status must keep currentness pending")
     if config["publication_gate"].get("public_routes_enabled") is not False:
         fail("public route gate was promoted")
     if config["publication_gate"].get("content_ingested") is not False:

@@ -501,16 +501,16 @@
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
         },
         "standards_interpretation": {
-          "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN",
+          "status": "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING",
           "source_family": "care_management_standards_interpretation",
           "principal_items": 32,
-          "note": "Repository staging 32 taskのitem-bodyを独立照合し、28 PASS / 1 PARTIAL / 3 GAP / 0 FAIL。B009は厚労省c07を正式source chainへ追加し、B014/B016/B018は版別locatorを明示して解消。B012/B015/B017/B019は本文・粒度gapが残る。currentness、human review、公開可否、routeは未昇格。",
+          "note": "Repository staging 32 taskのitem-bodyを独立照合し、32 PASS / 0 PARTIAL / 0 GAP / 0 FAIL。残存B012/B015/B017/B019は厚労省公式の平成27年度本文と平成30年度・令和3年度・令和6年度の版別locator chainで解消した。item-body evidence matchのみのPASSであり、currentness、human review、公開可否、routeは未昇格。",
           "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
-          "item_body_verification": "PARTIAL_WITH_GAPS",
+          "item_body_verification": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
           "item_body_verification_counts": {
-            "PASS": 28,
-            "PARTIAL": 1,
-            "GAP": 3,
+            "PASS": 32,
+            "PARTIAL": 0,
+            "GAP": 0,
             "FAIL": 0
           },
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/care-management.json"

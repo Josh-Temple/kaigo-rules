@@ -26,8 +26,8 @@ CASES = {
     "care-management": (
         "care_management_standards_interpretation",
         32,
-        "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN",
-        "PARTIAL_WITH_GAPS",
+        "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING",
+        "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
     ),
     "preventive-support": (
         "preventive_support_standards_interpretation",
