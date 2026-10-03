@@ -1,0 +1,90 @@
+name: Prepare next Rouki 25 historical ingestion wave
+# Pinned evidence is verification-only on subsequent runs.
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/services/homenursing/rouki25-scope.json"
+      - "data/services/homerehab/rouki25-scope.json"
+      - "data/services/homecaremanagement/rouki25-scope.json"
+      - "scripts/import_rouki25_historical_service.py"
+      - "scripts/verify_rouki25_historical_service_independent.py"
+      - "scripts/pin_rouki25_historical_service_audit.py"
+      - "tests/test_rouki25_next_wave_ingestion.py"
+      - ".github/workflows/prepare-rouki25-next-wave.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Detect already-pinned wave
+        id: pinned
+        shell: bash
+        run: |
+          if [[ -f data/homenursing-rouki25-historical-independent-audit.json \
+             && -f data/homerehab-rouki25-historical-independent-audit.json \
+             && -f data/homecaremanagement-rouki25-historical-independent-audit.json ]]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build, independently verify, and pin bounded historical datasets
+        if: steps.pinned.outputs.skip != 'true'
+        shell: bash
+        env:
+          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          AUDIT_RUN_ID: ${{ github.run_id }}
+          AUDIT_WORKFLOW: ${{ github.workflow }}
+        run: |
+          set -euo pipefail
+          for spec in "homenursing:12" "homerehab:7" "homecaremanagement:9"; do
+            service="${spec%%:*}"
+            expected="${spec##*:}"
+            report="${service}-rouki25-independent-report.json"
+            python scripts/import_rouki25_historical_service.py --service-id "$service"
+            python scripts/verify_rouki25_historical_service_independent.py \
+              --service-id "$service" \
+              --report "$report"
+            python scripts/pin_rouki25_historical_service_audit.py \
+              --service-id "$service" \
+              --expected-items "$expected" \
+              --report "$report" \
+              --run-id "$AUDIT_RUN_ID" \
+              --head-sha "$AUDIT_HEAD_SHA" \
+              --workflow "$AUDIT_WORKFLOW"
+          done
+      - name: Validate pinned receipts
+        if: steps.pinned.outputs.skip != 'true'
+        run: |
+          python scripts/validate_rouki25_historical_service_audit.py --service-id homenursing --expected-items 12
+          python scripts/validate_rouki25_historical_service_audit.py --service-id homerehab --expected-items 7
+          python scripts/validate_rouki25_historical_service_audit.py --service-id homecaremanagement --expected-items 9
+      - name: Commit verified datasets and audit receipts
+        if: steps.pinned.outputs.skip != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/services/homenursing/rouki25-historical.generated.json \
+            data/services/homerehab/rouki25-historical.generated.json \
+            data/services/homecaremanagement/rouki25-historical.generated.json \
+            data/homenursing-rouki25-historical-independent-audit.json \
+            data/homerehab-rouki25-historical-independent-audit.json \
+            data/homecaremanagement-rouki25-historical-independent-audit.json
+          git diff --cached --check
+          git commit -m "Materialize verified next Rouki 25 service wave"
+          git pull --rebase origin "${{ github.head_ref }}"
+          git push origin HEAD:"${{ github.head_ref }}"

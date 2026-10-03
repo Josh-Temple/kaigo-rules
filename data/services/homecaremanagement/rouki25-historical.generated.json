@@ -1,0 +1,164 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/import_rouki25_historical_service.py",
+  "service_id": "homecaremanagement",
+  "layer": "standards_interpretation",
+  "document_id": "rouki25",
+  "source_section": "第七 居宅療養管理指導に関する基準",
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604",
+    "state": "OFFICIAL_HISTORICAL_HTML"
+  },
+  "boundary": {
+    "start_heading": "第七 居宅療養管理指導に関する基準",
+    "end_before_heading": "第八 通所介護に関する基準"
+  },
+  "items": [
+    {
+      "id": "homecaremanagement.rouki25.1.1.1",
+      "group_number": "1",
+      "group_heading": "人員に関する基準（基準第八五条）",
+      "marker": "①",
+      "title": "病院又は診療所である指定居宅療養管理指導事業所／医師又は歯科医師",
+      "body_text": "1 医師又は歯科医師",
+      "body_sha256": "a73d48cc1a81bb2e2f4f179f516c416c09870034d3ad682cc2d7c3f0ef947b24",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 1 人員に関する基準（基準第八五条） / ①",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homecaremanagement.rouki25.1.1.2",
+      "group_number": "1",
+      "group_heading": "人員に関する基準（基準第八五条）",
+      "marker": "②",
+      "title": "病院又は診療所である指定居宅療養管理指導事業所／薬剤師、歯科衛生士又は管理栄養士",
+      "body_text": "2 薬剤師、歯科衛生士(歯科衛生士が行う居宅療養管理指導に相当するものを行う保健婦、保健士、看護婦、看護士、准看護婦及び准看護士を含む。以下同じ。)又は管理栄養士\nその提供する指定居宅療養管理指導の内容に応じた適当数",
+      "body_sha256": "75439149612ee559ae59c2e930debea06b515f40596c130ca256f9b6b1e1a900",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 1 人員に関する基準（基準第八五条） / ②",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homecaremanagement.rouki25.1.2",
+      "group_number": "1",
+      "group_heading": "人員に関する基準（基準第八五条）",
+      "marker": "(2)",
+      "title": "薬局である指定居宅療養管理指導事業所",
+      "body_text": "(2) 薬局である指定居宅療養管理指導事業所 薬剤師",
+      "body_sha256": "cade58da1c1d3b338884ebe6241542e5de808993079a363fa74b8266c649f806",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 1 人員に関する基準（基準第八五条） / (2)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homecaremanagement.rouki25.2.1",
+      "group_number": "2",
+      "group_heading": "設備に関する基準",
+      "marker": "(1)",
+      "title": "基準第八六条に関する事項",
+      "body_text": "(1) 基準第八六条は、指定居宅療養管理指導事業所については、\n1 病院、診療所又は薬局であること。\n2 指定居宅療養管理指導の事業の運営に必要な広さを有していること。\n3 指定居宅療養管理指導の提供に必要な設備及び備品等を備えていること。\nとしたものである。",
+      "body_sha256": "dba9dc004e61731b4a1b892f0f9121df9e589bd717d9186650636ed9eb14d5ca",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 2 設備に関する基準 / (1)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homecaremanagement.rouki25.2.2",
+      "group_number": "2",
+      "group_heading": "設備に関する基準",
+      "marker": "(2)",
+      "title": "設備及び備品等",
+      "body_text": "(2) 設備及び備品等については、当該病院又は診療所における診療用に備え付けられたものを使用することができるものである。",
+      "body_sha256": "e5544c644d76e6a443ab008f3a5f139682b42a3e839a0d2e330a9d4b83f09938",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 2 設備に関する基準 / (2)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homecaremanagement.rouki25.3.1",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(1)",
+      "title": "利用料等の受領",
+      "body_text": "(1) 利用料等の受領\n1 基準第八七条第一項及び第四項の規定は、基準第二〇条第一項及び第四項の規定と同趣旨であるため、第三の3の(10)の1及び4を参照されたい。\n2 基準第八七条第二項の規定は、基準第六六条第二項の規定と基本的に同趣旨であるため、第五の3の(3)の2を参照されたい。\n3 基準第八七条第三項は、指定居宅療養管理指導の提供に関して、前二項の利用料のほかに、指定居宅療養管理指導の提供に要する交通費(通常の事業の実施地域内の交通費を含む。)の額の支払を利用者から受けることができることとし、保険給付の対象となっているサービスと明確に区分されないあいまいな名目による費用の徴収は認めないこととしたものである。",
+      "body_sha256": "791759f99033646027c45b731b1399987834d0cf7b89162bfec5ff20af076b62",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 3 運営に関する基準 / (1)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homecaremanagement.rouki25.3.2",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(2)",
+      "title": "指定居宅療養管理指導の具体的取扱方針",
+      "body_text": "(2) 指定居宅療養管理指導の具体的取扱方針\n指定居宅療養管理指導の具体的取扱方針については、基準第八九条の定めるところによるほか、次の点に留意するものとする。\n1 医師又は歯科医師の行う指定居宅療養管理指導は、訪問診療等により常に利用者の病状及び心身の状況を把握し、計画的な医学的管理又は歯科医学的管理を行っている要介護者等に対して行うものであること。\n2 指定居宅療養管理指導事業者は、要介護者等にサービスを提供している事業者に対して、必要に応じて迅速に指導又は助言を行うために、日頃からサービスの提供事業者や提供状況を把握するように努めること。\n3 薬剤師、歯科衛生士及び管理栄養士は、指定居宅療養管理指導を行った際には、速やかに、指定居宅療養管理指導を実施した要介護者等の氏名、実施日時、実施した居宅療養管理指導の要点及び担当者の氏名を記録すること。",
+      "body_sha256": "746e11c9946305d21480d0e2a01e9b15e32e5ade1b18243e61cf17376bb50614",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 3 運営に関する基準 / (2)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homecaremanagement.rouki25.3.3",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(3)",
+      "title": "運営規程",
+      "body_text": "(3) 運営規程\n基準第九〇条は、指定居宅療養管理指導の事業の適正な運営及び利用者に対する適切な指定居宅療養管理指導の提供を確保するため、同条第一号から第五号までに掲げる事項を内容とする規程を定めることを指定居宅療養管理指導事業所ごとに義務づけたものであること。なお、第四号の「指定居宅療養管理指導の種類」としては、当該事業所により提供される指定居宅療養管理指導の提供者の職種(医師、歯科医師、薬剤師、歯科衛生士、管理栄養士)ごとの種類を規定するものであること。",
+      "body_sha256": "79dd806eb87c9a6f98d56140763b4c62d644326b3138a0751cd73edd0fa4fc9a",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 3 運営に関する基準 / (3)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homecaremanagement.rouki25.3.4",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(4)",
+      "title": "準用",
+      "body_text": "(4) 準用\n基準第九一条の規定により、基準第八条から第一三条まで、第一六条、第一八条、第一九条、第二一条、第二六条、第三〇条から第三三条まで、第三五条から第三九条まで、第五二条、第六四条及び第六五条の規定は、指定居宅療養管理指導の事業について準用されるものであるため、第三の3の(1)から(5)まで、(8)、(9)、(11)、(14)及び(18)から(25)まで、第四の3の(4)並びに第五の3の(2)を参照されたい。この場合において、次の点に留意するものとする。\n1 基準第一三条中「心身の状況」とあるのは「心身の状況、病歴、服薬歴」と、第一八条中「初回訪問時及び利用者」とあるのは「利用者」と読み替えられること。\n2 準用される基準第三〇条については、居宅療養管理指導従業者は、その職種によっては、労働者派遣法に規定する派遣労働者であってはならないものであること。\n3 準用される基準第三九条により、整備すべき記録は以下のとおりであること。\nイ 指定居宅療養管理指導に関する記録\na 事業所が病院又は診療所の場合\n診療録その他の提供した個々の指定居宅療養管理指導に関する記録\nb 事業所が薬局の場合\n医師又は歯科医師が交付した処方せんその他の提供した個々の指定居宅療養管理指導に関する記録\nロ 準用される基準第二六条に係る市町村への通知に係る記録",
+      "body_sha256": "27253808328925a8e106fa6b2d153ff54cab4c806260bbfe4b0cc758adee0191",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 3 運営に関する基準 / (4)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    }
+  ],
+  "item_count": 9,
+  "amendment_evidence": {
+    "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+    "source_label": "令和6年度 居宅サービス基準解釈通知 新旧対照表",
+    "handling": "SOURCE_SPECIFIC_PATCH_EVIDENCE_ONLY",
+    "policy": "部分改正資料の「略」「新設」「削る」を旧HTMLへ機械適用して現行統合本文を生成しない。現行性は別レイヤーで確認する。"
+  },
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-05-B2_v1.md",
+    "detail_task_range": "KR2-05-B001..KR2-05-B009",
+    "expected_principal_items": 9
+  },
+  "assurance": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}

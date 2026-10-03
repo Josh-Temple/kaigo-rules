@@ -1,0 +1,136 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/import_rouki25_historical_service.py",
+  "service_id": "homerehab",
+  "layer": "standards_interpretation",
+  "document_id": "rouki25",
+  "source_section": "第六 訪問リハビリテーションに関する基準",
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604",
+    "state": "OFFICIAL_HISTORICAL_HTML"
+  },
+  "boundary": {
+    "start_heading": "第六 訪問リハビリテーションに関する基準",
+    "end_before_heading": "第七 居宅療養管理指導に関する基準"
+  },
+  "items": [
+    {
+      "id": "homerehab.rouki25.1",
+      "group_number": "1",
+      "group_heading": "人員に関する基準（基準第七六条）",
+      "marker": "1",
+      "title": "人員に関する基準（基準第七六条）",
+      "body_text": "指定訪問リハビリテーション事業者は、指定訪問リハビリテーション事業所ごとに、指定訪問リハビリテーションの提供に当たる理学療法士又は作業療法士を適当数置かなければならない。",
+      "body_sha256": "dd9b2bdeb6df84eae5c1c12a55072037322fa8f621a51c0e69827382aaa7ea03",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 1 人員に関する基準（基準第七六条）",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homerehab.rouki25.2.1",
+      "group_number": "2",
+      "group_heading": "設備に関する基準",
+      "marker": "(1)",
+      "title": "基準第七七条に関する事項",
+      "body_text": "(1) 基準第七七条は、指定訪問リハビリテーション事業所については、\n1 病院又は診療所であること。\n2 指定訪問リハビリテーションの事業の運営を行うために必要な広さ(利用申込の受付、相談等に対応するのに適切なスペース)を有する専用の区画を設けていること。なお、業務に支障がないときは、指定訪問リハビリテーションの事業を行うための区画が明確に特定されていれば足りるものとすること。\n3 指定訪問リハビリテーションの提供に必要な設備及び備品等を備えていること。\nとしたものである。",
+      "body_sha256": "31fee61fcf52ad9f12b2d758f23ca9a12e635b6b31af4f330e66aa5b4d1ca0b6",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 2 設備に関する基準 / (1)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homerehab.rouki25.2.2",
+      "group_number": "2",
+      "group_heading": "設備に関する基準",
+      "marker": "(2)",
+      "title": "設備及び備品等",
+      "body_text": "(2) 設備及び備品等については、当該病院又は診療所における診療用に備え付けられたものを使用することができるものである。",
+      "body_sha256": "e5544c644d76e6a443ab008f3a5f139682b42a3e839a0d2e330a9d4b83f09938",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 2 設備に関する基準 / (2)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homerehab.rouki25.3.1",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(1)",
+      "title": "利用料等の受領",
+      "body_text": "(1) 利用料等の受領\n基準第七八条の規定は、指定訪問看護に係る基準第六六条の規定と基本的に同趣旨であるため、第五の3の(3)を参照されたいこと。",
+      "body_sha256": "c0a2aceb381b6bf60e811d1791696641bff84d2e630eb6f70b4c541dd4124833",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 3 運営に関する基準 / (1)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homerehab.rouki25.3.2",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(2)",
+      "title": "指定訪問リハビリテーションの基本取扱方針及び具体的取扱方針（基準第七九条及び第八〇条）",
+      "body_text": "(2) 指定訪問リハビリテーションの基本取扱方針及び具体的取扱方針(基準第七九条及び第八〇条)\n1 指定訪問リハビリテーションは、利用者の心身の状態、生活環境を踏まえて、妥当適切に行うとともにその生活の質の確保を図るよう、主治の医師との密接な連携のもとに訪問リハビリテーション計画に沿って行うこととしたものであること。\n2 指定訪問リハビリテーションの提供については、目標達成の度合いやその効果等について評価を行うとともに、訪問リハビリテーション計画の修正を行い改善を図る等に努めなければならないものであること。\n3 指定訪問リハビリテーションの提供に当たっては、利用者の心身状態、リハビリテーションの内容やそれを提供する目的、具体的な方法、リハビリテーションに必要な環境の整備、療養上守るべき点及び療養上必要な目標等、療養上必要な事項について利用者及びその家族に理解しやすいよう指導又は説明を行うこと。\n4 指定訪問リハビリテーションの提供に当たっては、医学の進歩に沿った適切な技術をもって対応できるよう、新しい技術の習得等、研鑽を積むことを定めたものであること。\n5 指定訪問リハビリテーションを行った際には、速やかに、指定訪問リハビリテーションを実施した要介護者等の氏名、実施日時、実施した訪問リハビリテーションの要点及び担当者の氏名を記録すること。",
+      "body_sha256": "2266fd4bfe74d4a077f9011cc488b30875bad35684b6c235b95514f4fbeab390",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 3 運営に関する基準 / (2)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homerehab.rouki25.3.3",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(3)",
+      "title": "訪問リハビリテーション計画の作成（基準第八一条）",
+      "body_text": "(3) 訪問リハビリテーション計画の作成(基準第八一条)\n1 訪問リハビリテーション計画は、利用者ごとに、利用者の心身の状態、生活環境を踏まえて作成することとしたものである。利用者の希望、主治医の指示及び目標、具体的なリハビリテーション内容等を記載する。なお、既に居宅サービス計画等が作成されている場合には、当該計画に沿って訪問リハビリテーション計画を立案する。\n2 訪問リハビリテーション計画の目標や内容等について、利用者及びその家族に理解しやすい方法で説明を行うとともに、その実施状況や評価についても説明を行う。",
+      "body_sha256": "68c0fa811c47a34bdde1af59019e505a0ebf24399a7a10661d57d5d66b37f511",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 3 運営に関する基準 / (3)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    },
+    {
+      "id": "homerehab.rouki25.3.4",
+      "group_number": "3",
+      "group_heading": "運営に関する基準",
+      "marker": "(4)",
+      "title": "準用",
+      "body_text": "(4) 準用\n基準第八三条の規定により、基準第八条から第一三条まで、第一五条から第一九条まで、第二一条、第二六条、第三〇条から第三三条まで、第三五条から第三九条まで、第五二条、第六四条及び第六五条の規定は、指定訪問リハビリテーションの事業について準用されるものであるため、第三の3の(1)から(9)まで、(11)、(14)及び(18)から(25)まで、第四の3の(4)並びに第五の3の(2)を参照されたいこと、この場合において、次の点に留意するものとする。\n1 基準第一三条中「心身の状況」とあるのは「心身の状況、病歴」と読み替えられること。\n2 準用される基準第一三条については、指定訪問リハビリテーション事業所ごとに、原則として月ごとの勤務表を作成し、指定訪問リハビリテーションに従事する理学療法士及び作業療法士を明確にするとともに、それらの者の職務の内容、常勤・非常勤の別等を明確にすること。なお、指定訪問リハビリテーション事業所の理学療法士及び作業療法士については、労働者派遣法に規定する派遣労働者であってはならないものであること。\n3 準用される基準第三九条により、整備すべき記録は以下のとおりであること。\nイ 指定訪問リハビリテーションに関する記録\na 訪問リハビリテーション計画書\nb 診療記録その他の個々の指定訪問リハビリテーションに係る記録\nロ 準用される基準第二六条に係る市町村への通知に係る記録",
+      "body_sha256": "1451bf67793003977b30d980c59f77c56e1609bc1500a71715e2a3434cc9353f",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 3 運営に関する基準 / (4)",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+      "source_state": "OFFICIAL_HISTORICAL_HTML",
+      "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+      "human_review_state": "NOT_REVIEWED"
+    }
+  ],
+  "item_count": 7,
+  "amendment_evidence": {
+    "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+    "source_label": "令和6年度 居宅サービス基準解釈通知 新旧対照表",
+    "handling": "SOURCE_SPECIFIC_PATCH_EVIDENCE_ONLY",
+    "policy": "部分改正資料の「略」「新設」「削る」を旧HTMLへ機械適用して現行統合本文を生成しない。現行性は別レイヤーで確認する。"
+  },
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-04-B2_v1.md",
+    "detail_task_range": "KR2-04-B001..KR2-04-B007",
+    "expected_principal_items": 7
+  },
+  "assurance": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
