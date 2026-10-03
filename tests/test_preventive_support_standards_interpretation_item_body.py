@@ -45,7 +45,7 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
         self.assertEqual(coverage["numbered_child_units_checked"], 55)
         self.assertEqual(
             coverage["verdicts"],
-            {"PASS": 32, "PARTIAL": 2, "GAP": 0, "FAIL": 0},
+            {"PASS": 33, "PARTIAL": 1, "GAP": 0, "FAIL": 0},
         )
         self.assertEqual(len(self.audit["items"]), 34)
         self.assertFalse(
@@ -141,7 +141,25 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
         rows = {row["task_id"]: row for row in self.audit["items"]}
         self.assertEqual(
             {row["task_id"] for row in self.audit["items"] if row["verdict"] == "PARTIAL"},
-            {"KR2-10-B016", "KR2-10-B033"},
+            {"KR2-10-B016"},
+        )
+        b033 = rows["KR2-10-B033"]
+        self.assertEqual(b033["verdict"], "PASS")
+        self.assertEqual(
+            b033["heading"],
+            "認定審査会意見等の介護予防サービス計画への反映",
+        )
+        self.assertEqual(
+            b033["scope_correction"]["followup"],
+            "REVIEW_FULL_4_2_SCOPE_SEPARATELY_NO_SILENT_MERGE",
+        )
+        self.assertTrue(
+            any(
+                evidence["source_manifest_id"] == "work-control-source-4"
+                and evidence["directly_supports_staging_summary"]
+                and evidence["proves_currentness"] is False
+                for evidence in b033["version_separated_item_body_evidence"]
+            )
         )
         b008 = rows["KR2-10-B008"]
         self.assertEqual(b008["verdict"], "PASS")
