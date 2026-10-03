@@ -26,10 +26,12 @@
       "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
     },
     "standards_interpretation": {
-      "status": "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING",
+      "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_MATCH_PENDING",
       "source_family": "care_management_standards_interpretation",
       "principal_items": 32,
-      "note": "第二陣NOTICE 32タスクをRepository staging datasetへ固定。複数項目を含む成果はstructured_text_rawも保持。公式通知本文としては扱わず、source locator独立再検証・currentness確認・human review・公開は未実施。"
+      "note": "Repository staging datasetと参照一次資料の独立source inventoryを確認済み。必須sourceの再取得・テキスト抽出・service anchor確認はPASS_BOUNDED_SCOPE_ONLY。項目本文一致、現行性、human review、公開は未確認。",
+      "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
+      "item_body_verification": "PENDING"
     }
   }
 }
