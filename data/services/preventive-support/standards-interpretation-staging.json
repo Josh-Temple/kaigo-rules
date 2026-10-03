@@ -118,23 +118,25 @@
       "task_id": "KR2-10-B005",
       "title": "介護予防支援: 解釈通知「3 運営に関する基準 > (1) （略）」の省略範囲を一次資料で解消する",
       "path": "第二/3/(1)",
-      "number": null,
-      "heading": "本文未復元",
+      "number": "(1)",
+      "heading": "内容及び手続きの説明及び同意",
       "parent": null,
-      "content_summary": "令和6年度改正資料では(1)が略記され、旧版では「内容及び手続きの説明及び同意」が(1)だが令和6年度資料では同項目が(2)へ移っているため、現行(1)本文を一意に復元できない。",
-      "structured_text_raw": "  - path: 第二/3/(1)\n    heading: 本文未復元\n    content_summary: 令和6年度改正資料では(1)が略記され、旧版では「内容及び手続きの説明及び同意」が(1)だが令和6年度資料では同項目が(2)へ移っているため、現行(1)本文を一意に復元できない。\n    recovery_state: PRIMARY_TEXT_NOT_RECOVERED",
+      "content_summary": "指定介護予防支援の開始時に、運営規程の概要、担当職員の勤務体制、秘密保持、事故対応、苦情処理等の重要事項を文書で説明し同意を得ること、利用者の主体的な取組や複数事業者の紹介・選定理由の説明を求められること等を十分説明する取扱いを扱う。",
+      "structured_text_raw": "  - path: 第二/3/(1)\n    number: \"(1)\"\n    heading: 内容及び手続きの説明及び同意\n    content_summary: 指定介護予防支援の開始時に、運営規程の概要、担当職員の勤務体制、秘密保持、事故対応、苦情処理等の重要事項を文書で説明し同意を得ること、利用者の主体的な取組や複数事業者の紹介・選定理由の説明を求められること等を十分説明する取扱いを扱う。",
       "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/001623026.pdf",
         "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
         "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
         "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
       ],
-      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (1) （略）",
-      "extraction_method": "令和6年度厚生労働省改正資料を基点に、必要な範囲で厚生労働省の旧版通知及び現行基準省令を突合した。略記のまま一意に復元できない箇所は推測補完していない。",
-      "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
+      "source_locator": "厚生労働省公式新旧対照資料 001623026.pdf／第2／3 運営に関する基準／(1) 内容及び手続きの説明及び同意（新欄本文）",
+      "extraction_method": "厚生労働省公式新旧対照資料 001623026.pdf の新欄で、現行番号(1)の見出しと本文を直接確認した。旧版との番号対応を推測して復元していない。currentness・改正履歴全体の確定は別工程。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
       "currentness_state": "NOT_ESTABLISHED",
       "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
       "human_review_state": "NOT_REVIEWED",
-      "library_output_id": "KR2-10-B005-LIB-V1"
+      "library_output_id": "KR2-10-B005-LIB-V1",
+      "recovery_state": []
     },
     {
       "id": "preventive-support.notice.006",
