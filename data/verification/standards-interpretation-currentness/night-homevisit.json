@@ -1,0 +1,178 @@
+{
+  "format_version": 1,
+  "service_id": "night-homevisit",
+  "layer": "standards_interpretation",
+  "audit_kind": "INDEPENDENT_CURRENTNESS_VERIFICATION",
+  "audit_result": "NOT_ESTABLISHED",
+  "effect": "KEEP_HOLD",
+  "checked_at_jst": "2026-10-03T17:08:00+09:00",
+  "fresh_main_sha_at_start": "9f1e8539ca608c6f45e59522d4850f43a1a70b67",
+  "source_family": {
+    "notice_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+    "notice_numbers": [
+      "老計発第0331004号",
+      "老振発第0331004号",
+      "老老発第0331017号"
+    ],
+    "service_section": "第三/二 夜間対応型訪問介護"
+  },
+  "checked_period": {
+    "notice_origin": "2006-03-31",
+    "r6_baseline": "2024-03",
+    "coverage_end": "2026-10-03"
+  },
+  "repository_inputs": {
+    "service_config": {
+      "path": "data/services/night-homevisit.json",
+      "blob_sha": "ca953bf2c5c6adfbc5623c4a7f5fcc80c432bcca"
+    },
+    "scope": {
+      "path": "data/services/night-homevisit/standards-interpretation-scope.json",
+      "blob_sha": "918ab49483b60ad9d16e787756d36c0b3f388261"
+    },
+    "staging": {
+      "path": "data/services/night-homevisit/standards-interpretation-staging.json",
+      "blob_sha": "4582290aaa0389eba0c507669716c71a6ae85a35"
+    },
+    "source_inventory": {
+      "path": "data/verification/standards-interpretation-source-inventory/night-homevisit.json",
+      "blob_sha": "5e599745994a0bc4a67eaecf13dec667b5377787"
+    },
+    "item_body": {
+      "path": "data/verification/standards-interpretation-item-body/night-homevisit.json",
+      "blob_sha": "2462f2d9003c744ad3223c6d6c6cd4f3d0d01b6c",
+      "audit_result": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+      "pass_items": 25,
+      "expected_items": 25
+    }
+  },
+  "protocol": {
+    "pass_requires_one_of": [
+      "CURRENT_INTEGRATED_OFFICIAL_NOTICE_TEXT",
+      "SUFFICIENTLY_CLOSED_OFFICIAL_AMENDMENT_CHAIN"
+    ],
+    "negative_search_can_prove_no_change": false,
+    "amendment_comparison_alone_is_integrated_text": false,
+    "underlying_ordinance_can_substitute_for_notice": false
+  },
+  "versions_checked": [
+    {
+      "id": "h18-original-full-notice",
+      "date_or_period": "2006-04 publication page",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf",
+      "classification": "HISTORICAL_ORIGINAL_FULL_NOTICE",
+      "observation": "厚生労働省の平成18年4月改正関係通知ページから取得できる通知本文。夜間対応型訪問介護の基本方針・人員・運営等の本文を含む。",
+      "currentness_use": "HISTORICAL_BASELINE_ONLY"
+    },
+    {
+      "id": "older-amendment-reference",
+      "date_or_period": "historical amendment comparison",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+      "classification": "HISTORICAL_AMENDMENT_COMPARISON",
+      "observation": "改正前・改正後の対照資料。定期巡回・随時対応型訪問介護看護の追加等を含むが、現行統合本文ではない。",
+      "currentness_use": "HISTORICAL_CHAIN_SUPPORT_ONLY"
+    },
+    {
+      "id": "h27-full-notice-comparison",
+      "date_or_period": "FY2015 reform material",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+      "classification": "HISTORICAL_FULLER_NOTICE_BODY_EVIDENCE",
+      "observation": "item-body gap解消に使われた歴史的本文証拠。現在の通知本文としては扱わない。",
+      "currentness_use": "HISTORICAL_BODY_ONLY"
+    },
+    {
+      "id": "r3-amendment-comparison",
+      "date_or_period": "2021 reform",
+      "url": "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+      "classification": "R3_AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "厚生労働省の令和3年度介護報酬改定ページから掲載された別紙9の新旧対照表。夜間対応型訪問介護節を含むが、複数箇所が「略」であり統合全文ではない。",
+      "currentness_use": "AMENDMENT_DIFF_ONLY"
+    },
+    {
+      "id": "r6-final-comparison",
+      "date_or_period": "2024 reform final",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "classification": "R6_FINAL_AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "令和6年度介護報酬改定ページの「解釈通知（地密）」から取得した別紙11の新旧対照表。夜間対応型訪問介護節を含む一方、本文の多数箇所が「略」であり現行統合全文ではない。",
+      "currentness_use": "FINAL_R6_DIFF_BASELINE_ONLY"
+    },
+    {
+      "id": "underlying-current-ordinance",
+      "date_or_period": "current MHLW law-database ordinance text",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+      "classification": "UNDERLYING_STANDARD_ORDINANCE_NOT_NOTICE",
+      "observation": "指定地域密着型サービス基準の省令本文であり、解釈通知本文ではない。",
+      "currentness_use": "CROSSCHECK_ONLY"
+    }
+  ],
+  "official_discovery_and_post_r6_checks": [
+    {
+      "id": "mhlw-r6-reform-index",
+      "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "classification": "OFFICIAL_R6_DISCOVERY_INDEX",
+      "observation": "基準省令に関する通知（解釈通知等）の「解釈通知（地密）」として対象通知への公式導線を確認。",
+      "limitation": "令和6年改正時点の導線であり、それ以後の改正不存在を証明しない。"
+    },
+    {
+      "id": "mhlw-r8-reform-index",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "classification": "OFFICIAL_POST_R6_INDEX_SUPPORTING_ONLY",
+      "observation": "令和8年度介護報酬改定に関する通知等の改正一覧を確認したが、対象解釈通知の改正を特定できなかった。",
+      "limitation": "当該改定ページに対象がないことだけでは、別時期・別経路の改正不存在を証明しない。"
+    },
+    {
+      "id": "mhlw-kaigo-latest-info",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "classification": "OFFICIAL_POST_R6_INDEX_SUPPORTING_ONLY",
+      "observation": "令和3年以降の介護保険最新情報一覧を確認し、確認時点の最新掲載はVol.1545（令和8年10月2日）。対象通知の後続改正をこの経路では特定できなかった。",
+      "limitation": "介護保険最新情報一覧は対象通知の制定以来の完全な改正台帳ではない。"
+    },
+    {
+      "id": "mhlw-law-database",
+      "url": "https://www.mhlw.go.jp/hourei/",
+      "classification": "OFFICIAL_POST_R6_DISCOVERY_SUPPORTING_ONLY",
+      "observation": "法令等データベースは毎月更新され、登載準備中の新着通知も案内する一方、通知検索の対象を「厚生労働省所管の主な訓令、通知、公示等」と明記している。",
+      "limitation": "対象範囲が「主な」通知であるため、検索・一覧にないことを全通知の改正不存在の証明には使えない。"
+    }
+  ],
+  "amendment_coverage": {
+    "historical_full_notice_checked": true,
+    "r3_comparison_checked": true,
+    "r6_final_comparison_checked": true,
+    "post_r6_official_indexes_checked": true,
+    "current_integrated_official_notice_text_found": false,
+    "complete_pre_r3_amendment_chain_established": false,
+    "complete_r3_to_r6_amendment_chain_established": false,
+    "complete_post_r6_amendment_chain_established": false,
+    "sufficiently_closed_chain": false,
+    "reason": "R3・R6資料はいずれも「略」を含む新旧対照表で、歴史本文から現行本文を安全に合成するには全改正を閉じた形で追う必要がある。確認できた公式索引は探索経路を強化するが、後続改正不存在を網羅的に証明する資料ではない。"
+  },
+  "negative_search_limitations": [
+    "令和7年・令和8年を含む厚生労働省ドメインの対象通知名・一部改正候補を探索したが、候補が見つからないこと自体は変更なしの証明にしない。",
+    "介護保険最新情報は令和3年以降の公式一覧だが、対象通知の完全な改正履歴専用台帳ではない。",
+    "厚生労働省法令等データベースの通知検索は「主な」通知を対象としており、完全性を前提にしない。",
+    "R8介護報酬改定ページに対象通知が掲載されていないことだけでは、R6以後の全期間について未改正とは結論しない。"
+  ],
+  "current_integrated_official_text": {
+    "available": false,
+    "reason": "確認した厚生労働省公式資料のうち、対象解釈通知について令和6改正後から確認時点までを統合した権威ある全文は確認できなかった。R6公式PDFは別紙11の新旧対照表である。"
+  },
+  "conclusion": {
+    "state": "NOT_ESTABLISHED",
+    "publication_effect": "HOLD",
+    "reason": "item-body 25/25の歴史的本文・差分への対応は確認済みだが、現行統合公式本文も十分に閉じた改正チェーンも確立していないため、25項目を現時点で有効な解釈通知内容として一括確定できない。"
+  },
+  "unresolved_risk": [
+    "R3・R6新旧対照表で略された本文に、歴史資料以降の別改正が反映されている可能性を完全には排除できない。",
+    "R6以後の対象通知改正を網羅する一次資料上の完全な改正履歴を確認できていない。",
+    "将来、現行統合全文または完全な改正履歴が得られた場合に再検証が必要。"
+  ],
+  "safety_boundary": {
+    "currentness_only": true,
+    "item_body_status_changed": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "public_route_promoted": false,
+    "automatic_promotion_allowed": false
+  }
+}
