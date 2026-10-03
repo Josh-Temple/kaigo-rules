@@ -27,8 +27,9 @@ jobs:
       - name: Re-fetch and independently inventory official sources
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
           mkdir -p /tmp/standards-interpretation-source-inventory
+          rc=0
           for spec in \
             "community-dayservice:21" \
             "regular-round:21" \
@@ -40,9 +41,11 @@ jobs:
             python scripts/verify_standards_interpretation_sources_independent.py \
               --service-id "$service" \
               --expected-items "$expected" \
-              --report "/tmp/standards-interpretation-source-inventory/${service}.json"
+              --report "/tmp/standards-interpretation-source-inventory/${service}.json" || rc=1
           done
+          exit "$rc"
       - name: Upload independent source-inventory reports
+        if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: standards-interpretation-source-inventory
