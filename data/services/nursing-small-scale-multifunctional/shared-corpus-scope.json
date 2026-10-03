@@ -99,6 +99,11 @@
         "from": "170",
         "through": "182",
         "role": "service_chapter"
+      },
+      {
+        "from": "183",
+        "through": "183",
+        "role": "common_miscellaneous_electronic_records"
       }
     ],
     "incorporation_relations": [
@@ -152,6 +157,11 @@
       }
     },
     "official_source_families": [
+      {
+        "notification_number": "平成12年厚生省告示第27号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+        "role": "利用者数・人員基準等に関する委任基準"
+      },
       {
         "notification_number": "平成27年厚生労働省告示第94号",
         "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4583&dataType=0&pageNo=1",
