@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { publicNoticeRecords } from "../lib/notice-database.ts";
 
 import {
   databaseSearchExcerpt,
@@ -114,6 +115,20 @@ test("database-wide snippets honor synonym matches", () => {
     "補足".repeat(60);
 
   assert.match(databaseSearchExcerpt(text, "看護師", 100), /看護職員/);
+});
+
+test("database-wide notice corpus includes independently published homebath history", () => {
+  const homebath = publicNoticeRecords.filter(
+    (record) => record.service_id === "homebath",
+  );
+  assert.equal(homebath.length, 13);
+  assert.ok(
+    homebath.every(
+      (record) =>
+        record.source_state === "OFFICIAL_HISTORICAL_HTML" &&
+        record.currentness_state === "GAP",
+    ),
+  );
 });
 
 test("database hub exposes a service-neutral cross-database search", () => {
