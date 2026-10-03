@@ -6,8 +6,8 @@
   "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Verify remuneration delegation relations independently",
-    "run_id": 37127934657,
-    "head_sha": "29d917f55abbb0cd45212364709276c1bfc2d71c",
+    "run_id": 37128089748,
+    "head_sha": "f150263210db70a6bcd7aea9861c92e9a8685671",
     "parser": "python_stdlib_htmlparser_plus_explicit_title_and_reference_rules",
     "result": "PASS",
     "verification_report_sha256": "4f10a909f4d66c621c27df4ca514163a427bf71db7c03077f4fd05d7d187b9d6"
@@ -155,7 +155,7 @@
   },
   "input_git_blob_shas_at_audit": {
     "data/remuneration-delegated-relations.json": "6d4f7047fb78a399b4a4a543266003e9c223e481",
-    "data/cross-layer-source-chain-independent-audit.json": "b123eb0d13284605957da0605f2d22057eb5951a",
+    "data/cross-layer-source-chain-independent-audit.json": "9a07b7763c150f851e2694bc4633bdd44e961975",
     "scripts/verify_remuneration_delegation_relations.py": "4efb369c5ac4b3d4dc2916184a0a2553655ba7c7"
   },
   "conclusion": "All 11 covered remuneration delegation/cross-reference relations matched explicit wording or named criteria in live MHLW primary-source HTML.",
