@@ -1,0 +1,123 @@
+{
+  "format_version": 1,
+  "scope": "homebath-rouki25-official-historical-html-section",
+  "audit_kind": "INDEPENDENT_SERVICE_ROUKI25_HISTORICAL_SOURCE_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-03",
+  "audit_run": {
+    "workflow": "Materialize verified homebath Rouki 25 dataset",
+    "run_id": 37081246403,
+    "head_sha": "fdd645e6eaec161730f43d8476a9890985c2b06c",
+    "parser": "regex_html_text_extractor_independent_of_htmlparser_importer",
+    "verification_report_sha256": "497cc41a00b6a3a31333f73ab063f1fa640656ee9bbd1a01e8672da351a2aaf0"
+  },
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604"
+  },
+  "checks": [
+    {
+      "id": "homebath.rouki25.1.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "77a897c88e3c75f640eba7e87e58c13db187712c7a7b7e79b72bb9c50263bc20",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 1 人員に関する基準 / (1)"
+    },
+    {
+      "id": "homebath.rouki25.1.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "44410e990a540b02b8b0eead3d3ea59c31eb900073972bb920781cdb899ff4df",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 1 人員に関する基準 / (2)"
+    },
+    {
+      "id": "homebath.rouki25.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "331292e0365fec95bf6191549ca0e81ca1b8ba5d88dbf32895396ca90b0be7ce",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 2 設備に関する基準"
+    },
+    {
+      "id": "homebath.rouki25.3.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "778853c49d839ffbb2ebacd0804996883cad2123451acbc83130dbe5d7c220ba",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 3 運営に関する基準 / (1)"
+    },
+    {
+      "id": "homebath.rouki25.3.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "5572c66874567c7c87ac0cf5c758161c435091f6247f680e9925ca7c161af2e2",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 3 運営に関する基準 / (2)"
+    },
+    {
+      "id": "homebath.rouki25.3.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "8d59464490a751801b968fca85e35997486cd6e3ce011467673da98d287927a1",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 3 運営に関する基準 / (3)"
+    },
+    {
+      "id": "homebath.rouki25.3.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "027c0b0002932f77c3e12512e4160dfd435244971b95b61448d59b5ba875e464",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 3 運営に関する基準 / (4)"
+    },
+    {
+      "id": "homebath.rouki25.3.5",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "d12d75f041247c0e8fbb9cc87dbd41affb73a0cb1328f8adadef2b0402cb23fc",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 3 運営に関する基準 / (5)"
+    },
+    {
+      "id": "homebath.rouki25.3.6",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "da1bdb7e1fc6befaac8b6dddfe5753544d08d1266c3f7e92fe324cbaf742bd6c",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 3 運営に関する基準 / (6)"
+    },
+    {
+      "id": "homebath.rouki25.4.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "e76c9bd7afad80bf465af40905b3623ac80ad36f6c03eec12fc463bb3809f39e",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 4 基準該当訪問入浴介護に関する基準 / (1)"
+    },
+    {
+      "id": "homebath.rouki25.4.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "2d327ef6c96e9c592685349f4f8f1d8289a53cdba4ad52199fa8c6f2c0de977c",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 4 基準該当訪問入浴介護に関する基準 / (2)"
+    },
+    {
+      "id": "homebath.rouki25.4.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "7769758c1c4a63e3466a6822d1c3742812495ad71f756cfb7f9b401c4bb31b2f",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 4 基準該当訪問入浴介護に関する基準 / (3)"
+    },
+    {
+      "id": "homebath.rouki25.4.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "da27778326106b86d77fc3247ed63ca400fcd2ab060ba06c5770c166d125e0ea",
+      "source_locator": "第四 訪問入浴介護に関する基準 / 4 基準該当訪問入浴介護に関する基準 / (4)"
+    }
+  ],
+  "errors": [],
+  "coverage": {
+    "principal_items": 13,
+    "items_passed": 13
+  },
+  "safety": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
