@@ -369,10 +369,12 @@
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
         },
         "standards_interpretation": {
-          "status": "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING",
+          "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_MATCH_PENDING",
           "source_family": "community_based_services_standards_interpretation",
           "principal_items": 21,
-          "note": "第二陣NOTICE 21項目をRepository staging datasetへ固定。要約は公式通知本文として扱わず、複数一次資料のsource locator再検証・currentness確認・human review・公開は未実施。"
+          "note": "Repository staging datasetと参照一次資料の独立source inventoryを確認済み。必須sourceの再取得・テキスト抽出・service anchor確認はPASS_BOUNDED_SCOPE_ONLY。項目本文一致、現行性、human review、公開は未確認。",
+          "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
+          "item_body_verification": "PENDING"
         }
       },
       "verification_layer_ids": []
@@ -404,10 +406,12 @@
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
         },
         "standards_interpretation": {
-          "status": "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING",
+          "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_MATCH_PENDING",
           "source_family": "community_based_services_standards_interpretation",
           "principal_items": 21,
-          "note": "第二陣NOTICE 21項目をRepository staging datasetへ固定。要約は公式通知本文として扱わず、source locatorの独立再検証・currentness確認・human review・公開は未実施。"
+          "note": "Repository staging datasetと参照一次資料の独立source inventoryを確認済み。必須sourceの再取得・テキスト抽出・service anchor確認はPASS_BOUNDED_SCOPE_ONLY。項目本文一致、現行性、human review、公開は未確認。",
+          "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
+          "item_body_verification": "PENDING"
         }
       },
       "verification_layer_ids": []
@@ -439,10 +443,12 @@
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
         },
         "standards_interpretation": {
-          "status": "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING",
+          "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_MATCH_PENDING",
           "source_family": "community_based_services_standards_interpretation",
           "principal_items": 25,
-          "note": "第二陣NOTICE 25項目をRepository staging datasetへ固定。要約は公式通知本文として扱わず、source locatorの独立再検証・currentness確認・human review・公開は未実施。"
+          "note": "Repository staging datasetと参照一次資料の独立source inventoryを確認済み。必須sourceの再取得・テキスト抽出・service anchor確認はPASS_BOUNDED_SCOPE_ONLY。項目本文一致、現行性、human review、公開は未確認。",
+          "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
+          "item_body_verification": "PENDING"
         }
       },
       "verification_layer_ids": []
@@ -474,10 +480,12 @@
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
         },
         "standards_interpretation": {
-          "status": "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING",
+          "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_MATCH_PENDING",
           "source_family": "care_management_standards_interpretation",
           "principal_items": 32,
-          "note": "第二陣NOTICE 32タスクをRepository staging datasetへ固定。複数項目を含む成果はstructured_text_rawも保持。公式通知本文としては扱わず、source locator独立再検証・currentness確認・human review・公開は未実施。"
+          "note": "Repository staging datasetと参照一次資料の独立source inventoryを確認済み。必須sourceの再取得・テキスト抽出・service anchor確認はPASS_BOUNDED_SCOPE_ONLY。項目本文一致、現行性、human review、公開は未確認。",
+          "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
+          "item_body_verification": "PENDING"
         }
       },
       "verification_layer_ids": []
@@ -509,10 +517,12 @@
           "note": "Structure QueueでPACKAGE / CONTRACT_PRECHECKが1件BLOCKED。通知レーン完了とは分離し、サービス全体の公開準備完了とは扱わない。"
         },
         "standards_interpretation": {
-          "status": "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING",
+          "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_MATCH_PENDING",
           "source_family": "preventive_support_standards_interpretation",
           "principal_items": 34,
-          "note": "第二陣NOTICE 34タスクをRepository staging datasetへ固定。複数項目を含む成果はstructured_text_rawも保持。公式通知本文としては扱わず、source locator独立再検証・currentness確認・human review・公開は未実施。サービス全体のPACKAGE precheck blockerは別途保持。"
+          "note": "Repository staging datasetと参照一次資料の独立source inventoryを確認済み。必須sourceの再取得・テキスト抽出・service anchor確認はPASS_BOUNDED_SCOPE_ONLY。項目本文一致、現行性、human review、公開は未確認。 サービス全体のPACKAGE precheck blockerは別途保持。",
+          "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
+          "item_body_verification": "PENDING"
         }
       },
       "verification_layer_ids": []
