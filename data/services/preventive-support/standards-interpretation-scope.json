@@ -1,0 +1,29 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-support",
+  "layer": "standards_interpretation",
+  "source_family": "preventive_support_standards_interpretation",
+  "document_title": "指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準について",
+  "notice_number": "平成18年3月31日 老振発第0331003号・老老発第0331016号",
+  "source_mode": "OFFICIAL_AMENDMENT_PDF_WITH_OMISSIONS",
+  "source_urls": [
+    "https://www.mhlw.go.jp/stf/newpage_38790.html",
+    "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+    "https://www.mhlw.go.jp/content/12300000/001246390.pdf"
+  ],
+  "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準",
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-10-B2_v1.md",
+    "detail_task_range": "KR2-10-B001..KR2-10-B034",
+    "expected_principal_items": 34,
+    "rollup": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR2-10-E002_v1.md"
+  },
+  "content_state": "STAGING_COMPLETE_SOURCE_SPECIFIC_FRAGMENTS",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "omissions_policy": "令和6年度改正資料で略記された範囲を推測補完せず、複数の公式改正資料をsource-specificに保持する。",
+  "publication": {
+    "allowed": false,
+    "reason": "Repository本文adapterと独立source検証が未実施。サービス全体のPACKAGE precheck blockerも別途保持する"
+  }
+}
