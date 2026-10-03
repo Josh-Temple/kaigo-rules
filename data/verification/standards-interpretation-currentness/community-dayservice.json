@@ -1,0 +1,176 @@
+{
+  "format_version": 1,
+  "service_id": "community-dayservice",
+  "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_CURRENTNESS_VERIFICATION",
+  "source_family": "community_based_services_standards_interpretation",
+  "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+  "verified_date": "2026-10-03",
+  "base_main_sha": "9f1e8539ca608c6f45e59522d4850f43a1a70b67",
+  "checked_period": {
+    "notice_lineage_start": "2006-03-31",
+    "r6_checkpoint": "2024",
+    "post_r6_through": "2026-10-03",
+    "scope_note": "地域密着型通所介護に関係する解釈通知source familyのcurrentnessのみを対象とする。"
+  },
+  "item_body_precondition": {
+    "receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json",
+    "result": "PASS_WITH_ITEM_LEVEL_EVIDENCE",
+    "counts": {
+      "PASS": 21,
+      "PARTIAL": 0,
+      "GAP": 0,
+      "FAIL": 0
+    },
+    "proves_currentness": false
+  },
+  "official_sources": [
+    {
+      "id": "mhlw-historical-full-notice",
+      "url": "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
+      "category": "HISTORICAL_FULL_NOTICE",
+      "role": "HISTORICAL_ITEM_BODY_SUPPORT_ONLY",
+      "repository_source_role": "HISTORICAL_FULL_NOTICE_TEXT",
+      "current_integrated_text": false,
+      "limitation": "Repositoryのitem-body gap解消に用いた旧全文系sourceであり、現行統合本文とは扱わない。"
+    },
+    {
+      "id": "mhlw-h30-comparison",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf",
+      "category": "AMENDMENT_COMPARISON",
+      "role": "H30_AMENDMENT_EVIDENCE",
+      "current_integrated_text": false,
+      "limitation": "H30時点の改正差分・旧世代本文の確認用。後続改正を含む現行本文ではない。"
+    },
+    {
+      "id": "mhlw-r3-comparison",
+      "url": "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+      "category": "AMENDMENT_COMPARISON",
+      "role": "R3_AMENDMENT_EVIDENCE",
+      "current_integrated_text": false,
+      "limitation": "R3時点の改正差分。R6以後の変更有無を証明しない。"
+    },
+    {
+      "id": "mhlw-r6-earlier-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+      "category": "AMENDMENT_COMPARISON",
+      "role": "EARLIER_R6_AMENDMENT_MATERIAL",
+      "current_integrated_text": false,
+      "limitation": "令和6年度改正過程の前段資料であり、最終版より優先しない。"
+    },
+    {
+      "id": "mhlw-r6-final-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "category": "FINAL_R6_COMPARISON",
+      "role": "FINAL_R6_AMENDMENT_EVIDENCE",
+      "current_integrated_text": false,
+      "observations": [
+        "別紙11として掲載される。",
+        "通知名に（抄）と明記される。",
+        "新・旧の二列比較である。",
+        "本文中に（略）があり、通知全文を統合した文書ではない。"
+      ],
+      "limitation": "R6改正点の一次資料として強いが、略記部分を含むため現行統合本文の代替にはならない。"
+    },
+    {
+      "id": "mhlw-r6-official-index",
+      "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "category": "OFFICIAL_DISCOVERY_INDEX",
+      "role": "R6_OFFICIAL_DISCOVERY_ROUTE",
+      "current_integrated_text": false,
+      "observation": "「基準省令に関する通知（解釈通知等）」の地密欄から対象通知への公式導線を確認した。",
+      "limitation": "公式導線のリンク先は001227939.pdfの新旧対照表（抄）であり、現行統合本文ではない。"
+    },
+    {
+      "id": "mhlw-current-standard-ordinance",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+      "category": "CURRENT_ORDINANCE_NOT_INTERPRETATION_NOTICE",
+      "role": "CURRENT_STANDARD_CORROBORATION_ONLY",
+      "current_integrated_text": false,
+      "limitation": "指定地域密着型サービス基準の省令本文であり、対象の解釈通知本文ではない。"
+    },
+    {
+      "id": "mhlw-r8-reform-index",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "category": "POST_R6_OFFICIAL_INDEX",
+      "role": "POST_R6_DISCOVERY_SUPPORTING_ONLY",
+      "current_integrated_text": false,
+      "observation": "令和8年度介護報酬改定ページを確認したが、対象解釈通知名を当該ページ本文から特定できなかった。",
+      "limitation": "ページに対象通知が見当たらないことは、別時期・別経路の改正不存在を証明しない。"
+    },
+    {
+      "id": "mhlw-kaigo-latest-info-index",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "category": "POST_R6_OFFICIAL_INDEX",
+      "role": "POST_R6_DISCOVERY_SUPPORTING_ONLY",
+      "current_integrated_text": false,
+      "limitation": "介護保険最新情報は近時通知の探索経路だが、対象通知の制定以来の完全な改正履歴を保証する専用台帳ではない。"
+    }
+  ],
+  "post_r6_discovery": {
+    "checked": true,
+    "routes": [
+      "MHLW令和8年度介護報酬改定ページ",
+      "MHLW介護保険最新情報掲載ページ",
+      "mhlw.go.jp内の対象通知正式名称と令和7年・令和8年・一部改正の組合せ検索"
+    ],
+    "target_amendment_identified": false,
+    "negative_search_is_proof_of_no_change": false,
+    "limitation": "検索・索引で後続改正を特定できなかった事実のみでは、未索引資料、別表題、別時期の改正を排除できない。"
+  },
+  "amendment_coverage": {
+    "historical_full_notice_evidence_available": true,
+    "h30_amendment_evidence_available": true,
+    "r3_amendment_evidence_available": true,
+    "r6_earlier_material_available": true,
+    "r6_final_comparison_available": true,
+    "all_intervening_amendments_closed": false,
+    "post_r6_amendment_chain_closed": false,
+    "sufficiently_closed_amendment_chain": false
+  },
+  "integrated_current_text": {
+    "official_current_integrated_text_identified": false,
+    "r6_final_comparison_is_integrated_text": false,
+    "current_standard_ordinance_is_interpretation_notice": false,
+    "availability": "NOT_IDENTIFIED",
+    "reason": "確認できたR6最終資料は新旧対照表（抄）で略記を含み、基準省令HTMLは別source familyの省令本文である。対象解釈通知の現行統合本文は確認できなかった。"
+  },
+  "conclusion": {
+    "currentness_state": "NOT_ESTABLISHED",
+    "decision": "HOLD",
+    "pass": false,
+    "reason": "current integrated official textを確認できず、historical sourceからR6・R6以後までのamendment chainも十分に閉じていないため、21件のitem-body evidenceを現行解釈通知内容として昇格できない。"
+  },
+  "unresolved_risk": [
+    "R6最終新旧対照表で（略）となる本文を含め、全改正を順序どおり適用した現行統合本文を公式一次資料だけで再構成できていない。",
+    "R6以後について対象通知の後続改正を特定できなかったが、公式索引・検索の不在は変更なしの証明ではない。",
+    "現行基準省令は内容の交差確認には使えるが、解釈通知固有の説明・運用解釈のcurrentnessを代替しない。"
+  ],
+  "verification_provenance": {
+    "fresh_main_head": "9f1e8539ca608c6f45e59522d4850f43a1a70b67",
+    "open_pr_count_at_start": 0,
+    "repository_inputs": {
+      "data/services/community-dayservice/standards-interpretation-scope.json": "d8f80527e839920b29ad158721d5d170b0bc1129",
+      "data/services/community-dayservice/standards-interpretation-staging.json": "edcd22d08d463fbcbaaad8f5fdd316f8c0c0736c",
+      "data/verification/standards-interpretation-source-inventory/community-dayservice.json": "024d8513c7b37a75c1a7c5ad12bba59ae385e221",
+      "data/verification/standards-interpretation-item-body/community-dayservice.json": "df329e4828b4d2d697ca2572a27d74688ba21783"
+    },
+    "source_inventory_result": "PASS_BOUNDED_SCOPE_ONLY",
+    "item_body_result": "PASS_WITH_ITEM_LEVEL_EVIDENCE",
+    "official_web_check_date": "2026-10-03"
+  },
+  "safety": {
+    "verification_scope": "CURRENTNESS_ONLY",
+    "item_body_result_changed": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "public_route_enabled": false,
+    "integrated_current_text_synthesized": false,
+    "omitted_text_reconstructed": false,
+    "negative_search_used_as_proof": false
+  },
+  "integrator_followup": [
+    "共通currentness frameworkへ取り込む場合も、NOT_ESTABLISHED/HOLDを維持し、検索不在をPASS条件へ変更しないこと。",
+    "current integrated official textが入手できるか、historical baselineから確認時点までのamendment chainを一次資料で閉じられた場合にのみ再判定すること。",
+    "human review、publication、public routeは別工程であり、このreceiptを根拠に昇格しないこと。"
+  ]
+}
