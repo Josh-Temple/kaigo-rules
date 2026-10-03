@@ -80,6 +80,17 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(remuneration["route_exposure"]["state"], "BLOCKED")
         self.assertEqual(delegated["ingestion"]["state"], "NOT_INGESTED")
 
+    def test_homevisit_unit_price_ingestion_does_not_inherit_dayservice_verification(self):
+        homevisit = self.cell("homevisit", "unit_price_regional_classification")
+        dayservice = self.cell("dayservice", "unit_price_regional_classification")
+        self.assertEqual(homevisit["service_scope"]["state"], "SCOPE_DEFINED")
+        self.assertEqual(homevisit["ingestion"]["state"], "INGESTED")
+        self.assertEqual(homevisit["item_body_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(homevisit["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(homevisit["publication"]["state"], "BLOCKED")
+        self.assertEqual(homevisit["route_exposure"]["state"], "BLOCKED")
+        self.assertEqual(dayservice["item_body_verification"]["state"], "PASS")
+
     def test_item_body_pass_does_not_promote_currentness(self):
         cell = self.cell("community-dayservice", "standards_interpretation_notice")
         self.assertEqual(cell["item_body_verification"]["state"], "PASS")
