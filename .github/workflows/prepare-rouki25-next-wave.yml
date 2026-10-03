@@ -1,4 +1,5 @@
 name: Prepare next Rouki 25 historical ingestion wave
+# Pinned evidence is verification-only on subsequent runs.
 
 on:
   workflow_dispatch:
