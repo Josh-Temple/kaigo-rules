@@ -2,6 +2,14 @@ name: Update Care Insurance Act database
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-care-insurance-act.yml"
+      - "scripts/import_egov_care_insurance_act.py"
+      - "scripts/verify_egov_content_independent.py"
+      - "scripts/record_egov_content_independent_audit.py"
+      - "data/care-insurance-act-corpus-scope.json"
   push:
     branches: [main, db/shared-care-insurance-act]
     paths:
@@ -21,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.13"
@@ -76,7 +84,7 @@ jobs:
           fi
 
       - name: Commit generated data to worker branch
-        if: steps.diff.outputs.changed == 'true' && github.ref_name == 'db/shared-care-insurance-act'
+        if: steps.diff.outputs.changed == 'true' && (github.head_ref == 'db/shared-care-insurance-act' || github.ref_name == 'db/shared-care-insurance-act')
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -92,10 +100,11 @@ jobs:
             data/verification-registry.json \
             data/product-value-snapshot-v0.1.json
           git commit -m "data: expand shared Care Insurance Act corpus"
-          git push origin HEAD:"${GITHUB_REF_NAME}"
+          TARGET_BRANCH="${{ github.head_ref || github.ref_name }}"
+          git push origin HEAD:"$TARGET_BRANCH"
 
       - name: Push review branch on main
-        if: steps.diff.outputs.changed == 'true' && github.ref_name == 'main'
+        if: steps.diff.outputs.changed == 'true' && github.event_name == 'push' && github.ref_name == 'main'
         shell: bash
         run: |
           BRANCH="automation/care-act-${GITHUB_RUN_ID}"
