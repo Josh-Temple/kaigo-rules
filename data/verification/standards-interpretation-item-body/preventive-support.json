@@ -11,9 +11,9 @@
     "structured_text_raw_entries": 34,
     "numbered_child_units_checked": 55,
     "verdicts": {
-      "PASS": 20,
+      "PASS": 21,
       "PARTIAL": 13,
-      "GAP": 1,
+      "GAP": 0,
       "FAIL": 0
     }
   },
@@ -67,13 +67,21 @@
       "scope_role": "HISTORICAL_FULL_TEXT_REFERENCE",
       "audit_role": "UNDERLYING_STANDARD_HTML_REFERENCE_NOT_NOTICE_BODY",
       "independently_accessed_for_this_audit": true
+    },
+    {
+      "source_manifest_id": "additional-official-item1-evidence",
+      "url": "https://www.mhlw.go.jp/content/12404000/001623026.pdf",
+      "scope_role": "ADDITIONAL_OFFICIAL_NOTICE_BODY_EVIDENCE",
+      "audit_role": "DIRECT_ITEM_BODY_EVIDENCE_NOT_CURRENTNESS_PROOF",
+      "independently_accessed_for_this_audit": true
     }
   ],
   "source_inventory_receipt": {
     "audit_result": "PASS_BOUNDED_SCOPE_ONLY",
     "check_level": "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
-    "referenced_sources": 3,
-    "note": "既存receiptはsource availability/service anchorのみ。item-body/currentnessは証明しない。scope manifestは5 sourceだが、receiptのrequired_sourcesはstaging参照3 sourceのみを数える。"
+    "manifest_required_sources": "PENDING_REFRESH_AFTER_SCOPE_CHANGE",
+    "required_sources_fetchable": "PENDING_REFRESH_AFTER_SCOPE_CHANGE",
+    "note": "#282以降、source inventoryはscope manifestでrequired=trueの全sourceを検査する。今回追加した001623026.pdfを含むreceipt refresh後に件数を固定する。item-body/currentnessはsource inventory自体では証明しない。"
   },
   "work_control_observation": {
     "source": "Kaigo Rules Structure Queue v1 (fresh read during audit)",
@@ -82,7 +90,19 @@
     "task_type": "CONTRACT_PRECHECK",
     "observed_status": "BLOCKED",
     "separation_rule": "NOTICE_ITEM_BODY_VERIFICATION_DOES_NOT_CLEAR_PACKAGE_BLOCKER",
-    "note": "Queue上のblockerは現在もBLOCKED。保存された理由文には旧main SHA時点の登録/scope不足が含まれるため、原因の現在性はIntegratorが別工程で再precheckする。"
+    "note": "Queue行はBLOCKEDのままで、result_summaryには旧main時点の未登録・scope不足が残る。Repository fresh readでは登録・scopeは解消済みだが、item-body PARTIAL、currentness未確立、human review未実施、public route無効が残るためPACKAGE blockerは解除しない。Queue本文自体は今回変更していない。",
+    "fresh_queue_read": "2026-10-03",
+    "repository_reprecheck_main_sha": "921fde3f02282b7c6164bec868bd720583859f2f",
+    "stale_reasons_cleared_in_repository": [
+      "service_not_registered",
+      "scope_evidence_missing"
+    ],
+    "current_blockers": [
+      "item_body_verification_partial",
+      "currentness_not_established",
+      "human_review_not_reviewed",
+      "public_route_disabled"
+    ]
   },
   "items": [
     {
@@ -195,28 +215,30 @@
       "task_id": "KR2-10-B005",
       "staging_id": "preventive-support.notice.005",
       "path": "第二/3/(1)",
-      "heading": "本文未復元",
-      "verdict": "GAP",
+      "heading": "内容及び手続きの説明及び同意",
+      "verdict": "PASS",
       "numbered_child_units_checked": 1,
       "checked_child_locators": [
         "第二/3/(1)"
       ],
       "source_url_check": "PASS",
-      "source_locator_check": "GAP",
-      "content_summary_check": "GAP",
-      "evidence_mode": "R6_OMITTED_CURRENT_ITEM_IDENTITY_NOT_UNIQUELY_RECOVERABLE",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "DIRECT_OFFICIAL_NOTICE_BODY_EVIDENCE",
       "stored_source_manifest_ids": [
+        "additional-official-item1-evidence",
         "r6-final-comparison",
         "work-control-source-4",
         "work-control-source-5"
       ],
       "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/001623026.pdf",
         "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
         "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
         "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
       ],
-      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (1) （略）",
-      "evidence_support_note": "令和6年度新旧対照の現行側(1)は「略」。平成18年通知では(1)が「内容及び手続きの説明及び同意」だが、令和6年度資料では同見出しが(2)に位置するため、現行(1)本文を一意に復元できない。",
+      "source_locator": "厚生労働省公式新旧対照資料 001623026.pdf／第2／3 運営に関する基準／(1) 内容及び手続きの説明及び同意（新欄本文）",
+      "evidence_support_note": "厚生労働省公式新旧対照資料 001623026.pdf の新欄に、3 運営に関する基準 (1)「内容及び手続きの説明及び同意」の見出し・本文が直接記載されている。旧版からの推測復元ではなく直接item-body evidenceとしてPASS。currentnessは別工程。",
       "current_integrated_notice_body_claimed": false
     },
     {
@@ -1019,12 +1041,6 @@
   ],
   "unresolved_notice_gaps": [
     {
-      "task_id": "KR2-10-B005",
-      "path": "第二/3/(1)",
-      "kind": "PRIMARY_TEXT_NOT_RECOVERED",
-      "note": "令和6年度新旧対照の現行(1)は略記で、平成18年版(1)をそのまま現行(1)へ移せない。"
-    },
-    {
       "task_id": "KR2-10-B008",
       "path": "第二/3/(4)-(15)",
       "kind": "CHILD_LEVEL_MIXED_EXPLICIT_AND_OMITTED",
@@ -1045,10 +1061,6 @@
   ],
   "integrator_followup": [
     {
-      "id": "RECONCILE_REQUIRED_SOURCE_INVENTORY_COVERAGE",
-      "note": "共通source inventory verifierはstagingで参照されたURLだけを巡回するため、scope manifestでrequired=trueの5 sourceのうちreceiptは3 sourceのみをrequiredとして数えている。今回5 sourceは独立にアクセス確認したが、共通validatorの意味論はIntegratorで整理する。"
-    },
-    {
       "id": "RECONCILE_R6_ITEM_27_SCOPE",
       "note": "令和6年度新旧対照に明示された㉗と現staging上限㉖の差を、scope拡張せず別工程で確認する。"
     },
@@ -1057,12 +1069,8 @@
       "note": "第二/3/(4)-(15)は公式資料で明示/略記が混在するため、公開前に子項目粒度へ分解すべきか検討する。"
     },
     {
-      "id": "CLARIFY_WORK_CONTROL_SOURCE_5_ROLE",
-      "note": "work-control-source-5は解釈通知本文ではなく厚生労働省令第37号の基準本文。notice-body evidenceとunderlying-standard evidenceを明示的に区別する。"
-    },
-    {
       "id": "RECHECK_PACKAGE_CONTRACT_PRECHECK_SEPARATELY",
-      "note": "KR2-10-E006はNOTICE判定で解除しない。現在のRepository状態を使ったPACKAGE precheckを別工程で再実行する。"
+      "note": "KR2-10-E006はNOTICE判定で解除しない。Repository上ではservice登録・scope・manifest-complete source inventoryは現在存在するが、currentness/human review/public route/item-body partialが残るためPACKAGEは別工程でBLOCKEDを維持する。"
     }
   ],
   "input_binding": {
@@ -1078,14 +1086,14 @@
     "verifier": "scripts/verify_preventive_support_standards_interpretation_item_body.py",
     "verification_status": "PARTIAL_WITH_GAPS",
     "counts": {
-      "PASS": 20,
+      "PASS": 21,
       "PARTIAL": 13,
-      "GAP": 1,
+      "GAP": 0,
       "FAIL": 0
     },
     "expected_staging_items_or_tasks": 34,
-    "non_pass_items": 14,
-    "explicit_unresolved_records": 3,
+    "non_pass_items": 13,
+    "explicit_unresolved_records": 2,
     "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
     "currentness_state": "NOT_ESTABLISHED",
     "human_review_state": "NOT_REVIEWED",
