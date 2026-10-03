@@ -100,7 +100,7 @@ test("published historical services and un-ingested services remain clearly sepa
   assert.equal(homenursing?.record_count, 0);
   assert.equal(
     homenursing?.notice_status,
-    "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+    "SCOPE_DEFINED_NOT_RECONSTRUCTED",
   );
   assert.equal(
     shortstay?.notice_status,
