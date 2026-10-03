@@ -1,0 +1,111 @@
+name: One-time shared standards branch refresh
+
+on:
+  push:
+    branches: [db/shared-standards-corpus]
+    paths:
+      - ".github/workflows/one-time-run-shared-standards-refresh.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-feature-branch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          ref: db/shared-standards-corpus
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+
+      - name: Capture feature input SHA
+        run: echo "FEATURE_HEAD_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Rebuild e-Gov source corpora
+        run: |
+          python scripts/import_egov_ordinance37.py
+          python scripts/import_egov_care_insurance_act.py
+          python scripts/import_shared_standards_corpora.py
+
+      - name: Rebuild shared-corpus service projections
+        run: |
+          python scripts/build_homevisit_careact_index.py
+          python scripts/build_homevisit_ordinance37_index.py
+          python scripts/build_dayrehab_ordinance37_index.py
+          python scripts/build_dayrehab_article119_relations.py
+          python scripts/build_shared_standards_service_relations.py
+
+      - name: Verify and pin dayrehab Ordinance 37 audit
+        run: |
+          mkdir -p artifacts
+          python scripts/verify_dayrehab_ordinance37_independent.py --report artifacts/dayrehab-ordinance37.json
+          python scripts/build_dayrehab_ordinance37_audit.py             --verification-report artifacts/dayrehab-ordinance37.json             --run-id "$GITHUB_RUN_ID" --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_dayrehab_ordinance37_independent_audit.py
+
+      - name: Verify and pin dayrehab Article 119 relations
+        run: |
+          python scripts/verify_dayrehab_article119_relations_independent.py --report artifacts/dayrehab-article119.json
+          python scripts/build_dayrehab_article119_relation_audit.py             --verification-report artifacts/dayrehab-article119.json             --run-id "$GITHUB_RUN_ID" --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_dayrehab_article119_relation_audit.py
+
+      - name: Verify and pin existing e-Gov audit
+        run: |
+          python scripts/verify_egov_content_independent.py --report artifacts/egov-content-independent.json
+          python scripts/build_egov_content_independent_audit.py             --verification-report artifacts/egov-content-independent.json             --run-id "$GITHUB_RUN_ID" --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_egov_content_independent_audit.py
+          python scripts/verify_egov_source_freshness.py --report artifacts/egov-source-freshness.json
+
+      - name: Verify and pin new shared standards audit
+        run: |
+          python scripts/verify_shared_standards_independent.py --report artifacts/shared-standards-independent.json
+          python scripts/build_shared_standards_audit.py             --verification-report artifacts/shared-standards-independent.json             --run-id "$GITHUB_RUN_ID" --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_shared_standards.py
+          python scripts/verify_shared_standards_source_freshness.py --report artifacts/shared-standards-freshness.json
+
+      - name: Refresh dependent relation audit chain
+        run: |
+          python scripts/verify_relation_semantics_independent.py --report artifacts/relation-semantic.json
+          python scripts/build_relation_semantic_independent_audit.py             --verification-report artifacts/relation-semantic.json             --run-id "$GITHUB_RUN_ID" --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_relation_semantic_independent_audit.py
+          python scripts/verify_careact_internal_relations_independent.py --report artifacts/careact-internal.json
+          python scripts/build_careact_internal_relation_independent_audit.py             --verification-report artifacts/careact-internal.json             --run-id "$GITHUB_RUN_ID" --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_careact_internal_relation_independent_audit.py
+          python scripts/verify_cross_layer_source_chains_independent.py --report artifacts/cross-layer.json
+          python scripts/build_cross_layer_source_chain_independent_audit.py             --verification-report artifacts/cross-layer.json             --run-id "$GITHUB_RUN_ID" --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_cross_layer_source_chain_independent_audit.py
+          python scripts/verify_remuneration_delegation_relations.py --report artifacts/remuneration-delegation.json
+          python scripts/build_remuneration_delegation_relation_independent_audit.py             --verification-report artifacts/remuneration-delegation.json             --run-id "$GITHUB_RUN_ID" --head-sha "$FEATURE_HEAD_SHA"
+          python scripts/validate_remuneration_delegation_relation_independent_audit.py
+
+      - name: Rebuild derived repository state
+        run: |
+          python scripts/build_service_catalog.py
+          python scripts/build_verification_registry.py
+          python scripts/build_product_value_snapshot.py
+          python -m unittest tests.test_shared_standards_corpus
+
+      - name: Commit generated canonical data to feature branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             data/shared/standards             data/ordinance37-nodes.json             data/ordinance37-relations.json             data/ordinance37-application-rules.json             data/ordinance37-meta.json             data/care-insurance-act-nodes.json             data/care-insurance-act-relations.json             data/care-insurance-act-meta.json             data/services/homevisit/care-insurance-act-index.generated.json             data/services/homevisit/ordinance37-index.generated.json             data/services/dayrehab/ordinance37-index.generated.json             data/services/dayrehab/ordinance37-relations.generated.json             data/dayrehab-ordinance37-independent-audit.json             data/dayrehab-article119-relation-independent-audit.json             data/egov-content-independent-audit.json             data/relation-semantic-independent-audit.json             data/careact-internal-relation-independent-audit.json             data/cross-layer-source-chain-independent-audit.json             data/remuneration-delegation-relation-independent-audit.json             data/services/catalog.generated.json             data/verification-registry.json             data/product-value-snapshot-v0.1.json
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git commit -m "Generate shared ministerial standards corpora"
+          git push origin HEAD:db/shared-standards-corpus
+
+      - name: Upload verification receipts
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: shared-standards-refresh
+          path: artifacts/*.json
+          if-no-files-found: warn
+          retention-days: 90
