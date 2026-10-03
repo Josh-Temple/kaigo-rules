@@ -48,9 +48,17 @@
     {
       "id": "historical-official-html",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
-      "role": "HISTORICAL_FULL_TEXT_REFERENCE",
-      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "role": "UNDERLYING_STANDARD_ORDINANCE_CROSSCHECK",
+      "status": "OFFICIAL_STANDARD_TEXT_CROSSCHECK",
       "required_for_source_inventory": true
+    },
+    {
+      "id": "h27-full-notice-comparison",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+      "role": "HISTORICAL_FULL_NOTICE_BODY_EVIDENCE",
+      "status": "OFFICIAL_HISTORICAL_NOTICE_BODY_EVIDENCE",
+      "required_for_source_inventory": true,
+      "note": "平成27年度介護報酬改定ページ掲載の厚生労働省公式資料。夜間対応型訪問介護の1(1)基本方針および2(1)②イを本文付きで確認する。currentnessの証明には使用しない。"
     }
   ],
   "source_assurance": {
