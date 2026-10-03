@@ -33,6 +33,10 @@ EXPECTED_PUBLIC_FAMILIES = [
     "qa_corpus_items",
     "homevisit_notice_items",
     "homebath_notice_items",
+    "homenursing_notice_items",
+    "homerehab_notice_items",
+    "homecaremanagement_notice_items",
+    "shortstay_life_notice_items",
     "dayrehab_standard_articles",
     "dayrehab_notice_items",
     "dayrehab_remuneration_items",
@@ -427,6 +431,41 @@ def build_snapshot() -> dict[str, Any]:
         for item in homebath_notice_data.get("items", [])
     ]
 
+    historical_global_notice_rows = {}
+    for service_id in (
+        "homenursing",
+        "homerehab",
+        "homecaremanagement",
+        "shortstay-life",
+    ):
+        dataset = load_json(
+            f"data/services/{service_id}/rouki25-historical.generated.json"
+        )
+        state_complete = layer_state_complete(
+            layer_by_id, f"rouki25-{service_id}"
+        )
+        historical_global_notice_rows[service_id] = [
+            row(
+                f"{service_id}-notice:{item['id']}",
+                source_complete=bool(item.get("source_url")),
+                scope_complete=(
+                    dataset.get("service_id") == service_id
+                    and item.get("source_state") == "OFFICIAL_HISTORICAL_HTML"
+                ),
+                verification_state_complete=state_complete,
+            )
+            for item in dataset.get("items", [])
+        ]
+
+    homenursing_notice_public_rows = historical_global_notice_rows["homenursing"]
+    homerehab_notice_public_rows = historical_global_notice_rows["homerehab"]
+    homecaremanagement_notice_public_rows = historical_global_notice_rows[
+        "homecaremanagement"
+    ]
+    shortstay_life_notice_public_rows = historical_global_notice_rows[
+        "shortstay-life"
+    ]
+
     dayrehab_public_rows = []
     dayrehab_entry = next(
         (item for item in service_manifest["services"] if item["service_id"] == "dayrehab"),
@@ -558,6 +597,10 @@ def build_snapshot() -> dict[str, Any]:
         "qa_corpus_items": qa_public_rows,
         "homevisit_notice_items": homevisit_notice_public_rows,
         "homebath_notice_items": homebath_notice_public_rows,
+        "homenursing_notice_items": homenursing_notice_public_rows,
+        "homerehab_notice_items": homerehab_notice_public_rows,
+        "homecaremanagement_notice_items": homecaremanagement_notice_public_rows,
+        "shortstay_life_notice_items": shortstay_life_notice_public_rows,
         "dayrehab_standard_articles": dayrehab_public_rows,
         "dayrehab_notice_items": dayrehab_notice_public_rows,
         "dayrehab_remuneration_items": dayrehab_remuneration_public_rows,
@@ -633,6 +676,10 @@ def build_snapshot() -> dict[str, Any]:
                 "qa_corpus_items",
                 "homevisit_notice_items",
                 "homebath_notice_items",
+                "homenursing_notice_items",
+                "homerehab_notice_items",
+                "homecaremanagement_notice_items",
+                "shortstay_life_notice_items",
             ],
             "public_route_mode": routing.get("current_mode"),
             "service_config": service_config_path,
