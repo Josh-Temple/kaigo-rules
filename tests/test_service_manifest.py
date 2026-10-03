@@ -133,7 +133,7 @@ class ServiceManifestTests(unittest.TestCase):
             errors = validation_errors(root, check_registry=True)
             self.assertTrue(any("non-active service route" in error for error in errors))
 
-    def test_repository_homevisit_stays_unpublished_and_unverified(self):
+    def test_repository_homevisit_route_stays_unpublished_while_notice_layer_is_verified(self):
         root = Path(__file__).resolve().parents[1]
         manifest = json.loads(
             (root / "data/services/manifest.json").read_text(encoding="utf-8")
@@ -153,45 +153,27 @@ class ServiceManifestTests(unittest.TestCase):
         self.assertFalse(homevisit["routing"]["future_service_base_enabled"])
         self.assertFalse(homevisit["publication_gate"]["public_routes_enabled"])
         self.assertFalse(homevisit["publication_gate"]["content_ingested"])
-        self.assertEqual(
-            "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
-            homevisit["ingestion_layers"]["care_insurance_act"]["status"],
-        )
-        index = json.loads(
-            (
-                root
-                / "data/services/homevisit/care-insurance-act-index.generated.json"
-            ).read_text(encoding="utf-8")
-        )
-        self.assertEqual(106, index["counts"]["selected_nodes_total"])
-        self.assertFalse(index["assurance"]["legal_text_duplicated"])
-        self.assertEqual(
-            "NOT_RUN",
-            index["assurance"]["service_specific_independent_verification"],
-        )
-        ordinance_index = json.loads(
-            (
-                root
-                / "data/services/homevisit/ordinance37-index.generated.json"
-            ).read_text(encoding="utf-8")
-        )
-        self.assertEqual(38, ordinance_index["counts"]["selected_articles"])
-        self.assertEqual(165, ordinance_index["counts"]["selected_nodes_total"])
-        self.assertFalse(ordinance_index["assurance"]["legal_text_duplicated"])
-        self.assertEqual(
-            "NOT_RUN",
-            ordinance_index["assurance"]["service_specific_independent_verification"],
-        )
         self.assertFalse(
             homevisit["publication_gate"]["independent_verification_complete"]
         )
-        self.assertEqual([], homevisit["verification_layer_ids"])
-        self.assertFalse(
-            any(
-                "homevisit" in layer.get("service_ids", [])
-                for layer in registry["layers"]
-            )
+        self.assertEqual(
+            "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+            homevisit["ingestion_layers"]["rouki25"]["status"],
         )
+        self.assertEqual(["rouki25-homevisit"], homevisit["verification_layer_ids"])
+
+        notice_layer = next(
+            layer for layer in registry["layers"]
+            if layer["id"] == "rouki25-homevisit"
+        )
+        self.assertEqual(["homevisit"], notice_layer["service_ids"])
+        self.assertEqual("PASS", notice_layer["content_verification"]["status"])
+        self.assertEqual(
+            "GAP_HISTORICAL_SOURCE_ONLY",
+            notice_layer["currentness"]["status"],
+        )
+        self.assertEqual("NOT_REVIEWED", notice_layer["human_review"]["status"])
+
 
     def test_registry_service_coverage_drift_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
