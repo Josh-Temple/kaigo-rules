@@ -88,7 +88,8 @@
         "notice_review_packet": "data/notice-review-packet.json",
         "remuneration_skeleton": "data/remuneration-current-skeleton.json",
         "fee_guidance": "data/fee-guidance-current-skeleton.json",
-        "qa_corpus": "data/qa-corpus.json"
+        "qa_corpus": "data/qa-corpus.json",
+        "unit_price": "data/services/dayservice/unit-price-scope.json"
       },
       "publication_gate": {},
       "ingestion_layers": {
@@ -125,7 +126,8 @@
         "care_insurance_act": "data/services/homevisit/care-insurance-act-scope.json",
         "ordinance37": "data/services/homevisit/ordinance37-scope.json",
         "rouki25": "data/services/homevisit/rouki25-scope.json",
-        "remuneration": "data/services/homevisit/remuneration-scope.json"
+        "remuneration": "data/services/homevisit/remuneration-scope.json",
+        "unit_price": "data/services/homevisit/unit-price-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -170,7 +172,12 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/homebath/care-insurance-act-scope.json",
+        "ordinance37": "data/services/homebath/ordinance37-scope.json",
+        "remuneration": "data/services/homebath/remuneration-scope.json",
+        "unit_price": "data/services/homebath/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -205,7 +212,11 @@
       },
       "id_namespaces": {},
       "scope_files": {
-        "rouki25": "data/services/homenursing/rouki25-scope.json"
+        "rouki25": "data/services/homenursing/rouki25-scope.json",
+        "care_insurance_act": "data/services/homenursing/care-insurance-act-scope.json",
+        "ordinance37": "data/services/homenursing/ordinance37-scope.json",
+        "remuneration": "data/services/homenursing/remuneration-scope.json",
+        "unit_price": "data/services/homenursing/unit-price-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -241,7 +252,11 @@
       },
       "id_namespaces": {},
       "scope_files": {
-        "rouki25": "data/services/homerehab/rouki25-scope.json"
+        "rouki25": "data/services/homerehab/rouki25-scope.json",
+        "care_insurance_act": "data/services/homerehab/care-insurance-act-scope.json",
+        "ordinance37": "data/services/homerehab/ordinance37-scope.json",
+        "remuneration": "data/services/homerehab/remuneration-scope.json",
+        "unit_price": "data/services/homerehab/unit-price-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -277,7 +292,11 @@
       },
       "id_namespaces": {},
       "scope_files": {
-        "rouki25": "data/services/homecaremanagement/rouki25-scope.json"
+        "rouki25": "data/services/homecaremanagement/rouki25-scope.json",
+        "care_insurance_act": "data/services/homecaremanagement/care-insurance-act-scope.json",
+        "ordinance37": "data/services/homecaremanagement/ordinance37-scope.json",
+        "remuneration": "data/services/homecaremanagement/remuneration-scope.json",
+        "unit_price": "data/services/homecaremanagement/unit-price-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -317,7 +336,9 @@
         "ordinance37": "data/services/dayrehab/ordinance37-scope.json",
         "rouki25": "data/services/dayrehab/rouki25-scope.json",
         "remuneration_index": "data/services/dayrehab/remuneration-index.json",
-        "fee_guidance_index": "data/services/dayrehab/fee-guidance-index.json"
+        "fee_guidance_index": "data/services/dayrehab/fee-guidance-index.json",
+        "care_insurance_act": "data/services/dayrehab/care-insurance-act-scope.json",
+        "unit_price": "data/services/dayrehab/unit-price-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": true,
@@ -378,7 +399,11 @@
       },
       "id_namespaces": {},
       "scope_files": {
-        "rouki25": "data/services/shortstay-life/rouki25-scope.json"
+        "rouki25": "data/services/shortstay-life/rouki25-scope.json",
+        "care_insurance_act": "data/services/shortstay-life/care-insurance-act-scope.json",
+        "ordinance37": "data/services/shortstay-life/ordinance37-scope.json",
+        "remuneration": "data/services/shortstay-life/remuneration-scope.json",
+        "unit_price": "data/services/shortstay-life/unit-price-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -416,7 +441,12 @@
       "id_namespaces": {},
       "scope_files": {
         "standards_interpretation": "data/services/community-dayservice/standards-interpretation-scope.json",
-        "standards_interpretation_staging": "data/services/community-dayservice/standards-interpretation-staging.json"
+        "standards_interpretation_staging": "data/services/community-dayservice/standards-interpretation-staging.json",
+        "care_insurance_act": "data/services/community-dayservice/shared-corpus-scope.json",
+        "standards_index": "data/services/community-dayservice/shared-corpus-scope.json",
+        "remuneration": "data/services/community-dayservice/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/community-dayservice/shared-corpus-scope.json",
+        "unit_price": "data/services/community-dayservice/shared-corpus-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -461,7 +491,12 @@
       "id_namespaces": {},
       "scope_files": {
         "standards_interpretation": "data/services/regular-round/standards-interpretation-scope.json",
-        "standards_interpretation_staging": "data/services/regular-round/standards-interpretation-staging.json"
+        "standards_interpretation_staging": "data/services/regular-round/standards-interpretation-staging.json",
+        "care_insurance_act": "data/services/regular-round/shared-corpus-scope.json",
+        "standards_index": "data/services/regular-round/shared-corpus-scope.json",
+        "remuneration": "data/services/regular-round/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/regular-round/shared-corpus-scope.json",
+        "unit_price": "data/services/regular-round/shared-corpus-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -506,7 +541,12 @@
       "id_namespaces": {},
       "scope_files": {
         "standards_interpretation": "data/services/night-homevisit/standards-interpretation-scope.json",
-        "standards_interpretation_staging": "data/services/night-homevisit/standards-interpretation-staging.json"
+        "standards_interpretation_staging": "data/services/night-homevisit/standards-interpretation-staging.json",
+        "care_insurance_act": "data/services/night-homevisit/shared-corpus-scope.json",
+        "standards_index": "data/services/night-homevisit/shared-corpus-scope.json",
+        "remuneration": "data/services/night-homevisit/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/night-homevisit/shared-corpus-scope.json",
+        "unit_price": "data/services/night-homevisit/shared-corpus-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -551,7 +591,12 @@
       "id_namespaces": {},
       "scope_files": {
         "standards_interpretation": "data/services/care-management/standards-interpretation-scope.json",
-        "standards_interpretation_staging": "data/services/care-management/standards-interpretation-staging.json"
+        "standards_interpretation_staging": "data/services/care-management/standards-interpretation-staging.json",
+        "care_insurance_act": "data/services/care-management/care-insurance-act-scope.json",
+        "governing_standards": "data/services/care-management/governing-standards-scope.json",
+        "remuneration": "data/services/care-management/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/care-management/delegated-remuneration-criteria-scope.json",
+        "unit_price_regional_classification": "data/services/care-management/unit-price-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -596,7 +641,12 @@
       "id_namespaces": {},
       "scope_files": {
         "standards_interpretation": "data/services/preventive-support/standards-interpretation-scope.json",
-        "standards_interpretation_staging": "data/services/preventive-support/standards-interpretation-staging.json"
+        "standards_interpretation_staging": "data/services/preventive-support/standards-interpretation-staging.json",
+        "care_insurance_act": "data/services/preventive-support/care-insurance-act-scope.json",
+        "governing_standards": "data/services/preventive-support/governing-standards-scope.json",
+        "remuneration": "data/services/preventive-support/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-support/delegated-remuneration-criteria-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-support/unit-price-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -639,7 +689,12 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/shortstay-medical/care-insurance-act-scope.json",
+        "ordinance37": "data/services/shortstay-medical/ordinance37-scope.json",
+        "remuneration": "data/services/shortstay-medical/remuneration-scope.json",
+        "unit_price": "data/services/shortstay-medical/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -677,7 +732,12 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/specific-facility/care-insurance-act-scope.json",
+        "ordinance37": "data/services/specific-facility/ordinance37-scope.json",
+        "remuneration": "data/services/specific-facility/remuneration-scope.json",
+        "unit_price": "data/services/specific-facility/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -715,7 +775,12 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/welfare-equipment-rental/care-insurance-act-scope.json",
+        "ordinance37": "data/services/welfare-equipment-rental/ordinance37-scope.json",
+        "remuneration": "data/services/welfare-equipment-rental/remuneration-scope.json",
+        "unit_price": "data/services/welfare-equipment-rental/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -753,7 +818,12 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/specific-welfare-equipment-sale/care-insurance-act-scope.json",
+        "ordinance37": "data/services/specific-welfare-equipment-sale/ordinance37-scope.json",
+        "remuneration": "data/services/specific-welfare-equipment-sale/remuneration-scope.json",
+        "unit_price": "data/services/specific-welfare-equipment-sale/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -791,7 +861,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/dementia-dayservice/shared-corpus-scope.json",
+        "standards_index": "data/services/dementia-dayservice/shared-corpus-scope.json",
+        "remuneration": "data/services/dementia-dayservice/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/dementia-dayservice/shared-corpus-scope.json",
+        "unit_price": "data/services/dementia-dayservice/shared-corpus-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -829,7 +905,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
+        "standards_index": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
+        "remuneration": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
+        "unit_price": "data/services/small-scale-multifunctional/shared-corpus-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -867,7 +949,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/dementia-group-home/shared-corpus-scope.json",
+        "standards_index": "data/services/dementia-group-home/shared-corpus-scope.json",
+        "remuneration": "data/services/dementia-group-home/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/dementia-group-home/shared-corpus-scope.json",
+        "unit_price": "data/services/dementia-group-home/shared-corpus-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -905,7 +993,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/community-specific-facility/shared-corpus-scope.json",
+        "standards_index": "data/services/community-specific-facility/shared-corpus-scope.json",
+        "remuneration": "data/services/community-specific-facility/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/community-specific-facility/shared-corpus-scope.json",
+        "unit_price": "data/services/community-specific-facility/shared-corpus-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -943,7 +1037,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/community-elderly-facility/shared-corpus-scope.json",
+        "standards_index": "data/services/community-elderly-facility/shared-corpus-scope.json",
+        "remuneration": "data/services/community-elderly-facility/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/community-elderly-facility/shared-corpus-scope.json",
+        "unit_price": "data/services/community-elderly-facility/shared-corpus-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -981,7 +1081,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+        "standards_index": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+        "remuneration": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+        "delegated_remuneration_criteria": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+        "unit_price": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1019,7 +1125,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/elderly-welfare-facility/care-insurance-act-scope.json",
+        "governing_standards": "data/services/elderly-welfare-facility/governing-standards-scope.json",
+        "remuneration": "data/services/elderly-welfare-facility/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/elderly-welfare-facility/delegated-remuneration-criteria-scope.json",
+        "unit_price_regional_classification": "data/services/elderly-welfare-facility/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1057,7 +1169,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/elderly-health-facility/care-insurance-act-scope.json",
+        "governing_standards": "data/services/elderly-health-facility/governing-standards-scope.json",
+        "remuneration": "data/services/elderly-health-facility/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/elderly-health-facility/delegated-remuneration-criteria-scope.json",
+        "unit_price_regional_classification": "data/services/elderly-health-facility/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1095,7 +1213,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/care-medical-institution/care-insurance-act-scope.json",
+        "governing_standards": "data/services/care-medical-institution/governing-standards-scope.json",
+        "remuneration": "data/services/care-medical-institution/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/care-medical-institution/delegated-remuneration-criteria-scope.json",
+        "unit_price_regional_classification": "data/services/care-medical-institution/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1133,7 +1257,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-homebath/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-homebath/standards-scope.json",
+        "remuneration": "data/services/preventive-homebath/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-homebath/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-homebath/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1171,7 +1301,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-homenursing/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-homenursing/standards-scope.json",
+        "remuneration": "data/services/preventive-homenursing/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-homenursing/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-homenursing/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1209,7 +1345,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-homerehab/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-homerehab/standards-scope.json",
+        "remuneration": "data/services/preventive-homerehab/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-homerehab/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-homerehab/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1247,7 +1389,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-homecaremanagement/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-homecaremanagement/standards-scope.json",
+        "remuneration": "data/services/preventive-homecaremanagement/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-homecaremanagement/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-homecaremanagement/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1285,7 +1433,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-dayrehab/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-dayrehab/standards-scope.json",
+        "remuneration": "data/services/preventive-dayrehab/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-dayrehab/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-dayrehab/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1323,7 +1477,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-shortstay-life/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-shortstay-life/standards-scope.json",
+        "remuneration": "data/services/preventive-shortstay-life/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-shortstay-life/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-shortstay-life/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1361,7 +1521,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-shortstay-medical/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-shortstay-medical/standards-scope.json",
+        "remuneration": "data/services/preventive-shortstay-medical/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-shortstay-medical/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-shortstay-medical/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1399,7 +1565,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-specific-facility/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-specific-facility/standards-scope.json",
+        "remuneration": "data/services/preventive-specific-facility/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-specific-facility/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-specific-facility/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1437,7 +1609,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-welfare-equipment-rental/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-welfare-equipment-rental/standards-scope.json",
+        "remuneration": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1475,7 +1653,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/specific-preventive-welfare-equipment-sale/care-insurance-act-scope.json",
+        "standards_index": "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json",
+        "remuneration": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
+        "unit_price_regional_classification": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1513,7 +1697,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-dementia-dayservice/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-dementia-dayservice/standards36-scope.json",
+        "remuneration": "data/services/preventive-dementia-dayservice/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-dementia-dayservice/remuneration-scope.json",
+        "unit_price": "data/services/preventive-dementia-dayservice/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1551,7 +1741,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-small-scale-multifunctional/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-small-scale-multifunctional/standards36-scope.json",
+        "remuneration": "data/services/preventive-small-scale-multifunctional/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-small-scale-multifunctional/remuneration-scope.json",
+        "unit_price": "data/services/preventive-small-scale-multifunctional/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -1589,7 +1785,13 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "care_insurance_act": "data/services/preventive-dementia-group-home/care-insurance-act-scope.json",
+        "standards_index": "data/services/preventive-dementia-group-home/standards36-scope.json",
+        "remuneration": "data/services/preventive-dementia-group-home/remuneration-scope.json",
+        "delegated_remuneration_criteria": "data/services/preventive-dementia-group-home/remuneration-scope.json",
+        "unit_price": "data/services/preventive-dementia-group-home/unit-price-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
