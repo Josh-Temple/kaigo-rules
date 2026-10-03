@@ -13,7 +13,8 @@
   },
   "currentness": {
     "status": "GAP",
-    "note": "告示第87号はイ〜ホを略記。全改正履歴を確認しておらず、現行統合本文へ合成していない。"
+    "note": "告示第87号はイ〜ホを略記。全改正履歴を確認しておらず、現行統合本文へ合成していない。",
+    "evidence": "data/verification/existing-service-currentness-wave.json"
   },
   "monitoring": {
     "status": "ACTIVE",
@@ -27,4 +28,4 @@
     "total_items": 42
   },
   "assurance": "BOUNDED_SOURCE_INVENTORY_PASS_CURRENTNESS_GAP"
-}
+}\n
