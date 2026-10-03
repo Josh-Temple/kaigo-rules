@@ -22,12 +22,15 @@ class StandardsInterpretationCurrentnessIntegrationTest(unittest.TestCase):
         self.assertEqual(validator.validate(), [])
 
     def test_currentness_verification_is_distinct_from_currentness_state(self):
-        for service_id in ("community-dayservice", "regular-round", "night-homevisit"):
+        for service_id in (
+            "community-dayservice",
+            "regular-round",
+            "night-homevisit",
+            "care-management",
+            "preventive-support",
+        ):
             self.assertTrue(self.rows[service_id]["currentness"]["verification_performed"])
-            self.assertEqual(self.rows[service_id]["currentness"]["state"], "NOT_ESTABLISHED")
-        for service_id in ("care-management", "preventive-support"):
-            self.assertFalse(self.rows[service_id]["currentness"]["verification_performed"])
-            self.assertIsNone(self.rows[service_id]["currentness"]["receipt"])
+            self.assertIsNotNone(self.rows[service_id]["currentness"]["receipt"])
             self.assertEqual(self.rows[service_id]["currentness"]["state"], "NOT_ESTABLISHED")
 
     def test_downstream_gates_are_not_promoted(self):

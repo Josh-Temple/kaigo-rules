@@ -1,0 +1,121 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-support",
+  "layer": "standards_interpretation",
+  "audit_kind": "INDEPENDENT_CURRENTNESS_VERIFICATION",
+  "audit_result": "NOT_ESTABLISHED",
+  "verification_scope": "CURRENTNESS_ONLY_NO_ITEM_BODY_OR_PUBLICATION_PROMOTION",
+  "source_family": "preventive_support_standards_interpretation",
+  "notice_identity": {
+    "title": "指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準について",
+    "notice_numbers": [
+      "老振発第0331003号",
+      "老老発第0331016号"
+    ],
+    "service_anchor": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準"
+  },
+  "repository_base": {
+    "branch": "main",
+    "head_sha": "87d3e9933655c3444046fc9c2ccd9a8a9edacbe8"
+  },
+  "checked_period": {
+    "through": "2026-10-03",
+    "verified_at_jst": "2026-10-03",
+    "meaning": "Repository既存証拠と厚生労働省公式の令和6年度・令和8年度資料をcurrentness目的で独立再確認した。"
+  },
+  "preconditions": {
+    "source_inventory_receipt": "data/verification/standards-interpretation-source-inventory/preventive-support.json",
+    "source_inventory_result": "PASS_BOUNDED_SCOPE_ONLY",
+    "item_body_receipt": "data/verification/standards-interpretation-item-body/preventive-support.json",
+    "item_body_result": "PARTIAL_WITH_GAPS",
+    "item_body_counts": {
+      "PASS": 32,
+      "PARTIAL": 2,
+      "GAP": 0,
+      "FAIL": 0
+    },
+    "item_body_does_not_prove_currentness": true,
+    "currentness_verification_does_not_resolve_item_body_gaps": true
+  },
+  "official_sources": [
+    {
+      "id": "r6-final-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+      "parent_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "classification": "AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "厚労省の令和6年度改定ページで解釈通知（介護予防支援等）として掲載されるが、PDFは別紙13・（抄）・新旧対照で、略記を含む。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "current-underlying-ordinance",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1",
+      "source_role": "CURRENT_UNDERLYING_STANDARDS_ORDINANCE",
+      "classification": "ORDINANCE_NOT_INTERPRETATION_NOTICE",
+      "observation": "平成18年厚生労働省令第37号の現行統合HTMLであり、基準条文の確認には使えるが、解釈通知本文ではない。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "r8-reform-index",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "source_role": "OFFICIAL_POST_R6_REFORM_INDEX_SUPPORTING_ONLY",
+      "classification": "NEGATIVE_DISCOVERY_SUPPORTING_ONLY",
+      "observation": "令和8年度介護報酬改定ページの通知等の改正一覧では、当該基準解釈通知の改正を確認できなかった。",
+      "limitation": "ページ非掲載は、別経路を含む改正不存在の積極的証明ではない。"
+    }
+  ],
+  "source_version_assessment": {
+    "final_r6_comparison": {
+      "status": "VERIFIED_AS_AMENDMENT_COMPARISON_NOT_INTEGRATED_TEXT"
+    },
+    "underlying_ordinance": {
+      "status": "CURRENT_ORDINANCE_AVAILABLE_NOT_NOTICE_TEXT"
+    },
+    "post_r6": {
+      "status": "NEGATIVE_DISCOVERY_ONLY_NOT_CLOSED",
+      "verified_post_r6_amendment_candidate_identified": false,
+      "absence_of_evidence_treated_as_proof": false
+    },
+    "current_integrated_official_interpretation_notice": {
+      "found": false,
+      "status": "NOT_ESTABLISHED"
+    },
+    "amendment_chain_closed": false
+  },
+  "negative_search_limitations": [
+    "令和8年度改定ページで当該通知の改正を確認できないことだけでは、不改正を証明できない。",
+    "現行基準省令は解釈通知の現行統合本文を代替しない。",
+    "令和6年度最終資料は抄・新旧対照であり、略記部分を含むため単独で現行統合全文にはならない。",
+    "item-bodyのPARTIAL 2件はcurrentness検証と別レイヤーであり、この検証では解消しない。"
+  ],
+  "conclusion": {
+    "currentness": "NOT_ESTABLISHED",
+    "currentness_pass": false,
+    "reason": "現行統合済みの公式解釈通知本文を確保できず、令和6年度最終資料も抄・新旧対照である。令和8年度改定ページのnegative discoveryだけではR6以後の不改正を積極的に証明できないため、currentnessをPASSへ昇格しない。",
+    "decision_effect": "KEEP_FAIL_CLOSED",
+    "item_body_result_unchanged": "PARTIAL_WITH_GAPS"
+  },
+  "unresolved_risks": [
+    "解釈通知の全改正イベントを適用順序付きで閉じたledgerがない。",
+    "厚労省による現行統合済み解釈通知本文を確認できていない。",
+    "R6以後の改正不存在は公式索引のnegative discoveryだけでは証明できない。",
+    "KR2-10-B016/B033のitem-body PARTIALとKR2-10-B035の新規scope taskは別途未解消。"
+  ],
+  "safety": {
+    "currentness_only": true,
+    "currentness_promoted": false,
+    "item_body_promoted": false,
+    "human_review_promoted": false,
+    "publication_permitted": false,
+    "route_enabled": false,
+    "package_blocker_cleared": false,
+    "current_integrated_notice_text_reconstructed": false,
+    "ordinance_treated_as_interpretation_notice": false,
+    "negative_search_treated_as_no_amendment_proof": false
+  },
+  "provenance": {
+    "worker_role": "Preventive Support Standards-Interpretation Currentness Verification Worker",
+    "verification_date_jst": "2026-10-03",
+    "method": "Fresh-read repository state + independent review of MHLW official R6/R8 reform pages and official ordinance source. Item-body residuals were not reinterpreted."
+  }
+}
