@@ -150,8 +150,18 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
             all(
                 evidence["directly_supports_child_item_body"]
                 and evidence["proves_currentness"] is False
+                and evidence["later_final_version_locator"]
                 for evidence in b008["child_item_body_evidence"]
             )
+        )
+        historical_children = [
+            evidence
+            for evidence in b008["child_item_body_evidence"]
+            if evidence["source_manifest_id"] == "work-control-source-4"
+        ]
+        self.assertTrue(historical_children)
+        self.assertTrue(
+            all(evidence["earlier_version_locator"] for evidence in historical_children)
         )
         self.assertEqual(
             b008["range_task_decision"],
