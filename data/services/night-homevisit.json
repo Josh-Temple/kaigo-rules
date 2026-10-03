@@ -11,7 +11,12 @@
   "id_namespaces": {},
   "scope_files": {
     "standards_interpretation": "data/services/night-homevisit/standards-interpretation-scope.json",
-    "standards_interpretation_staging": "data/services/night-homevisit/standards-interpretation-staging.json"
+    "standards_interpretation_staging": "data/services/night-homevisit/standards-interpretation-staging.json",
+    "care_insurance_act": "data/services/night-homevisit/shared-corpus-scope.json",
+    "standards_index": "data/services/night-homevisit/shared-corpus-scope.json",
+    "remuneration": "data/services/night-homevisit/shared-corpus-scope.json",
+    "delegated_remuneration_criteria": "data/services/night-homevisit/shared-corpus-scope.json",
+    "unit_price": "data/services/night-homevisit/shared-corpus-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
