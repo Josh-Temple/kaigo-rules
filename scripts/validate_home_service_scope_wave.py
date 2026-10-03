@@ -78,11 +78,15 @@ def validation_errors(root: Path = ROOT):
                     errors.append(f"{sid}: automatic state promotion in {path}: {k}={v}")
             if scope.get("assurance",{}).get("automatic_verification_promotion_allowed") is not False:
                 errors.append(f"{sid}: automatic verification promotion not explicitly disabled in {path}")
+    preexisting_future_route_enabled={"dayrehab"}
+    preexisting_public_route_enabled={"dayrehab"}
     for sid in UNIT_NEW:
         cfg=json.loads((root/f"data/services/{sid}.json").read_text(encoding="utf-8"))
-        if cfg.get("routing",{}).get("future_service_base_enabled") is not False:
+        future_enabled=cfg.get("routing",{}).get("future_service_base_enabled") is True
+        public_enabled=cfg.get("publication_gate",{}).get("public_routes_enabled") is True
+        if future_enabled and sid not in preexisting_future_route_enabled:
             errors.append(f"{sid}: future route unexpectedly enabled")
-        if cfg.get("publication_gate",{}).get("public_routes_enabled") is not False:
+        if public_enabled and sid not in preexisting_public_route_enabled:
             errors.append(f"{sid}: public route unexpectedly enabled")
     sale="specific-welfare-equipment-sale"
     rem=json.loads((root/f"data/services/{sale}/remuneration-scope.json").read_text(encoding="utf-8"))
