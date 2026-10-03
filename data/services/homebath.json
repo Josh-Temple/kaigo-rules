@@ -9,8 +9,12 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
-  "verification_layer_ids": [],
+  "scope_files": {
+    "rouki25": "data/services/homebath/rouki25-scope.json"
+  },
+  "verification_layer_ids": [
+    "rouki25-homebath"
+  ],
   "publication_gate": {
     "public_routes_enabled": false,
     "content_ingested": false,
@@ -19,12 +23,16 @@
   },
   "ingestion_layers": {
     "rouki25": {
-      "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
-      "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
+      "status": "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+      "principal_items": 13,
+      "note": "老企第25号の公式旧HTML『第四 訪問入浴介護に関する基準』13 principal itemsを独立source一致確認付きで全体通知DBへ公開。令和6年度新旧対照は別証拠として扱い、現行統合本文は生成しない。"
     },
     "work_control": {
       "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
       "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
     }
+  },
+  "ingestion_indexes": {
+    "rouki25": "data/services/homebath/rouki25-historical.generated.json"
   }
 }
