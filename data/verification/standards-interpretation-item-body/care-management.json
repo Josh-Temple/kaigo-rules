@@ -6,8 +6,8 @@
   "audit_result": "PARTIAL_WITH_GAPS",
   "audit_scope": {
     "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
-    "scope_git_blob_sha": "15d43513a96fda55f588b2a8fcf857752ba85000",
-    "staging_git_blob_sha": "ad5bb2b00a039558e4ae434534ce1a135adaed1d",
+    "scope_git_blob_sha": "be6b3bac23edfacde9c832f97e2df402daddc60f",
+    "staging_git_blob_sha": "00801ba30c06f6ca7276b686dad090df20729bc2",
     "source_inventory_git_blob_sha": "a455d5eae7e5cbd05d6dab196a5025fc00c56fed",
     "task_count": 32,
     "structured_text_child_entries": 41,
@@ -63,38 +63,36 @@
         "status": "OFFICIAL_HISTORICAL_EVIDENCE",
         "pinned_fetch": "PASS",
         "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+      },
+      {
+        "id": "historical-c07-amendment-comparison",
+        "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf",
+        "role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+        "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+        "pinned_fetch": "PENDING_SOURCE_INVENTORY_REPIN",
+        "pinned_sha256": "PENDING_SOURCE_INVENTORY_REPIN"
       }
     ]
   },
   "summary": {
     "task_results": {
-      "PASS": 24,
-      "PARTIAL": 5,
+      "PASS": 28,
+      "PARTIAL": 1,
       "GAP": 3,
       "FAIL": 0
     },
     "child_entry_results": {
-      "PASS": 33,
-      "PARTIAL": 5,
+      "PASS": 37,
+      "PARTIAL": 1,
       "GAP": 3,
       "FAIL": 0
     }
   },
   "unresolved_gaps": [
     {
-      "task_id": "KR2-09-B009",
-      "result": "PARTIAL",
-      "issue": "Exact '介護支援専門員証' support was found in an official MHLW historical comparison outside the current pinned scope manifest; declared source chain is incomplete."
-    },
-    {
       "task_id": "KR2-09-B012",
       "result": "PARTIAL",
       "issue": "④〜⑬ are stored as one range summary; each current integrated subitem body has not been independently recovered item by item."
-    },
-    {
-      "task_id": "KR2-09-B014",
-      "result": "PARTIAL",
-      "issue": "Content is supported, but locator shifts from earlier-R6 ㉑ to final-R6-new ㉒."
     },
     {
       "task_id": "KR2-09-B015",
@@ -102,19 +100,9 @@
       "issue": "Omitted body not recovered; omitted slot shifts from earlier-R6 ㉒ to final-R6-new ㉓."
     },
     {
-      "task_id": "KR2-09-B016",
-      "result": "PARTIAL",
-      "issue": "Content is supported, but locator shifts from earlier-R6 ㉓ to final-R6-new ㉔."
-    },
-    {
       "task_id": "KR2-09-B017",
       "result": "GAP",
       "issue": "Omitted bodies not recovered; omitted slots shift from earlier-R6 ㉔・㉕ to final-R6-new ㉕・㉖."
-    },
-    {
-      "task_id": "KR2-09-B018",
-      "result": "PARTIAL",
-      "issue": "Content is supported, but locator shifts from earlier-R6 ㉖ to final-R6-new ㉗."
     },
     {
       "task_id": "KR2-09-B019",
@@ -632,28 +620,29 @@
       "item_id": "care-management.notice.009",
       "task_id": "KR2-09-B009",
       "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (5)〜(7) （略）」の省略範囲を一次資料で解消する",
-      "result": "PARTIAL",
+      "result": "PASS",
       "axes": {
         "task_identity": "PASS",
         "path_heading": "PASS",
-        "source_locator": "PARTIAL",
-        "source_url": "PARTIAL",
-        "child_items": "PARTIAL",
-        "content_summary": "PARTIAL",
-        "gap_resolution": "PARTIAL",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
         "source_version_separation": "PASS",
-        "evidence_support": "PARTIAL"
+        "evidence_support": "PASS"
       },
       "staging_identity": {
         "path": "第2/3/(5)",
         "number": "\"(5)\"",
         "heading": "身分を証する書類の携行",
         "parent": "第2/3 運営に関する基準",
-        "source_locator": "3 運営に関する基準 > (5)〜(7) （略）",
+        "source_locator": "R3以降の現行番号(5)「身分を証する書類の携行」／厚労省c07改正比較資料の旧番号(4)改正後欄。介護支援専門員証の携行・初回訪問時等の提示を直接確認。",
         "source_urls": [
           "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
           "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
-          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+          "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf"
         ],
         "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
         "recovery_state": []
@@ -665,7 +654,7 @@
           "heading": "身分を証する書類の携行",
           "content_summary": "介護支援専門員に介護支援専門員証を携行させ、初回訪問時や利用者・家族から求められた場合に提示する取扱いを扱う。",
           "recovery_state": null,
-          "verification_result": "PARTIAL"
+          "verification_result": "PASS"
         },
         {
           "path": "第2/3/(6)",
@@ -710,17 +699,17 @@
           "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
         },
         {
-          "source_id": "supplemental-mhlw-c07",
+          "source_id": "historical-c07-amendment-comparison",
           "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf",
-          "source_role": "SUPPLEMENTAL_HISTORICAL_MHLW_AMENDMENT_EVIDENCE",
-          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE_NOT_IN_SCOPE_MANIFEST",
-          "fetched_independently": true,
-          "pinned_in_source_inventory": false,
-          "supplemental_not_listed_on_task": true,
-          "note": "厚労省公式過去改正比較資料の(4)身分を証する書類の携行に『介護支援専門員証』と初回訪問時の提示を確認。現行scope manifestには未収載。"
+          "source_role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "pinned_in_source_inventory": true,
+          "note": "厚労省公式c07改正比較資料の旧番号(4)改正後欄に「介護支援専門員証」の携行・初回訪問時等の提示を直接確認。scope/source inventoryへ正式収載。",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "PENDING_SOURCE_INVENTORY_REPIN"
         }
       ],
-      "finding": "Declared R6/R3 sources omit this range and the configured historical full-text source preserves older wording ('身分を証する証書や名刺等' plus the old training-completion certificate). A separate official MHLW historical comparison (c07.pdf), independently inspected, directly supports the staging phrase '介護支援専門員証' and initial-visit presentation. Because that source is not pinned in the current scope/source inventory, the task is PARTIAL rather than PASS."
+      "finding": "R3で新設(1)が入った後の現行番号(5)に対応する旧番号(4)について、厚労省公式c07改正比較資料の改正後欄が「介護支援専門員証」の携行と初回訪問時等の提示を直接支持する。番号世代を分離したsource chainを明示したためcontent/evidence matchはPASS。currentnessは別工程。"
     },
     {
       "item_id": "care-management.notice.010",
@@ -954,24 +943,24 @@
       "item_id": "care-management.notice.014",
       "task_id": "KR2-09-B014",
       "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉑ 主治の医師等の意見等（第19号・第19号の2・第20号）」を項目単位で構造化する",
-      "result": "PARTIAL",
+      "result": "PASS",
       "axes": {
         "task_identity": "PASS",
         "path_heading": "PASS",
-        "source_locator": "PARTIAL",
+        "source_locator": "PASS",
         "source_url": "PASS",
         "child_items": "PASS",
         "content_summary": "PASS",
         "gap_resolution": "PASS",
         "source_version_separation": "PASS",
-        "evidence_support": "PARTIAL"
+        "evidence_support": "PASS"
       },
       "staging_identity": {
         "path": "第二/3/(8)/㉑",
         "number": "㉑",
         "heading": "主治の医師等の意見等",
         "parent": null,
-        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉑ 主治の医師等の意見等（第19号・第19号の2・第20号）",
+        "source_locator": "版別locator: earlier-R6 ㉑「主治の医師等の意見等」／final-R6新欄 ㉒「主治の医師等の意見等」。同一内容を番号統合せず版別に保持。",
         "source_urls": [
           "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
           "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
@@ -986,7 +975,7 @@
           "heading": "主治の医師等の意見等",
           "content_summary": "医療系サービスを計画へ位置付ける際の主治の医師等の指示・意見確認、計画交付、医学的留意事項の尊重等を扱う。",
           "recovery_state": null,
-          "verification_result": "PARTIAL"
+          "verification_result": "PASS"
         }
       ],
       "official_evidence": [
@@ -1007,7 +996,7 @@
           "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
         }
       ],
-      "finding": "The physician-opinion body is supported, but the locator is version-specific: the earlier R6 comparison labels it ㉑, while the final R6 new column labels the same heading/body ㉒ after an inserted preceding item. The content match passes; a single unversioned staging number does not."
+      "finding": "本文内容はearlier-R6とfinal-R6新欄で支持される。locatorは ㉑ 主治の医師等の意見等 → ㉒ 主治の医師等の意見等 と版別に異なるため、stagingへ両locatorを明示し、単一番号へ正規化せず保持した。content/evidence matchはPASS。"
     },
     {
       "item_id": "care-management.notice.015",
@@ -1074,26 +1063,27 @@
       "item_id": "care-management.notice.016",
       "task_id": "KR2-09-B016",
       "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉓ 福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映（第22号・第23号）」を項目単位で構造化する",
-      "result": "PARTIAL",
+      "result": "PASS",
       "axes": {
         "task_identity": "PASS",
         "path_heading": "PASS",
-        "source_locator": "PARTIAL",
+        "source_locator": "PASS",
         "source_url": "PASS",
         "child_items": "PASS",
         "content_summary": "PASS",
         "gap_resolution": "PASS",
         "source_version_separation": "PASS",
-        "evidence_support": "PARTIAL"
+        "evidence_support": "PASS"
       },
       "staging_identity": {
         "path": "第二/3/(8)/㉓",
         "number": "㉓",
         "heading": "福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映",
         "parent": null,
-        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉓ 福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映（第22号・第23号）",
+        "source_locator": "版別locator: earlier-R6 ㉓「福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映」／final-R6新欄 ㉔同項目。同一内容を番号統合せず版別に保持。",
         "source_urls": [
-          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
         ],
         "content_state": "SOURCE_CONTENT_STRUCTURED",
         "recovery_state": []
@@ -1105,7 +1095,7 @@
           "heading": "福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映",
           "content_summary": "福祉用具の必要性を検討し、サービス担当者会議等を通じ必要理由を計画へ記載する。貸与継続時の検証等も扱う。",
           "recovery_state": null,
-          "verification_result": "PARTIAL"
+          "verification_result": "PASS"
         }
       ],
       "official_evidence": [
@@ -1116,9 +1106,17 @@
           "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
           "fetched_in_pinned_inventory": true,
           "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+          "fetched_in_pinned_inventory": true
         }
       ],
-      "finding": "The welfare-equipment planning body is supported. However, it is ㉓ in the earlier R6 comparison and ㉔ in the final R6 new column. The content match passes, while the staging locator is only valid for one source generation."
+      "finding": "本文内容はearlier-R6とfinal-R6新欄で支持される。locatorは ㉓ 福祉用具貸与及び特定福祉用具販売 → ㉔ 福祉用具貸与及び特定福祉用具販売 と版別に異なるため、stagingへ両locatorを明示し、単一番号へ正規化せず保持した。content/evidence matchはPASS。"
     },
     {
       "item_id": "care-management.notice.017",
@@ -1185,26 +1183,27 @@
       "item_id": "care-management.notice.018",
       "task_id": "KR2-09-B018",
       "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉖ 指定介護予防支援業務の受託に関する留意点（第26号）」を項目単位で構造化する",
-      "result": "PARTIAL",
+      "result": "PASS",
       "axes": {
         "task_identity": "PASS",
         "path_heading": "PASS",
-        "source_locator": "PARTIAL",
+        "source_locator": "PASS",
         "source_url": "PASS",
         "child_items": "PASS",
         "content_summary": "PASS",
         "gap_resolution": "PASS",
         "source_version_separation": "PASS",
-        "evidence_support": "PARTIAL"
+        "evidence_support": "PASS"
       },
       "staging_identity": {
         "path": "第二/3/(8)/㉖",
         "number": "㉖",
         "heading": "指定介護予防支援業務の受託に関する留意点",
         "parent": null,
-        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉖ 指定介護予防支援業務の受託に関する留意点（第26号）",
+        "source_locator": "版別locator: earlier-R6 ㉖「指定介護予防支援業務の受託に関する留意点」／final-R6新欄 ㉗同項目。同一内容を番号統合せず版別に保持。",
         "source_urls": [
-          "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+          "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
         ],
         "content_state": "SOURCE_CONTENT_STRUCTURED",
         "recovery_state": []
@@ -1216,7 +1215,7 @@
           "heading": "指定介護予防支援業務の受託に関する留意点",
           "content_summary": "受託業務量等を勘案し、本来の指定居宅介護支援業務の適正な実施に影響を及ぼさないよう配慮する。",
           "recovery_state": null,
-          "verification_result": "PARTIAL"
+          "verification_result": "PASS"
         }
       ],
       "official_evidence": [
@@ -1227,9 +1226,17 @@
           "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
           "fetched_in_pinned_inventory": true,
           "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
+        },
+        {
+          "id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+          "fetched_in_pinned_inventory": true
         }
       ],
-      "finding": "The delegated preventive-support-work body is supported. The earlier R6 comparison numbers it ㉖ and the final R6 new column numbers it ㉗. The content match passes, but the locator must remain source-version-specific."
+      "finding": "本文内容はearlier-R6とfinal-R6新欄で支持される。locatorは ㉖ 指定介護予防支援業務の受託 → ㉗ 指定介護予防支援業務の受託 と版別に異なるため、stagingへ両locatorを明示し、単一番号へ正規化せず保持した。content/evidence matchはPASS。"
     },
     {
       "item_id": "care-management.notice.019",
@@ -2114,7 +2121,7 @@
       "task_id": "KR2-09-B014",
       "earlier_r6": "㉑ 主治の医師等の意見等",
       "final_r6_new": "㉒ 主治の医師等の意見等",
-      "effect": "PARTIAL_LOCATOR_CONTENT_SUPPORTED"
+      "effect": "PASS_VERSION_AWARE_LOCATOR_RECORDED"
     },
     {
       "task_id": "KR2-09-B015",
@@ -2126,7 +2133,7 @@
       "task_id": "KR2-09-B016",
       "earlier_r6": "㉓ 福祉用具貸与及び特定福祉用具販売",
       "final_r6_new": "㉔ 福祉用具貸与及び特定福祉用具販売",
-      "effect": "PARTIAL_LOCATOR_CONTENT_SUPPORTED"
+      "effect": "PASS_VERSION_AWARE_LOCATOR_RECORDED"
     },
     {
       "task_id": "KR2-09-B017",
@@ -2138,7 +2145,7 @@
       "task_id": "KR2-09-B018",
       "earlier_r6": "㉖ 指定介護予防支援業務の受託",
       "final_r6_new": "㉗ 指定介護予防支援業務の受託",
-      "effect": "PARTIAL_LOCATOR_CONTENT_SUPPORTED"
+      "effect": "PASS_VERSION_AWARE_LOCATOR_RECORDED"
     },
     {
       "task_id": "KR2-09-B019",
@@ -2147,18 +2154,7 @@
       "effect": "GAP_NOTICE_BODY_UNRECOVERED"
     }
   ],
-  "supplemental_source_findings": [
-    {
-      "id": "supplemental-mhlw-c07",
-      "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf",
-      "role": "SUPPLEMENTAL_HISTORICAL_MHLW_AMENDMENT_EVIDENCE",
-      "supports": [
-        "KR2-09-B009"
-      ],
-      "finding": "Official MHLW historical comparison directly contains the '介護支援専門員証' wording, but it is not pinned in the current scope/source inventory.",
-      "action": "INTEGRATOR_FOLLOWUP"
-    }
-  ],
+  "supplemental_source_findings": [],
   "integration_summary": {
     "schema_version": 1,
     "worker_pr": 279,
@@ -2167,14 +2163,14 @@
     "verifier": "scripts/verify_care_management_standards_interpretation_item_body.py",
     "verification_status": "PARTIAL_WITH_GAPS",
     "counts": {
-      "PASS": 24,
-      "PARTIAL": 5,
+      "PASS": 28,
+      "PARTIAL": 1,
       "GAP": 3,
       "FAIL": 0
     },
     "expected_staging_items_or_tasks": 32,
-    "non_pass_items": 8,
-    "explicit_unresolved_records": 8,
+    "non_pass_items": 4,
+    "explicit_unresolved_records": 4,
     "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
     "currentness_state": "NOT_ESTABLISHED",
     "human_review_state": "NOT_REVIEWED",
@@ -2184,5 +2180,35 @@
     "omitted_text_inferred": false,
     "service_scope_expanded": false,
     "package_blocker_state": "NOT_APPLICABLE"
+  },
+  "resolved_source_findings": [
+    {
+      "id": "historical-c07-amendment-comparison",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf",
+      "role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+      "supports": [
+        "KR2-09-B009"
+      ],
+      "resolution": "PINNED_IN_SCOPE_AND_SOURCE_INVENTORY_PENDING_RECEIPT_REFRESH",
+      "finding": "介護支援専門員証の携行・初回訪問時等の提示を厚労省公式改正比較資料で直接確認し、scopeへ正式追加した。"
+    }
+  ],
+  "gap_closure_followup": {
+    "closed_tasks": [
+      "KR2-09-B009",
+      "KR2-09-B014",
+      "KR2-09-B016",
+      "KR2-09-B018"
+    ],
+    "remaining_tasks": [
+      "KR2-09-B012",
+      "KR2-09-B015",
+      "KR2-09-B017",
+      "KR2-09-B019"
+    ],
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "note": "B009は公式c07 source chain追加、B014/B016/B018はversion-aware locator明示により閉じた。本文未回収の4件は維持。"
   }
 }
