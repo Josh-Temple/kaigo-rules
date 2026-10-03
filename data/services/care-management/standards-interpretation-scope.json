@@ -30,31 +30,36 @@
       "id": "r6-final-comparison",
       "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
       "role": "FINAL_R6_AMENDMENT_COMPARISON",
-      "status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE"
+      "status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+      "required_for_source_inventory": true
     },
     {
       "id": "r6-earlier-comparison",
       "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
       "role": "EARLIER_R6_AMENDMENT_MATERIAL",
-      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE"
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
     },
     {
       "id": "work-control-source-3",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
       "role": "HISTORICAL_FULL_TEXT_REFERENCE",
-      "status": "OFFICIAL_HISTORICAL_EVIDENCE"
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true
     },
     {
       "id": "work-control-source-4",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999405",
       "role": "HISTORICAL_OFFICIAL_REFERENCE",
-      "status": "OFFICIAL_HISTORICAL_EVIDENCE"
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true
     },
     {
       "id": "work-control-source-5",
       "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
       "role": "HISTORICAL_AMENDMENT_EVIDENCE",
-      "status": "OFFICIAL_HISTORICAL_EVIDENCE"
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true
     }
   ],
   "source_assurance": {
@@ -62,5 +67,14 @@
     "integrated_current_text_established": false,
     "omitted_text_reconstruction_allowed": false,
     "publication_allowed": false
+  },
+  "independent_source_inventory": {
+    "check_level": "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
+    "service_anchor": "居宅介護支援",
+    "require_anchor_in_at_least_one_source": true,
+    "proves_item_body_match": false,
+    "proves_currentness": false,
+    "permits_publication": false,
+    "require_all_required_sources_fetchable": true
   }
 }

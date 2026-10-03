@@ -29,31 +29,36 @@
       "id": "r6-final-comparison",
       "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
       "role": "FINAL_R6_AMENDMENT_COMPARISON",
-      "status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE"
+      "status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
+      "required_for_source_inventory": true
     },
     {
       "id": "r6-earlier-comparison",
       "url": "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
       "role": "EARLIER_R6_AMENDMENT_MATERIAL",
-      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE"
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": true
     },
     {
       "id": "historical-official-pdf",
       "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
       "role": "HISTORICAL_FULLER_STRUCTURE_REFERENCE",
-      "status": "OFFICIAL_HISTORICAL_EVIDENCE"
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true
     },
     {
       "id": "historical-official-html",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
       "role": "HISTORICAL_FULL_TEXT_REFERENCE",
-      "status": "OFFICIAL_HISTORICAL_EVIDENCE"
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true
     },
     {
       "id": "older-amendment-reference",
       "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
       "role": "HISTORICAL_GAP_RESOLUTION_EVIDENCE",
-      "status": "OFFICIAL_HISTORICAL_EVIDENCE"
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true
     }
   ],
   "source_assurance": {
@@ -61,5 +66,14 @@
     "integrated_current_text_established": false,
     "omitted_text_reconstruction_allowed": false,
     "publication_allowed": false
+  },
+  "independent_source_inventory": {
+    "check_level": "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
+    "service_anchor": "定期巡回・随時対応型訪問介護看護",
+    "require_anchor_in_at_least_one_source": true,
+    "proves_item_body_match": false,
+    "proves_currentness": false,
+    "permits_publication": false,
+    "require_all_required_sources_fetchable": true
   }
 }
