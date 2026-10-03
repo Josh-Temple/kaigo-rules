@@ -154,8 +154,8 @@ def validate_offline() -> dict:
     if summary.get("child_entry_results") != child_counts:
         fail(f"child result summary mismatch: {child_counts}")
 
-    expected_task_counts = {"PASS": 28, "PARTIAL": 2, "GAP": 2, "FAIL": 0}
-    expected_child_counts = {"PASS": 37, "PARTIAL": 2, "GAP": 2, "FAIL": 0}
+    expected_task_counts = {"PASS": 24, "PARTIAL": 5, "GAP": 3, "FAIL": 0}
+    expected_child_counts = {"PASS": 33, "PARTIAL": 5, "GAP": 3, "FAIL": 0}
     if task_counts != expected_task_counts:
         fail(f"unexpected task outcomes: {task_counts}")
     if child_counts != expected_child_counts:
@@ -191,12 +191,47 @@ def validate_offline() -> dict:
 
     unresolved = {row.get("task_id"): row.get("result") for row in audit.get("unresolved_gaps", [])}
     if unresolved != {
+        "KR2-09-B009": "PARTIAL",
         "KR2-09-B012": "PARTIAL",
+        "KR2-09-B014": "PARTIAL",
         "KR2-09-B015": "GAP",
+        "KR2-09-B016": "PARTIAL",
         "KR2-09-B017": "GAP",
-        "KR2-09-B019": "PARTIAL",
+        "KR2-09-B018": "PARTIAL",
+        "KR2-09-B019": "GAP",
     }:
         fail(f"unresolved gap set changed: {unresolved}")
+
+    locator_differences = audit.get("source_version_locator_differences", [])
+    if [row.get("task_id") for row in locator_differences] != [
+        "KR2-09-B014",
+        "KR2-09-B015",
+        "KR2-09-B016",
+        "KR2-09-B017",
+        "KR2-09-B018",
+        "KR2-09-B019",
+    ]:
+        fail("R6 source-version locator differences are missing or reordered")
+    if any(
+        not row.get("earlier_r6") or not row.get("final_r6_new")
+        for row in locator_differences
+    ):
+        fail("R6 source-version locator evidence is incomplete")
+
+    supplemental = audit.get("supplemental_source_findings", [])
+    if len(supplemental) != 1 or supplemental[0].get("id") != "supplemental-mhlw-c07":
+        fail("B009 supplemental official evidence is not recorded")
+    if supplemental[0].get("supports") != ["KR2-09-B009"]:
+        fail("B009 supplemental evidence scope changed")
+
+    b009 = by_task["KR2-09-B009"]
+    c07 = [
+        row
+        for row in b009.get("official_evidence", [])
+        if row.get("source_id") == "supplemental-mhlw-c07"
+    ]
+    if len(c07) != 1 or c07[0].get("pinned_in_source_inventory") is not False:
+        fail("B009 supplemental source must remain explicitly unpinned")
 
     config = load(ROOT / "data/services/care-management.json")
     layer = config["ingestion_layers"]["standards_interpretation"]
