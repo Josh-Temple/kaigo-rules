@@ -1065,10 +1065,9 @@
       "note": "KR2-10-E006はNOTICE判定で解除しない。現在のRepository状態を使ったPACKAGE precheckを別工程で再実行する。"
     }
   ],
-  "input_git_blob_shas_at_audit": {
-    "data/services/preventive-support.json": "f107faa8c632abef34cc8be499b7c48bd9fd1329",
-    "data/services/preventive-support/standards-interpretation-scope.json": "43685a2c4cc822d73ecc64e0b619b3b5f4f46cd4",
-    "data/services/preventive-support/standards-interpretation-staging.json": "c83cd6b5918fdebe11fdf4fb61335dcb36ddc614",
-    "data/verification/standards-interpretation-source-inventory/preventive-support.json": "6c219849ae62894c8ea0363646228487fea973b0"
+  "input_binding": {
+    "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
+    "staging_binding": "Each audit row pins task_id, staging_id, path, heading, source_locator, and stored source URLs; the service-specific verifier compares them against the checked-out staging file.",
+    "source_inventory_binding": "The audit records the pinned source-inventory result/check-level and revalidates source-role boundaries without relying on connector-reported content SHAs."
   }
 }
