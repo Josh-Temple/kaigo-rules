@@ -1,0 +1,526 @@
+{
+  "format_version": 1,
+  "service_id": "community-dayservice",
+  "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION",
+  "audit_result": "PASS_WITH_ITEM_LEVEL_EVIDENCE",
+  "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
+  "verified_date": "2026-10-03",
+  "scope": {
+    "expected_items": 21,
+    "observed_items": 21,
+    "verifies": [
+      "path_number_heading_match",
+      "source_locator_support",
+      "content_summary_support",
+      "gap_resolution_provenance",
+      "source_role_separation"
+    ],
+    "does_not_verify": [
+      "currentness",
+      "integrated_current_notice_text",
+      "human_review",
+      "publication_readiness"
+    ],
+    "omissions_policy": "改正資料の「略」は推測補完せず、別世代資料は別source roleとして扱う。"
+  },
+  "status_definitions": {
+    "PASS": "staging itemのpath/number/headingとcontent_summaryが、少なくとも1つの厚生労働省一次資料または一次資料の組合せで支持され、略記を推測補完していない。currentnessは含意しない。",
+    "PARTIAL": "主要な構造またはsummaryは支持されるが、item-bodyの一部に一次資料上の未解決範囲が残る。",
+    "GAP": "必要なitem-body evidenceを一次資料から固定できない。",
+    "FAIL": "staging itemの構造またはsummaryが一次資料と矛盾する。"
+  },
+  "counts": {
+    "PASS": 21,
+    "PARTIAL": 0,
+    "GAP": 0,
+    "FAIL": 0
+  },
+  "sources": [
+    {
+      "id": "mhlw-r6-final",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "authority": "MHLW_PRIMARY",
+      "role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "item_body_role": "令和6年度最終新旧対照表で明示された見出し・改正本文の直接evidence。略記部分の本文復元には使わない。"
+    },
+    {
+      "id": "mhlw-r6-earlier",
+      "url": "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+      "authority": "MHLW_PRIMARY",
+      "role": "EARLIER_R6_AMENDMENT_MATERIAL",
+      "item_body_role": "令和6年度改正過程の一次資料。最終版との整合確認用で、最終版より優先しない。"
+    },
+    {
+      "id": "mhlw-r3",
+      "url": "https://www.mhlw.go.jp/content/12301000/000750727.pdf",
+      "authority": "MHLW_PRIMARY",
+      "role": "PRIOR_R3_AMENDMENT_GAP_RESOLUTION",
+      "item_body_role": "令和6年度資料で略記された見出し・本文断片を、別世代の一次資料として確認する。現行本文への自動合成はしない。"
+    },
+    {
+      "id": "mhlw-h30",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf",
+      "authority": "MHLW_PRIMARY",
+      "role": "PRIOR_H30_AMENDMENT_GAP_RESOLUTION",
+      "item_body_role": "共生型地域密着型通所介護、設備基準、療養通所介護設備等の旧世代本文を別sourceとして確認する。"
+    },
+    {
+      "id": "mhlw-source-specific-12404000",
+      "url": "https://www.mhlw.go.jp/content/12404000/001623024.pdf",
+      "authority": "MHLW_PRIMARY",
+      "role": "SOURCE_SPECIFIC_PRIMARY_CROSSCHECK",
+      "item_body_role": "地域密着型通所介護の人員・設備の見出しと本文をMHLW一次資料として交差確認する。"
+    },
+    {
+      "id": "mhlw-current-standard",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+      "authority": "MHLW_PRIMARY",
+      "role": "CURRENT_STANDARD_CORROBORATION",
+      "item_body_role": "基準条文の内容を確認する。解釈通知のcurrentnessや略記本文を代替するものではない。"
+    },
+    {
+      "id": "mhlw-historical-full-notice",
+      "url": "https://www.mhlw.go.jp/content/12300000/001225905.pdf",
+      "authority": "MHLW_PRIMARY",
+      "role": "HISTORICAL_FULL_NOTICE_TEXT",
+      "item_body_role": "療養通所介護の旧全文見出し・本文を確認する。source inventoryではPDF本文抽出が疎であるため、検索可能なMHLW索引結果と他の一次資料で相互確認した。",
+      "extraction_note": "source-inventory receiptではfetch PASSだがpdftotext抽出は503文字。単独のcurrentness evidenceにはしない。"
+    },
+    {
+      "id": "mhlw-auxiliary-000763179",
+      "url": "https://www.mhlw.go.jp/content/000763179.pdf",
+      "authority": "MHLW_PRIMARY",
+      "role": "ADDITIONAL_MHLW_CROSSCHECK",
+      "item_body_role": "Work Control由来の追加一次資料。今回のPASS判定の唯一根拠にはしていない。"
+    },
+    {
+      "id": "yokohama-local-crosscheck",
+      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/mittyaku-dei.files/0182_20250225.pdf",
+      "authority": "OFFICIAL_LOCAL_SUPPLEMENTAL",
+      "role": "SUPPLEMENTAL_CROSSCHECK",
+      "availability_state": "STALE_URL_404_2026-10-03",
+      "required_for_item_body_verification": false,
+      "item_body_role": "過去Work Controlの補助クロスチェック。現在404だが履歴から削除しない。MHLW一次資料だけで対象itemの支持を固定できるため、今回のitem-body PASSには必須ではない。"
+    }
+  ],
+  "items": [
+    {
+      "id": "community-dayservice.notice.001",
+      "status": "PASS",
+      "path": "第三/二の二",
+      "number": "二の二",
+      "heading": "地域密着型通所",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "第三 地域密着型サービス／二の二 地域密着型通所",
+          "support": "最終新旧対照表でサービス節の見出しを直接確認し、同節内に共生型地域密着型通所介護と指定療養通所介護の下位区分が存在する。"
+        },
+        {
+          "source_id": "mhlw-r6-earlier",
+          "locator": "第三 地域密着型サービス／二の二 地域密着型通所",
+          "support": "令和6年度の前段資料でも同じサービス境界を確認。"
+        }
+      ],
+      "gap_resolution": "なし。サービス境界を越えて他サービス本文を取り込んでいない。"
+    },
+    {
+      "id": "community-dayservice.notice.002",
+      "status": "PASS",
+      "path": "第三/二の二/1/(1)",
+      "number": "(1)",
+      "heading": "従業者の員数（基準第20条）",
+      "evidence": [
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／1 人員に関する基準／(1) 従業者の員数（基準第20条）",
+          "support": "見出しを直接確認し、従業者配置に関する本文断片を確認。"
+        },
+        {
+          "source_id": "mhlw-current-standard",
+          "locator": "第20条",
+          "support": "現行基準の人員要件を条文として交差確認。"
+        }
+      ],
+      "gap_resolution": "横浜市補助資料は現在404だが、(1)のheadingとsummaryはMHLW一次資料だけで支持できるため判定に不要。過去に補助資料を使った履歴は保持する。"
+    },
+    {
+      "id": "community-dayservice.notice.003",
+      "status": "PASS",
+      "path": "第三/二の二/1/(4)",
+      "number": "(4)",
+      "heading": "管理者（基準第21条）",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／1／(4) 管理者（基準第21条）",
+          "support": "常勤・専従原則、兼務時の管理上の支障判断、サービス場面の事象把握・一元的管理等を直接確認。"
+        }
+      ],
+      "gap_resolution": "なし。"
+    },
+    {
+      "id": "community-dayservice.notice.004",
+      "status": "PASS",
+      "path": "第三/二の二/2",
+      "number": "2",
+      "heading": "設備に関する基準（基準第22条）",
+      "evidence": [
+        {
+          "source_id": "mhlw-h30",
+          "locator": "二の二／2 設備に関する基準（基準第22条）",
+          "support": "見出しと食堂・機能訓練室等の設備本文を直接確認。"
+        },
+        {
+          "source_id": "mhlw-current-standard",
+          "locator": "第22条",
+          "support": "設備・備品の基準条文を交差確認。"
+        }
+      ],
+      "gap_resolution": "令和6年度資料の略記本文は復元していない。summaryは別世代のMHLW通知本文と基準条文により支持。"
+    },
+    {
+      "id": "community-dayservice.notice.005",
+      "status": "PASS",
+      "path": "第三/二の二/3/(1)",
+      "number": "(1)",
+      "heading": "利用料等の受領",
+      "evidence": [
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／3 運営に関する基準／(1) 利用料等の受領",
+          "support": "見出しと①の基準第24条第1項・第2項・第5項参照を直接確認し、②が略記であることも確認。"
+        },
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／3 運営に関する基準",
+          "support": "令和6年度資料で同位置が略記されることを確認。"
+        }
+      ],
+      "gap_resolution": "②の本文は補完せず、略記であること自体をevidenceとして保持。"
+    },
+    {
+      "id": "community-dayservice.notice.006",
+      "status": "PASS",
+      "path": "第三/二の二/3/(2)",
+      "number": "(2)",
+      "heading": "指定地域密着型通所介護の基本取扱方針及び具体的取扱方針",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／3／(2)",
+          "support": "身体的拘束等の原則禁止、実施時記録、切迫性・非代替性・一時性の慎重な確認を含む改正本文を直接確認。"
+        }
+      ],
+      "gap_resolution": "なし。"
+    },
+    {
+      "id": "community-dayservice.notice.007",
+      "status": "PASS",
+      "path": "第三/二の二/3/(3)",
+      "number": "(3)",
+      "heading": "地域密着型通所介護計画の作成",
+      "evidence": [
+        {
+          "source_id": "mhlw-current-standard",
+          "locator": "第27条 地域密着型通所介護計画の作成",
+          "support": "心身状況・希望・環境、目標と具体的サービス、居宅サービス計画との整合、説明・同意・交付を直接確認。"
+        },
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／3 運営に関する基準の(2)〜(4)略記範囲",
+          "support": "通知上の位置関係は改正資料で確認するが、略記本文自体は復元しない。"
+        }
+      ],
+      "gap_resolution": "通知の略記本文を現行本文として合成していない。summaryの実体は基準第27条で支持し、通知側は構造evidenceに限定。"
+    },
+    {
+      "id": "community-dayservice.notice.008",
+      "status": "PASS",
+      "path": "第三/二の二/3/(4)",
+      "number": "(4)",
+      "heading": "管理者の責務",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／3／(4) 管理者の責務",
+          "support": "事象の適時把握、一元的管理、必要な指揮命令を直接確認。"
+        }
+      ],
+      "gap_resolution": "なし。"
+    },
+    {
+      "id": "community-dayservice.notice.009",
+      "status": "PASS",
+      "path": "第三/二の二/3/(5)",
+      "number": "(5)",
+      "heading": "運営規程",
+      "evidence": [
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／3／(5) 運営規程",
+          "support": "基準第29条に対応する見出し・説明を直接確認。"
+        },
+        {
+          "source_id": "mhlw-h30",
+          "locator": "二の二／3 運営に関する基準",
+          "support": "旧世代の通知構造を別sourceとして交差確認。"
+        }
+      ],
+      "gap_resolution": "令和6年度の略記はR3/H30の別世代evidenceとして保持し、現行統合本文にはしない。"
+    },
+    {
+      "id": "community-dayservice.notice.010",
+      "status": "PASS",
+      "path": "第三/二の二/3/(7)",
+      "number": "(7)",
+      "heading": "業務継続計画の策定等",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／3／(7) 業務継続計画の策定等",
+          "support": "感染症・自然災害、ガイドライン参照、地域実態、一体的策定等の説明を直接確認。"
+        }
+      ],
+      "gap_resolution": "なし。"
+    },
+    {
+      "id": "community-dayservice.notice.011",
+      "status": "PASS",
+      "path": "第三/二の二/3/(8)",
+      "number": "(8)",
+      "heading": "非常災害対策",
+      "evidence": [
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／3／(8) 非常災害対策",
+          "support": "具体的計画、通報・連携体制、避難・救出訓練等を直接確認。"
+        },
+        {
+          "source_id": "mhlw-auxiliary-000763179",
+          "locator": "Work Control参照範囲",
+          "support": "周辺の省略項目確認に用いられたMHLW追加資料だが、本itemのPASSの唯一根拠にはしていない。"
+        }
+      ],
+      "gap_resolution": "周辺(9)〜(13)の略記構造を本item本文へ混入していない。"
+    },
+    {
+      "id": "community-dayservice.notice.012",
+      "status": "PASS",
+      "path": "第三/二の二/3/(14)",
+      "number": "(14)",
+      "heading": "準用",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／3／(14) 準用",
+          "support": "準用条項と、令和6年度改正のウェブサイト掲載に関する取扱いを直接確認。"
+        }
+      ],
+      "gap_resolution": "R3の旧見出し「準用等」と令和6年度最終資料の「準用」を世代別に扱い、stagingの見出しは最終資料と一致。"
+    },
+    {
+      "id": "community-dayservice.notice.013",
+      "status": "PASS",
+      "path": "第三/二の二/4/(1)",
+      "number": "(1)",
+      "heading": "従業者の員数及び管理者（基準第37条の2第1号、第37条の3）",
+      "evidence": [
+        {
+          "source_id": "mhlw-h30",
+          "locator": "二の二／4 共生型地域密着型通所介護に関する基準／(1)",
+          "support": "従業者数の考え方と管理者を含む見出し・本文を直接確認。"
+        },
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／4",
+          "support": "後世代では(1)〜(3)が略記されることを確認。"
+        }
+      ],
+      "gap_resolution": "H30本文を令和6年度現行本文として合成せず、historical gap-resolution sourceとしてのみ使用。"
+    },
+    {
+      "id": "community-dayservice.notice.014",
+      "status": "PASS",
+      "path": "第三/二の二/4/(4)",
+      "number": "(4)",
+      "heading": "運営等に関する基準（基準第37条の3）",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／4／(4) 運営等に関する基準（基準第37条の3）",
+          "support": "準用規定と、介護給付対象・障害給付対象を合算する利用定員の考え方を直接確認。"
+        }
+      ],
+      "gap_resolution": "なし。"
+    },
+    {
+      "id": "community-dayservice.notice.015",
+      "status": "PASS",
+      "path": "第三/二の二/5/(1)",
+      "number": "(1)",
+      "heading": "指定療養通所介護の基本方針",
+      "evidence": [
+        {
+          "source_id": "mhlw-historical-full-notice",
+          "locator": "5 指定療養通所介護の事業／(1) 指定療養通所介護の基本方針",
+          "support": "医療・介護双方の必要性が高い対象者と、主治医・訪問看護事業者との密接な連携を示す旧全文を確認。"
+        },
+        {
+          "source_id": "mhlw-current-standard",
+          "locator": "第39条",
+          "support": "現行基準で基本方針と主治医・訪問看護事業者との連携を交差確認。"
+        }
+      ],
+      "gap_resolution": "改正比較で略記される本文は、historical noticeとcurrent standardを別roleで保持。現行通知本文への合成はしない。"
+    },
+    {
+      "id": "community-dayservice.notice.016",
+      "status": "PASS",
+      "path": "第三/二の二/5/(2)/①",
+      "number": "①",
+      "heading": "従業者の員数（基準第40条）",
+      "evidence": [
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／5／(2) 人員に関する基準／① 従業者の員数（基準第40条）",
+          "support": "利用時間数合計を1.5で除す考え方を含む本文を直接確認。"
+        },
+        {
+          "source_id": "mhlw-current-standard",
+          "locator": "第40条",
+          "support": "利用者1.5人に対する従業者配置と常勤専従看護師1人以上を確認。"
+        }
+      ],
+      "gap_resolution": "なし。"
+    },
+    {
+      "id": "community-dayservice.notice.017",
+      "status": "PASS",
+      "path": "第三/二の二/5/(2)/②",
+      "number": "②",
+      "heading": "管理者（基準第40条の2）",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／5／(2)／② 管理者（基準第40条の2）",
+          "support": "常勤・専従原則と兼務判断の具体的考え方を直接確認。"
+        }
+      ],
+      "gap_resolution": "なし。"
+    },
+    {
+      "id": "community-dayservice.notice.018",
+      "status": "PASS",
+      "path": "第三/二の二/5/(3)",
+      "number": "(3)",
+      "heading": "設備に関する基準",
+      "evidence": [
+        {
+          "source_id": "mhlw-h30",
+          "locator": "二の二／5 指定療養通所介護の事業／(3) 設備に関する基準",
+          "support": "①利用定員等、②設備及び備品等を直接確認し、新旧欄で利用定員の数値が18人と9人に変化していることを確認。"
+        },
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／5の略記範囲",
+          "support": "令和6年度資料側では当該旧本文を推測補完しない。"
+        }
+      ],
+      "gap_resolution": "staging summaryが数値を現行値として固定しないのは、一次資料上の世代差と整合する。"
+    },
+    {
+      "id": "community-dayservice.notice.019",
+      "status": "PASS",
+      "path": "第三/二の二/5/(4)/①",
+      "number": "①",
+      "heading": "内容及び手続の説明及び同意",
+      "evidence": [
+        {
+          "source_id": "mhlw-historical-full-notice",
+          "locator": "指定療養通所介護／(4) 運営に関する基準／① 内容及び手続の説明及び同意",
+          "support": "運営規程、勤務体制、緊急時対応医療機関との連絡、苦情処理等の重要事項を文書で説明し同意を得る趣旨を確認。"
+        },
+        {
+          "source_id": "mhlw-current-standard",
+          "locator": "第40条の5",
+          "support": "現行基準で説明・文書交付・同意の義務と重要事項の範囲を交差確認。"
+        }
+      ],
+      "gap_resolution": "historical noticeとcurrent standardを別source roleで扱う。"
+    },
+    {
+      "id": "community-dayservice.notice.020",
+      "status": "PASS",
+      "path": "第三/二の二/5/(4)/③",
+      "number": "③",
+      "heading": "指定療養通所介護の基本取扱方針及び具体的取扱方針",
+      "evidence": [
+        {
+          "source_id": "mhlw-r6-final",
+          "locator": "二の二／5／(4)／③",
+          "support": "身体的拘束等の原則禁止、緊急やむを得ない場合の記録、切迫性・非代替性・一時性の確認を直接確認。"
+        },
+        {
+          "source_id": "mhlw-current-standard",
+          "locator": "第40条の8",
+          "support": "指定療養通所介護の具体的取扱方針を基準条文として交差確認。"
+        }
+      ],
+      "gap_resolution": "なし。"
+    },
+    {
+      "id": "community-dayservice.notice.021",
+      "status": "PASS",
+      "path": "第三/二の二/5/(4)/④",
+      "number": "④",
+      "heading": "療養通所介護計画の作成",
+      "evidence": [
+        {
+          "source_id": "mhlw-r3",
+          "locator": "二の二／5／(4)／④ 療養通所介護計画の作成",
+          "support": "見出しと改正時点の通知断片を直接確認。"
+        },
+        {
+          "source_id": "mhlw-historical-full-notice",
+          "locator": "指定療養通所介護／(4)／④ 療養通所介護計画の作成",
+          "support": "管理者を含む看護師による作成、訪問看護計画との整合等の旧全文を確認。"
+        },
+        {
+          "source_id": "mhlw-current-standard",
+          "locator": "第40条の9",
+          "support": "居宅サービス計画・訪問看護計画との整合、説明・同意・交付を交差確認。"
+        }
+      ],
+      "gap_resolution": "旧全文、R3改正断片、現行基準をsource role別に保持し、単一の現行統合通知本文にはしていない。"
+    }
+  ],
+  "stale_sources": [
+    {
+      "source_id": "yokohama-local-crosscheck",
+      "availability_state": "STALE_URL_404_2026-10-03",
+      "effect_on_verification": "NON_BLOCKING",
+      "reason": "当該補助sourceを必要としたWork Control履歴は保持するが、今回の21項目はMHLW一次資料のみでitem-body supportを固定できた。"
+    }
+  ],
+  "unresolved_gaps": [],
+  "integrator_followup": [
+    "このauditをservice configのitem_body_verificationへ反映する場合は、currentness・human review・publication gateを同時に昇格させないこと。",
+    "共通validator/package.jsonへ組み込む変更は並列競合を避けるため本branchでは行わない。service-specific validator/testを先に取り込むこと。",
+    "横浜市補助URLは404履歴を保持し、削除やMHLW canonical sourceへの昇格を行わないこと。",
+    "将来current integrated notice textを作る場合、本auditのhistorical source fragmentsを自動連結せず、別途currentness/amendment-history検証を実施すること。"
+  ],
+  "safety": {
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "publication_permitted": false,
+    "public_route_enabled": false,
+    "omitted_text_reconstructed": false,
+    "integrated_current_text_claimed": false
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/services/community-dayservice/standards-interpretation-scope.json": "d8f80527e839920b29ad158721d5d170b0bc1129",
+    "data/services/community-dayservice/standards-interpretation-staging.json": "edcd22d08d463fbcbaaad8f5fdd316f8c0c0736c",
+    "data/verification/standards-interpretation-source-inventory/community-dayservice.json": "b98b977b0a044ef4f315d762dc74bdf2f9b99e83"
+  }
+}
