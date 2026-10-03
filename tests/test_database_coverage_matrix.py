@@ -32,11 +32,11 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
             [row["service_id"] for row in manifest["services"]],
         )
 
-    def test_shared_corpus_does_not_imply_service_scope(self):
+    def test_shared_corpus_and_service_scope_are_separate_dimensions(self):
         cell = self.cell("community-dayservice", "care_insurance_act")
         self.assertEqual(cell["corpus_availability"]["state"], "AVAILABLE")
         self.assertEqual(cell["corpus_availability"]["kind"], "SHARED")
-        self.assertEqual(cell["service_scope"]["state"], "SCOPE_NOT_DEFINED")
+        self.assertEqual(cell["service_scope"]["state"], "SCOPE_DEFINED")
 
     def test_item_body_pass_does_not_promote_currentness(self):
         cell = self.cell("community-dayservice", "standards_interpretation_notice")
