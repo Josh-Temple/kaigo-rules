@@ -369,7 +369,7 @@
     {
       "id": "IR-21",
       "coverage": "scoped_counts",
-      "title": "global interpretation notice DB exposes three bounded published services while preserving unpublished states",
+      "title": "global interpretation notice DB exposes eight bounded published services while preserving unpublished states",
       "path": "/notices",
       "expect_status": 200,
       "contains_text": [
