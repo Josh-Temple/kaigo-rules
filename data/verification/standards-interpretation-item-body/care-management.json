@@ -8,7 +8,7 @@
     "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
     "scope_git_blob_sha": "15d43513a96fda55f588b2a8fcf857752ba85000",
     "staging_git_blob_sha": "ad5bb2b00a039558e4ae434534ce1a135adaed1d",
-    "source_inventory_git_blob_sha": "30731136fb4b2ea29b30171b9079db1deb33a289",
+    "source_inventory_git_blob_sha": "a455d5eae7e5cbd05d6dab196a5025fc00c56fed",
     "task_count": 32,
     "structured_text_child_entries": 41,
     "note": "structured_text_child_entries counts YAML-like list entries in structured_text_raw. Range entries such as ④〜⑬ and ㉔・㉕ are one stored child entry and are not expanded into inferred subitems."
