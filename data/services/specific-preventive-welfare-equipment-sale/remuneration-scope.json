@@ -1,0 +1,53 @@
+{
+  "format_version": 1,
+  "scope_id": "specific-preventive-welfare-equipment-sale.remuneration-and-unit-price",
+  "scope_kind": "SERVICE_SOURCE_FAMILY_SCOPE",
+  "service_id": "specific-preventive-welfare-equipment-sale",
+  "service_name": "特定介護予防福祉用具販売",
+  "status": "SCOPE_DEFINED_WITH_EXPLICIT_NOT_APPLICABLE_LANES",
+  "remuneration_notification": {
+    "state": "NOT_APPLICABLE",
+    "source_family": "指定介護予防サービス介護給付費単位数表",
+    "notice_number": "平成十八年厚生労働省告示第百二十七号",
+    "reason": "特定介護予防福祉用具販売は介護保険法第56条の介護予防福祉用具購入費の対象であり、同告示の介護予防サービス費1〜9の区分として接続しない。",
+    "benefit_basis_node_id": "careact.article.56",
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_state": "NOT_ESTABLISHED_FOR_SERVICE"
+  },
+  "delegated_remuneration_criteria": {
+    "state": "NOT_APPLICABLE_TO_NOTICE127_CHAIN",
+    "reason": "報酬告示127号のサービス費laneを持たないため、その委任基準chainへ自動接続しない。",
+    "verification_status": "NOT_SERVICE_VERIFIED"
+  },
+  "unit_price_regional_classification": {
+    "state": "NOT_APPLICABLE",
+    "notice_number": "平成二十七年厚生労働省告示第九十三号",
+    "reason": "購入費給付であり、指定介護予防サービス介護給付費の一単位単価として接続しない。",
+    "verification_status": "NOT_SERVICE_VERIFIED"
+  },
+  "related_outside_lane_sources": [
+    {
+      "notice_number": "平成十一年厚生省告示第九十四号",
+      "role": "厚生労働大臣が定める特定福祉用具販売に係る特定福祉用具の種目等",
+      "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999421&dataType=0&pageNo=1",
+      "relation_state": "REFERENCE_ONLY_OUTSIDE_THIS_REMUNERATION_LANE"
+    }
+  ],
+  "source_text_duplicated": false,
+  "states": {
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED_FOR_SERVICE",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED"
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "official_primary_sources": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82999421&dataType=0&pageNo=1"
+    ]
+  },
+  "automatic_verification_promotion_allowed": false
+}

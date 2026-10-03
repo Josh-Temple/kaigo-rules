@@ -25,7 +25,13 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "care_insurance_act": "data/services/preventive-shortstay-medical/care-insurance-act-scope.json",
+    "standards_index": "data/services/preventive-shortstay-medical/standards-scope.json",
+    "remuneration": "data/services/preventive-shortstay-medical/remuneration-scope.json",
+    "delegated_remuneration_criteria": "data/services/preventive-shortstay-medical/remuneration-scope.json",
+    "unit_price_regional_classification": "data/services/preventive-shortstay-medical/remuneration-scope.json"
+  },
   "verification_layer_ids": [],
   "publication_gate": {
     "public_routes_enabled": false,

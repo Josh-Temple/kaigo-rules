@@ -1,0 +1,93 @@
+{
+  "format_version": 1,
+  "scope_id": "preventive-shortstay-life.preventive-services-standards",
+  "scope_kind": "SERVICE_REFERENCE_SCOPE",
+  "service_id": "preventive-shortstay-life",
+  "service_name": "介護予防短期入所生活介護",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "source_corpus": {
+    "corpus_id": "preventive-services-standards",
+    "law_id": "418M60000100035",
+    "law_num": "平成十八年厚生労働省令第三十五号",
+    "title": "指定介護予防サービス等の事業の人員、設備及び運営並びに指定介護予防サービス等に係る介護予防のための効果的な支援の方法に関する基準",
+    "node_prefix": "standards35",
+    "nodes": "data/shared/standards/preventive-services-standards/nodes.json",
+    "relations": "data/shared/standards/preventive-services-standards/relations.json",
+    "source_page": "https://laws.e-gov.go.jp/law/418M60000100035",
+    "source_text_duplicated": false
+  },
+  "common_scope": {
+    "relation": "direct_applicability_candidate",
+    "source_node_ids": [
+      "standards35.article.1",
+      "standards35.article.2",
+      "standards35.article.3",
+      "standards35.article.293"
+    ],
+    "verification_status": "NOT_SERVICE_VERIFIED"
+  },
+  "primary_scope": {
+    "relation": "direct_applicability_candidate",
+    "from_node_id": "standards35.article.128",
+    "through_node_id": "standards35.article.150",
+    "include_inserted_articles": true,
+    "verification_status": "NOT_SERVICE_VERIFIED"
+  },
+  "service_variants": [
+    {
+      "applicability_kind": "UNIT_TYPE_VARIANT",
+      "relation": "separate_variant_scope",
+      "from_node_id": "standards35.article.151",
+      "through_node_id": "standards35.article.164",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "applicability_kind": "COEXISTENCE_VARIANT",
+      "relation": "separate_variant_scope",
+      "from_node_id": "standards35.article.165",
+      "through_node_id": "standards35.article.178",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "applicability_kind": "BASELINE_VARIANT",
+      "relation": "separate_variant_scope",
+      "from_node_id": "standards35.article.179",
+      "through_node_id": "standards35.article.185",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    }
+  ],
+  "incorporation_wrappers": [
+    {
+      "node_id": "standards35.article.142",
+      "relation": "incorporation_or_read_as_wrapper",
+      "target_resolution_state": "NOT_EXPANDED_FAIL_CLOSED",
+      "substitution_resolution_state": "NOT_EXPANDED_FAIL_CLOSED",
+      "verification_status": "NOT_SERVICE_VERIFIED",
+      "note": "参照先本文・読替えは共有コーパス内で解決可能性を保持するが、このworkerでは推測展開しない。"
+    },
+    {
+      "node_id": "standards35.article.159",
+      "relation": "incorporation_or_read_as_wrapper",
+      "target_resolution_state": "NOT_EXPANDED_FAIL_CLOSED",
+      "substitution_resolution_state": "NOT_EXPANDED_FAIL_CLOSED",
+      "verification_status": "NOT_SERVICE_VERIFIED",
+      "note": "参照先本文・読替えは共有コーパス内で解決可能性を保持するが、このworkerでは推測展開しない。"
+    }
+  ],
+  "excluded_ranges": [],
+  "states": {
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED_FOR_SERVICE",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED"
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "official_primary_sources": [
+      "https://laws.e-gov.go.jp/law/418M60000100035",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7859&dataType=0&pageNo=1"
+    ]
+  },
+  "automatic_verification_promotion_allowed": false
+}
