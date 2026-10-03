@@ -60,6 +60,14 @@
       "role": "HISTORICAL_AMENDMENT_EVIDENCE",
       "status": "OFFICIAL_HISTORICAL_EVIDENCE",
       "required_for_source_inventory": true
+    },
+    {
+      "id": "historical-c07-amendment-comparison",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf",
+      "role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true,
+      "note": "厚生労働省公式過去改正比較資料。現行staging (5)に対応する旧番号(4)「身分を証する書類の携行」で、介護支援専門員証の携行・初回訪問時等の提示を直接確認する。currentnessの証明には使用しない。"
     }
   ],
   "source_assurance": {
