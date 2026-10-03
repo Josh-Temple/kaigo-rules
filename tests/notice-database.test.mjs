@@ -100,11 +100,11 @@ test("published historical services and un-ingested services remain clearly sepa
   assert.equal(homenursing?.record_count, 0);
   assert.equal(
     homenursing?.notice_status,
-    "SCOPE_DEFINED_NOT_RECONSTRUCTED",
+    "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
   );
   assert.equal(
     shortstay?.notice_status,
-    "WORK_CONTROL_ACCEPTED_NOT_REPOSITORY_INGESTED",
+    "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
   );
   assert.equal(shortstay?.verification_layer_id, undefined);
 });

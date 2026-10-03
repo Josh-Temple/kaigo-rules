@@ -1,0 +1,281 @@
+{
+  "format_version": 1,
+  "service_id": "shortstay-life",
+  "scope": "shortstay-life-rouki25-official-historical-html-section",
+  "audit_kind": "INDEPENDENT_SERVICE_ROUKI25_HISTORICAL_SOURCE_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-03",
+  "audit_run": {
+    "workflow": "Prepare shortstay-life Rouki 25 historical ingestion",
+    "run_id": 37087511411,
+    "head_sha": "5eff904b330e9c889c35625306026f892563d79d",
+    "parser": "regex_html_text_extractor_independent_of_htmlparser_importer",
+    "verification_report_sha256": "facae454282fba9aac05021a01ea2796813c6f2a34f020ac2698bc385b4569cd"
+  },
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+    "sha256": "e9e3c9d45f0f12c9b25079e7c1696de1ea5e19a927236b061000574f63ea18f0"
+  },
+  "checks": [
+    {
+      "id": "shortstay-life.rouki25.1.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "430af176a1c9ca943fea09ae339953637c9f8c10a1644f17e42e75c0e16bce4b",
+      "source_locator": "第一〇 短期入所生活介護 / 1 人員に関する基準（基準第一二一条及び第一二二条） / (1)"
+    },
+    {
+      "id": "shortstay-life.rouki25.1.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "52d3ed0106c887f3f9762610f197bda2857a060ed278ccfec2668f5f078411d8",
+      "source_locator": "第一〇 短期入所生活介護 / 1 人員に関する基準（基準第一二一条及び第一二二条） / (2)"
+    },
+    {
+      "id": "shortstay-life.rouki25.1.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "cbe9f4f56a16d379b2de9a7d73beaef1bb476af298a6acb505a47dad2456068f",
+      "source_locator": "第一〇 短期入所生活介護 / 1 人員に関する基準（基準第一二一条及び第一二二条） / (3)"
+    },
+    {
+      "id": "shortstay-life.rouki25.1.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "522310ad179b7048627e4169d907efd556e3ecde5d2d98cfeb91e2b9f5fadf00",
+      "source_locator": "第一〇 短期入所生活介護 / 1 人員に関する基準（基準第一二一条及び第一二二条） / (4)"
+    },
+    {
+      "id": "shortstay-life.rouki25.1.5",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "6ab7aa25c6761a50c998e99d676dcea624696ec526365bffc417d1a43337436a",
+      "source_locator": "第一〇 短期入所生活介護 / 1 人員に関する基準（基準第一二一条及び第一二二条） / (5)"
+    },
+    {
+      "id": "shortstay-life.rouki25.1.6",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "08cc8ea6865052c1e7db4ec842da0e2439f826cda34cce3a909de6d45bd28432",
+      "source_locator": "第一〇 短期入所生活介護 / 1 人員に関する基準（基準第一二一条及び第一二二条） / (6)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "c0f9bb40197421cfcd9dd64491022fcd29a0f4406352b1b6a01bbcec561ba544",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (1)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "ef8a9bff7984e062e48f3b4f1e27200937ab3dc49f91367a2b957d0899f90581",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (2)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "f57f2a087f1c561352f7055651f69746ce87f3e0c82cd0d94959f98bba014631",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (3)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "6f6f80761b77dc94f2f5c43467fd3097742d8b4de9863c37c8af9f1b123e3e58",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (4)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.5",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "2fdbe9f36cf865e4e4e7d29b414fc79a9f0eb55e82fd2061bc1bd3879085ceb3",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (5)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.6",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "0a616ffa7547d6c62e6592a5b65ecb55779ac683534233d885783e1779ce147d",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (6)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.7",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "49ec8750dbbacc88dee7f6cdd7d83d9306dc7de855e87ed46c76f869b1000009",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (7)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.8",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "6d83538ce6ad9f933f750332e05fe354daef9d7d1c1b53cfc972a15b2f3ebad7",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (8)"
+    },
+    {
+      "id": "shortstay-life.rouki25.2.9",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "fe6ef26c81e4be269b18d1c8d7ebc3a760a43afd937e5232d2af7eeb837c0fc3",
+      "source_locator": "第一〇 短期入所生活介護 / 2 設備に関する基準（基準第一二三条及び第一二四条） / (9)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "4208fea38ba35d1fb56d7fdbacd6f3407e46035ceb13516677487ff436456ce1",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (1)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "11fbb565c99924931b6ce0ad9a78bbe1df0c8be0533672f1a768bfac6e9a1fc0",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (2)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "2b93be71ecdc12d9dcfdac03dc1085c0d7fc0e45b918af83ebe8b838ae0723e3",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (3)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "0227adb2d77144a0551c6709c032b1e982cc83bafd2f3d91e88a7f6df56538d3",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (4)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.5",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "9c717819391683a153e843da413fe6bf8a90fc1442eabf43c68f4f42d31f0ed0",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (5)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.6",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "bd0cb9cf47242bb732fe9f92b94d0bc3f6515d84b714776fb117240fb0c19448",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (6)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.7",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "8b3b92a6573fc8287e1311c1eeeb51e2377c699474337ba049fb9caa5140036a",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (7)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.8",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "ce90bde072444d5e6bf6ed20201e53e618bf20a15967aeda351ee8d4b9a010a7",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (8)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.9",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "9341279241e85d272797f5b3681018f7fd23bb0f026f3dd84b6eceb80eee06d5",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (9)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.10",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "71a9a809ad62d8e03548eece1d545fad4e7687a3a9474e3cbe235a81ea0ad4f3",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (10)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.11",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "ac49196531a7bc52c05d72a4e922bd086c119db348d908f00cb3643b10632cc1",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (11)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.12",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "ed292cd4bd18b57cb1fcba5bf1410895306a0861fa299e01e02a7d6b8a362df3",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (12)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.13",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "23d94334554fa96582eebae5a4dc5173ae343480354ba35d6e5065d1eae52f8c",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (13)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.14",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "71b97854b41e2485a8d4bb4db10de38bc46eaea49387687a0796c750c3a4024e",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (14)"
+    },
+    {
+      "id": "shortstay-life.rouki25.3.15",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "0d5727698b0cc5c08dd497ee90c5e8c82c6b4458d50590cae945b67b9590a1cb",
+      "source_locator": "第一〇 短期入所生活介護 / 3 運営に関する基準 / (15)"
+    },
+    {
+      "id": "shortstay-life.rouki25.4.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "7cc9d3d231cc7561cd1a423dc468cef855a46f6b19106fd373d6f574864c74c7",
+      "source_locator": "第一〇 短期入所生活介護 / 4 基準該当短期入所生活介護に関する基準 / (1)"
+    },
+    {
+      "id": "shortstay-life.rouki25.4.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "4269c947ad257c4d5a1d60b607b6bd17f730aad1f0a023fb473cc4e3c766e498",
+      "source_locator": "第一〇 短期入所生活介護 / 4 基準該当短期入所生活介護に関する基準 / (2)"
+    },
+    {
+      "id": "shortstay-life.rouki25.4.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "01acf1de2169321c73d85ea9f257cb4c1bf6bb249f97f51df78fa1c46448ede3",
+      "source_locator": "第一〇 短期入所生活介護 / 4 基準該当短期入所生活介護に関する基準 / (3)"
+    },
+    {
+      "id": "shortstay-life.rouki25.4.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "c61478d3cb700a04eb289914e8e2b563070bf7d9f5332ca610c1c1057ea27423",
+      "source_locator": "第一〇 短期入所生活介護 / 4 基準該当短期入所生活介護に関する基準 / (4)"
+    }
+  ],
+  "coverage": {
+    "principal_items": 34,
+    "items_passed": 34
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/services/shortstay-life/rouki25-scope.json": "7da70761bf9a3b5636aa272e2deb7931971b1e9b",
+    "data/services/shortstay-life/rouki25-historical.generated.json": "96e6d35ba83f2b77856d820504e286b318ffd4b2",
+    "scripts/verify_rouki25_historical_service_independent.py": "5b4c508256d9fa09dae7f8424f4051da7735e48b"
+  },
+  "conclusion": "All 34 principal items in the bounded shortstay-life Rouki 25 historical HTML section matched the official MHLW source under an independent text-extraction path.",
+  "limitations": [
+    "This proves historical-source transcription, not current integrated notice text.",
+    "The R6 old/new comparison remains separate amendment evidence and omitted text is not reconstructed.",
+    "Human review and exhaustive currentness review are not complete."
+  ],
+  "safety": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
