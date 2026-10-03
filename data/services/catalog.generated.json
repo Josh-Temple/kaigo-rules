@@ -548,12 +548,12 @@
           "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN",
           "source_family": "preventive_support_standards_interpretation",
           "principal_items": 34,
-          "note": "Repository staging 34 taskのitem-bodyを独立照合し、21 PASS / 13 PARTIAL / 0 GAP / 0 FAIL。B005は厚労省公式 001623026.pdf の現行側(1)本文で解消。残る13 PARTIAL、㉗ scope差、currentness、human review、PACKAGE precheck、公開routeは未解消。",
+          "note": "Repository staging 34 taskのitem-bodyを残存再照合し、32 PASS / 2 PARTIAL / 0 GAP / 0 FAIL。R6略記項目は歴史版解釈通知の直接本文とR6 later locatorを版分離して確認し、B016・B033のみPARTIALを維持。㉗はPROPOSED_SCOPE_EXPANSIONとして別task案。currentness、human review、PACKAGE precheck、公開routeは未解消。",
           "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
           "item_body_verification": "PARTIAL_WITH_GAPS",
           "item_body_verification_counts": {
-            "PASS": 21,
-            "PARTIAL": 13,
+            "PASS": 32,
+            "PARTIAL": 2,
             "GAP": 0,
             "FAIL": 0
           },
