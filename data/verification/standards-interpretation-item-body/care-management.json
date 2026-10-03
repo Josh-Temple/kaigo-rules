@@ -3,15 +3,15 @@
   "service_id": "care-management",
   "layer": "standards_interpretation",
   "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION",
-  "audit_result": "PARTIAL_WITH_GAPS",
+  "audit_result": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
   "audit_scope": {
-    "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
-    "scope_git_blob_sha": "be6b3bac23edfacde9c832f97e2df402daddc60f",
-    "staging_git_blob_sha": "00801ba30c06f6ca7276b686dad090df20729bc2",
-    "source_inventory_git_blob_sha": "3c1c843b0811848d38eb1bfeb33170de23f23c2a",
+    "base_main_sha": "9f1e8539ca608c6f45e59522d4850f43a1a70b67",
+    "scope_git_blob_sha": "90c170c822797f5317055fe1212753926029a324",
+    "staging_git_blob_sha": "f8acbb5f74b2c2249acae0fdbadcb1dd2d209de4",
+    "source_inventory_git_blob_sha": "719a900d3aba1c82795a12e952b21aedacb2f06e",
     "task_count": 32,
-    "structured_text_child_entries": 41,
-    "note": "structured_text_child_entries counts YAML-like list entries in structured_text_raw. Range entries such as ④〜⑬ and ㉔・㉕ are one stored child entry and are not expanded into inferred subitems."
+    "structured_text_child_entries": 51,
+    "note": "Item-body verification only. B012 keeps one staging task but is verified through ten directly evidenced child items. B017 keeps one staging task but is verified through two directly evidenced child items. Historical notice bodies and amendment locators remain separate evidence objects; current integrated text and currentness are not established."
   },
   "verification_boundaries": {
     "current_integrated_notice_text_established": false,
@@ -22,7 +22,7 @@
     "versions_silently_merged": false
   },
   "source_version_policy": {
-    "statement": "Each official document is treated as a separate version/evidence object. In particular, the final R6 comparison inserts/renumbers subitems relative to the earlier R6 material; locators are not silently normalized across versions and omitted bodies are not synthesized into current text.",
+    "statement": "Official documents are separate version/evidence objects. Historical notice-body text is used only where directly present; official amendment comparisons bridge numbering across versions. Locators are never silently normalized, historical text is not treated as current integrated text, and currentness is not promoted.",
     "source_roles": [
       {
         "id": "r6-final-comparison",
@@ -71,45 +71,40 @@
         "status": "OFFICIAL_HISTORICAL_EVIDENCE",
         "pinned_fetch": "PASS",
         "pinned_sha256": "e1d5b9dead0b16f3e879a4fbcd08c8eca6ff3bfedb2779a72adcd29b44971ba2"
+      },
+      {
+        "id": "historical-2015-amendment-comparison",
+        "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf",
+        "role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+        "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+        "pinned_fetch": "PASS",
+        "pinned_sha256": "fa63dcc9e6983ed42a0e9b5e969488fd42ac7a2897c6902ace20041d0a9071c6"
+      },
+      {
+        "id": "historical-2018-amendment-comparison",
+        "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+        "role": "HISTORICAL_AMENDMENT_LOCATOR_BRIDGE",
+        "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+        "pinned_fetch": "PASS",
+        "pinned_sha256": "09d36e5cf4432dc187d64faadeee6847efe3ae1a9b43fd7e6de6a0097b69b47a"
       }
     ]
   },
   "summary": {
     "task_results": {
-      "PASS": 28,
-      "PARTIAL": 1,
-      "GAP": 3,
+      "PASS": 32,
+      "PARTIAL": 0,
+      "GAP": 0,
       "FAIL": 0
     },
     "child_entry_results": {
-      "PASS": 37,
-      "PARTIAL": 1,
-      "GAP": 3,
+      "PASS": 51,
+      "PARTIAL": 0,
+      "GAP": 0,
       "FAIL": 0
     }
   },
-  "unresolved_gaps": [
-    {
-      "task_id": "KR2-09-B012",
-      "result": "PARTIAL",
-      "issue": "④〜⑬ are stored as one range summary; each current integrated subitem body has not been independently recovered item by item."
-    },
-    {
-      "task_id": "KR2-09-B015",
-      "result": "GAP",
-      "issue": "Omitted body not recovered; omitted slot shifts from earlier-R6 ㉒ to final-R6-new ㉓."
-    },
-    {
-      "task_id": "KR2-09-B017",
-      "result": "GAP",
-      "issue": "Omitted bodies not recovered; omitted slots shift from earlier-R6 ㉔・㉕ to final-R6-new ㉕・㉖."
-    },
-    {
-      "task_id": "KR2-09-B019",
-      "result": "GAP",
-      "issue": "Underlying ordinance supports the cooperation obligation, but the notice body remains omitted; locator shifts from earlier-R6 ㉗ to final-R6-new ㉘."
-    }
-  ],
+  "unresolved_gaps": [],
   "integrator_followup": [
     "Represent B014-B019 locators as source-version-specific values. Do not overwrite the earlier-R6 numbers with the final-R6 numbers or vice versa.",
     "Decide whether to add/pin the official MHLW historical comparison https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf as supplemental evidence for B009, then rerun its source-chain audit.",
@@ -832,44 +827,122 @@
       "item_id": "care-management.notice.012",
       "task_id": "KR2-09-B012",
       "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ④〜⑬ （略）」の省略範囲を一次資料で解消する",
-      "result": "PARTIAL",
+      "result": "PASS",
       "axes": {
         "task_identity": "PASS",
         "path_heading": "PASS",
         "source_locator": "PASS",
         "source_url": "PASS",
-        "child_items": "PARTIAL",
-        "content_summary": "PARTIAL",
-        "gap_resolution": "PARTIAL",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
         "source_version_separation": "PASS",
-        "evidence_support": "PARTIAL"
+        "evidence_support": "PASS"
       },
       "staging_identity": {
         "path": "第二/3/(8)/④-⑬",
         "number": "④〜⑬",
         "heading": "ケアマネジメント過程に関する一連の取扱い",
         "parent": null,
-        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ④〜⑬ （略）",
+        "source_locator": "版別locator: 平成27年度改正後欄 ④〜⑬の各本文を個別確認／earlier-R6 ④〜⑬（略）。平成27年度本文を現行統合全文とは扱わず、item-body identityの直接証拠として保持。",
         "source_urls": [
           "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
-          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+          "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf"
         ],
-        "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
-        "recovery_state": [
-          "CURRENT_INTEGRATED_SUBITEM_TEXT_NOT_FULLY_RECOVERED"
-        ]
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
       },
       "children": [
         {
-          "path": "第二/3/(8)/④-⑬",
-          "number": "④〜⑬",
-          "heading": "ケアマネジメント過程に関する一連の取扱い",
-          "content_summary": "課題分析、居宅訪問・面接、計画原案、サービス担当者会議、説明・同意・交付、担当者への個別サービス計画提出依頼等を含む範囲。",
-          "recovery_state": "CURRENT_INTEGRATED_SUBITEM_TEXT_NOT_FULLY_RECOVERED",
-          "verification_result": "PARTIAL"
+          "path": "第二/3/(8)/④",
+          "number": "④",
+          "heading": "総合的な居宅サービス計画の作成",
+          "content_summary": "利用者の日常生活全般を支援する観点から、介護給付等対象サービス以外も含めて総合的な居宅サービス計画を作成する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑤",
+          "number": "⑤",
+          "heading": "利用者自身によるサービスの選択",
+          "content_summary": "利用者自身によるサービス選択を基本とし、地域の事業者、サービス内容、利用料等の情報を適正に提供して選択を支援する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑥",
+          "number": "⑥",
+          "heading": "課題分析の実施",
+          "content_summary": "居宅サービス計画の作成に先立ち、利用者の能力、既存サービス、介護者や環境等を評価して解決すべき課題を把握する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑦",
+          "number": "⑦",
+          "heading": "課題分析における留意点",
+          "content_summary": "課題分析では原則として利用者の居宅を訪問し、利用者・家族に面接して行い、その結果を記録する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑧",
+          "number": "⑧",
+          "heading": "居宅サービス計画原案の作成",
+          "content_summary": "利用者・家族の希望、課題分析、地域のサービス提供体制等を踏まえ、目標や提供サービス等を盛り込んだ実現可能な計画原案を作成する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑨",
+          "number": "⑨",
+          "heading": "サービス担当者会議等による専門的意見の聴取",
+          "content_summary": "サービス担当者会議等で利用者の状況や計画原案を共有し、担当者から専門的意見を求めて調整する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑩",
+          "number": "⑩",
+          "heading": "居宅サービス計画の説明及び同意",
+          "content_summary": "居宅サービス計画原案の内容を利用者に説明し、文書による同意を得る取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑪",
+          "number": "⑪",
+          "heading": "居宅サービス計画の交付",
+          "content_summary": "作成した居宅サービス計画を遅滞なく利用者及び担当者へ交付し、担当者との共有・連携を図る取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑫",
+          "number": "⑫",
+          "heading": "担当者に対する個別サービス計画の提出依頼",
+          "content_summary": "居宅サービス計画と個別サービス計画の連動性・整合性を確認するため、担当者に個別サービス計画の提出を求める取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/⑬",
+          "number": "⑬",
+          "heading": "居宅サービス計画の実施状況等の把握及び評価等",
+          "content_summary": "居宅サービス計画作成後も利用者・家族・担当者との連絡を継続し、計画の実施状況や利用者の課題を把握して必要な評価等を行う取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
         }
       ],
       "official_evidence": [
+        {
+          "source_id": "historical-2015-amendment-comparison",
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "fa63dcc9e6983ed42a0e9b5e969488fd42ac7a2897c6902ace20041d0a9071c6"
+        },
         {
           "source_id": "r6-earlier-comparison",
           "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
@@ -877,17 +950,9 @@
           "source_status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
           "fetched_in_pinned_inventory": true,
           "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
-        },
-        {
-          "source_id": "work-control-source-3",
-          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
-          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
-          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
-          "fetched_in_pinned_inventory": true,
-          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
         }
       ],
-      "finding": "The source family supports the broad care-management process across ④〜⑬, but the current integrated text for each individual subitem is not fully recovered. The staging range summary is directionally supported, but item-by-item equality cannot be established."
+      "finding": "The official 2015 MHLW amendment comparison directly provides separate notice-body text for ④ through ⑬ in the post-amendment column. The earlier-R6 comparison preserves the same ④〜⑬ range as omitted text. The staging task remains one range task but its ten child items are now independently evidenced; this does not establish a current integrated notice text or currentness."
     },
     {
       "item_id": "care-management.notice.013",
@@ -1002,44 +1067,69 @@
       "item_id": "care-management.notice.015",
       "task_id": "KR2-09-B015",
       "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉒ （略）」の省略範囲を一次資料で解消する",
-      "result": "GAP",
+      "result": "PASS",
       "axes": {
         "task_identity": "PASS",
         "path_heading": "PASS",
-        "source_locator": "PARTIAL",
+        "source_locator": "PASS",
         "source_url": "PASS",
-        "child_items": "GAP",
-        "content_summary": "GAP",
-        "gap_resolution": "GAP",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
         "source_version_separation": "PASS",
-        "evidence_support": "GAP"
+        "evidence_support": "PASS"
       },
       "staging_identity": {
         "path": "第二/3/(8)/㉒",
         "number": "㉒",
-        "heading": "本文未復元",
+        "heading": "短期入所生活介護及び短期入所療養介護の居宅サービス計画への位置付け",
         "parent": null,
-        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉒ （略）",
+        "source_locator": "版別locator: 平成27年度改正後欄 ⑳「短期入所生活介護及び短期入所療養介護の居宅サービス計画への位置付け」→平成30年度改正後 ㉑（略）→令和3年度改正後・earlier-R6 ㉒（略）→final-R6新欄 ㉓（略）。各版の番号を統合せず保持。",
         "source_urls": [
           "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
-          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+          "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf"
         ],
-        "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
-        "recovery_state": [
-          "PRIMARY_TEXT_NOT_RECOVERED"
-        ]
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
       },
       "children": [
         {
           "path": "第二/3/(8)/㉒",
           "number": "㉒",
-          "heading": "本文未復元",
-          "content_summary": "正本改正資料では㉒が略記され、確認した一次資料だけでは当該版の本文を一意に確定できない。",
-          "recovery_state": "PRIMARY_TEXT_NOT_RECOVERED",
-          "verification_result": "GAP"
+          "heading": "短期入所生活介護及び短期入所療養介護の居宅サービス計画への位置付け",
+          "content_summary": "短期入所サービスを居宅サービス計画へ位置付ける際、在宅生活の維持につながるよう留意し、利用日数の目安を機械的に適用せず利用者の心身状況等を勘案する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
         }
       ],
       "official_evidence": [
+        {
+          "source_id": "historical-2015-amendment-comparison",
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "fa63dcc9e6983ed42a0e9b5e969488fd42ac7a2897c6902ace20041d0a9071c6"
+        },
+        {
+          "source_id": "historical-2018-amendment-comparison",
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_LOCATOR_BRIDGE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "09d36e5cf4432dc187d64faadeee6847efe3ae1a9b43fd7e6de6a0097b69b47a"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        },
         {
           "source_id": "r6-earlier-comparison",
           "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
@@ -1057,7 +1147,7 @@
           "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
         }
       ],
-      "finding": "The earlier R6 comparison shows ㉒ omitted. In the final R6 new column, the physician-opinion item moves into ㉒ and the omitted slot moves to ㉓. No body for the omitted subitem is independently recovered, so the gap remains and the locator is source-version-specific."
+      "finding": "The official 2015 post-amendment column directly provides the short-stay notice body at ⑳. Official 2018, R3 and R6 amendment comparisons explicitly bridge the locator through ㉑ and ㉒ to final-R6-new ㉓. The body is therefore directly evidenced with version-specific locators preserved; no currentness promotion is made."
     },
     {
       "item_id": "care-management.notice.016",
@@ -1122,44 +1212,77 @@
       "item_id": "care-management.notice.017",
       "task_id": "KR2-09-B017",
       "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉔・㉕ （略）」の省略範囲を一次資料で解消する",
-      "result": "GAP",
+      "result": "PASS",
       "axes": {
         "task_identity": "PASS",
         "path_heading": "PASS",
-        "source_locator": "PARTIAL",
+        "source_locator": "PASS",
         "source_url": "PASS",
-        "child_items": "GAP",
-        "content_summary": "GAP",
-        "gap_resolution": "GAP",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
         "source_version_separation": "PASS",
-        "evidence_support": "GAP"
+        "evidence_support": "PASS"
       },
       "staging_identity": {
         "path": "第二/3/(8)/㉔-㉕",
         "number": "㉔・㉕",
-        "heading": "本文未復元",
+        "heading": "認定審査会意見等の反映・指定介護予防支援事業者との連携",
         "parent": null,
-        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉔・㉕ （略）",
+        "source_locator": "版別locator: 平成27年度改正後欄 ㉒「認定審査会意見等の居宅サービス計画への反映」・㉓「指定介護予防支援事業者との連携」→平成30年度改正後 ㉓・㉔（略）→令和3年度改正後・earlier-R6 ㉔・㉕（略）→final-R6新欄 ㉕・㉖（略）。各版の番号を統合せず保持。",
         "source_urls": [
           "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
-          "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+          "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf"
         ],
-        "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
-        "recovery_state": [
-          "PRIMARY_TEXT_NOT_RECOVERED"
-        ]
+        "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+        "recovery_state": []
       },
       "children": [
         {
-          "path": "第二/3/(8)/㉔-㉕",
-          "number": "㉔・㉕",
-          "heading": "本文未復元",
-          "content_summary": "正本改正資料では㉔・㉕が略記され、確認した一次資料だけでは各小項目本文を一意に確定できない。",
-          "recovery_state": "PRIMARY_TEXT_NOT_RECOVERED",
-          "verification_result": "GAP"
+          "path": "第二/3/(8)/㉔",
+          "number": "㉔",
+          "heading": "認定審査会意見等の居宅サービス計画への反映",
+          "content_summary": "被保険者証に認定審査会意見等の記載がある場合、その趣旨を利用者に説明して理解を得た上で、その内容に沿って居宅サービス計画を作成する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
+        },
+        {
+          "path": "第二/3/(8)/㉕",
+          "number": "㉕",
+          "heading": "指定介護予防支援事業者との連携",
+          "content_summary": "要介護認定を受けていた利用者が要支援認定を受けた場合、指定介護予防支援事業者が速やかに計画作成へ着手できるよう必要な情報を提供して連携する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
         }
       ],
       "official_evidence": [
+        {
+          "source_id": "historical-2015-amendment-comparison",
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "fa63dcc9e6983ed42a0e9b5e969488fd42ac7a2897c6902ace20041d0a9071c6"
+        },
+        {
+          "source_id": "historical-2018-amendment-comparison",
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_LOCATOR_BRIDGE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "09d36e5cf4432dc187d64faadeee6847efe3ae1a9b43fd7e6de6a0097b69b47a"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        },
         {
           "source_id": "r6-earlier-comparison",
           "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
@@ -1177,7 +1300,7 @@
           "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
         }
       ],
-      "finding": "The earlier R6 comparison leaves ㉔・㉕ omitted. In the final R6 new column those omitted slots are renumbered ㉕・㉖. The bodies are not independently recovered and the locator is source-version-specific."
+      "finding": "The official 2015 post-amendment column directly provides separate notice bodies for the certification-review-opinion item and preventive-support-provider coordination at ㉒・㉓. Official 2018, R3 and R6 comparisons explicitly bridge those locators to earlier-R6 ㉔・㉕ and final-R6-new ㉕・㉖. Both child items are directly evidenced and kept version-aware; no currentness promotion is made."
     },
     {
       "item_id": "care-management.notice.018",
@@ -1242,44 +1365,69 @@
       "item_id": "care-management.notice.019",
       "task_id": "KR2-09-B019",
       "title": "居宅介護支援: 解釈通知「3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉗ （略）」の省略範囲を一次資料で解消する",
-      "result": "GAP",
+      "result": "PASS",
       "axes": {
         "task_identity": "PASS",
         "path_heading": "PASS",
-        "source_locator": "PARTIAL",
-        "source_url": "PARTIAL",
-        "child_items": "GAP",
-        "content_summary": "PARTIAL",
-        "gap_resolution": "GAP",
+        "source_locator": "PASS",
+        "source_url": "PASS",
+        "child_items": "PASS",
+        "content_summary": "PASS",
+        "gap_resolution": "PASS",
         "source_version_separation": "PASS",
-        "evidence_support": "GAP"
+        "evidence_support": "PASS"
       },
       "staging_identity": {
         "path": "第二/3/(8)/㉗",
         "number": "㉗",
-        "heading": "地域ケア会議への協力に関する範囲",
+        "heading": "地域ケア会議への協力",
         "parent": null,
-        "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉗ （略）",
+        "source_locator": "版別locator: 平成27年度改正後欄 ㉕「地域ケア会議への協力」→平成30年度改正後 ㉖（略）→令和3年度改正後・earlier-R6 ㉗（略）→final-R6新欄 ㉘（略）。各版の番号を統合せず保持。",
         "source_urls": [
           "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
-          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+          "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+          "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf"
         ],
         "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
-        "recovery_state": [
-          "SCOPE_RECOVERED_TEXT_NOT_CURRENTNESS_VERIFIED"
-        ]
+        "recovery_state": []
       },
       "children": [
         {
           "path": "第二/3/(8)/㉗",
           "number": "㉗",
-          "heading": "地域ケア会議への協力に関する範囲",
-          "content_summary": "地域ケア会議から資料・情報提供、意見開陳その他の協力を求められた場合の協力に関する範囲として確認した。",
-          "recovery_state": "SCOPE_RECOVERED_TEXT_NOT_CURRENTNESS_VERIFIED",
-          "verification_result": "GAP"
+          "heading": "地域ケア会議への協力",
+          "content_summary": "地域ケア会議の趣旨・目的を踏まえ、資料・情報や個別のケアマネジメント事例の提供を求められた場合に積極的に協力する取扱いを扱う。",
+          "recovery_state": null,
+          "verification_result": "PASS"
         }
       ],
       "official_evidence": [
+        {
+          "source_id": "historical-2015-amendment-comparison",
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "fa63dcc9e6983ed42a0e9b5e969488fd42ac7a2897c6902ace20041d0a9071c6"
+        },
+        {
+          "source_id": "historical-2018-amendment-comparison",
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_LOCATOR_BRIDGE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "09d36e5cf4432dc187d64faadeee6847efe3ae1a9b43fd7e6de6a0097b69b47a"
+        },
+        {
+          "source_id": "work-control-source-5",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
+          "source_role": "HISTORICAL_AMENDMENT_EVIDENCE",
+          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "fetched_in_pinned_inventory": true,
+          "pinned_sha256": "f2d162e1f8fb9433a657d8bc829ccb7818dbd08dd33c42e887cc5cce04d8db86"
+        },
         {
           "source_id": "r6-earlier-comparison",
           "url": "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
@@ -1289,25 +1437,15 @@
           "pinned_sha256": "b873ea3c64688e5172203660491ea9d50da52f69d2cdf34720a5bf0549426d57"
         },
         {
-          "source_id": "work-control-source-3",
-          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
-          "source_role": "HISTORICAL_FULL_TEXT_REFERENCE",
-          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227941.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "source_status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE",
           "fetched_in_pinned_inventory": true,
-          "pinned_sha256": "8b22b244680a1b5919a3b0b34dea9a89a6062ea2695769aa14bf03991e903e3b"
-        },
-        {
-          "source_id": "work-control-source-4",
-          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999405",
-          "source_role": "HISTORICAL_OFFICIAL_REFERENCE",
-          "source_status": "OFFICIAL_HISTORICAL_EVIDENCE",
-          "fetched_in_pinned_inventory": true,
-          "pinned_sha256": "4daad40bbc72fe9d9fced08b6f7e258554460965dcddbc0a09602fac5606fd5f",
-          "supplemental_not_listed_on_task": true,
-          "note": "Official ordinance text supports the regional-care-conference cooperation obligation, but this URL is absent from KR2-09-B019 source_urls; this does not establish the omitted notice body."
+          "pinned_sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98"
         }
       ],
-      "finding": "The ordinance independently supports the regional-care-conference cooperation obligation, but that is not the omitted notice body. The earlier R6 notice comparison has ㉗ omitted, the final R6 new column moves that omitted slot to ㉘, and the configured historical notice does not recover the corresponding interpretation body. Item-body evidence therefore remains GAP; the ordinance is scope evidence only."
+      "finding": "The official 2015 post-amendment column directly provides the interpretation-notice body for regional-care-conference cooperation at ㉕. Official 2018, R3 and R6 comparisons explicitly bridge the locator to earlier-R6 ㉗ and final-R6-new ㉘. This resolves the notice-body gap without substituting the ordinance text and without establishing currentness."
     },
     {
       "item_id": "care-management.notice.020",
@@ -2127,7 +2265,10 @@
       "task_id": "KR2-09-B015",
       "earlier_r6": "㉒（略）",
       "final_r6_new": "㉓（略）",
-      "effect": "GAP_BODY_UNRECOVERED"
+      "effect": "PASS_HISTORICAL_BODY_AND_VERSION_AWARE_LOCATORS_RECORDED",
+      "historical_2015_post": "⑳ 短期入所生活介護及び短期入所療養介護の居宅サービス計画への位置付け",
+      "post_2018": "㉑（略）",
+      "post_r3": "㉒（略）"
     },
     {
       "task_id": "KR2-09-B016",
@@ -2139,7 +2280,10 @@
       "task_id": "KR2-09-B017",
       "earlier_r6": "㉔・㉕（略）",
       "final_r6_new": "㉕・㉖（略）",
-      "effect": "GAP_BODIES_UNRECOVERED"
+      "effect": "PASS_HISTORICAL_BODY_AND_VERSION_AWARE_LOCATORS_RECORDED",
+      "historical_2015_post": "㉒ 認定審査会意見等の居宅サービス計画への反映／㉓ 指定介護予防支援事業者との連携",
+      "post_2018": "㉓・㉔（略）",
+      "post_r3": "㉔・㉕（略）"
     },
     {
       "task_id": "KR2-09-B018",
@@ -2151,26 +2295,29 @@
       "task_id": "KR2-09-B019",
       "earlier_r6": "㉗（略）",
       "final_r6_new": "㉘（略）",
-      "effect": "GAP_NOTICE_BODY_UNRECOVERED"
+      "effect": "PASS_HISTORICAL_BODY_AND_VERSION_AWARE_LOCATORS_RECORDED",
+      "historical_2015_post": "㉕ 地域ケア会議への協力",
+      "post_2018": "㉖（略）",
+      "post_r3": "㉗（略）"
     }
   ],
   "supplemental_source_findings": [],
   "integration_summary": {
     "schema_version": 1,
-    "worker_pr": 279,
-    "worker_head_sha": "1954dc25d4898ea921da28533cfa9a7555ca29f4",
+    "worker_pr": 286,
+    "worker_head_sha": "8843f8a766736aee15eb437a1ea32617ff15bd27",
     "audit_receipt": "data/verification/standards-interpretation-item-body/care-management.json",
     "verifier": "scripts/verify_care_management_standards_interpretation_item_body.py",
-    "verification_status": "PARTIAL_WITH_GAPS",
+    "verification_status": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
     "counts": {
-      "PASS": 28,
-      "PARTIAL": 1,
-      "GAP": 3,
+      "PASS": 32,
+      "PARTIAL": 0,
+      "GAP": 0,
       "FAIL": 0
     },
     "expected_staging_items_or_tasks": 32,
-    "non_pass_items": 4,
-    "explicit_unresolved_records": 4,
+    "non_pass_items": 0,
+    "explicit_unresolved_records": 0,
     "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
     "currentness_state": "NOT_ESTABLISHED",
     "human_review_state": "NOT_REVIEWED",
@@ -2192,26 +2339,52 @@
       "resolution": "PINNED_IN_SCOPE_AND_SOURCE_INVENTORY",
       "finding": "介護支援専門員証の携行・初回訪問時等の提示を厚労省公式改正比較資料で直接確認し、scopeへ正式追加した。",
       "pinned_sha256": "e1d5b9dead0b16f3e879a4fbcd08c8eca6ff3bfedb2779a72adcd29b44971ba2"
+    },
+    {
+      "id": "historical-2015-amendment-comparison",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf",
+      "role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+      "supports": [
+        "KR2-09-B012",
+        "KR2-09-B015",
+        "KR2-09-B017",
+        "KR2-09-B019"
+      ],
+      "resolution": "PINNED_IN_SCOPE_AND_SOURCE_INVENTORY",
+      "finding": "平成27年度の厚労省公式新旧対照表の改正後欄から、④〜⑬の各本文、短期入所、認定審査会意見、介護予防支援事業者との連携、地域ケア会議への協力の解釈通知本文を直接確認した。currentnessの証明には使用しない。",
+      "pinned_sha256": "fa63dcc9e6983ed42a0e9b5e969488fd42ac7a2897c6902ace20041d0a9071c6"
+    },
+    {
+      "id": "historical-2018-amendment-comparison",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+      "role": "HISTORICAL_AMENDMENT_LOCATOR_BRIDGE",
+      "supports": [
+        "KR2-09-B015",
+        "KR2-09-B017",
+        "KR2-09-B019"
+      ],
+      "resolution": "PINNED_IN_SCOPE_AND_SOURCE_INVENTORY",
+      "finding": "平成30年度の厚労省公式新旧対照表で⑲の挿入後に後続項目が一つ繰り下がることを確認し、平成27年度本文から令和3年度・令和6年度locatorへの版別追跡に使用した。",
+      "pinned_sha256": "09d36e5cf4432dc187d64faadeee6847efe3ae1a9b43fd7e6de6a0097b69b47a"
     }
   ],
   "gap_closure_followup": {
     "closed_tasks": [
       "KR2-09-B009",
-      "KR2-09-B014",
-      "KR2-09-B016",
-      "KR2-09-B018"
-    ],
-    "remaining_tasks": [
       "KR2-09-B012",
+      "KR2-09-B014",
       "KR2-09-B015",
+      "KR2-09-B016",
       "KR2-09-B017",
+      "KR2-09-B018",
       "KR2-09-B019"
     ],
+    "remaining_tasks": [],
     "currentness_promoted": false,
     "human_review_promoted": false,
     "publication_promoted": false,
-    "note": "B009は公式c07 source chain追加、B014/B016/B018はversion-aware locator明示により閉じた。本文未回収の4件は維持。",
-    "source_inventory_manifest_required_sources": 6,
-    "source_inventory_required_sources_fetchable": 6
+    "note": "B012/B015/B017/B019のitem-body gapは、厚労省公式の平成27年度本文と平成30年度・令和3年度・令和6年度の版別locator chainで解消した。currentness、human review、publicationは未昇格。",
+    "source_inventory_manifest_required_sources": 8,
+    "source_inventory_required_sources_fetchable": 8
   }
 }
