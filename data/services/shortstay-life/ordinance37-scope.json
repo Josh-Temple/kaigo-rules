@@ -1,0 +1,178 @@
+{
+  "format_version": 1,
+  "service_id": "shortstay-life",
+  "service_label": "短期入所生活介護",
+  "law_id": "411M50000100037",
+  "law_num": "平成十一年厚生省令第三十七号",
+  "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準",
+  "source_role": "SHARED_LAW_SERVICE_SCOPE",
+  "chapter": {
+    "number": "9",
+    "title": "短期入所生活介護"
+  },
+  "direct_scope": {
+    "start_article": "120",
+    "end_article": "140-32",
+    "current_text_articles": [
+      "120",
+      "121",
+      "122",
+      "123",
+      "124",
+      "125",
+      "126",
+      "127",
+      "128",
+      "129",
+      "130",
+      "131",
+      "132",
+      "133",
+      "134",
+      "135",
+      "136",
+      "137",
+      "138",
+      "139",
+      "140",
+      "140-2",
+      "140-3",
+      "140-4",
+      "140-5",
+      "140-6",
+      "140-7",
+      "140-8",
+      "140-9",
+      "140-10",
+      "140-11",
+      "140-12",
+      "140-13",
+      "140-14",
+      "140-15",
+      "140-26",
+      "140-27",
+      "140-28",
+      "140-29",
+      "140-30",
+      "140-31",
+      "140-32"
+    ],
+    "deleted_article_slots": [
+      "140-16",
+      "140-17",
+      "140-18",
+      "140-19",
+      "140-20",
+      "140-21",
+      "140-22",
+      "140-23",
+      "140-24",
+      "140-25"
+    ],
+    "sections": [
+      {
+        "name": "第一節 基本方針",
+        "articles": [
+          "120"
+        ]
+      },
+      {
+        "name": "第二節 人員に関する基準",
+        "articles": [
+          "121",
+          "122"
+        ]
+      },
+      {
+        "name": "第三節 設備に関する基準",
+        "articles": [
+          "123",
+          "124"
+        ]
+      },
+      {
+        "name": "第四節 運営に関する基準",
+        "articles": [
+          "125",
+          "126",
+          "127",
+          "128",
+          "129",
+          "130",
+          "131",
+          "132",
+          "133",
+          "134",
+          "135",
+          "136",
+          "137",
+          "138",
+          "139",
+          "140"
+        ]
+      },
+      {
+        "name": "第五節 ユニット型指定短期入所生活介護",
+        "articles": [
+          "140-2",
+          "140-3",
+          "140-4",
+          "140-5",
+          "140-6",
+          "140-7",
+          "140-8",
+          "140-9",
+          "140-10",
+          "140-11",
+          "140-12",
+          "140-13"
+        ]
+      },
+      {
+        "name": "第六節 共生型短期入所生活介護",
+        "articles": [
+          "140-14",
+          "140-15"
+        ],
+        "deleted_article_slots": [
+          "140-16",
+          "140-17",
+          "140-18",
+          "140-19",
+          "140-20",
+          "140-21",
+          "140-22",
+          "140-23",
+          "140-24",
+          "140-25"
+        ]
+      },
+      {
+        "name": "第七節 基準該当短期入所生活介護",
+        "articles": [
+          "140-26",
+          "140-27",
+          "140-28",
+          "140-29",
+          "140-30",
+          "140-31",
+          "140-32"
+        ]
+      }
+    ]
+  },
+  "boundary": {
+    "previous_article": "119",
+    "next_chapter": "第十章 短期入所療養介護",
+    "next_article": "141"
+  },
+  "evidence": {
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+    "official_mhlw_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0",
+    "work_control_receipt": "/Kaigo Rules/Work Control/Outputs/STANDARDS/PACKET_STD_0004_SHORTSTAY_LIFE_FULL_CHAPTER_RESULT.md",
+    "committer_review": "/Kaigo Rules/Work Control/COMMITTER_REVIEW_CYCLE4_SHORTSTAY_LIFE.md",
+    "observed_fact": "Cycle 4 Committer accepted Article 120 through Article 140-32 as 52 addressable slots: 42 current-text articles and 10 explicit deleted placeholders (140-16 through 140-25)."
+  },
+  "selection_policy": "共有e-Govコーパスには現行本文42条だけを取り込み、140条の16〜25は削除スロットとしてservice scopeに保持する。削除本文を推測復元しない。準用・読み替えrelationはこのdirect-text laneと分離して後続検証する。",
+  "automatic_verification_promotion_allowed": false
+}
