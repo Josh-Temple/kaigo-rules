@@ -150,11 +150,12 @@ def main() -> int:
             if isinstance(url, str) and url
         }
     )
-    pinned_urls = {
-        row.get("url")
+    manifest_rows = {
+        row.get("url"): row
         for row in scope.get("source_manifest", [])
         if isinstance(row, dict) and row.get("url")
     }
+    pinned_urls = set(manifest_rows)
     pinned_urls.update(
         url for url in scope.get("source_urls", []) if isinstance(url, str) and url
     )
@@ -189,14 +190,33 @@ def main() -> int:
             if len(payload) < 100 or len(extracted) < 50:
                 differences.append(f"source extraction unexpectedly small: {url}")
         except Exception as exc:
-            source_report.update({"fetch": "FAIL", "error": str(exc)})
-            differences.append(f"source fetch/extraction failed: {url}: {exc}")
+            required = manifest_rows.get(url, {}).get(
+                "required_for_source_inventory", True
+            )
+            source_report.update(
+                {
+                    "fetch": "FAIL",
+                    "error": str(exc),
+                    "required_for_source_inventory": required,
+                }
+            )
+            if required:
+                differences.append(f"required source fetch/extraction failed: {url}: {exc}")
+        if "required_for_source_inventory" not in source_report:
+            source_report["required_for_source_inventory"] = manifest_rows.get(
+                url, {}
+            ).get("required_for_source_inventory", True)
         source_reports.append(source_report)
 
-    if config.get("require_all_referenced_sources_fetchable") is True:
-        failed = [row["url"] for row in source_reports if row.get("fetch") != "PASS"]
+    if config.get("require_all_required_sources_fetchable") is True:
+        failed = [
+            row["url"]
+            for row in source_reports
+            if row.get("required_for_source_inventory") is True
+            and row.get("fetch") != "PASS"
+        ]
         if failed:
-            differences.append(f"not all referenced sources were fetchable: {failed}")
+            differences.append(f"not all required sources were fetchable: {failed}")
 
     if config.get("require_anchor_in_at_least_one_source") is True and anchor_matches < 1:
         differences.append(f"service anchor was not found in any referenced source: {anchor}")
@@ -213,6 +233,23 @@ def main() -> int:
             "observed_staging_items_or_tasks": len(items),
             "referenced_sources": len(referenced_urls),
             "sources_fetchable": sum(1 for row in source_reports if row.get("fetch") == "PASS"),
+            "required_sources": sum(
+                1
+                for row in source_reports
+                if row.get("required_for_source_inventory") is True
+            ),
+            "required_sources_fetchable": sum(
+                1
+                for row in source_reports
+                if row.get("required_for_source_inventory") is True
+                and row.get("fetch") == "PASS"
+            ),
+            "supplemental_sources_unavailable": sum(
+                1
+                for row in source_reports
+                if row.get("required_for_source_inventory") is False
+                and row.get("fetch") != "PASS"
+            ),
             "sources_with_service_anchor": anchor_matches,
         },
         "sources": source_reports,
