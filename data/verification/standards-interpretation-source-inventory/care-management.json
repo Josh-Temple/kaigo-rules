@@ -7,22 +7,22 @@
   "source_family": "care_management_standards_interpretation",
   "audit_run": {
     "workflow": "Verify standards interpretation source inventories",
-    "run_id": 37103576268,
-    "head_sha": "60d9a5a53235d5195ea3e181030192dbf30ab203",
+    "run_id": 37109100608,
+    "head_sha": "f6f59f9afd08974e7c5782257d379ac759e07031",
     "verifier": "scripts/verify_standards_interpretation_sources_independent.py",
-    "report_sha256": "defa335dbf4b40219dfdd3b248757ad14c53679e59b9819c3ae04f4ab3889c08"
+    "report_sha256": "aaf83e8df712ed7f9a9643daa7d4375ccc87817bbaf12379191969ba51d52c5e"
   },
   "coverage": {
     "expected_staging_items_or_tasks": 32,
     "observed_staging_items_or_tasks": 32,
     "referenced_sources": 6,
-    "manifest_required_sources": 6,
-    "inspected_sources": 6,
-    "sources_fetchable": 6,
-    "required_sources": 6,
-    "required_sources_fetchable": 6,
+    "manifest_required_sources": 8,
+    "inspected_sources": 8,
+    "sources_fetchable": 8,
+    "required_sources": 8,
+    "required_sources_fetchable": 8,
     "supplemental_sources_unavailable": 0,
-    "sources_with_service_anchor": 6
+    "sources_with_service_anchor": 8
   },
   "sources": [
     {
@@ -52,6 +52,26 @@
       "bytes": 533099,
       "sha256": "c23b9e1f711c4031a36b1631946e8ffb0436f1426066905c8364396249237f98",
       "extracted_chars": 34081,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 265285,
+      "sha256": "fa63dcc9e6983ed42a0e9b5e969488fd42ac7a2897c6902ace20041d0a9071c6",
+      "extracted_chars": 45737,
+      "service_anchor_found": true,
+      "required_for_source_inventory": true
+    },
+    {
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+      "fetch": "PASS",
+      "content_type": "application/pdf",
+      "bytes": 176388,
+      "sha256": "09d36e5cf4432dc187d64faadeee6847efe3ae1a9b43fd7e6de6a0097b69b47a",
+      "extracted_chars": 11191,
       "service_anchor_found": true,
       "required_for_source_inventory": true
     },
@@ -95,7 +115,7 @@
   },
   "differences": [],
   "input_git_blob_shas_at_audit": {
-    "data/services/care-management/standards-interpretation-scope.json": "be6b3bac23edfacde9c832f97e2df402daddc60f",
+    "data/services/care-management/standards-interpretation-scope.json": "90c170c822797f5317055fe1212753926029a324",
     "data/services/care-management/standards-interpretation-staging.json": "00801ba30c06f6ca7276b686dad090df20729bc2",
     "scripts/verify_standards_interpretation_sources_independent.py": "9f65e258e64bd5d719f4e586e06430728aa5e196"
   },
