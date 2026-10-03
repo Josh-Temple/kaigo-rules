@@ -84,6 +84,9 @@ jobs:
 
       - name: Rebuild derived repository state
         run: |
+          python scripts/build_relation_verification_queue.py
+          python scripts/build_relation_human_review_packet.py
+          python scripts/build_relation_human_review_evidence_pack.py
           python scripts/build_service_catalog.py
           python scripts/build_verification_registry.py
           python scripts/build_product_value_snapshot.py
@@ -94,7 +97,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add             data/shared/standards             data/ordinance37-nodes.json             data/ordinance37-relations.json             data/ordinance37-application-rules.json             data/ordinance37-meta.json             data/care-insurance-act-nodes.json             data/care-insurance-act-relations.json             data/care-insurance-act-meta.json             data/services/homevisit/care-insurance-act-index.generated.json             data/services/homevisit/ordinance37-index.generated.json             data/services/dayrehab/ordinance37-index.generated.json             data/services/dayrehab/ordinance37-relations.generated.json             data/dayrehab-ordinance37-independent-audit.json             data/dayrehab-article119-relation-independent-audit.json             data/egov-content-independent-audit.json             data/relation-semantic-independent-audit.json             data/careact-internal-relation-independent-audit.json             data/cross-layer-source-chain-independent-audit.json             data/remuneration-delegation-relation-independent-audit.json             data/services/catalog.generated.json             data/verification-registry.json             data/product-value-snapshot-v0.1.json
+          git add             data/shared/standards             data/ordinance37-nodes.json             data/ordinance37-relations.json             data/ordinance37-application-rules.json             data/ordinance37-meta.json             data/care-insurance-act-nodes.json             data/care-insurance-act-relations.json             data/care-insurance-act-meta.json             data/services/homevisit/care-insurance-act-index.generated.json             data/services/homevisit/ordinance37-index.generated.json             data/services/dayrehab/ordinance37-index.generated.json             data/services/dayrehab/ordinance37-relations.generated.json             data/dayrehab-ordinance37-independent-audit.json             data/dayrehab-article119-relation-independent-audit.json             data/egov-content-independent-audit.json             data/relation-semantic-independent-audit.json             data/careact-internal-relation-independent-audit.json             data/cross-layer-source-chain-independent-audit.json             data/remuneration-delegation-relation-independent-audit.json             data/relation-verification-queue.json             data/relation-human-review-packet.json             data/relation-human-review-evidence-pack.json             data/services/catalog.generated.json             data/verification-registry.json             data/product-value-snapshot-v0.1.json
           if git diff --cached --quiet; then
             echo "No generated changes"
             exit 0
