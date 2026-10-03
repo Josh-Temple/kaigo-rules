@@ -20,7 +20,7 @@
   ],
   "source_families": [
     {
-      "id": "long_term_care_insurance_act",
+      "id": "care_insurance_act",
       "label": "Long-Term Care Insurance Act"
     },
     {
@@ -80,7 +80,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -647,7 +647,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -1154,7 +1154,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -1631,7 +1631,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -2112,7 +2112,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -2593,7 +2593,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -3074,7 +3074,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -3620,7 +3620,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -4101,7 +4101,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -4580,7 +4580,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -5059,7 +5059,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -5538,7 +5538,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -6017,7 +6017,7 @@
       },
       "source_families": [
         {
-          "source_family": "long_term_care_insurance_act",
+          "source_family": "care_insurance_act",
           "label": "Long-Term Care Insurance Act",
           "corpus_availability": {
             "state": "AVAILABLE",
@@ -6482,7 +6482,7 @@
     "services_total": 13,
     "source_families_total": 9,
     "source_family_coverage": {
-      "long_term_care_insurance_act": {
+      "care_insurance_act": {
         "corpus_availability": {
           "AVAILABLE": 13
         },
@@ -6807,7 +6807,7 @@
       },
       {
         "service_id": "homebath",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "homebath",
@@ -6831,7 +6831,7 @@
       },
       {
         "service_id": "homenursing",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "homenursing",
@@ -6855,7 +6855,7 @@
       },
       {
         "service_id": "homerehab",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "homerehab",
@@ -6879,7 +6879,7 @@
       },
       {
         "service_id": "homecaremanagement",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "homecaremanagement",
@@ -6903,7 +6903,7 @@
       },
       {
         "service_id": "dayrehab",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "dayrehab",
@@ -6915,7 +6915,7 @@
       },
       {
         "service_id": "shortstay-life",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "shortstay-life",
@@ -6939,7 +6939,7 @@
       },
       {
         "service_id": "community-dayservice",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "community-dayservice",
@@ -6963,7 +6963,7 @@
       },
       {
         "service_id": "regular-round",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "regular-round",
@@ -6987,7 +6987,7 @@
       },
       {
         "service_id": "night-homevisit",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "night-homevisit",
@@ -7011,7 +7011,7 @@
       },
       {
         "service_id": "care-management",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "care-management",
@@ -7035,7 +7035,7 @@
       },
       {
         "service_id": "preventive-support",
-        "source_family": "long_term_care_insurance_act"
+        "source_family": "care_insurance_act"
       },
       {
         "service_id": "preventive-support",
@@ -7159,7 +7159,7 @@
     "currentness_gaps": [
       {
         "service_id": "dayservice",
-        "source_family": "long_term_care_insurance_act",
+        "source_family": "care_insurance_act",
         "state": "PARTIAL"
       },
       {
@@ -7199,7 +7199,7 @@
       },
       {
         "service_id": "homevisit",
-        "source_family": "long_term_care_insurance_act",
+        "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -7351,7 +7351,7 @@
     "verification_gaps": [
       {
         "service_id": "homevisit",
-        "source_family": "long_term_care_insurance_act",
+        "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -7380,7 +7380,7 @@
     "publication_gaps": [
       {
         "service_id": "homevisit",
-        "source_family": "long_term_care_insurance_act",
+        "source_family": "care_insurance_act",
         "state": "BLOCKED"
       },
       {
