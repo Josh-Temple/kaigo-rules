@@ -8,10 +8,12 @@ on:
       - "data/services/*/standards-interpretation-scope.json"
       - "data/services/*/standards-interpretation-staging.json"
       - "scripts/verify_standards_interpretation_sources_independent.py"
+      - "scripts/pin_standards_interpretation_source_inventory.py"
+      - "scripts/validate_standards_interpretation_source_inventory.py"
       - ".github/workflows/verify-standards-interpretation-sources.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify:
@@ -19,12 +21,36 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.13"
       - name: Install PDF text extractor
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Detect current pinned receipts
+        id: receipts
+        shell: bash
+        run: |
+          current=true
+          for spec in \
+            "community-dayservice:21" \
+            "regular-round:21" \
+            "night-homevisit:25" \
+            "care-management:32" \
+            "preventive-support:34"; do
+            service="${spec%%:*}"
+            expected="${spec##*:}"
+            if ! python scripts/validate_standards_interpretation_source_inventory.py \
+              --service-id "$service" --expected-items "$expected"; then
+              current=false
+            fi
+          done
+          echo "current=$current" >> "$GITHUB_OUTPUT"
       - name: Re-fetch and independently inventory official sources
+        id: verify_sources
+        if: steps.receipts.outputs.current != 'true'
+        continue-on-error: true
         shell: bash
         run: |
           set -uo pipefail
@@ -45,9 +71,67 @@ jobs:
           done
           exit "$rc"
       - name: Upload independent source-inventory reports
-        if: always()
+        if: steps.receipts.outputs.current != 'true' && always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: standards-interpretation-source-inventory
           path: /tmp/standards-interpretation-source-inventory/*.json
           if-no-files-found: error
+      - name: Fail on source inventory differences
+        if: steps.receipts.outputs.current != 'true' && steps.verify_sources.outcome == 'failure'
+        run: exit 1
+      - name: Pin successful source-inventory receipts
+        if: steps.receipts.outputs.current != 'true' && steps.verify_sources.outcome == 'success'
+        shell: bash
+        env:
+          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          AUDIT_RUN_ID: ${{ github.run_id }}
+          AUDIT_WORKFLOW: ${{ github.workflow }}
+        run: |
+          set -euo pipefail
+          for spec in \
+            "community-dayservice:21" \
+            "regular-round:21" \
+            "night-homevisit:25" \
+            "care-management:32" \
+            "preventive-support:34"; do
+            service="${spec%%:*}"
+            expected="${spec##*:}"
+            python scripts/pin_standards_interpretation_source_inventory.py \
+              --service-id "$service" \
+              --expected-items "$expected" \
+              --report "/tmp/standards-interpretation-source-inventory/${service}.json" \
+              --run-id "$AUDIT_RUN_ID" \
+              --head-sha "$AUDIT_HEAD_SHA" \
+              --workflow "$AUDIT_WORKFLOW"
+          done
+      - name: Validate pinned source-inventory receipts
+        if: steps.receipts.outputs.current == 'true' || steps.verify_sources.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          for spec in \
+            "community-dayservice:21" \
+            "regular-round:21" \
+            "night-homevisit:25" \
+            "care-management:32" \
+            "preventive-support:34"; do
+            service="${spec%%:*}"
+            expected="${spec##*:}"
+            python scripts/validate_standards_interpretation_source_inventory.py \
+              --service-id "$service" --expected-items "$expected"
+          done
+      - name: Commit pinned receipts to PR branch
+        if: github.event_name == 'pull_request' && steps.receipts.outputs.current != 'true' && steps.verify_sources.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/verification/standards-interpretation-source-inventory/*.json
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Pin standards interpretation source inventory receipts"
+          git push origin HEAD:"${{ github.head_ref }}"
