@@ -1,0 +1,116 @@
+{
+  "format_version": 2,
+  "service_id": "homenursing",
+  "layer": "standards_interpretation",
+  "document_id": "rouki25",
+  "document_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+  "notice_number": "平成11年9月17日 老企第25号",
+  "status": "HISTORICAL_SOURCE_INGESTION_DEFINED",
+  "source_section": "第五 訪問看護に関する基準",
+  "source_state": "OFFICIAL_HISTORICAL_HTML",
+  "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+  "currentness_state": "GAP_NOT_CURRENT_INTEGRATED_TEXT",
+  "human_review_state": "NOT_REVIEWED",
+  "boundary": {
+    "start_heading": "第五 訪問看護に関する基準",
+    "end_before_heading": "第六 訪問リハビリテーションに関する基準"
+  },
+  "groups": [
+    {
+      "number": "1",
+      "heading": "人員に関する基準",
+      "items": [
+        {
+          "id": "homenursing.rouki25.1.1.1",
+          "marker": "①",
+          "title": "看護婦等の員数（基準第六〇条）／指定訪問看護ステーションの場合（基準第六〇条第一項第一号）"
+        },
+        {
+          "id": "homenursing.rouki25.1.1.2",
+          "marker": "②",
+          "title": "看護婦等の員数（基準第六〇条）／指定訪問看護を担当する医療機関の場合（基準第六〇条第一項第二号）"
+        },
+        {
+          "id": "homenursing.rouki25.1.2",
+          "marker": "(2)",
+          "title": "指定訪問看護ステーションの管理者（基準第六一条）"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "heading": "設備に関する基準",
+      "items": [
+        {
+          "id": "homenursing.rouki25.2.1",
+          "marker": "(1)",
+          "title": "指定訪問看護ステーションの場合（基準第六二条第一項）"
+        },
+        {
+          "id": "homenursing.rouki25.2.2",
+          "marker": "(2)",
+          "title": "指定訪問看護を担当する医療機関の場合（基準第六二条第二項）"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "heading": "運営に関する基準",
+      "items": [
+        {
+          "id": "homenursing.rouki25.3.1",
+          "marker": "(1)",
+          "title": "サービス提供困難時の対応"
+        },
+        {
+          "id": "homenursing.rouki25.3.2",
+          "marker": "(2)",
+          "title": "健康手帳への記載"
+        },
+        {
+          "id": "homenursing.rouki25.3.3",
+          "marker": "(3)",
+          "title": "利用料等の受領"
+        },
+        {
+          "id": "homenursing.rouki25.3.4",
+          "marker": "(4)",
+          "title": "指定訪問看護の基本取扱方針及び具体的取扱方針"
+        },
+        {
+          "id": "homenursing.rouki25.3.5",
+          "marker": "(5)",
+          "title": "主治医との関係（基準第六九条）"
+        },
+        {
+          "id": "homenursing.rouki25.3.6",
+          "marker": "(6)",
+          "title": "訪問看護計画書及び訪問看護報告書の作成"
+        },
+        {
+          "id": "homenursing.rouki25.3.7",
+          "marker": "(7)",
+          "title": "準用"
+        }
+      ]
+    }
+  ],
+  "amendment_evidence": {
+    "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+    "source_label": "令和6年度 居宅サービス基準解釈通知 新旧対照表",
+    "handling": "SOURCE_SPECIFIC_PATCH_EVIDENCE_ONLY",
+    "policy": "部分改正資料の「略」「新設」「削る」を旧HTMLへ機械適用して現行統合本文を生成しない。現行性は別レイヤーで確認する。"
+  },
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-03-B2_v1.md",
+    "detail_task_range": "KR2-03-B001..KR2-03-B012",
+    "expected_principal_items": 12
+  },
+  "safety": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
