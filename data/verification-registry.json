@@ -314,6 +314,34 @@
       "scope_kind": "GLOBAL"
     },
     {
+      "id": "rouki25-homebath",
+      "title": "老企第25号 訪問入浴介護 旧HTML 13項目",
+      "content_verification": {
+        "status": "PASS",
+        "kind": "INDEPENDENT_HISTORICAL_SOURCE_MATCH",
+        "items": 13,
+        "evidence": "data/homebath-rouki25-historical-independent-audit.json"
+      },
+      "currentness": {
+        "status": "GAP_HISTORICAL_SOURCE_ONLY",
+        "note": "公式旧HTMLとの本文一致は確認済み。部分改正資料は別証拠であり、現行統合本文は未構成。"
+      },
+      "monitoring": {
+        "status": "ACTIVE",
+        "workflow": ".github/workflows/verify-homebath-rouki25-historical-independent.yml"
+      },
+      "human_review": {
+        "status": "NOT_REVIEWED",
+        "reviewed_items": 0,
+        "total_items": 13
+      },
+      "assurance": "HISTORICAL_SOURCE_TEXT_PASS_CURRENTNESS_GAP",
+      "service_ids": [
+        "homebath"
+      ],
+      "scope_kind": "SERVICE_SPECIFIC"
+    },
+    {
       "id": "rouki25-homevisit",
       "title": "老企第25号 訪問介護 旧HTML 35項目",
       "content_verification": {
@@ -559,9 +587,9 @@
   "summary": {
     "services_total": 13,
     "active_services_total": 2,
-    "layers_total": 12,
-    "independent_audit_or_reconstruction": 10,
-    "currentness_or_live_source_monitoring_active": 12,
+    "layers_total": 13,
+    "independent_audit_or_reconstruction": 11,
+    "currentness_or_live_source_monitoring_active": 13,
     "source_freshness_only_without_independent_content_audit": 0,
     "human_verified_layers": 0,
     "semantic_or_cross_layer_relations_total": 188,
