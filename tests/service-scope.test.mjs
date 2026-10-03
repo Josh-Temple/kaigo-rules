@@ -241,20 +241,36 @@ test("dayrehab Article 119 incorporated nodes have an explicit separate basis", 
   ]);
 });
 
-test("shortstay-life remains registered but unscoped", () => {
-  const unresolved = serviceApplicability(
-    "shortstay-life",
+test("shortstay-life Ordinance 37 direct scope is explicit and isolated", () => {
+  const direct = resolveServiceScope(
     "ordinance37",
-    "ordinance37.article.9999",
+    "ordinance37.article.120.p.1",
   );
-  assert.equal(unresolved.applicable, false);
-  assert.equal(unresolved.reason, "NO_COMMITTED_SCOPE_EVIDENCE");
-
-  const outsideExistingScope = serviceApplicability(
-    "shortstay-life",
-    "ordinance37",
-    "ordinance37.article.110",
+  assert.deepEqual(direct.memberships, [
+    { service_id: "shortstay-life", basis: "DIRECT_SCOPE" },
+  ]);
+  assert.equal(
+    isRecordApplicableToService(
+      "shortstay-life",
+      "ordinance37",
+      "ordinance37.article.140-32",
+    ),
+    true,
   );
-  assert.equal(outsideExistingScope.applicable, false);
-  assert.equal(outsideExistingScope.reason, "OUTSIDE_SERVICE_SCOPE");
+  assert.equal(
+    serviceApplicability(
+      "shortstay-life",
+      "ordinance37",
+      "ordinance37.article.110",
+    ).reason,
+    "OUTSIDE_SERVICE_SCOPE",
+  );
+  assert.equal(
+    serviceApplicability(
+      "shortstay-life",
+      "ordinance37",
+      "ordinance37.article.9999",
+    ).reason,
+    "OUTSIDE_SERVICE_SCOPE",
+  );
 });
