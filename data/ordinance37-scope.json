@@ -114,7 +114,7 @@
     "108",
     "109"
   ],
-  "note": "初期DBの通所介護scopeを維持しつつ、共有法令コーパスとして訪問介護の通常指定と通所リハビリテーション第八章（第110条〜第119条、第118条の2を含む）を追加取得する。検証・公開状態はサービスごとに分離する。",
+  "note": "既存ID・service scopeとの互換性を維持しつつ、省令37号の共有本文は本則全体を一度だけ収載する。service applicability / 準用 / 読替え / verification / currentness は別scope・relation・receiptで扱う。既存nodeのservice_scope/applicable_viaは互換性のため残すが、共有コーパスの正本となる適用関係ではない。",
   "additional_service_direct_scopes": [
     {
       "service_id": "homevisit",
@@ -181,5 +181,12 @@
       "source_scope": "data/services/dayrehab/ordinance37-scope.json",
       "policy": "第八章の11条を共有コーパスへ追加し、本文は複製しない。公開・独立検証・currentness・human reviewはdayrehabとして別管理する。"
     }
-  ]
+  ],
+  "corpus_policy": {
+    "mode": "FULL_MAIN_PROVISION",
+    "source_layer": "SHARED_NATIONAL_CORPUS",
+    "service_applicability_source": "SEPARATE_SCOPE_AND_RELATIONS",
+    "legacy_node_applicability_fields": "COMPATIBILITY_ONLY_NOT_CANONICAL",
+    "automatic_verification_promotion_allowed": false
+  }
 }
