@@ -45,7 +45,7 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
         self.assertEqual(coverage["numbered_child_units_checked"], 55)
         self.assertEqual(
             coverage["verdicts"],
-            {"PASS": 21, "PARTIAL": 13, "GAP": 0, "FAIL": 0},
+            {"PASS": 32, "PARTIAL": 2, "GAP": 0, "FAIL": 0},
         )
         self.assertEqual(len(self.audit["items"]), 34)
         self.assertFalse(
@@ -122,7 +122,7 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
         )
         self.assertEqual(
             roles["work-control-source-4"],
-            "HISTORICAL_2006_FULL_NOTICE_REFERENCE",
+            "DIRECT_HISTORICAL_ITEM_BODY_EVIDENCE_VERSION_SEPARATED_NOT_CURRENTNESS_PROOF",
         )
         self.assertEqual(
             roles["work-control-source-5"],
@@ -136,6 +136,43 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
             roles["additional-official-item1-evidence"],
             "DIRECT_ITEM_BODY_EVIDENCE_NOT_CURRENTNESS_PROOF",
         )
+
+    def test_residual_resolution_keeps_version_and_scope_boundaries(self):
+        rows = {row["task_id"]: row for row in self.audit["items"]}
+        self.assertEqual(
+            {row["task_id"] for row in self.audit["items"] if row["verdict"] == "PARTIAL"},
+            {"KR2-10-B016", "KR2-10-B033"},
+        )
+        b008 = rows["KR2-10-B008"]
+        self.assertEqual(b008["verdict"], "PASS")
+        self.assertEqual(len(b008["child_item_body_evidence"]), 12)
+        self.assertTrue(
+            all(
+                evidence["directly_supports_child_item_body"]
+                and evidence["proves_currentness"] is False
+                and evidence["later_final_version_locator"]
+                for evidence in b008["child_item_body_evidence"]
+            )
+        )
+        historical_children = [
+            evidence
+            for evidence in b008["child_item_body_evidence"]
+            if evidence["source_manifest_id"] == "work-control-source-4"
+        ]
+        self.assertTrue(historical_children)
+        self.assertTrue(
+            all(evidence["earlier_version_locator"] for evidence in historical_children)
+        )
+        self.assertEqual(
+            b008["range_task_decision"],
+            "PASS_CONTENT_EVIDENCE_MATCH_ONLY_WITH_12_CHILDREN_CHECKED_NO_STAGING_SPLIT",
+        )
+        proposal = self.audit["out_of_staging_source_observations"][0][
+            "proposed_scope_expansion"
+        ]
+        self.assertEqual(proposal["status"], "PROPOSED_SCOPE_EXPANSION")
+        self.assertEqual(proposal["path"], "第二/4/(1)/㉗")
+        self.assertEqual(self.staging["task_count"], 34)
 
     def test_service_specific_verifier_passes(self):
         result = subprocess.run(
