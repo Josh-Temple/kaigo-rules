@@ -1,0 +1,1074 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-support",
+  "source_family": "preventive_support_standards_interpretation",
+  "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION",
+  "audit_result": "PARTIAL_WITH_GAPS",
+  "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
+  "scope_boundary": "EXISTING_STAGING_TASKS_ONLY",
+  "coverage": {
+    "task_total": 34,
+    "structured_text_raw_entries": 34,
+    "numbered_child_units_checked": 55,
+    "verdicts": {
+      "PASS": 20,
+      "PARTIAL": 13,
+      "GAP": 1,
+      "FAIL": 0
+    }
+  },
+  "verdict_definition": {
+    "PASS": "保存されたtask identity/path/heading/content_summaryが令和6年度公式新旧対照の新欄で直接支持される。現行統合本文・法的現行性の確立は意味しない。",
+    "PARTIAL": "identity又は要約の一部は支持されるが、令和6年度資料の略記又は集約粒度のためitem-body全体は直接確認できない。旧版通知・基準省令は版を分離して補助証拠としてのみ使用。",
+    "GAP": "推測なしでは保存対象の現行item-bodyを一意に再構成できない。",
+    "FAIL": "保存された構造化内容が確認した公式一次資料と矛盾する。"
+  },
+  "safety": {
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "publication_permitted": false,
+    "public_route_enabled": false,
+    "omitted_text_reconstructed": false,
+    "service_scope_expanded": false,
+    "package_blocker_cleared": false
+  },
+  "source_versions": [
+    {
+      "source_manifest_id": "r6-final-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+      "scope_role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "audit_role": "PRIMARY_R6_ITEM_BODY_CHANGE_EVIDENCE_NOT_INTEGRATED_CURRENT_TEXT",
+      "independently_accessed_for_this_audit": true
+    },
+    {
+      "source_manifest_id": "r6-additional-official-evidence",
+      "url": "https://www.mhlw.go.jp/content/12300000/001246390.pdf",
+      "scope_role": "ADDITIONAL_OFFICIAL_AMENDMENT_EVIDENCE",
+      "audit_role": "SUPPLEMENTAL_R6_OFFICIAL_EVIDENCE_NOT_SILENTLY_MERGED",
+      "independently_accessed_for_this_audit": true
+    },
+    {
+      "source_manifest_id": "r6-amendment-page",
+      "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "scope_role": "OFFICIAL_DISCOVERY_PAGE",
+      "audit_role": "OFFICIAL_DISCOVERY_INDEX_ONLY",
+      "independently_accessed_for_this_audit": true
+    },
+    {
+      "source_manifest_id": "work-control-source-4",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+      "scope_role": "WORK_CONTROL_PRIMARY_SOURCE_REFERENCE",
+      "audit_role": "HISTORICAL_2006_FULL_NOTICE_REFERENCE",
+      "independently_accessed_for_this_audit": true
+    },
+    {
+      "source_manifest_id": "work-control-source-5",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1",
+      "scope_role": "HISTORICAL_FULL_TEXT_REFERENCE",
+      "audit_role": "UNDERLYING_STANDARD_HTML_REFERENCE_NOT_NOTICE_BODY",
+      "independently_accessed_for_this_audit": true
+    }
+  ],
+  "source_inventory_receipt": {
+    "audit_result": "PASS_BOUNDED_SCOPE_ONLY",
+    "check_level": "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
+    "referenced_sources": 3,
+    "note": "既存receiptはsource availability/service anchorのみ。item-body/currentnessは証明しない。scope manifestは5 sourceだが、receiptのrequired_sourcesはstaging参照3 sourceのみを数える。"
+  },
+  "work_control_observation": {
+    "source": "Kaigo Rules Structure Queue v1 (fresh read during audit)",
+    "task_id": "KR2-10-E006",
+    "layer": "PACKAGE",
+    "task_type": "CONTRACT_PRECHECK",
+    "observed_status": "BLOCKED",
+    "separation_rule": "NOTICE_ITEM_BODY_VERIFICATION_DOES_NOT_CLEAR_PACKAGE_BLOCKER",
+    "note": "Queue上のblockerは現在もBLOCKED。保存された理由文には旧main SHA時点の登録/scope不足が含まれるため、原因の現在性はIntegratorが別工程で再precheckする。"
+  },
+  "items": [
+    {
+      "task_id": "KR2-10-B001",
+      "staging_id": "preventive-support.notice.001",
+      "path": "第二/1",
+      "heading": "基本方針",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/1"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／1 基本方針",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B002",
+      "staging_id": "preventive-support.notice.002",
+      "path": "第二/2/(1)",
+      "heading": "担当職員の員数",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/2/(1)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／2 人員に関する基準 > (1) 担当職員の員数",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B003",
+      "staging_id": "preventive-support.notice.003",
+      "path": "第二/2/(2)",
+      "heading": "管理者",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/2/(2)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／2 人員に関する基準 > (2) 管理者",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B004",
+      "staging_id": "preventive-support.notice.004",
+      "path": "第二/2/(3)",
+      "heading": "用語の定義",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/2/(3)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_MIXED_EXPLICIT_AND_OMITTED_DEFINITION_SET",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／2 人員に関する基準 > (3) 用語の定義",
+      "evidence_support_note": "令和6年度新旧対照の新欄では用語定義の①・③が明示される一方、②は略記。平成18年通知全文は②を含むが歴史版であり、版を分離したままなら grouped summary を支持できる。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B005",
+      "staging_id": "preventive-support.notice.005",
+      "path": "第二/3/(1)",
+      "heading": "本文未復元",
+      "verdict": "GAP",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(1)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "GAP",
+      "content_summary_check": "GAP",
+      "evidence_mode": "R6_OMITTED_CURRENT_ITEM_IDENTITY_NOT_UNIQUELY_RECOVERABLE",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (1) （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行側(1)は「略」。平成18年通知では(1)が「内容及び手続きの説明及び同意」だが、令和6年度資料では同見出しが(2)に位置するため、現行(1)本文を一意に復元できない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B006",
+      "staging_id": "preventive-support.notice.006",
+      "path": "第二/3/(2)",
+      "heading": "内容及び手続きの説明及び同意",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(2)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (2) 内容及び手続きの説明及び同意",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B007",
+      "staging_id": "preventive-support.notice.007",
+      "path": "第二/3/(3)",
+      "heading": "提供拒否の禁止",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(3)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (3) 提供拒否の禁止",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B008",
+      "staging_id": "preventive-support.notice.008",
+      "path": "第二/3/(4)-(15)",
+      "heading": "令和6年度改正資料で明示範囲が限定される運営基準群",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 12,
+      "checked_child_locators": [
+        "第二/3/(4)",
+        "第二/3/(5)",
+        "第二/3/(6)",
+        "第二/3/(7)",
+        "第二/3/(8)",
+        "第二/3/(9)",
+        "第二/3/(10)",
+        "第二/3/(11)",
+        "第二/3/(12)",
+        "第二/3/(13)",
+        "第二/3/(14)",
+        "第二/3/(15)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PARTIAL",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_MIXED_EXPLICIT_AND_OMITTED_CHILD_RANGE",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (4)〜(15) （令和6年度改正資料で明示範囲が限定されるため個別見出しの補完なし）",
+      "evidence_support_note": "令和6年度新旧対照では(4)〜(15)の一部見出し・本文が明示され、他は略記。range-only summary は範囲としては支持されるが、12子項目のitem-body supportは混在し、現状の1task表現では個別一致を完結できない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B009",
+      "staging_id": "preventive-support.notice.009",
+      "path": "第二/3/(16)",
+      "heading": "設備及び備品等",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(16)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (16) 設備及び備品等",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B010",
+      "staging_id": "preventive-support.notice.010",
+      "path": "第二/3/(17)",
+      "heading": "感染症の予防及びまん延の防止のための措置",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(17)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (17) （略）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B011",
+      "staging_id": "preventive-support.notice.011",
+      "path": "第二/3/(18)",
+      "heading": "掲示",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(18)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (18) 掲示",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B012",
+      "staging_id": "preventive-support.notice.012",
+      "path": "第二/3/(19)-(20)",
+      "heading": "秘密保持等／利益収受の禁止等",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 2,
+      "checked_child_locators": [
+        "第二/3/(19)",
+        "第二/3/(20)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (19)・(20) （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B013",
+      "staging_id": "preventive-support.notice.013",
+      "path": "第二/3/(21)",
+      "heading": "苦情処理",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(21)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (21) 苦情処理",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B014",
+      "staging_id": "preventive-support.notice.014",
+      "path": "第二/3/(22)-(23)",
+      "heading": "事故発生時の対応／会計の区分",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 2,
+      "checked_child_locators": [
+        "第二/3/(22)",
+        "第二/3/(23)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (22)・(23) （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B015",
+      "staging_id": "preventive-support.notice.015",
+      "path": "第二/3/(24)",
+      "heading": "虐待の防止",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(24)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (24) 虐待の防止",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B016",
+      "staging_id": "preventive-support.notice.016",
+      "path": "第二/3/(25)",
+      "heading": "記録の整備",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/3/(25)"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (25) （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B017",
+      "staging_id": "preventive-support.notice.017",
+      "path": "第二/4/(1)/①",
+      "heading": "担当職員による介護予防サービス計画の作成",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/①"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ① 担当職員による介護予防サービス計画の作成（基準第30条第1号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B018",
+      "staging_id": "preventive-support.notice.018",
+      "path": "第二/4/(1)/②",
+      "heading": "指定介護予防支援の基本的留意点",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/②"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ② （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B019",
+      "staging_id": "preventive-support.notice.019",
+      "path": "第二/4/(1)/③",
+      "heading": "身体的拘束等に関する規定",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/③"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ③ 身体的拘束等に関する規定（基準第30条第2の2号・第2の3号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B020",
+      "staging_id": "preventive-support.notice.020",
+      "path": "第二/4/(1)/④-⑨",
+      "heading": "計画作成前半のケアマネジメント過程",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 6,
+      "checked_child_locators": [
+        "第二/4/(1)/④",
+        "第二/4/(1)/⑤",
+        "第二/4/(1)/⑥",
+        "第二/4/(1)/⑦",
+        "第二/4/(1)/⑧",
+        "第二/4/(1)/⑨"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ④〜⑨ （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B021",
+      "staging_id": "preventive-support.notice.021",
+      "path": "第二/4/(1)/⑩",
+      "heading": "サービス担当者会議等による専門的意見の聴取",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/⑩"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑩ サービス担当者会議等による専門的意見の聴取（第9号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B022",
+      "staging_id": "preventive-support.notice.022",
+      "path": "第二/4/(1)/⑪",
+      "heading": "介護予防サービス計画の説明及び同意",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/⑪"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑪ （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B023",
+      "staging_id": "preventive-support.notice.023",
+      "path": "第二/4/(1)/⑫",
+      "heading": "介護予防サービス計画の交付",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/⑫"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑫ 介護予防サービス計画の交付（第11号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B024",
+      "staging_id": "preventive-support.notice.024",
+      "path": "第二/4/(1)/⑬",
+      "heading": "担当者に対する個別サービス計画の提出依頼",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/⑬"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑬ 担当者に対する個別サービス計画の提出依頼（第12号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B025",
+      "staging_id": "preventive-support.notice.025",
+      "path": "第二/4/(1)/⑭-⑯",
+      "heading": "計画実施状況の把握・評価等",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 3,
+      "checked_child_locators": [
+        "第二/4/(1)/⑭",
+        "第二/4/(1)/⑮",
+        "第二/4/(1)/⑯"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑭〜⑯ （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B026",
+      "staging_id": "preventive-support.notice.026",
+      "path": "第二/4/(1)/⑰",
+      "heading": "モニタリングの実施",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/⑰"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑰ モニタリングの実施（第16号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B027",
+      "staging_id": "preventive-support.notice.027",
+      "path": "第二/4/(1)/⑱",
+      "heading": "介護予防サービス計画変更の必要性についての専門的意見の聴取",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/⑱"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑱ （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B028",
+      "staging_id": "preventive-support.notice.028",
+      "path": "第二/4/(1)/⑲",
+      "heading": "介護予防サービス計画の変更",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/⑲"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑲ 介護予防サービス計画の変更（第18号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B029",
+      "staging_id": "preventive-support.notice.029",
+      "path": "第二/4/(1)/⑳-㉑",
+      "heading": "介護保険施設への紹介等／退院・退所時の連携",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 2,
+      "checked_child_locators": [
+        "第二/4/(1)/⑳",
+        "第二/4/(1)/㉑"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-4",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ⑳・㉑ （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B030",
+      "staging_id": "preventive-support.notice.030",
+      "path": "第二/4/(1)/㉒",
+      "heading": "主治の医師等の意見等",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/㉒"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ㉒ 主治の医師等の意見等（第21号・第21号の2・第22号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B031",
+      "staging_id": "preventive-support.notice.031",
+      "path": "第二/4/(1)/㉓",
+      "heading": "介護予防短期入所生活介護・短期入所療養介護の計画への位置付け",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/㉓"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ㉓ （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B032",
+      "staging_id": "preventive-support.notice.032",
+      "path": "第二/4/(1)/㉔",
+      "heading": "介護予防福祉用具貸与及び特定介護予防福祉用具販売の介護予防サービス計画への反映",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/㉔"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ㉔ 介護予防福祉用具貸与及び特定介護予防福祉用具販売の介護予防サービス計画への反映（第24号・第25号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B033",
+      "staging_id": "preventive-support.notice.033",
+      "path": "第二/4/(1)/㉕",
+      "heading": "認定審査会意見等の反映・要介護移行時の連携",
+      "verdict": "PARTIAL",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/㉕"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PARTIAL",
+      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ㉕ （略）",
+      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "current_integrated_notice_body_claimed": false
+    },
+    {
+      "task_id": "KR2-10-B034",
+      "staging_id": "preventive-support.notice.034",
+      "path": "第二/4/(1)/㉖",
+      "heading": "地域ケア会議への協力",
+      "verdict": "PASS",
+      "numbered_child_units_checked": 1,
+      "checked_child_locators": [
+        "第二/4/(1)/㉖"
+      ],
+      "source_url_check": "PASS",
+      "source_locator_check": "PASS",
+      "content_summary_check": "PASS",
+      "evidence_mode": "R6_NEW_SIDE_DIRECT",
+      "stored_source_manifest_ids": [
+        "r6-final-comparison",
+        "work-control-source-5"
+      ],
+      "stored_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
+      ],
+      "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ㉖ 地域ケア会議への協力（第28号）",
+      "evidence_support_note": "令和6年度新旧対照の新欄に、保存されたpath/headingとcontent_summaryを直接支える項目本文又は変更後本文が明示される。",
+      "current_integrated_notice_body_claimed": false
+    }
+  ],
+  "unresolved_notice_gaps": [
+    {
+      "task_id": "KR2-10-B005",
+      "path": "第二/3/(1)",
+      "kind": "PRIMARY_TEXT_NOT_RECOVERED",
+      "note": "令和6年度新旧対照の現行(1)は略記で、平成18年版(1)をそのまま現行(1)へ移せない。"
+    },
+    {
+      "task_id": "KR2-10-B008",
+      "path": "第二/3/(4)-(15)",
+      "kind": "CHILD_LEVEL_MIXED_EXPLICIT_AND_OMITTED",
+      "note": "12子項目のうち令和6年度資料で明示されるものと略記されるものが混在する。range-only stagingは保持し、推測分割はしていない。"
+    },
+    {
+      "kind": "CURRENT_INTEGRATED_NOTICE_TEXT_NOT_ESTABLISHED",
+      "note": "令和6年度新旧対照・平成18年通知全文・基準省令を合成して現行統合通知本文とはしていない。"
+    }
+  ],
+  "out_of_staging_source_observations": [
+    {
+      "source_manifest_id": "r6-final-comparison",
+      "locator": "第二/4/(1)/㉗ 市町村長に対する情報の提供（第29条）",
+      "observation": "令和6年度新旧対照の新欄には㉖の後に㉗が明示されるが、現staging detail rangeはB001..B034で㉖まで。",
+      "action": "INTEGRATOR_FOLLOWUP_ONLY_NO_SCOPE_EXPANSION_IN_THIS_BRANCH"
+    }
+  ],
+  "integrator_followup": [
+    {
+      "id": "RECONCILE_REQUIRED_SOURCE_INVENTORY_COVERAGE",
+      "note": "共通source inventory verifierはstagingで参照されたURLだけを巡回するため、scope manifestでrequired=trueの5 sourceのうちreceiptは3 sourceのみをrequiredとして数えている。今回5 sourceは独立にアクセス確認したが、共通validatorの意味論はIntegratorで整理する。"
+    },
+    {
+      "id": "RECONCILE_R6_ITEM_27_SCOPE",
+      "note": "令和6年度新旧対照に明示された㉗と現staging上限㉖の差を、scope拡張せず別工程で確認する。"
+    },
+    {
+      "id": "REVIEW_B008_CHILD_GRANULARITY",
+      "note": "第二/3/(4)-(15)は公式資料で明示/略記が混在するため、公開前に子項目粒度へ分解すべきか検討する。"
+    },
+    {
+      "id": "CLARIFY_WORK_CONTROL_SOURCE_5_ROLE",
+      "note": "work-control-source-5は解釈通知本文ではなく厚生労働省令第37号の基準本文。notice-body evidenceとunderlying-standard evidenceを明示的に区別する。"
+    },
+    {
+      "id": "RECHECK_PACKAGE_CONTRACT_PRECHECK_SEPARATELY",
+      "note": "KR2-10-E006はNOTICE判定で解除しない。現在のRepository状態を使ったPACKAGE precheckを別工程で再実行する。"
+    }
+  ],
+  "input_git_blob_shas_at_audit": {
+    "data/services/preventive-support.json": "f107faa8c632abef34cc8be499b7c48bd9fd1329",
+    "data/services/preventive-support/standards-interpretation-scope.json": "43685a2c4cc822d73ecc64e0b619b3b5f4f46cd4",
+    "data/services/preventive-support/standards-interpretation-staging.json": "c83cd6b5918fdebe11fdf4fb61335dcb36ddc614",
+    "data/verification/standards-interpretation-source-inventory/preventive-support.json": "6c219849ae62894c8ea0363646228487fea973b0"
+  }
+}
