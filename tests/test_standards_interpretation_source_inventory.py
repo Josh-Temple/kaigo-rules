@@ -35,6 +35,49 @@ class StandardsInterpretationSourceInventoryContractTest(unittest.TestCase):
                 self.assertFalse(check["proves_currentness"])
                 self.assertFalse(check["permits_publication"])
 
+    def test_pinned_receipts_cover_every_manifest_required_source(self):
+        for service_id in CASES:
+            with self.subTest(service_id=service_id):
+                scope = json.loads(
+                    (
+                        ROOT
+                        / f"data/services/{service_id}/standards-interpretation-scope.json"
+                    ).read_text(encoding="utf-8")
+                )
+                receipt = json.loads(
+                    (
+                        ROOT
+                        / "data/verification/standards-interpretation-source-inventory"
+                        / f"{service_id}.json"
+                    ).read_text(encoding="utf-8")
+                )
+                required_urls = {
+                    row["url"]
+                    for row in scope.get("source_manifest", [])
+                    if row.get("url")
+                    and row.get("required_for_source_inventory") is True
+                }
+                source_rows = {
+                    row["url"]: row
+                    for row in receipt.get("sources", [])
+                    if row.get("url")
+                }
+                self.assertEqual(
+                    receipt["coverage"]["manifest_required_sources"],
+                    len(required_urls),
+                )
+                self.assertEqual(
+                    receipt["coverage"]["required_sources"],
+                    len(required_urls),
+                )
+                self.assertTrue(required_urls.issubset(source_rows))
+                for url in required_urls:
+                    self.assertTrue(
+                        source_rows[url]["required_for_source_inventory"],
+                        url,
+                    )
+                    self.assertEqual(source_rows[url]["fetch"], "PASS", url)
+
 
 if __name__ == "__main__":
     unittest.main()
