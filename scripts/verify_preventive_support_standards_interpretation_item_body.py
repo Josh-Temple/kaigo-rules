@@ -39,7 +39,7 @@ SOURCE_INVENTORY_PATH = (
     ROOT
     / "data/verification/standards-interpretation-source-inventory/preventive-support.json"
 )
-EXPECTED_COUNTS = {"PASS": 32, "PARTIAL": 2, "GAP": 0, "FAIL": 0}
+EXPECTED_COUNTS = {"PASS": 33, "PARTIAL": 1, "GAP": 0, "FAIL": 0}
 EXPECTED_TASKS = 34
 EXPECTED_CHILD_UNITS = 55
 USER_AGENT = "kaigo-rules-preventive-support-item-body/1.0"
@@ -236,7 +236,7 @@ def validate_receipt() -> tuple[dict, dict]:
     promoted_version_separated = {
         "KR2-10-B004", "KR2-10-B008", "KR2-10-B012", "KR2-10-B014",
         "KR2-10-B018", "KR2-10-B020", "KR2-10-B022", "KR2-10-B025",
-        "KR2-10-B027", "KR2-10-B029", "KR2-10-B031",
+        "KR2-10-B027", "KR2-10-B029", "KR2-10-B031", "KR2-10-B033",
     }
     rows_by_task = {row["task_id"]: row for row in rows}
     manifest_ids = {row.get("id") for row in scope.get("source_manifest", [])}
@@ -270,7 +270,7 @@ def validate_receipt() -> tuple[dict, dict]:
     remaining_partial = {
         row["task_id"] for row in rows if row.get("verdict") == "PARTIAL"
     }
-    if remaining_partial != {"KR2-10-B016", "KR2-10-B033"}:
+    if remaining_partial != {"KR2-10-B016"}:
         fail(f"unexpected remaining PARTIAL set: {sorted(remaining_partial)}")
 
     work_control = audit.get("work_control_observation", {})
