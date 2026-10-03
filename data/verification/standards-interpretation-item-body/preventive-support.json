@@ -1317,10 +1317,12 @@
       "evidence_mode": "DIRECT_NOTICE_BODY_VERSION_SEPARATED_AFTER_SCOPE_CORRECTION",
       "stored_source_manifest_ids": [
         "r6-final-comparison",
+        "work-control-source-4",
         "work-control-source-5"
       ],
       "stored_source_urls": [
         "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/14.pdf",
         "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
       ],
       "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／4 介護予防のための効果的な支援の方法に関する基準 > (1) 基準第30条に係る一連の介護予防支援業務 > ㉕ （略）",
@@ -1343,9 +1345,6 @@
           "directly_supports_staging_summary": false,
           "proves_currentness": false
         }
-      ],
-      "supplemental_verification_source_manifest_ids": [
-        "work-control-source-4"
       ],
       "scope_correction": {
         "status": "CORRECTED_FROM_PRIMARY_NOTICE_STRUCTURE",
