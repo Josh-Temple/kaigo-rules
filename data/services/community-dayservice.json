@@ -29,7 +29,7 @@
       "status": "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING",
       "source_family": "community_based_services_standards_interpretation",
       "principal_items": 21,
-      "note": "Repository staging 21項目のitem-body content/evidence matchを独立照合し、21 PASS / 0 PARTIAL / 0 GAP / 0 FAIL。item-bodyのみ成立。currentness、human review、公開可否、routeは未確認・未昇格。",
+      "note": "Repository staging 21項目のitem-body content/evidence matchは21 PASS / 0 PARTIAL / 0 GAP / 0 FAIL。currentnessは独立検証済みだが、現行統合解釈通知本文を確認できずamendment chainも閉じていないためNOT_ESTABLISHED/HOLD。human review、公開可否、routeは未昇格。",
       "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
       "item_body_verification": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
       "item_body_verification_counts": {
@@ -38,7 +38,10 @@
         "GAP": 0,
         "FAIL": 0
       },
-      "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json"
+      "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json",
+      "currentness_verification": "HOLD_NOT_ESTABLISHED",
+      "currentness_verification_receipt": "data/verification/standards-interpretation-currentness/community-dayservice.json",
+      "currentness_verification_checked_date": "2026-10-03"
     }
   }
 }
