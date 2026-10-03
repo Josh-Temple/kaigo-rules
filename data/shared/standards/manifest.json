@@ -1,0 +1,112 @@
+{
+  "format_version": 1,
+  "source_family": "ministerial_standards",
+  "purpose": "Reusable national standards corpora. Service applicability, incorporation by reference, substitutions, verification, currentness and publication remain separate.",
+  "policies": {
+    "official_text_stored_once_per_law": true,
+    "service_layers_reference_node_ids": true,
+    "source_containment_is_not_service_applicability": true,
+    "corpus_verification_does_not_promote_service_verification": true,
+    "automatic_verification_promotion_allowed": false
+  },
+  "corpora": [
+    {
+      "corpus_id": "ordinance37",
+      "node_prefix": "ordinance37",
+      "law_id": "411M50000100037",
+      "law_num": "平成十一年厚生省令第三十七号",
+      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準",
+      "current_service_family": "designated_home_services",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION",
+      "storage": {
+        "kind": "LEGACY_ROOT_COMPATIBLE",
+        "nodes": "data/ordinance37-nodes.json",
+        "relations": "data/ordinance37-relations.json",
+        "meta": "data/ordinance37-meta.json"
+      }
+    },
+    {
+      "corpus_id": "community-based-standards",
+      "node_prefix": "standards34",
+      "law_id": "418M60000100034",
+      "law_num": "平成十八年厚生労働省令第三十四号",
+      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+      "current_service_family": "community_based_services",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION"
+    },
+    {
+      "corpus_id": "preventive-services-standards",
+      "node_prefix": "standards35",
+      "law_id": "418M60000100035",
+      "law_num": "平成十八年厚生労働省令第三十五号",
+      "title": "指定介護予防サービス等の事業の人員、設備及び運営並びに指定介護予防サービス等に係る介護予防のための効果的な支援の方法に関する基準",
+      "current_service_family": "preventive_services",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION"
+    },
+    {
+      "corpus_id": "preventive-community-based-standards",
+      "node_prefix": "standards36",
+      "law_id": "418M60000100036",
+      "law_num": "平成十八年厚生労働省令第三十六号",
+      "title": "指定地域密着型介護予防サービスの事業の人員、設備及び運営並びに指定地域密着型介護予防サービスに係る介護予防のための効果的な支援の方法に関する基準",
+      "current_service_family": "preventive_community_based_services",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION"
+    },
+    {
+      "corpus_id": "care-management-standards",
+      "node_prefix": "standards38",
+      "law_id": "411M50000100038",
+      "law_num": "平成十一年厚生省令第三十八号",
+      "title": "指定居宅介護支援等の事業の人員及び運営に関する基準",
+      "current_service_family": "care_management",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION"
+    },
+    {
+      "corpus_id": "preventive-support-standards",
+      "node_prefix": "standards-preventive-support",
+      "law_id": "418M60000100037",
+      "law_num": "平成十八年厚生労働省令第三十七号",
+      "title": "指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準",
+      "current_service_family": "preventive_support",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION"
+    },
+    {
+      "corpus_id": "elderly-welfare-facility-standards",
+      "node_prefix": "standards39",
+      "law_id": "411M50000100039",
+      "law_num": "平成十一年厚生省令第三十九号",
+      "title": "指定介護老人福祉施設の人員、設備及び運営に関する基準",
+      "current_service_family": "elderly_welfare_facilities",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION"
+    },
+    {
+      "corpus_id": "geriatric-health-services-facility-standards",
+      "node_prefix": "standards40",
+      "law_id": "411M50000100040",
+      "law_num": "平成十一年厚生省令第四十号",
+      "title": "介護老人保健施設の人員、施設及び設備並びに運営に関する基準",
+      "current_service_family": "geriatric_health_services_facilities",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION"
+    },
+    {
+      "corpus_id": "long-term-care-medical-facility-standards",
+      "node_prefix": "standards-medical-facility",
+      "law_id": "430M60000100005",
+      "law_num": "平成三十年厚生労働省令第五号",
+      "title": "介護医療院の人員、施設及び設備並びに運営に関する基準",
+      "current_service_family": "long_term_care_medical_facilities",
+      "status": "SHARED_CORPUS_FULL_MAIN_PROVISION"
+    }
+  ],
+  "historical_or_special": [
+    {
+      "corpus_id": "sanatorium-medical-facility-standards",
+      "law_id": "411M50000100041",
+      "law_num": "平成十一年厚生省令第四十一号",
+      "title": "指定介護療養型医療施設の人員、設備及び運営に関する基準",
+      "status": "HISTORICAL_REPEALED_NOT_CURRENT_BASELINE",
+      "ingestion": "NOT_INCLUDED_IN_CURRENT_SHARED_CORPUS_RUN",
+      "reason": "The designated long-term care sanatorium service is abolished; retain as an explicitly historical law family rather than mixing it with current service standards."
+    }
+  ]
+}
