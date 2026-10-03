@@ -1,0 +1,37 @@
+{
+  "format_version": 1,
+  "service_id": "welfare-equipment-rental",
+  "identity": {
+    "label": "福祉用具貸与",
+    "service_class": "HOME_SERVICE"
+  },
+  "readiness": "REGISTERED_NOT_INGESTED",
+  "ingestion_state": "REGISTERED_NOT_INGESTED",
+  "expected_source_families": [
+    "care_insurance_act",
+    "governing_standards_ordinance",
+    "standards_interpretation_notice",
+    "remuneration_notification",
+    "delegated_remuneration_criteria",
+    "fee_calculation_guidance",
+    "unit_price_regional_classification",
+    "national_qa",
+    "other_national_manuals_forms"
+  ],
+  "routing": {
+    "current_mode": "SERVICE_ROOT_RESERVED",
+    "legacy_entry_points": [],
+    "future_service_base_path": "/services/welfare-equipment-rental",
+    "future_service_base_enabled": false
+  },
+  "id_namespaces": {},
+  "scope_files": {},
+  "verification_layer_ids": [],
+  "publication_gate": {
+    "public_routes_enabled": false,
+    "content_ingested": false,
+    "independent_verification_complete": false,
+    "human_review_complete": false
+  },
+  "ingestion_layers": {}
+}

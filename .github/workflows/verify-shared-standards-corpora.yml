@@ -1,0 +1,82 @@
+name: Verify shared ministerial standards corpora
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "46 3 * * 1"
+  pull_request:
+    paths:
+      - "data/shared/standards/**"
+      - "data/ordinance37-*.json"
+      - "scripts/import_shared_standards_corpora.py"
+      - "scripts/build_shared_standards_service_relations.py"
+      - "scripts/verify_shared_standards_independent.py"
+      - "scripts/verify_shared_standards_source_freshness.py"
+      - "scripts/build_shared_standards_audit.py"
+      - "scripts/validate_shared_standards.py"
+      - ".github/workflows/verify-shared-standards-corpora.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/shared/standards/**"
+      - "data/ordinance37-*.json"
+      - "scripts/import_shared_standards_corpora.py"
+      - "scripts/build_shared_standards_service_relations.py"
+      - "scripts/verify_shared_standards_independent.py"
+      - "scripts/verify_shared_standards_source_freshness.py"
+      - "scripts/build_shared_standards_audit.py"
+      - "scripts/validate_shared_standards.py"
+      - ".github/workflows/verify-shared-standards-corpora.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+
+      - name: Check generated service relations and pinned provenance
+        run: |
+          python scripts/build_shared_standards_service_relations.py --check
+          python scripts/validate_shared_standards.py
+
+      - name: Independently reparse live e-Gov source text
+        id: content
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_shared_standards_independent.py --report shared-standards-independent.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Check source and revision freshness
+        id: freshness
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_shared_standards_source_freshness.py --report shared-standards-freshness.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: shared-standards-verification
+          path: |
+            shared-standards-independent.json
+            shared-standards-freshness.json
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: Fail on content or source drift
+        if: steps.content.outputs.exit_code != '0' || steps.freshness.outputs.exit_code != '0'
+        run: exit 1

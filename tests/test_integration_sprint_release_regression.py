@@ -71,10 +71,10 @@ class IntegrationSprintReleaseRegressionTest(unittest.TestCase):
             for case in self.fixture["cases"]
             if case["coverage"] == "scoped_counts"
         }
-        self.assertIn(r"67\s*共有コーパス条文", count_cases["IR-04"]["regex_text"])
-        self.assertIn(r"67\s*表示中の条文", count_cases["IR-04"]["regex_text"])
-        self.assertIn(r"11\s*共有コーパス条文", count_cases["IR-08"]["regex_text"])
-        self.assertIn(r"137\s*共有コーパスノード", count_cases["IR-08"]["regex_text"])
+        self.assertIn(r"275\s*共有コーパス条文", count_cases["IR-04"]["regex_text"])
+        self.assertIn(r"275\s*表示中の条文", count_cases["IR-04"]["regex_text"])
+        self.assertIn(r"238\s*共有コーパス条文", count_cases["IR-08"]["regex_text"])
+        self.assertIn(r"1671\s*共有コーパスノード", count_cases["IR-08"]["regex_text"])
 
     def test_faq_authority_requires_concrete_notice_source(self):
         case = next(row for row in self.fixture["cases"] if row["id"] == "IR-05")

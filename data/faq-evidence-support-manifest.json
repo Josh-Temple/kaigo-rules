@@ -19,12 +19,7 @@
       "canonical_route": "/rules/[article]",
       "mapping_policy": "ARTICLE_ROUTE_WHEN_IN_CANONICAL_SCOPE",
       "status_semantics": "FAQ_EVIDENCE_LOCAL_ONLY",
-      "canonical_scope_exceptions": [
-        {
-          "id": "ordinance37.article217.2",
-          "reason": "Article 217 is outside the current day-service Ordinance 37 canonical scope. Keep the curated FAQ evidence and official-source link without inventing a canonical DB route."
-        }
-      ]
+      "canonical_scope_exceptions": []
     },
     {
       "path": "data/notice-nodes.json",

@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "corpus_id": "community-based-standards",
+  "node_prefix": "standards34",
+  "law_id": "418M60000100034",
+  "law_num": "平成十八年厚生労働省令第三十四号",
+  "law_title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+  "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/418M60000100034",
+  "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/418M60000100034",
+  "source_page": "https://laws.e-gov.go.jp/law/418M60000100034",
+  "xml_sha256": "90741b00c7f04955f5359cef94c1d4c0fd4a0270cebed9d1878bce62ca4ecf55",
+  "revision_response_sha256": "6bb7c7b432867cf9aaa2ecce559d688f55f65a8f2d4f7716fed03758129d44e5",
+  "current_revision": {
+    "law_revision_id": "418M60000100034_20250401_506M60000100164",
+    "law_title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+    "amendment_law_id": "506M60000100164",
+    "amendment_law_num": "令和六年厚生労働省令第百六十四号",
+    "amendment_promulgate_date": "2024-12-27",
+    "amendment_enforcement_date": "2025-04-01",
+    "amendment_scheduled_enforcement_date": null,
+    "current_revision_status": "CurrentEnforced",
+    "repeal_status": "None",
+    "mission": "New",
+    "updated": "2025-04-02T08:11:37+09:00"
+  },
+  "revision_count": 10,
+  "scope": "FULL_MAIN_PROVISION",
+  "counts": {
+    "nodes_total": 1472,
+    "articles_total": 243,
+    "paragraphs_total": 717,
+    "items_total": 451,
+    "subitems_total": 61,
+    "contains_relations": 1229
+  },
+  "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
+  "corpus_verification_status": "IMPORTED_NEEDS_INDEPENDENT_CHECK",
+  "service_applicability_status": "SEPARATE_NOT_IMPLIED",
+  "human_review_status": "NOT_REVIEWED",
+  "automatic_verification_promotion_allowed": false
+}

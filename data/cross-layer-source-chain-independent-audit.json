@@ -3,11 +3,11 @@
   "scope": "careact-to-remuneration-and-ordinance37-source-chains",
   "audit_kind": "INDEPENDENT_CROSS_LAYER_SOURCE_CHAIN_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-09-30",
+  "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Verify cross-layer source chains independently",
-    "run_id": 36787107347,
-    "head_sha": "e07fc740b0cfcc18b1f923479c6cc1372898eec1",
+    "run_id": 37128089748,
+    "head_sha": "f150263210db70a6bcd7aea9861c92e9a8685671",
     "result": "PASS",
     "parsers": {
       "egov_xml": "python_xml_dom_minidom",
@@ -122,16 +122,16 @@
     "remaining_semantic_or_cross_layer_relations_not_independently_verified": 118
   },
   "input_git_blob_shas_at_audit": {
-    "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
-    "data/care-insurance-act-nodes.json": "5679279462390862405d60f00b25603f8be3522e",
-    "data/careact-internal-relation-independent-audit.json": "6fac324770cc60e8b0ed9a4a1e2a6683f971fd8c",
-    "data/relation-semantic-independent-audit.json": "0f319192cc90ad86856d30a6ae37c3020c0b6e89",
-    "data/ordinance37-meta.json": "83d0af49feffe0279f23d6b6eb73a96f79498087",
-    "data/ordinance37-scope.json": "97273de6d703a04fc8fcb99f90c880cbdefa2ea4",
+    "data/care-insurance-act-relations.json": "6cfb17acea1e2c546bf11e63f902ebcb7b1404ea",
+    "data/care-insurance-act-nodes.json": "046da7e5a3ba1241d713ecf7eca089e55bb455e3",
+    "data/careact-internal-relation-independent-audit.json": "a4a9f59deb66dcd76f1e0defde605c5d9055f5f2",
+    "data/relation-semantic-independent-audit.json": "fe9bf99734fa9980a7163265f0b510867832f194",
+    "data/ordinance37-meta.json": "25c869e4f48cd5e44f621d717ce2e7b0bfeb7d91",
+    "data/ordinance37-scope.json": "f05ec80b8473ec89b5e2ed48f88fd30abb8d1cd5",
     "data/remuneration-current-skeleton.json": "4caef5d7c34c1658e442db137fed20944ebfeb06",
     "data/sources.json": "06779a3f95f48cc6069d1f23bdeccea5dfe82711",
     "scripts/verify_cross_layer_source_chains_independent.py": "e00928729e4675c5143919151bcd10fcacc406b5",
-    "data/care-insurance-act-meta.json": "ec89e91dac2fcaf165735ae7b61993b2024b1c64",
+    "data/care-insurance-act-meta.json": "ab30a2670c79f841ae743089e500582d8f3c756b",
     "data/remuneration-current-text-meta.json": "81ef0083b42f42062f7f0ec8e215b9ffd392d6d8"
   },
   "conclusion": "One Care Insurance Act fee-authority relation and 17 Article 74 to Ordinance 37 direct day-service standard relations matched fresh primary-source chains.",

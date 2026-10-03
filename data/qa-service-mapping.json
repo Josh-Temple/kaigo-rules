@@ -1,0 +1,856 @@
+{
+  "format_version": 1,
+  "purpose": "MHLW_QA_SHARED_CORPUS_SERVICE_MAPPING",
+  "source": {
+    "official_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+    "official_workbook": "https://www.mhlw.go.jp/content/12300000/001751835.xlsx",
+    "qa_corpus": "data/qa-corpus.json",
+    "qa_corpus_meta": "data/qa-corpus-meta.json",
+    "qa_corpus_blob_sha": "b0a69285dc1ec879cdc8f06a84d079ba9c5a1168",
+    "qa_corpus_meta_blob_sha": "2bd14fabe6cbd938640f7cfe435820752d723423",
+    "audited_from_main_sha": "228a7fbbe8e8df025a37812e63b5569519dc0a5f"
+  },
+  "policy": {
+    "qa_body_is_not_duplicated_per_service": true,
+    "shared_categories_are_group_relations": true,
+    "current_catalog_is_not_modified_by_this_mapping": true,
+    "unresolved_new_service_ids_remain_unresolved": true,
+    "noncanonical_row_labels_are_not_auto_expanded": true,
+    "verification_state_is_not_promoted": true,
+    "currentness_state_is_not_promoted": true
+  },
+  "classification_definitions": {
+    "INDIVIDUAL_SERVICE": "Q&A service code representing one current service category. Existing Kaigo Rules service IDs are mapped; missing catalog entries remain pending for Chat A/Integrator reconciliation.",
+    "SHARED_COMMON_CATEGORY": "Q&A scope shared across a service group. It is represented as a group relation and is not copied into individual services.",
+    "HISTORICAL_ABOLISHED_SERVICE": "Historical or abolished service classification retained for search and provenance, outside the current-service catalog.",
+    "REMUNERATION_ONLY_THEME": "Cross-service remuneration theme rather than an individual service.",
+    "OTHER_SPECIAL": "Special benefit/program classification that must not be forced into an individual service ID."
+  },
+  "query_contract": {
+    "direct_individual_service": "Use the exact service_code relation after catalog mapping is resolved.",
+    "shared_common_category": "Resolve through explicit group membership. Do not infer membership solely from label text in this file.",
+    "qualified_raw_service_label": "When a corpus row's raw service_label differs from the canonical code label, preserve that row-level qualifier and fail closed unless an explicit parser/review establishes the narrower or composite scope.",
+    "current_service_scope": "Preserve as source data when present; it must not overwrite the primary service_code mapping.",
+    "historical_or_special": "Expose through their own taxonomy facet; do not attach to current services automatically."
+  },
+  "summary": {
+    "corpus_rows": 3695,
+    "observed_service_codes": 36,
+    "classification_counts": {
+      "SHARED_COMMON_CATEGORY": 6,
+      "INDIVIDUAL_SERVICE": 26,
+      "HISTORICAL_ABOLISHED_SERVICE": 1,
+      "OTHER_SPECIAL": 2,
+      "REMUNERATION_ONLY_THEME": 1
+    },
+    "mapped_existing_service_ids": 26,
+    "pending_parallel_catalog_service_codes": 0,
+    "rows_with_qualified_or_variant_raw_service_label": 297,
+    "mapped_individual_service_ids": 26
+  },
+  "current_catalog_snapshot": {
+    "manifest_service_ids": [
+      "dayservice",
+      "homevisit",
+      "homebath",
+      "homenursing",
+      "homerehab",
+      "homecaremanagement",
+      "dayrehab",
+      "shortstay-life",
+      "community-dayservice",
+      "regular-round",
+      "night-homevisit",
+      "care-management",
+      "preventive-support",
+      "shortstay-medical",
+      "specific-facility",
+      "welfare-equipment-rental",
+      "specific-welfare-equipment-sale",
+      "dementia-dayservice",
+      "small-scale-multifunctional",
+      "dementia-group-home",
+      "community-specific-facility",
+      "community-elderly-facility",
+      "nursing-small-scale-multifunctional",
+      "elderly-welfare-facility",
+      "elderly-health-facility",
+      "care-medical-institution",
+      "preventive-homebath",
+      "preventive-homenursing",
+      "preventive-homerehab",
+      "preventive-homecaremanagement",
+      "preventive-dayrehab",
+      "preventive-shortstay-life",
+      "preventive-shortstay-medical",
+      "preventive-specific-facility",
+      "preventive-welfare-equipment-rental",
+      "specific-preventive-welfare-equipment-sale",
+      "preventive-dementia-dayservice",
+      "preventive-small-scale-multifunctional",
+      "preventive-dementia-group-home"
+    ],
+    "generated_catalog_service_ids": [
+      "dayservice",
+      "homevisit",
+      "homebath",
+      "homenursing",
+      "homerehab",
+      "homecaremanagement",
+      "dayrehab",
+      "shortstay-life",
+      "community-dayservice",
+      "regular-round",
+      "night-homevisit",
+      "care-management",
+      "preventive-support",
+      "shortstay-medical",
+      "specific-facility",
+      "welfare-equipment-rental",
+      "specific-welfare-equipment-sale",
+      "dementia-dayservice",
+      "small-scale-multifunctional",
+      "dementia-group-home",
+      "community-specific-facility",
+      "community-elderly-facility",
+      "nursing-small-scale-multifunctional",
+      "elderly-welfare-facility",
+      "elderly-health-facility",
+      "care-medical-institution",
+      "preventive-homebath",
+      "preventive-homenursing",
+      "preventive-homerehab",
+      "preventive-homecaremanagement",
+      "preventive-dayrehab",
+      "preventive-shortstay-life",
+      "preventive-shortstay-medical",
+      "preventive-specific-facility",
+      "preventive-welfare-equipment-rental",
+      "specific-preventive-welfare-equipment-sale",
+      "preventive-dementia-dayservice",
+      "preventive-small-scale-multifunctional",
+      "preventive-dementia-group-home"
+    ]
+  },
+  "codes": [
+    {
+      "service_code": "01",
+      "official_label": "全サービス共通",
+      "classification": "SHARED_COMMON_CATEGORY",
+      "corpus_rows": 480,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 238,
+        "qualified_or_variant_raw_label_rows": 242,
+        "raw_label_variants": [
+          {
+            "raw_label": "０１.全サービス共通\n（１３.訪問看護事業、１４.訪問リハビリテーション事業、１５.居宅療養管理指導事業、２１.福祉用具貸与事業、２２.特定福祉用具販売事業、２３.居宅介護支援事業を除く）",
+            "count": 62
+          },
+          {
+            "raw_label": "０１.全サービス共通\n（１３.訪問看護事業、１４.訪問リハビリテーション事業、１５.居宅療養管理指導事業、２１.福祉用具貸与事業、２２.特定福祉用具販売事業、２３.居宅介護支援事業を除く）\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+            "count": 115
+          },
+          {
+            "raw_label": "０１.全サービス共通\n（１５.居宅療養管理指導事業、２１.福祉用具貸与事業、２２.特定福祉用具販売事業を除く）\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+            "count": 56
+          },
+          {
+            "raw_label": "01 全サービス共通\n（１３.訪問看護事業、１４.訪問リハビリテーション事業、１５.居宅療養管理指導事業、２１.福祉用具貸与事業、２２.特定福祉用具販売事業、２３.居宅介護支援事業を除く）",
+            "count": 9
+          }
+        ],
+        "policy": "PRESERVE_RAW_LABEL_AND_DO_NOT_AUTO_EXPAND_WITHOUT_EXPLICIT_ROW_SCOPE_RESOLUTION"
+      },
+      "scope_relation": {
+        "kind": "GROUP",
+        "group_id": "qa.shared.all-services",
+        "group_label": "全サービス共通",
+        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
+        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+      }
+    },
+    {
+      "service_code": "02",
+      "official_label": "居宅サービス共通",
+      "classification": "SHARED_COMMON_CATEGORY",
+      "corpus_rows": 47,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 47,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      },
+      "scope_relation": {
+        "kind": "GROUP",
+        "group_id": "qa.shared.home-services",
+        "group_label": "居宅サービス共通",
+        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
+        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+      }
+    },
+    {
+      "service_code": "03",
+      "official_label": "施設サービス共通",
+      "classification": "SHARED_COMMON_CATEGORY",
+      "corpus_rows": 241,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 237,
+        "qualified_or_variant_raw_label_rows": 4,
+        "raw_label_variants": [
+          {
+            "raw_label": "4 施設サービス共通",
+            "count": 1
+          },
+          {
+            "raw_label": "03 施設サービス共通\n20特定施設入居者生活介護、\n44認知症対応型共同生活介護、\n45地域密着型特定施設入居者生活介護",
+            "count": 2
+          },
+          {
+            "raw_label": "5 施設サービス共通",
+            "count": 1
+          }
+        ],
+        "policy": "PRESERVE_RAW_LABEL_AND_DO_NOT_AUTO_EXPAND_WITHOUT_EXPLICIT_ROW_SCOPE_RESOLUTION"
+      },
+      "scope_relation": {
+        "kind": "GROUP",
+        "group_id": "qa.shared.facility-services",
+        "group_label": "施設サービス共通",
+        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
+        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+      }
+    },
+    {
+      "service_code": "04",
+      "official_label": "地域密着型サービス共通",
+      "classification": "SHARED_COMMON_CATEGORY",
+      "corpus_rows": 31,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 28,
+        "qualified_or_variant_raw_label_rows": 3,
+        "raw_label_variants": [
+          {
+            "raw_label": "04 地域密着型サービス共通\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+            "count": 3
+          }
+        ],
+        "policy": "PRESERVE_RAW_LABEL_AND_DO_NOT_AUTO_EXPAND_WITHOUT_EXPLICIT_ROW_SCOPE_RESOLUTION"
+      },
+      "scope_relation": {
+        "kind": "GROUP",
+        "group_id": "qa.shared.community-based-services",
+        "group_label": "地域密着型サービス共通",
+        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
+        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+      }
+    },
+    {
+      "service_code": "05",
+      "official_label": "訪問系サービス共通",
+      "classification": "SHARED_COMMON_CATEGORY",
+      "corpus_rows": 8,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 8,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      },
+      "scope_relation": {
+        "kind": "GROUP",
+        "group_id": "qa.shared.visit-services",
+        "group_label": "訪問系サービス共通",
+        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
+        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+      }
+    },
+    {
+      "service_code": "06",
+      "official_label": "通所系サービス共通",
+      "classification": "SHARED_COMMON_CATEGORY",
+      "corpus_rows": 64,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 64,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      },
+      "scope_relation": {
+        "kind": "GROUP",
+        "group_id": "qa.shared.day-services",
+        "group_label": "通所系サービス共通",
+        "membership_state": "NOT_EXPANDED_IN_QA_MAPPING",
+        "note": "Resolve membership from explicit service/group metadata; do not duplicate Q&A rows into individual services."
+      }
+    },
+    {
+      "service_code": "11",
+      "official_label": "訪問介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 155,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "homevisit",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 155,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "12",
+      "official_label": "訪問入浴介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 19,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "homebath",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 19,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "13",
+      "official_label": "訪問看護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 127,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "homenursing",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 126,
+        "qualified_or_variant_raw_label_rows": 1,
+        "raw_label_variants": [
+          {
+            "raw_label": "13 訪問看護事業25介護老人保健施設",
+            "count": 1
+          }
+        ],
+        "policy": "PRESERVE_RAW_LABEL_AND_DO_NOT_AUTO_EXPAND_WITHOUT_EXPLICIT_ROW_SCOPE_RESOLUTION"
+      }
+    },
+    {
+      "service_code": "14",
+      "official_label": "訪問リハビリテーション事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 101,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "homerehab",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 101,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "15",
+      "official_label": "居宅療養管理指導事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 26,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "homecaremanagement",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 26,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "16",
+      "official_label": "通所介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 252,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "dayservice",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 252,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "17",
+      "official_label": "通所リハビリテーション事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 265,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "dayrehab",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 265,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "18",
+      "official_label": "短期入所生活介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 149,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "shortstay-life",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 149,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "19",
+      "official_label": "短期入所療養介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 59,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "shortstay-medical",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 59,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "20",
+      "official_label": "特定施設入居者生活介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 93,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "specific-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 88,
+        "qualified_or_variant_raw_label_rows": 5,
+        "raw_label_variants": [
+          {
+            "raw_label": "20 特定施設入所者生活介護事業",
+            "count": 2
+          },
+          {
+            "raw_label": "２０.特定施設入居者生活介護事業\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+            "count": 3
+          }
+        ],
+        "policy": "PRESERVE_RAW_LABEL_AND_DO_NOT_AUTO_EXPAND_WITHOUT_EXPLICIT_ROW_SCOPE_RESOLUTION"
+      }
+    },
+    {
+      "service_code": "21",
+      "official_label": "福祉用具貸与事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 29,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "welfare-equipment-rental",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 29,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "22",
+      "official_label": "特定福祉用具販売事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 22,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "specific-welfare-equipment-sale",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 22,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "23",
+      "official_label": "居宅介護支援事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 160,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "care-management",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 160,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "24",
+      "official_label": "介護老人福祉施設",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 159,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "elderly-welfare-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 159,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "25",
+      "official_label": "介護老人保健施設",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 124,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "elderly-health-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 124,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "26",
+      "official_label": "介護療養型医療施設",
+      "classification": "HISTORICAL_ABOLISHED_SERVICE",
+      "corpus_rows": 74,
+      "catalog_mapping": {
+        "state": "HISTORICAL_NO_CURRENT_SERVICE_ID",
+        "service_id": null,
+        "basis": "HISTORICAL_CLASSIFICATION_RETAINED_SEPARATELY"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 74,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "27",
+      "official_label": "住宅改修",
+      "classification": "OTHER_SPECIAL",
+      "corpus_rows": 45,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 45,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "40",
+      "official_label": "定期巡回・随時対応型訪問介護看護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 81,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "regular-round",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 81,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "41",
+      "official_label": "夜間対応型訪問介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 38,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "night-homevisit",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 38,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "42",
+      "official_label": "認知症対応型通所介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 89,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "dementia-dayservice",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 89,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "43",
+      "official_label": "小規模多機能型居宅介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 80,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "small-scale-multifunctional",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 80,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "44",
+      "official_label": "認知症対応型共同生活介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 137,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "dementia-group-home",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 137,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "45",
+      "official_label": "地域密着型特定施設入居者生活介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 40,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "community-specific-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 40,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "46",
+      "official_label": "地域密着型介護老人福祉施設",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 124,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "community-elderly-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 124,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "47",
+      "official_label": "看護小規模多機能型居宅介護",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 67,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "nursing-small-scale-multifunctional",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 27,
+        "qualified_or_variant_raw_label_rows": 40,
+        "raw_label_variants": [
+          {
+            "raw_label": "47 看護小規模多機能型居宅介護（複合型サービス）事業",
+            "count": 40
+          }
+        ],
+        "policy": "PRESERVE_RAW_LABEL_AND_DO_NOT_AUTO_EXPAND_WITHOUT_EXPLICIT_ROW_SCOPE_RESOLUTION"
+      }
+    },
+    {
+      "service_code": "48",
+      "official_label": "地域密着型通所介護事業",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 201,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "community-dayservice",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 201,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "49",
+      "official_label": "介護医療院",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 40,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "care-medical-institution",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 40,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "50",
+      "official_label": "介護職員処遇改善加算・介護職員等特定処遇改善加算",
+      "classification": "REMUNERATION_ONLY_THEME",
+      "corpus_rows": 65,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 65,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "51",
+      "official_label": "介護予防・日常生活支援総合事業",
+      "classification": "OTHER_SPECIAL",
+      "corpus_rows": 1,
+      "catalog_mapping": {
+        "state": "NO_SERVICE_ID_BY_DESIGN",
+        "service_id": null,
+        "basis": "SHARED_OR_SPECIAL_QA_CLASSIFICATION"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 1,
+        "qualified_or_variant_raw_label_rows": 0,
+        "raw_label_variants": [],
+        "policy": "PRIMARY_CODE_RELATION_MAY_BE_USED_WITH_SEPARATE_CURRENTNESS_AND_APPLICABILITY_CHECKS"
+      }
+    },
+    {
+      "service_code": "XX",
+      "official_label": "介護予防支援",
+      "classification": "INDIVIDUAL_SERVICE",
+      "corpus_rows": 2,
+      "catalog_mapping": {
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "preventive-support",
+        "basis": "EXACT_KNOWN_EXISTING_SERVICE_ID"
+      },
+      "row_scope": {
+        "canonical_raw_label_rows": 0,
+        "qualified_or_variant_raw_label_rows": 2,
+        "raw_label_variants": [
+          {
+            "raw_label": "XX 介護予防支援\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+            "count": 2
+          }
+        ],
+        "policy": "PRESERVE_RAW_LABEL_AND_DO_NOT_AUTO_EXPAND_WITHOUT_EXPLICIT_ROW_SCOPE_RESOLUTION"
+      }
+    }
+  ],
+  "integration_reconciliation": {
+    "state": "RESOLVED_AGAINST_FULL_SERVICE_CATALOG",
+    "direct_individual_service_mappings": 26,
+    "current_services_without_individual_qa_code": 13,
+    "note": "Absence of an individual Q&A code does not mean Q&A is not applicable; shared/common categories remain group relations and row-level qualifiers remain fail-closed."
+  }
+}

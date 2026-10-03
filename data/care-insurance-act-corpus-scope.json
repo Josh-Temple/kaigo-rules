@@ -1,0 +1,66 @@
+{
+  "format_version": 1,
+  "scope_id": "care-insurance-act.shared-service-foundation",
+  "scope_kind": "SHARED_SOURCE_CORPUS",
+  "law_id": "409AC0000000123",
+  "law_num": "平成九年法律第百二十三号",
+  "title": "介護保険法",
+  "purpose": "介護保険サービス全体で再利用する制度上の共通法令構造を、サービス別本文複製なしで一度だけ保持する。",
+  "selection_groups": [
+    {
+      "id": "principles-and-service-definitions",
+      "from_article": "1",
+      "through_article": "8-2",
+      "reason": "総則、用語及び介護サービス・介護予防サービスの定義を共有する。"
+    },
+    {
+      "id": "insurance-benefit-common-rules",
+      "from_article": "18",
+      "through_article": "26",
+      "reason": "介護給付・予防給付に共通する保険給付の通則を共有する。"
+    },
+    {
+      "id": "care-and-preventive-benefits",
+      "from_article": "40",
+      "through_article": "61-4",
+      "reason": "介護給付及び予防給付のサービス別給付・支給構造を共有する。"
+    },
+    {
+      "id": "care-manager-provider-facility-and-service-governance",
+      "from_article": "69-2",
+      "through_article": "115-44",
+      "reason": "介護支援専門員、指定事業者、施設、介護予防サービス、情報公表等のサービス提供主体・基準・監督構造を共有する。"
+    },
+    {
+      "id": "regional-support-program-boundary",
+      "from_article": "115-45",
+      "through_article": "115-49",
+      "reason": "介護予防・日常生活支援総合事業等との制度境界を、個別サービスのscope判定に再利用できるよう保持する。"
+    }
+  ],
+  "deliberately_not_selected": [
+    {
+      "range": "9-17",
+      "reason": "被保険者・介護認定審査会。サービス本文の共有基盤とは分離し、必要性が確立した場合に追加する。"
+    },
+    {
+      "range": "27-39",
+      "reason": "要介護認定・要支援認定手続。サービス提供ルールの共有基盤とは分離する。"
+    },
+    {
+      "range": "62-69",
+      "reason": "市町村特別給付及び保険給付制限等。全サービス本文の初期共有範囲から分離する。"
+    },
+    {
+      "range": "115-50-end",
+      "reason": "事業計画、費用負担、審査請求、雑則、罰則等。サービス別適用の初期共有基盤ではなく、別の制度層として必要性を確認して拡張する。"
+    }
+  ],
+  "service_applicability": {
+    "source_of_truth": "service-specific scope/index files",
+    "corpus_presence_implies_applicability": false,
+    "corpus_verification_implies_service_verification": false
+  },
+  "automatic_verification_promotion_allowed": false,
+  "note": "全条文の無条件複製ではなく、全サービスDBで繰り返し参照される制度構造を共有ソース層として収載する。サービス固有の適用関係は別scope/relationで管理する。"
+}

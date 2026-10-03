@@ -7,6 +7,8 @@ import argparse
 import hashlib
 import json
 import sys
+import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -38,8 +40,23 @@ def fetch(url: str) -> bytes:
         url,
         headers={"User-Agent": "kaigo-rules-source-drift-monitor/1.0 (+https://github.com/Josh-Temple/kaigo-rules)"},
     )
-    with urllib.request.urlopen(request, timeout=60) as response:
-        return response.read()
+    retryable = {404, 408, 429, 500, 502, 503, 504}
+    last_error = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                return response.read()
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in retryable or attempt == 2:
+                raise
+            time.sleep(2 ** attempt)
+        except urllib.error.URLError as exc:
+            last_error = exc
+            if attempt == 2:
+                raise
+            time.sleep(2 ** attempt)
+    raise RuntimeError(f"e-Gov fetch failed after retries: {url}: {last_error}")
 
 
 def revisions_from(payload):

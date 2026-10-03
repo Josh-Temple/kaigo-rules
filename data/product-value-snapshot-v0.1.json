@@ -54,7 +54,33 @@
       "regular-round",
       "night-homevisit",
       "care-management",
-      "preventive-support"
+      "preventive-support",
+      "shortstay-medical",
+      "specific-facility",
+      "welfare-equipment-rental",
+      "specific-welfare-equipment-sale",
+      "dementia-dayservice",
+      "small-scale-multifunctional",
+      "dementia-group-home",
+      "community-specific-facility",
+      "community-elderly-facility",
+      "nursing-small-scale-multifunctional",
+      "elderly-welfare-facility",
+      "elderly-health-facility",
+      "care-medical-institution",
+      "preventive-homebath",
+      "preventive-homenursing",
+      "preventive-homerehab",
+      "preventive-homecaremanagement",
+      "preventive-dayrehab",
+      "preventive-shortstay-life",
+      "preventive-shortstay-medical",
+      "preventive-specific-facility",
+      "preventive-welfare-equipment-rental",
+      "specific-preventive-welfare-equipment-sale",
+      "preventive-dementia-dayservice",
+      "preventive-small-scale-multifunctional",
+      "preventive-dementia-group-home"
     ]
   },
   "metrics": {
@@ -65,8 +91,8 @@
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
-      "public_items_total": 4519,
-      "public_items_complete": 4519,
+      "public_items_total": 4520,
+      "public_items_complete": 4520,
       "coverage_rate": 1.0,
       "missing_source_items": [],
       "missing_scope_items": [],
@@ -178,11 +204,11 @@
           "verification_state_complete": 34
         },
         "dayrehab_standard_articles": {
-          "items_total": 35,
-          "items_complete": 35,
-          "source_complete": 35,
-          "scope_complete": 35,
-          "verification_state_complete": 35
+          "items_total": 36,
+          "items_complete": 36,
+          "source_complete": 36,
+          "scope_complete": 36,
+          "verification_state_complete": 36
         },
         "dayrehab_notice_items": {
           "items_total": 9,

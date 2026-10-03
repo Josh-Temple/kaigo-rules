@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate pinned provenance for the independent scoped e-Gov content audit."""
+"""Validate pinned provenance for the independent shared/scoped e-Gov content audit."""
 
 from __future__ import annotations
 
@@ -31,7 +31,7 @@ def git_blob_sha1(path: Path) -> str:
 
 def main() -> None:
     record = load(RECORD)
-    if record.get("scope") != "egov-scoped-content-ordinance37-care-insurance-act":
+    if record.get("scope") != "egov-shared-content-ordinance37-care-insurance-act":
         fail("unexpected scope")
     if record.get("audit_result") != "PASS":
         fail("audit result is not PASS")
@@ -49,6 +49,8 @@ def main() -> None:
     safety = record.get("safety", {})
     if safety.get("human_verified") is not False or safety.get("verified_current") is not False:
         fail("independent audit must not claim human/current verification")
+    if safety.get("service_applicability_verified") is not False:
+        fail("shared corpus audit must not claim service applicability verification")
     if safety.get("automatic_promotion_allowed") is not False:
         fail("automatic promotion must remain disabled")
 
@@ -61,11 +63,13 @@ def main() -> None:
             "meta": "ordinance37-meta.json",
             "nodes": "ordinance37-nodes.json",
             "relations": "ordinance37-relations.json",
+            "scope_file": "data/ordinance37-scope.json",
         },
         "care-insurance-act": {
             "meta": "care-insurance-act-meta.json",
             "nodes": "care-insurance-act-nodes.json",
             "relations": "care-insurance-act-relations.json",
+            "scope_file": "data/care-insurance-act-corpus-scope.json",
         },
     }
 
@@ -73,6 +77,8 @@ def main() -> None:
         check = checks[layer_id]
         if check.get("result") != "PASS":
             fail(f"{layer_id}: audit check not PASS")
+        if check.get("scope_file") != files["scope_file"]:
+            fail(f"{layer_id}: audit scope file differs from expected shared/scoped source")
         meta = load(DATA / files["meta"])
         nodes = load(DATA / files["nodes"])
         relations = load(DATA / files["relations"])
@@ -97,14 +103,33 @@ def main() -> None:
             if counts.get(node_type, 0) != observed.get(key):
                 fail(f"{layer_id}: {node_type} count changed")
 
-    for relative, expected_blob in record.get("input_git_blob_shas_at_audit", {}).items():
+    pinned = record.get("input_git_blob_shas_at_audit", {})
+    required_pins = {
+        "data/ordinance37-scope.json",
+        "data/ordinance37-nodes.json",
+        "data/ordinance37-relations.json",
+        "data/ordinance37-meta.json",
+        "data/care-insurance-act-corpus-scope.json",
+        "data/care-insurance-act-nodes.json",
+        "data/care-insurance-act-relations.json",
+        "data/care-insurance-act-meta.json",
+        "scripts/verify_egov_content_independent.py",
+    }
+    if set(pinned) != required_pins:
+        fail("pinned audit input set changed")
+
+    for relative, expected_blob in pinned.items():
         path = ROOT / relative
         if not path.exists():
             fail(f"pinned audit input missing: {relative}")
         if git_blob_sha1(path) != expected_blob:
             fail(f"pinned audit input changed: {relative}")
 
-    print("e-Gov content independent audit: OK (ordinance37 + care-insurance-act PASS; semantic relations excluded)")
+    print(
+        "e-Gov content independent audit: OK "
+        "(ordinance37 scoped corpus + shared Care Insurance Act corpus PASS; "
+        "service applicability and semantic relations excluded)"
+    )
 
 
 if __name__ == "__main__":
