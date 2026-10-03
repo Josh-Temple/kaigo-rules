@@ -1,5 +1,7 @@
 import hashlib
 import json
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -148,6 +150,23 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
             "data/verification/standards-interpretation-source-inventory/preventive-support.json": git_blob_sha(SOURCE_INVENTORY),
         }
         self.assertEqual(self.audit["input_git_blob_shas_at_audit"], expected)
+
+    def test_service_specific_verifier_passes(self):
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(
+                    ROOT
+                    / "scripts/verify_preventive_support_standards_interpretation_item_body.py"
+                ),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        self.assertIn("PARTIAL_WITH_GAPS", result.stdout)
+        self.assertIn("34 tasks", result.stdout)
+        self.assertIn("55 child units", result.stdout)
 
     def test_scope_observations_do_not_expand_staging(self):
         observations = self.audit["out_of_staging_source_observations"]
