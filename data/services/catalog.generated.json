@@ -59,6 +59,7 @@
       "service_id": "dayservice",
       "label": "通所介護",
       "status": "ACTIVE_MVP",
+      "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "LEGACY_ROOT",
         "legacy_base_path": "/",
@@ -105,13 +106,13 @@
         "ordinance37",
         "care-insurance-act",
         "qa-corpus"
-      ],
-      "service_class": "HOME_SERVICE"
+      ]
     },
     {
       "service_id": "homevisit",
       "label": "訪問介護",
       "status": "PARTIAL_INGESTION",
+      "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -155,13 +156,13 @@
       },
       "verification_layer_ids": [
         "rouki25-homevisit"
-      ],
-      "service_class": "HOME_SERVICE"
+      ]
     },
     {
       "service_id": "homebath",
       "label": "訪問入浴介護",
       "status": "PARTIAL_INGESTION",
+      "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -189,13 +190,13 @@
       },
       "verification_layer_ids": [
         "rouki25-homebath"
-      ],
-      "service_class": "HOME_SERVICE"
+      ]
     },
     {
       "service_id": "homenursing",
       "label": "訪問看護",
       "status": "PARTIAL_INGESTION",
+      "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -225,13 +226,13 @@
       },
       "verification_layer_ids": [
         "rouki25-homenursing"
-      ],
-      "service_class": "HOME_SERVICE"
+      ]
     },
     {
       "service_id": "homerehab",
       "label": "訪問リハビリテーション",
       "status": "PARTIAL_INGESTION",
+      "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -261,13 +262,13 @@
       },
       "verification_layer_ids": [
         "rouki25-homerehab"
-      ],
-      "service_class": "HOME_SERVICE"
+      ]
     },
     {
       "service_id": "homecaremanagement",
       "label": "居宅療養管理指導",
       "status": "PARTIAL_INGESTION",
+      "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -297,13 +298,13 @@
       },
       "verification_layer_ids": [
         "rouki25-homecaremanagement"
-      ],
-      "service_class": "HOME_SERVICE"
+      ]
     },
     {
       "service_id": "dayrehab",
       "label": "通所リハビリテーション",
       "status": "ACTIVE_PREVIEW",
+      "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_PREVIEW",
         "legacy_entry_points": [],
@@ -362,13 +363,13 @@
         "rouki25-dayrehab",
         "remuneration-dayrehab",
         "fee-guidance-dayrehab"
-      ],
-      "service_class": "HOME_SERVICE"
+      ]
     },
     {
       "service_id": "shortstay-life",
       "label": "短期入所生活介護",
       "status": "PARTIAL_INGESTION",
+      "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -399,13 +400,13 @@
       },
       "verification_layer_ids": [
         "rouki25-shortstay-life"
-      ],
-      "service_class": "HOME_SERVICE"
+      ]
     },
     {
       "service_id": "community-dayservice",
       "label": "地域密着型通所介護",
       "status": "PARTIAL_INGESTION",
+      "service_class": "COMMUNITY_BASED_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -444,13 +445,13 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json"
         }
       },
-      "verification_layer_ids": [],
-      "service_class": "COMMUNITY_BASED_SERVICE"
+      "verification_layer_ids": []
     },
     {
       "service_id": "regular-round",
       "label": "定期巡回・随時対応型訪問介護看護",
       "status": "PARTIAL_INGESTION",
+      "service_class": "COMMUNITY_BASED_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -489,13 +490,13 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/regular-round.json"
         }
       },
-      "verification_layer_ids": [],
-      "service_class": "COMMUNITY_BASED_SERVICE"
+      "verification_layer_ids": []
     },
     {
       "service_id": "night-homevisit",
       "label": "夜間対応型訪問介護",
       "status": "PARTIAL_INGESTION",
+      "service_class": "COMMUNITY_BASED_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -534,13 +535,13 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/night-homevisit.json"
         }
       },
-      "verification_layer_ids": [],
-      "service_class": "COMMUNITY_BASED_SERVICE"
+      "verification_layer_ids": []
     },
     {
       "service_id": "care-management",
       "label": "居宅介護支援",
       "status": "PARTIAL_INGESTION",
+      "service_class": "CARE_MANAGEMENT",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -579,13 +580,13 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/care-management.json"
         }
       },
-      "verification_layer_ids": [],
-      "service_class": "CARE_MANAGEMENT"
+      "verification_layer_ids": []
     },
     {
       "service_id": "preventive-support",
       "label": "介護予防支援",
       "status": "PARTIAL_INGESTION",
+      "service_class": "PREVENTIVE_SUPPORT",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
         "legacy_entry_points": [],
@@ -624,8 +625,7 @@
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/preventive-support.json"
         }
       },
-      "verification_layer_ids": [],
-      "service_class": "PREVENTIVE_SUPPORT"
+      "verification_layer_ids": []
     },
     {
       "service_id": "shortstay-medical",
