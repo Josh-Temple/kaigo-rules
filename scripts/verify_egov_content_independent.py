@@ -160,7 +160,7 @@ def parse_article(article, prefix: str, nodes: dict, contains: set):
         add_item_tree(paragraph, paragraph_id, article_num, pnum, nodes, contains)
 
 
-def collect_scoped(main_provision, target_articles: set[str], prefix: str):
+def collect_scoped(main_provision, target_articles: set[str] | None, prefix: str):
     nodes: dict[str, dict] = {}
     contains: set[tuple[str, str]] = set()
     found: set[str] = set()
@@ -171,16 +171,17 @@ def collect_scoped(main_provision, target_articles: set[str], prefix: str):
                 continue
             if child.tagName == "Article":
                 num = canonical_num(child.getAttribute("Num"))
-                if num in target_articles:
+                if target_articles is None or num in target_articles:
                     parse_article(child, prefix, nodes, contains)
                     found.add(num)
                 continue
             walk(child)
 
     walk(main_provision)
-    missing = sorted(target_articles - found)
-    if missing:
-        raise RuntimeError("target articles missing from live e-Gov XML: " + ", ".join(missing))
+    if target_articles is not None:
+        missing = sorted(target_articles - found)
+        if missing:
+            raise RuntimeError("target articles missing from live e-Gov XML: " + ", ".join(missing))
     return nodes, contains
 
 
@@ -191,9 +192,12 @@ def compare_target(config: dict) -> dict:
     expected_relations = load(config["relations_file"])
 
     if config["id"] == "ordinance37":
-        target_articles = set(scope["direct_articles"]) | set(scope["incorporated_articles"])
-        for service_scope in scope.get("additional_service_direct_scopes", []):
-            target_articles |= set(service_scope.get("articles", []))
+        if scope.get("corpus_policy", {}).get("mode") == "FULL_MAIN_PROVISION":
+            target_articles = None
+        else:
+            target_articles = set(scope["direct_articles"]) | set(scope["incorporated_articles"])
+            for service_scope in scope.get("additional_service_direct_scopes", []):
+                target_articles |= set(service_scope.get("articles", []))
     else:
         target_articles = set(scope["articles"])
 
