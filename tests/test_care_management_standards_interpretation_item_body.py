@@ -27,27 +27,23 @@ class CareManagementStandardsInterpretationItemBodyTest(unittest.TestCase):
         self.assertEqual(audit["audit_result"], "PARTIAL_WITH_GAPS")
         self.assertEqual(
             audit["summary"]["task_results"],
-            {"PASS": 24, "PARTIAL": 5, "GAP": 3, "FAIL": 0},
+            {"PASS": 28, "PARTIAL": 1, "GAP": 3, "FAIL": 0},
         )
         self.assertEqual(
             audit["summary"]["child_entry_results"],
-            {"PASS": 33, "PARTIAL": 5, "GAP": 3, "FAIL": 0},
+            {"PASS": 37, "PARTIAL": 1, "GAP": 3, "FAIL": 0},
         )
         self.assertEqual(
             {row["task_id"]: row["result"] for row in audit["unresolved_gaps"]},
             {
-                "KR2-09-B009": "PARTIAL",
                 "KR2-09-B012": "PARTIAL",
-                "KR2-09-B014": "PARTIAL",
                 "KR2-09-B015": "GAP",
-                "KR2-09-B016": "PARTIAL",
                 "KR2-09-B017": "GAP",
-                "KR2-09-B018": "PARTIAL",
                 "KR2-09-B019": "GAP",
             },
         )
 
-    def test_r6_locator_drift_is_explicit_and_b009_source_is_unpinned(self):
+    def test_r6_locator_drift_is_explicit_and_b009_source_is_pinned(self):
         audit = json.loads(AUDIT.read_text(encoding="utf-8"))
         self.assertEqual(
             [row["task_id"] for row in audit["source_version_locator_differences"]],
@@ -60,14 +56,20 @@ class CareManagementStandardsInterpretationItemBodyTest(unittest.TestCase):
                 "KR2-09-B019",
             ],
         )
+        effects = {
+            row["task_id"]: row["effect"]
+            for row in audit["source_version_locator_differences"]
+        }
+        for task_id in ("KR2-09-B014", "KR2-09-B016", "KR2-09-B018"):
+            self.assertEqual(effects[task_id], "PASS_VERSION_AWARE_LOCATOR_RECORDED")
         b009 = next(row for row in audit["tasks"] if row["task_id"] == "KR2-09-B009")
         c07 = next(
             row
             for row in b009["official_evidence"]
-            if row["source_id"] == "supplemental-mhlw-c07"
+            if row["source_id"] == "historical-c07-amendment-comparison"
         )
-        self.assertFalse(c07["pinned_in_source_inventory"])
-        self.assertEqual(b009["result"], "PARTIAL")
+        self.assertTrue(c07["pinned_in_source_inventory"])
+        self.assertEqual(b009["result"], "PASS")
 
     def test_no_assurance_promotion(self):
         audit = json.loads(AUDIT.read_text(encoding="utf-8"))
