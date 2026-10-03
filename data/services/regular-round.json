@@ -26,12 +26,19 @@
       "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
     },
     "standards_interpretation": {
-      "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_MATCH_PENDING",
+      "status": "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING",
       "source_family": "community_based_services_standards_interpretation",
       "principal_items": 21,
-      "note": "Repository staging datasetと参照一次資料の独立source inventoryを確認済み。必須sourceの再取得・テキスト抽出・service anchor確認はPASS_BOUNDED_SCOPE_ONLY。項目本文一致、現行性、human review、公開は未確認。",
+      "note": "Repository staging 21項目のitem-body content/evidence matchを独立照合し、21 PASS / 0 PARTIAL / 0 GAP / 0 FAIL。item-bodyのみ成立。currentness、human review、公開可否、routeは未確認・未昇格。",
       "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
-      "item_body_verification": "PENDING"
+      "item_body_verification": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+      "item_body_verification_counts": {
+        "PASS": 21,
+        "PARTIAL": 0,
+        "GAP": 0,
+        "FAIL": 0
+      },
+      "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/regular-round.json"
     }
   }
 }
