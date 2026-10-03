@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "kind": "SERVICE_TO_GOVERNING_STANDARDS_CORPUS",
+  "status": "STRUCTURAL_MAPPING_ONLY_NOT_SERVICE_VERIFICATION",
+  "automatic_verification_promotion_allowed": false,
+  "relations": [
+    {"service_id":"dayservice","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"homevisit","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"homebath","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"homenursing","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"homerehab","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"homecaremanagement","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"dayrehab","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"shortstay-life","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"community-dayservice","corpus_id":"community-based-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"regular-round","corpus_id":"community-based-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"night-homevisit","corpus_id":"community-based-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"care-management","corpus_id":"care-management-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
+    {"service_id":"preventive-support","corpus_id":"preventive-support-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"}
+  ],
+  "note": "This mapping identifies the governing ministerial-standards law family for services already present on main. It does not define article scope, incorporation by reference, substitutions/read-as rules, currentness or publication readiness. New service IDs from the parallel service-universe work must be added by the integrator after reconciliation."
+}
