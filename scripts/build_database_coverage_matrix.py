@@ -70,7 +70,7 @@ SOURCE_FAMILIES = (
         "label": "Unit price / regional classification",
         "shared_layer_ids": ("unit-price",),
         "scope_keys": ("unit_price", "unit_price_regional_classification"),
-        "ingestion_keys": (),
+        "ingestion_keys": ("unit_price",),
         "verification_layer_ids": ("unit-price",),
     },
     {
