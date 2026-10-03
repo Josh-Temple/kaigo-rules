@@ -10,7 +10,8 @@ BASE=DATA/"shared/standards"
 OUTPUT=BASE/"service-relations.generated.json"
 
 def load(path): return json.loads(path.read_text(encoding="utf-8"))
-def article_id(num): return f"ordinance37.article.{str(num)}"\nSTANDARDS_SCOPE_KEYS=("ordinance37","standards_index","governing_standards")
+def article_id(num): return f"ordinance37.article.{str(num)}"
+STANDARDS_SCOPE_KEYS=("ordinance37","standards_index","governing_standards")
 
 def build():
     manifest=load(DATA/"services/manifest.json")
