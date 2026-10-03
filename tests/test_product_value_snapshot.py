@@ -40,7 +40,7 @@ class ProductValueSnapshotTest(unittest.TestCase):
 
     def test_enabled_public_item_families_are_all_counted(self):
         metric = self.snapshot["metrics"]["public_items_with_complete_evidence_state"]
-        self.assertEqual(metric["public_items_total"], 4519)
+        self.assertEqual(metric["public_items_total"], 4520)
         self.assertEqual(
             set(metric["breakdown"]),
             set(self.builder.EXPECTED_PUBLIC_FAMILIES),
