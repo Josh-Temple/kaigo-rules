@@ -38,6 +38,27 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(cell["corpus_availability"]["kind"], "SHARED")
         self.assertEqual(cell["service_scope"]["state"], "SCOPE_DEFINED")
 
+    def test_scope_wave_projects_all_shared_major_source_families(self):
+        family_ids = {
+            "care_insurance_act",
+            "governing_standards_ordinance",
+            "remuneration_notification",
+            "delegated_remuneration_criteria",
+            "unit_price_regional_classification",
+            "national_qa",
+        }
+        for row in self.matrix["services"]:
+            states = {
+                cell["source_family"]: cell["service_scope"]["state"]
+                for cell in row["source_families"]
+                if cell["source_family"] in family_ids
+            }
+            self.assertEqual(family_ids, set(states), row["service_id"])
+            self.assertTrue(
+                all(state == "SCOPE_DEFINED" for state in states.values()),
+                row["service_id"],
+            )
+
     def test_item_body_pass_does_not_promote_currentness(self):
         cell = self.cell("community-dayservice", "standards_interpretation_notice")
         self.assertEqual(cell["item_body_verification"]["state"], "PASS")
