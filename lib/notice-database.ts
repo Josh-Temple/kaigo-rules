@@ -1,5 +1,6 @@
 import reviewPacketData from "../data/notice-review-packet.json" with { type: "json" };
 import dayrehabData from "../data/services/dayrehab/rouki25-historical.generated.json" with { type: "json" };
+import homevisitData from "../data/services/homevisit/rouki25-historical.generated.json" with { type: "json" };
 import serviceCatalogData from "../data/services/catalog.generated.json" with { type: "json" };
 
 export type PublicNoticeServiceId = string;
@@ -74,6 +75,7 @@ type CatalogService = {
 
 const dayserviceReview = reviewPacketData as { items?: ReviewItem[] };
 const dayrehab = dayrehabData as any;
+const homevisit = homevisitData as any;
 const serviceCatalog = serviceCatalogData as { services?: CatalogService[] };
 
 const dayserviceRecords: PublicNoticeRecord[] = (dayserviceReview.items || []).map(
@@ -94,51 +96,73 @@ const dayserviceRecords: PublicNoticeRecord[] = (dayserviceReview.items || []).m
   }),
 );
 
-const dayrehabRecords: PublicNoticeRecord[] = (dayrehab.items || []).map(
-  (item: any) => ({
+const historicalNoticeRecords = (
+  dataset: any,
+  serviceLabel: string,
+  verificationLayerId: string,
+): PublicNoticeRecord[] =>
+  (dataset.items || []).map((item: any) => ({
     id: item.id,
-    service_id: "dayrehab",
-    service_label: "通所リハビリテーション",
+    service_id: dataset.service_id,
+    service_label: serviceLabel,
     section: item.group_heading,
-    number_path: [
-      dayrehab.source_section || "第九 通所リハビリテーション",
-      `${item.group_number} ${item.group_heading}`,
-      item.marker,
-    ],
+    number_path:
+      item.marker === item.group_number
+        ? [
+            dataset.source_section,
+            `${item.group_number} ${item.group_heading}`,
+          ]
+        : [
+            dataset.source_section,
+            `${item.group_number} ${item.group_heading}`,
+            item.marker,
+          ],
     title: item.title,
     body_text: item.body_text,
     source_state: "OFFICIAL_HISTORICAL_HTML",
     content_verification: "PASS",
     currentness_state: "GAP",
     human_review_state: "NOT_REVIEWED",
-    verification_layer_id: "rouki25-dayrehab",
+    verification_layer_id: verificationLayerId,
     source_evidence: [
       {
-        source_id: "dayrehab-rouki25-historical-html",
+        source_id: `${dataset.service_id}-rouki25-historical-html`,
         source_title: "厚生労働省 公式旧HTML",
-        source_url: item.source_url || dayrehab.source?.url,
+        source_url: item.source_url || dataset.source?.url,
         role: "historical_source_text",
         note: item.source_locator,
       },
-      ...(dayrehab.amendment_evidence?.source_url
+      ...(dataset.amendment_evidence?.source_url
         ? [
             {
-              source_id: "dayrehab-rouki25-r6-comparison",
+              source_id: `${dataset.service_id}-rouki25-r6-comparison`,
               source_title:
-                dayrehab.amendment_evidence.source_label ||
+                dataset.amendment_evidence.source_label ||
                 "令和6年度 居宅サービス基準解釈通知 新旧対照表",
-              source_url: dayrehab.amendment_evidence.source_url,
+              source_url: dataset.amendment_evidence.source_url,
               role: "amendment_evidence",
-              note: dayrehab.amendment_evidence.policy,
+              note: dataset.amendment_evidence.policy,
             },
           ]
         : []),
     ],
-  }),
+  }));
+
+const homevisitRecords = historicalNoticeRecords(
+  homevisit,
+  "訪問介護",
+  "rouki25-homevisit",
+);
+
+const dayrehabRecords = historicalNoticeRecords(
+  dayrehab,
+  "通所リハビリテーション",
+  "rouki25-dayrehab",
 );
 
 export const publicNoticeRecords: PublicNoticeRecord[] = [
   ...dayserviceRecords,
+  ...homevisitRecords,
   ...dayrehabRecords,
 ];
 
