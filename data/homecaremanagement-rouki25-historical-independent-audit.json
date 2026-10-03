@@ -1,0 +1,106 @@
+{
+  "format_version": 1,
+  "service_id": "homecaremanagement",
+  "scope": "homecaremanagement-rouki25-official-historical-html-section",
+  "audit_kind": "INDEPENDENT_SERVICE_ROUKI25_HISTORICAL_SOURCE_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-03",
+  "audit_run": {
+    "workflow": "Prepare next Rouki 25 historical ingestion wave",
+    "run_id": 37087029472,
+    "head_sha": "b9ca6076254add930e797c96e7c11c4eb5e4e0db",
+    "parser": "regex_html_text_extractor_independent_of_htmlparser_importer",
+    "verification_report_sha256": "9f229242caf49212eca4e8d3f606329a7be76a553a42b86c287ca6ac18becc4a"
+  },
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604"
+  },
+  "checks": [
+    {
+      "id": "homecaremanagement.rouki25.1.1.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "a73d48cc1a81bb2e2f4f179f516c416c09870034d3ad682cc2d7c3f0ef947b24",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 1 人員に関する基準（基準第八五条） / ①"
+    },
+    {
+      "id": "homecaremanagement.rouki25.1.1.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "75439149612ee559ae59c2e930debea06b515f40596c130ca256f9b6b1e1a900",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 1 人員に関する基準（基準第八五条） / ②"
+    },
+    {
+      "id": "homecaremanagement.rouki25.1.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "cade58da1c1d3b338884ebe6241542e5de808993079a363fa74b8266c649f806",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 1 人員に関する基準（基準第八五条） / (2)"
+    },
+    {
+      "id": "homecaremanagement.rouki25.2.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "dba9dc004e61731b4a1b892f0f9121df9e589bd717d9186650636ed9eb14d5ca",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 2 設備に関する基準 / (1)"
+    },
+    {
+      "id": "homecaremanagement.rouki25.2.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "e5544c644d76e6a443ab008f3a5f139682b42a3e839a0d2e330a9d4b83f09938",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 2 設備に関する基準 / (2)"
+    },
+    {
+      "id": "homecaremanagement.rouki25.3.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "791759f99033646027c45b731b1399987834d0cf7b89162bfec5ff20af076b62",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 3 運営に関する基準 / (1)"
+    },
+    {
+      "id": "homecaremanagement.rouki25.3.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "746e11c9946305d21480d0e2a01e9b15e32e5ade1b18243e61cf17376bb50614",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 3 運営に関する基準 / (2)"
+    },
+    {
+      "id": "homecaremanagement.rouki25.3.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "79dd806eb87c9a6f98d56140763b4c62d644326b3138a0751cd73edd0fa4fc9a",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 3 運営に関する基準 / (3)"
+    },
+    {
+      "id": "homecaremanagement.rouki25.3.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "27253808328925a8e106fa6b2d153ff54cab4c806260bbfe4b0cc758adee0191",
+      "source_locator": "第七 居宅療養管理指導に関する基準 / 3 運営に関する基準 / (4)"
+    }
+  ],
+  "coverage": {
+    "principal_items": 9,
+    "items_passed": 9
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/services/homecaremanagement/rouki25-scope.json": "86da136bf642d493fa5290ef05eb4b809b58531a",
+    "data/services/homecaremanagement/rouki25-historical.generated.json": "6c50ee6c966155a831a8118c984e4f2ab58a65fc",
+    "scripts/verify_rouki25_historical_service_independent.py": "5b4c508256d9fa09dae7f8424f4051da7735e48b"
+  },
+  "conclusion": "All 9 principal items in the bounded homecaremanagement Rouki 25 historical HTML section matched the official MHLW source under an independent text-extraction path.",
+  "limitations": [
+    "This proves historical-source transcription, not current integrated notice text.",
+    "The R6 old/new comparison remains separate amendment evidence and omitted text is not reconstructed.",
+    "Human review and exhaustive currentness review are not complete."
+  ],
+  "safety": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}

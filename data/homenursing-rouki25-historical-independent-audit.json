@@ -1,0 +1,127 @@
+{
+  "format_version": 1,
+  "service_id": "homenursing",
+  "scope": "homenursing-rouki25-official-historical-html-section",
+  "audit_kind": "INDEPENDENT_SERVICE_ROUKI25_HISTORICAL_SOURCE_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-03",
+  "audit_run": {
+    "workflow": "Prepare next Rouki 25 historical ingestion wave",
+    "run_id": 37087029472,
+    "head_sha": "b9ca6076254add930e797c96e7c11c4eb5e4e0db",
+    "parser": "regex_html_text_extractor_independent_of_htmlparser_importer",
+    "verification_report_sha256": "0cd0ba725c00034ee610934cf3cafc78cdf9097f1d8deb5a387c6d949efca6a9"
+  },
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604"
+  },
+  "checks": [
+    {
+      "id": "homenursing.rouki25.1.1.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "b9ca92be6f7bc05eff43e221dbdc0b8ab7771a05d722ee064c308d1ac314377e",
+      "source_locator": "第五 訪問看護に関する基準 / 1 人員に関する基準 / ①"
+    },
+    {
+      "id": "homenursing.rouki25.1.1.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "e4493aa9539118d6b671bf601ec9f8c28947a28620de885378dc76acee042278",
+      "source_locator": "第五 訪問看護に関する基準 / 1 人員に関する基準 / ②"
+    },
+    {
+      "id": "homenursing.rouki25.1.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "1d9b8add4e68590e09dec8f74a11bf3680a065528ce04a5f6e6d85a42c7b262e",
+      "source_locator": "第五 訪問看護に関する基準 / 1 人員に関する基準 / (2)"
+    },
+    {
+      "id": "homenursing.rouki25.2.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "1f851cc59cfaa72ac76a5b258a3731fd15ad63d0ec38443d47e2b9aa2d742f57",
+      "source_locator": "第五 訪問看護に関する基準 / 2 設備に関する基準 / (1)"
+    },
+    {
+      "id": "homenursing.rouki25.2.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "d3f2dce50e497eb68212b840f83e97aad599222a39482e707386889a94075fe0",
+      "source_locator": "第五 訪問看護に関する基準 / 2 設備に関する基準 / (2)"
+    },
+    {
+      "id": "homenursing.rouki25.3.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "eb57ad99325e7d14f9a11bbe9daefcaea9cf9689ef9b8f13fa521902940369db",
+      "source_locator": "第五 訪問看護に関する基準 / 3 運営に関する基準 / (1)"
+    },
+    {
+      "id": "homenursing.rouki25.3.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "62861de244da81ff639f6e2af4c9d9cb797a3722f6bcf96a30e0629302ed6992",
+      "source_locator": "第五 訪問看護に関する基準 / 3 運営に関する基準 / (2)"
+    },
+    {
+      "id": "homenursing.rouki25.3.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "aa938e5c5a53483e190d7a8a21a1dc6f9944a59e74a31c35f52e77cc30aa88b8",
+      "source_locator": "第五 訪問看護に関する基準 / 3 運営に関する基準 / (3)"
+    },
+    {
+      "id": "homenursing.rouki25.3.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "2f0419d457e6260f41bb7ed84155792fae60b4bd52ec5adccf65f32b889c91cd",
+      "source_locator": "第五 訪問看護に関する基準 / 3 運営に関する基準 / (4)"
+    },
+    {
+      "id": "homenursing.rouki25.3.5",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "12e58e7387e23a4ccf73e9db8b267cd2569060d6c36b7d6546062d92834ad4bf",
+      "source_locator": "第五 訪問看護に関する基準 / 3 運営に関する基準 / (5)"
+    },
+    {
+      "id": "homenursing.rouki25.3.6",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "16b6a4738640739b9172a16c7600d97851161ee6d7d839a90fcb898cdb3b4e5a",
+      "source_locator": "第五 訪問看護に関する基準 / 3 運営に関する基準 / (6)"
+    },
+    {
+      "id": "homenursing.rouki25.3.7",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "5f8fbae041c56ded9e71683a3c9c05cf0bcab2f91675dde4c5a1cd0379dd17d8",
+      "source_locator": "第五 訪問看護に関する基準 / 3 運営に関する基準 / (7)"
+    }
+  ],
+  "coverage": {
+    "principal_items": 12,
+    "items_passed": 12
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/services/homenursing/rouki25-scope.json": "c4f8b987a8f9b62fc081b19b29512beb3c708cc3",
+    "data/services/homenursing/rouki25-historical.generated.json": "86e42e89c0e92dad369df6a408e6d5cb8e467318",
+    "scripts/verify_rouki25_historical_service_independent.py": "5b4c508256d9fa09dae7f8424f4051da7735e48b"
+  },
+  "conclusion": "All 12 principal items in the bounded homenursing Rouki 25 historical HTML section matched the official MHLW source under an independent text-extraction path.",
+  "limitations": [
+    "This proves historical-source transcription, not current integrated notice text.",
+    "The R6 old/new comparison remains separate amendment evidence and omitted text is not reconstructed.",
+    "Human review and exhaustive currentness review are not complete."
+  ],
+  "safety": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}

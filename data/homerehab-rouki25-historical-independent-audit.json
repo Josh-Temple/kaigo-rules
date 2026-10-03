@@ -1,0 +1,92 @@
+{
+  "format_version": 1,
+  "service_id": "homerehab",
+  "scope": "homerehab-rouki25-official-historical-html-section",
+  "audit_kind": "INDEPENDENT_SERVICE_ROUKI25_HISTORICAL_SOURCE_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-03",
+  "audit_run": {
+    "workflow": "Prepare next Rouki 25 historical ingestion wave",
+    "run_id": 37087029472,
+    "head_sha": "b9ca6076254add930e797c96e7c11c4eb5e4e0db",
+    "parser": "regex_html_text_extractor_independent_of_htmlparser_importer",
+    "verification_report_sha256": "7da299f37568ddcd167507bf5d14f2b6c023e391581b51df2d37e44344ce520e"
+  },
+  "source": {
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+    "sha256": "922dfabaf9eba17f821e0b755d1c750d665906abd7248df4280de9602f93e604"
+  },
+  "checks": [
+    {
+      "id": "homerehab.rouki25.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "dd9b2bdeb6df84eae5c1c12a55072037322fa8f621a51c0e69827382aaa7ea03",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 1 人員に関する基準（基準第七六条）"
+    },
+    {
+      "id": "homerehab.rouki25.2.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "31fee61fcf52ad9f12b2d758f23ca9a12e635b6b31af4f330e66aa5b4d1ca0b6",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 2 設備に関する基準 / (1)"
+    },
+    {
+      "id": "homerehab.rouki25.2.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "e5544c644d76e6a443ab008f3a5f139682b42a3e839a0d2e330a9d4b83f09938",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 2 設備に関する基準 / (2)"
+    },
+    {
+      "id": "homerehab.rouki25.3.1",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "c0a2aceb381b6bf60e811d1791696641bff84d2e630eb6f70b4c541dd4124833",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 3 運営に関する基準 / (1)"
+    },
+    {
+      "id": "homerehab.rouki25.3.2",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "2266fd4bfe74d4a077f9011cc488b30875bad35684b6c235b95514f4fbeab390",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 3 運営に関する基準 / (2)"
+    },
+    {
+      "id": "homerehab.rouki25.3.3",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "68c0fa811c47a34bdde1af59019e505a0ebf24399a7a10661d57d5d66b37f511",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 3 運営に関する基準 / (3)"
+    },
+    {
+      "id": "homerehab.rouki25.3.4",
+      "result": "PASS",
+      "differences": [],
+      "body_sha256": "1451bf67793003977b30d980c59f77c56e1609bc1500a71715e2a3434cc9353f",
+      "source_locator": "第六 訪問リハビリテーションに関する基準 / 3 運営に関する基準 / (4)"
+    }
+  ],
+  "coverage": {
+    "principal_items": 7,
+    "items_passed": 7
+  },
+  "input_git_blob_shas_at_audit": {
+    "data/services/homerehab/rouki25-scope.json": "77657b31ed14419f5cfbaadb7327fe17f292f392",
+    "data/services/homerehab/rouki25-historical.generated.json": "9e40916e5c0606f29da552f67fa90657b6754205",
+    "scripts/verify_rouki25_historical_service_independent.py": "5b4c508256d9fa09dae7f8424f4051da7735e48b"
+  },
+  "conclusion": "All 7 principal items in the bounded homerehab Rouki 25 historical HTML section matched the official MHLW source under an independent text-extraction path.",
+  "limitations": [
+    "This proves historical-source transcription, not current integrated notice text.",
+    "The R6 old/new comparison remains separate amendment evidence and omitted text is not reconstructed.",
+    "Human review and exhaustive currentness review are not complete."
+  ],
+  "safety": {
+    "historical_source_only": true,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  }
+}
