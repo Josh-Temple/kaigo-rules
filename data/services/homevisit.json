@@ -30,7 +30,8 @@
     "care_insurance_act": "data/services/homevisit/care-insurance-act-index.generated.json",
     "ordinance37": "data/services/homevisit/ordinance37-index.generated.json",
     "rouki25": "data/services/homevisit/rouki25-historical.generated.json",
-    "remuneration": "data/services/homevisit/remuneration-index.json"
+    "remuneration": "data/services/homevisit/remuneration-index.json",
+    "unit_price": "data/unit-price-homevisit.json"
   },
   "ingestion_layers": {
     "care_insurance_act": {
@@ -57,6 +58,14 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "平成12年厚生省告示第19号の厚生労働省統合表示から『1 訪問介護費』の構造と明示数値をサービス固有indexとして収載。法令本文は複製せずlocator参照とし、独立item-body verification・全改正履歴currentness・human review・公開routeは未昇格。"
+    },
+    "unit_price": {
+      "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "service_rows": 8,
+      "shared_region_assignments": "data/unit-price-region-assignments.json",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "厚生労働省告示第93号の現行統合表示から訪問介護の一級地〜七級地・その他の8サービス行を収載。地域割当は共有コーパスを参照し、独立item-body verification/currentness/human review/publication/routeは未昇格。"
     }
   }
 }
