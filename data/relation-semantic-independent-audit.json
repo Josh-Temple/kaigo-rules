@@ -3,14 +3,14 @@
   "scope": "explicit-legal-reference-relations-ordinance37-article105",
   "audit_kind": "INDEPENDENT_EXPLICIT_LEGAL_REFERENCE_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-10-02",
+  "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Verify explicit legal-reference relations independently",
-    "run_id": 37015596470,
-    "head_sha": "1e60d3781c140cc72410849758f9a125f9b2bbf6",
+    "run_id": 37116499056,
+    "head_sha": "e5710fe2e1f4cd999ad13af5f5c052930f916229",
     "parser": "python_xml_dom_minidom_plus_independent_japanese_article_reference_parser",
     "result": "PASS",
-    "verification_report_sha256": "3c1b4601ada548905004877fc4b43643a587c539e818a509d301713f3c873de5"
+    "verification_report_sha256": "a45cd87a4b6f777b1541bccd5b2858ef96f00f7bc3645a04adee88df4b50061e"
   },
   "checks": [
     {
@@ -75,7 +75,7 @@
     }
   ],
   "coverage": {
-    "source_derived_structural_contains_relations": 399,
+    "source_derived_structural_contains_relations": 1706,
     "non_contains_semantic_or_cross_layer_relations": 163,
     "explicit_legal_reference_relations_independently_verified": 23,
     "semantic_or_cross_layer_relations_not_yet_independently_verified": 140
@@ -83,7 +83,7 @@
   "input_git_blob_shas_at_audit": {
     "data/ordinance37-nodes.json": "f4f13acc92d484804cce3575f8496d79b42511ca",
     "data/ordinance37-relations.json": "c07311b5deaf56b8acea0f28b0275a6abca42ac6",
-    "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
+    "data/care-insurance-act-relations.json": "6cfb17acea1e2c546bf11e63f902ebcb7b1404ea",
     "data/fee-guidance-relations.json": "caa6b1f9e93164c066dca3e345008b10914a5b2d",
     "data/notice-ordinance-relations.json": "83a63383e63c37eec2bd1ce67e6b2a1975256d72",
     "data/relationships.json": "870df418e53bd7e76713bf038d9c883fa2c69466",
