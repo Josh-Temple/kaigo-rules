@@ -23,6 +23,8 @@ CURRENTNESS_KEYS = {
     "community-dayservice": ("conclusion", "currentness_state"),
     "regular-round": ("conclusion", "currentness"),
     "night-homevisit": ("conclusion", "state"),
+    "care-management": ("conclusion", "currentness"),
+    "preventive-support": ("conclusion", "currentness"),
 }
 
 
