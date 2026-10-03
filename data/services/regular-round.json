@@ -10,7 +10,8 @@
   },
   "id_namespaces": {},
   "scope_files": {
-    "standards_interpretation": "data/services/regular-round/standards-interpretation-scope.json"
+    "standards_interpretation": "data/services/regular-round/standards-interpretation-scope.json",
+    "standards_interpretation_staging": "data/services/regular-round/standards-interpretation-staging.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -25,10 +26,10 @@
       "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
     },
     "standards_interpretation": {
-      "status": "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+      "status": "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING",
       "source_family": "community_based_services_standards_interpretation",
       "principal_items": 21,
-      "note": "第二陣NOTICE成果の確定粒度と公式一次資料の通知系列をservice-specific scopeとして登録。本文adapter・独立source検証・currentness確認・human review・公開は未実施。"
+      "note": "第二陣NOTICE 21項目をRepository staging datasetへ固定。要約は公式通知本文として扱わず、source locatorの独立再検証・currentness確認・human review・公開は未実施。"
     }
   }
 }
