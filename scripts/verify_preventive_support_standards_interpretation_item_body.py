@@ -260,9 +260,13 @@ def validate_receipt() -> tuple[dict, dict]:
         item.get("directly_supports_child_item_body") is not True
         or item.get("proves_currentness") is not False
         or item.get("source_manifest_id") not in manifest_ids
+        or not item.get("later_final_version_locator")
         for item in b008_children
     ):
         fail("KR2-10-B008: child item-body evidence boundary invalid")
+    for item in b008_children:
+        if item.get("source_manifest_id") == "work-control-source-4" and not item.get("earlier_version_locator"):
+            fail("KR2-10-B008: historical child evidence lacks earlier-version locator")
     remaining_partial = {
         row["task_id"] for row in rows if row.get("verdict") == "PARTIAL"
     }
