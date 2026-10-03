@@ -213,10 +213,11 @@
       "source_urls": [
         "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
         "https://www.mhlw.go.jp/content/12300000/000869800.pdf",
-        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1"
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4366&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c07.pdf"
       ],
-      "source_locator": "3 運営に関する基準 > (5)〜(7) （略）",
-      "extraction_method": "令和3年度改正新旧対照表で新設(1)に伴う番号繰下げを確認し、厚生労働省旧版公式通知の従来(4)〜(6)の見出し・本文を現行(5)〜(7)の範囲として対応付けた。令和6年度資料では同範囲が略記されていることを確認した。",
+      "source_locator": "R3以降の現行番号(5)「身分を証する書類の携行」／厚労省c07改正比較資料の旧番号(4)改正後欄。介護支援専門員証の携行・初回訪問時等の提示を直接確認。",
+      "extraction_method": "令和3年度の番号繰下げを維持したまま、厚労省公式c07改正比較資料の旧番号(4)改正後本文で「介護支援専門員証」の携行・初回訪問時等の提示を直接確認した。現行性は別工程。",
       "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
       "currentness_state": "NOT_ESTABLISHED",
       "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
@@ -323,8 +324,8 @@
         "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
         "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
       ],
-      "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉑ 主治の医師等の意見等（第19号・第19号の2・第20号）",
-      "extraction_method": "正本の令和6年度厚生労働省改正資料を基点に、必要な範囲で厚生労働省の旧版通知・後続改正資料を突合した。略記のまま一意に復元できない箇所は推測補完していない。",
+      "source_locator": "版別locator: earlier-R6 ㉑「主治の医師等の意見等」／final-R6新欄 ㉒「主治の医師等の意見等」。同一内容を番号統合せず版別に保持。",
+      "extraction_method": "earlier-R6とfinal-R6新欄を別versionとして突合し、同一見出し・本文が㉑→㉒へ移動したことを確認。番号はversion-awareに保持し、本文内容は推測補完していない。",
       "content_state": "SOURCE_CONTENT_STRUCTURED",
       "currentness_state": "NOT_ESTABLISHED",
       "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
@@ -364,10 +365,11 @@
       "content_summary": "福祉用具の必要性を検討し、サービス担当者会議等を通じ必要理由を計画へ記載する。貸与継続時の検証等も扱う。",
       "structured_text_raw": "  - path: 第二/3/(8)/㉓\n    number: ㉓\n    heading: 福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映\n    content_summary: 福祉用具の必要性を検討し、サービス担当者会議等を通じ必要理由を計画へ記載する。貸与継続時の検証等も扱う。",
       "source_urls": [
-        "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
       ],
-      "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉓ 福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映（第22号・第23号）",
-      "extraction_method": "正本の令和6年度厚生労働省改正資料を基点に、必要な範囲で厚生労働省の後続改正資料を突合した。略記のまま一意に復元できない箇所は推測補完していない。",
+      "source_locator": "版別locator: earlier-R6 ㉓「福祉用具貸与及び特定福祉用具販売の居宅サービス計画への反映」／final-R6新欄 ㉔同項目。同一内容を番号統合せず版別に保持。",
+      "extraction_method": "earlier-R6とfinal-R6新欄を別versionとして突合し、同一見出し・本文が㉓→㉔へ移動したことを確認。番号はversion-awareに保持し、本文内容は推測補完していない。",
       "content_state": "SOURCE_CONTENT_STRUCTURED",
       "currentness_state": "NOT_ESTABLISHED",
       "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
@@ -407,10 +409,11 @@
       "content_summary": "受託業務量等を勘案し、本来の指定居宅介護支援業務の適正な実施に影響を及ぼさないよう配慮する。",
       "structured_text_raw": "  - path: 第二/3/(8)/㉖\n    number: ㉖\n    heading: 指定介護予防支援業務の受託に関する留意点\n    content_summary: 受託業務量等を勘案し、本来の指定居宅介護支援業務の適正な実施に影響を及ぼさないよう配慮する。",
       "source_urls": [
-        "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+        "https://www.mhlw.go.jp/content/12300000/001221591.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001227941.pdf"
       ],
-      "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準／3 運営に関する基準 > (8) 指定居宅介護支援の基本取扱方針及び具体的取扱方針 > ㉖ 指定介護予防支援業務の受託に関する留意点（第26号）",
-      "extraction_method": "正本の令和6年度厚生労働省改正資料を基点に、必要な範囲で厚生労働省の旧版通知を突合した。略記のまま一意に復元できない箇所は推測補完していない。",
+      "source_locator": "版別locator: earlier-R6 ㉖「指定介護予防支援業務の受託に関する留意点」／final-R6新欄 ㉗同項目。同一内容を番号統合せず版別に保持。",
+      "extraction_method": "earlier-R6とfinal-R6新欄を別versionとして突合し、同一見出し・本文が㉖→㉗へ移動したことを確認。番号はversion-awareに保持し、本文内容は推測補完していない。",
       "content_state": "SOURCE_CONTENT_STRUCTURED",
       "currentness_state": "NOT_ESTABLISHED",
       "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
