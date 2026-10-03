@@ -159,9 +159,9 @@
       },
       "ingestion_layers": {
         "rouki25": {
-          "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED",
+          "status": "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
           "principal_items": 12,
-          "note": "老企第25号の公式旧HTML「第五 訪問看護に関する基準」の12 principal itemsを、第二陣Bレーンの確定粒度に合わせてservice-specific scopeとして登録。本文取込・独立検証・currentness確認・human review・公開は未実施。"
+          "note": "老企第25号の公式旧HTML『第五 訪問看護に関する基準』12 principal itemsをRepositoryへmaterializeし、独立パーサーで公式sourceとの12/12一致を確認。現行統合本文・human review・公開は未実施。"
         },
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
@@ -192,9 +192,9 @@
       },
       "ingestion_layers": {
         "rouki25": {
-          "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED",
+          "status": "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
           "principal_items": 7,
-          "note": "老企第25号の公式旧HTML「第六 訪問リハビリテーションに関する基準」の7 principal itemsを、第二陣Bレーンの確定粒度に合わせてservice-specific scopeとして登録。本文取込・独立検証・currentness確認・human review・公開は未実施。"
+          "note": "老企第25号の公式旧HTML『第六 訪問リハビリテーションに関する基準』7 principal itemsをRepositoryへmaterializeし、独立パーサーで公式sourceとの7/7一致を確認。現行統合本文・human review・公開は未実施。"
         },
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
@@ -225,9 +225,9 @@
       },
       "ingestion_layers": {
         "rouki25": {
-          "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED",
+          "status": "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
           "principal_items": 9,
-          "note": "老企第25号の公式旧HTML「第七 居宅療養管理指導に関する基準」の9 principal itemsを、第二陣Bレーンの確定粒度に合わせてservice-specific scopeとして登録。本文取込・独立検証・currentness確認・human review・公開は未実施。"
+          "note": "老企第25号の公式旧HTML『第七 居宅療養管理指導に関する基準』9 principal itemsをRepositoryへmaterializeし、独立パーサーで公式sourceとの9/9一致を確認。現行統合本文・human review・公開は未実施。"
         },
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
@@ -326,10 +326,10 @@
           "note": "Work Control Cycle 4の5レイヤー受理済みResultがLibraryに存在する。repository側のservice-specific scope/adaptersは未登録で、公開・独立検証・human reviewは未実施。"
         },
         "rouki25": {
-          "status": "SCOPE_DEFINED_NOT_RECONSTRUCTED",
+          "status": "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
           "principal_items": 34,
           "child_nodes_preserved_in_body": 49,
-          "note": "Work Control Cycle 4受理済みResultの老企第25号旧HTML『第一〇 短期入所生活介護』34 primary itemsをservice-specific scopeとして登録。49 child nodesは各primary item本文内に保持し、item数へ重複計上しない。本文取込・独立検証・currentness確認・human review・公開は未実施。"
+          "note": "老企第25号の公式旧HTML『第一〇 短期入所生活介護』34 principal itemsをRepositoryへmaterializeし、独立パーサーで公式sourceとの34/34一致を確認。49 child nodesはprimary本文内に保持。現行統合本文・human review・公開は未実施。"
         }
       },
       "verification_layer_ids": []
