@@ -2,7 +2,7 @@
   "format_version": 2,
   "service_id": "homevisit",
   "source_family": "unit_price_regional_classification",
-  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
+  "status": "SCOPE_DEFINED_SERVICE_ROWS_INGESTED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
   "unit_price_scope": {
     "scope_relation": "APPLIES",
     "notice_number": "平成27年厚生労働省告示第93号",
@@ -11,7 +11,7 @@
     "table_locator": "第一号 表（地域区分・サービス種類・割合）",
     "regional_classification_locator": "第二号 表（地域区分・都道府県・地域）",
     "repository_region_assignments": "data/unit-price-region-assignments.json",
-    "service_multiplier_rows_ingested_in_repository": false
+    "service_multiplier_rows_ingested_in_repository": true
   },
   "assurance": {
     "legal_text_duplicated": false,
@@ -22,5 +22,10 @@
     "publication": "BLOCKED",
     "route_exposure": "BLOCKED",
     "automatic_verification_promotion_allowed": false
+  },
+  "repository_service_rows": "data/unit-price-homevisit.json",
+  "currentness": {
+    "state": "NOT_ESTABLISHED",
+    "note": "厚生労働省の現行統合表示から訪問介護の8地域区分別割合を収載したが、独立したsource reparseと改正履歴照合は別工程。"
   }
 }

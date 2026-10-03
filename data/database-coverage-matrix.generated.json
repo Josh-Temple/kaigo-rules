@@ -1025,8 +1025,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1046,7 +1048,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -20235,8 +20239,8 @@
           "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "INGESTED": 1,
-          "NOT_INGESTED": 38
+          "INGESTED": 2,
+          "NOT_INGESTED": 37
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 38,
@@ -20795,6 +20799,11 @@
       },
       {
         "service_id": "homevisit",
+        "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homevisit",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -21251,6 +21260,11 @@
         "state": "NOT_ESTABLISHED"
       },
       {
+        "service_id": "homevisit",
+        "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "homebath",
         "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
@@ -21332,6 +21346,11 @@
       {
         "service_id": "homevisit",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homevisit",
+        "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
       {
