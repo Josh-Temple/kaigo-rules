@@ -224,9 +224,9 @@
       "content_verification": {
         "status": "PASS",
         "kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
-        "nodes": 137,
-        "articles": 11,
-        "contains_relations": 126,
+        "nodes": 1671,
+        "articles": 238,
+        "contains_relations": 1433,
         "evidence": "data/egov-content-independent-audit.json"
       },
       "currentness": {
