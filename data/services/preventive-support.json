@@ -11,7 +11,12 @@
   "id_namespaces": {},
   "scope_files": {
     "standards_interpretation": "data/services/preventive-support/standards-interpretation-scope.json",
-    "standards_interpretation_staging": "data/services/preventive-support/standards-interpretation-staging.json"
+    "standards_interpretation_staging": "data/services/preventive-support/standards-interpretation-staging.json",
+    "care_insurance_act": "data/services/preventive-support/care-insurance-act-scope.json",
+    "governing_standards": "data/services/preventive-support/governing-standards-scope.json",
+    "remuneration": "data/services/preventive-support/remuneration-scope.json",
+    "delegated_remuneration_criteria": "data/services/preventive-support/delegated-remuneration-criteria-scope.json",
+    "unit_price_regional_classification": "data/services/preventive-support/unit-price-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
