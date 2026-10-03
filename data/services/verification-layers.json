@@ -58,6 +58,12 @@
       "scope_kind": "SERVICE_SPECIFIC",
       "provider": "normalized_report",
       "report_file": "data/verification/layers/fee-guidance-dayrehab.json"
+    },
+    {
+      "id": "rouki25-homevisit",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "normalized_report",
+      "report_file": "data/verification/layers/rouki25-homevisit.json"
     }
   ]
 }
