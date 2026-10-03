@@ -1,0 +1,59 @@
+name: Verify homebath Rouki 25 historical source independently
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "31 6 * * 2"
+  pull_request:
+    paths:
+      - "data/services/homebath/rouki25-scope.json"
+      - "data/services/homebath/rouki25-historical.generated.json"
+      - "data/homebath-rouki25-historical-independent-audit.json"
+      - "scripts/verify_rouki25_historical_service_independent.py"
+      - "scripts/validate_rouki25_historical_service_audit.py"
+      - ".github/workflows/verify-homebath-rouki25-historical-independent.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/services/homebath/rouki25-scope.json"
+      - "data/services/homebath/rouki25-historical.generated.json"
+      - "data/homebath-rouki25-historical-independent-audit.json"
+      - "scripts/verify_rouki25_historical_service_independent.py"
+      - "scripts/validate_rouki25_historical_service_audit.py"
+      - ".github/workflows/verify-homebath-rouki25-historical-independent.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Independently verify historical MHLW source
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_rouki25_historical_service_independent.py \
+            --service-id homebath \
+            --report rouki25-homebath-verification.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Validate pinned audit provenance
+        run: python scripts/validate_rouki25_historical_service_audit.py --service-id homebath --expected-items 13
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: homebath-rouki25-historical-verification
+          path: rouki25-homebath-verification.json
+          if-no-files-found: warn
+      - name: Fail on source differences
+        if: steps.verify.outputs.exit_code != '0'
+        run: exit 1
