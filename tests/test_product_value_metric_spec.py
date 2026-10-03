@@ -63,6 +63,7 @@ class ProductValueMetricSpecTest(unittest.TestCase):
                 "unit_price_records",
                 "qa_corpus_items",
                 "homevisit_notice_items",
+                "homebath_notice_items",
                 "dayrehab_standard_articles",
                 "dayrehab_notice_items",
                 "dayrehab_remuneration_items",
