@@ -31,30 +31,37 @@ test("notice database is catalog-driven across registered services", () => {
       "preventive-support",
     ],
   );
-  assert.equal(publicNoticePublishedServiceCount, 2);
-  assert.equal(publicNoticeRecords.length, 31);
+  assert.equal(publicNoticePublishedServiceCount, 3);
+  assert.equal(publicNoticeRecords.length, 66);
 });
 
 test("published notice records remain separated by service assurance", () => {
   assert.equal(noticeServiceCount("dayservice"), 22);
+  assert.equal(noticeServiceCount("homevisit"), 35);
   assert.equal(noticeServiceCount("dayrehab"), 9);
   assert.equal(filterPublicNotices("dayservice").length, 22);
+  assert.equal(filterPublicNotices("homevisit").length, 35);
   assert.equal(filterPublicNotices("dayrehab").length, 9);
 
   const dayservice = filterPublicNotices("dayservice");
+  const homevisit = filterPublicNotices("homevisit");
   const dayrehab = filterPublicNotices("dayrehab");
 
   assert.ok(dayservice.every((row) => row.source_state === "RECONSTRUCTED_CANDIDATE"));
   assert.ok(dayservice.every((row) => row.currentness_state === "HOLD"));
+  assert.ok(homevisit.every((row) => row.source_state === "OFFICIAL_HISTORICAL_HTML"));
+  assert.ok(homevisit.every((row) => row.currentness_state === "GAP"));
   assert.ok(dayrehab.every((row) => row.source_state === "OFFICIAL_HISTORICAL_HTML"));
   assert.ok(dayrehab.every((row) => row.currentness_state === "GAP"));
   assert.ok(publicNoticeRecords.every((row) => row.human_review_state === "NOT_REVIEWED"));
 });
 
-test("registered services without repository notice text fail closed at zero records", () => {
-  assert.equal(noticeServiceCount("homevisit"), 0);
+test("published homevisit history and un-ingested services remain clearly separated", () => {
+  assert.equal(noticeServiceCount("homevisit"), 35);
+  assert.equal(noticeServiceCount("homebath"), 0);
   assert.equal(noticeServiceCount("shortstay-life"), 0);
-  assert.equal(filterPublicNotices("homevisit").length, 0);
+  assert.equal(filterPublicNotices("homevisit").length, 35);
+  assert.equal(filterPublicNotices("homebath").length, 0);
   assert.equal(filterPublicNotices("shortstay-life").length, 0);
   assert.equal(filterPublicNotices("unknown-service").length, 0);
 
@@ -68,7 +75,12 @@ test("registered services without repository notice text fail closed at zero rec
     (service) => service.service_id === "shortstay-life",
   );
 
-  assert.equal(homevisit?.notice_status, "SCOPE_DEFINED_NOT_RECONSTRUCTED");
+  assert.equal(
+    homevisit?.notice_status,
+    "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+  );
+  assert.equal(homevisit?.record_count, 35);
+  assert.equal(homevisit?.verification_layer_id, "rouki25-homevisit");
   assert.equal(homebath?.record_count, 0);
   assert.equal(
     homebath?.notice_status,
@@ -78,7 +90,6 @@ test("registered services without repository notice text fail closed at zero rec
     shortstay?.notice_status,
     "WORK_CONTROL_ACCEPTED_NOT_REPOSITORY_INGESTED",
   );
-  assert.equal(homevisit?.verification_layer_id, undefined);
   assert.equal(shortstay?.verification_layer_id, undefined);
 });
 
