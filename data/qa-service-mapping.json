@@ -43,9 +43,10 @@
       "OTHER_SPECIAL": 2,
       "REMUNERATION_ONLY_THEME": 1
     },
-    "mapped_existing_service_ids": 13,
-    "pending_parallel_catalog_service_codes": 13,
-    "rows_with_qualified_or_variant_raw_service_label": 297
+    "mapped_existing_service_ids": 26,
+    "pending_parallel_catalog_service_codes": 0,
+    "rows_with_qualified_or_variant_raw_service_label": 297,
+    "mapped_individual_service_ids": 26
   },
   "current_catalog_snapshot": {
     "manifest_service_ids": [
@@ -61,7 +62,33 @@
       "regular-round",
       "night-homevisit",
       "care-management",
-      "preventive-support"
+      "preventive-support",
+      "shortstay-medical",
+      "specific-facility",
+      "welfare-equipment-rental",
+      "specific-welfare-equipment-sale",
+      "dementia-dayservice",
+      "small-scale-multifunctional",
+      "dementia-group-home",
+      "community-specific-facility",
+      "community-elderly-facility",
+      "nursing-small-scale-multifunctional",
+      "elderly-welfare-facility",
+      "elderly-health-facility",
+      "care-medical-institution",
+      "preventive-homebath",
+      "preventive-homenursing",
+      "preventive-homerehab",
+      "preventive-homecaremanagement",
+      "preventive-dayrehab",
+      "preventive-shortstay-life",
+      "preventive-shortstay-medical",
+      "preventive-specific-facility",
+      "preventive-welfare-equipment-rental",
+      "specific-preventive-welfare-equipment-sale",
+      "preventive-dementia-dayservice",
+      "preventive-small-scale-multifunctional",
+      "preventive-dementia-group-home"
     ],
     "generated_catalog_service_ids": [
       "dayservice",
@@ -76,7 +103,33 @@
       "regular-round",
       "night-homevisit",
       "care-management",
-      "preventive-support"
+      "preventive-support",
+      "shortstay-medical",
+      "specific-facility",
+      "welfare-equipment-rental",
+      "specific-welfare-equipment-sale",
+      "dementia-dayservice",
+      "small-scale-multifunctional",
+      "dementia-group-home",
+      "community-specific-facility",
+      "community-elderly-facility",
+      "nursing-small-scale-multifunctional",
+      "elderly-welfare-facility",
+      "elderly-health-facility",
+      "care-medical-institution",
+      "preventive-homebath",
+      "preventive-homenursing",
+      "preventive-homerehab",
+      "preventive-homecaremanagement",
+      "preventive-dayrehab",
+      "preventive-shortstay-life",
+      "preventive-shortstay-medical",
+      "preventive-specific-facility",
+      "preventive-welfare-equipment-rental",
+      "specific-preventive-welfare-equipment-sale",
+      "preventive-dementia-dayservice",
+      "preventive-small-scale-multifunctional",
+      "preventive-dementia-group-home"
     ]
   },
   "codes": [
@@ -406,14 +459,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 59,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "19",
-          "official_label": "短期入所療養介護事業",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "shortstay-medical",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 59,
@@ -428,14 +476,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 93,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "20",
-          "official_label": "特定施設入居者生活介護事業",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "specific-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 88,
@@ -459,14 +502,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 29,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "21",
-          "official_label": "福祉用具貸与事業",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "welfare-equipment-rental",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 29,
@@ -481,14 +519,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 22,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "22",
-          "official_label": "特定福祉用具販売事業",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "specific-welfare-equipment-sale",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 22,
@@ -520,14 +553,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 159,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "24",
-          "official_label": "介護老人福祉施設",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "elderly-welfare-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 159,
@@ -542,14 +570,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 124,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "25",
-          "official_label": "介護老人保健施設",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "elderly-health-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 124,
@@ -632,14 +655,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 89,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "42",
-          "official_label": "認知症対応型通所介護事業",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "dementia-dayservice",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 89,
@@ -654,14 +672,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 80,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "43",
-          "official_label": "小規模多機能型居宅介護事業",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "small-scale-multifunctional",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 80,
@@ -676,14 +689,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 137,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "44",
-          "official_label": "認知症対応型共同生活介護事業",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "dementia-group-home",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 137,
@@ -698,14 +706,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 40,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "45",
-          "official_label": "地域密着型特定施設入居者生活介護事業",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "community-specific-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 40,
@@ -720,14 +723,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 124,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "46",
-          "official_label": "地域密着型介護老人福祉施設",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "community-elderly-facility",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 124,
@@ -742,14 +740,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 67,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "47",
-          "official_label": "看護小規模多機能型居宅介護",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "nursing-small-scale-multifunctional",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 27,
@@ -786,14 +779,9 @@
       "classification": "INDIVIDUAL_SERVICE",
       "corpus_rows": 40,
       "catalog_mapping": {
-        "state": "PENDING_PARALLEL_SERVICE_CATALOG",
-        "service_id": null,
-        "basis": "MATCH_BY_MHLW_QA_CODE_AND_OFFICIAL_LABEL",
-        "proposed_mapping": {
-          "mhlw_qa_service_code": "49",
-          "official_label": "介護医療院",
-          "note": "Do not invent a canonical service_id here. Integrator must reconcile this code/label with Chat A's service catalog result."
-        }
+        "state": "MAPPED_CURRENT_CATALOG",
+        "service_id": "care-medical-institution",
+        "basis": "INTEGRATOR_RECONCILED_WITH_SERVICE_UNIVERSE"
       },
       "row_scope": {
         "canonical_raw_label_rows": 40,
@@ -858,5 +846,11 @@
         "policy": "PRESERVE_RAW_LABEL_AND_DO_NOT_AUTO_EXPAND_WITHOUT_EXPLICIT_ROW_SCOPE_RESOLUTION"
       }
     }
-  ]
+  ],
+  "integration_reconciliation": {
+    "state": "RESOLVED_AGAINST_FULL_SERVICE_CATALOG",
+    "direct_individual_service_mappings": 26,
+    "current_services_without_individual_qa_code": 13,
+    "note": "Absence of an individual Q&A code does not mean Q&A is not applicable; shared/common categories remain group relations and row-level qualifiers remain fail-closed."
+  }
 }

@@ -4,19 +4,239 @@
   "status": "STRUCTURAL_MAPPING_ONLY_NOT_SERVICE_VERIFICATION",
   "automatic_verification_promotion_allowed": false,
   "relations": [
-    {"service_id":"dayservice","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"homevisit","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"homebath","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"homenursing","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"homerehab","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"homecaremanagement","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"dayrehab","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"shortstay-life","corpus_id":"ordinance37","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"community-dayservice","corpus_id":"community-based-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"regular-round","corpus_id":"community-based-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"night-homevisit","corpus_id":"community-based-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"care-management","corpus_id":"care-management-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"},
-    {"service_id":"preventive-support","corpus_id":"preventive-support-standards","relation":"governed_by_standards_corpus","verification_status":"NOT_SERVICE_VERIFIED"}
-  ],
-  "note": "This mapping identifies the governing ministerial-standards law family for services already present on main. It does not define article scope, incorporation by reference, substitutions/read-as rules, currentness or publication readiness. New service IDs from the parallel service-universe work must be added by the integrator after reconciliation."
+    {
+      "service_id": "dayservice",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "homevisit",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "homebath",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "homenursing",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "homerehab",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "homecaremanagement",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "dayrehab",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "shortstay-life",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "community-dayservice",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "regular-round",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "night-homevisit",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "care-management",
+      "corpus_id": "care-management-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-support",
+      "corpus_id": "preventive-support-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "shortstay-medical",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "specific-facility",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "corpus_id": "ordinance37",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "dementia-group-home",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "community-specific-facility",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "corpus_id": "community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "corpus_id": "elderly-welfare-facility-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "corpus_id": "geriatric-health-services-facility-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "care-medical-institution",
+      "corpus_id": "long-term-care-medical-facility-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "corpus_id": "preventive-services-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "corpus_id": "preventive-community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "corpus_id": "preventive-community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "corpus_id": "preventive-community-based-standards",
+      "relation": "governed_by_standards_corpus",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    }
+  ]
 }

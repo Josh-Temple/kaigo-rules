@@ -175,3 +175,7 @@ After Chat A is available, the Database Completion Integrator should:
 6. retain historical/special/theme rows outside individual current-service mappings,
 7. keep verification, currentness, human review, and publication state unchanged unless independently established.
 
+
+## Integrator reconciliation
+
+The completed 39-service catalog resolves the 13 mappings that were intentionally pending during parallel work. The Q&A layer now has 26 direct individual-service mappings. The other 13 current services do not have their own individual workbook code; this is not treated as non-applicability. The six common categories remain group relations, and the 297 qualified/variant raw labels remain fail-closed rather than being copied across services.

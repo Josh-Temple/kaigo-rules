@@ -57,6 +57,11 @@ def main():
         if rel.get("corpus_id") not in by_id: fail(f"unknown corpus in service map: {rel.get('corpus_id')}")
         if rel.get("verification_status")!="NOT_SERVICE_VERIFIED": fail(f"{key}: service mapping must not claim verification")
 
+    service_manifest=load(ROOT/"data/services/manifest.json")
+    expected_services={row["service_id"] for row in service_manifest.get("services",[])}
+    if seen!=expected_services:
+        fail(f"service mapping coverage mismatch: missing={sorted(expected_services-seen)} extra={sorted(seen-expected_services)}")
+
     audit=load(AUDIT)
     if audit.get("audit_result")!="PASS": fail("independent audit not PASS")
     safety=audit.get("safety",{})

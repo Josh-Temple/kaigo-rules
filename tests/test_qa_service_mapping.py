@@ -48,24 +48,23 @@ class QaServiceMappingTest(unittest.TestCase):
             for entry in self.mapping["codes"]
             if entry["catalog_mapping"]["state"] == "MAPPED_CURRENT_CATALOG"
         }
-        self.assertEqual(mapped_ids, current_ids)
-        self.assertEqual(len(mapped_ids), 13)
+        self.assertTrue(mapped_ids.issubset(current_ids))
+        self.assertEqual(len(current_ids), 39)
+        self.assertEqual(len(mapped_ids), 26)
 
-    def test_parallel_catalog_services_are_not_guessed(self):
-        pending = [
-            entry for entry in self.mapping["codes"]
-            if entry["catalog_mapping"]["state"] == "PENDING_PARALLEL_SERVICE_CATALOG"
-        ]
-        self.assertEqual(
-            {entry["service_code"] for entry in pending},
-            {"19", "20", "21", "22", "24", "25", "42", "43", "44", "45", "46", "47", "49"},
-        )
-        for entry in pending:
-            self.assertIsNone(entry["catalog_mapping"]["service_id"])
-            proposal = entry["catalog_mapping"]["proposed_mapping"]
-            self.assertNotIn("proposed_service_id", proposal)
-            self.assertEqual(proposal["mhlw_qa_service_code"], entry["service_code"])
-            self.assertEqual(proposal["official_label"], entry["official_label"])
+    def test_parallel_catalog_services_are_reconciled_to_stable_ids(self):
+        by_code = {entry["service_code"]: entry for entry in self.mapping["codes"]}
+        expected = {
+            "19":"shortstay-medical","20":"specific-facility","21":"welfare-equipment-rental",
+            "22":"specific-welfare-equipment-sale","24":"elderly-welfare-facility",
+            "25":"elderly-health-facility","42":"dementia-dayservice",
+            "43":"small-scale-multifunctional","44":"dementia-group-home",
+            "45":"community-specific-facility","46":"community-elderly-facility",
+            "47":"nursing-small-scale-multifunctional","49":"care-medical-institution",
+        }
+        for code, service_id in expected.items():
+            self.assertEqual(by_code[code]["catalog_mapping"]["state"], "MAPPED_CURRENT_CATALOG")
+            self.assertEqual(by_code[code]["catalog_mapping"]["service_id"], service_id)
 
     def test_shared_categories_are_relations_not_copies(self):
         shared = [

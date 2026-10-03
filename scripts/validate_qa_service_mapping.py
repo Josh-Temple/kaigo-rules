@@ -50,11 +50,21 @@ EXPECTED_EXISTING_MAPPINGS = {
     "41": "night-homevisit",
     "48": "community-dayservice",
     "XX": "preventive-support",
+    "19": "shortstay-medical",
+    "20": "specific-facility",
+    "21": "welfare-equipment-rental",
+    "22": "specific-welfare-equipment-sale",
+    "24": "elderly-welfare-facility",
+    "25": "elderly-health-facility",
+    "42": "dementia-dayservice",
+    "43": "small-scale-multifunctional",
+    "44": "dementia-group-home",
+    "45": "community-specific-facility",
+    "46": "community-elderly-facility",
+    "47": "nursing-small-scale-multifunctional",
+    "49": "care-medical-institution",
 }
-EXPECTED_PENDING_CODES = {
-    "19", "20", "21", "22", "24", "25",
-    "42", "43", "44", "45", "46", "47", "49",
-}
+EXPECTED_PENDING_CODES = set()
 
 
 def fail(message: str) -> None:
@@ -200,11 +210,11 @@ def main() -> None:
         for entry in entries
         if entry["catalog_mapping"].get("state") == "MAPPED_CURRENT_CATALOG"
     }
-    if mapped_ids != manifest_ids:
-        fail(
-            "current catalog and mapped Q&A individual services differ; "
-            "after Chat A expansion, reconcile pending codes before integration"
-        )
+    expected_mapped_ids = set(EXPECTED_EXISTING_MAPPINGS.values())
+    if mapped_ids != expected_mapped_ids:
+        fail("mapped Q&A individual-service IDs differ from the audited mapping")
+    if not mapped_ids.issubset(manifest_ids):
+        fail("Q&A mapping references a service outside the current manifest")
 
     summary = mapping.get("summary", {})
     expected_summary_counts = dict(classification_counts)

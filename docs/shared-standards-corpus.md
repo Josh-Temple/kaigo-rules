@@ -91,3 +91,7 @@ The shared corpus layer removes repeated source ingestion but does not complete 
 - human review and publication decisions.
 
 Those unresolved states are deliberate and fail closed.
+
+## Integrator reconciliation
+
+The structural service-to-governing-standards map now covers all 39 current services from the completed service catalog. This mapping only selects the governing shared corpus; article-level service scope remains defined only where a service-specific scope exists, and every structural mapping remains NOT_SERVICE_VERIFIED.
