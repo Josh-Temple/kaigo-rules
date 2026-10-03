@@ -69,6 +69,17 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
             self.assertEqual(delegated["item_body_verification"]["state"], "NOT_ESTABLISHED")
             self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
 
+    def test_homevisit_remuneration_ingestion_stays_fail_closed(self):
+        remuneration = self.cell("homevisit", "remuneration_notification")
+        delegated = self.cell("homevisit", "delegated_remuneration_criteria")
+        self.assertEqual(remuneration["service_scope"]["state"], "SCOPE_DEFINED")
+        self.assertEqual(remuneration["ingestion"]["state"], "INGESTED")
+        self.assertEqual(remuneration["item_body_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(remuneration["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(remuneration["publication"]["state"], "BLOCKED")
+        self.assertEqual(remuneration["route_exposure"]["state"], "BLOCKED")
+        self.assertEqual(delegated["ingestion"]["state"], "NOT_INGESTED")
+
     def test_item_body_pass_does_not_promote_currentness(self):
         cell = self.cell("community-dayservice", "standards_interpretation_notice")
         self.assertEqual(cell["item_body_verification"]["state"], "PASS")
