@@ -110,7 +110,7 @@ def build() -> dict:
                 "verified_through": fee_verify["verified_through"],
                 "evidence": "data/fee-guidance-independent-verification.json",
             },
-            "currentness": {"status": "MONITORED_NOT_HUMAN_VERIFIED"},
+            "currentness": {\n                "status": "MONITORED_NOT_HUMAN_VERIFIED",\n                "evidence": "data/verification/existing-service-currentness-wave.json",\n            },
             "monitoring": {
                 "status": "ACTIVE",
                 "workflow": ".github/workflows/watch-fee-guidance-currentness.yml",
