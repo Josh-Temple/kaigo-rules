@@ -24,13 +24,21 @@ def load(path: Path):
 
 def observed_counts(receipt: dict) -> dict[str, int]:
     rows = receipt.get("items")
-    key = "status"
     if rows is None:
         rows = receipt.get("tasks")
-        key = "result"
     if rows is None:
         raise ValueError("receipt has neither items nor tasks")
-    counts = Counter(row.get(key) for row in rows)
+
+    values = []
+    for row in rows:
+        value = row.get("status")
+        if value is None:
+            value = row.get("result")
+        if value is None:
+            value = row.get("verdict")
+        values.append(value)
+
+    counts = Counter(values)
     unknown = sorted(value for value in counts if value not in ALLOWED)
     if unknown:
         raise ValueError(f"unknown verdicts: {unknown}")
