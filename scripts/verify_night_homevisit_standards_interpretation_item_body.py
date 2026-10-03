@@ -3,7 +3,7 @@
 
 The receipt is the human-readable, item-level semantic verification record.
 This service-specific checker binds it to the current staging dataset and,
-optionally, independently re-fetches the four official source roles to ensure
+optionally, independently re-fetches the official source roles to ensure
 that their service/source anchors remain obtainable.
 
 This does NOT prove currentness, human review, or publication readiness.
@@ -160,7 +160,7 @@ def validate_receipt() -> list[str]:
     declared_counts = audit.get("coverage", {}).get("counts", {})
     if declared_counts != counts:
         errors.append(f"declared counts {declared_counts} != observed {counts}")
-    if counts != {"PASS": 23, "PARTIAL": 2, "GAP": 0, "FAIL": 0}:
+    if counts != {"PASS": 25, "PARTIAL": 0, "GAP": 0, "FAIL": 0}:
         errors.append(f"unexpected bounded audit distribution: {counts}")
 
     source_roles = audit.get("source_roles", {})
@@ -184,7 +184,7 @@ def validate_receipt() -> list[str]:
             errors.append(f"audit safety.{key} must remain false")
 
     unresolved = {row.get("id") for row in audit.get("unresolved_gaps", [])}
-    if unresolved != {"night-homevisit.notice.002", "night-homevisit.notice.010"}:
+    if unresolved:
         errors.append(f"unexpected unresolved gap set: {sorted(unresolved)}")
 
     known_sources = set(source_roles)
@@ -223,6 +223,12 @@ def refetch_source_anchors() -> list[str]:
             "第六条",
             "第十七条",
         ],
+        "h27-full-notice-comparison": [
+            "二 夜間対応型訪問介護",
+            "基本方針（基準第四条）",
+            "定期巡回サービスを行う訪問介護員等",
+            "交通事情、訪問頻度等",
+        ],
     }
     errors: list[str] = []
     for source_id, terms in expectations.items():
@@ -244,7 +250,7 @@ def main() -> int:
     parser.add_argument(
         "--refetch-sources",
         action="store_true",
-        help="also independently re-fetch the four official source roles",
+        help="also independently re-fetch the official source roles",
     )
     args = parser.parse_args()
 

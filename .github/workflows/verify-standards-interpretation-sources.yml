@@ -33,6 +33,7 @@ jobs:
         shell: bash
         run: |
           current=true
+          stale_specs=""
           for spec in \
             "community-dayservice:21" \
             "regular-round:21" \
@@ -44,9 +45,11 @@ jobs:
             if ! python scripts/validate_standards_interpretation_source_inventory.py \
               --service-id "$service" --expected-items "$expected"; then
               current=false
+              stale_specs="${stale_specs}${spec} "
             fi
           done
           echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "stale_specs=${stale_specs% }" >> "$GITHUB_OUTPUT"
       - name: Re-fetch and independently inventory official sources
         id: verify_sources
         if: steps.receipts.outputs.current != 'true'
@@ -56,12 +59,7 @@ jobs:
           set -uo pipefail
           mkdir -p /tmp/standards-interpretation-source-inventory
           rc=0
-          for spec in \
-            "community-dayservice:21" \
-            "regular-round:21" \
-            "night-homevisit:25" \
-            "care-management:32" \
-            "preventive-support:34"; do
+          for spec in ${{ steps.receipts.outputs.stale_specs }}; do
             service="${spec%%:*}"
             expected="${spec##*:}"
             python scripts/verify_standards_interpretation_sources_independent.py \
@@ -89,12 +87,7 @@ jobs:
           AUDIT_WORKFLOW: ${{ github.workflow }}
         run: |
           set -euo pipefail
-          for spec in \
-            "community-dayservice:21" \
-            "regular-round:21" \
-            "night-homevisit:25" \
-            "care-management:32" \
-            "preventive-support:34"; do
+          for spec in ${{ steps.receipts.outputs.stale_specs }}; do
             service="${spec%%:*}"
             expected="${spec##*:}"
             python scripts/pin_standards_interpretation_source_inventory.py \

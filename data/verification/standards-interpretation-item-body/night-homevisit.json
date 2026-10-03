@@ -3,7 +3,7 @@
   "service_id": "night-homevisit",
   "layer": "standards_interpretation",
   "audit_kind": "INDEPENDENT_ITEM_BODY_VERIFICATION",
-  "audit_result": "COMPLETED_WITH_PARTIALS",
+  "audit_result": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
   "verification_scope": "CONTENT_AND_EVIDENCE_MATCH_ONLY",
   "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
   "inputs": {
@@ -37,6 +37,11 @@
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
       "role": "ORDINANCE_TEXT_CROSSCHECK_NOT_NOTICE_BODY",
       "usage": "これは解釈通知本文ではなく、指定地域密着型サービス基準（厚生労働省令第34号）の公式HTML。略記項目の基準内容のクロスチェックにのみ使用し、通知本文の代替とは扱わない。"
+    },
+    "h27-full-notice-comparison": {
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+      "role": "HISTORICAL_FULL_NOTICE_BODY_EVIDENCE",
+      "usage": "平成27年度介護報酬改定ページ掲載の厚生労働省公式通知資料。R3/R6比較表で略記される夜間対応型訪問介護1(1)および2(1)②イの通知本文を直接確認する。currentness・現行統合本文の証明には使用しない。"
     }
   },
   "source_role_findings": [
@@ -49,8 +54,8 @@
     "expected_items": 25,
     "observed_items": 25,
     "counts": {
-      "PASS": 23,
-      "PARTIAL": 2,
+      "PASS": 25,
+      "PARTIAL": 0,
       "GAP": 0,
       "FAIL": 0
     }
@@ -89,26 +94,20 @@
       "path": "第三/二/1/(1)",
       "number": "(1)",
       "heading": "基本方針（基準第4条）",
-      "status": "PARTIAL",
+      "status": "PASS",
       "service_scope_match": "PASS",
       "staging_content_summary": "利用者が可能な限り居宅で自立した生活を営めるよう、夜間に定期巡回・随時対応・随時訪問を組み合わせ、安心して在宅生活を継続できるよう援助する基本方針を扱う。",
-      "content_evidence_match_reason": "基準第4条の内容は公式基準省令で直接確認できるが、R3比較表と旧改正比較資料では通知1(1)本文が「略」であり、解釈通知本文そのものは独立復元できない。",
-      "limitation": "通知本文一致は未証明。基準省令による内容支持に限定。",
+      "content_evidence_match_reason": "平成27年度介護報酬改定ページ掲載の厚労省公式通知資料に、第三・二・1(1)「基本方針（基準第4条）」の本文が明示され、staging summaryの基本方針を直接支持する。公式基準省令第4条とも整合する。",
       "evidence": [
         {
-          "source_id": "r3-amendment-comparison",
-          "locator": "p.16 / 二 夜間対応型訪問介護／1",
-          "evidence_summary": "1は略記"
-        },
-        {
-          "source_id": "older-amendment-reference",
-          "locator": "p.33 / 1 基本方針／(1)",
-          "evidence_summary": "(1)は略記"
+          "source_id": "h27-full-notice-comparison",
+          "locator": "p.40相当／第三 地域密着型サービス／二 夜間対応型訪問介護／1 基本方針／(1)",
+          "evidence_summary": "夜間の定期巡回又は通報による訪問、排せつ介護・緊急時対応等を通じ在宅生活を支える基本方針を通知本文で直接確認"
         },
         {
           "source_id": "historical-official-html",
           "locator": "第二章 第一節／第4条",
-          "evidence_summary": "居宅での自立生活、夜間の定期巡回・随時通報・緊急対応という基本方針を確認"
+          "evidence_summary": "基準省令の基本方針をクロスチェック"
         }
       ],
       "currentness_proven": false,
@@ -280,26 +279,20 @@
       "path": "第三/二/2/(1)/②/イ",
       "number": "イ",
       "heading": "イ（定期巡回サービスを行う訪問介護員等）",
-      "status": "PARTIAL",
+      "status": "PASS",
       "service_scope_match": "PASS",
       "staging_content_summary": "定期巡回サービスを行う訪問介護員等の配置を扱う。現行基準第6条では、交通事情・訪問頻度等を勘案し利用者へ適切に定期巡回サービスを提供するために必要な数以上を置く。",
-      "content_evidence_match_reason": "定期巡回サービス担当者の必要数は基準第6条で直接確認できるが、R3比較表はイを略記し、旧改正比較資料もイ〜ロを略記しており、解釈通知本文一致は確認できない。",
-      "limitation": "通知本文一致は未証明。基準省令第6条による内容支持に限定。",
+      "content_evidence_match_reason": "平成27年度介護報酬改定ページ掲載の厚労省公式通知資料に、第三・二・2(1)②イの本文が明示され、交通事情・訪問頻度等を勘案して適切な定期巡回サービス提供に必要な職員数を確保するというstaging summaryを直接支持する。公式基準省令第6条第1項第2号とも整合する。",
       "evidence": [
         {
-          "source_id": "r3-amendment-comparison",
-          "locator": "p.18 / 2(1)②イ",
-          "evidence_summary": "イは略記"
-        },
-        {
-          "source_id": "older-amendment-reference",
-          "locator": "p.35 / 2(1)②イ〜ロ",
-          "evidence_summary": "イ〜ロは略記"
+          "source_id": "h27-full-notice-comparison",
+          "locator": "p.43相当／第三 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準／(1)／② 訪問介護員等／イ",
+          "evidence_summary": "最低人員数を固定せず、交通事情・訪問頻度等を勘案して必要な職員数を確保する通知本文を直接確認"
         },
         {
           "source_id": "historical-official-html",
           "locator": "第6条第1項第2号",
-          "evidence_summary": "交通事情・訪問頻度等を勘案した必要数を確認"
+          "evidence_summary": "定期巡回サービス担当者の必要数規定をクロスチェック"
         }
       ],
       "currentness_proven": false,
@@ -707,16 +700,7 @@
       "publication_permitted": false
     }
   ],
-  "unresolved_gaps": [
-    {
-      "id": "night-homevisit.notice.002",
-      "issue": "R3比較表および旧改正比較資料で通知1(1)本文が略記されており、基準第4条の内容は確認できるが解釈通知本文一致は未証明。"
-    },
-    {
-      "id": "night-homevisit.notice.010",
-      "issue": "R3比較表では2(1)②イ、旧改正比較資料ではイ〜ロが略記であり、基準第6条の人員数は確認できるが解釈通知本文一致は未証明。"
-    }
-  ],
+  "unresolved_gaps": [],
   "safety": {
     "currentness_proven": false,
     "integrated_current_text_constructed": false,
@@ -726,10 +710,9 @@
     "public_route_enabled": false
   },
   "integrator_followup": [
-    "stagingのextraction_method等で historical-official-html を「厚労省旧版通知」と読める記述があるため、統合時にこのURLを「基準省令公式HTML（通知本文ではない）」へ役割修正すること。",
-    "night-homevisit.notice.002 と .010 は、通知本文そのものを確認できる別の公式版・原典が取得できるまでPARTIALを維持すること。",
-    "item-body receiptを共通verification registryやservice manifestへ接続する場合は、共通validator/package.json変更をIntegrator側で一括実施すること。本branchでは並列競合回避のため変更しない。",
-    "PASSをcurrentness・human review・publication readinessへ自動昇格させないこと。"
+    "平成27年度公式通知資料を追加し、night-homevisit.notice.002 と .010 のitem-body gapを解消した。PASSはcontent/evidence matchに限定し、currentness・human review・publication readinessへ自動昇格させないこと。",
+    "historical-official-html は基準省令公式HTMLであり、通知本文ではない。通知本文sourceとunderlying-standard cross-checkを今後も分離すること。",
+    "current integrated notice textを構築する場合は、平成27年度本文とR3/R6改正差分を別工程でversion-awareに追跡し、自動連結しないこと。"
   ],
   "conclusion": "25項目すべてを項目単位で照合した。23件は公式通知本文・改正比較本文または通知内の明示準用先で主要内容を支持でき、2件は通知本文が略記のため基準省令による内容支持に留まりPARTIALとした。FAILはない。本結果はcurrentnessとは独立したcontent/evidence matchである。",
   "integration_summary": {
@@ -738,16 +721,16 @@
     "worker_head_sha": "38a37d5308b96c04c1b626e221f9b99a095c5447",
     "audit_receipt": "data/verification/standards-interpretation-item-body/night-homevisit.json",
     "verifier": "scripts/verify_night_homevisit_standards_interpretation_item_body.py",
-    "verification_status": "PARTIAL_WITH_GAPS",
+    "verification_status": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
     "counts": {
-      "PASS": 23,
-      "PARTIAL": 2,
+      "PASS": 25,
+      "PARTIAL": 0,
       "GAP": 0,
       "FAIL": 0
     },
     "expected_staging_items_or_tasks": 25,
-    "non_pass_items": 2,
-    "explicit_unresolved_records": 2,
+    "non_pass_items": 0,
+    "explicit_unresolved_records": 0,
     "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
     "currentness_state": "NOT_ESTABLISHED",
     "human_review_state": "NOT_REVIEWED",
@@ -757,5 +740,19 @@
     "omitted_text_inferred": false,
     "service_scope_expanded": false,
     "package_blocker_state": "NOT_APPLICABLE"
+  },
+  "gap_closure_followup": {
+    "status": "CLOSED_CONTENT_EVIDENCE_ONLY",
+    "source_id": "h27-full-notice-comparison",
+    "source_url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+    "resolved_items": [
+      "night-homevisit.notice.002",
+      "night-homevisit.notice.010"
+    ],
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "source_inventory_manifest_required_sources": 5,
+    "source_inventory_required_sources_fetchable": 5
   }
 }

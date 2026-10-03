@@ -50,12 +50,13 @@
       "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/1 基本方針",
       "content_summary": "利用者が可能な限り居宅で自立した生活を営めるよう、夜間に定期巡回・随時対応・随時訪問を組み合わせ、安心して在宅生活を継続できるよう援助する基本方針を扱う。",
       "source_urls": [
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
         "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
         "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
         "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
       ],
-      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／1 （略）",
-      "extraction_method": "令和3年度資料で略記された「1」を、厚労省旧版通知で(1)(2)の見出しを確認し、現行基準第4条・第5条と突合した。",
+      "source_locator": "平成27年度厚労省公式通知資料／第三 地域密着型サービス／二 夜間対応型訪問介護／1 基本方針／(1) 基本方針（基準第4条）。R3/R6資料では当該本文が略記。",
+      "extraction_method": "平成27年度介護報酬改定ページ掲載の厚労省公式通知資料で1(1)本文を直接確認し、公式基準省令第4条と内容をクロスチェックした。現行統合本文・currentnessは別工程とする。",
       "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
       "currentness_state": "NOT_ESTABLISHED",
       "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
@@ -212,12 +213,13 @@
       "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/② 訪問介護員等",
       "content_summary": "定期巡回サービスを行う訪問介護員等の配置を扱う。現行基準第6条では、交通事情・訪問頻度等を勘案し利用者へ適切に定期巡回サービスを提供するために必要な数以上を置く。",
       "source_urls": [
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
         "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
         "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
         "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
       ],
-      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ② 訪問介護員等 > イ （略）",
-      "extraction_method": "令和3年度資料で「イ（略）」となる箇所を、厚労省旧版通知の②構造と現行基準第6条の定期巡回サービス人員規定で復元した。",
+      "source_locator": "平成27年度厚労省公式通知資料／第三 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準／(1) 訪問介護員等の員数（基準第6条）／② 訪問介護員等／イ。R3資料では当該本文が略記。",
+      "extraction_method": "平成27年度介護報酬改定ページ掲載の厚労省公式通知資料で2(1)②イ本文を直接確認し、公式基準省令第6条第1項第2号と内容をクロスチェックした。現行統合本文・currentnessは別工程とする。",
       "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
       "currentness_state": "NOT_ESTABLISHED",
       "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
