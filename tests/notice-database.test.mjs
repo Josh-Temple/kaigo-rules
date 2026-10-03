@@ -104,7 +104,7 @@ test("published historical services and un-ingested services remain clearly sepa
   );
   assert.equal(
     shortstay?.notice_status,
-    "WORK_CONTROL_ACCEPTED_NOT_REPOSITORY_INGESTED",
+    "SCOPE_DEFINED_NOT_RECONSTRUCTED",
   );
   assert.equal(shortstay?.verification_layer_id, undefined);
 });
