@@ -1,0 +1,90 @@
+[
+  {
+    "id": "unitprice.homevisit.1",
+    "region_class": "一級地",
+    "service": "訪問介護",
+    "ratio_text": "千分の千百四十",
+    "ratio_per_thousand": 1140,
+    "unit_price_yen": 11.4,
+    "source_id": "mhlw-unit-price-current",
+    "source_locator": "第一号 表 / 一級地 / 訪問介護を含むサービス種類行",
+    "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+  },
+  {
+    "id": "unitprice.homevisit.2",
+    "region_class": "二級地",
+    "service": "訪問介護",
+    "ratio_text": "千分の千百十二",
+    "ratio_per_thousand": 1112,
+    "unit_price_yen": 11.12,
+    "source_id": "mhlw-unit-price-current",
+    "source_locator": "第一号 表 / 二級地 / 訪問介護を含むサービス種類行",
+    "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+  },
+  {
+    "id": "unitprice.homevisit.3",
+    "region_class": "三級地",
+    "service": "訪問介護",
+    "ratio_text": "千分の千百五",
+    "ratio_per_thousand": 1105,
+    "unit_price_yen": 11.05,
+    "source_id": "mhlw-unit-price-current",
+    "source_locator": "第一号 表 / 三級地 / 訪問介護を含むサービス種類行",
+    "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+  },
+  {
+    "id": "unitprice.homevisit.4",
+    "region_class": "四級地",
+    "service": "訪問介護",
+    "ratio_text": "千分の千八十四",
+    "ratio_per_thousand": 1084,
+    "unit_price_yen": 10.84,
+    "source_id": "mhlw-unit-price-current",
+    "source_locator": "第一号 表 / 四級地 / 訪問介護を含むサービス種類行",
+    "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+  },
+  {
+    "id": "unitprice.homevisit.5",
+    "region_class": "五級地",
+    "service": "訪問介護",
+    "ratio_text": "千分の千七十",
+    "ratio_per_thousand": 1070,
+    "unit_price_yen": 10.7,
+    "source_id": "mhlw-unit-price-current",
+    "source_locator": "第一号 表 / 五級地 / 訪問介護を含むサービス種類行",
+    "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+  },
+  {
+    "id": "unitprice.homevisit.6",
+    "region_class": "六級地",
+    "service": "訪問介護",
+    "ratio_text": "千分の千四十二",
+    "ratio_per_thousand": 1042,
+    "unit_price_yen": 10.42,
+    "source_id": "mhlw-unit-price-current",
+    "source_locator": "第一号 表 / 六級地 / 訪問介護を含むサービス種類行",
+    "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+  },
+  {
+    "id": "unitprice.homevisit.7",
+    "region_class": "七級地",
+    "service": "訪問介護",
+    "ratio_text": "千分の千二十一",
+    "ratio_per_thousand": 1021,
+    "unit_price_yen": 10.21,
+    "source_id": "mhlw-unit-price-current",
+    "source_locator": "第一号 表 / 七級地 / 訪問介護を含むサービス種類行",
+    "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+  },
+  {
+    "id": "unitprice.homevisit.other",
+    "region_class": "その他",
+    "service": "訪問介護",
+    "ratio_text": "千分の千",
+    "ratio_per_thousand": 1000,
+    "unit_price_yen": 10,
+    "source_id": "mhlw-unit-price-current",
+    "source_locator": "第一号 表 / その他 / 訪問介護を含むサービス種類行",
+    "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+  }
+]
