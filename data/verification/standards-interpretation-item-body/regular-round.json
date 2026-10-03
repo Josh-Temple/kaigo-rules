@@ -1,0 +1,924 @@
+{
+  "format_version": 1,
+  "service_id": "regular-round",
+  "layer": "standards_interpretation",
+  "audit_kind": "INDEPENDENT_ITEM_BODY_VERIFICATION",
+  "audit_result": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+  "verification_scope": "CONTENT_EVIDENCE_MATCH_ONLY_NOT_CURRENTNESS",
+  "repository_base": {
+    "branch": "main",
+    "head_sha": "9405589503ad594e59124020e5798ce005c4dd3f"
+  },
+  "coverage": {
+    "expected_staging_items": 21,
+    "observed_staging_items": 21,
+    "result_counts": {
+      "PASS": 21,
+      "PARTIAL": 0,
+      "GAP": 0,
+      "FAIL": 0
+    }
+  },
+  "status_semantics": {
+    "PASS": "staging heading/summary is supported by the cited official evidence within the stated source roles; does not establish currentness or an integrated current notice text.",
+    "PARTIAL": "some material elements are supported but one or more material elements lack item-level evidence.",
+    "GAP": "the item can be located/scope-identified but body evidence is insufficient to support the summary.",
+    "FAIL": "official evidence contradicts a material staging claim or the item is assigned outside the service boundary."
+  },
+  "source_catalog": [
+    {
+      "id": "r6-final-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "use": "令和6年度の最終新旧対照表。変更箇所・略記位置・サービス境界の確認に使用。略記部分の現行本文を生成する用途には使用しない。"
+    },
+    {
+      "id": "r6-earlier-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+      "role": "EARLIER_R6_AMENDMENT_MATERIAL",
+      "use": "Repository stagingが参照する令和6年度の先行改正資料。最終版との位置関係確認用。"
+    },
+    {
+      "id": "historical-official-pdf",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+      "role": "HISTORICAL_COMPARISON_CORROBORATION",
+      "use": "過去の公式比較資料。歴史的な構造・改正差分の補助確認用であり、現行統合本文とは扱わない。"
+    },
+    {
+      "id": "current-ordinance-html",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+      "role": "STANDARDS_ORDINANCE_CORROBORATION",
+      "use": "厚生労働省の基準省令本文。条文対応・現行基準要素の補助確認に使用。解釈通知本文ではない。"
+    },
+    {
+      "id": "older-amendment-reference",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+      "role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+      "use": "厚生労働省の旧改正資料。令和6年度資料で「略」とされた通知項目の歴史的本文・見出し・構造の確認に使用。現行本文の自動合成には使用しない。"
+    }
+  ],
+  "source_role_findings": [
+    {
+      "finding": "The MHLW t_doc URL in the existing scope manifest is the standards ordinance (厚生労働省令第34号), not the standards-interpretation notice.",
+      "handling": "Used only as STANDARDS_ORDINANCE_CORROBORATION. No shared scope file was changed in this worker branch."
+    },
+    {
+      "finding": "The R6 final comparison contains explicit '略' regions.",
+      "handling": "Historical notice material was used only to verify historical body/heading/scope for omitted regions. It was not combined with the R6 comparison to claim a reconstructed current notice text."
+    },
+    {
+      "finding": "The staging data frequently cites the earlier R6 comparison while the scope manifest also identifies a later final R6 comparison.",
+      "handling": "The final R6 comparison was used for claims that depend on R6 amendment text; the earlier comparison remains recorded as repository provenance but is not treated as superseding the final comparison."
+    }
+  ],
+  "items": [
+    {
+      "id": "regular-round.notice.001",
+      "task_id": "KR2-07-B001",
+      "path": "第三/一",
+      "number": "一",
+      "heading": "定期巡回・随時対応型訪問介護看護",
+      "content_summary": "基本方針、人員、設備、運営、連携型事業の5区分からなるサービス通知節。現行基準省令では第3条の2〜第3条の42に対応する。",
+      "result": "PASS",
+      "content_evidence_match": "サービス境界と5区分の構造は公式資料から支持される。条文範囲は基準省令で補助確認できる。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護",
+          "page_or_medium": "p.1-2",
+          "body_anchor_terms": [
+            "一 定期巡回・随時対応型訪問介護看護",
+            "1 基本方針",
+            "2 人員に関する基準"
+          ],
+          "support_summary": "最終新旧対照表で当該サービス節と上位区分を確認。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第一章の二 定期巡回・随時対応型訪問介護看護",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の二",
+            "第三条の四十一",
+            "第三条の四十二"
+          ],
+          "support_summary": "基準省令で当該サービスの条文群を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.002",
+      "task_id": "KR2-07-B002",
+      "path": "第三/一/1",
+      "number": "1",
+      "heading": "基本方針",
+      "content_summary": "現行基準第3条の2・第3条の3に対応。利用者の尊厳を保持し、居宅で自立した生活を継続できるよう、定期巡回・随時対応・随時訪問・訪問看護を組み合わせて日中夜間を通じた支援を行う趣旨を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "令和6年度最終資料では略記だが、旧公式通知本文と基準省令からstaging summaryの内容要素は支持される。現行通知本文の再構成はしていない。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／1 基本方針",
+          "page_or_medium": "p.2-3",
+          "body_anchor_terms": [
+            "基本方針",
+            "尊厳",
+            "居宅",
+            "定期巡回サービス",
+            "随時対応サービス",
+            "随時訪問サービス",
+            "訪問看護サービス"
+          ],
+          "support_summary": "旧改正資料の通知本文が基本方針の要旨と4サービスの組合せを支持。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の二・第三条の三",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の二",
+            "第三条の三"
+          ],
+          "support_summary": "基準省令の条文対応を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.003",
+      "task_id": "KR2-07-B003",
+      "path": "第三/一/2/(1)",
+      "number": "(1)",
+      "heading": "定期巡回・随時対応型訪問介護看護従業者の員数（基準第3条の4）",
+      "content_summary": "①オペレーター、②定期巡回サービスを行う訪問介護員等、③随時訪問サービスを行う訪問介護員等、④訪問看護サービスを行う看護師等、⑤計画作成責任者の配置・資格・兼務等を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "5区分の人員説明は旧公式通知本文で直接支持される。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／2 人員に関する基準／(1) 従業者の員数",
+          "page_or_medium": "p.4-9",
+          "body_anchor_terms": [
+            "① オペレーター",
+            "② 定期巡回サービス",
+            "③ 随時訪問サービス",
+            "④ 訪問看護サービス",
+            "⑤ 計画作成責任者"
+          ],
+          "support_summary": "旧改正資料の通知本文で①〜⑤の職種・役割区分を確認。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の四",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の四"
+          ],
+          "support_summary": "基準省令の人員基準条文を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.004",
+      "task_id": "KR2-07-B004",
+      "path": "第三/一/2/(2)",
+      "number": "(2)",
+      "heading": "管理者（基準第3条の5）",
+      "content_summary": "管理者は常勤・専従を原則とし、事業所管理に支障がない場合の兼務を認める。令和6年度改正では、他事業所等との兼務はサービス提供場面の事象把握や従業者・業務の一元管理、指揮命令に支障がないこと等を踏まえて判断する。",
+      "result": "PASS",
+      "content_evidence_match": "令和6年度の変更内容を最終比較資料で直接確認できる。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／2／(2) 管理者（基準第3条の5）",
+          "page_or_medium": "p.2",
+          "body_anchor_terms": [
+            "管理者",
+            "常勤",
+            "専らその職務",
+            "他の事業所、施設等の職務",
+            "一元的に管理",
+            "指揮命令"
+          ],
+          "support_summary": "最終新旧対照表の新欄が令和6年度改正後の兼務判断要素を直接支持。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の五",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の五"
+          ],
+          "support_summary": "基準省令の管理者条文を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.005",
+      "task_id": "KR2-07-B005",
+      "path": "第三/一/3",
+      "number": "3",
+      "heading": "設備等に関する基準（基準第3条の6）",
+      "content_summary": "事業運営に必要な広さを有する専用区画、サービス提供に必要な設備・備品、利用者からの通報を受け付ける通信機器等を扱う。厚労省旧版通知では、利用者情報を随時把握できる通信・情報管理体制やケアコール端末等の留意事項が説明される。",
+      "result": "PASS",
+      "content_evidence_match": "令和6年度資料の略記範囲について、旧公式通知本文と基準省令からsummaryの構成要素を確認。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／3 設備等に関する基準（基準第3条の6）",
+          "page_or_medium": "p.10",
+          "body_anchor_terms": [
+            "専用の区画",
+            "設備及び備品",
+            "通信機器",
+            "利用者の心身の状況等の情報"
+          ],
+          "support_summary": "旧公式通知本文が設備・通信・情報把握の要旨を支持。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の六",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の六"
+          ],
+          "support_summary": "基準省令の設備条文を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.006",
+      "task_id": "KR2-07-B006",
+      "path": "第三/一/4/(1)",
+      "number": "(1)",
+      "heading": "内容及び手続の説明及び同意",
+      "content_summary": "現行基準第3条の7周辺に対応する運営事項。令和6年度改正資料では(1)〜(14)が略記されるため、現行基準省令と厚労省旧版通知構造で項目scopeを復元した。",
+      "result": "PASS",
+      "content_evidence_match": "項目scopeと要旨は歴史的通知本文で確認できる。現行統合本文は作成していない。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4 運営に関する基準／(1) 内容及び手続の説明及び同意",
+          "page_or_medium": "p.11-12",
+          "body_anchor_terms": [
+            "内容及び手続の説明及び同意",
+            "重要事項",
+            "文書を交付して説明",
+            "同意"
+          ],
+          "support_summary": "旧公式通知本文で(1)の見出しと説明・同意の内容を確認。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の七",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の七"
+          ],
+          "support_summary": "基準省令の対応条文を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.007",
+      "task_id": "KR2-07-B007",
+      "path": "第三/一/4/(15)",
+      "number": "(15)",
+      "heading": "指定定期巡回・随時対応型訪問介護看護の基本的取扱方針及び具体的取扱方針",
+      "content_summary": "現行基準第3条の21・第3条の22に対応。定期巡回・訪問看護は目標を設定して計画的に行い、随時対応・随時訪問は通報へ適切に対応する。令和6年度改正では身体的拘束等の原則禁止と、緊急やむを得ず実施する場合の記録等が加わっている。",
+      "result": "PASS",
+      "content_evidence_match": "既存部分は歴史的本文、令和6年度追加は最終比較資料で役割を分離して支持される。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(15) 指定定期巡回・随時対応型訪問介護看護の基本的取扱方針及び具体的取扱方針",
+          "page_or_medium": "p.3-4",
+          "body_anchor_terms": [
+            "(15)",
+            "身体的拘束等",
+            "緊急やむを得ない場合",
+            "記録"
+          ],
+          "support_summary": "最終新旧対照表で令和6年度追加部分を直接確認。"
+        },
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4 基本的取扱方針・具体的取扱方針",
+          "page_or_medium": "historical",
+          "body_anchor_terms": [
+            "目標を設定",
+            "計画的",
+            "通報"
+          ],
+          "support_summary": "旧公式通知本文が改正前からの基本的な取扱いの骨格を補助。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.008",
+      "task_id": "KR2-07-B008",
+      "path": "第三/一/4/(16)",
+      "number": "(16)",
+      "heading": "主治医との関係（基準第3条の23）",
+      "content_summary": "主治医の指示に基づく訪問看護、計画・報告書の提出等を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "summaryの全主要要素が旧公式通知本文で確認できる。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4／主治医との関係",
+          "page_or_medium": "p.19-20",
+          "body_anchor_terms": [
+            "主治医の指示",
+            "指示書",
+            "計画",
+            "報告書"
+          ],
+          "support_summary": "旧公式通知本文が主治医指示・計画・報告の要旨を支持。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の二十三",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の二十三"
+          ],
+          "support_summary": "基準省令の条文対応を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.009",
+      "task_id": "KR2-07-B009",
+      "path": "第三/一/4/(20)",
+      "number": "(20)",
+      "heading": "管理者等の責務",
+      "content_summary": "現行基準第3条の28に対応。管理者による従業者・業務の一元管理と必要な指揮命令、計画作成責任者による利用申込調整等のサービス内容管理を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "見出しと責務の要旨を最終比較資料で直接確認。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(20) 管理者等の責務",
+          "page_or_medium": "p.4",
+          "body_anchor_terms": [
+            "(20) 管理者等の責務",
+            "一元的に管理",
+            "指揮命令",
+            "計画作成責任者"
+          ],
+          "support_summary": "最終比較資料の項目本文が管理者・計画作成責任者の責務を支持。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.010",
+      "task_id": "KR2-07-B010",
+      "path": "第三/一/4/(21)",
+      "number": "(21)",
+      "heading": "運営規程",
+      "content_summary": "現行基準第3条の29に対応。事業目的・運営方針、従業者、営業日・時間、サービス内容・利用料、通常の実施地域、緊急時対応、合鍵管理、虐待防止等の重要事項を定める。",
+      "result": "PASS",
+      "content_evidence_match": "旧通知と基準省令の役割を分けることでsummaryの列挙事項を支持。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4／運営規程",
+          "page_or_medium": "p.24-25",
+          "body_anchor_terms": [
+            "運営規程",
+            "営業日及び営業時間",
+            "指定定期巡回・随時対応型訪問介護看護の内容",
+            "利用料",
+            "通常の事業の実施地域"
+          ],
+          "support_summary": "旧公式通知本文で運営規程の主要項目を確認。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の二十九",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "事業の目的及び運営の方針",
+            "従業者の職種、員数及び職務",
+            "営業日及び営業時間",
+            "合鍵",
+            "虐待の防止"
+          ],
+          "support_summary": "基準省令本文でsummaryに含まれる追加の列挙事項を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.011",
+      "task_id": "KR2-07-B011",
+      "path": "第三/一/4/(22)",
+      "number": "(22)",
+      "heading": "勤務体制の確保等",
+      "content_summary": "現行基準第3条の30に対応。事業所ごとの勤務体制、従業者によるサービス提供、研修機会の確保等を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "勤務体制・従業者・研修の主要要素が公式資料で支持される。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(22) 勤務体制の確保等",
+          "page_or_medium": "p.4-5",
+          "body_anchor_terms": [
+            "勤務体制の確保等",
+            "勤務の体制",
+            "従業者",
+            "研修"
+          ],
+          "support_summary": "最終比較資料で項目の本文・改正差分を確認。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の三十",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の三十"
+          ],
+          "support_summary": "基準省令の条文対応を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.012",
+      "task_id": "KR2-07-B012",
+      "path": "第三/一/4/(23)",
+      "number": "(23)",
+      "heading": "業務継続計画の策定等",
+      "content_summary": "現行基準第3条の30の2に対応。感染症・災害時にもサービスを継続・早期再開できる業務継続計画、研修・訓練、定期的見直し等を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "summaryの主要要素は最終比較資料で直接支持される。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(23) 業務継続計画の策定等",
+          "page_or_medium": "p.5-6",
+          "body_anchor_terms": [
+            "業務継続計画",
+            "感染症",
+            "非常災害",
+            "研修",
+            "訓練",
+            "定期的に業務継続計画の見直し"
+          ],
+          "support_summary": "最終比較資料でBCPの構成要素を直接確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.013",
+      "task_id": "KR2-07-B013",
+      "path": "第三/一/4/(24)",
+      "number": "(24)",
+      "heading": "衛生管理等",
+      "content_summary": "現行基準第3条の31に対応。従業者の清潔保持・健康管理、設備・備品の衛生管理、感染症の予防・まん延防止等を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "既存の衛生管理要素と改正後の感染対策要素を別source roleで支持。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(24) 衛生管理等",
+          "page_or_medium": "p.6",
+          "body_anchor_terms": [
+            "衛生管理等",
+            "感染症",
+            "まん延"
+          ],
+          "support_summary": "最終比較資料が感染症予防・まん延防止の項目本文を支持。"
+        },
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4／衛生管理等",
+          "page_or_medium": "p.27-28",
+          "body_anchor_terms": [
+            "従業者の清潔の保持",
+            "健康状態",
+            "設備及び備品",
+            "衛生的な管理"
+          ],
+          "support_summary": "旧公式通知本文で清潔保持・健康・設備衛生の要旨を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.014",
+      "task_id": "KR2-07-B014",
+      "path": "第三/一/4/(25)",
+      "number": "(25)",
+      "heading": "掲示",
+      "content_summary": "現行基準第3条の32に対応。運営規程概要・勤務体制等の重要事項の掲示・閲覧と、原則としてウェブサイト掲載を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "掲示・閲覧・ウェブ掲載のsummaryを公式最終資料と省令が支持。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(25) 掲示",
+          "page_or_medium": "p.7",
+          "body_anchor_terms": [
+            "掲示",
+            "重要事項",
+            "ウェブサイト"
+          ],
+          "support_summary": "最終比較資料でウェブサイト掲載を含む改正内容を確認。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の三十二",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "運営規程の概要",
+            "勤務の体制",
+            "掲示",
+            "閲覧",
+            "ウェブサイト"
+          ],
+          "support_summary": "基準省令本文で列挙事項を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.015",
+      "task_id": "KR2-07-B015",
+      "path": "第三/一/4/(26)",
+      "number": "(26)",
+      "heading": "秘密保持等",
+      "content_summary": "現行基準第3条の33に対応。従業者・退職者の秘密保持、サービス担当者会議等で個人情報を用いる場合の同意等を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "summaryの主要要素は旧公式通知本文で直接支持される。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4／秘密保持等",
+          "page_or_medium": "p.28",
+          "body_anchor_terms": [
+            "秘密保持等",
+            "従業者",
+            "従業者であった者",
+            "個人情報",
+            "同意"
+          ],
+          "support_summary": "旧公式通知本文で在職・退職後の秘密保持と個人情報利用同意を確認。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の三十三",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の三十三"
+          ],
+          "support_summary": "基準省令の条文対応を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.016",
+      "task_id": "KR2-07-B016",
+      "path": "第三/一/4/(28)",
+      "number": "(28)",
+      "heading": "苦情処理",
+      "content_summary": "現行基準第3条の36に対応。苦情受付窓口等の必要措置、苦情内容の記録、市町村・国保連の調査や指導への協力・改善を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "現行改正位置と歴史的詳細を分けて支持し、summaryとの矛盾は見つからない。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(28) 苦情処理",
+          "page_or_medium": "p.8",
+          "body_anchor_terms": [
+            "(28) 苦情処理",
+            "苦情",
+            "記録"
+          ],
+          "support_summary": "最終比較資料で当該項目と改正後本文位置を確認。"
+        },
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4／苦情処理",
+          "page_or_medium": "historical",
+          "body_anchor_terms": [
+            "市町村",
+            "国民健康保険団体連合会",
+            "調査",
+            "指導"
+          ],
+          "support_summary": "旧公式通知本文が市町村・国保連対応を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.017",
+      "task_id": "KR2-07-B017",
+      "path": "第三/一/4/(29)",
+      "number": "(29)",
+      "heading": "地域との連携等",
+      "content_summary": "現行基準第3条の37に対応。介護・医療連携推進会議を概ね6月に1回以上開催し、提供状況の報告・評価、要望・助言を受けること、記録・公表、市町村事業への協力等を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "会議・頻度・評価等は省令、改正差分は最終比較資料で支持。",
+      "evidence": [
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の三十七",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "介護・医療連携推進会議",
+            "おおむね六月に一回以上",
+            "報告",
+            "評価",
+            "要望",
+            "助言"
+          ],
+          "support_summary": "基準省令本文が会議頻度と役割を直接支持。"
+        },
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(29) 地域との連携等",
+          "page_or_medium": "p.8",
+          "body_anchor_terms": [
+            "(29) 地域との連携等",
+            "公表"
+          ],
+          "support_summary": "最終比較資料で令和6年度の公表関係差分を確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.018",
+      "task_id": "KR2-07-B018",
+      "path": "第三/一/4/(30)",
+      "number": "(30)",
+      "heading": "事故発生時の対応",
+      "content_summary": "現行基準第3条の38に対応。事故時の市町村・家族・居宅介護支援事業者等への連絡、必要措置、事故記録、損害賠償を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "令和6年度最終資料では略記だが、旧公式通知本文と基準省令がsummaryを支持。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4／事故発生時の対応",
+          "page_or_medium": "p.31",
+          "body_anchor_terms": [
+            "事故発生時の対応",
+            "市町村",
+            "家族",
+            "居宅介護支援事業者",
+            "記録",
+            "損害賠償"
+          ],
+          "support_summary": "旧公式通知本文が事故時対応の主要要素を直接支持。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の三十八",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の三十八"
+          ],
+          "support_summary": "基準省令の条文対応を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.019",
+      "task_id": "KR2-07-B019",
+      "path": "第三/一/4/(31)",
+      "number": "(31)",
+      "heading": "虐待の防止",
+      "content_summary": "現行基準第3条の38の2に対応。虐待防止委員会の定期開催と周知、指針整備、研修、担当者配置を扱う。",
+      "result": "PASS",
+      "content_evidence_match": "summaryの4要素が公式資料で直接支持される。",
+      "evidence": [
+        {
+          "source_id": "r6-final-comparison",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+          "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+          "locator": "第三／一／4／(31) 虐待の防止",
+          "page_or_medium": "p.8-9",
+          "body_anchor_terms": [
+            "虐待の防止",
+            "委員会",
+            "指針",
+            "研修",
+            "担当者"
+          ],
+          "support_summary": "最終比較資料で虐待防止の措置を直接確認。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の三十八の二",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "委員会",
+            "指針",
+            "研修",
+            "担当者"
+          ],
+          "support_summary": "基準省令本文が4つの措置を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.020",
+      "task_id": "KR2-07-B020",
+      "path": "第三/一/4/(32)",
+      "number": "(32)",
+      "heading": "会計の区分",
+      "content_summary": "現行基準第3条の39に対応。事業所ごとの経理区分と、定期巡回・随時対応型訪問介護看護事業の会計を他事業の会計から区分する。",
+      "result": "PASS",
+      "content_evidence_match": "summaryの会計区分要素を公式資料が支持。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／4／会計の区分",
+          "page_or_medium": "p.31-32",
+          "body_anchor_terms": [
+            "会計の区分",
+            "事業所ごとに経理を区分",
+            "他の事業の会計と区分"
+          ],
+          "support_summary": "旧公式通知本文が会計区分の要旨を支持。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の三十九",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "事業所ごとに経理を区分",
+            "他の事業の会計と区分"
+          ],
+          "support_summary": "基準省令本文で現在の条文対応を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    },
+    {
+      "id": "regular-round.notice.021",
+      "task_id": "KR2-07-B021",
+      "path": "第三/一/5/(1)",
+      "number": "(1)",
+      "heading": "連携型指定定期巡回・随時対応型訪問介護看護の基準",
+      "content_summary": "現行基準第3条の41に対応。連携型では訪問看護サービスを連携指定訪問看護事業所が担うため、訪問看護に係る一部の人員・運営規定が適用除外となる。",
+      "result": "PASS",
+      "content_evidence_match": "連携型の役割分担と適用除外は旧通知本文および省令で支持される。",
+      "evidence": [
+        {
+          "source_id": "older-amendment-reference",
+          "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+          "source_role": "HISTORICAL_NOTICE_BODY_GAP_RESOLUTION",
+          "locator": "第三／一／5 連携型指定定期巡回・随時対応型訪問介護看護の事業／(1)",
+          "page_or_medium": "p.32-33",
+          "body_anchor_terms": [
+            "連携型指定定期巡回・随時対応型訪問介護看護",
+            "訪問看護サービスを行わない",
+            "連携指定訪問看護事業所",
+            "適用しない"
+          ],
+          "support_summary": "旧公式通知本文が連携型の役割分担と適用除外を直接支持。"
+        },
+        {
+          "source_id": "current-ordinance-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+          "source_role": "STANDARDS_ORDINANCE_CORROBORATION",
+          "locator": "第三条の四十一",
+          "page_or_medium": "HTML",
+          "body_anchor_terms": [
+            "第三条の四十一",
+            "連携指定訪問看護事業所",
+            "適用しない"
+          ],
+          "support_summary": "基準省令本文で条文対応と適用除外を補助確認。"
+        }
+      ],
+      "omitted_text_policy": "NO_CURRENT_TEXT_RECONSTRUCTION",
+      "currentness": "NOT_EVALUATED"
+    }
+  ],
+  "safety": {
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "publication_permitted": false,
+    "route_enabled": false,
+    "current_integrated_notice_text_reconstructed": false,
+    "staging_summary_treated_as_official_notice_text": false
+  },
+  "unresolved_gaps": [],
+  "integrator_followup": [
+    "INTEGRATOR_FOLLOWUP: Reclassify the existing scope manifest entry for https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0. It is the standards ordinance, not a historical full-text interpretation notice.",
+    "INTEGRATOR_FOLLOWUP: Consider adding the R6 final comparison (001227939.pdf) to item-level evidence/source_urls for items whose summaries rely on R6 amendment text; several staging items currently cite the earlier R6 comparison (001221586.pdf).",
+    "INTEGRATOR_FOLLOWUP: Keep this content/evidence PASS independent from currentness, human review, publication, and route-enablement gates."
+  ],
+  "conclusion": "All 21 regular-round staging items have bounded official-source support for their heading/content_summary at the content/evidence-match level. For R6-omitted regions, historical notice body evidence and the standards ordinance were kept as separate source roles; no current integrated interpretation-notice text was reconstructed. Currentness remains unevaluated."
+}
