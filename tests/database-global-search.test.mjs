@@ -131,6 +131,30 @@ test("database-wide notice corpus includes independently published homebath hist
   );
 });
 
+test("database-wide notice corpus includes the independently published next service wave", () => {
+  const expected = new Map([
+    ["homenursing", 12],
+    ["homerehab", 7],
+    ["homecaremanagement", 9],
+    ["shortstay-life", 34],
+  ]);
+
+  for (const [serviceId, count] of expected) {
+    const records = publicNoticeRecords.filter(
+      (record) => record.service_id === serviceId,
+    );
+    assert.equal(records.length, count);
+    assert.ok(
+      records.every(
+        (record) =>
+          record.source_state === "OFFICIAL_HISTORICAL_HTML" &&
+          record.currentness_state === "GAP" &&
+          record.human_review_state === "NOT_REVIEWED",
+      ),
+    );
+  }
+});
+
 test("database hub exposes a service-neutral cross-database search", () => {
   const hub = fs.readFileSync("app/databases/page.tsx", "utf8");
   const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
