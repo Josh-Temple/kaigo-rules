@@ -85,4 +85,5 @@ jobs:
             data/homecaremanagement-rouki25-historical-independent-audit.json
           git diff --cached --check
           git commit -m "Materialize verified next Rouki 25 service wave"
+          git pull --rebase origin "${{ github.head_ref }}"
           git push origin HEAD:"${{ github.head_ref }}"
