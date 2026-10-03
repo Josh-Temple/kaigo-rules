@@ -131,11 +131,11 @@
         "receipt": "data/verification/standards-interpretation-item-body/care-management.json"
       },
       "currentness": {
-        "verification_performed": false,
+        "verification_performed": true,
         "state": "NOT_ESTABLISHED",
-        "receipt": null,
+        "receipt": "data/verification/standards-interpretation-currentness/care-management.json",
         "worker_pr": null,
-        "verifier": null
+        "verifier": "scripts/validate_care_management_standards_interpretation_currentness.py"
       },
       "human_review": {
         "state": "NOT_REVIEWED"
@@ -168,11 +168,11 @@
         "receipt": "data/verification/standards-interpretation-item-body/preventive-support.json"
       },
       "currentness": {
-        "verification_performed": false,
+        "verification_performed": true,
         "state": "NOT_ESTABLISHED",
-        "receipt": null,
+        "receipt": "data/verification/standards-interpretation-currentness/preventive-support.json",
         "worker_pr": null,
-        "verifier": null
+        "verifier": "scripts/validate_preventive_support_standards_interpretation_currentness.py"
       },
       "human_review": {
         "state": "NOT_REVIEWED"
