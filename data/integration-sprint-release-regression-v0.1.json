@@ -93,8 +93,8 @@
         "通所リハビリテーション"
       ],
       "regex_text": [
-        "67\\s*共有コーパス条文",
-        "67\\s*表示中の条文"
+        "275\\\\s*共有コーパス条文",
+        "275\\\\s*表示中の条文"
       ]
     },
     {
@@ -342,12 +342,12 @@
     {
       "id": "IR-19",
       "coverage": "service_isolation",
-      "title": "dayrehab rules filter narrows the shared corpus to 35 locally available applicable articles",
+      "title": "dayrehab rules filter narrows the shared corpus to 36 applicable articles",
       "path": "/rules?service=dayrehab",
       "expect_status": 200,
       "contains_text": [
         "通所リハビリテーションで絞り込み中",
-        "35",
+        "36",
         "表示中の条文",
         "第百十条",
         "第百十九条"
