@@ -53,6 +53,8 @@ def validate():
             std_refs.append(w["node_id"])
             if w["target_resolution_state"]!="NOT_EXPANDED_FAIL_CLOSED": raise AssertionError(f"{sid}: wrapper not fail-closed")
             if "target_node_ids" in w: raise AssertionError(f"{sid}: unresolved wrapper invented targets")
+        for excluded in std["excluded_ranges"]:
+            std_refs.extend(excluded.get("reference_nodes", []))
         missing=sorted(set(std_refs)-std_nodes)
         if missing: raise AssertionError(f"{sid}: missing standards refs {missing}")
         if rem.get("source_text_duplicated") is not False: raise AssertionError(f"{sid}: remuneration text duplicated")
