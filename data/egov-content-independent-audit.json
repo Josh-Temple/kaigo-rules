@@ -6,8 +6,8 @@
   "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Update Care Insurance Act database",
-    "run_id": 37127701311,
-    "head_sha": "211c17ec9eb30a020ae83e2ab9e5094472efce37",
+    "run_id": 37127821497,
+    "head_sha": "9e8dcbfd55ae5c041b665f77032f84159021a8e7",
     "parser": "python_xml_dom_minidom",
     "result": "PASS",
     "verification_report_sha256": "e12d029b1739b8a0cf2f6366f2db08e1511f9143d534249f0e0885f2e6f2b877"
@@ -54,7 +54,7 @@
     "data/care-insurance-act-corpus-scope.json": "4fc5aee80c44eb4e228f8ffd3e913c92b162f99a",
     "data/care-insurance-act-nodes.json": "046da7e5a3ba1241d713ecf7eca089e55bb455e3",
     "data/care-insurance-act-relations.json": "6cfb17acea1e2c546bf11e63f902ebcb7b1404ea",
-    "data/care-insurance-act-meta.json": "64749db380de1ec11f69989f98b7c383ff2a73cb",
+    "data/care-insurance-act-meta.json": "ab30a2670c79f841ae743089e500582d8f3c756b",
     "scripts/verify_egov_content_independent.py": "bc496d4d3c78b97225d55948f5c5e4049174b913"
   },
   "conclusion": "Source-derived official text, stable node IDs, parent structure and containment matched live e-Gov XML using an independent XML parser. The Care Insurance Act check covers the shared service-foundation corpus; service applicability remains in separate service scope/index files.",

@@ -6,8 +6,8 @@
   "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Verify Care Insurance Act internal relations independently",
-    "run_id": 37127701311,
-    "head_sha": "211c17ec9eb30a020ae83e2ab9e5094472efce37",
+    "run_id": 37127821497,
+    "head_sha": "9e8dcbfd55ae5c041b665f77032f84159021a8e7",
     "parser": "python_xml_dom_minidom_plus_explicit_reference_evidence_rules",
     "result": "PASS",
     "verification_report_sha256": "6d9722535d4629936e3af25560509e8f19c90d2c59a571214bfcc2250b25205a"
@@ -109,7 +109,7 @@
   "input_git_blob_shas_at_audit": {
     "data/care-insurance-act-nodes.json": "046da7e5a3ba1241d713ecf7eca089e55bb455e3",
     "data/care-insurance-act-relations.json": "6cfb17acea1e2c546bf11e63f902ebcb7b1404ea",
-    "data/relation-semantic-independent-audit.json": "429b2875cd1e7d68c59e971504eb0062999d369e",
+    "data/relation-semantic-independent-audit.json": "75220b0954cf36effa081da6ed036f7ffe7917ab",
     "scripts/verify_careact_internal_relations_independent.py": "920005ed31e625b0e71a557d1f72437020b3d50b"
   },
   "conclusion": "Four Care Insurance Act internal relations to Article 74 matched live e-Gov source evidence and committed relation rows.",
