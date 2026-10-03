@@ -1,4 +1,5 @@
 name: One-time shared standards branch refresh
+# trigger: shared corpus generation
 
 on:
   push:
