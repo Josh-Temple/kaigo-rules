@@ -29,13 +29,18 @@
     "item_body_receipt": "data/verification/standards-interpretation-item-body/preventive-support.json",
     "item_body_result": "PARTIAL_WITH_GAPS",
     "item_body_counts": {
-      "PASS": 32,
-      "PARTIAL": 2,
+      "PASS": 33,
+      "PARTIAL": 1,
       "GAP": 0,
       "FAIL": 0
     },
     "item_body_does_not_prove_currentness": true,
-    "currentness_verification_does_not_resolve_item_body_gaps": true
+    "currentness_verification_does_not_resolve_item_body_gaps": true,
+    "post_currentness_item_body_scope_correction": {
+      "task_id": "KR2-10-B033",
+      "effect": "ITEM_BODY_PASS_COUNT_CHANGED_ONLY_CURRENTNESS_RESULT_UNCHANGED",
+      "currentness_reassessment": "NOT_ESTABLISHED"
+    }
   },
   "official_sources": [
     {
@@ -86,7 +91,7 @@
     "令和8年度改定ページで当該通知の改正を確認できないことだけでは、不改正を証明できない。",
     "現行基準省令は解釈通知の現行統合本文を代替しない。",
     "令和6年度最終資料は抄・新旧対照であり、略記部分を含むため単独で現行統合全文にはならない。",
-    "item-bodyのPARTIAL 2件はcurrentness検証と別レイヤーであり、この検証では解消しない。"
+    "item-bodyのPARTIAL 1件（KR2-10-B016）はcurrentness検証と別レイヤーであり、この検証では解消しない。"
   ],
   "conclusion": {
     "currentness": "NOT_ESTABLISHED",
@@ -99,7 +104,7 @@
     "解釈通知の全改正イベントを適用順序付きで閉じたledgerがない。",
     "厚労省による現行統合済み解釈通知本文を確認できていない。",
     "R6以後の改正不存在は公式索引のnegative discoveryだけでは証明できない。",
-    "KR2-10-B016/B033のitem-body PARTIALとKR2-10-B035の新規scope taskは別途未解消。"
+    "KR2-10-B016のitem-body PARTIALとKR2-10-B035の新規scope task、ならびに4(2)全体scope reviewが別途未解消。"
   ],
   "safety": {
     "currentness_only": true,
