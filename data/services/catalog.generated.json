@@ -353,7 +353,9 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "standards_interpretation": "data/services/community-dayservice/standards-interpretation-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -361,13 +363,15 @@
         "human_review_complete": false
       },
       "ingestion_layers": {
-        "rouki25": {
-          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
-          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
-        },
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        },
+        "standards_interpretation": {
+          "status": "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "source_family": "community_based_services_standards_interpretation",
+          "principal_items": 21,
+          "note": "第二陣NOTICE成果の確定粒度と公式一次資料の通知系列をservice-specific scopeとして登録。本文adapter・独立source検証・currentness確認・human review・公開は未実施。"
         }
       },
       "verification_layer_ids": []
@@ -383,7 +387,9 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "standards_interpretation": "data/services/regular-round/standards-interpretation-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -391,13 +397,15 @@
         "human_review_complete": false
       },
       "ingestion_layers": {
-        "rouki25": {
-          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
-          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
-        },
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        },
+        "standards_interpretation": {
+          "status": "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "source_family": "community_based_services_standards_interpretation",
+          "principal_items": 21,
+          "note": "第二陣NOTICE成果の確定粒度と公式一次資料の通知系列をservice-specific scopeとして登録。本文adapter・独立source検証・currentness確認・human review・公開は未実施。"
         }
       },
       "verification_layer_ids": []
@@ -413,7 +421,9 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "standards_interpretation": "data/services/night-homevisit/standards-interpretation-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -421,13 +431,15 @@
         "human_review_complete": false
       },
       "ingestion_layers": {
-        "rouki25": {
-          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
-          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
-        },
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        },
+        "standards_interpretation": {
+          "status": "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "source_family": "community_based_services_standards_interpretation",
+          "principal_items": 25,
+          "note": "第二陣NOTICE成果の確定粒度と公式一次資料の通知系列をservice-specific scopeとして登録。本文adapter・独立source検証・currentness確認・human review・公開は未実施。"
         }
       },
       "verification_layer_ids": []
@@ -443,7 +455,9 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "standards_interpretation": "data/services/care-management/standards-interpretation-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -451,13 +465,15 @@
         "human_review_complete": false
       },
       "ingestion_layers": {
-        "rouki25": {
-          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
-          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
-        },
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+        },
+        "standards_interpretation": {
+          "status": "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "source_family": "care_management_standards_interpretation",
+          "principal_items": 32,
+          "note": "第二陣NOTICE成果の確定粒度と公式一次資料の通知系列をservice-specific scopeとして登録。本文adapter・独立source検証・currentness確認・human review・公開は未実施。"
         }
       },
       "verification_layer_ids": []
@@ -473,7 +489,9 @@
         "future_service_base_enabled": false
       },
       "id_namespaces": {},
-      "scope_files": {},
+      "scope_files": {
+        "standards_interpretation": "data/services/preventive-support/standards-interpretation-scope.json"
+      },
       "publication_gate": {
         "public_routes_enabled": false,
         "content_ingested": false,
@@ -481,13 +499,15 @@
         "human_review_complete": false
       },
       "ingestion_layers": {
-        "rouki25": {
-          "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
-          "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
-        },
         "work_control": {
           "status": "STAGING_NOT_CLOSED_BLOCKED_PACKAGE_PRECHECK",
           "note": "Structure QueueでPACKAGE / CONTRACT_PRECHECKが1件BLOCKED。通知レーン完了とは分離し、サービス全体の公開準備完了とは扱わない。"
+        },
+        "standards_interpretation": {
+          "status": "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+          "source_family": "preventive_support_standards_interpretation",
+          "principal_items": 34,
+          "note": "第二陣NOTICE成果の確定粒度と公式一次資料の通知系列をservice-specific scopeとして登録。本文adapter・独立source検証・currentness確認・human review・公開は未実施。"
         }
       },
       "verification_layer_ids": []
