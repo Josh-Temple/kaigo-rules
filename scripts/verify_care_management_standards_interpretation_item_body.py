@@ -6,7 +6,7 @@ the exact staging/scope/source-inventory inputs and protects the boundary that t
 audit does not establish currentness, human review, publication readiness, or a
 synthetic integrated notice text.
 
-With --live it also re-fetches the five pinned MHLW sources and verifies their
+With --live it also re-fetches the pinned MHLW sources and verifies their
 byte-level SHA-256 identities against the independently pinned source inventory.
 """
 from __future__ import annotations
@@ -154,8 +154,8 @@ def validate_offline() -> dict:
     if summary.get("child_entry_results") != child_counts:
         fail(f"child result summary mismatch: {child_counts}")
 
-    expected_task_counts = {"PASS": 24, "PARTIAL": 5, "GAP": 3, "FAIL": 0}
-    expected_child_counts = {"PASS": 33, "PARTIAL": 5, "GAP": 3, "FAIL": 0}
+    expected_task_counts = {"PASS": 28, "PARTIAL": 1, "GAP": 3, "FAIL": 0}
+    expected_child_counts = {"PASS": 37, "PARTIAL": 1, "GAP": 3, "FAIL": 0}
     if task_counts != expected_task_counts:
         fail(f"unexpected task outcomes: {task_counts}")
     if child_counts != expected_child_counts:
@@ -191,13 +191,9 @@ def validate_offline() -> dict:
 
     unresolved = {row.get("task_id"): row.get("result") for row in audit.get("unresolved_gaps", [])}
     if unresolved != {
-        "KR2-09-B009": "PARTIAL",
         "KR2-09-B012": "PARTIAL",
-        "KR2-09-B014": "PARTIAL",
         "KR2-09-B015": "GAP",
-        "KR2-09-B016": "PARTIAL",
         "KR2-09-B017": "GAP",
-        "KR2-09-B018": "PARTIAL",
         "KR2-09-B019": "GAP",
     }:
         fail(f"unresolved gap set changed: {unresolved}")
@@ -218,20 +214,27 @@ def validate_offline() -> dict:
     ):
         fail("R6 source-version locator evidence is incomplete")
 
-    supplemental = audit.get("supplemental_source_findings", [])
-    if len(supplemental) != 1 or supplemental[0].get("id") != "supplemental-mhlw-c07":
-        fail("B009 supplemental official evidence is not recorded")
-    if supplemental[0].get("supports") != ["KR2-09-B009"]:
-        fail("B009 supplemental evidence scope changed")
+    if audit.get("supplemental_source_findings", []) != []:
+        fail("resolved B009 evidence must not remain supplemental/unpinned")
+    resolved = audit.get("resolved_source_findings", [])
+    if len(resolved) != 1 or resolved[0].get("id") != "historical-c07-amendment-comparison":
+        fail("B009 resolved source finding is missing")
+    if resolved[0].get("supports") != ["KR2-09-B009"]:
+        fail("B009 resolved evidence scope changed")
 
     b009 = by_task["KR2-09-B009"]
     c07 = [
         row
         for row in b009.get("official_evidence", [])
-        if row.get("source_id") == "supplemental-mhlw-c07"
+        if row.get("source_id") == "historical-c07-amendment-comparison"
     ]
-    if len(c07) != 1 or c07[0].get("pinned_in_source_inventory") is not False:
-        fail("B009 supplemental source must remain explicitly unpinned")
+    if len(c07) != 1 or c07[0].get("pinned_in_source_inventory") is not True:
+        fail("B009 c07 source must be explicitly pinned")
+    c07_url = c07[0].get("url")
+    if inventory_sources.get(c07_url, {}).get("fetch") != "PASS":
+        fail("B009 c07 pinned source is not fetchable")
+    if c07[0].get("pinned_sha256") != inventory_sources[c07_url].get("sha256"):
+        fail("B009 c07 evidence hash drift")
 
     config = load(ROOT / "data/services/care-management.json")
     layer = config["ingestion_layers"]["standards_interpretation"]
