@@ -68,6 +68,26 @@
       "scope_kind": "SERVICE_SPECIFIC",
       "provider": "normalized_report",
       "report_file": "data/verification/layers/fee-guidance-dayrehab.json"
+    },
+    {
+      "id": "rouki25-homenursing",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "legacy"
+    },
+    {
+      "id": "rouki25-homerehab",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "legacy"
+    },
+    {
+      "id": "rouki25-homecaremanagement",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "legacy"
+    },
+    {
+      "id": "rouki25-shortstay-life",
+      "scope_kind": "SERVICE_SPECIFIC",
+      "provider": "legacy"
     }
   ]
 }

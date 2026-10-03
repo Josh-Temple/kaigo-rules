@@ -45,7 +45,7 @@
       "denominator": {
         "selector": "canonical record families rendered on currently enabled service routes or explicit global public corpus surfaces",
         "service_boundary": "shared Care Insurance Act and Ordinance 37 membership MUST come from lib/service-scope.ts; isolated service-specific datasets retain their explicit committed scope markers",
-        "record_granularity": "count the canonical rows rendered/listed/searched as product records; nested legal child nodes shown only inside an article detail are not a second denominator row, but their service isolation is separately release-regressed; dayrehab fee and guidance denominator rows are source-level parent inventory items; nested rates/child markers do not add rows. Homevisit and homebath notice rows published only through the global notice DB are counted as explicit global public families even while their service roots remain disabled.",
+        "record_granularity": "count the canonical rows rendered/listed/searched as product records; nested legal child nodes shown only inside an article detail are not a second denominator row, but their service isolation is separately release-regressed; dayrehab fee and guidance denominator rows are source-level parent inventory items; nested rates/child markers do not add rows. Historical notice rows published through the global notice DB are counted as explicit global public families even while their service roots remain disabled.",
         "included_public_families": [
           "practical_questions",
           "care_insurance_act_articles",
@@ -58,6 +58,10 @@
           "qa_corpus_items",
           "homevisit_notice_items",
           "homebath_notice_items",
+          "homenursing_notice_items",
+          "homerehab_notice_items",
+          "homecaremanagement_notice_items",
+          "shortstay_life_notice_items",
           "dayrehab_standard_articles",
           "dayrehab_notice_items",
           "dayrehab_remuneration_items",

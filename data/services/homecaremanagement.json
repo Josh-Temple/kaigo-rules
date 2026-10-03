@@ -12,7 +12,9 @@
   "scope_files": {
     "rouki25": "data/services/homecaremanagement/rouki25-scope.json"
   },
-  "verification_layer_ids": [],
+  "verification_layer_ids": [
+    "rouki25-homecaremanagement"
+  ],
   "publication_gate": {
     "public_routes_enabled": false,
     "content_ingested": false,
@@ -21,9 +23,9 @@
   },
   "ingestion_layers": {
     "rouki25": {
-      "status": "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
+      "status": "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
       "principal_items": 9,
-      "note": "老企第25号の公式旧HTML『第七 居宅療養管理指導に関する基準』9 principal itemsをRepositoryへmaterializeし、独立パーサーで公式sourceとの9/9一致を確認。現行統合本文・human review・公開は未実施。"
+      "note": "老企第25号の公式旧HTMLに基づく9 principal itemsを独立source一致確認付きで全体通知DBへ公開。令和6年度等の改正資料は別証拠として扱い、現行統合本文は生成しない。"
     },
     "work_control": {
       "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",

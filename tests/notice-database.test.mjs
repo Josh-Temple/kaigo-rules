@@ -31,23 +31,35 @@ test("notice database is catalog-driven across registered services", () => {
       "preventive-support",
     ],
   );
-  assert.equal(publicNoticePublishedServiceCount, 4);
-  assert.equal(publicNoticeRecords.length, 79);
+  assert.equal(publicNoticePublishedServiceCount, 8);
+  assert.equal(publicNoticeRecords.length, 141);
 });
 
 test("published notice records remain separated by service assurance", () => {
   assert.equal(noticeServiceCount("dayservice"), 22);
   assert.equal(noticeServiceCount("homevisit"), 35);
   assert.equal(noticeServiceCount("homebath"), 13);
+  assert.equal(noticeServiceCount("homenursing"), 12);
+  assert.equal(noticeServiceCount("homerehab"), 7);
+  assert.equal(noticeServiceCount("homecaremanagement"), 9);
   assert.equal(noticeServiceCount("dayrehab"), 9);
+  assert.equal(noticeServiceCount("shortstay-life"), 34);
   assert.equal(filterPublicNotices("dayservice").length, 22);
   assert.equal(filterPublicNotices("homevisit").length, 35);
   assert.equal(filterPublicNotices("homebath").length, 13);
+  assert.equal(filterPublicNotices("homenursing").length, 12);
+  assert.equal(filterPublicNotices("homerehab").length, 7);
+  assert.equal(filterPublicNotices("homecaremanagement").length, 9);
   assert.equal(filterPublicNotices("dayrehab").length, 9);
+  assert.equal(filterPublicNotices("shortstay-life").length, 34);
 
   const dayservice = filterPublicNotices("dayservice");
   const homevisit = filterPublicNotices("homevisit");
   const homebath = filterPublicNotices("homebath");
+  const homenursing = filterPublicNotices("homenursing");
+  const homerehab = filterPublicNotices("homerehab");
+  const homecaremanagement = filterPublicNotices("homecaremanagement");
+  const shortstay = filterPublicNotices("shortstay-life");
   const dayrehab = filterPublicNotices("dayrehab");
 
   assert.ok(dayservice.every((row) => row.source_state === "RECONSTRUCTED_CANDIDATE"));
@@ -58,55 +70,45 @@ test("published notice records remain separated by service assurance", () => {
   assert.ok(homebath.every((row) => row.source_state === "OFFICIAL_HISTORICAL_HTML"));
   assert.ok(homebath.every((row) => row.currentness_state === "GAP"));
   assert.ok(homebath.every((row) => row.verification_layer_id === "rouki25-homebath"));
+  for (const [rows, layerId] of [
+    [homenursing, "rouki25-homenursing"],
+    [homerehab, "rouki25-homerehab"],
+    [homecaremanagement, "rouki25-homecaremanagement"],
+    [shortstay, "rouki25-shortstay-life"],
+  ]) {
+    assert.ok(rows.every((row) => row.source_state === "OFFICIAL_HISTORICAL_HTML"));
+    assert.ok(rows.every((row) => row.currentness_state === "GAP"));
+    assert.ok(rows.every((row) => row.verification_layer_id === layerId));
+  }
   assert.ok(dayrehab.every((row) => row.source_state === "OFFICIAL_HISTORICAL_HTML"));
   assert.ok(dayrehab.every((row) => row.currentness_state === "GAP"));
   assert.ok(publicNoticeRecords.every((row) => row.human_review_state === "NOT_REVIEWED"));
 });
 
-test("published historical services and un-ingested services remain clearly separated", () => {
-  assert.equal(noticeServiceCount("homebath"), 13);
-  assert.equal(noticeServiceCount("homenursing"), 0);
-  assert.equal(noticeServiceCount("shortstay-life"), 0);
-  assert.equal(filterPublicNotices("homebath").length, 13);
-  assert.equal(filterPublicNotices("homenursing").length, 0);
-  assert.equal(filterPublicNotices("shortstay-life").length, 0);
+test("published historical notice services expose records while service roots stay separate", () => {
+  const expected = new Map([
+    ["homevisit", [35, "rouki25-homevisit"]],
+    ["homebath", [13, "rouki25-homebath"]],
+    ["homenursing", [12, "rouki25-homenursing"]],
+    ["homerehab", [7, "rouki25-homerehab"]],
+    ["homecaremanagement", [9, "rouki25-homecaremanagement"]],
+    ["dayrehab", [9, "rouki25-dayrehab"]],
+    ["shortstay-life", [34, "rouki25-shortstay-life"]],
+  ]);
+
+  for (const [serviceId, [count, layerId]] of expected) {
+    const service = publicNoticeServiceOptions.find(
+      (candidate) => candidate.service_id === serviceId,
+    );
+    assert.equal(service?.record_count, count);
+    assert.equal(
+      service?.notice_status,
+      "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
+    );
+    assert.equal(service?.verification_layer_id, layerId);
+  }
+
   assert.equal(filterPublicNotices("unknown-service").length, 0);
-
-  const homevisit = publicNoticeServiceOptions.find(
-    (service) => service.service_id === "homevisit",
-  );
-  const homebath = publicNoticeServiceOptions.find(
-    (service) => service.service_id === "homebath",
-  );
-  const homenursing = publicNoticeServiceOptions.find(
-    (service) => service.service_id === "homenursing",
-  );
-  const shortstay = publicNoticeServiceOptions.find(
-    (service) => service.service_id === "shortstay-life",
-  );
-
-  assert.equal(
-    homevisit?.notice_status,
-    "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
-  );
-  assert.equal(homevisit?.record_count, 35);
-  assert.equal(homevisit?.verification_layer_id, "rouki25-homevisit");
-  assert.equal(
-    homebath?.notice_status,
-    "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
-  );
-  assert.equal(homebath?.record_count, 13);
-  assert.equal(homebath?.verification_layer_id, "rouki25-homebath");
-  assert.equal(homenursing?.record_count, 0);
-  assert.equal(
-    homenursing?.notice_status,
-    "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
-  );
-  assert.equal(
-    shortstay?.notice_status,
-    "HISTORICAL_SOURCE_TEXT_VERIFIED_NOT_PUBLISHED_CURRENTNESS_GAP",
-  );
-  assert.equal(shortstay?.verification_layer_id, undefined);
 });
 
 test("global notice page exposes the service catalog without inferring applicability", () => {

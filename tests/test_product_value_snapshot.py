@@ -40,7 +40,7 @@ class ProductValueSnapshotTest(unittest.TestCase):
 
     def test_enabled_public_item_families_are_all_counted(self):
         metric = self.snapshot["metrics"]["public_items_with_complete_evidence_state"]
-        self.assertEqual(metric["public_items_total"], 4457)
+        self.assertEqual(metric["public_items_total"], 4519)
         self.assertEqual(
             set(metric["breakdown"]),
             set(self.builder.EXPECTED_PUBLIC_FAMILIES),
@@ -68,6 +68,22 @@ class ProductValueSnapshotTest(unittest.TestCase):
         self.assertEqual(
             metric["breakdown"]["homebath_notice_items"]["items_total"],
             13,
+        )
+        self.assertEqual(
+            metric["breakdown"]["homenursing_notice_items"]["items_total"],
+            12,
+        )
+        self.assertEqual(
+            metric["breakdown"]["homerehab_notice_items"]["items_total"],
+            7,
+        )
+        self.assertEqual(
+            metric["breakdown"]["homecaremanagement_notice_items"]["items_total"],
+            9,
+        )
+        self.assertEqual(
+            metric["breakdown"]["shortstay_life_notice_items"]["items_total"],
+            34,
         )
         self.assertEqual(
             metric["breakdown"]["dayrehab_standard_articles"]["items_total"],
@@ -109,7 +125,15 @@ class ProductValueSnapshotTest(unittest.TestCase):
         )
         self.assertEqual(
             self.snapshot["scope"]["global_public_families"],
-            ["qa_corpus_items", "homevisit_notice_items", "homebath_notice_items"],
+            [
+                "qa_corpus_items",
+                "homevisit_notice_items",
+                "homebath_notice_items",
+                "homenursing_notice_items",
+                "homerehab_notice_items",
+                "homecaremanagement_notice_items",
+                "shortstay_life_notice_items",
+            ],
         )
         self.assertIn("homevisit", self.snapshot["scope"]["excluded_services"])
         self.assertIn("homebath", self.snapshot["scope"]["excluded_services"])
