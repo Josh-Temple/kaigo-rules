@@ -1,4 +1,4 @@
-name: Verify e-Gov scoped content independently
+name: Verify e-Gov shared and scoped content independently
 
 on:
   workflow_dispatch:
@@ -11,13 +11,13 @@ on:
       - "data/ordinance37-nodes.json"
       - "data/ordinance37-relations.json"
       - "data/ordinance37-meta.json"
-      - "data/care-insurance-act-scope.json"
+      - "data/care-insurance-act-corpus-scope.json"
       - "data/care-insurance-act-nodes.json"
       - "data/care-insurance-act-relations.json"
       - "data/care-insurance-act-meta.json"
       - ".github/workflows/verify-egov-content-independent.yml"
       - "data/egov-content-independent-audit.json"
-      - "scripts/validate_egov_content_independent_audit.py"
+      - "scripts/validate_egov_content_independent_audit.py"\n      - "scripts/record_egov_content_independent_audit.py"
   push:
     branches: [main]
     paths:
@@ -26,13 +26,13 @@ on:
       - "data/ordinance37-nodes.json"
       - "data/ordinance37-relations.json"
       - "data/ordinance37-meta.json"
-      - "data/care-insurance-act-scope.json"
+      - "data/care-insurance-act-corpus-scope.json"
       - "data/care-insurance-act-nodes.json"
       - "data/care-insurance-act-relations.json"
       - "data/care-insurance-act-meta.json"
       - ".github/workflows/verify-egov-content-independent.yml"
       - "data/egov-content-independent-audit.json"
-      - "scripts/validate_egov_content_independent_audit.py"
+      - "scripts/validate_egov_content_independent_audit.py"\n      - "scripts/record_egov_content_independent_audit.py"
 
 permissions:
   contents: read

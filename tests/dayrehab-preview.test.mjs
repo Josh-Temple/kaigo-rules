@@ -20,8 +20,9 @@ test("dayrehab index separates direct Chapter 8 text from Article 119 incorporat
   );
   assert.equal(index.counts.direct_articles, 11);
   assert.equal(index.counts.incorporated_articles_total, 25);
-  assert.equal(index.counts.incorporated_articles_local, 24);
-  assert.deepEqual(index.selectors.missing_shared_corpus_articles, ["64"]);
+  assert.equal(index.counts.incorporated_articles_local, 25);
+  assert.deepEqual(index.selectors.missing_shared_corpus_articles, []);
+  assert.ok(index.node_ids_by_basis.incorporated.includes("ordinance37.article.64"));
   assert.equal(index.node_ids_by_basis.direct.length, 69);
   assert.ok(index.node_ids_by_basis.incorporated.length > 0);
   assert.equal(index.assurance.legal_text_duplicated, false);
@@ -72,15 +73,16 @@ test("dayrehab public pages render shared full text with bounded verification wo
 
 test("shared Ordinance 37 corpus expanded without changing dayservice surface scope", () => {
   const meta = readJson("data/ordinance37-meta.json");
-  assert.equal(meta.counts.articles_total, 67);
-  assert.equal(meta.counts.nodes_total, 340);
+  assert.equal(meta.scope.mode, "FULL_MAIN_PROVISION");
+  assert.ok(meta.counts.articles_total > 67);
+  assert.ok(meta.counts.nodes_total > 340);
   const nodes = readJson("data/ordinance37-nodes.json");
   const dayrehabArticle = nodes.find((item) => item.id === "ordinance37.article.110");
   assert.ok(dayrehabArticle);
   assert.equal(dayrehabArticle.applicable_via, null);
 });
 
-test("dayrehab Article 119 relation audit covers 25 current targets and fails closed on Article 64 corpus gap", () => {
+test("dayrehab Article 119 relation audit covers all 25 current targets including Article 64", () => {
   const audit = readJson("data/dayrehab-article119-relation-independent-audit.json");
   const relations = readJson("data/services/dayrehab/ordinance37-relations.generated.json");
   assert.equal(audit.audit_result, "PASS");

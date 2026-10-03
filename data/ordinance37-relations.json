@@ -1,5 +1,70 @@
 [
   {
+    "from": "ordinance37.article.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.10"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.11"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.12"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.1.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.1.p.1.i.9"
+  },
+  {
     "from": "ordinance37.article.10",
     "relation": "contains",
     "to": "ordinance37.article.10.p.1"
@@ -320,6 +385,126 @@
     "to": "ordinance37.article.9"
   },
   {
+    "from": "ordinance37.article.105-2",
+    "relation": "contains",
+    "to": "ordinance37.article.105-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.105-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.105-2.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.105-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.105-2.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.105-3",
+    "relation": "contains",
+    "to": "ordinance37.article.105-3.p.1"
+  },
+  {
+    "from": "ordinance37.article.106",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.1"
+  },
+  {
+    "from": "ordinance37.article.106",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.2"
+  },
+  {
+    "from": "ordinance37.article.106",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.3"
+  },
+  {
+    "from": "ordinance37.article.106",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.4"
+  },
+  {
+    "from": "ordinance37.article.106",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.5"
+  },
+  {
+    "from": "ordinance37.article.106",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.6"
+  },
+  {
+    "from": "ordinance37.article.106.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.106.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.106.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.106.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.106.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.107",
+    "relation": "contains",
+    "to": "ordinance37.article.107.p.1"
+  },
+  {
+    "from": "ordinance37.article.108",
+    "relation": "contains",
+    "to": "ordinance37.article.108.p.1"
+  },
+  {
+    "from": "ordinance37.article.108",
+    "relation": "contains",
+    "to": "ordinance37.article.108.p.2"
+  },
+  {
+    "from": "ordinance37.article.108",
+    "relation": "contains",
+    "to": "ordinance37.article.108.p.3"
+  },
+  {
+    "from": "ordinance37.article.108",
+    "relation": "contains",
+    "to": "ordinance37.article.108.p.4"
+  },
+  {
+    "from": "ordinance37.article.108.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.108.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.108.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.108.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.108.p.2.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.108.p.2.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.108.p.2.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.108.p.2.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.109",
+    "relation": "contains",
+    "to": "ordinance37.article.109.p.1"
+  },
+  {
     "from": "ordinance37.article.11",
     "relation": "contains",
     "to": "ordinance37.article.11.p.1"
@@ -630,9 +815,684 @@
     "to": "ordinance37.article.12.p.2"
   },
   {
+    "from": "ordinance37.article.120",
+    "relation": "contains",
+    "to": "ordinance37.article.120.p.1"
+  },
+  {
+    "from": "ordinance37.article.121",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.1"
+  },
+  {
+    "from": "ordinance37.article.121",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.2"
+  },
+  {
+    "from": "ordinance37.article.121",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.3"
+  },
+  {
+    "from": "ordinance37.article.121",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.4"
+  },
+  {
+    "from": "ordinance37.article.121",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.5"
+  },
+  {
+    "from": "ordinance37.article.121",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.6"
+  },
+  {
+    "from": "ordinance37.article.121",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.7"
+  },
+  {
+    "from": "ordinance37.article.121",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.8"
+  },
+  {
+    "from": "ordinance37.article.121.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.121.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.121.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.121.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.121.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.121.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.121.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.122",
+    "relation": "contains",
+    "to": "ordinance37.article.122.p.1"
+  },
+  {
+    "from": "ordinance37.article.123",
+    "relation": "contains",
+    "to": "ordinance37.article.123.p.1"
+  },
+  {
+    "from": "ordinance37.article.123",
+    "relation": "contains",
+    "to": "ordinance37.article.123.p.2"
+  },
+  {
+    "from": "ordinance37.article.123",
+    "relation": "contains",
+    "to": "ordinance37.article.123.p.3"
+  },
+  {
+    "from": "ordinance37.article.124",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.1"
+  },
+  {
+    "from": "ordinance37.article.124",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.2"
+  },
+  {
+    "from": "ordinance37.article.124",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3"
+  },
+  {
+    "from": "ordinance37.article.124",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.4"
+  },
+  {
+    "from": "ordinance37.article.124",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.5"
+  },
+  {
+    "from": "ordinance37.article.124",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6"
+  },
+  {
+    "from": "ordinance37.article.124",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.7"
+  },
+  {
+    "from": "ordinance37.article.124",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.8"
+  },
+  {
+    "from": "ordinance37.article.124.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.124.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.124.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.1.i.2.s1.1"
+  },
+  {
+    "from": "ordinance37.article.124.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.1.i.2.s1.2"
+  },
+  {
+    "from": "ordinance37.article.124.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.1.i.2.s1.3"
+  },
+  {
+    "from": "ordinance37.article.124.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.124.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.124.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.10"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.11"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.12"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.13"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.14"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.15"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.4"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.5"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.6"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.7"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.8"
+  },
+  {
+    "from": "ordinance37.article.124.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.3.i.9"
+  },
+  {
+    "from": "ordinance37.article.124.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.1"
+  },
+  {
+    "from": "ordinance37.article.124.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.2"
+  },
+  {
+    "from": "ordinance37.article.124.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.3"
+  },
+  {
+    "from": "ordinance37.article.124.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.4"
+  },
+  {
+    "from": "ordinance37.article.124.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.5"
+  },
+  {
+    "from": "ordinance37.article.124.p.6.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.124.p.6.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.124.p.6.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.1.s1.3"
+  },
+  {
+    "from": "ordinance37.article.124.p.6.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.2.s1.1"
+  },
+  {
+    "from": "ordinance37.article.124.p.6.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.6.i.2.s1.2"
+  },
+  {
+    "from": "ordinance37.article.124.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.7.i.1"
+  },
+  {
+    "from": "ordinance37.article.124.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.7.i.2"
+  },
+  {
+    "from": "ordinance37.article.124.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.7.i.3"
+  },
+  {
+    "from": "ordinance37.article.124.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.7.i.4"
+  },
+  {
+    "from": "ordinance37.article.124.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.124.p.7.i.5"
+  },
+  {
+    "from": "ordinance37.article.125",
+    "relation": "contains",
+    "to": "ordinance37.article.125.p.1"
+  },
+  {
+    "from": "ordinance37.article.125",
+    "relation": "contains",
+    "to": "ordinance37.article.125.p.2"
+  },
+  {
+    "from": "ordinance37.article.126",
+    "relation": "contains",
+    "to": "ordinance37.article.126.p.1"
+  },
+  {
+    "from": "ordinance37.article.126",
+    "relation": "contains",
+    "to": "ordinance37.article.126.p.2"
+  },
+  {
+    "from": "ordinance37.article.127",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.1"
+  },
+  {
+    "from": "ordinance37.article.127",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.2"
+  },
+  {
+    "from": "ordinance37.article.127",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.3"
+  },
+  {
+    "from": "ordinance37.article.127",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.4"
+  },
+  {
+    "from": "ordinance37.article.127",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.5"
+  },
+  {
+    "from": "ordinance37.article.127.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.127.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.127.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.127.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.3.i.4"
+  },
+  {
+    "from": "ordinance37.article.127.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.3.i.5"
+  },
+  {
+    "from": "ordinance37.article.127.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.3.i.6"
+  },
+  {
+    "from": "ordinance37.article.127.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.127.p.3.i.7"
+  },
+  {
+    "from": "ordinance37.article.128",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.1"
+  },
+  {
+    "from": "ordinance37.article.128",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.2"
+  },
+  {
+    "from": "ordinance37.article.128",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.3"
+  },
+  {
+    "from": "ordinance37.article.128",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.4"
+  },
+  {
+    "from": "ordinance37.article.128",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.5"
+  },
+  {
+    "from": "ordinance37.article.128",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.6"
+  },
+  {
+    "from": "ordinance37.article.128",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.7"
+  },
+  {
+    "from": "ordinance37.article.128.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.6.i.1"
+  },
+  {
+    "from": "ordinance37.article.128.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.6.i.2"
+  },
+  {
+    "from": "ordinance37.article.128.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.128.p.6.i.3"
+  },
+  {
+    "from": "ordinance37.article.129",
+    "relation": "contains",
+    "to": "ordinance37.article.129.p.1"
+  },
+  {
+    "from": "ordinance37.article.129",
+    "relation": "contains",
+    "to": "ordinance37.article.129.p.2"
+  },
+  {
+    "from": "ordinance37.article.129",
+    "relation": "contains",
+    "to": "ordinance37.article.129.p.3"
+  },
+  {
+    "from": "ordinance37.article.129",
+    "relation": "contains",
+    "to": "ordinance37.article.129.p.4"
+  },
+  {
     "from": "ordinance37.article.13",
     "relation": "contains",
     "to": "ordinance37.article.13.p.1"
+  },
+  {
+    "from": "ordinance37.article.130",
+    "relation": "contains",
+    "to": "ordinance37.article.130.p.1"
+  },
+  {
+    "from": "ordinance37.article.130",
+    "relation": "contains",
+    "to": "ordinance37.article.130.p.2"
+  },
+  {
+    "from": "ordinance37.article.130",
+    "relation": "contains",
+    "to": "ordinance37.article.130.p.3"
+  },
+  {
+    "from": "ordinance37.article.130",
+    "relation": "contains",
+    "to": "ordinance37.article.130.p.4"
+  },
+  {
+    "from": "ordinance37.article.130",
+    "relation": "contains",
+    "to": "ordinance37.article.130.p.5"
+  },
+  {
+    "from": "ordinance37.article.130",
+    "relation": "contains",
+    "to": "ordinance37.article.130.p.6"
+  },
+  {
+    "from": "ordinance37.article.130",
+    "relation": "contains",
+    "to": "ordinance37.article.130.p.7"
+  },
+  {
+    "from": "ordinance37.article.131",
+    "relation": "contains",
+    "to": "ordinance37.article.131.p.1"
+  },
+  {
+    "from": "ordinance37.article.131",
+    "relation": "contains",
+    "to": "ordinance37.article.131.p.2"
+  },
+  {
+    "from": "ordinance37.article.132",
+    "relation": "contains",
+    "to": "ordinance37.article.132.p.1"
+  },
+  {
+    "from": "ordinance37.article.133",
+    "relation": "contains",
+    "to": "ordinance37.article.133.p.1"
+  },
+  {
+    "from": "ordinance37.article.134",
+    "relation": "contains",
+    "to": "ordinance37.article.134.p.1"
+  },
+  {
+    "from": "ordinance37.article.135",
+    "relation": "contains",
+    "to": "ordinance37.article.135.p.1"
+  },
+  {
+    "from": "ordinance37.article.135",
+    "relation": "contains",
+    "to": "ordinance37.article.135.p.2"
+  },
+  {
+    "from": "ordinance37.article.136",
+    "relation": "contains",
+    "to": "ordinance37.article.136.p.1"
+  },
+  {
+    "from": "ordinance37.article.137",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.10"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.137.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.137.p.1.i.9"
+  },
+  {
+    "from": "ordinance37.article.138",
+    "relation": "contains",
+    "to": "ordinance37.article.138.p.1"
+  },
+  {
+    "from": "ordinance37.article.138",
+    "relation": "contains",
+    "to": "ordinance37.article.138.p.2"
+  },
+  {
+    "from": "ordinance37.article.138.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.138.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.138.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.138.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.139",
+    "relation": "contains",
+    "to": "ordinance37.article.139.p.1"
+  },
+  {
+    "from": "ordinance37.article.139-2",
+    "relation": "contains",
+    "to": "ordinance37.article.139-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.139-3",
+    "relation": "contains",
+    "to": "ordinance37.article.139-3.p.1"
+  },
+  {
+    "from": "ordinance37.article.139-3",
+    "relation": "contains",
+    "to": "ordinance37.article.139-3.p.2"
+  },
+  {
+    "from": "ordinance37.article.139-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.139-3.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.139-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.139-3.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.139-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.139-3.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.139-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.139-3.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.139-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.139-3.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.139-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.139-3.p.2.i.6"
   },
   {
     "from": "ordinance37.article.14",
@@ -645,9 +1505,1814 @@
     "to": "ordinance37.article.14.p.2"
   },
   {
+    "from": "ordinance37.article.140",
+    "relation": "contains",
+    "to": "ordinance37.article.140.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-10",
+    "relation": "contains",
+    "to": "ordinance37.article.140-10.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-10",
+    "relation": "contains",
+    "to": "ordinance37.article.140-10.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-11",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-11-2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-11-2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-11-2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.3"
+  },
+  {
+    "from": "ordinance37.article.140-11-2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.4"
+  },
+  {
+    "from": "ordinance37.article.140-11-2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.5"
+  },
+  {
+    "from": "ordinance37.article.140-11-2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.6"
+  },
+  {
+    "from": "ordinance37.article.140-11-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-11-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-11-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11-2.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.10"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.11"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.140-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-11.p.1.i.9"
+  },
+  {
+    "from": "ordinance37.article.140-12",
+    "relation": "contains",
+    "to": "ordinance37.article.140-12.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-12.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-12.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-12.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-12.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-13",
+    "relation": "contains",
+    "to": "ordinance37.article.140-13.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-14",
+    "relation": "contains",
+    "to": "ordinance37.article.140-14.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-14.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-14.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-14.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-14.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-14.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-14.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-15",
+    "relation": "contains",
+    "to": "ordinance37.article.140-15.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-16:140-25",
+    "relation": "contains",
+    "to": "ordinance37.article.140-16:140-25.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-26",
+    "relation": "contains",
+    "to": "ordinance37.article.140-26.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-27",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-27",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-27",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.3"
+  },
+  {
+    "from": "ordinance37.article.140-27",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.4"
+  },
+  {
+    "from": "ordinance37.article.140-27",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.5"
+  },
+  {
+    "from": "ordinance37.article.140-27.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-27.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-27.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-27.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.140-27.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-27.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.140-28",
+    "relation": "contains",
+    "to": "ordinance37.article.140-28.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-29",
+    "relation": "contains",
+    "to": "ordinance37.article.140-29.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-29",
+    "relation": "contains",
+    "to": "ordinance37.article.140-29.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-3.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-30",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-30",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-30",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.3"
+  },
+  {
+    "from": "ordinance37.article.140-30",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.4"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.1.i.9"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.1.s1.3"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.2.s1.1"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.2.s1.2"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2.i.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.3.s1.1"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2.i.4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.4.s1.1"
+  },
+  {
+    "from": "ordinance37.article.140-30.p.2.i.5",
+    "relation": "contains",
+    "to": "ordinance37.article.140-30.p.2.i.5.s1.1"
+  },
+  {
+    "from": "ordinance37.article.140-31",
+    "relation": "contains",
+    "to": "ordinance37.article.140-31.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-32",
+    "relation": "contains",
+    "to": "ordinance37.article.140-32.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.3"
+  },
+  {
+    "from": "ordinance37.article.140-4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.4"
+  },
+  {
+    "from": "ordinance37.article.140-4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.5"
+  },
+  {
+    "from": "ordinance37.article.140-4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6"
+  },
+  {
+    "from": "ordinance37.article.140-4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.7"
+  },
+  {
+    "from": "ordinance37.article.140-4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.8"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.1.i.2.s1.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.1.i.2.s1.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.1.i.2.s1.3"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.3.i.4"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.3.i.5"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.3.i.6"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.3.i.7"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.3"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.4"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.1.s2.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.1.s2.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.1.s2.3"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.1.s2.4"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.2.s2.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.2.s2.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.2",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.2.s2.3"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.3.s2.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.3.s2.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.4.s2.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.6.i.1.s1.4",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.6.i.1.s1.4.s2.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.7.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.7.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.7.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.7.i.4"
+  },
+  {
+    "from": "ordinance37.article.140-4.p.7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-4.p.7.i.5"
+  },
+  {
+    "from": "ordinance37.article.140-5",
+    "relation": "contains",
+    "to": "ordinance37.article.140-5.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-6",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-6",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-6",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.3"
+  },
+  {
+    "from": "ordinance37.article.140-6",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.4"
+  },
+  {
+    "from": "ordinance37.article.140-6",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.5"
+  },
+  {
+    "from": "ordinance37.article.140-6.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-6.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-6.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-6.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.3.i.4"
+  },
+  {
+    "from": "ordinance37.article.140-6.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.3.i.5"
+  },
+  {
+    "from": "ordinance37.article.140-6.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.3.i.6"
+  },
+  {
+    "from": "ordinance37.article.140-6.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.140-6.p.3.i.7"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.3"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.4"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.5"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.6"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.7"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.8"
+  },
+  {
+    "from": "ordinance37.article.140-7",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.9"
+  },
+  {
+    "from": "ordinance37.article.140-7.p.8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.8.i.1"
+  },
+  {
+    "from": "ordinance37.article.140-7.p.8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.8.i.2"
+  },
+  {
+    "from": "ordinance37.article.140-7.p.8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-7.p.8.i.3"
+  },
+  {
+    "from": "ordinance37.article.140-8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-8.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-8.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-8.p.3"
+  },
+  {
+    "from": "ordinance37.article.140-8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-8.p.4"
+  },
+  {
+    "from": "ordinance37.article.140-8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-8.p.5"
+  },
+  {
+    "from": "ordinance37.article.140-8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-8.p.6"
+  },
+  {
+    "from": "ordinance37.article.140-8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-8.p.7"
+  },
+  {
+    "from": "ordinance37.article.140-8",
+    "relation": "contains",
+    "to": "ordinance37.article.140-8.p.8"
+  },
+  {
+    "from": "ordinance37.article.140-9",
+    "relation": "contains",
+    "to": "ordinance37.article.140-9.p.1"
+  },
+  {
+    "from": "ordinance37.article.140-9",
+    "relation": "contains",
+    "to": "ordinance37.article.140-9.p.2"
+  },
+  {
+    "from": "ordinance37.article.140-9",
+    "relation": "contains",
+    "to": "ordinance37.article.140-9.p.3"
+  },
+  {
+    "from": "ordinance37.article.140-9",
+    "relation": "contains",
+    "to": "ordinance37.article.140-9.p.4"
+  },
+  {
+    "from": "ordinance37.article.141",
+    "relation": "contains",
+    "to": "ordinance37.article.141.p.1"
+  },
+  {
+    "from": "ordinance37.article.142",
+    "relation": "contains",
+    "to": "ordinance37.article.142.p.1"
+  },
+  {
+    "from": "ordinance37.article.142",
+    "relation": "contains",
+    "to": "ordinance37.article.142.p.2"
+  },
+  {
+    "from": "ordinance37.article.142.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.142.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.142.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.142.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.142.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.142.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.142.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.142.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.143",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.1"
+  },
+  {
+    "from": "ordinance37.article.143",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.2"
+  },
+  {
+    "from": "ordinance37.article.143",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.3"
+  },
+  {
+    "from": "ordinance37.article.143.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.143.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.143.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.143.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.143.p.1.i.3",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.1.i.3.s1.1"
+  },
+  {
+    "from": "ordinance37.article.143.p.1.i.3",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.1.i.3.s1.2"
+  },
+  {
+    "from": "ordinance37.article.143.p.1.i.3",
+    "relation": "contains",
+    "to": "ordinance37.article.143.p.1.i.3.s1.3"
+  },
+  {
+    "from": "ordinance37.article.144",
+    "relation": "contains",
+    "to": "ordinance37.article.144.p.1"
+  },
+  {
+    "from": "ordinance37.article.145",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.1"
+  },
+  {
+    "from": "ordinance37.article.145",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.2"
+  },
+  {
+    "from": "ordinance37.article.145",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.3"
+  },
+  {
+    "from": "ordinance37.article.145",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.4"
+  },
+  {
+    "from": "ordinance37.article.145",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.5"
+  },
+  {
+    "from": "ordinance37.article.145.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.145.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.145.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.145.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.3.i.4"
+  },
+  {
+    "from": "ordinance37.article.145.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.3.i.5"
+  },
+  {
+    "from": "ordinance37.article.145.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.3.i.6"
+  },
+  {
+    "from": "ordinance37.article.145.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.145.p.3.i.7"
+  },
+  {
+    "from": "ordinance37.article.146",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.1"
+  },
+  {
+    "from": "ordinance37.article.146",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.2"
+  },
+  {
+    "from": "ordinance37.article.146",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.3"
+  },
+  {
+    "from": "ordinance37.article.146",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.4"
+  },
+  {
+    "from": "ordinance37.article.146",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.5"
+  },
+  {
+    "from": "ordinance37.article.146",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.6"
+  },
+  {
+    "from": "ordinance37.article.146",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.7"
+  },
+  {
+    "from": "ordinance37.article.146.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.6.i.1"
+  },
+  {
+    "from": "ordinance37.article.146.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.6.i.2"
+  },
+  {
+    "from": "ordinance37.article.146.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.146.p.6.i.3"
+  },
+  {
+    "from": "ordinance37.article.147",
+    "relation": "contains",
+    "to": "ordinance37.article.147.p.1"
+  },
+  {
+    "from": "ordinance37.article.147",
+    "relation": "contains",
+    "to": "ordinance37.article.147.p.2"
+  },
+  {
+    "from": "ordinance37.article.147",
+    "relation": "contains",
+    "to": "ordinance37.article.147.p.3"
+  },
+  {
+    "from": "ordinance37.article.147",
+    "relation": "contains",
+    "to": "ordinance37.article.147.p.4"
+  },
+  {
+    "from": "ordinance37.article.148",
+    "relation": "contains",
+    "to": "ordinance37.article.148.p.1"
+  },
+  {
+    "from": "ordinance37.article.148.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.148.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.148.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.148.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.148.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.148.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.148.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.148.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.148.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.148.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.148.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.148.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.148.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.148.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.149",
+    "relation": "contains",
+    "to": "ordinance37.article.149.p.1"
+  },
+  {
     "from": "ordinance37.article.15",
     "relation": "contains",
     "to": "ordinance37.article.15.p.1"
+  },
+  {
+    "from": "ordinance37.article.150",
+    "relation": "contains",
+    "to": "ordinance37.article.150.p.1"
+  },
+  {
+    "from": "ordinance37.article.150",
+    "relation": "contains",
+    "to": "ordinance37.article.150.p.2"
+  },
+  {
+    "from": "ordinance37.article.150",
+    "relation": "contains",
+    "to": "ordinance37.article.150.p.3"
+  },
+  {
+    "from": "ordinance37.article.150",
+    "relation": "contains",
+    "to": "ordinance37.article.150.p.4"
+  },
+  {
+    "from": "ordinance37.article.150",
+    "relation": "contains",
+    "to": "ordinance37.article.150.p.5"
+  },
+  {
+    "from": "ordinance37.article.150",
+    "relation": "contains",
+    "to": "ordinance37.article.150.p.6"
+  },
+  {
+    "from": "ordinance37.article.151",
+    "relation": "contains",
+    "to": "ordinance37.article.151.p.1"
+  },
+  {
+    "from": "ordinance37.article.151",
+    "relation": "contains",
+    "to": "ordinance37.article.151.p.2"
+  },
+  {
+    "from": "ordinance37.article.152",
+    "relation": "contains",
+    "to": "ordinance37.article.152.p.1"
+  },
+  {
+    "from": "ordinance37.article.152",
+    "relation": "contains",
+    "to": "ordinance37.article.152.p.2"
+  },
+  {
+    "from": "ordinance37.article.153",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1"
+  },
+  {
+    "from": "ordinance37.article.153.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.153.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.153.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.153.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.153.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.153.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.153.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.153.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.153.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.154",
+    "relation": "contains",
+    "to": "ordinance37.article.154.p.1"
+  },
+  {
+    "from": "ordinance37.article.154-2",
+    "relation": "contains",
+    "to": "ordinance37.article.154-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.154-2",
+    "relation": "contains",
+    "to": "ordinance37.article.154-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.154-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.154-2.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.154-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.154-2.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.154-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.154-2.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.154-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.154-2.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.154-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.154-2.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.154-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.154-2.p.2.i.6"
+  },
+  {
+    "from": "ordinance37.article.154.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.154.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.154.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.154.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.154.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.154.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.154.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.154.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.155",
+    "relation": "contains",
+    "to": "ordinance37.article.155.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-10",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-10-2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-10-2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.155-10-2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.3"
+  },
+  {
+    "from": "ordinance37.article.155-10-2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.4"
+  },
+  {
+    "from": "ordinance37.article.155-10-2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.5"
+  },
+  {
+    "from": "ordinance37.article.155-10-2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.6"
+  },
+  {
+    "from": "ordinance37.article.155-10-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.155-10-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.155-10-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10-2.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.155-10.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.155-10.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.155-10.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.155-10.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.155-10.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.155-10.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.155-10.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.155-10.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-10.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.155-11",
+    "relation": "contains",
+    "to": "ordinance37.article.155-11.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-11.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.155-11.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-11.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.155-12",
+    "relation": "contains",
+    "to": "ordinance37.article.155-12.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-3.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2"
+  },
+  {
+    "from": "ordinance37.article.155-4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3"
+  },
+  {
+    "from": "ordinance37.article.155-4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.4"
+  },
+  {
+    "from": "ordinance37.article.155-4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.5"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.4"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.4"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1.s3.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1.s3.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1.s3.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.1.s3.4"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.2.s3.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.2.s3.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.2.s3.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.3.s3.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.3.s3.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.4.s3.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.2.i.2.s1.1.s2.4.s3.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.4"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.5"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.4"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.4"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1.s3.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1.s3.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1.s3.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.1.s3.4"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.2.s3.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.2.s3.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.2",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.2.s3.3"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.3.s3.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.3.s3.2"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.4.s3.1"
+  },
+  {
+    "from": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.4",
+    "relation": "contains",
+    "to": "ordinance37.article.155-4.p.3.i.2.s1.1.s2.4.s3.2"
+  },
+  {
+    "from": "ordinance37.article.155-5",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-5",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.2"
+  },
+  {
+    "from": "ordinance37.article.155-5",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.3"
+  },
+  {
+    "from": "ordinance37.article.155-5",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.4"
+  },
+  {
+    "from": "ordinance37.article.155-5",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.5"
+  },
+  {
+    "from": "ordinance37.article.155-5.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.155-5.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.155-5.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.155-5.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.3.i.4"
+  },
+  {
+    "from": "ordinance37.article.155-5.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.3.i.5"
+  },
+  {
+    "from": "ordinance37.article.155-5.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.3.i.6"
+  },
+  {
+    "from": "ordinance37.article.155-5.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.155-5.p.3.i.7"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.2"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.3"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.4"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.5"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.6"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.7"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.8"
+  },
+  {
+    "from": "ordinance37.article.155-6",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.9"
+  },
+  {
+    "from": "ordinance37.article.155-6.p.8",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.8.i.1"
+  },
+  {
+    "from": "ordinance37.article.155-6.p.8",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.8.i.2"
+  },
+  {
+    "from": "ordinance37.article.155-6.p.8",
+    "relation": "contains",
+    "to": "ordinance37.article.155-6.p.8.i.3"
+  },
+  {
+    "from": "ordinance37.article.155-7",
+    "relation": "contains",
+    "to": "ordinance37.article.155-7.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-7",
+    "relation": "contains",
+    "to": "ordinance37.article.155-7.p.2"
+  },
+  {
+    "from": "ordinance37.article.155-7",
+    "relation": "contains",
+    "to": "ordinance37.article.155-7.p.3"
+  },
+  {
+    "from": "ordinance37.article.155-7",
+    "relation": "contains",
+    "to": "ordinance37.article.155-7.p.4"
+  },
+  {
+    "from": "ordinance37.article.155-7",
+    "relation": "contains",
+    "to": "ordinance37.article.155-7.p.5"
+  },
+  {
+    "from": "ordinance37.article.155-7",
+    "relation": "contains",
+    "to": "ordinance37.article.155-7.p.6"
+  },
+  {
+    "from": "ordinance37.article.155-7",
+    "relation": "contains",
+    "to": "ordinance37.article.155-7.p.7"
+  },
+  {
+    "from": "ordinance37.article.155-8",
+    "relation": "contains",
+    "to": "ordinance37.article.155-8.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-8",
+    "relation": "contains",
+    "to": "ordinance37.article.155-8.p.2"
+  },
+  {
+    "from": "ordinance37.article.155-8",
+    "relation": "contains",
+    "to": "ordinance37.article.155-8.p.3"
+  },
+  {
+    "from": "ordinance37.article.155-8",
+    "relation": "contains",
+    "to": "ordinance37.article.155-8.p.4"
+  },
+  {
+    "from": "ordinance37.article.155-9",
+    "relation": "contains",
+    "to": "ordinance37.article.155-9.p.1"
+  },
+  {
+    "from": "ordinance37.article.155-9",
+    "relation": "contains",
+    "to": "ordinance37.article.155-9.p.2"
+  },
+  {
+    "from": "ordinance37.article.156:173",
+    "relation": "contains",
+    "to": "ordinance37.article.156:173.p.1"
   },
   {
     "from": "ordinance37.article.16",
@@ -660,9 +3325,579 @@
     "to": "ordinance37.article.17.p.1"
   },
   {
+    "from": "ordinance37.article.174",
+    "relation": "contains",
+    "to": "ordinance37.article.174.p.1"
+  },
+  {
+    "from": "ordinance37.article.174",
+    "relation": "contains",
+    "to": "ordinance37.article.174.p.2"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.3"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.4"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.5"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.6"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.7"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.8"
+  },
+  {
+    "from": "ordinance37.article.175",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9"
+  },
+  {
+    "from": "ordinance37.article.175.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.175.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.175.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.175.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.175.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.2.s1.1"
+  },
+  {
+    "from": "ordinance37.article.175.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.2.s1.2"
+  },
+  {
+    "from": "ordinance37.article.175.p.1.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.2.s1.3"
+  },
+  {
+    "from": "ordinance37.article.175.p.1.i.2.s1.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.2.s1.2.s2.1"
+  },
+  {
+    "from": "ordinance37.article.175.p.1.i.2.s1.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.1.i.2.s1.2.s2.2"
+  },
+  {
+    "from": "ordinance37.article.175.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.175.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.175.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.175.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.175.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.2.s1.1"
+  },
+  {
+    "from": "ordinance37.article.175.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.2.s1.2"
+  },
+  {
+    "from": "ordinance37.article.175.p.2.i.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.2.s1.3"
+  },
+  {
+    "from": "ordinance37.article.175.p.2.i.2.s1.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.2.s1.2.s2.1"
+  },
+  {
+    "from": "ordinance37.article.175.p.2.i.2.s1.2",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.2.i.2.s1.2.s2.2"
+  },
+  {
+    "from": "ordinance37.article.175.p.9",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.1"
+  },
+  {
+    "from": "ordinance37.article.175.p.9",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.2"
+  },
+  {
+    "from": "ordinance37.article.175.p.9",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.3"
+  },
+  {
+    "from": "ordinance37.article.175.p.9",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.4"
+  },
+  {
+    "from": "ordinance37.article.175.p.9.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.175.p.9.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.175.p.9.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.1.s1.3"
+  },
+  {
+    "from": "ordinance37.article.175.p.9.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.1.s1.4"
+  },
+  {
+    "from": "ordinance37.article.175.p.9.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.175.p.9.i.1.s1.5"
+  },
+  {
+    "from": "ordinance37.article.176",
+    "relation": "contains",
+    "to": "ordinance37.article.176.p.1"
+  },
+  {
+    "from": "ordinance37.article.177",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.1"
+  },
+  {
+    "from": "ordinance37.article.177",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.2"
+  },
+  {
+    "from": "ordinance37.article.177",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.3"
+  },
+  {
+    "from": "ordinance37.article.177",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4"
+  },
+  {
+    "from": "ordinance37.article.177",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.5"
+  },
+  {
+    "from": "ordinance37.article.177",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.6"
+  },
+  {
+    "from": "ordinance37.article.177",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.7"
+  },
+  {
+    "from": "ordinance37.article.177",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.8"
+  },
+  {
+    "from": "ordinance37.article.177.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.177.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.177.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.177.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.1"
+  },
+  {
+    "from": "ordinance37.article.177.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.2"
+  },
+  {
+    "from": "ordinance37.article.177.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.3"
+  },
+  {
+    "from": "ordinance37.article.177.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.4"
+  },
+  {
+    "from": "ordinance37.article.177.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.5"
+  },
+  {
+    "from": "ordinance37.article.177.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.6"
+  },
+  {
+    "from": "ordinance37.article.177.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.177.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.177.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.1.s1.3"
+  },
+  {
+    "from": "ordinance37.article.177.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.177.p.4.i.1.s1.4"
+  },
+  {
+    "from": "ordinance37.article.178",
+    "relation": "contains",
+    "to": "ordinance37.article.178.p.1"
+  },
+  {
+    "from": "ordinance37.article.178",
+    "relation": "contains",
+    "to": "ordinance37.article.178.p.2"
+  },
+  {
+    "from": "ordinance37.article.178",
+    "relation": "contains",
+    "to": "ordinance37.article.178.p.3"
+  },
+  {
+    "from": "ordinance37.article.178",
+    "relation": "contains",
+    "to": "ordinance37.article.178.p.4"
+  },
+  {
+    "from": "ordinance37.article.179",
+    "relation": "contains",
+    "to": "ordinance37.article.179.p.1"
+  },
+  {
+    "from": "ordinance37.article.179",
+    "relation": "contains",
+    "to": "ordinance37.article.179.p.2"
+  },
+  {
+    "from": "ordinance37.article.179",
+    "relation": "contains",
+    "to": "ordinance37.article.179.p.3"
+  },
+  {
+    "from": "ordinance37.article.179",
+    "relation": "contains",
+    "to": "ordinance37.article.179.p.4"
+  },
+  {
     "from": "ordinance37.article.18",
     "relation": "contains",
     "to": "ordinance37.article.18.p.1"
+  },
+  {
+    "from": "ordinance37.article.180",
+    "relation": "contains",
+    "to": "ordinance37.article.180.p.1"
+  },
+  {
+    "from": "ordinance37.article.181",
+    "relation": "contains",
+    "to": "ordinance37.article.181.p.1"
+  },
+  {
+    "from": "ordinance37.article.181",
+    "relation": "contains",
+    "to": "ordinance37.article.181.p.2"
+  },
+  {
+    "from": "ordinance37.article.182",
+    "relation": "contains",
+    "to": "ordinance37.article.182.p.1"
+  },
+  {
+    "from": "ordinance37.article.182",
+    "relation": "contains",
+    "to": "ordinance37.article.182.p.2"
+  },
+  {
+    "from": "ordinance37.article.182",
+    "relation": "contains",
+    "to": "ordinance37.article.182.p.3"
+  },
+  {
+    "from": "ordinance37.article.182",
+    "relation": "contains",
+    "to": "ordinance37.article.182.p.4"
+  },
+  {
+    "from": "ordinance37.article.182.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.182.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.182.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.182.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.182.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.182.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.183",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.1"
+  },
+  {
+    "from": "ordinance37.article.183",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.2"
+  },
+  {
+    "from": "ordinance37.article.183",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.3"
+  },
+  {
+    "from": "ordinance37.article.183",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.4"
+  },
+  {
+    "from": "ordinance37.article.183",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.5"
+  },
+  {
+    "from": "ordinance37.article.183",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.6"
+  },
+  {
+    "from": "ordinance37.article.183",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.7"
+  },
+  {
+    "from": "ordinance37.article.183.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.6.i.1"
+  },
+  {
+    "from": "ordinance37.article.183.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.6.i.2"
+  },
+  {
+    "from": "ordinance37.article.183.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.183.p.6.i.3"
+  },
+  {
+    "from": "ordinance37.article.184",
+    "relation": "contains",
+    "to": "ordinance37.article.184.p.1"
+  },
+  {
+    "from": "ordinance37.article.184",
+    "relation": "contains",
+    "to": "ordinance37.article.184.p.2"
+  },
+  {
+    "from": "ordinance37.article.184",
+    "relation": "contains",
+    "to": "ordinance37.article.184.p.3"
+  },
+  {
+    "from": "ordinance37.article.184",
+    "relation": "contains",
+    "to": "ordinance37.article.184.p.4"
+  },
+  {
+    "from": "ordinance37.article.184",
+    "relation": "contains",
+    "to": "ordinance37.article.184.p.5"
+  },
+  {
+    "from": "ordinance37.article.184",
+    "relation": "contains",
+    "to": "ordinance37.article.184.p.6"
+  },
+  {
+    "from": "ordinance37.article.184",
+    "relation": "contains",
+    "to": "ordinance37.article.184.p.7"
+  },
+  {
+    "from": "ordinance37.article.185",
+    "relation": "contains",
+    "to": "ordinance37.article.185.p.1"
+  },
+  {
+    "from": "ordinance37.article.185",
+    "relation": "contains",
+    "to": "ordinance37.article.185.p.2"
+  },
+  {
+    "from": "ordinance37.article.185",
+    "relation": "contains",
+    "to": "ordinance37.article.185.p.3"
+  },
+  {
+    "from": "ordinance37.article.185",
+    "relation": "contains",
+    "to": "ordinance37.article.185.p.4"
+  },
+  {
+    "from": "ordinance37.article.185-2",
+    "relation": "contains",
+    "to": "ordinance37.article.185-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.186",
+    "relation": "contains",
+    "to": "ordinance37.article.186.p.1"
+  },
+  {
+    "from": "ordinance37.article.187",
+    "relation": "contains",
+    "to": "ordinance37.article.187.p.1"
+  },
+  {
+    "from": "ordinance37.article.188",
+    "relation": "contains",
+    "to": "ordinance37.article.188.p.1"
+  },
+  {
+    "from": "ordinance37.article.189",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.10"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.189.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.189.p.1.i.9"
   },
   {
     "from": "ordinance37.article.19",
@@ -673,6 +3908,776 @@
     "from": "ordinance37.article.19",
     "relation": "contains",
     "to": "ordinance37.article.19.p.2"
+  },
+  {
+    "from": "ordinance37.article.190",
+    "relation": "contains",
+    "to": "ordinance37.article.190.p.1"
+  },
+  {
+    "from": "ordinance37.article.190",
+    "relation": "contains",
+    "to": "ordinance37.article.190.p.2"
+  },
+  {
+    "from": "ordinance37.article.190",
+    "relation": "contains",
+    "to": "ordinance37.article.190.p.3"
+  },
+  {
+    "from": "ordinance37.article.190",
+    "relation": "contains",
+    "to": "ordinance37.article.190.p.4"
+  },
+  {
+    "from": "ordinance37.article.190",
+    "relation": "contains",
+    "to": "ordinance37.article.190.p.5"
+  },
+  {
+    "from": "ordinance37.article.191",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.1"
+  },
+  {
+    "from": "ordinance37.article.191",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.2"
+  },
+  {
+    "from": "ordinance37.article.191",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.3"
+  },
+  {
+    "from": "ordinance37.article.191",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.4"
+  },
+  {
+    "from": "ordinance37.article.191",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.5"
+  },
+  {
+    "from": "ordinance37.article.191",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.6"
+  },
+  {
+    "from": "ordinance37.article.191",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.7"
+  },
+  {
+    "from": "ordinance37.article.191-2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.191-2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.191-3",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.1"
+  },
+  {
+    "from": "ordinance37.article.191-3",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.2"
+  },
+  {
+    "from": "ordinance37.article.191-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.191-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.191-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.191-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.191-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.191-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.2.i.6"
+  },
+  {
+    "from": "ordinance37.article.191-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191-3.p.2.i.7"
+  },
+  {
+    "from": "ordinance37.article.191.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.191.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.191.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.192",
+    "relation": "contains",
+    "to": "ordinance37.article.192.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-10",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-10",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.2"
+  },
+  {
+    "from": "ordinance37.article.192-10",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.3"
+  },
+  {
+    "from": "ordinance37.article.192-10",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.4"
+  },
+  {
+    "from": "ordinance37.article.192-10",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.5"
+  },
+  {
+    "from": "ordinance37.article.192-10",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.6"
+  },
+  {
+    "from": "ordinance37.article.192-10",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.7"
+  },
+  {
+    "from": "ordinance37.article.192-10",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.8"
+  },
+  {
+    "from": "ordinance37.article.192-10.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.4.i.1"
+  },
+  {
+    "from": "ordinance37.article.192-10.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.4.i.2"
+  },
+  {
+    "from": "ordinance37.article.192-10.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-10.p.4.i.3"
+  },
+  {
+    "from": "ordinance37.article.192-11",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-11",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.6"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.7"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.8"
+  },
+  {
+    "from": "ordinance37.article.192-11.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-11.p.2.i.9"
+  },
+  {
+    "from": "ordinance37.article.192-12",
+    "relation": "contains",
+    "to": "ordinance37.article.192-12.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-3",
+    "relation": "contains",
+    "to": "ordinance37.article.192-3.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-3",
+    "relation": "contains",
+    "to": "ordinance37.article.192-3.p.2"
+  },
+  {
+    "from": "ordinance37.article.192-4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.2"
+  },
+  {
+    "from": "ordinance37.article.192-4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.3"
+  },
+  {
+    "from": "ordinance37.article.192-4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.4"
+  },
+  {
+    "from": "ordinance37.article.192-4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.5"
+  },
+  {
+    "from": "ordinance37.article.192-4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.6"
+  },
+  {
+    "from": "ordinance37.article.192-4.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.192-4.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.192-4.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.192-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.192-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.192-4.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-4.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.192-5",
+    "relation": "contains",
+    "to": "ordinance37.article.192-5.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-6",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-6",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.2"
+  },
+  {
+    "from": "ordinance37.article.192-6",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.3"
+  },
+  {
+    "from": "ordinance37.article.192-6",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4"
+  },
+  {
+    "from": "ordinance37.article.192-6",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.5"
+  },
+  {
+    "from": "ordinance37.article.192-6",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.6"
+  },
+  {
+    "from": "ordinance37.article.192-6",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.7"
+  },
+  {
+    "from": "ordinance37.article.192-6",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.8"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.1"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.2"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.3"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.4"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.1.s1.3"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.1.s1.4"
+  },
+  {
+    "from": "ordinance37.article.192-6.p.4.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-6.p.4.i.1.s1.5"
+  },
+  {
+    "from": "ordinance37.article.192-7",
+    "relation": "contains",
+    "to": "ordinance37.article.192-7.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-7",
+    "relation": "contains",
+    "to": "ordinance37.article.192-7.p.2"
+  },
+  {
+    "from": "ordinance37.article.192-7",
+    "relation": "contains",
+    "to": "ordinance37.article.192-7.p.3"
+  },
+  {
+    "from": "ordinance37.article.192-7",
+    "relation": "contains",
+    "to": "ordinance37.article.192-7.p.4"
+  },
+  {
+    "from": "ordinance37.article.192-8",
+    "relation": "contains",
+    "to": "ordinance37.article.192-8.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-8",
+    "relation": "contains",
+    "to": "ordinance37.article.192-8.p.2"
+  },
+  {
+    "from": "ordinance37.article.192-9",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.10"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.11"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.192-9.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.192-9.p.1.i.9"
+  },
+  {
+    "from": "ordinance37.article.193",
+    "relation": "contains",
+    "to": "ordinance37.article.193.p.1"
+  },
+  {
+    "from": "ordinance37.article.194",
+    "relation": "contains",
+    "to": "ordinance37.article.194.p.1"
+  },
+  {
+    "from": "ordinance37.article.194",
+    "relation": "contains",
+    "to": "ordinance37.article.194.p.2"
+  },
+  {
+    "from": "ordinance37.article.194.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.194.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.194.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.194.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.194.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.194.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.195",
+    "relation": "contains",
+    "to": "ordinance37.article.195.p.1"
+  },
+  {
+    "from": "ordinance37.article.196",
+    "relation": "contains",
+    "to": "ordinance37.article.196.p.1"
+  },
+  {
+    "from": "ordinance37.article.196",
+    "relation": "contains",
+    "to": "ordinance37.article.196.p.2"
+  },
+  {
+    "from": "ordinance37.article.196",
+    "relation": "contains",
+    "to": "ordinance37.article.196.p.3"
+  },
+  {
+    "from": "ordinance37.article.196.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.196.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.196.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.196.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.196.p.2.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.196.p.2.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.196.p.2.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.196.p.2.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.197",
+    "relation": "contains",
+    "to": "ordinance37.article.197.p.1"
+  },
+  {
+    "from": "ordinance37.article.197",
+    "relation": "contains",
+    "to": "ordinance37.article.197.p.2"
+  },
+  {
+    "from": "ordinance37.article.197",
+    "relation": "contains",
+    "to": "ordinance37.article.197.p.3"
+  },
+  {
+    "from": "ordinance37.article.197",
+    "relation": "contains",
+    "to": "ordinance37.article.197.p.4"
+  },
+  {
+    "from": "ordinance37.article.197",
+    "relation": "contains",
+    "to": "ordinance37.article.197.p.5"
+  },
+  {
+    "from": "ordinance37.article.197.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.197.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.197.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.197.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.198",
+    "relation": "contains",
+    "to": "ordinance37.article.198.p.1"
+  },
+  {
+    "from": "ordinance37.article.198",
+    "relation": "contains",
+    "to": "ordinance37.article.198.p.2"
+  },
+  {
+    "from": "ordinance37.article.198",
+    "relation": "contains",
+    "to": "ordinance37.article.198.p.3"
+  },
+  {
+    "from": "ordinance37.article.199",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1"
+  },
+  {
+    "from": "ordinance37.article.199-2",
+    "relation": "contains",
+    "to": "ordinance37.article.199-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.199-2",
+    "relation": "contains",
+    "to": "ordinance37.article.199-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.199-2",
+    "relation": "contains",
+    "to": "ordinance37.article.199-2.p.3"
+  },
+  {
+    "from": "ordinance37.article.199-2",
+    "relation": "contains",
+    "to": "ordinance37.article.199-2.p.4"
+  },
+  {
+    "from": "ordinance37.article.199-2",
+    "relation": "contains",
+    "to": "ordinance37.article.199-2.p.5"
+  },
+  {
+    "from": "ordinance37.article.199-2",
+    "relation": "contains",
+    "to": "ordinance37.article.199-2.p.6"
+  },
+  {
+    "from": "ordinance37.article.199-2",
+    "relation": "contains",
+    "to": "ordinance37.article.199-2.p.7"
+  },
+  {
+    "from": "ordinance37.article.199-2",
+    "relation": "contains",
+    "to": "ordinance37.article.199-2.p.8"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.199.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.199.p.1.i.9"
+  },
+  {
+    "from": "ordinance37.article.2",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1"
+  },
+  {
+    "from": "ordinance37.article.2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.2.p.1.i.8"
   },
   {
     "from": "ordinance37.article.20",
@@ -695,9 +4700,419 @@
     "to": "ordinance37.article.20.p.4"
   },
   {
+    "from": "ordinance37.article.200",
+    "relation": "contains",
+    "to": "ordinance37.article.200.p.1"
+  },
+  {
+    "from": "ordinance37.article.200.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.200.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.200.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.200.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.200.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.200.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.200.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.200.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.200.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.200.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.200.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.200.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.200.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.200.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.201",
+    "relation": "contains",
+    "to": "ordinance37.article.201.p.1"
+  },
+  {
+    "from": "ordinance37.article.201",
+    "relation": "contains",
+    "to": "ordinance37.article.201.p.2"
+  },
+  {
+    "from": "ordinance37.article.202",
+    "relation": "contains",
+    "to": "ordinance37.article.202.p.1"
+  },
+  {
+    "from": "ordinance37.article.203",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.1"
+  },
+  {
+    "from": "ordinance37.article.203",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.2"
+  },
+  {
+    "from": "ordinance37.article.203",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.3"
+  },
+  {
+    "from": "ordinance37.article.203",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.4"
+  },
+  {
+    "from": "ordinance37.article.203",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.5"
+  },
+  {
+    "from": "ordinance37.article.203",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.6"
+  },
+  {
+    "from": "ordinance37.article.203.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.6.i.1"
+  },
+  {
+    "from": "ordinance37.article.203.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.6.i.2"
+  },
+  {
+    "from": "ordinance37.article.203.p.6",
+    "relation": "contains",
+    "to": "ordinance37.article.203.p.6.i.3"
+  },
+  {
+    "from": "ordinance37.article.204",
+    "relation": "contains",
+    "to": "ordinance37.article.204.p.1"
+  },
+  {
+    "from": "ordinance37.article.204",
+    "relation": "contains",
+    "to": "ordinance37.article.204.p.2"
+  },
+  {
+    "from": "ordinance37.article.204",
+    "relation": "contains",
+    "to": "ordinance37.article.204.p.3"
+  },
+  {
+    "from": "ordinance37.article.204",
+    "relation": "contains",
+    "to": "ordinance37.article.204.p.4"
+  },
+  {
+    "from": "ordinance37.article.204-2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.204-2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.204-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.204-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.204-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.204-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.204-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.204-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.2.i.6"
+  },
+  {
+    "from": "ordinance37.article.204-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.204-2.p.2.i.7"
+  },
+  {
+    "from": "ordinance37.article.205",
+    "relation": "contains",
+    "to": "ordinance37.article.205.p.1"
+  },
+  {
+    "from": "ordinance37.article.205-2",
+    "relation": "contains",
+    "to": "ordinance37.article.205-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.205-2",
+    "relation": "contains",
+    "to": "ordinance37.article.205-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.206",
+    "relation": "contains",
+    "to": "ordinance37.article.206.p.1"
+  },
+  {
+    "from": "ordinance37.article.207",
+    "relation": "contains",
+    "to": "ordinance37.article.207.p.1"
+  },
+  {
+    "from": "ordinance37.article.208",
+    "relation": "contains",
+    "to": "ordinance37.article.208.p.1"
+  },
+  {
+    "from": "ordinance37.article.208",
+    "relation": "contains",
+    "to": "ordinance37.article.208.p.2"
+  },
+  {
+    "from": "ordinance37.article.208.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.208.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.208.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.208.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.208.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.208.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.209",
+    "relation": "contains",
+    "to": "ordinance37.article.209.p.1"
+  },
+  {
     "from": "ordinance37.article.21",
     "relation": "contains",
     "to": "ordinance37.article.21.p.1"
+  },
+  {
+    "from": "ordinance37.article.210",
+    "relation": "contains",
+    "to": "ordinance37.article.210.p.1"
+  },
+  {
+    "from": "ordinance37.article.210",
+    "relation": "contains",
+    "to": "ordinance37.article.210.p.2"
+  },
+  {
+    "from": "ordinance37.article.211",
+    "relation": "contains",
+    "to": "ordinance37.article.211.p.1"
+  },
+  {
+    "from": "ordinance37.article.212",
+    "relation": "contains",
+    "to": "ordinance37.article.212.p.1"
+  },
+  {
+    "from": "ordinance37.article.212",
+    "relation": "contains",
+    "to": "ordinance37.article.212.p.2"
+  },
+  {
+    "from": "ordinance37.article.212",
+    "relation": "contains",
+    "to": "ordinance37.article.212.p.3"
+  },
+  {
+    "from": "ordinance37.article.212.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.212.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.212.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.212.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.213",
+    "relation": "contains",
+    "to": "ordinance37.article.213.p.1"
+  },
+  {
+    "from": "ordinance37.article.213.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.213.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.213.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.213.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.213.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.213.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.213.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.213.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.214",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1"
+  },
+  {
+    "from": "ordinance37.article.214-2",
+    "relation": "contains",
+    "to": "ordinance37.article.214-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.214-2",
+    "relation": "contains",
+    "to": "ordinance37.article.214-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.214-2",
+    "relation": "contains",
+    "to": "ordinance37.article.214-2.p.3"
+  },
+  {
+    "from": "ordinance37.article.214-2",
+    "relation": "contains",
+    "to": "ordinance37.article.214-2.p.4"
+  },
+  {
+    "from": "ordinance37.article.214-2",
+    "relation": "contains",
+    "to": "ordinance37.article.214-2.p.5"
+  },
+  {
+    "from": "ordinance37.article.214.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.214.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.214.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.214.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.214.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.214.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.214.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.214.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.214.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.215",
+    "relation": "contains",
+    "to": "ordinance37.article.215.p.1"
+  },
+  {
+    "from": "ordinance37.article.215",
+    "relation": "contains",
+    "to": "ordinance37.article.215.p.2"
+  },
+  {
+    "from": "ordinance37.article.215.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.215.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.215.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.215.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.215.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.215.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.215.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.215.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.215.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.215.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.215.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.215.p.2.i.6"
+  },
+  {
+    "from": "ordinance37.article.216",
+    "relation": "contains",
+    "to": "ordinance37.article.216.p.1"
+  },
+  {
+    "from": "ordinance37.article.217",
+    "relation": "contains",
+    "to": "ordinance37.article.217.p.1"
+  },
+  {
+    "from": "ordinance37.article.217",
+    "relation": "contains",
+    "to": "ordinance37.article.217.p.2"
   },
   {
     "from": "ordinance37.article.22",
@@ -865,6 +5280,11 @@
     "to": "ordinance37.article.29.p.1"
   },
   {
+    "from": "ordinance37.article.29-2",
+    "relation": "contains",
+    "to": "ordinance37.article.29-2.p.1"
+  },
+  {
     "from": "ordinance37.article.29.p.1",
     "relation": "contains",
     "to": "ordinance37.article.29.p.1.i.1"
@@ -903,6 +5323,26 @@
     "from": "ordinance37.article.29.p.1",
     "relation": "contains",
     "to": "ordinance37.article.29.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.3",
+    "relation": "contains",
+    "to": "ordinance37.article.3.p.1"
+  },
+  {
+    "from": "ordinance37.article.3",
+    "relation": "contains",
+    "to": "ordinance37.article.3.p.2"
+  },
+  {
+    "from": "ordinance37.article.3",
+    "relation": "contains",
+    "to": "ordinance37.article.3.p.3"
+  },
+  {
+    "from": "ordinance37.article.3",
+    "relation": "contains",
+    "to": "ordinance37.article.3.p.4"
   },
   {
     "from": "ordinance37.article.30",
@@ -1005,6 +5445,11 @@
     "to": "ordinance37.article.34.p.1"
   },
   {
+    "from": "ordinance37.article.34-2",
+    "relation": "contains",
+    "to": "ordinance37.article.34-2.p.1"
+  },
+  {
     "from": "ordinance37.article.35",
     "relation": "contains",
     "to": "ordinance37.article.35.p.1"
@@ -1038,6 +5483,16 @@
     "from": "ordinance37.article.36",
     "relation": "contains",
     "to": "ordinance37.article.36.p.6"
+  },
+  {
+    "from": "ordinance37.article.36-2",
+    "relation": "contains",
+    "to": "ordinance37.article.36-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.36-2",
+    "relation": "contains",
+    "to": "ordinance37.article.36-2.p.2"
   },
   {
     "from": "ordinance37.article.37",
@@ -1095,6 +5550,26 @@
     "to": "ordinance37.article.39.p.2"
   },
   {
+    "from": "ordinance37.article.39-2",
+    "relation": "contains",
+    "to": "ordinance37.article.39-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.39-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.39-2.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.39-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.39-2.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.39-3",
+    "relation": "contains",
+    "to": "ordinance37.article.39-3.p.1"
+  },
+  {
     "from": "ordinance37.article.39.p.2",
     "relation": "contains",
     "to": "ordinance37.article.39.p.2.i.1"
@@ -1130,6 +5605,161 @@
     "to": "ordinance37.article.4.p.1"
   },
   {
+    "from": "ordinance37.article.40",
+    "relation": "contains",
+    "to": "ordinance37.article.40.p.1"
+  },
+  {
+    "from": "ordinance37.article.40",
+    "relation": "contains",
+    "to": "ordinance37.article.40.p.2"
+  },
+  {
+    "from": "ordinance37.article.40",
+    "relation": "contains",
+    "to": "ordinance37.article.40.p.3"
+  },
+  {
+    "from": "ordinance37.article.41",
+    "relation": "contains",
+    "to": "ordinance37.article.41.p.1"
+  },
+  {
+    "from": "ordinance37.article.42",
+    "relation": "contains",
+    "to": "ordinance37.article.42.p.1"
+  },
+  {
+    "from": "ordinance37.article.42",
+    "relation": "contains",
+    "to": "ordinance37.article.42.p.2"
+  },
+  {
+    "from": "ordinance37.article.42-2",
+    "relation": "contains",
+    "to": "ordinance37.article.42-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.42-2",
+    "relation": "contains",
+    "to": "ordinance37.article.42-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.42-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.42-2.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.42-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.42-2.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.42-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.42-2.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.42-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.42-2.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.42-2.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.42-2.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.43",
+    "relation": "contains",
+    "to": "ordinance37.article.43.p.1"
+  },
+  {
+    "from": "ordinance37.article.44",
+    "relation": "contains",
+    "to": "ordinance37.article.44.p.1"
+  },
+  {
+    "from": "ordinance37.article.45",
+    "relation": "contains",
+    "to": "ordinance37.article.45.p.1"
+  },
+  {
+    "from": "ordinance37.article.45",
+    "relation": "contains",
+    "to": "ordinance37.article.45.p.2"
+  },
+  {
+    "from": "ordinance37.article.45",
+    "relation": "contains",
+    "to": "ordinance37.article.45.p.3"
+  },
+  {
+    "from": "ordinance37.article.45.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.45.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.45.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.45.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.46",
+    "relation": "contains",
+    "to": "ordinance37.article.46.p.1"
+  },
+  {
+    "from": "ordinance37.article.47",
+    "relation": "contains",
+    "to": "ordinance37.article.47.p.1"
+  },
+  {
+    "from": "ordinance37.article.47",
+    "relation": "contains",
+    "to": "ordinance37.article.47.p.2"
+  },
+  {
+    "from": "ordinance37.article.48",
+    "relation": "contains",
+    "to": "ordinance37.article.48.p.1"
+  },
+  {
+    "from": "ordinance37.article.48",
+    "relation": "contains",
+    "to": "ordinance37.article.48.p.2"
+  },
+  {
+    "from": "ordinance37.article.48",
+    "relation": "contains",
+    "to": "ordinance37.article.48.p.3"
+  },
+  {
+    "from": "ordinance37.article.48",
+    "relation": "contains",
+    "to": "ordinance37.article.48.p.4"
+  },
+  {
+    "from": "ordinance37.article.48.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.48.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.48.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.48.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.49",
+    "relation": "contains",
+    "to": "ordinance37.article.49.p.1"
+  },
+  {
+    "from": "ordinance37.article.49",
+    "relation": "contains",
+    "to": "ordinance37.article.49.p.2"
+  },
+  {
     "from": "ordinance37.article.5",
     "relation": "contains",
     "to": "ordinance37.article.5.p.1"
@@ -1160,6 +5790,51 @@
     "to": "ordinance37.article.5.p.6"
   },
   {
+    "from": "ordinance37.article.50",
+    "relation": "contains",
+    "to": "ordinance37.article.50.p.1"
+  },
+  {
+    "from": "ordinance37.article.50.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.50.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.50.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.50.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.50.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.50.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.50.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.50.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.50.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.50.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.50.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.50.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.50.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.50.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.51",
+    "relation": "contains",
+    "to": "ordinance37.article.51.p.1"
+  },
+  {
     "from": "ordinance37.article.52",
     "relation": "contains",
     "to": "ordinance37.article.52.p.1"
@@ -1170,9 +5845,349 @@
     "to": "ordinance37.article.52.p.2"
   },
   {
+    "from": "ordinance37.article.53",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1"
+  },
+  {
+    "from": "ordinance37.article.53-2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.53-2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.53-2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-2.p.3"
+  },
+  {
+    "from": "ordinance37.article.53-2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-2.p.4"
+  },
+  {
+    "from": "ordinance37.article.53-3",
+    "relation": "contains",
+    "to": "ordinance37.article.53-3.p.1"
+  },
+  {
+    "from": "ordinance37.article.53-3",
+    "relation": "contains",
+    "to": "ordinance37.article.53-3.p.2"
+  },
+  {
+    "from": "ordinance37.article.53-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-3.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.53-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-3.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.53-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-3.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.53-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-3.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.53-3.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.53-3.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.53.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.53.p.1.i.9"
+  },
+  {
+    "from": "ordinance37.article.54",
+    "relation": "contains",
+    "to": "ordinance37.article.54.p.1"
+  },
+  {
+    "from": "ordinance37.article.55",
+    "relation": "contains",
+    "to": "ordinance37.article.55.p.1"
+  },
+  {
+    "from": "ordinance37.article.55",
+    "relation": "contains",
+    "to": "ordinance37.article.55.p.2"
+  },
+  {
+    "from": "ordinance37.article.55.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.55.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.55.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.55.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.56",
+    "relation": "contains",
+    "to": "ordinance37.article.56.p.1"
+  },
+  {
+    "from": "ordinance37.article.57",
+    "relation": "contains",
+    "to": "ordinance37.article.57.p.1"
+  },
+  {
+    "from": "ordinance37.article.57",
+    "relation": "contains",
+    "to": "ordinance37.article.57.p.2"
+  },
+  {
+    "from": "ordinance37.article.58",
+    "relation": "contains",
+    "to": "ordinance37.article.58.p.1"
+  },
+  {
+    "from": "ordinance37.article.59",
+    "relation": "contains",
+    "to": "ordinance37.article.59.p.1"
+  },
+  {
     "from": "ordinance37.article.6",
     "relation": "contains",
     "to": "ordinance37.article.6.p.1"
+  },
+  {
+    "from": "ordinance37.article.60",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.1"
+  },
+  {
+    "from": "ordinance37.article.60",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.2"
+  },
+  {
+    "from": "ordinance37.article.60",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.3"
+  },
+  {
+    "from": "ordinance37.article.60",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.4"
+  },
+  {
+    "from": "ordinance37.article.60",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.5"
+  },
+  {
+    "from": "ordinance37.article.60.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.60.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.60.p.1.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.1.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.60.p.1.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.60.p.1.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.61",
+    "relation": "contains",
+    "to": "ordinance37.article.61.p.1"
+  },
+  {
+    "from": "ordinance37.article.61",
+    "relation": "contains",
+    "to": "ordinance37.article.61.p.2"
+  },
+  {
+    "from": "ordinance37.article.61",
+    "relation": "contains",
+    "to": "ordinance37.article.61.p.3"
+  },
+  {
+    "from": "ordinance37.article.62",
+    "relation": "contains",
+    "to": "ordinance37.article.62.p.1"
+  },
+  {
+    "from": "ordinance37.article.62",
+    "relation": "contains",
+    "to": "ordinance37.article.62.p.2"
+  },
+  {
+    "from": "ordinance37.article.62",
+    "relation": "contains",
+    "to": "ordinance37.article.62.p.3"
+  },
+  {
+    "from": "ordinance37.article.63",
+    "relation": "contains",
+    "to": "ordinance37.article.63.p.1"
+  },
+  {
+    "from": "ordinance37.article.64",
+    "relation": "contains",
+    "to": "ordinance37.article.64.p.1"
+  },
+  {
+    "from": "ordinance37.article.64",
+    "relation": "contains",
+    "to": "ordinance37.article.64.p.2"
+  },
+  {
+    "from": "ordinance37.article.65",
+    "relation": "contains",
+    "to": "ordinance37.article.65.p.1"
+  },
+  {
+    "from": "ordinance37.article.66",
+    "relation": "contains",
+    "to": "ordinance37.article.66.p.1"
+  },
+  {
+    "from": "ordinance37.article.66",
+    "relation": "contains",
+    "to": "ordinance37.article.66.p.2"
+  },
+  {
+    "from": "ordinance37.article.66",
+    "relation": "contains",
+    "to": "ordinance37.article.66.p.3"
+  },
+  {
+    "from": "ordinance37.article.66",
+    "relation": "contains",
+    "to": "ordinance37.article.66.p.4"
+  },
+  {
+    "from": "ordinance37.article.67",
+    "relation": "contains",
+    "to": "ordinance37.article.67.p.1"
+  },
+  {
+    "from": "ordinance37.article.67",
+    "relation": "contains",
+    "to": "ordinance37.article.67.p.2"
+  },
+  {
+    "from": "ordinance37.article.68",
+    "relation": "contains",
+    "to": "ordinance37.article.68.p.1"
+  },
+  {
+    "from": "ordinance37.article.68.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.68.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.68.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.68.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.68.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.68.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.68.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.68.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.68.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.68.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.68.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.68.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.68.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.68.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.69",
+    "relation": "contains",
+    "to": "ordinance37.article.69.p.1"
+  },
+  {
+    "from": "ordinance37.article.69",
+    "relation": "contains",
+    "to": "ordinance37.article.69.p.2"
+  },
+  {
+    "from": "ordinance37.article.69",
+    "relation": "contains",
+    "to": "ordinance37.article.69.p.3"
+  },
+  {
+    "from": "ordinance37.article.69",
+    "relation": "contains",
+    "to": "ordinance37.article.69.p.4"
   },
   {
     "from": "ordinance37.article.7",
@@ -1183,6 +6198,226 @@
     "from": "ordinance37.article.7",
     "relation": "contains",
     "to": "ordinance37.article.7.p.2"
+  },
+  {
+    "from": "ordinance37.article.70",
+    "relation": "contains",
+    "to": "ordinance37.article.70.p.1"
+  },
+  {
+    "from": "ordinance37.article.70",
+    "relation": "contains",
+    "to": "ordinance37.article.70.p.2"
+  },
+  {
+    "from": "ordinance37.article.70",
+    "relation": "contains",
+    "to": "ordinance37.article.70.p.3"
+  },
+  {
+    "from": "ordinance37.article.70",
+    "relation": "contains",
+    "to": "ordinance37.article.70.p.4"
+  },
+  {
+    "from": "ordinance37.article.70",
+    "relation": "contains",
+    "to": "ordinance37.article.70.p.5"
+  },
+  {
+    "from": "ordinance37.article.70",
+    "relation": "contains",
+    "to": "ordinance37.article.70.p.6"
+  },
+  {
+    "from": "ordinance37.article.70",
+    "relation": "contains",
+    "to": "ordinance37.article.70.p.7"
+  },
+  {
+    "from": "ordinance37.article.71",
+    "relation": "contains",
+    "to": "ordinance37.article.71.p.1"
+  },
+  {
+    "from": "ordinance37.article.72",
+    "relation": "contains",
+    "to": "ordinance37.article.72.p.1"
+  },
+  {
+    "from": "ordinance37.article.73",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1"
+  },
+  {
+    "from": "ordinance37.article.73-2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.73-2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.73-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.73-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.73-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.73-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.73-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.73-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2.i.6"
+  },
+  {
+    "from": "ordinance37.article.73-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2.i.7"
+  },
+  {
+    "from": "ordinance37.article.73-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.73-2.p.2.i.8"
+  },
+  {
+    "from": "ordinance37.article.73.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.73.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.73.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.73.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.73.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.73.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.73.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.73.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.73.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.74",
+    "relation": "contains",
+    "to": "ordinance37.article.74.p.1"
+  },
+  {
+    "from": "ordinance37.article.75",
+    "relation": "contains",
+    "to": "ordinance37.article.75.p.1"
+  },
+  {
+    "from": "ordinance37.article.76",
+    "relation": "contains",
+    "to": "ordinance37.article.76.p.1"
+  },
+  {
+    "from": "ordinance37.article.76",
+    "relation": "contains",
+    "to": "ordinance37.article.76.p.2"
+  },
+  {
+    "from": "ordinance37.article.76",
+    "relation": "contains",
+    "to": "ordinance37.article.76.p.3"
+  },
+  {
+    "from": "ordinance37.article.76",
+    "relation": "contains",
+    "to": "ordinance37.article.76.p.4"
+  },
+  {
+    "from": "ordinance37.article.76.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.76.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.76.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.76.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.77",
+    "relation": "contains",
+    "to": "ordinance37.article.77.p.1"
+  },
+  {
+    "from": "ordinance37.article.77",
+    "relation": "contains",
+    "to": "ordinance37.article.77.p.2"
+  },
+  {
+    "from": "ordinance37.article.78",
+    "relation": "contains",
+    "to": "ordinance37.article.78.p.1"
+  },
+  {
+    "from": "ordinance37.article.78",
+    "relation": "contains",
+    "to": "ordinance37.article.78.p.2"
+  },
+  {
+    "from": "ordinance37.article.78",
+    "relation": "contains",
+    "to": "ordinance37.article.78.p.3"
+  },
+  {
+    "from": "ordinance37.article.78",
+    "relation": "contains",
+    "to": "ordinance37.article.78.p.4"
+  },
+  {
+    "from": "ordinance37.article.79",
+    "relation": "contains",
+    "to": "ordinance37.article.79.p.1"
+  },
+  {
+    "from": "ordinance37.article.79",
+    "relation": "contains",
+    "to": "ordinance37.article.79.p.2"
   },
   {
     "from": "ordinance37.article.8",
@@ -1245,9 +6480,454 @@
     "to": "ordinance37.article.8.p.5.i.2"
   },
   {
+    "from": "ordinance37.article.80",
+    "relation": "contains",
+    "to": "ordinance37.article.80.p.1"
+  },
+  {
+    "from": "ordinance37.article.80.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.80.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.80.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.80.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.80.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.80.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.80.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.80.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.80.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.80.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.80.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.80.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.80.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.80.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.81",
+    "relation": "contains",
+    "to": "ordinance37.article.81.p.1"
+  },
+  {
+    "from": "ordinance37.article.81",
+    "relation": "contains",
+    "to": "ordinance37.article.81.p.2"
+  },
+  {
+    "from": "ordinance37.article.81",
+    "relation": "contains",
+    "to": "ordinance37.article.81.p.3"
+  },
+  {
+    "from": "ordinance37.article.81",
+    "relation": "contains",
+    "to": "ordinance37.article.81.p.4"
+  },
+  {
+    "from": "ordinance37.article.81",
+    "relation": "contains",
+    "to": "ordinance37.article.81.p.5"
+  },
+  {
+    "from": "ordinance37.article.81",
+    "relation": "contains",
+    "to": "ordinance37.article.81.p.6"
+  },
+  {
+    "from": "ordinance37.article.82",
+    "relation": "contains",
+    "to": "ordinance37.article.82.p.1"
+  },
+  {
+    "from": "ordinance37.article.82-2",
+    "relation": "contains",
+    "to": "ordinance37.article.82-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.82-2",
+    "relation": "contains",
+    "to": "ordinance37.article.82-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.82-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.82-2.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.82-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.82-2.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.82-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.82-2.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.82-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.82-2.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.82-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.82-2.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.82-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.82-2.p.2.i.6"
+  },
+  {
+    "from": "ordinance37.article.82.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.82.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.82.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.82.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.82.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.82.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.82.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.82.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.82.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.82.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.82.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.82.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.82.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.82.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.83",
+    "relation": "contains",
+    "to": "ordinance37.article.83.p.1"
+  },
+  {
+    "from": "ordinance37.article.84",
+    "relation": "contains",
+    "to": "ordinance37.article.84.p.1"
+  },
+  {
+    "from": "ordinance37.article.85",
+    "relation": "contains",
+    "to": "ordinance37.article.85.p.1"
+  },
+  {
+    "from": "ordinance37.article.85",
+    "relation": "contains",
+    "to": "ordinance37.article.85.p.2"
+  },
+  {
+    "from": "ordinance37.article.85.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.85.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.85.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.85.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.85.p.1.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.85.p.1.i.1.s1.1"
+  },
+  {
+    "from": "ordinance37.article.85.p.1.i.1",
+    "relation": "contains",
+    "to": "ordinance37.article.85.p.1.i.1.s1.2"
+  },
+  {
+    "from": "ordinance37.article.86",
+    "relation": "contains",
+    "to": "ordinance37.article.86.p.1"
+  },
+  {
+    "from": "ordinance37.article.86",
+    "relation": "contains",
+    "to": "ordinance37.article.86.p.2"
+  },
+  {
+    "from": "ordinance37.article.87",
+    "relation": "contains",
+    "to": "ordinance37.article.87.p.1"
+  },
+  {
+    "from": "ordinance37.article.87",
+    "relation": "contains",
+    "to": "ordinance37.article.87.p.2"
+  },
+  {
+    "from": "ordinance37.article.87",
+    "relation": "contains",
+    "to": "ordinance37.article.87.p.3"
+  },
+  {
+    "from": "ordinance37.article.87",
+    "relation": "contains",
+    "to": "ordinance37.article.87.p.4"
+  },
+  {
+    "from": "ordinance37.article.88",
+    "relation": "contains",
+    "to": "ordinance37.article.88.p.1"
+  },
+  {
+    "from": "ordinance37.article.88",
+    "relation": "contains",
+    "to": "ordinance37.article.88.p.2"
+  },
+  {
+    "from": "ordinance37.article.89",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1"
+  },
+  {
+    "from": "ordinance37.article.89",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2"
+  },
+  {
+    "from": "ordinance37.article.89",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.3"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.8"
+  },
+  {
+    "from": "ordinance37.article.89.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.1.i.9"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.6"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.7"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.8"
+  },
+  {
+    "from": "ordinance37.article.89.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.2.i.9"
+  },
+  {
+    "from": "ordinance37.article.89.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.3.i.1"
+  },
+  {
+    "from": "ordinance37.article.89.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.3.i.2"
+  },
+  {
+    "from": "ordinance37.article.89.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.3.i.3"
+  },
+  {
+    "from": "ordinance37.article.89.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.3.i.4"
+  },
+  {
+    "from": "ordinance37.article.89.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.3.i.5"
+  },
+  {
+    "from": "ordinance37.article.89.p.3",
+    "relation": "contains",
+    "to": "ordinance37.article.89.p.3.i.6"
+  },
+  {
     "from": "ordinance37.article.9",
     "relation": "contains",
     "to": "ordinance37.article.9.p.1"
+  },
+  {
+    "from": "ordinance37.article.90",
+    "relation": "contains",
+    "to": "ordinance37.article.90.p.1"
+  },
+  {
+    "from": "ordinance37.article.90-2",
+    "relation": "contains",
+    "to": "ordinance37.article.90-2.p.1"
+  },
+  {
+    "from": "ordinance37.article.90-2",
+    "relation": "contains",
+    "to": "ordinance37.article.90-2.p.2"
+  },
+  {
+    "from": "ordinance37.article.90-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.90-2.p.2.i.1"
+  },
+  {
+    "from": "ordinance37.article.90-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.90-2.p.2.i.2"
+  },
+  {
+    "from": "ordinance37.article.90-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.90-2.p.2.i.3"
+  },
+  {
+    "from": "ordinance37.article.90-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.90-2.p.2.i.4"
+  },
+  {
+    "from": "ordinance37.article.90-2.p.2",
+    "relation": "contains",
+    "to": "ordinance37.article.90-2.p.2.i.5"
+  },
+  {
+    "from": "ordinance37.article.90.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.90.p.1.i.1"
+  },
+  {
+    "from": "ordinance37.article.90.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.90.p.1.i.2"
+  },
+  {
+    "from": "ordinance37.article.90.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.90.p.1.i.3"
+  },
+  {
+    "from": "ordinance37.article.90.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.90.p.1.i.4"
+  },
+  {
+    "from": "ordinance37.article.90.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.90.p.1.i.5"
+  },
+  {
+    "from": "ordinance37.article.90.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.90.p.1.i.6"
+  },
+  {
+    "from": "ordinance37.article.90.p.1",
+    "relation": "contains",
+    "to": "ordinance37.article.90.p.1.i.7"
+  },
+  {
+    "from": "ordinance37.article.91",
+    "relation": "contains",
+    "to": "ordinance37.article.91.p.1"
   },
   {
     "from": "ordinance37.article.92",

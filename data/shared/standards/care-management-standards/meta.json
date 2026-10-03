@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "corpus_id": "care-management-standards",
+  "node_prefix": "standards38",
+  "law_id": "411M50000100038",
+  "law_num": "平成十一年厚生省令第三十八号",
+  "law_title": "指定居宅介護支援等の事業の人員及び運営に関する基準",
+  "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/411M50000100038",
+  "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/411M50000100038",
+  "source_page": "https://laws.e-gov.go.jp/law/411M50000100038",
+  "xml_sha256": "f747b2b28db8cdfd810d2196e23e2d6f7f89364316d810e1f0f79c076a6f2c3b",
+  "revision_response_sha256": "cf24d4c9aee44e75e3c7bb8a6e8cb77aa19b7177ec8e6d2f4d53f970476fc46d",
+  "current_revision": {
+    "law_revision_id": "411M50000100038_20240401_506M60000100016",
+    "law_title": "指定居宅介護支援等の事業の人員及び運営に関する基準",
+    "amendment_law_id": "506M60000100016",
+    "amendment_law_num": "令和六年厚生労働省令第十六号",
+    "amendment_promulgate_date": "2024-01-25",
+    "amendment_enforcement_date": "2024-04-01",
+    "amendment_scheduled_enforcement_date": null,
+    "current_revision_status": "CurrentEnforced",
+    "repeal_status": "None",
+    "mission": "New",
+    "updated": "2024-07-01T14:35:00+09:00"
+  },
+  "revision_count": 9,
+  "scope": "FULL_MAIN_PROVISION",
+  "counts": {
+    "nodes_total": 197,
+    "articles_total": 35,
+    "paragraphs_total": 80,
+    "items_total": 66,
+    "subitems_total": 16,
+    "contains_relations": 162
+  },
+  "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
+  "corpus_verification_status": "IMPORTED_NEEDS_INDEPENDENT_CHECK",
+  "service_applicability_status": "SEPARATE_NOT_IMPLIED",
+  "human_review_status": "NOT_REVIEWED",
+  "automatic_verification_promotion_allowed": false
+}

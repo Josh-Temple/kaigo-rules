@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "corpus_id": "preventive-community-based-standards",
+  "node_prefix": "standards36",
+  "law_id": "418M60000100036",
+  "law_num": "平成十八年厚生労働省令第三十六号",
+  "law_title": "指定地域密着型介護予防サービスの事業の人員、設備及び運営並びに指定地域密着型介護予防サービスに係る介護予防のための効果的な支援の方法に関する基準",
+  "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/418M60000100036",
+  "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/418M60000100036",
+  "source_page": "https://laws.e-gov.go.jp/law/418M60000100036",
+  "xml_sha256": "3e6634f51d46c75b724c4c0efa42681a7691d471c44b5bfc2249616b0413e851",
+  "revision_response_sha256": "d2482403696b6d41928e125f76eea6272ea0a9847e2f2ac33fd1da0fa61dce57",
+  "current_revision": {
+    "law_revision_id": "418M60000100036_20240401_506M60000100016",
+    "law_title": "指定地域密着型介護予防サービスの事業の人員、設備及び運営並びに指定地域密着型介護予防サービスに係る介護予防のための効果的な支援の方法に関する基準",
+    "amendment_law_id": "506M60000100016",
+    "amendment_law_num": "令和六年厚生労働省令第十六号",
+    "amendment_promulgate_date": "2024-01-25",
+    "amendment_enforcement_date": "2024-04-01",
+    "amendment_scheduled_enforcement_date": null,
+    "current_revision_status": "CurrentEnforced",
+    "repeal_status": "None",
+    "mission": "New",
+    "updated": "2024-07-01T14:40:37+09:00"
+  },
+  "revision_count": 7,
+  "scope": "FULL_MAIN_PROVISION",
+  "counts": {
+    "nodes_total": 498,
+    "articles_total": 94,
+    "paragraphs_total": 243,
+    "items_total": 153,
+    "subitems_total": 8,
+    "contains_relations": 404
+  },
+  "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
+  "corpus_verification_status": "IMPORTED_NEEDS_INDEPENDENT_CHECK",
+  "service_applicability_status": "SEPARATE_NOT_IMPLIED",
+  "human_review_status": "NOT_REVIEWED",
+  "automatic_verification_promotion_allowed": false
+}

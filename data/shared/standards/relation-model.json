@@ -1,0 +1,30 @@
+{
+  "format_version": 1,
+  "purpose": "Keep shared source text separate from service applicability and semantic application rules.",
+  "relation_types": {
+    "direct_applicability": {
+      "meaning": "The service scope selects a shared source article directly.",
+      "required_fields": ["service_id", "corpus_id", "source_node_id", "scope_source", "verification_status"]
+    },
+    "incorporates_by_reference": {
+      "meaning": "A service provision incorporates another shared source article by explicit reference.",
+      "required_fields": ["service_id", "corpus_id", "source_node_id", "via_node_id", "scope_source", "verification_status"]
+    },
+    "applies_with_substitution": {
+      "meaning": "A referenced provision applies with an explicit read-as/substitution rule.",
+      "required_fields": ["service_id", "corpus_id", "via_node_id", "selector", "substitutions", "scope_source", "verification_status"]
+    }
+  },
+  "state_dimensions": {
+    "corpus_presence": "Independent of service applicability.",
+    "service_scope": "May be defined, partial, or not defined.",
+    "relation_verification": "Independent verification of applicability / reference / substitution.",
+    "currentness": "Current-source or amendment status for the service-specific relation.",
+    "human_review": "Separate human review state.",
+    "publication": "Separate publication gate."
+  },
+  "defaults": {
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

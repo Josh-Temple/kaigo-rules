@@ -144,6 +144,7 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
         errors.append("service catalog: services must not be empty")
 
     service_ids: set[str] = set()
+    service_labels: set[str] = set()
     future_paths: set[str] = set()
     legacy_paths: dict[str, str] = {}
     config_refs: set[str] = set()
@@ -160,8 +161,13 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
             continue
         service_ids.add(service_id)
 
-        if not descriptor.get("label"):
+        label = descriptor.get("label")
+        if not isinstance(label, str) or not label.strip():
             errors.append(f"service catalog {service_id}: label missing")
+        elif label in service_labels:
+            errors.append(f"service catalog: duplicate service label {label}")
+        else:
+            service_labels.add(label)
         config_ref = descriptor.get("config")
         if not isinstance(config_ref, str) or not config_ref.startswith("data/services/"):
             errors.append(f"service catalog {service_id}: invalid config path")
@@ -187,8 +193,32 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
         if config.get("service_id") != service_id:
             errors.append(f"service catalog {service_id}: config service_id mismatch")
 
+        identity = config.get("identity")
+        if identity is not None:
+            if not isinstance(identity, dict):
+                errors.append(f"service catalog {service_id}: identity must be an object")
+            else:
+                if identity.get("label") != descriptor.get("label"):
+                    errors.append(f"service catalog {service_id}: config label mismatch")
+                if identity.get("service_class") != descriptor.get("service_class"):
+                    errors.append(f"service catalog {service_id}: config service_class mismatch")
+
         routing = config.get("routing", {})
         descriptor_status = str(descriptor.get("status", ""))
+        if descriptor_status == "REGISTERED_NOT_INGESTED":
+            if config.get("readiness") != "REGISTERED_NOT_INGESTED":
+                errors.append(
+                    f"service catalog {service_id}: registered stub readiness mismatch"
+                )
+            if config.get("ingestion_state") != "REGISTERED_NOT_INGESTED":
+                errors.append(
+                    f"service catalog {service_id}: registered stub ingestion_state mismatch"
+                )
+            expected_families = config.get("expected_source_families")
+            if not isinstance(expected_families, list) or not expected_families:
+                errors.append(
+                    f"service catalog {service_id}: registered stub expected_source_families missing"
+                )
         if not descriptor_status.startswith("ACTIVE") and routing.get("future_service_base_enabled"):
             errors.append(
                 f"service catalog {service_id}: non-active service route must stay disabled"
@@ -247,6 +277,55 @@ def validation_errors(root: Path = ROOT, check_registry: bool = True) -> list[st
                 errors.append(
                     f"service catalog {service_id}: scope file missing {relative_path}"
                 )
+
+    universe = manifest.get("service_universe", {})
+    if universe:
+        expected_count = universe.get("current_service_count")
+        if expected_count != len(descriptors):
+            errors.append(
+                f"service catalog: service_universe current_service_count {expected_count} != {len(descriptors)}"
+            )
+
+    all_service_ids = set(service_ids)
+    all_labels = set(service_labels)
+    for item in manifest.get("historical_services", []):
+        historical_id = item.get("service_id")
+        historical_label = item.get("label")
+        if not isinstance(historical_id, str) or not SERVICE_ID_RE.fullmatch(historical_id):
+            errors.append(f"service catalog: invalid historical service_id {historical_id!r}")
+            continue
+        if historical_id in all_service_ids:
+            errors.append(f"service catalog: historical service mixed into current services {historical_id}")
+        all_service_ids.add(historical_id)
+        if not isinstance(historical_label, str) or not historical_label.strip():
+            errors.append(f"service catalog {historical_id}: historical label missing")
+        elif historical_label in all_labels:
+            errors.append(f"service catalog: duplicate service label {historical_label}")
+        else:
+            all_labels.add(historical_label)
+        if not str(item.get("status", "")).startswith("HISTORICAL_"):
+            errors.append(f"service catalog {historical_id}: historical status must start HISTORICAL_")
+        if item.get("config"):
+            errors.append(f"service catalog {historical_id}: historical service must not have active config")
+
+    category_ids: set[str] = set()
+    for item in manifest.get("special_categories", []):
+        category_id = item.get("category_id")
+        special_label = item.get("label")
+        if not isinstance(category_id, str) or not SERVICE_ID_RE.fullmatch(category_id):
+            errors.append(f"service catalog: invalid special category_id {category_id!r}")
+            continue
+        if category_id in category_ids or category_id in all_service_ids:
+            errors.append(f"service catalog: duplicate special category_id {category_id}")
+        category_ids.add(category_id)
+        if not isinstance(special_label, str) or not special_label.strip():
+            errors.append(f"service catalog {category_id}: special category label missing")
+        elif special_label in all_labels:
+            errors.append(f"service catalog: duplicate service label {special_label}")
+        else:
+            all_labels.add(special_label)
+        if not str(item.get("status", "")).startswith("SPECIAL_"):
+            errors.append(f"service catalog {category_id}: special category status must start SPECIAL_")
 
     default_service_id = manifest.get("default_service_id")
     if default_service_id not in service_ids:

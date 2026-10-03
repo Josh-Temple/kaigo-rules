@@ -170,7 +170,7 @@ def walk(element, path, targets, direct_set, common_set, additional_service_scop
 
     if element.tag == "Article":
         num = canonical_num(element.attrib.get("Num"))
-        if num in targets:
+        if targets is None or num in targets:
             if num in direct_set:
                 service_scope = "通所介護・直接規定"
                 applicable_via = None
@@ -183,11 +183,14 @@ def walk(element, path, targets, direct_set, common_set, additional_service_scop
                     for item in additional_service_scopes
                     if num in set(item.get("articles", []))
                 ]
-                if len(matches) != 1:
+                if len(matches) > 1:
                     raise RuntimeError(
                         f"Article {num} has ambiguous additional service scope: {len(matches)} matches"
                     )
-                service_scope = f"{matches[0]['service_label']}・直接規定"
+                if len(matches) == 1:
+                    service_scope = f"{matches[0]['service_label']}・直接規定"
+                else:
+                    service_scope = "共有コーパス・service scope未定義"
                 applicable_via = None
             parse_article(
                 element,
@@ -247,7 +250,8 @@ def main():
                 f"additional service scope {item.get('service_id')} has no articles"
             )
         additional_targets |= articles
-    targets = direct_set | common_set | additional_targets
+    corpus_mode = scope.get("corpus_policy", {}).get("mode", "SCOPED")
+    targets = None if corpus_mode == "FULL_MAIN_PROVISION" else (direct_set | common_set | additional_targets)
 
     xml_bytes = fetch(API_V1)
     revisions_bytes = fetch(REVISIONS_V2)
@@ -266,9 +270,10 @@ def main():
     found = set()
     walk(main_provision, [], targets, direct_set, common_set, additional_service_scopes, nodes, relations, found)
 
-    missing = sorted(targets - found)
-    if missing:
-        raise RuntimeError("Target articles missing from e-Gov XML: " + ", ".join(missing))
+    if targets is not None:
+        missing = sorted(targets - found)
+        if missing:
+            raise RuntimeError("Target articles missing from e-Gov XML: " + ", ".join(missing))
 
     for common in sorted(common_set):
         relations.append({
@@ -306,10 +311,13 @@ def main():
         "current_revision": current_revision,
         "revision_count": revision_count,
         "scope": {
+            "mode": corpus_mode,
             "direct_articles": scope["direct_articles"],
             "incorporated_articles": scope["incorporated_articles"],
             "excluded_initial_scope": scope["excluded_initial_scope"],
-            "additional_service_direct_scopes": scope.get("additional_service_direct_scopes", [])
+            "additional_service_direct_scopes": scope.get("additional_service_direct_scopes", []),
+            "service_applicability_source": scope.get("corpus_policy", {}).get("service_applicability_source"),
+            "legacy_node_applicability_fields": scope.get("corpus_policy", {}).get("legacy_node_applicability_fields")
         },
         "counts": {
             "nodes_total": len(nodes),
@@ -318,7 +326,10 @@ def main():
             "incorporated_articles": len([n for n in article_nodes if n["service_scope"] == "通所介護・第105条準用"]),
             "additional_service_only_articles": len([
                 n for n in article_nodes
-                if n["service_scope"] not in {"通所介護・直接規定", "通所介護・第105条準用"}
+                if n["service_scope"] not in {"通所介護・直接規定", "通所介護・第105条準用", "共有コーパス・service scope未定義"}
+            ]),
+            "unmapped_shared_articles": len([
+                n for n in article_nodes if n["service_scope"] == "共有コーパス・service scope未定義"
             ]),
             "relations": len(relations),
             "application_rules": len(application_rules)

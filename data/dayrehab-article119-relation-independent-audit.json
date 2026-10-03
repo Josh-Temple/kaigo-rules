@@ -3,11 +3,11 @@
   "scope": "dayrehab-current-article119-incorporation",
   "audit_kind": "INDEPENDENT_DAYREHAB_ARTICLE119_RELATION_AUDIT",
   "audit_result": "PASS",
-  "audited_at": "2026-09-30",
+  "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Verify dayrehab Article 119 relations independently",
-    "run_id": 36790961204,
-    "head_sha": "4cd3eba34400315e1adf2dc9186f89a21e4ac935",
+    "run_id": 37116753917,
+    "head_sha": "789c739454dbd47dc4a4a07fef2c1bd10414d29a",
     "parser": "python_xml_dom_minidom_plus_independent_japanese_article_reference_parser",
     "verification_report_sha256": "bd25c3c213e66b4e9020dfc18a86cfd1030b31c3e562b6530e947ae3bcf9e51e"
   },
@@ -106,7 +106,7 @@
   "input_git_blob_shas_at_audit": {
     "data/services/dayrehab/ordinance37-scope.json": "b8f82108b1bcae00995679b2ee230b4f22b6a0a0",
     "data/services/dayrehab/ordinance37-relations.generated.json": "23ee9e26e4f004589ac7787be9c6cce2737e7f11",
-    "data/ordinance37-nodes.json": "f4f13acc92d484804cce3575f8496d79b42511ca",
+    "data/ordinance37-nodes.json": "77924bcc5021c21c6d50ad5f76adea1fc40b8bf7",
     "scripts/verify_dayrehab_article119_relations_independent.py": "bf332090324355de35851b72dbee42ee50dc8919"
   },
   "conclusion": "The 25 current Article 119 incorporation targets and four read-as evidence groups matched a fresh independent parse of live e-Gov XML.",

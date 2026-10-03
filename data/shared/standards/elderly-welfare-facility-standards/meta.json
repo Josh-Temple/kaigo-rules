@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "corpus_id": "elderly-welfare-facility-standards",
+  "node_prefix": "standards39",
+  "law_id": "411M50000100039",
+  "law_num": "平成十一年厚生省令第三十九号",
+  "law_title": "指定介護老人福祉施設の人員、設備及び運営に関する基準",
+  "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/411M50000100039",
+  "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/411M50000100039",
+  "source_page": "https://laws.e-gov.go.jp/law/411M50000100039",
+  "xml_sha256": "9cd5318322c7470363b188681d00f58549cfaaf6213aebfb5f110e2624e46bdd",
+  "revision_response_sha256": "8d79faccfad8e1db5ba8f4f252d0c97274c8bd41bf26184aced087ac42851fa7",
+  "current_revision": {
+    "law_revision_id": "411M50000100039_20250401_506M60000100164",
+    "law_title": "指定介護老人福祉施設の人員、設備及び運営に関する基準",
+    "amendment_law_id": "506M60000100164",
+    "amendment_law_num": "令和六年厚生労働省令第百六十四号",
+    "amendment_promulgate_date": "2024-12-27",
+    "amendment_enforcement_date": "2025-04-01",
+    "amendment_scheduled_enforcement_date": null,
+    "current_revision_status": "CurrentEnforced",
+    "repeal_status": "None",
+    "mission": "New",
+    "updated": "2025-04-02T04:27:59+09:00"
+  },
+  "revision_count": 6,
+  "scope": "FULL_MAIN_PROVISION",
+  "counts": {
+    "nodes_total": 386,
+    "articles_total": 60,
+    "paragraphs_total": 188,
+    "items_total": 102,
+    "subitems_total": 36,
+    "contains_relations": 326
+  },
+  "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
+  "corpus_verification_status": "IMPORTED_NEEDS_INDEPENDENT_CHECK",
+  "service_applicability_status": "SEPARATE_NOT_IMPLIED",
+  "human_review_status": "NOT_REVIEWED",
+  "automatic_verification_promotion_allowed": false
+}

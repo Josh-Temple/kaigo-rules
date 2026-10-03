@@ -1569,10 +1569,10 @@
       "target": {
         "id": "ordinance37.article217.2",
         "kind": "ordinance37",
-        "label": "第217条",
+        "label": "第二百十七条 （電磁的記録等）",
         "route": "/rules/217",
-        "state": null,
-        "article_root_id": null,
+        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
+        "article_root_id": "ordinance37.article.217",
         "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
       },
       "review_prompt": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",

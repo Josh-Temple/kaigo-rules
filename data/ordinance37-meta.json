@@ -23,6 +23,7 @@
   },
   "revision_count": 9,
   "scope": {
+    "mode": "FULL_MAIN_PROVISION",
     "direct_articles": [
       "92",
       "93",
@@ -141,15 +142,18 @@
         "source_scope": "data/services/dayrehab/ordinance37-scope.json",
         "policy": "第八章の11条を共有コーパスへ追加し、本文は複製しない。公開・独立検証・currentness・human reviewはdayrehabとして別管理する。"
       }
-    ]
+    ],
+    "service_applicability_source": "SEPARATE_SCOPE_AND_RELATIONS",
+    "legacy_node_applicability_fields": "COMPATIBILITY_ONLY_NOT_CANONICAL"
   },
   "counts": {
-    "nodes_total": 340,
-    "articles_total": 67,
+    "nodes_total": 1684,
+    "articles_total": 275,
     "direct_articles": 17,
     "incorporated_articles": 23,
     "additional_service_only_articles": 27,
-    "relations": 296,
+    "unmapped_shared_articles": 208,
+    "relations": 1432,
     "application_rules": 5
   },
   "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",

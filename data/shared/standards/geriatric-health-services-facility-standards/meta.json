@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "corpus_id": "geriatric-health-services-facility-standards",
+  "node_prefix": "standards40",
+  "law_id": "411M50000100040",
+  "law_num": "平成十一年厚生省令第四十号",
+  "law_title": "介護老人保健施設の人員、施設及び設備並びに運営に関する基準",
+  "source_api_v1": "https://laws.e-gov.go.jp/api/1/lawdata/411M50000100040",
+  "source_revisions_v2": "https://laws.e-gov.go.jp/api/2/law_revisions/411M50000100040",
+  "source_page": "https://laws.e-gov.go.jp/law/411M50000100040",
+  "xml_sha256": "dce085ac4aae192660f7eea137a37034453c605a319b180f1ac2c25943ac60fd",
+  "revision_response_sha256": "870782b0d7d277da75cd3a83af498a2a954f5748a703c8fc19c1e014d45e5b5a",
+  "current_revision": {
+    "law_revision_id": "411M50000100040_20240401_506M60000100016",
+    "law_title": "介護老人保健施設の人員、施設及び設備並びに運営に関する基準",
+    "amendment_law_id": "506M60000100016",
+    "amendment_law_num": "令和六年厚生労働省令第十六号",
+    "amendment_promulgate_date": "2024-01-25",
+    "amendment_enforcement_date": "2024-04-01",
+    "amendment_scheduled_enforcement_date": null,
+    "current_revision_status": "CurrentEnforced",
+    "repeal_status": "None",
+    "mission": "New",
+    "updated": "2024-04-26T15:11:35+09:00"
+  },
+  "revision_count": 5,
+  "scope": "FULL_MAIN_PROVISION",
+  "counts": {
+    "nodes_total": 447,
+    "articles_total": 60,
+    "paragraphs_total": 183,
+    "items_total": 152,
+    "subitems_total": 52,
+    "contains_relations": 387
+  },
+  "text_normalization": "XML text with whitespace runs collapsed to one space; Unicode content otherwise unchanged",
+  "corpus_verification_status": "IMPORTED_NEEDS_INDEPENDENT_CHECK",
+  "service_applicability_status": "SEPARATE_NOT_IMPLIED",
+  "human_review_status": "NOT_REVIEWED",
+  "automatic_verification_promotion_allowed": false
+}

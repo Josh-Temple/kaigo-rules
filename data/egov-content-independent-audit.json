@@ -3,14 +3,14 @@
   "scope": "egov-scoped-content-ordinance37-care-insurance-act",
   "audit_kind": "INDEPENDENT_EGOV_CONTENT_REPARSE",
   "audit_result": "PASS",
-  "audited_at": "2026-09-30",
+  "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Verify e-Gov scoped content independently",
-    "run_id": 36787107347,
-    "head_sha": "e07fc740b0cfcc18b1f923479c6cc1372898eec1",
+    "run_id": 37116753917,
+    "head_sha": "789c739454dbd47dc4a4a07fef2c1bd10414d29a",
     "parser": "python_xml_dom_minidom",
     "result": "PASS",
-    "verification_report_sha256": "d4afdbc8333120771a320d86f799b5b9463825eee1949093bb291ad7f231b9b9"
+    "verification_report_sha256": "27f13f3c0e6e8439236bc0d7689ad15060848c18983ca89023778a136f9050b4"
   },
   "checks": [
     {
@@ -19,12 +19,12 @@
       "observed_xml_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
       "result": "PASS",
       "observed": {
-        "nodes": 340,
-        "articles": 67,
-        "paragraphs": 159,
-        "items": 108,
-        "subitems": 6,
-        "contains_relations": 273
+        "nodes": 1684,
+        "articles": 275,
+        "paragraphs": 696,
+        "items": 600,
+        "subitems": 113,
+        "contains_relations": 1409
       },
       "excluded_non_contains_relations": 23
     },
@@ -45,19 +45,19 @@
     }
   ],
   "input_git_blob_shas_at_audit": {
-    "data/ordinance37-scope.json": "97273de6d703a04fc8fcb99f90c880cbdefa2ea4",
-    "data/ordinance37-nodes.json": "f4f13acc92d484804cce3575f8496d79b42511ca",
-    "data/ordinance37-relations.json": "c07311b5deaf56b8acea0f28b0275a6abca42ac6",
-    "data/ordinance37-meta.json": "83d0af49feffe0279f23d6b6eb73a96f79498087",
+    "data/ordinance37-scope.json": "f05ec80b8473ec89b5e2ed48f88fd30abb8d1cd5",
+    "data/ordinance37-nodes.json": "77924bcc5021c21c6d50ad5f76adea1fc40b8bf7",
+    "data/ordinance37-relations.json": "b8634b745b81b90fed3e9168e884bf0964358133",
+    "data/ordinance37-meta.json": "25c869e4f48cd5e44f621d717ce2e7b0bfeb7d91",
     "data/care-insurance-act-scope.json": "8af02781b721c811b377ff0525f74ba64646181d",
     "data/care-insurance-act-nodes.json": "5679279462390862405d60f00b25603f8be3522e",
     "data/care-insurance-act-relations.json": "dec5acd05d867b82202595aae4755c514cd16f80",
-    "data/care-insurance-act-meta.json": "ec89e91dac2fcaf165735ae7b61993b2024b1c64",
-    "scripts/verify_egov_content_independent.py": "2d18453842d81a301fd3d5daa0ba4bea3c299571"
+    "data/care-insurance-act-meta.json": "64749db380de1ec11f69989f98b7c383ff2a73cb",
+    "scripts/verify_egov_content_independent.py": "a5bc75924f39e484f199bec3774ce9fcb4a86444"
   },
-  "conclusion": "Scoped official text, node IDs, parent structure and source-derived containment matched live e-Gov XML for Ordinance 37 and the Care Insurance Act using an independent XML parser. Ordinance 37 includes dayservice, ordinary homevisit, and the dayrehab Chapter 8 slice without collapsing service verification state.",
+  "conclusion": "Scoped official text, node IDs, parent structure and source-derived containment matched live e-Gov XML for Ordinance 37 and the Care Insurance Act using an independent XML parser. Ordinance 37 covers the full MainProvision as one shared source corpus without collapsing service applicability or verification state.",
   "limitations": [
-    "The audit covers source-derived scoped text and containment only.",
+    "The audit covers source-derived text and containment only; Ordinance 37 is full MainProvision while the Care Insurance Act remains scoped.",
     "Hand-authored legal-semantic and cross-layer relations are excluded and remain separately reviewable.",
     "Independent machine verification is not HUMAN_VERIFIED or VERIFIED_CURRENT.",
     "Later source/data/verifier changes require refresh of this record."
