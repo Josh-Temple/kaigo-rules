@@ -79,9 +79,10 @@
   "source_inventory_receipt": {
     "audit_result": "PASS_BOUNDED_SCOPE_ONLY",
     "check_level": "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
-    "manifest_required_sources": "PENDING_REFRESH_AFTER_SCOPE_CHANGE",
-    "required_sources_fetchable": "PENDING_REFRESH_AFTER_SCOPE_CHANGE",
-    "note": "#282以降、source inventoryはscope manifestでrequired=trueの全sourceを検査する。今回追加した001623026.pdfを含むreceipt refresh後に件数を固定する。item-body/currentnessはsource inventory自体では証明しない。"
+    "manifest_required_sources": 6,
+    "required_sources_fetchable": 6,
+    "note": "scope manifestでrequired=trueの6 sourceを全件検査し、6/6 fetchable。item-body/currentnessはsource inventory自体では証明しない。",
+    "source_inventory_git_blob_sha": "d6bb529571cbda6a5522bb372509e9f866577f2d"
   },
   "work_control_observation": {
     "source": "Kaigo Rules Structure Queue v1 (fresh read during audit)",
