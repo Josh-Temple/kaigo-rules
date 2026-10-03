@@ -25,7 +25,13 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "care_insurance_act": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+    "standards_index": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+    "remuneration": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+    "delegated_remuneration_criteria": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+    "unit_price": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json"
+  },
   "verification_layer_ids": [],
   "publication_gate": {
     "public_routes_enabled": false,
