@@ -52,6 +52,14 @@ def build() -> dict:
     homebath_notice_data = load("services/homebath/rouki25-historical.generated.json")
     homevisit_notice = load("homevisit-rouki25-historical-independent-audit.json")
     homevisit_notice_data = load("services/homevisit/rouki25-historical.generated.json")
+    homenursing_notice = load("homenursing-rouki25-historical-independent-audit.json")
+    homenursing_notice_data = load("services/homenursing/rouki25-historical.generated.json")
+    homerehab_notice = load("homerehab-rouki25-historical-independent-audit.json")
+    homerehab_notice_data = load("services/homerehab/rouki25-historical.generated.json")
+    homecaremanagement_notice = load("homecaremanagement-rouki25-historical-independent-audit.json")
+    homecaremanagement_notice_data = load("services/homecaremanagement/rouki25-historical.generated.json")
+    shortstay_life_notice = load("shortstay-life-rouki25-historical-independent-audit.json")
+    shortstay_life_notice_data = load("services/shortstay-life/rouki25-historical.generated.json")
 
     notice_reviewed = sum(
         1
@@ -305,6 +313,63 @@ def build() -> dict:
             "assurance": "HISTORICAL_SOURCE_TEXT_PASS_CURRENTNESS_GAP",
         }
     )
+
+    historical_service_layers = [
+        (
+            "homenursing",
+            "訪問看護",
+            homenursing_notice,
+            homenursing_notice_data,
+            "data/homenursing-rouki25-historical-independent-audit.json",
+        ),
+        (
+            "homerehab",
+            "訪問リハビリテーション",
+            homerehab_notice,
+            homerehab_notice_data,
+            "data/homerehab-rouki25-historical-independent-audit.json",
+        ),
+        (
+            "homecaremanagement",
+            "居宅療養管理指導",
+            homecaremanagement_notice,
+            homecaremanagement_notice_data,
+            "data/homecaremanagement-rouki25-historical-independent-audit.json",
+        ),
+        (
+            "shortstay-life",
+            "短期入所生活介護",
+            shortstay_life_notice,
+            shortstay_life_notice_data,
+            "data/shortstay-life-rouki25-historical-independent-audit.json",
+        ),
+    ]
+    for service_id, service_label, audit, dataset, evidence_path in historical_service_layers:
+        layers.append(
+            {
+                "id": f"rouki25-{service_id}",
+                "title": f"老企第25号 {service_label} 旧HTML {dataset['item_count']}項目",
+                "content_verification": {
+                    "status": audit["audit_result"],
+                    "kind": "INDEPENDENT_HISTORICAL_SOURCE_MATCH",
+                    "items": audit["coverage"]["items_passed"],
+                    "evidence": evidence_path,
+                },
+                "currentness": {
+                    "status": "GAP_HISTORICAL_SOURCE_ONLY",
+                    "note": "公式旧HTMLとの本文一致は確認済み。改正資料は別証拠であり、現行統合本文は未構成。",
+                },
+                "monitoring": {
+                    "status": "NOT_SCHEDULED",
+                },
+                "human_review": {
+                    "status": "NOT_REVIEWED",
+                    "reviewed_items": 0,
+                    "total_items": dataset["item_count"],
+                },
+                "assurance": "HISTORICAL_SOURCE_TEXT_PASS_CURRENTNESS_GAP",
+            }
+        )
 
     layers.extend(load_normalized_verification_layers(service_catalog, ROOT))
     layers = enrich_verification_layers(layers, service_catalog)
