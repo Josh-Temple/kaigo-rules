@@ -92,5 +92,14 @@
     "integrated_current_text_established": false,
     "omitted_text_reconstruction_allowed": false,
     "publication_allowed": false
+  },
+  "independent_source_inventory": {
+    "check_level": "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
+    "service_anchor": "地域密着型通所介護",
+    "require_all_referenced_sources_fetchable": true,
+    "require_anchor_in_at_least_one_source": true,
+    "proves_item_body_match": false,
+    "proves_currentness": false,
+    "permits_publication": false
   }
 }
