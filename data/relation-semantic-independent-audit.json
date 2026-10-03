@@ -6,8 +6,8 @@
   "audited_at": "2026-10-03",
   "audit_run": {
     "workflow": "Verify explicit legal-reference relations independently",
-    "run_id": 37127821497,
-    "head_sha": "9e8dcbfd55ae5c041b665f77032f84159021a8e7",
+    "run_id": 37127934657,
+    "head_sha": "29d917f55abbb0cd45212364709276c1bfc2d71c",
     "parser": "python_xml_dom_minidom_plus_independent_japanese_article_reference_parser",
     "result": "PASS",
     "verification_report_sha256": "34cf6b1a96d39837229d9fe1685b367621572cdddbb9732e8d65f37818e083b8"
