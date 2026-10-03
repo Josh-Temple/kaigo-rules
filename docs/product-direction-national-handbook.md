@@ -289,3 +289,121 @@ Near-term work should therefore prioritize:
 8. exposing all structured records through the database views even when publication status is limited.
 
 The handbook remains an intended presentation layer, but database breadth, traceability, and verification take precedence.
+
+
+## 12. Definition of database completion
+
+Database completion should not be defined as "every record is fully human-verified and currentness-established."
+
+That standard would make completion depend on whether every national source can be conclusively reconstructed, even when official publication practices leave unavoidable gaps.
+
+Instead, the database can be considered structurally complete when all of the following are true:
+
+1. all in-scope long-term care service categories are represented in the service catalog,
+2. every service has an explicit scope for the major national source layers,
+3. every expected source layer is represented by either structured data or an explicit bounded absence / unresolved state,
+4. source identity, source version, locator, service applicability, and verification state are retained,
+5. item-body verification, currentness, relation verification, human review, and publication state remain separate dimensions,
+6. unresolved gaps are represented explicitly rather than disappearing as missing data,
+7. public database views can enumerate and search the structured records that are safe to expose,
+8. major upstream national sources have freshness / drift monitoring where practical,
+9. source changes invalidate or flag stale downstream verification instead of silently preserving prior confidence,
+10. the remaining unresolved set is measurable and bounded.
+
+Examples of explicit non-complete states that are still valid database records include:
+
+- `NOT_INGESTED`,
+- `SOURCE_NOT_FOUND`,
+- `HISTORICAL_SOURCE_ONLY`,
+- `CURRENTNESS_NOT_ESTABLISHED`,
+- `PARTIAL`,
+- `HUMAN_REVIEW_PENDING`,
+- `PUBLICATION_BLOCKED`.
+
+A database that faithfully represents these states may be complete as a database even when the underlying legal evidence cannot yet support a stronger conclusion.
+
+This distinction is important:
+
+- **database completeness** means the expected domain is represented and gaps are explicit,
+- **evidence completeness** means the required primary evidence exists for a given record,
+- **verification completeness** means the relevant verification stages have passed,
+- **human-review completeness** means the required human review is finished,
+- **publication readiness** means the record is safe to expose in the intended user-facing context.
+
+These dimensions must not be collapsed into a single completion percentage.
+
+## 13. Coverage matrix as the main completion control
+
+The next major control artifact should be a cross-service coverage matrix.
+
+Rows should represent all in-scope services. Columns should represent the major national source layers.
+
+At minimum, the matrix should cover:
+
+- Long-Term Care Insurance Act / service identity,
+- governing ministerial ordinance,
+- standards interpretation notice,
+- remuneration notification,
+- delegated remuneration criteria,
+- fee-calculation guidance,
+- unit price / regional classification where applicable,
+- national Q&A,
+- related national forms / manuals when they materially affect interpretation.
+
+Each service × layer cell should report a machine-readable state such as:
+
+- scope defined / not defined,
+- source located / not located,
+- ingestion complete / partial / not started,
+- item-body verification state,
+- currentness state,
+- relation verification state,
+- human-review state,
+- publication state,
+- route / UI exposure state.
+
+The matrix should be generated from repository state where possible rather than manually maintained as a separate truth source.
+
+Its purposes are:
+
+1. make the remaining database gaps visible,
+2. prevent deep work on one service from hiding broad service coverage gaps,
+3. support parallel work allocation,
+4. define when database completion has been reached,
+5. provide a stable input for later handbook generation.
+
+The matrix itself should not promote any verification state. It is a projection of canonical service configs, verification receipts, and registries.
+
+## 14. Current state snapshot and execution order
+
+As of the 2026-10-03 repository state used when this note was updated:
+
+- the service catalog contains 13 services,
+- one service is `ACTIVE_MVP`,
+- one service is `ACTIVE_PREVIEW`,
+- eleven services are `PARTIAL_INGESTION`,
+- the national Q&A corpus contains 3,695 classified rows and has an independent reparse PASS,
+- the product snapshot reports 188 tracked relations, of which 129 are independently verified and 59 remain unverified,
+- several service-specific standards-interpretation datasets now have item-body PASS, but currentness remains unestablished for multiple services,
+- preventive-support still contains two PARTIAL item-body records in the current bounded scope.
+
+These are a dated snapshot, not a permanent status source. Current status must continue to be read from the repository registries and receipts.
+
+The preferred execution order is:
+
+1. enumerate the full in-scope service universe,
+2. add missing service descriptors to the service catalog,
+3. generate the service × source-layer coverage matrix,
+4. define missing scopes,
+5. ingest missing source layers,
+6. perform item-body verification,
+7. establish currentness where the primary-source record supports it,
+8. resolve or explicitly bound relation gaps,
+9. add source-drift monitoring,
+10. complete human review where required for publication,
+11. expose the complete structured database through browse and search,
+12. only then make handbook expansion a primary workstream.
+
+The key operating rule is breadth first, then depth against the visible gaps.
+
+Deep verification work remains necessary, but it should be prioritized from the coverage matrix so that the project converges toward a complete cross-service database rather than a small number of exceptionally deep service silos.
