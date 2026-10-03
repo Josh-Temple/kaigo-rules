@@ -11,84 +11,331 @@
     "service_configs_are_isolated": true,
     "notification_pipelines_are_not_generalized_before_real_duplication": true
   },
+  "service_universe": {
+    "as_of": "2026-10-03",
+    "basis": "CURRENT_LONG_TERM_CARE_INSURANCE_SERVICE_CATEGORIES",
+    "current_service_count": 39,
+    "source_urls": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=1",
+      "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html",
+      "https://www.mhlw.go.jp/content/12301000/001544646.pdf",
+      "https://www.mhlw.go.jp/content/12300000/001470543.pdf"
+    ],
+    "notes": [
+      "Current services are kept separate from abolished/transferred historical services and non-service special benefit/program categories.",
+      "Service registration does not imply source ingestion, applicability verification, currentness, human review, publication readiness, or route exposure."
+    ]
+  },
   "services": [
     {
       "service_id": "dayservice",
       "label": "通所介護",
       "status": "ACTIVE_MVP",
-      "config": "data/services/dayservice.json"
+      "config": "data/services/dayservice.json",
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homevisit",
       "label": "訪問介護",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/homevisit.json"
+      "config": "data/services/homevisit.json",
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homebath",
       "label": "訪問入浴介護",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/homebath.json"
+      "config": "data/services/homebath.json",
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homenursing",
       "label": "訪問看護",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/homenursing.json"
+      "config": "data/services/homenursing.json",
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homerehab",
       "label": "訪問リハビリテーション",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/homerehab.json"
+      "config": "data/services/homerehab.json",
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "homecaremanagement",
       "label": "居宅療養管理指導",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/homecaremanagement.json"
+      "config": "data/services/homecaremanagement.json",
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "dayrehab",
       "label": "通所リハビリテーション",
       "status": "ACTIVE_PREVIEW",
-      "config": "data/services/dayrehab.json"
+      "config": "data/services/dayrehab.json",
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "shortstay-life",
       "label": "短期入所生活介護",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/shortstay-life.json"
+      "config": "data/services/shortstay-life.json",
+      "service_class": "HOME_SERVICE"
     },
     {
       "service_id": "community-dayservice",
       "label": "地域密着型通所介護",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/community-dayservice.json"
+      "config": "data/services/community-dayservice.json",
+      "service_class": "COMMUNITY_BASED_SERVICE"
     },
     {
       "service_id": "regular-round",
       "label": "定期巡回・随時対応型訪問介護看護",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/regular-round.json"
+      "config": "data/services/regular-round.json",
+      "service_class": "COMMUNITY_BASED_SERVICE"
     },
     {
       "service_id": "night-homevisit",
       "label": "夜間対応型訪問介護",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/night-homevisit.json"
+      "config": "data/services/night-homevisit.json",
+      "service_class": "COMMUNITY_BASED_SERVICE"
     },
     {
       "service_id": "care-management",
       "label": "居宅介護支援",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/care-management.json"
+      "config": "data/services/care-management.json",
+      "service_class": "CARE_MANAGEMENT"
     },
     {
       "service_id": "preventive-support",
       "label": "介護予防支援",
       "status": "PARTIAL_INGESTION",
-      "config": "data/services/preventive-support.json"
+      "config": "data/services/preventive-support.json",
+      "service_class": "PREVENTIVE_SUPPORT"
+    },
+    {
+      "service_id": "shortstay-medical",
+      "label": "短期入所療養介護",
+      "service_class": "HOME_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/shortstay-medical.json"
+    },
+    {
+      "service_id": "specific-facility",
+      "label": "特定施設入居者生活介護",
+      "service_class": "HOME_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/specific-facility.json"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "label": "福祉用具貸与",
+      "service_class": "HOME_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/welfare-equipment-rental.json"
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "label": "特定福祉用具販売",
+      "service_class": "HOME_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/specific-welfare-equipment-sale.json"
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "label": "認知症対応型通所介護",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/dementia-dayservice.json"
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "label": "小規模多機能型居宅介護",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/small-scale-multifunctional.json"
+    },
+    {
+      "service_id": "dementia-group-home",
+      "label": "認知症対応型共同生活介護",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/dementia-group-home.json"
+    },
+    {
+      "service_id": "community-specific-facility",
+      "label": "地域密着型特定施設入居者生活介護",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/community-specific-facility.json"
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "label": "地域密着型介護老人福祉施設入所者生活介護",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/community-elderly-facility.json"
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "label": "看護小規模多機能型居宅介護",
+      "service_class": "COMMUNITY_BASED_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/nursing-small-scale-multifunctional.json"
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "label": "介護老人福祉施設",
+      "service_class": "FACILITY_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/elderly-welfare-facility.json"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "label": "介護老人保健施設",
+      "service_class": "FACILITY_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/elderly-health-facility.json"
+    },
+    {
+      "service_id": "care-medical-institution",
+      "label": "介護医療院",
+      "service_class": "FACILITY_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/care-medical-institution.json"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "label": "介護予防訪問入浴介護",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-homebath.json"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "label": "介護予防訪問看護",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-homenursing.json"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "label": "介護予防訪問リハビリテーション",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-homerehab.json"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "label": "介護予防居宅療養管理指導",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-homecaremanagement.json"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "label": "介護予防通所リハビリテーション",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-dayrehab.json"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "label": "介護予防短期入所生活介護",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-shortstay-life.json"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "label": "介護予防短期入所療養介護",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-shortstay-medical.json"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "label": "介護予防特定施設入居者生活介護",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-specific-facility.json"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "label": "介護予防福祉用具貸与",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-welfare-equipment-rental.json"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "label": "特定介護予防福祉用具販売",
+      "service_class": "PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/specific-preventive-welfare-equipment-sale.json"
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "label": "介護予防認知症対応型通所介護",
+      "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-dementia-dayservice.json"
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "label": "介護予防小規模多機能型居宅介護",
+      "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-small-scale-multifunctional.json"
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "label": "介護予防認知症対応型共同生活介護",
+      "service_class": "COMMUNITY_BASED_PREVENTIVE_SERVICE",
+      "status": "REGISTERED_NOT_INGESTED",
+      "config": "data/services/preventive-dementia-group-home.json"
+    }
+  ],
+  "historical_services": [
+    {
+      "service_id": "care-medical-facility",
+      "label": "介護療養型医療施設",
+      "status": "HISTORICAL_ABOLISHED",
+      "ended_on": "2024-03-31",
+      "note": "経過措置期限到来により廃止。現行39サービスには含めない。"
+    },
+    {
+      "service_id": "preventive-homevisit",
+      "label": "介護予防訪問介護",
+      "status": "HISTORICAL_TRANSFERRED_TO_COMMUNITY_SUPPORT_PROGRAM",
+      "ended_on": "2018-03-31",
+      "note": "予防給付としては終了し、総合事業の訪問型サービスへ移行。"
+    },
+    {
+      "service_id": "preventive-dayservice",
+      "label": "介護予防通所介護",
+      "status": "HISTORICAL_TRANSFERRED_TO_COMMUNITY_SUPPORT_PROGRAM",
+      "ended_on": "2018-03-31",
+      "note": "予防給付としては終了し、総合事業の通所型サービスへ移行。"
+    }
+  ],
+  "special_categories": [
+    {
+      "category_id": "housing-renovation",
+      "label": "居宅介護・介護予防住宅改修",
+      "status": "SPECIAL_BENEFIT_NOT_ARTICLE8_SERVICE",
+      "note": "介護保険給付上の重要対象だが、介護保険法第8条・第8条の2のサービス定義とは別枠で管理する。"
+    },
+    {
+      "category_id": "community-support-program",
+      "label": "介護予防・日常生活支援総合事業",
+      "status": "SPECIAL_MUNICIPAL_PROGRAM",
+      "note": "市町村事業であり、全国一律の単一サービスとして現行39サービスに混在させない。"
     }
   ],
   "migration": {
