@@ -269,3 +269,23 @@ The handbook should make the database understandable.
 The Q&A search should make it easy to reach the relevant part of the database from a practical question.
 
 All three should remain connected to the same evidence chain.
+
+
+## 11. Delivery priority: complete the database before handbook expansion
+
+The immediate product priority is database completion.
+
+Handbook implementation should not become the main workstream until the national-source database has substantially complete service breadth and the remaining verification gaps are reduced to an explicitly bounded set.
+
+Near-term work should therefore prioritize:
+
+1. registering the remaining service categories in the service catalog,
+2. establishing service-specific scopes for the major national source layers,
+3. ingesting missing ordinance / notice / remuneration / fee-guidance layers,
+4. completing item-body verification,
+5. establishing currentness where primary evidence permits,
+6. resolving or explicitly bounding relation gaps,
+7. preserving human-review state separately,
+8. exposing all structured records through the database views even when publication status is limited.
+
+The handbook remains an intended presentation layer, but database breadth, traceability, and verification take precedence.
