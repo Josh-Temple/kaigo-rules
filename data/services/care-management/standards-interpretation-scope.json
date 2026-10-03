@@ -1,0 +1,28 @@
+{
+  "format_version": 1,
+  "service_id": "care-management",
+  "layer": "standards_interpretation",
+  "source_family": "care_management_standards_interpretation",
+  "document_id": "rouki22",
+  "document_title": "指定居宅介護支援等の事業の人員及び運営に関する基準について",
+  "notice_number": "平成11年7月29日 老企第22号",
+  "source_mode": "OFFICIAL_AMENDMENT_PDF_WITH_OMISSIONS",
+  "source_urls": [
+    "https://www.mhlw.go.jp/content/12300000/001221591.pdf"
+  ],
+  "source_locator": "第2 指定居宅介護支援等の事業の人員及び運営に関する基準",
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-09-B2_v1.md",
+    "detail_task_range": "KR2-09-B001..KR2-09-B032",
+    "expected_principal_items": 32,
+    "rollup": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR2-09-E002_v1.md"
+  },
+  "content_state": "STAGING_COMPLETE_SOURCE_SPECIFIC_FRAGMENTS",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "omissions_policy": "令和6年度新旧対照表の「略」は推測補完せず、現行統合全文とは扱わない。",
+  "publication": {
+    "allowed": false,
+    "reason": "Repository本文adapterと独立source検証が未実施"
+  }
+}
