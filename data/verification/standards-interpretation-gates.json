@@ -1,0 +1,198 @@
+{
+  "format_version": 1,
+  "base_main_sha": "ad8aecff3efc29530e58980257a6dff7d3c0164d",
+  "purpose": "Normalize cross-service verification gates without rewriting service-specific evidence receipts or promoting any downstream gate.",
+  "services": [
+    {
+      "service_id": "community-dayservice",
+      "source_inventory": {
+        "state": "PASS_BOUNDED_SCOPE_ONLY",
+        "receipt": "data/verification/standards-interpretation-source-inventory/community-dayservice.json"
+      },
+      "item_body": {
+        "state": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+        "counts": {
+          "PASS": 21,
+          "PARTIAL": 0,
+          "GAP": 0,
+          "FAIL": 0
+        },
+        "receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json"
+      },
+      "currentness": {
+        "verification_performed": true,
+        "state": "NOT_ESTABLISHED",
+        "receipt": "data/verification/standards-interpretation-currentness/community-dayservice.json",
+        "worker_pr": 288,
+        "verifier": "scripts/validate_community_dayservice_currentness.py"
+      },
+      "human_review": {
+        "state": "NOT_REVIEWED"
+      },
+      "publication": {
+        "allowed": false
+      },
+      "route": {
+        "enabled": false
+      },
+      "package": {
+        "blocker_state": "NOT_APPLICABLE",
+        "blocker_task_id": null
+      }
+    },
+    {
+      "service_id": "regular-round",
+      "source_inventory": {
+        "state": "PASS_BOUNDED_SCOPE_ONLY",
+        "receipt": "data/verification/standards-interpretation-source-inventory/regular-round.json"
+      },
+      "item_body": {
+        "state": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+        "counts": {
+          "PASS": 21,
+          "PARTIAL": 0,
+          "GAP": 0,
+          "FAIL": 0
+        },
+        "receipt": "data/verification/standards-interpretation-item-body/regular-round.json"
+      },
+      "currentness": {
+        "verification_performed": true,
+        "state": "NOT_ESTABLISHED",
+        "receipt": "data/verification/standards-interpretation-currentness/regular-round.json",
+        "worker_pr": 289,
+        "verifier": "scripts/validate_regular_round_standards_interpretation_currentness.py"
+      },
+      "human_review": {
+        "state": "NOT_REVIEWED"
+      },
+      "publication": {
+        "allowed": false
+      },
+      "route": {
+        "enabled": false
+      },
+      "package": {
+        "blocker_state": "NOT_APPLICABLE",
+        "blocker_task_id": null
+      }
+    },
+    {
+      "service_id": "night-homevisit",
+      "source_inventory": {
+        "state": "PASS_BOUNDED_SCOPE_ONLY",
+        "receipt": "data/verification/standards-interpretation-source-inventory/night-homevisit.json"
+      },
+      "item_body": {
+        "state": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+        "counts": {
+          "PASS": 25,
+          "PARTIAL": 0,
+          "GAP": 0,
+          "FAIL": 0
+        },
+        "receipt": "data/verification/standards-interpretation-item-body/night-homevisit.json"
+      },
+      "currentness": {
+        "verification_performed": true,
+        "state": "NOT_ESTABLISHED",
+        "receipt": "data/verification/standards-interpretation-currentness/night-homevisit.json",
+        "worker_pr": 287,
+        "verifier": "scripts/validate_night_homevisit_standards_interpretation_currentness.py"
+      },
+      "human_review": {
+        "state": "NOT_REVIEWED"
+      },
+      "publication": {
+        "allowed": false
+      },
+      "route": {
+        "enabled": false
+      },
+      "package": {
+        "blocker_state": "NOT_APPLICABLE",
+        "blocker_task_id": null
+      }
+    },
+    {
+      "service_id": "care-management",
+      "source_inventory": {
+        "state": "PASS_BOUNDED_SCOPE_ONLY",
+        "receipt": "data/verification/standards-interpretation-source-inventory/care-management.json"
+      },
+      "item_body": {
+        "state": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+        "counts": {
+          "PASS": 32,
+          "PARTIAL": 0,
+          "GAP": 0,
+          "FAIL": 0
+        },
+        "receipt": "data/verification/standards-interpretation-item-body/care-management.json"
+      },
+      "currentness": {
+        "verification_performed": false,
+        "state": "NOT_ESTABLISHED",
+        "receipt": null,
+        "worker_pr": null,
+        "verifier": null
+      },
+      "human_review": {
+        "state": "NOT_REVIEWED"
+      },
+      "publication": {
+        "allowed": false
+      },
+      "route": {
+        "enabled": false
+      },
+      "package": {
+        "blocker_state": "NOT_APPLICABLE",
+        "blocker_task_id": null
+      }
+    },
+    {
+      "service_id": "preventive-support",
+      "source_inventory": {
+        "state": "PASS_BOUNDED_SCOPE_ONLY",
+        "receipt": "data/verification/standards-interpretation-source-inventory/preventive-support.json"
+      },
+      "item_body": {
+        "state": "PARTIAL_WITH_GAPS",
+        "counts": {
+          "PASS": 32,
+          "PARTIAL": 2,
+          "GAP": 0,
+          "FAIL": 0
+        },
+        "receipt": "data/verification/standards-interpretation-item-body/preventive-support.json"
+      },
+      "currentness": {
+        "verification_performed": false,
+        "state": "NOT_ESTABLISHED",
+        "receipt": null,
+        "worker_pr": null,
+        "verifier": null
+      },
+      "human_review": {
+        "state": "NOT_REVIEWED"
+      },
+      "publication": {
+        "allowed": false
+      },
+      "route": {
+        "enabled": false
+      },
+      "package": {
+        "blocker_state": "BLOCKED_KR2-10-E006",
+        "blocker_task_id": "KR2-10-E006"
+      }
+    }
+  ],
+  "layer_independence": {
+    "item_body_pass_does_not_establish_currentness": true,
+    "currentness_pass_does_not_complete_human_review": true,
+    "human_review_does_not_allow_publication_automatically": true,
+    "publication_allowed_does_not_enable_route_automatically": true
+  }
+}
