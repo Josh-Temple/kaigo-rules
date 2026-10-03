@@ -457,15 +457,15 @@
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
         },
         "standards_interpretation": {
-          "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN",
+          "status": "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING",
           "source_family": "community_based_services_standards_interpretation",
           "principal_items": 25,
-          "note": "Repository staging 25項目のitem-bodyを独立照合し、23 PASS / 2 PARTIAL / 0 GAP / 0 FAIL。通知本文が略記の2項目は基準省令による内容支持に留まり、item-body gapが残る。currentness、human review、公開可否、routeは未昇格。",
+          "note": "Repository staging 25項目のitem-bodyを独立照合し、25 PASS / 0 PARTIAL / 0 GAP / 0 FAIL。平成27年度厚労省公式通知資料で従来未確認だった2項目の通知本文を直接確認した。currentness、human review、公開可否、routeは未昇格。",
           "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
-          "item_body_verification": "PARTIAL_WITH_GAPS",
+          "item_body_verification": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
           "item_body_verification_counts": {
-            "PASS": 23,
-            "PARTIAL": 2,
+            "PASS": 25,
+            "PARTIAL": 0,
             "GAP": 0,
             "FAIL": 0
           },
