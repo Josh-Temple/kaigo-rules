@@ -68,6 +68,22 @@
       "status": "OFFICIAL_HISTORICAL_EVIDENCE",
       "required_for_source_inventory": true,
       "note": "厚生労働省公式過去改正比較資料。現行staging (5)に対応する旧番号(4)「身分を証する書類の携行」で、介護支援専門員証の携行・初回訪問時等の提示を直接確認する。currentnessの証明には使用しない。"
+    },
+    {
+      "id": "historical-2015-amendment-comparison",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080876.pdf",
+      "role": "HISTORICAL_AMENDMENT_GAP_RESOLUTION_EVIDENCE",
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true,
+      "note": "厚生労働省公式の平成27年度改正前後比較。④〜⑬の個別通知本文、短期入所サービス、認定審査会意見、介護予防支援事業者との連携、地域ケア会議への協力の本文を直接確認する。currentnessの証明には使用しない。"
+    },
+    {
+      "id": "historical-2018-amendment-comparison",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199107.pdf",
+      "role": "HISTORICAL_AMENDMENT_LOCATOR_BRIDGE",
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE",
+      "required_for_source_inventory": true,
+      "note": "厚生労働省公式の平成30年度改正比較。⑲の新設に伴う後続項目の番号移動を新旧対照で確認し、平成27年度本文から令和3年度・令和6年度locatorへ連続的に追跡する。本文currentnessの証明には使用しない。"
     }
   ],
   "source_assurance": {
