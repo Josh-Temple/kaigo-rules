@@ -75,11 +75,11 @@ def main() -> None:
         "conclusion": (
             "Scoped official text, node IDs, parent structure and source-derived containment "
             "matched live e-Gov XML for Ordinance 37 and the Care Insurance Act using an "
-            "independent XML parser. Ordinance 37 includes dayservice, ordinary homevisit, "
-            "and the dayrehab Chapter 8 slice without collapsing service verification state."
+            "independent XML parser. Ordinance 37 covers the full MainProvision as one shared "
+            "source corpus without collapsing service applicability or verification state."
         ),
         "limitations": [
-            "The audit covers source-derived scoped text and containment only.",
+            "The audit covers source-derived text and containment only; Ordinance 37 is full MainProvision while the Care Insurance Act remains scoped.",
             "Hand-authored legal-semantic and cross-layer relations are excluded and remain separately reviewable.",
             "Independent machine verification is not HUMAN_VERIFIED or VERIFIED_CURRENT.",
             "Later source/data/verifier changes require refresh of this record.",
