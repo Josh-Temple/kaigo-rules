@@ -202,6 +202,12 @@ def build(entry):
     main = body.find("MainProvision") if body is not None else None
     if main is None:
         raise RuntimeError(f"{entry['corpus_id']}: MainProvision not found")
+    live_num = text_of(law.find("LawNum"))
+    live_title = text_of(body.find("LawTitle")) if body is not None else ""
+    if live_num != entry["law_num"]:
+        raise RuntimeError(f"{entry['corpus_id']}: law number mismatch: {live_num!r}")
+    if live_title != entry["title"]:
+        raise RuntimeError(f"{entry['corpus_id']}: law title mismatch: {live_title!r}")
 
     nodes, relations = [], []
     walk(entry, main, [], nodes, relations)
