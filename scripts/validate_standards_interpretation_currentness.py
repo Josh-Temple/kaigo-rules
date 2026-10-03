@@ -140,7 +140,7 @@ def validate() -> list[str]:
             errors.append(f"{service_id}: PACKAGE blocker state mismatch")
 
     preventive = rows["preventive-support"]
-    if preventive["item_body"]["counts"] != {"PASS": 32, "PARTIAL": 2, "GAP": 0, "FAIL": 0}:
+    if preventive["item_body"]["counts"] != {"PASS": 33, "PARTIAL": 1, "GAP": 0, "FAIL": 0}:
         errors.append("preventive-support: residual item-body counts changed")
     if preventive["package"].get("blocker_task_id") != "KR2-10-E006":
         errors.append("preventive-support: KR2-10-E006 blocker not preserved")
