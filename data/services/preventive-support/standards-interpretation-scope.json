@@ -25,5 +25,31 @@
   "publication": {
     "allowed": false,
     "reason": "Repository本文adapterと独立source検証が未実施。サービス全体のPACKAGE precheck blockerも別途保持する"
+  },
+  "source_manifest": [
+    {
+      "id": "r6-final-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227942.pdf",
+      "role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE"
+    },
+    {
+      "id": "r6-additional-official-evidence",
+      "url": "https://www.mhlw.go.jp/content/12300000/001246390.pdf",
+      "role": "ADDITIONAL_OFFICIAL_AMENDMENT_EVIDENCE",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE"
+    },
+    {
+      "id": "r6-amendment-page",
+      "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "role": "OFFICIAL_DISCOVERY_PAGE",
+      "status": "OFFICIAL_INDEX"
+    }
+  ],
+  "source_assurance": {
+    "final_amendment_evidence_identified": true,
+    "integrated_current_text_established": false,
+    "omitted_text_reconstruction_allowed": false,
+    "publication_allowed": false
   }
 }
