@@ -9,6 +9,7 @@ import {
   rankDatabaseSearch,
   scoreDatabaseSearch,
 } from "../lib/database-search.ts";
+import { publicNoticeRecords } from "../lib/notice-database.ts";
 
 test("database-wide search expands key service synonyms", () => {
   assert.equal(matchesDatabaseSearch("業務継続計画の策定等", "BCP"), true);
@@ -114,6 +115,25 @@ test("database-wide snippets honor synonym matches", () => {
     "補足".repeat(60);
 
   assert.match(databaseSearchExcerpt(text, "看護師", 100), /看護職員/);
+});
+
+test("database-wide notice corpus includes published homevisit history", () => {
+  const homevisit = publicNoticeRecords.filter(
+    (record) => record.service_id === "homevisit",
+  );
+  assert.equal(homevisit.length, 35);
+
+  const ranked = rankDatabaseSearch(
+    publicNoticeRecords,
+    "サービス提供責任者",
+    (record) => [
+      { value: record.title, weight: 8 },
+      { value: record.service_label, weight: 4 },
+      { value: record.body_text, weight: 1 },
+    ],
+  );
+
+  assert.ok(ranked.some((record) => record.service_id === "homevisit"));
 });
 
 test("database hub exposes a service-neutral cross-database search", () => {
