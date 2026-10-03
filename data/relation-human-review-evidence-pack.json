@@ -10,8 +10,7 @@
       "CURATED_QA": 1,
       "NOTICE": 7,
       "OFFICIAL_SOURCE_REGISTRY": 1,
-      "ORDINANCE_CANONICAL_NODE": 49,
-      "ORDINANCE_LEGACY_VERIFIED_NODE": 1
+      "ORDINANCE_CANONICAL_NODE": 50
     }
   },
   "review_contract": {
@@ -1483,15 +1482,17 @@
         "text_hashes": []
       },
       "target_evidence": {
-        "resolution_kind": "ORDINANCE_LEGACY_VERIFIED_NODE",
+        "resolution_kind": "ORDINANCE_CANONICAL_NODE",
         "canonical_ids": [
-          "ordinance37.article217.2"
+          "ordinance37.article.217.p.2"
         ],
         "excerpt_kind": "official_text",
-        "excerpt": "指定居宅サービス事業者及び指定居宅サービスの提供に当たる者は、交付、説明、同意、承諾、締結その他これらに類するもののうち、この省令の規定において書面で行うことが規定されている又は想定されるものについては、当該交付等の相手方の承諾を得て、書面に代えて、電磁的方法によることができる。",
-        "source_url": null,
-        "source_locator": "第15章 雑則 > 第217条 > 第2項",
-        "text_hashes": []
+        "excerpt": "指定居宅サービス事業者及び指定居宅サービスの提供に当たる者は、交付、説明、同意、承諾、締結その他これらに類するもの（以下「交付等」という。）のうち、この省令の規定において書面で行うことが規定されている又は想定されるものについては、当該交付等の相手方の承諾を得て、書面に代えて、電磁的方法（電子的方法、磁気的方法その他人の知覚によって認識することができない方法をいう。）によることができる。",
+        "source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "source_locator": "第十五章 雑則 ＞ （電磁的記録等） ＞ 第二百十七条 第2項",
+        "text_hashes": [
+          "eb050d51b78c3416a77c710216f1584c5d3bc7f556eb95bec187d5b93287a259"
+        ]
       },
       "reviewer_decision": null,
       "reviewer_note": null
