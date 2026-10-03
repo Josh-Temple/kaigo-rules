@@ -33,7 +33,7 @@ class StandardsInterpretationItemBodyIntegrationTest(unittest.TestCase):
             counts = receipt["integration_summary"]["counts"]
             for key in totals:
                 totals[key] += counts[key]
-        self.assertEqual(totals, {"PASS": 120, "PARTIAL": 13, "GAP": 0, "FAIL": 0})
+        self.assertEqual(totals, {"PASS": 131, "PARTIAL": 2, "GAP": 0, "FAIL": 0})
 
     def test_preventive_support_package_blocker_is_separate(self):
         receipt = json.loads(
