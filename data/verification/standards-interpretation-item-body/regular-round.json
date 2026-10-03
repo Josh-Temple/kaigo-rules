@@ -920,5 +920,31 @@
     "INTEGRATOR_FOLLOWUP: Consider adding the R6 final comparison (001227939.pdf) to item-level evidence/source_urls for items whose summaries rely on R6 amendment text; several staging items currently cite the earlier R6 comparison (001221586.pdf).",
     "INTEGRATOR_FOLLOWUP: Keep this content/evidence PASS independent from currentness, human review, publication, and route-enablement gates."
   ],
-  "conclusion": "All 21 regular-round staging items have bounded official-source support for their heading/content_summary at the content/evidence-match level. For R6-omitted regions, historical notice body evidence and the standards ordinance were kept as separate source roles; no current integrated interpretation-notice text was reconstructed. Currentness remains unevaluated."
+  "conclusion": "All 21 regular-round staging items have bounded official-source support for their heading/content_summary at the content/evidence-match level. For R6-omitted regions, historical notice body evidence and the standards ordinance were kept as separate source roles; no current integrated interpretation-notice text was reconstructed. Currentness remains unevaluated.",
+  "integration_summary": {
+    "schema_version": 1,
+    "worker_pr": 278,
+    "worker_head_sha": "cc54cce28b89d52c8b23e4332dc3c6b94a8d88bb",
+    "audit_receipt": "data/verification/standards-interpretation-item-body/regular-round.json",
+    "verifier": "scripts/verify_regular_round_standards_interpretation_item_body.py",
+    "verification_status": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+    "counts": {
+      "PASS": 21,
+      "PARTIAL": 0,
+      "GAP": 0,
+      "FAIL": 0
+    },
+    "expected_staging_items_or_tasks": 21,
+    "non_pass_items": 0,
+    "explicit_unresolved_records": 0,
+    "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
+    "currentness_state": "NOT_ESTABLISHED",
+    "human_review_state": "NOT_REVIEWED",
+    "publication_allowed": false,
+    "public_route_enabled": false,
+    "staging_summary_treated_as_official_notice_text": false,
+    "omitted_text_inferred": false,
+    "service_scope_expanded": false,
+    "package_blocker_state": "NOT_APPLICABLE"
+  }
 }

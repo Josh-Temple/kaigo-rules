@@ -522,5 +522,31 @@
     "data/services/community-dayservice/standards-interpretation-scope.json": "d8f80527e839920b29ad158721d5d170b0bc1129",
     "data/services/community-dayservice/standards-interpretation-staging.json": "edcd22d08d463fbcbaaad8f5fdd316f8c0c0736c",
     "data/verification/standards-interpretation-source-inventory/community-dayservice.json": "b98b977b0a044ef4f315d762dc74bdf2f9b99e83"
+  },
+  "integration_summary": {
+    "schema_version": 1,
+    "worker_pr": 277,
+    "worker_head_sha": "7f468ba792457b4527aa35f964053bf7ebab54a8",
+    "audit_receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json",
+    "verifier": "scripts/validate_community_dayservice_item_body_audit.py",
+    "verification_status": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+    "counts": {
+      "PASS": 21,
+      "PARTIAL": 0,
+      "GAP": 0,
+      "FAIL": 0
+    },
+    "expected_staging_items_or_tasks": 21,
+    "non_pass_items": 0,
+    "explicit_unresolved_records": 0,
+    "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
+    "currentness_state": "NOT_ESTABLISHED",
+    "human_review_state": "NOT_REVIEWED",
+    "publication_allowed": false,
+    "public_route_enabled": false,
+    "staging_summary_treated_as_official_notice_text": false,
+    "omitted_text_inferred": false,
+    "service_scope_expanded": false,
+    "package_blocker_state": "NOT_APPLICABLE"
   }
 }

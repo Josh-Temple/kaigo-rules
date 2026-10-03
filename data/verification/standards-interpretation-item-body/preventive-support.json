@@ -1069,5 +1069,31 @@
     "base_main_sha": "9405589503ad594e59124020e5798ce005c4dd3f",
     "staging_binding": "Each audit row pins task_id, staging_id, path, heading, source_locator, and stored source URLs; the service-specific verifier compares them against the checked-out staging file.",
     "source_inventory_binding": "The audit records the pinned source-inventory result/check-level and revalidates source-role boundaries without relying on connector-reported content SHAs."
+  },
+  "integration_summary": {
+    "schema_version": 1,
+    "worker_pr": 280,
+    "worker_head_sha": "b5e0040feef8cf75b2fb85767991e45f970238f7",
+    "audit_receipt": "data/verification/standards-interpretation-item-body/preventive-support.json",
+    "verifier": "scripts/verify_preventive_support_standards_interpretation_item_body.py",
+    "verification_status": "PARTIAL_WITH_GAPS",
+    "counts": {
+      "PASS": 20,
+      "PARTIAL": 13,
+      "GAP": 1,
+      "FAIL": 0
+    },
+    "expected_staging_items_or_tasks": 34,
+    "non_pass_items": 14,
+    "explicit_unresolved_records": 3,
+    "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
+    "currentness_state": "NOT_ESTABLISHED",
+    "human_review_state": "NOT_REVIEWED",
+    "publication_allowed": false,
+    "public_route_enabled": false,
+    "staging_summary_treated_as_official_notice_text": false,
+    "omitted_text_inferred": false,
+    "service_scope_expanded": false,
+    "package_blocker_state": "BLOCKED_KR2-10-E006"
   }
 }

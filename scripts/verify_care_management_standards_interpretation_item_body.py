@@ -235,12 +235,18 @@ def validate_offline() -> dict:
 
     config = load(ROOT / "data/services/care-management.json")
     layer = config["ingestion_layers"]["standards_interpretation"]
-    if layer.get("item_body_verification") != "PENDING":
-        fail("service-level item_body_verification was promoted by this bounded audit")
+    if layer.get("item_body_verification") != "PARTIAL_WITH_GAPS":
+        fail("service-level item_body_verification must preserve the bounded partial result")
+    if layer.get("status") != "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN":
+        fail("service-level status must preserve unresolved item-body gaps")
     if config["publication_gate"].get("public_routes_enabled") is not False:
         fail("public route gate was promoted")
     if config["publication_gate"].get("content_ingested") is not False:
         fail("content publication gate was promoted")
+    if config["publication_gate"].get("independent_verification_complete") is not False:
+        fail("independent verification publication gate was promoted")
+    if config["publication_gate"].get("human_review_complete") is not False:
+        fail("human-review gate was promoted")
 
     return {
         "task_counts": task_counts,
