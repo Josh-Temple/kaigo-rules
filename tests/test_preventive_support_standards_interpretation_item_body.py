@@ -45,12 +45,11 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
         self.assertEqual(coverage["numbered_child_units_checked"], 55)
         self.assertEqual(
             coverage["verdicts"],
-            {"PASS": 20, "PARTIAL": 13, "GAP": 1, "FAIL": 0},
+            {"PASS": 21, "PARTIAL": 13, "GAP": 0, "FAIL": 0},
         )
         self.assertEqual(len(self.audit["items"]), 34)
-        self.assertEqual(
-            [row["task_id"] for row in self.audit["items"] if row["verdict"] == "GAP"],
-            ["KR2-10-B005"],
+        self.assertFalse(
+            [row["task_id"] for row in self.audit["items"] if row["verdict"] == "GAP"]
         )
         self.assertFalse(
             [row for row in self.audit["items"] if row["verdict"] == "FAIL"]
@@ -132,6 +131,10 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
         self.assertEqual(
             roles["r6-amendment-page"],
             "OFFICIAL_DISCOVERY_INDEX_ONLY",
+        )
+        self.assertEqual(
+            roles["additional-official-item1-evidence"],
+            "DIRECT_ITEM_BODY_EVIDENCE_NOT_CURRENTNESS_PROOF",
         )
 
     def test_service_specific_verifier_passes(self):

@@ -4,7 +4,7 @@
 This verifier is deliberately service-specific so parallel item-body workers do not
 modify shared validators or package wiring.  It validates the durable audit receipt
 against the exact staging inputs.  Optional --refetch-sources only checks that the
-five official source roles remain independently accessible; it does not compose an
+official source roles remain independently accessible; it does not compose an
 integrated current notice text.
 """
 from __future__ import annotations
@@ -39,7 +39,7 @@ SOURCE_INVENTORY_PATH = (
     ROOT
     / "data/verification/standards-interpretation-source-inventory/preventive-support.json"
 )
-EXPECTED_COUNTS = {"PASS": 20, "PARTIAL": 13, "GAP": 1, "FAIL": 0}
+EXPECTED_COUNTS = {"PASS": 21, "PARTIAL": 13, "GAP": 0, "FAIL": 0}
 EXPECTED_TASKS = 34
 EXPECTED_CHILD_UNITS = 55
 USER_AGENT = "kaigo-rules-preventive-support-item-body/1.0"
@@ -228,7 +228,7 @@ def validate_receipt() -> tuple[dict, dict]:
         row["task_id"]
         for row in rows
         if row.get("verdict") == "GAP"
-    ] != ["KR2-10-B005"]:
+    ]:
         fail("unexpected GAP set")
     if any(row.get("verdict") == "FAIL" for row in rows):
         fail("unexpected FAIL was introduced")
@@ -255,6 +255,7 @@ def refetch_sources(scope: dict) -> None:
         "r6-amendment-page": "令和6年度介護報酬改定",
         "work-control-source-4": "介護予防支援",
         "work-control-source-5": "介護予防支援",
+        "additional-official-item1-evidence": "内容及び手続きの説明及び同意",
     }
     rows = scope.get("source_manifest", [])
     if set(expected_anchors) != {row.get("id") for row in rows}:
@@ -275,7 +276,7 @@ def main() -> None:
     parser.add_argument(
         "--refetch-sources",
         action="store_true",
-        help="Re-fetch all five manifest sources and check bounded anchors.",
+        help="Re-fetch all manifest sources and check bounded anchors.",
     )
     args = parser.parse_args()
     audit, scope = validate_receipt()
