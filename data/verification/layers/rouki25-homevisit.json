@@ -1,0 +1,24 @@
+{
+  "id": "rouki25-homevisit",
+  "title": "老企第25号 訪問介護 公式旧HTML 35項目",
+  "content_verification": {
+    "status": "PASS",
+    "kind": "INDEPENDENT_HISTORICAL_SOURCE_MATCH",
+    "items": 35,
+    "evidence": "data/homevisit-rouki25-historical-independent-audit.json"
+  },
+  "currentness": {
+    "status": "GAP_HISTORICAL_SOURCE_ONLY",
+    "note": "公式旧HTMLとの本文一致は確認済み。現行統合本文の完全性は未確認であり、令和6年度改正資料は別証拠として扱う。"
+  },
+  "monitoring": {
+    "status": "ACTIVE",
+    "workflow": ".github/workflows/verify-homevisit-rouki25-historical-independent.yml"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED",
+    "reviewed_items": 0,
+    "total_items": 35
+  },
+  "assurance": "HISTORICAL_SOURCE_TEXT_PASS_CURRENTNESS_GAP"
+}
