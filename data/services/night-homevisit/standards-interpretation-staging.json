@@ -1,0 +1,540 @@
+{
+  "format_version": 1,
+  "service_id": "night-homevisit",
+  "layer": "standards_interpretation",
+  "source_family": "community_based_services_standards_interpretation",
+  "dataset_role": "WORK_CONTROL_ACCEPTED_STAGING_ADAPTER",
+  "publication_state": "NOT_PUBLIC",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-08-B2_v1.md",
+    "detail_task_range": "KR2-08-B001..KR2-08-B025",
+    "rollup": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR2-08-E002_v1.md"
+  },
+  "source_policy": {
+    "summaries_are_not_official_notice_text": true,
+    "source_locator_must_be_reverified_before_publication": true,
+    "omitted_text_must_not_be_inferred": true,
+    "current_integrated_text_not_claimed": true
+  },
+  "item_count": 25,
+  "items": [
+    {
+      "id": "night-homevisit.notice.001",
+      "task_id": "KR2-08-B001",
+      "path": "第三/二",
+      "number": "二",
+      "heading": "夜間対応型訪問介護",
+      "parent": "第3 地域密着型サービス",
+      "content_summary": "基本方針、人員、設備等、運営に関する基準からなる通知節。現行基準省令では第二章・第4条以下に対応する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／二 夜間対応型訪問介護",
+      "extraction_method": "令和3年度改正資料の節境界、現行基準省令、厚労省旧版通知の目次・節構造を突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B001-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.002",
+      "task_id": "KR2-08-B002",
+      "path": "第三/二/1/(1)",
+      "number": "(1)",
+      "heading": "基本方針（基準第4条）",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/1 基本方針",
+      "content_summary": "利用者が可能な限り居宅で自立した生活を営めるよう、夜間に定期巡回・随時対応・随時訪問を組み合わせ、安心して在宅生活を継続できるよう援助する基本方針を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／1 （略）",
+      "extraction_method": "令和3年度資料で略記された「1」を、厚労省旧版通知で(1)(2)の見出しを確認し、現行基準第4条・第5条と突合した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B002-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.003",
+      "task_id": "KR2-08-B003",
+      "path": "第三/二/2/(1)/①/イ",
+      "number": "イ",
+      "heading": "イ（独立見出しなし）",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/① オペレーションセンター従業者",
+      "content_summary": "オペレーターの資格要件を扱う。厚労省旧版通知では看護師、介護福祉士、医師、保健師、准看護師、社会福祉士、介護支援専門員等を示し、一定条件下でサービス提供責任者経験者を充てる取扱いが示されている。現行資格要件は基準第6条で別途確認する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ① オペレーションセンター従業者 > イ （略）",
+      "extraction_method": "令和3年度資料で「イ（略）」となる箇所を、厚労省旧版一次資料の対応箇所と現行基準第6条で復元した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B003-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.004",
+      "task_id": "KR2-08-B004",
+      "path": "第三/二/2/(1)/①/ロ",
+      "number": "ロ",
+      "heading": "オペレーター",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/① オペレーションセンター従業者",
+      "content_summary": "提供時間帯を通じ1以上を確保する。事業所常駐は必須ではなく、定期巡回への同行、ICT・転送機能を用いた事業所外対応、サテライト拠点を含む配置が一定条件下で認められる。利用状況・利用者数・業務量に応じ適切な員数を確保する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ① オペレーションセンター従業者 > ロ オペレーター",
+      "extraction_method": "令和3年度改正資料の新欄でロの本文を確認し、現行基準第6条と突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B004-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.005",
+      "task_id": "KR2-08-B005",
+      "path": "第三/二/2/(1)/①/ハ",
+      "number": "ハ",
+      "heading": "ハ（独立見出しなし）",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/① オペレーションセンター従業者",
+      "content_summary": "オペレーターの専従と兼務の取扱いを扱う。厚労省旧版改正資料では、原則として通報受付業務に専従しつつ、利用者の処遇に支障がない場合の定期巡回サービス・同一敷地内の訪問介護・定期巡回随時対応型サービス等との兼務や、他の通報受付業務への従事を示している。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ① オペレーションセンター従業者 > ハ （略）",
+      "extraction_method": "令和3年度資料で略記されたハを、厚労省旧版一次資料の改正後欄と現行基準第6条の兼務規定で復元した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B005-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.006",
+      "task_id": "KR2-08-B006",
+      "path": "第三/二/2/(1)/①/ニ",
+      "number": "ニ",
+      "heading": "オペレーター",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/① オペレーションセンター従業者",
+      "content_summary": "利用者からの通報を受け訪問の要否等を判断する能力が必要であり、看護師・介護福祉士等の資格を有する者とする。オペレーションセンターを設置しない場合は、訪問介護員等の資格を有する者で差し支えない。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ① オペレーションセンター従業者 > ニ オペレーター",
+      "extraction_method": "令和3年度改正資料の新欄でニの本文を確認し、現行基準と突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B006-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.007",
+      "task_id": "KR2-08-B007",
+      "path": "第三/二/2/(1)/①/ホ",
+      "number": "ホ",
+      "heading": "オペレーター",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/① オペレーションセンター従業者",
+      "content_summary": "オペレーターは、オペレーションセンターサービスに支障がない場合、随時訪問サービスを行う訪問介護員等として従事できる。ICT等により事業所外でも利用者情報確認と即時応答ができる体制が判断要素となる。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ① オペレーションセンター従業者 > ホ オペレーター",
+      "extraction_method": "令和3年度改正資料の新欄でホの本文を確認した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B007-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.008",
+      "task_id": "KR2-08-B008",
+      "path": "第三/二/2/(1)/①/ヘ",
+      "number": "ヘ",
+      "heading": "オペレーター",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/① オペレーションセンター従業者",
+      "content_summary": "基準第6条第4項各号の施設等で入所者等の処遇に支障がない場合、資格要件を満たす当該施設職員をオペレーターに充てられる。ただし、定期巡回・随時訪問に従事した時間の施設側勤務時間への算入には制限がある。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ① オペレーションセンター従業者 > ヘ オペレーター",
+      "extraction_method": "令和3年度改正資料の新欄でヘの本文を確認した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B008-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.009",
+      "task_id": "KR2-08-B009",
+      "path": "第三/二/2/(1)/①/ト",
+      "number": "ト",
+      "heading": "面接相談員",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/① オペレーションセンター従業者",
+      "content_summary": "利用者からの通報に適切に対応できるよう、日中の面接等を通じて利用者状況を把握するため配置する。オペレーターと同様の資格又は同等の知識経験を有する者の配置に努め、必要人員を確保する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ① オペレーションセンター従業者 > ト 面接相談員",
+      "extraction_method": "令和3年度改正資料の新欄で面接相談員の説明を確認した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B009-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.010",
+      "task_id": "KR2-08-B010",
+      "path": "第三/二/2/(1)/②/イ",
+      "number": "イ",
+      "heading": "イ（定期巡回サービスを行う訪問介護員等）",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/② 訪問介護員等",
+      "content_summary": "定期巡回サービスを行う訪問介護員等の配置を扱う。現行基準第6条では、交通事情・訪問頻度等を勘案し利用者へ適切に定期巡回サービスを提供するために必要な数以上を置く。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ② 訪問介護員等 > イ （略）",
+      "extraction_method": "令和3年度資料で「イ（略）」となる箇所を、厚労省旧版通知の②構造と現行基準第6条の定期巡回サービス人員規定で復元した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B010-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.011",
+      "task_id": "KR2-08-B011",
+      "path": "第三/二/2/(1)/②/ロ",
+      "number": "ロ",
+      "heading": "随時訪問サービスを行う訪問介護員等",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/② 訪問介護員等",
+      "content_summary": "随時訪問サービス担当者は原則として専従かつ提供時間帯を通じ1以上を配置する。一定の兼務、オペレーター兼務、夜間の事業所外勤務、サテライト配置がサービス提供に支障がない条件で認められる。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ② 訪問介護員等 > ロ 随時訪問サービスを行う訪問介護員等",
+      "extraction_method": "令和3年度改正資料の新欄でロの本文を確認した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B011-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.012",
+      "task_id": "KR2-08-B012",
+      "path": "第三/二/2/(1)/②/ハ",
+      "number": "ハ",
+      "heading": "ハ（独立見出しなし）",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準/(1) 訪問介護員等の員数（基準第6条）/② 訪問介護員等",
+      "content_summary": "厚労省旧版一次資料では、定期巡回・随時訪問を行う訪問介護員等の資格と看護師の取扱いを説明し、看護師資格者を訪問介護員等として雇用する場合の業務範囲に留意する旨を示している。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (1) 訪問介護員等の員数（基準第6条） > ② 訪問介護員等 > ハ・ニ （略）",
+      "extraction_method": "厚労省旧版一次資料でハの内容を確認し、令和3年度資料のハ・ニ略記と現行基準第6条を突合した。ニは一次資料から一意に復元できず欠落を明示した。",
+      "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B012-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.013",
+      "task_id": "KR2-08-B013",
+      "path": "第三/二/2/(2)",
+      "number": "(2)",
+      "heading": "管理者（基準第7条）",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/2 人員に関する基準",
+      "content_summary": "管理者は常勤・専従を原則とし、管理に支障がない場合にオペレーションセンター従業者・訪問介護員等や一体運営する他サービス等との兼務を認める。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／2 人員に関する基準 > (2) 管理者（基準第7条）",
+      "extraction_method": "令和3年度改正資料の管理者項目と現行基準第7条、厚労省旧版通知を突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B013-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.014",
+      "task_id": "KR2-08-B014",
+      "path": "第三/二/4/(1)",
+      "number": "(1)",
+      "heading": "指定夜間対応型訪問介護の基本的取扱方針及び具体的取扱方針",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "現行基準の基本・具体的取扱方針に対応。利用者の状況に応じた適切な定期巡回・随時対応、サービス評価・改善、保健医療サービスとの連携等を扱う。厚労省旧版通知では同項見出しと留意事項を確認できる。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (1) （略）",
+      "extraction_method": "令和3年度資料で略記された(1)を、厚労省旧版通知の運営基準(1)と現行基準の取扱方針規定で復元した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B014-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.015",
+      "task_id": "KR2-08-B015",
+      "path": "第三/二/4/(2)/①",
+      "number": "①",
+      "heading": "①（計画作成・アセスメント）",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準/(2) 夜間対応型訪問介護計画の作成",
+      "content_summary": "オペレーションセンター従業者が利用者の状況を把握・分析し、援助の方向性・目標、担当者、具体的内容、所要時間、日程等を明確にした夜間対応型訪問介護計画を作成する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (2) 夜間対応型訪問介護計画の作成 > ①〜⑤ （略）",
+      "extraction_method": "厚労省旧版通知で①〜④の本文を確認し、令和3年度資料の①〜⑤略記、現行計画規定と突合した。⑤は一次資料から一意に復元できないため欠落を明示した。",
+      "content_state": "GAP_SCOPE_PARTIALLY_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B015-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.016",
+      "task_id": "KR2-08-B016",
+      "path": "第三/二/4/(2)/⑥",
+      "number": "⑥",
+      "heading": "居宅サービス計画に基づくサービス提供時の準用",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準/(2) 夜間対応型訪問介護計画の作成",
+      "content_summary": "居宅サービス計画に基づきサービス提供する事業者について、定期巡回・随時対応型訪問介護看護計画に関する所定の取扱いを、夜間対応型訪問介護計画へ読み替えて準用する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (2) 夜間対応型訪問介護計画の作成 > ⑥ 居宅サービス計画に基づくサービス提供時の準用",
+      "extraction_method": "令和3年度改正資料で⑥の本文を確認した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B016-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.017",
+      "task_id": "KR2-08-B017",
+      "path": "第三/二/4/(3)",
+      "number": "(3)",
+      "heading": "緊急時等の対応",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "サービス提供中に利用者の病状急変等が生じた場合、運営規程に定める方法に基づき、速やかに主治医へ連絡する等の必要な措置を講じる。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (3)・(4) （略）",
+      "extraction_method": "令和3年度資料で略記された(3)(4)を、厚労省旧版通知の明示見出し・本文と現行基準の対応規定で復元した。",
+      "content_state": "GAP_SCOPE_RESOLVED_FROM_PRIMARY_SOURCES",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B017-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.018",
+      "task_id": "KR2-08-B018",
+      "path": "第三/二/4/(5)",
+      "number": "(5)",
+      "heading": "運営規程",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "基準第14条に基づき、事業目的・運営方針、従業者、営業日・時間、オペレーションセンター・定期巡回・随時訪問の内容、利用料、通常の実施地域、緊急時対応等を規程に定める。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (5) 運営規程",
+      "extraction_method": "令和3年度改正資料の当該項目、現行基準省令、厚労省旧版通知を必要な範囲で突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B018-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.019",
+      "task_id": "KR2-08-B019",
+      "path": "第三/二/4/(6)",
+      "number": "(6)",
+      "heading": "勤務体制の確保等",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "基準第15条に基づき勤務体制を定め、原則として事業所の従業者によりサービスを提供する。地域資源を活用した一部委託やオペレーションセンターサービスの一体実施に関する留意事項を含む。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (6) 勤務体制の確保等",
+      "extraction_method": "令和3年度改正資料の当該項目、現行基準省令、厚労省旧版通知を必要な範囲で突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B019-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.020",
+      "task_id": "KR2-08-B020",
+      "path": "第三/二/4/(7)",
+      "number": "(7)",
+      "heading": "業務継続計画の策定等",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "準用規定を通じ、感染症・非常災害時の業務継続計画、研修・訓練、定期的な見直し等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (7) 業務継続計画の策定等",
+      "extraction_method": "令和3年度改正資料の当該項目、現行基準省令、厚労省旧版通知を必要な範囲で突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B020-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.021",
+      "task_id": "KR2-08-B021",
+      "path": "第三/二/4/(8)",
+      "number": "(8)",
+      "heading": "衛生管理等",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "準用規定を通じ、従業者の清潔保持・健康管理、設備・備品の衛生管理、感染症の予防・まん延防止等を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (8) 衛生管理等",
+      "extraction_method": "令和3年度改正資料の当該項目、現行基準省令、厚労省旧版通知を必要な範囲で突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B021-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.022",
+      "task_id": "KR2-08-B022",
+      "path": "第三/二/4/(9)",
+      "number": "(9)",
+      "heading": "地域との連携等",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "地域住民・地域活動等との連携、市町村事業への協力等、地域密着型サービスとしての連携を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (9) 地域との連携等",
+      "extraction_method": "令和3年度改正資料の当該項目、現行基準省令、厚労省旧版通知を必要な範囲で突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B022-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.023",
+      "task_id": "KR2-08-B023",
+      "path": "第三/二/4/(10)",
+      "number": "(10)",
+      "heading": "虐待の防止",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "虐待防止委員会、指針、研修、担当者配置等の虐待防止措置を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (10) 虐待の防止",
+      "extraction_method": "令和3年度改正資料の当該項目、現行基準省令、厚労省旧版通知を必要な範囲で突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B023-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.024",
+      "task_id": "KR2-08-B024",
+      "path": "第三/二/4/(11)",
+      "number": "(11)",
+      "heading": "記録の整備",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "従業者・設備・会計、夜間対応型訪問介護計画、サービス提供、苦情、事故等の記録整備・保存を扱う。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (11) 記録の整備",
+      "extraction_method": "令和3年度改正資料の当該項目、現行基準省令、厚労省旧版通知を必要な範囲で突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B024-LIB-V1"
+    },
+    {
+      "id": "night-homevisit.notice.025",
+      "task_id": "KR2-08-B025",
+      "path": "第三/二/4/(12)",
+      "number": "(12)",
+      "heading": "準用",
+      "parent": "第3 地域密着型サービス/二 夜間対応型訪問介護/4 運営に関する基準",
+      "content_summary": "夜間対応型訪問介護に準用される共通規定を列挙し、対応する通知上の取扱いを参照する。",
+      "source_urls": [
+        "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf"
+      ],
+      "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護／4 運営に関する基準 > (12) 準用",
+      "extraction_method": "令和3年度改正資料の当該項目、現行基準省令、厚労省旧版通知を必要な範囲で突合した。",
+      "content_state": "SOURCE_CONTENT_STRUCTURED",
+      "currentness_state": "NOT_ESTABLISHED",
+      "amendment_history_state": "NOT_COMPREHENSIVELY_CHECKED",
+      "human_review_state": "NOT_REVIEWED",
+      "library_output_id": "KR2-08-B025-LIB-V1"
+    }
+  ]
+}
