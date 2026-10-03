@@ -39,7 +39,7 @@ SOURCE_INVENTORY_PATH = (
     ROOT
     / "data/verification/standards-interpretation-source-inventory/preventive-support.json"
 )
-EXPECTED_COUNTS = {"PASS": 21, "PARTIAL": 13, "GAP": 0, "FAIL": 0}
+EXPECTED_COUNTS = {"PASS": 32, "PARTIAL": 2, "GAP": 0, "FAIL": 0}
 EXPECTED_TASKS = 34
 EXPECTED_CHILD_UNITS = 55
 USER_AGENT = "kaigo-rules-preventive-support-item-body/1.0"
@@ -232,6 +232,42 @@ def validate_receipt() -> tuple[dict, dict]:
         fail("unexpected GAP set")
     if any(row.get("verdict") == "FAIL" for row in rows):
         fail("unexpected FAIL was introduced")
+
+    promoted_version_separated = {
+        "KR2-10-B004", "KR2-10-B008", "KR2-10-B012", "KR2-10-B014",
+        "KR2-10-B018", "KR2-10-B020", "KR2-10-B022", "KR2-10-B025",
+        "KR2-10-B027", "KR2-10-B029", "KR2-10-B031",
+    }
+    rows_by_task = {row["task_id"]: row for row in rows}
+    manifest_ids = {row.get("id") for row in scope.get("source_manifest", [])}
+    for task_id in promoted_version_separated:
+        row = rows_by_task[task_id]
+        if row.get("verdict") != "PASS":
+            fail(f"{task_id}: expected version-separated PASS")
+        evidence = row.get("version_separated_item_body_evidence", [])
+        if not evidence or not any(
+            item.get("directly_supports_staging_summary") is True
+            and item.get("source_manifest_id") in manifest_ids
+            for item in evidence
+        ):
+            fail(f"{task_id}: direct notice-body evidence missing")
+        if any(item.get("proves_currentness") is not False for item in evidence):
+            fail(f"{task_id}: currentness was inferred from version-separated evidence")
+    b008_children = rows_by_task["KR2-10-B008"].get("child_item_body_evidence", [])
+    if len(b008_children) != 12:
+        fail("KR2-10-B008: expected 12 child item-body evidence rows")
+    if any(
+        item.get("directly_supports_child_item_body") is not True
+        or item.get("proves_currentness") is not False
+        or item.get("source_manifest_id") not in manifest_ids
+        for item in b008_children
+    ):
+        fail("KR2-10-B008: child item-body evidence boundary invalid")
+    remaining_partial = {
+        row["task_id"] for row in rows if row.get("verdict") == "PARTIAL"
+    }
+    if remaining_partial != {"KR2-10-B016", "KR2-10-B033"}:
+        fail(f"unexpected remaining PARTIAL set: {sorted(remaining_partial)}")
 
     work_control = audit.get("work_control_observation", {})
     if work_control.get("task_id") != "KR2-10-E006":
