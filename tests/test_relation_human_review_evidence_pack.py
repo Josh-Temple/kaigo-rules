@@ -28,8 +28,7 @@ class RelationHumanReviewEvidencePackTests(unittest.TestCase):
                 "CURATED_QA": 1,
                 "NOTICE": 7,
                 "OFFICIAL_SOURCE_REGISTRY": 1,
-                "ORDINANCE_CANONICAL_NODE": 49,
-                "ORDINANCE_LEGACY_VERIFIED_NODE": 1,
+                "ORDINANCE_CANONICAL_NODE": 50,
             },
         )
         self.assertFalse(
@@ -90,11 +89,11 @@ class RelationHumanReviewEvidencePackTests(unittest.TestCase):
         )
         self.assertEqual(
             by_target["ordinance37.article217.2"]["resolution_kind"],
-            "ORDINANCE_LEGACY_VERIFIED_NODE",
+            "ORDINANCE_CANONICAL_NODE",
         )
         self.assertEqual(
             by_target["ordinance37.article217.2"]["canonical_ids"],
-            ["ordinance37.article217.2"],
+            ["ordinance37.article.217.p.2"],
         )
 
 
