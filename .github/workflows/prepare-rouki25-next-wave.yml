@@ -1,0 +1,64 @@
+name: Prepare next Rouki 25 historical ingestion wave
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/services/homenursing/rouki25-scope.json"
+      - "data/services/homerehab/rouki25-scope.json"
+      - "data/services/homecaremanagement/rouki25-scope.json"
+      - "scripts/import_rouki25_historical_service.py"
+      - "scripts/verify_rouki25_historical_service_independent.py"
+      - "tests/test_rouki25_next_wave_ingestion.py"
+      - ".github/workflows/prepare-rouki25-next-wave.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - service: homenursing
+            expected: 12
+          - service: homerehab
+            expected: 7
+          - service: homecaremanagement
+            expected: 9
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Build bounded historical dataset from official MHLW HTML
+        run: python scripts/import_rouki25_historical_service.py --service-id ${{ matrix.service }}
+      - name: Independently verify generated text against official MHLW HTML
+        run: |
+          python scripts/verify_rouki25_historical_service_independent.py \
+            --service-id ${{ matrix.service }} \
+            --report ${{ matrix.service }}-rouki25-independent-report.json
+      - name: Check expected principal-item count
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          service = "${{ matrix.service }}"
+          expected = int("${{ matrix.expected }}")
+          path = Path(f"data/services/{service}/rouki25-historical.generated.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          assert data["item_count"] == expected, (service, data["item_count"], expected)
+          print(f"{service}: {expected}/{expected} generated")
+          PY
+      - name: Upload generated evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: ${{ matrix.service }}-rouki25-historical-ingestion
+          path: |
+            data/services/${{ matrix.service }}/rouki25-historical.generated.json
+            ${{ matrix.service }}-rouki25-independent-report.json
+          if-no-files-found: error
