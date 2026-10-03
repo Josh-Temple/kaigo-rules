@@ -45,7 +45,7 @@
       "applicability_kind": "COEXISTENCE_VARIANT",
       "relation": "separate_variant_scope",
       "from_node_id": "standards35.article.165",
-      "through_node_id": "standards35.article.178",
+      "through_node_id": "standards35.article.166",
       "verification_status": "NOT_SERVICE_VERIFIED"
     },
     {
@@ -72,9 +72,26 @@
       "substitution_resolution_state": "NOT_EXPANDED_FAIL_CLOSED",
       "verification_status": "NOT_SERVICE_VERIFIED",
       "note": "参照先本文・読替えは共有コーパス内で解決可能性を保持するが、このworkerでは推測展開しない。"
+    },
+    {
+      "node_id": "standards35.article.166",
+      "relation": "incorporation_or_read_as_wrapper",
+      "target_resolution_state": "NOT_EXPANDED_FAIL_CLOSED",
+      "substitution_resolution_state": "NOT_EXPANDED_FAIL_CLOSED",
+      "verification_status": "NOT_SERVICE_VERIFIED",
+      "note": "参照先本文・読替えは共有コーパス内で解決可能性を保持するが、このworkerでは推測展開しない。"
     }
   ],
-  "excluded_ranges": [],
+  "excluded_ranges": [
+    {
+      "article_range": "167-178",
+      "scope_state": "EXCLUDED",
+      "reason": "DELETED_PROVISIONS_EXCLUDED",
+      "reference_nodes": [
+        "standards35.article.167:178"
+      ]
+    }
+  ],
   "states": {
     "relation_verification": "NOT_SERVICE_VERIFIED",
     "currentness": "NOT_ESTABLISHED_FOR_SERVICE",
