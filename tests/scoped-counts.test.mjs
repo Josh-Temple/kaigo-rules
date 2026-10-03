@@ -46,7 +46,7 @@ test("day-service article count uses the canonical service-scope contract", () =
     scoped.some((record) => record.id === "ordinance37.article.18"),
     false,
   );
-  assert.equal(meta.counts.articles_total, 67);
+  assert.equal(meta.counts.articles_total, 109);
 
   assert.equal(
     isRecordApplicableToService(
