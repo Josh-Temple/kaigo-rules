@@ -26,12 +26,15 @@ class NonRouki25NoticeFamilyTest(unittest.TestCase):
                 layer = config["ingestion_layers"]["standards_interpretation"]
                 self.assertEqual(layer["source_family"], source_family)
                 self.assertEqual(layer["principal_items"], expected_items)
-                expected_status = (
-                    "WORK_CONTROL_STAGING_ADAPTED_SOURCE_VERIFICATION_PENDING"
-                    if service_id in {"night-homevisit", "regular-round", "community-dayservice", "care-management", "preventive-support"}
-                    else "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED"
+                self.assertEqual(
+                    layer["status"],
+                    "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_MATCH_PENDING",
                 )
-                self.assertEqual(layer["status"], expected_status)
+                self.assertEqual(
+                    layer["source_inventory_verification"],
+                    "PASS_BOUNDED_SCOPE_ONLY",
+                )
+                self.assertEqual(layer["item_body_verification"], "PENDING")
                 self.assertFalse(config["publication_gate"]["content_ingested"])
                 self.assertFalse(config["publication_gate"]["public_routes_enabled"])
 
