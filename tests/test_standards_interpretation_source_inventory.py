@@ -29,7 +29,7 @@ class StandardsInterpretationSourceInventoryContractTest(unittest.TestCase):
                     "SOURCE_AVAILABILITY_AND_SERVICE_ANCHOR_ONLY",
                 )
                 self.assertEqual(check["service_anchor"], anchor)
-                self.assertTrue(check["require_all_referenced_sources_fetchable"])
+                self.assertTrue(check["require_all_required_sources_fetchable"])
                 self.assertTrue(check["require_anchor_in_at_least_one_source"])
                 self.assertFalse(check["proves_item_body_match"])
                 self.assertFalse(check["proves_currentness"])
