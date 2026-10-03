@@ -29,12 +29,12 @@
       "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN",
       "source_family": "preventive_support_standards_interpretation",
       "principal_items": 34,
-      "note": "Repository staging 34 taskのitem-bodyを残存再照合し、32 PASS / 2 PARTIAL / 0 GAP / 0 FAIL。R6略記項目は歴史版解釈通知の直接本文とR6 later locatorを版分離して確認し、B016・B033のみPARTIALを維持。㉗はPROPOSED_SCOPE_EXPANSIONとして別task案。currentness、human review、PACKAGE precheck、公開routeは未解消。",
+      "note": "Repository staging 34 taskのitem-bodyを再照合し、33 PASS / 1 PARTIAL / 0 GAP / 0 FAIL。B033は一次資料上4(1)㉕と4(2)⑥が別項目であることを確認してscopeを訂正し、認定審査会意見等の計画反映としてPASSへ解消。B016のみPARTIALを維持。㉗は別task KR2-10-B035としてQueueへ追加済み。currentnessは独立検証済みNOT_ESTABLISHED、human review・PACKAGE precheck・公開routeは未解消。",
       "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
       "item_body_verification": "PARTIAL_WITH_GAPS",
       "item_body_verification_counts": {
-        "PASS": 32,
-        "PARTIAL": 2,
+        "PASS": 33,
+        "PARTIAL": 1,
         "GAP": 0,
         "FAIL": 0
       },
