@@ -1,0 +1,1051 @@
+{
+  "format_version": 1,
+  "purpose": "MHLW_QA_SERVICE_QUERY_RELATION_INDEX",
+  "generated_from": {
+    "qa_service_mapping": "data/qa-service-mapping.json",
+    "qa_group_relations": "data/qa-group-relations.json",
+    "service_manifest": "data/services/manifest.json"
+  },
+  "semantics": {
+    "candidate_query_service_codes": "Union of direct individual Q&A code(s) and explicit shared-group code(s). Callers must still enforce row-level current_service_scope and qualified raw-label rules.",
+    "no_individual_code": "Does not mean Q&A NOT_APPLICABLE.",
+    "scope_vs_applicability": "A defined group relation does not establish item-level applicability."
+  },
+  "summary": {
+    "services_total": 39,
+    "individual_service_mappings": 26,
+    "services_without_individual_qa_code": 13,
+    "shared_groups": 6,
+    "group_membership_relations": 74,
+    "qualified_or_variant_rows": 297,
+    "auto_resolved_qualified_or_variant_rows": 295,
+    "unresolved_fail_closed_rows": 2
+  },
+  "services": [
+    {
+      "service_id": "dayservice",
+      "direct_individual_service_codes": [
+        "16"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "06",
+          "group_id": "qa.shared.day-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "06",
+        "16"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "homevisit",
+      "direct_individual_service_codes": [
+        "11"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "05",
+          "group_id": "qa.shared.visit-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "05",
+        "11"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "homebath",
+      "direct_individual_service_codes": [
+        "12"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "05",
+          "group_id": "qa.shared.visit-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "05",
+        "12"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "homenursing",
+      "direct_individual_service_codes": [
+        "13"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "05",
+          "group_id": "qa.shared.visit-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "05",
+        "13"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "homerehab",
+      "direct_individual_service_codes": [
+        "14"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "05",
+          "group_id": "qa.shared.visit-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "05",
+        "14"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "homecaremanagement",
+      "direct_individual_service_codes": [
+        "15"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "05",
+          "group_id": "qa.shared.visit-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "05",
+        "15"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "dayrehab",
+      "direct_individual_service_codes": [
+        "17"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "06",
+          "group_id": "qa.shared.day-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "06",
+        "17"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "shortstay-life",
+      "direct_individual_service_codes": [
+        "18"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "18"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "community-dayservice",
+      "direct_individual_service_codes": [
+        "48"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "06",
+          "group_id": "qa.shared.day-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "06",
+        "48"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "regular-round",
+      "direct_individual_service_codes": [
+        "40"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "05",
+          "group_id": "qa.shared.visit-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "05",
+        "40"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "night-homevisit",
+      "direct_individual_service_codes": [
+        "41"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "05",
+          "group_id": "qa.shared.visit-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "05",
+        "41"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "care-management",
+      "direct_individual_service_codes": [
+        "23"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "23"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-support",
+      "direct_individual_service_codes": [
+        "XX"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "XX"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "shortstay-medical",
+      "direct_individual_service_codes": [
+        "19"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "19"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "specific-facility",
+      "direct_individual_service_codes": [
+        "20"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "20"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "direct_individual_service_codes": [
+        "21"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "21"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "direct_individual_service_codes": [
+        "22"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "02",
+          "group_id": "qa.shared.home-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "02",
+        "22"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "direct_individual_service_codes": [
+        "42"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "06",
+          "group_id": "qa.shared.day-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "06",
+        "42"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "direct_individual_service_codes": [
+        "43"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "43"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "dementia-group-home",
+      "direct_individual_service_codes": [
+        "44"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "44"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "community-specific-facility",
+      "direct_individual_service_codes": [
+        "45"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "45"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "direct_individual_service_codes": [
+        "46"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "46"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "direct_individual_service_codes": [
+        "47"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "04",
+          "group_id": "qa.shared.community-based-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "04",
+        "47"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "direct_individual_service_codes": [
+        "24"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "03",
+          "group_id": "qa.shared.facility-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "03",
+        "24"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "direct_individual_service_codes": [
+        "25"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "03",
+          "group_id": "qa.shared.facility-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "03",
+        "25"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "care-medical-institution",
+      "direct_individual_service_codes": [
+        "49"
+      ],
+      "individual_mapping_state": "MAPPED_CURRENT_CATALOG",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        },
+        {
+          "service_code": "03",
+          "group_id": "qa.shared.facility-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01",
+        "03",
+        "49"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "direct_individual_service_codes": [],
+      "individual_mapping_state": "NO_INDIVIDUAL_QA_CODE",
+      "shared_group_relations": [
+        {
+          "service_code": "01",
+          "group_id": "qa.shared.all-services",
+          "scope_state": "DEFINED",
+          "applicability_verification_state": "NOT_ESTABLISHED"
+        }
+      ],
+      "candidate_query_service_codes": [
+        "01"
+      ],
+      "scope_state": "DEFINED_BY_DIRECT_OR_SHARED_GROUP",
+      "item_applicability_verification_state": "NOT_ESTABLISHED"
+    }
+  ]
+}

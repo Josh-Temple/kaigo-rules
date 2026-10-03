@@ -1,0 +1,92 @@
+{
+  "format_version": 2,
+  "service_id": "homenursing",
+  "source_family": "governing_standards_ordinance",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
+  "source_corpus": {
+    "corpus_id": "ordinance37",
+    "law_id": "411M50000100037",
+    "manifest_file": "data/shared/standards/manifest.json",
+    "nodes_file": "data/ordinance37-nodes.json",
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+    "checked_on": "2026-10-03"
+  },
+  "chapter": {
+    "title": "第四章 訪問看護"
+  },
+  "direct_scope": {
+    "relation": "DIRECT_CHAPTER_ARTICLE",
+    "article_ids": [
+      "ordinance37.article.59",
+      "ordinance37.article.60",
+      "ordinance37.article.61",
+      "ordinance37.article.62",
+      "ordinance37.article.63",
+      "ordinance37.article.64",
+      "ordinance37.article.65",
+      "ordinance37.article.66",
+      "ordinance37.article.67",
+      "ordinance37.article.68",
+      "ordinance37.article.69",
+      "ordinance37.article.70",
+      "ordinance37.article.71",
+      "ordinance37.article.72",
+      "ordinance37.article.73",
+      "ordinance37.article.73-2",
+      "ordinance37.article.74"
+    ]
+  },
+  "incorporation_relations": [
+    {
+      "relation": "INCORPORATION_BY_REFERENCE",
+      "source_article_id": "ordinance37.article.74",
+      "target_article_ids": [
+        "ordinance37.article.8",
+        "ordinance37.article.9",
+        "ordinance37.article.11",
+        "ordinance37.article.12",
+        "ordinance37.article.13",
+        "ordinance37.article.15",
+        "ordinance37.article.16",
+        "ordinance37.article.17",
+        "ordinance37.article.18",
+        "ordinance37.article.19",
+        "ordinance37.article.21",
+        "ordinance37.article.26",
+        "ordinance37.article.30",
+        "ordinance37.article.30-2",
+        "ordinance37.article.31",
+        "ordinance37.article.32",
+        "ordinance37.article.33",
+        "ordinance37.article.34",
+        "ordinance37.article.35",
+        "ordinance37.article.36",
+        "ordinance37.article.36-2",
+        "ordinance37.article.37",
+        "ordinance37.article.37-2",
+        "ordinance37.article.38",
+        "ordinance37.article.52"
+      ],
+      "partial_exclusion_node_ids": [],
+      "read_as_relation": {
+        "present": true,
+        "anchor_node_id": "ordinance37.article.74",
+        "representation": "RELATION_ANCHOR_ONLY_SHARED_TEXT_NOT_COPIED"
+      },
+      "verification_state": "NOT_ESTABLISHED"
+    }
+  ],
+  "variant_scopes": [],
+  "special_case_scopes": [],
+  "assurance": {
+    "legal_text_duplicated": false,
+    "corpus_presence_does_not_establish_service_applicability": true,
+    "applicability_verification": "NOT_ESTABLISHED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

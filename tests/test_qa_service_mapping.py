@@ -75,7 +75,8 @@ class QaServiceMappingTest(unittest.TestCase):
         self.assertEqual(len({entry["scope_relation"]["group_id"] for entry in shared}), 6)
         for entry in shared:
             self.assertEqual(entry["scope_relation"]["kind"], "GROUP")
-            self.assertEqual(entry["scope_relation"]["membership_state"], "NOT_EXPANDED_IN_QA_MAPPING")
+            self.assertEqual(entry["scope_relation"]["membership_state"], "EXPLICIT_RELATION_MODEL")
+            self.assertEqual(entry["scope_relation"]["relation_model"], "data/qa-group-relations.json")
             self.assertIsNone(entry["catalog_mapping"]["service_id"])
 
     def test_historical_theme_and_special_codes_remain_separate(self):

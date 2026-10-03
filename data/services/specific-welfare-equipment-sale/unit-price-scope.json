@@ -1,0 +1,25 @@
+{
+  "format_version": 2,
+  "service_id": "specific-welfare-equipment-sale",
+  "source_family": "unit_price_regional_classification",
+  "status": "SCOPE_DEFINED_NOT_APPLICABLE",
+  "unit_price_scope": {
+    "scope_relation": "NOT_APPLICABLE",
+    "notice_number": "平成27年厚生労働省告示第93号",
+    "reason_basis_node_ids": [
+      "careact.article.41",
+      "careact.article.44"
+    ],
+    "note": "特定福祉用具販売は法44条の購入費給付であり、告示93号の一単位単価表の対象となる法41条指定居宅サービスの単位算定から分離する。"
+  },
+  "assurance": {
+    "legal_text_duplicated": false,
+    "scope_definition": "EVIDENCE_RECORDED",
+    "applicability_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

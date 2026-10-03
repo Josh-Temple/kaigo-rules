@@ -14,7 +14,9 @@
     "ordinance37": "data/services/dayrehab/ordinance37-scope.json",
     "rouki25": "data/services/dayrehab/rouki25-scope.json",
     "remuneration_index": "data/services/dayrehab/remuneration-index.json",
-    "fee_guidance_index": "data/services/dayrehab/fee-guidance-index.json"
+    "fee_guidance_index": "data/services/dayrehab/fee-guidance-index.json",
+    "care_insurance_act": "data/services/dayrehab/care-insurance-act-scope.json",
+    "unit_price": "data/services/dayrehab/unit-price-scope.json"
   },
   "verification_layer_ids": [
     "ordinance37-dayrehab",

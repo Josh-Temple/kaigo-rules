@@ -9,7 +9,12 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "care_insurance_act": "data/services/homebath/care-insurance-act-scope.json",
+    "ordinance37": "data/services/homebath/ordinance37-scope.json",
+    "remuneration": "data/services/homebath/remuneration-scope.json",
+    "unit_price": "data/services/homebath/unit-price-scope.json"
+  },
   "verification_layer_ids": [
     "rouki25-homebath"
   ],

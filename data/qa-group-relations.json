@@ -1,0 +1,341 @@
+{
+  "format_version": 1,
+  "purpose": "MHLW_QA_SHARED_CATEGORY_SCOPE_RELATIONS",
+  "source": {
+    "official_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+    "official_workbook": "https://www.mhlw.go.jp/content/12300000/001751835.xlsx",
+    "qa_mapping": "data/qa-service-mapping.json",
+    "service_manifest": "data/services/manifest.json",
+    "fresh_main_sha": "b22b2d4d5279932c1273ff55c157819fbae4f7d7"
+  },
+  "policy": {
+    "relation_is_search_scope_not_item_applicability": true,
+    "qa_body_is_not_duplicated": true,
+    "row_current_service_scope_is_preserved": true,
+    "qualified_raw_label_must_be_resolved_or_fail_closed": true,
+    "similar_service_names_do_not_create_membership": true,
+    "no_individual_code_does_not_mean_not_applicable": true,
+    "verification_state_is_not_promoted": true,
+    "currentness_state_is_not_promoted": true,
+    "human_review_state_is_not_promoted": true,
+    "publication_or_route_state_is_not_promoted": true
+  },
+  "group_memberships": [
+    {
+      "service_code": "01",
+      "group_id": "qa.shared.all-services",
+      "label": "全サービス共通",
+      "member_service_ids": [
+        "dayservice",
+        "homevisit",
+        "homebath",
+        "homenursing",
+        "homerehab",
+        "homecaremanagement",
+        "dayrehab",
+        "shortstay-life",
+        "community-dayservice",
+        "regular-round",
+        "night-homevisit",
+        "care-management",
+        "preventive-support",
+        "shortstay-medical",
+        "specific-facility",
+        "welfare-equipment-rental",
+        "specific-welfare-equipment-sale",
+        "dementia-dayservice",
+        "small-scale-multifunctional",
+        "dementia-group-home",
+        "community-specific-facility",
+        "community-elderly-facility",
+        "nursing-small-scale-multifunctional",
+        "elderly-welfare-facility",
+        "elderly-health-facility",
+        "care-medical-institution",
+        "preventive-homebath",
+        "preventive-homenursing",
+        "preventive-homerehab",
+        "preventive-homecaremanagement",
+        "preventive-dayrehab",
+        "preventive-shortstay-life",
+        "preventive-shortstay-medical",
+        "preventive-specific-facility",
+        "preventive-welfare-equipment-rental",
+        "specific-preventive-welfare-equipment-sale",
+        "preventive-dementia-dayservice",
+        "preventive-small-scale-multifunctional",
+        "preventive-dementia-group-home"
+      ],
+      "membership_basis": "CURRENT_SERVICE_UNIVERSE",
+      "scope_state": "DEFINED",
+      "applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_code": "02",
+      "group_id": "qa.shared.home-services",
+      "label": "居宅サービス共通",
+      "member_service_ids": [
+        "dayservice",
+        "homevisit",
+        "homebath",
+        "homenursing",
+        "homerehab",
+        "homecaremanagement",
+        "dayrehab",
+        "shortstay-life",
+        "shortstay-medical",
+        "specific-facility",
+        "welfare-equipment-rental",
+        "specific-welfare-equipment-sale"
+      ],
+      "membership_basis": "MANIFEST_SERVICE_CLASS_HOME_SERVICE",
+      "scope_state": "DEFINED",
+      "applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_code": "03",
+      "group_id": "qa.shared.facility-services",
+      "label": "施設サービス共通",
+      "member_service_ids": [
+        "elderly-welfare-facility",
+        "elderly-health-facility",
+        "care-medical-institution"
+      ],
+      "membership_basis": "MANIFEST_SERVICE_CLASS_FACILITY_SERVICE",
+      "scope_state": "DEFINED",
+      "applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_code": "04",
+      "group_id": "qa.shared.community-based-services",
+      "label": "地域密着型サービス共通",
+      "member_service_ids": [
+        "community-dayservice",
+        "regular-round",
+        "night-homevisit",
+        "dementia-dayservice",
+        "small-scale-multifunctional",
+        "dementia-group-home",
+        "community-specific-facility",
+        "community-elderly-facility",
+        "nursing-small-scale-multifunctional"
+      ],
+      "membership_basis": "MANIFEST_SERVICE_CLASS_COMMUNITY_BASED_SERVICE",
+      "scope_state": "DEFINED",
+      "applicability_verification_state": "NOT_ESTABLISHED"
+    },
+    {
+      "service_code": "05",
+      "group_id": "qa.shared.visit-services",
+      "label": "訪問系サービス共通",
+      "member_service_ids": [
+        "homevisit",
+        "homebath",
+        "homenursing",
+        "homerehab",
+        "homecaremanagement",
+        "regular-round",
+        "night-homevisit"
+      ],
+      "membership_basis": "EXPLICIT_QA_FAMILY_CODES_11_12_13_14_15_40_41",
+      "scope_state": "DEFINED",
+      "applicability_verification_state": "NOT_ESTABLISHED",
+      "note": "This is a search-scope group, not a claim that every code 05 row applies to every member. Row-level current_service_scope and qualified raw labels remain authoritative constraints."
+    },
+    {
+      "service_code": "06",
+      "group_id": "qa.shared.day-services",
+      "label": "通所系サービス共通",
+      "member_service_ids": [
+        "dayservice",
+        "dayrehab",
+        "dementia-dayservice",
+        "community-dayservice"
+      ],
+      "membership_basis": "EXPLICIT_QA_FAMILY_CODES_16_17_42_48",
+      "scope_state": "DEFINED",
+      "applicability_verification_state": "NOT_ESTABLISHED",
+      "note": "This is a search-scope group. Preventive variants can be attached only by explicit row-level current scope; they are not inferred from similar names."
+    }
+  ],
+  "qualified_raw_label_rules": [
+    {
+      "raw_label": "０１.全サービス共通\n（１３.訪問看護事業、１４.訪問リハビリテーション事業、１５.居宅療養管理指導事業、２１.福祉用具貸与事業、２２.特定福祉用具販売事業、２３.居宅介護支援事業を除く）",
+      "row_count": 62,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": "qa.shared.all-services",
+      "exclude_service_ids": [
+        "homenursing",
+        "homerehab",
+        "homecaremanagement",
+        "welfare-equipment-rental",
+        "specific-welfare-equipment-sale",
+        "care-management"
+      ],
+      "add_service_ids": [],
+      "theme_codes": []
+    },
+    {
+      "raw_label": "０１.全サービス共通\n（１３.訪問看護事業、１４.訪問リハビリテーション事業、１５.居宅療養管理指導事業、２１.福祉用具貸与事業、２２.特定福祉用具販売事業、２３.居宅介護支援事業を除く）\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+      "row_count": 115,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": "qa.shared.all-services",
+      "exclude_service_ids": [
+        "homenursing",
+        "homerehab",
+        "homecaremanagement",
+        "welfare-equipment-rental",
+        "specific-welfare-equipment-sale",
+        "care-management"
+      ],
+      "add_service_ids": [],
+      "theme_codes": [
+        "50"
+      ]
+    },
+    {
+      "raw_label": "０１.全サービス共通\n（１５.居宅療養管理指導事業、２１.福祉用具貸与事業、２２.特定福祉用具販売事業を除く）\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+      "row_count": 56,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": "qa.shared.all-services",
+      "exclude_service_ids": [
+        "homecaremanagement",
+        "welfare-equipment-rental",
+        "specific-welfare-equipment-sale"
+      ],
+      "add_service_ids": [],
+      "theme_codes": [
+        "50"
+      ]
+    },
+    {
+      "raw_label": "01 全サービス共通\n（１３.訪問看護事業、１４.訪問リハビリテーション事業、１５.居宅療養管理指導事業、２１.福祉用具貸与事業、２２.特定福祉用具販売事業、２３.居宅介護支援事業を除く）",
+      "row_count": 9,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": "qa.shared.all-services",
+      "exclude_service_ids": [
+        "homenursing",
+        "homerehab",
+        "homecaremanagement",
+        "welfare-equipment-rental",
+        "specific-welfare-equipment-sale",
+        "care-management"
+      ],
+      "add_service_ids": [],
+      "theme_codes": []
+    },
+    {
+      "raw_label": "4 施設サービス共通",
+      "row_count": 1,
+      "resolution_state": "FAIL_CLOSED",
+      "reason": "RAW_NUMERIC_PREFIX_CONFLICTS_WITH_CANONICAL_CODE_03",
+      "base_group_id": null,
+      "exclude_service_ids": [],
+      "add_service_ids": [],
+      "theme_codes": []
+    },
+    {
+      "raw_label": "03 施設サービス共通\n20特定施設入居者生活介護、\n44認知症対応型共同生活介護、\n45地域密着型特定施設入居者生活介護",
+      "row_count": 2,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": "qa.shared.facility-services",
+      "exclude_service_ids": [],
+      "add_service_ids": [
+        "specific-facility",
+        "dementia-group-home",
+        "community-specific-facility"
+      ],
+      "theme_codes": []
+    },
+    {
+      "raw_label": "5 施設サービス共通",
+      "row_count": 1,
+      "resolution_state": "FAIL_CLOSED",
+      "reason": "RAW_NUMERIC_PREFIX_CONFLICTS_WITH_CANONICAL_CODE_03",
+      "base_group_id": null,
+      "exclude_service_ids": [],
+      "add_service_ids": [],
+      "theme_codes": []
+    },
+    {
+      "raw_label": "04 地域密着型サービス共通\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+      "row_count": 3,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": "qa.shared.community-based-services",
+      "exclude_service_ids": [],
+      "add_service_ids": [],
+      "theme_codes": [
+        "50"
+      ]
+    },
+    {
+      "raw_label": "13 訪問看護事業25介護老人保健施設",
+      "row_count": 1,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": null,
+      "explicit_service_ids": [
+        "homenursing",
+        "elderly-health-facility"
+      ],
+      "exclude_service_ids": [],
+      "add_service_ids": [],
+      "theme_codes": []
+    },
+    {
+      "raw_label": "20 特定施設入所者生活介護事業",
+      "row_count": 2,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": null,
+      "explicit_service_ids": [
+        "specific-facility"
+      ],
+      "exclude_service_ids": [],
+      "add_service_ids": [],
+      "theme_codes": []
+    },
+    {
+      "raw_label": "２０.特定施設入居者生活介護事業\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+      "row_count": 3,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": null,
+      "explicit_service_ids": [
+        "specific-facility"
+      ],
+      "exclude_service_ids": [],
+      "add_service_ids": [],
+      "theme_codes": [
+        "50"
+      ]
+    },
+    {
+      "raw_label": "47 看護小規模多機能型居宅介護（複合型サービス）事業",
+      "row_count": 40,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": null,
+      "explicit_service_ids": [
+        "nursing-small-scale-multifunctional"
+      ],
+      "exclude_service_ids": [],
+      "add_service_ids": [],
+      "theme_codes": []
+    },
+    {
+      "raw_label": "XX 介護予防支援\n50 介護職員処遇改善加算・介護職員等特定処遇改善加算",
+      "row_count": 2,
+      "resolution_state": "AUTO_RESOLVED",
+      "base_group_id": null,
+      "explicit_service_ids": [
+        "preventive-support"
+      ],
+      "exclude_service_ids": [],
+      "add_service_ids": [],
+      "theme_codes": [
+        "50"
+      ]
+    }
+  ],
+  "unresolved_policy": {
+    "state": "FAIL_CLOSED",
+    "effect": "Do not expand the row from its parent group until an explicit row-scope rule or human-reviewed mapping is added."
+  }
+}

@@ -8,6 +8,8 @@ on:
     paths:
       - "scripts/watch_fee_guidance_currentness.py"
       - "data/fee-guidance-currentness-watch-config.json"
+      - "data/verification/existing-service-currentness-wave.json"
+      - "scripts/validate_existing_service_currentness_wave.py"
       - "data/fee-guidance-independent-verification.json"
       - ".github/workflows/watch-fee-guidance-currentness.yml"
   push:
@@ -34,6 +36,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
+      - name: Validate existing-service currentness wave
+        run: python scripts/validate_existing_service_currentness_wave.py
       - name: Check official sources for currentness triggers
         id: watch
         shell: bash

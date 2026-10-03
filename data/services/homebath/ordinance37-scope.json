@@ -1,0 +1,100 @@
+{
+  "format_version": 2,
+  "service_id": "homebath",
+  "source_family": "governing_standards_ordinance",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
+  "source_corpus": {
+    "corpus_id": "ordinance37",
+    "law_id": "411M50000100037",
+    "manifest_file": "data/shared/standards/manifest.json",
+    "nodes_file": "data/ordinance37-nodes.json",
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+    "checked_on": "2026-10-03"
+  },
+  "chapter": {
+    "title": "第三章 訪問入浴介護"
+  },
+  "direct_scope": {
+    "relation": "DIRECT_CHAPTER_ARTICLE",
+    "article_ids": [
+      "ordinance37.article.44",
+      "ordinance37.article.45",
+      "ordinance37.article.46",
+      "ordinance37.article.47",
+      "ordinance37.article.48",
+      "ordinance37.article.49",
+      "ordinance37.article.50",
+      "ordinance37.article.51",
+      "ordinance37.article.52",
+      "ordinance37.article.53",
+      "ordinance37.article.53-2",
+      "ordinance37.article.53-3",
+      "ordinance37.article.54"
+    ]
+  },
+  "incorporation_relations": [
+    {
+      "relation": "INCORPORATION_BY_REFERENCE",
+      "source_article_id": "ordinance37.article.54",
+      "target_article_ids": [
+        "ordinance37.article.8",
+        "ordinance37.article.9",
+        "ordinance37.article.10",
+        "ordinance37.article.11",
+        "ordinance37.article.12",
+        "ordinance37.article.13",
+        "ordinance37.article.14",
+        "ordinance37.article.15",
+        "ordinance37.article.16",
+        "ordinance37.article.17",
+        "ordinance37.article.18",
+        "ordinance37.article.19",
+        "ordinance37.article.21",
+        "ordinance37.article.26",
+        "ordinance37.article.30-2",
+        "ordinance37.article.31",
+        "ordinance37.article.32",
+        "ordinance37.article.33",
+        "ordinance37.article.34",
+        "ordinance37.article.35",
+        "ordinance37.article.36",
+        "ordinance37.article.36-2",
+        "ordinance37.article.37",
+        "ordinance37.article.37-2",
+        "ordinance37.article.38"
+      ],
+      "partial_exclusion_node_ids": [],
+      "read_as_relation": {
+        "present": true,
+        "anchor_node_id": "ordinance37.article.54",
+        "representation": "RELATION_ANCHOR_ONLY_SHARED_TEXT_NOT_COPIED"
+      },
+      "verification_state": "NOT_ESTABLISHED"
+    }
+  ],
+  "variant_scopes": [],
+  "special_case_scopes": [
+    {
+      "kind": "基準該当居宅サービス",
+      "state": "CONDITIONAL_NOT_AUTO_APPLICABLE",
+      "article_ids": [
+        "ordinance37.article.55",
+        "ordinance37.article.56",
+        "ordinance37.article.57",
+        "ordinance37.article.58"
+      ],
+      "relation_anchor_node_id": "ordinance37.article.58"
+    }
+  ],
+  "assurance": {
+    "legal_text_duplicated": false,
+    "corpus_presence_does_not_establish_service_applicability": true,
+    "applicability_verification": "NOT_ESTABLISHED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

@@ -45,7 +45,8 @@ class ServiceUniverseCatalogTests(unittest.TestCase):
             self.assertEqual("REGISTERED_NOT_INGESTED", config["ingestion_state"])
             self.assertTrue(config["expected_source_families"])
             self.assertEqual([], config["verification_layer_ids"])
-            self.assertEqual({}, config["scope_files"])
+            for scope_path in config["scope_files"].values():
+                self.assertTrue((ROOT / scope_path).exists(), scope_path)
             self.assertFalse(config["routing"]["future_service_base_enabled"])
             self.assertFalse(config["publication_gate"]["public_routes_enabled"])
             self.assertFalse(config["publication_gate"]["content_ingested"])

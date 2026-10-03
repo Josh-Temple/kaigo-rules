@@ -1,0 +1,81 @@
+{
+  "format_version": 1,
+  "scope_id": "preventive-dayrehab.care-insurance-act",
+  "scope_kind": "SERVICE_REFERENCE_SCOPE",
+  "service_id": "preventive-dayrehab",
+  "service_name": "介護予防通所リハビリテーション",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "source_corpus": {
+    "law_id": "409AC0000000123",
+    "law_num": "平成九年法律第百二十三号",
+    "title": "介護保険法",
+    "shared_scope_id": "care-insurance-act.shared-service-foundation",
+    "nodes": "data/care-insurance-act-nodes.json",
+    "relations": "data/care-insurance-act-relations.json",
+    "source_page": "https://laws.e-gov.go.jp/law/409AC0000000123",
+    "source_text_duplicated": false
+  },
+  "service_definition": {
+    "relation": "defines_service",
+    "source_node_id": "careact.article.8-2.p.6",
+    "verification_status": "NOT_SERVICE_VERIFIED"
+  },
+  "benefit_basis": {
+    "relation": "benefit_basis",
+    "source_node_id": "careact.article.53",
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "note": "介護予防サービス費の支給構造を参照する。"
+  },
+  "provider_governance": {
+    "direct_node_ids": [
+      "careact.article.115-2",
+      "careact.article.115-3",
+      "careact.article.115-4",
+      "careact.article.115-5",
+      "careact.article.115-6",
+      "careact.article.115-7",
+      "careact.article.115-8",
+      "careact.article.115-9",
+      "careact.article.115-10"
+    ],
+    "direct_applicability_verification": "NOT_SERVICE_VERIFIED",
+    "coexistence_special_case": {
+      "source_node_id": "careact.article.115-2-2",
+      "applicability_state": "NOT_ESTABLISHED_FOR_THIS_SERVICE"
+    },
+    "incorporation": [
+      {
+        "via_node_id": "careact.article.115-11",
+        "relation": "incorporates_by_reference",
+        "target_node_ids": [
+          "careact.article.70-2",
+          "careact.article.71",
+          "careact.article.72"
+        ],
+        "substitution_state": "EXPLICIT_IN_SOURCE_NOT_EXPANDED_PER_SERVICE",
+        "service_effect_state": "NOT_ESTABLISHED",
+        "verification_status": "NOT_SERVICE_VERIFIED"
+      }
+    ]
+  },
+  "scope_limitations": [
+    "共有介護保険法コーパスの存在は、このserviceへの適用確認を意味しない。",
+    "第115条の11が準用する第71条・第72条等のみなし指定のservice別効果は、施行規則等を含む独立確認前に推定しない。",
+    "item-body verification、currentness、human review、publication、route exposureは本scope定義から自動昇格しない。"
+  ],
+  "states": {
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED_FOR_SERVICE",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED"
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "official_primary_sources": [
+      "https://laws.e-gov.go.jp/law/409AC0000000123",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=1"
+    ]
+  },
+  "automatic_verification_promotion_allowed": false
+}

@@ -38,10 +38,9 @@ class SharedStandardsCorpusTests(unittest.TestCase):
         self.assertFalse(data["source_text_duplicated"])
         self.assertFalse(data["safety"]["service_applicability_verified"])
         states={x["service_id"]:x["scope_status"] for x in data["service_scope_states"]}
-        self.assertEqual("SCOPE_DEFINED",states["dayservice"])
-        self.assertEqual("SCOPE_DEFINED",states["homevisit"])
-        self.assertEqual("SCOPE_DEFINED",states["dayrehab"])
-        self.assertEqual("SCOPE_NOT_DEFINED",states["community-dayservice"])
+        self.assertEqual(39,len(states))
+        self.assertTrue(all(state=="SCOPE_DEFINED" for state in states.values()))
+        self.assertEqual("SCOPE_DEFINED",states["community-dayservice"])
         self.assertTrue(all(x["verification_status"]=="NOT_SERVICE_VERIFIED" for x in data["relations"]))
 
 if __name__=="__main__": unittest.main()

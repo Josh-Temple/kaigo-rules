@@ -10,7 +10,11 @@
   },
   "id_namespaces": {},
   "scope_files": {
-    "rouki25": "data/services/homecaremanagement/rouki25-scope.json"
+    "rouki25": "data/services/homecaremanagement/rouki25-scope.json",
+    "care_insurance_act": "data/services/homecaremanagement/care-insurance-act-scope.json",
+    "ordinance37": "data/services/homecaremanagement/ordinance37-scope.json",
+    "remuneration": "data/services/homecaremanagement/remuneration-scope.json",
+    "unit_price": "data/services/homecaremanagement/unit-price-scope.json"
   },
   "verification_layer_ids": [
     "rouki25-homecaremanagement"

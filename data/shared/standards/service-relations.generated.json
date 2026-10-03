@@ -6,35 +6,40 @@
     {
       "service_id": "care-management",
       "corpus_id": "care-management-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/care-management/governing-standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "care-medical-institution",
       "corpus_id": "long-term-care-medical-facility-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/care-medical-institution/governing-standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "community-dayservice",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/community-dayservice/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "community-elderly-facility",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/community-elderly-facility/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "community-specific-facility",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/community-specific-facility/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
@@ -42,6 +47,7 @@
       "service_id": "dayrehab",
       "corpus_id": "ordinance37",
       "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/dayrehab/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
@@ -49,62 +55,71 @@
       "service_id": "dayservice",
       "corpus_id": "ordinance37",
       "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "dementia-dayservice",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/dementia-dayservice/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "dementia-group-home",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/dementia-group-home/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "elderly-health-facility",
       "corpus_id": "geriatric-health-services-facility-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/elderly-health-facility/governing-standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "elderly-welfare-facility",
       "corpus_id": "elderly-welfare-facility-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/elderly-welfare-facility/governing-standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "homebath",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/homebath/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "homecaremanagement",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/homecaremanagement/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "homenursing",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/homenursing/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "homerehab",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/homerehab/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
@@ -112,167 +127,191 @@
       "service_id": "homevisit",
       "corpus_id": "ordinance37",
       "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/homevisit/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "night-homevisit",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/night-homevisit/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "nursing-small-scale-multifunctional",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-dayrehab",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-dayrehab/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-dementia-dayservice",
       "corpus_id": "preventive-community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-dementia-dayservice/standards36-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-dementia-group-home",
       "corpus_id": "preventive-community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-dementia-group-home/standards36-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-homebath",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-homebath/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-homecaremanagement",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-homecaremanagement/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-homenursing",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-homenursing/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-homerehab",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-homerehab/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-shortstay-life",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-shortstay-life/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-shortstay-medical",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-shortstay-medical/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-small-scale-multifunctional",
       "corpus_id": "preventive-community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-small-scale-multifunctional/standards36-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-specific-facility",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-specific-facility/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-support",
       "corpus_id": "preventive-support-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-support/governing-standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "preventive-welfare-equipment-rental",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/preventive-welfare-equipment-rental/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "regular-round",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/regular-round/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "shortstay-life",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/shortstay-life/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "shortstay-medical",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/shortstay-medical/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "small-scale-multifunctional",
       "corpus_id": "community-based-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "specific-facility",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/specific-facility/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "specific-preventive-welfare-equipment-sale",
       "corpus_id": "preventive-services-standards",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "specific-welfare-equipment-sale",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/specific-welfare-equipment-sale/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     },
     {
       "service_id": "welfare-equipment-rental",
       "corpus_id": "ordinance37",
-      "scope_status": "SCOPE_NOT_DEFINED",
+      "scope_status": "SCOPE_DEFINED",
+      "scope_source": "data/services/welfare-equipment-rental/ordinance37-scope.json",
       "relation_verification": "NOT_SERVICE_VERIFIED",
       "automatic_verification_promotion_allowed": false
     }

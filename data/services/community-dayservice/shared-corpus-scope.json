@@ -1,0 +1,245 @@
+{
+  "format_version": 1,
+  "service_id": "community-dayservice",
+  "service_label": "地域密着型通所介護",
+  "service_class": "COMMUNITY_BASED_SERVICE",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "scope_source_checked_at": "2026-10-03",
+  "policy": {
+    "shared_source_body_duplicated": false,
+    "scope_definition_is_not_applicability_verification": true,
+    "item_body_verification_is_separate": true,
+    "currentness_is_separate": true,
+    "human_review_is_separate": true,
+    "publication_is_separate": true,
+    "route_exposure_is_separate": true,
+    "automatic_verification_promotion_allowed": false
+  },
+  "care_insurance_act": {
+    "scope_status": "SCOPE_DEFINED",
+    "shared_corpus": {
+      "law_id": "409AC0000000123",
+      "meta": "data/care-insurance-act-meta.json",
+      "nodes": "data/care-insurance-act-nodes.json",
+      "corpus_scope": "data/care-insurance-act-corpus-scope.json"
+    },
+    "service_definition": {
+      "source_node_id": "careact.article.8",
+      "paragraph_node_id": "careact.article.8.p.17",
+      "regional_service_class_paragraph_node_id": "careact.article.8.p.14",
+      "variant_note": null
+    },
+    "common_scope": [
+      {
+        "relation": "benefit_and_fee",
+        "source_node_id": "careact.article.42-2"
+      },
+      {
+        "relation": "designation",
+        "source_node_id": "careact.article.78-2"
+      },
+      {
+        "relation": "provider_standards_and_local_rules",
+        "article_range": {
+          "from": "78-3",
+          "through": "78-4"
+        }
+      },
+      {
+        "relation": "changes_supervision_revocation_and_related_governance",
+        "article_range": {
+          "from": "78-5",
+          "through": "78-11"
+        }
+      },
+      {
+        "relation": "incorporation_by_reference",
+        "via_node_id": "careact.article.78-12",
+        "target_node_ids": [
+          "careact.article.70-2",
+          "careact.article.71",
+          "careact.article.72"
+        ],
+        "read_as": "SOURCE_VIA_NODE",
+        "verification_status": "NOT_SERVICE_VERIFIED"
+      }
+    ],
+    "special_cases": [
+      {
+        "article": "78-2-2",
+        "kind": "SYMBIOTIC_SPECIAL_CASE",
+        "applicability_status": "NOT_SERVICE_VERIFIED"
+      },
+      {
+        "article_range": {
+          "from": "78-13",
+          "through": "78-17"
+        },
+        "kind": "PUBLIC_DESIGNATION_SPECIAL_CASE",
+        "applicability_status": "CONDITIONAL_NOT_VERIFIED"
+      }
+    ],
+    "source_evidence": [
+      {
+        "url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+        "locator": "第8条第17項 / 第42条の2 / 第78条の2以下"
+      }
+    ],
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_status": "NOT_ESTABLISHED"
+  },
+  "governing_standards_ordinance": {
+    "scope_status": "SCOPE_DEFINED",
+    "corpus_id": "community-based-standards",
+    "law_id": "418M60000100034",
+    "corpus_meta": "data/shared/standards/community-based-standards/meta.json",
+    "corpus_nodes": "data/shared/standards/community-based-standards/nodes.json",
+    "direct_article_ranges": [
+      {
+        "from": "1",
+        "through": "3",
+        "role": "common"
+      },
+      {
+        "from": "19",
+        "through": "37",
+        "role": "ordinary_service"
+      },
+      {
+        "from": "183",
+        "through": "183",
+        "role": "common_miscellaneous_electronic_records"
+      }
+    ],
+    "incorporation_relations": [
+      {
+        "relation": "incorporates_by_reference",
+        "via_node_id": "standards34.article.37",
+        "target_resolution": "ARTICLE_REFERENCES_IN_VIA_NODE_OFFICIAL_TEXT",
+        "read_as_relation": {
+          "resolution": "SUBSTITUTIONS_IN_VIA_NODE_OFFICIAL_TEXT_WHEN_PRESENT",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        "verification_status": "NOT_SERVICE_VERIFIED"
+      },
+      {
+        "relation": "incorporates_by_reference",
+        "via_node_id": "standards34.article.37-3",
+        "target_resolution": "ARTICLE_REFERENCES_IN_VIA_NODE_OFFICIAL_TEXT",
+        "read_as_relation": {
+          "resolution": "SUBSTITUTIONS_IN_VIA_NODE_OFFICIAL_TEXT_WHEN_PRESENT",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        "verification_status": "NOT_SERVICE_VERIFIED"
+      },
+      {
+        "relation": "incorporates_by_reference",
+        "via_node_id": "standards34.article.40-16",
+        "target_resolution": "ARTICLE_REFERENCES_IN_VIA_NODE_OFFICIAL_TEXT",
+        "read_as_relation": {
+          "resolution": "SUBSTITUTIONS_IN_VIA_NODE_OFFICIAL_TEXT_WHEN_PRESENT",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        "verification_status": "NOT_SERVICE_VERIFIED"
+      }
+    ],
+    "conditional_or_special": [
+      {
+        "range": [
+          "37-2",
+          "37-3"
+        ],
+        "kind": "SYMBIOTIC_SPECIAL_CASE",
+        "note": "共生型地域密着型通所介護。通常の地域密着型通所介護base scopeと分離し、適用条件は未検証。"
+      },
+      {
+        "range": [
+          "38",
+          "40-16"
+        ],
+        "kind": "MEDICAL_DAY_SERVICE_SPECIAL_CASE",
+        "note": "指定療養通所介護。通常の地域密着型通所介護base scopeと分離し、適用条件は未検証。"
+      }
+    ],
+    "source_evidence": [
+      {
+        "url": "https://laws.e-gov.go.jp/law/418M60000100034",
+        "locator": "地域密着型通所介護の章・準用条文"
+      },
+      {
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+        "locator": "地域密着型通所介護の章・準用条文"
+      }
+    ],
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_status": "NOT_ESTABLISHED"
+  },
+  "remuneration_notification": {
+    "scope_status": "SCOPE_DEFINED",
+    "source_family": "指定地域密着型サービスに要する費用の額の算定に関する基準",
+    "notification_number": "平成18年厚生労働省告示第126号",
+    "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0&pageNo=1",
+    "selector": {
+      "table": "指定地域密着型サービス介護給付費単位数表",
+      "section": "2-2",
+      "title": "地域密着型通所介護費",
+      "service_variant": null
+    },
+    "source_body_duplicated": false,
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_status": "NOT_ESTABLISHED"
+  },
+  "delegated_remuneration_criteria": {
+    "scope_status": "PARTIAL_SCOPE_DEFINED",
+    "root_relation": {
+      "from_notification": "平成18年厚生労働省告示第126号",
+      "from_selector": {
+        "section": "2-2",
+        "title": "地域密着型通所介護費"
+      }
+    },
+    "official_source_families": [
+      {
+        "notification_number": "平成12年厚生省告示第27号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+        "role": "利用者数・人員基準等に関する委任基準"
+      },
+      {
+        "notification_number": "平成27年厚生労働省告示第94号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4583&dataType=0&pageNo=1",
+        "role": "利用者等に関する委任基準"
+      },
+      {
+        "notification_number": "平成27年厚生労働省告示第95号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+        "role": "厚生労働大臣が定める基準"
+      },
+      {
+        "notification_number": "平成27年厚生労働省告示第96号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0&pageNo=1",
+        "role": "施設基準"
+      }
+    ],
+    "clause_level_scope_status": "NOT_ESTABLISHED",
+    "unresolved": [
+      "告示126号の当該サービス区分から各委任告示へのclause-level relation inventoryは未確立。family-level scopeのみ定義し、推測展開しない。"
+    ],
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_status": "NOT_ESTABLISHED"
+  },
+  "unit_price_regional_classification": {
+    "scope_status": "SCOPE_DEFINED",
+    "notification_number": "平成27年厚生労働省告示第93号",
+    "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+    "relation_basis": {
+      "from_notification": "平成18年厚生労働省告示第126号",
+      "from_provision": "第二号",
+      "service_class": "指定地域密着型サービス",
+      "service_selector": "地域密着型通所介護"
+    },
+    "rate_row_resolution_status": "NOT_SERVICE_VERIFIED",
+    "source_body_duplicated": false,
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_status": "NOT_ESTABLISHED"
+  }
+}

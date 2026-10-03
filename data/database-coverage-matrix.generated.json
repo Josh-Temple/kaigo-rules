@@ -445,7 +445,9 @@
             "raw_status": [
               "MONITORED_NOT_HUMAN_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -482,8 +484,11 @@
           },
           "service_scope": {
             "state": "SCOPE_DEFINED",
-            "declared_keys": [],
+            "declared_keys": [
+              "unit_price"
+            ],
             "evidence": [
+              "data/services/dayservice/unit-price-scope.json",
               "data/verification-registry.json#unit-price"
             ]
           },
@@ -545,11 +550,13 @@
             "declared_keys": [
               "qa_corpus",
               "qa_service_mapping",
+              "qa_service_relations",
               "questions"
             ],
             "evidence": [
               "data/qa-corpus.json",
               "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json",
               "data/questions.json"
             ]
           },
@@ -820,7 +827,9 @@
             "raw_status": [
               "GAP_HISTORICAL_SOURCE_ONLY"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1016,9 +1025,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/homevisit/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -1068,10 +1081,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -1196,9 +1211,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/homebath/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -1247,9 +1266,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/homebath/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -1323,7 +1346,9 @@
             "raw_status": [
               "GAP_HISTORICAL_SOURCE_ONLY"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1359,9 +1384,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/homebath/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -1409,9 +1438,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/homebath/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -1507,9 +1540,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/homebath/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -1559,10 +1596,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -1687,9 +1726,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/homenursing/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -1738,9 +1781,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/homenursing/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -1818,7 +1865,9 @@
             "raw_status": [
               "GAP_HISTORICAL_SOURCE_ONLY"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1854,9 +1903,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/homenursing/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -1904,9 +1957,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/homenursing/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2002,9 +2059,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/homenursing/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2054,10 +2115,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -2182,9 +2245,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/homerehab/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2233,9 +2300,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/homerehab/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -2313,7 +2384,9 @@
             "raw_status": [
               "GAP_HISTORICAL_SOURCE_ONLY"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2349,9 +2422,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/homerehab/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2399,9 +2476,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/homerehab/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2497,9 +2578,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/homerehab/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2549,10 +2634,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -2677,9 +2764,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/homecaremanagement/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2728,9 +2819,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/homecaremanagement/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -2808,7 +2903,9 @@
             "raw_status": [
               "GAP_HISTORICAL_SOURCE_ONLY"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2844,9 +2941,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/homecaremanagement/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2894,9 +2995,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/homecaremanagement/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -2992,9 +3097,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/homecaremanagement/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -3044,10 +3153,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -3172,9 +3283,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/dayrehab/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -3254,7 +3369,9 @@
             "raw_status": [
               "LIVE_SOURCE_REPARSE_SCHEDULED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3320,7 +3437,9 @@
             "raw_status": [
               "GAP_HISTORICAL_SOURCE_ONLY"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3385,7 +3504,9 @@
             "raw_status": [
               "GAP"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3450,7 +3571,9 @@
             "raw_status": [
               "GAP"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3516,7 +3639,9 @@
             "raw_status": [
               "GAP"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3552,9 +3677,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/dayrehab/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -3604,10 +3733,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -3732,9 +3863,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/shortstay-life/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -3783,9 +3918,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/shortstay-life/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -3863,7 +4002,9 @@
             "raw_status": [
               "GAP_HISTORICAL_SOURCE_ONLY"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/existing-service-currentness-wave.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3899,9 +4040,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/shortstay-life/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -3949,9 +4094,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/shortstay-life/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -4047,9 +4196,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/shortstay-life/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -4099,10 +4252,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -4227,9 +4382,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/community-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -4278,9 +4437,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/community-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -4396,9 +4559,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/community-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -4446,9 +4613,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/community-dayservice/shared-corpus-scope.json",
+              "data/services/community-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -4544,9 +4717,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/community-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -4596,10 +4773,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -4724,9 +4903,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/regular-round/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -4775,9 +4958,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/regular-round/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -4893,9 +5080,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/regular-round/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -4943,9 +5134,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/regular-round/shared-corpus-scope.json",
+              "data/services/regular-round/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -5041,9 +5238,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/regular-round/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -5093,10 +5294,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -5221,9 +5424,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/night-homevisit/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -5272,9 +5479,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/night-homevisit/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -5390,9 +5601,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/night-homevisit/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -5440,9 +5655,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/night-homevisit/shared-corpus-scope.json",
+              "data/services/night-homevisit/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -5538,9 +5759,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/night-homevisit/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -5590,10 +5815,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -5718,9 +5945,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/care-management/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -5769,9 +6000,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "governing_standards"
+            ],
+            "evidence": [
+              "data/services/care-management/governing-standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -5887,9 +6122,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/care-management/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -5937,9 +6176,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/care-management/delegated-remuneration-criteria-scope.json",
+              "data/services/care-management/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -6035,9 +6280,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/care-management/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -6087,10 +6336,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -6215,9 +6466,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-support/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -6266,9 +6521,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "governing_standards"
+            ],
+            "evidence": [
+              "data/services/preventive-support/governing-standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -6384,9 +6643,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-support/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -6434,9 +6697,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-support/delegated-remuneration-criteria-scope.json",
+              "data/services/preventive-support/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -6532,9 +6801,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-support/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -6584,10 +6857,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -6712,9 +6987,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/shortstay-medical/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -6763,9 +7042,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/shortstay-medical/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -6861,9 +7144,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/shortstay-medical/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -6911,9 +7198,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/shortstay-medical/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7009,9 +7300,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/shortstay-medical/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7061,10 +7356,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -7189,9 +7486,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/specific-facility/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7240,9 +7541,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/specific-facility/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -7338,9 +7643,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/specific-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7388,9 +7697,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/specific-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7486,9 +7799,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/specific-facility/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7538,10 +7855,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -7666,9 +7985,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/welfare-equipment-rental/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7717,9 +8040,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/welfare-equipment-rental/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -7815,9 +8142,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/welfare-equipment-rental/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7865,9 +8196,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/welfare-equipment-rental/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -7963,9 +8298,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/welfare-equipment-rental/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8015,10 +8354,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -8143,9 +8484,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/specific-welfare-equipment-sale/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8194,9 +8539,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "ordinance37"
+            ],
+            "evidence": [
+              "data/services/specific-welfare-equipment-sale/ordinance37-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -8292,9 +8641,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/specific-welfare-equipment-sale/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8342,9 +8695,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/specific-welfare-equipment-sale/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8440,9 +8797,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/specific-welfare-equipment-sale/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8492,10 +8853,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -8620,9 +8983,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/dementia-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8671,9 +9038,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/dementia-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -8773,9 +9144,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/dementia-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8823,9 +9198,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/dementia-dayservice/shared-corpus-scope.json",
+              "data/services/dementia-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8921,9 +9302,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/dementia-dayservice/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -8973,10 +9358,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -9101,9 +9488,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -9152,9 +9543,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -9254,9 +9649,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -9304,9 +9703,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/small-scale-multifunctional/shared-corpus-scope.json",
+              "data/services/small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -9402,9 +9807,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -9454,10 +9863,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -9582,9 +9993,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/dementia-group-home/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -9633,9 +10048,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/dementia-group-home/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -9735,9 +10154,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/dementia-group-home/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -9785,9 +10208,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/dementia-group-home/shared-corpus-scope.json",
+              "data/services/dementia-group-home/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -9883,9 +10312,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/dementia-group-home/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -9935,10 +10368,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -10063,9 +10498,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/community-specific-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -10114,9 +10553,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/community-specific-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -10216,9 +10659,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/community-specific-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -10266,9 +10713,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/community-specific-facility/shared-corpus-scope.json",
+              "data/services/community-specific-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -10364,9 +10817,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/community-specific-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -10416,10 +10873,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -10544,9 +11003,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/community-elderly-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -10595,9 +11058,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/community-elderly-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -10697,9 +11164,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/community-elderly-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -10747,9 +11218,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/community-elderly-facility/shared-corpus-scope.json",
+              "data/services/community-elderly-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -10845,9 +11322,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/community-elderly-facility/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -10897,10 +11378,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -11025,9 +11508,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -11076,9 +11563,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -11178,9 +11669,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -11228,9 +11723,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+              "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -11326,9 +11827,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -11378,10 +11883,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -11506,9 +12013,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/elderly-welfare-facility/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -11557,9 +12068,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "governing_standards"
+            ],
+            "evidence": [
+              "data/services/elderly-welfare-facility/governing-standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -11659,9 +12174,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/elderly-welfare-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -11709,9 +12228,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/elderly-welfare-facility/delegated-remuneration-criteria-scope.json",
+              "data/services/elderly-welfare-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -11807,9 +12332,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/elderly-welfare-facility/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -11859,10 +12388,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -11987,9 +12518,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/elderly-health-facility/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -12038,9 +12573,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "governing_standards"
+            ],
+            "evidence": [
+              "data/services/elderly-health-facility/governing-standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -12140,9 +12679,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/elderly-health-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -12190,9 +12733,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/elderly-health-facility/delegated-remuneration-criteria-scope.json",
+              "data/services/elderly-health-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -12288,9 +12837,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/elderly-health-facility/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -12340,10 +12893,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -12468,9 +13023,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/care-medical-institution/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -12519,9 +13078,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "governing_standards"
+            ],
+            "evidence": [
+              "data/services/care-medical-institution/governing-standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -12621,9 +13184,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/care-medical-institution/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -12671,9 +13238,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/care-medical-institution/delegated-remuneration-criteria-scope.json",
+              "data/services/care-medical-institution/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -12769,9 +13342,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/care-medical-institution/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -12821,10 +13398,12 @@
           "service_scope": {
             "state": "SCOPE_DEFINED",
             "declared_keys": [
-              "qa_service_mapping"
+              "qa_service_mapping",
+              "qa_service_relations"
             ],
             "evidence": [
-              "data/qa-service-mapping.json"
+              "data/qa-service-mapping.json",
+              "data/qa-service-relations.generated.json"
             ]
           },
           "ingestion": {
@@ -12949,9 +13528,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-homebath/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13000,9 +13583,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-homebath/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -13102,9 +13689,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-homebath/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13152,9 +13743,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-homebath/remuneration-scope.json",
+              "data/services/preventive-homebath/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13250,9 +13847,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-homebath/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13300,9 +13901,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -13426,9 +14031,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-homenursing/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13477,9 +14086,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-homenursing/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -13579,9 +14192,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-homenursing/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13629,9 +14246,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-homenursing/remuneration-scope.json",
+              "data/services/preventive-homenursing/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13727,9 +14350,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-homenursing/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13777,9 +14404,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -13903,9 +14534,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-homerehab/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -13954,9 +14589,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-homerehab/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -14056,9 +14695,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-homerehab/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -14106,9 +14749,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-homerehab/remuneration-scope.json",
+              "data/services/preventive-homerehab/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -14204,9 +14853,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-homerehab/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -14254,9 +14907,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -14380,9 +15037,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-homecaremanagement/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -14431,9 +15092,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-homecaremanagement/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -14533,9 +15198,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-homecaremanagement/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -14583,9 +15252,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-homecaremanagement/remuneration-scope.json",
+              "data/services/preventive-homecaremanagement/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -14681,9 +15356,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-homecaremanagement/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -14731,9 +15410,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -14857,9 +15540,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-dayrehab/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -14908,9 +15595,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-dayrehab/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -15010,9 +15701,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-dayrehab/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -15060,9 +15755,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-dayrehab/remuneration-scope.json",
+              "data/services/preventive-dayrehab/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -15158,9 +15859,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-dayrehab/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -15208,9 +15913,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -15334,9 +16043,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-life/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -15385,9 +16098,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-life/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -15487,9 +16204,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-life/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -15537,9 +16258,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-life/remuneration-scope.json",
+              "data/services/preventive-shortstay-life/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -15635,9 +16362,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-life/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -15685,9 +16416,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -15811,9 +16546,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-medical/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -15862,9 +16601,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-medical/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -15964,9 +16707,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-medical/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16014,9 +16761,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-medical/remuneration-scope.json",
+              "data/services/preventive-shortstay-medical/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16112,9 +16865,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-medical/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16162,9 +16919,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -16288,9 +17049,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-specific-facility/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16339,9 +17104,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-specific-facility/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -16441,9 +17210,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-specific-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16491,9 +17264,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-specific-facility/remuneration-scope.json",
+              "data/services/preventive-specific-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16589,9 +17368,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-specific-facility/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16639,9 +17422,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -16765,9 +17552,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-welfare-equipment-rental/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16816,9 +17607,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-welfare-equipment-rental/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -16918,9 +17713,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-welfare-equipment-rental/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -16968,9 +17767,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
+              "data/services/preventive-welfare-equipment-rental/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -17066,9 +17871,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/preventive-welfare-equipment-rental/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -17116,9 +17925,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -17242,9 +18055,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/specific-preventive-welfare-equipment-sale/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -17293,9 +18110,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -17395,9 +18216,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -17445,9 +18270,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
+              "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -17543,9 +18374,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price_regional_classification"
+            ],
+            "evidence": [
+              "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -17593,9 +18428,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -17719,9 +18558,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-dayservice/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -17770,9 +18613,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-dayservice/standards36-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -17872,9 +18719,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-dayservice/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -17922,9 +18773,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-dayservice/remuneration-scope.json",
+              "data/services/preventive-dementia-dayservice/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18020,9 +18877,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-dayservice/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18070,9 +18931,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -18196,9 +19061,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-small-scale-multifunctional/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18247,9 +19116,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-small-scale-multifunctional/standards36-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -18349,9 +19222,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-small-scale-multifunctional/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18399,9 +19276,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-small-scale-multifunctional/remuneration-scope.json",
+              "data/services/preventive-small-scale-multifunctional/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18497,9 +19380,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/preventive-small-scale-multifunctional/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18547,9 +19434,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -18673,9 +19564,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "care_insurance_act"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-group-home/care-insurance-act-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18724,9 +19619,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_index"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-group-home/standards36-scope.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -18826,9 +19725,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-group-home/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18876,9 +19779,15 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "delegated_remuneration_criteria",
+              "remuneration"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-group-home/remuneration-scope.json",
+              "data/services/preventive-dementia-group-home/remuneration-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -18974,9 +19883,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "unit_price"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-group-home/unit-price-scope.json"
+            ]
           },
           "ingestion": {
             "state": "NOT_INGESTED",
@@ -19024,9 +19937,13 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "qa_service_relations"
+            ],
+            "evidence": [
+              "data/qa-service-relations.generated.json"
+            ]
           },
           "ingestion": {
             "state": "INGESTED",
@@ -19130,8 +20047,7 @@
           "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_DEFINED": 2,
-          "SCOPE_NOT_DEFINED": 37
+          "SCOPE_DEFINED": 39
         },
         "ingestion": {
           "INGESTED": 2,
@@ -19167,8 +20083,7 @@
           "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_DEFINED": 3,
-          "SCOPE_NOT_DEFINED": 36
+          "SCOPE_DEFINED": 39
         },
         "ingestion": {
           "INGESTED": 39
@@ -19238,8 +20153,7 @@
           "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_DEFINED": 3,
-          "SCOPE_NOT_DEFINED": 36
+          "SCOPE_DEFINED": 39
         },
         "ingestion": {
           "INGESTED": 2,
@@ -19273,8 +20187,7 @@
           "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_DEFINED": 3,
-          "SCOPE_NOT_DEFINED": 36
+          "SCOPE_DEFINED": 39
         },
         "ingestion": {
           "INGESTED": 2,
@@ -19344,8 +20257,7 @@
           "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_DEFINED": 1,
-          "SCOPE_NOT_DEFINED": 38
+          "SCOPE_DEFINED": 39
         },
         "ingestion": {
           "INGESTED": 1,
@@ -19381,8 +20293,7 @@
           "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_DEFINED": 26,
-          "SCOPE_NOT_DEFINED": 13
+          "SCOPE_DEFINED": 39
         },
         "ingestion": {
           "INGESTED": 39
@@ -19440,792 +20351,7 @@
         }
       }
     },
-    "shared_corpus_available_but_service_scope_missing": [
-      {
-        "service_id": "homevisit",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "homebath",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "homebath",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "homebath",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "homebath",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "homebath",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "homenursing",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "homenursing",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "homenursing",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "homenursing",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "homenursing",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "dayrehab",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "dayrehab",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "community-dayservice",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "community-dayservice",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "community-dayservice",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "community-dayservice",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "community-dayservice",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "night-homevisit",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "night-homevisit",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "night-homevisit",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "night-homevisit",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "night-homevisit",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "shortstay-medical",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "shortstay-medical",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "shortstay-medical",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "shortstay-medical",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "shortstay-medical",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "dementia-dayservice",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "dementia-dayservice",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "dementia-dayservice",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "dementia-dayservice",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "dementia-dayservice",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "dementia-group-home",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "dementia-group-home",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "dementia-group-home",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "dementia-group-home",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "dementia-group-home",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "community-specific-facility",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "community-specific-facility",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "community-specific-facility",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "community-specific-facility",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "community-specific-facility",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "national_qa"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "care_insurance_act"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "governing_standards_ordinance"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "remuneration_notification"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "delegated_remuneration_criteria"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "unit_price_regional_classification"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "national_qa"
-      }
-    ],
+    "shared_corpus_available_but_service_scope_missing": [],
     "genuinely_missing_corpus": [
       {
         "service_id": "dayservice",

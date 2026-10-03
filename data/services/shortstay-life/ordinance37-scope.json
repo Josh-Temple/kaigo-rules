@@ -1,0 +1,145 @@
+{
+  "format_version": 2,
+  "service_id": "shortstay-life",
+  "source_family": "governing_standards_ordinance",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
+  "source_corpus": {
+    "corpus_id": "ordinance37",
+    "law_id": "411M50000100037",
+    "manifest_file": "data/shared/standards/manifest.json",
+    "nodes_file": "data/ordinance37-nodes.json",
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+    "checked_on": "2026-10-03"
+  },
+  "chapter": {
+    "title": "第九章 短期入所生活介護"
+  },
+  "direct_scope": {
+    "relation": "DIRECT_CHAPTER_ARTICLE",
+    "article_ids": [
+      "ordinance37.article.120",
+      "ordinance37.article.121",
+      "ordinance37.article.122",
+      "ordinance37.article.123",
+      "ordinance37.article.124",
+      "ordinance37.article.125",
+      "ordinance37.article.126",
+      "ordinance37.article.127",
+      "ordinance37.article.128",
+      "ordinance37.article.129",
+      "ordinance37.article.130",
+      "ordinance37.article.131",
+      "ordinance37.article.132",
+      "ordinance37.article.133",
+      "ordinance37.article.134",
+      "ordinance37.article.135",
+      "ordinance37.article.136",
+      "ordinance37.article.137",
+      "ordinance37.article.138",
+      "ordinance37.article.139",
+      "ordinance37.article.139-2",
+      "ordinance37.article.139-3",
+      "ordinance37.article.140"
+    ]
+  },
+  "incorporation_relations": [
+    {
+      "relation": "INCORPORATION_BY_REFERENCE",
+      "source_article_id": "ordinance37.article.140",
+      "target_article_ids": [
+        "ordinance37.article.9",
+        "ordinance37.article.10",
+        "ordinance37.article.11",
+        "ordinance37.article.12",
+        "ordinance37.article.13",
+        "ordinance37.article.15",
+        "ordinance37.article.16",
+        "ordinance37.article.19",
+        "ordinance37.article.21",
+        "ordinance37.article.26",
+        "ordinance37.article.30-2",
+        "ordinance37.article.32",
+        "ordinance37.article.33",
+        "ordinance37.article.34",
+        "ordinance37.article.35",
+        "ordinance37.article.36",
+        "ordinance37.article.36-2",
+        "ordinance37.article.37",
+        "ordinance37.article.37-2",
+        "ordinance37.article.38",
+        "ordinance37.article.52",
+        "ordinance37.article.101",
+        "ordinance37.article.103",
+        "ordinance37.article.104"
+      ],
+      "partial_exclusion_node_ids": [
+        "ordinance37.article.36-2.p.2"
+      ],
+      "read_as_relation": {
+        "present": true,
+        "anchor_node_id": "ordinance37.article.140",
+        "representation": "RELATION_ANCHOR_ONLY_SHARED_TEXT_NOT_COPIED"
+      },
+      "verification_state": "NOT_ESTABLISHED"
+    }
+  ],
+  "variant_scopes": [
+    {
+      "kind": "ユニット型指定短期入所生活介護",
+      "article_ids": [
+        "ordinance37.article.140-10",
+        "ordinance37.article.140-11",
+        "ordinance37.article.140-11-2",
+        "ordinance37.article.140-12",
+        "ordinance37.article.140-13",
+        "ordinance37.article.140-2",
+        "ordinance37.article.140-3",
+        "ordinance37.article.140-4",
+        "ordinance37.article.140-5",
+        "ordinance37.article.140-6",
+        "ordinance37.article.140-7",
+        "ordinance37.article.140-8",
+        "ordinance37.article.140-9"
+      ],
+      "relation_anchor_node_id": "ordinance37.article.140-13",
+      "state": "CONDITIONAL_VARIANT_SCOPE_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED"
+    }
+  ],
+  "special_case_scopes": [
+    {
+      "kind": "共生型居宅サービス",
+      "state": "CONDITIONAL_NOT_AUTO_APPLICABLE",
+      "article_ids": [
+        "ordinance37.article.140-14",
+        "ordinance37.article.140-15",
+        "ordinance37.article.140-16:140-25"
+      ],
+      "relation_anchor_node_id": "ordinance37.article.140-15"
+    },
+    {
+      "kind": "基準該当居宅サービス",
+      "state": "CONDITIONAL_NOT_AUTO_APPLICABLE",
+      "article_ids": [
+        "ordinance37.article.140-26",
+        "ordinance37.article.140-27",
+        "ordinance37.article.140-28",
+        "ordinance37.article.140-29",
+        "ordinance37.article.140-30",
+        "ordinance37.article.140-31",
+        "ordinance37.article.140-32"
+      ],
+      "relation_anchor_node_id": "ordinance37.article.140-32"
+    }
+  ],
+  "assurance": {
+    "legal_text_duplicated": false,
+    "corpus_presence_does_not_establish_service_applicability": true,
+    "applicability_verification": "NOT_ESTABLISHED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

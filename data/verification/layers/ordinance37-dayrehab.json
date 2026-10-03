@@ -12,7 +12,8 @@
   "currentness": {
     "status": "LIVE_SOURCE_REPARSE_SCHEDULED",
     "current_revision_id": "411M50000100037_20250401_506M60000100164",
-    "note": "Independent content reparse matched the live e-Gov current-revision payload at the audit run. This is not HUMAN_VERIFIED or a claim of exhaustive future/uncommenced amendment review."
+    "note": "Independent content reparse matched the live e-Gov current-revision payload at the audit run. This is not HUMAN_VERIFIED or a claim of exhaustive future/uncommenced amendment review.",
+    "evidence": "data/verification/existing-service-currentness-wave.json"
   },
   "monitoring": {
     "status": "ACTIVE",

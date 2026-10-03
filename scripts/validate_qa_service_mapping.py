@@ -164,8 +164,10 @@ def main() -> None:
             relation = entry.get("scope_relation", {})
             if relation.get("kind") != "GROUP" or not relation.get("group_id"):
                 fail(f"shared category {code} lacks group relation")
-            if relation.get("membership_state") != "NOT_EXPANDED_IN_QA_MAPPING":
-                fail(f"shared category {code} was expanded inside Q&A mapping")
+            if relation.get("membership_state") != "EXPLICIT_RELATION_MODEL":
+                fail(f"shared category {code} does not point to explicit membership relations")
+            if relation.get("relation_model") != "data/qa-group-relations.json":
+                fail(f"shared category {code} has wrong external relation model")
             if service_id is not None:
                 fail(f"shared category {code} must not have service_id")
         elif classification == "INDIVIDUAL_SERVICE":

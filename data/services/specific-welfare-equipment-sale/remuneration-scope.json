@@ -1,0 +1,32 @@
+{
+  "format_version": 2,
+  "service_id": "specific-welfare-equipment-sale",
+  "source_family": "remuneration_notification_and_delegated_criteria",
+  "status": "SCOPE_DEFINED_NOT_APPLICABLE_TO_NOTICE19",
+  "primary_remuneration_notification": {
+    "scope_relation": "NOT_APPLICABLE",
+    "notice_number": "平成12年厚生省告示第19号",
+    "reason_basis_node_ids": [
+      "careact.article.41",
+      "careact.article.44"
+    ],
+    "note": "特定福祉用具販売の購入費は法44条の居宅介護福祉用具購入費であり、法41条の居宅介護サービス費は購入費を除外する。"
+  },
+  "delegated_remuneration_criteria": {
+    "scope_relation": "NOT_APPLICABLE_TO_NOTICE19_DELEGATED_CRITERIA_FAMILY",
+    "item_relation_verification": "NOT_ESTABLISHED",
+    "alternative_benefit_basis_node_ids": [
+      "careact.article.44"
+    ]
+  },
+  "assurance": {
+    "legal_text_duplicated": false,
+    "scope_definition": "EVIDENCE_RECORDED",
+    "applicability_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

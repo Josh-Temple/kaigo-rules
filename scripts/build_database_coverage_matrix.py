@@ -29,7 +29,7 @@ SOURCE_FAMILIES = (
         "id": "governing_standards_ordinance",
         "label": "Governing standards ordinance",
         "shared_layer_ids": ("ordinance37",),
-        "scope_keys": ("ordinance37", "standards_index"),
+        "scope_keys": ("ordinance37", "standards_index", "governing_standards"),
         "ingestion_keys": ("ordinance37",),
         "verification_layer_ids": ("ordinance37", "ordinance37-dayrehab"),
     },
@@ -53,7 +53,7 @@ SOURCE_FAMILIES = (
         "id": "delegated_remuneration_criteria",
         "label": "Delegated remuneration criteria",
         "shared_layer_ids": ("remuneration-notices",),
-        "scope_keys": ("remuneration_skeleton", "remuneration", "remuneration_index"),
+        "scope_keys": ("delegated_remuneration_criteria", "remuneration_skeleton", "remuneration", "remuneration_index"),
         "ingestion_keys": ("remuneration",),
         "verification_layer_ids": ("remuneration-notices", "remuneration-dayrehab"),
     },
@@ -69,7 +69,7 @@ SOURCE_FAMILIES = (
         "id": "unit_price_regional_classification",
         "label": "Unit price / regional classification",
         "shared_layer_ids": ("unit-price",),
-        "scope_keys": (),
+        "scope_keys": ("unit_price", "unit_price_regional_classification"),
         "ingestion_keys": (),
         "verification_layer_ids": ("unit-price",),
     },
@@ -216,10 +216,15 @@ def build_cell(
     if family["id"] == "governing_standards_ordinance":
         scope_state_row = shared_context["standards_scope_states"].get(service_id, {})
         scope_defined = scope_state_row.get("scope_status") == "SCOPE_DEFINED"
-    if family["id"] == "national_qa" and service_id in shared_context["qa_direct_service_ids"]:
-        scope_defined = True
-        if "qa_service_mapping" not in declared_scope:
-            declared_scope.append("qa_service_mapping")
+    if family["id"] == "national_qa":
+        if service_id in shared_context["qa_direct_service_ids"]:
+            scope_defined = True
+            if "qa_service_mapping" not in declared_scope:
+                declared_scope.append("qa_service_mapping")
+        if service_id in shared_context["qa_scoped_service_ids"]:
+            scope_defined = True
+            if "qa_service_relations" not in declared_scope:
+                declared_scope.append("qa_service_relations")
 
     ingestion_rows = [
         ingestion_layers[key]
@@ -259,7 +264,9 @@ def build_cell(
 
     scope_state = "SCOPE_DEFINED" if scope_defined else "SCOPE_NOT_DEFINED"
     scope_evidence = sorted(
-        "data/qa-service-mapping.json" if key == "qa_service_mapping" else str(scope_files[key])
+        "data/qa-service-mapping.json" if key == "qa_service_mapping"
+        else "data/qa-service-relations.generated.json" if key == "qa_service_relations"
+        else str(scope_files[key])
         for key in declared_scope
     )
     if layer_scoped:
@@ -422,6 +429,7 @@ def build() -> dict:
     standards_relations = load("data/shared/standards/service-relations.generated.json")
     standards_audit_data = load("data/shared/standards/independent-audit.json")
     qa_mapping = load("data/qa-service-mapping.json")
+    qa_service_relations = load("data/qa-service-relations.generated.json")
     shared_context = {
         "standards_map": {row["service_id"]: row["corpus_id"] for row in standards_map_data.get("relations", [])},
         "standards_scope_states": {row["service_id"]: row for row in standards_relations.get("service_scope_states", [])},
@@ -431,6 +439,11 @@ def build() -> dict:
             for row in qa_mapping.get("codes", [])
             if row.get("classification") == "INDIVIDUAL_SERVICE"
             and row.get("catalog_mapping", {}).get("state") == "MAPPED_CURRENT_CATALOG"
+        },
+        "qa_scoped_service_ids": {
+            row["service_id"]
+            for row in qa_service_relations.get("services", [])
+            if str(row.get("scope_state", "")).startswith("DEFINED")
         },
     }
 

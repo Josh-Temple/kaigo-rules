@@ -1,0 +1,89 @@
+{
+  "format_version": 1,
+  "scope_id": "preventive-welfare-equipment-rental.remuneration-and-unit-price",
+  "scope_kind": "SERVICE_SOURCE_FAMILY_SCOPE",
+  "service_id": "preventive-welfare-equipment-rental",
+  "service_name": "介護予防福祉用具貸与",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "remuneration_notification": {
+    "state": "SCOPE_DEFINED",
+    "notice_number": "平成十八年厚生労働省告示第百二十七号",
+    "title": "指定介護予防サービスに要する費用の額の算定に関する基準",
+    "fee_table_selector": {
+      "table": "別表 指定介護予防サービス介護給付費単位数表",
+      "ordinal": 9,
+      "label": "介護予防福祉用具貸与費"
+    },
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+    "structured_nodes_state": "NOT_INGESTED_FOR_PREVENTIVE_SERVICE",
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_state": "NOT_ESTABLISHED_FOR_SERVICE"
+  },
+  "delegated_remuneration_criteria": {
+    "state": "SCOPE_DEFINED_RELATION_NOT_NODE_RESOLVED",
+    "shared_structured_sources": [
+      "data/remuneration-delegated-nodes.json",
+      "data/remuneration-delegated-relations.json"
+    ],
+    "source_families": [
+      {
+        "notice_number": "平成二十七年厚生労働省告示第九十四号",
+        "title": "厚生労働大臣が定める基準に適合する利用者等",
+        "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4583&dataType=0&pageNo=1"
+      },
+      {
+        "notice_number": "平成二十七年厚生労働省告示第九十五号",
+        "title": "厚生労働大臣が定める基準",
+        "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1"
+      },
+      {
+        "notice_number": "平成二十七年厚生労働省告示第九十六号",
+        "title": "厚生労働大臣が定める施設基準",
+        "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0&pageNo=1"
+      }
+    ],
+    "service_selector": "介護予防福祉用具貸与費",
+    "node_resolution_state": "NOT_INGESTED_FOR_PREVENTIVE_SERVICE",
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_state": "NOT_ESTABLISHED_FOR_SERVICE"
+  },
+  "unit_price_regional_classification": {
+    "state": "SCOPE_DEFINED",
+    "notice_number": "平成二十七年厚生労働省告示第九十三号",
+    "title": "厚生労働大臣が定める一単位の単価",
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+    "service_selector": "介護予防福祉用具貸与",
+    "shared_region_assignment_path": "data/unit-price-region-assignments.json",
+    "shared_region_assignment_meta": "data/unit-price-region-assignments-meta.json",
+    "service_rate_nodes_state": "NOT_INGESTED_FOR_PREVENTIVE_SERVICE",
+    "verification_status": "NOT_SERVICE_VERIFIED",
+    "currentness_state": "NOT_ESTABLISHED_FOR_SERVICE"
+  },
+  "supplemental_service_sources": [
+    {
+      "notice_number": "平成二十四年厚生労働省告示第八十号",
+      "role": "福祉用具貸与価格等の個別基準に関する関連告示",
+      "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab3126&dataType=0&pageNo=1",
+      "relation_state": "REFERENCE_ONLY_NOT_NODE_RESOLVED"
+    }
+  ],
+  "source_text_duplicated": false,
+  "states": {
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED_FOR_SERVICE",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED"
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "official_primary_sources": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4583&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0&pageNo=1"
+    ]
+  },
+  "automatic_verification_promotion_allowed": false
+}

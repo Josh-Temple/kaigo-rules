@@ -25,7 +25,13 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "care_insurance_act": "data/services/preventive-homerehab/care-insurance-act-scope.json",
+    "standards_index": "data/services/preventive-homerehab/standards-scope.json",
+    "remuneration": "data/services/preventive-homerehab/remuneration-scope.json",
+    "delegated_remuneration_criteria": "data/services/preventive-homerehab/remuneration-scope.json",
+    "unit_price_regional_classification": "data/services/preventive-homerehab/remuneration-scope.json"
+  },
   "verification_layer_ids": [],
   "publication_gate": {
     "public_routes_enabled": false,
