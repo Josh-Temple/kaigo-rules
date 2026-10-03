@@ -41,6 +41,7 @@ def main() -> None:
     if not receipt_path.exists():
         fail(f"receipt missing for {service_id}")
 
+    scope = load(scope_path)
     receipt = load(receipt_path)
     if receipt.get("service_id") != service_id:
         fail("service mismatch")
@@ -56,8 +57,40 @@ def main() -> None:
         fail("expected count mismatch")
     if coverage.get("observed_staging_items_or_tasks") != args.expected_items:
         fail("observed count mismatch")
+
+    manifest_required_urls = sorted(
+        row["url"]
+        for row in scope.get("source_manifest", [])
+        if isinstance(row, dict)
+        and row.get("url")
+        and row.get("required_for_source_inventory") is True
+    )
+    if coverage.get("manifest_required_sources") != len(manifest_required_urls):
+        fail("manifest required-source count mismatch")
+    if coverage.get("required_sources") != len(manifest_required_urls):
+        fail("receipt does not cover every manifest-required source")
     if coverage.get("required_sources_fetchable") != coverage.get("required_sources"):
         fail("required source coverage incomplete")
+
+    source_rows = {
+        row.get("url"): row
+        for row in receipt.get("sources", [])
+        if isinstance(row, dict) and row.get("url")
+    }
+    missing_required = sorted(set(manifest_required_urls) - set(source_rows))
+    if missing_required:
+        fail(f"manifest-required source rows missing: {missing_required}")
+    for url in manifest_required_urls:
+        row = source_rows[url]
+        if row.get("required_for_source_inventory") is not True:
+            fail(f"manifest-required source lost required flag: {url}")
+        if row.get("fetch") != "PASS":
+            fail(f"manifest-required source not fetchable: {url}")
+
+    if coverage.get("inspected_sources") != len(source_rows):
+        fail("inspected source count mismatch")
+    if coverage.get("referenced_sources", 0) > coverage.get("inspected_sources", 0):
+        fail("referenced source count exceeds inspected source count")
 
     safety = receipt.get("safety", {})
     for key in (
