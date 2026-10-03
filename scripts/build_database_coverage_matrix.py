@@ -18,7 +18,7 @@ SUMMARY_OUTPUT = ROOT / "docs" / "database-coverage-summary.generated.md"
 
 SOURCE_FAMILIES = (
     {
-        "id": "long_term_care_insurance_act",
+        "id": "care_insurance_act",
         "label": "Long-Term Care Insurance Act",
         "shared_layer_ids": ("care-insurance-act",),
         "scope_keys": ("care_insurance_act", "care_insurance_act_core"),
