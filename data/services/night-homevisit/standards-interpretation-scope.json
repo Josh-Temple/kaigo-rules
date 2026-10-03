@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "service_id": "night-homevisit",
+  "layer": "standards_interpretation",
+  "source_family": "community_based_services_standards_interpretation",
+  "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について（抄）",
+  "source_mode": "OFFICIAL_AMENDMENT_PDF_WITH_OMISSIONS",
+  "source_urls": [
+    "https://www.mhlw.go.jp/content/12404000/000772387.pdf"
+  ],
+  "source_locator": "第3 地域密着型サービス／二 夜間対応型訪問介護",
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-08-B2_v1.md",
+    "detail_task_range": "KR2-08-B001..KR2-08-B025",
+    "expected_principal_items": 25,
+    "rollup": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR2-08-E002_v1.md"
+  },
+  "content_state": "STAGING_COMPLETE_SOURCE_SPECIFIC_FRAGMENTS",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "omissions_policy": "新旧対照表上の「略」と明示されない大項目を推測補完しない。",
+  "publication": {
+    "allowed": false,
+    "reason": "Repository本文adapterと独立source検証が未実施"
+  }
+}

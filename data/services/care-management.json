@@ -9,7 +9,9 @@
     "future_service_base_enabled": false
   },
   "id_namespaces": {},
-  "scope_files": {},
+  "scope_files": {
+    "standards_interpretation": "data/services/care-management/standards-interpretation-scope.json"
+  },
   "verification_layer_ids": [],
   "publication_gate": {
     "public_routes_enabled": false,
@@ -18,13 +20,15 @@
     "human_review_complete": false
   },
   "ingestion_layers": {
-    "rouki25": {
-      "status": "STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
-      "note": "Structure QueueのNOTICEレーンは現行タスクがDONE_STAGING。Repositoryへの通知本文adapter・独立検証・currentness確認・human reviewは未実施。"
-    },
     "work_control": {
       "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
       "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+    },
+    "standards_interpretation": {
+      "status": "SOURCE_FAMILY_DEFINED_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
+      "source_family": "care_management_standards_interpretation",
+      "principal_items": 32,
+      "note": "第二陣NOTICE成果の確定粒度と公式一次資料の通知系列をservice-specific scopeとして登録。本文adapter・独立source検証・currentness確認・human review・公開は未実施。"
     }
   }
 }

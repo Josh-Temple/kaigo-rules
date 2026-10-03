@@ -89,6 +89,11 @@ type CatalogService = {
   };
   verification_layer_ids?: string[];
   ingestion_layers?: {
+    standards_interpretation?: {
+      status?: string;
+      note?: string;
+      source_family?: string;
+    };
     rouki25?: {
       status?: string;
       note?: string;
@@ -245,7 +250,9 @@ export const publicNoticeRecords: PublicNoticeRecord[] = [
 ];
 
 const noticeStateForService = (service: CatalogService, recordCount: number) => {
-  const noticeLayer = service.ingestion_layers?.rouki25;
+  const noticeLayer =
+    service.ingestion_layers?.standards_interpretation ||
+    service.ingestion_layers?.rouki25;
   if (noticeLayer?.status) {
     return {
       status: noticeLayer.status,

@@ -1,0 +1,27 @@
+{
+  "format_version": 1,
+  "service_id": "regular-round",
+  "layer": "standards_interpretation",
+  "source_family": "community_based_services_standards_interpretation",
+  "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+  "source_mode": "OFFICIAL_AMENDMENT_PDF_PLUS_HISTORICAL_PDF",
+  "source_urls": [
+    "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+    "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf"
+  ],
+  "source_locator": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護",
+  "work_control": {
+    "structure_index": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR-07-B2_v1.md",
+    "detail_task_range": "KR2-07-B001..KR2-07-B021",
+    "expected_principal_items": 21,
+    "rollup": "/Kaigo Rules/Task Outputs/KAIGO_STAGE_KR2-07-E002_v1.md"
+  },
+  "content_state": "STAGING_COMPLETE_SOURCE_SPECIFIC_FRAGMENTS",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "omissions_policy": "令和6年度改正資料の「略」は推測補完せず、旧版公式通知は大項目等の補助sourceとして別系譜で保持する。",
+  "publication": {
+    "allowed": false,
+    "reason": "Repository本文adapterと独立source検証が未実施"
+  }
+}
