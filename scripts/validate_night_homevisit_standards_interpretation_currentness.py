@@ -33,12 +33,6 @@ def load(path: Path) -> dict:
         fail(f"cannot read valid JSON from {path.relative_to(ROOT)}: {exc}")
 
 
-def git_blob_sha(path: Path) -> str:
-    payload = path.read_bytes()
-    header = f"blob {len(payload)}\0".encode("ascii")
-    return hashlib.sha1(header + payload).hexdigest()
-
-
 def main() -> None:
     receipt = load(RECEIPT)
     service = load(SERVICE)
