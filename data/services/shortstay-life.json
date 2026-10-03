@@ -10,7 +10,11 @@
   },
   "id_namespaces": {},
   "scope_files": {
-    "rouki25": "data/services/shortstay-life/rouki25-scope.json"
+    "rouki25": "data/services/shortstay-life/rouki25-scope.json",
+    "care_insurance_act": "data/services/shortstay-life/care-insurance-act-scope.json",
+    "ordinance37": "data/services/shortstay-life/ordinance37-scope.json",
+    "remuneration": "data/services/shortstay-life/remuneration-scope.json",
+    "unit_price": "data/services/shortstay-life/unit-price-scope.json"
   },
   "verification_layer_ids": [
     "rouki25-shortstay-life"

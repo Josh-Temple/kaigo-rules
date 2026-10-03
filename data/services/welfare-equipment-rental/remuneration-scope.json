@@ -1,0 +1,50 @@
+{
+  "format_version": 2,
+  "service_id": "welfare-equipment-rental",
+  "source_family": "remuneration_notification_and_delegated_criteria",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
+  "primary_remuneration_notification": {
+    "scope_relation": "APPLIES",
+    "notice_number": "平成12年厚生省告示第19号",
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+    "selector": "別表 指定居宅サービス介護給付費単位数表 11 福祉用具貸与費",
+    "repository_shared_corpus": "data/remuneration-current-skeleton.json",
+    "repository_section_ingested": false
+  },
+  "delegated_remuneration_criteria": {
+    "scope_relation": "SOURCE_FAMILY_IN_SCOPE_ITEM_RELATIONS_PENDING",
+    "repository_shared_nodes": "data/remuneration-delegated-nodes.json",
+    "repository_shared_relations": "data/remuneration-delegated-relations.json",
+    "source_documents": [
+      {
+        "notice_number": "平成27年厚生労働省告示第94号",
+        "role": "厚生労働大臣が定める基準に適合する利用者等",
+        "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4583&dataType=0&pageNo=1",
+        "service_item_relation_state": "NOT_ESTABLISHED"
+      },
+      {
+        "notice_number": "平成27年厚生労働省告示第95号",
+        "role": "厚生労働大臣が定める基準",
+        "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+        "service_item_relation_state": "NOT_ESTABLISHED"
+      },
+      {
+        "notice_number": "平成27年厚生労働省告示第96号",
+        "role": "厚生労働大臣が定める施設基準",
+        "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0&pageNo=1",
+        "service_item_relation_state": "NOT_ESTABLISHED"
+      }
+    ],
+    "item_relation_verification": "NOT_ESTABLISHED"
+  },
+  "assurance": {
+    "legal_text_duplicated": false,
+    "scope_definition": "EVIDENCE_RECORDED",
+    "applicability_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

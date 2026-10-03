@@ -29,7 +29,8 @@
     "notice_review_packet": "data/notice-review-packet.json",
     "remuneration_skeleton": "data/remuneration-current-skeleton.json",
     "fee_guidance": "data/fee-guidance-current-skeleton.json",
-    "qa_corpus": "data/qa-corpus.json"
+    "qa_corpus": "data/qa-corpus.json",
+    "unit_price": "data/services/dayservice/unit-price-scope.json"
   },
   "verification_layer_ids": [
     "rouki25-dayservice",

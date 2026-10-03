@@ -1,0 +1,26 @@
+{
+  "format_version": 2,
+  "service_id": "homebath",
+  "source_family": "unit_price_regional_classification",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
+  "unit_price_scope": {
+    "scope_relation": "APPLIES",
+    "notice_number": "平成27年厚生労働省告示第93号",
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+    "official_service_name": "訪問入浴介護",
+    "table_locator": "第一号 表（地域区分・サービス種類・割合）",
+    "regional_classification_locator": "第二号 表（地域区分・都道府県・地域）",
+    "repository_region_assignments": "data/unit-price-region-assignments.json",
+    "service_multiplier_rows_ingested_in_repository": false
+  },
+  "assurance": {
+    "legal_text_duplicated": false,
+    "scope_definition": "EVIDENCE_RECORDED",
+    "applicability_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "format_version": 2,
+  "service_id": "shortstay-life",
+  "source_family": "care_insurance_act",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
+  "source_corpus": {
+    "law_id": "409AC0000000123",
+    "nodes_file": "data/care-insurance-act-nodes.json",
+    "relations_file": "data/care-insurance-act-relations.json",
+    "meta_file": "data/care-insurance-act-meta.json",
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+    "checked_on": "2026-10-03"
+  },
+  "service_definition": {
+    "node_ids": [
+      "careact.article.8.p.1",
+      "careact.article.8.p.9"
+    ],
+    "relation": "DEFINITION_SCOPE"
+  },
+  "shared_designated_home_service_governance": {
+    "shared_scope_file": "data/services/shared/designated-home-service-core.json",
+    "node_ids": [
+      "careact.article.70",
+      "careact.article.70-2",
+      "careact.article.73",
+      "careact.article.74",
+      "careact.article.75",
+      "careact.article.75-2",
+      "careact.article.76",
+      "careact.article.76-2",
+      "careact.article.77",
+      "careact.article.78"
+    ],
+    "relation": "COMMON_GOVERNANCE_SCOPE"
+  },
+  "benefit_basis": {
+    "node_ids": [
+      "careact.article.41"
+    ],
+    "relation": "HOME_SERVICE_BENEFIT_BASIS"
+  },
+  "special_cases": [
+    {
+      "kind": "COEXISTENCE_SERVICE_EXCEPTION",
+      "node_ids": [
+        "careact.article.72-2"
+      ],
+      "implementing_rule": {
+        "articles": [
+          "130-2",
+          "130-4"
+        ],
+        "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999403&dataType=0"
+      },
+      "state": "CONDITIONAL_NOT_AUTO_APPLICABLE"
+    }
+  ],
+  "assurance": {
+    "legal_text_duplicated": false,
+    "scope_definition": "EVIDENCE_RECORDED",
+    "applicability_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

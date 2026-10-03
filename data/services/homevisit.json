@@ -14,7 +14,8 @@
     "care_insurance_act": "data/services/homevisit/care-insurance-act-scope.json",
     "ordinance37": "data/services/homevisit/ordinance37-scope.json",
     "rouki25": "data/services/homevisit/rouki25-scope.json",
-    "remuneration": "data/services/homevisit/remuneration-scope.json"
+    "remuneration": "data/services/homevisit/remuneration-scope.json",
+    "unit_price": "data/services/homevisit/unit-price-scope.json"
   },
   "verification_layer_ids": [
     "rouki25-homevisit"
