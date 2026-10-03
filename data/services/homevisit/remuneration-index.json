@@ -1,0 +1,527 @@
+{
+  "format_version": 1,
+  "service_id": "homevisit",
+  "service_label": "訪問介護",
+  "layer": "REMUNERATION_STANDARD",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "平成12年厚生省告示第19号 別表 1 訪問介護費",
+    "start_marker": "1 訪問介護費",
+    "end_marker": "2 訪問入浴介護費の直前",
+    "excluded_next_section": "2 訪問入浴介護費",
+    "legal_text_duplicated": false
+  },
+  "canonical_sources": [
+    {
+      "id": "homevisit-notice19-mhlw-display",
+      "role": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "title": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+      "locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "厚生労働省の統合表示上で令和8年厚生労働省告示第87号の改正履歴と訪問介護費セクションを確認。独立した全改正履歴照合は別工程。"
+    },
+    {
+      "id": "r8-care-fee-reform-index",
+      "role": "OFFICIAL_AMENDMENT_INDEX_SUPPORTING_ONLY",
+      "title": "令和8年度介護報酬改定について",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "locator": "令和8年度介護報酬改定に関する告示の改正 / 厚生労働省告示第87号",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "令和8年厚生労働省告示第87号の公式掲載ページ。現行性の単独証明には使用しない。"
+    }
+  ],
+  "coverage": {
+    "top_level_items": 25,
+    "numeric_child_items": 21,
+    "total_index_entries": 46
+  },
+  "top_level_items": [
+    {
+      "id": "homevisit-remuneration-top-01",
+      "marker": "イ",
+      "kind": "BASE_TARIFF_GROUP",
+      "title": "身体介護が中心である場合",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / イ"
+    },
+    {
+      "id": "homevisit-remuneration-top-02",
+      "marker": "ロ",
+      "kind": "BASE_TARIFF_GROUP",
+      "title": "生活援助が中心である場合",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ロ"
+    },
+    {
+      "id": "homevisit-remuneration-top-03",
+      "marker": "ハ",
+      "kind": "BASE_TARIFF_ROW",
+      "title": "通院等のための乗車又は降車の介助が中心である場合",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ハ",
+      "value": {
+        "value": 97,
+        "unit": "単位/回"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-04",
+      "marker": "注1",
+      "kind": "NUMBERED_NOTE",
+      "title": "標準的な時間による算定",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注1"
+    },
+    {
+      "id": "homevisit-remuneration-top-05",
+      "marker": "注2",
+      "kind": "NUMBERED_NOTE",
+      "title": "身体介護の算定と20分未満区分",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注2"
+    },
+    {
+      "id": "homevisit-remuneration-top-06",
+      "marker": "注3",
+      "kind": "NUMBERED_NOTE",
+      "title": "生活援助の算定対象",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注3"
+    },
+    {
+      "id": "homevisit-remuneration-top-07",
+      "marker": "注4",
+      "kind": "NUMBERED_NOTE",
+      "title": "通院等乗降介助の算定",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注4"
+    },
+    {
+      "id": "homevisit-remuneration-top-08",
+      "marker": "注5",
+      "kind": "NUMBERED_NOTE",
+      "title": "高齢者虐待防止措置未実施減算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注5",
+      "value": {
+        "rate": "-1/100"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-09",
+      "marker": "注6",
+      "kind": "NUMBERED_NOTE",
+      "title": "業務継続計画未策定減算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注6",
+      "value": {
+        "rate": "-1/100"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-10",
+      "marker": "注7",
+      "kind": "NUMBERED_NOTE",
+      "title": "身体介護後の生活援助加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注7",
+      "value": {
+        "increment_units": 65,
+        "increment_minutes": 25,
+        "cap_units": 195
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-11",
+      "marker": "注8",
+      "kind": "NUMBERED_NOTE",
+      "title": "同時に2人の訪問介護員等が行う場合",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注8",
+      "value": {
+        "rate": "200/100"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-12",
+      "marker": "注9",
+      "kind": "NUMBERED_NOTE",
+      "title": "夜間・早朝・深夜加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注9",
+      "value": {
+        "night_early_rate": "+25/100",
+        "late_night_rate": "+50/100"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-13",
+      "marker": "注10",
+      "kind": "NUMBERED_NOTE_GROUP",
+      "title": "特定事業所加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注10"
+    },
+    {
+      "id": "homevisit-remuneration-top-14",
+      "marker": "注11",
+      "kind": "NUMBERED_NOTE",
+      "title": "共生型訪問介護の算定",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注11",
+      "value": {
+        "rates": [
+          "70/100",
+          "93/100"
+        ]
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-15",
+      "marker": "注12",
+      "kind": "NUMBERED_NOTE",
+      "title": "同一敷地内建物等に居住する利用者への減算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注12",
+      "value": {
+        "rates": [
+          "90/100",
+          "85/100",
+          "88/100"
+        ]
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-16",
+      "marker": "注13",
+      "kind": "NUMBERED_NOTE",
+      "title": "特別地域訪問介護加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注13",
+      "value": {
+        "rate": "+15/100"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-17",
+      "marker": "注14",
+      "kind": "NUMBERED_NOTE",
+      "title": "中山間地域等における小規模事業所加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注14",
+      "value": {
+        "rate": "+10/100"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-18",
+      "marker": "注15",
+      "kind": "NUMBERED_NOTE",
+      "title": "中山間地域等に居住する者へのサービス提供加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注15",
+      "value": {
+        "rate": "+5/100"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-19",
+      "marker": "注16",
+      "kind": "NUMBERED_NOTE",
+      "title": "緊急時訪問介護加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注16",
+      "value": {
+        "value": 100,
+        "unit": "単位/回"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-20",
+      "marker": "注17",
+      "kind": "NUMBERED_NOTE",
+      "title": "他サービス利用中の訪問介護費算定制限",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注17"
+    },
+    {
+      "id": "homevisit-remuneration-top-21",
+      "marker": "ニ",
+      "kind": "ADD_ON",
+      "title": "初回加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ニ",
+      "value": {
+        "value": 200,
+        "unit": "単位/月"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-22",
+      "marker": "ホ",
+      "kind": "ADD_ON_GROUP",
+      "title": "生活機能向上連携加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ホ"
+    },
+    {
+      "id": "homevisit-remuneration-top-23",
+      "marker": "ヘ",
+      "kind": "ADD_ON",
+      "title": "口腔連携強化加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ヘ",
+      "value": {
+        "value": 50,
+        "unit": "単位/月"
+      }
+    },
+    {
+      "id": "homevisit-remuneration-top-24",
+      "marker": "ト",
+      "kind": "ADD_ON_GROUP",
+      "title": "認知症専門ケア加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ト"
+    },
+    {
+      "id": "homevisit-remuneration-top-25",
+      "marker": "チ",
+      "kind": "ADD_ON_GROUP",
+      "title": "介護職員等処遇改善加算",
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / チ"
+    }
+  ],
+  "child_items": [
+    {
+      "id": "homevisit-remuneration-child-01",
+      "marker": "イ(1)",
+      "parent_marker": "イ",
+      "kind": "NUMERIC_CHILD",
+      "title": "20分未満",
+      "value": {
+        "value": 163,
+        "unit": "単位/回"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / イ(1)"
+    },
+    {
+      "id": "homevisit-remuneration-child-02",
+      "marker": "イ(2)",
+      "parent_marker": "イ",
+      "kind": "NUMERIC_CHILD",
+      "title": "20分以上30分未満",
+      "value": {
+        "value": 244,
+        "unit": "単位/回"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / イ(2)"
+    },
+    {
+      "id": "homevisit-remuneration-child-03",
+      "marker": "イ(3)",
+      "parent_marker": "イ",
+      "kind": "NUMERIC_CHILD",
+      "title": "30分以上1時間未満",
+      "value": {
+        "value": 387,
+        "unit": "単位/回"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / イ(3)"
+    },
+    {
+      "id": "homevisit-remuneration-child-04",
+      "marker": "イ(4)",
+      "parent_marker": "イ",
+      "kind": "NUMERIC_CHILD",
+      "title": "1時間以上",
+      "value": {
+        "base_value": 567,
+        "unit": "単位/回",
+        "increment_units": 82,
+        "increment_minutes": 30
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / イ(4)"
+    },
+    {
+      "id": "homevisit-remuneration-child-05",
+      "marker": "ロ(1)",
+      "parent_marker": "ロ",
+      "kind": "NUMERIC_CHILD",
+      "title": "20分以上45分未満",
+      "value": {
+        "value": 179,
+        "unit": "単位/回"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ロ(1)"
+    },
+    {
+      "id": "homevisit-remuneration-child-06",
+      "marker": "ロ(2)",
+      "parent_marker": "ロ",
+      "kind": "NUMERIC_CHILD",
+      "title": "45分以上",
+      "value": {
+        "value": 220,
+        "unit": "単位/回"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ロ(2)"
+    },
+    {
+      "id": "homevisit-remuneration-child-07",
+      "marker": "注10(1)",
+      "parent_marker": "注10",
+      "kind": "NUMERIC_CHILD",
+      "title": "特定事業所加算(Ⅰ)",
+      "value": {
+        "rate": "+20/100"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注10(1)"
+    },
+    {
+      "id": "homevisit-remuneration-child-08",
+      "marker": "注10(2)",
+      "parent_marker": "注10",
+      "kind": "NUMERIC_CHILD",
+      "title": "特定事業所加算(Ⅱ)",
+      "value": {
+        "rate": "+10/100"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注10(2)"
+    },
+    {
+      "id": "homevisit-remuneration-child-09",
+      "marker": "注10(3)",
+      "parent_marker": "注10",
+      "kind": "NUMERIC_CHILD",
+      "title": "特定事業所加算(Ⅲ)",
+      "value": {
+        "rate": "+10/100"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注10(3)"
+    },
+    {
+      "id": "homevisit-remuneration-child-10",
+      "marker": "注10(4)",
+      "parent_marker": "注10",
+      "kind": "NUMERIC_CHILD",
+      "title": "特定事業所加算(Ⅳ)",
+      "value": {
+        "rate": "+3/100"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注10(4)"
+    },
+    {
+      "id": "homevisit-remuneration-child-11",
+      "marker": "注10(5)",
+      "parent_marker": "注10",
+      "kind": "NUMERIC_CHILD",
+      "title": "特定事業所加算(Ⅴ)",
+      "value": {
+        "rate": "+3/100"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / 注10(5)"
+    },
+    {
+      "id": "homevisit-remuneration-child-12",
+      "marker": "ホ(1)",
+      "parent_marker": "ホ",
+      "kind": "NUMERIC_CHILD",
+      "title": "生活機能向上連携加算(Ⅰ)",
+      "value": {
+        "value": 100,
+        "unit": "単位"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ホ(1)"
+    },
+    {
+      "id": "homevisit-remuneration-child-13",
+      "marker": "ホ(2)",
+      "parent_marker": "ホ",
+      "kind": "NUMERIC_CHILD",
+      "title": "生活機能向上連携加算(Ⅱ)",
+      "value": {
+        "value": 200,
+        "unit": "単位"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ホ(2)"
+    },
+    {
+      "id": "homevisit-remuneration-child-14",
+      "marker": "ト(1)",
+      "parent_marker": "ト",
+      "kind": "NUMERIC_CHILD",
+      "title": "認知症専門ケア加算(Ⅰ)",
+      "value": {
+        "value": 3,
+        "unit": "単位/日"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ト(1)"
+    },
+    {
+      "id": "homevisit-remuneration-child-15",
+      "marker": "ト(2)",
+      "parent_marker": "ト",
+      "kind": "NUMERIC_CHILD",
+      "title": "認知症専門ケア加算(Ⅱ)",
+      "value": {
+        "value": 4,
+        "unit": "単位/日"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / ト(2)"
+    },
+    {
+      "id": "homevisit-remuneration-child-16",
+      "marker": "チ(1)",
+      "parent_marker": "チ",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ",
+      "value": {
+        "rate": "+270/1000"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / チ(1)"
+    },
+    {
+      "id": "homevisit-remuneration-child-17",
+      "marker": "チ(2)",
+      "parent_marker": "チ",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ",
+      "value": {
+        "rate": "+287/1000"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / チ(2)"
+    },
+    {
+      "id": "homevisit-remuneration-child-18",
+      "marker": "チ(3)",
+      "parent_marker": "チ",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ",
+      "value": {
+        "rate": "+249/1000"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / チ(3)"
+    },
+    {
+      "id": "homevisit-remuneration-child-19",
+      "marker": "チ(4)",
+      "parent_marker": "チ",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ",
+      "value": {
+        "rate": "+266/1000"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / チ(4)"
+    },
+    {
+      "id": "homevisit-remuneration-child-20",
+      "marker": "チ(5)",
+      "parent_marker": "チ",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ)",
+      "value": {
+        "rate": "+207/1000"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / チ(5)"
+    },
+    {
+      "id": "homevisit-remuneration-child-21",
+      "marker": "チ(6)",
+      "parent_marker": "チ",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ)",
+      "value": {
+        "rate": "+170/1000"
+      },
+      "source_locator": "別表 指定居宅サービス介護給付費単位数表 1 訪問介護費 / チ(6)"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false,
+    "note": "現行の厚労省統合表示からサービス固有セクションの構造・明示数値を索引化した段階。独立item-body照合、全改正履歴によるcurrentness、human review、公開判断は別工程。"
+  }
+}
