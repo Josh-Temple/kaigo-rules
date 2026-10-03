@@ -23,5 +23,31 @@
   "publication": {
     "allowed": false,
     "reason": "Repository本文adapterと独立source検証が未実施"
+  },
+  "source_manifest": [
+    {
+      "id": "r6-final-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "status": "OFFICIAL_FINAL_AMENDMENT_EVIDENCE"
+    },
+    {
+      "id": "r6-earlier-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+      "role": "EARLIER_R6_AMENDMENT_MATERIAL",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE"
+    },
+    {
+      "id": "historical-official-pdf",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+      "role": "HISTORICAL_FULLER_STRUCTURE_REFERENCE",
+      "status": "OFFICIAL_HISTORICAL_EVIDENCE"
+    }
+  ],
+  "source_assurance": {
+    "final_amendment_evidence_identified": true,
+    "integrated_current_text_established": false,
+    "omitted_text_reconstruction_allowed": false,
+    "publication_allowed": false
   }
 }
