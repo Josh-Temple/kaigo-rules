@@ -1,0 +1,231 @@
+{
+  "format_version": 1,
+  "service_id": "regular-round",
+  "layer": "standards_interpretation",
+  "audit_kind": "INDEPENDENT_CURRENTNESS_VERIFICATION",
+  "audit_result": "NOT_ESTABLISHED",
+  "verification_scope": "CURRENTNESS_ONLY_NO_PUBLICATION_PROMOTION",
+  "source_family": "community_based_services_standards_interpretation",
+  "notice_identity": {
+    "title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+    "original_date": "2006-03-31",
+    "notice_numbers": [
+      "老計発第0331004号",
+      "老振発第0331004号",
+      "老老発第0331017号"
+    ],
+    "service_anchor": "第3 地域密着型サービス／一 定期巡回・随時対応型訪問介護看護"
+  },
+  "repository_base": {
+    "branch": "main",
+    "head_sha": "9f1e8539ca608c6f45e59522d4850f43a1a70b67",
+    "open_pr_count_at_start": 0
+  },
+  "checked_period": {
+    "notice_family_from": "2006-03-31",
+    "regular_round_specific_from": "2012-04-01",
+    "through": "2026-10-03",
+    "verified_at_jst": "2026-10-03T17:14:57+09:00",
+    "meaning": "定期巡回・随時対応型訪問介護看護が通知へ追加された平成24年度改正以後について、Repository既存資料と厚生労働省公式一次資料・公式索引をcurrentness目的で独立再確認した。"
+  },
+  "preconditions": {
+    "source_inventory_receipt": "data/verification/standards-interpretation-source-inventory/regular-round.json",
+    "source_inventory_result": "PASS_BOUNDED_SCOPE_ONLY",
+    "item_body_receipt": "data/verification/standards-interpretation-item-body/regular-round.json",
+    "item_body_result": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+    "item_body_counts": {
+      "PASS": 21,
+      "PARTIAL": 0,
+      "GAP": 0,
+      "FAIL": 0
+    },
+    "item_body_does_not_prove_currentness": true
+  },
+  "official_sources": [
+    {
+      "id": "original-2006-full-notice",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf",
+      "source_role": "HISTORICAL_ORIGINAL_NOTICE",
+      "classification": "FULL_NOTICE_AT_ORIGINAL_ISSUANCE_PRE_REGULAR_ROUND",
+      "observation": "平成18年3月31日の原通知本文。定期巡回・随時対応型訪問介護看護は本文検索で確認できず、同サービスのcurrent baselineにはできない。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "r24-regular-round-introduction-comparison",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/housyu/dl/c09.pdf",
+      "parent_url": "https://www.mhlw.go.jp/topics/kaigo/housyu/kaitei.html",
+      "source_role": "H24_REGULAR_ROUND_INTRODUCTION_AMENDMENT",
+      "classification": "AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "平成24年度介護報酬改定の公式通知資料。改正前／改正後形式で、定期巡回・随時対応型訪問介護看護の節を追加している。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "historical-repository-comparison",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+      "source_role": "HISTORICAL_AMENDMENT_COMPARISON",
+      "classification": "AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "Repository source manifest上は歴史資料として保持されるが、PDF自体は改正前／改正後・変更点下線の比較資料であり、現行統合本文ではない。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "r30-comparison",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000199106.pdf",
+      "source_role": "H30_AMENDMENT_EVIDENCE",
+      "classification": "AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "平成30年度の公式改正比較資料には定期巡回・随時対応型訪問介護看護の改正本文がある。現在のregular-round source manifestにはこの版が明示的なchain elementとして含まれていない。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "r3-comparison",
+      "url": "https://www.mhlw.go.jp/content/12404000/000772387.pdf",
+      "parent_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00034.html",
+      "source_role": "R3_AMENDMENT_EVIDENCE",
+      "classification": "AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "令和3年度の公式解釈通知（地密）資料。別紙9・抄・新旧形式で、定期巡回・随時対応型訪問介護看護の改正本文を含む。現在のregular-round source manifestには明示的なchain elementとして含まれていない。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "r6-earlier-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001221586.pdf",
+      "source_role": "EARLIER_R6_AMENDMENT_MATERIAL",
+      "classification": "AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "令和6年度の先行改正比較資料。新旧形式かつ略記を含むため、現行統合本文にはできない。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "r6-final-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "parent_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "source_role": "FINAL_R6_AMENDMENT_COMPARISON",
+      "classification": "AMENDMENT_COMPARISON_NOT_INTEGRATED",
+      "observation": "厚労省の令和6年度改定ページで「解釈通知（地密）」として掲載される最終資料だが、PDF本文は別紙11・（抄）・新旧対照表であり、略記も含む。現行統合全文ではない。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "current-standards-ordinance-html",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0",
+      "source_role": "CURRENT_STANDARDS_ORDINANCE",
+      "classification": "ORDINANCE_NOT_INTERPRETATION_NOTICE",
+      "observation": "厚生労働省令第34号「指定地域密着型サービスの事業の人員、設備及び運営に関する基準」の統合HTML。定期巡回・随時対応型訪問介護看護の現行基準条文確認には使えるが、解釈通知本文ではない。",
+      "counts_as_current_integrated_text": false
+    },
+    {
+      "id": "r8-reform-index",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "source_role": "OFFICIAL_POST_R6_REFORM_INDEX_SUPPORTING_ONLY",
+      "classification": "DISCOVERY_INDEX_SUPPORTING_ONLY",
+      "observation": "令和8年度介護報酬改定ページの「通知等の改正」掲載範囲には当該解釈通知を確認しなかった。",
+      "limitation": "ページ上の非掲載だけでは、別経路・非掲載の改正が存在しないことを証明しない。"
+    },
+    {
+      "id": "kaigo-latest-info-index",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "source_role": "OFFICIAL_DISCOVERY_INDEX_SUPPORTING_ONLY",
+      "classification": "NEGATIVE_DISCOVERY_SUPPORTING_ONLY",
+      "observation": "現在ページに対する通知題名・通知番号のページ内検索ではpost-R6改正候補を特定できなかった。",
+      "limitation": "介護保険最新情報の索引検索は完全な改正履歴を保証しない。"
+    },
+    {
+      "id": "mhlw-new-notification-index",
+      "url": "https://www.mhlw.go.jp/hourei/new/tsuchi/newindex.html",
+      "source_role": "OFFICIAL_DISCOVERY_INDEX_SUPPORTING_ONLY",
+      "classification": "NEGATIVE_DISCOVERY_SUPPORTING_ONLY",
+      "observation": "現在の新着通知ページでは当該通知題名・通知番号を確認しなかった。",
+      "limitation": "新着ページは期間・掲載範囲が限定され、全期間の不改正証明にはならない。"
+    },
+    {
+      "id": "mhlw-law-database-update",
+      "url": "https://www.mhlw.go.jp/hourei/new/update/data.html",
+      "source_role": "OFFICIAL_DATABASE_UPDATE_SUPPORTING_ONLY",
+      "classification": "BOUNDED_UPDATE_INDEX_SUPPORTING_ONLY",
+      "observation": "確認時の令和8年7月定期更新では通知の改正17件が登録されているが、当該通知は確認できなかった。",
+      "limitation": "単月更新一覧の非掲載は、R6以後全期間の不改正証明ではない。"
+    },
+    {
+      "id": "mhlw-law-database-coverage-notice",
+      "url": "https://www.mhlw.go.jp/hourei/readme.html",
+      "source_role": "OFFICIAL_DATABASE_COVERAGE_LIMIT",
+      "classification": "NON_EXHAUSTIVE_DATABASE_NOTICE",
+      "observation": "厚労省自身が、法令等データベースは所管する全ての法令・通知・公示等を網羅しているわけではないと明記している。",
+      "limitation": "同データベースで候補が見つからないことだけを不改正証明にできない。"
+    }
+  ],
+  "source_version_assessment": {
+    "historical_full_notice": {
+      "status": "AVAILABLE_FOR_2006_ORIGINAL_ONLY",
+      "regular_round_currentness_use": "INSUFFICIENT",
+      "reason": "2006原通知は定期巡回・随時対応型訪問介護看護の導入前。"
+    },
+    "amendment_comparisons": {
+      "status": "PARTIAL_CHAIN_ONLY",
+      "covered_examples": [
+        "H24 introduction",
+        "historical repository comparison",
+        "H30 comparison",
+        "R3 comparison",
+        "R6 earlier comparison",
+        "R6 final comparison"
+      ],
+      "repository_manifest_gap_observed": [
+        "H30 amendment evidence is not a pinned regular-round chain element",
+        "R3 amendment evidence is not a pinned regular-round chain element"
+      ]
+    },
+    "final_r6_comparison": {
+      "status": "VERIFIED_AS_FINAL_R6_AMENDMENT_EVIDENCE_NOT_INTEGRATED_TEXT"
+    },
+    "post_r6": {
+      "status": "NEGATIVE_DISCOVERY_ONLY_NOT_CLOSED",
+      "verified_post_r6_amendment_candidate_identified": false,
+      "absence_of_evidence_treated_as_proof": false
+    },
+    "current_integrated_official_interpretation_notice": {
+      "found": false,
+      "status": "NOT_ESTABLISHED"
+    },
+    "amendment_chain_closed": false
+  },
+  "negative_search_limitations": [
+    "令和8年度改定ページ、新着通知、介護保険最新情報、法令等データベース更新一覧で候補が見つからないことは、不改正の積極的証明ではない。",
+    "厚生労働省法令等データベースは、同省自身が全ての法令・通知・公示等を網羅していないと明記している。",
+    "検索結果のcrawl日やcontent URLの新しさを、文書の改正日・現行性の根拠として扱わない。",
+    "基準省令の統合HTMLは現行条文確認には有用だが、解釈通知の現行統合本文を代替しない。"
+  ],
+  "conclusion": {
+    "currentness": "NOT_ESTABLISHED",
+    "currentness_pass": false,
+    "reason": "現行統合済みの公式解釈通知本文を確保できず、かつ定期巡回・随時対応型訪問介護看護の導入後からR6最終改正までの全改正をRepository上で閉じたchainとしてpinできていない。R6以後も公式索引のnegative discoveryのみで、改正不存在を積極的に証明できない。",
+    "decision_effect": "KEEP_FAIL_CLOSED",
+    "item_body_result_unchanged": "PASS_CONTENT_EVIDENCE_MATCH_ONLY"
+  },
+  "unresolved_risks": [
+    "H24導入後からR6最終改正までの全ての当該通知改正イベントを、一次資料と適用順序付きで網羅したledgerがない。",
+    "R6最終比較は抄・新旧対照表であり、略記部分を含むため、それ単独では現行統合本文を構成しない。",
+    "R6以後の改正有無について、現在確認できた公式索引はsupporting evidenceに留まり、閉じたabsence proofにはならない。"
+  ],
+  "integrator_followup": {
+    "recommended": true,
+    "tasks": [
+      "source family全体についてH24以後の全公式改正イベントを列挙し、適用順序・対象範囲・一次資料URLをpinしたamendment ledgerを作る。",
+      "可能であれば厚労省が提供する現行統合済み解釈通知本文を特定し、R6 final comparisonと照合する。",
+      "post-R6について公式通知データベース・介護保険最新情報・改定ページの監視を別途継続するが、negative searchのみでPASSへ昇格しない。"
+    ]
+  },
+  "safety": {
+    "currentness_only": true,
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "publication_permitted": false,
+    "route_enabled": false,
+    "current_integrated_notice_text_reconstructed": false,
+    "historical_text_treated_as_current": false,
+    "ordinance_treated_as_interpretation_notice": false,
+    "negative_search_treated_as_no_amendment_proof": false
+  },
+  "provenance": {
+    "worker_role": "Regular Round Standards-Interpretation Currentness Verification Worker",
+    "verification_date_jst": "2026-10-03",
+    "method": "Fresh-read repository state + independent review of MHLW official reform pages, official PDFs/HTML, notification indexes and database coverage notice. No secondary source was used to establish PASS.",
+    "existing_rouki25_framework_use": "DESIGN_REFERENCE_ONLY_NO_CROSS_SOURCE_EVIDENCE_REUSE"
+  }
+}
