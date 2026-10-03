@@ -1,0 +1,328 @@
+{
+  "format_version": 1,
+  "service_id": "elderly-welfare-facility",
+  "service_label": "介護老人福祉施設",
+  "layer": "governing_standards_ordinance",
+  "scope_kind": "SHARED_CORPUS_SERVICE_SCOPE",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "shared_corpus": {
+    "corpus_id": "elderly-welfare-facility-standards",
+    "law_id": "411M50000100039",
+    "nodes": "data/shared/standards/elderly-welfare-facility-standards/nodes.json",
+    "relations": "data/shared/standards/elderly-welfare-facility-standards/relations.json",
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/411M50000100039"
+  },
+  "corpus_membership": {
+    "article_numbers": [
+      "1",
+      "1-2",
+      "2",
+      "3",
+      "4",
+      "4-2",
+      "4-3",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "17-2",
+      "17-3",
+      "18",
+      "19",
+      "20",
+      "20-2",
+      "21",
+      "22",
+      "22-2",
+      "23",
+      "24",
+      "24-2",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "35-2",
+      "35-3",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50"
+    ]
+  },
+  "common_direct_scope": {
+    "article_numbers": [
+      "1",
+      "50"
+    ]
+  },
+  "service_variants": [
+    {
+      "variant_id": "standard-facility",
+      "relation": "direct_applicability",
+      "article_numbers": [
+        "1-2",
+        "2",
+        "3",
+        "4",
+        "4-2",
+        "4-3",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "17-2",
+        "17-3",
+        "18",
+        "19",
+        "20",
+        "20-2",
+        "21",
+        "22",
+        "22-2",
+        "23",
+        "24",
+        "24-2",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "35-2",
+        "35-3",
+        "36",
+        "37"
+      ]
+    },
+    {
+      "variant_id": "unit-type-elderly-welfare-facility",
+      "direct_scope": {
+        "relation": "direct_applicability",
+        "article_numbers": [
+          "38",
+          "39",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49"
+        ]
+      },
+      "incorporated_scope": {
+        "relation": "incorporates_by_reference",
+        "via_node_id": "standards39.article.49",
+        "source_article_numbers": [
+          "4",
+          "4-2",
+          "4-3",
+          "5",
+          "6",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "17-2",
+          "17-3",
+          "18",
+          "19",
+          "20",
+          "20-2",
+          "21",
+          "22",
+          "22-2",
+          "24-2",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "35-2",
+          "35-3",
+          "36",
+          "37"
+        ],
+        "exclusions": [],
+        "verification_status": "NOT_SERVICE_VERIFIED"
+      },
+      "read_as_rules": [
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards39.article.49",
+          "selector": {
+            "article": "4",
+            "paragraph": "1"
+          },
+          "from": "第二十三条に規定する運営規程",
+          "to": "第四十六条に規定する重要事項に関する規程",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards39.article.49",
+          "selector": {
+            "article": "22",
+            "paragraph": "2"
+          },
+          "from": "この章",
+          "to": "第五章第三節",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards39.article.49",
+          "selector": {
+            "article": "37",
+            "paragraph": "2",
+            "item": "2"
+          },
+          "from": "第八条第二項",
+          "to": "第四十九条において準用する第八条第二項",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards39.article.49",
+          "selector": {
+            "article": "22-2"
+          },
+          "from": "第十二条",
+          "to": "第四十九条において準用する第十二条",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards39.article.49",
+          "selector": {
+            "articles": [
+              "22-2",
+              "37"
+            ],
+            "paragraph": "2",
+            "items": [
+              "5",
+              "3"
+            ]
+          },
+          "from": "第十一条第五項",
+          "to": "第四十二条第七項",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards39.article.49",
+          "selector": {
+            "article": "37",
+            "paragraph": "2",
+            "item": "4"
+          },
+          "from": "第二十条",
+          "to": "第四十九条において準用する第二十条",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards39.article.49",
+          "selector": {
+            "articles": [
+              "22-2",
+              "37"
+            ],
+            "paragraph": "2",
+            "items": [
+              "6",
+              "5"
+            ]
+          },
+          "from": "第三十三条第二項",
+          "to": "第四十九条において準用する第三十三条第二項",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards39.article.49",
+          "selector": {
+            "articles": [
+              "22-2",
+              "37"
+            ],
+            "paragraph": "2",
+            "items": [
+              "7",
+              "6"
+            ]
+          },
+          "from": "第三十五条第三項",
+          "to": "第四十九条において準用する第三十五条第三項",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "source": "E_GOV_SHARED_CORPUS",
+    "checked_on": "2026-10-03",
+    "corpus_independent_audit": "data/shared/standards/independent-audit.json"
+  },
+  "verification": {
+    "service_applicability": "NOT_SERVICE_VERIFIED",
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_STARTED",
+    "publication": "DISABLED"
+  },
+  "source_text_duplicated": false,
+  "automatic_verification_promotion_allowed": false
+}

@@ -1,0 +1,69 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-support",
+  "service_label": "介護予防支援",
+  "layer": "care_insurance_act",
+  "scope_kind": "SHARED_CORPUS_SERVICE_SCOPE",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "shared_corpus": {
+    "law_id": "409AC0000000123",
+    "title": "介護保険法",
+    "nodes": "data/care-insurance-act-nodes.json",
+    "relations": "data/care-insurance-act-relations.json",
+    "meta": "data/care-insurance-act-meta.json",
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/409AC0000000123"
+  },
+  "service_definition_scope": [
+    {
+      "article": "8-2",
+      "paragraphs": [
+        "16"
+      ],
+      "role": "SERVICE_DEFINITION"
+    }
+  ],
+  "benefit_scope": [
+    {
+      "article": "58",
+      "role": "PREVENTIVE_CARE_PLAN_BENEFIT"
+    },
+    {
+      "article": "59",
+      "role": "SPECIAL_PREVENTIVE_CARE_PLAN_BENEFIT"
+    }
+  ],
+  "provider_governance_scope": {
+    "article_range": {
+      "from": "115-22",
+      "through": "115-31",
+      "include_interstitial_articles": true
+    },
+    "interpretation": "介護予防支援の指定・基準・変更届・監督・取消し等の制度ブロック。中間の枝番号条文を含む。"
+  },
+  "special_rule_categories": {
+    "deemed_designation": {
+      "state": "NOT_ESTABLISHED_IN_THIS_SCOPE_REVIEW"
+    },
+    "symbiotic_service": {
+      "state": "NOT_ESTABLISHED_IN_THIS_SCOPE_REVIEW"
+    },
+    "other_service_specific_exceptions": {
+      "state": "NOT_ESTABLISHED_IN_THIS_SCOPE_REVIEW"
+    }
+  },
+  "evidence": {
+    "source": "E_GOV_CURRENT_LAW_PAGE",
+    "checked_on": "2026-10-03",
+    "scope_only": true,
+    "note": "Scope selectors do not establish service applicability verification or currentness."
+  },
+  "verification": {
+    "service_applicability": "NOT_SERVICE_VERIFIED",
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_STARTED",
+    "publication": "DISABLED"
+  },
+  "source_text_duplicated": false,
+  "automatic_verification_promotion_allowed": false
+}

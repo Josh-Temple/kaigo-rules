@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-support",
+  "service_label": "介護予防支援",
+  "layer": "remuneration_notification",
+  "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+  "status": "SCOPE_DEFINED_TARGET_SECTION_NOT_INGESTED",
+  "root_notification": {
+    "notice_number": "平成18年厚生労働省告示第129号",
+    "title": "指定介護予防支援に要する費用の額の算定に関する基準",
+    "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1",
+    "selector": "指定介護予防支援介護給付費単位数表 / 介護予防支援費"
+  },
+  "shared_corpus_binding": {
+    "existing_repository_corpus": "data/remuneration-current-skeleton.json",
+    "state": "TARGET_SECTION_NOT_STRUCTURED_IN_EXISTING_SHARED_CORPUS",
+    "source_text_copy_allowed": false,
+    "note": "Existing structured remuneration corpus is service-limited; this file records target scope only."
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "scope_only": true
+  },
+  "verification": {
+    "service_applicability": "NOT_SERVICE_VERIFIED",
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_STARTED",
+    "publication": "DISABLED"
+  },
+  "source_text_duplicated": false,
+  "automatic_verification_promotion_allowed": false
+}

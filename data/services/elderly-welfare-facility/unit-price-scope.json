@@ -1,0 +1,39 @@
+{
+  "format_version": 1,
+  "service_id": "elderly-welfare-facility",
+  "service_label": "介護老人福祉施設",
+  "layer": "unit_price_regional_classification",
+  "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+  "status": "SCOPE_DEFINED_SERVICE_RATE_NOT_INGESTED",
+  "unit_price_notification": {
+    "notice_number": "平成27年厚生労働省告示第93号",
+    "title": "厚生労働大臣が定める一単位の単価",
+    "official_current_text_urls": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+    ],
+    "service_selector": "介護福祉施設サービス"
+  },
+  "regional_classification_source": {
+    "repository_meta": "data/unit-price-region-assignments-meta.json",
+    "repository_assignments": "data/unit-price-region-assignments.json",
+    "state": "SHARED_REGION_CLASSIFICATION_SOURCE_AVAILABLE"
+  },
+  "service_rate_binding": {
+    "state": "TARGET_SERVICE_RATE_NOT_STRUCTURED_IN_EXISTING_SHARED_CORPUS",
+    "must_not_reuse": "data/unit-price-dayservice.json"
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "scope_only": true
+  },
+  "verification": {
+    "service_applicability": "NOT_SERVICE_VERIFIED",
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_STARTED",
+    "publication": "DISABLED"
+  },
+  "source_text_duplicated": false,
+  "automatic_verification_promotion_allowed": false
+}

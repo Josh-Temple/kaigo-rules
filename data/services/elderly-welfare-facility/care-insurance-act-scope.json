@@ -1,0 +1,86 @@
+{
+  "format_version": 1,
+  "service_id": "elderly-welfare-facility",
+  "service_label": "介護老人福祉施設",
+  "layer": "care_insurance_act",
+  "scope_kind": "SHARED_CORPUS_SERVICE_SCOPE",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "shared_corpus": {
+    "law_id": "409AC0000000123",
+    "title": "介護保険法",
+    "nodes": "data/care-insurance-act-nodes.json",
+    "relations": "data/care-insurance-act-relations.json",
+    "meta": "data/care-insurance-act-meta.json",
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/409AC0000000123"
+  },
+  "service_definition_scope": [
+    {
+      "article": "8",
+      "paragraphs": [
+        "25"
+      ],
+      "role": "CARE_INSURANCE_FACILITY_CATEGORY"
+    },
+    {
+      "article": "8",
+      "paragraphs": [
+        "26"
+      ],
+      "role": "FACILITY_SERVICE_CATEGORY"
+    },
+    {
+      "article": "8",
+      "paragraphs": [
+        "27"
+      ],
+      "role": "SERVICE_DEFINITION"
+    }
+  ],
+  "benefit_scope": [
+    {
+      "article": "48",
+      "paragraph": "1",
+      "items": [
+        "1"
+      ],
+      "role": "FACILITY_SERVICE_BENEFIT"
+    },
+    {
+      "article": "49",
+      "role": "SPECIAL_FACILITY_SERVICE_BENEFIT"
+    }
+  ],
+  "provider_governance_scope": {
+    "article_range": {
+      "from": "86",
+      "through": "93",
+      "include_interstitial_articles": true
+    },
+    "interpretation": "介護老人福祉施設の指定・基準・変更・監督・取消し等の制度ブロック。"
+  },
+  "special_rule_categories": {
+    "deemed_designation": {
+      "state": "NOT_ESTABLISHED_IN_THIS_SCOPE_REVIEW"
+    },
+    "symbiotic_service": {
+      "state": "NOT_ESTABLISHED_IN_THIS_SCOPE_REVIEW"
+    },
+    "other_service_specific_exceptions": {
+      "state": "NOT_ESTABLISHED_IN_THIS_SCOPE_REVIEW"
+    }
+  },
+  "evidence": {
+    "source": "E_GOV_CURRENT_LAW_PAGE",
+    "checked_on": "2026-10-03",
+    "scope_only": true
+  },
+  "verification": {
+    "service_applicability": "NOT_SERVICE_VERIFIED",
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_STARTED",
+    "publication": "DISABLED"
+  },
+  "source_text_duplicated": false,
+  "automatic_verification_promotion_allowed": false
+}

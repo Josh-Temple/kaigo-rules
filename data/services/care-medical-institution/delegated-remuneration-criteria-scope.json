@@ -1,0 +1,52 @@
+{
+  "format_version": 1,
+  "service_id": "care-medical-institution",
+  "service_label": "介護医療院",
+  "layer": "delegated_remuneration_criteria",
+  "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+  "status": "SCOPE_PARTIAL_ITEM_RELATIONS_NOT_ESTABLISHED",
+  "root_remuneration_scope": "data/services/care-medical-institution/remuneration-scope.json",
+  "candidate_official_source_families": [
+    {
+      "notice_number": "平成27年厚生労働省告示第94号",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4583&dataType=0&pageNo=1",
+      "family_relation_state": "OFFICIAL_SOURCE_FAMILY_IDENTIFIED",
+      "item_level_service_applicability": "NOT_ESTABLISHED"
+    },
+    {
+      "notice_number": "平成27年厚生労働省告示第95号",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "family_relation_state": "OFFICIAL_SOURCE_FAMILY_IDENTIFIED",
+      "item_level_service_applicability": "NOT_ESTABLISHED"
+    },
+    {
+      "notice_number": "平成27年厚生労働省告示第96号",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0&pageNo=1",
+      "family_relation_state": "OFFICIAL_SOURCE_FAMILY_IDENTIFIED",
+      "item_level_service_applicability": "NOT_ESTABLISHED"
+    }
+  ],
+  "shared_corpus_binding": {
+    "existing_repository_meta": "data/remuneration-delegated-meta.json",
+    "existing_repository_nodes": "data/remuneration-delegated-nodes.json",
+    "state": "TARGET_SERVICE_ITEMS_NOT_STRUCTURED_IN_EXISTING_SHARED_CORPUS",
+    "source_text_copy_allowed": false
+  },
+  "unresolved": {
+    "state": "ITEM_LEVEL_RELATION_MAPPING_REQUIRED",
+    "reason": "Exact delegated item relations require target-table mapping and independent verification."
+  },
+  "evidence": {
+    "checked_on": "2026-10-03",
+    "scope_only": true
+  },
+  "verification": {
+    "service_applicability": "NOT_SERVICE_VERIFIED",
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_STARTED",
+    "publication": "DISABLED"
+  },
+  "source_text_duplicated": false,
+  "automatic_verification_promotion_allowed": false
+}

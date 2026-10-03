@@ -1,0 +1,208 @@
+{
+  "format_version": 1,
+  "service_id": "care-management",
+  "service_label": "居宅介護支援",
+  "layer": "governing_standards_ordinance",
+  "scope_kind": "SHARED_CORPUS_SERVICE_SCOPE",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_VERIFIED",
+  "shared_corpus": {
+    "corpus_id": "care-management-standards",
+    "law_id": "411M50000100038",
+    "nodes": "data/shared/standards/care-management-standards/nodes.json",
+    "relations": "data/shared/standards/care-management-standards/relations.json",
+    "official_current_text_url": "https://laws.e-gov.go.jp/law/411M50000100038"
+  },
+  "corpus_membership": {
+    "article_numbers": [
+      "1",
+      "1-2",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "19-2",
+      "20",
+      "21",
+      "21-2",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "27-2",
+      "28",
+      "29",
+      "30",
+      "31"
+    ]
+  },
+  "common_direct_scope": {
+    "article_numbers": [
+      "1",
+      "31"
+    ]
+  },
+  "service_variants": [
+    {
+      "variant_id": "designated-care-management",
+      "relation": "direct_applicability",
+      "article_numbers": [
+        "1-2",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "19-2",
+        "20",
+        "21",
+        "21-2",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "27-2",
+        "28",
+        "29"
+      ]
+    },
+    {
+      "variant_id": "benchmark-equivalent-care-management",
+      "direct_scope": {
+        "relation": "direct_applicability",
+        "article_numbers": [
+          "30"
+        ]
+      },
+      "incorporated_scope": {
+        "relation": "incorporates_by_reference",
+        "via_node_id": "standards38.article.30",
+        "source_article_numbers": [
+          "1-2",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "19-2",
+          "20",
+          "21",
+          "21-2",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "27-2",
+          "28",
+          "29"
+        ],
+        "exclusions": [
+          {
+            "article": "26",
+            "paragraphs": [
+              "6",
+              "7"
+            ]
+          }
+        ],
+        "verification_status": "NOT_SERVICE_VERIFIED"
+      },
+      "read_as_rules": [
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards38.article.30",
+          "selector": {
+            "article": "4",
+            "paragraph": "1"
+          },
+          "from": "第十八条",
+          "to": "第三十条において準用する第十八条",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards38.article.30",
+          "selector": {
+            "article": "10",
+            "paragraph": "1"
+          },
+          "from": "指定居宅介護支援",
+          "to": "基準該当居宅介護支援",
+          "match_scope": "TERM_IN_STATUTORY_PHRASE",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        },
+        {
+          "relation": "applies_with_substitution",
+          "via_node_id": "standards38.article.30",
+          "selector": {
+            "article": "10",
+            "paragraph": "1"
+          },
+          "from": "居宅介護サービス計画費の額",
+          "to": "法第四十七条第三項に規定する特例居宅介護サービス計画費の額",
+          "verification_status": "NOT_SERVICE_VERIFIED"
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "source": "E_GOV_SHARED_CORPUS",
+    "checked_on": "2026-10-03",
+    "corpus_independent_audit": "data/shared/standards/independent-audit.json",
+    "note": "Shared-corpus audit establishes source/XML containment only."
+  },
+  "verification": {
+    "service_applicability": "NOT_SERVICE_VERIFIED",
+    "relation_verification": "NOT_SERVICE_VERIFIED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_STARTED",
+    "publication": "DISABLED"
+  },
+  "source_text_duplicated": false,
+  "automatic_verification_promotion_allowed": false
+}
