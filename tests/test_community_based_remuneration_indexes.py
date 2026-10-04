@@ -105,7 +105,7 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
             self.assertFalse(cfg["publication_gate"]["public_routes_enabled"])
             self.assertFalse(cfg["routing"]["future_service_base_enabled"])
 
-    def test_coverage_projects_only_remuneration_as_ingested(self):
+    def test_coverage_projects_remuneration_and_mapped_delegated_criteria_as_ingested(self):
         for service_id in EXPECTED:
             remuneration = self.cell(service_id, "remuneration_notification")
             delegated = self.cell(service_id, "delegated_remuneration_criteria")
@@ -117,7 +117,12 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
             self.assertEqual(remuneration["human_review"]["state"], "NOT_REVIEWED")
             self.assertEqual(remuneration["publication"]["state"], "BLOCKED")
             self.assertEqual(remuneration["route_exposure"]["state"], "BLOCKED")
-            self.assertEqual(delegated["ingestion"]["state"], "NOT_INGESTED")
+            self.assertEqual(delegated["service_applicability"]["state"], "MAPPED")
+            self.assertEqual(delegated["ingestion"]["state"], "INGESTED")
+            self.assertEqual(delegated["item_body_verification"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(delegated["publication"]["state"], "BLOCKED")
+            self.assertEqual(delegated["route_exposure"]["state"], "BLOCKED")
             self.assertEqual(guidance["ingestion"]["state"], "NOT_INGESTED")
 
     def test_existing_standards_interpretation_verification_is_not_regressed(self):
