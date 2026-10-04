@@ -20,14 +20,13 @@ class RelationHumanReviewEvidencePackTests(unittest.TestCase):
             )
         )
         self.assertEqual(built, committed)
-        self.assertEqual(built["summary"]["items_total"], 59)
+        self.assertEqual(built["summary"]["items_total"], 58)
         self.assertEqual(built["summary"]["unresolved_items"], 0)
         self.assertEqual(
             built["summary"]["target_resolution_counts"],
             {
                 "CURATED_QA": 1,
                 "NOTICE": 7,
-                "OFFICIAL_SOURCE_REGISTRY": 1,
                 "ORDINANCE_CANONICAL_NODE": 50,
             },
         )
@@ -39,6 +38,11 @@ class RelationHumanReviewEvidencePackTests(unittest.TestCase):
         )
         self.assertTrue(
             built["review_contract"]["primary_source_check_still_required"]
+        )
+
+        self.assertNotIn(
+            "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+            {item["classification"] for item in built["items"]},
         )
 
         for item in built["items"]:
