@@ -24,12 +24,13 @@ jobs:
         run: |
           python scripts/import_delegated_remuneration_national_corpus.py
           python scripts/build_delegated_remuneration_shared_corpus.py
+          python scripts/build_database_coverage_matrix.py
       - name: Commit generated corpus to PR branch
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/shared/remuneration-delegated/
+          git add data/shared/remuneration-delegated/ data/database-coverage-matrix.generated.json docs/database-coverage-summary.generated.md
           if git diff --cached --quiet; then
             echo "Corpus already materialized"
             exit 0
