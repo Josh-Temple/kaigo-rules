@@ -13,7 +13,16 @@ spec.loader.exec_module(module)
 
 class SharedFeeGuidanceTests(unittest.TestCase):
     def test_repository_chain(self):
-        self.assertEqual(module.validate(), (66, 6))
+        corpus = json.loads(
+            (ROOT / 'data/shared/fee-guidance/national-corpus.json').read_text(encoding='utf-8')
+        )
+        applicability = json.loads(
+            (ROOT / 'data/shared/fee-guidance/service-applicability.json').read_text(encoding='utf-8')
+        )
+        self.assertEqual(
+            module.validate(),
+            (len(corpus['nodes']), len(applicability['services'])),
+        )
 
     def mutate_and_reject(self, path, mutation):
         with tempfile.TemporaryDirectory() as temp:
@@ -66,6 +75,6 @@ class SharedFeeGuidanceTests(unittest.TestCase):
             self.assertEqual(row['publication']['state'], 'BLOCKED')
             self.assertEqual(row['route_exposure']['state'], 'BLOCKED')
         # Corpus availability is national; service scope remains service-specific.
-        other = rows['night-homevisit']
+        other = rows['specific-welfare-equipment-sale']
         self.assertEqual(other['corpus_availability']['kind'], 'SHARED')
         self.assertEqual(other['service_scope']['state'], 'SCOPE_NOT_DEFINED')
