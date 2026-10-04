@@ -31,7 +31,7 @@
     "top_level_complete": false,
     "item_body_complete": false,
     "legal_body_copied": false,
-    "indexing_depth": "BOUNDED_SECTION_AND_DIRECTLY_OBSERVED_STRUCTURE_MARKERS"
+    "indexing_depth": "BOUNDED_SECTION_TOP_LEVEL_AND_DIRECT_NUMERIC_MARKERS"
   },
   "top_level_items": [
     {
@@ -101,14 +101,14 @@
       "id": "rem.preventive-dementia-group-home.top.10",
       "marker": "ヌ",
       "kind": "TOP_LEVEL_STRUCTURE_MARKER",
-      "title": "口腔衛生管理体制加算",
+      "title": "口腔くう衛生管理体制加算",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 3 介護予防認知症対応型共同生活介護費 / ヌ"
     },
     {
       "id": "rem.preventive-dementia-group-home.top.11",
       "marker": "ル",
       "kind": "TOP_LEVEL_STRUCTURE_MARKER",
-      "title": "口腔・栄養スクリーニング加算",
+      "title": "口腔くう・栄養スクリーニング加算",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 3 介護予防認知症対応型共同生活介護費 / ル"
     },
     {
@@ -145,7 +145,7 @@
       "id": "rem.preventive-dementia-group-home.child.1",
       "parent_marker": "イ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "介護予防認知症対応型共同生活介護費(Ⅰ)",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 3 介護予防認知症対応型共同生活介護費 / イ / (1)"
     },
@@ -153,7 +153,7 @@
       "id": "rem.preventive-dementia-group-home.child.2",
       "parent_marker": "イ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "介護予防認知症対応型共同生活介護費(Ⅱ)",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 3 介護予防認知症対応型共同生活介護費 / イ / (2)"
     },
@@ -161,7 +161,7 @@
       "id": "rem.preventive-dementia-group-home.child.3",
       "parent_marker": "ロ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "介護予防短期利用認知症対応型共同生活介護費(Ⅰ)",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 3 介護予防認知症対応型共同生活介護費 / ロ / (1)"
     },
@@ -169,7 +169,7 @@
       "id": "rem.preventive-dementia-group-home.child.4",
       "parent_marker": "ロ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "介護予防短期利用認知症対応型共同生活介護費(Ⅱ)",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 3 介護予防認知症対応型共同生活介護費 / ロ / (2)"
     },
@@ -177,7 +177,7 @@
       "id": "rem.preventive-dementia-group-home.child.5",
       "parent_marker": "ヘ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "認知症専門ケア加算(Ⅰ)",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 3 介護予防認知症対応型共同生活介護費 / ヘ / (1)"
     },
@@ -185,7 +185,7 @@
       "id": "rem.preventive-dementia-group-home.child.6",
       "parent_marker": "ヘ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "認知症専門ケア加算(Ⅱ)",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 3 介護予防認知症対応型共同生活介護費 / ヘ / (2)"
     }
