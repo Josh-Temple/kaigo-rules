@@ -52,9 +52,17 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+    },
+    "care_insurance_act": {
+      "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
+      "selected_nodes": 174,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
     }
   },
   "ingestion_indexes": {
-    "remuneration": "data/services/preventive-dementia-dayservice/remuneration-index.json"
+    "remuneration": "data/services/preventive-dementia-dayservice/remuneration-index.json",
+    "care_insurance_act": "data/services/preventive-dementia-dayservice/care-insurance-act-index.json"
   }
 }

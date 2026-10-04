@@ -45,10 +45,18 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
+    },
+    "care_insurance_act": {
+      "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
+      "selected_nodes": 120,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
     }
   },
   "ingestion_indexes": {
     "rouki25": "data/services/shortstay-life/rouki25-historical.generated.json",
-    "remuneration": "data/services/shortstay-life/remuneration-index.json"
+    "remuneration": "data/services/shortstay-life/remuneration-index.json",
+    "care_insurance_act": "data/services/shortstay-life/care-insurance-act-index.json"
   }
 }
