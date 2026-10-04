@@ -144,6 +144,15 @@
     "note": "厚生労働省の公式HTML。令和8年厚生労働省告示第87号までの改正履歴・附則と、令和8年6月1日施行後の通所介護費本文を掲載している現行取得元。"
   },
   {
+    "id": "mhlw-community-fee-notice126-current",
+    "layer": "報酬告示",
+    "title": "指定地域密着型サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第126号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
+    "status": "current_official_consolidated_source",
+    "note": "厚生労働省公式HTMLの統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示する。source availabilityとservice/item-level currentnessは分離し、本source登録だけではcurrentnessを自動昇格しない。"
+  },
+  {
     "id": "mhlw-fee-notice27-base",
     "layer": "算定方法告示",
     "title": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法（厚生省告示第27号）",
