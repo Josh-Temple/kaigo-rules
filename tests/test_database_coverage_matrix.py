@@ -59,15 +59,25 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
                 row["service_id"],
             )
 
-    def test_delegated_criteria_do_not_inherit_remuneration_ingestion_or_verification(self):
-        for service_id in ("dayservice", "dayrehab"):
-            remuneration = self.cell(service_id, "remuneration_notification")
-            delegated = self.cell(service_id, "delegated_remuneration_criteria")
-            self.assertEqual(remuneration["ingestion"]["state"], "INGESTED")
-            self.assertEqual(delegated["service_scope"]["state"], "SCOPE_DEFINED")
-            self.assertEqual(delegated["ingestion"]["state"], "NOT_INGESTED")
-            self.assertEqual(delegated["item_body_verification"]["state"], "NOT_ESTABLISHED")
-            self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
+    def test_delegated_criteria_applicability_is_separate_from_assurance(self):
+        dayservice = self.cell("dayservice", "delegated_remuneration_criteria")
+        dayrehab = self.cell("dayrehab", "delegated_remuneration_criteria")
+
+        self.assertEqual(dayservice["service_scope"]["state"], "SCOPE_DEFINED")
+        self.assertEqual(dayservice["service_applicability"]["state"], "MAPPED")
+        self.assertEqual(dayservice["service_applicability"]["mapped_node_count"], 17)
+        self.assertEqual(dayservice["ingestion"]["state"], "INGESTED")
+        self.assertEqual(dayservice["item_body_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(dayservice["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(dayservice["human_review"]["state"], "NOT_REVIEWED")
+        self.assertEqual(dayservice["publication"]["state"], "BLOCKED")
+        self.assertEqual(dayservice["route_exposure"]["state"], "BLOCKED")
+
+        self.assertEqual(dayrehab["service_scope"]["state"], "SCOPE_DEFINED")
+        self.assertEqual(dayrehab["service_applicability"]["state"], "NOT_MAPPED")
+        self.assertEqual(dayrehab["ingestion"]["state"], "NOT_INGESTED")
+        self.assertEqual(dayrehab["item_body_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(dayrehab["currentness"]["state"], "NOT_ESTABLISHED")
 
     def test_homevisit_remuneration_ingestion_stays_fail_closed(self):
         remuneration = self.cell("homevisit", "remuneration_notification")
