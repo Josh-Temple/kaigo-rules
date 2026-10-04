@@ -2,7 +2,7 @@
   "format_version": 1,
   "generated_by": "scripts/build_relation_human_review_evidence_pack.py",
   "source_packet": "data/relation-human-review-packet.json",
-  "policy": "This file supplies review excerpts and canonical resolution only. Excerpts may include machine-reconstructed candidates or editorial summaries where primary text is not committed. It never makes or promotes a semantic review decision.",
+  "policy": "This file supplies review excerpts and canonical resolution for Worker D-owned relations only. Excerpts may include machine-reconstructed candidates or editorial summaries where primary text is not committed. Worker B-owned freshness relations are excluded. It never makes or promotes a semantic review decision.",
   "summary": {
     "items_total": 58,
     "unresolved_items": 0,
