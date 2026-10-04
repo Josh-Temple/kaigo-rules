@@ -1,0 +1,228 @@
+{
+  "format_version": 1,
+  "corpus_id": "delegated-remuneration-national",
+  "canonical_text_store": "data/remuneration-delegated-nodes.json",
+  "nodes": [
+    {
+      "canonical_node_id": "notice27.item.1",
+      "legacy_node_id": "calc27.dayservice.1",
+      "source_id": "mhlw-fee-notice27-base",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+      "heading": "一 厚生労働大臣が定める利用者の数の基準及び看護職員等の員数の基準並びに通所介護費の算定方法",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "一 厚生労働大臣が定める利用者の数の基準及び看護職員等の員数の基準並びに通所介護費の算定方法"
+      },
+      "text_sha256": "c92fe15f9e635e1c15666558e44e7c9a0a116335895bca23b43de4509b8e247c"
+    },
+    {
+      "canonical_node_id": "notice27.item.1.capacity",
+      "legacy_node_id": "calc27.dayservice.1.capacity",
+      "source_id": "mhlw-fee-notice27-base",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+      "heading": "利用定員超過時の算定",
+      "parent_canonical_node_id": "notice27.item.1",
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "利用定員超過時の算定"
+      },
+      "text_sha256": "c9d01c45c871e40d3062d7235c3ef70f1661ed5fd24f2fc3df3987985072623e"
+    },
+    {
+      "canonical_node_id": "notice27.item.1.staffing",
+      "legacy_node_id": "calc27.dayservice.1.staffing",
+      "source_id": "mhlw-fee-notice27-base",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+      "heading": "看護職員・介護職員の人員欠如時の算定",
+      "parent_canonical_node_id": "notice27.item.1",
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "看護職員・介護職員の人員欠如時の算定"
+      },
+      "text_sha256": "0ecb45ea7fe6460212c28df90b23f4890b0860e72f33d6f29cbfc5e3dbb296b4"
+    },
+    {
+      "canonical_node_id": "notice95.item.14-3",
+      "legacy_node_id": "criteria95.dayservice.14-3",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十四の三 通所介護費における高齢者虐待防止措置未実施減算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十四の三 通所介護費における高齢者虐待防止措置未実施減算の基準"
+      },
+      "text_sha256": "5fc924a62e2ba3fd9dbd6431c4962742587b7452aea0a1c161eeca651fc02486"
+    },
+    {
+      "canonical_node_id": "notice95.item.14-4",
+      "legacy_node_id": "criteria95.dayservice.14-4",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十四の四 通所介護費における業務継続計画未策定減算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十四の四 通所介護費における業務継続計画未策定減算の基準"
+      },
+      "text_sha256": "8f25318ea4817f3cf5e2a240274967efc2932660643ebf769ee0b8e213bfb7e6"
+    },
+    {
+      "canonical_node_id": "notice95.item.14-5",
+      "legacy_node_id": "criteria95.dayservice.14-5",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十四の五 通所介護費及び地域密着型通所介護費における生活相談員配置等加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十四の五 通所介護費及び地域密着型通所介護費における生活相談員配置等加算の基準"
+      },
+      "text_sha256": "545a7371f8064f917027c6f86dc76e7af3def0228b1a62f7b1d69d882c9b7d36"
+    },
+    {
+      "canonical_node_id": "notice95.item.14-6",
+      "legacy_node_id": "criteria95.dayservice.14-6",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十四の六 通所介護費、地域密着型通所介護費、認知症対応型通所介護費及び介護予防認知症対応型通所介護費における入浴介助加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十四の六 通所介護費、地域密着型通所介護費、認知症対応型通所介護費及び介護予防認知症対応型通所介護費における入浴介助加算の基準"
+      },
+      "text_sha256": "d3494778fb96d9f060bb6df7b8a0d35c98f6c3a4dc6f7e8abed46ef59e029489"
+    },
+    {
+      "canonical_node_id": "notice95.item.15",
+      "legacy_node_id": "criteria95.dayservice.15",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十五 通所介護費における中重度者ケア体制加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十五 通所介護費における中重度者ケア体制加算の基準"
+      },
+      "text_sha256": "b0afcca14c2a438f2c519187dd029fd656d5bb3953751bbd57310648c04423b6"
+    },
+    {
+      "canonical_node_id": "notice95.item.16",
+      "legacy_node_id": "criteria95.dayservice.16",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十六 通所介護費における個別機能訓練加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十六 通所介護費における個別機能訓練加算の基準"
+      },
+      "text_sha256": "bd59cfb5a8f61bfde42c309aa5dc15ded81e3890e89e740e81155b17b708bd6b"
+    },
+    {
+      "canonical_node_id": "notice95.item.17",
+      "legacy_node_id": "criteria95.dayservice.17",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十七 通所介護費における認知症加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十七 通所介護費における認知症加算の基準"
+      },
+      "text_sha256": "84d853fe0d8a0c23f520cfdf5b55a599dad76a34197e559e0f166eea155e7bda"
+    },
+    {
+      "canonical_node_id": "notice95.item.18-2",
+      "legacy_node_id": "criteria95.dayservice.18-2",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十八の二 通所介護費、通所リハビリテーション費、地域密着型通所介護費、認知症対応型通所介護費、看護小規模多機能型居宅介護費、介護予防通所リハビリテーション費及び介護予防認知症対応型通所介護費における栄養アセスメント加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十八の二 通所介護費、通所リハビリテーション費、地域密着型通所介護費、認知症対応型通所介護費、看護小規模多機能型居宅介護費、介護予防通所リハビリテーション費及び介護予防認知症対応型通所介護費における栄養アセスメント加算の基準"
+      },
+      "text_sha256": "497d978d28e91e9cc1dd4d29b497d7218deb994bc00855535a11579245dacc8f"
+    },
+    {
+      "canonical_node_id": "notice95.item.19",
+      "legacy_node_id": "criteria95.dayservice.19",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十九 通所介護費、地域密着型通所介護費、認知症対応型通所介護費、看護小規模多機能型居宅介護費、介護予防通所リハビリテーション費及び介護予防認知症対応型通所介護費における栄養改善加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十九 通所介護費、地域密着型通所介護費、認知症対応型通所介護費、看護小規模多機能型居宅介護費、介護予防通所リハビリテーション費及び介護予防認知症対応型通所介護費における栄養改善加算の基準"
+      },
+      "text_sha256": "16e13bffb851a629637668da0054b88ef85672afe38223f5b65a8e643391db3f"
+    },
+    {
+      "canonical_node_id": "notice95.item.19-2",
+      "legacy_node_id": "criteria95.dayservice.19-2",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "十九の二 通所介護費、認知症対応型通所介護費、看護小規模多機能型居宅介護費及び介護予防認知症対応型通所介護費における口",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "十九の二 通所介護費、認知症対応型通所介護費、看護小規模多機能型居宅介護費及び介護予防認知症対応型通所介護費における口"
+      },
+      "text_sha256": "5a4aa284bea82b3229802b67dc5523de25e6e775023442fa3b4594eb84921dcf"
+    },
+    {
+      "canonical_node_id": "notice95.item.20",
+      "legacy_node_id": "criteria95.dayservice.20",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "二十 通所介護費における口",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "二十 通所介護費における口"
+      },
+      "text_sha256": "6dfc0fdc5e67b2776c850ee503a052b034d2b9ee29d17fedc54cd41c7304fb0a"
+    },
+    {
+      "canonical_node_id": "notice95.item.23",
+      "legacy_node_id": "criteria95.dayservice.23",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "二十三 通所介護費におけるサービス提供体制強化加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "二十三 通所介護費におけるサービス提供体制強化加算の基準"
+      },
+      "text_sha256": "a5da1cccba0124c404953ed423b73a240a3e60f5b3ba039ba81dcf16053e7fea"
+    },
+    {
+      "canonical_node_id": "notice95.item.24",
+      "legacy_node_id": "criteria95.dayservice.24",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "二十四 通所介護費における介護職員等処遇改善加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "二十四 通所介護費における介護職員等処遇改善加算の基準"
+      },
+      "text_sha256": "9991e386846ab7de0fd91291fba2a34eab99cf7da20c82b007086bc288099a7a"
+    },
+    {
+      "canonical_node_id": "notice95.item.4",
+      "legacy_node_id": "criteria95.shared.4",
+      "source_id": "mhlw-fee-criteria95-current",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+      "heading": "四 訪問介護費における介護職員等処遇改善加算の基準",
+      "parent_canonical_node_id": null,
+      "source_locator": {
+        "kind": "HEADING",
+        "value": "四 訪問介護費における介護職員等処遇改善加算の基準"
+      },
+      "text_sha256": "e513f845ee76ab41e358b67b90812eb40d6c7b8431adc0706a39f8618256a3f4"
+    }
+  ]
+}
