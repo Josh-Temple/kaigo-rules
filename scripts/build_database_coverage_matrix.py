@@ -31,7 +31,11 @@ SOURCE_FAMILIES = (
         "shared_layer_ids": ("ordinance37",),
         "scope_keys": ("ordinance37", "standards_index", "governing_standards"),
         "ingestion_keys": ("ordinance37",),
-        "verification_layer_ids": ("ordinance37", "ordinance37-dayrehab"),
+        "verification_layer_ids": (
+            "ordinance37",
+            "ordinance37-dayrehab",
+            "ordinance37-existing-services",
+        ),
     },
     {
         "id": "standards_interpretation_notice",
