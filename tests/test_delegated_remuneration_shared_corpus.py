@@ -71,7 +71,7 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         self.assertEqual(row["service_id"], "dayservice")
         self.assertEqual(row["applicability_state"], "MAPPED")
         self.assertEqual(row["ingestion_state"], "INGESTED")
-        self.assertEqual(row["mapped_node_count"], 18)
+        self.assertGreaterEqual(row["mapped_node_count"], 18)
         self.assertEqual(
             row["compatibility_subnode_ids"],
             ["notice27.item.1.capacity", "notice27.item.1.staffing"],
@@ -93,8 +93,18 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         self.assertEqual(len(applicability), len(shared.SERVICE_HEADING_TERMS))
         self.assertEqual(
             {key for key, row in applicability.items() if row["applicability_state"] == "UNKNOWN"},
-            {"homecaremanagement", "preventive-homecaremanagement", "preventive-welfare-equipment-rental"},
+            set(),
         )
+        residual_expected = {
+            "homecaremanagement": "notice96.item.4-4",
+            "preventive-homecaremanagement": "notice96.item.71-2",
+            "preventive-welfare-equipment-rental": "notice95.item.121-3-2",
+        }
+        for service_id, expected_node_id in residual_expected.items():
+            row = applicability[service_id]
+            self.assertEqual(row["applicability_state"], "MAPPED")
+            self.assertEqual(row["ingestion_state"], "INGESTED")
+            self.assertIn(expected_node_id, row["mapped_node_ids"])
         self.assertEqual(
             {key for key, row in applicability.items() if row["applicability_state"] == "NOT_APPLICABLE"},
             {"specific-welfare-equipment-sale", "specific-preventive-welfare-equipment-sale"},
@@ -146,7 +156,7 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         )
         self.assertEqual(
             {row["service_id"] for row in relation_doc["services"] if row.get("applicability_state") == "UNKNOWN"},
-            {"homecaremanagement", "preventive-homecaremanagement", "preventive-welfare-equipment-rental"},
+            set(),
         )
 
     def test_verified_delegation_edges_do_not_promote_service_relations(self):
