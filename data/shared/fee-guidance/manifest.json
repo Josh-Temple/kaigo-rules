@@ -1,0 +1,25 @@
+{
+  "format_version": 1,
+  "corpus_id": "fee-guidance-national",
+  "source_family": "fee_calculation_guidance",
+  "canonical_node_store": "data/shared/fee-guidance/national-corpus.json",
+  "source_registry": "data/shared/fee-guidance/source-registry.json",
+  "identity_map": "data/shared/fee-guidance/node-identity-map.json",
+  "service_applicability": "data/shared/fee-guidance/service-applicability.json",
+  "service_relations": "data/shared/fee-guidance/service-relations.json",
+  "coverage_kind": "PARTIAL_SOURCE_VERSIONED_COMPARISON_AND_LEGACY_REFERENCES",
+  "legacy_compatibility": {
+    "existing_stores_remain_canonical": true,
+    "existing_verification_not_inherited": true
+  },
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "service_applicability_verification": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_promotion_allowed": false
+  }
+}

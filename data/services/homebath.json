@@ -13,7 +13,8 @@
     "care_insurance_act": "data/services/homebath/care-insurance-act-scope.json",
     "ordinance37": "data/services/homebath/ordinance37-scope.json",
     "remuneration": "data/services/homebath/remuneration-scope.json",
-    "unit_price": "data/services/homebath/unit-price-scope.json"
+    "unit_price": "data/services/homebath/unit-price-scope.json",
+    "fee_guidance": "data/services/homebath/fee-guidance-scope.json"
   },
   "verification_layer_ids": [
     "rouki25-homebath",
@@ -43,10 +44,17 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
+    },
+    "fee_guidance": {
+      "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+      "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
     }
   },
   "ingestion_indexes": {
     "rouki25": "data/services/homebath/rouki25-historical.generated.json",
-    "remuneration": "data/services/homebath/remuneration-index.json"
+    "remuneration": "data/services/homebath/remuneration-index.json",
+    "fee_guidance": "data/services/homebath/fee-guidance-scope.json"
   }
 }

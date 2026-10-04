@@ -1,0 +1,1299 @@
+{
+  "format_version": 1,
+  "nodes": [
+    {
+      "id": "fee-guidance.shared.rouki36.r6-comparison.II.2",
+      "source_id": "rouki36-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "2"
+      ],
+      "title": "訪問介護費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-comparison-layout.txt",
+        "start_line": 207,
+        "end_line": 657,
+        "sha256": "bb55f5662a82eb6216109446ba8638e2683e34759c2b07743a2baa72ff79aa02"
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.rouki36.r6-comparison.II.3",
+      "source_id": "rouki36-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "3"
+      ],
+      "title": "訪問入浴介護費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-comparison-layout.txt",
+        "start_line": 658,
+        "end_line": 784,
+        "sha256": "8957edb53b81a6a8733e54f66710809d497044ceb755d4b87567fdd3879dc900"
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.rouki36.r6-comparison.II.4",
+      "source_id": "rouki36-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "4"
+      ],
+      "title": "訪問看護費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-comparison-layout.txt",
+        "start_line": 785,
+        "end_line": 1036,
+        "sha256": "be0ccf390bb0429a8d113f991c6f51c66acf5707c269c0f2de4002d5458bad14"
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.rouki36.r6-comparison.II.5",
+      "source_id": "rouki36-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "5"
+      ],
+      "title": "訪問リハビリテーション費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-comparison-layout.txt",
+        "start_line": 1037,
+        "end_line": 1298,
+        "sha256": "25e2bfb03147cdb06cea3dd84f5ca161b1e4debfaa72a0288a0d0170e17d36bf"
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.root",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.root"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.1",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.1"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.2",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.2"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.3",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.3"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.4",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.4"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.5",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.5"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.6",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.6"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.7"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7-2",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.7-2"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.8",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.8"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.9",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.9"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.10",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.10"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.11",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.11"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.12",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.12"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.13",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.13"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.14",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.14"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.15",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.15"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.16",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.16"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.17",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.17"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.18",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.18"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.19",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.19"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.20",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.20"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.21",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.21"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.22",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.22"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.23",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.23"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.24",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.24"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.25",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.25"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.26",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.26"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.27",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.27"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-01",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-01"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-02",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-02"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-03",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-03"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-04",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-04"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-05",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-05"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-06",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-06"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-07",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-07"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-08",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-08"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-09",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-09"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-10",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-10"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-11",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-11"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-12",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-12"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-13",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-13"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-14",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-14"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-15",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-15"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-16",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-16"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-17",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-17"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-18",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-18"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-19",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-19"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-20",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-20"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-21",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-21"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-22",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-22"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-23",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-23"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-24",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-24"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-25",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-25"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-26",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-26"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-27",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-27"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-28",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-28"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-29",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-29"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-30",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-30"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-31",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-31"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-32",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-32"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.compat.dayrehab.R6-8-33",
+      "content_kind": "LEGACY_CANONICAL_REFERENCE",
+      "legacy_ref": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-33"
+      },
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    }
+  ]
+}

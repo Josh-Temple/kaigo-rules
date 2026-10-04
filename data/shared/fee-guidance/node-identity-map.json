@@ -1,0 +1,529 @@
+{
+  "format_version": 1,
+  "identities": [
+    {
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.2",
+      "identity_basis": [
+        "第2",
+        "2"
+      ]
+    },
+    {
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.3",
+      "identity_basis": [
+        "第2",
+        "3"
+      ]
+    },
+    {
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.4",
+      "identity_basis": [
+        "第2",
+        "4"
+      ]
+    },
+    {
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.5",
+      "identity_basis": [
+        "第2",
+        "5"
+      ]
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.root",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.root"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.1",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.1"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.2",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.2"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.3",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.3"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.4",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.4"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.5",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.5"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.6",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.6"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.7"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7-2",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.7-2"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.8",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.8"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.9",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.9"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.10",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.10"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.11",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.11"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.12",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.12"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.13",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.13"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.14",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.14"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.15",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.15"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.16",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.16"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.17",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.17"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.18",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.18"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.19",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.19"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.20",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.20"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.21",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.21"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.22",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.22"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.23",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.23"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.24",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.24"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.25",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.25"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.26",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.26"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.27",
+      "identity_basis": {
+        "path": "data/fee-guidance-current-skeleton.json",
+        "collection": null,
+        "id": "fee-guidance.dayservice.27"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-01",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-01"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-02",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-02"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-03",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-03"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-04",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-04"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-05",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-05"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-06",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-06"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-07",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-07"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-08",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-08"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-09",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-09"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-10",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-10"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-11",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-11"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-12",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-12"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-13",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-13"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-14",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-14"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-15",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-15"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-16",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-16"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-17",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-17"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-18",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-18"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-19",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-19"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-20",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-20"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-21",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-21"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-22",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-22"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-23",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-23"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-24",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-24"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-25",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-25"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-26",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-26"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-27",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-27"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-28",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-28"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-29",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-29"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-30",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-30"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-31",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-31"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-32",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-32"
+      }
+    },
+    {
+      "node_id": "fee-guidance.shared.compat.dayrehab.R6-8-33",
+      "identity_basis": {
+        "path": "data/services/dayrehab/fee-guidance-index.json",
+        "collection": "items",
+        "id": "R6-8-33"
+      }
+    }
+  ]
+}
