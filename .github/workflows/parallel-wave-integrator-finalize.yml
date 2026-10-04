@@ -1,0 +1,76 @@
+name: Parallel wave integrator finalize
+
+on:
+  push:
+    branches:
+      - work/parallel-wave-integrator
+    paths:
+      - ".github/workflows/parallel-wave-integrator-finalize.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: work/parallel-wave-integrator
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install PDF text extractor
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Regenerate canonical derived artifacts once
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/build_service_catalog.py
+          python scripts/build_homevisit_careact_index.py
+          python scripts/build_homevisit_ordinance37_index.py
+          python scripts/build_dayrehab_article119_relations.py
+          python scripts/build_dayrehab_ordinance37_index.py
+          python scripts/build_notice_review_packet.py
+          python scripts/build_notice_rouki25_audit_report.py
+          python scripts/import_delegated_remuneration_national_corpus.py
+          python scripts/build_delegated_remuneration_shared_corpus.py
+          python scripts/build_remuneration_source_link_derived_audit.py
+          python scripts/build_notice_ordinance_explicit_reference_derived_audit.py
+          python scripts/build_careact_service_identity_derived_audit.py
+          python scripts/build_relation_verification_queue.py
+          python scripts/build_relation_human_review_packet.py
+          python scripts/build_relation_human_review_evidence_pack.py
+          python scripts/build_verification_registry.py
+          python scripts/build_database_coverage_matrix.py
+          python scripts/build_product_value_snapshot.py
+          python scripts/build_question_context_packages.py
+          python scripts/build_shared_standards_service_relations.py
+          python scripts/build_qa_service_relations.py
+
+      - name: Validate integrated data and tests
+        run: npm run validate:data
+
+      - name: Build application
+        run: npm run build
+
+      - name: Commit regenerated artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git status --short
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit"
+          else
+            git commit -m "Regenerate integrated artifacts after parallel wave"
+            git push origin HEAD:work/parallel-wave-integrator
+          fi
