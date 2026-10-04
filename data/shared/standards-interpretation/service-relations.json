@@ -1,0 +1,154 @@
+{
+  "format_version": 1,
+  "source_family": "standards_interpretation_notice",
+  "relation_model": "SERVICE_SCOPE_TO_SHARED_NOTICE_SECTION",
+  "relations": [
+    {
+      "relation_id": "standards-interpretation.preventive-homebath.rouki25",
+      "service_id": "preventive-homebath",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 二 / 2 介護予防訪問入浴介護",
+        "第四 介護予防サービス / 三 / 2 介護予防訪問入浴介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-homenursing.rouki25",
+      "service_id": "preventive-homenursing",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 3 介護予防訪問看護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-homerehab.rouki25",
+      "service_id": "preventive-homerehab",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 4 介護予防訪問リハビリテーション"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-homecaremanagement.rouki25",
+      "service_id": "preventive-homecaremanagement",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 5 介護予防居宅療養管理指導"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-dayrehab.rouki25",
+      "service_id": "preventive-dayrehab",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 7 介護予防通所リハビリテーション"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-shortstay-life.rouki25",
+      "service_id": "preventive-shortstay-life",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 二 / 4 指定介護予防短期入所生活介護",
+        "第四 介護予防サービス / 三 / 8 介護予防短期入所生活介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-shortstay-medical.rouki25",
+      "service_id": "preventive-shortstay-medical",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 二 / 5 指定介護予防短期入所療養介護",
+        "第四 介護予防サービス / 三 / 9 介護予防短期入所療養介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-specific-facility.rouki25",
+      "service_id": "preventive-specific-facility",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 10 介護予防特定施設入居者生活介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-welfare-equipment-rental.rouki25",
+      "service_id": "preventive-welfare-equipment-rental",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 11 介護予防福祉用具貸与"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.specific-preventive-welfare-equipment-sale.rouki25",
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "target_source_id": "rouki25-preventive-historical-2015",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 12 特定介護予防福祉用具販売"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    }
+  ],
+  "safety": {
+    "inferred_cross_service_applicability": false,
+    "duplicated_notice_body": false
+  }
+}
