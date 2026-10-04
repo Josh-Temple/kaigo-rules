@@ -628,6 +628,7 @@ def build() -> dict:
             "data/shared/standards/independent-audit.json",
             "data/qa-service-mapping.json",
             "data/shared/remuneration-delegated/manifest.json",
+            "data/shared/remuneration-delegated/national-corpus.json",
             "data/shared/remuneration-delegated/node-identity-map.json",
             "data/shared/remuneration-delegated/service-applicability.json",
             "data/shared/remuneration-delegated/service-relations.json",
