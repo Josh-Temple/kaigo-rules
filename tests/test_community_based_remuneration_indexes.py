@@ -123,7 +123,13 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
             self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
             self.assertEqual(delegated["publication"]["state"], "BLOCKED")
             self.assertEqual(delegated["route_exposure"]["state"], "BLOCKED")
-            self.assertEqual(guidance["ingestion"]["state"], "NOT_INGESTED")
+            self.assertEqual(guidance["service_scope"]["state"], "SCOPE_DEFINED")
+            self.assertEqual(guidance["ingestion"]["state"], "PARTIAL")
+            self.assertEqual(guidance["item_body_verification"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(guidance["currentness"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(guidance["human_review"]["state"], "NOT_REVIEWED")
+            self.assertEqual(guidance["publication"]["state"], "BLOCKED")
+            self.assertEqual(guidance["route_exposure"]["state"], "BLOCKED")
 
     def test_existing_standards_interpretation_verification_is_not_regressed(self):
         for service_id in ("community-dayservice", "regular-round", "night-homevisit"):
