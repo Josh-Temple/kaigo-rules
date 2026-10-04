@@ -36,6 +36,87 @@
       "source_id": "rouki36-r6-final-comparison-shared",
       "semantics": "Document section bearing this service name; no cross-reference applicability inferred.",
       "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-homebath.preventive-r6.II.2",
+      "service_id": "preventive-homebath",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.2",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-homenursing.preventive-r6.II.3",
+      "service_id": "preventive-homenursing",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.3",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-homerehab.preventive-r6.II.4",
+      "service_id": "preventive-homerehab",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.4",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-homecaremanagement.preventive-r6.II.5",
+      "service_id": "preventive-homecaremanagement",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.5",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-dayrehab.preventive-r6.II.6",
+      "service_id": "preventive-dayrehab",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.6",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-shortstay-life.preventive-r6.II.7",
+      "service_id": "preventive-shortstay-life",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.7",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-shortstay-medical.preventive-r6.II.8",
+      "service_id": "preventive-shortstay-medical",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.8",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-specific-facility.preventive-r6.II.9",
+      "service_id": "preventive-specific-facility",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.9",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-welfare-equipment-rental.preventive-r6.II.10",
+      "service_id": "preventive-welfare-equipment-rental",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.10",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
     }
   ]
 }
