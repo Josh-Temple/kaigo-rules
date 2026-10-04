@@ -1262,7 +1262,7 @@
     {
       "service_id": "preventive-homebath",
       "label": "介護予防訪問入浴介護",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1284,7 +1284,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 5,
+          "numeric_child_items": 21,
+          "total_index_entries": 26,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「1 介護予防訪問入浴介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防訪問入浴介護",
@@ -1301,12 +1311,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "preventive-homenursing",
       "label": "介護予防訪問看護",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1328,7 +1338,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 8,
+          "numeric_child_items": 32,
+          "total_index_entries": 40,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「2 介護予防訪問看護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防訪問看護",
@@ -1345,12 +1365,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "preventive-homerehab",
       "label": "介護予防訪問リハビリテーション",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1372,7 +1392,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 4,
+          "numeric_child_items": 15,
+          "total_index_entries": 19,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「3 介護予防訪問リハビリテーション費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防訪問リハビリテーション",
@@ -1389,12 +1419,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "preventive-homecaremanagement",
       "label": "介護予防居宅療養管理指導",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1416,7 +1446,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 5,
+          "numeric_child_items": 12,
+          "total_index_entries": 17,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「4 介護予防居宅療養管理指導費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防居宅療養管理指導",
@@ -1433,12 +1473,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "preventive-dayrehab",
       "label": "介護予防通所リハビリテーション",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1460,7 +1500,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 10,
+          "numeric_child_items": 26,
+          "total_index_entries": 36,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「5 介護予防通所リハビリテーション費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防通所リハビリテーション",
@@ -1477,12 +1527,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "preventive-shortstay-life",
       "label": "介護予防短期入所生活介護",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1504,7 +1554,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 8,
+          "numeric_child_items": 32,
+          "total_index_entries": 40,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「6 介護予防短期入所生活介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防短期入所生活介護",
@@ -1521,12 +1581,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "preventive-shortstay-medical",
       "label": "介護予防短期入所療養介護",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1548,7 +1608,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 5,
+          "numeric_child_items": 44,
+          "total_index_entries": 49,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「7 介護予防短期入所療養介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防短期入所療養介護",
@@ -1565,12 +1635,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "preventive-specific-facility",
       "label": "介護予防特定施設入居者生活介護",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1592,7 +1662,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 9,
+          "numeric_child_items": 17,
+          "total_index_entries": 26,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「8 介護予防特定施設入居者生活介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防特定施設入居者生活介護",
@@ -1609,12 +1689,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "preventive-welfare-equipment-rental",
       "label": "介護予防福祉用具貸与",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "service_class": "PREVENTIVE_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -1636,7 +1716,17 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+          "top_level_items": 8,
+          "numeric_child_items": 0,
+          "total_index_entries": 8,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省告示第127号の別表「9 介護予防福祉用具貸与費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防福祉用具貸与",
@@ -1653,7 +1743,7 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "REGISTERED_NOT_INGESTED"
+      "ingestion_state": "PARTIAL_INGESTION"
     },
     {
       "service_id": "specific-preventive-welfare-equipment-sale",
