@@ -271,6 +271,20 @@ def build_cell(
             "data/shared/standards/manifest.json",
             f"data/shared/standards/service-ordinance-map.json#{service_id}",
         ]
+    elif (
+        family["id"] == "standards_interpretation_notice"
+        and "standards_interpretation" in declared_scope
+        and scope_files.get("standards_interpretation")
+        == "data/shared/standards-interpretation/remaining-service-scopes.json"
+    ):
+        source_registry = load("data/shared/standards-interpretation/remaining-source-register.json")
+        corpus_state = "AVAILABLE"
+        corpus_kind = "SHARED"
+        corpus_id = source_registry.get("registry_id")
+        corpus_evidence = [
+            "data/shared/standards-interpretation/remaining-source-register.json",
+            f"data/shared/standards-interpretation/remaining-service-scopes.json#{service_id}",
+        ]
     elif shared_layers:
         corpus_state = "AVAILABLE"
         corpus_kind = "SHARED"
@@ -298,6 +312,15 @@ def build_cell(
         else str(scope_files[key])
         for key in declared_scope
     )
+    if (
+        family["id"] == "standards_interpretation_notice"
+        and "standards_interpretation" in declared_scope
+        and scope_files.get("standards_interpretation")
+        == "data/shared/standards-interpretation/remaining-service-scopes.json"
+    ):
+        scope_evidence.append(
+            f"data/shared/standards-interpretation/remaining-service-relations.json#{service_id}"
+        )
     if layer_scoped:
         scope_evidence.extend(
             f"data/verification-registry.json#{layer['id']}"
@@ -662,6 +685,9 @@ def build() -> dict:
             "data/verification/standards-interpretation-gates.json",
             "data/relation-verification-queue.json",
             "data/shared/standards/manifest.json",
+            "data/shared/standards-interpretation/remaining-source-register.json",
+            "data/shared/standards-interpretation/remaining-service-scopes.json",
+            "data/shared/standards-interpretation/remaining-service-relations.json",
             "data/shared/standards/service-ordinance-map.json",
             "data/shared/standards/service-relations.generated.json",
             "data/shared/standards/independent-audit.json",
