@@ -21,7 +21,11 @@
     "data/shared/standards/service-ordinance-map.json",
     "data/shared/standards/service-relations.generated.json",
     "data/shared/standards/independent-audit.json",
-    "data/qa-service-mapping.json"
+    "data/qa-service-mapping.json",
+    "data/shared/remuneration-delegated/manifest.json",
+    "data/shared/remuneration-delegated/node-identity-map.json",
+    "data/shared/remuneration-delegated/service-applicability.json",
+    "data/shared/remuneration-delegated/service-relations.json"
   ],
   "source_families": [
     {
@@ -348,9 +352,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -363,17 +368,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -384,16 +395,26 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
-            "state": "NOT_ESTABLISHED",
+            "state": "BLOCKED",
             "raw_service_public_routes_enabled": null
           },
           "route_exposure": {
-            "state": "NOT_ESTABLISHED",
+            "state": "BLOCKED",
             "raw_current_mode": "LEGACY_ROOT",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "MAPPED",
+            "mapped_node_count": 17,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#dayservice"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#dayservice"
           }
         },
         {
@@ -908,9 +929,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -954,6 +976,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -1427,9 +1455,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -1473,6 +1502,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -1946,9 +1981,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -1992,6 +2028,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -2465,9 +2507,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -2511,6 +2554,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -2984,9 +3033,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -3030,6 +3080,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -3531,9 +3587,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -3577,6 +3634,12 @@
             "state": "NOT_ESTABLISHED",
             "raw_current_mode": "SERVICE_ROOT_PREVIEW",
             "raw_future_service_base_enabled": true
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -4070,9 +4133,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -4116,6 +4180,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -4589,9 +4659,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -4637,6 +4708,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -5110,9 +5187,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -5158,6 +5236,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -5631,9 +5715,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -5679,6 +5764,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -6152,9 +6243,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -6200,6 +6292,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -6673,9 +6771,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -6721,6 +6820,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -7174,9 +7279,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -7220,6 +7326,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -7673,9 +7785,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -7719,6 +7832,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -8172,9 +8291,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -8218,6 +8338,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -8671,9 +8797,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -8717,6 +8844,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -9174,9 +9307,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -9222,6 +9356,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -9679,9 +9819,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -9727,6 +9868,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -10184,9 +10331,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -10232,6 +10380,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -10689,9 +10843,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -10737,6 +10892,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -11194,9 +11355,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -11242,6 +11404,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -11699,9 +11867,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -11747,6 +11916,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -12204,9 +12379,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -12252,6 +12428,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -12709,9 +12891,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -12757,6 +12940,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -13214,9 +13403,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -13262,6 +13452,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -13719,9 +13915,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -13767,6 +13964,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -14222,9 +14425,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -14270,6 +14474,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -14725,9 +14935,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -14773,6 +14984,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -15228,9 +15445,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -15276,6 +15494,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -15731,9 +15955,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -15779,6 +16004,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -16234,9 +16465,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -16282,6 +16514,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -16737,9 +16975,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -16785,6 +17024,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -17240,9 +17485,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -17288,6 +17534,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -17743,9 +17995,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -17791,6 +18044,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -18246,9 +18505,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -18294,6 +18554,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -18749,9 +19015,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -18797,6 +19064,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -19252,9 +19525,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -19300,6 +19574,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -19755,9 +20035,10 @@
           "corpus_availability": {
             "state": "AVAILABLE",
             "kind": "SHARED",
-            "corpus_id": null,
+            "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/verification-registry.json#remuneration-notices"
+              "data/remuneration-delegated-nodes.json",
+              "data/shared/remuneration-delegated/manifest.json"
             ]
           },
           "service_scope": {
@@ -19803,6 +20084,12 @@
             "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_RESERVED",
             "raw_future_service_base_enabled": false
+          },
+          "service_applicability": {
+            "state": "NOT_MAPPED",
+            "mapped_node_count": 0,
+            "evidence": [],
+            "relation_model": null
           }
         },
         {
@@ -20172,7 +20459,8 @@
           "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "NOT_INGESTED": 39
+          "INGESTED": 1,
+          "NOT_INGESTED": 38
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 39
@@ -20187,12 +20475,12 @@
           "NOT_REVIEWED": 39
         },
         "publication": {
-          "BLOCKED": 37,
-          "NOT_ESTABLISHED": 2
+          "BLOCKED": 38,
+          "NOT_ESTABLISHED": 1
         },
         "route_exposure": {
-          "BLOCKED": 37,
-          "NOT_ESTABLISHED": 2
+          "BLOCKED": 38,
+          "NOT_ESTABLISHED": 1
         }
       },
       "fee_calculation_guidance": {
@@ -20764,6 +21052,11 @@
       },
       {
         "service_id": "dayservice",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dayservice",
         "source_family": "fee_calculation_guidance",
         "state": "PARTIAL"
       },
@@ -21245,6 +21538,11 @@
     ],
     "verification_gaps": [
       {
+        "service_id": "dayservice",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "homevisit",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -21329,6 +21627,11 @@
     },
     "publication_gaps": [
       {
+        "service_id": "dayservice",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "homevisit",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -21768,6 +22071,16 @@
         "source_family": "national_qa",
         "state": "BLOCKED"
       }
-    ]
+    ],
+    "delegated_remuneration_criteria": {
+      "corpus_id": "delegated-remuneration-national",
+      "service_applicability": {
+        "MAPPED": 1,
+        "NOT_MAPPED": 38
+      },
+      "mapped_services": [
+        "dayservice"
+      ]
+    }
   }
 }
