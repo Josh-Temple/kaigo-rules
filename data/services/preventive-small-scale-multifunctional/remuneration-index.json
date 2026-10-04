@@ -31,7 +31,7 @@
     "top_level_complete": false,
     "item_body_complete": false,
     "legal_body_copied": false,
-    "indexing_depth": "BOUNDED_SECTION_AND_DIRECTLY_OBSERVED_STRUCTURE_MARKERS"
+    "indexing_depth": "BOUNDED_SECTION_TOP_LEVEL_AND_DIRECT_NUMERIC_MARKERS"
   },
   "top_level_items": [
     {
@@ -103,7 +103,7 @@
       "id": "rem.preventive-small-scale-multifunctional.child.1",
       "parent_marker": "イ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "同一建物に居住する者以外の者に対して行う場合",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 2 介護予防小規模多機能型居宅介護費 / イ / (1)"
     },
@@ -111,7 +111,7 @@
       "id": "rem.preventive-small-scale-multifunctional.child.2",
       "parent_marker": "イ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "同一建物に居住する者に対して行う場合",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 2 介護予防小規模多機能型居宅介護費 / イ / (2)"
     },
@@ -119,7 +119,7 @@
       "id": "rem.preventive-small-scale-multifunctional.child.3",
       "parent_marker": "ロ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "要支援1",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 2 介護予防小規模多機能型居宅介護費 / ロ / (1)"
     },
@@ -127,7 +127,7 @@
       "id": "rem.preventive-small-scale-multifunctional.child.4",
       "parent_marker": "ロ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "要支援2",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 2 介護予防小規模多機能型居宅介護費 / ロ / (2)"
     },
@@ -135,7 +135,7 @@
       "id": "rem.preventive-small-scale-multifunctional.child.5",
       "parent_marker": "ヘ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "総合マネジメント体制強化加算(Ⅰ)",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 2 介護予防小規模多機能型居宅介護費 / ヘ / (1)"
     },
@@ -143,7 +143,7 @@
       "id": "rem.preventive-small-scale-multifunctional.child.6",
       "parent_marker": "ヘ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "総合マネジメント体制強化加算(Ⅱ)",
       "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 2 介護予防小規模多機能型居宅介護費 / ヘ / (2)"
     }
