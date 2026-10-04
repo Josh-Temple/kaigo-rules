@@ -75,3 +75,4 @@ jobs:
             git commit -m "Regenerate integrated artifacts after next parallel wave"
             git push origin HEAD:work/next-parallel-wave-integrator
           fi
+# rerun: normalize fee-guidance ingestion projection
