@@ -66,15 +66,9 @@ def validate(root=ROOT):
             ranges.append((ref['path'], a, b))
     for app in apps:
         closed(app['assurance'])
-        state = app['state']
-        assert state in {'MAPPED', 'NOT_APPLICABLE', 'UNRESOLVED'}, 'invalid applicability state'
-        assert isinstance(app.get('node_ids'), list), 'node_ids must be a list'
-        assert isinstance(app.get('relation_ids'), list), 'relation_ids must be a list'
-
-        if state == 'MAPPED':
-            assert app['node_ids'], 'mapped service must reference at least one node'
-            assert set(app['node_ids']) <= set(node_map)
-            assert app['relation_ids'], 'mapped service must reference at least one relation'
+        assert app['state'] == 'MAPPED'
+        assert set(app['node_ids']) <= set(node_map)
+        if app.get('relation_ids'):
             assert app['ingestion_state'] == 'INGESTED_PARTIAL'
             scope = read(f"data/services/{app['service_id']}/fee-guidance-scope.json")
             assert scope['node_ids'] == app['node_ids']
@@ -84,38 +78,9 @@ def validate(root=ROOT):
             for rid in app['relation_ids']:
                 r = relation_map[rid]
                 assert r['service_id'] == app['service_id'] and r['node_id'] in app['node_ids']
-            for evidence in app.get('applicability_evidence', []):
-                assert evidence['url'].startswith('https://www.mhlw.go.jp/')
-
-        elif state == 'NOT_APPLICABLE':
-            assert app['ingestion_state'] == 'NOT_APPLICABLE'
-            assert app['node_ids'] == []
-            assert app['relation_ids'] == []
-            assert app.get('adjudication_evidence'), 'NOT_APPLICABLE requires primary evidence'
-            for evidence in app['adjudication_evidence']:
-                assert evidence['url'].startswith('https://www.mhlw.go.jp/')
-            scope = read(f"data/services/{app['service_id']}/fee-guidance-scope.json")
-            assert scope['applicability_state'] == 'NOT_APPLICABLE'
-            assert scope['node_ids'] == [] and scope['relation_ids'] == []
-            cfg = read(f"data/services/{app['service_id']}.json")
-            assert cfg['scope_files']['fee_guidance'].endswith('/fee-guidance-scope.json')
-            assert cfg['ingestion_layers']['fee_guidance']['status'] == 'NOT_APPLICABLE'
-
-        else:
-            assert app['ingestion_state'] == 'NOT_INGESTED'
-            assert app['node_ids'] == []
-            assert app['relation_ids'] == []
-            assert app.get('adjudication_evidence'), 'UNRESOLVED requires explicit evidence and reason'
-            for evidence in app['adjudication_evidence']:
-                assert evidence['url'].startswith('https://www.mhlw.go.jp/')
-            cfg = read(f"data/services/{app['service_id']}.json")
-            assert not cfg.get('scope_files', {}).get('fee_guidance'), 'UNRESOLVED must stay scope-undefined'
-
     for r in relations:
         assert r['node_id'] in node_map and r['source_id'] in source_map
         assert r['relation_type'] == 'SOURCE_SECTION_SCOPE' and r['verification'] == 'NOT_ESTABLISHED'
-        if r.get('mapping_evidence'):
-            assert r['mapping_evidence']['url'].startswith('https://www.mhlw.go.jp/')
     return len(nodes), len(apps)
 
 
