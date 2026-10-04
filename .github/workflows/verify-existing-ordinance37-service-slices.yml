@@ -10,6 +10,7 @@ on:
       - "data/ordinance37-scope.json"
       - "data/services/**/ordinance37-scope.json"
       - "data/services/homevisit/ordinance37-index.generated.json"
+      - "scripts/build_homevisit_ordinance37_index.py"
       - "scripts/verify_existing_ordinance37_service_slices.py"
       - ".github/workflows/verify-existing-ordinance37-service-slices.yml"
 
