@@ -57,6 +57,8 @@ class ServiceUniverseCatalogTests(unittest.TestCase):
 
     def test_registered_not_ingested_configs_fail_closed(self):
         manifest = json.loads((ROOT / "data/services/manifest.json").read_text(encoding="utf-8"))
+        layers = json.loads((ROOT / "data/services/verification-layers.json").read_text(encoding="utf-8"))
+        known_layer_ids = {row["id"] for row in layers["layers"]}
         for descriptor in manifest["services"]:
             if descriptor["status"] != "REGISTERED_NOT_INGESTED":
                 continue

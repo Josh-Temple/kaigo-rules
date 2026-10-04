@@ -1,4 +1,5 @@
-name: Parallel wave integrator finalize\n# retry after semantic test-expectation repair
+name: Parallel wave integrator finalize
+# semantic regression repair retry 2
 
 on:
   push:
