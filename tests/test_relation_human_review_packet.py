@@ -20,14 +20,12 @@ class RelationHumanReviewPacketTests(unittest.TestCase):
             )
         )
         self.assertEqual(built, committed)
-        self.assertEqual(built["summary"]["items_total"], 59)
+        self.assertEqual(built["summary"]["items_total"], 58)
         self.assertEqual(built["summary"]["independently_covered_relations"], 129)
         self.assertEqual(built["summary"]["inventory_relations"], 188)
         self.assertEqual(
             built["summary"]["classification_counts"],
             {
-                "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
-                "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
                 "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
                 "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
                 "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36,
@@ -36,6 +34,11 @@ class RelationHumanReviewPacketTests(unittest.TestCase):
         self.assertFalse(built["review_contract"]["automatic_promotion_allowed"])
         self.assertTrue(built["review_contract"]["requires_primary_source_check"])
         self.assertTrue(built["review_contract"]["currentness_is_separate"])
+
+        self.assertNotIn(
+            "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+            {item["classification"] for item in built["items"]},
+        )
 
         for item in built["items"]:
             self.assertIsNone(item["reviewer_decision"])
