@@ -7,11 +7,9 @@
       "scope_state": "SCOPE_DEFINED",
       "applicability_state": "MAPPED",
       "ingestion_state": "INGESTED",
-      "mapped_node_count": 17,
+      "mapped_node_count": 15,
       "mapped_node_ids": [
         "notice27.item.1",
-        "notice27.item.1.capacity",
-        "notice27.item.1.staffing",
         "notice95.item.14-3",
         "notice95.item.14-4",
         "notice95.item.14-5",
@@ -27,7 +25,12 @@
         "notice95.item.24",
         "notice95.item.4"
       ],
+      "compatibility_subnode_ids": [
+        "notice27.item.1.capacity",
+        "notice27.item.1.staffing"
+      ],
       "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json",
         "data/remuneration-delegated-nodes.json",
         "data/shared/remuneration-delegated/node-identity-map.json",
         "data/remuneration-delegated-relations.json"

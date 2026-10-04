@@ -1,7 +1,8 @@
 {
   "format_version": 1,
   "corpus_id": "delegated-remuneration-national",
-  "canonical_text_store": "data/remuneration-delegated-nodes.json",
+  "canonical_text_store": "data/shared/remuneration-delegated/national-corpus.json",
+  "legacy_compatibility_text_store": "data/remuneration-delegated-nodes.json",
   "nodes": [
     {
       "canonical_node_id": "notice27.item.1",

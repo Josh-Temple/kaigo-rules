@@ -3,40 +3,94 @@
   "corpus_id": "delegated-remuneration-national",
   "source_family": "delegated_remuneration_criteria",
   "scope_kind": "SHARED_NATIONAL_CORPUS",
-  "canonical_node_store": "data/remuneration-delegated-nodes.json",
+  "canonical_node_store": "data/shared/remuneration-delegated/national-corpus.json",
   "identity_map": "data/shared/remuneration-delegated/node-identity-map.json",
   "service_applicability": "data/shared/remuneration-delegated/service-applicability.json",
   "service_relations": "data/shared/remuneration-delegated/service-relations.json",
   "legacy_compatibility": {
+    "legacy_text_store": "data/remuneration-delegated-nodes.json",
     "node_ids_preserved": true,
     "legacy_service_scope_field_authoritative": false,
-    "note": "The existing delegated-node file remains the single text-bearing store for backward compatibility. Service applicability is canonical only in the shared applicability file."
+    "shared_corpus_reuses_legacy_text_when_identical": true,
+    "note": "The national corpus is canonical for shared source structure. Existing dayservice text-bearing nodes remain as backward-compatible targets and are referenced instead of duplicated where possible."
+  },
+  "source_selection": {
+    "basis": "canonical source IDs already registered in data/sources.json",
+    "included_source_ids": [
+      "mhlw-fee-notice27-base",
+      "mhlw-fee-criteria95-current"
+    ],
+    "unregistered_notice_numbers_inferred": false
+  },
+  "corpus_coverage": {
+    "source_documents": 2,
+    "source_pages": 7,
+    "top_level_nodes": 338,
+    "legacy_text_references": 15,
+    "inline_shared_nodes": 323,
+    "coverage_kind": "FULL_TOP_LEVEL_SECTIONS_OF_REGISTERED_CANONICAL_SOURCES"
   },
   "source_documents": [
-    {
-      "source_id": "mhlw-fee-criteria95-current",
-      "title": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）",
-      "publisher": "厚生労働省",
-      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
-      "repository_status": "current_official_source",
-      "source_sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618",
-      "last_independent_audit_at": "2026-09-23",
-      "node_count": 14
-    },
     {
       "source_id": "mhlw-fee-notice27-base",
       "title": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法（厚生省告示第27号）",
       "publisher": "厚生労働省",
       "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
       "repository_status": "base_text_replay_pending",
-      "source_sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3",
-      "last_independent_audit_at": "2026-09-23",
-      "node_count": 3
+      "observed_pages": 3,
+      "top_level_node_count": 24,
+      "page_sha256": [
+        {
+          "page": 1,
+          "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+        },
+        {
+          "page": 2,
+          "sha256": "2b0fc2c256ed86868608c761eb54b7e39fec651a04cf7e3a87820bcd902c9612"
+        },
+        {
+          "page": 3,
+          "sha256": "327f87d0744a6d1b4da1312bbea5bee2bd85f0a7876bc92e1de1adea18520d8d"
+        }
+      ],
+      "last_independent_audit_at": "2026-09-23"
+    },
+    {
+      "source_id": "mhlw-fee-criteria95-current",
+      "title": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）",
+      "publisher": "厚生労働省",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+      "repository_status": "current_official_source",
+      "observed_pages": 4,
+      "top_level_node_count": 314,
+      "page_sha256": [
+        {
+          "page": 1,
+          "sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618"
+        },
+        {
+          "page": 2,
+          "sha256": "50267c187930ab9d647a31c7aeb9560f2637ffaaf01713e220cfd05d2a57c104"
+        },
+        {
+          "page": 3,
+          "sha256": "e311c5baa33f37874bd00d7402e5044bc55be8711393b17545701a8e668d89a8"
+        },
+        {
+          "page": 4,
+          "sha256": "cb196683bfe3194b944c354806818afde8799313038e4b197ae9b12a6edb571a"
+        }
+      ],
+      "last_independent_audit_at": "2026-09-23"
     }
   ],
   "inventory": {
-    "nodes": 17,
+    "national_top_level_nodes": 338,
+    "legacy_identity_aliases": 17,
+    "service_mapped_top_level_nodes": 15,
+    "compatibility_subnodes": 2,
     "sources": 2,
+    "source_pages": 7,
     "services_mapped": 1
   },
   "assurance": {
