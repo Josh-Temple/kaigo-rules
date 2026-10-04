@@ -18,7 +18,8 @@
     "unit_price": "data/services/homevisit/unit-price-scope.json"
   },
   "verification_layer_ids": [
-    "rouki25-homevisit"
+    "rouki25-homevisit",
+    "ordinance37-existing-services"
   ],
   "publication_gate": {
     "public_routes_enabled": false,
