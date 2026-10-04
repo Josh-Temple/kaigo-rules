@@ -102,7 +102,7 @@ class PreventiveRemunerationIndexTest(unittest.TestCase):
     def test_coverage_projection_counts_ingestion_without_promoting_assurance(self):
         matrix = load("data/database-coverage-matrix.generated.json")
         coverage = matrix["summary"]["source_family_coverage"]["remuneration_notification"]
-        self.assertEqual(coverage["ingestion"], {"INGESTED": 12, "NOT_INGESTED": 27})
+        self.assertEqual(coverage["ingestion"], {"INGESTED": 29, "NOT_INGESTED": 10})
         by_id = {row["service_id"]: row for row in matrix["services"]}
         for descriptor in self.targets:
             cell = next(x for x in by_id[descriptor["service_id"]]["source_families"] if x["source_family"] == "remuneration_notification")
