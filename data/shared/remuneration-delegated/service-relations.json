@@ -579,6 +579,13 @@
       ]
     },
     {
+      "service_id": "homecaremanagement",
+      "relation_verification_state": "NOT_ESTABLISHED",
+      "applicability_state": "UNKNOWN",
+      "adjudication_ref": "data/shared/remuneration-delegated/service-applicability-adjudications.json#homecaremanagement",
+      "relations": []
+    },
+    {
       "service_id": "dayrehab",
       "relation_verification_state": "NOT_ESTABLISHED",
       "relations": [
@@ -1709,6 +1716,13 @@
           "independently_verified_delegation_edge_ids": []
         }
       ]
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "relation_verification_state": "NOT_APPLICABLE",
+      "applicability_state": "NOT_APPLICABLE",
+      "adjudication_ref": "data/shared/remuneration-delegated/service-applicability-adjudications.json#specific-welfare-equipment-sale",
+      "relations": []
     },
     {
       "service_id": "dementia-dayservice",
@@ -4071,6 +4085,13 @@
       ]
     },
     {
+      "service_id": "preventive-homecaremanagement",
+      "relation_verification_state": "NOT_ESTABLISHED",
+      "applicability_state": "UNKNOWN",
+      "adjudication_ref": "data/shared/remuneration-delegated/service-applicability-adjudications.json#preventive-homecaremanagement",
+      "relations": []
+    },
+    {
       "service_id": "preventive-dayrehab",
       "relation_verification_state": "NOT_ESTABLISHED",
       "relations": [
@@ -4707,6 +4728,20 @@
           "independently_verified_delegation_edge_ids": []
         }
       ]
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "relation_verification_state": "NOT_ESTABLISHED",
+      "applicability_state": "UNKNOWN",
+      "adjudication_ref": "data/shared/remuneration-delegated/service-applicability-adjudications.json#preventive-welfare-equipment-rental",
+      "relations": []
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "relation_verification_state": "NOT_APPLICABLE",
+      "applicability_state": "NOT_APPLICABLE",
+      "adjudication_ref": "data/shared/remuneration-delegated/service-applicability-adjudications.json#specific-preventive-welfare-equipment-sale",
+      "relations": []
     },
     {
       "service_id": "preventive-dementia-dayservice",

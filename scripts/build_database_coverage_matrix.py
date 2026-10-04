@@ -441,6 +441,13 @@ def build_cell(
     relation_state = "PASS" if relation_raw == "PASS" else "NOT_ESTABLISHED"
 
     if (
+        family["id"] == "delegated_remuneration_criteria"
+        and delegated_applicability
+        and delegated_applicability.get("applicability_state") == "NOT_APPLICABLE"
+    ):
+        relation_state = "NOT_APPLICABLE"
+
+    if (
         family["id"] == "unit_price_regional_classification"
         and unit_price_mapping
         and unit_price_mapping.get("applicability") == "NOT_APPLICABLE"
@@ -697,6 +704,7 @@ def build() -> dict:
             "data/shared/remuneration-delegated/node-identity-map.json",
             "data/shared/remuneration-delegated/service-applicability.json",
             "data/shared/remuneration-delegated/service-relations.json",
+            "data/shared/remuneration-delegated/service-applicability-adjudications.json",
         ],
         "source_families": [
             {"id": family["id"], "label": family["label"]}

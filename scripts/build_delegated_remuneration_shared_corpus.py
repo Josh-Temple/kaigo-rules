@@ -76,6 +76,8 @@ SERVICE_HEADING_TERMS: dict[str, tuple[str, ...]] = {
     "preventive-dementia-group-home": ("介護予防認知症対応型共同生活介護費",),
 }
 
+ADJUDICATION_PATH = SHARED / "service-applicability-adjudications.json"
+
 
 def load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -186,6 +188,10 @@ def build() -> dict[str, Any]:
     national_corpus = load(SHARED / "national-corpus.json")
     national_nodes = national_corpus.get("nodes", [])
     national_ids = {row["canonical_node_id"] for row in national_nodes}
+    adjudication_doc = load(ADJUDICATION_PATH)
+    adjudications = {
+        row["service_id"]: row for row in adjudication_doc.get("adjudications", [])
+    }
 
     identity_rows = []
     for node in nodes:
@@ -286,6 +292,7 @@ def build() -> dict[str, Any]:
     incorporated_by_service: dict[str, dict[str, list[str]]] = {}
     applicability_services: list[dict[str, Any]] = []
     relation_services: list[dict[str, Any]] = []
+    adjudications_used: set[str] = set()
 
     for service_id in catalog_service_ids:
         direct_ids = set(_direct_node_ids(national_nodes, service_id))
@@ -295,8 +302,49 @@ def build() -> dict[str, Any]:
                 for canonical_id in legacy_dayservice_top_level
                 if canonical_id != "notice95.item.4"
             )
-        if not direct_ids:
+        if not direct_ids and service_id in adjudications:
+            decision = adjudications[service_id]
+            state = decision["applicability_state"]
+            if state not in {"NOT_APPLICABLE", "UNKNOWN"}:
+                raise ValueError(f"unsupported explicit applicability state for {service_id}: {state}")
+            if decision.get("mapped_node_ids") != []:
+                raise ValueError(f"unmapped adjudication must not claim node IDs: {service_id}")
+            evidence = decision.get("official_primary_sources", [])
+            if not evidence or not decision.get("rationale"):
+                raise ValueError(f"adjudication evidence/rationale missing: {service_id}")
+            for source in evidence:
+                if not source.get("url") or not source.get("locator"):
+                    raise ValueError(f"adjudication primary-source locator missing: {service_id}")
+            for reference in decision.get("repository_evidence", []):
+                if not (ROOT / reference.split("#", 1)[0]).is_file():
+                    raise ValueError(f"adjudication repository evidence missing: {service_id}: {reference}")
+            adjudications_used.add(service_id)
+            applicability_services.append({
+                "service_id": service_id,
+                "scope_state": "SCOPE_DEFINED",
+                "applicability_state": state,
+                "ingestion_state": "NOT_APPLICABLE" if state == "NOT_APPLICABLE" else "NOT_INGESTED",
+                "mapped_node_count": 0,
+                "mapped_node_ids": [],
+                "compatibility_subnode_ids": [],
+                "mapping_evidence": sorted({
+                    "data/shared/remuneration-delegated/national-corpus.json",
+                    f"{ADJUDICATION_PATH.relative_to(ROOT)}#{service_id}",
+                    *decision.get("repository_evidence", []),
+                }),
+                "adjudication": decision,
+                "assurance": _fail_closed_assurance(),
+            })
+            relation_services.append({
+                "service_id": service_id,
+                "relation_verification_state": "NOT_APPLICABLE" if state == "NOT_APPLICABLE" else "NOT_ESTABLISHED",
+                "applicability_state": state,
+                "adjudication_ref": f"{ADJUDICATION_PATH.relative_to(ROOT)}#{service_id}",
+                "relations": [],
+            })
             continue
+        if not direct_ids:
+            raise ValueError(f"service lacks explicit delegated applicability adjudication: {service_id}")
 
         direct_ids_sorted = sorted(direct_ids)
         reference_to_referrers: dict[str, set[str]] = {}
@@ -391,6 +439,12 @@ def build() -> dict[str, Any]:
             ],
         })
 
+    if adjudications_used != set(adjudications):
+        raise ValueError(
+            "delegated applicability adjudication service mismatch: "
+            f"used={sorted(adjudications_used)}, declared={sorted(adjudications)}"
+        )
+
     identity_doc = {
         "format_version": 1,
         "corpus_id": CORPUS_ID,
@@ -406,7 +460,8 @@ def build() -> dict[str, Any]:
         "mapping_policy": {
             "direct_applicability_basis": "OFFICIAL_NODE_HEADING_EXPLICIT_SERVICE_SCOPE",
             "incorporated_reference_basis": "EXPLICIT_INCORPORATION_BY_REFERENCE",
-            "unmatched_services_remain": "NOT_MAPPED",
+            "unmatched_services_require_explicit_adjudication": True,
+            "allowed_applicability_states": ["MAPPED", "NOT_APPLICABLE", "UNKNOWN"],
             "service_applicability_auto_verification_allowed": False,
             "note": (
                 "MAPPED means a service-to-node applicability relation is represented. "
@@ -487,7 +542,9 @@ def build() -> dict[str, Any]:
             "compatibility_subnodes": len(compatibility_subnode_ids),
             "sources": national_corpus.get("coverage", {}).get("source_documents", 0),
             "source_pages": national_corpus.get("coverage", {}).get("source_pages", 0),
-            "services_mapped": len(applicability_services),
+            "services_mapped": sum(row["applicability_state"] == "MAPPED" for row in applicability_services),
+            "services_not_applicable": sum(row["applicability_state"] == "NOT_APPLICABLE" for row in applicability_services),
+            "services_unknown": sum(row["applicability_state"] == "UNKNOWN" for row in applicability_services),
         },
         "assurance": {
             "item_body_verification": "NOT_ESTABLISHED",
