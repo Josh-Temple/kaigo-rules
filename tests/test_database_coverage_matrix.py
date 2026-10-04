@@ -80,6 +80,51 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(dayrehab["item_body_verification"]["state"], "NOT_ESTABLISHED")
         self.assertEqual(dayrehab["currentness"]["state"], "NOT_ESTABLISHED")
 
+    def test_fee_guidance_final_six_adjudication_projects_without_assurance_promotion(self):
+        mapped = (
+            "preventive-dementia-dayservice",
+            "preventive-small-scale-multifunctional",
+            "preventive-dementia-group-home",
+        )
+        for service_id in mapped:
+            cell = self.cell(service_id, "fee_calculation_guidance")
+            self.assertEqual(cell["service_scope"]["state"], "SCOPE_DEFINED")
+            self.assertEqual(cell["service_applicability"]["state"], "MAPPED")
+            self.assertEqual(cell["service_applicability"]["mapped_node_count"], 1)
+            self.assertEqual(cell["ingestion"]["state"], "PARTIAL")
+            self.assertEqual(cell["item_body_verification"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(cell["currentness"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(cell["human_review"]["state"], "NOT_REVIEWED")
+            self.assertEqual(cell["publication"]["state"], "BLOCKED")
+            self.assertEqual(cell["route_exposure"]["state"], "BLOCKED")
+
+        for service_id in (
+            "specific-welfare-equipment-sale",
+            "specific-preventive-welfare-equipment-sale",
+        ):
+            cell = self.cell(service_id, "fee_calculation_guidance")
+            self.assertEqual(cell["service_scope"]["state"], "SCOPE_DEFINED")
+            self.assertEqual(cell["service_applicability"]["state"], "NOT_APPLICABLE")
+            self.assertEqual(cell["service_applicability"]["mapped_node_count"], 0)
+            self.assertEqual(cell["ingestion"]["state"], "NOT_APPLICABLE")
+            self.assertEqual(cell["item_body_verification"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(cell["currentness"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(cell["relation_verification"]["state"], "NOT_APPLICABLE")
+            self.assertEqual(cell["human_review"]["state"], "NOT_REVIEWED")
+            self.assertEqual(cell["publication"]["state"], "BLOCKED")
+            self.assertEqual(cell["route_exposure"]["state"], "BLOCKED")
+
+        unresolved = self.cell("preventive-support", "fee_calculation_guidance")
+        self.assertEqual(unresolved["service_scope"]["state"], "SCOPE_NOT_DEFINED")
+        self.assertEqual(unresolved["service_applicability"]["state"], "UNRESOLVED")
+        self.assertEqual(unresolved["service_applicability"]["mapped_node_count"], 0)
+        self.assertEqual(unresolved["ingestion"]["state"], "NOT_INGESTED")
+        self.assertEqual(unresolved["item_body_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(unresolved["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(unresolved["human_review"]["state"], "NOT_REVIEWED")
+        self.assertEqual(unresolved["publication"]["state"], "BLOCKED")
+        self.assertEqual(unresolved["route_exposure"]["state"], "BLOCKED")
+
     def test_homevisit_remuneration_ingestion_stays_fail_closed(self):
         remuneration = self.cell("homevisit", "remuneration_notification")
         delegated = self.cell("homevisit", "delegated_remuneration_criteria")
