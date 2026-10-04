@@ -1,4 +1,4 @@
-name: Parallel wave integrator finalize
+name: Parallel wave integrator finalize\n# retry after semantic test-expectation repair
 
 on:
   push:

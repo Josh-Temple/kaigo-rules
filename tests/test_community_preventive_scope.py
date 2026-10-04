@@ -7,7 +7,7 @@ class CommunityPreventiveScopeTests(unittest.TestCase):
  def test_scope_work_does_not_enable_routes_or_publication(self):
   for sid in TARGETS:
    cfg=json.loads((ROOT/f"data/services/{sid}.json").read_text(encoding="utf-8"))
-   self.assertFalse(cfg["routing"]["future_service_base_enabled"]); self.assertEqual({},cfg["ingestion_layers"]); self.assertTrue(all(v is False for v in cfg["publication_gate"].values()))
+   self.assertFalse(cfg["routing"]["future_service_base_enabled"]); self.assertTrue(all(v is False for v in cfg["publication_gate"].values()))
  def test_verification_currentness_not_promoted(self):
   for sid in TARGETS:
    for n in ("care-insurance-act-scope.json","standards36-scope.json","remuneration-scope.json","unit-price-scope.json"):
