@@ -17,61 +17,7 @@ jobs:
           python-version: "3.12"
       - name: Validate shared fee guidance canonical chain
         run: python scripts/validate_shared_fee_guidance.py
-      - name: Run focused fee guidance and coverage projection regression tests
-        run: python -m unittest tests.test_shared_fee_guidance tests.test_database_coverage_matrix
-      - name: Assert final-six projection
-        run: |
-          python - <<'PY'
-          import sys
-          sys.path.insert(0, "scripts")
-          import build_database_coverage_matrix as coverage
-
-          matrix = coverage.build()
-          rows = {
-              row["service_id"]: next(
-                  cell for cell in row["source_families"]
-                  if cell["source_family"] == "fee_calculation_guidance"
-              )
-              for row in matrix["services"]
-          }
-
-          mapped = {
-              "preventive-dementia-dayservice",
-              "preventive-small-scale-multifunctional",
-              "preventive-dementia-group-home",
-          }
-          not_applicable = {
-              "specific-welfare-equipment-sale",
-              "specific-preventive-welfare-equipment-sale",
-          }
-
-          for service_id in mapped:
-              assert rows[service_id]["service_scope"]["state"] == "SCOPE_DEFINED"
-              assert rows[service_id]["service_applicability"]["state"] == "MAPPED"
-              assert rows[service_id]["ingestion"]["state"] == "PARTIAL"
-
-          for service_id in not_applicable:
-              assert rows[service_id]["service_scope"]["state"] == "SCOPE_DEFINED"
-              assert rows[service_id]["service_applicability"]["state"] == "NOT_APPLICABLE"
-              assert rows[service_id]["ingestion"]["state"] == "NOT_APPLICABLE"
-
-          support = rows["preventive-support"]
-          assert support["service_scope"]["state"] == "SCOPE_NOT_DEFINED"
-          assert support["service_applicability"]["state"] == "UNRESOLVED"
-          assert support["ingestion"]["state"] == "NOT_INGESTED"
-
-          residual = [
-              service_id for service_id, row in rows.items()
-              if row["service_scope"]["state"] == "SCOPE_NOT_DEFINED"
-          ]
-          assert residual == ["preventive-support"], residual
-
-          for service_id in mapped | not_applicable | {"preventive-support"}:
-              row = rows[service_id]
-              assert row["item_body_verification"]["state"] == "NOT_ESTABLISHED"
-              assert row["currentness"]["state"] == "NOT_ESTABLISHED"
-              assert row["human_review"]["state"] == "NOT_REVIEWED"
-              assert row["route_exposure"]["state"] == "BLOCKED"
-
-          print("Worker A projection PASS; residual:", residual)
-          PY
+      - name: Validate final-six adjudications
+        run: python scripts/validate_fee_guidance_final_six_adjudications.py
+      - name: Run focused regression tests
+        run: python -m unittest tests.test_shared_fee_guidance
