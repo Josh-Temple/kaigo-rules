@@ -31,7 +31,7 @@
     "top_level_complete": false,
     "item_body_complete": false,
     "legal_body_copied": false,
-    "indexing_depth": "BOUNDED_SECTION_AND_DIRECTLY_OBSERVED_STRUCTURE_MARKERS"
+    "indexing_depth": "BOUNDED_SECTION_TOP_LEVEL_AND_DIRECT_NUMERIC_MARKERS"
   },
   "top_level_items": [
     {
@@ -68,7 +68,7 @@
       "id": "rem.preventive-support.child.1",
       "parent_marker": "イ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "介護予防支援費(Ⅰ)",
       "source_locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費 / イ / (1)"
     },
@@ -76,7 +76,7 @@
       "id": "rem.preventive-support.child.2",
       "parent_marker": "イ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "介護予防支援費(Ⅱ)",
       "source_locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費 / イ / (2)"
     }
