@@ -109,6 +109,8 @@ def load(path: str) -> Any:
 def normalize_ingestion(raw: str | None, scope_defined: bool, layer_present: bool) -> str:
     if raw:
         upper = raw.upper()
+        if "NOT_APPLICABLE" in upper:
+            return "NOT_APPLICABLE"
         if "NOT_INGESTED" in upper:
             return "NOT_INGESTED"
         if "PARTIAL" in upper and "ITEM_BODY" not in upper:
@@ -235,9 +237,32 @@ def build_cell(
         str(row.get("status")) for row in ingestion_rows if row.get("status") is not None
     })
 
-    if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus:
+    unit_price_mapping = None
+    if family["id"] == "unit_price_regional_classification":
+        unit_price_mapping = shared_context["unit_price_service_map"].get(service_id)
+        if unit_price_mapping and unit_price_mapping.get("ingestion_status"):
+            raw_ingestion = sorted(set(raw_ingestion + [str(unit_price_mapping["ingestion_status"])]))
+
+    delegated_applicability = None
+    if family["id"] == "delegated_remuneration_criteria":
+        delegated_applicability = shared_context["delegated_applicability"].get(service_id)
+        if delegated_applicability and delegated_applicability.get("ingestion_state"):
+            raw_ingestion = [str(delegated_applicability["ingestion_state"])]
+
+    corpus_id = None
+    delegated_manifest = shared_context.get("delegated_manifest") or {}
+    if family["id"] == "delegated_remuneration_criteria" and delegated_manifest:
         corpus_state = "AVAILABLE"
         corpus_kind = "SHARED"
+        corpus_id = delegated_manifest.get("corpus_id")
+        corpus_evidence = [
+            "data/shared/remuneration-delegated/manifest.json",
+            str(delegated_manifest.get("canonical_node_store")),
+        ]
+    elif family["id"] == "governing_standards_ordinance" and mapped_standards_corpus:
+        corpus_state = "AVAILABLE"
+        corpus_kind = "SHARED"
+        corpus_id = mapped_standards_corpus
         corpus_evidence = [
             "data/shared/standards/manifest.json",
             f"data/shared/standards/service-ordinance-map.json#{service_id}",
@@ -285,10 +310,24 @@ def build_cell(
         scope_defined,
         layer_present,
     )
+    if family["id"] == "delegated_remuneration_criteria":
+        ingestion_state = (
+            str(delegated_applicability.get("ingestion_state"))
+            if delegated_applicability
+            else "NOT_INGESTED"
+        )
 
     content_raw = raw_values(layers, ("content_verification", "status"))
     currentness_raw = raw_values(layers, ("currentness", "status"))
     human_raw = raw_values(layers, ("human_review", "status"))
+    if family["id"] == "delegated_remuneration_criteria" and delegated_applicability:
+        delegated_assurance = delegated_applicability.get("assurance") or {}
+        content_value = delegated_assurance.get("item_body_verification")
+        currentness_value = delegated_assurance.get("currentness")
+        human_value = delegated_assurance.get("human_review")
+        content_raw = [str(content_value)] if content_value else []
+        currentness_raw = [str(currentness_value)] if currentness_value else []
+        human_raw = [str(human_value)] if human_value else []
     if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus and mapped_standards_corpus != "ordinance37":
         audit_row = shared_context["standards_audit"].get(mapped_standards_corpus)
         content_raw = [audit_row.get("result")] if audit_row else []
@@ -340,32 +379,59 @@ def build_cell(
         or routing.get("current_mode") == "LEGACY_ROOT"
     )
     explicit_public = publication_gate.get("public_routes_enabled")
-    if explicit_public is False:
-        publication_state = "BLOCKED"
-    elif explicit_public is True and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
-        publication_state = "AVAILABLE"
-    elif route_enabled and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
-        publication_state = "AVAILABLE"
+    if family["id"] == "delegated_remuneration_criteria" and delegated_applicability:
+        delegated_assurance = delegated_applicability.get("assurance") or {}
+        publication_state = str(delegated_assurance.get("publication") or "NOT_ESTABLISHED")
+        route_state = str(delegated_assurance.get("route_exposure") or "NOT_ESTABLISHED")
     else:
-        publication_state = "NOT_ESTABLISHED"
+        if explicit_public is False:
+            publication_state = "BLOCKED"
+        elif explicit_public is True and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
+            publication_state = "AVAILABLE"
+        elif route_enabled and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
+            publication_state = "AVAILABLE"
+        else:
+            publication_state = "NOT_ESTABLISHED"
 
-    if route_enabled and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
-        route_state = "AVAILABLE"
-    elif route_enabled:
-        route_state = "NOT_ESTABLISHED"
-    else:
+        if route_enabled and scope_defined and ingestion_state in {"INGESTED", "PARTIAL"}:
+            route_state = "AVAILABLE"
+        elif route_enabled:
+            route_state = "NOT_ESTABLISHED"
+        else:
+            route_state = "BLOCKED"
+
+    if (
+        family["id"] == "unit_price_regional_classification"
+        and unit_price_mapping
+        and unit_price_mapping.get("applicability") == "APPLIES"
+        and not ingestion_rows
+        and not layers
+    ):
+        publication_state = "BLOCKED"
         route_state = "BLOCKED"
 
     relation_raw = str(registry.get("relation_verification", {}).get("status") or "NOT_ESTABLISHED")
     relation_state = "PASS" if relation_raw == "PASS" else "NOT_ESTABLISHED"
 
-    return {
+    if (
+        family["id"] == "unit_price_regional_classification"
+        and unit_price_mapping
+        and unit_price_mapping.get("applicability") == "NOT_APPLICABLE"
+    ):
+        item_state = "NOT_APPLICABLE"
+        current_state = "NOT_APPLICABLE"
+        relation_state = "NOT_APPLICABLE"
+        human_state = "NOT_APPLICABLE"
+        publication_state = "NOT_APPLICABLE"
+        route_state = "NOT_APPLICABLE"
+
+    result = {
         "source_family": family["id"],
         "label": family["label"],
         "corpus_availability": {
             "state": corpus_state,
             "kind": corpus_kind,
-            "corpus_id": mapped_standards_corpus if family["id"] == "governing_standards_ordinance" else None,
+            "corpus_id": corpus_id,
             "evidence": sorted(set(corpus_evidence)),
         },
         "service_scope": {
@@ -407,6 +473,30 @@ def build_cell(
             "raw_future_service_base_enabled": routing.get("future_service_base_enabled"),
         },
     }
+    if family["id"] == "delegated_remuneration_criteria":
+        result["service_applicability"] = {
+            "state": (
+                str(delegated_applicability.get("applicability_state"))
+                if delegated_applicability
+                else "NOT_MAPPED"
+            ),
+            "mapped_node_count": (
+                int(delegated_applicability.get("mapped_node_count", 0))
+                if delegated_applicability
+                else 0
+            ),
+            "evidence": (
+                [f"data/shared/remuneration-delegated/service-applicability.json#{service_id}"]
+                if delegated_applicability
+                else []
+            ),
+            "relation_model": (
+                f"data/shared/remuneration-delegated/service-relations.json#{service_id}"
+                if delegated_applicability
+                else None
+            ),
+        }
+    return result
 
 def count_axis(rows: list[dict], family_id: str, axis: str) -> dict[str, int]:
     counts = Counter(
@@ -430,6 +520,10 @@ def build() -> dict:
     standards_audit_data = load("data/shared/standards/independent-audit.json")
     qa_mapping = load("data/qa-service-mapping.json")
     qa_service_relations = load("data/qa-service-relations.generated.json")
+    unit_price_index = load("data/unit-price-service-multipliers.json")
+    delegated_manifest = load("data/shared/remuneration-delegated/manifest.json")
+    delegated_applicability_data = load("data/shared/remuneration-delegated/service-applicability.json")
+    delegated_relations_data = load("data/shared/remuneration-delegated/service-relations.json")
     shared_context = {
         "standards_map": {row["service_id"]: row["corpus_id"] for row in standards_map_data.get("relations", [])},
         "standards_scope_states": {row["service_id"]: row for row in standards_relations.get("service_scope_states", [])},
@@ -444,6 +538,19 @@ def build() -> dict:
             row["service_id"]
             for row in qa_service_relations.get("services", [])
             if str(row.get("scope_state", "")).startswith("DEFINED")
+        },
+        "unit_price_service_map": {
+            row["service_id"]: row
+            for row in unit_price_index.get("service_mappings", [])
+        },
+        "delegated_manifest": delegated_manifest,
+        "delegated_applicability": {
+            row["service_id"]: row
+            for row in delegated_applicability_data.get("services", [])
+        },
+        "delegated_relations": {
+            row["service_id"]: row
+            for row in delegated_relations_data.get("services", [])
         },
     }
 
@@ -517,6 +624,20 @@ def build() -> dict:
             for axis in AXES
         }
 
+    delegated_applicability_counts = Counter(
+        cell.get("service_applicability", {}).get("state", "NOT_MAPPED")
+        for row in rows
+        for cell in row["source_families"]
+        if cell["source_family"] == "delegated_remuneration_criteria"
+    )
+    delegated_mapped_services = [
+        row["service_id"]
+        for row in rows
+        for cell in row["source_families"]
+        if cell["source_family"] == "delegated_remuneration_criteria"
+        and cell.get("service_applicability", {}).get("state") == "MAPPED"
+    ]
+
     return {
         "format_version": 1,
         "generated_by": "scripts/build_database_coverage_matrix.py",
@@ -541,6 +662,11 @@ def build() -> dict:
             "data/shared/standards/service-relations.generated.json",
             "data/shared/standards/independent-audit.json",
             "data/qa-service-mapping.json",
+            "data/shared/remuneration-delegated/manifest.json",
+            "data/shared/remuneration-delegated/national-corpus.json",
+            "data/shared/remuneration-delegated/node-identity-map.json",
+            "data/shared/remuneration-delegated/service-applicability.json",
+            "data/shared/remuneration-delegated/service-relations.json",
         ],
         "source_families": [
             {"id": family["id"], "label": family["label"]}
@@ -562,6 +688,11 @@ def build() -> dict:
                 "classification_counts": relation_queue.get("classification_counts", {}),
             },
             "publication_gaps": publication_gaps,
+            "delegated_remuneration_criteria": {
+                "corpus_id": delegated_manifest.get("corpus_id"),
+                "service_applicability": dict(sorted(delegated_applicability_counts.items())),
+                "mapped_services": delegated_mapped_services,
+            },
         },
     }
 
@@ -580,6 +711,7 @@ def render_summary(matrix: dict) -> str:
         f"- Item-body verification gaps on ingested cells: {len(summary['verification_gaps'])}",
         f"- Relation verification remaining: {summary['relation_verification']['remaining_relations']}",
         f"- Publication gaps on ingested cells: {len(summary['publication_gaps'])}",
+        f"- Delegated remuneration applicability mapped: {summary['delegated_remuneration_criteria']['service_applicability'].get('MAPPED', 0)}",
         "",
         "## Source-family coverage",
         "",
@@ -601,7 +733,17 @@ def render_summary(matrix: dict) -> str:
             + fmt("publication") + " | "
             + fmt("route_exposure") + " |"
         )
+    delegated = summary["delegated_remuneration_criteria"]
+    delegated_counts = ", ".join(
+        f"{key}={value}" for key, value in delegated["service_applicability"].items()
+    ) or "-"
     lines.extend([
+        "",
+        "## Delegated remuneration criteria detail",
+        "",
+        f"- Shared corpus: AVAILABLE ({delegated['corpus_id']})",
+        f"- Service applicability: {delegated_counts}",
+        "- Applicability mapping does not establish item-body verification, currentness, human review, publication, or route exposure.",
         "",
         "## Interpretation",
         "",
