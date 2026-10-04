@@ -32,7 +32,9 @@ class PreventiveRemunerationIndexTest(unittest.TestCase):
         sale_scope = load(f"data/services/{SALE_ID}/remuneration-scope.json")
         self.assertEqual(sale_scope["remuneration_notification"]["state"], "NOT_APPLICABLE")
         self.assertEqual(self.sale["status"], "REGISTERED_NOT_INGESTED")
-        self.assertFalse((ROOT / f"data/services/{SALE_ID}/remuneration-index.json").exists())\n        sale_config = load(f"data/services/{SALE_ID}.json")\n        self.assertIn("NOT_APPLICABLE", sale_config["ingestion_layers"]["remuneration"]["status"])
+        self.assertFalse((ROOT / f"data/services/{SALE_ID}/remuneration-index.json").exists())
+        sale_config = load(f"data/services/{SALE_ID}.json")
+        self.assertIn("NOT_APPLICABLE", sale_config["ingestion_layers"]["remuneration"]["status"])
 
     def test_each_target_has_bounded_index_and_fail_closed_assurance(self):
         ordinals = []
@@ -102,7 +104,9 @@ class PreventiveRemunerationIndexTest(unittest.TestCase):
     def test_coverage_projection_counts_ingestion_without_promoting_assurance(self):
         matrix = load("data/database-coverage-matrix.generated.json")
         coverage = matrix["summary"]["source_family_coverage"]["remuneration_notification"]
-        self.assertEqual(coverage["ingestion"].get("INGESTED"), 37)\n        self.assertEqual(coverage["ingestion"].get("NOT_APPLICABLE"), 2)\n        self.assertEqual(coverage["ingestion"].get("NOT_INGESTED", 0), 0)
+        self.assertEqual(coverage["ingestion"].get("INGESTED"), 37)
+        self.assertEqual(coverage["ingestion"].get("NOT_APPLICABLE"), 2)
+        self.assertEqual(coverage["ingestion"].get("NOT_INGESTED", 0), 0)
         by_id = {row["service_id"]: row for row in matrix["services"]}
         for descriptor in self.targets:
             cell = next(x for x in by_id[descriptor["service_id"]]["source_families"] if x["source_family"] == "remuneration_notification")
