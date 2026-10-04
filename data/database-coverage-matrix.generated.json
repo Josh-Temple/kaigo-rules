@@ -13483,7 +13483,7 @@
     {
       "service_id": "preventive-homebath",
       "label": "介護予防訪問入浴介護",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-homebath.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -13680,10 +13680,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -13703,9 +13701,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -13990,7 +13986,7 @@
     {
       "service_id": "preventive-homenursing",
       "label": "介護予防訪問看護",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-homenursing.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -14187,10 +14183,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -14210,9 +14204,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -14497,7 +14489,7 @@
     {
       "service_id": "preventive-homerehab",
       "label": "介護予防訪問リハビリテーション",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-homerehab.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -14694,10 +14686,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -14717,9 +14707,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -15004,7 +14992,7 @@
     {
       "service_id": "preventive-homecaremanagement",
       "label": "介護予防居宅療養管理指導",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-homecaremanagement.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -15201,10 +15189,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -15224,9 +15210,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -15511,7 +15495,7 @@
     {
       "service_id": "preventive-dayrehab",
       "label": "介護予防通所リハビリテーション",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-dayrehab.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -15708,10 +15692,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -15731,9 +15713,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -16018,7 +15998,7 @@
     {
       "service_id": "preventive-shortstay-life",
       "label": "介護予防短期入所生活介護",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-shortstay-life.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -16215,10 +16195,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16238,9 +16216,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -16525,7 +16501,7 @@
     {
       "service_id": "preventive-shortstay-medical",
       "label": "介護予防短期入所療養介護",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-shortstay-medical.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -16722,10 +16698,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16745,9 +16719,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -17032,7 +17004,7 @@
     {
       "service_id": "preventive-specific-facility",
       "label": "介護予防特定施設入居者生活介護",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-specific-facility.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -17229,10 +17201,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17252,9 +17222,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -17539,7 +17507,7 @@
     {
       "service_id": "preventive-welfare-equipment-rental",
       "label": "介護予防福祉用具貸与",
-      "service_status": "PARTIAL_INGESTION",
+      "service_status": "REGISTERED_NOT_INGESTED",
       "config": "data/services/preventive-welfare-equipment-rental.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -17736,10 +17704,8 @@
             ]
           },
           "ingestion": {
-            "state": "INGESTED",
-            "raw_status": [
-              "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED"
-            ]
+            "state": "NOT_INGESTED",
+            "raw_status": []
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17759,9 +17725,7 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": [
-              "NOT_REVIEWED"
-            ]
+            "raw_status": []
           },
           "publication": {
             "state": "BLOCKED",
@@ -20174,8 +20138,8 @@
           "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "INGESTED": 12,
-          "NOT_INGESTED": 27
+          "INGESTED": 3,
+          "NOT_INGESTED": 36
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 37,
@@ -21155,11 +21119,6 @@
       },
       {
         "service_id": "preventive-homebath",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homebath",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -21170,22 +21129,12 @@
       },
       {
         "service_id": "preventive-homenursing",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homenursing",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
       {
         "service_id": "preventive-homerehab",
         "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21196,11 +21145,6 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21211,11 +21155,6 @@
       {
         "service_id": "preventive-dayrehab",
         "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21226,11 +21165,6 @@
       {
         "service_id": "preventive-shortstay-life",
         "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21241,11 +21175,6 @@
       {
         "service_id": "preventive-shortstay-medical",
         "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21256,11 +21185,6 @@
       {
         "service_id": "preventive-specific-facility",
         "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21271,11 +21195,6 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21393,51 +21312,6 @@
       {
         "service_id": "specific-welfare-equipment-sale",
         "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       }
     ],
@@ -21771,11 +21645,6 @@
       },
       {
         "service_id": "preventive-homebath",
-        "source_family": "remuneration_notification",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-homebath",
         "source_family": "national_qa",
         "state": "BLOCKED"
       },
@@ -21786,22 +21655,12 @@
       },
       {
         "service_id": "preventive-homenursing",
-        "source_family": "remuneration_notification",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-homenursing",
         "source_family": "national_qa",
         "state": "BLOCKED"
       },
       {
         "service_id": "preventive-homerehab",
         "source_family": "governing_standards_ordinance",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21812,11 +21671,6 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "governing_standards_ordinance",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21827,11 +21681,6 @@
       {
         "service_id": "preventive-dayrehab",
         "source_family": "governing_standards_ordinance",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21842,11 +21691,6 @@
       {
         "service_id": "preventive-shortstay-life",
         "source_family": "governing_standards_ordinance",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21857,11 +21701,6 @@
       {
         "service_id": "preventive-shortstay-medical",
         "source_family": "governing_standards_ordinance",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21872,11 +21711,6 @@
       {
         "service_id": "preventive-specific-facility",
         "source_family": "governing_standards_ordinance",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21887,11 +21721,6 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
-        "state": "BLOCKED"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
