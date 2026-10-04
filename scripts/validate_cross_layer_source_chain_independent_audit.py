@@ -188,12 +188,15 @@ def main() -> None:
     if coverage.get("aggregate_relations_independently_verified") != 45:
         fail("aggregate cross-layer relation count changed")
 
-    semantic_upstream_receipts = {
+    semantically_validated_inputs = {
         "data/careact-internal-relation-independent-audit.json",
         "data/relation-semantic-independent-audit.json",
+        # The relevant Notice 19 source row was checked above. Do not stale this
+        # audit merely because an unrelated canonical source is added.
+        "data/sources.json",
     }
     for relative, expected_blob in record.get("input_git_blob_shas_at_audit", {}).items():
-        if relative in semantic_upstream_receipts:
+        if relative in semantically_validated_inputs:
             continue
         path = ROOT / relative
         if not path.exists():
