@@ -467,13 +467,6 @@ def build_cell(
         relation_state = "NOT_APPLICABLE"
 
     if (
-        family["id"] == "fee_calculation_guidance"
-        and fee_guidance_applicability
-        and fee_guidance_applicability.get("state") == "NOT_APPLICABLE"
-    ):
-        relation_state = "NOT_APPLICABLE"
-
-    if (
         family["id"] == "unit_price_regional_classification"
         and unit_price_mapping
         and unit_price_mapping.get("applicability") == "NOT_APPLICABLE"
@@ -553,29 +546,6 @@ def build_cell(
             "relation_model": (
                 f"data/shared/remuneration-delegated/service-relations.json#{service_id}"
                 if delegated_applicability
-                else None
-            ),
-        }
-    if family["id"] == "fee_calculation_guidance":
-        result["service_applicability"] = {
-            "state": (
-                str(fee_guidance_applicability.get("state"))
-                if fee_guidance_applicability
-                else "NOT_MAPPED"
-            ),
-            "mapped_node_count": (
-                len(fee_guidance_applicability.get("node_ids") or [])
-                if fee_guidance_applicability
-                else 0
-            ),
-            "evidence": (
-                [f"data/shared/fee-guidance/service-applicability.json#{service_id}"]
-                if fee_guidance_applicability
-                else []
-            ),
-            "relation_model": (
-                f"data/shared/fee-guidance/service-relations.json#{service_id}"
-                if fee_guidance_applicability and fee_guidance_applicability.get("relation_ids")
                 else None
             ),
         }
