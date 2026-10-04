@@ -60,9 +60,9 @@
       "url": "https://www.mhlw.go.jp/content/12300000/001227907.pdf",
       "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATORS",
       "snapshot_path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
-      "snapshot_sha256": "987e008c8c397a235f8d340ab826e0d9a217e73404ae28ad8d0b523d1fc446bc",
-      "observed_at": "2026-10-04",
-      "extraction": "Official MHLW PDF text-layer section-heading locator snapshot; comparison columns remain source-context only.",
+      "snapshot_sha256": "c717d0208928bab38029427384a6e5f280ad86de3e250877c31f11079a45b343",
+      "observed_at": "2026-10-05",
+      "extraction": "Official MHLW PDF text-layer section-heading locator snapshot, including section 11 介護予防支援; comparison columns remain source-context only.",
       "currentness": "NOT_ESTABLISHED",
       "warning": "Not an integrated current text. Locator snapshot establishes service-section identity only; omissions and unchanged material are not promoted."
     }
