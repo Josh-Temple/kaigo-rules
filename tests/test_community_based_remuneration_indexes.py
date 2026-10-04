@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_database_coverage_matrix as coverage
+import build_cross_layer_source_chain_independent_audit as cross_audit_builder
 
 EXPECTED = {
     "regular-round": ("1", "1　定期巡回・随時対応型訪問介護看護費", "2　夜間対応型訪問介護費"),
@@ -55,6 +56,9 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
         self.assertEqual(len(matches), 1)
         self.assertEqual(matches[0]["publisher"], "厚生労働省")
         self.assertEqual(matches[0]["url"], SOURCE_URL)
+
+    def test_source_registry_growth_does_not_byte_pin_unrelated_cross_layer_audit(self):
+        self.assertNotIn("data/sources.json", cross_audit_builder.PINNED_INPUTS)
 
     def test_each_service_has_bounded_index_without_legal_text_copy(self):
         for service_id, (section, start, end) in EXPECTED.items():
