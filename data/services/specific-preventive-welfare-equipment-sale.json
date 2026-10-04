@@ -30,7 +30,8 @@
     "standards_index": "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json",
     "remuneration": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
     "delegated_remuneration_criteria": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
-    "unit_price_regional_classification": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json"
+    "unit_price_regional_classification": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
+    "standards_interpretation": "data/services/specific-preventive-welfare-equipment-sale/standards-interpretation-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -39,5 +40,29 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "remuneration": {
+      "status": "NOT_APPLICABLE",
+      "source_family": "remuneration_notification",
+      "applicability": "NOT_APPLICABLE",
+      "basis": "介護保険法第56条の介護予防福祉用具購入費であり、告示第127号の介護予防サービス費laneには接続しない。",
+      "item_body_verification": "NOT_APPLICABLE",
+      "currentness": "NOT_APPLICABLE",
+      "human_review": "NOT_REVIEWED",
+      "note": "報酬告示のservice fee laneへの非該当を明示するためのapplicability state。代替となる購入費根拠の内容検証・currentness・human review・publicationは別工程であり、自動昇格しない。"
+    },
+    "standards_interpretation": {
+      "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+      "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+      "service_scope": "data/services/specific-preventive-welfare-equipment-sale/standards-interpretation-scope.json",
+      "relation_file": "data/shared/standards-interpretation/service-relations.json",
+      "relation_id": "standards-interpretation.specific-preventive-welfare-equipment-sale.rouki25",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
+    }
+  },
+  "ingestion_indexes": {
+    "standards_interpretation": "data/services/specific-preventive-welfare-equipment-sale/standards-interpretation-scope.json"
+  }
 }

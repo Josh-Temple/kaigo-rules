@@ -17,7 +17,8 @@
     "unit_price": "data/services/homerehab/unit-price-scope.json"
   },
   "verification_layer_ids": [
-    "rouki25-homerehab"
+    "rouki25-homerehab",
+    "ordinance37-existing-services"
   ],
   "publication_gate": {
     "public_routes_enabled": false,

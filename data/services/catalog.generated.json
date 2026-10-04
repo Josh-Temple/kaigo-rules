@@ -143,9 +143,9 @@
         },
         "ordinance37": {
           "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
-          "selected_nodes": 165,
-          "selected_articles": 38,
-          "note": "通常の指定訪問介護（第二章第4条〜第39条。共生型・基準該当を除く）を共有省令37号コーパスから本文複製なしで参照する。独立検証・currentness・human reviewは訪問介護として別途実施する。"
+          "selected_nodes": 172,
+          "selected_articles": 41,
+          "note": "通常の指定訪問介護（第二章第4条〜第39条。挿入条を含み、共生型・基準該当を除く）を共有省令37号コーパスから本文複製なしで参照する。service-specific item-body verificationは独立e-Gov再照合でPASS。currentness・human review・publication・routeは別管理のまま昇格しない。"
         },
         "rouki25": {
           "status": "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
@@ -171,7 +171,8 @@
         }
       },
       "verification_layer_ids": [
-        "rouki25-homevisit"
+        "rouki25-homevisit",
+        "ordinance37-existing-services"
       ]
     },
     {
@@ -219,7 +220,8 @@
         }
       },
       "verification_layer_ids": [
-        "rouki25-homebath"
+        "rouki25-homebath",
+        "ordinance37-existing-services"
       ]
     },
     {
@@ -268,7 +270,8 @@
         }
       },
       "verification_layer_ids": [
-        "rouki25-homenursing"
+        "rouki25-homenursing",
+        "ordinance37-existing-services"
       ]
     },
     {
@@ -317,7 +320,8 @@
         }
       },
       "verification_layer_ids": [
-        "rouki25-homerehab"
+        "rouki25-homerehab",
+        "ordinance37-existing-services"
       ]
     },
     {
@@ -366,7 +370,8 @@
         }
       },
       "verification_layer_ids": [
-        "rouki25-homecaremanagement"
+        "rouki25-homecaremanagement",
+        "ordinance37-existing-services"
       ]
     },
     {
@@ -483,7 +488,8 @@
         }
       },
       "verification_layer_ids": [
-        "rouki25-shortstay-life"
+        "rouki25-shortstay-life",
+        "ordinance37-existing-services"
       ]
     },
     {
@@ -715,6 +721,19 @@
             "FAIL": 0
           },
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/care-management.json"
+        },
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-care-management-fee-notice20-current",
+          "source_section": "居宅介護支援費",
+          "top_level_items": 6,
+          "child_items": 2,
+          "total_index_entries": 8,
+          "item_body_verification": "NOT_ESTABLISHED",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -765,6 +784,19 @@
             "FAIL": 0
           },
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/preventive-support.json"
+        },
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-preventive-support-fee-notice129-current",
+          "source_section": "介護予防支援費",
+          "top_level_items": 4,
+          "child_items": 2,
+          "total_index_entries": 6,
+          "item_body_verification": "NOT_ESTABLISHED",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -785,7 +817,8 @@
         "care_insurance_act": "data/services/shortstay-medical/care-insurance-act-scope.json",
         "ordinance37": "data/services/shortstay-medical/ordinance37-scope.json",
         "remuneration": "data/services/shortstay-medical/remuneration-scope.json",
-        "unit_price": "data/services/shortstay-medical/unit-price-scope.json"
+        "unit_price": "data/services/shortstay-medical/unit-price-scope.json",
+        "standards_interpretation": "data/services/shortstay-medical/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -802,9 +835,21 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/shortstay-medical/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.shortstay-medical.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
-      "verification_layer_ids": [],
+      "verification_layer_ids": [
+        "ordinance37-existing-services"
+      ],
       "identity": {
         "label": "短期入所療養介護",
         "service_class": "HOME_SERVICE"
@@ -838,7 +883,8 @@
         "care_insurance_act": "data/services/specific-facility/care-insurance-act-scope.json",
         "ordinance37": "data/services/specific-facility/ordinance37-scope.json",
         "remuneration": "data/services/specific-facility/remuneration-scope.json",
-        "unit_price": "data/services/specific-facility/unit-price-scope.json"
+        "unit_price": "data/services/specific-facility/unit-price-scope.json",
+        "standards_interpretation": "data/services/specific-facility/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -855,9 +901,21 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/specific-facility/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.specific-facility.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
-      "verification_layer_ids": [],
+      "verification_layer_ids": [
+        "ordinance37-existing-services"
+      ],
       "identity": {
         "label": "特定施設入居者生活介護",
         "service_class": "HOME_SERVICE"
@@ -891,7 +949,8 @@
         "care_insurance_act": "data/services/welfare-equipment-rental/care-insurance-act-scope.json",
         "ordinance37": "data/services/welfare-equipment-rental/ordinance37-scope.json",
         "remuneration": "data/services/welfare-equipment-rental/remuneration-scope.json",
-        "unit_price": "data/services/welfare-equipment-rental/unit-price-scope.json"
+        "unit_price": "data/services/welfare-equipment-rental/unit-price-scope.json",
+        "standards_interpretation": "data/services/welfare-equipment-rental/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -908,9 +967,21 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/welfare-equipment-rental/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.welfare-equipment-rental.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
-      "verification_layer_ids": [],
+      "verification_layer_ids": [
+        "ordinance37-existing-services"
+      ],
       "identity": {
         "label": "福祉用具貸与",
         "service_class": "HOME_SERVICE"
@@ -944,7 +1015,8 @@
         "care_insurance_act": "data/services/specific-welfare-equipment-sale/care-insurance-act-scope.json",
         "ordinance37": "data/services/specific-welfare-equipment-sale/ordinance37-scope.json",
         "remuneration": "data/services/specific-welfare-equipment-sale/remuneration-scope.json",
-        "unit_price": "data/services/specific-welfare-equipment-sale/unit-price-scope.json"
+        "unit_price": "data/services/specific-welfare-equipment-sale/unit-price-scope.json",
+        "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -952,8 +1024,31 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
-      "verification_layer_ids": [],
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "NOT_APPLICABLE",
+          "source_family": "remuneration_notification",
+          "applicability": "NOT_APPLICABLE",
+          "basis": "介護保険法第44条の居宅介護福祉用具購入費であり、告示第19号の居宅サービス費laneには接続しない。",
+          "item_body_verification": "NOT_APPLICABLE",
+          "currentness": "NOT_APPLICABLE",
+          "human_review": "NOT_REVIEWED",
+          "note": "報酬告示のservice fee laneへの非該当を明示するためのapplicability state。代替となる購入費根拠の内容検証・currentness・human review・publicationは別工程であり、自動昇格しない。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.specific-welfare-equipment-sale.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
+      "verification_layer_ids": [
+        "ordinance37-existing-services"
+      ],
       "identity": {
         "label": "特定福祉用具販売",
         "service_class": "HOME_SERVICE"
@@ -1332,7 +1427,21 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-facility-fee-notice21-current",
+          "source_section": "1 介護福祉施設サービス",
+          "top_level_items": 5,
+          "child_items": 4,
+          "total_index_entries": 9,
+          "item_body_verification": "NOT_ESTABLISHED",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護老人福祉施設",
@@ -1376,7 +1485,21 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-facility-fee-notice21-current",
+          "source_section": "2 介護保健施設サービス",
+          "top_level_items": 5,
+          "child_items": 4,
+          "total_index_entries": 9,
+          "item_body_verification": "NOT_ESTABLISHED",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護老人保健施設",
@@ -1420,7 +1543,21 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-facility-fee-notice21-current",
+          "source_section": "4 介護医療院サービス",
+          "top_level_items": 6,
+          "child_items": 6,
+          "total_index_entries": 12,
+          "item_body_verification": "NOT_ESTABLISHED",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護医療院",
@@ -1456,7 +1593,8 @@
         "standards_index": "data/services/preventive-homebath/standards-scope.json",
         "remuneration": "data/services/preventive-homebath/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-homebath/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-homebath/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-homebath/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-homebath/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1473,6 +1611,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「1 介護予防訪問入浴介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-homebath/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-homebath.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1510,7 +1658,8 @@
         "standards_index": "data/services/preventive-homenursing/standards-scope.json",
         "remuneration": "data/services/preventive-homenursing/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-homenursing/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-homenursing/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-homenursing/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-homenursing/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1527,6 +1676,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「2 介護予防訪問看護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-homenursing/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-homenursing.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1564,7 +1723,8 @@
         "standards_index": "data/services/preventive-homerehab/standards-scope.json",
         "remuneration": "data/services/preventive-homerehab/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-homerehab/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-homerehab/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-homerehab/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-homerehab/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1581,6 +1741,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「3 介護予防訪問リハビリテーション費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-homerehab/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-homerehab.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1618,7 +1788,8 @@
         "standards_index": "data/services/preventive-homecaremanagement/standards-scope.json",
         "remuneration": "data/services/preventive-homecaremanagement/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-homecaremanagement/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-homecaremanagement/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-homecaremanagement/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-homecaremanagement/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1635,6 +1806,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「4 介護予防居宅療養管理指導費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-homecaremanagement/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-homecaremanagement.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1672,7 +1853,8 @@
         "standards_index": "data/services/preventive-dayrehab/standards-scope.json",
         "remuneration": "data/services/preventive-dayrehab/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-dayrehab/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-dayrehab/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-dayrehab/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-dayrehab/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1689,6 +1871,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「5 介護予防通所リハビリテーション費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-dayrehab/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-dayrehab.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1726,7 +1918,8 @@
         "standards_index": "data/services/preventive-shortstay-life/standards-scope.json",
         "remuneration": "data/services/preventive-shortstay-life/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-shortstay-life/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-shortstay-life/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-shortstay-life/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-shortstay-life/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1743,6 +1936,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「6 介護予防短期入所生活介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-shortstay-life/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-shortstay-life.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1780,7 +1983,8 @@
         "standards_index": "data/services/preventive-shortstay-medical/standards-scope.json",
         "remuneration": "data/services/preventive-shortstay-medical/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-shortstay-medical/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-shortstay-medical/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-shortstay-medical/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-shortstay-medical/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1797,6 +2001,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「7 介護予防短期入所療養介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-shortstay-medical/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-shortstay-medical.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1834,7 +2048,8 @@
         "standards_index": "data/services/preventive-specific-facility/standards-scope.json",
         "remuneration": "data/services/preventive-specific-facility/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-specific-facility/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-specific-facility/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-specific-facility/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-specific-facility/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1851,6 +2066,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「8 介護予防特定施設入居者生活介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-specific-facility/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-specific-facility.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1888,7 +2113,8 @@
         "standards_index": "data/services/preventive-welfare-equipment-rental/standards-scope.json",
         "remuneration": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
+        "standards_interpretation": "data/services/preventive-welfare-equipment-rental/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1905,6 +2131,16 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "厚生労働省告示第127号の別表「9 介護予防福祉用具貸与費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/preventive-welfare-equipment-rental/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.preventive-welfare-equipment-rental.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1942,7 +2178,8 @@
         "standards_index": "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json",
         "remuneration": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
-        "unit_price_regional_classification": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json"
+        "unit_price_regional_classification": "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json",
+        "standards_interpretation": "data/services/specific-preventive-welfare-equipment-sale/standards-interpretation-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1950,7 +2187,28 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "NOT_APPLICABLE",
+          "source_family": "remuneration_notification",
+          "applicability": "NOT_APPLICABLE",
+          "basis": "介護保険法第56条の介護予防福祉用具購入費であり、告示第127号の介護予防サービス費laneには接続しない。",
+          "item_body_verification": "NOT_APPLICABLE",
+          "currentness": "NOT_APPLICABLE",
+          "human_review": "NOT_REVIEWED",
+          "note": "報酬告示のservice fee laneへの非該当を明示するためのapplicability state。代替となる購入費根拠の内容検証・currentness・human review・publicationは別工程であり、自動昇格しない。"
+        },
+        "standards_interpretation": {
+          "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+          "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+          "service_scope": "data/services/specific-preventive-welfare-equipment-sale/standards-interpretation-scope.json",
+          "relation_file": "data/shared/standards-interpretation/service-relations.json",
+          "relation_id": "standards-interpretation.specific-preventive-welfare-equipment-sale.rouki25",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "特定介護予防福祉用具販売",
@@ -1994,7 +2252,21 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-preventive-fee-notice128-current",
+          "source_section": "1 介護予防認知症対応型通所介護費",
+          "top_level_items": 4,
+          "child_items": 6,
+          "total_index_entries": 10,
+          "item_body_verification": "NOT_ESTABLISHED",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防認知症対応型通所介護",
@@ -2038,7 +2310,21 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-preventive-fee-notice128-current",
+          "source_section": "2 介護予防小規模多機能型居宅介護費",
+          "top_level_items": 9,
+          "child_items": 6,
+          "total_index_entries": 15,
+          "item_body_verification": "NOT_ESTABLISHED",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防小規模多機能型居宅介護",
@@ -2082,7 +2368,21 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-preventive-fee-notice128-current",
+          "source_section": "3 介護予防認知症対応型共同生活介護費",
+          "top_level_items": 15,
+          "child_items": 6,
+          "total_index_entries": 21,
+          "item_body_verification": "NOT_ESTABLISHED",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "介護予防認知症対応型共同生活介護",

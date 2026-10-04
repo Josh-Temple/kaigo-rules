@@ -4,21 +4,25 @@
   "service_label": "介護医療院",
   "layer": "remuneration_notification",
   "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-  "status": "SCOPE_DEFINED_TARGET_SECTION_NOT_INGESTED",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
   "root_notification": {
     "notice_number": "平成12年厚生省告示第21号",
     "title": "指定施設サービス等に要する費用の額の算定に関する基準",
     "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
-    "selector": "指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス"
+    "selector": "指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス",
+    "repository_section_ingested": true,
+    "structured_index_path": "data/services/care-medical-institution/remuneration-index.json"
   },
   "shared_corpus_binding": {
     "existing_repository_corpus": "data/remuneration-current-skeleton.json",
     "state": "TARGET_SECTION_NOT_STRUCTURED_IN_EXISTING_SHARED_CORPUS",
-    "source_text_copy_allowed": false
+    "source_text_copy_allowed": false,
+    "service_structural_index": "data/services/care-medical-institution/remuneration-index.json"
   },
   "evidence": {
-    "checked_on": "2026-10-03",
-    "scope_only": true
+    "checked_on": "2026-10-04",
+    "scope_only": false,
+    "structural_index_only": true
   },
   "verification": {
     "service_applicability": "NOT_SERVICE_VERIFIED",
@@ -28,5 +32,7 @@
     "publication": "DISABLED"
   },
   "source_text_duplicated": false,
-  "automatic_verification_promotion_allowed": false
+  "automatic_verification_promotion_allowed": false,
+  "structured_index_path": "data/services/care-medical-institution/remuneration-index.json",
+  "structured_nodes_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
 }

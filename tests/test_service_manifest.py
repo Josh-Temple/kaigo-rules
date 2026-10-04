@@ -175,8 +175,8 @@ class ServiceManifestTests(unittest.TestCase):
                 / "data/services/homevisit/ordinance37-index.generated.json"
             ).read_text(encoding="utf-8")
         )
-        self.assertEqual(38, ordinance_index["counts"]["selected_articles"])
-        self.assertEqual(165, ordinance_index["counts"]["selected_nodes_total"])
+        self.assertEqual(41, ordinance_index["counts"]["selected_articles"])
+        self.assertEqual(172, ordinance_index["counts"]["selected_nodes_total"])
         self.assertFalse(ordinance_index["assurance"]["legal_text_duplicated"])
         self.assertEqual(
             "NOT_RUN",
@@ -185,7 +185,7 @@ class ServiceManifestTests(unittest.TestCase):
         self.assertFalse(
             homevisit["publication_gate"]["independent_verification_complete"]
         )
-        self.assertEqual(["rouki25-homevisit"], homevisit["verification_layer_ids"])
+        self.assertEqual({"rouki25-homevisit", "ordinance37-existing-services"}, set(homevisit["verification_layer_ids"]))
         self.assertEqual(
             "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
             homevisit["ingestion_layers"]["rouki25"]["status"],
@@ -199,7 +199,7 @@ class ServiceManifestTests(unittest.TestCase):
             for layer in registry["layers"]
             if "homevisit" in layer.get("service_ids", [])
         ]
-        self.assertEqual(["rouki25-homevisit"], homevisit_layers)
+        self.assertEqual({"rouki25-homevisit", "ordinance37-existing-services"}, set(homevisit_layers))
 
     def test_repository_homebath_service_root_stays_closed_while_notice_layer_is_verified(self):
         root = Path(__file__).resolve().parents[1]
@@ -224,7 +224,7 @@ class ServiceManifestTests(unittest.TestCase):
         self.assertFalse(
             homebath["publication_gate"]["independent_verification_complete"]
         )
-        self.assertEqual(["rouki25-homebath"], homebath["verification_layer_ids"])
+        self.assertEqual({"rouki25-homebath", "ordinance37-existing-services"}, set(homebath["verification_layer_ids"]))
         self.assertEqual(
             "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
             homebath["ingestion_layers"]["rouki25"]["status"],
@@ -238,7 +238,7 @@ class ServiceManifestTests(unittest.TestCase):
             for layer in registry["layers"]
             if "homebath" in layer.get("service_ids", [])
         ]
-        self.assertEqual(["rouki25-homebath"], homebath_layers)
+        self.assertEqual({"rouki25-homebath", "ordinance37-existing-services"}, set(homebath_layers))
 
     def test_repository_homebath_service_root_stays_closed_while_notice_layer_is_verified(self):
         root = Path(__file__).resolve().parents[1]
@@ -263,7 +263,7 @@ class ServiceManifestTests(unittest.TestCase):
         self.assertFalse(
             homebath["publication_gate"]["independent_verification_complete"]
         )
-        self.assertEqual(["rouki25-homebath"], homebath["verification_layer_ids"])
+        self.assertEqual({"rouki25-homebath", "ordinance37-existing-services"}, set(homebath["verification_layer_ids"]))
         self.assertEqual(
             "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
             homebath["ingestion_layers"]["rouki25"]["status"],
@@ -277,7 +277,7 @@ class ServiceManifestTests(unittest.TestCase):
             for layer in registry["layers"]
             if "homebath" in layer.get("service_ids", [])
         ]
-        self.assertEqual(["rouki25-homebath"], homebath_layers)
+        self.assertEqual({"rouki25-homebath", "ordinance37-existing-services"}, set(homebath_layers))
 
     def test_registry_service_coverage_drift_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:

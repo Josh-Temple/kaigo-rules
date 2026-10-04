@@ -1,0 +1,27 @@
+{
+  "id": "ordinance37-existing-services",
+  "title": "基準省令 既存10サービス item-body verification",
+  "content_verification": {
+    "status": "PASS",
+    "kind": "INDEPENDENT_EGOV_SERVICE_SLICE_REPARSE",
+    "services": 10,
+    "articles": 177,
+    "nodes": 1010,
+    "evidence": "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+  },
+  "currentness": {
+    "status": "NOT_ESTABLISHED",
+    "note": "2026-10-04の独立e-Gov再照合では対象本文が一致したが、currentnessはitem-body verificationと分離し、このレイヤーでは昇格しない。",
+    "evidence": "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+  },
+  "monitoring": {
+    "status": "ACTIVE",
+    "workflow": ".github/workflows/verify-existing-ordinance37-service-slices.yml"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED",
+    "reviewed_items": 0,
+    "total_items": 177
+  },
+  "assurance": "INDEPENDENT_EGOV_TEXT_AND_STRUCTURE_PASS_CURRENTNESS_NOT_ESTABLISHED"
+}

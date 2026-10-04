@@ -14,7 +14,7 @@
   },
   "scope_sources": {
     "service_scope": "data/services/homevisit/ordinance37-scope.json",
-    "shared_corpus_scope": "data/ordinance37-scope.json"
+    "shared_corpus_nodes": "data/ordinance37-nodes.json"
   },
   "selectors": {
     "chapter": {
@@ -48,14 +48,17 @@
       "27",
       "28",
       "29",
+      "29-2",
       "30",
       "30-2",
       "31",
       "32",
       "33",
       "34",
+      "34-2",
       "35",
       "36",
+      "36-2",
       "37",
       "37-2",
       "38",
@@ -63,11 +66,11 @@
     ]
   },
   "counts": {
-    "selected_nodes_total": 165,
-    "selected_articles": 38,
+    "selected_nodes_total": 172,
+    "selected_articles": 41,
     "by_type": {
-      "article": 38,
-      "paragraph": 83,
+      "article": 41,
+      "paragraph": 87,
       "item": 42,
       "subitem": 2
     }
@@ -144,6 +147,8 @@
     "ordinance37.article.28.p.3.i.7",
     "ordinance37.article.28.p.3.i.8",
     "ordinance37.article.29",
+    "ordinance37.article.29-2",
+    "ordinance37.article.29-2.p.1",
     "ordinance37.article.29.p.1",
     "ordinance37.article.29.p.1.i.1",
     "ordinance37.article.29.p.1.i.2",
@@ -178,10 +183,15 @@
     "ordinance37.article.33.p.2",
     "ordinance37.article.33.p.3",
     "ordinance37.article.34",
+    "ordinance37.article.34-2",
+    "ordinance37.article.34-2.p.1",
     "ordinance37.article.34.p.1",
     "ordinance37.article.35",
     "ordinance37.article.35.p.1",
     "ordinance37.article.36",
+    "ordinance37.article.36-2",
+    "ordinance37.article.36-2.p.1",
+    "ordinance37.article.36-2.p.2",
     "ordinance37.article.36.p.1",
     "ordinance37.article.36.p.2",
     "ordinance37.article.36.p.3",

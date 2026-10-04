@@ -7,7 +7,7 @@
       "scope_state": "SCOPE_DEFINED",
       "applicability_state": "MAPPED",
       "ingestion_state": "INGESTED",
-      "mapped_node_count": 15,
+      "mapped_node_count": 18,
       "mapped_node_ids": [
         "notice27.item.1",
         "notice95.item.14-3",
@@ -15,8 +15,11 @@
         "notice95.item.14-5",
         "notice95.item.14-6",
         "notice95.item.15",
+        "notice95.item.15-2",
         "notice95.item.16",
+        "notice95.item.16-2",
         "notice95.item.17",
+        "notice95.item.18",
         "notice95.item.18-2",
         "notice95.item.19",
         "notice95.item.19-2",
@@ -44,6 +47,1198 @@
         "route_exposure": "BLOCKED",
         "automatic_promotion_allowed": false
       }
+    },
+    {
+      "service_id": "homevisit",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 8,
+      "mapped_node_ids": [
+        "notice95.item.1",
+        "notice95.item.2",
+        "notice95.item.2-2",
+        "notice95.item.3",
+        "notice95.item.3-2",
+        "notice95.item.3-3",
+        "notice95.item.3-4",
+        "notice95.item.4"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "homebath",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 6,
+      "mapped_node_ids": [
+        "notice95.item.3-4",
+        "notice95.item.4",
+        "notice95.item.4-4",
+        "notice95.item.4-5",
+        "notice95.item.5",
+        "notice95.item.6"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "homenursing",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 10,
+      "mapped_node_ids": [
+        "notice95.item.10",
+        "notice95.item.10-2",
+        "notice95.item.6-2",
+        "notice95.item.6-3",
+        "notice95.item.7",
+        "notice95.item.7-2",
+        "notice95.item.8",
+        "notice95.item.8-2",
+        "notice95.item.9",
+        "notice95.item.9-2"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "homerehab",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 8,
+      "mapped_node_ids": [
+        "notice95.item.10-2",
+        "notice95.item.11",
+        "notice95.item.11-2",
+        "notice95.item.12",
+        "notice95.item.12-2",
+        "notice95.item.13",
+        "notice95.item.14",
+        "notice95.item.14-2"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "dayrehab",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 18,
+      "mapped_node_ids": [
+        "notice27.item.2",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.24-2",
+        "notice95.item.24-3",
+        "notice95.item.24-4",
+        "notice95.item.24-5",
+        "notice95.item.25",
+        "notice95.item.27",
+        "notice95.item.28",
+        "notice95.item.29",
+        "notice95.item.29-2",
+        "notice95.item.30",
+        "notice95.item.31",
+        "notice95.item.32",
+        "notice95.item.33",
+        "notice95.item.34",
+        "notice95.item.4"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "shortstay-life",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 13,
+      "mapped_node_ids": [
+        "notice27.item.3",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.34-4",
+        "notice95.item.34-5",
+        "notice95.item.34-6",
+        "notice95.item.35",
+        "notice95.item.36",
+        "notice95.item.37",
+        "notice95.item.37-2",
+        "notice95.item.37-3",
+        "notice95.item.38",
+        "notice95.item.39"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-dayservice",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 17,
+      "mapped_node_ids": [
+        "notice27.item.5-2",
+        "notice95.item.14-5",
+        "notice95.item.14-6",
+        "notice95.item.15-2",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.20",
+        "notice95.item.48",
+        "notice95.item.51-10",
+        "notice95.item.51-4",
+        "notice95.item.51-5",
+        "notice95.item.51-6",
+        "notice95.item.51-7",
+        "notice95.item.51-8",
+        "notice95.item.51-9"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "regular-round",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 10,
+      "mapped_node_ids": [
+        "notice95.item.3-4",
+        "notice95.item.44-6",
+        "notice95.item.44-7",
+        "notice95.item.44-8",
+        "notice95.item.45",
+        "notice95.item.46",
+        "notice95.item.46-2",
+        "notice95.item.47",
+        "notice95.item.48",
+        "notice95.item.8"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "night-homevisit",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 7,
+      "mapped_node_ids": [
+        "notice95.item.3-4",
+        "notice95.item.48",
+        "notice95.item.48-4",
+        "notice95.item.48-5",
+        "notice95.item.49",
+        "notice95.item.50",
+        "notice95.item.51"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "care-management",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 11,
+      "mapped_node_ids": [
+        "notice95.item.10-2",
+        "notice95.item.82",
+        "notice95.item.82-2",
+        "notice95.item.82-3",
+        "notice95.item.83",
+        "notice95.item.84",
+        "notice95.item.84-2",
+        "notice95.item.85",
+        "notice95.item.85-2",
+        "notice95.item.85-3",
+        "notice95.item.85-4"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-support",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 3,
+      "mapped_node_ids": [
+        "notice95.item.10-2",
+        "notice95.item.129-4",
+        "notice95.item.129-5"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "shortstay-medical",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 10,
+      "mapped_node_ids": [
+        "notice27.item.4",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.39",
+        "notice95.item.39-6",
+        "notice95.item.39-7",
+        "notice95.item.40",
+        "notice95.item.41"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-facility",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 14,
+      "mapped_node_ids": [
+        "notice27.item.5",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-2",
+        "notice95.item.42-3",
+        "notice95.item.42-4",
+        "notice95.item.42-5",
+        "notice95.item.42-6",
+        "notice95.item.42-7",
+        "notice95.item.42-8",
+        "notice95.item.43",
+        "notice95.item.44"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 2,
+      "mapped_node_ids": [
+        "notice95.item.44-4",
+        "notice95.item.44-5"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 13,
+      "mapped_node_ids": [
+        "notice27.item.6",
+        "notice95.item.14-6",
+        "notice95.item.15-2",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.19-2",
+        "notice95.item.20",
+        "notice95.item.48",
+        "notice95.item.51-13",
+        "notice95.item.52",
+        "notice95.item.53"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 13,
+      "mapped_node_ids": [
+        "notice27.item.7",
+        "notice95.item.18",
+        "notice95.item.37-3",
+        "notice95.item.42-6",
+        "notice95.item.54-2",
+        "notice95.item.54-3",
+        "notice95.item.54-4",
+        "notice95.item.54-5",
+        "notice95.item.55",
+        "notice95.item.56",
+        "notice95.item.56-2",
+        "notice95.item.57",
+        "notice95.item.58"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "dementia-group-home",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 14,
+      "mapped_node_ids": [
+        "notice27.item.8",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-6",
+        "notice95.item.44",
+        "notice95.item.58-4",
+        "notice95.item.58-5",
+        "notice95.item.58-6",
+        "notice95.item.58-7",
+        "notice95.item.58-8",
+        "notice95.item.59",
+        "notice95.item.60",
+        "notice95.item.68"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-specific-facility",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 18,
+      "mapped_node_ids": [
+        "notice27.item.9",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-3",
+        "notice95.item.42-4",
+        "notice95.item.42-5",
+        "notice95.item.42-6",
+        "notice95.item.44",
+        "notice95.item.60-4",
+        "notice95.item.60-5",
+        "notice95.item.60-6",
+        "notice95.item.60-7",
+        "notice95.item.60-8",
+        "notice95.item.61",
+        "notice95.item.62",
+        "notice95.item.68"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 27,
+      "mapped_node_ids": [
+        "notice27.item.10",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.42-4",
+        "notice95.item.44",
+        "notice95.item.63",
+        "notice95.item.63-2",
+        "notice95.item.63-3",
+        "notice95.item.64",
+        "notice95.item.65-2",
+        "notice95.item.65-3",
+        "notice95.item.66",
+        "notice95.item.67",
+        "notice95.item.69",
+        "notice95.item.70",
+        "notice95.item.71",
+        "notice95.item.71-2",
+        "notice95.item.71-3",
+        "notice95.item.71-4",
+        "notice95.item.71-5",
+        "notice95.item.71-6",
+        "notice95.item.71-7",
+        "notice95.item.72",
+        "notice95.item.73"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 27,
+      "mapped_node_ids": [
+        "notice27.item.11",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.19-2",
+        "notice95.item.20",
+        "notice95.item.37-3",
+        "notice95.item.54-5",
+        "notice95.item.58",
+        "notice95.item.71-2",
+        "notice95.item.71-3",
+        "notice95.item.74-2",
+        "notice95.item.74-3",
+        "notice95.item.74-4",
+        "notice95.item.75",
+        "notice95.item.75-2",
+        "notice95.item.76",
+        "notice95.item.76-2",
+        "notice95.item.77",
+        "notice95.item.77-2",
+        "notice95.item.78",
+        "notice95.item.78-2",
+        "notice95.item.79",
+        "notice95.item.79-2",
+        "notice95.item.8",
+        "notice95.item.80",
+        "notice95.item.81"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 29,
+      "mapped_node_ids": [
+        "notice27.item.12",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.42-4",
+        "notice95.item.44",
+        "notice95.item.64",
+        "notice95.item.65-2",
+        "notice95.item.65-3",
+        "notice95.item.66",
+        "notice95.item.67",
+        "notice95.item.69",
+        "notice95.item.70",
+        "notice95.item.71",
+        "notice95.item.71-2",
+        "notice95.item.71-3",
+        "notice95.item.71-4",
+        "notice95.item.71-5",
+        "notice95.item.72",
+        "notice95.item.86",
+        "notice95.item.86-2",
+        "notice95.item.86-3",
+        "notice95.item.86-4",
+        "notice95.item.86-5",
+        "notice95.item.86-6",
+        "notice95.item.87",
+        "notice95.item.88"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 30,
+      "mapped_node_ids": [
+        "notice27.item.13",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.44",
+        "notice95.item.64",
+        "notice95.item.65-2",
+        "notice95.item.65-3",
+        "notice95.item.66",
+        "notice95.item.67",
+        "notice95.item.69",
+        "notice95.item.70",
+        "notice95.item.71-2",
+        "notice95.item.71-3",
+        "notice95.item.71-4",
+        "notice95.item.89",
+        "notice95.item.89-2",
+        "notice95.item.89-3",
+        "notice95.item.90",
+        "notice95.item.90-2",
+        "notice95.item.91",
+        "notice95.item.91-2",
+        "notice95.item.92",
+        "notice95.item.92-2",
+        "notice95.item.92-3",
+        "notice95.item.92-4",
+        "notice95.item.92-5",
+        "notice95.item.93",
+        "notice95.item.94"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "care-medical-institution",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 25,
+      "mapped_node_ids": [
+        "notice27.item.15",
+        "notice95.item.100",
+        "notice95.item.100-2",
+        "notice95.item.100-3",
+        "notice95.item.100-4",
+        "notice95.item.100-5",
+        "notice95.item.100-6",
+        "notice95.item.100-7",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.44",
+        "notice95.item.64",
+        "notice95.item.65-2",
+        "notice95.item.65-3",
+        "notice95.item.66",
+        "notice95.item.67",
+        "notice95.item.69",
+        "notice95.item.70",
+        "notice95.item.71-3",
+        "notice95.item.71-4",
+        "notice95.item.91",
+        "notice95.item.92-3",
+        "notice95.item.93"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homebath",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 7,
+      "mapped_node_ids": [
+        "notice95.item.100-10",
+        "notice95.item.100-11",
+        "notice95.item.101",
+        "notice95.item.102",
+        "notice95.item.3-4",
+        "notice95.item.4",
+        "notice95.item.5"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 12,
+      "mapped_node_ids": [
+        "notice95.item.10",
+        "notice95.item.10-2",
+        "notice95.item.102-2",
+        "notice95.item.102-3",
+        "notice95.item.103",
+        "notice95.item.103-2",
+        "notice95.item.104",
+        "notice95.item.104-2",
+        "notice95.item.105",
+        "notice95.item.105-2",
+        "notice95.item.7",
+        "notice95.item.9-2"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 6,
+      "mapped_node_ids": [
+        "notice95.item.105-3",
+        "notice95.item.105-4",
+        "notice95.item.105-5",
+        "notice95.item.106",
+        "notice95.item.12-2",
+        "notice95.item.14"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 15,
+      "mapped_node_ids": [
+        "notice27.item.16",
+        "notice95.item.106-4",
+        "notice95.item.106-5",
+        "notice95.item.106-6",
+        "notice95.item.107-2",
+        "notice95.item.108",
+        "notice95.item.109",
+        "notice95.item.113",
+        "notice95.item.114",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.20",
+        "notice95.item.33",
+        "notice95.item.4"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 16,
+      "mapped_node_ids": [
+        "notice27.item.17",
+        "notice95.item.114-4",
+        "notice95.item.115",
+        "notice95.item.115-2",
+        "notice95.item.115-3",
+        "notice95.item.116",
+        "notice95.item.117",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.34-4",
+        "notice95.item.34-6",
+        "notice95.item.35",
+        "notice95.item.36",
+        "notice95.item.37-3",
+        "notice95.item.38",
+        "notice95.item.39"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 12,
+      "mapped_node_ids": [
+        "notice27.item.18",
+        "notice95.item.117-6",
+        "notice95.item.117-7",
+        "notice95.item.118",
+        "notice95.item.119",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.39",
+        "notice95.item.39-6",
+        "notice95.item.40"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 15,
+      "mapped_node_ids": [
+        "notice27.item.19",
+        "notice95.item.119-4",
+        "notice95.item.119-5",
+        "notice95.item.119-6",
+        "notice95.item.119-7",
+        "notice95.item.120",
+        "notice95.item.121",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-5",
+        "notice95.item.42-6",
+        "notice95.item.42-7",
+        "notice95.item.43",
+        "notice95.item.44"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 13,
+      "mapped_node_ids": [
+        "notice27.item.20",
+        "notice95.item.121-4",
+        "notice95.item.121-5",
+        "notice95.item.122",
+        "notice95.item.123",
+        "notice95.item.14-6",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.19-2",
+        "notice95.item.20",
+        "notice95.item.48",
+        "notice95.item.52"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 12,
+      "mapped_node_ids": [
+        "notice27.item.21",
+        "notice95.item.123-4",
+        "notice95.item.123-5",
+        "notice95.item.123-6",
+        "notice95.item.125-2",
+        "notice95.item.126",
+        "notice95.item.127",
+        "notice95.item.18",
+        "notice95.item.37-3",
+        "notice95.item.42-6",
+        "notice95.item.57",
+        "notice95.item.58"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 18,
+      "mapped_node_ids": [
+        "notice27.item.22",
+        "notice95.item.127-4",
+        "notice95.item.127-5",
+        "notice95.item.127-6",
+        "notice95.item.127-7",
+        "notice95.item.127-8",
+        "notice95.item.128",
+        "notice95.item.129",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-6",
+        "notice95.item.44",
+        "notice95.item.58-5",
+        "notice95.item.58-6",
+        "notice95.item.58-7",
+        "notice95.item.59",
+        "notice95.item.68"
+      ],
+      "compatibility_subnode_ids": [],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
     }
-  ]
+  ],
+  "mapping_policy": {
+    "direct_applicability_basis": "OFFICIAL_NODE_HEADING_EXPLICIT_SERVICE_SCOPE",
+    "incorporated_reference_basis": "EXPLICIT_INCORPORATION_BY_REFERENCE",
+    "unmatched_services_remain": "NOT_MAPPED",
+    "service_applicability_auto_verification_allowed": false,
+    "note": "MAPPED means a service-to-node applicability relation is represented. It does not establish item-body verification, currentness, human review, publication, or route exposure."
+  }
 }

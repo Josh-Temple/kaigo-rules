@@ -411,7 +411,7 @@
           },
           "service_applicability": {
             "state": "MAPPED",
-            "mapped_node_count": 15,
+            "mapped_node_count": 18,
             "evidence": [
               "data/shared/remuneration-delegated/service-applicability.json#dayservice"
             ],
@@ -761,7 +761,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/homevisit/ordinance37-scope.json"
+              "data/services/homevisit/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -771,14 +772,22 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -788,7 +797,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -948,17 +959,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -969,7 +986,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -981,10 +1000,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 8,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#homevisit"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#homevisit"
           }
         },
         {
@@ -1297,7 +1318,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/homebath/ordinance37-scope.json"
+              "data/services/homebath/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -1305,14 +1327,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1322,7 +1352,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -1478,17 +1510,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -1499,7 +1537,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -1511,10 +1551,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 6,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#homebath"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#homebath"
           }
         },
         {
@@ -1825,7 +1867,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/homenursing/ordinance37-scope.json"
+              "data/services/homenursing/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -1833,14 +1876,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1850,7 +1901,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -2010,17 +2063,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -2031,7 +2090,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -2043,10 +2104,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 10,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#homenursing"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#homenursing"
           }
         },
         {
@@ -2357,7 +2420,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/homerehab/ordinance37-scope.json"
+              "data/services/homerehab/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -2365,14 +2429,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2382,7 +2454,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -2542,17 +2616,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -2563,7 +2643,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -2575,10 +2657,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 8,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#homerehab"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#homerehab"
           }
         },
         {
@@ -2889,7 +2973,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/homecaremanagement/ordinance37-scope.json"
+              "data/services/homecaremanagement/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -2897,14 +2982,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2914,7 +3007,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -3630,17 +3725,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -3651,22 +3752,26 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
-            "state": "NOT_ESTABLISHED",
+            "state": "BLOCKED",
             "raw_service_public_routes_enabled": true
           },
           "route_exposure": {
-            "state": "NOT_ESTABLISHED",
+            "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_PREVIEW",
             "raw_future_service_base_enabled": true
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 18,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#dayrehab"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#dayrehab"
           }
         },
         {
@@ -3997,7 +4102,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/shortstay-life/ordinance37-scope.json"
+              "data/services/shortstay-life/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -4005,14 +4111,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -4022,7 +4136,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -4182,17 +4298,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -4203,7 +4325,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -4215,10 +4339,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 13,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#shortstay-life"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#shortstay-life"
           }
         },
         {
@@ -4716,17 +4842,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -4737,7 +4869,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -4749,10 +4883,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 17,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#community-dayservice"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#community-dayservice"
           }
         },
         {
@@ -5250,17 +5386,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -5271,7 +5413,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -5283,10 +5427,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 10,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#regular-round"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#regular-round"
           }
         },
         {
@@ -5784,17 +5930,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -5805,7 +5957,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -5817,10 +5971,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 7,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#night-homevisit"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#night-homevisit"
           }
         },
         {
@@ -6257,8 +6413,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -6278,7 +6436,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -6314,17 +6474,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -6335,7 +6501,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -6347,10 +6515,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 11,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#care-management"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#care-management"
           }
         },
         {
@@ -6787,8 +6957,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -6808,7 +6980,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -6844,17 +7018,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -6865,7 +7045,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -6877,10 +7059,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 3,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-support"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-support"
           }
         },
         {
@@ -7191,7 +7375,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/shortstay-medical/ordinance37-scope.json"
+              "data/services/shortstay-medical/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -7199,14 +7384,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -7216,7 +7409,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -7232,19 +7427,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/shortstay-medical/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/shortstay-medical/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -7264,7 +7467,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -7356,17 +7561,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -7377,7 +7588,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -7389,10 +7602,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 10,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#shortstay-medical"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#shortstay-medical"
           }
         },
         {
@@ -7703,7 +7918,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/specific-facility/ordinance37-scope.json"
+              "data/services/specific-facility/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -7711,14 +7927,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -7728,7 +7952,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -7744,19 +7970,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/specific-facility/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/specific-facility/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -7776,7 +8010,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -7868,17 +8104,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -7889,7 +8131,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -7901,10 +8145,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 14,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#specific-facility"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#specific-facility"
           }
         },
         {
@@ -8215,7 +8461,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/welfare-equipment-rental/ordinance37-scope.json"
+              "data/services/welfare-equipment-rental/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -8223,14 +8470,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8240,7 +8495,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -8256,19 +8513,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/welfare-equipment-rental/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/welfare-equipment-rental/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8288,7 +8553,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -8380,17 +8647,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -8401,7 +8674,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -8413,10 +8688,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 2,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#welfare-equipment-rental"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#welfare-equipment-rental"
           }
         },
         {
@@ -8727,7 +9004,8 @@
               "ordinance37"
             ],
             "evidence": [
-              "data/services/specific-welfare-equipment-sale/ordinance37-scope.json"
+              "data/services/specific-welfare-equipment-sale/ordinance37-scope.json",
+              "data/verification-registry.json#ordinance37-existing-services"
             ]
           },
           "ingestion": {
@@ -8735,14 +9013,22 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8752,7 +9038,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -8768,19 +9056,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8800,7 +9096,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -8833,8 +9131,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "NOT_APPLICABLE",
+            "raw_status": [
+              "NOT_APPLICABLE"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8854,7 +9154,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -9406,17 +9708,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -9427,7 +9735,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -9439,10 +9749,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 13,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#dementia-dayservice"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#dementia-dayservice"
           }
         },
         {
@@ -9924,17 +10236,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -9945,7 +10263,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -9957,10 +10277,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 13,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#small-scale-multifunctional"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#small-scale-multifunctional"
           }
         },
         {
@@ -10442,17 +10764,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -10463,7 +10791,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -10475,10 +10805,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 14,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#dementia-group-home"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#dementia-group-home"
           }
         },
         {
@@ -10960,17 +11292,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -10981,7 +11319,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -10993,10 +11333,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 18,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#community-specific-facility"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#community-specific-facility"
           }
         },
         {
@@ -11478,17 +11820,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -11499,7 +11847,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -11511,10 +11861,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 27,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#community-elderly-facility"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#community-elderly-facility"
           }
         },
         {
@@ -11996,17 +12348,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -12017,7 +12375,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -12029,10 +12389,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 27,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#nursing-small-scale-multifunctional"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#nursing-small-scale-multifunctional"
           }
         },
         {
@@ -12453,8 +12815,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -12474,7 +12838,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -12510,17 +12876,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -12531,7 +12903,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -12543,10 +12917,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 29,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#elderly-welfare-facility"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#elderly-welfare-facility"
           }
         },
         {
@@ -12967,8 +13343,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -12988,7 +13366,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -13024,17 +13404,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -13045,7 +13431,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -13057,10 +13445,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 30,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#elderly-health-facility"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#elderly-health-facility"
           }
         },
         {
@@ -13481,8 +13871,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -13502,7 +13894,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -13538,17 +13932,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -13559,7 +13959,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -13571,10 +13973,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 25,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#care-medical-institution"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#care-medical-institution"
           }
         },
         {
@@ -13930,19 +14334,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-homebath/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-homebath/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -13962,7 +14374,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -14056,17 +14470,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -14077,7 +14497,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -14089,10 +14511,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 7,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-homebath"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-homebath"
           }
         },
         {
@@ -14446,19 +14870,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-homenursing/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-homenursing/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -14478,7 +14910,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -14572,17 +15006,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -14593,7 +15033,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -14605,10 +15047,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 12,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-homenursing"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-homenursing"
           }
         },
         {
@@ -14962,19 +15406,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-homerehab/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-homerehab/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -14994,7 +15446,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -15088,17 +15542,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -15109,7 +15569,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -15121,10 +15583,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 6,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-homerehab"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-homerehab"
           }
         },
         {
@@ -15478,19 +15942,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-homecaremanagement/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-homecaremanagement/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -15510,7 +15982,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -15994,19 +16468,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-dayrehab/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-dayrehab/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16026,7 +16508,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -16120,17 +16604,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -16141,7 +16631,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -16153,10 +16645,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 15,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-dayrehab"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-dayrehab"
           }
         },
         {
@@ -16510,19 +17004,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-shortstay-life/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-life/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16542,7 +17044,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -16636,17 +17140,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -16657,7 +17167,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -16669,10 +17181,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 16,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-shortstay-life"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-shortstay-life"
           }
         },
         {
@@ -17026,19 +17540,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-shortstay-medical/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-medical/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17058,7 +17580,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -17152,17 +17676,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -17173,7 +17703,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -17185,10 +17717,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 12,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-shortstay-medical"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-shortstay-medical"
           }
         },
         {
@@ -17542,19 +18076,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-specific-facility/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-specific-facility/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17574,7 +18116,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -17668,17 +18212,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -17689,7 +18239,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -17701,10 +18253,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 15,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-specific-facility"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-specific-facility"
           }
         },
         {
@@ -18058,19 +18612,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/preventive-welfare-equipment-rental/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/preventive-welfare-equipment-rental/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18090,7 +18652,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -18574,19 +19138,27 @@
           "source_family": "standards_interpretation_notice",
           "label": "Standards interpretation notice",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
+            "state": "AVAILABLE",
+            "kind": "SERVICE_SPECIFIC",
             "corpus_id": null,
-            "evidence": []
+            "evidence": [
+              "data/services/specific-preventive-welfare-equipment-sale/standards-interpretation-scope.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "standards_interpretation"
+            ],
+            "evidence": [
+              "data/services/specific-preventive-welfare-equipment-sale/standards-interpretation-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18606,7 +19178,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -18639,8 +19213,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "NOT_APPLICABLE",
+            "raw_status": [
+              "NOT_APPLICABLE"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18660,7 +19236,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -19151,8 +19729,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19172,7 +19752,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -19208,17 +19790,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -19229,7 +19817,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -19241,10 +19831,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 13,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-dementia-dayservice"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-dementia-dayservice"
           }
         },
         {
@@ -19663,8 +20255,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19684,7 +20278,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -19720,17 +20316,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -19741,7 +20343,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -19753,10 +20357,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 12,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-small-scale-multifunctional"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-small-scale-multifunctional"
           }
         },
         {
@@ -20175,8 +20781,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20196,7 +20804,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -20232,17 +20842,23 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INGESTED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
             "evidence": []
           },
           "relation_verification": {
@@ -20253,7 +20869,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -20265,10 +20883,12 @@
             "raw_future_service_base_enabled": false
           },
           "service_applicability": {
-            "state": "NOT_MAPPED",
-            "mapped_node_count": 0,
-            "evidence": [],
-            "relation_model": null
+            "state": "MAPPED",
+            "mapped_node_count": 18,
+            "evidence": [
+              "data/shared/remuneration-delegated/service-applicability.json#preventive-dementia-group-home"
+            ],
+            "relation_model": "data/shared/remuneration-delegated/service-relations.json#preventive-dementia-group-home"
           }
         },
         {
@@ -20539,8 +21159,7 @@
           "INGESTED": 39
         },
         "item_body_verification": {
-          "NOT_ESTABLISHED": 10,
-          "PASS": 29
+          "PASS": 39
         },
         "currentness": {
           "NOT_ESTABLISHED": 37,
@@ -20563,16 +21182,16 @@
       },
       "standards_interpretation_notice": {
         "corpus_availability": {
-          "AVAILABLE": 13,
-          "NOT_AVAILABLE": 26
+          "AVAILABLE": 27,
+          "NOT_AVAILABLE": 12
         },
         "service_scope": {
-          "SCOPE_DEFINED": 13,
-          "SCOPE_NOT_DEFINED": 26
+          "SCOPE_DEFINED": 27,
+          "SCOPE_NOT_DEFINED": 12
         },
         "ingestion": {
-          "INGESTED": 13,
-          "NOT_INGESTED": 26
+          "INGESTED": 27,
+          "NOT_INGESTED": 12
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 26,
@@ -20606,8 +21225,8 @@
           "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "INGESTED": 29,
-          "NOT_INGESTED": 10
+          "INGESTED": 37,
+          "NOT_APPLICABLE": 2
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 37,
@@ -20640,8 +21259,8 @@
           "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "INGESTED": 1,
-          "NOT_INGESTED": 38
+          "INGESTED": 34,
+          "NOT_INGESTED": 5
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 39
@@ -20656,12 +21275,10 @@
           "NOT_REVIEWED": 39
         },
         "publication": {
-          "BLOCKED": 38,
-          "NOT_ESTABLISHED": 1
+          "BLOCKED": 39
         },
         "route_exposure": {
-          "BLOCKED": 38,
-          "NOT_ESTABLISHED": 1
+          "BLOCKED": 39
         }
       },
       "fee_calculation_guidance": {
@@ -20903,10 +21520,6 @@
       },
       {
         "service_id": "shortstay-medical",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "shortstay-medical",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -20915,10 +21528,6 @@
       },
       {
         "service_id": "specific-facility",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "specific-facility",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -20927,10 +21536,6 @@
       },
       {
         "service_id": "welfare-equipment-rental",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -20939,10 +21544,6 @@
       },
       {
         "service_id": "specific-welfare-equipment-sale",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21059,10 +21660,6 @@
       },
       {
         "service_id": "preventive-homebath",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-homebath",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21071,10 +21668,6 @@
       },
       {
         "service_id": "preventive-homenursing",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-homenursing",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21083,10 +21676,6 @@
       },
       {
         "service_id": "preventive-homerehab",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-homerehab",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21095,10 +21684,6 @@
       },
       {
         "service_id": "preventive-homecaremanagement",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21107,10 +21692,6 @@
       },
       {
         "service_id": "preventive-dayrehab",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-dayrehab",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21119,10 +21700,6 @@
       },
       {
         "service_id": "preventive-shortstay-life",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21131,10 +21708,6 @@
       },
       {
         "service_id": "preventive-shortstay-medical",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21143,10 +21716,6 @@
       },
       {
         "service_id": "preventive-specific-facility",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-specific-facility",
         "source_family": "fee_calculation_guidance"
       },
       {
@@ -21155,19 +21724,11 @@
       },
       {
         "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "standards_interpretation_notice"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
         "source_family": "fee_calculation_guidance"
       },
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "standards_interpretation_notice"
       },
       {
         "service_id": "specific-preventive-welfare-equipment-sale",
@@ -21277,6 +21838,11 @@
       },
       {
         "service_id": "homevisit",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homevisit",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21302,6 +21868,11 @@
       },
       {
         "service_id": "homebath",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homebath",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21327,6 +21898,11 @@
       },
       {
         "service_id": "homenursing",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homenursing",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21352,6 +21928,11 @@
       },
       {
         "service_id": "homerehab",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homerehab",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21398,6 +21979,11 @@
       {
         "service_id": "dayrehab",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dayrehab",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21432,6 +22018,11 @@
       },
       {
         "service_id": "shortstay-life",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "shortstay-life",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21457,6 +22048,11 @@
       },
       {
         "service_id": "community-dayservice",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-dayservice",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21482,6 +22078,11 @@
       },
       {
         "service_id": "regular-round",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "regular-round",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21507,6 +22108,11 @@
       },
       {
         "service_id": "night-homevisit",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "night-homevisit",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21527,6 +22133,16 @@
       },
       {
         "service_id": "care-management",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "care-management",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21547,6 +22163,16 @@
       },
       {
         "service_id": "preventive-support",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-support",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21562,7 +22188,17 @@
       },
       {
         "service_id": "shortstay-medical",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "shortstay-medical",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "shortstay-medical",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21582,7 +22218,17 @@
       },
       {
         "service_id": "specific-facility",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "specific-facility",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21602,7 +22248,17 @@
       },
       {
         "service_id": "welfare-equipment-rental",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21622,6 +22278,11 @@
       },
       {
         "service_id": "specific-welfare-equipment-sale",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "specific-welfare-equipment-sale",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -21633,6 +22294,11 @@
       {
         "service_id": "dementia-dayservice",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21657,6 +22323,11 @@
       },
       {
         "service_id": "small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "small-scale-multifunctional",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -21673,6 +22344,11 @@
       {
         "service_id": "dementia-group-home",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21693,6 +22369,11 @@
       {
         "service_id": "community-specific-facility",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21713,6 +22394,11 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21733,6 +22419,11 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21748,6 +22439,16 @@
       {
         "service_id": "elderly-welfare-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21763,6 +22464,16 @@
       {
         "service_id": "elderly-health-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "elderly-health-facility",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "elderly-health-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21778,6 +22489,16 @@
       {
         "service_id": "care-medical-institution",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "care-medical-institution",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "care-medical-institution",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21797,7 +22518,17 @@
       },
       {
         "service_id": "preventive-homebath",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homebath",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homebath",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21817,7 +22548,17 @@
       },
       {
         "service_id": "preventive-homenursing",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homenursing",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homenursing",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21837,7 +22578,17 @@
       },
       {
         "service_id": "preventive-homerehab",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homerehab",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homerehab",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21853,6 +22604,11 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21877,7 +22633,17 @@
       },
       {
         "service_id": "preventive-dayrehab",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dayrehab",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dayrehab",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21897,7 +22663,17 @@
       },
       {
         "service_id": "preventive-shortstay-life",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-shortstay-life",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-shortstay-life",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21917,7 +22693,17 @@
       },
       {
         "service_id": "preventive-shortstay-medical",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-shortstay-medical",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-shortstay-medical",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21937,7 +22723,17 @@
       },
       {
         "service_id": "preventive-specific-facility",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-specific-facility",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21953,6 +22749,11 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21973,6 +22774,11 @@
       {
         "service_id": "specific-preventive-welfare-equipment-sale",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "specific-preventive-welfare-equipment-sale",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21983,6 +22789,16 @@
       {
         "service_id": "preventive-dementia-dayservice",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21998,6 +22814,16 @@
       {
         "service_id": "preventive-small-scale-multifunctional",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22013,6 +22839,16 @@
       {
         "service_id": "preventive-dementia-group-home",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22039,22 +22875,17 @@
       },
       {
         "service_id": "homevisit",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homevisit",
         "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "homevisit",
-        "source_family": "unit_price_regional_classification",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homebath",
-        "source_family": "governing_standards_ordinance",
+        "service_id": "homevisit",
+        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22064,12 +22895,12 @@
       },
       {
         "service_id": "homebath",
-        "source_family": "unit_price_regional_classification",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homenursing",
-        "source_family": "governing_standards_ordinance",
+        "service_id": "homebath",
+        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22079,12 +22910,12 @@
       },
       {
         "service_id": "homenursing",
-        "source_family": "unit_price_regional_classification",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homerehab",
-        "source_family": "governing_standards_ordinance",
+        "service_id": "homenursing",
+        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22094,12 +22925,12 @@
       },
       {
         "service_id": "homerehab",
-        "source_family": "unit_price_regional_classification",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homecaremanagement",
-        "source_family": "governing_standards_ordinance",
+        "service_id": "homerehab",
+        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22114,17 +22945,22 @@
       },
       {
         "service_id": "dayrehab",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dayrehab",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "shortstay-life",
-        "source_family": "governing_standards_ordinance",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "shortstay-life",
-        "source_family": "remuneration_notification",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22139,12 +22975,22 @@
       },
       {
         "service_id": "community-dayservice",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-dayservice",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "regular-round",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "regular-round",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22159,7 +23005,22 @@
       },
       {
         "service_id": "night-homevisit",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "night-homevisit",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22174,12 +23035,22 @@
       },
       {
         "service_id": "preventive-support",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-support",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "shortstay-medical",
-        "source_family": "governing_standards_ordinance",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22189,17 +23060,27 @@
       },
       {
         "service_id": "shortstay-medical",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "shortstay-medical",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "specific-facility",
-        "source_family": "governing_standards_ordinance",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "specific-facility",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22209,12 +23090,17 @@
       },
       {
         "service_id": "welfare-equipment-rental",
-        "source_family": "governing_standards_ordinance",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22224,12 +23110,17 @@
       },
       {
         "service_id": "specific-welfare-equipment-sale",
-        "source_family": "governing_standards_ordinance",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "dementia-dayservice",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22240,6 +23131,11 @@
       {
         "service_id": "small-scale-multifunctional",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22250,6 +23146,11 @@
       {
         "service_id": "dementia-group-home",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22260,6 +23161,11 @@
       {
         "service_id": "community-specific-facility",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22270,6 +23176,11 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22280,6 +23191,11 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22289,7 +23205,27 @@
       },
       {
         "service_id": "elderly-welfare-facility",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "elderly-health-facility",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "elderly-health-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22299,7 +23235,22 @@
       },
       {
         "service_id": "care-medical-institution",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "care-medical-institution",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "care-medical-institution",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homebath",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22309,7 +23260,17 @@
       },
       {
         "service_id": "preventive-homebath",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homebath",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homenursing",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22319,7 +23280,17 @@
       },
       {
         "service_id": "preventive-homenursing",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homenursing",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homerehab",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22329,7 +23300,17 @@
       },
       {
         "service_id": "preventive-homerehab",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homerehab",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22344,7 +23325,17 @@
       },
       {
         "service_id": "preventive-dayrehab",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dayrehab",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dayrehab",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22354,7 +23345,17 @@
       },
       {
         "service_id": "preventive-shortstay-life",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-shortstay-life",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-shortstay-life",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22364,7 +23365,17 @@
       },
       {
         "service_id": "preventive-shortstay-medical",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-shortstay-medical",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-shortstay-medical",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22374,7 +23385,17 @@
       },
       {
         "service_id": "preventive-specific-facility",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-specific-facility",
         "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22384,12 +23405,32 @@
       },
       {
         "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-welfare-equipment-rental",
         "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "specific-preventive-welfare-equipment-sale",
+        "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22399,7 +23440,27 @@
       },
       {
         "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -22448,6 +23509,11 @@
       },
       {
         "service_id": "homevisit",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homevisit",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
@@ -22473,6 +23539,11 @@
       },
       {
         "service_id": "homebath",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homebath",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
@@ -22498,6 +23569,11 @@
       },
       {
         "service_id": "homenursing",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homenursing",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
@@ -22519,6 +23595,11 @@
       {
         "service_id": "homerehab",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homerehab",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22558,6 +23639,11 @@
       },
       {
         "service_id": "dayrehab",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "dayrehab",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
@@ -22574,6 +23660,11 @@
       {
         "service_id": "shortstay-life",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "shortstay-life",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22603,6 +23694,11 @@
       },
       {
         "service_id": "community-dayservice",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "community-dayservice",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
@@ -22628,6 +23724,11 @@
       },
       {
         "service_id": "regular-round",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "regular-round",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
@@ -22649,6 +23750,11 @@
       {
         "service_id": "night-homevisit",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "night-homevisit",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22669,6 +23775,16 @@
       {
         "service_id": "care-management",
         "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22689,6 +23805,16 @@
       {
         "service_id": "preventive-support",
         "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22708,7 +23834,17 @@
       },
       {
         "service_id": "shortstay-medical",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "shortstay-medical",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "shortstay-medical",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22728,7 +23864,17 @@
       },
       {
         "service_id": "specific-facility",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "specific-facility",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22748,7 +23894,17 @@
       },
       {
         "service_id": "welfare-equipment-rental",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22768,6 +23924,11 @@
       },
       {
         "service_id": "specific-welfare-equipment-sale",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "specific-welfare-equipment-sale",
         "source_family": "national_qa",
         "state": "BLOCKED"
       },
@@ -22779,6 +23940,11 @@
       {
         "service_id": "dementia-dayservice",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22803,6 +23969,11 @@
       },
       {
         "service_id": "small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "small-scale-multifunctional",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
@@ -22819,6 +23990,11 @@
       {
         "service_id": "dementia-group-home",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22839,6 +24015,11 @@
       {
         "service_id": "community-specific-facility",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "community-specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22859,6 +24040,11 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22879,6 +24065,11 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22894,6 +24085,16 @@
       {
         "service_id": "elderly-welfare-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22909,6 +24110,16 @@
       {
         "service_id": "elderly-health-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "elderly-health-facility",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "elderly-health-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22924,6 +24135,16 @@
       {
         "service_id": "care-medical-institution",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "care-medical-institution",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "care-medical-institution",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22943,7 +24164,17 @@
       },
       {
         "service_id": "preventive-homebath",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-homebath",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-homebath",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22963,7 +24194,17 @@
       },
       {
         "service_id": "preventive-homenursing",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-homenursing",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-homenursing",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22983,7 +24224,17 @@
       },
       {
         "service_id": "preventive-homerehab",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-homerehab",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-homerehab",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -22999,6 +24250,11 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "standards_interpretation_notice",
         "state": "BLOCKED"
       },
       {
@@ -23023,7 +24279,17 @@
       },
       {
         "service_id": "preventive-dayrehab",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dayrehab",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dayrehab",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -23043,7 +24309,17 @@
       },
       {
         "service_id": "preventive-shortstay-life",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-shortstay-life",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-shortstay-life",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -23063,7 +24339,17 @@
       },
       {
         "service_id": "preventive-shortstay-medical",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-shortstay-medical",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-shortstay-medical",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -23083,7 +24369,17 @@
       },
       {
         "service_id": "preventive-specific-facility",
+        "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-specific-facility",
         "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-specific-facility",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -23099,6 +24395,11 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "standards_interpretation_notice",
         "state": "BLOCKED"
       },
       {
@@ -23119,6 +24420,11 @@
       {
         "service_id": "specific-preventive-welfare-equipment-sale",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "specific-preventive-welfare-equipment-sale",
+        "source_family": "standards_interpretation_notice",
         "state": "BLOCKED"
       },
       {
@@ -23129,6 +24435,16 @@
       {
         "service_id": "preventive-dementia-dayservice",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -23144,6 +24460,16 @@
       {
         "service_id": "preventive-small-scale-multifunctional",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -23159,6 +24485,16 @@
       {
         "service_id": "preventive-dementia-group-home",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "delegated_remuneration_criteria",
         "state": "BLOCKED"
       },
       {
@@ -23175,11 +24511,44 @@
     "delegated_remuneration_criteria": {
       "corpus_id": "delegated-remuneration-national",
       "service_applicability": {
-        "MAPPED": 1,
-        "NOT_MAPPED": 38
+        "MAPPED": 34,
+        "NOT_MAPPED": 5
       },
       "mapped_services": [
-        "dayservice"
+        "dayservice",
+        "homevisit",
+        "homebath",
+        "homenursing",
+        "homerehab",
+        "dayrehab",
+        "shortstay-life",
+        "community-dayservice",
+        "regular-round",
+        "night-homevisit",
+        "care-management",
+        "preventive-support",
+        "shortstay-medical",
+        "specific-facility",
+        "welfare-equipment-rental",
+        "dementia-dayservice",
+        "small-scale-multifunctional",
+        "dementia-group-home",
+        "community-specific-facility",
+        "community-elderly-facility",
+        "nursing-small-scale-multifunctional",
+        "elderly-welfare-facility",
+        "elderly-health-facility",
+        "care-medical-institution",
+        "preventive-homebath",
+        "preventive-homenursing",
+        "preventive-homerehab",
+        "preventive-dayrehab",
+        "preventive-shortstay-life",
+        "preventive-shortstay-medical",
+        "preventive-specific-facility",
+        "preventive-dementia-dayservice",
+        "preventive-small-scale-multifunctional",
+        "preventive-dementia-group-home"
       ]
     }
   }
