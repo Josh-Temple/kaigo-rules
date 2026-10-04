@@ -4,7 +4,7 @@
   "service_label": "介護医療院",
   "layer": "remuneration_notification",
   "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-  "status": "SCOPE_DEFINED_SECTION_INDEXED_NOT_SERVICE_VERIFIED",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
   "root_notification": {
     "notice_number": "平成12年厚生省告示第21号",
     "title": "指定施設サービス等に要する費用の額の算定に関する基準",
@@ -15,14 +15,14 @@
   },
   "shared_corpus_binding": {
     "existing_repository_corpus": "data/remuneration-current-skeleton.json",
-    "state": "SERVICE_SECTION_STRUCTURAL_INDEX_INGESTED_NO_BODY_COPY",
+    "state": "TARGET_SECTION_NOT_STRUCTURED_IN_EXISTING_SHARED_CORPUS",
     "source_text_copy_allowed": false,
-    "note": "service-specific section境界と構造markerのみを索引化。法令本文は複製せず、item-body/currentnessは別工程。"
+    "service_structural_index": "data/services/care-medical-institution/remuneration-index.json"
   },
   "evidence": {
     "checked_on": "2026-10-04",
-    "scope_only": true,
-    "note": "厚生労働省統合表示のsection境界・構造markerを索引化した証拠。item-body verification又はcurrentness PASSを意味しない。"
+    "scope_only": false,
+    "structural_index_only": true
   },
   "verification": {
     "service_applicability": "NOT_SERVICE_VERIFIED",
@@ -34,12 +34,5 @@
   "source_text_duplicated": false,
   "automatic_verification_promotion_allowed": false,
   "structured_index_path": "data/services/care-medical-institution/remuneration-index.json",
-  "structured_nodes_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-  "applicability_verification": "NOT_SERVICE_VERIFIED",
-  "currentness": {
-    "status": "NOT_ESTABLISHED"
-  },
-  "human_review": {
-    "status": "NOT_REVIEWED"
-  }
+  "structured_nodes_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
 }
