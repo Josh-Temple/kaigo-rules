@@ -29,7 +29,8 @@
     "care_insurance_act": "data/services/specific-welfare-equipment-sale/care-insurance-act-scope.json",
     "ordinance37": "data/services/specific-welfare-equipment-sale/ordinance37-scope.json",
     "remuneration": "data/services/specific-welfare-equipment-sale/remuneration-scope.json",
-    "unit_price": "data/services/specific-welfare-equipment-sale/unit-price-scope.json"
+    "unit_price": "data/services/specific-welfare-equipment-sale/unit-price-scope.json",
+    "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -38,5 +39,19 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "standards_interpretation": {
+      "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+      "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+      "service_scope": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json",
+      "relation_file": "data/shared/standards-interpretation/service-relations.json",
+      "relation_id": "standards-interpretation.specific-welfare-equipment-sale.rouki25",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
+    }
+  },
+  "ingestion_indexes": {
+    "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json"
+  }
 }
