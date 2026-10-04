@@ -24,6 +24,7 @@ SOURCE_FAMILIES = (
         "scope_keys": ("care_insurance_act", "care_insurance_act_core"),
         "ingestion_keys": ("care_insurance_act",),
         "verification_layer_ids": ("care-insurance-act",),
+        "shared_content_verification_applies_to_scoped_services": True,
     },
     {
         "id": "governing_standards_ordinance",
@@ -364,6 +365,31 @@ def build_cell(
             ingestion_state = normalize_ingestion(str(declared_state), scope_defined, layer_present)
 
     content_raw = raw_values(layers, ("content_verification", "status"))
+    shared_item_body_layers = []
+    if (
+        family.get("shared_content_verification_applies_to_scoped_services")
+        and scope_defined
+        and ingestion_state in {"INGESTED", "PARTIAL"}
+    ):
+        candidate_layers = [
+            layer
+            for layer in shared_layers
+            if normalize_verification(
+                str((layer.get("content_verification") or {}).get("status") or "")
+            )
+            == "PASS"
+        ]
+        candidate_statuses = raw_values(
+            candidate_layers, ("content_verification", "status")
+        )
+        if (
+            len(candidate_layers) == 1
+            and len(candidate_statuses) == 1
+            and normalize_verification(candidate_statuses[0]) == "PASS"
+        ):
+            shared_item_body_layers = candidate_layers
+            content_raw = sorted(set(content_raw + candidate_statuses))
+
     currentness_raw = raw_values(layers, ("currentness", "status"))
     human_raw = raw_values(layers, ("human_review", "status"))
     if family["id"] == "delegated_remuneration_criteria" and delegated_applicability:
@@ -385,6 +411,11 @@ def build_cell(
         for layer in layers
         if layer.get("content_verification", {}).get("evidence")
     ]
+    item_body_evidence.extend(
+        str(layer.get("content_verification", {}).get("evidence"))
+        for layer in shared_item_body_layers
+        if layer.get("content_verification", {}).get("evidence")
+    )
     if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus and mapped_standards_corpus != "ordinance37":
         item_body_evidence = ["data/shared/standards/independent-audit.json"]
     currentness_evidence = [
