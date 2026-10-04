@@ -66,15 +66,26 @@ def validate(root=ROOT):
             ranges.append((ref['path'], a, b))
     for app in apps:
         closed(app['assurance'])
-        assert app['state'] == 'MAPPED'
-        assert set(app['node_ids']) <= set(node_map)
-        if app.get('relation_ids'):
-            assert app['ingestion_state'] == 'INGESTED_PARTIAL'
+        assert app['state'] in {'MAPPED', 'NOT_APPLICABLE'}
+        if app['state'] == 'NOT_APPLICABLE':
             scope = read(f"data/services/{app['service_id']}/fee-guidance-scope.json")
-            assert scope['node_ids'] == app['node_ids']
-            assert scope['relation_ids'] == app['relation_ids']
             cfg = read(f"data/services/{app['service_id']}.json")
             assert cfg['scope_files']['fee_guidance'].endswith('/fee-guidance-scope.json')
+            assert app['ingestion_state'] == 'NOT_APPLICABLE'
+            assert app['node_ids'] == []
+            assert app['relation_ids'] == []
+            assert scope.get('applicability_state') == 'NOT_APPLICABLE'
+            assert scope['node_ids'] == []
+            assert scope['relation_ids'] == []
+            continue
+        assert set(app['node_ids']) <= set(node_map)
+        if app.get('relation_ids'):
+            scope = read(f"data/services/{app['service_id']}/fee-guidance-scope.json")
+            cfg = read(f"data/services/{app['service_id']}.json")
+            assert cfg['scope_files']['fee_guidance'].endswith('/fee-guidance-scope.json')
+            assert app['ingestion_state'] == 'INGESTED_PARTIAL'
+            assert scope['node_ids'] == app['node_ids']
+            assert scope['relation_ids'] == app['relation_ids']
             for rid in app['relation_ids']:
                 r = relation_map[rid]
                 assert r['service_id'] == app['service_id'] and r['node_id'] in app['node_ids']

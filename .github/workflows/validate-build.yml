@@ -33,6 +33,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Independently verify dayrehab remuneration and guidance source inventories
         run: python scripts/verify_dayrehab_fee_layers_independent.py --report /tmp/dayrehab-fee-layer-independent-report.json
+      - name: Validate currentness evidence expansion boundaries
+        run: python scripts/validate_currentness_evidence_expansion_wave.py
       - name: Validate and build
         run: npm run build
       - name: Compile production gate verifier

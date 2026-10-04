@@ -30,7 +30,8 @@
     "ordinance37": "data/services/specific-welfare-equipment-sale/ordinance37-scope.json",
     "remuneration": "data/services/specific-welfare-equipment-sale/remuneration-scope.json",
     "unit_price": "data/services/specific-welfare-equipment-sale/unit-price-scope.json",
-    "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json"
+    "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json",
+    "fee_guidance": "data/services/specific-welfare-equipment-sale/fee-guidance-scope.json"
   },
   "verification_layer_ids": [
     "ordinance37-existing-services"
@@ -68,10 +69,19 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+    },
+    "fee_guidance": {
+      "status": "NOT_APPLICABLE",
+      "applicability": "NOT_APPLICABLE",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "介護保険法の明示区分に基づき、登録済みFee Guidanceのサービス費算定laneには接続しない。購入費等の別laneの内容検証・currentness・human review・publicationは別工程であり、自動昇格しない。"
     }
   },
   "ingestion_indexes": {
     "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json",
-    "care_insurance_act": "data/services/specific-welfare-equipment-sale/care-insurance-act-index.json"
+    "care_insurance_act": "data/services/specific-welfare-equipment-sale/care-insurance-act-index.json",
+    "fee_guidance": "data/services/specific-welfare-equipment-sale/fee-guidance-scope.json"
   }
 }

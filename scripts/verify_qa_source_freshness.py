@@ -5,11 +5,13 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html
 import json
 import re
 import sys
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -38,10 +40,12 @@ class WorkbookLinkParser(HTMLParser):
 
     def handle_endtag(self, tag: str) -> None:
         if tag.lower() == "a" and self.current_href is not None:
-            self.links.append({
-                "href": self.current_href,
-                "text": " ".join("".join(self.current_text).split()),
-            })
+            self.links.append(
+                {
+                    "href": self.current_href,
+                    "text": " ".join("".join(self.current_text).split()),
+                }
+            )
             self.current_href = None
             self.current_text = []
 
@@ -49,10 +53,37 @@ class WorkbookLinkParser(HTMLParser):
 def fetch(url: str) -> bytes:
     request = urllib.request.Request(
         url,
-        headers={"User-Agent": "kaigo-rules-qa-source-monitor/1.0 (+https://github.com/Josh-Temple/kaigo-rules)"},
+        headers={
+            "User-Agent": (
+                "kaigo-rules-qa-source-monitor/1.0 "
+                "(+https://github.com/Josh-Temple/kaigo-rules)"
+            )
+        },
     )
     with urllib.request.urlopen(request, timeout=60) as response:
         return response.read()
+
+
+def visible_text(page_text: str) -> str:
+    without_tags = re.sub(r"<[^>]+>", " ", page_text)
+    return " ".join(html.unescape(without_tags).split())
+
+
+def compilation_marker(page_text: str) -> dict[str, str | int] | None:
+    text = visible_text(page_text)
+    match = re.search(
+        r"介護保険最新情報\s*[Vv]ol\.\s*(\d+).*?まで収載",
+        text,
+    )
+    if not match:
+        return None
+    volume = int(match.group(1))
+    start = max(0, match.start() - 40)
+    end = min(len(text), match.end() + 20)
+    return {
+        "latest_included_volume": volume,
+        "evidence_excerpt": text[start:end],
+    }
 
 
 def main() -> int:
@@ -66,6 +97,7 @@ def main() -> int:
     stored_sha = meta["source_sha256"]
 
     page_bytes = fetch(page_url)
+    page_sha = hashlib.sha256(page_bytes).hexdigest()
     page_text = page_bytes.decode("utf-8", errors="replace")
     link_parser = WorkbookLinkParser()
     link_parser.feed(page_text)
@@ -79,58 +111,96 @@ def main() -> int:
     urls = [item["url"] for item in candidates]
     differences = []
 
+    selected_anchor = next(
+        (item.get("text") for item in candidates if item["url"] == stored_workbook),
+        None,
+    )
+
     if not candidates:
-        differences.append({
-            "field": "source_page",
-            "difference": "no_excel_workbook_links_found",
-        })
+        differences.append(
+            {
+                "field": "source_page",
+                "difference": "no_excel_workbook_links_found",
+            }
+        )
         live_sha = None
     elif stored_workbook not in urls:
-        differences.append({
-            "field": "source_workbook",
-            "difference": "stored_workbook_no_longer_listed_on_source_page",
-            "expected": stored_workbook,
-            "observed_candidates": candidates,
-        })
+        differences.append(
+            {
+                "field": "source_workbook",
+                "difference": "stored_workbook_no_longer_listed_on_source_page",
+                "expected": stored_workbook,
+                "observed_candidates": candidates,
+            }
+        )
         live_sha = None
     else:
         workbook_bytes = fetch(stored_workbook)
         live_sha = hashlib.sha256(workbook_bytes).hexdigest()
         if live_sha != stored_sha:
-            differences.append({
-                "field": "source_sha256",
-                "difference": "stored_workbook_content_changed",
-                "expected": stored_sha,
-                "observed": live_sha,
-            })
+            differences.append(
+                {
+                    "field": "source_sha256",
+                    "difference": "stored_workbook_content_changed",
+                    "expected": stored_sha,
+                    "observed": live_sha,
+                }
+            )
 
     # The importer intentionally follows the first Excel link. Detect if that
     # discovery target would now differ, even when the old workbook remains listed.
     discovered_first = candidates[0]["url"] if candidates else None
     if discovered_first and discovered_first != stored_workbook:
-        differences.append({
-            "field": "source_workbook",
-            "difference": "first_discovered_workbook_changed",
-            "expected": stored_workbook,
-            "observed": discovered_first,
-            "observed_anchor_text": candidates[0]["text"],
-        })
+        differences.append(
+            {
+                "field": "source_workbook",
+                "difference": "first_discovered_workbook_changed",
+                "expected": stored_workbook,
+                "observed": discovered_first,
+                "observed_anchor_text": candidates[0]["text"],
+            }
+        )
 
     result = "PASS" if not differences else "SOURCE_DRIFT_DETECTED"
+    marker = compilation_marker(page_text)
     report = {
-        "format_version": 1,
+        "format_version": 2,
         "verification_kind": "MHLW_QA_SOURCE_FRESHNESS",
+        "checked_at_utc": datetime.now(timezone.utc).isoformat(),
         "result": result,
         "source_page": page_url,
+        "observed_source_page_sha256": page_sha,
+        "official_compilation_marker": marker,
         "stored_workbook": stored_workbook,
+        "stored_workbook_anchor_text": selected_anchor,
         "stored_workbook_sha256": stored_sha,
         "observed_workbook_sha256": live_sha,
         "excel_link_count": len(candidates),
         "excel_links": candidates,
+        "compilation_freshness_evidence": (
+            "OFFICIAL_LISTING_AND_WORKBOOK_MATCH_AT_CHECK"
+            if result == "PASS"
+            else "NOT_ESTABLISHED"
+        ),
         "differences": differences,
+        "interpretation": {
+            "scope": "OFFICIAL_COMPILATION_LEVEL_ONLY",
+            "pass_meaning": (
+                "The official MHLW Q&A page still points to the committed workbook "
+                "and the workbook SHA-256 matches at check time."
+            ),
+            "does_not_establish": [
+                "currentness of every individual historical Q&A",
+                "service applicability beyond the workbook classification",
+                "human review",
+                "publication",
+                "route exposure",
+            ],
+        },
         "safety": {
             "read_only": True,
             "updates_corpus": False,
+            "promotes_individual_qa_currentness": False,
             "promotes_review_status": False,
         },
     }

@@ -1,0 +1,30 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-dementia-dayservice",
+  "source_family": "fee_calculation_guidance",
+  "shared_manifest": "data/shared/fee-guidance/manifest.json",
+  "node_ids": [
+    "fee-guidance.shared.community.r6-comparison.II.4"
+  ],
+  "relation_ids": [
+    "fee-guidance.scope.preventive-dementia-dayservice.community-r6.II.4"
+  ],
+  "applicability_evidence": {
+    "source_kind": "OFFICIAL_MHLW_APPLICABILITY_REQUIREMENTS",
+    "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+    "locator": "701 介護予防認知症対応型通所介護費 / 留意事項通知 第2の4（3）、第2の4（14）〜（17）",
+    "checked_on": "2026-10-05",
+    "claim": "厚生労働省の適用要件一覧が、介護予防認知症対応型通所介護について当該留意事項通知の第2の4を明示的に参照しているため、既存の共有section II.4へのservice scope接続根拠とする。",
+    "currentness_use": "APPLICABILITY_ONLY_NOT_CURRENTNESS"
+  },
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "service_applicability_verification": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_promotion_allowed": false
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "format_version": 1,
+  "audit_kind": "CURRENTNESS_EVIDENCE_EXPANSION_WAVE",
+  "observed_date": "2026-10-05",
+  "base_main_sha": "e0d814b1b22d449fd13784bbb051fba5c27df64e",
+  "purpose": "Add reproducible official-source currentness and supersession evidence without promoting service applicability, item-body verification, human review, publication, or route exposure.",
+  "coverage_snapshot": {
+    "matrix": "data/database-coverage-matrix.generated.json",
+    "cells": 351,
+    "currentness": {
+      "PARTIAL": 45,
+      "BLOCKED": 1,
+      "NOT_ESTABLISHED": 303,
+      "NOT_APPLICABLE": 2
+    },
+    "note": "This worker does not regenerate or edit the global matrix."
+  },
+  "evidence_lanes": [
+    {
+      "source_family": "care_insurance_act",
+      "scope_kind": "SHARED_SOURCE_LEVEL_ONLY",
+      "official_authority": "e-Gov法令検索",
+      "law_id": "409AC0000000123",
+      "meta_path": "data/care-insurance-act-meta.json",
+      "freshness_verifier": "scripts/verify_egov_source_freshness.py",
+      "workflow": ".github/workflows/verify-egov-source-freshness.yml",
+      "evidence_rule": "Live e-Gov XML hash, revision-response hash, revision count, and CurrentEnforced revision must all match committed metadata.",
+      "source_level_disposition": "REPRODUCIBLE_CURRENT_REVISION_EVIDENCE",
+      "service_applicability_inferred": false
+    },
+    {
+      "source_family": "governing_standards_ordinance",
+      "scope_kind": "SHARED_SOURCE_LEVEL_ONLY",
+      "official_authority": "e-Gov法令検索",
+      "manifest": "data/shared/standards/manifest.json",
+      "included_current_corpora": 9,
+      "freshness_verifiers": [
+        "scripts/verify_egov_source_freshness.py",
+        "scripts/verify_shared_standards_source_freshness.py"
+      ],
+      "workflows": [
+        ".github/workflows/verify-egov-source-freshness.yml",
+        ".github/workflows/verify-shared-standards-corpora.yml"
+      ],
+      "evidence_rule": "Each current standards corpus must retain a CurrentEnforced e-Gov revision, matching source hashes and revision metadata. Historical/repealed corpora remain excluded.",
+      "source_level_disposition": "REPRODUCIBLE_CURRENT_REVISION_EVIDENCE",
+      "service_applicability_inferred": false
+    },
+    {
+      "source_family": "national_qa",
+      "scope_kind": "OFFICIAL_COMPILATION_LEVEL_ONLY",
+      "official_authority": "厚生労働省",
+      "official_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+      "meta_path": "data/qa-corpus-meta.json",
+      "freshness_verifier": "scripts/verify_qa_source_freshness.py",
+      "workflow": ".github/workflows/verify-qa-source-freshness.yml",
+      "official_page_observation": {
+        "observed_date": "2026-10-05",
+        "compilation_note": "介護保険最新情報 vol.1479 まで収載",
+        "repository_workbook_sheet": "介護サービスQ＆A集（令和8年9月掲載）"
+      },
+      "evidence_rule": "The workbook still linked by the official MHLW Q&A page must match the committed workbook URL and SHA-256. This establishes compilation freshness only, not the currentness of every individual historical Q&A.",
+      "source_level_disposition": "REPRODUCIBLE_OFFICIAL_COMPILATION_FRESHNESS",
+      "individual_qa_currentness_inferred": false
+    },
+    {
+      "source_family": "fee_calculation_guidance",
+      "scope_kind": "DIRECT_AMENDMENT_SOURCE_EVIDENCE",
+      "official_authority": "厚生労働省",
+      "official_index": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+      "source_id": "mhlw-r8-fee-guidance-may-amendment",
+      "official_pdf": "https://www.mhlw.go.jp/content/001698614.pdf",
+      "observed_listing": {
+        "observed_date": "2026-10-05",
+        "volume": 1502,
+        "published_date": "2026-05-08",
+        "description": "指定居宅サービス等の報酬算定留意事項の一部改正と関連Q&A"
+      },
+      "repository_amendment_event": "fee-guidance.r8-may.dayservice.staffing-shortage-exception",
+      "effective_from": "2026-06-01",
+      "direct_source_identity": "CONFIRMED",
+      "latestness_of_amendment": "NOT_ESTABLISHED",
+      "latestness_reason": "The official latest-information index directly confirms Vol.1502 and later related Q&A (Vol.1523), but absence of a later same-family amendment title is not treated as conclusive proof that Vol.1502 is the latest applicable amendment.",
+      "relation_queue_disposition": "KEEP_SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED_OPEN",
+      "service_currentness_inferred": false
+    }
+  ],
+  "relation_queue": {
+    "generated_queue": "data/relation-verification-queue.json",
+    "source_freshness_candidate_count_at_base": 1,
+    "candidate_identity": {
+      "from": "fee.dayservice.root",
+      "relation": "latest_interpretation_amendment_evidence",
+      "to": "mhlw-r8-fee-guidance-may-amendment"
+    },
+    "closed_by_this_worker": false,
+    "reason": "Direct source identity is confirmed, but the freshness-sensitive word latest remains intentionally unproven."
+  },
+  "validation": {
+    "validator": "scripts/validate_currentness_evidence_expansion_wave.py",
+    "live_source_verifiers": [
+      "scripts/verify_egov_source_freshness.py",
+      "scripts/verify_shared_standards_source_freshness.py",
+      "scripts/verify_qa_source_freshness.py"
+    ]
+  },
+  "safety": {
+    "global_generated_artifacts_updated": false,
+    "service_scope_changed": false,
+    "service_applicability_promoted": false,
+    "item_body_promoted": false,
+    "currentness_auto_promoted_to_services": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_enabled": false,
+    "negative_search_used_as_conclusive_proof": false
+  }
+}

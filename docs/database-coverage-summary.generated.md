@@ -4,27 +4,27 @@
 
 - Services total: 39
 - Source families: 9
-- Shared corpus available but service scope missing: 6
-- Genuinely missing corpus cells: 39
-- Currentness gaps on ingested cells: 300
-- Item-body verification gaps on ingested cells: 204
+- Shared corpus available but service scope missing: 1
+- Genuinely missing corpus cells: 0
+- Currentness gaps on ingested cells: 342
+- Item-body verification gaps on ingested cells: 208
 - Relation verification remaining: 59
-- Publication gaps on ingested cells: 287
+- Publication gaps on ingested cells: 329
 - Delegated remuneration applicability mapped: 37
 
 ## Source-family coverage
 
 | Source family | Corpus | Scope | Ingestion | Item-body | Currentness | Human review | Publication | Route |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Long-Term Care Insurance Act | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | NOT_ESTABLISHED=38, PASS=1 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
+| Long-Term Care Insurance Act | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Governing standards ordinance | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | NOT_ESTABLISHED=37, PARTIAL=2 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Standards interpretation notice | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | NOT_ESTABLISHED=26, PARTIAL=1, PASS=12 | BLOCKED=1, NOT_ESTABLISHED=38 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Remuneration notification | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=37, NOT_APPLICABLE=2 | NOT_ESTABLISHED=37, PASS=2 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Delegated remuneration criteria | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=37, NOT_APPLICABLE=2 | NOT_ESTABLISHED=39 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | BLOCKED=39 | BLOCKED=39 |
-| Fee-calculation guidance | AVAILABLE=39 | SCOPE_DEFINED=33, SCOPE_NOT_DEFINED=6 | INGESTED=2, NOT_INGESTED=6, PARTIAL=31 | NOT_ESTABLISHED=37, PASS=2 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
+| Fee-calculation guidance | AVAILABLE=39 | SCOPE_DEFINED=38, SCOPE_NOT_DEFINED=1 | INGESTED=2, NOT_APPLICABLE=2, NOT_INGESTED=1, PARTIAL=34 | NOT_ESTABLISHED=37, PASS=2 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Unit price / regional classification | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=37, NOT_APPLICABLE=2 | NOT_APPLICABLE=2, NOT_ESTABLISHED=36, PASS=1 | NOT_APPLICABLE=2, NOT_ESTABLISHED=36, PARTIAL=1 | NOT_APPLICABLE=2, NOT_REVIEWED=37 | AVAILABLE=1, BLOCKED=36, NOT_APPLICABLE=2 | AVAILABLE=1, BLOCKED=36, NOT_APPLICABLE=2 |
 | National Q&A | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | PARTIAL=39 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
-| Other material national manuals/forms | NOT_AVAILABLE=39 | SCOPE_NOT_DEFINED=39 | NOT_INGESTED=39 | NOT_ESTABLISHED=39 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | BLOCKED=37, NOT_ESTABLISHED=2 | BLOCKED=37, NOT_ESTABLISHED=2 |
+| Other material national manuals/forms | AVAILABLE=39 | SCOPE_DEFINED=39 | PARTIAL=39 | NOT_ESTABLISHED=39 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | BLOCKED=39 | BLOCKED=39 |
 
 ## Delegated remuneration criteria detail
 

@@ -1,0 +1,85 @@
+{
+  "format_version": 1,
+  "corpus_id": "other-national-materials-national",
+  "identities": [
+    {
+      "candidate_id": "mhlw-designation-application-standard-forms",
+      "canonical_source_id": "mhlw-application-forms",
+      "canonical_node_id": "other-national.shared.mhlw-application-forms",
+      "identity_basis": {
+        "official_url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
+        "version_label": "令和6年3月15日告示分"
+      },
+      "duplicate_check": {
+        "state": "REUSED_EXISTING_CANONICAL_SOURCE_ID",
+        "matched_source_id": "mhlw-application-forms"
+      }
+    },
+    {
+      "candidate_id": "mhlw-electronic-application-operator-manual",
+      "canonical_source_id": "mhlw-electronic-application-operator-manual-v2-50",
+      "canonical_node_id": "other-national.shared.mhlw-electronic-application-operator-manual-v2-50",
+      "identity_basis": {
+        "official_url": "https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true",
+        "version_label": "ver2.50"
+      },
+      "duplicate_check": {
+        "state": "NO_EXACT_URL_MATCH_IN_DATA_SOURCES_AT_BASE_MAIN",
+        "matched_source_id": null
+      }
+    },
+    {
+      "candidate_id": "mhlw-accident-report-format-vol1332",
+      "canonical_source_id": "mhlw-accident-report-vol1332",
+      "canonical_node_id": "other-national.shared.mhlw-accident-report-vol1332",
+      "identity_basis": {
+        "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+        "version_label": "Vol.1332 / 2024-11-29"
+      },
+      "duplicate_check": {
+        "state": "NO_EXACT_URL_MATCH_IN_DATA_SOURCES_AT_BASE_MAIN",
+        "matched_source_id": null
+      }
+    },
+    {
+      "candidate_id": "mhlw-care-business-financial-db-manual",
+      "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
+      "canonical_node_id": "other-national.shared.mhlw-care-business-financial-db-manual-v1-20",
+      "identity_basis": {
+        "official_url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
+        "version_label": "v1.20 / 2025-03-13"
+      },
+      "duplicate_check": {
+        "state": "NO_EXACT_URL_MATCH_IN_DATA_SOURCES_AT_BASE_MAIN",
+        "matched_source_id": null
+      }
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "candidate_id": "mhlw-life-manual-guidance",
+      "classification": "DISCOVERED_BUT_CURRENTNESS_NOT_ESTABLISHED",
+      "overlap_source_family": null
+    },
+    {
+      "candidate_id": "mhlw-r8-fee-filing-forms",
+      "classification": "DUPLICATE_OF_EXISTING_SOURCE_FAMILY",
+      "overlap_source_family": "fee_calculation_guidance"
+    },
+    {
+      "candidate_id": "mhlw-r6-standards-annex-cooperating-medical-form",
+      "classification": "DUPLICATE_OF_EXISTING_SOURCE_FAMILY",
+      "overlap_source_family": "standards_interpretation_notice"
+    },
+    {
+      "candidate_id": "mhlw-electronic-application-qa",
+      "classification": "DUPLICATE_OF_EXISTING_SOURCE_FAMILY",
+      "overlap_source_family": "national_qa"
+    },
+    {
+      "candidate_id": "mhlw-care-insurance-latest-information-index",
+      "classification": "OUT_OF_SCOPE",
+      "overlap_source_family": null
+    }
+  ]
+}

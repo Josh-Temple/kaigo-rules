@@ -367,5 +367,29 @@
     "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1",
     "status": "current_official_consolidated_source",
     "note": "厚生労働省公式HTML統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示する。source availabilityとservice/item-level currentnessは分離する。"
+  },
+  {
+    "id": "mhlw-electronic-application-operator-manual-v2-50",
+    "layer": "全国共通マニュアル・様式",
+    "title": "電子申請・届出システム 操作マニュアル（介護事業所向け）詳細版 ver2.50",
+    "publisher": "厚生労働省 介護サービス情報公表システム",
+    "url": "https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true",
+    "status": "registry"
+  },
+  {
+    "id": "mhlw-accident-report-vol1332",
+    "layer": "全国共通マニュアル・様式",
+    "title": "介護保険施設等における事故の報告様式等について（介護保険最新情報Vol.1332）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/001574219.pdf",
+    "status": "registry"
+  },
+  {
+    "id": "mhlw-care-business-financial-db-manual-v1-20",
+    "layer": "全国共通マニュアル・様式",
+    "title": "介護サービス事業者経営情報データベースシステム操作マニュアル（介護事業所向け、詳細版） v1.20",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
+    "status": "registry"
   }
 ]

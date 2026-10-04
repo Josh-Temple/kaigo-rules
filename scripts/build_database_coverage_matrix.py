@@ -24,6 +24,7 @@ SOURCE_FAMILIES = (
         "scope_keys": ("care_insurance_act", "care_insurance_act_core"),
         "ingestion_keys": ("care_insurance_act",),
         "verification_layer_ids": ("care-insurance-act",),
+        "shared_content_verification_applies_to_scoped_services": True,
     },
     {
         "id": "governing_standards_ordinance",
@@ -257,6 +258,15 @@ def build_cell(
     if family["id"] == "fee_calculation_guidance":
         fee_guidance_applicability = shared_context["fee_guidance_applicability"].get(service_id)
 
+    other_national_applicability = None
+    if family["id"] == "other_national_manuals_forms":
+        other_national_applicability = shared_context["other_national_service_map"].get(service_id)
+        if other_national_applicability and (
+            other_national_applicability.get("mapped_source_ids")
+            or other_national_applicability.get("conditional_source_ids")
+        ):
+            scope_defined = True
+
     corpus_id = None
     delegated_manifest = shared_context.get("delegated_manifest") or {}
     if family["id"] == "delegated_remuneration_criteria" and delegated_manifest:
@@ -275,6 +285,15 @@ def build_cell(
         corpus_evidence = [
             "data/shared/fee-guidance/manifest.json",
             str(fee_manifest.get("canonical_node_store")),
+        ]
+    elif family["id"] == "other_national_manuals_forms" and shared_context.get("other_national_manifest"):
+        other_manifest = shared_context["other_national_manifest"]
+        corpus_state = "AVAILABLE"
+        corpus_kind = "SHARED"
+        corpus_id = other_manifest.get("corpus_id")
+        corpus_evidence = [
+            "data/shared/other-national-materials/manifest.json",
+            str(other_manifest.get("canonical_node_store")),
         ]
     elif family["id"] == "governing_standards_ordinance" and mapped_standards_corpus:
         corpus_state = "AVAILABLE"
@@ -341,6 +360,11 @@ def build_cell(
             if service_id in (layer.get("service_ids") or []) and layer.get("scope_kind") != "GLOBAL"
         )
         scope_evidence = sorted(set(scope_evidence))
+    if family["id"] == "other_national_manuals_forms" and other_national_applicability:
+        scope_evidence.append(
+            f"data/shared/other-national-materials/service-applicability.json#{service_id}"
+        )
+        scope_evidence = sorted(set(scope_evidence))
 
     layer_present = bool(layers)
     if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus:
@@ -363,7 +387,40 @@ def build_cell(
             raw_ingestion = sorted(set(raw_ingestion + [str(declared_state)]))
             ingestion_state = normalize_ingestion(str(declared_state), scope_defined, layer_present)
 
+    if family["id"] == "other_national_manuals_forms" and other_national_applicability:
+        if (
+            other_national_applicability.get("mapped_source_ids")
+            or other_national_applicability.get("conditional_source_ids")
+        ):
+            raw_ingestion = sorted(set(raw_ingestion + ["REFERENCE_CORPUS_INGESTED_PARTIAL"]))
+            ingestion_state = "PARTIAL"
+
     content_raw = raw_values(layers, ("content_verification", "status"))
+    shared_item_body_layers = []
+    if (
+        family.get("shared_content_verification_applies_to_scoped_services")
+        and scope_defined
+        and ingestion_state in {"INGESTED", "PARTIAL"}
+    ):
+        candidate_layers = [
+            layer
+            for layer in shared_layers
+            if normalize_verification(
+                str((layer.get("content_verification") or {}).get("status") or "")
+            )
+            == "PASS"
+        ]
+        candidate_statuses = raw_values(
+            candidate_layers, ("content_verification", "status")
+        )
+        if (
+            len(candidate_layers) == 1
+            and len(candidate_statuses) == 1
+            and normalize_verification(candidate_statuses[0]) == "PASS"
+        ):
+            shared_item_body_layers = candidate_layers
+            content_raw = sorted(set(content_raw + candidate_statuses))
+
     currentness_raw = raw_values(layers, ("currentness", "status"))
     human_raw = raw_values(layers, ("human_review", "status"))
     if family["id"] == "delegated_remuneration_criteria" and delegated_applicability:
@@ -385,6 +442,11 @@ def build_cell(
         for layer in layers
         if layer.get("content_verification", {}).get("evidence")
     ]
+    item_body_evidence.extend(
+        str(layer.get("content_verification", {}).get("evidence"))
+        for layer in shared_item_body_layers
+        if layer.get("content_verification", {}).get("evidence")
+    )
     if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus and mapped_standards_corpus != "ordinance37":
         item_body_evidence = ["data/shared/standards/independent-audit.json"]
     currentness_evidence = [
@@ -445,6 +507,13 @@ def build_cell(
             route_state = "NOT_ESTABLISHED"
         else:
             route_state = "BLOCKED"
+
+    if family["id"] == "other_national_manuals_forms":
+        # Canonical source availability and explicit service applicability do not
+        # make this source family public on existing service routes. Worker B
+        # deliberately leaves publication/route assurance blocked.
+        publication_state = "BLOCKED"
+        route_state = "BLOCKED"
 
     if (
         family["id"] == "unit_price_regional_classification"
@@ -583,6 +652,45 @@ def build() -> dict:
         load(str(fee_guidance_manifest.get("service_applicability")))
         if fee_guidance_manifest else {"services": []}
     )
+    other_national_manifest_path = ROOT / "data/shared/other-national-materials/manifest.json"
+    other_national_manifest = (
+        load("data/shared/other-national-materials/manifest.json")
+        if other_national_manifest_path.exists()
+        else None
+    )
+    other_national_applicability_data = (
+        load(str(other_national_manifest.get("service_applicability")))
+        if other_national_manifest
+        else {"sources": []}
+    )
+    other_national_service_map: dict[str, dict[str, list[str]]] = {}
+    for source in other_national_applicability_data.get("sources", []):
+        source_id = str(source.get("canonical_source_id") or "")
+        for mapped_service_id in source.get("mapped_service_ids", []):
+            row = other_national_service_map.setdefault(
+                mapped_service_id,
+                {"mapped_source_ids": [], "conditional_source_ids": [], "not_applicable_source_ids": []},
+            )
+            row["mapped_source_ids"].append(source_id)
+        for conditional in source.get("conditional_service_ids", []):
+            mapped_service_id = conditional.get("service_id") if isinstance(conditional, dict) else conditional
+            if not mapped_service_id:
+                continue
+            row = other_national_service_map.setdefault(
+                mapped_service_id,
+                {"mapped_source_ids": [], "conditional_source_ids": [], "not_applicable_source_ids": []},
+            )
+            row["conditional_source_ids"].append(source_id)
+        for excluded in source.get("not_applicable_service_ids", []):
+            mapped_service_id = excluded.get("service_id") if isinstance(excluded, dict) else excluded
+            if not mapped_service_id:
+                continue
+            row = other_national_service_map.setdefault(
+                mapped_service_id,
+                {"mapped_source_ids": [], "conditional_source_ids": [], "not_applicable_source_ids": []},
+            )
+            row["not_applicable_source_ids"].append(source_id)
+
     shared_context = {
         "standards_map": {row["service_id"]: row["corpus_id"] for row in standards_map_data.get("relations", [])},
         "standards_scope_states": {row["service_id"]: row for row in standards_relations.get("service_scope_states", [])},
@@ -608,6 +716,8 @@ def build() -> dict:
             row["service_id"]: row
             for row in fee_guidance_applicability_data.get("services", [])
         },
+        "other_national_manifest": other_national_manifest,
+        "other_national_service_map": other_national_service_map,
         "delegated_applicability": {
             row["service_id"]: row
             for row in delegated_applicability_data.get("services", [])
@@ -735,6 +845,11 @@ def build() -> dict:
             "data/shared/remuneration-delegated/service-applicability.json",
             "data/shared/remuneration-delegated/service-relations.json",
             "data/shared/remuneration-delegated/service-applicability-adjudications.json",
+            "data/shared/fee-guidance/manifest.json",
+            "data/shared/fee-guidance/service-applicability.json",
+            "data/shared/other-national-materials/manifest.json",
+            "data/shared/other-national-materials/national-corpus.json",
+            "data/shared/other-national-materials/service-applicability.json",
         ],
         "source_families": [
             {"id": family["id"], "label": family["label"]}

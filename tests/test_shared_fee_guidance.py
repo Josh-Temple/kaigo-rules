@@ -74,7 +74,37 @@ class SharedFeeGuidanceTests(unittest.TestCase):
             self.assertEqual(row['human_review']['state'], 'NOT_REVIEWED')
             self.assertEqual(row['publication']['state'], 'BLOCKED')
             self.assertEqual(row['route_exposure']['state'], 'BLOCKED')
-        # Corpus availability is national; service scope remains service-specific.
-        other = rows['specific-welfare-equipment-sale']
-        self.assertEqual(other['corpus_availability']['kind'], 'SHARED')
-        self.assertEqual(other['service_scope']['state'], 'SCOPE_NOT_DEFINED')
+
+        mapped_projection = rows['preventive-dementia-dayservice']
+        self.assertEqual(mapped_projection['corpus_availability']['kind'], 'SHARED')
+        self.assertEqual(mapped_projection['service_scope']['state'], 'SCOPE_DEFINED')
+        self.assertEqual(mapped_projection['ingestion']['state'], 'PARTIAL')
+        self.assertEqual(mapped_projection['item_body_verification']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(mapped_projection['currentness']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(mapped_projection['human_review']['state'], 'NOT_REVIEWED')
+
+        not_applicable_projection = rows['specific-welfare-equipment-sale']
+        self.assertEqual(not_applicable_projection['corpus_availability']['kind'], 'SHARED')
+        self.assertEqual(not_applicable_projection['service_scope']['state'], 'SCOPE_DEFINED')
+        self.assertEqual(not_applicable_projection['ingestion']['state'], 'NOT_APPLICABLE')
+        self.assertEqual(not_applicable_projection['item_body_verification']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(not_applicable_projection['currentness']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(not_applicable_projection['human_review']['state'], 'NOT_REVIEWED')
+        self.assertEqual(not_applicable_projection['publication']['state'], 'BLOCKED')
+        self.assertEqual(not_applicable_projection['route_exposure']['state'], 'BLOCKED')
+
+        unresolved_projection = rows['preventive-support']
+        self.assertEqual(unresolved_projection['corpus_availability']['kind'], 'SHARED')
+        self.assertEqual(unresolved_projection['service_scope']['state'], 'SCOPE_NOT_DEFINED')
+
+    def test_final_six_adjudication_artifact_is_fail_closed(self):
+        validator_spec = importlib.util.spec_from_file_location(
+            'fee_guidance_final_six',
+            ROOT / 'scripts/validate_fee_guidance_final_six_adjudications.py',
+        )
+        validator = importlib.util.module_from_spec(validator_spec)
+        validator_spec.loader.exec_module(validator)
+        self.assertEqual(
+            validator.validate(),
+            {'services': 6, 'mapped': 3, 'not_applicable': 2, 'unresolved': 1},
+        )

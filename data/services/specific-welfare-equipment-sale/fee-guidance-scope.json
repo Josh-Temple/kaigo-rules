@@ -1,0 +1,36 @@
+{
+  "format_version": 1,
+  "service_id": "specific-welfare-equipment-sale",
+  "source_family": "fee_calculation_guidance",
+  "shared_manifest": "data/shared/fee-guidance/manifest.json",
+  "status": "SCOPE_DEFINED_NOT_APPLICABLE_TO_FEE_GUIDANCE_LANE",
+  "applicability_state": "NOT_APPLICABLE",
+  "node_ids": [],
+  "relation_ids": [],
+  "adjudication": {
+    "rationale": "介護保険法第41条は居宅介護サービス費の対象費用から特定福祉用具の購入費を明示的に除外し、第44条が居宅介護福祉用具購入費を別建てで規定している。したがって、登録済みFee Guidance corpus（サービス費算定の留意事項通知）には接続しない。",
+    "official_primary_sources": [
+      {
+        "title": "介護保険法（平成9年法律第123号）",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=1",
+        "locator": "第四十一条及び第四十四条"
+      },
+      {
+        "title": "令和6年度介護報酬改定について（留意事項通知一覧）",
+        "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+        "locator": "報酬告示に関する通知（留意事項通知等）"
+      }
+    ],
+    "checked_on": "2026-10-05"
+  },
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "service_applicability_verification": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_promotion_allowed": false
+  }
+}

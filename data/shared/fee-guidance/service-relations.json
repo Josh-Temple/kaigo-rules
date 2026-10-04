@@ -284,6 +284,51 @@
       "source_id": "preventive-guidance-r6-final-comparison-shared",
       "semantics": "Official R6 amendment-comparison document section bearing this preventive service heading; no cross-service applicability is inferred.",
       "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.preventive-dementia-dayservice.community-r6.II.4",
+      "service_id": "preventive-dementia-dayservice",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.4",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "verification": "NOT_ESTABLISHED",
+      "mapping_evidence": {
+        "type": "OFFICIAL_MHLW_APPLICABILITY_REQUIREMENTS",
+        "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+        "locator": "701 介護予防認知症対応型通所介護費 / 留意事項通知 第2の4（3）、第2の4（14）〜（17）",
+        "checked_on": "2026-10-05",
+        "claim": "サービス固有の厚労省適用要件一覧が留意事項通知第2の4を明示参照するため、既存共有node II.4へのscope relationを設定する。currentnessやitem-body verificationは推論しない。"
+      }
+    },
+    {
+      "id": "fee-guidance.scope.preventive-small-scale-multifunctional.community-r6.II.5",
+      "service_id": "preventive-small-scale-multifunctional",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.5",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "verification": "NOT_ESTABLISHED",
+      "mapping_evidence": {
+        "type": "OFFICIAL_MHLW_APPLICABILITY_REQUIREMENTS",
+        "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+        "locator": "702 介護予防小規模多機能型居宅介護費 / 留意事項通知 第2の5（8）ほか",
+        "checked_on": "2026-10-05",
+        "claim": "サービス固有の厚労省適用要件一覧が留意事項通知第2の5を明示参照するため、既存共有node II.5へのscope relationを設定する。currentnessやitem-body verificationは推論しない。"
+      }
+    },
+    {
+      "id": "fee-guidance.scope.preventive-dementia-group-home.community-r6.II.6",
+      "service_id": "preventive-dementia-group-home",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.6",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "verification": "NOT_ESTABLISHED",
+      "mapping_evidence": {
+        "type": "OFFICIAL_MHLW_APPLICABILITY_REQUIREMENTS",
+        "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+        "locator": "703 介護予防認知症対応型共同生活介護費 / 留意事項通知 第2の6（4）、第2の6（5）、第2の6（8）ほか",
+        "checked_on": "2026-10-05",
+        "claim": "サービス固有の厚労省適用要件一覧が留意事項通知第2の6を明示参照するため、既存共有node II.6へのscope relationを設定する。currentnessやitem-body verificationは推論しない。"
+      }
     }
   ]
 }

@@ -30,7 +30,12 @@
     "data/shared/remuneration-delegated/node-identity-map.json",
     "data/shared/remuneration-delegated/service-applicability.json",
     "data/shared/remuneration-delegated/service-relations.json",
-    "data/shared/remuneration-delegated/service-applicability-adjudications.json"
+    "data/shared/remuneration-delegated/service-applicability-adjudications.json",
+    "data/shared/fee-guidance/manifest.json",
+    "data/shared/fee-guidance/service-applicability.json",
+    "data/shared/other-national-materials/manifest.json",
+    "data/shared/other-national-materials/national-corpus.json",
+    "data/shared/other-national-materials/service-applicability.json"
   ],
   "source_families": [
     {
@@ -625,19 +630,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#dayservice"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -660,11 +672,11 @@
             "raw_status": []
           },
           "publication": {
-            "state": "NOT_ESTABLISHED",
+            "state": "BLOCKED",
             "raw_service_public_routes_enabled": null
           },
           "route_exposure": {
-            "state": "NOT_ESTABLISHED",
+            "state": "BLOCKED",
             "raw_current_mode": "LEGACY_ROOT",
             "raw_future_service_base_enabled": false
           }
@@ -718,9 +730,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -1198,19 +1214,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#homevisit"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1289,9 +1312,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -1763,19 +1790,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#homebath"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1854,9 +1888,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -2332,19 +2370,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#homenursing"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2423,9 +2468,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -2901,19 +2950,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#homerehab"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2992,9 +3048,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -3470,19 +3530,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#homecaremanagement"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3561,9 +3628,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -4060,19 +4131,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#dayrehab"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -4095,11 +4173,11 @@
             "raw_status": []
           },
           "publication": {
-            "state": "NOT_ESTABLISHED",
+            "state": "BLOCKED",
             "raw_service_public_routes_enabled": true
           },
           "route_exposure": {
-            "state": "NOT_ESTABLISHED",
+            "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_PREVIEW",
             "raw_future_service_base_enabled": true
           }
@@ -4151,9 +4229,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -4629,19 +4711,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#shortstay-life"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -4720,9 +4809,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -5189,19 +5282,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#community-dayservice"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -5280,9 +5380,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -5749,19 +5853,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#regular-round"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -5840,9 +5951,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -6309,19 +6424,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#night-homevisit"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -6400,9 +6522,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -6869,19 +6995,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#care-management"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -6960,9 +7093,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -7420,19 +7557,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-support"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -7511,9 +7655,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -7979,19 +8127,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#shortstay-medical"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8070,9 +8225,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -8538,19 +8697,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#specific-facility"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8629,9 +8795,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -9097,19 +9267,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#welfare-equipment-rental"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -9188,9 +9365,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -9485,13 +9666,19 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "fee_guidance"
+            ],
+            "evidence": [
+              "data/services/specific-welfare-equipment-sale/fee-guidance-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "NOT_APPLICABLE",
+            "raw_status": [
+              "NOT_APPLICABLE"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -9511,7 +9698,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -9647,19 +9836,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#specific-welfare-equipment-sale"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -9738,9 +9934,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -10203,19 +10403,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#dementia-dayservice"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -10294,9 +10501,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -10759,19 +10970,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#small-scale-multifunctional"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -10850,9 +11068,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -11315,19 +11537,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#dementia-group-home"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -11406,9 +11635,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -11871,19 +12104,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#community-specific-facility"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -11962,9 +12202,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -12427,19 +12671,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#community-elderly-facility"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -12518,9 +12769,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -12983,19 +13238,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#nursing-small-scale-multifunctional"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -13074,9 +13336,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -13539,19 +13805,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#elderly-welfare-facility"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -13630,9 +13903,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -14095,19 +14372,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#elderly-health-facility"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -14186,9 +14470,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -14651,19 +14939,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#care-medical-institution"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -14742,9 +15037,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -15203,19 +15502,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-homebath"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -15294,9 +15600,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -15755,19 +16065,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-homenursing"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -15846,9 +16163,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -16307,19 +16628,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-homerehab"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16398,9 +16726,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -16859,19 +17191,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-homecaremanagement"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16950,9 +17289,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -17411,19 +17754,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-dayrehab"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17502,9 +17852,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -17963,19 +18317,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-shortstay-life"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18054,9 +18415,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -18515,19 +18880,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-shortstay-medical"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18606,9 +18978,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -19067,19 +19443,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-specific-facility"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19158,9 +19541,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -19619,19 +20006,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-welfare-equipment-rental"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19710,9 +20104,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -20002,13 +20400,19 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "fee_guidance"
+            ],
+            "evidence": [
+              "data/services/specific-preventive-welfare-equipment-sale/fee-guidance-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "NOT_APPLICABLE",
+            "raw_status": [
+              "NOT_APPLICABLE"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20028,7 +20432,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -20162,19 +20568,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#specific-preventive-welfare-equipment-sale"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20253,9 +20666,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -20547,13 +20964,20 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "fee_guidance"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-dayservice/fee-guidance-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "INGESTED_PARTIAL",
+              "R6_COMPARISON_SECTION_SHARED_REFERENCE"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20573,7 +20997,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -20707,19 +21133,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-dementia-dayservice"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20798,9 +21231,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -21092,13 +21529,20 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "fee_guidance"
+            ],
+            "evidence": [
+              "data/services/preventive-small-scale-multifunctional/fee-guidance-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "INGESTED_PARTIAL",
+              "R6_COMPARISON_SECTION_SHARED_REFERENCE"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -21118,7 +21562,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -21252,19 +21698,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-small-scale-multifunctional"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -21343,9 +21796,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/egov-content-independent-audit.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -21637,13 +22094,20 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "fee_guidance"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-group-home/fee-guidance-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "INGESTED_PARTIAL",
+              "R6_COMPARISON_SECTION_SHARED_REFERENCE"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -21663,7 +22127,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -21797,19 +22263,26 @@
           "source_family": "other_national_manuals_forms",
           "label": "Other material national manuals/forms",
           "corpus_availability": {
-            "state": "NOT_AVAILABLE",
-            "kind": "UNKNOWN",
-            "corpus_id": null,
-            "evidence": []
+            "state": "AVAILABLE",
+            "kind": "SHARED",
+            "corpus_id": "other-national-materials-national",
+            "evidence": [
+              "data/shared/other-national-materials/manifest.json",
+              "data/shared/other-national-materials/national-corpus.json"
+            ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
+            "state": "SCOPE_DEFINED",
             "declared_keys": [],
-            "evidence": []
+            "evidence": [
+              "data/shared/other-national-materials/service-applicability.json#preventive-dementia-group-home"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "REFERENCE_CORPUS_INGESTED_PARTIAL"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -21859,8 +22332,7 @@
           "INGESTED": 39
         },
         "item_body_verification": {
-          "NOT_ESTABLISHED": 38,
-          "PASS": 1
+          "PASS": 39
         },
         "currentness": {
           "NOT_ESTABLISHED": 38,
@@ -22017,13 +22489,14 @@
           "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_DEFINED": 33,
-          "SCOPE_NOT_DEFINED": 6
+          "SCOPE_DEFINED": 38,
+          "SCOPE_NOT_DEFINED": 1
         },
         "ingestion": {
           "INGESTED": 2,
-          "NOT_INGESTED": 6,
-          "PARTIAL": 31
+          "NOT_APPLICABLE": 2,
+          "NOT_INGESTED": 1,
+          "PARTIAL": 34
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 37,
@@ -22121,13 +22594,13 @@
       },
       "other_national_manuals_forms": {
         "corpus_availability": {
-          "NOT_AVAILABLE": 39
+          "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_NOT_DEFINED": 39
+          "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "NOT_INGESTED": 39
+          "PARTIAL": 39
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 39
@@ -22142,12 +22615,10 @@
           "NOT_REVIEWED": 39
         },
         "publication": {
-          "BLOCKED": 37,
-          "NOT_ESTABLISHED": 2
+          "BLOCKED": 39
         },
         "route_exposure": {
-          "BLOCKED": 37,
-          "NOT_ESTABLISHED": 2
+          "BLOCKED": 39
         }
       }
     },
@@ -22155,186 +22626,9 @@
       {
         "service_id": "preventive-support",
         "source_family": "fee_calculation_guidance"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
-        "source_family": "fee_calculation_guidance"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "fee_calculation_guidance"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "fee_calculation_guidance"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "fee_calculation_guidance"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "fee_calculation_guidance"
       }
     ],
-    "genuinely_missing_corpus": [
-      {
-        "service_id": "dayservice",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "homevisit",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "homebath",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "homenursing",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "dayrehab",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "community-dayservice",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "night-homevisit",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "shortstay-medical",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "dementia-dayservice",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "dementia-group-home",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "community-specific-facility",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "other_national_manuals_forms"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "other_national_manuals_forms"
-      }
-    ],
+    "genuinely_missing_corpus": [],
     "currentness_gaps": [
       {
         "service_id": "dayservice",
@@ -22377,6 +22671,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "dayservice",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "homevisit",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22415,6 +22714,11 @@
         "service_id": "homevisit",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "homevisit",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "homebath",
@@ -22457,6 +22761,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "homebath",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "homenursing",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22495,6 +22804,11 @@
         "service_id": "homenursing",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "homenursing",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "homerehab",
@@ -22537,6 +22851,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "homerehab",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "homecaremanagement",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22577,6 +22896,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "homecaremanagement",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "dayrehab",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22617,6 +22941,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "dayrehab",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "shortstay-life",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22657,6 +22986,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "shortstay-life",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "community-dayservice",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22697,6 +23031,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "community-dayservice",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "regular-round",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22737,6 +23076,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "regular-round",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "night-homevisit",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22777,6 +23121,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "night-homevisit",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "care-management",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22815,6 +23164,11 @@
         "service_id": "care-management",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "preventive-support",
@@ -22852,6 +23206,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-support",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "shortstay-medical",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22892,6 +23251,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "shortstay-medical",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "specific-facility",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22932,6 +23296,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "specific-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "welfare-equipment-rental",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -22970,6 +23339,11 @@
         "service_id": "welfare-equipment-rental",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "specific-welfare-equipment-sale",
@@ -22992,6 +23366,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "specific-welfare-equipment-sale",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "dementia-dayservice",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23030,6 +23409,11 @@
         "service_id": "dementia-dayservice",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "small-scale-multifunctional",
@@ -23072,6 +23456,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "dementia-group-home",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23110,6 +23499,11 @@
         "service_id": "dementia-group-home",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "community-specific-facility",
@@ -23152,6 +23546,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "community-specific-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "community-elderly-facility",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23190,6 +23589,11 @@
         "service_id": "community-elderly-facility",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "nursing-small-scale-multifunctional",
@@ -23232,6 +23636,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "elderly-welfare-facility",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23270,6 +23679,11 @@
         "service_id": "elderly-welfare-facility",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "elderly-health-facility",
@@ -23312,6 +23726,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "elderly-health-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "care-medical-institution",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23350,6 +23769,11 @@
         "service_id": "care-medical-institution",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "care-medical-institution",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "preventive-homebath",
@@ -23392,6 +23816,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-homebath",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-homenursing",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23430,6 +23859,11 @@
         "service_id": "preventive-homenursing",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "preventive-homenursing",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "preventive-homerehab",
@@ -23472,6 +23906,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-homerehab",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-homecaremanagement",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23512,6 +23951,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-dayrehab",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23552,6 +23996,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-dayrehab",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-shortstay-life",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23592,6 +24041,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-shortstay-life",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-shortstay-medical",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23632,6 +24086,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-shortstay-medical",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-specific-facility",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23672,6 +24131,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-specific-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23710,6 +24174,11 @@
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "specific-preventive-welfare-equipment-sale",
@@ -23732,6 +24201,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "specific-preventive-welfare-equipment-sale",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-dementia-dayservice",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23758,6 +24232,11 @@
       },
       {
         "service_id": "preventive-dementia-dayservice",
+        "source_family": "fee_calculation_guidance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -23767,6 +24246,11 @@
         "state": "PARTIAL"
       },
       {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-small-scale-multifunctional",
         "source_family": "care_insurance_act",
         "state": "NOT_ESTABLISHED"
@@ -23793,6 +24277,11 @@
       },
       {
         "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "fee_calculation_guidance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -23800,6 +24289,11 @@
         "service_id": "preventive-small-scale-multifunctional",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "preventive-dementia-group-home",
@@ -23828,6 +24322,11 @@
       },
       {
         "service_id": "preventive-dementia-group-home",
+        "source_family": "fee_calculation_guidance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
@@ -23835,6 +24334,11 @@
         "service_id": "preventive-dementia-group-home",
         "source_family": "national_qa",
         "state": "PARTIAL"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
       }
     ],
     "verification_gaps": [
@@ -23844,8 +24348,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homevisit",
-        "source_family": "care_insurance_act",
+        "service_id": "dayservice",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23869,8 +24373,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homebath",
-        "source_family": "care_insurance_act",
+        "service_id": "homevisit",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23894,8 +24398,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homenursing",
-        "source_family": "care_insurance_act",
+        "service_id": "homebath",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23919,8 +24423,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homerehab",
-        "source_family": "care_insurance_act",
+        "service_id": "homenursing",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23944,8 +24448,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "homecaremanagement",
-        "source_family": "care_insurance_act",
+        "service_id": "homerehab",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23965,27 +24469,27 @@
       },
       {
         "service_id": "homecaremanagement",
+        "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homecaremanagement",
+        "source_family": "other_national_manuals_forms",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dayrehab",
+        "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dayrehab",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "dayrehab",
-        "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dayrehab",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dayrehab",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "care_insurance_act",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24009,8 +24513,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "community-dayservice",
-        "source_family": "care_insurance_act",
+        "service_id": "shortstay-life",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24034,8 +24538,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "regular-round",
-        "source_family": "care_insurance_act",
+        "service_id": "community-dayservice",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24059,8 +24563,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "night-homevisit",
-        "source_family": "care_insurance_act",
+        "service_id": "regular-round",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24084,8 +24588,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "care-management",
-        "source_family": "care_insurance_act",
+        "service_id": "night-homevisit",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24109,8 +24613,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-support",
-        "source_family": "care_insurance_act",
+        "service_id": "care-management",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24134,8 +24638,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "shortstay-medical",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-support",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24164,8 +24668,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "specific-facility",
-        "source_family": "care_insurance_act",
+        "service_id": "shortstay-medical",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24194,8 +24698,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "care_insurance_act",
+        "service_id": "specific-facility",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24221,21 +24725,21 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "specific-welfare-equipment-sale",
-        "source_family": "care_insurance_act",
+        "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "specific-welfare-equipment-sale",
-        "source_family": "standards_interpretation_notice",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-dayservice",
-        "source_family": "care_insurance_act",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24264,8 +24768,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "care_insurance_act",
+        "service_id": "dementia-dayservice",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24294,8 +24798,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "dementia-group-home",
-        "source_family": "care_insurance_act",
+        "service_id": "small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24324,8 +24828,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "community-specific-facility",
-        "source_family": "care_insurance_act",
+        "service_id": "dementia-group-home",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24354,8 +24858,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "community-elderly-facility",
-        "source_family": "care_insurance_act",
+        "service_id": "community-specific-facility",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24384,8 +24888,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "care_insurance_act",
+        "service_id": "community-elderly-facility",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24414,8 +24918,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "care_insurance_act",
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24444,8 +24948,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "elderly-health-facility",
-        "source_family": "care_insurance_act",
+        "service_id": "elderly-welfare-facility",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24474,8 +24978,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "care-medical-institution",
-        "source_family": "care_insurance_act",
+        "service_id": "elderly-health-facility",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24504,8 +25008,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-homebath",
-        "source_family": "care_insurance_act",
+        "service_id": "care-medical-institution",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24534,8 +25038,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-homenursing",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-homebath",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24564,8 +25068,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-homerehab",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-homenursing",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24594,8 +25098,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-homerehab",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24624,8 +25128,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-dayrehab",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24654,8 +25158,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-dayrehab",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24684,8 +25188,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-shortstay-life",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24714,8 +25218,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-specific-facility",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-shortstay-medical",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24744,8 +25248,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-specific-facility",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24774,8 +25278,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24784,8 +25288,8 @@
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "care_insurance_act",
+        "service_id": "specific-preventive-welfare-equipment-sale",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24805,12 +25309,17 @@
       },
       {
         "service_id": "preventive-dementia-dayservice",
+        "source_family": "fee_calculation_guidance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24830,12 +25339,17 @@
       },
       {
         "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "fee_calculation_guidance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
         "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "care_insurance_act",
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24855,7 +25369,17 @@
       },
       {
         "service_id": "preventive-dementia-group-home",
+        "source_family": "fee_calculation_guidance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
         "source_family": "unit_price_regional_classification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       }
     ],
@@ -24878,6 +25402,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "dayservice",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "homevisit",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -24918,6 +25447,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "homevisit",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "homebath",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -24958,6 +25492,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "homebath",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "homenursing",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -24998,6 +25537,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "homenursing",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "homerehab",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25038,6 +25582,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "homerehab",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "homecaremanagement",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25075,6 +25624,11 @@
       {
         "service_id": "homecaremanagement",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homecaremanagement",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25088,6 +25642,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "dayrehab",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "shortstay-life",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25128,6 +25687,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "shortstay-life",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "community-dayservice",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25168,6 +25732,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "community-dayservice",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "regular-round",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25208,6 +25777,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "regular-round",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "night-homevisit",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25248,6 +25822,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "night-homevisit",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "care-management",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25285,6 +25864,11 @@
       {
         "service_id": "care-management",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25323,6 +25907,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-support",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "shortstay-medical",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25363,6 +25952,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "shortstay-medical",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "specific-facility",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25403,6 +25997,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "specific-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "welfare-equipment-rental",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25440,6 +26039,11 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25463,6 +26067,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "specific-welfare-equipment-sale",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "dementia-dayservice",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25500,6 +26109,11 @@
       {
         "service_id": "dementia-dayservice",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25543,6 +26157,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "dementia-group-home",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25580,6 +26199,11 @@
       {
         "service_id": "dementia-group-home",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25623,6 +26247,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "community-specific-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "community-elderly-facility",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25660,6 +26289,11 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25703,6 +26337,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "elderly-welfare-facility",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25740,6 +26379,11 @@
       {
         "service_id": "elderly-welfare-facility",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25783,6 +26427,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "elderly-health-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "care-medical-institution",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25820,6 +26469,11 @@
       {
         "service_id": "care-medical-institution",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "care-medical-institution",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25863,6 +26517,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-homebath",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-homenursing",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25900,6 +26559,11 @@
       {
         "service_id": "preventive-homenursing",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-homenursing",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -25943,6 +26607,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-homerehab",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-homecaremanagement",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25983,6 +26652,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-dayrehab",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -26023,6 +26697,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-dayrehab",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-shortstay-life",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -26063,6 +26742,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-shortstay-life",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-shortstay-medical",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -26103,6 +26787,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-shortstay-medical",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-specific-facility",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -26143,6 +26832,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-specific-facility",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -26180,6 +26874,11 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -26203,6 +26902,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "specific-preventive-welfare-equipment-sale",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-dementia-dayservice",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -26229,6 +26933,11 @@
       },
       {
         "service_id": "preventive-dementia-dayservice",
+        "source_family": "fee_calculation_guidance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
@@ -26238,6 +26947,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "preventive-small-scale-multifunctional",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -26264,12 +26978,22 @@
       },
       {
         "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "fee_calculation_guidance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
       {
         "service_id": "preventive-small-scale-multifunctional",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
@@ -26299,12 +27023,22 @@
       },
       {
         "service_id": "preventive-dementia-group-home",
+        "source_family": "fee_calculation_guidance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
         "source_family": "unit_price_regional_classification",
         "state": "BLOCKED"
       },
       {
         "service_id": "preventive-dementia-group-home",
         "source_family": "national_qa",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       }
     ],
