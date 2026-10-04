@@ -1,0 +1,30 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-small-scale-multifunctional",
+  "source_family": "fee_calculation_guidance",
+  "shared_manifest": "data/shared/fee-guidance/manifest.json",
+  "node_ids": [
+    "fee-guidance.shared.community.r6-comparison.II.5"
+  ],
+  "relation_ids": [
+    "fee-guidance.scope.preventive-small-scale-multifunctional.community-r6.II.5"
+  ],
+  "applicability_evidence": {
+    "source_kind": "OFFICIAL_MHLW_APPLICABILITY_REQUIREMENTS",
+    "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+    "locator": "702 介護予防小規模多機能型居宅介護費 / 留意事項通知 第2の5（8）ほか",
+    "checked_on": "2026-10-05",
+    "claim": "厚生労働省の適用要件一覧が、介護予防小規模多機能型居宅介護について当該留意事項通知の第2の5を明示的に参照しているため、既存の共有section II.5へのservice scope接続根拠とする。",
+    "currentness_use": "APPLICABILITY_ONLY_NOT_CURRENTNESS"
+  },
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "service_applicability_verification": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_promotion_allowed": false
+  }
+}

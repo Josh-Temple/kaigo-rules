@@ -74,7 +74,21 @@ class SharedFeeGuidanceTests(unittest.TestCase):
             self.assertEqual(row['human_review']['state'], 'NOT_REVIEWED')
             self.assertEqual(row['publication']['state'], 'BLOCKED')
             self.assertEqual(row['route_exposure']['state'], 'BLOCKED')
-        # Corpus availability is national; service scope remains service-specific.
-        other = rows['specific-welfare-equipment-sale']
-        self.assertEqual(other['corpus_availability']['kind'], 'SHARED')
-        self.assertEqual(other['service_scope']['state'], 'SCOPE_NOT_DEFINED')
+
+        # Worker A records final-six adjudication canonically without changing
+        # repository-wide generated projection; Worker E owns that projection.
+        unresolved_projection = rows['specific-welfare-equipment-sale']
+        self.assertEqual(unresolved_projection['corpus_availability']['kind'], 'SHARED')
+        self.assertEqual(unresolved_projection['service_scope']['state'], 'SCOPE_NOT_DEFINED')
+
+    def test_final_six_adjudication_artifact_is_fail_closed(self):
+        validator_spec = importlib.util.spec_from_file_location(
+            'fee_guidance_final_six',
+            ROOT / 'scripts/validate_fee_guidance_final_six_adjudications.py',
+        )
+        validator = importlib.util.module_from_spec(validator_spec)
+        validator_spec.loader.exec_module(validator)
+        self.assertEqual(
+            validator.validate(),
+            {'services': 6, 'mapped': 3, 'not_applicable': 2, 'unresolved': 1},
+        )

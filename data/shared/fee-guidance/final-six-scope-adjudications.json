@@ -1,0 +1,175 @@
+{
+  "format_version": 1,
+  "source_family": "fee_calculation_guidance",
+  "worker": "A",
+  "fresh_read_main_head": "e0d814b1b22d449fd13784bbb051fba5c27df64e",
+  "observed_on": "2026-10-05",
+  "policy": {
+    "absence_is_not_not_applicable": true,
+    "scope_does_not_promote_item_body_verification": true,
+    "scope_does_not_promote_currentness": true,
+    "machine_work_does_not_promote_human_review": true,
+    "publication_and_route_auto_promotion_allowed": false
+  },
+  "adjudications": [
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "decision": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.4"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-dementia-dayservice.community-r6.II.4"
+      ],
+      "evidence": [
+        {
+          "issuer": "厚生労働省",
+          "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+          "locator": "701 介護予防認知症対応型通所介護費 / 留意事項通知 第2の4（3）、第2の4（14）〜（17）",
+          "use": "SERVICE_APPLICABILITY_ONLY"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "decision": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.5"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-small-scale-multifunctional.community-r6.II.5"
+      ],
+      "evidence": [
+        {
+          "issuer": "厚生労働省",
+          "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+          "locator": "702 介護予防小規模多機能型居宅介護費 / 留意事項通知 第2の5（8）ほか",
+          "use": "SERVICE_APPLICABILITY_ONLY"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "decision": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.6"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-dementia-group-home.community-r6.II.6"
+      ],
+      "evidence": [
+        {
+          "issuer": "厚生労働省",
+          "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+          "locator": "703 介護予防認知症対応型共同生活介護費 / 留意事項通知 第2の6（4）、第2の6（5）、第2の6（8）ほか",
+          "use": "SERVICE_APPLICABILITY_ONLY"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "decision": "SCOPE_DEFINED",
+      "applicability_state": "NOT_APPLICABLE",
+      "node_ids": [],
+      "relation_ids": [],
+      "rationale": "介護保険法第41条は特定福祉用具の購入費を居宅介護サービス費の対象費用から除外し、第44条が居宅介護福祉用具購入費を別建てで規定するため、登録済みFee Guidanceのサービス費算定laneには接続しない。",
+      "evidence": [
+        {
+          "issuer": "厚生労働省",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=1",
+          "locator": "第四十一条及び第四十四条",
+          "use": "EXPLICIT_NOT_APPLICABLE_BASIS"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_APPLICABLE",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "decision": "SCOPE_DEFINED",
+      "applicability_state": "NOT_APPLICABLE",
+      "node_ids": [],
+      "relation_ids": [],
+      "rationale": "介護保険法第53条は特定介護予防福祉用具の購入費を介護予防サービス費の対象費用から除外し、第56条が介護予防福祉用具購入費を別建てで規定するため、登録済みFee Guidanceのサービス費算定laneには接続しない。",
+      "evidence": [
+        {
+          "issuer": "厚生労働省",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=1",
+          "locator": "第五十三条及び第五十六条",
+          "use": "EXPLICIT_NOT_APPLICABLE_BASIS"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_APPLICABLE",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-support",
+      "decision": "UNRESOLVED",
+      "applicability_state": "NOT_ESTABLISHED",
+      "node_ids": [],
+      "relation_ids": [],
+      "rationale": "介護予防支援の個別要件から老企第36号への参照は確認できるが、その個別参照だけではFee Guidance source family全体のservice scopeを安全に定義できないため、SCOPE_NOT_DEFINEDを維持する。",
+      "evidence": [
+        {
+          "issuer": "厚生労働省",
+          "url": "https://www.mhlw.go.jp/content/000925367.pdf",
+          "locator": "501 指定介護予防支援介護給付費 / 老企第36号 第3の15への個別参照",
+          "use": "UNRESOLVED_BOUNDARY_EVIDENCE"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    }
+  ]
+}
