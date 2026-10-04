@@ -1388,8 +1388,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1409,7 +1411,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -1907,8 +1911,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1928,7 +1934,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -2426,8 +2434,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2447,7 +2457,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -2945,8 +2957,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2966,7 +2980,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -4031,8 +4047,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -4052,7 +4070,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -6942,7 +6962,7 @@
     {
       "service_id": "shortstay-medical",
       "label": "短期入所療養介護",
-      "service_status": "REGISTERED_NOT_INGESTED",
+      "service_status": "PARTIAL_INGESTION",
       "config": "data/services/shortstay-medical.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -7135,8 +7155,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -7156,7 +7178,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -7441,7 +7465,7 @@
     {
       "service_id": "specific-facility",
       "label": "特定施設入居者生活介護",
-      "service_status": "REGISTERED_NOT_INGESTED",
+      "service_status": "PARTIAL_INGESTION",
       "config": "data/services/specific-facility.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -7634,8 +7658,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -7655,7 +7681,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -7940,7 +7968,7 @@
     {
       "service_id": "welfare-equipment-rental",
       "label": "福祉用具貸与",
-      "service_status": "REGISTERED_NOT_INGESTED",
+      "service_status": "PARTIAL_INGESTION",
       "config": "data/services/welfare-equipment-rental.json",
       "publication_gate": {
         "public_routes_enabled": false,
@@ -8133,8 +8161,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8154,7 +8184,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -20138,8 +20170,8 @@
           "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "INGESTED": 3,
-          "NOT_INGESTED": 36
+          "INGESTED": 11,
+          "NOT_INGESTED": 28
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 37,
@@ -20819,6 +20851,11 @@
       },
       {
         "service_id": "homebath",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homebath",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -20834,6 +20871,11 @@
       },
       {
         "service_id": "homenursing",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homenursing",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -20845,6 +20887,11 @@
       {
         "service_id": "homerehab",
         "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homerehab",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -20860,6 +20907,11 @@
       {
         "service_id": "homecaremanagement",
         "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homecaremanagement",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -20904,6 +20956,11 @@
       },
       {
         "service_id": "shortstay-life",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "shortstay-life",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -20985,6 +21042,11 @@
       {
         "service_id": "shortstay-medical",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "shortstay-medical",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -20995,6 +21057,11 @@
       {
         "service_id": "specific-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "specific-facility",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21005,6 +21072,11 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21270,8 +21342,18 @@
         "state": "NOT_ESTABLISHED"
       },
       {
+        "service_id": "homebath",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "homenursing",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "homenursing",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21280,13 +21362,28 @@
         "state": "NOT_ESTABLISHED"
       },
       {
+        "service_id": "homerehab",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "homecaremanagement",
         "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
+        "service_id": "homecaremanagement",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "shortstay-life",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "shortstay-life",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21300,13 +21397,28 @@
         "state": "NOT_ESTABLISHED"
       },
       {
+        "service_id": "shortstay-medical",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "specific-facility",
         "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
+        "service_id": "specific-facility",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21370,6 +21482,11 @@
       },
       {
         "service_id": "homebath",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homebath",
         "source_family": "national_qa",
         "state": "BLOCKED"
       },
@@ -21385,6 +21502,11 @@
       },
       {
         "service_id": "homenursing",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homenursing",
         "source_family": "national_qa",
         "state": "BLOCKED"
       },
@@ -21396,6 +21518,11 @@
       {
         "service_id": "homerehab",
         "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homerehab",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21411,6 +21538,11 @@
       {
         "service_id": "homecaremanagement",
         "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "homecaremanagement",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21426,6 +21558,11 @@
       {
         "service_id": "shortstay-life",
         "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "shortstay-life",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21511,6 +21648,11 @@
       {
         "service_id": "shortstay-medical",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "shortstay-medical",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21521,6 +21663,11 @@
       {
         "service_id": "specific-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "specific-facility",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21531,6 +21678,11 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {

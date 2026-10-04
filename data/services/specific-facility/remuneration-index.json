@@ -1,0 +1,600 @@
+{
+  "format_version": 1,
+  "service_id": "specific-facility",
+  "label": "特定施設入居者生活介護",
+  "layer": "REMUNERATION_NOTIFICATION",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "平成12年厚生省告示第19号 別表 10 特定施設入居者生活介護費",
+    "start_marker": "10 特定施設入居者生活介護費",
+    "end_marker": "11 福祉用具貸与費 の直前",
+    "excluded_next_section": "11 福祉用具貸与費",
+    "legal_text_duplicated": false
+  },
+  "official_source": {
+    "source_id": "mhlw-fee-notice19-base",
+    "notice_number": "平成12年厚生省告示第19号",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+    "observed_on_jst": "2026-10-04",
+    "observation_kind": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE_NOT_CURRENTNESS_PROOF"
+  },
+  "extraction_policy": {
+    "full_legal_text_reproduced": false,
+    "indexed_content": "bounded section markers, top-level structure, and directly visible numeric structural rows",
+    "long_note_body_policy": "locator-only unless a short structural row contains a directly visible numeric expression",
+    "delegated_remuneration_criteria_included": false
+  },
+  "coverage": {
+    "section_lines_observed": 77,
+    "top_level_items": 12,
+    "numeric_child_items": 41,
+    "total_index_entries": 53
+  },
+  "top_level_items": [
+    {
+      "id": "remuneration.specific-facility.top.01",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "特定施設入居者生活介護費(1日につき)",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / イ / section-line-2"
+    },
+    {
+      "id": "remuneration.specific-facility.top.02",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "外部サービス利用型特定施設入居者生活介護費(1月につき)",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / ロ / section-line-8"
+    },
+    {
+      "id": "remuneration.specific-facility.top.03",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "短期利用特定施設入居者生活介護費(1日につき)",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / section-line-9"
+    },
+    {
+      "id": "remuneration.specific-facility.top.04",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "退院・退所時連携加算",
+      "numeric_expressions": [
+        "30単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ニ / section-line-43"
+    },
+    {
+      "id": "remuneration.specific-facility.top.05",
+      "marker": "ホ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "退居時情報提供加算",
+      "numeric_expressions": [
+        "250単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ホ / section-line-45"
+    },
+    {
+      "id": "remuneration.specific-facility.top.06",
+      "marker": "ヘ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "看取り介護加算",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / ヘ / section-line-47"
+    },
+    {
+      "id": "remuneration.specific-facility.top.07",
+      "marker": "ト",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "認知症専門ケア加算",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / ト / section-line-51"
+    },
+    {
+      "id": "remuneration.specific-facility.top.08",
+      "marker": "チ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "高齢者施設等感染対策向上加算",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / チ / section-line-55"
+    },
+    {
+      "id": "remuneration.specific-facility.top.09",
+      "marker": "リ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "新興感染症等施設療養費(1日につき)",
+      "numeric_expressions": [
+        "240単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / リ / section-line-59"
+    },
+    {
+      "id": "remuneration.specific-facility.top.10",
+      "marker": "ヌ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "生産性向上推進体制加算",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / ヌ / section-line-61"
+    },
+    {
+      "id": "remuneration.specific-facility.top.11",
+      "marker": "ル",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "サービス提供体制強化加算",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / ル / section-line-65"
+    },
+    {
+      "id": "remuneration.specific-facility.top.12",
+      "marker": "ヲ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "介護職員等処遇改善加算",
+      "numeric_expressions": [],
+      "source_locator": "10 特定施設入居者生活介護費 / ヲ / section-line-70"
+    }
+  ],
+  "numeric_child_items": [
+    {
+      "id": "remuneration.specific-facility.numeric.001",
+      "parent_marker": "イ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "542単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / イ / (1) / section-line-3"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.002",
+      "parent_marker": "イ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "609単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / イ / (2) / section-line-4"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.003",
+      "parent_marker": "イ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "679単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / イ / (3) / section-line-5"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.004",
+      "parent_marker": "イ",
+      "marker": "(4)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "744単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / イ / (4) / section-line-6"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.005",
+      "parent_marker": "イ",
+      "marker": "(5)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "813単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / イ / (5) / section-line-7"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.006",
+      "parent_marker": "ハ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "542単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (1) / section-line-10"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.007",
+      "parent_marker": "ハ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "609単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (2) / section-line-11"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.008",
+      "parent_marker": "ハ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "679単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (3) / section-line-12"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.009",
+      "parent_marker": "ハ",
+      "marker": "(4)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "744単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (4) / section-line-13"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.010",
+      "parent_marker": "ハ",
+      "marker": "(5)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "813単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (5) / section-line-14"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.011",
+      "parent_marker": "ハ",
+      "marker": "4",
+      "kind": "NUMERIC_NOTE",
+      "title": "注4",
+      "numeric_expressions": [
+        "100分の10",
+        "100分の1"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / 4 / section-line-19"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.012",
+      "parent_marker": "ハ",
+      "marker": "5",
+      "kind": "NUMERIC_NOTE",
+      "title": "注5",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / 5 / section-line-20"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.013",
+      "parent_marker": "ハ",
+      "marker": "6",
+      "kind": "NUMERIC_NOTE",
+      "title": "注6",
+      "numeric_expressions": [
+        "100分の3"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / 6 / section-line-21"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.014",
+      "parent_marker": "ハ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "入居継続支援加算(Ⅰ)",
+      "numeric_expressions": [
+        "36単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (1) / section-line-23"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.015",
+      "parent_marker": "ハ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "入居継続支援加算(Ⅱ)",
+      "numeric_expressions": [
+        "22単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (2) / section-line-24"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.016",
+      "parent_marker": "ハ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生活機能向上連携加算(Ⅰ)",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (1) / section-line-26"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.017",
+      "parent_marker": "ハ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生活機能向上連携加算(Ⅱ)",
+      "numeric_expressions": [
+        "200単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (2) / section-line-27"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.018",
+      "parent_marker": "ハ",
+      "marker": "イ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "ADL維持等加算(Ⅰ)",
+      "numeric_expressions": [
+        "30単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / イ / section-line-30"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.019",
+      "parent_marker": "ハ",
+      "marker": "ロ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "ADL維持等加算(Ⅱ)",
+      "numeric_expressions": [
+        "60単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / ロ / section-line-31"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.020",
+      "parent_marker": "ハ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間看護体制加算(Ⅰ)",
+      "numeric_expressions": [
+        "18単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (1) / section-line-33"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.021",
+      "parent_marker": "ハ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間看護体制加算(Ⅱ)",
+      "numeric_expressions": [
+        "9単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (2) / section-line-34"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.022",
+      "parent_marker": "ハ",
+      "marker": "12",
+      "kind": "NUMERIC_NOTE",
+      "title": "注12",
+      "numeric_expressions": [
+        "120単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / 12 / section-line-35"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.023",
+      "parent_marker": "ハ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "当該協力医療機関が、指定居宅サービス基準第191条第2項各号に掲げる要件を満たしている場合",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (1) / section-line-37"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.024",
+      "parent_marker": "ハ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "(1)以外の場合",
+      "numeric_expressions": [
+        "40単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / (2) / section-line-38"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.025",
+      "parent_marker": "ハ",
+      "marker": "14",
+      "kind": "NUMERIC_NOTE",
+      "title": "注14",
+      "numeric_expressions": [
+        "20単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / 14 / section-line-39"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.026",
+      "parent_marker": "ハ",
+      "marker": "15",
+      "kind": "NUMERIC_NOTE",
+      "title": "注15",
+      "numeric_expressions": [
+        "40単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ハ / 15 / section-line-40"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.027",
+      "parent_marker": "ト",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅰ)",
+      "numeric_expressions": [
+        "3単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ト / (1) / section-line-53"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.028",
+      "parent_marker": "ト",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅱ)",
+      "numeric_expressions": [
+        "4単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ト / (2) / section-line-54"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.029",
+      "parent_marker": "チ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "高齢者施設等感染対策向上加算(Ⅰ)",
+      "numeric_expressions": [
+        "10単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / チ / (1) / section-line-57"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.030",
+      "parent_marker": "チ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "高齢者施設等感染対策向上加算(Ⅱ)",
+      "numeric_expressions": [
+        "5単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / チ / (2) / section-line-58"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.031",
+      "parent_marker": "ヌ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ヌ / (1) / section-line-63"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.032",
+      "parent_marker": "ヌ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "numeric_expressions": [
+        "10単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ヌ / (2) / section-line-64"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.033",
+      "parent_marker": "ル",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅰ)",
+      "numeric_expressions": [
+        "22単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ル / (1) / section-line-67"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.034",
+      "parent_marker": "ル",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅱ)",
+      "numeric_expressions": [
+        "18単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ル / (2) / section-line-68"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.035",
+      "parent_marker": "ル",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅲ)",
+      "numeric_expressions": [
+        "6単位"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ル / (3) / section-line-69"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.036",
+      "parent_marker": "ヲ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ イからルまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の148"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ヲ / (1) / section-line-72"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.037",
+      "parent_marker": "ヲ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ イからルまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の159"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ヲ / (2) / section-line-73"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.038",
+      "parent_marker": "ヲ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ イからルまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の142"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ヲ / (3) / section-line-74"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.039",
+      "parent_marker": "ヲ",
+      "marker": "(4)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ イからルまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の153"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ヲ / (4) / section-line-75"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.040",
+      "parent_marker": "ヲ",
+      "marker": "(5)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ) イからルまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の130"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ヲ / (5) / section-line-76"
+    },
+    {
+      "id": "remuneration.specific-facility.numeric.041",
+      "parent_marker": "ヲ",
+      "marker": "(6)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ) イからルまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の108"
+      ],
+      "source_locator": "10 特定施設入居者生活介護費 / ヲ / (6) / section-line-77"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

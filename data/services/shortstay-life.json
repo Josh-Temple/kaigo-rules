@@ -35,9 +35,19 @@
       "principal_items": 34,
       "child_nodes_preserved_in_body": 49,
       "note": "老企第25号の公式旧HTMLに基づく34 principal itemsを独立source一致確認付きで全体通知DBへ公開。令和6年度等の改正資料は別証拠として扱い、現行統合本文は生成しない。"
+    },
+    "remuneration": {
+      "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "top_level_items": 9,
+      "numeric_child_items": 102,
+      "total_index_entries": 111,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
     }
   },
   "ingestion_indexes": {
-    "rouki25": "data/services/shortstay-life/rouki25-historical.generated.json"
+    "rouki25": "data/services/shortstay-life/rouki25-historical.generated.json",
+    "remuneration": "data/services/shortstay-life/remuneration-index.json"
   }
 }
