@@ -9,7 +9,7 @@
 - Currentness gaps on ingested cells: 342
 - Item-body verification gaps on ingested cells: 208
 - Relation verification remaining: 59
-- Publication gaps on ingested cells: 327
+- Publication gaps on ingested cells: 329
 - Delegated remuneration applicability mapped: 37
 
 ## Source-family coverage
@@ -24,7 +24,7 @@
 | Fee-calculation guidance | AVAILABLE=39 | SCOPE_DEFINED=38, SCOPE_NOT_DEFINED=1 | INGESTED=2, NOT_APPLICABLE=2, NOT_INGESTED=1, PARTIAL=34 | NOT_ESTABLISHED=37, PASS=2 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Unit price / regional classification | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=37, NOT_APPLICABLE=2 | NOT_APPLICABLE=2, NOT_ESTABLISHED=36, PASS=1 | NOT_APPLICABLE=2, NOT_ESTABLISHED=36, PARTIAL=1 | NOT_APPLICABLE=2, NOT_REVIEWED=37 | AVAILABLE=1, BLOCKED=36, NOT_APPLICABLE=2 | AVAILABLE=1, BLOCKED=36, NOT_APPLICABLE=2 |
 | National Q&A | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | PARTIAL=39 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
-| Other material national manuals/forms | AVAILABLE=39 | SCOPE_DEFINED=39 | PARTIAL=39 | NOT_ESTABLISHED=39 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
+| Other material national manuals/forms | AVAILABLE=39 | SCOPE_DEFINED=39 | PARTIAL=39 | NOT_ESTABLISHED=39 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | BLOCKED=39 | BLOCKED=39 |
 
 ## Delegated remuneration criteria detail
 

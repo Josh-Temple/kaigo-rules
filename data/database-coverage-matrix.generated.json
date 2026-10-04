@@ -672,11 +672,11 @@
             "raw_status": []
           },
           "publication": {
-            "state": "AVAILABLE",
+            "state": "BLOCKED",
             "raw_service_public_routes_enabled": null
           },
           "route_exposure": {
-            "state": "AVAILABLE",
+            "state": "BLOCKED",
             "raw_current_mode": "LEGACY_ROOT",
             "raw_future_service_base_enabled": false
           }
@@ -4173,11 +4173,11 @@
             "raw_status": []
           },
           "publication": {
-            "state": "AVAILABLE",
+            "state": "BLOCKED",
             "raw_service_public_routes_enabled": true
           },
           "route_exposure": {
-            "state": "AVAILABLE",
+            "state": "BLOCKED",
             "raw_current_mode": "SERVICE_ROOT_PREVIEW",
             "raw_future_service_base_enabled": true
           }
@@ -22615,12 +22615,10 @@
           "NOT_REVIEWED": 39
         },
         "publication": {
-          "AVAILABLE": 2,
-          "BLOCKED": 37
+          "BLOCKED": 39
         },
         "route_exposure": {
-          "AVAILABLE": 2,
-          "BLOCKED": 37
+          "BLOCKED": 39
         }
       }
     },
@@ -25404,6 +25402,11 @@
         "state": "BLOCKED"
       },
       {
+        "service_id": "dayservice",
+        "source_family": "other_national_manuals_forms",
+        "state": "BLOCKED"
+      },
+      {
         "service_id": "homevisit",
         "source_family": "care_insurance_act",
         "state": "BLOCKED"
@@ -25636,6 +25639,11 @@
       {
         "service_id": "dayrehab",
         "source_family": "unit_price_regional_classification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "dayrehab",
+        "source_family": "other_national_manuals_forms",
         "state": "BLOCKED"
       },
       {
