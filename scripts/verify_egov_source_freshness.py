@@ -10,6 +10,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,7 +39,12 @@ REVISION_FIELDS = [
 def fetch(url: str) -> bytes:
     request = urllib.request.Request(
         url,
-        headers={"User-Agent": "kaigo-rules-source-drift-monitor/1.0 (+https://github.com/Josh-Temple/kaigo-rules)"},
+        headers={
+            "User-Agent": (
+                "kaigo-rules-source-drift-monitor/1.0 "
+                "(+https://github.com/Josh-Temple/kaigo-rules)"
+            )
+        },
     )
     retryable = {404, 408, 429, 500, 502, 503, 504}
     last_error = None
@@ -50,12 +56,12 @@ def fetch(url: str) -> bytes:
             last_error = exc
             if exc.code not in retryable or attempt == 2:
                 raise
-            time.sleep(2 ** attempt)
+            time.sleep(2**attempt)
         except urllib.error.URLError as exc:
             last_error = exc
             if attempt == 2:
                 raise
-            time.sleep(2 ** attempt)
+            time.sleep(2**attempt)
     raise RuntimeError(f"e-Gov fetch failed after retries: {url}: {last_error}")
 
 
@@ -73,10 +79,18 @@ def revisions_from(payload):
 def current_revision(revisions: list[dict]) -> dict:
     for revision in revisions:
         if revision.get("current_revision_status") == "CurrentEnforced":
-            return {key: revision.get(key) for key in REVISION_FIELDS if key in revision}
+            return {
+                key: revision.get(key)
+                for key in REVISION_FIELDS
+                if key in revision
+            }
     if revisions:
         revision = revisions[0]
-        return {key: revision.get(key) for key in REVISION_FIELDS if key in revision}
+        return {
+            key: revision.get(key)
+            for key in REVISION_FIELDS
+            if key in revision
+        }
     return {}
 
 
@@ -96,42 +110,63 @@ def check_target(name: str, meta_file: str) -> dict:
 
     differences = []
     if xml_sha != meta.get("xml_sha256"):
-        differences.append({
-            "field": "xml_sha256",
-            "expected": meta.get("xml_sha256"),
-            "observed": xml_sha,
-        })
+        differences.append(
+            {
+                "field": "xml_sha256",
+                "expected": meta.get("xml_sha256"),
+                "observed": xml_sha,
+            }
+        )
     if revisions_sha != meta.get("revision_response_sha256"):
-        differences.append({
-            "field": "revision_response_sha256",
-            "expected": meta.get("revision_response_sha256"),
-            "observed": revisions_sha,
-        })
+        differences.append(
+            {
+                "field": "revision_response_sha256",
+                "expected": meta.get("revision_response_sha256"),
+                "observed": revisions_sha,
+            }
+        )
     if len(revisions) != meta.get("revision_count"):
-        differences.append({
-            "field": "revision_count",
-            "expected": meta.get("revision_count"),
-            "observed": len(revisions),
-        })
+        differences.append(
+            {
+                "field": "revision_count",
+                "expected": meta.get("revision_count"),
+                "observed": len(revisions),
+            }
+        )
 
     stored_current = meta.get("current_revision") or {}
     if live_current != stored_current:
-        differences.append({
-            "field": "current_revision",
-            "expected": stored_current,
-            "observed": live_current,
-        })
+        differences.append(
+            {
+                "field": "current_revision",
+                "expected": stored_current,
+                "observed": live_current,
+            }
+        )
+
+    current_enforced = (
+        live_current.get("current_revision_status") == "CurrentEnforced"
+        and live_current.get("repeal_status") in (None, "None")
+    )
+    result = "PASS" if not differences else "SOURCE_DRIFT_DETECTED"
 
     return {
         "name": name,
         "law_id": meta.get("law_id"),
+        "meta_file": f"data/{meta_file}",
         "xml_url": xml_url,
         "revisions_url": revisions_url,
         "observed_xml_sha256": xml_sha,
         "observed_revision_response_sha256": revisions_sha,
         "observed_revision_count": len(revisions),
         "observed_current_revision": live_current,
-        "result": "PASS" if not differences else "SOURCE_DRIFT_DETECTED",
+        "current_enforced": current_enforced,
+        "source_level_currentness_evidence": (
+            "MATCHED_CURRENT_ENFORCED_REVISION_AT_CHECK"
+            if result == "PASS" and current_enforced
+            else "NOT_ESTABLISHED"
+        ),
+        "result": result,
         "differences": differences,
     }
 
@@ -141,18 +176,43 @@ def main() -> int:
     parser.add_argument("--report", help="Optional path for the JSON verification report")
     args = parser.parse_args()
 
+    checked_at = datetime.now(timezone.utc).isoformat()
     checks = [check_target(name, meta_file) for name, meta_file in TARGETS]
-    result = "PASS" if all(check["result"] == "PASS" for check in checks) else "FAIL"
+    result = (
+        "PASS"
+        if all(
+            check["result"] == "PASS" and check["current_enforced"]
+            for check in checks
+        )
+        else "FAIL"
+    )
 
     report = {
-        "format_version": 1,
+        "format_version": 2,
         "verification_kind": "EGOV_LIVE_SOURCE_FRESHNESS",
+        "checked_at_utc": checked_at,
         "result": result,
         "checks": checks,
+        "interpretation": {
+            "scope": "SOURCE_LEVEL_ONLY",
+            "pass_meaning": (
+                "Committed source hashes and CurrentEnforced revision metadata match "
+                "live e-Gov at check time."
+            ),
+            "does_not_establish": [
+                "service applicability",
+                "item-body verification for a service slice",
+                "human review",
+                "publication",
+                "route exposure",
+            ],
+        },
         "safety": {
             "read_only": True,
             "updates_generated_data": False,
+            "promotes_service_applicability": False,
             "promotes_review_status": False,
+            "promotes_publication": False,
         },
     }
     rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
