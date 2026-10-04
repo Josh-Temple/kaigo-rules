@@ -363,6 +363,16 @@ def build_cell(
     else:
         route_state = "BLOCKED"
 
+    if (
+        family["id"] == "unit_price_regional_classification"
+        and unit_price_mapping
+        and unit_price_mapping.get("applicability") == "APPLIES"
+        and not ingestion_rows
+        and not layers
+    ):
+        publication_state = "BLOCKED"
+        route_state = "BLOCKED"
+
     relation_raw = str(registry.get("relation_verification", {}).get("status") or "NOT_ESTABLISHED")
     relation_state = "PASS" if relation_raw == "PASS" else "NOT_ESTABLISHED"
 
