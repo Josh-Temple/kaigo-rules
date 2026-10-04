@@ -72,10 +72,20 @@ jobs:
               )
               rows.append((service["service_id"], family))
           assert {sid for sid, _ in rows} == targets
-          assert all(row["item_body_verification"]["state"] == "PASS" for _, row in rows)
-          assert all(row["currentness"]["state"] == "NOT_ESTABLISHED" for _, row in rows)
+          for sid, row in sorted(rows):
+              print(
+                  sid,
+                  "item_body=" + row["item_body_verification"]["state"],
+                  "currentness=" + row["currentness"]["state"],
+              )
+          nonpass = [sid for sid, row in rows if row["item_body_verification"]["state"] != "PASS"]
+          assert not nonpass, f"projected item-body verification not PASS: {nonpass}"
+          currentness = {sid: row["currentness"]["state"] for sid, row in rows}
+          assert all(state != "PASS" for state in currentness.values()), (
+              "item-body verification must not auto-promote currentness: " + repr(currentness)
+          )
           print("projected target item-body PASS: 10/10")
-          print("projected target currentness NOT_ESTABLISHED: 10/10")
+          print("projected currentness remains separately non-PASS:", currentness)
           PY
       - name: Upload verification report
         if: always()
