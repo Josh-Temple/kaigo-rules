@@ -1,0 +1,191 @@
+{
+  "format_version": 1,
+  "service_id": "night-homevisit",
+  "service_label": "夜間対応型訪問介護",
+  "layer": "REMUNERATION_STANDARD",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "2",
+    "section_heading": "夜間対応型訪問介護費",
+    "start_marker": "2　夜間対応型訪問介護費",
+    "end_marker": "2の2　地域密着型通所介護費",
+    "excluded_next_section": "2の2　地域密着型通所介護費",
+    "legal_text_duplicated": false
+  },
+  "canonical_sources": [
+    {
+      "id": "mhlw-community-fee-notice126-current",
+      "role": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "title": "指定地域密着型サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第126号）",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
+      "locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "厚生労働省統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示するが、本index作成のみをもってservice/item-level currentness PASSとはしない。"
+    },
+    {
+      "id": "mhlw-r8-reform-landing",
+      "role": "OFFICIAL_AMENDMENT_INDEX_SUPPORTING_ONLY",
+      "title": "令和8年度介護報酬改定について",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "locator": "令和8年度改定 > 告示",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "改正導線確認用。service sectionのcurrentnessを単独で確立する証拠としては扱わない。"
+    }
+  ],
+  "heading_hierarchy": {
+    "root": "別表 指定地域密着型サービス介護給付費単位数表",
+    "service_section": "2　夜間対応型訪問介護費",
+    "top_level_marker_range": "イからニまで",
+    "processing_improvement_marker": "ホ",
+    "unknown_titles_retained_as_null": true
+  },
+  "coverage": {
+    "top_level_items": 5,
+    "top_level_titles_directly_observed": 5,
+    "top_level_titles_not_captured": 0,
+    "numeric_child_items": 10,
+    "total_index_entries": 15,
+    "item_body_complete": false,
+    "structural_scope": "SECTION_BOUNDARY_TOP_LEVEL_ORDINALS_AND_SELECTED_DIRECT_NUMERIC_CHILDREN"
+  },
+  "top_level_items": [
+    {
+      "id": "rem.night-homevisit.top.1",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "夜間対応型訪問介護費(Ⅰ)",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > イ"
+    },
+    {
+      "id": "rem.night-homevisit.top.2",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "夜間対応型訪問介護費(Ⅱ)",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ロ"
+    },
+    {
+      "id": "rem.night-homevisit.top.3",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "認知症専門ケア加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ハ"
+    },
+    {
+      "id": "rem.night-homevisit.top.4",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "サービス提供体制強化加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ニ"
+    },
+    {
+      "id": "rem.night-homevisit.top.5",
+      "marker": "ホ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "介護職員等処遇改善加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ホ"
+    }
+  ],
+  "numeric_child_items": [
+    {
+      "id": "rem.night-homevisit.child.1",
+      "parent_marker": "ハ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "イを算定している場合",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ハ > (1)"
+    },
+    {
+      "id": "rem.night-homevisit.child.2",
+      "parent_marker": "ハ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "ロを算定している場合",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ハ > (2)"
+    },
+    {
+      "id": "rem.night-homevisit.child.3",
+      "parent_marker": "ニ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "イを算定している場合",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ニ > (1)"
+    },
+    {
+      "id": "rem.night-homevisit.child.4",
+      "parent_marker": "ニ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "ロを算定している場合",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ニ > (2)"
+    },
+    {
+      "id": "rem.night-homevisit.child.5",
+      "parent_marker": "ホ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ホ > (1)"
+    },
+    {
+      "id": "rem.night-homevisit.child.6",
+      "parent_marker": "ホ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ホ > (2)"
+    },
+    {
+      "id": "rem.night-homevisit.child.7",
+      "parent_marker": "ホ",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ホ > (3)"
+    },
+    {
+      "id": "rem.night-homevisit.child.8",
+      "parent_marker": "ホ",
+      "marker": "(4)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ホ > (4)"
+    },
+    {
+      "id": "rem.night-homevisit.child.9",
+      "parent_marker": "ホ",
+      "marker": "(5)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ホ > (5)"
+    },
+    {
+      "id": "rem.night-homevisit.child.10",
+      "parent_marker": "ホ",
+      "marker": "(6)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 2　夜間対応型訪問介護費 > ホ > (6)"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "automatic_verification_promotion_allowed": false,
+    "note": "service-specific section locatorと構造索引のingestionのみ。本文全文、委任基準、算定留意事項を複製せず、item-body/currentness/applicability-relation/human/publication/routeは独立工程のまま。"
+  }
+}

@@ -39,5 +39,20 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "remuneration": {
+      "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_family": "remuneration_notification",
+      "source_id": "mhlw-community-fee-notice126-current",
+      "source_section": "3",
+      "top_level_items": 4,
+      "numeric_child_items": 17,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+    }
+  },
+  "ingestion_indexes": {
+    "remuneration": "data/services/dementia-dayservice/remuneration-index.json"
+  }
 }

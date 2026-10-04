@@ -313,5 +313,14 @@
     "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
     "status": "current_consolidated_official_display",
     "note": "別表の介護予防サービス費1〜9を構造索引化する一次資料。2026-10-04に厚生労働省統合表示を観測したが、このsource登録自体は各サービスのitem-body verification又はcurrentnessを確立しない。"
+  },
+  {
+    "id": "mhlw-community-fee-notice126-current",
+    "layer": "報酬告示",
+    "title": "指定地域密着型サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第126号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
+    "status": "current_official_consolidated_source",
+    "note": "厚生労働省公式HTMLの統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示する。source availabilityとservice/item-level currentnessは分離し、本source登録だけではcurrentnessを自動昇格しない。"
   }
 ]

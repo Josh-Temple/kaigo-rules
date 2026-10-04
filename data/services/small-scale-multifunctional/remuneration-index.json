@@ -1,0 +1,434 @@
+{
+  "format_version": 1,
+  "service_id": "small-scale-multifunctional",
+  "service_label": "小規模多機能型居宅介護",
+  "layer": "REMUNERATION_STANDARD",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "4",
+    "section_heading": "小規模多機能型居宅介護費",
+    "start_marker": "4　小規模多機能型居宅介護費",
+    "end_marker": "5　認知症対応型共同生活介護費",
+    "excluded_next_section": "5　認知症対応型共同生活介護費",
+    "legal_text_duplicated": false
+  },
+  "canonical_sources": [
+    {
+      "id": "mhlw-community-fee-notice126-current",
+      "role": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "title": "指定地域密着型サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第126号）",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
+      "locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "厚生労働省統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示するが、本index作成のみをもってservice/item-level currentness PASSとはしない。"
+    },
+    {
+      "id": "mhlw-r8-reform-landing",
+      "role": "OFFICIAL_AMENDMENT_INDEX_SUPPORTING_ONLY",
+      "title": "令和8年度介護報酬改定について",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "locator": "令和8年度改定 > 告示",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "改正導線確認用。service sectionのcurrentnessを単独で確立する証拠としては扱わない。"
+    }
+  ],
+  "heading_hierarchy": {
+    "root": "別表 指定地域密着型サービス介護給付費単位数表",
+    "service_section": "4　小規模多機能型居宅介護費",
+    "top_level_marker_range": "イからヨまで",
+    "processing_improvement_marker": "タ",
+    "unknown_titles_retained_as_null": true
+  },
+  "coverage": {
+    "top_level_items": 16,
+    "top_level_titles_directly_observed": 16,
+    "top_level_titles_not_captured": 0,
+    "numeric_child_items": 28,
+    "total_index_entries": 44,
+    "item_body_complete": false,
+    "structural_scope": "SECTION_BOUNDARY_TOP_LEVEL_ORDINALS_AND_SELECTED_DIRECT_NUMERIC_CHILDREN"
+  },
+  "top_level_items": [
+    {
+      "id": "rem.small-scale-multifunctional.top.1",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "小規模多機能型居宅介護費",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > イ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.2",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "短期利用居宅介護費",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ロ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.3",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "初期加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ハ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.4",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "認知症加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ニ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.5",
+      "marker": "ホ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "認知症行動・心理症状緊急対応加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ホ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.6",
+      "marker": "ヘ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "若年性認知症利用者受入加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ヘ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.7",
+      "marker": "ト",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "看護職員配置加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ト"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.8",
+      "marker": "チ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "看取り連携体制加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > チ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.9",
+      "marker": "リ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "訪問体制強化加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > リ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.10",
+      "marker": "ヌ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "総合マネジメント体制強化加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ヌ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.11",
+      "marker": "ル",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "生活機能向上連携加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ル"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.12",
+      "marker": "ヲ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "口腔・栄養スクリーニング加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ヲ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.13",
+      "marker": "ワ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "科学的介護推進体制加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ワ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.14",
+      "marker": "カ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "生産性向上推進体制加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > カ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.15",
+      "marker": "ヨ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "サービス提供体制強化加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ヨ"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.top.16",
+      "marker": "タ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "介護職員等処遇改善加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > タ"
+    }
+  ],
+  "numeric_child_items": [
+    {
+      "id": "rem.small-scale-multifunctional.child.1",
+      "parent_marker": "イ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "同一建物に居住する者以外の者に対して行う場合",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > イ > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.2",
+      "parent_marker": "イ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "同一建物に居住する者に対して行う場合",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > イ > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.3",
+      "parent_marker": "ロ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護1",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ロ > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.4",
+      "parent_marker": "ロ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護2",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ロ > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.5",
+      "parent_marker": "ロ",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護3",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ロ > (3)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.6",
+      "parent_marker": "ロ",
+      "marker": "(4)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護4",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ロ > (4)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.7",
+      "parent_marker": "ロ",
+      "marker": "(5)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護5",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ロ > (5)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.8",
+      "parent_marker": "ニ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "認知症加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ニ > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.9",
+      "parent_marker": "ニ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "認知症加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ニ > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.10",
+      "parent_marker": "ニ",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "認知症加算(Ⅲ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ニ > (3)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.11",
+      "parent_marker": "ニ",
+      "marker": "(4)",
+      "kind": "NUMERIC_CHILD",
+      "title": "認知症加算(Ⅳ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ニ > (4)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.12",
+      "parent_marker": "ト",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "看護職員配置加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ト > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.13",
+      "parent_marker": "ト",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "看護職員配置加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ト > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.14",
+      "parent_marker": "ト",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "看護職員配置加算(Ⅲ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ト > (3)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.15",
+      "parent_marker": "ヌ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "総合マネジメント体制強化加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ヌ > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.16",
+      "parent_marker": "ヌ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "総合マネジメント体制強化加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ヌ > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.17",
+      "parent_marker": "ル",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "生活機能向上連携加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ル > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.18",
+      "parent_marker": "ル",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "生活機能向上連携加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ル > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.19",
+      "parent_marker": "カ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > カ > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.20",
+      "parent_marker": "カ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > カ > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.21",
+      "parent_marker": "ヨ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "イを算定している場合",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ヨ > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.22",
+      "parent_marker": "ヨ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "ロを算定している場合",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > ヨ > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.23",
+      "parent_marker": "タ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > タ > (1)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.24",
+      "parent_marker": "タ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > タ > (2)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.25",
+      "parent_marker": "タ",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > タ > (3)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.26",
+      "parent_marker": "タ",
+      "marker": "(4)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > タ > (4)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.27",
+      "parent_marker": "タ",
+      "marker": "(5)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > タ > (5)"
+    },
+    {
+      "id": "rem.small-scale-multifunctional.child.28",
+      "parent_marker": "タ",
+      "marker": "(6)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 4　小規模多機能型居宅介護費 > タ > (6)"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "automatic_verification_promotion_allowed": false,
+    "note": "service-specific section locatorと構造索引のingestionのみ。本文全文、委任基準、算定留意事項を複製せず、item-body/currentness/applicability-relation/human/publication/routeは独立工程のまま。"
+  }
+}
