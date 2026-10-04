@@ -1,0 +1,30 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-dementia-group-home",
+  "source_family": "fee_calculation_guidance",
+  "shared_manifest": "data/shared/fee-guidance/manifest.json",
+  "node_ids": [
+    "fee-guidance.shared.community.r6-comparison.II.6"
+  ],
+  "relation_ids": [
+    "fee-guidance.scope.preventive-dementia-group-home.community-r6.II.6"
+  ],
+  "applicability_evidence": {
+    "source_kind": "OFFICIAL_MHLW_APPLICABILITY_REQUIREMENTS",
+    "url": "https://www.mhlw.go.jp/content/001064403.pdf",
+    "locator": "703 介護予防認知症対応型共同生活介護費 / 留意事項通知 第2の6（4）、第2の6（5）、第2の6（8）ほか",
+    "checked_on": "2026-10-05",
+    "claim": "厚生労働省の適用要件一覧が、介護予防認知症対応型共同生活介護について当該留意事項通知の第2の6を明示的に参照しているため、既存の共有section II.6へのservice scope接続根拠とする。",
+    "currentness_use": "APPLICABILITY_ONLY_NOT_CURRENTNESS"
+  },
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "service_applicability_verification": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_promotion_allowed": false
+  }
+}
