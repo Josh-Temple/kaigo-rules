@@ -74,8 +74,9 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(dayservice["route_exposure"]["state"], "BLOCKED")
 
         self.assertEqual(dayrehab["service_scope"]["state"], "SCOPE_DEFINED")
-        self.assertEqual(dayrehab["service_applicability"]["state"], "NOT_MAPPED")
-        self.assertEqual(dayrehab["ingestion"]["state"], "NOT_INGESTED")
+        self.assertEqual(dayrehab["service_applicability"]["state"], "MAPPED")
+        self.assertGreater(dayrehab["service_applicability"]["mapped_node_count"], 0)
+        self.assertEqual(dayrehab["ingestion"]["state"], "INGESTED")
         self.assertEqual(dayrehab["item_body_verification"]["state"], "NOT_ESTABLISHED")
         self.assertEqual(dayrehab["currentness"]["state"], "NOT_ESTABLISHED")
 
@@ -88,7 +89,13 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(remuneration["currentness"]["state"], "NOT_ESTABLISHED")
         self.assertEqual(remuneration["publication"]["state"], "BLOCKED")
         self.assertEqual(remuneration["route_exposure"]["state"], "BLOCKED")
-        self.assertEqual(delegated["ingestion"]["state"], "NOT_INGESTED")
+        self.assertEqual(delegated["service_applicability"]["state"], "MAPPED")
+        self.assertGreater(delegated["service_applicability"]["mapped_node_count"], 0)
+        self.assertEqual(delegated["ingestion"]["state"], "INGESTED")
+        self.assertEqual(delegated["item_body_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(delegated["publication"]["state"], "BLOCKED")
+        self.assertEqual(delegated["route_exposure"]["state"], "BLOCKED")
 
     def test_homevisit_unit_price_ingestion_does_not_inherit_dayservice_verification(self):
         homevisit = self.cell("homevisit", "unit_price_regional_classification")
