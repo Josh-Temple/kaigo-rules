@@ -9,6 +9,8 @@ on:
       - "scripts/verify_remuneration_independent.py"
       - "scripts/import_current_remuneration.py"
       - "scripts/import_remuneration_delegated.py"
+      - "scripts/build_delegated_remuneration_shared_corpus.py"
+      - "data/shared/remuneration-delegated/**"
       - "data/remuneration-current-text.json"
       - "data/remuneration-current-text-meta.json"
       - "data/remuneration-delegated-nodes.json"
@@ -52,6 +54,8 @@ jobs:
           exit 0
       - name: Validate pinned audit provenance
         run: python scripts/validate_remuneration_independent_audit.py
+      - name: Validate shared delegated remuneration corpus projection
+        run: python scripts/build_delegated_remuneration_shared_corpus.py --check
       - name: Upload verification report
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
