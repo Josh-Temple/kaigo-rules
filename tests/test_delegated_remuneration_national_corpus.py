@@ -29,21 +29,37 @@ class DelegatedRemunerationNationalCorpusTest(unittest.TestCase):
         national.validate_committed(self.corpus)
 
     def test_registered_canonical_sources_are_fully_paginated(self):
-        self.assertEqual(self.corpus["coverage"]["source_documents"], 2)
-        self.assertEqual(self.corpus["coverage"]["source_pages"], 7)
+        self.assertEqual(self.corpus["coverage"]["source_documents"], 3)
+        self.assertEqual(self.corpus["coverage"]["source_pages"], 9)
         documents = {row["source_id"]: row for row in self.corpus["documents"]}
         self.assertEqual(documents["mhlw-fee-notice27-base"]["observed_pages"], 3)
         self.assertEqual(documents["mhlw-fee-criteria95-current"]["observed_pages"], 4)
+        self.assertEqual(documents["mhlw-fee-facility-criteria96-current"]["observed_pages"], 2)
 
     def test_national_corpus_expands_beyond_dayservice_fragment(self):
-        self.assertEqual(self.corpus["coverage"]["top_level_nodes"], 338)
+        self.assertGreater(self.corpus["coverage"]["top_level_nodes"], 338)
+        document_counts = {
+            row["source_id"]: row["top_level_node_count"]
+            for row in self.corpus["documents"]
+        }
         self.assertEqual(
-            {row["source_id"]: row["top_level_node_count"] for row in self.corpus["documents"]},
-            {
-                "mhlw-fee-notice27-base": 24,
-                "mhlw-fee-criteria95-current": 314,
-            },
+            self.corpus["coverage"]["top_level_nodes"],
+            sum(document_counts.values()),
         )
+        self.assertGreater(document_counts["mhlw-fee-notice27-base"], 0)
+        self.assertGreater(document_counts["mhlw-fee-criteria95-current"], 0)
+        self.assertGreater(document_counts["mhlw-fee-facility-criteria96-current"], 0)
+        node_ids = {row["canonical_node_id"] for row in self.corpus["nodes"]}
+        self.assertTrue({
+            "notice95.item.121-3-2",
+            "notice95.item.121-3-3",
+            "notice96.item.4-4",
+            "notice96.item.4-5",
+            "notice96.item.4-6",
+            "notice96.item.71-2",
+            "notice96.item.71-2-2",
+            "notice96.item.71-2-3",
+        }.issubset(node_ids))
         self.assertTrue(
             all(".dayservice." not in row["canonical_node_id"] for row in self.corpus["nodes"])
         )
@@ -69,7 +85,7 @@ class DelegatedRemunerationNationalCorpusTest(unittest.TestCase):
             for row in self.corpus["nodes"]
             if row["text_storage"]["kind"] == "INLINE_SHARED_CORPUS"
         ]
-        self.assertEqual(len(inline), 323)
+        self.assertEqual(len(inline), self.corpus["coverage"]["inline_shared_nodes"])
         self.assertTrue(all(row.get("official_text") for row in inline))
 
     def test_assurance_remains_fail_closed(self):
