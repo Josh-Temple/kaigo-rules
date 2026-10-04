@@ -1306,6 +1306,14 @@
       "service_id": "homevisit",
       "corpus_id": "ordinance37",
       "relation": "direct_applicability",
+      "source_node_id": "ordinance37.article.29-2",
+      "scope_source": "data/services/homevisit/ordinance37-scope.json",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "homevisit",
+      "corpus_id": "ordinance37",
+      "relation": "direct_applicability",
       "source_node_id": "ordinance37.article.30",
       "scope_source": "data/services/homevisit/ordinance37-scope.json",
       "verification_status": "NOT_SERVICE_VERIFIED"
@@ -1354,6 +1362,14 @@
       "service_id": "homevisit",
       "corpus_id": "ordinance37",
       "relation": "direct_applicability",
+      "source_node_id": "ordinance37.article.34-2",
+      "scope_source": "data/services/homevisit/ordinance37-scope.json",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "homevisit",
+      "corpus_id": "ordinance37",
+      "relation": "direct_applicability",
       "source_node_id": "ordinance37.article.35",
       "scope_source": "data/services/homevisit/ordinance37-scope.json",
       "verification_status": "NOT_SERVICE_VERIFIED"
@@ -1363,6 +1379,14 @@
       "corpus_id": "ordinance37",
       "relation": "direct_applicability",
       "source_node_id": "ordinance37.article.36",
+      "scope_source": "data/services/homevisit/ordinance37-scope.json",
+      "verification_status": "NOT_SERVICE_VERIFIED"
+    },
+    {
+      "service_id": "homevisit",
+      "corpus_id": "ordinance37",
+      "relation": "direct_applicability",
+      "source_node_id": "ordinance37.article.36-2",
       "scope_source": "data/services/homevisit/ordinance37-scope.json",
       "verification_status": "NOT_SERVICE_VERIFIED"
     },
