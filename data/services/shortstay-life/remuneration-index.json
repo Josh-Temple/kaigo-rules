@@ -1,0 +1,1244 @@
+{
+  "format_version": 1,
+  "service_id": "shortstay-life",
+  "label": "短期入所生活介護",
+  "layer": "REMUNERATION_NOTIFICATION",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "平成12年厚生省告示第19号 別表 8 短期入所生活介護費(1日につき)",
+    "start_marker": "8 短期入所生活介護費(1日につき)",
+    "end_marker": "9 短期入所療養介護費 の直前",
+    "excluded_next_section": "9 短期入所療養介護費",
+    "legal_text_duplicated": false
+  },
+  "official_source": {
+    "source_id": "mhlw-fee-notice19-base",
+    "notice_number": "平成12年厚生省告示第19号",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+    "observed_on_jst": "2026-10-04",
+    "observation_kind": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE_NOT_CURRENTNESS_PROOF"
+  },
+  "extraction_policy": {
+    "full_legal_text_reproduced": false,
+    "indexed_content": "bounded section markers, top-level structure, and directly visible numeric structural rows",
+    "long_note_body_policy": "locator-only unless a short structural row contains a directly visible numeric expression",
+    "delegated_remuneration_criteria_included": false
+  },
+  "coverage": {
+    "section_lines_observed": 152,
+    "top_level_items": 9,
+    "numeric_child_items": 102,
+    "total_index_entries": 111
+  },
+  "top_level_items": [
+    {
+      "id": "remuneration.shortstay-life.top.01",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "短期入所生活介護費",
+      "numeric_expressions": [],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / section-line-2"
+    },
+    {
+      "id": "remuneration.shortstay-life.top.02",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "ユニット型短期入所生活介護費",
+      "numeric_expressions": [],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / section-line-29"
+    },
+    {
+      "id": "remuneration.shortstay-life.top.03",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "口腔くう連携強化加算",
+      "numeric_expressions": [
+        "50単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ハ / section-line-119"
+    },
+    {
+      "id": "remuneration.shortstay-life.top.04",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "療養食加算",
+      "numeric_expressions": [
+        "8単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ニ / section-line-121"
+    },
+    {
+      "id": "remuneration.shortstay-life.top.05",
+      "marker": "ホ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "在宅中重度者受入加算",
+      "numeric_expressions": [],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ホ / section-line-126"
+    },
+    {
+      "id": "remuneration.shortstay-life.top.06",
+      "marker": "ヘ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "認知症専門ケア加算",
+      "numeric_expressions": [],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ヘ / section-line-132"
+    },
+    {
+      "id": "remuneration.shortstay-life.top.07",
+      "marker": "ト",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "生産性向上推進体制加算",
+      "numeric_expressions": [],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ト / section-line-136"
+    },
+    {
+      "id": "remuneration.shortstay-life.top.08",
+      "marker": "チ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "サービス提供体制強化加算",
+      "numeric_expressions": [],
+      "source_locator": "8 短期入所生活介護費(1日につき) / チ / section-line-140"
+    },
+    {
+      "id": "remuneration.shortstay-life.top.09",
+      "marker": "リ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "介護職員等処遇改善加算",
+      "numeric_expressions": [],
+      "source_locator": "8 短期入所生活介護費(1日につき) / リ / section-line-145"
+    }
+  ],
+  "numeric_child_items": [
+    {
+      "id": "remuneration.shortstay-life.numeric.001",
+      "parent_marker": "イ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "645単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / a / section-line-5"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.002",
+      "parent_marker": "イ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "715単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / b / section-line-6"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.003",
+      "parent_marker": "イ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "787単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / c / section-line-7"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.004",
+      "parent_marker": "イ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "856単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / d / section-line-8"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.005",
+      "parent_marker": "イ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "926単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / e / section-line-9"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.006",
+      "parent_marker": "イ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "645単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / a / section-line-11"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.007",
+      "parent_marker": "イ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "715単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / b / section-line-12"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.008",
+      "parent_marker": "イ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "787単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / c / section-line-13"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.009",
+      "parent_marker": "イ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "856単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / d / section-line-14"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.010",
+      "parent_marker": "イ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "926単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / e / section-line-15"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.011",
+      "parent_marker": "イ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "603単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / a / section-line-18"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.012",
+      "parent_marker": "イ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "672単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / b / section-line-19"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.013",
+      "parent_marker": "イ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "745単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / c / section-line-20"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.014",
+      "parent_marker": "イ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "815単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / d / section-line-21"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.015",
+      "parent_marker": "イ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "884単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / e / section-line-22"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.016",
+      "parent_marker": "イ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "603単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / a / section-line-24"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.017",
+      "parent_marker": "イ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "672単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / b / section-line-25"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.018",
+      "parent_marker": "イ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "745単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / c / section-line-26"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.019",
+      "parent_marker": "イ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "815単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / d / section-line-27"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.020",
+      "parent_marker": "イ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "884単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / イ / e / section-line-28"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.021",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "746単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / a / section-line-32"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.022",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "815単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / b / section-line-33"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.023",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "891単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / c / section-line-34"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.024",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "959単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / d / section-line-35"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.025",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,028単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / e / section-line-36"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.026",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "746単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / a / section-line-38"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.027",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "815単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / b / section-line-39"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.028",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "891単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / c / section-line-40"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.029",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "959単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / d / section-line-41"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.030",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,028単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / e / section-line-42"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.031",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "704単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / a / section-line-45"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.032",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "772単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / b / section-line-46"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.033",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "847単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / c / section-line-47"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.034",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "918単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / d / section-line-48"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.035",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "987単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / e / section-line-49"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.036",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "704単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / a / section-line-51"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.037",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "772単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / b / section-line-52"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.038",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "847単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / c / section-line-53"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.039",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "918単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / d / section-line-54"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.040",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "987単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / e / section-line-55"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.041",
+      "parent_marker": "ロ",
+      "marker": "2",
+      "kind": "NUMERIC_NOTE",
+      "title": "注2",
+      "numeric_expressions": [
+        "100分の97"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 2 / section-line-58"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.042",
+      "parent_marker": "ロ",
+      "marker": "3",
+      "kind": "NUMERIC_NOTE",
+      "title": "注3",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 3 / section-line-59"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.043",
+      "parent_marker": "ロ",
+      "marker": "4",
+      "kind": "NUMERIC_NOTE",
+      "title": "注4",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 4 / section-line-60"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.044",
+      "parent_marker": "ロ",
+      "marker": "5",
+      "kind": "NUMERIC_NOTE",
+      "title": "注5",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 5 / section-line-61"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.045",
+      "parent_marker": "ロ",
+      "marker": "7",
+      "kind": "NUMERIC_NOTE",
+      "title": "注7",
+      "numeric_expressions": [
+        "13単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 7 / section-line-63"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.046",
+      "parent_marker": "ロ",
+      "marker": "イ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生活機能向上連携加算(Ⅰ)",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / イ / section-line-65"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.047",
+      "parent_marker": "ロ",
+      "marker": "ロ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生活機能向上連携加算(Ⅱ)",
+      "numeric_expressions": [
+        "200単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / ロ / section-line-66"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.048",
+      "parent_marker": "ロ",
+      "marker": "10",
+      "kind": "NUMERIC_NOTE",
+      "title": "注10",
+      "numeric_expressions": [
+        "56単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 10 / section-line-68"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.049",
+      "parent_marker": "ロ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅰ)",
+      "numeric_expressions": [
+        "4単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (1) / section-line-70"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.050",
+      "parent_marker": "ロ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅱ)",
+      "numeric_expressions": [
+        "8単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (2) / section-line-71"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.051",
+      "parent_marker": "ロ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅲ)イ",
+      "numeric_expressions": [
+        "12単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (3) / section-line-72"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.052",
+      "parent_marker": "ロ",
+      "marker": "(4)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅲ)ロ",
+      "numeric_expressions": [
+        "6単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (4) / section-line-73"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.053",
+      "parent_marker": "ロ",
+      "marker": "(5)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅳ)イ",
+      "numeric_expressions": [
+        "23単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (5) / section-line-74"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.054",
+      "parent_marker": "ロ",
+      "marker": "(6)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅳ)ロ",
+      "numeric_expressions": [
+        "13単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (6) / section-line-75"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.055",
+      "parent_marker": "ロ",
+      "marker": "12",
+      "kind": "NUMERIC_NOTE",
+      "title": "注12",
+      "numeric_expressions": [
+        "58単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 12 / section-line-76"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.056",
+      "parent_marker": "ロ",
+      "marker": "13",
+      "kind": "NUMERIC_NOTE",
+      "title": "注13",
+      "numeric_expressions": [
+        "64単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 13 / section-line-77"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.057",
+      "parent_marker": "ロ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜勤職員配置加算(Ⅰ)",
+      "numeric_expressions": [
+        "13単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (1) / section-line-79"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.058",
+      "parent_marker": "ロ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜勤職員配置加算(Ⅱ)",
+      "numeric_expressions": [
+        "18単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (2) / section-line-80"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.059",
+      "parent_marker": "ロ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜勤職員配置加算(Ⅲ)",
+      "numeric_expressions": [
+        "15単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (3) / section-line-81"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.060",
+      "parent_marker": "ロ",
+      "marker": "(4)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜勤職員配置加算(Ⅳ)",
+      "numeric_expressions": [
+        "20単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (4) / section-line-82"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.061",
+      "parent_marker": "ロ",
+      "marker": "15",
+      "kind": "NUMERIC_NOTE",
+      "title": "注15",
+      "numeric_expressions": [
+        "200単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 15 / section-line-83"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.062",
+      "parent_marker": "ロ",
+      "marker": "16",
+      "kind": "NUMERIC_NOTE",
+      "title": "注16",
+      "numeric_expressions": [
+        "120単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 16 / section-line-84"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.063",
+      "parent_marker": "ロ",
+      "marker": "17",
+      "kind": "NUMERIC_NOTE",
+      "title": "注17",
+      "numeric_expressions": [
+        "184単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 17 / section-line-85"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.064",
+      "parent_marker": "ロ",
+      "marker": "19",
+      "kind": "NUMERIC_NOTE",
+      "title": "注19",
+      "numeric_expressions": [
+        "90単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 19 / section-line-90"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.065",
+      "parent_marker": "ロ",
+      "marker": "22",
+      "kind": "NUMERIC_NOTE",
+      "title": "注22",
+      "numeric_expressions": [
+        "30単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / 22 / section-line-93"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.066",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "589単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (一) / section-line-96"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.067",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "659単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (二) / section-line-97"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.068",
+      "parent_marker": "ロ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "732単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (三) / section-line-98"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.069",
+      "parent_marker": "ロ",
+      "marker": "(四)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "802単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (四) / section-line-99"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.070",
+      "parent_marker": "ロ",
+      "marker": "(五)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "871単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (五) / section-line-100"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.071",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "573単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (一) / section-line-102"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.072",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "642単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (二) / section-line-103"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.073",
+      "parent_marker": "ロ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "715単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (三) / section-line-104"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.074",
+      "parent_marker": "ロ",
+      "marker": "(四)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "785単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (四) / section-line-105"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.075",
+      "parent_marker": "ロ",
+      "marker": "(五)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "854単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (五) / section-line-106"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.076",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "670単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (一) / section-line-108"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.077",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "740単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (二) / section-line-109"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.078",
+      "parent_marker": "ロ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "815単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (三) / section-line-110"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.079",
+      "parent_marker": "ロ",
+      "marker": "(四)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "886単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (四) / section-line-111"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.080",
+      "parent_marker": "ロ",
+      "marker": "(五)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "955単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (五) / section-line-112"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.081",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "670単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (一) / section-line-114"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.082",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "740単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (二) / section-line-115"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.083",
+      "parent_marker": "ロ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "815単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (三) / section-line-116"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.084",
+      "parent_marker": "ロ",
+      "marker": "(四)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "886単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (四) / section-line-117"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.085",
+      "parent_marker": "ロ",
+      "marker": "(五)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "955単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ロ / (五) / section-line-118"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.086",
+      "parent_marker": "ホ",
+      "marker": "イ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅰ)又は(Ⅲ)イ若しくはロを算定している場合(看護体制加算(Ⅱ)又は(Ⅳ)イ若しくはロを算定していない場合に限る。)",
+      "numeric_expressions": [
+        "421単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ホ / イ / section-line-128"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.087",
+      "parent_marker": "ホ",
+      "marker": "ロ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅱ)又は(Ⅳ)イ若しくはロを算定している場合(看護体制加算(Ⅰ)又は(Ⅲ)イ若しくはロを算定していない場合に限る。)",
+      "numeric_expressions": [
+        "417単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ホ / ロ / section-line-129"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.088",
+      "parent_marker": "ホ",
+      "marker": "ハ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算(Ⅰ)又は(Ⅲ)イ若しくはロ及び(Ⅱ)又は(Ⅳ)イ若しくはロをいずれも算定している場合",
+      "numeric_expressions": [
+        "413単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ホ / ハ / section-line-130"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.089",
+      "parent_marker": "ホ",
+      "marker": "ニ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "看護体制加算を算定していない場合",
+      "numeric_expressions": [
+        "425単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ホ / ニ / section-line-131"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.090",
+      "parent_marker": "ヘ",
+      "marker": "イ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅰ)",
+      "numeric_expressions": [
+        "3単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ヘ / イ / section-line-134"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.091",
+      "parent_marker": "ヘ",
+      "marker": "ロ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅱ)",
+      "numeric_expressions": [
+        "4単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ヘ / ロ / section-line-135"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.092",
+      "parent_marker": "ト",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ト / (1) / section-line-138"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.093",
+      "parent_marker": "ト",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "numeric_expressions": [
+        "10単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / ト / (2) / section-line-139"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.094",
+      "parent_marker": "チ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅰ)",
+      "numeric_expressions": [
+        "22単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / チ / (1) / section-line-142"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.095",
+      "parent_marker": "チ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅱ)",
+      "numeric_expressions": [
+        "18単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / チ / (2) / section-line-143"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.096",
+      "parent_marker": "チ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅲ)",
+      "numeric_expressions": [
+        "6単位"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / チ / (3) / section-line-144"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.097",
+      "parent_marker": "リ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ イからチまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の163"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / リ / (1) / section-line-147"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.098",
+      "parent_marker": "リ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ イからチまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の176"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / リ / (2) / section-line-148"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.099",
+      "parent_marker": "リ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ イからチまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の159"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / リ / (3) / section-line-149"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.100",
+      "parent_marker": "リ",
+      "marker": "(4)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ イからチまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の172"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / リ / (4) / section-line-150"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.101",
+      "parent_marker": "リ",
+      "marker": "(5)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ) イからチまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の136"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / リ / (5) / section-line-151"
+    },
+    {
+      "id": "remuneration.shortstay-life.numeric.102",
+      "parent_marker": "リ",
+      "marker": "(6)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ) イからチまでにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の113"
+      ],
+      "source_locator": "8 短期入所生活介護費(1日につき) / リ / (6) / section-line-152"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}

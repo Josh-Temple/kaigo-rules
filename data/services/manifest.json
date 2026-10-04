@@ -122,21 +122,21 @@
       "service_id": "shortstay-medical",
       "label": "短期入所療養介護",
       "service_class": "HOME_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/shortstay-medical.json"
     },
     {
       "service_id": "specific-facility",
       "label": "特定施設入居者生活介護",
       "service_class": "HOME_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/specific-facility.json"
     },
     {
       "service_id": "welfare-equipment-rental",
       "label": "福祉用具貸与",
       "service_class": "HOME_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/welfare-equipment-rental.json"
     },
     {

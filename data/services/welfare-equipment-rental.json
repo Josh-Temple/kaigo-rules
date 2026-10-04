@@ -5,8 +5,8 @@
     "label": "福祉用具貸与",
     "service_class": "HOME_SERVICE"
   },
-  "readiness": "REGISTERED_NOT_INGESTED",
-  "ingestion_state": "REGISTERED_NOT_INGESTED",
+  "readiness": "PARTIAL_INGESTION",
+  "ingestion_state": "PARTIAL_INGESTION",
   "expected_source_families": [
     "care_insurance_act",
     "governing_standards_ordinance",
@@ -38,5 +38,18 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "remuneration": {
+      "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "top_level_items": 1,
+      "numeric_child_items": 2,
+      "total_index_entries": 3,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
+    }
+  },
+  "ingestion_indexes": {
+    "remuneration": "data/services/welfare-equipment-rental/remuneration-index.json"
+  }
 }

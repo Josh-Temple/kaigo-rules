@@ -1,0 +1,6163 @@
+{
+  "format_version": 1,
+  "service_id": "shortstay-medical",
+  "label": "短期入所療養介護",
+  "layer": "REMUNERATION_NOTIFICATION",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "平成12年厚生省告示第19号 別表 9 短期入所療養介護費",
+    "start_marker": "9 短期入所療養介護費",
+    "end_marker": "10 特定施設入居者生活介護費 の直前",
+    "excluded_next_section": "10 特定施設入居者生活介護費",
+    "legal_text_duplicated": false
+  },
+  "official_source": {
+    "source_id": "mhlw-fee-notice19-base",
+    "notice_number": "平成12年厚生省告示第19号",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+    "observed_on_jst": "2026-10-04",
+    "observation_kind": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE_NOT_CURRENTNESS_PROOF"
+  },
+  "extraction_policy": {
+    "full_legal_text_reproduced": false,
+    "indexed_content": "bounded section markers, top-level structure, and directly visible numeric structural rows",
+    "long_note_body_policy": "locator-only unless a short structural row contains a directly visible numeric expression",
+    "delegated_remuneration_criteria_included": false
+  },
+  "coverage": {
+    "section_lines_observed": 809,
+    "top_level_items": 5,
+    "numeric_child_items": 552,
+    "total_index_entries": 557
+  },
+  "top_level_items": [
+    {
+      "id": "remuneration.shortstay-medical.top.01",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "介護老人保健施設における短期入所療養介護費",
+      "numeric_expressions": [],
+      "source_locator": "9 短期入所療養介護費 / イ / section-line-2"
+    },
+    {
+      "id": "remuneration.shortstay-medical.top.02",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "療養病床を有する病院における短期入所療養介護費",
+      "numeric_expressions": [],
+      "source_locator": "9 短期入所療養介護費 / ロ / section-line-205"
+    },
+    {
+      "id": "remuneration.shortstay-medical.top.03",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "診療所における短期入所療養介護費",
+      "numeric_expressions": [],
+      "source_locator": "9 短期入所療養介護費 / ハ / section-line-416"
+    },
+    {
+      "id": "remuneration.shortstay-medical.top.04",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "削除",
+      "numeric_expressions": [],
+      "source_locator": "9 短期入所療養介護費 / ニ / section-line-557"
+    },
+    {
+      "id": "remuneration.shortstay-medical.top.05",
+      "marker": "ホ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "介護医療院における短期入所療養介護費",
+      "numeric_expressions": [],
+      "source_locator": "9 短期入所療養介護費 / ホ / section-line-558"
+    }
+  ],
+  "numeric_child_items": [
+    {
+      "id": "remuneration.shortstay-medical.numeric.001",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "753単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-6"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.002",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "801単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-7"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.003",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "864単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-8"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.004",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "918単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-9"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.005",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "971単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-10"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.006",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "819単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-12"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.007",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "893単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-13"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.008",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "958単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-14"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.009",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,017単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-15"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.010",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,074単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-16"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.011",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "830単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-18"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.012",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "880単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-19"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.013",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "944単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-20"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.014",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "997単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-21"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.015",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,052単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-22"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.016",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "902単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-24"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.017",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "979単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-25"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.018",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,044単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-26"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.019",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,102単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-27"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.020",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,161単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-28"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.021",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "790単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-31"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.022",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "874単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-32"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.023",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "992単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-33"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.024",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,071単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-34"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.025",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,150単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-35"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.026",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "870単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-37"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.027",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "956単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-38"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.028",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,074単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-39"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.029",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,154単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-40"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.030",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,231単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-41"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.031",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "790単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-44"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.032",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "868単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-45"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.033",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "965単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-46"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.034",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,043単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-47"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.035",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,121単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-48"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.036",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "870単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-50"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.037",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "949単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-51"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.038",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,046単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-52"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.039",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,124単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-53"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.040",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,203単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-54"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.041",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "738単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-57"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.042",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "784単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-58"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.043",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "848単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-59"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.044",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "901単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-60"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.045",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "953単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-61"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.046",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "813単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-63"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.047",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "863単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-64"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.048",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "925単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-65"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.049",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "977単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-66"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.050",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,031単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-67"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.051",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "836単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-71"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.052",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "883単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-72"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.053",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "948単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-73"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.054",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,003単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-74"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.055",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,056単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-75"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.056",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "906単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-77"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.057",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "983単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-78"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.058",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,048単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-79"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.059",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,106単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-80"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.060",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,165単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-81"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.061",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "836単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-83"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.062",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "883単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-84"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.063",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "948単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-85"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.064",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,003単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-86"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.065",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,056単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-87"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.066",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "906単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-89"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.067",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "983単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-90"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.068",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,048単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-91"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.069",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,106単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-92"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.070",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,165単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-93"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.071",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "959単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-96"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.072",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,043単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-97"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.073",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,162単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-98"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.074",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,242単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-99"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.075",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,319単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-100"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.076",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "959単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-102"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.077",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,043単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-103"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.078",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,162単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-104"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.079",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,242単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-105"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.080",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,319単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-106"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.081",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "959単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-109"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.082",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,037単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-110"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.083",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,135単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-111"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.084",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,213単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-112"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.085",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,291単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-113"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.086",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "959単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-115"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.087",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,037単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-116"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.088",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,135単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-117"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.089",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,213単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-118"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.090",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,291単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-119"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.091",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "818単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-122"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.092",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "866単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-123"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.093",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "929単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-124"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.094",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "983単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-125"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.095",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,035単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-126"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.096",
+      "parent_marker": "イ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "818単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / i / section-line-128"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.097",
+      "parent_marker": "イ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "866単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / ii / section-line-129"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.098",
+      "parent_marker": "イ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "929単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iii / section-line-130"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.099",
+      "parent_marker": "イ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "983単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / iv / section-line-131"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.100",
+      "parent_marker": "イ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,035単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / v / section-line-132"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.101",
+      "parent_marker": "イ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "3時間以上4時間未満",
+      "numeric_expressions": [
+        "664単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (一) / section-line-134"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.102",
+      "parent_marker": "イ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "4時間以上6時間未満",
+      "numeric_expressions": [
+        "927単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (二) / section-line-135"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.103",
+      "parent_marker": "イ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "6時間以上8時間未満",
+      "numeric_expressions": [
+        "1,296単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (三) / section-line-136"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.104",
+      "parent_marker": "イ",
+      "marker": "3",
+      "kind": "NUMERIC_NOTE",
+      "title": "注3",
+      "numeric_expressions": [
+        "100分の97"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 3 / section-line-140"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.105",
+      "parent_marker": "イ",
+      "marker": "4",
+      "kind": "NUMERIC_NOTE",
+      "title": "注4",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 4 / section-line-141"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.106",
+      "parent_marker": "イ",
+      "marker": "5",
+      "kind": "NUMERIC_NOTE",
+      "title": "注5",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 5 / section-line-142"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.107",
+      "parent_marker": "イ",
+      "marker": "6",
+      "kind": "NUMERIC_NOTE",
+      "title": "注6",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 6 / section-line-143"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.108",
+      "parent_marker": "イ",
+      "marker": "8",
+      "kind": "NUMERIC_NOTE",
+      "title": "注8",
+      "numeric_expressions": [
+        "24単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 8 / section-line-145"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.109",
+      "parent_marker": "イ",
+      "marker": "9",
+      "kind": "NUMERIC_NOTE",
+      "title": "注9",
+      "numeric_expressions": [
+        "240単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 9 / section-line-146"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.110",
+      "parent_marker": "イ",
+      "marker": "10",
+      "kind": "NUMERIC_NOTE",
+      "title": "注10",
+      "numeric_expressions": [
+        "76単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 10 / section-line-147"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.111",
+      "parent_marker": "イ",
+      "marker": "11",
+      "kind": "NUMERIC_NOTE",
+      "title": "注11",
+      "numeric_expressions": [
+        "200単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 11 / section-line-148"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.112",
+      "parent_marker": "イ",
+      "marker": "12",
+      "kind": "NUMERIC_NOTE",
+      "title": "注12",
+      "numeric_expressions": [
+        "90単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 12 / section-line-149"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.113",
+      "parent_marker": "イ",
+      "marker": "13",
+      "kind": "NUMERIC_NOTE",
+      "title": "注13",
+      "numeric_expressions": [
+        "120単位",
+        "60単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 13 / section-line-150"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.114",
+      "parent_marker": "イ",
+      "marker": "14",
+      "kind": "NUMERIC_NOTE",
+      "title": "注14",
+      "numeric_expressions": [
+        "120単位",
+        "60単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 14 / section-line-151"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.115",
+      "parent_marker": "イ",
+      "marker": "16",
+      "kind": "NUMERIC_NOTE",
+      "title": "注16",
+      "numeric_expressions": [
+        "184単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / 16 / section-line-153"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.116",
+      "parent_marker": "イ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "療養体制維持特別加算(Ⅰ)",
+      "numeric_expressions": [
+        "27単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (一) / section-line-162"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.117",
+      "parent_marker": "イ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "療養体制維持特別加算(Ⅱ)",
+      "numeric_expressions": [
+        "57単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (二) / section-line-163"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.118",
+      "parent_marker": "イ",
+      "marker": "(4)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "総合医学管理加算",
+      "numeric_expressions": [
+        "275単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (4) / section-line-165"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.119",
+      "parent_marker": "イ",
+      "marker": "(5)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "口腔くう連携強化加算",
+      "numeric_expressions": [
+        "50単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (5) / section-line-169"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.120",
+      "parent_marker": "イ",
+      "marker": "(6)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "療養食加算",
+      "numeric_expressions": [
+        "8単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (6) / section-line-171"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.121",
+      "parent_marker": "イ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅰ)",
+      "numeric_expressions": [
+        "3単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (一) / section-line-178"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.122",
+      "parent_marker": "イ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅱ)",
+      "numeric_expressions": [
+        "4単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (二) / section-line-179"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.123",
+      "parent_marker": "イ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "緊急時治療管理(1日につき)",
+      "numeric_expressions": [
+        "518単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (一) / section-line-182"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.124",
+      "parent_marker": "イ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (一) / section-line-190"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.125",
+      "parent_marker": "イ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "numeric_expressions": [
+        "10単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (二) / section-line-191"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.126",
+      "parent_marker": "イ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅰ)",
+      "numeric_expressions": [
+        "22単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (一) / section-line-194"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.127",
+      "parent_marker": "イ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅱ)",
+      "numeric_expressions": [
+        "18単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (二) / section-line-195"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.128",
+      "parent_marker": "イ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅲ)",
+      "numeric_expressions": [
+        "6単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (三) / section-line-196"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.129",
+      "parent_marker": "イ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ (1)から(10)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の90"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (一) / section-line-199"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.130",
+      "parent_marker": "イ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ (1)から(10)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の97"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (二) / section-line-200"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.131",
+      "parent_marker": "イ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ (1)から(10)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の86"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (三) / section-line-201"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.132",
+      "parent_marker": "イ",
+      "marker": "(四)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ (1)から(10)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の93"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (四) / section-line-202"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.133",
+      "parent_marker": "イ",
+      "marker": "(五)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ) (1)から(10)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の69"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (五) / section-line-203"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.134",
+      "parent_marker": "イ",
+      "marker": "(六)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ) (1)から(10)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の59"
+      ],
+      "source_locator": "9 短期入所療養介護費 / イ / (六) / section-line-204"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.135",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "723単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-209"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.136",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "830単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-210"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.137",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,064単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-211"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.138",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,163単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-212"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.139",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,253単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-213"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.140",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "753単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-215"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.141",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "866単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-216"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.142",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,109単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-217"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.143",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,213単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-218"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.144",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,306単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-219"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.145",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "742単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-221"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.146",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "854単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-222"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.147",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,094単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-223"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.148",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,196単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-224"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.149",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,288単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-225"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.150",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "831単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-227"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.151",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "941単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-228"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.152",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,173単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-229"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.153",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,273単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-230"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.154",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,362単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-231"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.155",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "867単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-233"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.156",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "980単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-234"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.157",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,224単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-235"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.158",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,328単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-236"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.159",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,421単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-237"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.160",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "855単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-239"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.161",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "966単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-240"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.162",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,206単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-241"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.163",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,307単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-242"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.164",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,399単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-243"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.165",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "666単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-246"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.166",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "773単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-247"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.167",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "933単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-248"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.168",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,086単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-249"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.169",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,127単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-250"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.170",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "681単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-252"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.171",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "792単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-253"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.172",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "955単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-254"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.173",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,111単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-255"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.174",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,154単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-256"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.175",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "775単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-258"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.176",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "884単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-259"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.177",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,042単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-260"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.178",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,196単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-261"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.179",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,237単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-262"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.180",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "795単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-264"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.181",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "905単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-265"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.182",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,066単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-266"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.183",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,224単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-267"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.184",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,266単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-268"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.185",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "642単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-271"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.186",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "754単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-272"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.187",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "904単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-273"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.188",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,059単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-274"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.189",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,100単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-275"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.190",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "754単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-277"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.191",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "864単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-278"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.192",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,014単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-279"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.193",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,170単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-280"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.194",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,211単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-281"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.195",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "732単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-285"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.196",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "841単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-286"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.197",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "992単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-287"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.198",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,081単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-288"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.199",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,172単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-289"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.200",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "843単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-291"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.201",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "953単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-292"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.202",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,101単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-293"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.203",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,193単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-294"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.204",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,283単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-295"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.205",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "732単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-298"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.206",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "841単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-299"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.207",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "950単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-300"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.208",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,041単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-301"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.209",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,130単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-302"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.210",
+      "parent_marker": "ロ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "843単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / i / section-line-304"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.211",
+      "parent_marker": "ロ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "953単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ii / section-line-305"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.212",
+      "parent_marker": "ロ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,059単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iii / section-line-306"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.213",
+      "parent_marker": "ロ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,149単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / iv / section-line-307"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.214",
+      "parent_marker": "ロ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,242単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / v / section-line-308"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.215",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "856単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / a / section-line-311"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.216",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "963単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / b / section-line-312"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.217",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,197単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / c / section-line-313"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.218",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,296単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / d / section-line-314"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.219",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,385単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / e / section-line-315"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.220",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "885単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / a / section-line-317"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.221",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "998単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / b / section-line-318"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.222",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,242単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / c / section-line-319"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.223",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,345単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / d / section-line-320"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.224",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,438単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / e / section-line-321"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.225",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "874単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / a / section-line-323"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.226",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "985単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / b / section-line-324"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.227",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,226単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / c / section-line-325"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.228",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,328単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / d / section-line-326"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.229",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,419単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / e / section-line-327"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.230",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "856単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / a / section-line-329"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.231",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "963単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / b / section-line-330"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.232",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,197単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / c / section-line-331"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.233",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,296単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / d / section-line-332"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.234",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,385単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / e / section-line-333"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.235",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "885単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / a / section-line-335"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.236",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "998単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / b / section-line-336"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.237",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,242単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / c / section-line-337"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.238",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,345単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / d / section-line-338"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.239",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,438単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / e / section-line-339"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.240",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "874単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / a / section-line-341"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.241",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "985単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / b / section-line-342"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.242",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,226単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / c / section-line-343"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.243",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,328単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / d / section-line-344"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.244",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,419単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / e / section-line-345"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.245",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "856単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / a / section-line-348"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.246",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "963単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / b / section-line-349"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.247",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,105単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / c / section-line-350"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.248",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,195単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / d / section-line-351"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.249",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,284単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / e / section-line-352"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.250",
+      "parent_marker": "ロ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "856単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / a / section-line-354"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.251",
+      "parent_marker": "ロ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "963単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / b / section-line-355"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.252",
+      "parent_marker": "ロ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,105単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / c / section-line-356"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.253",
+      "parent_marker": "ロ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,195単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / d / section-line-357"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.254",
+      "parent_marker": "ロ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,284単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / e / section-line-358"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.255",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "3時間以上4時間未満",
+      "numeric_expressions": [
+        "684単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (一) / section-line-360"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.256",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "4時間以上6時間未満",
+      "numeric_expressions": [
+        "948単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (二) / section-line-361"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.257",
+      "parent_marker": "ロ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "6時間以上8時間未満",
+      "numeric_expressions": [
+        "1,316単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (三) / section-line-362"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.258",
+      "parent_marker": "ロ",
+      "marker": "3",
+      "kind": "NUMERIC_NOTE",
+      "title": "注3",
+      "numeric_expressions": [
+        "100分の97"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 3 / section-line-366"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.259",
+      "parent_marker": "ロ",
+      "marker": "4",
+      "kind": "NUMERIC_NOTE",
+      "title": "注4",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 4 / section-line-367"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.260",
+      "parent_marker": "ロ",
+      "marker": "5",
+      "kind": "NUMERIC_NOTE",
+      "title": "注5",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 5 / section-line-368"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.261",
+      "parent_marker": "ロ",
+      "marker": "6",
+      "kind": "NUMERIC_NOTE",
+      "title": "注6",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 6 / section-line-369"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.262",
+      "parent_marker": "ロ",
+      "marker": "7",
+      "kind": "NUMERIC_NOTE",
+      "title": "注7",
+      "numeric_expressions": [
+        "25単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 7 / section-line-370"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.263",
+      "parent_marker": "ロ",
+      "marker": "8",
+      "kind": "NUMERIC_NOTE",
+      "title": "注8",
+      "numeric_expressions": [
+        "12単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 8 / section-line-371"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.264",
+      "parent_marker": "ロ",
+      "marker": "イ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間勤務等看護(Ⅰ)",
+      "numeric_expressions": [
+        "23単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / イ / section-line-373"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.265",
+      "parent_marker": "ロ",
+      "marker": "ロ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間勤務等看護(Ⅱ)",
+      "numeric_expressions": [
+        "14単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ロ / section-line-374"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.266",
+      "parent_marker": "ロ",
+      "marker": "ハ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間勤務等看護(Ⅲ)",
+      "numeric_expressions": [
+        "14単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ハ / section-line-375"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.267",
+      "parent_marker": "ロ",
+      "marker": "ニ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間勤務等看護(Ⅳ)",
+      "numeric_expressions": [
+        "7単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / ニ / section-line-376"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.268",
+      "parent_marker": "ロ",
+      "marker": "10",
+      "kind": "NUMERIC_NOTE",
+      "title": "注10",
+      "numeric_expressions": [
+        "200単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 10 / section-line-377"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.269",
+      "parent_marker": "ロ",
+      "marker": "11",
+      "kind": "NUMERIC_NOTE",
+      "title": "注11",
+      "numeric_expressions": [
+        "90単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 11 / section-line-378"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.270",
+      "parent_marker": "ロ",
+      "marker": "12",
+      "kind": "NUMERIC_NOTE",
+      "title": "注12",
+      "numeric_expressions": [
+        "120単位",
+        "60単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 12 / section-line-379"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.271",
+      "parent_marker": "ロ",
+      "marker": "13",
+      "kind": "NUMERIC_NOTE",
+      "title": "注13",
+      "numeric_expressions": [
+        "184単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / 13 / section-line-380"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.272",
+      "parent_marker": "ロ",
+      "marker": "(6)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "口腔くう連携強化加算",
+      "numeric_expressions": [
+        "50単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (6) / section-line-386"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.273",
+      "parent_marker": "ロ",
+      "marker": "(7)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "療養食加算",
+      "numeric_expressions": [
+        "8単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (7) / section-line-388"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.274",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅰ)",
+      "numeric_expressions": [
+        "3単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (一) / section-line-395"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.275",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅱ)",
+      "numeric_expressions": [
+        "4単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (二) / section-line-396"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.276",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (一) / section-line-401"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.277",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "numeric_expressions": [
+        "10単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (二) / section-line-402"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.278",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅰ)",
+      "numeric_expressions": [
+        "22単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (一) / section-line-405"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.279",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅱ)",
+      "numeric_expressions": [
+        "18単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (二) / section-line-406"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.280",
+      "parent_marker": "ロ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅲ)",
+      "numeric_expressions": [
+        "6単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (三) / section-line-407"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.281",
+      "parent_marker": "ロ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ (1)から(11)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の62"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (一) / section-line-410"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.282",
+      "parent_marker": "ロ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ (1)から(11)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の66"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (二) / section-line-411"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.283",
+      "parent_marker": "ロ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ (1)から(11)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の58"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (三) / section-line-412"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.284",
+      "parent_marker": "ロ",
+      "marker": "(四)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ (1)から(11)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の62"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (四) / section-line-413"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.285",
+      "parent_marker": "ロ",
+      "marker": "(五)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ) (1)から(11)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の47"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (五) / section-line-414"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.286",
+      "parent_marker": "ロ",
+      "marker": "(六)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ) (1)から(11)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の40"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ロ / (六) / section-line-415"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.287",
+      "parent_marker": "ハ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "705単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / i / section-line-420"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.288",
+      "parent_marker": "ハ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "756単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / ii / section-line-421"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.289",
+      "parent_marker": "ハ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "806単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iii / section-line-422"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.290",
+      "parent_marker": "ハ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "857単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iv / section-line-423"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.291",
+      "parent_marker": "ハ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "908単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / v / section-line-424"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.292",
+      "parent_marker": "ハ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "732単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / i / section-line-426"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.293",
+      "parent_marker": "ハ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "786単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / ii / section-line-427"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.294",
+      "parent_marker": "ハ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "839単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iii / section-line-428"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.295",
+      "parent_marker": "ハ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "893単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iv / section-line-429"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.296",
+      "parent_marker": "ハ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "946単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / v / section-line-430"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.297",
+      "parent_marker": "ハ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "723単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / i / section-line-432"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.298",
+      "parent_marker": "ハ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "775単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / ii / section-line-433"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.299",
+      "parent_marker": "ハ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "827単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iii / section-line-434"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.300",
+      "parent_marker": "ハ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "879単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iv / section-line-435"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.301",
+      "parent_marker": "ハ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "932単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / v / section-line-436"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.302",
+      "parent_marker": "ハ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "813単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / i / section-line-438"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.303",
+      "parent_marker": "ハ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "864単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / ii / section-line-439"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.304",
+      "parent_marker": "ハ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "916単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iii / section-line-440"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.305",
+      "parent_marker": "ハ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "965単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iv / section-line-441"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.306",
+      "parent_marker": "ハ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,016単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / v / section-line-442"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.307",
+      "parent_marker": "ハ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "847単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / i / section-line-444"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.308",
+      "parent_marker": "ハ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "901単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / ii / section-line-445"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.309",
+      "parent_marker": "ハ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "954単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iii / section-line-446"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.310",
+      "parent_marker": "ハ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,006単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iv / section-line-447"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.311",
+      "parent_marker": "ハ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,059単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / v / section-line-448"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.312",
+      "parent_marker": "ハ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "835単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / i / section-line-450"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.313",
+      "parent_marker": "ハ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "888単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / ii / section-line-451"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.314",
+      "parent_marker": "ハ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "941単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iii / section-line-452"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.315",
+      "parent_marker": "ハ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "992単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iv / section-line-453"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.316",
+      "parent_marker": "ハ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,045単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / v / section-line-454"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.317",
+      "parent_marker": "ハ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "624単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / i / section-line-457"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.318",
+      "parent_marker": "ハ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "670単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / ii / section-line-458"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.319",
+      "parent_marker": "ハ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "715単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iii / section-line-459"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.320",
+      "parent_marker": "ハ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "762単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iv / section-line-460"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.321",
+      "parent_marker": "ハ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "807単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / v / section-line-461"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.322",
+      "parent_marker": "ハ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "734単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / i / section-line-463"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.323",
+      "parent_marker": "ハ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "779単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / ii / section-line-464"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.324",
+      "parent_marker": "ハ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "825単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iii / section-line-465"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.325",
+      "parent_marker": "ハ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "871単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / iv / section-line-466"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.326",
+      "parent_marker": "ハ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "917単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / v / section-line-467"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.327",
+      "parent_marker": "ハ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "835単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / a / section-line-470"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.328",
+      "parent_marker": "ハ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "887単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / b / section-line-471"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.329",
+      "parent_marker": "ハ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "937単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / c / section-line-472"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.330",
+      "parent_marker": "ハ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "988単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / d / section-line-473"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.331",
+      "parent_marker": "ハ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,039単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / e / section-line-474"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.332",
+      "parent_marker": "ハ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "864単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / a / section-line-476"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.333",
+      "parent_marker": "ハ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "918単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / b / section-line-477"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.334",
+      "parent_marker": "ハ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "970単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / c / section-line-478"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.335",
+      "parent_marker": "ハ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,022単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / d / section-line-479"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.336",
+      "parent_marker": "ハ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,076単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / e / section-line-480"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.337",
+      "parent_marker": "ハ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "854単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / a / section-line-482"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.338",
+      "parent_marker": "ハ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "907単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / b / section-line-483"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.339",
+      "parent_marker": "ハ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "959単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / c / section-line-484"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.340",
+      "parent_marker": "ハ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,010単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / d / section-line-485"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.341",
+      "parent_marker": "ハ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,062単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / e / section-line-486"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.342",
+      "parent_marker": "ハ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "835単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / a / section-line-488"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.343",
+      "parent_marker": "ハ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "887単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / b / section-line-489"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.344",
+      "parent_marker": "ハ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "937単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / c / section-line-490"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.345",
+      "parent_marker": "ハ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "988単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / d / section-line-491"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.346",
+      "parent_marker": "ハ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,039単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / e / section-line-492"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.347",
+      "parent_marker": "ハ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "864単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / a / section-line-494"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.348",
+      "parent_marker": "ハ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "918単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / b / section-line-495"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.349",
+      "parent_marker": "ハ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "970単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / c / section-line-496"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.350",
+      "parent_marker": "ハ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,022単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / d / section-line-497"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.351",
+      "parent_marker": "ハ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,076単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / e / section-line-498"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.352",
+      "parent_marker": "ハ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "854単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / a / section-line-500"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.353",
+      "parent_marker": "ハ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "907単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / b / section-line-501"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.354",
+      "parent_marker": "ハ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "959単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / c / section-line-502"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.355",
+      "parent_marker": "ハ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,010単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / d / section-line-503"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.356",
+      "parent_marker": "ハ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,062単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / e / section-line-504"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.357",
+      "parent_marker": "ハ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "3時間以上4時間未満",
+      "numeric_expressions": [
+        "684単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (一) / section-line-506"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.358",
+      "parent_marker": "ハ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "4時間以上6時間未満",
+      "numeric_expressions": [
+        "948単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (二) / section-line-507"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.359",
+      "parent_marker": "ハ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "6時間以上8時間未満",
+      "numeric_expressions": [
+        "1,316単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (三) / section-line-508"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.360",
+      "parent_marker": "ハ",
+      "marker": "3",
+      "kind": "NUMERIC_NOTE",
+      "title": "注3",
+      "numeric_expressions": [
+        "100分の97"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 3 / section-line-512"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.361",
+      "parent_marker": "ハ",
+      "marker": "4",
+      "kind": "NUMERIC_NOTE",
+      "title": "注4",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 4 / section-line-513"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.362",
+      "parent_marker": "ハ",
+      "marker": "5",
+      "kind": "NUMERIC_NOTE",
+      "title": "注5",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 5 / section-line-514"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.363",
+      "parent_marker": "ハ",
+      "marker": "6",
+      "kind": "NUMERIC_NOTE",
+      "title": "注6",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 6 / section-line-515"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.364",
+      "parent_marker": "ハ",
+      "marker": "7",
+      "kind": "NUMERIC_NOTE",
+      "title": "注7",
+      "numeric_expressions": [
+        "60単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 7 / section-line-516"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.365",
+      "parent_marker": "ハ",
+      "marker": "8",
+      "kind": "NUMERIC_NOTE",
+      "title": "注8",
+      "numeric_expressions": [
+        "25単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 8 / section-line-517"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.366",
+      "parent_marker": "ハ",
+      "marker": "9",
+      "kind": "NUMERIC_NOTE",
+      "title": "注9",
+      "numeric_expressions": [
+        "200単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 9 / section-line-518"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.367",
+      "parent_marker": "ハ",
+      "marker": "10",
+      "kind": "NUMERIC_NOTE",
+      "title": "注10",
+      "numeric_expressions": [
+        "90単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 10 / section-line-519"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.368",
+      "parent_marker": "ハ",
+      "marker": "11",
+      "kind": "NUMERIC_NOTE",
+      "title": "注11",
+      "numeric_expressions": [
+        "120単位",
+        "60単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 11 / section-line-520"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.369",
+      "parent_marker": "ハ",
+      "marker": "12",
+      "kind": "NUMERIC_NOTE",
+      "title": "注12",
+      "numeric_expressions": [
+        "184単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / 12 / section-line-521"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.370",
+      "parent_marker": "ハ",
+      "marker": "(4)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "口腔くう連携強化加算",
+      "numeric_expressions": [
+        "50単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (4) / section-line-527"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.371",
+      "parent_marker": "ハ",
+      "marker": "(5)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "療養食加算",
+      "numeric_expressions": [
+        "8単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (5) / section-line-529"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.372",
+      "parent_marker": "ハ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅰ)",
+      "numeric_expressions": [
+        "3単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (一) / section-line-536"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.373",
+      "parent_marker": "ハ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅱ)",
+      "numeric_expressions": [
+        "4単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (二) / section-line-537"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.374",
+      "parent_marker": "ハ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (一) / section-line-542"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.375",
+      "parent_marker": "ハ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "numeric_expressions": [
+        "10単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (二) / section-line-543"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.376",
+      "parent_marker": "ハ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅰ)",
+      "numeric_expressions": [
+        "22単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (一) / section-line-546"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.377",
+      "parent_marker": "ハ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅱ)",
+      "numeric_expressions": [
+        "18単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (二) / section-line-547"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.378",
+      "parent_marker": "ハ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅲ)",
+      "numeric_expressions": [
+        "6単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (三) / section-line-548"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.379",
+      "parent_marker": "ハ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ (1)から(9)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の62"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (一) / section-line-551"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.380",
+      "parent_marker": "ハ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ (1)から(9)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の66"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (二) / section-line-552"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.381",
+      "parent_marker": "ハ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ (1)から(9)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の58"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (三) / section-line-553"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.382",
+      "parent_marker": "ハ",
+      "marker": "(四)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ (1)から(9)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の62"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (四) / section-line-554"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.383",
+      "parent_marker": "ハ",
+      "marker": "(五)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ) (1)から(9)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の47"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (五) / section-line-555"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.384",
+      "parent_marker": "ハ",
+      "marker": "(六)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ) (1)から(9)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の40"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ハ / (六) / section-line-556"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.385",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "778単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-562"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.386",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "893単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-563"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.387",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,136単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-564"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.388",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,240単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-565"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.389",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,333単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-566"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.390",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "894単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-568"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.391",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,006単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-569"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.392",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,250単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-570"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.393",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,353単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-571"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.394",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,446単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-572"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.395",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "768単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-575"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.396",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "879単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-576"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.397",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,119単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-577"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.398",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,222単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-578"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.399",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,314単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-579"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.400",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "880単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-581"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.401",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "993単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-582"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.402",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,233単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-583"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.403",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,334単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-584"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.404",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,426単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-585"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.405",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "752単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-588"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.406",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "863単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-589"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.407",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,103単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-590"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.408",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,205単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-591"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.409",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,297単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-592"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.410",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "864単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-594"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.411",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "975単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-595"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.412",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,215単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-596"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.413",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,317単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-597"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.414",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,409単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-598"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.415",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "731単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-602"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.416",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "829単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-603"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.417",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,044単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-604"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.418",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,135単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-605"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.419",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,217単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-606"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.420",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "846単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-608"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.421",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "945単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-609"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.422",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,157単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-610"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.423",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,249単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-611"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.424",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,331単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-612"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.425",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "715単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-615"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.426",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "813単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-616"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.427",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,027単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-617"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.428",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,117単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-618"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.429",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,200単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-619"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.430",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "828単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-621"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.431",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "927単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-622"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.432",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,141単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-623"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.433",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,233単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-624"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.434",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,314単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-625"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.435",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "704単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-628"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.436",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "802単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-629"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.437",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,015単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-630"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.438",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,106単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-631"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.439",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,188単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-632"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.440",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "817単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-634"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.441",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "916単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-635"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.442",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,129単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-636"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.443",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,221単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-637"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.444",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,302単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-638"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.445",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "717単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-642"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.446",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "821単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-643"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.447",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,051単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-644"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.448",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,147単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-645"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.449",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,236単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-646"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.450",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "822単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-648"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.451",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "929単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-649"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.452",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,156単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-650"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.453",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,254単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-651"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.454",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,341単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-652"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.455",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "670単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-655"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.456",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "764単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-656"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.457",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "967単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-657"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.458",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,054単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-658"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.459",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,132単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-659"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.460",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "778単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-661"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.461",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "873単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-662"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.462",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,076単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-663"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.463",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,161単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-664"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.464",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,240単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-665"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.465",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "911単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-669"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.466",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,023単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-670"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.467",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,268単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-671"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.468",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,371単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-672"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.469",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,464単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-673"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.470",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "911単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-675"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.471",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,023単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-676"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.472",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,268単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-677"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.473",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,371単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-678"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.474",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,464単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-679"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.475",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "901単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-682"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.476",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,011単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-683"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.477",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,252単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-684"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.478",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,353単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-685"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.479",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,445単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-686"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.480",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "901単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-688"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.481",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,011単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-689"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.482",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,252単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-690"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.483",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,353単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-691"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.484",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,445単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-692"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.485",
+      "parent_marker": "ホ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "910単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / a / section-line-695"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.486",
+      "parent_marker": "ホ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,014単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / b / section-line-696"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.487",
+      "parent_marker": "ホ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,241単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / c / section-line-697"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.488",
+      "parent_marker": "ホ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,337単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / d / section-line-698"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.489",
+      "parent_marker": "ホ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,424単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / e / section-line-699"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.490",
+      "parent_marker": "ホ",
+      "marker": "a",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "910単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / a / section-line-701"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.491",
+      "parent_marker": "ホ",
+      "marker": "b",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "1,014単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / b / section-line-702"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.492",
+      "parent_marker": "ホ",
+      "marker": "c",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,241単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / c / section-line-703"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.493",
+      "parent_marker": "ホ",
+      "marker": "d",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,337単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / d / section-line-704"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.494",
+      "parent_marker": "ホ",
+      "marker": "e",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,424単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / e / section-line-705"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.495",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "859単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-709"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.496",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "963単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-710"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.497",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,193単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-711"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.498",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,289単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-712"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.499",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,376単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-713"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.500",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "859単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-715"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.501",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "963単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-716"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.502",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,193単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-717"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.503",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,289単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-718"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.504",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,376単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-719"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.505",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "867単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-722"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.506",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "966単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-723"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.507",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,181単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-724"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.508",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,273単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-725"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.509",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,354単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-726"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.510",
+      "parent_marker": "ホ",
+      "marker": "i",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1",
+      "numeric_expressions": [
+        "867単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / i / section-line-728"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.511",
+      "parent_marker": "ホ",
+      "marker": "ii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護2",
+      "numeric_expressions": [
+        "966単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ii / section-line-729"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.512",
+      "parent_marker": "ホ",
+      "marker": "iii",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3",
+      "numeric_expressions": [
+        "1,181単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iii / section-line-730"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.513",
+      "parent_marker": "ホ",
+      "marker": "iv",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護4",
+      "numeric_expressions": [
+        "1,273単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / iv / section-line-731"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.514",
+      "parent_marker": "ホ",
+      "marker": "v",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護5",
+      "numeric_expressions": [
+        "1,354単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / v / section-line-732"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.515",
+      "parent_marker": "ホ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "3時間以上4時間未満",
+      "numeric_expressions": [
+        "684単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (一) / section-line-734"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.516",
+      "parent_marker": "ホ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "4時間以上6時間未満",
+      "numeric_expressions": [
+        "948単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (二) / section-line-735"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.517",
+      "parent_marker": "ホ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "6時間以上8時間未満",
+      "numeric_expressions": [
+        "1,316単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (三) / section-line-736"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.518",
+      "parent_marker": "ホ",
+      "marker": "3",
+      "kind": "NUMERIC_NOTE",
+      "title": "注3",
+      "numeric_expressions": [
+        "100分の97"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 3 / section-line-740"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.519",
+      "parent_marker": "ホ",
+      "marker": "4",
+      "kind": "NUMERIC_NOTE",
+      "title": "注4",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 4 / section-line-741"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.520",
+      "parent_marker": "ホ",
+      "marker": "5",
+      "kind": "NUMERIC_NOTE",
+      "title": "注5",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 5 / section-line-742"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.521",
+      "parent_marker": "ホ",
+      "marker": "6",
+      "kind": "NUMERIC_NOTE",
+      "title": "注6",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 6 / section-line-743"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.522",
+      "parent_marker": "ホ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "療養環境減算(Ⅰ)",
+      "numeric_expressions": [
+        "25単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (一) / section-line-745"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.523",
+      "parent_marker": "ホ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "療養環境減算(Ⅱ)",
+      "numeric_expressions": [
+        "25単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (二) / section-line-746"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.524",
+      "parent_marker": "ホ",
+      "marker": "8",
+      "kind": "NUMERIC_NOTE",
+      "title": "注8",
+      "numeric_expressions": [
+        "26単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 8 / section-line-747"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.525",
+      "parent_marker": "ホ",
+      "marker": "イ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間勤務等看護(Ⅰ)",
+      "numeric_expressions": [
+        "23単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / イ / section-line-749"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.526",
+      "parent_marker": "ホ",
+      "marker": "ロ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間勤務等看護(Ⅱ)",
+      "numeric_expressions": [
+        "14単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ロ / section-line-750"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.527",
+      "parent_marker": "ホ",
+      "marker": "ハ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間勤務等看護(Ⅲ)",
+      "numeric_expressions": [
+        "14単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ハ / section-line-751"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.528",
+      "parent_marker": "ホ",
+      "marker": "ニ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "夜間勤務等看護(Ⅳ)",
+      "numeric_expressions": [
+        "7単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / ニ / section-line-752"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.529",
+      "parent_marker": "ホ",
+      "marker": "10",
+      "kind": "NUMERIC_NOTE",
+      "title": "注10",
+      "numeric_expressions": [
+        "200単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 10 / section-line-753"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.530",
+      "parent_marker": "ホ",
+      "marker": "11",
+      "kind": "NUMERIC_NOTE",
+      "title": "注11",
+      "numeric_expressions": [
+        "90単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 11 / section-line-754"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.531",
+      "parent_marker": "ホ",
+      "marker": "12",
+      "kind": "NUMERIC_NOTE",
+      "title": "注12",
+      "numeric_expressions": [
+        "120単位",
+        "60単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 12 / section-line-755"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.532",
+      "parent_marker": "ホ",
+      "marker": "13",
+      "kind": "NUMERIC_NOTE",
+      "title": "注13",
+      "numeric_expressions": [
+        "184単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / 13 / section-line-756"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.533",
+      "parent_marker": "ホ",
+      "marker": "(8)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "口腔くう連携強化加算",
+      "numeric_expressions": [
+        "50単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (8) / section-line-764"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.534",
+      "parent_marker": "ホ",
+      "marker": "(9)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "療養食加算",
+      "numeric_expressions": [
+        "8単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (9) / section-line-766"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.535",
+      "parent_marker": "ホ",
+      "marker": "イ",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "緊急時治療管理(1日につき)",
+      "numeric_expressions": [
+        "518単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / イ / section-line-773"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.536",
+      "parent_marker": "ホ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅰ)",
+      "numeric_expressions": [
+        "3単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (一) / section-line-781"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.537",
+      "parent_marker": "ホ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "認知症専門ケア加算(Ⅱ)",
+      "numeric_expressions": [
+        "4単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (二) / section-line-782"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.538",
+      "parent_marker": "ホ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1又は要介護2",
+      "numeric_expressions": [
+        "140単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (一) / section-line-786"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.539",
+      "parent_marker": "ホ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3、要介護4又は要介護5",
+      "numeric_expressions": [
+        "40単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (二) / section-line-787"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.540",
+      "parent_marker": "ホ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護1又は要介護2",
+      "numeric_expressions": [
+        "200単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (一) / section-line-789"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.541",
+      "parent_marker": "ホ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "要介護3、要介護4又は要介護5",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (二) / section-line-790"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.542",
+      "parent_marker": "ホ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "numeric_expressions": [
+        "100単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (一) / section-line-795"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.543",
+      "parent_marker": "ホ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "numeric_expressions": [
+        "10単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (二) / section-line-796"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.544",
+      "parent_marker": "ホ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅰ)",
+      "numeric_expressions": [
+        "22単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (一) / section-line-799"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.545",
+      "parent_marker": "ホ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅱ)",
+      "numeric_expressions": [
+        "18単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (二) / section-line-800"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.546",
+      "parent_marker": "ホ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "サービス提供体制強化加算(Ⅲ)",
+      "numeric_expressions": [
+        "6単位"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (三) / section-line-801"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.547",
+      "parent_marker": "ホ",
+      "marker": "(一)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ (1)から(15)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の62"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (一) / section-line-804"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.548",
+      "parent_marker": "ホ",
+      "marker": "(二)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ (1)から(15)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の66"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (二) / section-line-805"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.549",
+      "parent_marker": "ホ",
+      "marker": "(三)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ (1)から(15)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の58"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (三) / section-line-806"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.550",
+      "parent_marker": "ホ",
+      "marker": "(四)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ (1)から(15)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の62"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (四) / section-line-807"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.551",
+      "parent_marker": "ホ",
+      "marker": "(五)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ) (1)から(15)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の47"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (五) / section-line-808"
+    },
+    {
+      "id": "remuneration.shortstay-medical.numeric.552",
+      "parent_marker": "ホ",
+      "marker": "(六)",
+      "kind": "NUMERIC_STRUCTURAL_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ) (1)から(15)までにより算定した単位数の",
+      "numeric_expressions": [
+        "1000分の40"
+      ],
+      "source_locator": "9 短期入所療養介護費 / ホ / (六) / section-line-809"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}
