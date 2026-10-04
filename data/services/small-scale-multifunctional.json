@@ -30,7 +30,8 @@
     "standards_index": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
     "remuneration": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
     "delegated_remuneration_criteria": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
-    "unit_price": "data/services/small-scale-multifunctional/shared-corpus-scope.json"
+    "unit_price": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
+    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -50,9 +51,24 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+    },
+    "standards_interpretation": {
+      "status": "INDEXED_SHARED_MHLW_NOTICE_SCOPE_ONLY",
+      "source_family": "standards_interpretation_notice",
+      "registry_id": "standards-interpretation-national-notice-identities",
+      "service_scope": "data/shared/standards-interpretation/remaining-service-scopes.json",
+      "relation_file": "data/shared/standards-interpretation/remaining-service-relations.json",
+      "relation_id": "standards-interpretation.small-scale-multifunctional.rouki33",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
     }
   },
   "ingestion_indexes": {
-    "remuneration": "data/services/small-scale-multifunctional/remuneration-index.json"
+    "remuneration": "data/services/small-scale-multifunctional/remuneration-index.json",
+    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
   }
 }

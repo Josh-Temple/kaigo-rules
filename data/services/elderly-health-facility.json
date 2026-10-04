@@ -30,7 +30,8 @@
     "governing_standards": "data/services/elderly-health-facility/governing-standards-scope.json",
     "remuneration": "data/services/elderly-health-facility/remuneration-scope.json",
     "delegated_remuneration_criteria": "data/services/elderly-health-facility/delegated-remuneration-criteria-scope.json",
-    "unit_price_regional_classification": "data/services/elderly-health-facility/unit-price-scope.json"
+    "unit_price_regional_classification": "data/services/elderly-health-facility/unit-price-scope.json",
+    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -52,9 +53,24 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+    },
+    "standards_interpretation": {
+      "status": "INDEXED_SHARED_MHLW_NOTICE_SCOPE_ONLY",
+      "source_family": "standards_interpretation_notice",
+      "registry_id": "standards-interpretation-national-notice-identities",
+      "service_scope": "data/shared/standards-interpretation/remaining-service-scopes.json",
+      "relation_file": "data/shared/standards-interpretation/remaining-service-relations.json",
+      "relation_id": "standards-interpretation.elderly-health-facility.rouki44",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
     }
   },
   "ingestion_indexes": {
-    "remuneration": "data/services/elderly-health-facility/remuneration-index.json"
+    "remuneration": "data/services/elderly-health-facility/remuneration-index.json",
+    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
   }
 }

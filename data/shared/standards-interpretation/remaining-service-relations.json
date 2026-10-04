@@ -1,0 +1,232 @@
+{
+  "format_version": 1,
+  "source_family": "standards_interpretation_notice",
+  "relation_model": "SERVICE_SCOPE_TO_SHARED_NOTICE_LOCATOR",
+  "relations": [
+    {
+      "relation_id": "standards-interpretation.dementia-dayservice.rouki33",
+      "service_id": "dementia-dayservice",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第三 / 三 認知症対応型通所介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.small-scale-multifunctional.rouki33",
+      "service_id": "small-scale-multifunctional",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第三 / 四 小規模多機能型居宅介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.dementia-group-home.rouki33",
+      "service_id": "dementia-group-home",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第三 / 五 認知症対応型共同生活介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.community-specific-facility.rouki33",
+      "service_id": "community-specific-facility",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第三 / 六 地域密着型特定施設入居者生活介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.community-elderly-facility.rouki33",
+      "service_id": "community-elderly-facility",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第三 / 七 地域密着型介護老人福祉施設入所者生活介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.nursing-small-scale-multifunctional.rouki33",
+      "service_id": "nursing-small-scale-multifunctional",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第三 / 八 看護小規模多機能型居宅介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-dementia-dayservice.rouki33",
+      "service_id": "preventive-dementia-dayservice",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 / 三 / 1 介護予防認知症対応型通所介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-small-scale-multifunctional.rouki33",
+      "service_id": "preventive-small-scale-multifunctional",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 / 三 / 2 介護予防小規模多機能型居宅介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.preventive-dementia-group-home.rouki33",
+      "service_id": "preventive-dementia-group-home",
+      "target_document_id": "rouki33",
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "第四 / 三 / 3 介護予防認知症対応型共同生活介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.elderly-welfare-facility.rouki43",
+      "service_id": "elderly-welfare-facility",
+      "target_document_id": "rouki43",
+      "source_ids": [
+        "mhlw-elderly-welfare-facility-rouki43-notice",
+        "mhlw-elderly-welfare-facility-rouki43-r6-comparison"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "通知本文：指定介護老人福祉施設の人員、設備及び運営に関する基準について"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.elderly-health-facility.rouki44",
+      "service_id": "elderly-health-facility",
+      "target_document_id": "rouki44",
+      "source_ids": [
+        "mhlw-elderly-health-facility-rouki44-notice",
+        "mhlw-elderly-health-facility-rouki44-r6-comparison"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "通知本文：介護老人保健施設の人員、施設及び設備並びに運営に関する基準について"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.care-medical-institution.kaigoiryouin-roui",
+      "service_id": "care-medical-institution",
+      "target_document_id": "kaigoiryouin-roui",
+      "source_ids": [
+        "mhlw-care-medical-institution-notice",
+        "mhlw-care-medical-institution-r6-comparison"
+      ],
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "通知本文：介護医療院の人員、施設及び設備並びに運営に関する基準について"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    }
+  ]
+}

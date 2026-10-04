@@ -1,0 +1,120 @@
+{
+  "format_version": 1,
+  "source_family": "standards_interpretation_notice",
+  "registry_id": "standards-interpretation-national-notice-identities",
+  "storage_model": "SHARED_SOURCE_REGISTRY_AND_SERVICE_SCOPE_RELATIONS_NO_SERVICE_BODY_DUPLICATION",
+  "discovered_on": "2026-10-04",
+  "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+  "policy": {
+    "service_body_duplication_allowed": false,
+    "amendment_comparison_as_integrated_current_text_allowed": false,
+    "source_identity_implies_currentness": false,
+    "ingestion_implies_item_body_verification": false,
+    "automatic_promotion_allowed": false
+  },
+  "sources": [
+    {
+      "source_id": "mhlw-regional-community-rouki33-r6-comparison",
+      "document_id": "rouki33",
+      "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+      "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+      "listed_at": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "source_role": "OFFICIAL_R6_AMENDMENT_COMPARISON",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "地域密着型サービス及び地域密着型介護予防サービスの新旧対照資料。改正箇所の根拠として使用し、全文・全改正履歴の証明には使用しない。"
+    },
+    {
+      "source_id": "mhlw-elderly-welfare-facility-rouki43-notice",
+      "document_id": "rouki43",
+      "document_title": "指定介護老人福祉施設の人員、設備及び運営に関する基準について",
+      "notice_number": "平成12年3月17日 老企第43号",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4387&dataType=1",
+      "source_role": "OFFICIAL_NOTICE_IDENTITY",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。"
+    },
+    {
+      "source_id": "mhlw-elderly-welfare-facility-rouki43-r6-comparison",
+      "document_id": "rouki43",
+      "document_title": "指定介護老人福祉施設の人員、設備及び運営に関する基準について（令和6年度改定比較資料）",
+      "notice_number": "平成12年3月17日 老企第43号",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227943.pdf",
+      "listed_at": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "source_role": "OFFICIAL_R6_AMENDMENT_COMPARISON",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "令和6年度改定の新旧対照資料。一部改正箇所の根拠として使用し、通知全体の現行性は証明しない。"
+    },
+    {
+      "source_id": "mhlw-elderly-health-facility-rouki44-notice",
+      "document_id": "rouki44",
+      "document_title": "介護老人保健施設の人員、施設及び設備並びに運営に関する基準について",
+      "notice_number": "平成12年3月17日 老企第44号",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4388&dataType=1",
+      "source_role": "OFFICIAL_NOTICE_IDENTITY",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。"
+    },
+    {
+      "source_id": "mhlw-elderly-health-facility-rouki44-r6-comparison",
+      "document_id": "rouki44",
+      "document_title": "介護老人保健施設の人員、施設及び設備並びに運営に関する基準について（令和6年度改定比較資料）",
+      "notice_number": "平成12年3月17日 老企第44号",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227945.pdf",
+      "listed_at": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "source_role": "OFFICIAL_R6_AMENDMENT_COMPARISON",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "令和6年度改定の新旧対照資料。一部改正箇所の根拠として使用し、通知全体の現行性は証明しない。"
+    },
+    {
+      "source_id": "mhlw-care-medical-institution-notice",
+      "document_id": "kaigoiryouin-roui",
+      "document_title": "介護医療院の人員、施設及び設備並びに運営に関する基準について",
+      "notice_number": "平成30年3月22日 老老発0322第1号",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf",
+      "source_role": "OFFICIAL_NOTICE_IDENTITY",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。"
+    },
+    {
+      "source_id": "mhlw-care-medical-institution-r6-comparison",
+      "document_id": "kaigoiryouin-roui",
+      "document_title": "介護医療院の人員、施設及び設備並びに運営に関する基準について（令和6年度改定比較資料）",
+      "notice_number": "平成30年3月22日 老老発0322第1号",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227947.pdf",
+      "listed_at": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "source_role": "OFFICIAL_R6_AMENDMENT_COMPARISON",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "令和6年度改定の新旧対照資料。一部改正箇所の根拠として使用し、通知全体の現行性は証明しない。"
+    },
+    {
+      "source_id": "mhlw-regional-community-rouki33-historical-text",
+      "document_id": "rouki33",
+      "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について（歴史通知資料）",
+      "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080882.pdf",
+      "source_role": "OFFICIAL_HISTORICAL_NOTICE_TEXT",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "歴史的な通知本文・サービス見出しの識別用。現行統合本文や改正網羅性の根拠には使用しない。"
+    },
+    {
+      "source_id": "mhlw-regional-community-rouki33-later-amendment-extract",
+      "document_id": "rouki33",
+      "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について（改正部分の抄）",
+      "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号",
+      "url": "https://www.mhlw.go.jp/content/12404000/001623024.pdf",
+      "source_role": "OFFICIAL_AMENDMENT_EXTRACT_ONLY",
+      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "current_integrated_text": false,
+      "scope": "「抄」「傍線の部分は改正部分」とする改正資料。変更箇所の証拠であり、全文・現行統合本文の根拠ではない。"
+    }
+  ]
+}
