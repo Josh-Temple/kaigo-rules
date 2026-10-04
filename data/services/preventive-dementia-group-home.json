@@ -31,8 +31,7 @@
     "remuneration": "data/services/preventive-dementia-group-home/remuneration-scope.json",
     "delegated_remuneration_criteria": "data/services/preventive-dementia-group-home/remuneration-scope.json",
     "unit_price": "data/services/preventive-dementia-group-home/unit-price-scope.json",
-    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
-    "fee_guidance": "data/services/preventive-dementia-group-home/fee-guidance-scope.json"
+    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -75,26 +74,11 @@
       "publication": "NOT_ESTABLISHED",
       "route_exposure": "BLOCKED",
       "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
-    },
-    "fee_guidance": {
-      "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
-      "coverage_kind": "PARTIAL_COMPARISON_ONLY_WITH_INDEPENDENT_APPLICABILITY_EVIDENCE",
-      "source_id": "community-services-r6-final-comparison-scope-locators",
-      "applicability_evidence_url": "https://www.mhlw.go.jp/content/001064403.pdf",
-      "applicability_evidence_locator": "703 介護予防認知症対応型共同生活介護費 / 留意事項通知 第2の6",
-      "item_body_verification": "NOT_ESTABLISHED",
-      "currentness": "NOT_ESTABLISHED",
-      "human_review": "NOT_REVIEWED",
-      "publication": "BLOCKED",
-      "route_exposure": "BLOCKED",
-      "automatic_promotion_allowed": false,
-      "note": "厚生労働省の適用要件一覧によるサービス固有の留意事項通知参照を根拠に、既存の共有Fee Guidance sectionへscopeを接続。共有node自体は令和6年度改定新旧対照資料のlocator-onlyであり、item-body verification/currentness/relation verification/human review/publication/routeは昇格しない。"
     }
   },
   "ingestion_indexes": {
     "remuneration": "data/services/preventive-dementia-group-home/remuneration-index.json",
     "care_insurance_act": "data/services/preventive-dementia-group-home/care-insurance-act-index.json",
-    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
-    "fee_guidance": "data/services/preventive-dementia-group-home/fee-guidance-scope.json"
+    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
   }
 }
