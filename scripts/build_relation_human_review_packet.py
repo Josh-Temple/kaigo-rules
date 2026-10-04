@@ -13,6 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUTPUT = DATA / "relation-human-review-packet.json"
 
+WORKER_D_CLASSIFICATIONS = {
+    "SEMANTIC_TEXT_CHECK_REQUIRED",
+    "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+    "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+}
+
 
 def load(name: str):
     return json.loads((DATA / name).read_text(encoding="utf-8"))
@@ -161,6 +167,8 @@ def build() -> dict:
     for index, item in enumerate(queue.get("items", []), start=1):
         identity = item["identity"]
         classification = item["classification"]
+        if classification not in WORKER_D_CLASSIFICATIONS:
+            continue
         items.append(
             {
                 "review_id": f"REL-{index:03d}",
@@ -198,27 +206,30 @@ def build() -> dict:
         )
 
     counts = Counter(item["classification"] for item in items)
-    if len(items) != queue.get("remaining_relations"):
-        raise ValueError("review packet item count differs from relation queue")
-    if dict(counts) != {
+    expected_counts = {
         key: value
         for key, value in queue.get("classification_counts", {}).items()
-        if value
-    }:
-        raise ValueError("review packet classification counts differ from relation queue")
+        if key in WORKER_D_CLASSIFICATIONS and value
+    }
+    if len(items) != sum(expected_counts.values()):
+        raise ValueError("Worker D review packet item count differs from owned queue classes")
+    if dict(counts) != expected_counts:
+        raise ValueError("Worker D review packet classification counts differ from queue")
 
     return {
         "format_version": 1,
         "generated_by": "scripts/build_relation_human_review_packet.py",
         "source_queue": "data/relation-verification-queue.json",
         "policy": (
-            "This packet organizes unresolved relation review only. Blank reviewer fields "
-            "must not be interpreted as rejection or approval. Packet generation never "
-            "promotes independent verification, currentness, or human-review state."
+            "This packet organizes only Worker D-owned unresolved relation review. "
+            "Source-link freshness/direct-evidence relations are excluded because they are "
+            "owned by Worker B. Blank reviewer fields must not be interpreted as rejection "
+            "or approval. Packet generation never promotes independent verification, "
+            "currentness, or human-review state."
         ),
         "summary": {
             "items_total": len(items),
-            "classification_counts": queue["classification_counts"],
+            "classification_counts": expected_counts,
             "independently_covered_relations": queue["independently_covered_relations"],
             "inventory_relations": queue["inventory_relations"],
         },
