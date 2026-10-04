@@ -13,6 +13,18 @@
       "extraction": "pdftotext -layout; both columns preserved",
       "currentness": "NOT_ESTABLISHED",
       "warning": "Not an integrated current text; omissions are not evidence of no amendment."
+    },
+    {
+      "id": "preventive-guidance-r6-final-comparison-shared",
+      "publisher": "厚生労働省",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227907.pdf",
+      "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATORS",
+      "snapshot_path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+      "snapshot_sha256": "987e008c8c397a235f8d340ab826e0d9a217e73404ae28ad8d0b523d1fc446bc",
+      "observed_at": "2026-10-04",
+      "extraction": "Official MHLW PDF text-layer section-heading locator snapshot; comparison columns remain source-context only.",
+      "currentness": "NOT_ESTABLISHED",
+      "warning": "Not an integrated current text. Locator snapshot establishes service-section identity only; omissions and unchanged material are not promoted."
     }
   ]
 }
