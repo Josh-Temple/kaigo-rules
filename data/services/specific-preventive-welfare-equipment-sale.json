@@ -41,7 +41,7 @@
   },
   "ingestion_layers": {
     "remuneration": {
-      "status": "NOT_APPLICABLE_PURCHASE_BENEFIT_OUTSIDE_REMUNERATION_NOTIFICATION_LANE",
+      "status": "NOT_APPLICABLE",
       "source_family": "remuneration_notification",
       "applicability": "NOT_APPLICABLE",
       "basis": "介護保険法第56条の介護予防福祉用具購入費であり、告示第127号の介護予防サービス費laneには接続しない。",
