@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.13"
+      - name: Rebuild corrected homevisit index candidate
+        run: python scripts/build_homevisit_ordinance37_index.py
       - name: Independently reparse live e-Gov service slices
         run: |
           python scripts/verify_existing_ordinance37_service_slices.py \
@@ -34,6 +36,8 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: existing-ordinance37-service-slices-verification
-          path: existing-ordinance37-service-slices-verification.json
+          path: |
+            existing-ordinance37-service-slices-verification.json
+            data/services/homevisit/ordinance37-index.generated.json
           if-no-files-found: warn
           retention-days: 90
