@@ -21,13 +21,15 @@ jobs:
         with:
           python-version: "3.13"
       - name: Materialize full registered-source corpus
-        run: python scripts/import_delegated_remuneration_national_corpus.py
+        run: |
+          python scripts/import_delegated_remuneration_national_corpus.py
+          python scripts/build_delegated_remuneration_shared_corpus.py
       - name: Commit generated corpus to PR branch
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/shared/remuneration-delegated/national-corpus.json
+          git add data/shared/remuneration-delegated/
           if git diff --cached --quiet; then
             echo "Corpus already materialized"
             exit 0
