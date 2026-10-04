@@ -6,11 +6,10 @@
 - Source families: 9
 - Shared corpus available but service scope missing: 0
 - Genuinely missing corpus cells: 102
-- Currentness gaps on ingested cells: 101
-- Item-body verification gaps on ingested cells: 15
+- Currentness gaps on ingested cells: 100
+- Item-body verification gaps on ingested cells: 14
 - Relation verification remaining: 59
-- Publication gaps on ingested cells: 89
-- Delegated remuneration applicability mapped: 1
+- Publication gaps on ingested cells: 88
 
 ## Source-family coverage
 
@@ -20,17 +19,11 @@
 | Governing standards ordinance | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | NOT_ESTABLISHED=10, PASS=29 | NOT_ESTABLISHED=37, PARTIAL=2 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Standards interpretation notice | AVAILABLE=13, NOT_AVAILABLE=26 | SCOPE_DEFINED=13, SCOPE_NOT_DEFINED=26 | INGESTED=13, NOT_INGESTED=26 | NOT_ESTABLISHED=26, PARTIAL=1, PASS=12 | BLOCKED=1, NOT_ESTABLISHED=38 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Remuneration notification | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=3, NOT_INGESTED=36 | NOT_ESTABLISHED=37, PASS=2 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
-| Delegated remuneration criteria | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=1, NOT_INGESTED=38 | NOT_ESTABLISHED=39 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | BLOCKED=38, NOT_ESTABLISHED=1 | BLOCKED=38, NOT_ESTABLISHED=1 |
+| Delegated remuneration criteria | AVAILABLE=39 | SCOPE_DEFINED=39 | NOT_INGESTED=39 | NOT_ESTABLISHED=39 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | BLOCKED=37, NOT_ESTABLISHED=2 | BLOCKED=37, NOT_ESTABLISHED=2 |
 | Fee-calculation guidance | AVAILABLE=2, NOT_AVAILABLE=37 | SCOPE_DEFINED=2, SCOPE_NOT_DEFINED=37 | INGESTED=2, NOT_INGESTED=37 | NOT_ESTABLISHED=37, PASS=2 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Unit price / regional classification | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=2, NOT_INGESTED=37 | NOT_ESTABLISHED=38, PASS=1 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=1, BLOCKED=37, NOT_ESTABLISHED=1 | AVAILABLE=1, BLOCKED=37, NOT_ESTABLISHED=1 |
 | National Q&A | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | PARTIAL=39 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Other material national manuals/forms | NOT_AVAILABLE=39 | SCOPE_NOT_DEFINED=39 | NOT_INGESTED=39 | NOT_ESTABLISHED=39 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | BLOCKED=37, NOT_ESTABLISHED=2 | BLOCKED=37, NOT_ESTABLISHED=2 |
-
-## Delegated remuneration criteria detail
-
-- Shared corpus: AVAILABLE (delegated-remuneration-national)
-- Service applicability: MAPPED=1, NOT_MAPPED=38
-- Applicability mapping does not establish item-body verification, currentness, human review, publication, or route exposure.
 
 ## Interpretation
 
