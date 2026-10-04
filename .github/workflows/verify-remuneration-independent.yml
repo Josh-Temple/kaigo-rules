@@ -10,6 +10,7 @@ on:
       - "scripts/import_current_remuneration.py"
       - "scripts/import_remuneration_delegated.py"
       - "scripts/build_delegated_remuneration_shared_corpus.py"
+      - "scripts/import_delegated_remuneration_national_corpus.py"
       - "data/shared/remuneration-delegated/**"
       - "data/remuneration-current-text.json"
       - "data/remuneration-current-text-meta.json"
@@ -54,6 +55,10 @@ jobs:
           exit 0
       - name: Validate pinned audit provenance
         run: python scripts/validate_remuneration_independent_audit.py
+      - name: Validate committed national delegated remuneration corpus
+        run: python scripts/import_delegated_remuneration_national_corpus.py --check
+      - name: Reparse national delegated remuneration corpus from live MHLW sources
+        run: python scripts/import_delegated_remuneration_national_corpus.py --verify-live
       - name: Validate shared delegated remuneration corpus projection
         run: python scripts/build_delegated_remuneration_shared_corpus.py --check
       - name: Upload verification report
