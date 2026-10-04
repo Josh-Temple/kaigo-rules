@@ -4,7 +4,7 @@
   "service_label": "居宅介護支援",
   "layer": "remuneration_notification",
   "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-  "status": "SCOPE_DEFINED_SECTION_INDEXED_NOT_SERVICE_VERIFIED",
+  "status": "SCOPE_DEFINED_APPLICABILITY_NOT_INDEPENDENTLY_VERIFIED",
   "root_notification": {
     "notice_number": "平成12年厚生省告示第20号",
     "title": "指定居宅介護支援に要する費用の額の算定に関する基準",
@@ -15,9 +15,9 @@
   },
   "shared_corpus_binding": {
     "existing_repository_corpus": "data/remuneration-current-skeleton.json",
-    "state": "SERVICE_SECTION_STRUCTURAL_INDEX_INGESTED_NO_BODY_COPY",
+    "state": "TARGET_SECTION_NOT_STRUCTURED_IN_EXISTING_SHARED_CORPUS",
     "source_text_copy_allowed": false,
-    "note": "共有原典を複製せず、service-specific section境界と構造markerのみをremuneration-index.jsonへ収載。item-body verification/currentnessは別工程。"
+    "service_structural_index": "data/services/care-management/remuneration-index.json"
   },
   "evidence": {
     "checked_on": "2026-10-04",
