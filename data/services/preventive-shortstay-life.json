@@ -59,10 +59,18 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
+    },
+    "care_insurance_act": {
+      "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
+      "selected_nodes": 116,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
     }
   },
   "ingestion_indexes": {
     "remuneration": "data/services/preventive-shortstay-life/remuneration-index.json",
-    "standards_interpretation": "data/services/preventive-shortstay-life/standards-interpretation-scope.json"
+    "standards_interpretation": "data/services/preventive-shortstay-life/standards-interpretation-scope.json",
+    "care_insurance_act": "data/services/preventive-shortstay-life/care-insurance-act-index.json"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "format_version": 1,
+  "sources": [
+    {
+      "id": "rouki36-r6-final-comparison-shared",
+      "publisher": "厚生労働省",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+      "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_EXCERPT",
+      "pdf_sha256": "826dc8f8521ff8387fdde90f880290422ed9a846e71cc3277494b1ea38693241",
+      "snapshot_path": "data/shared/fee-guidance/r6-comparison-layout.txt",
+      "snapshot_sha256": "2234944f29dcdd480825c4e7f5757858be8b5cecc84c6f02e7a0540f8769aed8",
+      "observed_at": "2026-10-04",
+      "extraction": "pdftotext -layout; both columns preserved",
+      "currentness": "NOT_ESTABLISHED",
+      "warning": "Not an integrated current text; omissions are not evidence of no amendment."
+    }
+  ]
+}

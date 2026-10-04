@@ -89,7 +89,7 @@ def main() -> None:
                 applicability = cell.get("service_applicability")
                 if not isinstance(applicability, dict):
                     fail(f"{row['service_id']}/delegated_remuneration_criteria: missing service_applicability")
-                if applicability.get("state") not in {"MAPPED", "NOT_MAPPED"}:
+                if applicability.get("state") not in {"MAPPED", "NOT_MAPPED", "NOT_APPLICABLE", "UNKNOWN"}:
                     fail(f"{row['service_id']}/delegated_remuneration_criteria: invalid applicability state")
                 if (
                     cell["ingestion"]["state"] in {"INGESTED", "PARTIAL"}

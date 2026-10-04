@@ -1,0 +1,330 @@
+{
+  "format_version": 1,
+  "source_family": "standards_interpretation_notice",
+  "registry_id": "standards-interpretation-national-notice-identities",
+  "source_register": "data/shared/standards-interpretation/remaining-source-register.json",
+  "scope_model": "SERVICE_TO_SHARED_NOTICE_ID_AND_LOCATOR",
+  "services": [
+    {
+      "service_id": "dementia-dayservice",
+      "label": "認知症対応型通所介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第三 / 三 認知症対応型通所介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "label": "小規模多機能型居宅介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第三 / 四 小規模多機能型居宅介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "dementia-group-home",
+      "label": "認知症対応型共同生活介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第三 / 五 認知症対応型共同生活介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "community-specific-facility",
+      "label": "地域密着型特定施設入居者生活介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第三 / 六 地域密着型特定施設入居者生活介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "label": "地域密着型介護老人福祉施設入所者生活介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第三 / 七 地域密着型介護老人福祉施設入所者生活介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "label": "看護小規模多機能型居宅介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第三 / 八 看護小規模多機能型居宅介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "label": "介護予防認知症対応型通所介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第四 / 三 / 1 介護予防認知症対応型通所介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "label": "介護予防小規模多機能型居宅介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第四 / 三 / 2 介護予防小規模多機能型居宅介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "label": "介護予防認知症対応型共同生活介護",
+      "document_ids": [
+        "rouki33"
+      ],
+      "source_ids": [
+        "mhlw-regional-community-rouki33-historical-text",
+        "mhlw-regional-community-rouki33-r6-comparison",
+        "mhlw-regional-community-rouki33-later-amendment-extract"
+      ],
+      "source_locators": [
+        "第四 / 三 / 3 介護予防認知症対応型共同生活介護"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "COMMON_NOTICE_SHARED_BY_MULTIPLE_SERVICES",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "label": "介護老人福祉施設",
+      "document_ids": [
+        "rouki43"
+      ],
+      "source_ids": [
+        "mhlw-elderly-welfare-facility-rouki43-notice",
+        "mhlw-elderly-welfare-facility-rouki43-r6-comparison"
+      ],
+      "source_locators": [
+        "通知本文：指定介護老人福祉施設の人員、設備及び運営に関する基準について"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "SERVICE_SPECIFIC_NOTICE_IDENTIFIED_CURRENTNESS_UNCONFIRMED",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "label": "介護老人保健施設",
+      "document_ids": [
+        "rouki44"
+      ],
+      "source_ids": [
+        "mhlw-elderly-health-facility-rouki44-notice",
+        "mhlw-elderly-health-facility-rouki44-r6-comparison"
+      ],
+      "source_locators": [
+        "通知本文：介護老人保健施設の人員、施設及び設備並びに運営に関する基準について"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "SERVICE_SPECIFIC_NOTICE_IDENTIFIED_CURRENTNESS_UNCONFIRMED",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    },
+    {
+      "service_id": "care-medical-institution",
+      "label": "介護医療院",
+      "document_ids": [
+        "kaigoiryouin-roui"
+      ],
+      "source_ids": [
+        "mhlw-care-medical-institution-notice",
+        "mhlw-care-medical-institution-r6-comparison"
+      ],
+      "source_locators": [
+        "通知本文：介護医療院の人員、施設及び設備並びに運営に関する基準について"
+      ],
+      "source_discovery_class": "OFFICIAL_SHARED_NOTICE_IDENTIFIED",
+      "scope_state": "SCOPE_DEFINED_NOTICE_LOCATOR_ONLY",
+      "applicability_state": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "厚生労働省公式掲載資料の通知識別子と対象サービスlocatorを登録。改正比較資料は一部改正の証拠であり、現行統合全文、本文全体の検証、改正履歴の網羅性は確立していない。",
+      "discovery_classification": "SERVICE_SPECIFIC_NOTICE_IDENTIFIED_CURRENTNESS_UNCONFIRMED",
+      "notice_text_currentness": "NOT_ESTABLISHED",
+      "classification_basis": "厚生労働省の公式通知一覧と一次資料の通知識別子・サービス見出し。新旧対照資料または歴史本文は存在確認と範囲対応の根拠であり、現行統合全文・改正履歴の網羅性は未確立。"
+    }
+  ]
+}

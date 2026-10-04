@@ -85,27 +85,30 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         self.assertEqual(assurance["route_exposure"], "BLOCKED")
         self.assertFalse(assurance["automatic_promotion_allowed"])
 
-    def test_heading_based_applicability_expands_but_unmatched_services_stay_unmapped(self):
+    def test_heading_mapping_and_evidence_based_adjudications_cover_remaining_services(self):
         applicability = {
             row["service_id"]: row
             for row in self.outputs["service-applicability.json"]["services"]
         }
-        self.assertEqual(len(applicability), 34)
+        self.assertEqual(len(applicability), len(shared.SERVICE_HEADING_TERMS))
         self.assertEqual(
-            {
-                "homecaremanagement",
-                "specific-welfare-equipment-sale",
-                "preventive-homecaremanagement",
-                "preventive-welfare-equipment-rental",
-                "specific-preventive-welfare-equipment-sale",
-            },
-            set(shared.SERVICE_HEADING_TERMS) - set(applicability),
+            {key for key, row in applicability.items() if row["applicability_state"] == "UNKNOWN"},
+            {"homecaremanagement", "preventive-homecaremanagement", "preventive-welfare-equipment-rental"},
         )
+        self.assertEqual(
+            {key for key, row in applicability.items() if row["applicability_state"] == "NOT_APPLICABLE"},
+            {"specific-welfare-equipment-sale", "specific-preventive-welfare-equipment-sale"},
+        )
+        for service_id, row in applicability.items():
+            if row["applicability_state"] in {"UNKNOWN", "NOT_APPLICABLE"}:
+                self.assertEqual(row["mapped_node_ids"], [])
+                self.assertGreaterEqual(len(row["adjudication"]["official_primary_sources"]), 1)
+                self.assertIn("rationale", row["adjudication"])
+                self.assertEqual(row["ingestion_state"], "NOT_INGESTED" if row["applicability_state"] == "UNKNOWN" else "NOT_APPLICABLE")
 
         self.assertIn("notice95.item.84", applicability["care-management"]["mapped_node_ids"])
         self.assertIn("notice95.item.129-4", applicability["preventive-support"]["mapped_node_ids"])
         self.assertIn("notice95.item.44-4", applicability["welfare-equipment-rental"]["mapped_node_ids"])
-
         for row in applicability.values():
             assurance = row["assurance"]
             self.assertEqual(assurance["item_body_verification"], "NOT_ESTABLISHED")
@@ -116,9 +119,18 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
             self.assertEqual(assurance["route_exposure"], "BLOCKED")
             self.assertFalse(assurance["automatic_promotion_allowed"])
 
+    def test_purchase_benefit_exclusions_are_tied_to_canonical_act_articles(self):
+        act_nodes = {
+            row["id"]: row
+            for row in json.loads((ROOT / "data/care-insurance-act-nodes.json").read_text(encoding="utf-8"))
+        }
+        self.assertIn("特定福祉用具の購入に要した費用を除き", act_nodes["careact.article.41"]["official_text"])
+        self.assertIn("特定福祉用具販売", act_nodes["careact.article.44"]["official_text"])
+        self.assertIn("特定介護予防福祉用具販売", act_nodes["careact.article.56"]["official_text"])
+
     def test_service_relation_mapping_never_duplicates_source_text(self):
         relation_doc = self.outputs["service-relations.json"]
-        self.assertEqual(len(relation_doc["services"]), 34)
+        self.assertEqual(len(relation_doc["services"]), 39)
         relation_rows = [
             relation
             for service in relation_doc["services"]
@@ -131,6 +143,10 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         self.assertNotIn(
             "official_text",
             json.dumps(relation_doc, ensure_ascii=False),
+        )
+        self.assertEqual(
+            {row["service_id"] for row in relation_doc["services"] if row.get("applicability_state") == "UNKNOWN"},
+            {"homecaremanagement", "preventive-homecaremanagement", "preventive-welfare-equipment-rental"},
         )
 
     def test_verified_delegation_edges_do_not_promote_service_relations(self):

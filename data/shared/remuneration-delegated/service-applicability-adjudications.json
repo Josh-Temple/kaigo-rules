@@ -1,0 +1,183 @@
+{
+  "format_version": 1,
+  "corpus_id": "delegated-remuneration-national",
+  "adjudication_policy": {
+    "scope": "applicability to the registered shared corpus of Notice 27 and Notice 95 only",
+    "unknown_means": "official remuneration lane exists, but a defensible service-to-node relation in this corpus is not established",
+    "not_applicable_means": "the service benefit is a purchase-cost benefit outside the registered service-fee delegated-criteria corpus",
+    "verification_currentness_review_publication_route_auto_promotion_allowed": false
+  },
+  "adjudications": [
+    {
+      "service_id": "homecaremanagement",
+      "applicability_state": "UNKNOWN",
+      "mapped_node_ids": [],
+      "rationale": "The official Notice 19 fee table contains a distinct section 5 for 居宅療養管理指導費, but the registered delegated corpus (Notice 27 and Notice 95) has no explicit service heading or proven relation for this service. The existence of a remunerated service lane does not establish that no delegated criteria apply; it also does not identify a shared node. Keep applicability unresolved pending source-family scope and item mapping.",
+      "repository_evidence": [
+        "data/services/homecaremanagement/remuneration-index.json#service_scope",
+        "data/services/homecaremanagement/remuneration-scope.json",
+        "data/shared/remuneration-delegated/manifest.json#source_selection"
+      ],
+      "official_primary_sources": [
+        {
+          "source_id": "mhlw-fee-notice19-base",
+          "notice": "平成12年厚生省告示第19号",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "locator": "別表 5 居宅療養管理指導費"
+        },
+        {
+          "source_id": "mhlw-fee-criteria95-current",
+          "notice": "平成27年厚生労働省告示第95号",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "locator": "registered shared corpus source; service-specific relation not established"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "applicability_state": "UNKNOWN",
+      "mapped_node_ids": [],
+      "rationale": "The official Notice 127 fee table contains a distinct section 4 for 介護予防居宅療養管理指導費, but the registered delegated corpus (Notice 27 and Notice 95) has no explicit service heading or proven relation for this service. The existence of a remunerated service lane does not establish that no delegated criteria apply; it also does not identify a shared node. Keep applicability unresolved pending source-family scope and item mapping.",
+      "repository_evidence": [
+        "data/services/preventive-homecaremanagement/remuneration-index.json#service_scope",
+        "data/services/preventive-homecaremanagement/remuneration-scope.json",
+        "data/shared/remuneration-delegated/manifest.json#source_selection"
+      ],
+      "official_primary_sources": [
+        {
+          "source_id": "mhlw-preventive-fee-notice127-current",
+          "notice": "平成18年厚生労働省告示第127号",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+          "locator": "別表 4 介護予防居宅療養管理指導費"
+        },
+        {
+          "source_id": "mhlw-fee-criteria95-current",
+          "notice": "平成27年厚生労働省告示第95号",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "locator": "registered shared corpus source; service-specific relation not established"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "applicability_state": "UNKNOWN",
+      "mapped_node_ids": [],
+      "rationale": "The official Notice 127 fee table contains a distinct section 9 for 介護予防福祉用具貸与費, and that section explicitly refers to standards set separately by the Minister. The registered shared corpus has no explicit preventive-rental heading or mapped node. A criteria relation therefore cannot be inferred from the service fee section alone, and non-applicability cannot be concluded. Keep applicability UNKNOWN until the separately delegated source family is identified and mapped.",
+      "repository_evidence": [
+        "data/services/preventive-welfare-equipment-rental/remuneration-index.json#service_scope",
+        "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
+        "data/shared/remuneration-delegated/manifest.json#source_selection"
+      ],
+      "official_primary_sources": [
+        {
+          "source_id": "mhlw-preventive-fee-notice127-current",
+          "notice": "平成18年厚生労働省告示第127号",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=2",
+          "locator": "別表 9 介護予防福祉用具貸与費, 注 (1) and (2)"
+        },
+        {
+          "source_id": "mhlw-fee-criteria95-current",
+          "notice": "平成27年厚生労働省告示第95号",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "locator": "registered shared corpus source; preventive-rental service relation not established"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "applicability_state": "NOT_APPLICABLE",
+      "mapped_node_ids": [],
+      "rationale": "The Long-Term Care Insurance Act distinguishes the purchase-cost benefit for specified welfare equipment in Article 44 from the in-home service benefit in Article 41, whose covered-cost clause excludes purchase of specified welfare equipment. This service is therefore outside this repository's registered delegated service-fee corpus. This determination does not cover the separate purchase-cost criteria source family.",
+      "repository_evidence": [
+        "data/care-insurance-act-nodes.json#careact.article.41",
+        "data/care-insurance-act-nodes.json#careact.article.44",
+        "data/services/specific-welfare-equipment-sale/remuneration-scope.json#delegated_remuneration_criteria",
+        "data/shared/remuneration-delegated/manifest.json#source_selection"
+      ],
+      "official_primary_sources": [
+        {
+          "law_id": "409AC0000000123",
+          "law": "介護保険法（平成9年法律第123号）",
+          "url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+          "locator": "第四十一条及び第四十四条"
+        },
+        {
+          "source_id": "mhlw-fee-notice19-base",
+          "notice": "平成12年厚生省告示第19号",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "locator": "居宅サービス介護給付費単位数表"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "applicability_state": "NOT_APPLICABLE",
+      "mapped_node_ids": [],
+      "rationale": "The Long-Term Care Insurance Act establishes the preventive specified-welfare-equipment purchase-cost benefit in Article 56. The service does not use the preventive service-fee lane in Notice 127 represented by this delegated corpus. This determination does not cover the separate purchase-cost criteria source family.",
+      "repository_evidence": [
+        "data/care-insurance-act-nodes.json#careact.article.56",
+        "data/services/specific-preventive-welfare-equipment-sale/remuneration-scope.json#delegated_remuneration_criteria",
+        "data/shared/remuneration-delegated/manifest.json#source_selection"
+      ],
+      "official_primary_sources": [
+        {
+          "law_id": "409AC0000000123",
+          "law": "介護保険法（平成9年法律第123号）",
+          "url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+          "locator": "第五十六条"
+        },
+        {
+          "source_id": "mhlw-preventive-fee-notice127-current",
+          "notice": "平成18年厚生労働省告示第127号",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+          "locator": "別表 指定介護予防サービス介護給付費単位数表"
+        }
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    }
+  ]
+}

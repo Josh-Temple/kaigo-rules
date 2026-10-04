@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "relations": [
+    {
+      "id": "fee-guidance.scope.homevisit.rouki36.r6.II.2",
+      "service_id": "homevisit",
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.2",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki36-r6-final-comparison-shared",
+      "semantics": "Document section bearing this service name; no cross-reference applicability inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.homebath.rouki36.r6.II.3",
+      "service_id": "homebath",
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.3",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki36-r6-final-comparison-shared",
+      "semantics": "Document section bearing this service name; no cross-reference applicability inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.homenursing.rouki36.r6.II.4",
+      "service_id": "homenursing",
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.4",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki36-r6-final-comparison-shared",
+      "semantics": "Document section bearing this service name; no cross-reference applicability inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.homerehab.rouki36.r6.II.5",
+      "service_id": "homerehab",
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.5",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki36-r6-final-comparison-shared",
+      "semantics": "Document section bearing this service name; no cross-reference applicability inferred.",
+      "verification": "NOT_ESTABLISHED"
+    }
+  ]
+}
