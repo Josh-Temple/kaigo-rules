@@ -1,0 +1,118 @@
+{
+  "format_version": 1,
+  "service_id": "elderly-welfare-facility",
+  "service_label": "介護老人福祉施設",
+  "layer": "REMUNERATION_NOTIFICATION",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "1 介護福祉施設サービス",
+    "start_marker": "1　介護福祉施設サービス",
+    "end_marker": "2　介護保健施設サービス",
+    "excluded_next_section": "2　介護保健施設サービス",
+    "legal_text_duplicated": false
+  },
+  "official_source": {
+    "source_id": "mhlw-facility-fee-notice21-current",
+    "role": "PRIMARY_MHLW_CONSOLIDATED_DISPLAY",
+    "title": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+    "page_urls": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2"
+    ],
+    "locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス",
+    "observed_on_jst": "2026-10-04",
+    "version_note": "厚生労働省の現行統合表示でsection境界と構造markerを確認。令和8年厚生労働省告示第87号の反映を表示上確認したが、service/item-level currentnessの独立確立とは扱わない。"
+  },
+  "coverage": {
+    "indexed_top_level_items": 5,
+    "indexed_child_items": 4,
+    "total_index_entries": 9,
+    "top_level_complete": false,
+    "item_body_complete": false,
+    "legal_body_copied": false,
+    "indexing_depth": "BOUNDED_SECTION_AND_DIRECTLY_OBSERVED_STRUCTURE_MARKERS"
+  },
+  "top_level_items": [
+    {
+      "id": "rem.elderly-welfare-facility.top.1",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "介護福祉施設サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / イ"
+    },
+    {
+      "id": "rem.elderly-welfare-facility.top.2",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "ユニット型介護福祉施設サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / ロ"
+    },
+    {
+      "id": "rem.elderly-welfare-facility.top.3",
+      "marker": "オ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "新興感染症等施設療養費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / オ"
+    },
+    {
+      "id": "rem.elderly-welfare-facility.top.4",
+      "marker": "ク",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "生産性向上推進体制加算",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / ク"
+    },
+    {
+      "id": "rem.elderly-welfare-facility.top.5",
+      "marker": "ヤ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "サービス提供体制強化加算",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / ヤ"
+    }
+  ],
+  "child_items": [
+    {
+      "id": "rem.elderly-welfare-facility.child.1",
+      "parent_marker": "イ",
+      "marker": "(1)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "介護福祉施設サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / イ / (1)"
+    },
+    {
+      "id": "rem.elderly-welfare-facility.child.2",
+      "parent_marker": "イ",
+      "marker": "(2)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "経過的小規模介護福祉施設サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / イ / (2)"
+    },
+    {
+      "id": "rem.elderly-welfare-facility.child.3",
+      "parent_marker": "ク",
+      "marker": "(1)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / ク / (1)"
+    },
+    {
+      "id": "rem.elderly-welfare-facility.child.4",
+      "parent_marker": "ク",
+      "marker": "(2)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 1 介護福祉施設サービス / ク / (2)"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false,
+    "note": "報酬告示のservice-specific sectionを本文複製なしの構造索引として収載した段階。item-body/currentness/relation/human review/publication/routeは独立工程のまま。"
+  }
+}
