@@ -1,6 +1,6 @@
 {
   "format_version": 1,
-  "corpus_id": "rouki25-preventive-shared-scope-index",
+  "corpus_id": "rouki25-shared-scope-index",
   "source_family": "standards_interpretation_notice",
   "document_id": "rouki25",
   "document_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
@@ -38,5 +38,5 @@
     "currentness": "NOT_ESTABLISHED",
     "human_review": "NOT_REVIEWED"
   },
-  "note": "予防サービス群の解釈通知は同一の老企第25号に含まれるため、本文をサービス別に複製せず、共有sourceとサービス別章・節locatorを分離して保持する。2015年資料は歴史的なscope確認用資料、令和6年度資料は改正比較資料であり、いずれも現行統合全文として扱わない。"
+  "note": "居宅サービス・介護予防サービスの解釈通知は同一の老企第25号に含まれる範囲があるため、本文をサービス別に複製せず、共有sourceとサービス別章・節locatorを分離して保持する。2015年資料は歴史的なscope確認用資料、令和6年度資料は改正比較資料であり、いずれも現行統合全文として扱わない。"
 }
