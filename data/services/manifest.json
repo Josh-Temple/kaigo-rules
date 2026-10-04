@@ -255,21 +255,21 @@
       "service_id": "preventive-shortstay-medical",
       "label": "介護予防短期入所療養介護",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-shortstay-medical.json"
     },
     {
       "service_id": "preventive-specific-facility",
       "label": "介護予防特定施設入居者生活介護",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-specific-facility.json"
     },
     {
       "service_id": "preventive-welfare-equipment-rental",
       "label": "介護予防福祉用具貸与",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-welfare-equipment-rental.json"
     },
     {

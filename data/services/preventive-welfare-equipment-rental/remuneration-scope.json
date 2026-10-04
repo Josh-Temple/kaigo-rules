@@ -15,9 +15,11 @@
       "label": "介護予防福祉用具貸与費"
     },
     "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
-    "structured_nodes_state": "NOT_INGESTED_FOR_PREVENTIVE_SERVICE",
+    "structured_nodes_state": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
     "verification_status": "NOT_SERVICE_VERIFIED",
-    "currentness_state": "NOT_ESTABLISHED_FOR_SERVICE"
+    "currentness_state": "NOT_ESTABLISHED_FOR_SERVICE",
+    "structured_index_path": "data/services/preventive-welfare-equipment-rental/remuneration-index.json",
+    "observed_on_jst": "2026-10-04"
   },
   "delegated_remuneration_criteria": {
     "state": "SCOPE_DEFINED_RELATION_NOT_NODE_RESOLVED",
