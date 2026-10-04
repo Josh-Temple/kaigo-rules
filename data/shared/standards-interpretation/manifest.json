@@ -1,0 +1,42 @@
+{
+  "format_version": 1,
+  "corpus_id": "rouki25-shared-scope-index",
+  "source_family": "standards_interpretation_notice",
+  "document_id": "rouki25",
+  "document_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+  "notice_number": "平成11年9月17日 老企第25号",
+  "storage_model": "SHARED_SOURCE_SCOPE_INDEX_NO_BODY_DUPLICATION",
+  "sources": [
+    {
+      "source_id": "rouki25-preventive-historical-2015",
+      "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+      "source_state": "OFFICIAL_HISTORICAL_MHLW_PDF",
+      "role": "HISTORICAL_SCOPE_REFERENCE",
+      "current_integrated_text": false
+    },
+    {
+      "source_id": "rouki25-r6-amendment-comparison",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+      "source_state": "OFFICIAL_MHLW_AMENDMENT_COMPARISON",
+      "role": "AMENDMENT_EVIDENCE_ONLY",
+      "current_integrated_text": false
+    }
+  ],
+  "policy": {
+    "duplicate_body_text_per_service": false,
+    "service_specific_scope_and_relation_only": true,
+    "item_body_verification_auto_promotion": false,
+    "currentness_auto_promotion": false,
+    "human_review_auto_promotion": false,
+    "publication_auto_promotion": false,
+    "route_auto_enable": false
+  },
+  "assurance": {
+    "source_identity": "PRIMARY_MHLW_SOURCE_IDENTIFIED",
+    "service_scope": "SOURCE_HEADING_MAPPED",
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED"
+  },
+  "note": "居宅サービス・介護予防サービスの解釈通知は同一の老企第25号に含まれる範囲があるため、本文をサービス別に複製せず、共有sourceとサービス別章・節locatorを分離して保持する。2015年資料は歴史的なscope確認用資料、令和6年度資料は改正比較資料であり、いずれも現行統合全文として扱わない。"
+}

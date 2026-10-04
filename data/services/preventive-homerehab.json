@@ -30,7 +30,8 @@
     "standards_index": "data/services/preventive-homerehab/standards-scope.json",
     "remuneration": "data/services/preventive-homerehab/remuneration-scope.json",
     "delegated_remuneration_criteria": "data/services/preventive-homerehab/remuneration-scope.json",
-    "unit_price_regional_classification": "data/services/preventive-homerehab/remuneration-scope.json"
+    "unit_price_regional_classification": "data/services/preventive-homerehab/remuneration-scope.json",
+    "standards_interpretation": "data/services/preventive-homerehab/standards-interpretation-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -48,9 +49,20 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "厚生労働省告示第127号の別表「3 介護予防訪問リハビリテーション費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+    },
+    "standards_interpretation": {
+      "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+      "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+      "service_scope": "data/services/preventive-homerehab/standards-interpretation-scope.json",
+      "relation_file": "data/shared/standards-interpretation/service-relations.json",
+      "relation_id": "standards-interpretation.preventive-homerehab.rouki25",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
     }
   },
   "ingestion_indexes": {
-    "remuneration": "data/services/preventive-homerehab/remuneration-index.json"
+    "remuneration": "data/services/preventive-homerehab/remuneration-index.json",
+    "standards_interpretation": "data/services/preventive-homerehab/standards-interpretation-scope.json"
   }
 }

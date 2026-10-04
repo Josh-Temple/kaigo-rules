@@ -1,0 +1,279 @@
+{
+  "format_version": 1,
+  "source_family": "standards_interpretation_notice",
+  "document_id": "rouki25",
+  "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+  "scope_model": "SERVICE_TO_SHARED_SOURCE_SECTION",
+  "services": [
+    {
+      "service_id": "preventive-homebath",
+      "label": "介護予防訪問入浴介護",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 二 / 2 介護予防訪問入浴介護",
+        "第四 介護予防サービス / 三 / 2 介護予防訪問入浴介護"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "label": "介護予防訪問看護",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 3 介護予防訪問看護"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "label": "介護予防訪問リハビリテーション",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 4 介護予防訪問リハビリテーション"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "label": "介護予防居宅療養管理指導",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 5 介護予防居宅療養管理指導"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "label": "介護予防通所リハビリテーション",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 7 介護予防通所リハビリテーション"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "label": "介護予防短期入所生活介護",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 二 / 4 指定介護予防短期入所生活介護",
+        "第四 介護予防サービス / 三 / 8 介護予防短期入所生活介護"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "label": "介護予防短期入所療養介護",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 二 / 5 指定介護予防短期入所療養介護",
+        "第四 介護予防サービス / 三 / 9 介護予防短期入所療養介護"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "label": "介護予防特定施設入居者生活介護",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 10 介護予防特定施設入居者生活介護"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "label": "介護予防福祉用具貸与",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 11 介護予防福祉用具貸与"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "label": "特定介護予防福祉用具販売",
+      "source_ids": [
+        "rouki25-preventive-historical-2015",
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "第四 介護予防サービス / 三 / 12 特定介護予防福祉用具販売"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。本文単位の独立照合、改正履歴の網羅確認、現行統合本文の確立は行っていない。"
+    },
+    {
+      "service_id": "shortstay-medical",
+      "label": "短期入所療養介護",
+      "source_ids": [
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "九 短期入所療養介護"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "令和6年度一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。改正比較資料は現行統合全文ではないため、本文単位の独立照合、改正履歴の網羅確認、currentness確立は行っていない。"
+    },
+    {
+      "service_id": "specific-facility",
+      "label": "特定施設入居者生活介護",
+      "source_ids": [
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "一〇 特定施設入居者生活介護"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "令和6年度一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。改正比較資料は現行統合全文ではないため、本文単位の独立照合、改正履歴の網羅確認、currentness確立は行っていない。"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "label": "福祉用具貸与",
+      "source_ids": [
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "十一 福祉用具貸与"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "令和6年度一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。改正比較資料は現行統合全文ではないため、本文単位の独立照合、改正履歴の網羅確認、currentness確立は行っていない。"
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "label": "特定福祉用具販売",
+      "source_ids": [
+        "rouki25-r6-amendment-comparison"
+      ],
+      "source_locators": [
+        "十二 特定福祉用具販売"
+      ],
+      "scope_state": "SCOPE_DEFINED_SOURCE_HEADING_ONLY",
+      "source_acquisition_state": "AVAILABLE_PRIMARY_MHLW",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication": "NOT_ESTABLISHED",
+      "route_exposure": "BLOCKED",
+      "note": "令和6年度一次資料上のサービス見出し・範囲のみを共有sourceへ対応付けた。改正比較資料は現行統合全文ではないため、本文単位の独立照合、改正履歴の網羅確認、currentness確立は行っていない。"
+    }
+  ],
+  "safety": {
+    "shared_body_duplication_count": 0,
+    "automatic_verification_promotion": false,
+    "automatic_currentness_promotion": false
+  }
+}

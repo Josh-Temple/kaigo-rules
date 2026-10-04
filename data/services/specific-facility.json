@@ -29,7 +29,8 @@
     "care_insurance_act": "data/services/specific-facility/care-insurance-act-scope.json",
     "ordinance37": "data/services/specific-facility/ordinance37-scope.json",
     "remuneration": "data/services/specific-facility/remuneration-scope.json",
-    "unit_price": "data/services/specific-facility/unit-price-scope.json"
+    "unit_price": "data/services/specific-facility/unit-price-scope.json",
+    "standards_interpretation": "data/services/specific-facility/standards-interpretation-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -47,9 +48,20 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
+    },
+    "standards_interpretation": {
+      "status": "INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED",
+      "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+      "service_scope": "data/services/specific-facility/standards-interpretation-scope.json",
+      "relation_file": "data/shared/standards-interpretation/service-relations.json",
+      "relation_id": "standards-interpretation.specific-facility.rouki25",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "老企第25号の共有一次資料sourceへサービス固有章・節を対応付けた構造index。本文のサービス別複製は行わず、item-body verification/currentness/human review/publication/routeは未昇格。"
     }
   },
   "ingestion_indexes": {
-    "remuneration": "data/services/specific-facility/remuneration-index.json"
+    "remuneration": "data/services/specific-facility/remuneration-index.json",
+    "standards_interpretation": "data/services/specific-facility/standards-interpretation-scope.json"
   }
 }

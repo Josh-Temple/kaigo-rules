@@ -1,0 +1,31 @@
+{
+  "format_version": 1,
+  "service_id": "specific-welfare-equipment-sale",
+  "layer": "standards_interpretation",
+  "document_id": "rouki25",
+  "document_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+  "notice_number": "平成11年9月17日 老企第25号",
+  "status": "SHARED_SOURCE_SCOPE_INDEXED",
+  "shared_source_manifest": "data/shared/standards-interpretation/manifest.json",
+  "shared_scope_index": "data/shared/standards-interpretation/service-scopes.json",
+  "relation_file": "data/shared/standards-interpretation/service-relations.json",
+  "relation_id": "standards-interpretation.specific-welfare-equipment-sale.rouki25",
+  "source_ids": [
+    "rouki25-r6-amendment-comparison"
+  ],
+  "source_locators": [
+    "十二 特定福祉用具販売"
+  ],
+  "source_state": "PRIMARY_MHLW_AMENDMENT_COMPARISON_AVAILABLE",
+  "item_body_verification": "NOT_ESTABLISHED",
+  "currentness_state": "NOT_ESTABLISHED",
+  "human_review_state": "NOT_REVIEWED",
+  "safety": {
+    "body_text_copied_to_service": false,
+    "current_integrated_text": false,
+    "human_verified": false,
+    "verified_current": false,
+    "automatic_promotion_allowed": false
+  },
+  "note": "令和6年度厚労省一次資料のサービス見出し・範囲のみを共有sourceへ対応付けた。改正比較資料を現行統合全文とは扱わず、item-body verification/currentnessは未確立。"
+}
