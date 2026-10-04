@@ -508,6 +508,13 @@ def build_cell(
         else:
             route_state = "BLOCKED"
 
+    if family["id"] == "other_national_manuals_forms":
+        # Canonical source availability and explicit service applicability do not
+        # make this source family public on existing service routes. Worker B
+        # deliberately leaves publication/route assurance blocked.
+        publication_state = "BLOCKED"
+        route_state = "BLOCKED"
+
     if (
         family["id"] == "unit_price_regional_classification"
         and unit_price_mapping
