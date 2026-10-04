@@ -30,6 +30,10 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         manifest = self.outputs["manifest.json"]
         self.assertEqual(
             manifest["canonical_node_store"],
+            "data/shared/remuneration-delegated/national-corpus.json",
+        )
+        self.assertEqual(
+            manifest["legacy_compatibility"]["legacy_text_store"],
             "data/remuneration-delegated-nodes.json",
         )
         self.assertTrue(manifest["legacy_compatibility"]["node_ids_preserved"])
@@ -67,7 +71,11 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         self.assertEqual(row["service_id"], "dayservice")
         self.assertEqual(row["applicability_state"], "MAPPED")
         self.assertEqual(row["ingestion_state"], "INGESTED")
-        self.assertEqual(row["mapped_node_count"], len(self.legacy_nodes))
+        self.assertEqual(row["mapped_node_count"], 15)
+        self.assertEqual(
+            row["compatibility_subnode_ids"],
+            ["notice27.item.1.capacity", "notice27.item.1.staffing"],
+        )
         assurance = row["assurance"]
         self.assertEqual(assurance["item_body_verification"], "NOT_ESTABLISHED")
         self.assertEqual(assurance["currentness"], "NOT_ESTABLISHED")
