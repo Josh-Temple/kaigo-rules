@@ -204,3 +204,5 @@ jobs:
           fi
           git commit -m "Integrate structural completeness wave and regenerate artifacts"
           git push origin HEAD:work/structural-completeness-wave-integrator
+
+# rerun: regression expectations updated for structural completeness expansion
