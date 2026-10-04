@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -23,6 +24,57 @@ APPLICABILITY = SHARED / "service-applicability.json"
 SERVICE_RELATIONS = SHARED / "service-relations.json"
 
 CORPUS_ID = "delegated-remuneration-national"
+
+# Canonical service-fee expressions used only to identify explicit applicability
+# in the official node heading. A shorter expression does not match when the
+# same character span is contained inside a longer service expression.
+SERVICE_HEADING_TERMS: dict[str, tuple[str, ...]] = {
+    "dayservice": ("通所介護費",),
+    "homevisit": ("訪問介護費",),
+    "homebath": ("訪問入浴介護費",),
+    "homenursing": ("訪問看護費",),
+    "homerehab": ("訪問リハビリテーション費",),
+    "homecaremanagement": ("居宅療養管理指導費",),
+    "dayrehab": ("通所リハビリテーション費",),
+    "shortstay-life": ("短期入所生活介護費",),
+    "community-dayservice": ("地域密着型通所介護費",),
+    "regular-round": ("定期巡回・随時対応型訪問介護看護費",),
+    "night-homevisit": ("夜間対応型訪問介護費",),
+    "care-management": ("居宅介護支援費",),
+    "preventive-support": ("介護予防支援費",),
+    "shortstay-medical": ("短期入所療養介護費",),
+    "specific-facility": ("特定施設入居者生活介護費",),
+    "welfare-equipment-rental": ("福祉用具貸与費",),
+    "specific-welfare-equipment-sale": ("特定福祉用具販売",),
+    "dementia-dayservice": ("認知症対応型通所介護費",),
+    "small-scale-multifunctional": ("小規模多機能型居宅介護費",),
+    "dementia-group-home": ("認知症対応型共同生活介護費",),
+    "community-specific-facility": ("地域密着型特定施設入居者生活介護費",),
+    "community-elderly-facility": (
+        "地域密着型介護老人福祉施設入所者生活介護費",
+        "地域密着型介護福祉施設サービス",
+    ),
+    "nursing-small-scale-multifunctional": (
+        "看護小規模多機能型居宅介護費",
+        "複合型サービス費",
+    ),
+    "elderly-welfare-facility": ("介護福祉施設サービス費", "介護福祉施設サービス"),
+    "elderly-health-facility": ("介護保健施設サービス費", "介護保健施設サービス"),
+    "care-medical-institution": ("介護医療院サービス費", "介護医療院サービス"),
+    "preventive-homebath": ("介護予防訪問入浴介護費",),
+    "preventive-homenursing": ("介護予防訪問看護費",),
+    "preventive-homerehab": ("介護予防訪問リハビリテーション費",),
+    "preventive-homecaremanagement": ("介護予防居宅療養管理指導費",),
+    "preventive-dayrehab": ("介護予防通所リハビリテーション費",),
+    "preventive-shortstay-life": ("介護予防短期入所生活介護費",),
+    "preventive-shortstay-medical": ("介護予防短期入所療養介護費",),
+    "preventive-specific-facility": ("介護予防特定施設入居者生活介護費",),
+    "preventive-welfare-equipment-rental": ("介護予防福祉用具貸与費",),
+    "specific-preventive-welfare-equipment-sale": ("特定介護予防福祉用具販売",),
+    "preventive-dementia-dayservice": ("介護予防認知症対応型通所介護費",),
+    "preventive-small-scale-multifunctional": ("介護予防小規模多機能型居宅介護費",),
+    "preventive-dementia-group-home": ("介護予防認知症対応型共同生活介護費",),
+}
 
 
 def load(path: Path) -> Any:
@@ -39,6 +91,90 @@ def canonical_node_id(legacy_id: str) -> str:
     if legacy_id.startswith("criteria95.shared."):
         return "notice95.item." + legacy_id.removeprefix("criteria95.shared.")
     raise ValueError(f"unmapped legacy delegated node id: {legacy_id}")
+
+
+def _term_is_explicit_in_heading(heading: str, term: str, all_terms: tuple[str, ...]) -> bool:
+    start = 0
+    while True:
+        index = heading.find(term, start)
+        if index < 0:
+            return False
+        end = index + len(term)
+        covered_by_longer = False
+        for longer in all_terms:
+            if len(longer) <= len(term):
+                continue
+            longer_start = 0
+            while True:
+                longer_index = heading.find(longer, longer_start)
+                if longer_index < 0:
+                    break
+                if longer_index <= index and longer_index + len(longer) >= end:
+                    covered_by_longer = True
+                    break
+                longer_start = longer_index + 1
+            if covered_by_longer:
+                break
+        if not covered_by_longer:
+            return True
+        start = index + 1
+
+
+def _direct_node_ids(
+    national_nodes: list[dict[str, Any]],
+    service_id: str,
+) -> list[str]:
+    all_terms = tuple(
+        sorted(
+            {term for terms in SERVICE_HEADING_TERMS.values() for term in terms},
+            key=len,
+            reverse=True,
+        )
+    )
+    terms = SERVICE_HEADING_TERMS[service_id]
+    return sorted({
+        node["canonical_node_id"]
+        for node in national_nodes
+        if any(
+            _term_is_explicit_in_heading(str(node.get("heading", "")), term, all_terms)
+            for term in terms
+        )
+    })
+
+
+def _incorporated_reference_ids(
+    text: str,
+    label_to_canonical: dict[str, str],
+) -> list[str]:
+    # Covers forms such as 第四十八号の規定を準用する and
+    # 第三十七号の三の規定を準用する. Verification remains separate.
+    pattern = re.compile(
+        r"第([一二三四五六七八九十百]+)号"
+        r"(?:の([一二三四五六七八九十百]+))?"
+        r"[^。]{0,60}?の規定を準用する"
+    )
+    references: set[str] = set()
+    for match in pattern.finditer(text):
+        label = match.group(1)
+        if match.group(2):
+            label += "の" + match.group(2)
+        canonical_id = label_to_canonical.get(label)
+        if canonical_id:
+            references.add(canonical_id)
+    return sorted(references)
+
+
+def _fail_closed_assurance() -> dict[str, Any]:
+    return {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": False,
+    }
+
 
 
 def build() -> dict[str, Any]:
@@ -79,6 +215,16 @@ def build() -> dict[str, Any]:
     if len(legacy_ids) != len(set(legacy_ids)):
         raise ValueError("duplicate legacy delegated node id")
 
+    catalog = load(DATA / "services" / "catalog.generated.json")
+    catalog_service_ids = [row["service_id"] for row in catalog.get("services", [])]
+    configured_service_ids = set(SERVICE_HEADING_TERMS)
+    if set(catalog_service_ids) != configured_service_ids:
+        missing = sorted(set(catalog_service_ids) - configured_service_ids)
+        extra = sorted(configured_service_ids - set(catalog_service_ids))
+        raise ValueError(
+            f"delegated applicability service-term map drift: missing={missing}, extra={extra}"
+        )
+
     passed_checks_by_target: dict[str, list[str]] = {}
     for check in relation_audit.get("checks", []):
         if check.get("result") != "PASS":
@@ -86,11 +232,29 @@ def build() -> dict[str, Any]:
         passed_checks_by_target.setdefault(check["to_id"], []).append(check["id"])
 
     node_by_legacy = {node["id"]: node for node in nodes}
-    service_relations = []
+    national_by_id = {row["canonical_node_id"]: row for row in national_nodes}
+    label_to_canonical = {
+        str(row["item_label"]): row["canonical_node_id"]
+        for row in national_nodes
+        if row.get("item_label")
+    }
+
+    legacy_text_by_canonical = {
+        canonical_node_id(node["id"]): str(node.get("official_text", ""))
+        for node in nodes
+    }
+
+    def node_text(canonical_id: str) -> str:
+        row = national_by_id[canonical_id]
+        if row.get("official_text"):
+            return str(row["official_text"])
+        return legacy_text_by_canonical.get(canonical_id, "")
+
+    legacy_dayservice_relations: dict[str, dict[str, Any]] = {}
     for row in identity_rows:
         legacy_id = row["legacy_node_id"]
         legacy = node_by_legacy[legacy_id]
-        service_relations.append({
+        legacy_dayservice_relations[row["canonical_node_id"]] = {
             "canonical_node_id": row["canonical_node_id"],
             "relation": (
                 "INCORPORATED_BY_REFERENCE"
@@ -105,18 +269,127 @@ def build() -> dict[str, Any]:
             "independently_verified_delegation_edge_ids": sorted(
                 passed_checks_by_target.get(legacy_id, [])
             ),
-        })
+        }
 
-    mapped_canonical_ids = [
+    legacy_dayservice_top_level = {
         row["canonical_node_id"]
         for row in identity_rows
         if row["canonical_node_id"] in national_ids
-    ]
-    compatibility_subnode_ids = [
+    }
+    compatibility_subnode_ids = sorted(
         row["canonical_node_id"]
         for row in identity_rows
         if row["canonical_node_id"] not in national_ids
-    ]
+    )
+
+    direct_by_service: dict[str, list[str]] = {}
+    incorporated_by_service: dict[str, dict[str, list[str]]] = {}
+    applicability_services: list[dict[str, Any]] = []
+    relation_services: list[dict[str, Any]] = []
+
+    for service_id in catalog_service_ids:
+        direct_ids = set(_direct_node_ids(national_nodes, service_id))
+        if service_id == "dayservice":
+            direct_ids.update(
+                canonical_id
+                for canonical_id in legacy_dayservice_top_level
+                if canonical_id != "notice95.item.4"
+            )
+        if not direct_ids:
+            continue
+
+        direct_ids_sorted = sorted(direct_ids)
+        reference_to_referrers: dict[str, set[str]] = {}
+        for direct_id in direct_ids_sorted:
+            for reference_id in _incorporated_reference_ids(
+                node_text(direct_id),
+                label_to_canonical,
+            ):
+                if reference_id in direct_ids:
+                    continue
+                reference_to_referrers.setdefault(reference_id, set()).add(direct_id)
+
+        # Preserve the pre-existing dayservice incorporation edge even though its
+        # compatibility evidence predates this heading-derived expansion.
+        if service_id == "dayservice":
+            reference_to_referrers.setdefault("notice95.item.4", set()).add(
+                "notice95.item.24"
+            )
+
+        incorporated_by_service[service_id] = {
+            canonical_id: sorted(referrers)
+            for canonical_id, referrers in sorted(reference_to_referrers.items())
+        }
+        direct_by_service[service_id] = direct_ids_sorted
+
+        mapped_node_ids = sorted(
+            set(direct_ids_sorted) | set(reference_to_referrers)
+        )
+        mapping_evidence = [
+            "data/shared/remuneration-delegated/national-corpus.json",
+        ]
+        if service_id == "dayservice":
+            mapping_evidence.extend([
+                "data/remuneration-delegated-nodes.json",
+                "data/shared/remuneration-delegated/node-identity-map.json",
+                "data/remuneration-delegated-relations.json",
+            ])
+
+        applicability_services.append({
+            "service_id": service_id,
+            "scope_state": "SCOPE_DEFINED",
+            "applicability_state": "MAPPED",
+            "ingestion_state": "INGESTED",
+            "mapped_node_count": len(mapped_node_ids),
+            "mapped_node_ids": mapped_node_ids,
+            "compatibility_subnode_ids": (
+                compatibility_subnode_ids if service_id == "dayservice" else []
+            ),
+            "mapping_evidence": mapping_evidence,
+            "assurance": _fail_closed_assurance(),
+        })
+
+        relation_by_id: dict[str, dict[str, Any]] = {}
+        if service_id == "dayservice":
+            relation_by_id.update(legacy_dayservice_relations)
+
+        for canonical_id in direct_ids_sorted:
+            if canonical_id in relation_by_id:
+                continue
+            source_node = national_by_id[canonical_id]
+            relation_by_id[canonical_id] = {
+                "canonical_node_id": canonical_id,
+                "relation": "DIRECT_APPLICABILITY",
+                "verification_state": "NOT_ESTABLISHED",
+                "basis": {
+                    "source_id": source_node["source_id"],
+                    "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE",
+                },
+                "independently_verified_delegation_edge_ids": [],
+            }
+
+        for canonical_id, referrers in incorporated_by_service[service_id].items():
+            if canonical_id in relation_by_id:
+                continue
+            relation_by_id[canonical_id] = {
+                "canonical_node_id": canonical_id,
+                "relation": "INCORPORATED_BY_REFERENCE",
+                "verification_state": "NOT_ESTABLISHED",
+                "basis": {
+                    "referenced_by_canonical_node_ids": referrers,
+                    "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE",
+                },
+                "independently_verified_delegation_edge_ids": [],
+            }
+
+        relation_services.append({
+            "service_id": service_id,
+            "relation_verification_state": "NOT_ESTABLISHED",
+            "relations": [
+                relation_by_id[canonical_id]
+                for canonical_id in sorted(relation_by_id)
+            ],
+        })
 
     identity_doc = {
         "format_version": 1,
@@ -129,48 +402,39 @@ def build() -> dict[str, Any]:
     applicability_doc = {
         "format_version": 1,
         "corpus_id": CORPUS_ID,
-        "services": [{
-            "service_id": "dayservice",
-            "scope_state": "SCOPE_DEFINED",
-            "applicability_state": "MAPPED",
-            "ingestion_state": "INGESTED",
-            "mapped_node_count": len(mapped_canonical_ids),
-            "mapped_node_ids": mapped_canonical_ids,
-            "compatibility_subnode_ids": compatibility_subnode_ids,
-            "mapping_evidence": [
-                "data/shared/remuneration-delegated/national-corpus.json",
-                "data/remuneration-delegated-nodes.json",
-                "data/shared/remuneration-delegated/node-identity-map.json",
-                "data/remuneration-delegated-relations.json",
-            ],
-            "assurance": {
-                "item_body_verification": "NOT_ESTABLISHED",
-                "currentness": "NOT_ESTABLISHED",
-                "relation_verification": "NOT_ESTABLISHED",
-                "human_review": "NOT_REVIEWED",
-                "publication": "BLOCKED",
-                "route_exposure": "BLOCKED",
-                "automatic_promotion_allowed": False,
-            },
-        }],
+        "services": applicability_services,
+        "mapping_policy": {
+            "direct_applicability_basis": "OFFICIAL_NODE_HEADING_EXPLICIT_SERVICE_SCOPE",
+            "incorporated_reference_basis": "EXPLICIT_INCORPORATION_BY_REFERENCE",
+            "unmatched_services_remain": "NOT_MAPPED",
+            "service_applicability_auto_verification_allowed": False,
+            "note": (
+                "MAPPED means a service-to-node applicability relation is represented. "
+                "It does not establish item-body verification, currentness, human review, "
+                "publication, or route exposure."
+            ),
+        },
     }
 
     service_relations_doc = {
         "format_version": 1,
         "corpus_id": CORPUS_ID,
-        "services": [{
-            "service_id": "dayservice",
-            "relation_verification_state": "NOT_ESTABLISHED",
-            "relations": service_relations,
-        }],
+        "services": relation_services,
         "verification_policy": {
             "service_relation_auto_promotion_allowed": False,
             "note": (
-                "Independent delegation-edge PASS evidence is retained separately "
-                "and does not automatically verify service applicability or "
-                "service-to-node relation semantics."
+                "Official-heading applicability and explicit incorporation relations "
+                "are mapped independently from verification. Existing delegation-edge "
+                "PASS evidence is retained where available and does not automatically "
+                "verify service applicability or service-to-node relation semantics."
             ),
         },
+    }
+
+    mapped_top_level_ids = {
+        canonical_id
+        for row in applicability_services
+        for canonical_id in row["mapped_node_ids"]
     }
 
     source_by_id = {row["id"]: row for row in sources}
@@ -219,11 +483,11 @@ def build() -> dict[str, Any]:
         "inventory": {
             "national_top_level_nodes": len(national_nodes),
             "legacy_identity_aliases": len(identity_rows),
-            "service_mapped_top_level_nodes": len(mapped_canonical_ids),
+            "service_mapped_top_level_nodes": len(mapped_top_level_ids),
             "compatibility_subnodes": len(compatibility_subnode_ids),
             "sources": national_corpus.get("coverage", {}).get("source_documents", 0),
             "source_pages": national_corpus.get("coverage", {}).get("source_pages", 0),
-            "services_mapped": 1,
+            "services_mapped": len(applicability_services),
         },
         "assurance": {
             "item_body_verification": "NOT_ESTABLISHED",

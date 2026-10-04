@@ -71,7 +71,7 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         self.assertEqual(row["service_id"], "dayservice")
         self.assertEqual(row["applicability_state"], "MAPPED")
         self.assertEqual(row["ingestion_state"], "INGESTED")
-        self.assertEqual(row["mapped_node_count"], 15)
+        self.assertEqual(row["mapped_node_count"], 18)
         self.assertEqual(
             row["compatibility_subnode_ids"],
             ["notice27.item.1.capacity", "notice27.item.1.staffing"],
@@ -84,6 +84,54 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         self.assertEqual(assurance["publication"], "BLOCKED")
         self.assertEqual(assurance["route_exposure"], "BLOCKED")
         self.assertFalse(assurance["automatic_promotion_allowed"])
+
+    def test_heading_based_applicability_expands_but_unmatched_services_stay_unmapped(self):
+        applicability = {
+            row["service_id"]: row
+            for row in self.outputs["service-applicability.json"]["services"]
+        }
+        self.assertEqual(len(applicability), 34)
+        self.assertEqual(
+            {
+                "homecaremanagement",
+                "specific-welfare-equipment-sale",
+                "preventive-homecaremanagement",
+                "preventive-welfare-equipment-rental",
+                "specific-preventive-welfare-equipment-sale",
+            },
+            set(shared.SERVICE_HEADING_TERMS) - set(applicability),
+        )
+
+        self.assertIn("notice95.item.84", applicability["care-management"]["mapped_node_ids"])
+        self.assertIn("notice95.item.129-4", applicability["preventive-support"]["mapped_node_ids"])
+        self.assertIn("notice95.item.44-4", applicability["welfare-equipment-rental"]["mapped_node_ids"])
+
+        for row in applicability.values():
+            assurance = row["assurance"]
+            self.assertEqual(assurance["item_body_verification"], "NOT_ESTABLISHED")
+            self.assertEqual(assurance["currentness"], "NOT_ESTABLISHED")
+            self.assertEqual(assurance["relation_verification"], "NOT_ESTABLISHED")
+            self.assertEqual(assurance["human_review"], "NOT_REVIEWED")
+            self.assertEqual(assurance["publication"], "BLOCKED")
+            self.assertEqual(assurance["route_exposure"], "BLOCKED")
+            self.assertFalse(assurance["automatic_promotion_allowed"])
+
+    def test_service_relation_mapping_never_duplicates_source_text(self):
+        relation_doc = self.outputs["service-relations.json"]
+        self.assertEqual(len(relation_doc["services"]), 34)
+        relation_rows = [
+            relation
+            for service in relation_doc["services"]
+            for relation in service["relations"]
+        ]
+        self.assertTrue(relation_rows)
+        self.assertTrue(
+            all(relation["verification_state"] == "NOT_ESTABLISHED" for relation in relation_rows)
+        )
+        self.assertNotIn(
+            "official_text",
+            json.dumps(relation_doc, ensure_ascii=False),
+        )
 
     def test_verified_delegation_edges_do_not_promote_service_relations(self):
         row = self.outputs["service-relations.json"]["services"][0]
