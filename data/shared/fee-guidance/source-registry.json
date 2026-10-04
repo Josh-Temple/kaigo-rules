@@ -13,6 +13,46 @@
       "extraction": "pdftotext -layout; both columns preserved",
       "currentness": "NOT_ESTABLISHED",
       "warning": "Not an integrated current text; omissions are not evidence of no amendment."
+    },
+    {
+      "id": "rouki36-r6-final-comparison-scope-locators",
+      "publisher": "厚生労働省",
+      "title": "指定居宅サービスに要する費用の額の算定に関する基準（訪問通所サービス、居宅療養管理指導及び福祉用具貸与に係る部分）及び指定居宅介護支援に要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+      "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATOR_EXCERPT",
+      "snapshot_path": "data/shared/fee-guidance/r6-rouki36-section-locators.txt",
+      "snapshot_sha256": "9a9cf11e9d66fef8e5973746c153628b49165de9bffa17c05c843c3c3a88e35d",
+      "observed_at": "2026-10-04",
+      "extraction": "Official MHLW PDF text-layer section headings captured as locator-only excerpt; amendment-comparison body is not promoted as integrated current text.",
+      "currentness": "NOT_ESTABLISHED",
+      "warning": "Scope locator evidence only. Not an integrated current text and not item-body verification.",
+      "pdf_sha256": "826dc8f8521ff8387fdde90f880290422ed9a846e71cc3277494b1ea38693241"
+    },
+    {
+      "id": "rouki40-r6-final-comparison-scope-locators",
+      "publisher": "厚生労働省",
+      "title": "指定居宅サービスに要する費用の額の算定に関する基準（短期入所サービス及び特定施設入居者生活介護に係る部分）及び指定施設サービス等に要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227894.pdf",
+      "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATOR_EXCERPT",
+      "snapshot_path": "data/shared/fee-guidance/r6-rouki40-section-locators.txt",
+      "snapshot_sha256": "ffd508525f7dc78b5dbe9e53000f96022d637f580028fdb4ff08969c54e58988",
+      "observed_at": "2026-10-04",
+      "extraction": "Official MHLW PDF text-layer section headings captured as locator-only excerpt; amendment-comparison body is not promoted as integrated current text.",
+      "currentness": "NOT_ESTABLISHED",
+      "warning": "Scope locator evidence only. Not an integrated current text and not item-body verification."
+    },
+    {
+      "id": "community-services-r6-final-comparison-scope-locators",
+      "publisher": "厚生労働省",
+      "title": "指定地域密着型サービスに要する費用の額の算定に関する基準及び指定地域密着型介護予防サービスに要する費用の額の算定に伴う実施上の留意事項について",
+      "url": "https://www.mhlw.go.jp/content/12300000/001227915.pdf",
+      "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATOR_EXCERPT",
+      "snapshot_path": "data/shared/fee-guidance/r6-community-services-section-locators.txt",
+      "snapshot_sha256": "b817ce72f8480ce95ac862bdd2e4ab4d1dc42677e6c2f716415aedace19e0a8c",
+      "observed_at": "2026-10-04",
+      "extraction": "Official MHLW PDF text-layer section headings captured as locator-only excerpt; amendment-comparison body is not promoted as integrated current text.",
+      "currentness": "NOT_ESTABLISHED",
+      "warning": "Scope locator evidence only. Not an integrated current text and not item-body verification."
     }
   ]
 }
