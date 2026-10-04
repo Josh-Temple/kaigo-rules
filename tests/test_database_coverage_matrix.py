@@ -108,6 +108,42 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(homevisit["route_exposure"]["state"], "BLOCKED")
         self.assertEqual(dayservice["item_body_verification"]["state"], "PASS")
 
+    def test_shared_care_act_item_body_pass_does_not_promote_other_assurance_layers(self):
+        for row in self.matrix["services"]:
+            cell = self.cell(row["service_id"], "care_insurance_act")
+            self.assertEqual(
+                cell["item_body_verification"]["state"],
+                "PASS",
+                row["service_id"],
+            )
+            self.assertIn(
+                "data/egov-content-independent-audit.json",
+                cell["item_body_verification"]["evidence"],
+                row["service_id"],
+            )
+            self.assertEqual(
+                cell["service_scope"]["state"],
+                "SCOPE_DEFINED",
+                row["service_id"],
+            )
+            self.assertEqual(
+                cell["ingestion"]["state"],
+                "INGESTED",
+                row["service_id"],
+            )
+            self.assertEqual(
+                cell["human_review"]["state"],
+                "NOT_REVIEWED",
+                row["service_id"],
+            )
+
+        dayservice = self.cell("dayservice", "care_insurance_act")
+        homevisit = self.cell("homevisit", "care_insurance_act")
+        self.assertEqual(dayservice["currentness"]["state"], "PARTIAL")
+        self.assertEqual(homevisit["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(homevisit["publication"]["state"], "BLOCKED")
+        self.assertEqual(homevisit["route_exposure"]["state"], "BLOCKED")
+
     def test_item_body_pass_does_not_promote_currentness(self):
         cell = self.cell("community-dayservice", "standards_interpretation_notice")
         self.assertEqual(cell["item_body_verification"]["state"], "PASS")
