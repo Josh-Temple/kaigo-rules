@@ -39,5 +39,16 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "remuneration": {
+      "status": "NOT_APPLICABLE_PURCHASE_BENEFIT_OUTSIDE_REMUNERATION_NOTIFICATION_LANE",
+      "source_family": "remuneration_notification",
+      "applicability": "NOT_APPLICABLE",
+      "basis": "介護保険法第56条の介護予防福祉用具購入費であり、告示第127号の介護予防サービス費laneには接続しない。",
+      "item_body_verification": "NOT_APPLICABLE",
+      "currentness": "NOT_APPLICABLE",
+      "human_review": "NOT_REVIEWED",
+      "note": "報酬告示のservice fee laneへの非該当を明示するためのapplicability state。代替となる購入費根拠の内容検証・currentness・human review・publicationは別工程であり、自動昇格しない。"
+    }
+  }
 }

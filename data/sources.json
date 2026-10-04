@@ -322,5 +322,41 @@
     "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
     "status": "current_official_consolidated_source",
     "note": "厚生労働省公式HTMLの統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示する。source availabilityとservice/item-level currentnessは分離し、本source登録だけではcurrentnessを自動昇格しない。"
+  },
+  {
+    "id": "mhlw-care-management-fee-notice20-current",
+    "layer": "報酬告示",
+    "title": "指定居宅介護支援に要する費用の額の算定に関する基準（平成12年厚生省告示第20号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0254&dataType=0&pageNo=1",
+    "status": "current_official_consolidated_source",
+    "note": "厚生労働省公式HTML統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示する。source availabilityとservice/item-level currentnessは分離する。"
+  },
+  {
+    "id": "mhlw-facility-fee-notice21-current",
+    "layer": "報酬告示",
+    "title": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+    "status": "current_official_consolidated_source",
+    "note": "厚生労働省公式HTML統合表示。施設サービス別表は複数pageに分割され、介護医療院サービスはpageNo=2。令和8年厚生労働省告示第87号までの改正履歴を表示するが、source登録だけでcurrentnessを昇格しない。"
+  },
+  {
+    "id": "mhlw-community-preventive-fee-notice128-current",
+    "layer": "報酬告示",
+    "title": "指定地域密着型介護予防サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第128号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7864&dataType=0&pageNo=1",
+    "status": "current_official_consolidated_source",
+    "note": "厚生労働省公式HTML統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示する。source availabilityとservice/item-level currentnessは分離する。"
+  },
+  {
+    "id": "mhlw-preventive-support-fee-notice129-current",
+    "layer": "報酬告示",
+    "title": "指定介護予防支援に要する費用の額の算定に関する基準（平成18年厚生労働省告示第129号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1",
+    "status": "current_official_consolidated_source",
+    "note": "厚生労働省公式HTML統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示する。source availabilityとservice/item-level currentnessは分離する。"
   }
 ]

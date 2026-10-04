@@ -4,21 +4,25 @@
   "service_label": "介護医療院",
   "layer": "remuneration_notification",
   "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-  "status": "SCOPE_DEFINED_TARGET_SECTION_NOT_INGESTED",
+  "status": "SCOPE_DEFINED_SECTION_INDEXED_NOT_SERVICE_VERIFIED",
   "root_notification": {
     "notice_number": "平成12年厚生省告示第21号",
     "title": "指定施設サービス等に要する費用の額の算定に関する基準",
     "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
-    "selector": "指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス"
+    "selector": "指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス",
+    "repository_section_ingested": true,
+    "structured_index_path": "data/services/care-medical-institution/remuneration-index.json"
   },
   "shared_corpus_binding": {
     "existing_repository_corpus": "data/remuneration-current-skeleton.json",
-    "state": "TARGET_SECTION_NOT_STRUCTURED_IN_EXISTING_SHARED_CORPUS",
-    "source_text_copy_allowed": false
+    "state": "SERVICE_SECTION_STRUCTURAL_INDEX_INGESTED_NO_BODY_COPY",
+    "source_text_copy_allowed": false,
+    "note": "service-specific section境界と構造markerのみを索引化。法令本文は複製せず、item-body/currentnessは別工程。"
   },
   "evidence": {
-    "checked_on": "2026-10-03",
-    "scope_only": true
+    "checked_on": "2026-10-04",
+    "scope_only": true,
+    "note": "厚生労働省統合表示のsection境界・構造markerを索引化した証拠。item-body verification又はcurrentness PASSを意味しない。"
   },
   "verification": {
     "service_applicability": "NOT_SERVICE_VERIFIED",
@@ -28,5 +32,14 @@
     "publication": "DISABLED"
   },
   "source_text_duplicated": false,
-  "automatic_verification_promotion_allowed": false
+  "automatic_verification_promotion_allowed": false,
+  "structured_index_path": "data/services/care-medical-institution/remuneration-index.json",
+  "structured_nodes_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "applicability_verification": "NOT_SERVICE_VERIFIED",
+  "currentness": {
+    "status": "NOT_ESTABLISHED"
+  },
+  "human_review": {
+    "status": "NOT_REVIEWED"
+  }
 }

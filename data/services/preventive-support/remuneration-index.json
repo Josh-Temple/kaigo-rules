@@ -1,0 +1,94 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-support",
+  "service_label": "介護予防支援",
+  "layer": "REMUNERATION_NOTIFICATION",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "介護予防支援費",
+    "start_marker": "介護予防支援費",
+    "end_marker": "END_OF_NOTICE129_FEE_TABLE",
+    "excluded_next_section": null,
+    "legal_text_duplicated": false
+  },
+  "official_source": {
+    "source_id": "mhlw-preventive-support-fee-notice129-current",
+    "role": "PRIMARY_MHLW_CONSOLIDATED_DISPLAY",
+    "title": "指定介護予防支援に要する費用の額の算定に関する基準（平成18年厚生労働省告示第129号）",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1",
+    "page_urls": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1"
+    ],
+    "locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費",
+    "observed_on_jst": "2026-10-04",
+    "version_note": "厚生労働省の現行統合表示でsection境界と構造markerを確認。令和8年厚生労働省告示第87号の反映を表示上確認したが、service/item-level currentnessの独立確立とは扱わない。"
+  },
+  "coverage": {
+    "indexed_top_level_items": 4,
+    "indexed_child_items": 2,
+    "total_index_entries": 6,
+    "top_level_complete": false,
+    "item_body_complete": false,
+    "legal_body_copied": false,
+    "indexing_depth": "BOUNDED_SECTION_AND_DIRECTLY_OBSERVED_STRUCTURE_MARKERS"
+  },
+  "top_level_items": [
+    {
+      "id": "rem.preventive-support.top.1",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "介護予防支援費",
+      "source_locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費 / イ"
+    },
+    {
+      "id": "rem.preventive-support.top.2",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "初回加算",
+      "source_locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費 / ロ"
+    },
+    {
+      "id": "rem.preventive-support.top.3",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "委託連携加算",
+      "source_locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費 / ハ"
+    },
+    {
+      "id": "rem.preventive-support.top.4",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "介護職員等処遇改善加算",
+      "source_locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費 / ニ"
+    }
+  ],
+  "child_items": [
+    {
+      "id": "rem.preventive-support.child.1",
+      "parent_marker": "イ",
+      "marker": "(1)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "介護予防支援費(Ⅰ)",
+      "source_locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費 / イ / (1)"
+    },
+    {
+      "id": "rem.preventive-support.child.2",
+      "parent_marker": "イ",
+      "marker": "(2)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "介護予防支援費(Ⅱ)",
+      "source_locator": "別表 指定介護予防支援介護給付費単位数表 / 介護予防支援費 / イ / (2)"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false,
+    "note": "報酬告示のservice-specific sectionを本文複製なしの構造索引として収載した段階。item-body/currentness/relation/human review/publication/routeは独立工程のまま。"
+  }
+}

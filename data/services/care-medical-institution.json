@@ -39,5 +39,22 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "remuneration": {
+      "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_family": "remuneration_notification",
+      "source_id": "mhlw-facility-fee-notice21-current",
+      "source_section": "4 介護医療院サービス",
+      "top_level_items": 6,
+      "child_items": 6,
+      "total_index_entries": 12,
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+    }
+  },
+  "ingestion_indexes": {
+    "remuneration": "data/services/care-medical-institution/remuneration-index.json"
+  }
 }

@@ -2,7 +2,7 @@
   "format_version": 1,
   "service_id": "preventive-small-scale-multifunctional",
   "service_label": "介護予防小規模多機能型居宅介護",
-  "status": "SCOPE_DEFINED_SHARED_TARGETS_PARTIAL",
+  "status": "SCOPE_DEFINED_SECTION_INDEXED_NOT_SERVICE_VERIFIED",
   "scope_kind": "REMUNERATION_AND_DELEGATED_CRITERIA_SERVICE_SCOPE",
   "primary_notice": {
     "notice_number": "平成十八年厚生労働省告示第百二十八号",
@@ -11,9 +11,13 @@
     "fee_schedule_selector": "2 介護予防小規模多機能型居宅介護費",
     "scope_status": "SCOPE_DEFINED",
     "shared_corpus_relation": {
-      "state": "TARGET_NOTICE_NOT_INGESTED_IN_CURRENT_SHARED_REMUNERATION_CORPUS",
-      "current_repository_corpus": "data/remuneration-current-skeleton.json"
-    }
+      "state": "SERVICE_SECTION_STRUCTURAL_INDEX_INGESTED_NO_BODY_COPY",
+      "current_repository_corpus": "data/remuneration-current-skeleton.json",
+      "structured_index_path": "data/services/preventive-small-scale-multifunctional/remuneration-index.json"
+    },
+    "repository_section_ingested": true,
+    "structured_index_path": "data/services/preventive-small-scale-multifunctional/remuneration-index.json",
+    "structured_nodes_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
   },
   "delegated_criteria_scope": {
     "scope_status": "PARTIAL_SCOPE_DEFINED",
@@ -44,12 +48,12 @@
     ]
   },
   "evidence": {
-    "checked_on": "2026-10-03",
+    "checked_on": "2026-10-04",
     "latest_amendment_observed_on_primary_notice": {
       "amendment": "令和八年厚生労働省告示第八十七号",
       "effective_from": "2026-06-01"
     },
-    "note": "scope evidence only; currentness PASSを意味しない。"
+    "note": "厚生労働省統合表示のsection境界・構造markerを索引化した証拠。item-body verification又はcurrentness PASSを意味しない。"
   },
   "source_text_duplicated": false,
   "applicability_verification": "NOT_SERVICE_VERIFIED",
@@ -59,5 +63,7 @@
   "human_review": {
     "status": "NOT_REVIEWED"
   },
-  "automatic_verification_promotion_allowed": false
+  "automatic_verification_promotion_allowed": false,
+  "structured_index_path": "data/services/preventive-small-scale-multifunctional/remuneration-index.json",
+  "structured_nodes_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
 }

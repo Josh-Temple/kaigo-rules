@@ -4,30 +4,35 @@
   "service_label": "介護予防支援",
   "layer": "remuneration_notification",
   "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
-  "status": "SCOPE_DEFINED_TARGET_SECTION_NOT_INGESTED",
+  "status": "SCOPE_DEFINED_SECTION_INDEXED_NOT_SERVICE_VERIFIED",
   "root_notification": {
     "notice_number": "平成18年厚生労働省告示第129号",
     "title": "指定介護予防支援に要する費用の額の算定に関する基準",
     "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1",
-    "selector": "指定介護予防支援介護給付費単位数表 / 介護予防支援費"
+    "selector": "指定介護予防支援介護給付費単位数表 / 介護予防支援費",
+    "repository_section_ingested": true,
+    "structured_index_path": "data/services/preventive-support/remuneration-index.json"
   },
   "shared_corpus_binding": {
     "existing_repository_corpus": "data/remuneration-current-skeleton.json",
-    "state": "TARGET_SECTION_NOT_STRUCTURED_IN_EXISTING_SHARED_CORPUS",
+    "state": "SERVICE_SECTION_STRUCTURAL_INDEX_INGESTED_NO_BODY_COPY",
     "source_text_copy_allowed": false,
-    "note": "Existing structured remuneration corpus is service-limited; this file records target scope only."
+    "note": "共有原典を複製せず、service-specific section境界と構造markerのみをremuneration-index.jsonへ収載。item-body verification/currentnessは別工程。"
   },
   "evidence": {
-    "checked_on": "2026-10-03",
-    "scope_only": true
+    "checked_on": "2026-10-04",
+    "scope_only": false,
+    "structural_index_only": true
   },
   "verification": {
     "service_applicability": "NOT_SERVICE_VERIFIED",
     "relation_verification": "NOT_SERVICE_VERIFIED",
     "currentness": "NOT_ESTABLISHED",
-    "human_review": "NOT_STARTED",
+    "human_review": "NOT_REVIEWED",
     "publication": "DISABLED"
   },
   "source_text_duplicated": false,
-  "automatic_verification_promotion_allowed": false
+  "automatic_verification_promotion_allowed": false,
+  "structured_index_path": "data/services/preventive-support/remuneration-index.json",
+  "structured_nodes_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
 }

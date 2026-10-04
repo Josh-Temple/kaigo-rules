@@ -1,0 +1,126 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-dementia-dayservice",
+  "service_label": "介護予防認知症対応型通所介護",
+  "layer": "REMUNERATION_NOTIFICATION",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "1 介護予防認知症対応型通所介護費",
+    "start_marker": "1　介護予防認知症対応型通所介護費",
+    "end_marker": "2　介護予防小規模多機能型居宅介護費",
+    "excluded_next_section": "2　介護予防小規模多機能型居宅介護費",
+    "legal_text_duplicated": false
+  },
+  "official_source": {
+    "source_id": "mhlw-community-preventive-fee-notice128-current",
+    "role": "PRIMARY_MHLW_CONSOLIDATED_DISPLAY",
+    "title": "指定地域密着型介護予防サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第128号）",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7864&dataType=0&pageNo=1",
+    "page_urls": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7864&dataType=0&pageNo=1"
+    ],
+    "locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費",
+    "observed_on_jst": "2026-10-04",
+    "version_note": "厚生労働省の現行統合表示でsection境界と構造markerを確認。令和8年厚生労働省告示第87号の反映を表示上確認したが、service/item-level currentnessの独立確立とは扱わない。"
+  },
+  "coverage": {
+    "indexed_top_level_items": 4,
+    "indexed_child_items": 6,
+    "total_index_entries": 10,
+    "top_level_complete": false,
+    "item_body_complete": false,
+    "legal_body_copied": false,
+    "indexing_depth": "BOUNDED_SECTION_AND_DIRECTLY_OBSERVED_STRUCTURE_MARKERS"
+  },
+  "top_level_items": [
+    {
+      "id": "rem.preventive-dementia-dayservice.top.1",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "介護予防認知症対応型通所介護費(Ⅰ)",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / イ"
+    },
+    {
+      "id": "rem.preventive-dementia-dayservice.top.2",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "介護予防認知症対応型通所介護費(Ⅱ)",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / ロ"
+    },
+    {
+      "id": "rem.preventive-dementia-dayservice.top.3",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "サービス提供体制強化加算",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / ハ"
+    },
+    {
+      "id": "rem.preventive-dementia-dayservice.top.4",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "介護職員等処遇改善加算",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / ニ"
+    }
+  ],
+  "child_items": [
+    {
+      "id": "rem.preventive-dementia-dayservice.child.1",
+      "parent_marker": "イ",
+      "marker": "(1)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "介護予防認知症対応型通所介護費(i)",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / イ / (1)"
+    },
+    {
+      "id": "rem.preventive-dementia-dayservice.child.2",
+      "parent_marker": "ハ",
+      "marker": "(1)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "サービス提供体制強化加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / ハ / (1)"
+    },
+    {
+      "id": "rem.preventive-dementia-dayservice.child.3",
+      "parent_marker": "ハ",
+      "marker": "(2)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "サービス提供体制強化加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / ハ / (2)"
+    },
+    {
+      "id": "rem.preventive-dementia-dayservice.child.4",
+      "parent_marker": "ハ",
+      "marker": "(3)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "サービス提供体制強化加算(Ⅲ)",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / ハ / (3)"
+    },
+    {
+      "id": "rem.preventive-dementia-dayservice.child.5",
+      "parent_marker": "ニ",
+      "marker": "(1)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / ニ / (1)"
+    },
+    {
+      "id": "rem.preventive-dementia-dayservice.child.6",
+      "parent_marker": "ニ",
+      "marker": "(2)",
+      "kind": "CHILD_STRUCTURE_MARKER",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ",
+      "source_locator": "別表 指定地域密着型介護予防サービス介護給付費単位数表 / 1 介護予防認知症対応型通所介護費 / ニ / (2)"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false,
+    "note": "報酬告示のservice-specific sectionを本文複製なしの構造索引として収載した段階。item-body/currentness/relation/human review/publication/routeは独立工程のまま。"
+  }
+}
