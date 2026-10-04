@@ -93,7 +93,7 @@ class HomeServiceRemunerationExpansionTest(unittest.TestCase):
         self.assertEqual(scope["status"], "SCOPE_DEFINED_NOT_APPLICABLE_TO_NOTICE19")
         self.assertEqual(scope["primary_remuneration_notification"]["scope_relation"], "NOT_APPLICABLE")
         self.assertFalse((ROOT / "data/services/specific-welfare-equipment-sale/remuneration-index.json").exists())
-        self.assertNotIn("remuneration", config.get("ingestion_layers", {}))
+        self.assertIn("NOT_APPLICABLE", config["ingestion_layers"]["remuneration"]["status"])
 
 
 if __name__ == "__main__":
