@@ -31,7 +31,8 @@
     "remuneration": "data/services/dementia-group-home/shared-corpus-scope.json",
     "delegated_remuneration_criteria": "data/services/dementia-group-home/shared-corpus-scope.json",
     "unit_price": "data/services/dementia-group-home/shared-corpus-scope.json",
-    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+    "fee_guidance": "data/services/dementia-group-home/fee-guidance-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -72,11 +73,19 @@
       "publication": "NOT_ESTABLISHED",
       "route_exposure": "BLOCKED",
       "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+    },
+    "fee_guidance": {
+      "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+      "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
     }
   },
   "ingestion_indexes": {
     "remuneration": "data/services/dementia-group-home/remuneration-index.json",
     "care_insurance_act": "data/services/dementia-group-home/care-insurance-act-index.json",
-    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+    "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+    "fee_guidance": "data/services/dementia-group-home/fee-guidance-scope.json"
   }
 }

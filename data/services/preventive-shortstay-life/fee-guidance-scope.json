@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-shortstay-life",
+  "source_family": "fee_calculation_guidance",
+  "shared_manifest": "data/shared/fee-guidance/manifest.json",
+  "node_ids": [
+    "fee-guidance.shared.preventive.r6-comparison.II.7"
+  ],
+  "relation_ids": [
+    "fee-guidance.scope.preventive-shortstay-life.preventive-r6.II.7"
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "service_applicability_verification": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_promotion_allowed": false
+  }
+}

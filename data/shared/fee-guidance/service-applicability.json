@@ -184,6 +184,600 @@
         "route_exposure": "BLOCKED",
         "automatic_promotion_allowed": false
       }
+    },
+    {
+      "service_id": "homecaremanagement",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.II.6"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.homecaremanagement.rouki36.r6.II.6"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.II.9"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.welfare-equipment-rental.rouki36.r6.II.9"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "care-management",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.III"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.care-management.rouki36.r6.III"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "shortstay-life",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.2"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.shortstay-life.rouki40.r6.II.2"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "shortstay-medical",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.3"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.shortstay-medical.rouki40.r6.II.3"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-facility",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.4"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.specific-facility.rouki40.r6.II.4"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.5"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.elderly-welfare-facility.rouki40.r6.II.5"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.6"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.elderly-health-facility.rouki40.r6.II.6"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "care-medical-institution",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.8"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.care-medical-institution.rouki40.r6.II.8"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "regular-round",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.2"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.regular-round.community.r6.II.2"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "night-homevisit",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.3"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.night-homevisit.community.r6.II.3"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-dayservice",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.3-2"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.community-dayservice.community.r6.II.3-2"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.4"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.dementia-dayservice.community.r6.II.4"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.5"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.small-scale-multifunctional.community.r6.II.5"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "dementia-group-home",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.6"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.dementia-group-home.community.r6.II.6"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-specific-facility",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.7"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.community-specific-facility.community.r6.II.7"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.8"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.community-elderly-facility.community.r6.II.8"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.9"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.nursing-small-scale-multifunctional.community.r6.II.9"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homebath",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.2"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-homebath.preventive-r6.II.2"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.3"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-homenursing.preventive-r6.II.3"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.4"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-homerehab.preventive-r6.II.4"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.5"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-homecaremanagement.preventive-r6.II.5"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.6"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-dayrehab.preventive-r6.II.6"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.7"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-shortstay-life.preventive-r6.II.7"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.8"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-shortstay-medical.preventive-r6.II.8"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.9"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-specific-facility.preventive-r6.II.9"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.10"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-welfare-equipment-rental.preventive-r6.II.10"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
     }
   ]
 }

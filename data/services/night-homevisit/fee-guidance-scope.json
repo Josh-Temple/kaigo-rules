@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "service_id": "night-homevisit",
+  "source_family": "fee_calculation_guidance",
+  "shared_manifest": "data/shared/fee-guidance/manifest.json",
+  "node_ids": [
+    "fee-guidance.shared.community.r6-comparison.II.3"
+  ],
+  "relation_ids": [
+    "fee-guidance.scope.night-homevisit.community.r6.II.3"
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "service_applicability_verification": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_promotion_allowed": false
+  }
+}

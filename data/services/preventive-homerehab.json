@@ -31,7 +31,8 @@
     "remuneration": "data/services/preventive-homerehab/remuneration-scope.json",
     "delegated_remuneration_criteria": "data/services/preventive-homerehab/remuneration-scope.json",
     "unit_price_regional_classification": "data/services/preventive-homerehab/remuneration-scope.json",
-    "standards_interpretation": "data/services/preventive-homerehab/standards-interpretation-scope.json"
+    "standards_interpretation": "data/services/preventive-homerehab/standards-interpretation-scope.json",
+    "fee_guidance": "data/services/preventive-homerehab/fee-guidance-scope.json"
   },
   "verification_layer_ids": [],
   "publication_gate": {
@@ -66,11 +67,20 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+    },
+    "fee_guidance": {
+      "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+      "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
     }
   },
   "ingestion_indexes": {
     "remuneration": "data/services/preventive-homerehab/remuneration-index.json",
     "standards_interpretation": "data/services/preventive-homerehab/standards-interpretation-scope.json",
-    "care_insurance_act": "data/services/preventive-homerehab/care-insurance-act-index.json"
+    "care_insurance_act": "data/services/preventive-homerehab/care-insurance-act-index.json",
+    "fee_guidance": "data/services/preventive-homerehab/fee-guidance-scope.json"
   }
 }

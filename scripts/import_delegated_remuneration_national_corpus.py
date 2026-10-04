@@ -2,7 +2,7 @@
 """Materialize the national delegated-remuneration corpus from canonical MHLW pages.
 
 This importer reads only the source documents already registered in the
-repository for the delegated-remuneration slice (Notice 27 and Notice 95).
+repository for the delegated-remuneration slice.
 It builds one national top-level section corpus. Existing legacy dayservice
 text is referenced rather than copied when the live section is semantically
 identical.
@@ -43,11 +43,17 @@ SOURCE_SPECS = (
         "expected_pages": 4,
         "id_prefix": "notice95.item.",
     },
+    {
+        "source_id": "mhlw-fee-facility-criteria96-current",
+        "data_id": "82ab4585",
+        "expected_pages": 2,
+        "id_prefix": "notice96.item.",
+    },
 )
 
 TOP_HEADING = re.compile(
-    r"^([一二三四五六七八九十百千]+(?:の[一二三四五六七八九十百千]+)?"
-    r"(?:及び[一二三四五六七八九十百千]+(?:の[一二三四五六七八九十百千]+)?)?)\s+(.+)$"
+    r"^([一二三四五六七八九十百千]+(?:の[一二三四五六七八九十百千]+)*"
+    r"(?:及び[一二三四五六七八九十百千]+(?:の[一二三四五六七八九十百千]+)*)?)\s+(.+)$"
 )
 PAGE_COUNT = re.compile(r"該当ページ数[:：]\s*(\d+)ページ中(\d+)ページ")
 STOP_PREFIXES = ("改正文", "附則")

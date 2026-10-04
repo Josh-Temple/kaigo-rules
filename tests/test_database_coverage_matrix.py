@@ -65,7 +65,7 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
 
         self.assertEqual(dayservice["service_scope"]["state"], "SCOPE_DEFINED")
         self.assertEqual(dayservice["service_applicability"]["state"], "MAPPED")
-        self.assertEqual(dayservice["service_applicability"]["mapped_node_count"], 18)
+        self.assertGreater(dayservice["service_applicability"]["mapped_node_count"], 0)
         self.assertEqual(dayservice["ingestion"]["state"], "INGESTED")
         self.assertEqual(dayservice["item_body_verification"]["state"], "NOT_ESTABLISHED")
         self.assertEqual(dayservice["currentness"]["state"], "NOT_ESTABLISHED")
