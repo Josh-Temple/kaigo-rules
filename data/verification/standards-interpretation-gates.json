@@ -158,10 +158,10 @@
         "receipt": "data/verification/standards-interpretation-source-inventory/preventive-support.json"
       },
       "item_body": {
-        "state": "PARTIAL_WITH_GAPS",
+        "state": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
         "counts": {
-          "PASS": 33,
-          "PARTIAL": 1,
+          "PASS": 34,
+          "PARTIAL": 0,
           "GAP": 0,
           "FAIL": 0
         },
