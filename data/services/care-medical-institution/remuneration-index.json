@@ -32,7 +32,7 @@
     "top_level_complete": false,
     "item_body_complete": false,
     "legal_body_copied": false,
-    "indexing_depth": "BOUNDED_SECTION_AND_DIRECTLY_OBSERVED_STRUCTURE_MARKERS"
+    "indexing_depth": "BOUNDED_SECTION_TOP_LEVEL_AND_DIRECT_NUMERIC_MARKERS"
   },
   "top_level_items": [
     {
@@ -83,7 +83,7 @@
       "id": "rem.care-medical-institution.child.1",
       "parent_marker": "イ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "Ⅰ型介護医療院サービス費(Ⅰ)",
       "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / イ / (1)"
     },
@@ -91,7 +91,7 @@
       "id": "rem.care-medical-institution.child.2",
       "parent_marker": "イ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "Ⅰ型介護医療院サービス費(Ⅱ)",
       "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / イ / (2)"
     },
@@ -99,7 +99,7 @@
       "id": "rem.care-medical-institution.child.3",
       "parent_marker": "イ",
       "marker": "(3)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "Ⅰ型介護医療院サービス費(Ⅲ)",
       "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / イ / (3)"
     },
@@ -107,7 +107,7 @@
       "id": "rem.care-medical-institution.child.4",
       "parent_marker": "ロ",
       "marker": "(1)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "Ⅱ型介護医療院サービス費(Ⅰ)",
       "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ロ / (1)"
     },
@@ -115,7 +115,7 @@
       "id": "rem.care-medical-institution.child.5",
       "parent_marker": "ロ",
       "marker": "(2)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "Ⅱ型介護医療院サービス費(Ⅱ)",
       "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ロ / (2)"
     },
@@ -123,7 +123,7 @@
       "id": "rem.care-medical-institution.child.6",
       "parent_marker": "ロ",
       "marker": "(3)",
-      "kind": "CHILD_STRUCTURE_MARKER",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
       "title": "Ⅱ型介護医療院サービス費(Ⅲ)",
       "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ロ / (3)"
     }
