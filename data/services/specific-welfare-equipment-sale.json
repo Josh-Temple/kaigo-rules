@@ -30,8 +30,7 @@
     "ordinance37": "data/services/specific-welfare-equipment-sale/ordinance37-scope.json",
     "remuneration": "data/services/specific-welfare-equipment-sale/remuneration-scope.json",
     "unit_price": "data/services/specific-welfare-equipment-sale/unit-price-scope.json",
-    "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json",
-    "fee_guidance": "data/services/specific-welfare-equipment-sale/fee-guidance-scope.json"
+    "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json"
   },
   "verification_layer_ids": [
     "ordinance37-existing-services"
@@ -69,24 +68,10 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
-    },
-    "fee_guidance": {
-      "status": "NOT_APPLICABLE",
-      "source_family": "fee_calculation_guidance",
-      "applicability": "NOT_APPLICABLE",
-      "basis": "介護保険法第41条が特定福祉用具の購入費を居宅介護サービス費から除外し、第44条が居宅介護福祉用具購入費を別建てで規定するため。",
-      "item_body_verification": "NOT_ESTABLISHED",
-      "currentness": "NOT_ESTABLISHED",
-      "human_review": "NOT_REVIEWED",
-      "publication": "BLOCKED",
-      "route_exposure": "BLOCKED",
-      "automatic_promotion_allowed": false,
-      "note": "購入費給付は登録済みFee Guidanceのサービス費算定laneとは別系統。NOT_APPLICABLEはscope/applicability判定であり、代替購入費根拠のitem-body verification/currentness/human review/publicationを意味しない。"
     }
   },
   "ingestion_indexes": {
     "standards_interpretation": "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json",
-    "care_insurance_act": "data/services/specific-welfare-equipment-sale/care-insurance-act-index.json",
-    "fee_guidance": "data/services/specific-welfare-equipment-sale/fee-guidance-scope.json"
+    "care_insurance_act": "data/services/specific-welfare-equipment-sale/care-insurance-act-index.json"
   }
 }
