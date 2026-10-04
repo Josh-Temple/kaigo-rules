@@ -207,15 +207,6 @@
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
-        },
-        "remuneration": {
-          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-          "top_level_items": 6,
-          "numeric_child_items": 18,
-          "total_index_entries": 24,
-          "currentness": "NOT_ESTABLISHED",
-          "human_review": "NOT_REVIEWED",
-          "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
         }
       },
       "verification_layer_ids": [
@@ -256,15 +247,6 @@
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
-        },
-        "remuneration": {
-          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-          "top_level_items": 10,
-          "numeric_child_items": 36,
-          "total_index_entries": 46,
-          "currentness": "NOT_ESTABLISHED",
-          "human_review": "NOT_REVIEWED",
-          "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
         }
       },
       "verification_layer_ids": [
@@ -305,15 +287,6 @@
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
-        },
-        "remuneration": {
-          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-          "top_level_items": 5,
-          "numeric_child_items": 10,
-          "total_index_entries": 15,
-          "currentness": "NOT_ESTABLISHED",
-          "human_review": "NOT_REVIEWED",
-          "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
         }
       },
       "verification_layer_ids": [
@@ -354,15 +327,6 @@
         "work_control": {
           "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
           "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
-        },
-        "remuneration": {
-          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-          "top_level_items": 5,
-          "numeric_child_items": 41,
-          "total_index_entries": 46,
-          "currentness": "NOT_ESTABLISHED",
-          "human_review": "NOT_REVIEWED",
-          "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
         }
       },
       "verification_layer_ids": [
@@ -471,15 +435,6 @@
           "principal_items": 34,
           "child_nodes_preserved_in_body": 49,
           "note": "老企第25号の公式旧HTMLに基づく34 principal itemsを独立source一致確認付きで全体通知DBへ公開。令和6年度等の改正資料は別証拠として扱い、現行統合本文は生成しない。"
-        },
-        "remuneration": {
-          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-          "top_level_items": 9,
-          "numeric_child_items": 102,
-          "total_index_entries": 111,
-          "currentness": "NOT_ESTABLISHED",
-          "human_review": "NOT_REVIEWED",
-          "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
         }
       },
       "verification_layer_ids": [
@@ -739,7 +694,7 @@
     {
       "service_id": "shortstay-medical",
       "label": "短期入所療養介護",
-      "status": "PARTIAL_INGESTION",
+      "status": "REGISTERED_NOT_INGESTED",
       "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -760,17 +715,7 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {
-        "remuneration": {
-          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-          "top_level_items": 5,
-          "numeric_child_items": 552,
-          "total_index_entries": 557,
-          "currentness": "NOT_ESTABLISHED",
-          "human_review": "NOT_REVIEWED",
-          "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
-        }
-      },
+      "ingestion_layers": {},
       "verification_layer_ids": [],
       "identity": {
         "label": "短期入所療養介護",
@@ -787,12 +732,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "PARTIAL_INGESTION"
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
     },
     {
       "service_id": "specific-facility",
       "label": "特定施設入居者生活介護",
-      "status": "PARTIAL_INGESTION",
+      "status": "REGISTERED_NOT_INGESTED",
       "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -813,17 +758,7 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {
-        "remuneration": {
-          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-          "top_level_items": 12,
-          "numeric_child_items": 41,
-          "total_index_entries": 53,
-          "currentness": "NOT_ESTABLISHED",
-          "human_review": "NOT_REVIEWED",
-          "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
-        }
-      },
+      "ingestion_layers": {},
       "verification_layer_ids": [],
       "identity": {
         "label": "特定施設入居者生活介護",
@@ -840,12 +775,12 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "PARTIAL_INGESTION"
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
     },
     {
       "service_id": "welfare-equipment-rental",
       "label": "福祉用具貸与",
-      "status": "PARTIAL_INGESTION",
+      "status": "REGISTERED_NOT_INGESTED",
       "service_class": "HOME_SERVICE",
       "routing": {
         "current_mode": "SERVICE_ROOT_RESERVED",
@@ -866,17 +801,7 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {
-        "remuneration": {
-          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
-          "top_level_items": 1,
-          "numeric_child_items": 2,
-          "total_index_entries": 3,
-          "currentness": "NOT_ESTABLISHED",
-          "human_review": "NOT_REVIEWED",
-          "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
-        }
-      },
+      "ingestion_layers": {},
       "verification_layer_ids": [],
       "identity": {
         "label": "福祉用具貸与",
@@ -893,7 +818,7 @@
         "national_qa",
         "other_national_manuals_forms"
       ],
-      "ingestion_state": "PARTIAL_INGESTION"
+      "ingestion_state": "REGISTERED_NOT_INGESTED"
     },
     {
       "service_id": "specific-welfare-equipment-sale",
