@@ -487,6 +487,17 @@
             "FAIL": 0
           },
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/community-dayservice.json"
+        },
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "2-2",
+          "top_level_items": 5,
+          "numeric_child_items": 15,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -537,6 +548,17 @@
             "FAIL": 0
           },
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/regular-round.json"
+        },
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "1",
+          "top_level_items": 11,
+          "numeric_child_items": 19,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -587,6 +609,17 @@
             "FAIL": 0
           },
           "item_body_verification_receipt": "data/verification/standards-interpretation-item-body/night-homevisit.json"
+        },
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "2",
+          "top_level_items": 5,
+          "numeric_child_items": 10,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -888,7 +921,19 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "3",
+          "top_level_items": 4,
+          "numeric_child_items": 17,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "認知症対応型通所介護",
@@ -932,7 +977,19 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "4",
+          "top_level_items": 16,
+          "numeric_child_items": 28,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "小規模多機能型居宅介護",
@@ -976,7 +1033,19 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "5",
+          "top_level_items": 19,
+          "numeric_child_items": 29,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "認知症対応型共同生活介護",
@@ -1020,7 +1089,19 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "6",
+          "top_level_items": 12,
+          "numeric_child_items": 25,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "地域密着型特定施設入居者生活介護",
@@ -1064,7 +1145,19 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "7",
+          "top_level_items": 33,
+          "numeric_child_items": 32,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "地域密着型介護老人福祉施設入所者生活介護",
@@ -1108,7 +1201,19 @@
         "independent_verification_complete": false,
         "human_review_complete": false
       },
-      "ingestion_layers": {},
+      "ingestion_layers": {
+        "remuneration": {
+          "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+          "source_family": "remuneration_notification",
+          "source_id": "mhlw-community-fee-notice126-current",
+          "source_section": "8",
+          "top_level_items": 25,
+          "numeric_child_items": 32,
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "平成18年厚生労働省告示第126号の該当service sectionについて、section境界・top-level構造・直接確認した番号付きchildをlocator索引として収載。法令本文は複製せず、item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+        }
+      },
       "verification_layer_ids": [],
       "identity": {
         "label": "看護小規模多機能型居宅介護",

@@ -4550,8 +4550,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -4571,7 +4573,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -5071,8 +5075,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -5092,7 +5098,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -5592,8 +5600,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -5613,7 +5623,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -9135,8 +9147,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -9156,7 +9170,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -9640,8 +9656,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -9661,7 +9679,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -10145,8 +10165,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -10166,7 +10188,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -10650,8 +10674,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -10671,7 +10697,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -11155,8 +11183,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -11176,7 +11206,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -11660,8 +11692,10 @@
             ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "INGESTED",
+            "raw_status": [
+              "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -11681,7 +11715,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -20138,8 +20174,8 @@
           "SCOPE_DEFINED": 39
         },
         "ingestion": {
-          "INGESTED": 3,
-          "NOT_INGESTED": 36
+          "INGESTED": 12,
+          "NOT_INGESTED": 27
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 37,
@@ -20919,6 +20955,11 @@
       },
       {
         "service_id": "community-dayservice",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-dayservice",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -20934,6 +20975,11 @@
       },
       {
         "service_id": "regular-round",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "regular-round",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -20945,6 +20991,11 @@
       {
         "service_id": "night-homevisit",
         "source_family": "standards_interpretation_notice",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "night-homevisit",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21025,6 +21076,11 @@
       {
         "service_id": "dementia-dayservice",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21035,6 +21091,11 @@
       {
         "service_id": "small-scale-multifunctional",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "small-scale-multifunctional",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21045,6 +21106,11 @@
       {
         "service_id": "dementia-group-home",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21055,6 +21121,11 @@
       {
         "service_id": "community-specific-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-specific-facility",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21065,6 +21136,11 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21075,6 +21151,11 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -21290,6 +21371,21 @@
         "state": "NOT_ESTABLISHED"
       },
       {
+        "service_id": "community-dayservice",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "regular-round",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "night-homevisit",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
         "service_id": "preventive-support",
         "source_family": "standards_interpretation_notice",
         "state": "PARTIAL"
@@ -21312,6 +21408,36 @@
       {
         "service_id": "specific-welfare-equipment-sale",
         "source_family": "governing_standards_ordinance",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "small-scale-multifunctional",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-specific-facility",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "remuneration_notification",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       }
     ],
@@ -21445,6 +21571,11 @@
       },
       {
         "service_id": "community-dayservice",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "community-dayservice",
         "source_family": "national_qa",
         "state": "BLOCKED"
       },
@@ -21460,6 +21591,11 @@
       },
       {
         "service_id": "regular-round",
+        "source_family": "remuneration_notification",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "regular-round",
         "source_family": "national_qa",
         "state": "BLOCKED"
       },
@@ -21471,6 +21607,11 @@
       {
         "service_id": "night-homevisit",
         "source_family": "standards_interpretation_notice",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "night-homevisit",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21551,6 +21692,11 @@
       {
         "service_id": "dementia-dayservice",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "dementia-dayservice",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21561,6 +21707,11 @@
       {
         "service_id": "small-scale-multifunctional",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "small-scale-multifunctional",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21571,6 +21722,11 @@
       {
         "service_id": "dementia-group-home",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "dementia-group-home",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21581,6 +21737,11 @@
       {
         "service_id": "community-specific-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "community-specific-facility",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21591,6 +21752,11 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
@@ -21601,6 +21767,11 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "governing_standards_ordinance",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "remuneration_notification",
         "state": "BLOCKED"
       },
       {
