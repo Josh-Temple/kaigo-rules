@@ -145,6 +145,62 @@
       "item_body_verification": "NOT_ESTABLISHED",
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.shortstay-medical.rouki25",
+      "service_id": "shortstay-medical",
+      "target_source_id": "rouki25-r6-amendment-comparison",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "九 短期入所療養介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.specific-facility.rouki25",
+      "service_id": "specific-facility",
+      "target_source_id": "rouki25-r6-amendment-comparison",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "一〇 特定施設入居者生活介護"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.welfare-equipment-rental.rouki25",
+      "service_id": "welfare-equipment-rental",
+      "target_source_id": "rouki25-r6-amendment-comparison",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "十一 福祉用具貸与"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
+    },
+    {
+      "relation_id": "standards-interpretation.specific-welfare-equipment-sale.rouki25",
+      "service_id": "specific-welfare-equipment-sale",
+      "target_source_id": "rouki25-r6-amendment-comparison",
+      "relation_type": "SERVICE_SCOPE_OF_NOTICE",
+      "source_locators": [
+        "十二 特定福祉用具販売"
+      ],
+      "relation_state": "MAPPED_SOURCE_HEADING_ONLY",
+      "applicability_verification": "SOURCE_HEADING_MATCHED",
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
     }
   ],
   "safety": {
