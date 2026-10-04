@@ -42,9 +42,9 @@
     },
     "ordinance37": {
       "status": "INDEXED_FROM_SHARED_CORPUS_NOT_SERVICE_VERIFIED",
-      "selected_nodes": 165,
-      "selected_articles": 38,
-      "note": "通常の指定訪問介護（第二章第4条〜第39条。共生型・基準該当を除く）を共有省令37号コーパスから本文複製なしで参照する。独立検証・currentness・human reviewは訪問介護として別途実施する。"
+      "selected_nodes": 172,
+      "selected_articles": 41,
+      "note": "通常の指定訪問介護（第二章第4条〜第39条。挿入条を含み、共生型・基準該当を除く）を共有省令37号コーパスから本文複製なしで参照する。service-specific item-body verificationは独立e-Gov再照合でPASS。currentness・human review・publication・routeは別管理のまま昇格しない。"
     },
     "rouki25": {
       "status": "HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP",
