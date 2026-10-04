@@ -47,6 +47,9 @@ def build() -> dict[str, Any]:
     sources = load(DATA / "sources.json")
     relation_audit = load(DATA / "remuneration-delegation-relation-independent-audit.json")
     independent_audit = load(DATA / "remuneration-independent-audit.json")
+    national_corpus = load(SHARED / "national-corpus.json")
+    national_nodes = national_corpus.get("nodes", [])
+    national_ids = {row["canonical_node_id"] for row in national_nodes}
 
     identity_rows = []
     for node in nodes:
@@ -104,10 +107,22 @@ def build() -> dict[str, Any]:
             ),
         })
 
+    mapped_canonical_ids = [
+        row["canonical_node_id"]
+        for row in identity_rows
+        if row["canonical_node_id"] in national_ids
+    ]
+    compatibility_subnode_ids = [
+        row["canonical_node_id"]
+        for row in identity_rows
+        if row["canonical_node_id"] not in national_ids
+    ]
+
     identity_doc = {
         "format_version": 1,
         "corpus_id": CORPUS_ID,
-        "canonical_text_store": "data/remuneration-delegated-nodes.json",
+        "canonical_text_store": "data/shared/remuneration-delegated/national-corpus.json",
+        "legacy_compatibility_text_store": "data/remuneration-delegated-nodes.json",
         "nodes": identity_rows,
     }
 
@@ -119,9 +134,11 @@ def build() -> dict[str, Any]:
             "scope_state": "SCOPE_DEFINED",
             "applicability_state": "MAPPED",
             "ingestion_state": "INGESTED",
-            "mapped_node_count": len(identity_rows),
-            "mapped_node_ids": canonical_ids,
+            "mapped_node_count": len(mapped_canonical_ids),
+            "mapped_node_ids": mapped_canonical_ids,
+            "compatibility_subnode_ids": compatibility_subnode_ids,
             "mapping_evidence": [
+                "data/shared/remuneration-delegated/national-corpus.json",
                 "data/remuneration-delegated-nodes.json",
                 "data/shared/remuneration-delegated/node-identity-map.json",
                 "data/remuneration-delegated-relations.json",
@@ -156,25 +173,24 @@ def build() -> dict[str, Any]:
         },
     }
 
-    source_ids = sorted({node["source_id"] for node in nodes})
     source_by_id = {row["id"]: row for row in sources}
-    meta_by_source_id = {
-        "mhlw-fee-notice27-base": delegated_meta.get("sources", {}).get("notice27", {}),
-        "mhlw-fee-criteria95-current": delegated_meta.get("sources", {}).get("notice95", {}),
-    }
     source_documents = []
-    for source_id in source_ids:
+    for document in national_corpus.get("documents", []):
+        source_id = document["source_id"]
         source = source_by_id.get(source_id, {})
-        meta = meta_by_source_id.get(source_id, {})
         source_documents.append({
             "source_id": source_id,
-            "title": source.get("title"),
-            "publisher": source.get("publisher"),
-            "official_url": source.get("url") or meta.get("url"),
+            "title": source.get("title") or document.get("title"),
+            "publisher": source.get("publisher") or document.get("publisher"),
+            "official_url": source.get("url") or document.get("official_url"),
             "repository_status": source.get("status"),
-            "source_sha256": meta.get("sha256"),
+            "observed_pages": document.get("observed_pages"),
+            "top_level_node_count": document.get("top_level_node_count"),
+            "page_sha256": [
+                {"page": row.get("page"), "sha256": row.get("sha256")}
+                for row in document.get("pages", [])
+            ],
             "last_independent_audit_at": independent_audit.get("audited_at"),
-            "node_count": sum(1 for node in nodes if node["source_id"] == source_id),
         })
 
     manifest_doc = {
@@ -182,23 +198,31 @@ def build() -> dict[str, Any]:
         "corpus_id": CORPUS_ID,
         "source_family": "delegated_remuneration_criteria",
         "scope_kind": "SHARED_NATIONAL_CORPUS",
-        "canonical_node_store": "data/remuneration-delegated-nodes.json",
+        "canonical_node_store": "data/shared/remuneration-delegated/national-corpus.json",
         "identity_map": "data/shared/remuneration-delegated/node-identity-map.json",
         "service_applicability": "data/shared/remuneration-delegated/service-applicability.json",
         "service_relations": "data/shared/remuneration-delegated/service-relations.json",
         "legacy_compatibility": {
+            "legacy_text_store": "data/remuneration-delegated-nodes.json",
             "node_ids_preserved": True,
             "legacy_service_scope_field_authoritative": False,
+            "shared_corpus_reuses_legacy_text_when_identical": True,
             "note": (
-                "The existing delegated-node file remains the single text-bearing "
-                "store for backward compatibility. Service applicability is canonical "
-                "only in the shared applicability file."
+                "The national corpus is canonical for shared source structure. "
+                "Existing dayservice text-bearing nodes remain as backward-compatible "
+                "targets and are referenced instead of duplicated where possible."
             ),
         },
+        "source_selection": national_corpus.get("source_selection", {}),
+        "corpus_coverage": national_corpus.get("coverage", {}),
         "source_documents": source_documents,
         "inventory": {
-            "nodes": len(identity_rows),
-            "sources": len(source_ids),
+            "national_top_level_nodes": len(national_nodes),
+            "legacy_identity_aliases": len(identity_rows),
+            "service_mapped_top_level_nodes": len(mapped_canonical_ids),
+            "compatibility_subnodes": len(compatibility_subnode_ids),
+            "sources": national_corpus.get("coverage", {}).get("source_documents", 0),
+            "source_pages": national_corpus.get("coverage", {}).get("source_pages", 0),
             "services_mapped": 1,
         },
         "assurance": {
