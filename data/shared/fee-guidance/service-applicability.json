@@ -318,6 +318,28 @@
       }
     },
     {
+      "service_id": "preventive-support",
+      "state": "MAPPED",
+      "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.11"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-support.preventive-r6.II.11"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
       "service_id": "shortstay-medical",
       "state": "MAPPED",
       "coverage_kind": "R6_COMPARISON_SECTION_ONLY",
