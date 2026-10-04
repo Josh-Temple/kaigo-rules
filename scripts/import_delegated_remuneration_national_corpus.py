@@ -135,14 +135,19 @@ def page_body(lines: list[str]) -> list[str]:
 
 
 def parse_page_count(lines: list[str], expected_current: int) -> int:
-    for line in lines:
-        match = PAGE_COUNT.search(line)
+    candidates = list(lines)
+    candidates.append("".join(lines[:80]))
+    for value in candidates:
+        match = PAGE_COUNT.search(value)
         if match:
             total, current = int(match.group(1)), int(match.group(2))
             if current != expected_current:
                 raise RuntimeError(f"unexpected current page marker: expected {expected_current}, got {current}")
             return total
-    raise RuntimeError("MHLW page-count marker not found")
+    raise RuntimeError(
+        "MHLW page-count marker not found; first fragments="
+        + repr(lines[:20])
+    )
 
 
 def kanji_number(value: str) -> int:
