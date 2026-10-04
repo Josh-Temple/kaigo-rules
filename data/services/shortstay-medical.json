@@ -30,7 +30,8 @@
     "ordinance37": "data/services/shortstay-medical/ordinance37-scope.json",
     "remuneration": "data/services/shortstay-medical/remuneration-scope.json",
     "unit_price": "data/services/shortstay-medical/unit-price-scope.json",
-    "standards_interpretation": "data/services/shortstay-medical/standards-interpretation-scope.json"
+    "standards_interpretation": "data/services/shortstay-medical/standards-interpretation-scope.json",
+    "fee_guidance": "data/services/shortstay-medical/fee-guidance-scope.json"
   },
   "verification_layer_ids": [
     "ordinance37-existing-services"
@@ -67,11 +68,19 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+    },
+    "fee_guidance": {
+      "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+      "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
     }
   },
   "ingestion_indexes": {
     "remuneration": "data/services/shortstay-medical/remuneration-index.json",
     "standards_interpretation": "data/services/shortstay-medical/standards-interpretation-scope.json",
-    "care_insurance_act": "data/services/shortstay-medical/care-insurance-act-index.json"
+    "care_insurance_act": "data/services/shortstay-medical/care-insurance-act-index.json",
+    "fee_guidance": "data/services/shortstay-medical/fee-guidance-scope.json"
   }
 }
