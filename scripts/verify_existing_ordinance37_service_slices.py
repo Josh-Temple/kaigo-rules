@@ -173,11 +173,24 @@ def compare_service(
     target_articles = declared_articles(service_id, main_provision, differences)
     target_set = set(target_articles)
 
-    if scope.get("law_id") != LAW_ID:
+    declared_law_id = scope.get("law_id")
+    if declared_law_id is not None and declared_law_id != LAW_ID:
         differences.append({
             "difference": "service_scope_law_id_mismatch",
             "expected": LAW_ID,
-            "observed": scope.get("law_id"),
+            "observed": declared_law_id,
+        })
+
+    service_map = load("data/shared/standards/service-ordinance-map.json")
+    mappings = [
+        row for row in service_map.get("relations", [])
+        if row.get("service_id") == service_id
+    ]
+    if len(mappings) != 1 or mappings[0].get("corpus_id") != "ordinance37":
+        differences.append({
+            "difference": "service_to_standards_corpus_mapping_mismatch",
+            "expected": "ordinance37",
+            "observed": [row.get("corpus_id") for row in mappings],
         })
 
     chapter_observations = {}
