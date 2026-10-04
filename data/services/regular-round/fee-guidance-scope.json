@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "service_id": "regular-round",
+  "source_family": "fee_calculation_guidance",
+  "shared_manifest": "data/shared/fee-guidance/manifest.json",
+  "node_ids": [
+    "fee-guidance.shared.community.r6-comparison.II.2"
+  ],
+  "relation_ids": [
+    "fee-guidance.scope.regular-round.community.r6.II.2"
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "service_applicability_verification": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_promotion_allowed": false
+  }
+}
