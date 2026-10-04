@@ -74,7 +74,49 @@ class SharedFeeGuidanceTests(unittest.TestCase):
             self.assertEqual(row['human_review']['state'], 'NOT_REVIEWED')
             self.assertEqual(row['publication']['state'], 'BLOCKED')
             self.assertEqual(row['route_exposure']['state'], 'BLOCKED')
-        # Corpus availability is national; service scope remains service-specific.
-        other = rows['specific-welfare-equipment-sale']
-        self.assertEqual(other['corpus_availability']['kind'], 'SHARED')
-        self.assertEqual(other['service_scope']['state'], 'SCOPE_NOT_DEFINED')
+        # Corpus availability is national; applicability remains service-specific.
+        mapped = {
+            'preventive-dementia-dayservice',
+            'preventive-small-scale-multifunctional',
+            'preventive-dementia-group-home',
+        }
+        for service_id in mapped:
+            row = rows[service_id]
+            self.assertEqual(row['corpus_availability']['kind'], 'SHARED')
+            self.assertEqual(row['service_scope']['state'], 'SCOPE_DEFINED')
+            self.assertEqual(row['service_applicability']['state'], 'MAPPED')
+            self.assertEqual(row['service_applicability']['mapped_node_count'], 1)
+            self.assertEqual(row['ingestion']['state'], 'PARTIAL')
+            self.assertEqual(row['item_body_verification']['state'], 'NOT_ESTABLISHED')
+            self.assertEqual(row['currentness']['state'], 'NOT_ESTABLISHED')
+            self.assertEqual(row['human_review']['state'], 'NOT_REVIEWED')
+            self.assertEqual(row['publication']['state'], 'BLOCKED')
+            self.assertEqual(row['route_exposure']['state'], 'BLOCKED')
+
+        for service_id in (
+            'specific-welfare-equipment-sale',
+            'specific-preventive-welfare-equipment-sale',
+        ):
+            row = rows[service_id]
+            self.assertEqual(row['corpus_availability']['kind'], 'SHARED')
+            self.assertEqual(row['service_scope']['state'], 'SCOPE_DEFINED')
+            self.assertEqual(row['service_applicability']['state'], 'NOT_APPLICABLE')
+            self.assertEqual(row['service_applicability']['mapped_node_count'], 0)
+            self.assertEqual(row['ingestion']['state'], 'NOT_APPLICABLE')
+            self.assertEqual(row['relation_verification']['state'], 'NOT_APPLICABLE')
+            self.assertEqual(row['item_body_verification']['state'], 'NOT_ESTABLISHED')
+            self.assertEqual(row['currentness']['state'], 'NOT_ESTABLISHED')
+            self.assertEqual(row['human_review']['state'], 'NOT_REVIEWED')
+            self.assertEqual(row['publication']['state'], 'BLOCKED')
+            self.assertEqual(row['route_exposure']['state'], 'BLOCKED')
+
+        unresolved = rows['preventive-support']
+        self.assertEqual(unresolved['corpus_availability']['kind'], 'SHARED')
+        self.assertEqual(unresolved['service_scope']['state'], 'SCOPE_NOT_DEFINED')
+        self.assertEqual(unresolved['service_applicability']['state'], 'UNRESOLVED')
+        self.assertEqual(unresolved['service_applicability']['mapped_node_count'], 0)
+        self.assertEqual(unresolved['ingestion']['state'], 'NOT_INGESTED')
+        self.assertEqual(unresolved['item_body_verification']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(unresolved['currentness']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(unresolved['human_review']['state'], 'NOT_REVIEWED')
+        self.assertEqual(unresolved['route_exposure']['state'], 'BLOCKED')
