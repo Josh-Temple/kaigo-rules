@@ -23,6 +23,7 @@
     "data/shared/standards/independent-audit.json",
     "data/qa-service-mapping.json",
     "data/shared/remuneration-delegated/manifest.json",
+    "data/shared/remuneration-delegated/national-corpus.json",
     "data/shared/remuneration-delegated/node-identity-map.json",
     "data/shared/remuneration-delegated/service-applicability.json",
     "data/shared/remuneration-delegated/service-relations.json"
@@ -354,8 +355,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -410,7 +411,7 @@
           },
           "service_applicability": {
             "state": "MAPPED",
-            "mapped_node_count": 17,
+            "mapped_node_count": 15,
             "evidence": [
               "data/shared/remuneration-delegated/service-applicability.json#dayservice"
             ],
@@ -931,8 +932,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -1457,8 +1458,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -1983,8 +1984,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -2509,8 +2510,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -3035,8 +3036,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -3589,8 +3590,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -4135,8 +4136,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -4661,8 +4662,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -5189,8 +5190,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -5717,8 +5718,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -6245,8 +6246,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -6773,8 +6774,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -7281,8 +7282,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -7787,8 +7788,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -8293,8 +8294,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -8799,8 +8800,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -9309,8 +9310,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -9821,8 +9822,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -10333,8 +10334,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -10845,8 +10846,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -11357,8 +11358,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -11869,8 +11870,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -12381,8 +12382,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -12893,8 +12894,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -13405,8 +13406,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -13917,8 +13918,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -14427,8 +14428,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -14937,8 +14938,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -15447,8 +15448,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -15957,8 +15958,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -16467,8 +16468,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -16977,8 +16978,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -17487,8 +17488,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -17997,8 +17998,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -18507,8 +18508,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -19017,8 +19018,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -19527,8 +19528,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
@@ -20037,8 +20038,8 @@
             "kind": "SHARED",
             "corpus_id": "delegated-remuneration-national",
             "evidence": [
-              "data/remuneration-delegated-nodes.json",
-              "data/shared/remuneration-delegated/manifest.json"
+              "data/shared/remuneration-delegated/manifest.json",
+              "data/shared/remuneration-delegated/national-corpus.json"
             ]
           },
           "service_scope": {
