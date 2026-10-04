@@ -109,8 +109,6 @@ def load(path: str) -> Any:
 def normalize_ingestion(raw: str | None, scope_defined: bool, layer_present: bool) -> str:
     if raw:
         upper = raw.upper()
-        if "NOT_APPLICABLE" in upper:
-            return "NOT_APPLICABLE"
         if "NOT_INGESTED" in upper:
             return "NOT_INGESTED"
         if "PARTIAL" in upper and "ITEM_BODY" not in upper:
@@ -236,11 +234,6 @@ def build_cell(
     raw_ingestion = sorted({
         str(row.get("status")) for row in ingestion_rows if row.get("status") is not None
     })
-    unit_price_mapping = None
-    if family["id"] == "unit_price_regional_classification":
-        unit_price_mapping = shared_context["unit_price_service_map"].get(service_id)
-        if unit_price_mapping and unit_price_mapping.get("ingestion_status"):
-            raw_ingestion = sorted(set(raw_ingestion + [str(unit_price_mapping["ingestion_status"])]))
 
     if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus:
         corpus_state = "AVAILABLE"
@@ -363,30 +356,8 @@ def build_cell(
     else:
         route_state = "BLOCKED"
 
-    if (
-        family["id"] == "unit_price_regional_classification"
-        and unit_price_mapping
-        and unit_price_mapping.get("applicability") == "APPLIES"
-        and not ingestion_rows
-        and not layers
-    ):
-        publication_state = "BLOCKED"
-        route_state = "BLOCKED"
-
     relation_raw = str(registry.get("relation_verification", {}).get("status") or "NOT_ESTABLISHED")
     relation_state = "PASS" if relation_raw == "PASS" else "NOT_ESTABLISHED"
-
-    if (
-        family["id"] == "unit_price_regional_classification"
-        and unit_price_mapping
-        and unit_price_mapping.get("applicability") == "NOT_APPLICABLE"
-    ):
-        item_state = "NOT_APPLICABLE"
-        current_state = "NOT_APPLICABLE"
-        relation_state = "NOT_APPLICABLE"
-        human_state = "NOT_APPLICABLE"
-        publication_state = "NOT_APPLICABLE"
-        route_state = "NOT_APPLICABLE"
 
     return {
         "source_family": family["id"],
@@ -459,7 +430,6 @@ def build() -> dict:
     standards_audit_data = load("data/shared/standards/independent-audit.json")
     qa_mapping = load("data/qa-service-mapping.json")
     qa_service_relations = load("data/qa-service-relations.generated.json")
-    unit_price_index = load("data/unit-price-service-multipliers.json")
     shared_context = {
         "standards_map": {row["service_id"]: row["corpus_id"] for row in standards_map_data.get("relations", [])},
         "standards_scope_states": {row["service_id"]: row for row in standards_relations.get("service_scope_states", [])},
@@ -474,10 +444,6 @@ def build() -> dict:
             row["service_id"]
             for row in qa_service_relations.get("services", [])
             if str(row.get("scope_state", "")).startswith("DEFINED")
-        },
-        "unit_price_service_map": {
-            row["service_id"]: row
-            for row in unit_price_index.get("service_mappings", [])
         },
     }
 
@@ -575,7 +541,6 @@ def build() -> dict:
             "data/shared/standards/service-relations.generated.json",
             "data/shared/standards/independent-audit.json",
             "data/qa-service-mapping.json",
-            "data/unit-price-service-multipliers.json",
         ],
         "source_families": [
             {"id": family["id"], "label": family["label"]}
