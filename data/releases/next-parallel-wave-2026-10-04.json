@@ -1,0 +1,20 @@
+{
+  "release": "NEXT_PARALLEL_DATABASE_COMPLETENESS_WAVE_2026-10-04",
+  "source_pr": 336,
+  "integrated_main_sha": "1a71e427bff59ea2a9392b4cb2894a21495b92c5",
+  "scope": {
+    "care_insurance_act_remaining_services": "INTEGRATED",
+    "standards_interpretation_remaining_services": "INTEGRATED",
+    "delegated_remuneration_final_applicability": "INTEGRATED",
+    "fee_guidance_shared_corpus_foundation": "INTEGRATED"
+  },
+  "validation": {
+    "integrated_full_validation": "PASS",
+    "nextjs_build": "PASS",
+    "main_validate_build": "PASS"
+  },
+  "deployment": {
+    "gate": "integration-sprint-174-production-release.yml",
+    "exact_sha_required": true
+  }
+}
