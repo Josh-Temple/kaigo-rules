@@ -1,8 +1,8 @@
 {
   "format_version": 1,
   "source_family": "other_national_manuals_forms",
-  "registry_state": "DISCOVERY_ONLY",
-  "observed_on": "2026-10-04",
+  "registry_state": "CANONICAL_PROMOTION_WITH_FAIL_CLOSED_ASSURANCE",
+  "observed_on": "2026-10-05",
   "allowed_official_hosts": [
     "www.mhlw.go.jp",
     "mhlw.go.jp",
@@ -19,72 +19,199 @@
       "evidence_locator": "「2. 指定申請様式等の使用原則化」— 厚生労働大臣が定める様式、標準様式、チェックリスト",
       "document_kind": "NATIONAL_STANDARD_FORMS_AND_APPLICATION_GUIDANCE",
       "publication_or_revision_date": null,
-      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "acquisition_state": "CANONICAL_LOCATOR_EVIDENCE_PINNED",
       "snapshot_sha256": null,
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
-      "currentness_state": "NOT_ESTABLISHED",
-      "currentness_note": "Current MHLW landing page was observed, but individual attached form versions were not snapshotted or replayed in this wave.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "currentness_state": "PARTIAL",
+      "currentness_note": "PARTIAL: the current MHLW landing page exposes the R6-03-15 standard-form set. This worker did not archive an attachment-by-attachment supersession chain.",
+      "applicability": {
+        "state": "MAPPED_PRIMARY_SOURCE",
+        "service_ids": [
+          "dayservice",
+          "homevisit",
+          "homebath",
+          "homenursing",
+          "homerehab",
+          "homecaremanagement",
+          "dayrehab",
+          "shortstay-life",
+          "community-dayservice",
+          "regular-round",
+          "night-homevisit",
+          "care-management",
+          "preventive-support",
+          "shortstay-medical",
+          "specific-facility",
+          "welfare-equipment-rental",
+          "specific-welfare-equipment-sale",
+          "dementia-dayservice",
+          "small-scale-multifunctional",
+          "dementia-group-home",
+          "community-specific-facility",
+          "community-elderly-facility",
+          "nursing-small-scale-multifunctional",
+          "elderly-welfare-facility",
+          "elderly-health-facility",
+          "care-medical-institution",
+          "preventive-homebath",
+          "preventive-homenursing",
+          "preventive-homerehab",
+          "preventive-homecaremanagement",
+          "preventive-dayrehab",
+          "preventive-shortstay-life",
+          "preventive-shortstay-medical",
+          "preventive-specific-facility",
+          "preventive-welfare-equipment-rental",
+          "specific-preventive-welfare-equipment-sale",
+          "preventive-dementia-dayservice",
+          "preventive-small-scale-multifunctional",
+          "preventive-dementia-group-home"
+        ]
+      },
       "inclusion_reason": "Nationwide designation/application forms have direct administrative use and are not represented by the eight existing source families.",
-      "projection_ready": false
+      "projection_ready": true,
+      "canonical_source_id": "mhlw-application-forms",
+      "canonical_node_id": "other-national.shared.mhlw-application-forms",
+      "durable_evidence": {
+        "mode": "OFFICIAL_PRIMARY_SOURCE_LOCATOR_RECEIPT",
+        "receipt_id": "other-national.obs.mhlw-application-forms.2026-10-05",
+        "receipt_path": "data/shared/other-national-materials/source-observation-receipts.json",
+        "source_bytes_sha256": null,
+        "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
+      }
     },
     {
       "candidate_id": "mhlw-electronic-application-operator-manual",
-      "existing_source_id": null,
+      "existing_source_id": "mhlw-electronic-application-operator-manual-v2-50",
       "title": "電子申請・届出システム 操作マニュアル（介護事業所向け）詳細版 ver2.50",
       "issuing_authority": "厚生労働省 介護サービス情報公表システム",
       "official_url": "https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true",
       "evidence_locator": "ヘルプ画面「操作マニュアル_(介護事業所向け) 詳細版 ver2.50」",
       "document_kind": "NATIONAL_SYSTEM_OPERATION_MANUAL",
       "publication_or_revision_date": null,
-      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "acquisition_state": "CANONICAL_LOCATOR_EVIDENCE_PINNED",
       "snapshot_sha256": null,
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
-      "currentness_state": "NOT_ESTABLISHED",
-      "currentness_note": "Version 2.50 is named on the current official help page; the PDF bytes and publication history were not pinned in this wave.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "currentness_state": "PARTIAL",
+      "currentness_note": "PARTIAL: the current official help surface names Detailed Manual ver2.50. Exact PDF bytes and publication-history chain were not pinned, so body currentness is not claimed.",
+      "applicability": {
+        "state": "NOT_ESTABLISHED",
+        "service_ids": []
+      },
       "inclusion_reason": "Nationwide system operation manual for designation/application notifications; operational rather than a legal-source-family duplicate.",
-      "projection_ready": false
+      "projection_ready": true,
+      "canonical_source_id": "mhlw-electronic-application-operator-manual-v2-50",
+      "canonical_node_id": "other-national.shared.mhlw-electronic-application-operator-manual-v2-50",
+      "durable_evidence": {
+        "mode": "OFFICIAL_PRIMARY_SOURCE_LOCATOR_RECEIPT",
+        "receipt_id": "other-national.obs.mhlw-electronic-application-operator-manual-v2-50.2026-10-05",
+        "receipt_path": "data/shared/other-national-materials/source-observation-receipts.json",
+        "source_bytes_sha256": null,
+        "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
+      }
     },
     {
       "candidate_id": "mhlw-accident-report-format-vol1332",
-      "existing_source_id": null,
+      "existing_source_id": "mhlw-accident-report-vol1332",
       "title": "介護保険施設等における事故の報告様式等について（介護保険最新情報Vol.1332）",
       "issuing_authority": "厚生労働省",
       "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/boushi/jimurenraku.html",
       "evidence_locator": "福祉・介護関連通知・事務連絡「介護保険施設等における事故の報告様式等について（Vol.1332）」",
       "document_kind": "NATIONAL_REPORTING_FORM_AND_NOTICE",
       "publication_or_revision_date": "2024-11-29",
-      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "acquisition_state": "CANONICAL_LOCATOR_EVIDENCE_PINNED",
       "snapshot_sha256": null,
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
-      "currentness_state": "NOT_ESTABLISHED",
-      "currentness_note": "Vol.1332 is listed by MHLW, but supersession after the listed issue has not been independently established in this wave.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "currentness_state": "PARTIAL",
+      "currentness_note": "PARTIAL: Vol.1332 is on the current official MHLW accident-reporting page and explicitly abolishes the 2021 predecessor. No independent archive-wide successor search is promoted to PASS.",
+      "applicability": {
+        "state": "PARTIAL_EXPLICIT_TARGET",
+        "service_ids": [
+          "elderly-welfare-facility",
+          "elderly-health-facility",
+          "care-medical-institution",
+          "dementia-group-home",
+          "preventive-dementia-group-home",
+          "specific-facility",
+          "community-specific-facility",
+          "preventive-specific-facility"
+        ]
+      },
       "inclusion_reason": "A nationwide accident-reporting format is operationally material and does not fit the eight existing legal/Q&A source families.",
-      "projection_ready": false
+      "projection_ready": true,
+      "canonical_source_id": "mhlw-accident-report-vol1332",
+      "canonical_node_id": "other-national.shared.mhlw-accident-report-vol1332",
+      "durable_evidence": {
+        "mode": "OFFICIAL_PRIMARY_SOURCE_LOCATOR_RECEIPT",
+        "receipt_id": "other-national.obs.mhlw-accident-report-vol1332.2026-10-05",
+        "receipt_path": "data/shared/other-national-materials/source-observation-receipts.json",
+        "source_bytes_sha256": null,
+        "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
+      }
     },
     {
       "candidate_id": "mhlw-care-business-financial-db-manual",
-      "existing_source_id": null,
+      "existing_source_id": "mhlw-care-business-financial-db-manual-v1-20",
       "title": "介護サービス事業者経営情報データベースシステム操作マニュアル（介護事業所向け、詳細版）",
       "issuing_authority": "厚生労働省",
       "official_url": "https://www.mhlw.go.jp/stf/tyousa-bunseki.html",
       "evidence_locator": "介護サービス事業者の経営情報の調査及び分析等—事業者向け操作マニュアル",
       "document_kind": "NATIONAL_SYSTEM_OPERATION_MANUAL",
       "publication_or_revision_date": null,
-      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "acquisition_state": "CANONICAL_LOCATOR_EVIDENCE_PINNED",
       "snapshot_sha256": null,
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
-      "currentness_state": "NOT_ESTABLISHED",
-      "currentness_note": "Current MHLW landing page exposes the manual; exact current PDF revision and supersession history were not pinned.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "currentness_state": "PARTIAL",
+      "currentness_note": "PARTIAL: the current MHLW landing page links the detailed manual whose revision table reaches v1.20 (2025-03-13). This does not imply that the reporting system is currently accepting submissions.",
+      "applicability": {
+        "state": "PARTIAL_CONDITIONAL",
+        "service_ids": [
+          "homevisit",
+          "homebath",
+          "preventive-homebath",
+          "homenursing",
+          "preventive-homenursing",
+          "homerehab",
+          "preventive-homerehab",
+          "dayservice",
+          "dayrehab",
+          "preventive-dayrehab",
+          "welfare-equipment-rental",
+          "preventive-welfare-equipment-rental",
+          "shortstay-life",
+          "preventive-shortstay-life",
+          "dementia-group-home",
+          "preventive-dementia-group-home",
+          "care-management",
+          "elderly-welfare-facility",
+          "elderly-health-facility",
+          "community-elderly-facility",
+          "care-medical-institution",
+          "night-homevisit",
+          "dementia-dayservice",
+          "preventive-dementia-dayservice",
+          "small-scale-multifunctional",
+          "preventive-small-scale-multifunctional",
+          "regular-round",
+          "nursing-small-scale-multifunctional",
+          "community-dayservice"
+        ]
+      },
       "inclusion_reason": "Nationwide mandatory-reporting system guidance is operationally material and outside the existing eight source families.",
-      "projection_ready": false
+      "projection_ready": true,
+      "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
+      "canonical_node_id": "other-national.shared.mhlw-care-business-financial-db-manual-v1-20",
+      "durable_evidence": {
+        "mode": "OFFICIAL_PRIMARY_SOURCE_LOCATOR_RECEIPT",
+        "receipt_id": "other-national.obs.mhlw-care-business-financial-db-manual-v1-20.2026-10-05",
+        "receipt_path": "data/shared/other-national-materials/source-observation-receipts.json",
+        "source_bytes_sha256": null,
+        "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
+      }
     },
     {
       "candidate_id": "mhlw-life-manual-guidance",
@@ -101,7 +228,10 @@
       "overlap_source_family": null,
       "currentness_state": "NOT_ESTABLISHED",
       "currentness_note": "MHLW documents a 2026 LIFE migration and routes to current manuals; the active manual authority/version boundary requires a separate currentness pass.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "applicability": {
+        "state": "NOT_ESTABLISHED",
+        "service_ids": []
+      },
       "inclusion_reason": "Potential Other National material, but current manual identity and authority after the 2026 migration must be pinned before acceptance.",
       "projection_ready": false
     },
@@ -120,7 +250,10 @@
       "overlap_source_family": "fee_calculation_guidance",
       "currentness_state": "NOT_ESTABLISHED",
       "currentness_note": "Duplicate classification is about source-family placement, not a currentness determination.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "applicability": {
+        "state": "NOT_ESTABLISHED",
+        "service_ids": []
+      },
       "inclusion_reason": "Do not duplicate: the material is part of fee-calculation filing guidance already represented by an existing source family.",
       "projection_ready": false
     },
@@ -139,7 +272,10 @@
       "overlap_source_family": "standards_interpretation_notice",
       "currentness_state": "NOT_ESTABLISHED",
       "currentness_note": "The form is attached to an interpretation-notice family; this classification does not establish present validity.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "applicability": {
+        "state": "NOT_ESTABLISHED",
+        "service_ids": []
+      },
       "inclusion_reason": "Do not duplicate a form that is structurally an annex to an existing standards-interpretation notice.",
       "projection_ready": false
     },
@@ -158,7 +294,10 @@
       "overlap_source_family": "national_qa",
       "currentness_state": "NOT_ESTABLISHED",
       "currentness_note": "Q&A placement is deduplicated to the national Q&A family; currentness requires separate verification.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "applicability": {
+        "state": "NOT_ESTABLISHED",
+        "service_ids": []
+      },
       "inclusion_reason": "Do not duplicate national Q&A in Other National materials.",
       "projection_ready": false
     },
@@ -177,9 +316,16 @@
       "overlap_source_family": null,
       "currentness_state": "NOT_ESTABLISHED",
       "currentness_note": "The index changes over time and is not itself a bounded canonical document.",
-      "applicability": {"state": "NOT_ESTABLISHED", "service_ids": []},
+      "applicability": {
+        "state": "NOT_ESTABLISHED",
+        "service_ids": []
+      },
       "inclusion_reason": "Use the index only for discovery; individual official documents must be identified and classified separately.",
       "projection_ready": false
     }
-  ]
+  ],
+  "canonical_store": "data/shared/other-national-materials/national-corpus.json",
+  "identity_map": "data/shared/other-national-materials/source-identity-map.json",
+  "service_applicability": "data/shared/other-national-materials/service-applicability.json",
+  "observation_receipts": "data/shared/other-national-materials/source-observation-receipts.json"
 }

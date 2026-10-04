@@ -1,8 +1,8 @@
 {
   "format_version": 1,
   "source_family": "other_national_manuals_forms",
-  "audit_state": "DISCOVERY_CLASSIFICATION_COMPLETE_FOR_LISTED_CANDIDATES",
-  "observed_on": "2026-10-04",
+  "audit_state": "CANONICAL_PROMOTION_COMPLETE_FOR_ACCEPTED_CANDIDATES",
+  "observed_on": "2026-10-05",
   "main_sha_at_discovery": "754bc7b223db4aa35675c840f1a0032ca71eeb96",
   "summary": {
     "ACCEPTED_OTHER_NATIONAL_MATERIAL": 4,
@@ -12,36 +12,44 @@
   },
   "accepted_source_count": 4,
   "duplicate_or_rejected_count": 5,
-  "currentness_not_established_count": 9,
-  "service_applicability_not_established_count": 9,
+  "currentness_not_established_count": 5,
+  "service_applicability_not_established_count": 6,
   "checks": [
     {
       "candidate_id": "mhlw-designation-application-standard-forms",
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
       "official_url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
-      "projection_ready": false
+      "projection_ready": true,
+      "canonical_source_id": "mhlw-application-forms",
+      "canonical_node_id": "other-national.shared.mhlw-application-forms"
     },
     {
       "candidate_id": "mhlw-electronic-application-operator-manual",
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
       "official_url": "https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true",
-      "projection_ready": false
+      "projection_ready": true,
+      "canonical_source_id": "mhlw-electronic-application-operator-manual-v2-50",
+      "canonical_node_id": "other-national.shared.mhlw-electronic-application-operator-manual-v2-50"
     },
     {
       "candidate_id": "mhlw-accident-report-format-vol1332",
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
       "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/boushi/jimurenraku.html",
-      "projection_ready": false
+      "projection_ready": true,
+      "canonical_source_id": "mhlw-accident-report-vol1332",
+      "canonical_node_id": "other-national.shared.mhlw-accident-report-vol1332"
     },
     {
       "candidate_id": "mhlw-care-business-financial-db-manual",
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
       "official_url": "https://www.mhlw.go.jp/stf/tyousa-bunseki.html",
-      "projection_ready": false
+      "projection_ready": true,
+      "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
+      "canonical_node_id": "other-national.shared.mhlw-care-business-financial-db-manual-v1-20"
     },
     {
       "candidate_id": "mhlw-life-manual-guidance",
@@ -79,5 +87,19 @@
       "projection_ready": false
     }
   ],
-  "conclusion": "Discovery foundation is intentionally fail-closed. Accepted candidates are not yet corpus availability, service scope, ingestion, currentness, verification, publication, or route claims."
+  "conclusion": "Discovery foundation is intentionally fail-closed. Accepted candidates are not yet corpus availability, service scope, ingestion, currentness, verification, publication, or route claims.",
+  "currentness_partial_count": 4,
+  "service_applicability_promoted_count": 3,
+  "canonical_promotion": {
+    "accepted_candidate_count": 4,
+    "canonical_source_count": 4,
+    "source_level_corpus_available": true,
+    "service_scope_fully_mapped_sources": 1,
+    "service_scope_partial_sources": 2,
+    "service_scope_unestablished_sources": 1,
+    "duplicate_or_out_of_scope_promoted": 0,
+    "life_promoted": false,
+    "life_reason": "Current MHLW LIFE page routes to an active operation manual, but the active manual's exact version/body identity was not pinned strongly enough in this worker; it remains discovery-only.",
+    "global_generated_artifacts_regenerated": false
+  }
 }
