@@ -4,12 +4,11 @@
   "source_packet": "data/relation-human-review-packet.json",
   "policy": "This file supplies review excerpts and canonical resolution only. Excerpts may include machine-reconstructed candidates or editorial summaries where primary text is not committed. It never makes or promotes a semantic review decision.",
   "summary": {
-    "items_total": 59,
+    "items_total": 58,
     "unresolved_items": 0,
     "target_resolution_counts": {
       "CURATED_QA": 1,
       "NOTICE": 7,
-      "OFFICIAL_SOURCE_REGISTRY": 1,
       "ORDINANCE_CANONICAL_NODE": 50
     }
   },
@@ -198,39 +197,6 @@
         "text_hashes": [
           "e8d2b8bee4c34def5bc418208f1a0dfd5e254a840b9743cb25853206ea00fddc"
         ]
-      },
-      "reviewer_decision": null,
-      "reviewer_note": null
-    },
-    {
-      "review_id": "REL-006",
-      "identity": {
-        "from": "fee.dayservice.root",
-        "relation": "latest_interpretation_amendment_evidence",
-        "to": "mhlw-r8-fee-guidance-may-amendment"
-      },
-      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
-      "source_evidence": {
-        "resolution_kind": "REMUNERATION",
-        "canonical_ids": [
-          "fee.dayservice.root"
-        ],
-        "excerpt_kind": "structure_label_only",
-        "excerpt": "通所介護費",
-        "source_url": null,
-        "source_locator": "6 通所介護費",
-        "text_hashes": []
-      },
-      "target_evidence": {
-        "resolution_kind": "OFFICIAL_SOURCE_REGISTRY",
-        "canonical_ids": [
-          "mhlw-r8-fee-guidance-may-amendment"
-        ],
-        "excerpt_kind": "source_registry_metadata",
-        "excerpt": "老企第36号等の一部改正について（令和8年5月8日・介護保険最新情報Vol.1502） 令和8年5月8日通知。令和8年6月算定分から適用し、通所介護費7(25)の人員基準欠如について、突発的で想定困難な事象に対する特例的な減算猶予を追加。",
-        "source_url": "https://www.mhlw.go.jp/content/001698614.pdf",
-        "source_locator": null,
-        "text_hashes": []
       },
       "reviewer_decision": null,
       "reviewer_note": null
