@@ -565,6 +565,7 @@ def build() -> dict:
             "data/shared/standards/service-relations.generated.json",
             "data/shared/standards/independent-audit.json",
             "data/qa-service-mapping.json",
+            "data/unit-price-service-multipliers.json",
         ],
         "source_families": [
             {"id": family["id"], "label": family["label"]}
