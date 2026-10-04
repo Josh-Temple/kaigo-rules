@@ -1887,6 +1887,303 @@
         "route_exposure": "BLOCKED",
         "automatic_promotion_allowed": false
       }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.2",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "2"
+      ],
+      "title": "介護予防訪問入浴介護費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 1,
+        "end_line": 1,
+        "sha256": "a0fae91d4d7ece68621cb559acf903a6f995df5952dfc5de8da6cfb447948ae9"
+      },
+      "source_locator": {
+        "pdf_page": 3,
+        "extracted_text_line": 217
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.3",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "3"
+      ],
+      "title": "介護予防訪問看護費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 2,
+        "end_line": 2,
+        "sha256": "69bfb42188e95591d5d9dc49f7f84ac0c76a5cc87538e717f2d0afeb21a8ebbe"
+      },
+      "source_locator": {
+        "pdf_page": 6,
+        "extracted_text_line": 332
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.4",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "4"
+      ],
+      "title": "介護予防訪問リハビリテーション費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 3,
+        "end_line": 3,
+        "sha256": "16ba015a4090e71d12953792eabfe398dd44c459473ff1e21ad3edf4cfc06a2e"
+      },
+      "source_locator": {
+        "pdf_page": 13,
+        "extracted_text_line": 643
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.5",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "5"
+      ],
+      "title": "介護予防居宅療養管理指導費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 4,
+        "end_line": 4,
+        "sha256": "0915e5963501745296ab2a944a51e4c6476f9e18a70cb8306ae6ccc65ba86e8f"
+      },
+      "source_locator": {
+        "pdf_page": 17,
+        "extracted_text_line": 875
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.6",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "6"
+      ],
+      "title": "介護予防通所リハビリテーション費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 5,
+        "end_line": 5,
+        "sha256": "3fa55e34a5c84c100b87383892cec3d266d1757286409ff5dbe0c8a7f6e2917d"
+      },
+      "source_locator": {
+        "pdf_page": 25,
+        "extracted_text_line": 1275
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.7",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "7"
+      ],
+      "title": "介護予防短期入所生活介護",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 6,
+        "end_line": 6,
+        "sha256": "b1cb885e25d78aa7223e9c983c99d5699d15690d1df09393505511ba2ac59953"
+      },
+      "source_locator": {
+        "pdf_page": 33,
+        "extracted_text_line": 1655
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.8",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "8"
+      ],
+      "title": "介護予防短期入所療養介護",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 7,
+        "end_line": 7,
+        "sha256": "cfd5fda218652ddf70027b5eaa6b2bf5ec681cdc2ff32f1ae4d470e1f2c20b18"
+      },
+      "source_locator": {
+        "pdf_page": 38,
+        "extracted_text_line": 1970
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.9",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "9"
+      ],
+      "title": "介護予防特定施設入居者生活介護費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 8,
+        "end_line": 8,
+        "sha256": "4334d75abd422863aa4b586baeacce0f798cb5f4297147d5729f6dfb991e4ec7"
+      },
+      "source_locator": {
+        "pdf_page": 45,
+        "extracted_text_line": 2314
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.10",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "10"
+      ],
+      "title": "介護予防福祉用具貸与費",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 9,
+        "end_line": 9,
+        "sha256": "a3d1bda2d84130fbe6c559e82113937fbd2573ba40d8c3b7d83c0144b55a7ab0"
+      },
+      "source_locator": {
+        "pdf_page": 51,
+        "extracted_text_line": 2571
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
     }
   ]
 }
