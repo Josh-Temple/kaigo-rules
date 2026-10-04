@@ -329,6 +329,23 @@
         "checked_on": "2026-10-05",
         "claim": "サービス固有の厚労省適用要件一覧が留意事項通知第2の6を明示参照するため、既存共有node II.6へのscope relationを設定する。currentnessやitem-body verificationは推論しない。"
       }
+    },
+    {
+      "id": "fee-guidance.scope.preventive-support.preventive-r6.II.11",
+      "service_id": "preventive-support",
+      "node_id": "fee-guidance.shared.preventive.r6-comparison.II.11",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "verification": "NOT_ESTABLISHED",
+      "mapping_evidence": {
+        "type": "OFFICIAL_MHLW_SOURCE_SECTION",
+        "url": "https://www.mhlw.go.jp/content/12300000/001227907.pdf",
+        "locator": "第2 11 介護予防支援（PDF page 53 / extracted text line 2689）",
+        "corroborating_url": "https://www.mhlw.go.jp/content/12404000/001675938.pdf",
+        "corroborating_locator": "令和8年度改正新旧対照でも 11 介護予防支援を明示",
+        "checked_on": "2026-10-05",
+        "claim": "厚生労働省のFee Guidance一次資料自体に介護予防支援の独立sectionが明示されるため、共有node II.11へのservice scope relationを設定する。item-body verification、currentness、relation verification、human review、publication、routeは推論しない。"
+      }
     }
   ]
 }
