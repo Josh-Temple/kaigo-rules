@@ -1,0 +1,141 @@
+{
+  "format_version": 1,
+  "service_id": "care-medical-institution",
+  "service_label": "介護医療院",
+  "layer": "REMUNERATION_NOTIFICATION",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "4 介護医療院サービス",
+    "start_marker": "4　介護医療院サービス",
+    "end_marker": "END_OF_NOTICE21_FEE_TABLE",
+    "excluded_next_section": null,
+    "legal_text_duplicated": false
+  },
+  "official_source": {
+    "source_id": "mhlw-facility-fee-notice21-current",
+    "role": "PRIMARY_MHLW_CONSOLIDATED_DISPLAY",
+    "title": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+    "page_urls": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2"
+    ],
+    "locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス",
+    "observed_on_jst": "2026-10-04",
+    "version_note": "厚生労働省の現行統合表示でsection境界と構造markerを確認。令和8年厚生労働省告示第87号の反映を表示上確認したが、service/item-level currentnessの独立確立とは扱わない。"
+  },
+  "coverage": {
+    "indexed_top_level_items": 6,
+    "indexed_child_items": 6,
+    "total_index_entries": 12,
+    "top_level_complete": false,
+    "item_body_complete": false,
+    "legal_body_copied": false,
+    "indexing_depth": "BOUNDED_SECTION_TOP_LEVEL_AND_DIRECT_NUMERIC_MARKERS"
+  },
+  "top_level_items": [
+    {
+      "id": "rem.care-medical-institution.top.1",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "Ⅰ型介護医療院サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / イ"
+    },
+    {
+      "id": "rem.care-medical-institution.top.2",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "Ⅱ型介護医療院サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ロ"
+    },
+    {
+      "id": "rem.care-medical-institution.top.3",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "特別介護医療院サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ハ"
+    },
+    {
+      "id": "rem.care-medical-institution.top.4",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "ユニット型Ⅰ型介護医療院サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ニ"
+    },
+    {
+      "id": "rem.care-medical-institution.top.5",
+      "marker": "ホ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "ユニット型Ⅱ型介護医療院サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ホ"
+    },
+    {
+      "id": "rem.care-medical-institution.top.6",
+      "marker": "ヘ",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "title": "ユニット型特別介護医療院サービス費",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ヘ"
+    }
+  ],
+  "child_items": [
+    {
+      "id": "rem.care-medical-institution.child.1",
+      "parent_marker": "イ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
+      "title": "Ⅰ型介護医療院サービス費(Ⅰ)",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / イ / (1)"
+    },
+    {
+      "id": "rem.care-medical-institution.child.2",
+      "parent_marker": "イ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
+      "title": "Ⅰ型介護医療院サービス費(Ⅱ)",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / イ / (2)"
+    },
+    {
+      "id": "rem.care-medical-institution.child.3",
+      "parent_marker": "イ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
+      "title": "Ⅰ型介護医療院サービス費(Ⅲ)",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / イ / (3)"
+    },
+    {
+      "id": "rem.care-medical-institution.child.4",
+      "parent_marker": "ロ",
+      "marker": "(1)",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
+      "title": "Ⅱ型介護医療院サービス費(Ⅰ)",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ロ / (1)"
+    },
+    {
+      "id": "rem.care-medical-institution.child.5",
+      "parent_marker": "ロ",
+      "marker": "(2)",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
+      "title": "Ⅱ型介護医療院サービス費(Ⅱ)",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ロ / (2)"
+    },
+    {
+      "id": "rem.care-medical-institution.child.6",
+      "parent_marker": "ロ",
+      "marker": "(3)",
+      "kind": "NUMERIC_STRUCTURE_MARKER",
+      "title": "Ⅱ型介護医療院サービス費(Ⅲ)",
+      "source_locator": "別表 指定施設サービス等介護給付費単位数表 / 4 介護医療院サービス / ロ / (3)"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false,
+    "note": "報酬告示のservice-specific sectionを本文複製なしの構造索引として収載した段階。item-body/currentness/relation/human review/publication/routeは独立工程のまま。"
+  }
+}

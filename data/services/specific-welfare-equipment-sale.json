@@ -38,5 +38,16 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "remuneration": {
+      "status": "NOT_APPLICABLE",
+      "source_family": "remuneration_notification",
+      "applicability": "NOT_APPLICABLE",
+      "basis": "介護保険法第44条の居宅介護福祉用具購入費であり、告示第19号の居宅サービス費laneには接続しない。",
+      "item_body_verification": "NOT_APPLICABLE",
+      "currentness": "NOT_APPLICABLE",
+      "human_review": "NOT_REVIEWED",
+      "note": "報酬告示のservice fee laneへの非該当を明示するためのapplicability state。代替となる購入費根拠の内容検証・currentness・human review・publicationは別工程であり、自動昇格しない。"
+    }
+  }
 }

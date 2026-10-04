@@ -39,5 +39,22 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "remuneration": {
+      "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_family": "remuneration_notification",
+      "source_id": "mhlw-community-preventive-fee-notice128-current",
+      "source_section": "2 介護予防小規模多機能型居宅介護費",
+      "top_level_items": 9,
+      "child_items": 6,
+      "total_index_entries": 15,
+      "item_body_verification": "NOT_ESTABLISHED",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "厚生労働省の現行統合表示に基づき、該当service sectionの境界と直接観測した構造markerを本文複製なしで索引化。item-body verification/currentness/relation/human review/publication/routeは未昇格。"
+    }
+  },
+  "ingestion_indexes": {
+    "remuneration": "data/services/preventive-small-scale-multifunctional/remuneration-index.json"
+  }
 }

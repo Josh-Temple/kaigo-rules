@@ -32,7 +32,7 @@ class PreventiveRemunerationIndexTest(unittest.TestCase):
         sale_scope = load(f"data/services/{SALE_ID}/remuneration-scope.json")
         self.assertEqual(sale_scope["remuneration_notification"]["state"], "NOT_APPLICABLE")
         self.assertEqual(self.sale["status"], "REGISTERED_NOT_INGESTED")
-        self.assertFalse((ROOT / f"data/services/{SALE_ID}/remuneration-index.json").exists())
+        self.assertFalse((ROOT / f"data/services/{SALE_ID}/remuneration-index.json").exists())\n        sale_config = load(f"data/services/{SALE_ID}.json")\n        self.assertIn("NOT_APPLICABLE", sale_config["ingestion_layers"]["remuneration"]["status"])
 
     def test_each_target_has_bounded_index_and_fail_closed_assurance(self):
         ordinals = []
