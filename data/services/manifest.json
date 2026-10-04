@@ -234,21 +234,21 @@
       "service_id": "preventive-homecaremanagement",
       "label": "介護予防居宅療養管理指導",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-homecaremanagement.json"
     },
     {
       "service_id": "preventive-dayrehab",
       "label": "介護予防通所リハビリテーション",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-dayrehab.json"
     },
     {
       "service_id": "preventive-shortstay-life",
       "label": "介護予防短期入所生活介護",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-shortstay-life.json"
     },
     {
