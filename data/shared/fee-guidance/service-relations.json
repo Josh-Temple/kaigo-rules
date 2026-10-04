@@ -36,6 +36,173 @@
       "source_id": "rouki36-r6-final-comparison-shared",
       "semantics": "Document section bearing this service name; no cross-reference applicability inferred.",
       "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.homecaremanagement.rouki36.r6.II.6",
+      "service_id": "homecaremanagement",
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.6",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki36-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.welfare-equipment-rental.rouki36.r6.II.9",
+      "service_id": "welfare-equipment-rental",
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.II.9",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki36-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.care-management.rouki36.r6.III",
+      "service_id": "care-management",
+      "node_id": "fee-guidance.shared.rouki36.r6-comparison.III",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki36-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.shortstay-life.rouki40.r6.II.2",
+      "service_id": "shortstay-life",
+      "node_id": "fee-guidance.shared.rouki40.r6-comparison.II.2",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki40-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.shortstay-medical.rouki40.r6.II.3",
+      "service_id": "shortstay-medical",
+      "node_id": "fee-guidance.shared.rouki40.r6-comparison.II.3",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki40-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.specific-facility.rouki40.r6.II.4",
+      "service_id": "specific-facility",
+      "node_id": "fee-guidance.shared.rouki40.r6-comparison.II.4",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki40-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.elderly-welfare-facility.rouki40.r6.II.5",
+      "service_id": "elderly-welfare-facility",
+      "node_id": "fee-guidance.shared.rouki40.r6-comparison.II.5",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki40-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.elderly-health-facility.rouki40.r6.II.6",
+      "service_id": "elderly-health-facility",
+      "node_id": "fee-guidance.shared.rouki40.r6-comparison.II.6",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki40-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.care-medical-institution.rouki40.r6.II.8",
+      "service_id": "care-medical-institution",
+      "node_id": "fee-guidance.shared.rouki40.r6-comparison.II.8",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "rouki40-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.regular-round.community.r6.II.2",
+      "service_id": "regular-round",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.2",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.night-homevisit.community.r6.II.3",
+      "service_id": "night-homevisit",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.3",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.community-dayservice.community.r6.II.3-2",
+      "service_id": "community-dayservice",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.3-2",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.dementia-dayservice.community.r6.II.4",
+      "service_id": "dementia-dayservice",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.4",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.small-scale-multifunctional.community.r6.II.5",
+      "service_id": "small-scale-multifunctional",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.5",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.dementia-group-home.community.r6.II.6",
+      "service_id": "dementia-group-home",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.6",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.community-specific-facility.community.r6.II.7",
+      "service_id": "community-specific-facility",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.7",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.community-elderly-facility.community.r6.II.8",
+      "service_id": "community-elderly-facility",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.8",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document contains an explicit section heading for this service; no current integrated text or cross-reference applicability is inferred.",
+      "verification": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "fee-guidance.scope.nursing-small-scale-multifunctional.community.r6.II.9",
+      "service_id": "nursing-small-scale-multifunctional",
+      "node_id": "fee-guidance.shared.community.r6-comparison.II.9",
+      "relation_type": "SOURCE_SECTION_SCOPE",
+      "source_id": "community-services-r6-final-comparison-scope-locators",
+      "semantics": "Official amendment-comparison document section is titled 複合型サービス費; the current MHLW Long-Term Care Insurance Act Enforcement Regulation expressly defines 複合型サービス as 看護小規模多機能型居宅介護. No currentness or item-body verification is inferred.",
+      "verification": "NOT_ESTABLISHED",
+      "mapping_evidence": {
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999403&dataType=0",
+        "locator": "第六十五条の三の二",
+        "claim": "法第四十二条の二第二項第一号の厚生労働省令で定める複合型サービスは、看護小規模多機能型居宅介護とする。"
+      }
     }
   ]
 }
