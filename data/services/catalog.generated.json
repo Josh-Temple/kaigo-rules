@@ -390,7 +390,8 @@
         "care_insurance_act": "data/services/homecaremanagement/care-insurance-act-scope.json",
         "ordinance37": "data/services/homecaremanagement/ordinance37-scope.json",
         "remuneration": "data/services/homecaremanagement/remuneration-scope.json",
-        "unit_price": "data/services/homecaremanagement/unit-price-scope.json"
+        "unit_price": "data/services/homecaremanagement/unit-price-scope.json",
+        "fee_guidance": "data/services/homecaremanagement/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -423,6 +424,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [
@@ -521,7 +529,8 @@
         "care_insurance_act": "data/services/shortstay-life/care-insurance-act-scope.json",
         "ordinance37": "data/services/shortstay-life/ordinance37-scope.json",
         "remuneration": "data/services/shortstay-life/remuneration-scope.json",
-        "unit_price": "data/services/shortstay-life/unit-price-scope.json"
+        "unit_price": "data/services/shortstay-life/unit-price-scope.json",
+        "fee_guidance": "data/services/shortstay-life/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -555,6 +564,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [
@@ -581,7 +597,8 @@
         "standards_index": "data/services/community-dayservice/shared-corpus-scope.json",
         "remuneration": "data/services/community-dayservice/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/community-dayservice/shared-corpus-scope.json",
-        "unit_price": "data/services/community-dayservice/shared-corpus-scope.json"
+        "unit_price": "data/services/community-dayservice/shared-corpus-scope.json",
+        "fee_guidance": "data/services/community-dayservice/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -626,6 +643,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -649,7 +673,8 @@
         "standards_index": "data/services/regular-round/shared-corpus-scope.json",
         "remuneration": "data/services/regular-round/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/regular-round/shared-corpus-scope.json",
-        "unit_price": "data/services/regular-round/shared-corpus-scope.json"
+        "unit_price": "data/services/regular-round/shared-corpus-scope.json",
+        "fee_guidance": "data/services/regular-round/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -694,6 +719,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -717,7 +749,8 @@
         "standards_index": "data/services/night-homevisit/shared-corpus-scope.json",
         "remuneration": "data/services/night-homevisit/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/night-homevisit/shared-corpus-scope.json",
-        "unit_price": "data/services/night-homevisit/shared-corpus-scope.json"
+        "unit_price": "data/services/night-homevisit/shared-corpus-scope.json",
+        "fee_guidance": "data/services/night-homevisit/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -762,6 +795,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -785,7 +825,8 @@
         "governing_standards": "data/services/care-management/governing-standards-scope.json",
         "remuneration": "data/services/care-management/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/care-management/delegated-remuneration-criteria-scope.json",
-        "unit_price_regional_classification": "data/services/care-management/unit-price-scope.json"
+        "unit_price_regional_classification": "data/services/care-management/unit-price-scope.json",
+        "fee_guidance": "data/services/care-management/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -832,6 +873,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": []
@@ -923,7 +971,8 @@
         "ordinance37": "data/services/shortstay-medical/ordinance37-scope.json",
         "remuneration": "data/services/shortstay-medical/remuneration-scope.json",
         "unit_price": "data/services/shortstay-medical/unit-price-scope.json",
-        "standards_interpretation": "data/services/shortstay-medical/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/shortstay-medical/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/shortstay-medical/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -957,6 +1006,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [
@@ -996,7 +1052,8 @@
         "ordinance37": "data/services/specific-facility/ordinance37-scope.json",
         "remuneration": "data/services/specific-facility/remuneration-scope.json",
         "unit_price": "data/services/specific-facility/unit-price-scope.json",
-        "standards_interpretation": "data/services/specific-facility/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/specific-facility/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/specific-facility/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1030,6 +1087,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [
@@ -1069,7 +1133,8 @@
         "ordinance37": "data/services/welfare-equipment-rental/ordinance37-scope.json",
         "remuneration": "data/services/welfare-equipment-rental/remuneration-scope.json",
         "unit_price": "data/services/welfare-equipment-rental/unit-price-scope.json",
-        "standards_interpretation": "data/services/welfare-equipment-rental/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/welfare-equipment-rental/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/welfare-equipment-rental/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1103,6 +1168,13 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [
@@ -1217,7 +1289,8 @@
         "remuneration": "data/services/dementia-dayservice/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/dementia-dayservice/shared-corpus-scope.json",
         "unit_price": "data/services/dementia-dayservice/shared-corpus-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/dementia-dayservice/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1257,6 +1330,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1295,7 +1375,8 @@
         "remuneration": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
         "unit_price": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/small-scale-multifunctional/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1335,6 +1416,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1373,7 +1461,8 @@
         "remuneration": "data/services/dementia-group-home/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/dementia-group-home/shared-corpus-scope.json",
         "unit_price": "data/services/dementia-group-home/shared-corpus-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/dementia-group-home/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1413,6 +1502,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1451,7 +1547,8 @@
         "remuneration": "data/services/community-specific-facility/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/community-specific-facility/shared-corpus-scope.json",
         "unit_price": "data/services/community-specific-facility/shared-corpus-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/community-specific-facility/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1491,6 +1588,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1529,7 +1633,8 @@
         "remuneration": "data/services/community-elderly-facility/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/community-elderly-facility/shared-corpus-scope.json",
         "unit_price": "data/services/community-elderly-facility/shared-corpus-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/community-elderly-facility/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1569,6 +1674,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1607,7 +1719,8 @@
         "remuneration": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
         "delegated_remuneration_criteria": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
         "unit_price": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/nursing-small-scale-multifunctional/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1647,6 +1760,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1685,7 +1805,8 @@
         "remuneration": "data/services/elderly-welfare-facility/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/elderly-welfare-facility/delegated-remuneration-criteria-scope.json",
         "unit_price_regional_classification": "data/services/elderly-welfare-facility/unit-price-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/elderly-welfare-facility/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1727,6 +1848,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1765,7 +1893,8 @@
         "remuneration": "data/services/elderly-health-facility/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/elderly-health-facility/delegated-remuneration-criteria-scope.json",
         "unit_price_regional_classification": "data/services/elderly-health-facility/unit-price-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/elderly-health-facility/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1807,6 +1936,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1845,7 +1981,8 @@
         "remuneration": "data/services/care-medical-institution/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/care-medical-institution/delegated-remuneration-criteria-scope.json",
         "unit_price_regional_classification": "data/services/care-medical-institution/unit-price-scope.json",
-        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json"
+        "standards_interpretation": "data/shared/standards-interpretation/remaining-service-scopes.json",
+        "fee_guidance": "data/services/care-medical-institution/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1887,6 +2024,13 @@
           "publication": "NOT_ESTABLISHED",
           "route_exposure": "BLOCKED",
           "note": "公式一次資料の通知識別子とサービス別locatorを共有索引へ接続。本文は複製せず、item-body verification/currentness/human review/publication/routeは昇格しない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "令和6年度改定の厚生労働省公式新旧対照資料における明示sectionを共有コーパス参照として収載。比較資料限定であり現行統合本文ではない。item-body verification、currentness、relation verification、human review、publication、routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1925,7 +2069,8 @@
         "remuneration": "data/services/preventive-homebath/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-homebath/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-homebath/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-homebath/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-homebath/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-homebath/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -1959,6 +2104,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -1997,7 +2150,8 @@
         "remuneration": "data/services/preventive-homenursing/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-homenursing/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-homenursing/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-homenursing/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-homenursing/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-homenursing/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -2031,6 +2185,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -2069,7 +2231,8 @@
         "remuneration": "data/services/preventive-homerehab/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-homerehab/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-homerehab/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-homerehab/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-homerehab/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-homerehab/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -2103,6 +2266,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -2141,7 +2312,8 @@
         "remuneration": "data/services/preventive-homecaremanagement/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-homecaremanagement/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-homecaremanagement/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-homecaremanagement/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-homecaremanagement/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-homecaremanagement/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -2175,6 +2347,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -2213,7 +2393,8 @@
         "remuneration": "data/services/preventive-dayrehab/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-dayrehab/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-dayrehab/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-dayrehab/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-dayrehab/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-dayrehab/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -2247,6 +2428,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -2285,7 +2474,8 @@
         "remuneration": "data/services/preventive-shortstay-life/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-shortstay-life/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-shortstay-life/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-shortstay-life/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-shortstay-life/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-shortstay-life/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -2319,6 +2509,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -2357,7 +2555,8 @@
         "remuneration": "data/services/preventive-shortstay-medical/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-shortstay-medical/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-shortstay-medical/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-shortstay-medical/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-shortstay-medical/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-shortstay-medical/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -2391,6 +2590,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -2429,7 +2636,8 @@
         "remuneration": "data/services/preventive-specific-facility/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-specific-facility/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-specific-facility/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-specific-facility/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-specific-facility/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-specific-facility/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -2463,6 +2671,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
@@ -2501,7 +2717,8 @@
         "remuneration": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
         "unit_price_regional_classification": "data/services/preventive-welfare-equipment-rental/remuneration-scope.json",
-        "standards_interpretation": "data/services/preventive-welfare-equipment-rental/standards-interpretation-scope.json"
+        "standards_interpretation": "data/services/preventive-welfare-equipment-rental/standards-interpretation-scope.json",
+        "fee_guidance": "data/services/preventive-welfare-equipment-rental/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -2535,6 +2752,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された当該介護予防サービスsectionを共有Fee Guidance corpusから参照。比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": [],
