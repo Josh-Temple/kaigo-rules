@@ -40,7 +40,7 @@
   },
   "ingestion_layers": {
     "remuneration": {
-      "status": "NOT_APPLICABLE_PURCHASE_BENEFIT_OUTSIDE_REMUNERATION_NOTIFICATION_LANE",
+      "status": "NOT_APPLICABLE",
       "source_family": "remuneration_notification",
       "applicability": "NOT_APPLICABLE",
       "basis": "介護保険法第44条の居宅介護福祉用具購入費であり、告示第19号の居宅サービス費laneには接続しない。",
