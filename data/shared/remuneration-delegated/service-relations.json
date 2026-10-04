@@ -227,6 +227,26 @@
           "independently_verified_delegation_edge_ids": [
             "criteria95-dayservice24-incorporates-shared4"
           ]
+        },
+        {
+          "canonical_node_id": "notice95.item.51-3-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.51-8-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -313,6 +333,16 @@
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.1",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -378,6 +408,16 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
@@ -487,6 +527,26 @@
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -575,15 +635,54 @@
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.4-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
     {
       "service_id": "homecaremanagement",
       "relation_verification_state": "NOT_ESTABLISHED",
-      "applicability_state": "UNKNOWN",
-      "adjudication_ref": "data/shared/remuneration-delegated/service-applicability-adjudications.json#homecaremanagement",
-      "relations": []
+      "relations": [
+        {
+          "canonical_node_id": "notice96.item.4-4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.4-5",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.4-6",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        }
+      ]
     },
     {
       "service_id": "dayrehab",
@@ -799,6 +898,36 @@
         },
         {
           "canonical_node_id": "notice95.item.3-5",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.34-3-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.34-3-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.34-3-4",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
@@ -1028,6 +1157,26 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.51-3-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.51-3-4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.51-4",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
@@ -1192,6 +1341,16 @@
               "notice95.item.45"
             ],
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.26",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
         }
@@ -1390,6 +1549,16 @@
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.46",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -1403,7 +1572,7 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "referenced_by_canonical_node_ids": [
-              "notice95.item.129-5"
+              "notice95.item.129-5-2"
             ],
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
           },
@@ -1425,6 +1594,26 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.129-5-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.87",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
@@ -1500,6 +1689,36 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.39-3-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.39-3-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.39-3-4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.39-6",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
@@ -1535,6 +1754,26 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.19-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.21-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
@@ -1601,6 +1840,26 @@
         },
         {
           "canonical_node_id": "notice95.item.42-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.42-2-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.42-2-3",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
@@ -1688,6 +1947,16 @@
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.22",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -1711,6 +1980,16 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.25",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
@@ -1829,6 +2108,26 @@
               "notice95.item.53"
             ],
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.51-12-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.51-12-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
         },
@@ -2081,7 +2380,37 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.58-4-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.58-4-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.58-5",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.58-5-2",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
@@ -2341,6 +2670,28 @@
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.22",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice96.item.35"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.35",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -2435,6 +2786,16 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.58-5-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.63",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
@@ -2455,7 +2816,37 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.63-2-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.63-2-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.63-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.63-3-2",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
@@ -3001,6 +3392,16 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.58-5-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.64",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
@@ -3155,7 +3556,37 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.86-2-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.86-2-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.86-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.86-3-2",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
@@ -3210,6 +3641,134 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.41",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice96.item.50"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.44",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice96.item.53"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.44-2",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice96.item.54-2"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.45",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice96.item.54"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.47",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.48",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.50",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.51",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.53",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.54",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.54-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.54-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
@@ -3283,6 +3842,16 @@
               "notice95.item.94"
             ],
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.58-5-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
         },
@@ -3411,6 +3980,26 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.89-2-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.89-2-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.89-3",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
@@ -3529,6 +4118,68 @@
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.17",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice96.item.59"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.55",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.56",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.59",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.60",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.61-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -3567,6 +4218,26 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.100-2-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.100-2-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.100-3",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
@@ -3588,6 +4259,16 @@
         },
         {
           "canonical_node_id": "notice95.item.100-5",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.100-5-2",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
@@ -3654,7 +4335,7 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "referenced_by_canonical_node_ids": [
-              "notice95.item.100-5"
+              "notice95.item.100-5-2"
             ],
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
           },
@@ -3669,6 +4350,16 @@
               "notice95.item.100-7"
             ],
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.58-5-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
         },
@@ -3797,6 +4488,36 @@
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.68",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.68-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.68-7",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -3875,6 +4596,16 @@
               "notice95.item.101"
             ],
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.69",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
         }
@@ -4011,6 +4742,16 @@
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.70",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
@@ -4018,6 +4759,18 @@
       "service_id": "preventive-homerehab",
       "relation_verification_state": "NOT_ESTABLISHED",
       "relations": [
+        {
+          "canonical_node_id": "notice95.item.10-2",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice95.item.106-3-2"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
         {
           "canonical_node_id": "notice95.item.105-3",
           "relation": "DIRECT_APPLICABILITY",
@@ -4059,6 +4812,16 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.106-3-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.12-2",
           "relation": "INCORPORATED_BY_REFERENCE",
           "verification_state": "NOT_ESTABLISHED",
@@ -4081,15 +4844,78 @@
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
           },
           "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.71",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
         }
       ]
     },
     {
       "service_id": "preventive-homecaremanagement",
       "relation_verification_state": "NOT_ESTABLISHED",
-      "applicability_state": "UNKNOWN",
-      "adjudication_ref": "data/shared/remuneration-delegated/service-applicability-adjudications.json#preventive-homecaremanagement",
-      "relations": []
+      "relations": [
+        {
+          "canonical_node_id": "notice96.item.4-5",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice96.item.71-2-2"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.4-6",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "referenced_by_canonical_node_ids": [
+              "notice96.item.71-2-3"
+            ],
+            "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.71-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.71-2-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.71-2-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        }
+      ]
     },
     {
       "service_id": "preventive-dayrehab",
@@ -4263,6 +5089,36 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "source_id": "mhlw-fee-notice27-base",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.114-3-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.114-3-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.114-3-4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
@@ -4444,6 +5300,36 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.117-3-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.117-3-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.117-3-4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.117-6",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
@@ -4579,6 +5465,26 @@
         },
         {
           "canonical_node_id": "notice95.item.119-4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.119-4-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.119-4-3",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
@@ -4732,9 +5638,38 @@
     {
       "service_id": "preventive-welfare-equipment-rental",
       "relation_verification_state": "NOT_ESTABLISHED",
-      "applicability_state": "UNKNOWN",
-      "adjudication_ref": "data/shared/remuneration-delegated/service-applicability-adjudications.json#preventive-welfare-equipment-rental",
-      "relations": []
+      "relations": [
+        {
+          "canonical_node_id": "notice95.item.121-3-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.121-3-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice96.item.83",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-facility-criteria96-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        }
+      ]
     },
     {
       "service_id": "specific-preventive-welfare-equipment-sale",
@@ -4753,6 +5688,26 @@
           "verification_state": "NOT_ESTABLISHED",
           "basis": {
             "source_id": "mhlw-fee-notice27-base",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.121-3-4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.121-3-5",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
             "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
@@ -5042,6 +5997,26 @@
           "independently_verified_delegation_edge_ids": []
         },
         {
+          "canonical_node_id": "notice95.item.127-4-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.127-4-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
           "canonical_node_id": "notice95.item.127-5",
           "relation": "DIRECT_APPLICABILITY",
           "verification_state": "NOT_ESTABLISHED",
@@ -5164,6 +6139,16 @@
               "notice95.item.127-5"
             ],
             "evidence_kind": "EXPLICIT_INCORPORATION_BY_REFERENCE"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.58-5-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "source_id": "mhlw-fee-criteria95-current",
+            "evidence_kind": "OFFICIAL_HEADING_EXPLICIT_SCOPE"
           },
           "independently_verified_delegation_edge_ids": []
         },
