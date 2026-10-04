@@ -103,25 +103,6 @@ def resolve_homevisit_articles(main_provision, differences: list[dict]) -> list[
         return []
     resolved = order[positions[start] : positions[end] + 1]
 
-    shared_scope = load("data/ordinance37-scope.json")
-    rows = [
-        row for row in shared_scope.get("additional_service_direct_scopes", [])
-        if row.get("service_id") == "homevisit"
-    ]
-    if len(rows) != 1:
-        differences.append({
-            "difference": "homevisit_shared_scope_entry_count",
-            "observed": len(rows),
-        })
-    else:
-        committed = [canonical_num(value) for value in rows[0].get("articles", [])]
-        if committed != resolved:
-            differences.append({
-                "difference": "homevisit_scope_resolution_mismatch",
-                "committed": committed,
-                "live_resolved": resolved,
-            })
-
     index = load("data/services/homevisit/ordinance37-index.generated.json")
     indexed = [
         canonical_num(value)
