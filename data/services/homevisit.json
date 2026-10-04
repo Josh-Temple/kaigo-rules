@@ -15,7 +15,8 @@
     "ordinance37": "data/services/homevisit/ordinance37-scope.json",
     "rouki25": "data/services/homevisit/rouki25-scope.json",
     "remuneration": "data/services/homevisit/remuneration-scope.json",
-    "unit_price": "data/services/homevisit/unit-price-scope.json"
+    "unit_price": "data/services/homevisit/unit-price-scope.json",
+    "fee_guidance": "data/services/homevisit/fee-guidance-scope.json"
   },
   "verification_layer_ids": [
     "rouki25-homevisit",
@@ -32,7 +33,8 @@
     "ordinance37": "data/services/homevisit/ordinance37-index.generated.json",
     "rouki25": "data/services/homevisit/rouki25-historical.generated.json",
     "remuneration": "data/services/homevisit/remuneration-index.json",
-    "unit_price": "data/unit-price-homevisit.json"
+    "unit_price": "data/unit-price-homevisit.json",
+    "fee_guidance": "data/services/homevisit/fee-guidance-scope.json"
   },
   "ingestion_layers": {
     "care_insurance_act": {
@@ -67,6 +69,12 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "厚生労働省告示第93号の現行統合表示から訪問介護の一級地〜七級地・その他の8サービス行を収載。地域割当は共有コーパスを参照し、独立item-body verification/currentness/human review/publication/routeは未昇格。"
+    },
+    "fee_guidance": {
+      "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+      "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
     }
   }
 }

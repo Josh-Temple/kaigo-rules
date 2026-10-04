@@ -253,6 +253,10 @@ def build_cell(
         if delegated_applicability and delegated_applicability.get("ingestion_state"):
             raw_ingestion = [str(delegated_applicability["ingestion_state"])]
 
+    fee_guidance_applicability = None
+    if family["id"] == "fee_calculation_guidance":
+        fee_guidance_applicability = shared_context["fee_guidance_applicability"].get(service_id)
+
     corpus_id = None
     delegated_manifest = shared_context.get("delegated_manifest") or {}
     if family["id"] == "delegated_remuneration_criteria" and delegated_manifest:
@@ -262,6 +266,15 @@ def build_cell(
         corpus_evidence = [
             "data/shared/remuneration-delegated/manifest.json",
             str(delegated_manifest.get("canonical_node_store")),
+        ]
+    elif family["id"] == "fee_calculation_guidance" and shared_context.get("fee_guidance_manifest"):
+        fee_manifest = shared_context["fee_guidance_manifest"]
+        corpus_state = "AVAILABLE"
+        corpus_kind = "SHARED"
+        corpus_id = fee_manifest.get("corpus_id")
+        corpus_evidence = [
+            "data/shared/fee-guidance/manifest.json",
+            str(fee_manifest.get("canonical_node_store")),
         ]
     elif family["id"] == "governing_standards_ordinance" and mapped_standards_corpus:
         corpus_state = "AVAILABLE"
@@ -343,6 +356,11 @@ def build_cell(
             if delegated_applicability
             else "NOT_INGESTED"
         )
+
+    if family["id"] == "fee_calculation_guidance" and fee_guidance_applicability:
+        declared_state = fee_guidance_applicability.get("ingestion_state")
+        if declared_state:
+            ingestion_state = str(declared_state)
 
     content_raw = raw_values(layers, ("content_verification", "status"))
     currentness_raw = raw_values(layers, ("currentness", "status"))
@@ -558,6 +576,12 @@ def build() -> dict:
     delegated_manifest = load("data/shared/remuneration-delegated/manifest.json")
     delegated_applicability_data = load("data/shared/remuneration-delegated/service-applicability.json")
     delegated_relations_data = load("data/shared/remuneration-delegated/service-relations.json")
+    fee_guidance_manifest_path = ROOT / "data/shared/fee-guidance/manifest.json"
+    fee_guidance_manifest = load("data/shared/fee-guidance/manifest.json") if fee_guidance_manifest_path.exists() else None
+    fee_guidance_applicability_data = (
+        load(str(fee_guidance_manifest.get("service_applicability")))
+        if fee_guidance_manifest else {"services": []}
+    )
     shared_context = {
         "standards_map": {row["service_id"]: row["corpus_id"] for row in standards_map_data.get("relations", [])},
         "standards_scope_states": {row["service_id"]: row for row in standards_relations.get("service_scope_states", [])},
@@ -578,6 +602,11 @@ def build() -> dict:
             for row in unit_price_index.get("service_mappings", [])
         },
         "delegated_manifest": delegated_manifest,
+        "fee_guidance_manifest": fee_guidance_manifest,
+        "fee_guidance_applicability": {
+            row["service_id"]: row
+            for row in fee_guidance_applicability_data.get("services", [])
+        },
         "delegated_applicability": {
             row["service_id"]: row
             for row in delegated_applicability_data.get("services", [])

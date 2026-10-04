@@ -14,7 +14,8 @@
     "care_insurance_act": "data/services/homenursing/care-insurance-act-scope.json",
     "ordinance37": "data/services/homenursing/ordinance37-scope.json",
     "remuneration": "data/services/homenursing/remuneration-scope.json",
-    "unit_price": "data/services/homenursing/unit-price-scope.json"
+    "unit_price": "data/services/homenursing/unit-price-scope.json",
+    "fee_guidance": "data/services/homenursing/fee-guidance-scope.json"
   },
   "verification_layer_ids": [
     "rouki25-homenursing",
@@ -51,11 +52,18 @@
       "currentness": "NOT_ESTABLISHED",
       "human_review": "NOT_REVIEWED",
       "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+    },
+    "fee_guidance": {
+      "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+      "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED"
     }
   },
   "ingestion_indexes": {
     "rouki25": "data/services/homenursing/rouki25-historical.generated.json",
     "remuneration": "data/services/homenursing/remuneration-index.json",
-    "care_insurance_act": "data/services/homenursing/care-insurance-act-index.json"
+    "care_insurance_act": "data/services/homenursing/care-insurance-act-index.json",
+    "fee_guidance": "data/services/homenursing/fee-guidance-scope.json"
   }
 }
