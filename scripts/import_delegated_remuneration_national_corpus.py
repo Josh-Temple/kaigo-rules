@@ -56,25 +56,48 @@ KANJI_UNITS = {"十": 10, "百": 100, "千": 1000}
 
 
 class VisibleTextParser(HTMLParser):
+    BLOCK_TAGS = {
+        "address", "article", "aside", "blockquote", "br", "dd", "div", "dl",
+        "dt", "figcaption", "figure", "footer", "form", "h1", "h2", "h3",
+        "h4", "h5", "h6", "header", "hr", "li", "main", "nav", "ol", "p",
+        "section", "table", "tbody", "td", "tfoot", "th", "thead", "tr", "ul",
+    }
+
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.fragments: list[str] = []
+        self.buffer: list[str] = []
         self.suppressed_depth = 0
 
+    def flush(self) -> None:
+        if self.suppressed_depth:
+            return
+        value = clean("".join(self.buffer))
+        self.buffer = []
+        if value:
+            self.fragments.append(value)
+
     def handle_starttag(self, tag: str, attrs) -> None:
-        if tag.lower() in {"script", "style", "rt", "rp"}:
+        lowered = tag.lower()
+        if lowered in {"script", "style", "rt", "rp"}:
             self.suppressed_depth += 1
+            return
+        if not self.suppressed_depth and lowered in self.BLOCK_TAGS:
+            self.flush()
 
     def handle_endtag(self, tag: str) -> None:
-        if tag.lower() in {"script", "style", "rt", "rp"} and self.suppressed_depth:
-            self.suppressed_depth -= 1
+        lowered = tag.lower()
+        if lowered in {"script", "style", "rt", "rp"}:
+            if self.suppressed_depth:
+                self.suppressed_depth -= 1
+            return
+        if not self.suppressed_depth and lowered in self.BLOCK_TAGS:
+            self.flush()
 
     def handle_data(self, data: str) -> None:
         if self.suppressed_depth:
             return
-        value = clean(data)
-        if value:
-            self.fragments.append(value)
+        self.buffer.append(data)
 
 
 def clean(value: str) -> str:
@@ -115,6 +138,7 @@ def visible_fragments(html: str) -> list[str]:
     parser = VisibleTextParser()
     parser.feed(html)
     parser.close()
+    parser.flush()
     return parser.fragments
 
 
