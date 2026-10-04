@@ -17,7 +17,8 @@
     "unit_price": "data/services/homenursing/unit-price-scope.json"
   },
   "verification_layer_ids": [
-    "rouki25-homenursing"
+    "rouki25-homenursing",
+    "ordinance37-existing-services"
   ],
   "publication_gate": {
     "public_routes_enabled": false,

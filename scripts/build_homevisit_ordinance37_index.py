@@ -23,28 +23,37 @@ def load(path: Path):
 
 
 def build() -> dict:
-    shared_scope = load(SHARED_SCOPE)
     service_scope = load(SERVICE_DIR / "ordinance37-scope.json")
     nodes = load(DATA / "ordinance37-nodes.json")
     meta = load(DATA / "ordinance37-meta.json")
 
-    entries = [
-        item
-        for item in shared_scope.get("additional_service_direct_scopes", [])
-        if item.get("service_id") == "homevisit"
-    ]
-    if len(entries) != 1:
-        raise ValueError(
-            "shared Ordinance 37 scope must contain exactly one homevisit direct scope"
-        )
+    article_range = service_scope.get("direct_scope", {}).get("article_range", {})
+    start = str(article_range.get("start", ""))
+    end = str(article_range.get("end", ""))
+    if not start or not end or article_range.get("include_inserted_articles") is not True:
+        raise ValueError("homevisit service scope must declare an inserted-article range")
 
-    entry = entries[0]
-    article_numbers = [str(value) for value in entry.get("articles", [])]
+    def article_key(value: str) -> tuple[int, ...]:
+        try:
+            return tuple(int(part) for part in value.split("-"))
+        except ValueError as exc:
+            raise ValueError(f"homevisit non-numeric article number: {value}") from exc
+
+    start_key = article_key(start)
+    end_key = article_key(end)
+    article_numbers = sorted(
+        {
+            str(row.get("article_num"))
+            for row in nodes
+            if row.get("node_type") == "article"
+            and row.get("path")
+            and row["path"][0] == "第二章 訪問介護"
+            and start_key <= article_key(str(row.get("article_num"))) <= end_key
+        },
+        key=article_key,
+    )
     if not article_numbers:
-        raise ValueError("homevisit direct article list is empty")
-
-    if entry.get("source_scope") != "data/services/homevisit/ordinance37-scope.json":
-        raise ValueError("homevisit direct scope source reference changed")
+        raise ValueError("homevisit direct article range resolved to no shared-corpus articles")
 
     selected = [
         row for row in nodes if str(row.get("article_num")) in set(article_numbers)
@@ -93,7 +102,7 @@ def build() -> dict:
         },
         "scope_sources": {
             "service_scope": "data/services/homevisit/ordinance37-scope.json",
-            "shared_corpus_scope": "data/ordinance37-scope.json",
+            "shared_corpus_nodes": "data/ordinance37-nodes.json",
         },
         "selectors": {
             "chapter": service_scope["chapter"],

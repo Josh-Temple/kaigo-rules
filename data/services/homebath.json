@@ -16,7 +16,8 @@
     "unit_price": "data/services/homebath/unit-price-scope.json"
   },
   "verification_layer_ids": [
-    "rouki25-homebath"
+    "rouki25-homebath",
+    "ordinance37-existing-services"
   ],
   "publication_gate": {
     "public_routes_enabled": false,

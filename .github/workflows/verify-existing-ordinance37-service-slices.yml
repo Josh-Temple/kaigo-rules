@@ -1,0 +1,98 @@
+name: Verify existing Ordinance 37 service slices
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/ordinance37-nodes.json"
+      - "data/ordinance37-relations.json"
+      - "data/ordinance37-meta.json"
+      - "data/ordinance37-scope.json"
+      - "data/services/**/ordinance37-scope.json"
+      - "data/services/homevisit/ordinance37-index.generated.json"
+      - "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+      - "data/verification/layers/ordinance37-existing-services.json"
+      - "data/services/verification-layers.json"
+      - "data/services/homevisit.json"
+      - "data/services/homebath.json"
+      - "data/services/homenursing.json"
+      - "data/services/homerehab.json"
+      - "data/services/homecaremanagement.json"
+      - "data/services/shortstay-life.json"
+      - "data/services/shortstay-medical.json"
+      - "data/services/specific-facility.json"
+      - "data/services/welfare-equipment-rental.json"
+      - "data/services/specific-welfare-equipment-sale.json"
+      - "scripts/build_database_coverage_matrix.py"
+      - "scripts/build_homevisit_ordinance37_index.py"
+      - "scripts/validate_existing_ordinance37_service_slices_audit.py"
+      - "scripts/verify_existing_ordinance37_service_slices.py"
+      - ".github/workflows/verify-existing-ordinance37-service-slices.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Check corrected homevisit index
+        run: python scripts/build_homevisit_ordinance37_index.py --check
+      - name: Independently reparse live e-Gov service slices
+        run: |
+          python scripts/verify_existing_ordinance37_service_slices.py \
+            --report existing-ordinance37-service-slices-verification.json
+      - name: Validate pinned audit evidence
+        run: python scripts/validate_existing_ordinance37_service_slices_audit.py
+      - name: Project registry and coverage without committing global generated artifacts
+        run: |
+          python scripts/build_verification_registry.py
+          python scripts/build_database_coverage_matrix.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          targets = {
+              "homevisit", "homebath", "homenursing", "homerehab",
+              "homecaremanagement", "shortstay-life", "shortstay-medical",
+              "specific-facility", "welfare-equipment-rental",
+              "specific-welfare-equipment-sale",
+          }
+          data = json.loads(Path("data/database-coverage-matrix.generated.json").read_text())
+          rows = []
+          for service in data["services"]:
+              if service["service_id"] not in targets:
+                  continue
+              family = next(
+                  item for item in service["source_families"]
+                  if item["source_family"] == "governing_standards_ordinance"
+              )
+              rows.append((service["service_id"], family))
+          assert {sid for sid, _ in rows} == targets
+          for sid, row in sorted(rows):
+              print(
+                  sid,
+                  "item_body=" + row["item_body_verification"]["state"],
+                  "currentness=" + row["currentness"]["state"],
+              )
+          nonpass = [sid for sid, row in rows if row["item_body_verification"]["state"] != "PASS"]
+          assert not nonpass, f"projected item-body verification not PASS: {nonpass}"
+          currentness = {sid: row["currentness"]["state"] for sid, row in rows}
+          assert all(state != "PASS" for state in currentness.values()), (
+              "item-body verification must not auto-promote currentness: " + repr(currentness)
+          )
+          print("projected target item-body PASS: 10/10")
+          print("projected currentness remains separately non-PASS:", currentness)
+          PY
+      - name: Upload verification report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: existing-ordinance37-service-slices-verification
+          path: existing-ordinance37-service-slices-verification.json
+          if-no-files-found: warn
+          retention-days: 90

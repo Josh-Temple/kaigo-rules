@@ -48,8 +48,8 @@
   "selection_policy": "固定した条番号列挙ではなく章内の範囲を正本とし、後から中間条が追加された場合もscope候補から脱落させない。実取込時は現行法令XMLの章構造と照合してfail closedとする。",
   "evidence": {
     "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
-    "checked_on": "2026-09-26",
-    "observed_fact": "第二章の通常指定訪問介護scopeについて、現行e-Gov XMLから第4条〜第39条（挿入条を含み、共生型・基準該当を除く）38条を共有コーパスへ取得した。"
+    "checked_on": "2026-10-04",
+    "observed_fact": "第二章の通常指定訪問介護scopeについて、現行e-Gov XMLから第4条〜第39条（挿入条を含み、共生型・基準該当を除く）41条を確認した。第29条の2・第34条の2・第36条の2を既存のservice scope列挙漏れとして補正する。"
   },
   "automatic_verification_promotion_allowed": false
 }

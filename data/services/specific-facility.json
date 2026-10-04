@@ -32,7 +32,9 @@
     "unit_price": "data/services/specific-facility/unit-price-scope.json",
     "standards_interpretation": "data/services/specific-facility/standards-interpretation-scope.json"
   },
-  "verification_layer_ids": [],
+  "verification_layer_ids": [
+    "ordinance37-existing-services"
+  ],
   "publication_gate": {
     "public_routes_enabled": false,
     "content_ingested": false,
