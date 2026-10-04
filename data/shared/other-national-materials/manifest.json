@@ -1,0 +1,93 @@
+{
+  "format_version": 1,
+  "source_family": "other_national_manuals_forms",
+  "foundation_state": "DISCOVERY_ONLY_NOT_PROJECTED",
+  "purpose": "Define and inventory nationwide official manuals/forms that are materially relevant to long-term-care operations, applications, notifications, or reporting and are not already covered by an existing source family.",
+  "discovery_context": {
+    "observed_on": "2026-10-04",
+    "main_sha": "754bc7b223db4aa35675c840f1a0032ca71eeb96",
+    "coverage_matrix_blob_sha": "4d44fee5c8ac4be25211004fd72b7693eaa5418b",
+    "baseline": {
+      "service_count": 39,
+      "corpus_availability": {"NOT_AVAILABLE": 39},
+      "service_scope": {"SCOPE_NOT_DEFINED": 39},
+      "ingestion": {"NOT_INGESTED": 39},
+      "item_body_verification": {"NOT_ESTABLISHED": 39},
+      "currentness": {"NOT_ESTABLISHED": 39},
+      "relation_verification": {"NOT_ESTABLISHED": 39},
+      "human_review": {"NOT_REVIEWED": 39}
+    }
+  },
+  "existing_source_families": [
+    "care_insurance_act",
+    "governing_standards_ordinance",
+    "standards_interpretation_notice",
+    "remuneration_notification",
+    "delegated_remuneration_criteria",
+    "fee_calculation_guidance",
+    "unit_price_regional_classification",
+    "national_qa"
+  ],
+  "inclusion_criteria": [
+    {
+      "id": "official_national_primary_source",
+      "required": true,
+      "description": "Issued or officially published by a national authority, principally the Ministry of Health, Labour and Welfare or an MHLW-operated official service."
+    },
+    {
+      "id": "material_operational_relevance",
+      "required": true,
+      "description": "Materially affects operation, application, notification, reporting, or other practical administration of long-term-care insurance services."
+    },
+    {
+      "id": "not_already_covered",
+      "required": true,
+      "description": "Not substantively contained in one of the eight existing source families."
+    },
+    {
+      "id": "not_local_only",
+      "required": true,
+      "description": "Not a prefectural or municipal local-only rule, form, or guide."
+    },
+    {
+      "id": "not_private_commentary",
+      "required": true,
+      "description": "Not private-sector commentary, a summary site, or a search-result-only reference."
+    }
+  ],
+  "classification_values": [
+    "ACCEPTED_OTHER_NATIONAL_MATERIAL",
+    "DUPLICATE_OF_EXISTING_SOURCE_FAMILY",
+    "OUT_OF_SCOPE",
+    "LOCAL_ONLY",
+    "SUPERSEDED_OR_HISTORICAL_ONLY",
+    "DISCOVERED_BUT_CURRENTNESS_NOT_ESTABLISHED",
+    "UNKNOWN"
+  ],
+  "registry": "data/shared/other-national-materials/source-registry.json",
+  "classification_audit": "data/shared/other-national-materials/classification-audit.json",
+  "policies": {
+    "service_body_duplication_allowed": false,
+    "service_applicability_inference_allowed": false,
+    "discovery_implies_corpus_available": false,
+    "discovery_implies_scope_defined": false,
+    "discovery_implies_ingested": false,
+    "automatic_verification_promotion_allowed": false,
+    "automatic_currentness_promotion_allowed": false,
+    "automatic_human_review_promotion_allowed": false,
+    "automatic_publication_promotion_allowed": false,
+    "automatic_route_promotion_allowed": false,
+    "global_coverage_matrix_regeneration_by_worker_d_allowed": false
+  },
+  "assurance": {
+    "corpus_availability": "NOT_ESTABLISHED",
+    "service_scope": "NOT_ESTABLISHED",
+    "ingestion": "NOT_ESTABLISHED",
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED"
+  }
+}
