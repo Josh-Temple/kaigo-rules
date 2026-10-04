@@ -59,7 +59,7 @@ class SharedFeeGuidanceTests(unittest.TestCase):
             row = rows[service_id]
             self.assertEqual(row['corpus_availability']['kind'], 'SHARED')
             self.assertEqual(row['service_scope']['state'], 'SCOPE_DEFINED')
-            self.assertEqual(row['ingestion']['state'], 'INGESTED_PARTIAL')
+            self.assertEqual(row['ingestion']['state'], 'PARTIAL')
             self.assertEqual(row['item_body_verification']['state'], 'NOT_ESTABLISHED')
             self.assertEqual(row['currentness']['state'], 'NOT_ESTABLISHED')
             self.assertEqual(row['human_review']['state'], 'NOT_REVIEWED')
