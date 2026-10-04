@@ -1462,8 +1462,8 @@
   },
   "integration_summary": {
     "schema_version": 1,
-    "worker_pr": 280,
-    "worker_head_sha": "b5e0040feef8cf75b2fb85767991e45f970238f7",
+    "worker_pr": 352,
+    "worker_head_sha": "6bb0312622af70914bc1630c97d3b5792d3312ae",
     "audit_receipt": "data/verification/standards-interpretation-item-body/preventive-support.json",
     "verifier": "scripts/verify_preventive_support_standards_interpretation_item_body.py",
     "verification_status": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
@@ -1537,6 +1537,8 @@
       "publication_promoted": false,
       "route_promoted": false,
       "package_blocker_cleared": false
-    }
+    },
+    "worker_pr": 352,
+    "substantive_head_sha": "6bb0312622af70914bc1630c97d3b5792d3312ae"
   }
 }
