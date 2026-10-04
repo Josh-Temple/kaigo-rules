@@ -3,16 +3,16 @@
   "service_id": "preventive-support",
   "source_family": "preventive_support_standards_interpretation",
   "audit_kind": "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION",
-  "audit_result": "PARTIAL_WITH_GAPS",
-  "base_main_sha": "c8b53952b68f2790b86ca7beca4bcd813d8a17fc",
+  "audit_result": "PASS_WITH_ITEM_LEVEL_EVIDENCE",
+  "base_main_sha": "8094361e28c25c134b7195abf12977e904c19162",
   "scope_boundary": "EXISTING_STAGING_TASKS_ONLY",
   "coverage": {
     "task_total": 34,
     "structured_text_raw_entries": 34,
     "numbered_child_units_checked": 55,
     "verdicts": {
-      "PASS": 33,
-      "PARTIAL": 1,
+      "PASS": 34,
+      "PARTIAL": 0,
       "GAP": 0,
       "FAIL": 0
     }
@@ -74,6 +74,13 @@
       "scope_role": "ADDITIONAL_OFFICIAL_NOTICE_BODY_EVIDENCE",
       "audit_role": "DIRECT_ITEM_BODY_EVIDENCE_NOT_CURRENTNESS_PROOF",
       "independently_accessed_for_this_audit": true
+    },
+    {
+      "source_manifest_id": "r3-records-direct-notice-evidence",
+      "url": "https://www.mhlw.go.jp/content/12404000/000772407.pdf",
+      "scope_role": "HISTORICAL_DIRECT_NOTICE_BODY_EVIDENCE",
+      "audit_role": "DIRECT_HISTORICAL_NOTICE_BODY_EVIDENCE_VERSION_SEPARATED_NOT_CURRENTNESS_PROOF",
+      "independently_accessed_for_this_audit": true
     }
   ],
   "source_inventory_receipt": {
@@ -91,15 +98,14 @@
     "task_type": "CONTRACT_PRECHECK",
     "observed_status": "BLOCKED",
     "separation_rule": "NOTICE_ITEM_BODY_VERIFICATION_DOES_NOT_CLEAR_PACKAGE_BLOCKER",
-    "note": "Queue行はBLOCKEDのままで、Resultは旧main時点のservice未登録・service-specific scope不在を主要blockerとしている。Repository fresh readではservice登録・scope・manifest-complete source inventoryは存在するため、未登録・scope不在はstale reason。currentness未確立、human review未実施、item-body PARTIAL、public route無効は現在も別blockerとして残る。Queue本文自体は変更していない。",
+    "note": "PACKAGE / CONTRACT_PRECHECK blockerはNOTICE item-bodyと分離して保持する。Repository fresh readではservice登録・scope・source inventoryが存在し、今回B016 item-bodyも版分離evidenceでPASSまで閉じた。一方、currentness未確立、human review未実施、public route無効は引き続き別blockerであり、Queue本文自体は変更しない。",
     "fresh_queue_read": "2026-10-03",
-    "repository_reprecheck_main_sha": "ec96394ae37d22d5222b97d3b401a0458e6aea7a",
+    "repository_reprecheck_main_sha": "8094361e28c25c134b7195abf12977e904c19162",
     "stale_reasons_cleared_in_repository": [
       "service_not_registered",
       "scope_evidence_missing"
     ],
     "current_blockers": [
-      "item_body_verification_partial",
       "currentness_not_established",
       "human_review_not_reviewed",
       "public_route_disabled"
@@ -707,15 +713,15 @@
       "staging_id": "preventive-support.notice.016",
       "path": "第二/3/(25)",
       "heading": "記録の整備",
-      "verdict": "PARTIAL",
+      "verdict": "PASS",
       "numbered_child_units_checked": 1,
       "checked_child_locators": [
         "第二/3/(25)"
       ],
       "source_url_check": "PASS",
       "source_locator_check": "PASS",
-      "content_summary_check": "PARTIAL",
-      "evidence_mode": "R6_OMITTED_CURRENT_FRAGMENT_WITH_VERSION_SEPARATED_SUPPORT",
+      "content_summary_check": "PASS",
+      "evidence_mode": "DIRECT_HISTORICAL_NOTICE_BODY_WITH_R6_LOCATOR_VERSION_SEPARATED",
       "stored_source_manifest_ids": [
         "r6-final-comparison",
         "work-control-source-5"
@@ -725,9 +731,42 @@
         "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7861&dataType=0&pageNo=1"
       ],
       "source_locator": "第2 指定介護予防支援等の事業の人員及び運営並びに指定介護予防支援等に係る介護予防のための効果的な支援の方法に関する基準／3 運営に関する基準 > (25) （略）",
-      "evidence_support_note": "令和6年度新旧対照の現行番号は確認できるが対象本文の全部又は主要部が「略」。平成18年通知全文又は基準省令はidentity/内容の補助証拠になるが、現行統合通知本文として合成していない。",
+      "evidence_support_note": "厚生労働省公式の令和3年度改正新旧対照資料で、第2／3／(24)「記録の整備」の解釈通知本文（基準第28条第2項各号の記録を整備し2年間保存する旨）を直接確認した。令和6年度最終新旧対照では同位置が新(25)／旧(24)として「略」とされるため、R3本文を現行統合本文へ合成せず、R6 locatorと版分離して保持する。保存対象の列挙は基準本文参照で補助確認するが、currentnessは推論しない。",
       "current_integrated_notice_body_claimed": false,
-      "residual_reason": "令和6年度資料は現行側(25)本文を略記。現行基準省令は記録整備内容を支持するが、解釈通知本文そのものの直接item-body evidenceを今回確保できていないためPARTIAL維持。"
+      "resolved_reason": "R3公式解釈通知本文の直接evidenceとR6最終新旧対照の後続locatorを版分離して確保できたため、item-bodyのみPASSへ移行。current integrated notice text/currentnessは未確立のまま。",
+      "version_separated_item_body_evidence": [
+        {
+          "source_manifest_id": "r3-records-direct-notice-evidence",
+          "source_version": "R3_AMENDMENT_COMPARISON",
+          "locator": "第2／3／(24) 記録の整備",
+          "role": "DIRECT_HISTORICAL_ITEM_BODY",
+          "directly_supports_staging_summary": true,
+          "proves_currentness": false
+        },
+        {
+          "source_manifest_id": "work-control-source-5",
+          "source_version": "MHLW_STANDARD_HTML_REFERENCE",
+          "locator": "基準第28条第2項各号（記録の整備・保存対象）",
+          "role": "REFERENCED_STANDARD_ENUMERATION_CORROBORATION",
+          "directly_supports_staging_summary": true,
+          "proves_currentness": false
+        },
+        {
+          "source_manifest_id": "r6-final-comparison",
+          "source_version": "R6_FINAL_AMENDMENT_COMPARISON",
+          "locator": "第2／3／(25)（略） / 旧(24)（略）",
+          "role": "LATER_VERSION_LOCATOR_ONLY",
+          "directly_supports_staging_summary": false,
+          "proves_currentness": false
+        }
+      ],
+      "numbering_transition_evidence": {
+        "earlier_source_manifest_id": "r3-records-direct-notice-evidence",
+        "earlier_locator": "第2／3／(24) 記録の整備",
+        "later_source_manifest_id": "r6-final-comparison",
+        "later_locator": "第2／3／(25)（略） / 旧(24)（略）",
+        "interpretation": "番号移動をlocatorとして固定する。本文の現行統合性は主張しない。"
+      }
     },
     {
       "task_id": "KR2-10-B017",
@@ -1382,12 +1421,6 @@
   ],
   "unresolved_notice_gaps": [
     {
-      "task_id": "KR2-10-B016",
-      "path": "第二/3/(25)",
-      "kind": "NOTICE_BODY_DIRECT_EVIDENCE_NOT_ESTABLISHED",
-      "note": "令和6年度資料は現行側(25)本文を略記。現行基準省令は記録整備内容を支持するが、解釈通知本文そのものの直接item-body evidenceを今回確保できていないためPARTIAL維持。"
-    },
-    {
       "kind": "CURRENT_INTEGRATED_NOTICE_TEXT_NOT_ESTABLISHED",
       "note": "令和6年度新旧対照と歴史版通知全文は版を分離して使用し、合成して現行統合通知本文とはしていない。"
     }
@@ -1414,12 +1447,8 @@
       "note": "PROPOSED_SCOPE_EXPANSION: KR2-10-B035として第二/4/(1)/㉗『市町村長に対する情報の提供』を別task追加する案をレビューする。既存34 taskはこのbranchで変更しない。"
     },
     {
-      "id": "RESOLVE_B016_DIRECT_NOTICE_BODY",
-      "note": "第二/3/(25)『記録の整備』は基準省令ではなく解釈通知本文の直接evidenceを追加探索する。"
-    },
-    {
       "id": "RECHECK_PACKAGE_CONTRACT_PRECHECK_SEPARATELY",
-      "note": "KR2-10-E006はNOTICE判定で解除しない。service登録・scope・source inventoryは現mainで存在するため旧理由はstaleだが、item-body PARTIAL、currentness、human review、public routeが残る。"
+      "note": "KR2-10-E006はNOTICE判定で解除しない。B016 item-bodyは今回PASSまで閉じたが、currentness、human review、public routeは別layerで未解消のためPACKAGE precheckは本Workerでは変更しない。"
     },
     {
       "id": "REVIEW_FULL_4_2_SCOPE_AFTER_B033_CORRECTION",
@@ -1437,16 +1466,16 @@
     "worker_head_sha": "b5e0040feef8cf75b2fb85767991e45f970238f7",
     "audit_receipt": "data/verification/standards-interpretation-item-body/preventive-support.json",
     "verifier": "scripts/verify_preventive_support_standards_interpretation_item_body.py",
-    "verification_status": "PARTIAL_WITH_GAPS",
+    "verification_status": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
     "counts": {
-      "PASS": 33,
-      "PARTIAL": 1,
+      "PASS": 34,
+      "PARTIAL": 0,
       "GAP": 0,
       "FAIL": 0
     },
     "expected_staging_items_or_tasks": 34,
-    "non_pass_items": 1,
-    "explicit_unresolved_records": 2,
+    "non_pass_items": 0,
+    "explicit_unresolved_records": 1,
     "source_inventory_state": "PASS_BOUNDED_SCOPE_ONLY",
     "currentness_state": "NOT_ESTABLISHED",
     "human_review_state": "NOT_REVIEWED",
@@ -1456,14 +1485,16 @@
     "omitted_text_inferred": false,
     "service_scope_expanded": false,
     "package_blocker_state": "BLOCKED_KR2-10-E006",
-    "last_integrator_base_sha": "c8b53952b68f2790b86ca7beca4bcd813d8a17fc",
+    "last_integrator_base_sha": "8094361e28c25c134b7195abf12977e904c19162",
     "scope_corrected_tasks": [
       "KR2-10-B033"
-    ]
+    ],
+    "closure_wave_status": "B016_ITEM_BODY_CLOSED_VERSION_SEPARATED",
+    "closure_evidence_source_id": "r3-records-direct-notice-evidence"
   },
   "residual_resolution": {
     "role": "Preventive Support Standards-Interpretation Residual Verification Integrator",
-    "base_main_sha": "c8b53952b68f2790b86ca7beca4bcd813d8a17fc",
+    "base_main_sha": "8094361e28c25c134b7195abf12977e904c19162",
     "resolved_tasks": [
       "KR2-10-B004",
       "KR2-10-B008",
@@ -1476,17 +1507,36 @@
       "KR2-10-B027",
       "KR2-10-B029",
       "KR2-10-B031",
-      "KR2-10-B033"
-    ],
-    "remaining_partial_tasks": [
+      "KR2-10-B033",
       "KR2-10-B016"
     ],
-    "source_manifest_changed": false,
+    "remaining_partial_tasks": [],
+    "source_manifest_changed": true,
     "staging_changed": true,
     "currentness_promoted": false,
     "human_review_promoted": false,
     "publication_promoted": false,
     "route_promoted": false,
     "package_blocker_cleared": false
+  },
+  "assurance_closure_wave": {
+    "date": "2026-10-05",
+    "base_main_sha": "8094361e28c25c134b7195abf12977e904c19162",
+    "worker": "C",
+    "closure": {
+      "task_id": "KR2-10-B016",
+      "prior_verdict": "PARTIAL",
+      "new_verdict": "PASS",
+      "direct_historical_notice_source_id": "r3-records-direct-notice-evidence",
+      "later_locator_source_id": "r6-final-comparison",
+      "current_integrated_notice_text_established": false
+    },
+    "safety": {
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_promoted": false,
+      "package_blocker_cleared": false
+    }
   }
 }
