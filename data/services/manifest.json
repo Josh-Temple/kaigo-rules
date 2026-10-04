@@ -213,21 +213,21 @@
       "service_id": "preventive-homebath",
       "label": "介護予防訪問入浴介護",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-homebath.json"
     },
     {
       "service_id": "preventive-homenursing",
       "label": "介護予防訪問看護",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-homenursing.json"
     },
     {
       "service_id": "preventive-homerehab",
       "label": "介護予防訪問リハビリテーション",
       "service_class": "PREVENTIVE_SERVICE",
-      "status": "REGISTERED_NOT_INGESTED",
+      "status": "PARTIAL_INGESTION",
       "config": "data/services/preventive-homerehab.json"
     },
     {

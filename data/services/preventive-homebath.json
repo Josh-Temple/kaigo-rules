@@ -5,8 +5,8 @@
     "label": "介護予防訪問入浴介護",
     "service_class": "PREVENTIVE_SERVICE"
   },
-  "readiness": "REGISTERED_NOT_INGESTED",
-  "ingestion_state": "REGISTERED_NOT_INGESTED",
+  "readiness": "PARTIAL_INGESTION",
+  "ingestion_state": "PARTIAL_INGESTION",
   "expected_source_families": [
     "care_insurance_act",
     "governing_standards_ordinance",
@@ -39,5 +39,18 @@
     "independent_verification_complete": false,
     "human_review_complete": false
   },
-  "ingestion_layers": {}
+  "ingestion_layers": {
+    "remuneration": {
+      "status": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+      "top_level_items": 5,
+      "numeric_child_items": 21,
+      "total_index_entries": 26,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "厚生労働省告示第127号の別表「1 介護予防訪問入浴介護費」を境界付き構造indexとして収載。本文全文は複製せずlocator参照とし、item-body verification/currentness/human review/publication/routeは未昇格。"
+    }
+  },
+  "ingestion_indexes": {
+    "remuneration": "data/services/preventive-homebath/remuneration-index.json"
+  }
 }
