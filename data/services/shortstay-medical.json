@@ -31,7 +31,9 @@
     "remuneration": "data/services/shortstay-medical/remuneration-scope.json",
     "unit_price": "data/services/shortstay-medical/unit-price-scope.json"
   },
-  "verification_layer_ids": [],
+  "verification_layer_ids": [
+    "ordinance37-existing-services"
+  ],
   "publication_gate": {
     "public_routes_enabled": false,
     "content_ingested": false,
