@@ -21,7 +21,7 @@ class ServiceUniverseCatalogTests(unittest.TestCase):
         self.assertEqual(39, len({row["service_id"] for row in current}))
         self.assertEqual(39, len({row["label"] for row in current}))
         self.assertEqual(
-            17,
+            14,
             len([row for row in current if row["status"] == "REGISTERED_NOT_INGESTED"]),
         )
         preventive_ingested = {
