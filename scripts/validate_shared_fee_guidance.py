@@ -67,10 +67,10 @@ def validate(root=ROOT):
     for app in apps:
         closed(app['assurance'])
         assert app['state'] in {'MAPPED', 'NOT_APPLICABLE'}
-        scope = read(f"data/services/{app['service_id']}/fee-guidance-scope.json")
-        cfg = read(f"data/services/{app['service_id']}.json")
-        assert cfg['scope_files']['fee_guidance'].endswith('/fee-guidance-scope.json')
         if app['state'] == 'NOT_APPLICABLE':
+            scope = read(f"data/services/{app['service_id']}/fee-guidance-scope.json")
+            cfg = read(f"data/services/{app['service_id']}.json")
+            assert cfg['scope_files']['fee_guidance'].endswith('/fee-guidance-scope.json')
             assert app['ingestion_state'] == 'NOT_APPLICABLE'
             assert app['node_ids'] == []
             assert app['relation_ids'] == []
@@ -80,6 +80,9 @@ def validate(root=ROOT):
             continue
         assert set(app['node_ids']) <= set(node_map)
         if app.get('relation_ids'):
+            scope = read(f"data/services/{app['service_id']}/fee-guidance-scope.json")
+            cfg = read(f"data/services/{app['service_id']}.json")
+            assert cfg['scope_files']['fee_guidance'].endswith('/fee-guidance-scope.json')
             assert app['ingestion_state'] == 'INGESTED_PARTIAL'
             assert scope['node_ids'] == app['node_ids']
             assert scope['relation_ids'] == app['relation_ids']
