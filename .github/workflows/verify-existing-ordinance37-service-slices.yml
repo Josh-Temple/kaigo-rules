@@ -10,7 +10,21 @@ on:
       - "data/ordinance37-scope.json"
       - "data/services/**/ordinance37-scope.json"
       - "data/services/homevisit/ordinance37-index.generated.json"
+      - "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+      - "data/verification/layers/ordinance37-existing-services.json"
+      - "data/services/verification-layers.json"
+      - "data/services/homevisit.json"
+      - "data/services/homebath.json"
+      - "data/services/homenursing.json"
+      - "data/services/homerehab.json"
+      - "data/services/homecaremanagement.json"
+      - "data/services/shortstay-life.json"
+      - "data/services/shortstay-medical.json"
+      - "data/services/specific-facility.json"
+      - "data/services/welfare-equipment-rental.json"
+      - "data/services/specific-welfare-equipment-sale.json"
       - "scripts/build_homevisit_ordinance37_index.py"
+      - "scripts/validate_existing_ordinance37_service_slices_audit.py"
       - "scripts/verify_existing_ordinance37_service_slices.py"
       - ".github/workflows/verify-existing-ordinance37-service-slices.yml"
 
@@ -26,19 +40,48 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.13"
-      - name: Rebuild corrected homevisit index candidate
-        run: python scripts/build_homevisit_ordinance37_index.py
+      - name: Check corrected homevisit index
+        run: python scripts/build_homevisit_ordinance37_index.py --check
       - name: Independently reparse live e-Gov service slices
         run: |
           python scripts/verify_existing_ordinance37_service_slices.py \
             --report existing-ordinance37-service-slices-verification.json
+      - name: Validate pinned audit evidence
+        run: python scripts/validate_existing_ordinance37_service_slices_audit.py
+      - name: Project registry and coverage without committing global generated artifacts
+        run: |
+          python scripts/build_verification_registry.py
+          python scripts/build_database_coverage_matrix.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          targets = {
+              "homevisit", "homebath", "homenursing", "homerehab",
+              "homecaremanagement", "shortstay-life", "shortstay-medical",
+              "specific-facility", "welfare-equipment-rental",
+              "specific-welfare-equipment-sale",
+          }
+          data = json.loads(Path("data/database-coverage-matrix.generated.json").read_text())
+          rows = []
+          for service in data["services"]:
+              if service["service_id"] not in targets:
+                  continue
+              family = next(
+                  item for item in service["source_families"]
+                  if item["source_family"] == "governing_standards_ordinance"
+              )
+              rows.append((service["service_id"], family))
+          assert {sid for sid, _ in rows} == targets
+          assert all(row["item_body_verification"]["state"] == "PASS" for _, row in rows)
+          assert all(row["currentness"]["state"] == "NOT_ESTABLISHED" for _, row in rows)
+          print("projected target item-body PASS: 10/10")
+          print("projected target currentness NOT_ESTABLISHED: 10/10")
+          PY
       - name: Upload verification report
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: existing-ordinance37-service-slices-verification
-          path: |
-            existing-ordinance37-service-slices-verification.json
-            data/services/homevisit/ordinance37-index.generated.json
+          path: existing-ordinance37-service-slices-verification.json
           if-no-files-found: warn
           retention-days: 90
