@@ -360,7 +360,8 @@ def build_cell(
     if family["id"] == "fee_calculation_guidance" and fee_guidance_applicability:
         declared_state = fee_guidance_applicability.get("ingestion_state")
         if declared_state:
-            ingestion_state = str(declared_state)
+            raw_ingestion = sorted(set(raw_ingestion + [str(declared_state)]))
+            ingestion_state = normalize_ingestion(str(declared_state), scope_defined, layer_present)
 
     content_raw = raw_values(layers, ("content_verification", "status"))
     currentness_raw = raw_values(layers, ("currentness", "status"))
