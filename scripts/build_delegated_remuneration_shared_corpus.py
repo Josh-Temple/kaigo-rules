@@ -239,11 +239,13 @@ def build() -> dict[str, Any]:
 
     node_by_legacy = {node["id"]: node for node in nodes}
     national_by_id = {row["canonical_node_id"]: row for row in national_nodes}
-    label_to_canonical = {
-        str(row["item_label"]): row["canonical_node_id"]
-        for row in national_nodes
-        if row.get("item_label")
-    }
+    label_to_canonical_by_source: dict[str, dict[str, str]] = {}
+    for row in national_nodes:
+        if not row.get("item_label"):
+            continue
+        label_to_canonical_by_source.setdefault(str(row["source_id"]), {})[
+            str(row["item_label"])
+        ] = row["canonical_node_id"]
 
     legacy_text_by_canonical = {
         canonical_node_id(node["id"]): str(node.get("official_text", ""))
@@ -349,9 +351,10 @@ def build() -> dict[str, Any]:
         direct_ids_sorted = sorted(direct_ids)
         reference_to_referrers: dict[str, set[str]] = {}
         for direct_id in direct_ids_sorted:
+            direct_source_id = str(national_by_id[direct_id]["source_id"])
             for reference_id in _incorporated_reference_ids(
                 node_text(direct_id),
-                label_to_canonical,
+                label_to_canonical_by_source.get(direct_source_id, {}),
             ):
                 if reference_id in direct_ids:
                     continue
