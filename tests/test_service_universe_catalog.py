@@ -21,8 +21,28 @@ class ServiceUniverseCatalogTests(unittest.TestCase):
         self.assertEqual(39, len({row["service_id"] for row in current}))
         self.assertEqual(39, len({row["label"] for row in current}))
         self.assertEqual(
-            26,
+            17,
             len([row for row in current if row["status"] == "REGISTERED_NOT_INGESTED"]),
+        )
+        preventive_ingested = {
+            "preventive-homebath",
+            "preventive-homenursing",
+            "preventive-homerehab",
+            "preventive-homecaremanagement",
+            "preventive-dayrehab",
+            "preventive-shortstay-life",
+            "preventive-shortstay-medical",
+            "preventive-specific-facility",
+            "preventive-welfare-equipment-rental",
+        }
+        by_id = {row["service_id"]: row for row in current}
+        self.assertTrue(
+            all(by_id[service_id]["status"] == "PARTIAL_INGESTION"
+                for service_id in preventive_ingested)
+        )
+        self.assertEqual(
+            "REGISTERED_NOT_INGESTED",
+            by_id["specific-preventive-welfare-equipment-sale"]["status"],
         )
         historical_ids = {row["service_id"] for row in manifest["historical_services"]}
         self.assertEqual(
