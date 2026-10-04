@@ -33,9 +33,19 @@
     "work_control": {
       "status": "QUEUE_STAGING_COMPLETE_NOT_REPOSITORY_INGESTED",
       "note": "Structure Queueの現行タスクはDONE_STAGING。Repositoryへのservice-specific統合・独立検証・公開は未実施。"
+    },
+    "remuneration": {
+      "status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "top_level_items": 6,
+      "numeric_child_items": 18,
+      "total_index_entries": 24,
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "note": "平成12年厚生省告示第19号のサービス別sectionを、本文複製なしの構造索引として収載。item-body verification/currentness/publication/routeは独立して未確立のまま維持。"
     }
   },
   "ingestion_indexes": {
-    "rouki25": "data/services/homebath/rouki25-historical.generated.json"
+    "rouki25": "data/services/homebath/rouki25-historical.generated.json",
+    "remuneration": "data/services/homebath/remuneration-index.json"
   }
 }

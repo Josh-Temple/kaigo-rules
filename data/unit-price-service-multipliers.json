@@ -1,0 +1,635 @@
+{
+  "format_version": 1,
+  "source_family": "unit_price_regional_classification",
+  "source_id": "mhlw-unit-price-current",
+  "notice_number": "平成27年厚生労働省告示第93号",
+  "official_current_text_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+  "observed_on": "2026-10-04",
+  "shared_region_assignments": "data/unit-price-region-assignments.json",
+  "design": {
+    "region_assignments_duplicated_per_service": false,
+    "profile_rows_shared_by_identical_official_service_group": true,
+    "service_mapping_required_for_ingestion": true,
+    "source_text_duplicated": false
+  },
+  "multiplier_profiles": [
+    {
+      "profile_id": "flat-1000",
+      "official_service_names": [
+        "居宅療養管理指導",
+        "福祉用具貸与",
+        "介護予防居宅療養管理指導",
+        "介護予防福祉用具貸与"
+      ],
+      "rows": [
+        {
+          "region_class": "一級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 一級地 / サービス種類行"
+        },
+        {
+          "region_class": "二級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 二級地 / サービス種類行"
+        },
+        {
+          "region_class": "三級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 三級地 / サービス種類行"
+        },
+        {
+          "region_class": "四級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 四級地 / サービス種類行"
+        },
+        {
+          "region_class": "五級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 五級地 / サービス種類行"
+        },
+        {
+          "region_class": "六級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 六級地 / サービス種類行"
+        },
+        {
+          "region_class": "七級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 七級地 / サービス種類行"
+        },
+        {
+          "region_class": "その他",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / その他 / サービス種類行"
+        }
+      ]
+    },
+    {
+      "profile_id": "group-1090",
+      "official_service_names": [
+        "通所介護",
+        "短期入所療養介護",
+        "特定施設入居者生活介護",
+        "地域密着型通所介護",
+        "認知症対応型共同生活介護",
+        "地域密着型特定施設入居者生活介護",
+        "地域密着型介護老人福祉施設入所者生活介護",
+        "介護福祉施設サービス",
+        "介護保健施設サービス",
+        "介護医療院サービス",
+        "介護予防短期入所療養介護",
+        "介護予防特定施設入居者生活介護",
+        "介護予防認知症対応型共同生活介護"
+      ],
+      "rows": [
+        {
+          "region_class": "一級地",
+          "ratio_per_thousand": 1090,
+          "unit_price_yen": 10.9,
+          "source_locator": "第一号 表 / 一級地 / サービス種類行"
+        },
+        {
+          "region_class": "二級地",
+          "ratio_per_thousand": 1072,
+          "unit_price_yen": 10.72,
+          "source_locator": "第一号 表 / 二級地 / サービス種類行"
+        },
+        {
+          "region_class": "三級地",
+          "ratio_per_thousand": 1068,
+          "unit_price_yen": 10.68,
+          "source_locator": "第一号 表 / 三級地 / サービス種類行"
+        },
+        {
+          "region_class": "四級地",
+          "ratio_per_thousand": 1054,
+          "unit_price_yen": 10.54,
+          "source_locator": "第一号 表 / 四級地 / サービス種類行"
+        },
+        {
+          "region_class": "五級地",
+          "ratio_per_thousand": 1045,
+          "unit_price_yen": 10.45,
+          "source_locator": "第一号 表 / 五級地 / サービス種類行"
+        },
+        {
+          "region_class": "六級地",
+          "ratio_per_thousand": 1027,
+          "unit_price_yen": 10.27,
+          "source_locator": "第一号 表 / 六級地 / サービス種類行"
+        },
+        {
+          "region_class": "七級地",
+          "ratio_per_thousand": 1014,
+          "unit_price_yen": 10.14,
+          "source_locator": "第一号 表 / 七級地 / サービス種類行"
+        },
+        {
+          "region_class": "その他",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / その他 / サービス種類行"
+        }
+      ]
+    },
+    {
+      "profile_id": "group-1110",
+      "official_service_names": [
+        "訪問リハビリテーション",
+        "通所リハビリテーション",
+        "短期入所生活介護",
+        "認知症対応型通所介護",
+        "小規模多機能型居宅介護",
+        "看護小規模多機能型居宅介護",
+        "介護予防訪問リハビリテーション",
+        "介護予防通所リハビリテーション",
+        "介護予防短期入所生活介護",
+        "介護予防認知症対応型通所介護",
+        "介護予防小規模多機能型居宅介護"
+      ],
+      "rows": [
+        {
+          "region_class": "一級地",
+          "ratio_per_thousand": 1110,
+          "unit_price_yen": 11.1,
+          "source_locator": "第一号 表 / 一級地 / サービス種類行"
+        },
+        {
+          "region_class": "二級地",
+          "ratio_per_thousand": 1088,
+          "unit_price_yen": 10.88,
+          "source_locator": "第一号 表 / 二級地 / サービス種類行"
+        },
+        {
+          "region_class": "三級地",
+          "ratio_per_thousand": 1083,
+          "unit_price_yen": 10.83,
+          "source_locator": "第一号 表 / 三級地 / サービス種類行"
+        },
+        {
+          "region_class": "四級地",
+          "ratio_per_thousand": 1066,
+          "unit_price_yen": 10.66,
+          "source_locator": "第一号 表 / 四級地 / サービス種類行"
+        },
+        {
+          "region_class": "五級地",
+          "ratio_per_thousand": 1055,
+          "unit_price_yen": 10.55,
+          "source_locator": "第一号 表 / 五級地 / サービス種類行"
+        },
+        {
+          "region_class": "六級地",
+          "ratio_per_thousand": 1033,
+          "unit_price_yen": 10.33,
+          "source_locator": "第一号 表 / 六級地 / サービス種類行"
+        },
+        {
+          "region_class": "七級地",
+          "ratio_per_thousand": 1017,
+          "unit_price_yen": 10.17,
+          "source_locator": "第一号 表 / 七級地 / サービス種類行"
+        },
+        {
+          "region_class": "その他",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / その他 / サービス種類行"
+        }
+      ]
+    },
+    {
+      "profile_id": "group-1140",
+      "official_service_names": [
+        "訪問介護",
+        "訪問入浴介護",
+        "訪問看護",
+        "定期巡回・随時対応型訪問介護看護",
+        "夜間対応型訪問介護",
+        "居宅介護支援",
+        "介護予防訪問入浴介護",
+        "介護予防訪問看護",
+        "介護予防支援"
+      ],
+      "rows": [
+        {
+          "region_class": "一級地",
+          "ratio_per_thousand": 1140,
+          "unit_price_yen": 11.4,
+          "source_locator": "第一号 表 / 一級地 / サービス種類行"
+        },
+        {
+          "region_class": "二級地",
+          "ratio_per_thousand": 1112,
+          "unit_price_yen": 11.12,
+          "source_locator": "第一号 表 / 二級地 / サービス種類行"
+        },
+        {
+          "region_class": "三級地",
+          "ratio_per_thousand": 1105,
+          "unit_price_yen": 11.05,
+          "source_locator": "第一号 表 / 三級地 / サービス種類行"
+        },
+        {
+          "region_class": "四級地",
+          "ratio_per_thousand": 1084,
+          "unit_price_yen": 10.84,
+          "source_locator": "第一号 表 / 四級地 / サービス種類行"
+        },
+        {
+          "region_class": "五級地",
+          "ratio_per_thousand": 1070,
+          "unit_price_yen": 10.7,
+          "source_locator": "第一号 表 / 五級地 / サービス種類行"
+        },
+        {
+          "region_class": "六級地",
+          "ratio_per_thousand": 1042,
+          "unit_price_yen": 10.42,
+          "source_locator": "第一号 表 / 六級地 / サービス種類行"
+        },
+        {
+          "region_class": "七級地",
+          "ratio_per_thousand": 1021,
+          "unit_price_yen": 10.21,
+          "source_locator": "第一号 表 / 七級地 / サービス種類行"
+        },
+        {
+          "region_class": "その他",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / その他 / サービス種類行"
+        }
+      ]
+    }
+  ],
+  "service_mappings": [
+    {
+      "service_id": "dayservice",
+      "repository_label": "通所介護",
+      "official_service_name": "通所介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "homevisit",
+      "repository_label": "訪問介護",
+      "official_service_name": "訪問介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "homebath",
+      "repository_label": "訪問入浴介護",
+      "official_service_name": "訪問入浴介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "homenursing",
+      "repository_label": "訪問看護",
+      "official_service_name": "訪問看護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "homerehab",
+      "repository_label": "訪問リハビリテーション",
+      "official_service_name": "訪問リハビリテーション",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "homecaremanagement",
+      "repository_label": "居宅療養管理指導",
+      "official_service_name": "居宅療養管理指導",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "flat-1000",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "dayrehab",
+      "repository_label": "通所リハビリテーション",
+      "official_service_name": "通所リハビリテーション",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "shortstay-life",
+      "repository_label": "短期入所生活介護",
+      "official_service_name": "短期入所生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "community-dayservice",
+      "repository_label": "地域密着型通所介護",
+      "official_service_name": "地域密着型通所介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "regular-round",
+      "repository_label": "定期巡回・随時対応型訪問介護看護",
+      "official_service_name": "定期巡回・随時対応型訪問介護看護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "night-homevisit",
+      "repository_label": "夜間対応型訪問介護",
+      "official_service_name": "夜間対応型訪問介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "care-management",
+      "repository_label": "居宅介護支援",
+      "official_service_name": "居宅介護支援",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-support",
+      "repository_label": "介護予防支援",
+      "official_service_name": "介護予防支援",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "shortstay-medical",
+      "repository_label": "短期入所療養介護",
+      "official_service_name": "短期入所療養介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "specific-facility",
+      "repository_label": "特定施設入居者生活介護",
+      "official_service_name": "特定施設入居者生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "repository_label": "福祉用具貸与",
+      "official_service_name": "福祉用具貸与",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "flat-1000",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "repository_label": "特定福祉用具販売",
+      "official_service_name": "特定福祉用具販売",
+      "applicability": "NOT_APPLICABLE",
+      "ingestion_status": "NOT_APPLICABLE",
+      "source_locator": "第一号 表（サービス種類欄に対象サービスなし）",
+      "reason": "購入費給付であり、告示93号の一単位単価表によるサービス費換算の対象外として既存scopeで明示されている。"
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "repository_label": "認知症対応型通所介護",
+      "official_service_name": "認知症対応型通所介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "repository_label": "小規模多機能型居宅介護",
+      "official_service_name": "小規模多機能型居宅介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "dementia-group-home",
+      "repository_label": "認知症対応型共同生活介護",
+      "official_service_name": "認知症対応型共同生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "community-specific-facility",
+      "repository_label": "地域密着型特定施設入居者生活介護",
+      "official_service_name": "地域密着型特定施設入居者生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "repository_label": "地域密着型介護老人福祉施設入所者生活介護",
+      "official_service_name": "地域密着型介護老人福祉施設入所者生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "repository_label": "看護小規模多機能型居宅介護",
+      "official_service_name": "看護小規模多機能型居宅介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "repository_label": "介護老人福祉施設",
+      "official_service_name": "介護福祉施設サービス",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "repository_label": "介護老人保健施設",
+      "official_service_name": "介護保健施設サービス",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "care-medical-institution",
+      "repository_label": "介護医療院",
+      "official_service_name": "介護医療院サービス",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "repository_label": "介護予防訪問入浴介護",
+      "official_service_name": "介護予防訪問入浴介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "repository_label": "介護予防訪問看護",
+      "official_service_name": "介護予防訪問看護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "repository_label": "介護予防訪問リハビリテーション",
+      "official_service_name": "介護予防訪問リハビリテーション",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "repository_label": "介護予防居宅療養管理指導",
+      "official_service_name": "介護予防居宅療養管理指導",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "flat-1000",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "repository_label": "介護予防通所リハビリテーション",
+      "official_service_name": "介護予防通所リハビリテーション",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "repository_label": "介護予防短期入所生活介護",
+      "official_service_name": "介護予防短期入所生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "repository_label": "介護予防短期入所療養介護",
+      "official_service_name": "介護予防短期入所療養介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "repository_label": "介護予防特定施設入居者生活介護",
+      "official_service_name": "介護予防特定施設入居者生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "repository_label": "介護予防福祉用具貸与",
+      "official_service_name": "介護予防福祉用具貸与",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "flat-1000",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "repository_label": "特定介護予防福祉用具販売",
+      "official_service_name": "特定介護予防福祉用具販売",
+      "applicability": "NOT_APPLICABLE",
+      "ingestion_status": "NOT_APPLICABLE",
+      "source_locator": "第一号 表（サービス種類欄に対象サービスなし）",
+      "reason": "購入費給付であり、告示93号の一単位単価表によるサービス費換算の対象外として既存scopeで明示されている。"
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "repository_label": "介護予防認知症対応型通所介護",
+      "official_service_name": "介護予防認知症対応型通所介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "repository_label": "介護予防小規模多機能型居宅介護",
+      "official_service_name": "介護予防小規模多機能型居宅介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "repository_label": "介護予防認知症対応型共同生活介護",
+      "official_service_name": "介護予防認知症対応型共同生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "ingestion_status": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+      "source_locator": "第一号 表（地域区分・サービス種類・割合）"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED_EXCEPT_EXISTING_SERVICE_SPECIFIC_AUDITS",
+    "currentness": "NOT_ESTABLISHED_EXCEPT_EXISTING_SERVICE_SPECIFIC_RECEIPTS",
+    "human_review": "NOT_REVIEWED",
+    "publication": "UNCHANGED_FAIL_CLOSED",
+    "route_exposure": "UNCHANGED_FAIL_CLOSED",
+    "automatic_promotion_allowed": false
+  }
+}

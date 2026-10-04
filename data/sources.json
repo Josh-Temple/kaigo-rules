@@ -304,5 +304,23 @@
     "url": "https://www.mhlw.go.jp/content/12304250/001453049.pdf",
     "status": "current_reference_partial_source",
     "note": "令和7年3月改訂（令和6年度版）の厚生労働省国マニュアルから参照され、令和8年3月改訂ページでも同じPDF URLが再掲されている老企第25号関係資料。通所介護では「1・2（略）」を確認できる。PDF内新旧対照表そのものの正式な改正日は親ページ文脈だけでは確定しない。現行統合全文や網羅的な改正履歴とはみなさない。"
+  },
+  {
+    "id": "mhlw-preventive-fee-notice127-current",
+    "layer": "報酬告示",
+    "title": "指定介護予防サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第127号・厚生労働省統合表示）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+    "status": "current_consolidated_official_display",
+    "note": "別表の介護予防サービス費1〜9を構造索引化する一次資料。2026-10-04に厚生労働省統合表示を観測したが、このsource登録自体は各サービスのitem-body verification又はcurrentnessを確立しない。"
+  },
+  {
+    "id": "mhlw-community-fee-notice126-current",
+    "layer": "報酬告示",
+    "title": "指定地域密着型サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第126号）",
+    "publisher": "厚生労働省",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
+    "status": "current_official_consolidated_source",
+    "note": "厚生労働省公式HTMLの統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示する。source availabilityとservice/item-level currentnessは分離し、本source登録だけではcurrentnessを自動昇格しない。"
   }
 ]

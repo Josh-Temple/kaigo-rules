@@ -73,17 +73,17 @@
       {
         "service_id": "shortstay-medical",
         "label": "短期入所療養介護",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "specific-facility",
         "label": "特定施設入居者生活介護",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "welfare-equipment-rental",
         "label": "福祉用具貸与",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "specific-welfare-equipment-sale",
@@ -138,47 +138,47 @@
       {
         "service_id": "preventive-homebath",
         "label": "介護予防訪問入浴介護",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "preventive-homenursing",
         "label": "介護予防訪問看護",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "preventive-homerehab",
         "label": "介護予防訪問リハビリテーション",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "preventive-homecaremanagement",
         "label": "介護予防居宅療養管理指導",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "preventive-dayrehab",
         "label": "介護予防通所リハビリテーション",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "preventive-shortstay-life",
         "label": "介護予防短期入所生活介護",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "preventive-shortstay-medical",
         "label": "介護予防短期入所療養介護",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "preventive-specific-facility",
         "label": "介護予防特定施設入居者生活介護",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "preventive-welfare-equipment-rental",
         "label": "介護予防福祉用具貸与",
-        "status": "REGISTERED_NOT_INGESTED"
+        "status": "PARTIAL_INGESTION"
       },
       {
         "service_id": "specific-preventive-welfare-equipment-sale",

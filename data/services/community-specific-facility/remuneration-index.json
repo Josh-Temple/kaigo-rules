@@ -1,0 +1,374 @@
+{
+  "format_version": 1,
+  "service_id": "community-specific-facility",
+  "service_label": "地域密着型特定施設入居者生活介護",
+  "layer": "REMUNERATION_STANDARD",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "6",
+    "section_heading": "地域密着型特定施設入居者生活介護費",
+    "start_marker": "6　地域密着型特定施設入居者生活介護費",
+    "end_marker": "7　地域密着型介護老人福祉施設入所者生活介護費",
+    "excluded_next_section": "7　地域密着型介護老人福祉施設入所者生活介護費",
+    "legal_text_duplicated": false
+  },
+  "canonical_sources": [
+    {
+      "id": "mhlw-community-fee-notice126-current",
+      "role": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE",
+      "title": "指定地域密着型サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第126号）",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
+      "locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "厚生労働省統合表示。令和8年厚生労働省告示第87号までの改正履歴を表示するが、本index作成のみをもってservice/item-level currentness PASSとはしない。"
+    },
+    {
+      "id": "mhlw-r8-reform-landing",
+      "role": "OFFICIAL_AMENDMENT_INDEX_SUPPORTING_ONLY",
+      "title": "令和8年度介護報酬改定について",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "locator": "令和8年度改定 > 告示",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "改正導線確認用。service sectionのcurrentnessを単独で確立する証拠としては扱わない。"
+    }
+  ],
+  "heading_hierarchy": {
+    "root": "別表 指定地域密着型サービス介護給付費単位数表",
+    "service_section": "6　地域密着型特定施設入居者生活介護費",
+    "top_level_marker_range": "イからルまで",
+    "processing_improvement_marker": "ヲ",
+    "unknown_titles_retained_as_null": true
+  },
+  "coverage": {
+    "top_level_items": 12,
+    "top_level_titles_directly_observed": 12,
+    "top_level_titles_not_captured": 0,
+    "numeric_child_items": 25,
+    "total_index_entries": 37,
+    "item_body_complete": false,
+    "structural_scope": "SECTION_BOUNDARY_TOP_LEVEL_ORDINALS_AND_SELECTED_DIRECT_NUMERIC_CHILDREN"
+  },
+  "top_level_items": [
+    {
+      "id": "rem.community-specific-facility.top.1",
+      "marker": "イ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "地域密着型特定施設入居者生活介護費",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > イ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.2",
+      "marker": "ロ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "短期利用地域密着型特定施設入居者生活介護費",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ロ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.3",
+      "marker": "ハ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "退院・退所時連携加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ハ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.4",
+      "marker": "ニ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "看取り介護加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ニ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.5",
+      "marker": "ホ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "退居時情報提供加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ホ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.6",
+      "marker": "ヘ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "認知症専門ケア加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヘ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.7",
+      "marker": "ト",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "科学的介護推進体制加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ト"
+    },
+    {
+      "id": "rem.community-specific-facility.top.8",
+      "marker": "チ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "高齢者施設等感染対策向上加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > チ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.9",
+      "marker": "リ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "新興感染症等施設療養費",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > リ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.10",
+      "marker": "ヌ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "生産性向上推進体制加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヌ"
+    },
+    {
+      "id": "rem.community-specific-facility.top.11",
+      "marker": "ル",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "サービス提供体制強化加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "SECTION_RANGE_OR_DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ル"
+    },
+    {
+      "id": "rem.community-specific-facility.top.12",
+      "marker": "ヲ",
+      "kind": "TOP_LEVEL_ITEM",
+      "title": "介護職員等処遇改善加算",
+      "title_state": "DIRECTLY_OBSERVED",
+      "existence_basis": "DIRECT_HEADING",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヲ"
+    }
+  ],
+  "numeric_child_items": [
+    {
+      "id": "rem.community-specific-facility.child.1",
+      "parent_marker": "イ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護1",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > イ > (1)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.2",
+      "parent_marker": "イ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護2",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > イ > (2)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.3",
+      "parent_marker": "イ",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護3",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > イ > (3)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.4",
+      "parent_marker": "イ",
+      "marker": "(4)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護4",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > イ > (4)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.5",
+      "parent_marker": "イ",
+      "marker": "(5)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護5",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > イ > (5)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.6",
+      "parent_marker": "ロ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護1",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ロ > (1)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.7",
+      "parent_marker": "ロ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護2",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ロ > (2)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.8",
+      "parent_marker": "ロ",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護3",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ロ > (3)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.9",
+      "parent_marker": "ロ",
+      "marker": "(4)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護4",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ロ > (4)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.10",
+      "parent_marker": "ロ",
+      "marker": "(5)",
+      "kind": "NUMERIC_CHILD",
+      "title": "要介護5",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ロ > (5)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.11",
+      "parent_marker": "ヘ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "認知症専門ケア加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヘ > (1)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.12",
+      "parent_marker": "ヘ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "認知症専門ケア加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヘ > (2)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.13",
+      "parent_marker": "チ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "高齢者施設等感染対策向上加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > チ > (1)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.14",
+      "parent_marker": "チ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "高齢者施設等感染対策向上加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > チ > (2)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.15",
+      "parent_marker": "ヌ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "生産性向上推進体制加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヌ > (1)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.16",
+      "parent_marker": "ヌ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "生産性向上推進体制加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヌ > (2)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.17",
+      "parent_marker": "ル",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "サービス提供体制強化加算(Ⅰ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ル > (1)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.18",
+      "parent_marker": "ル",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "サービス提供体制強化加算(Ⅱ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ル > (2)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.19",
+      "parent_marker": "ル",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "サービス提供体制強化加算(Ⅲ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ル > (3)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.20",
+      "parent_marker": "ヲ",
+      "marker": "(1)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)イ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヲ > (1)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.21",
+      "parent_marker": "ヲ",
+      "marker": "(2)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅰ)ロ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヲ > (2)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.22",
+      "parent_marker": "ヲ",
+      "marker": "(3)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)イ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヲ > (3)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.23",
+      "parent_marker": "ヲ",
+      "marker": "(4)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅱ)ロ",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヲ > (4)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.24",
+      "parent_marker": "ヲ",
+      "marker": "(5)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅲ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヲ > (5)"
+    },
+    {
+      "id": "rem.community-specific-facility.child.25",
+      "parent_marker": "ヲ",
+      "marker": "(6)",
+      "kind": "NUMERIC_CHILD",
+      "title": "介護職員等処遇改善加算(Ⅳ)",
+      "source_locator": "別表 指定地域密着型サービス介護給付費単位数表 > 6　地域密着型特定施設入居者生活介護費 > ヲ > (6)"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "relation_verification": "NOT_ESTABLISHED",
+    "automatic_verification_promotion_allowed": false,
+    "note": "service-specific section locatorと構造索引のingestionのみ。本文全文、委任基準、算定留意事項を複製せず、item-body/currentness/applicability-relation/human/publication/routeは独立工程のまま。"
+  }
+}

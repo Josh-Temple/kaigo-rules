@@ -1,0 +1,76 @@
+{
+  "format_version": 1,
+  "service_id": "welfare-equipment-rental",
+  "label": "福祉用具貸与",
+  "layer": "REMUNERATION_NOTIFICATION",
+  "ingestion_state": "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "平成12年厚生省告示第19号 別表 11 福祉用具貸与費(1月につき)",
+    "start_marker": "11 福祉用具貸与費(1月につき)",
+    "end_marker": "別表 指定居宅サービス介護給付費単位数表の末尾",
+    "excluded_next_section": null,
+    "legal_text_duplicated": false
+  },
+  "official_source": {
+    "source_id": "mhlw-fee-notice19-base",
+    "notice_number": "平成12年厚生省告示第19号",
+    "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+    "observed_on_jst": "2026-10-04",
+    "observation_kind": "MHLW_CONSOLIDATED_DISPLAY_CAPTURE_NOT_CURRENTNESS_PROOF"
+  },
+  "extraction_policy": {
+    "full_legal_text_reproduced": false,
+    "indexed_content": "bounded section markers, top-level structure, and directly visible numeric structural rows",
+    "long_note_body_policy": "locator-only unless a short structural row contains a directly visible numeric expression",
+    "delegated_remuneration_criteria_included": false
+  },
+  "coverage": {
+    "section_lines_observed": 10,
+    "top_level_items": 1,
+    "numeric_child_items": 2,
+    "total_index_entries": 3
+  },
+  "top_level_items": [
+    {
+      "id": "remuneration.welfare-equipment-rental.top.01",
+      "marker": "11",
+      "kind": "SECTION_ROOT",
+      "title": "福祉用具貸与費(1月につき)",
+      "numeric_expressions": [],
+      "source_locator": "11 福祉用具貸与費(1月につき) / 11 / section-line-1"
+    }
+  ],
+  "numeric_child_items": [
+    {
+      "id": "remuneration.welfare-equipment-rental.numeric.001",
+      "parent_marker": "11",
+      "marker": "1",
+      "kind": "NUMERIC_NOTE",
+      "title": "注1",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "11 福祉用具貸与費(1月につき) / 11 / 1 / section-line-4"
+    },
+    {
+      "id": "remuneration.welfare-equipment-rental.numeric.002",
+      "parent_marker": "11",
+      "marker": "2",
+      "kind": "NUMERIC_NOTE",
+      "title": "注2",
+      "numeric_expressions": [
+        "100分の1"
+      ],
+      "source_locator": "11 福祉用具貸与費(1月につき) / 11 / 2 / section-line-5"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}
