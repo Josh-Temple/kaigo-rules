@@ -1,0 +1,208 @@
+{
+  "format_version": 1,
+  "corpus_id": "delegated-remuneration-national",
+  "services": [
+    {
+      "service_id": "dayservice",
+      "relation_verification_state": "NOT_ESTABLISHED",
+      "relations": [
+        {
+          "canonical_node_id": "notice27.item.1",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "calc27.dayservice.1",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice27.item.1.capacity",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "calc27.dayservice.1.capacity",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "note1-to-calc27.dayservice.1.capacity"
+          ]
+        },
+        {
+          "canonical_node_id": "notice27.item.1.staffing",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "calc27.dayservice.1.staffing",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "note1-to-calc27.dayservice.1.staffing"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.14-3",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.14-3",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.14-4",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.14-4",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.14-5",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.14-5",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.14-6",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.14-6",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "fee.dayservice.note.10-to-criteria95.dayservice.14-6"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.15",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.15",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "fee.dayservice.note.11-to-criteria95.dayservice.15"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.16",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.16",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "fee.dayservice.note.13-to-criteria95.dayservice.16"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.17",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.17",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "fee.dayservice.note.15-to-criteria95.dayservice.17"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.18-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.18-2",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "fee.dayservice.note.17-to-criteria95.dayservice.18-2"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.19",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.19",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "fee.dayservice.note.18-to-criteria95.dayservice.19"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.19-2",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.19-2",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.20",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.20",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": []
+        },
+        {
+          "canonical_node_id": "notice95.item.23",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.23",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "fee.dayservice.service-provision-to-criteria95.dayservice.23"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.24",
+          "relation": "DIRECT_APPLICABILITY",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.dayservice.24",
+            "legacy_service_scope": "通所介護"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "fee.dayservice.treatment-improvement-to-criteria95.dayservice.24"
+          ]
+        },
+        {
+          "canonical_node_id": "notice95.item.4",
+          "relation": "INCORPORATED_BY_REFERENCE",
+          "verification_state": "NOT_ESTABLISHED",
+          "basis": {
+            "legacy_node_id": "criteria95.shared.4",
+            "legacy_service_scope": "通所介護第24号から準用される共通参照"
+          },
+          "independently_verified_delegation_edge_ids": [
+            "criteria95-dayservice24-incorporates-shared4"
+          ]
+        }
+      ]
+    }
+  ],
+  "verification_policy": {
+    "service_relation_auto_promotion_allowed": false,
+    "note": "Independent delegation-edge PASS evidence is retained separately and does not automatically verify service applicability or service-to-node relation semantics."
+  }
+}
