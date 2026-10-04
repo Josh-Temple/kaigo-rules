@@ -7,10 +7,10 @@
   "source_family": "preventive_support_standards_interpretation",
   "audit_run": {
     "workflow": "Verify standards interpretation source inventories",
-    "run_id": 37107208565,
-    "head_sha": "a8298fd891540d97e4ac44c733a6e836c3357aae",
+    "run_id": 37244756865,
+    "head_sha": "a96e46a8570827d4646c09aa8b21dfe2d1fe49be",
     "verifier": "scripts/verify_standards_interpretation_sources_independent.py",
-    "report_sha256": "a49e791a585df2796b2cbee8222ff7d2a49af45dcd2627f5d7f67fb04cfef131"
+    "report_sha256": "16d14b3d8c4a7c214f93105c2fac959264727cc27f3c1e7f311a910b7b7526d1"
   },
   "coverage": {
     "expected_staging_items_or_tasks": 34,
@@ -59,8 +59,8 @@
       "url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
       "fetch": "PASS",
       "content_type": "text/html",
-      "bytes": 99120,
-      "sha256": "36541c0ef24e419f3019f5f4f717bc16e7af9e6584320773f5008eba319c1207",
+      "bytes": 99409,
+      "sha256": "294676218873e3c0b3dd59c0c85da36e3d08e52011ef5396a4987c88c63d5356",
       "extracted_chars": 13675,
       "service_anchor_found": true,
       "required_for_source_inventory": true
@@ -95,17 +95,9 @@
   },
   "differences": [],
   "input_git_blob_shas_at_audit": {
-    "data/services/preventive-support/standards-interpretation-scope.json": "7004a8620a73896935440756bff4638d09a3868a",
+    "data/services/preventive-support/standards-interpretation-scope.json": "6e463aa312ffa3d1fec97ae73dd5999c864f58bf",
     "data/services/preventive-support/standards-interpretation-staging.json": "e702496c24ec40106ba4ad4f4186d9c1803e5626",
     "scripts/verify_standards_interpretation_sources_independent.py": "9f65e258e64bd5d719f4e586e06430728aa5e196"
   },
-  "conclusion": "All manifest-required official sources, plus referenced supplemental sources, were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness.",
-  "post_audit_rebind": {
-    "date_jst": "2026-10-03",
-    "reason": "KR2-10-B033の誤って結合されたitem scopeを公式解釈通知構造に合わせて訂正し、既存manifest内のwork-control-source-4を当該staging itemの直接evidenceとして明示した。",
-    "source_set_changed": false,
-    "required_source_count_changed": false,
-    "source_fetch_results_changed": false,
-    "currentness_promoted": false
-  }
+  "conclusion": "All manifest-required official sources, plus referenced supplemental sources, were independently re-fetched and text-extracted, and the configured service anchor was observed in the bounded source family. This receipt does not prove item-body equality, currentness, human review, omitted-text completeness, or publication readiness."
 }
