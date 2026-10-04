@@ -1,0 +1,49 @@
+{
+  "format_version": 1,
+  "corpus_id": "delegated-remuneration-national",
+  "services": [
+    {
+      "service_id": "dayservice",
+      "scope_state": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED",
+      "mapped_node_count": 15,
+      "mapped_node_ids": [
+        "notice27.item.1",
+        "notice95.item.14-3",
+        "notice95.item.14-4",
+        "notice95.item.14-5",
+        "notice95.item.14-6",
+        "notice95.item.15",
+        "notice95.item.16",
+        "notice95.item.17",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.19-2",
+        "notice95.item.20",
+        "notice95.item.23",
+        "notice95.item.24",
+        "notice95.item.4"
+      ],
+      "compatibility_subnode_ids": [
+        "notice27.item.1.capacity",
+        "notice27.item.1.staffing"
+      ],
+      "mapping_evidence": [
+        "data/shared/remuneration-delegated/national-corpus.json",
+        "data/remuneration-delegated-nodes.json",
+        "data/shared/remuneration-delegated/node-identity-map.json",
+        "data/remuneration-delegated-relations.json"
+      ],
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
+    }
+  ]
+}

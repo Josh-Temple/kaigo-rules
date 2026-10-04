@@ -85,6 +85,17 @@ def main() -> None:
                 state = cell[axis].get("state")
                 if state not in ALLOWED[axis]:
                     fail(f"{row['service_id']}/{cell['source_family']}: invalid {axis}={state}")
+            if cell["source_family"] == "delegated_remuneration_criteria":
+                applicability = cell.get("service_applicability")
+                if not isinstance(applicability, dict):
+                    fail(f"{row['service_id']}/delegated_remuneration_criteria: missing service_applicability")
+                if applicability.get("state") not in {"MAPPED", "NOT_MAPPED"}:
+                    fail(f"{row['service_id']}/delegated_remuneration_criteria: invalid applicability state")
+                if (
+                    cell["ingestion"]["state"] in {"INGESTED", "PARTIAL"}
+                    and applicability.get("state") != "MAPPED"
+                ):
+                    fail(f"{row['service_id']}/delegated_remuneration_criteria: ingestion without applicability mapping")
 
     forbidden = FORBIDDEN_SINGLE_SCORE_KEYS.intersection(set(walk_keys(actual)))
     if forbidden:
