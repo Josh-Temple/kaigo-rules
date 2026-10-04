@@ -8,6 +8,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "介護ルール | 制度の根拠と実務をつなぐ",
   description: "介護保険法、基準省令、解釈通知、報酬、厚生労働省Q&Aを関係付け、実務上の疑問から公式の根拠へたどれるように整理します。",
+  verification: {
+    google: "rybNwXzPP_yRhV4fB5N2cxikvr3Dd0KttTecNuRNqP8",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
