@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - "work/database-completion-assurance-wave-integrator"
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 permissions:
@@ -16,6 +19,7 @@ concurrency:
 
 jobs:
   integrate:
+    if: github.event_name != 'pull_request' || github.head_ref == 'work/database-completion-assurance-wave-integrator'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
