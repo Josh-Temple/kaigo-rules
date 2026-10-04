@@ -1,0 +1,110 @@
+{
+  "format_version": 1,
+  "service_id": "preventive-welfare-equipment-rental",
+  "service_label": "介護予防福祉用具貸与",
+  "layer": "REMUNERATION_STANDARD",
+  "ingestion_state": "INDEXED_MHLW_CONSOLIDATED_DISPLAY_NOT_SERVICE_VERIFIED",
+  "service_scope": {
+    "basis": "SERVICE_SPECIFIC_SECTION_REFERENCE",
+    "source_section": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費",
+    "section_ordinal": 9,
+    "start_marker": "9 介護予防福祉用具貸与費",
+    "end_marker": "END_OF_NOTICE127_FEE_TABLE",
+    "excluded_next_section": null,
+    "legal_text_duplicated": false
+  },
+  "canonical_sources": [
+    {
+      "source_id": "mhlw-preventive-fee-notice127-current",
+      "role": "PRIMARY_MHLW_CONSOLIDATED_DISPLAY",
+      "title": "指定介護予防サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第127号）",
+      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+      "page_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=2"
+      ],
+      "locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費",
+      "observed_on_jst": "2026-10-04",
+      "version_note": "厚生労働省統合表示でsection境界と構造markerを観測。サービス別currentnessの独立照合は別工程。"
+    }
+  ],
+  "coverage": {
+    "indexed_top_level_items": 8,
+    "indexed_numeric_child_items": 0,
+    "total_index_entries": 8,
+    "indexing_depth": "BOUNDED_SECTION_TOP_LEVEL_AND_DIRECT_NUMERIC_MARKERS",
+    "legal_body_copied": false
+  },
+  "top_level_items": [
+    {
+      "id": "preventive-welfare-equipment-rental-remuneration-top-01",
+      "marker": "本文",
+      "kind": "FORMULA_BODY",
+      "source_locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費 / 本文"
+    },
+    {
+      "id": "preventive-welfare-equipment-rental-remuneration-top-02",
+      "marker": "注1",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "source_locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費 / 注1"
+    },
+    {
+      "id": "preventive-welfare-equipment-rental-remuneration-top-03",
+      "marker": "注2",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "source_locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費 / 注2"
+    },
+    {
+      "id": "preventive-welfare-equipment-rental-remuneration-top-04",
+      "marker": "注3",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "source_locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費 / 注3"
+    },
+    {
+      "id": "preventive-welfare-equipment-rental-remuneration-top-05",
+      "marker": "注4",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "source_locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費 / 注4"
+    },
+    {
+      "id": "preventive-welfare-equipment-rental-remuneration-top-06",
+      "marker": "注5",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "source_locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費 / 注5"
+    },
+    {
+      "id": "preventive-welfare-equipment-rental-remuneration-top-07",
+      "marker": "注6",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "source_locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費 / 注6"
+    },
+    {
+      "id": "preventive-welfare-equipment-rental-remuneration-top-08",
+      "marker": "注7",
+      "kind": "TOP_LEVEL_STRUCTURE_MARKER",
+      "source_locator": "別表 指定介護予防サービス介護給付費単位数表 / 9 介護予防福祉用具貸与費 / 注7"
+    }
+  ],
+  "child_items": [],
+  "relation_metadata": [
+    {
+      "relation_type": "PREVENTIVE_FEE_SECTION_IS_INDEPENDENT_IN_NOTICE127",
+      "state": "RECORDED_NOT_INDEPENDENTLY_VERIFIED",
+      "note": "通常サービスの報酬indexは再利用せず、告示第127号の介護予防サービス固有sectionを直接参照する。"
+    },
+    {
+      "relation_type": "CALCULATION_REFERENCES_UNIT_PRICE_FAMILY",
+      "state": "RECORDED_NOT_INDEPENDENTLY_VERIFIED",
+      "source_family": "unit_price_regional_classification",
+      "note": "費用額を所在地に適用される一単位の単価で除して単位数を算出する関係を記録する。unit-price familyのingestion又はverificationはここでは昇格しない。"
+    }
+  ],
+  "assurance": {
+    "item_body_verification": "NOT_ESTABLISHED",
+    "currentness": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_verification_promotion_allowed": false
+  }
+}
