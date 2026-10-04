@@ -31,7 +31,9 @@
     "remuneration": "data/services/welfare-equipment-rental/remuneration-scope.json",
     "unit_price": "data/services/welfare-equipment-rental/unit-price-scope.json"
   },
-  "verification_layer_ids": [],
+  "verification_layer_ids": [
+    "ordinance37-existing-services"
+  ],
   "publication_gate": {
     "public_routes_enabled": false,
     "content_ingested": false,
