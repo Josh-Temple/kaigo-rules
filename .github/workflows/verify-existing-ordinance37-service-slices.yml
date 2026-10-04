@@ -23,6 +23,7 @@ on:
       - "data/services/specific-facility.json"
       - "data/services/welfare-equipment-rental.json"
       - "data/services/specific-welfare-equipment-sale.json"
+      - "scripts/build_database_coverage_matrix.py"
       - "scripts/build_homevisit_ordinance37_index.py"
       - "scripts/validate_existing_ordinance37_service_slices_audit.py"
       - "scripts/verify_existing_ordinance37_service_slices.py"
