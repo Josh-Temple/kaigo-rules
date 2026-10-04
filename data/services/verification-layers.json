@@ -88,6 +88,12 @@
       "id": "rouki25-shortstay-life",
       "scope_kind": "SERVICE_SPECIFIC",
       "provider": "legacy"
+    },
+    {
+      "id": "ordinance37-existing-services",
+      "scope_kind": "SHARED_SOURCE_SERVICE_SCOPE",
+      "provider": "normalized_report",
+      "report_file": "data/verification/layers/ordinance37-existing-services.json"
     }
   ]
 }
