@@ -13,6 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUTPUT = DATA / "cross-layer-source-chain-independent-audit.json"
 
+# data/sources.json is intentionally not byte-pinned here. The validator checks
+# the Notice 19 source row semantically, so unrelated source-registry additions
+# must not invalidate this audit lane.
 PINNED_INPUTS = [
     "data/care-insurance-act-relations.json",
     "data/care-insurance-act-nodes.json",
@@ -21,7 +24,6 @@ PINNED_INPUTS = [
     "data/ordinance37-meta.json",
     "data/ordinance37-scope.json",
     "data/remuneration-current-skeleton.json",
-    "data/sources.json",
     "scripts/verify_cross_layer_source_chains_independent.py",
     "data/care-insurance-act-meta.json",
     "data/remuneration-current-text-meta.json",
