@@ -21,8 +21,15 @@ class ServiceUniverseCatalogTests(unittest.TestCase):
         self.assertEqual(39, len({row["service_id"] for row in current}))
         self.assertEqual(39, len({row["label"] for row in current}))
         self.assertEqual(
-            26,
+            23,
             len([row for row in current if row["status"] == "REGISTERED_NOT_INGESTED"]),
+        )
+        partial_ingestion_ids = {
+            row["service_id"] for row in current if row["status"] == "PARTIAL_INGESTION"
+        }
+        self.assertTrue(
+            {"shortstay-medical", "specific-facility", "welfare-equipment-rental"}
+            <= partial_ingestion_ids
         )
         historical_ids = {row["service_id"] for row in manifest["historical_services"]}
         self.assertEqual(
