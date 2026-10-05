@@ -1,0 +1,1121 @@
+{
+  "format_version": 1,
+  "assurance_id": "unit-price-regional-classification-item-body-assurance-v1",
+  "source_family": "unit_price_regional_classification",
+  "base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd",
+  "created_on": "2026-10-05",
+  "source_identity": {
+    "source_id": "mhlw-unit-price-current",
+    "notice_number": "平成27年厚生労働省告示第93号",
+    "publisher": "厚生労働省",
+    "identified_source_version_scope": "PINNED_OFFICIAL_HTML_SNAPSHOT_NOT_CURRENTNESS_CLAIM",
+    "documents": [
+      {
+        "page": 1,
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+        "sha256": "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395"
+      },
+      {
+        "page": 2,
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2",
+        "sha256": "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+      }
+    ],
+    "effective_reference_date": "2024-04-01",
+    "currentness_claim": false
+  },
+  "verification_contract": {
+    "direct_body_required": true,
+    "service_applicability_required": true,
+    "complete_profile_rows_required": true,
+    "historical_or_superseded_rejected": true,
+    "heading_or_locator_only_insufficient": true,
+    "item_body_does_not_imply_currentness": true
+  },
+  "profile_verification": [
+    {
+      "profile_id": "flat-1000",
+      "verification_state": "PASS",
+      "verification_method": "DIRECT_OFFICIAL_TABLE_REPARSE",
+      "official_service_names": [
+        "居宅療養管理指導",
+        "福祉用具貸与",
+        "介護予防居宅療養管理指導",
+        "介護予防福祉用具貸与"
+      ],
+      "mapped_item_count": 8,
+      "rows": [
+        {
+          "region_class": "一級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 一級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "二級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 二級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "三級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 三級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "四級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 四級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "五級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 五級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "六級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 六級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "七級地",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / 七級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "その他",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / その他 / サービス種類行 / 割合"
+        }
+      ]
+    },
+    {
+      "profile_id": "group-1090",
+      "verification_state": "PASS",
+      "verification_method": "DIRECT_OFFICIAL_TABLE_REPARSE",
+      "official_service_names": [
+        "通所介護",
+        "短期入所療養介護",
+        "特定施設入居者生活介護",
+        "地域密着型通所介護",
+        "認知症対応型共同生活介護",
+        "地域密着型特定施設入居者生活介護",
+        "地域密着型介護老人福祉施設入所者生活介護",
+        "介護福祉施設サービス",
+        "介護保健施設サービス",
+        "介護医療院サービス",
+        "介護予防短期入所療養介護",
+        "介護予防特定施設入居者生活介護",
+        "介護予防認知症対応型共同生活介護"
+      ],
+      "mapped_item_count": 8,
+      "rows": [
+        {
+          "region_class": "一級地",
+          "ratio_per_thousand": 1090,
+          "unit_price_yen": 10.9,
+          "source_locator": "第一号 表 / 一級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "二級地",
+          "ratio_per_thousand": 1072,
+          "unit_price_yen": 10.72,
+          "source_locator": "第一号 表 / 二級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "三級地",
+          "ratio_per_thousand": 1068,
+          "unit_price_yen": 10.68,
+          "source_locator": "第一号 表 / 三級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "四級地",
+          "ratio_per_thousand": 1054,
+          "unit_price_yen": 10.54,
+          "source_locator": "第一号 表 / 四級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "五級地",
+          "ratio_per_thousand": 1045,
+          "unit_price_yen": 10.45,
+          "source_locator": "第一号 表 / 五級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "六級地",
+          "ratio_per_thousand": 1027,
+          "unit_price_yen": 10.27,
+          "source_locator": "第一号 表 / 六級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "七級地",
+          "ratio_per_thousand": 1014,
+          "unit_price_yen": 10.14,
+          "source_locator": "第一号 表 / 七級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "その他",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / その他 / サービス種類行 / 割合"
+        }
+      ]
+    },
+    {
+      "profile_id": "group-1110",
+      "verification_state": "PASS",
+      "verification_method": "DIRECT_OFFICIAL_TABLE_REPARSE",
+      "official_service_names": [
+        "訪問リハビリテーション",
+        "通所リハビリテーション",
+        "短期入所生活介護",
+        "認知症対応型通所介護",
+        "小規模多機能型居宅介護",
+        "看護小規模多機能型居宅介護",
+        "介護予防訪問リハビリテーション",
+        "介護予防通所リハビリテーション",
+        "介護予防短期入所生活介護",
+        "介護予防認知症対応型通所介護",
+        "介護予防小規模多機能型居宅介護"
+      ],
+      "mapped_item_count": 8,
+      "rows": [
+        {
+          "region_class": "一級地",
+          "ratio_per_thousand": 1110,
+          "unit_price_yen": 11.1,
+          "source_locator": "第一号 表 / 一級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "二級地",
+          "ratio_per_thousand": 1088,
+          "unit_price_yen": 10.88,
+          "source_locator": "第一号 表 / 二級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "三級地",
+          "ratio_per_thousand": 1083,
+          "unit_price_yen": 10.83,
+          "source_locator": "第一号 表 / 三級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "四級地",
+          "ratio_per_thousand": 1066,
+          "unit_price_yen": 10.66,
+          "source_locator": "第一号 表 / 四級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "五級地",
+          "ratio_per_thousand": 1055,
+          "unit_price_yen": 10.55,
+          "source_locator": "第一号 表 / 五級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "六級地",
+          "ratio_per_thousand": 1033,
+          "unit_price_yen": 10.33,
+          "source_locator": "第一号 表 / 六級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "七級地",
+          "ratio_per_thousand": 1017,
+          "unit_price_yen": 10.17,
+          "source_locator": "第一号 表 / 七級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "その他",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / その他 / サービス種類行 / 割合"
+        }
+      ]
+    },
+    {
+      "profile_id": "group-1140",
+      "verification_state": "PASS",
+      "verification_method": "DIRECT_OFFICIAL_TABLE_REPARSE",
+      "official_service_names": [
+        "訪問介護",
+        "訪問入浴介護",
+        "訪問看護",
+        "定期巡回・随時対応型訪問介護看護",
+        "夜間対応型訪問介護",
+        "居宅介護支援",
+        "介護予防訪問入浴介護",
+        "介護予防訪問看護",
+        "介護予防支援"
+      ],
+      "mapped_item_count": 8,
+      "rows": [
+        {
+          "region_class": "一級地",
+          "ratio_per_thousand": 1140,
+          "unit_price_yen": 11.4,
+          "source_locator": "第一号 表 / 一級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "二級地",
+          "ratio_per_thousand": 1112,
+          "unit_price_yen": 11.12,
+          "source_locator": "第一号 表 / 二級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "三級地",
+          "ratio_per_thousand": 1105,
+          "unit_price_yen": 11.05,
+          "source_locator": "第一号 表 / 三級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "四級地",
+          "ratio_per_thousand": 1084,
+          "unit_price_yen": 10.84,
+          "source_locator": "第一号 表 / 四級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "五級地",
+          "ratio_per_thousand": 1070,
+          "unit_price_yen": 10.7,
+          "source_locator": "第一号 表 / 五級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "六級地",
+          "ratio_per_thousand": 1042,
+          "unit_price_yen": 10.42,
+          "source_locator": "第一号 表 / 六級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "七級地",
+          "ratio_per_thousand": 1021,
+          "unit_price_yen": 10.21,
+          "source_locator": "第一号 表 / 七級地 / サービス種類行 / 割合"
+        },
+        {
+          "region_class": "その他",
+          "ratio_per_thousand": 1000,
+          "unit_price_yen": 10,
+          "source_locator": "第一号 表 / その他 / サービス種類行 / 割合"
+        }
+      ]
+    }
+  ],
+  "service_projections": [
+    {
+      "service_id": "dayservice",
+      "official_service_name": "通所介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 通所介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "homevisit",
+      "official_service_name": "訪問介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 訪問介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "homebath",
+      "official_service_name": "訪問入浴介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 訪問入浴介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "homenursing",
+      "official_service_name": "訪問看護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 訪問看護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "homerehab",
+      "official_service_name": "訪問リハビリテーション",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 訪問リハビリテーション / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "homecaremanagement",
+      "official_service_name": "居宅療養管理指導",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "flat-1000",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 居宅療養管理指導 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "dayrehab",
+      "official_service_name": "通所リハビリテーション",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 通所リハビリテーション / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "shortstay-life",
+      "official_service_name": "短期入所生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 短期入所生活介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-dayservice",
+      "official_service_name": "地域密着型通所介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 地域密着型通所介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "regular-round",
+      "official_service_name": "定期巡回・随時対応型訪問介護看護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 定期巡回・随時対応型訪問介護看護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "night-homevisit",
+      "official_service_name": "夜間対応型訪問介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 夜間対応型訪問介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "care-management",
+      "official_service_name": "居宅介護支援",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 居宅介護支援 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-support",
+      "official_service_name": "介護予防支援",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防支援 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "shortstay-medical",
+      "official_service_name": "短期入所療養介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 短期入所療養介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-facility",
+      "official_service_name": "特定施設入居者生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 特定施設入居者生活介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "official_service_name": "福祉用具貸与",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "flat-1000",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 福祉用具貸与 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "official_service_name": "特定福祉用具販売",
+      "applicability": "NOT_APPLICABLE",
+      "service_level_item_body": "NOT_APPLICABLE",
+      "mapped_item_count": 0,
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        {
+          "source": "介護保険法",
+          "locator": "第44条第1項・第3項",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=1",
+          "reason": "特定福祉用具販売は居宅介護福祉用具購入費として、現に購入に要した費用を基礎に支給額を算定する。"
+        },
+        {
+          "source": "厚生労働大臣が定める一単位の単価（平成27年厚生労働省告示第93号）",
+          "locator": "第一号 表",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "reason": "一単位単価表のサービス種類には特定福祉用具販売を含めない。"
+        }
+      ],
+      "assurance": {
+        "currentness": "NOT_APPLICABLE",
+        "human_review": "NOT_APPLICABLE",
+        "publication": "NOT_APPLICABLE",
+        "route_exposure": "NOT_APPLICABLE",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "official_service_name": "認知症対応型通所介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 認知症対応型通所介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "official_service_name": "小規模多機能型居宅介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 小規模多機能型居宅介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "dementia-group-home",
+      "official_service_name": "認知症対応型共同生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 認知症対応型共同生活介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-specific-facility",
+      "official_service_name": "地域密着型特定施設入居者生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 地域密着型特定施設入居者生活介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "official_service_name": "地域密着型介護老人福祉施設入所者生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 地域密着型介護老人福祉施設入所者生活介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "official_service_name": "看護小規模多機能型居宅介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 看護小規模多機能型居宅介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "official_service_name": "介護福祉施設サービス",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護福祉施設サービス / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "official_service_name": "介護保健施設サービス",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護保健施設サービス / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "care-medical-institution",
+      "official_service_name": "介護医療院サービス",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護医療院サービス / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homebath",
+      "official_service_name": "介護予防訪問入浴介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防訪問入浴介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "official_service_name": "介護予防訪問看護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1140",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防訪問看護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "official_service_name": "介護予防訪問リハビリテーション",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防訪問リハビリテーション / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "official_service_name": "介護予防居宅療養管理指導",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "flat-1000",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防居宅療養管理指導 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "official_service_name": "介護予防通所リハビリテーション",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防通所リハビリテーション / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "official_service_name": "介護予防短期入所生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防短期入所生活介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "official_service_name": "介護予防短期入所療養介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防短期入所療養介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "official_service_name": "介護予防特定施設入居者生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防特定施設入居者生活介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "official_service_name": "介護予防福祉用具貸与",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "flat-1000",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防福祉用具貸与 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "official_service_name": "特定介護予防福祉用具販売",
+      "applicability": "NOT_APPLICABLE",
+      "service_level_item_body": "NOT_APPLICABLE",
+      "mapped_item_count": 0,
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        {
+          "source": "介護保険法",
+          "locator": "第56条第1項・第3項",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0&pageNo=2",
+          "reason": "特定介護予防福祉用具販売は介護予防福祉用具購入費として、現に購入に要した費用を基礎に支給額を算定する。"
+        },
+        {
+          "source": "厚生労働大臣が定める一単位の単価（平成27年厚生労働省告示第93号）",
+          "locator": "第一号 表",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "reason": "一単位単価表のサービス種類には特定介護予防福祉用具販売を含めない。"
+        }
+      ],
+      "assurance": {
+        "currentness": "NOT_APPLICABLE",
+        "human_review": "NOT_APPLICABLE",
+        "publication": "NOT_APPLICABLE",
+        "route_exposure": "NOT_APPLICABLE",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "official_service_name": "介護予防認知症対応型通所介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防認知症対応型通所介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "official_service_name": "介護予防小規模多機能型居宅介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1110",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防小規模多機能型居宅介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "official_service_name": "介護予防認知症対応型共同生活介護",
+      "applicability": "APPLIES",
+      "multiplier_profile_id": "group-1090",
+      "service_level_item_body": "PASS",
+      "mapped_item_count": 8,
+      "source_locator": "第一号 表 / 介護予防認知症対応型共同生活介護 / 地域区分別割合",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "assurance": {
+        "currentness": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED",
+        "route_exposure": "UNCHANGED",
+        "automatic_promotion_allowed": false
+      }
+    }
+  ],
+  "summary": {
+    "applicable_services": 37,
+    "pass": 37,
+    "partial": 0,
+    "not_established": 0,
+    "not_applicable": 2
+  },
+  "safety": {
+    "human_review_promoted": false,
+    "currentness_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false,
+    "automatic_promotion_allowed": false,
+    "note": "PASS is limited to item-body equality for the pinned official source version and explicit service applicability. It does not establish latest/current status."
+  }
+}
