@@ -141,6 +141,20 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(sale["item_body_verification"]["state"], "NOT_APPLICABLE")
         self.assertEqual(sale["currentness"]["state"], "NOT_APPLICABLE")
 
+    def test_other_national_item_body_projection_is_partial_and_cross_axis_fail_closed(self):
+        for row in self.matrix["services"]:
+            cell = self.cell(row["service_id"], "other_national_manuals_forms")
+            self.assertEqual(cell["item_body_verification"]["state"], "PARTIAL", row["service_id"])
+            self.assertIn(
+                f"data/shared/other-national-materials/item-body-assurance.json#{row['service_id']}",
+                cell["item_body_verification"]["evidence"],
+                row["service_id"],
+            )
+            self.assertEqual(cell["currentness"]["state"], "NOT_ESTABLISHED", row["service_id"])
+            self.assertEqual(cell["human_review"]["state"], "NOT_REVIEWED", row["service_id"])
+            self.assertEqual(cell["publication"]["state"], "BLOCKED", row["service_id"])
+            self.assertEqual(cell["route_exposure"]["state"], "BLOCKED", row["service_id"])
+
     def test_shared_care_act_item_body_pass_does_not_promote_other_assurance_layers(self):
         for row in self.matrix["services"]:
             cell = self.cell(row["service_id"], "care_insurance_act")
