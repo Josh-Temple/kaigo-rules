@@ -24,6 +24,12 @@ class HomeServiceRemunerationExpansionTest(unittest.TestCase):
         cls.matrix = json.loads(
             (ROOT / "data/database-coverage-matrix.generated.json").read_text(encoding="utf-8")
         )
+        cls.remuneration_assurance = {
+            row["service_id"]: row
+            for row in json.loads(
+                (ROOT / "data/shared/remuneration-notification/service-item-body-assurance.json").read_text(encoding="utf-8")
+            )["services"]
+        }
 
     def test_target_indexes_are_bounded_and_fail_closed(self):
         for service_id, (start, next_section, top_count, child_count, total) in TARGETS.items():
@@ -77,7 +83,10 @@ class HomeServiceRemunerationExpansionTest(unittest.TestCase):
                     if row["source_family"] == "remuneration_notification"
                 )
                 self.assertEqual(cell["ingestion"]["state"], "INGESTED")
-                self.assertEqual(cell["item_body_verification"]["state"], "NOT_ESTABLISHED")
+                self.assertEqual(
+                    cell["item_body_verification"]["state"],
+                    self.remuneration_assurance[service_id]["projection_state"],
+                )
                 self.assertEqual(cell["currentness"]["state"], "NOT_ESTABLISHED")
                 self.assertEqual(cell["human_review"]["state"], "NOT_REVIEWED")
                 self.assertEqual(cell["publication"]["state"], "BLOCKED")
