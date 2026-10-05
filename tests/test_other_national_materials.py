@@ -23,6 +23,7 @@ class OtherNationalMaterialsTest(unittest.TestCase):
         cls.receipts = json.loads((cls.base / "source-observation-receipts.json").read_text(encoding="utf-8"))
         cls.body = json.loads((cls.base / "canonical-body-items.json").read_text(encoding="utf-8"))
         cls.item_assurance = json.loads((cls.base / "item-body-assurance.json").read_text(encoding="utf-8"))
+        cls.currentness = json.loads((cls.base / "currentness-assurance.json").read_text(encoding="utf-8"))
         cls.service_manifest = json.loads((ROOT / "data/services/manifest.json").read_text(encoding="utf-8"))
 
     def test_validator_passes(self):
@@ -177,6 +178,25 @@ class OtherNationalMaterialsTest(unittest.TestCase):
             not_applicable,
             {"homecaremanagement", "preventive-homecaremanagement", "preventive-support"},
         )
+
+    def test_currentness_axis_is_source_level_and_fail_closed(self):
+        source_ids = {row["source_id"] for row in self.corpus["sources"]}
+        currentness_rows = {
+            row["canonical_source_id"]: row
+            for row in self.currentness["sources"]
+        }
+        self.assertEqual(set(currentness_rows), source_ids)
+        self.assertEqual(
+            {row["state"] for row in currentness_rows.values()},
+            {"PARTIAL"},
+        )
+        self.assertFalse(self.currentness["policies"]["item_body_implies_currentness"])
+        self.assertFalse(self.currentness["policies"]["source_level_currentness_implies_service_currentness"])
+        self.assertFalse(self.currentness["policies"]["service_projection_allowed"])
+        for row in currentness_rows.values():
+            self.assertFalse(row["service_projection_allowed"])
+            self.assertTrue(row["evidence"])
+            self.assertTrue(row["unresolved"])
 
     def test_locator_evidence_never_invents_source_byte_hashes(self):
         for row in self.receipts["receipts"]:
