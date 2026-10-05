@@ -93,12 +93,14 @@
           "scoped_section_fully_verified": false
         }
       ],
-      "evidence_source_id": "rouki36-r8-amendment-comparison-direct",
       "primary_source_url": "https://www.mhlw.go.jp/content/12404000/001682729.pdf",
       "proves_current_integrated_body": false,
       "proves_currentness": false,
       "human_review": false,
-      "note": "Direct official R8 amendment text closes only the listed amendment-item bodies. Because the PDF is 抄 / 新旧 and unchanged ranges are omitted, no whole-section canonical node is counted as verified and no service-level PASS is permitted."
+      "note": "Direct official R8 amendment text closes only the listed amendment-item bodies. Because the PDF is 抄 / 新旧 and unchanged ranges are omitted, no whole-section canonical node is counted as verified and no service-level PASS is permitted.",
+      "evidence_snapshot": "data/shared/fee-guidance/r8-rouki36-bounded-amendment-evidence.txt",
+      "evidence_snapshot_sha256": "3f18b24de5bf3f786dfab150b3f00fb0e14cab016b1ec30587be97e0bee47859",
+      "official_index_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html"
     },
     {
       "id": "fee-guidance.preventive.r8-bounded-amendment-direct",
@@ -126,12 +128,14 @@
           "scoped_section_fully_verified": false
         }
       ],
-      "evidence_source_id": "preventive-guidance-r8-amendment-comparison-direct",
       "primary_source_url": "https://www.mhlw.go.jp/content/12404000/001675938.pdf",
       "proves_current_integrated_body": false,
       "proves_currentness": false,
       "human_review": false,
-      "note": "Direct official R8 amendment text closes only the listed amendment-item bodies. Because the PDF is 抄 / 新旧 and unchanged ranges are omitted, no whole-section canonical node is counted as verified and no service-level PASS is permitted."
+      "note": "Direct official R8 amendment text closes only the listed amendment-item bodies. Because the PDF is 抄 / 新旧 and unchanged ranges are omitted, no whole-section canonical node is counted as verified and no service-level PASS is permitted.",
+      "evidence_snapshot": "data/shared/fee-guidance/r8-preventive-bounded-amendment-evidence.txt",
+      "evidence_snapshot_sha256": "01b00b38289d5783c453a032622f9886c5ff5bde6d863cce9133002400fde482",
+      "official_index_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html"
     }
   ],
   "service_projections": [
@@ -232,13 +236,15 @@
       "projection_to_pass_permitted": false,
       "reason": "Direct official R8 amendment text is available for the listed added item, but the source is an 抄 / 新旧 comparison with unchanged ranges omitted; the full scoped section body and integrated current version remain not established.",
       "bounded_direct_amendment_evidence": {
-        "evidence_source_id": "rouki36-r8-amendment-comparison-direct",
         "locator": "第二 4 訪問看護費 (31)",
         "official_primary_source": true,
         "verified_item_range_only": true,
         "full_scoped_node_verified": false,
         "current_integrated_body_established": false,
-        "currentness_established": false
+        "currentness_established": false,
+        "evidence_snapshot": "data/shared/fee-guidance/r8-rouki36-bounded-amendment-evidence.txt",
+        "evidence_snapshot_sha256": "3f18b24de5bf3f786dfab150b3f00fb0e14cab016b1ec30587be97e0bee47859",
+        "source_kind": "R8_AMENDMENT_COMPARISON_DIRECT_EVIDENCE"
       }
     },
     {
@@ -256,13 +262,15 @@
       "projection_to_pass_permitted": false,
       "reason": "Direct official R8 amendment text is available for the listed added item, but the source is an 抄 / 新旧 comparison with unchanged ranges omitted; the full scoped section body and integrated current version remain not established.",
       "bounded_direct_amendment_evidence": {
-        "evidence_source_id": "rouki36-r8-amendment-comparison-direct",
         "locator": "第二 5 訪問リハビリテーション費 (18)",
         "official_primary_source": true,
         "verified_item_range_only": true,
         "full_scoped_node_verified": false,
         "current_integrated_body_established": false,
-        "currentness_established": false
+        "currentness_established": false,
+        "evidence_snapshot": "data/shared/fee-guidance/r8-rouki36-bounded-amendment-evidence.txt",
+        "evidence_snapshot_sha256": "3f18b24de5bf3f786dfab150b3f00fb0e14cab016b1ec30587be97e0bee47859",
+        "source_kind": "R8_AMENDMENT_COMPARISON_DIRECT_EVIDENCE"
       }
     },
     {
@@ -402,13 +410,15 @@
       "projection_to_pass_permitted": false,
       "reason": "Direct official R8 amendment text is available for the listed added item, but the source is an 抄 / 新旧 comparison with unchanged ranges omitted; the full scoped section body and integrated current version remain not established.",
       "bounded_direct_amendment_evidence": {
-        "evidence_source_id": "rouki36-r8-amendment-comparison-direct",
         "locator": "第三 居宅介護支援費 21",
         "official_primary_source": true,
         "verified_item_range_only": true,
         "full_scoped_node_verified": false,
         "current_integrated_body_established": false,
-        "currentness_established": false
+        "currentness_established": false,
+        "evidence_snapshot": "data/shared/fee-guidance/r8-rouki36-bounded-amendment-evidence.txt",
+        "evidence_snapshot_sha256": "3f18b24de5bf3f786dfab150b3f00fb0e14cab016b1ec30587be97e0bee47859",
+        "source_kind": "R8_AMENDMENT_COMPARISON_DIRECT_EVIDENCE"
       }
     },
     {
@@ -426,13 +436,15 @@
       "projection_to_pass_permitted": false,
       "reason": "Direct official R8 amendment text is available for the listed added item, but the source is an 抄 / 新旧 comparison with unchanged ranges omitted; the full scoped section body and integrated current version remain not established.",
       "bounded_direct_amendment_evidence": {
-        "evidence_source_id": "preventive-guidance-r8-amendment-comparison-direct",
         "locator": "第二 11 介護予防支援 (6)",
         "official_primary_source": true,
         "verified_item_range_only": true,
         "full_scoped_node_verified": false,
         "current_integrated_body_established": false,
-        "currentness_established": false
+        "currentness_established": false,
+        "evidence_snapshot": "data/shared/fee-guidance/r8-preventive-bounded-amendment-evidence.txt",
+        "evidence_snapshot_sha256": "01b00b38289d5783c453a032622f9886c5ff5bde6d863cce9133002400fde482",
+        "source_kind": "R8_AMENDMENT_COMPARISON_DIRECT_EVIDENCE"
       }
     },
     {
@@ -658,13 +670,15 @@
       "projection_to_pass_permitted": false,
       "reason": "Direct official R8 amendment text is available for the listed added item, but the source is an 抄 / 新旧 comparison with unchanged ranges omitted; the full scoped section body and integrated current version remain not established.",
       "bounded_direct_amendment_evidence": {
-        "evidence_source_id": "preventive-guidance-r8-amendment-comparison-direct",
         "locator": "第二 3 介護予防訪問看護費 (28)",
         "official_primary_source": true,
         "verified_item_range_only": true,
         "full_scoped_node_verified": false,
         "current_integrated_body_established": false,
-        "currentness_established": false
+        "currentness_established": false,
+        "evidence_snapshot": "data/shared/fee-guidance/r8-preventive-bounded-amendment-evidence.txt",
+        "evidence_snapshot_sha256": "01b00b38289d5783c453a032622f9886c5ff5bde6d863cce9133002400fde482",
+        "source_kind": "R8_AMENDMENT_COMPARISON_DIRECT_EVIDENCE"
       }
     },
     {
@@ -682,13 +696,15 @@
       "projection_to_pass_permitted": false,
       "reason": "Direct official R8 amendment text is available for the listed added item, but the source is an 抄 / 新旧 comparison with unchanged ranges omitted; the full scoped section body and integrated current version remain not established.",
       "bounded_direct_amendment_evidence": {
-        "evidence_source_id": "preventive-guidance-r8-amendment-comparison-direct",
         "locator": "第二 4 介護予防訪問リハビリテーション費 (16)",
         "official_primary_source": true,
         "verified_item_range_only": true,
         "full_scoped_node_verified": false,
         "current_integrated_body_established": false,
-        "currentness_established": false
+        "currentness_established": false,
+        "evidence_snapshot": "data/shared/fee-guidance/r8-preventive-bounded-amendment-evidence.txt",
+        "evidence_snapshot_sha256": "01b00b38289d5783c453a032622f9886c5ff5bde6d863cce9133002400fde482",
+        "source_kind": "R8_AMENDMENT_COMPARISON_DIRECT_EVIDENCE"
       }
     },
     {
@@ -864,5 +880,34 @@
     "publication_promoted": false,
     "route_exposure_promoted": false,
     "global_generated_artifacts_updated": false
-  }
+  },
+  "version_resolution_observations": [
+    {
+      "source_identity": "rouki36-mhlw-t-doc-body-version-unresolved",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4378&dataType=1&pageNo=1",
+      "evidence_snapshot": "data/shared/fee-guidance/mhlw-tdoc-rouki36-version-unresolved.txt",
+      "evidence_snapshot_sha256": "d0d4cc41ca677bb48ac67e360bde523e616494d72fbda1d5240d230e346c8e03",
+      "result": "BODY_LOCATOR_VERSION_UNRESOLVED",
+      "currentness_established": false,
+      "note": "Official MHLW body locator observed, but an R8 integrated current version was not established from this display."
+    },
+    {
+      "source_identity": "rouki40-mhlw-t-doc-body-version-unresolved",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4383&dataType=1&pageNo=1",
+      "evidence_snapshot": "data/shared/fee-guidance/mhlw-tdoc-rouki40-version-unresolved.txt",
+      "evidence_snapshot_sha256": "d659c604dbdd45c509693008025ab34cd2df2fc43fd01852b1b7675d64a9ce04",
+      "result": "BODY_LOCATOR_VERSION_UNRESOLVED",
+      "currentness_established": false,
+      "note": "Official MHLW body locator observed; independent amendment-chain closure was not established in this worker."
+    },
+    {
+      "source_identity": "preventive-guidance-mhlw-t-doc-body-version-unresolved",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tb6545&dataType=1&pageNo=1",
+      "evidence_snapshot": "data/shared/fee-guidance/mhlw-tdoc-preventive-version-unresolved.txt",
+      "evidence_snapshot_sha256": "d6997651c06db0c2ebff20c4e52771bc9b9c8a07214d0c600366afba2b7bd95c",
+      "result": "BODY_LOCATOR_VERSION_UNRESOLVED",
+      "currentness_established": false,
+      "note": "Official MHLW body locator observed, but the separately published R8 amendment comparison prevents treating this display alone as an integrated current body."
+    }
+  ]
 }
