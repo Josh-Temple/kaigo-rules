@@ -55,8 +55,12 @@ def validate() -> list[str]:
         errors.append("manifest corpus_id mismatch")
     if corpus.get("corpus_id") != manifest.get("corpus_id"):
         errors.append("corpus_id mismatch between manifest and corpus")
-    if manifest.get("foundation_state") != "CANONICAL_SHARED_CORPUS_ESTABLISHED_NOT_PROJECTED":
-        errors.append("manifest foundation_state is not canonical/not-projected")
+    if manifest.get("foundation_state") != "CANONICAL_SHARED_CORPUS_ITEM_BODY_ASSURANCE_PARTIAL_NOT_PROJECTED":
+        errors.append("manifest foundation_state is not canonical/item-body-partial/not-projected")
+    if manifest.get("canonical_body_store") != "data/shared/other-national-materials/canonical-body-items.json":
+        errors.append("manifest canonical_body_store mismatch")
+    if manifest.get("item_body_assurance") != "data/shared/other-national-materials/item-body-assurance.json":
+        errors.append("manifest item_body_assurance mismatch")
     if manifest.get("canonical_node_store") != "data/shared/other-national-materials/national-corpus.json":
         errors.append("manifest canonical_node_store mismatch")
 
@@ -153,19 +157,39 @@ def validate() -> list[str]:
             if row.get("canonical_source_id") is not None or row.get("canonical_node_id") is not None:
                 errors.append(f"{cid}: nonaccepted source has canonical identity")
 
+    expected_body_states = {
+        "mhlw-application-forms": ("STRUCTURED_PARTIAL", "PARTIAL"),
+        "mhlw-electronic-application-operator-manual-v2-50": ("REFERENCE_ONLY", "NOT_ESTABLISHED"),
+        "mhlw-accident-report-vol1332": ("STRUCTURED_VERIFIED", "PASS"),
+        "mhlw-care-business-financial-db-manual-v1-20": ("REFERENCE_ONLY", "NOT_ESTABLISHED"),
+    }
     for row in corpus_rows:
         cid = row.get("candidate_id", "<missing>")
+        source_id = row.get("source_id")
         if row.get("body_duplicated") is not False:
             errors.append(f"{cid}: service/source body duplication is forbidden")
-        if row.get("content_mode") != "REFERENCE_ONLY":
-            errors.append(f"{cid}: canonical corpus must stay reference-only in this worker")
+        expected_mode, expected_item_state = expected_body_states.get(
+            source_id, ("REFERENCE_ONLY", "NOT_ESTABLISHED")
+        )
+        if row.get("content_mode") != expected_mode:
+            errors.append(
+                f"{cid}: content_mode mismatch {row.get('content_mode')} != {expected_mode}"
+            )
         assurance = row.get("assurance") or {}
-        if assurance.get("item_body_verification") != "NOT_ESTABLISHED":
-            errors.append(f"{cid}: item-body verification was overpromoted")
+        if assurance.get("item_body_verification") != expected_item_state:
+            errors.append(
+                f"{cid}: item-body state mismatch "
+                f"{assurance.get('item_body_verification')} != {expected_item_state}"
+            )
+        if assurance.get("currentness") not in {"PARTIAL", "NOT_ESTABLISHED"}:
+            errors.append(f"{cid}: currentness was overpromoted by item-body work")
         if assurance.get("human_review") != "NOT_REVIEWED":
             errors.append(f"{cid}: human review was overpromoted")
         if assurance.get("publication") != "BLOCKED" or assurance.get("route_exposure") != "BLOCKED":
             errors.append(f"{cid}: publication/route was overpromoted")
+
+    if corpus.get("assurance", {}).get("item_body_verification") != "PARTIAL":
+        errors.append("corpus-level item-body assurance must remain PARTIAL")
 
     evidence_policy = receipts.get("evidence_policy") or {}
     if evidence_policy.get("locator_receipt_does_not_establish_item_body_verification") is not True:
@@ -267,6 +291,35 @@ def validate() -> list[str]:
         errors.append("audit indicates a duplicate/out-of-scope promotion")
     if audit.get("canonical_promotion", {}).get("global_generated_artifacts_regenerated") is not False:
         errors.append("Worker B must not claim global generated artifact regeneration")
+
+    allowed_inventory_categories = set(registry.get("inventory_category_values", []))
+    if not allowed_inventory_categories:
+        errors.append("inventory category vocabulary is missing")
+    for row in registry_rows:
+        category = row.get("inventory_category")
+        if category not in allowed_inventory_categories:
+            errors.append(f"{row.get('candidate_id')}: missing/unknown inventory category {category}")
+    inventory_counts = Counter(row.get("inventory_category") for row in registry_rows)
+    recorded_inventory = audit.get("inventory_normalization") or {}
+    for category in allowed_inventory_categories:
+        if recorded_inventory.get(category, 0) != inventory_counts.get(category, 0):
+            errors.append(f"inventory category count mismatch for {category}")
+
+    item_audit = audit.get("item_body_assurance") or {}
+    if item_audit.get("source_states") != {"PASS": 1, "PARTIAL": 1, "NOT_ESTABLISHED": 2}:
+        errors.append("item-body source-state audit mismatch")
+    if item_audit.get("service_states") != {"PASS": 0, "PARTIAL": 39, "NOT_ESTABLISHED": 0}:
+        errors.append("item-body service-state audit mismatch")
+    for key in (
+        "blanket_service_pass_applied",
+        "currentness_promoted",
+        "human_review_promoted",
+        "publication_promoted",
+        "route_exposure_promoted",
+        "global_generated_artifacts_regenerated",
+    ):
+        if item_audit.get(key) is not False:
+            errors.append(f"unsafe item-body audit flag: {key}")
 
     currentness_counts = Counter(row.get("currentness_state") for row in registry_rows)
     if audit.get("currentness_not_established_count") != currentness_counts.get("NOT_ESTABLISHED", 0):
