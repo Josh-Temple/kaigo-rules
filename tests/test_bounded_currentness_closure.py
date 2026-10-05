@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts/validate_bounded_currentness_closure.py"
-ARTIFACT = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
+ARTIFACT = ROOT / "data/verification/public-value-currentness-expansion-worker-b.json"
 ACTIVATION = ROOT / "data/verification/shared-source-currentness-activation.json"
 ORD37_AUDIT = ROOT / "data/verification/existing-ordinance37-service-slices-independent-audit.json"
 SHARED_AUDIT = ROOT / "data/shared/standards/independent-audit.json"
