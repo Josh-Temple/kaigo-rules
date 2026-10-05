@@ -153,9 +153,9 @@ def build(observed_date:str):
                 "index_path":str(ip.relative_to(ROOT)),"reason_codes":["SOURCE_BOUNDARY_OR_URL_NOT_ESTABLISHED"],
                 "projection_applied_to_coverage_matrix":True,"safety":safety()}); continue
         ident=identity(idx,scope); doc=fetch_doc(url,cache); did=ident.get("source_id") or doc["document_key"]
-        docs[did]={"source_id":ident.get("source_id"),"notice_number":ident.get("notice_number"),"title":ident.get("title"),
+        docs.setdefault(doc["document_key"],{"source_id":ident.get("source_id"),"notice_number":ident.get("notice_number"),"title":ident.get("title"),
                    "document_key":doc["document_key"],"pages":doc["pages"],"document_semantic_sha256":doc["document_semantic_sha256"],
-                   "snapshot_version":f"MHLW_CONSOLIDATED_DISPLAY_OBSERVED_{observed_date}","currentness_claimed":False}
+                   "snapshot_version":f"MHLW_CONSOLIDATED_DISPLAY_OBSERVED_{observed_date}","currentness_claimed":False})
         try:
             a,b=locate(doc["lines"],start,end); body="\n".join(doc["lines"][a:b]).strip()
             if len(compact(body))<20: raise RuntimeError("section body too short")
