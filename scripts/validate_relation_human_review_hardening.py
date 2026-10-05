@@ -117,6 +117,14 @@ def validate() -> dict:
         raise ValueError("freshness was promoted without successor-absence proof")
     if freshness_item.get("closure_assessment") != "KEEP_OPEN":
         raise ValueError("freshness-sensitive relation was closed automatically")
+    successor_check = direct.get("successor_absence_check", {})
+    if successor_check.get("result") != "INSUFFICIENT_FOR_LATEST_CLAIM":
+        raise ValueError("freshness successor-absence check must remain fail-closed")
+    official_listing = direct.get("official_listing", {})
+    if official_listing.get("reviewed_through") != "介護保険最新情報Vol.1545":
+        raise ValueError("freshness official-listing review boundary is missing")
+    if not successor_check.get("limitation"):
+        raise ValueError("freshness negative-evidence limitation is missing")
 
     if packet["review_contract"]["automatic_promotion_allowed"]:
         raise ValueError("review packet must prohibit automatic promotion")
