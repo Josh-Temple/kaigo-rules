@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the explicit bounded-publication and route allowlists."""
-
+"""Validate explicit bounded-publication and route allowlists."""
 from __future__ import annotations
 
 import hashlib
@@ -28,24 +27,19 @@ FORBIDDEN_FIELDS = {
     "review_dependent_search_term",
 }
 
-
 class BoundedPublicationError(ValueError):
     pass
 
-
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
-
 
 def git_blob_sha(path: Path) -> str:
     body = path.read_bytes()
     header = f"blob {len(body)}\0".encode("utf-8")
     return hashlib.sha1(header + body).hexdigest()
 
-
 def cell_key(row: dict) -> tuple[str, str]:
     return row.get("service_id"), row.get("source_family")
-
 
 def validate(
     allowlist: dict | None = None,
@@ -54,11 +48,7 @@ def validate(
 ) -> dict:
     allowlist = allowlist if allowlist is not None else load_json(ALLOWLIST_PATH)
     readiness = readiness if readiness is not None else load_json(READINESS_PATH)
-    readiness_blob_sha = (
-        readiness_blob_sha
-        if readiness_blob_sha is not None
-        else git_blob_sha(READINESS_PATH)
-    )
+    readiness_blob_sha = readiness_blob_sha if readiness_blob_sha is not None else git_blob_sha(READINESS_PATH)
 
     policy = allowlist.get("policy", {})
     required_true = (
@@ -73,6 +63,7 @@ def validate(
         "preventive_services_group_with_non_preventive_counterpart",
         "preventive_support_is_standalone",
         "existing_public_surfaces_must_not_be_removed_by_zero_candidate_run",
+        "runtime_binding_required_for_nonempty_publication",
     )
     for key in required_true:
         if policy.get(key) is not True:
@@ -83,13 +74,12 @@ def validate(
         raise BoundedPublicationError("unexpected readiness source path")
     if source.get("git_blob_sha") != readiness_blob_sha:
         raise BoundedPublicationError(
-            "readiness artifact changed after Worker D selection; rerun Worker D against the new canonical readiness"
+            "readiness artifact changed after bounded-publication selection; regenerate allowlist"
         )
 
     rows = readiness.get("cells")
     if not isinstance(rows, list):
         raise BoundedPublicationError("readiness cells missing")
-
     by_key = {}
     for row in rows:
         key = cell_key(row)
@@ -98,25 +88,17 @@ def validate(
         by_key[key] = row
 
     ready = {
-        key
-        for key, row in by_key.items()
+        key for key, row in by_key.items()
         if row.get("readiness") == "READY_FOR_PUBLICATION_REVIEW"
     }
-    expected_ready = source.get("expected_ready_candidate_count")
-    if expected_ready != len(ready):
-        raise BoundedPublicationError(
-            f"ready candidate count changed: expected {expected_ready}, current {len(ready)}"
-        )
+    if source.get("expected_ready_candidate_count") != len(ready):
+        raise BoundedPublicationError("ready candidate count changed; regenerate allowlist")
 
     publication = allowlist.get("publication_cell_allowlist")
     routes = allowlist.get("route_allowlist")
     fields = allowlist.get("field_allowlist_by_cell")
-    if not isinstance(publication, list):
-        raise BoundedPublicationError("publication_cell_allowlist must be a list")
-    if not isinstance(routes, list):
-        raise BoundedPublicationError("route_allowlist must be a list")
-    if not isinstance(fields, dict):
-        raise BoundedPublicationError("field_allowlist_by_cell must be an object")
+    if not isinstance(publication, list) or not isinstance(routes, list) or not isinstance(fields, dict):
+        raise BoundedPublicationError("publication, route, and field allowlists must have canonical container types")
 
     max_cells = policy.get("max_publication_cells")
     if not isinstance(max_cells, int) or max_cells < 0 or max_cells > 10:
@@ -131,14 +113,17 @@ def validate(
             raise BoundedPublicationError(f"duplicate publication cell: {key}")
         publication_keys.append(key)
         row = by_key.get(key)
-        if row is None:
-            raise BoundedPublicationError(f"unknown publication cell: {key}")
-        if key not in ready:
+        if row is None or key not in ready:
             raise BoundedPublicationError(f"allowlist contains non-ready cell: {key}")
         if row.get("blocking_reasons"):
             raise BoundedPublicationError(f"allowlist contains blocked cell: {key}")
-
     publication_key_set = set(publication_keys)
+
+    runtime = allowlist.get("runtime_binding") or {}
+    if publication and runtime.get("established") is not True:
+        raise BoundedPublicationError("nonempty publication requires established runtime allowlist enforcement")
+    if publication and runtime.get("required_for_nonempty_publication") is not True:
+        raise BoundedPublicationError("runtime binding requirement cannot be disabled")
 
     route_keys = []
     for item in routes:
@@ -147,58 +132,50 @@ def validate(
             raise BoundedPublicationError(f"duplicate route allowlist cell: {key}")
         route_keys.append(key)
         if key not in publication_key_set:
-            raise BoundedPublicationError(
-                f"route allowlist is not a subset of publication allowlist: {key}"
-            )
+            raise BoundedPublicationError(f"route allowlist is not a subset of publication allowlist: {key}")
 
     for encoded_key, cell_fields in fields.items():
         if not isinstance(cell_fields, list):
             raise BoundedPublicationError(f"field allowlist must be a list: {encoded_key}")
         selected = set(cell_fields)
         if selected - SAFE_FIELDS:
-            raise BoundedPublicationError(
-                f"field allowlist contains unsafe or unknown fields: {encoded_key}: {sorted(selected - SAFE_FIELDS)}"
-            )
+            raise BoundedPublicationError(f"field allowlist contains unsafe or unknown fields: {encoded_key}")
         if selected & FORBIDDEN_FIELDS:
-            raise BoundedPublicationError(
-                f"forbidden relation/review field exposed: {encoded_key}"
-            )
+            raise BoundedPublicationError(f"forbidden relation/review field exposed: {encoded_key}")
         try:
             service_id, source_family = encoded_key.split("|", 1)
         except ValueError as exc:
-            raise BoundedPublicationError(
-                f"invalid field allowlist cell key: {encoded_key}"
-            ) from exc
+            raise BoundedPublicationError(f"invalid field allowlist cell key: {encoded_key}") from exc
         if (service_id, source_family) not in publication_key_set:
-            raise BoundedPublicationError(
-                f"field allowlist exists for non-published cell: {encoded_key}"
-            )
+            raise BoundedPublicationError(f"field allowlist exists for non-published cell: {encoded_key}")
+
+    summary = allowlist.get("summary", {})
+    if summary.get("published_cells_added") != len(publication):
+        raise BoundedPublicationError("published cell summary does not match allowlist")
+    if summary.get("routes_added") != len(routes):
+        raise BoundedPublicationError("route summary does not match allowlist")
+    if summary.get("existing_public_surfaces_changed") is not False:
+        raise BoundedPublicationError("this wave must not silently rewrite existing public surfaces")
 
     if not ready:
         if publication or routes or fields:
-            raise BoundedPublicationError(
-                "zero ready candidates must produce zero publication, routes, and field exposure"
-            )
-        summary = allowlist.get("summary", {})
-        if summary.get("published_cells_added") != 0:
-            raise BoundedPublicationError("zero-candidate run must add zero publication cells")
-        if summary.get("routes_added") != 0:
-            raise BoundedPublicationError("zero-candidate run must add zero routes")
-        if summary.get("existing_public_surfaces_changed") is not False:
-            raise BoundedPublicationError(
-                "zero-candidate run must preserve existing public surfaces"
-            )
+            raise BoundedPublicationError("zero ready candidates must produce zero publication, routes, and field exposure")
+        if summary.get("decision") != "NO_PUBLICATION_CHANGE":
+            raise BoundedPublicationError("zero-candidate decision must remain NO_PUBLICATION_CHANGE")
+    elif not publication:
+        if summary.get("decision") != "DEFER_PUBLICATION_FAIL_CLOSED":
+            raise BoundedPublicationError("ready-but-unpublished candidates must be explicitly deferred")
+        if runtime.get("blocker") != "RUNTIME_PUBLICATION_ALLOWLIST_BINDING_NOT_ESTABLISHED":
+            raise BoundedPublicationError("deferred publication must retain the runtime binding blocker")
 
     return {
         "ready_candidates": len(ready),
         "publication_allowlist_cells": len(publication_key_set),
         "route_allowlist_cells": len(set(route_keys)),
         "field_allowlist_cells": len(fields),
-        "existing_public_surfaces_changed": allowlist.get("summary", {}).get(
-            "existing_public_surfaces_changed"
-        ),
+        "runtime_binding_established": runtime.get("established") is True,
+        "existing_public_surfaces_changed": summary.get("existing_public_surfaces_changed"),
     }
-
 
 def main() -> None:
     result = validate()
@@ -206,9 +183,9 @@ def main() -> None:
         "bounded publication allowlist: PASS "
         f"({result['ready_candidates']} ready, "
         f"{result['publication_allowlist_cells']} published, "
-        f"{result['route_allowlist_cells']} routes)"
+        f"{result['route_allowlist_cells']} routes, "
+        f"runtime_binding={result['runtime_binding_established']})"
     )
-
 
 if __name__ == "__main__":
     main()
