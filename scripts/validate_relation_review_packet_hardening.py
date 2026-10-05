@@ -34,6 +34,7 @@ def main() -> None:
     queue = load("relation-verification-queue.json")
     packet = load("relation-human-review-packet.json")
     evidence = load("relation-human-review-evidence-pack.json")
+    freshness = load("relation-freshness-direct-evidence-assessment.json")
 
     if queue["inventory_relations"] != (
         queue["independently_covered_relations"] + queue["remaining_relations"]
@@ -49,7 +50,24 @@ def main() -> None:
         row for row in queue_items if row.get("classification") in WORKER_D_CLASSES
     ]
     if len(owned) != 58:
-        raise SystemExit(f"expected 58 Worker D relations, got {len(owned)}")
+        raise SystemExit(f"expected 58 human/semantic Worker D relations, got {len(owned)}")
+
+    freshness_queue = [
+        row
+        for row in queue_items
+        if row.get("classification")
+        == "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED"
+    ]
+    freshness_items = freshness.get("items", [])
+    if len(freshness_queue) != 1 or len(freshness_items) != 1:
+        raise SystemExit("expected exactly one freshness-sensitive relation")
+    freshness_identity = identity_tuple(freshness_items[0]["identity"])
+    if freshness_identity != identity_tuple(freshness_queue[0]["identity"]):
+        raise SystemExit("freshness assessment identity differs from queue")
+    if freshness_identity in {identity_tuple(row["identity"]) for row in owned}:
+        raise SystemExit("freshness relation overlaps human-review packet ownership")
+    if len(owned) + len(freshness_items) != queue["remaining_relations"]:
+        raise SystemExit("Worker D artifacts do not account for every remaining relation")
 
     packet_items = packet.get("items", [])
     evidence_items = evidence.get("items", [])
@@ -82,6 +100,19 @@ def main() -> None:
         "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED"
     ) != 1:
         raise SystemExit("freshness-sensitive relation count changed unexpectedly")
+
+    freshness_row = freshness_items[0]
+    direct = freshness_row.get("direct_evidence", {})
+    if direct.get("source_exists") is not True:
+        raise SystemExit("freshness relation source existence not established")
+    if direct.get("exact_source_identity_match") is not True:
+        raise SystemExit("freshness relation source identity is not exact")
+    if direct.get("amendment_semantics_supported") is not True:
+        raise SystemExit("freshness relation amendment semantics not supported")
+    if freshness_row.get("freshness", {}).get("state") != "NOT_ESTABLISHED":
+        raise SystemExit("freshness was promoted without successor-absence proof")
+    if freshness_row.get("closure_assessment") != "KEEP_OPEN":
+        raise SystemExit("freshness-sensitive relation was unsafely closed")
 
     relation_keys = []
     for row in packet_items:
@@ -176,7 +207,8 @@ def main() -> None:
         f"(inventory={queue['inventory_relations']}, "
         f"independent={queue['independently_covered_relations']}, "
         f"remaining={queue['remaining_relations']}, "
-        f"worker_d={len(owned)}, machine_safe_closures=0)"
+        f"worker_d_human_semantic={len(owned)}, freshness_sensitive=1, "
+        "machine_safe_closures=0)"
     )
 
 
