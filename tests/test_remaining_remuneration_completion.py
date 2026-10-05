@@ -46,6 +46,8 @@ class RemainingRemunerationCompletionTest(unittest.TestCase):
     def setUpClass(cls):
         cls.matrix = coverage.build()
         cls.by_service = {row["service_id"]: row for row in cls.matrix["services"]}
+        assurance = load("data/shared/remuneration-notification/service-item-body-assurance.json")
+        cls.remuneration_assurance = {row["service_id"]: row for row in assurance["services"]}
 
     def cell(self, service_id: str) -> dict:
         return next(
@@ -111,7 +113,16 @@ class RemainingRemunerationCompletionTest(unittest.TestCase):
 
                 cell = self.cell(sid)
                 self.assertEqual(cell["ingestion"]["state"], "INGESTED")
-                self.assertEqual(cell["item_body_verification"]["state"], "NOT_ESTABLISHED")
+                projection = self.remuneration_assurance[sid]
+                self.assertTrue(projection["projection_applied_to_coverage_matrix"])
+                self.assertEqual(cell["item_body_verification"]["state"], projection["projection_state"])
+                self.assertIn(projection["projection_state"], {"PASS", "PARTIAL", "NOT_ESTABLISHED"})
+                invariant_values = list((projection.get("invariants") or {}).values())
+                if projection["projection_state"] == "PASS":
+                    self.assertTrue(invariant_values)
+                    self.assertTrue(all(value is True for value in invariant_values))
+                else:
+                    self.assertFalse(invariant_values and all(value is True for value in invariant_values))
                 self.assertEqual(cell["currentness"]["state"], "NOT_ESTABLISHED")
                 self.assertEqual(cell["human_review"]["state"], "NOT_REVIEWED")
                 self.assertEqual(cell["publication"]["state"], "BLOCKED")
