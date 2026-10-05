@@ -140,8 +140,14 @@ def validate() -> list[str]:
             errors.append(f"{service_id}: PACKAGE blocker state mismatch")
 
     preventive = rows["preventive-support"]
-    if preventive["item_body"]["counts"] != {"PASS": 33, "PARTIAL": 1, "GAP": 0, "FAIL": 0}:
-        errors.append("preventive-support: residual item-body counts changed")
+    preventive_counts = preventive["item_body"]["counts"]
+    preventive_staging = load(
+        ROOT / "data/services/preventive-support/standards-interpretation-staging.json"
+    )
+    if sum(preventive_counts.values()) != preventive_staging.get("task_count"):
+        errors.append("preventive-support: item-body counts no longer cover the bounded staging task set")
+    if any(preventive_counts.get(key, 0) for key in ("PARTIAL", "GAP", "FAIL")):
+        errors.append("preventive-support: residual item-body gaps remain after evidence closure")
     if preventive["package"].get("blocker_task_id") != "KR2-10-E006":
         errors.append("preventive-support: KR2-10-E006 blocker not preserved")
 
