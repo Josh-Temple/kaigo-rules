@@ -82,11 +82,25 @@ jobs:
           nonpass = [sid for sid, row in rows if row["item_body_verification"]["state"] != "PASS"]
           assert not nonpass, f"projected item-body verification not PASS: {nonpass}"
           currentness = {sid: row["currentness"]["state"] for sid, row in rows}
-          assert all(state != "PASS" for state in currentness.values()), (
-              "item-body verification must not auto-promote currentness: " + repr(currentness)
+          bounded_path = Path("data/verification/bounded-currentness-closure-worker-b.json")
+          expected_currentness_pass = set()
+          if bounded_path.exists():
+              bounded = json.loads(bounded_path.read_text())
+              expected_currentness_pass = {
+                  item["service_id"]
+                  for item in bounded.get("promotions", [])
+                  if item.get("source_family") == "governing_standards_ordinance"
+                  and item.get("promotion_applied") is True
+              }
+          actual_currentness_pass = {
+              sid for sid, state in currentness.items() if state == "PASS"
+          }
+          assert actual_currentness_pass == expected_currentness_pass, (
+              "currentness PASS must come only from the explicit bounded currentness decision: "
+              + repr(currentness)
           )
           print("projected target item-body PASS: 10/10")
-          print("projected currentness remains separately non-PASS:", currentness)
+          print("bounded currentness PASS set:", sorted(actual_currentness_pass))
           PY
       - name: Upload verification report
         if: always()

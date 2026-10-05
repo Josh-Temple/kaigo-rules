@@ -1,0 +1,74 @@
+name: Verify bounded currentness closure
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/verification/bounded-currentness-closure-worker-b.json"
+      - "scripts/validate_bounded_currentness_closure.py"
+      - "tests/test_bounded_currentness_closure.py"
+      - "data/verification/shared-source-currentness-activation.json"
+      - "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+      - "data/ordinance37-meta.json"
+      - "data/ordinance37-nodes.json"
+      - "data/ordinance37-relations.json"
+      - "data/shared/standards/service-ordinance-map.json"
+      - "data/services/*/ordinance37-scope.json"
+      - ".github/workflows/verify-bounded-currentness-closure.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+
+      - name: Validate bounded currentness closure decision
+        run: python scripts/validate_bounded_currentness_closure.py
+
+      - name: Run bounded currentness regression tests
+        run: python -m unittest tests.test_bounded_currentness_closure
+
+      - name: Reverify exact service slices against live e-Gov
+        run: |
+          python scripts/verify_existing_ordinance37_service_slices.py             --report /tmp/ordinance37-service-slices-live.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("/tmp/ordinance37-service-slices-live.json").read_text())
+          if report.get("result") != "PASS":
+              raise SystemExit("live Ordinance 37 service-slice re-verification failed")
+          if report.get("summary", {}).get("services_pass") != 10:
+              raise SystemExit("live Ordinance 37 audited service count drifted")
+          print("PASS: live Ordinance 37 bounded service slices remain exact")
+          PY
+
+      - name: Recheck current e-Gov source identity
+        run: python scripts/verify_egov_source_freshness.py
+
+      - name: Confirm global generated coverage remains untouched/current
+        run: python scripts/build_database_coverage_matrix.py --check
+
+      - name: Reject Worker B edits to global generated/readiness artifacts
+        if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.title, '[Worker E]')
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          printf '%s\n' "$changed"
+          for path in             data/database-coverage-matrix.generated.json             docs/database-coverage-summary.generated.md             data/publication-readiness.generated.json
+          do
+            if printf '%s\n' "$changed" | grep -Fxq "$path"; then
+              echo "Worker B must not edit global generated/readiness artifact: $path" >&2
+              exit 1
+            fi
+          done

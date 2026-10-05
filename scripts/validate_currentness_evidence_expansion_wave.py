@@ -16,6 +16,7 @@ QA_META = ROOT / "data/qa-corpus-meta.json"
 SOURCES = ROOT / "data/sources.json"
 FEE_EVENTS = ROOT / "data/fee-guidance-amendment-events.json"
 RELATION_QUEUE = ROOT / "data/relation-verification-queue.json"
+BOUNDED_CURRENTNESS = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
 
 EXPECTED_BASE_SHA = "e0d814b1b22d449fd13784bbb051fba5c27df64e"
 EXPECTED_CURRENTNESS = {
@@ -86,6 +87,28 @@ def currentness_counts(matrix: dict[str, Any]) -> tuple[int, dict[str, int]]:
     return cells, counts
 
 
+def expected_current_matrix_counts() -> dict[str, int]:
+    """Apply later canonical bounded decisions to the historical receipt baseline."""
+    counts = dict(EXPECTED_CURRENTNESS)
+    if not BOUNDED_CURRENTNESS.exists():
+        return counts
+    bounded = load(BOUNDED_CURRENTNESS)
+    if bounded.get("artifact_kind") != "CANONICAL_BOUNDED_CURRENTNESS_CLOSURE_DECISION":
+        raise ValueError("unexpected bounded currentness artifact kind")
+    for row in bounded.get("promotions", []):
+        if row.get("promotion_applied") is not True:
+            continue
+        prior = str(row.get("prior_currentness_state") or "NOT_ESTABLISHED")
+        projected = str(row.get("projected_currentness_state") or "")
+        if projected != "PASS":
+            raise ValueError("bounded currentness projection must remain PASS")
+        counts[prior] = counts.get(prior, 0) - 1
+        if counts[prior] < 0:
+            raise ValueError(f"bounded currentness prior count underflow: {prior}")
+        counts[projected] = counts.get(projected, 0) + 1
+    return {key: value for key, value in counts.items() if value}
+
+
 def validate_egov_meta(
     errors: list[str],
     label: str,
@@ -135,8 +158,16 @@ def main() -> int:
     cells, counts = currentness_counts(matrix)
     if cells != snapshot.get("cells") or cells != 351:
         errors.append(f"coverage cell count drifted: {cells}")
-    if counts != EXPECTED_CURRENTNESS:
-        errors.append(f"coverage currentness counts drifted: {counts!r}")
+    try:
+        expected_matrix_currentness = expected_current_matrix_counts()
+    except ValueError as exc:
+        errors.append(str(exc))
+        expected_matrix_currentness = EXPECTED_CURRENTNESS
+    if counts != expected_matrix_currentness:
+        errors.append(
+            "coverage currentness counts drifted beyond canonical downstream decisions: "
+            f"observed={counts!r} expected={expected_matrix_currentness!r}"
+        )
     if snapshot.get("currentness") != EXPECTED_CURRENTNESS:
         errors.append("receipt currentness snapshot differs from expected base snapshot")
 

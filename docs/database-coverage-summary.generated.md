@@ -6,7 +6,7 @@
 - Source families: 9
 - Shared corpus available but service scope missing: 0
 - Genuinely missing corpus cells: 0
-- Currentness gaps on ingested cells: 343
+- Currentness gaps on ingested cells: 333
 - Item-body verification gaps on ingested cells: 138
 - Relation verification remaining: 59
 - Publication gaps on ingested cells: 330
@@ -17,7 +17,7 @@
 | Source family | Corpus | Scope | Ingestion | Item-body | Currentness | Human review | Publication | Route |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Long-Term Care Insurance Act | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
-| Governing standards ordinance | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | NOT_ESTABLISHED=37, PARTIAL=2 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
+| Governing standards ordinance | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | PASS=39 | NOT_ESTABLISHED=27, PARTIAL=2, PASS=10 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Standards interpretation notice | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=39 | NOT_ESTABLISHED=26, PASS=13 | BLOCKED=1, NOT_ESTABLISHED=38 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Remuneration notification | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=37, NOT_APPLICABLE=2 | NOT_ESTABLISHED=2, PARTIAL=36, PASS=1 | NOT_ESTABLISHED=38, PARTIAL=1 | NOT_REVIEWED=39 | AVAILABLE=2, BLOCKED=37 | AVAILABLE=2, BLOCKED=37 |
 | Delegated remuneration criteria | AVAILABLE=39 | SCOPE_DEFINED=39 | INGESTED=37, NOT_APPLICABLE=2 | NOT_ESTABLISHED=2, PASS=37 | NOT_ESTABLISHED=39 | NOT_REVIEWED=39 | BLOCKED=39 | BLOCKED=39 |

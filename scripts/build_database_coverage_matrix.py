@@ -524,6 +524,15 @@ def build_cell(
             f"data/shared/other-national-materials/item-body-assurance.json#{service_id}"
         ]
 
+    bounded_currentness = shared_context["bounded_currentness"].get((service_id, family["id"]))
+    if bounded_currentness:
+        if bounded_currentness.get("projected_currentness_state") != "PASS":
+            raise ValueError(f"bounded currentness promotion is not PASS: {service_id}::{family['id']}")
+        currentness_raw = ["PASS_BOUNDED_VERIFIED"]
+        currentness_evidence.append(
+            f"data/verification/bounded-currentness-closure-worker-b.json#{service_id}::{family['id']}"
+        )
+
     item_state = normalize_verification(content_raw[0] if len(content_raw) == 1 else (" | ".join(content_raw) if content_raw else None))
     if (
         family["id"] == "fee_calculation_guidance"
@@ -711,6 +720,12 @@ def build() -> dict:
     delegated_applicability_data = load("data/shared/remuneration-delegated/service-applicability.json")
     delegated_relations_data = load("data/shared/remuneration-delegated/service-relations.json")
     remuneration_assurance_data = load("data/shared/remuneration-notification/service-item-body-assurance.json")
+    bounded_currentness_path = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
+    bounded_currentness_data = (
+        load("data/verification/bounded-currentness-closure-worker-b.json")
+        if bounded_currentness_path.exists()
+        else {"promotions": []}
+    )
     fee_guidance_manifest_path = ROOT / "data/shared/fee-guidance/manifest.json"
     fee_guidance_manifest = load("data/shared/fee-guidance/manifest.json") if fee_guidance_manifest_path.exists() else None
     fee_guidance_applicability_data = (
@@ -817,6 +832,11 @@ def build() -> dict:
             row["service_id"]: row
             for row in delegated_relations_data.get("services", [])
         },
+        "bounded_currentness": {
+            (row["service_id"], row["source_family"]): row
+            for row in bounded_currentness_data.get("promotions", [])
+            if row.get("promotion_applied") is True
+        },
     }
 
     manifest_ids = [row["service_id"] for row in manifest.get("services", [])]
@@ -921,6 +941,7 @@ def build() -> dict:
             "data/services/*.json",
             "data/verification-registry.json",
             "data/verification/standards-interpretation-gates.json",
+            "data/verification/bounded-currentness-closure-worker-b.json",
             "data/relation-verification-queue.json",
             "data/shared/standards/manifest.json",
             "data/shared/standards-interpretation/remaining-source-register.json",
