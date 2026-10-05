@@ -1,0 +1,66 @@
+name: National source assurance integration repair
+
+on:
+  push:
+    branches:
+      - work/national-source-assurance-completion-integrator
+
+permissions:
+  contents: write
+
+concurrency:
+  group: national-source-assurance-integration-repair
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  repair-validate-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install PDF text extractor
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Remove transient validation artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          find scripts tests -type f -path '*/__pycache__/*.pyc' -delete
+          rm -f unit-price-service-profile-verification.json
+      - name: Regenerate corrected coverage projection
+        run: python scripts/build_database_coverage_matrix.py
+      - name: Validate Worker A unit-price assurance
+        run: |
+          python scripts/verify_unit_price_service_profiles.py --report /tmp/unit-price-service-profile-verification.json
+          python scripts/validate_unit_price_item_body_assurance.py
+      - name: Validate Worker B Other National assurance
+        run: |
+          python scripts/validate_other_national_materials.py
+          python scripts/validate_other_national_materials_item_body_assurance.py
+      - name: Validate Worker C currentness safety
+        run: python scripts/validate_national_source_currentness_expansion.py
+      - name: Validate Worker D relation review hardening
+        run: python scripts/validate_relation_human_review_hardening.py
+      - name: Full repository validation and build
+        run: npm run build
+      - name: Commit repaired projection and cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          find scripts tests -type f -path '*/__pycache__/*.pyc' -delete
+          rm -f unit-price-service-profile-verification.json
+          rm .github/workflows/national-source-assurance-integration-repair.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "[integrator] Repair Other National coverage projection and clean transient artifacts"
+          git push origin HEAD:work/national-source-assurance-completion-integrator
