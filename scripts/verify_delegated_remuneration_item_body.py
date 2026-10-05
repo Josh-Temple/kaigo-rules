@@ -17,6 +17,8 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+from verify_remuneration_independent import compare as compare_legacy_delegated
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 SHARED = DATA / "shared" / "remuneration-delegated"
@@ -187,7 +189,16 @@ def main() -> None:
             raise SystemExit(f"{source['source_id']}: receipt node count mismatch")
         live_by_id.update(observed)
 
+    legacy_report = compare_legacy_delegated()
+    if legacy_report.get("result") != "PASS":
+        raise SystemExit(
+            "legacy delegated compatibility verifier failed: "
+            + json.dumps(legacy_report.get("differences", {}), ensure_ascii=False)
+        )
+
     mismatches: list[str] = []
+    legacy_reference_count = 0
+    inline_comparison_count = 0
     for canonical_id, node in canonical_by_id.items():
         storage = node.get("text_storage") or {}
         if storage.get("kind") == "INLINE_SHARED_CORPUS":
@@ -205,8 +216,17 @@ def main() -> None:
         if exact_hash != node.get("text_sha256"):
             mismatches.append(f"{canonical_id}: canonical text_sha256 mismatch")
             continue
+
+        if storage.get("kind") == "LEGACY_REFERENCE":
+            # These exact legacy bodies are independently reparsed from live
+            # Notices 27/95 by verify_remuneration_independent.py above.
+            legacy_reference_count += 1
+            continue
+
         if compact(canonical_text) != compact(live_by_id.get(canonical_id, "")):
             mismatches.append(f"{canonical_id}: official body comparison mismatch")
+        else:
+            inline_comparison_count += 1
 
     compatibility_pass = 0
     for check in receipt.get("compatibility_node_verifications", []):
@@ -236,7 +256,9 @@ def main() -> None:
 
     print(
         "delegated remuneration independent item-body verification: PASS "
-        f"({len(canonical_by_id)} canonical nodes, {compatibility_pass} compatibility subnodes, "
+        f"({len(canonical_by_id)} canonical nodes: {inline_comparison_count} independently "
+        f"reconstructed inline nodes + {legacy_reference_count} legacy nodes covered by the "
+        f"existing independent live reparse; {compatibility_pass} compatibility subnodes; "
         f"{len(receipt.get('source_verifications', []))} official source documents)"
     )
 
