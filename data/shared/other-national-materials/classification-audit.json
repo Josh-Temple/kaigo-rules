@@ -144,5 +144,19 @@
     "publication_promoted": false,
     "route_exposure_promoted": false,
     "global_generated_artifacts_regenerated": false
+  },
+  "currentness_assurance": {
+    "artifact": "data/shared/other-national-materials/currentness-assurance.json",
+    "verified_at": "2026-10-06",
+    "source_states": {
+      "PASS": 0,
+      "PARTIAL": 4,
+      "NOT_ESTABLISHED": 0
+    },
+    "blanket_service_projection_applied": false,
+    "currentness_promoted_from_item_body": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false
   }
 }
