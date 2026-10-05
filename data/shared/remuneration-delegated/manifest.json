@@ -7,6 +7,7 @@
   "identity_map": "data/shared/remuneration-delegated/node-identity-map.json",
   "service_applicability": "data/shared/remuneration-delegated/service-applicability.json",
   "service_relations": "data/shared/remuneration-delegated/service-relations.json",
+  "item_body_verification": "data/shared/remuneration-delegated/item-body-verification.json",
   "legacy_compatibility": {
     "legacy_text_store": "data/remuneration-delegated-nodes.json",
     "node_ids_preserved": true,
@@ -114,10 +115,12 @@
     "source_pages": 9,
     "services_mapped": 37,
     "services_not_applicable": 2,
-    "services_unknown": 0
+    "services_unknown": 0,
+    "item_body_verified_top_level_nodes": 497,
+    "services_item_body_pass": 37
   },
   "assurance": {
-    "item_body_verification": "NOT_ESTABLISHED",
+    "item_body_verification": "PASS",
     "currentness": "NOT_ESTABLISHED",
     "service_applicability_verification": "NOT_ESTABLISHED",
     "service_relation_verification": "NOT_ESTABLISHED",

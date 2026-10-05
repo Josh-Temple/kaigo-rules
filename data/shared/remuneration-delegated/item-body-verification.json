@@ -1,0 +1,145 @@
+{
+  "format_version": 1,
+  "corpus_id": "delegated-remuneration-national",
+  "source_family": "delegated_remuneration_criteria",
+  "verification_kind": "INDEPENDENT_PRIMARY_SOURCE_BODY_COMPARISON",
+  "verified_at": "2026-10-05",
+  "canonical_corpus": "data/shared/remuneration-delegated/national-corpus.json",
+  "verification_channels": {
+    "inline_shared_nodes": "Independent BeautifulSoup reconstruction from the pinned official MHLW pages, compared on normalized full item bodies.",
+    "legacy_reference_nodes": "Existing scripts/verify_remuneration_independent.py independent live reparse of the exact legacy text-bearing Notice 27/95 nodes.",
+    "compatibility_subnodes": "Existing independent legacy live reparse plus canonical identity/text-hash validation against the verified Notice 27 parent section."
+  },
+  "source_verifications": [
+    {
+      "source_id": "mhlw-fee-notice27-base",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
+      "source_version_identity": "MHLW consolidated display snapshot represented by the three page hashes below",
+      "repository_source_status": "base_text_replay_pending",
+      "currentness_claimed": false,
+      "coverage_kind": "ALL_CANONICAL_TOP_LEVEL_NODES_IN_SOURCE",
+      "canonical_node_count": 24,
+      "page_snapshots": [
+        {
+          "page": 1,
+          "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+        },
+        {
+          "page": 2,
+          "sha256": "2b0fc2c256ed86868608c761eb54b7e39fec651a04cf7e3a87820bcd902c9612"
+        },
+        {
+          "page": 3,
+          "sha256": "327f87d0744a6d1b4da1312bbea5bee2bd85f0a7876bc92e1de1adea18520d8d"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "source_id": "mhlw-fee-criteria95-current",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+      "source_version_identity": "MHLW consolidated display snapshot represented by the four page hashes below",
+      "repository_source_status": "current_official_source",
+      "currentness_claimed": false,
+      "coverage_kind": "ALL_CANONICAL_TOP_LEVEL_NODES_IN_SOURCE",
+      "canonical_node_count": 358,
+      "page_snapshots": [
+        {
+          "page": 1,
+          "sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618"
+        },
+        {
+          "page": 2,
+          "sha256": "50267c187930ab9d647a31c7aeb9560f2637ffaaf01713e220cfd05d2a57c104"
+        },
+        {
+          "page": 3,
+          "sha256": "e311c5baa33f37874bd00d7402e5044bc55be8711393b17545701a8e668d89a8"
+        },
+        {
+          "page": 4,
+          "sha256": "cb196683bfe3194b944c354806818afde8799313038e4b197ae9b12a6edb571a"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "source_id": "mhlw-fee-facility-criteria96-current",
+      "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0",
+      "source_version_identity": "MHLW consolidated display snapshot represented by the two page hashes below",
+      "repository_source_status": "current_official_source",
+      "currentness_claimed": false,
+      "coverage_kind": "ALL_CANONICAL_TOP_LEVEL_NODES_IN_SOURCE",
+      "canonical_node_count": 115,
+      "page_snapshots": [
+        {
+          "page": 1,
+          "sha256": "7d8a6819f5147ad403b41d853b3921b57bbff8242b34d6cf95e9caeae327fb88"
+        },
+        {
+          "page": 2,
+          "sha256": "0826f9ea881d41d62e0340d652f5af07238bce6f5c826988a6c9625eb0ce9035"
+        }
+      ],
+      "result": "PASS"
+    }
+  ],
+  "compatibility_node_verifications": [
+    {
+      "canonical_node_id": "notice27.item.1.capacity",
+      "parent_canonical_node_id": "notice27.item.1",
+      "legacy_node_id": "calc27.dayservice.1.capacity",
+      "comparison_basis": "normalized legacy compatibility body is a direct contiguous body fragment of the independently verified official parent section",
+      "result": "PASS"
+    },
+    {
+      "canonical_node_id": "notice27.item.1.staffing",
+      "parent_canonical_node_id": "notice27.item.1",
+      "legacy_node_id": "calc27.dayservice.1.staffing",
+      "comparison_basis": "normalized legacy compatibility body is a direct contiguous body fragment of the independently verified official parent section",
+      "result": "PASS"
+    }
+  ],
+  "coverage": {
+    "verified_canonical_top_level_nodes": 497,
+    "verified_compatibility_subnodes": 2,
+    "source_documents": 3,
+    "source_pages": 9
+  },
+  "projection_policy": {
+    "service_level_pass_requires_all_referenced_nodes_verified": true,
+    "not_applicable_services_are_not_promoted": true,
+    "historical_or_superseded_source_statuses_rejected": [
+      "historical",
+      "superseded",
+      "historical_only"
+    ],
+    "source_level_verification_and_service_projection_recorded_separately": true,
+    "item_body_pass_does_not_promote_currentness": true,
+    "item_body_pass_does_not_promote_relation_verification": true,
+    "item_body_pass_does_not_promote_human_review": true,
+    "item_body_pass_does_not_promote_publication": true,
+    "item_body_pass_does_not_promote_route_exposure": true
+  },
+  "projection_invariants": [
+    "official primary source identity is fixed",
+    "source version is identified by exact official page snapshots",
+    "source snapshot/hash/locator is reproducible",
+    "canonical item body directly matches official body",
+    "service scope explicitly references the node set",
+    "service applicability is explicitly MAPPED",
+    "all service-referenced nodes are within verified coverage",
+    "historical or superseded source pins are rejected",
+    "omitted text or heading-only evidence is never treated as body verification",
+    "projection does not promote currentness, relation verification, human review, publication, or route exposure"
+  ],
+  "assurance_boundaries": {
+    "item_body_verification": "PASS",
+    "currentness": "NOT_ESTABLISHED",
+    "service_relation_verification": "NOT_ESTABLISHED",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_cross_axis_promotion_allowed": false
+  }
+}
