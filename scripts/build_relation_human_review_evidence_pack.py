@@ -31,6 +31,60 @@ def excerpt(value: str | None) -> str:
     return text if len(text) <= MAX_EXCERPT else text[:MAX_EXCERPT] + "…"
 
 
+PRIMARY_TEXT_KINDS = {"official_text", "official_current_source_text"}
+
+
+def evidence_pointer_status(row: dict) -> str:
+    kind = row.get("excerpt_kind")
+    if row.get("resolution_kind") == "QUESTION":
+        return "PRACTICAL_QUESTION_CONTEXT"
+    if kind in PRIMARY_TEXT_KINDS and row.get("source_url") and row.get("source_locator"):
+        return "DIRECT_PRIMARY_TEXT_POINTER"
+    if kind == "machine_reconstructed_candidate" and row.get("source_url"):
+        return "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE"
+    return "PRIMARY_TEXT_POINTER_INCOMPLETE"
+
+
+def machine_verifiable_subclaims(source: dict, target: dict) -> dict:
+    return {
+        "source_identity_resolved": bool(source.get("canonical_ids")),
+        "target_identity_resolved": bool(target.get("canonical_ids")),
+        "source_pointer_status": evidence_pointer_status(source),
+        "target_pointer_status": evidence_pointer_status(target),
+        "source_fingerprint_present": bool(source.get("text_hashes")),
+        "target_fingerprint_present": bool(target.get("text_hashes")),
+        "relation_semantics_verified": False,
+    }
+
+
+def closure_assessment(classification: str, source: dict) -> tuple[str, str]:
+    pointer_status = evidence_pointer_status(source)
+    if classification == "SEMANTIC_TEXT_CHECK_REQUIRED":
+        if pointer_status == "PRIMARY_TEXT_POINTER_INCOMPLETE":
+            return (
+                "KEEP_OPEN",
+                "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+            )
+        if pointer_status == "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE":
+            return (
+                "KEEP_OPEN",
+                "Human semantic adjudication is still required; reconstructed amendment text is not an independent relation decision.",
+            )
+        return (
+            "KEEP_OPEN",
+            "Compare both primary texts and adjudicate the exact interprets_or_explains semantics.",
+        )
+    if classification == "CROSS_LAYER_HUMAN_REVIEW_REQUIRED":
+        return (
+            "KEEP_OPEN",
+            "Human legal-semantic adjudication is required for the exact cross-layer relation.",
+        )
+    return (
+        "KEEP_OPEN",
+        "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+    )
+
+
 def resolve_ordinance_nodes(
     value: str,
     ordinance_by_id: dict[str, dict],
@@ -303,15 +357,31 @@ def build() -> dict:
             qa_items=qa_items,
             sources=sources,
         )
+        assessment, next_action = closure_assessment(item["classification"], source)
         items.append(
             {
                 "review_id": item["review_id"],
                 "identity": identity,
+                "relation_key": item["relation_key"],
                 "classification": item["classification"],
+                "source_label": item["source"]["label"],
+                "target_label": item["target"]["label"],
                 "source_evidence": source,
                 "target_evidence": target,
+                "machine_verifiable_subclaims": machine_verifiable_subclaims(source, target),
+                "human_judgment_question": item["human_judgment_question"],
+                "ai_proposal": item["ai_proposal"],
+                "competing_interpretation_or_ambiguity": item[
+                    "competing_interpretation_or_ambiguity"
+                ],
+                "closure_assessment": assessment,
+                "next_action": next_action,
+                "decision_options": item["decision_options"],
+                "review_status": "NOT_REVIEWED",
+                "reviewer_name": None,
                 "reviewer_decision": None,
                 "reviewer_note": None,
+                "reviewed_at": None,
             }
         )
 
@@ -325,6 +395,16 @@ def build() -> dict:
         or row["target_evidence"]["resolution_kind"]
         in {"UNRESOLVED", "ORDINANCE_UNRESOLVED"}
     ]
+    source_pointer_counts = Counter(
+        evidence_pointer_status(row["source_evidence"]) for row in items
+    )
+    semantic_source_pointer_counts = Counter(
+        evidence_pointer_status(row["source_evidence"])
+        for row in items
+        if row["classification"] == "SEMANTIC_TEXT_CHECK_REQUIRED"
+    )
+    closure_counts = Counter(row["closure_assessment"] for row in items)
+
     if len(items) != packet.get("summary", {}).get("items_total"):
         raise ValueError("evidence pack item count differs from review packet")
     if unresolved:
@@ -344,11 +424,20 @@ def build() -> dict:
             "items_total": len(items),
             "unresolved_items": 0,
             "target_resolution_counts": dict(sorted(resolution_counts.items())),
+            "source_pointer_status_counts": dict(sorted(source_pointer_counts.items())),
+            "semantic_text_source_pointer_status_counts": dict(
+                sorted(semantic_source_pointer_counts.items())
+            ),
+            "closure_assessment_counts": dict(sorted(closure_counts.items())),
+            "machine_safe_closures": 0,
         },
         "review_contract": {
             "semantic_decision_included": False,
             "automatic_promotion_allowed": False,
             "primary_source_check_still_required": True,
+            "ai_proposal_is_not_human_decision": True,
+            "reviewer_identity_required_for_decision": True,
+            "review_timestamp_required_for_decision": True,
         },
         "items": items,
     }

@@ -1,0 +1,48 @@
+{
+  "format_version": 1,
+  "assessed_at": "2026-10-05",
+  "policy": "This artifact records direct-source and freshness assessment for the one freshness-sensitive relation in the current relation verification queue. Source existence and amendment semantics are evaluated separately from latest/current freshness. Negative search results are not treated as proof that no later amendment exists.",
+  "source_queue": "data/relation-verification-queue.json",
+  "items": [
+    {
+      "relation_key": "fee.dayservice.root|latest_interpretation_amendment_evidence|mhlw-r8-fee-guidance-may-amendment",
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "latest_interpretation_amendment_evidence",
+        "to": "mhlw-r8-fee-guidance-may-amendment"
+      },
+      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+      "direct_evidence": {
+        "source_exists": true,
+        "exact_source_identity_match": true,
+        "amendment_semantics_supported": true,
+        "official_document": {
+          "title": "介護保険最新情報Vol.1502（「指定居宅サービスに要する費用の額の算定に関する基準…」等の一部改正について）",
+          "issued_at": "2026-05-08",
+          "url": "https://www.mhlw.go.jp/content/001698614.pdf",
+          "publisher": "厚生労働省"
+        },
+        "official_listing": {
+          "title": "介護保険最新情報掲載ページ",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+          "observation": "The official listing includes Vol.1502 dated 2026-05-08 and later介護保険最新情報 entries. This establishes source existence and chronology of the listing, but the listing alone does not prove that no later amendment to 老企第36号 exists."
+        },
+        "repository_cross_checks": [
+          "data/sources.json: mhlw-r8-fee-guidance-may-amendment",
+          "data/fee-guidance-amendment-events.json: fee-guidance.r8-may.dayservice.staffing-shortage-exception",
+          "data/fee-guidance-source-chain.json: current_amendment entry"
+        ]
+      },
+      "freshness": {
+        "state": "NOT_ESTABLISHED",
+        "reason": "The relation label asserts latest interpretation amendment evidence. The official source and amendment semantics are directly supported, but source existence plus a negative search for later amendments is not sufficient proof of successor absence as of 2026-10-05."
+      },
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Establish a canonical successor/absence check for 老企第36号 amendments covering the review date, then re-evaluate the latest claim.",
+      "human_review_state_changed": false,
+      "currentness_state_changed": false,
+      "publication_state_changed": false,
+      "route_state_changed": false
+    }
+  ]
+}

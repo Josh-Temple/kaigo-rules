@@ -10,12 +10,29 @@
       "CURATED_QA": 1,
       "NOTICE": 7,
       "ORDINANCE_CANONICAL_NODE": 50
-    }
+    },
+    "source_pointer_status_counts": {
+      "DIRECT_PRIMARY_TEXT_POINTER": 4,
+      "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE": 5,
+      "PRACTICAL_QUESTION_CONTEXT": 36,
+      "PRIMARY_TEXT_POINTER_INCOMPLETE": 13
+    },
+    "semantic_text_source_pointer_status_counts": {
+      "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE": 5,
+      "PRIMARY_TEXT_POINTER_INCOMPLETE": 12
+    },
+    "closure_assessment_counts": {
+      "KEEP_OPEN": 58
+    },
+    "machine_safe_closures": 0
   },
   "review_contract": {
     "semantic_decision_included": false,
     "automatic_promotion_allowed": false,
-    "primary_source_check_still_required": true
+    "primary_source_check_still_required": true,
+    "ai_proposal_is_not_human_decision": true,
+    "reviewer_identity_required_for_decision": true,
+    "review_timestamp_required_for_decision": true
   },
   "items": [
     {
@@ -25,7 +42,10 @@
         "relation": "related_to",
         "to": "ordinance37.article.99"
       },
+      "relation_key": "fee.dayservice.note.13|related_to|ordinance37.article.99",
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source_label": "個別機能訓練加算",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "REMUNERATION",
         "canonical_ids": [
@@ -52,8 +72,30 @@
           "839c921ed72cc93e126a018323e786ff1980b0c9f635ee592c67306107d7afcd"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "ai_proposal": "KEEP_OPEN. The source and target are resolved, but the exact cross-layer relation label still requires human legal-semantic judgment.",
+      "competing_interpretation_or_ambiguity": "A general thematic or operational connection may exist without supporting the exact cross-layer relation asserted here.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human legal-semantic adjudication is required for the exact cross-layer relation.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-002",
@@ -62,7 +104,10 @@
         "relation": "related_to",
         "to": "ordinance37.article.98"
       },
+      "relation_key": "fee.dayservice.note.15|related_to|ordinance37.article.98",
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source_label": "認知症加算",
+      "target_label": "第九十八条 （指定通所介護の具体的取扱方針）",
       "source_evidence": {
         "resolution_kind": "REMUNERATION",
         "canonical_ids": [
@@ -89,8 +134,30 @@
           "a8a026cb11c358838a115d614561b19bdbf685f5949bab284ad78acbadb3c3c0"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "ai_proposal": "KEEP_OPEN. The source and target are resolved, but the exact cross-layer relation label still requires human legal-semantic judgment.",
+      "competing_interpretation_or_ambiguity": "A general thematic or operational connection may exist without supporting the exact cross-layer relation asserted here.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human legal-semantic adjudication is required for the exact cross-layer relation.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-003",
@@ -99,7 +166,10 @@
         "relation": "operational_basis_related_to",
         "to": "ordinance37.article.105"
       },
+      "relation_key": "fee.dayservice.note.2|operational_basis_related_to|ordinance37.article.105",
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source_label": "高齢者虐待防止措置未実施減算",
+      "target_label": "第百五条 （準用）",
       "source_evidence": {
         "resolution_kind": "REMUNERATION",
         "canonical_ids": [
@@ -126,8 +196,30 @@
           "22bfdcd6187d65aab33521800b9659b157dbae62433e19cb834cd36052e50c40"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "ai_proposal": "KEEP_OPEN. The source and target are resolved, but the exact cross-layer relation label still requires human legal-semantic judgment.",
+      "competing_interpretation_or_ambiguity": "A general thematic or operational connection may exist without supporting the exact cross-layer relation asserted here.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human legal-semantic adjudication is required for the exact cross-layer relation.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-004",
@@ -136,7 +228,10 @@
         "relation": "operational_basis_related_to",
         "to": "ordinance37.article.30-2"
       },
+      "relation_key": "fee.dayservice.note.3|operational_basis_related_to|ordinance37.article.30-2",
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source_label": "業務継続計画未策定減算",
+      "target_label": "第三十条の二 （業務継続計画の策定等）",
       "source_evidence": {
         "resolution_kind": "REMUNERATION",
         "canonical_ids": [
@@ -163,8 +258,30 @@
           "f1cf11df596568ec2ebdca1780dd6fdd22040208af59bab7436f904fafab6126"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "ai_proposal": "KEEP_OPEN. The source and target are resolved, but the exact cross-layer relation label still requires human legal-semantic judgment.",
+      "competing_interpretation_or_ambiguity": "A general thematic or operational connection may exist without supporting the exact cross-layer relation asserted here.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human legal-semantic adjudication is required for the exact cross-layer relation.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-005",
@@ -173,7 +290,10 @@
         "relation": "defined_service_by",
         "to": "ordinance37.article.92"
       },
+      "relation_key": "fee.dayservice.root|defined_service_by|ordinance37.article.92",
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "source_label": "通所介護費",
+      "target_label": "第九十二条 （基本方針）",
       "source_evidence": {
         "resolution_kind": "REMUNERATION",
         "canonical_ids": [
@@ -198,8 +318,30 @@
           "e8d2b8bee4c34def5bc418208f1a0dfd5e254a840b9743cb25853206ea00fddc"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "ai_proposal": "KEEP_OPEN. The source and target are resolved, but the exact cross-layer relation label still requires human legal-semantic judgment.",
+      "competing_interpretation_or_ambiguity": "A general thematic or operational connection may exist without supporting the exact cross-layer relation asserted here.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human legal-semantic adjudication is required for the exact cross-layer relation.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-007",
@@ -208,7 +350,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.93"
       },
+      "relation_key": "notice.common.definitions.dedicated|interprets_or_explains|ordinance37.article.93",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "「専ら従事する」「専ら提供に当たる」",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -233,8 +378,30 @@
           "30b04c63b9f0c610854efe4dac2dad143a8dbe92bcca579a61071fac9bb87fa7"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-008",
@@ -243,7 +410,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.93"
       },
+      "relation_key": "notice.common.definitions.extended-hours|interprets_or_explains|ordinance37.article.93",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "勤務延時間数",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -268,8 +438,30 @@
           "30b04c63b9f0c610854efe4dac2dad143a8dbe92bcca579a61071fac9bb87fa7"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-009",
@@ -278,7 +470,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.93"
       },
+      "relation_key": "notice.common.definitions.fte|interprets_or_explains|ordinance37.article.93",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "常勤換算方法",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -303,8 +498,30 @@
           "30b04c63b9f0c610854efe4dac2dad143a8dbe92bcca579a61071fac9bb87fa7"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-010",
@@ -313,7 +530,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.93"
       },
+      "relation_key": "notice.common.definitions.fulltime|interprets_or_explains|ordinance37.article.93",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "常勤",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -338,8 +558,30 @@
           "30b04c63b9f0c610854efe4dac2dad143a8dbe92bcca579a61071fac9bb87fa7"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-011",
@@ -348,7 +590,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.94"
       },
+      "relation_key": "notice.common.definitions.fulltime|interprets_or_explains|ordinance37.article.94",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "常勤",
+      "target_label": "第九十四条 （管理者）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -373,8 +618,30 @@
           "4a9b91bbc48cde3aedd5b337a3167576b113584655f5181f20a367ea505707bc"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-012",
@@ -383,7 +650,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.95"
       },
+      "relation_key": "notice.dayservice.equipment|interprets_or_explains|ordinance37.article.95",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "設備に関する基準",
+      "target_label": "第九十五条 （設備及び備品等）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -408,8 +678,30 @@
           "e40eb02ef72c84f81b1f5fb2ced92eeb860ba1f644c62d9f04ed0f1fddf07583"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-013",
@@ -418,7 +710,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.95"
       },
+      "relation_key": "notice.dayservice.equipment.dining-training-room|interprets_or_explains|ordinance37.article.95",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "食堂及び機能訓練室",
+      "target_label": "第九十五条 （設備及び備品等）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -445,8 +740,30 @@
           "e40eb02ef72c84f81b1f5fb2ced92eeb860ba1f644c62d9f04ed0f1fddf07583"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human semantic adjudication is still required; reconstructed amendment text is not an independent relation decision.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-014",
@@ -455,7 +772,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.95"
       },
+      "relation_key": "notice.dayservice.equipment.office|interprets_or_explains|ordinance37.article.95",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "事業所",
+      "target_label": "第九十五条 （設備及び備品等）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -482,8 +802,30 @@
           "e40eb02ef72c84f81b1f5fb2ced92eeb860ba1f644c62d9f04ed0f1fddf07583"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human semantic adjudication is still required; reconstructed amendment text is not an independent relation decision.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-015",
@@ -492,7 +834,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.105"
       },
+      "relation_key": "notice.dayservice.operation|interprets_or_explains|ordinance37.article.105",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "運営に関する基準",
+      "target_label": "第百五条 （準用）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -517,8 +862,30 @@
           "22bfdcd6187d65aab33521800b9659b157dbae62433e19cb834cd36052e50c40"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-016",
@@ -527,7 +894,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.96"
       },
+      "relation_key": "notice.dayservice.operation|interprets_or_explains|ordinance37.article.96",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "運営に関する基準",
+      "target_label": "第九十六条 （利用料等の受領）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -552,8 +922,30 @@
           "1c0f66c812de1e999ae5debdb91eec1ecaf61edea36b7e4bc15c69afb03e7b12"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-017",
@@ -562,7 +954,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.93"
       },
+      "relation_key": "notice.dayservice.personnel|interprets_or_explains|ordinance37.article.93",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "人員に関する基準",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -587,8 +982,30 @@
           "30b04c63b9f0c610854efe4dac2dad143a8dbe92bcca579a61071fac9bb87fa7"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-018",
@@ -597,7 +1014,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.94"
       },
+      "relation_key": "notice.dayservice.personnel|interprets_or_explains|ordinance37.article.94",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "人員に関する基準",
+      "target_label": "第九十四条 （管理者）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -622,8 +1042,30 @@
           "4a9b91bbc48cde3aedd5b337a3167576b113584655f5181f20a367ea505707bc"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-019",
@@ -632,7 +1074,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.93"
       },
+      "relation_key": "notice.dayservice.personnel.function-training|interprets_or_explains|ordinance37.article.93",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "機能訓練指導員",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -659,8 +1104,30 @@
           "30b04c63b9f0c610854efe4dac2dad143a8dbe92bcca579a61071fac9bb87fa7"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human semantic adjudication is still required; reconstructed amendment text is not an independent relation decision.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-020",
@@ -669,7 +1136,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.93"
       },
+      "relation_key": "notice.dayservice.personnel.life-counselor|interprets_or_explains|ordinance37.article.93",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "生活相談員",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -696,8 +1166,30 @@
           "30b04c63b9f0c610854efe4dac2dad143a8dbe92bcca579a61071fac9bb87fa7"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human semantic adjudication is still required; reconstructed amendment text is not an independent relation decision.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-021",
@@ -706,7 +1198,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.94"
       },
+      "relation_key": "notice.dayservice.personnel.manager|interprets_or_explains|ordinance37.article.94",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "管理者",
+      "target_label": "第九十四条 （管理者）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -733,8 +1228,30 @@
           "4a9b91bbc48cde3aedd5b337a3167576b113584655f5181f20a367ea505707bc"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": true,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human semantic adjudication is still required; reconstructed amendment text is not an independent relation decision.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-022",
@@ -743,7 +1260,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.105"
       },
+      "relation_key": "notice.dayservice.root|interprets_or_explains|ordinance37.article.105",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "通所介護",
+      "target_label": "第百五条 （準用）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -768,8 +1288,30 @@
           "22bfdcd6187d65aab33521800b9659b157dbae62433e19cb834cd36052e50c40"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-023",
@@ -778,7 +1320,10 @@
         "relation": "interprets_or_explains",
         "to": "ordinance37.article.92"
       },
+      "relation_key": "notice.dayservice.root|interprets_or_explains|ordinance37.article.92",
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "source_label": "通所介護",
+      "target_label": "第九十二条 （基本方針）",
       "source_evidence": {
         "resolution_kind": "NOTICE",
         "canonical_ids": [
@@ -803,8 +1348,30 @@
           "e8d2b8bee4c34def5bc418208f1a0dfd5e254a840b9743cb25853206ea00fddc"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "ai_proposal": "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof of interprets_or_explains; compare primary text and adjudicate the exact semantics.",
+      "competing_interpretation_or_ambiguity": "The notice and ordinance may concern the same topic without the notice actually interpreting or explaining this exact target provision.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Obtain direct primary notice text and an exact locator before semantic adjudication.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-024",
@@ -813,7 +1380,10 @@
         "relation": "interpreted_by",
         "to": "notice.dayservice.abuse.frequency"
       },
+      "relation_key": "question:annual-training|interpreted_by|notice.dayservice.abuse.frequency",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "target_label": "notice.dayservice.abuse.frequency",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -836,8 +1406,30 @@
         "source_locator": "共通運営基準 > 虐待の防止 > 従業者研修",
         "text_hashes": []
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": false,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-025",
@@ -846,7 +1438,10 @@
         "relation": "interpreted_by",
         "to": "notice.dayservice.bcp.frequency"
       },
+      "relation_key": "question:annual-training|interpreted_by|notice.dayservice.bcp.frequency",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "target_label": "notice.dayservice.bcp.frequency",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -869,8 +1464,30 @@
         "source_locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
         "text_hashes": []
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": false,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-026",
@@ -879,7 +1496,10 @@
         "relation": "interpreted_by",
         "to": "notice.dayservice.infection.frequency"
       },
+      "relation_key": "question:annual-training|interpreted_by|notice.dayservice.infection.frequency",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "target_label": "notice.dayservice.infection.frequency",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -902,8 +1522,30 @@
         "source_locator": "通所介護 > 衛生管理等 > 感染症研修・訓練",
         "text_hashes": []
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": false,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-027",
@@ -912,7 +1554,10 @@
         "relation": "required_by",
         "to": "ordinance37.article101.3"
       },
+      "relation_key": "question:annual-training|required_by|ordinance37.article101.3",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "target_label": "第百一条 （勤務体制の確保等）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -937,8 +1582,30 @@
           "782a89ef4d26c44ceaf7fbf6de1437d62f59e2169845854dc15d9b4c739ac8bc"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-028",
@@ -947,7 +1614,10 @@
         "relation": "required_by",
         "to": "ordinance37.article104.2.3"
       },
+      "relation_key": "question:annual-training|required_by|ordinance37.article104.2.3",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "target_label": "第百四条 （衛生管理等）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -972,8 +1642,30 @@
           "7f8328561e18dff9ab7aeb70a17a476df94bddb081bb2a2a4241c8684ef34225"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-029",
@@ -982,7 +1674,10 @@
         "relation": "required_by",
         "to": "ordinance37.article30-2.2"
       },
+      "relation_key": "question:annual-training|required_by|ordinance37.article30-2.2",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "target_label": "第三十条の二 （業務継続計画の策定等）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1007,8 +1702,30 @@
           "7f82a1831719c0795e569c88615d03123d8dc7dde8528346891bfc2c5a25ef4d"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-030",
@@ -1017,7 +1734,10 @@
         "relation": "required_by",
         "to": "ordinance37.article37-2.3"
       },
+      "relation_key": "question:annual-training|required_by|ordinance37.article37-2.3",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護で毎年実施する必要がある研修は何ですか？",
+      "target_label": "第三十七条の二 （虐待の防止）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1042,8 +1762,30 @@
           "7396a3121ac12ca309bb43a51f9f7a0ed3e3cd4279ad59fb927ec6a6abad2aa5"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-031",
@@ -1052,7 +1794,10 @@
         "relation": "applies_via",
         "to": "ordinance37.article105"
       },
+      "relation_key": "question:bcp-training|applies_via|ordinance37.article105",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "BCPの研修はどのくらいの頻度で行いますか？",
+      "target_label": "第百五条 （準用）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1077,8 +1822,30 @@
           "22bfdcd6187d65aab33521800b9659b157dbae62433e19cb834cd36052e50c40"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-032",
@@ -1087,7 +1854,10 @@
         "relation": "interpreted_by",
         "to": "notice.dayservice.bcp.frequency"
       },
+      "relation_key": "question:bcp-training|interpreted_by|notice.dayservice.bcp.frequency",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "BCPの研修はどのくらいの頻度で行いますか？",
+      "target_label": "notice.dayservice.bcp.frequency",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1110,8 +1880,30 @@
         "source_locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
         "text_hashes": []
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": false,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-033",
@@ -1120,7 +1912,10 @@
         "relation": "required_by",
         "to": "ordinance37.article30-2.2"
       },
+      "relation_key": "question:bcp-training|required_by|ordinance37.article30-2.2",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "BCPの研修はどのくらいの頻度で行いますか？",
+      "target_label": "第三十条の二 （業務継続計画の策定等）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1145,8 +1940,30 @@
           "7f82a1831719c0795e569c88615d03123d8dc7dde8528346891bfc2c5a25ef4d"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-034",
@@ -1155,7 +1972,10 @@
         "relation": "aligned_with",
         "to": "ordinance37.article99.2"
       },
+      "relation_key": "question:care-plan-content|aligned_with|ordinance37.article99.2",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画には何を記載すればよいですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1180,8 +2000,30 @@
           "1181337990ad9b486366135e595b48f0f028feefcdac792f8cbbde837b3070de"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-035",
@@ -1190,7 +2032,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article99.1"
       },
+      "relation_key": "question:care-plan-content|answered_by|ordinance37.article99.1",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画には何を記載すればよいですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1215,8 +2060,30 @@
           "f5868b9133eceec330d6ae3d537dd11f8084b716968cb6c82fd1f58f6ee46099"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-036",
@@ -1225,7 +2092,10 @@
         "relation": "consent_under",
         "to": "ordinance37.article99.3"
       },
+      "relation_key": "question:care-plan-content|consent_under|ordinance37.article99.3",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画には何を記載すればよいですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1250,8 +2120,30 @@
           "879b7562de5f239fe36f727aeac4daa895999de0b3efcd72d3d4bb7d574c6f95"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-037",
@@ -1260,7 +2152,10 @@
         "relation": "delivered_under",
         "to": "ordinance37.article99.4"
       },
+      "relation_key": "question:care-plan-content|delivered_under|ordinance37.article99.4",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画には何を記載すればよいですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1285,8 +2180,30 @@
           "7aef7291f5055ce5d7b3b1e9d5ec7dd8347d4973a46ee10dc6e19dee992902cf"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-038",
@@ -1295,7 +2212,10 @@
         "relation": "tracked_under",
         "to": "ordinance37.article99.5"
       },
+      "relation_key": "question:care-plan-content|tracked_under|ordinance37.article99.5",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画には何を記載すればよいですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1320,8 +2240,30 @@
           "eca5e83d792ba528484eb9590aeb99eb0d37e5b9326f204158defd5e08d80384"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-039",
@@ -1330,7 +2272,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article99.3"
       },
+      "relation_key": "question:care-plan-seal|answered_by|ordinance37.article99.3",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画書に押印は必要ですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1355,8 +2300,30 @@
           "879b7562de5f239fe36f727aeac4daa895999de0b3efcd72d3d4bb7d574c6f95"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-040",
@@ -1365,7 +2332,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article99.4"
       },
+      "relation_key": "question:care-plan-seal|answered_by|ordinance37.article99.4",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画書に押印は必要ですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1390,8 +2360,30 @@
           "7aef7291f5055ce5d7b3b1e9d5ec7dd8347d4973a46ee10dc6e19dee992902cf"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-041",
@@ -1400,7 +2392,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article99.3"
       },
+      "relation_key": "question:care-plan-signature|answered_by|ordinance37.article99.3",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画書に利用者の署名は必要ですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1425,8 +2420,30 @@
           "879b7562de5f239fe36f727aeac4daa895999de0b3efcd72d3d4bb7d574c6f95"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-042",
@@ -1435,7 +2452,10 @@
         "relation": "electronic_option_under",
         "to": "ordinance37.article217.2"
       },
+      "relation_key": "question:care-plan-signature|electronic_option_under|ordinance37.article217.2",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画書に利用者の署名は必要ですか？",
+      "target_label": "第二百十七条 （電磁的記録等）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1460,8 +2480,30 @@
           "eb050d51b78c3416a77c710216f1584c5d3bc7f556eb95bec187d5b93287a259"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-043",
@@ -1470,7 +2512,10 @@
         "relation": "requires_delivery_under",
         "to": "ordinance37.article99.4"
       },
+      "relation_key": "question:care-plan-signature|requires_delivery_under|ordinance37.article99.4",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "通所介護計画書に利用者の署名は必要ですか？",
+      "target_label": "第九十九条 （通所介護計画の作成）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1495,8 +2540,30 @@
           "7aef7291f5055ce5d7b3b1e9d5ec7dd8347d4973a46ee10dc6e19dee992902cf"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-044",
@@ -1505,7 +2572,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article95.1-2"
       },
+      "relation_key": "question:dining-training-area|answered_by|ordinance37.article95.1-2",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "食堂・機能訓練室にはどのくらいの面積が必要ですか？",
+      "target_label": "第九十五条 （設備及び備品等）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1532,8 +2602,30 @@
           "53dfa32992b469f72dab3ff59683486fd7756ff6ef51687d25984f17828b15a6"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-045",
@@ -1542,7 +2634,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article8.1"
       },
+      "relation_key": "question:important-matters-content|answered_by|ordinance37.article8.1",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "重要事項説明書には何を記載する必要がありますか？",
+      "target_label": "第八条 （内容及び手続の説明及び同意）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1567,8 +2662,30 @@
           "a88d3b408ada44c35e8f4c22499e861a676a69d05bbce13fa9696fe3d340504c"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-046",
@@ -1577,7 +2694,10 @@
         "relation": "applies_via",
         "to": "ordinance37.article105"
       },
+      "relation_key": "question:important-matters-content|applies_via|ordinance37.article105",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "重要事項説明書には何を記載する必要がありますか？",
+      "target_label": "第百五条 （準用）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1602,8 +2722,30 @@
           "22bfdcd6187d65aab33521800b9659b157dbae62433e19cb834cd36052e50c40"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-047",
@@ -1612,7 +2754,10 @@
         "relation": "interpreted_by",
         "to": "notice.common.important-matters.explanation"
       },
+      "relation_key": "question:important-matters-content|interpreted_by|notice.common.important-matters.explanation",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "重要事項説明書には何を記載する必要がありますか？",
+      "target_label": "notice.common.important-matters.explanation",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1635,8 +2780,30 @@
         "source_locator": "共通運営基準 > 内容及び手続の説明及び同意",
         "text_hashes": []
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": false,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-048",
@@ -1645,7 +2812,10 @@
         "relation": "published_under",
         "to": "ordinance37.article32.1-3"
       },
+      "relation_key": "question:important-matters-content|published_under|ordinance37.article32.1-3",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "重要事項説明書には何を記載する必要がありますか？",
+      "target_label": "第三十二条 （掲示）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1674,8 +2844,30 @@
           "ca3f46cc7615b6ffb747b32db6da6eded522bb9cff9560f7ba2e8bb9aefe4f68"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-049",
@@ -1684,7 +2876,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article93.1.1"
       },
+      "relation_key": "question:life-counselor-staffing|answered_by|ordinance37.article93.1.1",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "生活相談員は何人配置すればよいですか？",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1709,8 +2904,30 @@
           "71b51ed92027526e92bbc7213af34d5f2d41fe8e88a8554e9d7903489f63452c"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-050",
@@ -1719,7 +2936,10 @@
         "relation": "qualified_by",
         "to": "ordinance37.article93.6"
       },
+      "relation_key": "question:life-counselor-staffing|qualified_by|ordinance37.article93.6",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "生活相談員は何人配置すればよいですか？",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1744,8 +2964,30 @@
           "1fe1c0d8fef7ff759edbb2600f18a86ee356eca424cb69a2086d7b0d60618d11"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-051",
@@ -1754,7 +2996,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article94"
       },
+      "relation_key": "question:manager-concurrent-role|answered_by|ordinance37.article94",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "管理者は他の職務と兼務できますか？",
+      "target_label": "第九十四条 （管理者）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1779,8 +3024,30 @@
           "4a9b91bbc48cde3aedd5b337a3167576b113584655f5181f20a367ea505707bc"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-052",
@@ -1789,7 +3056,10 @@
         "relation": "documented_by",
         "to": "notice.dayservice.staffing.schedule"
       },
+      "relation_key": "question:multiple-roles|documented_by|notice.dayservice.staffing.schedule",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "同じ職員が複数の職種を兼務できますか？",
+      "target_label": "notice.dayservice.staffing.schedule",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1812,8 +3082,30 @@
         "source_locator": "通所介護 > 運営に関する基準 > 勤務体制の確保等",
         "text_hashes": []
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": false,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-053",
@@ -1822,7 +3114,10 @@
         "relation": "qualified_by",
         "to": "ordinance37.article93.3"
       },
+      "relation_key": "question:multiple-roles|qualified_by|ordinance37.article93.3",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "同じ職員が複数の職種を兼務できますか？",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1847,8 +3142,30 @@
           "75b246b5d29e46b97163fcc1d0ca6f81e8af515a9dba49c72514be1b0dcf1839"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-054",
@@ -1857,7 +3174,10 @@
         "relation": "qualified_by",
         "to": "ordinance37.article93.5"
       },
+      "relation_key": "question:multiple-roles|qualified_by|ordinance37.article93.5",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "同じ職員が複数の職種を兼務できますか？",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1882,8 +3202,30 @@
           "9b4a2f88697e51530d3aef6ad029e62cca01279f0af216122bd36c9f115b8ef2"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-055",
@@ -1892,7 +3234,10 @@
         "relation": "qualified_by",
         "to": "ordinance37.article94"
       },
+      "relation_key": "question:multiple-roles|qualified_by|ordinance37.article94",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "同じ職員が複数の職種を兼務できますか？",
+      "target_label": "第九十四条 （管理者）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1917,8 +3262,30 @@
           "4a9b91bbc48cde3aedd5b337a3167576b113584655f5181f20a367ea505707bc"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-056",
@@ -1927,7 +3294,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article93.1.2"
       },
+      "relation_key": "question:nurse-staffing|answered_by|ordinance37.article93.1.2",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "看護職員は何人必要ですか？",
+      "target_label": "第九十三条 （従業者の員数）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1952,8 +3322,30 @@
           "f2d031018dc734926c4c068c32504b5e159fd69c5dd1319bf85d8b956dd41ef8"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-057",
@@ -1962,7 +3354,10 @@
         "relation": "clarified_by",
         "to": "qa.dayservice.nurse.external.2015.50"
       },
+      "relation_key": "question:nurse-staffing|clarified_by|qa.dayservice.nurse.external.2015.50",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "看護職員は何人必要ですか？",
+      "target_label": "qa.dayservice.nurse.external.2015.50",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -1985,8 +3380,30 @@
         "source_locator": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日） / 問50",
         "text_hashes": []
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": false,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-058",
@@ -1995,7 +3412,10 @@
         "relation": "interpreted_by",
         "to": "notice.dayservice.nurse.external-linkage"
       },
+      "relation_key": "question:nurse-staffing|interpreted_by|notice.dayservice.nurse.external-linkage",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "看護職員は何人必要ですか？",
+      "target_label": "notice.dayservice.nurse.external-linkage",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -2018,8 +3438,30 @@
         "source_locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
         "text_hashes": []
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": false,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     },
     {
       "review_id": "REL-059",
@@ -2028,7 +3470,10 @@
         "relation": "answered_by",
         "to": "ordinance37.article100"
       },
+      "relation_key": "question:operation-rules-content|answered_by|ordinance37.article100",
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "source_label": "運営規程には何を記載する必要がありますか？",
+      "target_label": "第百条 （運営規程）",
       "source_evidence": {
         "resolution_kind": "QUESTION",
         "canonical_ids": [
@@ -2053,8 +3498,30 @@
           "00abbc47eb5ef1cdf28d824330d1dff026bc8c0f946bc1c57272b686c26263e3"
         ]
       },
+      "machine_verifiable_subclaims": {
+        "source_identity_resolved": true,
+        "target_identity_resolved": true,
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "source_fingerprint_present": false,
+        "target_fingerprint_present": true,
+        "relation_semantics_verified": false
+      },
+      "human_judgment_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "ai_proposal": "KEEP_OPEN. The authority may be relevant to the practical question, but a human must decide whether it supports the exact relation label.",
+      "competing_interpretation_or_ambiguity": "The cited authority may be relevant background without answering, qualifying, or otherwise supporting the practical question in the asserted way.",
+      "closure_assessment": "KEEP_OPEN",
+      "next_action": "Human review is required to decide whether the authority supports the practical question in the asserted way.",
+      "decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "review_status": "NOT_REVIEWED",
+      "reviewer_name": null,
       "reviewer_decision": null,
-      "reviewer_note": null
+      "reviewer_note": null,
+      "reviewed_at": null
     }
   ]
 }

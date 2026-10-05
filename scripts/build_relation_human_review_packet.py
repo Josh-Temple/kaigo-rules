@@ -149,6 +149,48 @@ def review_prompt(classification: str) -> str:
     return prompts[classification]
 
 
+def relation_key(identity: dict) -> str:
+    return "|".join(
+        [identity["from"], identity["relation"], identity["to"]]
+    )
+
+
+def ai_proposal(classification: str) -> str:
+    proposals = {
+        "SEMANTIC_TEXT_CHECK_REQUIRED": (
+            "KEEP_OPEN. Do not treat topic overlap or reconstructed notice text as proof "
+            "of interprets_or_explains; compare primary text and adjudicate the exact semantics."
+        ),
+        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": (
+            "KEEP_OPEN. The source and target are resolved, but the exact cross-layer "
+            "relation label still requires human legal-semantic judgment."
+        ),
+        "HUMAN_SEMANTIC_REVIEW_REQUIRED": (
+            "KEEP_OPEN. The authority may be relevant to the practical question, but a "
+            "human must decide whether it supports the exact relation label."
+        ),
+    }
+    return proposals[classification]
+
+
+def competing_interpretation_or_ambiguity(classification: str) -> str:
+    ambiguities = {
+        "SEMANTIC_TEXT_CHECK_REQUIRED": (
+            "The notice and ordinance may concern the same topic without the notice "
+            "actually interpreting or explaining this exact target provision."
+        ),
+        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": (
+            "A general thematic or operational connection may exist without supporting "
+            "the exact cross-layer relation asserted here."
+        ),
+        "HUMAN_SEMANTIC_REVIEW_REQUIRED": (
+            "The cited authority may be relevant background without answering, qualifying, "
+            "or otherwise supporting the practical question in the asserted way."
+        ),
+    }
+    return ambiguities[classification]
+
+
 def build() -> dict:
     queue = load("relation-verification-queue.json")
     questions = {row["slug"]: row for row in load("questions.json")}
@@ -174,6 +216,7 @@ def build() -> dict:
                 "review_id": f"REL-{index:03d}",
                 "identity": identity,
                 "classification": classification,
+                "relation_key": relation_key(identity),
                 "source": describe(
                     identity["from"],
                     questions=questions,
@@ -193,12 +236,19 @@ def build() -> dict:
                     sources=sources,
                 ),
                 "review_prompt": review_prompt(classification),
+                "human_judgment_question": review_prompt(classification),
+                "ai_proposal": ai_proposal(classification),
+                "competing_interpretation_or_ambiguity": competing_interpretation_or_ambiguity(
+                    classification
+                ),
                 "existing_blockers": item.get("blockers", []),
                 "decision_options": [
                     "CONFIRM_RELATION",
                     "REJECT_RELATION",
                     "NEEDS_MORE_EVIDENCE",
                 ],
+                "review_status": "NOT_REVIEWED",
+                "reviewer_name": None,
                 "reviewer_decision": None,
                 "reviewer_note": None,
                 "reviewed_at": None,
@@ -242,6 +292,9 @@ def build() -> dict:
             "automatic_promotion_allowed": False,
             "requires_primary_source_check": True,
             "currentness_is_separate": True,
+            "ai_proposal_is_not_human_decision": True,
+            "reviewer_identity_required_for_decision": True,
+            "review_timestamp_required_for_decision": True,
         },
         "items": items,
     }
