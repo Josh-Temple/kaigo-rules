@@ -2,8 +2,8 @@
   "format_version": 1,
   "source_family": "other_national_manuals_forms",
   "corpus_id": "other-national-materials-national",
-  "base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd",
-  "verified_at": "2026-10-05",
+  "base_main_sha": "e3a6c3f038293d962562429e5056f3e36c603191",
+  "verified_at": "2026-10-06",
   "purpose": "Store only reproducible structured body slices directly checked against exact nationwide official primary-source documents. This is not a service-level projection and does not establish currentness.",
   "sources": [
     {
@@ -346,6 +346,104 @@
         }
       ],
       "unresolved_body_scope": []
+    },
+    {
+      "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
+      "source_identity": "介護サービス事業者経営情報データベースシステム操作マニュアル（介護事業所向け、詳細版） v1.20 / 2025-03-13",
+      "body_coverage_state": "PARTIAL",
+      "fingerprint_method": "SHA256_CANONICAL_JSON_PAYLOAD",
+      "canonical_body_fingerprint_sha256": "19bab81bc59a5608aa1a94de63a4217b2cff21781fcf6a01fc177c4cdc5d4e36",
+      "fingerprint_payload": [
+        {
+          "id": "revision_history",
+          "summary": "The embedded revision history records v1.00 (2024-11-18), v1.10 (2025-02-03), and v1.20 (2025-03-13); v1.10 added section 1.4 and v1.20 records additional operational changes.",
+          "pdf_page": 2
+        },
+        {
+          "id": "section_1_4_scope",
+          "summary": "Section 1.4 states that the database-system service names may aggregate multiple long-term-care insurance service names.",
+          "pdf_page": 9
+        },
+        {
+          "id": "section_1_4_mapped_rows",
+          "summary": "Section 1.4 directly maps reporting-system service codes across home, day, facility, community-based, preventive, and equipment-related service groupings, including conditional grouping notes.",
+          "pdf_pages": [
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "id": "section_1_4_exclusion_rows",
+          "summary": "Section 1.4 explicitly marks 居宅療養管理指導 (310), 養護老人ホーム variants (33C/36C), 介護予防支援 (460), 介護療養型医療施設 (530), and the listed comprehensive-project rows A20/A60/A90/AF0 as outside the reporting target.",
+          "pdf_pages": [
+            11,
+            12
+          ]
+        }
+      ],
+      "document": {
+        "official_url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
+        "pdf_page_count": 89,
+        "version_label": "v1.20",
+        "issued_on": "2025-03-13"
+      },
+      "items": [
+        {
+          "canonical_item_id": "other-national.financial-db.v1-20.revision-history",
+          "item_kind": "MANUAL_REVISION_HISTORY",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
+          "pdf_page": 2,
+          "locator": "改版履歴 — v1.00 / v1.10 / v1.20",
+          "structured_summary": "The embedded revision history records v1.00 (2024-11-18), v1.10 (2025-02-03), and v1.20 (2025-03-13); v1.10 added section 1.4 and v1.20 records additional operational changes."
+        },
+        {
+          "canonical_item_id": "other-national.financial-db.v1-20.section-1-4.scope",
+          "item_kind": "MANUAL_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
+          "pdf_page": 9,
+          "document_page_label": "- 5 -",
+          "locator": "1.4. 届出対象の介護サービス種類 — introductory scope text",
+          "structured_summary": "Section 1.4 states that the database-system service names may aggregate multiple long-term-care insurance service names."
+        },
+        {
+          "canonical_item_id": "other-national.financial-db.v1-20.section-1-4.mapped-rows",
+          "item_kind": "SERVICE_APPLICABILITY_TABLE_SLICE",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
+          "pdf_pages": [
+            9,
+            10,
+            11
+          ],
+          "document_page_labels": [
+            "- 5 -",
+            "- 6 -",
+            "- 7 -"
+          ],
+          "locator": "1.4. 届出対象の介護サービス種類 — mapped and conditional service rows",
+          "structured_summary": "Section 1.4 directly maps reporting-system service codes across home, day, facility, community-based, preventive, and equipment-related service groupings, including conditional grouping notes."
+        },
+        {
+          "canonical_item_id": "other-national.financial-db.v1-20.section-1-4.exclusion-rows",
+          "item_kind": "SERVICE_APPLICABILITY_TABLE_SLICE",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
+          "pdf_pages": [
+            11,
+            12
+          ],
+          "document_page_labels": [
+            "- 7 -",
+            "- 8 -"
+          ],
+          "locator": "1.4. 届出対象の介護サービス種類 — rows explicitly marked 報告対象外",
+          "structured_summary": "Section 1.4 explicitly marks 居宅療養管理指導 (310), 養護老人ホーム variants (33C/36C), 介護予防支援 (460), 介護療養型医療施設 (530), and the listed comprehensive-project rows A20/A60/A90/AF0 as outside the reporting target."
+        }
+      ],
+      "unresolved_body_scope": [
+        "Only the embedded revision history and section 1.4 service-target table were directly body-compared in this wave.",
+        "The remaining operational chapters and screen-by-screen procedures are not claimed as item-body verified.",
+        "This PARTIAL body result does not establish source currentness or service-level completeness."
+      ]
     }
   ],
   "assurance_boundaries": {
