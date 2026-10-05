@@ -1,0 +1,28 @@
+name: Verify publication readiness integration
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publication-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Canonical regeneration pass
+        run: |
+          python scripts/build_relation_human_review_pilot.py
+          python scripts/build_verification_registry.py
+          python scripts/build_database_coverage_matrix.py
+          python scripts/build_publication_readiness.py
+          git diff --exit-code
+      - name: Validate publication readiness
+        run: |
+          python scripts/validate_publication_readiness.py
+          python -m unittest tests.test_publication_readiness
