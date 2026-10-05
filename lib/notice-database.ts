@@ -39,6 +39,7 @@ export type PublicNoticeRecord = {
 export type PublicNoticeServiceOption = {
   service_id: PublicNoticeServiceId;
   label: string;
+  service_class?: string;
   service_status: string;
   route_enabled: boolean;
   record_count: number;
@@ -293,6 +294,7 @@ export const publicNoticeServiceOptions: PublicNoticeServiceOption[] = (
   return {
     service_id: service.service_id,
     label: service.label,
+    service_class: (service as CatalogService & { service_class?: string }).service_class,
     service_status: service.status,
     route_enabled:
       service.service_id === "dayservice" ||
