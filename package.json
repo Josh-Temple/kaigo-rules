@@ -136,7 +136,8 @@
     "check:careact-service-indexes": "python scripts/build_careact_service_indexes.py --check",
     "verify:delegated-remuneration-item-body": "python scripts/verify_delegated_remuneration_item_body.py",
     "validate:delegated-remuneration-item-body": "python scripts/validate_delegated_remuneration_item_body_assurance.py",
-    "validate:fee-guidance-item-body-assurance": "python scripts/validate_fee_guidance_item_body_assurance.py"
+    "validate:fee-guidance-item-body-assurance": "python scripts/validate_fee_guidance_item_body_assurance.py",
+    "temporary:production-gate": "python -m unittest tests.test_national_source_assurance_production_gate"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
