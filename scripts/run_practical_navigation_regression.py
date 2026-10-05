@@ -94,7 +94,7 @@ def main():
                     require(qurl in corrected.links,'correction locator missing')
                     qhash=pdf(qurl,36,['問 59','問 50','健康状態'])
                     notice=follow(faq,'/notices/notice.dayservice.nurse.external-linkage')
-                    require('現行性HOLD' in notice.visible and '人手確認未実施' in notice.visible,'notice states hidden')
+                    require('現行性は確認中' in notice.visible and '人手確認は未実施' in notice.visible,'notice confirmation state missing')
                     nurl='https://www.mhlw.go.jp/content/12300000/000869798.pdf#page=30'
                     require(nurl in notice.links and nurl in search.links,'different canonical notice sources')
                     require(not any('/qa/index.html' in x for x in notice.links),'notice misroutes to QA index')
@@ -110,7 +110,7 @@ def main():
                 p=page(route)
                 for destination in ['/services/dayrehab/search','/rules?service=dayrehab','/notices?service=dayrehab','/services/dayrehab/remuneration']:
                     require(destination in p.links,'service nav context lost: '+destination)
-                if 'remuneration' in route:require('GAP' in p.visible and '人手確認' in p.visible,'bounded publication state missing')
+                if 'remuneration' in route:require('確認中' in p.visible and '人手確認' in p.visible,'bounded publication caution missing')
                 results.append({'id':route,'status':'PASS'})
             except Exception as exc:results.append({'id':route,'status':'FAIL','error':str(exc)})
         require(json.loads(raw(args.base_url+'/api/version'))['commit_sha']==args.expected_sha,'SHA changed during run')
