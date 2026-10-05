@@ -1,0 +1,25 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_relation_human_review_decision_effects.py",
+  "source_decision_ledger": "data/relation-human-review-decisions.json",
+  "source_batch_registry": "data/relation-human-review-batches.json",
+  "policy": "This is a projection/receipt only. CONFIRM_RELATION and REJECT_RELATION may produce closure candidates for the canonical relation owner. NEEDS_MORE_EVIDENCE never closes a relation. STALE_EVIDENCE and SUPERSEDED records have no current effect. No canonical relation is mutated here.",
+  "summary": {
+    "decision_records": 0,
+    "current_human_decisions": 0,
+    "stale_evidence_decisions": 0,
+    "superseded_decisions": 0,
+    "current_needs_more_evidence": 0,
+    "effect_records": 0,
+    "closure_candidates": 0,
+    "effect_counts": {}
+  },
+  "effects": [],
+  "safety": {
+    "ai_decision_generated": false,
+    "canonical_relation_mutated": false,
+    "needs_more_evidence_counted_as_closure": false,
+    "stale_decision_counted_as_current": false,
+    "superseded_decision_counted_as_current": false
+  }
+}
