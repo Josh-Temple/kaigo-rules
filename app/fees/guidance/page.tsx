@@ -96,7 +96,7 @@ export default function FeeGuidancePage(){
                 <h3>{node.title}</h3>
               </div>
               <span className={node.verification_status==="UNKNOWN"?"fee-status fee-out":"fee-status"}>
-                {label[node.verification_status] || node.verification_status}
+                {label[node.verification_status] || "確認中"}
               </span>
             </div>
             {node.verification_status==="UNKNOWN"
@@ -131,7 +131,7 @@ export default function FeeGuidancePage(){
               <strong>{node?.title || candidate.guidance_id}</strong>
               <p>{candidate.candidate_summary}</p>
               <p className="meta">出典：{source?.title || candidate.source_id} / 候補・人手未確認</p>
-              {replay?<p className="meta">改正履歴：{replay.checkpoints.length}時点確認 / {replayLabel[replay.replay_status] || replay.replay_status}</p>:null}
+              {replay?<p className="meta">改正履歴：{replay.checkpoints.length}時点確認 / {replayLabel[replay.replay_status] || "確認中"}</p>:null}
             </div>
           </div>;
         })}
@@ -142,7 +142,7 @@ export default function FeeGuidancePage(){
       <h2>人手確認用の現行本文候補</h2>
       <p>
         8項目は、項目単位で抽出した公式PDF本文と確認済みの改正履歴から決定論的に組み立てています。
-        ここに表示する本文は <code>MACHINE_RECONSTRUCTED_NEEDS_HUMAN_CHECK</code> であり、人手確認前の候補です。
+        ここに表示する本文は機械再構成した人手確認前の候補です。確認済み本文としては扱いません。
       </p>
       <div className="fee-guidance-list">
         {currentCandidates.map(candidate=>{
@@ -162,7 +162,6 @@ export default function FeeGuidancePage(){
                 return <span key={e.snapshot_id}>{index>0?" / ":""}{source?.title || e.source_id} p.{e.page_start}{e.page_end!==e.page_start?"–"+e.page_end:""}</span>;
               })}
             </p>
-            <p className="meta">本文SHA-256：<code>{candidate.candidate_text_sha256}</code></p>
           </section>;
         })}
       </div>
@@ -177,11 +176,10 @@ export default function FeeGuidancePage(){
     </section>
 
     <section className="section">
-      <h2>次の工程</h2>
+      <h2>利用時の注意</h2>
       <p>
-        8項目の現行本文候補は機械再構成済みです。次は各候補を表示された根拠PDFと項目単位で人手照合し、
-        確認時の本文SHA-256と確認日をレビュー台帳へ記録します。人手確認が完了するまで、現行統合版や
-        <code>VERIFIED_CURRENT</code> には昇格させません。
+        8項目の本文候補は機械再構成済みですが、人手確認は完了していません。
+        判断に使う場合は、各候補に表示した厚生労働省の根拠資料もあわせて確認してください。
       </p>
     </section>
   </article>;
