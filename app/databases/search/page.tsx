@@ -4,6 +4,7 @@ import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
 import qaCorpusData from "../../../data/qa-corpus.json";
 import { publicNoticeRecords } from "../../../lib/notice-database";
 import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database-search";
+import { publicVerificationLabel } from "../../../lib/public-verification";
 
 const careNodes = careNodesData as Array<any>;
 const ordinanceNodes = ordinanceNodesData as Array<any>;
@@ -116,7 +117,7 @@ export default async function DatabaseSearchPage({
       <h1>介護制度DBを横断検索</h1>
       <p className="lead">
         サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aを同じキーワードで探します。
-        表示されること自体は、各サービスへの適用確認や現行性・人手確認を意味しません。
+        各結果から本文と出典へ進めます。対象範囲や現行性は、必要なときに各ページの確認情報で確認できます。
       </p>
 
       <div className="notice">
@@ -197,7 +198,7 @@ export default async function DatabaseSearchPage({
                     </h3>
                     <p>{databaseSearchExcerpt(notice.body_text, query)}</p>
                     <p className="meta">
-                      本文照合：{notice.content_verification} / 現行性：{notice.currentness_state} / 人手確認：{notice.human_review_state}
+                      本文：{publicVerificationLabel(notice.content_verification, "content")} / 現行性：{publicVerificationLabel(notice.currentness_state, "currentness")} / 人手確認：{publicVerificationLabel(notice.human_review_state, "human")}
                     </p>
                   </article>
                 ))}
