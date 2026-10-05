@@ -1,0 +1,1665 @@
+{
+  "format_version": 1,
+  "wave_id": "2026-10-06-currentness-human-review-activation-worker-b",
+  "worker": "B",
+  "role": "Standards Interpretation Current Integrated Body / Residual Assurance Worker",
+  "source_family": "standards_interpretation_notice",
+  "base_main_sha": "cb27b4658ba5dd0fee999cf9426d4b45ef0fb3a9",
+  "observed_date": "2026-10-06",
+  "purpose": "Classify all 26 residual Standards Interpretation services by evidence type, determine whether integrated-body reconstruction is safe, and preserve item-body/currentness separation without promoting evidence that is not independently verifiable.",
+  "canonical_inputs": [
+    "data/database-coverage-matrix.generated.json",
+    "data/verification/standards-interpretation-item-body/residual-assurance-human-review-readiness-worker-a.json",
+    "data/shared/standards-interpretation/remaining-source-register.json",
+    "data/shared/standards-interpretation/manifest.json"
+  ],
+  "fresh_inventory": {
+    "residual_count": 26,
+    "residual_service_ids": [
+      "care-medical-institution",
+      "community-elderly-facility",
+      "community-specific-facility",
+      "dementia-dayservice",
+      "dementia-group-home",
+      "elderly-health-facility",
+      "elderly-welfare-facility",
+      "nursing-small-scale-multifunctional",
+      "preventive-dayrehab",
+      "preventive-dementia-dayservice",
+      "preventive-dementia-group-home",
+      "preventive-homebath",
+      "preventive-homecaremanagement",
+      "preventive-homenursing",
+      "preventive-homerehab",
+      "preventive-shortstay-life",
+      "preventive-shortstay-medical",
+      "preventive-small-scale-multifunctional",
+      "preventive-specific-facility",
+      "preventive-welfare-equipment-rental",
+      "shortstay-medical",
+      "small-scale-multifunctional",
+      "specific-facility",
+      "specific-preventive-welfare-equipment-sale",
+      "specific-welfare-equipment-sale",
+      "welfare-equipment-rental"
+    ],
+    "item_body_before": {
+      "PASS": 13,
+      "NOT_ESTABLISHED": 26
+    },
+    "currentness_before": {
+      "BLOCKED": 1,
+      "NOT_ESTABLISHED": 38
+    }
+  },
+  "evidence_classification_summary": {
+    "official current integrated text available": 0,
+    "official historical text + amendment materials available": 26,
+    "official comparison table only": 0,
+    "locator/fingerprint only": 0,
+    "source identity unresolved": 0,
+    "source body unavailable": 0
+  },
+  "source_document_groups": [
+    {
+      "document_id": "kaigoiryouin-roui",
+      "document_title": "介護医療院の人員、施設及び設備並びに運営に関する基準について",
+      "service_ids": [
+        "care-medical-institution"
+      ],
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227947.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_snapshot_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/care-medical-institution-original-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "f983889aaa32d3c78925a60e5717fd1173122855",
+          "proves_currentness": false
+        }
+      ]
+    },
+    {
+      "document_id": "rouki25",
+      "document_title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について",
+      "service_ids": [
+        "preventive-dayrehab",
+        "preventive-homebath",
+        "preventive-homecaremanagement",
+        "preventive-homenursing",
+        "preventive-homerehab",
+        "preventive-shortstay-life",
+        "preventive-shortstay-medical",
+        "preventive-specific-facility",
+        "preventive-welfare-equipment-rental",
+        "shortstay-medical",
+        "specific-facility",
+        "specific-preventive-welfare-equipment-sale",
+        "specific-welfare-equipment-sale",
+        "welfare-equipment-rental"
+      ],
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF pp.69-70 / 第4 介護予防サービス / 介護予防通所リハビリテーション",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_snapshot_evidence": []
+    },
+    {
+      "document_id": "rouki33",
+      "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+      "service_ids": [
+        "community-elderly-facility",
+        "community-specific-facility",
+        "dementia-dayservice",
+        "dementia-group-home",
+        "nursing-small-scale-multifunctional",
+        "preventive-dementia-dayservice",
+        "preventive-dementia-group-home",
+        "preventive-small-scale-multifunctional",
+        "small-scale-multifunctional"
+      ],
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "PDF pp.38-39 / 地域密着型介護老人福祉施設入所者生活介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_snapshot_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ]
+    },
+    {
+      "document_id": "rouki43",
+      "document_title": "指定介護老人福祉施設の人員、設備及び運営に関する基準について",
+      "service_ids": [
+        "elderly-welfare-facility"
+      ],
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4387&dataType=1"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227943.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_snapshot_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki43-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "e52b8ddc6939d80e254915be2c7bafac06630ea0",
+          "proves_currentness": false
+        }
+      ]
+    },
+    {
+      "document_id": "rouki44",
+      "document_title": "介護老人保健施設の人員、施設及び設備並びに運営に関する基準について",
+      "service_ids": [
+        "elderly-health-facility"
+      ],
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4388&dataType=1"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227945.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_snapshot_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki44-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "12e4a531533970ef664fb6efa4fcd8d532f96805",
+          "proves_currentness": false
+        }
+      ]
+    }
+  ],
+  "result": {
+    "item_body_after": {
+      "PASS": 13,
+      "NOT_ESTABLISHED": 26
+    },
+    "currentness_after": {
+      "BLOCKED": 1,
+      "NOT_ESTABLISHED": 38
+    },
+    "promoted_item_body_to_pass": 0,
+    "promoted_currentness_to_pass": 0,
+    "reconstructed_integrated_bodies": 0,
+    "kept_not_established": 26,
+    "rationale": "Every residual service has official historical/version-bounded body evidence plus amendment material, but no service has a proven-complete amendment chain together with canonical item-level body/staging suitable for independent reconstruction verification. The 26 residual services therefore remain fail-closed."
+  },
+  "inventory": [
+    {
+      "service_id": "care-medical-institution",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "kaigoiryouin-roui",
+        "notice_number": "平成30年3月22日 老老発0322第1号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "通知本文：介護医療院の人員、施設及び設備並びに運営に関する基準について"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227947.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/care-medical-institution-original-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "f983889aaa32d3c78925a60e5717fd1173122855",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第三 / 七 地域密着型介護老人福祉施設入所者生活介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "PDF pp.38-39 / 地域密着型介護老人福祉施設入所者生活介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "community-specific-facility",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第三 / 六 地域密着型特定施設入居者生活介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "PDF pp.34-35 / 地域密着型特定施設入居者生活介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第三 / 三 認知症対応型通所介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "PDF p.19 / 認知症対応型通所介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "dementia-group-home",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第三 / 五 認知症対応型共同生活介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "PDF p.27 / 認知症対応型共同生活介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki44",
+        "notice_number": "平成12年3月17日 老企第44号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "通知本文：介護老人保健施設の人員、施設及び設備並びに運営に関する基準について"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4388&dataType=1"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227945.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki44-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "12e4a531533970ef664fb6efa4fcd8d532f96805",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki43",
+        "notice_number": "平成12年3月17日 老企第43号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "通知本文：指定介護老人福祉施設の人員、設備及び運営に関する基準について"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4387&dataType=1"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227943.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki43-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "e52b8ddc6939d80e254915be2c7bafac06630ea0",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第三 / 八 看護小規模多機能型居宅介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "PDF pp.49-50 / 看護小規模多機能型居宅介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 三 / 7 介護予防通所リハビリテーション"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF pp.69-70 / 第4 介護予防サービス / 介護予防通所リハビリテーション",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 / 三 / 1 介護予防認知症対応型通所介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "PDF pp.53-54 / 介護予防認知症対応型通所介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 / 三 / 3 介護予防認知症対応型共同生活介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-homebath",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 二 / 2 介護予防訪問入浴介護",
+        "第四 介護予防サービス / 三 / 2 介護予防訪問入浴介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 三 / 5 介護予防居宅療養管理指導"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 三 / 3 介護予防訪問看護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF p.64 / 第4 介護予防サービス / 介護予防訪問看護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 三 / 4 介護予防訪問リハビリテーション"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF p.65 / 第4 介護予防サービス / 介護予防訪問リハビリテーション",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 二 / 4 指定介護予防短期入所生活介護",
+        "第四 介護予防サービス / 三 / 8 介護予防短期入所生活介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 二 / 5 指定介護予防短期入所療養介護",
+        "第四 介護予防サービス / 三 / 9 介護予防短期入所療養介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 / 三 / 2 介護予防小規模多機能型居宅介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 三 / 10 介護予防特定施設入居者生活介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "No complete service body was directly established from the amendment-comparison extract; retain repository scope locator only.",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 三 / 11 介護予防福祉用具貸与"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF pp.73-74 / 第4 介護予防サービス / 介護予防福祉用具貸与",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "shortstay-medical",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "九 短期入所療養介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF p.40 / 九 短期入所療養介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "b0379a54a7c7685d4563417b7dab1bbcb0cc6e4d",
+          "proves_currentness": false
+        },
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display-page2.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "3dd4ee8956922ea53dcbca6ac5a1627cd403e790",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki33",
+        "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第三 / 四 小規模多機能型居宅介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227939.pdf",
+        "locator": "PDF p.21 / 小規模多機能型居宅介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "specific-facility",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "一〇 特定施設入居者生活介護"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF p.50 / 一〇 特定施設入居者生活介護",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "b0379a54a7c7685d4563417b7dab1bbcb0cc6e4d",
+          "proves_currentness": false
+        },
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display-page2.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "3dd4ee8956922ea53dcbca6ac5a1627cd403e790",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "第四 介護予防サービス / 三 / 12 特定介護予防福祉用具販売"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF pp.76-77 / 第4 介護予防サービス / 特定介護予防福祉用具販売",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "十二 特定福祉用具販売"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF p.62 / 十二 特定福祉用具販売",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "b0379a54a7c7685d4563417b7dab1bbcb0cc6e4d",
+          "proves_currentness": false
+        },
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display-page2.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "3dd4ee8956922ea53dcbca6ac5a1627cd403e790",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "prior_item_body_state": "NOT_ESTABLISHED",
+      "item_body_state_after_worker_b": "NOT_ESTABLISHED",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_state_after_worker_b": "NOT_ESTABLISHED",
+      "canonical_notice_identity": {
+        "document_id": "rouki25",
+        "notice_number": "平成11年9月17日 老企第25号"
+      },
+      "evidence_class": "official historical text + amendment materials available",
+      "official_index_url": "https://www.mhlw.go.jp/stf/newpage_38790.html",
+      "service_scope_locators": [
+        "十一 福祉用具貸与"
+      ],
+      "historical_or_versioned_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "amendment_material": {
+        "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+        "locator": "PDF p.58 / 十一 福祉用具貸与",
+        "evidence_role": "OFFICIAL_AMENDMENT_COMPARISON_OR_EXTRACT",
+        "current_integrated_text": false,
+        "proves_currentness": false
+      },
+      "pinned_versioned_source_body_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "b0379a54a7c7685d4563417b7dab1bbcb0cc6e4d",
+          "proves_currentness": false
+        },
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display-page2.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "3dd4ee8956922ea53dcbca6ac5a1627cd403e790",
+          "proves_currentness": false
+        }
+      ],
+      "integrated_body_reconstruction": {
+        "attempted": false,
+        "reconstructed_text_committed": false,
+        "reason": "The amendment chain is not proven complete and canonical item-level body/staging is absent; reconstruction would not be independently verifiable."
+      },
+      "pass_eligibility": {
+        "item_body": false,
+        "currentness": false
+      },
+      "blockers": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "SERVICE_LEVEL_BODY_COMPARISON_NOT_POSSIBLE",
+        "SOURCE_VERSION_ALIGNMENT_NOT_ESTABLISHED"
+      ],
+      "safety": {
+        "historical_match_does_not_prove_currentness": true,
+        "amendment_comparison_does_not_prove_integrated_current_text": true,
+        "item_body_and_currentness_evaluated_separately": true,
+        "publication_promoted": false,
+        "route_promoted": false
+      }
+    }
+  ],
+  "safety": {
+    "generated_coverage_artifacts_modified": false,
+    "item_body_promotions": 0,
+    "currentness_promotions": 0,
+    "human_review_promotions": 0,
+    "publication_promotions": 0,
+    "route_promotions": 0,
+    "amendment_only_never_treated_as_integrated_current_text": true,
+    "historical_body_never_treated_as_currentness_proof": true,
+    "source_fingerprint_mismatch_fails_closed": true
+  }
+}
