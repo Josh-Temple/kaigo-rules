@@ -9,7 +9,7 @@ import build_database_coverage_matrix as coverage
 import build_publication_requirement_scoping as publication
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_MATRIX = ROOT / "data/database-coverage-matrix.generated.json"
+BASE_MATRIX = ROOT / "data/database-coverage-matrix.generated.json"\nCANDIDATE = ROOT / "data/verification/public-value-currentness-expansion-worker-b.json"
 
 TARGETS = {
     "preventive-homebath",
