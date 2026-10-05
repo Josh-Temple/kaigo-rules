@@ -1,0 +1,748 @@
+{
+  "format_version": 1,
+  "source_family": "fee_calculation_guidance",
+  "observed_at": "2026-10-05",
+  "purpose": "Classify Fee Calculation Guidance item-body evidence and project source-level verification to service-level assurance without conflating comparison material, currentness, human review, publication, or route exposure.",
+  "projection_invariant": {
+    "requirements": [
+      "official primary source identity fixed",
+      "source version identified",
+      "reproducible source snapshot/hash/locator",
+      "canonical item body directly compared with official body",
+      "service scope explicitly references verified node/section",
+      "applicability explicitly established",
+      "all scoped item/nodes are within the verified node set",
+      "evidence is not pinned only to a superseded/historical source when current-version identity is claimed",
+      "omitted text or 略 is never treated as body equality",
+      "projection does not promote currentness, human review, publication, or route exposure"
+    ],
+    "all_required_for_service_pass": true
+  },
+  "source_level_verifications": [
+    {
+      "id": "fee-guidance.dayservice.bounded-primary-source-reconstruction",
+      "service_id": "dayservice",
+      "result": "PASS_BOUNDED_NODE_SET_ONLY",
+      "verification_kind": "INDEPENDENT_PRIMARY_SOURCE_RECONSTRUCTION",
+      "verified_node_count": 8,
+      "verified_node_ids": [
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.4",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.5",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.6",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7-2",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.18",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.24",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.25"
+      ],
+      "evidence": "data/fee-guidance-independent-verification.json",
+      "primary_source_urls": [
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080856.pdf",
+        "https://www.mhlw.go.jp/content/12404000/1.pdf",
+        "https://www.mhlw.go.jp/content/12404000/000772367.pdf",
+        "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+        "https://www.mhlw.go.jp/content/001484663.pdf",
+        "https://www.mhlw.go.jp/content/12404000/001682729.pdf",
+        "https://www.mhlw.go.jp/content/001698614.pdf"
+      ],
+      "verified_through": "2026-09-22",
+      "proves_currentness": false,
+      "human_review": false,
+      "note": "Eight canonical dayservice item bodies have direct primary-source reconstruction evidence. This does not cover the full 29-node service scope and therefore cannot project service-level PASS."
+    },
+    {
+      "id": "fee-guidance.dayrehab.bounded-source-inventory",
+      "service_id": "dayrehab",
+      "result": "STRUCTURE_ONLY_NOT_ITEM_BODY",
+      "verification_kind": "INDEPENDENT_MHLW_SOURCE_INVENTORY_REPARSE",
+      "verified_item_body_count": 0,
+      "parent_items": 33,
+      "visible_child_items": 88,
+      "evidence": "data/dayrehab-fee-guidance-independent-audit.json",
+      "primary_source_urls": [
+        "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+        "https://www.mhlw.go.jp/content/12404000/001682729.pdf"
+      ],
+      "proves_currentness": false,
+      "human_review": false,
+      "note": "The existing audit verifies source inventory, markers, and boundaries only. It is not complete item-body verification and must not project PASS."
+    }
+  ],
+  "service_projections": [
+    {
+      "service_id": "dayservice",
+      "applicability_state": "MAPPED",
+      "ingestion_state": null,
+      "scoped_node_count": 29,
+      "scoped_node_ids": [
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.root",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.1",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.2",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.3",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.4",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.5",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.6",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7-2",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.8",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.9",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.10",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.11",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.12",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.13",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.14",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.15",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.16",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.17",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.18",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.19",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.20",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.21",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.22",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.23",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.24",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.25",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.26",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.27"
+      ],
+      "evidence_class": "VERSIONED_BODY_AVAILABLE_NOT_CURRENTNESS_PROOF",
+      "verified_node_count": 8,
+      "verified_node_ids": [
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.4",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.5",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.6",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.7-2",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.18",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.24",
+        "fee-guidance.shared.compat.dayservice.fee-guidance.dayservice.25"
+      ],
+      "service_level_item_body": "PARTIAL",
+      "projection_to_pass_permitted": false,
+      "reason": "Existing independent primary-source reconstruction verifies 8 of 29 scoped canonical nodes. Full scoped-node coverage is not established."
+    },
+    {
+      "service_id": "homevisit",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.II.2"
+      ],
+      "evidence_class": "COMPARISON_BODY_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node is an amendment-comparison section with omissions preserved and unseparated new/old columns; it is not an integrated item body."
+    },
+    {
+      "service_id": "homebath",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.II.3"
+      ],
+      "evidence_class": "COMPARISON_BODY_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node is an amendment-comparison section with omissions preserved and unseparated new/old columns; it is not an integrated item body."
+    },
+    {
+      "service_id": "homenursing",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.II.4"
+      ],
+      "evidence_class": "COMPARISON_BODY_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node is an amendment-comparison section with omissions preserved and unseparated new/old columns; it is not an integrated item body."
+    },
+    {
+      "service_id": "homerehab",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.II.5"
+      ],
+      "evidence_class": "COMPARISON_BODY_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node is an amendment-comparison section with omissions preserved and unseparated new/old columns; it is not an integrated item body."
+    },
+    {
+      "service_id": "homecaremanagement",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.II.6"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "dayrehab",
+      "applicability_state": "MAPPED",
+      "ingestion_state": null,
+      "scoped_node_count": 33,
+      "scoped_node_ids": [
+        "fee-guidance.shared.compat.dayrehab.R6-8-01",
+        "fee-guidance.shared.compat.dayrehab.R6-8-02",
+        "fee-guidance.shared.compat.dayrehab.R6-8-03",
+        "fee-guidance.shared.compat.dayrehab.R6-8-04",
+        "fee-guidance.shared.compat.dayrehab.R6-8-05",
+        "fee-guidance.shared.compat.dayrehab.R6-8-06",
+        "fee-guidance.shared.compat.dayrehab.R6-8-07",
+        "fee-guidance.shared.compat.dayrehab.R6-8-08",
+        "fee-guidance.shared.compat.dayrehab.R6-8-09",
+        "fee-guidance.shared.compat.dayrehab.R6-8-10",
+        "fee-guidance.shared.compat.dayrehab.R6-8-11",
+        "fee-guidance.shared.compat.dayrehab.R6-8-12",
+        "fee-guidance.shared.compat.dayrehab.R6-8-13",
+        "fee-guidance.shared.compat.dayrehab.R6-8-14",
+        "fee-guidance.shared.compat.dayrehab.R6-8-15",
+        "fee-guidance.shared.compat.dayrehab.R6-8-16",
+        "fee-guidance.shared.compat.dayrehab.R6-8-17",
+        "fee-guidance.shared.compat.dayrehab.R6-8-18",
+        "fee-guidance.shared.compat.dayrehab.R6-8-19",
+        "fee-guidance.shared.compat.dayrehab.R6-8-20",
+        "fee-guidance.shared.compat.dayrehab.R6-8-21",
+        "fee-guidance.shared.compat.dayrehab.R6-8-22",
+        "fee-guidance.shared.compat.dayrehab.R6-8-23",
+        "fee-guidance.shared.compat.dayrehab.R6-8-24",
+        "fee-guidance.shared.compat.dayrehab.R6-8-25",
+        "fee-guidance.shared.compat.dayrehab.R6-8-26",
+        "fee-guidance.shared.compat.dayrehab.R6-8-27",
+        "fee-guidance.shared.compat.dayrehab.R6-8-28",
+        "fee-guidance.shared.compat.dayrehab.R6-8-29",
+        "fee-guidance.shared.compat.dayrehab.R6-8-30",
+        "fee-guidance.shared.compat.dayrehab.R6-8-31",
+        "fee-guidance.shared.compat.dayrehab.R6-8-32",
+        "fee-guidance.shared.compat.dayrehab.R6-8-33"
+      ],
+      "evidence_class": "COMPARISON_BODY_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Existing audit verifies R6 amendment-comparison slot/marker inventory and section boundaries only; it explicitly does not verify complete item body text."
+    },
+    {
+      "service_id": "shortstay-life",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.2"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "community-dayservice",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.3-2"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "regular-round",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.2"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "night-homevisit",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.3"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "care-management",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.III"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-support",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.11"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "shortstay-medical",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.3"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "specific-facility",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.4"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki36.r6-comparison.II.9"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "applicability_state": "NOT_APPLICABLE",
+      "ingestion_state": "NOT_APPLICABLE",
+      "scoped_node_count": 0,
+      "scoped_node_ids": [],
+      "evidence_class": "NOT_APPLICABLE",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_APPLICABLE",
+      "projection_to_pass_permitted": false,
+      "reason": "Canonical Fee Guidance applicability is NOT_APPLICABLE; item-body projection is not permitted."
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.4"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.5"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "dementia-group-home",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.6"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "community-specific-facility",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.7"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.8"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.9"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.5"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.6"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "care-medical-institution",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.rouki40.r6-comparison.II.8"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-homebath",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.2"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.3"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.4"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.5"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.6"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.7"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.8"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.9"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.10"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "applicability_state": "NOT_APPLICABLE",
+      "ingestion_state": "NOT_APPLICABLE",
+      "scoped_node_count": 0,
+      "scoped_node_ids": [],
+      "evidence_class": "NOT_APPLICABLE",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_APPLICABLE",
+      "projection_to_pass_permitted": false,
+      "reason": "Canonical Fee Guidance applicability is NOT_APPLICABLE; item-body projection is not permitted."
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.4"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.5"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "applicability_state": "MAPPED",
+      "ingestion_state": "INGESTED_PARTIAL",
+      "scoped_node_count": 1,
+      "scoped_node_ids": [
+        "fee-guidance.shared.community.r6-comparison.II.6"
+      ],
+      "evidence_class": "LOCATOR_ONLY",
+      "verified_node_count": 0,
+      "verified_node_ids": [],
+      "service_level_item_body": "NOT_ESTABLISHED",
+      "projection_to_pass_permitted": false,
+      "reason": "Scoped canonical node stores a section locator only; no canonical item body is available for direct comparison."
+    }
+  ],
+  "summary": {
+    "services": 39,
+    "evidence_class_counts": {
+      "VERSIONED_BODY_AVAILABLE_NOT_CURRENTNESS_PROOF": 1,
+      "COMPARISON_BODY_ONLY": 5,
+      "LOCATOR_ONLY": 31,
+      "NOT_APPLICABLE": 2
+    },
+    "service_level_item_body_counts": {
+      "PARTIAL": 1,
+      "NOT_ESTABLISHED": 36,
+      "NOT_APPLICABLE": 2
+    },
+    "source_level_verified_canonical_nodes": 8,
+    "service_level_pass_count": 0
+  },
+  "safety": {
+    "comparison_only_promoted_to_current_integrated_body": false,
+    "omitted_text_treated_as_body_equality": false,
+    "currentness_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false,
+    "global_generated_artifacts_updated": false
+  }
+}
