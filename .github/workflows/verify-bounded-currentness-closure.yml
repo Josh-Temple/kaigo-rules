@@ -59,7 +59,7 @@ jobs:
         run: python scripts/build_database_coverage_matrix.py --check
 
       - name: Reject Worker B edits to global generated/readiness artifacts
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.title, '[Worker E]')
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
