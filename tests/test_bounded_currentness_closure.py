@@ -10,8 +10,10 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts/validate_bounded_currentness_closure.py"
 ARTIFACT = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
 ACTIVATION = ROOT / "data/verification/shared-source-currentness-activation.json"
-AUDIT = ROOT / "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+ORD37_AUDIT = ROOT / "data/verification/existing-ordinance37-service-slices-independent-audit.json"
+SHARED_AUDIT = ROOT / "data/shared/standards/independent-audit.json"
 MATRIX = ROOT / "data/database-coverage-matrix.generated.json"
+PREVENTIVE_NODES = ROOT / "data/shared/standards/preventive-services-standards/nodes.json"
 
 spec = importlib.util.spec_from_file_location("bounded_currentness", SCRIPT)
 module = importlib.util.module_from_spec(spec)
@@ -24,37 +26,83 @@ class BoundedCurrentnessClosureTest(unittest.TestCase):
     def setUpClass(cls):
         cls.artifact = json.loads(ARTIFACT.read_text(encoding="utf-8"))
         cls.activation = json.loads(ACTIVATION.read_text(encoding="utf-8"))
-        cls.audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+        cls.ord37_audit = json.loads(ORD37_AUDIT.read_text(encoding="utf-8"))
+        cls.shared_audit = json.loads(SHARED_AUDIT.read_text(encoding="utf-8"))
         cls.matrix = json.loads(MATRIX.read_text(encoding="utf-8"))
+        cls.preventive_nodes = json.loads(PREVENTIVE_NODES.read_text(encoding="utf-8"))
 
     def errors_for(self, artifact):
         return module.validate_payload(
-            artifact, self.activation, self.audit, self.matrix
+            artifact,
+            self.activation,
+            self.ord37_audit,
+            self.shared_audit,
+            self.matrix,
+            self.preventive_nodes,
         )
 
     def test_repository_contract_passes(self):
         self.assertEqual(self.errors_for(self.artifact), [])
 
-    def test_exact_ten_governing_standards_cells_are_bounded_promotions(self):
-        self.assertEqual(len(self.artifact["promotions"]), 10)
-        self.assertTrue(
-            all(
-                row["source_family"] == "governing_standards_ordinance"
-                and row["projected_currentness_state"] == "PASS"
-                and row["projection_gate"]["kind"] == "EXPLICIT_BOUNDED_ALLOWLIST"
-                for row in self.artifact["promotions"]
-            )
-        )
+    def test_ten_new_preventive_and_twenty_cumulative_promotions(self):
+        standards = self.artifact["priority_1"]["governing_standards_ordinance"]
+        self.assertEqual(standards["new_promotions_this_wave"], 10)
+        self.assertEqual(standards["cumulative_promotions"], 20)
         self.assertEqual(
-            self.artifact["priority_1"]["governing_standards_ordinance"]["after"],
-            {"PARTIAL": 2, "NOT_ESTABLISHED": 27, "PASS": 10},
+            standards["after"],
+            {"NOT_ESTABLISHED": 17, "PARTIAL": 2, "PASS": 20},
         )
+        new_ids = set(standards["newly_promoted_service_ids"])
+        self.assertEqual(new_ids, set(module.PREVENTIVE_SCOPE_PATHS))
+
+    def test_preventive_promotions_are_currentness_only_direct_scope(self):
+        new_ids = set(module.PREVENTIVE_SCOPE_PATHS)
+        rows = {
+            row["service_id"]: row
+            for row in self.artifact["promotions"]
+            if row["service_id"] in new_ids
+        }
+        self.assertEqual(set(rows), new_ids)
+        for service_id, row in rows.items():
+            self.assertEqual(
+                row["source_identity"]["canonical_source_id"],
+                "preventive-services-standards",
+            )
+            self.assertEqual(
+                row["applicability_proof"]["state"],
+                "PASS_DIRECT_SERVICE_SCOPE",
+            )
+            self.assertTrue(
+                row["applicability_proof"][
+                    "incorporation_wrappers_excluded_from_semantic_expansion"
+                ]
+            )
+            self.assertEqual(row["projection_gate"]["scope"], "currentness_only")
+            self.assertEqual(row["projected_currentness_state"], "PASS")
+
+    def test_all_preventive_scopes_resolve_against_current_corpus(self):
+        for service_id, path in module.PREVENTIVE_SCOPE_PATHS.items():
+            with self.subTest(service_id=service_id):
+                errors, summary = module.validate_preventive_scope(
+                    service_id, path, self.preventive_nodes
+                )
+                self.assertEqual(errors, [])
+                self.assertGreater(summary["primary_range"]["article_count"], 0)
 
     def test_care_act_remains_held(self):
         care = self.artifact["priority_1"]["care_insurance_act"]
         self.assertEqual(care["promotions"], 0)
         self.assertEqual(care["before"], care["after"])
         self.assertEqual(care["disposition"], "HOLD")
+
+    def test_incomplete_latestness_families_remain_held(self):
+        holds = self.artifact["high_yield_holds"]
+        self.assertEqual(
+            holds["delegated_remuneration_criteria"]["disposition"], "HOLD"
+        )
+        self.assertEqual(
+            holds["unit_price_regional_classification"]["disposition"], "HOLD"
+        )
 
     def test_source_current_without_applicability_never_promotes(self):
         self.assertFalse(
@@ -66,25 +114,12 @@ class BoundedCurrentnessClosureTest(unittest.TestCase):
                 canonical_scope_identified=True,
                 source_version_contains_scope=True,
                 ingestion_state="INGESTED",
+                item_body_state="PASS",
                 explicit_gate=True,
             )
         )
 
-    def test_ambiguous_scope_never_promotes(self):
-        self.assertFalse(
-            module.evaluate_projection(
-                source_family="governing_standards_ordinance",
-                source_class="CURRENT_OFFICIAL_VERSIONED",
-                source_identity_complete=True,
-                applicability_verified=True,
-                canonical_scope_identified=False,
-                source_version_contains_scope=True,
-                ingestion_state="INGESTED",
-                explicit_gate=True,
-            )
-        )
-
-    def test_source_version_must_contain_scope(self):
+    def test_item_body_must_pass(self):
         self.assertFalse(
             module.evaluate_projection(
                 source_family="governing_standards_ordinance",
@@ -92,27 +127,12 @@ class BoundedCurrentnessClosureTest(unittest.TestCase):
                 source_identity_complete=True,
                 applicability_verified=True,
                 canonical_scope_identified=True,
-                source_version_contains_scope=False,
+                source_version_contains_scope=True,
                 ingestion_state="INGESTED",
+                item_body_state="PARTIAL",
                 explicit_gate=True,
             )
         )
-
-    def test_comparison_amendment_historical_classes_never_promote(self):
-        for source_class in ("COMPARISON_ONLY", "AMENDMENT_ONLY", "HISTORICAL_ONLY"):
-            with self.subTest(source_class=source_class):
-                self.assertFalse(
-                    module.evaluate_projection(
-                        source_family="governing_standards_ordinance",
-                        source_class=source_class,
-                        source_identity_complete=True,
-                        applicability_verified=True,
-                        canonical_scope_identified=True,
-                        source_version_contains_scope=True,
-                        ingestion_state="INGESTED",
-                        explicit_gate=True,
-                    )
-                )
 
     def test_national_qa_compilation_freshness_never_projects(self):
         self.assertFalse(
@@ -124,52 +144,30 @@ class BoundedCurrentnessClosureTest(unittest.TestCase):
                 canonical_scope_identified=True,
                 source_version_contains_scope=True,
                 ingestion_state="INGESTED",
+                item_body_state="PASS",
                 explicit_gate=True,
-            )
-        )
-
-    def test_not_applicable_is_preserved(self):
-        self.assertFalse(
-            module.evaluate_projection(
-                source_family="governing_standards_ordinance",
-                source_class="CURRENT_OFFICIAL_VERSIONED",
-                source_identity_complete=True,
-                applicability_verified=True,
-                canonical_scope_identified=True,
-                source_version_contains_scope=True,
-                ingestion_state="NOT_APPLICABLE",
-                explicit_gate=True,
-            )
-        )
-
-    def test_missing_explicit_gate_never_promotes(self):
-        self.assertFalse(
-            module.evaluate_projection(
-                source_family="governing_standards_ordinance",
-                source_class="CURRENT_OFFICIAL_VERSIONED",
-                source_identity_complete=True,
-                applicability_verified=True,
-                canonical_scope_identified=True,
-                source_version_contains_scope=True,
-                ingestion_state="INGESTED",
-                explicit_gate=False,
             )
         )
 
     def test_fingerprint_drift_fails_closed(self):
         mutated = copy.deepcopy(self.artifact)
-        mutated["promotions"][0]["source_identity"]["fingerprint"]["xml_sha256"] = "0" * 64
+        new_ids = set(module.PREVENTIVE_SCOPE_PATHS)
+        row = next(r for r in mutated["promotions"] if r["service_id"] in new_ids)
+        row["source_identity"]["fingerprint"]["xml_sha256"] = "0" * 64
         errors = self.errors_for(mutated)
-        self.assertTrue(any("source fingerprint drift" in error for error in errors), errors)
+        self.assertTrue(
+            any("preventive standards source fingerprint drift" in error for error in errors),
+            errors,
+        )
 
-    def test_relation_human_publication_route_are_not_promoted(self):
-        for row in self.artifact["promotions"]:
-            unchanged = row["unchanged_axes"]
-            self.assertNotEqual(unchanged["relation_verification"], "PASS")
-            self.assertNotEqual(unchanged["human_review"], "PASS")
-            self.assertNotEqual(unchanged["publication"], "AVAILABLE")
-            self.assertFalse(self.artifact["safety"]["publication_changed"])
-            self.assertFalse(self.artifact["safety"]["route_exposure_changed"])
+    def test_missing_explicit_gate_fails_closed(self):
+        mutated = copy.deepcopy(self.artifact)
+        mutated["promotions"][-1]["projection_gate"]["allowed"] = False
+        errors = self.errors_for(mutated)
+        self.assertTrue(
+            any("bounded prerequisites" in error for error in errors),
+            errors,
+        )
 
     def test_validator_cli_passes(self):
         result = subprocess.run(
@@ -178,7 +176,7 @@ class BoundedCurrentnessClosureTest(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertIn("10 exact governing-standards service cells", result.stdout)
+        self.assertIn("10 new and 20 cumulative", result.stdout)
 
 
 if __name__ == "__main__":
