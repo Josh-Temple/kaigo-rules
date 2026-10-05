@@ -9,8 +9,11 @@ on:
       - "data/shared/standards-interpretation/remaining-source-register.json"
       - "data/shared/standards-interpretation/source-snapshots/**"
       - "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json"
+      - "data/verification/standards-interpretation-item-body/residual-assurance-human-review-readiness-worker-a.json"
       - "scripts/validate_standards_interpretation_residual_item_body.py"
+      - "scripts/validate_standards_interpretation_residual_assurance_readiness.py"
       - "tests/test_standards_interpretation_residual_item_body.py"
+      - "tests/test_standards_interpretation_residual_assurance_readiness.py"
       - ".github/workflows/verify-standards-interpretation-residual-item-body.yml"
 
 permissions:
@@ -27,5 +30,10 @@ jobs:
           python-version: "3.13"
       - name: Validate fail-closed residual assurance
         run: python scripts/validate_standards_interpretation_residual_item_body.py
+      - name: Validate residual assurance readiness evidence
+        run: python scripts/validate_standards_interpretation_residual_assurance_readiness.py
       - name: Run residual assurance tests
-        run: python -m unittest tests.test_standards_interpretation_residual_item_body
+        run: |
+          python -m unittest \
+            tests.test_standards_interpretation_residual_item_body \
+            tests.test_standards_interpretation_residual_assurance_readiness
