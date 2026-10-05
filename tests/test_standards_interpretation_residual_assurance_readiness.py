@@ -41,7 +41,7 @@ class StandardsInterpretationResidualAssuranceReadinessTest(unittest.TestCase):
         artifact = json.loads(ARTIFACT_PATH.read_text(encoding="utf-8"))
         checked = 0
         for row in artifact["inventory"]:
-            for fp in row["pinned_direct_body_evidence"]:
+            for fp in row["pinned_versioned_source_body_evidence"]:
                 checked += 1
                 self.assertEqual(
                     validator.git_blob_sha(ROOT / fp["snapshot_path"]),
