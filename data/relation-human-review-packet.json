@@ -36,6 +36,8 @@
       },
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
       "relation_key": "fee.dayservice.note.13|related_to|ordinance37.article.99",
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "fee.dayservice.note.13",
         "kind": "remuneration",
@@ -65,6 +67,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -79,6 +83,8 @@
       },
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
       "relation_key": "fee.dayservice.note.15|related_to|ordinance37.article.98",
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "fee.dayservice.note.15",
         "kind": "remuneration",
@@ -108,6 +114,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -122,6 +130,8 @@
       },
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
       "relation_key": "fee.dayservice.note.2|operational_basis_related_to|ordinance37.article.105",
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "fee.dayservice.note.2",
         "kind": "remuneration",
@@ -151,6 +161,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -165,6 +177,8 @@
       },
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
       "relation_key": "fee.dayservice.note.3|operational_basis_related_to|ordinance37.article.30-2",
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "fee.dayservice.note.3",
         "kind": "remuneration",
@@ -194,6 +208,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -208,6 +224,8 @@
       },
       "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
       "relation_key": "fee.dayservice.root|defined_service_by|ordinance37.article.92",
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "fee.dayservice.root",
         "kind": "remuneration",
@@ -237,6 +255,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -251,6 +271,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.common.definitions.dedicated|interprets_or_explains|ordinance37.article.93",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.common.definitions.dedicated",
         "kind": "interpretation_notice",
@@ -281,6 +303,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -295,6 +319,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.common.definitions.extended-hours|interprets_or_explains|ordinance37.article.93",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.common.definitions.extended-hours",
         "kind": "interpretation_notice",
@@ -325,6 +351,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -339,6 +367,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.common.definitions.fte|interprets_or_explains|ordinance37.article.93",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.common.definitions.fte",
         "kind": "interpretation_notice",
@@ -369,6 +399,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -383,6 +415,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.common.definitions.fulltime|interprets_or_explains|ordinance37.article.93",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.common.definitions.fulltime",
         "kind": "interpretation_notice",
@@ -413,6 +447,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -427,6 +463,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.common.definitions.fulltime|interprets_or_explains|ordinance37.article.94",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.common.definitions.fulltime",
         "kind": "interpretation_notice",
@@ -457,6 +495,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -471,6 +511,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.equipment|interprets_or_explains|ordinance37.article.95",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.equipment",
         "kind": "interpretation_notice",
@@ -501,6 +543,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -515,6 +559,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.equipment.dining-training-room|interprets_or_explains|ordinance37.article.95",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.equipment.dining-training-room",
         "kind": "interpretation_notice",
@@ -545,6 +591,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -559,6 +607,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.equipment.office|interprets_or_explains|ordinance37.article.95",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.equipment.office",
         "kind": "interpretation_notice",
@@ -589,6 +639,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -603,6 +655,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.operation|interprets_or_explains|ordinance37.article.105",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.operation",
         "kind": "interpretation_notice",
@@ -633,6 +687,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -647,6 +703,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.operation|interprets_or_explains|ordinance37.article.96",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.operation",
         "kind": "interpretation_notice",
@@ -677,6 +735,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -691,6 +751,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.personnel|interprets_or_explains|ordinance37.article.93",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.personnel",
         "kind": "interpretation_notice",
@@ -721,6 +783,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -735,6 +799,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.personnel|interprets_or_explains|ordinance37.article.94",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.personnel",
         "kind": "interpretation_notice",
@@ -765,6 +831,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -779,6 +847,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.personnel.function-training|interprets_or_explains|ordinance37.article.93",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.personnel.function-training",
         "kind": "interpretation_notice",
@@ -809,6 +879,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -823,6 +895,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.personnel.life-counselor|interprets_or_explains|ordinance37.article.93",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.personnel.life-counselor",
         "kind": "interpretation_notice",
@@ -853,6 +927,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -867,6 +943,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.personnel.manager|interprets_or_explains|ordinance37.article.94",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.personnel.manager",
         "kind": "interpretation_notice",
@@ -897,6 +975,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -911,6 +991,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.root|interprets_or_explains|ordinance37.article.105",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.root",
         "kind": "interpretation_notice",
@@ -941,6 +1023,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -955,6 +1039,8 @@
       },
       "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
       "relation_key": "notice.dayservice.root|interprets_or_explains|ordinance37.article.92",
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
       "source": {
         "id": "notice.dayservice.root",
         "kind": "interpretation_notice",
@@ -985,6 +1071,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -999,6 +1087,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:annual-training|interpreted_by|notice.dayservice.abuse.frequency",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:annual-training",
         "kind": "practical_question",
@@ -1026,6 +1116,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1040,6 +1132,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:annual-training|interpreted_by|notice.dayservice.bcp.frequency",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:annual-training",
         "kind": "practical_question",
@@ -1067,6 +1161,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1081,6 +1177,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:annual-training|interpreted_by|notice.dayservice.infection.frequency",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:annual-training",
         "kind": "practical_question",
@@ -1108,6 +1206,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1122,6 +1222,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:annual-training|required_by|ordinance37.article101.3",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:annual-training",
         "kind": "practical_question",
@@ -1151,6 +1253,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1165,6 +1269,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:annual-training|required_by|ordinance37.article104.2.3",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:annual-training",
         "kind": "practical_question",
@@ -1194,6 +1300,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1208,6 +1316,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:annual-training|required_by|ordinance37.article30-2.2",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:annual-training",
         "kind": "practical_question",
@@ -1237,6 +1347,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1251,6 +1363,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:annual-training|required_by|ordinance37.article37-2.3",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:annual-training",
         "kind": "practical_question",
@@ -1280,6 +1394,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1294,6 +1410,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:bcp-training|applies_via|ordinance37.article105",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:bcp-training",
         "kind": "practical_question",
@@ -1323,6 +1441,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1337,6 +1457,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:bcp-training|interpreted_by|notice.dayservice.bcp.frequency",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:bcp-training",
         "kind": "practical_question",
@@ -1364,6 +1486,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1378,6 +1502,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:bcp-training|required_by|ordinance37.article30-2.2",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:bcp-training",
         "kind": "practical_question",
@@ -1407,6 +1533,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1421,6 +1549,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-content|aligned_with|ordinance37.article99.2",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-content",
         "kind": "practical_question",
@@ -1450,6 +1580,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1464,6 +1596,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-content|answered_by|ordinance37.article99.1",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-content",
         "kind": "practical_question",
@@ -1493,6 +1627,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1507,6 +1643,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-content|consent_under|ordinance37.article99.3",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-content",
         "kind": "practical_question",
@@ -1536,6 +1674,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1550,6 +1690,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-content|delivered_under|ordinance37.article99.4",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-content",
         "kind": "practical_question",
@@ -1579,6 +1721,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1593,6 +1737,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-content|tracked_under|ordinance37.article99.5",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-content",
         "kind": "practical_question",
@@ -1622,6 +1768,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1636,6 +1784,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-seal|answered_by|ordinance37.article99.3",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-seal",
         "kind": "practical_question",
@@ -1665,6 +1815,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1679,6 +1831,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-seal|answered_by|ordinance37.article99.4",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-seal",
         "kind": "practical_question",
@@ -1708,6 +1862,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1722,6 +1878,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-signature|answered_by|ordinance37.article99.3",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-signature",
         "kind": "practical_question",
@@ -1751,6 +1909,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1765,6 +1925,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-signature|electronic_option_under|ordinance37.article217.2",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-signature",
         "kind": "practical_question",
@@ -1794,6 +1956,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1808,6 +1972,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:care-plan-signature|requires_delivery_under|ordinance37.article99.4",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:care-plan-signature",
         "kind": "practical_question",
@@ -1837,6 +2003,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1851,6 +2019,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:dining-training-area|answered_by|ordinance37.article95.1-2",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:dining-training-area",
         "kind": "practical_question",
@@ -1880,6 +2050,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1894,6 +2066,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:important-matters-content|answered_by|ordinance37.article8.1",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:important-matters-content",
         "kind": "practical_question",
@@ -1923,6 +2097,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1937,6 +2113,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:important-matters-content|applies_via|ordinance37.article105",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:important-matters-content",
         "kind": "practical_question",
@@ -1966,6 +2144,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -1980,6 +2160,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:important-matters-content|interpreted_by|notice.common.important-matters.explanation",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:important-matters-content",
         "kind": "practical_question",
@@ -2007,6 +2189,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2021,6 +2205,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:important-matters-content|published_under|ordinance37.article32.1-3",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:important-matters-content",
         "kind": "practical_question",
@@ -2050,6 +2236,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2064,6 +2252,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:life-counselor-staffing|answered_by|ordinance37.article93.1.1",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:life-counselor-staffing",
         "kind": "practical_question",
@@ -2093,6 +2283,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2107,6 +2299,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:life-counselor-staffing|qualified_by|ordinance37.article93.6",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:life-counselor-staffing",
         "kind": "practical_question",
@@ -2136,6 +2330,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2150,6 +2346,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:manager-concurrent-role|answered_by|ordinance37.article94",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:manager-concurrent-role",
         "kind": "practical_question",
@@ -2179,6 +2377,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2193,6 +2393,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:multiple-roles|documented_by|notice.dayservice.staffing.schedule",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:multiple-roles",
         "kind": "practical_question",
@@ -2220,6 +2422,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2234,6 +2438,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:multiple-roles|qualified_by|ordinance37.article93.3",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:multiple-roles",
         "kind": "practical_question",
@@ -2263,6 +2469,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2277,6 +2485,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:multiple-roles|qualified_by|ordinance37.article93.5",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:multiple-roles",
         "kind": "practical_question",
@@ -2306,6 +2516,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2320,6 +2532,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:multiple-roles|qualified_by|ordinance37.article94",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:multiple-roles",
         "kind": "practical_question",
@@ -2349,6 +2563,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2363,6 +2579,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:nurse-staffing|answered_by|ordinance37.article93.1.2",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:nurse-staffing",
         "kind": "practical_question",
@@ -2392,6 +2610,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2406,6 +2626,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:nurse-staffing|clarified_by|qa.dayservice.nurse.external.2015.50",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:nurse-staffing",
         "kind": "practical_question",
@@ -2433,6 +2655,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2447,6 +2671,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:nurse-staffing|interpreted_by|notice.dayservice.nurse.external-linkage",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:nurse-staffing",
         "kind": "practical_question",
@@ -2474,6 +2700,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
@@ -2488,6 +2716,8 @@
       },
       "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
       "relation_key": "question:operation-rules-content|answered_by|ordinance37.article100",
+      "source_file": "data/relationships.json",
+      "source_state": null,
       "source": {
         "id": "question:operation-rules-content",
         "kind": "practical_question",
@@ -2517,6 +2747,8 @@
         "NEEDS_MORE_EVIDENCE"
       ],
       "review_status": "NOT_REVIEWED",
+      "reviewed_by": null,
+      "reviewer_rationale": null,
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
