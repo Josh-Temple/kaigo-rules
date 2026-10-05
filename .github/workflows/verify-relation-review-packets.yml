@@ -6,6 +6,7 @@ on:
     paths:
       - "data/relation-human-review-packet.json"
       - "data/relation-human-review-evidence-pack.json"
+      - "data/relation-freshness-direct-evidence-assessment.json"
       - "data/relation-verification-queue.json"
       - "scripts/build_relation_human_review_packet.py"
       - "scripts/build_relation_human_review_evidence_pack.py"
