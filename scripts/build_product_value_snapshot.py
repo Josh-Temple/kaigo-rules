@@ -43,6 +43,36 @@ EXPECTED_PUBLIC_FAMILIES = [
     "dayrehab_fee_guidance_items",
 ]
 
+PUBLIC_DATABASE_ROUTE_FILES = {
+    "/law": ROOT / "app/law/page.tsx",
+    "/rules": ROOT / "app/rules/page.tsx",
+    "/notices": ROOT / "app/notices/page.tsx",
+    "/qa": ROOT / "app/qa/page.tsx",
+    "/fees": ROOT / "app/fees/page.tsx",
+    "/fees/criteria": ROOT / "app/fees/criteria/page.tsx",
+    "/fees/guidance": ROOT / "app/fees/guidance/page.tsx",
+    "/fees/unit-price": ROOT / "app/fees/unit-price/page.tsx",
+}
+
+GUIDE_TASK_ROUTE_FILES = {
+    "/start": ROOT / "app/start/page.tsx",
+}
+
+MAJOR_FEEDBACK_ROUTE_FILES = {
+    "/": ROOT / "app/page.tsx",
+    "/databases": ROOT / "app/databases/page.tsx",
+    "/databases/search": ROOT / "app/databases/search/page.tsx",
+    "/services": ROOT / "app/services/page.tsx",
+    "/law": ROOT / "app/law/page.tsx",
+    "/rules": ROOT / "app/rules/page.tsx",
+    "/notices": ROOT / "app/notices/page.tsx",
+    "/qa": ROOT / "app/qa/page.tsx",
+    "/fees": ROOT / "app/fees/page.tsx",
+    "/fees/guidance": ROOT / "app/fees/guidance/page.tsx",
+    "/start": ROOT / "app/start/page.tsx",
+    "/feedback": ROOT / "app/feedback/page.tsx",
+}
+
 
 def load_json(relative_path: str | Path) -> Any:
     path = relative_path if isinstance(relative_path, Path) else ROOT / relative_path
@@ -654,6 +684,70 @@ def build_snapshot() -> dict[str, Any]:
     if relations_verified + relations_remaining != relations_total:
         raise RuntimeError("relation verification counts do not reconcile")
 
+    bounded_publication = load_json("data/bounded-publication-allowlist.json")
+    publication_readiness = load_json("data/publication-readiness.generated.json")
+    published_cells = [
+        item
+        for item in bounded_publication.get("publication_cell_allowlist", [])
+        if isinstance(item, dict)
+        and item.get("service_id")
+        and item.get("source_family")
+    ]
+    readiness_by_cell = {
+        (item.get("service_id"), item.get("source_family")): item
+        for item in publication_readiness.get("cells", [])
+    }
+    published_publication_units = sum(
+        len(
+            readiness_by_cell.get(
+                (item["service_id"], item["source_family"]),
+                {},
+            ).get("ready_publication_units", [])
+        )
+        for item in published_cells
+    )
+
+    public_database_routes = [
+        route for route, path in PUBLIC_DATABASE_ROUTE_FILES.items() if path.exists()
+    ]
+    guide_task_routes = [
+        route for route, path in GUIDE_TASK_ROUTE_FILES.items() if path.exists()
+    ]
+    existing_major_routes = [
+        route for route, path in MAJOR_FEEDBACK_ROUTE_FILES.items() if path.exists()
+    ]
+    layout_source = (ROOT / "app/layout.tsx").read_text(encoding="utf-8")
+    navigation_source = (ROOT / "components/service-navigation.tsx").read_text(encoding="utf-8")
+    feedback_source = (ROOT / "app/feedback/page.tsx").read_text(encoding="utf-8")
+    global_feedback_link = (
+        "ServiceNavigation" in layout_source
+        and "SiteFeedbackLink" in navigation_source
+    )
+    feedback_intake_present = (
+        "<form" in feedback_source
+        and "対象ページ" in feedback_source
+    )
+    feedback_routes = [
+        route
+        for route in existing_major_routes
+        if (route == "/feedback" and feedback_intake_present)
+        or (route != "/feedback" and global_feedback_link)
+    ]
+
+    public_surface_metrics = {
+        "public_databases": len(public_database_routes),
+        "public_database_routes": public_database_routes,
+        "published_service_source_family_cells": len(published_cells),
+        "published_publication_units": published_publication_units,
+        "guide_task_journeys": len(guide_task_routes),
+        "guide_task_routes": guide_task_routes,
+        "practical_question_primary_source_journeys": questions_with_evidence,
+        "major_pages_total": len(existing_major_routes),
+        "major_pages_with_feedback": len(feedback_routes),
+        "feedback_coverage_rate": ratio(len(feedback_routes), len(existing_major_routes)),
+        "feedback_routes": feedback_routes,
+    }
+
     return {
         "format_version": 1,
         "generated_by": "scripts/build_product_value_snapshot.py",
@@ -720,6 +814,7 @@ def build_snapshot() -> dict[str, Any]:
                 "lane_breakdown": relation.get("lanes", []),
             },
         },
+        "public_surface_metrics": public_surface_metrics,
         "claims_excluded": [
             "human task-time improvement",
             "human effectiveness improvement",
