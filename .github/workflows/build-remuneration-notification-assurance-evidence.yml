@@ -1,0 +1,29 @@
+name: Validate remuneration notification assurance
+
+on:
+  pull_request:
+    paths:
+      - "scripts/build_remuneration_notification_assurance.py"
+      - "scripts/validate_remuneration_notification_assurance.py"
+      - "scripts/build_database_coverage_matrix.py"
+      - "data/shared/remuneration-notification/**"
+      - "data/services/**"
+      - "tests/test_remuneration_notification_assurance_projection.py"
+      - ".github/workflows/build-remuneration-notification-assurance-evidence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-assurance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate committed assurance evidence
+        run: python scripts/validate_remuneration_notification_assurance.py
+      - name: Validate projection invariants
+        run: python -m unittest tests/test_remuneration_notification_assurance_projection.py
