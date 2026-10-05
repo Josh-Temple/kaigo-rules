@@ -228,7 +228,7 @@
     {
       "id": "IR-13",
       "coverage": "verification_wording",
-      "title": "dayrehab remuneration keeps the base display and amendment patch separate with currentness GAP",
+      "title": "dayrehab remuneration keeps the base display and amendment patch separate while currentness remains under confirmation",
       "path": "/services/dayrehab/remuneration",
       "expect_status": 200,
       "contains_text": [
@@ -238,13 +238,14 @@
         "令和8年告示第87号",
         "現行統合本文ではありません",
         "現行性",
-        "GAP",
+        "確認中",
         "人手確認",
         "未実施"
       ],
       "not_contains_text": [
         "VERIFIED_CURRENT",
-        "HUMAN_VERIFIED"
+        "HUMAN_VERIFIED",
+        "現行性GAP"
       ]
     },
     {
@@ -261,12 +262,14 @@
         "令和8",
         "第8節の変更有無を示しません",
         "現行統合本文ではありません",
-        "GAP",
+        "現行性",
+        "確認中",
         "未実施"
       ],
       "not_contains_text": [
         "VERIFIED_CURRENT",
-        "HUMAN_VERIFIED"
+        "HUMAN_VERIFIED",
+        "現行性GAP"
       ]
     },
     {
@@ -278,17 +281,22 @@
       "contains_text": [
         "報酬基準を見る",
         "算定上の留意事項を見る",
-        "現行性GAP"
+        "現行性確認中"
       ],
       "href_contains": [
         "/services/dayrehab/remuneration",
         "/services/dayrehab/remuneration/guidance"
+      ],
+      "not_contains_text": [
+        "現行性GAP",
+        "Work Control",
+        "Committer"
       ]
     },
     {
       "id": "IR-16",
       "coverage": "service_isolation",
-      "title": "dayrehab search crosses remuneration and fee-guidance without leaving service context",
+      "title": "dayrehab search crosses remuneration and fee-guidance without exposing internal verification codes",
       "path": "/services/dayrehab/search?q=入浴介助",
       "expect_status": 200,
       "contains_text": [
@@ -296,13 +304,19 @@
         "報酬基準",
         "算定上の留意事項",
         "入浴介助加算",
-        "原資料との機械照合済み",
-        "現行性GAP",
-        "人手確認未実施"
+        "本文：確認済み",
+        "現行性：確認中",
+        "人手確認：未実施"
       ],
       "href_contains": [
         "/services/dayrehab/remuneration#",
         "/services/dayrehab/remuneration/guidance#R6-8-12"
+      ],
+      "not_contains_text": [
+        "現行性GAP",
+        "現行性HOLD",
+        "VERIFIED_CURRENT",
+        "HUMAN_VERIFIED"
       ]
     },
     {
@@ -317,11 +331,17 @@
         "第百十六条",
         "管理者等の責務",
         "公式旧HTML",
-        "現行性GAP"
+        "現行性：確認中"
       ],
       "href_contains": [
         "/rules/116?service=dayrehab",
         "/notices?service=dayrehab#dayrehab.rouki25.3.2"
+      ],
+      "not_contains_text": [
+        "現行性GAP",
+        "現行性HOLD",
+        "VERIFIED_CURRENT",
+        "HUMAN_VERIFIED"
       ]
     },
     {
