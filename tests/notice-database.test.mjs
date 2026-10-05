@@ -104,14 +104,16 @@ test("published historical notice services expose records while service roots st
   assert.equal(filterPublicNotices("unknown-service").length, 0);
 });
 
-test("global notice page exposes the service catalog without inferring applicability", () => {
+test("global notice page uses user-first service navigation without changing canonical scope", () => {
   const source = fs.readFileSync("app/notices/page.tsx", "utf8");
 
-  assert.match(source, /publicNoticeServiceOptions\.map/);
-  assert.match(source, /service catalogに登録されたサービス/);
-  assert.match(source, /本文未収録/);
-  assert.match(source, /「共通」や他サービスへの適用は自動推定しません/);
+  assert.match(source, /buildNoticeDisplayGroups\(publicNoticeServiceOptions\)/);
+  assert.match(source, /公開済みの解釈通知を横断検索/);
+  assert.match(source, /サービスから探す/);
+  assert.match(source, /介護予防サービスは対応するサービスと同じ入口にまとめています/);
+  assert.match(source, /介護予防支援だけは独立して扱います/);
+  assert.match(source, /本文整備中のサービスを見る/);
+  assert.match(source, /原典の構造と順序は維持/);
   assert.doesNotMatch(source, /公開済み2サービス/);
   assert.doesNotMatch(source, /31項目を同じ保証水準として扱いません/);
-  assert.doesNotMatch(source, /service === "dayservice"[\s\S]*VerificationSummary/);
 });
