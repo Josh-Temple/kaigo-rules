@@ -175,7 +175,7 @@
       "classification": "ACCEPTED_OTHER_NATIONAL_MATERIAL",
       "overlap_source_family": null,
       "currentness_state": "PARTIAL",
-      "currentness_note": "PARTIAL: the current MHLW landing page links the detailed manual whose revision table reaches v1.20 (2025-03-13). This does not imply that the reporting system is currently accepting submissions.",
+      "currentness_note": "PARTIAL: on 2026-10-06 the current MHLW landing page still exposed the detailed manual, and that exact official PDF embeds revision history through v1.20 (2025-03-13). No complete successor/amendment chain was established, so CURRENT/PASS is not claimed.",
       "applicability": {
         "state": "PARTIAL_CONDITIONAL",
         "service_ids": [
@@ -222,7 +222,7 @@
         "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
       },
       "inventory_category": "IMPLEMENTATION_SUPPORT_MATERIAL",
-      "item_body_assurance_state": "NOT_ESTABLISHED",
+      "item_body_assurance_state": "PARTIAL",
       "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json"
     },
     {
