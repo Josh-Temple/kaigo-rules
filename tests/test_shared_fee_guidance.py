@@ -87,7 +87,7 @@ class SharedFeeGuidanceTests(unittest.TestCase):
         self.assertEqual(not_applicable_projection['corpus_availability']['kind'], 'SHARED')
         self.assertEqual(not_applicable_projection['service_scope']['state'], 'SCOPE_DEFINED')
         self.assertEqual(not_applicable_projection['ingestion']['state'], 'NOT_APPLICABLE')
-        self.assertEqual(not_applicable_projection['item_body_verification']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(not_applicable_projection['item_body_verification']['state'], 'NOT_APPLICABLE')
         self.assertEqual(not_applicable_projection['currentness']['state'], 'NOT_ESTABLISHED')
         self.assertEqual(not_applicable_projection['human_review']['state'], 'NOT_REVIEWED')
         self.assertEqual(not_applicable_projection['publication']['state'], 'BLOCKED')
