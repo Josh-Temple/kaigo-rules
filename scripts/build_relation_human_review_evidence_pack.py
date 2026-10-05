@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import difflib
+import hashlib
 import json
 import re
 from collections import Counter
@@ -310,12 +311,197 @@ def evidence(
     }
 
 
+
+def supporting_primary_source_references(
+    value: str,
+    *,
+    notice_reference_rows: dict[str, dict],
+    fee_nodes: dict[str, dict],
+    qa_items: dict[str, dict],
+    sources: dict[str, dict],
+) -> list[dict]:
+    refs: list[dict] = []
+    seen: set[tuple[str, str, str, str]] = set()
+
+    def add(source_id: str | None, locator: str | None, evidence_type: str) -> None:
+        if not source_id:
+            return
+        source = sources.get(source_id, {})
+        url = source.get("url")
+        if not url:
+            return
+        key = (source_id, url, locator or "", evidence_type)
+        if key in seen:
+            return
+        seen.add(key)
+        refs.append(
+            {
+                "source_id": source_id,
+                "title": source.get("title"),
+                "url": url,
+                "source_status": source.get("status"),
+                "locator": locator,
+                "evidence_type": evidence_type,
+                "currentness_caveat": source.get("note")
+                or "Supporting primary-source reference only; no currentness promotion is implied.",
+            }
+        )
+
+    if value.startswith("notice."):
+        row = notice_reference_rows.get(value, {})
+        for evidence_row in row.get("evidence", []):
+            add(
+                evidence_row.get("source_id"),
+                evidence_row.get("locator"),
+                evidence_row.get("evidence_type") or "canonical_notice_evidence",
+            )
+        for source_id in row.get("source_ids", []):
+            add(
+                source_id,
+                " > ".join(row.get("path") or []) or None,
+                "canonical_notice_source_reference",
+            )
+    elif value.startswith("fee."):
+        row = fee_nodes.get(value, {})
+        add(
+            row.get("source_id"),
+            row.get("source_locator"),
+            "canonical_remuneration_source",
+        )
+        for evidence_row in row.get("latest_amendment_evidence", []):
+            add(
+                evidence_row.get("source_id"),
+                evidence_row.get("locator"),
+                evidence_row.get("evidence_type") or "amendment_evidence",
+            )
+    elif value.startswith("qa."):
+        row = qa_items.get(value, {})
+        add(
+            row.get("source_id"),
+            " / ".join(
+                part
+                for part in [row.get("source_document"), row.get("source_number")]
+                if part
+            )
+            or None,
+            "canonical_qa_source_reference",
+        )
+    elif value.startswith("mhlw-"):
+        add(value, None, "official_source_registry")
+
+    return refs
+
+
+def primary_source_locators(evidence_row: dict, supporting_refs: list[dict]) -> list[dict]:
+    locators: list[dict] = []
+    if evidence_row.get("source_url") or evidence_row.get("source_locator"):
+        locators.append(
+            {
+                "canonical_ids": evidence_row.get("canonical_ids", []),
+                "url": evidence_row.get("source_url"),
+                "locator": evidence_row.get("source_locator"),
+                "evidence_kind": evidence_row.get("excerpt_kind"),
+            }
+        )
+    for ref in supporting_refs:
+        locators.append(
+            {
+                "canonical_ids": evidence_row.get("canonical_ids", []),
+                "source_id": ref.get("source_id"),
+                "url": ref.get("url"),
+                "locator": ref.get("locator"),
+                "evidence_kind": ref.get("evidence_type"),
+            }
+        )
+    return locators
+
+
+def pointer_available(
+    evidence_row: dict,
+    supporting_refs: list[dict],
+    *,
+    allow_question_context: bool = False,
+) -> bool:
+    if allow_question_context and evidence_row.get("resolution_kind") == "QUESTION":
+        return True
+    if evidence_row.get("source_url") and evidence_row.get("source_locator"):
+        return True
+    return any(ref.get("url") and ref.get("locator") for ref in supporting_refs)
+
+
+def evidence_pack_ready(
+    row: dict,
+    source_refs: list[dict],
+    target_refs: list[dict],
+) -> bool:
+    source = row["source_evidence"]
+    target = row["target_evidence"]
+    if not source.get("canonical_ids") or not target.get("canonical_ids"):
+        return False
+    if target.get("resolution_kind") in {"UNRESOLVED", "ORDINANCE_UNRESOLVED"}:
+        return False
+    if not pointer_available(
+        source,
+        source_refs,
+        allow_question_context=source.get("resolution_kind") == "QUESTION",
+    ):
+        return False
+    if not pointer_available(target, target_refs):
+        return False
+    return True
+
+
+def evidence_fingerprint(
+    row: dict,
+    source_refs: list[dict],
+    target_refs: list[dict],
+) -> str:
+    source = row["source_evidence"]
+    target = row["target_evidence"]
+    material = [
+        row["relation_key"],
+        row.get("source_file") or "",
+        row.get("source_state") or "",
+        "|".join(source.get("text_hashes") or []),
+        source.get("source_url") or "",
+        source.get("source_locator") or "",
+        "|".join(target.get("text_hashes") or []),
+        target.get("source_url") or "",
+        target.get("source_locator") or "",
+        "|".join(
+            "::".join(
+                [
+                    ref.get("source_id") or "",
+                    ref.get("url") or "",
+                    ref.get("locator") or "",
+                ]
+            )
+            for ref in source_refs
+        ),
+        "|".join(
+            "::".join(
+                [
+                    ref.get("source_id") or "",
+                    ref.get("url") or "",
+                    ref.get("locator") or "",
+                ]
+            )
+            for ref in target_refs
+        ),
+    ]
+    return hashlib.sha256("\n".join(material).encode("utf-8")).hexdigest()
+
+
 def build() -> dict:
     packet = load("relation-human-review-packet.json")
     questions = {row["slug"]: row for row in load("questions.json")}
     notices = {
         row["id"]: row
         for row in load("notice-current-skeleton.json") + load("notice-nodes.json")
+    }
+    notice_reference_rows = {
+        row["id"]: row
+        for row in load("notice-nodes.json") + load("notice-current-skeleton.json")
     }
     notice_reviews = {
         row["notice_id"]: row for row in load("notice-review-packet.json").get("items", [])
@@ -331,7 +517,7 @@ def build() -> dict:
     items = []
     for item in packet.get("items", []):
         if item.get("classification") in EXCLUDED_CLASSIFICATIONS:
-            raise ValueError("Worker B-owned freshness relation leaked into Worker D evidence pack")
+            raise ValueError("freshness-sensitive relation leaked into human-review evidence pack")
         identity = item["identity"]
         source = evidence(
             identity["from"],
@@ -384,6 +570,52 @@ def build() -> dict:
                 "reviewed_at": None,
             }
         )
+        current = items[-1]
+        source_refs = supporting_primary_source_references(
+            identity["from"],
+            notice_reference_rows=notice_reference_rows,
+            fee_nodes=fee_nodes,
+            qa_items=qa_items,
+            sources=sources,
+        )
+        target_refs = supporting_primary_source_references(
+            identity["to"],
+            notice_reference_rows=notice_reference_rows,
+            fee_nodes=fee_nodes,
+            qa_items=qa_items,
+            sources=sources,
+        )
+        current["source_file"] = item.get("source_file")
+        current["source_state"] = item.get("source_state")
+        current["supporting_source_primary_references"] = source_refs
+        current["supporting_target_primary_references"] = target_refs
+        current["source_primary_source_locators"] = primary_source_locators(
+            current["source_evidence"], source_refs
+        )
+        current["target_primary_source_locators"] = primary_source_locators(
+            current["target_evidence"], target_refs
+        )
+        current["relevant_source_excerpt_locator"] = current["source_evidence"].get(
+            "source_locator"
+        )
+        current["relevant_target_excerpt_locator"] = current["target_evidence"].get(
+            "source_locator"
+        )
+        current["currentness_caveat"] = (
+            "Relation evidence readiness and source currentness are separate assurance axes. "
+            "Supporting references may be historical, redline, amendment-only, partial, or "
+            "current-source evidence as labelled; this pack makes no currentness promotion."
+        )
+        current["unresolved_semantic_question"] = current["human_judgment_question"]
+        current["proposed_decision_options"] = current["decision_options"]
+        current["reviewed_by"] = item.get("reviewed_by")
+        current["reviewer_rationale"] = item.get("reviewer_rationale")
+        current["evidence_pack_ready"] = evidence_pack_ready(
+            current, source_refs, target_refs
+        )
+        current["evidence_fingerprint_sha256"] = evidence_fingerprint(
+            current, source_refs, target_refs
+        )
 
     resolution_counts = Counter(
         row["target_evidence"]["resolution_kind"] for row in items
@@ -417,8 +649,9 @@ def build() -> dict:
         "policy": (
             "This file supplies review excerpts and canonical resolution for Worker D-owned "
             "relations only. Excerpts may include machine-reconstructed candidates or editorial "
-            "summaries where primary text is not committed. Worker B-owned freshness relations "
-            "are excluded. It never makes or promotes a semantic review decision."
+            "summaries where primary text is not committed. Freshness-sensitive direct-evidence "
+            "relations are assessed separately and are excluded here. It never makes or promotes "
+            "a semantic review decision."
         ),
         "summary": {
             "items_total": len(items),
@@ -430,6 +663,12 @@ def build() -> dict:
             ),
             "closure_assessment_counts": dict(sorted(closure_counts.items())),
             "machine_safe_closures": 0,
+            "evidence_pack_ready_items": sum(
+                1 for row in items if row["evidence_pack_ready"]
+            ),
+            "evidence_pack_not_ready_items": sum(
+                1 for row in items if not row["evidence_pack_ready"]
+            ),
         },
         "review_contract": {
             "semantic_decision_included": False,
@@ -438,6 +677,7 @@ def build() -> dict:
             "ai_proposal_is_not_human_decision": True,
             "reviewer_identity_required_for_decision": True,
             "review_timestamp_required_for_decision": True,
+            "evidence_pack_ready_does_not_mean_reviewed": True,
         },
         "items": items,
     }

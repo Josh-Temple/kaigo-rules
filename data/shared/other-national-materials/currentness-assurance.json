@@ -1,0 +1,133 @@
+{
+  "format_version": 1,
+  "source_family": "other_national_manuals_forms",
+  "corpus_id": "other-national-materials-national",
+  "verification_kind": "SOURCE_LEVEL_CURRENTNESS_EVIDENCE_WITHOUT_SERVICE_PROJECTION",
+  "verified_at": "2026-10-06",
+  "base_main_sha": "e3a6c3f038293d962562429e5056f3e36c603191",
+  "purpose": "Record source-level version/freshness evidence independently from item-body verification and service applicability. No source row in this artifact authorizes blanket service-level currentness projection.",
+  "policies": {
+    "item_body_implies_currentness": false,
+    "current_page_access_implies_currentness_pass": false,
+    "source_level_currentness_implies_service_currentness": false,
+    "service_projection_allowed": false,
+    "historical_or_comparison_source_can_establish_currentness_alone": false,
+    "negative_search_proves_no_change": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false
+  },
+  "sources": [
+    {
+      "canonical_source_id": "mhlw-application-forms",
+      "state": "PARTIAL",
+      "observed_on": "2026-10-06",
+      "official_version_label": "厚生労働大臣が定める様式等（令和6年3月15日告示分）",
+      "evidence": [
+        {
+          "kind": "DIRECT_OFFICIAL_FRESHNESS_SURFACE",
+          "url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
+          "locator": "2. 指定申請様式等の使用原則化 / （1）厚生労働大臣が定める様式等（令和6年3月15日告示分）"
+        }
+      ],
+      "established": [
+        "The current official MHLW application page exposes the R6-03-15 form set and its downloadable form families."
+      ],
+      "unresolved": [
+        "No attachment-by-attachment amendment/supersession chain was established.",
+        "The verified body remains limited to bounded service-table slices."
+      ],
+      "service_projection_allowed": false
+    },
+    {
+      "canonical_source_id": "mhlw-electronic-application-operator-manual-v2-50",
+      "state": "PARTIAL",
+      "observed_on": "2026-10-06",
+      "official_version_label": "ver2.50",
+      "evidence": [
+        {
+          "kind": "DIRECT_OFFICIAL_VERSION_SURFACE",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true",
+          "locator": "操作マニュアル_(介護事業所向け) 詳細版 ver2.50"
+        },
+        {
+          "kind": "DIRECT_OFFICIAL_ACTIVE_SYSTEM_SURFACE",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/shinsei/?AppType=22&TransType=1",
+          "locator": "Current login/help surface references 詳細版 ver2.50"
+        }
+      ],
+      "established": [
+        "The current official system surfaces identify the operator manual as detailed version 2.50."
+      ],
+      "unresolved": [
+        "The exact ver2.50 PDF body/bytes were not pinned in this worker.",
+        "No complete publication-history or supersession chain was established.",
+        "Service-level applicability remains NOT_ESTABLISHED."
+      ],
+      "service_projection_allowed": false
+    },
+    {
+      "canonical_source_id": "mhlw-accident-report-vol1332",
+      "state": "PARTIAL",
+      "observed_on": "2026-10-06",
+      "official_version_label": "Vol.1332 / 2024-11-29",
+      "evidence": [
+        {
+          "kind": "DIRECT_OFFICIAL_CURRENT_LISTING",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/boushi/jimurenraku.html",
+          "locator": "介護保険最新情報 Vol.1332 / 令和6年11月29日"
+        },
+        {
+          "kind": "DIRECT_OFFICIAL_SUPERSESSION_TEXT",
+          "url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "locator": "Vol.1332 — predecessor 2021-03-19 notice abolished on 2024-11-29"
+        }
+      ],
+      "established": [
+        "Vol.1332 is still exposed by the current official MHLW accident-reporting surface.",
+        "The document explicitly supersedes the 2021 predecessor notice."
+      ],
+      "unresolved": [
+        "No archive-wide authoritative proof excluding every later replacement was established."
+      ],
+      "service_projection_allowed": false
+    },
+    {
+      "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
+      "state": "PARTIAL",
+      "observed_on": "2026-10-06",
+      "official_version_label": "v1.20 / 2025-03-13",
+      "evidence": [
+        {
+          "kind": "DIRECT_OFFICIAL_FRESHNESS_SURFACE",
+          "url": "https://www.mhlw.go.jp/stf/tyousa-bunseki.html",
+          "locator": "事業者の皆様へ / もっと詳しく知りたい方へ / 詳細版マニュアル"
+        },
+        {
+          "kind": "DIRECT_OFFICIAL_VERSION_EVIDENCE",
+          "url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
+          "locator": "改版履歴 — v1.20 / 2025-03-13"
+        }
+      ],
+      "established": [
+        "The current official MHLW financial-DB page links the detailed manual.",
+        "The linked official PDF embeds revision history through v1.20 dated 2025-03-13.",
+        "The current landing page separately states temporary reporting reception suspension; system availability is treated as a distinct axis from manual identity/currentness."
+      ],
+      "unresolved": [
+        "No complete successor/amendment chain proving v1.20 is the final integrated manual version was established."
+      ],
+      "service_projection_allowed": false
+    }
+  ],
+  "summary": {
+    "PASS": 0,
+    "PARTIAL": 4,
+    "NOT_ESTABLISHED": 0,
+    "blanket_service_projection_applied": false,
+    "currentness_promoted_from_item_body": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false
+  }
+}

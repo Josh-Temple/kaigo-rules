@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "source_family": "other_national_manuals_forms",
-  "observed_on": "2026-10-05",
+  "observed_on": "2026-10-06",
   "evidence_policy": {
     "source_body_hash_required_for_item_body_verification": false,
     "locator_receipt_sufficient_for_source_identity_promotion": true,
@@ -45,7 +45,8 @@
       "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER",
       "currentness": {
         "state": "PARTIAL",
-        "basis": "Current official landing page exposes this form set at observation time; no archived supersession chain was captured."
+        "observed_on": "2026-10-06",
+        "basis": "The current official MHLW application page still exposes the form set labeled 厚生労働大臣が定める様式等（令和6年3月15日告示分）. No attachment-by-attachment supersession chain was established, so CURRENT/PASS is not claimed."
       },
       "item_body_assurance": {
         "state": "PARTIAL",
@@ -68,7 +69,8 @@
       "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER",
       "currentness": {
         "state": "PARTIAL",
-        "basis": "Current official help surface names ver2.50; exact PDF bytes and publication-history chain are not pinned."
+        "observed_on": "2026-10-06",
+        "basis": "The current official system help surface and login surface name 操作マニュアル_(介護事業所向け) 詳細版 ver2.50. Exact manual PDF bytes/body and a publication-history chain were not pinned, so body currentness is not claimed."
       },
       "item_body_assurance": {
         "state": "NOT_ESTABLISHED",
@@ -97,7 +99,8 @@
       "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER",
       "currentness": {
         "state": "PARTIAL",
-        "basis": "Current official page lists Vol.1332 and Vol.1332 explicitly abolishes the 2021 predecessor; no independent archive-wide successor proof is promoted."
+        "observed_on": "2026-10-06",
+        "basis": "The current official MHLW accident-reporting/current-information surfaces still list Vol.1332, and Vol.1332 explicitly abolishes the 2021 predecessor. No archive-wide proof excluding a later replacement was established, so CURRENT/PASS is not claimed."
       },
       "supersession_observation": {
         "supersedes": "2021-03-19 accident-report notice",
@@ -130,13 +133,14 @@
       "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER",
       "currentness": {
         "state": "PARTIAL",
-        "basis": "Current official landing page links the v1.20 manual. Current manual identity is distinct from current system availability; the page separately states a temporary reception suspension."
+        "observed_on": "2026-10-06",
+        "basis": "The current official MHLW financial-DB landing page links the detailed manual, and the exact official PDF embeds revision history through v1.20 (2025-03-13). The page separately reports temporary submission suspension; system availability is not used as manual-currentness evidence. No complete successor chain was established, so CURRENT/PASS is not claimed."
       },
       "item_body_assurance": {
-        "state": "NOT_ESTABLISHED",
+        "state": "PARTIAL",
         "artifact": "data/shared/other-national-materials/item-body-assurance.json",
         "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
-        "canonical_body_fingerprint_sha256": null,
+        "canonical_body_fingerprint_sha256": "19bab81bc59a5608aa1a94de63a4217b2cff21781fcf6a01fc177c4cdc5d4e36",
         "source_bytes_sha256": null,
         "currentness_promoted": false
       }

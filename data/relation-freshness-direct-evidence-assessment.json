@@ -1,6 +1,6 @@
 {
   "format_version": 1,
-  "assessed_at": "2026-10-05",
+  "assessed_at": "2026-10-06",
   "policy": "This artifact records direct-source and freshness assessment for the one freshness-sensitive relation in the current relation verification queue. Source existence and amendment semantics are evaluated separately from latest/current freshness. Negative search results are not treated as proof that no later amendment exists.",
   "source_queue": "data/relation-verification-queue.json",
   "items": [
@@ -25,20 +25,33 @@
         "official_listing": {
           "title": "介護保険最新情報掲載ページ",
           "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
-          "observation": "The official listing includes Vol.1502 dated 2026-05-08 and later介護保険最新情報 entries. This establishes source existence and chronology of the listing, but the listing alone does not prove that no later amendment to 老企第36号 exists."
+          "observation": "Official listing reviewed through Vol.1545 (2026-10-02). Vol.1502 (2026-05-08) is the identified 老企第36号 amendment; a later related Vol.1523 (2026-07-13) is Q&A about the prior amendment, not itself a replacement amendment. No later entry with the same amendment identity was found in this listing after Vol.1502.",
+          "reviewed_through": "介護保険最新情報Vol.1545",
+          "reviewed_through_date": "2026-10-02",
+          "later_related_entry": {
+            "id": "介護保険最新情報Vol.1523",
+            "issued_at": "2026-07-13",
+            "kind": "Q&A",
+            "assessment": "Related follow-up Q&A; not evidence of a later replacement amendment."
+          }
         },
         "repository_cross_checks": [
           "data/sources.json: mhlw-r8-fee-guidance-may-amendment",
           "data/fee-guidance-amendment-events.json: fee-guidance.r8-may.dayservice.staffing-shortage-exception",
           "data/fee-guidance-source-chain.json: current_amendment entry"
-        ]
+        ],
+        "successor_absence_check": {
+          "result": "INSUFFICIENT_FOR_LATEST_CLAIM",
+          "evidence": "The official listing was checked beyond Vol.1502 and no later same-identity amendment entry was found through Vol.1545.",
+          "limitation": "An absence in this listing is negative evidence only. It does not by itself establish that no superseding 老企第36号 amendment exists through every authoritative publication channel."
+        }
       },
       "freshness": {
         "state": "NOT_ESTABLISHED",
-        "reason": "The relation label asserts latest interpretation amendment evidence. The official source and amendment semantics are directly supported, but source existence plus a negative search for later amendments is not sufficient proof of successor absence as of 2026-10-05."
+        "reason": "The relation label asserts latest interpretation amendment evidence. Vol.1502 and its amendment semantics are directly supported, and the official listing was reviewed through Vol.1545 without a later same-identity amendment entry. However, that negative listing check is not sufficient proof of successor absence across all authoritative channels."
       },
       "closure_assessment": "KEEP_OPEN",
-      "next_action": "Establish a canonical successor/absence check for 老企第36号 amendments covering the review date, then re-evaluate the latest claim.",
+      "next_action": "Establish an authoritative successor/absence check for 老企第36号 amendments across the applicable official publication chain, then re-evaluate the latest claim.",
       "human_review_state_changed": false,
       "currentness_state_changed": false,
       "publication_state_changed": false,

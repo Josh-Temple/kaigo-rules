@@ -1,0 +1,75 @@
+name: Residual assurance integration regenerate
+
+on:
+  push:
+    branches:
+      - "work/residual-assurance-human-review-integrator-v2"
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate-and-validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          npm ci --no-audit --no-fund
+          python -m pip install beautifulsoup4==4.13.4
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Regenerate repository-wide derived artifacts once
+        run: |
+          set -euo pipefail
+          python scripts/build_service_catalog.py
+          python scripts/build_relation_verification_queue.py
+          python scripts/build_relation_human_review_packet.py
+          python scripts/build_relation_human_review_evidence_pack.py
+          python scripts/build_verification_registry.py
+          python scripts/build_database_coverage_matrix.py
+          python scripts/build_product_value_snapshot.py
+          python scripts/build_question_context_packages.py
+
+      - name: Validate Worker A-D safety contracts
+        run: |
+          set -euo pipefail
+          python scripts/validate_standards_interpretation_residual_assurance_readiness.py
+          python scripts/validate_fee_guidance_item_body_assurance.py
+          python scripts/validate_other_national_materials.py
+          python scripts/validate_other_national_materials_item_body_assurance.py
+          python scripts/validate_relation_human_review_hardening.py
+          python scripts/validate_national_source_currentness_expansion.py
+          python -m unittest \
+            tests.test_standards_interpretation_residual_assurance_readiness \
+            tests.test_fee_guidance_item_body_assurance \
+            tests.test_other_national_materials \
+            tests.test_relation_human_review_packet \
+            tests.test_relation_human_review_evidence_pack \
+            tests.test_relation_human_review_hardening
+
+      - name: Run full canonical validation and build
+        run: npm run build
+
+      - name: Commit generated artifacts and remove this temporary workflow
+        run: |
+          set -euo pipefail
+          rm -f ".github/workflows/residual-assurance-integration-regenerate.yml"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "[generated] Regenerate residual assurance integration artifacts"
+          git push origin "HEAD:work/residual-assurance-human-review-integrator-v2"

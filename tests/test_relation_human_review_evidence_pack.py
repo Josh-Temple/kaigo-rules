@@ -22,6 +22,8 @@ class RelationHumanReviewEvidencePackTests(unittest.TestCase):
         self.assertEqual(built, committed)
         self.assertEqual(built["summary"]["items_total"], 58)
         self.assertEqual(built["summary"]["unresolved_items"], 0)
+        self.assertEqual(built["summary"]["evidence_pack_ready_items"], 58)
+        self.assertEqual(built["summary"]["evidence_pack_not_ready_items"], 0)
         self.assertEqual(
             built["summary"]["target_resolution_counts"],
             {
@@ -46,8 +48,16 @@ class RelationHumanReviewEvidencePackTests(unittest.TestCase):
         )
 
         for item in built["items"]:
+            self.assertIsNone(item["reviewed_by"])
+            self.assertIsNone(item["reviewer_rationale"])
             self.assertIsNone(item["reviewer_decision"])
             self.assertIsNone(item["reviewer_note"])
+            self.assertTrue(item["source_file"])
+            self.assertTrue(item["currentness_caveat"])
+            self.assertTrue(item["evidence_pack_ready"])
+            self.assertEqual(len(item["evidence_fingerprint_sha256"]), 64)
+            self.assertTrue(item["source_primary_source_locators"])
+            self.assertTrue(item["target_primary_source_locators"])
             self.assertTrue(item["source_evidence"]["excerpt"])
             self.assertTrue(item["target_evidence"]["excerpt"])
             self.assertNotEqual(
