@@ -124,7 +124,7 @@ def validate() -> list[str]:
         if row.get("official_index_url") != "https://www.mhlw.go.jp/stf/newpage_38790.html":
             errors.append(f"{service_id}: official index URL mismatch")
 
-        for fp in row.get("pinned_direct_body_evidence", []):
+        for fp in row.get("pinned_versioned_source_body_evidence", []):
             relative = fp.get("snapshot_path")
             recorded = fp.get("git_blob_sha")
             if not relative or not recorded:
