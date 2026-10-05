@@ -57,7 +57,33 @@ def parse_reviewed_at(value: object) -> datetime:
         raise ReviewContractError(f"reviewed_at is not valid ISO-8601: {value}") from exc
 
 
+def normalize_batch_registry(value: dict[str, Any]) -> dict[str, Any]:
+    """Accept the new registry and the legacy pilot artifact used by older callers/tests."""
+    if "batches" in value:
+        return value
+    if "items" in value:
+        return {
+            "batches": [
+                {
+                    "batch_id": "pilot-1",
+                    "items": [
+                        {
+                            "review_id": row.get("review_id"),
+                            "relation_key": row.get("relation_key"),
+                            "evidence_fingerprint_sha256": row.get(
+                                "evidence_fingerprint_sha256"
+                            ),
+                        }
+                        for row in value.get("items", [])
+                    ],
+                }
+            ]
+        }
+    raise ReviewContractError("batch registry or legacy pilot artifact is required")
+
+
 def active_batch_items(registry: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    registry = normalize_batch_registry(registry)
     active: dict[str, dict[str, Any]] = {}
     for batch in registry.get("batches", []):
         batch_id = batch.get("batch_id")
@@ -119,12 +145,12 @@ def validate_decisions(
     needs_more = 0
 
     for row in decisions:
-        decision_id = row.get("decision_id")
-        if not isinstance(decision_id, str) or not decision_id.strip():
-            raise ReviewContractError("decision_id is required")
-        if decision_id in decision_by_id:
-            raise ReviewContractError(f"duplicate decision_id: {decision_id}")
-        decision_by_id[decision_id] = row
+        explicit_decision_id = row.get("decision_id")
+        if explicit_decision_id is not None and (
+            not isinstance(explicit_decision_id, str)
+            or not explicit_decision_id.strip()
+        ):
+            raise ReviewContractError("decision_id must be a non-empty string when supplied")
 
         relation_key = row.get("relation_key")
         if not isinstance(relation_key, str) or not relation_key:
@@ -141,8 +167,10 @@ def validate_decisions(
             )
         if row.get("review_id") != active_item.get("review_id"):
             raise ReviewContractError(f"review_id mismatch: {relation_key}")
-        if row.get("batch_id") != active_item.get("batch_id"):
+        supplied_batch_id = row.get("batch_id")
+        if supplied_batch_id is not None and supplied_batch_id != active_item.get("batch_id"):
             raise ReviewContractError(f"batch_id mismatch: {relation_key}")
+        resolved_batch_id = active_item.get("batch_id")
 
         reviewer_identity = row.get("reviewer_identity")
         if not isinstance(reviewer_identity, str) or not reviewer_identity.strip():
@@ -165,6 +193,14 @@ def validate_decisions(
             )
 
         reviewed_at = parse_reviewed_at(row.get("reviewed_at"))
+        decision_id = (
+            explicit_decision_id.strip()
+            if isinstance(explicit_decision_id, str)
+            else f"legacy::{row.get('review_id')}::{row.get('reviewed_at')}"
+        )
+        if decision_id in decision_by_id:
+            raise ReviewContractError(f"duplicate decision_id: {decision_id}")
+        decision_by_id[decision_id] = row
 
         if row.get("reviewer_attestation") != HUMAN_ATTESTATION:
             raise ReviewContractError(
@@ -209,6 +245,8 @@ def validate_decisions(
         relation_records[relation_key].append(
             {
                 **row,
+                "decision_id": decision_id,
+                "batch_id": resolved_batch_id,
                 "_reviewed_at": reviewed_at,
                 "_fingerprint_matches_current": matches,
             }
@@ -247,6 +285,12 @@ def validate_decisions(
         for relation_key, records in relation_records.items()
         if any(row.get("decision_state") == "CURRENT" for row in records)
     }
+    pilot_keys = {
+        relation_key
+        for relation_key, item in active_by_key.items()
+        if item.get("batch_id") == "pilot-1"
+    }
+    reviewed_pilot_relations = reviewed_relations & pilot_keys
 
     return {
         "active_batch_items": len(active_by_key),
@@ -256,6 +300,7 @@ def validate_decisions(
         "superseded_decisions": superseded,
         "current_needs_more_evidence": needs_more,
         "unreviewed_active_items": len(active_by_key) - len(reviewed_relations),
+        "unreviewed_pilot_items": len(pilot_keys) - len(reviewed_pilot_relations),
         "validated_decisions": [
             {
                 key: value
