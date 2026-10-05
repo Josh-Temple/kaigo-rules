@@ -101,9 +101,14 @@ class PublicationRequirementScopingTests(unittest.TestCase):
                 self.assertFalse(fields & review_fields, definition["unit_type"])
             self.assertTrue(fields <= module.ALL_PUBLICATION_FIELDS)
 
-    def test_current_main_has_no_ready_candidate_for_explainable_reason(self):
+    def test_ready_candidates_still_require_pass_currentness(self):
         summary = self.artifact["summary"]
-        self.assertEqual(summary["ready_for_publication_review_candidates"], 0)
+        self.assertGreater(summary["ready_for_publication_review_candidates"], 0)
+        for cell in self.artifact["cells"]:
+            currentness = cell["canonical_axis_observations"]["currentness"]
+            for unit in cell["publication_units"]:
+                if unit["readiness"] == "READY_FOR_PUBLICATION_REVIEW":
+                    self.assertIn(currentness, module.CURRENTNESS_PASS)
         self.assertGreater(summary["blocking_reason_counts"].get("BLOCKED_CURRENTNESS", 0), 0)
 
     def test_projection_cannot_publish_or_enable_routes(self):
