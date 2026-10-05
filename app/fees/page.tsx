@@ -50,7 +50,7 @@ export default function FeesPage() {
       <VerificationSummary layerId="remuneration-notices" />
 
       <section className="rules-stats fee-stats">
-        <div><strong>{meta.counts.nodes}</strong><span>骨格ノード</span></div>
+        <div><strong>{meta.counts.nodes}</strong><span>収載項目</span></div>
         <div><strong>{textMeta.record_count || texts.length}</strong><span>本文取込</span></div>
         <div><strong>{(review.reviewed_nodes || []).length}</strong><span>人手確認済み</span></div>
         <div><strong>{meta.counts.out_of_core_scope}</strong><span>コア範囲外</span></div>
@@ -93,7 +93,7 @@ export default function FeesPage() {
                 <p className="meta">{imported ? "現行公式本文を取込済み" : "本文未取込"}</p>
               </div>
               <span className={node.verification_status==="OUT_OF_CORE_SCOPE"?"fee-status fee-out":isReviewed?"fee-status fee-reviewed":"fee-status"}>
-                {isReviewed ? "人手確認済み" : labels[node.verification_status] || node.verification_status}
+                {isReviewed ? "人手確認済み" : labels[node.verification_status] || "確認中"}
               </span>
             </Link>;
           })}
