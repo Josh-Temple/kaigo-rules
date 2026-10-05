@@ -23,8 +23,8 @@ class FeeGuidanceItemBodyAssuranceTest(unittest.TestCase):
             result["evidence_classes"],
             {
                 "VERSIONED_BODY_AVAILABLE_NOT_CURRENTNESS_PROOF": 1,
-                "COMPARISON_BODY_ONLY": 5,
-                "LOCATOR_ONLY": 31,
+                "COMPARISON_BODY_ONLY": 9,
+                "LOCATOR_ONLY": 27,
                 "NOT_APPLICABLE": 2,
             },
         )
@@ -33,6 +33,30 @@ class FeeGuidanceItemBodyAssuranceTest(unittest.TestCase):
             {"PARTIAL": 1, "NOT_ESTABLISHED": 36, "NOT_APPLICABLE": 2},
         )
         self.assertEqual(result["verified_nodes"], 8)
+
+    def test_r8_bounded_amendment_evidence_does_not_promote_full_section(self):
+        data = json.loads(
+            (ROOT / "data/shared/fee-guidance/item-body-assurance.json").read_text(encoding="utf-8")
+        )
+        rows = {row["service_id"]: row for row in data["service_projections"]}
+        for service_id in (
+            "homenursing",
+            "homerehab",
+            "care-management",
+            "preventive-homenursing",
+            "preventive-homerehab",
+            "preventive-support",
+        ):
+            row = rows[service_id]
+            self.assertEqual(row["evidence_class"], "COMPARISON_BODY_ONLY")
+            self.assertEqual(row["service_level_item_body"], "NOT_ESTABLISHED")
+            self.assertEqual(row["verified_node_count"], 0)
+            self.assertFalse(row["projection_to_pass_permitted"])
+            evidence = row["bounded_direct_amendment_evidence"]
+            self.assertTrue(evidence["verified_item_range_only"])
+            self.assertFalse(evidence["full_scoped_node_verified"])
+            self.assertFalse(evidence["current_integrated_body_established"])
+            self.assertFalse(evidence["currentness_established"])
 
     def test_comparison_only_cannot_be_promoted_to_pass(self):
         with tempfile.TemporaryDirectory() as tmp:
