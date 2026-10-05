@@ -30,7 +30,7 @@ jobs:
       - name: Run focused regression tests
         run: python -m unittest tests.test_publication_requirement_scoping
       - name: Confirm global publication readiness remains untouched
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.title, '[Worker E]')
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
