@@ -352,7 +352,7 @@ def main() -> int:
         "PASS other-national-materials: "
         f"{accepted} accepted sources canonically promoted; "
         "service applicability remains evidence-scoped; "
-        "item-body/currentness/human-review/publication/route gates remain fail-closed"
+        "bounded item-body assurance is PARTIAL while currentness/human-review/publication/route gates remain fail-closed"
     )
     return 0
 
