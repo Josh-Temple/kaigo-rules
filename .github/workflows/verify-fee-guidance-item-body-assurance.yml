@@ -32,7 +32,7 @@ jobs:
       - name: Run focused Fee Guidance tests
         run: python -m unittest tests.test_fee_guidance_item_body_assurance tests.test_shared_fee_guidance
       - name: Confirm Worker D did not modify global generated artifacts
-        if: github.event_name != 'pull_request' || github.head_ref != 'work/core-item-body-assurance-integrator'
+        if: github.event_name != 'pull_request' || (github.head_ref != 'work/core-item-body-assurance-integrator' && github.head_ref != 'work/national-source-assurance-completion-integrator')
         run: |
           git fetch origin main
           changed="$(git diff --name-only origin/main...HEAD --             data/database-coverage-matrix.generated.json             docs/database-coverage-summary.generated.md             data/services/catalog.generated.json             data/verification-registry.json)"

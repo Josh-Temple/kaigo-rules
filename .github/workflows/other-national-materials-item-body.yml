@@ -1,0 +1,26 @@
+name: Other National material item-body assurance
+
+on:
+  pull_request:
+    paths:
+      - "data/shared/other-national-materials/**"
+      - "scripts/validate_other_national_materials.py"
+      - "scripts/validate_other_national_materials_item_body_assurance.py"
+      - ".github/workflows/other-national-materials-item-body.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Validate canonical inventory
+        run: python scripts/validate_other_national_materials.py
+      - name: Validate item-body assurance
+        run: python scripts/validate_other_national_materials_item_body_assurance.py
