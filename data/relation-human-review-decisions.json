@@ -1,0 +1,15 @@
+{
+  "format_version": 1,
+  "policy": "This is the human-entered decision ledger for the active relation-review pilot. Builders never populate decisions. A decision is current only when a human reviewer records the required fields and the stored evidence fingerprint matches the current evidence pack. Fingerprint mismatch invalidates current status and requires re-review or an explicit STALE_EVIDENCE state.",
+  "source_evidence_pack": "data/relation-human-review-evidence-pack.json",
+  "source_pilot": "data/relation-human-review-pilot.json",
+  "pilot_only": true,
+  "allowed_decisions": [
+    "CONFIRM_RELATION",
+    "REJECT_RELATION",
+    "NEEDS_MORE_EVIDENCE"
+  ],
+  "reviewer_attestation_required": true,
+  "reviewer_attestation_value": "HUMAN_REVIEW_COMPLETED",
+  "decisions": []
+}

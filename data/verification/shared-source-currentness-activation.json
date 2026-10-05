@@ -1,0 +1,709 @@
+{
+  "format_version": 1,
+  "inventory_kind": "SHARED_SOURCE_CURRENTNESS_ACTIVATION",
+  "observed_date": "2026-10-06",
+  "projection_snapshot_at": "2026-10-06T02:22:00+09:00",
+  "base_main_sha": "cb27b4658ba5dd0fee999cf9426d4b45ef0fb3a9",
+  "purpose": "Worker A canonical source-level currentness inventory and fail-closed applicability-aware projection policy. Source currentness never broadcasts to services without explicit applicability, scope/version alignment, and an explicit promotion gate.",
+  "currentness_classes": [
+    "CURRENT_OFFICIAL_CONSOLIDATED",
+    "CURRENT_OFFICIAL_VERSIONED",
+    "CURRENTNESS_PARTIAL",
+    "AMENDMENT_ONLY",
+    "COMPARISON_ONLY",
+    "HISTORICAL_ONLY",
+    "LOCATOR_ONLY",
+    "NOT_ESTABLISHED"
+  ],
+  "projection_policy": {
+    "rule_id": "shared-source-currentness-applicability-v1",
+    "pass_eligible_currentness_classes": [
+      "CURRENT_OFFICIAL_CONSOLIDATED",
+      "CURRENT_OFFICIAL_VERSIONED"
+    ],
+    "source_identity_required": true,
+    "explicit_service_applicability_required": true,
+    "service_scope_required": true,
+    "source_version_must_contain_scope": true,
+    "not_applicable_never_promoted": true,
+    "explicit_automatic_promotion_gate_required": true,
+    "comparison_only_never_pass": true,
+    "historical_only_never_pass": true,
+    "source_level_currentness_does_not_broadcast": true,
+    "provenance_required": [
+      "source_level_evidence",
+      "applicability_evidence",
+      "projection_rule",
+      "projection_timestamp",
+      "generator",
+      "validator"
+    ]
+  },
+  "source_families": {
+    "care_insurance_act": {
+      "currentness_class": "CURRENT_OFFICIAL_VERSIONED",
+      "source_identity_complete": true,
+      "service_projection_allowed": false,
+      "service_projection_blocker": "Existing service scope/applicability artifacts do not expose an explicit verified applicability plus automatic-promotion gate; preserve canonical service currentness.",
+      "evidence": [
+        "data/verification/shared-currentness-assurance.json",
+        "data/care-insurance-act-meta.json",
+        "scripts/verify_egov_source_freshness.py"
+      ],
+      "sources": [
+        {
+          "canonical_source_id": "care-insurance-act",
+          "official_source_url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+          "version_id": "409AC0000000123_20261001_507AC0000000087",
+          "effective_date": "2026-10-01",
+          "verified_at": "2026-10-01T19:53:08+09:00",
+          "fingerprint": {
+            "xml_sha256": "16935a64750d05314e16149b869b029c542f98a2bb271d87449d2a8258e54f20",
+            "revision_response_sha256": "d28266daf10795b383533402f131aa5c9132c2f263bd9dee8ee3a196eb3574a5"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "507AC0000000087",
+            "amendment_law_num": "令和七年法律第八十七号",
+            "amendment_promulgate_date": "2025-12-12",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 56
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-egov-source-freshness.yml",
+          "metadata_path": "data/care-insurance-act-meta.json"
+        }
+      ]
+    },
+    "governing_standards_ordinance": {
+      "currentness_class": "CURRENT_OFFICIAL_VERSIONED",
+      "source_identity_complete": true,
+      "service_projection_allowed": false,
+      "service_projection_blocker": "Service-to-corpus relations are structurally defined but remain NOT_SERVICE_VERIFIED with automatic promotion disabled.",
+      "evidence": [
+        "data/verification/shared-currentness-assurance.json",
+        "data/shared/standards/manifest.json",
+        "data/shared/standards/service-relations.generated.json",
+        "scripts/verify_shared_standards_source_freshness.py"
+      ],
+      "sources": [
+        {
+          "canonical_source_id": "ordinance37",
+          "official_source_url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "version_id": "411M50000100037_20250401_506M60000100164",
+          "effective_date": "2025-04-01",
+          "verified_at": "2025-04-02T04:26:26+09:00",
+          "fingerprint": {
+            "xml_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
+            "revision_response_sha256": "28ac7ee1ed7019e4ab4891450370a812920cd2b230a3b80adbba398edb40645c"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "506M60000100164",
+            "amendment_law_num": "令和六年厚生労働省令第百六十四号",
+            "amendment_promulgate_date": "2024-12-27",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 9
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-egov-source-freshness.yml",
+          "metadata_path": "data/ordinance37-meta.json"
+        },
+        {
+          "canonical_source_id": "community-based-standards",
+          "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100034",
+          "version_id": "418M60000100034_20250401_506M60000100164",
+          "effective_date": "2025-04-01",
+          "verified_at": "2025-04-02T08:11:37+09:00",
+          "fingerprint": {
+            "xml_sha256": "90741b00c7f04955f5359cef94c1d4c0fd4a0270cebed9d1878bce62ca4ecf55",
+            "revision_response_sha256": "6bb7c7b432867cf9aaa2ecce559d688f55f65a8f2d4f7716fed03758129d44e5"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "506M60000100164",
+            "amendment_law_num": "令和六年厚生労働省令第百六十四号",
+            "amendment_promulgate_date": "2024-12-27",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 10
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-shared-standards-corpora.yml",
+          "metadata_path": "data/shared/standards/community-based-standards/meta.json"
+        },
+        {
+          "canonical_source_id": "preventive-services-standards",
+          "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+          "version_id": "418M60000100035_20250401_506M60000100164",
+          "effective_date": "2025-04-01",
+          "verified_at": "2025-04-02T08:13:11+09:00",
+          "fingerprint": {
+            "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+            "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "506M60000100164",
+            "amendment_law_num": "令和六年厚生労働省令第百六十四号",
+            "amendment_promulgate_date": "2024-12-27",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 8
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-shared-standards-corpora.yml",
+          "metadata_path": "data/shared/standards/preventive-services-standards/meta.json"
+        },
+        {
+          "canonical_source_id": "preventive-community-based-standards",
+          "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100036",
+          "version_id": "418M60000100036_20240401_506M60000100016",
+          "effective_date": "2024-04-01",
+          "verified_at": "2024-07-01T14:40:37+09:00",
+          "fingerprint": {
+            "xml_sha256": "3e6634f51d46c75b724c4c0efa42681a7691d471c44b5bfc2249616b0413e851",
+            "revision_response_sha256": "d2482403696b6d41928e125f76eea6272ea0a9847e2f2ac33fd1da0fa61dce57"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "506M60000100016",
+            "amendment_law_num": "令和六年厚生労働省令第十六号",
+            "amendment_promulgate_date": "2024-01-25",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 7
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-shared-standards-corpora.yml",
+          "metadata_path": "data/shared/standards/preventive-community-based-standards/meta.json"
+        },
+        {
+          "canonical_source_id": "care-management-standards",
+          "official_source_url": "https://laws.e-gov.go.jp/law/411M50000100038",
+          "version_id": "411M50000100038_20240401_506M60000100016",
+          "effective_date": "2024-04-01",
+          "verified_at": "2024-07-01T14:35:00+09:00",
+          "fingerprint": {
+            "xml_sha256": "f747b2b28db8cdfd810d2196e23e2d6f7f89364316d810e1f0f79c076a6f2c3b",
+            "revision_response_sha256": "cf24d4c9aee44e75e3c7bb8a6e8cb77aa19b7177ec8e6d2f4d53f970476fc46d"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "506M60000100016",
+            "amendment_law_num": "令和六年厚生労働省令第十六号",
+            "amendment_promulgate_date": "2024-01-25",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 9
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-shared-standards-corpora.yml",
+          "metadata_path": "data/shared/standards/care-management-standards/meta.json"
+        },
+        {
+          "canonical_source_id": "preventive-support-standards",
+          "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100037",
+          "version_id": "418M60000100037_20240401_506M60000100061",
+          "effective_date": "2024-04-01",
+          "verified_at": "2024-07-01T15:09:54+09:00",
+          "fingerprint": {
+            "xml_sha256": "3e768f9cad728774c309666bd205521be5a27255a439b649c578ae7e18232621",
+            "revision_response_sha256": "f915e94a19815170312cd6b68b7fbc922738eeb2f9a622cf511f96716d230970"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "506M60000100061",
+            "amendment_law_num": "令和六年厚生労働省令第六十一号",
+            "amendment_promulgate_date": "2024-03-29",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 6
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-shared-standards-corpora.yml",
+          "metadata_path": "data/shared/standards/preventive-support-standards/meta.json"
+        },
+        {
+          "canonical_source_id": "elderly-welfare-facility-standards",
+          "official_source_url": "https://laws.e-gov.go.jp/law/411M50000100039",
+          "version_id": "411M50000100039_20250401_506M60000100164",
+          "effective_date": "2025-04-01",
+          "verified_at": "2025-04-02T04:27:59+09:00",
+          "fingerprint": {
+            "xml_sha256": "9cd5318322c7470363b188681d00f58549cfaaf6213aebfb5f110e2624e46bdd",
+            "revision_response_sha256": "8d79faccfad8e1db5ba8f4f252d0c97274c8bd41bf26184aced087ac42851fa7"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "506M60000100164",
+            "amendment_law_num": "令和六年厚生労働省令第百六十四号",
+            "amendment_promulgate_date": "2024-12-27",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 6
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-shared-standards-corpora.yml",
+          "metadata_path": "data/shared/standards/elderly-welfare-facility-standards/meta.json"
+        },
+        {
+          "canonical_source_id": "geriatric-health-services-facility-standards",
+          "official_source_url": "https://laws.e-gov.go.jp/law/411M50000100040",
+          "version_id": "411M50000100040_20240401_506M60000100016",
+          "effective_date": "2024-04-01",
+          "verified_at": "2024-04-26T15:11:35+09:00",
+          "fingerprint": {
+            "xml_sha256": "dce085ac4aae192660f7eea137a37034453c605a319b180f1ac2c25943ac60fd",
+            "revision_response_sha256": "870782b0d7d277da75cd3a83af498a2a954f5748a703c8fc19c1e014d45e5b5a"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "506M60000100016",
+            "amendment_law_num": "令和六年厚生労働省令第十六号",
+            "amendment_promulgate_date": "2024-01-25",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 5
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-shared-standards-corpora.yml",
+          "metadata_path": "data/shared/standards/geriatric-health-services-facility-standards/meta.json"
+        },
+        {
+          "canonical_source_id": "long-term-care-medical-facility-standards",
+          "official_source_url": "https://laws.e-gov.go.jp/law/430M60000100005",
+          "version_id": "430M60000100005_20251120_507M60000100103",
+          "effective_date": "2025-11-20",
+          "verified_at": "2025-11-20T00:55:50+09:00",
+          "fingerprint": {
+            "xml_sha256": "f87bf66b72ddaa93ca02d649a63bedf75559608903660055910d68d1f51b061c",
+            "revision_response_sha256": "eded15d1a22ed995bd174c735e75129a5c4d8d4ada672d80c5d4cb3c796a7d89"
+          },
+          "revision_lineage": {
+            "amendment_law_id": "507M60000100103",
+            "amendment_law_num": "令和七年厚生労働省令第百三号",
+            "amendment_promulgate_date": "2025-10-22",
+            "current_revision_status": "CurrentEnforced",
+            "repeal_status": "None",
+            "revision_count": 7
+          },
+          "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+          "monitoring_workflow": ".github/workflows/verify-shared-standards-corpora.yml",
+          "metadata_path": "data/shared/standards/long-term-care-medical-facility-standards/meta.json"
+        }
+      ]
+    },
+    "remuneration_notification": {
+      "currentness_class": "CURRENTNESS_PARTIAL",
+      "source_identity_complete": false,
+      "service_projection_allowed": false,
+      "service_projection_blocker": "Seven official consolidated-display snapshots are pinned, but canonical fingerprints explicitly disclaim currentness and a complete successor/latestness chain is not established.",
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/shared/remuneration-notification/service-item-body-assurance.json",
+        "data/verification/national-source-currentness-expansion.json"
+      ],
+      "sources": [
+        {
+          "canonical_source_id": "homevisit-notice19-mhlw-display",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+          "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "effective_date": null,
+          "verified_at": "2026-10-05",
+          "fingerprint": {
+            "document_semantic_sha256": "6343acbe2b255bb788415e2273a35bedbf91a520b47d074bd0a42b3d13a8aa93",
+            "pages": [
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+                "sha256": "ebe6a6f2fd5801dbdc94357c322d0174f67db8e9db037354b769c1410ec2ae13"
+              },
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+                "sha256": "665f29b4a0ba7e69cc6024bc4f1abc3f99f345b9e160ed5e3028e28c3729d2b2"
+              },
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=3",
+                "sha256": "e579d85130d3d9138cb68e6ce5259d98faa169745a1ba295c7cab81adcef5103"
+              },
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=4",
+                "sha256": "1b967bda88c75f44a4e2d3b374c9f7a95041cdece431c4a9700362cb675fdd54"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": null,
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-care-management-fee-notice20-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0254&dataType=0",
+          "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "effective_date": null,
+          "verified_at": "2026-10-05",
+          "fingerprint": {
+            "document_semantic_sha256": "01078b887c1bad13c9cb1b340db2c091a4cc1ed8c684039bce0719f63bee9465",
+            "pages": [
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0254&dataType=0&pageNo=1",
+                "sha256": "fe5bdf18a209a416bccbbc8864fdd75383932804a46134629b97cca854ef38f0"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": null,
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-facility-fee-notice21-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0",
+          "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "effective_date": null,
+          "verified_at": "2026-10-05",
+          "fingerprint": {
+            "document_semantic_sha256": "e2e4821a4be0a92bbfe7e9547269a882d46fdf9203c404018eae8fc13f99af8f",
+            "pages": [
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+                "sha256": "f62f2ab639fa5756437f3bf97ca2f54c9b4d47f08a318dbe519eed5453cca356"
+              },
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+                "sha256": "9879a6b09905fd85850cba1b2d8a4d97e6c1af0480055569647e98bd16526aa6"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": null,
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-community-fee-notice126-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
+          "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "effective_date": null,
+          "verified_at": "2026-10-05",
+          "fingerprint": {
+            "document_semantic_sha256": "f0a16ed2c0646bac72611b80622d2b844e5749c93fa528898c71938b73ad9366",
+            "pages": [
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0&pageNo=1",
+                "sha256": "3a028a9e852ff7dd3239bcdfaecad3e8395f60b19f1aa618a663456730f007f9"
+              },
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0&pageNo=2",
+                "sha256": "0234a262fe6012722d0ac256ac2cacc480725ba1b6ffc2d143c21452864cf4f1"
+              },
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0&pageNo=3",
+                "sha256": "847d566ac86b2396a4b216a973976385c244e0516888b02a270204d33e367d6f"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": null,
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-preventive-fee-notice127-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0",
+          "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "effective_date": null,
+          "verified_at": "2026-10-05",
+          "fingerprint": {
+            "document_semantic_sha256": "35fe7bfad4e1367f3d1933e4519eb902b294f7ccc09ae80e71f68632d3050072",
+            "pages": [
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+                "sha256": "00f4f56f55f158d8e66638913ab2050e81fafec50798cbcde0a10dae62f078a8"
+              },
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=2",
+                "sha256": "802e1a29fcc1cbad98029719b3fee5b5b90edc2de1caf8e8df26c687c07c8202"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": null,
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-community-preventive-fee-notice128-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7864&dataType=0",
+          "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "effective_date": null,
+          "verified_at": "2026-10-05",
+          "fingerprint": {
+            "document_semantic_sha256": "0393eebfaaa92916c7d331c88d23bb833124553ac84cec23bb6930122e80cc28",
+            "pages": [
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7864&dataType=0&pageNo=1",
+                "sha256": "38c4590598c37be9d6c50f7077c832cf0c1ca14b9fd9a8f329f7a37e77fb50b3"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": null,
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-preventive-support-fee-notice129-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0",
+          "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "effective_date": null,
+          "verified_at": "2026-10-05",
+          "fingerprint": {
+            "document_semantic_sha256": "eb21c5a76b6ca86cca3ba41a9b160b94514631005049516ce52a3a43c2473241",
+            "pages": [
+              {
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1",
+                "sha256": "cc3c2f362dfd4014c30ebed64cc52907387b776db4c7f7b21369ba652cedec71"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": null,
+          "currentness_claimed": false
+        }
+      ]
+    },
+    "delegated_remuneration_criteria": {
+      "currentness_class": "CURRENTNESS_PARTIAL",
+      "source_identity_complete": false,
+      "service_projection_allowed": false,
+      "service_projection_blocker": "Canonical national corpus has three pinned official documents, but successor/latestness is not independently closed and one source remains base_text_replay_pending.",
+      "evidence": [
+        "data/shared/remuneration-delegated/manifest.json",
+        "data/shared/remuneration-delegated/service-applicability.json",
+        "data/verification/national-source-currentness-expansion.json"
+      ],
+      "sources": [
+        {
+          "canonical_source_id": "mhlw-fee-notice27-base",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
+          "version_id": "OFFICIAL_URL_PLUS_PINNED_PAGE_HASH_SET",
+          "effective_date": null,
+          "verified_at": "2026-09-23",
+          "fingerprint": {
+            "pages": [
+              {
+                "page": 1,
+                "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+              },
+              {
+                "page": 2,
+                "sha256": "2b0fc2c256ed86868608c761eb54b7e39fec651a04cf7e3a87820bcd902c9612"
+              },
+              {
+                "page": 3,
+                "sha256": "327f87d0744a6d1b4da1312bbea5bee2bd85f0a7876bc92e1de1adea18520d8d"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_BASE_TEXT_SNAPSHOT",
+          "monitoring_workflow": ".github/workflows/verify-remuneration-independent.yml",
+          "repository_status": "base_text_replay_pending"
+        },
+        {
+          "canonical_source_id": "mhlw-fee-criteria95-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "version_id": "OFFICIAL_URL_PLUS_PINNED_PAGE_HASH_SET",
+          "effective_date": null,
+          "verified_at": "2026-09-23",
+          "fingerprint": {
+            "pages": [
+              {
+                "page": 1,
+                "sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618"
+              },
+              {
+                "page": 2,
+                "sha256": "50267c187930ab9d647a31c7aeb9560f2637ffaaf01713e220cfd05d2a57c104"
+              },
+              {
+                "page": 3,
+                "sha256": "e311c5baa33f37874bd00d7402e5044bc55be8711393b17545701a8e668d89a8"
+              },
+              {
+                "page": 4,
+                "sha256": "cb196683bfe3194b944c354806818afde8799313038e4b197ae9b12a6edb571a"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": ".github/workflows/verify-remuneration-independent.yml",
+          "repository_status": "current_official_source"
+        },
+        {
+          "canonical_source_id": "mhlw-fee-facility-criteria96-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0",
+          "version_id": "OFFICIAL_URL_PLUS_PINNED_PAGE_HASH_SET",
+          "effective_date": null,
+          "verified_at": "2026-09-23",
+          "fingerprint": {
+            "pages": [
+              {
+                "page": 1,
+                "sha256": "7d8a6819f5147ad403b41d853b3921b57bbff8242b34d6cf95e9caeae327fb88"
+              },
+              {
+                "page": 2,
+                "sha256": "0826f9ea881d41d62e0340d652f5af07238bce6f5c826988a6c9625eb0ce9035"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": ".github/workflows/verify-remuneration-independent.yml",
+          "repository_status": "current_official_source"
+        }
+      ]
+    },
+    "unit_price_regional_classification": {
+      "currentness_class": "CURRENTNESS_PARTIAL",
+      "source_identity_complete": false,
+      "service_projection_allowed": false,
+      "canonical_evidence_status": "INTEGRATED_MAIN",
+      "service_projection_blocker": "The official HTML snapshot, service applicability map, and item-body assurance are integrated, but the independent audit explicitly disclaims VERIFIED_CURRENT and successor/latestness remains open.",
+      "evidence": [
+        "data/unit-price-item-body-assurance.json",
+        "data/unit-price-independent-audit.json",
+        "data/unit-price-service-multipliers.json"
+      ],
+      "sources": [
+        {
+          "canonical_source_id": "mhlw-unit-price-current",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+          "version_id": "PINNED_OFFICIAL_HTML_SNAPSHOT_NOT_CURRENTNESS_CLAIM",
+          "effective_date": "2024-04-01",
+          "verified_at": "2026-09-23",
+          "fingerprint": {
+            "pages": [
+              {
+                "page": 1,
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+                "sha256": "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395"
+              },
+              {
+                "page": 2,
+                "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2",
+                "sha256": "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+              }
+            ]
+          },
+          "revision_lineage": "SUCCESSOR_ABSENCE_NOT_CLOSED",
+          "source_form": "OFFICIAL_CONSOLIDATED_DISPLAY_SNAPSHOT",
+          "monitoring_workflow": ".github/workflows/verify-unit-price-independent.yml"
+        }
+      ]
+    },
+    "national_qa": {
+      "currentness_class": "CURRENTNESS_PARTIAL",
+      "source_identity_complete": false,
+      "service_projection_allowed": false,
+      "service_projection_blocker": "Official compilation freshness is established only at workbook/listing level; it does not establish currentness of every individual historical Q&A.",
+      "evidence": [
+        "data/qa-corpus-meta.json",
+        "data/verification/shared-currentness-assurance.json",
+        "scripts/verify_qa_source_freshness.py"
+      ],
+      "sources": [
+        {
+          "canonical_source_id": "mhlw-qa",
+          "official_source_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+          "version_id": "介護サービスQ＆A集（令和8年9月掲載）",
+          "effective_date": null,
+          "verified_at": "2026-10-05",
+          "fingerprint": {
+            "workbook_sha256": "2b3e658d1659b42423fe1d3f7cc8b2fd24b58914ce65a6d15d16d0b64fc26c6b",
+            "workbook_url": "https://www.mhlw.go.jp/content/12300000/001751835.xlsx"
+          },
+          "revision_lineage": "OFFICIAL_COMPILATION_LISTING_CURRENT_AT_CHECK; INDIVIDUAL_ITEM_SUCCESSOR_CHAIN_NOT_ESTABLISHED",
+          "source_form": "OFFICIAL_COMPILATION_WORKBOOK",
+          "monitoring_workflow": ".github/workflows/verify-qa-source-freshness.yml"
+        }
+      ]
+    },
+    "other_national_manuals_forms": {
+      "currentness_class": "CURRENTNESS_PARTIAL",
+      "source_identity_complete": false,
+      "service_projection_allowed": false,
+      "canonical_evidence_status": "INTEGRATED_MAIN",
+      "service_projection_blocker": "Four source-level currentness rows are integrated and PARTIAL; each retains an open version/successor or byte-level identity gap and explicitly forbids service projection.",
+      "evidence": [
+        "data/shared/other-national-materials/currentness-assurance.json",
+        "data/shared/other-national-materials/source-registry.json",
+        "data/shared/other-national-materials/service-applicability.json"
+      ],
+      "sources": [
+        {
+          "canonical_source_id": "mhlw-application-forms",
+          "official_source_url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
+          "version_id": "厚生労働大臣が定める様式等（令和6年3月15日告示分）",
+          "effective_date": null,
+          "verified_at": "2026-10-06",
+          "fingerprint": null,
+          "revision_lineage": "No attachment-by-attachment amendment/supersession chain was established. | The verified body remains limited to bounded service-table slices.",
+          "source_form": "OFFICIAL_CURRENT_SURFACE_WITH_OPEN_SUCCESSOR_CHAIN",
+          "monitoring_workflow": null,
+          "source_state": "PARTIAL"
+        },
+        {
+          "canonical_source_id": "mhlw-electronic-application-operator-manual-v2-50",
+          "official_source_url": "https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true",
+          "version_id": "ver2.50",
+          "effective_date": null,
+          "verified_at": "2026-10-06",
+          "fingerprint": null,
+          "revision_lineage": "The exact ver2.50 PDF body/bytes were not pinned in this worker. | No complete publication-history or supersession chain was established. | Service-level applicability remains NOT_ESTABLISHED.",
+          "source_form": "OFFICIAL_CURRENT_SURFACE_WITH_OPEN_SUCCESSOR_CHAIN",
+          "monitoring_workflow": null,
+          "source_state": "PARTIAL"
+        },
+        {
+          "canonical_source_id": "mhlw-accident-report-vol1332",
+          "official_source_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/boushi/jimurenraku.html",
+          "version_id": "Vol.1332 / 2024-11-29",
+          "effective_date": null,
+          "verified_at": "2026-10-06",
+          "fingerprint": null,
+          "revision_lineage": "No archive-wide authoritative proof excluding every later replacement was established.",
+          "source_form": "OFFICIAL_CURRENT_SURFACE_WITH_OPEN_SUCCESSOR_CHAIN",
+          "monitoring_workflow": null,
+          "source_state": "PARTIAL"
+        },
+        {
+          "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
+          "official_source_url": "https://www.mhlw.go.jp/stf/tyousa-bunseki.html",
+          "version_id": "v1.20 / 2025-03-13",
+          "effective_date": null,
+          "verified_at": "2026-10-06",
+          "fingerprint": null,
+          "revision_lineage": "No complete successor/amendment chain proving v1.20 is the final integrated manual version was established.",
+          "source_form": "OFFICIAL_CURRENT_SURFACE_WITH_OPEN_SUCCESSOR_CHAIN",
+          "monitoring_workflow": null,
+          "source_state": "PARTIAL"
+        }
+      ]
+    }
+  },
+  "global_generated_artifacts_untouched": [
+    "data/database-coverage-matrix.generated.json",
+    "docs/database-coverage-summary.generated.md",
+    "data/services/catalog.generated.json"
+  ],
+  "safety": {
+    "global_generated_artifacts_updated": false,
+    "canonical_service_currentness_mutated": false,
+    "source_currentness_broadcast_to_all_services": false,
+    "item_body_promoted": false,
+    "relation_verification_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false,
+    "negative_search_used_as_proof": false
+  }
+}

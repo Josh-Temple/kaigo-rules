@@ -1,0 +1,505 @@
+{
+  "format_version": 1,
+  "source_family": "fee_calculation_guidance",
+  "worker_scope": "2026-10-06 Worker C",
+  "base_main_sha": "cb27b4658ba5dd0fee999cf9426d4b45ef0fb3a9",
+  "derived_from": {
+    "path": "data/shared/fee-guidance/item-body-assurance.json",
+    "blob_sha": "4e699a1456df8943f28ddccbaacdf91dbc7b88ea"
+  },
+  "purpose": "Expose residual Fee Guidance body evidence classes and keep versioned body, comparison-only evidence, locator-only evidence, current consolidated body, and currentness as separate claims.",
+  "policy": {
+    "classification_only": true,
+    "canonical_status_writeback_allowed": false,
+    "amendment_only_cannot_establish_full_item_body": true,
+    "comparison_only_cannot_establish_currentness": true,
+    "incomplete_service_item_set_cannot_pass": true,
+    "not_applicable_body_status_must_be_preserved": true,
+    "human_review_auto_promotion_allowed": false,
+    "publication_auto_promotion_allowed": false,
+    "route_auto_promotion_allowed": false
+  },
+  "evidence_type_definitions": {
+    "CURRENT_CONSOLIDATED_BODY": "A complete current consolidated official body is pinned for the scoped service section.",
+    "VERSIONED_BODY_AVAILABLE_NOT_CURRENTNESS_PROOF": "Versioned official body evidence exists, but it does not establish currentness and may cover only a bounded subset.",
+    "COMPARISON_BODY_ONLY": "Official amendment/comparison material is pinned, but omitted unchanged text prevents a complete integrated-body claim.",
+    "LOCATOR_ONLY": "An official locator is identified without sufficient versioned body evidence for item-body verification.",
+    "BODY_NOT_ESTABLISHED": "No sufficient body evidence is established.",
+    "NOT_APPLICABLE": "The service is explicitly not applicable to this source-family lane."
+  },
+  "summary": {
+    "services": 39,
+    "body_evidence_type_counts": {
+      "CURRENT_CONSOLIDATED_BODY": 0,
+      "VERSIONED_BODY_AVAILABLE_NOT_CURRENTNESS_PROOF": 1,
+      "COMPARISON_BODY_ONLY": 9,
+      "LOCATOR_ONLY": 27,
+      "BODY_NOT_ESTABLISHED": 0,
+      "NOT_APPLICABLE": 2
+    },
+    "item_body_state_counts": {
+      "NOT_APPLICABLE": 2,
+      "NOT_ESTABLISHED": 36,
+      "PARTIAL": 1
+    },
+    "current_consolidated_body_services": [],
+    "currentness_established_by_body_evidence": 0,
+    "status_promotions": 0
+  },
+  "r8_bounded_amendment_evidence": [
+    {
+      "id": "fee-guidance.rouki36.r8-bounded-amendment-direct",
+      "result": "PASS_BOUNDED_AMENDMENT_RANGE_ONLY",
+      "affected_services": [
+        "homenursing",
+        "homerehab",
+        "care-management"
+      ],
+      "verified_item_ranges": [
+        {
+          "service_id": "homenursing",
+          "locator": "第二 4 訪問看護費 (31)",
+          "scoped_section_fully_verified": false
+        },
+        {
+          "service_id": "homerehab",
+          "locator": "第二 5 訪問リハビリテーション費 (18)",
+          "scoped_section_fully_verified": false
+        },
+        {
+          "service_id": "care-management",
+          "locator": "第三 居宅介護支援費 21",
+          "scoped_section_fully_verified": false
+        }
+      ],
+      "proves_current_integrated_body": false,
+      "proves_currentness": false,
+      "evidence_snapshot": "data/shared/fee-guidance/r8-rouki36-bounded-amendment-evidence.txt",
+      "evidence_snapshot_sha256": "3f18b24de5bf3f786dfab150b3f00fb0e14cab016b1ec30587be97e0bee47859",
+      "primary_source_url": "https://www.mhlw.go.jp/content/12404000/001682729.pdf"
+    },
+    {
+      "id": "fee-guidance.preventive.r8-bounded-amendment-direct",
+      "result": "PASS_BOUNDED_AMENDMENT_RANGE_ONLY",
+      "affected_services": [
+        "preventive-homenursing",
+        "preventive-homerehab",
+        "preventive-support"
+      ],
+      "verified_item_ranges": [
+        {
+          "service_id": "preventive-homenursing",
+          "locator": "第二 3 介護予防訪問看護費 (28)",
+          "scoped_section_fully_verified": false
+        },
+        {
+          "service_id": "preventive-homerehab",
+          "locator": "第二 4 介護予防訪問リハビリテーション費 (16)",
+          "scoped_section_fully_verified": false
+        },
+        {
+          "service_id": "preventive-support",
+          "locator": "第二 11 介護予防支援 (6)",
+          "scoped_section_fully_verified": false
+        }
+      ],
+      "proves_current_integrated_body": false,
+      "proves_currentness": false,
+      "evidence_snapshot": "data/shared/fee-guidance/r8-preventive-bounded-amendment-evidence.txt",
+      "evidence_snapshot_sha256": "01b00b38289d5783c453a032622f9886c5ff5bde6d863cce9133002400fde482",
+      "primary_source_url": "https://www.mhlw.go.jp/content/12404000/001675938.pdf"
+    }
+  ],
+  "services": [
+    {
+      "service_id": "dayservice",
+      "body_evidence_type": "VERSIONED_BODY_AVAILABLE_NOT_CURRENTNESS_PROOF",
+      "item_body_state": "PARTIAL",
+      "scoped_node_count": 29,
+      "verified_node_count": 8,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "homevisit",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "homebath",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "homenursing",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "homerehab",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "homecaremanagement",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "dayrehab",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 33,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "shortstay-life",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "community-dayservice",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "regular-round",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "night-homevisit",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "care-management",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-support",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "shortstay-medical",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "specific-facility",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "body_evidence_type": "NOT_APPLICABLE",
+      "item_body_state": "NOT_APPLICABLE",
+      "scoped_node_count": 0,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "dementia-group-home",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "community-specific-facility",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "care-medical-institution",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-homebath",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "body_evidence_type": "COMPARISON_BODY_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "body_evidence_type": "NOT_APPLICABLE",
+      "item_body_state": "NOT_APPLICABLE",
+      "scoped_node_count": 0,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "body_evidence_type": "LOCATOR_ONLY",
+      "item_body_state": "NOT_ESTABLISHED",
+      "scoped_node_count": 1,
+      "verified_node_count": 0,
+      "currentness_established_by_body_evidence": false,
+      "projection_to_pass_permitted": false,
+      "reason_codes": []
+    }
+  ]
+}
