@@ -93,9 +93,15 @@ class SharedFeeGuidanceTests(unittest.TestCase):
         self.assertEqual(not_applicable_projection['publication']['state'], 'BLOCKED')
         self.assertEqual(not_applicable_projection['route_exposure']['state'], 'BLOCKED')
 
-        unresolved_projection = rows['preventive-support']
-        self.assertEqual(unresolved_projection['corpus_availability']['kind'], 'SHARED')
-        self.assertEqual(unresolved_projection['service_scope']['state'], 'SCOPE_NOT_DEFINED')
+        resolved_projection = rows['preventive-support']
+        self.assertEqual(resolved_projection['corpus_availability']['kind'], 'SHARED')
+        self.assertEqual(resolved_projection['service_scope']['state'], 'SCOPE_DEFINED')
+        self.assertEqual(resolved_projection['ingestion']['state'], 'PARTIAL')
+        self.assertEqual(resolved_projection['item_body_verification']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(resolved_projection['currentness']['state'], 'NOT_ESTABLISHED')
+        self.assertEqual(resolved_projection['human_review']['state'], 'NOT_REVIEWED')
+        self.assertEqual(resolved_projection['publication']['state'], 'BLOCKED')
+        self.assertEqual(resolved_projection['route_exposure']['state'], 'BLOCKED')
 
     def test_final_six_adjudication_artifact_is_fail_closed(self):
         validator_spec = importlib.util.spec_from_file_location(
@@ -106,5 +112,5 @@ class SharedFeeGuidanceTests(unittest.TestCase):
         validator_spec.loader.exec_module(validator)
         self.assertEqual(
             validator.validate(),
-            {'services': 6, 'mapped': 3, 'not_applicable': 2, 'unresolved': 1},
+            {'services': 6, 'mapped': 4, 'not_applicable': 2, 'unresolved': 0},
         )
