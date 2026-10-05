@@ -41,6 +41,10 @@ class RelationHumanReviewPacketTests(unittest.TestCase):
         )
 
         for item in built["items"]:
+            self.assertTrue(item["source_file"])
+            self.assertIn("source_state", item)
+            self.assertIsNone(item["reviewed_by"])
+            self.assertIsNone(item["reviewer_rationale"])
             self.assertIsNone(item["reviewer_decision"])
             self.assertIsNone(item["reviewer_note"])
             self.assertIsNone(item["reviewed_at"])
