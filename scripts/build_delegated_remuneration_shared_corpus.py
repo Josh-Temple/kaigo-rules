@@ -77,6 +77,8 @@ SERVICE_HEADING_TERMS: dict[str, tuple[str, ...]] = {
 }
 
 ADJUDICATION_PATH = SHARED / "service-applicability-adjudications.json"
+ITEM_BODY_VERIFICATION_PATH = SHARED / "item-body-verification.json"
+ITEM_BODY_VERIFICATION_REF = "data/shared/remuneration-delegated/item-body-verification.json"
 
 
 def load(path: Path) -> Any:
@@ -178,6 +180,61 @@ def _fail_closed_assurance() -> dict[str, Any]:
     }
 
 
+def _passed_item_body_sources(item_body_doc: dict[str, Any]) -> set[str]:
+    rejected = {
+        str(value).lower()
+        for value in item_body_doc.get("projection_policy", {}).get(
+            "historical_or_superseded_source_statuses_rejected", []
+        )
+    }
+    return {
+        str(row["source_id"])
+        for row in item_body_doc.get("source_verifications", [])
+        if row.get("result") == "PASS"
+        and row.get("coverage_kind") == "ALL_CANONICAL_TOP_LEVEL_NODES_IN_SOURCE"
+        and row.get("currentness_claimed") is False
+        and str(row.get("repository_source_status", "")).lower() not in rejected
+        and row.get("page_snapshots")
+    }
+
+
+def item_body_assurance_for_service(
+    *,
+    applicability_state: str,
+    mapped_node_ids: list[str],
+    compatibility_subnode_ids: list[str],
+    national_by_id: dict[str, dict[str, Any]],
+    item_body_doc: dict[str, Any],
+) -> dict[str, Any]:
+    """Project source-level body assurance without changing any other axis."""
+    assurance = _fail_closed_assurance()
+    if applicability_state != "MAPPED":
+        return assurance
+
+    passed_sources = _passed_item_body_sources(item_body_doc)
+    passed_compatibility = {
+        str(row["canonical_node_id"])
+        for row in item_body_doc.get("compatibility_node_verifications", [])
+        if row.get("result") == "PASS"
+    }
+    unsupported: list[str] = []
+    for canonical_id in mapped_node_ids:
+        node = national_by_id.get(canonical_id)
+        if not node or str(node.get("source_id")) not in passed_sources:
+            unsupported.append(canonical_id)
+    for canonical_id in compatibility_subnode_ids:
+        if canonical_id not in passed_compatibility:
+            unsupported.append(canonical_id)
+
+    required_count = len(mapped_node_ids) + len(compatibility_subnode_ids)
+    if required_count and not unsupported:
+        assurance["item_body_verification"] = "PASS"
+        assurance["item_body_verified_node_count"] = required_count
+        assurance["item_body_projection_evidence"] = [ITEM_BODY_VERIFICATION_REF]
+    elif unsupported:
+        assurance["item_body_projection_blockers"] = sorted(set(unsupported))
+    return assurance
+
 
 def build() -> dict[str, Any]:
     nodes = load(DATA / "remuneration-delegated-nodes.json")
@@ -189,6 +246,7 @@ def build() -> dict[str, Any]:
     national_nodes = national_corpus.get("nodes", [])
     national_ids = {row["canonical_node_id"] for row in national_nodes}
     adjudication_doc = load(ADJUDICATION_PATH)
+    item_body_doc = load(ITEM_BODY_VERIFICATION_PATH)
     adjudications = {
         row["service_id"]: row for row in adjudication_doc.get("adjudications", [])
     }
@@ -386,6 +444,9 @@ def build() -> dict[str, Any]:
                 "data/remuneration-delegated-relations.json",
             ])
 
+        service_compatibility_subnode_ids = (
+            compatibility_subnode_ids if service_id == "dayservice" else []
+        )
         applicability_services.append({
             "service_id": service_id,
             "scope_state": "SCOPE_DEFINED",
@@ -393,11 +454,15 @@ def build() -> dict[str, Any]:
             "ingestion_state": "INGESTED",
             "mapped_node_count": len(mapped_node_ids),
             "mapped_node_ids": mapped_node_ids,
-            "compatibility_subnode_ids": (
-                compatibility_subnode_ids if service_id == "dayservice" else []
-            ),
+            "compatibility_subnode_ids": service_compatibility_subnode_ids,
             "mapping_evidence": mapping_evidence,
-            "assurance": _fail_closed_assurance(),
+            "assurance": item_body_assurance_for_service(
+                applicability_state="MAPPED",
+                mapped_node_ids=mapped_node_ids,
+                compatibility_subnode_ids=service_compatibility_subnode_ids,
+                national_by_id=national_by_id,
+                item_body_doc=item_body_doc,
+            ),
         })
 
         relation_by_id: dict[str, dict[str, Any]] = {}
@@ -524,6 +589,7 @@ def build() -> dict[str, Any]:
         "identity_map": "data/shared/remuneration-delegated/node-identity-map.json",
         "service_applicability": "data/shared/remuneration-delegated/service-applicability.json",
         "service_relations": "data/shared/remuneration-delegated/service-relations.json",
+        "item_body_verification": ITEM_BODY_VERIFICATION_REF,
         "legacy_compatibility": {
             "legacy_text_store": "data/remuneration-delegated-nodes.json",
             "node_ids_preserved": True,
@@ -548,9 +614,25 @@ def build() -> dict[str, Any]:
             "services_mapped": sum(row["applicability_state"] == "MAPPED" for row in applicability_services),
             "services_not_applicable": sum(row["applicability_state"] == "NOT_APPLICABLE" for row in applicability_services),
             "services_unknown": sum(row["applicability_state"] == "UNKNOWN" for row in applicability_services),
+            "item_body_verified_top_level_nodes": sum(
+                1 for row in national_nodes
+                if str(row.get("source_id")) in _passed_item_body_sources(item_body_doc)
+            ),
+            "services_item_body_pass": sum(
+                (row.get("assurance") or {}).get("item_body_verification") == "PASS"
+                for row in applicability_services
+            ),
         },
         "assurance": {
-            "item_body_verification": "NOT_ESTABLISHED",
+            "item_body_verification": (
+                "PASS"
+                if national_nodes
+                and all(
+                    str(row.get("source_id")) in _passed_item_body_sources(item_body_doc)
+                    for row in national_nodes
+                )
+                else "NOT_ESTABLISHED"
+            ),
             "currentness": "NOT_ESTABLISHED",
             "service_applicability_verification": "NOT_ESTABLISHED",
             "service_relation_verification": "NOT_ESTABLISHED",
