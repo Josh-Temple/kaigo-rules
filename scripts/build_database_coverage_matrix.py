@@ -243,8 +243,10 @@ def build_cell(
     })
 
     unit_price_mapping = None
+    unit_price_item_body_projection = None
     if family["id"] == "unit_price_regional_classification":
         unit_price_mapping = shared_context["unit_price_service_map"].get(service_id)
+        unit_price_item_body_projection = shared_context["unit_price_item_body_projection"].get(service_id)
         if unit_price_mapping and unit_price_mapping.get("ingestion_status"):
             raw_ingestion = sorted(set(raw_ingestion + [str(unit_price_mapping["ingestion_status"])]))
 
@@ -498,6 +500,18 @@ def build_cell(
         elif service_id == "dayrehab":
             item_body_evidence.append("data/dayrehab-fee-guidance-independent-audit.json")
 
+    if family["id"] == "unit_price_regional_classification" and unit_price_item_body_projection:
+        projected_item_state = str(
+            unit_price_item_body_projection.get("service_level_item_body")
+            or "NOT_ESTABLISHED"
+        )
+        content_raw = [projected_item_state]
+        item_body_evidence = [
+            f"data/unit-price-item-body-assurance.json#{service_id}"
+        ]
+        if service_id == "dayservice":
+            item_body_evidence.append("data/unit-price-independent-audit.json")
+
     item_state = normalize_verification(content_raw[0] if len(content_raw) == 1 else (" | ".join(content_raw) if content_raw else None))
     if (
         family["id"] == "fee_calculation_guidance"
@@ -680,6 +694,7 @@ def build() -> dict:
     qa_mapping = load("data/qa-service-mapping.json")
     qa_service_relations = load("data/qa-service-relations.generated.json")
     unit_price_index = load("data/unit-price-service-multipliers.json")
+    unit_price_item_body_assurance = load("data/unit-price-item-body-assurance.json")
     delegated_manifest = load("data/shared/remuneration-delegated/manifest.json")
     delegated_applicability_data = load("data/shared/remuneration-delegated/service-applicability.json")
     delegated_relations_data = load("data/shared/remuneration-delegated/service-relations.json")
@@ -752,6 +767,10 @@ def build() -> dict:
         "unit_price_service_map": {
             row["service_id"]: row
             for row in unit_price_index.get("service_mappings", [])
+        },
+        "unit_price_item_body_projection": {
+            row["service_id"]: row
+            for row in unit_price_item_body_assurance.get("service_projections", [])
         },
         "delegated_manifest": delegated_manifest,
         "remuneration_assurance": {
