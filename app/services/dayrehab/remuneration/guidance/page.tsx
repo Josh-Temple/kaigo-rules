@@ -33,7 +33,7 @@ export default function DayrehabFeeGuidancePage() {
         <strong>これは現行統合本文ではありません。</strong><br />
         令和6年新旧対照表の「略」や旧版HTMLを継ぎ足して本文を作っていません。
         令和8年通知改正対照は第6〜9節を新旧両欄で省略しており、第8節の変更有無を示しません。
-        現行性はGAP、人手確認と二段組みの視覚確認は未実施です。
+        現行性は確認中で、人手確認と二段組みの視覚確認は未実施です。
       </div>
 
       <VerificationSummary layerId="fee-guidance-dayrehab" />
@@ -52,12 +52,12 @@ export default function DayrehabFeeGuidancePage() {
         <div><strong>{layer.counts.parent_items}</strong><span>令和6年主項目</span></div>
         <div><strong>{layer.counts.visible_child_items}</strong><span>明示された子項目</span></div>
         <div><strong>{layer.counts.parents_with_literal_omission}</strong><span>主項目の「略」</span></div>
-        <div><strong>GAP</strong><span>現行性</span></div>
+        <div><strong>確認中</strong><span>現行性</span></div>
       </section>
 
       <section className="section">
         <h2>令和6年確定新旧対照表・第8節</h2>
-        <p className="meta">以下は同資料の主項目・番号・状態インベントリです。本文・省略条項・他サービスへの参照を復元していません。</p>
+        <p className="meta">以下は同資料の主項目・番号・収載状況です。本文・省略条項・他サービスへの参照を復元していません。</p>
         {layer.items.map((item: any) => (
           <section className="rule-node" id={item.id} key={item.id}>
             <p className="rule-node-label">{item.slot}</p>
@@ -73,7 +73,7 @@ export default function DayrehabFeeGuidancePage() {
                   {item.children.map((child: any) => (
                     <section className="rule-node" key={child.id}>
                       <p className="rule-node-label">{child.marker}</p>
-                      <p className="meta">{child.state} / {child.locator}</p>
+                      <p className="meta">{child.locator}</p>
                     </section>
                   ))}
                 </div>
