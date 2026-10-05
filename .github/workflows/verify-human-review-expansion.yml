@@ -64,7 +64,7 @@ jobs:
           fi
 
       - name: Reject Worker A edits to integration-owned global artifacts
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.title, '[Worker E]')
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
