@@ -10,10 +10,13 @@ on:
       - "data/shared/standards-interpretation/source-snapshots/**"
       - "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json"
       - "data/verification/standards-interpretation-item-body/residual-assurance-human-review-readiness-worker-a.json"
+      - "data/verification/standards-interpretation-item-body/currentness-human-review-activation-worker-b.json"
       - "scripts/validate_standards_interpretation_residual_item_body.py"
+      - "scripts/validate_standards_interpretation_current_integrated_body.py"
       - "scripts/validate_standards_interpretation_residual_assurance_readiness.py"
       - "tests/test_standards_interpretation_residual_item_body.py"
       - "tests/test_standards_interpretation_residual_assurance_readiness.py"
+      - "tests/test_standards_interpretation_current_integrated_body.py"
       - ".github/workflows/verify-standards-interpretation-residual-item-body.yml"
 
 permissions:
@@ -32,8 +35,11 @@ jobs:
         run: python scripts/validate_standards_interpretation_residual_item_body.py
       - name: Validate residual assurance readiness evidence
         run: python scripts/validate_standards_interpretation_residual_assurance_readiness.py
+      - name: Validate Worker B current integrated body boundary
+        run: python scripts/validate_standards_interpretation_current_integrated_body.py
       - name: Run residual assurance tests
         run: |
           python -m unittest \
             tests.test_standards_interpretation_residual_item_body \
-            tests.test_standards_interpretation_residual_assurance_readiness
+            tests.test_standards_interpretation_residual_assurance_readiness \
+            tests.test_standards_interpretation_current_integrated_body
