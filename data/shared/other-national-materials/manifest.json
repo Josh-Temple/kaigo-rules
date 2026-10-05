@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "source_family": "other_national_manuals_forms",
-  "foundation_state": "CANONICAL_SHARED_CORPUS_ESTABLISHED_NOT_PROJECTED",
+  "foundation_state": "CANONICAL_SHARED_CORPUS_ITEM_BODY_ASSURANCE_PARTIAL_NOT_PROJECTED",
   "purpose": "Define and inventory nationwide official manuals/forms that are materially relevant to long-term-care operations, applications, notifications, or reporting and are not already covered by an existing source family.",
   "discovery_context": {
     "observed_on": "2026-10-04",
@@ -92,13 +92,15 @@
     "automatic_publication_promotion_allowed": false,
     "automatic_route_promotion_allowed": false,
     "global_coverage_matrix_regeneration_by_worker_d_allowed": false,
-    "global_coverage_matrix_regeneration_by_worker_b_allowed": false
+    "global_coverage_matrix_regeneration_by_worker_b_allowed": false,
+    "source_level_body_verification_implies_service_pass": false,
+    "item_body_verification_implies_currentness": false
   },
   "assurance": {
     "corpus_availability": "AVAILABLE",
     "service_scope": "PARTIAL",
     "ingestion": "REFERENCE_CORPUS_INGESTED",
-    "item_body_verification": "NOT_ESTABLISHED",
+    "item_body_verification": "PARTIAL",
     "currentness": "PARTIAL",
     "relation_verification": "NOT_ESTABLISHED",
     "human_review": "NOT_REVIEWED",
@@ -118,6 +120,9 @@
     "discovery_manifest": "data/shared/other-national-materials/manifest.json",
     "classification_audit": "data/shared/other-national-materials/classification-audit.json",
     "discovery_main_sha": "754bc7b223db4aa35675c840f1a0032ca71eeb96",
-    "canonical_promotion_base_main_sha": "e0d814b1b22d449fd13784bbb051fba5c27df64e"
-  }
+    "canonical_promotion_base_main_sha": "e0d814b1b22d449fd13784bbb051fba5c27df64e",
+    "item_body_assurance_base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd"
+  },
+  "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+  "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json"
 }
