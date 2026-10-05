@@ -217,6 +217,8 @@ def build() -> dict:
                 "identity": identity,
                 "classification": classification,
                 "relation_key": relation_key(identity),
+                "source_file": item.get("source_file"),
+                "source_state": item.get("source_state"),
                 "source": describe(
                     identity["from"],
                     questions=questions,
@@ -248,6 +250,8 @@ def build() -> dict:
                     "NEEDS_MORE_EVIDENCE",
                 ],
                 "review_status": "NOT_REVIEWED",
+                "reviewed_by": None,
+                "reviewer_rationale": None,
                 "reviewer_name": None,
                 "reviewer_decision": None,
                 "reviewer_note": None,
