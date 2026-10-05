@@ -71,33 +71,42 @@
       "publisher": "厚生労働省",
       "title": "指定居宅サービスに要する費用の額の算定に関する基準（訪問通所サービス及び居宅療養管理指導に係る部分）及び指定居宅介護支援に要する費用の額の算定に伴う実施上の留意事項について",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4378&dataType=1&pageNo=1",
-      "source_kind": "MHLW_T_DOC_BODY_VERSION_UNRESOLVED",
+      "source_kind": "MHLW_T_DOC_BODY_LOCATOR_VERSION_UNRESOLVED",
       "observed_at": "2026-10-06",
       "body_locator": "本文 / 第二 居宅サービス単位数表…に関する事項 / 第三 居宅介護支援費に関する事項",
       "currentness": "NOT_ESTABLISHED",
-      "warning": "MHLW t_doc provides body text, but the displayed body does not itself establish an R8 integrated version. Do not treat access or body availability as currentness or service-level item-body PASS."
+      "warning": "MHLW t_doc provides body text, but the displayed body does not itself establish an R8 integrated version. Do not treat access or body availability as currentness or service-level item-body PASS.",
+      "snapshot_path": "data/shared/fee-guidance/mhlw-tdoc-rouki36-version-unresolved.txt",
+      "snapshot_sha256": "d0d4cc41ca677bb48ac67e360bde523e616494d72fbda1d5240d230e346c8e03",
+      "extraction": "Evidence snapshot pins official identity/body locator and fail-closed version assessment; it is not a duplicated full legal body."
     },
     {
       "id": "rouki40-mhlw-t-doc-body-version-unresolved",
       "publisher": "厚生労働省",
       "title": "指定居宅サービスに要する費用の額の算定に関する基準（短期入所サービス及び特定施設入居者生活介護に係る部分）及び指定施設サービス等に要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4383&dataType=1&pageNo=1",
-      "source_kind": "MHLW_T_DOC_BODY_VERSION_UNRESOLVED",
+      "source_kind": "MHLW_T_DOC_BODY_LOCATOR_VERSION_UNRESOLVED",
       "observed_at": "2026-10-06",
       "body_locator": "本文 / 第二 指定居宅サービス単位数表及び指定施設サービス等単位数表に関する事項",
       "currentness": "NOT_ESTABLISHED",
-      "warning": "MHLW t_doc provides body text, but no independent amendment-chain/version closure was established in this worker. Do not project CURRENT or PASS from body availability."
+      "warning": "MHLW t_doc provides body text, but no independent amendment-chain/version closure was established in this worker. Do not project CURRENT or PASS from body availability.",
+      "snapshot_path": "data/shared/fee-guidance/mhlw-tdoc-rouki40-version-unresolved.txt",
+      "snapshot_sha256": "d659c604dbdd45c509693008025ab34cd2df2fc43fd01852b1b7675d64a9ce04",
+      "extraction": "Evidence snapshot pins official identity/body locator and fail-closed version assessment; it is not a duplicated full legal body."
     },
     {
       "id": "preventive-guidance-mhlw-t-doc-body-version-unresolved",
       "publisher": "厚生労働省",
       "title": "指定介護予防サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tb6545&dataType=1&pageNo=1",
-      "source_kind": "MHLW_T_DOC_BODY_VERSION_UNRESOLVED",
+      "source_kind": "MHLW_T_DOC_BODY_LOCATOR_VERSION_UNRESOLVED",
       "observed_at": "2026-10-06",
       "body_locator": "本文 / 第二 指定介護予防サービス単位数表に関する事項 / 11 介護予防支援",
       "currentness": "NOT_ESTABLISHED",
-      "warning": "MHLW t_doc provides body text, but the R8 amendment is separately published as a comparison excerpt. The t_doc body is not used as proof of an R8 integrated current body."
+      "warning": "MHLW t_doc provides body text, but the R8 amendment is separately published as a comparison excerpt. The t_doc body is not used as proof of an R8 integrated current body.",
+      "snapshot_path": "data/shared/fee-guidance/mhlw-tdoc-preventive-version-unresolved.txt",
+      "snapshot_sha256": "d6997651c06db0c2ebff20c4e52771bc9b9c8a07214d0c600366afba2b7bd95c",
+      "extraction": "Evidence snapshot pins official identity/body locator and fail-closed version assessment; it is not a duplicated full legal body."
     },
     {
       "id": "rouki36-r8-amendment-comparison-direct",
@@ -114,7 +123,10 @@
         "第三 居宅介護支援費 21"
       ],
       "currentness": "NOT_ESTABLISHED",
-      "warning": "Direct official amendment text for bounded added items only. The PDF is explicitly 抄 / 新旧 and therefore is not an integrated current body for the full service sections."
+      "warning": "Direct official amendment text for bounded added items only. The PDF is explicitly 抄 / 新旧 and therefore is not an integrated current body for the full service sections.",
+      "snapshot_path": "data/shared/fee-guidance/r8-rouki36-bounded-amendment-evidence.txt",
+      "snapshot_sha256": "3f18b24de5bf3f786dfab150b3f00fb0e14cab016b1ec30587be97e0bee47859",
+      "extraction": "Evidence snapshot pins the bounded item locators directly checked in the official R8 amendment comparison PDF; omitted ranges are not reconstructed."
     },
     {
       "id": "preventive-guidance-r8-amendment-comparison-direct",
@@ -131,7 +143,10 @@
         "第二 11 介護予防支援 (6)"
       ],
       "currentness": "NOT_ESTABLISHED",
-      "warning": "Direct official amendment text for bounded added items only. The PDF is explicitly 抄 / 新旧 and therefore is not an integrated current body for the full service sections."
+      "warning": "Direct official amendment text for bounded added items only. The PDF is explicitly 抄 / 新旧 and therefore is not an integrated current body for the full service sections.",
+      "snapshot_path": "data/shared/fee-guidance/r8-preventive-bounded-amendment-evidence.txt",
+      "snapshot_sha256": "01b00b38289d5783c453a032622f9886c5ff5bde6d863cce9133002400fde482",
+      "extraction": "Evidence snapshot pins the bounded item locators directly checked in the official R8 amendment comparison PDF; omitted ranges are not reconstructed."
     }
   ]
 }
