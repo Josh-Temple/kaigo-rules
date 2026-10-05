@@ -1,5 +1,6 @@
 import Link from "next/link";
 import verificationRegistryData from "../../../../data/verification-registry.json";
+import { publicVerificationLabel } from "../../../../lib/public-verification";
 import {
   searchDayrehabPublicLayers,
   type DayrehabSearchLayer,
@@ -26,27 +27,11 @@ const layerTitles: Record<DayrehabSearchLayer, string> = {
 function verificationText(layerId: string) {
   const layer = (registry.layers || []).find((item: any) => item.id === layerId);
   if (!layer) return "確認状態を取得できません";
-  const content = String(layer.content_verification?.status || "未確認");
-  const currentness = String(layer.currentness?.status || "未確認");
-  const human = String(layer.human_review?.status || "未確認");
+  const content = publicVerificationLabel(layer.content_verification?.status, "content");
+  const currentness = publicVerificationLabel(layer.currentness?.status, "currentness");
+  const human = publicVerificationLabel(layer.human_review?.status, "human");
 
-  const contentLabel = content.startsWith("PASS")
-    ? "原資料との機械照合済み"
-    : "内容確認中";
-  const currentnessLabel =
-    currentness === "GAP" || currentness.includes("HISTORICAL")
-      ? "現行性GAP"
-      : currentness.includes("LIVE_SOURCE")
-        ? "現行性を継続監視"
-        : currentness.includes("HOLD")
-          ? "現行性HOLD"
-          : `現行性: ${currentness}`;
-  const humanLabel =
-    human.includes("NOT") || human.includes("UNREVIEWED") || human.includes("NEEDS_HUMAN")
-      ? "人手確認未実施"
-      : `人手確認: ${human}`;
-
-  return `${contentLabel} / ${currentnessLabel} / ${humanLabel}`;
+  return `本文：${content} / 現行性：${currentness} / 人手確認：${human}`;
 }
 
 function ResultRows({ results }: { results: DayrehabSearchResult[] }) {
@@ -84,13 +69,13 @@ export default async function DayrehabSearchPage({
       <p className="eyebrow">DAY REHABILITATION / CROSS-LAYER SEARCH</p>
       <h1>通所リハビリテーションを横断検索</h1>
       <p className="lead">
-        公開済みの基準省令、基準解釈通知、報酬基準、算定上の留意事項を、通所リハのservice contextを保ったまま同じ語で探します。
+        公開済みの基準省令、基準解釈通知、報酬基準、算定上の留意事項を、通所リハビリテーションの範囲を保ったまま同じ語で探します。
       </p>
 
       <div className="notice">
-        <strong>検索対象は通所リハの公開4レイヤーです。</strong><br />
+        <strong>検索対象は通所リハビリテーションで公開中の4資料群です。</strong><br />
         検索結果に出ることと、現行性・人手確認済みであることは別です。
-        旧HTMLや改正対照表だけを根拠にしている項目は、結果にもGAPを表示します。
+        旧HTMLや改正対照表だけを根拠にしている項目は、結果にも現行性が確認中であることを表示します。
         通所介護のFAQ・Q&Aはこの検索には混ぜません。
       </div>
 
@@ -115,13 +100,13 @@ export default async function DayrehabSearchPage({
               <span>基準省令</span><small>直接11条 + 第119条準用先 →</small>
             </Link>
             <Link className="entry-row" href="/notices?service=dayrehab">
-              <span>基準解釈通知</span><small>公式旧HTML / 現行性GAP →</small>
+              <span>基準解釈通知</span><small>公式旧HTML / 現行性確認中 →</small>
             </Link>
             <Link className="entry-row" href="/services/dayrehab/remuneration">
-              <span>報酬基準</span><small>42項目 / 現行性GAP →</small>
+              <span>報酬基準</span><small>42項目 / 現行性確認中 →</small>
             </Link>
             <Link className="entry-row" href="/services/dayrehab/remuneration/guidance">
-              <span>算定上の留意事項</span><small>33主項目 / 現行性GAP →</small>
+              <span>算定上の留意事項</span><small>33主項目 / 現行性確認中 →</small>
             </Link>
           </div>
         </section>
