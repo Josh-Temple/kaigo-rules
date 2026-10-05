@@ -40,6 +40,7 @@ def validate() -> dict:
     queue = load("relation-verification-queue.json")
     packet = load("relation-human-review-packet.json")
     evidence = load("relation-human-review-evidence-pack.json")
+    freshness_assessment = load("relation-freshness-direct-evidence-assessment.json")
     coverage = build_relation_coverage()
 
     inventory = queue["inventory_relations"]
@@ -90,12 +91,32 @@ def validate() -> dict:
         if row["classification"] == "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED"
     ]
     if len(freshness) != 1:
-        raise ValueError("expected exactly one Worker B-owned freshness relation")
+        raise ValueError("expected exactly one freshness-sensitive relation")
     if any(
         row["classification"] == "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED"
         for row in packet["items"]
     ):
-        raise ValueError("Worker B-owned freshness relation leaked into Worker D packet")
+        raise ValueError("freshness relation leaked into human-review packet")
+
+    freshness_items = freshness_assessment.get("items", [])
+    if len(freshness_items) != 1:
+        raise ValueError("freshness assessment must contain exactly one relation")
+    freshness_item = freshness_items[0]
+    if identity_key(freshness_item["identity"]) != identity_key(freshness[0]["identity"]):
+        raise ValueError("freshness assessment identity differs from verification queue")
+    if len(queue_owned) + len(freshness_items) != remaining:
+        raise ValueError("Worker D artifacts do not account for all remaining relations")
+    direct = freshness_item.get("direct_evidence", {})
+    if not direct.get("source_exists"):
+        raise ValueError("freshness-sensitive source existence is not established")
+    if not direct.get("exact_source_identity_match"):
+        raise ValueError("freshness-sensitive source identity is not exact")
+    if not direct.get("amendment_semantics_supported"):
+        raise ValueError("freshness-sensitive amendment semantics are not supported")
+    if freshness_item.get("freshness", {}).get("state") != "NOT_ESTABLISHED":
+        raise ValueError("freshness was promoted without successor-absence proof")
+    if freshness_item.get("closure_assessment") != "KEEP_OPEN":
+        raise ValueError("freshness-sensitive relation was closed automatically")
 
     if packet["review_contract"]["automatic_promotion_allowed"]:
         raise ValueError("review packet must prohibit automatic promotion")
@@ -198,6 +219,9 @@ def validate() -> dict:
         "independently_covered_relations": independently_covered,
         "remaining_relations": remaining,
         "worker_d_review_items": len(queue_owned),
+        "freshness_sensitive_relations": len(freshness_items),
+        "all_remaining_relations_accounted_for": len(queue_owned) + len(freshness_items),
+        "freshness_state": freshness_item["freshness"]["state"],
         "human_only_relations": human_only_count,
         "semantic_text_relations": sum(semantic_pointer_counts.values()),
         "semantic_text_source_pointer_status_counts": dict(
