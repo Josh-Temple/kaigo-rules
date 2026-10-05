@@ -71,18 +71,32 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
             self.assertNotIn(row["axis_states"]["relation_verification"], {"PASS", "VERIFIED"})
             self.assertNotIn(row["axis_states"]["human_review"], {"PASS", "REVIEWED"})
 
-    def test_publication_stays_fail_closed_without_runtime_binding(self):
-        self.assertEqual(len(self.allowlist["publication_cell_allowlist"]), 0)
-        self.assertEqual(len(self.allowlist["route_allowlist"]), 0)
-        self.assertEqual(len(self.allowlist["field_allowlist_by_cell"]), 0)
-        self.assertFalse(self.allowlist["runtime_binding"]["established"])
+    def test_runtime_binding_publishes_exact_ready_cells(self):
+        ready = {
+            (row["service_id"], row["source_family"])
+            for row in self.readiness["cells"]
+            if row["readiness"] == "READY_FOR_PUBLICATION_REVIEW"
+        }
+        published = {
+            (row["service_id"], row["source_family"])
+            for row in self.allowlist["publication_cell_allowlist"]
+        }
+        routed = {
+            (row["service_id"], row["source_family"])
+            for row in self.allowlist["route_allowlist"]
+        }
+
+        self.assertEqual(published, ready)
+        self.assertEqual(routed, ready)
+        self.assertEqual(len(self.allowlist["field_allowlist_by_cell"]), len(ready))
+        self.assertTrue(self.allowlist["runtime_binding"]["established"])
         self.assertEqual(
-            self.allowlist["summary"]["decision"],
-            "DEFER_PUBLICATION_FAIL_CLOSED",
+            self.allowlist["runtime_binding"]["policy_module"],
+            "lib/publication-policy.ts",
         )
         self.assertEqual(
-            self.allowlist["runtime_binding"]["blocker"],
-            "RUNTIME_PUBLICATION_ALLOWLIST_BINDING_NOT_ESTABLISHED",
+            self.allowlist["summary"]["decision"],
+            "PUBLISH_BOUNDED_READY_UNITS",
         )
 
 if __name__ == "__main__":
