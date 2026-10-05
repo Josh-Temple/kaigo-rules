@@ -19,9 +19,17 @@ from validate_relation_human_review_decisions import (
 OUTPUT = ROOT / "data/relation-human-review-decision-effects.generated.json"
 
 
-def build() -> dict[str, Any]:
-    ledger = load_json(DECISIONS_PATH)
-    validation = validate_decisions(ledger=ledger)
+def build(
+    ledger: dict[str, Any] | None = None,
+    evidence_pack: dict[str, Any] | None = None,
+    batch_registry: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    ledger = ledger if ledger is not None else load_json(DECISIONS_PATH)
+    validation = validate_decisions(
+        ledger=ledger,
+        evidence_pack=evidence_pack,
+        batch_registry=batch_registry,
+    )
     effects: list[dict[str, Any]] = []
 
     for row in validation["validated_decisions"]:
