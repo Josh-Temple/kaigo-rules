@@ -1,0 +1,43 @@
+name: Verify relation review packet hardening
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/relation-human-review-packet.json"
+      - "data/relation-human-review-evidence-pack.json"
+      - "data/relation-verification-queue.json"
+      - "scripts/build_relation_human_review_packet.py"
+      - "scripts/build_relation_human_review_evidence_pack.py"
+      - "scripts/build_relation_verification_queue.py"
+      - "scripts/relation_verification_coverage.py"
+      - "scripts/validate_relation_human_review_hardening.py"
+      - "tests/test_relation_human_review_packet.py"
+      - "tests/test_relation_human_review_evidence_pack.py"
+      - "tests/test_relation_human_review_hardening.py"
+      - ".github/workflows/verify-relation-review-packets.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v6.0.0
+        with:
+          python-version: "3.12"
+      - name: Check generated relation queue
+        run: python scripts/build_relation_verification_queue.py --check
+      - name: Check hardened human-review packet
+        run: python scripts/build_relation_human_review_packet.py --check
+      - name: Check hardened evidence pack
+        run: python scripts/build_relation_human_review_evidence_pack.py --check
+      - name: Validate fail-closed review separation
+        run: python scripts/validate_relation_human_review_hardening.py
+      - name: Run relation review packet tests
+        run: |
+          python -m unittest             tests.test_relation_human_review_packet             tests.test_relation_human_review_evidence_pack             tests.test_relation_human_review_hardening
