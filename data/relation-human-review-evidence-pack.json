@@ -2,7 +2,7 @@
   "format_version": 1,
   "generated_by": "scripts/build_relation_human_review_evidence_pack.py",
   "source_packet": "data/relation-human-review-packet.json",
-  "policy": "This file supplies review excerpts and canonical resolution for Worker D-owned relations only. Excerpts may include machine-reconstructed candidates or editorial summaries where primary text is not committed. Worker B-owned freshness relations are excluded. It never makes or promotes a semantic review decision.",
+  "policy": "This file supplies review excerpts and canonical resolution for Worker D-owned relations only. Excerpts may include machine-reconstructed candidates or editorial summaries where primary text is not committed. Freshness-sensitive direct-evidence relations are assessed separately and are excluded here. It never makes or promotes a semantic review decision.",
   "summary": {
     "items_total": 58,
     "unresolved_items": 0,
@@ -24,7 +24,9 @@
     "closure_assessment_counts": {
       "KEEP_OPEN": 58
     },
-    "machine_safe_closures": 0
+    "machine_safe_closures": 0,
+    "evidence_pack_ready_items": 58,
+    "evidence_pack_not_ready_items": 0
   },
   "review_contract": {
     "semantic_decision_included": false,
@@ -32,7 +34,8 @@
     "primary_source_check_still_required": true,
     "ai_proposal_is_not_human_decision": true,
     "reviewer_identity_required_for_decision": true,
-    "review_timestamp_required_for_decision": true
+    "review_timestamp_required_for_decision": true,
+    "evidence_pack_ready_does_not_mean_reviewed": true
   },
   "items": [
     {
@@ -95,7 +98,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-fee-notice19-base",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準（厚生省告示第19号）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "source_status": "current_official_consolidated_source",
+          "locator": "6 通所介護費 / 注13",
+          "evidence_type": "canonical_remuneration_source",
+          "currentness_caveat": "厚生労働省の公式HTML。令和8年厚生労働省告示第87号までの改正履歴・附則と、令和8年6月1日施行後の通所介護費本文を掲載している現行取得元。"
+        },
+        {
+          "source_id": "mhlw-r8-fee-amendment87",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準等の一部を改正する告示（令和8年厚生労働省告示第87号）",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.5 / イ〜ニ（略）",
+          "evidence_type": "r8_structure_persistence",
+          "currentness_caveat": "新旧対照表。通所介護費ではイ〜ニは略、ホの介護職員等処遇改善加算の改正後文を確認できる。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.13"
+          ],
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+          "locator": "6 通所介護費 / 13 別に厚生労働大臣が定める基準に適合しているものとして、電子情報処理組織を使用する方法により、都道府県知事に対し、老健局長が定める様式による届出を行った指定通所介護の利用者に対して、機能訓練を行っている場合には、当該基準に掲げる区分に従い、(1)及び(2)については1日につき次に掲げる単位数を、(3)については1月につき次に掲げる単位数を所定単位数に加算する。ただし、個別機能訓練加算(Ⅰ)イを算定している場合には、個別機能訓練加算(Ⅰ)ロは算定しない。",
+          "evidence_kind": "official_current_source_text"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.13"
+          ],
+          "source_id": "mhlw-fee-notice19-base",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "locator": "6 通所介護費 / 注13",
+          "evidence_kind": "canonical_remuneration_source"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.13"
+          ],
+          "source_id": "mhlw-r8-fee-amendment87",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "locator": "PDF p.5 / イ〜ニ（略）",
+          "evidence_kind": "r8_structure_persistence"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "6 通所介護費 / 13 別に厚生労働大臣が定める基準に適合しているものとして、電子情報処理組織を使用する方法により、都道府県知事に対し、老健局長が定める様式による届出を行った指定通所介護の利用者に対して、機能訓練を行っている場合には、当該基準に掲げる区分に従い、(1)及び(2)については1日につき次に掲げる単位数を、(3)については1月につき次に掲げる単位数を所定単位数に加算する。ただし、個別機能訓練加算(Ⅰ)イを算定している場合には、個別機能訓練加算(Ⅰ)ロは算定しない。",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "f3984f602718ad82cd16fbb6769c692654a9a19b32196becc9896626ab7074bf"
     },
     {
       "review_id": "REL-002",
@@ -157,7 +234,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-fee-notice19-base",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準（厚生省告示第19号）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "source_status": "current_official_consolidated_source",
+          "locator": "6 通所介護費 / 注15",
+          "evidence_type": "canonical_remuneration_source",
+          "currentness_caveat": "厚生労働省の公式HTML。令和8年厚生労働省告示第87号までの改正履歴・附則と、令和8年6月1日施行後の通所介護費本文を掲載している現行取得元。"
+        },
+        {
+          "source_id": "mhlw-r8-fee-amendment87",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準等の一部を改正する告示（令和8年厚生労働省告示第87号）",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.5 / イ〜ニ（略）",
+          "evidence_type": "r8_structure_persistence",
+          "currentness_caveat": "新旧対照表。通所介護費ではイ〜ニは略、ホの介護職員等処遇改善加算の改正後文を確認できる。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.15"
+          ],
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+          "locator": "6 通所介護費 / 15 別に厚生労働大臣が定める基準に適合しているものとして、電子情報処理組織を使用する方法により、都道府県知事に対し、老健局長が定める様式による届出を行った指定通所介護事業所において、別に厚生労働大臣が定める利用者に対して指定通所介護を行った場合は、認知症加算として、1日につき60単位を所定単位数に加算する。ただし、注7を算定している場合は、算定しない。",
+          "evidence_kind": "official_current_source_text"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.15"
+          ],
+          "source_id": "mhlw-fee-notice19-base",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "locator": "6 通所介護費 / 注15",
+          "evidence_kind": "canonical_remuneration_source"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.15"
+          ],
+          "source_id": "mhlw-r8-fee-amendment87",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "locator": "PDF p.5 / イ〜ニ（略）",
+          "evidence_kind": "r8_structure_persistence"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.98"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （指定通所介護の具体的取扱方針） ＞ 第九十八条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "6 通所介護費 / 15 別に厚生労働大臣が定める基準に適合しているものとして、電子情報処理組織を使用する方法により、都道府県知事に対し、老健局長が定める様式による届出を行った指定通所介護事業所において、別に厚生労働大臣が定める利用者に対して指定通所介護を行った場合は、認知症加算として、1日につき60単位を所定単位数に加算する。ただし、注7を算定している場合は、算定しない。",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （指定通所介護の具体的取扱方針） ＞ 第九十八条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "a74d4b8731bd042477e4a7c1857d2dadb8607833d42c9ff28d5f6622f8d48166"
     },
     {
       "review_id": "REL-003",
@@ -219,7 +370,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-fee-notice19-base",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準（厚生省告示第19号）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "source_status": "current_official_consolidated_source",
+          "locator": "6 通所介護費 / 注2",
+          "evidence_type": "canonical_remuneration_source",
+          "currentness_caveat": "厚生労働省の公式HTML。令和8年厚生労働省告示第87号までの改正履歴・附則と、令和8年6月1日施行後の通所介護費本文を掲載している現行取得元。"
+        },
+        {
+          "source_id": "mhlw-r8-fee-amendment87",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準等の一部を改正する告示（令和8年厚生労働省告示第87号）",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.5 / イ〜ニ（略）",
+          "evidence_type": "r8_structure_persistence",
+          "currentness_caveat": "新旧対照表。通所介護費ではイ〜ニは略、ホの介護職員等処遇改善加算の改正後文を確認できる。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.2"
+          ],
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+          "locator": "6 通所介護費 / 2 別に厚生労働大臣が定める基準を満たさない場合は、高齢者虐待防止措置未実施減算として、所定単位数の100分の1に相当する単位数を所定単位数から減算する。",
+          "evidence_kind": "official_current_source_text"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.2"
+          ],
+          "source_id": "mhlw-fee-notice19-base",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "locator": "6 通所介護費 / 注2",
+          "evidence_kind": "canonical_remuneration_source"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.2"
+          ],
+          "source_id": "mhlw-r8-fee-amendment87",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "locator": "PDF p.5 / イ〜ニ（略）",
+          "evidence_kind": "r8_structure_persistence"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.105"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "6 通所介護費 / 2 別に厚生労働大臣が定める基準を満たさない場合は、高齢者虐待防止措置未実施減算として、所定単位数の100分の1に相当する単位数を所定単位数から減算する。",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "096aecc99c772aea9cb2b58f1e1e6fa007d02ebdeb5d5cdf3428d311fe4dc9d2"
     },
     {
       "review_id": "REL-004",
@@ -281,7 +506,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-fee-notice19-base",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準（厚生省告示第19号）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "source_status": "current_official_consolidated_source",
+          "locator": "6 通所介護費 / 注3",
+          "evidence_type": "canonical_remuneration_source",
+          "currentness_caveat": "厚生労働省の公式HTML。令和8年厚生労働省告示第87号までの改正履歴・附則と、令和8年6月1日施行後の通所介護費本文を掲載している現行取得元。"
+        },
+        {
+          "source_id": "mhlw-r8-fee-amendment87",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準等の一部を改正する告示（令和8年厚生労働省告示第87号）",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.5 / イ〜ニ（略）",
+          "evidence_type": "r8_structure_persistence",
+          "currentness_caveat": "新旧対照表。通所介護費ではイ〜ニは略、ホの介護職員等処遇改善加算の改正後文を確認できる。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.3"
+          ],
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+          "locator": "6 通所介護費 / 3 別に厚生労働大臣が定める基準を満たさない場合は、業務継続計画未策定減算として、所定単位数の100分の1に相当する単位数を所定単位数から減算する。",
+          "evidence_kind": "official_current_source_text"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.3"
+          ],
+          "source_id": "mhlw-fee-notice19-base",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "locator": "6 通所介護費 / 注3",
+          "evidence_kind": "canonical_remuneration_source"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.note.3"
+          ],
+          "source_id": "mhlw-r8-fee-amendment87",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "locator": "PDF p.5 / イ〜ニ（略）",
+          "evidence_kind": "r8_structure_persistence"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.30-2"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "6 通所介護費 / 3 別に厚生労働大臣が定める基準を満たさない場合は、業務継続計画未策定減算として、所定単位数の100分の1に相当する単位数を所定単位数から減算する。",
+      "relevant_target_excerpt_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "a116fc01dd02661d0f0fa229c39d6487e882bde8e1dd952a86ffdafc2c1fa70c"
     },
     {
       "review_id": "REL-005",
@@ -341,7 +640,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-fee-notice19-base",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準（厚生省告示第19号）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "source_status": "current_official_consolidated_source",
+          "locator": "6 通所介護費",
+          "evidence_type": "canonical_remuneration_source",
+          "currentness_caveat": "厚生労働省の公式HTML。令和8年厚生労働省告示第87号までの改正履歴・附則と、令和8年6月1日施行後の通所介護費本文を掲載している現行取得元。"
+        },
+        {
+          "source_id": "mhlw-r8-fee-amendment87",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準等の一部を改正する告示（令和8年厚生労働省告示第87号）",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.5-7 / 6 通所介護費",
+          "evidence_type": "r8_new_old_comparison",
+          "currentness_caveat": "新旧対照表。通所介護費ではイ〜ニは略、ホの介護職員等処遇改善加算の改正後文を確認できる。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "fee.dayservice.root"
+          ],
+          "url": null,
+          "locator": "6 通所介護費",
+          "evidence_kind": "structure_label_only"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.root"
+          ],
+          "source_id": "mhlw-fee-notice19-base",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "locator": "6 通所介護費",
+          "evidence_kind": "canonical_remuneration_source"
+        },
+        {
+          "canonical_ids": [
+            "fee.dayservice.root"
+          ],
+          "source_id": "mhlw-r8-fee-amendment87",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "locator": "PDF p.5-7 / 6 通所介護費",
+          "evidence_kind": "r8_new_old_comparison"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.92"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第一節 基本方針 ＞ （基本方針） ＞ 第九十二条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "6 通所介護費",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第一節 基本方針 ＞ （基本方針） ＞ 第九十二条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "2cb4546af238f6d4b1f090c74ea91790aa5a5f3dfeb153a0282e45886fe35c68"
     },
     {
       "review_id": "REL-007",
@@ -401,7 +774,73 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.2 (4)略",
+          "evidence_type": "current_number_confirmed",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        },
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF pp.2–3 新欄",
+          "evidence_type": "prior_after_text",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.common.definitions.dedicated"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.2 (4)略",
+          "evidence_kind": "current_number_confirmed"
+        },
+        {
+          "canonical_ids": [
+            "notice.common.definitions.dedicated"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "PDF pp.2–3 新欄",
+          "evidence_kind": "prior_after_text"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "a79199a58aee3dd79109df5c891f4ae9498cf380f37b0f3c642db62aa1a35855"
     },
     {
       "review_id": "REL-008",
@@ -461,7 +900,73 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.1 (2)略",
+          "evidence_type": "current_number_confirmed",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        },
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "用語の定義 / 勤務延時間数",
+          "evidence_type": "historical_title",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.common.definitions.extended-hours"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.1 (2)略",
+          "evidence_kind": "current_number_confirmed"
+        },
+        {
+          "canonical_ids": [
+            "notice.common.definitions.extended-hours"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "用語の定義 / 勤務延時間数",
+          "evidence_kind": "historical_title"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "8e0c0662a0b39e2acdf9485f09386e28329ba08296406c30cc60c583cf341db3"
     },
     {
       "review_id": "REL-009",
@@ -521,7 +1026,55 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF pp.1–2 新欄",
+          "evidence_type": "current_after_text_present",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.common.definitions.fte"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF pp.1–2 新欄",
+          "evidence_kind": "current_after_text_present"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "3c66347efc1f3432bc698cb0d9b3f52ff82f477e815c9605d822cb3661e0b6d0"
     },
     {
       "review_id": "REL-010",
@@ -581,7 +1134,55 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF pp.2–3 新欄",
+          "evidence_type": "current_after_text_present",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.common.definitions.fulltime"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF pp.2–3 新欄",
+          "evidence_kind": "current_after_text_present"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "61a22cb0a2bfb084b9c8cc6663839d0d97677b6dfe6d5e64918c74b0fc1b09e4"
     },
     {
       "review_id": "REL-011",
@@ -641,7 +1242,55 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF pp.2–3 新欄",
+          "evidence_type": "current_after_text_present",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.common.definitions.fulltime"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF pp.2–3 新欄",
+          "evidence_kind": "current_after_text_present"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.94"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "ed648410a05fcbe9873edde2ab5f993c3e10ce33769d13a4b5885a3238e99e5d"
     },
     {
       "review_id": "REL-012",
@@ -701,7 +1350,73 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.20「1・2（略）」",
+          "evidence_type": "current_number_confirmed",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        },
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "通所介護 / 設備に関する基準（基準第95条）",
+          "evidence_type": "historical_title",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.equipment"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.20「1・2（略）」",
+          "evidence_kind": "current_number_confirmed"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.equipment"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "通所介護 / 設備に関する基準（基準第95条）",
+          "evidence_kind": "historical_title"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.95"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "38512f45f7f79302200a5a69c1478e03ee39bf385a3d8a6ecd5d948b52270caa"
     },
     {
       "review_id": "REL-013",
@@ -763,7 +1478,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "通所介護 / 設備に関する基準 / (2) 食堂及び機能訓練室",
+          "evidence_type": "historical_title",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.equipment.dining-training-room"
+          ],
+          "url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+          "locator": "H30新欄。(2)旧②の共用記述は削除され、新設(4)へ再構成された後の本文。",
+          "evidence_kind": "machine_reconstructed_candidate"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.equipment.dining-training-room"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "通所介護 / 設備に関する基準 / (2) 食堂及び機能訓練室",
+          "evidence_kind": "historical_title"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.95"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "H30新欄。(2)旧②の共用記述は削除され、新設(4)へ再構成された後の本文。",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "e6bfcabaa109a05d053cde11a6f96b380f81824e49bd49a7857265b21dbcf56d"
     },
     {
       "review_id": "REL-014",
@@ -825,7 +1596,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "通所介護 / 設備に関する基準 / (1) 事業所",
+          "evidence_type": "historical_title",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.equipment.office"
+          ],
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "locator": "H27改正後欄。H30以後は当該項目を略として保持。",
+          "evidence_kind": "machine_reconstructed_candidate"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.equipment.office"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "通所介護 / 設備に関する基準 / (1) 事業所",
+          "evidence_kind": "historical_title"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.95"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "H27改正後欄。H30以後は当該項目を略として保持。",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "866cef28391a37db80ca4098899454a0d45ae00fcb3a25e0279d380c4b1350a6"
     },
     {
       "review_id": "REL-015",
@@ -885,7 +1712,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.20 新欄「3 運営に関する基準」",
+          "evidence_type": "current_heading",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.operation"
+          ],
+          "url": null,
+          "locator": "通所介護 > 運営に関する基準",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.operation"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.20 新欄「3 運営に関する基準」",
+          "evidence_kind": "current_heading"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.105"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "通所介護 > 運営に関する基準",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "2c2d3dd4f9cf44c9a346ff33228c0cca9dde8ca9aea7732791ea787c03dbf235"
     },
     {
       "review_id": "REL-016",
@@ -945,7 +1828,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.20 新欄「3 運営に関する基準」",
+          "evidence_type": "current_heading",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.operation"
+          ],
+          "url": null,
+          "locator": "通所介護 > 運営に関する基準",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.operation"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.20 新欄「3 運営に関する基準」",
+          "evidence_kind": "current_heading"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.96"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （利用料等の受領） ＞ 第九十六条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "通所介護 > 運営に関する基準",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （利用料等の受領） ＞ 第九十六条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "1d6aca4f4fcaf43fb5bdc4dd9f27c0353101a927fba8a895d2471257757f7ba6"
     },
     {
       "review_id": "REL-017",
@@ -1005,7 +1944,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.20「1・2（略）」",
+          "evidence_type": "current_number_confirmed",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        },
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.30 新欄",
+          "evidence_type": "prior_heading",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel"
+          ],
+          "url": null,
+          "locator": "通所介護 > 人員に関する基準",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.20「1・2（略）」",
+          "evidence_kind": "current_number_confirmed"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "PDF p.30 新欄",
+          "evidence_kind": "prior_heading"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "通所介護 > 人員に関する基準",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "11d4a86d45e8993d7bc3cadee187e1bb61e1b2fe7bb5776c022a69c5086c3665"
     },
     {
       "review_id": "REL-018",
@@ -1065,7 +2078,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.20「1・2（略）」",
+          "evidence_type": "current_number_confirmed",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        },
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.30 新欄",
+          "evidence_type": "prior_heading",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel"
+          ],
+          "url": null,
+          "locator": "通所介護 > 人員に関する基準",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.20「1・2（略）」",
+          "evidence_kind": "current_number_confirmed"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "PDF p.30 新欄",
+          "evidence_kind": "prior_heading"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.94"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "通所介護 > 人員に関する基準",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "d7c0c416b4b672bda67894ff0a43c3ccc9b5bfa1e1dcee6928decdb272ab7911"
     },
     {
       "review_id": "REL-019",
@@ -1127,7 +2214,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.31「(2)〜(4)（略）」",
+          "evidence_type": "prior_number_confirmed",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        },
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "通所介護 / 人員に関する基準 / 機能訓練指導員",
+          "evidence_type": "historical_title",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.function-training"
+          ],
+          "url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+          "locator": "H30改正後欄。はり師・きゅう師に関する資格要件追加後の本文。",
+          "evidence_kind": "machine_reconstructed_candidate"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.function-training"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "PDF p.31「(2)〜(4)（略）」",
+          "evidence_kind": "prior_number_confirmed"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.function-training"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "通所介護 / 人員に関する基準 / 機能訓練指導員",
+          "evidence_kind": "historical_title"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "H30改正後欄。はり師・きゅう師に関する資格要件追加後の本文。",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "74d3af43386b2a0c6239a35363fb5ffa4ff6ac3d7955d46219a8738d30a0b58a"
     },
     {
       "review_id": "REL-020",
@@ -1189,7 +2350,99 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.31「(2)〜(4)（略）」",
+          "evidence_type": "prior_number_confirmed",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        },
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "通所介護 / 人員に関する基準 / 生活相談員",
+          "evidence_type": "historical_title",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        },
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.20「1・2（略）」",
+          "evidence_type": "current_section_preserved",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "locator": "H27改正後欄。その後H30/R3/R6では本文変更を示さず略記。",
+          "evidence_kind": "machine_reconstructed_candidate"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "PDF p.31「(2)〜(4)（略）」",
+          "evidence_kind": "prior_number_confirmed"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "通所介護 / 人員に関する基準 / 生活相談員",
+          "evidence_kind": "historical_title"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.20「1・2（略）」",
+          "evidence_kind": "current_section_preserved"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "H27改正後欄。その後H30/R3/R6では本文変更を示さず略記。",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "e56c4e14e007b89cdd8c09367c370304479b765eb72ca1ef9ad74c94fe97fc34"
     },
     {
       "review_id": "REL-021",
@@ -1251,7 +2504,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.31「(2)〜(4)（略）」",
+          "evidence_type": "prior_number_confirmed",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        },
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "通所介護 / 人員に関する基準 / 管理者",
+          "evidence_type": "historical_title",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.manager"
+          ],
+          "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+          "locator": "H27改正後欄。その後の通所介護人員節改正で本文変更を示されていない。",
+          "evidence_kind": "machine_reconstructed_candidate"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.manager"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "PDF p.31「(2)〜(4)（略）」",
+          "evidence_kind": "prior_number_confirmed"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.personnel.manager"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "通所介護 / 人員に関する基準 / 管理者",
+          "evidence_kind": "historical_title"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.94"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "H27改正後欄。その後の通所介護人員節改正で本文変更を示されていない。",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "0a8cb98ced9fa6e976b57aa07665b728d5af696ff5eafc0ebdeb2d9e26fd0bbe"
     },
     {
       "review_id": "REL-022",
@@ -1311,7 +2638,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.20 新欄「六 通所介護」",
+          "evidence_type": "current_heading",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.root"
+          ],
+          "url": null,
+          "locator": "通所介護",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.root"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.20 新欄「六 通所介護」",
+          "evidence_kind": "current_heading"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.105"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "通所介護",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "4ff098abfa86e1471a8b99448488dba4203ff84faf52c4617380d58b08cc024f"
     },
     {
       "review_id": "REL-023",
@@ -1371,7 +2754,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "supporting_source_primary_references": [
+        {
+          "source_id": "mhlw-2024-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和6年度改正・新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "source_status": "partial_source",
+          "locator": "PDF p.20 新欄「六 通所介護」",
+          "evidence_type": "current_heading",
+          "currentness_caveat": "老企第25号の令和6年度改正に係る新旧対照表。現行統合全文ではない。"
+        }
+      ],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.root"
+          ],
+          "url": null,
+          "locator": "通所介護",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.root"
+          ],
+          "source_id": "mhlw-2024-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "locator": "PDF p.20 新欄「六 通所介護」",
+          "evidence_kind": "current_heading"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.92"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第一節 基本方針 ＞ （基本方針） ＞ 第九十二条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": "通所介護",
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第一節 基本方針 ＞ （基本方針） ＞ 第九十二条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "a0c92ae866ec35f30878dfbdcf88203c8c6650ad493af78f3694b9be862e69da"
     },
     {
       "review_id": "REL-024",
@@ -1429,7 +2868,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "共通運営基準 > 虐待の防止 > 従業者研修",
+          "evidence_type": "canonical_notice_source_reference",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        }
+      ],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:annual-training"
+          ],
+          "url": "/questions/annual-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.abuse.frequency"
+          ],
+          "url": null,
+          "locator": "共通運営基準 > 虐待の防止 > 従業者研修",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.abuse.frequency"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "共通運営基準 > 虐待の防止 > 従業者研修",
+          "evidence_kind": "canonical_notice_source_reference"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "共通運営基準 > 虐待の防止 > 従業者研修",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "2f4a915f61e4f5efdbc8a16660f5934b9d88c03ecc800a191ae76abc4ea3dd46"
     },
     {
       "review_id": "REL-025",
@@ -1487,7 +2982,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+          "evidence_type": "canonical_notice_source_reference",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        }
+      ],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:annual-training"
+          ],
+          "url": "/questions/annual-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.bcp.frequency"
+          ],
+          "url": null,
+          "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.bcp.frequency"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+          "evidence_kind": "canonical_notice_source_reference"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "14e74d95e1571c8a86d26ad397ad556072e0ac7dbe92df3b3916780496ea8a7a"
     },
     {
       "review_id": "REL-026",
@@ -1545,7 +3096,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "通所介護 > 衛生管理等 > 感染症研修・訓練",
+          "evidence_type": "canonical_notice_source_reference",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        }
+      ],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:annual-training"
+          ],
+          "url": "/questions/annual-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.infection.frequency"
+          ],
+          "url": null,
+          "locator": "通所介護 > 衛生管理等 > 感染症研修・訓練",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.infection.frequency"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "通所介護 > 衛生管理等 > 感染症研修・訓練",
+          "evidence_kind": "canonical_notice_source_reference"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "通所介護 > 衛生管理等 > 感染症研修・訓練",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "1c463e0b1fc97990218b9faa7a74907031b28119c27cb06ab3114c44e8b4b8e5"
     },
     {
       "review_id": "REL-027",
@@ -1605,7 +3212,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:annual-training"
+          ],
+          "url": "/questions/annual-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.101.p.3"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （勤務体制の確保等） ＞ 第百一条 第3項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （勤務体制の確保等） ＞ 第百一条 第3項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "4c61a00dd830c0165de8d7a1d6e1da47c532e2557122ee20f2ba223033da72a8"
     },
     {
       "review_id": "REL-028",
@@ -1665,7 +3309,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:annual-training"
+          ],
+          "url": "/questions/annual-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.104.p.2.i.3"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （衛生管理等） ＞ 第百四条 第2項 三",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （衛生管理等） ＞ 第百四条 第2項 三",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "3514d4a567bbc2a26e92667b2305e324b8d95027f3599a9f2779d2406f281e57"
     },
     {
       "review_id": "REL-029",
@@ -1725,7 +3406,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:annual-training"
+          ],
+          "url": "/questions/annual-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.30-2.p.2"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二 第2項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二 第2項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "488362e04d07d6da369abb01390724c031cd4d799c73e81687032af156e9bf47"
     },
     {
       "review_id": "REL-030",
@@ -1785,7 +3503,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:annual-training"
+          ],
+          "url": "/questions/annual-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.37-2.p.1.i.3"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （虐待の防止） ＞ 第三十七条の二 第1項 三",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （虐待の防止） ＞ 第三十七条の二 第1項 三",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "9014dc4a08b2a9f6de7b9f1ee9329e7805a905f0b7f1a350478b22fcbbfd2b88"
     },
     {
       "review_id": "REL-031",
@@ -1845,7 +3600,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:bcp-training"
+          ],
+          "url": "/questions/bcp-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.105"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "aee16506d5ac46b551ce63740748b24994ba837932a0ee0429fbf61e5eef3f9a"
     },
     {
       "review_id": "REL-032",
@@ -1903,7 +3695,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [
+        {
+          "source_id": "mhlw-2021-interpretation-redline",
+          "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（令和3年度改正後文を含む新旧対照表）",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+          "evidence_type": "canonical_notice_source_reference",
+          "currentness_caveat": "BCP、感染症対策、虐待防止等の改正後文を確認できる新旧対照表。現行統合全文ではないため、当サイトでは部分ソースとして扱う。"
+        }
+      ],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:bcp-training"
+          ],
+          "url": "/questions/bcp-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.bcp.frequency"
+          ],
+          "url": null,
+          "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.bcp.frequency"
+          ],
+          "source_id": "mhlw-2021-interpretation-redline",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+          "evidence_kind": "canonical_notice_source_reference"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "c014110503b3588fdcb1009b739600761f1a562e970563b49ba4c8bbbd026f34"
     },
     {
       "review_id": "REL-033",
@@ -1963,7 +3811,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:bcp-training"
+          ],
+          "url": "/questions/bcp-training",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.30-2.p.2"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二 第2項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二 第2項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "38e42b791ebd81bcf76eb73e29f7db02ffc2267b98ae482818aaf48466fca880"
     },
     {
       "review_id": "REL-034",
@@ -2023,7 +3908,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-content"
+          ],
+          "url": "/questions/care-plan-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.2"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第2項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第2項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "39fc05de4a2b855a5fa29d24884c221e18327e8ce9d88fda95127d3137d70969"
     },
     {
       "review_id": "REL-035",
@@ -2083,7 +4005,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-content"
+          ],
+          "url": "/questions/care-plan-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.1"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第1項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第1項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "8253474a53132ceb4e36419e12b899bb2d5aa896b195a520f804ce7e2381da4e"
     },
     {
       "review_id": "REL-036",
@@ -2143,7 +4102,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-content"
+          ],
+          "url": "/questions/care-plan-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.3"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "84fa07b7cde55cc48bfd7e84e1a7f82406b360d87f40df096fde67863d80e946"
     },
     {
       "review_id": "REL-037",
@@ -2203,7 +4199,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-content"
+          ],
+          "url": "/questions/care-plan-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.4"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "d1051370a20e916643417d6f5e16ebb3e836795e1569c72d3447f24e6f6c3e23"
     },
     {
       "review_id": "REL-038",
@@ -2263,7 +4296,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-content"
+          ],
+          "url": "/questions/care-plan-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.5"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第5項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第5項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "26a25fa94e724f63a07698ebc0f149498428ab521d64ad5abe5b3c4bd6ceefea"
     },
     {
       "review_id": "REL-039",
@@ -2323,7 +4393,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-seal"
+          ],
+          "url": "/questions/care-plan-seal",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.3"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "60055aea22371508dd4719e7b2a6e03052ce94df12a121708ff77b1f8fbb1147"
     },
     {
       "review_id": "REL-040",
@@ -2383,7 +4490,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-seal"
+          ],
+          "url": "/questions/care-plan-seal",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.4"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "7fd469f30eea6519e3769bb5415a53a3273931479417c5efd238487b79bc178d"
     },
     {
       "review_id": "REL-041",
@@ -2443,7 +4587,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-signature"
+          ],
+          "url": "/questions/care-plan-signature",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.3"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "67e2b263d558f8d07b058edb1e3ab044d249434e5ba9f5db56b888ab58cf1e20"
     },
     {
       "review_id": "REL-042",
@@ -2503,7 +4684,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-signature"
+          ],
+          "url": "/questions/care-plan-signature",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.217.p.2"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第十五章 雑則 ＞ （電磁的記録等） ＞ 第二百十七条 第2項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第十五章 雑則 ＞ （電磁的記録等） ＞ 第二百十七条 第2項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "6b2f4a2c82a50712c06ee89771dafa88d089e7b80318db4567700b6ef32fc9f1"
     },
     {
       "review_id": "REL-043",
@@ -2563,7 +4781,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:care-plan-signature"
+          ],
+          "url": "/questions/care-plan-signature",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.99.p.4"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "6d65e100ae65675e9e313cf6fbd82f2d5f1e1bc3f3d179527f3c6adeb4e4b8a6"
     },
     {
       "review_id": "REL-044",
@@ -2625,7 +4880,45 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:dining-training-area"
+          ],
+          "url": "/questions/dining-training-area",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.95.p.1",
+            "ordinance37.article.95.p.2"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条 第1項 | 第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条 第2項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条 第1項 | 第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条 第2項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "7ec3013a1ff2770cefcaed582ac23abdc8c216169fe59570f2422e632e96acfe"
     },
     {
       "review_id": "REL-045",
@@ -2685,7 +4978,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:important-matters-content"
+          ],
+          "url": "/questions/important-matters-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.8.p.1"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （内容及び手続の説明及び同意） ＞ 第八条 第1項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （内容及び手続の説明及び同意） ＞ 第八条 第1項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "c94cf9f4bf4c9586e10c819ed14b27bde66f5cca7d8572c94dbe596ca2e9d866"
     },
     {
       "review_id": "REL-046",
@@ -2745,7 +5075,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:important-matters-content"
+          ],
+          "url": "/questions/important-matters-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.105"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "8697fde6d4465a434727b2da1161ca31be29fe4775cd51682217575ab05421a8"
     },
     {
       "review_id": "REL-047",
@@ -2803,7 +5170,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "共通運営基準 > 内容及び手続の説明及び同意",
+          "evidence_type": "canonical_notice_source_reference",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        }
+      ],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:important-matters-content"
+          ],
+          "url": "/questions/important-matters-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.common.important-matters.explanation"
+          ],
+          "url": null,
+          "locator": "共通運営基準 > 内容及び手続の説明及び同意",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.common.important-matters.explanation"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "共通運営基準 > 内容及び手続の説明及び同意",
+          "evidence_kind": "canonical_notice_source_reference"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "共通運営基準 > 内容及び手続の説明及び同意",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "e5172cf6dc5b2398b54dc0e9730c7e0585d3ab9b2bc2b145088f7ff131d34538"
     },
     {
       "review_id": "REL-048",
@@ -2867,7 +5290,46 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:important-matters-content"
+          ],
+          "url": "/questions/important-matters-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.32.p.1",
+            "ordinance37.article.32.p.2",
+            "ordinance37.article.32.p.3"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第1項 | 第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第2項 | 第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第3項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第1項 | 第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第2項 | 第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第3項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "f9de5f69a38ad2ea8a518046960361f343938b4494cd7dd6b605cb27cc608426"
     },
     {
       "review_id": "REL-049",
@@ -2927,7 +5389,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:life-counselor-staffing"
+          ],
+          "url": "/questions/life-counselor-staffing",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93.p.1.i.1"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第1項 一",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第1項 一",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "4daa1060d94557320609f2763416609be3c06253fd5c36ad95f3aff744d80fbb"
     },
     {
       "review_id": "REL-050",
@@ -2987,7 +5486,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:life-counselor-staffing"
+          ],
+          "url": "/questions/life-counselor-staffing",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93.p.6"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第6項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第6項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "fe450aa8ffc1fa4402285aefb795e5fcc78b734c41333b97bcda41ce1abe9794"
     },
     {
       "review_id": "REL-051",
@@ -3047,7 +5583,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:manager-concurrent-role"
+          ],
+          "url": "/questions/manager-concurrent-role",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.94"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "6bdeab2acbe7bd7ae8315928f3325004a49ccf8187addf6810197b93b5882369"
     },
     {
       "review_id": "REL-052",
@@ -3105,7 +5678,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [
+        {
+          "source_id": "mhlw-interpretation-html",
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準について（厚生労働省HTML）",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "source_status": "partial_source",
+          "locator": "通所介護 > 運営に関する基準 > 勤務体制の確保等",
+          "evidence_type": "canonical_notice_source_reference",
+          "currentness_caveat": "通所介護部分を参照可能。ただし後年の改正内容が別資料側に存在する箇所があるため、現行統合全文とはみなさない。"
+        }
+      ],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:multiple-roles"
+          ],
+          "url": "/questions/multiple-roles",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.staffing.schedule"
+          ],
+          "url": null,
+          "locator": "通所介護 > 運営に関する基準 > 勤務体制の確保等",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.staffing.schedule"
+          ],
+          "source_id": "mhlw-interpretation-html",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+          "locator": "通所介護 > 運営に関する基準 > 勤務体制の確保等",
+          "evidence_kind": "canonical_notice_source_reference"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "通所介護 > 運営に関する基準 > 勤務体制の確保等",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "eed5c569069a516db40fcee0266544ee3c0f08c07e194dab4ec7b16b6d0b8e16"
     },
     {
       "review_id": "REL-053",
@@ -3165,7 +5794,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:multiple-roles"
+          ],
+          "url": "/questions/multiple-roles",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93.p.3"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第3項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第3項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "b45d388af147dd284d7cfd5dc4bcfd980af47f1be444394ea2848044735a66c5"
     },
     {
       "review_id": "REL-054",
@@ -3225,7 +5891,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:multiple-roles"
+          ],
+          "url": "/questions/multiple-roles",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93.p.5"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第5項",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第5項",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "ba829c6c88fb494adb19886538d46c32dbd4b8d8c8f342cac3087a37af3a6d9c"
     },
     {
       "review_id": "REL-055",
@@ -3285,7 +5988,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:multiple-roles"
+          ],
+          "url": "/questions/multiple-roles",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.94"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "ff3f633d18cd890d1e15a2ee1d81ffe0e7bbb9480240c29f187b07bf10ff2e38"
     },
     {
       "review_id": "REL-056",
@@ -3345,7 +6085,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:nurse-staffing"
+          ],
+          "url": "/questions/nurse-staffing",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.93.p.1.i.2"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第1項 二",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第1項 二",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "762c5f8916287a1a769ae66016ba001108ec4f5d2b82dae0d384c740feb6cbfc"
     },
     {
       "review_id": "REL-057",
@@ -3403,7 +6180,63 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [
+        {
+          "source_id": "mhlw-qa",
+          "title": "介護サービス関係Q&A",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+          "source_status": "registry",
+          "locator": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日） / 問50",
+          "evidence_type": "canonical_qa_source_reference",
+          "currentness_caveat": "厚生労働省の公式Q&A集。2026-09-22確認時点で介護保険最新情報vol.1479まで収載。XLS/PDFで公開されている。"
+        }
+      ],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:nurse-staffing"
+          ],
+          "url": "/questions/nurse-staffing",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "qa.dayservice.nurse.external.2015.50"
+          ],
+          "url": null,
+          "locator": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日） / 問50",
+          "evidence_kind": "structured_question_and_answer_summary"
+        },
+        {
+          "canonical_ids": [
+            "qa.dayservice.nurse.external.2015.50"
+          ],
+          "source_id": "mhlw-qa",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+          "locator": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日） / 問50",
+          "evidence_kind": "canonical_qa_source_reference"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日） / 問50",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "f2cadadc17ca9d6f6e72daa9d82aa6454fe7a8542718436d9b7d997c6b53c053"
     },
     {
       "review_id": "REL-058",
@@ -3461,7 +6294,81 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [
+        {
+          "source_id": "mhlw-interpretation-nurse-linkage",
+          "title": "通所介護の看護職員確保に関する解釈通知改正資料",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "source_status": "partial_source",
+          "locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+          "evidence_type": "canonical_notice_source_reference",
+          "currentness_caveat": "病院・診療所・訪問看護ステーションとの連携による看護職員確保の取扱いを確認できる改正資料。"
+        },
+        {
+          "source_id": "mhlw-qa",
+          "title": "介護サービス関係Q&A",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+          "source_status": "registry",
+          "locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+          "evidence_type": "canonical_notice_source_reference",
+          "currentness_caveat": "厚生労働省の公式Q&A集。2026-09-22確認時点で介護保険最新情報vol.1479まで収載。XLS/PDFで公開されている。"
+        }
+      ],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:nurse-staffing"
+          ],
+          "url": "/questions/nurse-staffing",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "notice.dayservice.nurse.external-linkage"
+          ],
+          "url": null,
+          "locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+          "evidence_kind": "editorial_summary_not_primary_text"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.nurse.external-linkage"
+          ],
+          "source_id": "mhlw-interpretation-nurse-linkage",
+          "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+          "locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+          "evidence_kind": "canonical_notice_source_reference"
+        },
+        {
+          "canonical_ids": [
+            "notice.dayservice.nurse.external-linkage"
+          ],
+          "source_id": "mhlw-qa",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+          "locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+          "evidence_kind": "canonical_notice_source_reference"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "44bc41f54b366b567cadcf3d39fd8696270e69edc9a8a3bd636f5f61f23fc586"
     },
     {
       "review_id": "REL-059",
@@ -3521,7 +6428,44 @@
       "reviewer_name": null,
       "reviewer_decision": null,
       "reviewer_note": null,
-      "reviewed_at": null
+      "reviewed_at": null,
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "supporting_source_primary_references": [],
+      "supporting_target_primary_references": [],
+      "source_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "question:operation-rules-content"
+          ],
+          "url": "/questions/operation-rules-content",
+          "locator": null,
+          "evidence_kind": "question_title_and_short_answer"
+        }
+      ],
+      "target_primary_source_locators": [
+        {
+          "canonical_ids": [
+            "ordinance37.article.100"
+          ],
+          "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+          "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （運営規程） ＞ 第百条",
+          "evidence_kind": "official_text"
+        }
+      ],
+      "relevant_source_excerpt_locator": null,
+      "relevant_target_excerpt_locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （運営規程） ＞ 第百条",
+      "currentness_caveat": "Relation evidence readiness and source currentness are separate assurance axes. Supporting references may be historical, redline, amendment-only, partial, or current-source evidence as labelled; this pack makes no currentness promotion.",
+      "unresolved_semantic_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?",
+      "proposed_decision_options": [
+        "CONFIRM_RELATION",
+        "REJECT_RELATION",
+        "NEEDS_MORE_EVIDENCE"
+      ],
+      "reviewed_by": null,
+      "reviewer_rationale": null,
+      "evidence_pack_ready": true,
+      "evidence_fingerprint_sha256": "d642511dfa6b33637570b7f58fd9d5c67fae9f4410d24322d21d84e9a94a8135"
     }
   ]
 }

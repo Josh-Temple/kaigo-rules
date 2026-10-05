@@ -117,6 +117,14 @@ def validate() -> dict:
         raise ValueError("freshness was promoted without successor-absence proof")
     if freshness_item.get("closure_assessment") != "KEEP_OPEN":
         raise ValueError("freshness-sensitive relation was closed automatically")
+    successor_check = direct.get("successor_absence_check", {})
+    if successor_check.get("result") != "INSUFFICIENT_FOR_LATEST_CLAIM":
+        raise ValueError("freshness successor-absence check must remain fail-closed")
+    official_listing = direct.get("official_listing", {})
+    if official_listing.get("reviewed_through") != "介護保険最新情報Vol.1545":
+        raise ValueError("freshness official-listing review boundary is missing")
+    if not successor_check.get("limitation"):
+        raise ValueError("freshness negative-evidence limitation is missing")
 
     if packet["review_contract"]["automatic_promotion_allowed"]:
         raise ValueError("review packet must prohibit automatic promotion")
@@ -154,9 +162,37 @@ def validate() -> dict:
             raise ValueError(f"unreviewed relation was closed automatically: {key}")
         if row["review_status"] != "NOT_REVIEWED":
             raise ValueError(f"AI-generated packet changed human review state: {key}")
-        for field in ("reviewer_name", "reviewer_decision", "reviewer_note", "reviewed_at"):
+        for field in (
+            "reviewed_by",
+            "reviewer_rationale",
+            "reviewer_name",
+            "reviewer_decision",
+            "reviewer_note",
+            "reviewed_at",
+        ):
             if row[field] is not None:
                 raise ValueError(f"{field} must stay blank before real human review: {key}")
+        if row.get("source_file") != packet_row.get("source_file"):
+            raise ValueError(f"source_file provenance mismatch: {key}")
+        if row.get("source_state") != packet_row.get("source_state"):
+            raise ValueError(f"source_state provenance mismatch: {key}")
+        if not row.get("currentness_caveat"):
+            raise ValueError(f"currentness caveat is missing: {key}")
+        if row.get("unresolved_semantic_question") != row["human_judgment_question"]:
+            raise ValueError(f"unresolved semantic question drifted: {key}")
+        if row.get("proposed_decision_options") != DECISIONS:
+            raise ValueError(f"proposed decision options changed: {key}")
+        if not row.get("evidence_pack_ready"):
+            raise ValueError(f"evidence pack is not human-review ready: {key}")
+        fingerprint = row.get("evidence_fingerprint_sha256", "")
+        if len(fingerprint) != 64 or any(
+            char not in "0123456789abcdef" for char in fingerprint
+        ):
+            raise ValueError(f"invalid evidence fingerprint: {key}")
+        if not row.get("source_primary_source_locators"):
+            raise ValueError(f"source primary-source locator is missing: {key}")
+        if not row.get("target_primary_source_locators"):
+            raise ValueError(f"target primary-source locator is missing: {key}")
 
         subclaims = row["machine_verifiable_subclaims"]
         if not subclaims["source_identity_resolved"]:
@@ -213,6 +249,10 @@ def validate() -> dict:
         raise ValueError("closure assessment summary is not fail-closed")
     if evidence["summary"]["machine_safe_closures"] != 0:
         raise ValueError("machine-safe closures must remain zero for this snapshot")
+    if evidence["summary"].get("evidence_pack_ready_items") != len(queue_owned):
+        raise ValueError("not all Worker D relations have a review-ready evidence pack")
+    if evidence["summary"].get("evidence_pack_not_ready_items") != 0:
+        raise ValueError("evidence pack contains non-ready Worker D relations")
 
     return {
         "inventory_relations": inventory,
@@ -228,6 +268,7 @@ def validate() -> dict:
             sorted(semantic_pointer_counts.items())
         ),
         "machine_safe_closures": 0,
+        "evidence_pack_ready_items": evidence["summary"]["evidence_pack_ready_items"],
         "review_state": "NOT_REVIEWED",
     }
 

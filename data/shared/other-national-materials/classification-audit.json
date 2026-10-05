@@ -2,7 +2,7 @@
   "format_version": 1,
   "source_family": "other_national_manuals_forms",
   "audit_state": "CANONICAL_PROMOTION_AND_ITEM_BODY_ASSURANCE_CLASSIFICATION_COMPLETE",
-  "observed_on": "2026-10-05",
+  "observed_on": "2026-10-06",
   "main_sha_at_discovery": "754bc7b223db4aa35675c840f1a0032ca71eeb96",
   "summary": {
     "ACCEPTED_OTHER_NATIONAL_MATERIAL": 4,
@@ -57,7 +57,7 @@
       "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
       "canonical_node_id": "other-national.shared.mhlw-care-business-financial-db-manual-v1-20",
       "inventory_category": "IMPLEMENTATION_SUPPORT_MATERIAL",
-      "item_body_assurance_state": "NOT_ESTABLISHED"
+      "item_body_assurance_state": "PARTIAL"
     },
     {
       "candidate_id": "mhlw-life-manual-guidance",
@@ -100,7 +100,7 @@
       "inventory_category": "OFFICIAL_DISCOVERY_INDEX_OUT_OF_SCOPE"
     }
   ],
-  "conclusion": "Accepted source identities remain canonical and deduplicated. Item-body assurance is now evidence-scoped: one bound national document is PASS, one standard-form source is PARTIAL, and two accepted sources remain NOT_ESTABLISHED. Currentness, human review, publication, route exposure, and global generated artifacts are not promoted.",
+  "conclusion": "Accepted source identities remain canonical and deduplicated. Item-body assurance is evidence-scoped: one bound national document is PASS, two sources are PARTIAL (application forms and a bounded financial-DB manual slice), and the electronic-application operator manual remains NOT_ESTABLISHED. Currentness remains evidence-backed but fail-closed at PARTIAL/NOT_ESTABLISHED; human review, publication, route exposure, and global generated artifacts are not promoted.",
   "currentness_partial_count": 4,
   "service_applicability_promoted_count": 3,
   "canonical_promotion": {
@@ -130,8 +130,8 @@
     "artifact": "data/shared/other-national-materials/item-body-assurance.json",
     "source_states": {
       "PASS": 1,
-      "PARTIAL": 1,
-      "NOT_ESTABLISHED": 2
+      "PARTIAL": 2,
+      "NOT_ESTABLISHED": 1
     },
     "service_states": {
       "PASS": 0,
@@ -144,5 +144,19 @@
     "publication_promoted": false,
     "route_exposure_promoted": false,
     "global_generated_artifacts_regenerated": false
+  },
+  "currentness_assurance": {
+    "artifact": "data/shared/other-national-materials/currentness-assurance.json",
+    "verified_at": "2026-10-06",
+    "source_states": {
+      "PASS": 0,
+      "PARTIAL": 4,
+      "NOT_ESTABLISHED": 0
+    },
+    "blanket_service_projection_applied": false,
+    "currentness_promoted_from_item_body": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false
   }
 }

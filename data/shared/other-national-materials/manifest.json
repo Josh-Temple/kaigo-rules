@@ -108,7 +108,7 @@
     "route_exposure": "BLOCKED",
     "automatic_promotion_allowed": false
   },
-  "observed_on": "2026-10-05",
+  "observed_on": "2026-10-06",
   "corpus_id": "other-national-materials-national",
   "scope_kind": "SHARED_NATIONAL_CORPUS",
   "canonical_node_store": "data/shared/other-national-materials/national-corpus.json",
@@ -121,8 +121,10 @@
     "classification_audit": "data/shared/other-national-materials/classification-audit.json",
     "discovery_main_sha": "754bc7b223db4aa35675c840f1a0032ca71eeb96",
     "canonical_promotion_base_main_sha": "e0d814b1b22d449fd13784bbb051fba5c27df64e",
-    "item_body_assurance_base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd"
+    "item_body_assurance_base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd",
+    "currentness_assurance_base_main_sha": "e3a6c3f038293d962562429e5056f3e36c603191"
   },
   "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
-  "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json"
+  "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json",
+  "currentness_assurance": "data/shared/other-national-materials/currentness-assurance.json"
 }

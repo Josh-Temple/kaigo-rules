@@ -90,11 +90,11 @@
       "official_url": "https://www.mhlw.go.jp/content/12300000/001470543.pdf",
       "version_label": "v1.20 / 2025-03-13",
       "document_kind": "NATIONAL_SYSTEM_OPERATION_MANUAL",
-      "content_mode": "REFERENCE_ONLY",
+      "content_mode": "STRUCTURED_PARTIAL",
       "body_duplicated": false,
       "observation_receipt_id": "other-national.obs.mhlw-care-business-financial-db-manual-v1-20.2026-10-05",
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PARTIAL",
         "currentness": "PARTIAL",
         "service_applicability_verification": "PARTIAL",
         "service_relation_verification": "NOT_ESTABLISHED",
@@ -102,7 +102,14 @@
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
         "automatic_promotion_allowed": false
-      }
+      },
+      "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+      "canonical_body_item_ids": [
+        "other-national.financial-db.v1-20.revision-history",
+        "other-national.financial-db.v1-20.section-1-4.scope",
+        "other-national.financial-db.v1-20.section-1-4.mapped-rows",
+        "other-national.financial-db.v1-20.section-1-4.exclusion-rows"
+      ]
     }
   ],
   "assurance": {
