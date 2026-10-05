@@ -1,0 +1,60 @@
+name: One-shot exact-SHA production release
+
+on:
+  push:
+    branches:
+      - release/core-item-body-assurance-46e27f31
+
+concurrency:
+  group: daily-vercel-production-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          ref: 46e27f31ef618f31d45d33d7f841927ea5a564dd
+      - name: Trigger kaigo-rules production deploy
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
+        run: |
+          set -euo pipefail
+          test -n "$DEPLOY_HOOK" || { echo "::error::Missing VERCEL_DEPLOY_HOOK_KAIGO_RULES"; exit 1; }
+          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
+          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
+      - name: Verify exact production SHA and field-validation gate
+        run: |
+          python scripts/verify_field_validation_production.py \
+            --base-url https://kaigo-rules.vercel.app \
+            --expected-sha 46e27f31ef618f31d45d33d7f841927ea5a564dd \
+            --wait-seconds 600 \
+            --interval-seconds 15
+      - name: Run machine retrieval benchmark
+        run: |
+          mkdir -p artifacts
+          python scripts/run_machine_retrieval_benchmark.py \
+            --base-url https://kaigo-rules.vercel.app \
+            --expected-sha 46e27f31ef618f31d45d33d7f841927ea5a564dd \
+            --output artifacts/machine-retrieval-v0.1.json
+      - name: Run integration release regression
+        run: |
+          python scripts/run_integration_sprint_release_regression.py \
+            --base-url https://kaigo-rules.vercel.app \
+            --expected-sha 46e27f31ef618f31d45d33d7f841927ea5a564dd \
+            --output artifacts/integration-release-regression.json
+      - name: Upload release evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: core-item-body-assurance-release-46e27f31ef618f31d45d33d7f841927ea5a564dd
+          path: artifacts
+          if-no-files-found: error
+          retention-days: 90
+      - name: Advance deploy-state only after all exact-SHA gates pass
+        run: git push --force origin "HEAD:refs/heads/deploy-state/kaigo-rules"
