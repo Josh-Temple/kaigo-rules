@@ -117,16 +117,29 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
         self.assertEqual(delegated["publication"]["state"], "BLOCKED")
         self.assertEqual(delegated["route_exposure"]["state"], "BLOCKED")
 
-    def test_homevisit_unit_price_ingestion_does_not_inherit_dayservice_verification(self):
+    def test_unit_price_item_body_projection_uses_service_specific_primary_source_evidence(self):
         homevisit = self.cell("homevisit", "unit_price_regional_classification")
         dayservice = self.cell("dayservice", "unit_price_regional_classification")
+        sale = self.cell("specific-welfare-equipment-sale", "unit_price_regional_classification")
+
         self.assertEqual(homevisit["service_scope"]["state"], "SCOPE_DEFINED")
         self.assertEqual(homevisit["ingestion"]["state"], "INGESTED")
-        self.assertEqual(homevisit["item_body_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(homevisit["item_body_verification"]["state"], "PASS")
+        self.assertIn(
+            "data/unit-price-item-body-assurance.json#homevisit",
+            homevisit["item_body_verification"]["evidence"],
+        )
         self.assertEqual(homevisit["currentness"]["state"], "NOT_ESTABLISHED")
         self.assertEqual(homevisit["publication"]["state"], "BLOCKED")
         self.assertEqual(homevisit["route_exposure"]["state"], "BLOCKED")
+
         self.assertEqual(dayservice["item_body_verification"]["state"], "PASS")
+        self.assertIn(
+            "data/unit-price-independent-audit.json",
+            dayservice["item_body_verification"]["evidence"],
+        )
+        self.assertEqual(sale["item_body_verification"]["state"], "NOT_APPLICABLE")
+        self.assertEqual(sale["currentness"]["state"], "NOT_APPLICABLE")
 
     def test_shared_care_act_item_body_pass_does_not_promote_other_assurance_layers(self):
         for row in self.matrix["services"]:
