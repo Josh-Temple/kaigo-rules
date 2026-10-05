@@ -28,7 +28,26 @@ class RelationReviewPacketHardeningTests(unittest.TestCase):
             (ROOT / "data/relation-human-review-evidence-pack.json").read_text(encoding="utf-8")
         )
 
+        freshness = json.loads(
+            (ROOT / "data/relation-freshness-direct-evidence-assessment.json").read_text(
+                encoding="utf-8"
+            )
+        )
+
         self.assertEqual(len(packet["items"]), 58)
+        self.assertEqual(len(freshness["items"]), 1)
+        self.assertEqual(
+            len(packet["items"]) + len(freshness["items"]),
+            59,
+        )
+        self.assertEqual(
+            freshness["items"][0]["freshness"]["state"],
+            "NOT_ESTABLISHED",
+        )
+        self.assertEqual(
+            freshness["items"][0]["closure_assessment"],
+            "KEEP_OPEN",
+        )
         self.assertEqual(evidence["summary"]["machine_safe_closures"], 0)
         self.assertEqual(
             evidence["summary"]["semantic_text_source_pointer_status_counts"],
