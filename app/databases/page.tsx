@@ -49,17 +49,16 @@ const databases = [
 export default function DatabasesPage() {
   return (
     <article className="answer-page wide-page foundation-page">
-      <p className="eyebrow">DATABASES / EXPANDING COVERAGE</p>
+      <p className="eyebrow">制度DB</p>
       <h1>介護制度DB</h1>
       <p className="lead">
-        サービスを一つ選ばなくても、現在公開できる制度データをDB単位で確認できます。
-        共有できる法令コーパスは全体表示し、サービス固有の資料は同じ入口からサービス別にたどれるようにします。
+        サービスを一つ選ばなくても、介護保険法・基準省令・解釈通知・国Q&AをDB単位で確認できます。
+        キーワード検索から始めることも、必要なDBを選んで原文へ進むこともできます。
       </p>
 
       <div className="notice">
-        <strong>「全体版」は、すべてのサービスが同じ確認状態で揃ったという意味ではありません。</strong><br />
-        公開済みのコーパスとサービス固有データを一つの入口へ集約し、未整備の範囲は未整備のまま明示します。
-        本文照合・現行性・人手確認の状態は各DBで確認してください。
+        <strong>DBごとに公開範囲が異なります。</strong><br />
+        各ページで出典・対象範囲・確認情報を確認できます。未確認の範囲を確認済みとして表示しません。
       </div>
 
       <section className="section">
