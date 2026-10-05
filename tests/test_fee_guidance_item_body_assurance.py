@@ -60,6 +60,42 @@ class FeeGuidanceItemBodyAssuranceTest(unittest.TestCase):
         self.assertEqual(rows["specific-welfare-equipment-sale"]["service_level_item_body"], "NOT_APPLICABLE")
         self.assertEqual(rows["specific-preventive-welfare-equipment-sale"]["service_level_item_body"], "NOT_APPLICABLE")
 
+    def test_coverage_projection_uses_service_level_assurance(self):
+        builder_spec = importlib.util.spec_from_file_location(
+            "coverage_matrix",
+            ROOT / "scripts/build_database_coverage_matrix.py",
+        )
+        builder = importlib.util.module_from_spec(builder_spec)
+        assert builder_spec.loader is not None
+        builder_spec.loader.exec_module(builder)
+        matrix = builder.build()
+        rows = {
+            row["service_id"]: next(
+                family for family in row["source_families"]
+                if family["source_family"] == "fee_calculation_guidance"
+            )
+            for row in matrix["services"]
+        }
+        self.assertEqual(rows["dayservice"]["item_body_verification"]["state"], "PARTIAL")
+        self.assertEqual(rows["dayrehab"]["item_body_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(
+            rows["specific-welfare-equipment-sale"]["item_body_verification"]["state"],
+            "NOT_APPLICABLE",
+        )
+        self.assertEqual(
+            rows["specific-preventive-welfare-equipment-sale"]["item_body_verification"]["state"],
+            "NOT_APPLICABLE",
+        )
+        for service_id in ("homevisit", "homebath", "homenursing", "homerehab"):
+            self.assertEqual(
+                rows[service_id]["item_body_verification"]["state"],
+                "NOT_ESTABLISHED",
+            )
+            self.assertEqual(rows[service_id]["currentness"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(rows[service_id]["human_review"]["state"], "NOT_REVIEWED")
+            self.assertEqual(rows[service_id]["publication"]["state"], "BLOCKED")
+            self.assertEqual(rows[service_id]["route_exposure"]["state"], "BLOCKED")
+
 
 if __name__ == "__main__":
     unittest.main()
