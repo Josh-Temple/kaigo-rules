@@ -32,9 +32,17 @@
       "notice_number": "平成12年3月17日 老企第43号",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4387&dataType=1",
       "source_role": "OFFICIAL_NOTICE_IDENTITY",
-      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "acquisition_state": "OFFICIAL_BODY_SNAPSHOT_PINNED",
       "current_integrated_text": false,
-      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。"
+      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。",
+      "body_snapshot": {
+        "path": "data/shared/standards-interpretation/source-snapshots/rouki43-mhlw-direct-display.md",
+        "git_blob_sha": "e52b8ddc6939d80e254915be2c7bafac06630ea0",
+        "observed_date": "2026-10-05",
+        "extraction_kind": "NORMALIZED_TEXT_FROM_OFFICIAL_MHLW_SOURCE",
+        "completeness_claim": "BOUNDED_TO_RETRIEVED_SOURCE_TEXT",
+        "currentness_proof": false
+      }
     },
     {
       "source_id": "mhlw-elderly-welfare-facility-rouki43-r6-comparison",
@@ -55,9 +63,17 @@
       "notice_number": "平成12年3月17日 老企第44号",
       "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4388&dataType=1",
       "source_role": "OFFICIAL_NOTICE_IDENTITY",
-      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "acquisition_state": "OFFICIAL_BODY_SNAPSHOT_PINNED",
       "current_integrated_text": false,
-      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。"
+      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。",
+      "body_snapshot": {
+        "path": "data/shared/standards-interpretation/source-snapshots/rouki44-mhlw-direct-display.md",
+        "git_blob_sha": "12e4a531533970ef664fb6efa4fcd8d532f96805",
+        "observed_date": "2026-10-05",
+        "extraction_kind": "NORMALIZED_TEXT_FROM_OFFICIAL_MHLW_SOURCE",
+        "completeness_claim": "BOUNDED_TO_RETRIEVED_SOURCE_TEXT",
+        "currentness_proof": false
+      }
     },
     {
       "source_id": "mhlw-elderly-health-facility-rouki44-r6-comparison",
@@ -78,9 +94,17 @@
       "notice_number": "平成30年3月22日 老老発0322第1号",
       "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf",
       "source_role": "OFFICIAL_NOTICE_IDENTITY",
-      "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+      "acquisition_state": "OFFICIAL_BODY_SNAPSHOT_PINNED",
       "current_integrated_text": false,
-      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。"
+      "scope": "通知の公式掲載・識別用。統合現行全文の確立を意味しない。",
+      "body_snapshot": {
+        "path": "data/shared/standards-interpretation/source-snapshots/care-medical-institution-original-notice.md",
+        "git_blob_sha": "f983889aaa32d3c78925a60e5717fd1173122855",
+        "observed_date": "2026-10-05",
+        "extraction_kind": "NORMALIZED_TEXT_FROM_OFFICIAL_MHLW_SOURCE",
+        "completeness_claim": "BOUNDED_TO_RETRIEVED_SOURCE_TEXT",
+        "currentness_proof": false
+      }
     },
     {
       "source_id": "mhlw-care-medical-institution-r6-comparison",
@@ -115,6 +139,25 @@
       "acquisition_state": "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
       "current_integrated_text": false,
       "scope": "「抄」「傍線の部分は改正部分」とする改正資料。変更箇所の証拠であり、全文・現行統合本文の根拠ではない。"
+    },
+    {
+      "source_id": "mhlw-regional-community-rouki33-original-direct-notice",
+      "document_id": "rouki33",
+      "document_title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+      "notice_number": "平成18年3月31日 老計発第0331004号・老振発第0331004号・老老発第0331017号",
+      "url": "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf",
+      "source_role": "OFFICIAL_ORIGINAL_DIRECT_NOTICE_BODY",
+      "acquisition_state": "OFFICIAL_BODY_SNAPSHOT_PINNED",
+      "current_integrated_text": false,
+      "scope": "平成18年制定時の公式通知本文。後続改正を統合した現行本文ではなく、歴史的versionの直接本文evidenceとしてのみ使用する。",
+      "body_snapshot": {
+        "path": "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md",
+        "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
+        "observed_date": "2026-10-05",
+        "extraction_kind": "NORMALIZED_TEXT_FROM_OFFICIAL_MHLW_PDF",
+        "completeness_claim": "BOUNDED_TO_RETRIEVED_SOURCE_TEXT",
+        "currentness_proof": false
+      }
     }
   ]
 }
