@@ -1,19 +1,16 @@
-name: One-shot exact-SHA production release
+name: One-shot exact-SHA production gate
 
 on:
-  push:
-    branches:
-      - release/core-item-body-assurance-46e27f31
-
-concurrency:
-  group: daily-vercel-production-deploy
-  cancel-in-progress: false
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/one-shot-core-item-body-release.yml"
 
 permissions:
   contents: write
 
 jobs:
-  release:
+  gate:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -21,21 +18,13 @@ jobs:
         with:
           fetch-depth: 0
           ref: 46e27f31ef618f31d45d33d7f841927ea5a564dd
-      - name: Trigger kaigo-rules production deploy
-        env:
-          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
-        run: |
-          set -euo pipefail
-          test -n "$DEPLOY_HOOK" || { echo "::error::Missing VERCEL_DEPLOY_HOOK_KAIGO_RULES"; exit 1; }
-          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
-          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
       - name: Verify exact production SHA and field-validation gate
         run: |
           python scripts/verify_field_validation_production.py \
             --base-url https://kaigo-rules.vercel.app \
             --expected-sha 46e27f31ef618f31d45d33d7f841927ea5a564dd \
-            --wait-seconds 600 \
-            --interval-seconds 15
+            --wait-seconds 120 \
+            --interval-seconds 10
       - name: Run machine retrieval benchmark
         run: |
           mkdir -p artifacts
