@@ -16,6 +16,7 @@
     "data/services/*.json",
     "data/verification-registry.json",
     "data/verification/standards-interpretation-gates.json",
+    "data/verification/bounded-currentness-closure-worker-b.json",
     "data/relation-verification-queue.json",
     "data/shared/standards/manifest.json",
     "data/shared/standards-interpretation/remaining-source-register.json",
@@ -814,11 +815,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#homevisit::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -1414,11 +1416,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#homebath::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -2008,11 +2011,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#homenursing::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -2606,11 +2610,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#homerehab::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -3204,11 +3209,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#homecaremanagement::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -4415,11 +4421,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#shortstay-life::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -7958,11 +7965,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#shortstay-medical::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -8546,11 +8554,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#specific-facility::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -9134,11 +9143,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#welfare-equipment-rental::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -9722,11 +9732,12 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#specific-welfare-equipment-sale::governing_standards_ordinance",
               "data/verification/existing-ordinance37-service-slices-independent-audit.json"
             ]
           },
@@ -23055,8 +23066,9 @@
           "PASS": 39
         },
         "currentness": {
-          "NOT_ESTABLISHED": 37,
-          "PARTIAL": 2
+          "NOT_ESTABLISHED": 27,
+          "PARTIAL": 2,
+          "PASS": 10
         },
         "relation_verification": {
           "NOT_ESTABLISHED": 39
@@ -23364,11 +23376,6 @@
       },
       {
         "service_id": "homevisit",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homevisit",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
@@ -23409,11 +23416,6 @@
       },
       {
         "service_id": "homebath",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homebath",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
@@ -23450,11 +23452,6 @@
       {
         "service_id": "homenursing",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homenursing",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23495,11 +23492,6 @@
       {
         "service_id": "homerehab",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23540,11 +23532,6 @@
       {
         "service_id": "homecaremanagement",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23630,11 +23617,6 @@
       {
         "service_id": "shortstay-life",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23900,11 +23882,6 @@
       {
         "service_id": "shortstay-medical",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-medical",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23945,11 +23922,6 @@
       {
         "service_id": "specific-facility",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23990,11 +23962,6 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24035,11 +24002,6 @@
       {
         "service_id": "specific-welfare-equipment-sale",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "specific-welfare-equipment-sale",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
