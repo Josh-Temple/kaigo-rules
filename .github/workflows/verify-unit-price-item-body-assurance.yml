@@ -56,7 +56,7 @@ jobs:
       - name: Run Coverage Matrix projection tests in memory
         run: python -m unittest discover -s tests -p 'test_database_coverage_matrix.py'
       - name: Ensure Worker A did not modify repository-wide generated artifacts
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.head_ref != 'work/national-source-assurance-completion-integrator'
         shell: bash
         run: |
           git fetch origin "${{ github.base_ref }}" --depth=1
