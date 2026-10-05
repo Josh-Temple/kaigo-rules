@@ -128,6 +128,8 @@ def validate_payload(artifact: dict, matrix: dict, root: Path = ROOT) -> list[st
 
     actual_classes: dict[str, int] = {key: 0 for key in ALLOWED_EVIDENCE_CLASSES}
     snapshot_checks = 0
+    groups = artifact.get("source_document_groups", [])
+    group_by_doc = {group.get("document_id"): group for group in groups}
 
     for service_id, row in by_id.items():
         evidence_class = row.get("evidence_class")
@@ -191,8 +193,12 @@ def validate_payload(artifact: dict, matrix: dict, root: Path = ROOT) -> list[st
             errors.append(f"{service_id}: route promoted")
 
         fps = row.get("pinned_versioned_source_body_evidence", [])
-        if not fps:
-            errors.append(f"{service_id}: no pinned body fingerprint")
+        document_id = row.get("canonical_notice_identity", {}).get("document_id")
+        group_fps = group_by_doc.get(document_id, {}).get("pinned_snapshot_evidence", [])
+        if not fps and not group_fps:
+            errors.append(
+                f"{service_id}: neither service-linked nor source-document pinned fingerprint is available"
+            )
         for fp in fps:
             snapshot_checks += 1
             relative = fp.get("snapshot_path")
@@ -220,7 +226,6 @@ def validate_payload(artifact: dict, matrix: dict, root: Path = ROOT) -> list[st
     if snapshot_checks == 0:
         errors.append("no source fingerprints were checked")
 
-    groups = artifact.get("source_document_groups", [])
     group_services: list[str] = []
     for group in groups:
         group_services.extend(group.get("service_ids", []))
@@ -231,6 +236,25 @@ def validate_payload(artifact: dict, matrix: dict, root: Path = ROOT) -> list[st
             errors.append(f"{group.get('document_id')}: source group overclaims integrated current text")
         if amendment.get("proves_currentness") is not False:
             errors.append(f"{group.get('document_id')}: source group overclaims currentness")
+        for fp in group.get("pinned_snapshot_evidence", []):
+            snapshot_checks += 1
+            relative = fp.get("snapshot_path")
+            recorded = fp.get("git_blob_sha")
+            if not relative or not recorded:
+                errors.append(f"{group.get('document_id')}: incomplete source-document fingerprint")
+                continue
+            path = root / relative
+            if not path.exists():
+                errors.append(f"{group.get('document_id')}: source-document snapshot missing: {relative}")
+                continue
+            actual = git_blob_sha(path)
+            if actual != recorded:
+                errors.append(
+                    f"{group.get('document_id')}: source-document fingerprint mismatch for {relative}: "
+                    f"recorded={recorded} actual={actual}"
+                )
+            if fp.get("proves_currentness") is not False:
+                errors.append(f"{group.get('document_id')}: source-document fingerprint overclaims currentness")
     if set(group_services) != expected or len(group_services) != len(expected):
         errors.append("source document groups do not cover each residual service exactly once")
 
