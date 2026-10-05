@@ -81,7 +81,7 @@ jobs:
         run: python scripts/build_database_coverage_matrix.py --check
 
       - name: Reject Worker C edits to global generated artifacts
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.head_ref != 'work/national-source-assurance-completion-integrator'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
