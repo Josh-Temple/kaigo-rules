@@ -255,8 +255,10 @@ def build_cell(
             raw_ingestion = [str(delegated_applicability["ingestion_state"])]
 
     fee_guidance_applicability = None
+    fee_guidance_item_body_projection = None
     if family["id"] == "fee_calculation_guidance":
         fee_guidance_applicability = shared_context["fee_guidance_applicability"].get(service_id)
+        fee_guidance_item_body_projection = shared_context["fee_guidance_item_body_projection"].get(service_id)
 
     other_national_applicability = None
     if family["id"] == "other_national_manuals_forms":
@@ -467,7 +469,27 @@ def build_cell(
         if current_receipt:
             currentness_evidence.append(str(current_receipt))
 
+    if family["id"] == "fee_calculation_guidance" and fee_guidance_item_body_projection:
+        projected_item_state = str(
+            fee_guidance_item_body_projection.get("service_level_item_body")
+            or "NOT_ESTABLISHED"
+        )
+        content_raw = [projected_item_state]
+        item_body_evidence = [
+            f"data/shared/fee-guidance/item-body-assurance.json#{service_id}"
+        ]
+        if service_id == "dayservice":
+            item_body_evidence.append("data/fee-guidance-independent-verification.json")
+        elif service_id == "dayrehab":
+            item_body_evidence.append("data/dayrehab-fee-guidance-independent-audit.json")
+
     item_state = normalize_verification(content_raw[0] if len(content_raw) == 1 else (" | ".join(content_raw) if content_raw else None))
+    if (
+        family["id"] == "fee_calculation_guidance"
+        and fee_guidance_item_body_projection
+        and fee_guidance_item_body_projection.get("service_level_item_body") == "NOT_APPLICABLE"
+    ):
+        item_state = "NOT_APPLICABLE"
     current_state = normalize_currentness(currentness_raw[0] if len(currentness_raw) == 1 else (" | ".join(currentness_raw) if currentness_raw else None))
 
     ingestion_human = [
@@ -652,6 +674,11 @@ def build() -> dict:
         load(str(fee_guidance_manifest.get("service_applicability")))
         if fee_guidance_manifest else {"services": []}
     )
+    fee_guidance_item_body_assurance_data = (
+        load(str(fee_guidance_manifest.get("item_body_assurance")))
+        if fee_guidance_manifest and fee_guidance_manifest.get("item_body_assurance")
+        else {"service_projections": []}
+    )
     other_national_manifest_path = ROOT / "data/shared/other-national-materials/manifest.json"
     other_national_manifest = (
         load("data/shared/other-national-materials/manifest.json")
@@ -715,6 +742,10 @@ def build() -> dict:
         "fee_guidance_applicability": {
             row["service_id"]: row
             for row in fee_guidance_applicability_data.get("services", [])
+        },
+        "fee_guidance_item_body_projection": {
+            row["service_id"]: row
+            for row in fee_guidance_item_body_assurance_data.get("service_projections", [])
         },
         "other_national_manifest": other_national_manifest,
         "other_national_service_map": other_national_service_map,
@@ -847,6 +878,7 @@ def build() -> dict:
             "data/shared/remuneration-delegated/service-applicability-adjudications.json",
             "data/shared/fee-guidance/manifest.json",
             "data/shared/fee-guidance/service-applicability.json",
+            "data/shared/fee-guidance/item-body-assurance.json",
             "data/shared/other-national-materials/manifest.json",
             "data/shared/other-national-materials/national-corpus.json",
             "data/shared/other-national-materials/service-applicability.json",

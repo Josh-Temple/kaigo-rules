@@ -1,0 +1,38 @@
+name: Verify Fee Guidance item-body assurance
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/shared/fee-guidance/**"
+      - "scripts/validate_fee_guidance_item_body_assurance.py"
+      - "scripts/build_database_coverage_matrix.py"
+      - "tests/test_fee_guidance_item_body_assurance.py"
+      - "tests/test_shared_fee_guidance.py"
+      - "package.json"
+      - ".github/workflows/verify-fee-guidance-item-body-assurance.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Validate Fee Guidance assurance inventory
+        run: python scripts/validate_fee_guidance_item_body_assurance.py
+      - name: Run focused Fee Guidance tests
+        run: python -m unittest tests.test_fee_guidance_item_body_assurance tests.test_shared_fee_guidance
+      - name: Confirm Worker D did not modify global generated artifacts
+        run: |
+          git fetch origin main
+          changed="$(git diff --name-only origin/main...HEAD --             data/database-coverage-matrix.generated.json             docs/database-coverage-summary.generated.md             data/services/catalog.generated.json             data/verification-registry.json)"
+          test -z "$changed" || { echo "$changed"; exit 1; }
