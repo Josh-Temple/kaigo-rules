@@ -1,0 +1,74 @@
+name: Verify unit-price item-body assurance
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/unit-price-item-body-assurance.json"
+      - "data/unit-price-service-multipliers.json"
+      - "data/unit-price-dayservice-meta.json"
+      - "data/unit-price-region-assignments-meta.json"
+      - "scripts/verify_unit_price_service_profiles.py"
+      - "scripts/verify_unit_price_independent.py"
+      - "scripts/validate_unit_price_item_body_assurance.py"
+      - "scripts/validate_unit_price_service_multipliers.py"
+      - "scripts/build_database_coverage_matrix.py"
+      - "tests/test_unit_price_item_body_assurance.py"
+      - "tests/test_database_coverage_matrix.py"
+      - ".github/workflows/verify-unit-price-item-body-assurance.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/unit-price-item-body-assurance.json"
+      - "data/unit-price-service-multipliers.json"
+      - "data/unit-price-dayservice-meta.json"
+      - "data/unit-price-region-assignments-meta.json"
+      - "scripts/verify_unit_price_service_profiles.py"
+      - "scripts/validate_unit_price_item_body_assurance.py"
+      - "scripts/build_database_coverage_matrix.py"
+      - "tests/test_unit_price_item_body_assurance.py"
+      - "tests/test_database_coverage_matrix.py"
+      - ".github/workflows/verify-unit-price-item-body-assurance.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Reparse all unit-price service profiles from official MHLW source
+        run: python scripts/verify_unit_price_service_profiles.py --report unit-price-service-profile-verification.json
+      - name: Validate canonical item-body assurance
+        run: python scripts/validate_unit_price_item_body_assurance.py
+      - name: Validate service multiplier structure
+        run: python scripts/validate_unit_price_service_multipliers.py
+      - name: Preserve existing independent audit contract
+        run: python scripts/validate_unit_price_independent_audit.py
+      - name: Run item-body assurance fail-closed tests
+        run: python -m unittest discover -s tests -p 'test_unit_price_item_body_assurance.py'
+      - name: Run Coverage Matrix projection tests in memory
+        run: python -m unittest discover -s tests -p 'test_database_coverage_matrix.py'
+      - name: Ensure Worker A did not modify repository-wide generated artifacts
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          if ! git diff --quiet "origin/${{ github.base_ref }}...HEAD" --             data/services/catalog.generated.json             data/database-coverage-matrix.generated.json             docs/database-coverage-summary.generated.md; then
+            echo "Worker A must not update repository-wide generated artifacts."
+            git diff --name-only "origin/${{ github.base_ref }}...HEAD" --               data/services/catalog.generated.json               data/database-coverage-matrix.generated.json               docs/database-coverage-summary.generated.md
+            exit 1
+          fi
+      - name: Upload verification report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: unit-price-item-body-verification
+          path: unit-price-service-profile-verification.json
+          if-no-files-found: warn
