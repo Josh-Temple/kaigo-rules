@@ -1,0 +1,31 @@
+name: Verify Standards Interpretation residual item-body assurance
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/shared/standards-interpretation/manifest.json"
+      - "data/shared/standards-interpretation/remaining-source-register.json"
+      - "data/shared/standards-interpretation/source-snapshots/**"
+      - "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json"
+      - "scripts/validate_standards_interpretation_residual_item_body.py"
+      - "tests/test_standards_interpretation_residual_item_body.py"
+      - ".github/workflows/verify-standards-interpretation-residual-item-body.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Validate fail-closed residual assurance
+        run: python scripts/validate_standards_interpretation_residual_item_body.py
+      - name: Run residual assurance tests
+        run: python -m unittest tests.test_standards_interpretation_residual_item_body
