@@ -3,8 +3,8 @@
   "source_family": "other_national_manuals_forms",
   "corpus_id": "other-national-materials-national",
   "verification_kind": "PRIMARY_SOURCE_BODY_ASSURANCE_WITH_SEPARATE_SERVICE_PROJECTION",
-  "verified_at": "2026-10-05",
-  "base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd",
+  "verified_at": "2026-10-06",
+  "base_main_sha": "e3a6c3f038293d962562429e5056f3e36c603191",
   "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
   "service_applicability": "data/shared/other-national-materials/service-applicability.json",
   "source_verifications": [
@@ -70,20 +70,32 @@
     },
     {
       "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
-      "result": "NOT_ESTABLISHED",
-      "coverage_kind": "APPLICABILITY_TABLE_EVIDENCE_EXISTS_BUT_BODY_ASSURANCE_NOT_REPERFORMED",
-      "verified_canonical_item_ids": [],
-      "canonical_body_fingerprint_sha256": null,
+      "result": "PARTIAL",
+      "coverage_kind": "VERIFIED_REVISION_HISTORY_AND_SECTION_1_4_SERVICE_TABLE_ONLY",
+      "verified_canonical_item_ids": [
+        "other-national.financial-db.v1-20.revision-history",
+        "other-national.financial-db.v1-20.section-1-4.scope",
+        "other-national.financial-db.v1-20.section-1-4.mapped-rows",
+        "other-national.financial-db.v1-20.section-1-4.exclusion-rows"
+      ],
+      "canonical_body_fingerprint_sha256": "19bab81bc59a5608aa1a94de63a4217b2cff21781fcf6a01fc177c4cdc5d4e36",
       "source_bytes_sha256": null,
-      "provenance_mode": "EXISTING_PRIMARY_SOURCE_APPLICABILITY_LOCATOR_ONLY",
-      "remaining_body_gap": "This worker did not independently compare the full 89-page manual body; existing applicability evidence is retained without converting it into item-body assurance.",
-      "currentness_claimed": false
+      "provenance_mode": "EXACT_OFFICIAL_URL_PAGE_LOCATORS_PLUS_CANONICAL_BODY_FINGERPRINT",
+      "remaining_body_gap": "Revision history and section 1.4 were directly verified; the remaining operational chapters have not been item-by-item body-compared.",
+      "currentness_claimed": false,
+      "exact_official_artifacts": [
+        "https://www.mhlw.go.jp/content/12300000/001470543.pdf#page=2",
+        "https://www.mhlw.go.jp/content/12300000/001470543.pdf#page=9",
+        "https://www.mhlw.go.jp/content/12300000/001470543.pdf#page=10",
+        "https://www.mhlw.go.jp/content/12300000/001470543.pdf#page=11",
+        "https://www.mhlw.go.jp/content/12300000/001470543.pdf#page=12"
+      ]
     }
   ],
   "source_summary": {
     "PASS": 1,
-    "PARTIAL": 1,
-    "NOT_ESTABLISHED": 2
+    "PARTIAL": 2,
+    "NOT_ESTABLISHED": 1
   },
   "service_projections": [
     {
@@ -96,7 +108,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -115,7 +127,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -134,7 +146,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -153,7 +165,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -172,7 +184,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -210,7 +222,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -229,7 +241,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -248,7 +260,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -267,7 +279,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -286,7 +298,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -305,7 +317,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -344,7 +356,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -366,7 +378,7 @@
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
         "mhlw-accident-report-vol1332": "PASS",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -385,7 +397,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -405,7 +417,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -424,7 +436,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -443,7 +455,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -464,7 +476,7 @@
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
         "mhlw-accident-report-vol1332": "PASS",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -486,7 +498,7 @@
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
         "mhlw-accident-report-vol1332": "PASS",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -505,7 +517,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -524,7 +536,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -545,7 +557,7 @@
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
         "mhlw-accident-report-vol1332": "PASS",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -566,7 +578,7 @@
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
         "mhlw-accident-report-vol1332": "PASS",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -587,7 +599,7 @@
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
         "mhlw-accident-report-vol1332": "PASS",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -606,7 +618,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -625,7 +637,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -644,7 +656,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -682,7 +694,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -701,7 +713,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -721,7 +733,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -743,7 +755,7 @@
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
         "mhlw-accident-report-vol1332": "PASS",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -762,7 +774,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -782,7 +794,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -801,7 +813,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -820,7 +832,7 @@
       "explicitly_not_applicable_source_ids": [],
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
@@ -841,7 +853,7 @@
       "evaluated_source_states": {
         "mhlw-application-forms": "PARTIAL",
         "mhlw-accident-report-vol1332": "PASS",
-        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+        "mhlw-care-business-financial-db-manual-v1-20": "PARTIAL"
       },
       "service_level_item_body": "PARTIAL",
       "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
