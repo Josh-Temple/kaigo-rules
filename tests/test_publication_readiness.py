@@ -15,6 +15,7 @@ class PublicationReadinessTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.matrix = json.loads((ROOT / "data/database-coverage-matrix.generated.json").read_text(encoding="utf-8"))
+        cls.scoping = json.loads((ROOT / "data/publication-requirement-scoping.json").read_text(encoding="utf-8"))
         cls.artifact = MODULE.build_artifact()
 
     def test_covers_every_service_family_cell_once(self):
@@ -30,21 +31,46 @@ class PublicationReadinessTests(unittest.TestCase):
         self.assertFalse(policy["route_auto_enable_allowed"])
         self.assertFalse(policy["readiness_implies_publication"])
 
-    def test_unresolved_currentness_never_becomes_ready(self):
+    def test_ready_cells_have_at_least_one_ready_unit(self):
         for row in self.artifact["cells"]:
-            if row["axis_states"]["currentness"] not in MODULE.CURRENTNESS_PASS and row["readiness"] != "NOT_APPLICABLE":
-                self.assertIn("BLOCKED_CURRENTNESS", row["blocking_reasons"])
-                self.assertNotEqual(row["readiness"], "READY_FOR_PUBLICATION_REVIEW")
-
-    def test_human_review_is_a_separate_blocker(self):
-        for row in self.artifact["cells"]:
-            if row["axis_states"]["human_review"] == "NOT_REVIEWED" and row["readiness"] != "NOT_APPLICABLE":
-                self.assertIn("BLOCKED_HUMAN_REVIEW", row["blocking_reasons"])
-
-    def test_not_applicable_prevents_false_blocker_promotion(self):
-        for row in self.artifact["cells"]:
-            if row["readiness"] == "NOT_APPLICABLE":
+            if row["readiness"] == "READY_FOR_PUBLICATION_REVIEW":
+                self.assertTrue(row["ready_publication_units"])
                 self.assertEqual(row["blocking_reasons"], [])
+
+    def test_not_required_does_not_promote_canonical_relation_or_review(self):
+        matrix = {
+            (service["service_id"], cell["source_family"]): cell
+            for service in self.matrix["services"]
+            for cell in service["source_families"]
+        }
+        for row in self.artifact["cells"]:
+            cell = matrix[(row["service_id"], row["source_family"])]
+            self.assertEqual(
+                row["axis_states"]["relation_verification"],
+                cell["relation_verification"]["state"],
+            )
+            self.assertEqual(
+                row["axis_states"]["human_review"],
+                cell["human_review"]["state"],
+            )
+
+    def test_unresolved_currentness_never_has_ready_units(self):
+        for row in self.artifact["cells"]:
+            if row["axis_states"]["currentness"] != "PASS" and row["readiness"] != "NOT_APPLICABLE":
+                self.assertFalse(row["ready_publication_units"])
+
+    def test_field_allowlist_is_derived_only_from_ready_units(self):
+        defs = {
+            row["unit_type"]: set(row["field_allowlist"])
+            for row in self.scoping["publication_unit_definitions"]
+        }
+        for row in self.artifact["cells"]:
+            expected = sorted({
+                field
+                for unit_type in row["ready_publication_units"]
+                for field in defs[unit_type]
+            })
+            self.assertEqual(row["publication_field_allowlist"], expected)
 
 if __name__ == "__main__":
     unittest.main()
