@@ -25,6 +25,7 @@ class RelationHumanReviewHardeningTests(unittest.TestCase):
         self.assertEqual(result["human_only_relations"], 41)
         self.assertEqual(result["semantic_text_relations"], 17)
         self.assertEqual(result["machine_safe_closures"], 0)
+        self.assertEqual(result["evidence_pack_ready_items"], 58)
         self.assertEqual(result["review_state"], "NOT_REVIEWED")
         self.assertEqual(
             result["semantic_text_source_pointer_status_counts"],
@@ -48,6 +49,9 @@ class RelationHumanReviewHardeningTests(unittest.TestCase):
             self.assertTrue(item["ai_proposal"].startswith("KEEP_OPEN."))
             self.assertTrue(item["human_judgment_question"])
             self.assertTrue(item["competing_interpretation_or_ambiguity"])
+            self.assertTrue(item["source_file"])
+            self.assertIsNone(item["reviewed_by"])
+            self.assertIsNone(item["reviewer_rationale"])
             self.assertIsNone(item["reviewer_name"])
             self.assertIsNone(item["reviewer_decision"])
             self.assertIsNone(item["reviewer_note"])
