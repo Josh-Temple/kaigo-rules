@@ -517,7 +517,7 @@ def build() -> dict:
     items = []
     for item in packet.get("items", []):
         if item.get("classification") in EXCLUDED_CLASSIFICATIONS:
-            raise ValueError("Worker B-owned freshness relation leaked into Worker D evidence pack")
+            raise ValueError("freshness-sensitive relation leaked into human-review evidence pack")
         identity = item["identity"]
         source = evidence(
             identity["from"],
