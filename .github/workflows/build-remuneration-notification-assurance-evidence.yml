@@ -1,0 +1,28 @@
+name: Build remuneration notification assurance evidence
+
+on:
+  pull_request:
+    paths:
+      - "scripts/build_remuneration_notification_assurance.py"
+      - "data/services/**"
+      - ".github/workflows/build-remuneration-notification-assurance-evidence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build primary-source fingerprints
+        run: python scripts/build_remuneration_notification_assurance.py --observed-date 2026-10-05 --output-dir /tmp/remuneration-notification-assurance
+      - uses: actions/upload-artifact@v4
+        with:
+          name: remuneration-notification-assurance-candidate
+          path: /tmp/remuneration-notification-assurance/*.json
+          if-no-files-found: error
