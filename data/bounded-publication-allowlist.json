@@ -1,0 +1,58 @@
+{
+  "format_version": 1,
+  "generated_by": null,
+  "role": "Bounded Publication / Explicit Allowlist / Route Safety Worker",
+  "source_readiness": {
+    "path": "data/publication-readiness.generated.json",
+    "git_blob_sha": "9b2933ebd8751870709774effd3fc624e2233ee2",
+    "source_main_sha": "3865f3899f47ad5c3173bb78c2b78cf3a371e643",
+    "expected_ready_candidate_count": 0
+  },
+  "policy": {
+    "explicit_publication_allowlist_required": true,
+    "explicit_route_allowlist_required": true,
+    "max_publication_cells": 10,
+    "publication_does_not_enable_route": true,
+    "blocked_cells_cannot_be_published": true,
+    "allowlist_must_be_subset_of_ready_candidates": true,
+    "unverified_relation_assertions_forbidden": true,
+    "unreviewed_explanatory_text_forbidden": true,
+    "search_and_machine_retrieval_must_respect_publication_allowlist": true,
+    "preventive_services_group_with_non_preventive_counterpart": true,
+    "preventive_support_is_standalone": true,
+    "existing_public_surfaces_must_not_be_removed_by_zero_candidate_run": true
+  },
+  "safe_publication_fields": [
+    "source_text",
+    "item_body",
+    "source_metadata",
+    "source_locator",
+    "currentness_statement",
+    "service_applicability_statement"
+  ],
+  "forbidden_publication_fields": [
+    "cross_layer_relation_assertion",
+    "unverified_relation_assertion",
+    "review_dependent_explanatory_text",
+    "relation_rank_feature",
+    "review_dependent_search_term"
+  ],
+  "summary": {
+    "ready_candidates_at_selection": 0,
+    "published_cells_added": 0,
+    "routes_added": 0,
+    "existing_public_surfaces_changed": false,
+    "decision": "NO_PUBLICATION_CHANGE",
+    "reason": "The canonical readiness artifact contains zero READY_FOR_PUBLICATION_REVIEW cells. The current wave Worker C publication-unit readiness artifact is not yet present on main, so Worker D must fail closed rather than infer publishable cells.",
+    "blocker_counts_at_selection": {
+      "BLOCKED_CURRENTNESS": 343,
+      "BLOCKED_HUMAN_REVIEW": 343,
+      "BLOCKED_INGESTION": 74,
+      "BLOCKED_ITEM_BODY": 138,
+      "BLOCKED_RELATION": 343
+    }
+  },
+  "publication_cell_allowlist": [],
+  "route_allowlist": [],
+  "field_allowlist_by_cell": {}
+}
