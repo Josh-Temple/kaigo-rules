@@ -60,7 +60,11 @@
           "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display.md",
           "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display-page2.md"
         ],
-        "current_integrated_text": false
+        "current_integrated_text": false,
+        "direct_body_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+        ]
       },
       {
         "document_id": "rouki33",
@@ -68,7 +72,10 @@
         "repository_snapshots": [
           "data/shared/standards-interpretation/source-snapshots/rouki33-original-direct-notice.md"
         ],
-        "current_integrated_text": false
+        "current_integrated_text": false,
+        "direct_body_urls": [
+          "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
+        ]
       },
       {
         "document_id": "rouki43",
@@ -76,7 +83,10 @@
         "repository_snapshots": [
           "data/shared/standards-interpretation/source-snapshots/rouki43-mhlw-direct-display.md"
         ],
-        "current_integrated_text": false
+        "current_integrated_text": false,
+        "direct_body_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4387&dataType=1"
+        ]
       },
       {
         "document_id": "rouki44",
@@ -84,7 +94,10 @@
         "repository_snapshots": [
           "data/shared/standards-interpretation/source-snapshots/rouki44-mhlw-direct-display.md"
         ],
-        "current_integrated_text": false
+        "current_integrated_text": false,
+        "direct_body_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4388&dataType=1"
+        ]
       },
       {
         "document_id": "kaigoiryouin-roui",
@@ -92,7 +105,10 @@
         "repository_snapshots": [
           "data/shared/standards-interpretation/source-snapshots/care-medical-institution-original-notice.md"
         ],
-        "current_integrated_text": false
+        "current_integrated_text": false,
+        "direct_body_urls": [
+          "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf"
+        ]
       }
     ],
     "note": "The MHLW R6 files are amendment comparison/extract material and include omitted ranges; repository direct-body snapshots are version-bounded. Neither evidence class establishes a 2026 current integrated notice body."
@@ -151,6 +167,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000202201.pdf"
       ]
     },
     {
@@ -207,6 +226,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -263,6 +285,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -319,6 +344,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -375,6 +403,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -430,6 +461,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4388&dataType=1"
       ]
     },
     {
@@ -485,6 +519,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4387&dataType=1"
       ]
     },
     {
@@ -541,6 +578,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -588,6 +628,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -644,6 +688,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -700,6 +747,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -748,6 +798,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -795,6 +849,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -842,6 +900,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -889,6 +951,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -937,6 +1003,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -985,6 +1055,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -1041,6 +1115,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -1088,6 +1165,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -1135,6 +1216,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -1194,6 +1279,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -1250,6 +1339,9 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/topics/kaigo/hoken/seido/0604/dl/20.pdf"
       ]
     },
     {
@@ -1309,6 +1401,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -1356,6 +1452,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -1415,6 +1515,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     },
     {
@@ -1474,6 +1578,10 @@
         "data/verification/standards-interpretation-item-body/core-item-body-assurance-expansion-worker-a.json",
         "data/shared/standards-interpretation/remaining-source-register.json",
         "data/shared/standards-interpretation/manifest.json"
+      ],
+      "official_direct_body_urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
       ]
     }
   ],
