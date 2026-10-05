@@ -3,7 +3,7 @@
   "corpus_id": "other-national-materials-national",
   "source_family": "other_national_manuals_forms",
   "scope_kind": "SHARED_NATIONAL_CORPUS",
-  "coverage_kind": "CANONICAL_SOURCE_REFERENCE_CORPUS_NO_BODY_DUPLICATION",
+  "coverage_kind": "CANONICAL_SHARED_CORPUS_WITH_SEPARATE_STRUCTURED_BODY_ASSURANCE_NO_SERVICE_DUPLICATION",
   "sources": [
     {
       "id": "other-national.shared.mhlw-application-forms",
@@ -14,11 +14,11 @@
       "official_url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
       "version_label": "厚生労働大臣が定める様式等（令和6年3月15日告示分）",
       "document_kind": "NATIONAL_STANDARD_FORMS_AND_APPLICATION_GUIDANCE",
-      "content_mode": "REFERENCE_ONLY",
+      "content_mode": "STRUCTURED_PARTIAL",
       "body_duplicated": false,
       "observation_receipt_id": "other-national.obs.mhlw-application-forms.2026-10-05",
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PARTIAL",
         "currentness": "PARTIAL",
         "service_applicability_verification": "PARTIAL",
         "service_relation_verification": "NOT_ESTABLISHED",
@@ -26,7 +26,12 @@
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
         "automatic_promotion_allowed": false
-      }
+      },
+      "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+      "canonical_body_item_ids": [
+        "other-national.application-forms.form1.page1.service-table",
+        "other-national.application-forms.form2.page1.service-table"
+      ]
     },
     {
       "id": "other-national.shared.mhlw-electronic-application-operator-manual-v2-50",
@@ -60,11 +65,11 @@
       "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
       "version_label": "Vol.1332 / 令和6年11月29日",
       "document_kind": "NATIONAL_REPORTING_FORM_AND_NOTICE",
-      "content_mode": "REFERENCE_ONLY",
+      "content_mode": "STRUCTURED_VERIFIED",
       "body_duplicated": false,
       "observation_receipt_id": "other-national.obs.mhlw-accident-report-vol1332.2026-10-05",
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "PARTIAL",
         "service_applicability_verification": "PARTIAL",
         "service_relation_verification": "NOT_ESTABLISHED",
@@ -72,7 +77,9 @@
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
         "automatic_promotion_allowed": false
-      }
+      },
+      "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+      "canonical_body_item_prefix": "other-national.accident-report.vol1332."
     },
     {
       "id": "other-national.shared.mhlw-care-business-financial-db-manual-v1-20",
@@ -99,7 +106,7 @@
     }
   ],
   "assurance": {
-    "item_body_verification": "NOT_ESTABLISHED",
+    "item_body_verification": "PARTIAL",
     "currentness": "PARTIAL",
     "service_applicability_verification": "PARTIAL",
     "service_relation_verification": "NOT_ESTABLISHED",
@@ -107,5 +114,6 @@
     "publication": "BLOCKED",
     "route_exposure": "BLOCKED",
     "automatic_promotion_allowed": false
-  }
+  },
+  "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json"
 }

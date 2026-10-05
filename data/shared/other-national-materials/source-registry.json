@@ -79,7 +79,10 @@
         "receipt_path": "data/shared/other-national-materials/source-observation-receipts.json",
         "source_bytes_sha256": null,
         "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
-      }
+      },
+      "inventory_category": "CANONICAL_NATIONWIDE_PRIMARY_MATERIAL",
+      "item_body_assurance_state": "PARTIAL",
+      "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json"
     },
     {
       "candidate_id": "mhlw-electronic-application-operator-manual",
@@ -110,7 +113,10 @@
         "receipt_path": "data/shared/other-national-materials/source-observation-receipts.json",
         "source_bytes_sha256": null,
         "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
-      }
+      },
+      "inventory_category": "IMPLEMENTATION_SUPPORT_MATERIAL",
+      "item_body_assurance_state": "NOT_ESTABLISHED",
+      "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json"
     },
     {
       "candidate_id": "mhlw-accident-report-format-vol1332",
@@ -150,7 +156,10 @@
         "receipt_path": "data/shared/other-national-materials/source-observation-receipts.json",
         "source_bytes_sha256": null,
         "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
-      }
+      },
+      "inventory_category": "SERVICE_SPECIFIC_NATIONWIDE_PRIMARY_MATERIAL",
+      "item_body_assurance_state": "PASS",
+      "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json"
     },
     {
       "candidate_id": "mhlw-care-business-financial-db-manual",
@@ -211,7 +220,10 @@
         "receipt_path": "data/shared/other-national-materials/source-observation-receipts.json",
         "source_bytes_sha256": null,
         "source_bytes_state": "NOT_CAPTURED_IN_THIS_WORKER"
-      }
+      },
+      "inventory_category": "IMPLEMENTATION_SUPPORT_MATERIAL",
+      "item_body_assurance_state": "NOT_ESTABLISHED",
+      "item_body_assurance": "data/shared/other-national-materials/item-body-assurance.json"
     },
     {
       "candidate_id": "mhlw-life-manual-guidance",
@@ -233,7 +245,8 @@
         "service_ids": []
       },
       "inclusion_reason": "Potential Other National material, but current manual identity and authority after the 2026 migration must be pinned before acceptance.",
-      "projection_ready": false
+      "projection_ready": false,
+      "inventory_category": "UNRESOLVED"
     },
     {
       "candidate_id": "mhlw-r8-fee-filing-forms",
@@ -255,7 +268,8 @@
         "service_ids": []
       },
       "inclusion_reason": "Do not duplicate: the material is part of fee-calculation filing guidance already represented by an existing source family.",
-      "projection_ready": false
+      "projection_ready": false,
+      "inventory_category": "DUPLICATE_REPRESENTATION_OF_EXISTING_CANONICAL_SOURCE"
     },
     {
       "candidate_id": "mhlw-r6-standards-annex-cooperating-medical-form",
@@ -277,7 +291,8 @@
         "service_ids": []
       },
       "inclusion_reason": "Do not duplicate a form that is structurally an annex to an existing standards-interpretation notice.",
-      "projection_ready": false
+      "projection_ready": false,
+      "inventory_category": "DUPLICATE_REPRESENTATION_OF_EXISTING_CANONICAL_SOURCE"
     },
     {
       "candidate_id": "mhlw-electronic-application-qa",
@@ -299,7 +314,8 @@
         "service_ids": []
       },
       "inclusion_reason": "Do not duplicate national Q&A in Other National materials.",
-      "projection_ready": false
+      "projection_ready": false,
+      "inventory_category": "DUPLICATE_REPRESENTATION_OF_EXISTING_CANONICAL_SOURCE"
     },
     {
       "candidate_id": "mhlw-care-insurance-latest-information-index",
@@ -321,11 +337,23 @@
         "service_ids": []
       },
       "inclusion_reason": "Use the index only for discovery; individual official documents must be identified and classified separately.",
-      "projection_ready": false
+      "projection_ready": false,
+      "inventory_category": "OFFICIAL_DISCOVERY_INDEX_OUT_OF_SCOPE"
     }
   ],
   "canonical_store": "data/shared/other-national-materials/national-corpus.json",
   "identity_map": "data/shared/other-national-materials/source-identity-map.json",
   "service_applicability": "data/shared/other-national-materials/service-applicability.json",
-  "observation_receipts": "data/shared/other-national-materials/source-observation-receipts.json"
+  "observation_receipts": "data/shared/other-national-materials/source-observation-receipts.json",
+  "inventory_category_values": [
+    "CANONICAL_NATIONWIDE_PRIMARY_MATERIAL",
+    "SERVICE_SPECIFIC_NATIONWIDE_PRIMARY_MATERIAL",
+    "IMPLEMENTATION_SUPPORT_MATERIAL",
+    "HISTORICAL_OR_SUPERSEDED",
+    "LOCAL_ONLY",
+    "SECONDARY_SOURCE",
+    "DUPLICATE_REPRESENTATION_OF_EXISTING_CANONICAL_SOURCE",
+    "UNRESOLVED",
+    "OFFICIAL_DISCOVERY_INDEX_OUT_OF_SCOPE"
+  ]
 }

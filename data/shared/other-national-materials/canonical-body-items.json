@@ -1,0 +1,360 @@
+{
+  "format_version": 1,
+  "source_family": "other_national_manuals_forms",
+  "corpus_id": "other-national-materials-national",
+  "base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd",
+  "verified_at": "2026-10-05",
+  "purpose": "Store only reproducible structured body slices directly checked against exact nationwide official primary-source documents. This is not a service-level projection and does not establish currentness.",
+  "sources": [
+    {
+      "canonical_source_id": "mhlw-application-forms",
+      "source_identity": "厚生労働大臣が定める指定申請様式等（令和6年3月15日告示分）",
+      "body_coverage_state": "PARTIAL",
+      "fingerprint_method": "SHA256_CANONICAL_JSON_PAYLOAD",
+      "canonical_body_fingerprint_sha256": "ea5ffb19eddeeefdce474e14ff03fc459f69ce894a6ab34045845c1db214c1dd",
+      "fingerprint_payload": {
+        "form1": [
+          "訪問介護",
+          "訪問入浴介護",
+          "訪問看護",
+          "訪問リハビリテーション",
+          "居宅療養管理指導",
+          "通所介護",
+          "通所リハビリテーション",
+          "短期入所生活介護",
+          "短期入所療養介護",
+          "特定施設入居者生活介護",
+          "福祉用具貸与",
+          "特定福祉用具販売",
+          "介護老人福祉施設",
+          "介護老人保健施設",
+          "介護医療院",
+          "介護予防訪問入浴介護",
+          "介護予防訪問看護",
+          "介護予防訪問リハビリテーション",
+          "介護予防居宅療養管理指導",
+          "介護予防通所リハビリテーション",
+          "介護予防短期入所生活介護",
+          "介護予防短期入所療養介護",
+          "介護予防特定施設入居者生活介護",
+          "介護予防福祉用具貸与",
+          "特定介護予防福祉用具販売"
+        ],
+        "form2": [
+          "夜間対応型訪問介護",
+          "認知症対応型通所介護",
+          "小規模多機能型居宅介護",
+          "認知症対応型共同生活介護",
+          "地域密着型特定施設入居者生活介護",
+          "地域密着型介護老人福祉施設入所者生活介護",
+          "定期巡回・随時対応型訪問介護看護",
+          "複合型サービス",
+          "地域密着型通所介護",
+          "居宅介護支援事業",
+          "介護予防支援事業",
+          "介護予防認知症対応型通所介護",
+          "介護予防小規模多機能型居宅介護",
+          "介護予防認知症対応型共同生活介護"
+        ]
+      },
+      "items": [
+        {
+          "canonical_item_id": "other-national.application-forms.form1.page1.service-table",
+          "item_kind": "SERVICE_APPLICABILITY_TABLE_SLICE",
+          "document_title": "別紙様式第一号（一） 指定（許可）申請書",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001232205.pdf",
+          "pdf_page": 1,
+          "locator": "page 1, 同一所在地において行う事業等の種類 / 様式 column",
+          "service_names": [
+            "訪問介護",
+            "訪問入浴介護",
+            "訪問看護",
+            "訪問リハビリテーション",
+            "居宅療養管理指導",
+            "通所介護",
+            "通所リハビリテーション",
+            "短期入所生活介護",
+            "短期入所療養介護",
+            "特定施設入居者生活介護",
+            "福祉用具貸与",
+            "特定福祉用具販売",
+            "介護老人福祉施設",
+            "介護老人保健施設",
+            "介護医療院",
+            "介護予防訪問入浴介護",
+            "介護予防訪問看護",
+            "介護予防訪問リハビリテーション",
+            "介護予防居宅療養管理指導",
+            "介護予防通所リハビリテーション",
+            "介護予防短期入所生活介護",
+            "介護予防短期入所療養介護",
+            "介護予防特定施設入居者生活介護",
+            "介護予防福祉用具貸与",
+            "特定介護予防福祉用具販売"
+          ]
+        },
+        {
+          "canonical_item_id": "other-national.application-forms.form2.page1.service-table",
+          "item_kind": "SERVICE_APPLICABILITY_TABLE_SLICE",
+          "document_title": "別紙様式第二号（一） 指定申請書",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001232239.pdf",
+          "pdf_page": 1,
+          "locator": "page 1, 同一所在地において行う事業等の種類 / 様式 column",
+          "service_names": [
+            "夜間対応型訪問介護",
+            "認知症対応型通所介護",
+            "小規模多機能型居宅介護",
+            "認知症対応型共同生活介護",
+            "地域密着型特定施設入居者生活介護",
+            "地域密着型介護老人福祉施設入所者生活介護",
+            "定期巡回・随時対応型訪問介護看護",
+            "複合型サービス",
+            "地域密着型通所介護",
+            "居宅介護支援事業",
+            "介護予防支援事業",
+            "介護予防認知症対応型通所介護",
+            "介護予防小規模多機能型居宅介護",
+            "介護予防認知症対応型共同生活介護"
+          ]
+        }
+      ],
+      "unresolved_body_scope": [
+        "Remaining pages and service-specific attachment forms in the four-document standard-form set are not claimed as body-verified by this worker.",
+        "The service table slices establish applicability evidence but do not establish complete form-body verification."
+      ]
+    },
+    {
+      "canonical_source_id": "mhlw-accident-report-vol1332",
+      "source_identity": "介護保険最新情報Vol.1332 / 老高発1129第1号・老認発1129第1号・老老発1129第1号 / 2024-11-29",
+      "body_coverage_state": "PASS",
+      "fingerprint_method": "SHA256_CANONICAL_JSON_PAYLOAD",
+      "canonical_body_fingerprint_sha256": "01e09a636eb403e1e1f6e4128b16e1160bb1ce8aaa592c9f3c55bf6a4c7716a5",
+      "fingerprint_payload": [
+        {
+          "id": "supersession",
+          "summary": "2024-11-29 notice abolishes the 2021-03-19 predecessor notice on the same date.",
+          "page": 2
+        },
+        {
+          "id": "purpose",
+          "summary": "Standardizes accident reporting to support collection, analysis, reuse, and electronic reporting.",
+          "page": 3
+        },
+        {
+          "id": "reportable_accidents",
+          "summary": "As a rule, report deaths and accidents requiring medical diagnosis with treatment; other accidents follow local handling.",
+          "page": 3
+        },
+        {
+          "id": "form_use",
+          "summary": "Use the attached standard form where possible and include its items even when a local form is used.",
+          "page": 3
+        },
+        {
+          "id": "report_method",
+          "summary": "As a rule, reporting is by electromagnetic means such as email.",
+          "page": 3
+        },
+        {
+          "id": "report_deadline",
+          "summary": "Initial report should cover at least form items 1-6 and be submitted promptly, with five days as the latest guide.",
+          "page": 3
+        },
+        {
+          "id": "target_services",
+          "summary": "The form targets care-insurance facilities, dementia group homes including preventive, specific facilities including community/preventive, and listed elderly housing/facility types; other home/community services are encouraged to use it where possible.",
+          "page": 4
+        },
+        {
+          "id": "form.1",
+          "summary": "Accident status / severity and death date.",
+          "page": 5
+        },
+        {
+          "id": "form.2",
+          "summary": "Provider/facility overview including service type and provider number.",
+          "page": 5
+        },
+        {
+          "id": "form.3",
+          "summary": "Person information and care/cognitive status.",
+          "page": 5
+        },
+        {
+          "id": "form.4",
+          "summary": "Accident overview: time, place, type, details, special notes.",
+          "page": 5
+        },
+        {
+          "id": "form.5",
+          "summary": "Response at occurrence: response, consultation, diagnosis and treatment outline.",
+          "page": 5
+        },
+        {
+          "id": "form.6",
+          "summary": "Post-accident status, family reports, contacted organizations, follow-up plans.",
+          "page": 6
+        },
+        {
+          "id": "form.7",
+          "summary": "Cause analysis.",
+          "page": 6
+        },
+        {
+          "id": "form.8",
+          "summary": "Recurrence-prevention measures and evaluation.",
+          "page": 6
+        },
+        {
+          "id": "form.9",
+          "summary": "Other notable matters.",
+          "page": 6
+        }
+      ],
+      "document": {
+        "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+        "pdf_page_count": 6
+      },
+      "items": [
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.supersession",
+          "item_kind": "NOTICE_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 2,
+          "locator": "supersession",
+          "structured_summary": "2024-11-29 notice abolishes the 2021-03-19 predecessor notice on the same date."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.purpose",
+          "item_kind": "NOTICE_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 3,
+          "locator": "purpose",
+          "structured_summary": "Standardizes accident reporting to support collection, analysis, reuse, and electronic reporting."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.reportable_accidents",
+          "item_kind": "NOTICE_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 3,
+          "locator": "reportable_accidents",
+          "structured_summary": "As a rule, report deaths and accidents requiring medical diagnosis with treatment; other accidents follow local handling."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form_use",
+          "item_kind": "NOTICE_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 3,
+          "locator": "form_use",
+          "structured_summary": "Use the attached standard form where possible and include its items even when a local form is used."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.report_method",
+          "item_kind": "NOTICE_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 3,
+          "locator": "report_method",
+          "structured_summary": "As a rule, reporting is by electromagnetic means such as email."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.report_deadline",
+          "item_kind": "NOTICE_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 3,
+          "locator": "report_deadline",
+          "structured_summary": "Initial report should cover at least form items 1-6 and be submitted promptly, with five days as the latest guide."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.target_services",
+          "item_kind": "NOTICE_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 4,
+          "locator": "target_services",
+          "structured_summary": "The form targets care-insurance facilities, dementia group homes including preventive, specific facilities including community/preventive, and listed elderly housing/facility types; other home/community services are encouraged to use it where possible."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.1",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 5,
+          "locator": "form.1",
+          "structured_summary": "Accident status / severity and death date."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.2",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 5,
+          "locator": "form.2",
+          "structured_summary": "Provider/facility overview including service type and provider number."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.3",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 5,
+          "locator": "form.3",
+          "structured_summary": "Person information and care/cognitive status."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.4",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 5,
+          "locator": "form.4",
+          "structured_summary": "Accident overview: time, place, type, details, special notes."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.5",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 5,
+          "locator": "form.5",
+          "structured_summary": "Response at occurrence: response, consultation, diagnosis and treatment outline."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.6",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 6,
+          "locator": "form.6",
+          "structured_summary": "Post-accident status, family reports, contacted organizations, follow-up plans."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.7",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 6,
+          "locator": "form.7",
+          "structured_summary": "Cause analysis."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.8",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 6,
+          "locator": "form.8",
+          "structured_summary": "Recurrence-prevention measures and evaluation."
+        },
+        {
+          "canonical_item_id": "other-national.accident-report.vol1332.form.9",
+          "item_kind": "FORM_SECTION",
+          "official_url": "https://www.mhlw.go.jp/content/001574219.pdf",
+          "pdf_page": 6,
+          "locator": "form.9",
+          "structured_summary": "Other notable matters."
+        }
+      ],
+      "unresolved_body_scope": []
+    }
+  ],
+  "assurance_boundaries": {
+    "source_body_structure_only": true,
+    "service_applicability_is_separate": true,
+    "currentness_promoted": false,
+    "relation_verification_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false
+  }
+}

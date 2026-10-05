@@ -3,10 +3,13 @@
   "source_family": "other_national_manuals_forms",
   "observed_on": "2026-10-05",
   "evidence_policy": {
-    "source_body_hash_required_for_item_body_verification": true,
+    "source_body_hash_required_for_item_body_verification": false,
     "locator_receipt_sufficient_for_source_identity_promotion": true,
     "locator_receipt_does_not_establish_item_body_verification": true,
-    "locator_receipt_does_not_establish_global_currentness_pass": true
+    "locator_receipt_does_not_establish_global_currentness_pass": true,
+    "canonical_body_fingerprint_or_exact_source_snapshot_required_for_item_body_verification": true,
+    "exact_official_url_and_native_locator_required": true,
+    "item_body_verification_does_not_establish_currentness": true
   },
   "receipts": [
     {
@@ -43,6 +46,14 @@
       "currentness": {
         "state": "PARTIAL",
         "basis": "Current official landing page exposes this form set at observation time; no archived supersession chain was captured."
+      },
+      "item_body_assurance": {
+        "state": "PARTIAL",
+        "artifact": "data/shared/other-national-materials/item-body-assurance.json",
+        "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+        "canonical_body_fingerprint_sha256": "ea5ffb19eddeeefdce474e14ff03fc459f69ce894a6ab34045845c1db214c1dd",
+        "source_bytes_sha256": null,
+        "currentness_promoted": false
       }
     },
     {
@@ -58,6 +69,14 @@
       "currentness": {
         "state": "PARTIAL",
         "basis": "Current official help surface names ver2.50; exact PDF bytes and publication-history chain are not pinned."
+      },
+      "item_body_assurance": {
+        "state": "NOT_ESTABLISHED",
+        "artifact": "data/shared/other-national-materials/item-body-assurance.json",
+        "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+        "canonical_body_fingerprint_sha256": null,
+        "source_bytes_sha256": null,
+        "currentness_promoted": false
       }
     },
     {
@@ -83,6 +102,14 @@
       "supersession_observation": {
         "supersedes": "2021-03-19 accident-report notice",
         "basis": "Vol.1332 states the prior notice is abolished as of 2024-11-29"
+      },
+      "item_body_assurance": {
+        "state": "PASS",
+        "artifact": "data/shared/other-national-materials/item-body-assurance.json",
+        "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+        "canonical_body_fingerprint_sha256": "01e09a636eb403e1e1f6e4128b16e1160bb1ce8aaa592c9f3c55bf6a4c7716a5",
+        "source_bytes_sha256": null,
+        "currentness_promoted": false
       }
     },
     {
@@ -104,6 +131,14 @@
       "currentness": {
         "state": "PARTIAL",
         "basis": "Current official landing page links the v1.20 manual. Current manual identity is distinct from current system availability; the page separately states a temporary reception suspension."
+      },
+      "item_body_assurance": {
+        "state": "NOT_ESTABLISHED",
+        "artifact": "data/shared/other-national-materials/item-body-assurance.json",
+        "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+        "canonical_body_fingerprint_sha256": null,
+        "source_bytes_sha256": null,
+        "currentness_promoted": false
       }
     }
   ]

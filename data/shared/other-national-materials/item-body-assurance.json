@@ -1,0 +1,876 @@
+{
+  "format_version": 1,
+  "source_family": "other_national_manuals_forms",
+  "corpus_id": "other-national-materials-national",
+  "verification_kind": "PRIMARY_SOURCE_BODY_ASSURANCE_WITH_SEPARATE_SERVICE_PROJECTION",
+  "verified_at": "2026-10-05",
+  "base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd",
+  "canonical_body_store": "data/shared/other-national-materials/canonical-body-items.json",
+  "service_applicability": "data/shared/other-national-materials/service-applicability.json",
+  "source_verifications": [
+    {
+      "canonical_source_id": "mhlw-application-forms",
+      "result": "PARTIAL",
+      "coverage_kind": "VERIFIED_SERVICE_TABLE_SLICES_ONLY",
+      "verified_canonical_item_ids": [
+        "other-national.application-forms.form1.page1.service-table",
+        "other-national.application-forms.form2.page1.service-table"
+      ],
+      "canonical_body_fingerprint_sha256": "ea5ffb19eddeeefdce474e14ff03fc459f69ce894a6ab34045845c1db214c1dd",
+      "exact_official_artifacts": [
+        "https://www.mhlw.go.jp/content/12300000/001232205.pdf#page=1",
+        "https://www.mhlw.go.jp/content/12300000/001232239.pdf#page=1"
+      ],
+      "source_bytes_sha256": null,
+      "provenance_mode": "EXACT_OFFICIAL_URL_PAGE_LOCATORS_PLUS_CANONICAL_BODY_FINGERPRINT",
+      "remaining_body_gap": "The remaining standard-form pages and service-specific attachment forms have not all been body-compared.",
+      "currentness_claimed": false
+    },
+    {
+      "canonical_source_id": "mhlw-electronic-application-operator-manual-v2-50",
+      "result": "NOT_ESTABLISHED",
+      "coverage_kind": "NO_CANONICAL_BODY_ITEMS_VERIFIED",
+      "verified_canonical_item_ids": [],
+      "canonical_body_fingerprint_sha256": null,
+      "source_bytes_sha256": null,
+      "provenance_mode": "OFFICIAL_VERSION_LOCATOR_ONLY",
+      "remaining_body_gap": "Exact manual body/document bytes were not pinned and service applicability remains unestablished.",
+      "currentness_claimed": false
+    },
+    {
+      "canonical_source_id": "mhlw-accident-report-vol1332",
+      "result": "PASS",
+      "coverage_kind": "ALL_DECLARED_CANONICAL_BODY_ITEMS_IN_BOUND_DOCUMENT",
+      "verified_canonical_item_ids": [
+        "other-national.accident-report.vol1332.supersession",
+        "other-national.accident-report.vol1332.purpose",
+        "other-national.accident-report.vol1332.reportable_accidents",
+        "other-national.accident-report.vol1332.form_use",
+        "other-national.accident-report.vol1332.report_method",
+        "other-national.accident-report.vol1332.report_deadline",
+        "other-national.accident-report.vol1332.target_services",
+        "other-national.accident-report.vol1332.form.1",
+        "other-national.accident-report.vol1332.form.2",
+        "other-national.accident-report.vol1332.form.3",
+        "other-national.accident-report.vol1332.form.4",
+        "other-national.accident-report.vol1332.form.5",
+        "other-national.accident-report.vol1332.form.6",
+        "other-national.accident-report.vol1332.form.7",
+        "other-national.accident-report.vol1332.form.8",
+        "other-national.accident-report.vol1332.form.9"
+      ],
+      "canonical_body_fingerprint_sha256": "01e09a636eb403e1e1f6e4128b16e1160bb1ce8aaa592c9f3c55bf6a4c7716a5",
+      "exact_official_artifacts": [
+        "https://www.mhlw.go.jp/content/001574219.pdf#pages=1-6"
+      ],
+      "source_bytes_sha256": null,
+      "provenance_mode": "EXACT_OFFICIAL_URL_PAGE_LOCATORS_PLUS_CANONICAL_BODY_FINGERPRINT",
+      "remaining_body_gap": null,
+      "currentness_claimed": false
+    },
+    {
+      "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
+      "result": "NOT_ESTABLISHED",
+      "coverage_kind": "APPLICABILITY_TABLE_EVIDENCE_EXISTS_BUT_BODY_ASSURANCE_NOT_REPERFORMED",
+      "verified_canonical_item_ids": [],
+      "canonical_body_fingerprint_sha256": null,
+      "source_bytes_sha256": null,
+      "provenance_mode": "EXISTING_PRIMARY_SOURCE_APPLICABILITY_LOCATOR_ONLY",
+      "remaining_body_gap": "This worker did not independently compare the full 89-page manual body; existing applicability evidence is retained without converting it into item-body assurance.",
+      "currentness_claimed": false
+    }
+  ],
+  "source_summary": {
+    "PASS": 1,
+    "PARTIAL": 1,
+    "NOT_ESTABLISHED": 2
+  },
+  "service_projections": [
+    {
+      "service_id": "dayservice",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "homevisit",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "homebath",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "homenursing",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "homerehab",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "homecaremanagement",
+      "mapped_source_ids": [
+        "mhlw-application-forms"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "dayrehab",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "shortstay-life",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "community-dayservice",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "regular-round",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "night-homevisit",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "care-management",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-support",
+      "mapped_source_ids": [
+        "mhlw-application-forms"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "shortstay-medical",
+      "mapped_source_ids": [
+        "mhlw-application-forms"
+      ],
+      "conditional_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "specific-facility",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-accident-report-vol1332"
+      ],
+      "conditional_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-accident-report-vol1332": "PASS",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "mapped_source_ids": [
+        "mhlw-application-forms"
+      ],
+      "conditional_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "dementia-group-home",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-accident-report-vol1332",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-accident-report-vol1332": "PASS",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "community-specific-facility",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-accident-report-vol1332"
+      ],
+      "conditional_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-accident-report-vol1332": "PASS",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-accident-report-vol1332",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-accident-report-vol1332": "PASS",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-accident-report-vol1332",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-accident-report-vol1332": "PASS",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "care-medical-institution",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-accident-report-vol1332",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-accident-report-vol1332": "PASS",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-homebath",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "mapped_source_ids": [
+        "mhlw-application-forms"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "mapped_source_ids": [
+        "mhlw-application-forms"
+      ],
+      "conditional_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-accident-report-vol1332"
+      ],
+      "conditional_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-accident-report-vol1332": "PASS",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "mapped_source_ids": [
+        "mhlw-application-forms"
+      ],
+      "conditional_source_ids": [
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "mapped_source_ids": [
+        "mhlw-application-forms",
+        "mhlw-accident-report-vol1332",
+        "mhlw-care-business-financial-db-manual-v1-20"
+      ],
+      "conditional_source_ids": [],
+      "explicitly_not_applicable_source_ids": [],
+      "evaluated_source_states": {
+        "mhlw-application-forms": "PARTIAL",
+        "mhlw-accident-report-vol1332": "PASS",
+        "mhlw-care-business-financial-db-manual-v1-20": "NOT_ESTABLISHED"
+      },
+      "service_level_item_body": "PARTIAL",
+      "projection_reason": "At least one explicitly applicable source has directly verified body evidence, but the complete applicable source/item set is not fully body-verified.",
+      "currentness_promoted": false,
+      "human_review_promoted": false,
+      "publication_promoted": false,
+      "route_exposure_promoted": false
+    }
+  ],
+  "service_summary": {
+    "PARTIAL": 39
+  },
+  "projection_policy": {
+    "source_level_body_verification_does_not_imply_service_applicability": true,
+    "service_level_pass_requires_every_applicable_source_item_set_verified": true,
+    "conditional_applicability_is_not_flattened_to_unconditional": true,
+    "explicit_not_applicable_is_not_inferred_from_absence": true,
+    "item_body_does_not_promote_currentness": true,
+    "item_body_does_not_promote_relation_verification": true,
+    "item_body_does_not_promote_human_review": true,
+    "item_body_does_not_promote_publication": true,
+    "item_body_does_not_promote_route_exposure": true
+  },
+  "assurance_boundaries": {
+    "currentness": "UNCHANGED_BY_THIS_ARTIFACT",
+    "relation_verification": "UNCHANGED_BY_THIS_ARTIFACT",
+    "human_review": "NOT_REVIEWED",
+    "publication": "BLOCKED",
+    "route_exposure": "BLOCKED",
+    "automatic_cross_axis_promotion_allowed": false
+  }
+}
