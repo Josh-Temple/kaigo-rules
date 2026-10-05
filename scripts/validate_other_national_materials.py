@@ -18,6 +18,7 @@ APPLICABILITY = BASE / "service-applicability.json"
 RECEIPTS = BASE / "source-observation-receipts.json"
 BODY_ITEMS = BASE / "canonical-body-items.json"
 ITEM_ASSURANCE = BASE / "item-body-assurance.json"
+CURRENTNESS = BASE / "currentness-assurance.json"
 SERVICES = ROOT / "data/services/manifest.json"
 SOURCES = ROOT / "data/sources.json"
 
@@ -41,6 +42,7 @@ def validate() -> list[str]:
     receipts = load(RECEIPTS)
     body_items = load(BODY_ITEMS)
     item_assurance = load(ITEM_ASSURANCE)
+    currentness_assurance = load(CURRENTNESS)
     service_manifest = load(SERVICES)
     source_registry = load(SOURCES)
 
@@ -54,6 +56,7 @@ def validate() -> list[str]:
         ("receipts", receipts),
         ("body_items", body_items),
         ("item_assurance", item_assurance),
+        ("currentness_assurance", currentness_assurance),
     ):
         if doc.get("source_family") != family:
             errors.append(f"{name} source_family mismatch")
@@ -70,6 +73,8 @@ def validate() -> list[str]:
         errors.append("manifest item_body_assurance mismatch")
     if manifest.get("canonical_node_store") != "data/shared/other-national-materials/national-corpus.json":
         errors.append("manifest canonical_node_store mismatch")
+    if manifest.get("currentness_assurance") != "data/shared/other-national-materials/currentness-assurance.json":
+        errors.append("manifest currentness_assurance mismatch")
 
     policies = manifest.get("policies", {})
     for key in (
@@ -271,6 +276,73 @@ def validate() -> list[str]:
     if corpus.get("assurance", {}).get("item_body_verification") != "PARTIAL":
         errors.append("corpus-level item-body assurance must remain PARTIAL")
 
+    currentness_rows = {
+        row.get("canonical_source_id"): row
+        for row in currentness_assurance.get("sources", [])
+    }
+    if set(currentness_rows) != set(canonical_source_ids):
+        errors.append("currentness assurance source set must equal canonical source set")
+
+    currentness_policies = currentness_assurance.get("policies") or {}
+    for key in (
+        "item_body_implies_currentness",
+        "current_page_access_implies_currentness_pass",
+        "source_level_currentness_implies_service_currentness",
+        "service_projection_allowed",
+        "historical_or_comparison_source_can_establish_currentness_alone",
+        "negative_search_proves_no_change",
+        "human_review_promoted",
+        "publication_promoted",
+        "route_exposure_promoted",
+    ):
+        if currentness_policies.get(key) is not False:
+            errors.append(f"unsafe currentness policy: {key} must be false")
+
+    accepted_registry_by_source = {
+        row.get("canonical_source_id"): row
+        for row in registry_rows
+        if row.get("classification") == "ACCEPTED_OTHER_NATIONAL_MATERIAL"
+    }
+    receipt_by_source = {
+        row.get("canonical_source_id"): row for row in receipt_rows
+    }
+    currentness_counts = Counter()
+    for source_id, row in currentness_rows.items():
+        state = row.get("state")
+        if state not in {"PASS", "PARTIAL", "NOT_ESTABLISHED"}:
+            errors.append(f"{source_id}: unknown currentness state {state}")
+            continue
+        currentness_counts[state] += 1
+        if row.get("service_projection_allowed") is not False:
+            errors.append(f"{source_id}: source-level currentness cannot blanket-project to services")
+        if not row.get("evidence"):
+            errors.append(f"{source_id}: currentness evidence is empty")
+        for evidence in row.get("evidence", []):
+            host = urlparse(evidence.get("url", "")).hostname
+            if host not in allowed_hosts:
+                errors.append(f"{source_id}: currentness evidence uses unapproved host {host}")
+            if not evidence.get("locator"):
+                errors.append(f"{source_id}: currentness evidence missing locator")
+
+        registry_state = (accepted_registry_by_source.get(source_id) or {}).get("currentness_state")
+        receipt_state = ((receipt_by_source.get(source_id) or {}).get("currentness") or {}).get("state")
+        if state != registry_state or state != receipt_state:
+            errors.append(f"{source_id}: currentness state disagrees across assurance/registry/receipt")
+
+    currentness_summary = currentness_assurance.get("summary") or {}
+    for state in ("PASS", "PARTIAL", "NOT_ESTABLISHED"):
+        if currentness_summary.get(state) != currentness_counts.get(state, 0):
+            errors.append(f"currentness summary mismatch for {state}")
+    for key in (
+        "blanket_service_projection_applied",
+        "currentness_promoted_from_item_body",
+        "human_review_promoted",
+        "publication_promoted",
+        "route_exposure_promoted",
+    ):
+        if currentness_summary.get(key) is not False:
+            errors.append(f"unsafe currentness summary flag: {key}")
+
     evidence_policy = receipts.get("evidence_policy") or {}
     if evidence_policy.get("locator_receipt_does_not_establish_item_body_verification") is not True:
         errors.append("receipt policy must keep locator evidence separate from item-body verification")
@@ -409,11 +481,30 @@ def validate() -> list[str]:
         if item_audit.get(key) is not False:
             errors.append(f"unsafe item-body audit flag: {key}")
 
-    currentness_counts = Counter(row.get("currentness_state") for row in registry_rows)
-    if audit.get("currentness_not_established_count") != currentness_counts.get("NOT_ESTABLISHED", 0):
+    registry_currentness_counts = Counter(row.get("currentness_state") for row in registry_rows)
+    if audit.get("currentness_not_established_count") != registry_currentness_counts.get("NOT_ESTABLISHED", 0):
         errors.append("audit currentness NOT_ESTABLISHED count mismatch")
-    if audit.get("currentness_partial_count") != currentness_counts.get("PARTIAL", 0):
+    if audit.get("currentness_partial_count") != registry_currentness_counts.get("PARTIAL", 0):
         errors.append("audit currentness PARTIAL count mismatch")
+
+    currentness_audit = audit.get("currentness_assurance") or {}
+    expected_currentness_source_states = {
+        state: currentness_counts.get(state, 0)
+        for state in ("PASS", "PARTIAL", "NOT_ESTABLISHED")
+    }
+    if currentness_audit.get("source_states") != expected_currentness_source_states:
+        errors.append("currentness source-state audit mismatch")
+    if currentness_audit.get("artifact") != "data/shared/other-national-materials/currentness-assurance.json":
+        errors.append("currentness audit artifact mismatch")
+    for key in (
+        "blanket_service_projection_applied",
+        "currentness_promoted_from_item_body",
+        "human_review_promoted",
+        "publication_promoted",
+        "route_exposure_promoted",
+    ):
+        if currentness_audit.get(key) is not False:
+            errors.append(f"unsafe currentness audit flag: {key}")
 
     app_counts = Counter(row.get("applicability", {}).get("state") for row in registry_rows)
     if audit.get("service_applicability_not_established_count") != app_counts.get("NOT_ESTABLISHED", 0):
