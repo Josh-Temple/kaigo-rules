@@ -38,7 +38,7 @@ export default function VerificationSummary({ layerId }: { layerId: string }) {
           現行性確認の対象末日：{layer.currentness?.coverage_end || "各ページの出典情報を参照"}
         </p>
         <p className="meta">
-          本文の確認、現行性の確認、人手確認は別々に管理しています。未確認の項目を確認済みとして表示しません。
+          本文の独立確認、現行性の確認、人手確認は別々に管理しています。未確認の項目を確認済みとして表示しません。
         </p>
       </div>
     </details>
