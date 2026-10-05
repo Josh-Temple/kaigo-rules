@@ -1,0 +1,78 @@
+name: Verify human-review expansion
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/relation-human-review-evidence-pack.json"
+      - "data/relation-human-review-pilot.json"
+      - "data/relation-human-review-batch-2.json"
+      - "data/relation-human-review-batches.json"
+      - "data/relation-human-review-decisions.json"
+      - "data/relation-human-review-decision-effects.generated.json"
+      - "scripts/build_relation_human_review_batches.py"
+      - "scripts/validate_relation_human_review_decisions.py"
+      - "scripts/build_relation_human_review_decision_effects.py"
+      - "tests/test_relation_human_review_expansion.py"
+      - "package.json"
+      - ".github/workflows/verify-human-review-expansion.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+
+      - name: Confirm evidence pack and immutable pilot are current
+        run: |
+          python scripts/build_relation_human_review_evidence_pack.py --check
+          python scripts/build_relation_human_review_pilot.py --check
+
+      - name: Confirm human-review batches are reproducible
+        run: python scripts/build_relation_human_review_batches.py --check
+
+      - name: Validate human decision intake contract
+        run: python scripts/validate_relation_human_review_decisions.py
+
+      - name: Confirm decision effect projection is current
+        run: python scripts/build_relation_human_review_decision_effects.py --check
+
+      - name: Run human-review expansion regressions
+        run: python -m unittest tests.test_relation_human_review_expansion
+
+      - name: Reject changes to immutable pilot artifact
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if git diff --name-only "$BASE_SHA"...HEAD | grep -Fxq "data/relation-human-review-pilot.json"; then
+            echo "Existing pilot JSON must remain immutable in Worker A" >&2
+            exit 1
+          fi
+          if git diff --name-only "$BASE_SHA"...HEAD | grep -Fxq "docs/relation-human-review-pilot.generated.md"; then
+            echo "Existing pilot markdown must remain immutable in Worker A" >&2
+            exit 1
+          fi
+
+      - name: Reject Worker A edits to integration-owned global artifacts
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          for path in             data/database-coverage-matrix.generated.json             docs/database-coverage-summary.generated.md             data/publication-readiness.generated.json             data/services/catalog.generated.json
+          do
+            if printf '%s\n' "$changed" | grep -Fxq "$path"; then
+              echo "Worker A must not edit integration-owned artifact: $path" >&2
+              exit 1
+            fi
+          done
