@@ -11,6 +11,13 @@ import {
   type PublicNoticeRecord,
   type PublicNoticeServiceOption,
 } from "../../lib/notice-database";
+import {
+  buildNoticeDisplayGroups,
+  buildNoticeDisplaySections,
+  filterNoticeRecordsByQuery,
+  findNoticeDisplayGroup,
+  type NoticeDisplayGroup,
+} from "../../lib/notice-navigation";
 import currentnessLedgerData from "../../data/notice-rouki25-currentness-ledger.json";
 import chainData from "../../data/notice-source-chain.json";
 import sourcesData from "../../data/sources.json";
@@ -39,102 +46,7 @@ const historicalNoticeDatasets = [
   },
 ];
 
-const preventivePairByPrimary: Record<string, string> = {
-  homebath: "preventive-homebath",
-  homenursing: "preventive-homenursing",
-  homerehab: "preventive-homerehab",
-  homecaremanagement: "preventive-homecaremanagement",
-  dayrehab: "preventive-dayrehab",
-  "shortstay-life": "preventive-shortstay-life",
-  "shortstay-medical": "preventive-shortstay-medical",
-  "specific-facility": "preventive-specific-facility",
-  "welfare-equipment-rental": "preventive-welfare-equipment-rental",
-  "specific-welfare-equipment-sale": "specific-preventive-welfare-equipment-sale",
-  "dementia-dayservice": "preventive-dementia-dayservice",
-  "small-scale-multifunctional": "preventive-small-scale-multifunctional",
-  "dementia-group-home": "preventive-dementia-group-home",
-};
-
-const pairedPreventiveIds = new Set(Object.values(preventivePairByPrimary));
-
-type NoticeDisplayGroup = {
-  id: string;
-  label: string;
-  companion_label?: string;
-  member_ids: string[];
-  services: PublicNoticeServiceOption[];
-  service_class?: string;
-  record_count: number;
-};
-
-const sectionOrder = [
-  "HOME_SERVICE",
-  "COMMUNITY_BASED_SERVICE",
-  "FACILITY_SERVICE",
-  "CARE_MANAGEMENT",
-  "PREVENTIVE_SUPPORT",
-  "OTHER",
-];
-
-const sectionLabels: Record<string, string> = {
-  HOME_SERVICE: "居宅サービス",
-  COMMUNITY_BASED_SERVICE: "地域密着型サービス",
-  FACILITY_SERVICE: "施設サービス",
-  CARE_MANAGEMENT: "居宅介護支援",
-  PREVENTIVE_SUPPORT: "介護予防支援",
-  OTHER: "その他",
-};
-
-function buildNoticeDisplayGroups(): NoticeDisplayGroup[] {
-  const byId = new Map(
-    publicNoticeServiceOptions.map((service) => [service.service_id, service]),
-  );
-
-  return publicNoticeServiceOptions
-    .filter((service) => !pairedPreventiveIds.has(service.service_id))
-    .map((service) => {
-      const preventiveId = preventivePairByPrimary[service.service_id];
-      const preventive = preventiveId ? byId.get(preventiveId) : undefined;
-      const services = preventive ? [service, preventive] : [service];
-
-      return {
-        id: service.service_id,
-        label: service.label,
-        companion_label: preventive?.label,
-        member_ids: services.map((member) => member.service_id),
-        services,
-        service_class:
-          service.service_id === "preventive-support"
-            ? "PREVENTIVE_SUPPORT"
-            : service.service_class || "OTHER",
-        record_count: services.reduce(
-          (total, member) => total + member.record_count,
-          0,
-        ),
-      };
-    });
-}
-
-const noticeDisplayGroups = buildNoticeDisplayGroups();
-
-function findNoticeDisplayGroup(serviceId?: string) {
-  if (!serviceId) return undefined;
-  return noticeDisplayGroups.find((group) =>
-    group.member_ids.includes(serviceId),
-  );
-}
-
-function displaySections(groups: NoticeDisplayGroup[]) {
-  return sectionOrder
-    .map((serviceClass) => ({
-      serviceClass,
-      label: sectionLabels[serviceClass],
-      groups: groups.filter(
-        (group) => (group.service_class || "OTHER") === serviceClass,
-      ),
-    }))
-    .filter((section) => section.groups.length > 0);
-}
+const noticeDisplayGroups = buildNoticeDisplayGroups(publicNoticeServiceOptions);
 
 const pageLabel = (evidence: PublicNoticeEvidence) => {
   if (!evidence.page_start) return "";
@@ -159,27 +71,6 @@ function groupedRecords(records: PublicNoticeRecord[]) {
     groups.set(key, existing);
     return groups;
   }, new Map<string, PublicNoticeRecord[]>());
-}
-
-const normalize = (value: string) =>
-  value.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
-
-function filterRecordsByQuery(records: PublicNoticeRecord[], query: string) {
-  const terms = normalize(query).split(" ").filter(Boolean);
-  if (!terms.length) return records;
-
-  return records.filter((record) => {
-    const haystack = normalize(
-      [
-        record.service_label,
-        record.section,
-        ...record.number_path,
-        record.title,
-        record.body_text,
-      ].join(" "),
-    );
-    return terms.every((term) => haystack.includes(term));
-  });
 }
 
 const noticeStatusLabel = (status: string) => {
@@ -266,7 +157,7 @@ function ServiceBrowser() {
         </p>
       </div>
 
-      {displaySections(published).map((section) => (
+      {buildNoticeDisplaySections(published).map((section) => (
         <section className="notice-service-section" key={section.serviceClass}>
           <h3>{section.label}</h3>
           <div className="notice-service-list">
@@ -281,7 +172,7 @@ function ServiceBrowser() {
         <details className="notice-pending-services">
           <summary>本文整備中のサービスを見る</summary>
           <div className="notice-pending-services-body">
-            {displaySections(pending).map((section) => (
+            {buildNoticeDisplaySections(pending).map((section) => (
               <section className="notice-service-section" key={section.serviceClass}>
                 <h3>{section.label}</h3>
                 <div className="notice-service-list">
@@ -304,7 +195,7 @@ export default async function NoticesPage({
   searchParams: Promise<{ service?: string; q?: string }>;
 }) {
   const { service = "", q = "" } = await searchParams;
-  const selectedGroup = findNoticeDisplayGroup(service);
+  const selectedGroup = findNoticeDisplayGroup(noticeDisplayGroups, service);
   const invalidService = Boolean(service && !selectedGroup);
   const baseRecords = selectedGroup
     ? publicNoticeRecords.filter((record) =>
@@ -313,7 +204,7 @@ export default async function NoticesPage({
     : q.trim()
       ? publicNoticeRecords
       : [];
-  const records = filterRecordsByQuery(baseRecords, q);
+  const records = filterNoticeRecordsByQuery(baseRecords, q);
   const grouped = groupedRecords(records);
   const currentnessHold =
     currentnessLedger.final_audit_classification?.counts?.HOLD || 0;
