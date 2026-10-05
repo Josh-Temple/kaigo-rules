@@ -3,7 +3,7 @@ name: Assurance closure integrator regeneration
 on:
   push:
     branches:
-      - work/assurance-closure-wave-integrator
+      - work/assurance-closure-wave-integrator-v2
 
 permissions:
   contents: write
