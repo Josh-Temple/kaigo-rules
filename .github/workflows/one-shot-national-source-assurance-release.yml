@@ -1,4 +1,5 @@
 name: One-shot exact-SHA production gate
+# Temporary release evidence workflow; do not merge.
 
 on:
   pull_request:
