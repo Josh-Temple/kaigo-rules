@@ -1,0 +1,323 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_relation_human_review_batches.py",
+  "source_evidence_pack": "data/relation-human-review-evidence-pack.json",
+  "decision_ledger": "data/relation-human-review-decisions.json",
+  "policy": "Batch membership controls decision intake only. Batch activation does not make a relation REVIEWED or verified. Pilot 1 is an immutable reference. Evidence fingerprint drift is represented as STALE_EVIDENCE and never silently refreshes an existing decision.",
+  "batches": [
+    {
+      "batch_id": "pilot-1",
+      "status": "ACTIVE_IMMUTABLE_REFERENCE",
+      "source_artifact": "data/relation-human-review-pilot.json",
+      "immutable_reference": true,
+      "items_total": 8,
+      "items": [
+        {
+          "batch_order": 1,
+          "review_id": "REL-001",
+          "relation_identity": {
+            "from": "fee.dayservice.note.13",
+            "relation": "related_to",
+            "to": "ordinance37.article.99"
+          },
+          "relation_key": "fee.dayservice.note.13|related_to|ordinance37.article.99",
+          "evidence_fingerprint_sha256": "f3984f602718ad82cd16fbb6769c692654a9a19b32196becc9896626ab7074bf",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 2,
+          "review_id": "REL-013",
+          "relation_identity": {
+            "from": "notice.dayservice.equipment.dining-training-room",
+            "relation": "interprets_or_explains",
+            "to": "ordinance37.article.95"
+          },
+          "relation_key": "notice.dayservice.equipment.dining-training-room|interprets_or_explains|ordinance37.article.95",
+          "evidence_fingerprint_sha256": "e6bfcabaa109a05d053cde11a6f96b380f81824e49bd49a7857265b21dbcf56d",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 3,
+          "review_id": "REL-003",
+          "relation_identity": {
+            "from": "fee.dayservice.note.2",
+            "relation": "operational_basis_related_to",
+            "to": "ordinance37.article.105"
+          },
+          "relation_key": "fee.dayservice.note.2|operational_basis_related_to|ordinance37.article.105",
+          "evidence_fingerprint_sha256": "096aecc99c772aea9cb2b58f1e1e6fa007d02ebdeb5d5cdf3428d311fe4dc9d2",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 4,
+          "review_id": "REL-014",
+          "relation_identity": {
+            "from": "notice.dayservice.equipment.office",
+            "relation": "interprets_or_explains",
+            "to": "ordinance37.article.95"
+          },
+          "relation_key": "notice.dayservice.equipment.office|interprets_or_explains|ordinance37.article.95",
+          "evidence_fingerprint_sha256": "866cef28391a37db80ca4098899454a0d45ae00fcb3a25e0279d380c4b1350a6",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 5,
+          "review_id": "REL-002",
+          "relation_identity": {
+            "from": "fee.dayservice.note.15",
+            "relation": "related_to",
+            "to": "ordinance37.article.98"
+          },
+          "relation_key": "fee.dayservice.note.15|related_to|ordinance37.article.98",
+          "evidence_fingerprint_sha256": "a74d4b8731bd042477e4a7c1857d2dadb8607833d42c9ff28d5f6622f8d48166",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 6,
+          "review_id": "REL-019",
+          "relation_identity": {
+            "from": "notice.dayservice.personnel.function-training",
+            "relation": "interprets_or_explains",
+            "to": "ordinance37.article.93"
+          },
+          "relation_key": "notice.dayservice.personnel.function-training|interprets_or_explains|ordinance37.article.93",
+          "evidence_fingerprint_sha256": "74d3af43386b2a0c6239a35363fb5ffa4ff6ac3d7955d46219a8738d30a0b58a",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 7,
+          "review_id": "REL-004",
+          "relation_identity": {
+            "from": "fee.dayservice.note.3",
+            "relation": "operational_basis_related_to",
+            "to": "ordinance37.article.30-2"
+          },
+          "relation_key": "fee.dayservice.note.3|operational_basis_related_to|ordinance37.article.30-2",
+          "evidence_fingerprint_sha256": "a116fc01dd02661d0f0fa229c39d6487e882bde8e1dd952a86ffdafc2c1fa70c",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 8,
+          "review_id": "REL-021",
+          "relation_identity": {
+            "from": "notice.dayservice.personnel.manager",
+            "relation": "interprets_or_explains",
+            "to": "ordinance37.article.94"
+          },
+          "relation_key": "notice.dayservice.personnel.manager|interprets_or_explains|ordinance37.article.94",
+          "evidence_fingerprint_sha256": "0a8cb98ced9fa6e976b57aa07665b728d5af696ff5eafc0ebdeb2d9e26fd0bbe",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "batch_id": "batch-2",
+      "status": "ACTIVE_FOR_HUMAN_REVIEW",
+      "source_artifact": "data/relation-human-review-batch-2.json",
+      "immutable_reference": false,
+      "items_total": 10,
+      "items": [
+        {
+          "batch_order": 1,
+          "review_id": "REL-020",
+          "relation_identity": {
+            "from": "notice.dayservice.personnel.life-counselor",
+            "relation": "interprets_or_explains",
+            "to": "ordinance37.article.93"
+          },
+          "relation_key": "notice.dayservice.personnel.life-counselor|interprets_or_explains|ordinance37.article.93",
+          "evidence_fingerprint_sha256": "e56c4e14e007b89cdd8c09367c370304479b765eb72ca1ef9ad74c94fe97fc34",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 2,
+          "review_id": "REL-027",
+          "relation_identity": {
+            "from": "question:annual-training",
+            "relation": "required_by",
+            "to": "ordinance37.article101.3"
+          },
+          "relation_key": "question:annual-training|required_by|ordinance37.article101.3",
+          "evidence_fingerprint_sha256": "4c61a00dd830c0165de8d7a1d6e1da47c532e2557122ee20f2ba223033da72a8",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 3,
+          "review_id": "REL-031",
+          "relation_identity": {
+            "from": "question:bcp-training",
+            "relation": "applies_via",
+            "to": "ordinance37.article105"
+          },
+          "relation_key": "question:bcp-training|applies_via|ordinance37.article105",
+          "evidence_fingerprint_sha256": "aee16506d5ac46b551ce63740748b24994ba837932a0ee0429fbf61e5eef3f9a",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 4,
+          "review_id": "REL-034",
+          "relation_identity": {
+            "from": "question:care-plan-content",
+            "relation": "aligned_with",
+            "to": "ordinance37.article99.2"
+          },
+          "relation_key": "question:care-plan-content|aligned_with|ordinance37.article99.2",
+          "evidence_fingerprint_sha256": "39fc05de4a2b855a5fa29d24884c221e18327e8ce9d88fda95127d3137d70969",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 5,
+          "review_id": "REL-035",
+          "relation_identity": {
+            "from": "question:care-plan-content",
+            "relation": "answered_by",
+            "to": "ordinance37.article99.1"
+          },
+          "relation_key": "question:care-plan-content|answered_by|ordinance37.article99.1",
+          "evidence_fingerprint_sha256": "8253474a53132ceb4e36419e12b899bb2d5aa896b195a520f804ce7e2381da4e",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 6,
+          "review_id": "REL-036",
+          "relation_identity": {
+            "from": "question:care-plan-content",
+            "relation": "consent_under",
+            "to": "ordinance37.article99.3"
+          },
+          "relation_key": "question:care-plan-content|consent_under|ordinance37.article99.3",
+          "evidence_fingerprint_sha256": "84fa07b7cde55cc48bfd7e84e1a7f82406b360d87f40df096fde67863d80e946",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 7,
+          "review_id": "REL-037",
+          "relation_identity": {
+            "from": "question:care-plan-content",
+            "relation": "delivered_under",
+            "to": "ordinance37.article99.4"
+          },
+          "relation_key": "question:care-plan-content|delivered_under|ordinance37.article99.4",
+          "evidence_fingerprint_sha256": "d1051370a20e916643417d6f5e16ebb3e836795e1569c72d3447f24e6f6c3e23",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 8,
+          "review_id": "REL-038",
+          "relation_identity": {
+            "from": "question:care-plan-content",
+            "relation": "tracked_under",
+            "to": "ordinance37.article99.5"
+          },
+          "relation_key": "question:care-plan-content|tracked_under|ordinance37.article99.5",
+          "evidence_fingerprint_sha256": "26a25fa94e724f63a07698ebc0f149498428ab521d64ad5abe5b3c4bd6ceefea",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 9,
+          "review_id": "REL-042",
+          "relation_identity": {
+            "from": "question:care-plan-signature",
+            "relation": "electronic_option_under",
+            "to": "ordinance37.article217.2"
+          },
+          "relation_key": "question:care-plan-signature|electronic_option_under|ordinance37.article217.2",
+          "evidence_fingerprint_sha256": "6b2f4a2c82a50712c06ee89771dafa88d089e7b80318db4567700b6ef32fc9f1",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        },
+        {
+          "batch_order": 10,
+          "review_id": "REL-043",
+          "relation_identity": {
+            "from": "question:care-plan-signature",
+            "relation": "requires_delivery_under",
+            "to": "ordinance37.article99.4"
+          },
+          "relation_key": "question:care-plan-signature|requires_delivery_under|ordinance37.article99.4",
+          "evidence_fingerprint_sha256": "6d65e100ae65675e9e313cf6fbd82f2d5f1e1bc3f3d179527f3c6adeb4e4b8a6",
+          "evidence_readiness": "READY_FOR_HUMAN_REVIEW",
+          "review_status": "READY_FOR_HUMAN_REVIEW",
+          "assigned_reviewer": null,
+          "decision_ledger_pointer": "data/relation-human-review-decisions.json#decisions",
+          "stale_state": "CURRENT_EVIDENCE"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "batch_count": 2,
+    "pilot_items": 8,
+    "batch_2_items": 10,
+    "active_review_items": 18,
+    "stale_evidence_items": 0,
+    "evidence_pack_items_not_active": 40
+  }
+}
