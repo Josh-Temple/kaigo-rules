@@ -263,8 +263,10 @@ def build_cell(
         fee_guidance_item_body_projection = shared_context["fee_guidance_item_body_projection"].get(service_id)
 
     other_national_applicability = None
+    other_national_item_body_projection = None
     if family["id"] == "other_national_manuals_forms":
         other_national_applicability = shared_context["other_national_service_map"].get(service_id)
+        other_national_item_body_projection = shared_context["other_national_item_body_projection"].get(service_id)
         if other_national_applicability and (
             other_national_applicability.get("mapped_source_ids")
             or other_national_applicability.get("conditional_source_ids")
@@ -512,6 +514,16 @@ def build_cell(
         if service_id == "dayservice":
             item_body_evidence.append("data/unit-price-independent-audit.json")
 
+    if family["id"] == "other_national_manuals_forms" and other_national_item_body_projection:
+        projected_item_state = str(
+            other_national_item_body_projection.get("service_level_item_body")
+            or "NOT_ESTABLISHED"
+        )
+        content_raw = [projected_item_state]
+        item_body_evidence = [
+            f"data/shared/other-national-materials/item-body-assurance.json#{service_id}"
+        ]
+
     item_state = normalize_verification(content_raw[0] if len(content_raw) == 1 else (" | ".join(content_raw) if content_raw else None))
     if (
         family["id"] == "fee_calculation_guidance"
@@ -721,6 +733,11 @@ def build() -> dict:
         if other_national_manifest
         else {"sources": []}
     )
+    other_national_item_body_assurance_data = (
+        load(str(other_national_manifest.get("item_body_assurance")))
+        if other_national_manifest and other_national_manifest.get("item_body_assurance")
+        else {"service_projections": []}
+    )
     other_national_service_map: dict[str, dict[str, list[str]]] = {}
     for source in other_national_applicability_data.get("sources", []):
         source_id = str(source.get("canonical_source_id") or "")
@@ -788,6 +805,10 @@ def build() -> dict:
         },
         "other_national_manifest": other_national_manifest,
         "other_national_service_map": other_national_service_map,
+        "other_national_item_body_projection": {
+            row["service_id"]: row
+            for row in other_national_item_body_assurance_data.get("service_projections", [])
+        },
         "delegated_applicability": {
             row["service_id"]: row
             for row in delegated_applicability_data.get("services", [])
@@ -923,6 +944,7 @@ def build() -> dict:
             "data/shared/other-national-materials/manifest.json",
             "data/shared/other-national-materials/national-corpus.json",
             "data/shared/other-national-materials/service-applicability.json",
+            "data/shared/other-national-materials/item-body-assurance.json",
         ],
         "source_families": [
             {"id": family["id"], "label": family["label"]}
