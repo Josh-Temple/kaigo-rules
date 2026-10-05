@@ -533,7 +533,8 @@
               "PASS"
             ],
             "evidence": [
-              "data/unit-price-independent-audit.json"
+              "data/unit-price-independent-audit.json",
+              "data/unit-price-item-body-assurance.json#dayservice"
             ]
           },
           "currentness": {
@@ -1132,9 +1133,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#homevisit"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -1720,9 +1725,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#homebath"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -2310,9 +2319,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#homenursing"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -2900,9 +2913,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#homerehab"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -3490,9 +3507,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#homecaremanagement"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -4095,9 +4116,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#dayrehab"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -4685,9 +4710,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#shortstay-life"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -5266,9 +5295,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#community-dayservice"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -5847,9 +5880,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#regular-round"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -6428,9 +6465,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#night-homevisit"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -7009,9 +7050,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#care-management"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -7590,9 +7635,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-support"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -8170,9 +8219,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#shortstay-medical"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -8750,9 +8803,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#specific-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -9330,9 +9387,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#welfare-equipment-rental"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -9904,8 +9965,12 @@
           },
           "item_body_verification": {
             "state": "NOT_APPLICABLE",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_APPLICABLE"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#specific-welfare-equipment-sale"
+            ]
           },
           "currentness": {
             "state": "NOT_APPLICABLE",
@@ -10480,9 +10545,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#dementia-dayservice"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -11057,9 +11126,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#small-scale-multifunctional"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -11634,9 +11707,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#dementia-group-home"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -12211,9 +12288,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#community-specific-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -12788,9 +12869,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#community-elderly-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -13365,9 +13450,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#nursing-small-scale-multifunctional"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -13942,9 +14031,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#elderly-welfare-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -14519,9 +14612,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#elderly-health-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -15096,9 +15193,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#care-medical-institution"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -15671,9 +15772,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-homebath"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -16244,9 +16349,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-homenursing"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -16817,9 +16926,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-homerehab"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -17390,9 +17503,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-homecaremanagement"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -17963,9 +18080,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-dayrehab"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -18536,9 +18657,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-shortstay-life"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -19109,9 +19234,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-shortstay-medical"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -19682,9 +19811,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-specific-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -20255,9 +20388,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-welfare-equipment-rental"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -20822,8 +20959,12 @@
           },
           "item_body_verification": {
             "state": "NOT_APPLICABLE",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_APPLICABLE"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#specific-preventive-welfare-equipment-sale"
+            ]
           },
           "currentness": {
             "state": "NOT_APPLICABLE",
@@ -21396,9 +21537,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-dementia-dayservice"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -21971,9 +22116,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-small-scale-multifunctional"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -22546,9 +22695,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS"
+            ],
+            "evidence": [
+              "data/unit-price-item-body-assurance.json#preventive-dementia-group-home"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -22912,8 +23065,7 @@
         },
         "item_body_verification": {
           "NOT_APPLICABLE": 2,
-          "NOT_ESTABLISHED": 36,
-          "PASS": 1
+          "PASS": 37
         },
         "currentness": {
           "NOT_APPLICABLE": 2,
@@ -24742,11 +24894,6 @@
       },
       {
         "service_id": "homevisit",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homevisit",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -24758,11 +24905,6 @@
       {
         "service_id": "homebath",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homebath",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24782,11 +24924,6 @@
       },
       {
         "service_id": "homenursing",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homenursing",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -24798,11 +24935,6 @@
       {
         "service_id": "homerehab",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24818,11 +24950,6 @@
       {
         "service_id": "homecaremanagement",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24838,11 +24965,6 @@
       {
         "service_id": "dayrehab",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dayrehab",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24858,11 +24980,6 @@
       {
         "service_id": "shortstay-life",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24878,11 +24995,6 @@
       {
         "service_id": "community-dayservice",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-dayservice",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24898,11 +25010,6 @@
       {
         "service_id": "regular-round",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24918,11 +25025,6 @@
       {
         "service_id": "night-homevisit",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "night-homevisit",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24938,11 +25040,6 @@
       {
         "service_id": "care-management",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24958,11 +25055,6 @@
       {
         "service_id": "preventive-support",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24987,11 +25079,6 @@
       },
       {
         "service_id": "shortstay-medical",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-medical",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -25012,11 +25099,6 @@
       },
       {
         "service_id": "specific-facility",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "specific-facility",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -25033,11 +25115,6 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25072,11 +25149,6 @@
       },
       {
         "service_id": "dementia-dayservice",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-dayservice",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -25093,11 +25165,6 @@
       {
         "service_id": "small-scale-multifunctional",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25122,11 +25189,6 @@
       },
       {
         "service_id": "dementia-group-home",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-group-home",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -25147,11 +25209,6 @@
       },
       {
         "service_id": "community-specific-facility",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-specific-facility",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -25168,11 +25225,6 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25193,11 +25245,6 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25218,11 +25265,6 @@
       {
         "service_id": "elderly-welfare-facility",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25243,11 +25285,6 @@
       {
         "service_id": "elderly-health-facility",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25268,11 +25305,6 @@
       {
         "service_id": "care-medical-institution",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25293,11 +25325,6 @@
       {
         "service_id": "preventive-homebath",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25318,11 +25345,6 @@
       {
         "service_id": "preventive-homenursing",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25343,11 +25365,6 @@
       {
         "service_id": "preventive-homerehab",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25368,11 +25385,6 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25393,11 +25405,6 @@
       {
         "service_id": "preventive-dayrehab",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25418,11 +25425,6 @@
       {
         "service_id": "preventive-shortstay-life",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25443,11 +25445,6 @@
       {
         "service_id": "preventive-shortstay-medical",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25468,11 +25465,6 @@
       {
         "service_id": "preventive-specific-facility",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25493,11 +25485,6 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25532,11 +25519,6 @@
       },
       {
         "service_id": "preventive-dementia-dayservice",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -25557,11 +25539,6 @@
       },
       {
         "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
         "source_family": "other_national_manuals_forms",
         "state": "NOT_ESTABLISHED"
       },
@@ -25578,11 +25555,6 @@
       {
         "service_id": "preventive-dementia-group-home",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {

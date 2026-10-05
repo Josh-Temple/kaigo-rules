@@ -1,0 +1,71 @@
+{
+  "format_version": 1,
+  "verification_kind": "INDEPENDENT_MACHINE_REPARSE_ALL_UNIT_PRICE_PROFILES",
+  "source_urls": [
+    "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+    "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+  ],
+  "source_sha256": [
+    "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395",
+    "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+  ],
+  "result": "PASS",
+  "observed": {
+    "profile_count": 4,
+    "applicable_service_count": 37,
+    "regions_per_profile": {
+      "flat-1000": [
+        "その他",
+        "一級地",
+        "七級地",
+        "三級地",
+        "二級地",
+        "五級地",
+        "六級地",
+        "四級地"
+      ],
+      "group-1090": [
+        "その他",
+        "一級地",
+        "七級地",
+        "三級地",
+        "二級地",
+        "五級地",
+        "六級地",
+        "四級地"
+      ],
+      "group-1110": [
+        "その他",
+        "一級地",
+        "七級地",
+        "三級地",
+        "二級地",
+        "五級地",
+        "六級地",
+        "四級地"
+      ],
+      "group-1140": [
+        "その他",
+        "一級地",
+        "七級地",
+        "三級地",
+        "二級地",
+        "五級地",
+        "六級地",
+        "四級地"
+      ]
+    }
+  },
+  "differences": {
+    "source": [],
+    "table": [],
+    "service_mappings": []
+  },
+  "safety": {
+    "promotes_currentness": false,
+    "promotes_human_review": false,
+    "promotes_publication": false,
+    "promotes_route_exposure": false,
+    "note": "PASS is bounded to item-body equality for the pinned official source version."
+  }
+}
