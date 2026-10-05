@@ -41,13 +41,17 @@
         "data/remuneration-delegated-relations.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 22,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -72,13 +76,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 9,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -101,13 +109,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 7,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -135,13 +147,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 12,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -166,13 +182,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 9,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -191,13 +211,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 3,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -231,13 +255,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 18,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -269,13 +297,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 16,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -310,13 +342,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 19,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -343,13 +379,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 11,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -372,13 +412,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 7,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -406,13 +450,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 12,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -433,13 +481,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 5,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -470,13 +522,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 15,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -509,13 +565,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 17,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -534,13 +594,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 3,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -632,13 +696,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 15,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -667,13 +735,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 13,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -706,13 +778,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 17,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -748,13 +824,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 20,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -801,13 +881,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 31,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -850,13 +934,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 27,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -917,13 +1005,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 45,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -978,13 +1070,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 39,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1032,13 +1128,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 32,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1062,13 +1162,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 8,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1097,13 +1201,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 13,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1128,13 +1236,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 9,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1155,13 +1267,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 5,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1192,13 +1308,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 15,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1233,13 +1353,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 19,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1270,13 +1394,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 15,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1309,13 +1437,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 17,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1334,13 +1466,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 3,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1430,13 +1566,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 15,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1464,13 +1604,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 12,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     },
     {
@@ -1507,13 +1651,17 @@
         "data/shared/remuneration-delegated/national-corpus.json"
       ],
       "assurance": {
-        "item_body_verification": "NOT_ESTABLISHED",
+        "item_body_verification": "PASS",
         "currentness": "NOT_ESTABLISHED",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED",
-        "automatic_promotion_allowed": false
+        "automatic_promotion_allowed": false,
+        "item_body_verified_node_count": 21,
+        "item_body_projection_evidence": [
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ]
       }
     }
   ],
