@@ -73,3 +73,5 @@ jobs:
           git add -A
           git commit -m "[generated] Regenerate residual assurance integration artifacts"
           git push origin "HEAD:work/residual-assurance-human-review-integrator-v2"
+
+# trigger integration regeneration
