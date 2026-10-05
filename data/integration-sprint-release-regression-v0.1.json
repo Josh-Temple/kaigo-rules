@@ -48,12 +48,12 @@
     {
       "id": "IR-01",
       "coverage": "service_isolation",
-      "title": "global Ordinance 37 detail keeps homevisit-only shared-corpus articles reachable without asserting dayservice applicability",
+      "title": "global Ordinance 37 detail exposes the newly published homevisit applicability without changing the shared-corpus default",
       "path": "/rules/18",
       "expect_status": 200,
       "contains_text": [
         "共有法令コーパス",
-        "公開中のサービスフィルタには含まれていません"
+        "訪問介護"
       ]
     },
     {
