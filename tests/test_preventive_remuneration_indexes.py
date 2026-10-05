@@ -26,6 +26,10 @@ class PreventiveRemunerationIndexTest(unittest.TestCase):
         cls.manifest = load("data/services/manifest.json")
         cls.targets = [row for row in cls.manifest["services"] if row["service_class"] == "PREVENTIVE_SERVICE" and row["service_id"] != SALE_ID]
         cls.sale = next(row for row in cls.manifest["services"] if row["service_id"] == SALE_ID)
+        cls.remuneration_assurance = {
+            row["service_id"]: row
+            for row in load("data/shared/remuneration-notification/service-item-body-assurance.json")["services"]
+        }
 
     def test_target_set_is_manifest_driven_and_sale_stays_explicit_na(self):
         self.assertEqual(len(self.targets), 9)
@@ -111,7 +115,10 @@ class PreventiveRemunerationIndexTest(unittest.TestCase):
         for descriptor in self.targets:
             cell = next(x for x in by_id[descriptor["service_id"]]["source_families"] if x["source_family"] == "remuneration_notification")
             self.assertEqual(cell["ingestion"]["state"], "INGESTED")
-            self.assertEqual(cell["item_body_verification"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(
+                cell["item_body_verification"]["state"],
+                self.remuneration_assurance[descriptor["service_id"]]["projection_state"],
+            )
             self.assertEqual(cell["currentness"]["state"], "NOT_ESTABLISHED")
             self.assertEqual(cell["human_review"]["state"], "NOT_REVIEWED")
             self.assertEqual(cell["publication"]["state"], "BLOCKED")

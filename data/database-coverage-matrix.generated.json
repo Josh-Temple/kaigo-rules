@@ -31,8 +31,11 @@
     "data/shared/remuneration-delegated/service-applicability.json",
     "data/shared/remuneration-delegated/service-relations.json",
     "data/shared/remuneration-delegated/service-applicability-adjudications.json",
+    "data/shared/remuneration-notification/body-fingerprints.json",
+    "data/shared/remuneration-notification/service-item-body-assurance.json",
     "data/shared/fee-guidance/manifest.json",
     "data/shared/fee-guidance/service-applicability.json",
+    "data/shared/fee-guidance/item-body-assurance.json",
     "data/shared/other-national-materials/manifest.json",
     "data/shared/other-national-materials/national-corpus.json",
     "data/shared/other-national-materials/service-applicability.json"
@@ -324,7 +327,10 @@
               "PASS"
             ],
             "evidence": [
-              "data/remuneration-independent-audit.json"
+              "data/remuneration-current-text-meta.json",
+              "data/remuneration-current-text.json",
+              "data/remuneration-independent-audit.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
             ]
           },
           "currentness": {
@@ -384,9 +390,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -454,12 +460,13 @@
             "raw_status": []
           },
           "item_body_verification": {
-            "state": "PASS",
+            "state": "PARTIAL",
             "raw_status": [
-              "PASS"
+              "PARTIAL"
             ],
             "evidence": [
-              "data/fee-guidance-independent-verification.json"
+              "data/fee-guidance-independent-verification.json",
+              "data/shared/fee-guidance/item-body-assurance.json#dayservice"
             ]
           },
           "currentness": {
@@ -926,9 +933,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/homevisit/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -985,9 +998,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -1058,8 +1071,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#homevisit"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -1504,9 +1521,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/homebath/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -1563,9 +1586,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -1636,8 +1659,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#homebath"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -2084,9 +2111,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/homenursing/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -2143,9 +2176,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -2216,8 +2249,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#homenursing"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -2664,9 +2701,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/homerehab/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -2723,9 +2766,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -2796,8 +2839,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#homerehab"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -3244,9 +3291,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/homecaremanagement/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -3303,9 +3356,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -3376,8 +3429,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#homecaremanagement"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -3829,12 +3886,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "PASS",
+            "state": "PARTIAL",
             "raw_status": [
-              "PASS_BOUNDED_SCOPE_ONLY"
+              "PARTIAL"
             ],
             "evidence": [
-              "data/dayrehab-remuneration-independent-audit.json"
+              "data/dayrehab-remuneration-independent-audit.json",
+              "data/services/dayrehab/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
             ]
           },
           "currentness": {
@@ -3896,9 +3956,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -3968,12 +4028,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "PASS",
+            "state": "NOT_ESTABLISHED",
             "raw_status": [
-              "PASS_BOUNDED_SCOPE_ONLY"
+              "NOT_ESTABLISHED"
             ],
             "evidence": [
-              "data/dayrehab-fee-guidance-independent-audit.json"
+              "data/dayrehab-fee-guidance-independent-audit.json",
+              "data/shared/fee-guidance/item-body-assurance.json#dayrehab"
             ]
           },
           "currentness": {
@@ -4425,9 +4486,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/shortstay-life/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -4484,9 +4551,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -4557,8 +4624,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#shortstay-life"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -4994,9 +5065,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/community-dayservice/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -5055,9 +5132,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -5128,8 +5205,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#community-dayservice"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -5565,9 +5646,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/regular-round/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -5626,9 +5713,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -5699,8 +5786,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#regular-round"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -6136,9 +6227,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/night-homevisit/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -6197,9 +6294,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -6270,8 +6367,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#night-homevisit"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -6707,9 +6808,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/care-management/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -6768,9 +6875,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -6841,8 +6948,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#care-management"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -7278,9 +7389,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-support/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -7339,9 +7456,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -7412,8 +7529,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-support"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -7850,9 +7971,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/shortstay-medical/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -7909,9 +8036,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -7982,8 +8109,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#shortstay-medical"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -8420,9 +8551,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/specific-facility/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -8479,9 +8616,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -8552,8 +8689,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#specific-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -8990,9 +9131,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/welfare-equipment-rental/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -9049,9 +9196,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -9122,8 +9269,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#welfare-equipment-rental"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -9690,9 +9841,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "NOT_APPLICABLE",
+            "raw_status": [
+              "NOT_APPLICABLE"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#specific-welfare-equipment-sale"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -10124,9 +10279,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/dementia-dayservice/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -10185,9 +10346,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -10258,8 +10419,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#dementia-dayservice"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -10691,9 +10856,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/small-scale-multifunctional/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -10752,9 +10923,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -10825,8 +10996,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#small-scale-multifunctional"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -11258,9 +11433,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/dementia-group-home/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -11319,9 +11500,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -11392,8 +11573,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#dementia-group-home"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -11825,9 +12010,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/community-specific-facility/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -11886,9 +12077,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -11959,8 +12150,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#community-specific-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -12392,9 +12587,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/community-elderly-facility/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -12453,9 +12654,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -12526,8 +12727,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#community-elderly-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -12959,9 +13164,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/nursing-small-scale-multifunctional/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -13020,9 +13231,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -13093,8 +13304,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#nursing-small-scale-multifunctional"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -13526,9 +13741,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/elderly-welfare-facility/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -13587,9 +13808,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -13660,8 +13881,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#elderly-welfare-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -14093,9 +14318,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/elderly-health-facility/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -14154,9 +14385,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -14227,8 +14458,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#elderly-health-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -14660,9 +14895,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/care-medical-institution/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -14721,9 +14962,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -14794,8 +15035,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#care-medical-institution"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -15225,9 +15470,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-homebath/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -15286,9 +15537,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -15359,8 +15610,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-homebath"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -15788,9 +16043,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-homenursing/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -15849,9 +16110,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -15922,8 +16183,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-homenursing"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -16351,9 +16616,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-homerehab/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -16412,9 +16683,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -16485,8 +16756,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-homerehab"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -16914,9 +17189,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-homecaremanagement/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -16975,9 +17256,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -17048,8 +17329,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-homecaremanagement"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -17477,9 +17762,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-dayrehab/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -17538,9 +17829,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -17611,8 +17902,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-dayrehab"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -18040,9 +18335,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-life/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -18101,9 +18402,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -18174,8 +18475,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-shortstay-life"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -18603,9 +18908,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-shortstay-medical/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -18664,9 +18975,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -18737,8 +19048,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-shortstay-medical"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -19166,9 +19481,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-specific-facility/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -19227,9 +19548,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -19300,8 +19621,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-specific-facility"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -19729,9 +20054,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-welfare-equipment-rental/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -19790,9 +20121,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -19863,8 +20194,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-welfare-equipment-rental"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -20424,9 +20759,13 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "NOT_APPLICABLE",
+            "raw_status": [
+              "NOT_APPLICABLE"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#specific-preventive-welfare-equipment-sale"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -20856,9 +21195,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-dayservice/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -20917,9 +21262,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -20990,8 +21335,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-dementia-dayservice"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -21421,9 +21770,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-small-scale-multifunctional/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -21482,9 +21837,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -21555,8 +21910,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-small-scale-multifunctional"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -21986,9 +22345,15 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "PARTIAL"
+            ],
+            "evidence": [
+              "data/services/preventive-dementia-group-home/remuneration-index.json",
+              "data/shared/remuneration-notification/body-fingerprints.json",
+              "data/shared/remuneration-notification/service-item-body-assurance.json"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -22047,9 +22412,9 @@
             ]
           },
           "item_body_verification": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS"
             ],
             "evidence": []
           },
@@ -22120,8 +22485,12 @@
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "raw_status": [
+              "NOT_ESTABLISHED"
+            ],
+            "evidence": [
+              "data/shared/fee-guidance/item-body-assurance.json#preventive-dementia-group-home"
+            ]
           },
           "currentness": {
             "state": "NOT_ESTABLISHED",
@@ -22439,8 +22808,9 @@
           "NOT_APPLICABLE": 2
         },
         "item_body_verification": {
-          "NOT_ESTABLISHED": 37,
-          "PASS": 2
+          "NOT_ESTABLISHED": 2,
+          "PARTIAL": 36,
+          "PASS": 1
         },
         "currentness": {
           "NOT_ESTABLISHED": 38,
@@ -22473,7 +22843,8 @@
           "NOT_APPLICABLE": 2
         },
         "item_body_verification": {
-          "NOT_ESTABLISHED": 39
+          "NOT_ESTABLISHED": 2,
+          "PASS": 37
         },
         "currentness": {
           "NOT_ESTABLISHED": 39
@@ -22505,8 +22876,9 @@
           "PARTIAL": 35
         },
         "item_body_verification": {
-          "NOT_ESTABLISHED": 37,
-          "PASS": 2
+          "NOT_APPLICABLE": 2,
+          "NOT_ESTABLISHED": 36,
+          "PARTIAL": 1
         },
         "currentness": {
           "NOT_ESTABLISHED": 38,
@@ -24350,8 +24722,8 @@
     "verification_gaps": [
       {
         "service_id": "dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "source_family": "fee_calculation_guidance",
+        "state": "PARTIAL"
       },
       {
         "service_id": "dayservice",
@@ -24361,12 +24733,7 @@
       {
         "service_id": "homevisit",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homevisit",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "homevisit",
@@ -24386,12 +24753,7 @@
       {
         "service_id": "homebath",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homebath",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "homebath",
@@ -24411,12 +24773,7 @@
       {
         "service_id": "homenursing",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homenursing",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "homenursing",
@@ -24436,12 +24793,7 @@
       {
         "service_id": "homerehab",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homerehab",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "homerehab",
@@ -24461,12 +24813,7 @@
       {
         "service_id": "homecaremanagement",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homecaremanagement",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "homecaremanagement",
@@ -24485,7 +24832,12 @@
       },
       {
         "service_id": "dayrehab",
-        "source_family": "delegated_remuneration_criteria",
+        "source_family": "remuneration_notification",
+        "state": "PARTIAL"
+      },
+      {
+        "service_id": "dayrehab",
+        "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24501,12 +24853,7 @@
       {
         "service_id": "shortstay-life",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "shortstay-life",
@@ -24526,12 +24873,7 @@
       {
         "service_id": "community-dayservice",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "community-dayservice",
@@ -24551,12 +24893,7 @@
       {
         "service_id": "regular-round",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "regular-round",
@@ -24576,12 +24913,7 @@
       {
         "service_id": "night-homevisit",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "night-homevisit",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "night-homevisit",
@@ -24601,12 +24933,7 @@
       {
         "service_id": "care-management",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "care-management",
@@ -24626,12 +24953,7 @@
       {
         "service_id": "preventive-support",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-support",
@@ -24656,12 +24978,7 @@
       {
         "service_id": "shortstay-medical",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-medical",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "shortstay-medical",
@@ -24686,12 +25003,7 @@
       {
         "service_id": "specific-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "specific-facility",
@@ -24716,12 +25028,7 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "welfare-equipment-rental",
@@ -24756,12 +25063,7 @@
       {
         "service_id": "dementia-dayservice",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "dementia-dayservice",
@@ -24786,12 +25088,7 @@
       {
         "service_id": "small-scale-multifunctional",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "small-scale-multifunctional",
@@ -24816,12 +25113,7 @@
       {
         "service_id": "dementia-group-home",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-group-home",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "dementia-group-home",
@@ -24846,12 +25138,7 @@
       {
         "service_id": "community-specific-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-specific-facility",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "community-specific-facility",
@@ -24876,12 +25163,7 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "community-elderly-facility",
@@ -24906,12 +25188,7 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "nursing-small-scale-multifunctional",
@@ -24936,12 +25213,7 @@
       {
         "service_id": "elderly-welfare-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "elderly-welfare-facility",
@@ -24966,12 +25238,7 @@
       {
         "service_id": "elderly-health-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "elderly-health-facility",
@@ -24996,12 +25263,7 @@
       {
         "service_id": "care-medical-institution",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "care-medical-institution",
@@ -25026,12 +25288,7 @@
       {
         "service_id": "preventive-homebath",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-homebath",
@@ -25056,12 +25313,7 @@
       {
         "service_id": "preventive-homenursing",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-homenursing",
@@ -25086,12 +25338,7 @@
       {
         "service_id": "preventive-homerehab",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-homerehab",
@@ -25116,12 +25363,7 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-homecaremanagement",
@@ -25146,12 +25388,7 @@
       {
         "service_id": "preventive-dayrehab",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-dayrehab",
@@ -25176,12 +25413,7 @@
       {
         "service_id": "preventive-shortstay-life",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-shortstay-life",
@@ -25206,12 +25438,7 @@
       {
         "service_id": "preventive-shortstay-medical",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-shortstay-medical",
@@ -25236,12 +25463,7 @@
       {
         "service_id": "preventive-specific-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-specific-facility",
@@ -25266,12 +25488,7 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-welfare-equipment-rental",
@@ -25306,12 +25523,7 @@
       {
         "service_id": "preventive-dementia-dayservice",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-dementia-dayservice",
@@ -25336,12 +25548,7 @@
       {
         "service_id": "preventive-small-scale-multifunctional",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-small-scale-multifunctional",
@@ -25366,12 +25573,7 @@
       {
         "service_id": "preventive-dementia-group-home",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
+        "state": "PARTIAL"
       },
       {
         "service_id": "preventive-dementia-group-home",

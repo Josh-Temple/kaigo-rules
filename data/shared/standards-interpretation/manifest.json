@@ -20,6 +20,28 @@
       "source_state": "OFFICIAL_MHLW_AMENDMENT_COMPARISON",
       "role": "AMENDMENT_EVIDENCE_ONLY",
       "current_integrated_text": false
+    },
+    {
+      "source_id": "rouki25-mhlw-direct-display",
+      "urls": [
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=1",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1&pageNo=2"
+      ],
+      "source_state": "OFFICIAL_MHLW_DIRECT_NOTICE_BODY_DISPLAY",
+      "role": "HISTORICAL_DIRECT_NOTICE_BODY_REFERENCE",
+      "current_integrated_text": false,
+      "observed_date": "2026-10-05",
+      "body_snapshots": [
+        {
+          "path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display.md",
+          "git_blob_sha": "b0379a54a7c7685d4563417b7dab1bbcb0cc6e4d"
+        },
+        {
+          "path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display-page2.md",
+          "git_blob_sha": "3dd4ee8956922ea53dcbca6ac5a1627cd403e790"
+        }
+      ],
+      "note": "厚労省の通知本文表示をversion-separated body evidenceとして固定。介護予防部分や後続改正を含む現行統合全文とは扱わず、currentnessを含意しない。"
     }
   ],
   "policy": {
@@ -38,5 +60,5 @@
     "currentness": "NOT_ESTABLISHED",
     "human_review": "NOT_REVIEWED"
   },
-  "note": "居宅サービス・介護予防サービスの解釈通知は同一の老企第25号に含まれる範囲があるため、本文をサービス別に複製せず、共有sourceとサービス別章・節locatorを分離して保持する。2015年資料は歴史的なscope確認用資料、令和6年度資料は改正比較資料であり、いずれも現行統合全文として扱わない。"
+  "note": "居宅サービス・介護予防サービスの解釈通知は同一の老企第25号に含まれる範囲があるため、本文をサービス別に複製せず、共有sourceとサービス別章・節locatorを分離して保持する。2015年資料は歴史的なscope確認用資料、令和6年度資料は改正比較資料であり、いずれも現行統合全文として扱わない。 2026-10-05 core item-body assurance waveで厚労省の直接本文表示を共有snapshotとして追加したが、canonical item-level body/stagingがないserviceを自動PASSにはしていない。"
 }

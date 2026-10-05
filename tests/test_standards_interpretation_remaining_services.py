@@ -82,7 +82,28 @@ class RemainingStandardsInterpretationCoverageTest(unittest.TestCase):
             with self.subTest(source_id=row["source_id"]):
                 self.assertIn("mhlw.go.jp", row["url"])
                 self.assertFalse(row["current_integrated_text"])
-                self.assertEqual(row["acquisition_state"], "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED")
+                self.assertIn(
+                    row["acquisition_state"],
+                    {
+                        "OFFICIAL_SOURCE_LOCATED_NOT_SNAPSHOTTED",
+                        "OFFICIAL_BODY_SNAPSHOT_PINNED",
+                    },
+                )
+                snapshot = row.get("body_snapshot")
+                if row["acquisition_state"] == "OFFICIAL_BODY_SNAPSHOT_PINNED":
+                    self.assertIsInstance(snapshot, dict)
+                    snapshot_path = snapshot.get("path")
+                    self.assertTrue(snapshot_path)
+                    self.assertTrue(
+                        snapshot_path.startswith(
+                            "data/shared/standards-interpretation/source-snapshots/"
+                        )
+                    )
+                    self.assertTrue((ROOT / snapshot_path).exists())
+                    self.assertTrue(snapshot.get("git_blob_sha"))
+                    self.assertFalse(snapshot.get("currentness_proof"))
+                else:
+                    self.assertIsNone(snapshot)
 
     def test_coverage_projection_reports_shared_corpus_without_promoting_other_states(self):
         from scripts.build_database_coverage_matrix import build

@@ -36,6 +36,14 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
         cls.manifest = load("data/services/manifest.json")
         cls.matrix = coverage.build()
         cls.by_service = {row["service_id"]: row for row in cls.matrix["services"]}
+        cls.remuneration_assurance = {
+            row["service_id"]: row
+            for row in load("data/shared/remuneration-notification/service-item-body-assurance.json")["services"]
+        }
+        cls.delegated_applicability = {
+            row["service_id"]: row
+            for row in load("data/shared/remuneration-delegated/service-applicability.json")["services"]
+        }
 
     def cell(self, service_id: str, family_id: str) -> dict:
         return next(
@@ -112,14 +120,20 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
             guidance = self.cell(service_id, "fee_calculation_guidance")
             self.assertEqual(remuneration["service_scope"]["state"], "SCOPE_DEFINED")
             self.assertEqual(remuneration["ingestion"]["state"], "INGESTED")
-            self.assertEqual(remuneration["item_body_verification"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(
+                remuneration["item_body_verification"]["state"],
+                self.remuneration_assurance[service_id]["projection_state"],
+            )
             self.assertEqual(remuneration["currentness"]["state"], "NOT_ESTABLISHED")
             self.assertEqual(remuneration["human_review"]["state"], "NOT_REVIEWED")
             self.assertEqual(remuneration["publication"]["state"], "BLOCKED")
             self.assertEqual(remuneration["route_exposure"]["state"], "BLOCKED")
             self.assertEqual(delegated["service_applicability"]["state"], "MAPPED")
             self.assertEqual(delegated["ingestion"]["state"], "INGESTED")
-            self.assertEqual(delegated["item_body_verification"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(
+                delegated["item_body_verification"]["state"],
+                self.delegated_applicability[service_id]["assurance"]["item_body_verification"],
+            )
             self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
             self.assertEqual(delegated["publication"]["state"], "BLOCKED")
             self.assertEqual(delegated["route_exposure"]["state"], "BLOCKED")

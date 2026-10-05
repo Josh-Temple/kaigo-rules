@@ -1,0 +1,58 @@
+name: Verify delegated remuneration item-body assurance
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/shared/remuneration-delegated/**"
+      - "scripts/build_delegated_remuneration_shared_corpus.py"
+      - "scripts/verify_delegated_remuneration_item_body.py"
+      - "scripts/validate_delegated_remuneration_item_body_assurance.py"
+      - "tests/test_delegated_remuneration_item_body_assurance.py"
+      - "package.json"
+      - ".github/workflows/verify-delegated-remuneration-item-body.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Install independent parser
+        run: python -m pip install beautifulsoup4==4.13.4
+      - name: Re-fetch and independently compare all official item bodies
+        run: python scripts/verify_delegated_remuneration_item_body.py
+      - name: Check canonical delegated corpus
+        run: python scripts/import_delegated_remuneration_national_corpus.py --check
+      - name: Check family-local generated projections
+        run: python scripts/build_delegated_remuneration_shared_corpus.py --check
+      - name: Validate assurance separation and projection coverage
+        run: python scripts/validate_delegated_remuneration_item_body_assurance.py
+      - name: Run item-body assurance unit tests
+        run: python -m unittest tests.test_delegated_remuneration_item_body_assurance
+      - name: Preserve relation-axis separation
+        run: python scripts/validate_remuneration_delegation_relation_independent_audit.py
+      - name: Reject Worker C edits to global generated artifacts
+        if: github.event_name == 'pull_request' && github.head_ref != 'work/core-item-body-assurance-integrator'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          printf '%s\n' "$changed"
+          for path in \
+            data/database-coverage-matrix.generated.json \
+            docs/database-coverage-summary.generated.md \
+            data/services/catalog.generated.json
+          do
+            if printf '%s\n' "$changed" | grep -Fxq "$path"; then
+              echo "Worker C must not edit global generated artifact: $path" >&2
+              exit 1
+            fi
+          done

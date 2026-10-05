@@ -255,8 +255,10 @@ def build_cell(
             raw_ingestion = [str(delegated_applicability["ingestion_state"])]
 
     fee_guidance_applicability = None
+    fee_guidance_item_body_projection = None
     if family["id"] == "fee_calculation_guidance":
         fee_guidance_applicability = shared_context["fee_guidance_applicability"].get(service_id)
+        fee_guidance_item_body_projection = shared_context["fee_guidance_item_body_projection"].get(service_id)
 
     other_national_applicability = None
     if family["id"] == "other_national_manuals_forms":
@@ -396,6 +398,17 @@ def build_cell(
             ingestion_state = "PARTIAL"
 
     content_raw = raw_values(layers, ("content_verification", "status"))
+    remuneration_assurance = None
+    if family["id"] == "remuneration_notification":
+        remuneration_assurance = shared_context["remuneration_assurance"].get(service_id)
+        if (
+            remuneration_assurance
+            and remuneration_assurance.get("projection_applied_to_coverage_matrix") is True
+        ):
+            projection_state = str(remuneration_assurance.get("projection_state") or "NOT_ESTABLISHED")
+            if projection_state in {"PASS", "PARTIAL", "NOT_ESTABLISHED"}:
+                content_raw = [projection_state]
+
     shared_item_body_layers = []
     if (
         family.get("shared_content_verification_applies_to_scoped_services")
@@ -449,6 +462,10 @@ def build_cell(
     )
     if family["id"] == "governing_standards_ordinance" and mapped_standards_corpus and mapped_standards_corpus != "ordinance37":
         item_body_evidence = ["data/shared/standards/independent-audit.json"]
+    if family["id"] == "remuneration_notification" and remuneration_assurance and remuneration_assurance.get("projection_applied_to_coverage_matrix") is True:
+        item_body_evidence.append("data/shared/remuneration-notification/service-item-body-assurance.json")
+        item_body_evidence.extend(str(value) for value in remuneration_assurance.get("evidence", []) if value)
+        item_body_evidence = sorted(set(item_body_evidence))
     currentness_evidence = [
         str(layer.get("currentness", {}).get("evidence"))
         for layer in layers
@@ -467,7 +484,27 @@ def build_cell(
         if current_receipt:
             currentness_evidence.append(str(current_receipt))
 
+    if family["id"] == "fee_calculation_guidance" and fee_guidance_item_body_projection:
+        projected_item_state = str(
+            fee_guidance_item_body_projection.get("service_level_item_body")
+            or "NOT_ESTABLISHED"
+        )
+        content_raw = [projected_item_state]
+        item_body_evidence = [
+            f"data/shared/fee-guidance/item-body-assurance.json#{service_id}"
+        ]
+        if service_id == "dayservice":
+            item_body_evidence.append("data/fee-guidance-independent-verification.json")
+        elif service_id == "dayrehab":
+            item_body_evidence.append("data/dayrehab-fee-guidance-independent-audit.json")
+
     item_state = normalize_verification(content_raw[0] if len(content_raw) == 1 else (" | ".join(content_raw) if content_raw else None))
+    if (
+        family["id"] == "fee_calculation_guidance"
+        and fee_guidance_item_body_projection
+        and fee_guidance_item_body_projection.get("service_level_item_body") == "NOT_APPLICABLE"
+    ):
+        item_state = "NOT_APPLICABLE"
     current_state = normalize_currentness(currentness_raw[0] if len(currentness_raw) == 1 else (" | ".join(currentness_raw) if currentness_raw else None))
 
     ingestion_human = [
@@ -646,11 +683,17 @@ def build() -> dict:
     delegated_manifest = load("data/shared/remuneration-delegated/manifest.json")
     delegated_applicability_data = load("data/shared/remuneration-delegated/service-applicability.json")
     delegated_relations_data = load("data/shared/remuneration-delegated/service-relations.json")
+    remuneration_assurance_data = load("data/shared/remuneration-notification/service-item-body-assurance.json")
     fee_guidance_manifest_path = ROOT / "data/shared/fee-guidance/manifest.json"
     fee_guidance_manifest = load("data/shared/fee-guidance/manifest.json") if fee_guidance_manifest_path.exists() else None
     fee_guidance_applicability_data = (
         load(str(fee_guidance_manifest.get("service_applicability")))
         if fee_guidance_manifest else {"services": []}
+    )
+    fee_guidance_item_body_assurance_data = (
+        load(str(fee_guidance_manifest.get("item_body_assurance")))
+        if fee_guidance_manifest and fee_guidance_manifest.get("item_body_assurance")
+        else {"service_projections": []}
     )
     other_national_manifest_path = ROOT / "data/shared/other-national-materials/manifest.json"
     other_national_manifest = (
@@ -711,10 +754,18 @@ def build() -> dict:
             for row in unit_price_index.get("service_mappings", [])
         },
         "delegated_manifest": delegated_manifest,
+        "remuneration_assurance": {
+            row["service_id"]: row
+            for row in remuneration_assurance_data.get("services", [])
+        },
         "fee_guidance_manifest": fee_guidance_manifest,
         "fee_guidance_applicability": {
             row["service_id"]: row
             for row in fee_guidance_applicability_data.get("services", [])
+        },
+        "fee_guidance_item_body_projection": {
+            row["service_id"]: row
+            for row in fee_guidance_item_body_assurance_data.get("service_projections", [])
         },
         "other_national_manifest": other_national_manifest,
         "other_national_service_map": other_national_service_map,
@@ -845,8 +896,11 @@ def build() -> dict:
             "data/shared/remuneration-delegated/service-applicability.json",
             "data/shared/remuneration-delegated/service-relations.json",
             "data/shared/remuneration-delegated/service-applicability-adjudications.json",
+            "data/shared/remuneration-notification/body-fingerprints.json",
+            "data/shared/remuneration-notification/service-item-body-assurance.json",
             "data/shared/fee-guidance/manifest.json",
             "data/shared/fee-guidance/service-applicability.json",
+            "data/shared/fee-guidance/item-body-assurance.json",
             "data/shared/other-national-materials/manifest.json",
             "data/shared/other-national-materials/national-corpus.json",
             "data/shared/other-national-materials/service-applicability.json",
