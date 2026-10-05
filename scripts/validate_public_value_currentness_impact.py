@@ -57,7 +57,19 @@ def ready_units(cell: dict) -> set[str]:
 
 def main() -> int:
     base = load(BASE_MATRIX)
-    projected = coverage.build()
+    candidate = load(CANDIDATE)
+    original_load = coverage.load
+
+    def candidate_aware_load(relative):
+        if str(relative) == "data/verification/bounded-currentness-closure-worker-b.json":
+            return candidate
+        return original_load(relative)
+
+    coverage.load = candidate_aware_load
+    try:
+        projected = coverage.build()
+    finally:
+        coverage.load = original_load
     base_cells = cells(base)
     projected_cells = cells(projected)
 
