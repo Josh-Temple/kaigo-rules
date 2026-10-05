@@ -77,7 +77,15 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
             ["notice27.item.1.capacity", "notice27.item.1.staffing"],
         )
         assurance = row["assurance"]
-        self.assertEqual(assurance["item_body_verification"], "NOT_ESTABLISHED")
+        self.assertEqual(assurance["item_body_verification"], "PASS")
+        self.assertEqual(
+            assurance["item_body_verified_node_count"],
+            row["mapped_node_count"] + len(row["compatibility_subnode_ids"]),
+        )
+        self.assertIn(
+            "data/shared/remuneration-delegated/item-body-verification.json",
+            assurance["item_body_projection_evidence"],
+        )
         self.assertEqual(assurance["currentness"], "NOT_ESTABLISHED")
         self.assertEqual(assurance["relation_verification"], "NOT_ESTABLISHED")
         self.assertEqual(assurance["human_review"], "NOT_REVIEWED")
@@ -121,7 +129,18 @@ class DelegatedRemunerationSharedCorpusTest(unittest.TestCase):
         self.assertIn("notice95.item.44-4", applicability["welfare-equipment-rental"]["mapped_node_ids"])
         for row in applicability.values():
             assurance = row["assurance"]
-            self.assertEqual(assurance["item_body_verification"], "NOT_ESTABLISHED")
+            if row["applicability_state"] == "MAPPED":
+                self.assertEqual(assurance["item_body_verification"], "PASS")
+                self.assertEqual(
+                    assurance["item_body_verified_node_count"],
+                    row["mapped_node_count"] + len(row["compatibility_subnode_ids"]),
+                )
+                self.assertIn(
+                    "data/shared/remuneration-delegated/item-body-verification.json",
+                    assurance["item_body_projection_evidence"],
+                )
+            else:
+                self.assertEqual(assurance["item_body_verification"], "NOT_ESTABLISHED")
             self.assertEqual(assurance["currentness"], "NOT_ESTABLISHED")
             self.assertEqual(assurance["relation_verification"], "NOT_ESTABLISHED")
             self.assertEqual(assurance["human_review"], "NOT_REVIEWED")
