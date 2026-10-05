@@ -69,6 +69,14 @@
       "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
       "required_for_source_inventory": true,
       "note": "厚生労働省公式の新旧対照資料。3 運営に関する基準 (1)「内容及び手続きの説明及び同意」の新欄本文を直接確認する。掲載時点・改正履歴全体を根拠にcurrentnessを昇格させない。"
+    },
+    {
+      "id": "r3-records-direct-notice-evidence",
+      "url": "https://www.mhlw.go.jp/content/12404000/000772407.pdf",
+      "role": "HISTORICAL_DIRECT_NOTICE_BODY_EVIDENCE",
+      "status": "OFFICIAL_SOURCE_SPECIFIC_EVIDENCE",
+      "required_for_source_inventory": false,
+      "note": "厚生労働省公式の令和3年度改正新旧対照資料。第2／3／(24)「記録の整備」の解釈通知本文を直接確認する。令和6年度資料では同位置が(25)へ移り本文は「略」のため、この資料を現行統合本文とはみなさず、令和6年度locatorと版を分離してitem-body evidenceに用いる。"
     }
   ],
   "source_assurance": {

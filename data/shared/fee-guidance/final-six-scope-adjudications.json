@@ -2,7 +2,7 @@
   "format_version": 1,
   "source_family": "fee_calculation_guidance",
   "worker": "A",
-  "fresh_read_main_head": "e0d814b1b22d449fd13784bbb051fba5c27df64e",
+  "fresh_read_main_head": "8094361e28c25c134b7195abf12977e904c19162",
   "observed_on": "2026-10-05",
   "policy": {
     "absence_is_not_not_applicable": true,
@@ -148,17 +148,33 @@
     },
     {
       "service_id": "preventive-support",
-      "decision": "UNRESOLVED",
-      "applicability_state": "NOT_ESTABLISHED",
-      "node_ids": [],
-      "relation_ids": [],
-      "rationale": "介護予防支援の個別要件から老企第36号への参照は確認できるが、その個別参照だけではFee Guidance source family全体のservice scopeを安全に定義できないため、SCOPE_NOT_DEFINEDを維持する。",
+      "decision": "SCOPE_DEFINED",
+      "applicability_state": "MAPPED",
+      "node_ids": [
+        "fee-guidance.shared.preventive.r6-comparison.II.11"
+      ],
+      "relation_ids": [
+        "fee-guidance.scope.preventive-support.preventive-r6.II.11"
+      ],
+      "rationale": "厚生労働省の令和6年度改定新旧対照資料に、Fee Guidance source familyである「指定介護予防サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について」の独立section「11 介護予防支援」が明示され、令和8年度改正資料でも同sectionが新旧双方に明示されている。個別の老企第36号参照から推論せず、source-family一次資料そのものからservice scopeを定義できるためSCOPE_DEFINED / MAPPEDとする。",
       "evidence": [
         {
           "issuer": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/content/000925367.pdf",
-          "locator": "501 指定介護予防支援介護給付費 / 老企第36号 第3の15への個別参照",
-          "use": "UNRESOLVED_BOUNDARY_EVIDENCE"
+          "url": "https://www.mhlw.go.jp/content/12300000/001227907.pdf",
+          "source_version": "令和6年度介護報酬改定 新旧対照資料",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "locator": "第2 11 介護予防支援（PDF page 53 / extracted text line 2689）",
+          "snapshot_path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+          "snapshot_sha256": "c717d0208928bab38029427384a6e5f280ad86de3e250877c31f11079a45b343",
+          "use": "SERVICE_APPLICABILITY_ONLY"
+        },
+        {
+          "issuer": "厚生労働省",
+          "url": "https://www.mhlw.go.jp/content/12404000/001675938.pdf",
+          "source_version": "令和8年度介護報酬改定 通知改正新旧対照",
+          "locator": "11 介護予防支援（新旧双方）",
+          "observed_on": "2026-10-05",
+          "use": "CURRENT_AMENDMENT_CORROBORATION_ONLY"
         }
       ],
       "assurance": {

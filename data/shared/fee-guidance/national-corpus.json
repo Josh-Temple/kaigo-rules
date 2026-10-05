@@ -2184,6 +2184,39 @@
         "route_exposure": "BLOCKED",
         "automatic_promotion_allowed": false
       }
+    },
+    {
+      "id": "fee-guidance.shared.preventive.r6-comparison.II.11",
+      "source_id": "preventive-guidance-r6-final-comparison-shared",
+      "number_path": [
+        "第2",
+        "11"
+      ],
+      "title": "介護予防支援",
+      "content_kind": "AMENDMENT_COMPARISON_SECTION_LOCATOR",
+      "text_ref": {
+        "path": "data/shared/fee-guidance/r6-preventive-comparison-section-locators.txt",
+        "start_line": 10,
+        "end_line": 10,
+        "sha256": "0aef99bcc657f8cd87a9424a3421546c917dfd6c7e7483c9915712db5e44658b"
+      },
+      "source_locator": {
+        "pdf_page": 53,
+        "extracted_text_line": 2689
+      },
+      "official_text": null,
+      "omissions_preserved": true,
+      "columns": "NEW_LEFT_OLD_RIGHT_UNSEPARATED",
+      "assurance": {
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "service_applicability_verification": "NOT_ESTABLISHED",
+        "service_relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED",
+        "automatic_promotion_allowed": false
+      }
     }
   ]
 }

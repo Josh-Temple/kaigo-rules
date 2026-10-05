@@ -2,12 +2,10 @@
   "format_version": 1,
   "generated_by": "scripts/build_relation_human_review_packet.py",
   "source_queue": "data/relation-verification-queue.json",
-  "policy": "This packet organizes unresolved relation review only. Blank reviewer fields must not be interpreted as rejection or approval. Packet generation never promotes independent verification, currentness, or human-review state.",
+  "policy": "This packet organizes only Worker D-owned unresolved relation review. Source-link freshness/direct-evidence relations are excluded because they are owned by Worker B. Blank reviewer fields must not be interpreted as rejection or approval. Packet generation never promotes independent verification, currentness, or human-review state.",
   "summary": {
-    "items_total": 59,
+    "items_total": 58,
     "classification_counts": {
-      "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
-      "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
       "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
       "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
       "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
@@ -201,42 +199,6 @@
       "review_prompt": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
       "existing_blockers": [
         "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
-      ],
-      "decision_options": [
-        "CONFIRM_RELATION",
-        "REJECT_RELATION",
-        "NEEDS_MORE_EVIDENCE"
-      ],
-      "reviewer_decision": null,
-      "reviewer_note": null,
-      "reviewed_at": null
-    },
-    {
-      "review_id": "REL-006",
-      "identity": {
-        "from": "fee.dayservice.root",
-        "relation": "latest_interpretation_amendment_evidence",
-        "to": "mhlw-r8-fee-guidance-may-amendment"
-      },
-      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
-      "source": {
-        "id": "fee.dayservice.root",
-        "kind": "remuneration",
-        "label": "通所介護費",
-        "route": "/fees",
-        "state": "CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK"
-      },
-      "target": {
-        "id": "mhlw-r8-fee-guidance-may-amendment",
-        "kind": "official_source",
-        "label": "老企第36号等の一部改正について（令和8年5月8日・介護保険最新情報Vol.1502）",
-        "route": "https://www.mhlw.go.jp/content/001698614.pdf",
-        "state": "current_amendment"
-      },
-      "review_prompt": "Is the source-link claim directly evidenced and, for a latest/current claim, is there sufficient update coverage to support freshness as of the review date?",
-      "existing_blockers": [
-        "Source existence alone does not prove the relation semantics.",
-        "Freshness-sensitive labels must not be inferred from historical provenance."
       ],
       "decision_options": [
         "CONFIRM_RELATION",

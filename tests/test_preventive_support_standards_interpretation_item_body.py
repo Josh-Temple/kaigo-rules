@@ -38,14 +38,14 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
             self.audit["audit_kind"],
             "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION",
         )
-        self.assertEqual(self.audit["audit_result"], "PARTIAL_WITH_GAPS")
+        self.assertEqual(self.audit["audit_result"], "PASS_WITH_ITEM_LEVEL_EVIDENCE")
         coverage = self.audit["coverage"]
         self.assertEqual(coverage["task_total"], 34)
         self.assertEqual(coverage["structured_text_raw_entries"], 34)
         self.assertEqual(coverage["numbered_child_units_checked"], 55)
         self.assertEqual(
             coverage["verdicts"],
-            {"PASS": 33, "PARTIAL": 1, "GAP": 0, "FAIL": 0},
+            {"PASS": 34, "PARTIAL": 0, "GAP": 0, "FAIL": 0},
         )
         self.assertEqual(len(self.audit["items"]), 34)
         self.assertFalse(
@@ -136,12 +136,34 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
             roles["additional-official-item1-evidence"],
             "DIRECT_ITEM_BODY_EVIDENCE_NOT_CURRENTNESS_PROOF",
         )
+        self.assertEqual(
+            roles["r3-records-direct-notice-evidence"],
+            "DIRECT_HISTORICAL_NOTICE_BODY_EVIDENCE_VERSION_SEPARATED_NOT_CURRENTNESS_PROOF",
+        )
 
     def test_residual_resolution_keeps_version_and_scope_boundaries(self):
         rows = {row["task_id"]: row for row in self.audit["items"]}
-        self.assertEqual(
-            {row["task_id"] for row in self.audit["items"] if row["verdict"] == "PARTIAL"},
-            {"KR2-10-B016"},
+        self.assertFalse(
+            {row["task_id"] for row in self.audit["items"] if row["verdict"] == "PARTIAL"}
+        )
+        b016 = rows["KR2-10-B016"]
+        self.assertEqual(b016["verdict"], "PASS")
+        self.assertTrue(
+            any(
+                evidence["source_manifest_id"] == "r3-records-direct-notice-evidence"
+                and evidence["role"] == "DIRECT_HISTORICAL_ITEM_BODY"
+                and evidence["directly_supports_staging_summary"]
+                and evidence["proves_currentness"] is False
+                for evidence in b016["version_separated_item_body_evidence"]
+            )
+        )
+        self.assertTrue(
+            any(
+                evidence["source_manifest_id"] == "r6-final-comparison"
+                and evidence["role"] == "LATER_VERSION_LOCATOR_ONLY"
+                and evidence["proves_currentness"] is False
+                for evidence in b016["version_separated_item_body_evidence"]
+            )
         )
         b033 = rows["KR2-10-B033"]
         self.assertEqual(b033["verdict"], "PASS")
@@ -205,7 +227,7 @@ class PreventiveSupportStandardsInterpretationItemBodyTest(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertIn("PARTIAL_WITH_GAPS", result.stdout)
+        self.assertIn("PASS_CONTENT_EVIDENCE_MATCH_ONLY", result.stdout)
         self.assertIn("34 tasks", result.stdout)
         self.assertIn("55 child units", result.stdout)
 

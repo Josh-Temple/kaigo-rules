@@ -39,7 +39,7 @@ SOURCE_INVENTORY_PATH = (
     ROOT
     / "data/verification/standards-interpretation-source-inventory/preventive-support.json"
 )
-EXPECTED_COUNTS = {"PASS": 33, "PARTIAL": 1, "GAP": 0, "FAIL": 0}
+EXPECTED_COUNTS = {"PASS": 34, "PARTIAL": 0, "GAP": 0, "FAIL": 0}
 EXPECTED_TASKS = 34
 EXPECTED_CHILD_UNITS = 55
 USER_AGENT = "kaigo-rules-preventive-support-item-body/1.0"
@@ -143,7 +143,7 @@ def validate_receipt() -> tuple[dict, dict]:
         fail("service mismatch")
     if audit.get("audit_kind") != "INDEPENDENT_STANDARDS_INTERPRETATION_ITEM_BODY_VERIFICATION":
         fail("unexpected audit kind")
-    if audit.get("audit_result") != "PARTIAL_WITH_GAPS":
+    if audit.get("audit_result") != "PASS_WITH_ITEM_LEVEL_EVIDENCE":
         fail("unexpected overall result")
     if audit.get("scope_boundary") != "EXISTING_STAGING_TASKS_ONLY":
         fail("scope boundary was widened")
@@ -236,7 +236,7 @@ def validate_receipt() -> tuple[dict, dict]:
     promoted_version_separated = {
         "KR2-10-B004", "KR2-10-B008", "KR2-10-B012", "KR2-10-B014",
         "KR2-10-B018", "KR2-10-B020", "KR2-10-B022", "KR2-10-B025",
-        "KR2-10-B027", "KR2-10-B029", "KR2-10-B031", "KR2-10-B033",
+        "KR2-10-B016", "KR2-10-B027", "KR2-10-B029", "KR2-10-B031", "KR2-10-B033",
     }
     rows_by_task = {row["task_id"]: row for row in rows}
     manifest_ids = {row.get("id") for row in scope.get("source_manifest", [])}
@@ -267,10 +267,29 @@ def validate_receipt() -> tuple[dict, dict]:
     for item in b008_children:
         if item.get("source_manifest_id") == "work-control-source-4" and not item.get("earlier_version_locator"):
             fail("KR2-10-B008: historical child evidence lacks earlier-version locator")
+    b016 = rows_by_task["KR2-10-B016"]
+    b016_evidence = b016.get("version_separated_item_body_evidence", [])
+    if b016.get("verdict") != "PASS":
+        fail("KR2-10-B016: expected closed PASS")
+    if not any(
+        item.get("source_manifest_id") == "r3-records-direct-notice-evidence"
+        and item.get("role") == "DIRECT_HISTORICAL_ITEM_BODY"
+        and item.get("directly_supports_staging_summary") is True
+        and item.get("proves_currentness") is False
+        for item in b016_evidence
+    ):
+        fail("KR2-10-B016: direct historical notice-body evidence missing")
+    if not any(
+        item.get("source_manifest_id") == "r6-final-comparison"
+        and item.get("role") == "LATER_VERSION_LOCATOR_ONLY"
+        and item.get("proves_currentness") is False
+        for item in b016_evidence
+    ):
+        fail("KR2-10-B016: later R6 locator evidence missing")
     remaining_partial = {
         row["task_id"] for row in rows if row.get("verdict") == "PARTIAL"
     }
-    if remaining_partial != {"KR2-10-B016"}:
+    if remaining_partial:
         fail(f"unexpected remaining PARTIAL set: {sorted(remaining_partial)}")
 
     work_control = audit.get("work_control_observation", {})
@@ -296,6 +315,7 @@ def refetch_sources(scope: dict) -> None:
         "work-control-source-4": "介護予防支援",
         "work-control-source-5": "介護予防支援",
         "additional-official-item1-evidence": "内容及び手続きの説明及び同意",
+        "r3-records-direct-notice-evidence": "記録の整備",
     }
     rows = scope.get("source_manifest", [])
     if set(expected_anchors) != {row.get("id") for row in rows}:
@@ -325,7 +345,7 @@ def main() -> None:
 
     counts = audit["coverage"]["verdicts"]
     print(
-        "preventive-support item-body audit: PARTIAL_WITH_GAPS "
+        "preventive-support item-body audit: PASS_CONTENT_EVIDENCE_MATCH_ONLY "
         f"({audit['coverage']['task_total']} tasks; "
         f"{audit['coverage']['numbered_child_units_checked']} child units; "
         f"PASS {counts['PASS']} / PARTIAL {counts['PARTIAL']} / "
