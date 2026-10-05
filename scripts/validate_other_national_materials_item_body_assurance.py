@@ -101,8 +101,16 @@ def main() -> None:
                 host = urlparse(item.get("official_url", "")).hostname
                 if host not in OFFICIAL_HOSTS:
                     errors.append(f"{source_id}: body item uses non-official host {host}")
-                if not isinstance(item.get("pdf_page"), int) or item["pdf_page"] < 1:
-                    errors.append(f"{source_id}: body item missing exact PDF page")
+                page = item.get("pdf_page")
+                pages = item.get("pdf_pages")
+                single_page_ok = isinstance(page, int) and page >= 1
+                page_range_ok = (
+                    isinstance(pages, list)
+                    and bool(pages)
+                    and all(isinstance(value, int) and value >= 1 for value in pages)
+                )
+                if not (single_page_ok or page_range_ok):
+                    errors.append(f"{source_id}: body item missing exact PDF page locator")
                 if not item.get("locator"):
                     errors.append(f"{source_id}: body item missing native locator")
 
