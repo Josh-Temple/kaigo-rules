@@ -5,6 +5,11 @@ import nodesData from "../../data/ordinance37-nodes.json";
 import metaData from "../../data/ordinance37-meta.json";
 import { listServices } from "../../lib/service-catalog";
 import {
+  filterProgressivePublishedRules,
+  isProgressiveRouteCell,
+  listProgressivePublicationServices,
+} from "../../lib/publication-policy";
+import {
   filterRecordsForService,
   resolveServiceScope,
   serviceApplicability,
@@ -41,11 +46,21 @@ const articles = nodes
   .sort(compareArticle);
 
 const catalogServices = listServices();
-const filterServices = catalogServices.filter(
+const legacyFilterServices = catalogServices.filter(
   (service) =>
     service.routing.current_mode === "LEGACY_ROOT" ||
     service.routing.future_service_base_enabled,
 );
+const progressiveFilterServices = listProgressivePublicationServices();
+const filterServices = [
+  ...legacyFilterServices,
+  ...progressiveFilterServices.filter(
+    (service) =>
+      !legacyFilterServices.some(
+        (legacy) => legacy.service_id === service.service_id,
+      ),
+  ),
+];
 const filterServiceIds = new Set(filterServices.map((service) => service.service_id));
 const serviceLabel = new Map(
   catalogServices.map((service) => [service.service_id, service.label]),
@@ -62,6 +77,9 @@ function chapterOf(node: RuleNode) {
 }
 
 function articleStatus(node: RuleNode, selectedServiceId?: string) {
+  if (selectedServiceId && isProgressiveRouteCell(selectedServiceId)) {
+    return "現行本文・適用範囲を確認済み";
+  }
   if (selectedServiceId) {
     const decision = serviceApplicability(
       selectedServiceId,
@@ -121,14 +139,23 @@ export default async function RulesPage({
     (item) => item.service_id === service,
   );
   const selectedServiceId = selectedService?.service_id;
+  const progressiveSelection = Boolean(
+    selectedServiceId && isProgressiveRouteCell(selectedServiceId),
+  );
 
   const displayedArticles = selectedServiceId
-    ? filterRecordsForService(
-        selectedServiceId,
-        "ordinance37",
-        articles,
-        (node) => node.id,
-      )
+    ? progressiveSelection
+      ? filterProgressivePublishedRules(
+          selectedServiceId,
+          articles,
+          (node) => node.id,
+        )
+      : filterRecordsForService(
+          selectedServiceId,
+          "ordinance37",
+          articles,
+          (node) => node.id,
+        )
     : articles;
 
   const chapters = [...new Set(displayedArticles.map(chapterOf))];
@@ -148,7 +175,7 @@ export default async function RulesPage({
       <div className="notice">
         <strong>「すべて」は法令コーパス、「サービス選択」は適用scopeです。</strong><br />
         全体表示に含まれること自体は、各サービスへの適用確認や人手確認を意味しません。
-        現在サービス別フィルタを提供しているのは、公開中の通所介護と通所リハビリテーションです。
+        サービス別フィルタでは、適用範囲と公開条件を確認できた条文だけを表示します。
       </div>
 
       <nav className="rules-filter" aria-label="サービスで基準省令を絞り込む">
@@ -178,10 +205,17 @@ export default async function RulesPage({
       <p className="scope-note">
         {selectedService
           ? `${selectedService.label}で絞り込み中。直接規定と準用規定を含みます。`
-          : "全共有コーパスを表示中。訪問介護・短期入所生活介護のサービス別公開は準備中のため、専用フィルタにはまだ含めていません。"}
+          : "全共有コーパスを表示中。サービスを選ぶと、公開条件を満たした範囲だけに絞り込みます。"}
       </p>
 
-      <VerificationSummary layerId={verificationLayerId} />
+      {progressiveSelection ? (
+        <div className="notice">
+          <strong>現行のe-Gov本文と、このサービスへの直接適用範囲を確認済みです。</strong><br />
+          ここでは公式本文と出典のみを表示し、未確認の制度間関係や解釈は加えていません。
+        </div>
+      ) : (
+        <VerificationSummary layerId={verificationLayerId} />
+      )}
 
       <section className="rules-stats" aria-label="基準DBの収載状況">
         <div><strong>{meta.counts.nodes_total}</strong><span>共有コーパスノード</span></div>
