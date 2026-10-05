@@ -85,6 +85,7 @@ type CatalogService = {
   service_id: string;
   label: string;
   status: string;
+  service_class?: string;
   routing?: {
     future_service_base_enabled?: boolean;
   };
@@ -294,7 +295,7 @@ export const publicNoticeServiceOptions: PublicNoticeServiceOption[] = (
   return {
     service_id: service.service_id,
     label: service.label,
-    service_class: (service as CatalogService & { service_class?: string }).service_class,
+    service_class: service.service_class,
     service_status: service.status,
     route_enabled:
       service.service_id === "dayservice" ||
