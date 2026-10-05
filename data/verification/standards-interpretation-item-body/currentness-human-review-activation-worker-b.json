@@ -50,7 +50,8 @@
     "currentness_before": {
       "BLOCKED": 1,
       "NOT_ESTABLISHED": 38
-    }
+    },
+    "fingerprint_model": "Prefer service-linked pinned snapshot evidence when present; otherwise require a pinned source-document fingerprint at the canonical document group. Document-level fingerprints do not prove service item-body completeness or currentness."
   },
   "evidence_classification_summary": {
     "official current integrated text available": 0,
@@ -85,7 +86,8 @@
           "git_blob_sha": "f983889aaa32d3c78925a60e5717fd1173122855",
           "proves_currentness": false
         }
-      ]
+      ],
+      "fingerprint_scope": "SOURCE_DOCUMENT_LEVEL_VERSIONED_BODY_EVIDENCE"
     },
     {
       "document_id": "rouki25",
@@ -118,7 +120,22 @@
         "current_integrated_text": false,
         "proves_currentness": false
       },
-      "pinned_snapshot_evidence": []
+      "pinned_snapshot_evidence": [
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "b0379a54a7c7685d4563417b7dab1bbcb0cc6e4d",
+          "proves_currentness": false
+        },
+        {
+          "snapshot_path": "data/shared/standards-interpretation/source-snapshots/rouki25-mhlw-direct-display-page2.md",
+          "fingerprint_kind": "GIT_BLOB_SHA_OF_NORMALIZED_OFFICIAL_BODY_SNAPSHOT",
+          "git_blob_sha": "3dd4ee8956922ea53dcbca6ac5a1627cd403e790",
+          "proves_currentness": false
+        }
+      ],
+      "fingerprint_scope": "SOURCE_DOCUMENT_LEVEL_ONLY_NOT_SERVICE_ITEM_BODY_PROOF",
+      "fingerprint_source": "data/shared/standards-interpretation/manifest.json#sources[source_id=rouki25-mhlw-direct-display]"
     },
     {
       "document_id": "rouki33",
@@ -152,7 +169,8 @@
           "git_blob_sha": "797b15abb95a1f4619a11a25cd067745f4987402",
           "proves_currentness": false
         }
-      ]
+      ],
+      "fingerprint_scope": "SOURCE_DOCUMENT_LEVEL_VERSIONED_BODY_EVIDENCE"
     },
     {
       "document_id": "rouki43",
@@ -178,7 +196,8 @@
           "git_blob_sha": "e52b8ddc6939d80e254915be2c7bafac06630ea0",
           "proves_currentness": false
         }
-      ]
+      ],
+      "fingerprint_scope": "SOURCE_DOCUMENT_LEVEL_VERSIONED_BODY_EVIDENCE"
     },
     {
       "document_id": "rouki44",
@@ -204,7 +223,8 @@
           "git_blob_sha": "12e4a531533970ef664fb6efa4fcd8d532f96805",
           "proves_currentness": false
         }
-      ]
+      ],
+      "fingerprint_scope": "SOURCE_DOCUMENT_LEVEL_VERSIONED_BODY_EVIDENCE"
     }
   ],
   "result": {
