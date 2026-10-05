@@ -47,7 +47,7 @@ class OtherNationalMaterialsTest(unittest.TestCase):
             "mhlw-application-forms": ("STRUCTURED_PARTIAL", "PARTIAL"),
             "mhlw-electronic-application-operator-manual-v2-50": ("REFERENCE_ONLY", "NOT_ESTABLISHED"),
             "mhlw-accident-report-vol1332": ("STRUCTURED_VERIFIED", "PASS"),
-            "mhlw-care-business-financial-db-manual-v1-20": ("REFERENCE_ONLY", "NOT_ESTABLISHED"),
+            "mhlw-care-business-financial-db-manual-v1-20": ("STRUCTURED_PARTIAL", "PARTIAL"),
         }
         for row in self.corpus["sources"]:
             self.assertFalse(row["body_duplicated"])
@@ -62,7 +62,11 @@ class OtherNationalMaterialsTest(unittest.TestCase):
         body_source_ids = {row["canonical_source_id"] for row in self.body["sources"]}
         self.assertEqual(
             body_source_ids,
-            {"mhlw-application-forms", "mhlw-accident-report-vol1332"},
+            {
+                "mhlw-application-forms",
+                "mhlw-accident-report-vol1332",
+                "mhlw-care-business-financial-db-manual-v1-20",
+            },
         )
 
     def test_item_body_projection_is_fail_closed_across_all_services(self):
@@ -74,15 +78,47 @@ class OtherNationalMaterialsTest(unittest.TestCase):
             {row["service_level_item_body"] for row in projections},
             {"PARTIAL"},
         )
-        self.assertEqual(
-            self.item_assurance["source_summary"],
-            {"PASS": 1, "PARTIAL": 1, "NOT_ESTABLISHED": 2},
-        )
+        calculated_summary = {
+            state: sum(
+                row["result"] == state
+                for row in self.item_assurance["source_verifications"]
+            )
+            for state in ("PASS", "PARTIAL", "NOT_ESTABLISHED")
+        }
+        self.assertEqual(self.item_assurance["source_summary"], calculated_summary)
         for row in projections:
             self.assertFalse(row["currentness_promoted"])
             self.assertFalse(row["human_review_promoted"])
             self.assertFalse(row["publication_promoted"])
             self.assertFalse(row["route_exposure_promoted"])
+
+    def test_financial_db_body_assurance_is_bounded_and_does_not_promote_currentness(self):
+        source_id = "mhlw-care-business-financial-db-manual-v1-20"
+        body = next(
+            row for row in self.body["sources"]
+            if row["canonical_source_id"] == source_id
+        )
+        assurance = next(
+            row for row in self.item_assurance["source_verifications"]
+            if row["canonical_source_id"] == source_id
+        )
+        self.assertEqual(body["body_coverage_state"], "PARTIAL")
+        self.assertEqual(assurance["result"], "PARTIAL")
+        self.assertEqual(
+            assurance["coverage_kind"],
+            "VERIFIED_REVISION_HISTORY_AND_SECTION_1_4_SERVICE_TABLE_ONLY",
+        )
+        self.assertEqual(
+            set(assurance["verified_canonical_item_ids"]),
+            {item["canonical_item_id"] for item in body["items"]},
+        )
+        self.assertTrue(assurance["remaining_body_gap"])
+        self.assertFalse(assurance["currentness_claimed"])
+        corpus_row = next(row for row in self.corpus["sources"] if row["source_id"] == source_id)
+        self.assertEqual(corpus_row["assurance"]["currentness"], "PARTIAL")
+        self.assertEqual(corpus_row["assurance"]["human_review"], "NOT_REVIEWED")
+        self.assertEqual(corpus_row["assurance"]["publication"], "BLOCKED")
+        self.assertEqual(corpus_row["assurance"]["route_exposure"], "BLOCKED")
 
     def test_application_forms_scope_is_primary_source_explicit_not_nationwide_inference(self):
         services = {row["service_id"] for row in self.service_manifest["services"]}
