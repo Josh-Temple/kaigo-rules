@@ -1,0 +1,42 @@
+name: Verify standards interpretation item-body assurance closure
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/services/preventive-support.json"
+      - "data/services/preventive-support/standards-interpretation-scope.json"
+      - "data/verification/standards-interpretation-gates.json"
+      - "data/verification/standards-interpretation-item-body/**"
+      - "scripts/verify_preventive_support_standards_interpretation_item_body.py"
+      - "scripts/validate_standards_interpretation_item_body.py"
+      - "scripts/validate_standards_interpretation_assurance_closure.py"
+      - "tests/test_preventive_support_standards_interpretation_item_body.py"
+      - "tests/test_standards_interpretation_item_body_integration.py"
+      - "tests/test_standards_interpretation_assurance_closure.py"
+      - ".github/workflows/verify-standards-interpretation-item-body-assurance.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Install PDF text extractor
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Re-fetch bounded official sources and verify preventive-support item body
+        run: python scripts/verify_preventive_support_standards_interpretation_item_body.py --refetch-sources
+      - name: Validate integrated five-service item-body contracts
+        run: python scripts/validate_standards_interpretation_item_body.py --all
+      - name: Validate assurance-closure inventory
+        run: python scripts/validate_standards_interpretation_assurance_closure.py
+      - name: Run item-body assurance tests
+        run: |
+          python -m unittest             tests.test_preventive_support_standards_interpretation_item_body             tests.test_standards_interpretation_item_body_integration             tests.test_standards_interpretation_assurance_closure

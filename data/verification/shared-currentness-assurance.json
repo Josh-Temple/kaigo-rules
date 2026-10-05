@@ -1,0 +1,256 @@
+{
+  "format_version": 1,
+  "assurance_kind": "SHARED_CURRENTNESS_EVIDENCE_AND_SAFE_PROJECTION",
+  "observed_date": "2026-10-05",
+  "base_main_sha": "8094361e28c25c134b7195abf12977e904c19162",
+  "purpose": "Establish high-leverage source-level currentness evidence for shared national source families while preventing unsupported service-level currentness propagation.",
+  "projection_invariant": {
+    "required_conditions": [
+      "source_identity_currentness_established",
+      "service_scope_established",
+      "service_applicability_explicitly_established",
+      "service_reference_aligned_with_current_source_identity",
+      "no_historical_or_old_version_pin"
+    ],
+    "additional_fail_closed_gate": "automatic_verification_promotion_allowed must be explicitly true in the service applicability/scope evidence before the projection evaluator may recommend PASS.",
+    "when_all_conditions_and_gate_hold": "A service currentness PASS may be recommended for a source family whose source-level verdict is sufficient for service currentness.",
+    "otherwise": "Preserve the canonical currentness state. Do not infer PASS.",
+    "axis_separation": [
+      "item_body_verification",
+      "relation_verification",
+      "human_review",
+      "publication",
+      "route_exposure"
+    ]
+  },
+  "source_families": {
+    "care_insurance_act": {
+      "source_level_verdict": "CURRENT",
+      "authority": "e-Gov法令検索",
+      "law_id": "409AC0000000123",
+      "meta_path": "data/care-insurance-act-meta.json",
+      "freshness_verifier": "scripts/verify_egov_source_freshness.py",
+      "workflow": ".github/workflows/verify-egov-source-freshness.yml",
+      "source_snapshot": {
+        "current_revision_id": "409AC0000000123_20261001_507AC0000000087",
+        "current_revision_status": "CurrentEnforced",
+        "repeal_status": "None",
+        "amendment_law_id": "507AC0000000087",
+        "amendment_promulgate_date": "2025-12-12",
+        "amendment_enforcement_date": "2026-10-01",
+        "updated": "2026-10-01T19:53:08+09:00",
+        "xml_sha256": "16935a64750d05314e16149b869b029c542f98a2bb271d87449d2a8258e54f20",
+        "revision_response_sha256": "d28266daf10795b383533402f131aa5c9132c2f263bd9dee8ee3a196eb3574a5",
+        "revision_count": 56
+      },
+      "service_projection_policy": "ELIGIBLE_ONLY_AFTER_ALL_INVARIANT_CONDITIONS_AND_EXPLICIT_PROMOTION_GATE"
+    },
+    "governing_standards_ordinance": {
+      "source_level_verdict": "CURRENT_BY_CORPUS",
+      "authority": "e-Gov法令検索",
+      "manifest": "data/shared/standards/manifest.json",
+      "freshness_verifiers": [
+        "scripts/verify_egov_source_freshness.py",
+        "scripts/verify_shared_standards_source_freshness.py"
+      ],
+      "workflows": [
+        ".github/workflows/verify-egov-source-freshness.yml",
+        ".github/workflows/verify-shared-standards-corpora.yml"
+      ],
+      "current_corpus_count": 9,
+      "corpora": [
+        {
+          "corpus_id": "ordinance37",
+          "law_id": "411M50000100037",
+          "meta_path": "data/ordinance37-meta.json",
+          "current_revision_id": "411M50000100037_20250401_506M60000100164",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "506M60000100164",
+          "amendment_promulgate_date": "2024-12-27",
+          "amendment_enforcement_date": "2025-04-01",
+          "updated": "2025-04-02T04:26:26+09:00",
+          "xml_sha256": "5d03f72f921abf42bc2a9a5405f7405dffda86f5e83c62898a12b9b62d975c4b",
+          "revision_response_sha256": "28ac7ee1ed7019e4ab4891450370a812920cd2b230a3b80adbba398edb40645c",
+          "revision_count": 9
+        },
+        {
+          "corpus_id": "community-based-standards",
+          "law_id": "418M60000100034",
+          "meta_path": "data/shared/standards/community-based-standards/meta.json",
+          "current_revision_id": "418M60000100034_20250401_506M60000100164",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "506M60000100164",
+          "amendment_promulgate_date": "2024-12-27",
+          "amendment_enforcement_date": "2025-04-01",
+          "updated": "2025-04-02T08:11:37+09:00",
+          "xml_sha256": "90741b00c7f04955f5359cef94c1d4c0fd4a0270cebed9d1878bce62ca4ecf55",
+          "revision_response_sha256": "6bb7c7b432867cf9aaa2ecce559d688f55f65a8f2d4f7716fed03758129d44e5",
+          "revision_count": 10
+        },
+        {
+          "corpus_id": "preventive-services-standards",
+          "law_id": "418M60000100035",
+          "meta_path": "data/shared/standards/preventive-services-standards/meta.json",
+          "current_revision_id": "418M60000100035_20250401_506M60000100164",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "506M60000100164",
+          "amendment_promulgate_date": "2024-12-27",
+          "amendment_enforcement_date": "2025-04-01",
+          "updated": "2025-04-02T08:13:11+09:00",
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7",
+          "revision_count": 8
+        },
+        {
+          "corpus_id": "preventive-community-based-standards",
+          "law_id": "418M60000100036",
+          "meta_path": "data/shared/standards/preventive-community-based-standards/meta.json",
+          "current_revision_id": "418M60000100036_20240401_506M60000100016",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "506M60000100016",
+          "amendment_promulgate_date": "2024-01-25",
+          "amendment_enforcement_date": "2024-04-01",
+          "updated": "2024-07-01T14:40:37+09:00",
+          "xml_sha256": "3e6634f51d46c75b724c4c0efa42681a7691d471c44b5bfc2249616b0413e851",
+          "revision_response_sha256": "d2482403696b6d41928e125f76eea6272ea0a9847e2f2ac33fd1da0fa61dce57",
+          "revision_count": 7
+        },
+        {
+          "corpus_id": "care-management-standards",
+          "law_id": "411M50000100038",
+          "meta_path": "data/shared/standards/care-management-standards/meta.json",
+          "current_revision_id": "411M50000100038_20240401_506M60000100016",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "506M60000100016",
+          "amendment_promulgate_date": "2024-01-25",
+          "amendment_enforcement_date": "2024-04-01",
+          "updated": "2024-07-01T14:35:00+09:00",
+          "xml_sha256": "f747b2b28db8cdfd810d2196e23e2d6f7f89364316d810e1f0f79c076a6f2c3b",
+          "revision_response_sha256": "cf24d4c9aee44e75e3c7bb8a6e8cb77aa19b7177ec8e6d2f4d53f970476fc46d",
+          "revision_count": 9
+        },
+        {
+          "corpus_id": "preventive-support-standards",
+          "law_id": "418M60000100037",
+          "meta_path": "data/shared/standards/preventive-support-standards/meta.json",
+          "current_revision_id": "418M60000100037_20240401_506M60000100061",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "506M60000100061",
+          "amendment_promulgate_date": "2024-03-29",
+          "amendment_enforcement_date": "2024-04-01",
+          "updated": "2024-07-01T15:09:54+09:00",
+          "xml_sha256": "3e768f9cad728774c309666bd205521be5a27255a439b649c578ae7e18232621",
+          "revision_response_sha256": "f915e94a19815170312cd6b68b7fbc922738eeb2f9a622cf511f96716d230970",
+          "revision_count": 6
+        },
+        {
+          "corpus_id": "elderly-welfare-facility-standards",
+          "law_id": "411M50000100039",
+          "meta_path": "data/shared/standards/elderly-welfare-facility-standards/meta.json",
+          "current_revision_id": "411M50000100039_20250401_506M60000100164",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "506M60000100164",
+          "amendment_promulgate_date": "2024-12-27",
+          "amendment_enforcement_date": "2025-04-01",
+          "updated": "2025-04-02T04:27:59+09:00",
+          "xml_sha256": "9cd5318322c7470363b188681d00f58549cfaaf6213aebfb5f110e2624e46bdd",
+          "revision_response_sha256": "8d79faccfad8e1db5ba8f4f252d0c97274c8bd41bf26184aced087ac42851fa7",
+          "revision_count": 6
+        },
+        {
+          "corpus_id": "geriatric-health-services-facility-standards",
+          "law_id": "411M50000100040",
+          "meta_path": "data/shared/standards/geriatric-health-services-facility-standards/meta.json",
+          "current_revision_id": "411M50000100040_20240401_506M60000100016",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "506M60000100016",
+          "amendment_promulgate_date": "2024-01-25",
+          "amendment_enforcement_date": "2024-04-01",
+          "updated": "2024-04-26T15:11:35+09:00",
+          "xml_sha256": "dce085ac4aae192660f7eea137a37034453c605a319b180f1ac2c25943ac60fd",
+          "revision_response_sha256": "870782b0d7d277da75cd3a83af498a2a954f5748a703c8fc19c1e014d45e5b5a",
+          "revision_count": 5
+        },
+        {
+          "corpus_id": "long-term-care-medical-facility-standards",
+          "law_id": "430M60000100005",
+          "meta_path": "data/shared/standards/long-term-care-medical-facility-standards/meta.json",
+          "current_revision_id": "430M60000100005_20251120_507M60000100103",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "amendment_law_id": "507M60000100103",
+          "amendment_promulgate_date": "2025-10-22",
+          "amendment_enforcement_date": "2025-11-20",
+          "updated": "2025-11-20T00:55:50+09:00",
+          "xml_sha256": "f87bf66b72ddaa93ca02d649a63bedf75559608903660055910d68d1f51b061c",
+          "revision_response_sha256": "eded15d1a22ed995bd174c735e75129a5c4d8d4ada672d80c5d4cb3c796a7d89",
+          "revision_count": 7
+        }
+      ],
+      "historical_or_repealed_policy": "Historical/repealed corpora are excluded from current-source projection.",
+      "service_projection_policy": "ELIGIBLE_ONLY_AFTER_MAPPED_CORPUS_IDENTITY, VERIFIED_APPLICABILITY, VERSION_ALIGNMENT, AND_EXPLICIT_PROMOTION_GATE"
+    },
+    "national_qa": {
+      "source_level_verdict": "CURRENT_COMPILATION_ONLY",
+      "authority": "厚生労働省",
+      "official_page": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+      "workbook": "https://www.mhlw.go.jp/content/12300000/001751835.xlsx",
+      "workbook_sha256": "2b3e658d1659b42423fe1d3f7cc8b2fd24b58914ce65a6d15d16d0b64fc26c6b",
+      "workbook_sheets": [
+        "介護サービスQ＆A集（令和8年9月掲載）"
+      ],
+      "official_compilation_marker": {
+        "observed_date": "2026-10-05",
+        "latest_included_volume": 1479,
+        "note": "厚生労働省の現行Q&Aページで、介護保険最新情報 vol.1479 まで収載と確認。"
+      },
+      "freshness_verifier": "scripts/verify_qa_source_freshness.py",
+      "workflow": ".github/workflows/verify-qa-source-freshness.yml",
+      "individual_qa_currentness": "NOT_ESTABLISHED_BY_COMPILATION_FRESHNESS",
+      "service_projection_policy": "NEVER_PROMOTE_SERVICE_CURRENTNESS_TO_PASS_FROM_COMPILATION_FRESHNESS_ALONE"
+    }
+  },
+  "source_link_freshness_relation": {
+    "identity": {
+      "from": "fee.dayservice.root",
+      "relation": "latest_interpretation_amendment_evidence",
+      "to": "mhlw-r8-fee-guidance-may-amendment"
+    },
+    "queue_classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+    "direct_source_identity": "CONFIRMED",
+    "observed_official_index": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html",
+    "observations": [
+      {
+        "volume": 1502,
+        "published_date": "2026-05-08",
+        "role": "direct amendment evidence for the R8 fee-guidance amendment"
+      },
+      {
+        "volume": 1523,
+        "published_date": "2026-07-13",
+        "role": "later Q&A concerning the issuance/amendment; not treated as proof of a later same-family amendment"
+      }
+    ],
+    "latestness_verdict": "NOT_ESTABLISHED",
+    "queue_disposition": "KEEP_OPEN",
+    "reason": "The official index confirms the direct amendment source and later related Q&A, but absence of a later same-family amendment entry is negative evidence and is not conclusive proof that Vol.1502 is the latest applicable amendment."
+  },
+  "safety": {
+    "global_generated_artifacts_updated": false,
+    "source_currentness_broadcast_to_all_services": false,
+    "item_body_promoted": false,
+    "relation_verification_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_enabled": false,
+    "negative_search_used_as_conclusive_proof": false
+  }
+}

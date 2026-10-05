@@ -7210,13 +7210,13 @@
           "ingestion": {
             "state": "INGESTED",
             "raw_status": [
-              "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN"
+              "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING"
             ]
           },
           "item_body_verification": {
-            "state": "PARTIAL",
+            "state": "PASS",
             "raw_status": [
-              "PARTIAL_WITH_GAPS"
+              "PASS_CONTENT_EVIDENCE_MATCH_ONLY"
             ],
             "evidence": [
               "data/verification/standards-interpretation-item-body/preventive-support.json"
@@ -7395,13 +7395,20 @@
             ]
           },
           "service_scope": {
-            "state": "SCOPE_NOT_DEFINED",
-            "declared_keys": [],
-            "evidence": []
+            "state": "SCOPE_DEFINED",
+            "declared_keys": [
+              "fee_guidance"
+            ],
+            "evidence": [
+              "data/services/preventive-support/fee-guidance-scope.json"
+            ]
           },
           "ingestion": {
-            "state": "NOT_INGESTED",
-            "raw_status": []
+            "state": "PARTIAL",
+            "raw_status": [
+              "INGESTED_PARTIAL",
+              "R6_COMPARISON_SECTION_SHARED_REFERENCE"
+            ]
           },
           "item_body_verification": {
             "state": "NOT_ESTABLISHED",
@@ -7421,7 +7428,9 @@
           },
           "human_review": {
             "state": "NOT_REVIEWED",
-            "raw_status": []
+            "raw_status": [
+              "NOT_REVIEWED"
+            ]
           },
           "publication": {
             "state": "BLOCKED",
@@ -22397,8 +22406,7 @@
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 26,
-          "PARTIAL": 1,
-          "PASS": 12
+          "PASS": 13
         },
         "currentness": {
           "BLOCKED": 1,
@@ -22489,14 +22497,12 @@
           "AVAILABLE": 39
         },
         "service_scope": {
-          "SCOPE_DEFINED": 38,
-          "SCOPE_NOT_DEFINED": 1
+          "SCOPE_DEFINED": 39
         },
         "ingestion": {
           "INGESTED": 2,
           "NOT_APPLICABLE": 2,
-          "NOT_INGESTED": 1,
-          "PARTIAL": 34
+          "PARTIAL": 35
         },
         "item_body_verification": {
           "NOT_ESTABLISHED": 37,
@@ -22622,12 +22628,7 @@
         }
       }
     },
-    "shared_corpus_available_but_service_scope_missing": [
-      {
-        "service_id": "preventive-support",
-        "source_family": "fee_calculation_guidance"
-      }
-    ],
+    "shared_corpus_available_but_service_scope_missing": [],
     "genuinely_missing_corpus": [],
     "currentness_gaps": [
       {
@@ -23193,6 +23194,11 @@
       {
         "service_id": "preventive-support",
         "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24619,17 +24625,17 @@
       },
       {
         "service_id": "preventive-support",
-        "source_family": "standards_interpretation_notice",
-        "state": "PARTIAL"
-      },
-      {
-        "service_id": "preventive-support",
         "source_family": "remuneration_notification",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "preventive-support",
         "source_family": "delegated_remuneration_criteria",
+        "state": "NOT_ESTABLISHED"
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25894,6 +25900,11 @@
       {
         "service_id": "preventive-support",
         "source_family": "delegated_remuneration_criteria",
+        "state": "BLOCKED"
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "fee_calculation_guidance",
         "state": "BLOCKED"
       },
       {

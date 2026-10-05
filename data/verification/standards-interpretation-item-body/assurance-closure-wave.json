@@ -1,0 +1,490 @@
+{
+  "format_version": 1,
+  "wave_id": "2026-10-05-assurance-closure-worker-c",
+  "source_family": "standards_interpretation_notice",
+  "base_main_sha": "8094361e28c25c134b7195abf12977e904c19162",
+  "purpose": "Fresh inventory of the 26 NOT_ESTABLISHED services plus closure evidence for the sole PARTIAL service. This artifact is assurance evidence, not a generated coverage projection.",
+  "before": {
+    "service_level_item_body": {
+      "PASS": 12,
+      "PARTIAL": 1,
+      "NOT_ESTABLISHED": 26
+    }
+  },
+  "after_worker_c": {
+    "service_level_item_body": {
+      "PASS": 13,
+      "PARTIAL": 0,
+      "NOT_ESTABLISHED": 26
+    }
+  },
+  "resolved": [
+    {
+      "service_id": "preventive-support",
+      "prior_state": "PARTIAL_WITH_GAPS",
+      "new_state": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+      "receipt": "data/verification/standards-interpretation-item-body/preventive-support.json",
+      "direct_notice_source_id": "r3-records-direct-notice-evidence",
+      "direct_notice_locator": "第2／3／(24) 記録の整備",
+      "later_locator_source_id": "r6-final-comparison",
+      "later_locator": "第2／3／(25)（略） / 旧(24)（略）",
+      "currentness": "NOT_ESTABLISHED",
+      "human_review": "NOT_REVIEWED",
+      "publication_allowed": false,
+      "route_enabled": false
+    }
+  ],
+  "unresolved": [
+    {
+      "service_id": "care-medical-institution",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#care-medical-institution",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#community-elderly-facility",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "community-specific-facility",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#community-specific-facility",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#dementia-dayservice",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "dementia-group-home",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#dementia-group-home",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#elderly-health-facility",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#elderly-welfare-facility",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#nursing-small-scale-multifunctional",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-dayrehab/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#preventive-dementia-dayservice",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#preventive-dementia-group-home",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-homebath/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-homecaremanagement/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-homenursing/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-homerehab/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-shortstay-life/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-shortstay-medical/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#preventive-small-scale-multifunctional",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-specific-facility/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/preventive-welfare-equipment-rental/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "shortstay-medical",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/shortstay-medical/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SHARED_REMAINING_SCOPE",
+      "evidence": [
+        "data/shared/standards-interpretation/remaining-service-scopes.json#small-scale-multifunctional",
+        "data/shared/standards-interpretation/remaining-source-register.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT",
+        "OFFICIAL_SOURCE_LOCATED_BUT_ITEM_BODY_SNAPSHOT_NOT_ESTABLISHED"
+      ],
+      "blocker": "共有source identityとservice locatorは確立しているが、canonical item bodyと固定snapshotの照合単位が未整備。source heading matchを本文一致とみなさない。"
+    },
+    {
+      "service_id": "specific-facility",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/specific-facility/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/specific-preventive-welfare-equipment-sale/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/specific-welfare-equipment-sale/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "item_body_state": "NOT_ESTABLISHED",
+      "staging_present": false,
+      "canonical_item_body_present": false,
+      "scope_source": "SERVICE_SCOPE",
+      "evidence": [
+        "data/services/welfare-equipment-rental/standards-interpretation-scope.json"
+      ],
+      "blocker_codes": [
+        "CANONICAL_ITEM_BODY_NOT_AVAILABLE_FOR_COMPARISON",
+        "NO_ITEM_LEVEL_STAGING",
+        "NO_ITEM_BODY_RECEIPT"
+      ],
+      "blocker": "Repositoryにはサービスscope/locatorのみがあり、一次資料と照合するcanonical item-level body/stagingがない。scope存在をitem-body verificationへ昇格しない。"
+    }
+  ],
+  "safety": {
+    "scope_heading_treated_as_item_body": false,
+    "historical_text_treated_as_current_integrated_text": false,
+    "currentness_auto_promoted": false,
+    "human_review_auto_promoted": false,
+    "publication_auto_promoted": false,
+    "route_auto_enabled": false,
+    "generated_coverage_artifacts_updated": false
+  },
+  "worker_pr": 352,
+  "substantive_head_sha": "6bb0312622af70914bc1630c97d3b5792d3312ae"
+}

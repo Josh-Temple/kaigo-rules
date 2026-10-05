@@ -17,7 +17,7 @@ EXPECTED = {
     "preventive-dementia-group-home": ("SCOPE_DEFINED", "MAPPED"),
     "specific-welfare-equipment-sale": ("SCOPE_DEFINED", "NOT_APPLICABLE"),
     "specific-preventive-welfare-equipment-sale": ("SCOPE_DEFINED", "NOT_APPLICABLE"),
-    "preventive-support": ("UNRESOLVED", "NOT_ESTABLISHED"),
+    "preventive-support": ("SCOPE_DEFINED", "MAPPED"),
 }
 
 
@@ -81,16 +81,10 @@ def validate(root: Path = ROOT) -> dict:
             assert scope["relation_ids"] == []
 
         else:
-            assert service_id == "preventive-support"
-            assert row["node_ids"] == []
-            assert row["relation_ids"] == []
-            assert row.get("rationale")
-            config = load(root / "data/services/preventive-support.json")
-            assert not config.get("scope_files", {}).get("fee_guidance")
-            assert not (root / "data/services/preventive-support/fee-guidance-scope.json").exists()
+            raise AssertionError(f"{service_id}: unsupported applicability state {applicability_state}")
 
     counts = Counter(row["applicability_state"] for row in rows)
-    assert counts == Counter({"MAPPED": 3, "NOT_APPLICABLE": 2, "NOT_ESTABLISHED": 1})
+    assert counts == Counter({"MAPPED": 4, "NOT_APPLICABLE": 2})
     return {
         "services": len(rows),
         "mapped": counts["MAPPED"],

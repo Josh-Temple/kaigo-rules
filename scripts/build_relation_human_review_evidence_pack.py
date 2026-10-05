@@ -15,6 +15,8 @@ DATA = ROOT / "data"
 OUTPUT = DATA / "relation-human-review-evidence-pack.json"
 MAX_EXCERPT = 700
 
+EXCLUDED_CLASSIFICATIONS = {"SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED"}
+
 
 def load(name: str):
     return json.loads((DATA / name).read_text(encoding="utf-8"))
@@ -274,6 +276,8 @@ def build() -> dict:
 
     items = []
     for item in packet.get("items", []):
+        if item.get("classification") in EXCLUDED_CLASSIFICATIONS:
+            raise ValueError("Worker B-owned freshness relation leaked into Worker D evidence pack")
         identity = item["identity"]
         source = evidence(
             identity["from"],
@@ -331,9 +335,10 @@ def build() -> dict:
         "generated_by": "scripts/build_relation_human_review_evidence_pack.py",
         "source_packet": "data/relation-human-review-packet.json",
         "policy": (
-            "This file supplies review excerpts and canonical resolution only. Excerpts may "
-            "include machine-reconstructed candidates or editorial summaries where primary "
-            "text is not committed. It never makes or promotes a semantic review decision."
+            "This file supplies review excerpts and canonical resolution for Worker D-owned "
+            "relations only. Excerpts may include machine-reconstructed candidates or editorial "
+            "summaries where primary text is not committed. Worker B-owned freshness relations "
+            "are excluded. It never makes or promotes a semantic review decision."
         ),
         "summary": {
             "items_total": len(items),

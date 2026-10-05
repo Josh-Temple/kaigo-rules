@@ -44,10 +44,17 @@ def main() -> None:
         fail("decision effect must remain fail-closed")
 
     summary = item_body.get("integration_summary", {})
-    if summary.get("verification_status") != "PARTIAL_WITH_GAPS":
-        fail("item-body baseline changed")
-    if conclusion.get("item_body_result_unchanged") != "PARTIAL_WITH_GAPS":
-        fail("receipt changed item-body result")
+    service_item_body = service.get("ingestion_layers", {}).get("standards_interpretation", {})
+    if summary.get("verification_status") != service_item_body.get("item_body_verification"):
+        fail("current item-body receipt and service projection diverged")
+    counts = summary.get("counts", {})
+    if sum(counts.values()) != staging.get("task_count"):
+        fail("current item-body receipt no longer covers the bounded staging task set")
+    if any(counts.get(key, 0) for key in ("PARTIAL", "GAP", "FAIL")):
+        fail("current item-body closure still has residual gaps")
+    historical_item_body_result = receipt.get("preconditions", {}).get("item_body_result")
+    if conclusion.get("item_body_result_unchanged") != historical_item_body_result:
+        fail("currentness receipt no longer matches its historical item-body precondition")
 
     if scope.get("currentness_state") != "NOT_ESTABLISHED":
         fail("scope currentness promoted")

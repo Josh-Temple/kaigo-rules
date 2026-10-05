@@ -1,0 +1,54 @@
+name: Verify shared currentness assurance
+
+on:
+  pull_request:
+    paths:
+      - "data/verification/shared-currentness-assurance.json"
+      - "scripts/shared_currentness_projection.py"
+      - "scripts/validate_shared_currentness_assurance.py"
+      - "data/care-insurance-act-meta.json"
+      - "data/ordinance37-meta.json"
+      - "data/shared/standards/**"
+      - "data/qa-corpus-meta.json"
+      - "data/qa-service-relations.generated.json"
+      - "data/relation-verification-queue.json"
+      - ".github/workflows/verify-shared-currentness-assurance.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/verification/shared-currentness-assurance.json"
+      - "scripts/shared_currentness_projection.py"
+      - "scripts/validate_shared_currentness_assurance.py"
+      - "data/care-insurance-act-meta.json"
+      - "data/ordinance37-meta.json"
+      - "data/shared/standards/**"
+      - "data/qa-corpus-meta.json"
+      - "data/qa-service-relations.generated.json"
+      - "data/relation-verification-queue.json"
+      - ".github/workflows/verify-shared-currentness-assurance.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate committed assurance and projection invariant
+        run: python scripts/validate_shared_currentness_assurance.py
+      - name: Show safe projection summary
+        run: python scripts/shared_currentness_projection.py --summary-only
+      - name: Verify live e-Gov source freshness
+        run: python scripts/verify_egov_source_freshness.py
+      - name: Verify live shared standards source freshness
+        run: python scripts/verify_shared_standards_source_freshness.py
+      - name: Verify live MHLW Q&A source freshness
+        run: python scripts/verify_qa_source_freshness.py
+      - name: Confirm global coverage artifacts remain unchanged
+        run: python scripts/build_database_coverage_matrix.py --check

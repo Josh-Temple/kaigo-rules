@@ -41,7 +41,16 @@ class StandardsInterpretationCurrentnessIntegrationTest(unittest.TestCase):
 
     def test_preventive_support_package_blocker_remains(self):
         row = self.rows["preventive-support"]
-        self.assertEqual(row["item_body"]["counts"]["PARTIAL"], 1)
+        counts = row["item_body"]["counts"]
+        staging = validator.load(
+            ROOT / "data/services/preventive-support/standards-interpretation-staging.json"
+        )
+        self.assertEqual(sum(counts.values()), staging["task_count"])
+        self.assertFalse(any(counts[key] for key in ("PARTIAL", "GAP", "FAIL")))
+        self.assertEqual(
+            row["item_body"]["state"],
+            "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
+        )
         self.assertEqual(row["package"]["blocker_state"], "BLOCKED_KR2-10-E006")
         self.assertEqual(row["package"]["blocker_task_id"], "KR2-10-E006")
 

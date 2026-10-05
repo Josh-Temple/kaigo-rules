@@ -903,7 +903,8 @@
         "governing_standards": "data/services/preventive-support/governing-standards-scope.json",
         "remuneration": "data/services/preventive-support/remuneration-scope.json",
         "delegated_remuneration_criteria": "data/services/preventive-support/delegated-remuneration-criteria-scope.json",
-        "unit_price_regional_classification": "data/services/preventive-support/unit-price-scope.json"
+        "unit_price_regional_classification": "data/services/preventive-support/unit-price-scope.json",
+        "fee_guidance": "data/services/preventive-support/fee-guidance-scope.json"
       },
       "publication_gate": {
         "public_routes_enabled": false,
@@ -917,15 +918,15 @@
           "note": "Structure QueueでPACKAGE / CONTRACT_PRECHECKが1件BLOCKED。通知レーン完了とは分離し、サービス全体の公開準備完了とは扱わない。"
         },
         "standards_interpretation": {
-          "status": "SOURCE_INVENTORY_VERIFIED_ITEM_BODY_GAPS_REMAIN",
+          "status": "ITEM_BODY_VERIFIED_CURRENTNESS_PENDING",
           "source_family": "preventive_support_standards_interpretation",
           "principal_items": 34,
-          "note": "Repository staging 34 taskのitem-bodyを再照合し、33 PASS / 1 PARTIAL / 0 GAP / 0 FAIL。B033は一次資料上4(1)㉕と4(2)⑥が別項目であることを確認してscopeを訂正し、認定審査会意見等の計画反映としてPASSへ解消。B016のみPARTIALを維持。㉗は別task KR2-10-B035としてQueueへ追加済み。currentnessは独立検証済みNOT_ESTABLISHED、human review・PACKAGE precheck・公開routeは未解消。",
+          "note": "Repository staging 34 taskのitem-bodyを再照合し、34 PASS / 0 PARTIAL / 0 GAP / 0 FAIL。B016「記録の整備」は、R3厚労省公式解釈通知本文とR6最終新旧対照の(25) locatorを版分離して照合しPASSへ閉じた。現行統合通知本文/currentnessは確立しておらず、human review・PACKAGE precheck・公開routeも未解消のまま。",
           "source_inventory_verification": "PASS_BOUNDED_SCOPE_ONLY",
-          "item_body_verification": "PARTIAL_WITH_GAPS",
+          "item_body_verification": "PASS_CONTENT_EVIDENCE_MATCH_ONLY",
           "item_body_verification_counts": {
-            "PASS": 33,
-            "PARTIAL": 1,
+            "PASS": 34,
+            "PARTIAL": 0,
             "GAP": 0,
             "FAIL": 0
           },
@@ -950,6 +951,14 @@
           "currentness": "NOT_ESTABLISHED",
           "human_review": "NOT_REVIEWED",
           "note": "既存service scopeを共有介護保険法への参照索引として収載。条件付き規定・準用先はscope参照であり、適用・relation・item-body verification・現行性・公開の証明には用いない。"
+        },
+        "fee_guidance": {
+          "status": "R6_COMPARISON_SECTION_SHARED_REFERENCE",
+          "coverage_kind": "PARTIAL_COMPARISON_ONLY",
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "currentness": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "note": "厚生労働省の令和6年度改定新旧対照資料に明示された「11 介護予防支援」sectionを共有Fee Guidance corpusから参照。令和8年度改正資料でも同sectionの存続を一次資料で確認したが、比較資料を現行統合本文として扱わず、item-body verification/currentness/relation verification/human review/publication/routeは未昇格。"
         }
       },
       "verification_layer_ids": []
