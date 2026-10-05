@@ -57,7 +57,7 @@ def fetch_doc(url:str,cache:dict)->dict:
     p=urllib.parse.urlsplit(key); pages=[]
     if p.netloc=="www.mhlw.go.jp" and p.path=="/web/t_doc":
         u=page_url(key,1); raw,html=fetch(u); ls=visible(html)
-        m=re.search(r"該当ページ数[:：]\s*(\d+)ページ中"," ".join(ls)); total=int(m.group(1)) if m else 1
+        m=re.search(r"(\d+)\s*ページ中\s*\d+\s*ページ"," ".join(ls)); total=int(m.group(1)) if m else 1
         pages.append((u,hashlib.sha256(raw).hexdigest(),ls))
         for n in range(2,total+1):
             u=page_url(key,n); raw,html=fetch(u); pages.append((u,hashlib.sha256(raw).hexdigest(),visible(html)))
