@@ -78,13 +78,13 @@ const ordinanceMeta = ordinanceMetaData as any;
 const cellKey = (serviceId: string, sourceFamily: string) =>
   `${serviceId}|${sourceFamily}`;
 
-const publicationKeys = new Set(
+const publicationKeys = new Set<string>(
   (allowlist.publication_cell_allowlist || []).map((cell: PublicationCell) =>
     cellKey(String(cell.service_id || ""), String(cell.source_family || "")),
   ),
 );
 
-const routeKeys = new Set(
+const routeKeys = new Set<string>(
   (allowlist.route_allowlist || []).map((cell: PublicationCell) =>
     cellKey(String(cell.service_id || ""), String(cell.source_family || "")),
   ),
