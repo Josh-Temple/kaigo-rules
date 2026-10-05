@@ -1,16 +1,15 @@
 name: Integrator one-shot regenerate
 
 on:
-  push:
-    branches:
-      - work/core-item-body-assurance-integrator
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
   regenerate:
-    if: startsWith(github.event.head_commit.message, '[run-integrator-regeneration]')
+    if: github.head_ref == 'work/core-item-body-assurance-integrator'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
