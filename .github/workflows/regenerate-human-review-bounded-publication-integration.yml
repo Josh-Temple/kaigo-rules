@@ -1,0 +1,51 @@
+name: Regenerate integrated assurance artifacts
+
+on:
+  push:
+    branches:
+      - integration/human-review-expansion-bounded-publication-wave-e-20261006
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: ${{ !contains(github.event.head_commit.message, '[e-canonical-regeneration]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integration/human-review-expansion-bounded-publication-wave-e-20261006
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Regenerate canonical projections
+        run: |
+          python scripts/build_relation_human_review_pilot.py
+          python scripts/build_relation_human_review_batches.py
+          python scripts/build_relation_human_review_decision_effects.py
+          python scripts/validate_bounded_currentness_closure.py
+          python scripts/build_verification_registry.py
+          python scripts/build_database_coverage_matrix.py
+          python scripts/build_publication_requirement_scoping.py
+          python scripts/build_publication_readiness.py
+          python scripts/build_bounded_publication_allowlist.py
+      - name: Validate regenerated assurance chain
+        run: |
+          python scripts/validate_relation_human_review_decisions.py
+          python scripts/validate_publication_requirement_scoping.py
+          python scripts/validate_publication_readiness.py
+          python scripts/validate_bounded_publication_allowlist.py
+          python -m unittest             tests.test_relation_human_review_expansion             tests.test_publication_requirement_scoping             tests.test_publication_readiness             tests.test_bounded_publication_allowlist             tests.test_human_review_bounded_publication_integration
+      - name: Commit canonical regeneration
+        run: |
+          if git diff --quiet; then
+            echo "Canonical artifacts already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             data/relation-human-review-pilot.json             data/relation-human-review-batches.json             data/relation-human-review-decision-effects.generated.json             data/verification-registry.json             data/database-coverage-matrix.generated.json             docs/database-coverage-summary.generated.md             data/publication-requirement-scoping.json             data/publication-readiness.generated.json             data/bounded-publication-allowlist.json
+          git commit -m "[e-canonical-regeneration] Regenerate integrated assurance artifacts"
+          git push origin HEAD:integration/human-review-expansion-bounded-publication-wave-e-20261006
