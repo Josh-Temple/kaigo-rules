@@ -1,0 +1,623 @@
+{
+  "format_version": 1,
+  "source_family": "remuneration_notification",
+  "worker_scope": "2026-10-06 Worker C",
+  "base_main_sha": "cb27b4658ba5dd0fee999cf9426d4b45ef0fb3a9",
+  "derived_from": {
+    "path": "data/shared/remuneration-notification/service-item-body-assurance.json",
+    "blob_sha": "4d0339264c6ba51bc8498c2f7e308bd08c83c48f"
+  },
+  "purpose": "Expose residual body evidence type, service item-inventory completeness, and currentness separation without changing canonical assurance status.",
+  "policy": {
+    "classification_only": true,
+    "canonical_status_writeback_allowed": false,
+    "body_evidence_does_not_establish_currentness": true,
+    "human_review_auto_promotion_allowed": false,
+    "publication_auto_promotion_allowed": false,
+    "route_auto_promotion_allowed": false
+  },
+  "evidence_type_definitions": {
+    "DIRECT_OFFICIAL_ITEM_BODY_MATCH": "Canonical item bodies are directly matched to pinned official primary-source body evidence for the full scoped item set.",
+    "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT": "An official primary-source service section is pinned, but complete canonical item bodies are not present for full item-by-item comparison.",
+    "BODY_NOT_ESTABLISHED": "No sufficient item-body evidence is established for the service.",
+    "NOT_APPLICABLE": "The service is explicitly not applicable to this source-family lane."
+  },
+  "summary": {
+    "services": 39,
+    "body_evidence_type_counts": {
+      "DIRECT_OFFICIAL_ITEM_BODY_MATCH": 1,
+      "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT": 36,
+      "NOT_APPLICABLE": 2
+    },
+    "item_body_state_counts": {
+      "NOT_APPLICABLE": 2,
+      "PARTIAL": 36,
+      "PASS": 1
+    },
+    "currentness_established_by_body_evidence": 0,
+    "status_promotions": 0
+  },
+  "integration_note": "The two welfare-equipment-sale services remain canonical NOT_APPLICABLE in this source-family assurance artifact. Global generated Coverage Matrix reconciliation remains Worker E ownership.",
+  "services": [
+    {
+      "service_id": "care-management",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/care-management/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "care-medical-institution",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/care-medical-institution/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "community-dayservice",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/community-dayservice/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/community-elderly-facility/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "community-specific-facility",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/community-specific-facility/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "dayrehab",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/dayrehab/remuneration-index.json",
+        "data/dayrehab-remuneration-independent-audit.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON",
+        "EXISTING_AUDIT_IS_BOUNDED_STRUCTURE_AND_VALUES_ONLY"
+      ]
+    },
+    {
+      "service_id": "dayservice",
+      "body_evidence_type": "DIRECT_OFFICIAL_ITEM_BODY_MATCH",
+      "service_item_inventory_state": "COMPLETE",
+      "item_body_state": "PASS",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/remuneration-independent-audit.json",
+        "data/remuneration-current-text.json",
+        "data/remuneration-current-text-meta.json"
+      ],
+      "reason_codes": []
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/dementia-dayservice/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "dementia-group-home",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/dementia-group-home/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/elderly-health-facility/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/elderly-welfare-facility/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "homebath",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/homebath/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "homecaremanagement",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/homecaremanagement/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "homenursing",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/homenursing/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "homerehab",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/homerehab/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "homevisit",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/homevisit/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "night-homevisit",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/night-homevisit/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/nursing-small-scale-multifunctional/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-dayrehab/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-dementia-dayservice/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-dementia-group-home/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-homebath",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-homebath/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-homecaremanagement/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-homenursing/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-homerehab/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-shortstay-life/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-shortstay-medical/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-small-scale-multifunctional/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-specific-facility/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-support",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-support/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/preventive-welfare-equipment-rental/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "regular-round",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/regular-round/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "shortstay-life",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/shortstay-life/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "shortstay-medical",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/shortstay-medical/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/small-scale-multifunctional/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "specific-facility",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/specific-facility/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "body_evidence_type": "NOT_APPLICABLE",
+      "service_item_inventory_state": "NOT_APPLICABLE",
+      "item_body_state": "NOT_APPLICABLE",
+      "applicability_state": "NOT_APPLICABLE_EXISTING_CANONICAL_STATE",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [],
+      "reason_codes": [
+        "EXISTING_NOT_APPLICABLE_PRESERVED"
+      ]
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "body_evidence_type": "NOT_APPLICABLE",
+      "service_item_inventory_state": "NOT_APPLICABLE",
+      "item_body_state": "NOT_APPLICABLE",
+      "applicability_state": "NOT_APPLICABLE_EXISTING_CANONICAL_STATE",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [],
+      "reason_codes": [
+        "EXISTING_NOT_APPLICABLE_PRESERVED"
+      ]
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "body_evidence_type": "DIRECT_OFFICIAL_SECTION_BODY_FINGERPRINT",
+      "service_item_inventory_state": "INCOMPLETE_CANONICAL_ITEM_BODY",
+      "item_body_state": "PARTIAL",
+      "applicability_state": "APPLIES_PRIMARY_SOURCE_SECTION_LOCATED",
+      "currentness_established_by_body_evidence": false,
+      "evidence": [
+        "data/shared/remuneration-notification/body-fingerprints.json",
+        "data/services/welfare-equipment-rental/remuneration-index.json"
+      ],
+      "reason_codes": [
+        "CANONICAL_FULL_ITEM_BODY_NOT_PRESENT_FOR_DIRECT_COMPARISON"
+      ]
+    }
+  ]
+}
