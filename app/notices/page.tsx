@@ -387,7 +387,7 @@ export default async function NoticesPage({
         );
       })}
 
-      {(selectedGroup || q) && !invalidService ? (
+      {!invalidService ? (
         <details className="notice-audit-details">
           <summary>収載・確認状況を見る</summary>
           <div className="notice-audit-body">
