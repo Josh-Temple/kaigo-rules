@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
 from collections import Counter
 from pathlib import Path
@@ -15,6 +16,8 @@ CORPUS = BASE / "national-corpus.json"
 IDENTITY_MAP = BASE / "source-identity-map.json"
 APPLICABILITY = BASE / "service-applicability.json"
 RECEIPTS = BASE / "source-observation-receipts.json"
+BODY_ITEMS = BASE / "canonical-body-items.json"
+ITEM_ASSURANCE = BASE / "item-body-assurance.json"
 SERVICES = ROOT / "data/services/manifest.json"
 SOURCES = ROOT / "data/sources.json"
 
@@ -36,6 +39,8 @@ def validate() -> list[str]:
     identity_map = load(IDENTITY_MAP)
     applicability = load(APPLICABILITY)
     receipts = load(RECEIPTS)
+    body_items = load(BODY_ITEMS)
+    item_assurance = load(ITEM_ASSURANCE)
     service_manifest = load(SERVICES)
     source_registry = load(SOURCES)
 
@@ -47,6 +52,8 @@ def validate() -> list[str]:
         ("corpus", corpus),
         ("applicability", applicability),
         ("receipts", receipts),
+        ("body_items", body_items),
+        ("item_assurance", item_assurance),
     ):
         if doc.get("source_family") != family:
             errors.append(f"{name} source_family mismatch")
@@ -161,7 +168,7 @@ def validate() -> list[str]:
         "mhlw-application-forms": ("STRUCTURED_PARTIAL", "PARTIAL"),
         "mhlw-electronic-application-operator-manual-v2-50": ("REFERENCE_ONLY", "NOT_ESTABLISHED"),
         "mhlw-accident-report-vol1332": ("STRUCTURED_VERIFIED", "PASS"),
-        "mhlw-care-business-financial-db-manual-v1-20": ("REFERENCE_ONLY", "NOT_ESTABLISHED"),
+        "mhlw-care-business-financial-db-manual-v1-20": ("STRUCTURED_PARTIAL", "PARTIAL"),
     }
     for row in corpus_rows:
         cid = row.get("candidate_id", "<missing>")
@@ -187,6 +194,79 @@ def validate() -> list[str]:
             errors.append(f"{cid}: human review was overpromoted")
         if assurance.get("publication") != "BLOCKED" or assurance.get("route_exposure") != "BLOCKED":
             errors.append(f"{cid}: publication/route was overpromoted")
+
+    body_rows = {row.get("canonical_source_id"): row for row in body_items.get("sources", [])}
+    assurance_rows = {
+        row.get("canonical_source_id"): row
+        for row in item_assurance.get("source_verifications", [])
+    }
+    if set(assurance_rows) != set(canonical_source_ids):
+        errors.append("item-body assurance source set must equal canonical source set")
+
+    expected_body_backed = {
+        source_id
+        for source_id, (_mode, state) in expected_body_states.items()
+        if state in {"PASS", "PARTIAL"}
+    }
+    if set(body_rows) != expected_body_backed:
+        errors.append("canonical body source set must equal PASS/PARTIAL source identities")
+
+    for source_id, (_expected_mode, expected_state) in expected_body_states.items():
+        assurance_row = assurance_rows.get(source_id) or {}
+        if assurance_row.get("result") != expected_state:
+            errors.append(
+                f"{source_id}: assurance result mismatch "
+                f"{assurance_row.get('result')} != {expected_state}"
+            )
+
+        body_row = body_rows.get(source_id)
+        verified_ids = set(assurance_row.get("verified_canonical_item_ids", []))
+        if expected_state in {"PASS", "PARTIAL"}:
+            if not body_row:
+                errors.append(f"{source_id}: verified source missing canonical body row")
+                continue
+            body_item_ids = {
+                item.get("canonical_item_id")
+                for item in body_row.get("items", [])
+                if item.get("canonical_item_id")
+            }
+            if not body_item_ids or verified_ids != body_item_ids:
+                errors.append(f"{source_id}: verified item IDs do not match canonical body items")
+
+            payload = body_row.get("fingerprint_payload")
+            fingerprint = body_row.get("canonical_body_fingerprint_sha256")
+            if payload is None or not fingerprint:
+                errors.append(f"{source_id}: canonical body fingerprint evidence missing")
+            else:
+                canonical = json.dumps(
+                    payload,
+                    ensure_ascii=False,
+                    sort_keys=True,
+                    separators=(",", ":"),
+                ).encode("utf-8")
+                calculated = hashlib.sha256(canonical).hexdigest()
+                if calculated != fingerprint:
+                    errors.append(f"{source_id}: canonical body fingerprint mismatch")
+                if assurance_row.get("canonical_body_fingerprint_sha256") != fingerprint:
+                    errors.append(f"{source_id}: assurance/body fingerprint mismatch")
+        else:
+            if body_row is not None:
+                errors.append(f"{source_id}: NOT_ESTABLISHED source must not have canonical body items")
+            if verified_ids:
+                errors.append(f"{source_id}: NOT_ESTABLISHED source has verified item IDs")
+
+        if assurance_row.get("currentness_claimed") is not False:
+            errors.append(f"{source_id}: item-body assurance must not claim currentness")
+
+    source_state_counts = Counter(
+        row.get("result") for row in assurance_rows.values()
+    )
+    expected_source_summary = {
+        state: source_state_counts.get(state, 0)
+        for state in ("PASS", "PARTIAL", "NOT_ESTABLISHED")
+    }
+    if item_assurance.get("source_summary") != expected_source_summary:
+        errors.append("item-body source summary does not match source identities")
 
     if corpus.get("assurance", {}).get("item_body_verification") != "PARTIAL":
         errors.append("corpus-level item-body assurance must remain PARTIAL")
@@ -306,9 +386,17 @@ def validate() -> list[str]:
             errors.append(f"inventory category count mismatch for {category}")
 
     item_audit = audit.get("item_body_assurance") or {}
-    if item_audit.get("source_states") != {"PASS": 1, "PARTIAL": 1, "NOT_ESTABLISHED": 2}:
+    if item_audit.get("source_states") != expected_source_summary:
         errors.append("item-body source-state audit mismatch")
-    if item_audit.get("service_states") != {"PASS": 0, "PARTIAL": 39, "NOT_ESTABLISHED": 0}:
+    service_state_counts = Counter(
+        row.get("service_level_item_body")
+        for row in item_assurance.get("service_projections", [])
+    )
+    expected_service_states = {
+        state: service_state_counts.get(state, 0)
+        for state in ("PASS", "PARTIAL", "NOT_ESTABLISHED")
+    }
+    if item_audit.get("service_states") != expected_service_states:
         errors.append("item-body service-state audit mismatch")
     for key in (
         "blanket_service_pass_applied",
