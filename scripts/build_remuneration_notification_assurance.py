@@ -108,7 +108,7 @@ def identity(index:dict,scope:dict):
             "title":official.get("title") or find(scope,"title")}
 
 def boundary(v):
-    if not v or str(v).startswith("END_OF_"): return None
+    if not v or str(v).startswith("END_OF_") or "末尾" in str(v): return None
     return re.sub(r"\s*(?:の直前|直前)$","",str(v)).strip()
 
 def locate(lines,start_marker,end_marker):
