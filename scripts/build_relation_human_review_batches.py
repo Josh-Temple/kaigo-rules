@@ -228,7 +228,6 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
                 "NEEDS_MORE_EVIDENCE",
             ],
             "required_decision_fields": [
-                "decision_id",
                 "reviewer_identity",
                 "reviewer_decision",
                 "reviewer_rationale",
