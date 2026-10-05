@@ -21,6 +21,8 @@ class OtherNationalMaterialsTest(unittest.TestCase):
         cls.identity_map = json.loads((cls.base / "source-identity-map.json").read_text(encoding="utf-8"))
         cls.applicability = json.loads((cls.base / "service-applicability.json").read_text(encoding="utf-8"))
         cls.receipts = json.loads((cls.base / "source-observation-receipts.json").read_text(encoding="utf-8"))
+        cls.body = json.loads((cls.base / "canonical-body-items.json").read_text(encoding="utf-8"))
+        cls.item_assurance = json.loads((cls.base / "item-body-assurance.json").read_text(encoding="utf-8"))
         cls.service_manifest = json.loads((ROOT / "data/services/manifest.json").read_text(encoding="utf-8"))
 
     def test_validator_passes(self):
@@ -41,13 +43,46 @@ class OtherNationalMaterialsTest(unittest.TestCase):
         self.assertEqual(len(accepted), 4)
 
     def test_canonical_corpus_does_not_duplicate_source_bodies(self):
+        expected = {
+            "mhlw-application-forms": ("STRUCTURED_PARTIAL", "PARTIAL"),
+            "mhlw-electronic-application-operator-manual-v2-50": ("REFERENCE_ONLY", "NOT_ESTABLISHED"),
+            "mhlw-accident-report-vol1332": ("STRUCTURED_VERIFIED", "PASS"),
+            "mhlw-care-business-financial-db-manual-v1-20": ("REFERENCE_ONLY", "NOT_ESTABLISHED"),
+        }
         for row in self.corpus["sources"]:
             self.assertFalse(row["body_duplicated"])
-            self.assertEqual(row["content_mode"], "REFERENCE_ONLY")
-            self.assertEqual(row["assurance"]["item_body_verification"], "NOT_ESTABLISHED")
+            self.assertEqual(
+                (row["content_mode"], row["assurance"]["item_body_verification"]),
+                expected[row["source_id"]],
+            )
             self.assertEqual(row["assurance"]["human_review"], "NOT_REVIEWED")
             self.assertEqual(row["assurance"]["publication"], "BLOCKED")
             self.assertEqual(row["assurance"]["route_exposure"], "BLOCKED")
+
+        body_source_ids = {row["canonical_source_id"] for row in self.body["sources"]}
+        self.assertEqual(
+            body_source_ids,
+            {"mhlw-application-forms", "mhlw-accident-report-vol1332"},
+        )
+
+    def test_item_body_projection_is_fail_closed_across_all_services(self):
+        projections = self.item_assurance["service_projections"]
+        services = {row["service_id"] for row in self.service_manifest["services"]}
+        self.assertEqual({row["service_id"] for row in projections}, services)
+        self.assertEqual(len(projections), 39)
+        self.assertEqual(
+            {row["service_level_item_body"] for row in projections},
+            {"PARTIAL"},
+        )
+        self.assertEqual(
+            self.item_assurance["source_summary"],
+            {"PASS": 1, "PARTIAL": 1, "NOT_ESTABLISHED": 2},
+        )
+        for row in projections:
+            self.assertFalse(row["currentness_promoted"])
+            self.assertFalse(row["human_review_promoted"])
+            self.assertFalse(row["publication_promoted"])
+            self.assertFalse(row["route_exposure_promoted"])
 
     def test_application_forms_scope_is_primary_source_explicit_not_nationwide_inference(self):
         services = {row["service_id"] for row in self.service_manifest["services"]}
