@@ -276,8 +276,8 @@ def build() -> dict:
         "source_queue": "data/relation-verification-queue.json",
         "policy": (
             "This packet organizes only Worker D-owned unresolved relation review. "
-            "Source-link freshness/direct-evidence relations are excluded because they are "
-            "owned by Worker B. Blank reviewer fields must not be interpreted as rejection "
+            "Freshness-sensitive direct-evidence relations are assessed separately and excluded "
+            "from this human-review packet. Blank reviewer fields must not be interpreted as rejection "
             "or approval. Packet generation never promotes independent verification, "
             "currentness, or human-review state."
         ),
