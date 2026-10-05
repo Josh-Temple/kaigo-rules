@@ -1,0 +1,412 @@
+{
+  "format_version": 1,
+  "assurance_kind": "NATIONAL_SOURCE_CURRENTNESS_EVIDENCE_EXPANSION",
+  "observed_date": "2026-10-05",
+  "base_main_sha": "46e27f31ef618f31d45d33d7f841927ea5a564dd",
+  "purpose": "Increase reproducible currentness evidence while keeping source-level currentness separate from service-level projection and all other assurance axes.",
+  "inherited_shared_currentness_evidence": "data/verification/shared-currentness-assurance.json",
+  "policy": {
+    "item_body_verification_does_not_establish_currentness": true,
+    "official_page_presence_alone_is_insufficient": true,
+    "negative_search_is_not_conclusive_successor_absence_evidence": true,
+    "comparison_or_redline_is_not_integrated_current_body": true,
+    "source_level_currentness_does_not_broadcast_to_all_services": true,
+    "currentness_projection_is_read_only_in_this_worker": true
+  },
+  "projection_invariant": {
+    "required_conditions": [
+      "canonical_source_identity_fixed",
+      "exact_version_identity_fixed",
+      "issue_revision_effective_metadata_established",
+      "predecessor_successor_amendment_chain_established",
+      "successor_absence_or_current_revision_status_established",
+      "service_scope_defined",
+      "service_applicability_established",
+      "service_reference_aligned_to_current_source",
+      "no_historical_or_comparison_body_ambiguity"
+    ],
+    "rule": "A service-level currentness promotion is eligible only when every required condition is true. Item-body PASS is not a substitute for any condition."
+  },
+  "source_families": {
+    "delegated_remuneration_criteria": {
+      "source_level_verdict": "PARTIAL",
+      "canonical_manifest": "data/shared/remuneration-delegated/manifest.json",
+      "source_documents": [
+        {
+          "source_id": "mhlw-fee-notice27-base",
+          "title": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法（厚生省告示第27号）",
+          "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
+          "repository_status": "base_text_replay_pending",
+          "page_sha256": [
+            {
+              "page": 1,
+              "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+            },
+            {
+              "page": 2,
+              "sha256": "2b0fc2c256ed86868608c761eb54b7e39fec651a04cf7e3a87820bcd902c9612"
+            },
+            {
+              "page": 3,
+              "sha256": "327f87d0744a6d1b4da1312bbea5bee2bd85f0a7876bc92e1de1adea18520d8d"
+            }
+          ],
+          "identified_version_evidence": "OFFICIAL_URL_PLUS_PINNED_PAGE_HASH_SET",
+          "live_body_reparse_available": true
+        },
+        {
+          "source_id": "mhlw-fee-criteria95-current",
+          "title": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）",
+          "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "repository_status": "current_official_source",
+          "page_sha256": [
+            {
+              "page": 1,
+              "sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618"
+            },
+            {
+              "page": 2,
+              "sha256": "50267c187930ab9d647a31c7aeb9560f2637ffaaf01713e220cfd05d2a57c104"
+            },
+            {
+              "page": 3,
+              "sha256": "e311c5baa33f37874bd00d7402e5044bc55be8711393b17545701a8e668d89a8"
+            },
+            {
+              "page": 4,
+              "sha256": "cb196683bfe3194b944c354806818afde8799313038e4b197ae9b12a6edb571a"
+            }
+          ],
+          "identified_version_evidence": "OFFICIAL_URL_PLUS_PINNED_PAGE_HASH_SET",
+          "live_body_reparse_available": true
+        },
+        {
+          "source_id": "mhlw-fee-facility-criteria96-current",
+          "title": "厚生労働大臣が定める施設基準（平成27年厚生労働省告示第96号）",
+          "official_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0",
+          "repository_status": "current_official_source",
+          "page_sha256": [
+            {
+              "page": 1,
+              "sha256": "7d8a6819f5147ad403b41d853b3921b57bbff8242b34d6cf95e9caeae327fb88"
+            },
+            {
+              "page": 2,
+              "sha256": "0826f9ea881d41d62e0340d652f5af07238bce6f5c826988a6c9625eb0ce9035"
+            }
+          ],
+          "identified_version_evidence": "OFFICIAL_URL_PLUS_PINNED_PAGE_HASH_SET",
+          "live_body_reparse_available": true
+        }
+      ],
+      "evidence_established": [
+        "canonical source identities are fixed",
+        "official MHLW consolidated-display URLs are fixed",
+        "identified document versions are pinned by page SHA-256 and independently reparsable",
+        "the official display exposes amendment/effective-date history for the represented notices"
+      ],
+      "blockers": [
+        "successor_absence_not_independently_established",
+        "latestness_cannot_be_proved_from_current_page_presence_or_negative_search_alone"
+      ],
+      "service_projection_allowed": false,
+      "reason": "The represented official bodies are strongly identified, but the repository does not yet have an independent authoritative successor-absence/latestness proof for each notice."
+    },
+    "remuneration_notification": {
+      "source_level_verdict": "PARTIAL",
+      "canonical_fingerprints": "data/shared/remuneration-notification/body-fingerprints.json",
+      "source_count": 7,
+      "source_documents": [
+        {
+          "source_id": "homevisit-notice19-mhlw-display",
+          "notice_number": "平成12年厚生省告示第19号",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）",
+          "document_key": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+          "snapshot_version": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "pages": [
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+              "sha256": "ebe6a6f2fd5801dbdc94357c322d0174f67db8e9db037354b769c1410ec2ae13"
+            },
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+              "sha256": "665f29b4a0ba7e69cc6024bc4f1abc3f99f345b9e160ed5e3028e28c3729d2b2"
+            },
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=3",
+              "sha256": "e579d85130d3d9138cb68e6ce5259d98faa169745a1ba295c7cab81adcef5103"
+            },
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=4",
+              "sha256": "1b967bda88c75f44a4e2d3b374c9f7a95041cdece431c4a9700362cb675fdd54"
+            }
+          ],
+          "currentness_claimed": false
+        },
+        {
+          "source_id": "mhlw-care-management-fee-notice20-current",
+          "notice_number": "平成12年厚生省告示第20号",
+          "title": "指定居宅介護支援に要する費用の額の算定に関する基準（平成12年厚生省告示第20号）",
+          "document_key": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0254&dataType=0",
+          "snapshot_version": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "pages": [
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0254&dataType=0&pageNo=1",
+              "sha256": "fe5bdf18a209a416bccbbc8864fdd75383932804a46134629b97cca854ef38f0"
+            }
+          ],
+          "currentness_claimed": false
+        },
+        {
+          "source_id": "mhlw-facility-fee-notice21-current",
+          "notice_number": "平成12年厚生省告示第21号",
+          "title": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）",
+          "document_key": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0",
+          "snapshot_version": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "pages": [
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+              "sha256": "f62f2ab639fa5756437f3bf97ca2f54c9b4d47f08a318dbe519eed5453cca356"
+            },
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+              "sha256": "9879a6b09905fd85850cba1b2d8a4d97e6c1af0480055569647e98bd16526aa6"
+            }
+          ],
+          "currentness_claimed": false
+        },
+        {
+          "source_id": "mhlw-community-fee-notice126-current",
+          "notice_number": "平成18年厚生労働省告示第126号",
+          "title": "指定地域密着型サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第126号）",
+          "document_key": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0",
+          "snapshot_version": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "pages": [
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0&pageNo=1",
+              "sha256": "3a028a9e852ff7dd3239bcdfaecad3e8395f60b19f1aa618a663456730f007f9"
+            },
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0&pageNo=2",
+              "sha256": "0234a262fe6012722d0ac256ac2cacc480725ba1b6ffc2d143c21452864cf4f1"
+            },
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7862&dataType=0&pageNo=3",
+              "sha256": "847d566ac86b2396a4b216a973976385c244e0516888b02a270204d33e367d6f"
+            }
+          ],
+          "currentness_claimed": false
+        },
+        {
+          "source_id": "mhlw-preventive-fee-notice127-current",
+          "notice_number": "平成十八年厚生労働省告示第百二十七号",
+          "title": "指定介護予防サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第127号）",
+          "document_key": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0",
+          "snapshot_version": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "pages": [
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=1",
+              "sha256": "00f4f56f55f158d8e66638913ab2050e81fafec50798cbcde0a10dae62f078a8"
+            },
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7863&dataType=0&pageNo=2",
+              "sha256": "802e1a29fcc1cbad98029719b3fee5b5b90edc2de1caf8e8df26c687c07c8202"
+            }
+          ],
+          "currentness_claimed": false
+        },
+        {
+          "source_id": "mhlw-community-preventive-fee-notice128-current",
+          "notice_number": "平成十八年厚生労働省告示第百二十八号",
+          "title": "指定地域密着型介護予防サービスに要する費用の額の算定に関する基準（平成18年厚生労働省告示第128号）",
+          "document_key": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7864&dataType=0",
+          "snapshot_version": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "pages": [
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7864&dataType=0&pageNo=1",
+              "sha256": "38c4590598c37be9d6c50f7077c832cf0c1ca14b9fd9a8f329f7a37e77fb50b3"
+            }
+          ],
+          "currentness_claimed": false
+        },
+        {
+          "source_id": "mhlw-preventive-support-fee-notice129-current",
+          "notice_number": "平成18年厚生労働省告示第129号",
+          "title": "指定介護予防支援に要する費用の額の算定に関する基準（平成18年厚生労働省告示第129号）",
+          "document_key": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0",
+          "snapshot_version": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-05",
+          "pages": [
+            {
+              "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7865&dataType=0&pageNo=1",
+              "sha256": "cc3c2f362dfd4014c30ebed64cc52907387b776db4c7f7b21369ba652cedec71"
+            }
+          ],
+          "currentness_claimed": false
+        }
+      ],
+      "evidence_established": [
+        "official MHLW consolidated-display source identity is fixed",
+        "identified source snapshots are pinned by page hashes",
+        "service-item body assurance is separately maintained"
+      ],
+      "blockers": [
+        "successor_absence_not_independently_established_for_each_notice",
+        "snapshot_observation_date_is_not_a_currentness_verdict"
+      ],
+      "service_projection_allowed": false
+    },
+    "fee_calculation_guidance": {
+      "source_level_verdict": "NOT_ESTABLISHED",
+      "source_registry": "data/shared/fee-guidance/source-registry.json",
+      "integrated_current_body_established": false,
+      "source_documents": [
+        {
+          "source_id": "rouki36-r6-final-comparison-shared",
+          "title": null,
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_EXCERPT",
+          "snapshot_sha256": "2234944f29dcdd480825c4e7f5757858be8b5cecc84c6f02e7a0540f8769aed8",
+          "pdf_sha256": "826dc8f8521ff8387fdde90f880290422ed9a846e71cc3277494b1ea38693241",
+          "currentness": "NOT_ESTABLISHED",
+          "warning": "Not an integrated current text; omissions are not evidence of no amendment."
+        },
+        {
+          "source_id": "rouki36-r6-final-comparison-scope-locators",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準（訪問通所サービス、居宅療養管理指導及び福祉用具貸与に係る部分）及び指定居宅介護支援に要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATOR_EXCERPT",
+          "snapshot_sha256": "9a9cf11e9d66fef8e5973746c153628b49165de9bffa17c05c843c3c3a88e35d",
+          "pdf_sha256": "826dc8f8521ff8387fdde90f880290422ed9a846e71cc3277494b1ea38693241",
+          "currentness": "NOT_ESTABLISHED",
+          "warning": "Scope locator evidence only. Not an integrated current text and not item-body verification."
+        },
+        {
+          "source_id": "rouki40-r6-final-comparison-scope-locators",
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準（短期入所サービス及び特定施設入居者生活介護に係る部分）及び指定施設サービス等に要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001227894.pdf",
+          "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATOR_EXCERPT",
+          "snapshot_sha256": "ffd508525f7dc78b5dbe9e53000f96022d637f580028fdb4ff08969c54e58988",
+          "pdf_sha256": null,
+          "currentness": "NOT_ESTABLISHED",
+          "warning": "Scope locator evidence only. Not an integrated current text and not item-body verification."
+        },
+        {
+          "source_id": "community-services-r6-final-comparison-scope-locators",
+          "title": "指定地域密着型サービスに要する費用の額の算定に関する基準及び指定地域密着型介護予防サービスに要する費用の額の算定に伴う実施上の留意事項について",
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001227915.pdf",
+          "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATOR_EXCERPT",
+          "snapshot_sha256": "b817ce72f8480ce95ac862bdd2e4ab4d1dc42677e6c2f716415aedace19e0a8c",
+          "pdf_sha256": null,
+          "currentness": "NOT_ESTABLISHED",
+          "warning": "Scope locator evidence only. Not an integrated current text and not item-body verification."
+        },
+        {
+          "source_id": "preventive-guidance-r6-final-comparison-shared",
+          "title": null,
+          "official_url": "https://www.mhlw.go.jp/content/12300000/001227907.pdf",
+          "source_kind": "R6_FINAL_AMENDMENT_COMPARISON_SECTION_LOCATORS",
+          "snapshot_sha256": "c717d0208928bab38029427384a6e5f280ad86de3e250877c31f11079a45b343",
+          "pdf_sha256": null,
+          "currentness": "NOT_ESTABLISHED",
+          "warning": "Not an integrated current text. Locator snapshot establishes service-section identity only; omissions and unchanged material are not promoted."
+        }
+      ],
+      "blockers": [
+        "registered sources are amendment-comparison or locator evidence rather than a proven integrated current body",
+        "comparison omissions cannot establish no later amendment",
+        "successor/amendment chain is not closed"
+      ],
+      "service_projection_allowed": false
+    },
+    "unit_price_regional_classification": {
+      "source_level_verdict": "NOT_ESTABLISHED",
+      "parallel_worker_candidate_only": true,
+      "candidate_branch": "work/unit-price-regional-item-body-assurance",
+      "candidate_source_identity": {
+        "source_id": "mhlw-unit-price-current",
+        "notice_number": "平成27年厚生労働省告示第93号",
+        "publisher": "厚生労働省",
+        "identified_source_version_scope": "PINNED_OFFICIAL_HTML_SNAPSHOT_NOT_CURRENTNESS_CLAIM",
+        "documents": [
+          {
+            "page": 1,
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+            "sha256": "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395"
+          },
+          {
+            "page": 2,
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2",
+            "sha256": "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+          }
+        ],
+        "effective_reference_date": "2024-04-01",
+        "currentness_claim": false
+      },
+      "blockers": [
+        "candidate source identity is not yet integrated into main",
+        "candidate explicitly disclaims a currentness claim",
+        "successor-absence/latestness proof is not established"
+      ],
+      "service_projection_allowed": false
+    },
+    "standards_interpretation_notice": {
+      "source_level_verdict": "HOLD_PRESERVED",
+      "reason": "Existing currentness HOLD/NOT_ESTABLISHED states are not overridden by item-body progress.",
+      "service_projection_allowed": false
+    },
+    "national_qa": {
+      "source_level_verdict": "CURRENT_COMPILATION_ONLY",
+      "inherited_evidence": "data/verification/shared-currentness-assurance.json#source_families.national_qa",
+      "individual_item_currentness": "NOT_ESTABLISHED_BY_COMPILATION_FRESHNESS",
+      "service_projection_allowed": false
+    },
+    "other_national_manuals_forms": {
+      "source_level_verdict": "NOT_ESTABLISHED",
+      "parallel_worker_candidate_only": true,
+      "candidate_branch": "work/other-national-materials-item-body-assurance",
+      "candidate_source_states": {
+        "PASS": 1,
+        "PARTIAL": 1,
+        "NOT_ESTABLISHED": 2
+      },
+      "candidate_currentness_claims": [
+        {
+          "canonical_source_id": "mhlw-application-forms",
+          "item_body_result": "PARTIAL",
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-electronic-application-operator-manual-v2-50",
+          "item_body_result": "NOT_ESTABLISHED",
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-accident-report-vol1332",
+          "item_body_result": "PASS",
+          "currentness_claimed": false
+        },
+        {
+          "canonical_source_id": "mhlw-care-business-financial-db-manual-v1-20",
+          "item_body_result": "NOT_ESTABLISHED",
+          "currentness_claimed": false
+        }
+      ],
+      "blockers": [
+        "candidate body assurance is not yet integrated into main",
+        "candidate sources explicitly do not claim currentness",
+        "version/successor chain must be established independently"
+      ],
+      "service_projection_allowed": false
+    }
+  },
+  "safety": {
+    "global_generated_artifacts_updated": false,
+    "canonical_currentness_states_mutated": false,
+    "source_currentness_broadcast_to_all_services": false,
+    "item_body_promoted": false,
+    "relation_verification_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false
+  }
+}
