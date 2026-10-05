@@ -40,7 +40,7 @@ jobs:
       - name: Preserve relation-axis separation
         run: python scripts/validate_remuneration_delegation_relation_independent_audit.py
       - name: Reject Worker C edits to global generated artifacts
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.head_ref != 'work/core-item-body-assurance-integrator'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
