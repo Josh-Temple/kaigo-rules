@@ -188,12 +188,18 @@ def validate_payload(
         set(standards_matrix) - expected_promoted_ids
     ):
         errors.append("governing standards remaining blocked set mismatch")
-    if standards.get("before") != before_standards:
-        errors.append("governing standards before counts mismatch")
+    matrix_preintegration = before_standards == standards.get("before")
+    matrix_integrated = before_standards == standards.get("after")
+    if not matrix_preintegration and not matrix_integrated:
+        errors.append(
+            "governing standards matrix counts match neither the recorded pre-integration nor integrated state"
+        )
 
-    expected_after = dict(before_standards)
-    for service_id in expected_promoted_ids:
-        prior = str((standards_matrix[service_id].get("currentness") or {}).get("state"))
+    expected_after = dict(standards.get("before") or {})
+    for row in promotions:
+        if row.get("source_family") != "governing_standards_ordinance":
+            continue
+        prior = str(row.get("prior_currentness_state") or "NOT_ESTABLISHED")
         expected_after[prior] = expected_after.get(prior, 0) - 1
         expected_after["PASS"] = expected_after.get("PASS", 0) + 1
     expected_after = {k: v for k, v in expected_after.items() if v}
@@ -241,8 +247,21 @@ def validate_payload(
             errors.append(f"{service_id}: ingestion state drift")
         if row.get("item_body_state") != (matrix_row.get("item_body_verification") or {}).get("state"):
             errors.append(f"{service_id}: item-body state drift")
-        if row.get("prior_currentness_state") != (matrix_row.get("currentness") or {}).get("state"):
-            errors.append(f"{service_id}: prior currentness drift")
+        matrix_currentness = matrix_row.get("currentness") or {}
+        if matrix_preintegration:
+            if row.get("prior_currentness_state") != matrix_currentness.get("state"):
+                errors.append(f"{service_id}: prior currentness drift")
+        elif matrix_integrated:
+            if matrix_currentness.get("state") != row.get("projected_currentness_state"):
+                errors.append(f"{service_id}: integrated currentness projection drift")
+            if "PASS_BOUNDED_VERIFIED" not in (matrix_currentness.get("raw_status") or []):
+                errors.append(f"{service_id}: integrated bounded currentness marker missing")
+            expected_pointer = (
+                f"data/verification/bounded-currentness-closure-worker-b.json#"
+                f"{service_id}::governing_standards_ordinance"
+            )
+            if expected_pointer not in (matrix_currentness.get("evidence") or []):
+                errors.append(f"{service_id}: integrated bounded currentness evidence pointer missing")
         if row.get("projected_currentness_state") != "PASS" or row.get("promotion_applied") is not True:
             errors.append(f"{service_id}: bounded promotion decision missing")
 
