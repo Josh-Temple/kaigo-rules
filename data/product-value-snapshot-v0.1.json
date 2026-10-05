@@ -87,13 +87,13 @@
     "practical_questions_with_evidence_path": {
       "questions_total": 12,
       "questions_with_evidence_path": 12,
-      "coverage_rate": 1.0,
+      "coverage_rate": 1,
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
       "public_items_total": 4520,
       "public_items_complete": 4520,
-      "coverage_rate": 1.0,
+      "coverage_rate": 1,
       "missing_source_items": [],
       "missing_scope_items": [],
       "missing_verification_state_items": [],
@@ -301,6 +301,43 @@
         }
       ]
     }
+  },
+  "public_surface_metrics": {
+    "public_databases": 8,
+    "public_database_routes": [
+      "/law",
+      "/rules",
+      "/notices",
+      "/qa",
+      "/fees",
+      "/fees/criteria",
+      "/fees/guidance",
+      "/fees/unit-price"
+    ],
+    "published_service_source_family_cells": 0,
+    "published_publication_units": 0,
+    "guide_task_journeys": 1,
+    "guide_task_routes": [
+      "/start"
+    ],
+    "practical_question_primary_source_journeys": 12,
+    "major_pages_total": 12,
+    "major_pages_with_feedback": 12,
+    "feedback_coverage_rate": 1,
+    "feedback_routes": [
+      "/",
+      "/databases",
+      "/databases/search",
+      "/services",
+      "/law",
+      "/rules",
+      "/notices",
+      "/qa",
+      "/fees",
+      "/fees/guidance",
+      "/start",
+      "/feedback"
+    ]
   },
   "claims_excluded": [
     "human task-time improvement",
