@@ -1,0 +1,47 @@
+name: Verify publication requirement scoping
+
+on:
+  pull_request:
+    paths:
+      - "data/publication-requirement-scoping.json"
+      - "scripts/build_publication_requirement_scoping.py"
+      - "scripts/validate_publication_requirement_scoping.py"
+      - "tests/test_publication_requirement_scoping.py"
+      - ".github/workflows/verify-publication-requirement-scoping.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check generated Worker C scoping artifact
+        run: python scripts/build_publication_requirement_scoping.py --check
+      - name: Validate publication requirement semantics
+        run: python scripts/validate_publication_requirement_scoping.py
+      - name: Run focused regression tests
+        run: python -m unittest tests.test_publication_requirement_scoping
+      - name: Confirm global publication readiness remains untouched
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          printf '%s\n' "$changed"
+          for path in \
+            data/publication-readiness.generated.json \
+            data/database-coverage-matrix.generated.json \
+            docs/database-coverage-summary.generated.md \
+            data/services/catalog.generated.json
+          do
+            if printf '%s\n' "$changed" | grep -Fxq "$path"; then
+              echo "Worker C must not edit global generated artifact: $path" >&2
+              exit 1
+            fi
+          done
