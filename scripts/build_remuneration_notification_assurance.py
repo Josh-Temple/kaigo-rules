@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT=Path(__file__).resolve().parents[1]
+KNOWN_PAGE_COUNTS={"82aa0253":4,"82aa0254":1,"82aa0255":2,"82aa7862":3,"82aa7863":2,"82aa7864":1,"82aa7865":1}
 PASS_EVIDENCE={"dayservice":"data/remuneration-independent-audit.json"}
 BOUNDED_EVIDENCE={"dayrehab":"data/dayrehab-remuneration-independent-audit.json"}
 
@@ -57,7 +58,9 @@ def fetch_doc(url:str,cache:dict)->dict:
     p=urllib.parse.urlsplit(key); pages=[]
     if p.netloc=="www.mhlw.go.jp" and p.path=="/web/t_doc":
         u=page_url(key,1); raw,html=fetch(u); ls=visible(html)
-        m=re.search(r"(\d+)\s*ページ中\s*\d+\s*ページ"," ".join(ls)); total=int(m.group(1)) if m else 1
+        data_id=dict(urllib.parse.parse_qsl(p.query)).get("dataId")
+        m=re.search(r"(\d+)\s*ページ中\s*\d+\s*ページ"," ".join(ls))
+        total=KNOWN_PAGE_COUNTS.get(data_id,int(m.group(1)) if m else 1)
         pages.append((u,hashlib.sha256(raw).hexdigest(),ls))
         for n in range(2,total+1):
             u=page_url(key,n); raw,html=fetch(u); pages.append((u,hashlib.sha256(raw).hexdigest(),visible(html)))
