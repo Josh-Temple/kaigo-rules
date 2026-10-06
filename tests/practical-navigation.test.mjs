@@ -47,3 +47,55 @@ test("practical guide official source references resolve to canonical source reg
   for(const sourceId of journey.officialSourceIds) assert.ok(sourceIds.has(sourceId),`${journey.id}: ${sourceId}`);
  }
 });
+
+
+test("practical guide retains original journeys and adds concrete task journeys",()=>{
+ const ids=new Set(practicalGuideJourneys.map(x=>x.id));
+ for(const id of ["standards","designation","remuneration","qa"]) assert.ok(ids.has(id),id);
+ for(const id of ["staffing","equipment","operations","fee-guidance","unit-price"]) assert.ok(ids.has(id),id);
+ assert.ok(practicalGuideJourneys.length>=9);
+});
+
+test("service-aware guide groups regular and preventive services without collapsing canonical ids",async()=>{
+ const {practicalGuideServiceGroups}=await import("../lib/practical-guide.ts");
+ const manifest=load("data/services/manifest.json");
+ const currentServiceIds=new Set(manifest.services.map(x=>x.service_id));
+ const groupedIds=[];
+ for(const group of practicalGuideServiceGroups){
+  assert.ok(group.serviceIds.length>=1,group.id);
+  for(const serviceId of group.serviceIds){
+   assert.ok(currentServiceIds.has(serviceId),`${group.id}: ${serviceId}`);
+   groupedIds.push(serviceId);
+  }
+ }
+ assert.equal(new Set(groupedIds).size,groupedIds.length);
+ const expectedPairs=[
+  ["homebath","preventive-homebath"],
+  ["homenursing","preventive-homenursing"],
+  ["homerehab","preventive-homerehab"],
+  ["homecaremanagement","preventive-homecaremanagement"],
+  ["dayrehab","preventive-dayrehab"],
+  ["shortstay-life","preventive-shortstay-life"],
+  ["shortstay-medical","preventive-shortstay-medical"],
+  ["specific-facility","preventive-specific-facility"],
+  ["welfare-equipment-rental","preventive-welfare-equipment-rental"],
+  ["specific-welfare-equipment-sale","specific-preventive-welfare-equipment-sale"],
+ ];
+ for(const [regular,preventive] of expectedPairs){
+  const group=practicalGuideServiceGroups.find(x=>x.serviceIds.includes(regular));
+  assert.ok(group,`missing group for ${regular}`);
+  assert.ok(group.serviceIds.includes(preventive),`${regular} must pair with ${preventive}`);
+ }
+ const preventiveSupport=practicalGuideServiceGroups.find(x=>x.serviceIds.includes("preventive-support"));
+ assert.deepEqual(preventiveSupport?.serviceIds,["preventive-support"]);
+});
+
+test("new practical guide journeys preserve primary-source return paths",()=>{
+ const sources=new Set(load("data/sources.json").map(x=>x.id));
+ for(const id of ["staffing","equipment","operations","fee-guidance","unit-price"]){
+  const journey=practicalGuideJourneys.find(x=>x.id===id);
+  assert.ok(journey,id);
+  assert.ok(journey.officialSourceIds.length>=1,id);
+  for(const sourceId of journey.officialSourceIds) assert.ok(sources.has(sourceId),`${id}: ${sourceId}`);
+ }
+});
