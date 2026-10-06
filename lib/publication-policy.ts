@@ -136,17 +136,24 @@ const promotions = [
 ];
 
 const promotionByKey = new Map<string, RuntimePromotion>();
+for (const [key, binding] of Object.entries(
+  allowlist.runtime_source_binding_by_cell || {},
+)) {
+  const promotion = (binding as any)?.promotion as
+    | RuntimePromotion
+    | undefined;
+  if (promotion) {
+    promotionByKey.set(key, promotion);
+  }
+}
 for (const row of promotions) {
   const key = cellKey(
     String(row.service_id || ""),
     String(row.source_family || ""),
   );
-  if (promotionByKey.has(key)) {
-    throw new Error(
-      "duplicate runtime publication promotion for " + key,
-    );
+  if (!promotionByKey.has(key)) {
+    promotionByKey.set(key, row);
   }
-  promotionByKey.set(key, row);
 }
 
 const runtimeBindingEstablished =
