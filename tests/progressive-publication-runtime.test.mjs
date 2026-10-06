@@ -2,8 +2,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import highValueCurrentnessData from "../data/verification/high-value-currentness-closure-worker-b.json" with { type: "json" };
+import residualGoverningCurrentnessData from "../data/verification/governing-standards-residual-currentness-worker-a.json" with { type: "json" };
 
 import {
+  GOVERNING_STANDARDS_SOURCE_FAMILY,
   UNIT_PRICE_SOURCE_FAMILY as UNIT_PRICE_ADAPTER_FAMILY,
   projectRuntimeRecord,
   runtimeAdapterForPromotion,
@@ -48,6 +50,33 @@ const preventiveServices = [
   "preventive-welfare-equipment-rental",
   "specific-preventive-welfare-equipment-sale",
 ];
+
+function residualPromotion(serviceId, directArticleNumbers) {
+  const row = residualGoverningCurrentnessData.decisions.find(
+    (item) => item.service_id === serviceId,
+  );
+  assert.ok(row, `missing residual currentness decision: ${serviceId}`);
+  const source =
+    residualGoverningCurrentnessData.source_evidence[
+      row.source_evidence_id
+    ];
+  assert.ok(source, `missing residual source evidence: ${serviceId}`);
+  return {
+    ...structuredClone(row),
+    source_identity: structuredClone(source),
+    applicability_proof: {
+      ...structuredClone(row.applicability_proof),
+      direct_article_numbers: [...directArticleNumbers],
+      scope_path: row.scope_path,
+    },
+    allowed_publication_units: [
+      "SOURCE_TEXT_ITEM_BODY",
+      "SOURCE_METADATA_LOCATOR",
+      "CURRENTNESS_STATEMENT",
+      "SERVICE_APPLICABILITY_STATEMENT",
+    ],
+  };
+}
 
 const newlyClosedGoverningServices = ["dayservice", "dayrehab"];
 const expectedServices = [
@@ -147,11 +176,107 @@ test("source identity and applicability proof contracts fail closed", () => {
   );
   assert.equal(
     isSupportedPublicationContract(
+      "community-based-standards",
+      "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+      true,
+    ),
+    true,
+  );
+  assert.equal(
+    isSupportedPublicationContract(
+      "preventive-support-standards",
+      "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+      true,
+    ),
+    true,
+  );
+  assert.equal(
+    isSupportedPublicationContract(
+      "community-based-standards",
+      "PASS_DIRECT_SERVICE_SCOPE",
+      true,
+    ),
+    false,
+  );
+  assert.equal(
+    isSupportedPublicationContract(
       "unsupported-source",
       "PASS_DIRECT_SERVICE_SCOPE",
       true,
     ),
     false,
+  );
+});
+
+test("new governing-standard identities project only explicitly bounded direct articles", () => {
+  const cases = [
+    ["community-dayservice", "community-based-standards", "19", "standards34"],
+    ["care-management", "care-management-standards", "1", "standards38"],
+    ["preventive-support", "preventive-support-standards", "1", "standards-preventive-support"],
+    ["elderly-welfare-facility", "elderly-welfare-facility-standards", "1", "standards39"],
+    ["elderly-health-facility", "geriatric-health-services-facility-standards", "1", "standards40"],
+    ["care-medical-institution", "long-term-care-medical-facility-standards", "1", "standards-medical-facility"],
+    ["preventive-dementia-dayservice", "preventive-community-based-standards", "4", "standards36"],
+  ];
+
+  for (const [serviceId, canonicalSourceId, article, prefix] of cases) {
+    const promotion = residualPromotion(serviceId, [article]);
+    const adapter = runtimeAdapterForPromotion(promotion);
+    assert.ok(adapter, serviceId);
+    assert.equal(adapter.canonicalSourceId, canonicalSourceId);
+    assert.equal(adapter.sourceFamily, GOVERNING_STANDARDS_SOURCE_FAMILY);
+    assert.equal(adapter.nodePrefix, prefix);
+    const records = runtimeRecordsForPromotion(promotion);
+    assert.ok(records.length > 0, serviceId);
+    assert.ok(
+      records.every((record) => String(record.article_num) === article),
+      serviceId,
+    );
+    assert.ok(
+      records.some((record) => record.id === `${prefix}.article.${article}`),
+      serviceId,
+    );
+  }
+});
+
+test("new governing-standard adapters fail closed on identity, scope, relation, and preventive drift", () => {
+  const regular = residualPromotion("dementia-dayservice", ["41"]);
+  assert.ok(runtimeAdapterForPromotion(regular));
+
+  const wrongIdentity = structuredClone(regular);
+  wrongIdentity.source_identity =
+    structuredClone(
+      residualGoverningCurrentnessData.source_evidence[
+        "preventive-community-based-standards"
+      ],
+    );
+  assert.equal(runtimeAdapterForPromotion(wrongIdentity), null);
+
+  const leakedRelation = structuredClone(regular);
+  leakedRelation.applicability_proof.incorporation_or_read_as_semantics_promoted =
+    true;
+  assert.equal(runtimeAdapterForPromotion(leakedRelation), null);
+
+  const unsupportedArticle = structuredClone(regular);
+  unsupportedArticle.applicability_proof.direct_article_numbers = ["99999"];
+  assert.equal(runtimeAdapterForPromotion(unsupportedArticle), null);
+
+  const preventive = residualPromotion(
+    "preventive-dementia-dayservice",
+    ["4"],
+  );
+  assert.ok(runtimeAdapterForPromotion(preventive));
+  assert.notEqual(
+    regular.source_identity.canonical_source_id,
+    preventive.source_identity.canonical_source_id,
+  );
+
+  const support = residualPromotion("preventive-support", ["1"]);
+  const supportAdapter = runtimeAdapterForPromotion(support);
+  assert.ok(supportAdapter);
+  assert.equal(
+    supportAdapter.canonicalSourceId,
+    "preventive-support-standards",
   );
 });
 
