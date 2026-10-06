@@ -1,14 +1,14 @@
 {
-  "format_version": 1,
+  "format_version": 2,
   "artifact_kind": "CANONICAL_BOUNDED_CURRENTNESS_CLOSURE_DECISION",
-  "wave_id": "2026-10-06-human-review-expansion-bounded-publication-worker-b",
+  "wave_id": "2026-10-06-public-value-expansion-progressive-publication-worker-b",
   "worker": "B",
-  "role": "Shared-source Currentness Closure / Applicability Proof Worker",
-  "base_main_sha": "3865f3899f47ad5c3173bb78c2b78cf3a371e643",
+  "role": "High-Yield Database Coverage / Currentness Expansion Worker",
+  "base_main_sha": "b63b32a9fa35eb068fb3372e9d7cdf90d0b53262",
   "observed_date": "2026-10-06",
-  "purpose": "Apply service-level currentness only where source identity, current version, direct service applicability, canonical scope, version containment, ingestion compatibility, and an explicit bounded promotion gate are all independently established.",
+  "purpose": "Expand safely publishable database coverage by closing exact service × governing-standards currentness where current official source identity, direct applicability scope, source containment, ingestion, item-body assurance, and explicit bounded gates are all established.",
   "policy": {
-    "projection_rule_id": "bounded-currentness-closure-v1",
+    "projection_rule_id": "bounded-currentness-closure-v2",
     "blanket_family_promotion_allowed": false,
     "relation_status_promoted": false,
     "human_review_promoted": false,
@@ -80,17 +80,17 @@
     },
     "governing_standards_ordinance": {
       "before": {
-        "PARTIAL": 2,
-        "NOT_ESTABLISHED": 37
-      },
-      "after": {
-        "PARTIAL": 2,
         "NOT_ESTABLISHED": 27,
+        "PARTIAL": 2,
         "PASS": 10
       },
-      "promotions": 10,
-      "disposition": "BOUNDED_PROMOTION",
-      "canonical_source_id": "ordinance37",
+      "after": {
+        "NOT_ESTABLISHED": 17,
+        "PARTIAL": 2,
+        "PASS": 20
+      },
+      "promotions": 20,
+      "disposition": "BOUNDED_PROMOTION_EXPANSION",
       "promoted_service_ids": [
         "homevisit",
         "homebath",
@@ -101,7 +101,17 @@
         "shortstay-medical",
         "specific-facility",
         "welfare-equipment-rental",
-        "specific-welfare-equipment-sale"
+        "specific-welfare-equipment-sale",
+        "preventive-homebath",
+        "preventive-homenursing",
+        "preventive-homerehab",
+        "preventive-homecaremanagement",
+        "preventive-dayrehab",
+        "preventive-shortstay-life",
+        "preventive-shortstay-medical",
+        "preventive-specific-facility",
+        "preventive-welfare-equipment-rental",
+        "specific-preventive-welfare-equipment-sale"
       ],
       "remaining_blocked_service_ids": [
         "dayservice",
@@ -120,6 +130,29 @@
         "elderly-welfare-facility",
         "elderly-health-facility",
         "care-medical-institution",
+        "preventive-dementia-dayservice",
+        "preventive-small-scale-multifunctional",
+        "preventive-dementia-group-home"
+      ],
+      "evidence": [
+        "data/verification/shared-source-currentness-activation.json",
+        "data/verification/existing-ordinance37-service-slices-independent-audit.json",
+        "data/shared/standards/independent-audit.json",
+        "data/services/preventive-homebath/standards-scope.json",
+        "data/services/preventive-homenursing/standards-scope.json",
+        "data/services/preventive-homerehab/standards-scope.json",
+        "data/services/preventive-homecaremanagement/standards-scope.json",
+        "data/services/preventive-dayrehab/standards-scope.json",
+        "data/services/preventive-shortstay-life/standards-scope.json",
+        "data/services/preventive-shortstay-medical/standards-scope.json",
+        "data/services/preventive-specific-facility/standards-scope.json",
+        "data/services/preventive-welfare-equipment-rental/standards-scope.json",
+        "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json",
+        "data/shared/standards/service-ordinance-map.json"
+      ],
+      "cumulative_promotions": 20,
+      "new_promotions_this_wave": 10,
+      "newly_promoted_service_ids": [
         "preventive-homebath",
         "preventive-homenursing",
         "preventive-homerehab",
@@ -129,15 +162,7 @@
         "preventive-shortstay-medical",
         "preventive-specific-facility",
         "preventive-welfare-equipment-rental",
-        "specific-preventive-welfare-equipment-sale",
-        "preventive-dementia-dayservice",
-        "preventive-small-scale-multifunctional",
-        "preventive-dementia-group-home"
-      ],
-      "evidence": [
-        "data/verification/shared-source-currentness-activation.json",
-        "data/verification/existing-ordinance37-service-slices-independent-audit.json",
-        "data/shared/standards/service-ordinance-map.json"
+        "specific-preventive-welfare-equipment-sale"
       ]
     }
   },
@@ -908,6 +933,763 @@
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED"
       }
+    },
+    {
+      "service_id": "preventive-homebath",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-homebath/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-homebath"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.46",
+          "through_node_id": "standards35.article.57",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [
+          {
+            "applicability_kind": "BASELINE_VARIANT",
+            "relation": "separate_variant_scope",
+            "from_node_id": "standards35.article.58",
+            "through_node_id": "standards35.article.61"
+          }
+        ],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-homebath::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-homebath/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-homenursing/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-homenursing"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.62",
+          "through_node_id": "standards35.article.77",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-homenursing::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-homenursing/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-homerehab/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-homerehab"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.78",
+          "through_node_id": "standards35.article.86",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-homerehab::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-homerehab/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-homecaremanagement/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-homecaremanagement"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.87",
+          "through_node_id": "standards35.article.95",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-homecaremanagement::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-homecaremanagement/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-dayrehab/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-dayrehab"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.116",
+          "through_node_id": "standards35.article.127",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-dayrehab::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-dayrehab/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-shortstay-life/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-shortstay-life"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.128",
+          "through_node_id": "standards35.article.150",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [
+          {
+            "applicability_kind": "UNIT_TYPE_VARIANT",
+            "relation": "separate_variant_scope",
+            "from_node_id": "standards35.article.151",
+            "through_node_id": "standards35.article.164"
+          },
+          {
+            "applicability_kind": "COEXISTENCE_VARIANT",
+            "relation": "separate_variant_scope",
+            "from_node_id": "standards35.article.165",
+            "through_node_id": "standards35.article.166"
+          },
+          {
+            "applicability_kind": "BASELINE_VARIANT",
+            "relation": "separate_variant_scope",
+            "from_node_id": "standards35.article.179",
+            "through_node_id": "standards35.article.185"
+          }
+        ],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-shortstay-life::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-shortstay-life/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-shortstay-medical/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-shortstay-medical"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.186",
+          "through_node_id": "standards35.article.202",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [
+          {
+            "applicability_kind": "UNIT_TYPE_VARIANT",
+            "relation": "separate_variant_scope",
+            "from_node_id": "standards35.article.203",
+            "through_node_id": "standards35.article.215"
+          }
+        ],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-shortstay-medical::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-shortstay-medical/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-specific-facility/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-specific-facility"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.230",
+          "through_node_id": "standards35.article.252",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [
+          {
+            "applicability_kind": "EXTERNAL_SERVICE_TYPE_VARIANT",
+            "relation": "separate_variant_scope",
+            "from_node_id": "standards35.article.253",
+            "through_node_id": "standards35.article.264"
+          }
+        ],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-specific-facility::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-specific-facility/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/preventive-welfare-equipment-rental/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#preventive-welfare-equipment-rental"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.265",
+          "through_node_id": "standards35.article.278-2",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [
+          {
+            "applicability_kind": "BASELINE_VARIANT",
+            "relation": "separate_variant_scope",
+            "from_node_id": "standards35.article.279",
+            "through_node_id": "standards35.article.280"
+          }
+        ],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-welfare-equipment-rental::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/preventive-welfare-equipment-rental/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "source_family": "governing_standards_ordinance",
+      "source_identity": {
+        "canonical_source_id": "preventive-services-standards",
+        "law_id": "418M60000100035",
+        "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100035",
+        "version_id": "418M60000100035_20250401_506M60000100164",
+        "effective_date": "2025-04-01",
+        "verified_at": "2025-04-02T08:13:11+09:00",
+        "fingerprint": {
+          "xml_sha256": "f4768c68d628235f2bceefda4d57c97ea1197424dd3527eee9f4e63958854579",
+          "revision_response_sha256": "c0cd76c9d587b9979cd74c300979a03e843576406a63efb0ece95701209b2ae7"
+        },
+        "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "evidence": [
+          "data/shared/standards/independent-audit.json#preventive-services-standards",
+          "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json",
+          "data/shared/standards/service-ordinance-map.json#specific-preventive-welfare-equipment-sale"
+        ],
+        "direct_service_scope_verified": true,
+        "scope_model": "PREVENTIVE_SERVICES_DIRECT_SCOPE_V1",
+        "common_source_node_ids": [
+          "standards35.article.1",
+          "standards35.article.2",
+          "standards35.article.3",
+          "standards35.article.293"
+        ],
+        "primary_range": {
+          "from_node_id": "standards35.article.281",
+          "through_node_id": "standards35.article.292",
+          "include_inserted_articles": true
+        },
+        "variant_ranges": [],
+        "incorporation_wrappers_excluded_from_semantic_expansion": true,
+        "discrepancies": 0
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "specific-preventive-welfare-equipment-sale::governing_standards_ordinance",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "projection_provenance": {
+        "source_level_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+        "applicability_evidence": "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json",
+        "projection_rule": "bounded-currentness-closure-v2",
+        "projection_timestamp": "2026-10-06T08:11:00+09:00",
+        "validator": "scripts/validate_bounded_currentness_closure.py",
+        "live_reverification_workflow": ".github/workflows/verify-bounded-currentness-closure.yml"
+      },
+      "unchanged_axes": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
     }
   ],
   "holds": {
@@ -952,6 +1734,24 @@
     "relation_verification_changed": false,
     "human_review_changed": false,
     "publication_changed": false,
-    "route_exposure_changed": false
+    "route_exposure_changed": false,
+    "new_promotions_are_direct_scope_only": true,
+    "unresolved_incorporation_semantics_excluded": true
+  },
+  "high_yield_holds": {
+    "delegated_remuneration_criteria": {
+      "disposition": "HOLD",
+      "blocker": "Successor/latestness is not independently closed and source identity remains incomplete.",
+      "evidence": [
+        "data/verification/shared-source-currentness-activation.json#source_families.delegated_remuneration_criteria"
+      ]
+    },
+    "unit_price_regional_classification": {
+      "disposition": "HOLD",
+      "blocker": "Independent audit explicitly disclaims VERIFIED_CURRENT and successor/latestness remains open.",
+      "evidence": [
+        "data/verification/shared-source-currentness-activation.json#source_families.unit_price_regional_classification"
+      ]
+    }
   }
 }
