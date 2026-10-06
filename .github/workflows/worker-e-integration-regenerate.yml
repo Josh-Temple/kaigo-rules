@@ -1,16 +1,15 @@
 name: Worker E integration regeneration
 
 on:
-  push:
-    branches:
-      - integration/relation-assurance-next-source-publication-wave-e-20261006
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
   regenerate-and-validate:
-    if: github.actor != 'github-actions[bot]'
+    if: startsWith(github.event.pull_request.title, '[Worker E]') && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
