@@ -9,6 +9,7 @@ import {
   getProgressivePublicationTrust,
   listProgressivePublicationServices,
 } from "../../../lib/publication-policy";
+import { publicVerificationLabel } from "../../../lib/public-verification";
 
 const careNodes = careNodesData as Array<any>;
 const ordinanceNodes = ordinanceNodesData as Array<any>;
@@ -146,7 +147,7 @@ export default async function DatabaseSearchPage({
       <p className="lead">
         {selectedService
           ? `${selectedService.label}について、公開条件を満たした基準省令の本文だけを検索します。`
-          : "サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aを同じキーワードで探します。"}
+          : "サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aを同じキーワードで探します。各結果から本文と出典へ進めます。対象範囲や現行性は、必要なときに各ページの確認情報で確認できます。"}
       </p>
 
       <div className="notice">
@@ -269,7 +270,7 @@ export default async function DatabaseSearchPage({
                     </h3>
                     <p>{databaseSearchExcerpt(notice.body_text, query)}</p>
                     <p className="meta">
-                      本文照合：{notice.content_verification} / 現行性：{notice.currentness_state} / 人手確認：{notice.human_review_state}
+                      本文：{publicVerificationLabel(notice.content_verification, "content")} / 現行性：{publicVerificationLabel(notice.currentness_state, "currentness")} / 人手確認：{publicVerificationLabel(notice.human_review_state, "human")}
                     </p>
                   </article>
                 ))}
