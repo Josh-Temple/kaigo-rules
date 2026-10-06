@@ -43,7 +43,7 @@
     "target_pointer_status_counts": {
       "DIRECT_PRIMARY_TEXT_POINTER": 10
     },
-    "remaining_evidence_pack_items_outside_active_batches": 40
+    "remaining_evidence_pack_items_outside_active_batches": 39
   },
   "review_contract": {
     "allowed_decisions": [
@@ -68,7 +68,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 1,
-      "review_id": "REL-020",
+      "review_id": "REL-019",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -134,7 +134,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 2,
-      "review_id": "REL-027",
+      "review_id": "REL-026",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -172,7 +172,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 3,
-      "review_id": "REL-031",
+      "review_id": "REL-030",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -210,7 +210,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 4,
-      "review_id": "REL-034",
+      "review_id": "REL-033",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -248,7 +248,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 5,
-      "review_id": "REL-035",
+      "review_id": "REL-034",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -286,7 +286,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 6,
-      "review_id": "REL-036",
+      "review_id": "REL-035",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -324,7 +324,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 7,
-      "review_id": "REL-037",
+      "review_id": "REL-036",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -362,7 +362,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 8,
-      "review_id": "REL-038",
+      "review_id": "REL-037",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -400,7 +400,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 9,
-      "review_id": "REL-042",
+      "review_id": "REL-041",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {
@@ -438,7 +438,7 @@
     {
       "batch_id": "batch-2",
       "batch_order": 10,
-      "review_id": "REL-043",
+      "review_id": "REL-042",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "assigned_reviewer": null,
       "identity": {

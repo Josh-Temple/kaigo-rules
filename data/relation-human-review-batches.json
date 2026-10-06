@@ -3,7 +3,7 @@
   "generated_by": "scripts/build_relation_human_review_batches.py",
   "source_evidence_pack": "data/relation-human-review-evidence-pack.json",
   "decision_ledger": "data/relation-human-review-decisions.json",
-  "policy": "Batch membership controls decision intake only. Batch activation does not make a relation REVIEWED or verified. Pilot 1 is an immutable reference. Evidence fingerprint drift is represented as STALE_EVIDENCE and never silently refreshes an existing decision.",
+  "policy": "Batch membership controls decision intake only. Batch activation does not make a relation REVIEWED or verified. Pilot 1 relation identity/order/fingerprint is an immutable reference; review IDs are regenerated management identifiers. Evidence fingerprint drift is represented as STALE_EVIDENCE and never silently refreshes an existing decision.",
   "batches": [
     {
       "batch_id": "pilot-1",
@@ -30,7 +30,7 @@
         },
         {
           "batch_order": 2,
-          "review_id": "REL-013",
+          "review_id": "REL-012",
           "relation_identity": {
             "from": "notice.dayservice.equipment.dining-training-room",
             "relation": "interprets_or_explains",
@@ -62,7 +62,7 @@
         },
         {
           "batch_order": 4,
-          "review_id": "REL-014",
+          "review_id": "REL-013",
           "relation_identity": {
             "from": "notice.dayservice.equipment.office",
             "relation": "interprets_or_explains",
@@ -94,7 +94,7 @@
         },
         {
           "batch_order": 6,
-          "review_id": "REL-019",
+          "review_id": "REL-018",
           "relation_identity": {
             "from": "notice.dayservice.personnel.function-training",
             "relation": "interprets_or_explains",
@@ -126,7 +126,7 @@
         },
         {
           "batch_order": 8,
-          "review_id": "REL-021",
+          "review_id": "REL-020",
           "relation_identity": {
             "from": "notice.dayservice.personnel.manager",
             "relation": "interprets_or_explains",
@@ -151,7 +151,7 @@
       "items": [
         {
           "batch_order": 1,
-          "review_id": "REL-020",
+          "review_id": "REL-019",
           "relation_identity": {
             "from": "notice.dayservice.personnel.life-counselor",
             "relation": "interprets_or_explains",
@@ -167,7 +167,7 @@
         },
         {
           "batch_order": 2,
-          "review_id": "REL-027",
+          "review_id": "REL-026",
           "relation_identity": {
             "from": "question:annual-training",
             "relation": "required_by",
@@ -183,7 +183,7 @@
         },
         {
           "batch_order": 3,
-          "review_id": "REL-031",
+          "review_id": "REL-030",
           "relation_identity": {
             "from": "question:bcp-training",
             "relation": "applies_via",
@@ -199,7 +199,7 @@
         },
         {
           "batch_order": 4,
-          "review_id": "REL-034",
+          "review_id": "REL-033",
           "relation_identity": {
             "from": "question:care-plan-content",
             "relation": "aligned_with",
@@ -215,7 +215,7 @@
         },
         {
           "batch_order": 5,
-          "review_id": "REL-035",
+          "review_id": "REL-034",
           "relation_identity": {
             "from": "question:care-plan-content",
             "relation": "answered_by",
@@ -231,7 +231,7 @@
         },
         {
           "batch_order": 6,
-          "review_id": "REL-036",
+          "review_id": "REL-035",
           "relation_identity": {
             "from": "question:care-plan-content",
             "relation": "consent_under",
@@ -247,7 +247,7 @@
         },
         {
           "batch_order": 7,
-          "review_id": "REL-037",
+          "review_id": "REL-036",
           "relation_identity": {
             "from": "question:care-plan-content",
             "relation": "delivered_under",
@@ -263,7 +263,7 @@
         },
         {
           "batch_order": 8,
-          "review_id": "REL-038",
+          "review_id": "REL-037",
           "relation_identity": {
             "from": "question:care-plan-content",
             "relation": "tracked_under",
@@ -279,7 +279,7 @@
         },
         {
           "batch_order": 9,
-          "review_id": "REL-042",
+          "review_id": "REL-041",
           "relation_identity": {
             "from": "question:care-plan-signature",
             "relation": "electronic_option_under",
@@ -295,7 +295,7 @@
         },
         {
           "batch_order": 10,
-          "review_id": "REL-043",
+          "review_id": "REL-042",
           "relation_identity": {
             "from": "question:care-plan-signature",
             "relation": "requires_delivery_under",
@@ -318,6 +318,6 @@
     "batch_2_items": 10,
     "active_review_items": 18,
     "stale_evidence_items": 0,
-    "evidence_pack_items_not_active": 40
+    "evidence_pack_items_not_active": 39
   }
 }

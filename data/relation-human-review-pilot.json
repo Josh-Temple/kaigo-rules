@@ -6,7 +6,7 @@
   "policy": "This pilot activates a bounded human-review batch only. READY_FOR_HUMAN_REVIEW is not REVIEWED. AI proposals are advisory and cannot close relations. Human decisions are valid only when recorded in the decision ledger with reviewer identity, rationale, reviewed_at, and the exact evidence fingerprint reviewed.",
   "selection_rationale": [
     "Prefer relations with direct primary-text pointers on both sides.",
-    "Use a small eight-item batch and interleave relation types instead of processing all 58 evidence-pack items.",
+    "Use a small eight-item batch and interleave relation types instead of processing the full evidence pack.",
     "Fill the remainder with machine-reconstructed notice candidates whose target side has a direct primary-text pointer; practical-question relations remain outside the first pilot."
   ],
   "summary": {
@@ -25,7 +25,7 @@
     "target_pointer_status_counts": {
       "DIRECT_PRIMARY_TEXT_POINTER": 8
     },
-    "remaining_evidence_pack_items_not_in_pilot": 50
+    "remaining_evidence_pack_items_not_in_pilot": 49
   },
   "review_contract": {
     "allowed_decisions": [
@@ -106,7 +106,7 @@
     },
     {
       "pilot_order": 2,
-      "review_id": "REL-013",
+      "review_id": "REL-012",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "identity": {
         "from": "notice.dayservice.equipment.dining-training-room",
@@ -205,7 +205,7 @@
     },
     {
       "pilot_order": 4,
-      "review_id": "REL-014",
+      "review_id": "REL-013",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "identity": {
         "from": "notice.dayservice.equipment.office",
@@ -304,7 +304,7 @@
     },
     {
       "pilot_order": 6,
-      "review_id": "REL-019",
+      "review_id": "REL-018",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "identity": {
         "from": "notice.dayservice.personnel.function-training",
@@ -412,7 +412,7 @@
     },
     {
       "pilot_order": 8,
-      "review_id": "REL-021",
+      "review_id": "REL-020",
       "review_status": "READY_FOR_HUMAN_REVIEW",
       "identity": {
         "from": "notice.dayservice.personnel.manager",

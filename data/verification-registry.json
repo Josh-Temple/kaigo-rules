@@ -799,8 +799,8 @@
   "relation_verification": {
     "status": "PARTIAL",
     "inventory_relations": 188,
-    "independently_verified_relations": 129,
-    "remaining_unverified_relations": 59,
+    "independently_verified_relations": 130,
+    "remaining_unverified_relations": 58,
     "lanes": [
       {
         "id": "explicit-legal-reference",
@@ -861,6 +861,12 @@
         "status": "PASS",
         "verified_relations": 2,
         "evidence": "data/careact-service-identity-derived-audit.json"
+      },
+      {
+        "id": "residual-service-definition",
+        "status": "PASS",
+        "verified_relations": 1,
+        "evidence": "data/residual-relation-service-definition-independent-audit.json"
       }
     ],
     "automatic_promotion_allowed": false,
@@ -870,15 +876,15 @@
     {
       "id": "semantic-cross-layer-relations",
       "status": "PARTIAL",
-      "independently_verified": 129,
+      "independently_verified": 130,
       "total": 188,
-      "remaining": 59,
+      "remaining": 58,
       "work_queue": "data/relation-verification-queue.json",
       "classification_counts": {
         "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
         "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
         "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
-        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
+        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 4,
         "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
       },
       "note": "Remaining semantic/cross-layer relations are not independently verified and are not auto-promoted."
@@ -893,7 +899,7 @@
     "source_freshness_only_without_independent_content_audit": 0,
     "human_verified_layers": 0,
     "semantic_or_cross_layer_relations_total": 188,
-    "semantic_or_cross_layer_relations_independently_verified": 129,
-    "semantic_or_cross_layer_relations_remaining": 59
+    "semantic_or_cross_layer_relations_independently_verified": 130,
+    "semantic_or_cross_layer_relations_remaining": 58
   }
 }
