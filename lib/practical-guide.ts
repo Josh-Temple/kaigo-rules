@@ -148,7 +148,7 @@ export const practicalGuideJourneys: PracticalGuideJourney[] = [
     officialSourceIds: ["mhlw-qa"],
     caution:
       "Q&Aは個々の項目について現行性が未確認のものを含みます。重要な判断では、現在の法令・通知との関係を原典で確認してください。",
-  },,
+  },
   {
     id: "staffing",
     title: "人員配置の基準を調べる",
