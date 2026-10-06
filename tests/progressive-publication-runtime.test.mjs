@@ -79,13 +79,33 @@ function residualPromotion(serviceId, directArticleNumbers) {
 }
 
 const newlyClosedGoverningServices = ["dayservice", "dayrehab"];
+const residualPublishedGoverningServices = [
+  "community-dayservice",
+  "regular-round",
+  "night-homevisit",
+  "care-management",
+  "preventive-support",
+  "dementia-dayservice",
+  "small-scale-multifunctional",
+  "dementia-group-home",
+  "community-specific-facility",
+  "community-elderly-facility",
+  "nursing-small-scale-multifunctional",
+  "elderly-welfare-facility",
+  "elderly-health-facility",
+  "care-medical-institution",
+  "preventive-dementia-dayservice",
+  "preventive-small-scale-multifunctional",
+  "preventive-dementia-group-home",
+];
 const expectedServices = [
   ...originalServices,
   ...preventiveServices,
   ...newlyClosedGoverningServices,
+  ...residualPublishedGoverningServices,
 ];
 
-test("progressive Governing Standards publication includes the prior twenty cells plus newly closed day services", () => {
+test("progressive Governing Standards publication covers all 39 bounded READY service cells", () => {
   assert.deepEqual(
     listProgressivePublicationServices()
       .map((item) => item.service_id)
@@ -95,7 +115,8 @@ test("progressive Governing Standards publication includes the prior twenty cell
   for (const serviceId of expectedServices) {
     assert.equal(isProgressivePublicationCell(serviceId), true);
   }
-  assert.equal(isProgressivePublicationCell("care-management"), false);
+  assert.equal(expectedServices.length, 39);
+  assert.equal(isProgressivePublicationCell("care-management"), true);
 });
 
 test("original ordinance37 service scope remains enforced", () => {
