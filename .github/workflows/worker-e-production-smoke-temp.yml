@@ -1,0 +1,46 @@
+name: Worker E production smoke
+
+on:
+  push:
+    branches:
+      - work/worker-e-production-smoke-20261007
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/worker-e-production-smoke-temp.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  production-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Verify exact production SHA and field-validation routes
+        run: python scripts/verify_field_validation_production.py --base-url https://kaigo-rules.vercel.app --expected-sha 29c5529be51a1211e060acd5911a1122aa0eaf0e --wait-seconds 0 --timeout-seconds 30
+      - name: Run Integration Sprint release regression against production
+        run: python scripts/run_integration_sprint_release_regression.py --base-url https://kaigo-rules.vercel.app --expected-sha 29c5529be51a1211e060acd5911a1122aa0eaf0e --output /tmp/integration-production.json
+      - name: Run machine retrieval benchmark against production
+        run: python scripts/run_machine_retrieval_benchmark.py --base-url https://kaigo-rules.vercel.app --expected-sha 29c5529be51a1211e060acd5911a1122aa0eaf0e --output /tmp/machine-retrieval-production.json
+      - name: Run practical navigation regression against production
+        run: python scripts/run_practical_navigation_regression.py --base-url https://kaigo-rules.vercel.app --expected-sha 29c5529be51a1211e060acd5911a1122aa0eaf0e --output /tmp/practical-navigation-production.json
+      - name: Smoke core public routes and fail-closed FAQ relation
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=https://kaigo-rules.vercel.app
+          for route in / /overview /databases /databases/search /fees /fees/criteria /fees/unit-price /rules/93 /notices /api/version /api/context/services/dayservice/questions/nurse-staffing; do
+            code="$(curl --fail --silent --show-error --location --output /tmp/body --write-out "%{http_code}" "$base$route")"
+            test "$code" = "200"
+            test -s /tmp/body
+            echo "PASS $code $route"
+          done
+          if curl --fail --silent --show-error --location "$base/rules/93" | grep -Fq "看護職員は何人必要ですか？"; then
+            echo "unverified FAQ relation leaked onto /rules/93" >&2
+            exit 1
+          fi
