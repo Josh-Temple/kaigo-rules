@@ -7,7 +7,9 @@ import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database
 import {
   filterProgressivePublishedRules,
   getProgressivePublicationTrust,
+  getProgressiveSourceRecords,
   listProgressivePublicationServices,
+  publicationServicePresentationGroup,
 } from "../../../lib/publication-policy";
 import { publicVerificationLabel } from "../../../lib/public-verification";
 
@@ -60,9 +62,23 @@ export default async function DatabaseSearchPage({
   const publicationTrust = selectedService
     ? getProgressivePublicationTrust(selectedService.service_id)
     : null;
+  const selectedSourceNodes = selectedService
+    ? (getProgressiveSourceRecords(selectedService.service_id) as Array<any>)
+    : ordinanceNodes;
+  const groupedProgressiveServices = [...progressiveServices].sort((a, b) => {
+    const groupA = publicationServicePresentationGroup(a.service_id);
+    const groupB = publicationServicePresentationGroup(b.service_id);
+    if (groupA !== groupB) return groupA.localeCompare(groupB, "en");
+    if (a.service_id === groupA) return -1;
+    if (b.service_id === groupB) return 1;
+    return a.label.localeCompare(b.label, "ja");
+  });
 
   const lawArticles = careNodes.filter((node) => node.node_type === "article");
   const ordinanceArticles = ordinanceNodes.filter(
+    (node) => node.node_type === "article",
+  );
+  const selectedSourceArticles = selectedSourceNodes.filter(
     (node) => node.node_type === "article",
   );
 
@@ -70,7 +86,7 @@ export default async function DatabaseSearchPage({
     ? selectedService
       ? filterProgressivePublishedRules(
           selectedService.service_id,
-          ordinanceArticles,
+          selectedSourceArticles,
           (article) => article.id,
         )
       : []
@@ -86,7 +102,7 @@ export default async function DatabaseSearchPage({
   const ordinanceMatches = rankDatabaseSearch(
     scopedOrdinanceArticles,
     query,
-    (article) => articleSearchFields(article, ordinanceNodes),
+    (article) => articleSearchFields(article, selectedSourceNodes),
   );
   const noticeMatches = requestedService
     ? []
@@ -171,7 +187,7 @@ export default async function DatabaseSearchPage({
         <Link className={!requestedService ? "rules-filter-active" : ""} href="/databases/search">
           全体
         </Link>
-        {progressiveServices.map((item) => (
+        {groupedProgressiveServices.map((item) => (
           <Link
             className={requestedService === item.service_id ? "rules-filter-active" : ""}
             href={`/databases/search?service=${encodeURIComponent(item.service_id)}`}
