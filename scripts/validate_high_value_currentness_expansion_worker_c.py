@@ -148,6 +148,14 @@ def main() -> None:
         fail("remaining applicable Unit Price count must be 18")
     if effect.get("care_insurance_act_promotions") != 0:
         fail("Care Insurance Act promotion must remain zero")
+    if effect.get("projected_additional_ready_cells") != len(EXPECTED_IDS):
+        fail("projected additional READY count mismatch")
+    if effect.get("reference_ready_cells") != 21:
+        fail("reference READY count must match base main")
+    if effect.get("projected_ready_cells_after_semantic_integration") != 39:
+        fail("projected READY total must be 39")
+    if effect.get("projected_additional_ready_publication_units") != len(EXPECTED_IDS) * 4:
+        fail("projected ready publication-unit count mismatch")
 
     boundary = artifact.get("integration_boundary") or {}
     for key in (
