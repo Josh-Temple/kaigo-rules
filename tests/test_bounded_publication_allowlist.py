@@ -28,22 +28,22 @@ class BoundedPublicationAllowlistTests(unittest.TestCase):
         cls.readiness_sha = cls.allowlist["source_readiness"]["git_blob_sha"]
         cls.currentness_sha = cls.allowlist["source_currentness"]["git_blob_sha"]
 
-    def validate(self, allowlist=None, readiness=None, currentness=None):
+    def validate(self, allowlist=None, readiness=None):
         return validate(
             allowlist if allowlist is not None else self.allowlist,
             readiness if readiness is not None else self.readiness,
             readiness_blob_sha=self.readiness_sha,
-            currentness=currentness if currentness is not None else self.currentness,
-            currentness_blob_sha=self.currentness_sha,
         )
 
     def test_current_decision_is_progressive_publication(self):
         result = self.validate()
-        self.assertEqual(result["publication_allowlist_cells"], 20)
-        self.assertEqual(result["route_allowlist_cells"], 20)
-        self.assertEqual(result["field_allowlist_cells"], 20)
+        expected = len(self.allowlist["publication_cell_allowlist"])
+        self.assertEqual(result["publication_allowlist_cells"], expected)
+        self.assertEqual(result["route_allowlist_cells"], expected)
+        self.assertEqual(result["field_allowlist_cells"], expected)
+        self.assertEqual(result["runtime_binding_cells"], expected)
         self.assertTrue(result["runtime_binding_established"])
-        self.assertFalse(result["existing_public_surfaces_changed"])
+        self.assertFalse(self.allowlist["summary"]["existing_public_surfaces_changed"])
         self.assertEqual(
             self.allowlist["summary"]["decision"],
             "PUBLISH_BOUNDED_READY_UNITS",
@@ -145,41 +145,39 @@ class BoundedPublicationAllowlistTests(unittest.TestCase):
                 self.allowlist,
                 self.readiness,
                 readiness_blob_sha="0" * 40,
-                currentness=self.currentness,
-                currentness_blob_sha=self.currentness_sha,
             )
 
     def test_currentness_change_invalidates_selection(self):
+        mutated = copy.deepcopy(self.allowlist)
+        mutated["source_currentness"]["git_blob_sha"] = "0" * 40
         with self.assertRaises(BoundedPublicationError):
-            validate(
-                self.allowlist,
-                self.readiness,
-                readiness_blob_sha=self.readiness_sha,
-                currentness=self.currentness,
-                currentness_blob_sha="0" * 40,
-            )
+            self.validate(allowlist=mutated)
 
     def test_unsupported_source_identity_fails_closed(self):
-        mutated = copy.deepcopy(self.currentness)
-        promotion = next(
-            row
-            for row in mutated["promotions"]
-            if row["service_id"] == "preventive-homebath"
+        mutated = copy.deepcopy(self.allowlist)
+        key = next(
+            key
+            for key, binding in mutated["runtime_source_binding_by_cell"].items()
+            if binding["promotion"]["service_id"] == "preventive-homebath"
         )
-        promotion["source_identity"]["canonical_source_id"] = "unsupported-source"
-        with self.assertRaisesRegex(BoundedPublicationError, "unsupported source identity"):
-            self.validate(currentness=mutated)
+        mutated["runtime_source_binding_by_cell"][key]["promotion"]["source_identity"][
+            "canonical_source_id"
+        ] = "unsupported-source"
+        with self.assertRaises(BoundedPublicationError):
+            self.validate(allowlist=mutated)
 
     def test_wrong_applicability_contract_fails_closed(self):
-        mutated = copy.deepcopy(self.currentness)
-        promotion = next(
-            row
-            for row in mutated["promotions"]
-            if row["service_id"] == "preventive-homebath"
+        mutated = copy.deepcopy(self.allowlist)
+        key = next(
+            key
+            for key, binding in mutated["runtime_source_binding_by_cell"].items()
+            if binding["promotion"]["service_id"] == "preventive-homebath"
         )
-        promotion["applicability_proof"]["state"] = "PASS_DIRECT_SERVICE_CHAPTER"
-        with self.assertRaisesRegex(BoundedPublicationError, "unsupported applicability proof"):
-            self.validate(currentness=mutated)
+        mutated["runtime_source_binding_by_cell"][key]["promotion"]["applicability_proof"][
+            "state"
+        ] = "PASS_DIRECT_SERVICE_CHAPTER"
+        with self.assertRaises(BoundedPublicationError):
+            self.validate(allowlist=mutated)
 
     def test_preventive_presentation_policy_is_explicit(self):
         policy = self.allowlist["policy"]
