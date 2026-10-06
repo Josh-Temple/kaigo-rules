@@ -123,8 +123,14 @@ def residual_governing_direct_article_numbers(row: dict[str, Any]) -> list[str]:
     meta = shared_standard_meta(corpus_id)
     rows = shared_standard_article_rows(corpus_id)
     by_num = {str(item.get("article_num") or ""): item for item in rows}
-    ordered_nums = [str(item.get("article_num") or "") for item in rows]
-    positions = {num: index for index, num in enumerate(ordered_nums)}
+
+    def article_number_key(value: str) -> tuple[int, ...]:
+        parts = value.split("-")
+        if not value or any(not part.isdigit() for part in parts):
+            raise ValueError(
+                f"unsupported article number in canonical corpus: {corpus_id}: {value}"
+            )
+        return tuple(int(part) for part in parts)
 
     selected: list[str] = []
     governing = scope.get("governing_standards_ordinance")
@@ -144,15 +150,31 @@ def residual_governing_direct_article_numbers(row: dict[str, Any]) -> list[str]:
         for item in direct_ranges:
             start = str(item.get("from") or "")
             end = str(item.get("through") or "")
-            if (
-                start not in positions
-                or end not in positions
-                or positions[start] > positions[end]
-            ):
+            if start not in by_num or end not in by_num:
                 raise ValueError(
                     f"residual governing direct range unresolved: {service_id} {start}..{end}"
                 )
-            selected.extend(ordered_nums[positions[start] : positions[end] + 1])
+            start_key = article_number_key(start)
+            end_key = article_number_key(end)
+            if start_key > end_key:
+                raise ValueError(
+                    f"residual governing direct range reversed: {service_id} {start}..{end}"
+                )
+            in_range = sorted(
+                (
+                    article_num
+                    for article_num in by_num
+                    if start_key
+                    <= article_number_key(article_num)
+                    <= end_key
+                ),
+                key=article_number_key,
+            )
+            if not in_range:
+                raise ValueError(
+                    f"residual governing direct range empty: {service_id} {start}..{end}"
+                )
+            selected.extend(in_range)
     elif isinstance(scope.get("service_chapter_direct_scope"), dict):
         if scope.get("corpus_id") != corpus_id:
             raise ValueError(f"preventive governing scope corpus mismatch: {service_id}")
