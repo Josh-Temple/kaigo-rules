@@ -36,14 +36,20 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             for cell in cells
             if cell[1] == "unit_price_regional_classification"
         }
+        delegated = {
+            cell
+            for cell in cells
+            if cell[1] == "delegated_remuneration_criteria"
+        }
 
         self.assertEqual(len(governing), 22)
         self.assertEqual(len(unit_price), 19)
+        self.assertEqual(len(delegated), 15)
         self.assertIn(
             ("dayservice", "unit_price_regional_classification"),
             cells,
         )
-        self.assertEqual(len(cells), 41)
+        self.assertEqual(len(cells), 56)
         unit_price_binding = artifact["runtime_source_binding_by_cell"][
             "dayservice|unit_price_regional_classification"
         ]
