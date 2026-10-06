@@ -47,6 +47,11 @@ SERVICE_SOURCE_ALIASES = {
 }
 
 PASS_SOURCE_CLASSES = {"CURRENT_OFFICIAL_VERSIONED", "CURRENT_OFFICIAL_CONSOLIDATED"}
+DEFERRED_TARGETS = {
+    "night-homevisit": "CURRENT_CORPUS_SCOPE_ENDPOINT_NOT_RESOLVED",
+    "dementia-group-home": "CURRENT_CORPUS_SCOPE_ENDPOINT_NOT_RESOLVED",
+}
+PROMOTED_TARGETS = set(TARGETS) - set(DEFERRED_TARGETS)
 
 
 def load(path: Path | str) -> Any:
@@ -245,13 +250,16 @@ def validate_payload(
         for sid in target_ids
     }
     preintegration = all(state == "NOT_ESTABLISHED" for state in target_states.values())
-    integrated = all(state == "PASS" for state in target_states.values())
+    integrated = (
+        all(target_states[sid] == "PASS" for sid in PROMOTED_TARGETS)
+        and all(target_states[sid] == "NOT_ESTABLISHED" for sid in DEFERRED_TARGETS)
+    )
     if not preintegration and not integrated:
         errors.append(f"target currentness is neither exact preintegration nor integrated state: {target_states}")
     if preintegration and len(current_pass) != 22:
         errors.append(f"existing READY/currentness PASS baseline regressed or drifted: {len(current_pass)}")
-    if integrated and len(current_pass) != 39:
-        errors.append(f"integrated governing standards PASS count must be 39, got {len(current_pass)}")
+    if integrated and len(current_pass) != 37:
+        errors.append(f"integrated governing standards PASS count must be 37, got {len(current_pass)}")
 
     starting = artifact.get("starting_inventory") or {}
     if starting.get("ready") != 22 or starting.get("blocked_currentness") != 17:
@@ -308,14 +316,6 @@ def validate_payload(
             errors.append(f"{service_id}: source identity mismatch")
         if row.get("scope_path") != scope_path:
             errors.append(f"{service_id}: scope evidence pointer mismatch")
-        if row.get("decision") != "PROMOTE_PASS_BOUNDED" or row.get("promotion_applied") is not True:
-            errors.append(f"{service_id}: bounded promotion decision missing")
-        if row.get("blocker") is not None:
-            errors.append(f"{service_id}: promoted cell cannot retain blocker")
-        if row.get("projected_currentness_state") != "PASS":
-            errors.append(f"{service_id}: projected currentness must be PASS")
-        if row.get("source_version_contains_scope") is not True:
-            errors.append(f"{service_id}: current source-version containment not established")
         if row.get("ingestion_state") != "INGESTED" or row.get("item_body_state") != "PASS":
             errors.append(f"{service_id}: ingestion/item-body prerequisite not satisfied")
         if (matrix_row.get("item_body_verification") or {}).get("state") != "PASS":
@@ -323,23 +323,51 @@ def validate_payload(
         if (matrix_row.get("ingestion") or {}).get("state") != "INGESTED":
             errors.append(f"{service_id}: canonical ingestion state drift")
         gate = row.get("projection_gate") or {}
-        if gate.get("kind") != "EXPLICIT_BOUNDED_ALLOWLIST" or gate.get("allowed") is not True:
-            errors.append(f"{service_id}: explicit bounded gate missing")
         if gate.get("identity") != f"{service_id}::governing_standards_ordinance":
             errors.append(f"{service_id}: gate identity mismatch")
         proof = row.get("applicability_proof") or {}
-        if proof.get("state") != "PASS_DIRECT_SCOPE_CURRENT_VERSION":
-            errors.append(f"{service_id}: service-specific direct-scope proof missing")
         if proof.get("regular_preventive_inheritance_used") is not False:
             errors.append(f"{service_id}: regular/preventive inheritance is forbidden")
         if proof.get("incorporation_or_read_as_semantics_promoted") is not False:
             errors.append(f"{service_id}: unresolved relation semantics leaked into currentness")
+
         scope_errors, resolved = direct_scope_evidence(
             service_id, service_label, corpus_id, scope_path, kind
         )
-        errors.extend(scope_errors)
-        if not resolved.get("direct_article_count"):
-            errors.append(f"{service_id}: no exact direct current-version evidence resolved")
+        if service_id in DEFERRED_TARGETS:
+            expected_blocker = DEFERRED_TARGETS[service_id]
+            if row.get("decision") != "DEFER" or row.get("promotion_applied") is not False:
+                errors.append(f"{service_id}: unresolved current-version scope must remain deferred")
+            if row.get("blocker") != expected_blocker:
+                errors.append(f"{service_id}: deferred blocker mismatch")
+            if row.get("projected_currentness_state") != "NOT_ESTABLISHED":
+                errors.append(f"{service_id}: deferred currentness must remain NOT_ESTABLISHED")
+            if row.get("source_version_contains_scope") is not False:
+                errors.append(f"{service_id}: unresolved scope cannot claim version containment")
+            if gate.get("kind") != "EXPLICIT_BOUNDED_ALLOWLIST" or gate.get("allowed") is not False:
+                errors.append(f"{service_id}: deferred cell gate must remain closed")
+            if proof.get("state") != "NOT_ESTABLISHED_CURRENT_VERSION_SCOPE_ENDPOINT":
+                errors.append(f"{service_id}: unresolved scope proof state mismatch")
+            if not any("direct range does not resolve in current corpus" in e for e in scope_errors):
+                errors.append(f"{service_id}: recorded endpoint blocker no longer reproduces")
+            if resolved.get("direct_article_count"):
+                errors.append(f"{service_id}: deferred scope unexpectedly resolved direct articles")
+        else:
+            if row.get("decision") != "PROMOTE_PASS_BOUNDED" or row.get("promotion_applied") is not True:
+                errors.append(f"{service_id}: bounded promotion decision missing")
+            if row.get("blocker") is not None:
+                errors.append(f"{service_id}: promoted cell cannot retain blocker")
+            if row.get("projected_currentness_state") != "PASS":
+                errors.append(f"{service_id}: projected currentness must be PASS")
+            if row.get("source_version_contains_scope") is not True:
+                errors.append(f"{service_id}: current source-version containment not established")
+            if gate.get("kind") != "EXPLICIT_BOUNDED_ALLOWLIST" or gate.get("allowed") is not True:
+                errors.append(f"{service_id}: explicit bounded gate missing")
+            if proof.get("state") != "PASS_DIRECT_SCOPE_CURRENT_VERSION":
+                errors.append(f"{service_id}: service-specific direct-scope proof missing")
+            errors.extend(scope_errors)
+            if not resolved.get("direct_article_count"):
+                errors.append(f"{service_id}: no exact direct current-version evidence resolved")
 
     # Explicitly prove preventive-support remains its own source identity.
     if (by_id.get("preventive-support") or {}).get("canonical_source_id") != "preventive-support-standards":
@@ -362,13 +390,15 @@ def validate_payload(
     summary = artifact.get("summary") or {}
     if summary.get("targeted_cells") != 17:
         errors.append("targeted cell count mismatch")
-    if summary.get("promoted_cells") != len(decisions):
+    if summary.get("promoted_cells") != len(PROMOTED_TARGETS):
         errors.append("promoted cell count mismatch")
-    if summary.get("deferred_cells") != 0:
-        errors.append("this decision artifact records no deferred cells")
-    if summary.get("projected_ready_increase") != len(decisions):
+    if summary.get("deferred_cells") != len(DEFERRED_TARGETS):
+        errors.append("deferred cell count mismatch")
+    if set(summary.get("deferred_service_ids") or []) != set(DEFERRED_TARGETS):
+        errors.append("deferred service inventory mismatch")
+    if summary.get("projected_ready_increase") != len(PROMOTED_TARGETS):
         errors.append("projected READY increase mismatch")
-    if summary.get("projected_governing_standards_ready") != 39:
+    if summary.get("projected_governing_standards_ready") != 37:
         errors.append("projected governing standards READY count mismatch")
 
     boundary = artifact.get("integration_boundary") or {}
