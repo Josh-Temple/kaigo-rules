@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -59,6 +60,7 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             {
                 "governing_standards_ordinance",
                 "unit_price_regional_classification",
+                "delegated_remuneration_criteria",
             },
         )
         self.assertEqual(
@@ -67,6 +69,7 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
                 "ordinance37",
                 "preventive-services-standards",
                 "mhlw-unit-price-current",
+                "delegated-remuneration-national",
             },
         )
 
@@ -175,6 +178,170 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
         missing_unit = copy.deepcopy(promotion)
         missing_unit["allowed_publication_units"].remove("CURRENTNESS_STATEMENT")
         self.assertFalse(builder.source_contract_supported(missing_unit))
+
+    def test_delegated_remuneration_contract_binds_exact_worker_b_shape(self):
+        applicability = json.loads(
+            builder.DELEGATED_APPLICABILITY_PATH.read_text(encoding="utf-8")
+        )
+        corpus = json.loads(
+            builder.DELEGATED_CORPUS_PATH.read_text(encoding="utf-8")
+        )
+        service = next(
+            row
+            for row in applicability["services"]
+            if row["service_id"] == "homevisit"
+        )
+        node_by_id = {
+            row["canonical_node_id"]: row for row in corpus["nodes"]
+        }
+        mapped_node_ids = list(service["mapped_node_ids"])
+        mapped_source_ids = sorted(
+            {
+                node_by_id[node_id]["source_id"]
+                for node_id in mapped_node_ids
+            }
+        )
+
+        promotion = {
+            "service_id": "homevisit",
+            "source_family": "delegated_remuneration_criteria",
+            "mapped_node_count": len(mapped_node_ids),
+            "mapped_node_ids": mapped_node_ids,
+            "mapped_source_ids": mapped_source_ids,
+            "applicability_proof": {
+                "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+                "evidence": [
+                    "data/shared/remuneration-delegated/service-applicability.json#homevisit"
+                ],
+                "inherited_from_sibling_service": False,
+            },
+            "item_body_state": "PASS",
+            "source_currentness_evidence": [
+                "data/shared/remuneration-delegated/currentness-source-contract.json#"
+                + source_id
+                for source_id in mapped_source_ids
+            ],
+            "source_identity_matches_item_body_source": True,
+            "projection_gate": {
+                "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+                "allowed": True,
+                "identity": "homevisit::delegated_remuneration_criteria",
+                "scope": "currentness_only",
+            },
+            "projected_currentness_state": "PASS",
+            "promotion_applied": True,
+        }
+
+        original_path = builder.DELEGATED_CURRENTNESS_CONTRACT_PATH
+        with tempfile.TemporaryDirectory() as missing_tmpdir:
+            builder.DELEGATED_CURRENTNESS_CONTRACT_PATH = (
+                Path(missing_tmpdir) / "missing-currentness-contract.json"
+            )
+            self.assertFalse(builder.source_contract_supported(promotion))
+        builder.DELEGATED_CURRENTNESS_CONTRACT_PATH = original_path
+
+        self.assertTrue(
+            builder.delegated_service_contract_supported("homevisit")
+        )
+        self.assertFalse(
+            builder.delegated_service_contract_supported(
+                "specific-welfare-equipment-sale"
+            )
+        )
+
+        contract = {
+            "observed_date": "2026-10-06",
+            "source_contracts": [
+                {
+                    "canonical_source_id": source_id,
+                    "official_source_url": (
+                        "https://www.mhlw.go.jp/web/t_doc?dataId="
+                        + ("82ab4584" if "criteria95" in source_id else "82ab4585")
+                        + "&dataType=0"
+                    ),
+                    "currentness_state": "PASS",
+                    "promotion_eligible": True,
+                }
+                for source_id in mapped_source_ids
+            ],
+        }
+
+        original_path = builder.DELEGATED_CURRENTNESS_CONTRACT_PATH
+        try:
+            with tempfile.TemporaryDirectory() as tmpdir:
+                temp_path = Path(tmpdir) / "currentness-source-contract.json"
+                temp_path.write_text(
+                    json.dumps(contract, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+                builder.DELEGATED_CURRENTNESS_CONTRACT_PATH = temp_path
+
+                self.assertTrue(builder.source_contract_supported(promotion))
+                normalized = builder.normalize_runtime_promotion(promotion)
+                self.assertEqual(
+                    normalized["source_identity"]["canonical_source_id"],
+                    "delegated-remuneration-national",
+                )
+                self.assertTrue(normalized["source_version_contains_scope"])
+                self.assertEqual(normalized["ingestion_state"], "INGESTED")
+                self.assertEqual(
+                    set(normalized["allowed_publication_units"]),
+                    builder.REQUIRED_PUBLICATION_UNITS,
+                )
+
+                wrong_nodes = copy.deepcopy(promotion)
+                wrong_nodes["mapped_node_ids"] = wrong_nodes[
+                    "mapped_node_ids"
+                ][1:]
+                wrong_nodes["mapped_node_count"] = len(
+                    wrong_nodes["mapped_node_ids"]
+                )
+                self.assertFalse(
+                    builder.source_contract_supported(wrong_nodes)
+                )
+
+                wrong_sources = copy.deepcopy(promotion)
+                wrong_sources["mapped_source_ids"] = [
+                    mapped_source_ids[0]
+                ]
+                self.assertFalse(
+                    builder.source_contract_supported(wrong_sources)
+                )
+
+                blocked_contract = copy.deepcopy(contract)
+                blocked_contract["source_contracts"][0][
+                    "promotion_eligible"
+                ] = False
+                temp_path.write_text(
+                    json.dumps(blocked_contract, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+                self.assertFalse(
+                    builder.source_contract_supported(promotion)
+                )
+        finally:
+            builder.DELEGATED_CURRENTNESS_CONTRACT_PATH = original_path
+
+    def test_actual_worker_b_artifact_is_accepted_when_integrated(self):
+        worker_b_path = (
+            ROOT
+            / "data"
+            / "verification"
+            / "delegated-remuneration-currentness-worker-b.json"
+        )
+        if not worker_b_path.exists():
+            self.skipTest("Worker B artifact is not integrated on this branch")
+
+        self.assertEqual(builder.delegated_currentness_path(), worker_b_path)
+        payload = json.loads(worker_b_path.read_text(encoding="utf-8"))
+        self.assertEqual(payload["summary"]["promoted_cells"], 15)
+        self.assertEqual(len(payload["promotions"]), 15)
+        self.assertTrue(
+            all(
+                builder.source_contract_supported(promotion)
+                for promotion in payload["promotions"]
+            )
+        )
 
     def test_safe_fields_exclude_relation_and_human_review_state(self):
         artifact = builder.build()

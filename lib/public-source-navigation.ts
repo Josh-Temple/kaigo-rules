@@ -22,6 +22,8 @@ export const GOVERNING_STANDARDS_SOURCE_FAMILY =
   "governing_standards_ordinance";
 export const UNIT_PRICE_SOURCE_FAMILY =
   "unit_price_regional_classification";
+export const DELEGATED_REMUNERATION_SOURCE_FAMILY =
+  "delegated_remuneration_criteria";
 
 const DEFINITIONS: readonly PublicSourceFamilyDefinition[] = [
   {
@@ -39,6 +41,14 @@ const DEFINITIONS: readonly PublicSourceFamilyDefinition[] = [
     description: "報酬単位数を金額へ換算する地域区分別の一単位単価",
     service_ids: ["dayservice"],
     hrefForService: () => "/fees/unit-price",
+  },
+  {
+    source_family: DELEGATED_REMUNERATION_SOURCE_FAMILY,
+    label: "報酬算定基準（別告示）",
+    short_label: "別告示・算定基準",
+    description: "報酬告示から参照される算定方法・厚生労働大臣基準の公式本文",
+    hrefForService: (serviceId) =>
+      "/fees/criteria?service=" + encodeURIComponent(serviceId),
   },
 ];
 

@@ -88,7 +88,7 @@
     "validate:remuneration-source-link-independent-audit": "python scripts/validate_remuneration_source_link_independent_audit.py",
     "build:careact-service-identity-derived-audit": "python scripts/build_careact_service_identity_derived_audit.py",
     "check:careact-service-identity-derived-audit": "python scripts/build_careact_service_identity_derived_audit.py --check",
-    "test:database-search": "node --experimental-strip-types --test tests/database-global-search.test.mjs tests/notice-database.test.mjs tests/notice-navigation.test.mjs tests/progressive-publication-runtime.test.mjs",
+    "test:database-search": "node --experimental-strip-types --test tests/database-global-search.test.mjs tests/notice-database.test.mjs tests/notice-navigation.test.mjs tests/progressive-publication-runtime.test.mjs tests/next-source-runtime-relations.test.mjs",
     "build:relation-human-review-packet": "python scripts/build_relation_human_review_packet.py",
     "check:relation-human-review-packet": "python scripts/build_relation_human_review_packet.py --check",
     "validate:notice-rouki25-watch-receipt": "python scripts/validate_notice_rouki25_watch_receipt.py",
