@@ -36,6 +36,17 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             cells,
         )
         self.assertEqual(len(cells), 21)
+        unit_price_binding = artifact["runtime_source_binding_by_cell"][
+            "dayservice|unit_price_regional_classification"
+        ]
+        self.assertEqual(
+            unit_price_binding["promotion"]["source_identity"]["canonical_source_id"],
+            "mhlw-unit-price-current",
+        )
+        self.assertEqual(
+            unit_price_binding["promotion"]["applicability_proof"]["multiplier_profile_id"],
+            "group-1090",
+        )
         self.assertEqual(
             set(artifact["runtime_binding"]["supported_source_families"]),
             {
@@ -89,6 +100,74 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
         self.assertFalse(
             builder.source_contract_supported(missing_currentness)
         )
+
+    def test_worker_c_shaped_unit_price_promotion_is_supported_without_broadcast(self):
+        base = json.loads(
+            (
+                ROOT
+                / "data"
+                / "verification"
+                / "high-value-currentness-closure-worker-b.json"
+            ).read_text(encoding="utf-8")
+        )["promotions"][0]
+        promotion = {
+            "service_id": "homevisit",
+            "source_family": "unit_price_regional_classification",
+            "canonical_source_identity": {
+                "canonical_source_id": "mhlw-unit-price-current",
+                "title": base["source_identity"]["title"],
+                "official_source_url": base["source_identity"]["official_source_url"],
+                "official_page_urls": base["source_identity"]["official_page_urls"],
+                "version_id": base["source_identity"]["version_id"],
+                "effective_date": "2024-04-01",
+                "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+                "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED",
+            },
+            "service_applicability_evidence": {
+                "state": "PASS_DIRECT_SERVICE_SCOPE",
+                "official_service_name": "訪問介護",
+                "multiplier_profile_id": "group-1140",
+                "source_locator": "第一号 表 / 訪問介護 / 地域区分別割合",
+                "mapped_item_count": 8,
+            },
+            "currentness_evidence": {
+                "official_source_locator": base["source_identity"]["official_source_url"],
+                "observed_on": "2026-10-06",
+                "effective_date": "2024-04-01",
+                "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+                "live_verifier": "scripts/verify_unit_price_currentness.py",
+            },
+            "allowed_publication_units": [
+                "SOURCE_TEXT_ITEM_BODY",
+                "SOURCE_METADATA_LOCATOR",
+                "CURRENTNESS_STATEMENT",
+                "SERVICE_APPLICABILITY_STATEMENT",
+            ],
+            "ingestion_state": "INGESTED",
+            "item_body_state": "PASS",
+            "projected_currentness_state": "PASS",
+            "promotion_applied": True,
+        }
+
+        self.assertTrue(builder.source_contract_supported(promotion))
+        normalized = builder.normalize_runtime_promotion(promotion)
+        self.assertEqual(
+            normalized["source_identity"]["canonical_source_id"],
+            "mhlw-unit-price-current",
+        )
+        self.assertEqual(
+            normalized["applicability_proof"]["multiplier_profile_id"],
+            "group-1140",
+        )
+        self.assertTrue(normalized["source_version_contains_scope"])
+
+        wrong_family = copy.deepcopy(promotion)
+        wrong_family["source_family"] = "governing_standards_ordinance"
+        self.assertFalse(builder.source_contract_supported(wrong_family))
+
+        missing_unit = copy.deepcopy(promotion)
+        missing_unit["allowed_publication_units"].remove("CURRENTNESS_STATEMENT")
+        self.assertFalse(builder.source_contract_supported(missing_unit))
 
     def test_safe_fields_exclude_relation_and_human_review_state(self):
         artifact = builder.build()
