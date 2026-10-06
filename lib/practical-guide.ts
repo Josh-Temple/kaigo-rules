@@ -130,6 +130,70 @@ export const practicalGuideJourneys: PracticalGuideJourney[] = [
     title: "指定・更新・届出の根拠を確認する",
     summary:
       "介護保険法の指定関係規定と、厚生労働省の指定申請等の案内を起点に確認します。",
+    subJourneys: [
+      {
+        id: "before-designation",
+        title: "指定申請前に確認する資料を探す",
+        summary:
+          "指定申請の前に、全国共通の根拠とサービスの人員・設備・運営基準を分けて確認します。",
+        firstChecks: [
+          "対象サービスと指定権者を確認する",
+          "人員・設備・運営基準のうち、申請前に確認が必要な論点を整理する",
+          "全国共通の根拠と自治体の申請手引・事前相談を分けて確認する",
+        ],
+        databaseLinks: [
+          {
+            label: "「指定」で制度DBを検索",
+            href: `/databases/search?q=${encodeURIComponent("指定")}`,
+            detail: "公開済みの法令・基準省令・国Q&Aから指定に関係する根拠を探します。",
+          },
+          {
+            label: "基準省令DBを見る",
+            href: "/rules",
+            detail: "対象サービスの人員・設備・運営基準の公開本文を確認します。",
+          },
+          {
+            label: "サービス別の公開情報を見る",
+            href: "/services",
+            detail: "対象サービスで現在公開している一次資料へ進みます。",
+          },
+        ],
+        officialSourceIds: ["egov-care-insurance-act", "mhlw-application-forms"],
+        caution:
+          "指定申請の受付方法、事前相談、添付書類、締切は指定権者ごとに異なる場合があります。最終的な提出要件は自治体の案内で確認してください。",
+      },
+      {
+        id: "renewal-change",
+        title: "更新・変更届で確認する資料を探す",
+        summary:
+          "更新や変更届に関係する全国共通の根拠を確認し、自治体固有の提出方法とは分けて整理します。",
+        firstChecks: [
+          "更新、変更届、廃止・休止など手続の種類を確認する",
+          "変更する事項と対象サービスを確認する",
+          "全国共通の根拠を確認したうえで、指定権者の様式・期限を確認する",
+        ],
+        databaseLinks: [
+          {
+            label: "「更新」で制度DBを検索",
+            href: `/databases/search?q=${encodeURIComponent("更新")}`,
+            detail: "公開済みDBから更新に関係する根拠を探します。",
+          },
+          {
+            label: "「届出」で制度DBを検索",
+            href: `/databases/search?q=${encodeURIComponent("届出")}`,
+            detail: "変更届などの届出に関係する公開済み資料を探します。",
+          },
+          {
+            label: "介護保険法DBを見る",
+            href: "/law",
+            detail: "指定・更新・届出の法令上の根拠を確認します。",
+          },
+        ],
+        officialSourceIds: ["egov-care-insurance-act", "mhlw-application-forms"],
+        caution:
+          "提出期限、提出先、電子申請の可否、添付書類は自治体ごとに異なる場合があります。個別手続は指定権者の最新案内を確認してください。",
+      },
+    ],
     firstChecks: [
       "対象サービスと指定権者を確認する",
       "新規指定・更新・変更届など、確認したい手続の種類を整理する",
