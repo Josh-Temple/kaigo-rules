@@ -24,7 +24,7 @@ export default function DayrehabRemunerationPage() {
         <strong>これは現行統合本文ではありません。</strong><br />
         基本単位数は厚生労働省掲載表示の取得範囲、令和8年告示第87号は明示されたヘの差分として分離しています。
         令和8年対照表でイ〜ホが「略」とされているため、変更なしとは扱っていません。
-        現行性はGAP、人手確認は未実施です。
+        現行性は確認中で、人手確認は未実施です。
       </div>
 
       <VerificationSummary layerId="remuneration-dayrehab" />
@@ -33,7 +33,7 @@ export default function DayrehabRemunerationPage() {
         <div><strong>{layer.counts.parent_items}</strong><span>出典側の親項目</span></div>
         <div><strong>{layer.counts.base_tariff_rows}</strong><span>基本報酬区分</span></div>
         <div><strong>{layer.counts.base_tariff_rate_values}</strong><span>要介護度別の掲載単位値</span></div>
-        <div><strong>GAP</strong><span>現行性</span></div>
+        <div><strong>確認中</strong><span>現行性</span></div>
       </section>
 
       <section className="section">

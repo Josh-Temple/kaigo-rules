@@ -145,8 +145,8 @@ test("global ordinance detail generates the shared corpus and fails closed only 
   );
   assert.match(
     source,
-    /selectedServiceId[\s\S]*!isRecordApplicableToService\(/,
-    "service-filtered detail must fail closed outside the selected service scope",
+    /selectedServiceId[\s\S]*progressiveSelection[\s\S]*isProgressiveRulePublished[\s\S]*isRecordApplicableToService\(/,
+    "service-filtered detail must fail closed through either the progressive publication policy or the legacy scope contract",
   );
   assert.match(
     source,
@@ -192,5 +192,6 @@ test("global rules list defaults to the shared corpus and exposes only published
   assert.match(source, /: articles;/);
   assert.match(source, /future_service_base_enabled/);
   assert.match(source, /すべて/);
-  assert.match(source, /公開中の通所介護と通所リハビリテーション/);
+  assert.match(source, /listProgressivePublicationServices/);
+  assert.match(source, /適用範囲と公開条件を確認できた条文だけを表示/);
 });

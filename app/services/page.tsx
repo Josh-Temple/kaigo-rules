@@ -9,21 +9,23 @@ const publicServices = listServices().filter(
 
 const statusLabel = (status: string) => {
   if (status === "ACTIVE_MVP") return "公開中";
-  if (status === "ACTIVE_PREVIEW") return "プレビュー";
-  return status;
+  if (status === "ACTIVE_PREVIEW") return "一部公開";
+  return "公開情報あり";
 };
 
-const serviceLandingHref = (serviceId: string) => `/services/${serviceId}`;
+const serviceLandingHref = (serviceId: string) => "/services/" + serviceId;
 
 export default function ServicesPage() {
   return (
     <article className="answer-page foundation-page">
-      <p className="eyebrow">SERVICES</p>
+      <p className="eyebrow">サービス別</p>
       <h1>サービス別に制度を見る</h1>
       <p className="lead">
-        まず対象サービスを選び、そのサービスで公開している法令・基準・通知・報酬・Q&Aへ進みます。
-        公開範囲と確認状態はサービスごとに分離し、別サービスの確認結果を自動的に引き継ぎません。
+        特定サービスの制度情報だけを見たいときの入口です。
+        サービスを決めずに調べたい場合は、制度DBの横断検索から始められます。
       </p>
+
+      <p><Link href="/databases/search">サービスを選ばずDB全体から検索する →</Link></p>
 
       <div className="foundation-list">
         {publicServices.map((service, index) => {
@@ -42,10 +44,10 @@ export default function ServicesPage() {
       </div>
 
       <section className="section">
-        <h2>整備中のサービス</h2>
+        <h2>この一覧にないサービス</h2>
         <p className="meta">
-          資料の収集や構造化が進んでいても、サービス固有の公開範囲と確認状態が整うまでは公開サービス一覧に出しません。
-          新しいサービスを追加するときも、この一覧を共通の入口にします。
+          サービス別ページをまだ公開していない場合でも、法令・基準省令・国Q&AなどはDB全体から確認できるものがあります。
+          個別サービスとして公開できる範囲は順次増やします。
         </p>
       </section>
     </article>

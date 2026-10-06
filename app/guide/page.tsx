@@ -1,0 +1,114 @@
+import Link from "next/link";
+import sourcesData from "../../data/sources.json";
+import {
+  practicalGuideJourneys,
+  practicalGuidePolicy,
+} from "../../lib/practical-guide";
+
+type SourceRecord = {
+  id: string;
+  title: string;
+  url: string;
+};
+
+const sources = sourcesData as SourceRecord[];
+const sourcesById = new Map(sources.map((source) => [source.id, source]));
+
+export default function GuidePage() {
+  return (
+    <article className="answer-page wide-page">
+      <p className="eyebrow">PRACTICAL GUIDE</p>
+      <h1>{practicalGuidePolicy.workingLabel}</h1>
+      <p className="lead">{practicalGuidePolicy.purpose}</p>
+
+      <div className="notice">
+        <strong>このページは、公式な解釈や個別案件の判断を示すものではありません。</strong>
+        <br />
+        {practicalGuidePolicy.safety}
+      </div>
+
+      <section className="section">
+        <h2>目的から選ぶ</h2>
+        <p>
+          サービスを先に決めなくても、確認したい実務テーマから公開済みDBへ進めます。
+          表示先で出典・適用範囲・現行性に関する注意を確認してください。
+        </p>
+        <div className="entry-links">
+          {practicalGuideJourneys.map((journey, index) => (
+            <Link
+              className="entry-row"
+              href={`#${journey.id}`}
+              key={journey.id}
+            >
+              <span>
+                {String(index + 1).padStart(2, "0")}　{journey.title}
+              </span>
+              <small>確認する →</small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {practicalGuideJourneys.map((journey, index) => (
+        <section className="section" id={journey.id} key={journey.id}>
+          <p className="eyebrow">
+            GUIDE {String(index + 1).padStart(2, "0")}
+          </p>
+          <h2>{journey.title}</h2>
+          <p>{journey.summary}</p>
+
+          <h3>まず確認すること</h3>
+          <ol className="steps">
+            {journey.firstChecks.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ol>
+
+          <h3>DB内で確認する</h3>
+          <div className="entry-links">
+            {journey.databaseLinks.map((link) => (
+              <Link className="entry-row" href={link.href} key={link.href}>
+                <span>
+                  {link.label}
+                  <small style={{ display: "block", marginTop: "4px" }}>
+                    {link.detail}
+                  </small>
+                </span>
+                <small>開く →</small>
+              </Link>
+            ))}
+          </div>
+
+          <h3>公式資料へ戻る</h3>
+          <ul className="source-list">
+            {journey.officialSourceIds.map((sourceId) => {
+              const source = sourcesById.get(sourceId);
+              if (!source) return null;
+              return (
+                <li key={sourceId}>
+                  <a href={source.url} target="_blank" rel="noreferrer">
+                    {source.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          {journey.caution ? (
+            <div className="notice">{journey.caution}</div>
+          ) : null}
+        </section>
+      ))}
+
+      <section className="section">
+        <h2>特定サービスから探す場合</h2>
+        <p>
+          対象サービスが決まっている場合は、サービス別ページから、そのサービスで公開している法令・基準・通知・報酬・Q&Aへ進めます。
+        </p>
+        <p>
+          <Link href="/services">サービス別の公開情報を見る →</Link>
+        </p>
+      </section>
+    </article>
+  );
+}

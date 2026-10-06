@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound, redirect } from "next/navigation";
 import ServiceContextLinks from "../../components/service-context-links";
 import QuestionAuthorityPanel from "../../components/question-authority-panel";
 import questionsData from "../../data/questions.json";
@@ -14,6 +15,7 @@ import { feeHref, getDefaultService } from "../../lib/service-catalog";
 import { filterRecordsForService } from "../../lib/service-scope";
 import { rankQuestionMatches } from "../../lib/question-search";
 import { getSearchableNotices, matchesNoticeTerms } from "../../lib/notice-search";
+import { isProgressiveRouteCell } from "../../lib/publication-policy";
 
 const questions = questionsData as Array<any>;
 const qaCorpus = qaCorpusData as Array<any>;
@@ -74,10 +76,20 @@ const scopedRules = filterRecordsForService(
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; service?: string }>;
 }) {
-  const { q = "" } = await searchParams;
+  const { q = "", service = "" } = await searchParams;
   const query = q.trim();
+  const requestedService = service.trim();
+
+  if (requestedService && isProgressiveRouteCell(requestedService)) {
+    const params = new URLSearchParams({ service: requestedService });
+    if (query) params.set("q", query);
+    redirect(`/databases/search?${params.toString()}`);
+  }
+  if (requestedService && requestedService !== defaultService.service_id) {
+    notFound();
+  }
   const terms = normalize(query).split(" ").filter(Boolean);
   const expandedTerms = terms.map(expand);
 

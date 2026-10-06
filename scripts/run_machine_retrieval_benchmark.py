@@ -77,6 +77,112 @@ def require_expected_sha(actual_sha: str, expected_sha: str | None) -> None:
         )
 
 
+PUBLICATION_SAFE_FIELDS = {
+    "source_text",
+    "item_body",
+    "source_metadata",
+    "source_locator",
+    "currentness_statement",
+    "service_applicability_statement",
+}
+PUBLICATION_FORBIDDEN_KEYS = {
+    "human_review",
+    "relation_verification",
+    "blocking_reasons",
+    "readiness",
+    "source_fingerprint",
+    "projection_provenance",
+}
+
+
+def evaluate_publication_context(
+    status: int,
+    body: str,
+    service_id: str,
+    article: str,
+    expected_state: str,
+) -> dict[str, Any]:
+    if expected_state == "BLOCKED":
+        return {
+            "pass": status == 404,
+            "status": status,
+            "expected_state": expected_state,
+            "errors": [] if status == 404 else [f"blocked context returned HTTP {status}"],
+        }
+
+    result: dict[str, Any] = {
+        "pass": False,
+        "status": status,
+        "expected_state": expected_state,
+        "errors": [],
+    }
+    if status != 200:
+        result["errors"].append(f"published context returned HTTP {status}")
+        return result
+
+    try:
+        payload = json.loads(body)
+    except json.JSONDecodeError as exc:
+        result["errors"].append(f"published context invalid JSON: {exc}")
+        return result
+
+    if (payload.get("service") or {}).get("id") != service_id:
+        result["errors"].append("service id mismatch")
+
+    items = payload.get("items")
+    if not isinstance(items, list) or not items:
+        result["errors"].append("published context has no items")
+        return result
+
+    article_found = False
+    for item in items:
+        if not isinstance(item, dict):
+            result["errors"].append("published context item is not an object")
+            continue
+        if set(item) != PUBLICATION_SAFE_FIELDS:
+            result["errors"].append("published context item fields exceed bounded safe fields")
+        metadata = item.get("source_metadata") or {}
+        item_body = item.get("item_body") or {}
+        locator = item.get("source_locator") or {}
+        if metadata.get("service_id") != service_id:
+            result["errors"].append("item service id mismatch")
+        if str(item_body.get("article_num") or "") == article:
+            article_found = True
+        if not str(locator.get("url") or "").strip():
+            result["errors"].append("source locator URL missing")
+
+    if not article_found:
+        result["errors"].append("expected article missing")
+
+    serialized = json.dumps(payload, ensure_ascii=False)
+    for forbidden in PUBLICATION_FORBIDDEN_KEYS:
+        if f'"{forbidden}"' in serialized:
+            result["errors"].append(f"forbidden management field leaked: {forbidden}")
+
+    result["pass"] = not result["errors"]
+    return result
+
+
+def check_publication_context(
+    base_url: str,
+    service_id: str,
+    article: str,
+    expected_state: str,
+    timeout: float,
+) -> dict[str, Any]:
+    query = urllib.parse.urlencode({"article": article})
+    url = (
+        f"{base_url}/api/context/services/"
+        f"{urllib.parse.quote(service_id)}/rules?{query}"
+    )
+    status, body = fetch(url, timeout)
+    result = evaluate_publication_context(
+        status, body, service_id, article, expected_state
+    )
+    result.update({"service_id": service_id, "article": article, "url": url})
+    return result
+
+
 def build_evaluation_domains(
     benchmark: dict[str, Any],
     machine_metrics: dict[str, float],
@@ -193,6 +299,27 @@ def run(
     base_url = base_url.rstrip("/")
     production_version = get_production_version(base_url, timeout)
     require_expected_sha(production_version["commit_sha"], expected_sha)
+    publication_smoke_results: list[dict[str, Any]] = []
+    for case in (benchmark.get("publication_policy_smoke") or {}).get("cases", []):
+        result = check_publication_context(
+            base_url,
+            case["service_id"],
+            str(case["article"]),
+            case["expected_state"],
+            timeout,
+        )
+        result["id"] = case["id"]
+        publication_smoke_results.append(result)
+
+    failed_publication_smoke = [
+        row["id"] for row in publication_smoke_results if not row["pass"]
+    ]
+    if failed_publication_smoke:
+        raise RuntimeError(
+            "publication policy smoke failed: "
+            + ", ".join(failed_publication_smoke)
+        )
+
     context_cache: dict[str, dict[str, Any]] = {}
     case_results: list[dict[str, Any]] = []
 
@@ -265,6 +392,10 @@ def run(
         "metrics_scope": "MACHINE_RETRIEVAL_ONLY",
         "metrics": machine_metrics,
         "evaluation_domains": evaluation_domains,
+        "publication_policy_smoke": {
+            "status": "PASS",
+            "cases": publication_smoke_results,
+        },
         "by_question": by_question,
         "context_results": context_cache,
         "cases": case_results,

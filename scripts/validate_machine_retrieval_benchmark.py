@@ -69,6 +69,37 @@ def main() -> None:
     if not str(human_reporting.get("required_evidence") or "").strip():
         errors.append("machine retrieval: human effectiveness requires separate evidence")
 
+    smoke = benchmark.get("publication_policy_smoke") or {}
+    smoke_cases = smoke.get("cases") or []
+    smoke_ids = [row.get("id") for row in smoke_cases]
+    if len(smoke_cases) < 3:
+        errors.append("machine retrieval: publication policy smoke must include published and blocked cases")
+    if len(set(smoke_ids)) != len(smoke_ids):
+        errors.append("machine retrieval: duplicate publication smoke id")
+    expected_states = {row.get("expected_state") for row in smoke_cases}
+    if not {"PUBLISHED", "BLOCKED"}.issubset(expected_states):
+        errors.append("machine retrieval: publication smoke must cover PUBLISHED and BLOCKED")
+    if not any(
+        row.get("service_id") == "homevisit"
+        and str(row.get("article")) == "18"
+        and row.get("expected_state") == "PUBLISHED"
+        for row in smoke_cases
+    ):
+        errors.append("machine retrieval: missing allowlisted homevisit publication smoke")
+    if not any(
+        row.get("service_id") == "homevisit"
+        and str(row.get("article")) == "44"
+        and row.get("expected_state") == "BLOCKED"
+        for row in smoke_cases
+    ):
+        errors.append("machine retrieval: missing service-scope containment smoke")
+    if not any(
+        row.get("service_id") == "care-management"
+        and row.get("expected_state") == "BLOCKED"
+        for row in smoke_cases
+    ):
+        errors.append("machine retrieval: missing blocked-service smoke")
+
     pilot_rows = pilot.get("questions", [])
     pilot_by_id = {row["id"]: row for row in pilot_rows}
     if len(pilot_by_id) != 10:

@@ -4,6 +4,12 @@ import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
 import qaCorpusData from "../../../data/qa-corpus.json";
 import { publicNoticeRecords } from "../../../lib/notice-database";
 import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database-search";
+import {
+  filterProgressivePublishedRules,
+  getProgressivePublicationTrust,
+  listProgressivePublicationServices,
+} from "../../../lib/publication-policy";
+import { publicVerificationLabel } from "../../../lib/public-verification";
 
 const careNodes = careNodesData as Array<any>;
 const ordinanceNodes = ordinanceNodesData as Array<any>;
@@ -42,27 +48,49 @@ const articleSearchFields = (article: any, nodes: Array<any>) => {
 export default async function DatabaseSearchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; service?: string }>;
 }) {
-  const { q = "" } = await searchParams;
+  const { q = "", service = "" } = await searchParams;
   const query = q.trim();
+  const requestedService = service.trim();
+  const progressiveServices = listProgressivePublicationServices();
+  const selectedService = progressiveServices.find(
+    (item) => item.service_id === requestedService,
+  );
+  const publicationTrust = selectedService
+    ? getProgressivePublicationTrust(selectedService.service_id)
+    : null;
 
   const lawArticles = careNodes.filter((node) => node.node_type === "article");
   const ordinanceArticles = ordinanceNodes.filter(
     (node) => node.node_type === "article",
   );
 
-  const lawMatches = rankDatabaseSearch(
-    lawArticles,
-    query,
-    (article) => articleSearchFields(article, careNodes),
-  );
+  const scopedOrdinanceArticles = requestedService
+    ? selectedService
+      ? filterProgressivePublishedRules(
+          selectedService.service_id,
+          ordinanceArticles,
+          (article) => article.id,
+        )
+      : []
+    : ordinanceArticles;
+
+  const lawMatches = requestedService
+    ? []
+    : rankDatabaseSearch(
+        lawArticles,
+        query,
+        (article) => articleSearchFields(article, careNodes),
+      );
   const ordinanceMatches = rankDatabaseSearch(
-    ordinanceArticles,
+    scopedOrdinanceArticles,
     query,
     (article) => articleSearchFields(article, ordinanceNodes),
   );
-  const noticeMatches = rankDatabaseSearch(
+  const noticeMatches = requestedService
+    ? []
+    : rankDatabaseSearch(
     publicNoticeRecords,
     query,
     (notice) => [
@@ -77,7 +105,9 @@ export default async function DatabaseSearchPage({
       { value: notice.body_text, weight: 1 },
     ],
   );
-  const qaMatches = rankDatabaseSearch(
+  const qaMatches = requestedService
+    ? []
+    : rankDatabaseSearch(
     qaCorpus,
     query,
     (item) => [
@@ -115,16 +145,47 @@ export default async function DatabaseSearchPage({
       <p className="eyebrow">DATABASE-WIDE SEARCH</p>
       <h1>介護制度DBを横断検索</h1>
       <p className="lead">
-        サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aを同じキーワードで探します。
-        表示されること自体は、各サービスへの適用確認や現行性・人手確認を意味しません。
+        {selectedService
+          ? `${selectedService.label}について、公開条件を満たした基準省令の本文だけを検索します。`
+          : "サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aを同じキーワードで探します。各結果から本文と出典へ進めます。対象範囲や現行性は、必要なときに各ページの確認情報で確認できます。"}
       </p>
 
       <div className="notice">
-        <strong>報酬基準と算定上の留意事項は、この全体検索には混ぜません。</strong><br />
-        サービスごとに構造と確認状態が異なるため、DB一覧からサービス別の公開データへ進んでください。
+        {selectedService && publicationTrust ? (
+          <>
+            <strong>{selectedService.label}の現行本文・直接適用範囲を確認済みです。</strong><br />
+            未確認の制度間関係や解釈は検索対象に含めません。
+            <a href={publicationTrust.source_url} target="_blank" rel="noreferrer"> e-Gov原文</a>
+          </>
+        ) : requestedService ? (
+          <strong>このサービスには、今回の公開条件を満たした検索対象がありません。</strong>
+        ) : (
+          <>
+            <strong>報酬基準と算定上の留意事項は、この全体検索には混ぜません。</strong><br />
+            サービスごとに構造と確認状態が異なるため、DB一覧からサービス別の公開データへ進んでください。
+          </>
+        )}
       </div>
 
+      <nav className="rules-filter" aria-label="公開済みサービスで検索を絞り込む">
+        <Link className={!requestedService ? "rules-filter-active" : ""} href="/databases/search">
+          全体
+        </Link>
+        {progressiveServices.map((item) => (
+          <Link
+            className={requestedService === item.service_id ? "rules-filter-active" : ""}
+            href={`/databases/search?service=${encodeURIComponent(item.service_id)}`}
+            key={item.service_id}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+
       <form className="global-search-form" method="get" action="/databases/search">
+        {selectedService ? (
+          <input type="hidden" name="service" value={selectedService.service_id} />
+        ) : null}
         <label>
           <span>キーワード</span>
           <input
@@ -172,10 +233,22 @@ export default async function DatabaseSearchPage({
             {ordinanceMatches.length ? (
               <div className="rules-list">
                 {ordinanceMatches.slice(0, LIMIT).map((article) => (
-                  <Link className="rule-row" href={"/rules/" + article.article_num} key={article.id}>
+                  <Link
+                    className="rule-row"
+                    href={
+                      "/rules/" +
+                      article.article_num +
+                      (selectedService
+                        ? "?service=" + encodeURIComponent(selectedService.service_id)
+                        : "")
+                    }
+                    key={article.id}
+                  >
                     <span className="rule-number">{article.article_title}</span>
                     <span className="rule-title">{article.caption || "題名なし"}</span>
-                    <span className="rule-status">共有コーパス</span>
+                    <span className="rule-status">
+                      {selectedService ? "現行本文・適用範囲を確認済み" : "共有コーパス"}
+                    </span>
                   </Link>
                 ))}
               </div>
@@ -197,7 +270,7 @@ export default async function DatabaseSearchPage({
                     </h3>
                     <p>{databaseSearchExcerpt(notice.body_text, query)}</p>
                     <p className="meta">
-                      本文照合：{notice.content_verification} / 現行性：{notice.currentness_state} / 人手確認：{notice.human_review_state}
+                      本文：{publicVerificationLabel(notice.content_verification, "content")} / 現行性：{publicVerificationLabel(notice.currentness_state, "currentness")} / 人手確認：{publicVerificationLabel(notice.human_review_state, "human")}
                     </p>
                   </article>
                 ))}

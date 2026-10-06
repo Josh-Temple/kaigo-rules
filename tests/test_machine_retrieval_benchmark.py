@@ -2,6 +2,7 @@ import unittest
 
 from scripts.run_machine_retrieval_benchmark import (
     build_evaluation_domains,
+    evaluate_publication_context,
     question_link_order,
     require_expected_sha,
 )
@@ -30,6 +31,72 @@ class MachineRetrievalParserTest(unittest.TestCase):
     def test_expected_sha_must_be_full_lowercase_sha(self):
         with self.assertRaises(ValueError):
             require_expected_sha("a" * 40, "abc")
+
+    def test_publication_context_accepts_only_safe_allowlisted_payload(self):
+        payload = {
+            "service": {"id": "homevisit", "label": "訪問介護"},
+            "source_family": "governing_standards_ordinance",
+            "items": [
+                {
+                    "source_text": "本文",
+                    "item_body": {"article_num": "18"},
+                    "source_metadata": {"service_id": "homevisit"},
+                    "source_locator": {"url": "https://laws.e-gov.go.jp/law/411M50000100037"},
+                    "currentness_statement": {"label": "現行本文を確認済み"},
+                    "service_applicability_statement": {"label": "直接適用章"},
+                }
+            ],
+        }
+        result = evaluate_publication_context(
+            200,
+            __import__("json").dumps(payload, ensure_ascii=False),
+            "homevisit",
+            "18",
+            "PUBLISHED",
+        )
+        self.assertTrue(result["pass"])
+        self.assertEqual(result["errors"], [])
+
+    def test_publication_context_rejects_management_field_leak(self):
+        payload = {
+            "service": {"id": "homevisit"},
+            "items": [
+                {
+                    "source_text": "本文",
+                    "item_body": {"article_num": "18"},
+                    "source_metadata": {
+                        "service_id": "homevisit",
+                        "human_review": "NOT_REVIEWED",
+                    },
+                    "source_locator": {"url": "https://laws.e-gov.go.jp/law/411M50000100037"},
+                    "currentness_statement": {},
+                    "service_applicability_statement": {},
+                }
+            ],
+        }
+        result = evaluate_publication_context(
+            200,
+            __import__("json").dumps(payload, ensure_ascii=False),
+            "homevisit",
+            "18",
+            "PUBLISHED",
+        )
+        self.assertFalse(result["pass"])
+        self.assertTrue(
+            any("forbidden management field leaked" in error for error in result["errors"])
+        )
+
+    def test_publication_context_requires_404_for_blocked_case(self):
+        self.assertTrue(
+            evaluate_publication_context(
+                404, "{}", "care-management", "18", "BLOCKED"
+            )["pass"]
+        )
+        self.assertFalse(
+            evaluate_publication_context(
+                200, "{}", "care-management", "18", "BLOCKED"
+            )["pass"]
+        )
 
     def test_machine_and_human_evaluation_domains_are_separate(self):
         benchmark = {

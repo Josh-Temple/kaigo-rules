@@ -124,6 +124,8 @@ def validate(
         raise BoundedPublicationError("nonempty publication requires established runtime allowlist enforcement")
     if publication and runtime.get("required_for_nonempty_publication") is not True:
         raise BoundedPublicationError("runtime binding requirement cannot be disabled")
+    if publication and runtime.get("policy_module") != "lib/publication-policy.ts":
+        raise BoundedPublicationError("nonempty publication must use the canonical runtime policy module")
 
     route_keys = []
     for item in routes:
@@ -134,12 +136,19 @@ def validate(
         if key not in publication_key_set:
             raise BoundedPublicationError(f"route allowlist is not a subset of publication allowlist: {key}")
 
+    for key in publication_key_set:
+        encoded_key = f"{key[0]}|{key[1]}"
+        if encoded_key not in fields:
+            raise BoundedPublicationError(f"published cell lacks an explicit field allowlist: {encoded_key}")
+
     for encoded_key, cell_fields in fields.items():
         if not isinstance(cell_fields, list):
             raise BoundedPublicationError(f"field allowlist must be a list: {encoded_key}")
         selected = set(cell_fields)
         if selected - SAFE_FIELDS:
             raise BoundedPublicationError(f"field allowlist contains unsafe or unknown fields: {encoded_key}")
+        if selected != SAFE_FIELDS:
+            raise BoundedPublicationError(f"published cell must expose exactly the bounded safe fields: {encoded_key}")
         if selected & FORBIDDEN_FIELDS:
             raise BoundedPublicationError(f"forbidden relation/review field exposed: {encoded_key}")
         try:
@@ -165,8 +174,11 @@ def validate(
     elif not publication:
         if summary.get("decision") != "DEFER_PUBLICATION_FAIL_CLOSED":
             raise BoundedPublicationError("ready-but-unpublished candidates must be explicitly deferred")
-        if runtime.get("blocker") != "RUNTIME_PUBLICATION_ALLOWLIST_BINDING_NOT_ESTABLISHED":
-            raise BoundedPublicationError("deferred publication must retain the runtime binding blocker")
+    else:
+        if summary.get("decision") != "PUBLISH_BOUNDED_READY_UNITS":
+            raise BoundedPublicationError("nonempty publication must record the bounded publication decision")
+        if set(route_keys) != publication_key_set:
+            raise BoundedPublicationError("this progressive release requires explicit route binding for every published cell")
 
     return {
         "ready_candidates": len(ready),

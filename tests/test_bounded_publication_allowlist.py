@@ -17,13 +17,17 @@ class BoundedPublicationAllowlistTests(unittest.TestCase):
         cls.readiness = json.loads((ROOT / "data/publication-readiness.generated.json").read_text(encoding="utf-8"))
         cls.readiness_sha = cls.allowlist["source_readiness"]["git_blob_sha"]
 
-    def test_current_decision_is_fail_closed(self):
+    def test_current_decision_is_progressive_publication(self):
         result = validate(self.allowlist, self.readiness, readiness_blob_sha=self.readiness_sha)
-        self.assertEqual(result["publication_allowlist_cells"], 0)
-        self.assertEqual(result["route_allowlist_cells"], 0)
-        self.assertEqual(result["field_allowlist_cells"], 0)
-        self.assertFalse(result["runtime_binding_established"])
+        self.assertEqual(result["publication_allowlist_cells"], 10)
+        self.assertEqual(result["route_allowlist_cells"], 10)
+        self.assertEqual(result["field_allowlist_cells"], 10)
+        self.assertTrue(result["runtime_binding_established"])
         self.assertFalse(result["existing_public_surfaces_changed"])
+        self.assertEqual(
+            self.allowlist["summary"]["decision"],
+            "PUBLISH_BOUNDED_READY_UNITS",
+        )
 
     def test_blocked_cell_cannot_be_published(self):
         mutated = copy.deepcopy(self.allowlist)
@@ -38,10 +42,18 @@ class BoundedPublicationAllowlistTests(unittest.TestCase):
         if ready is None:
             self.skipTest("no ready candidate in this snapshot")
         mutated = copy.deepcopy(self.allowlist)
+        mutated["runtime_binding"]["established"] = False
         mutated["publication_cell_allowlist"] = [{"service_id": ready["service_id"], "source_family": ready["source_family"]}]
         mutated["summary"]["published_cells_added"] = 1
         with self.assertRaises(BoundedPublicationError):
             validate(mutated, self.readiness, readiness_blob_sha=self.readiness_sha)
+
+    def test_every_published_cell_has_only_safe_fields(self):
+        expected = set(self.allowlist["safe_publication_fields"])
+        self.assertEqual(len(expected), 6)
+        for cell in self.allowlist["publication_cell_allowlist"]:
+            key = f"{cell['service_id']}|{cell['source_family']}"
+            self.assertEqual(set(self.allowlist["field_allowlist_by_cell"][key]), expected)
 
     def test_publication_does_not_auto_enable_route(self):
         mutated = copy.deepcopy(self.allowlist)

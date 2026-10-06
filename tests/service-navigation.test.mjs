@@ -12,6 +12,7 @@ test("global navigation is service-neutral and exposes one database entry", () =
   assert.match(source, /DB一覧/);
   assert.match(source, /制度の見取り図/);
   assert.match(source, /根拠資料/);
+  assert.match(source, /フィードバック/);
   assert.doesNotMatch(source, /通所介護|通所リハビリテーション|通所リハ/);
   assert.doesNotMatch(source, /usePathname/);
 });
@@ -26,7 +27,7 @@ test("database hub exposes shared databases and service-specific remuneration ro
   assert.match(source, /国Q&A DB/);
   assert.match(source, /href="\/fees"/);
   assert.match(source, /href="\/services\/dayrehab\/remuneration"/);
-  assert.match(source, /すべてのサービスが同じ確認状態で揃ったという意味ではありません/);
+  assert.match(source, /DBごとに公開範囲が異なります/);
 });
 
 test("published services have dedicated service landing pages", () => {
@@ -34,7 +35,7 @@ test("published services have dedicated service landing pages", () => {
   const dayservice = readText("app/services/dayservice/page.tsx");
   const dayrehab = readText("app/services/dayrehab/page.tsx");
 
-  assert.match(index, /\/services\/\$\{serviceId\}/);
+  assert.match(index, /"\/services\/" \+ serviceId/);
   assert.match(dayservice, /<h1>通所介護<\/h1>/);
   assert.match(dayrehab, /<h1>通所リハビリテーション<\/h1>/);
 });
@@ -42,8 +43,12 @@ test("published services have dedicated service landing pages", () => {
 test("home exposes the database-wide entry before service-specific content", () => {
   const source = readText("app/page.tsx");
 
-  assert.match(source, /サービスを選んで調べる/);
-  assert.match(source, /DB全体から調べる/);
-  assert.match(source, /href="\/databases"/);
-  assert.match(source, /サービスごとに公開範囲と確認状態を分けて整理します/);
+  assert.match(source, /キーワードから制度資料を探す/);
+  assert.match(source, /特定のサービスから見る/);
+  assert.match(source, /href="\/databases\/search"/);
+  assert.match(source, /サービスを先に決めなくても/);
+  assert.ok(
+    source.indexOf('href="/databases/search"') < source.indexOf('href="/services"'),
+    "database-wide search must remain before service-specific entry",
+  );
 });
