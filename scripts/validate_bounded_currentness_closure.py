@@ -291,16 +291,18 @@ def validate_payload(
         for row in ord37_audit.get("services", [])
         if row.get("result") == "PASS"
     }
-    new_ids = set(PREVENTIVE_SCOPE_PATHS)
-    expected_ids = old_ids | new_ids
+    preventive_ids = set(PREVENTIVE_SCOPE_PATHS)
+    residual_new_ids = {"dayservice", "dayrehab"}
+    baseline_ids = old_ids | preventive_ids
+    expected_ids = baseline_ids | residual_new_ids
     promoted_ids = {str(row.get("service_id")) for row in promotions}
     if promoted_ids != expected_ids:
         errors.append("cumulative bounded promotion set differs from the exact audited/validated set")
     if standards.get("cumulative_promotions") != len(expected_ids):
         errors.append("cumulative promotion count mismatch")
-    if standards.get("new_promotions_this_wave") != len(new_ids):
+    if standards.get("new_promotions_this_wave") != len(residual_new_ids):
         errors.append("new promotion count mismatch")
-    if set(standards.get("newly_promoted_service_ids") or []) != new_ids:
+    if set(standards.get("newly_promoted_service_ids") or []) != residual_new_ids:
         errors.append("new promotion service inventory mismatch")
     if set(standards.get("promoted_service_ids") or []) != expected_ids:
         errors.append("cumulative promoted service inventory mismatch")
@@ -313,7 +315,7 @@ def validate_payload(
         errors.append("governing standards matrix matches neither wave before nor after state")
 
     expected_after = dict(standards.get("before") or {})
-    for service_id in new_ids:
+    for service_id in residual_new_ids:
         row = by_identity.get((service_id, "governing_standards_ordinance")) or {}
         prior = str(row.get("prior_currentness_state") or "NOT_ESTABLISHED")
         expected_after[prior] = expected_after.get(prior, 0) - 1
@@ -384,7 +386,7 @@ def validate_payload(
         if matrix_preintegration and (matrix_row.get("currentness") or {}).get("state") != "PASS":
             errors.append(f"{service_id}: prior cumulative promotion disappeared from base matrix")
 
-    for service_id in sorted(new_ids):
+    for service_id in sorted(preventive_ids):
         row = by_identity.get((service_id, "governing_standards_ordinance"))
         if row is None:
             continue
@@ -435,6 +437,117 @@ def validate_payload(
                 errors.append(f"{service_id}: recorded prior currentness does not match base matrix")
         elif (matrix_row.get("currentness") or {}).get("state") != "PASS":
             errors.append(f"{service_id}: integrated currentness is not PASS")
+
+    egov_content_audit = load("data/egov-content-independent-audit.json")
+    dayservice_scope = load("data/ordinance37-scope.json")
+    dayrehab_scope = load("data/services/dayrehab/ordinance37-scope.json")
+    dayrehab_audit = load("data/dayrehab-ordinance37-independent-audit.json")
+    dayrehab_index = load("data/services/dayrehab/ordinance37-index.generated.json")
+    verifier_text = (ROOT / "scripts/verify_existing_ordinance37_service_slices.py").read_text(encoding="utf-8")
+    workflow_text = (ROOT / ".github/workflows/verify-existing-ordinance37-service-slices.yml").read_text(encoding="utf-8")
+
+    egov_ord37 = next(
+        (row for row in egov_content_audit.get("checks", []) if row.get("id") == "ordinance37"),
+        None,
+    )
+    if not egov_ord37 or egov_ord37.get("result") != "PASS":
+        errors.append("dayservice: shared Ordinance 37 independent content audit is not PASS")
+    elif egov_ord37.get("observed_xml_sha256") != (ord37_source.get("fingerprint") or {}).get("xml_sha256"):
+        errors.append("dayservice: shared Ordinance 37 audit fingerprint drift")
+
+    residual_expected = {
+        "dayservice": {
+            "target_articles": [str(value) for value in dayservice_scope.get("direct_articles", [])],
+            "chapter": str(dayservice_scope.get("service") or ""),
+        },
+        "dayrehab": {
+            "target_articles": [str(value) for value in dayrehab_audit.get("target_articles", [])],
+            "chapter": str((dayrehab_scope.get("chapter") or {}).get("title") or ""),
+        },
+    }
+    if dayservice_scope.get("law_id") != ord37_source.get("law_id"):
+        errors.append("dayservice: scope law identity differs from current source")
+    if dayrehab_scope.get("law_id") != ord37_source.get("law_id"):
+        errors.append("dayrehab: scope law identity differs from current source")
+    if dayrehab_audit.get("audit_result") != "PASS":
+        errors.append("dayrehab: independent service-slice audit is not PASS")
+    dayrehab_source = dayrehab_audit.get("source") or {}
+    if dayrehab_source.get("current_revision_id") != ord37_source.get("version_id"):
+        errors.append("dayrehab: independent audit revision differs from current source")
+    if dayrehab_source.get("observed_xml_sha256") != (ord37_source.get("fingerprint") or {}).get("xml_sha256"):
+        errors.append("dayrehab: independent audit fingerprint differs from current source")
+    if [str(value) for value in (dayrehab_scope.get("direct_scope") or {}).get("article_numbers", [])] != residual_expected["dayrehab"]["target_articles"]:
+        errors.append("dayrehab: canonical direct scope differs from independent audit")
+    index_source = dayrehab_index.get("source_corpus") or {}
+    if index_source.get("current_revision_id") != ord37_source.get("version_id"):
+        errors.append("dayrehab: generated index revision differs from current source")
+    if index_source.get("xml_sha256") != (ord37_source.get("fingerprint") or {}).get("xml_sha256"):
+        errors.append("dayrehab: generated index fingerprint differs from current source")
+    if [str(value) for value in (dayrehab_index.get("selectors") or {}).get("resolved_direct_articles", [])] != residual_expected["dayrehab"]["target_articles"]:
+        errors.append("dayrehab: generated direct article selector differs from canonical scope")
+
+    for service_id in sorted(residual_new_ids):
+        row = by_identity.get((service_id, "governing_standards_ordinance"))
+        if row is None:
+            continue
+        identity = row.get("source_identity") or {}
+        proof = row.get("applicability_proof") or {}
+        matrix_row = standards_matrix[service_id]
+        expected = residual_expected[service_id]
+        if identity.get("canonical_source_id") != "ordinance37":
+            errors.append(f"{service_id}: residual promotion must use Ordinance 37 identity")
+        if identity.get("version_id") != ord37_source.get("version_id"):
+            errors.append(f"{service_id}: residual promotion source version drift")
+        if identity.get("effective_date") != ord37_source.get("effective_date"):
+            errors.append(f"{service_id}: residual promotion effective-date drift")
+        if (identity.get("fingerprint") or {}).get("xml_sha256") != (ord37_source.get("fingerprint") or {}).get("xml_sha256"):
+            errors.append(f"{service_id}: residual promotion source fingerprint drift")
+        if proof.get("state") != "PASS_DIRECT_SERVICE_CHAPTER":
+            errors.append(f"{service_id}: direct service chapter proof missing")
+        if [str(value) for value in proof.get("target_articles", [])] != expected["target_articles"]:
+            errors.append(f"{service_id}: target articles differ from canonical direct scope")
+        if proof.get("declared_chapter") != expected["chapter"]:
+            errors.append(f"{service_id}: declared service chapter drift")
+        if proof.get("incorporation_scope_excluded_from_semantic_expansion") is not True:
+            errors.append(f"{service_id}: incorporated semantics are not explicitly excluded")
+        if proof.get("live_service_slice_reverification_required") is not True:
+            errors.append(f"{service_id}: live service-slice reverification gate missing")
+        if row.get("source_version_contains_scope") is not True:
+            errors.append(f"{service_id}: current source version containment not established")
+        if row.get("ingestion_state") != "INGESTED" or row.get("item_body_state") != "PASS":
+            errors.append(f"{service_id}: ingestion/item-body prerequisite not satisfied")
+        if matrix_preintegration:
+            if row.get("prior_currentness_state") != (matrix_row.get("currentness") or {}).get("state"):
+                errors.append(f"{service_id}: recorded prior currentness differs from base matrix")
+            if row.get("prior_currentness_state") != "PARTIAL":
+                errors.append(f"{service_id}: residual promotion must originate from PARTIAL")
+        elif (matrix_row.get("currentness") or {}).get("state") != "PASS":
+            errors.append(f"{service_id}: integrated currentness is not PASS")
+        tuple_literal = f'("{service_id}", "{matrix_row.get("service_label", "")}")'
+        label = "通所介護" if service_id == "dayservice" else "通所リハビリテーション"
+        if f'("{service_id}", "{label}")' not in verifier_text:
+            errors.append(f"{service_id}: live e-Gov verifier target missing")
+        if f'"{service_id}"' not in workflow_text:
+            errors.append(f"{service_id}: live e-Gov workflow projection target missing")
+
+    inventory = artifact.get("residual_target_inventory") or []
+    inventory_by_id = {str(row.get("service_id")): row for row in inventory}
+    residual_target_ids = set(standards_matrix) - baseline_ids
+    if set(inventory_by_id) != residual_target_ids:
+        errors.append("residual target inventory must cover the exact 19 non-baseline services")
+    for service_id in residual_target_ids:
+        entry = inventory_by_id.get(service_id) or {}
+        if service_id in residual_new_ids:
+            if entry.get("decision") != "PROMOTE_PASS_BOUNDED" or entry.get("blocker") is not None:
+                errors.append(f"{service_id}: residual promotion inventory decision mismatch")
+        else:
+            if entry.get("decision") != "DEFER":
+                errors.append(f"{service_id}: unverified residual service must remain deferred")
+            if entry.get("blocker") != "NO_SERVICE_SPECIFIC_CURRENT_VERSION_APPLICABILITY_PROOF":
+                errors.append(f"{service_id}: deferred blocker is not explicit")
+
+    if standards.get("projected_ready_increase") != len(residual_new_ids):
+        errors.append("projected READY increase must equal bounded residual promotions")
 
     for row in promotions:
         service_id = str(row.get("service_id"))
@@ -498,6 +611,10 @@ def validate_payload(
         errors.append("exact-identity allowlist safety missing")
     if safety.get("new_promotions_are_direct_scope_only") is not True:
         errors.append("direct-scope-only promotion safety missing")
+    if safety.get("residual_promotions_require_live_service_slice_reverification") is not True:
+        errors.append("live service-slice reverification safety missing")
+    if safety.get("unverified_residual_services_deferred") is not True:
+        errors.append("unverified residual deferral safety missing")
     if safety.get("unresolved_incorporation_semantics_excluded") is not True:
         errors.append("unresolved incorporation semantics exclusion missing")
     for key in (
