@@ -32,11 +32,13 @@ LAW_ID = "411M50000100037"
 SOURCE_URL = f"https://laws.e-gov.go.jp/api/1/lawdata/{LAW_ID}"
 
 TARGETS = [
+    ("dayservice", "通所介護"),
     ("homevisit", "訪問介護"),
     ("homebath", "訪問入浴介護"),
     ("homenursing", "訪問看護"),
     ("homerehab", "訪問リハビリテーション"),
     ("homecaremanagement", "居宅療養管理指導"),
+    ("dayrehab", "通所リハビリテーション"),
     ("shortstay-life", "短期入所生活介護"),
     ("shortstay-medical", "短期入所療養介護"),
     ("specific-facility", "特定施設入居者生活介護"),
@@ -117,19 +119,34 @@ def resolve_homevisit_articles(main_provision, differences: list[dict]) -> list[
     return resolved
 
 
+def scope_for_service(service_id: str) -> dict:
+    if service_id == "dayservice":
+        return load("data/ordinance37-scope.json")
+    return load(f"data/services/{service_id}/ordinance37-scope.json")
+
+
 def declared_articles(service_id: str, main_provision, differences: list[dict]) -> list[str]:
+    if service_id == "dayservice":
+        scope = scope_for_service(service_id)
+        articles = [canonical_num(value) for value in scope.get("direct_articles", [])]
+        if not articles:
+            differences.append({"difference": "declared_direct_articles_missing"})
+        return articles
     if service_id == "homevisit":
         return resolve_homevisit_articles(main_provision, differences)
-    scope = load(f"data/services/{service_id}/ordinance37-scope.json")
-    article_ids = scope.get("direct_scope", {}).get("article_ids", [])
-    if not article_ids:
-        differences.append({"difference": "declared_direct_article_ids_missing"})
-        return []
-    return [article_num_from_id(value) for value in article_ids]
+    scope = scope_for_service(service_id)
+    direct_scope = scope.get("direct_scope", {})
+    article_ids = direct_scope.get("article_ids", [])
+    if article_ids:
+        return [article_num_from_id(value) for value in article_ids]
+    articles = [canonical_num(value) for value in direct_scope.get("article_numbers", [])]
+    if not articles:
+        differences.append({"difference": "declared_direct_articles_missing"})
+    return articles
 
 
 def chapter_matches(scope: dict, observed: dict[str, str]) -> bool:
-    expected = normalize(scope.get("chapter", {}).get("title"))
+    expected = normalize(scope.get("chapter", {}).get("title") or scope.get("service"))
     actual = normalize(observed.get("title"))
     if not expected or not actual:
         return False
@@ -150,7 +167,7 @@ def compare_service(
     shared_source_differences: list[dict],
 ) -> dict:
     differences = [dict(item) for item in shared_source_differences]
-    scope = load(f"data/services/{service_id}/ordinance37-scope.json")
+    scope = scope_for_service(service_id)
     target_articles = declared_articles(service_id, main_provision, differences)
     target_set = set(target_articles)
 
