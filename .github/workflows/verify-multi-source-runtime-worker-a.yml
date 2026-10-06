@@ -1,0 +1,74 @@
+name: Verify multi-source runtime Worker A
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "lib/publication-policy.ts"
+      - "lib/publication-runtime-adapters.ts"
+      - "app/api/context/services/[serviceId]/sources/route.ts"
+      - "app/fees/unit-price/page.tsx"
+      - "scripts/build_bounded_publication_allowlist.py"
+      - "scripts/validate_bounded_publication_allowlist.py"
+      - "scripts/run_machine_retrieval_benchmark.py"
+      - "scripts/validate_machine_retrieval_benchmark.py"
+      - "docs/kaigo-ops/research/issues/information-search/machine-retrieval-benchmark-v0.1.json"
+      - "tests/progressive-publication-runtime.test.mjs"
+      - "tests/test_multi_source_runtime_allowlist.py"
+      - ".github/workflows/verify-multi-source-runtime-worker-a.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Test runtime adapter and existing Governing Standards compatibility
+        run: node --experimental-strip-types --test tests/progressive-publication-runtime.test.mjs
+
+      - name: Test bounded multi-source allowlist generation without writeback
+        run: python -m unittest tests.test_multi_source_runtime_allowlist
+
+      - name: Validate machine-retrieval smoke specification
+        run: python scripts/validate_machine_retrieval_benchmark.py
+
+      - name: Type-check shared runtime and public surfaces
+        run: npx tsc --noEmit
+
+      - name: Confirm Worker A leaves repository-wide generated artifacts to Worker E
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          printf '%s\n' "$changed"
+          for path in \
+            data/database-coverage-matrix.generated.json \
+            docs/database-coverage-summary.generated.md \
+            data/publication-requirement-scoping.json \
+            data/publication-readiness.generated.json \
+            data/bounded-publication-allowlist.json
+          do
+            if printf '%s\n' "$changed" | grep -Fxq "$path"; then
+              echo "Worker A must not edit repository-wide generated artifact: $path" >&2
+              exit 1
+            fi
+          done

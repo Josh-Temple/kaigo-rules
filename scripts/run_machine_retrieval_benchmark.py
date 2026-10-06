@@ -183,6 +183,124 @@ def check_publication_context(
     return result
 
 
+def evaluate_publication_source_context(
+    status: int,
+    body: str,
+    service_id: str,
+    source_family: str,
+    record_id: str,
+    expected_state: str,
+) -> dict[str, Any]:
+    if expected_state == "BLOCKED":
+        return {
+            "pass": status == 404,
+            "status": status,
+            "expected_state": expected_state,
+            "errors": [] if status == 404 else [f"blocked source context returned HTTP {status}"],
+        }
+
+    result: dict[str, Any] = {
+        "pass": False,
+        "status": status,
+        "expected_state": expected_state,
+        "errors": [],
+    }
+    if status != 200:
+        result["errors"].append(f"published source context returned HTTP {status}")
+        return result
+
+    try:
+        payload = json.loads(body)
+    except json.JSONDecodeError as exc:
+        result["errors"].append(f"published source context invalid JSON: {exc}")
+        return result
+
+    if (payload.get("service") or {}).get("id") != service_id:
+        result["errors"].append("service id mismatch")
+
+    sources = payload.get("sources")
+    if not isinstance(sources, list) or len(sources) != 1:
+        result["errors"].append("published source context must contain exactly one requested source")
+        return result
+
+    source = sources[0]
+    if source.get("source_family") != source_family:
+        result["errors"].append("source family mismatch")
+
+    items = source.get("items")
+    if not isinstance(items, list) or not items:
+        result["errors"].append("published source context has no items")
+        return result
+
+    record_found = False
+    for item in items:
+        if not isinstance(item, dict):
+            result["errors"].append("published source item is not an object")
+            continue
+        if set(item) != PUBLICATION_SAFE_FIELDS:
+            result["errors"].append("published source item fields exceed bounded safe fields")
+        metadata = item.get("source_metadata") or {}
+        locator = item.get("source_locator") or {}
+        if metadata.get("service_id") != service_id:
+            result["errors"].append("item service id mismatch")
+        if metadata.get("source_family") != source_family:
+            result["errors"].append("item source family mismatch")
+        if not str(locator.get("url") or "").strip():
+            result["errors"].append("source locator URL missing")
+        if not str(locator.get("locator") or "").strip():
+            result["errors"].append("source locator detail missing")
+        item_body = item.get("item_body") or {}
+        if (
+            record_id.startswith("unitprice.")
+            and item_body.get("region_class") == "一級地"
+        ):
+            record_found = True
+
+    if not record_found:
+        result["errors"].append("expected published record missing")
+
+    serialized = json.dumps(payload, ensure_ascii=False)
+    for forbidden in PUBLICATION_FORBIDDEN_KEYS:
+        if f'"{forbidden}"' in serialized:
+            result["errors"].append(f"forbidden management field leaked: {forbidden}")
+
+    result["pass"] = not result["errors"]
+    return result
+
+
+def check_publication_source_context(
+    base_url: str,
+    service_id: str,
+    source_family: str,
+    record_id: str,
+    expected_state: str,
+    timeout: float,
+) -> dict[str, Any]:
+    query = urllib.parse.urlencode({"source_family": source_family})
+    url = (
+        f"{base_url}/api/context/services/"
+        f"{urllib.parse.quote(service_id)}/sources?{query}"
+    )
+    status, body = fetch(url, timeout)
+    result = evaluate_publication_source_context(
+        status,
+        body,
+        service_id,
+        source_family,
+        record_id,
+        expected_state,
+    )
+    result.update(
+        {
+            "service_id": service_id,
+            "source_family": source_family,
+            "record_id": record_id,
+            "url": url,
+        }
+    )
+    return result
+
+
 def build_evaluation_domains(
     benchmark: dict[str, Any],
     machine_metrics: dict[str, float],
@@ -301,13 +419,23 @@ def run(
     require_expected_sha(production_version["commit_sha"], expected_sha)
     publication_smoke_results: list[dict[str, Any]] = []
     for case in (benchmark.get("publication_policy_smoke") or {}).get("cases", []):
-        result = check_publication_context(
-            base_url,
-            case["service_id"],
-            str(case["article"]),
-            case["expected_state"],
-            timeout,
-        )
+        if case.get("source_family"):
+            result = check_publication_source_context(
+                base_url,
+                case["service_id"],
+                str(case["source_family"]),
+                str(case.get("record_id") or ""),
+                case["expected_state"],
+                timeout,
+            )
+        else:
+            result = check_publication_context(
+                base_url,
+                case["service_id"],
+                str(case["article"]),
+                case["expected_state"],
+                timeout,
+            )
         result["id"] = case["id"]
         publication_smoke_results.append(result)
 

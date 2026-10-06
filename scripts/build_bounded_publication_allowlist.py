@@ -8,13 +8,20 @@ even when it currently matches the publication selection.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 READINESS_PATH = ROOT / "data/publication-readiness.generated.json"
-CURRENTNESS_PATH = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
+GOVERNING_CURRENTNESS_PATH = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
+HIGH_VALUE_CURRENTNESS_PATH = ROOT / "data/verification/high-value-currentness-closure-worker-b.json"
+HIGH_VALUE_EXPANSION_PATH = ROOT / "data/verification/high-value-currentness-expansion-worker-c.json"
+UNIT_PRICE_META_PATH = ROOT / "data/unit-price-dayservice-meta.json"
+UNIT_PRICE_MAPPINGS_PATH = ROOT / "data/unit-price-service-multipliers.json"
+UNIT_PRICE_ITEM_BODY_PATH = ROOT / "data/unit-price-item-body-assurance.json"
 OUTPUT_PATH = ROOT / "data/bounded-publication-allowlist.json"
 
 SAFE_FIELDS = [
@@ -32,15 +39,25 @@ FORBIDDEN_FIELDS = [
     "relation_rank_feature",
     "review_dependent_search_term",
 ]
-RUNTIME_SUPPORTED_SOURCE_FAMILIES = {"governing_standards_ordinance"}
-RUNTIME_SUPPORTED_SOURCE_IDENTITIES = {
-    "ordinance37": ("PASS_DIRECT_SERVICE_CHAPTER", "direct_service_chapter_verified"),
-    "preventive-services-standards": ("PASS_DIRECT_SERVICE_SCOPE", "direct_service_scope_verified"),
+REQUIRED_PUBLICATION_UNITS = {
+    "SOURCE_TEXT_ITEM_BODY",
+    "SOURCE_METADATA_LOCATOR",
+    "CURRENTNESS_STATEMENT",
+    "SERVICE_APPLICABILITY_STATEMENT",
 }
-MAX_PUBLICATION_CELLS = 20
+RUNTIME_SUPPORTED_SOURCE_FAMILIES = {
+    "governing_standards_ordinance",
+    "unit_price_regional_classification",
+}
+RUNTIME_SUPPORTED_SOURCE_IDENTITIES = {
+    "ordinance37",
+    "preventive-services-standards",
+    "mhlw-unit-price-current",
+}
+MAX_PUBLICATION_CELLS = 64
 
 
-def load_json(path: Path) -> dict:
+def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -50,39 +67,247 @@ def git_blob_sha(path: Path) -> str:
     return hashlib.sha1(header + body).hexdigest()
 
 
-def build() -> dict:
+def cell_key(row: dict[str, Any]) -> tuple[str | None, str | None]:
+    return row.get("service_id"), row.get("source_family")
+
+
+def currentness_paths() -> list[Path]:
+    paths = [GOVERNING_CURRENTNESS_PATH, HIGH_VALUE_CURRENTNESS_PATH]
+    if HIGH_VALUE_EXPANSION_PATH.exists():
+        paths.append(HIGH_VALUE_EXPANSION_PATH)
+    return paths
+
+
+def source_identity(row: dict[str, Any]) -> dict[str, Any]:
+    return row.get("source_identity") or row.get("canonical_source_identity") or {}
+
+
+def applicability_proof(row: dict[str, Any]) -> dict[str, Any]:
+    return row.get("applicability_proof") or row.get("service_applicability_evidence") or {}
+
+
+def unit_price_currentness_scope_supported(row: dict[str, Any]) -> bool:
+    if row.get("source_version_contains_scope") is True:
+        return True
+    evidence = row.get("currentness_evidence") or {}
+    units = set(row.get("allowed_publication_units") or [])
+    return (
+        evidence.get("supersession_check")
+        == "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED"
+        and evidence.get("live_verifier") == "scripts/verify_unit_price_currentness.py"
+        and evidence.get("effective_date") == "2024-04-01"
+        and REQUIRED_PUBLICATION_UNITS.issubset(units)
+    )
+
+
+def normalize_runtime_promotion(row: dict[str, Any]) -> dict[str, Any]:
+    normalized = copy.deepcopy(row)
+    source = copy.deepcopy(source_identity(row))
+    proof = copy.deepcopy(applicability_proof(row))
+
+    evidence = row.get("currentness_evidence") or {}
+    if not source.get("current_official_display_observed_on") and evidence.get("observed_on"):
+        source["current_official_display_observed_on"] = evidence["observed_on"]
+
+    normalized["source_identity"] = source
+    normalized["applicability_proof"] = proof
+    normalized["source_version_contains_scope"] = (
+        row.get("source_version_contains_scope") is True
+        or (
+            row.get("source_family") == "unit_price_regional_classification"
+            and unit_price_currentness_scope_supported(row)
+        )
+    )
+    normalized.pop("canonical_source_identity", None)
+    normalized.pop("service_applicability_evidence", None)
+    return normalized
+
+
+def unit_price_service_contract_supported(
+    service_id: str,
+    source: dict[str, Any],
+    proof: dict[str, Any],
+) -> bool:
+    meta = load_json(UNIT_PRICE_META_PATH)
+    mappings = load_json(UNIT_PRICE_MAPPINGS_PATH)
+    assurance = load_json(UNIT_PRICE_ITEM_BODY_PATH)
+
+    mapping = next(
+        (
+            item
+            for item in mappings.get("service_mappings", [])
+            if item.get("service_id") == service_id
+        ),
+        None,
+    )
+    projection = next(
+        (
+            item
+            for item in assurance.get("service_projections", [])
+            if item.get("service_id") == service_id
+        ),
+        None,
+    )
+    if (
+        not mapping
+        or mapping.get("applicability") != "APPLIES"
+        or not projection
+        or projection.get("applicability") != "APPLIES"
+        or projection.get("service_level_item_body") != "PASS"
+        or projection.get("multiplier_profile_id")
+        != mapping.get("multiplier_profile_id")
+    ):
+        return False
+
+    profile = next(
+        (
+            item
+            for item in assurance.get("profile_verification", [])
+            if item.get("profile_id") == projection.get("multiplier_profile_id")
+        ),
+        None,
+    )
+    if (
+        not profile
+        or profile.get("verification_state") != "PASS"
+        or profile.get("mapped_item_count") != 8
+        or len(profile.get("rows") or []) != 8
+    ):
+        return False
+
+    expected_urls = [str(value) for value in meta.get("source_urls", [])]
+    expected_hashes = [str(value) for value in meta.get("source_sha256", [])]
+    if source.get("official_page_urls") != expected_urls:
+        return False
+    if source.get("expected_page_sha256") is not None:
+        if source.get("expected_page_sha256") != expected_hashes:
+            return False
+
+    return (
+        proof.get("state") == "PASS_DIRECT_SERVICE_SCOPE"
+        and proof.get("official_service_name")
+        == mapping.get("official_service_name")
+        and proof.get("multiplier_profile_id")
+        == mapping.get("multiplier_profile_id")
+        and proof.get("mapped_item_count")
+        == projection.get("mapped_item_count")
+        and proof.get("source_locator") == projection.get("source_locator")
+    )
+
+
+def source_contract_supported(row: dict[str, Any]) -> bool:
+    normalized = normalize_runtime_promotion(row)
+    source_family = normalized.get("source_family")
+    source = normalized.get("source_identity") or {}
+    proof = normalized.get("applicability_proof") or {}
+    canonical_source_id = source.get("canonical_source_id")
+
+    if canonical_source_id not in RUNTIME_SUPPORTED_SOURCE_IDENTITIES:
+        return False
+    if source_family not in RUNTIME_SUPPORTED_SOURCE_FAMILIES:
+        return False
+    if normalized.get("promotion_applied") is not True:
+        return False
+    if normalized.get("projected_currentness_state") != "PASS":
+        return False
+    if normalized.get("ingestion_state") != "INGESTED":
+        return False
+    if normalized.get("item_body_state") != "PASS":
+        return False
+    if normalized.get("source_version_contains_scope") is not True:
+        return False
+
+    if canonical_source_id == "ordinance37":
+        return (
+            source_family == "governing_standards_ordinance"
+            and proof.get("state") == "PASS_DIRECT_SERVICE_CHAPTER"
+            and proof.get("direct_service_chapter_verified") is True
+            and proof.get("discrepancies") == 0
+            and bool(proof.get("target_articles"))
+        )
+
+    if canonical_source_id == "preventive-services-standards":
+        return (
+            source_family == "governing_standards_ordinance"
+            and proof.get("state") == "PASS_DIRECT_SERVICE_SCOPE"
+            and proof.get("direct_service_scope_verified") is True
+            and proof.get("discrepancies") == 0
+            and (
+                bool(proof.get("common_source_node_ids"))
+                or bool((proof.get("primary_range") or {}).get("from_node_id"))
+                or bool(proof.get("variant_ranges"))
+            )
+        )
+
+    if canonical_source_id == "mhlw-unit-price-current":
+        service_id = str(normalized.get("service_id") or "")
+        return (
+            source_family == "unit_price_regional_classification"
+            and source.get("currentness_class") == "CURRENT_OFFICIAL_CONSOLIDATED"
+            and bool(source.get("version_id"))
+            and source.get("effective_date") == "2024-04-01"
+            and unit_price_service_contract_supported(service_id, source, proof)
+        )
+
+    return False
+
+
+def load_promotions() -> tuple[
+    dict[tuple[str | None, str | None], dict[str, Any]],
+    list[dict[str, str]],
+    dict[tuple[str | None, str | None], str],
+]:
+    sources: list[dict[str, str]] = []
+    promotions: dict[tuple[str | None, str | None], dict[str, Any]] = {}
+    provenance: dict[tuple[str | None, str | None], str] = {}
+
+    for path in currentness_paths():
+        relative = str(path.relative_to(ROOT)).replace("\\", "/")
+        payload = load_json(path)
+        sources.append(
+            {
+                "path": relative,
+                "git_blob_sha": git_blob_sha(path),
+            }
+        )
+        for row in payload.get("promotions", []):
+            key = cell_key(row)
+            if key in promotions:
+                raise ValueError(f"duplicate currentness promotion: {key}")
+            promotions[key] = row
+            provenance[key] = relative
+
+    return promotions, sources, provenance
+
+
+def build() -> dict[str, Any]:
     readiness = load_json(READINESS_PATH)
-    currentness = load_json(CURRENTNESS_PATH)
-    promotions = {
-        (row.get("service_id"), row.get("source_family")): row
-        for row in currentness.get("promotions", [])
-    }
+    promotions, currentness_sources, promotion_provenance = load_promotions()
+
     ready = [
-        row for row in readiness.get("cells", [])
+        row
+        for row in readiness.get("cells", [])
         if row.get("readiness") == "READY_FOR_PUBLICATION_REVIEW"
         and not row.get("blocking_reasons")
     ]
-    publishable = []
+
+    publishable: list[dict[str, Any]] = []
     for row in ready:
         if row.get("source_family") not in RUNTIME_SUPPORTED_SOURCE_FAMILIES:
             continue
-        promotion = promotions.get((row.get("service_id"), row.get("source_family")))
-        if not promotion or promotion.get("promotion_applied") is not True:
-            continue
-        source_identity = promotion.get("source_identity") or {}
-        canonical_source_id = source_identity.get("canonical_source_id")
-        contract = RUNTIME_SUPPORTED_SOURCE_IDENTITIES.get(canonical_source_id)
-        if contract is None:
-            continue
-        expected_state, verified_flag = contract
-        proof = promotion.get("applicability_proof") or {}
-        if proof.get("state") != expected_state or proof.get(verified_flag) is not True:
-            continue
-        if proof.get("discrepancies") != 0:
+        promotion = promotions.get(cell_key(row))
+        if not promotion or not source_contract_supported(promotion):
             continue
         publishable.append(row)
-        if len(publishable) >= MAX_PUBLICATION_CELLS:
-            break
+
+    publishable.sort(
+        key=lambda row: (
+            0 if row.get("source_family") == "governing_standards_ordinance" else 1,
+            str(row.get("service_id") or ""),
+            str(row.get("source_family") or ""),
+        )
+    )
+    publishable = publishable[:MAX_PUBLICATION_CELLS]
 
     publication = [
         {
@@ -96,6 +321,14 @@ def build() -> dict:
         f"{row['service_id']}|{row['source_family']}": SAFE_FIELDS
         for row in publishable
     }
+    runtime_source_binding_by_cell = {}
+    for row in publishable:
+        key_tuple = cell_key(row)
+        encoded = f"{row['service_id']}|{row['source_family']}"
+        runtime_source_binding_by_cell[encoded] = {
+            "evidence_path": promotion_provenance[key_tuple],
+            "promotion": normalize_runtime_promotion(promotions[key_tuple]),
+        }
 
     if not ready:
         decision = "NO_PUBLICATION_CHANGE"
@@ -103,7 +336,7 @@ def build() -> dict:
     elif publication:
         decision = "PUBLISH_BOUNDED_READY_UNITS"
         reason = (
-            "READY publication units supported by the shared runtime policy are "
+            "READY publication units supported by the shared multi-source runtime policy are "
             "bound across UI, search, API, and machine retrieval."
         )
     else:
@@ -114,7 +347,7 @@ def build() -> dict:
         )
 
     return {
-        "format_version": 4,
+        "format_version": 5,
         "generated_by": "scripts/build_bounded_publication_allowlist.py",
         "role": "Publication Runtime Binding / Progressive Release Worker",
         "source_readiness": {
@@ -123,13 +356,16 @@ def build() -> dict:
             "expected_ready_candidate_count": len(ready),
         },
         "source_currentness": {
-            "path": "data/verification/bounded-currentness-closure-worker-b.json",
-            "git_blob_sha": git_blob_sha(CURRENTNESS_PATH),
+            "path": currentness_sources[0]["path"],
+            "git_blob_sha": currentness_sources[0]["git_blob_sha"],
+            "additional_sources": currentness_sources[1:],
         },
         "runtime_binding": {
             "required_for_nonempty_publication": True,
             "established": True,
             "policy_module": "lib/publication-policy.ts",
+            "adapter_registry_module": "lib/publication-runtime-adapters.ts",
+            "supported_source_families": sorted(RUNTIME_SUPPORTED_SOURCE_FAMILIES),
             "supported_source_identities": sorted(RUNTIME_SUPPORTED_SOURCE_IDENTITIES),
             "required_surfaces": [
                 "UI",
@@ -170,11 +406,14 @@ def build() -> dict:
             "existing_public_surfaces_changed": False,
             "decision": decision,
             "reason": reason,
-            "blocker_counts_at_selection": readiness.get("summary", {}).get("blocking_axis_counts", {}),
+            "blocker_counts_at_selection": readiness.get("summary", {}).get(
+                "blocking_axis_counts", {}
+            ),
         },
         "publication_cell_allowlist": publication,
         "route_allowlist": routes,
         "field_allowlist_by_cell": fields,
+        "runtime_source_binding_by_cell": runtime_source_binding_by_cell,
     }
 
 

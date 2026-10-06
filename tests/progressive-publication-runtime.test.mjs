@@ -1,6 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import highValueCurrentnessData from "../data/verification/high-value-currentness-closure-worker-b.json" with { type: "json" };
+
+import {
+  UNIT_PRICE_SOURCE_FAMILY as UNIT_PRICE_ADAPTER_FAMILY,
+  projectRuntimeRecord,
+  runtimeAdapterForPromotion,
+  runtimeRecordsForPromotion,
+} from "../lib/publication-runtime-adapters.ts";
 
 import {
   SAFE_PUBLICATION_FIELDS,
@@ -141,6 +149,125 @@ test("source identity and applicability proof contracts fail closed", () => {
   );
 });
 
+test("Unit Price adapter accepts only the exact dayservice publication contract", () => {
+  const promotion = highValueCurrentnessData.promotions[0];
+  const adapter = runtimeAdapterForPromotion(promotion);
+  assert.ok(adapter);
+  assert.equal(adapter.canonicalSourceId, "mhlw-unit-price-current");
+  assert.equal(adapter.sourceFamily, UNIT_PRICE_ADAPTER_FAMILY);
+  assert.equal(adapter.recordKind, "UNIT_PRICE");
+
+  const records = runtimeRecordsForPromotion(promotion);
+  assert.equal(records.length, 8);
+  assert.deepEqual(
+    records.map((row) => row.region_class),
+    ["一級地", "二級地", "三級地", "四級地", "五級地", "六級地", "七級地", "その他"],
+  );
+  assert.ok(records.every((row) => row.source_locator));
+
+  const trust = {
+    service_id: "dayservice",
+    service_label: "通所介護",
+    source_family: UNIT_PRICE_ADAPTER_FAMILY,
+    canonical_source_id: "mhlw-unit-price-current",
+    source_title: promotion.source_identity.title,
+    source_url: promotion.source_identity.official_source_url,
+    source_version: promotion.source_identity.version_id,
+    effective_date: promotion.source_identity.effective_date,
+    checked_at: promotion.source_identity.current_official_display_observed_on,
+  };
+  const projection = projectRuntimeRecord(promotion, trust, records[0]);
+  assert.ok(projection);
+  assert.deepEqual(
+    Object.keys(projection).sort(),
+    [...SAFE_PUBLICATION_FIELDS].sort(),
+  );
+  assert.equal(
+    projection.source_metadata.source_family,
+    "unit_price_regional_classification",
+  );
+  assert.equal(projection.item_body.region_class, "一級地");
+  assert.equal(projection.item_body.ratio_per_thousand, 1090);
+  assert.match(projection.source_locator.url, /mhlw\.go\.jp/);
+  assert.match(projection.source_locator.locator, /第一号 表/);
+  assert.equal(
+    projection.service_applicability_statement.label,
+    "通所介護の直接適用行として確認済み",
+  );
+
+  const unsupported = structuredClone(promotion);
+  unsupported.source_identity.canonical_source_id = "unsupported-source";
+  assert.equal(runtimeAdapterForPromotion(unsupported), null);
+
+  const crossFamily = structuredClone(promotion);
+  crossFamily.source_family = "governing_standards_ordinance";
+  assert.equal(runtimeAdapterForPromotion(crossFamily), null);
+
+  const wrongProfile = structuredClone(promotion);
+  wrongProfile.applicability_proof.multiplier_profile_id = "group-1140";
+  assert.equal(runtimeAdapterForPromotion(wrongProfile), null);
+});
+
+test("Unit Price adapter accepts Worker C-shaped bounded service promotions without source-family broadcast", () => {
+  const dayservice = highValueCurrentnessData.promotions[0];
+  const promotion = {
+    service_id: "homevisit",
+    source_family: "unit_price_regional_classification",
+    canonical_source_identity: {
+      canonical_source_id: "mhlw-unit-price-current",
+      title: dayservice.source_identity.title,
+      official_source_url: dayservice.source_identity.official_source_url,
+      official_page_urls: dayservice.source_identity.official_page_urls,
+      version_id: dayservice.source_identity.version_id,
+      effective_date: "2024-04-01",
+      source_form: "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+      currentness_class: "CURRENT_OFFICIAL_CONSOLIDATED",
+    },
+    service_applicability_evidence: {
+      state: "PASS_DIRECT_SERVICE_SCOPE",
+      official_service_name: "訪問介護",
+      multiplier_profile_id: "group-1140",
+      source_locator: "第一号 表 / 訪問介護 / 地域区分別割合",
+      mapped_item_count: 8,
+    },
+    currentness_evidence: {
+      official_source_locator: dayservice.source_identity.official_source_url,
+      observed_on: "2026-10-06",
+      effective_date: "2024-04-01",
+      supersession_check: "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+      live_verifier: "scripts/verify_unit_price_currentness.py",
+    },
+    allowed_publication_units: [
+      "SOURCE_TEXT_ITEM_BODY",
+      "SOURCE_METADATA_LOCATOR",
+      "CURRENTNESS_STATEMENT",
+      "SERVICE_APPLICABILITY_STATEMENT",
+    ],
+    ingestion_state: "INGESTED",
+    item_body_state: "PASS",
+    projected_currentness_state: "PASS",
+    promotion_applied: true,
+  };
+
+  const adapter = runtimeAdapterForPromotion(promotion);
+  assert.ok(adapter);
+  const records = runtimeRecordsForPromotion(promotion);
+  assert.equal(records.length, 8);
+  assert.equal(records[0].id, "unitprice.homevisit.1");
+  assert.equal(records[0].service, "訪問介護");
+  assert.equal(records[0].ratio_per_thousand, 1140);
+  assert.equal(records[0].unit_price_yen, 11.4);
+  assert.match(records[0].source_locator, /第一号 表/);
+
+  const wrongServiceProof = structuredClone(promotion);
+  wrongServiceProof.service_applicability_evidence.official_service_name = "通所介護";
+  assert.equal(runtimeAdapterForPromotion(wrongServiceProof), null);
+
+  const missingLiveProof = structuredClone(promotion);
+  missingLiveProof.currentness_evidence.live_verifier = "unsupported-verifier.py";
+  assert.equal(runtimeAdapterForPromotion(missingLiveProof), null);
+});
+
 test("public projection contains only the bounded safe publication units", () => {
   const projection = projectProgressiveRule("homevisit", {
     id: "ordinance37.article.18",
@@ -230,6 +357,8 @@ test("UI, search, and API surfaces import the same canonical policy", () => {
     "app/databases/search/page.tsx",
     "app/search/page.tsx",
     "app/api/context/services/[serviceId]/rules/route.ts",
+    "app/api/context/services/[serviceId]/sources/route.ts",
+    "app/fees/unit-price/page.tsx",
   ];
 
   for (const surface of surfaces) {
@@ -244,6 +373,8 @@ test("UI, search, and API source-switching surfaces consume adapter-selected rec
     "app/rules/[article]/page.tsx",
     "app/databases/search/page.tsx",
     "app/api/context/services/[serviceId]/rules/route.ts",
+    "app/api/context/services/[serviceId]/sources/route.ts",
+    "app/fees/unit-price/page.tsx",
   ]) {
     const source = fs.readFileSync(surface, "utf8");
     assert.match(source, /getProgressiveSourceRecords/);
