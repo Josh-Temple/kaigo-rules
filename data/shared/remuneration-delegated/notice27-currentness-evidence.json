@@ -1,0 +1,71 @@
+{
+  "format_version": 1,
+  "artifact_kind": "NOTICE27_SOURCE_CURRENTNESS_EVIDENCE",
+  "source_family": "delegated_remuneration_criteria",
+  "canonical_source_id": "mhlw-fee-notice27-base",
+  "base_main_sha": "29c5529be51a1211e060acd5911a1122aa0eaf0e",
+  "observed_date": "2026-10-07",
+  "decision": "PASS",
+  "promotion_eligible": true,
+  "official_source": {
+    "publisher": "厚生労働省",
+    "title": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法（平成12年厚生省告示第27号）",
+    "locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
+    "canonical_identity": "MHLW 法令等データベース current consolidated display at stable dataId 82aa0261"
+  },
+  "base_and_amendment_relationship": {
+    "base_instrument": "平成12年厚生省告示第27号",
+    "model": "The stable MHLW dataId exposes the consolidated current body; amendment entries at the end of that display identify the lineage incorporated into the displayed text.",
+    "latest_amendments_shown": [
+      {
+        "instrument": "令和6年厚生労働省告示第85号",
+        "effective_date": "2024-04-01"
+      },
+      {
+        "instrument": "令和6年厚生労働省告示第86号",
+        "effective_date": "2024-04-01"
+      }
+    ],
+    "supersession_check": "The current official consolidated display observed on 2026-10-07 does not identify a later superseding instrument for this source identity."
+  },
+  "current_body_identity": {
+    "repository_item_body_receipt": "data/shared/remuneration-delegated/item-body-verification.json#mhlw-fee-notice27-base",
+    "receipt_verified_at": "2026-10-05",
+    "page_snapshots": [
+      {
+        "page": 1,
+        "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+      },
+      {
+        "page": 2,
+        "sha256": "2b0fc2c256ed86868608c761eb54b7e39fec651a04cf7e3a87820bcd902c9612"
+      },
+      {
+        "page": 3,
+        "sha256": "327f87d0744a6d1b4da1312bbea5bee2bd85f0a7876bc92e1de1adea18520d8d"
+      }
+    ],
+    "canonical_node_count": 24,
+    "body_identity_match": "PASS",
+    "fingerprint_kind": "OFFICIAL_PAGE_SHA256_SET"
+  },
+  "repository_identity_match": {
+    "canonical_source_registry": "data/sources.json#mhlw-fee-notice27-base",
+    "contract": "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base",
+    "exact_official_url_match": true,
+    "exact_page_snapshot_match": true
+  },
+  "fail_closed_conditions": [
+    "official page bytes differ from the pinned SHA-256 set",
+    "official title identity changes",
+    "expected amendment lineage markers disappear or change",
+    "canonical source registry URL differs from the contract",
+    "item-body receipt URL or page snapshots differ from the currentness contract"
+  ],
+  "evidence": [
+    "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
+    "https://www.mhlw.go.jp/stf/newpage_38790.html",
+    "data/shared/remuneration-delegated/item-body-verification.json#mhlw-fee-notice27-base",
+    "data/sources.json#mhlw-fee-notice27-base"
+  ]
+}
