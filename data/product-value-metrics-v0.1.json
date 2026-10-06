@@ -132,6 +132,9 @@
       "public_databases",
       "published_service_source_family_cells",
       "published_publication_units",
+      "service_navigation_groups",
+      "service_navigation_units",
+      "service_navigation_service_entries",
       "guide_task_journeys",
       "practical_question_primary_source_journeys",
       "major_pages_total",
@@ -144,7 +147,9 @@
       "Guide/task journeys count distinct actionable user journeys on committed public routes; a route may contain multiple explicit journeys.",
       "Practical-question journeys require a resolvable evidence path to an official source or canonical authority node.",
       "Feedback coverage counts a page only when it has a global page-aware feedback link or is the feedback intake page itself.",
-      "No person-identifying analytics or feedback telemetry is introduced by this metric."
+      "No person-identifying analytics or feedback telemetry is introduced by this metric.",
+      "Service-navigation metrics are derived from data/public-service-navigation.json and require every canonical service to appear exactly once.",
+      "Normal and preventive services may share one navigation unit without merging canonical service identities; 介護予防支援 remains an independent navigation unit."
     ]
   }
 }
