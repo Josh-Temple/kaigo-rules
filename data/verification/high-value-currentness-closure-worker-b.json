@@ -78,15 +78,15 @@
         ],
         "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
         "effective_date": "2024-04-01",
-        "latest_amendment_marker": "令和六年三月十五日厚生労働省告示第八十六号",
-        "latest_amendment_effective_date": "2024-04-01",
         "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
         "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED",
         "source_identity_complete_for_bounded_scope": true,
         "expected_page_sha256": [
           "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395",
           "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
-        ]
+        ],
+        "current_official_display_observed_on": "2026-10-06",
+        "effective_reference_date_marker": "令和六年四月一日"
       },
       "applicability_proof": {
         "state": "PASS_DIRECT_SERVICE_SCOPE",
@@ -114,14 +114,15 @@
       "promotion_applied": true,
       "currentness_contract": {
         "live_source_reverification_required": true,
-        "verifier": "scripts/verify_unit_price_independent.py",
+        "verifier": "scripts/verify_unit_price_currentness.py",
         "workflow": ".github/workflows/verify-unit-price-independent.yml",
-        "success_condition": "The current official MHLW consolidated display must retain the expected source identity markers and be byte/fact equivalent to the pinned canonical day-service unit-price and regional-assignment data.",
+        "success_condition": "The official MHLW current display must expose the expected notice/service/effective-date identity and the independent live reparse must remain byte/fact equivalent to the pinned canonical day-service unit-price and regional-assignment data.",
         "evidence": [
           "data/unit-price-dayservice-meta.json",
           "data/unit-price-region-assignments-meta.json",
           "data/unit-price-independent-audit.json",
           "scripts/verify_unit_price_independent.py",
+          "scripts/verify_unit_price_currentness.py",
           ".github/workflows/verify-unit-price-independent.yml"
         ]
       },
