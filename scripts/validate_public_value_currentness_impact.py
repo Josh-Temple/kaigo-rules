@@ -180,7 +180,7 @@ def main() -> int:
     )
     if downstream_pass not in {0, len(downstream_promotions)}:
         failures.append(
-            "Worker C currentness expansion must be either wholly unapplied or wholly integrated"
+            "downstream bounded currentness decisions must be either wholly unapplied or wholly integrated"
         )
 
     projected_gaps = current_gaps - len(TARGETS) if preintegration else current_gaps
