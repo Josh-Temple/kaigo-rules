@@ -1,4 +1,8 @@
-import Link from "next/link";\nimport { UNIT_PRICE_SOURCE_FAMILY, publicSourceFamiliesForService } from "../lib/public-source-navigation";
+import Link from "next/link";
+import {
+  UNIT_PRICE_SOURCE_FAMILY,
+  publicSourceFamiliesForService,
+} from "../lib/public-source-navigation";
 
 export default function ServiceContextLinks({
   serviceId,
@@ -12,7 +16,7 @@ export default function ServiceContextLinks({
   const hasUnitPrice = publishedFamilies.some(
     (item) => item.source_family === UNIT_PRICE_SOURCE_FAMILY,
   );
-  const links = dayrehab
+  const links: Array<[string, string]> = dayrehab
     ? [
         [
           hasProgressiveSources
