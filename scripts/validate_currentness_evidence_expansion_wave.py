@@ -17,6 +17,7 @@ SOURCES = ROOT / "data/sources.json"
 FEE_EVENTS = ROOT / "data/fee-guidance-amendment-events.json"
 RELATION_QUEUE = ROOT / "data/relation-verification-queue.json"
 BOUNDED_CURRENTNESS = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
+HIGH_VALUE_CURRENTNESS = ROOT / "data/verification/high-value-currentness-closure-worker-b.json"
 
 EXPECTED_BASE_SHA = "e0d814b1b22d449fd13784bbb051fba5c27df64e"
 EXPECTED_CURRENTNESS = {
@@ -90,22 +91,32 @@ def currentness_counts(matrix: dict[str, Any]) -> tuple[int, dict[str, int]]:
 def expected_current_matrix_counts() -> dict[str, int]:
     """Apply later canonical bounded decisions to the historical receipt baseline."""
     counts = dict(EXPECTED_CURRENTNESS)
-    if not BOUNDED_CURRENTNESS.exists():
-        return counts
-    bounded = load(BOUNDED_CURRENTNESS)
-    if bounded.get("artifact_kind") != "CANONICAL_BOUNDED_CURRENTNESS_CLOSURE_DECISION":
-        raise ValueError("unexpected bounded currentness artifact kind")
-    for row in bounded.get("promotions", []):
-        if row.get("promotion_applied") is not True:
+    decisions = (
+        (BOUNDED_CURRENTNESS, "CANONICAL_BOUNDED_CURRENTNESS_CLOSURE_DECISION"),
+        (HIGH_VALUE_CURRENTNESS, "CANONICAL_HIGH_VALUE_CURRENTNESS_CLOSURE_DECISION"),
+    )
+    seen: set[tuple[str, str]] = set()
+    for path, expected_kind in decisions:
+        if not path.exists():
             continue
-        prior = str(row.get("prior_currentness_state") or "NOT_ESTABLISHED")
-        projected = str(row.get("projected_currentness_state") or "")
-        if projected != "PASS":
-            raise ValueError("bounded currentness projection must remain PASS")
-        counts[prior] = counts.get(prior, 0) - 1
-        if counts[prior] < 0:
-            raise ValueError(f"bounded currentness prior count underflow: {prior}")
-        counts[projected] = counts.get(projected, 0) + 1
+        artifact = load(path)
+        if artifact.get("artifact_kind") != expected_kind:
+            raise ValueError(f"unexpected currentness artifact kind: {path.name}")
+        for row in artifact.get("promotions", []):
+            if row.get("promotion_applied") is not True:
+                continue
+            identity = (str(row.get("service_id")), str(row.get("source_family")))
+            if identity in seen:
+                raise ValueError(f"duplicate canonical currentness promotion: {identity}")
+            seen.add(identity)
+            prior = str(row.get("prior_currentness_state") or "NOT_ESTABLISHED")
+            projected = str(row.get("projected_currentness_state") or "")
+            if projected != "PASS":
+                raise ValueError(f"bounded currentness projection must remain PASS: {identity}")
+            counts[prior] = counts.get(prior, 0) - 1
+            if counts[prior] < 0:
+                raise ValueError(f"bounded currentness prior count underflow: {prior}")
+            counts[projected] = counts.get(projected, 0) + 1
     return {key: value for key, value in counts.items() if value}
 
 
