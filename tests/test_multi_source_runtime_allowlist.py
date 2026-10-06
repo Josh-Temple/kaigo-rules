@@ -59,6 +59,7 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             {
                 "governing_standards_ordinance",
                 "unit_price_regional_classification",
+                "delegated_remuneration_criteria",
             },
         )
         self.assertEqual(
@@ -67,6 +68,7 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
                 "ordinance37",
                 "preventive-services-standards",
                 "mhlw-unit-price-current",
+                "delegated-remuneration-national",
             },
         )
 
@@ -175,6 +177,50 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
         missing_unit = copy.deepcopy(promotion)
         missing_unit["allowed_publication_units"].remove("CURRENTNESS_STATEMENT")
         self.assertFalse(builder.source_contract_supported(missing_unit))
+
+    def test_delegated_remuneration_contract_is_ready_for_worker_b_but_fails_closed(self):
+        promotion = {
+            "service_id": "dayservice",
+            "source_family": "delegated_remuneration_criteria",
+            "source_identity": {
+                "canonical_source_id": "delegated-remuneration-national",
+                "version_id": "worker-b-current-source-set",
+            },
+            "source_version_contains_scope": True,
+            "ingestion_state": "INGESTED",
+            "item_body_state": "PASS",
+            "projected_currentness_state": "PASS",
+            "promotion_applied": True,
+        }
+        self.assertTrue(builder.source_contract_supported(promotion))
+
+        not_applicable = copy.deepcopy(promotion)
+        not_applicable["service_id"] = "specific-welfare-equipment-sale"
+        self.assertFalse(builder.source_contract_supported(not_applicable))
+
+        preventive_not_applicable = copy.deepcopy(promotion)
+        preventive_not_applicable["service_id"] = (
+            "specific-preventive-welfare-equipment-sale"
+        )
+        self.assertFalse(
+            builder.source_contract_supported(preventive_not_applicable)
+        )
+
+        unsupported_identity = copy.deepcopy(promotion)
+        unsupported_identity["source_identity"]["canonical_source_id"] = (
+            "unsupported-source"
+        )
+        self.assertFalse(
+            builder.source_contract_supported(unsupported_identity)
+        )
+
+        blocked = copy.deepcopy(promotion)
+        blocked["projected_currentness_state"] = "NOT_ESTABLISHED"
+        self.assertFalse(builder.source_contract_supported(blocked))
+
+        no_scope_binding = copy.deepcopy(promotion)
+        no_scope_binding["source_version_contains_scope"] = False
+        self.assertFalse(builder.source_contract_supported(no_scope_binding))
 
     def test_safe_fields_exclude_relation_and_human_review_state(self):
         artifact = builder.build()
