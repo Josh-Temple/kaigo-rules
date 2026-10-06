@@ -25,10 +25,17 @@ class PublicUxFeedbackTest(unittest.TestCase):
         self.assertIn("SiteFeedbackLink", navigation)
         self.assertIn('label="フィードバック"', navigation)
         self.assertIn("usePathname", feedback_link)
-        self.assertIn('encodeURIComponent(pathname)', feedback_link)
+        self.assertIn("window.location.search", feedback_link)
+        self.assertIn('target.set("service"', feedback_link)
+        self.assertIn('target.set("q"', feedback_link)
+        self.assertIn('target.set("db"', feedback_link)
+        self.assertIn('target.set("source_family"', feedback_link)
         for category in ("誤り", "古い", "見つからない", "分かりにくい"):
             self.assertIn('"' + category + '"', feedback_page)
         self.assertIn("内容をコピー", feedback_page)
+        self.assertIn("画面の文脈", feedback_page)
+        self.assertIn("検索語", feedback_page)
+        self.assertIn("個人情報や非公開情報が含まれる場合は削除してください", feedback_page)
         self.assertIn("氏名、利用者情報、事業所の非公開情報", feedback_page)
 
     def test_public_verification_ui_does_not_fall_back_to_raw_codes(self):
