@@ -39,6 +39,16 @@ export const SAFE_PUBLICATION_FIELDS = [
   "service_applicability_statement",
 ] as const;
 
+const BOUNDED_DIRECT_SCOPE_SOURCE_IDENTITIES = new Set([
+  "community-based-standards",
+  "care-management-standards",
+  "preventive-support-standards",
+  "elderly-welfare-facility-standards",
+  "geriatric-health-services-facility-standards",
+  "long-term-care-medical-facility-standards",
+  "preventive-community-based-standards",
+]);
+
 type PublicationCell = {
   service_id?: string;
   source_family?: string;
@@ -99,6 +109,16 @@ export function isSupportedPublicationContract(
     canonicalSourceId === "mhlw-unit-price-current"
   ) {
     return applicabilityState === "PASS_DIRECT_SERVICE_SCOPE";
+  }
+  if (
+    BOUNDED_DIRECT_SCOPE_SOURCE_IDENTITIES.has(
+      canonicalSourceId,
+    )
+  ) {
+    return (
+      applicabilityState ===
+      "PASS_DIRECT_SCOPE_CURRENT_VERSION"
+    );
   }
   if (
     canonicalSourceId ===
@@ -394,25 +414,10 @@ export function progressiveServicesForRule(recordId: string) {
 function nodePrefixForCanonicalSource(
   canonicalSourceId: string,
 ) {
-  if (canonicalSourceId === "ordinance37") {
-    return "ordinance37";
-  }
-  if (
-    canonicalSourceId ===
-    "preventive-services-standards"
-  ) {
-    return "standards35";
-  }
-  if (canonicalSourceId === "mhlw-unit-price-current") {
-    return "unitprice";
-  }
-  if (
-    canonicalSourceId ===
-    DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID
-  ) {
-    return "delegated-remuneration";
-  }
-  return "";
+  return (
+    RUNTIME_SOURCE_ADAPTERS[canonicalSourceId]
+      ?.nodePrefix || ""
+  );
 }
 
 export function getProgressivePublicationTrust(
