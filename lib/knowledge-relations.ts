@@ -245,6 +245,35 @@ for (const [sourceFile, rows] of relationSources) {
   }
 }
 
+// Reconcile the residual service-definition audit onto the exact canonical edge.
+// This is intentionally identity-based and does not infer any additional relation.
+for (const check of residualServiceDefinitionAudit.checks || []) {
+  if (check.result !== "PASS" || (check.differences || []).length) continue;
+  const edge = edges.find(
+    (row) =>
+      row.source_id === check.from_id &&
+      row.relation === check.relation &&
+      row.target_id === check.to_id
+  );
+  if (!edge) {
+    throw new Error(
+      `Residual service-definition audit has no canonical edge: ${check.from_id} | ${check.relation} | ${check.to_id}`
+    );
+  }
+  if (
+    edge.independent_verification.status === "PASS" &&
+    edge.independent_verification.lane !== "residual-service-definition"
+  ) {
+    throw new Error(
+      `Residual service-definition audit overlaps another lane: ${check.from_id} | ${check.relation} | ${check.to_id}`
+    );
+  }
+  edge.independent_verification = {
+    status: "PASS",
+    lane: "residual-service-definition",
+  };
+}
+
 const summary = (registryData as any).summary || {};
 const expectedTotal = Number(summary.semantic_or_cross_layer_relations_total);
 const expectedVerified = Number(summary.semantic_or_cross_layer_relations_independently_verified);
