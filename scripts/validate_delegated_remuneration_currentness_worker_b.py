@@ -21,6 +21,7 @@ def main() -> None:
     applicability = load(SHARED / "service-applicability.json")
     receipt = load(SHARED / "item-body-verification.json")
     contract = load(SHARED / "currentness-source-contract.json")
+    sources = load(ROOT / "data/sources.json")
     committed = load(DECISIONS)
     rebuilt = build()
 
@@ -34,6 +35,7 @@ def main() -> None:
     contracts = {
         row["canonical_source_id"]: row for row in contract.get("source_contracts", [])
     }
+    source_registry = {row["id"]: row for row in sources}
     promotions = committed.get("promotions", [])
     promotion_ids = {row["service_id"] for row in promotions}
     holds = committed.get("holds", [])
@@ -68,6 +70,33 @@ def main() -> None:
     blocked27 = contracts.get("mhlw-fee-notice27-base") or {}
     if blocked27.get("promotion_eligible") is not False or blocked27.get("currentness_state") != "BLOCKED":
         errors.append("Notice 27 must remain fail-closed")
+
+    expected_registry_status = {
+        "mhlw-fee-criteria95-current": "current_official_source",
+        "mhlw-fee-facility-criteria96-current": "current_official_source",
+        "mhlw-fee-notice27-base": "base_text_replay_pending",
+    }
+    for source_id, expected_status in expected_registry_status.items():
+        registry_row = source_registry.get(source_id) or {}
+        if registry_row.get("status") != expected_status:
+            errors.append(
+                f"{source_id}: canonical source registry status drifted "
+                f"{registry_row.get('status')} != {expected_status}"
+            )
+        source_contract = contracts.get(source_id) or {}
+        if source_contract.get("official_source_url") != registry_row.get("url"):
+            errors.append(f"{source_id}: source contract URL differs from canonical source registry")
+
+    amendment87 = source_registry.get("mhlw-r8-fee-amendment87") or {}
+    if amendment87.get("publisher") != "厚生労働省":
+        errors.append("R8 amendment 87 official publisher identity missing")
+    if amendment87.get("url") != "https://www.mhlw.go.jp/content/12404000/001675895.pdf":
+        errors.append("R8 amendment 87 official URL drifted")
+    source95_lineage = (contracts.get("mhlw-fee-criteria95-current") or {}).get("amendment_lineage") or {}
+    if source95_lineage.get("latest_confirmed_amendment") != "令和8年厚生労働省告示第87号":
+        errors.append("Notice 95 latest confirmed amendment identity drifted")
+    if source95_lineage.get("effective_date") != "2026-06-01":
+        errors.append("Notice 95 R8 amendment effective date drifted")
 
     for source_id in eligible_sources:
         source_contract = contracts[source_id]
