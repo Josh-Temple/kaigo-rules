@@ -100,6 +100,29 @@ def main() -> None:
     ):
         errors.append("machine retrieval: missing blocked-service smoke")
 
+    if not any(
+        row.get("service_id") == "dayservice"
+        and row.get("source_family") == "unit_price_regional_classification"
+        and row.get("record_id") == "unitprice.dayservice.1"
+        and row.get("expected_state") == "PUBLISHED"
+        for row in smoke_cases
+    ):
+        errors.append("machine retrieval: missing published dayservice Unit Price smoke")
+    if not any(
+        row.get("service_id") == "homevisit"
+        and row.get("source_family") == "unit_price_regional_classification"
+        and row.get("expected_state") == "BLOCKED"
+        for row in smoke_cases
+    ):
+        errors.append("machine retrieval: missing blocked non-ready Unit Price smoke")
+    if not any(
+        row.get("service_id") == "specific-welfare-equipment-sale"
+        and row.get("source_family") == "unit_price_regional_classification"
+        and row.get("expected_state") == "BLOCKED"
+        for row in smoke_cases
+    ):
+        errors.append("machine retrieval: missing NOT_APPLICABLE Unit Price smoke")
+
     pilot_rows = pilot.get("questions", [])
     pilot_by_id = {row["id"]: row for row in pilot_rows}
     if len(pilot_by_id) != 10:
