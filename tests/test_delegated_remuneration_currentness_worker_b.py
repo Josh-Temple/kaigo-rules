@@ -121,6 +121,32 @@ class DelegatedRemunerationCurrentnessWorkerBTests(unittest.TestCase):
         self.assertNotEqual(promoted, mapped)
         self.assertEqual(len(mapped - promoted), 22)
 
+    def test_coverage_matrix_projects_only_the_bounded_subset(self):
+        import build_database_coverage_matrix as matrix_builder
+
+        matrix = matrix_builder.build()
+        delegated = {
+            service["service_id"]: next(
+                cell for cell in service["source_families"]
+                if cell["source_family"] == "delegated_remuneration_criteria"
+            )
+            for service in matrix["services"]
+        }
+        promoted = {
+            service_id for service_id, cell in delegated.items()
+            if cell["currentness"]["state"] == "PASS"
+        }
+        expected = {
+            row["service_id"] for row in builder.build()["promotions"]
+        }
+        self.assertEqual(promoted, expected)
+        self.assertEqual(len(promoted), 15)
+        for service_id in (
+            "specific-welfare-equipment-sale",
+            "specific-preventive-welfare-equipment-sale",
+        ):
+            self.assertNotEqual(delegated[service_id]["currentness"]["state"], "PASS")
+
 
 if __name__ == "__main__":
     unittest.main()
