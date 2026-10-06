@@ -52,7 +52,7 @@ jobs:
 
       - name: Revalidate independent relations used by public projection
         run: |
-          python scripts/validate_notice_ordinance_explicit_reference_derived_audit.py
+          python scripts/build_notice_ordinance_explicit_reference_derived_audit.py --check
           python scripts/validate_remuneration_delegation_relation_independent_audit.py
           python scripts/validate_remuneration_source_link_independent_audit.py
 
