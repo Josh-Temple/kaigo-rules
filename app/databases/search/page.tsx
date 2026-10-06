@@ -1,15 +1,19 @@
 import Link from "next/link";
 import careNodesData from "../../../data/care-insurance-act-nodes.json";
 import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
-import qaCorpusData from "../../../data/qa-corpus.json";
+import qaCorpusData from "../../../data/qa-corpus.json";\nimport unitPriceRatesData from "../../../data/unit-price-dayservice.json";\nimport unitPriceMetaData from "../../../data/unit-price-dayservice-meta.json";
 import { publicNoticeRecords } from "../../../lib/notice-database";
 import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database-search";
 import {
   filterProgressivePublishedRules,
   getProgressivePublicationTrust,
   getProgressiveSourceRecords,
-  listProgressivePublicationServices,
 } from "../../../lib/publication-policy";
+import {
+  GOVERNING_STANDARDS_SOURCE_FAMILY,
+  UNIT_PRICE_SOURCE_FAMILY,
+  publicSourceFamiliesForService,
+} from "../../../lib/public-source-navigation";
 import { publicVerificationLabel } from "../../../lib/public-verification";
 import { listServices } from "../../../lib/service-catalog";
 import { publicServiceNavigationGroups } from "../../../lib/service-navigation-groups";
@@ -17,6 +21,8 @@ import { publicServiceNavigationGroups } from "../../../lib/service-navigation-g
 const careNodes = careNodesData as Array<any>;
 const ordinanceNodes = ordinanceNodesData as Array<any>;
 const qaCorpus = qaCorpusData as Array<any>;
+const unitPriceRates = unitPriceRatesData as Array<any>;
+const unitPriceMeta = unitPriceMetaData as any;
 const LIMIT = 10;
 
 const articleSearchFields = (article: any, nodes: Array<any>) => {
@@ -56,6 +62,14 @@ const filterHref = (query: string, serviceId?: string) => {
   return "/databases/search" + (suffix ? "?" + suffix : "");
 };
 
+const feedbackHref = (query: string, serviceLabel?: string) => {
+  const params = new URLSearchParams();
+  params.set("from", "/databases/search");
+  if (query) params.set("q", query);
+  if (serviceLabel) params.set("service", serviceLabel);
+  return "/feedback?" + params.toString();
+};
+
 export default async function DatabaseSearchPage({
   searchParams,
 }: {
@@ -64,26 +78,45 @@ export default async function DatabaseSearchPage({
   const { q = "", service = "" } = await searchParams;
   const query = q.trim();
   const requestedService = service.trim();
-  const progressiveServices = listProgressivePublicationServices();
+  const catalogServices = listServices();
+  const publicFamiliesByService = new Map(
+    catalogServices.map((item) => [
+      item.service_id,
+      publicSourceFamiliesForService(item.service_id),
+    ]),
+  );
   const progressiveServiceIds = new Set(
-    progressiveServices.map((item) => item.service_id),
+    catalogServices
+      .filter((item) => (publicFamiliesByService.get(item.service_id) || []).length > 0)
+      .map((item) => item.service_id),
   );
-  const progressiveServiceById = new Map(
-    progressiveServices.map((item) => [item.service_id, item]),
-  );
-  const selectedService = progressiveServiceById.get(requestedService);
-  const requestedCatalogService = listServices().find(
+  const requestedCatalogService = catalogServices.find(
     (item) => item.service_id === requestedService,
   );
+  const selectedPublicFamilies = requestedCatalogService
+    ? publicFamiliesByService.get(requestedCatalogService.service_id) || []
+    : [];
+  const selectedService =
+    requestedCatalogService && selectedPublicFamilies.length > 0
+      ? {
+          service_id: requestedCatalogService.service_id,
+          label: requestedCatalogService.label,
+        }
+      : undefined;
   const groupedProgressiveServices = publicServiceNavigationGroups(
     progressiveServiceIds,
   );
-  const publicationTrust = selectedService
-    ? getProgressivePublicationTrust(selectedService.service_id)
-    : null;
-  const selectedSourceNodes = selectedService
-    ? (getProgressiveSourceRecords(selectedService.service_id) as Array<any>)
-    : ordinanceNodes;
+  const standardsPublished = selectedPublicFamilies.some(
+    (item) => item.source_family === GOVERNING_STANDARDS_SOURCE_FAMILY,
+  );
+  const publicationTrust =
+    selectedService && standardsPublished
+      ? getProgressivePublicationTrust(selectedService.service_id)
+      : null;
+  const selectedSourceNodes =
+    selectedService && standardsPublished
+      ? (getProgressiveSourceRecords(selectedService.service_id) as Array<any>)
+      : ordinanceNodes;
 
   const lawArticles = careNodes.filter((node) => node.node_type === "article");
   const ordinanceArticles = ordinanceNodes.filter(
@@ -94,7 +127,7 @@ export default async function DatabaseSearchPage({
   );
 
   const scopedOrdinanceArticles = requestedService
-    ? selectedService
+    ? selectedService && standardsPublished
       ? filterProgressivePublishedRules(
           selectedService.service_id,
           selectedSourceArticles,
@@ -161,9 +194,36 @@ export default async function DatabaseSearchPage({
         ],
       );
 
+  const dayserviceUnitPricePublished = publicSourceFamiliesForService(
+    "dayservice",
+  ).some((item) => item.source_family === UNIT_PRICE_SOURCE_FAMILY);
+  const unitPriceVisible = requestedService
+    ? requestedService === "dayservice" &&
+      selectedPublicFamilies.some(
+        (item) => item.source_family === UNIT_PRICE_SOURCE_FAMILY,
+      )
+    : dayserviceUnitPricePublished;
+  const unitPriceMatches = unitPriceVisible
+    ? rankDatabaseSearch(unitPriceRates, query, (row) => [
+        {
+          value: [
+            row.ratio_text,
+            row.unit_price_yen ? String(row.unit_price_yen) + "円" : "",
+          ]
+            .filter(Boolean)
+            .join(" "),
+          weight: 10,
+        },
+        { value: row.region_class || "", weight: 9 },
+        { value: row.service || "", weight: 5 },
+        { value: "一単位単価 地域区分 単価", weight: 3 },
+      ])
+    : [];
+
   const total =
     lawMatches.length +
     ordinanceMatches.length +
+    unitPriceMatches.length +
     noticeMatches.length +
     qaMatches.length;
 
@@ -173,16 +233,25 @@ export default async function DatabaseSearchPage({
       <h1>介護制度DBを横断検索</h1>
       <p className="lead">
         {selectedService
-          ? `${selectedService.label}について、公開条件を満たした基準省令の本文だけを検索します。`
-          : "サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aを同じキーワードで探します。各結果から本文と出典へ進めます。対象範囲や現行性は、必要なときに各ページの確認情報で確認できます。"}
+          ? `${selectedService.label}について、現在公開している一次資料を資料種別ごとに検索します。`
+          : "サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aに加え、公開条件を満たした追加資料を同じキーワードで探します。各結果から本文と出典へ進めます。"}
       </p>
 
       <div className="notice">
-        {selectedService && publicationTrust ? (
+        {selectedService ? (
           <>
-            <strong>{selectedService.label}の現行本文・適用範囲を確認済みです。</strong><br />
-            未確認の制度間関係や解釈は検索対象に含めません。
-            <a href={publicationTrust.source_url} target="_blank" rel="noreferrer"> 公式原文</a>
+            <strong>{selectedService.label}で現在公開している資料</strong><br />
+            {selectedPublicFamilies.map((item, index) => (
+              <span key={item.source_family}>
+                {index > 0 ? " / " : ""}
+                <Link href={item.href}>{item.label}</Link>
+              </span>
+            ))}
+            <br />
+            公開条件を満たした資料だけを表示します。未確認の制度間関係や解釈は検索対象に含めません。
+            {publicationTrust?.source_url ? (
+              <a href={publicationTrust.source_url} target="_blank" rel="noreferrer"> 基準省令の公式原文</a>
+            ) : null}
           </>
         ) : requestedService ? (
           <>
@@ -279,6 +348,10 @@ export default async function DatabaseSearchPage({
                 <Link href="/databases">DB一覧を見る →</Link>
                 {" / "}
                 <Link href="/sources">公式の根拠資料を見る →</Link>
+                {" / "}
+                <Link href="/guide">実務ガイドから探す →</Link>
+                {" / "}
+                <Link href={feedbackHref(query, selectedService?.label)}>見つからない資料を知らせる →</Link>
               </p>
             </div>
           ) : null}
@@ -325,6 +398,43 @@ export default async function DatabaseSearchPage({
               </div>
             ) : <p className="meta">現在公開している範囲では一致なし</p>}
             {ordinanceMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
+          </section>
+
+          <section className="section">
+            <h2>一単位単価・地域区分 <span className="meta">({unitPriceMatches.length}件)</span></h2>
+            {unitPriceMatches.length ? (
+              <div className="source-chain">
+                {unitPriceMatches.slice(0, LIMIT).map((row) => (
+                  <article className="source-card" key={row.id}>
+                    <p className="meta">通所介護 / 一単位単価・地域区分</p>
+                    <h3>
+                      <Link href="/fees/unit-price">{row.region_class}</Link>
+                    </h3>
+                    <p>
+                      {row.ratio_text} / 1単位 {Number(row.unit_price_yen).toFixed(2)}円
+                    </p>
+                    <p className="meta">
+                      現行性：公開条件を満たした現行資料
+                      {unitPriceMeta.source_urls?.[0] ? (
+                        <>
+                          {" / "}
+                          <a href={unitPriceMeta.source_urls[0]} target="_blank" rel="noreferrer">
+                            厚生労働省の告示原文
+                          </a>
+                        </>
+                      ) : null}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p className="meta">
+                {unitPriceVisible
+                  ? "現在公開している範囲では一致なし"
+                  : "この資料種別は、公開条件を満たしたサービスだけ検索対象になります。"}
+              </p>
+            )}
+            {unitPriceMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
           <section className="section">
@@ -388,7 +498,7 @@ export default async function DatabaseSearchPage({
 
       <section className="section">
         <h2>サービス固有DB</h2>
-        <p>報酬基準・算定上の留意事項はサービス別に確認状態を保持しています。</p>
+        <p>報酬基準・算定上の留意事項・一単位単価などは、資料種別ごとの公開条件を満たした範囲から順に案内します。</p>
         <p><Link href="/databases#remuneration">報酬基準DBへ →</Link></p>
         <p><Link href="/databases#fee-guidance">算定上の留意事項へ →</Link></p>
       </section>
