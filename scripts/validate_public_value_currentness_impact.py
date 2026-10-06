@@ -9,6 +9,9 @@ ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "data/database-coverage-matrix.generated.json"
 READINESS = ROOT / "data/publication-readiness.generated.json"
 CANONICAL = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
+HIGH_VALUE_EXPANSION = (
+    ROOT / "data/verification/high-value-currentness-expansion-worker-c.json"
+)
 TARGETS = {"dayservice", "dayrehab"}
 FAMILY = "governing_standards_ordinance"
 EXPECTED_UNITS = {
@@ -88,11 +91,42 @@ def main() -> int:
                 failures.append(f"{sid}: ready units mismatch")
 
     current_gaps = len(matrix["summary"]["currentness_gaps"])
+
+    downstream_promotions = []
+    if HIGH_VALUE_EXPANSION.exists():
+        expansion = load(HIGH_VALUE_EXPANSION)
+        if expansion.get("artifact_kind") != "CANONICAL_HIGH_VALUE_CURRENTNESS_EXPANSION_DECISION":
+            failures.append("unexpected Worker C currentness expansion artifact kind")
+        downstream_promotions = [
+            row
+            for row in expansion.get("promotions", [])
+            if row.get("promotion_applied") is True
+        ]
+
+    downstream_pass = sum(
+        1
+        for row in downstream_promotions
+        if (cells.get((row["service_id"], row["source_family"])) or {})
+        .get("currentness", {})
+        .get("state") == "PASS"
+    )
+    if downstream_pass not in {0, len(downstream_promotions)}:
+        failures.append(
+            "Worker C currentness expansion must be either wholly unapplied or wholly integrated"
+        )
+
     projected_gaps = current_gaps - len(TARGETS) if preintegration else current_gaps
-    if preintegration and projected_gaps != 320:
-        failures.append(f"expected 320 projected currentness gaps, got {projected_gaps}")
-    if integrated and current_gaps != 320:
-        failures.append(f"expected 320 integrated currentness gaps, got {current_gaps}")
+    expected_after_b = 320
+    expected_integrated_gaps = expected_after_b - downstream_pass
+
+    if preintegration and projected_gaps != expected_after_b:
+        failures.append(
+            f"expected {expected_after_b} projected currentness gaps, got {projected_gaps}"
+        )
+    if integrated and current_gaps != expected_integrated_gaps:
+        failures.append(
+            f"expected {expected_integrated_gaps} integrated currentness gaps, got {current_gaps}"
+        )
 
     print(
         json.dumps(
