@@ -116,6 +116,58 @@ def parse_tables(html: str) -> list[list[list[str]]]:
     parser.close()
     return parser.tables
 
+class TextCollector(HTMLParser):
+    """Collect visible text for source-identity/currentness markers."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        value = clean(data)
+        if value:
+            self.parts.append(value)
+
+
+CURRENTNESS_MARKERS = {
+    "title": ("厚生労働大臣が定める一単位の単価",),
+    "notice_identity": ("厚生労働省告示第九十三号", "厚生労働省告示第93号"),
+    "latest_amendment": (
+        "令和六年三月十五日",
+        "令和6年3月15日",
+    ),
+    "latest_amendment_number": (
+        "厚生労働省告示第八十六号",
+        "厚生労働省告示第86号",
+    ),
+    "effective_reference_date": (
+        "令和六年四月一日",
+        "令和6年4月1日",
+    ),
+}
+
+
+def currentness_identity_check(htmls: list[str]) -> dict:
+    parser = TextCollector()
+    for html in htmls:
+        parser.feed(html)
+    parser.close()
+    visible = clean(" ".join(parser.parts))
+    observed: dict[str, str] = {}
+    missing: list[str] = []
+    for key, alternatives in CURRENTNESS_MARKERS.items():
+        match = next((value for value in alternatives if value in visible), None)
+        if match is None:
+            missing.append(key)
+        else:
+            observed[key] = match
+    return {
+        "bounded_identity": "dayservice::unit_price_regional_classification",
+        "official_current_consolidated_display": not missing,
+        "observed_markers": observed,
+        "missing_markers": missing,
+    }
+
 
 def jp_integer(text: str) -> int:
     value = 0
@@ -260,6 +312,7 @@ def compare() -> dict:
 
     observed_rates = extract_rates(find_rate_table(tables))
     observed_assignments, observed_default = extract_assignments(find_assignment_table(tables))
+    currentness_identity = currentness_identity_check(htmls)
 
     canonical_rates = load_json("unit-price-dayservice.json")
     canonical_assignments = load_json("unit-price-region-assignments.json")
@@ -308,8 +361,19 @@ def compare() -> dict:
         metadata_differences.append("unit-price-region-assignments-meta default_rule_present differs from independent extraction")
 
     result = "PASS"
-    if rate_differences or missing_assignments or unexpected_assignments or metadata_differences:
+    if (
+        rate_differences
+        or missing_assignments
+        or unexpected_assignments
+        or metadata_differences
+        or currentness_identity["missing_markers"]
+    ):
         result = "FAIL"
+
+    current_hash_match = (
+        rate_meta.get("source_sha256") == source_sha256
+        and assignment_meta.get("source_sha256") == source_sha256
+    )
 
     return {
         "format_version": 1,
@@ -318,6 +382,15 @@ def compare() -> dict:
         "source_urls": urls,
         "source_sha256": source_sha256,
         "result": result,
+        "currentness_evidence": {
+            **currentness_identity,
+            "canonical_source_hashes_match_current_live_source": current_hash_match,
+            "supports_bounded_currentness": (
+                result == "PASS"
+                and currentness_identity["official_current_consolidated_display"]
+                and current_hash_match
+            ),
+        },
         "observed": {
             "rate_count": len(observed_rates),
             "explicit_assignment_count": len(observed_assignments),
@@ -342,7 +415,13 @@ def compare() -> dict:
         "safety": {
             "promotes_human_review": False,
             "promotes_verified_current": False,
-            "note": "This verifier is an independent machine cross-check only.",
+            "promotes_global_family_currentness": False,
+            "supports_bounded_currentness": result == "PASS",
+            "bounded_scope": "dayservice::unit_price_regional_classification",
+            "note": (
+                "PASS supports only the explicitly bounded dayservice unit-price currentness "
+                "candidate. It does not establish human review or family-wide currentness."
+            ),
         },
     }
 
