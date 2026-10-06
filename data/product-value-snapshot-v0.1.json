@@ -87,13 +87,13 @@
     "practical_questions_with_evidence_path": {
       "questions_total": 12,
       "questions_with_evidence_path": 12,
-      "coverage_rate": 1,
+      "coverage_rate": 1.0,
       "missing_question_slugs": []
     },
     "public_items_with_complete_evidence_state": {
       "public_items_total": 4520,
       "public_items_complete": 4520,
-      "coverage_rate": 1,
+      "coverage_rate": 1.0,
       "missing_source_items": [],
       "missing_scope_items": [],
       "missing_verification_state_items": [],
@@ -327,7 +327,7 @@
     "practical_question_primary_source_journeys": 12,
     "major_pages_total": 13,
     "major_pages_with_feedback": 13,
-    "feedback_coverage_rate": 1,
+    "feedback_coverage_rate": 1.0,
     "feedback_routes": [
       "/",
       "/databases",
