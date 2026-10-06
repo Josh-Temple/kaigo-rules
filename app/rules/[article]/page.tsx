@@ -15,6 +15,7 @@ import { listServices } from "../../../lib/service-catalog";
 import {
   filterProgressivePublishedRules,
   getProgressivePublicationTrust,
+  getProgressiveSourceRecords,
   isProgressiveRouteCell,
   isProgressiveRulePublished,
   listProgressivePublicationServices,
@@ -76,9 +77,17 @@ const serviceById = new Map(
 );
 
 export function generateStaticParams() {
-  return nodes
-    .filter((node) => node.node_type === "article")
-    .map((node) => ({ article: node.article_num }));
+  const publicArticleNumbers = new Set(
+    [
+      ...nodes,
+      ...listProgressivePublicationServices().flatMap((service) =>
+        getProgressiveSourceRecords(service.service_id),
+      ),
+    ]
+      .filter((node) => node.node_type === "article")
+      .map((node) => node.article_num),
+  );
+  return [...publicArticleNumbers].map((article) => ({ article }));
 }
 
 const levelRank: Record<string, number> = {
@@ -86,8 +95,13 @@ const levelRank: Record<string, number> = {
 };
 
 function nodeSortKey(node: RuleNode) {
-  const prefix = `ordinance37.article.${node.article_num}`;
-  const suffix = node.id.slice(prefix.length).split(".").filter(Boolean);
+  const marker = `.article.${node.article_num}`;
+  const markerIndex = node.id.indexOf(marker);
+  const suffix = (
+    markerIndex >= 0
+      ? node.id.slice(markerIndex + marker.length)
+      : node.id
+  ).split(".").filter(Boolean);
   const key: number[] = [];
   for (let i = 0; i < suffix.length; i += 2) {
     const kind = suffix[i];
@@ -136,8 +150,12 @@ export default async function RuleArticlePage({
   const progressiveSelection = Boolean(
     selectedServiceId && isProgressiveRouteCell(selectedServiceId),
   );
+  const sourceNodes =
+    progressiveSelection && selectedServiceId
+      ? (getProgressiveSourceRecords(selectedServiceId) as RuleNode[])
+      : nodes;
 
-  const articleNode = nodes.find(
+  const articleNode = sourceNodes.find(
     (node) => node.node_type === "article" && node.article_num === article,
   );
   if (!articleNode) notFound();
@@ -157,7 +175,7 @@ export default async function RuleArticlePage({
     notFound();
   }
 
-  const articleNodes = nodes.filter(
+  const articleNodes = sourceNodes.filter(
     (node) => node.article_num === article && node.node_type !== "article",
   );
   const children = (
@@ -177,7 +195,9 @@ export default async function RuleArticlePage({
       : articleNodes
   ).sort(compareNodes);
 
-  const scope = resolveServiceScope("ordinance37", articleNode.id);
+  const scope = progressiveSelection
+    ? { memberships: [] as Array<{ service_id: string; basis: string }> }
+    : resolveServiceScope("ordinance37", articleNode.id);
   const publicMemberships = scope.memberships.filter((membership) =>
     publicFilterIds.has(membership.service_id),
   );
@@ -208,11 +228,13 @@ export default async function RuleArticlePage({
     : undefined;
 
   const dayserviceContext = !selectedServiceId || selectedServiceId === "dayservice";
-  const dayserviceApplicable = isRecordApplicableToService(
-    "dayservice",
-    "ordinance37",
-    articleNode.id,
-  );
+  const dayserviceApplicable =
+    !progressiveSelection &&
+    isRecordApplicableToService(
+      "dayservice",
+      "ordinance37",
+      articleNode.id,
+    );
 
   const incorporationTargets =
     selectedServiceId === "dayservice"
