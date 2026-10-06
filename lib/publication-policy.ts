@@ -104,7 +104,10 @@ export function isSupportedPublicationContract(
     canonicalSourceId ===
     DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID
   ) {
-    return applicabilityState === "MAPPED";
+    return (
+      applicabilityState ===
+      "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING"
+    );
   }
   return false;
 }
