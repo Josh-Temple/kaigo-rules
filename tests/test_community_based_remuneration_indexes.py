@@ -44,6 +44,11 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
             row["service_id"]: row
             for row in load("data/shared/remuneration-delegated/service-applicability.json")["services"]
         }
+        cls.delegated_currentness_pass = {
+            row["service_id"]
+            for row in load("data/verification/delegated-remuneration-currentness-worker-b.json")["promotions"]
+            if row.get("promotion_applied") is True
+        }
         cls.delegated_currentness_promoted = {
             row["service_id"]
             for row in load(
