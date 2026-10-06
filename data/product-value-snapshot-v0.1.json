@@ -316,13 +316,14 @@
     ],
     "published_service_source_family_cells": 10,
     "published_publication_units": 40,
-    "guide_task_journeys": 1,
+    "guide_task_journeys": 5,
     "guide_task_routes": [
-      "/start"
+      "/start",
+      "/guide"
     ],
     "practical_question_primary_source_journeys": 12,
-    "major_pages_total": 12,
-    "major_pages_with_feedback": 12,
+    "major_pages_total": 13,
+    "major_pages_with_feedback": 13,
     "feedback_coverage_rate": 1.0,
     "feedback_routes": [
       "/",
@@ -336,6 +337,7 @@
       "/fees",
       "/fees/guidance",
       "/start",
+      "/guide",
       "/feedback"
     ]
   },
