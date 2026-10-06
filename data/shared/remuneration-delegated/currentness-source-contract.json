@@ -129,7 +129,7 @@
           }
         ]
       },
-      "service_applicability_model": "Any service cell referencing notice27 remains deferred even if all other mapped sources are current.",
+      "service_applicability_model": "Cell-level only: a service is eligible only when its canonical mapped_node_ids or compatibility_subnode_ids explicitly reference notice27 nodes.",
       "evidence": [
         "data/shared/remuneration-delegated/notice27-currentness-evidence.json",
         "data/shared/remuneration-delegated/item-body-verification.json#mhlw-fee-notice27-base",
