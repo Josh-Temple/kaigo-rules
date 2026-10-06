@@ -69,6 +69,8 @@ test("service-aware guide groups regular and preventive services without collaps
   }
  }
  assert.equal(new Set(groupedIds).size,groupedIds.length);
+ assert.equal(groupedIds.length,manifest.services.length);
+ assert.deepEqual(new Set(groupedIds),currentServiceIds);
  const expectedPairs=[
   ["homebath","preventive-homebath"],
   ["homenursing","preventive-homenursing"],
@@ -80,6 +82,9 @@ test("service-aware guide groups regular and preventive services without collaps
   ["specific-facility","preventive-specific-facility"],
   ["welfare-equipment-rental","preventive-welfare-equipment-rental"],
   ["specific-welfare-equipment-sale","specific-preventive-welfare-equipment-sale"],
+  ["dementia-dayservice","preventive-dementia-dayservice"],
+  ["small-scale-multifunctional","preventive-small-scale-multifunctional"],
+  ["dementia-group-home","preventive-dementia-group-home"],
  ];
  for(const [regular,preventive] of expectedPairs){
   const group=practicalGuideServiceGroups.find(x=>x.serviceIds.includes(regular));
