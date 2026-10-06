@@ -21,6 +21,12 @@ HIGH_VALUE_CURRENTNESS = ROOT / "data/verification/high-value-currentness-closur
 HIGH_VALUE_CURRENTNESS_EXPANSION = (
     ROOT / "data/verification/high-value-currentness-expansion-worker-c.json"
 )
+GOVERNING_RESIDUAL_CURRENTNESS = (
+    ROOT / "data/verification/governing-standards-residual-currentness-worker-a.json"
+)
+DELEGATED_REMUNERATION_CURRENTNESS = (
+    ROOT / "data/verification/delegated-remuneration-currentness-worker-b.json"
+)
 
 EXPECTED_BASE_SHA = "e0d814b1b22d449fd13784bbb051fba5c27df64e"
 EXPECTED_CURRENTNESS = {
@@ -95,28 +101,43 @@ def expected_current_matrix_counts() -> dict[str, int]:
     """Apply later canonical bounded decisions to the historical receipt baseline."""
     counts = dict(EXPECTED_CURRENTNESS)
     decisions = (
-        (BOUNDED_CURRENTNESS, "CANONICAL_BOUNDED_CURRENTNESS_CLOSURE_DECISION"),
-        (HIGH_VALUE_CURRENTNESS, "CANONICAL_HIGH_VALUE_CURRENTNESS_CLOSURE_DECISION"),
+        (BOUNDED_CURRENTNESS, "CANONICAL_BOUNDED_CURRENTNESS_CLOSURE_DECISION", "promotions"),
+        (HIGH_VALUE_CURRENTNESS, "CANONICAL_HIGH_VALUE_CURRENTNESS_CLOSURE_DECISION", "promotions"),
         (
             HIGH_VALUE_CURRENTNESS_EXPANSION,
             "CANONICAL_HIGH_VALUE_CURRENTNESS_EXPANSION_DECISION",
+            "promotions",
+        ),
+        (
+            GOVERNING_RESIDUAL_CURRENTNESS,
+            "GOVERNING_STANDARDS_RESIDUAL_CURRENTNESS_CLOSURE",
+            "decisions",
+        ),
+        (
+            DELEGATED_REMUNERATION_CURRENTNESS,
+            "DELEGATED_REMUNERATION_BOUNDED_CURRENTNESS_DECISIONS",
+            "promotions",
         ),
     )
     seen: set[tuple[str, str]] = set()
-    for path, expected_kind in decisions:
+    for path, expected_kind, row_key in decisions:
         if not path.exists():
             continue
         artifact = load(path)
         if artifact.get("artifact_kind") != expected_kind:
             raise ValueError(f"unexpected currentness artifact kind: {path.name}")
-        for row in artifact.get("promotions", []):
+        for row in artifact.get(row_key, []):
             if row.get("promotion_applied") is not True:
                 continue
             identity = (str(row.get("service_id")), str(row.get("source_family")))
             if identity in seen:
                 raise ValueError(f"duplicate canonical currentness promotion: {identity}")
             seen.add(identity)
-            prior = str(row.get("prior_currentness_state") or "NOT_ESTABLISHED")
+            prior = str(
+                row.get("prior_currentness_state")
+                or row.get("starting_currentness_state")
+                or "NOT_ESTABLISHED"
+            )
             projected = str(row.get("projected_currentness_state") or "")
             if projected != "PASS":
                 raise ValueError(f"bounded currentness projection must remain PASS: {identity}")
