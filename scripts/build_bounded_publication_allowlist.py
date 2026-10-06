@@ -22,6 +22,9 @@ HIGH_VALUE_EXPANSION_PATH = ROOT / "data/verification/high-value-currentness-exp
 GOVERNING_RESIDUAL_CURRENTNESS_PATH = (
     ROOT / "data/verification/governing-standards-residual-currentness-worker-a.json"
 )
+FINAL_GOVERNING_CURRENTNESS_PATH = (
+    ROOT / "data/verification/final-standards-residual-relation-worker-c.json"
+)
 SHARED_STANDARDS_ROOT = ROOT / "data/shared/standards"
 UNIT_PRICE_META_PATH = ROOT / "data/unit-price-dayservice-meta.json"
 UNIT_PRICE_MAPPINGS_PATH = ROOT / "data/unit-price-service-multipliers.json"
@@ -250,6 +253,86 @@ def normalize_governing_residual_decision(
     if row.get("promotion_applied") is True:
         proof["direct_article_numbers"] = residual_governing_direct_article_numbers(row)
         proof["scope_path"] = str(row.get("scope_path") or "")
+    normalized["applicability_proof"] = proof
+    normalized["allowed_publication_units"] = sorted(REQUIRED_PUBLICATION_UNITS)
+    return normalized
+
+
+def normalize_final_governing_decision(
+    payload: dict[str, Any], row: dict[str, Any]
+) -> dict[str, Any]:
+    """Translate Worker C's final-two assurance into the existing runtime contract.
+
+    Worker C changes only currentness for the two previously deferred services.
+    Runtime scope remains bound to the same canonical service-scope files and
+    direct article ranges used by the residual governing publication adapter.
+    """
+    prior_payload = load_json(GOVERNING_RESIDUAL_CURRENTNESS_PATH)
+    prior_by_service = {
+        str(item.get("service_id") or ""): item
+        for item in prior_payload.get("decisions", [])
+    }
+    service_id = str(row.get("service_id") or "")
+    prior = copy.deepcopy(prior_by_service.get(service_id) or {})
+    if not prior:
+        raise ValueError(f"final governing decision lacks prior bounded row: {service_id}")
+    if (
+        prior.get("promotion_applied") is not False
+        or prior.get("decision") != "DEFER"
+        or row.get("decision") != "PROMOTE_PASS_BOUNDED"
+        or row.get("promotion_applied") is not True
+        or row.get("projected_currentness_state") != "PASS"
+        or row.get("blocker") is not None
+    ):
+        raise ValueError(f"final governing transition is not bounded DEFER->PASS: {service_id}")
+
+    source_id = str(row.get("canonical_source_id") or "")
+    source_evidence = copy.deepcopy(
+        (prior_payload.get("source_evidence") or {}).get(source_id) or {}
+    )
+    current_source = row.get("current_source") or {}
+    if (
+        source_id != prior.get("canonical_source_id")
+        or source_evidence.get("canonical_source_id") != source_id
+        or current_source.get("law_id") != source_evidence.get("law_id")
+        or current_source.get("official_source_url")
+        != source_evidence.get("official_source_url")
+        or current_source.get("version_id") != source_evidence.get("version_id")
+        or current_source.get("xml_sha256")
+        != (source_evidence.get("fingerprint") or {}).get("xml_sha256")
+        or current_source.get("current_revision_status")
+        != (source_evidence.get("revision_lineage") or {}).get(
+            "current_revision_status"
+        )
+        or current_source.get("repeal_status")
+        != (source_evidence.get("revision_lineage") or {}).get("repeal_status")
+    ):
+        raise ValueError(f"final governing source identity drift: {service_id}")
+
+    normalized = prior
+    normalized["decision"] = "PROMOTE_PASS_BOUNDED"
+    normalized["blocker"] = None
+    normalized["projected_currentness_state"] = "PASS"
+    normalized["promotion_applied"] = True
+    normalized["source_version_contains_scope"] = True
+    normalized["source_identity"] = source_evidence
+    normalized["projection_gate"] = {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": f"{service_id}::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": True,
+    }
+    proof = copy.deepcopy(prior.get("applicability_proof") or {})
+    proof.update(
+        {
+            "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+            "scope_identity_present": True,
+            "regular_preventive_inheritance_used": False,
+            "incorporation_or_read_as_semantics_promoted": False,
+            "direct_article_numbers": residual_governing_direct_article_numbers(prior),
+            "scope_path": str(prior.get("scope_path") or ""),
+        }
+    )
     normalized["applicability_proof"] = proof
     normalized["allowed_publication_units"] = sorted(REQUIRED_PUBLICATION_UNITS)
     return normalized
@@ -754,6 +837,29 @@ def load_promotions() -> tuple[
             if key in promotions:
                 raise ValueError(f"duplicate currentness promotion: {key}")
             promotions[key] = row
+            provenance[key] = relative
+
+    if FINAL_GOVERNING_CURRENTNESS_PATH.exists():
+        path = FINAL_GOVERNING_CURRENTNESS_PATH
+        relative = str(path.relative_to(ROOT)).replace("\\", "/")
+        payload = load_json(path)
+        if payload.get("artifact_kind") != "FINAL_STANDARDS_AND_RESIDUAL_RELATION_ASSURANCE":
+            raise ValueError("unexpected final governing currentness artifact kind")
+        sources.append(
+            {
+                "path": relative,
+                "git_blob_sha": git_blob_sha(path),
+            }
+        )
+        for row in (payload.get("governing_standards") or {}).get("decisions", []):
+            normalized = normalize_final_governing_decision(payload, row)
+            key = cell_key(normalized)
+            existing = promotions.get(key)
+            if not existing or existing.get("promotion_applied") is not False:
+                raise ValueError(
+                    f"final governing decision does not replace one deferred row: {key}"
+                )
+            promotions[key] = normalized
             provenance[key] = relative
 
     return promotions, sources, provenance
