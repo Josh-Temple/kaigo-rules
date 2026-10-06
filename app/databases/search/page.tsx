@@ -29,6 +29,16 @@ const unitPriceRates = unitPriceRatesData as Array<any>;
 const unitPriceMeta = unitPriceMetaData as any;
 const LIMIT = 10;
 
+const practicalTopicSearches = [
+  { id: "staffing", label: "人員基準", query: "人員" },
+  { id: "equipment", label: "設備基準", query: "設備" },
+  { id: "operations", label: "運営基準", query: "運営" },
+  { id: "remuneration", label: "報酬・算定", query: "算定" },
+  { id: "unit-price", label: "地域区分・単価", query: "地域区分" },
+  { id: "designation", label: "指定", query: "指定" },
+  { id: "filing", label: "更新・届出", query: "届出" },
+] as const;
+
 const articleSearchFields = (article: any, nodes: Array<any>) => {
   const articleNodes = nodes.filter(
     (node) => node.article_num === article.article_num,
@@ -357,6 +367,25 @@ export default async function DatabaseSearchPage({
           </span>
         ))}
       </nav>
+
+      <section className="section">
+        <h2>実務テーマから探す</h2>
+        <p className="meta">
+          内部の資料分類を知らなくても、確認したい実務テーマから公開済みDBを検索できます。
+          サービスを選択している場合は、その公開範囲を維持します。
+        </p>
+        <nav className="rules-filter" aria-label="実務テーマから検索">
+          {practicalTopicSearches.map((item) => (
+            <Link
+              className={query === item.query ? "rules-filter-active" : ""}
+              href={filterHref(item.query, selectedService?.service_id)}
+              key={item.id}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </section>
 
       <form className="global-search-form" method="get" action="/databases/search">
         {selectedService ? (
