@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
+import applicabilityData from "../data/shared/remuneration-delegated/service-applicability.json" with { type: "json" };
+import corpusData from "../data/shared/remuneration-delegated/national-corpus.json" with { type: "json" };
 import {
   DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID,
   DELEGATED_REMUNERATION_SOURCE_FAMILY,
@@ -12,7 +14,26 @@ import {
 } from "../lib/publication-runtime-adapters.ts";
 import { verifiedRelatedPrimarySources } from "../lib/verified-related-sources.ts";
 
-function delegatedPromotion(serviceId = "dayservice") {
+const nodeById = new Map(
+  (corpusData.nodes || []).map((node) => [
+    node.canonical_node_id,
+    node,
+  ]),
+);
+
+function delegatedPromotion(serviceId = "homevisit") {
+  const service = (applicabilityData.services || []).find(
+    (row) => row.service_id === serviceId,
+  );
+  const mappedNodeIds = (service?.mapped_node_ids || []).map(String);
+  const mappedSourceIds = [
+    ...new Set(
+      mappedNodeIds
+        .map((nodeId) => nodeById.get(nodeId)?.source_id)
+        .filter(Boolean),
+    ),
+  ].sort();
+
   return {
     service_id: serviceId,
     source_family: DELEGATED_REMUNERATION_SOURCE_FAMILY,
@@ -21,9 +42,27 @@ function delegatedPromotion(serviceId = "dayservice") {
         DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID,
       title:
         "介護報酬の算定方法・厚生労働大臣基準（別告示）",
-      version_id: "worker-b-current-source-set",
-      effective_date: "2026-06-01",
-      verified_at: "2026-10-06",
+      current_official_display_observed_on: "2026-10-06",
+    },
+    mapped_node_count: mappedNodeIds.length,
+    mapped_node_ids: mappedNodeIds,
+    mapped_source_ids: mappedSourceIds,
+    applicability_proof: {
+      state: "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+      inherited_from_sibling_service: false,
+    },
+    source_currentness_evidence: mappedSourceIds.map(
+      (sourceId) =>
+        "data/shared/remuneration-delegated/currentness-source-contract.json#" +
+        sourceId,
+    ),
+    source_identity_matches_item_body_source: true,
+    projection_gate: {
+      kind: "EXPLICIT_BOUNDED_ALLOWLIST",
+      allowed: true,
+      identity:
+        serviceId + "::" + DELEGATED_REMUNERATION_SOURCE_FAMILY,
+      scope: "currentness_only",
     },
     source_version_contains_scope: true,
     ingestion_state: "INGESTED",
@@ -34,7 +73,7 @@ function delegatedPromotion(serviceId = "dayservice") {
 }
 
 test("delegated remuneration adapter publishes only canonical mapped nodes", () => {
-  const promotion = delegatedPromotion("dayservice");
+  const promotion = delegatedPromotion("homevisit");
   const adapter = runtimeAdapterForPromotion(promotion);
   assert.ok(adapter);
   assert.equal(
@@ -48,7 +87,11 @@ test("delegated remuneration adapter publishes only canonical mapped nodes", () 
   assert.equal(adapter.recordKind, "DELEGATED_CRITERIA");
 
   const records = runtimeRecordsForPromotion(promotion);
-  assert.equal(records.length, 20);
+  assert.equal(records.length, 9);
+  assert.deepEqual(
+    records.map((record) => record.id),
+    promotion.mapped_node_ids,
+  );
   assert.ok(
     records.every(
       (record) =>
@@ -60,16 +103,18 @@ test("delegated remuneration adapter publishes only canonical mapped nodes", () 
   );
 
   const trust = {
-    service_id: "dayservice",
-    service_label: "通所介護",
+    service_id: "homevisit",
+    service_label: "訪問介護",
     source_family: DELEGATED_REMUNERATION_SOURCE_FAMILY,
     canonical_source_id:
       DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID,
     source_title: promotion.source_identity.title,
     source_url: "",
-    source_version: promotion.source_identity.version_id,
-    effective_date: promotion.source_identity.effective_date,
-    checked_at: promotion.source_identity.verified_at,
+    source_version: "",
+    effective_date: "",
+    checked_at:
+      promotion.source_identity
+        .current_official_display_observed_on,
   };
   const projection = projectRuntimeRecord(
     promotion,
@@ -92,7 +137,7 @@ test("delegated remuneration adapter publishes only canonical mapped nodes", () 
   assert.ok(projection.source_locator.locator);
 });
 
-test("delegated remuneration adapter fails closed for blocked and not-applicable cells", () => {
+test("delegated remuneration adapter fails closed for blocked, not-applicable, and drifted cells", () => {
   const notApplicable = delegatedPromotion(
     "specific-welfare-equipment-sale",
   );
@@ -113,11 +158,11 @@ test("delegated remuneration adapter fails closed for blocked and not-applicable
     null,
   );
 
-  const blocked = delegatedPromotion("dayservice");
+  const blocked = delegatedPromotion("homevisit");
   blocked.projected_currentness_state = "NOT_ESTABLISHED";
   assert.equal(runtimeAdapterForPromotion(blocked), null);
 
-  const unsupportedIdentity = delegatedPromotion("dayservice");
+  const unsupportedIdentity = delegatedPromotion("homevisit");
   unsupportedIdentity.source_identity.canonical_source_id =
     "unsupported-source";
   assert.equal(
@@ -125,10 +170,34 @@ test("delegated remuneration adapter fails closed for blocked and not-applicable
     null,
   );
 
-  const wrongFamily = delegatedPromotion("dayservice");
+  const wrongFamily = delegatedPromotion("homevisit");
   wrongFamily.source_family =
     GOVERNING_STANDARDS_SOURCE_FAMILY;
   assert.equal(runtimeAdapterForPromotion(wrongFamily), null);
+
+  const wrongNodes = delegatedPromotion("homevisit");
+  wrongNodes.mapped_node_ids =
+    wrongNodes.mapped_node_ids.slice(1);
+  wrongNodes.mapped_node_count =
+    wrongNodes.mapped_node_ids.length;
+  assert.equal(runtimeAdapterForPromotion(wrongNodes), null);
+
+  const wrongSources = delegatedPromotion("homevisit");
+  wrongSources.mapped_source_ids = [
+    "mhlw-fee-criteria95-current",
+  ];
+  assert.equal(
+    runtimeAdapterForPromotion(wrongSources),
+    null,
+  );
+
+  const missingCurrentnessEvidence =
+    delegatedPromotion("homevisit");
+  missingCurrentnessEvidence.source_currentness_evidence = [];
+  assert.equal(
+    runtimeAdapterForPromotion(missingCurrentnessEvidence),
+    null,
+  );
 });
 
 test("delegated remuneration service mappings do not cross regular and preventive canonical IDs", () => {
@@ -170,20 +239,15 @@ test("verified related-source projection exposes only independent PASS edges wit
     ),
   );
 
-  const delegatedRecords = runtimeRecordsForPromotion(
-    delegatedPromotion("dayservice"),
-  );
-  const auditedDelegated = delegatedRecords.find(
-    (record) =>
-      record.legacy_node_id ===
-      "criteria95.dayservice.14-6",
-  );
-  assert.ok(auditedDelegated);
   const delegatedRelations =
     verifiedRelatedPrimarySources(
       "dayservice",
       DELEGATED_REMUNERATION_SOURCE_FAMILY,
-      auditedDelegated,
+      {
+        id: "notice95.item.14-6",
+        legacy_node_id:
+          "criteria95.dayservice.14-6",
+      },
     );
   assert.equal(delegatedRelations.length, 1);
   assert.equal(
@@ -195,17 +259,15 @@ test("verified related-source projection exposes only independent PASS edges wit
     /^\/fees#/,
   );
 
-  const unauditedDelegated = delegatedRecords.find(
-    (record) =>
-      record.legacy_node_id ===
-      "criteria95.dayservice.14-3",
-  );
-  assert.ok(unauditedDelegated);
   assert.deepEqual(
     verifiedRelatedPrimarySources(
       "dayservice",
       DELEGATED_REMUNERATION_SOURCE_FAMILY,
-      unauditedDelegated,
+      {
+        id: "notice95.item.14-3",
+        legacy_node_id:
+          "criteria95.dayservice.14-3",
+      },
     ),
     [],
   );
