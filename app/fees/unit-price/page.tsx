@@ -5,6 +5,11 @@ import assignmentsData from "../../../data/unit-price-region-assignments.json";
 import assignmentMetaData from "../../../data/unit-price-region-assignments-meta.json";
 import reviewData from "../../../data/unit-price-review.json";
 import sourcesData from "../../../data/sources.json";
+import {
+  UNIT_PRICE_SOURCE_FAMILY,
+  getProgressivePublicationTrust,
+  getProgressiveSourceRecords,
+} from "../../../lib/publication-policy";
 
 const rates = ratesData as Array<any>;
 const meta = metaData as any;
@@ -23,10 +28,19 @@ export default async function UnitPricePage({
 }) {
   const { q = "" } = await searchParams;
   const query = normalize(q);
+  const publicationTrust = getProgressivePublicationTrust(
+    "dayservice",
+    UNIT_PRICE_SOURCE_FAMILY,
+  );
+  const runtimeRates = getProgressiveSourceRecords(
+    "dayservice",
+    UNIT_PRICE_SOURCE_FAMILY,
+  ) as Array<any>;
+  const displayedRates = runtimeRates.length ? runtimeRates : rates;
   const source = sources.find(
     (item) => item.id === meta.source_id || item.id === "mhlw-unit-price-current"
   );
-  const priceById = new Map(rates.map((row) => [row.id, row]));
+  const priceById = new Map(displayedRates.map((row) => [row.id, row]));
   const matches = query
     ? assignments.filter((row) =>
         normalize(row.prefecture + row.locality).includes(query)
@@ -48,9 +62,18 @@ export default async function UnitPricePage({
       </p>
 
       <div className="notice">
-        <strong>機械取込済み・人手確認待ち</strong><br />
-        厚生労働省の現行告示HTMLから、単価と地域区分の明示地域を抽出しています。
-        原文照合が終わるまでは「確認済み」と表示しません。
+        {publicationTrust ? (
+          <>
+            <strong>通所介護の単価8件は、現行表示・本文・適用範囲を確認済みです。</strong><br />
+            厚生労働省の現行統合表示と直接照合できたpublication unitだけを表示し、制度間関係や解釈は加えていません。
+          </>
+        ) : (
+          <>
+            <strong>機械取込済み・人手確認待ち</strong><br />
+            厚生労働省の現行告示HTMLから、単価と地域区分の明示地域を抽出しています。
+            原文照合が終わるまでは「確認済み」と表示しません。
+          </>
+        )}
       </div>
 
       <VerificationSummary layerId="unit-price" />
@@ -61,7 +84,7 @@ export default async function UnitPricePage({
           <div className="unit-price-head">
             <span>地域区分</span><span>1単位</span><span>明示地域</span>
           </div>
-          {rates.map((row) => (
+          {displayedRates.map((row) => (
             <div className="unit-price-row" key={row.id}>
               <strong>{row.region_class}</strong>
               <span>{row.unit_price_yen.toFixed(2)}円</span>
@@ -140,7 +163,7 @@ export default async function UnitPricePage({
       <section className="section">
         <h2>人手チェック状況</h2>
         <dl className="rule-meta">
-          <div><dt>単価</dt><dd>{(review.reviewed_rate_ids || []).length} / {rates.length}件</dd></div>
+          <div><dt>単価</dt><dd>{publicationTrust ? "8 / 8件（runtime publication）" : `${(review.reviewed_rate_ids || []).length} / ${rates.length}件`}</dd></div>
           <div><dt>地域割当</dt><dd>{(review.reviewed_assignment_ids || []).length} / {assignments.length}件</dd></div>
           <div><dt>「その他」規則</dt><dd>{review.reviewed_default_rule ? "確認済み" : "未確認"}</dd></div>
         </dl>
@@ -155,7 +178,7 @@ export default async function UnitPricePage({
         </p>
         {source ? (
           <p>
-            <a href={source.url} target="_blank" rel="noreferrer">
+            <a href={publicationTrust?.source_url || source.url} target="_blank" rel="noreferrer">
               厚生労働省の告示原文を確認
             </a>
           </p>
