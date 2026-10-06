@@ -1,0 +1,1503 @@
+{
+  "format_version": 1,
+  "artifact_kind": "CANONICAL_HIGH_VALUE_CURRENTNESS_EXPANSION_DECISION",
+  "wave_id": "2026-10-06-multi-source-runtime-expansion-and-currentness-closure-worker-c",
+  "worker": "C",
+  "role": "High-Value Source Currentness Expansion Worker",
+  "base_main_sha": "f35531d0d2050109233b72f76ef77c48cc6862de",
+  "observed_date": "2026-10-06",
+  "purpose": "Expand bounded Unit Price currentness only for exact service cells already backed by PASS item-body assurance and direct rows on the official MHLW consolidated display; keep Care Insurance Act and all unselected Unit Price cells fail-closed.",
+  "policy": {
+    "blanket_family_promotion_allowed": false,
+    "exact_service_source_family_allowlist_required": true,
+    "live_official_source_reverification_required": true,
+    "shared_source_currentness_separated_from_service_applicability": true,
+    "item_body_used_as_currentness_shortcut": false,
+    "relation_status_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false
+  },
+  "target_selection": [
+    {
+      "source_family": "unit_price_regional_classification",
+      "disposition": "BOUNDED_PROMOTION",
+      "selected_service_ids": [
+        "homevisit",
+        "homebath",
+        "homenursing",
+        "homerehab",
+        "homecaremanagement",
+        "shortstay-life",
+        "shortstay-medical",
+        "specific-facility",
+        "welfare-equipment-rental",
+        "preventive-homebath",
+        "preventive-homenursing",
+        "preventive-homerehab",
+        "preventive-homecaremanagement",
+        "preventive-dayrehab",
+        "preventive-shortstay-life",
+        "preventive-shortstay-medical",
+        "preventive-specific-facility",
+        "preventive-welfare-equipment-rental"
+      ],
+      "selection_boundary": "Existing Governing Standards progressive-runtime service set intersected with Unit Price APPLIES cells, excluding the two equipment-sale NOT_APPLICABLE services and excluding dayservice because it is already promoted by the prior canonical decision.",
+      "rationale": "These cells already have PASS item-body assurance, direct official service rows and existing public service context. The live verifier independently reparses the official current MHLW display and checks the canonical service-to-profile table before bounded currentness projection."
+    },
+    {
+      "source_family": "care_insurance_act",
+      "disposition": "HOLD",
+      "blocker": "The current e-Gov Act identity and source text are established, but service-specific applicability beyond the existing service scope/index evidence has not been independently closed for this wave. No service cell is promoted from source-level currentness alone."
+    }
+  ],
+  "source_currentness_evidence": {
+    "canonical_source_id": "mhlw-unit-price-current",
+    "title": "厚生労働大臣が定める一単位の単価",
+    "notice_identity": "平成27年厚生労働省告示第93号",
+    "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+    "official_page_urls": [
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+      "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+    ],
+    "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+    "effective_date": "2024-04-01",
+    "expected_page_sha256": [
+      "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395",
+      "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+    ],
+    "current_official_display_observed_on": "2026-10-06",
+    "effective_reference_date_marker": "令和六年四月一日",
+    "live_verifier": "scripts/verify_unit_price_currentness.py",
+    "workflow": ".github/workflows/verify-unit-price-independent.yml"
+  },
+  "promotions": [
+    {
+      "service_id": "homevisit",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "訪問介護",
+        "multiplier_profile_id": "group-1140",
+        "source_locator": "第一号 表 / 訪問介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#homevisit",
+          "data/unit-price-item-body-assurance.json#homevisit",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#homevisit::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "homevisit::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "homebath",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "訪問入浴介護",
+        "multiplier_profile_id": "group-1140",
+        "source_locator": "第一号 表 / 訪問入浴介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#homebath",
+          "data/unit-price-item-body-assurance.json#homebath",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#homebath::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "homebath::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "homenursing",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "訪問看護",
+        "multiplier_profile_id": "group-1140",
+        "source_locator": "第一号 表 / 訪問看護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#homenursing",
+          "data/unit-price-item-body-assurance.json#homenursing",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#homenursing::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "homenursing::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "homerehab",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "訪問リハビリテーション",
+        "multiplier_profile_id": "group-1110",
+        "source_locator": "第一号 表 / 訪問リハビリテーション / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#homerehab",
+          "data/unit-price-item-body-assurance.json#homerehab",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#homerehab::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "homerehab::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "homecaremanagement",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "居宅療養管理指導",
+        "multiplier_profile_id": "flat-1000",
+        "source_locator": "第一号 表 / 居宅療養管理指導 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#homecaremanagement",
+          "data/unit-price-item-body-assurance.json#homecaremanagement",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#homecaremanagement::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "homecaremanagement::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "shortstay-life",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "短期入所生活介護",
+        "multiplier_profile_id": "group-1110",
+        "source_locator": "第一号 表 / 短期入所生活介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#shortstay-life",
+          "data/unit-price-item-body-assurance.json#shortstay-life",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#shortstay-life::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "shortstay-life::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "shortstay-medical",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "短期入所療養介護",
+        "multiplier_profile_id": "group-1090",
+        "source_locator": "第一号 表 / 短期入所療養介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#shortstay-medical",
+          "data/unit-price-item-body-assurance.json#shortstay-medical",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#shortstay-medical::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "shortstay-medical::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "specific-facility",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "特定施設入居者生活介護",
+        "multiplier_profile_id": "group-1090",
+        "source_locator": "第一号 表 / 特定施設入居者生活介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#specific-facility",
+          "data/unit-price-item-body-assurance.json#specific-facility",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#specific-facility::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "specific-facility::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "福祉用具貸与",
+        "multiplier_profile_id": "flat-1000",
+        "source_locator": "第一号 表 / 福祉用具貸与 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#welfare-equipment-rental",
+          "data/unit-price-item-body-assurance.json#welfare-equipment-rental",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#welfare-equipment-rental::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "welfare-equipment-rental::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-homebath",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防訪問入浴介護",
+        "multiplier_profile_id": "group-1140",
+        "source_locator": "第一号 表 / 介護予防訪問入浴介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-homebath",
+          "data/unit-price-item-body-assurance.json#preventive-homebath",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-homebath::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-homebath::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防訪問看護",
+        "multiplier_profile_id": "group-1140",
+        "source_locator": "第一号 表 / 介護予防訪問看護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-homenursing",
+          "data/unit-price-item-body-assurance.json#preventive-homenursing",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-homenursing::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-homenursing::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防訪問リハビリテーション",
+        "multiplier_profile_id": "group-1110",
+        "source_locator": "第一号 表 / 介護予防訪問リハビリテーション / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-homerehab",
+          "data/unit-price-item-body-assurance.json#preventive-homerehab",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-homerehab::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-homerehab::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防居宅療養管理指導",
+        "multiplier_profile_id": "flat-1000",
+        "source_locator": "第一号 表 / 介護予防居宅療養管理指導 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-homecaremanagement",
+          "data/unit-price-item-body-assurance.json#preventive-homecaremanagement",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-homecaremanagement::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-homecaremanagement::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防通所リハビリテーション",
+        "multiplier_profile_id": "group-1110",
+        "source_locator": "第一号 表 / 介護予防通所リハビリテーション / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-dayrehab",
+          "data/unit-price-item-body-assurance.json#preventive-dayrehab",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-dayrehab::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-dayrehab::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防短期入所生活介護",
+        "multiplier_profile_id": "group-1110",
+        "source_locator": "第一号 表 / 介護予防短期入所生活介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-shortstay-life",
+          "data/unit-price-item-body-assurance.json#preventive-shortstay-life",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-shortstay-life::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-shortstay-life::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防短期入所療養介護",
+        "multiplier_profile_id": "group-1090",
+        "source_locator": "第一号 表 / 介護予防短期入所療養介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-shortstay-medical",
+          "data/unit-price-item-body-assurance.json#preventive-shortstay-medical",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-shortstay-medical::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-shortstay-medical::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防特定施設入居者生活介護",
+        "multiplier_profile_id": "group-1090",
+        "source_locator": "第一号 表 / 介護予防特定施設入居者生活介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-specific-facility",
+          "data/unit-price-item-body-assurance.json#preventive-specific-facility",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-specific-facility::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-specific-facility::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "source_family": "unit_price_regional_classification",
+      "canonical_source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED"
+      },
+      "service_applicability_evidence": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "介護予防福祉用具貸与",
+        "multiplier_profile_id": "flat-1000",
+        "source_locator": "第一号 表 / 介護予防福祉用具貸与 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#preventive-welfare-equipment-rental",
+          "data/unit-price-item-body-assurance.json#preventive-welfare-equipment-rental",
+          "scripts/verify_unit_price_currentness.py"
+        ]
+      },
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "currentness_evidence": {
+        "official_source_locator": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "observed_on": "2026-10-06",
+        "effective_date": "2024-04-01",
+        "supersession_check": "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED",
+        "live_verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml"
+      },
+      "exact_evidence_pointer": "data/verification/high-value-currentness-expansion-worker-c.json#preventive-welfare-equipment-rental::unit_price_regional_classification",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-welfare-equipment-rental::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "allowed_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "relation_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_ESTABLISHED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_ESTABLISHED"
+      },
+      "human_review_requirement_by_publication_unit": {
+        "SOURCE_TEXT_ITEM_BODY": "NOT_REQUIRED",
+        "SOURCE_METADATA_LOCATOR": "NOT_REQUIRED",
+        "CURRENTNESS_STATEMENT": "NOT_REQUIRED",
+        "SERVICE_APPLICABILITY_STATEMENT": "NOT_REQUIRED",
+        "CROSS_LAYER_RELATION_LINK": "REQUIRED_NOT_REVIEWED",
+        "INTERPRETIVE_RELATION_EXPLANATION": "REQUIRED_NOT_REVIEWED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "UNCHANGED_FAIL_CLOSED",
+        "route_exposure": "UNCHANGED_FAIL_CLOSED"
+      }
+    }
+  ],
+  "projected_effect": {
+    "additional_unit_price_currentness_pass_cells": 18,
+    "prior_unit_price_pass_cells": 1,
+    "projected_unit_price_pass_cells": 19,
+    "unselected_applicable_unit_price_cells_remain_unestablished": 18,
+    "care_insurance_act_promotions": 0,
+    "candidate_publication_units_per_promoted_cell": 4
+  },
+  "integration_boundary": {
+    "generated_coverage_matrix_modified_by_worker_c": false,
+    "publication_requirement_scoping_modified_by_worker_c": false,
+    "publication_readiness_modified_by_worker_c": false,
+    "bounded_publication_allowlist_modified_by_worker_c": false,
+    "worker_e_must_regenerate_global_generated_artifacts_after_semantic_integration": true
+  },
+  "safety": {
+    "promotions_are_exact_identity_allowlisted": true,
+    "human_review_not_faked": true,
+    "relation_verification_not_faked": true,
+    "source_level_currentness_not_blanket_projected": true,
+    "care_insurance_act_not_promoted_from_source_level_currentness": true,
+    "unsupported_or_unselected_cells_fail_closed": true
+  }
+}
