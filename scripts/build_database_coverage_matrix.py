@@ -726,21 +726,6 @@ def build() -> dict:
         if bounded_currentness_path.exists()
         else {"promotions": []}
     )
-    high_value_currentness_path = ROOT / "data/verification/high-value-currentness-closure-worker-b.json"
-    high_value_currentness_data = (
-        load("data/verification/high-value-currentness-closure-worker-b.json")
-        if high_value_currentness_path.exists()
-        else {"promotions": []}
-    )
-    bounded_currentness_rows: dict[tuple[str, str], dict] = {}
-    for artifact in (bounded_currentness_data, high_value_currentness_data):
-        for row in artifact.get("promotions", []):
-            if row.get("promotion_applied") is not True:
-                continue
-            identity = (str(row["service_id"]), str(row["source_family"]))
-            if identity in bounded_currentness_rows:
-                raise ValueError(f"duplicate bounded currentness promotion identity: {identity}")
-            bounded_currentness_rows[identity] = row
     fee_guidance_manifest_path = ROOT / "data/shared/fee-guidance/manifest.json"
     fee_guidance_manifest = load("data/shared/fee-guidance/manifest.json") if fee_guidance_manifest_path.exists() else None
     fee_guidance_applicability_data = (
@@ -847,7 +832,11 @@ def build() -> dict:
             row["service_id"]: row
             for row in delegated_relations_data.get("services", [])
         },
-        "bounded_currentness": bounded_currentness_rows,
+        "bounded_currentness": {
+            (row["service_id"], row["source_family"]): row
+            for row in bounded_currentness_data.get("promotions", [])
+            if row.get("promotion_applied") is True
+        },
     }
 
     manifest_ids = [row["service_id"] for row in manifest.get("services", [])]
@@ -953,7 +942,6 @@ def build() -> dict:
             "data/verification-registry.json",
             "data/verification/standards-interpretation-gates.json",
             "data/verification/bounded-currentness-closure-worker-b.json",
-            "data/verification/high-value-currentness-closure-worker-b.json",
             "data/relation-verification-queue.json",
             "data/shared/standards/manifest.json",
             "data/shared/standards-interpretation/remaining-source-register.json",
