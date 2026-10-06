@@ -60,6 +60,7 @@ type RuntimeSourceIdentity = {
 
 type RuntimeApplicabilityProof = {
   state?: string;
+  inherited_from_sibling_service?: boolean;
   direct_service_chapter_verified?: boolean;
   direct_service_scope_verified?: boolean;
   target_articles?: string[];
@@ -96,6 +97,17 @@ export type RuntimePromotion = {
     workflow?: string;
   };
   allowed_publication_units?: string[];
+  mapped_node_count?: number;
+  mapped_node_ids?: string[];
+  mapped_source_ids?: string[];
+  source_currentness_evidence?: string[];
+  source_identity_matches_item_body_source?: boolean;
+  projection_gate?: {
+    kind?: string;
+    allowed?: boolean;
+    identity?: string;
+    scope?: string;
+  };
   source_version_contains_scope?: boolean;
   ingestion_state?: string;
   item_body_state?: string;
@@ -850,8 +862,7 @@ function delegatedPromotionSupported(
   const source = sourceIdentity(promotion);
   if (
     source.canonical_source_id !==
-      DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID ||
-    !String(source.version_id || "").trim()
+      DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID
   ) {
     return false;
   }
@@ -860,15 +871,86 @@ function delegatedPromotionSupported(
   const contract = delegatedServiceContract(serviceId);
   if (!contract) return false;
 
+  const promotedNodeIds = (
+    promotion.mapped_node_ids || []
+  ).map(String);
+  if (
+    promotion.mapped_node_count !==
+      contract.mappedNodeIds.length ||
+    promotedNodeIds.length !==
+      contract.mappedNodeIds.length ||
+    promotedNodeIds.some(
+      (nodeId, index) =>
+        nodeId !== contract.mappedNodeIds[index],
+    )
+  ) {
+    return false;
+  }
+
   const records = delegatedRecordsForService(serviceId);
-  return (
-    records.length === contract.mappedNodeIds.length &&
-    records.every(
+  if (
+    records.length !== contract.mappedNodeIds.length ||
+    !records.every(
       (record) =>
         Boolean(record.official_text) &&
         Boolean(record.source_url) &&
         Boolean(record.source_locator),
     )
+  ) {
+    return false;
+  }
+
+  const expectedSourceIds = [
+    ...new Set(
+      records
+        .map((record) => String(record.source_id || ""))
+        .filter(Boolean),
+    ),
+  ].sort();
+  const promotedSourceIds = (
+    promotion.mapped_source_ids || []
+  )
+    .map(String)
+    .sort();
+  if (
+    expectedSourceIds.length !== promotedSourceIds.length ||
+    expectedSourceIds.some(
+      (sourceId, index) =>
+        sourceId !== promotedSourceIds[index],
+    )
+  ) {
+    return false;
+  }
+
+  const proof =
+    promotion.applicability_proof ||
+    promotion.service_applicability_evidence ||
+    {};
+  const gate = promotion.projection_gate || {};
+  if (
+    proof.state !==
+      "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING" ||
+    proof.inherited_from_sibling_service !== false ||
+    promotion.source_identity_matches_item_body_source !==
+      true ||
+    gate.kind !== "EXPLICIT_BOUNDED_ALLOWLIST" ||
+    gate.allowed !== true ||
+    gate.identity !==
+      serviceId +
+        "::" +
+        DELEGATED_REMUNERATION_SOURCE_FAMILY ||
+    gate.scope !== "currentness_only"
+  ) {
+    return false;
+  }
+
+  const currentnessEvidence = (
+    promotion.source_currentness_evidence || []
+  ).map(String);
+  return expectedSourceIds.every((sourceId) =>
+    currentnessEvidence.some((evidence) =>
+      evidence.endsWith("#" + sourceId),
+    ),
   );
 }
 
