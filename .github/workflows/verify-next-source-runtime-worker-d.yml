@@ -1,0 +1,80 @@
+name: Verify next-source runtime Worker D
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "lib/publication-policy.ts"
+      - "lib/publication-runtime-adapters.ts"
+      - "lib/public-source-navigation.ts"
+      - "lib/verified-related-sources.ts"
+      - "app/api/context/services/[serviceId]/rules/route.ts"
+      - "app/api/context/services/[serviceId]/sources/route.ts"
+      - "app/databases/search/page.tsx"
+      - "app/fees/criteria/page.tsx"
+      - "app/rules/[article]/page.tsx"
+      - "scripts/build_bounded_publication_allowlist.py"
+      - "tests/next-source-runtime-relations.test.mjs"
+      - "tests/test_multi_source_runtime_allowlist.py"
+      - ".github/workflows/verify-next-source-runtime-worker-d.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Test existing and next-source runtime behavior
+        run: |
+          node --experimental-strip-types --test tests/progressive-publication-runtime.test.mjs
+          node --experimental-strip-types --test tests/next-source-runtime-relations.test.mjs
+
+      - name: Test bounded allowlist contracts
+        run: python -m unittest tests.test_multi_source_runtime_allowlist
+
+      - name: Revalidate independent relations used by public projection
+        run: |
+          python scripts/validate_notice_ordinance_explicit_reference_derived_audit.py
+          python scripts/validate_remuneration_delegation_relation_independent_audit.py
+          python scripts/validate_remuneration_source_link_independent_audit.py
+
+      - name: Type-check runtime and public surfaces
+        run: npx tsc --noEmit
+
+      - name: Confirm Worker D leaves repository-wide generated artifacts to Worker E
+        if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.title, '[Worker E]')
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          printf '%s\n' "$changed"
+          for path in \
+            data/database-coverage-matrix.generated.json \
+            docs/database-coverage-summary.generated.md \
+            data/publication-requirement-scoping.json \
+            data/publication-readiness.generated.json \
+            data/bounded-publication-allowlist.json
+          do
+            if printf '%s\n' "$changed" | grep -Fxq "$path"; then
+              echo "Worker D must not edit repository-wide generated artifact: $path" >&2
+              exit 1
+            fi
+          done
