@@ -6,7 +6,7 @@ import {
   practicalGuideServiceGroups,
 } from "../../lib/practical-guide";
 import { DEFAULT_SERVICE_ID, getService } from "../../lib/service-catalog";
-import { listProgressivePublicationServices } from "../../lib/publication-policy";
+import { publicSourceFamiliesForService } from "../../lib/public-source-navigation";
 
 type SourceRecord = {
   id: string;
@@ -18,16 +18,16 @@ const sources = sourcesData as SourceRecord[];
 const sourcesById = new Map(sources.map((source) => [source.id, source]));
 
 export default function GuidePage() {
-  const progressiveServiceIds = new Set(
-    listProgressivePublicationServices().map((service) => service.service_id),
-  );
-
   const serviceDestination = (serviceId: string) => {
     const service = getService(serviceId);
-    if (progressiveServiceIds.has(serviceId)) {
+    const publicFamilies = publicSourceFamiliesForService(serviceId);
+    if (publicFamilies.length > 0) {
       return {
         href: `/databases/search?service=${encodeURIComponent(serviceId)}`,
-        detail: "公開条件を満たした基準省令を、このサービスに絞って確認します。",
+        detail:
+          "現在公開している" +
+          publicFamilies.map((item) => item.short_label).join("・") +
+          "を、このサービスの文脈で確認します。",
       };
     }
     if (
@@ -83,7 +83,7 @@ export default function GuidePage() {
         <h2>サービスから探す</h2>
         <p>
           通常サービスと対応する介護予防サービスは同じまとまりで表示します。
-          利用できるサービス別絞り込みがある場合はそこへ進み、それ以外はサービス名で公開DBを検索します。
+          利用できるサービス別の公開資料がある場合は横断検索へ進み、それ以外はサービス名で公開DBを検索します。
           介護予防支援は独立したサービスとして扱います。
         </p>
         {practicalGuideServiceGroups.map((group) => (

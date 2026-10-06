@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { DEFAULT_SERVICE_ID, listServices } from "../../lib/service-catalog";
 import { publicServiceNavigationGroups } from "../../lib/service-navigation-groups";
-import { listProgressivePublicationServices } from "../../lib/publication-policy";
+import { publicSourceFamiliesForService } from "../../lib/public-source-navigation";
 
 const dedicatedServiceIds = new Set(
   listServices()
@@ -13,10 +13,6 @@ const dedicatedServiceIds = new Set(
     .map((service) => service.service_id),
 );
 
-const progressivePublishedIds = new Set(
-  listProgressivePublicationServices().map((service) => service.service_id),
-);
-
 const serviceAccess = (serviceId: string, label: string) => {
   if (dedicatedServiceIds.has(serviceId)) {
     return {
@@ -24,10 +20,14 @@ const serviceAccess = (serviceId: string, label: string) => {
       label: "サービス別ページ",
     };
   }
-  if (progressivePublishedIds.has(serviceId)) {
+  const publicFamilies = publicSourceFamiliesForService(serviceId);
+  if (publicFamilies.length > 0) {
     return {
       href: "/databases/search?service=" + encodeURIComponent(serviceId),
-      label: "基準省令を絞り込み",
+      label:
+        publicFamilies.length > 1
+          ? "公開中の一次資料を横断"
+          : publicFamilies[0].short_label + "を確認",
     };
   }
   return {
@@ -52,7 +52,7 @@ export default function ServicesPage() {
       <div className="notice">
         <strong>このまとまりは、探しやすくするための案内上の分類です。</strong><br />
         法令上の新しいサービス分類を示すものではありません。
-        サービス別ページや絞り込みがまだない場合も、名称を使って公開中のDB全体を検索できます。
+        サービス別ページや公開済み資料の絞り込みがある場合はそこへ進み、まだない場合も名称を使って公開中のDB全体を検索できます。
       </div>
 
       <p><Link href="/databases/search">サービスを選ばずDB全体から検索する →</Link></p>
