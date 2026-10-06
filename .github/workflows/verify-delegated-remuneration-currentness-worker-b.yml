@@ -1,0 +1,60 @@
+name: Verify delegated remuneration bounded currentness
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/shared/remuneration-delegated/**"
+      - "data/verification/delegated-remuneration-currentness-worker-b.json"
+      - "scripts/build_delegated_remuneration_currentness_worker_b.py"
+      - "scripts/validate_delegated_remuneration_currentness_worker_b.py"
+      - "scripts/build_database_coverage_matrix.py"
+      - "tests/test_delegated_remuneration_currentness_worker_b.py"
+      - "tests/test_database_coverage_matrix.py"
+      - ".github/workflows/verify-delegated-remuneration-currentness-worker-b.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Install independent parser
+        run: python -m pip install beautifulsoup4==4.13.4
+      - name: Re-fetch current MHLW delegated source bodies
+        run: python scripts/verify_delegated_remuneration_item_body.py
+      - name: Preserve delegated item-body assurance boundaries
+        run: python scripts/validate_delegated_remuneration_item_body_assurance.py
+      - name: Check deterministic bounded currentness decisions
+        run: python scripts/build_delegated_remuneration_currentness_worker_b.py --check
+      - name: Validate bounded currentness contract and decisions
+        run: python scripts/validate_delegated_remuneration_currentness_worker_b.py
+      - name: Run Worker B unit and integration tests
+        run: python -m unittest tests.test_delegated_remuneration_currentness_worker_b tests.test_database_coverage_matrix
+      - name: Reject Worker B edits to global generated artifacts
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        shell: bash
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          printf '%s\n' "$changed"
+          for path in \
+            data/database-coverage-matrix.generated.json \
+            docs/database-coverage-summary.generated.md \
+            data/publication-requirement-scoping.json \
+            data/publication-readiness.generated.json \
+            data/services/catalog.generated.json
+          do
+            if printf '%s\n' "$changed" | grep -Fxq "$path"; then
+              echo "Worker B must not edit integrator-owned generated artifact: $path" >&2
+              exit 1
+            fi
+          done
