@@ -10,6 +10,12 @@ import {
   rankDatabaseSearch,
   scoreDatabaseSearch,
 } from "../lib/database-search.ts";
+import {
+  publicSourceFamiliesForService,
+  publicSourceNavigationMetrics,
+} from "../lib/public-source-navigation.ts";
+import { isProgressiveRouteCell } from "../lib/publication-policy.ts";
+import { listServices } from "../lib/service-catalog.ts";
 
 test("database-wide search expands key service synonyms", () => {
   assert.equal(matchesDatabaseSearch("業務継続計画の策定等", "BCP"), true);
@@ -204,4 +210,52 @@ test("public database search groups service filters and treats no-match as a par
   assert.match(search, /資料そのものが存在しないことを意味しません/);
   assert.match(search, /実務ガイドから探す/);
   assert.doesNotMatch(search, /READY_FOR_PUBLICATION_REVIEW|blocking_reasons/);
+});
+
+
+test("multi-source search is gated by the shared publication policy", () => {
+  const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
+
+  assert.match(search, /unit-price-dayservice\.json/);
+  assert.match(search, /publicSourceFamiliesForService/);
+  assert.match(search, /UNIT_PRICE_SOURCE_FAMILY/);
+  assert.match(search, /一単位単価・地域区分/);
+  assert.match(search, /公開条件を満たした現行資料/);
+  assert.match(search, /厚生労働省の告示原文/);
+  assert.match(search, /見つからない資料を知らせる/);
+  assert.doesNotMatch(
+    search,
+    /READY_FOR_PUBLICATION_REVIEW|blocking_reasons|BLOCKED_CURRENTNESS/,
+  );
+});
+
+test("public source navigation never exposes a family outside route policy", () => {
+  const services = listServices();
+  const rows = services.flatMap((service) =>
+    publicSourceFamiliesForService(service.service_id).map((family) => ({
+      service_id: service.service_id,
+      source_family: family.source_family,
+    })),
+  );
+
+  for (const row of rows) {
+    assert.equal(
+      isProgressiveRouteCell(row.service_id, row.source_family),
+      true,
+      `${row.service_id} / ${row.source_family} must remain publication-gated`,
+    );
+  }
+
+  const metrics = publicSourceNavigationMetrics();
+  assert.equal(metrics.cross_source_searchable_cells, rows.length);
+  assert.equal(
+    metrics.runtime_supported_source_families,
+    new Set(rows.map((row) => row.source_family)).size,
+  );
+  assert.equal(
+    metrics.service_pages_with_2plus_published_source_families,
+    services.filter(
+      (service) => publicSourceFamiliesForService(service.service_id).length >= 2,
+    ).length,
+  );
 });
