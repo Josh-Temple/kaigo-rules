@@ -123,6 +123,29 @@ export default function GuidePage() {
           <h2>{journey.title}</h2>
           <p>{journey.summary}</p>
 
+          {journey.subJourneys?.length ? (
+            <>
+              <h3>具体的な確認ルート</h3>
+              <div className="entry-links">
+                {journey.subJourneys.map((subJourney) => (
+                  <Link
+                    className="entry-row"
+                    href={`#${subJourney.id}`}
+                    key={subJourney.id}
+                  >
+                    <span>
+                      {subJourney.title}
+                      <small style={{ display: "block", marginTop: "4px" }}>
+                        {subJourney.summary}
+                      </small>
+                    </span>
+                    <small>確認する →</small>
+                  </Link>
+                ))}
+              </div>
+            </>
+          ) : null}
+
           <h3>まず確認すること</h3>
           <ol className="steps">
             {journey.firstChecks.map((item) => (
@@ -163,6 +186,60 @@ export default function GuidePage() {
           {journey.caution ? (
             <div className="notice">{journey.caution}</div>
           ) : null}
+
+          {journey.subJourneys?.map((subJourney) => (
+            <section
+              className="section"
+              id={subJourney.id}
+              key={subJourney.id}
+              style={{ marginTop: "40px" }}
+            >
+              <p className="eyebrow">PRACTICAL PATH</p>
+              <h3>{subJourney.title}</h3>
+              <p>{subJourney.summary}</p>
+
+              <h4>まず確認すること</h4>
+              <ol className="steps">
+                {subJourney.firstChecks.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+
+              <h4>DB内で確認する</h4>
+              <div className="entry-links">
+                {subJourney.databaseLinks.map((link) => (
+                  <Link className="entry-row" href={link.href} key={link.href}>
+                    <span>
+                      {link.label}
+                      <small style={{ display: "block", marginTop: "4px" }}>
+                        {link.detail}
+                      </small>
+                    </span>
+                    <small>開く →</small>
+                  </Link>
+                ))}
+              </div>
+
+              <h4>公式資料へ戻る</h4>
+              <ul className="source-list">
+                {subJourney.officialSourceIds.map((sourceId) => {
+                  const source = sourcesById.get(sourceId);
+                  if (!source) return null;
+                  return (
+                    <li key={sourceId}>
+                      <a href={source.url} target="_blank" rel="noreferrer">
+                        {source.title}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              {subJourney.caution ? (
+                <div className="notice">{subJourney.caution}</div>
+              ) : null}
+            </section>
+          ))}
         </section>
       ))}
 
