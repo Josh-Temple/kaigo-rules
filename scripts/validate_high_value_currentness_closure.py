@@ -115,9 +115,8 @@ def validate() -> list[str]:
             errors.append("dayservice official service identity mismatch")
         if map_row.get("multiplier_profile_id") != EXPECTED_PROFILE:
             errors.append("dayservice multiplier profile mismatch")
-        if (row.get("applicability_proof") or {}).get("source_locator") != map_row.get("source_locator").replace("（地域区分・サービス種類・割合）", " / 通所介護 / 地域区分別割合"):
-            # The canonical item-body projection carries the normalized locator checked below.
-            pass
+        if map_row.get("ingestion_status") != "INDEXED_CURRENT_MHLW_DISPLAY_NOT_SERVICE_VERIFIED":
+            errors.append("unexpected dayservice unit-price ingestion status")
 
     if not body_row:
         errors.append("dayservice item-body projection missing")
