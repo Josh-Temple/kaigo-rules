@@ -40,8 +40,11 @@ export default function ServiceContextLinks({
         ["/notices?service=dayservice", "通知DB"],
         ["/fees", "報酬DB"],
         ["/fees/guidance", "算定上の留意事項"],
-        ...(hasUnitPrice ? [["/fees/unit-price", "単価・地域区分"]] : []),
       ];
+
+  if (!dayrehab && hasUnitPrice) {
+    links.push(["/fees/unit-price", "単価・地域区分"]);
+  }
 
   return (
     <nav className="rules-filter" aria-label={`${label}のデータベース内ナビゲーション`}>
