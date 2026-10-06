@@ -1,0 +1,790 @@
+{
+  "format_version": 1,
+  "artifact_kind": "GOVERNING_STANDARDS_RESIDUAL_CURRENTNESS_CLOSURE",
+  "wave_id": "2026-10-06-relation-assurance-and-next-source-publication-worker-a",
+  "worker": "A",
+  "role": "Governing Standards Residual Currentness Closure Worker",
+  "base_main_sha": "f74456013a4a103c48a8b6674969b71c0e325631",
+  "observed_date": "2026-10-06",
+  "purpose": "Close the 17 residual Governing Standards currentness cells only where current official source identity and exact service direct scope can be independently resolved. No relation semantics, human review, publication, or route state is promoted.",
+  "starting_inventory": {
+    "ready": 22,
+    "blocked_currentness": 17,
+    "targeted_service_ids": [
+      "community-dayservice",
+      "regular-round",
+      "night-homevisit",
+      "care-management",
+      "preventive-support",
+      "dementia-dayservice",
+      "small-scale-multifunctional",
+      "dementia-group-home",
+      "community-specific-facility",
+      "community-elderly-facility",
+      "nursing-small-scale-multifunctional",
+      "elderly-welfare-facility",
+      "elderly-health-facility",
+      "care-medical-institution",
+      "preventive-dementia-dayservice",
+      "preventive-small-scale-multifunctional",
+      "preventive-dementia-group-home"
+    ]
+  },
+  "policy": {
+    "source_level_currentness_broadcast_allowed": false,
+    "service_specific_applicability_required": true,
+    "source_identity_match_required": true,
+    "source_version_scope_containment_required": true,
+    "item_body_pass_required": true,
+    "regular_preventive_inheritance_allowed": false,
+    "unresolved_incorporation_semantics_promoted": false,
+    "relation_verification_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false,
+    "stale_or_superseded_source_can_pass": false
+  },
+  "source_evidence": {
+    "community-based-standards": {
+      "canonical_source_id": "community-based-standards",
+      "law_id": "418M60000100034",
+      "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100034",
+      "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+      "version_id": "418M60000100034_20250401_506M60000100164",
+      "effective_date": "2025-04-01",
+      "verified_at": "2025-04-02T08:11:37+09:00",
+      "revision_lineage": {
+        "amendment_law_id": "506M60000100164",
+        "amendment_law_num": "令和六年厚生労働省令第百六十四号",
+        "amendment_promulgate_date": "2024-12-27",
+        "current_revision_status": "CurrentEnforced",
+        "repeal_status": "None",
+        "revision_count": 10
+      },
+      "fingerprint": {
+        "xml_sha256": "90741b00c7f04955f5359cef94c1d4c0fd4a0270cebed9d1878bce62ca4ecf55",
+        "revision_response_sha256": "6bb7c7b432867cf9aaa2ecce559d688f55f65a8f2d4f7716fed03758129d44e5"
+      },
+      "official_availability": "REQUIRED_LIVE_RECHECK",
+      "supersession_state": "CURRENT_ENFORCED_NO_REPEAL_AT_CANONICAL_OBSERVATION",
+      "canonical_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+      "independent_body_evidence": "data/shared/standards/independent-audit.json",
+      "live_freshness_verifier": "scripts/verify_shared_standards_source_freshness.py"
+    },
+    "care-management-standards": {
+      "canonical_source_id": "care-management-standards",
+      "law_id": "411M50000100038",
+      "official_source_url": "https://laws.e-gov.go.jp/law/411M50000100038",
+      "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+      "version_id": "411M50000100038_20240401_506M60000100016",
+      "effective_date": "2024-04-01",
+      "verified_at": "2024-07-01T14:35:00+09:00",
+      "revision_lineage": {
+        "amendment_law_id": "506M60000100016",
+        "amendment_law_num": "令和六年厚生労働省令第十六号",
+        "amendment_promulgate_date": "2024-01-25",
+        "current_revision_status": "CurrentEnforced",
+        "repeal_status": "None",
+        "revision_count": 9
+      },
+      "fingerprint": {
+        "xml_sha256": "f747b2b28db8cdfd810d2196e23e2d6f7f89364316d810e1f0f79c076a6f2c3b",
+        "revision_response_sha256": "cf24d4c9aee44e75e3c7bb8a6e8cb77aa19b7177ec8e6d2f4d53f970476fc46d"
+      },
+      "official_availability": "REQUIRED_LIVE_RECHECK",
+      "supersession_state": "CURRENT_ENFORCED_NO_REPEAL_AT_CANONICAL_OBSERVATION",
+      "canonical_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+      "independent_body_evidence": "data/shared/standards/independent-audit.json",
+      "live_freshness_verifier": "scripts/verify_shared_standards_source_freshness.py"
+    },
+    "preventive-support-standards": {
+      "canonical_source_id": "preventive-support-standards",
+      "law_id": "418M60000100037",
+      "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100037",
+      "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+      "version_id": "418M60000100037_20240401_506M60000100061",
+      "effective_date": "2024-04-01",
+      "verified_at": "2024-07-01T15:09:54+09:00",
+      "revision_lineage": {
+        "amendment_law_id": "506M60000100061",
+        "amendment_law_num": "令和六年厚生労働省令第六十一号",
+        "amendment_promulgate_date": "2024-03-29",
+        "current_revision_status": "CurrentEnforced",
+        "repeal_status": "None",
+        "revision_count": 6
+      },
+      "fingerprint": {
+        "xml_sha256": "3e768f9cad728774c309666bd205521be5a27255a439b649c578ae7e18232621",
+        "revision_response_sha256": "f915e94a19815170312cd6b68b7fbc922738eeb2f9a622cf511f96716d230970"
+      },
+      "official_availability": "REQUIRED_LIVE_RECHECK",
+      "supersession_state": "CURRENT_ENFORCED_NO_REPEAL_AT_CANONICAL_OBSERVATION",
+      "canonical_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+      "independent_body_evidence": "data/shared/standards/independent-audit.json",
+      "live_freshness_verifier": "scripts/verify_shared_standards_source_freshness.py"
+    },
+    "elderly-welfare-facility-standards": {
+      "canonical_source_id": "elderly-welfare-facility-standards",
+      "law_id": "411M50000100039",
+      "official_source_url": "https://laws.e-gov.go.jp/law/411M50000100039",
+      "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+      "version_id": "411M50000100039_20250401_506M60000100164",
+      "effective_date": "2025-04-01",
+      "verified_at": "2025-04-02T04:27:59+09:00",
+      "revision_lineage": {
+        "amendment_law_id": "506M60000100164",
+        "amendment_law_num": "令和六年厚生労働省令第百六十四号",
+        "amendment_promulgate_date": "2024-12-27",
+        "current_revision_status": "CurrentEnforced",
+        "repeal_status": "None",
+        "revision_count": 6
+      },
+      "fingerprint": {
+        "xml_sha256": "9cd5318322c7470363b188681d00f58549cfaaf6213aebfb5f110e2624e46bdd",
+        "revision_response_sha256": "8d79faccfad8e1db5ba8f4f252d0c97274c8bd41bf26184aced087ac42851fa7"
+      },
+      "official_availability": "REQUIRED_LIVE_RECHECK",
+      "supersession_state": "CURRENT_ENFORCED_NO_REPEAL_AT_CANONICAL_OBSERVATION",
+      "canonical_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+      "independent_body_evidence": "data/shared/standards/independent-audit.json",
+      "live_freshness_verifier": "scripts/verify_shared_standards_source_freshness.py"
+    },
+    "geriatric-health-services-facility-standards": {
+      "canonical_source_id": "geriatric-health-services-facility-standards",
+      "law_id": "411M50000100040",
+      "official_source_url": "https://laws.e-gov.go.jp/law/411M50000100040",
+      "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+      "version_id": "411M50000100040_20240401_506M60000100016",
+      "effective_date": "2024-04-01",
+      "verified_at": "2024-04-26T15:11:35+09:00",
+      "revision_lineage": {
+        "amendment_law_id": "506M60000100016",
+        "amendment_law_num": "令和六年厚生労働省令第十六号",
+        "amendment_promulgate_date": "2024-01-25",
+        "current_revision_status": "CurrentEnforced",
+        "repeal_status": "None",
+        "revision_count": 5
+      },
+      "fingerprint": {
+        "xml_sha256": "dce085ac4aae192660f7eea137a37034453c605a319b180f1ac2c25943ac60fd",
+        "revision_response_sha256": "870782b0d7d277da75cd3a83af498a2a954f5748a703c8fc19c1e014d45e5b5a"
+      },
+      "official_availability": "REQUIRED_LIVE_RECHECK",
+      "supersession_state": "CURRENT_ENFORCED_NO_REPEAL_AT_CANONICAL_OBSERVATION",
+      "canonical_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+      "independent_body_evidence": "data/shared/standards/independent-audit.json",
+      "live_freshness_verifier": "scripts/verify_shared_standards_source_freshness.py"
+    },
+    "long-term-care-medical-facility-standards": {
+      "canonical_source_id": "long-term-care-medical-facility-standards",
+      "law_id": "430M60000100005",
+      "official_source_url": "https://laws.e-gov.go.jp/law/430M60000100005",
+      "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+      "version_id": "430M60000100005_20251120_507M60000100103",
+      "effective_date": "2025-11-20",
+      "verified_at": "2025-11-20T00:55:50+09:00",
+      "revision_lineage": {
+        "amendment_law_id": "507M60000100103",
+        "amendment_law_num": "令和七年厚生労働省令第百三号",
+        "amendment_promulgate_date": "2025-10-22",
+        "current_revision_status": "CurrentEnforced",
+        "repeal_status": "None",
+        "revision_count": 7
+      },
+      "fingerprint": {
+        "xml_sha256": "f87bf66b72ddaa93ca02d649a63bedf75559608903660055910d68d1f51b061c",
+        "revision_response_sha256": "eded15d1a22ed995bd174c735e75129a5c4d8d4ada672d80c5d4cb3c796a7d89"
+      },
+      "official_availability": "REQUIRED_LIVE_RECHECK",
+      "supersession_state": "CURRENT_ENFORCED_NO_REPEAL_AT_CANONICAL_OBSERVATION",
+      "canonical_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+      "independent_body_evidence": "data/shared/standards/independent-audit.json",
+      "live_freshness_verifier": "scripts/verify_shared_standards_source_freshness.py"
+    },
+    "preventive-community-based-standards": {
+      "canonical_source_id": "preventive-community-based-standards",
+      "law_id": "418M60000100036",
+      "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100036",
+      "source_form": "OFFICIAL_VERSIONED_CURRENT_TEXT",
+      "version_id": "418M60000100036_20240401_506M60000100016",
+      "effective_date": "2024-04-01",
+      "verified_at": "2024-07-01T14:40:37+09:00",
+      "revision_lineage": {
+        "amendment_law_id": "506M60000100016",
+        "amendment_law_num": "令和六年厚生労働省令第十六号",
+        "amendment_promulgate_date": "2024-01-25",
+        "current_revision_status": "CurrentEnforced",
+        "repeal_status": "None",
+        "revision_count": 7
+      },
+      "fingerprint": {
+        "xml_sha256": "3e6634f51d46c75b724c4c0efa42681a7691d471c44b5bfc2249616b0413e851",
+        "revision_response_sha256": "d2482403696b6d41928e125f76eea6272ea0a9847e2f2ac33fd1da0fa61dce57"
+      },
+      "official_availability": "REQUIRED_LIVE_RECHECK",
+      "supersession_state": "CURRENT_ENFORCED_NO_REPEAL_AT_CANONICAL_OBSERVATION",
+      "canonical_evidence": "data/verification/shared-source-currentness-activation.json#source_families.governing_standards_ordinance",
+      "independent_body_evidence": "data/shared/standards/independent-audit.json",
+      "live_freshness_verifier": "scripts/verify_shared_standards_source_freshness.py"
+    }
+  },
+  "decisions": [
+    {
+      "service_id": "community-dayservice",
+      "service_label": "地域密着型通所介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/community-dayservice/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/community-dayservice/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "community-dayservice::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "regular-round",
+      "service_label": "定期巡回・随時対応型訪問介護看護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/regular-round/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/regular-round/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "regular-round::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "night-homevisit",
+      "service_label": "夜間対応型訪問介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/night-homevisit/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/night-homevisit/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "night-homevisit::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "care-management",
+      "service_label": "居宅介護支援",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "care-management-standards",
+      "scope_path": "data/services/care-management/governing-standards-scope.json",
+      "exact_evidence_pointer": "data/services/care-management/governing-standards-scope.json#service_variants",
+      "source_evidence_id": "care-management-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "DEDICATED_SERVICE_REGULATION_DIRECT_SCOPE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "care-management::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "preventive-support",
+      "service_label": "介護予防支援",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "preventive-support-standards",
+      "scope_path": "data/services/preventive-support/governing-standards-scope.json",
+      "exact_evidence_pointer": "data/services/preventive-support/governing-standards-scope.json#service_variants",
+      "source_evidence_id": "preventive-support-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "DEDICATED_SERVICE_REGULATION_DIRECT_SCOPE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "preventive-support::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "service_label": "認知症対応型通所介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/dementia-dayservice/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/dementia-dayservice/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "dementia-dayservice::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "service_label": "小規模多機能型居宅介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/small-scale-multifunctional/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/small-scale-multifunctional/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "small-scale-multifunctional::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "dementia-group-home",
+      "service_label": "認知症対応型共同生活介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/dementia-group-home/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/dementia-group-home/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "dementia-group-home::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "community-specific-facility",
+      "service_label": "地域密着型特定施設入居者生活介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/community-specific-facility/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/community-specific-facility/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "community-specific-facility::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "service_label": "地域密着型介護老人福祉施設入所者生活介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/community-elderly-facility/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/community-elderly-facility/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "community-elderly-facility::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "service_label": "看護小規模多機能型居宅介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "community-based-standards",
+      "scope_path": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json",
+      "exact_evidence_pointer": "data/services/nursing-small-scale-multifunctional/shared-corpus-scope.json#governing_standards_ordinance",
+      "source_evidence_id": "community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "nursing-small-scale-multifunctional::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "service_label": "介護老人福祉施設",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "elderly-welfare-facility-standards",
+      "scope_path": "data/services/elderly-welfare-facility/governing-standards-scope.json",
+      "exact_evidence_pointer": "data/services/elderly-welfare-facility/governing-standards-scope.json#service_variants",
+      "source_evidence_id": "elderly-welfare-facility-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "DEDICATED_SERVICE_REGULATION_DIRECT_SCOPE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "elderly-welfare-facility::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "service_label": "介護老人保健施設",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "geriatric-health-services-facility-standards",
+      "scope_path": "data/services/elderly-health-facility/governing-standards-scope.json",
+      "exact_evidence_pointer": "data/services/elderly-health-facility/governing-standards-scope.json#service_variants",
+      "source_evidence_id": "geriatric-health-services-facility-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "DEDICATED_SERVICE_REGULATION_DIRECT_SCOPE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "elderly-health-facility::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "care-medical-institution",
+      "service_label": "介護医療院",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "long-term-care-medical-facility-standards",
+      "scope_path": "data/services/care-medical-institution/governing-standards-scope.json",
+      "exact_evidence_pointer": "data/services/care-medical-institution/governing-standards-scope.json#service_variants",
+      "source_evidence_id": "long-term-care-medical-facility-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "DEDICATED_SERVICE_REGULATION_DIRECT_SCOPE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "care-medical-institution::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "service_label": "介護予防認知症対応型通所介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "preventive-community-based-standards",
+      "scope_path": "data/services/preventive-dementia-dayservice/standards36-scope.json",
+      "exact_evidence_pointer": "data/services/preventive-dementia-dayservice/standards36-scope.json#service_chapter_direct_scope",
+      "source_evidence_id": "preventive-community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "EXPLICIT_SERVICE_CHAPTER_DIRECT_SCOPE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "preventive-dementia-dayservice::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "service_label": "介護予防小規模多機能型居宅介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "preventive-community-based-standards",
+      "scope_path": "data/services/preventive-small-scale-multifunctional/standards36-scope.json",
+      "exact_evidence_pointer": "data/services/preventive-small-scale-multifunctional/standards36-scope.json#service_chapter_direct_scope",
+      "source_evidence_id": "preventive-community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "EXPLICIT_SERVICE_CHAPTER_DIRECT_SCOPE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "preventive-small-scale-multifunctional::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "service_label": "介護予防認知症対応型共同生活介護",
+      "source_family": "governing_standards_ordinance",
+      "canonical_source_id": "preventive-community-based-standards",
+      "scope_path": "data/services/preventive-dementia-group-home/standards36-scope.json",
+      "exact_evidence_pointer": "data/services/preventive-dementia-group-home/standards36-scope.json#service_chapter_direct_scope",
+      "source_evidence_id": "preventive-community-based-standards",
+      "starting_currentness_state": "NOT_ESTABLISHED",
+      "starting_readiness": "BLOCKED_CURRENTNESS",
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "mode": "EXPLICIT_SERVICE_CHAPTER_DIRECT_SCOPE_IN_CURRENT_EGOV_CORPUS",
+        "scope_identity_present": true,
+        "regular_preventive_inheritance_used": false,
+        "incorporation_or_read_as_semantics_promoted": false
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "decision": "PROMOTE_PASS_BOUNDED",
+      "blocker": null,
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": "preventive-dementia-group-home::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": true
+      }
+    }
+  ],
+  "summary": {
+    "targeted_cells": 17,
+    "promoted_cells": 17,
+    "deferred_cells": 0,
+    "projected_ready_increase": 17,
+    "projected_governing_standards_ready": 39
+  },
+  "integration_boundary": {
+    "generated_coverage_matrix_modified_by_worker_a": false,
+    "publication_readiness_modified_by_worker_a": false,
+    "bounded_publication_allowlist_modified_by_worker_a": false,
+    "worker_e_must_regenerate_global_generated_artifacts_after_semantic_integration": true
+  }
+}
