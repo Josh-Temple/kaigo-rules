@@ -52,3 +52,38 @@ test("home exposes the database-wide entry before service-specific content", () 
     "database-wide search must remain before service-specific entry",
   );
 });
+
+
+test("public service navigation covers every canonical service once and keeps preventive support independent", () => {
+  const navigation = JSON.parse(readText("data/public-service-navigation.json"));
+  const catalog = JSON.parse(readText("data/services/catalog.generated.json"));
+  const units = navigation.groups.flatMap((group) => group.units);
+  const serviceIds = units.flatMap((unit) => unit.service_ids);
+  const catalogIds = catalog.services.map((service) => service.service_id);
+
+  assert.equal(navigation.groups.length, 7);
+  assert.equal(units.length, 26);
+  assert.equal(serviceIds.length, 39);
+  assert.equal(new Set(serviceIds).size, 39);
+  assert.deepEqual(new Set(serviceIds), new Set(catalogIds));
+
+  const preventiveSupportUnit = units.find((unit) =>
+    unit.service_ids.includes("preventive-support")
+  );
+  assert.deepEqual(preventiveSupportUnit?.service_ids, ["preventive-support"]);
+
+  for (const unit of units.filter((item) => item.service_ids.length > 1)) {
+    assert.equal(unit.service_ids.length, 2);
+    assert.match(unit.service_ids[1], /preventive|specific-preventive/);
+  }
+});
+
+test("services page uses user-facing groups and a database fallback instead of manifest order", () => {
+  const source = readText("app/services/page.tsx");
+
+  assert.match(source, /publicServiceNavigationGroups/);
+  assert.match(source, /案内上の分類/);
+  assert.match(source, /介護予防支援は独立/);
+  assert.match(source, /DB全体から名称検索/);
+  assert.match(source, /検索結果が少ない場合も、制度資料そのものが存在しないとは限りません/);
+});

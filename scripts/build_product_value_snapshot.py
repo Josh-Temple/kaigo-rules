@@ -709,6 +709,41 @@ def build_snapshot() -> dict[str, Any]:
         for item in published_cells
     )
 
+    service_navigation = load_json("data/public-service-navigation.json")
+    navigation_groups = service_navigation.get("groups", [])
+    navigation_units = [
+        unit
+        for group in navigation_groups
+        for unit in group.get("units", [])
+    ]
+    navigation_service_ids = [
+        service_id
+        for unit in navigation_units
+        for service_id in unit.get("service_ids", [])
+    ]
+    catalog_service_ids = [
+        item["service_id"] for item in service_manifest["services"]
+    ]
+    if (
+        len(navigation_service_ids) != len(set(navigation_service_ids))
+        or set(navigation_service_ids) != set(catalog_service_ids)
+    ):
+        raise RuntimeError(
+            "public service navigation must cover every canonical service exactly once"
+        )
+    preventive_support_units = [
+        unit
+        for unit in navigation_units
+        if "preventive-support" in unit.get("service_ids", [])
+    ]
+    if (
+        len(preventive_support_units) != 1
+        or preventive_support_units[0].get("service_ids") != ["preventive-support"]
+    ):
+        raise RuntimeError(
+            "preventive-support must remain an independent public navigation unit"
+        )
+
     public_database_routes = [
         route for route, path in PUBLIC_DATABASE_ROUTE_FILES.items() if path.exists()
     ]
@@ -745,6 +780,9 @@ def build_snapshot() -> dict[str, Any]:
         "public_database_routes": public_database_routes,
         "published_service_source_family_cells": len(published_cells),
         "published_publication_units": published_publication_units,
+        "service_navigation_groups": len(navigation_groups),
+        "service_navigation_units": len(navigation_units),
+        "service_navigation_service_entries": len(navigation_service_ids),
         "guide_task_journeys": guide_task_journeys,
         "guide_task_routes": guide_task_routes,
         "practical_question_primary_source_journeys": questions_with_evidence,

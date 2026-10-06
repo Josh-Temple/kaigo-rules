@@ -180,3 +180,28 @@ test("legacy cross-source search keeps its day-service scope contract", () => {
   assert.match(legacy, /getDefaultService/);
   assert.match(legacy, /filterRecordsForService/);
 });
+
+
+test("public database search ranks primary-source text above metadata-only matches", () => {
+  const records = [
+    { id: "metadata", body: "", metadata: "業務継続計画" },
+    { id: "body", body: "業務継続計画を策定する。", metadata: "" },
+  ];
+  const ranked = rankDatabaseSearch(records, "BCP", (record) => [
+    { value: record.body, weight: 10 },
+    { value: record.metadata, weight: 2 },
+  ]);
+  assert.deepEqual(ranked.map((record) => record.id), ["body", "metadata"]);
+});
+
+test("public database search groups service filters and treats no-match as a partial public state", () => {
+  const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
+
+  assert.match(search, /publicServiceNavigationGroups/);
+  assert.match(search, /一次資料の本文・質問文への直接一致を優先/);
+  assert.match(search, /未確認の制度間関係や内部の確認スコアは順位付けに使いません/);
+  assert.match(search, /現在公開している範囲では一致する資料が見つかりませんでした/);
+  assert.match(search, /資料そのものが存在しないことを意味しません/);
+  assert.match(search, /実務ガイドから探す/);
+  assert.doesNotMatch(search, /READY_FOR_PUBLICATION_REVIEW|blocking_reasons/);
+});

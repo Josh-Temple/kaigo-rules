@@ -90,6 +90,9 @@ class ProductValueMetricSpecTest(unittest.TestCase):
                 "public_databases",
                 "published_service_source_family_cells",
                 "published_publication_units",
+                "service_navigation_groups",
+                "service_navigation_units",
+                "service_navigation_service_entries",
                 "guide_task_journeys",
                 "practical_question_primary_source_journeys",
                 "major_pages_total",
@@ -99,6 +102,8 @@ class ProductValueMetricSpecTest(unittest.TestCase):
         )
         guards = " ".join(metric["guards"])
         self.assertIn("explicit bounded publication allowlist", guards)
+        self.assertIn("every canonical service to appear exactly once", guards)
+        self.assertIn("介護予防支援 remains an independent navigation unit", guards)
         self.assertIn("No person-identifying analytics", guards)
 
     def test_relation_metric_uses_registry_remaining_count(self):
