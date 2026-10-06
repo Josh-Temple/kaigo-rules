@@ -4,7 +4,7 @@
 
 - Pilot items: **8**
 - Direct primary text on both sides: **4**
-- Remaining evidence-pack items outside this pilot: **49**
+- Remaining evidence-pack items outside this pilot: **50**
 - Decision ledger: `data/relation-human-review-decisions.json`
 
 A valid human decision must record reviewer identity, decision, rationale, review timestamp, the exact evidence fingerprint reviewed, and `reviewer_attestation = HUMAN_REVIEW_COMPLETED`. If the evidence fingerprint changes later, the old decision is not current.
@@ -47,7 +47,7 @@ A valid human decision must record reviewer identity, decision, rationale, revie
 
 **Evidence fingerprint:** `f3984f602718ad82cd16fbb6769c692654a9a19b32196becc9896626ab7074bf`
 
-## 2. REL-012
+## 2. REL-013
 
 **Status:** `READY_FOR_HUMAN_REVIEW`
 
@@ -123,7 +123,7 @@ A valid human decision must record reviewer identity, decision, rationale, revie
 
 **Evidence fingerprint:** `096aecc99c772aea9cb2b58f1e1e6fa007d02ebdeb5d5cdf3428d311fe4dc9d2`
 
-## 4. REL-013
+## 4. REL-014
 
 **Status:** `READY_FOR_HUMAN_REVIEW`
 
@@ -199,7 +199,7 @@ A valid human decision must record reviewer identity, decision, rationale, revie
 
 **Evidence fingerprint:** `a74d4b8731bd042477e4a7c1857d2dadb8607833d42c9ff28d5f6622f8d48166`
 
-## 6. REL-018
+## 6. REL-019
 
 **Status:** `READY_FOR_HUMAN_REVIEW`
 
@@ -275,7 +275,7 @@ A valid human decision must record reviewer identity, decision, rationale, revie
 
 **Evidence fingerprint:** `a116fc01dd02661d0f0fa229c39d6487e882bde8e1dd952a86ffdafc2c1fa70c`
 
-## 8. REL-020
+## 8. REL-021
 
 **Status:** `READY_FOR_HUMAN_REVIEW`
 
