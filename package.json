@@ -154,7 +154,8 @@
     "build:bounded-publication-allowlist": "python scripts/build_bounded_publication_allowlist.py",
     "check:bounded-publication-allowlist": "python scripts/build_bounded_publication_allowlist.py --check",
     "validate:bounded-publication-allowlist": "python scripts/validate_bounded_publication_allowlist.py",
-    "validate:high-value-currentness": "python scripts/validate_high_value_currentness_closure.py"
+    "validate:high-value-currentness": "python scripts/validate_high_value_currentness_closure.py",
+    "verify:unit-price-currentness": "python scripts/verify_unit_price_currentness.py"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
