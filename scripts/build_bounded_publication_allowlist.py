@@ -22,6 +22,9 @@ HIGH_VALUE_EXPANSION_PATH = ROOT / "data/verification/high-value-currentness-exp
 UNIT_PRICE_META_PATH = ROOT / "data/unit-price-dayservice-meta.json"
 UNIT_PRICE_MAPPINGS_PATH = ROOT / "data/unit-price-service-multipliers.json"
 UNIT_PRICE_ITEM_BODY_PATH = ROOT / "data/unit-price-item-body-assurance.json"
+DELEGATED_MANIFEST_PATH = ROOT / "data/shared/remuneration-delegated/manifest.json"
+DELEGATED_APPLICABILITY_PATH = ROOT / "data/shared/remuneration-delegated/service-applicability.json"
+DELEGATED_ITEM_BODY_PATH = ROOT / "data/shared/remuneration-delegated/item-body-verification.json"
 OUTPUT_PATH = ROOT / "data/bounded-publication-allowlist.json"
 
 SAFE_FIELDS = [
@@ -48,11 +51,13 @@ REQUIRED_PUBLICATION_UNITS = {
 RUNTIME_SUPPORTED_SOURCE_FAMILIES = {
     "governing_standards_ordinance",
     "unit_price_regional_classification",
+    "delegated_remuneration_criteria",
 }
 RUNTIME_SUPPORTED_SOURCE_IDENTITIES = {
     "ordinance37",
     "preventive-services-standards",
     "mhlw-unit-price-current",
+    "delegated-remuneration-national",
 }
 MAX_PUBLICATION_CELLS = 64
 
@@ -71,10 +76,47 @@ def cell_key(row: dict[str, Any]) -> tuple[str | None, str | None]:
     return row.get("service_id"), row.get("source_family")
 
 
+def delegated_currentness_path() -> Path | None:
+    """Discover at most one Worker-B currentness artifact for the delegated family.
+
+    Worker D does not create currentness decisions.  This hook stays empty on
+    main until Worker B is integrated, then binds only an artifact that
+    explicitly carries delegated_remuneration_criteria promotions.  Multiple
+    competing artifacts fail closed instead of choosing one implicitly.
+    """
+    verification_dir = ROOT / "data" / "verification"
+    matches: list[Path] = []
+    if not verification_dir.exists():
+        return None
+    for path in sorted(verification_dir.glob("*delegated*currentness*.json")):
+        try:
+            payload = load_json(path)
+        except (OSError, json.JSONDecodeError):
+            continue
+        if any(
+            row.get("source_family") == "delegated_remuneration_criteria"
+            for row in payload.get("promotions", [])
+        ):
+            matches.append(path)
+    if len(matches) > 1:
+        relative = [
+            str(path.relative_to(ROOT)).replace("\\", "/")
+            for path in matches
+        ]
+        raise ValueError(
+            "multiple delegated remuneration currentness artifacts: "
+            + ", ".join(relative)
+        )
+    return matches[0] if matches else None
+
+
 def currentness_paths() -> list[Path]:
     paths = [GOVERNING_CURRENTNESS_PATH, HIGH_VALUE_CURRENTNESS_PATH]
     if HIGH_VALUE_EXPANSION_PATH.exists():
         paths.append(HIGH_VALUE_EXPANSION_PATH)
+    delegated_path = delegated_currentness_path()
+    if delegated_path:
+        paths.append(delegated_path)
     return paths
 
 
@@ -195,6 +237,44 @@ def unit_price_service_contract_supported(
     )
 
 
+def delegated_service_contract_supported(service_id: str) -> bool:
+    manifest = load_json(DELEGATED_MANIFEST_PATH)
+    applicability = load_json(DELEGATED_APPLICABILITY_PATH)
+    item_body = load_json(DELEGATED_ITEM_BODY_PATH)
+
+    if (
+        manifest.get("corpus_id") != "delegated-remuneration-national"
+        or manifest.get("source_family") != "delegated_remuneration_criteria"
+        or (manifest.get("assurance") or {}).get("item_body_verification") != "PASS"
+        or (item_body.get("assurance_boundaries") or {}).get(
+            "item_body_verification"
+        )
+        != "PASS"
+    ):
+        return False
+
+    service = next(
+        (
+            row
+            for row in applicability.get("services", [])
+            if row.get("service_id") == service_id
+        ),
+        None,
+    )
+    if not service:
+        return False
+
+    mapped_node_ids = [str(value) for value in service.get("mapped_node_ids", [])]
+    return (
+        service.get("scope_state") == "SCOPE_DEFINED"
+        and service.get("applicability_state") == "MAPPED"
+        and service.get("ingestion_state") == "INGESTED"
+        and (service.get("assurance") or {}).get("item_body_verification") == "PASS"
+        and bool(mapped_node_ids)
+        and service.get("mapped_node_count") == len(mapped_node_ids)
+    )
+
+
 def source_contract_supported(row: dict[str, Any]) -> bool:
     normalized = normalize_runtime_promotion(row)
     source_family = normalized.get("source_family")
@@ -249,6 +329,14 @@ def source_contract_supported(row: dict[str, Any]) -> bool:
             and unit_price_service_contract_supported(service_id, source, proof)
         )
 
+    if canonical_source_id == "delegated-remuneration-national":
+        service_id = str(normalized.get("service_id") or "")
+        return (
+            source_family == "delegated_remuneration_criteria"
+            and bool(source.get("version_id"))
+            and delegated_service_contract_supported(service_id)
+        )
+
     return False
 
 
@@ -300,9 +388,14 @@ def build() -> dict[str, Any]:
             continue
         publishable.append(row)
 
+    family_order = {
+        "governing_standards_ordinance": 0,
+        "unit_price_regional_classification": 1,
+        "delegated_remuneration_criteria": 2,
+    }
     publishable.sort(
         key=lambda row: (
-            0 if row.get("source_family") == "governing_standards_ordinance" else 1,
+            family_order.get(str(row.get("source_family") or ""), 99),
             str(row.get("service_id") or ""),
             str(row.get("source_family") or ""),
         )
