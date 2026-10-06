@@ -10,7 +10,7 @@ import noticeNodesData from "../../../data/notice-current-skeleton.json";
 import feeNodesData from "../../../data/remuneration-current-skeleton.json";
 import questionsData from "../../../data/questions.json";
 import careActNodesData from "../../../data/care-insurance-act-nodes.json";
-import { incomingEdges, ordinanceArticleId } from "../../../lib/knowledge-relations";
+import { incomingEdges } from "../../../lib/knowledge-relations";
 import { listServices } from "../../../lib/service-catalog";
 import {
   PROGRESSIVE_SOURCE_FAMILY,
@@ -292,17 +292,15 @@ export default async function RuleArticlePage({
     }))
     .filter((item) => item.node);
 
-  const relatedQuestions =
-    dayserviceContext && dayserviceApplicable
-      ? questions.filter(
-          (question) =>
-            question.status === "verified" &&
-            (question.rule_node_ids || []).some(
-              (nodeId: string) =>
-                ordinanceArticleId(nodeId) === articleNode.id,
-            ),
-        )
-      : [];
+  const relatedQuestions = relationEdges
+    .filter((edge) => edge.source_id.startsWith("question:"))
+    .map((edge) => ({
+      edge,
+      question: questions.find(
+        (item) => `question:${item.slug}` === edge.source_id,
+      ),
+    }))
+    .filter((item) => item.question);
 
   const relatedLaw = relationEdges
     .filter((edge) => edge.source_id.startsWith("careact.article."))
@@ -532,7 +530,7 @@ export default async function RuleArticlePage({
         <section className="section">
           <h2>この条文につながる情報</h2>
           <p className="meta">
-            制度間の参照関係は独立検証済みのものだけを表示します。実務FAQはFAQ根拠対応を確認済みの案内リンクです。サービスを通所リハで絞り込んだ場合は表示しません。
+            独立検証済みの参照関係だけを表示しています。サービスを通所リハで絞り込んだ場合は表示しません。
           </p>
           <div className="knowledge-link-list">
             {relatedLaw.map(({ edge, node }: any) => (
@@ -574,15 +572,17 @@ export default async function RuleArticlePage({
                 </span>
               </Link>
             ))}
-            {relatedQuestions.map((question: any) => (
+            {relatedQuestions.map(({ edge, question }: any) => (
               <Link
                 className="knowledge-link-row"
                 href={`/questions/${question.slug}`}
-                key={`question-${question.slug}`}
+                key={`question-${edge.source_id}-${edge.relation}`}
               >
                 <span className="knowledge-kind">実務FAQ</span>
                 <span><strong>{question.title}</strong><small>{question.category}</small></span>
-                <span className="knowledge-status">FAQ根拠確認済み</span>
+                <span className="knowledge-status">
+                  {question.status === "verified" ? "FAQ根拠確認済み" : "根拠確認中"}
+                </span>
               </Link>
             ))}
           </div>
