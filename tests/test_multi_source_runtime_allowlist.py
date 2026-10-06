@@ -232,8 +232,14 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             "promotion_applied": True,
         }
 
-        self.assertFalse(builder.DELEGATED_CURRENTNESS_CONTRACT_PATH.exists())
-        self.assertFalse(builder.source_contract_supported(promotion))
+        original_path = builder.DELEGATED_CURRENTNESS_CONTRACT_PATH
+        with tempfile.TemporaryDirectory() as missing_tmpdir:
+            builder.DELEGATED_CURRENTNESS_CONTRACT_PATH = (
+                Path(missing_tmpdir) / "missing-currentness-contract.json"
+            )
+            self.assertFalse(builder.source_contract_supported(promotion))
+        builder.DELEGATED_CURRENTNESS_CONTRACT_PATH = original_path
+
         self.assertTrue(
             builder.delegated_service_contract_supported("homevisit")
         )
