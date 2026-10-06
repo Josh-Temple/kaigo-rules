@@ -90,6 +90,7 @@ jobs:
                   item["service_id"]
                   for item in bounded.get("promotions", [])
                   if item.get("source_family") == "governing_standards_ordinance"
+                  and item.get("service_id") in targets
                   and item.get("promotion_applied") is True
               }
           actual_currentness_pass = {
