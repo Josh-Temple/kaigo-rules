@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - "scripts/verify_unit_price_independent.py"
+      - "scripts/verify_unit_price_currentness.py"
       - "scripts/import_unit_price.py"
       - "data/unit-price-dayservice.json"
       - "data/unit-price-dayservice-meta.json"
@@ -15,10 +16,13 @@ on:
       - ".github/workflows/verify-unit-price-independent.yml"
       - "data/unit-price-independent-audit.json"
       - "scripts/validate_unit_price_independent_audit.py"
+      - "data/verification/high-value-currentness-closure-worker-b.json"
+      - "scripts/validate_high_value_currentness_closure.py"
   push:
     branches: [main]
     paths:
       - "scripts/verify_unit_price_independent.py"
+      - "scripts/verify_unit_price_currentness.py"
       - "scripts/import_unit_price.py"
       - "data/unit-price-dayservice.json"
       - "data/unit-price-dayservice-meta.json"
@@ -27,6 +31,8 @@ on:
       - ".github/workflows/verify-unit-price-independent.yml"
       - "data/unit-price-independent-audit.json"
       - "scripts/validate_unit_price_independent_audit.py"
+      - "data/verification/high-value-currentness-closure-worker-b.json"
+      - "scripts/validate_high_value_currentness_closure.py"
 
 permissions:
   contents: read
@@ -50,13 +56,26 @@ jobs:
           exit 0
       - name: Validate pinned audit provenance
         run: python scripts/validate_unit_price_independent_audit.py
+      - name: Verify bounded currentness on official MHLW display
+        id: currentness
+        shell: bash
+        run: |
+          set +e
+          python scripts/verify_unit_price_currentness.py --report unit-price-currentness-verification.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Validate bounded high-value currentness closure
+        run: python scripts/validate_high_value_currentness_closure.py
       - name: Upload verification report
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: unit-price-independent-verification
-          path: unit-price-independent-verification.json
+          name: unit-price-live-verification
+          path: |
+            unit-price-independent-verification.json
+            unit-price-currentness-verification.json
           if-no-files-found: warn
       - name: Fail on verification differences
-        if: steps.verify.outputs.exit_code != '0'
+        if: steps.verify.outputs.exit_code != '0' || steps.currentness.outputs.exit_code != '0'
         run: exit 1

@@ -1,0 +1,191 @@
+{
+  "format_version": 1,
+  "artifact_kind": "CANONICAL_HIGH_VALUE_CURRENTNESS_CLOSURE_DECISION",
+  "wave_id": "2026-10-06-public-coverage-expansion-practical-navigation-worker-b",
+  "worker": "B",
+  "role": "High-Value Database Coverage Expansion Worker",
+  "base_main_sha": "5f2a61b9288d99ebcccb7dcb3f0f11125abc4dad",
+  "observed_date": "2026-10-06",
+  "purpose": "Create a bounded, high-value publication-readiness candidate outside Governing Standards without broadcasting source-level currentness or changing relation, human-review, publication, or route state.",
+  "policy": {
+    "blanket_family_promotion_allowed": false,
+    "exact_service_source_family_allowlist_required": true,
+    "live_official_source_reverification_required": true,
+    "item_body_used_as_currentness_shortcut": false,
+    "relation_status_promoted": false,
+    "human_review_promoted": false,
+    "publication_promoted": false,
+    "route_exposure_promoted": false,
+    "national_qa_compilation_freshness_never_projects_to_item_currentness": true
+  },
+  "target_selection": [
+    {
+      "source_family": "unit_price_regional_classification",
+      "disposition": "BOUNDED_PROMOTION",
+      "selected_service_ids": [
+        "dayservice"
+      ],
+      "rationale": "The day-service unit-price slice has a direct official-service row, PASS item-body assurance, an independent full reparse audit, stable official MHLW consolidated-display URLs, and an existing live verifier. Promotion is limited to the exact dayservice cell."
+    },
+    {
+      "source_family": "national_qa",
+      "disposition": "HOLD",
+      "blocker": "The official compilation workbook is fresh and reproducible, but compilation freshness does not establish the currentness or successor status of each historical Q&A item."
+    },
+    {
+      "source_family": "delegated_remuneration_criteria",
+      "disposition": "HOLD",
+      "blocker": "Currentness remains partial: successor/latestness is not independently closed and one source remains base_text_replay_pending."
+    },
+    {
+      "source_family": "remuneration_notification",
+      "disposition": "HOLD",
+      "blocker": "Most service cells still lack PASS item-body assurance and the canonical source inventory explicitly leaves successor/latestness open."
+    },
+    {
+      "source_family": "standards_interpretation_notice",
+      "disposition": "HOLD",
+      "blocker": "Only a subset has PASS item-body assurance and currentness is not established for safe bounded publication."
+    },
+    {
+      "source_family": "fee_calculation_guidance",
+      "disposition": "HOLD",
+      "blocker": "Most services remain PARTIAL ingestion or lack PASS item-body assurance."
+    },
+    {
+      "source_family": "other_national_manuals_forms",
+      "disposition": "HOLD",
+      "blocker": "Ingestion and item-body assurance remain PARTIAL and source-level version/successor gaps remain open."
+    },
+    {
+      "source_family": "care_insurance_act",
+      "disposition": "HOLD",
+      "blocker": "The current official Act source is established, but service-level applicability is not independently verified for bounded promotion."
+    }
+  ],
+  "promotions": [
+    {
+      "service_id": "dayservice",
+      "source_family": "unit_price_regional_classification",
+      "source_identity": {
+        "canonical_source_id": "mhlw-unit-price-current",
+        "title": "厚生労働大臣が定める一単位の単価",
+        "notice_identity": "平成27年厚生労働省告示第93号",
+        "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0",
+        "official_page_urls": [
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=1",
+          "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4582&dataType=0&pageNo=2"
+        ],
+        "version_id": "MHLW_CONSOLIDATED_DISPLAY_OBSERVED_2026-10-06",
+        "effective_date": "2024-04-01",
+        "source_form": "OFFICIAL_CURRENT_CONSOLIDATED_DISPLAY",
+        "currentness_class": "CURRENT_OFFICIAL_CONSOLIDATED",
+        "source_identity_complete_for_bounded_scope": true,
+        "expected_page_sha256": [
+          "6aab4a9fdce647a6415bca5d56fc482d648b4b711e822f0468f7ea13502e3395",
+          "815f61dbc573e2e7319bb86e7da9cd19703b0670c85f07ec6b38af9768528e88"
+        ],
+        "current_official_display_observed_on": "2026-10-06",
+        "effective_reference_date_marker": "令和六年四月一日"
+      },
+      "applicability_proof": {
+        "state": "PASS_DIRECT_SERVICE_SCOPE",
+        "official_service_name": "通所介護",
+        "multiplier_profile_id": "group-1090",
+        "source_locator": "第一号 表 / 通所介護 / 地域区分別割合",
+        "mapped_item_count": 8,
+        "evidence": [
+          "data/unit-price-service-multipliers.json#dayservice",
+          "data/unit-price-item-body-assurance.json#dayservice",
+          "data/unit-price-independent-audit.json"
+        ]
+      },
+      "source_version_contains_scope": true,
+      "ingestion_state": "INGESTED",
+      "item_body_state": "PASS",
+      "prior_currentness_state": "PARTIAL",
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "dayservice::unit_price_regional_classification",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "currentness_contract": {
+        "live_source_reverification_required": true,
+        "verifier": "scripts/verify_unit_price_currentness.py",
+        "workflow": ".github/workflows/verify-unit-price-independent.yml",
+        "success_condition": "The official MHLW current display must expose the expected notice/service/effective-date identity and the independent live reparse must remain byte/fact equivalent to the pinned canonical day-service unit-price and regional-assignment data.",
+        "evidence": [
+          "data/unit-price-dayservice-meta.json",
+          "data/unit-price-region-assignments-meta.json",
+          "data/unit-price-independent-audit.json",
+          "scripts/verify_unit_price_independent.py",
+          "scripts/verify_unit_price_currentness.py",
+          ".github/workflows/verify-unit-price-independent.yml"
+        ]
+      },
+      "publication_unit_scope": {
+        "candidate_unit_types": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ],
+        "excluded_unit_types": [
+          "CROSS_LAYER_RELATION_LINK",
+          "INTERPRETIVE_RELATION_EXPLANATION"
+        ],
+        "relation_requirement_for_candidates": "NOT_REQUIRED",
+        "human_review_requirement_for_candidates": "NOT_REQUIRED"
+      },
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "AVAILABLE",
+        "route_exposure": "AVAILABLE"
+      }
+    }
+  ],
+  "runtime_adapter_requirement": {
+    "source_family": "unit_price_regional_classification",
+    "required_source_contract": "Exact canonical source identity plus successful live MHLW consolidated-display reparse and exact dayservice applicability mapping.",
+    "safe_field_set": [
+      "service_id",
+      "service_label",
+      "source_family",
+      "source_family_label",
+      "source_text",
+      "item_body",
+      "source_title",
+      "source_url",
+      "source_locator",
+      "source_version",
+      "source_fingerprint",
+      "observed_at",
+      "currentness_state",
+      "effective_date",
+      "currentness_evidence",
+      "applicability_state",
+      "applicability_evidence"
+    ],
+    "applicability_contract": "APPLIES in data/unit-price-service-multipliers.json, matching PASS service projection in data/unit-price-item-body-assurance.json, and live verifier PASS.",
+    "blocker": "Worker B does not implement runtime publication. Worker E may connect this READY candidate only if the shared runtime publication policy supports this source family with the same fail-closed contract."
+  },
+  "integration_boundary": {
+    "generated_coverage_matrix_modified_by_worker_b": false,
+    "publication_requirement_scoping_modified_by_worker_b": false,
+    "publication_readiness_modified_by_worker_b": false,
+    "bounded_publication_allowlist_modified_by_worker_b": false,
+    "worker_e_must_regenerate_global_generated_artifacts_after_semantic_integration": true
+  },
+  "safety": {
+    "promotions_are_exact_identity_allowlisted": true,
+    "human_review_not_faked": true,
+    "relation_verification_not_faked": true,
+    "source_level_currentness_not_blanket_projected": true,
+    "national_qa_not_promoted_from_compilation_freshness": true,
+    "unsupported_families_fail_closed": true
+  }
+}
