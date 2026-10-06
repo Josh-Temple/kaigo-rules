@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build bounded delegated-remuneration currentness decisions.
+"""Build delegated-remuneration residual currentness decisions.
 
-The builder is intentionally fail-closed. Source-level currentness is reusable,
-but service eligibility is recomputed from each explicit canonical mapping.
+Source-level currentness is reusable only after exact source identity closure.
+Service eligibility is always recomputed from the explicit canonical mapping.
 """
 from __future__ import annotations
 
@@ -20,6 +20,27 @@ PREFIX_TO_SOURCE = {
     "notice95": "mhlw-fee-criteria95-current",
     "notice96": "mhlw-fee-facility-criteria96-current",
 }
+
+BASE_MAIN_SHA = "29c5529be51a1211e060acd5911a1122aa0eaf0e"
+OBSERVED_DATE = "2026-10-07"
+PRIOR_PROMOTED_SERVICE_IDS = set([
+    "homevisit",
+    "homebath",
+    "homenursing",
+    "homerehab",
+    "homecaremanagement",
+    "regular-round",
+    "night-homevisit",
+    "care-management",
+    "preventive-support",
+    "welfare-equipment-rental",
+    "preventive-homebath",
+    "preventive-homenursing",
+    "preventive-homerehab",
+    "preventive-homecaremanagement",
+    "preventive-welfare-equipment-rental"
+])
+STARTING_RESIDUAL_SERVICE_IDS = set()
 
 
 def load(path: Path) -> dict:
@@ -43,8 +64,16 @@ def build() -> dict:
         for row in contract.get("source_contracts", [])
     }
 
+    mapped_ids = {
+        row["service_id"]
+        for row in applicability.get("services", [])
+        if row.get("applicability_state") == "MAPPED"
+    }
+    starting_residual = mapped_ids - PRIOR_PROMOTED_SERVICE_IDS
+
     promotions: list[dict] = []
     holds: list[dict] = []
+    residual_decisions: list[dict] = []
 
     for row in applicability.get("services", []):
         service_id = row["service_id"]
@@ -62,43 +91,41 @@ def build() -> dict:
             })
             continue
 
+        blocker = None
+        blocked: list[str] = []
         if row.get("applicability_state") != "MAPPED" or not node_ids:
-            holds.append({
+            blocker = "No explicit canonical service applicability mapping."
+        elif item_state != "PASS":
+            blocker = f"Item-body assurance is {item_state}, not PASS."
+        else:
+            blocked = [
+                source_id for source_id in sources
+                if not (source_contracts.get(source_id) or {}).get("promotion_eligible")
+                or (source_contracts.get(source_id) or {}).get("currentness_state") != "PASS"
+            ]
+            if blocked:
+                blocker = "At least one mapped canonical source is not currentness-closed under the bounded source contract."
+
+        if blocker:
+            hold = {
                 "service_id": service_id,
                 "source_family": "delegated_remuneration_criteria",
                 "decision": "DEFER",
-                "blocker": "No explicit canonical service applicability mapping.",
+                "blocker": blocker,
                 "mapped_source_ids": sources,
-            })
+            }
+            if blocked:
+                hold["blocked_source_ids"] = blocked
+            holds.append(hold)
+            if service_id in starting_residual:
+                residual_decisions.append({
+                    **hold,
+                    "starting_state": "BLOCKED_CURRENTNESS",
+                })
             continue
 
-        if item_state != "PASS":
-            holds.append({
-                "service_id": service_id,
-                "source_family": "delegated_remuneration_criteria",
-                "decision": "DEFER",
-                "blocker": f"Item-body assurance is {item_state}, not PASS.",
-                "mapped_source_ids": sources,
-            })
-            continue
-
-        blocked = [
-            source_id for source_id in sources
-            if not (source_contracts.get(source_id) or {}).get("promotion_eligible")
-            or (source_contracts.get(source_id) or {}).get("currentness_state") != "PASS"
-        ]
-        if blocked:
-            holds.append({
-                "service_id": service_id,
-                "source_family": "delegated_remuneration_criteria",
-                "decision": "DEFER",
-                "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-                "blocked_source_ids": blocked,
-                "mapped_source_ids": sources,
-            })
-            continue
-
-        promotions.append({
+        newly_promoted = service_id not in PRIOR_PROMOTED_SERVICE_IDS
+        promotion = {
             "service_id": service_id,
             "source_family": "delegated_remuneration_criteria",
             "mapped_node_count": len(node_ids),
@@ -119,7 +146,13 @@ def build() -> dict:
                 for source_id in sources
             ],
             "source_identity_matches_item_body_source": True,
-            "prior_currentness_state": "NOT_ESTABLISHED",
+            "prior_currentness_state": "NOT_ESTABLISHED" if newly_promoted else "PASS",
+            "promotion_origin": (
+                "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE"
+                if newly_promoted
+                else "PRESERVED_PRIOR_READY_CURRENTNESS"
+            ),
+            "newly_promoted": newly_promoted,
             "projection_gate": {
                 "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
                 "allowed": True,
@@ -134,7 +167,26 @@ def build() -> dict:
                 "publication": "BLOCKED",
                 "route_exposure": "BLOCKED",
             },
-        })
+        }
+        promotions.append(promotion)
+
+        if service_id in starting_residual:
+            residual_decisions.append({
+                "service_id": service_id,
+                "source_family": "delegated_remuneration_criteria",
+                "starting_state": "BLOCKED_CURRENTNESS",
+                "decision": "PROMOTE_CURRENTNESS",
+                "mapped_source_ids": sources,
+                "currentness_decision": "PASS",
+                "blocker": None,
+                "evidence": [
+                    f"data/shared/remuneration-delegated/service-applicability.json#{service_id}",
+                    *[
+                        f"data/shared/remuneration-delegated/currentness-source-contract.json#{source_id}"
+                        for source_id in sources
+                    ],
+                ],
+            })
 
     applicable_count = sum(
         1 for row in applicability.get("services", [])
@@ -144,28 +196,44 @@ def build() -> dict:
         1 for row in applicability.get("services", [])
         if row.get("applicability_state") == "NOT_APPLICABLE"
     )
+    newly_promoted_count = sum(1 for row in promotions if row["newly_promoted"])
+    deferred_count = sum(1 for row in holds if row["decision"] == "DEFER")
+    notice27 = source_contracts.get("mhlw-fee-notice27-base") or {}
 
     return {
-        "format_version": 1,
-        "artifact_kind": "DELEGATED_REMUNERATION_BOUNDED_CURRENTNESS_DECISIONS",
-        "wave_id": "2026-10-06-relation-assurance-and-next-source-publication",
+        "format_version": 2,
+        "artifact_kind": "DELEGATED_REMUNERATION_RESIDUAL_CURRENTNESS_DECISIONS",
+        "wave_id": "2026-10-07-ready-publication-completion-and-currentness-expansion",
         "worker": "B",
-        "role": "Delegated Remuneration Currentness & Publication Candidate Worker",
-        "base_main_sha": "f74456013a4a103c48a8b6674969b71c0e325631",
-        "observed_date": "2026-10-06",
+        "role": "Delegated Remuneration Residual Currentness Closure Worker",
+        "base_main_sha": BASE_MAIN_SHA,
+        "observed_date": OBSERVED_DATE,
         "source_contract": "data/shared/remuneration-delegated/currentness-source-contract.json",
-        "purpose": "Promote currentness only for delegated-remuneration cells whose explicit service mapping references exclusively currentness-closed official source identities.",
+        "notice27_currentness_evidence": "data/shared/remuneration-delegated/notice27-currentness-evidence.json",
+        "purpose": "Close the shared Notice 27 currentness blocker first, then preserve or promote only explicitly mapped delegated-remuneration service cells whose every mapped source identity is currentness-closed.",
         "summary": {
             "applicable_cells": applicable_count,
             "not_applicable_cells": not_applicable_count,
-            "promoted_cells": len(promotions),
-            "deferred_applicable_cells": sum(1 for row in holds if row["decision"] == "DEFER"),
-            "projected_ready_increase": len(promotions),
-            "projected_ready_increase_basis": "The 37 applicable delegated-remuneration cells are currently primary-blocked on currentness; this artifact removes that blocker for the promoted subset only. Final READY remains an integrator-generated projection.",
+            "starting_ready_cells": len(PRIOR_PROMOTED_SERVICE_IDS),
+            "starting_deferred_applicable_cells": len(starting_residual),
+            "currentness_pass_cells": len(promotions),
+            "newly_promoted_cells": newly_promoted_count,
+            "deferred_applicable_cells": deferred_count,
+            "projected_ready_increase": newly_promoted_count,
+            "projected_ready_count_after_integration": len(promotions),
+            "projected_ready_increase_basis": "Only the 22 cells that were BLOCKED_CURRENTNESS on the starting main are counted as READY increase; the existing 15 READY cells are preserved, not recounted.",
+        },
+        "source_level_closure": {
+            "canonical_source_id": "mhlw-fee-notice27-base",
+            "starting_state": "BLOCKED",
+            "final_state": notice27.get("currentness_state"),
+            "promotion_eligible": notice27.get("promotion_eligible"),
+            "evidence": "data/shared/remuneration-delegated/notice27-currentness-evidence.json",
         },
         "source_level_evidence_reused": [
             "data/shared/remuneration-delegated/item-body-verification.json",
             "data/shared/remuneration-delegated/currentness-source-contract.json",
+            "data/shared/remuneration-delegated/notice27-currentness-evidence.json",
         ],
         "policy": {
             "no_source_family_broadcast": True,
@@ -174,7 +242,10 @@ def build() -> dict:
             "all_mapped_sources_must_be_currentness_closed": True,
             "item_body_pass_required": True,
             "exact_source_identity_required": True,
+            "residual_baseline_is_starting_main": True,
         },
+        "starting_residual_service_ids": sorted(starting_residual, key=lambda value: [row["service_id"] for row in applicability.get("services", [])].index(value)),
+        "residual_decisions": residual_decisions,
         "promotions": promotions,
         "holds": holds,
         "projected_publication_candidates": [
@@ -185,7 +256,7 @@ def build() -> dict:
                 "publication_candidate": True,
                 "public_route_enabled": False,
             }
-            for row in promotions
+            for row in promotions if row["newly_promoted"]
         ],
         "safety": {
             "relation_verification_promoted": False,
