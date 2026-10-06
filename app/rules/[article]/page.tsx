@@ -13,6 +13,14 @@ import careActNodesData from "../../../data/care-insurance-act-nodes.json";
 import { incomingEdges } from "../../../lib/knowledge-relations";
 import { listServices } from "../../../lib/service-catalog";
 import {
+  filterProgressivePublishedRules,
+  getProgressivePublicationTrust,
+  isProgressiveRouteCell,
+  isProgressiveRulePublished,
+  listProgressivePublicationServices,
+  progressiveServicesForRule,
+} from "../../../lib/publication-policy";
+import {
   filterRecordsForService,
   isRecordApplicableToService,
   resolveServiceScope,
@@ -47,11 +55,21 @@ const questions = questionsData as Array<any>;
 const careActNodes = careActNodesData as Array<any>;
 
 const catalogServices = listServices();
-const publicFilterServices = catalogServices.filter(
+const legacyPublicFilterServices = catalogServices.filter(
   (service) =>
     service.routing.current_mode === "LEGACY_ROOT" ||
     service.routing.future_service_base_enabled,
 );
+const progressivePublicFilterServices = listProgressivePublicationServices();
+const publicFilterServices = [
+  ...legacyPublicFilterServices,
+  ...progressivePublicFilterServices.filter(
+    (service) =>
+      !legacyPublicFilterServices.some(
+        (legacy) => legacy.service_id === service.service_id,
+      ),
+  ),
+];
 const publicFilterIds = new Set(publicFilterServices.map((service) => service.service_id));
 const serviceById = new Map(
   catalogServices.map((service) => [service.service_id, service]),
@@ -115,6 +133,9 @@ export default async function RuleArticlePage({
     (item) => item.service_id === service,
   );
   const selectedServiceId = selectedService?.service_id;
+  const progressiveSelection = Boolean(
+    selectedServiceId && isProgressiveRouteCell(selectedServiceId),
+  );
 
   const articleNode = nodes.find(
     (node) => node.node_type === "article" && node.article_num === article,
@@ -123,10 +144,14 @@ export default async function RuleArticlePage({
 
   if (
     selectedServiceId &&
-    !isRecordApplicableToService(
-      selectedServiceId,
-      "ordinance37",
-      articleNode.id,
+    !(
+      progressiveSelection
+        ? isProgressiveRulePublished(selectedServiceId, articleNode.id)
+        : isRecordApplicableToService(
+            selectedServiceId,
+            "ordinance37",
+            articleNode.id,
+          )
     )
   ) {
     notFound();
@@ -137,12 +162,18 @@ export default async function RuleArticlePage({
   );
   const children = (
     selectedServiceId
-      ? filterRecordsForService(
-          selectedServiceId,
-          "ordinance37",
-          articleNodes,
-          (node) => node.id,
-        )
+      ? progressiveSelection
+        ? filterProgressivePublishedRules(
+            selectedServiceId,
+            articleNodes,
+            (node) => node.id,
+          )
+        : filterRecordsForService(
+            selectedServiceId,
+            "ordinance37",
+            articleNodes,
+            (node) => node.id,
+          )
       : articleNodes
   ).sort(compareNodes);
 
@@ -150,13 +181,30 @@ export default async function RuleArticlePage({
   const publicMemberships = scope.memberships.filter((membership) =>
     publicFilterIds.has(membership.service_id),
   );
+  const progressiveMemberships = progressiveServicesForRule(articleNode.id).map(
+    (service) => ({
+      service_id: service.service_id,
+      basis: "DIRECT_SCOPE" as const,
+    }),
+  );
+  const displayMemberships = [
+    ...publicMemberships,
+    ...progressiveMemberships.filter(
+      (membership) =>
+        !publicMemberships.some(
+          (existing) => existing.service_id === membership.service_id,
+        ),
+    ),
+  ];
 
   const selectedDecision = selectedServiceId
-    ? serviceApplicability(
-        selectedServiceId,
-        "ordinance37",
-        articleNode.id,
-      )
+    ? progressiveSelection
+      ? { applicable: true, basis: "DIRECT_SCOPE" as const }
+      : serviceApplicability(
+          selectedServiceId,
+          "ordinance37",
+          articleNode.id,
+        )
     : undefined;
 
   const dayserviceContext = !selectedServiceId || selectedServiceId === "dayservice";
@@ -234,6 +282,10 @@ export default async function RuleArticlePage({
         ),
     );
 
+  const publicationTrust =
+    progressiveSelection && selectedServiceId
+      ? getProgressivePublicationTrust(selectedServiceId)
+      : null;
   const revision = meta.current_revision || {};
   const verificationLayerId =
     selectedServiceId === "dayrehab" ? "ordinance37-dayrehab" : "ordinance37";
@@ -257,7 +309,7 @@ export default async function RuleArticlePage({
             ? `${selectedService.label}の適用scopeで表示しています。`
             : "共有法令コーパスの条文を表示しています。"}
         </strong><br />
-        e-Gov現行XMLから取得した本文です。サービスへの適用、現行性、人手確認は別の状態として管理しています。
+        e-Gov現行XMLから取得した本文です。サービス別表示では、公開条件を満たした範囲だけを表示します。
       </div>
 
       <nav className="rules-filter" aria-label="この条文をサービス別に見る">
@@ -267,7 +319,7 @@ export default async function RuleArticlePage({
         >
           すべて
         </Link>
-        {publicMemberships.map((membership) => {
+        {displayMemberships.map((membership) => {
           const item = serviceById.get(membership.service_id);
           return (
             <Link
@@ -309,7 +361,7 @@ export default async function RuleArticlePage({
               <>（<Link href="/rules/119?service=dayrehab">第119条</Link>による準用）</>
             ) : null}
           </>
-        ) : publicMemberships.length ? (
+        ) : displayMemberships.length ? (
           <>
             <strong>公開中サービスでの適用：</strong>
             {publicMemberships.map((membership, index) => (
@@ -328,7 +380,14 @@ export default async function RuleArticlePage({
         )}
       </section>
 
-      <VerificationSummary layerId={verificationLayerId} />
+      {progressiveSelection ? (
+        <div className="notice">
+          <strong>現行のe-Gov本文と、このサービスへの直接適用範囲を確認済みです。</strong><br />
+          未確認の制度間関係や、複数資料を組み合わせた解釈はこの表示に含めていません。
+        </div>
+      ) : (
+        <VerificationSummary layerId={verificationLayerId} />
+      )}
 
       {selectedServiceId === "dayrehab" ? (
         <p className="scope-note">
@@ -461,25 +520,41 @@ export default async function RuleArticlePage({
         </section>
       ) : null}
 
-      <section className="section">
-        <h2>出典・版</h2>
-        <dl className="rule-meta">
-          <div><dt>取得元</dt><dd>e-Gov法令API / e-Gov法令検索</dd></div>
-          <div><dt>現行改正</dt><dd>{revision.amendment_law_num || "—"}</dd></div>
-          <div><dt>施行日</dt><dd>{revision.amendment_enforcement_date || "—"}</dd></div>
-          <div><dt>本文SHA-256</dt><dd className="hash">{articleNode.text_sha256}</dd></div>
-        </dl>
-        <p className="meta">canonical ID: {articleNode.id} / {articleNode.source_locator}</p>
-        <p>
-          <a
-            href={`${articleNode.source_url}#Mp-At_${articleNode.article_num.replaceAll("-", "_")}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            e-Govで原文を確認
-          </a>
-        </p>
-      </section>
+      {publicationTrust ? (
+        <section className="section">
+          <h2>出典・確認情報</h2>
+          <dl className="rule-meta">
+            <div><dt>取得元</dt><dd>{publicationTrust.source_title}</dd></div>
+            <div><dt>施行日</dt><dd>{publicationTrust.effective_date || "—"}</dd></div>
+            <div><dt>確認日時</dt><dd>{publicationTrust.checked_at || "—"}</dd></div>
+          </dl>
+          <p>
+            <a href={publicationTrust.source_url} target="_blank" rel="noreferrer">
+              e-Govで原文を確認
+            </a>
+          </p>
+        </section>
+      ) : (
+        <section className="section">
+          <h2>出典・版</h2>
+          <dl className="rule-meta">
+            <div><dt>取得元</dt><dd>e-Gov法令API / e-Gov法令検索</dd></div>
+            <div><dt>現行改正</dt><dd>{revision.amendment_law_num || "—"}</dd></div>
+            <div><dt>施行日</dt><dd>{revision.amendment_enforcement_date || "—"}</dd></div>
+            <div><dt>本文SHA-256</dt><dd className="hash">{articleNode.text_sha256}</dd></div>
+          </dl>
+          <p className="meta">canonical ID: {articleNode.id} / {articleNode.source_locator}</p>
+          <p>
+            <a
+              href={`${articleNode.source_url}#Mp-At_${articleNode.article_num.replaceAll("-", "_")}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              e-Govで原文を確認
+            </a>
+          </p>
+        </section>
+      )}
 
       <p><Link href={backHref}>基準DB一覧へ戻る</Link></p>
     </article>
