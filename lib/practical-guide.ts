@@ -4,6 +4,16 @@ export type PracticalGuideLink = {
   detail: string;
 };
 
+export type PracticalGuideSubJourney = {
+  id: string;
+  title: string;
+  summary: string;
+  firstChecks: string[];
+  databaseLinks: PracticalGuideLink[];
+  officialSourceIds: string[];
+  caution?: string;
+};
+
 export type PracticalGuideJourney = {
   id: string;
   title: string;
@@ -12,6 +22,7 @@ export type PracticalGuideJourney = {
   databaseLinks: PracticalGuideLink[];
   officialSourceIds: string[];
   caution?: string;
+  subJourneys?: PracticalGuideSubJourney[];
 };
 
 export type PracticalGuideServiceGroup = {
@@ -35,6 +46,59 @@ export const practicalGuideJourneys: PracticalGuideJourney[] = [
     title: "人員・設備・運営基準を確認する",
     summary:
       "まず基準省令DBで該当する条文を探し、対象サービスの公開範囲をサービス別ページで確認します。",
+    subJourneys: [
+      {
+        id: "staffing",
+        title: "人員配置の基準を調べる",
+        summary: "人員配置に関する基準省令の条文を起点に、必要に応じて解釈通知や国Q&Aへ進みます。",
+        firstChecks: [
+          "対象サービスを確認する",
+          "職種・配置人数・勤務体制など、確認したい論点を整理する",
+          "基準省令の本文と、必要に応じて解釈通知を別々に確認する",
+        ],
+        databaseLinks: [
+          { label: "「人員」で制度DBを検索", href: `/databases/search?q=${encodeURIComponent("人員")}`, detail: "公開済みの法令・基準省令・通知・国Q&Aから関連項目を探します。" },
+          { label: "基準省令DBを見る", href: "/rules", detail: "人員基準を含む基準省令の公開本文を確認します。" },
+          { label: "基準解釈通知DBを見る", href: "/notices", detail: "公開済みの解釈通知から人員配置に関する説明を探します。" },
+        ],
+        officialSourceIds: ["egov-home-care-standards", "mhlw-interpretation-html"],
+        caution: "ガイド上では必要人数や配置可否を個別判定しません。対象サービスの条文、解釈通知、自治体の指定基準を確認してください。",
+      },
+      {
+        id: "equipment",
+        title: "設備基準を調べる",
+        summary: "設備・専用区画・備品などの基準を、基準省令DBと公式原文から確認します。",
+        firstChecks: [
+          "対象サービスを確認する",
+          "設備、区画、備品など確認したい対象を整理する",
+          "条文の適用範囲と、自治体独自基準の有無を分けて確認する",
+        ],
+        databaseLinks: [
+          { label: "「設備」で制度DBを検索", href: `/databases/search?q=${encodeURIComponent("設備")}`, detail: "公開済みDBから設備基準に関係する項目を横断検索します。" },
+          { label: "基準省令DBを見る", href: "/rules", detail: "設備基準を含む基準省令本文を確認します。" },
+          { label: "サービス別の公開情報を見る", href: "/services", detail: "対象サービスに絞って公開中の制度情報へ進みます。" },
+        ],
+        officialSourceIds: ["egov-home-care-standards"],
+        caution: "面積・設備要件の個別適合性はここでは判定しません。該当条文と指定権者の条例・手引を確認してください。",
+      },
+      {
+        id: "operations",
+        title: "運営基準を調べる",
+        summary: "記録、掲示、苦情対応、事故対応などの運営基準を、基準省令と解釈通知から探します。",
+        firstChecks: [
+          "対象サービスを確認する",
+          "確認したい運営業務を短いキーワードにする",
+          "基準省令と解釈通知の役割を分けて確認する",
+        ],
+        databaseLinks: [
+          { label: "「運営」で制度DBを検索", href: `/databases/search?q=${encodeURIComponent("運営")}`, detail: "公開済みDBから運営基準に関係する項目を横断検索します。" },
+          { label: "基準省令DBを見る", href: "/rules", detail: "運営に関する基準省令本文を確認します。" },
+          { label: "基準解釈通知DBを見る", href: "/notices", detail: "公開済みの解釈通知から具体的な説明を探します。" },
+        ],
+        officialSourceIds: ["egov-home-care-standards", "mhlw-interpretation-html"],
+        caution: "複数条文や通知を組み合わせた個別事案の結論は示しません。必要な一次資料を確認するための入口として利用してください。",
+      },
+    ],
     firstChecks: [
       "対象サービスを確認する",
       "人員・設備・運営のどの基準を確認したいか整理する",
@@ -97,6 +161,41 @@ export const practicalGuideJourneys: PracticalGuideJourney[] = [
     title: "報酬・加算の根拠を確認する",
     summary:
       "報酬基準と算定上の留意事項を分けて確認し、必要に応じて国Q&Aも検索します。",
+    subJourneys: [
+      {
+        id: "fee-guidance",
+        title: "算定上の留意事項を探す",
+        summary: "報酬告示とは分けて、算定上の留意事項や改定資料を確認します。",
+        firstChecks: [
+          "対象サービスと報酬項目を確認する",
+          "告示上の算定要件と、留意事項通知の説明を分けて確認する",
+          "改定時期が関係する場合は最新の改定資料も確認する",
+        ],
+        databaseLinks: [
+          { label: "算定上の留意事項の入口を見る", href: "/databases#fee-guidance", detail: "公開済みの算定上の留意事項DBへ進みます。" },
+          { label: "「算定」で制度DBを検索", href: `/databases/search?q=${encodeURIComponent("算定")}`, detail: "公開済みDBから算定に関係する項目を横断検索します。" },
+          { label: "国Q&Aで「算定」を検索", href: `/qa?q=${encodeURIComponent("算定")}`, detail: "厚生労働省Q&Aから具体例を探します。" },
+        ],
+        officialSourceIds: ["mhlw-r8-reform-landing", "mhlw-r8-fee-interpretation-amendment"],
+        caution: "留意事項やQ&Aを組み合わせた算定可否の個別判定は行いません。該当する告示・通知・Q&Aの原文を確認してください。",
+      },
+      {
+        id: "unit-price",
+        title: "単価・地域区分を確認する",
+        summary: "一単位単価の告示と、公開中の地域区分DBを分けて確認します。",
+        firstChecks: [
+          "対象サービスを確認する",
+          "事業所所在地の地域区分を確認する",
+          "サービスに対応する一単位単価の区分を公式告示で確認する",
+        ],
+        databaseLinks: [
+          { label: "一単位単価・地域区分DBを見る", href: "/fees/unit-price", detail: "現在公開中の通所介護向け地域区分・一単位単価DBを確認します。" },
+          { label: "「地域区分」で制度DBを検索", href: `/databases/search?q=${encodeURIComponent("地域区分")}`, detail: "公開済みDBから地域区分に関係する情報を探します。" },
+        ],
+        officialSourceIds: ["mhlw-unit-price-current"],
+        caution: "公開中の一単位単価DBは通所介護向けです。他サービスは、厚生労働省告示のサービス区分と地域区分を原文で確認してください。",
+      },
+    ],
     firstChecks: [
       "対象サービスを確認する",
       "基本報酬・加算・減算のどれを確認するか整理する",
@@ -149,156 +248,6 @@ export const practicalGuideJourneys: PracticalGuideJourney[] = [
     caution:
       "Q&Aは個々の項目について現行性が未確認のものを含みます。重要な判断では、現在の法令・通知との関係を原典で確認してください。",
   },
-  {
-    id: "staffing",
-    title: "人員配置の基準を調べる",
-    summary:
-      "人員配置に関する基準省令の条文を起点に、必要に応じて解釈通知や国Q&Aへ進みます。",
-    firstChecks: [
-      "対象サービスを確認する",
-      "職種・配置人数・勤務体制など、確認したい論点を整理する",
-      "基準省令の本文と、必要に応じて解釈通知を別々に確認する",
-    ],
-    databaseLinks: [
-      {
-        label: "「人員」で制度DBを検索",
-        href: `/databases/search?q=${encodeURIComponent("人員")}`,
-        detail: "公開済みの法令・基準省令・通知・国Q&Aから関連項目を探します。",
-      },
-      {
-        label: "基準省令DBを見る",
-        href: "/rules",
-        detail: "人員基準を含む基準省令の公開本文を確認します。",
-      },
-      {
-        label: "基準解釈通知DBを見る",
-        href: "/notices",
-        detail: "公開済みの解釈通知から人員配置に関する説明を探します。",
-      },
-    ],
-    officialSourceIds: ["egov-home-care-standards", "mhlw-interpretation-html"],
-    caution:
-      "ガイド上では必要人数や配置可否を個別判定しません。対象サービスの条文、解釈通知、自治体の指定基準を確認してください。",
-  },
-  {
-    id: "equipment",
-    title: "設備基準を調べる",
-    summary:
-      "設備・専用区画・備品などの基準を、基準省令DBと公式原文から確認します。",
-    firstChecks: [
-      "対象サービスを確認する",
-      "設備、区画、備品など確認したい対象を整理する",
-      "条文の適用範囲と、自治体独自基準の有無を分けて確認する",
-    ],
-    databaseLinks: [
-      {
-        label: "「設備」で制度DBを検索",
-        href: `/databases/search?q=${encodeURIComponent("設備")}`,
-        detail: "公開済みDBから設備基準に関係する項目を横断検索します。",
-      },
-      {
-        label: "基準省令DBを見る",
-        href: "/rules",
-        detail: "設備基準を含む基準省令本文を確認します。",
-      },
-      {
-        label: "サービス別の公開情報を見る",
-        href: "/services",
-        detail: "対象サービスに絞って公開中の制度情報へ進みます。",
-      },
-    ],
-    officialSourceIds: ["egov-home-care-standards"],
-    caution:
-      "面積・設備要件の個別適合性はここでは判定しません。該当条文と指定権者の条例・手引を確認してください。",
-  },
-  {
-    id: "operations",
-    title: "運営基準を調べる",
-    summary:
-      "記録、掲示、苦情対応、事故対応などの運営基準を、基準省令と解釈通知から探します。",
-    firstChecks: [
-      "対象サービスを確認する",
-      "確認したい運営業務を短いキーワードにする",
-      "基準省令と解釈通知の役割を分けて確認する",
-    ],
-    databaseLinks: [
-      {
-        label: "「運営」で制度DBを検索",
-        href: `/databases/search?q=${encodeURIComponent("運営")}`,
-        detail: "公開済みDBから運営基準に関係する項目を横断検索します。",
-      },
-      {
-        label: "基準省令DBを見る",
-        href: "/rules",
-        detail: "運営に関する基準省令本文を確認します。",
-      },
-      {
-        label: "基準解釈通知DBを見る",
-        href: "/notices",
-        detail: "公開済みの解釈通知から具体的な説明を探します。",
-      },
-    ],
-    officialSourceIds: ["egov-home-care-standards", "mhlw-interpretation-html"],
-    caution:
-      "複数条文や通知を組み合わせた個別事案の結論は示しません。必要な一次資料を確認するための入口として利用してください。",
-  },
-  {
-    id: "fee-guidance",
-    title: "算定上の留意事項を探す",
-    summary:
-      "報酬告示とは分けて、算定上の留意事項や改定資料を確認します。",
-    firstChecks: [
-      "対象サービスと報酬項目を確認する",
-      "告示上の算定要件と、留意事項通知の説明を分けて確認する",
-      "改定時期が関係する場合は最新の改定資料も確認する",
-    ],
-    databaseLinks: [
-      {
-        label: "算定上の留意事項の入口を見る",
-        href: "/databases#fee-guidance",
-        detail: "公開済みの算定上の留意事項DBへ進みます。",
-      },
-      {
-        label: "「算定」で制度DBを検索",
-        href: `/databases/search?q=${encodeURIComponent("算定")}`,
-        detail: "公開済みDBから算定に関係する項目を横断検索します。",
-      },
-      {
-        label: "国Q&Aで「算定」を検索",
-        href: `/qa?q=${encodeURIComponent("算定")}`,
-        detail: "厚生労働省Q&Aから具体例を探します。",
-      },
-    ],
-    officialSourceIds: ["mhlw-r8-reform-landing", "mhlw-r8-fee-interpretation-amendment"],
-    caution:
-      "留意事項やQ&Aを組み合わせた算定可否の個別判定は行いません。該当する告示・通知・Q&Aの原文を確認してください。",
-  },
-  {
-    id: "unit-price",
-    title: "単価・地域区分を確認する",
-    summary:
-      "一単位単価の告示と、公開中の地域区分DBを分けて確認します。",
-    firstChecks: [
-      "対象サービスを確認する",
-      "事業所所在地の地域区分を確認する",
-      "サービスに対応する一単位単価の区分を公式告示で確認する",
-    ],
-    databaseLinks: [
-      {
-        label: "一単位単価・地域区分DBを見る",
-        href: "/fees/unit-price",
-        detail: "現在公開中の通所介護向け地域区分・一単位単価DBを確認します。",
-      },
-      {
-        label: "「地域区分」で制度DBを検索",
-        href: `/databases/search?q=${encodeURIComponent("地域区分")}`,
-        detail: "公開済みDBから地域区分に関係する情報を探します。",
-      },
-    ],
-    officialSourceIds: ["mhlw-unit-price-current"],
-    caution:
-      "公開中の一単位単価DBは通所介護向けです。他サービスは、厚生労働省告示のサービス区分と地域区分を原文で確認してください。",
-  }
 ];
 
 
