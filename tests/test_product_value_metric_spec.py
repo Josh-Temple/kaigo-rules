@@ -82,6 +82,25 @@ class ProductValueMetricSpecTest(unittest.TestCase):
         guards = " ".join(metric["guards"])
         self.assertIn("Article 8 paragraph membership", guards)
 
+    def test_public_surface_metrics_cover_user_value_observables(self):
+        metric = self.payload["public_surface_metrics"]
+        self.assertEqual(
+            metric["report_fields"],
+            [
+                "public_databases",
+                "published_service_source_family_cells",
+                "published_publication_units",
+                "guide_task_journeys",
+                "practical_question_primary_source_journeys",
+                "major_pages_total",
+                "major_pages_with_feedback",
+                "feedback_coverage_rate",
+            ],
+        )
+        guards = " ".join(metric["guards"])
+        self.assertIn("explicit bounded publication allowlist", guards)
+        self.assertIn("No person-identifying analytics", guards)
+
     def test_relation_metric_uses_registry_remaining_count(self):
         metric = self.metrics["unresolved_or_unverified_relations"]
         self.assertEqual(
