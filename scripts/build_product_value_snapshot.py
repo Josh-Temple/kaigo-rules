@@ -56,6 +56,7 @@ PUBLIC_DATABASE_ROUTE_FILES = {
 
 GUIDE_TASK_ROUTE_FILES = {
     "/start": ROOT / "app/start/page.tsx",
+    "/guide": ROOT / "app/guide/page.tsx",
 }
 
 MAJOR_FEEDBACK_ROUTE_FILES = {
@@ -70,6 +71,7 @@ MAJOR_FEEDBACK_ROUTE_FILES = {
     "/fees": ROOT / "app/fees/page.tsx",
     "/fees/guidance": ROOT / "app/fees/guidance/page.tsx",
     "/start": ROOT / "app/start/page.tsx",
+    "/guide": ROOT / "app/guide/page.tsx",
     "/feedback": ROOT / "app/feedback/page.tsx",
 }
 
@@ -713,6 +715,10 @@ def build_snapshot() -> dict[str, Any]:
     guide_task_routes = [
         route for route, path in GUIDE_TASK_ROUTE_FILES.items() if path.exists()
     ]
+    guide_task_journeys = 1 if "/start" in guide_task_routes else 0
+    if "/guide" in guide_task_routes:
+        guide_source = (ROOT / "lib/practical-guide.ts").read_text(encoding="utf-8")
+        guide_task_journeys += guide_source.count('\n  {\n    id: "')
     existing_major_routes = [
         route for route, path in MAJOR_FEEDBACK_ROUTE_FILES.items() if path.exists()
     ]
@@ -739,7 +745,7 @@ def build_snapshot() -> dict[str, Any]:
         "public_database_routes": public_database_routes,
         "published_service_source_family_cells": len(published_cells),
         "published_publication_units": published_publication_units,
-        "guide_task_journeys": len(guide_task_routes),
+        "guide_task_journeys": guide_task_journeys,
         "guide_task_routes": guide_task_routes,
         "practical_question_primary_source_journeys": questions_with_evidence,
         "major_pages_total": len(existing_major_routes),
