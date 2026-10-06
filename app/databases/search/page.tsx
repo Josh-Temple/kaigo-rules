@@ -9,9 +9,10 @@ import {
   getProgressivePublicationTrust,
   getProgressiveSourceRecords,
   listProgressivePublicationServices,
-  publicationServicePresentationGroup,
 } from "../../../lib/publication-policy";
 import { publicVerificationLabel } from "../../../lib/public-verification";
+import { listServices } from "../../../lib/service-catalog";
+import { publicServiceNavigationGroups } from "../../../lib/service-navigation-groups";
 
 const careNodes = careNodesData as Array<any>;
 const ordinanceNodes = ordinanceNodesData as Array<any>;
@@ -24,27 +25,35 @@ const articleSearchFields = (article: any, nodes: Array<any>) => {
   );
   return [
     {
-      value: [article.article_title, article.caption].filter(Boolean).join(" "),
-      weight: 8,
-    },
-    {
-      value: [
-        ...(article.path || []),
-        article.service_scope,
-        article.source_locator,
-      ]
-        .filter(Boolean)
-        .join(" "),
-      weight: 4,
-    },
-    {
       value: articleNodes
         .map((node) => node.official_text)
         .filter(Boolean)
         .join(" "),
-      weight: 1,
+      weight: 10,
+    },
+    {
+      value: [article.article_title, article.caption].filter(Boolean).join(" "),
+      weight: 9,
+    },
+    {
+      value: [...(article.path || []), article.service_scope]
+        .filter(Boolean)
+        .join(" "),
+      weight: 5,
+    },
+    {
+      value: article.source_locator || "",
+      weight: 2,
     },
   ];
+};
+
+const filterHref = (query: string, serviceId?: string) => {
+  const params = new URLSearchParams();
+  if (query) params.set("q", query);
+  if (serviceId) params.set("service", serviceId);
+  const suffix = params.toString();
+  return "/databases/search" + (suffix ? "?" + suffix : "");
 };
 
 export default async function DatabaseSearchPage({
@@ -56,8 +65,18 @@ export default async function DatabaseSearchPage({
   const query = q.trim();
   const requestedService = service.trim();
   const progressiveServices = listProgressivePublicationServices();
-  const selectedService = progressiveServices.find(
+  const progressiveServiceIds = new Set(
+    progressiveServices.map((item) => item.service_id),
+  );
+  const progressiveServiceById = new Map(
+    progressiveServices.map((item) => [item.service_id, item]),
+  );
+  const selectedService = progressiveServiceById.get(requestedService);
+  const requestedCatalogService = listServices().find(
     (item) => item.service_id === requestedService,
+  );
+  const groupedProgressiveServices = publicServiceNavigationGroups(
+    progressiveServiceIds,
   );
   const publicationTrust = selectedService
     ? getProgressivePublicationTrust(selectedService.service_id)
@@ -65,14 +84,6 @@ export default async function DatabaseSearchPage({
   const selectedSourceNodes = selectedService
     ? (getProgressiveSourceRecords(selectedService.service_id) as Array<any>)
     : ordinanceNodes;
-  const groupedProgressiveServices = [...progressiveServices].sort((a, b) => {
-    const groupA = publicationServicePresentationGroup(a.service_id);
-    const groupB = publicationServicePresentationGroup(b.service_id);
-    if (groupA !== groupB) return groupA.localeCompare(groupB, "en");
-    if (a.service_id === groupA) return -1;
-    if (b.service_id === groupB) return 1;
-    return a.label.localeCompare(b.label, "ja");
-  });
 
   const lawArticles = careNodes.filter((node) => node.node_type === "article");
   const ordinanceArticles = ordinanceNodes.filter(
@@ -107,48 +118,48 @@ export default async function DatabaseSearchPage({
   const noticeMatches = requestedService
     ? []
     : rankDatabaseSearch(
-    publicNoticeRecords,
-    query,
-    (notice) => [
-      { value: notice.title, weight: 8 },
-      {
-        value: [notice.service_label, notice.section]
-          .filter(Boolean)
-          .join(" "),
-        weight: 4,
-      },
-      { value: (notice.number_path || []).join(" "), weight: 2 },
-      { value: notice.body_text, weight: 1 },
-    ],
-  );
+        publicNoticeRecords,
+        query,
+        (notice) => [
+          { value: notice.body_text, weight: 10 },
+          { value: notice.title, weight: 9 },
+          {
+            value: [notice.service_label, notice.section]
+              .filter(Boolean)
+              .join(" "),
+            weight: 5,
+          },
+          { value: (notice.number_path || []).join(" "), weight: 2 },
+        ],
+      );
   const qaMatches = requestedService
     ? []
     : rankDatabaseSearch(
-    qaCorpus,
-    query,
-    (item) => [
-      { value: item.question || "", weight: 8 },
-      { value: item.topic || "", weight: 6 },
-      {
-        value: [
-          item.scope,
-          item.service_label,
-          item.current_service_scope,
-        ]
-          .filter(Boolean)
-          .join(" "),
-        weight: 4,
-      },
-      { value: item.standard_label || "", weight: 3 },
-      { value: item.answer || "", weight: 1 },
-      {
-        value: [item.issued_source, item.number]
-          .filter(Boolean)
-          .join(" "),
-        weight: 0.5,
-      },
-    ],
-  );
+        qaCorpus,
+        query,
+        (item) => [
+          { value: item.question || "", weight: 10 },
+          { value: item.answer || "", weight: 8 },
+          { value: item.topic || "", weight: 6 },
+          {
+            value: [
+              item.scope,
+              item.service_label,
+              item.current_service_scope,
+            ]
+              .filter(Boolean)
+              .join(" "),
+            weight: 5,
+          },
+          { value: item.standard_label || "", weight: 3 },
+          {
+            value: [item.issued_source, item.number]
+              .filter(Boolean)
+              .join(" "),
+            weight: 1,
+          },
+        ],
+      );
 
   const total =
     lawMatches.length +
@@ -169,12 +180,25 @@ export default async function DatabaseSearchPage({
       <div className="notice">
         {selectedService && publicationTrust ? (
           <>
-            <strong>{selectedService.label}の現行本文・直接適用範囲を確認済みです。</strong><br />
+            <strong>{selectedService.label}の現行本文・適用範囲を確認済みです。</strong><br />
             未確認の制度間関係や解釈は検索対象に含めません。
-            <a href={publicationTrust.source_url} target="_blank" rel="noreferrer"> e-Gov原文</a>
+            <a href={publicationTrust.source_url} target="_blank" rel="noreferrer"> 公式原文</a>
           </>
         ) : requestedService ? (
-          <strong>このサービスには、今回の公開条件を満たした検索対象がありません。</strong>
+          <>
+            <strong>
+              {requestedCatalogService?.label || "指定したサービス"}のサービス別絞り込みは現在公開準備中です。
+            </strong><br />
+            DB全体では名称やキーワードから確認できます。
+            {requestedCatalogService ? (
+              <>
+                {" "}
+                <Link href={filterHref(requestedCatalogService.label)}>
+                  このサービス名でDB全体を検索
+                </Link>
+              </>
+            ) : null}
+          </>
         ) : (
           <>
             <strong>報酬基準と算定上の留意事項は、この全体検索には混ぜません。</strong><br />
@@ -184,17 +208,33 @@ export default async function DatabaseSearchPage({
       </div>
 
       <nav className="rules-filter" aria-label="公開済みサービスで検索を絞り込む">
-        <Link className={!requestedService ? "rules-filter-active" : ""} href="/databases/search">
+        <Link
+          className={!requestedService ? "rules-filter-active" : ""}
+          href={filterHref(query)}
+        >
           全体
         </Link>
-        {groupedProgressiveServices.map((item) => (
-          <Link
-            className={requestedService === item.service_id ? "rules-filter-active" : ""}
-            href={`/databases/search?service=${encodeURIComponent(item.service_id)}`}
-            key={item.service_id}
-          >
-            {item.label}
-          </Link>
+        {groupedProgressiveServices.map((group) => (
+          <span key={group.id}>
+            <span className="meta">{group.label}</span>
+            {group.units.map((unit) => (
+              <span key={unit.service_ids.join("|")}>
+                {unit.services.map((item) => (
+                  <Link
+                    className={
+                      requestedService === item.service_id
+                        ? "rules-filter-active"
+                        : ""
+                    }
+                    href={filterHref(query, item.service_id)}
+                    key={item.service_id}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </span>
+            ))}
+          </span>
         ))}
       </nav>
 
@@ -211,7 +251,7 @@ export default async function DatabaseSearchPage({
             autoFocus
           />
         </label>
-        <button type="submit">全体から検索する</button>
+        <button type="submit">検索する</button>
       </form>
 
       {!query ? (
@@ -222,11 +262,26 @@ export default async function DatabaseSearchPage({
         <>
           <div className="qa-search-summary">
             <p><strong>{total.toLocaleString("ja-JP")}件</strong> 見つかりました</p>
-            <Link href="/databases/search">条件をクリア</Link>
+            <Link href={selectedService ? filterHref("", selectedService.service_id) : "/databases/search"}>
+              キーワードをクリア
+            </Link>
           </div>
           <p className="meta">
-            各DB内では、見出し・質問文・トピックなどの直接一致を本文中の一致より優先した関連度順で表示します。
+            各DB内では、一次資料の本文・質問文への直接一致を優先し、次に見出し、サービス・トピック、出典情報の順で関連度を判定します。
+            未確認の制度間関係や内部の確認スコアは順位付けに使いません。
           </p>
+
+          {total === 0 ? (
+            <div className="notice">
+              <strong>現在公開している範囲では一致する資料が見つかりませんでした。</strong><br />
+              資料そのものが存在しないことを意味しません。語を変えて検索するか、DB一覧・公式資料から確認してください。
+              <p>
+                <Link href="/databases">DB一覧を見る →</Link>
+                {" / "}
+                <Link href="/sources">公式の根拠資料を見る →</Link>
+              </p>
+            </div>
+          ) : null}
 
           <section className="section">
             <h2>介護保険法 <span className="meta">({lawMatches.length}条)</span></h2>
@@ -236,11 +291,11 @@ export default async function DatabaseSearchPage({
                   <Link className="law-row" href={"/law/" + article.article_num} key={article.id}>
                     <span className="law-number">{article.article_title}</span>
                     <span className="law-title">{article.caption || "条文"}</span>
-                    <span className="law-status">共有コーパス</span>
+                    <span className="law-status">公式本文</span>
                   </Link>
                 ))}
               </div>
-            ) : <p className="meta">一致なし</p>}
+            ) : <p className="meta">現在公開している範囲では一致なし</p>}
             {lawMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
@@ -263,12 +318,12 @@ export default async function DatabaseSearchPage({
                     <span className="rule-number">{article.article_title}</span>
                     <span className="rule-title">{article.caption || "題名なし"}</span>
                     <span className="rule-status">
-                      {selectedService ? "現行本文・適用範囲を確認済み" : "共有コーパス"}
+                      {selectedService ? "本文・適用範囲を確認済み" : "公式本文"}
                     </span>
                   </Link>
                 ))}
               </div>
-            ) : <p className="meta">一致なし</p>}
+            ) : <p className="meta">現在公開している範囲では一致なし</p>}
             {ordinanceMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
@@ -291,7 +346,7 @@ export default async function DatabaseSearchPage({
                   </article>
                 ))}
               </div>
-            ) : <p className="meta">一致なし</p>}
+            ) : <p className="meta">現在公開している範囲では一致なし</p>}
             {noticeMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
           </section>
 
@@ -304,7 +359,7 @@ export default async function DatabaseSearchPage({
                     <section className="qa-row" key={item.id}>
                       <div className="qa-row-head">
                         <p className="meta">{item.service_label || item.scope} ・ {item.standard_label || "基準種別なし"}</p>
-                        <span className="corpus-status">収載済み・現行性未確認</span>
+                        <span className="corpus-status">厚生労働省Q&A</span>
                       </div>
                       {item.topic ? <p className="qa-topic">{item.topic}</p> : null}
                       <h2><Link href={"/qa/" + encodeURIComponent(item.id)}>{item.question}</Link></h2>
@@ -318,7 +373,15 @@ export default async function DatabaseSearchPage({
                   </Link>
                 </p>
               </>
-            ) : <p className="meta">一致なし</p>}
+            ) : <p className="meta">現在公開している範囲では一致なし</p>}
+          </section>
+
+          <section className="section">
+            <h2>次の探し方</h2>
+            <p>
+              一次資料を検索しても判断点が整理しにくい場合は、実務上の目的から関連DBへ進めるガイドも利用できます。
+            </p>
+            <p><Link href="/guide">実務ガイドから探す →</Link></p>
           </section>
         </>
       )}
