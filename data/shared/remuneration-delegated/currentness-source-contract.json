@@ -1,0 +1,164 @@
+{
+  "format_version": 1,
+  "artifact_kind": "DELEGATED_REMUNERATION_CURRENTNESS_SOURCE_CONTRACT",
+  "source_family": "delegated_remuneration_criteria",
+  "base_main_sha": "f74456013a4a103c48a8b6674969b71c0e325631",
+  "observed_date": "2026-10-06",
+  "purpose": "Bound currentness promotion to exact official MHLW source identities and independently mapped service cells; never broadcast source-level currentness across all 37 applicable services.",
+  "policy": {
+    "promotion_requires_all_mapped_sources_current": true,
+    "promotion_requires_explicit_service_mapping": true,
+    "promotion_requires_item_body_pass": true,
+    "not_applicable_never_promoted": true,
+    "regular_preventive_inheritance_allowed": false,
+    "service_wide_broadcast_allowed": false,
+    "source_identity_must_match_item_body_receipt": true,
+    "stale_or_changed_snapshot_fails_closed": true,
+    "publication_and_route_auto_enable_allowed": false
+  },
+  "source_contracts": [
+    {
+      "canonical_source_id": "mhlw-fee-criteria95-current",
+      "title": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）",
+      "official_publication_source": "厚生労働省 法令等データベースサービス",
+      "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+      "repository_source_status": "current_official_source",
+      "currentness_state": "PASS",
+      "promotion_eligible": true,
+      "version_model": {
+        "kind": "OFFICIAL_CONSOLIDATED_DISPLAY_PLUS_PINNED_PAGE_HASH_SET",
+        "item_body_snapshot_verified_at": "2026-10-05",
+        "page_snapshots": [
+          {
+            "page": 1,
+            "sha256": "7f1006dd10ce1260b75dec5fe226972af1769ba1502803ba5d58b71d54ae5618"
+          },
+          {
+            "page": 2,
+            "sha256": "50267c187930ab9d647a31c7aeb9560f2637ffaaf01713e220cfd05d2a57c104"
+          },
+          {
+            "page": 3,
+            "sha256": "e311c5baa33f37874bd00d7402e5044bc55be8711393b17545701a8e668d89a8"
+          },
+          {
+            "page": 4,
+            "sha256": "cb196683bfe3194b944c354806818afde8799313038e4b197ae9b12a6edb571a"
+          }
+        ]
+      },
+      "amendment_lineage": {
+        "latest_confirmed_amendment": "令和8年厚生労働省告示第87号",
+        "promulgated_date": "2026-03-13",
+        "effective_date": "2026-06-01",
+        "amendment_article": "第16条",
+        "incorporation_check": "The current official consolidated display observed on 2026-10-06 contains the new 訪問看護費における介護職員等処遇改善加算 criteria and ケアプランデータ連携システム language introduced by the 2026 amendment."
+      },
+      "effective_date_model": "Use the incorporated amendment's effective date for changed provisions; the official consolidated display is the current body for lookup.",
+      "service_applicability_model": "Cell-level only: a service is eligible only when its canonical mapped_node_ids explicitly reference notice95 nodes.",
+      "item_section_identity": "notice95.item.* canonical node IDs in data/shared/remuneration-delegated/national-corpus.json",
+      "locator_stability": "Stable MHLW dataId 82ab4584; page snapshots are pinned by SHA-256 in item-body-verification.json.",
+      "evidence": [
+        "data/shared/remuneration-delegated/item-body-verification.json#mhlw-fee-criteria95-current",
+        "data/sources.json#mhlw-fee-criteria95-current",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+        "https://www.mhlw.go.jp/content/12404000/001675895.pdf"
+      ]
+    },
+    {
+      "canonical_source_id": "mhlw-fee-facility-criteria96-current",
+      "title": "厚生労働大臣が定める施設基準（平成27年厚生労働省告示第96号）",
+      "official_publication_source": "厚生労働省 法令等データベースサービス",
+      "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0",
+      "repository_source_status": "current_official_source",
+      "currentness_state": "PASS",
+      "promotion_eligible": true,
+      "version_model": {
+        "kind": "OFFICIAL_CONSOLIDATED_DISPLAY_PLUS_PINNED_PAGE_HASH_SET",
+        "item_body_snapshot_verified_at": "2026-10-05",
+        "page_snapshots": [
+          {
+            "page": 1,
+            "sha256": "7d8a6819f5147ad403b41d853b3921b57bbff8242b34d6cf95e9caeae327fb88"
+          },
+          {
+            "page": 2,
+            "sha256": "0826f9ea881d41d62e0340d652f5af07238bce6f5c826988a6c9625eb0ce9035"
+          }
+        ]
+      },
+      "amendment_lineage": {
+        "latest_confirmed_amendment_on_official_consolidated_display": "令和6年厚生労働省告示第86号",
+        "latest_effective_transition_shown": "2025-08-01",
+        "current_official_display_observed_date": "2026-10-06"
+      },
+      "effective_date_model": "Use the effective-date clauses embedded in the official consolidated display; no separate effective date is inferred for untouched provisions.",
+      "service_applicability_model": "Cell-level only: a service is eligible only when its canonical mapped_node_ids explicitly reference notice96 nodes.",
+      "item_section_identity": "notice96.item.* canonical node IDs in data/shared/remuneration-delegated/national-corpus.json",
+      "locator_stability": "Stable MHLW dataId 82ab4585; page snapshots are pinned by SHA-256 in item-body-verification.json.",
+      "evidence": [
+        "data/shared/remuneration-delegated/item-body-verification.json#mhlw-fee-facility-criteria96-current",
+        "data/sources.json#mhlw-fee-facility-criteria96-current",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+      ]
+    },
+    {
+      "canonical_source_id": "mhlw-fee-notice27-base",
+      "title": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法（平成12年厚生省告示第27号）",
+      "official_publication_source": "厚生労働省 法令等データベースサービス",
+      "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
+      "repository_source_status": "base_text_replay_pending",
+      "currentness_state": "BLOCKED",
+      "promotion_eligible": false,
+      "version_model": {
+        "kind": "OFFICIAL_BASE_TEXT_SNAPSHOT_PLUS_PINNED_PAGE_HASH_SET",
+        "item_body_snapshot_verified_at": "2026-10-05",
+        "page_snapshots": [
+          {
+            "page": 1,
+            "sha256": "222c91e52c7978377047104de2c374c26f5dd2aabfd6376cfe7a8caf1a8c1ff3"
+          },
+          {
+            "page": 2,
+            "sha256": "2b0fc2c256ed86868608c761eb54b7e39fec651a04cf7e3a87820bcd902c9612"
+          },
+          {
+            "page": 3,
+            "sha256": "327f87d0744a6d1b4da1312bbea5bee2bd85f0a7876bc92e1de1adea18520d8d"
+          }
+        ]
+      },
+      "blocker": "Repository status remains base_text_replay_pending and successor/latestness closure is not independently established.",
+      "service_applicability_model": "Any service cell referencing notice27 remains deferred even if all other mapped sources are current.",
+      "evidence": [
+        "data/shared/remuneration-delegated/item-body-verification.json#mhlw-fee-notice27-base",
+        "data/verification/shared-source-currentness-activation.json#delegated_remuneration_criteria",
+        "data/sources.json#mhlw-fee-notice27-base"
+      ]
+    }
+  ],
+  "reusable_source_level_currentness": {
+    "allowed_source_ids": [
+      "mhlw-fee-criteria95-current",
+      "mhlw-fee-facility-criteria96-current"
+    ],
+    "blocked_source_ids": [
+      "mhlw-fee-notice27-base"
+    ],
+    "rule": "Source-level currentness may be reused only after each cell independently proves that every mapped node belongs to the allowed source set."
+  },
+  "cell_level_confirmation_required": [
+    "applicability_state == MAPPED",
+    "mapped_node_ids is non-empty",
+    "item_body_verification == PASS",
+    "every mapped node source identity is promotion-eligible under this contract",
+    "no NOT_APPLICABLE service is promoted",
+    "no service derives eligibility from a regular/preventive sibling"
+  ],
+  "safety": {
+    "promotes_relation_verification": false,
+    "promotes_human_review": false,
+    "publishes_routes": false,
+    "enables_runtime_publication": false
+  }
+}
