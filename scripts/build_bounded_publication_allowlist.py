@@ -8,6 +8,7 @@ even when it currently matches the publication selection.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 READINESS_PATH = ROOT / "data/publication-readiness.generated.json"
 GOVERNING_CURRENTNESS_PATH = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
 HIGH_VALUE_CURRENTNESS_PATH = ROOT / "data/verification/high-value-currentness-closure-worker-b.json"
+HIGH_VALUE_EXPANSION_PATH = ROOT / "data/verification/high-value-currentness-expansion-worker-c.json"
 OUTPUT_PATH = ROOT / "data/bounded-publication-allowlist.json"
 
 SAFE_FIELDS = [
@@ -34,6 +36,12 @@ FORBIDDEN_FIELDS = [
     "relation_rank_feature",
     "review_dependent_search_term",
 ]
+REQUIRED_PUBLICATION_UNITS = {
+    "SOURCE_TEXT_ITEM_BODY",
+    "SOURCE_METADATA_LOCATOR",
+    "CURRENTNESS_STATEMENT",
+    "SERVICE_APPLICABILITY_STATEMENT",
+}
 RUNTIME_SUPPORTED_SOURCE_FAMILIES = {
     "governing_standards_ordinance",
     "unit_price_regional_classification",
@@ -43,7 +51,7 @@ RUNTIME_SUPPORTED_SOURCE_IDENTITIES = {
     "preventive-services-standards",
     "mhlw-unit-price-current",
 }
-MAX_PUBLICATION_CELLS = 32
+MAX_PUBLICATION_CELLS = 64
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -60,25 +68,78 @@ def cell_key(row: dict[str, Any]) -> tuple[str | None, str | None]:
     return row.get("service_id"), row.get("source_family")
 
 
+def currentness_paths() -> list[Path]:
+    paths = [GOVERNING_CURRENTNESS_PATH, HIGH_VALUE_CURRENTNESS_PATH]
+    if HIGH_VALUE_EXPANSION_PATH.exists():
+        paths.append(HIGH_VALUE_EXPANSION_PATH)
+    return paths
+
+
+def source_identity(row: dict[str, Any]) -> dict[str, Any]:
+    return row.get("source_identity") or row.get("canonical_source_identity") or {}
+
+
+def applicability_proof(row: dict[str, Any]) -> dict[str, Any]:
+    return row.get("applicability_proof") or row.get("service_applicability_evidence") or {}
+
+
+def unit_price_currentness_scope_supported(row: dict[str, Any]) -> bool:
+    if row.get("source_version_contains_scope") is True:
+        return True
+    evidence = row.get("currentness_evidence") or {}
+    units = set(row.get("allowed_publication_units") or [])
+    return (
+        evidence.get("supersession_check")
+        == "OFFICIAL_MHLW_CONSOLIDATED_DISPLAY_REVERIFIED"
+        and evidence.get("live_verifier") == "scripts/verify_unit_price_currentness.py"
+        and evidence.get("effective_date") == "2024-04-01"
+        and REQUIRED_PUBLICATION_UNITS.issubset(units)
+    )
+
+
+def normalize_runtime_promotion(row: dict[str, Any]) -> dict[str, Any]:
+    normalized = copy.deepcopy(row)
+    source = copy.deepcopy(source_identity(row))
+    proof = copy.deepcopy(applicability_proof(row))
+
+    evidence = row.get("currentness_evidence") or {}
+    if not source.get("current_official_display_observed_on") and evidence.get("observed_on"):
+        source["current_official_display_observed_on"] = evidence["observed_on"]
+
+    normalized["source_identity"] = source
+    normalized["applicability_proof"] = proof
+    normalized["source_version_contains_scope"] = (
+        row.get("source_version_contains_scope") is True
+        or (
+            row.get("source_family") == "unit_price_regional_classification"
+            and unit_price_currentness_scope_supported(row)
+        )
+    )
+    normalized.pop("canonical_source_identity", None)
+    normalized.pop("service_applicability_evidence", None)
+    return normalized
+
+
 def source_contract_supported(row: dict[str, Any]) -> bool:
-    source_family = row.get("source_family")
-    source = row.get("source_identity") or {}
-    proof = row.get("applicability_proof") or {}
+    normalized = normalize_runtime_promotion(row)
+    source_family = normalized.get("source_family")
+    source = normalized.get("source_identity") or {}
+    proof = normalized.get("applicability_proof") or {}
     canonical_source_id = source.get("canonical_source_id")
 
     if canonical_source_id not in RUNTIME_SUPPORTED_SOURCE_IDENTITIES:
         return False
     if source_family not in RUNTIME_SUPPORTED_SOURCE_FAMILIES:
         return False
-    if row.get("promotion_applied") is not True:
+    if normalized.get("promotion_applied") is not True:
         return False
-    if row.get("projected_currentness_state") != "PASS":
+    if normalized.get("projected_currentness_state") != "PASS":
         return False
-    if row.get("ingestion_state") != "INGESTED":
+    if normalized.get("ingestion_state") != "INGESTED":
         return False
-    if row.get("item_body_state") != "PASS":
+    if normalized.get("item_body_state") != "PASS":
         return False
-    if row.get("source_version_contains_scope") is not True:
+    if normalized.get("source_version_contains_scope") is not True:
         return False
 
     if canonical_source_id == "ordinance37":
@@ -105,29 +166,35 @@ def source_contract_supported(row: dict[str, Any]) -> bool:
 
     if canonical_source_id == "mhlw-unit-price-current":
         return (
-            row.get("service_id") == "dayservice"
-            and source_family == "unit_price_regional_classification"
+            source_family == "unit_price_regional_classification"
             and source.get("currentness_class") == "CURRENT_OFFICIAL_CONSOLIDATED"
             and bool(source.get("version_id"))
             and source.get("effective_date") == "2024-04-01"
             and proof.get("state") == "PASS_DIRECT_SERVICE_SCOPE"
-            and proof.get("official_service_name") == "通所介護"
-            and proof.get("multiplier_profile_id") == "group-1090"
+            and bool(proof.get("official_service_name"))
+            and bool(proof.get("multiplier_profile_id"))
             and proof.get("mapped_item_count") == 8
-            and proof.get("source_locator") == "第一号 表 / 通所介護 / 地域区分別割合"
+            and bool(proof.get("source_locator"))
         )
 
     return False
 
 
-def load_promotions() -> tuple[dict[tuple[str | None, str | None], dict[str, Any]], list[dict[str, str]]]:
-    sources = []
+def load_promotions() -> tuple[
+    dict[tuple[str | None, str | None], dict[str, Any]],
+    list[dict[str, str]],
+    dict[tuple[str | None, str | None], str],
+]:
+    sources: list[dict[str, str]] = []
     promotions: dict[tuple[str | None, str | None], dict[str, Any]] = {}
-    for path in (GOVERNING_CURRENTNESS_PATH, HIGH_VALUE_CURRENTNESS_PATH):
+    provenance: dict[tuple[str | None, str | None], str] = {}
+
+    for path in currentness_paths():
+        relative = str(path.relative_to(ROOT)).replace("\\", "/")
         payload = load_json(path)
         sources.append(
             {
-                "path": str(path.relative_to(ROOT)).replace("\\", "/"),
+                "path": relative,
                 "git_blob_sha": git_blob_sha(path),
             }
         )
@@ -136,12 +203,14 @@ def load_promotions() -> tuple[dict[tuple[str | None, str | None], dict[str, Any
             if key in promotions:
                 raise ValueError(f"duplicate currentness promotion: {key}")
             promotions[key] = row
-    return promotions, sources
+            provenance[key] = relative
+
+    return promotions, sources, provenance
 
 
 def build() -> dict[str, Any]:
     readiness = load_json(READINESS_PATH)
-    promotions, currentness_sources = load_promotions()
+    promotions, currentness_sources, promotion_provenance = load_promotions()
 
     ready = [
         row
@@ -150,7 +219,7 @@ def build() -> dict[str, Any]:
         and not row.get("blocking_reasons")
     ]
 
-    publishable = []
+    publishable: list[dict[str, Any]] = []
     for row in ready:
         if row.get("source_family") not in RUNTIME_SUPPORTED_SOURCE_FAMILIES:
             continue
@@ -180,6 +249,14 @@ def build() -> dict[str, Any]:
         f"{row['service_id']}|{row['source_family']}": SAFE_FIELDS
         for row in publishable
     }
+    runtime_source_binding_by_cell = {}
+    for row in publishable:
+        key_tuple = cell_key(row)
+        encoded = f"{row['service_id']}|{row['source_family']}"
+        runtime_source_binding_by_cell[encoded] = {
+            "evidence_path": promotion_provenance[key_tuple],
+            "promotion": normalize_runtime_promotion(promotions[key_tuple]),
+        }
 
     if not ready:
         decision = "NO_PUBLICATION_CHANGE"
@@ -264,6 +341,7 @@ def build() -> dict[str, Any]:
         "publication_cell_allowlist": publication,
         "route_allowlist": routes,
         "field_allowlist_by_cell": fields,
+        "runtime_source_binding_by_cell": runtime_source_binding_by_cell,
     }
 
 
