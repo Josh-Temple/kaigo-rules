@@ -187,6 +187,10 @@ test("preventive projection preserves its own source identity and locator", () =
   assert.ok(projection);
   assert.ok(trust);
   assert.equal(trust.canonical_source_id, "preventive-services-standards");
+  assert.equal(
+    projection.source_metadata.canonical_source_id,
+    "preventive-services-standards",
+  );
   assert.match(trust.source_url, /418M60000100035/);
   assert.match(projection.source_metadata.source_title, /介護予防サービス/);
   assert.equal(
