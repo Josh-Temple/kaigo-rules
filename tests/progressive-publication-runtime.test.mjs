@@ -49,17 +49,23 @@ const preventiveServices = [
   "specific-preventive-welfare-equipment-sale",
 ];
 
-const expectedServices = [...originalServices, ...preventiveServices];
+const newlyClosedGoverningServices = ["dayservice", "dayrehab"];
+const expectedServices = [
+  ...originalServices,
+  ...preventiveServices,
+  ...newlyClosedGoverningServices,
+];
 
-test("progressive publication keeps the original ten cells and adds ten preventive cells", () => {
+test("progressive Governing Standards publication includes the prior twenty cells plus newly closed day services", () => {
   assert.deepEqual(
-    listProgressivePublicationServices().map((item) => item.service_id),
-    expectedServices,
+    listProgressivePublicationServices()
+      .map((item) => item.service_id)
+      .sort(),
+    [...expectedServices].sort(),
   );
   for (const serviceId of expectedServices) {
     assert.equal(isProgressivePublicationCell(serviceId), true);
   }
-  assert.equal(isProgressivePublicationCell("dayservice"), false);
   assert.equal(isProgressivePublicationCell("care-management"), false);
 });
 
