@@ -21,6 +21,8 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.13"
+      - name: Install PDF text extractor
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Verify exact production SHA and field-validation routes
         run: python scripts/verify_field_validation_production.py --base-url https://kaigo-rules.vercel.app --expected-sha 29c5529be51a1211e060acd5911a1122aa0eaf0e --wait-seconds 0 --timeout-seconds 30
       - name: Run Integration Sprint release regression against production
