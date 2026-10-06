@@ -278,6 +278,24 @@ def careact_service_identity_identities(audit: dict) -> set[tuple[str, str, str]
     return identities
 
 
+def residual_service_definition_identities(audit: dict) -> set[tuple[str, str, str]]:
+    if audit.get("audit_result") != "PASS":
+        raise ValueError("residual service-definition audit is not PASS")
+    identities = set()
+    for check in audit.get("checks", []):
+        require_clean_check(check, "residual-service-definition")
+        identities.add(
+            make_identity(
+                check.get("from_id"),
+                check.get("relation"),
+                check.get("to_id"),
+            )
+        )
+    if len(identities) != audit.get("coverage", {}).get("relations_passed"):
+        raise ValueError("residual service-definition identity count changed")
+    return identities
+
+
 def build_relation_coverage() -> dict:
     inventory = canonical_inventory()
     lane_specs = (
@@ -341,6 +359,13 @@ def build_relation_coverage() -> dict:
             "data/careact-service-identity-derived-audit.json",
             careact_service_identity_identities(
                 load("careact-service-identity-derived-audit.json")
+            ),
+        ),
+        (
+            "residual-service-definition",
+            "data/residual-relation-service-definition-independent-audit.json",
+            residual_service_definition_identities(
+                load("residual-relation-service-definition-independent-audit.json")
             ),
         ),
     )
