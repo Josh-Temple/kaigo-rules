@@ -404,10 +404,17 @@
         "expected_state": "PUBLISHED"
       },
       {
-        "id": "PUB-BLOCK-HOMEVISIT-UNIT-PRICE",
+        "id": "PUB-ALLOW-HOMEVISIT-UNIT-PRICE",
         "service_id": "homevisit",
         "source_family": "unit_price_regional_classification",
         "record_id": "unitprice.homevisit.1",
+        "expected_state": "PUBLISHED"
+      },
+      {
+        "id": "PUB-BLOCK-DAYREHAB-UNIT-PRICE",
+        "service_id": "dayrehab",
+        "source_family": "unit_price_regional_classification",
+        "record_id": "unitprice.dayrehab.1",
         "expected_state": "BLOCKED"
       },
       {
