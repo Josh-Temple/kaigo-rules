@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 READINESS_PATH = DATA / "publication-readiness.generated.json"
+CURRENTNESS_PATH = DATA / "verification/bounded-currentness-closure-worker-b.json"
 ALLOWLIST_PATH = DATA / "bounded-publication-allowlist.json"
 
 SAFE_FIELDS = {
@@ -19,6 +20,11 @@ SAFE_FIELDS = {
     "currentness_statement",
     "service_applicability_statement",
 }
+RUNTIME_SOURCE_CONTRACTS = {
+    "ordinance37": ("PASS_DIRECT_SERVICE_CHAPTER", "direct_service_chapter_verified"),
+    "preventive-services-standards": ("PASS_DIRECT_SERVICE_SCOPE", "direct_service_scope_verified"),
+}
+
 FORBIDDEN_FIELDS = {
     "cross_layer_relation_assertion",
     "unverified_relation_assertion",
@@ -45,10 +51,14 @@ def validate(
     allowlist: dict | None = None,
     readiness: dict | None = None,
     readiness_blob_sha: str | None = None,
+    currentness: dict | None = None,
+    currentness_blob_sha: str | None = None,
 ) -> dict:
     allowlist = allowlist if allowlist is not None else load_json(ALLOWLIST_PATH)
     readiness = readiness if readiness is not None else load_json(READINESS_PATH)
+    currentness = currentness if currentness is not None else load_json(CURRENTNESS_PATH)
     readiness_blob_sha = readiness_blob_sha if readiness_blob_sha is not None else git_blob_sha(READINESS_PATH)
+    currentness_blob_sha = currentness_blob_sha if currentness_blob_sha is not None else git_blob_sha(CURRENTNESS_PATH)
 
     policy = allowlist.get("policy", {})
     required_true = (
@@ -77,6 +87,14 @@ def validate(
             "readiness artifact changed after bounded-publication selection; regenerate allowlist"
         )
 
+    currentness_source = allowlist.get("source_currentness", {})
+    if currentness_source.get("path") != "data/verification/bounded-currentness-closure-worker-b.json":
+        raise BoundedPublicationError("unexpected currentness source path")
+    if currentness_source.get("git_blob_sha") != currentness_blob_sha:
+        raise BoundedPublicationError(
+            "currentness artifact changed after bounded-publication selection; regenerate allowlist"
+        )
+
     rows = readiness.get("cells")
     if not isinstance(rows, list):
         raise BoundedPublicationError("readiness cells missing")
@@ -101,10 +119,25 @@ def validate(
         raise BoundedPublicationError("publication, route, and field allowlists must have canonical container types")
 
     max_cells = policy.get("max_publication_cells")
-    if not isinstance(max_cells, int) or max_cells < 0 or max_cells > 10:
-        raise BoundedPublicationError("max_publication_cells must be between 0 and 10")
+    if not isinstance(max_cells, int) or max_cells < 0 or max_cells > 20:
+        raise BoundedPublicationError("max_publication_cells must be between 0 and 20")
     if len(publication) > max_cells:
         raise BoundedPublicationError("bounded publication batch exceeds max_publication_cells")
+
+    runtime = allowlist.get("runtime_binding") or {}
+    supported_source_identities = runtime.get("supported_source_identities")
+    if not isinstance(supported_source_identities, list):
+        raise BoundedPublicationError("runtime supported source identities missing")
+    if set(supported_source_identities) != set(RUNTIME_SOURCE_CONTRACTS):
+        raise BoundedPublicationError("runtime supported source identities do not match validator contracts")
+
+    promotion_rows = currentness.get("promotions")
+    if not isinstance(promotion_rows, list):
+        raise BoundedPublicationError("currentness promotions missing")
+    promotions = {
+        cell_key(row): row
+        for row in promotion_rows
+    }
 
     publication_keys = []
     for item in publication:
@@ -117,6 +150,22 @@ def validate(
             raise BoundedPublicationError(f"allowlist contains non-ready cell: {key}")
         if row.get("blocking_reasons"):
             raise BoundedPublicationError(f"allowlist contains blocked cell: {key}")
+        promotion = promotions.get(key)
+        if not promotion or promotion.get("promotion_applied") is not True:
+            raise BoundedPublicationError(f"published cell lacks applied currentness promotion: {key}")
+        source_identity = promotion.get("source_identity") or {}
+        canonical_source_id = source_identity.get("canonical_source_id")
+        contract = RUNTIME_SOURCE_CONTRACTS.get(canonical_source_id)
+        if contract is None:
+            raise BoundedPublicationError(f"unsupported source identity: {canonical_source_id}")
+        expected_state, verified_flag = contract
+        proof = promotion.get("applicability_proof") or {}
+        if proof.get("state") != expected_state or proof.get(verified_flag) is not True:
+            raise BoundedPublicationError(
+                f"unsupported applicability proof for {key}: {proof.get('state')}"
+            )
+        if proof.get("discrepancies") != 0:
+            raise BoundedPublicationError(f"applicability proof has discrepancies: {key}")
     publication_key_set = set(publication_keys)
 
     runtime = allowlist.get("runtime_binding") or {}

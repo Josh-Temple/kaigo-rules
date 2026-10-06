@@ -6,8 +6,11 @@ import metaData from "../../data/ordinance37-meta.json";
 import { listServices } from "../../lib/service-catalog";
 import {
   filterProgressivePublishedRules,
+  getProgressivePublicationTrust,
+  getProgressiveSourceRecords,
   isProgressiveRouteCell,
   listProgressivePublicationServices,
+  publicationServicePresentationGroup,
 } from "../../lib/publication-policy";
 import {
   filterRecordsForService,
@@ -60,7 +63,14 @@ const filterServices = [
         (legacy) => legacy.service_id === service.service_id,
       ),
   ),
-];
+].sort((a, b) => {
+  const groupA = publicationServicePresentationGroup(a.service_id);
+  const groupB = publicationServicePresentationGroup(b.service_id);
+  if (groupA !== groupB) return groupA.localeCompare(groupB, "en");
+  if (a.service_id === groupA) return -1;
+  if (b.service_id === groupB) return 1;
+  return a.label.localeCompare(b.label, "ja");
+});
 const filterServiceIds = new Set(filterServices.map((service) => service.service_id));
 const serviceLabel = new Map(
   catalogServices.map((service) => [service.service_id, service.label]),
@@ -142,12 +152,23 @@ export default async function RulesPage({
   const progressiveSelection = Boolean(
     selectedServiceId && isProgressiveRouteCell(selectedServiceId),
   );
+  const publicationTrust =
+    progressiveSelection && selectedServiceId
+      ? getProgressivePublicationTrust(selectedServiceId)
+      : null;
+  const selectedSourceRecords =
+    progressiveSelection && selectedServiceId
+      ? (getProgressiveSourceRecords(selectedServiceId) as RuleNode[])
+      : nodes;
+  const selectedSourceArticles = selectedSourceRecords
+    .filter((node) => node.node_type === "article")
+    .sort(compareArticle);
 
   const displayedArticles = selectedServiceId
     ? progressiveSelection
       ? filterProgressivePublishedRules(
           selectedServiceId,
-          articles,
+          selectedSourceArticles,
           (node) => node.id,
         )
       : filterRecordsForService(
@@ -168,14 +189,13 @@ export default async function RulesPage({
       <p className="eyebrow">ORDINANCE DATABASE</p>
       <h1>基準省令DB</h1>
       <p className="lead">
-        「指定居宅サービス等の事業の人員、設備及び運営に関する基準」の共有コーパスを通常は全体表示し、
-        サービスを選ぶと、そのサービスに直接適用・準用される条文だけへ絞り込みます。
+        基準省令の共有コーパスを表示し、サービスを選ぶと、そのサービスについて公開条件を満たした法令本文へ絞り込みます。
+        介護予防サービスを選んだ場合は、対応する介護予防サービス基準のコーパスへ切り替えます。
       </p>
 
       <div className="notice">
-        <strong>「すべて」は法令コーパス、「サービス選択」は適用scopeです。</strong><br />
-        全体表示に含まれること自体は、各サービスへの適用確認や人手確認を意味しません。
-        サービス別フィルタでは、適用範囲と公開条件を確認できた条文だけを表示します。
+        <strong>「すべて」は指定居宅サービス等基準の共有コーパスです。</strong><br />
+        サービス別フィルタでは、各サービスに対応する法令コーパスへ切り替え、適用範囲と公開条件を確認できた条文だけを表示します。
       </div>
 
       <nav className="rules-filter" aria-label="サービスで基準省令を絞り込む">
@@ -218,8 +238,8 @@ export default async function RulesPage({
       )}
 
       <section className="rules-stats" aria-label="基準DBの収載状況">
-        <div><strong>{meta.counts.nodes_total}</strong><span>共有コーパスノード</span></div>
-        <div><strong>{meta.counts.articles_total}</strong><span>共有コーパス条文</span></div>
+        <div><strong>{selectedSourceRecords.length}</strong><span>共有コーパスノード</span></div>
+        <div><strong>{selectedSourceArticles.length}</strong><span>共有コーパス条文</span></div>
         <div><strong>{displayedArticles.length}</strong><span>表示中の条文</span></div>
         <div><strong>{filterServices.length}</strong><span>公開中サービスフィルタ</span></div>
       </section>
@@ -227,12 +247,30 @@ export default async function RulesPage({
       <section className="section">
         <h2>現在の取得元</h2>
         <dl className="rule-meta">
-          <div><dt>法令</dt><dd>{meta.law_title}</dd></div>
-          <div><dt>現行改正</dt><dd>{revision.amendment_law_num || "—"}</dd></div>
-          <div><dt>施行日</dt><dd>{revision.amendment_enforcement_date || "—"}</dd></div>
-          <div><dt>e-Gov状態</dt><dd>{revision.current_revision_status || "—"}</dd></div>
+          <div><dt>法令</dt><dd>{publicationTrust?.source_title || meta.law_title}</dd></div>
+          {publicationTrust ? (
+            <>
+              <div><dt>版</dt><dd>{publicationTrust.source_version || "—"}</dd></div>
+              <div><dt>施行日</dt><dd>{publicationTrust.effective_date || "—"}</dd></div>
+              <div><dt>確認日時</dt><dd>{publicationTrust.checked_at || "—"}</dd></div>
+            </>
+          ) : (
+            <>
+              <div><dt>現行改正</dt><dd>{revision.amendment_law_num || "—"}</dd></div>
+              <div><dt>施行日</dt><dd>{revision.amendment_enforcement_date || "—"}</dd></div>
+              <div><dt>e-Gov状態</dt><dd>{revision.current_revision_status || "—"}</dd></div>
+            </>
+          )}
         </dl>
-        <p><a href={meta.source_page} target="_blank" rel="noreferrer">e-Gov法令検索で原文を確認</a></p>
+        <p>
+          <a
+            href={publicationTrust?.source_url || meta.source_page}
+            target="_blank"
+            rel="noreferrer"
+          >
+            e-Gov法令検索で原文を確認
+          </a>
+        </p>
       </section>
 
       {chapters.map((chapter) => {

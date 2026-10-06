@@ -1,15 +1,14 @@
 import { NextResponse } from "next/server";
-import ordinanceNodesData from "../../../../../../data/ordinance37-nodes.json";
 import {
   PROGRESSIVE_SOURCE_FAMILY,
   filterProgressivePublishedRules,
+  getProgressiveSourceRecords,
   listProgressivePublicationServices,
   projectProgressiveRule,
 } from "../../../../../../lib/publication-policy";
 
 type Params = Promise<{ serviceId: string }>;
 
-const nodes = ordinanceNodesData as Array<any>;
 
 export async function GET(
   request: Request,
@@ -23,6 +22,14 @@ export async function GET(
   if (!service) {
     return NextResponse.json(
       { error: "SERVICE_RULE_CONTEXT_NOT_PUBLISHED" },
+      { status: 404 },
+    );
+  }
+
+  const nodes = getProgressiveSourceRecords(serviceId) as Array<any>;
+  if (!nodes.length) {
+    return NextResponse.json(
+      { error: "SOURCE_RULE_CONTEXT_NOT_PUBLISHED" },
       { status: 404 },
     );
   }
