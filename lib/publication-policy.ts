@@ -3,6 +3,8 @@ import readinessData from "../data/publication-readiness.generated.json" with { 
 import governingCurrentnessData from "../data/verification/bounded-currentness-closure-worker-b.json" with { type: "json" };
 import highValueCurrentnessData from "../data/verification/high-value-currentness-closure-worker-b.json" with { type: "json" };
 import {
+  DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID,
+  DELEGATED_REMUNERATION_SOURCE_FAMILY,
   GOVERNING_STANDARDS_SOURCE_FAMILY,
   RUNTIME_SOURCE_ADAPTERS,
   UNIT_PRICE_SOURCE_FAMILY,
@@ -16,7 +18,10 @@ import {
 
 export const PROGRESSIVE_SOURCE_FAMILY =
   GOVERNING_STANDARDS_SOURCE_FAMILY;
-export { UNIT_PRICE_SOURCE_FAMILY };
+export {
+  DELEGATED_REMUNERATION_SOURCE_FAMILY,
+  UNIT_PRICE_SOURCE_FAMILY,
+};
 
 export const REQUIRED_PUBLICATION_UNITS = [
   "SOURCE_TEXT_ITEM_BODY",
@@ -94,6 +99,12 @@ export function isSupportedPublicationContract(
     canonicalSourceId === "mhlw-unit-price-current"
   ) {
     return applicabilityState === "PASS_DIRECT_SERVICE_SCOPE";
+  }
+  if (
+    canonicalSourceId ===
+    DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID
+  ) {
+    return applicabilityState === "MAPPED";
   }
   return false;
 }
@@ -391,6 +402,12 @@ function nodePrefixForCanonicalSource(
   }
   if (canonicalSourceId === "mhlw-unit-price-current") {
     return "unitprice";
+  }
+  if (
+    canonicalSourceId ===
+    DELEGATED_REMUNERATION_CANONICAL_SOURCE_ID
+  ) {
+    return "delegated-remuneration";
   }
   return "";
 }
