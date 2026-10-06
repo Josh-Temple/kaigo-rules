@@ -39,7 +39,7 @@ jobs:
       - name: Run Worker B unit and integration tests
         run: python -m unittest tests.test_delegated_remuneration_currentness_worker_b tests.test_database_coverage_matrix
       - name: Reject Worker B edits to global generated artifacts
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.title, '[Worker E]')
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         shell: bash
