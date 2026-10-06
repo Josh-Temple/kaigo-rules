@@ -241,3 +241,30 @@ test("public source navigation delegates exposure and metrics to the shared rout
     /READY_FOR_PUBLICATION_REVIEW|blocking_reasons|promotion_applied/,
   );
 });
+
+
+test("public database search offers practical-topic discovery without exposing internal source-family codes", () => {
+  const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
+
+  assert.match(search, /practicalTopicSearches/);
+  assert.match(search, /実務テーマから探す/);
+  for (const label of ["人員基準", "設備基準", "運営基準", "報酬・算定", "地域区分・単価", "指定", "更新・届出"]) {
+    assert.match(search, new RegExp(label));
+  }
+  assert.match(search, /filterHref\(item\.query, selectedService\?\.service_id\)/);
+  assert.doesNotMatch(
+    search,
+    /READY_FOR_PUBLICATION_REVIEW|BLOCKED_CURRENTNESS|blocking_reasons/,
+  );
+});
+
+test("public database search renders only verified related-primary-source navigation", () => {
+  const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
+  const relations = fs.readFileSync("lib/verified-related-sources.ts", "utf8");
+
+  assert.match(search, /verifiedRelatedPrimarySources/);
+  assert.match(search, /関連する一次資料/);
+  assert.match(relations, /check\.result === "PASS"/);
+  assert.match(relations, /basis_independent_verification === "PASS"/);
+  assert.doesNotMatch(search, /SEMANTIC_TEXT_CHECK_REQUIRED|HUMAN_SEMANTIC_REVIEW_REQUIRED/);
+});
