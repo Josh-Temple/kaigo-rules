@@ -21,7 +21,7 @@ DAY_META = ROOT / "data/unit-price-dayservice-meta.json"
 REGION_META = ROOT / "data/unit-price-region-assignments-meta.json"
 AUDIT = ROOT / "data/unit-price-independent-audit.json"
 WORKFLOW = ROOT / ".github/workflows/verify-unit-price-independent.yml"
-VERIFIER = ROOT / "scripts/verify_unit_price_independent.py"
+VERIFIER = ROOT / "scripts/verify_unit_price_currentness.py"
 
 EXPECTED_IDENTITY = ("dayservice", "unit_price_regional_classification")
 EXPECTED_SOURCE_ID = "mhlw-unit-price-current"
@@ -168,7 +168,7 @@ def validate() -> list[str]:
     contract = row.get("currentness_contract") or {}
     if contract.get("live_source_reverification_required") is not True:
         errors.append("live source reverification is not required")
-    if contract.get("verifier") != "scripts/verify_unit_price_independent.py":
+    if contract.get("verifier") != "scripts/verify_unit_price_currentness.py":
         errors.append("live verifier path mismatch")
     if contract.get("workflow") != ".github/workflows/verify-unit-price-independent.yml":
         errors.append("live workflow path mismatch")
@@ -229,6 +229,7 @@ def validate() -> list[str]:
         "data/verification/high-value-currentness-closure-worker-b.json",
         "scripts/validate_high_value_currentness_closure.py",
         "scripts/verify_unit_price_independent.py",
+        "scripts/verify_unit_price_currentness.py",
     ):
         if required_path not in workflow_text:
             errors.append(f"live verification workflow does not track {required_path}")
