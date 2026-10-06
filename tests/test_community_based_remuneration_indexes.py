@@ -44,6 +44,13 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
             row["service_id"]: row
             for row in load("data/shared/remuneration-delegated/service-applicability.json")["services"]
         }
+        cls.delegated_currentness_promoted = {
+            row["service_id"]
+            for row in load(
+                "data/verification/delegated-remuneration-currentness-worker-b.json"
+            )["promotions"]
+            if row.get("promotion_applied") is True
+        }
 
     def cell(self, service_id: str, family_id: str) -> dict:
         return next(
@@ -134,7 +141,12 @@ class CommunityBasedRemunerationIndexesTest(unittest.TestCase):
                 delegated["item_body_verification"]["state"],
                 self.delegated_applicability[service_id]["assurance"]["item_body_verification"],
             )
-            self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
+            self.assertEqual(
+                delegated["currentness"]["state"],
+                "PASS"
+                if service_id in self.delegated_currentness_promoted
+                else "NOT_ESTABLISHED",
+            )
             self.assertEqual(delegated["publication"]["state"], "BLOCKED")
             self.assertEqual(delegated["route_exposure"]["state"], "BLOCKED")
             self.assertEqual(guidance["service_scope"]["state"], "SCOPE_DEFINED")
