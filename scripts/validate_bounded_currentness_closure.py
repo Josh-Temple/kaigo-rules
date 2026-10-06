@@ -465,10 +465,11 @@ def validate_payload(
             "chapter": str((dayrehab_scope.get("chapter") or {}).get("title") or ""),
         },
     }
-    if dayservice_scope.get("law_id") != ord37_source.get("law_id"):
-        errors.append("dayservice: scope law identity differs from current source")
-    if dayrehab_scope.get("law_id") != ord37_source.get("law_id"):
-        errors.append("dayrehab: scope law identity differs from current source")
+    expected_ord37_law_id = "411M50000100037"
+    if dayservice_scope.get("law_id") != expected_ord37_law_id:
+        errors.append("dayservice: scope law identity differs from Ordinance 37")
+    if dayrehab_scope.get("law_id") != expected_ord37_law_id:
+        errors.append("dayrehab: scope law identity differs from Ordinance 37")
     if dayrehab_audit.get("audit_result") != "PASS":
         errors.append("dayrehab: independent service-slice audit is not PASS")
     dayrehab_source = dayrehab_audit.get("source") or {}
