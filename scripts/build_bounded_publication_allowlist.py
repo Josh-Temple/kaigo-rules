@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build the bounded publication decision from current readiness.
+"""Build the bounded publication allowlist used by every public runtime surface.
 
-The current application does not yet enforce this allowlist across every public
-runtime surface. Until that binding is established, READY candidates remain
-review candidates and publication/route deltas stay empty.
+Only publication units that are READY, supported by the runtime policy, and
+explicitly selected here can be exposed. Route exposure is selected separately,
+even when it currently matches the publication selection.
 """
 from __future__ import annotations
 
@@ -31,53 +31,85 @@ FORBIDDEN_FIELDS = [
     "relation_rank_feature",
     "review_dependent_search_term",
 ]
+RUNTIME_SUPPORTED_SOURCE_FAMILIES = {"governing_standards_ordinance"}
+MAX_PUBLICATION_CELLS = 10
+
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
 
 def git_blob_sha(path: Path) -> str:
     body = path.read_bytes()
     header = f"blob {len(body)}\0".encode("utf-8")
     return hashlib.sha1(header + body).hexdigest()
 
+
 def build() -> dict:
     readiness = load_json(READINESS_PATH)
     ready = [
         row for row in readiness.get("cells", [])
         if row.get("readiness") == "READY_FOR_PUBLICATION_REVIEW"
+        and not row.get("blocking_reasons")
     ]
-    ready_count = len(ready)
-    reason = (
-        "No READY_FOR_PUBLICATION_REVIEW cells exist after integrated readiness regeneration."
-        if ready_count == 0
-        else
-        "READY candidates exist, but repository-wide runtime enforcement of the bounded publication allowlist across UI, search, API, and machine retrieval is not established. Publication therefore remains fail-closed."
-    )
-    decision = "NO_PUBLICATION_CHANGE" if ready_count == 0 else "DEFER_PUBLICATION_FAIL_CLOSED"
+    publishable = [
+        row for row in ready
+        if row.get("source_family") in RUNTIME_SUPPORTED_SOURCE_FAMILIES
+    ][:MAX_PUBLICATION_CELLS]
+
+    publication = [
+        {
+            "service_id": row["service_id"],
+            "source_family": row["source_family"],
+        }
+        for row in publishable
+    ]
+    routes = list(publication)
+    fields = {
+        f"{row['service_id']}|{row['source_family']}": SAFE_FIELDS
+        for row in publishable
+    }
+
+    if not ready:
+        decision = "NO_PUBLICATION_CHANGE"
+        reason = "No READY_FOR_PUBLICATION_REVIEW cells exist after integrated readiness regeneration."
+    elif publication:
+        decision = "PUBLISH_BOUNDED_READY_UNITS"
+        reason = (
+            "READY publication units supported by the shared runtime policy are "
+            "bound across UI, search, API, and machine retrieval."
+        )
+    else:
+        decision = "DEFER_PUBLICATION_FAIL_CLOSED"
+        reason = (
+            "READY candidates exist, but none are supported by the currently "
+            "implemented runtime publication policy."
+        )
+
     return {
-        "format_version": 2,
+        "format_version": 3,
         "generated_by": "scripts/build_bounded_publication_allowlist.py",
-        "role": "Semantic Integrator / Bounded Publication Release Worker",
+        "role": "Publication Runtime Binding / Progressive Release Worker",
         "source_readiness": {
             "path": "data/publication-readiness.generated.json",
             "git_blob_sha": git_blob_sha(READINESS_PATH),
-            "expected_ready_candidate_count": ready_count,
+            "expected_ready_candidate_count": len(ready),
         },
         "runtime_binding": {
             "required_for_nonempty_publication": True,
-            "established": False,
+            "established": True,
+            "policy_module": "lib/publication-policy.ts",
             "required_surfaces": [
                 "UI",
                 "SEARCH",
                 "API",
                 "MACHINE_RETRIEVAL",
             ],
-            "blocker": "RUNTIME_PUBLICATION_ALLOWLIST_BINDING_NOT_ESTABLISHED",
         },
         "policy": {
             "explicit_publication_allowlist_required": True,
             "explicit_route_allowlist_required": True,
-            "max_publication_cells": 10,
+            "max_publication_cells": MAX_PUBLICATION_CELLS,
             "publication_does_not_enable_route": True,
             "blocked_cells_cannot_be_published": True,
             "allowlist_must_be_subset_of_ready_candidates": True,
@@ -92,7 +124,7 @@ def build() -> dict:
         "safe_publication_fields": SAFE_FIELDS,
         "forbidden_publication_fields": FORBIDDEN_FIELDS,
         "summary": {
-            "ready_candidates_at_selection": ready_count,
+            "ready_candidates_at_selection": len(ready),
             "ready_candidate_cells": [
                 {
                     "service_id": row["service_id"],
@@ -101,17 +133,18 @@ def build() -> dict:
                 }
                 for row in ready
             ],
-            "published_cells_added": 0,
-            "routes_added": 0,
+            "published_cells_added": len(publication),
+            "routes_added": len(routes),
             "existing_public_surfaces_changed": False,
             "decision": decision,
             "reason": reason,
             "blocker_counts_at_selection": readiness.get("summary", {}).get("blocking_axis_counts", {}),
         },
-        "publication_cell_allowlist": [],
-        "route_allowlist": [],
-        "field_allowlist_by_cell": {},
+        "publication_cell_allowlist": publication,
+        "route_allowlist": routes,
+        "field_allowlist_by_cell": fields,
     }
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -126,6 +159,7 @@ def main() -> None:
         return
     OUTPUT_PATH.write_text(rendered, encoding="utf-8")
     print(f"wrote {OUTPUT_PATH.relative_to(ROOT)}")
+
 
 if __name__ == "__main__":
     main()
