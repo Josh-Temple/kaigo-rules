@@ -1,0 +1,57 @@
+name: Verify residual Ordinance 37 service slices
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/verification/bounded-currentness-closure-worker-b.json"
+      - "data/verification/shared-source-currentness-activation.json"
+      - "data/ordinance37-scope.json"
+      - "data/ordinance37-nodes.json"
+      - "data/ordinance37-relations.json"
+      - "data/ordinance37-meta.json"
+      - "data/services/dayrehab/ordinance37-scope.json"
+      - "data/services/dayrehab/ordinance37-index.generated.json"
+      - "data/dayrehab-ordinance37-independent-audit.json"
+      - "scripts/verify_residual_ordinance37_service_slices.py"
+      - ".github/workflows/verify-residual-ordinance37-service-slices.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+      - name: Independently reparse residual service slices from live e-Gov
+        run: |
+          python scripts/verify_residual_ordinance37_service_slices.py \
+            --report residual-ordinance37-service-slices-verification.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("residual-ordinance37-service-slices-verification.json").read_text())
+          assert report["result"] == "PASS", report
+          assert report["summary"] == {
+              "services_total": 2,
+              "services_pass": 2,
+              "services_fail": 0,
+              "discrepancies": 0,
+          }, report["summary"]
+          assert {row["service_id"] for row in report["services"]} == {"dayservice", "dayrehab"}
+          print("PASS: residual Ordinance 37 live service slices are exact (2/2)")
+          PY
+      - name: Upload residual verification report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: residual-ordinance37-service-slices-verification
+          path: residual-ordinance37-service-slices-verification.json
+          if-no-files-found: warn
+          retention-days: 90
