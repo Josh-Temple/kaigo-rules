@@ -10,6 +10,7 @@ on:
       - "scripts/validate_delegated_remuneration_currentness_worker_b.py"
       - "scripts/build_database_coverage_matrix.py"
       - "tests/test_delegated_remuneration_currentness_worker_b.py"
+      - "tests/test_database_coverage_matrix.py"
       - ".github/workflows/verify-delegated-remuneration-currentness-worker-b.yml"
 
 permissions:
@@ -36,7 +37,7 @@ jobs:
       - name: Validate bounded currentness contract and decisions
         run: python scripts/validate_delegated_remuneration_currentness_worker_b.py
       - name: Run Worker B unit and integration tests
-        run: python -m unittest tests.test_delegated_remuneration_currentness_worker_b
+        run: python -m unittest tests.test_delegated_remuneration_currentness_worker_b tests.test_database_coverage_matrix
       - name: Reject Worker B edits to global generated artifacts
         if: github.event_name == 'pull_request'
         env:
