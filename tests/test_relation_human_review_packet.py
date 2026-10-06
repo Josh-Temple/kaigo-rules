@@ -20,14 +20,14 @@ class RelationHumanReviewPacketTests(unittest.TestCase):
             )
         )
         self.assertEqual(built, committed)
-        self.assertEqual(built["summary"]["items_total"], 58)
-        self.assertEqual(built["summary"]["independently_covered_relations"], 129)
+        self.assertEqual(built["summary"]["items_total"], 57)
+        self.assertEqual(built["summary"]["independently_covered_relations"], 130)
         self.assertEqual(built["summary"]["inventory_relations"], 188)
         self.assertEqual(
             built["summary"]["classification_counts"],
             {
                 "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
-                "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
+                "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 4,
                 "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36,
             },
         )
