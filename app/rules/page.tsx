@@ -224,7 +224,9 @@ export default async function RulesPage({
 
       <p className="scope-note">
         {selectedService
-          ? `${selectedService.label}で絞り込み中。直接規定と準用規定を含みます。`
+          ? progressiveSelection
+            ? `${selectedService.label}で絞り込み中。現行性と直接適用を確認済みの規定だけを表示しています。準用規定はrelation検証が別途必要なため、この公開範囲には含めていません。`
+            : `${selectedService.label}で絞り込み中。直接規定と準用規定を含みます。`
           : "全共有コーパスを表示中。サービスを選ぶと、公開条件を満たした範囲だけに絞り込みます。"}
       </p>
 
