@@ -12,6 +12,7 @@ const serviceLabels = new Map(
 const routeContext = (pathname: string) => {
   const routes = [
     { prefix: "/fees/guidance", db: "算定上の留意事項", sourceFamily: "算定上の留意事項" },
+    { prefix: "/fees/unit-price", db: "一単位単価・地域区分", sourceFamily: "一単位単価・地域区分" },
     { prefix: "/fees", db: "報酬基準DB", sourceFamily: "報酬基準" },
     { prefix: "/rules", db: "基準省令DB", sourceFamily: "基準省令" },
     { prefix: "/notices", db: "基準解釈通知DB", sourceFamily: "基準解釈通知" },

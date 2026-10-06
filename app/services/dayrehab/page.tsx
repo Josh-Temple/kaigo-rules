@@ -31,7 +31,7 @@ export default function DayrehabPage() {
       </section>
 
       <div className="entry-links">
-        <Link className="entry-row" href="/services/dayrehab/search">
+        <Link className="entry-row" href="/databases/search?service=dayrehab">
           <span>公開中の4資料群を横断検索</span>
           <small>基準省令・解釈通知・報酬基準・算定留意事項 →</small>
         </Link>

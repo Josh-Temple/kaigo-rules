@@ -205,3 +205,39 @@ test("public database search groups service filters and treats no-match as a par
   assert.match(search, /実務ガイドから探す/);
   assert.doesNotMatch(search, /READY_FOR_PUBLICATION_REVIEW|blocking_reasons/);
 });
+
+
+test("multi-source search is gated by the shared publication policy", () => {
+  const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
+
+  assert.match(search, /unit-price-dayservice\.json/);
+  assert.match(search, /publicSourceFamiliesForService/);
+  assert.match(search, /UNIT_PRICE_SOURCE_FAMILY/);
+  assert.match(search, /一単位単価・地域区分/);
+  assert.match(search, /公開条件を満たした現行資料/);
+  assert.match(search, /厚生労働省の告示原文/);
+  assert.match(search, /見つからない資料を知らせる/);
+  assert.doesNotMatch(
+    search,
+    /READY_FOR_PUBLICATION_REVIEW|blocking_reasons|BLOCKED_CURRENTNESS/,
+  );
+});
+
+test("public source navigation delegates exposure and metrics to the shared route policy", () => {
+  const source = fs.readFileSync("lib/public-source-navigation.ts", "utf8");
+
+  assert.match(source, /isProgressiveRouteCell/);
+  assert.match(
+    source,
+    /isProgressiveRouteCell\(serviceId, definition\.source_family\)/,
+  );
+  assert.match(source, /GOVERNING_STANDARDS_SOURCE_FAMILY/);
+  assert.match(source, /UNIT_PRICE_SOURCE_FAMILY/);
+  assert.match(source, /runtime_supported_source_families/);
+  assert.match(source, /cross_source_searchable_cells/);
+  assert.match(source, /service_pages_with_2plus_published_source_families/);
+  assert.doesNotMatch(
+    source,
+    /READY_FOR_PUBLICATION_REVIEW|blocking_reasons|promotion_applied/,
+  );
+});

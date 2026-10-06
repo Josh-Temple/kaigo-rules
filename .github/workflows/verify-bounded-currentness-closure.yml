@@ -8,6 +8,7 @@ on:
       - "data/verification/bounded-currentness-closure-worker-b.json"
       - "scripts/validate_bounded_currentness_closure.py"
       - "scripts/validate_public_value_currentness_impact.py"
+      - "scripts/verify_residual_ordinance37_service_slices.py"
       - "tests/test_bounded_currentness_closure.py"
       - "data/verification/shared-source-currentness-activation.json"
       - "data/verification/existing-ordinance37-service-slices-independent-audit.json"
@@ -18,6 +19,7 @@ on:
       - "data/services/preventive-*/standards-scope.json"
       - "data/services/specific-preventive-welfare-equipment-sale/standards-scope.json"
       - ".github/workflows/verify-bounded-currentness-closure.yml"
+      - ".github/workflows/verify-residual-ordinance37-service-slices.yml"
 
 permissions:
   contents: read
@@ -53,6 +55,21 @@ jobs:
           if report.get("summary", {}).get("services_pass") != 10:
               raise SystemExit("live Ordinance 37 audited service count drifted")
           print("PASS: live Ordinance 37 bounded service slices remain exact")
+          PY
+
+      - name: Reverify residual Ordinance 37 service slices against live e-Gov
+        run: |
+          python scripts/verify_residual_ordinance37_service_slices.py --report /tmp/ordinance37-residual-live.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("/tmp/ordinance37-residual-live.json").read_text())
+          if report.get("result") != "PASS":
+              raise SystemExit("live residual Ordinance 37 service-slice re-verification failed")
+          summary = report.get("summary", {})
+          if summary.get("services_pass") != 2 or summary.get("discrepancies") != 0:
+              raise SystemExit(f"live residual Ordinance 37 evidence drifted: {summary}")
+          print("PASS: live residual Ordinance 37 service slices remain exact (2/2)")
           PY
 
       - name: Reparse shared standards from live e-Gov

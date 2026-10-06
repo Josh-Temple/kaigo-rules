@@ -44,16 +44,16 @@ class BoundedCurrentnessClosureTest(unittest.TestCase):
     def test_repository_contract_passes(self):
         self.assertEqual(self.errors_for(self.artifact), [])
 
-    def test_ten_new_preventive_and_twenty_cumulative_promotions(self):
+    def test_two_residual_and_twenty_two_cumulative_promotions(self):
         standards = self.artifact["priority_1"]["governing_standards_ordinance"]
-        self.assertEqual(standards["new_promotions_this_wave"], 10)
-        self.assertEqual(standards["cumulative_promotions"], 20)
+        self.assertEqual(standards["new_promotions_this_wave"], 2)
+        self.assertEqual(standards["cumulative_promotions"], 22)
         self.assertEqual(
             standards["after"],
-            {"NOT_ESTABLISHED": 17, "PARTIAL": 2, "PASS": 20},
+            {"NOT_ESTABLISHED": 17, "PASS": 22},
         )
         new_ids = set(standards["newly_promoted_service_ids"])
-        self.assertEqual(new_ids, set(module.PREVENTIVE_SCOPE_PATHS))
+        self.assertEqual(new_ids, {"dayservice", "dayrehab"})
 
     def test_preventive_promotions_are_currentness_only_direct_scope(self):
         new_ids = set(module.PREVENTIVE_SCOPE_PATHS)
@@ -79,6 +79,58 @@ class BoundedCurrentnessClosureTest(unittest.TestCase):
             )
             self.assertEqual(row["projection_gate"]["scope"], "currentness_only")
             self.assertEqual(row["projected_currentness_state"], "PASS")
+
+    def test_residual_promotions_are_exact_currentness_only_direct_chapters(self):
+        new_ids = {"dayservice", "dayrehab"}
+        rows = {
+            row["service_id"]: row
+            for row in self.artifact["promotions"]
+            if row["service_id"] in new_ids
+        }
+        self.assertEqual(set(rows), new_ids)
+        for service_id, row in rows.items():
+            self.assertEqual(row["prior_currentness_state"], "PARTIAL")
+            self.assertEqual(
+                row["source_identity"]["canonical_source_id"],
+                "ordinance37",
+            )
+            self.assertEqual(
+                row["applicability_proof"]["state"],
+                "PASS_DIRECT_SERVICE_CHAPTER",
+            )
+            self.assertTrue(
+                row["applicability_proof"][
+                    "incorporation_scope_excluded_from_semantic_expansion"
+                ]
+            )
+            self.assertTrue(
+                row["applicability_proof"]["live_service_slice_reverification_required"]
+            )
+            self.assertEqual(row["projection_gate"]["scope"], "currentness_only")
+            self.assertEqual(row["projected_currentness_state"], "PASS")
+
+    def test_remaining_seventeen_are_explicitly_deferred(self):
+        inventory = {
+            row["service_id"]: row
+            for row in self.artifact["residual_target_inventory"]
+        }
+        promoted = {
+            service_id
+            for service_id, row in inventory.items()
+            if row["decision"] == "PROMOTE_PASS_BOUNDED"
+        }
+        deferred = {
+            service_id
+            for service_id, row in inventory.items()
+            if row["decision"] == "DEFER"
+        }
+        self.assertEqual(promoted, {"dayservice", "dayrehab"})
+        self.assertEqual(len(deferred), 17)
+        for service_id in deferred:
+            self.assertEqual(
+                inventory[service_id]["blocker"],
+                "NO_SERVICE_SPECIFIC_CURRENT_VERSION_APPLICABILITY_PROOF",
+            )
 
     def test_all_preventive_scopes_resolve_against_current_corpus(self):
         for service_id, path in module.PREVENTIVE_SCOPE_PATHS.items():
@@ -176,7 +228,7 @@ class BoundedCurrentnessClosureTest(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertIn("10 new and 20 cumulative", result.stdout)
+        self.assertIn("2 new and 22 cumulative", result.stdout)
 
 
 if __name__ == "__main__":

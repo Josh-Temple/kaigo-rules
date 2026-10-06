@@ -376,7 +376,7 @@
     }
   },
   "publication_policy_smoke": {
-    "purpose": "Verify the progressive publication runtime uses the same allowlist for machine-readable retrieval, including service-scope containment and blocked-service denial.",
+    "purpose": "Verify the progressive publication runtime uses the same allowlist for machine-readable retrieval across supported source families, including service-scope containment, unsupported-cell denial, and blocked-service denial.",
     "cases": [
       {
         "id": "PUB-ALLOW-HOMEVISIT-18",
@@ -394,6 +394,34 @@
         "id": "PUB-BLOCK-CARE-MANAGEMENT-18",
         "service_id": "care-management",
         "article": "18",
+        "expected_state": "BLOCKED"
+      },
+      {
+        "id": "PUB-ALLOW-DAYSERVICE-UNIT-PRICE-1",
+        "service_id": "dayservice",
+        "source_family": "unit_price_regional_classification",
+        "record_id": "unitprice.dayservice.1",
+        "expected_state": "PUBLISHED"
+      },
+      {
+        "id": "PUB-ALLOW-HOMEVISIT-UNIT-PRICE",
+        "service_id": "homevisit",
+        "source_family": "unit_price_regional_classification",
+        "record_id": "unitprice.homevisit.1",
+        "expected_state": "PUBLISHED"
+      },
+      {
+        "id": "PUB-BLOCK-DAYREHAB-UNIT-PRICE",
+        "service_id": "dayrehab",
+        "source_family": "unit_price_regional_classification",
+        "record_id": "unitprice.dayrehab.1",
+        "expected_state": "BLOCKED"
+      },
+      {
+        "id": "PUB-BLOCK-SALE-UNIT-PRICE",
+        "service_id": "specific-welfare-equipment-sale",
+        "source_family": "unit_price_regional_classification",
+        "record_id": "unitprice.specific-welfare-equipment-sale.1",
         "expected_state": "BLOCKED"
       }
     ]

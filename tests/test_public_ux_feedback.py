@@ -30,6 +30,12 @@ class PublicUxFeedbackTest(unittest.TestCase):
         self.assertIn('target.set("q"', feedback_link)
         self.assertIn('target.set("db"', feedback_link)
         self.assertIn('target.set("source_family"', feedback_link)
+        self.assertIn('prefix: "/fees/unit-price"', feedback_link)
+        self.assertIn('db: "一単位単価・地域区分"', feedback_link)
+        self.assertLess(
+            feedback_link.index('prefix: "/fees/unit-price"'),
+            feedback_link.index('prefix: "/fees",'),
+        )
         for category in ("誤り", "古い", "見つからない", "分かりにくい"):
             self.assertIn('"' + category + '"', feedback_page)
         self.assertIn("内容をコピー", feedback_page)

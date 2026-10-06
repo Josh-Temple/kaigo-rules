@@ -59,14 +59,13 @@
     {
       "id": "IR-02",
       "coverage": "service_isolation",
-      "title": "shared Ordinance 37 article remains reachable with explicit dayservice applicability context",
+      "title": "incorporated Ordinance 37 article remains fail-closed in the dayservice progressive publication scope",
       "path": "/rules/10?service=dayservice",
-      "expect_status": 200,
-      "contains_text": [
-        "通所介護への適用",
-        "第105条",
-        "準用"
-      ]
+      "expect_status": 404,
+      "contains_text": [],
+      "regex_text": [],
+      "href_contains": [],
+      "not_contains_text": []
     },
     {
       "id": "IR-03",
@@ -347,45 +346,52 @@
     {
       "id": "IR-18",
       "coverage": "service_isolation",
-      "title": "dayservice rules filter narrows the shared corpus to 40 applicable articles",
+      "title": "dayservice rules filter exposes only the 17 directly verified current articles",
       "path": "/rules?service=dayservice",
       "expect_status": 200,
       "contains_text": [
         "通所介護で絞り込み中",
-        "直接規定と準用規定",
-        "40",
+        "現行性と直接適用を確認済みの規定だけ",
+        "準用規定はrelation検証が別途必要",
         "表示中の条文"
       ],
       "not_contains_text": [
         "第十八条"
+      ],
+      "regex_text": [
+        "17\\s*共有コーパス条文",
+        "17\\s*表示中の条文"
       ]
     },
     {
       "id": "IR-19",
       "coverage": "service_isolation",
-      "title": "dayrehab rules filter narrows the shared corpus to 36 applicable articles",
+      "title": "dayrehab rules filter exposes only the 11 directly verified current articles",
       "path": "/rules?service=dayrehab",
       "expect_status": 200,
       "contains_text": [
         "通所リハビリテーションで絞り込み中",
-        "36",
+        "現行性と直接適用を確認済みの規定だけ",
+        "準用規定はrelation検証が別途必要",
         "表示中の条文",
         "第百十条",
         "第百十九条"
+      ],
+      "regex_text": [
+        "11\\s*共有コーパス条文",
+        "11\\s*表示中の条文"
       ]
     },
     {
       "id": "IR-20",
       "coverage": "service_isolation",
-      "title": "service-filtered rule detail preserves dayrehab incorporated-scope context",
+      "title": "incorporated Ordinance 37 article remains fail-closed in the dayrehab progressive publication scope",
       "path": "/rules/10?service=dayrehab",
-      "expect_status": 200,
-      "contains_text": [
-        "通所リハビリテーションの適用scope",
-        "第119条",
-        "準用",
-        "サービス別ページ"
-      ]
+      "expect_status": 404,
+      "contains_text": [],
+      "regex_text": [],
+      "href_contains": [],
+      "not_contains_text": []
     },
     {
       "id": "IR-21",

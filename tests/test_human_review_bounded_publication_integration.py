@@ -13,6 +13,9 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
         cls.matrix = load("data/database-coverage-matrix.generated.json")
         cls.bounded = load("data/verification/bounded-currentness-closure-worker-b.json")
         cls.high_value = load("data/verification/high-value-currentness-closure-worker-b.json")
+        cls.high_value_expansion = load(
+            "data/verification/high-value-currentness-expansion-worker-c.json"
+        )
         cls.scoping = load("data/publication-requirement-scoping.json")
         cls.readiness = load("data/publication-readiness.generated.json")
         cls.allowlist = load("data/bounded-publication-allowlist.json")
@@ -35,7 +38,7 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
             for row in self.bounded["promotions"]
             if row.get("promotion_applied") is True
         }
-        self.assertEqual(len(expected), 20)
+        self.assertEqual(len(expected), 22)
         actual = set()
         for service in self.matrix["services"]:
             for cell in service["source_families"]:
@@ -49,7 +52,11 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
     def test_ready_candidates_are_only_canonical_bounded_currentness_cells(self):
         expected = {
             (row["service_id"], row["source_family"])
-            for artifact in (self.bounded, self.high_value)
+            for artifact in (
+                self.bounded,
+                self.high_value,
+                self.high_value_expansion,
+            )
             for row in artifact["promotions"]
             if row.get("promotion_applied") is True
         }
@@ -79,29 +86,16 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
             for row in self.readiness["cells"]
             if row["readiness"] == "READY_FOR_PUBLICATION_REVIEW"
         }
-        supported_contracts = {
-            "ordinance37": (
-                "PASS_DIRECT_SERVICE_CHAPTER",
-                "direct_service_chapter_verified",
-            ),
-            "preventive-services-standards": (
-                "PASS_DIRECT_SERVICE_SCOPE",
-                "direct_service_scope_verified",
-            ),
+        expected_ready = {
+            (row["service_id"], row["source_family"])
+            for artifact in (
+                self.bounded,
+                self.high_value,
+                self.high_value_expansion,
+            )
+            for row in artifact["promotions"]
+            if row.get("promotion_applied") is True
         }
-        runtime_supported = set()
-        for row in self.bounded["promotions"]:
-            source_id = (row.get("source_identity") or {}).get("canonical_source_id")
-            contract = supported_contracts.get(source_id)
-            proof = row.get("applicability_proof") or {}
-            if (
-                row.get("promotion_applied") is True
-                and contract is not None
-                and proof.get("state") == contract[0]
-                and proof.get(contract[1]) is True
-                and proof.get("discrepancies") == 0
-            ):
-                runtime_supported.add((row["service_id"], row["source_family"]))
         published = {
             (row["service_id"], row["source_family"])
             for row in self.allowlist["publication_cell_allowlist"]
@@ -111,25 +105,32 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
             for row in self.allowlist["route_allowlist"]
         }
 
-        expected_ready = {
-            (row["service_id"], row["source_family"])
-            for artifact in (self.bounded, self.high_value)
-            for row in artifact["promotions"]
-            if row.get("promotion_applied") is True
-        }
         self.assertEqual(ready, expected_ready)
-        self.assertEqual(len(ready), 21)
-        self.assertEqual(len(runtime_supported), 20)
-        self.assertTrue(runtime_supported.issubset(ready))
-        self.assertEqual(published, runtime_supported)
-        self.assertEqual(routed, runtime_supported)
-        self.assertIn(("dayservice", "unit_price_regional_classification"), ready)
-        self.assertNotIn(("dayservice", "unit_price_regional_classification"), published)
-        self.assertEqual(len(self.allowlist["field_allowlist_by_cell"]), len(runtime_supported))
+        self.assertEqual(len(ready), 41)
+        self.assertEqual(published, ready)
+        self.assertEqual(routed, ready)
+        self.assertEqual(
+            sum(family == "governing_standards_ordinance" for _, family in published),
+            22,
+        )
+        self.assertEqual(
+            sum(family == "unit_price_regional_classification" for _, family in published),
+            19,
+        )
+        self.assertIn(("dayservice", "unit_price_regional_classification"), published)
+        self.assertIn(("dayservice", "governing_standards_ordinance"), published)
+        self.assertIn(("dayrehab", "governing_standards_ordinance"), published)
+        self.assertEqual(len(self.allowlist["field_allowlist_by_cell"]), len(published))
+        self.assertEqual(
+            len(self.allowlist["runtime_source_binding_by_cell"]), len(published)
+        )
         self.assertTrue(self.allowlist["runtime_binding"]["established"])
         self.assertEqual(
-            self.allowlist["runtime_binding"]["policy_module"],
-            "lib/publication-policy.ts",
+            set(self.allowlist["runtime_binding"]["supported_source_families"]),
+            {
+                "governing_standards_ordinance",
+                "unit_price_regional_classification",
+            },
         )
         self.assertEqual(
             self.allowlist["summary"]["decision"],

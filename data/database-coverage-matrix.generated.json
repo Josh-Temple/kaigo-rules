@@ -18,6 +18,7 @@
     "data/verification/standards-interpretation-gates.json",
     "data/verification/bounded-currentness-closure-worker-b.json",
     "data/verification/high-value-currentness-closure-worker-b.json",
+    "data/verification/high-value-currentness-expansion-worker-c.json",
     "data/relation-verification-queue.json",
     "data/shared/standards/manifest.json",
     "data/shared/standards-interpretation/remaining-source-register.json",
@@ -203,11 +204,13 @@
             ]
           },
           "currentness": {
-            "state": "PARTIAL",
+            "state": "PASS",
             "raw_status": [
-              "LIVE_SOURCE_REPARSE_SCHEDULED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#dayservice::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1152,9 +1155,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#homevisit::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -1749,9 +1756,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#homebath::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2348,9 +2359,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#homenursing::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -2947,9 +2962,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#homerehab::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3546,9 +3565,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#homecaremanagement::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -3815,11 +3838,12 @@
             ]
           },
           "currentness": {
-            "state": "PARTIAL",
+            "state": "PASS",
             "raw_status": [
-              "LIVE_SOURCE_REPARSE_SCHEDULED"
+              "PASS_BOUNDED_VERIFIED"
             ],
             "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#dayrehab::governing_standards_ordinance",
               "data/verification/existing-service-currentness-wave.json"
             ]
           },
@@ -4758,9 +4782,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#shortstay-life::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8292,9 +8320,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#shortstay-medical::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8881,9 +8913,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#specific-facility::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -9470,9 +9506,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#welfare-equipment-rental::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -15904,9 +15944,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-homebath::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16489,9 +16533,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-homenursing::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17074,9 +17122,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-homerehab::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17659,9 +17711,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-homecaremanagement::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18244,9 +18300,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-dayrehab::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18829,9 +18889,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-shortstay-life::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19414,9 +19478,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-shortstay-medical::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19999,9 +20067,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-specific-facility::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20584,9 +20656,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/high-value-currentness-expansion-worker-c.json#preventive-welfare-equipment-rental::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -23110,8 +23186,7 @@
         },
         "currentness": {
           "NOT_ESTABLISHED": 17,
-          "PARTIAL": 2,
-          "PASS": 20
+          "PASS": 22
         },
         "relation_verification": {
           "NOT_ESTABLISHED": 39
@@ -23281,8 +23356,8 @@
         },
         "currentness": {
           "NOT_APPLICABLE": 2,
-          "NOT_ESTABLISHED": 36,
-          "PASS": 1
+          "NOT_ESTABLISHED": 18,
+          "PASS": 19
         },
         "relation_verification": {
           "NOT_APPLICABLE": 2,
@@ -23374,11 +23449,6 @@
       },
       {
         "service_id": "dayservice",
-        "source_family": "governing_standards_ordinance",
-        "state": "PARTIAL"
-      },
-      {
-        "service_id": "dayservice",
         "source_family": "standards_interpretation_notice",
         "state": "BLOCKED"
       },
@@ -23434,11 +23504,6 @@
       },
       {
         "service_id": "homevisit",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homevisit",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -23474,11 +23539,6 @@
       },
       {
         "service_id": "homebath",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homebath",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -23514,11 +23574,6 @@
       },
       {
         "service_id": "homenursing",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homenursing",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -23554,11 +23609,6 @@
       },
       {
         "service_id": "homerehab",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homerehab",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -23594,11 +23644,6 @@
       },
       {
         "service_id": "homecaremanagement",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homecaremanagement",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -23614,11 +23659,6 @@
       },
       {
         "service_id": "dayrehab",
-        "source_family": "governing_standards_ordinance",
-        "state": "PARTIAL"
-      },
-      {
-        "service_id": "dayrehab",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
@@ -23675,11 +23715,6 @@
       {
         "service_id": "shortstay-life",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-life",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23944,11 +23979,6 @@
       },
       {
         "service_id": "shortstay-medical",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-medical",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -23984,11 +24014,6 @@
       },
       {
         "service_id": "specific-facility",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "specific-facility",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24020,11 +24045,6 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24489,11 +24509,6 @@
       },
       {
         "service_id": "preventive-homebath",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homebath",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24529,11 +24544,6 @@
       },
       {
         "service_id": "preventive-homenursing",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homenursing",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24569,11 +24579,6 @@
       },
       {
         "service_id": "preventive-homerehab",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homerehab",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24609,11 +24614,6 @@
       },
       {
         "service_id": "preventive-homecaremanagement",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24649,11 +24649,6 @@
       },
       {
         "service_id": "preventive-dayrehab",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dayrehab",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24689,11 +24684,6 @@
       },
       {
         "service_id": "preventive-shortstay-life",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24729,11 +24719,6 @@
       },
       {
         "service_id": "preventive-shortstay-medical",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24769,11 +24754,6 @@
       },
       {
         "service_id": "preventive-specific-facility",
-        "source_family": "unit_price_regional_classification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-specific-facility",
         "source_family": "national_qa",
         "state": "PARTIAL"
       },
@@ -24805,11 +24785,6 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "fee_calculation_guidance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "unit_price_regional_classification",
         "state": "NOT_ESTABLISHED"
       },
       {

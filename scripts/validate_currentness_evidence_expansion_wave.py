@@ -18,6 +18,9 @@ FEE_EVENTS = ROOT / "data/fee-guidance-amendment-events.json"
 RELATION_QUEUE = ROOT / "data/relation-verification-queue.json"
 BOUNDED_CURRENTNESS = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
 HIGH_VALUE_CURRENTNESS = ROOT / "data/verification/high-value-currentness-closure-worker-b.json"
+HIGH_VALUE_CURRENTNESS_EXPANSION = (
+    ROOT / "data/verification/high-value-currentness-expansion-worker-c.json"
+)
 
 EXPECTED_BASE_SHA = "e0d814b1b22d449fd13784bbb051fba5c27df64e"
 EXPECTED_CURRENTNESS = {
@@ -94,6 +97,10 @@ def expected_current_matrix_counts() -> dict[str, int]:
     decisions = (
         (BOUNDED_CURRENTNESS, "CANONICAL_BOUNDED_CURRENTNESS_CLOSURE_DECISION"),
         (HIGH_VALUE_CURRENTNESS, "CANONICAL_HIGH_VALUE_CURRENTNESS_CLOSURE_DECISION"),
+        (
+            HIGH_VALUE_CURRENTNESS_EXPANSION,
+            "CANONICAL_HIGH_VALUE_CURRENTNESS_EXPANSION_DECISION",
+        ),
     )
     seen: set[tuple[str, str]] = set()
     for path, expected_kind in decisions:

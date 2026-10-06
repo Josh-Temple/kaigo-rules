@@ -108,7 +108,7 @@ def main():
         for route in ['/services/dayrehab','/rules?service=dayrehab','/notices?service=dayrehab','/services/dayrehab/remuneration','/services/dayrehab/remuneration/guidance']:
             try:
                 p=page(route)
-                for destination in ['/services/dayrehab/search','/rules?service=dayrehab','/notices?service=dayrehab','/services/dayrehab/remuneration']:
+                for destination in ['/databases/search?service=dayrehab','/rules?service=dayrehab','/notices?service=dayrehab','/services/dayrehab/remuneration']:
                     require(destination in p.links,'service nav context lost: '+destination)
                 if 'remuneration' in route:require('確認中' in p.visible and '人手確認' in p.visible,'bounded publication caution missing')
                 results.append({'id':route,'status':'PASS'})
