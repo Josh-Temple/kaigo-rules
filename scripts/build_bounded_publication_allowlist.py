@@ -19,6 +19,9 @@ READINESS_PATH = ROOT / "data/publication-readiness.generated.json"
 GOVERNING_CURRENTNESS_PATH = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
 HIGH_VALUE_CURRENTNESS_PATH = ROOT / "data/verification/high-value-currentness-closure-worker-b.json"
 HIGH_VALUE_EXPANSION_PATH = ROOT / "data/verification/high-value-currentness-expansion-worker-c.json"
+UNIT_PRICE_META_PATH = ROOT / "data/unit-price-dayservice-meta.json"
+UNIT_PRICE_MAPPINGS_PATH = ROOT / "data/unit-price-service-multipliers.json"
+UNIT_PRICE_ITEM_BODY_PATH = ROOT / "data/unit-price-item-body-assurance.json"
 OUTPUT_PATH = ROOT / "data/bounded-publication-allowlist.json"
 
 SAFE_FIELDS = [
@@ -120,6 +123,78 @@ def normalize_runtime_promotion(row: dict[str, Any]) -> dict[str, Any]:
     return normalized
 
 
+def unit_price_service_contract_supported(
+    service_id: str,
+    source: dict[str, Any],
+    proof: dict[str, Any],
+) -> bool:
+    meta = load_json(UNIT_PRICE_META_PATH)
+    mappings = load_json(UNIT_PRICE_MAPPINGS_PATH)
+    assurance = load_json(UNIT_PRICE_ITEM_BODY_PATH)
+
+    mapping = next(
+        (
+            item
+            for item in mappings.get("service_mappings", [])
+            if item.get("service_id") == service_id
+        ),
+        None,
+    )
+    projection = next(
+        (
+            item
+            for item in assurance.get("service_projections", [])
+            if item.get("service_id") == service_id
+        ),
+        None,
+    )
+    if (
+        not mapping
+        or mapping.get("applicability") != "APPLIES"
+        or not projection
+        or projection.get("applicability") != "APPLIES"
+        or projection.get("service_level_item_body") != "PASS"
+        or projection.get("multiplier_profile_id")
+        != mapping.get("multiplier_profile_id")
+    ):
+        return False
+
+    profile = next(
+        (
+            item
+            for item in assurance.get("profile_verification", [])
+            if item.get("profile_id") == projection.get("multiplier_profile_id")
+        ),
+        None,
+    )
+    if (
+        not profile
+        or profile.get("verification_state") != "PASS"
+        or profile.get("mapped_item_count") != 8
+        or len(profile.get("rows") or []) != 8
+    ):
+        return False
+
+    expected_urls = [str(value) for value in meta.get("source_urls", [])]
+    expected_hashes = [str(value) for value in meta.get("source_sha256", [])]
+    if source.get("official_page_urls") != expected_urls:
+        return False
+    if source.get("expected_page_sha256") is not None:
+        if source.get("expected_page_sha256") != expected_hashes:
+            return False
+
+    return (
+        proof.get("state") == "PASS_DIRECT_SERVICE_SCOPE"
+        and proof.get("official_service_name")
+        == mapping.get("official_service_name")
+        and proof.get("multiplier_profile_id")
+        == mapping.get("multiplier_profile_id")
+        and proof.get("mapped_item_count")
+        == projection.get("mapped_item_count")
+        and proof.get("source_locator") == projection.get("source_locator")
+    )
+
+
 def source_contract_supported(row: dict[str, Any]) -> bool:
     normalized = normalize_runtime_promotion(row)
     source_family = normalized.get("source_family")
@@ -165,16 +240,13 @@ def source_contract_supported(row: dict[str, Any]) -> bool:
         )
 
     if canonical_source_id == "mhlw-unit-price-current":
+        service_id = str(normalized.get("service_id") or "")
         return (
             source_family == "unit_price_regional_classification"
             and source.get("currentness_class") == "CURRENT_OFFICIAL_CONSOLIDATED"
             and bool(source.get("version_id"))
             and source.get("effective_date") == "2024-04-01"
-            and proof.get("state") == "PASS_DIRECT_SERVICE_SCOPE"
-            and bool(proof.get("official_service_name"))
-            and bool(proof.get("multiplier_profile_id"))
-            and proof.get("mapped_item_count") == 8
-            and bool(proof.get("source_locator"))
+            and unit_price_service_contract_supported(service_id, source, proof)
         )
 
     return False
