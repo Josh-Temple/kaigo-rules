@@ -18,7 +18,7 @@ spec.loader.exec_module(builder)
 
 
 class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
-    def test_builder_preserves_twenty_governing_cells_and_adds_dayservice_unit_price(self):
+    def test_builder_publishes_all_supported_ready_governing_and_unit_price_cells(self):
         artifact = builder.build()
         cells = {
             (row["service_id"], row["source_family"])
@@ -30,12 +30,19 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             if cell[1] == "governing_standards_ordinance"
         }
 
-        self.assertEqual(len(governing), 20)
+        unit_price = {
+            cell
+            for cell in cells
+            if cell[1] == "unit_price_regional_classification"
+        }
+
+        self.assertEqual(len(governing), 22)
+        self.assertEqual(len(unit_price), 19)
         self.assertIn(
             ("dayservice", "unit_price_regional_classification"),
             cells,
         )
-        self.assertEqual(len(cells), 21)
+        self.assertEqual(len(cells), 41)
         unit_price_binding = artifact["runtime_source_binding_by_cell"][
             "dayservice|unit_price_regional_classification"
         ]
