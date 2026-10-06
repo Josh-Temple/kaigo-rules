@@ -152,8 +152,8 @@
         "data/egov-content-independent-audit.json",
         "data/services/dayrehab/ordinance37-scope.json",
         "data/dayrehab-ordinance37-independent-audit.json",
-        "scripts/verify_existing_ordinance37_service_slices.py",
-        ".github/workflows/verify-existing-ordinance37-service-slices.yml"
+        "scripts/verify_residual_ordinance37_service_slices.py",
+        ".github/workflows/verify-residual-ordinance37-service-slices.yml"
       ],
       "cumulative_promotions": 22,
       "new_promotions_this_wave": 2,
@@ -1718,8 +1718,8 @@
         "evidence": [
           "data/ordinance37-scope.json",
           "data/egov-content-independent-audit.json",
-          "scripts/verify_existing_ordinance37_service_slices.py",
-          ".github/workflows/verify-existing-ordinance37-service-slices.yml"
+          "scripts/verify_residual_ordinance37_service_slices.py",
+          ".github/workflows/verify-residual-ordinance37-service-slices.yml"
         ],
         "direct_service_chapter_verified": true,
         "declared_chapter": "通所介護",
@@ -1764,7 +1764,7 @@
         "projection_rule": "bounded-currentness-closure-v3",
         "projection_timestamp": "2026-10-06T15:12:00+09:00",
         "validator": "scripts/validate_bounded_currentness_closure.py",
-        "live_reverification_workflow": ".github/workflows/verify-existing-ordinance37-service-slices.yml"
+        "live_reverification_workflow": ".github/workflows/verify-residual-ordinance37-service-slices.yml"
       },
       "unchanged_axes": {
         "corpus_availability": "AVAILABLE",
@@ -1807,8 +1807,8 @@
           "data/services/dayrehab/ordinance37-scope.json",
           "data/dayrehab-ordinance37-independent-audit.json",
           "data/services/dayrehab/ordinance37-index.generated.json",
-          "scripts/verify_existing_ordinance37_service_slices.py",
-          ".github/workflows/verify-existing-ordinance37-service-slices.yml"
+          "scripts/verify_residual_ordinance37_service_slices.py",
+          ".github/workflows/verify-residual-ordinance37-service-slices.yml"
         ],
         "direct_service_chapter_verified": true,
         "declared_chapter": "通所リハビリテーション",
@@ -1847,7 +1847,7 @@
         "projection_rule": "bounded-currentness-closure-v3",
         "projection_timestamp": "2026-10-06T15:12:00+09:00",
         "validator": "scripts/validate_bounded_currentness_closure.py",
-        "live_reverification_workflow": ".github/workflows/verify-existing-ordinance37-service-slices.yml"
+        "live_reverification_workflow": ".github/workflows/verify-residual-ordinance37-service-slices.yml"
       },
       "unchanged_axes": {
         "corpus_availability": "AVAILABLE",
@@ -1940,7 +1940,7 @@
       "evidence": [
         "data/ordinance37-scope.json",
         "data/egov-content-independent-audit.json",
-        "scripts/verify_existing_ordinance37_service_slices.py"
+        "scripts/verify_residual_ordinance37_service_slices.py"
       ]
     },
     {
@@ -1958,7 +1958,7 @@
       "evidence": [
         "data/services/dayrehab/ordinance37-scope.json",
         "data/dayrehab-ordinance37-independent-audit.json",
-        "scripts/verify_existing_ordinance37_service_slices.py"
+        "scripts/verify_residual_ordinance37_service_slices.py"
       ]
     },
     {
