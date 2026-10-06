@@ -322,6 +322,27 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
         finally:
             builder.DELEGATED_CURRENTNESS_CONTRACT_PATH = original_path
 
+    def test_actual_worker_b_artifact_is_accepted_when_integrated(self):
+        worker_b_path = (
+            ROOT
+            / "data"
+            / "verification"
+            / "delegated-remuneration-currentness-worker-b.json"
+        )
+        if not worker_b_path.exists():
+            self.skipTest("Worker B artifact is not integrated on this branch")
+
+        self.assertEqual(builder.delegated_currentness_path(), worker_b_path)
+        payload = json.loads(worker_b_path.read_text(encoding="utf-8"))
+        self.assertEqual(payload["summary"]["promoted_cells"], 15)
+        self.assertEqual(len(payload["promotions"]), 15)
+        self.assertTrue(
+            all(
+                builder.source_contract_supported(promotion)
+                for promotion in payload["promotions"]
+            )
+        )
+
     def test_safe_fields_exclude_relation_and_human_review_state(self):
         artifact = builder.build()
         key = "dayservice|unit_price_regional_classification"
