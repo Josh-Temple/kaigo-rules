@@ -79,7 +79,7 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
             dayservice["item_body_verification"]["state"],
             self.delegated_applicability["dayservice"]["assurance"]["item_body_verification"],
         )
-        self.assertEqual(dayservice["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(dayservice["currentness"]["state"], "PASS")
         self.assertEqual(dayservice["human_review"]["state"], "NOT_REVIEWED")
         self.assertEqual(dayservice["publication"]["state"], "BLOCKED")
         self.assertEqual(dayservice["route_exposure"]["state"], "BLOCKED")
@@ -92,7 +92,7 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
             dayrehab["item_body_verification"]["state"],
             self.delegated_applicability["dayrehab"]["assurance"]["item_body_verification"],
         )
-        self.assertEqual(dayrehab["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(dayrehab["currentness"]["state"], "PASS")
 
     def test_homevisit_remuneration_ingestion_stays_fail_closed(self):
         remuneration = self.cell("homevisit", "remuneration_notification")
