@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ServiceContextLinks from "../../components/service-context-links";
 import VerificationSummary from "../../components/verification-summary";
+import { publicVerificationLabel } from "../../lib/public-verification";
 import {
   noticeServiceCount,
   publicNoticePublishedServiceCount,
@@ -61,7 +62,7 @@ const sourceStateLabel = (record: PublicNoticeRecord) =>
     : "公式旧HTML";
 
 const currentnessLabel = (record: PublicNoticeRecord) =>
-  record.currentness_state === "HOLD" ? "現行性HOLD" : "現行性GAP";
+  publicVerificationLabel(record.currentness_state, "currentness");
 
 function groupedRecords(records: PublicNoticeRecord[]) {
   return records.reduce((groups, record) => {
@@ -76,25 +77,25 @@ function groupedRecords(records: PublicNoticeRecord[]) {
 const noticeStatusLabel = (status: string) => {
   const labels: Record<string, string> = {
     RECONSTRUCTED_CANDIDATES_PUBLISHED_CURRENTNESS_HOLD:
-      "再構成本文候補を公開・現行性HOLD",
+      "本文候補を公開・現行性確認中",
     HISTORICAL_SOURCE_TEXT_PUBLISHED_CURRENTNESS_GAP:
-      "公式旧資料の本文を公開・現行性GAP",
+      "公式旧資料の本文を公開・現行性確認中",
     ITEM_BODY_VERIFIED_CURRENTNESS_PENDING:
-      "本文照合済み・現行性確認中",
+      "本文確認済み・現行性確認中",
     INDEXED_SHARED_MHLW_SOURCE_SCOPE_NOT_ITEM_VERIFIED:
-      "一次資料scope収載済み・本文照合前",
+      "出典・対象範囲を確認済み・本文確認中",
     INDEXED_SHARED_MHLW_NOTICE_SCOPE_ONLY:
-      "通知scope収載済み・本文照合前",
+      "出典・対象範囲を確認済み・本文確認中",
     SCOPE_DEFINED_NOT_RECONSTRUCTED:
-      "通知scope定義済み・本文未再構成",
+      "対象範囲を確認済み・本文準備中",
     WORK_CONTROL_ACCEPTED_NOT_REPOSITORY_INGESTED:
-      "Work Control成果受理済み・Repository未統合",
+      "本文準備中",
     STAGING_COMPLETE_NOT_REPOSITORY_INGESTED:
-      "通知staging完了・Repository未統合",
+      "本文準備中",
     NOT_REPOSITORY_INGESTED:
-      "Repositoryへの通知本文取り込み前",
+      "本文準備中",
   };
-  return labels[status] || status;
+  return labels[status] || "整備中";
 };
 
 function VerificationPanels({
@@ -252,7 +253,7 @@ export default async function NoticesPage({
 
       {invalidService ? (
         <div className="notice">
-          指定されたサービスはservice catalogに登録されていません。
+          指定されたサービスは公開対象として登録されていません。
           <br />
           <Link href="/notices">サービス一覧に戻る</Link>
         </div>
@@ -301,7 +302,7 @@ export default async function NoticesPage({
 
       {selectedGroup && selectedGroup.record_count === 0 ? (
         <div className="notice">
-          <strong>このサービス群の基準解釈通知本文は、まだRepositoryで公開していません。</strong>
+          <strong>このサービス群の基準解釈通知本文は、まだサイトで公開していません。</strong>
           <br />
           整備状況は下部の「収載・確認状況」で確認できます。
         </div>
@@ -361,7 +362,7 @@ export default async function NoticesPage({
                       {item.service_label}
                       {" / "}
                       {sourceStateLabel(item)}
-                      {" / "}本文照合：<strong>PASS</strong>
+                      {" / "}本文：<strong>確認済み</strong>
                       {" / "}現行性：<strong>{currentnessLabel(item)}</strong>
                       {" / "}人手確認：<strong>未実施</strong>
                     </p>
@@ -430,11 +431,10 @@ export default async function NoticesPage({
             <section className="section">
               <h2>確認状況</h2>
               <p>
-                通所介護の本文候補は{noticeServiceCount("dayservice")}項目で、
-                独立機械照合は全項目PASSです。現行性は{currentnessHold}項目がHOLDです。
-                本文候補の整合性と、現在有効な本文であることの証明を分けています。
+                通所介護の本文候補は{noticeServiceCount("dayservice")}項目で、本文は全項目を照合済みです。
+                現行性は{currentnessHold}項目すべて確認中です。本文の一致確認と、現在有効かどうかの確認を分けています。
               </p>
-              <p><Link href="/notices/review">22項目の監査・人手レビュー画面を見る →</Link></p>
+              <p><Link href="/notices/review">22項目の確認情報を見る →</Link></p>
             </section>
 
             <section className="section">
@@ -480,7 +480,7 @@ export default async function NoticesPage({
                     <h2>現行統合本文ではありません</h2>
                     <p>
                       公式旧HTMLとの本文一致は独立照合済みですが、部分改正資料を旧HTMLへ
-                      機械適用していません。現行性はGAP、人手確認は未実施です。
+                      機械適用していません。現行性は未確認で、人手確認も未実施です。
                     </p>
                     <p>
                       <a href={entry.data.source?.url} target="_blank" rel="noreferrer">
