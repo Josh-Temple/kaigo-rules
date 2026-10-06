@@ -72,6 +72,56 @@ jobs:
           print("PASS: in-memory projection reaches 37/39 with two explicit fail-closed residuals")
           PY
 
+      - name: Project publication-readiness impact without commit
+        run: |
+          python scripts/build_database_coverage_matrix.py
+          python scripts/build_publication_requirement_scoping.py
+          python scripts/build_publication_readiness.py
+          python - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+
+          artifact = json.loads(Path("data/publication-readiness.generated.json").read_text())
+          rows = [
+              row for row in artifact["cells"]
+              if row["source_family"] == "governing_standards_ordinance"
+          ]
+          counts = Counter(row["readiness"] for row in rows)
+          target_ids = {
+              "community-dayservice", "regular-round", "night-homevisit",
+              "care-management", "preventive-support", "dementia-dayservice",
+              "small-scale-multifunctional", "dementia-group-home",
+              "community-specific-facility", "community-elderly-facility",
+              "nursing-small-scale-multifunctional", "elderly-welfare-facility",
+              "elderly-health-facility", "care-medical-institution",
+              "preventive-dementia-dayservice",
+              "preventive-small-scale-multifunctional",
+              "preventive-dementia-group-home",
+          }
+          target = {
+              row["service_id"]: {
+                  "readiness": row["readiness"],
+                  "blocking_reasons": row["blocking_reasons"],
+              }
+              for row in rows if row["service_id"] in target_ids
+          }
+          print("PROJECTED_GOVERNING_STANDARDS_READINESS_COUNTS=" + json.dumps(dict(sorted(counts.items())), ensure_ascii=False))
+          print("PROJECTED_RESIDUAL_TARGET_READINESS=" + json.dumps(target, ensure_ascii=False, sort_keys=True))
+          blocked_currentness = {
+              sid for sid, row in target.items()
+              if row["readiness"] == "BLOCKED_CURRENTNESS"
+          }
+          expected = {"night-homevisit", "dementia-group-home"}
+          if blocked_currentness != expected:
+              raise SystemExit(f"unexpected currentness-blocked residuals: {blocked_currentness}")
+          PY
+          git checkout -- \
+            data/database-coverage-matrix.generated.json \
+            docs/database-coverage-summary.generated.md \
+            data/publication-requirement-scoping.json \
+            data/publication-readiness.generated.json
+
       - name: Reject Worker A edits to repository-wide generated publication artifacts
         if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.title, '[Worker E]')
         env:
