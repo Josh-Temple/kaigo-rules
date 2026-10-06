@@ -316,10 +316,5 @@ export const practicalGuideServiceGroups: PracticalGuideServiceGroup[] = [
   { id: "welfare-equipment-rental", title: "福祉用具貸与", serviceIds: ["welfare-equipment-rental", "preventive-welfare-equipment-rental"] },
   { id: "specific-welfare-equipment-sale", title: "特定福祉用具販売", serviceIds: ["specific-welfare-equipment-sale", "specific-preventive-welfare-equipment-sale"] },
   { id: "care-management", title: "居宅介護支援", serviceIds: ["care-management"] },
-  {
-    id: "preventive-support",
-    title: "介護予防支援",
-    serviceIds: ["preventive-support"],
-    note: "介護予防支援は、対応する通常サービスへ統合せず独立して案内します。",
-  },
+  { id: "preventive-support", title: "介護予防支援", serviceIds: ["preventive-support"], note: "介護予防支援は、対応する通常サービスへ統合せず独立して案内します。" },
 ];
