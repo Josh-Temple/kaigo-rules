@@ -5,10 +5,12 @@ import qaCorpusData from "../../../data/qa-corpus.json";
 import { publicNoticeRecords } from "../../../lib/notice-database";
 import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database-search";
 import {
+  PROGRESSIVE_SOURCE_FAMILY,
+  UNIT_PRICE_SOURCE_FAMILY,
   filterProgressivePublishedRules,
   getProgressivePublicationTrust,
   getProgressiveSourceRecords,
-  listProgressivePublicationServices,
+  listProgressivePublicationServicesAcrossFamilies,
 } from "../../../lib/publication-policy";
 import { publicVerificationLabel } from "../../../lib/public-verification";
 import { listServices } from "../../../lib/service-catalog";
@@ -64,7 +66,8 @@ export default async function DatabaseSearchPage({
   const { q = "", service = "" } = await searchParams;
   const query = q.trim();
   const requestedService = service.trim();
-  const progressiveServices = listProgressivePublicationServices();
+  const progressiveServices =
+    listProgressivePublicationServicesAcrossFamilies();
   const progressiveServiceIds = new Set(
     progressiveServices.map((item) => item.service_id),
   );
@@ -78,12 +81,36 @@ export default async function DatabaseSearchPage({
   const groupedProgressiveServices = publicServiceNavigationGroups(
     progressiveServiceIds,
   );
-  const publicationTrust = selectedService
-    ? getProgressivePublicationTrust(selectedService.service_id)
-    : null;
-  const selectedSourceNodes = selectedService
-    ? (getProgressiveSourceRecords(selectedService.service_id) as Array<any>)
-    : ordinanceNodes;
+  const selectedPrimaryFamily = selectedService?.source_families.includes(
+    PROGRESSIVE_SOURCE_FAMILY,
+  )
+    ? PROGRESSIVE_SOURCE_FAMILY
+    : selectedService?.source_families[0];
+  const publicationTrust =
+    selectedService && selectedPrimaryFamily
+      ? getProgressivePublicationTrust(
+          selectedService.service_id,
+          selectedPrimaryFamily,
+        )
+      : null;
+  const selectedSourceNodes =
+    selectedService &&
+    selectedService.source_families.includes(
+      PROGRESSIVE_SOURCE_FAMILY,
+    )
+      ? (getProgressiveSourceRecords(
+          selectedService.service_id,
+          PROGRESSIVE_SOURCE_FAMILY,
+        ) as Array<any>)
+      : ordinanceNodes;
+  const selectedUnitPriceRecords =
+    selectedService &&
+    selectedService.source_families.includes(UNIT_PRICE_SOURCE_FAMILY)
+      ? (getProgressiveSourceRecords(
+          selectedService.service_id,
+          UNIT_PRICE_SOURCE_FAMILY,
+        ) as Array<any>)
+      : [];
 
   const lawArticles = careNodes.filter((node) => node.node_type === "article");
   const ordinanceArticles = ordinanceNodes.filter(
@@ -94,7 +121,9 @@ export default async function DatabaseSearchPage({
   );
 
   const scopedOrdinanceArticles = requestedService
-    ? selectedService
+    ? selectedService?.source_families.includes(
+        PROGRESSIVE_SOURCE_FAMILY,
+      )
       ? filterProgressivePublishedRules(
           selectedService.service_id,
           selectedSourceArticles,
@@ -161,11 +190,45 @@ export default async function DatabaseSearchPage({
         ],
       );
 
+  const unitPriceMatches =
+    selectedUnitPriceRecords.length
+      ? rankDatabaseSearch(
+          selectedUnitPriceRecords,
+          query,
+          (item) => [
+            {
+              value: [
+                item.region_class,
+                item.service,
+                item.ratio_text,
+              ]
+                .filter(Boolean)
+                .join(" "),
+              weight: 10,
+            },
+            {
+              value: [
+                item.ratio_per_thousand,
+                item.unit_price_yen,
+              ]
+                .filter((value) => value !== undefined)
+                .join(" "),
+              weight: 7,
+            },
+            {
+              value: item.source_locator || "",
+              weight: 2,
+            },
+          ],
+        )
+      : [];
+
   const total =
     lawMatches.length +
     ordinanceMatches.length +
     noticeMatches.length +
-    qaMatches.length;
+    qaMatches.length +
+    unitPriceMatches.length;
 
   return (
     <article className="answer-page wide-page">
@@ -173,15 +236,15 @@ export default async function DatabaseSearchPage({
       <h1>介護制度DBを横断検索</h1>
       <p className="lead">
         {selectedService
-          ? `${selectedService.label}について、公開条件を満たした基準省令の本文だけを検索します。`
-          : "サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aを同じキーワードで探します。各結果から本文と出典へ進めます。対象範囲や現行性は、必要なときに各ページの確認情報で確認できます。"}
+          ? `${selectedService.label}について、公開条件を満たした一次資料をsource family横断で検索します。`
+          : "サービスを先に選ばず、介護保険法・基準省令・公開済みの基準解釈通知・厚生労働省Q&Aを同じキーワードで探します。各結果から本文と出典へ進めます。対象範囲や現行性は、必要なときに各ページの確認情報で確認できます."}
       </p>
 
       <div className="notice">
         {selectedService && publicationTrust ? (
           <>
-            <strong>{selectedService.label}の現行本文・適用範囲を確認済みです。</strong><br />
-            未確認の制度間関係や解釈は検索対象に含めません。
+            <strong>{selectedService.label}の公開条件を満たした一次資料を検索しています。</strong><br />
+            source identity・現行性・適用範囲を確認できたpublication unitだけを対象とし、未確認の制度間関係や解釈は含めません。
             <a href={publicationTrust.source_url} target="_blank" rel="noreferrer"> 公式原文</a>
           </>
         ) : requestedService ? (
@@ -375,6 +438,34 @@ export default async function DatabaseSearchPage({
               </>
             ) : <p className="meta">現在公開している範囲では一致なし</p>}
           </section>
+
+          {selectedService?.source_families.includes(
+            UNIT_PRICE_SOURCE_FAMILY,
+          ) ? (
+            <section className="section">
+              <h2>一単位単価 <span className="meta">({unitPriceMatches.length}件)</span></h2>
+              {unitPriceMatches.length ? (
+                <div className="unit-price-table">
+                  {unitPriceMatches.slice(0, LIMIT).map((item) => (
+                    <Link
+                      className="unit-price-row"
+                      href="/fees/unit-price"
+                      key={item.id}
+                    >
+                      <strong>{item.region_class}</strong>
+                      <span>{Number(item.unit_price_yen).toFixed(2)}円 / 単位</span>
+                      <span>{item.ratio_text}</span>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <p className="meta">現在公開している範囲では一致なし</p>
+              )}
+              {unitPriceMatches.length > LIMIT ? (
+                <p className="meta">上位{LIMIT}件を表示しています。</p>
+              ) : null}
+            </section>
+          ) : null}
 
           <section className="section">
             <h2>次の探し方</h2>
