@@ -124,5 +124,27 @@
         "automatic promotion to verified is forbidden"
       ]
     }
-  ]
+  ],
+  "public_surface_metrics": {
+    "title": "Observable public product-value surfaces",
+    "purpose": "Track how much of the repository is actually reachable as a public product without treating internal readiness or review-queue counts as user value.",
+    "report_fields": [
+      "public_databases",
+      "published_service_source_family_cells",
+      "published_publication_units",
+      "guide_task_journeys",
+      "practical_question_primary_source_journeys",
+      "major_pages_total",
+      "major_pages_with_feedback",
+      "feedback_coverage_rate"
+    ],
+    "guards": [
+      "Published service-source-family cells and publication units count only the explicit bounded publication allowlist, never READY candidates or blocked cells.",
+      "Existing legacy public item coverage remains measured separately by public_items_with_complete_evidence_state and is not reclassified as bounded publication.",
+      "Guide/task journeys count only committed public routes with an actionable user journey.",
+      "Practical-question journeys require a resolvable evidence path to an official source or canonical authority node.",
+      "Feedback coverage counts a page only when it has a global page-aware feedback link or is the feedback intake page itself.",
+      "No person-identifying analytics or feedback telemetry is introduced by this metric."
+    ]
+  }
 }
