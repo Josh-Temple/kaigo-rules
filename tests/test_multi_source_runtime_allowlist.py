@@ -417,6 +417,33 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
                 "data/verification/governing-standards-residual-currentness-worker-a.json",
             )
 
+    def test_community_direct_ranges_use_article_number_order_not_json_order(self):
+        promotions, _, _ = builder.load_promotions()
+
+        small_scale = promotions[
+            ("small-scale-multifunctional", "governing_standards_ordinance")
+        ]
+        articles = small_scale["applicability_proof"]["direct_article_numbers"]
+        self.assertIn("62", articles)
+        self.assertIn("88", articles)
+        self.assertNotIn("7", articles)
+        self.assertNotIn("8", articles)
+        for article in articles:
+            major = int(article.split("-", 1)[0])
+            self.assertGreaterEqual(major, 62)
+            self.assertLessEqual(major, 88)
+
+        community_dayservice = promotions[
+            ("community-dayservice", "governing_standards_ordinance")
+        ]
+        dayservice_articles = community_dayservice[
+            "applicability_proof"
+        ]["direct_article_numbers"]
+        self.assertIn("19", dayservice_articles)
+        self.assertIn("37", dayservice_articles)
+        for excluded in ("1", "2", "3", "183"):
+            self.assertNotIn(excluded, dayservice_articles)
+
     def test_residual_governing_runtime_contract_fails_closed(self):
         promotions, _, _ = builder.load_promotions()
         key = ("regular-round", "governing_standards_ordinance")
