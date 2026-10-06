@@ -120,6 +120,7 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
     def test_unit_price_item_body_projection_uses_service_specific_primary_source_evidence(self):
         homevisit = self.cell("homevisit", "unit_price_regional_classification")
         dayservice = self.cell("dayservice", "unit_price_regional_classification")
+        dayrehab = self.cell("dayrehab", "unit_price_regional_classification")
         sale = self.cell("specific-welfare-equipment-sale", "unit_price_regional_classification")
 
         self.assertEqual(homevisit["service_scope"]["state"], "SCOPE_DEFINED")
@@ -129,7 +130,11 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
             "data/unit-price-item-body-assurance.json#homevisit",
             homevisit["item_body_verification"]["evidence"],
         )
-        self.assertEqual(homevisit["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(homevisit["currentness"]["state"], "PASS")
+        self.assertIn(
+            "data/verification/high-value-currentness-expansion-worker-c.json#homevisit::unit_price_regional_classification",
+            homevisit["currentness"]["evidence"],
+        )
         self.assertEqual(homevisit["publication"]["state"], "BLOCKED")
         self.assertEqual(homevisit["route_exposure"]["state"], "BLOCKED")
 
@@ -138,6 +143,13 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
             "data/unit-price-independent-audit.json",
             dayservice["item_body_verification"]["evidence"],
         )
+        self.assertEqual(dayservice["currentness"]["state"], "PASS")
+
+        # An applicable but unselected cell stays fail-closed: shared-source
+        # currentness is never broadcast to the rest of the family.
+        self.assertEqual(dayrehab["item_body_verification"]["state"], "PASS")
+        self.assertEqual(dayrehab["currentness"]["state"], "NOT_ESTABLISHED")
+
         self.assertEqual(sale["item_body_verification"]["state"], "NOT_APPLICABLE")
         self.assertEqual(sale["currentness"]["state"], "NOT_APPLICABLE")
 
