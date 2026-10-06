@@ -1483,7 +1483,17 @@
     "projected_unit_price_pass_cells": 19,
     "unselected_applicable_unit_price_cells_remain_unestablished": 18,
     "care_insurance_act_promotions": 0,
-    "candidate_publication_units_per_promoted_cell": 4
+    "candidate_publication_units_per_promoted_cell": 4,
+    "projected_additional_ready_cells": 18,
+    "reference_ready_cells": 21,
+    "projected_ready_cells_after_semantic_integration": 39,
+    "projected_additional_ready_publication_units": 72,
+    "ready_publication_unit_types": [
+      "SOURCE_TEXT_ITEM_BODY",
+      "SOURCE_METADATA_LOCATOR",
+      "CURRENTNESS_STATEMENT",
+      "SERVICE_APPLICABILITY_STATEMENT"
+    ]
   },
   "integration_boundary": {
     "generated_coverage_matrix_modified_by_worker_c": false,
