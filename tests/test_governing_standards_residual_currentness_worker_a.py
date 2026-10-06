@@ -36,15 +36,26 @@ class GoverningStandardsResidualCurrentnessWorkerATest(unittest.TestCase):
     def test_repository_contract_passes(self):
         self.assertEqual(self.errors_for(), [])
 
-    def test_exact_seventeen_residual_cells_are_bounded(self):
+    def test_exact_seventeen_residual_cells_are_decided_fail_closed(self):
         decisions = self.artifact["decisions"]
+        by_id = {row["service_id"]: row for row in decisions}
         self.assertEqual(len(decisions), 17)
+        self.assertEqual(set(by_id), set(module.TARGETS))
+        promoted = {
+            service_id for service_id, row in by_id.items()
+            if row["decision"] == "PROMOTE_PASS_BOUNDED"
+        }
+        deferred = {
+            service_id for service_id, row in by_id.items()
+            if row["decision"] == "DEFER"
+        }
+        self.assertEqual(promoted, module.PROMOTED_TARGETS)
+        self.assertEqual(deferred, set(module.DEFERRED_TARGETS))
+        self.assertEqual(len(promoted), 15)
         self.assertEqual(
-            {row["service_id"] for row in decisions},
-            set(module.TARGETS),
+            {by_id[sid]["blocker"] for sid in deferred},
+            {"CURRENT_CORPUS_SCOPE_ENDPOINT_NOT_RESOLVED"},
         )
-        self.assertTrue(all(row["decision"] == "PROMOTE_PASS_BOUNDED" for row in decisions))
-        self.assertTrue(all(row["projected_currentness_state"] == "PASS" for row in decisions))
 
     def test_regular_and_preventive_source_identities_remain_distinct(self):
         by_id = {row["service_id"]: row for row in self.artifact["decisions"]}
