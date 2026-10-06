@@ -3,7 +3,10 @@ import sourcesData from "../../data/sources.json";
 import {
   practicalGuideJourneys,
   practicalGuidePolicy,
+  practicalGuideServiceGroups,
 } from "../../lib/practical-guide";
+import { DEFAULT_SERVICE_ID, getService } from "../../lib/service-catalog";
+import { listProgressivePublicationServices } from "../../lib/publication-policy";
 
 type SourceRecord = {
   id: string;
@@ -15,6 +18,33 @@ const sources = sourcesData as SourceRecord[];
 const sourcesById = new Map(sources.map((source) => [source.id, source]));
 
 export default function GuidePage() {
+  const progressiveServiceIds = new Set(
+    listProgressivePublicationServices().map((service) => service.service_id),
+  );
+
+  const serviceDestination = (serviceId: string) => {
+    const service = getService(serviceId);
+    if (progressiveServiceIds.has(serviceId)) {
+      return {
+        href: `/databases/search?service=${encodeURIComponent(serviceId)}`,
+        detail: "公開条件を満たした基準省令を、このサービスに絞って確認します。",
+      };
+    }
+    if (
+      serviceId === DEFAULT_SERVICE_ID ||
+      service.routing.future_service_base_enabled
+    ) {
+      return {
+        href: `/services/${encodeURIComponent(serviceId)}`,
+        detail: "サービス別に公開している制度情報を確認します。",
+      };
+    }
+    return {
+      href: `/databases/search?q=${encodeURIComponent(service.label)}`,
+      detail: "サービス名をキーワードに、現在公開している制度DBから関連情報を探します。",
+    };
+  };
+
   return (
     <article className="answer-page wide-page">
       <p className="eyebrow">PRACTICAL GUIDE</p>
@@ -49,6 +79,42 @@ export default function GuidePage() {
         </div>
       </section>
 
+      <section className="section">
+        <h2>サービスから探す</h2>
+        <p>
+          通常サービスと対応する介護予防サービスは同じまとまりで表示します。
+          利用できるサービス別絞り込みがある場合はそこへ進み、それ以外はサービス名で公開DBを検索します。
+          介護予防支援は独立したサービスとして扱います。
+        </p>
+        {practicalGuideServiceGroups.map((group) => (
+          <div key={group.id} style={{ marginTop: "24px" }}>
+            <h3>{group.title}</h3>
+            {group.note ? <p className="meta">{group.note}</p> : null}
+            <div className="entry-links">
+              {group.serviceIds.map((serviceId) => {
+                const service = getService(serviceId);
+                const destination = serviceDestination(serviceId);
+                return (
+                  <Link
+                    className="entry-row"
+                    href={destination.href}
+                    key={serviceId}
+                  >
+                    <span>
+                      {service.label}
+                      <small style={{ display: "block", marginTop: "4px" }}>
+                        {destination.detail}
+                      </small>
+                    </span>
+                    <small>開く →</small>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </section>
+
       {practicalGuideJourneys.map((journey, index) => (
         <section className="section" id={journey.id} key={journey.id}>
           <p className="eyebrow">
@@ -56,6 +122,29 @@ export default function GuidePage() {
           </p>
           <h2>{journey.title}</h2>
           <p>{journey.summary}</p>
+
+          {journey.subJourneys?.length ? (
+            <>
+              <h3>具体的な確認ルート</h3>
+              <div className="entry-links">
+                {journey.subJourneys.map((subJourney) => (
+                  <Link
+                    className="entry-row"
+                    href={`#${subJourney.id}`}
+                    key={subJourney.id}
+                  >
+                    <span>
+                      {subJourney.title}
+                      <small style={{ display: "block", marginTop: "4px" }}>
+                        {subJourney.summary}
+                      </small>
+                    </span>
+                    <small>確認する →</small>
+                  </Link>
+                ))}
+              </div>
+            </>
+          ) : null}
 
           <h3>まず確認すること</h3>
           <ol className="steps">
@@ -97,6 +186,60 @@ export default function GuidePage() {
           {journey.caution ? (
             <div className="notice">{journey.caution}</div>
           ) : null}
+
+          {journey.subJourneys?.map((subJourney) => (
+            <section
+              className="section"
+              id={subJourney.id}
+              key={subJourney.id}
+              style={{ marginTop: "40px" }}
+            >
+              <p className="eyebrow">PRACTICAL PATH</p>
+              <h3>{subJourney.title}</h3>
+              <p>{subJourney.summary}</p>
+
+              <h4>まず確認すること</h4>
+              <ol className="steps">
+                {subJourney.firstChecks.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+
+              <h4>DB内で確認する</h4>
+              <div className="entry-links">
+                {subJourney.databaseLinks.map((link) => (
+                  <Link className="entry-row" href={link.href} key={link.href}>
+                    <span>
+                      {link.label}
+                      <small style={{ display: "block", marginTop: "4px" }}>
+                        {link.detail}
+                      </small>
+                    </span>
+                    <small>開く →</small>
+                  </Link>
+                ))}
+              </div>
+
+              <h4>公式資料へ戻る</h4>
+              <ul className="source-list">
+                {subJourney.officialSourceIds.map((sourceId) => {
+                  const source = sourcesById.get(sourceId);
+                  if (!source) return null;
+                  return (
+                    <li key={sourceId}>
+                      <a href={source.url} target="_blank" rel="noreferrer">
+                        {source.title}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              {subJourney.caution ? (
+                <div className="notice">{subJourney.caution}</div>
+              ) : null}
+            </section>
+          ))}
         </section>
       ))}
 
