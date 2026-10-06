@@ -1,0 +1,81 @@
+{
+  "format_version": 1,
+  "purpose": "利用者がサービスを探すための案内上の分類。法令上の新しい分類を定義するものではない。",
+  "groups": [
+    {
+      "id": "home",
+      "label": "訪問・在宅",
+      "description": "訪問系・在宅で利用するサービス",
+      "units": [
+        { "service_ids": ["homevisit"] },
+        { "service_ids": ["homebath", "preventive-homebath"] },
+        { "service_ids": ["homenursing", "preventive-homenursing"] },
+        { "service_ids": ["homerehab", "preventive-homerehab"] },
+        { "service_ids": ["homecaremanagement", "preventive-homecaremanagement"] },
+        { "service_ids": ["regular-round"] },
+        { "service_ids": ["night-homevisit"] }
+      ]
+    },
+    {
+      "id": "day",
+      "label": "通所",
+      "description": "通所して利用するサービス",
+      "units": [
+        { "service_ids": ["dayservice"] },
+        { "service_ids": ["dayrehab", "preventive-dayrehab"] },
+        { "service_ids": ["community-dayservice"] },
+        { "service_ids": ["dementia-dayservice", "preventive-dementia-dayservice"] }
+      ]
+    },
+    {
+      "id": "short-stay",
+      "label": "短期入所",
+      "description": "短期間入所して利用するサービス",
+      "units": [
+        { "service_ids": ["shortstay-life", "preventive-shortstay-life"] },
+        { "service_ids": ["shortstay-medical", "preventive-shortstay-medical"] }
+      ]
+    },
+    {
+      "id": "residential-facility",
+      "label": "居住・施設",
+      "description": "居住系・施設系のサービス",
+      "units": [
+        { "service_ids": ["specific-facility", "preventive-specific-facility"] },
+        { "service_ids": ["dementia-group-home", "preventive-dementia-group-home"] },
+        { "service_ids": ["community-specific-facility"] },
+        { "service_ids": ["community-elderly-facility"] },
+        { "service_ids": ["elderly-welfare-facility"] },
+        { "service_ids": ["elderly-health-facility"] },
+        { "service_ids": ["care-medical-institution"] }
+      ]
+    },
+    {
+      "id": "multifunctional",
+      "label": "多機能・地域密着",
+      "description": "複数の機能を組み合わせる地域密着型サービス",
+      "units": [
+        { "service_ids": ["small-scale-multifunctional", "preventive-small-scale-multifunctional"] },
+        { "service_ids": ["nursing-small-scale-multifunctional"] }
+      ]
+    },
+    {
+      "id": "equipment",
+      "label": "福祉用具",
+      "description": "福祉用具の貸与・販売",
+      "units": [
+        { "service_ids": ["welfare-equipment-rental", "preventive-welfare-equipment-rental"] },
+        { "service_ids": ["specific-welfare-equipment-sale", "specific-preventive-welfare-equipment-sale"] }
+      ]
+    },
+    {
+      "id": "care-management",
+      "label": "ケアマネジメント",
+      "description": "ケアプラン作成・相談支援",
+      "units": [
+        { "service_ids": ["care-management"] },
+        { "service_ids": ["preventive-support"] }
+      ]
+    }
+  ]
+}
