@@ -164,11 +164,7 @@ export default async function FeeCriteriaPage({
               <dd>{trust?.source_title || "—"}</dd>
             </div>
             <div>
-              <dt>版</dt>
-              <dd>{trust?.source_version || "—"}</dd>
-            </div>
-            <div>
-              <dt>確認日</dt>
+              <dt>現行性確認日</dt>
               <dd>{trust?.checked_at || "—"}</dd>
             </div>
           </dl>
