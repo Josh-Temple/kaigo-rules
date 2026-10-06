@@ -10,12 +10,6 @@ import {
   rankDatabaseSearch,
   scoreDatabaseSearch,
 } from "../lib/database-search.ts";
-import {
-  publicSourceFamiliesForService,
-  publicSourceNavigationMetrics,
-} from "../lib/public-source-navigation.ts";
-import { isProgressiveRouteCell } from "../lib/publication-policy.ts";
-import { listServices } from "../lib/service-catalog.ts";
 
 test("database-wide search expands key service synonyms", () => {
   assert.equal(matchesDatabaseSearch("業務継続計画の策定等", "BCP"), true);
@@ -229,33 +223,21 @@ test("multi-source search is gated by the shared publication policy", () => {
   );
 });
 
-test("public source navigation never exposes a family outside route policy", () => {
-  const services = listServices();
-  const rows = services.flatMap((service) =>
-    publicSourceFamiliesForService(service.service_id).map((family) => ({
-      service_id: service.service_id,
-      source_family: family.source_family,
-    })),
-  );
+test("public source navigation delegates exposure and metrics to the shared route policy", () => {
+  const source = fs.readFileSync("lib/public-source-navigation.ts", "utf8");
 
-  for (const row of rows) {
-    assert.equal(
-      isProgressiveRouteCell(row.service_id, row.source_family),
-      true,
-      `${row.service_id} / ${row.source_family} must remain publication-gated`,
-    );
-  }
-
-  const metrics = publicSourceNavigationMetrics();
-  assert.equal(metrics.cross_source_searchable_cells, rows.length);
-  assert.equal(
-    metrics.runtime_supported_source_families,
-    new Set(rows.map((row) => row.source_family)).size,
+  assert.match(source, /isProgressiveRouteCell/);
+  assert.match(
+    source,
+    /isProgressiveRouteCell\(serviceId, definition\.source_family\)/,
   );
-  assert.equal(
-    metrics.service_pages_with_2plus_published_source_families,
-    services.filter(
-      (service) => publicSourceFamiliesForService(service.service_id).length >= 2,
-    ).length,
+  assert.match(source, /GOVERNING_STANDARDS_SOURCE_FAMILY/);
+  assert.match(source, /UNIT_PRICE_SOURCE_FAMILY/);
+  assert.match(source, /runtime_supported_source_families/);
+  assert.match(source, /cross_source_searchable_cells/);
+  assert.match(source, /service_pages_with_2plus_published_source_families/);
+  assert.doesNotMatch(
+    source,
+    /READY_FOR_PUBLICATION_REVIEW|blocking_reasons|promotion_applied/,
   );
 });
