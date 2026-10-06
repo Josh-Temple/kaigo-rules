@@ -111,6 +111,15 @@ def main() -> None:
     if not any(
         row.get("service_id") == "homevisit"
         and row.get("source_family") == "unit_price_regional_classification"
+        and row.get("record_id") == "unitprice.homevisit.1"
+        and row.get("expected_state") == "PUBLISHED"
+        for row in smoke_cases
+    ):
+        errors.append("machine retrieval: missing published homevisit Unit Price smoke")
+    if not any(
+        row.get("service_id") == "dayrehab"
+        and row.get("source_family") == "unit_price_regional_classification"
+        and row.get("record_id") == "unitprice.dayrehab.1"
         and row.get("expected_state") == "BLOCKED"
         for row in smoke_cases
     ):
