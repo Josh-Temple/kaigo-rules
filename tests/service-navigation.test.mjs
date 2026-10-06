@@ -87,3 +87,19 @@ test("services page uses user-facing groups and a database fallback instead of m
   assert.match(source, /DB全体から名称検索/);
   assert.match(source, /検索結果が少ない場合も、制度資料そのものが存在しないとは限りません/);
 });
+
+
+test("service and guide navigation are publication-gated across source families", () => {
+  const services = readText("app/services/page.tsx");
+  const contextLinks = readText("components/service-context-links.tsx");
+  const guide = readText("app/guide/page.tsx");
+
+  assert.match(services, /publicSourceFamiliesForService/);
+  assert.match(services, /公開中の一次資料を横断/);
+  assert.match(contextLinks, /publicSourceFamiliesForService/);
+  assert.match(contextLinks, /UNIT_PRICE_SOURCE_FAMILY/);
+  assert.match(contextLinks, /\/fees\/unit-price/);
+  assert.match(guide, /publicSourceFamiliesForService/);
+  assert.match(guide, /現在公開している/);
+  assert.doesNotMatch(guide, /READY_FOR_PUBLICATION_REVIEW|blocking_reasons/);
+});
