@@ -42,14 +42,14 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             if cell[1] == "delegated_remuneration_criteria"
         }
 
-        self.assertEqual(len(governing), 37)
+        self.assertEqual(len(governing), 39)
         self.assertEqual(len(unit_price), 19)
-        self.assertEqual(len(delegated), 15)
+        self.assertEqual(len(delegated), 37)
         self.assertIn(
             ("dayservice", "unit_price_regional_classification"),
             cells,
         )
-        self.assertEqual(len(cells), 71)
+        self.assertEqual(len(cells), 95)
         self.assertGreater(len(cells), 64)
         unit_price_binding = artifact["runtime_source_binding_by_cell"][
             "dayservice|unit_price_regional_classification"
@@ -357,7 +357,7 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             )
         )
 
-    def test_ready_minus_published_gap_is_closed_without_family_broadcast(self):
+    def test_integrated_ready_set_is_fully_published_without_family_broadcast(self):
         stored = json.loads(
             (ROOT / "data" / "bounded-publication-allowlist.json").read_text(
                 encoding="utf-8"
@@ -372,7 +372,16 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             (row["service_id"], row["source_family"])
             for row in projected["publication_cell_allowlist"]
         }
-        expected_gap_services = {
+        self.assertEqual(stored_cells, projected_cells)
+        self.assertEqual(len(projected_cells), 95)
+        self.assertEqual(
+            projected["policy"]["publication_selection_mode"],
+            "READY_RUNTIME_SUPPORTED_INTERSECTION",
+        )
+        self.assertFalse(projected["policy"]["arbitrary_batch_cap_enabled"])
+        self.assertEqual(projected["policy"]["max_publication_cells"], 95)
+
+        prior_gap_services = {
             "community-dayservice",
             "regular-round",
             "care-management",
@@ -389,21 +398,14 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             "preventive-small-scale-multifunctional",
             "preventive-dementia-group-home",
         }
-        expected_gap = {
+        prior_gap = {
             (service_id, "governing_standards_ordinance")
-            for service_id in expected_gap_services
+            for service_id in prior_gap_services
         }
-        self.assertEqual(projected_cells - stored_cells, expected_gap)
-        self.assertTrue(stored_cells.issubset(projected_cells))
-        self.assertEqual(
-            projected["policy"]["publication_selection_mode"],
-            "READY_RUNTIME_SUPPORTED_INTERSECTION",
-        )
-        self.assertFalse(projected["policy"]["arbitrary_batch_cap_enabled"])
-        self.assertEqual(projected["policy"]["max_publication_cells"], 71)
+        self.assertTrue(prior_gap.issubset(projected_cells))
 
         promotions, _, provenance = builder.load_promotions()
-        for key in expected_gap:
+        for key in prior_gap:
             promotion = promotions[key]
             self.assertTrue(builder.source_contract_supported(promotion), key)
             proof = promotion["applicability_proof"]
@@ -415,6 +417,15 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             self.assertEqual(
                 provenance[key],
                 "data/verification/governing-standards-residual-currentness-worker-a.json",
+            )
+
+        for service_id in ("night-homevisit", "dementia-group-home"):
+            key = (service_id, "governing_standards_ordinance")
+            self.assertIn(key, projected_cells)
+            self.assertTrue(builder.source_contract_supported(promotions[key]), key)
+            self.assertEqual(
+                provenance[key],
+                "data/verification/final-standards-residual-relation-worker-c.json",
             )
 
     def test_community_direct_ranges_use_article_number_order_not_json_order(self):
