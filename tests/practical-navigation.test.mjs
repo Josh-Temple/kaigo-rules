@@ -49,11 +49,19 @@ test("practical guide official source references resolve to canonical source reg
 });
 
 
-test("practical guide retains original journeys and adds concrete task journeys",()=>{
- const ids=new Set(practicalGuideJourneys.map(x=>x.id));
- for(const id of ["standards","designation","remuneration","qa"]) assert.ok(ids.has(id),id);
- for(const id of ["staffing","equipment","operations","fee-guidance","unit-price"]) assert.ok(ids.has(id),id);
- assert.ok(practicalGuideJourneys.length>=9);
+test("practical guide retains four main journeys and adds concrete sub-journeys",()=>{
+ const ids=practicalGuideJourneys.map(x=>x.id);
+ assert.deepEqual(ids,["standards","designation","remuneration","qa"]);
+ const subJourneys=practicalGuideJourneys.flatMap(x=>x.subJourneys||[]);
+ const subIds=new Set(subJourneys.map(x=>x.id));
+ for(const id of ["staffing","equipment","operations","fee-guidance","unit-price"]) assert.ok(subIds.has(id),id);
+ assert.equal(subJourneys.length,5);
+ for(const journey of subJourneys){
+  assert.ok(journey.firstChecks.length>=2,journey.id);
+  assert.ok(journey.databaseLinks.length>=2,journey.id);
+  for(const link of journey.databaseLinks) assert.match(link.href,/^\//,journey.id);
+  assert.ok(journey.officialSourceIds.length>=1,journey.id);
+ }
 });
 
 test("service-aware guide groups regular and preventive services without collapsing canonical ids",async()=>{
@@ -95,10 +103,11 @@ test("service-aware guide groups regular and preventive services without collaps
  assert.deepEqual(preventiveSupport?.serviceIds,["preventive-support"]);
 });
 
-test("new practical guide journeys preserve primary-source return paths",()=>{
+test("new practical guide sub-journeys preserve primary-source return paths",()=>{
  const sources=new Set(load("data/sources.json").map(x=>x.id));
+ const subJourneys=practicalGuideJourneys.flatMap(x=>x.subJourneys||[]);
  for(const id of ["staffing","equipment","operations","fee-guidance","unit-price"]){
-  const journey=practicalGuideJourneys.find(x=>x.id===id);
+  const journey=subJourneys.find(x=>x.id===id);
   assert.ok(journey,id);
   assert.ok(journey.officialSourceIds.length>=1,id);
   for(const sourceId of journey.officialSourceIds) assert.ok(sources.has(sourceId),`${id}: ${sourceId}`);
