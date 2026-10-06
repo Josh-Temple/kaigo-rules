@@ -348,8 +348,9 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
 
         self.assertEqual(builder.delegated_currentness_path(), worker_b_path)
         payload = json.loads(worker_b_path.read_text(encoding="utf-8"))
-        self.assertEqual(payload["summary"]["promoted_cells"], 15)
-        self.assertEqual(len(payload["promotions"]), 15)
+        self.assertEqual(payload["summary"]["currentness_pass_cells"], 37)
+        self.assertEqual(payload["summary"]["newly_promoted_cells"], 22)
+        self.assertEqual(len(payload["promotions"]), 37)
         self.assertTrue(
             all(
                 builder.source_contract_supported(promotion)
@@ -485,13 +486,13 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
         ]
         self.assertFalse(builder.source_contract_supported(wrong_scope))
 
-    def test_deferred_and_unsupported_governing_cells_stay_closed(self):
+    def test_final_governing_cells_are_supported_but_unknown_identity_stays_closed(self):
         promotions, _, _ = builder.load_promotions()
         for service_id in ("night-homevisit", "dementia-group-home"):
             promotion = promotions[
                 (service_id, "governing_standards_ordinance")
             ]
-            self.assertFalse(builder.source_contract_supported(promotion))
+            self.assertTrue(builder.source_contract_supported(promotion))
 
         unsupported = copy.deepcopy(
             promotions[
