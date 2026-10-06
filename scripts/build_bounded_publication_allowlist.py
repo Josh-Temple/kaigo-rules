@@ -519,15 +519,29 @@ def delegated_runtime_binding_context(
         str(node.get("canonical_node_id") or ""): node
         for node in corpus.get("nodes", [])
     }
-    if any(node_id not in node_by_id for node_id in expected_node_ids):
-        return None
+    item_body = load_json(DELEGATED_ITEM_BODY_PATH)
+    compatibility_by_id = {
+        str(item.get("canonical_node_id") or ""): item
+        for item in item_body.get("compatibility_node_verifications", [])
+        if item.get("result") == "PASS"
+    }
 
-    expected_source_ids = sorted(
-        {
-            str(node_by_id[node_id].get("source_id") or "")
-            for node_id in expected_node_ids
-        }
-    )
+    resolved_source_ids: list[str] = []
+    for node_id in expected_node_ids:
+        node = node_by_id.get(node_id)
+        if node is not None:
+            resolved_source_ids.append(str(node.get("source_id") or ""))
+            continue
+        compatibility = compatibility_by_id.get(node_id)
+        if compatibility is None:
+            return None
+        parent_id = str(compatibility.get("parent_canonical_node_id") or "")
+        parent = node_by_id.get(parent_id)
+        if parent is None:
+            return None
+        resolved_source_ids.append(str(parent.get("source_id") or ""))
+
+    expected_source_ids = sorted(set(resolved_source_ids))
     if not all(expected_source_ids):
         return None
     promoted_source_ids = sorted(
