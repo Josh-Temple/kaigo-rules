@@ -30,7 +30,7 @@
         },
         {
           "batch_order": 2,
-          "review_id": "REL-012",
+          "review_id": "REL-013",
           "relation_identity": {
             "from": "notice.dayservice.equipment.dining-training-room",
             "relation": "interprets_or_explains",
@@ -62,7 +62,7 @@
         },
         {
           "batch_order": 4,
-          "review_id": "REL-013",
+          "review_id": "REL-014",
           "relation_identity": {
             "from": "notice.dayservice.equipment.office",
             "relation": "interprets_or_explains",
@@ -94,7 +94,7 @@
         },
         {
           "batch_order": 6,
-          "review_id": "REL-018",
+          "review_id": "REL-019",
           "relation_identity": {
             "from": "notice.dayservice.personnel.function-training",
             "relation": "interprets_or_explains",
@@ -126,7 +126,7 @@
         },
         {
           "batch_order": 8,
-          "review_id": "REL-020",
+          "review_id": "REL-021",
           "relation_identity": {
             "from": "notice.dayservice.personnel.manager",
             "relation": "interprets_or_explains",
