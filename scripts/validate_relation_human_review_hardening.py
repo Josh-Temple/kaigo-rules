@@ -83,7 +83,7 @@ def validate() -> dict:
         raise ValueError("review packet item count differs from Worker D queue")
     if evidence["summary"]["items_total"] != len(queue_owned):
         raise ValueError("evidence pack item count differs from Worker D queue")
-    if len(queue_owned) != 58:
+    if len(queue_owned) != 57:
         raise ValueError(f"unexpected Worker D queue size: {len(queue_owned)}")
 
     freshness = [
@@ -234,7 +234,7 @@ def validate() -> dict:
             "semantic-text evidence snapshot changed; re-adjudicate before promotion: "
             f"{dict(semantic_pointer_counts)}"
         )
-    if human_only_count != 41:
+    if human_only_count != 40:
         raise ValueError(f"unexpected human-only relation count: {human_only_count}")
 
     expected_source_counts = dict(sorted(source_pointer_counts.items()))
@@ -245,7 +245,7 @@ def validate() -> dict:
         != dict(sorted(semantic_pointer_counts.items()))
     ):
         raise ValueError("semantic source pointer summary is stale")
-    if evidence["summary"]["closure_assessment_counts"] != {"KEEP_OPEN": 58}:
+    if evidence["summary"]["closure_assessment_counts"] != {"KEEP_OPEN": 57}:
         raise ValueError("closure assessment summary is not fail-closed")
     if evidence["summary"]["machine_safe_closures"] != 0:
         raise ValueError("machine-safe closures must remain zero for this snapshot")
