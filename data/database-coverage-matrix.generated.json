@@ -15578,9 +15578,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-homebath::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16159,9 +16163,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-homenursing::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -16740,9 +16748,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-homerehab::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17321,9 +17333,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-homecaremanagement::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -17902,9 +17918,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-dayrehab::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18483,9 +18503,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-shortstay-life::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19064,9 +19088,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-shortstay-medical::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19645,9 +19673,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-specific-facility::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20226,9 +20258,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#preventive-welfare-equipment-rental::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20807,9 +20843,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/bounded-currentness-closure-worker-b.json#specific-preventive-welfare-equipment-sale::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -23066,9 +23106,9 @@
           "PASS": 39
         },
         "currentness": {
-          "NOT_ESTABLISHED": 27,
+          "NOT_ESTABLISHED": 17,
           "PARTIAL": 2,
-          "PASS": 10
+          "PASS": 20
         },
         "relation_verification": {
           "NOT_ESTABLISHED": 39
@@ -24431,11 +24471,6 @@
       },
       {
         "service_id": "preventive-homebath",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homebath",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
@@ -24476,11 +24511,6 @@
       },
       {
         "service_id": "preventive-homenursing",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homenursing",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
@@ -24517,11 +24547,6 @@
       {
         "service_id": "preventive-homerehab",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24562,11 +24587,6 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24607,11 +24627,6 @@
       {
         "service_id": "preventive-dayrehab",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24652,11 +24667,6 @@
       {
         "service_id": "preventive-shortstay-life",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24697,11 +24707,6 @@
       {
         "service_id": "preventive-shortstay-medical",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24742,11 +24747,6 @@
       {
         "service_id": "preventive-specific-facility",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24787,11 +24787,6 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24832,11 +24827,6 @@
       {
         "service_id": "specific-preventive-welfare-equipment-sale",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "specific-preventive-welfare-equipment-sale",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {

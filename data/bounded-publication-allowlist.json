@@ -4,8 +4,8 @@
   "role": "Publication Runtime Binding / Progressive Release Worker",
   "source_readiness": {
     "path": "data/publication-readiness.generated.json",
-    "git_blob_sha": "c5025bbea17635a9dbf5abaaee0a30320968e65c",
-    "expected_ready_candidate_count": 10
+    "git_blob_sha": "08a6af77d3a73be6d7aa1614f724da6190929cd3",
+    "expected_ready_candidate_count": 20
   },
   "runtime_binding": {
     "required_for_nonempty_publication": true,
@@ -49,7 +49,7 @@
     "review_dependent_search_term"
   ],
   "summary": {
-    "ready_candidates_at_selection": 10,
+    "ready_candidates_at_selection": 20,
     "ready_candidate_cells": [
       {
         "service_id": "homevisit",
@@ -150,6 +150,106 @@
           "CURRENTNESS_STATEMENT",
           "SERVICE_APPLICABILITY_STATEMENT"
         ]
+      },
+      {
+        "service_id": "preventive-homebath",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-homenursing",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-homerehab",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-dayrehab",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-shortstay-life",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-shortstay-medical",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-specific-facility",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "specific-preventive-welfare-equipment-sale",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
       }
     ],
     "published_cells_added": 10,
@@ -158,11 +258,11 @@
     "decision": "PUBLISH_BOUNDED_READY_UNITS",
     "reason": "READY publication units supported by the shared runtime policy are bound across UI, search, API, and machine retrieval.",
     "blocker_counts_at_selection": {
-      "BLOCKED_CURRENTNESS": 333,
-      "BLOCKED_HUMAN_REVIEW": 333,
+      "BLOCKED_CURRENTNESS": 323,
+      "BLOCKED_HUMAN_REVIEW": 323,
       "BLOCKED_INGESTION": 74,
       "BLOCKED_ITEM_BODY": 138,
-      "BLOCKED_RELATION": 333
+      "BLOCKED_RELATION": 323
     }
   },
   "publication_cell_allowlist": [
