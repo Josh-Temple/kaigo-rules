@@ -361,6 +361,13 @@ def build_relation_coverage() -> dict:
                 load("careact-service-identity-derived-audit.json")
             ),
         ),
+        (
+            "residual-service-definition",
+            "data/residual-relation-service-definition-independent-audit.json",
+            residual_service_definition_identities(
+                load("residual-relation-service-definition-independent-audit.json")
+            ),
+        ),
     )
 
     lane_rows = []
