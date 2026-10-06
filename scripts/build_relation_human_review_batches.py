@@ -19,14 +19,14 @@ BATCH2_OUTPUT = DATA / "relation-human-review-batch-2.json"
 BATCH2_SIZE = 10
 
 PINNED_PILOT = [
-    (1, "REL-001", "fee.dayservice.note.13|related_to|ordinance37.article.99", "f3984f602718ad82cd16fbb6769c692654a9a19b32196becc9896626ab7074bf"),
-    (2, "REL-013", "notice.dayservice.equipment.dining-training-room|interprets_or_explains|ordinance37.article.95", "e6bfcabaa109a05d053cde11a6f96b380f81824e49bd49a7857265b21dbcf56d"),
-    (3, "REL-003", "fee.dayservice.note.2|operational_basis_related_to|ordinance37.article.105", "096aecc99c772aea9cb2b58f1e1e6fa007d02ebdeb5d5cdf3428d311fe4dc9d2"),
-    (4, "REL-014", "notice.dayservice.equipment.office|interprets_or_explains|ordinance37.article.95", "866cef28391a37db80ca4098899454a0d45ae00fcb3a25e0279d380c4b1350a6"),
-    (5, "REL-002", "fee.dayservice.note.15|related_to|ordinance37.article.98", "a74d4b8731bd042477e4a7c1857d2dadb8607833d42c9ff28d5f6622f8d48166"),
-    (6, "REL-019", "notice.dayservice.personnel.function-training|interprets_or_explains|ordinance37.article.93", "74d3af43386b2a0c6239a35363fb5ffa4ff6ac3d7955d46219a8738d30a0b58a"),
-    (7, "REL-004", "fee.dayservice.note.3|operational_basis_related_to|ordinance37.article.30-2", "a116fc01dd02661d0f0fa229c39d6487e882bde8e1dd952a86ffdafc2c1fa70c"),
-    (8, "REL-021", "notice.dayservice.personnel.manager|interprets_or_explains|ordinance37.article.94", "0a8cb98ced9fa6e976b57aa07665b728d5af696ff5eafc0ebdeb2d9e26fd0bbe"),
+    (1, "fee.dayservice.note.13|related_to|ordinance37.article.99", "f3984f602718ad82cd16fbb6769c692654a9a19b32196becc9896626ab7074bf"),
+    (2, "notice.dayservice.equipment.dining-training-room|interprets_or_explains|ordinance37.article.95", "e6bfcabaa109a05d053cde11a6f96b380f81824e49bd49a7857265b21dbcf56d"),
+    (3, "fee.dayservice.note.2|operational_basis_related_to|ordinance37.article.105", "096aecc99c772aea9cb2b58f1e1e6fa007d02ebdeb5d5cdf3428d311fe4dc9d2"),
+    (4, "notice.dayservice.equipment.office|interprets_or_explains|ordinance37.article.95", "866cef28391a37db80ca4098899454a0d45ae00fcb3a25e0279d380c4b1350a6"),
+    (5, "fee.dayservice.note.15|related_to|ordinance37.article.98", "a74d4b8731bd042477e4a7c1857d2dadb8607833d42c9ff28d5f6622f8d48166"),
+    (6, "notice.dayservice.personnel.function-training|interprets_or_explains|ordinance37.article.93", "74d3af43386b2a0c6239a35363fb5ffa4ff6ac3d7955d46219a8738d30a0b58a"),
+    (7, "fee.dayservice.note.3|operational_basis_related_to|ordinance37.article.30-2", "a116fc01dd02661d0f0fa229c39d6487e882bde8e1dd952a86ffdafc2c1fa70c"),
+    (8, "notice.dayservice.personnel.manager|interprets_or_explains|ordinance37.article.94", "0a8cb98ced9fa6e976b57aa07665b728d5af696ff5eafc0ebdeb2d9e26fd0bbe"),
 ]
 
 def load(path: Path) -> dict[str, Any]:
@@ -54,7 +54,6 @@ def validate_pilot_immutable(pilot: dict[str, Any]) -> None:
     observed = [
         (
             row.get("pilot_order"),
-            row.get("review_id"),
             row.get("relation_key"),
             row.get("evidence_fingerprint_sha256"),
         )
@@ -67,10 +66,10 @@ def validate_pilot_immutable(pilot: dict[str, Any]) -> None:
     if len(items) != 8:
         raise ValueError("existing pilot must remain exactly 8 items")
 
-def choose_batch2(evidence: dict[str, Any], pilot_ids: set[str]) -> list[dict[str, Any]]:
+def choose_batch2(evidence: dict[str, Any], pilot_keys: set[str]) -> list[dict[str, Any]]:
     candidates = []
     for row in evidence.get("items", []):
-        if row.get("review_id") in pilot_ids or not row.get("evidence_pack_ready"):
+        if row.get("relation_key") in pilot_keys or not row.get("evidence_pack_ready"):
             continue
         rank = pointer_rank(row)
         if rank is None:
@@ -180,9 +179,8 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
     validate_pilot_immutable(pilot)
 
     evidence_by_key = {row["relation_key"]: row for row in evidence.get("items", [])}
-    evidence_by_id = {row["review_id"]: row for row in evidence.get("items", [])}
-    pilot_ids = {row["review_id"] for row in pilot["items"]}
-    batch2_rows = choose_batch2(evidence, pilot_ids)
+    pilot_keys = {row["relation_key"] for row in pilot["items"]}
+    batch2_rows = choose_batch2(evidence, pilot_keys)
 
     batch2_items = [batch2_unit(row, index) for index, row in enumerate(batch2_rows)]
     batch2 = {
@@ -218,7 +216,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
             "source_pointer_status_counts": dict(Counter(x["source_pointer_status"] for x in batch2_items)),
             "target_pointer_status_counts": dict(Counter(x["target_pointer_status"] for x in batch2_items)),
             "remaining_evidence_pack_items_outside_active_batches": (
-                len(evidence.get("items", [])) - len(pilot_ids) - len(batch2_items)
+                len(evidence.get("items", [])) - len(pilot_keys) - len(batch2_items)
             ),
         },
         "review_contract": {
@@ -244,11 +242,13 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
     }
 
     pilot_registry_items = []
-    for order, review_id, relation_key, fingerprint in PINNED_PILOT:
-        source = evidence_by_id.get(review_id)
+    for order, relation_key, fingerprint in PINNED_PILOT:
+        source = evidence_by_key.get(relation_key)
         if source is None:
-            raise ValueError(f"pilot review id missing from evidence pack: {review_id}")
-        pilot_row = next(row for row in pilot["items"] if row["review_id"] == review_id)
+            raise ValueError(f"pilot relation identity missing from evidence pack: {relation_key}")
+        pilot_row = next(
+            row for row in pilot["items"] if row["relation_key"] == relation_key
+        )
         pilot_registry_items.append(
             registry_item(
                 batch_order=order,
@@ -274,7 +274,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
         "decision_ledger": DECISION_LEDGER,
         "policy": (
             "Batch membership controls decision intake only. Batch activation does not make "
-            "a relation REVIEWED or verified. Pilot 1 is an immutable reference. Evidence "
+            "a relation REVIEWED or verified. Pilot 1 relation identity/order/fingerprint is an immutable reference; review IDs are regenerated management identifiers. Evidence "
             "fingerprint drift is represented as STALE_EVIDENCE and never silently refreshes "
             "an existing decision."
         ),
