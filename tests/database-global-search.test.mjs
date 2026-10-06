@@ -205,3 +205,26 @@ test("public database search groups service filters and treats no-match as a par
   assert.match(search, /実務ガイドから探す/);
   assert.doesNotMatch(search, /READY_FOR_PUBLICATION_REVIEW|blocking_reasons/);
 });
+
+
+test("database search exposes Unit Price only through the shared publication policy", () => {
+  const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
+  const unitPricePage = fs.readFileSync("app/fees/unit-price/page.tsx", "utf8");
+  const sourceApi = fs.readFileSync(
+    "app/api/context/services/[serviceId]/sources/route.ts",
+    "utf8",
+  );
+
+  assert.match(search, /listProgressivePublicationServicesAcrossFamilies/);
+  assert.match(search, /UNIT_PRICE_SOURCE_FAMILY/);
+  assert.match(search, /getProgressiveSourceRecords/);
+  assert.doesNotMatch(search, /unit-price-dayservice\.json/);
+
+  assert.match(unitPricePage, /publication-policy/);
+  assert.match(unitPricePage, /UNIT_PRICE_SOURCE_FAMILY/);
+  assert.match(unitPricePage, /getProgressiveSourceRecords/);
+
+  assert.match(sourceApi, /listProgressivePublicationCells/);
+  assert.match(sourceApi, /projectProgressiveRecords/);
+  assert.match(sourceApi, /source_family/);
+});
