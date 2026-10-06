@@ -27,6 +27,9 @@ GOVERNING_RESIDUAL_CURRENTNESS = (
 DELEGATED_REMUNERATION_CURRENTNESS = (
     ROOT / "data/verification/delegated-remuneration-currentness-worker-b.json"
 )
+FINAL_GOVERNING_CURRENTNESS = (
+    ROOT / "data/verification/final-standards-residual-relation-worker-c.json"
+)
 
 EXPECTED_BASE_SHA = "e0d814b1b22d449fd13784bbb051fba5c27df64e"
 EXPECTED_CURRENTNESS = {
@@ -138,6 +141,12 @@ def expected_current_matrix_counts() -> dict[str, int]:
                 or row.get("starting_currentness_state")
                 or "NOT_ESTABLISHED"
             )
+            # This validator reconstructs from an older historical baseline.
+            # The residual delegated artifact preserves 15 cells that were already
+            # PASS on its immediate starting main, but those cells were still
+            # NOT_ESTABLISHED on the historical baseline used here.
+            if row.get("promotion_origin") == "PRESERVED_PRIOR_READY_CURRENTNESS":
+                prior = "NOT_ESTABLISHED"
             projected = str(row.get("projected_currentness_state") or "")
             if projected != "PASS":
                 raise ValueError(f"bounded currentness projection must remain PASS: {identity}")
@@ -145,6 +154,24 @@ def expected_current_matrix_counts() -> dict[str, int]:
             if counts[prior] < 0:
                 raise ValueError(f"bounded currentness prior count underflow: {prior}")
             counts[projected] = counts.get(projected, 0) + 1
+    if FINAL_GOVERNING_CURRENTNESS.exists():
+        artifact = load(FINAL_GOVERNING_CURRENTNESS)
+        if artifact.get("artifact_kind") != "FINAL_STANDARDS_AND_RESIDUAL_RELATION_ASSURANCE":
+            raise ValueError("unexpected final governing currentness artifact kind")
+        for row in (artifact.get("governing_standards") or {}).get("decisions", []):
+            if row.get("promotion_applied") is not True:
+                continue
+            identity = (str(row.get("service_id")), str(row.get("source_family")))
+            if identity in seen:
+                raise ValueError(f"duplicate canonical currentness promotion: {identity}")
+            seen.add(identity)
+            projected = str(row.get("projected_currentness_state") or "")
+            if projected != "PASS":
+                raise ValueError(f"final governing projection must remain PASS: {identity}")
+            counts["NOT_ESTABLISHED"] = counts.get("NOT_ESTABLISHED", 0) - 1
+            if counts["NOT_ESTABLISHED"] < 0:
+                raise ValueError("final governing prior count underflow")
+            counts["PASS"] = counts.get("PASS", 0) + 1
     return {key: value for key, value in counts.items() if value}
 
 
