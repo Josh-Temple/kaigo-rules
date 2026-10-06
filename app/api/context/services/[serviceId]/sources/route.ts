@@ -5,6 +5,7 @@ import {
   listProgressivePublicationCells,
   projectProgressiveRecords,
 } from "../../../../../../lib/publication-policy";
+import { verifiedRelatedPrimarySourcesForRecords } from "../../../../../../lib/verified-related-sources";
 
 type Params = Promise<{ serviceId: string }>;
 
@@ -59,6 +60,12 @@ export async function GET(
           cell.source_family,
           records,
         ),
+        related_primary_sources:
+          verifiedRelatedPrimarySourcesForRecords(
+            serviceId,
+            cell.source_family,
+            records,
+          ),
       };
     })
     .filter(Boolean);
