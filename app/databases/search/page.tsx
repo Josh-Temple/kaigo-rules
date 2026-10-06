@@ -1,7 +1,9 @@
 import Link from "next/link";
 import careNodesData from "../../../data/care-insurance-act-nodes.json";
 import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
-import qaCorpusData from "../../../data/qa-corpus.json";\nimport unitPriceRatesData from "../../../data/unit-price-dayservice.json";\nimport unitPriceMetaData from "../../../data/unit-price-dayservice-meta.json";
+import qaCorpusData from "../../../data/qa-corpus.json";
+import unitPriceRatesData from "../../../data/unit-price-dayservice.json";
+import unitPriceMetaData from "../../../data/unit-price-dayservice-meta.json";
 import { publicNoticeRecords } from "../../../lib/notice-database";
 import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database-search";
 import {
