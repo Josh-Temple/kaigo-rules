@@ -25,7 +25,7 @@ class RelationHumanReviewPilotTests(unittest.TestCase):
             built["summary"]["machine_reconstructed_source_direct_target"], 4
         )
         self.assertEqual(
-            built["summary"]["remaining_evidence_pack_items_not_in_pilot"], 49
+            built["summary"]["remaining_evidence_pack_items_not_in_pilot"], 50
         )
         self.assertFalse(built["review_contract"]["ai_only_completion_allowed"])
         self.assertTrue(
