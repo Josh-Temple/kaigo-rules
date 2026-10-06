@@ -64,7 +64,22 @@ export default function GuidePage() {
           表示先で出典・適用範囲・現行性に関する注意を確認してください。
         </p>
         <div className="entry-links">
-          <section className="section">
+          {practicalGuideJourneys.map((journey, index) => (
+            <Link
+              className="entry-row"
+              href={`#${journey.id}`}
+              key={journey.id}
+            >
+              <span>
+                {String(index + 1).padStart(2, "0")}　{journey.title}
+              </span>
+              <small>確認する →</small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
         <h2>サービスから探す</h2>
         <p>
           通常サービスと対応する介護予防サービスは同じまとまりで表示します。
@@ -98,21 +113,6 @@ export default function GuidePage() {
             </div>
           </div>
         ))}
-      </section>
-
-      {practicalGuideJourneys.map((journey, index) => (
-            <Link
-              className="entry-row"
-              href={`#${journey.id}`}
-              key={journey.id}
-            >
-              <span>
-                {String(index + 1).padStart(2, "0")}　{journey.title}
-              </span>
-              <small>確認する →</small>
-            </Link>
-          ))}
-        </div>
       </section>
 
       {practicalGuideJourneys.map((journey, index) => (
