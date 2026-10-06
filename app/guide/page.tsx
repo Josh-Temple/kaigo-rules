@@ -3,7 +3,10 @@ import sourcesData from "../../data/sources.json";
 import {
   practicalGuideJourneys,
   practicalGuidePolicy,
+  practicalGuideServiceGroups,
 } from "../../lib/practical-guide";
+import { DEFAULT_SERVICE_ID, getService } from "../../lib/service-catalog";
+import { listProgressivePublicationServices } from "../../lib/publication-policy";
 
 type SourceRecord = {
   id: string;
@@ -15,6 +18,33 @@ const sources = sourcesData as SourceRecord[];
 const sourcesById = new Map(sources.map((source) => [source.id, source]));
 
 export default function GuidePage() {
+  const progressiveServiceIds = new Set(
+    listProgressivePublicationServices().map((service) => service.service_id),
+  );
+
+  const serviceDestination = (serviceId: string) => {
+    const service = getService(serviceId);
+    if (progressiveServiceIds.has(serviceId)) {
+      return {
+        href: `/databases/search?service=${encodeURIComponent(serviceId)}`,
+        detail: "公開条件を満たした基準省令を、このサービスに絞って確認します。",
+      };
+    }
+    if (
+      serviceId === DEFAULT_SERVICE_ID ||
+      service.routing.future_service_base_enabled
+    ) {
+      return {
+        href: `/services/${encodeURIComponent(serviceId)}`,
+        detail: "サービス別に公開している制度情報を確認します。",
+      };
+    }
+    return {
+      href: `/databases/search?q=${encodeURIComponent(service.label)}`,
+      detail: "サービス名をキーワードに、現在公開している制度DBから関連情報を探します。",
+    };
+  };
+
   return (
     <article className="answer-page wide-page">
       <p className="eyebrow">PRACTICAL GUIDE</p>
@@ -34,7 +64,43 @@ export default function GuidePage() {
           表示先で出典・適用範囲・現行性に関する注意を確認してください。
         </p>
         <div className="entry-links">
-          {practicalGuideJourneys.map((journey, index) => (
+          <section className="section">
+        <h2>サービスから探す</h2>
+        <p>
+          通常サービスと対応する介護予防サービスは同じまとまりで表示します。
+          利用できるサービス別絞り込みがある場合はそこへ進み、それ以外はサービス名で公開DBを検索します。
+          介護予防支援は独立したサービスとして扱います。
+        </p>
+        {practicalGuideServiceGroups.map((group) => (
+          <div key={group.id} style={{ marginTop: "24px" }}>
+            <h3>{group.title}</h3>
+            {group.note ? <p className="meta">{group.note}</p> : null}
+            <div className="entry-links">
+              {group.serviceIds.map((serviceId) => {
+                const service = getService(serviceId);
+                const destination = serviceDestination(serviceId);
+                return (
+                  <Link
+                    className="entry-row"
+                    href={destination.href}
+                    key={serviceId}
+                  >
+                    <span>
+                      {service.label}
+                      <small style={{ display: "block", marginTop: "4px" }}>
+                        {destination.detail}
+                      </small>
+                    </span>
+                    <small>開く →</small>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {practicalGuideJourneys.map((journey, index) => (
             <Link
               className="entry-row"
               href={`#${journey.id}`}
