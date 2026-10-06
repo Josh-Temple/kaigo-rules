@@ -158,6 +158,9 @@ class ProductValueSnapshotTest(unittest.TestCase):
             surface["published_service_source_family_cells"],
             len(bounded["publication_cell_allowlist"]),
         )
+        self.assertEqual(surface["service_navigation_groups"], 7)
+        self.assertEqual(surface["service_navigation_units"], 26)
+        self.assertEqual(surface["service_navigation_service_entries"], 39)
         self.assertEqual(surface["guide_task_journeys"], 5)
         self.assertEqual(
             surface["practical_question_primary_source_journeys"],
