@@ -1,0 +1,83 @@
+name: Worker E integration regeneration gate
+
+on:
+  push:
+    branches:
+      - integration/multi-source-runtime-currentness-closure-20261006
+
+permissions:
+  contents: write
+
+concurrency:
+  group: worker-e-multi-source-regeneration
+  cancel-in-progress: false
+
+jobs:
+  regenerate-and-validate:
+    if: ${{ !contains(github.event.head_commit.message, '[integration-e-generated]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integration/multi-source-runtime-currentness-closure-20261006
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Regenerate canonical publication chain
+        run: |
+          set -euo pipefail
+          python scripts/build_database_coverage_matrix.py
+          python scripts/build_publication_requirement_scoping.py
+          python scripts/build_publication_readiness.py
+          python scripts/build_bounded_publication_allowlist.py
+          python scripts/build_product_value_snapshot.py
+
+      - name: Validate repository data and runtime contracts
+        run: npm run validate:data
+
+      - name: Build application
+        run: npm run build
+
+      - name: Show integration publication summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cov=json.loads(Path('data/database-coverage-matrix.generated.json').read_text())
+          ready=json.loads(Path('data/publication-readiness.generated.json').read_text())
+          allow=json.loads(Path('data/bounded-publication-allowlist.json').read_text())
+          product=json.loads(Path('data/product-value-snapshot-v0.1.json').read_text())
+          print(json.dumps({
+            'coverage_summary': cov.get('summary'),
+            'readiness_summary': ready.get('summary'),
+            'allowlist_summary': allow.get('summary'),
+            'product_value': product.get('metrics', product.get('summary', {})),
+          }, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Commit regenerated artifacts
+        env:
+          BRANCH: integration/multi-source-runtime-currentness-closure-20261006
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             data/database-coverage-matrix.generated.json             docs/database-coverage-summary.generated.md             data/publication-requirement-scoping.json             data/publication-readiness.generated.json             data/bounded-publication-allowlist.json             data/product-value-snapshot-v0.1.json
+          if git diff --cached --quiet; then
+            echo "No generated artifact changes."
+            exit 0
+          fi
+          git commit -m "[integration-e-generated] Regenerate multi-source publication artifacts"
+          git push origin "HEAD:${BRANCH}"
