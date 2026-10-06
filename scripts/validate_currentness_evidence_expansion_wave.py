@@ -115,7 +115,7 @@ def expected_current_matrix_counts() -> dict[str, int]:
         ),
         (
             DELEGATED_REMUNERATION_CURRENTNESS,
-            "DELEGATED_REMUNERATION_RESIDUAL_CURRENTNESS_DECISIONS",
+            "DELEGATED_REMUNERATION_BOUNDED_CURRENTNESS_DECISIONS",
             "promotions",
         ),
     )
