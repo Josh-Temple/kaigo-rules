@@ -475,6 +475,7 @@ export function projectProgressiveRule(
       service_id: trust.service_id,
       service_label: trust.service_label,
       source_family: PROGRESSIVE_SOURCE_FAMILY,
+      canonical_source_id: trust.canonical_source_id,
       source_title: trust.source_title,
       source_version: trust.source_version,
       effective_date: trust.effective_date,
