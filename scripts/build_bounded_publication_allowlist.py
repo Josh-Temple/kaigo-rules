@@ -500,7 +500,13 @@ def delegated_runtime_binding_context(
     ):
         return None
 
-    expected_node_ids = [str(value) for value in service.get("mapped_node_ids", [])]
+    expected_node_ids = [
+        str(value)
+        for value in (
+            list(service.get("mapped_node_ids", []))
+            + list(service.get("compatibility_subnode_ids", []))
+        )
+    ]
     promoted_node_ids = [str(value) for value in row.get("mapped_node_ids", [])]
     if (
         not expected_node_ids
