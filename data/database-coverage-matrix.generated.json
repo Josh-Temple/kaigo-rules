@@ -17,6 +17,7 @@
     "data/verification-registry.json",
     "data/verification/standards-interpretation-gates.json",
     "data/verification/bounded-currentness-closure-worker-b.json",
+    "data/verification/high-value-currentness-closure-worker-b.json",
     "data/relation-verification-queue.json",
     "data/shared/standards/manifest.json",
     "data/shared/standards-interpretation/remaining-source-register.json",
@@ -540,11 +541,13 @@
             ]
           },
           "currentness": {
-            "state": "PARTIAL",
+            "state": "PASS",
             "raw_status": [
-              "LIVE_SOURCE_REPARSE_SCHEDULED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/high-value-currentness-closure-worker-b.json#dayservice::unit_price_regional_classification"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -23279,7 +23282,7 @@
         "currentness": {
           "NOT_APPLICABLE": 2,
           "NOT_ESTABLISHED": 36,
-          "PARTIAL": 1
+          "PASS": 1
         },
         "relation_verification": {
           "NOT_APPLICABLE": 2,
@@ -23392,11 +23395,6 @@
       {
         "service_id": "dayservice",
         "source_family": "fee_calculation_guidance",
-        "state": "PARTIAL"
-      },
-      {
-        "service_id": "dayservice",
-        "source_family": "unit_price_regional_classification",
         "state": "PARTIAL"
       },
       {
