@@ -278,9 +278,7 @@ def main() -> None:
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
 
-    if args.check:
-        if not OUTPUT_JSON.exists() or not OUTPUT_MD.exists():
-            raise SystemExit("immutable relation human-review pilot artifact is missing")
+    if OUTPUT_JSON.exists() and OUTPUT_MD.exists():
         pilot = load_json(OUTPUT_JSON)
         evidence = load_json(EVIDENCE_PATH)
         try:
@@ -292,6 +290,9 @@ def main() -> None:
             raise SystemExit("immutable relation human-review pilot markdown drifted")
         print("relation human-review pilot: immutable snapshot current")
         return
+
+    if args.check:
+        raise SystemExit("immutable relation human-review pilot artifact is missing")
 
     pilot = build()
     rendered_json = json.dumps(pilot, ensure_ascii=False, indent=2) + "\n"
