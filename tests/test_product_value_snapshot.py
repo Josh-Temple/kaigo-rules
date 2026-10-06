@@ -158,15 +158,15 @@ class ProductValueSnapshotTest(unittest.TestCase):
             surface["published_service_source_family_cells"],
             len(bounded["publication_cell_allowlist"]),
         )
-        self.assertEqual(surface["guide_task_journeys"], 1)
+        self.assertEqual(surface["guide_task_journeys"], 5)
         self.assertEqual(
             surface["practical_question_primary_source_journeys"],
             self.snapshot["metrics"]["practical_questions_with_evidence_path"][
                 "questions_with_evidence_path"
             ],
         )
-        self.assertEqual(surface["major_pages_total"], 12)
-        self.assertEqual(surface["major_pages_with_feedback"], 12)
+        self.assertEqual(surface["major_pages_total"], 13)
+        self.assertEqual(surface["major_pages_with_feedback"], 13)
         self.assertEqual(surface["feedback_coverage_rate"], 1.0)
 
     def test_human_effectiveness_is_not_claimed(self):
