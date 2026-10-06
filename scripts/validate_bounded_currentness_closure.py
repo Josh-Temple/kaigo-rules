@@ -432,19 +432,16 @@ def validate_payload(
             errors.append(f"{service_id}: source-version scope containment not established")
         if row.get("ingestion_state") != "INGESTED" or row.get("item_body_state") != "PASS":
             errors.append(f"{service_id}: ingestion/item-body prerequisite not satisfied")
-        if matrix_preintegration:
-            if row.get("prior_currentness_state") != (matrix_row.get("currentness") or {}).get("state"):
-                errors.append(f"{service_id}: recorded prior currentness does not match base matrix")
-        elif (matrix_row.get("currentness") or {}).get("state") != "PASS":
-            errors.append(f"{service_id}: integrated currentness is not PASS")
+        if (matrix_row.get("currentness") or {}).get("state") != "PASS":
+            errors.append(f"{service_id}: prior preventive bounded promotion disappeared from base matrix")
 
     egov_content_audit = load("data/egov-content-independent-audit.json")
     dayservice_scope = load("data/ordinance37-scope.json")
     dayrehab_scope = load("data/services/dayrehab/ordinance37-scope.json")
     dayrehab_audit = load("data/dayrehab-ordinance37-independent-audit.json")
     dayrehab_index = load("data/services/dayrehab/ordinance37-index.generated.json")
-    verifier_text = (ROOT / "scripts/verify_existing_ordinance37_service_slices.py").read_text(encoding="utf-8")
-    workflow_text = (ROOT / ".github/workflows/verify-existing-ordinance37-service-slices.yml").read_text(encoding="utf-8")
+    verifier_text = (ROOT / "scripts/verify_residual_ordinance37_service_slices.py").read_text(encoding="utf-8")
+    workflow_text = (ROOT / ".github/workflows/verify-residual-ordinance37-service-slices.yml").read_text(encoding="utf-8")
 
     egov_ord37 = next(
         (row for row in egov_content_audit.get("checks", []) if row.get("id") == "ordinance37"),
