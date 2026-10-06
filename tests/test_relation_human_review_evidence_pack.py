@@ -20,16 +20,16 @@ class RelationHumanReviewEvidencePackTests(unittest.TestCase):
             )
         )
         self.assertEqual(built, committed)
-        self.assertEqual(built["summary"]["items_total"], 58)
+        self.assertEqual(built["summary"]["items_total"], 57)
         self.assertEqual(built["summary"]["unresolved_items"], 0)
-        self.assertEqual(built["summary"]["evidence_pack_ready_items"], 58)
+        self.assertEqual(built["summary"]["evidence_pack_ready_items"], 57)
         self.assertEqual(built["summary"]["evidence_pack_not_ready_items"], 0)
         self.assertEqual(
             built["summary"]["target_resolution_counts"],
             {
                 "CURATED_QA": 1,
                 "NOTICE": 7,
-                "ORDINANCE_CANONICAL_NODE": 50,
+                "ORDINANCE_CANONICAL_NODE": 49,
             },
         )
         self.assertFalse(

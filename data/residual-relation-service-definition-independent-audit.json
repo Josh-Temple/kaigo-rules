@@ -1,0 +1,56 @@
+{
+  "format_version": 1,
+  "scope": "residual-remuneration-service-definition-relation",
+  "audit_kind": "INDEPENDENT_EXPLICIT_SERVICE_DEFINITION_RELATION_AUDIT",
+  "audit_result": "PASS",
+  "audited_at": "2026-10-06",
+  "policy": "PASS is limited to the exact canonical relation whose legal target is explicitly named in current official primary-source text. It does not establish human review, publication readiness, or unrelated semantic mappings.",
+  "checks": [
+    {
+      "id": "fee-dayservice-service-definition",
+      "from_id": "fee.dayservice.root",
+      "relation": "defined_service_by",
+      "to_id": "ordinance37.article.92",
+      "source_file": "data/remuneration-relations.json",
+      "source_primary_evidence": {
+        "source_id": "mhlw-fee-notice19-base",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+        "locator": "6 通所介護費 / 注1",
+        "evidence_pattern": "EXPLICIT_LEGAL_CITATION_IN_SERVICE_DEFINITION",
+        "required_reference": "指定居宅サービス基準第92条",
+        "current_source_version_note": "Official consolidated MHLW HTML currently includes the amendments through 令和8年厚生労働省告示第87号 and the post-2026-06-01 day-service text."
+      },
+      "target_primary_evidence": {
+        "source_id": "ordinance37",
+        "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "locator": "第七章 通所介護 ＞ 第一節 基本方針 ＞ 第九十二条",
+        "law_id": "411M50000100037",
+        "observed_revision_id": "411M50000100037_20250401_506M60000100164",
+        "required_concept": "指定居宅サービスに該当する通所介護（以下「指定通所介護」という。）"
+      },
+      "result": "PASS",
+      "differences": []
+    }
+  ],
+  "coverage": {
+    "canonical_relations_total": 188,
+    "independently_verified_before": 129,
+    "unverified_before": 59,
+    "relations_passed": 1,
+    "independently_verified_after": 130,
+    "unverified_after": 58
+  },
+  "limitations": [
+    "The MHLW citation appears in note 1 within the canonical 6 通所介護費 section; the relation is verified only as the service-definition basis for that section.",
+    "No inference is made from topical similarity for note 2, note 3, note 13, note 15, notice-to-ordinance, or practical-question relations.",
+    "The freshness-sensitive latest-amendment relation remains outside this audit.",
+    "Independent machine/direct-source verification is not HUMAN_VERIFIED or VERIFIED_CURRENT for other assurance axes."
+  ],
+  "safety": {
+    "human_verified": false,
+    "publication_promoted": false,
+    "currentness_promoted_beyond_evidence": false,
+    "semantic_similarity_used_as_proof": false,
+    "promotes_unlisted_relations": false
+  }
+}

@@ -17,7 +17,10 @@
     "data/verification-registry.json",
     "data/verification/standards-interpretation-gates.json",
     "data/verification/bounded-currentness-closure-worker-b.json",
+    "data/verification/governing-standards-residual-currentness-worker-a.json",
     "data/verification/high-value-currentness-closure-worker-b.json",
+    "data/verification/delegated-remuneration-currentness-worker-b.json",
+    "data/shared/remuneration-delegated/currentness-source-contract.json",
     "data/verification/high-value-currentness-expansion-worker-c.json",
     "data/relation-verification-queue.json",
     "data/shared/standards/manifest.json",
@@ -149,7 +152,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -215,7 +218,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -283,7 +286,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -349,7 +352,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -412,7 +415,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -487,7 +490,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -555,7 +558,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -623,7 +626,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -684,7 +687,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -766,7 +769,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -833,7 +836,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -901,7 +904,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -965,7 +968,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1019,16 +1022,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#homevisit::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1100,7 +1105,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1166,7 +1171,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1230,7 +1235,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1291,7 +1296,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1371,7 +1376,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1438,7 +1443,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1502,7 +1507,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1566,7 +1571,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1620,16 +1625,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#homebath::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1701,7 +1708,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1767,7 +1774,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1829,7 +1836,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1890,7 +1897,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -1970,7 +1977,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2037,7 +2044,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2105,7 +2112,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2169,7 +2176,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2223,16 +2230,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#homenursing::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2304,7 +2313,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2370,7 +2379,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2432,7 +2441,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2493,7 +2502,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2573,7 +2582,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2640,7 +2649,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2708,7 +2717,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2772,7 +2781,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2826,16 +2835,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#homerehab::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2907,7 +2918,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -2973,7 +2984,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3035,7 +3046,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3096,7 +3107,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3176,7 +3187,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3243,7 +3254,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3311,7 +3322,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3375,7 +3386,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3429,16 +3440,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#homecaremanagement::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3510,7 +3523,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3576,7 +3589,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3638,7 +3651,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3699,7 +3712,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3779,7 +3792,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3850,7 +3863,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3918,7 +3931,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -3988,7 +4001,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4051,7 +4064,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4128,7 +4141,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4190,7 +4203,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4252,7 +4265,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4313,7 +4326,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4393,7 +4406,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4460,7 +4473,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4528,7 +4541,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4592,7 +4605,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4655,7 +4668,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4727,7 +4740,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4793,7 +4806,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4855,7 +4868,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4916,7 +4929,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -4996,7 +5009,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5050,14 +5063,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#community-dayservice::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5121,7 +5138,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5183,7 +5200,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5248,7 +5265,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5320,7 +5337,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5382,7 +5399,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5444,7 +5461,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5505,7 +5522,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5585,7 +5602,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5639,14 +5656,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#regular-round::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5710,7 +5731,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5772,7 +5793,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5828,16 +5849,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#regular-round::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5909,7 +5932,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -5971,7 +5994,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6033,7 +6056,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6094,7 +6117,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6174,7 +6197,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6235,7 +6258,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6299,7 +6322,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6361,7 +6384,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6417,16 +6440,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#night-homevisit::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6498,7 +6523,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6560,7 +6585,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6622,7 +6647,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6683,7 +6708,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6763,7 +6788,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6817,14 +6842,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#care-management::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6888,7 +6917,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -6950,7 +6979,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7006,16 +7035,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#care-management::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7087,7 +7118,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7149,7 +7180,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7211,7 +7242,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7272,7 +7303,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7352,7 +7383,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7406,14 +7437,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#preventive-support::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7477,7 +7512,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7539,7 +7574,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7595,16 +7630,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-support::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7676,7 +7713,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7738,7 +7775,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7800,7 +7837,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7861,7 +7898,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -7941,7 +7978,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8008,7 +8045,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8066,7 +8103,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8130,7 +8167,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8193,7 +8230,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8265,7 +8302,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8331,7 +8368,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8393,7 +8430,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8454,7 +8491,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8534,7 +8571,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8601,7 +8638,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8659,7 +8696,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8723,7 +8760,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8786,7 +8823,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8858,7 +8895,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8924,7 +8961,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -8986,7 +9023,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9047,7 +9084,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9127,7 +9164,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9194,7 +9231,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9252,7 +9289,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9316,7 +9353,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9370,16 +9407,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#welfare-equipment-rental::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9451,7 +9490,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9517,7 +9556,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9579,7 +9618,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9640,7 +9679,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9720,7 +9759,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9787,7 +9826,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9845,7 +9884,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9903,7 +9942,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -9966,7 +10005,7 @@
           "relation_verification": {
             "state": "NOT_APPLICABLE",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10037,7 +10076,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10099,7 +10138,7 @@
           "relation_verification": {
             "state": "NOT_APPLICABLE",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10161,7 +10200,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10222,7 +10261,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10302,7 +10341,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10356,14 +10395,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#dementia-dayservice::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10421,7 +10464,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10485,7 +10528,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10550,7 +10593,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10622,7 +10665,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10684,7 +10727,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10746,7 +10789,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10807,7 +10850,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10887,7 +10930,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -10941,14 +10984,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#small-scale-multifunctional::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11006,7 +11053,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11070,7 +11117,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11135,7 +11182,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11207,7 +11254,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11269,7 +11316,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11331,7 +11378,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11392,7 +11439,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11472,7 +11519,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11533,7 +11580,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11591,7 +11638,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11655,7 +11702,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11720,7 +11767,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11792,7 +11839,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11854,7 +11901,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11916,7 +11963,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -11977,7 +12024,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12057,7 +12104,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12111,14 +12158,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#community-specific-facility::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12176,7 +12227,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12240,7 +12291,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12305,7 +12356,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12377,7 +12428,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12439,7 +12490,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12501,7 +12552,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12562,7 +12613,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12642,7 +12693,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12696,14 +12747,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#community-elderly-facility::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12761,7 +12816,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12825,7 +12880,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12890,7 +12945,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -12962,7 +13017,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13024,7 +13079,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13086,7 +13141,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13147,7 +13202,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13227,7 +13282,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13281,14 +13336,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#nursing-small-scale-multifunctional::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13346,7 +13405,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13410,7 +13469,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13475,7 +13534,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13547,7 +13606,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13609,7 +13668,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13671,7 +13730,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13732,7 +13791,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13812,7 +13871,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13866,14 +13925,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#elderly-welfare-facility::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13931,7 +13994,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -13995,7 +14058,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14060,7 +14123,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14132,7 +14195,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14194,7 +14257,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14256,7 +14319,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14317,7 +14380,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14397,7 +14460,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14451,14 +14514,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#elderly-health-facility::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14516,7 +14583,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14580,7 +14647,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14645,7 +14712,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14717,7 +14784,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14779,7 +14846,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14841,7 +14908,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14902,7 +14969,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -14982,7 +15049,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15036,14 +15103,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#care-medical-institution::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15101,7 +15172,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15165,7 +15236,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15230,7 +15301,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15302,7 +15373,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15364,7 +15435,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15426,7 +15497,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15487,7 +15558,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15567,7 +15638,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15632,7 +15703,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15688,7 +15759,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15752,7 +15823,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15808,16 +15879,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-homebath::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15889,7 +15962,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -15955,7 +16028,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16015,7 +16088,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16076,7 +16149,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16156,7 +16229,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16221,7 +16294,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16277,7 +16350,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16341,7 +16414,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16397,16 +16470,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-homenursing::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16478,7 +16553,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16544,7 +16619,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16604,7 +16679,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16665,7 +16740,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16745,7 +16820,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16810,7 +16885,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16866,7 +16941,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16930,7 +17005,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -16986,16 +17061,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-homerehab::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17067,7 +17144,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17133,7 +17210,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17193,7 +17270,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17254,7 +17331,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17334,7 +17411,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17399,7 +17476,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17455,7 +17532,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17519,7 +17596,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17575,16 +17652,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-homecaremanagement::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17656,7 +17735,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17722,7 +17801,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17782,7 +17861,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17843,7 +17922,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17923,7 +18002,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -17988,7 +18067,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18044,7 +18123,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18108,7 +18187,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18173,7 +18252,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18245,7 +18324,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18311,7 +18390,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18371,7 +18450,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18432,7 +18511,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18512,7 +18591,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18577,7 +18656,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18633,7 +18712,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18697,7 +18776,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18762,7 +18841,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18834,7 +18913,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18900,7 +18979,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -18960,7 +19039,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19021,7 +19100,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19101,7 +19180,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19166,7 +19245,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19222,7 +19301,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19286,7 +19365,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19351,7 +19430,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19423,7 +19502,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19489,7 +19568,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19549,7 +19628,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19610,7 +19689,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19690,7 +19769,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19755,7 +19834,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19811,7 +19890,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19875,7 +19954,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -19940,7 +20019,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20012,7 +20091,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20078,7 +20157,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20138,7 +20217,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20199,7 +20278,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20279,7 +20358,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20344,7 +20423,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20400,7 +20479,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20464,7 +20543,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20520,16 +20599,18 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-welfare-equipment-rental::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20601,7 +20682,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20667,7 +20748,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20727,7 +20808,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20788,7 +20869,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20868,7 +20949,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20933,7 +21014,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -20989,7 +21070,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21047,7 +21128,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21112,7 +21193,7 @@
           "relation_verification": {
             "state": "NOT_APPLICABLE",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21183,7 +21264,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21245,7 +21326,7 @@
           "relation_verification": {
             "state": "NOT_APPLICABLE",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21305,7 +21386,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21366,7 +21447,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21446,7 +21527,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21500,14 +21581,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#preventive-dementia-dayservice::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21565,7 +21650,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21629,7 +21714,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21694,7 +21779,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21766,7 +21851,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21828,7 +21913,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21888,7 +21973,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -21949,7 +22034,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22029,7 +22114,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22083,14 +22168,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#preventive-small-scale-multifunctional::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22148,7 +22237,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22212,7 +22301,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22277,7 +22366,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22349,7 +22438,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22411,7 +22500,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22471,7 +22560,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22532,7 +22621,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22612,7 +22701,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22666,14 +22755,18 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/governing-standards-residual-currentness-worker-a.json#preventive-dementia-group-home::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22731,7 +22824,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22795,7 +22888,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22860,7 +22953,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22932,7 +23025,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -22994,7 +23087,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -23054,7 +23147,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -23115,7 +23208,7 @@
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
             "raw_status": "PARTIAL",
-            "remaining_global_relations": 59,
+            "remaining_global_relations": 58,
             "note": "Global relation coverage is retained as raw context; no service x source-family PASS is inferred without canonical attribution."
           },
           "human_review": {
@@ -23185,8 +23278,8 @@
           "PASS": 39
         },
         "currentness": {
-          "NOT_ESTABLISHED": 17,
-          "PASS": 22
+          "NOT_ESTABLISHED": 2,
+          "PASS": 37
         },
         "relation_verification": {
           "NOT_ESTABLISHED": 39
@@ -23287,7 +23380,8 @@
           "PASS": 37
         },
         "currentness": {
-          "NOT_ESTABLISHED": 39
+          "NOT_ESTABLISHED": 24,
+          "PASS": 15
         },
         "relation_verification": {
           "NOT_APPLICABLE": 2,
@@ -23494,11 +23588,6 @@
       },
       {
         "service_id": "homevisit",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homevisit",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23529,11 +23618,6 @@
       },
       {
         "service_id": "homebath",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homebath",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23564,11 +23648,6 @@
       },
       {
         "service_id": "homenursing",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homenursing",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23599,11 +23678,6 @@
       },
       {
         "service_id": "homerehab",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homerehab",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23634,11 +23708,6 @@
       },
       {
         "service_id": "homecaremanagement",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "homecaremanagement",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23734,11 +23803,6 @@
       },
       {
         "service_id": "community-dayservice",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-dayservice",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
@@ -23779,22 +23843,12 @@
       },
       {
         "service_id": "regular-round",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "regular-round",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "regular-round",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "regular-round",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23839,11 +23893,6 @@
       },
       {
         "service_id": "night-homevisit",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "night-homevisit",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23869,22 +23918,12 @@
       },
       {
         "service_id": "care-management",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "care-management",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "care-management",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "care-management",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -23914,22 +23953,12 @@
       },
       {
         "service_id": "preventive-support",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-support",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "preventive-support",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-support",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24035,11 +24064,6 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "welfare-equipment-rental",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24084,11 +24108,6 @@
       },
       {
         "service_id": "dementia-dayservice",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-dayservice",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
@@ -24125,11 +24144,6 @@
       {
         "service_id": "small-scale-multifunctional",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24215,11 +24229,6 @@
       {
         "service_id": "community-specific-facility",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-specific-facility",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24260,11 +24269,6 @@
       {
         "service_id": "community-elderly-facility",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-elderly-facility",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24305,11 +24309,6 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24350,11 +24349,6 @@
       {
         "service_id": "elderly-welfare-facility",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24395,11 +24389,6 @@
       {
         "service_id": "elderly-health-facility",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24440,11 +24429,6 @@
       {
         "service_id": "care-medical-institution",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24495,11 +24479,6 @@
       {
         "service_id": "preventive-homebath",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homebath",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24530,11 +24509,6 @@
       {
         "service_id": "preventive-homenursing",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homenursing",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24565,11 +24539,6 @@
       {
         "service_id": "preventive-homerehab",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homerehab",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24600,11 +24569,6 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-homecaremanagement",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24775,11 +24739,6 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-welfare-equipment-rental",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24820,11 +24779,6 @@
       {
         "service_id": "preventive-dementia-dayservice",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24865,11 +24819,6 @@
       {
         "service_id": "preventive-small-scale-multifunctional",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24910,11 +24859,6 @@
       {
         "service_id": "preventive-dementia-group-home",
         "source_family": "care_insurance_act",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "governing_standards_ordinance",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -25647,13 +25591,13 @@
     ],
     "relation_verification": {
       "inventory_relations": 188,
-      "independently_covered_relations": 129,
-      "remaining_relations": 59,
+      "independently_covered_relations": 130,
+      "remaining_relations": 58,
       "classification_counts": {
         "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
         "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
         "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
-        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
+        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 4,
         "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
       }
     },

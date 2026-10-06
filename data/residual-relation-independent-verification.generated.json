@@ -1,0 +1,2523 @@
+{
+  "format_version": 1,
+  "generated_by": "scripts/build_residual_relation_independent_verification.py",
+  "policy": "Only direct official-source evidence may create independent VERIFIED state. Semantic similarity, a derived relation artifact, or an unresolved human-review proposal is not independent proof.",
+  "summary": {
+    "canonical_relations_total": 188,
+    "independently_verified_before_worker_c": 129,
+    "unverified_before_worker_c": 59,
+    "newly_verified": 1,
+    "independently_verified_after_worker_c": 130,
+    "remaining_unverified": 58,
+    "removed": 0,
+    "downgraded_to_candidate_only": 0,
+    "human_evidence_pack_matches": 57,
+    "remaining_without_human_evidence_pack": 1
+  },
+  "classification_counts": {
+    "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
+    "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
+    "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
+    "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 4,
+    "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
+  },
+  "evidence_pattern_counts": {
+    "EXPLICIT_LEGAL_CITATION": 0,
+    "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION": 17,
+    "REMUNERATION_DELEGATION": 0,
+    "SOURCE_DOCUMENT_CROSS_REFERENCE": 1,
+    "SAME_SOURCE_INTERNAL_REFERENCE": 0,
+    "OFFICIAL_ANNEX_OR_TABLE_LINKAGE": 0,
+    "SERVICE_APPLICABILITY_RELATION": 0,
+    "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION": 40,
+    "NO_EXACT_PRIMARY_EVIDENCE": 0
+  },
+  "newly_verified_relations": [
+    {
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "defined_service_by",
+        "to": "ordinance37.article.92"
+      },
+      "verification_state": "INDEPENDENTLY_VERIFIED",
+      "evidence_pattern": "EXPLICIT_LEGAL_CITATION",
+      "audit_artifact": "data/residual-relation-service-definition-independent-audit.json",
+      "source_primary_evidence": {
+        "source_id": "mhlw-fee-notice19-base",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+        "locator": "6 通所介護費 / 注1",
+        "evidence_pattern": "EXPLICIT_LEGAL_CITATION_IN_SERVICE_DEFINITION",
+        "required_reference": "指定居宅サービス基準第92条",
+        "current_source_version_note": "Official consolidated MHLW HTML currently includes the amendments through 令和8年厚生労働省告示第87号 and the post-2026-06-01 day-service text."
+      },
+      "target_primary_evidence": {
+        "source_id": "ordinance37",
+        "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+        "locator": "第七章 通所介護 ＞ 第一節 基本方針 ＞ 第九十二条",
+        "law_id": "411M50000100037",
+        "observed_revision_id": "411M50000100037_20250401_506M60000100164",
+        "required_concept": "指定居宅サービスに該当する通所介護（以下「指定通所介護」という。）"
+      }
+    }
+  ],
+  "remaining_relations": [
+    {
+      "identity": {
+        "from": "fee.dayservice.note.13",
+        "relation": "related_to",
+        "to": "ordinance37.article.99"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "related_to",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+            "locator": "6 通所介護費 / 13 別に厚生労働大臣が定める基準に適合しているものとして、電子情報処理組織を使用する方法により、都道府県知事に対し、老健局長が定める様式による届出を行った指定通所介護の利用者に対して、機能訓練を行っている場合には、当該基準に掲げる区分に従い、(1)及び(2)については1日につき次に掲げる単位数を、(3)については1月につき次に掲げる単位数を所定単位数に加算する。ただし、個別機能訓練加算(Ⅰ)イを算定している場合には、個別機能訓練加算(Ⅰ)ロは算定しない。",
+            "evidence_kind": "official_current_source_text"
+          },
+          {
+            "source_id": "mhlw-fee-notice19-base",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+            "locator": "6 通所介護費 / 注13",
+            "evidence_kind": "canonical_remuneration_source"
+          },
+          {
+            "source_id": "mhlw-r8-fee-amendment87",
+            "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+            "locator": "PDF p.5 / イ〜ニ（略）",
+            "evidence_kind": "r8_structure_persistence"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "f3984f602718ad82cd16fbb6769c692654a9a19b32196becc9896626ab7074bf",
+        "source_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.note.15",
+        "relation": "related_to",
+        "to": "ordinance37.article.98"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "related_to",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+            "locator": "6 通所介護費 / 15 別に厚生労働大臣が定める基準に適合しているものとして、電子情報処理組織を使用する方法により、都道府県知事に対し、老健局長が定める様式による届出を行った指定通所介護事業所において、別に厚生労働大臣が定める利用者に対して指定通所介護を行った場合は、認知症加算として、1日につき60単位を所定単位数に加算する。ただし、注7を算定している場合は、算定しない。",
+            "evidence_kind": "official_current_source_text"
+          },
+          {
+            "source_id": "mhlw-fee-notice19-base",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+            "locator": "6 通所介護費 / 注15",
+            "evidence_kind": "canonical_remuneration_source"
+          },
+          {
+            "source_id": "mhlw-r8-fee-amendment87",
+            "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+            "locator": "PDF p.5 / イ〜ニ（略）",
+            "evidence_kind": "r8_structure_persistence"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （指定通所介護の具体的取扱方針） ＞ 第九十八条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "a74d4b8731bd042477e4a7c1857d2dadb8607833d42c9ff28d5f6622f8d48166",
+        "source_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.note.2",
+        "relation": "operational_basis_related_to",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "operational_basis_related_to",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+            "locator": "6 通所介護費 / 2 別に厚生労働大臣が定める基準を満たさない場合は、高齢者虐待防止措置未実施減算として、所定単位数の100分の1に相当する単位数を所定単位数から減算する。",
+            "evidence_kind": "official_current_source_text"
+          },
+          {
+            "source_id": "mhlw-fee-notice19-base",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+            "locator": "6 通所介護費 / 注2",
+            "evidence_kind": "canonical_remuneration_source"
+          },
+          {
+            "source_id": "mhlw-r8-fee-amendment87",
+            "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+            "locator": "PDF p.5 / イ〜ニ（略）",
+            "evidence_kind": "r8_structure_persistence"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "096aecc99c772aea9cb2b58f1e1e6fa007d02ebdeb5d5cdf3428d311fe4dc9d2",
+        "source_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.note.3",
+        "relation": "operational_basis_related_to",
+        "to": "ordinance37.article.30-2"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "operational_basis_related_to",
+      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0",
+            "locator": "6 通所介護費 / 3 別に厚生労働大臣が定める基準を満たさない場合は、業務継続計画未策定減算として、所定単位数の100分の1に相当する単位数を所定単位数から減算する。",
+            "evidence_kind": "official_current_source_text"
+          },
+          {
+            "source_id": "mhlw-fee-notice19-base",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+            "locator": "6 通所介護費 / 注3",
+            "evidence_kind": "canonical_remuneration_source"
+          },
+          {
+            "source_id": "mhlw-r8-fee-amendment87",
+            "url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+            "locator": "PDF p.5 / イ〜ニ（略）",
+            "evidence_kind": "r8_structure_persistence"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "a116fc01dd02661d0f0fa229c39d6487e882bde8e1dd952a86ffdafc2c1fa70c",
+        "source_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
+      ]
+    },
+    {
+      "identity": {
+        "from": "fee.dayservice.root",
+        "relation": "latest_interpretation_amendment_evidence",
+        "to": "mhlw-r8-fee-guidance-may-amendment"
+      },
+      "source_file": "data/remuneration-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "latest_interpretation_amendment_evidence",
+      "classification": "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED",
+      "evidence_pattern": "SOURCE_DOCUMENT_CROSS_REFERENCE",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/remuneration-source-link-independent-audit.json",
+          "data/remuneration-relations.json"
+        ],
+        "source_pointers": [],
+        "target_pointers": [],
+        "evidence_fingerprint_sha256": null,
+        "unresolved_question": "Freshness-sensitive latest-amendment semantics require exhaustive current official evidence; the existing independent source-link audit explicitly excludes this relation."
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Source existence alone does not prove the relation semantics.",
+        "Freshness-sensitive labels must not be inferred from historical provenance."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.dedicated",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.2 (4)略",
+            "evidence_kind": "current_number_confirmed"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "PDF pp.2–3 新欄",
+            "evidence_kind": "prior_after_text"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "a79199a58aee3dd79109df5c891f4ae9498cf380f37b0f3c642db62aa1a35855",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.extended-hours",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.1 (2)略",
+            "evidence_kind": "current_number_confirmed"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "用語の定義 / 勤務延時間数",
+            "evidence_kind": "historical_title"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "8e0c0662a0b39e2acdf9485f09386e28329ba08296406c30cc60c583cf341db3",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.fte",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF pp.1–2 新欄",
+            "evidence_kind": "current_after_text_present"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "3c66347efc1f3432bc698cb0d9b3f52ff82f477e815c9605d822cb3661e0b6d0",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.fulltime",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF pp.2–3 新欄",
+            "evidence_kind": "current_after_text_present"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "61a22cb0a2bfb084b9c8cc6663839d0d97677b6dfe6d5e64918c74b0fc1b09e4",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.common.definitions.fulltime",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF pp.2–3 新欄",
+            "evidence_kind": "current_after_text_present"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "ed648410a05fcbe9873edde2ab5f993c3e10ce33769d13a4b5885a3238e99e5d",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.equipment",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.20「1・2（略）」",
+            "evidence_kind": "current_number_confirmed"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "通所介護 / 設備に関する基準（基準第95条）",
+            "evidence_kind": "historical_title"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "38512f45f7f79302200a5a69c1478e03ee39bf385a3d8a6ecd5d948b52270caa",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.equipment.dining-training-room",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+            "locator": "H30新欄。(2)旧②の共用記述は削除され、新設(4)へ再構成された後の本文。",
+            "evidence_kind": "machine_reconstructed_candidate"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "通所介護 / 設備に関する基準 / (2) 食堂及び機能訓練室",
+            "evidence_kind": "historical_title"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "e6bfcabaa109a05d053cde11a6f96b380f81824e49bd49a7857265b21dbcf56d",
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.equipment.office",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.95"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+            "locator": "H27改正後欄。H30以後は当該項目を略として保持。",
+            "evidence_kind": "machine_reconstructed_candidate"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "通所介護 / 設備に関する基準 / (1) 事業所",
+            "evidence_kind": "historical_title"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "866cef28391a37db80ca4098899454a0d45ae00fcb3a25e0279d380c4b1350a6",
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "locator": "通所介護 > 運営に関する基準",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.20 新欄「3 運営に関する基準」",
+            "evidence_kind": "current_heading"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "2c2d3dd4f9cf44c9a346ff33228c0cca9dde8ca9aea7732791ea787c03dbf235",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.operation",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.96"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "locator": "通所介護 > 運営に関する基準",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.20 新欄「3 運営に関する基準」",
+            "evidence_kind": "current_heading"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （利用料等の受領） ＞ 第九十六条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "1d6aca4f4fcaf43fb5bdc4dd9f27c0353101a927fba8a895d2471257757f7ba6",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "locator": "通所介護 > 人員に関する基準",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.20「1・2（略）」",
+            "evidence_kind": "current_number_confirmed"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "PDF p.30 新欄",
+            "evidence_kind": "prior_heading"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "11d4a86d45e8993d7bc3cadee187e1bb61e1b2fe7bb5776c022a69c5086c3665",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "locator": "通所介護 > 人員に関する基準",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.20「1・2（略）」",
+            "evidence_kind": "current_number_confirmed"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "PDF p.30 新欄",
+            "evidence_kind": "prior_heading"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "d7c0c416b4b672bda67894ff0a43c3ccc9b5bfa1e1dcee6928decdb272ab7911",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel.function-training",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/content/12404000/001623023.pdf",
+            "locator": "H30改正後欄。はり師・きゅう師に関する資格要件追加後の本文。",
+            "evidence_kind": "machine_reconstructed_candidate"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "PDF p.31「(2)〜(4)（略）」",
+            "evidence_kind": "prior_number_confirmed"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "通所介護 / 人員に関する基準 / 機能訓練指導員",
+            "evidence_kind": "historical_title"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "74d3af43386b2a0c6239a35363fb5ffa4ff6ac3d7955d46219a8738d30a0b58a",
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel.life-counselor",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.93"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+            "locator": "H27改正後欄。その後H30/R3/R6では本文変更を示さず略記。",
+            "evidence_kind": "machine_reconstructed_candidate"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "PDF p.31「(2)〜(4)（略）」",
+            "evidence_kind": "prior_number_confirmed"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "通所介護 / 人員に関する基準 / 生活相談員",
+            "evidence_kind": "historical_title"
+          },
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.20「1・2（略）」",
+            "evidence_kind": "current_section_preserved"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "e56c4e14e007b89cdd8c09367c370304479b765eb72ca1ef9ad74c94fe97fc34",
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.personnel.manager",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.94"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000080875.pdf",
+            "locator": "H27改正後欄。その後の通所介護人員節改正で本文変更を示されていない。",
+            "evidence_kind": "machine_reconstructed_candidate"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "PDF p.31「(2)〜(4)（略）」",
+            "evidence_kind": "prior_number_confirmed"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "通所介護 / 人員に関する基準 / 管理者",
+            "evidence_kind": "historical_title"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "0a8cb98ced9fa6e976b57aa07665b728d5af696ff5eafc0ebdeb2d9e26fd0bbe",
+        "source_pointer_status": "MACHINE_RECONSTRUCTED_PRIMARY_CANDIDATE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.root",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.105"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "locator": "通所介護",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.20 新欄「六 通所介護」",
+            "evidence_kind": "current_heading"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "4ff098abfa86e1471a8b99448488dba4203ff84faf52c4617380d58b08cc024f",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "notice.dayservice.root",
+        "relation": "interprets_or_explains",
+        "to": "ordinance37.article.92"
+      },
+      "source_file": "data/notice-ordinance-relations.json",
+      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
+      "relation_type": "interprets_or_explains",
+      "classification": "SEMANTIC_TEXT_CHECK_REQUIRED",
+      "evidence_pattern": "EXPLICIT_NOTICE_TO_ORDINANCE_CITATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "locator": "通所介護",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2024-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+            "locator": "PDF p.20 新欄「六 通所介護」",
+            "evidence_kind": "current_heading"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第一節 基本方針 ＞ （基本方針） ＞ 第九十二条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "a0c92ae866ec35f30878dfbdcf88203c8c6650ad493af78f3694b9be862e69da",
+        "source_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the notice text actually interpret or explain the target provision, rather than merely sharing a topic or section?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "The relation expresses interpretation, not mere document structure.",
+        "rouki25-dayservice currentness remains HOLD and must stay separate from relation verification."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.abuse.frequency"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "interpreted_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/annual-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "locator": "共通運営基準 > 虐待の防止 > 従業者研修",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "共通運営基準 > 虐待の防止 > 従業者研修",
+            "evidence_kind": "canonical_notice_source_reference"
+          }
+        ],
+        "evidence_fingerprint_sha256": "2f4a915f61e4f5efdbc8a16660f5934b9d88c03ecc800a191ae76abc4ea3dd46",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.bcp.frequency"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "interpreted_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/annual-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+            "evidence_kind": "canonical_notice_source_reference"
+          }
+        ],
+        "evidence_fingerprint_sha256": "14e74d95e1571c8a86d26ad397ad556072e0ac7dbe92df3b3916780496ea8a7a",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.infection.frequency"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "interpreted_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/annual-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "locator": "通所介護 > 衛生管理等 > 感染症研修・訓練",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "通所介護 > 衛生管理等 > 感染症研修・訓練",
+            "evidence_kind": "canonical_notice_source_reference"
+          }
+        ],
+        "evidence_fingerprint_sha256": "1c463e0b1fc97990218b9faa7a74907031b28119c27cb06ab3114c44e8b4b8e5",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article101.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "required_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/annual-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （勤務体制の確保等） ＞ 第百一条 第3項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "4c61a00dd830c0165de8d7a1d6e1da47c532e2557122ee20f2ba223033da72a8",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article104.2.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "required_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/annual-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （衛生管理等） ＞ 第百四条 第2項 三",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "3514d4a567bbc2a26e92667b2305e324b8d95027f3599a9f2779d2406f281e57",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article30-2.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "required_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/annual-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二 第2項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "488362e04d07d6da369abb01390724c031cd4d799c73e81687032af156e9bf47",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:annual-training",
+        "relation": "required_by",
+        "to": "ordinance37.article37-2.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "required_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/annual-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （虐待の防止） ＞ 第三十七条の二 第1項 三",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "9014dc4a08b2a9f6de7b9f1ee9329e7805a905f0b7f1a350478b22fcbbfd2b88",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "applies_via",
+        "to": "ordinance37.article105"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "applies_via",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/bcp-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "aee16506d5ac46b551ce63740748b24994ba837932a0ee0429fbf61e5eef3f9a",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.bcp.frequency"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "interpreted_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/bcp-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-2021-interpretation-redline",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "通所介護 > 準用 > 業務継続計画の策定等 > 研修・訓練",
+            "evidence_kind": "canonical_notice_source_reference"
+          }
+        ],
+        "evidence_fingerprint_sha256": "c014110503b3588fdcb1009b739600761f1a562e970563b49ba4c8bbbd026f34",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:bcp-training",
+        "relation": "required_by",
+        "to": "ordinance37.article30-2.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "required_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/bcp-training",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （業務継続計画の策定等） ＞ 第三十条の二 第2項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "38e42b791ebd81bcf76eb73e29f7db02ffc2267b98ae482818aaf48466fca880",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "aligned_with",
+        "to": "ordinance37.article99.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "aligned_with",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第2項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "39fc05de4a2b855a5fa29d24884c221e18327e8ce9d88fda95127d3137d70969",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.1"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第1項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "8253474a53132ceb4e36419e12b899bb2d5aa896b195a520f804ce7e2381da4e",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "consent_under",
+        "to": "ordinance37.article99.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "consent_under",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "84fa07b7cde55cc48bfd7e84e1a7f82406b360d87f40df096fde67863d80e946",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "delivered_under",
+        "to": "ordinance37.article99.4"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "delivered_under",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "d1051370a20e916643417d6f5e16ebb3e836795e1569c72d3447f24e6f6c3e23",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-content",
+        "relation": "tracked_under",
+        "to": "ordinance37.article99.5"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "tracked_under",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第5項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "26a25fa94e724f63a07698ebc0f149498428ab521d64ad5abe5b3c4bd6ceefea",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-seal",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-seal",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "60055aea22371508dd4719e7b2a6e03052ce94df12a121708ff77b1f8fbb1147",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-seal",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.4"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-seal",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "7fd469f30eea6519e3769bb5415a53a3273931479417c5efd238487b79bc178d",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "answered_by",
+        "to": "ordinance37.article99.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-signature",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第3項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "67e2b263d558f8d07b058edb1e3ab044d249434e5ba9f5db56b888ab58cf1e20",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "electronic_option_under",
+        "to": "ordinance37.article217.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "electronic_option_under",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-signature",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第十五章 雑則 ＞ （電磁的記録等） ＞ 第二百十七条 第2項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "6b2f4a2c82a50712c06ee89771dafa88d089e7b80318db4567700b6ef32fc9f1",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:care-plan-signature",
+        "relation": "requires_delivery_under",
+        "to": "ordinance37.article99.4"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "requires_delivery_under",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/care-plan-signature",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （通所介護計画の作成） ＞ 第九十九条 第4項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "6d65e100ae65675e9e313cf6fbd82f2d5f1e1bc3f3d179527f3c6adeb4e4b8a6",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:dining-training-area",
+        "relation": "answered_by",
+        "to": "ordinance37.article95.1-2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/dining-training-area",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条 第1項 | 第七章 通所介護 ＞ 第三節 設備に関する基準 ＞ （設備及び備品等） ＞ 第九十五条 第2項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "7ec3013a1ff2770cefcaed582ac23abdc8c216169fe59570f2422e632e96acfe",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article8.1"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/important-matters-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （内容及び手続の説明及び同意） ＞ 第八条 第1項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "c94cf9f4bf4c9586e10c819ed14b27bde66f5cca7d8572c94dbe596ca2e9d866",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "applies_via",
+        "to": "ordinance37.article105"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "applies_via",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/important-matters-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百五条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "8697fde6d4465a434727b2da1161ca31be29fe4775cd51682217575ab05421a8",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "interpreted_by",
+        "to": "notice.common.important-matters.explanation"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "interpreted_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/important-matters-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "locator": "共通運営基準 > 内容及び手続の説明及び同意",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "共通運営基準 > 内容及び手続の説明及び同意",
+            "evidence_kind": "canonical_notice_source_reference"
+          }
+        ],
+        "evidence_fingerprint_sha256": "e5172cf6dc5b2398b54dc0e9730c7e0585d3ab9b2bc2b145088f7ff131d34538",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:important-matters-content",
+        "relation": "published_under",
+        "to": "ordinance37.article32.1-3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "published_under",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/important-matters-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第1項 | 第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第2項 | 第二章 訪問介護 ＞ 第四節 運営に関する基準 ＞ （掲示） ＞ 第三十二条 第3項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "f9de5f69a38ad2ea8a518046960361f343938b4494cd7dd6b605cb27cc608426",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:life-counselor-staffing",
+        "relation": "answered_by",
+        "to": "ordinance37.article93.1.1"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/life-counselor-staffing",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第1項 一",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "4daa1060d94557320609f2763416609be3c06253fd5c36ad95f3aff744d80fbb",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:life-counselor-staffing",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.6"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "qualified_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/life-counselor-staffing",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第6項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "fe450aa8ffc1fa4402285aefb795e5fcc78b734c41333b97bcda41ce1abe9794",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:manager-concurrent-role",
+        "relation": "answered_by",
+        "to": "ordinance37.article94"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/manager-concurrent-role",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "6bdeab2acbe7bd7ae8315928f3325004a49ccf8187addf6810197b93b5882369",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "documented_by",
+        "to": "notice.dayservice.staffing.schedule"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "documented_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/multiple-roles",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "locator": "通所介護 > 運営に関する基準 > 勤務体制の確保等",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-interpretation-html",
+            "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1",
+            "locator": "通所介護 > 運営に関する基準 > 勤務体制の確保等",
+            "evidence_kind": "canonical_notice_source_reference"
+          }
+        ],
+        "evidence_fingerprint_sha256": "eed5c569069a516db40fcee0266544ee3c0f08c07e194dab4ec7b16b6d0b8e16",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.3"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "qualified_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/multiple-roles",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第3項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "b45d388af147dd284d7cfd5dc4bcfd980af47f1be444394ea2848044735a66c5",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article93.5"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "qualified_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/multiple-roles",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第5項",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "ba829c6c88fb494adb19886538d46c32dbd4b8d8c8f342cac3087a37af3a6d9c",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:multiple-roles",
+        "relation": "qualified_by",
+        "to": "ordinance37.article94"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "qualified_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/multiple-roles",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （管理者） ＞ 第九十四条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "ff3f633d18cd890d1e15a2ee1d81ffe0e7bbb9480240c29f187b07bf10ff2e38",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "answered_by",
+        "to": "ordinance37.article93.1.2"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/nurse-staffing",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第二節 人員に関する基準 ＞ （従業者の員数） ＞ 第九十三条 第1項 二",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "762c5f8916287a1a769ae66016ba001108ec4f5d2b82dae0d384c740feb6cbfc",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "clarified_by",
+        "to": "qa.dayservice.nurse.external.2015.50"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "clarified_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/nurse-staffing",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "locator": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日） / 問50",
+            "evidence_kind": "structured_question_and_answer_summary"
+          },
+          {
+            "source_id": "mhlw-qa",
+            "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+            "locator": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日） / 問50",
+            "evidence_kind": "canonical_qa_source_reference"
+          }
+        ],
+        "evidence_fingerprint_sha256": "f2cadadc17ca9d6f6e72daa9d82aa6454fe7a8542718436d9b7d997c6b53c053",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:nurse-staffing",
+        "relation": "interpreted_by",
+        "to": "notice.dayservice.nurse.external-linkage"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "interpreted_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/nurse-staffing",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+            "evidence_kind": "editorial_summary_not_primary_text"
+          },
+          {
+            "source_id": "mhlw-interpretation-nurse-linkage",
+            "url": "https://www.mhlw.go.jp/content/12300000/000869798.pdf",
+            "locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+            "evidence_kind": "canonical_notice_source_reference"
+          },
+          {
+            "source_id": "mhlw-qa",
+            "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+            "locator": "通所介護 > 人員に関する基準 > 看護職員 > 外部連携",
+            "evidence_kind": "canonical_notice_source_reference"
+          }
+        ],
+        "evidence_fingerprint_sha256": "44bc41f54b366b567cadcf3d39fd8696270e69edc9a8a3bd636f5f61f23fc586",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "PRIMARY_TEXT_POINTER_INCOMPLETE",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    },
+    {
+      "identity": {
+        "from": "question:operation-rules-content",
+        "relation": "answered_by",
+        "to": "ordinance37.article100"
+      },
+      "source_file": "data/relationships.json",
+      "source_state": null,
+      "relation_type": "answered_by",
+      "classification": "HUMAN_SEMANTIC_REVIEW_REQUIRED",
+      "evidence_pattern": "DERIVED_RELATION_REQUIRING_INDEPENDENT_CONFIRMATION",
+      "candidate_evidence": {
+        "evidence_artifacts": [
+          "data/relation-human-review-evidence-pack.json"
+        ],
+        "source_pointers": [
+          {
+            "url": "/questions/operation-rules-content",
+            "evidence_kind": "question_title_and_short_answer"
+          }
+        ],
+        "target_pointers": [
+          {
+            "url": "https://laws.e-gov.go.jp/law/411M50000100037",
+            "locator": "第七章 通所介護 ＞ 第四節 運営に関する基準 ＞ （運営規程） ＞ 第百条",
+            "evidence_kind": "official_text"
+          }
+        ],
+        "evidence_fingerprint_sha256": "d642511dfa6b33637570b7f58fd9d5c67fae9f4410d24322d21d84e9a94a8135",
+        "source_pointer_status": "PRACTICAL_QUESTION_CONTEXT",
+        "target_pointer_status": "DIRECT_PRIMARY_TEXT_POINTER",
+        "unresolved_question": "Does the target authority actually support, qualify, clarify, or answer the practical question in the way asserted by this relation?"
+      },
+      "disposition": "UNVERIFIED",
+      "blockers": [
+        "Question-to-authority relevance is semantic and should not be inferred from lexical overlap alone."
+      ]
+    }
+  ],
+  "deferred_blocker_categories": {
+    "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": "A latest/current claim needs exhaustive current-source evidence; negative search or source existence is insufficient.",
+    "SEMANTIC_TEXT_CHECK_REQUIRED": "The notice-to-ordinance mapping still requires exact semantic adjudication unless an explicit source reference can be independently reconstructed.",
+    "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": "Primary texts are resolved, but the exact cross-layer relation label is not explicitly established by the source.",
+    "HUMAN_SEMANTIC_REVIEW_REQUIRED": "Question-to-authority relevance is semantic and cannot be established from lexical or topical overlap alone."
+  },
+  "safety": {
+    "semantic_similarity_used_as_proof": false,
+    "unresolved_relations_promoted": false,
+    "human_review_simulated": false,
+    "publication_changed": false,
+    "global_generated_artifacts_changed": false
+  }
+}

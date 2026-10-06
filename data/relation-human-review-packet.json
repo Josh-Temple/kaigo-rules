@@ -4,13 +4,13 @@
   "source_queue": "data/relation-verification-queue.json",
   "policy": "This packet organizes only Worker D-owned unresolved relation review. Freshness-sensitive direct-evidence relations are assessed separately and excluded from this human-review packet. Blank reviewer fields must not be interpreted as rejection or approval. Packet generation never promotes independent verification, currentness, or human-review state.",
   "summary": {
-    "items_total": 58,
+    "items_total": 57,
     "classification_counts": {
       "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
-      "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 5,
+      "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 4,
       "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
     },
-    "independently_covered_relations": 129,
+    "independently_covered_relations": 130,
     "inventory_relations": 188
   },
   "review_contract": {
@@ -216,54 +216,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-005",
-      "identity": {
-        "from": "fee.dayservice.root",
-        "relation": "defined_service_by",
-        "to": "ordinance37.article.92"
-      },
-      "classification": "CROSS_LAYER_HUMAN_REVIEW_REQUIRED",
-      "relation_key": "fee.dayservice.root|defined_service_by|ordinance37.article.92",
-      "source_file": "data/remuneration-relations.json",
-      "source_state": "STRUCTURAL_MAPPING_NEEDS_HUMAN_CHECK",
-      "source": {
-        "id": "fee.dayservice.root",
-        "kind": "remuneration",
-        "label": "通所介護費",
-        "route": "/fees",
-        "state": "CURRENT_STRUCTURE_NEEDS_HUMAN_CHECK"
-      },
-      "target": {
-        "id": "ordinance37.article.92",
-        "kind": "ordinance37",
-        "label": "第九十二条 （基本方針）",
-        "route": "/rules/92",
-        "state": "IMPORTED_NEEDS_HUMAN_CHECK",
-        "article_root_id": "ordinance37.article.92",
-        "resolution_note": "Article-level review route. Legacy granular relation IDs are preserved verbatim and are not silently rewritten."
-      },
-      "review_prompt": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
-      "human_judgment_question": "Do the primary texts justify this exact cross-layer relation semantics, not just a general thematic connection?",
-      "ai_proposal": "KEEP_OPEN. The source and target are resolved, but the exact cross-layer relation label still requires human legal-semantic judgment.",
-      "competing_interpretation_or_ambiguity": "A general thematic or operational connection may exist without supporting the exact cross-layer relation asserted here.",
-      "existing_blockers": [
-        "The mapping is not a direct contains/reference edge and needs a legal-semantic judgment."
-      ],
-      "decision_options": [
-        "CONFIRM_RELATION",
-        "REJECT_RELATION",
-        "NEEDS_MORE_EVIDENCE"
-      ],
-      "review_status": "NOT_REVIEWED",
-      "reviewed_by": null,
-      "reviewer_rationale": null,
-      "reviewer_name": null,
-      "reviewer_decision": null,
-      "reviewer_note": null,
-      "reviewed_at": null
-    },
-    {
-      "review_id": "REL-007",
+      "review_id": "REL-006",
       "identity": {
         "from": "notice.common.definitions.dedicated",
         "relation": "interprets_or_explains",
@@ -311,7 +264,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-008",
+      "review_id": "REL-007",
       "identity": {
         "from": "notice.common.definitions.extended-hours",
         "relation": "interprets_or_explains",
@@ -359,7 +312,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-009",
+      "review_id": "REL-008",
       "identity": {
         "from": "notice.common.definitions.fte",
         "relation": "interprets_or_explains",
@@ -407,7 +360,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-010",
+      "review_id": "REL-009",
       "identity": {
         "from": "notice.common.definitions.fulltime",
         "relation": "interprets_or_explains",
@@ -455,7 +408,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-011",
+      "review_id": "REL-010",
       "identity": {
         "from": "notice.common.definitions.fulltime",
         "relation": "interprets_or_explains",
@@ -503,7 +456,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-012",
+      "review_id": "REL-011",
       "identity": {
         "from": "notice.dayservice.equipment",
         "relation": "interprets_or_explains",
@@ -551,7 +504,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-013",
+      "review_id": "REL-012",
       "identity": {
         "from": "notice.dayservice.equipment.dining-training-room",
         "relation": "interprets_or_explains",
@@ -599,7 +552,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-014",
+      "review_id": "REL-013",
       "identity": {
         "from": "notice.dayservice.equipment.office",
         "relation": "interprets_or_explains",
@@ -647,7 +600,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-015",
+      "review_id": "REL-014",
       "identity": {
         "from": "notice.dayservice.operation",
         "relation": "interprets_or_explains",
@@ -695,7 +648,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-016",
+      "review_id": "REL-015",
       "identity": {
         "from": "notice.dayservice.operation",
         "relation": "interprets_or_explains",
@@ -743,7 +696,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-017",
+      "review_id": "REL-016",
       "identity": {
         "from": "notice.dayservice.personnel",
         "relation": "interprets_or_explains",
@@ -791,7 +744,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-018",
+      "review_id": "REL-017",
       "identity": {
         "from": "notice.dayservice.personnel",
         "relation": "interprets_or_explains",
@@ -839,7 +792,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-019",
+      "review_id": "REL-018",
       "identity": {
         "from": "notice.dayservice.personnel.function-training",
         "relation": "interprets_or_explains",
@@ -887,7 +840,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-020",
+      "review_id": "REL-019",
       "identity": {
         "from": "notice.dayservice.personnel.life-counselor",
         "relation": "interprets_or_explains",
@@ -935,7 +888,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-021",
+      "review_id": "REL-020",
       "identity": {
         "from": "notice.dayservice.personnel.manager",
         "relation": "interprets_or_explains",
@@ -983,7 +936,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-022",
+      "review_id": "REL-021",
       "identity": {
         "from": "notice.dayservice.root",
         "relation": "interprets_or_explains",
@@ -1031,7 +984,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-023",
+      "review_id": "REL-022",
       "identity": {
         "from": "notice.dayservice.root",
         "relation": "interprets_or_explains",
@@ -1079,7 +1032,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-024",
+      "review_id": "REL-023",
       "identity": {
         "from": "question:annual-training",
         "relation": "interpreted_by",
@@ -1124,7 +1077,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-025",
+      "review_id": "REL-024",
       "identity": {
         "from": "question:annual-training",
         "relation": "interpreted_by",
@@ -1169,7 +1122,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-026",
+      "review_id": "REL-025",
       "identity": {
         "from": "question:annual-training",
         "relation": "interpreted_by",
@@ -1214,7 +1167,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-027",
+      "review_id": "REL-026",
       "identity": {
         "from": "question:annual-training",
         "relation": "required_by",
@@ -1261,7 +1214,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-028",
+      "review_id": "REL-027",
       "identity": {
         "from": "question:annual-training",
         "relation": "required_by",
@@ -1308,7 +1261,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-029",
+      "review_id": "REL-028",
       "identity": {
         "from": "question:annual-training",
         "relation": "required_by",
@@ -1355,7 +1308,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-030",
+      "review_id": "REL-029",
       "identity": {
         "from": "question:annual-training",
         "relation": "required_by",
@@ -1402,7 +1355,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-031",
+      "review_id": "REL-030",
       "identity": {
         "from": "question:bcp-training",
         "relation": "applies_via",
@@ -1449,7 +1402,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-032",
+      "review_id": "REL-031",
       "identity": {
         "from": "question:bcp-training",
         "relation": "interpreted_by",
@@ -1494,7 +1447,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-033",
+      "review_id": "REL-032",
       "identity": {
         "from": "question:bcp-training",
         "relation": "required_by",
@@ -1541,7 +1494,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-034",
+      "review_id": "REL-033",
       "identity": {
         "from": "question:care-plan-content",
         "relation": "aligned_with",
@@ -1588,7 +1541,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-035",
+      "review_id": "REL-034",
       "identity": {
         "from": "question:care-plan-content",
         "relation": "answered_by",
@@ -1635,7 +1588,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-036",
+      "review_id": "REL-035",
       "identity": {
         "from": "question:care-plan-content",
         "relation": "consent_under",
@@ -1682,7 +1635,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-037",
+      "review_id": "REL-036",
       "identity": {
         "from": "question:care-plan-content",
         "relation": "delivered_under",
@@ -1729,7 +1682,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-038",
+      "review_id": "REL-037",
       "identity": {
         "from": "question:care-plan-content",
         "relation": "tracked_under",
@@ -1776,7 +1729,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-039",
+      "review_id": "REL-038",
       "identity": {
         "from": "question:care-plan-seal",
         "relation": "answered_by",
@@ -1823,7 +1776,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-040",
+      "review_id": "REL-039",
       "identity": {
         "from": "question:care-plan-seal",
         "relation": "answered_by",
@@ -1870,7 +1823,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-041",
+      "review_id": "REL-040",
       "identity": {
         "from": "question:care-plan-signature",
         "relation": "answered_by",
@@ -1917,7 +1870,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-042",
+      "review_id": "REL-041",
       "identity": {
         "from": "question:care-plan-signature",
         "relation": "electronic_option_under",
@@ -1964,7 +1917,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-043",
+      "review_id": "REL-042",
       "identity": {
         "from": "question:care-plan-signature",
         "relation": "requires_delivery_under",
@@ -2011,7 +1964,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-044",
+      "review_id": "REL-043",
       "identity": {
         "from": "question:dining-training-area",
         "relation": "answered_by",
@@ -2058,7 +2011,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-045",
+      "review_id": "REL-044",
       "identity": {
         "from": "question:important-matters-content",
         "relation": "answered_by",
@@ -2105,7 +2058,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-046",
+      "review_id": "REL-045",
       "identity": {
         "from": "question:important-matters-content",
         "relation": "applies_via",
@@ -2152,7 +2105,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-047",
+      "review_id": "REL-046",
       "identity": {
         "from": "question:important-matters-content",
         "relation": "interpreted_by",
@@ -2197,7 +2150,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-048",
+      "review_id": "REL-047",
       "identity": {
         "from": "question:important-matters-content",
         "relation": "published_under",
@@ -2244,7 +2197,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-049",
+      "review_id": "REL-048",
       "identity": {
         "from": "question:life-counselor-staffing",
         "relation": "answered_by",
@@ -2291,7 +2244,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-050",
+      "review_id": "REL-049",
       "identity": {
         "from": "question:life-counselor-staffing",
         "relation": "qualified_by",
@@ -2338,7 +2291,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-051",
+      "review_id": "REL-050",
       "identity": {
         "from": "question:manager-concurrent-role",
         "relation": "answered_by",
@@ -2385,7 +2338,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-052",
+      "review_id": "REL-051",
       "identity": {
         "from": "question:multiple-roles",
         "relation": "documented_by",
@@ -2430,7 +2383,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-053",
+      "review_id": "REL-052",
       "identity": {
         "from": "question:multiple-roles",
         "relation": "qualified_by",
@@ -2477,7 +2430,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-054",
+      "review_id": "REL-053",
       "identity": {
         "from": "question:multiple-roles",
         "relation": "qualified_by",
@@ -2524,7 +2477,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-055",
+      "review_id": "REL-054",
       "identity": {
         "from": "question:multiple-roles",
         "relation": "qualified_by",
@@ -2571,7 +2524,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-056",
+      "review_id": "REL-055",
       "identity": {
         "from": "question:nurse-staffing",
         "relation": "answered_by",
@@ -2618,7 +2571,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-057",
+      "review_id": "REL-056",
       "identity": {
         "from": "question:nurse-staffing",
         "relation": "clarified_by",
@@ -2663,7 +2616,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-058",
+      "review_id": "REL-057",
       "identity": {
         "from": "question:nurse-staffing",
         "relation": "interpreted_by",
@@ -2708,7 +2661,7 @@
       "reviewed_at": null
     },
     {
-      "review_id": "REL-059",
+      "review_id": "REL-058",
       "identity": {
         "from": "question:operation-rules-content",
         "relation": "answered_by",

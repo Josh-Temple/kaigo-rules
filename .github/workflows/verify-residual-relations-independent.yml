@@ -1,0 +1,67 @@
+name: Verify residual relations independently
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "43 4 * * 1"
+  pull_request:
+    paths:
+      - "scripts/relation_verification_coverage.py"
+      - "scripts/verify_residual_relation_service_definition.py"
+      - "scripts/build_residual_relation_independent_verification.py"
+      - "scripts/validate_residual_relation_independent_verification.py"
+      - "tests/test_residual_relation_independent_verification.py"
+      - "data/remuneration-relations.json"
+      - "data/remuneration-current-text.json"
+      - "data/remuneration-current-skeleton.json"
+      - "data/ordinance37-nodes.json"
+      - "data/relation-human-review-evidence-pack.json"
+      - "data/remuneration-source-link-independent-audit.json"
+      - "data/residual-relation-service-definition-independent-audit.json"
+      - "data/residual-relation-independent-verification.generated.json"
+      - ".github/workflows/verify-residual-relations-independent.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/relation_verification_coverage.py"
+      - "scripts/verify_residual_relation_service_definition.py"
+      - "scripts/build_residual_relation_independent_verification.py"
+      - "scripts/validate_residual_relation_independent_verification.py"
+      - "tests/test_residual_relation_independent_verification.py"
+      - "data/remuneration-relations.json"
+      - "data/remuneration-current-text.json"
+      - "data/remuneration-current-skeleton.json"
+      - "data/ordinance37-nodes.json"
+      - "data/relation-human-review-evidence-pack.json"
+      - "data/remuneration-source-link-independent-audit.json"
+      - "data/residual-relation-service-definition-independent-audit.json"
+      - "data/residual-relation-independent-verification.generated.json"
+      - ".github/workflows/verify-residual-relations-independent.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Recheck direct official primary-source evidence
+        run: python scripts/verify_residual_relation_service_definition.py --report residual-relation-live-verification.json
+      - name: Check deterministic residual inventory
+        run: python scripts/build_residual_relation_independent_verification.py --check
+      - name: Validate independent relation coverage
+        run: python scripts/validate_residual_relation_independent_verification.py
+      - name: Run Worker-C residual relation tests
+        run: python -m unittest tests.test_residual_relation_independent_verification
+      - name: Upload live verification report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: residual-relation-live-verification
+          path: residual-relation-live-verification.json
+          if-no-files-found: warn

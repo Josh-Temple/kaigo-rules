@@ -6,6 +6,7 @@ import {
   listProgressivePublicationServices,
   projectProgressiveRule,
 } from "../../../../../../lib/publication-policy";
+import { verifiedRelatedPrimarySourcesForRecords } from "../../../../../../lib/verified-related-sources";
 
 type Params = Promise<{ serviceId: string }>;
 
@@ -58,6 +59,12 @@ export async function GET(
       label: service.label,
     },
     source_family: PROGRESSIVE_SOURCE_FAMILY,
+    related_primary_sources:
+      verifiedRelatedPrimarySourcesForRecords(
+        serviceId,
+        PROGRESSIVE_SOURCE_FAMILY,
+        selected,
+      ),
     items: selected
       .map((node) => projectProgressiveRule(serviceId, node))
       .filter(Boolean),

@@ -33,7 +33,13 @@ class NationalSourceCurrentnessExpansionTests(unittest.TestCase):
         self.assertGreater(len(delegated), 0)
         for row in delegated:
             self.assertFalse(row["promotion_recommended"])
-            self.assertNotEqual(row["projected_currentness"], "PASS")
+            self.assertEqual(
+                row["projected_currentness"],
+                row["existing_currentness"],
+            )
+            if row["projected_currentness"] == "PASS":
+                self.assertEqual(row["existing_currentness"], "PASS")
+            self.assertTrue(row["blockers"])
 
     def test_fee_guidance_comparison_is_not_integrated_current_body(self):
         fee = self.ledger["source_families"]["fee_calculation_guidance"]

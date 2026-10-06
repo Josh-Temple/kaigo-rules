@@ -74,18 +74,18 @@ class HumanReviewExpansionTests(unittest.TestCase):
         self.assertEqual(batch2["summary"]["items_total"], 10)
         self.assertEqual(batch2["summary"]["ready_for_human_review"], 10)
         self.assertEqual(
-            [row["review_id"] for row in batch2["items"]],
+            [row["relation_key"] for row in batch2["items"]],
             [
-                "REL-020",
-                "REL-027",
-                "REL-031",
-                "REL-034",
-                "REL-035",
-                "REL-036",
-                "REL-037",
-                "REL-038",
-                "REL-042",
-                "REL-043",
+                "notice.dayservice.personnel.life-counselor|interprets_or_explains|ordinance37.article.93",
+                "question:annual-training|required_by|ordinance37.article101.3",
+                "question:bcp-training|applies_via|ordinance37.article105",
+                "question:care-plan-content|aligned_with|ordinance37.article99.2",
+                "question:care-plan-content|answered_by|ordinance37.article99.1",
+                "question:care-plan-content|consent_under|ordinance37.article99.3",
+                "question:care-plan-content|delivered_under|ordinance37.article99.4",
+                "question:care-plan-content|tracked_under|ordinance37.article99.5",
+                "question:care-plan-signature|electronic_option_under|ordinance37.article217.2",
+                "question:care-plan-signature|requires_delivery_under|ordinance37.article99.4",
             ],
         )
         self.assertEqual(registry["summary"]["pilot_items"], 8)

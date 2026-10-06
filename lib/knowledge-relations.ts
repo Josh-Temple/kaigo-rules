@@ -16,6 +16,7 @@ import feeGuidanceRelationAuditData from "../data/fee-guidance-relation-independ
 import noticeExplicitReferenceAuditData from "../data/notice-ordinance-explicit-reference-derived-audit.json";
 import remunerationSourceLinkIndependentAuditData from "../data/remuneration-source-link-independent-audit.json";
 import careactServiceIdentityAuditData from "../data/careact-service-identity-derived-audit.json";
+import residualServiceDefinitionAuditData from "../data/residual-relation-service-definition-independent-audit.json";
 import dayrehabArticle119AuditData from "../data/dayrehab-article119-relation-independent-audit.json";
 import registryData from "../data/verification-registry.json";
 
@@ -192,6 +193,17 @@ for (const check of careactServiceIdentityAudit.checks || []) {
   );
 }
 
+const residualServiceDefinitionAudit = residualServiceDefinitionAuditData as any;
+for (const check of residualServiceDefinitionAudit.checks || []) {
+  if (check.result !== "PASS" || (check.differences || []).length) continue;
+  addVerified(
+    check.from_id,
+    check.relation,
+    check.to_id,
+    "residual-service-definition"
+  );
+}
+
 const edges: KnowledgeEdge[] = [];
 const seen = new Set<Identity>();
 
@@ -231,6 +243,35 @@ for (const [sourceFile, rows] of relationSources) {
         : { status: "NOT_AUDITED", lane: null },
     });
   }
+}
+
+// Reconcile the residual service-definition audit onto the exact canonical edge.
+// This is intentionally identity-based and does not infer any additional relation.
+for (const check of residualServiceDefinitionAudit.checks || []) {
+  if (check.result !== "PASS" || (check.differences || []).length) continue;
+  const edge = edges.find(
+    (row) =>
+      row.source_id === check.from_id &&
+      row.relation === check.relation &&
+      row.target_id === check.to_id
+  );
+  if (!edge) {
+    throw new Error(
+      `Residual service-definition audit has no canonical edge: ${check.from_id} | ${check.relation} | ${check.to_id}`
+    );
+  }
+  if (
+    edge.independent_verification.status === "PASS" &&
+    edge.independent_verification.lane !== "residual-service-definition"
+  ) {
+    throw new Error(
+      `Residual service-definition audit overlaps another lane: ${check.from_id} | ${check.relation} | ${check.to_id}`
+    );
+  }
+  edge.independent_verification = {
+    status: "PASS",
+    lane: "residual-service-definition",
+  };
 }
 
 const summary = (registryData as any).summary || {};

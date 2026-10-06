@@ -4,8 +4,8 @@
   "role": "Publication Runtime Binding / Progressive Release Worker",
   "source_readiness": {
     "path": "data/publication-readiness.generated.json",
-    "git_blob_sha": "0843d4ca884ae0dd8d17315ccee92d905bb13a47",
-    "expected_ready_candidate_count": 41
+    "git_blob_sha": "7fc9113ee817975e2de3672ace9ae42cc7dc4473",
+    "expected_ready_candidate_count": 71
   },
   "source_currentness": {
     "path": "data/verification/bounded-currentness-closure-worker-b.json",
@@ -18,6 +18,10 @@
       {
         "path": "data/verification/high-value-currentness-expansion-worker-c.json",
         "git_blob_sha": "5441d69e3b2c7d9a0e1148fa71d375ad85afc2c8"
+      },
+      {
+        "path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+        "git_blob_sha": "5df4d6594031ff47470bee66e124f0d77a759598"
       }
     ]
   },
@@ -27,10 +31,12 @@
     "policy_module": "lib/publication-policy.ts",
     "adapter_registry_module": "lib/publication-runtime-adapters.ts",
     "supported_source_families": [
+      "delegated_remuneration_criteria",
       "governing_standards_ordinance",
       "unit_price_regional_classification"
     ],
     "supported_source_identities": [
+      "delegated-remuneration-national",
       "mhlw-unit-price-current",
       "ordinance37",
       "preventive-services-standards"
@@ -73,7 +79,7 @@
     "review_dependent_search_term"
   ],
   "summary": {
-    "ready_candidates_at_selection": 41,
+    "ready_candidates_at_selection": 71,
     "ready_candidate_cells": [
       {
         "service_id": "dayservice",
@@ -107,6 +113,16 @@
       },
       {
         "service_id": "homevisit",
+        "source_family": "delegated_remuneration_criteria",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "homevisit",
         "source_family": "unit_price_regional_classification",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
@@ -118,6 +134,16 @@
       {
         "service_id": "homebath",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "homebath",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -138,6 +164,16 @@
       {
         "service_id": "homenursing",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "homenursing",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -158,6 +194,16 @@
       {
         "service_id": "homerehab",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "homerehab",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -178,6 +224,16 @@
       {
         "service_id": "homecaremanagement",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "homecaremanagement",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -226,6 +282,86 @@
         ]
       },
       {
+        "service_id": "community-dayservice",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "regular-round",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "regular-round",
+        "source_family": "delegated_remuneration_criteria",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "night-homevisit",
+        "source_family": "delegated_remuneration_criteria",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "care-management",
+        "source_family": "delegated_remuneration_criteria",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-support",
+        "source_family": "delegated_remuneration_criteria",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
         "service_id": "shortstay-medical",
         "source_family": "governing_standards_ordinance",
         "ready_publication_units": [
@@ -268,6 +404,16 @@
       {
         "service_id": "welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -296,8 +442,98 @@
         ]
       },
       {
+        "service_id": "dementia-dayservice",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "small-scale-multifunctional",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "community-specific-facility",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "community-elderly-facility",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "nursing-small-scale-multifunctional",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "elderly-welfare-facility",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "elderly-health-facility",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "care-medical-institution",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
         "service_id": "preventive-homebath",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-homebath",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -318,6 +554,16 @@
       {
         "service_id": "preventive-homenursing",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-homenursing",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -338,6 +584,16 @@
       {
         "service_id": "preventive-homerehab",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-homerehab",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -358,6 +614,16 @@
       {
         "service_id": "preventive-homecaremanagement",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -458,6 +724,16 @@
       {
         "service_id": "preventive-welfare-equipment-rental",
         "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "delegated_remuneration_criteria",
         "ready_publication_units": [
           "SOURCE_TEXT_ITEM_BODY",
           "SOURCE_METADATA_LOCATOR",
@@ -484,19 +760,49 @@
           "CURRENTNESS_STATEMENT",
           "SERVICE_APPLICABILITY_STATEMENT"
         ]
+      },
+      {
+        "service_id": "preventive-dementia-dayservice",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-small-scale-multifunctional",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
+      {
+        "service_id": "preventive-dementia-group-home",
+        "source_family": "governing_standards_ordinance",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
       }
     ],
-    "published_cells_added": 41,
-    "routes_added": 41,
+    "published_cells_added": 56,
+    "routes_added": 56,
     "existing_public_surfaces_changed": false,
     "decision": "PUBLISH_BOUNDED_READY_UNITS",
     "reason": "READY publication units supported by the shared multi-source runtime policy are bound across UI, search, API, and machine retrieval.",
     "blocker_counts_at_selection": {
-      "BLOCKED_CURRENTNESS": 302,
-      "BLOCKED_HUMAN_REVIEW": 302,
+      "BLOCKED_CURRENTNESS": 272,
+      "BLOCKED_HUMAN_REVIEW": 272,
       "BLOCKED_INGESTION": 74,
       "BLOCKED_ITEM_BODY": 138,
-      "BLOCKED_RELATION": 302
+      "BLOCKED_RELATION": 272
     }
   },
   "publication_cell_allowlist": [
@@ -663,6 +969,66 @@
     {
       "service_id": "welfare-equipment-rental",
       "source_family": "unit_price_regional_classification"
+    },
+    {
+      "service_id": "care-management",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homebath",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homecaremanagement",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homenursing",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homerehab",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homevisit",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "night-homevisit",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-support",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "regular-round",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "source_family": "delegated_remuneration_criteria"
     }
   ],
   "route_allowlist": [
@@ -829,6 +1195,66 @@
     {
       "service_id": "welfare-equipment-rental",
       "source_family": "unit_price_regional_classification"
+    },
+    {
+      "service_id": "care-management",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homebath",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homecaremanagement",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homenursing",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homerehab",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "homevisit",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "night-homevisit",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-support",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "regular-round",
+      "source_family": "delegated_remuneration_criteria"
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "source_family": "delegated_remuneration_criteria"
     }
   ],
   "field_allowlist_by_cell": {
@@ -1153,6 +1579,126 @@
       "service_applicability_statement"
     ],
     "welfare-equipment-rental|unit_price_regional_classification": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "care-management|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "homebath|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "homecaremanagement|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "homenursing|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "homerehab|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "homevisit|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "night-homevisit|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-homebath|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-homecaremanagement|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-homenursing|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-homerehab|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-support|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-welfare-equipment-rental|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "regular-round|delegated_remuneration_criteria": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "welfare-equipment-rental|delegated_remuneration_criteria": [
       "source_text",
       "item_body",
       "source_metadata",
@@ -4499,6 +5045,1073 @@
             "data/unit-price-item-body-assurance.json#welfare-equipment-rental",
             "scripts/verify_unit_price_currentness.py"
           ]
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "care-management|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "care-management",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 12,
+        "mapped_node_ids": [
+          "notice95.item.10-2",
+          "notice95.item.82",
+          "notice95.item.82-2",
+          "notice95.item.82-3",
+          "notice95.item.83",
+          "notice95.item.84",
+          "notice95.item.84-2",
+          "notice95.item.85",
+          "notice95.item.85-2",
+          "notice95.item.85-3",
+          "notice95.item.85-4",
+          "notice96.item.46"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#care-management"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#care-management",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "care-management::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "homebath|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "homebath",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 7,
+        "mapped_node_ids": [
+          "notice95.item.3-4",
+          "notice95.item.4",
+          "notice95.item.4-4",
+          "notice95.item.4-5",
+          "notice95.item.5",
+          "notice95.item.6",
+          "notice96.item.2"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#homebath"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#homebath",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "homebath::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "homecaremanagement|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "homecaremanagement",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 3,
+        "mapped_node_ids": [
+          "notice96.item.4-4",
+          "notice96.item.4-5",
+          "notice96.item.4-6"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#homecaremanagement"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#homecaremanagement",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "homecaremanagement::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "homenursing|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "homenursing",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 12,
+        "mapped_node_ids": [
+          "notice95.item.10",
+          "notice95.item.10-2",
+          "notice95.item.6-2",
+          "notice95.item.6-3",
+          "notice95.item.7",
+          "notice95.item.7-2",
+          "notice95.item.8",
+          "notice95.item.8-2",
+          "notice95.item.9",
+          "notice95.item.9-2",
+          "notice96.item.3",
+          "notice96.item.4"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#homenursing"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#homenursing",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "homenursing::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "homerehab|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "homerehab",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 9,
+        "mapped_node_ids": [
+          "notice95.item.10-2",
+          "notice95.item.11",
+          "notice95.item.11-2",
+          "notice95.item.12",
+          "notice95.item.12-2",
+          "notice95.item.13",
+          "notice95.item.14",
+          "notice95.item.14-2",
+          "notice96.item.4-3"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#homerehab"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#homerehab",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "homerehab::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "homevisit|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "homevisit",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 9,
+        "mapped_node_ids": [
+          "notice95.item.1",
+          "notice95.item.2",
+          "notice95.item.2-2",
+          "notice95.item.3",
+          "notice95.item.3-2",
+          "notice95.item.3-3",
+          "notice95.item.3-4",
+          "notice95.item.4",
+          "notice96.item.1"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#homevisit"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#homevisit",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "homevisit::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "night-homevisit|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "night-homevisit",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 7,
+        "mapped_node_ids": [
+          "notice95.item.3-4",
+          "notice95.item.48",
+          "notice95.item.48-4",
+          "notice95.item.48-5",
+          "notice95.item.49",
+          "notice95.item.50",
+          "notice95.item.51"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#night-homevisit"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#night-homevisit",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "night-homevisit::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "preventive-homebath|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "preventive-homebath",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 8,
+        "mapped_node_ids": [
+          "notice95.item.100-10",
+          "notice95.item.100-11",
+          "notice95.item.101",
+          "notice95.item.102",
+          "notice95.item.3-4",
+          "notice95.item.4",
+          "notice95.item.5",
+          "notice96.item.69"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#preventive-homebath"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-homebath",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "preventive-homebath::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "preventive-homecaremanagement|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "preventive-homecaremanagement",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 5,
+        "mapped_node_ids": [
+          "notice96.item.4-5",
+          "notice96.item.4-6",
+          "notice96.item.71-2",
+          "notice96.item.71-2-2",
+          "notice96.item.71-2-3"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#preventive-homecaremanagement"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-homecaremanagement",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "preventive-homecaremanagement::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "preventive-homenursing|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "preventive-homenursing",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 13,
+        "mapped_node_ids": [
+          "notice95.item.10",
+          "notice95.item.10-2",
+          "notice95.item.102-2",
+          "notice95.item.102-3",
+          "notice95.item.103",
+          "notice95.item.103-2",
+          "notice95.item.104",
+          "notice95.item.104-2",
+          "notice95.item.105",
+          "notice95.item.105-2",
+          "notice95.item.7",
+          "notice95.item.9-2",
+          "notice96.item.70"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#preventive-homenursing"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-homenursing",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "preventive-homenursing::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "preventive-homerehab|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "preventive-homerehab",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 9,
+        "mapped_node_ids": [
+          "notice95.item.10-2",
+          "notice95.item.105-3",
+          "notice95.item.105-4",
+          "notice95.item.105-5",
+          "notice95.item.106",
+          "notice95.item.106-3-2",
+          "notice95.item.12-2",
+          "notice95.item.14",
+          "notice96.item.71"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#preventive-homerehab"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-homerehab",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "preventive-homerehab::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "preventive-support|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "preventive-support",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 5,
+        "mapped_node_ids": [
+          "notice95.item.10-2",
+          "notice95.item.129-4",
+          "notice95.item.129-5",
+          "notice95.item.129-5-2",
+          "notice96.item.87"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#preventive-support"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-support",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "preventive-support::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "preventive-welfare-equipment-rental|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "preventive-welfare-equipment-rental",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 3,
+        "mapped_node_ids": [
+          "notice95.item.121-3-2",
+          "notice95.item.121-3-3",
+          "notice96.item.83"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#preventive-welfare-equipment-rental"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-welfare-equipment-rental",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "preventive-welfare-equipment-rental::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "regular-round|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "regular-round",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 11,
+        "mapped_node_ids": [
+          "notice95.item.3-4",
+          "notice95.item.44-6",
+          "notice95.item.44-7",
+          "notice95.item.44-8",
+          "notice95.item.45",
+          "notice95.item.46",
+          "notice95.item.46-2",
+          "notice95.item.47",
+          "notice95.item.48",
+          "notice95.item.8",
+          "notice96.item.26"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#regular-round"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#regular-round",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "regular-round::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
+        },
+        "source_version_contains_scope": true
+      }
+    },
+    "welfare-equipment-rental|delegated_remuneration_criteria": {
+      "evidence_path": "data/verification/delegated-remuneration-currentness-worker-b.json",
+      "promotion": {
+        "service_id": "welfare-equipment-rental",
+        "source_family": "delegated_remuneration_criteria",
+        "mapped_node_count": 3,
+        "mapped_node_ids": [
+          "notice95.item.44-4",
+          "notice95.item.44-5",
+          "notice96.item.25"
+        ],
+        "mapped_source_ids": [
+          "mhlw-fee-criteria95-current",
+          "mhlw-fee-facility-criteria96-current"
+        ],
+        "applicability_proof": {
+          "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+          "evidence": [
+            "data/shared/remuneration-delegated/service-applicability.json#welfare-equipment-rental"
+          ],
+          "inherited_from_sibling_service": false
+        },
+        "item_body_state": "PASS",
+        "item_body_evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#welfare-equipment-rental",
+          "data/shared/remuneration-delegated/item-body-verification.json"
+        ],
+        "source_currentness_evidence": [
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+          "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
+        ],
+        "source_identity_matches_item_body_source": true,
+        "prior_currentness_state": "NOT_ESTABLISHED",
+        "projection_gate": {
+          "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+          "allowed": true,
+          "identity": "welfare-equipment-rental::delegated_remuneration_criteria",
+          "scope": "currentness_only"
+        },
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "unchanged_axes": {
+          "relation_verification": "NOT_ESTABLISHED",
+          "human_review": "NOT_REVIEWED",
+          "publication": "BLOCKED",
+          "route_exposure": "BLOCKED"
+        },
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": [
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT",
+          "SOURCE_METADATA_LOCATOR",
+          "SOURCE_TEXT_ITEM_BODY"
+        ],
+        "source_identity": {
+          "canonical_source_id": "delegated-remuneration-national",
+          "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+          "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+          "official_page_urls": [
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0",
+            "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4585&dataType=0"
+          ],
+          "current_official_display_observed_on": "2026-10-06"
         },
         "source_version_contains_scope": true
       }

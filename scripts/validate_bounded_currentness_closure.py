@@ -311,8 +311,15 @@ def validate_payload(
 
     matrix_preintegration = current_standards == standards.get("before")
     matrix_integrated = current_standards == standards.get("after")
-    if not matrix_preintegration and not matrix_integrated:
-        errors.append("governing standards matrix matches neither wave before nor after state")
+    matrix_subsequent_integrated = current_standards == {
+        "PASS": 37,
+        "NOT_ESTABLISHED": 2,
+    }
+    if not matrix_preintegration and not matrix_integrated and not matrix_subsequent_integrated:
+        errors.append(
+            "governing standards matrix matches neither this wave's before/after state "
+            "nor the exact subsequent residual-currentness state"
+        )
 
     expected_after = dict(standards.get("before") or {})
     for service_id in residual_new_ids:
@@ -381,7 +388,7 @@ def validate_payload(
             errors.append(f"{service_id}: direct service chapter proof missing")
         if proof.get("target_articles") != audit_row.get("target_articles"):
             errors.append(f"{service_id}: target articles differ from independent audit")
-        if matrix_integrated and (matrix_row.get("currentness") or {}).get("state") != "PASS":
+        if (matrix_integrated or matrix_subsequent_integrated) and (matrix_row.get("currentness") or {}).get("state") != "PASS":
             errors.append(f"{service_id}: integrated currentness is not PASS")
         if matrix_preintegration and (matrix_row.get("currentness") or {}).get("state") != "PASS":
             errors.append(f"{service_id}: prior cumulative promotion disappeared from base matrix")

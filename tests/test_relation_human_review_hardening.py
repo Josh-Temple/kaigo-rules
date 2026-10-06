@@ -16,16 +16,16 @@ class RelationHumanReviewHardeningTests(unittest.TestCase):
     def test_worker_d_snapshot_is_fail_closed(self):
         result = validate()
         self.assertEqual(result["inventory_relations"], 188)
-        self.assertEqual(result["independently_covered_relations"], 129)
-        self.assertEqual(result["remaining_relations"], 59)
-        self.assertEqual(result["worker_d_review_items"], 58)
+        self.assertEqual(result["independently_covered_relations"], 130)
+        self.assertEqual(result["remaining_relations"], 58)
+        self.assertEqual(result["worker_d_review_items"], 57)
         self.assertEqual(result["freshness_sensitive_relations"], 1)
-        self.assertEqual(result["all_remaining_relations_accounted_for"], 59)
+        self.assertEqual(result["all_remaining_relations_accounted_for"], 58)
         self.assertEqual(result["freshness_state"], "NOT_ESTABLISHED")
-        self.assertEqual(result["human_only_relations"], 41)
+        self.assertEqual(result["human_only_relations"], 40)
         self.assertEqual(result["semantic_text_relations"], 17)
         self.assertEqual(result["machine_safe_closures"], 0)
-        self.assertEqual(result["evidence_pack_ready_items"], 58)
+        self.assertEqual(result["evidence_pack_ready_items"], 57)
         self.assertEqual(result["review_state"], "NOT_REVIEWED")
         self.assertEqual(
             result["semantic_text_source_pointer_status_counts"],

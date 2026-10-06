@@ -235,9 +235,9 @@
     },
     "unresolved_or_unverified_relations": {
       "relations_total": 188,
-      "relations_independently_verified": 129,
-      "relations_remaining_unverified": 59,
-      "remaining_rate": 0.31383,
+      "relations_independently_verified": 130,
+      "relations_remaining_unverified": 58,
+      "remaining_rate": 0.308511,
       "lane_breakdown": [
         {
           "id": "explicit-legal-reference",
@@ -298,6 +298,12 @@
           "status": "PASS",
           "verified_relations": 2,
           "evidence": "data/careact-service-identity-derived-audit.json"
+        },
+        {
+          "id": "residual-service-definition",
+          "status": "PASS",
+          "verified_relations": 1,
+          "evidence": "data/residual-relation-service-definition-independent-audit.json"
         }
       ]
     }
@@ -314,8 +320,8 @@
       "/fees/guidance",
       "/fees/unit-price"
     ],
-    "published_service_source_family_cells": 41,
-    "published_publication_units": 164,
+    "published_service_source_family_cells": 56,
+    "published_publication_units": 224,
     "service_navigation_groups": 7,
     "service_navigation_units": 26,
     "service_navigation_service_entries": 39,

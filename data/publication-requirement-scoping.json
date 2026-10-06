@@ -170,24 +170,24 @@
   "summary": {
     "service_source_family_cells": 351,
     "publication_units_total": 2457,
-    "ready_for_publication_review_candidates": 164,
+    "ready_for_publication_review_candidates": 284,
     "ready_candidates_by_unit_type": {
-      "CURRENTNESS_STATEMENT": 41,
-      "SERVICE_APPLICABILITY_STATEMENT": 41,
-      "SOURCE_METADATA_LOCATOR": 41,
-      "SOURCE_TEXT_ITEM_BODY": 41
+      "CURRENTNESS_STATEMENT": 71,
+      "SERVICE_APPLICABILITY_STATEMENT": 71,
+      "SOURCE_METADATA_LOCATOR": 71,
+      "SOURCE_TEXT_ITEM_BODY": 71
     },
     "primary_readiness": {
-      "BLOCKED_CURRENTNESS": 1340,
-      "BLOCKED_HUMAN_REVIEW": 41,
+      "BLOCKED_CURRENTNESS": 1130,
+      "BLOCKED_HUMAN_REVIEW": 71,
       "BLOCKED_INGESTION": 518,
       "BLOCKED_ITEM_BODY": 256,
-      "BLOCKED_RELATION": 82,
+      "BLOCKED_RELATION": 142,
       "NOT_APPLICABLE": 56,
-      "READY_FOR_PUBLICATION_REVIEW": 164
+      "READY_FOR_PUBLICATION_REVIEW": 284
     },
     "blocking_reason_counts": {
-      "BLOCKED_CURRENTNESS": 2114,
+      "BLOCKED_CURRENTNESS": 1904,
       "BLOCKED_HUMAN_REVIEW": 686,
       "BLOCKED_INGESTION": 518,
       "BLOCKED_ITEM_BODY": 552,
@@ -198,8 +198,11 @@
         "BLOCKED_CURRENTNESS": 273
       },
       "delegated_remuneration_criteria": {
-        "BLOCKED_CURRENTNESS": 259,
-        "NOT_APPLICABLE": 14
+        "BLOCKED_CURRENTNESS": 154,
+        "BLOCKED_HUMAN_REVIEW": 15,
+        "BLOCKED_RELATION": 30,
+        "NOT_APPLICABLE": 14,
+        "READY_FOR_PUBLICATION_REVIEW": 60
       },
       "fee_calculation_guidance": {
         "BLOCKED_CURRENTNESS": 6,
@@ -208,10 +211,10 @@
         "NOT_APPLICABLE": 14
       },
       "governing_standards_ordinance": {
-        "BLOCKED_CURRENTNESS": 119,
-        "BLOCKED_HUMAN_REVIEW": 22,
-        "BLOCKED_RELATION": 44,
-        "READY_FOR_PUBLICATION_REVIEW": 88
+        "BLOCKED_CURRENTNESS": 14,
+        "BLOCKED_HUMAN_REVIEW": 37,
+        "BLOCKED_RELATION": 74,
+        "READY_FOR_PUBLICATION_REVIEW": 148
       },
       "national_qa": {
         "BLOCKED_CURRENTNESS": 273
@@ -1625,7 +1628,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -1634,10 +1637,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -1646,10 +1647,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -1658,10 +1657,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -1670,10 +1667,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -1682,9 +1677,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -1695,9 +1689,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -1709,9 +1702,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -2592,7 +2584,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -2601,10 +2593,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -2613,10 +2603,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -2625,10 +2613,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -2637,10 +2623,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -2649,9 +2633,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -2662,9 +2645,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -2676,9 +2658,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -3559,7 +3540,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -3568,10 +3549,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -3580,10 +3559,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -3592,10 +3569,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -3604,10 +3579,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -3616,9 +3589,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -3629,9 +3601,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -3643,9 +3614,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -4526,7 +4496,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -4535,10 +4505,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -4547,10 +4515,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -4559,10 +4525,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -4571,10 +4535,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -4583,9 +4545,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -4596,9 +4557,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -4610,9 +4570,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -5493,7 +5452,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -5502,10 +5461,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -5514,10 +5471,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -5526,10 +5481,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -5538,10 +5491,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -5550,9 +5501,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -5563,9 +5513,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -5577,9 +5526,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -8084,7 +8032,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -8093,10 +8041,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -8105,10 +8051,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -8117,10 +8061,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -8129,10 +8071,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -8141,9 +8081,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -8154,9 +8093,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -8168,9 +8106,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -9073,7 +9010,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -9082,10 +9019,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -9094,10 +9029,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -9106,10 +9039,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -9118,10 +9049,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -9130,9 +9059,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -9143,9 +9071,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -9157,9 +9084,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -9398,7 +9324,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -9407,10 +9333,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -9419,10 +9343,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -9431,10 +9353,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -9443,10 +9363,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -9455,9 +9373,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -9468,9 +9385,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -9482,9 +9398,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -10387,7 +10302,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -10396,10 +10311,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -10408,10 +10321,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -10420,10 +10331,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -10432,10 +10341,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -10444,9 +10351,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -10457,9 +10363,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -10471,9 +10376,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -11051,7 +10955,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -11060,10 +10964,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -11072,10 +10974,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -11084,10 +10984,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -11096,10 +10994,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -11108,9 +11004,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -11121,9 +11016,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -11135,9 +11029,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -11376,7 +11269,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -11385,10 +11278,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -11397,10 +11288,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -11409,10 +11298,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -11421,10 +11308,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -11433,9 +11318,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -11446,9 +11330,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -11460,9 +11343,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -12040,7 +11922,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -12049,10 +11931,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -12061,10 +11941,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -12073,10 +11951,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -12085,10 +11961,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -12097,9 +11971,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -12110,9 +11983,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -12124,9 +11996,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -12365,7 +12236,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -12374,10 +12245,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -12386,10 +12255,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -12398,10 +12265,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -12410,10 +12275,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -12422,9 +12285,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -12435,9 +12297,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -12449,9 +12310,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -15289,7 +15149,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -15298,10 +15158,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -15310,10 +15168,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -15322,10 +15178,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -15334,10 +15188,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -15346,9 +15198,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -15359,9 +15210,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -15373,9 +15223,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -16837,7 +16686,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -16846,10 +16695,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -16858,10 +16705,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -16870,10 +16715,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -16882,10 +16725,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -16894,9 +16735,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -16907,9 +16747,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -16921,9 +16760,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -17830,7 +17668,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -17839,10 +17677,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -17851,10 +17687,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -17863,10 +17697,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -17875,10 +17707,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -17887,9 +17717,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -17900,9 +17729,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -17914,9 +17742,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -19816,7 +19643,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -19825,10 +19652,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -19837,10 +19662,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -19849,10 +19672,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -19861,10 +19682,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -19873,9 +19692,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -19886,9 +19704,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -19900,9 +19717,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -20809,7 +20625,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -20818,10 +20634,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -20830,10 +20644,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -20842,10 +20654,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -20854,10 +20664,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -20866,9 +20674,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -20879,9 +20686,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -20893,9 +20699,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -21802,7 +21607,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -21811,10 +21616,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -21823,10 +21626,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -21835,10 +21636,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -21847,10 +21646,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -21859,9 +21656,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -21872,9 +21668,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -21886,9 +21681,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -22795,7 +22589,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -22804,10 +22598,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -22816,10 +22608,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -22828,10 +22618,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -22840,10 +22628,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -22852,9 +22638,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -22865,9 +22650,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -22879,9 +22663,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -23788,7 +23571,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -23797,10 +23580,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -23809,10 +23590,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -23821,10 +23600,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -23833,10 +23610,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -23845,9 +23620,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -23858,9 +23632,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -23872,9 +23645,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -24781,7 +24553,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -24790,10 +24562,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -24802,10 +24572,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -24814,10 +24582,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -24826,10 +24592,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -24838,9 +24602,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -24851,9 +24614,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -24865,9 +24627,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -26092,7 +25853,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -26101,10 +25862,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -26113,10 +25872,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -26125,10 +25882,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -26137,10 +25892,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -26149,9 +25902,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -26162,9 +25914,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -26176,9 +25927,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -27063,7 +26813,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -27072,10 +26822,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -27084,10 +26832,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -27096,10 +26842,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -27108,10 +26852,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -27120,9 +26862,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -27133,9 +26874,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -27147,9 +26887,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -28034,7 +27773,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -28043,10 +27782,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -28055,10 +27792,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -28067,10 +27802,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -28079,10 +27812,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -28091,9 +27822,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -28104,9 +27834,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -28118,9 +27847,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -29005,7 +28733,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -29014,10 +28742,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -29026,10 +28752,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -29038,10 +28762,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -29050,10 +28772,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -29062,9 +28782,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -29075,9 +28794,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -29089,9 +28807,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -33860,7 +33577,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -33869,10 +33586,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -33881,10 +33596,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -33893,10 +33606,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -33905,10 +33616,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -33917,9 +33626,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -33930,9 +33638,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -33944,9 +33651,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -35408,7 +35114,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -35417,10 +35123,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -35429,10 +35133,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -35441,10 +35143,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -35453,10 +35153,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -35465,9 +35163,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -35478,9 +35175,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -35492,9 +35188,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -36401,7 +36096,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -36410,10 +36105,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -36422,10 +36115,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -36434,10 +36125,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -36446,10 +36135,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -36458,9 +36145,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -36471,9 +36157,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -36485,9 +36170,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",
@@ -37394,7 +37078,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "BLOCKED",
@@ -37403,10 +37087,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -37415,10 +37097,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -37427,10 +37107,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -37439,10 +37117,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -37451,9 +37127,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -37464,9 +37139,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -37478,9 +37152,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",

@@ -113,7 +113,13 @@ class DatabaseCoverageMatrixTest(unittest.TestCase):
             delegated["item_body_verification"]["state"],
             self.delegated_applicability["homevisit"]["assurance"]["item_body_verification"],
         )
-        self.assertEqual(delegated["currentness"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(delegated["currentness"]["state"], "PASS")
+        self.assertIn(
+            "data/verification/delegated-remuneration-currentness-worker-b.json#homevisit::delegated_remuneration_criteria",
+            delegated["currentness"]["evidence"],
+        )
+        self.assertEqual(delegated["relation_verification"]["state"], "NOT_ESTABLISHED")
+        self.assertEqual(delegated["human_review"]["state"], "NOT_REVIEWED")
         self.assertEqual(delegated["publication"]["state"], "BLOCKED")
         self.assertEqual(delegated["route_exposure"]["state"], "BLOCKED")
 

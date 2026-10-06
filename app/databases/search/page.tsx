@@ -12,10 +12,12 @@ import {
   getProgressiveSourceRecords,
 } from "../../../lib/publication-policy";
 import {
+  DELEGATED_REMUNERATION_SOURCE_FAMILY,
   GOVERNING_STANDARDS_SOURCE_FAMILY,
   UNIT_PRICE_SOURCE_FAMILY,
   publicSourceFamiliesForService,
 } from "../../../lib/public-source-navigation";
+import { verifiedRelatedPrimarySources } from "../../../lib/verified-related-sources";
 import { publicVerificationLabel } from "../../../lib/public-verification";
 import { listServices } from "../../../lib/service-catalog";
 import { publicServiceNavigationGroups } from "../../../lib/service-navigation-groups";
@@ -222,10 +224,57 @@ export default async function DatabaseSearchPage({
       ])
     : [];
 
+  const delegatedCriteriaPublished = Boolean(
+    selectedService &&
+      selectedPublicFamilies.some(
+        (item) =>
+          item.source_family ===
+          DELEGATED_REMUNERATION_SOURCE_FAMILY,
+      ),
+  );
+  const delegatedCriteriaRecords =
+    delegatedCriteriaPublished && selectedService
+      ? (getProgressiveSourceRecords(
+          selectedService.service_id,
+          DELEGATED_REMUNERATION_SOURCE_FAMILY,
+        ) as Array<any>)
+      : [];
+  const delegatedCriteriaMatches =
+    delegatedCriteriaPublished
+      ? rankDatabaseSearch(
+          delegatedCriteriaRecords,
+          query,
+          (record) => [
+            {
+              value: record.official_text || "",
+              weight: 10,
+            },
+            {
+              value: record.heading || "",
+              weight: 9,
+            },
+            {
+              value: [
+                record.item_label,
+                record.source_document_title,
+              ]
+                .filter(Boolean)
+                .join(" "),
+              weight: 5,
+            },
+            {
+              value: record.source_locator || "",
+              weight: 2,
+            },
+          ],
+        )
+      : [];
+
   const total =
     lawMatches.length +
     ordinanceMatches.length +
     unitPriceMatches.length +
+    delegatedCriteriaMatches.length +
     noticeMatches.length +
     qaMatches.length;
 
@@ -437,6 +486,103 @@ export default async function DatabaseSearchPage({
               </p>
             )}
             {unitPriceMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
+          </section>
+
+          <section className="section">
+            <h2>
+              報酬算定基準（別告示）
+              <span className="meta">
+                ({delegatedCriteriaMatches.length}件)
+              </span>
+            </h2>
+            {delegatedCriteriaMatches.length && selectedService ? (
+              <div className="source-chain">
+                {delegatedCriteriaMatches
+                  .slice(0, LIMIT)
+                  .map((record) => {
+                    const related =
+                      verifiedRelatedPrimarySources(
+                        selectedService.service_id,
+                        DELEGATED_REMUNERATION_SOURCE_FAMILY,
+                        record,
+                      );
+                    return (
+                      <article
+                        className="source-card"
+                        key={record.id}
+                      >
+                        <p className="meta">
+                          {selectedService.label} /{" "}
+                          {record.source_document_title ||
+                            "報酬算定基準"}
+                        </p>
+                        <h3>
+                          <Link
+                            href={
+                              "/fees/criteria?service=" +
+                              encodeURIComponent(
+                                selectedService.service_id,
+                              ) +
+                              "#" +
+                              record.id
+                            }
+                          >
+                            {record.heading ||
+                              record.item_label ||
+                              record.id}
+                          </Link>
+                        </h3>
+                        <p>
+                          {databaseSearchExcerpt(
+                            record.official_text || "",
+                            query,
+                          )}
+                        </p>
+                        <p className="meta">
+                          <a
+                            href={record.source_url}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            厚生労働省の原文
+                          </a>
+                          {record.source_locator
+                            ? " / " + record.source_locator
+                            : ""}
+                        </p>
+                        {related.length ? (
+                          <p className="meta">
+                            関連する一次資料：{" "}
+                            {related.map((relation, index) => (
+                              <span
+                                key={
+                                  relation.related_record_id
+                                }
+                              >
+                                {index > 0 ? " / " : ""}
+                                <Link href={relation.href}>
+                                  {relation.title}
+                                </Link>
+                              </span>
+                            ))}
+                          </p>
+                        ) : null}
+                      </article>
+                    );
+                  })}
+              </div>
+            ) : (
+              <p className="meta">
+                {delegatedCriteriaPublished
+                  ? "現在公開している範囲では一致なし"
+                  : "この資料種別は、公開条件を満たしたサービスだけ検索対象になります。"}
+              </p>
+            )}
+            {delegatedCriteriaMatches.length > LIMIT ? (
+              <p className="meta">
+                上位{LIMIT}件を表示しています。
+              </p>
+            ) : null}
           </section>
 
           <section className="section">
