@@ -304,25 +304,25 @@
       "starting_currentness_state": "NOT_ESTABLISHED",
       "starting_readiness": "BLOCKED_CURRENTNESS",
       "applicability_proof": {
-        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "state": "NOT_ESTABLISHED_CURRENT_VERSION_SCOPE_ENDPOINT",
         "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
-        "scope_identity_present": true,
+        "scope_identity_present": false,
         "regular_preventive_inheritance_used": false,
         "incorporation_or_read_as_semantics_promoted": false
       },
-      "source_version_contains_scope": true,
+      "source_version_contains_scope": false,
       "ingestion_state": "INGESTED",
       "item_body_state": "PASS",
-      "decision": "PROMOTE_PASS_BOUNDED",
-      "blocker": null,
-      "projected_currentness_state": "PASS",
-      "promotion_applied": true,
-      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "decision": "DEFER",
+      "blocker": "CURRENT_CORPUS_SCOPE_ENDPOINT_NOT_RESOLVED",
+      "projected_currentness_state": "NOT_ESTABLISHED",
+      "promotion_applied": false,
+      "currentness_decision_reason": "The canonical service direct range declares an endpoint that does not resolve in the current independently reparsed e-Gov corpus. Currentness remains NOT_ESTABLISHED until the service-specific current-version scope is corrected and independently reverified.",
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "identity": "night-homevisit::governing_standards_ordinance",
         "scope": "currentness_only",
-        "allowed": true
+        "allowed": false
       }
     },
     {
@@ -464,25 +464,25 @@
       "starting_currentness_state": "NOT_ESTABLISHED",
       "starting_readiness": "BLOCKED_CURRENTNESS",
       "applicability_proof": {
-        "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+        "state": "NOT_ESTABLISHED_CURRENT_VERSION_SCOPE_ENDPOINT",
         "mode": "SERVICE_CHAPTER_OR_ORDINARY_DIRECT_RANGE_IN_CURRENT_EGOV_CORPUS",
-        "scope_identity_present": true,
+        "scope_identity_present": false,
         "regular_preventive_inheritance_used": false,
         "incorporation_or_read_as_semantics_promoted": false
       },
-      "source_version_contains_scope": true,
+      "source_version_contains_scope": false,
       "ingestion_state": "INGESTED",
       "item_body_state": "PASS",
-      "decision": "PROMOTE_PASS_BOUNDED",
-      "blocker": null,
-      "projected_currentness_state": "PASS",
-      "promotion_applied": true,
-      "currentness_decision_reason": "The exact service direct scope is resolved against the independently reparsed current official e-Gov corpus for the matching canonical source identity; unresolved incorporation/read-as semantics remain outside this currentness-only promotion.",
+      "decision": "DEFER",
+      "blocker": "CURRENT_CORPUS_SCOPE_ENDPOINT_NOT_RESOLVED",
+      "projected_currentness_state": "NOT_ESTABLISHED",
+      "promotion_applied": false,
+      "currentness_decision_reason": "The canonical service direct range declares an endpoint that does not resolve in the current independently reparsed e-Gov corpus. Currentness remains NOT_ESTABLISHED until the service-specific current-version scope is corrected and independently reverified.",
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "identity": "dementia-group-home::governing_standards_ordinance",
         "scope": "currentness_only",
-        "allowed": true
+        "allowed": false
       }
     },
     {
@@ -776,10 +776,14 @@
   ],
   "summary": {
     "targeted_cells": 17,
-    "promoted_cells": 17,
-    "deferred_cells": 0,
-    "projected_ready_increase": 17,
-    "projected_governing_standards_ready": 39
+    "promoted_cells": 15,
+    "deferred_cells": 2,
+    "deferred_service_ids": [
+      "night-homevisit",
+      "dementia-group-home"
+    ],
+    "projected_ready_increase": 15,
+    "projected_governing_standards_ready": 37
   },
   "integration_boundary": {
     "generated_coverage_matrix_modified_by_worker_a": false,
