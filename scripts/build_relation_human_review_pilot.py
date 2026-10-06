@@ -15,15 +15,15 @@ EVIDENCE_PATH = DATA / "relation-human-review-evidence-pack.json"
 OUTPUT_JSON = DATA / "relation-human-review-pilot.json"
 OUTPUT_MD = DOCS / "relation-human-review-pilot.generated.md"
 
-PILOT_REVIEW_IDS = [
-    "REL-001",
-    "REL-013",
-    "REL-003",
-    "REL-014",
-    "REL-002",
-    "REL-019",
-    "REL-004",
-    "REL-021",
+PILOT_RELATION_KEYS = [
+    "fee.dayservice.note.13|related_to|ordinance37.article.99",
+    "notice.dayservice.equipment.dining-training-room|interprets_or_explains|ordinance37.article.95",
+    "fee.dayservice.note.2|operational_basis_related_to|ordinance37.article.105",
+    "notice.dayservice.equipment.office|interprets_or_explains|ordinance37.article.95",
+    "fee.dayservice.note.15|related_to|ordinance37.article.98",
+    "notice.dayservice.personnel.function-training|interprets_or_explains|ordinance37.article.93",
+    "fee.dayservice.note.3|operational_basis_related_to|ordinance37.article.30-2",
+    "notice.dayservice.personnel.manager|interprets_or_explains|ordinance37.article.94",
 ]
 ALLOWED_DECISIONS = [
     "CONFIRM_RELATION",
@@ -77,12 +77,16 @@ def pilot_unit(row: dict, index: int) -> dict:
 
 def build() -> dict:
     evidence = load_json(EVIDENCE_PATH)
-    by_id = {row["review_id"]: row for row in evidence.get("items", [])}
-    missing = [review_id for review_id in PILOT_REVIEW_IDS if review_id not in by_id]
+    by_key = {row["relation_key"]: row for row in evidence.get("items", [])}
+    missing = [
+        relation_key
+        for relation_key in PILOT_RELATION_KEYS
+        if relation_key not in by_key
+    ]
     if missing:
-        raise ValueError(f"pilot review ids missing from evidence pack: {missing}")
+        raise ValueError(f"pilot relation identities missing from evidence pack: {missing}")
 
-    selected = [by_id[review_id] for review_id in PILOT_REVIEW_IDS]
+    selected = [by_key[relation_key] for relation_key in PILOT_RELATION_KEYS]
     for row in selected:
         if not row.get("evidence_pack_ready"):
             raise ValueError(f"pilot item is not evidence-pack ready: {row['review_id']}")
@@ -132,7 +136,7 @@ def build() -> dict:
         ),
         "selection_rationale": [
             "Prefer relations with direct primary-text pointers on both sides.",
-            "Use a small eight-item batch and interleave relation types instead of processing all 58 evidence-pack items.",
+            "Use a small eight-item batch and interleave relation types instead of processing the full evidence pack.",
             "Fill the remainder with machine-reconstructed notice candidates whose target side has a direct primary-text pointer; practical-question relations remain outside the first pilot.",
         ],
         "summary": {
