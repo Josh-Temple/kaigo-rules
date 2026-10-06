@@ -391,10 +391,10 @@
         "expected_state": "BLOCKED"
       },
       {
-        "id": "PUB-BLOCK-CARE-MANAGEMENT-18",
+        "id": "PUB-ALLOW-CARE-MANAGEMENT-18",
         "service_id": "care-management",
         "article": "18",
-        "expected_state": "BLOCKED"
+        "expected_state": "PUBLISHED"
       },
       {
         "id": "PUB-ALLOW-DAYSERVICE-UNIT-PRICE-1",

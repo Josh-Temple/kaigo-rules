@@ -254,12 +254,53 @@ def validate_payload(
         all(target_states[sid] == "PASS" for sid in PROMOTED_TARGETS)
         and all(target_states[sid] == "NOT_ESTABLISHED" for sid in DEFERRED_TARGETS)
     )
-    if not preintegration and not integrated:
-        errors.append(f"target currentness is neither exact preintegration nor integrated state: {target_states}")
+    final_integrated = all(state == "PASS" for state in target_states.values())
+    if final_integrated:
+        final_path = (
+            ROOT
+            / "data/verification/final-standards-residual-relation-worker-c.json"
+        )
+        if not final_path.exists():
+            errors.append(
+                "39/39 governing-standards state lacks final two-cell assurance"
+            )
+            final_integrated = False
+        else:
+            final_artifact = load(final_path)
+            assert isinstance(final_artifact, dict)
+            final_governing = final_artifact.get("governing_standards") or {}
+            final_decisions = final_governing.get("decisions") or []
+            final_ids = {str(row.get("service_id")) for row in final_decisions}
+            final_ok = (
+                final_artifact.get("artifact_kind")
+                == "FINAL_STANDARDS_AND_RESIDUAL_RELATION_ASSURANCE"
+                and final_ids == set(DEFERRED_TARGETS)
+                and len(final_decisions) == len(DEFERRED_TARGETS)
+                and all(
+                    row.get("decision") == "PROMOTE_PASS_BOUNDED"
+                    and row.get("promotion_applied") is True
+                    and row.get("projected_currentness_state") == "PASS"
+                    and row.get("blocker") is None
+                    for row in final_decisions
+                )
+                and (final_governing.get("after") or {}).get("ready") == 39
+                and (final_governing.get("after") or {}).get("blocked_currentness") == 0
+            )
+            if not final_ok:
+                errors.append(
+                    "39/39 governing-standards state is not backed by exact final residual assurance"
+                )
+                final_integrated = False
+    if not preintegration and not integrated and not final_integrated:
+        errors.append(
+            f"target currentness is neither exact preintegration nor a bounded integrated state: {target_states}"
+        )
     if preintegration and len(current_pass) != 22:
         errors.append(f"existing READY/currentness PASS baseline regressed or drifted: {len(current_pass)}")
     if integrated and len(current_pass) != 37:
         errors.append(f"integrated governing standards PASS count must be 37, got {len(current_pass)}")
+    if final_integrated and len(current_pass) != 39:
+        errors.append(f"final governing standards PASS count must be 39, got {len(current_pass)}")
 
     starting = artifact.get("starting_inventory") or {}
     if starting.get("ready") != 22 or starting.get("blocked_currentness") != 17:

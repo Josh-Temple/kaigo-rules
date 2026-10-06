@@ -1,0 +1,36 @@
+name: Verify Worker C final standards and relation assurance
+
+on:
+  push:
+    branches:
+      - "work/ready-publication-worker-c-final-assurance-20261007"
+    paths:
+      - "data/verification/final-standards-residual-relation-worker-c.json"
+      - "scripts/validate_final_standards_residual_relation_worker_c.py"
+      - "scripts/build_database_coverage_matrix.py"
+      - "tests/test_final_standards_residual_relation_worker_c.py"
+      - ".github/workflows/verify-final-standards-residual-relation-worker-c.yml"
+  pull_request:
+    paths:
+      - "data/verification/final-standards-residual-relation-worker-c.json"
+      - "scripts/validate_final_standards_residual_relation_worker_c.py"
+      - "scripts/build_database_coverage_matrix.py"
+      - "tests/test_final_standards_residual_relation_worker_c.py"
+      - ".github/workflows/verify-final-standards-residual-relation-worker-c.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate final assurance
+        run: python scripts/validate_final_standards_residual_relation_worker_c.py
+      - name: Run focused tests
+        run: python -m unittest tests.test_final_standards_residual_relation_worker_c

@@ -1,0 +1,185 @@
+{
+  "format_version": 1,
+  "artifact_kind": "FINAL_STANDARDS_AND_RESIDUAL_RELATION_ASSURANCE",
+  "wave_id": "2026-10-07-ready-publication-completion-and-currentness-expansion-worker-c",
+  "worker": "C",
+  "role": "Final Standards & Residual Relation Assurance Worker",
+  "base_main_sha": "29c5529be51a1211e060acd5911a1122aa0eaf0e",
+  "observed_date": "2026-10-07",
+  "purpose": "Re-verify the final two Governing Standards currentness cells and refresh residual relation assurance without weakening independent-evidence or human-review gates.",
+  "policy": {
+    "exact_canonical_source_identity_required": true,
+    "current_official_version_required": true,
+    "amendment_and_supersession_check_required": true,
+    "exact_service_applicability_required": true,
+    "item_body_identity_match_required": true,
+    "semantic_similarity_is_not_independent_proof": true,
+    "human_semantic_review_auto_promotion_allowed": false,
+    "cross_layer_human_review_auto_promotion_allowed": false,
+    "publication_state_changed": false,
+    "route_state_changed": false
+  },
+  "governing_standards": {
+    "before": {
+      "ready": 37,
+      "total": 39,
+      "blocked_currentness": 2,
+      "service_ids": [
+        "night-homevisit",
+        "dementia-group-home"
+      ]
+    },
+    "root_cause": {
+      "kind": "ORDER_DEPENDENT_RANGE_RESOLUTION",
+      "detail": "The prior validator used positions in a lexicographically ordered node array to resolve numeric article ranges. Article 18 and Article 108 existed in the canonical corpus but could be ordered before their numeric range starts, producing false endpoint-missing deferrals."
+    },
+    "source_identity": {
+      "canonical_source_id": "community-based-standards",
+      "law_id": "418M60000100034",
+      "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100034",
+      "version_id": "418M60000100034_20250401_506M60000100164",
+      "effective_date": "2025-04-01",
+      "current_revision_status": "CurrentEnforced",
+      "repeal_status": "None",
+      "xml_sha256": "90741b00c7f04955f5359cef94c1d4c0fd4a0270cebed9d1878bce62ca4ecf55",
+      "independent_audit_result": "PASS"
+    },
+    "decisions": [
+      {
+        "service_id": "night-homevisit",
+        "service_label": "夜間対応型訪問介護",
+        "scope_path": "data/services/night-homevisit/shared-corpus-scope.json",
+        "from": "4",
+        "through": "18",
+        "source_family": "governing_standards_ordinance",
+        "canonical_source_id": "community-based-standards",
+        "exact_evidence_pointer": "data/services/night-homevisit/shared-corpus-scope.json#governing_standards_ordinance",
+        "current_source": {
+          "law_id": "418M60000100034",
+          "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100034",
+          "version_id": "418M60000100034_20250401_506M60000100164",
+          "effective_date": "2025-04-01",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "xml_sha256": "90741b00c7f04955f5359cef94c1d4c0fd4a0270cebed9d1878bce62ca4ecf55"
+        },
+        "direct_scope": {
+          "from_node_id": "standards34.article.4",
+          "through_node_id": "standards34.article.18",
+          "from_source_locator": "第二章 夜間対応型訪問介護 ＞ 第一節 基本方針等 ＞ （基本方針） ＞ 第四条",
+          "through_source_locator": "第二章 夜間対応型訪問介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第十八条",
+          "from_text_sha256": "caf793c261d1f579abdfe863582a4531aa569ca6d676b3d1496d63bbe3ea113f",
+          "through_text_sha256": "695bccab2e56c18bc663f61a2f0664d920dd7774929fd33a33871d96c849582a",
+          "service_identity_in_scope": true
+        },
+        "independent_corpus_evidence": "data/shared/standards/independent-audit.json#community-based-standards",
+        "item_body_state": "PASS",
+        "decision": "PROMOTE_PASS_BOUNDED",
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "blocker": null,
+        "reason": "The current official e-Gov version, independently reparsed canonical corpus, and exact service chapter endpoints all resolve. The earlier defer was caused by a validator that treated lexicographically stored article nodes as legal article order; endpoint identity is now checked order-independently."
+      },
+      {
+        "service_id": "dementia-group-home",
+        "service_label": "認知症対応型共同生活介護",
+        "scope_path": "data/services/dementia-group-home/shared-corpus-scope.json",
+        "from": "89",
+        "through": "108",
+        "source_family": "governing_standards_ordinance",
+        "canonical_source_id": "community-based-standards",
+        "exact_evidence_pointer": "data/services/dementia-group-home/shared-corpus-scope.json#governing_standards_ordinance",
+        "current_source": {
+          "law_id": "418M60000100034",
+          "official_source_url": "https://laws.e-gov.go.jp/law/418M60000100034",
+          "version_id": "418M60000100034_20250401_506M60000100164",
+          "effective_date": "2025-04-01",
+          "current_revision_status": "CurrentEnforced",
+          "repeal_status": "None",
+          "xml_sha256": "90741b00c7f04955f5359cef94c1d4c0fd4a0270cebed9d1878bce62ca4ecf55"
+        },
+        "direct_scope": {
+          "from_node_id": "standards34.article.89",
+          "through_node_id": "standards34.article.108",
+          "from_source_locator": "第五章 認知症対応型共同生活介護 ＞ 第一節 基本方針 ＞ 第八十九条",
+          "through_source_locator": "第五章 認知症対応型共同生活介護 ＞ 第四節 運営に関する基準 ＞ （準用） ＞ 第百八条",
+          "from_text_sha256": "6c2400776345ba25723c0359e4ba116a40977602efa7a32c12f179c685de85fe",
+          "through_text_sha256": "ec5bd4009e603a15f97aa50a37b33ec0e0ad85d335cf92f205dd75f7f3691bb4",
+          "service_identity_in_scope": true
+        },
+        "independent_corpus_evidence": "data/shared/standards/independent-audit.json#community-based-standards",
+        "item_body_state": "PASS",
+        "decision": "PROMOTE_PASS_BOUNDED",
+        "projected_currentness_state": "PASS",
+        "promotion_applied": true,
+        "blocker": null,
+        "reason": "The current official e-Gov version, independently reparsed canonical corpus, and exact service chapter endpoints all resolve. The earlier defer was caused by a validator that treated lexicographically stored article nodes as legal article order; endpoint identity is now checked order-independently."
+      }
+    ],
+    "after": {
+      "ready": 39,
+      "total": 39,
+      "blocked_currentness": 0,
+      "service_ids": []
+    }
+  },
+  "residual_relations": {
+    "before": {
+      "verified": 130,
+      "total": 188,
+      "remaining": 58,
+      "classifications": {
+        "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
+        "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
+        "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
+        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 4,
+        "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
+      }
+    },
+    "audited_priority_lanes": {
+      "source_link_freshness": {
+        "candidates": 1,
+        "promoted": 0,
+        "disposition": "KEEP_OPEN",
+        "evidence": "data/relation-freshness-direct-evidence-assessment.json",
+        "reason": "The relation label asserts latest interpretation amendment evidence. Vol.1502 and its amendment semantics are directly supported, and the official listing was reviewed through Vol.1545 without a later same-identity amendment entry. However, that negative listing check is not sufficient proof of successor absence across all authoritative channels."
+      },
+      "semantic_text": {
+        "candidates": 17,
+        "promoted": 0,
+        "disposition": "HOLD",
+        "reason": "The canonical notice nodes do not carry bound official text/current-version identity sufficient to independently prove each interprets_or_explains edge. A current MHLW source can inform a later source-binding lane, but no relation is promoted from semantic alignment alone."
+      },
+      "cross_layer_human_review": {
+        "candidates": 4,
+        "promoted": 0,
+        "disposition": "HOLD",
+        "reason": "The cross-layer relation labels remain semantic and are not explicitly established by the canonical primary-source text."
+      },
+      "human_semantic_review": {
+        "candidates": 36,
+        "promoted": 0,
+        "disposition": "INTENTIONALLY_UNRESOLVED",
+        "reason": "Worker C is prohibited from substituting AI judgment for HUMAN_SEMANTIC_REVIEW_REQUIRED relations."
+      }
+    },
+    "after": {
+      "verified": 130,
+      "total": 188,
+      "remaining": 58,
+      "classifications": {
+        "MACHINE_SOURCE_REPARSE_CANDIDATE": 0,
+        "SOURCE_LINK_FRESHNESS_OR_DIRECT_EVIDENCE_REQUIRED": 1,
+        "SEMANTIC_TEXT_CHECK_REQUIRED": 17,
+        "CROSS_LAYER_HUMAN_REVIEW_REQUIRED": 4,
+        "HUMAN_SEMANTIC_REVIEW_REQUIRED": 36
+      }
+    },
+    "no_regression": true
+  },
+  "integration_boundary": {
+    "generated_repository_wide_artifacts_edited": false,
+    "worker_e_must_regenerate": true,
+    "direct_merge_to_main": false
+  }
+}

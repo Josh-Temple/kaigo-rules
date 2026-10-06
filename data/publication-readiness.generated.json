@@ -20,42 +20,41 @@
   ],
   "summary": {
     "total_cells": 351,
-    "ready_candidates": 71,
+    "ready_candidates": 95,
     "primary_readiness": {
-      "BLOCKED_CURRENTNESS": 134,
+      "BLOCKED_CURRENTNESS": 110,
       "BLOCKED_INGESTION": 74,
       "BLOCKED_ITEM_BODY": 64,
       "NOT_APPLICABLE": 8,
-      "READY_FOR_PUBLICATION_REVIEW": 71
+      "READY_FOR_PUBLICATION_REVIEW": 95
     },
     "blocking_axis_counts": {
-      "BLOCKED_CURRENTNESS": 272,
-      "BLOCKED_HUMAN_REVIEW": 272,
+      "BLOCKED_CURRENTNESS": 248,
+      "BLOCKED_HUMAN_REVIEW": 248,
       "BLOCKED_INGESTION": 74,
       "BLOCKED_ITEM_BODY": 138,
-      "BLOCKED_RELATION": 272
+      "BLOCKED_RELATION": 248
     },
     "publication_unit_blocking_counts": {
-      "BLOCKED_CURRENTNESS": 1904,
+      "BLOCKED_CURRENTNESS": 1736,
       "BLOCKED_HUMAN_REVIEW": 686,
       "BLOCKED_INGESTION": 518,
       "BLOCKED_ITEM_BODY": 552,
       "BLOCKED_RELATION": 686
     },
     "ready_publication_units": {
-      "CURRENTNESS_STATEMENT": 71,
-      "SERVICE_APPLICABILITY_STATEMENT": 71,
-      "SOURCE_METADATA_LOCATOR": 71,
-      "SOURCE_TEXT_ITEM_BODY": 71
+      "CURRENTNESS_STATEMENT": 95,
+      "SERVICE_APPLICABILITY_STATEMENT": 95,
+      "SOURCE_METADATA_LOCATOR": 95,
+      "SOURCE_TEXT_ITEM_BODY": 95
     },
     "by_source_family": {
       "care_insurance_act": {
         "BLOCKED_CURRENTNESS": 39
       },
       "delegated_remuneration_criteria": {
-        "BLOCKED_CURRENTNESS": 22,
         "NOT_APPLICABLE": 2,
-        "READY_FOR_PUBLICATION_REVIEW": 15
+        "READY_FOR_PUBLICATION_REVIEW": 37
       },
       "fee_calculation_guidance": {
         "BLOCKED_INGESTION": 35,
@@ -63,8 +62,7 @@
         "NOT_APPLICABLE": 2
       },
       "governing_standards_ordinance": {
-        "BLOCKED_CURRENTNESS": 2,
-        "READY_FOR_PUBLICATION_REVIEW": 37
+        "READY_FOR_PUBLICATION_REVIEW": 39
       },
       "national_qa": {
         "BLOCKED_CURRENTNESS": 39
@@ -220,20 +218,39 @@
       "service_label": "通所介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -1922,20 +1939,39 @@
       "service_label": "通所リハビリテーション",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -2170,58 +2206,6 @@
       "service_label": "短期入所生活介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
-      ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
-      "axis_states": {
-        "corpus_availability": "AVAILABLE",
-        "service_scope": "SCOPE_DEFINED",
-        "ingestion": "INGESTED",
-        "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
-        "relation_verification": "NOT_ESTABLISHED",
-        "human_review": "NOT_REVIEWED"
-      },
-      "publication_observation": "BLOCKED",
-      "route_exposure_observation": "BLOCKED"
-    },
-    {
-      "service_id": "shortstay-life",
-      "service_label": "短期入所生活介護",
-      "source_family": "fee_calculation_guidance",
-      "source_family_label": "Fee-calculation guidance",
-      "readiness": "BLOCKED_INGESTION",
-      "blocking_reasons": [
-        "BLOCKED_INGESTION",
-        "BLOCKED_ITEM_BODY",
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
-      ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
-      "axis_states": {
-        "corpus_availability": "AVAILABLE",
-        "service_scope": "SCOPE_DEFINED",
-        "ingestion": "PARTIAL",
-        "item_body_verification": "NOT_ESTABLISHED",
-        "currentness": "NOT_ESTABLISHED",
-        "relation_verification": "NOT_ESTABLISHED",
-        "human_review": "NOT_REVIEWED"
-      },
-      "publication_observation": "BLOCKED",
-      "route_exposure_observation": "BLOCKED"
-    },
-    {
-      "service_id": "shortstay-life",
-      "service_label": "短期入所生活介護",
-      "source_family": "unit_price_regional_classification",
-      "source_family_label": "Unit price / regional classification",
       "readiness": "READY_FOR_PUBLICATION_REVIEW",
       "blocking_reasons": [],
       "ready_publication_units": [
@@ -2264,6 +2248,77 @@
     {
       "service_id": "shortstay-life",
       "service_label": "短期入所生活介護",
+      "source_family": "fee_calculation_guidance",
+      "source_family_label": "Fee-calculation guidance",
+      "readiness": "BLOCKED_INGESTION",
+      "blocking_reasons": [
+        "BLOCKED_INGESTION",
+        "BLOCKED_ITEM_BODY",
+        "BLOCKED_CURRENTNESS",
+        "BLOCKED_RELATION",
+        "BLOCKED_HUMAN_REVIEW"
+      ],
+      "ready_publication_units": [],
+      "publication_field_allowlist": [],
+      "axis_states": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "PARTIAL",
+        "item_body_verification": "NOT_ESTABLISHED",
+        "currentness": "NOT_ESTABLISHED",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED"
+      },
+      "publication_observation": "BLOCKED",
+      "route_exposure_observation": "BLOCKED"
+    },
+    {
+      "service_id": "shortstay-life",
+      "service_label": "短期入所生活介護",
+      "source_family": "unit_price_regional_classification",
+      "source_family_label": "Unit price / regional classification",
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
+      ],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
+      "axis_states": {
+        "corpus_availability": "AVAILABLE",
+        "service_scope": "SCOPE_DEFINED",
+        "ingestion": "INGESTED",
+        "item_body_verification": "PASS",
+        "currentness": "PASS",
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED"
+      },
+      "publication_observation": "BLOCKED",
+      "route_exposure_observation": "BLOCKED"
+    },
+    {
+      "service_id": "shortstay-life",
+      "service_label": "短期入所生活介護",
       "source_family": "national_qa",
       "source_family_label": "National Q&A",
       "readiness": "BLOCKED_CURRENTNESS",
@@ -2438,20 +2493,39 @@
       "service_label": "地域密着型通所介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -2860,20 +2934,39 @@
       "service_label": "夜間対応型訪問介護",
       "source_family": "governing_standards_ordinance",
       "source_family_label": "Governing standards ordinance",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -3741,20 +3834,39 @@
       "service_label": "短期入所療養介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -4010,20 +4122,39 @@
       "service_label": "特定施設入居者生活介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -4798,20 +4929,39 @@
       "service_label": "認知症対応型通所介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -5048,20 +5198,39 @@
       "service_label": "小規模多機能型居宅介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -5202,20 +5371,39 @@
       "service_label": "認知症対応型共同生活介護",
       "source_family": "governing_standards_ordinance",
       "source_family_label": "Governing standards ordinance",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -5279,20 +5467,39 @@
       "service_label": "認知症対応型共同生活介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -5529,20 +5736,39 @@
       "service_label": "地域密着型特定施設入居者生活介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -5779,20 +6005,39 @@
       "service_label": "地域密着型介護老人福祉施設入所者生活介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -6029,20 +6274,39 @@
       "service_label": "看護小規模多機能型居宅介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -6279,20 +6543,39 @@
       "service_label": "介護老人福祉施設",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -6529,20 +6812,39 @@
       "service_label": "介護老人保健施設",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -6779,20 +7081,39 @@
       "service_label": "介護医療院",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -8181,20 +8502,39 @@
       "service_label": "介護予防通所リハビリテーション",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -8450,20 +8790,39 @@
       "service_label": "介護予防短期入所生活介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -8719,20 +9078,39 @@
       "service_label": "介護予防短期入所療養介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -8988,20 +9366,39 @@
       "service_label": "介護予防特定施設入居者生活介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -9776,20 +10173,39 @@
       "service_label": "介護予防認知症対応型通所介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -10026,20 +10442,39 @@
       "service_label": "介護予防小規模多機能型居宅介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },
@@ -10276,20 +10711,39 @@
       "service_label": "介護予防認知症対応型共同生活介護",
       "source_family": "delegated_remuneration_criteria",
       "source_family_label": "Delegated remuneration criteria",
-      "readiness": "BLOCKED_CURRENTNESS",
-      "blocking_reasons": [
-        "BLOCKED_CURRENTNESS",
-        "BLOCKED_RELATION",
-        "BLOCKED_HUMAN_REVIEW"
+      "readiness": "READY_FOR_PUBLICATION_REVIEW",
+      "blocking_reasons": [],
+      "ready_publication_units": [
+        "SOURCE_TEXT_ITEM_BODY",
+        "SOURCE_METADATA_LOCATOR",
+        "CURRENTNESS_STATEMENT",
+        "SERVICE_APPLICABILITY_STATEMENT"
       ],
-      "ready_publication_units": [],
-      "publication_field_allowlist": [],
+      "publication_field_allowlist": [
+        "applicability_evidence",
+        "applicability_state",
+        "currentness_evidence",
+        "currentness_state",
+        "effective_date",
+        "item_body",
+        "observed_at",
+        "service_id",
+        "service_label",
+        "source_family",
+        "source_family_label",
+        "source_fingerprint",
+        "source_locator",
+        "source_text",
+        "source_title",
+        "source_url",
+        "source_version"
+      ],
       "axis_states": {
         "corpus_availability": "AVAILABLE",
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "NOT_ESTABLISHED",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED"
       },

@@ -19,6 +19,13 @@ READINESS_PATH = ROOT / "data/publication-readiness.generated.json"
 GOVERNING_CURRENTNESS_PATH = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
 HIGH_VALUE_CURRENTNESS_PATH = ROOT / "data/verification/high-value-currentness-closure-worker-b.json"
 HIGH_VALUE_EXPANSION_PATH = ROOT / "data/verification/high-value-currentness-expansion-worker-c.json"
+GOVERNING_RESIDUAL_CURRENTNESS_PATH = (
+    ROOT / "data/verification/governing-standards-residual-currentness-worker-a.json"
+)
+FINAL_GOVERNING_CURRENTNESS_PATH = (
+    ROOT / "data/verification/final-standards-residual-relation-worker-c.json"
+)
+SHARED_STANDARDS_ROOT = ROOT / "data/shared/standards"
 UNIT_PRICE_META_PATH = ROOT / "data/unit-price-dayservice-meta.json"
 UNIT_PRICE_MAPPINGS_PATH = ROOT / "data/unit-price-service-multipliers.json"
 UNIT_PRICE_ITEM_BODY_PATH = ROOT / "data/unit-price-item-body-assurance.json"
@@ -55,13 +62,25 @@ RUNTIME_SUPPORTED_SOURCE_FAMILIES = {
     "unit_price_regional_classification",
     "delegated_remuneration_criteria",
 }
+RESIDUAL_GOVERNING_SOURCE_IDENTITIES = {
+    "community-based-standards",
+    "care-management-standards",
+    "preventive-support-standards",
+    "elderly-welfare-facility-standards",
+    "geriatric-health-services-facility-standards",
+    "long-term-care-medical-facility-standards",
+    "preventive-community-based-standards",
+}
 RUNTIME_SUPPORTED_SOURCE_IDENTITIES = {
     "ordinance37",
     "preventive-services-standards",
     "mhlw-unit-price-current",
     "delegated-remuneration-national",
+    *RESIDUAL_GOVERNING_SOURCE_IDENTITIES,
 }
-MAX_PUBLICATION_CELLS = 64
+# Validation ceiling only. Publication selection is not truncated by this value;
+# the generated policy records the current READY count as its dynamic bound.
+MAX_PUBLICATION_CELLS = 351
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -72,6 +91,302 @@ def git_blob_sha(path: Path) -> str:
     body = path.read_bytes()
     header = f"blob {len(body)}\0".encode("utf-8")
     return hashlib.sha1(header + body).hexdigest()
+
+
+def shared_standard_meta(corpus_id: str) -> dict[str, Any]:
+    return load_json(SHARED_STANDARDS_ROOT / corpus_id / "meta.json")
+
+
+def shared_standard_article_rows(corpus_id: str) -> list[dict[str, Any]]:
+    rows = load_json(SHARED_STANDARDS_ROOT / corpus_id / "nodes.json")
+    if not isinstance(rows, list):
+        raise ValueError(f"shared standards nodes must be a list: {corpus_id}")
+    return [row for row in rows if row.get("node_type") == "article"]
+
+
+def residual_governing_direct_article_numbers(row: dict[str, Any]) -> list[str]:
+    """Resolve only the direct service scope already established by Worker A.
+
+    Incorporation-by-reference and read-as relations are intentionally excluded.
+    This is a runtime binding translation, not a new currentness decision.
+    """
+    corpus_id = str(row.get("canonical_source_id") or "")
+    service_id = str(row.get("service_id") or "")
+    scope_rel = str(row.get("scope_path") or "")
+    if corpus_id not in RESIDUAL_GOVERNING_SOURCE_IDENTITIES:
+        raise ValueError(f"unsupported residual governing source identity: {corpus_id}")
+    if not service_id or not scope_rel:
+        raise ValueError("residual governing runtime binding lacks service/scope identity")
+
+    scope_path = ROOT / scope_rel
+    scope = load_json(scope_path)
+    if str(scope.get("service_id") or "") != service_id:
+        raise ValueError(f"residual governing scope service mismatch: {service_id}")
+
+    meta = shared_standard_meta(corpus_id)
+    rows = shared_standard_article_rows(corpus_id)
+    by_num = {str(item.get("article_num") or ""): item for item in rows}
+
+    def article_number_key(value: str) -> tuple[int, ...]:
+        parts = value.split("-")
+        if not value or any(not part.isdigit() for part in parts):
+            raise ValueError(
+                f"unsupported direct-range article number: {corpus_id}: {value}"
+            )
+        return tuple(int(part) for part in parts)
+
+    sortable_article_numbers: dict[str, tuple[int, ...]] = {}
+    for article_num in by_num:
+        try:
+            sortable_article_numbers[article_num] = article_number_key(article_num)
+        except ValueError:
+            # Some imported corpora contain synthetic/non-range article_num values
+            # such as "48:49". They are not eligible for numeric direct-range
+            # expansion, but their presence must not distort legitimate boundaries.
+            continue
+
+    selected: list[str] = []
+    governing = scope.get("governing_standards_ordinance")
+    if isinstance(governing, dict):
+        if governing.get("corpus_id") != corpus_id:
+            raise ValueError(f"residual governing scope corpus mismatch: {service_id}")
+        if governing.get("law_id") != meta.get("law_id"):
+            raise ValueError(f"residual governing scope law mismatch: {service_id}")
+        direct_ranges = [
+            item
+            for item in governing.get("direct_article_ranges", [])
+            if item.get("role")
+            not in {"common", "common_miscellaneous_electronic_records"}
+        ]
+        if not direct_ranges:
+            raise ValueError(f"residual governing direct range missing: {service_id}")
+        for item in direct_ranges:
+            start = str(item.get("from") or "")
+            end = str(item.get("through") or "")
+            if start not in by_num or end not in by_num:
+                raise ValueError(
+                    f"residual governing direct range unresolved: {service_id} {start}..{end}"
+                )
+            start_key = article_number_key(start)
+            end_key = article_number_key(end)
+            if start_key > end_key:
+                raise ValueError(
+                    f"residual governing direct range reversed: {service_id} {start}..{end}"
+                )
+            in_range = sorted(
+                (
+                    article_num
+                    for article_num, key in sortable_article_numbers.items()
+                    if start_key <= key <= end_key
+                ),
+                key=lambda article_num: sortable_article_numbers[article_num],
+            )
+            if not in_range:
+                raise ValueError(
+                    f"residual governing direct range empty: {service_id} {start}..{end}"
+                )
+            selected.extend(in_range)
+    elif isinstance(scope.get("service_chapter_direct_scope"), dict):
+        if scope.get("corpus_id") != corpus_id:
+            raise ValueError(f"preventive governing scope corpus mismatch: {service_id}")
+        if scope.get("law_id") != meta.get("law_id"):
+            raise ValueError(f"preventive governing scope law mismatch: {service_id}")
+        chapter = scope["service_chapter_direct_scope"]
+        selected.extend(str(value) for value in chapter.get("article_numbers", []))
+        source_node_ids = [str(value) for value in chapter.get("source_node_ids", [])]
+        node_prefix = str(meta.get("node_prefix") or "")
+        expected_node_ids = [f"{node_prefix}.article.{value}" for value in selected]
+        if source_node_ids and source_node_ids != expected_node_ids:
+            raise ValueError(
+                f"preventive governing direct node identity mismatch: {service_id}"
+            )
+    else:
+        shared = scope.get("shared_corpus") or {}
+        if shared.get("corpus_id") != corpus_id:
+            raise ValueError(f"dedicated governing scope corpus mismatch: {service_id}")
+        if shared.get("law_id") != meta.get("law_id"):
+            raise ValueError(f"dedicated governing scope law mismatch: {service_id}")
+        selected.extend(
+            str(value)
+            for value in (scope.get("common_direct_scope") or {}).get(
+                "article_numbers", []
+            )
+        )
+        for variant in scope.get("service_variants", []):
+            selected.extend(str(value) for value in variant.get("article_numbers", []))
+            selected.extend(
+                str(value)
+                for value in (variant.get("direct_scope") or {}).get(
+                    "article_numbers", []
+                )
+            )
+
+    selected = list(dict.fromkeys(value for value in selected if value))
+    if not selected:
+        raise ValueError(f"residual governing direct scope empty: {service_id}")
+    missing = [value for value in selected if value not in by_num]
+    if missing:
+        raise ValueError(
+            f"residual governing direct articles missing from canonical corpus: "
+            f"{service_id}: {missing}"
+        )
+    return selected
+
+
+def normalize_governing_residual_decision(
+    payload: dict[str, Any], row: dict[str, Any]
+) -> dict[str, Any]:
+    normalized = copy.deepcopy(row)
+    source_id = str(row.get("canonical_source_id") or "")
+    source_evidence = copy.deepcopy(
+        (payload.get("source_evidence") or {}).get(source_id) or {}
+    )
+    if source_evidence.get("canonical_source_id") != source_id:
+        raise ValueError(
+            f"residual governing source evidence mismatch: {row.get('service_id')}"
+        )
+    meta = shared_standard_meta(source_id)
+    source_evidence.setdefault("title", str(meta.get("law_title") or ""))
+    normalized["source_identity"] = source_evidence
+
+    proof = copy.deepcopy(row.get("applicability_proof") or {})
+    if row.get("promotion_applied") is True:
+        proof["direct_article_numbers"] = residual_governing_direct_article_numbers(row)
+        proof["scope_path"] = str(row.get("scope_path") or "")
+    normalized["applicability_proof"] = proof
+    normalized["allowed_publication_units"] = sorted(REQUIRED_PUBLICATION_UNITS)
+    return normalized
+
+
+def normalize_final_governing_decision(
+    payload: dict[str, Any], row: dict[str, Any]
+) -> dict[str, Any]:
+    """Translate Worker C's final-two assurance into the existing runtime contract.
+
+    Worker C changes only currentness for the two previously deferred services.
+    Runtime scope remains bound to the same canonical service-scope files and
+    direct article ranges used by the residual governing publication adapter.
+    """
+    prior_payload = load_json(GOVERNING_RESIDUAL_CURRENTNESS_PATH)
+    prior_by_service = {
+        str(item.get("service_id") or ""): item
+        for item in prior_payload.get("decisions", [])
+    }
+    service_id = str(row.get("service_id") or "")
+    prior = copy.deepcopy(prior_by_service.get(service_id) or {})
+    if not prior:
+        raise ValueError(f"final governing decision lacks prior bounded row: {service_id}")
+    if (
+        prior.get("promotion_applied") is not False
+        or prior.get("decision") != "DEFER"
+        or row.get("decision") != "PROMOTE_PASS_BOUNDED"
+        or row.get("promotion_applied") is not True
+        or row.get("projected_currentness_state") != "PASS"
+        or row.get("blocker") is not None
+    ):
+        raise ValueError(f"final governing transition is not bounded DEFER->PASS: {service_id}")
+
+    source_id = str(row.get("canonical_source_id") or "")
+    source_evidence = copy.deepcopy(
+        (prior_payload.get("source_evidence") or {}).get(source_id) or {}
+    )
+    current_source = row.get("current_source") or {}
+    if (
+        source_id != prior.get("canonical_source_id")
+        or source_evidence.get("canonical_source_id") != source_id
+        or current_source.get("law_id") != source_evidence.get("law_id")
+        or current_source.get("official_source_url")
+        != source_evidence.get("official_source_url")
+        or current_source.get("version_id") != source_evidence.get("version_id")
+        or current_source.get("xml_sha256")
+        != (source_evidence.get("fingerprint") or {}).get("xml_sha256")
+        or current_source.get("current_revision_status")
+        != (source_evidence.get("revision_lineage") or {}).get(
+            "current_revision_status"
+        )
+        or current_source.get("repeal_status")
+        != (source_evidence.get("revision_lineage") or {}).get("repeal_status")
+    ):
+        raise ValueError(f"final governing source identity drift: {service_id}")
+
+    normalized = prior
+    normalized["decision"] = "PROMOTE_PASS_BOUNDED"
+    normalized["blocker"] = None
+    normalized["projected_currentness_state"] = "PASS"
+    normalized["promotion_applied"] = True
+    normalized["source_version_contains_scope"] = True
+    normalized["source_identity"] = source_evidence
+    normalized["projection_gate"] = {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "identity": f"{service_id}::governing_standards_ordinance",
+        "scope": "currentness_only",
+        "allowed": True,
+    }
+    proof = copy.deepcopy(prior.get("applicability_proof") or {})
+    proof.update(
+        {
+            "state": "PASS_DIRECT_SCOPE_CURRENT_VERSION",
+            "scope_identity_present": True,
+            "regular_preventive_inheritance_used": False,
+            "incorporation_or_read_as_semantics_promoted": False,
+            "direct_article_numbers": residual_governing_direct_article_numbers(prior),
+            "scope_path": str(prior.get("scope_path") or ""),
+        }
+    )
+    normalized["applicability_proof"] = proof
+    normalized["allowed_publication_units"] = sorted(REQUIRED_PUBLICATION_UNITS)
+    return normalized
+
+
+def residual_governing_source_contract_supported(row: dict[str, Any]) -> bool:
+    source = source_identity(row)
+    proof = applicability_proof(row)
+    canonical_source_id = str(source.get("canonical_source_id") or "")
+    service_id = str(row.get("service_id") or "")
+    if canonical_source_id not in RESIDUAL_GOVERNING_SOURCE_IDENTITIES:
+        return False
+    if row.get("canonical_source_id") != canonical_source_id:
+        return False
+    if row.get("decision") != "PROMOTE_PASS_BOUNDED" or row.get("blocker") is not None:
+        return False
+
+    gate = row.get("projection_gate") or {}
+    if (
+        gate.get("kind") != "EXPLICIT_BOUNDED_ALLOWLIST"
+        or gate.get("allowed") is not True
+        or gate.get("identity")
+        != f"{service_id}::governing_standards_ordinance"
+        or gate.get("scope") != "currentness_only"
+    ):
+        return False
+
+    if (
+        proof.get("state") != "PASS_DIRECT_SCOPE_CURRENT_VERSION"
+        or proof.get("scope_identity_present") is not True
+        or proof.get("regular_preventive_inheritance_used") is not False
+        or proof.get("incorporation_or_read_as_semantics_promoted") is not False
+    ):
+        return False
+
+    try:
+        meta = shared_standard_meta(canonical_source_id)
+        expected_articles = residual_governing_direct_article_numbers(row)
+    except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+        return False
+
+    lineage = source.get("revision_lineage") or {}
+    if (
+        source.get("source_form") != "OFFICIAL_VERSIONED_CURRENT_TEXT"
+        or source.get("law_id") != meta.get("law_id")
+        or source.get("version_id")
+        != (meta.get("current_revision") or {}).get("law_revision_id")
+        or source.get("official_source_url") != meta.get("source_page")
+        or lineage.get("current_revision_status") != "CurrentEnforced"
+        or lineage.get("repeal_status") != "None"
+    ):
+        return False
+
+    return proof.get("direct_article_numbers") == expected_articles
 
 
 def cell_key(row: dict[str, Any]) -> tuple[str | None, str | None]:
@@ -116,6 +431,8 @@ def currentness_paths() -> list[Path]:
     paths = [GOVERNING_CURRENTNESS_PATH, HIGH_VALUE_CURRENTNESS_PATH]
     if HIGH_VALUE_EXPANSION_PATH.exists():
         paths.append(HIGH_VALUE_EXPANSION_PATH)
+    if GOVERNING_RESIDUAL_CURRENTNESS_PATH.exists():
+        paths.append(GOVERNING_RESIDUAL_CURRENTNESS_PATH)
     delegated_path = delegated_currentness_path()
     if delegated_path:
         paths.append(delegated_path)
@@ -183,7 +500,13 @@ def delegated_runtime_binding_context(
     ):
         return None
 
-    expected_node_ids = [str(value) for value in service.get("mapped_node_ids", [])]
+    expected_node_ids = [
+        str(value)
+        for value in (
+            list(service.get("mapped_node_ids", []))
+            + list(service.get("compatibility_subnode_ids", []))
+        )
+    ]
     promoted_node_ids = [str(value) for value in row.get("mapped_node_ids", [])]
     if (
         not expected_node_ids
@@ -196,15 +519,29 @@ def delegated_runtime_binding_context(
         str(node.get("canonical_node_id") or ""): node
         for node in corpus.get("nodes", [])
     }
-    if any(node_id not in node_by_id for node_id in expected_node_ids):
-        return None
+    item_body = load_json(DELEGATED_ITEM_BODY_PATH)
+    compatibility_by_id = {
+        str(item.get("canonical_node_id") or ""): item
+        for item in item_body.get("compatibility_node_verifications", [])
+        if item.get("result") == "PASS"
+    }
 
-    expected_source_ids = sorted(
-        {
-            str(node_by_id[node_id].get("source_id") or "")
-            for node_id in expected_node_ids
-        }
-    )
+    resolved_source_ids: list[str] = []
+    for node_id in expected_node_ids:
+        node = node_by_id.get(node_id)
+        if node is not None:
+            resolved_source_ids.append(str(node.get("source_id") or ""))
+            continue
+        compatibility = compatibility_by_id.get(node_id)
+        if compatibility is None:
+            return None
+        parent_id = str(compatibility.get("parent_canonical_node_id") or "")
+        parent = node_by_id.get(parent_id)
+        if parent is None:
+            return None
+        resolved_source_ids.append(str(parent.get("source_id") or ""))
+
+    expected_source_ids = sorted(set(resolved_source_ids))
     if not all(expected_source_ids):
         return None
     promoted_source_ids = sorted(
@@ -460,6 +797,12 @@ def source_contract_supported(row: dict[str, Any]) -> bool:
             )
         )
 
+    if canonical_source_id in RESIDUAL_GOVERNING_SOURCE_IDENTITIES:
+        return (
+            source_family == "governing_standards_ordinance"
+            and residual_governing_source_contract_supported(normalized)
+        )
+
     if canonical_source_id == "mhlw-unit-price-current":
         service_id = str(normalized.get("service_id") or "")
         return (
@@ -499,11 +842,44 @@ def load_promotions() -> tuple[
                 "git_blob_sha": git_blob_sha(path),
             }
         )
-        for row in payload.get("promotions", []):
+        rows = payload.get("promotions", [])
+        if (
+            path == GOVERNING_RESIDUAL_CURRENTNESS_PATH
+            and payload.get("artifact_kind")
+            == "GOVERNING_STANDARDS_RESIDUAL_CURRENTNESS_CLOSURE"
+        ):
+            rows = [
+                normalize_governing_residual_decision(payload, row)
+                for row in payload.get("decisions", [])
+            ]
+        for row in rows:
             key = cell_key(row)
             if key in promotions:
                 raise ValueError(f"duplicate currentness promotion: {key}")
             promotions[key] = row
+            provenance[key] = relative
+
+    if FINAL_GOVERNING_CURRENTNESS_PATH.exists():
+        path = FINAL_GOVERNING_CURRENTNESS_PATH
+        relative = str(path.relative_to(ROOT)).replace("\\", "/")
+        payload = load_json(path)
+        if payload.get("artifact_kind") != "FINAL_STANDARDS_AND_RESIDUAL_RELATION_ASSURANCE":
+            raise ValueError("unexpected final governing currentness artifact kind")
+        sources.append(
+            {
+                "path": relative,
+                "git_blob_sha": git_blob_sha(path),
+            }
+        )
+        for row in (payload.get("governing_standards") or {}).get("decisions", []):
+            normalized = normalize_final_governing_decision(payload, row)
+            key = cell_key(normalized)
+            existing = promotions.get(key)
+            if not existing or existing.get("promotion_applied") is not False:
+                raise ValueError(
+                    f"final governing decision does not replace one deferred row: {key}"
+                )
+            promotions[key] = normalized
             provenance[key] = relative
 
     return promotions, sources, provenance
@@ -541,8 +917,6 @@ def build() -> dict[str, Any]:
             str(row.get("source_family") or ""),
         )
     )
-    publishable = publishable[:MAX_PUBLICATION_CELLS]
-
     publication = [
         {
             "service_id": row["service_id"],
@@ -611,7 +985,9 @@ def build() -> dict[str, Any]:
         "policy": {
             "explicit_publication_allowlist_required": True,
             "explicit_route_allowlist_required": True,
-            "max_publication_cells": MAX_PUBLICATION_CELLS,
+            "max_publication_cells": len(ready),
+            "publication_selection_mode": "READY_RUNTIME_SUPPORTED_INTERSECTION",
+            "arbitrary_batch_cap_enabled": False,
             "publication_does_not_enable_route": True,
             "blocked_cells_cannot_be_published": True,
             "allowlist_must_be_subset_of_ready_candidates": True,

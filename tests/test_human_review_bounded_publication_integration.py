@@ -19,6 +19,9 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
         cls.governing_residual = load(
             "data/verification/governing-standards-residual-currentness-worker-a.json"
         )
+        cls.final_governing = load(
+            "data/verification/final-standards-residual-relation-worker-c.json"
+        )
         cls.delegated_currentness = load(
             "data/verification/delegated-remuneration-currentness-worker-b.json"
         )
@@ -44,10 +47,11 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
             for row in (
                 self.bounded["promotions"]
                 + self.governing_residual["decisions"]
+                + self.final_governing["governing_standards"]["decisions"]
             )
             if row.get("promotion_applied") is True
         }
-        self.assertEqual(len(expected), 37)
+        self.assertEqual(len(expected), 39)
         actual = set()
         for service in self.matrix["services"]:
             for cell in service["source_families"]:
@@ -66,6 +70,7 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
                 self.high_value["promotions"],
                 self.high_value_expansion["promotions"],
                 self.governing_residual["decisions"],
+                self.final_governing["governing_standards"]["decisions"],
                 self.delegated_currentness["promotions"],
             )
             for row in rows
@@ -104,6 +109,7 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
                 self.high_value["promotions"],
                 self.high_value_expansion["promotions"],
                 self.governing_residual["decisions"],
+                self.final_governing["governing_standards"]["decisions"],
                 self.delegated_currentness["promotions"],
             )
             for row in rows
@@ -124,6 +130,8 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
                 self.bounded["promotions"],
                 self.high_value["promotions"],
                 self.high_value_expansion["promotions"],
+                self.governing_residual["decisions"],
+                self.final_governing["governing_standards"]["decisions"],
                 self.delegated_currentness["promotions"],
             )
             for row in rows
@@ -131,13 +139,13 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
         }
 
         self.assertEqual(ready, expected_ready)
-        self.assertEqual(len(ready), 71)
+        self.assertEqual(len(ready), 95)
         self.assertEqual(published, expected_published)
         self.assertEqual(routed, expected_published)
         self.assertTrue(published.issubset(ready))
         self.assertEqual(
             sum(family == "governing_standards_ordinance" for _, family in published),
-            22,
+            39,
         )
         self.assertEqual(
             sum(family == "unit_price_regional_classification" for _, family in published),
@@ -145,9 +153,9 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
         )
         self.assertEqual(
             sum(family == "delegated_remuneration_criteria" for _, family in published),
-            15,
+            37,
         )
-        self.assertEqual(len(published), 56)
+        self.assertEqual(len(published), 95)
         self.assertIn(("dayservice", "unit_price_regional_classification"), published)
         self.assertIn(("dayservice", "governing_standards_ordinance"), published)
         self.assertIn(("dayrehab", "governing_standards_ordinance"), published)

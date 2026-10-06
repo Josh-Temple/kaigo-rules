@@ -9,6 +9,7 @@ on:
       - "scripts/validate_governing_standards_residual_currentness_worker_a.py"
       - "tests/test_governing_standards_residual_currentness_worker_a.py"
       - "scripts/build_database_coverage_matrix.py"
+      - "data/verification/final-standards-residual-relation-worker-c.json"
       - "data/verification/shared-source-currentness-activation.json"
       - "data/shared/standards/**"
       - "data/services/*/shared-corpus-scope.json"
@@ -59,17 +60,22 @@ jobs:
           matrix = module.build()
           family = matrix["summary"]["source_family_coverage"]["governing_standards_ordinance"]
           currentness = family["currentness"]
-          if currentness != {"NOT_ESTABLISHED": 2, "PASS": 37}:
+          final_overlay = root / "data/verification/final-standards-residual-relation-worker-c.json"
+          expected_currentness = {"PASS": 39} if final_overlay.exists() else {"NOT_ESTABLISHED": 2, "PASS": 37}
+          if currentness != expected_currentness:
               raise SystemExit(f"unexpected projected governing-standards currentness: {currentness}")
           gaps = [
               row for row in matrix["summary"]["currentness_gaps"]
               if row["source_family"] == "governing_standards_ordinance"
           ]
           gap_ids = {row["service_id"] for row in gaps}
-          expected_gaps = {"night-homevisit", "dementia-group-home"}
+          expected_gaps = set() if final_overlay.exists() else {"night-homevisit", "dementia-group-home"}
           if gap_ids != expected_gaps:
               raise SystemExit(f"unexpected residual governing-standards currentness gaps: {gaps}")
-          print("PASS: in-memory projection reaches 37/39 with two explicit fail-closed residuals")
+          if final_overlay.exists():
+              print("PASS: Worker A historical baseline plus Worker C final overlay reaches 39/39")
+          else:
+              print("PASS: in-memory projection reaches 37/39 with two explicit fail-closed residuals")
           PY
 
       - name: Project publication-readiness impact without commit
@@ -112,7 +118,8 @@ jobs:
               sid for sid, row in target.items()
               if row["readiness"] == "BLOCKED_CURRENTNESS"
           }
-          expected = {"night-homevisit", "dementia-group-home"}
+          final_overlay = Path("data/verification/final-standards-residual-relation-worker-c.json")
+          expected = set() if final_overlay.exists() else {"night-homevisit", "dementia-group-home"}
           if blocked_currentness != expected:
               raise SystemExit(f"unexpected currentness-blocked residuals: {blocked_currentness}")
           PY

@@ -95,10 +95,13 @@ def main() -> None:
         errors.append("machine retrieval: missing service-scope containment smoke")
     if not any(
         row.get("service_id") == "care-management"
-        and row.get("expected_state") == "BLOCKED"
+        and str(row.get("article")) == "18"
+        and row.get("expected_state") == "PUBLISHED"
         for row in smoke_cases
     ):
-        errors.append("machine retrieval: missing blocked-service smoke")
+        errors.append(
+            "machine retrieval: missing newly published care-management scope smoke"
+        )
 
     if not any(
         row.get("service_id") == "dayservice"

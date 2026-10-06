@@ -550,6 +550,23 @@ def build_cell(
             f"data/verification/governing-standards-residual-currentness-worker-a.json#{service_id}::{family['id']}"
         )
 
+    final_governing_currentness = shared_context["final_governing_currentness"].get(
+        (service_id, family["id"])
+    )
+    if final_governing_currentness:
+        if final_governing_currentness.get("projected_currentness_state") != "PASS":
+            raise ValueError(
+                f"final governing currentness promotion is not PASS: {service_id}::{family['id']}"
+            )
+        if final_governing_currentness.get("promotion_applied") is not True:
+            raise ValueError(
+                f"final governing currentness promotion is not applied: {service_id}::{family['id']}"
+            )
+        currentness_raw = ["PASS_BOUNDED_VERIFIED"]
+        currentness_evidence.append(
+            f"data/verification/final-standards-residual-relation-worker-c.json#{service_id}::{family['id']}"
+        )
+
     delegated_currentness = shared_context["delegated_remuneration_currentness"].get(
         (service_id, family["id"])
     )
@@ -810,6 +827,12 @@ def build() -> dict:
         if governing_residual_currentness_path.exists()
         else {"decisions": []}
     )
+    final_governing_currentness_path = ROOT / "data/verification/final-standards-residual-relation-worker-c.json"
+    final_governing_currentness_data = (
+        load("data/verification/final-standards-residual-relation-worker-c.json")
+        if final_governing_currentness_path.exists()
+        else {"governing_standards": {"decisions": []}}
+    )
     delegated_currentness_path = ROOT / "data/verification/delegated-remuneration-currentness-worker-b.json"
     delegated_currentness_data = (
         load("data/verification/delegated-remuneration-currentness-worker-b.json")
@@ -932,6 +955,11 @@ def build() -> dict:
             for row in governing_residual_currentness_data.get("decisions", [])
             if row.get("promotion_applied") is True
         },
+        "final_governing_currentness": {
+            (row["service_id"], row["source_family"]): row
+            for row in final_governing_currentness_data.get("governing_standards", {}).get("decisions", [])
+            if row.get("promotion_applied") is True
+        },
         "delegated_remuneration_currentness": {
             (row["service_id"], row["source_family"]): row
             for row in delegated_currentness_data.get("promotions", [])
@@ -952,6 +980,7 @@ def build() -> dict:
     currentness_decision_sets = {
         "bounded_currentness": set(shared_context["bounded_currentness"]),
         "governing_residual_currentness": set(shared_context["governing_residual_currentness"]),
+        "final_governing_currentness": set(shared_context["final_governing_currentness"]),
         "high_value_currentness": set(shared_context["high_value_currentness"]),
         "delegated_remuneration_currentness": set(shared_context["delegated_remuneration_currentness"]),
         "high_value_currentness_expansion": set(shared_context["high_value_currentness_expansion"]),
@@ -1070,6 +1099,7 @@ def build() -> dict:
             "data/verification/standards-interpretation-gates.json",
             "data/verification/bounded-currentness-closure-worker-b.json",
             "data/verification/governing-standards-residual-currentness-worker-a.json",
+            "data/verification/final-standards-residual-relation-worker-c.json",
             "data/verification/high-value-currentness-closure-worker-b.json",
             "data/verification/delegated-remuneration-currentness-worker-b.json",
             "data/shared/remuneration-delegated/currentness-source-contract.json",

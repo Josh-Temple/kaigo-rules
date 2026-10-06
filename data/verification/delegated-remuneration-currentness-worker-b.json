@@ -1,24 +1,37 @@
 {
-  "format_version": 1,
-  "artifact_kind": "DELEGATED_REMUNERATION_BOUNDED_CURRENTNESS_DECISIONS",
-  "wave_id": "2026-10-06-relation-assurance-and-next-source-publication",
+  "format_version": 2,
+  "artifact_kind": "DELEGATED_REMUNERATION_RESIDUAL_CURRENTNESS_DECISIONS",
+  "wave_id": "2026-10-07-ready-publication-completion-and-currentness-expansion",
   "worker": "B",
-  "role": "Delegated Remuneration Currentness & Publication Candidate Worker",
-  "base_main_sha": "f74456013a4a103c48a8b6674969b71c0e325631",
-  "observed_date": "2026-10-06",
+  "role": "Delegated Remuneration Residual Currentness Closure Worker",
+  "base_main_sha": "29c5529be51a1211e060acd5911a1122aa0eaf0e",
+  "observed_date": "2026-10-07",
   "source_contract": "data/shared/remuneration-delegated/currentness-source-contract.json",
-  "purpose": "Promote currentness only for delegated-remuneration cells whose explicit service mapping references exclusively currentness-closed official source identities.",
+  "notice27_currentness_evidence": "data/shared/remuneration-delegated/notice27-currentness-evidence.json",
+  "purpose": "Close the shared Notice 27 currentness blocker first, then preserve or promote only explicitly mapped delegated-remuneration service cells whose every mapped source identity is currentness-closed.",
   "summary": {
     "applicable_cells": 37,
     "not_applicable_cells": 2,
-    "promoted_cells": 15,
-    "deferred_applicable_cells": 22,
-    "projected_ready_increase": 15,
-    "projected_ready_increase_basis": "The 37 applicable delegated-remuneration cells are currently primary-blocked on currentness; this artifact removes that blocker for the promoted subset only. Final READY remains an integrator-generated projection."
+    "starting_ready_cells": 15,
+    "starting_deferred_applicable_cells": 22,
+    "currentness_pass_cells": 37,
+    "newly_promoted_cells": 22,
+    "deferred_applicable_cells": 0,
+    "projected_ready_increase": 22,
+    "projected_ready_count_after_integration": 37,
+    "projected_ready_increase_basis": "Only the 22 cells that were BLOCKED_CURRENTNESS on the starting main are counted as READY increase; the existing 15 READY cells are preserved, not recounted."
+  },
+  "source_level_closure": {
+    "canonical_source_id": "mhlw-fee-notice27-base",
+    "starting_state": "BLOCKED",
+    "final_state": "PASS",
+    "promotion_eligible": true,
+    "evidence": "data/shared/remuneration-delegated/notice27-currentness-evidence.json"
   },
   "source_level_evidence_reused": [
     "data/shared/remuneration-delegated/item-body-verification.json",
-    "data/shared/remuneration-delegated/currentness-source-contract.json"
+    "data/shared/remuneration-delegated/currentness-source-contract.json",
+    "data/shared/remuneration-delegated/notice27-currentness-evidence.json"
   ],
   "policy": {
     "no_source_family_broadcast": true,
@@ -26,9 +39,489 @@
     "not_applicable_never_promoted": true,
     "all_mapped_sources_must_be_currentness_closed": true,
     "item_body_pass_required": true,
-    "exact_source_identity_required": true
+    "exact_source_identity_required": true,
+    "residual_baseline_is_starting_main": true
   },
+  "starting_residual_service_ids": [
+    "dayservice",
+    "dayrehab",
+    "shortstay-life",
+    "community-dayservice",
+    "shortstay-medical",
+    "specific-facility",
+    "dementia-dayservice",
+    "small-scale-multifunctional",
+    "dementia-group-home",
+    "community-specific-facility",
+    "community-elderly-facility",
+    "nursing-small-scale-multifunctional",
+    "elderly-welfare-facility",
+    "elderly-health-facility",
+    "care-medical-institution",
+    "preventive-dayrehab",
+    "preventive-shortstay-life",
+    "preventive-shortstay-medical",
+    "preventive-specific-facility",
+    "preventive-dementia-dayservice",
+    "preventive-small-scale-multifunctional",
+    "preventive-dementia-group-home"
+  ],
+  "residual_decisions": [
+    {
+      "service_id": "dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#dayservice",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "dayrehab",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#dayrehab",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "shortstay-life",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#shortstay-life",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "community-dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#community-dayservice",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "shortstay-medical",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#shortstay-medical",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "specific-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#specific-facility",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#dementia-dayservice",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#small-scale-multifunctional",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "dementia-group-home",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#dementia-group-home",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "community-specific-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#community-specific-facility",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#community-elderly-facility",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#nursing-small-scale-multifunctional",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#elderly-welfare-facility",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#elderly-health-facility",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "care-medical-institution",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#care-medical-institution",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-dayrehab",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-shortstay-life",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-shortstay-medical",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-specific-facility",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-dementia-dayservice",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-small-scale-multifunctional",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "source_family": "delegated_remuneration_criteria",
+      "starting_state": "BLOCKED_CURRENTNESS",
+      "decision": "PROMOTE_CURRENTNESS",
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "currentness_decision": "PASS",
+      "blocker": null,
+      "evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-dementia-group-home",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ]
+    }
+  ],
   "promotions": [
+    {
+      "service_id": "dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 22,
+      "mapped_node_ids": [
+        "notice27.item.1",
+        "notice95.item.14-3",
+        "notice95.item.14-4",
+        "notice95.item.14-5",
+        "notice95.item.14-6",
+        "notice95.item.15",
+        "notice95.item.15-2",
+        "notice95.item.16",
+        "notice95.item.16-2",
+        "notice95.item.17",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.19-2",
+        "notice95.item.20",
+        "notice95.item.23",
+        "notice95.item.24",
+        "notice95.item.4",
+        "notice95.item.51-3-2",
+        "notice95.item.51-8-2",
+        "notice27.item.1.capacity",
+        "notice27.item.1.staffing"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#dayservice"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#dayservice",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "dayservice::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
     {
       "service_id": "homevisit",
       "source_family": "delegated_remuneration_criteria",
@@ -65,7 +558,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -115,7 +610,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -170,7 +667,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -222,7 +721,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -266,11 +767,201 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
         "identity": "homecaremanagement::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "dayrehab",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 18,
+      "mapped_node_ids": [
+        "notice27.item.2",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.24-2",
+        "notice95.item.24-3",
+        "notice95.item.24-4",
+        "notice95.item.24-5",
+        "notice95.item.25",
+        "notice95.item.27",
+        "notice95.item.28",
+        "notice95.item.29",
+        "notice95.item.29-2",
+        "notice95.item.30",
+        "notice95.item.31",
+        "notice95.item.32",
+        "notice95.item.33",
+        "notice95.item.34",
+        "notice95.item.4"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#dayrehab"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#dayrehab",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "dayrehab::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "shortstay-life",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 16,
+      "mapped_node_ids": [
+        "notice27.item.3",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.34-3-2",
+        "notice95.item.34-3-3",
+        "notice95.item.34-3-4",
+        "notice95.item.34-4",
+        "notice95.item.34-5",
+        "notice95.item.34-6",
+        "notice95.item.35",
+        "notice95.item.36",
+        "notice95.item.37",
+        "notice95.item.37-2",
+        "notice95.item.37-3",
+        "notice95.item.38",
+        "notice95.item.39"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#shortstay-life"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#shortstay-life",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "shortstay-life::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "community-dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 19,
+      "mapped_node_ids": [
+        "notice27.item.5-2",
+        "notice95.item.14-5",
+        "notice95.item.14-6",
+        "notice95.item.15-2",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.20",
+        "notice95.item.48",
+        "notice95.item.51-10",
+        "notice95.item.51-3-3",
+        "notice95.item.51-3-4",
+        "notice95.item.51-4",
+        "notice95.item.51-5",
+        "notice95.item.51-6",
+        "notice95.item.51-7",
+        "notice95.item.51-8",
+        "notice95.item.51-9"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#community-dayservice"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#community-dayservice",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "community-dayservice::delegated_remuneration_criteria",
         "scope": "currentness_only"
       },
       "projected_currentness_state": "PASS",
@@ -320,7 +1011,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -368,7 +1061,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -423,7 +1118,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -471,11 +1168,139 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
         "identity": "preventive-support::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "shortstay-medical",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 15,
+      "mapped_node_ids": [
+        "notice27.item.4",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.39",
+        "notice95.item.39-3-2",
+        "notice95.item.39-3-3",
+        "notice95.item.39-3-4",
+        "notice95.item.39-6",
+        "notice95.item.39-7",
+        "notice95.item.40",
+        "notice95.item.41",
+        "notice96.item.19-2",
+        "notice96.item.21-2"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#shortstay-medical"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#shortstay-medical",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "shortstay-medical::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "specific-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 17,
+      "mapped_node_ids": [
+        "notice27.item.5",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-2",
+        "notice95.item.42-2-2",
+        "notice95.item.42-2-3",
+        "notice95.item.42-3",
+        "notice95.item.42-4",
+        "notice95.item.42-5",
+        "notice95.item.42-6",
+        "notice95.item.42-7",
+        "notice95.item.42-8",
+        "notice95.item.43",
+        "notice95.item.44",
+        "notice96.item.22"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#specific-facility"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#specific-facility",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "specific-facility::delegated_remuneration_criteria",
         "scope": "currentness_only"
       },
       "projected_currentness_state": "PASS",
@@ -517,11 +1342,665 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
         "identity": "welfare-equipment-rental::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "dementia-dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 15,
+      "mapped_node_ids": [
+        "notice27.item.6",
+        "notice95.item.14-6",
+        "notice95.item.15-2",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.19-2",
+        "notice95.item.20",
+        "notice95.item.48",
+        "notice95.item.51-12-2",
+        "notice95.item.51-12-3",
+        "notice95.item.51-13",
+        "notice95.item.52",
+        "notice95.item.53"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#dementia-dayservice"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#dementia-dayservice",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "dementia-dayservice::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 13,
+      "mapped_node_ids": [
+        "notice27.item.7",
+        "notice95.item.18",
+        "notice95.item.37-3",
+        "notice95.item.42-6",
+        "notice95.item.54-2",
+        "notice95.item.54-3",
+        "notice95.item.54-4",
+        "notice95.item.54-5",
+        "notice95.item.55",
+        "notice95.item.56",
+        "notice95.item.56-2",
+        "notice95.item.57",
+        "notice95.item.58"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#small-scale-multifunctional"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#small-scale-multifunctional",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "small-scale-multifunctional::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "dementia-group-home",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 17,
+      "mapped_node_ids": [
+        "notice27.item.8",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-6",
+        "notice95.item.44",
+        "notice95.item.58-4",
+        "notice95.item.58-4-2",
+        "notice95.item.58-4-3",
+        "notice95.item.58-5",
+        "notice95.item.58-5-2",
+        "notice95.item.58-6",
+        "notice95.item.58-7",
+        "notice95.item.58-8",
+        "notice95.item.59",
+        "notice95.item.60",
+        "notice95.item.68"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#dementia-group-home"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#dementia-group-home",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "dementia-group-home::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "community-specific-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 20,
+      "mapped_node_ids": [
+        "notice27.item.9",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-3",
+        "notice95.item.42-4",
+        "notice95.item.42-5",
+        "notice95.item.42-6",
+        "notice95.item.44",
+        "notice95.item.60-4",
+        "notice95.item.60-5",
+        "notice95.item.60-6",
+        "notice95.item.60-7",
+        "notice95.item.60-8",
+        "notice95.item.61",
+        "notice95.item.62",
+        "notice95.item.68",
+        "notice96.item.22",
+        "notice96.item.35"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#community-specific-facility"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#community-specific-facility",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "community-specific-facility::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 31,
+      "mapped_node_ids": [
+        "notice27.item.10",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.42-4",
+        "notice95.item.44",
+        "notice95.item.58-5-2",
+        "notice95.item.63",
+        "notice95.item.63-2",
+        "notice95.item.63-2-2",
+        "notice95.item.63-2-3",
+        "notice95.item.63-3",
+        "notice95.item.63-3-2",
+        "notice95.item.64",
+        "notice95.item.65-2",
+        "notice95.item.65-3",
+        "notice95.item.66",
+        "notice95.item.67",
+        "notice95.item.69",
+        "notice95.item.70",
+        "notice95.item.71",
+        "notice95.item.71-2",
+        "notice95.item.71-3",
+        "notice95.item.71-4",
+        "notice95.item.71-5",
+        "notice95.item.71-6",
+        "notice95.item.71-7",
+        "notice95.item.72",
+        "notice95.item.73"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#community-elderly-facility"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#community-elderly-facility",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "community-elderly-facility::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 27,
+      "mapped_node_ids": [
+        "notice27.item.11",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.19-2",
+        "notice95.item.20",
+        "notice95.item.37-3",
+        "notice95.item.54-5",
+        "notice95.item.58",
+        "notice95.item.71-2",
+        "notice95.item.71-3",
+        "notice95.item.74-2",
+        "notice95.item.74-3",
+        "notice95.item.74-4",
+        "notice95.item.75",
+        "notice95.item.75-2",
+        "notice95.item.76",
+        "notice95.item.76-2",
+        "notice95.item.77",
+        "notice95.item.77-2",
+        "notice95.item.78",
+        "notice95.item.78-2",
+        "notice95.item.79",
+        "notice95.item.79-2",
+        "notice95.item.8",
+        "notice95.item.80",
+        "notice95.item.81"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#nursing-small-scale-multifunctional"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#nursing-small-scale-multifunctional",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "nursing-small-scale-multifunctional::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 45,
+      "mapped_node_ids": [
+        "notice27.item.12",
+        "notice95.item.16-2",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.42-4",
+        "notice95.item.44",
+        "notice95.item.58-5-2",
+        "notice95.item.64",
+        "notice95.item.65-2",
+        "notice95.item.65-3",
+        "notice95.item.66",
+        "notice95.item.67",
+        "notice95.item.69",
+        "notice95.item.70",
+        "notice95.item.71",
+        "notice95.item.71-2",
+        "notice95.item.71-3",
+        "notice95.item.71-4",
+        "notice95.item.71-5",
+        "notice95.item.72",
+        "notice95.item.86",
+        "notice95.item.86-2",
+        "notice95.item.86-2-2",
+        "notice95.item.86-2-3",
+        "notice95.item.86-3",
+        "notice95.item.86-3-2",
+        "notice95.item.86-4",
+        "notice95.item.86-5",
+        "notice95.item.86-6",
+        "notice95.item.87",
+        "notice95.item.88",
+        "notice96.item.41",
+        "notice96.item.44",
+        "notice96.item.44-2",
+        "notice96.item.45",
+        "notice96.item.47",
+        "notice96.item.48",
+        "notice96.item.50",
+        "notice96.item.51",
+        "notice96.item.53",
+        "notice96.item.54",
+        "notice96.item.54-2",
+        "notice96.item.54-3"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#elderly-welfare-facility"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#elderly-welfare-facility",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "elderly-welfare-facility::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 39,
+      "mapped_node_ids": [
+        "notice27.item.13",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.44",
+        "notice95.item.58-5-2",
+        "notice95.item.64",
+        "notice95.item.65-2",
+        "notice95.item.65-3",
+        "notice95.item.66",
+        "notice95.item.67",
+        "notice95.item.69",
+        "notice95.item.70",
+        "notice95.item.71-2",
+        "notice95.item.71-3",
+        "notice95.item.71-4",
+        "notice95.item.89",
+        "notice95.item.89-2",
+        "notice95.item.89-2-2",
+        "notice95.item.89-2-3",
+        "notice95.item.89-3",
+        "notice95.item.90",
+        "notice95.item.90-2",
+        "notice95.item.91",
+        "notice95.item.91-2",
+        "notice95.item.92",
+        "notice95.item.92-2",
+        "notice95.item.92-3",
+        "notice95.item.92-4",
+        "notice95.item.92-5",
+        "notice95.item.93",
+        "notice95.item.94",
+        "notice96.item.17",
+        "notice96.item.55",
+        "notice96.item.56",
+        "notice96.item.59",
+        "notice96.item.60",
+        "notice96.item.61-2"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#elderly-health-facility"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#elderly-health-facility",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "elderly-health-facility::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "care-medical-institution",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 32,
+      "mapped_node_ids": [
+        "notice27.item.15",
+        "notice95.item.100",
+        "notice95.item.100-2",
+        "notice95.item.100-2-2",
+        "notice95.item.100-2-3",
+        "notice95.item.100-3",
+        "notice95.item.100-4",
+        "notice95.item.100-5",
+        "notice95.item.100-5-2",
+        "notice95.item.100-6",
+        "notice95.item.100-7",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.44",
+        "notice95.item.58-5-2",
+        "notice95.item.64",
+        "notice95.item.65-2",
+        "notice95.item.65-3",
+        "notice95.item.66",
+        "notice95.item.67",
+        "notice95.item.69",
+        "notice95.item.70",
+        "notice95.item.71-3",
+        "notice95.item.71-4",
+        "notice95.item.91",
+        "notice95.item.92-3",
+        "notice95.item.93",
+        "notice96.item.68",
+        "notice96.item.68-2",
+        "notice96.item.68-7"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-facility-criteria96-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#care-medical-institution"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#care-medical-institution",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "care-medical-institution::delegated_remuneration_criteria",
         "scope": "currentness_only"
       },
       "projected_currentness_state": "PASS",
@@ -568,7 +2047,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -624,7 +2105,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -676,7 +2159,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -722,11 +2207,259 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
         "identity": "preventive-homecaremanagement::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 15,
+      "mapped_node_ids": [
+        "notice27.item.16",
+        "notice95.item.106-4",
+        "notice95.item.106-5",
+        "notice95.item.106-6",
+        "notice95.item.107-2",
+        "notice95.item.108",
+        "notice95.item.109",
+        "notice95.item.113",
+        "notice95.item.114",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.20",
+        "notice95.item.33",
+        "notice95.item.4"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-dayrehab"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-dayrehab",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-dayrehab::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 19,
+      "mapped_node_ids": [
+        "notice27.item.17",
+        "notice95.item.114-3-2",
+        "notice95.item.114-3-3",
+        "notice95.item.114-3-4",
+        "notice95.item.114-4",
+        "notice95.item.115",
+        "notice95.item.115-2",
+        "notice95.item.115-3",
+        "notice95.item.116",
+        "notice95.item.117",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.34-4",
+        "notice95.item.34-6",
+        "notice95.item.35",
+        "notice95.item.36",
+        "notice95.item.37-3",
+        "notice95.item.38",
+        "notice95.item.39"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-shortstay-life"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-shortstay-life",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-shortstay-life::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 15,
+      "mapped_node_ids": [
+        "notice27.item.18",
+        "notice95.item.117-3-2",
+        "notice95.item.117-3-3",
+        "notice95.item.117-3-4",
+        "notice95.item.117-6",
+        "notice95.item.117-7",
+        "notice95.item.118",
+        "notice95.item.119",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.35",
+        "notice95.item.37-3",
+        "notice95.item.39",
+        "notice95.item.39-6",
+        "notice95.item.40"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-shortstay-medical"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-shortstay-medical",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-shortstay-medical::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 17,
+      "mapped_node_ids": [
+        "notice27.item.19",
+        "notice95.item.119-4",
+        "notice95.item.119-4-2",
+        "notice95.item.119-4-3",
+        "notice95.item.119-5",
+        "notice95.item.119-6",
+        "notice95.item.119-7",
+        "notice95.item.120",
+        "notice95.item.121",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-5",
+        "notice95.item.42-6",
+        "notice95.item.42-7",
+        "notice95.item.43",
+        "notice95.item.44"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-specific-facility"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-specific-facility",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-specific-facility::delegated_remuneration_criteria",
         "scope": "currentness_only"
       },
       "projected_currentness_state": "PASS",
@@ -768,7 +2501,9 @@
         "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-facility-criteria96-current"
       ],
       "source_identity_matches_item_body_source": true,
-      "prior_currentness_state": "NOT_ESTABLISHED",
+      "prior_currentness_state": "PASS",
+      "promotion_origin": "PRESERVED_PRIOR_READY_CURRENTNESS",
+      "newly_promoted": false,
       "projection_gate": {
         "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
         "allowed": true,
@@ -783,89 +2518,192 @@
         "publication": "BLOCKED",
         "route_exposure": "BLOCKED"
       }
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 15,
+      "mapped_node_ids": [
+        "notice27.item.20",
+        "notice95.item.121-3-4",
+        "notice95.item.121-3-5",
+        "notice95.item.121-4",
+        "notice95.item.121-5",
+        "notice95.item.122",
+        "notice95.item.123",
+        "notice95.item.14-6",
+        "notice95.item.18",
+        "notice95.item.18-2",
+        "notice95.item.19",
+        "notice95.item.19-2",
+        "notice95.item.20",
+        "notice95.item.48",
+        "notice95.item.52"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-dementia-dayservice"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-dementia-dayservice",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-dementia-dayservice::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 12,
+      "mapped_node_ids": [
+        "notice27.item.21",
+        "notice95.item.123-4",
+        "notice95.item.123-5",
+        "notice95.item.123-6",
+        "notice95.item.125-2",
+        "notice95.item.126",
+        "notice95.item.127",
+        "notice95.item.18",
+        "notice95.item.37-3",
+        "notice95.item.42-6",
+        "notice95.item.57",
+        "notice95.item.58"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-small-scale-multifunctional"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-small-scale-multifunctional",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-small-scale-multifunctional::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
+      "source_family": "delegated_remuneration_criteria",
+      "mapped_node_count": 21,
+      "mapped_node_ids": [
+        "notice27.item.22",
+        "notice95.item.127-4",
+        "notice95.item.127-4-2",
+        "notice95.item.127-4-3",
+        "notice95.item.127-5",
+        "notice95.item.127-6",
+        "notice95.item.127-7",
+        "notice95.item.127-8",
+        "notice95.item.128",
+        "notice95.item.129",
+        "notice95.item.18",
+        "notice95.item.3-5",
+        "notice95.item.37-3",
+        "notice95.item.42-6",
+        "notice95.item.44",
+        "notice95.item.58-5",
+        "notice95.item.58-5-2",
+        "notice95.item.58-6",
+        "notice95.item.58-7",
+        "notice95.item.59",
+        "notice95.item.68"
+      ],
+      "mapped_source_ids": [
+        "mhlw-fee-criteria95-current",
+        "mhlw-fee-notice27-base"
+      ],
+      "applicability_proof": {
+        "state": "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING",
+        "evidence": [
+          "data/shared/remuneration-delegated/service-applicability.json#preventive-dementia-group-home"
+        ],
+        "inherited_from_sibling_service": false
+      },
+      "item_body_state": "PASS",
+      "item_body_evidence": [
+        "data/shared/remuneration-delegated/service-applicability.json#preventive-dementia-group-home",
+        "data/shared/remuneration-delegated/item-body-verification.json"
+      ],
+      "source_currentness_evidence": [
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-criteria95-current",
+        "data/shared/remuneration-delegated/currentness-source-contract.json#mhlw-fee-notice27-base"
+      ],
+      "source_identity_matches_item_body_source": true,
+      "prior_currentness_state": "NOT_ESTABLISHED",
+      "promotion_origin": "RESIDUAL_NOTICE27_CURRENTNESS_CLOSURE",
+      "newly_promoted": true,
+      "projection_gate": {
+        "kind": "EXPLICIT_BOUNDED_ALLOWLIST",
+        "allowed": true,
+        "identity": "preventive-dementia-group-home::delegated_remuneration_criteria",
+        "scope": "currentness_only"
+      },
+      "projected_currentness_state": "PASS",
+      "promotion_applied": true,
+      "unchanged_axes": {
+        "relation_verification": "NOT_ESTABLISHED",
+        "human_review": "NOT_REVIEWED",
+        "publication": "BLOCKED",
+        "route_exposure": "BLOCKED"
+      }
     }
   ],
   "holds": [
-    {
-      "service_id": "dayservice",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "dayrehab",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "shortstay-life",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "community-dayservice",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "shortstay-medical",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-facility-criteria96-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "specific-facility",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-facility-criteria96-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
     {
       "service_id": "specific-welfare-equipment-sale",
       "source_family": "delegated_remuneration_criteria",
@@ -874,326 +2712,163 @@
       "mapped_source_ids": []
     },
     {
-      "service_id": "dementia-dayservice",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "small-scale-multifunctional",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "dementia-group-home",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "community-specific-facility",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-facility-criteria96-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "community-elderly-facility",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "nursing-small-scale-multifunctional",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "elderly-welfare-facility",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-facility-criteria96-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "elderly-health-facility",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-facility-criteria96-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "care-medical-institution",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-facility-criteria96-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "preventive-dayrehab",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "preventive-shortstay-life",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "preventive-shortstay-medical",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "preventive-specific-facility",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
       "service_id": "specific-preventive-welfare-equipment-sale",
       "source_family": "delegated_remuneration_criteria",
       "decision": "NOT_APPLICABLE_PRESERVED",
       "blocker": "Explicit NOT_APPLICABLE adjudication; currentness promotion is forbidden.",
       "mapped_source_ids": []
-    },
-    {
-      "service_id": "preventive-dementia-dayservice",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "preventive-small-scale-multifunctional",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
-    },
-    {
-      "service_id": "preventive-dementia-group-home",
-      "source_family": "delegated_remuneration_criteria",
-      "decision": "DEFER",
-      "blocker": "At least one mapped canonical source is not currentness-closed under the bounded source contract.",
-      "blocked_source_ids": [
-        "mhlw-fee-notice27-base"
-      ],
-      "mapped_source_ids": [
-        "mhlw-fee-criteria95-current",
-        "mhlw-fee-notice27-base"
-      ]
     }
   ],
   "projected_publication_candidates": [
     {
-      "service_id": "homevisit",
+      "service_id": "dayservice",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "homebath",
+      "service_id": "dayrehab",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "homenursing",
+      "service_id": "shortstay-life",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "homerehab",
+      "service_id": "community-dayservice",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "homecaremanagement",
+      "service_id": "shortstay-medical",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "regular-round",
+      "service_id": "specific-facility",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "night-homevisit",
+      "service_id": "dementia-dayservice",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "care-management",
+      "service_id": "small-scale-multifunctional",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "preventive-support",
+      "service_id": "dementia-group-home",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "welfare-equipment-rental",
+      "service_id": "community-specific-facility",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "preventive-homebath",
+      "service_id": "community-elderly-facility",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "preventive-homenursing",
+      "service_id": "nursing-small-scale-multifunctional",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "preventive-homerehab",
+      "service_id": "elderly-welfare-facility",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "preventive-homecaremanagement",
+      "service_id": "elderly-health-facility",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,
       "public_route_enabled": false
     },
     {
-      "service_id": "preventive-welfare-equipment-rental",
+      "service_id": "care-medical-institution",
+      "source_family": "delegated_remuneration_criteria",
+      "projected_currentness_state": "PASS",
+      "publication_candidate": true,
+      "public_route_enabled": false
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "source_family": "delegated_remuneration_criteria",
+      "projected_currentness_state": "PASS",
+      "publication_candidate": true,
+      "public_route_enabled": false
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "source_family": "delegated_remuneration_criteria",
+      "projected_currentness_state": "PASS",
+      "publication_candidate": true,
+      "public_route_enabled": false
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "source_family": "delegated_remuneration_criteria",
+      "projected_currentness_state": "PASS",
+      "publication_candidate": true,
+      "public_route_enabled": false
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "source_family": "delegated_remuneration_criteria",
+      "projected_currentness_state": "PASS",
+      "publication_candidate": true,
+      "public_route_enabled": false
+    },
+    {
+      "service_id": "preventive-dementia-dayservice",
+      "source_family": "delegated_remuneration_criteria",
+      "projected_currentness_state": "PASS",
+      "publication_candidate": true,
+      "public_route_enabled": false
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "source_family": "delegated_remuneration_criteria",
+      "projected_currentness_state": "PASS",
+      "publication_candidate": true,
+      "public_route_enabled": false
+    },
+    {
+      "service_id": "preventive-dementia-group-home",
       "source_family": "delegated_remuneration_criteria",
       "projected_currentness_state": "PASS",
       "publication_candidate": true,

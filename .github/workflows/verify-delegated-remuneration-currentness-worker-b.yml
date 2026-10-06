@@ -6,6 +6,8 @@ on:
     paths:
       - "data/shared/remuneration-delegated/**"
       - "data/verification/delegated-remuneration-currentness-worker-b.json"
+      - "data/sources.json"
+      - "scripts/verify_notice27_currentness_live.py"
       - "scripts/build_delegated_remuneration_currentness_worker_b.py"
       - "scripts/validate_delegated_remuneration_currentness_worker_b.py"
       - "scripts/build_database_coverage_matrix.py"
@@ -32,6 +34,8 @@ jobs:
         run: python scripts/verify_delegated_remuneration_item_body.py
       - name: Preserve delegated item-body assurance boundaries
         run: python scripts/validate_delegated_remuneration_item_body_assurance.py
+      - name: Independently verify Notice 27 currentness and amendment lineage
+        run: python scripts/verify_notice27_currentness_live.py
       - name: Check deterministic bounded currentness decisions
         run: python scripts/build_delegated_remuneration_currentness_worker_b.py --check
       - name: Validate bounded currentness contract and decisions

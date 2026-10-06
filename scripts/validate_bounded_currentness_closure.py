@@ -315,10 +315,52 @@ def validate_payload(
         "PASS": 37,
         "NOT_ESTABLISHED": 2,
     }
-    if not matrix_preintegration and not matrix_integrated and not matrix_subsequent_integrated:
+    matrix_final_integrated = current_standards == {"PASS": 39}
+    if matrix_final_integrated:
+        final_path = (
+            ROOT
+            / "data/verification/final-standards-residual-relation-worker-c.json"
+        )
+        if not final_path.exists():
+            errors.append(
+                "39/39 governing-standards state lacks the final bounded assurance artifact"
+            )
+            matrix_final_integrated = False
+        else:
+            final_artifact = load(final_path)
+            assert isinstance(final_artifact, dict)
+            final_governing = final_artifact.get("governing_standards") or {}
+            final_decisions = final_governing.get("decisions") or []
+            final_ids = {str(row.get("service_id")) for row in final_decisions}
+            final_ok = (
+                final_artifact.get("artifact_kind")
+                == "FINAL_STANDARDS_AND_RESIDUAL_RELATION_ASSURANCE"
+                and final_ids == {"night-homevisit", "dementia-group-home"}
+                and len(final_decisions) == 2
+                and all(
+                    row.get("decision") == "PROMOTE_PASS_BOUNDED"
+                    and row.get("promotion_applied") is True
+                    and row.get("projected_currentness_state") == "PASS"
+                    and row.get("blocker") is None
+                    for row in final_decisions
+                )
+                and (final_governing.get("after") or {}).get("ready") == 39
+                and (final_governing.get("after") or {}).get("blocked_currentness") == 0
+            )
+            if not final_ok:
+                errors.append(
+                    "39/39 governing-standards state is not backed by the exact final two-cell assurance"
+                )
+                matrix_final_integrated = False
+    if (
+        not matrix_preintegration
+        and not matrix_integrated
+        and not matrix_subsequent_integrated
+        and not matrix_final_integrated
+    ):
         errors.append(
             "governing standards matrix matches neither this wave's before/after state "
-            "nor the exact subsequent residual-currentness state"
+            "nor an independently bounded subsequent currentness state"
         )
 
     expected_after = dict(standards.get("before") or {})
@@ -388,7 +430,7 @@ def validate_payload(
             errors.append(f"{service_id}: direct service chapter proof missing")
         if proof.get("target_articles") != audit_row.get("target_articles"):
             errors.append(f"{service_id}: target articles differ from independent audit")
-        if (matrix_integrated or matrix_subsequent_integrated) and (matrix_row.get("currentness") or {}).get("state") != "PASS":
+        if (matrix_integrated or matrix_subsequent_integrated or matrix_final_integrated) and (matrix_row.get("currentness") or {}).get("state") != "PASS":
             errors.append(f"{service_id}: integrated currentness is not PASS")
         if matrix_preintegration and (matrix_row.get("currentness") or {}).get("state") != "PASS":
             errors.append(f"{service_id}: prior cumulative promotion disappeared from base matrix")

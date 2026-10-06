@@ -54,8 +54,8 @@ test("practical guide retains four main journeys and adds concrete sub-journeys"
  assert.deepEqual(ids,["standards","designation","remuneration","qa"]);
  const subJourneys=practicalGuideJourneys.flatMap(x=>x.subJourneys||[]);
  const subIds=new Set(subJourneys.map(x=>x.id));
- for(const id of ["staffing","equipment","operations","fee-guidance","unit-price"]) assert.ok(subIds.has(id),id);
- assert.equal(subJourneys.length,5);
+ for(const id of ["staffing","equipment","operations","before-designation","renewal-change","fee-guidance","unit-price"]) assert.ok(subIds.has(id),id);
+ assert.equal(subJourneys.length,7);
  for(const journey of subJourneys){
   assert.ok(journey.firstChecks.length>=2,journey.id);
   assert.ok(journey.databaseLinks.length>=2,journey.id);
@@ -106,10 +106,30 @@ test("service-aware guide groups regular and preventive services without collaps
 test("new practical guide sub-journeys preserve primary-source return paths",()=>{
  const sources=new Set(load("data/sources.json").map(x=>x.id));
  const subJourneys=practicalGuideJourneys.flatMap(x=>x.subJourneys||[]);
- for(const id of ["staffing","equipment","operations","fee-guidance","unit-price"]){
+ for(const id of ["staffing","equipment","operations","before-designation","renewal-change","fee-guidance","unit-price"]){
   const journey=subJourneys.find(x=>x.id===id);
   assert.ok(journey,id);
   assert.ok(journey.officialSourceIds.length>=1,id);
   for(const sourceId of journey.officialSourceIds) assert.ok(sources.has(sourceId),`${id}: ${sourceId}`);
  }
+});
+
+
+test("designation practical paths separate national evidence from local procedure",()=>{
+ const designation=practicalGuideJourneys.find(x=>x.id==="designation");
+ assert.ok(designation);
+ const before=designation.subJourneys?.find(x=>x.id==="before-designation");
+ const renewal=designation.subJourneys?.find(x=>x.id==="renewal-change");
+ assert.ok(before);
+ assert.ok(renewal);
+ assert.ok(before.databaseLinks.some(x=>x.href==="/rules"));
+ assert.ok(before.databaseLinks.some(x=>x.href==="/services"));
+ assert.ok(before.officialSourceIds.includes("egov-care-insurance-act"));
+ assert.ok(before.officialSourceIds.includes("mhlw-application-forms"));
+ assert.match(before.caution||"",/指定権者/);
+ assert.ok(renewal.databaseLinks.some(x=>x.href.includes(encodeURIComponent("更新"))));
+ assert.ok(renewal.databaseLinks.some(x=>x.href.includes(encodeURIComponent("届出"))));
+ assert.ok(renewal.officialSourceIds.includes("egov-care-insurance-act"));
+ assert.ok(renewal.officialSourceIds.includes("mhlw-application-forms"));
+ assert.match(renewal.caution||"",/指定権者/);
 });

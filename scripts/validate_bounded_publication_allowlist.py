@@ -31,13 +31,10 @@ def cell_key(row: dict[str, Any]) -> tuple[str | None, str | None]:
 
 
 def currentness_source_receipts() -> list[dict[str, str]]:
-    return [
-        {
-            "path": str(path.relative_to(ROOT)).replace("\\", "/"),
-            "git_blob_sha": builder.git_blob_sha(path),
-        }
-        for path in builder.currentness_paths()
-    ]
+    # Use the same semantic source inventory as the builder, including bounded
+    # overlay evidence such as the final two-cell Governing Standards closure.
+    _, sources, _ = builder.load_promotions()
+    return sources
 
 
 def load_promotions() -> dict[tuple[str | None, str | None], dict[str, Any]]:

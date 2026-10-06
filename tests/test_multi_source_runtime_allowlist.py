@@ -42,14 +42,15 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             if cell[1] == "delegated_remuneration_criteria"
         }
 
-        self.assertEqual(len(governing), 22)
+        self.assertEqual(len(governing), 39)
         self.assertEqual(len(unit_price), 19)
-        self.assertEqual(len(delegated), 15)
+        self.assertEqual(len(delegated), 37)
         self.assertIn(
             ("dayservice", "unit_price_regional_classification"),
             cells,
         )
-        self.assertEqual(len(cells), 56)
+        self.assertEqual(len(cells), 95)
+        self.assertGreater(len(cells), 64)
         unit_price_binding = artifact["runtime_source_binding_by_cell"][
             "dayservice|unit_price_regional_classification"
         ]
@@ -74,6 +75,13 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
             {
                 "ordinance37",
                 "preventive-services-standards",
+                "community-based-standards",
+                "care-management-standards",
+                "preventive-support-standards",
+                "elderly-welfare-facility-standards",
+                "geriatric-health-services-facility-standards",
+                "long-term-care-medical-facility-standards",
+                "preventive-community-based-standards",
                 "mhlw-unit-price-current",
                 "delegated-remuneration-national",
             },
@@ -340,13 +348,192 @@ class MultiSourceRuntimeAllowlistTest(unittest.TestCase):
 
         self.assertEqual(builder.delegated_currentness_path(), worker_b_path)
         payload = json.loads(worker_b_path.read_text(encoding="utf-8"))
-        self.assertEqual(payload["summary"]["promoted_cells"], 15)
-        self.assertEqual(len(payload["promotions"]), 15)
+        self.assertEqual(payload["summary"]["currentness_pass_cells"], 37)
+        self.assertEqual(payload["summary"]["newly_promoted_cells"], 22)
+        self.assertEqual(len(payload["promotions"]), 37)
         self.assertTrue(
             all(
                 builder.source_contract_supported(promotion)
                 for promotion in payload["promotions"]
             )
+        )
+
+    def test_integrated_ready_set_is_fully_published_without_family_broadcast(self):
+        stored = json.loads(
+            (ROOT / "data" / "bounded-publication-allowlist.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        stored_cells = {
+            (row["service_id"], row["source_family"])
+            for row in stored["publication_cell_allowlist"]
+        }
+        projected = builder.build()
+        projected_cells = {
+            (row["service_id"], row["source_family"])
+            for row in projected["publication_cell_allowlist"]
+        }
+        self.assertEqual(stored_cells, projected_cells)
+        self.assertEqual(len(projected_cells), 95)
+        self.assertEqual(
+            projected["policy"]["publication_selection_mode"],
+            "READY_RUNTIME_SUPPORTED_INTERSECTION",
+        )
+        self.assertFalse(projected["policy"]["arbitrary_batch_cap_enabled"])
+        self.assertEqual(projected["policy"]["max_publication_cells"], 95)
+
+        prior_gap_services = {
+            "community-dayservice",
+            "regular-round",
+            "care-management",
+            "preventive-support",
+            "dementia-dayservice",
+            "small-scale-multifunctional",
+            "community-specific-facility",
+            "community-elderly-facility",
+            "nursing-small-scale-multifunctional",
+            "elderly-welfare-facility",
+            "elderly-health-facility",
+            "care-medical-institution",
+            "preventive-dementia-dayservice",
+            "preventive-small-scale-multifunctional",
+            "preventive-dementia-group-home",
+        }
+        prior_gap = {
+            (service_id, "governing_standards_ordinance")
+            for service_id in prior_gap_services
+        }
+        self.assertTrue(prior_gap.issubset(projected_cells))
+
+        promotions, _, provenance = builder.load_promotions()
+        for key in prior_gap:
+            promotion = promotions[key]
+            self.assertTrue(builder.source_contract_supported(promotion), key)
+            proof = promotion["applicability_proof"]
+            self.assertTrue(proof["direct_article_numbers"], key)
+            self.assertFalse(
+                proof["incorporation_or_read_as_semantics_promoted"],
+                key,
+            )
+            self.assertEqual(
+                provenance[key],
+                "data/verification/governing-standards-residual-currentness-worker-a.json",
+            )
+
+        for service_id in ("night-homevisit", "dementia-group-home"):
+            key = (service_id, "governing_standards_ordinance")
+            self.assertIn(key, projected_cells)
+            self.assertTrue(builder.source_contract_supported(promotions[key]), key)
+            self.assertEqual(
+                provenance[key],
+                "data/verification/final-standards-residual-relation-worker-c.json",
+            )
+
+    def test_community_direct_ranges_use_article_number_order_not_json_order(self):
+        promotions, _, _ = builder.load_promotions()
+
+        small_scale = promotions[
+            ("small-scale-multifunctional", "governing_standards_ordinance")
+        ]
+        articles = small_scale["applicability_proof"]["direct_article_numbers"]
+        self.assertIn("62", articles)
+        self.assertIn("88", articles)
+        self.assertNotIn("7", articles)
+        self.assertNotIn("8", articles)
+        for article in articles:
+            major = int(article.split("-", 1)[0])
+            self.assertGreaterEqual(major, 62)
+            self.assertLessEqual(major, 88)
+
+        community_dayservice = promotions[
+            ("community-dayservice", "governing_standards_ordinance")
+        ]
+        dayservice_articles = community_dayservice[
+            "applicability_proof"
+        ]["direct_article_numbers"]
+        self.assertIn("19", dayservice_articles)
+        self.assertIn("37", dayservice_articles)
+        for excluded in ("1", "2", "3", "183"):
+            self.assertNotIn(excluded, dayservice_articles)
+
+    def test_residual_governing_runtime_contract_fails_closed(self):
+        promotions, _, _ = builder.load_promotions()
+        key = ("regular-round", "governing_standards_ordinance")
+        promotion = promotions[key]
+        self.assertTrue(builder.source_contract_supported(promotion))
+
+        wrong_source = copy.deepcopy(promotion)
+        wrong_source["source_identity"]["canonical_source_id"] = (
+            "preventive-community-based-standards"
+        )
+        self.assertFalse(builder.source_contract_supported(wrong_source))
+
+        leaked_relation = copy.deepcopy(promotion)
+        leaked_relation["applicability_proof"][
+            "incorporation_or_read_as_semantics_promoted"
+        ] = True
+        self.assertFalse(builder.source_contract_supported(leaked_relation))
+
+        wrong_gate = copy.deepcopy(promotion)
+        wrong_gate["projection_gate"]["identity"] = (
+            "preventive-small-scale-multifunctional::governing_standards_ordinance"
+        )
+        self.assertFalse(builder.source_contract_supported(wrong_gate))
+
+        wrong_scope = copy.deepcopy(promotion)
+        wrong_scope["applicability_proof"]["direct_article_numbers"] = [
+            "99999"
+        ]
+        self.assertFalse(builder.source_contract_supported(wrong_scope))
+
+    def test_final_governing_cells_are_supported_but_unknown_identity_stays_closed(self):
+        promotions, _, _ = builder.load_promotions()
+        for service_id in ("night-homevisit", "dementia-group-home"):
+            promotion = promotions[
+                (service_id, "governing_standards_ordinance")
+            ]
+            self.assertTrue(builder.source_contract_supported(promotion))
+
+        unsupported = copy.deepcopy(
+            promotions[
+                ("regular-round", "governing_standards_ordinance")
+            ]
+        )
+        unsupported["canonical_source_id"] = "unsupported-governing-source"
+        unsupported["source_identity"]["canonical_source_id"] = (
+            "unsupported-governing-source"
+        )
+        self.assertFalse(builder.source_contract_supported(unsupported))
+
+    def test_preventive_source_identities_are_not_inherited_from_regular_services(self):
+        promotions, _, _ = builder.load_promotions()
+        regular = promotions[
+            ("dementia-dayservice", "governing_standards_ordinance")
+        ]
+        preventive = promotions[
+            (
+                "preventive-dementia-dayservice",
+                "governing_standards_ordinance",
+            )
+        ]
+        self.assertEqual(
+            regular["source_identity"]["canonical_source_id"],
+            "community-based-standards",
+        )
+        self.assertEqual(
+            preventive["source_identity"]["canonical_source_id"],
+            "preventive-community-based-standards",
+        )
+        self.assertNotEqual(
+            regular["applicability_proof"]["direct_article_numbers"],
+            preventive["applicability_proof"]["direct_article_numbers"],
+        )
+        support = promotions[
+            ("preventive-support", "governing_standards_ordinance")
+        ]
+        self.assertEqual(
+            support["source_identity"]["canonical_source_id"],
+            "preventive-support-standards",
         )
 
     def test_safe_fields_exclude_relation_and_human_review_state(self):

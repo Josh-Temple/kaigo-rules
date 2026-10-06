@@ -15,6 +15,9 @@ HIGH_VALUE_EXPANSION = (
 GOVERNING_RESIDUAL = (
     ROOT / "data/verification/governing-standards-residual-currentness-worker-a.json"
 )
+FINAL_GOVERNING = (
+    ROOT / "data/verification/final-standards-residual-relation-worker-c.json"
+)
 DELEGATED_CURRENTNESS = (
     ROOT / "data/verification/delegated-remuneration-currentness-worker-b.json"
 )
@@ -62,14 +65,33 @@ def main() -> int:
             if row.get("promotion_applied") is True
         ]
 
+    final_governing_promotions = []
+    if FINAL_GOVERNING.exists():
+        final_artifact = load(FINAL_GOVERNING)
+        if (
+            final_artifact.get("artifact_kind")
+            != "FINAL_STANDARDS_AND_RESIDUAL_RELATION_ASSURANCE"
+        ):
+            failures.append("unexpected Worker C final governing-currentness artifact kind")
+        final_governing_promotions = [
+            row
+            for row in (final_artifact.get("governing_standards") or {}).get(
+                "decisions", []
+            )
+            if row.get("promotion_applied") is True
+        ]
+
     expected_governing_after = dict(after)
-    if subsequent_governing_promotions:
+    all_subsequent_governing = (
+        subsequent_governing_promotions + final_governing_promotions
+    )
+    if all_subsequent_governing:
         expected_governing_after["PASS"] = expected_governing_after.get("PASS", 0) + len(
-            subsequent_governing_promotions
+            all_subsequent_governing
         )
         expected_governing_after["NOT_ESTABLISHED"] = (
             expected_governing_after.get("NOT_ESTABLISHED", 0)
-            - len(subsequent_governing_promotions)
+            - len(all_subsequent_governing)
         )
         expected_governing_after = {
             key: value for key, value in expected_governing_after.items() if value
@@ -135,9 +157,13 @@ def main() -> int:
             if row.get("promotion_applied") is True
         )
     downstream_promotions.extend(subsequent_governing_promotions)
+    downstream_promotions.extend(final_governing_promotions)
     if DELEGATED_CURRENTNESS.exists():
         delegated = load(DELEGATED_CURRENTNESS)
-        if delegated.get("artifact_kind") != "DELEGATED_REMUNERATION_BOUNDED_CURRENTNESS_DECISIONS":
+        if delegated.get("artifact_kind") not in {
+            "DELEGATED_REMUNERATION_BOUNDED_CURRENTNESS_DECISIONS",
+            "DELEGATED_REMUNERATION_RESIDUAL_CURRENTNESS_DECISIONS",
+        }:
             failures.append("unexpected Worker B delegated-currentness artifact kind")
         downstream_promotions.extend(
             row
@@ -154,7 +180,7 @@ def main() -> int:
     )
     if downstream_pass not in {0, len(downstream_promotions)}:
         failures.append(
-            "Worker C currentness expansion must be either wholly unapplied or wholly integrated"
+            "downstream bounded currentness decisions must be either wholly unapplied or wholly integrated"
         )
 
     projected_gaps = current_gaps - len(TARGETS) if preintegration else current_gaps
