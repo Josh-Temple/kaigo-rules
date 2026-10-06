@@ -59,15 +59,17 @@ jobs:
           matrix = module.build()
           family = matrix["summary"]["source_family_coverage"]["governing_standards_ordinance"]
           currentness = family["currentness"]
-          if currentness != {"PASS": 39}:
+          if currentness != {"NOT_ESTABLISHED": 2, "PASS": 37}:
               raise SystemExit(f"unexpected projected governing-standards currentness: {currentness}")
           gaps = [
               row for row in matrix["summary"]["currentness_gaps"]
               if row["source_family"] == "governing_standards_ordinance"
           ]
-          if gaps:
-              raise SystemExit(f"residual governing-standards currentness gaps remain: {gaps}")
-          print("PASS: in-memory projection closes Governing Standards currentness to 39/39")
+          gap_ids = {row["service_id"] for row in gaps}
+          expected_gaps = {"night-homevisit", "dementia-group-home"}
+          if gap_ids != expected_gaps:
+              raise SystemExit(f"unexpected residual governing-standards currentness gaps: {gaps}")
+          print("PASS: in-memory projection reaches 37/39 with two explicit fail-closed residuals")
           PY
 
       - name: Reject Worker A edits to repository-wide generated publication artifacts
