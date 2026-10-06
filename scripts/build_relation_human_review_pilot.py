@@ -25,6 +25,7 @@ PILOT_RELATION_KEYS = [
     "fee.dayservice.note.3|operational_basis_related_to|ordinance37.article.30-2",
     "notice.dayservice.personnel.manager|interprets_or_explains|ordinance37.article.94",
 ]
+IMMUTABLE_EVIDENCE_PACK_ITEMS_AT_ACTIVATION = 58
 IMMUTABLE_PILOT = [
     (1, "REL-001", PILOT_RELATION_KEYS[0], "f3984f602718ad82cd16fbb6769c692654a9a19b32196becc9896626ab7074bf"),
     (2, "REL-013", PILOT_RELATION_KEYS[1], "e6bfcabaa109a05d053cde11a6f96b380f81824e49bd49a7857265b21dbcf56d"),
@@ -53,7 +54,7 @@ def pilot_unit(row: dict, index: int) -> dict:
     subclaims = row["machine_verifiable_subclaims"]
     return {
         "pilot_order": index + 1,
-        "review_id": row["review_id"],
+        "review_id": IMMUTABLE_PILOT[index][1],
         "review_status": "READY_FOR_HUMAN_REVIEW",
         "identity": row["identity"],
         "relation_key": row["relation_key"],
@@ -147,7 +148,7 @@ def build() -> dict:
         ),
         "selection_rationale": [
             "Prefer relations with direct primary-text pointers on both sides.",
-            "Use a small eight-item batch and interleave relation types instead of processing the full evidence pack.",
+            "Use a small eight-item batch and interleave relation types instead of processing all 58 evidence-pack items.",
             "Fill the remainder with machine-reconstructed notice candidates whose target side has a direct primary-text pointer; practical-question relations remain outside the first pilot.",
         ],
         "summary": {
@@ -158,8 +159,9 @@ def build() -> dict:
             "classification_counts": dict(class_counts),
             "source_pointer_status_counts": dict(source_counts),
             "target_pointer_status_counts": dict(target_counts),
-            "remaining_evidence_pack_items_not_in_pilot": len(evidence.get("items", []))
-            - len(items),
+            "remaining_evidence_pack_items_not_in_pilot": (
+            IMMUTABLE_EVIDENCE_PACK_ITEMS_AT_ACTIVATION - len(items)
+        ),
         },
         "review_contract": {
             "allowed_decisions": ALLOWED_DECISIONS,
