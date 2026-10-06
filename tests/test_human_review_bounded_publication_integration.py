@@ -77,13 +77,29 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
             for row in self.readiness["cells"]
             if row["readiness"] == "READY_FOR_PUBLICATION_REVIEW"
         }
-        runtime_supported = {
-            (row["service_id"], row["source_family"])
-            for row in self.bounded["promotions"]
-            if row.get("promotion_applied") is True
-            and (row.get("source_identity") or {}).get("canonical_source_id") == "ordinance37"
-            and (row.get("applicability_proof") or {}).get("state") == "PASS_DIRECT_SERVICE_CHAPTER"
+        supported_contracts = {
+            "ordinance37": (
+                "PASS_DIRECT_SERVICE_CHAPTER",
+                "direct_service_chapter_verified",
+            ),
+            "preventive-services-standards": (
+                "PASS_DIRECT_SERVICE_SCOPE",
+                "direct_service_scope_verified",
+            ),
         }
+        runtime_supported = set()
+        for row in self.bounded["promotions"]:
+            source_id = (row.get("source_identity") or {}).get("canonical_source_id")
+            contract = supported_contracts.get(source_id)
+            proof = row.get("applicability_proof") or {}
+            if (
+                row.get("promotion_applied") is True
+                and contract is not None
+                and proof.get("state") == contract[0]
+                and proof.get(contract[1]) is True
+                and proof.get("discrepancies") == 0
+            ):
+                runtime_supported.add((row["service_id"], row["source_family"]))
         published = {
             (row["service_id"], row["source_family"])
             for row in self.allowlist["publication_cell_allowlist"]
@@ -94,7 +110,7 @@ class HumanReviewBoundedPublicationIntegrationTests(unittest.TestCase):
         }
 
         self.assertEqual(len(ready), 20)
-        self.assertEqual(len(runtime_supported), 10)
+        self.assertEqual(len(runtime_supported), 20)
         self.assertTrue(runtime_supported.issubset(ready))
         self.assertEqual(published, runtime_supported)
         self.assertEqual(routed, runtime_supported)
