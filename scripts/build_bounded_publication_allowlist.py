@@ -14,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 READINESS_PATH = ROOT / "data/publication-readiness.generated.json"
+CURRENTNESS_PATH = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
 OUTPUT_PATH = ROOT / "data/bounded-publication-allowlist.json"
 
 SAFE_FIELDS = [
@@ -32,7 +33,11 @@ FORBIDDEN_FIELDS = [
     "review_dependent_search_term",
 ]
 RUNTIME_SUPPORTED_SOURCE_FAMILIES = {"governing_standards_ordinance"}
-MAX_PUBLICATION_CELLS = 10
+RUNTIME_SUPPORTED_SOURCE_IDENTITIES = {
+    "ordinance37": ("PASS_DIRECT_SERVICE_CHAPTER", "direct_service_chapter_verified"),
+    "preventive-services-standards": ("PASS_DIRECT_SERVICE_SCOPE", "direct_service_scope_verified"),
+}
+MAX_PUBLICATION_CELLS = 20
 
 
 def load_json(path: Path) -> dict:
@@ -47,15 +52,37 @@ def git_blob_sha(path: Path) -> str:
 
 def build() -> dict:
     readiness = load_json(READINESS_PATH)
+    currentness = load_json(CURRENTNESS_PATH)
+    promotions = {
+        (row.get("service_id"), row.get("source_family")): row
+        for row in currentness.get("promotions", [])
+    }
     ready = [
         row for row in readiness.get("cells", [])
         if row.get("readiness") == "READY_FOR_PUBLICATION_REVIEW"
         and not row.get("blocking_reasons")
     ]
-    publishable = [
-        row for row in ready
-        if row.get("source_family") in RUNTIME_SUPPORTED_SOURCE_FAMILIES
-    ][:MAX_PUBLICATION_CELLS]
+    publishable = []
+    for row in ready:
+        if row.get("source_family") not in RUNTIME_SUPPORTED_SOURCE_FAMILIES:
+            continue
+        promotion = promotions.get((row.get("service_id"), row.get("source_family")))
+        if not promotion or promotion.get("promotion_applied") is not True:
+            continue
+        source_identity = promotion.get("source_identity") or {}
+        canonical_source_id = source_identity.get("canonical_source_id")
+        contract = RUNTIME_SUPPORTED_SOURCE_IDENTITIES.get(canonical_source_id)
+        if contract is None:
+            continue
+        expected_state, verified_flag = contract
+        proof = promotion.get("applicability_proof") or {}
+        if proof.get("state") != expected_state or proof.get(verified_flag) is not True:
+            continue
+        if proof.get("discrepancies") != 0:
+            continue
+        publishable.append(row)
+        if len(publishable) >= MAX_PUBLICATION_CELLS:
+            break
 
     publication = [
         {
@@ -87,7 +114,7 @@ def build() -> dict:
         )
 
     return {
-        "format_version": 3,
+        "format_version": 4,
         "generated_by": "scripts/build_bounded_publication_allowlist.py",
         "role": "Publication Runtime Binding / Progressive Release Worker",
         "source_readiness": {
@@ -95,10 +122,15 @@ def build() -> dict:
             "git_blob_sha": git_blob_sha(READINESS_PATH),
             "expected_ready_candidate_count": len(ready),
         },
+        "source_currentness": {
+            "path": "data/verification/bounded-currentness-closure-worker-b.json",
+            "git_blob_sha": git_blob_sha(CURRENTNESS_PATH),
+        },
         "runtime_binding": {
             "required_for_nonempty_publication": True,
             "established": True,
             "policy_module": "lib/publication-policy.ts",
+            "supported_source_identities": sorted(RUNTIME_SUPPORTED_SOURCE_IDENTITIES),
             "required_surfaces": [
                 "UI",
                 "SEARCH",
