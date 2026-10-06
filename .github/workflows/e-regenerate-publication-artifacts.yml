@@ -1,4 +1,5 @@
 name: E regenerate integrated publication artifacts
+# retrigger-after-canonical-writeback
 
 on:
   push:
