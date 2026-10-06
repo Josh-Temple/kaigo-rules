@@ -16,6 +16,7 @@ import feeGuidanceRelationAuditData from "../data/fee-guidance-relation-independ
 import noticeExplicitReferenceAuditData from "../data/notice-ordinance-explicit-reference-derived-audit.json";
 import remunerationSourceLinkIndependentAuditData from "../data/remuneration-source-link-independent-audit.json";
 import careactServiceIdentityAuditData from "../data/careact-service-identity-derived-audit.json";
+import residualServiceDefinitionAuditData from "../data/residual-relation-service-definition-independent-audit.json";
 import dayrehabArticle119AuditData from "../data/dayrehab-article119-relation-independent-audit.json";
 import registryData from "../data/verification-registry.json";
 
@@ -189,6 +190,17 @@ for (const check of careactServiceIdentityAudit.checks || []) {
     check.relation,
     check.to_id,
     "careact-service-identity"
+  );
+}
+
+const residualServiceDefinitionAudit = residualServiceDefinitionAuditData as any;
+for (const check of residualServiceDefinitionAudit.checks || []) {
+  if (check.result !== "PASS" || (check.differences || []).length) continue;
+  addVerified(
+    check.from_id,
+    check.relation,
+    check.to_id,
+    "residual-service-definition"
   );
 }
 
