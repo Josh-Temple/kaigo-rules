@@ -18,6 +18,7 @@
     "data/verification/standards-interpretation-gates.json",
     "data/verification/bounded-currentness-closure-worker-b.json",
     "data/verification/governing-standards-residual-currentness-worker-a.json",
+    "data/verification/final-standards-residual-relation-worker-c.json",
     "data/verification/high-value-currentness-closure-worker-b.json",
     "data/verification/delegated-remuneration-currentness-worker-b.json",
     "data/shared/remuneration-delegated/currentness-source-contract.json",
@@ -406,11 +407,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#dayservice::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -4055,11 +4058,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#dayrehab::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -4659,11 +4664,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#shortstay-life::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -5256,11 +5263,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#community-dayservice::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -6251,9 +6260,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/final-standards-residual-relation-worker-c.json#night-homevisit::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8221,11 +8234,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#shortstay-medical::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -8814,11 +8829,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#specific-facility::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -10584,11 +10601,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#dementia-dayservice::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -11173,11 +11192,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#small-scale-multifunctional::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -11573,9 +11594,13 @@
             ]
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
-            "raw_status": [],
-            "evidence": []
+            "state": "PASS",
+            "raw_status": [
+              "PASS_BOUNDED_VERIFIED"
+            ],
+            "evidence": [
+              "data/verification/final-standards-residual-relation-worker-c.json#dementia-group-home::governing_standards_ordinance"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -11758,11 +11783,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#dementia-group-home::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -12347,11 +12374,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#community-specific-facility::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -12936,11 +12965,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#community-elderly-facility::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -13525,11 +13556,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#nursing-small-scale-multifunctional::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -14114,11 +14147,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#elderly-welfare-facility::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -14703,11 +14738,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#elderly-health-facility::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -15292,11 +15329,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#care-medical-institution::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18243,11 +18282,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-dayrehab::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -18832,11 +18873,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-shortstay-life::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -19421,11 +19464,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-shortstay-medical::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -20010,11 +20055,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-specific-facility::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -21770,11 +21817,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-dementia-dayservice::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -22357,11 +22406,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-small-scale-multifunctional::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -22944,11 +22995,13 @@
             "evidence": []
           },
           "currentness": {
-            "state": "NOT_ESTABLISHED",
+            "state": "PASS",
             "raw_status": [
-              "NOT_ESTABLISHED"
+              "PASS_BOUNDED_VERIFIED"
             ],
-            "evidence": []
+            "evidence": [
+              "data/verification/delegated-remuneration-currentness-worker-b.json#preventive-dementia-group-home::delegated_remuneration_criteria"
+            ]
           },
           "relation_verification": {
             "state": "NOT_ESTABLISHED",
@@ -23278,8 +23331,7 @@
           "PASS": 39
         },
         "currentness": {
-          "NOT_ESTABLISHED": 2,
-          "PASS": 37
+          "PASS": 39
         },
         "relation_verification": {
           "NOT_ESTABLISHED": 39
@@ -23380,8 +23432,8 @@
           "PASS": 37
         },
         "currentness": {
-          "NOT_ESTABLISHED": 24,
-          "PASS": 15
+          "NOT_ESTABLISHED": 2,
+          "PASS": 37
         },
         "relation_verification": {
           "NOT_APPLICABLE": 2,
@@ -23553,11 +23605,6 @@
       },
       {
         "service_id": "dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dayservice",
         "source_family": "fee_calculation_guidance",
         "state": "PARTIAL"
       },
@@ -23738,11 +23785,6 @@
       },
       {
         "service_id": "dayrehab",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dayrehab",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23778,11 +23820,6 @@
       },
       {
         "service_id": "shortstay-life",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-life",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23813,11 +23850,6 @@
       },
       {
         "service_id": "community-dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-dayservice",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -23878,11 +23910,6 @@
       },
       {
         "service_id": "night-homevisit",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "night-homevisit",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
@@ -23998,11 +24025,6 @@
       },
       {
         "service_id": "shortstay-medical",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "shortstay-medical",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -24029,11 +24051,6 @@
       {
         "service_id": "specific-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "specific-facility",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24118,11 +24135,6 @@
       },
       {
         "service_id": "dementia-dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-dayservice",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -24158,11 +24170,6 @@
       },
       {
         "service_id": "small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "small-scale-multifunctional",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -24188,22 +24195,12 @@
       },
       {
         "service_id": "dementia-group-home",
-        "source_family": "governing_standards_ordinance",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-group-home",
         "source_family": "standards_interpretation_notice",
         "state": "NOT_ESTABLISHED"
       },
       {
         "service_id": "dementia-group-home",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "dementia-group-home",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24243,11 +24240,6 @@
       },
       {
         "service_id": "community-specific-facility",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-specific-facility",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -24283,11 +24275,6 @@
       },
       {
         "service_id": "community-elderly-facility",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "community-elderly-facility",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -24319,11 +24306,6 @@
       {
         "service_id": "nursing-small-scale-multifunctional",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "nursing-small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24359,11 +24341,6 @@
       {
         "service_id": "elderly-welfare-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "elderly-welfare-facility",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24399,11 +24376,6 @@
       {
         "service_id": "elderly-health-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "elderly-health-facility",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24439,11 +24411,6 @@
       {
         "service_id": "care-medical-institution",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "care-medical-institution",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24599,11 +24566,6 @@
       {
         "service_id": "preventive-dayrehab",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dayrehab",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24634,11 +24596,6 @@
       {
         "service_id": "preventive-shortstay-life",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-life",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24669,11 +24626,6 @@
       {
         "service_id": "preventive-shortstay-medical",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-shortstay-medical",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24704,11 +24656,6 @@
       {
         "service_id": "preventive-specific-facility",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-specific-facility",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
@@ -24793,11 +24740,6 @@
       },
       {
         "service_id": "preventive-dementia-dayservice",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dementia-dayservice",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -24833,11 +24775,6 @@
       },
       {
         "service_id": "preventive-small-scale-multifunctional",
-        "source_family": "delegated_remuneration_criteria",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-small-scale-multifunctional",
         "source_family": "fee_calculation_guidance",
         "state": "NOT_ESTABLISHED"
       },
@@ -24869,11 +24806,6 @@
       {
         "service_id": "preventive-dementia-group-home",
         "source_family": "remuneration_notification",
-        "state": "NOT_ESTABLISHED"
-      },
-      {
-        "service_id": "preventive-dementia-group-home",
-        "source_family": "delegated_remuneration_criteria",
         "state": "NOT_ESTABLISHED"
       },
       {
