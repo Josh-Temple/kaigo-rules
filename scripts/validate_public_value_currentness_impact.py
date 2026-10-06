@@ -12,6 +12,12 @@ CANONICAL = ROOT / "data/verification/bounded-currentness-closure-worker-b.json"
 HIGH_VALUE_EXPANSION = (
     ROOT / "data/verification/high-value-currentness-expansion-worker-c.json"
 )
+GOVERNING_RESIDUAL = (
+    ROOT / "data/verification/governing-standards-residual-currentness-worker-a.json"
+)
+DELEGATED_CURRENTNESS = (
+    ROOT / "data/verification/delegated-remuneration-currentness-worker-b.json"
+)
 TARGETS = {"dayservice", "dayrehab"}
 FAMILY = "governing_standards_ordinance"
 EXPECTED_UNITS = {
@@ -44,10 +50,36 @@ def main() -> int:
     after = standards["after"]
     coverage = matrix["summary"]["source_family_coverage"][FAMILY]["currentness"]
     preintegration = coverage == before
-    integrated = coverage == after
+
+    subsequent_governing_promotions = []
+    if GOVERNING_RESIDUAL.exists():
+        residual = load(GOVERNING_RESIDUAL)
+        if residual.get("artifact_kind") != "GOVERNING_STANDARDS_RESIDUAL_CURRENTNESS_CLOSURE":
+            failures.append("unexpected Worker A residual governing-currentness artifact kind")
+        subsequent_governing_promotions = [
+            row
+            for row in residual.get("decisions", [])
+            if row.get("promotion_applied") is True
+        ]
+
+    expected_governing_after = dict(after)
+    if subsequent_governing_promotions:
+        expected_governing_after["PASS"] = expected_governing_after.get("PASS", 0) + len(
+            subsequent_governing_promotions
+        )
+        expected_governing_after["NOT_ESTABLISHED"] = (
+            expected_governing_after.get("NOT_ESTABLISHED", 0)
+            - len(subsequent_governing_promotions)
+        )
+        expected_governing_after = {
+            key: value for key, value in expected_governing_after.items() if value
+        }
+
+    integrated = coverage in (after, expected_governing_after)
     if not preintegration and not integrated:
         failures.append(
-            f"governing-standards currentness matches neither canonical before nor after: {coverage}"
+            "governing-standards currentness matches neither canonical before nor "
+            f"bounded/subsequent integrated state: {coverage}"
         )
 
     new_ids = set(standards["newly_promoted_service_ids"])
@@ -97,11 +129,21 @@ def main() -> int:
         expansion = load(HIGH_VALUE_EXPANSION)
         if expansion.get("artifact_kind") != "CANONICAL_HIGH_VALUE_CURRENTNESS_EXPANSION_DECISION":
             failures.append("unexpected Worker C currentness expansion artifact kind")
-        downstream_promotions = [
+        downstream_promotions.extend(
             row
             for row in expansion.get("promotions", [])
             if row.get("promotion_applied") is True
-        ]
+        )
+    downstream_promotions.extend(subsequent_governing_promotions)
+    if DELEGATED_CURRENTNESS.exists():
+        delegated = load(DELEGATED_CURRENTNESS)
+        if delegated.get("artifact_kind") != "DELEGATED_REMUNERATION_BOUNDED_CURRENTNESS_DECISIONS":
+            failures.append("unexpected Worker B delegated-currentness artifact kind")
+        downstream_promotions.extend(
+            row
+            for row in delegated.get("promotions", [])
+            if row.get("promotion_applied") is True
+        )
 
     downstream_pass = sum(
         1
