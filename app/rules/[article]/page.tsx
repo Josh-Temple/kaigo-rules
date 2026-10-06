@@ -13,6 +13,7 @@ import careActNodesData from "../../../data/care-insurance-act-nodes.json";
 import { incomingEdges } from "../../../lib/knowledge-relations";
 import { listServices } from "../../../lib/service-catalog";
 import {
+  PROGRESSIVE_SOURCE_FAMILY,
   filterProgressivePublishedRules,
   getProgressivePublicationTrust,
   getProgressiveSourceRecords,
@@ -27,6 +28,7 @@ import {
   resolveServiceScope,
   serviceApplicability,
 } from "../../../lib/service-scope";
+import { verifiedRelatedPrimarySources } from "../../../lib/verified-related-sources";
 
 type RuleNode = {
   id: string;
@@ -259,8 +261,20 @@ export default async function RuleArticlePage({
       : [];
 
   const relationEdges = dayserviceContext && dayserviceApplicable
-    ? incomingEdges(articleNode.id)
+    ? incomingEdges(articleNode.id).filter(
+        (edge) =>
+          edge.independent_verification.status === "PASS",
+      )
     : [];
+
+  const verifiedRelatedSources =
+    progressiveSelection && selectedServiceId
+      ? verifiedRelatedPrimarySources(
+          selectedServiceId,
+          PROGRESSIVE_SOURCE_FAMILY,
+          articleNode,
+        )
+      : [];
 
   const relatedNotices = relationEdges
     .filter((edge) => edge.source_id.startsWith("notice."))
@@ -476,6 +490,39 @@ export default async function RuleArticlePage({
         </section>
       ) : null}
 
+      {verifiedRelatedSources.length ? (
+        <section className="section">
+          <h2>関連する一次資料</h2>
+          <p className="meta">
+            独立検証済みの参照関係だけを表示しています。
+          </p>
+          <div className="knowledge-link-list">
+            {verifiedRelatedSources.map((relation) => (
+              <Link
+                className="knowledge-link-row"
+                href={relation.href}
+                key={
+                  relation.relation_direction +
+                  "|" +
+                  relation.related_record_id
+                }
+              >
+                <span className="knowledge-kind">
+                  一次資料
+                </span>
+                <span>
+                  <strong>{relation.title}</strong>
+                  <small>{relation.label}</small>
+                </span>
+                <span className="knowledge-status verified">
+                  参照関係を確認済み
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       {(relatedLaw.length ||
         relatedNotices.length ||
         relatedFees.length ||
@@ -483,7 +530,7 @@ export default async function RuleArticlePage({
         <section className="section">
           <h2>この条文につながる情報</h2>
           <p className="meta">
-            以下は通所介護のrelationデータです。サービスを通所リハで絞り込んだ場合は表示しません。
+            独立検証済みの参照関係だけを表示しています。サービスを通所リハで絞り込んだ場合は表示しません。
           </p>
           <div className="knowledge-link-list">
             {relatedLaw.map(({ edge, node }: any) => (
@@ -495,7 +542,7 @@ export default async function RuleArticlePage({
                 <span className="knowledge-kind">上位法</span>
                 <span><strong>{node.article_title} {node.caption || ""}</strong><small>介護保険法からこの基準への委任関係</small></span>
                 <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>
-                  {edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}
+                  参照関係を確認済み
                 </span>
               </Link>
             ))}
@@ -508,7 +555,7 @@ export default async function RuleArticlePage({
                 <span className="knowledge-kind">解釈通知</span>
                 <span><strong>{node.title}</strong><small>{node.number_path?.join(" / ")}</small></span>
                 <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>
-                  {edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}
+                  参照関係を確認済み
                 </span>
               </Link>
             ))}
@@ -521,7 +568,7 @@ export default async function RuleArticlePage({
                 <span className="knowledge-kind">報酬</span>
                 <span><strong>{node.title}</strong><small>{node.number_path?.join(" / ")}</small></span>
                 <span className={edge.independent_verification.status === "PASS" ? "knowledge-status verified" : "knowledge-status"}>
-                  {edge.independent_verification.status === "PASS" ? "独立監査済み" : "関係付け確認待ち"}
+                  参照関係を確認済み
                 </span>
               </Link>
             ))}
