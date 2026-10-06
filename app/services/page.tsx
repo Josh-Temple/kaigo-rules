@@ -1,53 +1,109 @@
 import Link from "next/link";
-import { DEFAULT_SERVICE_ID, listServices, publishedLayerLabels } from "../../lib/service-catalog";
+import { DEFAULT_SERVICE_ID, listServices } from "../../lib/service-catalog";
+import { publicServiceNavigationGroups } from "../../lib/service-navigation-groups";
+import { listProgressivePublicationServices } from "../../lib/publication-policy";
 
-const publicServices = listServices().filter(
-  (service) =>
-    service.service_id === DEFAULT_SERVICE_ID ||
-    service.routing.future_service_base_enabled,
+const dedicatedServiceIds = new Set(
+  listServices()
+    .filter(
+      (service) =>
+        service.service_id === DEFAULT_SERVICE_ID ||
+        service.routing.future_service_base_enabled,
+    )
+    .map((service) => service.service_id),
 );
 
-const statusLabel = (status: string) => {
-  if (status === "ACTIVE_MVP") return "公開中";
-  if (status === "ACTIVE_PREVIEW") return "一部公開";
-  return "公開情報あり";
+const progressivePublishedIds = new Set(
+  listProgressivePublicationServices().map((service) => service.service_id),
+);
+
+const serviceAccess = (serviceId: string, label: string) => {
+  if (dedicatedServiceIds.has(serviceId)) {
+    return {
+      href: "/services/" + serviceId,
+      label: "サービス別ページ",
+    };
+  }
+  if (progressivePublishedIds.has(serviceId)) {
+    return {
+      href: "/databases/search?service=" + encodeURIComponent(serviceId),
+      label: "基準省令を絞り込み",
+    };
+  }
+  return {
+    href: "/databases/search?q=" + encodeURIComponent(label),
+    label: "DB全体から名称検索",
+  };
 };
 
-const serviceLandingHref = (serviceId: string) => "/services/" + serviceId;
-
 export default function ServicesPage() {
+  const groups = publicServiceNavigationGroups();
+
   return (
     <article className="answer-page foundation-page">
       <p className="eyebrow">サービス別</p>
-      <h1>サービス別に制度を見る</h1>
+      <h1>サービスから制度情報を探す</h1>
       <p className="lead">
-        特定サービスの制度情報だけを見たいときの入口です。
-        サービスを決めずに調べたい場合は、制度DBの横断検索から始められます。
+        行政内部のID順ではなく、利用場面が近いサービスをまとめています。
+        対応する介護予防サービスは通常サービスと同じ行からたどれます。
+        介護予防支援は独立したサービスとして表示します。
       </p>
+
+      <div className="notice">
+        <strong>このまとまりは、探しやすくするための案内上の分類です。</strong><br />
+        法令上の新しいサービス分類を示すものではありません。
+        サービス別ページや絞り込みがまだない場合も、名称を使って公開中のDB全体を検索できます。
+      </div>
 
       <p><Link href="/databases/search">サービスを選ばずDB全体から検索する →</Link></p>
 
-      <div className="foundation-list">
-        {publicServices.map((service, index) => {
-          const detail = publishedLayerLabels(service.service_id).join("・") + "を公開中";
-          return (
-            <Link className="foundation-row" href={serviceLandingHref(service.service_id)} key={service.service_id}>
-              <span className="foundation-number">{String(index + 1).padStart(2, "0")}</span>
-              <span className="foundation-main">
-                <strong>{service.label}</strong>
-                <small>{detail}</small>
-              </span>
-              <span className="foundation-state"><small>{statusLabel(service.status)}</small></span>
-            </Link>
-          );
-        })}
-      </div>
+      {groups.map((group) => (
+        <section className="section" key={group.id}>
+          <h2>{group.label}</h2>
+          <p className="meta">{group.description}</p>
+          <div className="foundation-list">
+            {group.units.map((unit, unitIndex) => (
+              <div
+                className="foundation-row foundation-row-static"
+                key={unit.service_ids.join("|")}
+              >
+                <span className="foundation-number">
+                  {String(unitIndex + 1).padStart(2, "0")}
+                </span>
+                <span className="foundation-main">
+                  {unit.services.map((service, serviceIndex) => {
+                    const access = serviceAccess(service.service_id, service.label);
+                    return (
+                      <span key={service.service_id}>
+                        {serviceIndex > 0 ? <small>介護予防：</small> : null}
+                        <strong>
+                          <Link href={access.href}>{service.label}</Link>
+                        </strong>
+                        <small>{access.label}</small>
+                      </span>
+                    );
+                  })}
+                </span>
+                <span className="foundation-state">
+                  <small>{unit.services.length > 1 ? "通常・予防を同じ入口で表示" : "個別に確認"}</small>
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <section className="section">
-        <h2>この一覧にないサービス</h2>
+        <h2>個別ページがまだない場合</h2>
         <p className="meta">
-          サービス別ページをまだ公開していない場合でも、法令・基準省令・国Q&AなどはDB全体から確認できるものがあります。
-          個別サービスとして公開できる範囲は順次増やします。
+          「DB全体から名称検索」は、サービス固有の公開範囲が完成したことを意味しません。
+          検索結果が少ない場合も、制度資料そのものが存在しないとは限りません。
+          必要に応じてDB一覧や公式の一次資料も確認してください。
+        </p>
+        <p>
+          <Link href="/databases">制度DB一覧を見る →</Link>
+          {" / "}
+          <Link href="/sources">公式の根拠資料を見る →</Link>
         </p>
       </section>
     </article>

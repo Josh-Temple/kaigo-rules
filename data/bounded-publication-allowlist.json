@@ -1,16 +1,24 @@
 {
-  "format_version": 3,
+  "format_version": 4,
   "generated_by": "scripts/build_bounded_publication_allowlist.py",
   "role": "Publication Runtime Binding / Progressive Release Worker",
   "source_readiness": {
     "path": "data/publication-readiness.generated.json",
-    "git_blob_sha": "08a6af77d3a73be6d7aa1614f724da6190929cd3",
-    "expected_ready_candidate_count": 20
+    "git_blob_sha": "ceb667318bc4c2b0fc9b3903c23685c04896011e",
+    "expected_ready_candidate_count": 21
+  },
+  "source_currentness": {
+    "path": "data/verification/bounded-currentness-closure-worker-b.json",
+    "git_blob_sha": "035ad9da9938881e0a926c167c81fd0fa51c0b6c"
   },
   "runtime_binding": {
     "required_for_nonempty_publication": true,
     "established": true,
     "policy_module": "lib/publication-policy.ts",
+    "supported_source_identities": [
+      "ordinance37",
+      "preventive-services-standards"
+    ],
     "required_surfaces": [
       "UI",
       "SEARCH",
@@ -21,7 +29,7 @@
   "policy": {
     "explicit_publication_allowlist_required": true,
     "explicit_route_allowlist_required": true,
-    "max_publication_cells": 10,
+    "max_publication_cells": 20,
     "publication_does_not_enable_route": true,
     "blocked_cells_cannot_be_published": true,
     "allowlist_must_be_subset_of_ready_candidates": true,
@@ -49,8 +57,18 @@
     "review_dependent_search_term"
   ],
   "summary": {
-    "ready_candidates_at_selection": 20,
+    "ready_candidates_at_selection": 21,
     "ready_candidate_cells": [
+      {
+        "service_id": "dayservice",
+        "source_family": "unit_price_regional_classification",
+        "ready_publication_units": [
+          "SOURCE_TEXT_ITEM_BODY",
+          "SOURCE_METADATA_LOCATOR",
+          "CURRENTNESS_STATEMENT",
+          "SERVICE_APPLICABILITY_STATEMENT"
+        ]
+      },
       {
         "service_id": "homevisit",
         "source_family": "governing_standards_ordinance",
@@ -252,17 +270,17 @@
         ]
       }
     ],
-    "published_cells_added": 10,
-    "routes_added": 10,
+    "published_cells_added": 20,
+    "routes_added": 20,
     "existing_public_surfaces_changed": false,
     "decision": "PUBLISH_BOUNDED_READY_UNITS",
     "reason": "READY publication units supported by the shared runtime policy are bound across UI, search, API, and machine retrieval.",
     "blocker_counts_at_selection": {
-      "BLOCKED_CURRENTNESS": 323,
-      "BLOCKED_HUMAN_REVIEW": 323,
+      "BLOCKED_CURRENTNESS": 322,
+      "BLOCKED_HUMAN_REVIEW": 322,
       "BLOCKED_INGESTION": 74,
       "BLOCKED_ITEM_BODY": 138,
-      "BLOCKED_RELATION": 323
+      "BLOCKED_RELATION": 322
     }
   },
   "publication_cell_allowlist": [
@@ -305,6 +323,46 @@
     {
       "service_id": "specific-welfare-equipment-sale",
       "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
+      "source_family": "governing_standards_ordinance"
     }
   ],
   "route_allowlist": [
@@ -346,6 +404,46 @@
     },
     {
       "service_id": "specific-welfare-equipment-sale",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-homebath",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-homenursing",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-homerehab",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-homecaremanagement",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-dayrehab",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-shortstay-medical",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-specific-facility",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "preventive-welfare-equipment-rental",
+      "source_family": "governing_standards_ordinance"
+    },
+    {
+      "service_id": "specific-preventive-welfare-equipment-sale",
       "source_family": "governing_standards_ordinance"
     }
   ],
@@ -423,6 +521,86 @@
       "service_applicability_statement"
     ],
     "specific-welfare-equipment-sale|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-homebath|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-homenursing|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-homerehab|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-homecaremanagement|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-dayrehab|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-shortstay-life|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-shortstay-medical|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-specific-facility|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "preventive-welfare-equipment-rental|governing_standards_ordinance": [
+      "source_text",
+      "item_body",
+      "source_metadata",
+      "source_locator",
+      "currentness_statement",
+      "service_applicability_statement"
+    ],
+    "specific-preventive-welfare-equipment-sale|governing_standards_ordinance": [
       "source_text",
       "item_body",
       "source_metadata",

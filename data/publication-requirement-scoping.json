@@ -170,24 +170,24 @@
   "summary": {
     "service_source_family_cells": 351,
     "publication_units_total": 2457,
-    "ready_for_publication_review_candidates": 80,
+    "ready_for_publication_review_candidates": 84,
     "ready_candidates_by_unit_type": {
-      "CURRENTNESS_STATEMENT": 20,
-      "SERVICE_APPLICABILITY_STATEMENT": 20,
-      "SOURCE_METADATA_LOCATOR": 20,
-      "SOURCE_TEXT_ITEM_BODY": 20
+      "CURRENTNESS_STATEMENT": 21,
+      "SERVICE_APPLICABILITY_STATEMENT": 21,
+      "SOURCE_METADATA_LOCATOR": 21,
+      "SOURCE_TEXT_ITEM_BODY": 21
     },
     "primary_readiness": {
-      "BLOCKED_CURRENTNESS": 1487,
-      "BLOCKED_HUMAN_REVIEW": 20,
+      "BLOCKED_CURRENTNESS": 1480,
+      "BLOCKED_HUMAN_REVIEW": 21,
       "BLOCKED_INGESTION": 518,
       "BLOCKED_ITEM_BODY": 256,
-      "BLOCKED_RELATION": 40,
+      "BLOCKED_RELATION": 42,
       "NOT_APPLICABLE": 56,
-      "READY_FOR_PUBLICATION_REVIEW": 80
+      "READY_FOR_PUBLICATION_REVIEW": 84
     },
     "blocking_reason_counts": {
-      "BLOCKED_CURRENTNESS": 2261,
+      "BLOCKED_CURRENTNESS": 2254,
       "BLOCKED_HUMAN_REVIEW": 686,
       "BLOCKED_INGESTION": 518,
       "BLOCKED_ITEM_BODY": 552,
@@ -229,8 +229,11 @@
         "BLOCKED_ITEM_BODY": 104
       },
       "unit_price_regional_classification": {
-        "BLOCKED_CURRENTNESS": 259,
-        "NOT_APPLICABLE": 14
+        "BLOCKED_CURRENTNESS": 252,
+        "BLOCKED_HUMAN_REVIEW": 1,
+        "BLOCKED_RELATION": 2,
+        "NOT_APPLICABLE": 14,
+        "READY_FOR_PUBLICATION_REVIEW": 4
       }
     }
   },
@@ -891,7 +894,7 @@
         "service_scope": "SCOPE_DEFINED",
         "ingestion": "INGESTED",
         "item_body_verification": "PASS",
-        "currentness": "PARTIAL",
+        "currentness": "PASS",
         "relation_verification": "NOT_ESTABLISHED",
         "human_review": "NOT_REVIEWED",
         "publication": "AVAILABLE",
@@ -900,10 +903,8 @@
       "publication_units": [
         {
           "unit_type": "SOURCE_TEXT_ITEM_BODY",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_TEXT_ITEM_BODY",
@@ -912,10 +913,8 @@
         },
         {
           "unit_type": "SOURCE_METADATA_LOCATOR",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SOURCE_METADATA_LOCATOR",
@@ -924,10 +923,8 @@
         },
         {
           "unit_type": "CURRENTNESS_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "CURRENTNESS_STATEMENT",
@@ -936,10 +933,8 @@
         },
         {
           "unit_type": "SERVICE_APPLICABILITY_STATEMENT",
-          "readiness": "BLOCKED_CURRENTNESS",
-          "blocking_reasons": [
-            "BLOCKED_CURRENTNESS"
-          ],
+          "readiness": "READY_FOR_PUBLICATION_REVIEW",
+          "blocking_reasons": [],
           "relation_requirement": "NOT_REQUIRED",
           "human_review_requirement": "NOT_REQUIRED",
           "field_allowlist_ref": "SERVICE_APPLICABILITY_STATEMENT",
@@ -948,9 +943,8 @@
         },
         {
           "unit_type": "CROSS_LAYER_RELATION_LINK",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION"
           ],
           "relation_requirement": "REQUIRED",
@@ -961,9 +955,8 @@
         },
         {
           "unit_type": "INTERPRETIVE_RELATION_EXPLANATION",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_RELATION",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_RELATION",
             "BLOCKED_HUMAN_REVIEW"
           ],
@@ -975,9 +968,8 @@
         },
         {
           "unit_type": "REVIEW_DEPENDENT_EXPLANATORY_TEXT",
-          "readiness": "BLOCKED_CURRENTNESS",
+          "readiness": "BLOCKED_HUMAN_REVIEW",
           "blocking_reasons": [
-            "BLOCKED_CURRENTNESS",
             "BLOCKED_HUMAN_REVIEW"
           ],
           "relation_requirement": "NOT_REQUIRED",

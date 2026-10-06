@@ -533,6 +533,17 @@ def build_cell(
             f"data/verification/bounded-currentness-closure-worker-b.json#{service_id}::{family['id']}"
         )
 
+    high_value_currentness = shared_context["high_value_currentness"].get((service_id, family["id"]))
+    if high_value_currentness:
+        if high_value_currentness.get("projected_currentness_state") != "PASS":
+            raise ValueError(f"high-value currentness promotion is not PASS: {service_id}::{family['id']}")
+        if high_value_currentness.get("promotion_applied") is not True:
+            raise ValueError(f"high-value currentness promotion is not applied: {service_id}::{family['id']}")
+        currentness_raw = ["PASS_BOUNDED_VERIFIED"]
+        currentness_evidence.append(
+            f"data/verification/high-value-currentness-closure-worker-b.json#{service_id}::{family['id']}"
+        )
+
     item_state = normalize_verification(content_raw[0] if len(content_raw) == 1 else (" | ".join(content_raw) if content_raw else None))
     if (
         family["id"] == "fee_calculation_guidance"
@@ -726,6 +737,12 @@ def build() -> dict:
         if bounded_currentness_path.exists()
         else {"promotions": []}
     )
+    high_value_currentness_path = ROOT / "data/verification/high-value-currentness-closure-worker-b.json"
+    high_value_currentness_data = (
+        load("data/verification/high-value-currentness-closure-worker-b.json")
+        if high_value_currentness_path.exists()
+        else {"promotions": []}
+    )
     fee_guidance_manifest_path = ROOT / "data/shared/fee-guidance/manifest.json"
     fee_guidance_manifest = load("data/shared/fee-guidance/manifest.json") if fee_guidance_manifest_path.exists() else None
     fee_guidance_applicability_data = (
@@ -837,7 +854,16 @@ def build() -> dict:
             for row in bounded_currentness_data.get("promotions", [])
             if row.get("promotion_applied") is True
         },
+        "high_value_currentness": {
+            (row["service_id"], row["source_family"]): row
+            for row in high_value_currentness_data.get("promotions", [])
+            if row.get("promotion_applied") is True
+        },
     }
+
+    overlap = set(shared_context["bounded_currentness"]) & set(shared_context["high_value_currentness"])
+    if overlap:
+        raise ValueError(f"currentness promotion identity appears in multiple canonical decisions: {sorted(overlap)}")
 
     manifest_ids = [row["service_id"] for row in manifest.get("services", [])]
     catalog_ids = [row["service_id"] for row in catalog.get("services", [])]
@@ -942,6 +968,7 @@ def build() -> dict:
             "data/verification-registry.json",
             "data/verification/standards-interpretation-gates.json",
             "data/verification/bounded-currentness-closure-worker-b.json",
+            "data/verification/high-value-currentness-closure-worker-b.json",
             "data/relation-verification-queue.json",
             "data/shared/standards/manifest.json",
             "data/shared/standards-interpretation/remaining-source-register.json",

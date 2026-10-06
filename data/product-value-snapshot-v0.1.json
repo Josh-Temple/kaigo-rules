@@ -314,8 +314,11 @@
       "/fees/guidance",
       "/fees/unit-price"
     ],
-    "published_service_source_family_cells": 10,
-    "published_publication_units": 40,
+    "published_service_source_family_cells": 20,
+    "published_publication_units": 80,
+    "service_navigation_groups": 7,
+    "service_navigation_units": 26,
+    "service_navigation_service_entries": 39,
     "guide_task_journeys": 5,
     "guide_task_routes": [
       "/start",
