@@ -1,12 +1,22 @@
 import allowlistData from "../data/bounded-publication-allowlist.json" with { type: "json" };
 import readinessData from "../data/publication-readiness.generated.json" with { type: "json" };
-import currentnessData from "../data/verification/bounded-currentness-closure-worker-b.json" with { type: "json" };
-import ordinanceMetaData from "../data/ordinance37-meta.json" with { type: "json" };
-import ordinanceNodesData from "../data/ordinance37-nodes.json" with { type: "json" };
-import preventiveMetaData from "../data/shared/standards/preventive-services-standards/meta.json" with { type: "json" };
-import preventiveNodesData from "../data/shared/standards/preventive-services-standards/nodes.json" with { type: "json" };
+import governingCurrentnessData from "../data/verification/bounded-currentness-closure-worker-b.json" with { type: "json" };
+import highValueCurrentnessData from "../data/verification/high-value-currentness-closure-worker-b.json" with { type: "json" };
+import {
+  GOVERNING_STANDARDS_SOURCE_FAMILY,
+  RUNTIME_SOURCE_ADAPTERS,
+  UNIT_PRICE_SOURCE_FAMILY,
+  isRuntimeRecordPublished,
+  projectRuntimeRecord,
+  runtimeAdapterForPromotion,
+  runtimeRecordsForPromotion,
+  type RuntimePromotion,
+  type RuntimeSourceRecord,
+} from "./publication-runtime-adapters";
 
-export const PROGRESSIVE_SOURCE_FAMILY = "governing_standards_ordinance";
+export const PROGRESSIVE_SOURCE_FAMILY =
+  GOVERNING_STANDARDS_SOURCE_FAMILY;
+export { UNIT_PRICE_SOURCE_FAMILY };
 
 export const REQUIRED_PUBLICATION_UNITS = [
   "SOURCE_TEXT_ITEM_BODY",
@@ -24,19 +34,6 @@ export const SAFE_PUBLICATION_FIELDS = [
   "service_applicability_statement",
 ] as const;
 
-type RuleNode = {
-  id: string;
-  node_type: string;
-  article_num: string;
-  article_title?: string;
-  caption?: string;
-  label?: string;
-  path?: string[];
-  official_text?: string;
-  source_url?: string;
-  source_locator?: string;
-};
-
 type PublicationCell = {
   service_id?: string;
   source_family?: string;
@@ -51,84 +48,12 @@ type ReadinessRow = {
   ready_publication_units?: string[];
 };
 
-type Promotion = {
-  service_id?: string;
-  source_family?: string;
-  source_identity?: {
-    canonical_source_id?: string;
-    law_id?: string;
-    official_source_url?: string;
-    version_id?: string;
-    effective_date?: string;
-    verified_at?: string;
-  };
-  applicability_proof?: {
-    state?: string;
-    direct_service_chapter_verified?: boolean;
-    direct_service_scope_verified?: boolean;
-    target_articles?: string[];
-    common_source_node_ids?: string[];
-    primary_range?: {
-      from_node_id?: string;
-      through_node_id?: string;
-      include_inserted_articles?: boolean;
-    };
-    variant_ranges?: Array<{
-      from_node_id?: string;
-      through_node_id?: string;
-    }>;
-    discrepancies?: number;
-  };
-  source_version_contains_scope?: boolean;
-  ingestion_state?: string;
-  item_body_state?: string;
-  projected_currentness_state?: string;
-  promotion_applied?: boolean;
-};
-
 const allowlist = allowlistData as any;
 const readiness = readinessData as { cells?: ReadinessRow[] };
-const currentness = currentnessData as { promotions?: Promotion[] };
-const ordinanceMeta = ordinanceMetaData as any;
-const preventiveMeta = preventiveMetaData as any;
-
-type SourceAdapter = {
-  canonicalSourceId: string;
-  nodePrefix: string;
-  meta: any;
-  nodes: RuleNode[];
-  applicabilityState: string;
-  verifiedFlag: "direct_service_chapter_verified" | "direct_service_scope_verified";
-  applicabilityLabel: (serviceLabel: string) => string;
-};
-
-function normalizeRuleNodes(data: any): RuleNode[] {
-  if (Array.isArray(data)) return data as RuleNode[];
-  return Array.isArray(data?.nodes) ? (data.nodes as RuleNode[]) : [];
-}
-
-const SOURCE_ADAPTERS: Record<string, SourceAdapter> = {
-  ordinance37: {
-    canonicalSourceId: "ordinance37",
-    nodePrefix: "ordinance37",
-    meta: ordinanceMeta,
-    nodes: normalizeRuleNodes(ordinanceNodesData),
-    applicabilityState: "PASS_DIRECT_SERVICE_CHAPTER",
-    verifiedFlag: "direct_service_chapter_verified",
-    applicabilityLabel: (serviceLabel) =>
-      serviceLabel + "の直接適用章に含まれる条文として確認済み",
-  },
-  "preventive-services-standards": {
-    canonicalSourceId: "preventive-services-standards",
-    nodePrefix: "standards35",
-    meta: preventiveMeta,
-    nodes: normalizeRuleNodes(preventiveNodesData),
-    applicabilityState: "PASS_DIRECT_SERVICE_SCOPE",
-    verifiedFlag: "direct_service_scope_verified",
-    applicabilityLabel: (serviceLabel) =>
-      serviceLabel + "の直接適用範囲に含まれる条文として確認済み",
-  },
-};
+const governingCurrentness =
+  governingCurrentnessData as { promotions?: RuntimePromotion[] };
+const highValueCurrentness =
+  highValueCurrentnessData as { promotions?: RuntimePromotion[] };
 
 const PREVENTIVE_COUNTERPARTS: Record<string, string> = {
   "preventive-homebath": "homebath",
@@ -140,7 +65,8 @@ const PREVENTIVE_COUNTERPARTS: Record<string, string> = {
   "preventive-shortstay-medical": "shortstay-medical",
   "preventive-specific-facility": "specific-facility",
   "preventive-welfare-equipment-rental": "welfare-equipment-rental",
-  "specific-preventive-welfare-equipment-sale": "specific-welfare-equipment-sale",
+  "specific-preventive-welfare-equipment-sale":
+    "specific-welfare-equipment-sale",
 };
 
 export function publicationServicePresentationGroup(serviceId: string) {
@@ -148,7 +74,10 @@ export function publicationServicePresentationGroup(serviceId: string) {
 }
 
 export function isPreventivePublicationService(serviceId: string) {
-  return Object.prototype.hasOwnProperty.call(PREVENTIVE_COUNTERPARTS, serviceId);
+  return Object.prototype.hasOwnProperty.call(
+    PREVENTIVE_COUNTERPARTS,
+    serviceId,
+  );
 }
 
 export function isSupportedPublicationContract(
@@ -156,49 +85,78 @@ export function isSupportedPublicationContract(
   applicabilityState: string,
   verified: boolean,
 ) {
-  const adapter = SOURCE_ADAPTERS[canonicalSourceId];
-  return Boolean(
-    adapter &&
-      applicabilityState === adapter.applicabilityState &&
-      verified === true,
-  );
+  if (verified !== true) return false;
+  if (canonicalSourceId === "ordinance37") {
+    return applicabilityState === "PASS_DIRECT_SERVICE_CHAPTER";
+  }
+  if (
+    canonicalSourceId === "preventive-services-standards" ||
+    canonicalSourceId === "mhlw-unit-price-current"
+  ) {
+    return applicabilityState === "PASS_DIRECT_SERVICE_SCOPE";
+  }
+  return false;
 }
 
 const cellKey = (serviceId: string, sourceFamily: string) =>
   `${serviceId}|${sourceFamily}`;
 
 const publicationKeys = new Set<string>(
-  (allowlist.publication_cell_allowlist || []).map((cell: PublicationCell) =>
-    cellKey(String(cell.service_id || ""), String(cell.source_family || "")),
+  (allowlist.publication_cell_allowlist || []).map(
+    (cell: PublicationCell) =>
+      cellKey(
+        String(cell.service_id || ""),
+        String(cell.source_family || ""),
+      ),
   ),
 );
 
 const routeKeys = new Set<string>(
   (allowlist.route_allowlist || []).map((cell: PublicationCell) =>
-    cellKey(String(cell.service_id || ""), String(cell.source_family || "")),
+    cellKey(
+      String(cell.service_id || ""),
+      String(cell.source_family || ""),
+    ),
   ),
 );
 
 const readinessByKey = new Map(
   (readiness.cells || []).map((row) => [
-    cellKey(String(row.service_id || ""), String(row.source_family || "")),
+    cellKey(
+      String(row.service_id || ""),
+      String(row.source_family || ""),
+    ),
     row,
   ]),
 );
 
-const promotionByKey = new Map(
-  (currentness.promotions || []).map((row) => [
-    cellKey(String(row.service_id || ""), String(row.source_family || "")),
-    row,
-  ]),
-);
+const promotions = [
+  ...(governingCurrentness.promotions || []),
+  ...(highValueCurrentness.promotions || []),
+];
+
+const promotionByKey = new Map<string, RuntimePromotion>();
+for (const row of promotions) {
+  const key = cellKey(
+    String(row.service_id || ""),
+    String(row.source_family || ""),
+  );
+  if (promotionByKey.has(key)) {
+    throw new Error(
+      "duplicate runtime publication promotion for " + key,
+    );
+  }
+  promotionByKey.set(key, row);
+}
 
 const runtimeBindingEstablished =
   allowlist.runtime_binding?.established === true;
 
 function fieldsAreSafe(serviceId: string, sourceFamily: string) {
   const fields =
-    allowlist.field_allowlist_by_cell?.[cellKey(serviceId, sourceFamily)];
+    allowlist.field_allowlist_by_cell?.[
+      cellKey(serviceId, sourceFamily)
+    ];
   if (!Array.isArray(fields)) return false;
   const selected = new Set(fields.map(String));
   return (
@@ -209,71 +167,38 @@ function fieldsAreSafe(serviceId: string, sourceFamily: string) {
   );
 }
 
-function readinessAllows(serviceId: string, sourceFamily: string) {
-  const row = readinessByKey.get(cellKey(serviceId, sourceFamily));
-  if (!row || row.readiness !== "READY_FOR_PUBLICATION_REVIEW") return false;
+function readinessAllows(
+  serviceId: string,
+  sourceFamily: string,
+) {
+  const row = readinessByKey.get(
+    cellKey(serviceId, sourceFamily),
+  );
+  if (
+    !row ||
+    row.readiness !== "READY_FOR_PUBLICATION_REVIEW"
+  ) {
+    return false;
+  }
   if ((row.blocking_reasons || []).length) return false;
   const units = new Set(row.ready_publication_units || []);
-  return REQUIRED_PUBLICATION_UNITS.every((unit) => units.has(unit));
-}
-
-function adapterForPromotion(row: Promotion | undefined) {
-  const canonicalSourceId = String(row?.source_identity?.canonical_source_id || "");
-  const adapter = SOURCE_ADAPTERS[canonicalSourceId];
-  if (!adapter) return null;
-
-  const sourceLawId = String(row?.source_identity?.law_id || "");
-  const adapterLawId = String(adapter.meta?.law_id || "");
-  if (!sourceLawId || !adapterLawId || sourceLawId !== adapterLawId) return null;
-
-  const sourceVersion = String(row?.source_identity?.version_id || "");
-  const adapterVersion = String(adapter.meta?.current_revision?.law_revision_id || "");
-  if (!sourceVersion || !adapterVersion || sourceVersion !== adapterVersion) return null;
-
-  const proof = row?.applicability_proof;
-  const verified = Boolean(proof?.[adapter.verifiedFlag]);
-  if (
-    !isSupportedPublicationContract(
-      canonicalSourceId,
-      String(proof?.state || ""),
-      verified,
-    )
-  ) return null;
-
-  return adapter;
-}
-
-function promotionHasExplicitScope(row: Promotion, adapter: SourceAdapter) {
-  const proof = row.applicability_proof;
-  if (!proof) return false;
-  if (adapter.canonicalSourceId === "ordinance37") {
-    return Array.isArray(proof.target_articles) && proof.target_articles.length > 0;
-  }
-  return (
-    (Array.isArray(proof.common_source_node_ids) &&
-      proof.common_source_node_ids.length > 0) ||
-    Boolean(proof.primary_range?.from_node_id && proof.primary_range?.through_node_id) ||
-    Boolean(
-      proof.variant_ranges?.some(
-        (range) => range.from_node_id && range.through_node_id,
-      ),
-    )
+  return REQUIRED_PUBLICATION_UNITS.every((unit) =>
+    units.has(unit),
   );
 }
 
-function promotionAllows(serviceId: string, sourceFamily: string) {
-  const row = promotionByKey.get(cellKey(serviceId, sourceFamily));
-  if (!row) return false;
-  const adapter = adapterForPromotion(row);
-  if (!adapter) return false;
-  return (
-    row.promotion_applied === true &&
-    row.projected_currentness_state === "PASS" &&
-    row.ingestion_state === "INGESTED" &&
-    row.item_body_state === "PASS" &&
-    row.source_version_contains_scope === true &&
-    row.applicability_proof?.discrepancies === 0 &&
-    promotionHasExplicitScope(row, adapter)
+function promotionAllows(
+  serviceId: string,
+  sourceFamily: string,
+) {
+  const row = promotionByKey.get(
+    cellKey(serviceId, sourceFamily),
+  );
+  const adapter = runtimeAdapterForPromotion(row);
+  return Boolean(
+    row &&
+      adapter &&
+      adapter.sourceFamily === sourceFamily,
   );
 }
 
@@ -301,113 +226,125 @@ export function isProgressiveRouteCell(
   );
 }
 
-export function listProgressivePublicationServices() {
+export function listProgressivePublicationCells(
+  sourceFamily?: string,
+) {
   return [...publicationKeys]
     .map((key) => readinessByKey.get(key))
     .filter((row): row is ReadinessRow => Boolean(row))
     .filter(
       (row) =>
-        row.source_family === PROGRESSIVE_SOURCE_FAMILY &&
         Boolean(row.service_id) &&
-        isProgressiveRouteCell(String(row.service_id), PROGRESSIVE_SOURCE_FAMILY),
+        Boolean(row.source_family) &&
+        (!sourceFamily ||
+          row.source_family === sourceFamily) &&
+        isProgressiveRouteCell(
+          String(row.service_id),
+          String(row.source_family),
+        ),
     )
     .map((row) => ({
       service_id: String(row.service_id),
       label: String(row.service_label || row.service_id),
-      source_family: PROGRESSIVE_SOURCE_FAMILY,
+      source_family: String(row.source_family),
     }));
 }
 
-export function getProgressiveSourceRecords(serviceId: string): RuleNode[] {
-  if (!isProgressiveRouteCell(serviceId, PROGRESSIVE_SOURCE_FAMILY)) return [];
-  const promotion = promotionByKey.get(cellKey(serviceId, PROGRESSIVE_SOURCE_FAMILY));
-  const adapter = adapterForPromotion(promotion);
-  return adapter ? [...adapter.nodes] : [];
+export function listProgressivePublicationServices(
+  sourceFamily = PROGRESSIVE_SOURCE_FAMILY,
+) {
+  return listProgressivePublicationCells(sourceFamily);
 }
 
-
-function articleNumberFromRecordId(recordId: string, nodePrefix: string) {
-  const escapedPrefix = nodePrefix.replace(/[.*+?^$()|[\]\\]/g, "\\$&");
-  const match = recordId.match(
-    new RegExp("^" + escapedPrefix + "\\.article\\.([0-9]+(?:-[0-9]+)?)(?:\\.|$)"),
-  );
-  return match?.[1] || null;
-}
-
-function articleKey(value: string) {
-  return value.split("-").map((part) => Number.parseInt(part, 10) || 0);
-}
-
-function compareArticleNumber(a: string, b: string) {
-  const ak = articleKey(a);
-  const bk = articleKey(b);
-  for (let i = 0; i < Math.max(ak.length, bk.length); i += 1) {
-    const diff = (ak[i] || 0) - (bk[i] || 0);
-    if (diff) return diff;
-  }
-  return 0;
-}
-
-function articleFromBoundary(nodeId: string | undefined, adapter: SourceAdapter) {
-  return nodeId ? articleNumberFromRecordId(nodeId, adapter.nodePrefix) : null;
-}
-
-function publishedArticleSet(serviceId: string) {
-  if (!isProgressivePublicationCell(serviceId)) return new Set<string>();
-  const promotion = promotionByKey.get(
-    cellKey(serviceId, PROGRESSIVE_SOURCE_FAMILY),
-  );
-  const adapter = adapterForPromotion(promotion);
-  if (!promotion || !adapter) return new Set<string>();
-
-  const proof = promotion.applicability_proof || {};
-  if (adapter.canonicalSourceId === "ordinance37") {
-    return new Set((proof.target_articles || []).map(String));
-  }
-
-  const selected = new Set<string>();
-  for (const nodeId of proof.common_source_node_ids || []) {
-    const article = articleNumberFromRecordId(String(nodeId), adapter.nodePrefix);
-    if (article) selected.add(article);
-  }
-
-  const ranges = [
-    proof.primary_range,
-    ...(proof.variant_ranges || []),
-  ].filter(Boolean) as Array<{ from_node_id?: string; through_node_id?: string }>;
-
-  for (const range of ranges) {
-    const from = articleFromBoundary(range.from_node_id, adapter);
-    const through = articleFromBoundary(range.through_node_id, adapter);
-    if (!from || !through) continue;
-    for (const node of adapter.nodes) {
-      if (node.node_type !== "article") continue;
-      const article = String(node.article_num || "");
-      if (
-        article &&
-        compareArticleNumber(article, from) >= 0 &&
-        compareArticleNumber(article, through) <= 0
-      ) {
-        selected.add(article);
-      }
+export function listProgressivePublicationServicesAcrossFamilies() {
+  const services = new Map<
+    string,
+    {
+      service_id: string;
+      label: string;
+      source_families: string[];
     }
+  >();
+
+  for (const cell of listProgressivePublicationCells()) {
+    const current = services.get(cell.service_id);
+    if (current) {
+      if (
+        !current.source_families.includes(cell.source_family)
+      ) {
+        current.source_families.push(cell.source_family);
+      }
+      continue;
+    }
+    services.set(cell.service_id, {
+      service_id: cell.service_id,
+      label: cell.label,
+      source_families: [cell.source_family],
+    });
   }
 
-  return selected;
+  return [...services.values()].map((service) => ({
+    ...service,
+    source_families: [...service.source_families].sort(),
+  }));
+}
+
+export function getProgressiveSourceRecords(
+  serviceId: string,
+  sourceFamily = PROGRESSIVE_SOURCE_FAMILY,
+): RuntimeSourceRecord[] {
+  if (!isProgressiveRouteCell(serviceId, sourceFamily)) {
+    return [];
+  }
+  const promotion = promotionByKey.get(
+    cellKey(serviceId, sourceFamily),
+  );
+  return runtimeRecordsForPromotion(promotion);
+}
+
+export function isProgressiveRecordPublished(
+  serviceId: string,
+  sourceFamily: string,
+  recordId: string,
+) {
+  if (!isProgressiveRouteCell(serviceId, sourceFamily)) {
+    return false;
+  }
+  const promotion = promotionByKey.get(
+    cellKey(serviceId, sourceFamily),
+  );
+  const records = runtimeRecordsForPromotion(promotion);
+  const record = records.find((item) => item.id === recordId);
+  return Boolean(
+    record &&
+      isRuntimeRecordPublished(promotion, record),
+  );
+}
+
+export function filterProgressivePublishedRecords<T>(
+  serviceId: string,
+  sourceFamily: string,
+  records: readonly T[],
+  recordId: (record: T) => string,
+): T[] {
+  return records.filter((record) =>
+    isProgressiveRecordPublished(
+      serviceId,
+      sourceFamily,
+      recordId(record),
+    ),
+  );
 }
 
 export function isProgressiveRulePublished(
   serviceId: string,
   recordId: string,
 ) {
-  if (!isProgressiveRouteCell(serviceId)) return false;
-  const promotion = promotionByKey.get(
-    cellKey(serviceId, PROGRESSIVE_SOURCE_FAMILY),
+  return isProgressiveRecordPublished(
+    serviceId,
+    PROGRESSIVE_SOURCE_FAMILY,
+    recordId,
   );
-  const adapter = adapterForPromotion(promotion);
-  if (!adapter) return false;
-  const article = articleNumberFromRecordId(recordId, adapter.nodePrefix);
-  return Boolean(article && publishedArticleSet(serviceId).has(article));
 }
 
 export function filterProgressivePublishedRules<T>(
@@ -415,91 +352,168 @@ export function filterProgressivePublishedRules<T>(
   records: readonly T[],
   recordId: (record: T) => string,
 ): T[] {
-  return records.filter((record) =>
-    isProgressiveRulePublished(serviceId, recordId(record)),
+  return filterProgressivePublishedRecords(
+    serviceId,
+    PROGRESSIVE_SOURCE_FAMILY,
+    records,
+    recordId,
   );
 }
 
 export function progressiveServicesForRule(recordId: string) {
-  return listProgressivePublicationServices().filter((service) =>
-    isProgressiveRulePublished(service.service_id, recordId),
+  return listProgressivePublicationServices().filter(
+    (service) =>
+      isProgressiveRulePublished(
+        service.service_id,
+        recordId,
+      ),
   );
 }
 
-export function getProgressivePublicationTrust(serviceId: string) {
-  if (!isProgressiveRouteCell(serviceId)) return null;
+function nodePrefixForCanonicalSource(
+  canonicalSourceId: string,
+) {
+  if (canonicalSourceId === "ordinance37") {
+    return "ordinance37";
+  }
+  if (
+    canonicalSourceId ===
+    "preventive-services-standards"
+  ) {
+    return "standards35";
+  }
+  if (canonicalSourceId === "mhlw-unit-price-current") {
+    return "unitprice";
+  }
+  return "";
+}
+
+export function getProgressivePublicationTrust(
+  serviceId: string,
+  sourceFamily = PROGRESSIVE_SOURCE_FAMILY,
+) {
+  if (!isProgressiveRouteCell(serviceId, sourceFamily)) {
+    return null;
+  }
   const row = readinessByKey.get(
-    cellKey(serviceId, PROGRESSIVE_SOURCE_FAMILY),
+    cellKey(serviceId, sourceFamily),
   );
   const promotion = promotionByKey.get(
-    cellKey(serviceId, PROGRESSIVE_SOURCE_FAMILY),
+    cellKey(serviceId, sourceFamily),
   );
-  const adapter = adapterForPromotion(promotion);
+  const adapter = runtimeAdapterForPromotion(promotion);
   if (!row || !promotion || !adapter) return null;
 
   return {
     service_id: String(row.service_id),
-    service_label: String(row.service_label || row.service_id),
+    service_label: String(
+      row.service_label || row.service_id,
+    ),
+    source_family: sourceFamily,
     canonical_source_id: adapter.canonicalSourceId,
-    node_prefix: adapter.nodePrefix,
-    source_title: String(adapter.meta?.law_title || ""),
-    source_url: String(
-      promotion.source_identity?.official_source_url ||
-        adapter.meta?.source_page ||
+    node_prefix: nodePrefixForCanonicalSource(
+      adapter.canonicalSourceId,
+    ),
+    source_title: adapter.sourceTitle(promotion),
+    source_url: adapter.defaultSourceUrl(promotion),
+    source_version: String(
+      promotion.source_identity?.version_id || "",
+    ),
+    effective_date: String(
+      promotion.source_identity?.effective_date || "",
+    ),
+    checked_at: String(
+      promotion.source_identity?.verified_at ||
+        promotion.source_identity
+          ?.current_official_display_observed_on ||
         "",
     ),
-    source_version: String(promotion.source_identity?.version_id || ""),
-    effective_date: String(promotion.source_identity?.effective_date || ""),
-    checked_at: String(promotion.source_identity?.verified_at || ""),
   };
+}
+
+export function projectProgressiveRecord(
+  serviceId: string,
+  sourceFamily: string,
+  record: RuntimeSourceRecord,
+) {
+  if (
+    !isProgressiveRecordPublished(
+      serviceId,
+      sourceFamily,
+      record.id,
+    )
+  ) {
+    return null;
+  }
+
+  const trust = getProgressivePublicationTrust(
+    serviceId,
+    sourceFamily,
+  );
+  const promotion = promotionByKey.get(
+    cellKey(serviceId, sourceFamily),
+  );
+  if (!trust || !promotion) return null;
+
+  return projectRuntimeRecord(
+    promotion,
+    trust,
+    record,
+  );
 }
 
 export function projectProgressiveRule(
   serviceId: string,
-  node: RuleNode,
+  node: RuntimeSourceRecord,
 ) {
-  if (!isProgressiveRulePublished(serviceId, node.id)) return null;
-  const trust = getProgressivePublicationTrust(serviceId);
-  if (!trust) return null;
-
-  return {
-    source_text: String(node.official_text || ""),
-    item_body: {
-      article_num: String(node.article_num || ""),
-      article_title: String(node.article_title || ""),
-      caption: String(node.caption || ""),
-      label: String(node.label || ""),
-      path: Array.isArray(node.path) ? node.path.map(String) : [],
-    },
-    source_metadata: {
-      service_id: trust.service_id,
-      service_label: trust.service_label,
-      source_family: PROGRESSIVE_SOURCE_FAMILY,
-      canonical_source_id: trust.canonical_source_id,
-      source_title: trust.source_title,
-      source_version: trust.source_version,
-      effective_date: trust.effective_date,
-    },
-    source_locator: {
-      url: String(node.source_url || trust.source_url),
-      locator: String(node.source_locator || ""),
-    },
-    currentness_statement: {
-      label: "現行のe-Gov本文を確認済み",
-      effective_date: trust.effective_date,
-      checked_at: trust.checked_at,
-    },
-    service_applicability_statement: {
-      label: SOURCE_ADAPTERS[trust.canonical_source_id].applicabilityLabel(trust.service_label),
-    },
-  };
+  return projectProgressiveRecord(
+    serviceId,
+    PROGRESSIVE_SOURCE_FAMILY,
+    node,
+  );
 }
 
-export function projectProgressiveRules<T extends RuleNode>(
+export function projectProgressiveRecords(
   serviceId: string,
-  records: readonly T[],
+  sourceFamily: string,
+  records: readonly RuntimeSourceRecord[],
 ) {
-  return filterProgressivePublishedRules(serviceId, records, (record) => record.id)
-    .map((record) => projectProgressiveRule(serviceId, record))
+  return filterProgressivePublishedRecords(
+    serviceId,
+    sourceFamily,
+    records,
+    (record) => record.id,
+  )
+    .map((record) =>
+      projectProgressiveRecord(
+        serviceId,
+        sourceFamily,
+        record,
+      ),
+    )
     .filter(Boolean);
+}
+
+export function projectProgressiveRules<
+  T extends RuntimeSourceRecord,
+>(serviceId: string, records: readonly T[]) {
+  return filterProgressivePublishedRules(
+    serviceId,
+    records,
+    (record) => record.id,
+  )
+    .map((record) =>
+      projectProgressiveRule(serviceId, record),
+    )
+    .filter(Boolean);
+}
+
+export function runtimePublicationAdapterRegistry() {
+  return Object.values(RUNTIME_SOURCE_ADAPTERS).map(
+    (adapter) => ({
+      canonical_source_id: adapter.canonicalSourceId,
+      source_family: adapter.sourceFamily,
+      record_kind: adapter.recordKind,
+    }),
+  );
 }
