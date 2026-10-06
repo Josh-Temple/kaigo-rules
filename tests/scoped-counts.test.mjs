@@ -93,7 +93,9 @@ test("rules UI defaults to shared corpus totals and applies service scope only w
   assert.match(source, /共有コーパスノード/);
   assert.match(source, /共有コーパス条文/);
   assert.match(source, /表示中の条文/);
-  assert.match(source, /selectedServiceId[\s\S]*\? filterRecordsForService\(/);
+  assert.match(source, /selectedServiceId[\s\S]*progressiveSelection/);
+  assert.match(source, /\? filterProgressivePublishedRules\(/);
+  assert.match(source, /: filterRecordsForService\(/);
   assert.match(source, /: articles;/);
   assert.match(source, /すべて/);
   assert.match(source, /公開中サービスフィルタ/);
