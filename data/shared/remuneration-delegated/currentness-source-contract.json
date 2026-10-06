@@ -2,9 +2,9 @@
   "format_version": 1,
   "artifact_kind": "DELEGATED_REMUNERATION_CURRENTNESS_SOURCE_CONTRACT",
   "source_family": "delegated_remuneration_criteria",
-  "base_main_sha": "f74456013a4a103c48a8b6674969b71c0e325631",
-  "observed_date": "2026-10-06",
-  "purpose": "Bound currentness promotion to exact official MHLW source identities and independently mapped service cells; never broadcast source-level currentness across all 37 applicable services.",
+  "base_main_sha": "29c5529be51a1211e060acd5911a1122aa0eaf0e",
+  "observed_date": "2026-10-07",
+  "purpose": "Close delegated-remuneration currentness against exact official MHLW consolidated source identities, then project only through explicit canonical service mappings; never infer applicability or alter protected assurance axes.",
   "policy": {
     "promotion_requires_all_mapped_sources_current": true,
     "promotion_requires_explicit_service_mapping": true,
@@ -107,12 +107,13 @@
       "title": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法（平成12年厚生省告示第27号）",
       "official_publication_source": "厚生労働省 法令等データベースサービス",
       "official_source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
-      "repository_source_status": "base_text_replay_pending",
-      "currentness_state": "BLOCKED",
-      "promotion_eligible": false,
+      "repository_source_status": "current_official_source",
+      "currentness_state": "PASS",
+      "promotion_eligible": true,
       "version_model": {
-        "kind": "OFFICIAL_BASE_TEXT_SNAPSHOT_PLUS_PINNED_PAGE_HASH_SET",
+        "kind": "OFFICIAL_CONSOLIDATED_DISPLAY_PLUS_PINNED_PAGE_HASH_SET",
         "item_body_snapshot_verified_at": "2026-10-05",
+        "currentness_observed_at": "2026-10-07",
         "page_snapshots": [
           {
             "page": 1,
@@ -128,24 +129,44 @@
           }
         ]
       },
-      "blocker": "Repository status remains base_text_replay_pending and successor/latestness closure is not independently established.",
       "service_applicability_model": "Any service cell referencing notice27 remains deferred even if all other mapped sources are current.",
       "evidence": [
+        "data/shared/remuneration-delegated/notice27-currentness-evidence.json",
         "data/shared/remuneration-delegated/item-body-verification.json#mhlw-fee-notice27-base",
-        "data/verification/shared-source-currentness-activation.json#delegated_remuneration_criteria",
-        "data/sources.json#mhlw-fee-notice27-base"
-      ]
+        "data/sources.json#mhlw-fee-notice27-base",
+        "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
+        "https://www.mhlw.go.jp/stf/newpage_38790.html"
+      ],
+      "amendment_lineage": {
+        "base_instrument": "平成12年厚生省告示第27号",
+        "official_consolidated_display": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0",
+        "latest_amendments_shown_on_current_official_display": [
+          {
+            "instrument": "令和6年厚生労働省告示第85号",
+            "effective_date": "2024-04-01"
+          },
+          {
+            "instrument": "令和6年厚生労働省告示第86号",
+            "effective_date": "2024-04-01"
+          }
+        ],
+        "current_official_display_observed_date": "2026-10-07",
+        "supersession_decision": "NOT_SUPERSEDED_ON_CURRENT_OFFICIAL_CONSOLIDATED_DISPLAY"
+      },
+      "effective_date_model": "Use the effective-date clauses embedded in the current official consolidated display. The latest amendment entries shown for this instrument take effect on 2024-04-01.",
+      "item_section_identity": "notice27.item.* canonical node IDs in data/shared/remuneration-delegated/national-corpus.json",
+      "locator_stability": "Stable MHLW dataId 82aa0261; all three official pages are pinned by SHA-256 in item-body-verification.json and independently re-fetched by the Worker B live verifier.",
+      "closure_evidence": "data/shared/remuneration-delegated/notice27-currentness-evidence.json"
     }
   ],
   "reusable_source_level_currentness": {
     "allowed_source_ids": [
       "mhlw-fee-criteria95-current",
-      "mhlw-fee-facility-criteria96-current"
-    ],
-    "blocked_source_ids": [
+      "mhlw-fee-facility-criteria96-current",
       "mhlw-fee-notice27-base"
     ],
-    "rule": "Source-level currentness may be reused only after each cell independently proves that every mapped node belongs to the allowed source set."
+    "blocked_source_ids": [],
+    "rule": "Source-level currentness may be reused only after each cell independently proves that every mapped node belongs to the allowed source set and the canonical applicability mapping remains explicit."
   },
   "cell_level_confirmation_required": [
     "applicability_state == MAPPED",
