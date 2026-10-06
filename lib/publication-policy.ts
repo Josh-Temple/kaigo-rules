@@ -12,7 +12,7 @@ import {
   runtimeRecordsForPromotion,
   type RuntimePromotion,
   type RuntimeSourceRecord,
-} from "./publication-runtime-adapters";
+} from "./publication-runtime-adapters.ts";
 
 export const PROGRESSIVE_SOURCE_FAMILY =
   GOVERNING_STANDARDS_SOURCE_FAMILY;
