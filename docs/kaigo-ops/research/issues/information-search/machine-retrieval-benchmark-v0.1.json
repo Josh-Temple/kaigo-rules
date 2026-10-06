@@ -374,5 +374,28 @@
       ],
       "required_evidence": "separate human field validation with recorded task time and blind adjudication"
     }
+  },
+  "publication_policy_smoke": {
+    "purpose": "Verify the progressive publication runtime uses the same allowlist for machine-readable retrieval, including service-scope containment and blocked-service denial.",
+    "cases": [
+      {
+        "id": "PUB-ALLOW-HOMEVISIT-18",
+        "service_id": "homevisit",
+        "article": "18",
+        "expected_state": "PUBLISHED"
+      },
+      {
+        "id": "PUB-BLOCK-HOMEVISIT-44",
+        "service_id": "homevisit",
+        "article": "44",
+        "expected_state": "BLOCKED"
+      },
+      {
+        "id": "PUB-BLOCK-CARE-MANAGEMENT-18",
+        "service_id": "care-management",
+        "article": "18",
+        "expected_state": "BLOCKED"
+      }
+    ]
   }
 }
