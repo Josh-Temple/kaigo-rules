@@ -25,6 +25,8 @@ UNIT_PRICE_ITEM_BODY_PATH = ROOT / "data/unit-price-item-body-assurance.json"
 DELEGATED_MANIFEST_PATH = ROOT / "data/shared/remuneration-delegated/manifest.json"
 DELEGATED_APPLICABILITY_PATH = ROOT / "data/shared/remuneration-delegated/service-applicability.json"
 DELEGATED_ITEM_BODY_PATH = ROOT / "data/shared/remuneration-delegated/item-body-verification.json"
+DELEGATED_CORPUS_PATH = ROOT / "data/shared/remuneration-delegated/national-corpus.json"
+DELEGATED_CURRENTNESS_CONTRACT_PATH = ROOT / "data/shared/remuneration-delegated/currentness-source-contract.json"
 OUTPUT_PATH = ROOT / "data/bounded-publication-allowlist.json"
 
 SAFE_FIELDS = [
@@ -142,10 +144,148 @@ def unit_price_currentness_scope_supported(row: dict[str, Any]) -> bool:
     )
 
 
+def delegated_runtime_binding_context(
+    row: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Validate and translate Worker-B cell evidence into a runtime binding.
+
+    This function does not decide currentness.  It accepts only the exact
+    currentness PASS source set already recorded by Worker B and proves that
+    the promoted cell's mapped nodes and source identities match the canonical
+    delegated-remuneration corpus.
+    """
+    if (
+        row.get("source_family") != "delegated_remuneration_criteria"
+        or not DELEGATED_CURRENTNESS_CONTRACT_PATH.exists()
+    ):
+        return None
+
+    service_id = str(row.get("service_id") or "")
+    applicability = load_json(DELEGATED_APPLICABILITY_PATH)
+    corpus = load_json(DELEGATED_CORPUS_PATH)
+    currentness_contract = load_json(DELEGATED_CURRENTNESS_CONTRACT_PATH)
+
+    service = next(
+        (
+            item
+            for item in applicability.get("services", [])
+            if item.get("service_id") == service_id
+        ),
+        None,
+    )
+    if (
+        not service
+        or service.get("scope_state") != "SCOPE_DEFINED"
+        or service.get("applicability_state") != "MAPPED"
+        or service.get("ingestion_state") != "INGESTED"
+        or (service.get("assurance") or {}).get("item_body_verification")
+        != "PASS"
+    ):
+        return None
+
+    expected_node_ids = [str(value) for value in service.get("mapped_node_ids", [])]
+    promoted_node_ids = [str(value) for value in row.get("mapped_node_ids", [])]
+    if (
+        not expected_node_ids
+        or promoted_node_ids != expected_node_ids
+        or row.get("mapped_node_count") != len(expected_node_ids)
+    ):
+        return None
+
+    node_by_id = {
+        str(node.get("canonical_node_id") or ""): node
+        for node in corpus.get("nodes", [])
+    }
+    if any(node_id not in node_by_id for node_id in expected_node_ids):
+        return None
+
+    expected_source_ids = sorted(
+        {
+            str(node_by_id[node_id].get("source_id") or "")
+            for node_id in expected_node_ids
+        }
+    )
+    if not all(expected_source_ids):
+        return None
+    promoted_source_ids = sorted(
+        str(value) for value in row.get("mapped_source_ids", [])
+    )
+    if promoted_source_ids != expected_source_ids:
+        return None
+
+    source_contracts = {
+        str(item.get("canonical_source_id") or ""): item
+        for item in currentness_contract.get("source_contracts", [])
+    }
+    selected_contracts = [
+        source_contracts.get(source_id) for source_id in expected_source_ids
+    ]
+    if (
+        any(contract is None for contract in selected_contracts)
+        or any(
+            contract.get("currentness_state") != "PASS"
+            or contract.get("promotion_eligible") is not True
+            for contract in selected_contracts
+            if contract is not None
+        )
+    ):
+        return None
+
+    proof = row.get("applicability_proof") or {}
+    gate = row.get("projection_gate") or {}
+    if (
+        proof.get("state") != "PASS_EXPLICIT_CANONICAL_SERVICE_MAPPING"
+        or proof.get("inherited_from_sibling_service") is not False
+        or row.get("source_identity_matches_item_body_source") is not True
+        or gate.get("kind") != "EXPLICIT_BOUNDED_ALLOWLIST"
+        or gate.get("allowed") is not True
+        or gate.get("identity")
+        != f"{service_id}::delegated_remuneration_criteria"
+        or gate.get("scope") != "currentness_only"
+    ):
+        return None
+
+    evidence = set(str(value) for value in row.get("source_currentness_evidence", []))
+    for source_id in expected_source_ids:
+        expected_suffix = "#" + source_id
+        if not any(value.endswith(expected_suffix) for value in evidence):
+            return None
+
+    observed_date = str(currentness_contract.get("observed_date") or "")
+    official_urls = [
+        str(contract.get("official_source_url") or "")
+        for contract in selected_contracts
+        if contract is not None
+    ]
+    if not observed_date or not all(official_urls):
+        return None
+
+    return {
+        "source_identity": {
+            "canonical_source_id": "delegated-remuneration-national",
+            "title": "介護報酬の算定方法・厚生労働大臣基準（別告示）",
+            "official_source_url": official_urls[0],
+            "official_page_urls": official_urls,
+            "current_official_display_observed_on": observed_date,
+        },
+        "source_version_contains_scope": True,
+        "ingestion_state": "INGESTED",
+        "allowed_publication_units": sorted(REQUIRED_PUBLICATION_UNITS),
+    }
+
+
 def normalize_runtime_promotion(row: dict[str, Any]) -> dict[str, Any]:
     normalized = copy.deepcopy(row)
     source = copy.deepcopy(source_identity(row))
     proof = copy.deepcopy(applicability_proof(row))
+
+    delegated_context = delegated_runtime_binding_context(row)
+    if delegated_context is not None:
+        source = copy.deepcopy(delegated_context["source_identity"])
+        normalized["ingestion_state"] = delegated_context["ingestion_state"]
+        normalized["allowed_publication_units"] = delegated_context[
+            "allowed_publication_units"
+        ]
 
     evidence = row.get("currentness_evidence") or {}
     if not source.get("current_official_display_observed_on") and evidence.get("observed_on"):
@@ -155,6 +295,7 @@ def normalize_runtime_promotion(row: dict[str, Any]) -> dict[str, Any]:
     normalized["applicability_proof"] = proof
     normalized["source_version_contains_scope"] = (
         row.get("source_version_contains_scope") is True
+        or delegated_context is not None
         or (
             row.get("source_family") == "unit_price_regional_classification"
             and unit_price_currentness_scope_supported(row)
@@ -333,7 +474,7 @@ def source_contract_supported(row: dict[str, Any]) -> bool:
         service_id = str(normalized.get("service_id") or "")
         return (
             source_family == "delegated_remuneration_criteria"
-            and bool(source.get("version_id"))
+            and delegated_runtime_binding_context(row) is not None
             and delegated_service_contract_supported(service_id)
         )
 
