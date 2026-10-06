@@ -128,9 +128,19 @@ def residual_governing_direct_article_numbers(row: dict[str, Any]) -> list[str]:
         parts = value.split("-")
         if not value or any(not part.isdigit() for part in parts):
             raise ValueError(
-                f"unsupported article number in canonical corpus: {corpus_id}: {value}"
+                f"unsupported direct-range article number: {corpus_id}: {value}"
             )
         return tuple(int(part) for part in parts)
+
+    sortable_article_numbers: dict[str, tuple[int, ...]] = {}
+    for article_num in by_num:
+        try:
+            sortable_article_numbers[article_num] = article_number_key(article_num)
+        except ValueError:
+            # Some imported corpora contain synthetic/non-range article_num values
+            # such as "48:49". They are not eligible for numeric direct-range
+            # expansion, but their presence must not distort legitimate boundaries.
+            continue
 
     selected: list[str] = []
     governing = scope.get("governing_standards_ordinance")
@@ -163,12 +173,10 @@ def residual_governing_direct_article_numbers(row: dict[str, Any]) -> list[str]:
             in_range = sorted(
                 (
                     article_num
-                    for article_num in by_num
-                    if start_key
-                    <= article_number_key(article_num)
-                    <= end_key
+                    for article_num, key in sortable_article_numbers.items()
+                    if start_key <= key <= end_key
                 ),
-                key=article_number_key,
+                key=lambda article_num: sortable_article_numbers[article_num],
             )
             if not in_range:
                 raise ValueError(
