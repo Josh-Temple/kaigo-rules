@@ -73,15 +73,15 @@ jobs:
       - name: Validate A publication planner before the HTTP checks
         if: steps.ready.outputs.integrated == 'true'
         run: python -m unittest discover -s tests -p 'test_daily_deploy_plan.py' -v
-      - name: Validate B unit-price and C SEO regression contracts
-        if: steps.ready.outputs.integrated == 'true'
-        run: node --experimental-strip-types --test tests/unit-price-discovery.test.mjs tests/public-seo.test.mjs
       - name: Install dependencies and PDF reparse tools
         if: steps.ready.outputs.integrated == 'true'
         run: |
           npm ci --no-audit --no-fund
           sudo apt-get update
           sudo apt-get install -y poppler-utils
+      - name: Validate B unit-price and C SEO regression contracts
+        if: steps.ready.outputs.integrated == 'true'
+        run: node --experimental-strip-types --test tests/unit-price-discovery.test.mjs tests/public-seo.test.mjs
       - name: Build with existing data and publication safety gates
         if: steps.ready.outputs.integrated == 'true'
         run: npm run build
