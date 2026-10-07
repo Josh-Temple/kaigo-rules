@@ -1,6 +1,6 @@
 import { pageMetadata } from "../../../lib/site-metadata";
 
-export const metadata = pageMetadata("通所介護の一単位単価", "通所介護の地域区分別一単位単価と明示地域を確認できます。", "/fees/unit-price");
+export const metadata = pageMetadata("介護サービスの一単位単価", "公開条件を満たす介護サービスについて、地域区分別の一単位単価と明示地域を確認できます。", "/fees/unit-price");
 
 import VerificationSummary from "../../../components/verification-summary";
 import ratesData from "../../../data/unit-price-dayservice.json";
