@@ -46,11 +46,11 @@ Human field validationは `OPTIONAL_EXTERNAL_VALIDATION / NOT_RUN`。
 
 ## Measurement state
 
-2026-10-07のfresh確認では、Kaigo Ops production bundleにVercel Web Analyticsのclient implementationは存在する。
+2026-10-07のWorker E releaseで、Kaigo Opsはrelease main SHA `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2` をproduction deployment `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq` として反映し、`READY` とproduction alias割当を確認した。
 
-一方、current productionではAnalytics script / intake routeが404で、pageview収集開始は確認できない。Web Analytics APIの確認値も `visitors: 0 / pageviews: 0`。
+Vercel Web Analyticsのclient implementationは存在するが、release後のpageview API確認値は `visitors: 0 / pageviews: 0`、path別集計も空である。project-level enabled flagの確認・変更は利用可能な操作から実施できず、tracking deliveryと実受信も確認できていない。
 
-したがって現時点では、Analyticsを「稼働済み」「観測開始済み」と扱わない。
+したがってAnalytics stateは `BLOCKED / NOT_CONFIRMED` とし、「稼働済み」「観測開始済み」と扱わない。first confirmed observation dateは未確定。
 
 初期観測はpageviewだけとし、対象・解釈・非収集データは `docs/kaigo-ops/measurement.md` を正本として確認する。
 
@@ -71,6 +71,23 @@ Human field validationは `OPTIONAL_EXTERNAL_VALIDATION / NOT_RUN`。
 フィードバックはGitHub Issuesを再利用し、「何を試したか」「どこで止まったか」「何が足りなかったか」を最小入力として案内する。投稿はGitHub上で公開・保存されるため、個人情報、介護記録、事業所の非公開情報を記載しないよう明示する。
 
 Issue 6「収支・コスト構造」は開始していない。Analyticsの実受信も未確認のため、現時点で需要や改善効果は断定しない。
+
+## Production release state
+
+2026-10-07 Utilization & Actionability Wave:
+
+- integration PR: #421
+- release main SHA: `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2`
+- Kaigo Ops deployment: `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq`
+- deployment state: `READY`
+- production alias: `https://ops-site-pi.vercel.app/`
+- five public Issues: maintained
+- five action tools: integrated
+- contextual Kaigo Rules bridge: 5 / 5 Issues
+- generic Kaigo Rules bridge: 5 / 5 Issues
+- minimal feedback path: 5 / 5 Issues
+
+Repository-side `Validate ops site` passed `npm test`, `npm run build`, and route smoke verification on the integrated release source. Vercel deployment metadata confirms the same release SHA and READY state.
 
 ## Current non-claims
 
