@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { buildPublicPageMetadata } from "../../../lib/site-metadata";
 import IssueNavigation from "../_components/IssueNavigation";
 import IssueFollowThrough from "../_components/IssueFollowThrough";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPublicPageMetadata({
+  path: "/issues/communication-collaboration",
   title: "問い合わせ・連携の負担が大きい | 介護業務改善",
-  description:
-    "電話、FAX、メール、ケアプラン共有、確認の往復など、介護現場の問い合わせ・連携負担を、業務の流れ整理、自分で確認できる仕組み、情報連携、必要に応じたAI補助の順に改善する方法を整理します。",
-};
+  description: "電話、FAX、メール、ケアプラン共有、確認の往復など、介護現場の問い合わせ・連携負担を、業務の流れ整理、自分で確認できる仕組み、情報連携、必要に応じたAI補助の順に改善する方法を整理します。",
+  type: "article",
+});
 
 const findings = [
   {
