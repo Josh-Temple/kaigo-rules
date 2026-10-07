@@ -26,7 +26,10 @@ def canonical_urls(html):
 def main():
     if len(sys.argv) != 2:
         raise SystemExit("usage: verify_canonical_markup.py EXPECTED_CANONICAL < html")
+    # Next.js renders the site-root canonical without a trailing slash.
     expected = sys.argv[1]
+    if expected == "https://kaigo-rules.vercel.app/":
+        expected = "https://kaigo-rules.vercel.app"
     found = canonical_urls(sys.stdin.read())
     if found != [expected]:
         print(f"Canonical mismatch: expected {[expected]!r}, observed {found!r}", file=sys.stderr)
