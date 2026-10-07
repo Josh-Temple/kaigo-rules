@@ -232,6 +232,9 @@ export default function CommunicationCollaborationIssuePage() {
               <p>件数、往復回数、応答時間、二重入力、担当者への引き継ぎを比較する。</p>
             </div>
           </div>
+          <p className="noPrint">
+            <a className="primaryLink" href="/tools/communication-review">問い合わせ・確認往復を棚卸しする →</a>
+          </p>
         </section>
 
         <section className="section boundary">
