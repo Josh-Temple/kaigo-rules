@@ -76,7 +76,7 @@ jobs:
             }
             console.log('PASS production metadata/discovery/Rules bridge');
           };
-          await checks();
+          checks().catch((error) => { console.error(error); process.exit(1); });
           EOF
 
       - name: Install Chromium for 390px verification
