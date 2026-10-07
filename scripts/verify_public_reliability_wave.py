@@ -165,11 +165,20 @@ class PublicReliabilityProbe:
             "Accept": "text/html,application/json,application/xml,text/plain",
             "User-Agent": "KaigoRulesPublicRegression/1.0",
         })
-        try:
-            with urlopen(request, timeout=45) as response:
-                return response.status, response.read().decode("utf-8")
-        except HTTPError as exc:
-            return exc.code, exc.read().decode("utf-8", errors="replace")
+        # SSR can be slow for a cold service-specific route. Retry only
+        # transient transport timeouts, never a non-200 HTTP response.
+        for attempt in range(1, 4):
+            try:
+                with urlopen(request, timeout=45) as response:
+                    return response.status, response.read().decode("utf-8")
+            except HTTPError as exc:
+                return exc.code, exc.read().decode("utf-8", errors="replace")
+            except TimeoutError:
+                if attempt == 3:
+                    raise
+                print(f"Retrying timed-out HTTP request {path} (attempt {attempt}/3)",
+                      file=sys.stderr)
+        raise AssertionError("unreachable HTTP retry state")
 
     def require(self, path: str, status: int = 200) -> str:
         actual, body = self.get(path)
