@@ -250,11 +250,6 @@ class PublicReliabilityProbe:
         if len(items) != 8:
             raise AssertionError(f"unexpected published rate count for {service_id}: {len(items)}")
         rendered_rows = rendered_unit_price_rows(page)
-        if len(rendered_rows) != len(items):
-            raise AssertionError(
-                f"{service_id}: rendered {len(rendered_rows)} price rows; "
-                f"API returned {len(items)}"
-            )
         for item in items:
             body = item["item_body"]
             region = str(body["region_class"])
@@ -268,6 +263,11 @@ class PublicReliabilityProbe:
             # matching classes per service; the detail page holds all eight.
             if item in items[:3] and region not in results:
                 raise AssertionError(f"{service_id}/{region}: missing from global search")
+        if len(rendered_rows) != len(items):
+            raise AssertionError(
+                f"{service_id}: rendered {len(rendered_rows)} price rows; "
+                f"API returned {len(items)}"
+            )
         if "人手確認が完了していない" not in page:
             raise AssertionError("municipal assignment human-review warning missing")
 
