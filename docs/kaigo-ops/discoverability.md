@@ -89,14 +89,17 @@ Repository CIではcanonical / social metadata、robots、sitemapの回帰テス
 
 ## 外部indexing state
 
-次は今回確認していない。
+canonical observation recordは `docs/kaigo-ops/search-discovery-observation.md`。
 
-- Google Search Consoleへのproperty登録
-- sitemap送信状態
-- Googleによるindex登録状態
-- 実際の検索流入
+2026-10-08時点で、この実行環境には認証済みGoogle Search Console接続がない。したがって現在状態は次のとおり。
 
-`robots.txt` や `sitemap.xml` の存在から、Search Console登録・index・検索流入を推測しない。
+- URL-prefix property `https://ops-site-pi.vercel.app/`: `UNKNOWN`
+- sitemap submission: `UNKNOWN`
+- home + 5 Issue index state: `UNKNOWN`
+- Google-selected canonical: `UNKNOWN`
+- indexing request: `NOT_RUN`
+
+exact blockerは **authenticated Search Console access unavailable**。site-declared canonical、`robots.txt`、`sitemap.xml` がproductionで正常でも、Googleによる認識・index・検索流入を推測しない。
 
 ## 境界
 
@@ -173,3 +176,17 @@ current productionでは、`robots.txt`、`sitemap.xml`、home + 5 IssueのHTTP 
 exact blockerは authenticated Search Console access unavailable。sitemap配信や `site:` 検索だけでindex stateを確定しない。
 
 Kaigo Rules側では `/databases/search` の検索実行後に、制度確認から業務見直しへ移る文脈付き入口を追加する。direct linkは今回の優先対象である情報探索・記録文書の2 Issueに限定し、Kaigo Opsが制度適合を確定しない境界を同じ入口で明示する。
+
+## Worker E final production state（2026-10-08）
+
+Public Discovery & Observation Operations Waveをintegration PR #434で統合し、runtime SHA `81a307738d7a40562ad033c3d2491cd05a2f2337` を両productionへ反映した。
+
+- Kaigo Ops: `dpl_6JuE6Cm2UnxFVvQdDZTV4cCRkhY1` / `READY` / `https://ops-site-pi.vercel.app/`
+- Kaigo Rules: `dpl_5Ee8hKCoxAaQywaxxQGhJWypNDru` / `READY` / `https://kaigo-rules.vercel.app/`
+- production verifier: run `37653052826` / PASS
+
+Kaigo Rulesの `/databases/search` には、制度上の要件を確認した後に業務見直しへ進む文脈付き入口をproduction反映済み。情報探索と記録・文書の2 Issueだけを直接リンクし、他3 Issueはこの入口へ拡張していない。制度適合をKaigo Opsで確定しない境界もproductionで確認した。
+
+Kaigo Opsではhome + 5 Issue + 5 action tool、5つのIssue → tool / Kaigo Rules / feedback journey、canonical / Open Graph、`robots.txt`、`sitemap.xml`、Analytics script deliveryを確認し、390px verificationを含めすべてPASSした。
+
+優先2 Issueのdirect-entry shareabilityは `docs/kaigo-ops/distribution-kit.md` を正本とする。外部投稿は明示的な許可なしに行わない。

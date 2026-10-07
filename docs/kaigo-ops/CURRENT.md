@@ -1,6 +1,6 @@
 # Kaigo Ops — Current Projection
 
-Updated: 2026-10-07
+Updated: 2026-10-08
 Status: current routing projection
 
 このファイルは、Kaigo Opsで「現在そのまま再利用してよい知識」と「まだcurrent verified factとして扱わない知識」を短く確認するためのprojectionです。
@@ -46,17 +46,28 @@ Human field validationは `OPTIONAL_EXTERNAL_VALIDATION / NOT_RUN`。
 
 ## Measurement state
 
-2026-10-07のObservation Activation & Learning Loop Waveでは、integration PR #428をmainへ統合したruntime release SHA `b7a29a0da5c24787a9792bb6c55e6a14a330f897` をKaigo Ops production deployment `dpl_63FnsT15tnNQ1YDmTkJAYNyNh27v` として反映し、`READY` とproduction alias `https://ops-site-pi.vercel.app/` の割当を確認した。
+2026-10-08のPublic Discovery & Observation Operations Waveでは、integration PR #434をmainへ統合したruntime release SHA `81a307738d7a40562ad033c3d2491cd05a2f2337` を、Kaigo OpsとKaigo Rulesの両productionへexact SHAで反映した。
 
-Vercel Web Analyticsはproduction pageview受信確認済みで、first confirmed observation dateは **2026-10-07**。Worker Aの初回確認では `visitors: 1 / pageviews: 1`、requestPath `/` = 1（Firefox / desktop）だった。Worker Eのrelease後fresh確認では `visitors: 2 / pageviews: 2`、requestPath `/` = 2、browser breakdownはChrome 1 / Firefox 1、deviceTypeはdesktop 2となった。
+- Kaigo Ops: `dpl_6JuE6Cm2UnxFVvQdDZTV4cCRkhY1` / `https://ops-site-pi.vercel.app/` / `READY`
+- Kaigo Rules: `dpl_5Ee8hKCoxAaQywaxxQGhJWypNDru` / `https://kaigo-rules.vercel.app/` / `READY`
 
-controlled Playwrightは実利用値として扱わない。release後の2 pageviewについても、個々のアクセス由来を確定していないため、需要・改善効果・tool利用の証拠には使わない。
+Vercel Web Analyticsは **RECEIVE_CONFIRMED** を維持し、first confirmed observation dateは **2026-10-07**。release後のfresh aggregateでも、home `/` = **7 pageviews / 6 visitors** で、5 Issueと5 action toolにはrequestPath集計行がない。browserはChrome 6 pageviews / 5 visitors、Firefox 1 / 1、deviceTypeはdesktop 7 / 6だった。
 
-したがってAnalytics stateは **production pageview receive confirmed / observation started 2026-10-07** を維持する。
+この値は閲覧の観測値であり、外部実利用者数、需要、改善効果、tool実行完了を示さない。今回のproduction verificationはheadless / webdriverで実施しており、deployed Analytics scriptの既存自動化除外を前提にcontrolled verification trafficを実利用値へ読み替えない。
 
-初期観測はpageviewだけとし、対象・解釈・非収集データは `docs/kaigo-ops/measurement.md` を正本として確認する。
+Kaigo Ops feedbackはtitle prefix `[Kaigo Opsフィードバック]` でopen / closedとも0件。0件を失敗、満足、需要なしの証拠にはしない。
 
-継続観測と2〜4週間レビューは `docs/kaigo-ops/usage-observation.md`、feedbackの内部triageは `docs/kaigo-ops/feedback-triage.md`、公開入口・indexabilityの監査結果は `docs/kaigo-ops/discoverability.md` をcanonical projectionとして参照する。
+Search Consoleは認証済み接続が利用できないため、property、sitemap submission、major 6 URL index state、Google-selected canonicalは `UNKNOWN`、indexing requestは `NOT_RUN`。詳細は `docs/kaigo-ops/search-discovery-observation.md` を正本とする。
+
+custom eventは **CUSTOM_EVENT_NOT_JUSTIFIED**。現時点ではpageviewだけでは答えられない具体的な意思決定が特定されておらず、観測母数も極小のため追加しない。earliest review targetは **2026-10-21前後**、broader review windowは **2026-10-21〜2026-11-04前後**。
+
+### Public discovery / contextual entry
+
+Kaigo Ops productionでは、home + 5 Issue + 5 action tool、`robots.txt`、`sitemap.xml`、Issueページのcanonical / Open Graph、Analytics script deliveryを確認済み。390px production verificationでも11 routeと5つのIssue → tool / Kaigo Rules / feedback journeyがPASSした。
+
+Kaigo Rules productionの `/databases/search` には、制度上の要件を確認した後に業務見直しへ進む文脈付き入口を反映済み。direct linkは情報探索と記録・文書の2 Issueに限定し、Kaigo Opsが制度適合を確定しない境界を同じ入口で明示する。
+
+第三者へ直接共有する場合の対象・紹介文・non-claimsは `docs/kaigo-ops/distribution-kit.md` をcanonical public-entry recordとする。外部投稿は明示的な許可なしに実行しない。
 
 ## Actionability / public journey
 
@@ -78,23 +89,29 @@ Issue 6「収支・コスト構造」は開始していない。Analyticsの実�
 
 ## Production release state
 
-2026-10-07 Observation Activation & Learning Loop Wave:
+2026-10-08 Public Discovery & Observation Operations Waveのproduction state:
 
-- integration PR: #428
-- runtime release SHA: `b7a29a0da5c24787a9792bb6c55e6a14a330f897`
-- Kaigo Ops deployment: `dpl_63FnsT15tnNQ1YDmTkJAYNyNh27v`
-- deployment state: `READY`
-- production alias: `https://ops-site-pi.vercel.app/`
-- five public Issues: maintained
-- five action tools: maintained
-- Issue / tool feedback context: integrated
-- canonical / social metadata: integrated
-- `robots.txt` / `sitemap.xml`: production verification PASS
+- integration PR: #434
+- integrated runtime SHA: `81a307738d7a40562ad033c3d2491cd05a2f2337`
+- Kaigo Ops deployment: `dpl_6JuE6Cm2UnxFVvQdDZTV4cCRkhY1`
+- Kaigo Ops alias: `https://ops-site-pi.vercel.app/`
+- Kaigo Rules deployment: `dpl_5Ee8hKCoxAaQywaxxQGhJWypNDru`
+- Kaigo Rules alias: `https://kaigo-rules.vercel.app/`
+- both deployments: `READY`
+- integration CI: `Validate build` PASS
+- Kaigo Ops CI: `Validate ops site` PASS
+- publication-readiness integration: PASS
+- production verifier run: `37653052826` PASS
+- Kaigo Ops home + 5 Issue + 5 action tool: PASS
+- Issue → tool / Kaigo Rules / feedback: 5 / 5 PASS
+- Kaigo Rules → Kaigo Ops contextual entry: PASS
+- canonical / Open Graph / robots / sitemap: PASS
+- Analytics script delivery: PASS
+- 390px verification: PASS
 - custom event: not added
+- Issue 6 / new feature: not added
 
-Integration source passed `Validate ops site`, `Validate build`, and publication-readiness CI. Production verification passed the public route/journey checks, metadata endpoint checks, Analytics script delivery, and 390px browser verification for the home page, all 5 Issue routes, all 5 action-tool routes, and all 5 Issue → tool / Kaigo Rules / feedback journeys.
-
-The preceding Utilization & Actionability runtime release was `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2` / `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq`. The current production runtime is the Observation Activation & Learning Loop release above.
+The current production runtime for both public surfaces is the integrated SHA above. Documentation-only finalization after this release does not require a runtime redeploy.
 
 ## Current non-claims
 

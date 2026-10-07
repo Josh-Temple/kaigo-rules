@@ -1,6 +1,6 @@
 # Kaigo Ops — 利用観測の初期契約
 
-更新日: 2026-10-07  
+更新日: 2026-10-08  
 対象: Kaigo Ops / Vercel project `kaigo-ops`
 
 ## 目的
@@ -119,11 +119,33 @@ release後のWeb Analytics fresh確認:
 
 Analytics stateは **RECEIVE_CONFIRMED** を維持し、first confirmed observation dateは **2026-10-07** のままとする。
 
+## Worker E Public Discovery & Observation release（2026-10-08）
+
+integration PR #434をmainへ統合したSHA `81a307738d7a40562ad033c3d2491cd05a2f2337` を、Kaigo OpsとKaigo Rulesの両productionへexact SHAで反映した。
+
+- Kaigo Ops deployment: `dpl_6JuE6Cm2UnxFVvQdDZTV4cCRkhY1`
+- Kaigo Ops alias: `https://ops-site-pi.vercel.app/`
+- Kaigo Rules deployment: `dpl_5Ee8hKCoxAaQywaxxQGhJWypNDru`
+- Kaigo Rules alias: `https://kaigo-rules.vercel.app/`
+- both: `READY`
+
+production verifier run `37653052826` では、Kaigo Opsのhome + 5 Issue + 5 action tool、5つのIssue → tool / Kaigo Rules / feedback journey、canonical / Open Graph、`robots.txt`、`sitemap.xml`、Analytics script delivery、390px表示を確認した。Kaigo Rules側でも `/databases/search` の文脈付きKaigo Ops入口と390px表示を確認し、すべてPASSした。
+
+release後のfresh Web Analytics aggregateは、`/` = **7 pageviews / 6 visitors**。5 Issueと5 action toolにはrequestPath集計行がない。browserはChrome 6 / 5、Firefox 1 / 1、deviceTypeはdesktop 7 / 6。これらの個々の由来は確定しておらず、需要・改善効果・外部実利用者数を示す値として扱わない。
+
+Search Consoleは別軸で、認証済み接続がないためproperty / sitemap submission / URL Inspectionは未確認。Analytics受信確認とGoogle index stateを混同しない。
+
+custom eventは追加しない。現在のpageviewとfeedbackだけでは具体的な追加計測判断を支持できず、2〜4週間レビュー前に計測だけを複雑化しない。
+
 ## 次の確認
 
-Web Analytics有効化の手作業はblockerではなくなった。以後はpageviewを継続観測し、2〜4週間程度の母数ができるまでは需要・改善効果を断定しない。
+Web Analytics有効化や受信はblockerではない。以後は、pageview、Search Console discovery state、feedbackを同じ観測期間で継続する。
 
-自動化ブラウザはAnalytics側で除外されるため、将来のproduction verificationでもPlaywright pageviewを実利用値として扱わない。
+earliest review targetは **2026-10-21前後**、broader review windowは **2026-10-21〜2026-11-04前後**。この期間までは少数値から需要、改善効果、Issue順位、tool完了を確定しない。
+
+自動化ブラウザはAnalytics側で除外されるため、production verificationのPlaywright trafficを実利用値として扱わない。Search Consoleは認証済み接続が利用できるようになった時点で別途確認する。
+
+custom eventは、pageviewだけでは答えられない具体的な意思決定が特定され、個人情報・検索語・worksheet入力内容・介護記録本文を収集しない境界を満たす場合だけ再検討する。
 
 ## 最初に観測するページ
 
@@ -141,7 +163,7 @@ custom eventは追加せず、pageviewだけを対象とする。
 - `/tools/communication-review`
 - `/tools/work-time-review`
 
-4つの新規action toolは今回の統合対象に含める。production反映後、これらも同じpageview対象として扱う。
+5つのaction toolはすべてproduction反映済みで、Issue routeと同じpageview観測対象として扱う。
 
 ## 解釈上の注意
 

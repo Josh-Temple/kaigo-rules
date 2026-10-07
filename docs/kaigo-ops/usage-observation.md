@@ -183,6 +183,25 @@ route別については、Analytics受信自体が未確認のため「0 pagevie
 
 custom eventは追加しない。将来candidateを検討する場合も、個人情報、検索語、worksheet入力内容、介護記録本文はpayloadへ含めない。
 
+### 2026-10-08 Worker E post-release verification
+
+- integrated runtime SHA: `81a307738d7a40562ad033c3d2491cd05a2f2337`
+- Kaigo Ops production: `dpl_6JuE6Cm2UnxFVvQdDZTV4cCRkhY1` / `READY`
+- Kaigo Rules production: `dpl_5Ee8hKCoxAaQywaxxQGhJWypNDru` / `READY`
+- production verifier run: `37653052826` / **PASS**
+- Kaigo Ops home + 5 Issue + 5 action tool: PASS
+- Issue → tool / Kaigo Rules / feedback journey: 5 / 5 PASS
+- Kaigo Rules → Kaigo Ops contextual entry: PASS
+- canonical / Open Graph / robots / sitemap / Analytics script delivery: PASS
+- 390px: Kaigo Ops 11 route + 5 journey、Kaigo Rules contextual entryともPASS
+- fresh Analytics aggregate: **6 visitors / 7 pageviews**、requestPathは `/` のみ
+- 5 Issue / 5 tools: **観測なし（requestPath集計行なし）**
+- feedback: **0件**（open / closedとも0）
+- Search Console: authenticated access unavailable。property / sitemap submission / major URL index state / Google-selected canonicalは `UNKNOWN`、indexing requestは `NOT_RUN`
+- custom event: **CUSTOM_EVENT_NOT_JUSTIFIED** を維持
+
+productionの技術的な公開導線は確認できたが、利用観測の母数は増えていない。したがって、Issue 6、新しいtool、custom eventを追加する根拠にはせず、2026-10-21前後〜2026-11-04前後のreview windowまで同じschemaで観測を続ける。
+
 ## 2〜4週間レビュー契約
 
 レビュー期間の起点は、`measurement.md` に記録された **first confirmed observation date** とする。受信未確認の間は、2〜4週間の観測期間が始まったものと扱わない。

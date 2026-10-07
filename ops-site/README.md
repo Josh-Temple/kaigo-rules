@@ -98,24 +98,39 @@ Kaigo Rulesとは公開面を分離します。
 
 2026-10-02のローカル検証では、計算テスト3件・ビルド・全ルート確認を通過。390px幅の検索・分類・検索0件からの復帰、様式の計算・0件除外・ブラウザ保存なし、印刷PDFと日本語表示を確認しました。これは開発時の動作確認であり、現場での業務改善効果の検証ではありません。
 
+## 公開発見・共有
+
+2026-10-08のPublic Discovery & Observation Operations Waveで、Kaigo OpsとKaigo Rulesを同じintegration SHA `81a307738d7a40562ad033c3d2491cd05a2f2337` からproductionへ反映しました。
+
+- Kaigo Opsの `robots.txt` / `sitemap.xml` / Issue canonical / Open Graphはproduction確認済み
+- Kaigo Rules `/databases/search` から、情報探索・記録文書の2 Issueへ文脈付きで移る入口をproduction反映
+- Kaigo Opsは制度適合を確定せず、必要な判断はKaigo Rulesの検証状態と一次資料へ戻す
+- Search Consoleは認証済み接続がないため、property / sitemap submission / index state / Google-selected canonicalを `UNKNOWN` のまま維持
+- direct-entryの紹介文とnon-claimsは `../docs/kaigo-ops/distribution-kit.md` を参照
+- 外部投稿は明示的な許可なしに実行しない
+
 ## 利用観測
 
-2026-10-07にVercel projectとproductionをfresh確認しました。
+2026-10-08のrelease後にVercel project、production、Web Analyticsをfresh確認しました。
 
-- `@vercel/analytics` 2.0.1と`<Analytics />`はproduction bundleに含まれる
-- compatibility routeとproductionのResilient Intake scriptはHTTP 200で配信される
-- 2026-10-07にWeb Analytics APIで `visitors: 1 / pageviews: 1`、requestPath `/` = 1を確認し、初回観測日を同日に固定
-- controlled Playwright trafficはdeployed Analytics scriptの自動化判定で送信対象外となるため、実利用値として扱わない
-- 初期計測はpageviewだけとし、custom event、検索欄やworksheetの入力内容、個人情報、介護記録本文は追加収集しない
+- Kaigo Ops production: `dpl_6JuE6Cm2UnxFVvQdDZTV4cCRkhY1` / `READY`
+- Kaigo Rules production: `dpl_5Ee8hKCoxAaQywaxxQGhJWypNDru` / `READY`
+- `@vercel/analytics` とAnalytics script deliveryはproductionで確認済み
+- first confirmed observation date: **2026-10-07**
+- fresh aggregate: **6 visitors / 7 pageviews**、requestPathは `/` のみ
+- 5 Issue / 5 action toolはrequestPath集計行なし
+- feedbackはopen / closedとも0件
+- controlled Playwright trafficはdeployed Analytics scriptの自動化判定を前提に実利用値として扱わない
+- custom event、検索語、worksheet入力内容、個人情報、介護記録本文は追加収集しない
 
-詳細な計測契約は `docs/kaigo-ops/measurement.md`、継続観測と2〜4週間レビューは `docs/kaigo-ops/usage-observation.md` を参照してください。
+観測履歴と解釈ルールは `../docs/kaigo-ops/usage-observation.md`、計測契約は `../docs/kaigo-ops/measurement.md` を参照してください。
 
 ## 残りの実行と次の判断
 
-- production routeと390px主要journeyは2026-10-07のrelease後検証でPASS
-- production pageview受信は2026-10-07に確認済み。以後はpageviewを継続観測する
-- 初回受信から2〜4週間後に、課題別閲覧数・見直しシートの閲覧数・母数を確認。少数データから効果や需要を確定しない
-- controlled verification trafficは実利用と分離し、自動化ブラウザのアクセスを利用実績として数えない
-- custom eventはまだ追加せず、pageviewで必要性が確認できてから拡張
-- 「収支・コスト構造」は令和8年度介護事業経営実態調査の集計結果公表後に更新
-- 利用状況を見て再調査、更新通知、テンプレート、Evidence Brief等の事業化候補を判断
+- production route、主要journey、metadata、390px表示はproduction verifier run `37653052826` でPASS
+- pageview、Search Console discovery state、feedbackを同じschemaで継続観測する
+- earliest review targetは2026-10-21前後、broader review windowは2026-10-21〜2026-11-04前後
+- Search Consoleへ認証済みでアクセスできるようになった時点で、property、sitemap submission、major 6 URL index state、Google-selected canonicalを確認する
+- custom eventはまだ追加しない。pageviewだけでは答えられない具体的な意思決定が出た場合だけ再検討する
+- Issue 6「収支・コスト構造」と新しいaction toolは、既存5 Issueの利用・feedbackと必要な公的データが揃うまで開始しない
+
