@@ -83,15 +83,17 @@ export default async function UnitPricePage({
       <section className="section">
         <h2>サービスを選ぶ</h2>
         <form className="region-search-form" method="get">
-          <label htmlFor="unit-price-service">サービス</label>
-          <select id="unit-price-service" name="service" defaultValue={selectedId}>
-            {!selectedService ? <option value={selectedId}>公開対象外のサービス</option> : null}
-            {services.map((service) => (
-              <option value={service.service_id} key={service.service_id}>
-                {service.label}
-              </option>
-            ))}
-          </select>
+          <label htmlFor="unit-price-service">
+            サービス
+            <select id="unit-price-service" name="service" defaultValue={selectedId}>
+              {!selectedService ? <option value={selectedId}>公開対象外のサービス</option> : null}
+              {services.map((service) => (
+                <option value={service.service_id} key={service.service_id}>
+                  {service.label}
+                </option>
+              ))}
+            </select>
+          </label>
           {q ? <input type="hidden" name="q" value={q} /> : null}
           <button type="submit">表示する</button>
         </form>
@@ -128,14 +130,16 @@ export default async function UnitPricePage({
             <h2>地域区分・単価を検索</h2>
             <form className="region-search-form" method="get">
               <input type="hidden" name="service" value={selectedId} />
-              <label htmlFor="unit-price-query">地域区分、単価、市区町村名</label>
-              <input
-                id="unit-price-query"
-                name="q"
-                defaultValue={q}
-                maxLength={120}
-                placeholder="例：一級地、地域区分、横浜市"
-              />
+              <label htmlFor="unit-price-query">
+                地域区分、単価、市区町村名
+                <input
+                  id="unit-price-query"
+                  name="q"
+                  defaultValue={q}
+                  maxLength={120}
+                  placeholder="例：一級地、地域区分、横浜市"
+                />
+              </label>
               <button type="submit">検索</button>
             </form>
             {query ? (
