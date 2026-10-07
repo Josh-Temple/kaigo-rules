@@ -70,6 +70,12 @@ jobs:
         if: steps.ready.outputs.integrated == 'true'
         with:
           node-version: "22"
+      - name: Validate A publication planner before the HTTP checks
+        if: steps.ready.outputs.integrated == 'true'
+        run: python -m unittest discover -s tests -p 'test_daily_deploy_plan.py' -v
+      - name: Validate B unit-price and C SEO regression contracts
+        if: steps.ready.outputs.integrated == 'true'
+        run: node --experimental-strip-types --test tests/unit-price-discovery.test.mjs tests/public-seo.test.mjs
       - name: Install dependencies and PDF reparse tools
         if: steps.ready.outputs.integrated == 'true'
         run: |
