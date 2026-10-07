@@ -93,6 +93,32 @@ Vercel receive:
 
 以上から、**production Web AnalyticsのVercel側pageview受信は確認済み** とする。受信した1 pageviewは需要・効果の証拠とは扱わず、controlled verification trafficとも混同しない。
 
+## Worker E Observation Activation & Learning Loop release
+
+2026-10-07にintegration PR #428をmainへ統合し、Kaigo Opsのruntime変更をexact integration SHAでproductionへ反映した。
+
+- integration PR: #428
+- runtime release SHA: `b7a29a0da5c24787a9792bb6c55e6a14a330f897`
+- production deployment: `dpl_63FnsT15tnNQ1YDmTkJAYNyNh27v`
+- deployment state: `READY`
+- production alias: `https://ops-site-pi.vercel.app/`
+- alias error: none
+
+Repository-sideでは、integration headに対して `Validate ops site`、`Validate build`、publication-readiness integrationがすべて成功した。
+
+release後のproduction verificationでは、home、5 Issue、5 action tool、5つのIssue → tool / Kaigo Rules / feedback journey、`robots.txt`、`sitemap.xml`、Analytics script delivery、390px browser journeyを確認し、すべてPASSした。
+
+release後のWeb Analytics fresh確認:
+
+- `visitors: 2 / pageviews: 2`
+- requestPath: `/` = 2
+- browserName: Chrome = 1 / Firefox = 1
+- deviceType: desktop = 2
+
+この2 pageviewは個々のアクセス由来を確定していない。controlled browser verificationは実利用として扱わず、現在のpageview数から需要、改善効果、tool利用完了を推定しない。
+
+Analytics stateは **RECEIVE_CONFIRMED** を維持し、first confirmed observation dateは **2026-10-07** のままとする。
+
 ## 次の確認
 
 Web Analytics有効化の手作業はblockerではなくなった。以後はpageviewを継続観測し、2〜4週間程度の母数ができるまでは需要・改善効果を断定しない。
