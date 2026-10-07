@@ -99,10 +99,31 @@ def public_unit_price_rows(payload: dict) -> list[dict]:
     return items
 
 
+def published_unit_price_service_ids() -> list[str]:
+    """Use the exact deployed revision's allowlist, not old conversation counts."""
+    root = Path(__file__).resolve().parents[1]
+    allowlist = json.loads(
+        (root / "data/bounded-publication-allowlist.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    ids = sorted({
+        row["service_id"]
+        for row in allowlist.get("publication_cell_allowlist", [])
+        if row.get("source_family") == UNIT_PRICE_FAMILY
+        and isinstance(row.get("service_id"), str)
+    })
+    if not ids:
+        raise AssertionError("no allowed unit-price services in this revision")
+    return ids
+
+
 class PublicReliabilityProbe:
-    def __init__(self, base_url: str, expected_sha: str):
+    def __init__(self, base_url: str, expected_sha: str,
+                 service_ids: tuple[str, ...] = ("dayservice", "homevisit")):
         self.base_url = base_url.rstrip("/")
         self.expected_sha = expected_sha
+        self.service_ids = service_ids
         self.results: list[dict] = []
 
     def get(self, path: str) -> tuple[int, str]:
@@ -220,7 +241,7 @@ class PublicReliabilityProbe:
         self.check("exact_deployed_commit", self.verify_version)
         self.check("canonical_metadata_and_http_routes", self.verify_urls)
         self.check("robots_sitemap", self.verify_discovery)
-        for service_id in ("dayservice", "homevisit"):
+        for service_id in self.service_ids:
             self.check(f"unit_price_api_vs_html_{service_id}",
                        lambda sid=service_id: self.verify_unit_price(sid))
         self.check("unpublished_vs_no_match", self.verify_unpublished_and_no_match)
@@ -229,6 +250,7 @@ class PublicReliabilityProbe:
             "status": "PASS" if passed == len(self.results) else "FAIL",
             "base_url": self.base_url,
             "expected_sha": self.expected_sha,
+            "unit_price_services_checked": len(self.service_ids),
             "passed": passed,
             "total": len(self.results),
             "checks": self.results,
@@ -243,7 +265,8 @@ def main() -> int:
     parser.add_argument("--expected-sha", required=True)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    report = PublicReliabilityProbe(args.base_url, args.expected_sha).run()
+    ids = tuple(published_unit_price_service_ids())
+    report = PublicReliabilityProbe(args.base_url, args.expected_sha, ids).run()
     output = json.dumps(report, ensure_ascii=False, indent=2)
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
