@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - ".github/workflows/verify-kaigo-ops-production-e.yml"
+  pull_request:
   workflow_dispatch:
 
 permissions:
