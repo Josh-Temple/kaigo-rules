@@ -36,6 +36,10 @@ for (const tool of actionToolRoutes) {
   assert.ok(html.includes('送信・自動保存されません'), `${tool.href}: no persistence notice`);
   assert.ok(html.includes('改善効果'), `${tool.href}: non-effect guard`);
   assert.ok(html.includes(`href="${tool.evidenceHref}"`), `${tool.href}: evidence return`);
+  for (const text of ['記入後の次の1手', '何を試したか', 'どこで止まったか', '何が足りなかったか', '公開・保存されます']) {
+    assert.ok(html.includes(text), `${tool.href}: tool follow-through ${text}`);
+  }
+  assert.ok(html.includes('GitHub Issuesでフィードバックする'), `${tool.href}: tool feedback link`);
   console.log(`PASS ${tool.href}`);
 }
 
