@@ -46,13 +46,13 @@ Human field validationは `OPTIONAL_EXTERNAL_VALIDATION / NOT_RUN`。
 
 ## Measurement state
 
-2026-10-07のWorker E releaseで、Kaigo Opsはrelease main SHA `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2` をproduction deployment `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq` として反映し、`READY` とproduction alias割当を確認した。
+2026-10-07のObservation Activation & Learning Loop Waveでは、integration PR #428をmainへ統合したruntime release SHA `b7a29a0da5c24787a9792bb6c55e6a14a330f897` をKaigo Ops production deployment `dpl_63FnsT15tnNQ1YDmTkJAYNyNh27v` として反映し、`READY` とproduction alias `https://ops-site-pi.vercel.app/` の割当を確認した。
 
-Vercel Web Analyticsのclient implementationは存在し、productionではcompatibility routeとResilient Intake scriptのHTTP 200配信を確認した。2026-10-07のWorker A fresh確認では、開始時 `visitors: 0 / pageviews: 0` だったWeb Analytics APIが、その後 `visitors: 1 / pageviews: 1`、requestPath `/` = 1となった。受信browserはFirefox / desktopで、controlled PlaywrightのChromium trafficとは一致しない。
+Vercel Web Analyticsはproduction pageview受信確認済みで、first confirmed observation dateは **2026-10-07**。Worker Aの初回確認では `visitors: 1 / pageviews: 1`、requestPath `/` = 1（Firefox / desktop）だった。Worker Eのrelease後fresh確認では `visitors: 2 / pageviews: 2`、requestPath `/` = 2、browser breakdownはChrome 1 / Firefox 1、deviceTypeはdesktop 2となった。
 
-controlled Playwrightではpageview callが `window.vaq` に積まれる一方、deployed Analytics scriptの自動化判定により送信されないことも確認した。このtrafficは実利用値に含めない。
+controlled Playwrightは実利用値として扱わない。release後の2 pageviewについても、個々のアクセス由来を確定していないため、需要・改善効果・tool利用の証拠には使わない。
 
-したがってAnalytics stateは **production pageview receive confirmed / observation started 2026-10-07** とする。1 pageviewから需要や改善効果は判断しない。
+したがってAnalytics stateは **production pageview receive confirmed / observation started 2026-10-07** を維持する。
 
 初期観測はpageviewだけとし、対象・解釈・非収集データは `docs/kaigo-ops/measurement.md` を正本として確認する。
 
@@ -78,22 +78,23 @@ Issue 6「収支・コスト構造」は開始していない。Analyticsの実�
 
 ## Production release state
 
-2026-10-07 Utilization & Actionability Wave:
+2026-10-07 Observation Activation & Learning Loop Wave:
 
-- integration PR: #421
-- release main SHA: `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2`
-- Kaigo Ops deployment: `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq`
+- integration PR: #428
+- runtime release SHA: `b7a29a0da5c24787a9792bb6c55e6a14a330f897`
+- Kaigo Ops deployment: `dpl_63FnsT15tnNQ1YDmTkJAYNyNh27v`
 - deployment state: `READY`
 - production alias: `https://ops-site-pi.vercel.app/`
 - five public Issues: maintained
-- five action tools: integrated
-- contextual Kaigo Rules bridge: 5 / 5 Issues
-- generic Kaigo Rules bridge: 5 / 5 Issues
-- minimal feedback path: 5 / 5 Issues
+- five action tools: maintained
+- Issue / tool feedback context: integrated
+- canonical / social metadata: integrated
+- `robots.txt` / `sitemap.xml`: production verification PASS
+- custom event: not added
 
-Repository-side `Validate ops site` passed `npm test`, `npm run build`, and route smoke verification on the integrated release source. Vercel deployment metadata confirms the same release SHA and READY state。
+Integration source passed `Validate ops site`, `Validate build`, and publication-readiness CI. Production verification passed the public route/journey checks, metadata endpoint checks, Analytics script delivery, and 390px browser verification for the home page, all 5 Issue routes, all 5 action-tool routes, and all 5 Issue → tool / Kaigo Rules / feedback journeys.
 
-Production verification also passed the public route/journey checks and 390px browser verification for the home page, all 5 Issue routes, all 5 action-tool routes, and all 5 Issue → tool / Kaigo Rules / feedback journeys. Analytics script delivery is confirmed, and Worker A subsequently confirmed Vercel-side production pageview receive.
+The preceding Utilization & Actionability runtime release was `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2` / `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq`. The current production runtime is the Observation Activation & Learning Loop release above.
 
 ## Current non-claims
 
