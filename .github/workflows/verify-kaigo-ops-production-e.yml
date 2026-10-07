@@ -44,7 +44,7 @@ jobs:
       - name: Verify 390px production journeys
         shell: bash
         run: |
-          cat > /tmp/verify-mobile.mjs <<'EOF'
+          cat > verify-mobile.tmp.mjs <<'EOF'
           import { chromium } from 'playwright';
 
           const base = 'https://ops-site-pi.vercel.app';
@@ -89,4 +89,5 @@ jobs:
           }
           await browser.close();
           EOF
-          node /tmp/verify-mobile.mjs
+          node verify-mobile.tmp.mjs
+          rm -f verify-mobile.tmp.mjs
