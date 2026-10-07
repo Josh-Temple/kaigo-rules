@@ -164,9 +164,9 @@ route別については、Analytics受信自体が未確認のため「0 pagevie
 - feedback count: **0件**（`[Kaigo Opsフィードバック]` title prefixでfresh検索）
 - feedback category summary: 該当なし。0件を失敗・満足・需要なしとは解釈しない
 - Search Console impressions / clicks: **unknown / unavailable**
-- indexing state summary: **unknown / unavailable**。snapshot時点でsame-wave Worker AのSearch Console結果はrepository上で確認できず、current mainのcanonical stateではSearch Console property / sitemap submission / Google indexingは未確認のまま
+- indexing state summary: **unknown / unavailable**。same-wave Worker Aのcanonical record `docs/kaigo-ops/search-discovery-observation.md` では、認証済みSearch Console接続が利用できないため、property / sitemap submission / major 6 URL index state / Google-selected canonical は `UNKNOWN`、indexing request は `NOT_RUN` と記録されている
 - controlled traffic caveat: deployed Analytics scriptはheadless / webdriver trafficを除外することが既存検証で確認済み。ただし今回の6 visitors / 7 pageviewsの個々の由来は確定できず、外部実利用者数や独立した需要の証拠として扱わない
-- 重要な欠落 / blocker: Search Consoleのsame-wave結果はsnapshot時点で未取得。Analytics受信自体のblockerはなし
+- 重要な欠落 / blocker: Search Consoleは認証済み接続が利用できず、property / sitemap submission / URL Inspectionを実確認できない。Analytics受信自体のblockerはなし
 - interpretation: production Analytics受信は継続している。一方、観測はhomeに限られ、Issue / toolの利用差を判断できる母数はまだない。feedbackも0件であり、改善対象の優先順位を確定する根拠はまだ不足している
 - next check: **earliest review target 2026-10-21前後 / broader review window 2026-10-21〜2026-11-04前後**
 
