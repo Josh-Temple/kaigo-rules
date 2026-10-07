@@ -22,14 +22,14 @@ Kaigo Opsの既存Issueを第三者へ直接共有するとき、トップペー
 
 Repository:
 
-- fresh main: `61620d77976b0fb692256c4b18993ef1498e4116`
+- release integration SHA: `81a307738d7a40562ad033c3d2491cd05a2f2337`
 
 Kaigo Ops production:
 
 - project: `kaigo-ops`
 - project id: `prj_7kKmZkto1j9r9Z3otwccx05LAjTp`
-- production deployment: `dpl_63FnsT15tnNQ1YDmTkJAYNyNh27v`
-- runtime release SHA: `b7a29a0da5c24787a9792bb6c55e6a14a330f897`
+- production deployment: `dpl_6JuE6Cm2UnxFVvQdDZTV4cCRkhY1`
+- runtime release SHA: `81a307738d7a40562ad033c3d2491cd05a2f2337`
 - public alias: `https://ops-site-pi.vercel.app/`
 - deployment state: `READY`
 
@@ -49,7 +49,7 @@ Productionでhome、5 Issue、5 action toolをfresh確認し、すべてHTTP 200
 
 を確認した。
 
-390px journeyはcurrent production releaseのcanonical verificationでPASS済み。今回のWorker C差分ではlayout / CSS / navigation structureを変更しない。
+390px journeyはWorker E production verifier run `37653052826` でcurrent productionを再確認し、home、5 Issue、5 action tool、5つのIssue journeyとKaigo Rulesのcontextual entryまでPASSした。
 
 ## Direct-entry audit
 
@@ -63,14 +63,9 @@ Productionでhome、5 Issue、5 action toolをfresh確認し、すべてHTTP 200
 | Kaigo Rulesへ戻れる | contextual link + home | contextual link + home | PASS |
 | feedbackへ進める | GitHub Issues | GitHub Issues | PASS |
 | share metadata | canonical / OG / Twitter summary | canonical / OG / Twitter summary | PASS |
-| mobile | current production 390px verification済み。Cではlayout/CSS変更なし | 同左 | PASS / no structural change |
+| mobile | current production 390px verification済み | current production 390px verification済み | PASS |
 
-Auditで確認できた軽微な品質不整合は、情報探索Issueの
-
-- 「人間による人間による現場検証」という重複表現
-- ページ上部の「最終更新: 2026-10-07」とfooterの「最終更新: 2026-09-29」の不一致
-
-の2点だった。shareabilityのための新しいclaimや広告的CTAは追加せず、この2点だけを修正対象とする。
+Worker C auditで確認した情報探索Issueの重複表現とfooter更新日の不一致は、今回のproduction releaseで修正済み。shareabilityのための新しいclaimや広告的CTAは追加していない。
 
 ---
 
