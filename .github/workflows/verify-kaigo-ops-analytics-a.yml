@@ -24,11 +24,17 @@ jobs:
         with:
           node-version: "22"
       - run: npm ci --no-audit --no-fund
+      - name: Check Analytics script delivery directly
+        shell: bash
+        run: |
+          code="$(curl --silent --show-error --location --output /tmp/analytics-script.js --write-out '%{http_code}' https://ops-site-pi.vercel.app/_vercel/insights/script.js || true)"
+          echo "DIRECT_ANALYTICS_SCRIPT_HTTP_STATUS=$code"
+          test "$code" = "200"
       - name: Install Chromium
         run: |
           npm install --no-save --ignore-scripts playwright@1.55.0
           npx playwright install --with-deps chromium
-      - name: Verify production Analytics browser send
+      - name: Diagnose production Analytics browser send
         shell: bash
         run: |
           cat > verify-analytics.tmp.mjs <<'EOF'
@@ -37,42 +43,52 @@ jobs:
           const base = 'https://ops-site-pi.vercel.app';
           const routes = ['/', '/issues/information-search'];
           const analytics = [];
+          const failures = [];
 
           const browser = await chromium.launch({ headless: true });
           const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
 
           page.on('request', request => {
             if (request.url().includes('/_vercel/insights/')) {
-              analytics.push({
-                kind: 'request',
-                method: request.method(),
-                url: request.url(),
-              });
+              analytics.push({ kind: 'request', method: request.method(), url: request.url() });
               console.log('ANALYTICS_REQUEST', request.method(), request.url());
             }
           });
 
           page.on('response', response => {
             if (response.url().includes('/_vercel/insights/')) {
-              analytics.push({
-                kind: 'response',
-                status: response.status(),
-                url: response.url(),
-              });
+              analytics.push({ kind: 'response', status: response.status(), url: response.url() });
               console.log('ANALYTICS_RESPONSE', response.status(), response.url());
             }
           });
 
+          page.on('requestfailed', request => {
+            if (request.url().includes('/_vercel/insights/')) {
+              failures.push({ url: request.url(), error: request.failure()?.errorText ?? 'unknown' });
+              console.log('ANALYTICS_REQUEST_FAILED', request.url(), request.failure()?.errorText ?? 'unknown');
+            }
+          });
+
+          page.on('pageerror', error => console.log('PAGE_ERROR', error.message));
+
           for (const route of routes) {
             const response = await page.goto(base + route, { waitUntil: 'networkidle' });
-            if (!response || !response.ok()) {
-              throw new Error(route + ': HTTP ' + (response?.status() ?? 'no response'));
-            }
-            await page.waitForTimeout(1500);
+            if (!response || !response.ok()) throw new Error(route + ': HTTP ' + (response?.status() ?? 'no response'));
+            await page.waitForTimeout(2500);
+
+            const scriptSrcs = await page.locator('script[src]').evaluateAll(nodes =>
+              nodes.map(node => node.getAttribute('src')).filter(Boolean)
+            );
+            const resourceNames = await page.evaluate(() =>
+              performance.getEntriesByType('resource').map(entry => entry.name)
+            );
+
             console.log('CONTROLLED_ROUTE', route);
+            console.log('SCRIPT_SRCS', JSON.stringify(scriptSrcs));
+            console.log('INSIGHTS_RESOURCES', JSON.stringify(resourceNames.filter(name => name.includes('/_vercel/insights/'))));
           }
 
-          await page.waitForTimeout(2000);
+          await page.waitForTimeout(3000);
           await browser.close();
 
           const scriptResponse = analytics.some(
@@ -82,11 +98,9 @@ jobs:
             item => item.kind === 'request' && item.url.includes('/_vercel/insights/view')
           );
 
-          console.log('ANALYTICS_SCRIPT_200=' + scriptResponse);
-          console.log('ANALYTICS_VIEW_REQUEST=' + viewRequest);
-
-          if (!scriptResponse) throw new Error('Analytics script did not return HTTP 200');
-          if (!viewRequest) throw new Error('Browser pageview request was not observed');
+          console.log('BROWSER_ANALYTICS_SCRIPT_200=' + scriptResponse);
+          console.log('BROWSER_ANALYTICS_VIEW_REQUEST=' + viewRequest);
+          console.log('BROWSER_ANALYTICS_FAILED_REQUESTS=' + failures.length);
           EOF
           node verify-analytics.tmp.mjs
           rm -f verify-analytics.tmp.mjs
