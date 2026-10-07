@@ -65,7 +65,7 @@ Kaigo Rulesとは公開面を分離します。
 
 各Issueには、内容に応じたKaigo Rulesの公開DB検索とKaigo Rulesトップへの導線があります。サービス適用範囲はKaigo Ops側で推定せず、必要な制度判断はKaigo Rules側の検証状態と一次資料で確認します。
 
-フィードバックはGitHub Issuesを再利用します。投稿内容はGitHub上で公開・保存されるため、氏名、利用者情報、介護記録、事業所の非公開情報は入力しないよう案内しています。
+フィードバックはGitHub Issuesを再利用します。5 Issueと5 action toolから同じ3質問（「何を試したか」「どこで止まったか」「何が足りなかったか」）へ進め、action toolから開始した場合はIssue routeとtool routeをprefillします。投稿内容はGitHub上で公開・保存されるため、氏名、利用者情報、介護記録、事業所の非公開情報は入力しないよう、リンク元とprefillの両方で案内します。内部の分類は利用者に選択させず、投稿後に少数カテゴリへ整理します。詳細は `../docs/kaigo-ops/feedback-triage.md` を参照してください。
 
 ## First deep Issueの検証状態
 
