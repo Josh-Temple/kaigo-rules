@@ -39,6 +39,8 @@ jobs:
         run: npm run build
       - name: Compile production gate verifier
         run: python -m py_compile scripts/verify_field_validation_production.py
+      - name: Regression test daily deployment planner
+        run: python -m unittest discover -s tests -p 'test_daily_deploy_plan.py'
 
       - name: Smoke test key routes
         shell: bash
