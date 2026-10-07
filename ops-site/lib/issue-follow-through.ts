@@ -30,12 +30,16 @@ export const issueFollowThrough = {
 
 export type IssuePath = keyof typeof issueFollowThrough;
 
-export function buildOpsFeedbackHref(issuePath: IssuePath) {
+export function buildOpsFeedbackHref(issuePath: IssuePath, toolPath?: string) {
   const config = issueFollowThrough[issuePath];
   const title = `[Kaigo Opsフィードバック] ${config.issueLabel}`;
+  const target = [
+    `Issue: ${issuePath}`,
+    toolPath ? `Tool: ${toolPath}` : null,
+  ].filter(Boolean);
   const body = [
     "## 対象",
-    `Kaigo Ops ${issuePath}`,
+    ...target,
     "",
     "## 何を試したか",
     "",
@@ -43,7 +47,8 @@ export function buildOpsFeedbackHref(issuePath: IssuePath) {
     "",
     "## 何が足りなかったか",
     "",
-    "## 入力しないでください",
+    "## 投稿前に確認してください",
+    "この投稿はGitHub Issuesで公開・保存されます。",
     "氏名、利用者情報、介護記録、事業所の非公開情報などは記載しないでください。",
   ].join("\n");
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CommunicationWorksheet from "./worksheet";
+import ToolFollowThrough from "../_components/ToolFollowThrough";
 
 export const metadata: Metadata = {
   title: "問い合わせ・確認往復の棚卸しシート | 介護業務改善",
@@ -30,6 +31,8 @@ export default function CommunicationReviewPage() {
       </section>
 
       <CommunicationWorksheet />
+
+      <ToolFollowThrough issuePath="/issues/communication-collaboration" toolPath="/tools/communication-review" />
 
       <footer>
         <span>記入用様式 / 2026-10-07</span>

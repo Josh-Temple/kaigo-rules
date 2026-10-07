@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { buildPublicPageMetadata } from "../../../lib/site-metadata";
 import IssueNavigation from "../_components/IssueNavigation";
 import IssueFollowThrough from "../_components/IssueFollowThrough";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPublicPageMetadata({
+  path: "/issues/training-handover",
   title: "職員教育・引き継ぎが属人化する | 介護業務改善",
-  description:
-    "介護現場の研修・引き継ぎ・質問対応を、正本化、検索、短い教材、職員同士の学び合い、必要に応じたAI検索の順にどう改善するかを整理します。",
-};
+  description: "介護現場の研修・引き継ぎ・質問対応を、正本化、検索、短い教材、職員同士の学び合い、必要に応じたAI検索の順にどう改善するかを整理します。",
+  type: "article",
+});
 
 const findings = [
   {

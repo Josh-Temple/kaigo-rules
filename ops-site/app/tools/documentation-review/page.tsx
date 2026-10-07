@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import DocumentationWorksheet from './worksheet';
+import ToolFollowThrough from '../_components/ToolFollowThrough';
 
 export const metadata: Metadata = {
   title: '記録業務の見直しシート | 介護業務改善',
@@ -19,6 +20,7 @@ export default function DocumentationReviewPage() {
       <p>これは業務改善の記入用様式です。制度上必要な記録を省略できるかを判定するものではありません。</p>
     </section>
     <DocumentationWorksheet />
+    <ToolFollowThrough issuePath="/issues/documentation" toolPath="/tools/documentation-review" />
     <footer><span>記入用様式 / 2026-10-02</span><a href="/issues/documentation#evidence">改善手順の根拠へ戻る</a></footer>
   </main>;
 }

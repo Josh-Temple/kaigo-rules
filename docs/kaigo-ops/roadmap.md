@@ -162,6 +162,8 @@ PVやページ数だけを主要KPIにしない。
 
 可能なら少人数の現場利用者から定性的なフィードバックを得るが、参加者確保を開発停止条件にはしない。
 
+pageviewとfeedbackの継続観測は `docs/kaigo-ops/usage-observation.md` に記録する。初回観測日は2026-10-07とし、そこから2〜4週間後に5 Issue / 5 toolsを同じ期間でレビューする。route別比較は人気順位ではなく、観測あり / 観測なし / データ不足として保守的に読む。
+
 ## Phase 6 — 小規模事業としての検証
 
 無料部分で利用価値が確認できた後に試す。
@@ -204,9 +206,9 @@ PVやページ数だけを主要KPIにしない。
 ## 直近の優先順位
 
 1. 5 Issueと5 action toolのproduction route・mobile journeyを維持する
-2. tracking script配信は確認済みなので、実ブラウザからのpageview送信とVercel側受信を確認する
-3. pageview受信が確認できない場合は、Vercel Dashboardで `kaigo-ops` のWeb Analytics enabled状態を確認し、初回受信を確認できた日を観測開始日として記録する
-4. pageviewと最小フィードバックで利用実態を観測し、少数データから需要や効果を断定しない
-5. pageviewだけで判断できないことが確認できた場合に限り、必要最小限のcustom eventを検討する
+2. 2026-10-07を初回観測日として、pageviewと最小フィードバックの観測を継続する
+3. 2〜4週間程度の母数ができるまでは、少数pageviewから需要や改善効果を断定しない
+4. 課題別・tool別の閲覧偏りとフィードバックを `docs/kaigo-ops/usage-observation.md` に記録し、次の改善対象を選ぶための観測値として使う
+5. pageviewだけで判断できないことが確認できた場合に限り、privacy boundaryを確認したうえで必要最小限のcustom eventを検討する
 6. 令和8年度介護事業経営実態調査の集計結果が公表され、かつ既存5 Issueの利用・フィードバックから優先度が確認できたら「収支・コスト構造」を再評価する
 7. 利用データとフィードバックを基に、再調査・事業化候補を判断する

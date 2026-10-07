@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { buildPublicPageMetadata } from "../../../lib/site-metadata";
 import IssueNavigation from "../_components/IssueNavigation";
 import IssueFollowThrough from "../_components/IssueFollowThrough";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPublicPageMetadata({
+  path: "/issues/documentation",
   title: "記録・文書作成に時間がかかる | 介護業務改善",
-  description:
-    "介護記録、報告、転記などの文書作業を、業務の見直し・データ再利用・ICT・AIによる下書きの順にどう減らすかを、公的資料と研究から整理します。",
-};
+  description: "介護記録、報告、転記などの文書作業を、業務の見直し・データ再利用・ICT・AIによる下書きの順にどう減らすかを、公的資料と研究から整理します。",
+  type: "article",
+});
 
 const findings = [
   {

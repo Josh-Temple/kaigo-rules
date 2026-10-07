@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { issueRegistry } from '../app/issues/registry.ts';
+import { actionToolRoutes } from '../lib/action-tools.ts';
 import {
   buildOpsFeedbackHref,
   issueFollowThrough,
@@ -28,12 +29,23 @@ test('feedback reuses GitHub Issues and carries the three minimal prompts and pr
     const url = new URL(buildOpsFeedbackHref(issue.href));
     assert.equal(url.origin, 'https://github.com');
     assert.equal(url.pathname, '/Josh-Temple/kaigo-rules/issues/new');
+    assert.ok((url.searchParams.get('title') || '').includes(issueFollowThrough[issue.href].issueLabel));
     const body = url.searchParams.get('body') || '';
+    assert.ok(body.includes(`Issue: ${issue.href}`), issue.href + ': issue context');
     for (const prompt of ['何を試したか', 'どこで止まったか', '何が足りなかったか']) {
       assert.ok(body.includes(prompt), issue.href + ': ' + prompt);
     }
+    assert.ok(body.includes('GitHub Issuesで公開・保存されます'), issue.href + ': public persistence warning');
     for (const forbiddenInput of ['氏名', '利用者情報', '介護記録', '事業所の非公開情報']) {
       assert.ok(body.includes(forbiddenInput), issue.href + ': privacy warning ' + forbiddenInput);
     }
+  }
+});
+
+test('action-tool feedback prefill preserves both issue and tool route context', () => {
+  for (const tool of actionToolRoutes) {
+    const body = new URL(buildOpsFeedbackHref(tool.issueHref, tool.href)).searchParams.get('body') || '';
+    assert.ok(body.includes(`Issue: ${tool.issueHref}`), tool.href + ': issue context');
+    assert.ok(body.includes(`Tool: ${tool.href}`), tool.href + ': tool context');
   }
 });

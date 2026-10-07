@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { buildPublicPageMetadata } from "../../../lib/site-metadata";
 import IssueNavigation from "../_components/IssueNavigation";
 import IssueFollowThrough from "../_components/IssueFollowThrough";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPublicPageMetadata({
+  path: "/issues/information-search",
   title: "必要な情報を探すのに時間がかかる | 介護業務改善",
-  description:
-    "制度・通知・Q&A・事業所内資料など、散らばった情報をどう整理し、必要な根拠へ早く到達できるようにするかを、調査結果・機械評価・実務上の改善手順から整理します。",
-};
+  description: "制度・通知・Q&A・事業所内資料など、散らばった情報をどう整理し、必要な根拠へ早く到達できるようにするかを、調査結果・機械評価・実務上の改善手順から整理します。",
+  type: "article",
+});
 
 const findings = [
   {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import WorkTimeWorksheet from "./worksheet";
+import ToolFollowThrough from "../_components/ToolFollowThrough";
 
 export const metadata: Metadata = {
   title: "業務時間・待ち・間接業務の棚卸しシート | 介護業務改善",
@@ -31,6 +32,8 @@ export default function WorkTimeReviewPage() {
       </section>
 
       <WorkTimeWorksheet />
+
+      <ToolFollowThrough issuePath="/issues/productivity-utilization" toolPath="/tools/work-time-review" />
 
       <footer>
         <span>記入用様式 / 2026-10-07</span>

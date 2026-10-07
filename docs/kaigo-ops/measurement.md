@@ -9,6 +9,8 @@ Kaigo Opsの利用状況を、まずpageviewだけで観測する。
 
 pageviewは「次にどこを改善するか」を考えるための観測値として使い、業務改善効果や需要を直接示す指標として扱わない。
 
+継続観測の台帳、2〜4週間レビュー、判断ルールは `docs/kaigo-ops/usage-observation.md` をcanonical operational ledgerとする。このファイルは計測対象・非収集データ・初回観測日の技術契約を担い、観測値の解釈と履歴はusage observation側で管理する。
+
 ## 2026-10-07 pre-release fresh確認結果
 
 Repository baseline:
@@ -56,13 +58,46 @@ Vercel側のproject-level enable flagは、現在利用できるproject取得結
 
 release後のproduction verificationでは `/_vercel/insights/script.js` がHTTP 200となり、tracking scriptの配信は確認できた。
 
-一方、同じrelease後にVercel Web Analytics pageview APIを再確認した結果は `visitors: 0 / pageviews: 0`で、path別集計も空だった。したがって、**script配信は確認済みだが、pageview送信・Vercel側受信は未確認** とする。project-level Web Analyticsのenabled flagは利用可能なproject取得結果に露出していない。
+release直後のVercel Web Analytics pageview APIは `visitors: 0 / pageviews: 0`で、path別集計も空だった。
 
-## 残る確認
+## Worker A observation activation verification
 
-Vercel Dashboardで `kaigo-ops` → Analytics の状態を確認する。pageviewが引き続き0の場合は、enabled状態と受信状況を確認し、実ブラウザからのpageview送信 → Vercel側受信の順に切り分ける。
+2026-10-07に、current `main`、production deployment、public alias、Analytics client implementation、script delivery、Web Analytics APIをfresh確認した。
 
-script routeの生成・配信自体は今回のrelease後に確認済みであり、再度のproduction deploymentを前提条件にはしない。
+Starting state:
+
+- main: `f0fed0aaf923fa7feaf4bb78949182ffcfb10c3c`
+- production deployment: `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq`
+- production implementation SHA: `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2`
+- public alias: `https://ops-site-pi.vercel.app/`
+- `@vercel/analytics`: `2.0.1`
+- root layout: `<Analytics />` present
+
+Delivery / browser diagnosis:
+
+- compatibility route `/_vercel/insights/script.js`: HTTP 200
+- productionが挿入するResilient Intake script: `/f130755abdc7617b/script.js`: HTTP 200
+- script tagは `data-view-endpoint="/f130755abdc7617b/view"` を持つ
+- controlled Playwrightではpageview callが `window.vaq` に積まれることを確認した
+- deployed Analytics scriptには `navigator.webdriver || navigator.userAgent.includes("Headless")` の自動化判定があり、Playwright trafficではqueueが送信処理へ進まなかった
+- したがってcontrolled Playwright trafficは実利用として数えず、positive receive testにも使わない
+
+Vercel receive:
+
+- verification開始時: `visitors: 0 / pageviews: 0`
+- その後のfresh API確認: `visitors: 1 / pageviews: 1`
+- requestPath: `/` = 1 pageview
+- browserName: Firefox
+- deviceType: desktop
+- この受信はcontrolled PlaywrightのChromium trafficとは一致しない
+
+以上から、**production Web AnalyticsのVercel側pageview受信は確認済み** とする。受信した1 pageviewは需要・効果の証拠とは扱わず、controlled verification trafficとも混同しない。
+
+## 次の確認
+
+Web Analytics有効化の手作業はblockerではなくなった。以後はpageviewを継続観測し、2〜4週間程度の母数ができるまでは需要・改善効果を断定しない。
+
+自動化ブラウザはAnalytics側で除外されるため、将来のproduction verificationでもPlaywright pageviewを実利用値として扱わない。
 
 ## 最初に観測するページ
 
@@ -108,6 +143,8 @@ pageviewだけでは次の改善判断ができないことが確認できた場
 
 ## 観測開始日
 
-未確定。
+**2026-10-07**
 
-productionでpageview送信とVercel側受信を確認できた日を初回観測日として記録する。2026-10-07にtracking script配信までは確認したが、受信は未確認。
+productionでVercel側のpageview受信を初めて確認できた日を初回観測日とする。
+
+この日付は「需要が確認できた日」「業務改善効果が確認できた日」ではない。初回受信の1 pageviewについても、利用価値や需要を推定する根拠には使わない。
