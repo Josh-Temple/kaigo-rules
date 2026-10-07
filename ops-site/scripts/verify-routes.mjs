@@ -22,3 +22,30 @@ assert.equal(worksheet.status, 200, 'worksheet route');
 const worksheetText = await worksheet.text();
 for (const text of ['記録業務の', '確認・修正', '架空例を読み込む', '印刷・PDF保存', '送信・自動保存されません']) assert.ok(worksheetText.includes(text), `worksheet: ${text}`);
 console.log('PASS /tools/documentation-review');
+const actionTools = [
+  {
+    issue: '/issues/communication-collaboration',
+    route: '/tools/communication-review',
+    link: 'href="/tools/communication-review"',
+    texts: ['問い合わせ・確認往復の', '送信・自動保存されません', '個人名', '例外時のエスカレーション', '改善成功とは判断しません'],
+  },
+  {
+    issue: '/issues/productivity-utilization',
+    route: '/tools/work-time-review',
+    link: 'href="/tools/work-time-review"',
+    texts: ['業務時間・待ち・間接業務の', '送信・自動保存されません', '個人評価', '直接ケア', '時間差だけでは改善成功'],
+  },
+];
+
+for (const tool of actionTools) {
+  const issueHtml = await (await fetch(`${base}${tool.issue}`)).text();
+  assert.ok(issueHtml.includes(tool.link), `${tool.issue}: action tool link`);
+  const response = await fetch(`${base}${tool.route}`);
+  assert.equal(response.status, 200, tool.route);
+  const html = await response.text();
+  for (const expected of tool.texts) {
+    assert.ok(html.includes(expected), `${tool.route}: ${expected}`);
+  }
+  assert.ok(html.includes('https://kaigo-rules.vercel.app/'), `${tool.route}: rules link`);
+  console.log(`PASS ${tool.route}`);
+}

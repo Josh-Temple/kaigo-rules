@@ -253,6 +253,9 @@ export default function ProductivityUtilizationIssuePage() {
               <p>対象時間、直接ケア、残業、手戻り、職員の負担を比較する。</p>
             </div>
           </div>
+          <p className="noPrint">
+            <a className="primaryLink" href="/tools/work-time-review">業務時間・待ち・間接業務を棚卸しする →</a>
+          </p>
         </section>
 
         <section className="section boundary">
