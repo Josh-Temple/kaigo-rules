@@ -1,0 +1,89 @@
+name: Verify Kaigo Ops Analytics A
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/verify-kaigo-ops-analytics-a.yml"
+      - "ops-site/**"
+      - "docs/kaigo-ops/measurement.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analytics-send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: ops-site
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+      - run: npm ci --no-audit --no-fund
+      - name: Install Chromium
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify production Analytics browser send
+        shell: bash
+        run: |
+          cat > verify-analytics.tmp.mjs <<'EOF'
+          import { chromium } from 'playwright';
+
+          const base = 'https://ops-site-pi.vercel.app';
+          const requests = [];
+
+          const browser = await chromium.launch({ headless: true });
+          const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+
+          page.on('request', request => {
+            requests.push({
+              method: request.method(),
+              resourceType: request.resourceType(),
+              url: request.url(),
+            });
+          });
+
+          const response = await page.goto(base + '/', { waitUntil: 'networkidle' });
+          if (!response || !response.ok()) {
+            throw new Error('home: HTTP ' + (response?.status() ?? 'no response'));
+          }
+          await page.waitForTimeout(2500);
+
+          const state = await page.evaluate(() => ({
+            vaType: typeof window.va,
+            vam: window.vam ?? null,
+            scripts: Array.from(document.scripts).map(s => s.src).filter(Boolean),
+            resources: performance.getEntriesByType('resource').map(r => r.name),
+          }));
+
+          console.log('CONTROLLED_ROUTE /');
+          console.log('WINDOW_VA_TYPE=' + state.vaType);
+          console.log('WINDOW_VAM=' + state.vam);
+          for (const src of state.scripts) {
+            if (/vercel|insight|analytics/i.test(src)) console.log('ANALYTICS_SCRIPT', src);
+          }
+          for (const resource of state.resources) {
+            if (/vercel|insight|analytics/i.test(resource)) console.log('ANALYTICS_RESOURCE', resource);
+          }
+          for (const request of requests) {
+            if (
+              request.method !== 'GET' ||
+              /vercel|insight|analytics|view|visit/i.test(request.url)
+            ) {
+              console.log('CANDIDATE_REQUEST', request.method, request.resourceType, request.url);
+            }
+          }
+
+          await browser.close();
+
+          if (state.vaType !== 'function') {
+            throw new Error('Vercel Analytics client did not initialize');
+          }
+          EOF
+          node verify-analytics.tmp.mjs
+          rm -f verify-analytics.tmp.mjs
