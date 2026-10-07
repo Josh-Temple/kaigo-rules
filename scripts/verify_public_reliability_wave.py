@@ -166,7 +166,8 @@ class PublicReliabilityProbe:
         for path in MAIN_ROUTES:
             html = self.require(path)
             head = extract_head(html)
-            expected = CANONICAL_ORIGIN + path
+            # Next.js normalizes the root canonical to the bare origin.
+            expected = CANONICAL_ORIGIN if path == "/" else CANONICAL_ORIGIN + path
             if head.canonical != [expected]:
                 raise AssertionError(f"{path}: canonical {head.canonical}, expected {expected}")
             if not head.title.strip() or len(head.description) != 1 or not head.description[0]:
