@@ -35,6 +35,7 @@ export default function ToolFollowThrough({
         </a>
       </div>
       <p className="issueFeedbackNote">
+        このシートへの記入だけで改善効果や制度適合を確認したことにはなりません。
         フィードバックを送らなくても、上の根拠や制度確認へ進めます。
         GitHub Issuesへの投稿にはGitHubアカウントでのサインインが必要で、投稿内容は公開・保存されます。
         氏名、利用者情報、介護記録、事業所の非公開情報は入力しないでください。
