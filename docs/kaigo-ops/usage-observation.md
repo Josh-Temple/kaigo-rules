@@ -107,6 +107,33 @@ route別については、Analytics受信自体が未確認のため「0 pagevie
 - 役に立った / 役に立たなかったこと。
 - 改善効果、業務時間削減、制度理解、実行完了。
 
+### 2026-10-07 observation activation / release verification
+
+- Analytics receive state: **受信確認済み**
+- first confirmed observation date: **2026-10-07**
+- release後fresh check: `visitors: 2 / pageviews: 2`
+- requestPath breakdown: `/` = 2。5 Issue / 5 action toolは集計行なし
+- browser breakdown: Chrome 1 / Firefox 1
+- deviceType: desktop 2
+- controlled verification: production route/journey確認と390px headless browser確認を実施。controlled trafficは実利用として扱わない
+- Kaigo Ops feedback Issue: 0件（`[Kaigo Opsフィードバック]` title prefixでfresh検索）
+- custom event: 追加なし
+
+受信は確認できたため、初回観測の起点は2026-10-07とする。一方、現在の母数は極小で、2 pageviewの個々の由来も確定していない。home以外に集計行がないことは **観測なし / 母数不足** として記録し、需要なし、tool未利用、導線失敗とは読み替えない。
+
+この時点で言えること:
+
+- Vercel側でproduction pageview受信が成立している。
+- current production runtimeで主要route、feedback導線、robots / sitemap、390px journeyの技術検証が通っている。
+- feedbackとして確認できるGitHub Issueはまだない。
+
+この時点で言えないこと:
+
+- 2 pageviewが独立した実利用者2人によるものか。
+- どのIssue / toolに需要があるか。
+- action toolが役立ったか、実行されたか。
+- 改善効果、業務時間削減、制度理解、支払い意思。
+
 ## 2〜4週間レビュー契約
 
 レビュー期間の起点は、`measurement.md` に記録された **first confirmed observation date** とする。受信未確認の間は、2〜4週間の観測期間が始まったものと扱わない。
