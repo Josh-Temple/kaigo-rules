@@ -54,15 +54,15 @@ Vercel側のproject-level enable flagは、現在利用できるproject取得結
 - production alias: `https://ops-site-pi.vercel.app/`
 - alias error: none
 
-release後にVercel Web Analytics pageview APIを再確認したが、`visitors: 0 / pageviews: 0`で、path別集計も空だった。
+release後のproduction verificationでは `/_vercel/insights/script.js` がHTTP 200となり、tracking scriptの配信は確認できた。
 
-この結果は「閲覧者がいない」ことを確定するものではなく、tracking deliveryとVercel側受信が成立したことも示さない。project-level Web Analyticsのenabled flagは利用可能なproject取得結果に露出せず、有効化actionも利用できないため、状態は `BLOCKED / NOT_CONFIRMED` とする。
+一方、同じrelease後にVercel Web Analytics pageview APIを再確認した結果は `visitors: 0 / pageviews: 0`で、path別集計も空だった。したがって、**script配信は確認済みだが、pageview送信・Vercel側受信は未確認** とする。project-level Web Analyticsのenabled flagは利用可能なproject取得結果に露出していない。
 
-## 必要な人手操作
+## 残る確認
 
-Vercel Dashboardで `kaigo-ops` → Analytics を開き、Web Analyticsが未有効ならEnableする。既に有効なら有効状態を確認する。
+Vercel Dashboardで `kaigo-ops` → Analytics の状態を確認する。pageviewが引き続き0の場合は、enabled状態と受信状況を確認し、実ブラウザからのpageview送信 → Vercel側受信の順に切り分ける。
 
-その後の次回production deploymentでAnalytics用routeが生成されたことを確認し、script配信・pageview送信・Vercel側受信を順に再確認する。
+script routeの生成・配信自体は今回のrelease後に確認済みであり、再度のproduction deploymentを前提条件にはしない。
 
 ## 最初に観測するページ
 
@@ -110,4 +110,4 @@ pageviewだけでは次の改善判断ができないことが確認できた場
 
 未確定。
 
-productionでtracking scriptが正常配信され、pageview送信とVercel側受信を確認できた日を初回観測日として記録する。2026-10-07のWorker E release時点では未確認。
+productionでpageview送信とVercel側受信を確認できた日を初回観測日として記録する。2026-10-07にtracking script配信までは確認したが、受信は未確認。

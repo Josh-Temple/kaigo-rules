@@ -103,17 +103,18 @@ Kaigo Rulesとは公開面を分離します。
 2026-10-07にVercel projectとproductionをfresh確認しました。
 
 - `@vercel/analytics` 2.0.1と`<Analytics />`はproduction bundleに含まれる
-- current productionのAnalytics script / intake routeは404で、pageview収集開始は確認できない
-- Web Analytics APIの確認値は `visitors: 0 / pageviews: 0`
-- 利用可能なVercel操作ではproject-level enable flagの確認・変更ができないため、Vercel Dashboardでの確認が残る
+- release後の `/_vercel/insights/script.js` はHTTP 200で、tracking script配信を確認済み
+- Web Analytics APIの確認値は `visitors: 0 / pageviews: 0`で、Vercel側受信はまだ確認できない
+- 利用可能なVercel操作ではproject-level enabled flagを直接確認できないため、受信が始まらない場合はVercel Dashboardでの確認が残る
 - 初期計測はpageviewだけとし、custom event、検索欄やworksheetの入力内容、個人情報、介護記録本文は追加収集しない
 
 詳細な観測対象、解釈上の注意、確認手順は `docs/kaigo-ops/measurement.md` を参照してください。
 
 ## 残りの実行と次の判断
 
-- Vercel Dashboardで `kaigo-ops` → Analytics を開き、未有効ならEnableする。既に有効ならその状態を確認する
-- 今回のproduction deployment後にscript配信・pageview送信・Vercel側受信を順に再確認し、確認できた場合だけ初回観測日を記録
+- production routeと390px主要journeyは2026-10-07のrelease後検証でPASS
+- tracking script配信は確認済み。次はpageview送信・Vercel側受信を確認し、受信できた場合だけ初回観測日を記録
+- 受信が始まらない場合はVercel Dashboardで `kaigo-ops` → Analytics のenabled状態を確認する
 - 実受信の確認日から2〜4週間後に、課題別閲覧数・見直しシートの閲覧数・母数を確認。少数データから効果や需要を確定しない
 - custom eventはまだ追加せず、pageviewで必要性が確認できてから拡張
 - 「収支・コスト構造」は令和8年度介護事業経営実態調査の集計結果公表後に更新
