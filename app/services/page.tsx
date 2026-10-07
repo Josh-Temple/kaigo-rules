@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("サービスから探す", "介護サービスの種類から公開中の制度資料と検索ページを探せます。", "/services");
+
 import Link from "next/link";
 import { DEFAULT_SERVICE_ID, listServices } from "../../lib/service-catalog";
 import { publicServiceNavigationGroups } from "../../lib/service-navigation-groups";
