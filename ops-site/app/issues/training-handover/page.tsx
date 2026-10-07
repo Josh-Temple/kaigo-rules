@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import IssueNavigation from "../_components/IssueNavigation";
+import IssueFollowThrough from "../_components/IssueFollowThrough";
 
 export const metadata: Metadata = {
   title: "職員教育・引き継ぎが属人化する | 介護業務改善",
@@ -260,9 +261,7 @@ export default function TrainingHandoverIssuePage() {
           <p>
             制度上の義務・要件を扱う内容は、Kaigo Ops内の研修資料だけで確定せず、介護ルール側の原典と検証状態へ接続します。
           </p>
-          <a className="textLink" href="https://kaigo-rules.vercel.app/" target="_blank" rel="noreferrer">
-            介護ルールで制度・原典を確認する →
-          </a>
+          <IssueFollowThrough issuePath="/issues/training-handover" />
         </section>
 
         <section className="section" id="evidence">
