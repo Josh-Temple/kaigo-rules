@@ -1,6 +1,6 @@
 # 介護業務改善 Roadmap
 
-更新日: 2026-10-07
+更新日: 2026-10-08
 状態: Working roadmap
 
 ## 現在地
@@ -203,12 +203,24 @@ pageviewとfeedbackの継続観測は `docs/kaigo-ops/usage-observation.md` に�
 
 サイト数を増やすこと自体は目的にしない。
 
+## 2026-10-08 Public Discovery & Observation Operations 状態
+
+- Kaigo Opsの技術的な検索入口は、`robots.txt`、`sitemap.xml`、home + 5 Issueのcanonical / metadataまでproductionで確認済み
+- Google Search Consoleは認証済み接続がないため、property / sitemap submission / major URL index state / Google-selected canonicalを未確認のまま維持
+- Kaigo RulesのDB横断検索後に、制度確認からKaigo Opsの業務見直しへ移る文脈付き入口をproduction反映
+- direct entryの優先対象は情報探索と記録・文書の2 Issue。共有文案とnon-claimsをdistribution kitに固定
+- Analyticsは受信継続。fresh snapshotはhomeのみ7 pageviews / 6 visitorsで、Issue / tool別の判断には母数不足
+- feedbackはopen / closedとも0件
+- custom eventは追加せず、2026-10-21前後から2026-11-04前後の初回review windowまで同じschemaで観測を続ける
+- Issue 6や新しいaction toolは開始しない
+
 ## 直近の優先順位
 
-1. 5 Issueと5 action toolのproduction route・mobile journeyを維持する
-2. 2026-10-07を初回観測日として、pageviewと最小フィードバックの観測を継続する
-3. 2〜4週間程度の母数ができるまでは、少数pageviewから需要や改善効果を断定しない
-4. 課題別・tool別の閲覧偏りとフィードバックを `docs/kaigo-ops/usage-observation.md` に記録し、次の改善対象を選ぶための観測値として使う
-5. pageviewだけで判断できないことが確認できた場合に限り、privacy boundaryを確認したうえで必要最小限のcustom eventを検討する
-6. 令和8年度介護事業経営実態調査の集計結果が公表され、かつ既存5 Issueの利用・フィードバックから優先度が確認できたら「収支・コスト構造」を再評価する
-7. 利用データとフィードバックを基に、再調査・事業化候補を判断する
+1. Kaigo Opsの5 Issue・5 action toolと、Kaigo Rules → Kaigo Opsの文脈付き入口をproductionで維持する
+2. 認証済みSearch Consoleへアクセス可能になった時点で、property、sitemap submission、major 6 URLのindex state、Google-selected canonicalを確認する。未確認をindex失敗へ読み替えない
+3. 2026-10-07を初回観測日として、pageview・Search Console discovery state・feedbackを同じsnapshot schemaで継続し、2026-10-21前後〜11-04前後に初回レビューする
+4. 第三者へ共有する場合は `docs/kaigo-ops/distribution-kit.md` の優先2 Issueとnon-claimsを使う。明示的な許可なしに外部投稿は行わない
+5. Issue / tool別の観測やfeedbackが出た場合だけ、次の改善対象を `docs/kaigo-ops/usage-observation.md` に記録する
+6. pageviewだけでは答えられない具体的な意思決定が確認され、privacy boundaryを満たす場合に限り、必要最小限のcustom eventを再検討する
+7. Issue 6「収支・コスト構造」は、令和8年度介護事業経営実態調査の集計結果と既存5 Issueの利用・feedbackの双方が揃ってから再評価する
+
