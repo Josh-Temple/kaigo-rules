@@ -35,7 +35,7 @@ Kaigo Rulesとは公開面を分離します。
 
 ## Current scope
 
-2026-10-02時点では、5つの課題ページを公開対象として整備しています。
+2026-10-07時点では、5つの課題ページを公開対象として整備しています。
 
 公開済み / 公開準備済み:
 
@@ -50,6 +50,22 @@ Kaigo Rulesとは公開面を分離します。
 6. 収支・コスト構造を把握したい
 
 「収支・コスト構造」は令和8年度介護事業経営実態調査の集計結果公表後に、最新の公的データを使って深掘りする。
+
+## 5 Issueの実行入口
+
+5つの公開Issueすべてに、読んだ後に小さく試せる入口があります。
+
+- 情報探索: `/tools/information-inventory`
+- 記録・文書: `/tools/documentation-review`
+- 教育・引き継ぎ: `/tools/training-handover-inventory`
+- 問い合わせ・連携: `/tools/communication-review`
+- 稼働率・生産性: `/tools/work-time-review`
+
+新規ツールは個人情報や介護記録本文の入力を求めず、accountやserver保存を前提にしません。ツールの利用や数値差だけで改善成功・制度適合・人員削減可能性を自動判定しません。
+
+各Issueには、内容に応じたKaigo Rulesの公開DB検索とKaigo Rulesトップへの導線があります。サービス適用範囲はKaigo Ops側で推定せず、必要な制度判断はKaigo Rules側の検証状態と一次資料で確認します。
+
+フィードバックはGitHub Issuesを再利用します。投稿内容はGitHub上で公開・保存されるため、氏名、利用者情報、介護記録、事業所の非公開情報は入力しないよう案内しています。
 
 ## First deep Issueの検証状態
 
@@ -78,7 +94,7 @@ Kaigo Rulesとは公開面を分離します。
 
 ## 検証
 
-`ops-site` 内で `npm test`、`npm run build` を実行します。サーバー起動後、`npm run verify:routes -- <base-url>` で共通registryの全5課題、根拠リンク、見直しシートへの導線を検証します。
+`ops-site` 内で `npm test`、`npm run build` を実行します。サーバー起動後、`npm run verify:routes -- <base-url>` で共通registryの全5課題、5つのaction tool、Issue→tool、tool→evidence、Issue→Kaigo Rules、フィードバック導線を検証します。
 
 2026-10-02のローカル検証では、計算テスト3件・ビルド・全ルート確認を通過。390px幅の検索・分類・検索0件からの復帰、様式の計算・0件除外・ブラウザ保存なし、印刷PDFと日本語表示を確認しました。これは開発時の動作確認であり、現場での業務改善効果の検証ではありません。
 
@@ -97,7 +113,7 @@ Kaigo Rulesとは公開面を分離します。
 ## 残りの実行と次の判断
 
 - Vercel Dashboardで `kaigo-ops` → Analytics を開き、未有効ならEnableする。既に有効ならその状態を確認する
-- 次回production deployment後にscript配信・view送信・Vercel側受信を順に確認し、初回観測日を記録
+- 今回のproduction deployment後にscript配信・pageview送信・Vercel側受信を順に再確認し、確認できた場合だけ初回観測日を記録
 - 実受信の確認日から2〜4週間後に、課題別閲覧数・見直しシートの閲覧数・母数を確認。少数データから効果や需要を確定しない
 - custom eventはまだ追加せず、pageviewで必要性が確認できてから拡張
 - 「収支・コスト構造」は令和8年度介護事業経営実態調査の集計結果公表後に更新
