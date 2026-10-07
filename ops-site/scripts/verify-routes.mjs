@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { issueRegistry } from '../app/issues/registry.ts';
+import { actionToolRoutes } from '../lib/action-tools.ts';
 const base = process.argv[2] || 'http://localhost:3000';
 const home = await fetch(`${base}/`);
 assert.equal(home.status, 200, 'home route');
@@ -15,6 +16,21 @@ for (const issue of issueRegistry) {
   assert.ok(html.includes('https://kaigo-rules.vercel.app/'), `${issue.href}: rules link`);
   console.log(`PASS ${issue.href}`);
 }
+for (const tool of actionToolRoutes) {
+  const issueHtml = await (await fetch(`${base}${tool.issueHref}`)).text();
+  assert.ok(issueHtml.includes(`href="${tool.href}"`), `${tool.issueHref}: action tool link`);
+
+  const response = await fetch(`${base}${tool.href}`);
+  assert.equal(response.status, 200, tool.href);
+  const html = await response.text();
+  assert.ok(html.includes(tool.title), `${tool.href}: title`);
+  assert.ok(html.includes('個人名'), `${tool.href}: privacy boundary`);
+  assert.ok(html.includes('送信・自動保存されません'), `${tool.href}: no persistence notice`);
+  assert.ok(html.includes('改善効果'), `${tool.href}: non-effect guard`);
+  assert.ok(html.includes(`href="${tool.evidenceHref}"`), `${tool.href}: evidence return`);
+  console.log(`PASS ${tool.href}`);
+}
+
 const documentation = await (await fetch(`${base}/issues/documentation`)).text();
 assert.ok(documentation.includes('href="/tools/documentation-review"'), 'worksheet reachable from documentation');
 const worksheet = await fetch(`${base}/tools/documentation-review`);
