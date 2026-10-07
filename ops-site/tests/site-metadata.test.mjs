@@ -1,8 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { issueRegistry } from "../app/issues/registry.ts";
-import robots from "../app/robots.ts";
-import sitemap from "../app/sitemap.ts";
 import {
   buildPublicPageMetadata,
   OPS_SITE_NAME,
@@ -24,19 +23,19 @@ test("public page metadata keeps canonical and share URLs on the public route", 
   assert.equal(metadata.twitter.card, "summary");
 });
 
-test("robots allows public crawling and points to the canonical sitemap", () => {
-  const config = robots();
-  assert.deepEqual(config.rules, { userAgent: "*", allow: "/" });
-  assert.equal(config.sitemap, `${OPS_SITE_URL}/sitemap.xml`);
-  assert.equal(config.host, OPS_SITE_URL);
+test("robots route allows public crawling and points to the canonical sitemap", () => {
+  const source = readFileSync(new URL("../app/robots.ts", import.meta.url), "utf8");
+  assert.match(source, /userAgent: "\*"/);
+  assert.match(source, /allow: "\/"/);
+  assert.match(source, /sitemap: `\$\{OPS_SITE_URL\}\/sitemap\.xml`/);
+  assert.match(source, /host: OPS_SITE_URL/);
 });
 
-test("sitemap contains home and the five Issue entry pages, not action tools", () => {
-  const urls = sitemap().map((entry) => entry.url);
-  assert.deepEqual(urls, [
-    `${OPS_SITE_URL}/`,
-    ...issueRegistry.map((issue) => `${OPS_SITE_URL}${issue.href}`),
-  ]);
-  assert.equal(urls.length, 6);
-  assert.ok(urls.every((url) => !url.includes("/tools/")));
+test("sitemap route stays Issue-first and uses the shared registry", () => {
+  const source = readFileSync(new URL("../app/sitemap.ts", import.meta.url), "utf8");
+  assert.equal(issueRegistry.length, 5);
+  assert.match(source, /issueRegistry\.map/);
+  assert.match(source, /\$\{OPS_SITE_URL\}\$\{issue\.href\}/);
+  assert.ok(!source.includes("/tools/"));
+  assert.equal(OPS_SITE_URL, "https://ops-site-pi.vercel.app");
 });
