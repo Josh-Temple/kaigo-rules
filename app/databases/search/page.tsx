@@ -2,7 +2,7 @@ import Link from "next/link";
 import careNodesData from "../../../data/care-insurance-act-nodes.json";
 import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
 import qaCorpusData from "../../../data/qa-corpus.json";
-import { searchPublicUnitPrices, unitPriceHref } from "../../../lib/unit-price-discovery";
+import { listPublicUnitPriceServices, searchPublicUnitPrices, unitPriceHref } from "../../../lib/unit-price-discovery";
 import { publicNoticeRecords } from "../../../lib/notice-database";
 import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database-search";
 import {
@@ -225,7 +225,7 @@ export default async function DatabaseSearchPage({
     ? selectedPublicFamilies.some(
         (item) => item.source_family === UNIT_PRICE_SOURCE_FAMILY,
       )
-    : unitPriceByService.size > 0;
+    : listPublicUnitPriceServices().length > 0;
 
   const delegatedCriteriaPublished = Boolean(
     selectedService &&
