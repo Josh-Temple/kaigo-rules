@@ -1,6 +1,6 @@
 # Kaigo Ops — Current Projection
 
-Updated: 2026-10-01
+Updated: 2026-10-07
 Status: current routing projection
 
 このファイルは、Kaigo Opsで「現在そのまま再利用してよい知識」と「まだcurrent verified factとして扱わない知識」を短く確認するためのprojectionです。
@@ -43,6 +43,34 @@ Machine retrieval benchmarkの結果は、固定queryに対する検索導線・
 ただし、人間の探索時間短縮、使いやすさ、業務効率向上の実証とは扱わない。
 
 Human field validationは `OPTIONAL_EXTERNAL_VALIDATION / NOT_RUN`。
+
+## Measurement state
+
+2026-10-07のfresh確認では、Kaigo Ops production bundleにVercel Web Analyticsのclient implementationは存在する。
+
+一方、current productionではAnalytics script / intake routeが404で、pageview収集開始は確認できない。Web Analytics APIの確認値も `visitors: 0 / pageviews: 0`。
+
+したがって現時点では、Analyticsを「稼働済み」「観測開始済み」と扱わない。
+
+初期観測はpageviewだけとし、対象・解釈・非収集データは `docs/kaigo-ops/measurement.md` を正本として確認する。
+
+## Actionability / public journey
+
+2026-10-07のUtilization & Actionability Waveでは、5つの公開Issueすべてに「読んだ後に試す」入口を揃えた。
+
+- 情報探索: `/tools/information-inventory`
+- 記録・文書: `/tools/documentation-review`
+- 教育・引き継ぎ: `/tools/training-handover-inventory`
+- 問い合わせ・連携: `/tools/communication-review`
+- 稼働率・生産性: `/tools/work-time-review`
+
+新規4ツールはclient-side中心で、accountやserver保存を前提にしない。氏名、利用者情報、介護記録本文などの入力を求めず、ツール利用だけで改善成功や制度適合を判定しない。
+
+5 Issueすべてで、具体的なKaigo Rulesの公開DB検索への導線と、Kaigo Rulesトップへの汎用導線を併存させる。サービス適用範囲はKaigo Ops側で推定せず、Kaigo Rules側の検証状態と一次資料へ戻って確認する。
+
+フィードバックはGitHub Issuesを再利用し、「何を試したか」「どこで止まったか」「何が足りなかったか」を最小入力として案内する。投稿はGitHub上で公開・保存されるため、個人情報、介護記録、事業所の非公開情報を記載しないよう明示する。
+
+Issue 6「収支・コスト構造」は開始していない。Analyticsの実受信も未確認のため、現時点で需要や改善効果は断定しない。
 
 ## Current non-claims
 

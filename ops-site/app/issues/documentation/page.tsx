@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import IssueNavigation from "../_components/IssueNavigation";
+import IssueFollowThrough from "../_components/IssueFollowThrough";
 
 export const metadata: Metadata = {
   title: "記録・文書作成に時間がかかる | 介護業務改善",
@@ -227,9 +228,7 @@ export default function DocumentationIssuePage() {
           <p>
             何を記録として残す必要があるか、制度上の要件を確認する場合は介護ルール側の原典・検証状態を確認してください。
           </p>
-          <a className="textLink" href="https://kaigo-rules.vercel.app/questions/care-plan-content" target="_blank" rel="noreferrer">
-            通所介護計画の記載内容を確認 →
-          </a>
+          <IssueFollowThrough issuePath="/issues/documentation" />
         </section>
 
         <section className="section" id="evidence">

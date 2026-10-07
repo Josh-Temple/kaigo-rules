@@ -1,6 +1,6 @@
 # 介護業務改善 Roadmap
 
-更新日: 2026-09-30
+更新日: 2026-10-07
 状態: Working roadmap
 
 ## 現在地
@@ -80,7 +80,7 @@ Phase 2の残り:
 
 ## Phase 3 — 3〜5 Issueで型を検証
 
-状態: **5 Issue到達**
+状態: **5 Issue到達 / actionability拡張済み**
 
 公開対象として以下の5 Issueを整備済み。
 
@@ -114,6 +114,8 @@ Phase 2の残り:
 - 原典・最終調査日
 
 5 Issueに到達し、公開Issueの定義を共通registryへ統合した。トップページにはkeyword検索と3分類の軽量filterを追加し、横断navigationも同じregistryから生成する。Issue数を増やすだけの段階は一旦区切り、今後は利用計測と再調査に重心を移す。
+
+2026-10-07のWaveでは、5 Issueすべてに少なくとも1つの実行入口を揃えた。記録・文書の既存見直しシートに加え、情報の正本棚卸し、教育・引き継ぎ棚卸し、問い合わせ往復棚卸し、業務時間・待ち時間棚卸しを追加した。各Issueから根拠、実行、Kaigo Rulesでの制度確認、最小フィードバックへ移れる導線を優先する。
 
 ## Phase 4 — 再調査ループ
 
@@ -150,7 +152,7 @@ conclusion changed?
 - 原典クリック
 - 介護ルール遷移
 - 再訪
-- 検索語
+- 検索利用（pageviewで不足し、privacy boundaryを確認したうえで最小限のcustom eventを追加する場合のみ）
 - 実際に試した改善策
 - 判断に役立ったか
 - 役立たなかった理由
@@ -201,9 +203,10 @@ PVやページ数だけを主要KPIにしない。
 
 ## 直近の優先順位
 
-1. 共通registry・分類・keyword検索をproductionへ反映し、mobileを含む公開動作を確認
-2. productionへ反映済みのVercel Web Analytics clientについて、project-level Web Analyticsを有効化する
-3. page view収集開始後、Issue別閲覧偏りを確認する
-4. page viewで不足する場合だけcustom eventを検討し、検索語・外部遷移等を最小限追加する
-5. 令和8年度介護事業経営実態調査の集計結果が公表されたら「収支・コスト構造」を再評価
-6. 利用データとフィードバックを基に、再調査・事業化候補を判断
+1. 5 Issueと5 action toolのproduction route・mobile journeyを維持する
+2. Vercel Dashboardで `kaigo-ops` のWeb Analytics有効化状態を確認し、未有効なら有効化する
+3. tracking script配信、pageview送信、Vercel側受信を確認し、初回観測日を記録する
+4. pageviewと最小フィードバックで利用実態を観測し、少数データから需要や効果を断定しない
+5. pageviewだけで判断できないことが確認できた場合に限り、必要最小限のcustom eventを検討する
+6. 令和8年度介護事業経営実態調査の集計結果が公表され、かつ既存5 Issueの利用・フィードバックから優先度が確認できたら「収支・コスト構造」を再評価する
+7. 利用データとフィードバックを基に、再調査・事業化候補を判断する

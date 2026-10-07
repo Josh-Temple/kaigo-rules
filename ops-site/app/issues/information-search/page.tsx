@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import IssueNavigation from "../_components/IssueNavigation";
+import IssueFollowThrough from "../_components/IssueFollowThrough";
 
 export const metadata: Metadata = {
   title: "必要な情報を探すのに時間がかかる | 介護業務改善",
@@ -85,7 +86,7 @@ export default function InformationSearchIssuePage() {
             このページでは、検索ツールを増やす前に確認したい構造と、小さく改善する順序を整理します。
           </p>
           <div className="issueMeta">
-            <span>最終更新: 2026-09-29</span>
+            <span>最終更新: 2026-10-07</span>
             <span>主要な機械評価: 2026-09-26</span>
             <span>個人のケア情報は対象外</span>
           </div>
@@ -217,6 +218,18 @@ export default function InformationSearchIssuePage() {
           </div>
         </section>
 
+        <section className="section actionToolCta">
+          <p className="eyebrow">記入用様式</p>
+          <h2>まず、今ある情報の置き場所と正本を並べます。</h2>
+          <p>
+            よく探す情報について、現在の正本、保管場所、更新責任、見つけるまでの経路、
+            重複や古い版の懸念を記入できます。改善策を決める前の棚卸しに使ってください。
+          </p>
+          <a className="primaryLink" href="/tools/information-inventory">
+            情報探索の棚卸しシートを開く →
+          </a>
+        </section>
+
         <section className="section boundary">
           <p className="eyebrow">運用上の注意</p>
           <h2>制度情報は、検証状態を確認して使います。</h2>
@@ -225,9 +238,7 @@ export default function InformationSearchIssuePage() {
             現在、人手確認が完了していない情報層もあるため、このページから制度上の個別判断を自動的に確定することはしません。
             個別の制度確認では、介護ルール側に表示される検証状態と原典を確認してください。
           </p>
-          <a className="textLink" href="https://kaigo-rules.vercel.app/" target="_blank" rel="noreferrer">
-            介護ルールで制度・原典を確認する →
-          </a>
+          <IssueFollowThrough issuePath="/issues/information-search" />
         </section>
 
         <section className="section" id="evidence">

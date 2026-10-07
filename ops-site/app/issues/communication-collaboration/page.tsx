@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import IssueNavigation from "../_components/IssueNavigation";
+import IssueFollowThrough from "../_components/IssueFollowThrough";
 
 export const metadata: Metadata = {
   title: "問い合わせ・連携の負担が大きい | 介護業務改善",
@@ -232,6 +233,9 @@ export default function CommunicationCollaborationIssuePage() {
               <p>件数、往復回数、応答時間、二重入力、担当者への引き継ぎを比較する。</p>
             </div>
           </div>
+          <p className="noPrint">
+            <a className="primaryLink" href="/tools/communication-review">問い合わせ・確認往復を棚卸しする →</a>
+          </p>
         </section>
 
         <section className="section boundary">
@@ -245,9 +249,7 @@ export default function CommunicationCollaborationIssuePage() {
             制度上の判断が必要な問い合わせは、Kaigo Ops内の回答だけで確定せず、
             介護ルール側の原典と検証状態へ接続します。
           </p>
-          <a className="textLink" href="https://kaigo-rules.vercel.app/" target="_blank" rel="noreferrer">
-            介護ルールで制度・原典を確認する →
-          </a>
+          <IssueFollowThrough issuePath="/issues/communication-collaboration" />
         </section>
 
         <section className="section" id="evidence">

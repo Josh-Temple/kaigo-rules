@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import IssueNavigation from "../_components/IssueNavigation";
+import IssueFollowThrough from "../_components/IssueFollowThrough";
 
 export const metadata: Metadata = {
   title: "職員教育・引き継ぎが属人化する | 介護業務改善",
@@ -250,6 +251,18 @@ export default function TrainingHandoverIssuePage() {
           </p>
         </section>
 
+        <section className="section actionToolCta">
+          <p className="eyebrow">記入用様式</p>
+          <h2>引き継ぎ情報を、正本と人に残す判断へ分けます。</h2>
+          <p>
+            新任者が必要な情報、正本、更新責任、口頭伝承への依存を並べ、
+            FAQや短い教材にできる部分と、人が教えるべき専門判断を分けて確認できます。
+          </p>
+          <a className="primaryLink" href="/tools/training-handover-inventory">
+            引き継ぎ情報・研修資源の正本整理シートを開く →
+          </a>
+        </section>
+
         <section className="section boundary">
           <p className="eyebrow">運用上の注意</p>
           <h2>経験知を「正解集」に変えすぎない。</h2>
@@ -260,9 +273,7 @@ export default function TrainingHandoverIssuePage() {
           <p>
             制度上の義務・要件を扱う内容は、Kaigo Ops内の研修資料だけで確定せず、介護ルール側の原典と検証状態へ接続します。
           </p>
-          <a className="textLink" href="https://kaigo-rules.vercel.app/" target="_blank" rel="noreferrer">
-            介護ルールで制度・原典を確認する →
-          </a>
+          <IssueFollowThrough issuePath="/issues/training-handover" />
         </section>
 
         <section className="section" id="evidence">
@@ -305,7 +316,7 @@ export default function TrainingHandoverIssuePage() {
 
       <footer>
         <span>介護業務改善 — 根拠に基づく試作版</span>
-        <span>初版: 2026-09-30</span>
+        <span>初版: 2026-09-30 / 最終更新: 2026-10-07</span>
       </footer>
     </main>
   );
