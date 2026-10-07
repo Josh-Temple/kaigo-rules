@@ -36,7 +36,9 @@ jobs:
       - name: Validate currentness evidence expansion boundaries
         run: python scripts/validate_currentness_evidence_expansion_wave.py
       - name: Verify public URL metadata and sitemap boundaries
-        run: node --experimental-strip-types --test tests/public-seo.test.mjs
+        run: |
+          node --experimental-strip-types --test tests/public-seo.test.mjs
+          python -m unittest discover -s tests -p 'test_public_canonical.py'
       - name: Validate and build
         run: npm run build
       - name: Compile production gate verifier
@@ -76,8 +78,8 @@ jobs:
           for route in "/" "/databases" "/services" "/law" "/rules" "/notices" "/qa"; do
             html="$(curl --fail --silent --show-error "http://127.0.0.1:3000$route")"
             canonical="https://kaigo-rules.vercel.app$route"
-            grep -F "rel=\"canonical\" href=\"$canonical\"" <<< "$html" >/dev/null || {
-              echo "Missing canonical URL for $route"
+            python scripts/verify_canonical_markup.py "$canonical" <<< "$html" || {
+              echo "Missing or incorrect canonical URL for $route"
               exit 1
             }
           done
