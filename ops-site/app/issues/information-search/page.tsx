@@ -181,7 +181,7 @@ export default function InformationSearchIssuePage() {
               <div>
                 <h3>人間の探索時間・使いやすさ</h3>
                 <p>
-                  人間による人間による現場検証はまだ実施していません。この結果から「探索時間を短縮した」「業務効率が上がった」とは判断しません。
+                  人間による現場検証はまだ実施していません。この結果から「探索時間を短縮した」「業務効率が上がった」とは判断しません。
                 </p>
               </div>
             </div>
@@ -283,7 +283,7 @@ export default function InformationSearchIssuePage() {
 
       <footer>
         <span>介護業務改善 — 根拠に基づく試作版</span>
-        <span>最終更新: 2026-09-29</span>
+        <span>最終更新: 2026-10-07</span>
       </footer>
     </main>
   );
