@@ -354,3 +354,67 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .printText { white-space: pre-wrap; overflow-wrap: anywhere; }
   .worksheetTotals div { break-inside: avoid; }
 }
+
+
+.actionToolCta { max-width: 900px; }
+.actionToolCta > p:not(.eyebrow) { max-width: 760px; color: var(--muted); }
+.actionToolCta .primaryLink { margin-top: 14px; }
+.actionWorksheet { max-width: 100%; }
+.actionToolForm > p { max-width: 820px; color: var(--muted); }
+.actionFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 28px;
+}
+.actionFieldWide { grid-column: 1 / -1; }
+.actionRows { display: grid; gap: 34px; margin-top: 28px; }
+.actionRow {
+  min-width: 0;
+  margin: 0;
+  padding: 18px 0 6px;
+  border: 0;
+  border-top: 2px solid var(--ink);
+}
+.actionRow legend { padding: 0 12px 0 0; font-size: 22px; font-weight: 800; }
+.actionRowHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+.actionRowHead button {
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.actionToolPrint { display: none; }
+.actionPrintRow {
+  padding: 10px 0 14px;
+  border-top: 1px solid var(--line);
+  break-inside: avoid;
+}
+.actionPrintRow h3 { margin: 0 0 8px; }
+
+@media (max-width: 720px) {
+  .actionFields { grid-template-columns: 1fr; }
+  .actionFieldWide { grid-column: auto; }
+  .actionRowHead { align-items: flex-start; }
+  .actionToolPage .issueHero h1 { font-size: clamp(34px, 10vw, 56px); }
+}
+
+@media print {
+  .actionToolPage .siteHeader,
+  .actionToolPage .actionToolForm,
+  .actionToolPage .boundary,
+  .actionToolPage footer { display: none; }
+  .actionToolPage .issueHero { padding: 0 0 14px; }
+  .actionToolPage .issueHero h1 { font-size: 25pt; }
+  .actionToolPage .issueHero .lead { margin-top: 12px; font-size: 11pt; }
+  .actionToolPrint { display: block; }
+}
