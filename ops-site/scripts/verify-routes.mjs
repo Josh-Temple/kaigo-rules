@@ -27,13 +27,13 @@ const actionTools = [
     issue: '/issues/communication-collaboration',
     route: '/tools/communication-review',
     link: 'href="/tools/communication-review"',
-    texts: ['問い合わせ・確認往復の', '送信・自動保存されません', '個人名', '例外時のエスカレーション', '改善成功とは判断しません'],
+    texts: ['問い合わせ・確認往復の', '送信・自動保存されません', '個人名', '例外時のエスカレーション', '急変・事故・専門判断'],
   },
   {
     issue: '/issues/productivity-utilization',
     route: '/tools/work-time-review',
     link: 'href="/tools/work-time-review"',
-    texts: ['業務時間・待ち・間接業務の', '送信・自動保存されません', '個人評価', '直接ケア', '時間差だけでは改善成功'],
+    texts: ['業務時間・待ち・間接業務の', '送信・自動保存されません', '職員個人の監視・ランキング', '直接ケア', '時間差だけで改善成功とは判定しません'],
   },
 ];
 
