@@ -1,7 +1,7 @@
 # Kaigo Ops — Discoverability audit
 
-更新日: 2026-10-07  
-対象: Kaigo Ops / Worker D — Discoverability & Public Entry
+更新日: 2026-10-08  
+対象: Kaigo Ops / discoverability・public entry
 
 ## 目的
 
@@ -107,3 +107,52 @@ Repository CIではcanonical / social metadata、robots、sitemapの回帰テス
 - custom eventを追加しない
 - Issue数を増やさない
 - action toolやfeedbackの内容改善はA〜Cとの責任境界を維持する
+
+
+## Worker B — Kaigo Rules → Kaigo Ops contextual entry（2026-10-08）
+
+### fresh read baseline
+
+Repository:
+
+- branch start main: `61620d77976b0fb692256c4b18993ef1498e4116`
+- Kaigo Rules current production deployment: `dpl_EM9H4r6hK7QsVkRU4H1TRjZ3atzR`
+- Kaigo Rules current production runtime SHA: `a3bb60b3d59fefb783c88e9fc710101b076ffe01`
+- Kaigo Rules production alias: `https://kaigo-rules.vercel.app/`
+- Kaigo Ops current production deployment: `dpl_63FnsT15tnNQ1YDmTkJAYNyNh27v`
+- Kaigo Ops current production runtime SHA: `b7a29a0da5c24787a9792bb6c55e6a14a330f897`
+- Kaigo Ops production alias: `https://ops-site-pi.vercel.app/`
+
+Kaigo Rulesのhome / DB hub / DB横断検索 / 実務ガイド / 共通navigationをfresh readし、Kaigo Ops側の5 Issue registryも確認した。Kaigo Rules側には、制度確認後の業務改善へ文脈付きで移る公開入口はまだなかった。
+
+### selected entry
+
+過剰な相互リンクを避けるため、最初の接続箇所は `/databases/search` の**検索実行後**に限定する。
+
+役割分担を次のように明示する。
+
+- 介護ルール: 法令・基準・通知・報酬・Q&Aから「制度上どうなっているか」を確認する
+- 介護業務改善: 制度確認後に、業務の見直し方・改善の選択肢・小さな試し方を検討する
+- 介護業務改善側で制度適合を確定しない。制度判断は介護ルールの検証状態と原典へ戻す
+
+接続対象は、今回の優先Issueである次の2件に限定する。
+
+1. 情報探索: `https://ops-site-pi.vercel.app/issues/information-search`
+2. 記録・文書作成: `https://ops-site-pi.vercel.app/issues/documentation`
+
+検索語からIssueを自動推定・自動mappingしない。5 Issueすべてを並べることもしない。
+
+### production destination check
+
+実装前のfresh checkで、上記2 Issueのcurrent production destinationはいずれもHTTP 200を返した。
+
+Kaigo Rules側の変更はWorker B branch上であり、この時点ではcurrent productionへ未反映。production releaseとpost-release verificationはIntegrator / Worker Eの責任範囲とする。
+
+### validation contract
+
+`tests/database-global-search.test.mjs` に、次を回帰条件として追加する。
+
+- 制度確認 → 業務改善という役割説明が残る
+- 情報探索 / 記録・文書の2 Issueだけを直接案内する
+- 他の3 Issueをこの入口へ自動追加しない
+- Kaigo Opsが制度適合を確定しない旨を保持する
