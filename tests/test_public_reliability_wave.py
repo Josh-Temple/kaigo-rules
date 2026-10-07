@@ -121,6 +121,22 @@ class PublicReliabilityWaveTests(unittest.TestCase):
         self.assertEqual(rendered_unit_price_rows(html),
                          ["一級地11.40円", "二級地11.20円"])
 
+    def test_transport_timeout_retries_before_success(self):
+        class Response:
+            status = 200
+            def read(self):
+                return b"ready"
+            def __enter__(self):
+                return self
+            def __exit__(self, exc_type, exc, tb):
+                return False
+
+        with patch("scripts.verify_public_reliability_wave.urlopen",
+                   side_effect=[TimeoutError("cold SSR route"), Response()]) as url:
+            probe = PublicReliabilityProbe("http://127.0.0.1:3000", "abc123")
+            self.assertEqual(probe.get("/fees/unit-price"), (200, "ready"))
+            self.assertEqual(url.call_count, 2)
+
     def test_head_parser_is_attribute_order_independent(self):
         html = ('<html><head><link href="https://x.example/" rel="canonical">'
                 '<meta content="説明" name="description">'
