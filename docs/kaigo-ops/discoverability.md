@@ -9,7 +9,7 @@
 
 SEOのために効果を誇張したり、AIで解決できると断定したり、根拠のない数値や成功表現を追加しない。
 
-## fresh read baseline
+## Worker D fresh read baseline（integration前）
 
 Repository:
 
@@ -24,7 +24,7 @@ Kaigo Ops production:
 - public alias: `https://ops-site-pi.vercel.app/`
 - deployment state: `READY`
 
-## production audit
+## Worker D production audit（integration前）
 
 Vercel経由でproduction aliasを取得した結果:
 
@@ -39,7 +39,7 @@ Vercel経由でproduction aliasを取得した結果:
 
 ### metadata
 
-productionでは:
+integration前productionでは:
 
 - home title / description: あり
 - 5 Issue title / description: 5 / 5 あり
@@ -50,7 +50,7 @@ productionでは:
 
 ### robots / sitemap
 
-productionでは:
+integration前productionでは:
 
 - `/robots.txt`: HTTP 404
 - `/sitemap.xml`: HTTP 404
@@ -73,6 +73,19 @@ action toolは公開・crawl可能なまま維持するが、Kaigo Opsの公開�
 Vercel projectにはproduction alias以外にもVercel生成ドメインが存在する。
 
 そのため、canonicalをproduction aliasへ固定し、preview / generated deployment URLを正規URLとして示さない。
+
+## Worker E post-release production verification
+
+Observation Activation & Learning Loop Waveのintegration PR #428をmainへ統合し、次のruntimeをproductionへ反映した。
+
+- runtime release SHA: `b7a29a0da5c24787a9792bb6c55e6a14a330f897`
+- production deployment: `dpl_63FnsT15tnNQ1YDmTkJAYNyNh27v`
+- deployment state: `READY`
+- production alias: `https://ops-site-pi.vercel.app/`
+
+Repository CIではcanonical / social metadata、robots、sitemapの回帰テストとproduction buildがPASSした。release後のproduction verificationでは、`robots.txt` と `sitemap.xml` の配信、home・5 Issue・5 action toolのroute、5つのIssue → tool / Kaigo Rules / feedback journey、390px表示を確認し、すべてPASSした。
+
+したがって、Worker Dのintegration前auditで確認したcanonical未設定、Open Graph未設定、`robots.txt` / `sitemap.xml` 404はcurrent productionの状態ではない。今回対象とした技術的discoverability範囲では、release blockerとなる重大な欠落は残っていない。
 
 ## 外部indexing state
 
