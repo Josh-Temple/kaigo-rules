@@ -35,47 +35,72 @@ jobs:
           import { chromium } from 'playwright';
 
           const base = 'https://ops-site-pi.vercel.app';
-          const requests = [];
-
           const browser = await chromium.launch({ headless: true });
           const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
 
-          page.on('request', request => {
-            requests.push({
-              method: request.method(),
-              resourceType: request.resourceType(),
-              url: request.url(),
-            });
+          await page.addInitScript(() => {
+            window.__analyticsSends = [];
+
+            const originalBeacon = navigator.sendBeacon.bind(navigator);
+            navigator.sendBeacon = (url, data) => {
+              window.__analyticsSends.push({ kind: 'beacon', url: String(url), body: data ? String(data) : null });
+              return originalBeacon(url, data);
+            };
+
+            const originalFetch = window.fetch.bind(window);
+            window.fetch = (...args) => {
+              const input = args[0];
+              const init = args[1] || {};
+              const url = typeof input === 'string' ? input : input?.url;
+              window.__analyticsSends.push({
+                kind: 'fetch',
+                method: init.method || 'GET',
+                url: String(url),
+                body: init.body ? String(init.body) : null,
+              });
+              return originalFetch(...args);
+            };
+
+            const originalOpen = XMLHttpRequest.prototype.open;
+            const originalSend = XMLHttpRequest.prototype.send;
+            XMLHttpRequest.prototype.open = function(method, url, ...rest) {
+              this.__analyticsMethod = method;
+              this.__analyticsUrl = String(url);
+              return originalOpen.call(this, method, url, ...rest);
+            };
+            XMLHttpRequest.prototype.send = function(body) {
+              window.__analyticsSends.push({
+                kind: 'xhr',
+                method: this.__analyticsMethod || null,
+                url: this.__analyticsUrl || null,
+                body: body ? String(body) : null,
+              });
+              return originalSend.call(this, body);
+            };
           });
 
           const response = await page.goto(base + '/', { waitUntil: 'networkidle' });
           if (!response || !response.ok()) {
             throw new Error('home: HTTP ' + (response?.status() ?? 'no response'));
           }
-          await page.waitForTimeout(2500);
+          await page.waitForTimeout(3000);
 
           const state = await page.evaluate(() => ({
             vaType: typeof window.va,
             vam: window.vam ?? null,
             scripts: Array.from(document.scripts).map(s => s.src).filter(Boolean),
-            resources: performance.getEntriesByType('resource').map(r => r.name),
+            sends: window.__analyticsSends || [],
           }));
 
           console.log('CONTROLLED_ROUTE /');
           console.log('WINDOW_VA_TYPE=' + state.vaType);
           console.log('WINDOW_VAM=' + state.vam);
           for (const src of state.scripts) {
-            if (/vercel|insight|analytics/i.test(src)) console.log('ANALYTICS_SCRIPT', src);
+            if (/vercel|insight|analytics|script\.js/i.test(src)) console.log('ANALYTICS_SCRIPT', src);
           }
-          for (const resource of state.resources) {
-            if (/vercel|insight|analytics/i.test(resource)) console.log('ANALYTICS_RESOURCE', resource);
-          }
-          for (const request of requests) {
-            if (
-              request.method !== 'GET' ||
-              /vercel|insight|analytics|view|visit/i.test(request.url)
-            ) {
-              console.log('CANDIDATE_REQUEST', request.method, request.resourceType, request.url);
+          for (const send of state.sends) {
+            if (/vercel|insight|analytics|view|visit/i.test(send.url || '') || send.kind === 'beacon') {
+              console.log('ANALYTICS_SEND', JSON.stringify(send));
             }
           }
 
@@ -83,6 +108,16 @@ jobs:
 
           if (state.vaType !== 'function') {
             throw new Error('Vercel Analytics client did not initialize');
+          }
+
+          const nonGetSend = state.sends.find(
+            send =>
+              send.kind === 'beacon' ||
+              (send.kind === 'fetch' && (send.method || '').toUpperCase() !== 'GET') ||
+              (send.kind === 'xhr' && (send.method || '').toUpperCase() !== 'GET')
+          );
+          if (!nonGetSend) {
+            throw new Error('No browser send operation was captured');
           }
           EOF
           node verify-analytics.tmp.mjs
