@@ -204,9 +204,9 @@ PVやページ数だけを主要KPIにしない。
 ## 直近の優先順位
 
 1. 5 Issueと5 action toolのproduction route・mobile journeyを維持する
-2. tracking script配信は確認済みなので、実ブラウザからのpageview送信とVercel側受信を確認する
-3. pageview受信が確認できない場合は、Vercel Dashboardで `kaigo-ops` のWeb Analytics enabled状態を確認し、初回受信を確認できた日を観測開始日として記録する
-4. pageviewと最小フィードバックで利用実態を観測し、少数データから需要や効果を断定しない
-5. pageviewだけで判断できないことが確認できた場合に限り、必要最小限のcustom eventを検討する
+2. 2026-10-07を初回観測日として、pageviewと最小フィードバックの観測を継続する
+3. 2〜4週間程度の母数ができるまでは、少数pageviewから需要や改善効果を断定しない
+4. 課題別・tool別の閲覧偏りとフィードバックを、次の改善対象を選ぶための観測値として使う
+5. pageviewだけで判断できないことが確認できた場合に限り、privacy boundaryを確認したうえで必要最小限のcustom eventを検討する
 6. 令和8年度介護事業経営実態調査の集計結果が公表され、かつ既存5 Issueの利用・フィードバックから優先度が確認できたら「収支・コスト構造」を再評価する
 7. 利用データとフィードバックを基に、再調査・事業化候補を判断する
