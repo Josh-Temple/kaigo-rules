@@ -64,25 +64,25 @@ jobs:
 
           # Verify generated discovery endpoints on the built Next.js server.
           robots_body="$(curl --fail --silent --show-error http://127.0.0.1:3000/robots.txt)"
-          echo "$robots_body" | grep -F 'Sitemap: https://kaigo-rules.vercel.app/sitemap.xml' >/dev/null || {
+          grep -F 'Sitemap: https://kaigo-rules.vercel.app/sitemap.xml' <<< "$robots_body" >/dev/null || {
             echo "robots.txt is missing the canonical sitemap URL"
             exit 1
           }
           sitemap_body="$(curl --fail --silent --show-error http://127.0.0.1:3000/sitemap.xml)"
-          echo "$sitemap_body" | grep -F '<loc>https://kaigo-rules.vercel.app/databases</loc>' >/dev/null || {
+          grep -F '<loc>https://kaigo-rules.vercel.app/databases</loc>' <<< "$sitemap_body" >/dev/null || {
             echo "sitemap.xml does not expose the public database entry"
             exit 1
           }
           for route in "/" "/databases" "/services" "/law" "/rules" "/notices" "/qa"; do
             html="$(curl --fail --silent --show-error "http://127.0.0.1:3000$route")"
             canonical="https://kaigo-rules.vercel.app$route"
-            echo "$html" | grep -F "rel=\"canonical\" href=\"$canonical\"" >/dev/null || {
+            grep -F "rel=\"canonical\" href=\"$canonical\"" <<< "$html" >/dev/null || {
               echo "Missing canonical URL for $route"
               exit 1
             }
           done
           search_html="$(curl --fail --silent --show-error 'http://127.0.0.1:3000/databases/search?q=BCP')"
-          echo "$search_html" | grep -F 'name="robots" content="noindex' >/dev/null || {
+          grep -F 'name="robots" content="noindex' <<< "$search_html" >/dev/null || {
             echo "Search result page must remain noindex"
             exit 1
           }
