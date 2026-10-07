@@ -48,9 +48,9 @@ Human field validationは `OPTIONAL_EXTERNAL_VALIDATION / NOT_RUN`。
 
 2026-10-07のWorker E releaseで、Kaigo Opsはrelease main SHA `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2` をproduction deployment `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq` として反映し、`READY` とproduction alias割当を確認した。
 
-Vercel Web Analyticsのclient implementationは存在するが、release後のpageview API確認値は `visitors: 0 / pageviews: 0`、path別集計も空である。project-level enabled flagの確認・変更は利用可能な操作から実施できず、tracking deliveryと実受信も確認できていない。
+Vercel Web Analyticsのclient implementationは存在し、release後のproduction verificationで `/_vercel/insights/script.js` がHTTP 200で配信されることを確認した。一方、同時点のpageview API確認値は `visitors: 0 / pageviews: 0`、path別集計も空である。project-level enabled flagは利用可能なproject取得結果には露出していない。
 
-したがってAnalytics stateは `BLOCKED / NOT_CONFIRMED` とし、「稼働済み」「観測開始済み」と扱わない。first confirmed observation dateは未確定。
+したがってAnalytics stateは **tracking script配信確認済み / Vercel側pageview受信未確認** とする。「観測開始済み」とはまだ扱わず、first confirmed observation dateは未確定。
 
 初期観測はpageviewだけとし、対象・解釈・非収集データは `docs/kaigo-ops/measurement.md` を正本として確認する。
 
@@ -87,7 +87,9 @@ Issue 6「収支・コスト構造」は開始していない。Analyticsの実�
 - generic Kaigo Rules bridge: 5 / 5 Issues
 - minimal feedback path: 5 / 5 Issues
 
-Repository-side `Validate ops site` passed `npm test`, `npm run build`, and route smoke verification on the integrated release source. Vercel deployment metadata confirms the same release SHA and READY state.
+Repository-side `Validate ops site` passed `npm test`, `npm run build`, and route smoke verification on the integrated release source. Vercel deployment metadata confirms the same release SHA and READY state。
+
+Production verification also passed the public route/journey checks and 390px browser verification for the home page, all 5 Issue routes, all 5 action-tool routes, and all 5 Issue → tool / Kaigo Rules / feedback journeys. Analytics script delivery returned HTTP 200; Vercel pageview receive remains unconfirmed.
 
 ## Current non-claims
 
