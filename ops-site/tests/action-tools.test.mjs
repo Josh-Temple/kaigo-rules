@@ -1,12 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { issueRegistry } from '../app/issues/registry.ts';
 import { actionToolForIssue, actionToolRoutes } from '../lib/action-tools.ts';
 
-test('Worker B action tools cover information search and training/handover once each', () => {
-  assert.equal(actionToolRoutes.length, 2);
-  assert.equal(new Set(actionToolRoutes.map((tool) => tool.href)).size, 2);
-  assert.equal(actionToolForIssue('/issues/information-search')?.href, '/tools/information-inventory');
-  assert.equal(actionToolForIssue('/issues/training-handover')?.href, '/tools/training-handover-inventory');
+const expected = new Map([
+  ['/issues/information-search', '/tools/information-inventory'],
+  ['/issues/documentation', '/tools/documentation-review'],
+  ['/issues/training-handover', '/tools/training-handover-inventory'],
+  ['/issues/communication-collaboration', '/tools/communication-review'],
+  ['/issues/productivity-utilization', '/tools/work-time-review'],
+]);
+
+test('all five public issues have exactly one action tool', () => {
+  assert.equal(actionToolRoutes.length, issueRegistry.length);
+  assert.equal(new Set(actionToolRoutes.map((tool) => tool.href)).size, issueRegistry.length);
+  assert.equal(new Set(actionToolRoutes.map((tool) => tool.issueHref)).size, issueRegistry.length);
+
+  for (const issue of issueRegistry) {
+    assert.equal(actionToolForIssue(issue.href)?.href, expected.get(issue.href), issue.href);
+  }
 });
 
 test('every action tool returns to its issue evidence', () => {
