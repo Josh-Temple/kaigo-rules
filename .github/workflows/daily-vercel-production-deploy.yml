@@ -19,6 +19,8 @@ on:
   pull_request:
     paths:
       - ".github/workflows/daily-vercel-production-deploy.yml"
+      - "scripts/plan_daily_vercel_deploy.py"
+      - "tests/test_daily_deploy_plan.py"
       - "vercel.json"
       - "ops-site/vercel.json"
 
@@ -63,68 +65,35 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Test daily deployment planner
+        run: python -m unittest discover -s tests -p 'test_daily_deploy_plan.py'
+
       - name: Detect project-specific changes
         id: plan
         shell: bash
         env:
           FORCE_RULES: ${{ github.event.inputs.force_rules || 'false' }}
           FORCE_OPS: ${{ github.event.inputs.force_ops || 'false' }}
-          RULES_FALLBACK_SHA: "e0debb93a0efa82feae65e64a46fc860b74202a7"
-          OPS_FALLBACK_SHA: "0e87c65d89bfb7292ac7d68400e94df28fb4a1e0"
         run: |
           set -euo pipefail
 
           HEAD_SHA="$(git rev-parse HEAD)"
-          echo "head_sha=$HEAD_SHA" >> "$GITHUB_OUTPUT"
-
-          marker_or_fallback() {
-            local ref_name="$1"
-            local fallback="$2"
-            local remote_sha
-
-            remote_sha="$(git ls-remote --heads origin "refs/heads/$ref_name" | awk '{print $1}')"
-            if [ -n "$remote_sha" ]; then
-              echo "$remote_sha"
-            else
-              echo "$fallback"
-            fi
+          # A missing marker requires deployment; never treat it as no change.
+          marker_sha() {
+            git ls-remote --heads origin "refs/heads/$1" | awk '{print $1}'
           }
 
-          RULES_BASE="$(marker_or_fallback 'deploy-state/kaigo-rules' "$RULES_FALLBACK_SHA")"
-          OPS_BASE="$(marker_or_fallback 'deploy-state/kaigo-ops' "$OPS_FALLBACK_SHA")"
+          RULES_BASE="$(marker_sha 'deploy-state/kaigo-rules')"
+          OPS_BASE="$(marker_sha 'deploy-state/kaigo-ops')"
 
-          git cat-file -e "${RULES_BASE}^{commit}"
-          git cat-file -e "${OPS_BASE}^{commit}"
-
-          rules_changed=false
-          ops_changed=false
-
-          if [ "$FORCE_RULES" = "true" ]; then
-            rules_changed=true
-          elif ! git diff --quiet "$RULES_BASE"...HEAD -- \
-            app components data scripts public \
-            package.json package-lock.json tsconfig.json next-env.d.ts vercel.json; then
-            rules_changed=true
-          fi
-
-          if [ "$FORCE_OPS" = "true" ]; then
-            ops_changed=true
-          elif ! git diff --quiet "$OPS_BASE"...HEAD -- ops-site; then
-            ops_changed=true
-          fi
-
-          echo "rules_changed=$rules_changed" >> "$GITHUB_OUTPUT"
-          echo "ops_changed=$ops_changed" >> "$GITHUB_OUTPUT"
-
-          {
-            echo "## Daily Vercel deployment plan"
-            echo ""
-            echo "- HEAD: `$HEAD_SHA`"
-            echo "- kaigo-rules baseline: `$RULES_BASE`"
-            echo "- kaigo-rules deploy needed: `$rules_changed`"
-            echo "- kaigo-ops baseline: `$OPS_BASE`"
-            echo "- kaigo-ops deploy needed: `$ops_changed`"
-          } >> "$GITHUB_STEP_SUMMARY"
+          python scripts/plan_daily_vercel_deploy.py \
+            --head "$HEAD_SHA" \
+            --rules-base "$RULES_BASE" \
+            --ops-base "$OPS_BASE" \
+            --force-rules "$FORCE_RULES" \
+            --force-ops "$FORCE_OPS" \
+            --github-output "$GITHUB_OUTPUT" \
+            --github-step-summary "$GITHUB_STEP_SUMMARY"
 
   deploy:
     if: github.event_name != 'pull_request' && (needs.plan.outputs.rules_changed == 'true' || needs.plan.outputs.ops_changed == 'true')
@@ -215,7 +184,7 @@ jobs:
           path: artifacts/machine-retrieval-v0.1.json
           if-no-files-found: error
           retention-days: 90
-      - name: Record kaigo-rules deploy request
+      - name: Record verified kaigo-rules production version
         if: needs.plan.outputs.rules_changed == 'true'
         run: |
           git push --force origin "HEAD:refs/heads/deploy-state/kaigo-rules"
