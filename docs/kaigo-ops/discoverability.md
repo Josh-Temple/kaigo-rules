@@ -156,3 +156,20 @@ Kaigo Rules側の変更はWorker B branch上であり、この時点ではcurren
 - 情報探索 / 記録・文書の2 Issueだけを直接案内する
 - 他の3 Issueをこの入口へ自動追加しない
 - Kaigo Opsが制度適合を確定しない旨を保持する
+
+
+## Search discovery observation（2026-10-08 integration）
+
+Google側の状態は `docs/kaigo-ops/search-discovery-observation.md` をcanonical observation recordとする。
+
+current productionでは、`robots.txt`、`sitemap.xml`、home + 5 IssueのHTTP 200、site-declared canonical一致まで確認済み。一方、今回の実行環境には認証済みGoogle Search Console接続がないため、次は推測せず未確認のまま維持する。
+
+- URL-prefix property: `UNKNOWN`
+- sitemap submission: `UNKNOWN`
+- major 6 URL index state: `UNKNOWN`
+- Google-selected canonical: `UNKNOWN`
+- indexing request: `NOT_RUN`
+
+exact blockerは authenticated Search Console access unavailable。sitemap配信や `site:` 検索だけでindex stateを確定しない。
+
+Kaigo Rules側では `/databases/search` の検索実行後に、制度確認から業務見直しへ移る文脈付き入口を追加する。direct linkは今回の優先対象である情報探索・記録文書の2 Issueに限定し、Kaigo Opsが制度適合を確定しない境界を同じ入口で明示する。
