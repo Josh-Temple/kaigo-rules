@@ -1,0 +1,120 @@
+name: Verify public reliability wave D
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/verify-public-reliability-wave.yml"
+      - "scripts/verify_public_reliability_wave.py"
+      - "scripts/plan_daily_vercel_deploy.py"
+      - "tests/test_public_reliability_wave.py"
+      - "lib/unit-price-discovery.ts"
+      - "app/databases/search/page.tsx"
+      - "app/fees/unit-price/page.tsx"
+      - "app/robots.ts"
+      - "app/sitemap.ts"
+      - "lib/site-metadata.ts"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/verify-public-reliability-wave.yml"
+      - "scripts/verify_public_reliability_wave.py"
+      - "scripts/plan_daily_vercel_deploy.py"
+      - "tests/test_public_reliability_wave.py"
+      - "lib/unit-price-discovery.ts"
+      - "app/databases/search/page.tsx"
+      - "app/fees/unit-price/page.tsx"
+      - "app/robots.ts"
+      - "app/sitemap.ts"
+      - "lib/site-metadata.ts"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Test the black-box verifier without real production data
+        run: python -m unittest discover -s tests -p 'test_public_reliability_wave.py' -v
+
+  integrated-http:
+    needs: synthetic
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Identify whether A, B and C are all present
+        id: ready
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test -f scripts/plan_daily_vercel_deploy.py &&
+             test -f lib/unit-price-discovery.ts &&
+             test -f app/robots.ts &&
+             test -f app/sitemap.ts; then
+            echo "integrated=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "integrated=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "## Public reliability wave D — integration pending"
+              echo ""
+              echo "A/B/C are not all present in this commit. Synthetic verifier tests ran;"
+              echo "full HTTP regression is NOT VERIFIED, not a PASS."
+              echo "The HTTP gate runs automatically once these feature branches are integrated."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        if: steps.ready.outputs.integrated == 'true'
+        with:
+          node-version: "22"
+      - name: Install dependencies and PDF reparse tools
+        if: steps.ready.outputs.integrated == 'true'
+        run: |
+          npm ci --no-audit --no-fund
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Build with existing data and publication safety gates
+        if: steps.ready.outputs.integrated == 'true'
+        run: npm run build
+      - name: Verify public HTTP behavior against the exact built commit
+        if: steps.ready.outputs.integrated == 'true'
+        env:
+          VERCEL_GIT_COMMIT_SHA: ${{ github.sha }}
+          VERCEL_GIT_COMMIT_REF: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm start > /tmp/kaigo-public-wave-d-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for attempt in {1..45}; do
+            if curl --fail --silent http://127.0.0.1:3000/api/version > /dev/null; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ready" -eq 0 ]; then
+            cat /tmp/kaigo-public-wave-d-server.log
+            exit 1
+          fi
+          python scripts/verify_public_reliability_wave.py \
+            --base-url http://127.0.0.1:3000 \
+            --expected-sha "$GITHUB_SHA" \
+            --output /tmp/public-reliability-wave-d.json
+      - name: Publish regression result summary
+        if: always() && steps.ready.outputs.integrated == 'true'
+        shell: bash
+        run: |
+          if [ -f /tmp/public-reliability-wave-d.json ]; then
+            cat /tmp/public-reliability-wave-d.json
+            echo "## Public reliability wave D" >> "$GITHUB_STEP_SUMMARY"
+            echo "Full check result: see JSON in job logs." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "## Public reliability wave D" >> "$GITHUB_STEP_SUMMARY"
+            echo "HTTP regression did not produce a report; inspect the failed step." >> "$GITHUB_STEP_SUMMARY"
+          fi
