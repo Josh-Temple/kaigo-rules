@@ -58,8 +58,12 @@ custom eventは追加せず、pageviewだけを対象とする。
 - `/issues/communication-collaboration`
 - `/issues/productivity-utilization`
 - `/tools/documentation-review`
+- `/tools/information-inventory`
+- `/tools/training-handover-inventory`
+- `/tools/communication-review`
+- `/tools/work-time-review`
 
-B/Cで新しいaction toolが統合された場合は、production反映後に同じpageview対象へ加える。
+4つの新規action toolは今回の統合対象に含める。production反映後、これらも同じpageview対象として扱う。
 
 ## 解釈上の注意
 
