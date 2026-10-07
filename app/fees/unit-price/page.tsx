@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("通所介護の一単位単価", "通所介護の地域区分別一単位単価と明示地域を確認できます。", "/fees/unit-price");
+
 import VerificationSummary from "../../../components/verification-summary";
 import ratesData from "../../../data/unit-price-dayservice.json";
 import metaData from "../../../data/unit-price-dayservice-meta.json";

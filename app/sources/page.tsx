@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("出典資料一覧", "介護ルールが参照する公式資料の出典や収載範囲を確認できます。", "/sources");
+
 import sources from "../../data/sources.json";
 
 export default function SourcesPage() {

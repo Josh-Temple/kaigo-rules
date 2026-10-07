@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("開設・運営ガイド", "介護事業の開設・運営に関する実務の流れから、関連する制度資料へ進めます。", "/start");
+
 import Link from "next/link";
 import sources from "../../data/sources.json";
 import steps from "../../data/startup-steps.json";

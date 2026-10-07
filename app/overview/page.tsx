@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("介護制度の全体像", "介護制度の法令・通知・報酬・Q&Aの関係と、資料の確認状況を整理します。", "/overview");
+
 import Link from "next/link";
 import registryData from "../../data/verification-registry.json";
 

@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("報酬の別告示・算定基準", "介護報酬の算定方法と委任基準について、公開中の項目と出典を確認できます。", "/fees/criteria");
+
 import Link from "next/link";
 import VerificationSummary from "../../../components/verification-summary";
 import nodesData from "../../../data/remuneration-delegated-nodes.json";
