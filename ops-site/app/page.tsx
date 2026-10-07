@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import IssueExplorer from "./_components/IssueExplorer";
+import { buildPublicPageMetadata } from "../lib/site-metadata";
+
+export const metadata: Metadata = buildPublicPageMetadata({
+  path: "/",
+  title: "介護業務改善",
+  description: "介護現場の困りごとから、事例・根拠・改善の選択肢を探すためのサイト。",
+  type: "website",
+});
 
 const steps = [
   ["01", "困りごとを具体化", "誰が、どの作業で、どのような判断に困っているかを整理します。"],
