@@ -85,7 +85,7 @@ export default function InformationSearchIssuePage() {
             このページでは、検索ツールを増やす前に確認したい構造と、小さく改善する順序を整理します。
           </p>
           <div className="issueMeta">
-            <span>最終更新: 2026-09-29</span>
+            <span>最終更新: 2026-10-07</span>
             <span>主要な機械評価: 2026-09-26</span>
             <span>個人のケア情報は対象外</span>
           </div>
@@ -215,6 +215,18 @@ export default function InformationSearchIssuePage() {
               <p>同じ質問セットで、速さだけでなく誤答・古い情報・回答保留も比較する。</p>
             </div>
           </div>
+        </section>
+
+        <section className="section actionToolCta">
+          <p className="eyebrow">記入用様式</p>
+          <h2>まず、今ある情報の置き場所と正本を並べます。</h2>
+          <p>
+            よく探す情報について、現在の正本、保管場所、更新責任、見つけるまでの経路、
+            重複や古い版の懸念を記入できます。改善策を決める前の棚卸しに使ってください。
+          </p>
+          <a className="primaryLink" href="/tools/information-inventory">
+            情報探索の棚卸しシートを開く →
+          </a>
         </section>
 
         <section className="section boundary">
