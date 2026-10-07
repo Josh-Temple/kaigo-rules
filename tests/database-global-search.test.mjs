@@ -210,7 +210,7 @@ test("public database search groups service filters and treats no-match as a par
 test("multi-source search is gated by the shared publication policy", () => {
   const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
 
-  assert.match(search, /unit-price-dayservice\.json/);
+  assert.match(search, /searchPublicUnitPrices/);
   assert.match(search, /publicSourceFamiliesForService/);
   assert.match(search, /UNIT_PRICE_SOURCE_FAMILY/);
   assert.match(search, /一単位単価・地域区分/);
