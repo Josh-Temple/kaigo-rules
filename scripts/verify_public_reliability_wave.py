@@ -199,7 +199,9 @@ class PublicReliabilityProbe:
             formatted_yen = f"{body['unit_price_yen']:.2f}円"
             if region not in page or formatted_yen not in page:
                 raise AssertionError(f"{service_id}/{region}: API rate absent from detail page")
-            if region not in results:
+            # Global search intentionally summarizes only the first three
+            # matching classes per service; the detail page holds all eight.
+            if item in items[:3] and region not in results:
                 raise AssertionError(f"{service_id}/{region}: missing from global search")
         if "人手確認が完了していない" not in page:
             raise AssertionError("municipal assignment human-review warning missing")
