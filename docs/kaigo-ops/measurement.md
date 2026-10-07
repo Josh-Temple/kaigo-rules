@@ -9,6 +9,8 @@ Kaigo Opsの利用状況を、まずpageviewだけで観測する。
 
 pageviewは「次にどこを改善するか」を考えるための観測値として使い、業務改善効果や需要を直接示す指標として扱わない。
 
+継続観測の台帳、2〜4週間レビュー、判断ルールは `docs/kaigo-ops/usage-observation.md` をcanonical operational ledgerとする。このファイルは計測対象・非収集データ・初回観測日の技術契約を担い、観測値の解釈と履歴はusage observation側で管理する。
+
 ## 2026-10-07 pre-release fresh確認結果
 
 Repository baseline:
