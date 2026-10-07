@@ -136,6 +136,17 @@ export default function DatabasesPage() {
         </div>
       </section>
 
+      <section className="section" id="unit-price">
+        <p className="eyebrow">SERVICE-SPECIFIC DATABASE</p>
+        <h2>一単位単価・地域区分</h2>
+        <p>
+          厚生労働省の単価告示について、公開条件を満たすサービスを選び、
+          地域区分・一単位単価・市区町村名から確認します。
+          現行性と地域割当の人手確認は別の状態として表示します。
+        </p>
+        <p><Link href="/fees/unit-price">公開済みサービスの単価を検索する →</Link></p>
+      </section>
+
       <section className="section">
         <h2>サービスから見る場合</h2>
         <p>

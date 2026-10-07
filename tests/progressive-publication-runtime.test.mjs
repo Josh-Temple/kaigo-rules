@@ -529,6 +529,15 @@ test("UI, search, and API source-switching surfaces consume adapter-selected rec
     "app/fees/unit-price/page.tsx",
   ]) {
     const source = fs.readFileSync(surface, "utf8");
-    assert.match(source, /getProgressiveSourceRecords/);
+    if (surface === "app/fees/unit-price/page.tsx") {
+      // The unit-price page delegates to a shared helper so that
+      // UI and search use the API's bounded runtime projection.
+      assert.match(source, /publicUnitPriceRows/);
+      const discovery = fs.readFileSync("lib/unit-price-discovery.ts", "utf8");
+      assert.match(discovery, /getProgressiveSourceRecords/);
+      assert.match(discovery, /projectProgressiveRecords/);
+    } else {
+      assert.match(source, /getProgressiveSourceRecords/);
+    }
   }
 });

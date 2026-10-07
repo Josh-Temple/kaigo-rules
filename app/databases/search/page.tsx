@@ -2,8 +2,7 @@ import Link from "next/link";
 import careNodesData from "../../../data/care-insurance-act-nodes.json";
 import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
 import qaCorpusData from "../../../data/qa-corpus.json";
-import unitPriceRatesData from "../../../data/unit-price-dayservice.json";
-import unitPriceMetaData from "../../../data/unit-price-dayservice-meta.json";
+import { listPublicUnitPriceServices, searchPublicUnitPrices, unitPriceHref } from "../../../lib/unit-price-discovery";
 import { publicNoticeRecords } from "../../../lib/notice-database";
 import { databaseSearchExcerpt, rankDatabaseSearch } from "../../../lib/database-search";
 import {
@@ -25,8 +24,6 @@ import { publicServiceNavigationGroups } from "../../../lib/service-navigation-g
 const careNodes = careNodesData as Array<any>;
 const ordinanceNodes = ordinanceNodesData as Array<any>;
 const qaCorpus = qaCorpusData as Array<any>;
-const unitPriceRates = unitPriceRatesData as Array<any>;
-const unitPriceMeta = unitPriceMetaData as any;
 const LIMIT = 10;
 
 const practicalTopicSearches = [
@@ -208,31 +205,27 @@ export default async function DatabaseSearchPage({
         ],
       );
 
-  const dayserviceUnitPricePublished = publicSourceFamiliesForService(
-    "dayservice",
-  ).some((item) => item.source_family === UNIT_PRICE_SOURCE_FAMILY);
+  // The same published projection used by /api/context/.../sources.
+  // An unfiltered query searches every published service, never the
+  // unverified multiplier mappings.
+  const unitPriceMatches = searchPublicUnitPrices(
+    query,
+    requestedService || undefined,
+  );
+  const unitPriceByService = new Map<
+    string,
+    typeof unitPriceMatches
+  >();
+  for (const item of unitPriceMatches) {
+    const rows = unitPriceByService.get(item.service_id) || [];
+    rows.push(item);
+    unitPriceByService.set(item.service_id, rows);
+  }
   const unitPriceVisible = requestedService
-    ? requestedService === "dayservice" &&
-      selectedPublicFamilies.some(
+    ? selectedPublicFamilies.some(
         (item) => item.source_family === UNIT_PRICE_SOURCE_FAMILY,
       )
-    : dayserviceUnitPricePublished;
-  const unitPriceMatches = unitPriceVisible
-    ? rankDatabaseSearch(unitPriceRates, query, (row) => [
-        {
-          value: [
-            row.ratio_text,
-            row.unit_price_yen ? String(row.unit_price_yen) + "円" : "",
-          ]
-            .filter(Boolean)
-            .join(" "),
-          weight: 10,
-        },
-        { value: row.region_class || "", weight: 9 },
-        { value: row.service || "", weight: 5 },
-        { value: "一単位単価 地域区分 単価", weight: 3 },
-      ])
-    : [];
+    : listPublicUnitPriceServices().length > 0;
 
   const delegatedCriteriaPublished = Boolean(
     selectedService &&
@@ -481,28 +474,27 @@ export default async function DatabaseSearchPage({
           </section>
 
           <section className="section">
-            <h2>一単位単価・地域区分 <span className="meta">({unitPriceMatches.length}件)</span></h2>
+            <h2>一単位単価・地域区分 <span className="meta">({unitPriceMatches.length}件 / {unitPriceByService.size}サービス)</span></h2>
             {unitPriceMatches.length ? (
               <div className="source-chain">
-                {unitPriceMatches.slice(0, LIMIT).map((row) => (
-                  <article className="source-card" key={row.id}>
-                    <p className="meta">通所介護 / 一単位単価・地域区分</p>
-                    <h3>
-                      <Link href="/fees/unit-price">{row.region_class}</Link>
-                    </h3>
+                {[...unitPriceByService.entries()].slice(0, 20).map(([serviceId, rows]) => (
+                  <article className="source-card" key={serviceId}>
+                    <h3><Link href={unitPriceHref(serviceId, query)}>{rows[0].service_label} →</Link></h3>
                     <p>
-                      {row.ratio_text} / 1単位 {Number(row.unit_price_yen).toFixed(2)}円
+                      {rows.length}区分が検索条件に一致
+                      {" / "}
+                      {rows.slice(0, 3).map((row) =>
+                        row.region_class + "：" + row.unit_price_yen.toFixed(2) + "円"
+                      ).join("、")}
+                      {rows.length > 3 ? " ほか" : ""}
                     </p>
                     <p className="meta">
                       現行性：公開条件を満たした現行資料
-                      {unitPriceMeta.source_urls?.[0] ? (
-                        <>
-                          {" / "}
-                          <a href={unitPriceMeta.source_urls[0]} target="_blank" rel="noreferrer">
-                            厚生労働省の告示原文
-                          </a>
-                        </>
-                      ) : null}
+                      {rows[0].checked_at ? " / 公式表示確認日：" + rows[0].checked_at : ""}
+                      {" / "}
+                      <a href={rows[0].source_url} target="_blank" rel="noreferrer">
+                        厚生労働省の告示原文
+                      </a>
                     </p>
                   </article>
                 ))}
@@ -514,7 +506,7 @@ export default async function DatabaseSearchPage({
                   : "この資料種別は、公開条件を満たしたサービスだけ検索対象になります。"}
               </p>
             )}
-            {unitPriceMatches.length > LIMIT ? <p className="meta">上位{LIMIT}件を表示しています。</p> : null}
+            {unitPriceByService.size > 20 ? <p className="meta">上位20サービスを表示しています。</p> : null}
           </section>
 
           <section className="section">
