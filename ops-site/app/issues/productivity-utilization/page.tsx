@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { buildPublicPageMetadata } from "../../../lib/site-metadata";
 import IssueNavigation from "../_components/IssueNavigation";
 import IssueFollowThrough from "../_components/IssueFollowThrough";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPublicPageMetadata({
+  path: "/issues/productivity-utilization",
   title: "稼働率・生産性を改善したい | 介護業務改善",
-  description:
-    "介護事業の稼働率と生産性を分け、間接業務、待ち・調整、人員配置、AI活用を、ケアの質と職員負担を損なわない順序で整理します。",
-};
+  description: "介護事業の稼働率と生産性を分け、間接業務、待ち・調整、人員配置、AI活用を、ケアの質と職員負担を損なわない順序で整理します。",
+  type: "article",
+});
 
 const findings = [
   {
