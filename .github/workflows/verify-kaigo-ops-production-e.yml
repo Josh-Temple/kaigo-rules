@@ -1,0 +1,91 @@
+name: Verify Kaigo Ops production E
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/verify-kaigo-ops-production-e.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: ops-site
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+      - run: npm ci --no-audit --no-fund
+      - name: Verify production routes and journeys
+        run: npm run verify:routes -- https://ops-site-pi.vercel.app
+      - name: Check Analytics delivery route
+        shell: bash
+        run: |
+          code="$(curl --silent --show-error --location --output /tmp/analytics-script.js --write-out '%{http_code}' https://ops-site-pi.vercel.app/_vercel/insights/script.js || true)"
+          echo "ANALYTICS_SCRIPT_HTTP_STATUS=$code"
+          if [ "$code" = "200" ]; then
+            echo "ANALYTICS_SCRIPT_DELIVERY=AVAILABLE"
+          else
+            echo "ANALYTICS_SCRIPT_DELIVERY=NOT_CONFIRMED"
+          fi
+      - name: Install browser for mobile verification
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify 390px production journeys
+        shell: bash
+        run: |
+          cat > /tmp/verify-mobile.mjs <<'EOF'
+          import { chromium } from 'playwright';
+
+          const base = 'https://ops-site-pi.vercel.app';
+          const routes = [
+            '/',
+            '/issues/information-search',
+            '/issues/documentation',
+            '/issues/training-handover',
+            '/issues/communication-collaboration',
+            '/issues/productivity-utilization',
+            '/tools/information-inventory',
+            '/tools/documentation-review',
+            '/tools/training-handover-inventory',
+            '/tools/communication-review',
+            '/tools/work-time-review',
+          ];
+
+          const browser = await chromium.launch({ headless: true });
+          const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+          for (const route of routes) {
+            const response = await page.goto(base + route, { waitUntil: 'networkidle' });
+            if (!response || !response.ok()) throw new Error(route + ': HTTP ' + (response?.status() ?? 'no response'));
+            const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+            if (overflow > 2) throw new Error(route + ': horizontal overflow ' + overflow + 'px at 390px');
+            if (!(await page.locator('h1').count())) throw new Error(route + ': no h1');
+            console.log('PASS mobile', route);
+          }
+
+          const pairs = [
+            ['/issues/information-search', '/tools/information-inventory'],
+            ['/issues/documentation', '/tools/documentation-review'],
+            ['/issues/training-handover', '/tools/training-handover-inventory'],
+            ['/issues/communication-collaboration', '/tools/communication-review'],
+            ['/issues/productivity-utilization', '/tools/work-time-review'],
+          ];
+          for (const [issue, tool] of pairs) {
+            await page.goto(base + issue, { waitUntil: 'networkidle' });
+            if (!(await page.locator(`a[href="${tool}"]`).count())) throw new Error(issue + ': missing tool link');
+            if (!(await page.locator('a[href*="kaigo-rules.vercel.app/databases/search"]').count())) throw new Error(issue + ': missing Rules bridge');
+            if (!(await page.getByText('GitHub Issuesでフィードバックする').count())) throw new Error(issue + ': missing feedback path');
+            console.log('PASS journey', issue, '->', tool);
+          }
+          await browser.close();
+          EOF
+          node /tmp/verify-mobile.mjs
