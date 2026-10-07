@@ -48,9 +48,11 @@ Human field validationは `OPTIONAL_EXTERNAL_VALIDATION / NOT_RUN`。
 
 2026-10-07のWorker E releaseで、Kaigo Opsはrelease main SHA `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2` をproduction deployment `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq` として反映し、`READY` とproduction alias割当を確認した。
 
-Vercel Web Analyticsのclient implementationは存在し、release後のproduction verificationで `/_vercel/insights/script.js` がHTTP 200で配信されることを確認した。一方、同時点のpageview API確認値は `visitors: 0 / pageviews: 0`、path別集計も空である。project-level enabled flagは利用可能なproject取得結果には露出していない。
+Vercel Web Analyticsのclient implementationは存在し、productionではcompatibility routeとResilient Intake scriptのHTTP 200配信を確認した。2026-10-07のWorker A fresh確認では、開始時 `visitors: 0 / pageviews: 0` だったWeb Analytics APIが、その後 `visitors: 1 / pageviews: 1`、requestPath `/` = 1となった。受信browserはFirefox / desktopで、controlled PlaywrightのChromium trafficとは一致しない。
 
-したがってAnalytics stateは **tracking script配信確認済み / Vercel側pageview受信未確認** とする。「観測開始済み」とはまだ扱わず、first confirmed observation dateは未確定。
+controlled Playwrightではpageview callが `window.vaq` に積まれる一方、deployed Analytics scriptの自動化判定により送信されないことも確認した。このtrafficは実利用値に含めない。
+
+したがってAnalytics stateは **production pageview receive confirmed / observation started 2026-10-07** とする。1 pageviewから需要や改善効果は判断しない。
 
 初期観測はpageviewだけとし、対象・解釈・非収集データは `docs/kaigo-ops/measurement.md` を正本として確認する。
 
@@ -70,7 +72,7 @@ Vercel Web Analyticsのclient implementationは存在し、release後のproducti
 
 フィードバックはGitHub Issuesを再利用し、「何を試したか」「どこで止まったか」「何が足りなかったか」を最小入力として案内する。投稿はGitHub上で公開・保存されるため、個人情報、介護記録、事業所の非公開情報を記載しないよう明示する。
 
-Issue 6「収支・コスト構造」は開始していない。Analyticsの実受信も未確認のため、現時点で需要や改善効果は断定しない。
+Issue 6「収支・コスト構造」は開始していない。Analyticsの実受信は確認できたが母数はまだ極小のため、現時点で需要や改善効果は断定しない。
 
 ## Production release state
 
@@ -89,7 +91,7 @@ Issue 6「収支・コスト構造」は開始していない。Analyticsの実�
 
 Repository-side `Validate ops site` passed `npm test`, `npm run build`, and route smoke verification on the integrated release source. Vercel deployment metadata confirms the same release SHA and READY state。
 
-Production verification also passed the public route/journey checks and 390px browser verification for the home page, all 5 Issue routes, all 5 action-tool routes, and all 5 Issue → tool / Kaigo Rules / feedback journeys. Analytics script delivery returned HTTP 200; Vercel pageview receive remains unconfirmed.
+Production verification also passed the public route/journey checks and 390px browser verification for the home page, all 5 Issue routes, all 5 action-tool routes, and all 5 Issue → tool / Kaigo Rules / feedback journeys. Analytics script delivery is confirmed, and Worker A subsequently confirmed Vercel-side production pageview receive.
 
 ## Current non-claims
 
