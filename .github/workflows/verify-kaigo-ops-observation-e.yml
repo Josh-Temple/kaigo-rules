@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - ".github/workflows/verify-kaigo-ops-observation-e.yml"
+  pull_request:
+    paths:
+      - ".github/workflows/verify-kaigo-ops-observation-e.yml"
   workflow_dispatch:
 
 permissions:
