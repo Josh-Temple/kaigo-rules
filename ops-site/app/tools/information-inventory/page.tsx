@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ActionInventoryWorksheet, { type ActionField } from '../_components/ActionInventoryWorksheet';
+import ToolFollowThrough from '../_components/ToolFollowThrough';
 
 export const metadata: Metadata = {
   title: '情報探索の棚卸しシート | 介護業務改善',
@@ -63,6 +64,8 @@ export default function InformationInventoryPage() {
           介護ルールで制度・原典を確認する →
         </a>
       </section>
+
+      <ToolFollowThrough issuePath="/issues/information-search" toolPath="/tools/information-inventory" />
 
       <footer>
         <span>記入用様式 / 2026-10-07</span>
