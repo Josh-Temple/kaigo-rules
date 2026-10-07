@@ -65,7 +65,7 @@ Kaigo Rulesとは公開面を分離します。
 
 各Issueには、内容に応じたKaigo Rulesの公開DB検索とKaigo Rulesトップへの導線があります。サービス適用範囲はKaigo Ops側で推定せず、必要な制度判断はKaigo Rules側の検証状態と一次資料で確認します。
 
-フィードバックはGitHub Issuesを再利用します。投稿内容はGitHub上で公開・保存されるため、氏名、利用者情報、介護記録、事業所の非公開情報は入力しないよう案内しています。
+フィードバックはGitHub Issuesを再利用します。5 Issueと5 action toolから同じ3質問（「何を試したか」「どこで止まったか」「何が足りなかったか」）へ進め、action toolから開始した場合はIssue routeとtool routeをprefillします。投稿内容はGitHub上で公開・保存されるため、氏名、利用者情報、介護記録、事業所の非公開情報は入力しないよう、リンク元とprefillの両方で案内します。内部の分類は利用者に選択させず、投稿後に少数カテゴリへ整理します。詳細は `../docs/kaigo-ops/feedback-triage.md` を参照してください。
 
 ## First deep Issueの検証状態
 
@@ -103,19 +103,19 @@ Kaigo Rulesとは公開面を分離します。
 2026-10-07にVercel projectとproductionをfresh確認しました。
 
 - `@vercel/analytics` 2.0.1と`<Analytics />`はproduction bundleに含まれる
-- release後の `/_vercel/insights/script.js` はHTTP 200で、tracking script配信を確認済み
-- Web Analytics APIの確認値は `visitors: 0 / pageviews: 0`で、Vercel側受信はまだ確認できない
-- 利用可能なVercel操作ではproject-level enabled flagを直接確認できないため、受信が始まらない場合はVercel Dashboardでの確認が残る
+- compatibility routeとproductionのResilient Intake scriptはHTTP 200で配信される
+- 2026-10-07にWeb Analytics APIで `visitors: 1 / pageviews: 1`、requestPath `/` = 1を確認し、初回観測日を同日に固定
+- controlled Playwright trafficはdeployed Analytics scriptの自動化判定で送信対象外となるため、実利用値として扱わない
 - 初期計測はpageviewだけとし、custom event、検索欄やworksheetの入力内容、個人情報、介護記録本文は追加収集しない
 
-詳細な観測対象、解釈上の注意、確認手順は `docs/kaigo-ops/measurement.md` を参照してください。
+詳細な計測契約は `docs/kaigo-ops/measurement.md`、継続観測と2〜4週間レビューは `docs/kaigo-ops/usage-observation.md` を参照してください。
 
 ## 残りの実行と次の判断
 
 - production routeと390px主要journeyは2026-10-07のrelease後検証でPASS
-- tracking script配信は確認済み。次はpageview送信・Vercel側受信を確認し、受信できた場合だけ初回観測日を記録
-- 受信が始まらない場合はVercel Dashboardで `kaigo-ops` → Analytics のenabled状態を確認する
-- 実受信の確認日から2〜4週間後に、課題別閲覧数・見直しシートの閲覧数・母数を確認。少数データから効果や需要を確定しない
+- production pageview受信は2026-10-07に確認済み。以後はpageviewを継続観測する
+- 初回受信から2〜4週間後に、課題別閲覧数・見直しシートの閲覧数・母数を確認。少数データから効果や需要を確定しない
+- controlled verification trafficは実利用と分離し、自動化ブラウザのアクセスを利用実績として数えない
 - custom eventはまだ追加せず、pageviewで必要性が確認できてから拡張
 - 「収支・コスト構造」は令和8年度介護事業経営実態調査の集計結果公表後に更新
 - 利用状況を見て再調査、更新通知、テンプレート、Evidence Brief等の事業化候補を判断
