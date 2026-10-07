@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import IssueNavigation from "../_components/IssueNavigation";
+import IssueFollowThrough from "../_components/IssueFollowThrough";
 
 export const metadata: Metadata = {
   title: "必要な情報を探すのに時間がかかる | 介護業務改善",
@@ -237,9 +238,7 @@ export default function InformationSearchIssuePage() {
             現在、人手確認が完了していない情報層もあるため、このページから制度上の個別判断を自動的に確定することはしません。
             個別の制度確認では、介護ルール側に表示される検証状態と原典を確認してください。
           </p>
-          <a className="textLink" href="https://kaigo-rules.vercel.app/" target="_blank" rel="noreferrer">
-            介護ルールで制度・原典を確認する →
-          </a>
+          <IssueFollowThrough issuePath="/issues/information-search" />
         </section>
 
         <section className="section" id="evidence">
