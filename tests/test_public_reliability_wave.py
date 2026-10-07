@@ -28,7 +28,7 @@ def make_head(path, *, noindex=False):
         "<html><head><meta charset=\"utf-8\">"
         f"<title>{title}</title>"
         f"<meta name=\"description\" content=\"説明 {path}\">"
-        f"<link href=\"{CANONICAL_ORIGIN}{path}\" rel=\"canonical\">"
+        f"<link href=\"{CANONICAL_ORIGIN}{path if path != '/' else ''}\" rel=\"canonical\">"
         + ('<meta content="noindex, follow" name="robots">' if noindex else "")
         + "</head><body>"
     )
