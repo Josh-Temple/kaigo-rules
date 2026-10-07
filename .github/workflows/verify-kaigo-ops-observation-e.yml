@@ -1,4 +1,5 @@
 name: Verify Kaigo Ops observation wave production
+# one-shot PR trigger for Worker E
 
 on:
   push:
