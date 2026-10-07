@@ -1,0 +1,92 @@
+name: Verify Kaigo Ops Analytics A
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/verify-kaigo-ops-analytics-a.yml"
+      - "ops-site/**"
+      - "docs/kaigo-ops/measurement.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analytics-send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: ops-site
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+      - run: npm ci --no-audit --no-fund
+      - name: Install Chromium
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify production Analytics browser send
+        shell: bash
+        run: |
+          cat > verify-analytics.tmp.mjs <<'EOF'
+          import { chromium } from 'playwright';
+
+          const base = 'https://ops-site-pi.vercel.app';
+          const routes = ['/', '/issues/information-search'];
+          const analytics = [];
+
+          const browser = await chromium.launch({ headless: true });
+          const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+
+          page.on('request', request => {
+            if (request.url().includes('/_vercel/insights/')) {
+              analytics.push({
+                kind: 'request',
+                method: request.method(),
+                url: request.url(),
+              });
+              console.log('ANALYTICS_REQUEST', request.method(), request.url());
+            }
+          });
+
+          page.on('response', response => {
+            if (response.url().includes('/_vercel/insights/')) {
+              analytics.push({
+                kind: 'response',
+                status: response.status(),
+                url: response.url(),
+              });
+              console.log('ANALYTICS_RESPONSE', response.status(), response.url());
+            }
+          });
+
+          for (const route of routes) {
+            const response = await page.goto(base + route, { waitUntil: 'networkidle' });
+            if (!response || !response.ok()) {
+              throw new Error(route + ': HTTP ' + (response?.status() ?? 'no response'));
+            }
+            await page.waitForTimeout(1500);
+            console.log('CONTROLLED_ROUTE', route);
+          }
+
+          await page.waitForTimeout(2000);
+          await browser.close();
+
+          const scriptResponse = analytics.some(
+            item => item.kind === 'response' && item.status === 200 && item.url.includes('/_vercel/insights/script.js')
+          );
+          const viewRequest = analytics.some(
+            item => item.kind === 'request' && item.url.includes('/_vercel/insights/view')
+          );
+
+          console.log('ANALYTICS_SCRIPT_200=' + scriptResponse);
+          console.log('ANALYTICS_VIEW_REQUEST=' + viewRequest);
+
+          if (!scriptResponse) throw new Error('Analytics script did not return HTTP 200');
+          if (!viewRequest) throw new Error('Browser pageview request was not observed');
+          EOF
+          node verify-analytics.tmp.mjs
+          rm -f verify-analytics.tmp.mjs
