@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("基準解釈通知の確認状況", "基準解釈通知の再構成・確認状況を説明するページです。", "/notices/review", false);
+
 import Link from "next/link";
 import packetData from "../../../data/notice-review-packet.json";
 import currentnessData from "../../../data/notice-rouki25-currentness-ledger.json";

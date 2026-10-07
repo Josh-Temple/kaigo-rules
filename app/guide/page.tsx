@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("介護制度の使い方ガイド", "介護ルールで制度資料を探し、根拠や確認状態を読み取るための案内です。", "/guide");
+
 import Link from "next/link";
 import sourcesData from "../../data/sources.json";
 import {

@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("通所介護の報酬DB", "通所介護の報酬告示の構造化データと原文の取得元・確認状態を確認できます。", "/fees");
+
 import VerificationSummary from "../../components/verification-summary";
 import ServiceContextLinks from "../../components/service-context-links";
 import Link from "next/link";

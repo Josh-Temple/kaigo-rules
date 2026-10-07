@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("基準省令DB", "介護サービスの人員・設備・運営に関する基準省令の収載条文を閲覧できます。", "/rules");
+
 import VerificationSummary from "../../components/verification-summary";
 import ServiceContextLinks from "../../components/service-context-links";
 import Link from "next/link";

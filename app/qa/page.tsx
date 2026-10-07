@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("国Q&A DB", "厚生労働省の介護サービスに関するQ&Aを検索し、出典と確認状態を確認できます。", "/qa");
+
 import VerificationSummary from "../../components/verification-summary";
 import Link from "next/link";
 import qaCorpusData from "../../data/qa-corpus.json";

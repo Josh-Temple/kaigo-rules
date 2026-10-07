@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("通所介護の制度資料", "通所介護に関する公開済みの介護制度資料と実務向けの案内を確認できます。", "/services/dayservice");
+
 import Link from "next/link";
 import ServiceContextLinks from "../../../components/service-context-links";
 import { publishedLayerLabels } from "../../../lib/service-catalog";

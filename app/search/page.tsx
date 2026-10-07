@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("制度資料の検索結果", "介護制度のキーワード検索結果を表示します。", "/search", false);
+
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import ServiceContextLinks from "../../components/service-context-links";
