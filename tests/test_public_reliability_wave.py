@@ -16,6 +16,7 @@ from scripts.verify_public_reliability_wave import (
     public_unit_price_rows,
     published_unit_price_service_ids,
     sitemap_urls,
+    rendered_unit_price_rows,
 )
 
 REGIONS = ["一級地", "二級地", "三級地", "四級地",
@@ -90,7 +91,12 @@ class FakeProbe(PublicReliabilityProbe):
             for item in make_items():
                 region = item["item_body"]["region_class"]
                 if region != self.omit_region:
-                    body += region + f"{item['item_body']['unit_price_yen']:.2f}円"
+                    yen = f"{item['item_body']['unit_price_yen']:.2f}"
+                    # React SSR separates an expression and adjacent text with a comment.
+                    body += (
+                        f'<div class="unit-price-row"><strong>{region}</strong>'
+                        f'<span>{yen}<!-- -->円</span></div>'
+                    )
             return 200, make_head(route) + body + "</body></html>"
         if route == "/databases/search":
             if query.get("q") == ["BCP"]:
@@ -105,6 +111,16 @@ class FakeProbe(PublicReliabilityProbe):
 
 
 class PublicReliabilityWaveTests(unittest.TestCase):
+    def test_ssr_split_price_text_stays_in_its_own_row(self):
+        html = (
+            '<div class="unit-price-row"><strong>一級地</strong>'
+            '<span>11.40<!-- -->円</span></div>'
+            '<div class="unit-price-row"><strong>二級地</strong>'
+            '<span>11.20<!-- -->円</span></div>'
+        )
+        self.assertEqual(rendered_unit_price_rows(html),
+                         ["一級地11.40円", "二級地11.20円"])
+
     def test_head_parser_is_attribute_order_independent(self):
         html = ('<html><head><link href="https://x.example/" rel="canonical">'
                 '<meta content="説明" name="description">'
