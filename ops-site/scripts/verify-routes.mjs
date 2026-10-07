@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { issueRegistry } from '../app/issues/registry.ts';
 import { actionToolRoutes } from '../lib/action-tools.ts';
+import { issueFollowThrough, RULES_HOME_HREF } from '../lib/issue-follow-through.ts';
 const base = process.argv[2] || 'http://localhost:3000';
 const home = await fetch(`${base}/`);
 assert.equal(home.status, 200, 'home route');
@@ -13,7 +14,14 @@ for (const issue of issueRegistry) {
   assert.ok(html.includes('<h1>'), `${issue.href}: heading`);
   assert.ok(html.includes('id="evidence"'), `${issue.href}: evidence anchor`);
   assert.ok(html.includes('class="sourceRow"'), `${issue.href}: source links`);
-  assert.ok(html.includes('https://kaigo-rules.vercel.app/'), `${issue.href}: rules link`);
+  const followThrough = issueFollowThrough[issue.href];
+  assert.ok(followThrough, `${issue.href}: follow-through config`);
+  assert.ok(html.includes(`href="${followThrough.rulesHref}"`), `${issue.href}: contextual Rules link`);
+  assert.ok(html.includes(`href="${RULES_HOME_HREF}"`), `${issue.href}: generic Rules link`);
+  assert.ok(html.includes('GitHub Issuesでフィードバックする'), `${issue.href}: feedback link`);
+  for (const text of ['何を試したか', 'どこで止まったか', '何が足りなかったか', '介護記録']) {
+    assert.ok(html.includes(text), `${issue.href}: follow-through ${text}`);
+  }
   console.log(`PASS ${issue.href}`);
 }
 for (const tool of actionToolRoutes) {
@@ -33,6 +41,7 @@ for (const tool of actionToolRoutes) {
 
 const documentation = await (await fetch(`${base}/issues/documentation`)).text();
 assert.ok(documentation.includes('href="/tools/documentation-review"'), 'worksheet reachable from documentation');
+assert.ok(!documentation.includes('/questions/care-plan-content'), 'documentation does not hard-code a day-service-only Rules route');
 const worksheet = await fetch(`${base}/tools/documentation-review`);
 assert.equal(worksheet.status, 200, 'worksheet route');
 const worksheetText = await worksheet.text();
