@@ -9,13 +9,13 @@ Kaigo Opsの利用状況を、まずpageviewだけで観測する。
 
 pageviewは「次にどこを改善するか」を考えるための観測値として使い、業務改善効果や需要を直接示す指標として扱わない。
 
-## 2026-10-07 fresh確認結果
+## 2026-10-07 pre-release fresh確認結果
 
-Repository `main`:
+Repository baseline:
 
-- HEAD: `a3bb60b3d59fefb783c88e9fc710101b076ffe01`
+- pre-release main: `a3bb60b3d59fefb783c88e9fc710101b076ffe01`
 
-Vercel:
+Pre-release Vercel baseline:
 
 - project: `kaigo-ops`
 - project id: `prj_7kKmZkto1j9r9Z3otwccx05LAjTp`
@@ -40,6 +40,23 @@ Production delivery:
 したがって、**コードは組み込まれているが、productionでpageview収集が開始されたことは確認できない**。
 
 Vercel側のproject-level enable flagは、現在利用できるproject取得結果には露出していない。Activity Log取得は権限制約で403となり、利用可能なVercel操作にはWeb Analyticsを有効化するactionもないため、このWorkerから有効化状態の確定・変更はできなかった。
+
+
+## Worker E production release
+
+2026-10-07のUtilization & Actionability Waveは、integration PR #421をmainへ統合し、Kaigo Ops projectへexact SHAでproduction releaseした。
+
+- integration PR: #421
+- release main SHA: `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2`
+- Kaigo Ops production deployment: `dpl_3SiLHr9Nf3MEgmACbWmvEy4ihXZq`
+- deployment state: `READY`
+- deployment Git SHA: `f18b3d7c9eca6ec9108ef0937c677cd7e4ec1ad2`
+- production alias: `https://ops-site-pi.vercel.app/`
+- alias error: none
+
+release後にVercel Web Analytics pageview APIを再確認したが、`visitors: 0 / pageviews: 0`で、path別集計も空だった。
+
+この結果は「閲覧者がいない」ことを確定するものではなく、tracking deliveryとVercel側受信が成立したことも示さない。project-level Web Analyticsのenabled flagは利用可能なproject取得結果に露出せず、有効化actionも利用できないため、状態は `BLOCKED / NOT_CONFIRMED` とする。
 
 ## 必要な人手操作
 
@@ -93,4 +110,4 @@ pageviewだけでは次の改善判断ができないことが確認できた場
 
 未確定。
 
-productionでtracking scriptが正常配信され、pageview送信とVercel側受信を確認できた日を初回観測日として記録する。
+productionでtracking scriptが正常配信され、pageview送信とVercel側受信を確認できた日を初回観測日として記録する。2026-10-07のWorker E release時点では未確認。
