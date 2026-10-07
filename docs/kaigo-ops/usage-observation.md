@@ -1,6 +1,6 @@
 # Kaigo Ops — 利用観測台帳・判断契約
 
-更新日: 2026-10-07  
+更新日: 2026-10-08  
 状態: canonical operational ledger  
 対象: Kaigo Ops
 
@@ -22,21 +22,28 @@
 
 ## 観測単位
 
-各観測期間では、最低限次を記録する。
+今後のsnapshotは、比較可能性を保つため同じ項目名・同じ意味で記録する。
 
 | 項目 | 記録内容 |
 |---|---|
-| 観測期間 | 開始日時と終了日時 |
+| observation date/time | snapshotを取得した日時。JSTを明記する |
+| observation window | 観測対象期間。APIが時刻を丸める場合は、その仕様も記録する |
 | Analytics receive state | 受信確認済み / 受信未確認 / 一時的に不安定 |
-| total visitors | Vercelで確認できた値。未確認なら「未確認」 |
-| total pageviews | Vercelで確認できた値。未確認なら「未確認」 |
-| route別pageviews | home、5 Issue、5 action tool。受信未確認なら欠損を0にしない |
-| controlled verification | 有無、日時、対象route、想定アクセス数。分からない場合はその旨を記録 |
-| feedback件数 | 対象期間に確認できた件数 |
-| feedback分類 | 下記の少数分類でtriage。利用者に追加入力を要求しない |
-| 重要な欠落 / blocker | 計測、導線、feedback取得等の問題 |
-| 言えること | 観測値から直接支持される範囲 |
-| 言えないこと | 需要、効果、完了等の未確認事項 |
+| total visitors | Vercelで確認できた値。取得不能なら `unknown / unavailable` |
+| total pageviews | Vercelで確認できた値。取得不能なら `unknown / unavailable` |
+| home | `/` の観測状態またはpageview。集計行がない場合は「観測なし（集計行なし）」 |
+| 5 Issue | 5 routeを個別に記録する。集計行がないことを需要なしへ読み替えない |
+| 5 tools | 5 routeを個別に記録する。閲覧を実行完了へ読み替えない |
+| feedback count | fresh検索で確認できた件数。取得不能と0件を区別する |
+| feedback category summary | 既存7分類で要約。0件の場合は「該当なし」 |
+| Search Console impressions / clicks | 取得できた場合のみ値を記録。取得不能なら `unknown / unavailable` |
+| indexing state summary | Worker Aまたはcurrent canonicalから確認できる範囲だけ記録する |
+| controlled traffic caveat | controlled verificationの除外可否と、由来を分離できないtrafficを明記する |
+| interpretation | 観測値から直接言えること / 言えないことを短く記録する |
+| next check | 次回確認日またはreview window |
+| 重要な欠落 / blocker | 計測、導線、feedback取得等の問題。ない場合も「なし」と明記する |
+
+値の状態は、少なくとも **観測あり / 観測なし / 母数不足 / unknown / unavailable** を区別する。0件と未取得を同じ値として扱わない。
 
 ## 観測対象route
 
@@ -134,11 +141,60 @@ route別については、Analytics受信自体が未確認のため「0 pagevie
 - action toolが役立ったか、実行されたか。
 - 改善効果、業務時間削減、制度理解、支払い意思。
 
+### 2026-10-08 public discovery / observation operations snapshot
+
+- observation date/time: **2026-10-08 00:11 JST前後**
+- observation window: 2026-10-07の観測開始後からsnapshot取得時点までを対象にfresh確認。Vercelのaggregate queryは時間bucket境界へ丸められるため、値はsnapshot取得時点で返されたproduction集計として扱う
+- Analytics receive state: **受信確認済み**
+- total visitors / pageviews: **6 visitors / 7 pageviews**
+- home: `/` = **7 pageviews / 6 visitors**
+- 5 Issue: **観測なし（requestPath集計行なし）**
+  - `/issues/information-search`
+  - `/issues/documentation`
+  - `/issues/training-handover`
+  - `/issues/communication-collaboration`
+  - `/issues/productivity-utilization`
+- 5 tools: **観測なし（requestPath集計行なし）**
+  - `/tools/information-inventory`
+  - `/tools/documentation-review`
+  - `/tools/training-handover-inventory`
+  - `/tools/communication-review`
+  - `/tools/work-time-review`
+- browser / device補助情報: Chrome = 6 pageviews / 5 visitors、Firefox = 1 pageview / 1 visitor、deviceTypeはdesktop = 7 pageviews / 6 visitors
+- feedback count: **0件**（`[Kaigo Opsフィードバック]` title prefixでfresh検索）
+- feedback category summary: 該当なし。0件を失敗・満足・需要なしとは解釈しない
+- Search Console impressions / clicks: **unknown / unavailable**
+- indexing state summary: **unknown / unavailable**。same-wave Worker Aのcanonical record `docs/kaigo-ops/search-discovery-observation.md` では、認証済みSearch Console接続が利用できないため、property / sitemap submission / major 6 URL index state / Google-selected canonical は `UNKNOWN`、indexing request は `NOT_RUN` と記録されている
+- controlled traffic caveat: deployed Analytics scriptはheadless / webdriver trafficを除外することが既存検証で確認済み。ただし今回の6 visitors / 7 pageviewsの個々の由来は確定できず、外部実利用者数や独立した需要の証拠として扱わない
+- 重要な欠落 / blocker: Search Consoleは認証済み接続が利用できず、property / sitemap submission / URL Inspectionを実確認できない。Analytics受信自体のblockerはなし
+- interpretation: production Analytics受信は継続している。一方、観測はhomeに限られ、Issue / toolの利用差を判断できる母数はまだない。feedbackも0件であり、改善対象の優先順位を確定する根拠はまだ不足している
+- next check: **earliest review target 2026-10-21前後 / broader review window 2026-10-21〜2026-11-04前後**
+
+#### Custom event decision memo
+
+**CUSTOM_EVENT_NOT_JUSTIFIED**
+
+理由:
+
+- first confirmed observation date 2026-10-07から2〜4週間の観測期間がまだ蓄積していない
+- Issue / tool routeに観測がなく、pageviewだけでは答えられない「具体的な意思決定」がまだ特定できていない
+- 現時点でeventを追加しても、母数不足の問題を解消せず、計測だけを先に複雑化する
+- 当面はpageview、Search Console discovery state、feedbackを同じsnapshotで継続観測する
+
+custom eventは追加しない。将来candidateを検討する場合も、個人情報、検索語、worksheet入力内容、介護記録本文はpayloadへ含めない。
+
 ## 2〜4週間レビュー契約
 
 レビュー期間の起点は、`measurement.md` に記録された **first confirmed observation date** とする。受信未確認の間は、2〜4週間の観測期間が始まったものと扱わない。
 
-初回レビューは、受信確認後おおむね2〜4週間の範囲で実施し、次を同じ観測期間で確認する。
+current canonicalではfirst confirmed observation dateは **2026-10-07** のまま維持されている。したがって、初回の正式な判断時点は次とする。
+
+- earliest review target: **2026-10-21前後**
+- broader review window: **2026-10-21〜2026-11-04前後**
+
+このwindowまでsnapshotを同じschemaで追記し、途中の少数値だけで需要や効果を確定しない。
+
+初回レビューでは、次を同じ観測期間で確認する。
 
 1. homeのpageview
 2. 5 Issueのroute別pageview

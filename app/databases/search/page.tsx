@@ -670,6 +670,38 @@ export default async function DatabaseSearchPage({
             </p>
             <p><Link href="/guide">実務ガイドから探す →</Link></p>
           </section>
+
+          <section className="section">
+            <p className="eyebrow">制度確認の次に</p>
+            <h2>制度上の要件を確認した後、業務の見直しへ</h2>
+            <p>
+              介護ルールは、法令・基準・通知・報酬・Q&amp;Aから「制度上どうなっているか」を確認するためのサイトです。
+              制度を確認したうえで、情報の探し方や記録・文書作業そのものを見直す場合は、介護業務改善で改善の選択肢と小さな試し方を確認できます。
+            </p>
+            <div className="entry-links">
+              <a
+                className="entry-row"
+                href="https://ops-site-pi.vercel.app/issues/information-search"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>必要な情報を探すのに時間がかかる</span>
+                <small>介護業務改善で見る ↗</small>
+              </a>
+              <a
+                className="entry-row"
+                href="https://ops-site-pi.vercel.app/issues/documentation"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>記録・文書作成に時間がかかる</span>
+                <small>介護業務改善で見る ↗</small>
+              </a>
+            </div>
+            <p className="meta">
+              介護業務改善では制度適合を確定しません。制度上の判断が必要な場合は、介護ルールの検証状態と原典へ戻って確認してください。
+            </p>
+          </section>
         </>
       )}
 
