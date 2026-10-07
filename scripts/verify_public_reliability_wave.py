@@ -41,8 +41,8 @@ class PageHead(HTMLParser):
         values = dict(attrs)
         if tag == "head":
             self.in_head = True
-        if not self.in_head:
-            return
+        # Next.js may stream metadata outside the initial head markup.
+        # Validate parsed metadata tags independent of location/attribute order.
         if tag == "title":
             self.in_title = True
         elif tag == "link" and "canonical" in (values.get("rel") or "").split():
@@ -59,7 +59,7 @@ class PageHead(HTMLParser):
             self.in_head = False
 
     def handle_data(self, data: str) -> None:
-        if self.in_head and self.in_title:
+        if self.in_title:
             self.title += data
 
 
