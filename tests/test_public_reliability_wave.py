@@ -14,6 +14,7 @@ from scripts.verify_public_reliability_wave import (
     PublicReliabilityProbe,
     extract_head,
     public_unit_price_rows,
+    published_unit_price_service_ids,
     sitemap_urls,
 )
 
@@ -121,6 +122,13 @@ class PublicReliabilityWaveTests(unittest.TestCase):
         self.assertEqual(sitemap_urls(xml), ["https://example.org/a"])
         with self.assertRaises(Exception):
             sitemap_urls("<broken")
+
+    def test_deployed_revision_allowlist_drives_all_service_checks(self):
+        service_ids = published_unit_price_service_ids()
+        self.assertGreaterEqual(len(service_ids), 2)
+        self.assertEqual(service_ids, sorted(set(service_ids)))
+        self.assertIn("dayservice", service_ids)
+        self.assertIn("homevisit", service_ids)
 
     def test_api_projection_rejects_invalid_price_and_empty_data(self):
         valid = {"sources": [{"source_family": UNIT_PRICE_FAMILY, "items": make_items()}]}
