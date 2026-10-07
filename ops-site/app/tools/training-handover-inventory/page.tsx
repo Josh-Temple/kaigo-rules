@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ActionInventoryWorksheet, { type ActionField } from '../_components/ActionInventoryWorksheet';
+import ToolFollowThrough from '../_components/ToolFollowThrough';
 
 export const metadata: Metadata = {
   title: '引き継ぎ情報・研修資源の正本整理シート | 介護業務改善',
@@ -65,6 +66,8 @@ export default function TrainingHandoverInventoryPage() {
           介護ルールで制度・原典を確認する →
         </a>
       </section>
+
+      <ToolFollowThrough issuePath="/issues/training-handover" toolPath="/tools/training-handover-inventory" />
 
       <footer>
         <span>記入用様式 / 2026-10-07</span>
