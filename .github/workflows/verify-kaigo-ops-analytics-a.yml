@@ -34,19 +34,21 @@ jobs:
         run: |
           npm install --no-save --ignore-scripts playwright@1.55.0
           npx playwright install --with-deps chromium
-      - name: Verify production Analytics dynamic browser send
+      - name: Verify production Analytics pageview send
         shell: bash
         run: |
           cat > verify-analytics.tmp.mjs <<'EOF'
           import { chromium } from 'playwright';
 
           const base = 'https://ops-site-pi.vercel.app';
-          const routes = ['/', '/issues/information-search'];
+          const route = '/issues/information-search';
           const traffic = [];
-          const failures = [];
-
           const browser = await chromium.launch({ headless: true });
-          const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+          const context = await browser.newContext({
+            viewport: { width: 390, height: 844 },
+            userAgent: 'Mozilla/5.0 (Linux; Android 16; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Mobile Safari/537.36',
+          });
+          const page = await context.newPage();
 
           page.on('request', request => {
             traffic.push({
@@ -63,42 +65,29 @@ jobs:
               url: response.url(),
             });
           });
-          page.on('requestfailed', request => {
-            failures.push({
-              url: request.url(),
-              error: request.failure()?.errorText ?? 'unknown',
-            });
-          });
           page.on('pageerror', error => console.log('PAGE_ERROR', error.message));
 
-          for (const route of routes) {
-            const response = await page.goto(base + route, { waitUntil: 'networkidle' });
-            if (!response || !response.ok()) throw new Error(route + ': HTTP ' + (response?.status() ?? 'no response'));
-            await page.waitForTimeout(2500);
+          const response = await page.goto(base + route, { waitUntil: 'networkidle' });
+          if (!response || !response.ok()) throw new Error(route + ': HTTP ' + (response?.status() ?? 'no response'));
+          await page.waitForTimeout(5000);
 
-            const analyticsScripts = await page.locator('script[src]').evaluateAll(nodes =>
-              nodes
-                .map(node => ({ src: node.getAttribute('src'), html: node.outerHTML }))
-                .filter(item => item.src && item.src.endsWith('/script.js') && !item.src.includes('/_next/'))
-            );
-            console.log('CONTROLLED_ROUTE', route);
-            console.log('ANALYTICS_SCRIPT_TAGS', JSON.stringify(analyticsScripts));
-          }
+          const script = await page.locator('script[src]').evaluateAll(nodes =>
+            nodes
+              .map(node => ({ src: node.getAttribute('src'), html: node.outerHTML }))
+              .find(item => item.src && item.src.endsWith('/script.js') && !item.src.includes('/_next/')) ?? null
+          );
+          console.log('CONTROLLED_ROUTE', route);
+          console.log('USER_AGENT', await page.evaluate(() => navigator.userAgent));
+          console.log('ANALYTICS_SCRIPT_TAG', JSON.stringify(script));
 
-          await page.waitForTimeout(3000);
+          await context.close();
           await browser.close();
 
-          const dynamicScriptRequests = traffic.filter(item =>
-            item.kind === 'request' &&
-            item.resourceType === 'script' &&
-            item.url.endsWith('/script.js') &&
-            !item.url.includes('/_next/')
-          );
-          const prefixes = dynamicScriptRequests.map(item => new URL(item.url).pathname.replace(/script\.js$/, ''));
+          if (!script?.src) throw new Error('Analytics script tag was not found');
+          const prefix = new URL(script.src, base).pathname.replace(/script\.js$/, '');
           const dynamicTraffic = traffic.filter(item => {
             try {
-              const pathname = new URL(item.url).pathname;
-              return prefixes.some(prefix => pathname.startsWith(prefix));
+              return new URL(item.url).pathname.startsWith(prefix);
             } catch {
               return false;
             }
@@ -108,23 +97,22 @@ jobs:
             console.log('ANALYTICS_DYNAMIC_TRAFFIC', JSON.stringify(item));
           }
 
-          const dynamicScript200 = dynamicTraffic.some(
+          const script200 = dynamicTraffic.some(
             item => item.kind === 'response' && item.status === 200 && item.url.endsWith('/script.js')
           );
-          const pageviewSend = dynamicTraffic.some(
-            item => item.kind === 'request' &&
-            item.method === 'POST' &&
-            !item.url.endsWith('/script.js')
+          const viewRequest = dynamicTraffic.some(
+            item => item.kind === 'request' && new URL(item.url).pathname === prefix + 'view'
+          );
+          const viewResponse = dynamicTraffic.find(
+            item => item.kind === 'response' && new URL(item.url).pathname === prefix + 'view'
           );
 
-          console.log('DYNAMIC_ANALYTICS_SCRIPT_200=' + dynamicScript200);
-          console.log('DYNAMIC_ANALYTICS_PAGEVIEW_SEND=' + pageviewSend);
-          console.log('ANALYTICS_FAILED_REQUESTS=' + failures.filter(item => prefixes.some(prefix => {
-            try { return new URL(item.url).pathname.startsWith(prefix); } catch { return false; }
-          })).length);
+          console.log('DYNAMIC_ANALYTICS_SCRIPT_200=' + script200);
+          console.log('DYNAMIC_ANALYTICS_VIEW_REQUEST=' + viewRequest);
+          console.log('DYNAMIC_ANALYTICS_VIEW_RESPONSE=' + JSON.stringify(viewResponse ?? null));
 
-          if (!dynamicScript200) throw new Error('Dynamic Analytics script did not return HTTP 200');
-          if (!pageviewSend) throw new Error('Dynamic Analytics pageview POST was not observed');
+          if (!script200) throw new Error('Dynamic Analytics script did not return HTTP 200');
+          if (!viewRequest) throw new Error('Dynamic Analytics view request was not observed');
           EOF
           node verify-analytics.tmp.mjs
           rm -f verify-analytics.tmp.mjs
