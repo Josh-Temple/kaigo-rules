@@ -268,3 +268,23 @@ test("public database search renders only verified related-primary-source naviga
   assert.match(relations, /basis_independent_verification === "PASS"/);
   assert.doesNotMatch(search, /SEMANTIC_TEXT_CHECK_REQUIRED|HUMAN_SEMANTIC_REVIEW_REQUIRED/);
 });
+
+
+test("public database search offers a bounded contextual handoff to Kaigo Ops", () => {
+  const search = fs.readFileSync("app/databases/search/page.tsx", "utf8");
+
+  assert.match(search, /制度上の要件を確認した後、業務の見直しへ/);
+  assert.match(
+    search,
+    /https:\/\/ops-site-pi\.vercel\.app\/issues\/information-search/,
+  );
+  assert.match(
+    search,
+    /https:\/\/ops-site-pi\.vercel\.app\/issues\/documentation/,
+  );
+  assert.match(search, /介護業務改善では制度適合を確定しません/);
+  assert.doesNotMatch(
+    search,
+    /ops-site-pi\.vercel\.app\/issues\/(training-handover|communication-collaboration|productivity-utilization)/,
+  );
+});
