@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("制度DB横断検索", "介護保険法、基準省令、通知、Q&Aなどの公開資料を横断検索します。", "/databases/search", false);
+
 import Link from "next/link";
 import careNodesData from "../../../data/care-insurance-act-nodes.json";
 import ordinanceNodesData from "../../../data/ordinance37-nodes.json";

@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../../lib/site-metadata";
+
+export const metadata = pageMetadata("通所リハビリテーションの検索結果", "通所リハビリテーションに関する資料の検索結果です。", "/services/dayrehab/search", false);
+
 import Link from "next/link";
 import verificationRegistryData from "../../../../data/verification-registry.json";
 import { publicVerificationLabel } from "../../../../lib/public-verification";
