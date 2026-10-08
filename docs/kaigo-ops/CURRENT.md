@@ -207,3 +207,13 @@ The production state in the preceding subsection is the historical Public Discov
 [最新版 E decision](./safety/2026-10-09-medication-safety-version-lock-and-review-gates-decision.md)を正本とする。**Wave `PARTIAL_WITH_GAPS` / safety `SAFETY_PARTIAL_WITH_GAPS` / 公開 `PREVIEW_ONLY / NOT_PUBLIC`**。旧WaveにあったB→AとC→Dの版不一致は、B最終2 blobへのA第8節追跡と、同一Cコード3 blobへのD独立CI成功により限定的に解消。DはR/P/U計29ケースのうち`PASS_LIMITED`11、`PARTIAL`18。技術的限定成功を専門職レビューや公開承認とは扱わない。
 
 実在EX01・EX02は`EXPERT_REVIEW_NOT_DONE`、HU01は`HUMAN_APPROVAL_NOT_DONE`。native zoom/Android/読み上げ/人手印刷・外部preview accessは未確立。C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451)はdraft・未マージで、匿名previewも本番にも公開しない。Eの本番HTTP再取得では従来11ルート200、試作404、robots/sitemap 200。Kaigo Ops production READY `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S`、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`（docs main SHAではない）。**新production releaseなし**。このHTTP確認をブラウザ操作PASSとしない。Analytics受信は前Waveからの継承、Search Consoleは`UNKNOWN`のまま。
+
+
+## 2026-10-09 Expert Review Activation & Accessibility/Privacy Closure — E decision
+
+2026-10-09 JST、非公開「服薬業務の安全点検シート」の新しい[E統合判定](./safety/2026-10-09-medication-safety-expert-review-and-accessibility-privacy-gates-decision.md)を記録。**Wave `PARTIAL_WITH_GAPS`／独立安全 `SAFETY_PARTIAL_WITH_GAPS`／公開 `PREVIEW_ONLY / NOT_PUBLIC`** を維持する。既存公開の5 Issue／5 action toolは変更せず、C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451)はdraft・未マージ。
+
+- B [#459](https://github.com/Josh-Temple/kaigo-rules/pull/459)の本文・service 2 blobsを変えず専門職用補足を追加、A [#458](https://github.com/Josh-Temple/kaigo-rules/pull/458)は出典→文章→画面→EX01/EX02の論点を追補。D [#457](https://github.com/Josh-Temple/kaigo-rules/pull/457)の独立Chromium 17件は修正再試験後成功。ただし29 casesは11 `PASS_LIMITED`／18 `PARTIAL`。
+- 実Android、native 200% zoom、screen readerの人間聴取、印刷プレビュー／紙の人手評価、外部preview access制御は未確立。EX01/EX02実在審査未依頼・未実施、HU01本人の公開承認なし。
+- Vercel APIで再取得したproductionは既存`dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S`／READY／runtime `e49e770a970e541d2ad95204ad277eca89a485d3`／alias `https://ops-site-pi.vercel.app/`。本Eの直接HTTP取得は環境エラーで**NOT_RUN**（旧11 route 200／preview route 404は履歴）。productionの新release・実ブラウザ確認なし。Analytics `RECEIVE_CONFIRMED`とSearch Console `UNKNOWN`は継承。
+- `REVIEW_PACK_READY`と`REVIEW_REQUESTED`は別。送付先と権限・明示許可が整うまで外部連絡なし。Issue 6の「収支・コスト構造」候補は変更しない。既存の観測レビュー時期2026-10-21前後〜11-04前後を維持。
