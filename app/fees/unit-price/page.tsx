@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("介護サービスの一単位単価", "公開条件を満たす介護サービスについて、地域区分別の一単位単価と明示地域を確認できます。", "/fees/unit-price");
+
 import Link from "next/link";
 import VerificationSummary from "../../../components/verification-summary";
 import assignmentsData from "../../../data/unit-price-region-assignments.json";

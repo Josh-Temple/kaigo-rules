@@ -368,13 +368,17 @@ export function filterProgressivePublishedRecords<T>(
   records: readonly T[],
   recordId: (record: T) => string,
 ): T[] {
-  return records.filter((record) =>
-    isProgressiveRecordPublished(
-      serviceId,
-      sourceFamily,
-      recordId(record),
-    ),
+  if (!isProgressiveRouteCell(serviceId, sourceFamily)) return [];
+  const promotion = promotionByKey.get(cellKey(serviceId, sourceFamily));
+  // Build the permitted ID set only once. Recomputing the full runtime
+  // projection for every candidate can block large service-specific searches.
+  // Apply the same adapter-level publication gate to each canonical record.
+  const publishedIds = new Set(
+    runtimeRecordsForPromotion(promotion)
+      .filter((record) => isRuntimeRecordPublished(promotion, record))
+      .map((record) => record.id),
   );
+  return records.filter((record) => publishedIds.has(recordId(record)));
 }
 
 export function isProgressiveRulePublished(

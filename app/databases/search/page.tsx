@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("制度DB横断検索", "介護保険法、基準省令、通知、Q&Aなどの公開資料を横断検索します。", "/databases/search", false);
+
 import Link from "next/link";
 import careNodesData from "../../../data/care-insurance-act-nodes.json";
 import ordinanceNodesData from "../../../data/ordinance37-nodes.json";
@@ -36,10 +40,21 @@ const practicalTopicSearches = [
   { id: "filing", label: "更新・届出", query: "届出" },
 ] as const;
 
-const articleSearchFields = (article: any, nodes: Array<any>) => {
-  const articleNodes = nodes.filter(
-    (node) => node.article_num === article.article_num,
-  );
+const groupNodesByArticle = (nodes: Array<any>) => {
+  const grouped = new Map<any, Array<any>>();
+  for (const node of nodes) {
+    const group = grouped.get(node.article_num);
+    if (group) group.push(node);
+    else grouped.set(node.article_num, [node]);
+  }
+  return grouped;
+};
+
+const articleSearchFields = (
+  article: any,
+  nodesByArticle: Map<any, Array<any>>,
+) => {
+  const articleNodes = nodesByArticle.get(article.article_num) || [];
   return [
     {
       value: articleNodes
@@ -136,6 +151,8 @@ export default async function DatabaseSearchPage({
   const selectedSourceArticles = selectedSourceNodes.filter(
     (node) => node.node_type === "article",
   );
+  const lawNodesByArticle = groupNodesByArticle(careNodes);
+  const selectedNodesByArticle = groupNodesByArticle(selectedSourceNodes);
 
   const scopedOrdinanceArticles = requestedService
     ? selectedService && standardsPublished
@@ -152,12 +169,12 @@ export default async function DatabaseSearchPage({
     : rankDatabaseSearch(
         lawArticles,
         query,
-        (article) => articleSearchFields(article, careNodes),
+        (article) => articleSearchFields(article, lawNodesByArticle),
       );
   const ordinanceMatches = rankDatabaseSearch(
     scopedOrdinanceArticles,
     query,
-    (article) => articleSearchFields(article, selectedSourceNodes),
+    (article) => articleSearchFields(article, selectedNodesByArticle),
   );
   const noticeMatches = requestedService
     ? []

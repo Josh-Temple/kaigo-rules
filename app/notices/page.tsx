@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("基準解釈通知DB", "公開中の基準解釈通知をサービス別に探し、出典と現行性の確認状態を確認できます。", "/notices");
+
 import Link from "next/link";
 import ServiceContextLinks from "../../components/service-context-links";
 import VerificationSummary from "../../components/verification-summary";

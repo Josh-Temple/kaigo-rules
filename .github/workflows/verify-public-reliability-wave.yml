@@ -124,3 +124,47 @@ jobs:
             echo "## Public reliability wave D" >> "$GITHUB_STEP_SUMMARY"
             echo "HTTP regression did not produce a report; inspect the failed step." >> "$GITHUB_STEP_SUMMARY"
           fi
+
+  production-http:
+    needs: [synthetic, integrated-http]
+    if: github.event_name == 'push' && contains(github.event.head_commit.message, 'public-reliability-release')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Wait for the reviewed main SHA to reach the public production API
+        shell: bash
+        run: |
+          set -euo pipefail
+          observed=""
+          for attempt in $(seq 1 40); do
+            observed="$(curl --max-time 12 --silent --show-error --fail \
+              https://kaigo-rules.vercel.app/api/version || true)"
+            if OBSERVED_VERSION="$observed" EXPECTED_SHA="$GITHUB_SHA" python -c 'import json,os,sys; p=json.loads(os.environ["OBSERVED_VERSION"]); sys.exit(0 if p.get("service") == "kaigo-rules" and p.get("commit_sha") == os.environ["EXPECTED_SHA"] else 1)' 2>/dev/null; then
+              echo "Exact production revision available: $GITHUB_SHA"
+              break
+            fi
+            if [ "$attempt" -eq 40 ]; then
+              echo "::error::Production did not reach the reviewed main SHA after 40 checks"
+              exit 1
+            fi
+            sleep 15
+          done
+      - name: Verify live production URLs, API and all published unit-price services
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/verify_public_reliability_wave.py \
+            --base-url https://kaigo-rules.vercel.app \
+            --expected-sha "$GITHUB_SHA" \
+            --output /tmp/public-reliability-production.json
+      - name: Record public production verification
+        if: always()
+        shell: bash
+        run: |
+          if [ -f /tmp/public-reliability-production.json ]; then
+            cat /tmp/public-reliability-production.json
+            echo "Production black-box verification: see JSON in logs" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Production verification not completed; no PASS established" >> "$GITHUB_STEP_SUMMARY"
+          fi

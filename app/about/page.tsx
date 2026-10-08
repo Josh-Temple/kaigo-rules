@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "利用上の注意・免責事項 | 介護ルール",
+  title: "利用上の注意・免責事項",
   description: "介護ルールの情報を利用する際の注意事項と免責事項です。",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

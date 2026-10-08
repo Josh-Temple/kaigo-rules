@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("通所リハビリテーションの制度資料", "通所リハビリテーションの公開資料と、現行性・本文確認の状況を確認できます。", "/services/dayrehab");
+
 import Link from "next/link";
 import VerificationSummary from "../../../components/verification-summary";
 import indexData from "../../../data/services/dayrehab/ordinance37-index.generated.json";

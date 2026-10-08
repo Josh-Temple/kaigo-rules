@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("介護保険法DB", "介護保険法の収載条文を、適用範囲や確認状態を区別して閲覧できます。", "/law");
+
 import VerificationSummary from "../../components/verification-summary";
 import ServiceContextLinks from "../../components/service-context-links";
 import Link from "next/link";

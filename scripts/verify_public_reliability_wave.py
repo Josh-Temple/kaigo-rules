@@ -14,6 +14,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import sys
+from time import monotonic
 from urllib.error import HTTPError
 from urllib.parse import quote, urlencode, urlparse
 from urllib.request import Request, urlopen
@@ -69,6 +70,40 @@ def extract_head(html: str) -> PageHead:
     return head
 
 
+
+class UnitPriceTableRows(HTMLParser):
+    """Capture actual rendered rate rows; ignores React SSR text separators."""
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.depth = 0
+        self.parts: list[str] = []
+        self.rows: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        classes = (dict(attrs).get("class") or "").split()
+        if self.depth:
+            self.depth += 1
+        elif tag == "div" and "unit-price-row" in classes:
+            self.depth = 1
+            self.parts = []
+
+    def handle_endtag(self, tag: str) -> None:
+        if self.depth:
+            self.depth -= 1
+            if self.depth == 0:
+                self.rows.append("".join(self.parts))
+
+    def handle_data(self, data: str) -> None:
+        if self.depth:
+            self.parts.append(data)
+
+
+def rendered_unit_price_rows(html: str) -> list[str]:
+    parser = UnitPriceTableRows()
+    parser.feed(html)
+    return parser.rows
+
+
 def sitemap_urls(xml: str) -> list[str]:
     root = ET.fromstring(xml)
     return [(item.text or "").strip() for item in root.findall(".//{*}loc")]
@@ -115,7 +150,10 @@ def published_unit_price_service_ids() -> list[str]:
     })
     if not ids:
         raise AssertionError("no allowed unit-price services in this revision")
-    return ids
+    # Run the slowest historically observed service first to surface failures
+    # early; every allowed service is still checked in this invocation.
+    slow_first = "preventive-shortstay-life"
+    return sorted(ids, key=lambda sid: (sid != slow_first, sid))
 
 
 class PublicReliabilityProbe:
@@ -131,11 +169,25 @@ class PublicReliabilityProbe:
             "Accept": "text/html,application/json,application/xml,text/plain",
             "User-Agent": "KaigoRulesPublicRegression/1.0",
         })
-        try:
-            with urlopen(request, timeout=25) as response:
-                return response.status, response.read().decode("utf-8")
-        except HTTPError as exc:
-            return exc.code, exc.read().decode("utf-8", errors="replace")
+        # SSR can be slow for a cold service-specific route. Retry only
+        # transient transport timeouts, never a non-200 HTTP response.
+        for attempt in range(1, 4):
+            start = monotonic()
+            print(f"GET {path} (attempt {attempt}/3)", file=sys.stderr, flush=True)
+            try:
+                with urlopen(request, timeout=45) as response:
+                    data = response.read().decode("utf-8")
+                    print(f"HTTP {response.status} {path} in {monotonic()-start:.1f}s",
+                          file=sys.stderr, flush=True)
+                    return response.status, data
+            except HTTPError as exc:
+                return exc.code, exc.read().decode("utf-8", errors="replace")
+            except TimeoutError:
+                print(f"TIMEOUT {path} in {monotonic()-start:.1f}s",
+                      file=sys.stderr, flush=True)
+                if attempt == 3:
+                    raise
+        raise AssertionError("unreachable HTTP retry state")
 
     def require(self, path: str, status: int = 200) -> str:
         actual, body = self.get(path)
@@ -166,7 +218,8 @@ class PublicReliabilityProbe:
         for path in MAIN_ROUTES:
             html = self.require(path)
             head = extract_head(html)
-            expected = CANONICAL_ORIGIN + path
+            # Next.js normalizes the root canonical to the bare origin.
+            expected = CANONICAL_ORIGIN if path == "/" else CANONICAL_ORIGIN + path
             if head.canonical != [expected]:
                 raise AssertionError(f"{path}: canonical {head.canonical}, expected {expected}")
             if not head.title.strip() or len(head.description) != 1 or not head.description[0]:
@@ -214,16 +267,25 @@ class PublicReliabilityProbe:
             raise AssertionError("global search omitted unit-price result group")
         if len(items) != 8:
             raise AssertionError(f"unexpected published rate count for {service_id}: {len(items)}")
+        rendered_rows = rendered_unit_price_rows(page)
         for item in items:
             body = item["item_body"]
             region = str(body["region_class"])
             formatted_yen = f"{body['unit_price_yen']:.2f}円"
-            if region not in page or formatted_yen not in page:
-                raise AssertionError(f"{service_id}/{region}: API rate absent from detail page")
+            if not any(region in row and formatted_yen in row for row in rendered_rows):
+                raise AssertionError(
+                    f"{service_id}/{region}: API price {formatted_yen} not found "
+                    "in the same rendered price row"
+                )
             # Global search intentionally summarizes only the first three
             # matching classes per service; the detail page holds all eight.
             if item in items[:3] and region not in results:
                 raise AssertionError(f"{service_id}/{region}: missing from global search")
+        if len(rendered_rows) != len(items):
+            raise AssertionError(
+                f"{service_id}: rendered {len(rendered_rows)} price rows; "
+                f"API returned {len(items)}"
+            )
         if "人手確認が完了していない" not in page:
             raise AssertionError("municipal assignment human-review warning missing")
 

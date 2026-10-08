@@ -147,6 +147,27 @@ test("original ordinance37 service scope remains enforced", () => {
   );
 });
 
+test("optimized scoped filtering matches the original per-record publication gate", () => {
+  const serviceId = "preventive-shortstay-life";
+  const runtime = getProgressiveSourceRecords(serviceId);
+  assert.ok(runtime.length > 0, "representative preventive service must be published");
+  const candidates = [
+    ...runtime.slice(0, 12),
+    { id: "ordinance37.article.18", node_type: "article" },
+    { id: "standards35.article.99999", node_type: "article" },
+  ];
+  const expected = candidates.filter((record) =>
+    isProgressiveRulePublished(serviceId, record.id));
+  assert.deepEqual(
+    filterProgressivePublishedRules(serviceId, candidates, (record) => record.id),
+    expected,
+  );
+  assert.deepEqual(
+    filterProgressivePublishedRules("not-a-service", candidates, (record) => record.id),
+    [],
+  );
+});
+
 test("preventive standards use standards35 scope without cross-source projection", () => {
   assert.equal(
     isProgressiveRulePublished("preventive-homebath", "standards35.article.46"),

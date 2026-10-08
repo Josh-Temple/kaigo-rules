@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../lib/site-metadata";
+
+export const metadata = pageMetadata("介護制度DB一覧", "介護保険法、基準省令、解釈通知、国Q&Aの公開資料をDB別に探せます。", "/databases");
+
 import Link from "next/link";
 import lawMetaData from "../../data/care-insurance-act-meta.json";
 import ordinanceMetaData from "../../data/ordinance37-meta.json";

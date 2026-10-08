@@ -16,6 +16,7 @@ from scripts.verify_public_reliability_wave import (
     public_unit_price_rows,
     published_unit_price_service_ids,
     sitemap_urls,
+    rendered_unit_price_rows,
 )
 
 REGIONS = ["一級地", "二級地", "三級地", "四級地",
@@ -28,7 +29,7 @@ def make_head(path, *, noindex=False):
         "<html><head><meta charset=\"utf-8\">"
         f"<title>{title}</title>"
         f"<meta name=\"description\" content=\"説明 {path}\">"
-        f"<link href=\"{CANONICAL_ORIGIN}{path}\" rel=\"canonical\">"
+        f"<link href=\"{CANONICAL_ORIGIN}{path if path != '/' else ''}\" rel=\"canonical\">"
         + ('<meta content="noindex, follow" name="robots">' if noindex else "")
         + "</head><body>"
     )
@@ -90,7 +91,12 @@ class FakeProbe(PublicReliabilityProbe):
             for item in make_items():
                 region = item["item_body"]["region_class"]
                 if region != self.omit_region:
-                    body += region + f"{item['item_body']['unit_price_yen']:.2f}円"
+                    yen = f"{item['item_body']['unit_price_yen']:.2f}"
+                    # React SSR separates an expression and adjacent text with a comment.
+                    body += (
+                        f'<div class="unit-price-row"><strong>{region}</strong>'
+                        f'<span>{yen}<!-- -->円</span></div>'
+                    )
             return 200, make_head(route) + body + "</body></html>"
         if route == "/databases/search":
             if query.get("q") == ["BCP"]:
@@ -105,6 +111,32 @@ class FakeProbe(PublicReliabilityProbe):
 
 
 class PublicReliabilityWaveTests(unittest.TestCase):
+    def test_ssr_split_price_text_stays_in_its_own_row(self):
+        html = (
+            '<div class="unit-price-row"><strong>一級地</strong>'
+            '<span>11.40<!-- -->円</span></div>'
+            '<div class="unit-price-row"><strong>二級地</strong>'
+            '<span>11.20<!-- -->円</span></div>'
+        )
+        self.assertEqual(rendered_unit_price_rows(html),
+                         ["一級地11.40円", "二級地11.20円"])
+
+    def test_transport_timeout_retries_before_success(self):
+        class Response:
+            status = 200
+            def read(self):
+                return b"ready"
+            def __enter__(self):
+                return self
+            def __exit__(self, exc_type, exc, tb):
+                return False
+
+        with patch("scripts.verify_public_reliability_wave.urlopen",
+                   side_effect=[TimeoutError("cold SSR route"), Response()]) as url:
+            probe = PublicReliabilityProbe("http://127.0.0.1:3000", "abc123")
+            self.assertEqual(probe.get("/fees/unit-price"), (200, "ready"))
+            self.assertEqual(url.call_count, 2)
+
     def test_head_parser_is_attribute_order_independent(self):
         html = ('<html><head><link href="https://x.example/" rel="canonical">'
                 '<meta content="説明" name="description">'
@@ -126,7 +158,8 @@ class PublicReliabilityWaveTests(unittest.TestCase):
     def test_deployed_revision_allowlist_drives_all_service_checks(self):
         service_ids = published_unit_price_service_ids()
         self.assertGreaterEqual(len(service_ids), 2)
-        self.assertEqual(service_ids, sorted(set(service_ids)))
+        self.assertEqual(len(service_ids), len(set(service_ids)))
+        self.assertEqual(service_ids[0], "preventive-shortstay-life")
         self.assertIn("dayservice", service_ids)
         self.assertIn("homevisit", service_ids)
 

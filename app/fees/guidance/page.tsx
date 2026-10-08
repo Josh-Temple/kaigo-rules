@@ -1,3 +1,7 @@
+import { pageMetadata } from "../../../lib/site-metadata";
+
+export const metadata = pageMetadata("算定上の留意事項", "算定上の留意事項の再構成状況と、原文・現行性に関する確認状態を確認できます。", "/fees/guidance");
+
 import VerificationSummary from "../../../components/verification-summary";
 import ServiceContextLinks from "../../../components/service-context-links";
 import Link from "next/link";
