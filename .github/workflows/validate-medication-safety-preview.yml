@@ -41,3 +41,56 @@ jobs:
       - run: npm run build
       - name: Exercise preview plus existing five tools in local Chromium
         run: npm run test:browser
+
+      - name: Smoke the existing five issue and action tool routes (enabled local build)
+        shell: bash
+        run: |
+          npm run start -- -p 3102 -H 127.0.0.1 > /tmp/medication-enabled-routes.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true' EXIT
+          ready=0
+          for _ in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:3102/ > /dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          if [ "$ready" -ne 1 ]; then cat /tmp/medication-enabled-routes.log; exit 1; fi
+          npm run verify:routes -- http://127.0.0.1:3102
+
+  disabled:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: ops-site
+    env:
+      CI: true
+      # No MEDICATION_SAFETY_PREVIEW environment variable in this job.
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - name: Install pinned Chromium
+        run: |
+          npm install --no-save --package-lock=false @playwright/test@1.56.1
+          npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Verify 404 flag-absent route plus the existing tool interactions
+        run: npm run test:browser
+      - name: Verify established routes and fail-closed invalid flag in local server
+        shell: bash
+        run: |
+          MEDICATION_SAFETY_PREVIEW=not-enabled npm run start -- -p 3102 -H 127.0.0.1 > /tmp/medication-disabled-routes.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true' EXIT
+          ready=0
+          for _ in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:3102/ > /dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          if [ "$ready" -ne 1 ]; then cat /tmp/medication-disabled-routes.log; exit 1; fi
+          status=$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:3102/tools/medication-safety-preview)
+          test "$status" = 404
+          npm run verify:routes -- http://127.0.0.1:3102
