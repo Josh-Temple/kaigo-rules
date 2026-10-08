@@ -87,6 +87,10 @@ export default function DocumentationIssuePage() {
             重複入力、紙と電子の併用、転記、後追い記録を先に見直し、
             それでも残る作業にICTやAIを使う順序で整理します。
           </p>
+          <div className="issueEarlyAction">
+            <p><strong>まず試す：</strong>記録・転記・探索・後追い・確認修正を分けて現状を整理します。処理件数と時間を記録し、変更後に同じ種類の業務と比較できます。</p>
+            <a className="primaryLink" href="/tools/documentation-review">記録業務の見直しシートへ →</a>
+          </div>
           <div className="issueMeta">
             <span>初版: 2026-09-29</span>
             <span>対象: 記録・転記・文書作成</span>
