@@ -215,3 +215,40 @@ test("D-P01/P05/U04: print uses only enum-driven labels and retains incident bou
   expect(printed).toContain("担当範囲では扱わない");
   expect(printed).not.toMatch(/安全を認証|事故ゼロ|個別の投薬を指示/);
 });
+
+
+test("D-P02/P05/P06 follow-up: synthetic choices remain absent from requests after demo, print media and reset", async ({page}) => {
+  const observed=[];
+  page.on("request", r => observed.push({
+    url:r.url(), method:r.method(), headers:r.headers(), postData:r.postData()
+  }));
+  await page.goto(route);
+  await stage(page).selectOption("record-handover");
+  await questions(page).nth(0).selectOption("needs-review");
+  await questions(page).nth(1).selectOption("not-applicable");
+  await page.getByRole("button", {name:"架空例を読み込む"}).click();
+  await expect(page.getByRole("status")).toContainText(/架空の業務例/);
+  await page.emulateMedia({media:"print"});
+  await expect(page.locator(".medicationPrint")).toContainText(/保証しません/);
+  await page.emulateMedia({media:"screen"});
+  page.once("dialog", d => d.accept());
+  await page.getByRole("button", {name:"選択内容を消去"}).click();
+  await expect(stage(page)).toHaveValue("unselected");
+  await page.waitForTimeout(500);
+  const serialized=JSON.stringify(observed);
+  for(const marker of markerValues) expect(serialized).not.toContain(marker);
+  // A finite localhost request observer, not a proof about all analytics destinations or future deployments.
+});
+
+test("D-U02/U03 follow-up: result live region updates after user interaction, not screen-reader listening", async ({page}) => {
+  await page.goto(route);
+  const live=result(page);
+  await expect(live).toHaveAttribute("aria-live", "polite");
+  const initial=await live.innerText();
+  await stage(page).selectOption("record-handover");
+  await expect(live).toContainText(/記録・引き継ぎ/);
+  await questions(page).first().selectOption("needs-review");
+  await expect(live).toContainText(/相談したい点/);
+  expect(await live.innerText()).not.toBe(initial);
+  // This checks browser DOM behavior only. Actual assistive-technology reading is NOT_RUN.
+});
