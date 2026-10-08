@@ -268,3 +268,10 @@ pageviewとfeedbackの継続観測は `docs/kaigo-ops/usage-observation.md` に�
 [最新E版固定判定](./safety/2026-10-09-medication-safety-version-lock-and-review-gates-decision.md)に従い、追加の公開Issue/action toolとして採番・実装配信しない。A #458のB最終版へのtrace、B #459の文言仕様、C #451の非公開試作3 code blobs、D #457の最新版Cに対する独立15 browserテストは同一版で参照可能。Dの29-case判定は`PASS_LIMITED`11 / `PARTIAL`18で、実在EX01・EX02と公開責任者HU01の承認は未完了。
 
 次の順序は、(1)必要ならA/B文面・各サービスの工程/職種/自治体運用の精査、(2)C/D変更時の同一版再試験とAndroid/支援技術/印刷/preview access gapの解消、(3)権限を確認した実在EX01/EX02レビュー、(4)HU01対象版明示GO/HOLD、(5)E再判定。審査送付は事前の明示許可まで行わない。**`PREVIEW_ONLY / NOT_PUBLIC`を維持**。既存5 Issue/5 toolとIssue 6「収支・コスト構造」のロードマップは変更しない。
+
+
+## 2026-10-09 Expert Review Activation & Accessibility/Privacy Closure — E decision
+
+[2026-10-09 E判定](./safety/2026-10-09-medication-safety-expert-review-and-accessibility-privacy-gates-decision.md)：**`PARTIAL_WITH_GAPS / SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。安全点検シートは未公開、C #451 draft／未マージを維持する。A #458、B #459、D #457は別PRで追跡。D独立ブラウザ17件成功、29 casesは11限定PASS・18部分確認。実Android、native 200% zoom、読み上げ、実印刷、外部preview遮断・production直接HTTP/ブラウザ操作は今回未完了。実在EX01/EX02のレビュー未依頼・未実施、HU01の明示GOなし。
+
+**次の順序:** (1) 権限と守秘を確認して実在専門職への送付可否を責任者が判断、(2) C/Dの端末・印刷・privacy不足を同一版で解消、(3) EX01/EX02実査・必要な是正／再試験／再審査、(4) HU01本人の版・公開範囲・訂正責任者を伴う明示GO/HOLD、(5) E再判定後に限りrelease。承認まで新Issue/toolを公開せず、既存Issue 6「収支・コスト構造」を安全候補で置換しない。観測期間2026-10-21前後〜11-04前後は継続。
