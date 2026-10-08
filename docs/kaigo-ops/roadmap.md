@@ -247,3 +247,10 @@ pageviewとfeedbackの継続観測は `docs/kaigo-ops/usage-observation.md` に�
 - Eのpublication decision: [safety/2026-10-08-medication-safety-publication-decision.md](./safety/2026-10-08-medication-safety-publication-decision.md)。`EXPERT_REVIEW_NOT_DONE`、`HUMAN_APPROVAL_NOT_DONE`のままGOにしない。
 - 次の作業：claim / service scopeの未確定点を限定、アクセス制御下でR01〜R16 / privacy / UIテスト、適切な医療職と介護事故防止責任者のレビュー、内容責任者承認。その後にEが公開可否を再判定する。
 - 既存5 Issue/5 toolの観測期間、Analytics計測定義、Search Consoleの`UNKNOWN`、Issue 6「収支・コスト構造」の扱いは維持する。日次deployment workflowの実行検証は別途継続。
+
+## 2026-10-08 Medication-Safety Validation & Expert Review Readiness（公開保留）
+
+- A #453、B #454、D #455の文書検証成果はmainへ統合。C #451はdraft／非公開試作のまま保持。詳しい固定版・未実施テスト・専門職審査のゲートは[最新判定記録](./safety/2026-10-08-medication-safety-validation-and-review-decision.md)を参照する。
+- Waveは`PARTIAL_WITH_GAPS`、公開判断は`PREVIEW_ONLY / NOT_PUBLIC`。新しいIssue番号を採番せず、Issue 6「収支・コスト構造」を従来の候補として保持する。
+- 次回公開再判定前の順序：(1) A/Bが最新版段落と原典traceを確定、(2) CがUI文言と結果・印刷を調整し制限環境で再検証、(3) Dが固定版の独立red-team/privacy/アクセシビリティ/公開遮断を実測、(4) EX01医療職とEX02介護事故防止責任者が実レビュー、(5) HU01内容責任者が対象版に明示GO/HOLDを付与、(6) Eが公開可否を再判定。
+- 実在の利用者・薬剤・事故記録は収集しない。一般公開・Vercel production flag有効化・releaseはGOまで禁止。既存5 Issue/5 tool、Analytics計測定義、観測窓を維持する。
