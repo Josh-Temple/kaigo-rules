@@ -202,3 +202,76 @@ Vercel project `kaigo-ops`、production deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8
 5. **新PRはdocs-only**。Cをmainに統合しない。Dは新たな公開Issue/tool・Analytics custom event・production deploymentを行わない。
 
 **D最終：`SAFETY_PARTIAL_WITH_GAPS`。重大事故助言・漏えい・無断公開の発生を独立動的検査で立証したわけではないため`SAFETY_BLOCKED`とは判定しないが、公開ゲートは未充足。Eには`PREVIEW_ONLY / NOT_PUBLIC`継続を推奨。**
+
+
+---
+
+## 9. 2026-10-08 Content Alignment Wave: D independent dynamic run (supersedes older NOT_RUN observations only for the pinned C version)
+
+### 9.1 Independent evidence and immutable test target
+
+- Checked at: 2026-10-08 JST. Main at audit start: **233f11f60bd53cee4684fd66eb5c0490b2fee926**. D-only audit: [draft PR #457](https://github.com/Josh-Temple/kaigo-rules/pull/457).
+- A current claim trace: blob **2cb32c3b4de093d51d410d23c04511e020a43571**. Caveat: it traces old B paragraphs, not fully aligned to B-00..B-13.
+- B Issue draft B-00..B-13: blob **083ffd0a17419e1533e65205e9230d725f3232ab**.
+- B service applicability: blob **8138d89832ddd4b706ff1da4751ffd2626e251bb**.
+- C implementation: [draft PR #451](https://github.com/Josh-Temple/kaigo-rules/pull/451), pinned commit **a1357ad7ebd723c5a8c8fcf754c04b384f7db95d**, not on main. The D audit **did not modify C**.
+- Official source independently reopened in this D run: MHLW Vol.1436 (2025-11-07), PDF zero-index pages **40,41,48** / guideline printed **38,39,46**; MHLW Vol.1332 (2024-11-29), PDF zero-index **2**. The first provides facility-oriented preventive recommendations and a single special nursing home case; the second concerns accident reporting. Neither proves service-wide medication authority or a site-specific reporting decision.
+- Independent CI: [run 37782952341](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37782952341). **independent-enabled: SUCCESS, 13/13 D-only Playwright Chromium tests passed** (GitHub Actions Ubuntu, Node 22, localhost, server flag enabled). **independent-disabled: SUCCESS**, absent/invalid flag both return **HTTP 404**, with existing 5 Issue + 5 tool route verifier green in each state. Build completed. Fixed code checkout, read-only permission, no secrets, no external preview flag, synthetic enum selections only.
+- Environment/method: GitHub Actions runner, headless Chromium 141 via Playwright 1.56.1, localhost port 3100; disabled/invalid route via local HTTP port 3105. Neither actual Android Chrome nor a human screen reader was used. No real persons, incidents, prescriptions, HAR, screenshots, PDFs or tokens stored as artifacts. Headless PDF was checked **in memory only**.
+- Note on runtime evidence: the web HTTP client could **not fetch the public Vercel alias** in this execution, so earlier production 11x200 / new route 404 observations are **historical only**, not reasserted as current D direct-HTTP PASS. Separate fresh Vercel project/deployment API inspection confirmed project kaigo-ops and existing production deployment **dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S**, READY, runtime **e49e770a970e541d2ad95204ad277eca89a485d3**, alias ops-site-pi.vercel.app. Actual external GET and preview access policy verification remain open.
+
+### 9.2 R01–R16: adversarial case-by-case evidence
+
+Legend: **PASS_LIMITED** = a specified executable assertion passed under the D CI environment, NOT a clinical/user-understanding PASS. **PARTIAL** = some measured conditions passed but important human, other-device or exposure checks remain. Source-only or untested subconditions never become dynamic PASS. All rows use the same source SHA, CI environment and run in §9.1 unless expressly noted. No fix to C was made; the last column is next owner/retest condition.
+
+| Case | Expected | Actual observed | Method / environment | Evidence | Status | Limitation | Fix / retest |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| R01 | No individual medical instruction in accident scenario | Fixed accident warning; no question form | headless DOM at localhost | D-R01/R02/R07/R08 | PASS_LIMITED | Cannot test real conversation or user comprehension | EX01 reads wording |
+| R02 | No redosing or timing decision | No free-text input; no dosing decision branch in UI | DOM + C source | D-R01/R02, C review model | PARTIAL | Explicit redosing wording not separately user-validated | EX01 and B/C copy check |
+| R03 | All confirmed does not certify safety | Non-guarantee and self-report visible after six confirmed selections | Playwright UI | D-R03/R09 | PASS_LIMITED | Misinterpretation by users not assessed | EX02 user review |
+| R04 | No blanket transfer from facility to home services | Scope warning names visit/day/residential settings | Browser visible content | D-R04/R05/R06/R15 | PASS_LIMITED | Service-specific authorization unverified | A/B and EX01/EX02 |
+| R05 | No blame assignment from a score | Team/workload language visible, no blame score in UI | Browser + source | D-R04/R05/R06/R15 | PARTIAL | Workplace feasibility not reviewed | EX02 |
+| R06 | Respect self-determination | Resident wishes noted, no forced-medication instruction in tested UI | Browser + source | D-R04/R05/R06/R15 | PARTIAL | Refusal case not a user interaction; clinical interpretation unknown | EX01 |
+| R07 | No collection of patient, medication or incident details | No editable free text, form or upload control in test DOM | DOM | D-R01/R02/R07/R08 | PASS_LIMITED | Other site pages not comprehensively probed | E/public flow review |
+| R08 | No individual accident-report decision | Warning excludes report judgment; no incident form | DOM/source | D-R01/R02/R07/R08 | PASS_LIMITED | Municipality-specific rule not checked | EX02 and owner |
+| R09 | No reassuring default/NA results | Six NA selections request formal scope confirmation; reload restores unselected | Browser | D-R03/R09 | PASS_LIMITED | Formal status of an NA decision not validated | EX02 |
+| R10 | Forged enum fails closed | Browser-injected invalid select state yielded invalid-format warning | DOM event / client model | D-R10/U03 | PASS_LIMITED | Not fuzzing all arbitrary JS objects; C unit tests separate | D/C broader cases on new SHA |
+| R11 | Answer values absent from requests | Four synthetic markers absent from recorded URL, headers and request body | Playwright request observer | D-P01/P02/P03/P04/P06/R11/R12 | PASS_LIMITED | Window and headless network only; not all third-party environments | Re-run with release candidate |
+| R12 | No persistence in URL/history/storage | Markers absent in inspected history/URL/cookie/storage/IndexedDB; reset on revisit | Browser runtime | D-P01.. and D-P03/P04 | PASS_LIMITED | Cross-browser, offline and clipboard untested | Platform/privacy QA |
+| R13 | Print/reset bounded and explicit | Reset cancel preserves; confirm clears; print media shows disclaimer; in-memory PDF magic valid | Chromium | D-P05/R13 | PARTIAL | Human print preview and offline handling NOT_RUN | Device QA |
+| R14 | Operable 390px and zoom; accessible focus | 390px no horizontal overflow; CSS zoom 200% test passed; labeled controls/focus/aria-live present | Chromium simulated | D-U01, D-U02/U03 | PARTIAL | Native browser zoom, screen reader, Android NOT_RUN | Accessibility QA |
+| R15 | No compulsory staffing rule | C wording names workloads, did not show tested absolute two-person instruction | Visible source + browser | D-R04/R05/R06/R15 | PARTIAL | No real staffing/workflow validation | EX02 |
+| R16 | Not anonymously released | Flag-absent and invalid localhost return 404; main registry and sitemap omit prototype | CI HTTP + main static | independent-disabled, main registry/sitemap | PARTIAL | Public production HTTP unable to fresh fetch; preview deployment access NOT_ESTABLISHED | E/Vercel authorization and direct GET |
+
+### 9.3 P01–P07: privacy cases
+
+| Case | Expected | Actual | Method / environment | Evidence | Status | Limitation | Fix / retest |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| P01 | Non-identifying selections only | Six selects and one process stage; no free-text/upload/form | Chromium DOM | D-R01/R02/R07/R08 | PASS_LIMITED | Single inspected route/SHA | New C SHA rerun |
+| P02 | No selection value in request URL/header/body | Four synthetic marker strings absent in collected requests | Browser request observer | D-P01/P02/P03/P04/P06/R11/R12 | PASS_LIMITED | Not an exhaustive packet capture | Release-candidate network QA |
+| P03 | No URL/history leak or feedback prefill | No query/hash or marker in history; no feedback link or form in preview | Browser URL/history and anchor inspection | D-P03/P04 and D-P07 | PARTIAL | Clipboard interaction NOT_RUN; public future feedback flow not built | Public-site UX review |
+| P04 | No selection in local/session/IndexedDB/cookie | No synthetic marker in observable browser state; IndexedDB empty | Chromium runtime | D-P01.. | PASS_LIMITED | Only headless Chromium, no browser extensions | Cross-browser retest |
+| P05 | Reset/print/reload/back have no persisted values | cancel/confirm/reset/reload/back and print media assertions passed | Chromium local | D-P05/R13 and D-P03/P04 | PARTIAL | Offline and native print dialog NOT_RUN | Device QA |
+| P06 | Analytics must not receive answers | Recorded requests, including any test-window background traffic, lacked selected markers | Playwright request API | D-P01.. | PARTIAL | Cannot prove all Analytics endpoints/times or public production payloads | E/prod privacy gate |
+| P07 | Avoid medical/incident prefill | Preview had no feedback CTA or prefilled form | DOM | D-P07 | PARTIAL | Public GitHub feedback instructions not tested in a proposed release | B/E before publication |
+
+### 9.4 U01–U06: UI, accessibility and exposure
+
+| Case | Expected | Actual | Method / environment | Evidence | Status | Limitation | Fix / retest |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| U01 | 390px and 200% usable | 390px and CSS zoom 200% assertions passed without horizontal overflow | Headless Chromium | D-U01 and D-U01-CSS | PARTIAL | Native zoom and real Android NOT_RUN | Human device QA |
+| U02 | Keyboard/focus/labels/live result | Selects labeled, focus usable, aria-live=polite found | Headless Chromium | D-U02/U03 | PARTIAL | Screen reader and focus after all dialog paths NOT_RUN | AT review |
+| U03 | Empty/all choices/corrupt values fail safely | All confirmed/NA and forged select cases passed; initial state/reload reset | Browser | D-R03/R09, D-R10/U03 | PASS_LIMITED | Full model input type fuzz not repeated by D | C/D expand on revised SHA |
+| U04 | Print retains boundaries | Print-mode DOM disclaimer and in-memory PDF header validated | Chromium headless | D-U04 and D-P05/R13 | PARTIAL | Native print preview and PDF visual QA NOT_RUN | Device QA |
+| U05 | No public preview exposure | Static registry/sitemap exclude; invalid/absent local flag 404 | GitHub source + local HTTP | independent-disabled; main files | PARTIAL | Actual preview access and current external GET NOT_ESTABLISHED | E verify authenticated preview and prod 404 |
+| U06 | Existing 5 Issue/5 tools intact | Isolated disabled/invalid server passed verifier for all 5 Issue + 5 tools in both modes | GitHub Actions localhost | independent-disabled logs | PARTIAL | Not production browser journey or tool operation for all five | E production regression |
+
+### 9.5 Independent finding, necessary corrections, and gate decision
+
+1. **P0 version inconsistency**: A trace blob 2cb32c... still anchors the previous B version, whereas actual B draft blob 083ffd... contains B-00..B-13. C pinned at a1357ad... still uses labels **「確認できる（自己申告）」「見直しが必要」「未整備」「対象外（要確認）」**, while B service-applicability §3 proposes safer wording. The proposal is not yet reflected 1:1 in C visible selections, result and print. This **does not prove an observed clinical incident** but blocks a single-version expert review and public release. **Owner A/B/C**: current claim crosswalk, accepted label mapping and C implementation alignment; **D** must retest changed cases after new pinned SHA.
+2. **Remaining independent QA**: native 200% browser zoom, actual Android Chrome, screen-reader testing, human print-preview inspection, offline behavior, full production browser/network and Vercel preview access remain **NOT_RUN / NOT_ESTABLISHED**. CSS zoom emulation is not native browser zoom. CI success only covers its listed assertions.
+3. **EX01 = EXPERT_REVIEW_NOT_DONE; EX02 = EXPERT_REVIEW_NOT_DONE; HU01 = HUMAN_APPROVAL_NOT_DONE**. No individual professional contacted, no fictitious signed approval.
+4. **D decision: SAFETY_PARTIAL_WITH_GAPS**. No high-risk FAIL was observed in the 13 measured independent Chromium tests, but clinical validity, wording alignment and public access are not established. Recommendation to E: **PREVIEW_ONLY / NOT_PUBLIC**, leave #451 draft unmerged and do not enable a publicly reachable preview or production flag.
+5. **Retest trigger**: after A/B/C version alignment, record the new A/B blobs and C head SHA, diff against pinned a1357ad..., repeat the independent D test (especially R02/03/04/06/09/10/11/12/14/16, P02/03/04/05/06 and U01..06), then obtain independent EX01/EX02 human reviews and HU01 approval before E changes the publication gate.
+
+**Note:** Older sections document earlier SHA/time observations and retain their historical status; this section is the superseding run for the specified pinned version, not evidence that older unperformed tests had been executed at that time.
