@@ -65,3 +65,34 @@ flag有効jobで404ケース1件がスキップされ、無効jobでpreview専�
 5. **公開ゲート**：`PREVIEW_ONLY / NOT_PUBLIC`を維持。production merge/deploy、feature flag有効化、新Issue/新action toolの公開は行わない。
 
 **Worker C結論**：指定CI内の非公開・合成データに限定した実行証拠は再現可能な形で得られた。公開適合性・医学的安全性・現場適用性は別ゲート未完なので、総合判定は`PARTIAL_WITH_GAPS`。
+
+## 6. 2026-10-08 Content alignment — C同一版での再実行（前回の記録を保持）
+
+- 実装と仕様を再検証した対象PR head: `6e5d150f71d6df87cac2b9bac3ba10e0ddbe7f0f`（draft #451、未マージ）。本節以外の後続ドキュメントコミットと区別する。
+- 照合した `main`: `233f11f60bd53cee4684fd66eb5c0490b2fee926`（2026-10-08 JST）。
+- A source-to-content trace blob: `2cb32c3b4de093d51d410d23c04511e020a43571`。**旧B草案blob `4418af5405044be3a74268c7fa9ff85e6759126f` のcrosswalkであるため最新版へのA独立再追跡は未完。**
+- 現行B Issue draft: `083ffd0a17419e1533e65205e9230d725f3232ab`（B-00〜B-13）、service applicability: `8138d89832ddd4b706ff1da4751ffd2626e251bb`。今回はB-04〜06の語彙とB-00/B-09/B-12〜13の安全・適用留保をCの表示・結果・印刷に反映した。実施権限やサービス横断の妥当性は依然 `NOT_ESTABLISHED`。
+- 厚労省2025年11月ガイドラインVol.1436の冊子p38〜39（PDF 0起算p40〜41）とp46（PDF p48）、2024年11月通知Vol.1332のPDF 0起算p2を2026-10-08 JSTに再閲覧。ガイドラインは施設中心の推奨と特養一事例、p46は通所・訪問の一般的な情報共有・連携上の留意点であり、全サービスの服薬工程・職種権限を確定しない。事故報告通知を個別報告判断の自動化根拠にしない。
+- Cコードblob（再取得可能）：`medication-safety-review.ts`=`8853e5c5dae84293e5c283bc779fd08a3c2c79db`、`worksheet.tsx`=`bc54ab9d8c13a1713f9e68d41b433f2c3130dc95`、`page.tsx`=`cfa6f30633c5c8536b570c4c82b2794cd4353320`。unit test blob=`b1329ac595c35ef0395521ae1e4bf1f5ef56cc54`、Chromium test blob=`420bdb726349a400cf33cd4c1673b832e3e08c79`。
+- GitHub Actions: [run 37783117273](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37783117273)、`Validate medication safety preview`、`SUCCESS`。GitHub-hosted Ubuntu、Node22、Chromium headless、localhost 127.0.0.1、CI限定の合成選択値、secret不使用。匿名アクセス可能なVercel Previewは用いなかった。
+
+| 検証条件 | 実行した内容 | 実測と解釈 |
+| --- | --- | --- |
+| flag `enabled`（localhost限定） | `npm ci --no-audit --no-fund`, `npm test`, `npm run build`, `npm run test:browser`, `npm run verify:routes` | 全step成功。unit 28 PASS / 0 FAIL、Chromium **13 PASS / 1条件付きSKIP**。既存5 Issue・5 action toolのrouteとリンクを検証。 |
+| flag未設定 | 同じ5コマンド、flagを無効としたChromium試験と既存routeのsmoke | 全step成功。unit 28 PASS / 0 FAIL、Chromium **8 PASS / 6条件付きSKIP**。試作routeの404を検証。 |
+| flag不正値 `not-enabled` | disabled jobのローカルHTTP smoke | preview route **404**。設定値を誤っても表示しない。 |
+| 語彙と結果 | 未選択、全確認申告、全担当範囲外申告、混在、架空例、不正構造・不正値をunit/Chromiumで検証 | **限定した自動テストPASS**。『確認済み』『対象外』を無条件の安全・義務免除として表示しない。 |
+| 情報境界 | 合成状態4種のrequest URL/headers/body、ブラウザURL/history、local/session storage、IndexedDB名、Cookie、印刷media/PDF生成をChromiumで検証 | **限定した合成データ・Chromiumの検証PASS**。回答値の漏出を検出せず。Analytics通常pageview通信そのものがないとは主張しない。全ブラウザ・全レコード・全外部通信の不存在を保証しない。 |
+| 画面・操作 | 390px、CSS zoom 200%模擬、select label/focus/aria-live、reset cancel/confirm、reload、戻る・再訪問、print | **Chromium自動テストPASS（実機試験ではない）**。 |
+| 公開registry / production | ソース構造とローカル既存route smoke | 既存5 Issue/5 toolは変更せず。productionの本Wave再デプロイなし。production HTTP独立再測定は**CではNOT_RUN**。 |
+
+### Cで実行していないこと、次に必要なこと
+
+- **D独立R01〜R16 / P01〜P07 / U01〜U06**：本Cの既存CI runをDの独立red-team検証とは扱わない。`NOT_RUN_BY_C`。
+- **Android Chrome実機、ネイティブ200%拡大、スクリーンリーダー実聴取、利用者による印刷プレビュー**：`NOT_RUN`。CIのviewport/CSS模擬と区別。
+- **EX01（薬剤師・看護職等）、EX02（事故防止・リスク管理実務責任者）**：`EXPERT_REVIEW_NOT_DONE`。**HU01（公開責任者）**：`HUMAN_APPROVAL_NOT_DONE`。実在レビュー・署名・GOは作成していない。
+- **Aの最新B本文への独立trace**：旧BへのA資料しかないため `REVIEW_REQUIRED`。CはBの現行版を直接読んで文言対応を行ったが、source claim全件のPASSを代用しない。
+- **Vercel preview access**：flag enabledのアクセス制御された外部URLは試していない。`PREVIEW_ACCESS_NOT_ESTABLISHED`。flag=enabledの匿名Vercel preview作成は禁止を維持。
+- **公開判断**：`PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。PR #451をdraft・未マージで維持し、公開registry、production環境変数、deploymentは変更しない。
+
+**Dへの固定版handoff**：B blob `083ffd0a17419e1533e65205e9230d725f3232ab`、service blob `8138d89832ddd4b706ff1da4751ffd2626e251bb`、A trace blob `2cb32c3b4de093d51d410d23c04511e020a43571`（旧B対応であることを明示）、C tested head `6e5d150f71d6df87cac2b9bac3ba10e0ddbe7f0f`。再審査時はこの版とのdiffを照合し、変わったケースだけでなく安全・プライバシー・印刷の影響範囲を再試験する。
