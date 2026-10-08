@@ -21,6 +21,8 @@ on:
       - ".github/workflows/daily-vercel-production-deploy.yml"
       - "scripts/plan_daily_vercel_deploy.py"
       - "tests/test_daily_deploy_plan.py"
+      - "scripts/verify_kaigo_ops_production.py"
+      - "tests/test_verify_kaigo_ops_production.py"
       - "vercel.json"
       - "ops-site/vercel.json"
 
@@ -41,6 +43,7 @@ jobs:
         env:
           RULES_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
           OPS_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_OPS }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           set -euo pipefail
           missing=0
@@ -50,6 +53,10 @@ jobs:
           fi
           if [ -z "$OPS_HOOK" ]; then
             echo "::error::Missing repository secret VERCEL_DEPLOY_HOOK_KAIGO_OPS"
+            missing=1
+          fi
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::error::Missing repository secret VERCEL_TOKEN for verified Kaigo Ops deployments"
             missing=1
           fi
           exit "$missing"
@@ -67,6 +74,9 @@ jobs:
 
       - name: Test daily deployment planner
         run: python -m unittest discover -s tests -p 'test_daily_deploy_plan.py'
+
+      - name: Test Kaigo Ops deployment verification (synthetic)
+        run: python -m unittest discover -s tests -p 'test_verify_kaigo_ops_production.py'
 
       - name: Detect project-specific changes
         id: plan
@@ -189,7 +199,18 @@ jobs:
         run: |
           git push --force origin "HEAD:refs/heads/deploy-state/kaigo-rules"
 
+      - name: Check Kaigo Ops verification credentials
+        if: needs.plan.outputs.ops_changed == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::error::Missing secret VERCEL_TOKEN; will not trigger an unverifiable deployment."
+            exit 1
+          fi
+
       - name: Trigger kaigo-ops production deploy
+        id: ops_trigger
         if: needs.plan.outputs.ops_changed == 'true'
         env:
           DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_OPS }}
@@ -199,14 +220,52 @@ jobs:
             echo "::error::Missing secret VERCEL_DEPLOY_HOOK_KAIGO_OPS"
             exit 1
           fi
-          response="$(curl --fail-with-body --silent --show-error -X POST "$DEPLOY_HOOK")"
-          echo "$response" | python -c 'import json,sys; d=json.load(sys.stdin); assert d.get("job",{}).get("id"), d'
-          echo "kaigo-ops deploy hook accepted."
+          response_file="$(mktemp)"
+          trap 'rm -f "$response_file"' EXIT
+          started_at_ms="$(date +%s%3N)"
+          # Never echo the hook URL or raw response (which may contain metadata).
+          if ! status="$(curl --silent --output "$response_file" --write-out '%{http_code}' -X POST "$DEPLOY_HOOK")"; then
+            echo "::error::Kaigo Ops deploy hook request failed"
+            exit 1
+          fi
+          if [[ ! "$status" =~ ^2[0-9][0-9]$ ]]; then
+            echo "::error::Kaigo Ops deploy hook returned HTTP $status"
+            exit 1
+          fi
+          python - "$response_file" <<'PY'
+          import json
+          import sys
+          try:
+              with open(sys.argv[1], encoding="utf-8") as handle:
+                  payload = json.load(handle)
+              accepted = bool(payload.get("job", {}).get("id"))
+          except (OSError, ValueError, AttributeError):
+              accepted = False
+          if not accepted:
+              sys.exit("::error::Kaigo Ops deploy hook did not return a job ID")
+          PY
+          printf 'started_at_ms=%s\n' "$started_at_ms" >> "$GITHUB_OUTPUT"
+          echo "Kaigo Ops deploy hook accepted; production is NOT YET VERIFIED."
 
-      - name: Record kaigo-ops deploy request
+      - name: Verify Kaigo Ops production SHA, READY, alias and routes
+        if: needs.plan.outputs.ops_changed == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          EXPECTED_SHA: ${{ needs.plan.outputs.head_sha }}
+          HOOK_STARTED_AT_MS: ${{ steps.ops_trigger.outputs.started_at_ms }}
+        run: |
+          python scripts/verify_kaigo_ops_production.py \
+            --expected-sha "$EXPECTED_SHA" \
+            --started-at-ms "$HOOK_STARTED_AT_MS" \
+            --wait-seconds 900 \
+            --interval-seconds 15
+
+      - name: Record verified kaigo-ops production version
         if: needs.plan.outputs.ops_changed == 'true'
         run: |
-          git push --force origin "HEAD:refs/heads/deploy-state/kaigo-ops"
+          # Normal fast-forward only. Divergence requires review, not an
+          # unconditional force push to the deployment-state branch.
+          git push origin "HEAD:refs/heads/deploy-state/kaigo-ops"
 
       - name: No deployment needed
         if: needs.plan.outputs.rules_changed != 'true' && needs.plan.outputs.ops_changed != 'true'
