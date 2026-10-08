@@ -197,3 +197,13 @@ All previous blank review-ID/date/decision fields remain blank. The test-results
 **安全な実施手順**：正当な権限と明示の送付許可を得た後、対象版を再取得し非識別の情報だけで専門職へレビューを依頼する。実際に完了した時だけ匿名ID・役割・版・指摘・対応・再検査・結果・日時を記録する。実名・所属・署名・連絡先、本人・薬剤・処方・事故記録はpublic repositoryへ保存しない。EはEX01/EX02の実記録とHU01本人の明示承認がなければ公開HOLDを維持する。
 
 **引き渡し判定**：`REVIEW_PACK_READY`（質問と固定対象資料まで）/ `EXPERT_REVIEW_NOT_DONE` / `HUMAN_APPROVAL_NOT_DONE` / `SAFETY_PARTIAL_WITH_GAPS` / `PREVIEW_ONLY / NOT_PUBLIC`。試作は未承認・非公開を維持する。
+
+
+### 8.6 審査packの最新版参照（前8.1版記録に優先）
+
+- **A最新独立trace**：PR #458 `37fc213301e93442f71efc4509af5cfa49567c88`、文書blob `271560deb7ea848690e12d97fd23661583511198`。B最終候補Issue `e0cc354e2b78a28912c80c0611ccf3c165d00b25`、service `e3889c26c5b46d4644b29d94c657e628c96206d3` を対象にB-00〜13の逐語アンカー・根拠・8サービス群・C静的表示を再追跡済み。前節の「Aは旧Bのみ」は**作成時点の履歴**となった。Aの判定は `PARTIAL_WITH_GAPS` で医学的手順・法的権限・事故報告の現場判断は未確立。
+- **C最新head** `a61797393f20e897247d985ab0861f6443a0a74e`。D独立試験対象C `7ec2fe8c644d0526af1650e857a7da397488a0ad` との差分はdocsのみ、page `cfa6f30633c5c8536b570c4c82b2794cd4353320` / worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c` / model `9580e9202209f5e3fdf3b544b628d68885062295` は同一。
+- **D独立CIの実測**：[run #37844583974](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844583974) enabled/disabledともSUCCESS。enabledのD専用Chromium **15/15 PASS**、disabled/invalid flag時のlocalhost **404**、既存5+5 route PASS。29ケースの詳細は [D台帳§10.2、確定結果§10.4–10.5](./medication-safety-test-results.md)。本番・実Android・人間によるアクセシビリティ・native印刷は含まない。
+- **審査前の真の未充足**：EX01/EX02実在専門職 `NOT_REQUESTED / NOT_DONE`、HU01責任者 `NOT_DONE`、サービス別工程/職種権限/正式手順/自治体別事故報告運用、外部previewのアクセス制限実証と本番直接HTTP、実端末・音声読み上げ・印刷現物確認。上記を明示して初めて正式なレビュー対象版を人が承認する。
+
+**配布可能なのは非識別の審査用内容だけ**。作成・CI成功をレビュー依頼・レビュー結果・公開GOへ読み替えない。現判定 `REVIEW_PACK_READY / SAFETY_PARTIAL_WITH_GAPS / NOT_PUBLIC`。この追加確認もCのコード変更やBの意味変更があれば再検証を要する。
