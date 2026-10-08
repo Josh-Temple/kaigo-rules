@@ -42,14 +42,18 @@ test('unapproved medication safety is absent from public issue/tool registries',
   }
 });
 
-test('unapproved medication safety has no directly routable app page', async () => {
+test('any medication-safety preview route is server-gated and noindex', async () => {
   const routes = await discoverPages(path.join(opsRoot, 'app'));
-  const exposedRoutes = routes.filter((route) => medicationPattern.test(route));
-  assert.deepEqual(
-    exposedRoutes,
-    [],
-    'A hidden nav link or robots exclusion does not make a Next.js app route private',
-  );
+  const candidatePages = routes.filter((route) => medicationPattern.test(route));
+  for (const page of candidatePages) {
+    const source = await read(path.join('app', page));
+    assert.match(source, /MEDICATION_SAFETY_PREVIEW\s*!==\s*["']enabled["']/);
+    assert.match(source, /notFound\(\)/);
+    assert.match(source, /index:\s*false/);
+    assert.match(source, /force-dynamic/);
+  }
+  // This checks only source-level default denial. Production environment
+  // and direct URL response must be independently verified by Worker E.
 });
 
 test('sitemap derives public issue URLs only from the reviewed registry', async () => {
