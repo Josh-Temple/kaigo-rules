@@ -227,3 +227,8 @@ D独立検証：[#457](https://github.com/Josh-Temple/kaigo-rules/pull/457)、[w
 ### 11.1 新Dテストの完走確認と実査HOLD
 
 2026-10-09 JST時点の最終コード固定D追加spec `28161729ba8b602a45920c292da6b2db476646bc`。前回の確認ダイアログ未承認による新test失敗（run #37857899198、16/17 pass）はtest harnessで修復。[run #37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) = `completed/success`、enabled **17/17 pass**、disabled/invalid local flag HTTP 404・既存11 route検証成功。**前回の失敗を無かったことにせず履歴として保持**。[29ケース台帳§11.4](./medication-safety-test-results.md)参照。追加観測は選択→架空例→印刷media→reset時の合成値のrequest混入と、DOM live-region更新。実Android・native 200%・実音声読み上げ・紙/PDF目視・本番privacy・preview認証は継続して`NOT_RUN/NOT_ESTABLISHED`、EX01/EX02・HU01は`NOT_DONE`。**公開HOLD**。
+
+
+### 11.2 A/B/C並行変更を反映したゲート更新（JST 2026-10-09）
+
+**更新された版**：A #458 head `87b9d67a08b3c9503a47e9914a1abe5af16ca21c` / trace blob `3264cb93cc2c7f867abe7fb42def68be03bf98e6`（§9の原典・EX質問追加）、B #459 head `9c7b8639380802224bd9b5518f52800ff0b56af8`（issue/service blobs不変、審査補足blob `64feae5962df5614d0d86a6fc36ed24687bae16b`新設）、C #451 head `2dd0e260d0922e18d003905f4a7edf42560f640c`（**docs + C browser testだけ変更、アプリpage/worksheet/model blobsは不変**）。C側browser試験run [37858189100](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858189100) はSUCCESS、D独立run [37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) の17/17成功とは別のもの。D自身の後続run [37858370661](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858370661) もSUCCESS。現在A文書を旧traceに戻さず、レビューpack§9.6で質問表を照合する。旧§11の当時のhead表記を現行値と解釈しない。**29ケース11 `PASS_LIMITED` / 18 `PARTIAL`**、human reviews未依頼・未実施、現物・実機・access gate未検証。**`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**を維持。
