@@ -156,3 +156,13 @@ Kaigo Rulesとは公開面を分離します。
 - Analytics: 2026-10-07〜08指定期間で7 visitors / 8 pageviews（homeのみ）。Search Consoleは`UNKNOWN`、Issue 6 / 新tool追加は保留。
 
 上の状態がcurrentであり、本文に残るPR #434 / 旧deploymentの記述は以前のWaveの履歴である。
+
+## 服薬業務の安全点検シート（2026-10-08：非公開検証中）
+
+誤薬・与薬漏れに関する業務工程の試作は、[draft PR #451](https://github.com/Josh-Temple/kaigo-rules/pull/451)で隔離しています。**公開中の5 Issue / 5 action toolには含めません**。投薬判断、再投与、個別事故への対応、職種権限、事故報告要否・期限をこの試作で判定しません。
+
+A #453（出典と主張）、B #454（Issue草案とサービス適用性）、D #455（独立検証台帳と専門職review pack）は文書のみmain統合済みです。試作Cはflag未設定・誤設定の場合404であり、flagはアクセス認証ではありません。公開可能なpreview URLでflagを有効にしないでください。
+
+Cのlocalhost GitHub Actionsテストには成果があるものの、Dの独立動的検証、サービス別適用範囲の最終確認、医療職EX01・事故防止責任者EX02の実レビュー、内容責任者HU01の明示的公開承認は未完了です。**Wave `PARTIAL_WITH_GAPS`／公開 `PREVIEW_ONLY / NOT_PUBLIC`**。次の条件と版は[統合判定記録](../docs/kaigo-ops/safety/2026-10-08-medication-safety-validation-and-review-decision.md)を参照してください。
+
+本番に新機能は配信していません。2026-10-08の照合では、従来11ルートがHTTP 200、試作routeが404、Kaigo Ops専用Vercel productionは`dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READY / runtime `e49e770a970e541d2ad95204ad277eca89a485d3`です。mainの文書commitとproduction runtime SHAを混同しないでください。
