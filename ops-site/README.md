@@ -109,6 +109,18 @@ Kaigo Rulesとは公開面を分離します。
 - direct-entryの紹介文とnon-claimsは `../docs/kaigo-ops/distribution-kit.md` を参照
 - 外部投稿は明示的な許可なしに実行しない
 
+## Action Tool Reliability & Release Assurance（2026-10-08）
+
+既存5 Issue / 5 action toolを増やさず、次の運用境界を実装しています。
+
+- 記録業務見直しシートの制度確認リンクは、通所介護専用routeではなくKaigo Rulesの汎用DB検索へ進む。サービス適用範囲は利用者がKaigo Rulesの検証状態と原典で確認し、Ops側で自動推定・制度適合判定をしない。
+- 情報探索と記録・文書作成の2 Issueは、hero付近から既存toolへ進める。後半のEvidence・limitations・従来CTAも維持する。
+- `npm test` は単体・source regression、`npm run build` と `npm run verify:routes` はビルド・route、`npm run test:browser` はPlaywright Chromiumで5 toolの入力・表示・架空例・消去・印刷と390px journeyを確認する。
+- `Validate ops site` CIはPR/mainの両方でPlaywrightをlocal production-modeに対して実行する。fixtureは架空データのみで、production Analyticsへテストtrafficを送らない。
+- 日次Kaigo Ops production workflowは、hook受理のみでは完了扱いにしない。Vercel API read tokenのGitHub Actions secret `VERCEL_TOKEN` が必須で、expected SHA、`READY`、production aliasと11公開routeの確認後に限り `deploy-state/kaigo-ops` をfast-forward更新する。設定と失敗条件は `../docs/kaigo-ops/deployment-assurance.md` を参照。
+
+**注意:** CIが成功しても、それだけでproduction反映済みとは扱わない。deployment ID / READY / SHA / aliasをrelease後に再取得して確認する。
+
 ## 利用観測
 
 2026-10-08のrelease後にVercel project、production、Web Analyticsをfresh確認しました。
