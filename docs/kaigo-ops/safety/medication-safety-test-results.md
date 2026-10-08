@@ -90,3 +90,31 @@ Human publication approval: **HUMAN_APPROVAL_NOT_DONE**
 | 最終の内容責任者公開承認、Eの統合公開判断 | E / content owner | `HUMAN_APPROVAL_NOT_DONE` |
 
 **Worker Dの結論:** review scaffoldと現行の公開登録・Vercelメタデータは確認した。安全新機能の実際のadversarial/UI/privacyテストは未実施。よって `SAFETY_PARTIAL_WITH_GAPS`。公開承認なし、production公開不可。A〜Cの完了後にこの台帳を再実行・更新する。
+
+
+## 6. 独立レビュー追補：並行PR A / B / C（2026-10-08 JST）
+
+上記の`main`に成果物がないという記述は**mainへの未統合**を意味する。D着手後、別branchで次のPRが作成されたため、各PRの差分を独立に確認した。
+
+| PR | 内容 | Dによる確認と判断 |
+|---|---|---|
+| [#449](https://github.com/Josh-Temple/kaigo-rules/pull/449) | A: 20 claimのsource registerと12 risk項目 | **PARTIAL_WITH_GAPS**。G25の冊子38〜39頁（PDF 0起算P40〜41）を厚労省原典のページ画像で直接照合し、確認不足／他業務並行／手順不統一／工程差・事例を確認。A自身も他サービス適用・法的義務化・専門職確認を保留している。20 claimの全件独立再照合ではない。 |
+| [#448](https://github.com/Josh-Temple/kaigo-rules/pull/448) | B: Issue draft、サービス群別適用性、出典対応 | **PARTIAL_WITH_GAPS**。施設対象と訪問・通所等の留保、事故時の判断外、本人意思、組織的対策が明記され、公開registry・routeは未変更。B内のMHLW-01〜07とAのMS-01〜20は**異なるclaim ID体系**であるため、E統合前に節単位で対応表を作り、不一致をNOT_ESTABLISHEDへ戻す必要あり。「applicable」は業務条件の論点に限定され、医学的手順を認めないことを維持する。 |
+| [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) | C: preview route、状態モデル、browser/source tests、仕様 | **PARTIAL_WITH_GAPS**。コード差分では入力は選択式、`deriveReview`は不正値を固定エラーで拒否、全確認時も安全保証をしない。新routeはserver environment flag `MEDICATION_SAFETY_PREVIEW=enabled`がない場合`notFound()`、metadataはnoindex。実際のflag-enabled実ブラウザ・Network/Storage・200% zoom・専門職・preview環境のアクセス制御は未実行／未確認。 |
+
+### 原典を使ったDの限定照合
+
+原典: 厚生労働省、令和7年11月ガイドライン、介護保険最新情報Vol.1436、冊子38頁「誤薬・与薬漏れ：再発防止／未然防止の具体策」、39頁「ケーススタディ」。  
+https://www.mhlw.go.jp/content/001591418.pdf
+
+確認範囲: **上記2ページの画像を直接閲覧**。配薬準備と配薬時の工程差、確認不足・並行業務・手順不統一、施設の実践事例における役割や引き継ぎの問題は資料の内容と整合していた。ただし出典の推奨・単一施設事例から、法令上の義務や全サービスでの効果を導くことはできない。事故報告の新旧通知・自治体別運用について、D自身は全件検証していない。
+
+### PR Cから判明した追加の検査条件
+
+- Cのflagは**サーバー上の表示可否**であり、認証ではない。Previewで有効にする場合はアクセス制御を別途確認し、漏れがあれば公開禁止。
+- Cのpreview routeは`app/tools/medication-safety-preview/page.tsx`として存在する。**route fileがあるだけで即公開違反としない**が、productionのflagが未設定・未一致でHTTP 404となることを直接検証し、preview環境は明示的な制限を確認する。
+- Dのpublic exposure regression testは、flag付きrouteの存在を許しつつ、`notFound()`・noindex・force-dynamicとpublic registry/sitemap非登録を要求するよう更新した。**静的テストは環境変数の実際の配布設定を証明しない**。
+- Cのブラウザテストはflag未設定では`404`を確認し、flag有効時のinteractionテストはその環境で別に実行する設計。よってCIがgreenでも**flag有効時の実操作が実行されたとは限らない**。
+- 工程選択・「確認できる」は医療的な本人確認や実際の正確さを認証しない。点検シートの自己申告と事故防止効果を結び付けない。
+
+**追補後のD判定は引き続き`SAFETY_PARTIAL_WITH_GAPS`、専門職`EXPERT_REVIEW_NOT_DONE`、公開`HOLD`。** 重大な医療助言や漏えいを現時点で確認したという意味で`SAFETY_BLOCKED`とはしない。一方、公開条件が足りないためproductionへの事故安全コンテンツ追加は承認しない。
