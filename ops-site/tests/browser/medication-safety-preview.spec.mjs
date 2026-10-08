@@ -35,6 +35,10 @@ test.describe("explicitly enabled medication safety preview", () => {
     await expect(result).toContainText("対象外にできる範囲");
     await expect(result).not.toContainText("安全が確認できました");
 
+    page.once("dialog", async dialog => {
+      expect(dialog.type()).toBe("confirm");
+      await dialog.accept();
+    });
     await page.getByRole("button", { name: "架空例を読み込む" }).click();
     await expect(page.getByRole("status")).toContainText("架空");
     await expect(result).toContainText("変更情報");
