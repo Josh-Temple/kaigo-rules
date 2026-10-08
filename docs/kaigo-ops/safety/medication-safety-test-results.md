@@ -76,7 +76,7 @@ Human publication approval: **HUMAN_APPROVAL_NOT_DONE**
 - Search Consoleは `UNKNOWN`（認証済みアクセス未確認）。「未インデックス」と解釈しない。
 - feedback: 既存7分類を保ち、万一の医療安全上の懸念・誤情報疑義はEへ速やかな内部確認フラグとして提案する。新しい入力必須項目、事故記録投稿欄、実情報の転載は設けない。
 - 日次GitHub Actions production verifierについて、`VERCEL_TOKEN`配置と本番完走は最新canonicalでも未確認。今回Dでは実行・更新していない。Eの別追跡項目とする。
-- **このPRはdocsのみの提案であり、実行時点のKaigo Ops production deployを行わない。** 別作業がmainを変更した場合はEが各runtime SHAを独立照合する。
+- **このPRはレビュー資料と公開登録防止のsource-level回帰テストのみを追加し、実行時点のKaigo Ops production deployを行わない。** 別作業がmainを変更した場合はEが各runtime SHAを独立照合する。
 
 ## 5. 次の判定と責任
 
