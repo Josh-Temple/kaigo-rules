@@ -207,3 +207,61 @@ All previous blank review-ID/date/decision fields remain blank. The test-results
 - **審査前の真の未充足**：EX01/EX02実在専門職 `NOT_REQUESTED / NOT_DONE`、HU01責任者 `NOT_DONE`、サービス別工程/職種権限/正式手順/自治体別事故報告運用、外部previewのアクセス制限実証と本番直接HTTP、実端末・音声読み上げ・印刷現物確認。上記を明示して初めて正式なレビュー対象版を人が承認する。
 
 **配布可能なのは非識別の審査用内容だけ**。作成・CI成功をレビュー依頼・レビュー結果・公開GOへ読み替えない。現判定 `REVIEW_PACK_READY / SAFETY_PARTIAL_WITH_GAPS / NOT_PUBLIC`。この追加確認もCのコード変更やBの意味変更があれば再検証を要する。
+
+
+---
+
+## 9. 2026-10-09 審査依頼準備：最新版の個別指摘位置・5状態・記録ゲート（D追補）
+
+**実際の状況：`REVIEW_PACK_READY`（技術資料の提出準備のみ）、`REVIEW_REQUESTED=false`、`EX01=EXPERT_REVIEW_NOT_DONE`、`EX02=EXPERT_REVIEW_NOT_DONE`、`HU01=HUMAN_APPROVAL_NOT_DONE`。** 権限者による依頼許可・実在審査者の確定を確認していないため送付・招待は行わない。内部相談に使う場合も合成の選択値以外を使わない。
+
+### 9.1 一回の審査で照合する版
+
+| Layer | Pin / status | 審査者が確認する資料 |
+| --- | --- | --- |
+| GitHub main（docs; productionではない） | `8d824ce35be176dd05de976709ee1f81944b65d1`（2026-10-09 JST fresh read） | [前E版固定・公開HOLD](./2026-10-09-medication-safety-version-lock-and-review-gates-decision.md) |
+| B文面・サービス群 | PR #459 `364519815a41143560b068cfa459e7a04962f18f`、Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25`、service blob `e3889c26c5b46d4644b29d94c657e628c96206d3` | [Issue草案§9](./medication-safety-issue-draft.md) ／ [8サービス群§7](./medication-safety-service-applicability.md)。いずれもopen PRでmain統合前 |
+| A claim/出典 | PR #458 `37fc213301e93442f71efc4509af5cfa49567c88`、trace blob `271560deb7ea848690e12d97fd23661583511198` | [A§8](./medication-safety-claim-to-content-trace.md)：Bの2 blobに直接紐づく14逐語anchor、MS-01〜20、8サービス群。A評価はPARTIAL_WITH_GAPS |
+| C画面/結果/印刷 | draft PR #451 latest head `a61797393f20e897247d985ab0861f6443a0a74e`。D checkout code commit `7ec2fe8c644d0526af1650e857a7da397488a0ad`。page `cfa6f30633c5c8536b570c4c82b2794cd4353320` / worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c` / model `9580e9202209f5e3fdf3b544b628d68885062295` | headとの差はCの検証Markdownのみ。**表示を実際の医療指示として使用しない**。アクセス権確認のない公開Previewを送らない |
+| D独立29-case | [D台帳§10.2/§11](./medication-safety-test-results.md)、D workflow blob `241415cc2f8536bca185c27a6ecba85a8e4e57f3`、旧15/15 run [37844583974](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844583974) SUCCESS | 29ケースは**11 PASS_LIMITED / 18 PARTIAL**。D新規2 assertのrun [37857899198](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857899198) は別途完走確認までPENDING（docs追補の時点）。医療の29項目合格ではない |
+| 公的原典（今回画像で再閲覧） | 厚生労働省 [Vol.1436](https://www.mhlw.go.jp/content/001591418.pdf)（2025-11-07）冊子p38–39/46、PDF0 p40–41/48；[Vol.1332](https://www.mhlw.go.jp/content/001574219.pdf)（2024-11-29）PDF0 p2–3 | 施設向けの推奨・特養1事例・通所/訪問の一般的連携・事故報告通知はそれぞれ別。**法定の服薬権限や独自チェック結果を認定しない** |
+
+### 9.2 EX01 / EX02が読む5状態の共通対照と誤安心ゲート
+
+| internal value | B§9.2・C選択の現行表示 | 結果・印刷で審査すべき誤読 | 実行済み限定ケース／人の判断 |
+| --- | --- | --- | --- |
+| `unknown` | まだ確認していない | 初期状態を「問題なし」に見せない。未選択の結果を安全確定にしない | R09/U03：静的・Chromium限定。EX02の理解評価未実施 |
+| `confirmed` | 取扱いを把握している（自己申告・未検証） | 6つ全部選んでも、医療安全・制度適合・服薬行為権限を保証しない | R03/R09/U03：限定PASS。EX01/EX02未実施 |
+| `needs-review` | 相談したい点がある | 原因・医療的対処方法を自動診断しない | R09/U03：限定PASS。職種別の相談先は実確認待ち |
+| `not-prepared` | 取り決めが見つからない | 不備や事故原因を自動認定しない | R09/U03：限定PASS。実施主体と必要な整備はEX02待ち |
+| `not-applicable` | 自分の担当範囲では扱わない（責任者確認前） | 6項目全部担当外でも、業務工程の不存在や法的義務の免除を認定しない | R03/R09/U03：限定PASS。EX01/EX02で役割確認待ち |
+
+**読取順:** Bの文面・service群→Aの原典と判定境界→Cの冒頭説明・選択欄・結果・印刷→Dの対象ケース/限界。単一画面のスクリーンショットや印刷部分だけを医療安全の認証として扱わない。全confirmed、全not-applicable、初期・mixed、架空例、reset後、改ざん値の各状態が対象。選択値の通信検査はD§11に分離され、現場の理解実査を代替しない。
+
+### 9.3 出典から独立意見まで：具体的な判断依頼
+
+| 原典の位置と性質 | B文面／サービス表とA位置 | Cで見る箇所 | 実在審査者へ尋ねること（現状未回答） |
+| --- | --- | --- | --- |
+| Vol.1436 冊子38/PDF0:40 **施設向け推奨**（服薬後確認工程をマニュアルに定める趣旨への言及） | B-07、B§9、A MS-07、Bサービス§7 | pageのscope、modelの工程、worksheetの結果/印刷 | **EX01:** 介護・看護・医師・薬剤師の役割、本人の意思、服薬拒否・指示変更に関する表示から、服薬可否や実施権限の決定を誤読しないか。サービスのどれに当てはまるかは個別確認が必要ではないか |
+| Vol.1436 冊子39/PDF0:41 **特養単一事例** | B-01/03/08、A MS-08〜12、Bサービス§7の施設と他7群 | pageのサービス境界、worksheetの中断・引継ぎ・負荷に関する設問 | **EX02:** 事例の工程を住宅・通所・訪問・居宅支援に一般化せずに使えるか。人員不足を職員個人の不注意・一律二人確認義務に置き換えないか |
+| Vol.1436 冊子46/PDF0:48 **通所・訪問の一般的連携** | B-04/12/13、A MS-14/15/17〜20、Bサービス§7 | pageの適用境界、modelの変更情報・記録引継ぎ工程 | **EX01/EX02:** 一般連携と服薬工程・権限・処方真正性を切り分けられているか。訪問介護と訪問看護、居宅介護支援等を同一の服薬実施者と誤認しないか |
+| Vol.1332 PDF0:2–3 **事故報告様式・通知** | B-09/13、A MS-13/14/17〜20 | pageの事故時不使用文、worksheetの結果/印刷警告 | **EX02:** 自治体別の現行ルールに戻す文面が正確か。個別事案の報告要否・期限が確定したような表現はないか。**EX01:** 急な疑義時にこのシートの操作を続けさせないか |
+| **サイト独自の5状態**（公定の安全尺度ではない） | B-05/06、B§9.2–9.4、A§8.4 | worksheetの5 selects、resultとprint `WORKFLOW_BOUNDARY` | **EX01/EX02:** all-confirmedとall-not-applicableの表示を誤安心なく読めるか。用語・視線順・印刷後の独り歩きの危険と、差替えが必要な文字列を特定してほしい |
+
+### 9.4 実施許可と実レビューの区別（空欄様式）
+
+下記は**例示欄のみ**。実名、資格証明、所属、メール、署名はpublic repoに入力しない。実在の適任者の資格・権限確認と送付許可は、公開しない適切な管理手順で行う。
+
+| Gate | EX01 | EX02 | HU01 |
+| --- | --- | --- | --- |
+| 正当な依頼権限・外部送付許可 | **NOT_ESTABLISHED** | **NOT_ESTABLISHED** | **NOT_ESTABLISHED** |
+| 依頼済みか | **NOT_REQUESTED** | **NOT_REQUESTED** | **NOT_REQUESTED** |
+| 匿名review ID（実施時のみ） | _未付与_ | _未付与_ | _未付与_ |
+| 実在審査者の役割と対象SHA/blobs・source版 | _未記入_ | _未記入_ | _未記入_ |
+| 実査日時（JST）・具体指摘ID・対象文・重大度 | _未記入_ | _未記入_ | _未記入_ |
+| 修正commit / D rerun / 再審査結果 | _未記入_ | _未記入_ | _未記入_ |
+| 最終の本人による明示結論 | **EXPERT_REVIEW_NOT_DONE** | **EXPERT_REVIEW_NOT_DONE** | **HUMAN_APPROVAL_NOT_DONE** |
+
+**依頼可能になるまでの手順:** Eまたは内容責任者が最新版B/A/C/Dと残課題を固定し、実在の審査依頼者が資格・対象者・送付内容と守秘手順を確認し、送付を**明示許可**する。許可後に限り、対象SHA/blobs・原典ページ・合成画面例・上記質問と記録様式を渡す。指摘が意味や表示を変える場合はB→A→C→Dへ再検証を戻す。EX01/EX02の別々の実査・再審査が完了するまでHU01によるGOは認定しない。
+
+**D handoff:** `SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。全29ケースは§10/11の対象版に限る。**実在のレビューが始まった・終わった・承認されたとの主張はしない**。
