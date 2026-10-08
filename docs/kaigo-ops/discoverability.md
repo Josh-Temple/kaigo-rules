@@ -190,3 +190,11 @@ Kaigo Rulesの `/databases/search` には、制度上の要件を確認した後
 Kaigo Opsではhome + 5 Issue + 5 action tool、5つのIssue → tool / Kaigo Rules / feedback journey、canonical / Open Graph、`robots.txt`、`sitemap.xml`、Analytics script deliveryを確認し、390px verificationを含めすべてPASSした。
 
 優先2 Issueのdirect-entry shareabilityは `docs/kaigo-ops/distribution-kit.md` を正本とする。外部投稿は明示的な許可なしに行わない。
+
+## 2026-10-08 action tool reliability release
+
+Kaigo Opsの本番はSHA `e49e770a970e541d2ad95204ad277eca89a485d3` / deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READYに更新した。alias `https://ops-site-pi.vercel.app/` が同deploymentへ解決することをVercel APIで確認した。
+
+情報探索と記録・文書の2 Issueでは、hero付近に「まず試す」説明と既存toolへの直行入口を追加した。両方とも後半CTA、Evidence、non-claims、Kaigo Rules、feedbackを残している。記録見直しツールの制度確認は、通所介護固定リンクからKaigo Rulesの汎用DB検索へ変更した。
+
+公開11ページの内容はrelease後に外部取得できた。今回の独立したproduction 390pxブラウザ操作は未実施で、PR #446のlocal Chromium 390px regression（PASS）と区別する。Search Consoleは`authenticated Search Console access unavailable`のためindex UNKNOWNを維持する。
