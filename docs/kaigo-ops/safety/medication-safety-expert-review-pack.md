@@ -265,3 +265,10 @@ All previous blank review-ID/date/decision fields remain blank. The test-results
 **依頼可能になるまでの手順:** Eまたは内容責任者が最新版B/A/C/Dと残課題を固定し、実在の審査依頼者が資格・対象者・送付内容と守秘手順を確認し、送付を**明示許可**する。許可後に限り、対象SHA/blobs・原典ページ・合成画面例・上記質問と記録様式を渡す。指摘が意味や表示を変える場合はB→A→C→Dへ再検証を戻す。EX01/EX02の別々の実査・再審査が完了するまでHU01によるGOは認定しない。
 
 **D handoff:** `SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。全29ケースは§10/11の対象版に限る。**実在のレビューが始まった・終わった・承認されたとの主張はしない**。
+
+
+### 9.5 独立テストの最新確定結果（2026-10-09 JST）
+
+Dで追加した2件を含む現行spec blob `28161729ba8b602a45920c292da6b2db476646bc` は、[独立run #37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) のenabled/disabled両jobが成功し、**Chromium 17/17 pass**、flag無効/不正時のlocalhost 404および既存11公開routeの隔離検査が成功。最初の追加test run #37857899198の1件失敗はdemoの確認ダイアログをテストが処理していなかったためで、D test harnessを修正して再試験した。詳細・失敗履歴は [D台帳§11.4](./medication-safety-test-results.md)。
+
+**29ケースの判定は11 `PASS_LIMITED` / 18 `PARTIAL`のまま。** ネイティブズーム・Android・読み上げ・実印刷・privacy別環境・preview access実証は未完了。専門職レビューの送付許可／実査・公開責任者承認は未取得で、`REVIEW_REQUESTED=false / EXPERT_REVIEW_NOT_DONE / HUMAN_APPROVAL_NOT_DONE`。このpackは審査準備完了のみを意味し、`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`を維持する。
