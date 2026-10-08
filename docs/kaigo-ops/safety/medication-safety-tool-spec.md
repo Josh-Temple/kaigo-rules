@@ -15,12 +15,12 @@ Base for C: `main` at `a90119e9d9e9de3050a563178daa0bf6d7c47bb8`
 
 ## 2. 入力契約・出力
 
-- 工程1個: 未選択／指示変更の受領・共有／準備・確認／配薬・服薬確認の運用／記録・引き継ぎ。
+- 工程1個: 未選択／変更情報の受領・共有／配薬準備の運用／配薬・服薬確認に関する運用／記録・引き継ぎ。実在する工程・職種権限を本ツールが認定するものではない。
 - 点検6項目: 手順、役割、作業中断、変更情報、相談経路、振り返り。
-- 各項目の状態: 未確認／確認できる（自己申告）／見直しが必要／未整備／対象外（要確認）。
-- 初期値: 工程=未選択、すべて=未確認。架空例ボタンは固定の選択肢のみ。
-- 出力: 未選択、未確認、見直しが必要、未整備、対象外について、相談・確認事項を一定の規則で表示。「確認できる」は数値スコアへ変換しない。
-- 全項目「確認できる」でも安全宣言を返さない。未回答・対象外を合格扱いしない。
+- 各項目の状態（B草案blob `083ffd0a17419e1533e65205e9230d725f3232ab` のB-05に対応）: まだ確認していない／取扱いを把握している（自己申告・未検証）／相談したい点がある／取り決めが見つからない／自分の担当範囲では扱わない（責任者確認前）。選択肢は独自の設計提案であり、原典の検証済み尺度ではない。
+- 初期値: 工程=未選択、すべて=まだ確認していない。架空例ボタンは固定の選択肢のみ。
+- 出力: 工程未選択・まだ確認していない・相談したい点がある・取り決めが見つからない・担当範囲では扱わない、を相談事項として表示。全項目『取扱いを把握している』でも自己申告・未検証の注意書きを表示し、スコアや安全宣言に変換しない。
+- 全項目「取扱いを把握している」でも安全宣言を返さない。未回答・担当範囲外の自己申告を合格扱いしない。
 - 不正な構造・選択値・余分な項目は `valid=false` とし、元の入力を反映しない固定のエラーだけを表示する。
 - 印刷用概要には工程・選択項目・固定文言だけを出力し、実名・薬剤・事故詳細などの入力欄は設けない。
 
@@ -35,7 +35,7 @@ Base for C: `main` at `a90119e9d9e9de3050a563178daa0bf6d7c47bb8`
 - Unit + source invariants: `ops-site/tests/medication-safety-review.test.mjs`
 - Browser regression: `ops-site/tests/browser/medication-safety-preview.spec.mjs`
 
-`MEDICATION_SAFETY_PREVIEW` **未設定/未一致の場合は必ず404**。試作をPreview環境で表示する場合に限り、サーバー側環境変数に `MEDICATION_SAFETY_PREVIEW=enabled` を設定する。route は `force-dynamic`、metadata は `noindex, nofollow, nocache`。このURLは公開registry、ホーム、sitemap、Issue→tool一覧に登録しない。
+`MEDICATION_SAFETY_PREVIEW` **未設定/未一致の場合は必ず404**。有効化はローカルホスト上のCI、または実証済みアクセス制限付きの非公開環境に限定する。匿名到達可能なVercel Previewには絶対に有効化しない。route は `force-dynamic`、metadata は `noindex, nofollow, nocache`。このURLは公開registry、ホーム、sitemap、Issue→tool一覧に登録しない。
 
 **重要:** Previewでflagを有効にすると、URLを知る人にはアクセス可能となり得る。flagと`noindex`は認証・秘密性の代替ではない。専門職レビューまで一般公開できない場合はアクセス制限付き環境、またはローカル実行のみで点検する。PRのmerge/production releaseはIntegrator Eと人の許可を要し、flagをproductionでは有効にしない。
 
@@ -101,3 +101,12 @@ Tests cover: initial/unanswered/not-applicable; deterministic consultation list;
 - 最初のCI run [37760983338](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37760983338) はbrowser history遷移先を固定値としたテストの誤前提で1 FAIL。修正コミット`54b84cd`で戻り先に依存しないURL漏えいと再訪問時初期化の検査へ変更し、上記runで再PASS。
 - Cの詳細な実行台帳：`docs/kaigo-ops/safety/medication-safety-prototype-verification.md`。
 - 公開可否は依然として`PREVIEW_ONLY / NOT_PUBLIC`。Dの独立検証、EX01/EX02とHU01の実承認、公開環境アクセス制限検証、正式な適用範囲判定は別ゲートとして未完了である。
+
+## 8. 2026-10-08 第3回C：文言整合の固定条件
+
+- 対象正本：B Issue draft `083ffd0a17419e1533e65205e9230d725f3232ab` の B-00、B-04〜06、B-09、B-12〜13。A claim trace `2cb32c3b4de093d51d410d23c04511e020a43571` は旧B段落に対応した版であり、最新版BへのAの独立再追跡はこのC実装では代行していない。
+- `PROCESS_STAGES`と`CHECK_STATES`のラベルだけをBの語彙に合わせ、選択値の識別子は変更しない。ブラウザ状態・履歴・永続化・通信とのインタフェースを増やさない。
+- 画面冒頭、状態選択の近接箇所、結果、印刷に、**平時の業務点検・自己申告・未検証・実施権限を判定しないこと・事故発生時の使用禁止**を配置する。ガイドラインの施設中心の適用範囲を一般化しない。
+- B-05の表現はサイト独自の設計提案であり、出典に裏付けられた安全点検スコアではない。全確認・担当範囲外の自己申告でも安全確認済みと表示しない。
+- 変更した文言のunit／Chromium期待値、request URL・headers・body、cookie、URL/history/storage、印刷の照合を再実行し、CI run・コードSHA・制約をCの検証台帳へ追記する。
+- 手動の実Android Chrome・ネイティブ200%拡大・スクリーンリーダー、専門職EX01/EX02、公開承認HU01、Dの独立動的検査はいずれも本CでPASSとみなさない。
