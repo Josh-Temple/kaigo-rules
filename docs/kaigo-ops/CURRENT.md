@@ -201,3 +201,9 @@ The production state in the preceding subsection is the historical Public Discov
 - 実在専門職の審査 **EX01/EX02 = `EXPERT_REVIEW_NOT_DONE`**、公開承認 **HU01 = `HUMAN_APPROVAL_NOT_DONE`**。C #451はdraft・未マージ。新たな公開Issue、action tool、公開preview、production releaseは行わない。
 - 本番Vercel `kaigo-ops` は `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / `READY`、runtime SHA `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `https://ops-site-pi.vercel.app/`。今回Eの直接HTTP再検査では既存11ルートが各200、試作route 404、robots/sitemap各200。**HTTP確認とブラウザ実操作は別**。
 - Analytics `RECEIVE_CONFIRMED`、Search Console `UNKNOWN`は既存canonicalからの継承であり、Eによる新規集計結果ではない。観測定義・レビュー期間は変更しない。
+
+## 2026-10-09 服薬安全試作：版固定と人間審査ゲート（最新E判定）
+
+[最新版 E decision](./safety/2026-10-09-medication-safety-version-lock-and-review-gates-decision.md)を正本とする。**Wave `PARTIAL_WITH_GAPS` / safety `SAFETY_PARTIAL_WITH_GAPS` / 公開 `PREVIEW_ONLY / NOT_PUBLIC`**。旧WaveにあったB→AとC→Dの版不一致は、B最終2 blobへのA第8節追跡と、同一Cコード3 blobへのD独立CI成功により限定的に解消。DはR/P/U計29ケースのうち`PASS_LIMITED`11、`PARTIAL`18。技術的限定成功を専門職レビューや公開承認とは扱わない。
+
+実在EX01・EX02は`EXPERT_REVIEW_NOT_DONE`、HU01は`HUMAN_APPROVAL_NOT_DONE`。native zoom/Android/読み上げ/人手印刷・外部preview accessは未確立。C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451)はdraft・未マージで、匿名previewも本番にも公開しない。Eの本番HTTP再取得では従来11ルート200、試作404、robots/sitemap 200。Kaigo Ops production READY `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S`、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`（docs main SHAではない）。**新production releaseなし**。このHTTP確認をブラウザ操作PASSとしない。Analytics受信は前Waveからの継承、Search Consoleは`UNKNOWN`のまま。
