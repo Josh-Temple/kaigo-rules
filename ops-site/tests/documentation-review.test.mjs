@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { emptyPhase, phaseSummary } from '../lib/documentation-review.ts';
 
 test('unmeasured, invalid times and zero/invalid counts do not produce a comparison', () => {
