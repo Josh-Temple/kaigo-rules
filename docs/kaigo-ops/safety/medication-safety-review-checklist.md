@@ -188,3 +188,15 @@ D独立検証：[#457](https://github.com/Josh-Temple/kaigo-rules/pull/457)、[w
 **Review packへの引き継ぎ**： [medication-safety-expert-review-pack.md §8](./medication-safety-expert-review-pack.md) へ、版・質問・未解決課題・非識別の記録空欄を追加。実在の専門職へ連絡、招待、資料送付、承認の代行は行っていない（`REVIEW_REQUESTED=false`）。架空の事例だけを審査に用い、氏名・所属・署名・事故・処方・内部資料はpublic repositoryへ置かない。
 
 **D safety**：`SAFETY_PARTIAL_WITH_GAPS`。Eへの公開推奨：`PREVIEW_ONLY / NOT_PUBLIC`。医学的安全性・法令適合・事故予防効果の承認ではない。DはC本体/公開設定/main/本番を変更しない。
+
+
+### 10.1 2026-10-09 追補：独立CI完走とA現行B traceの読戻し
+
+前表のA未照合行は、当初スナップショットを示す。**現行判定**は以下が優先する。
+
+- **D独立run [#37844583974](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844583974)**：`independent-enabled=SUCCESS`（D専用Chromium **15/15 PASS**）、`independent-disabled=SUCCESS`（flag未設定／不正時localhost HTTP **404**、既存5 Issue/5 tool route PASS）。GitHub CIの実行ログで確認。これは実端末/専門職/外部previewの合格ではない。
+- **A現行B traceは完成**：PR #458 head `37fc213301e93442f71efc4509af5cfa49567c88`、trace blob `271560deb7ea848690e12d97fd23661583511198`、対応するB issue/service blobs `e0cc354e2b78a28912c80c0611ccf3c165d00b25` / `e3889c26c5b46d4644b29d94c657e628c96206d3`。B-00〜13、MHLW-01〜07、8サービス群、5状態対応についてA独立静的追跡。**A判定自体はPARTIAL_WITH_GAPS**、医学的妥当性の合格ではない。
+- **C最新PR head** `a61797393f20e897247d985ab0861f6443a0a74e` はDの検証対象 `7ec2fe8c644d0526af1650e857a7da397488a0ad` からdocsのみ変更。page/worksheet/modelは同一blob。コードが変われば改めてD再試験する。
+- **残る主ゲート**：EX01/EX02実専門職確認 `NOT_DONE`、HU01 `NOT_DONE`、実機/accessibility/ネイティブ印刷・本番外部アクセスとpreview認証の証明不足。よって **`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`** を維持。E以外が公開可否を決定しない。
+
+確認詳細は [test-results §10.4–10.5](./medication-safety-test-results.md)。古いNOT_RUN/P0の行は当該時点の履歴として保持し、最新版を無断で過去へ遡ってPASS扱いしない。
