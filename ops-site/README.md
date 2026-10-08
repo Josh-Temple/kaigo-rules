@@ -172,3 +172,9 @@ Cのlocalhost GitHub Actionsテストには成果があるものの、Dの独立
 非公開「服薬業務の安全点検シート」の最新の統合判定は [E decision](../docs/kaigo-ops/safety/2026-10-08-medication-safety-content-alignment-and-independent-validation-decision.md)。**`PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。試作 [draft PR #451](https://github.com/Josh-Temple/kaigo-rules/pull/451) を未マージで維持する。Aのclaim追跡とB最終本文の版差、Dの独立試験とC最新版のSHA差、実在のEX01/EX02/HU01未実施が公開阻害条件。表示flagは認証機能ではない。公開registry・ナビ・sitemapへ試作を追加しない。
 
 Eでのproduction HTTP確認：既存のhome+5 Issue+5 toolは各200、`/tools/medication-safety-preview`は404。production runtime SHA `e49e770a970e541d2ad95204ad277eca89a485d3`、deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` はREADY。本Waveで服薬安全機能のproduction releaseを実施しない。
+
+## 2026-10-09 medication-safety version-lock decision（最新）
+
+非公開の「服薬業務の安全点検シート」は[最新版E統合判定](../docs/kaigo-ops/safety/2026-10-09-medication-safety-version-lock-and-review-gates-decision.md)のとおり、**`PARTIAL_WITH_GAPS / SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。B最終2 blobとA trace、C同一3 code blobs、D最新版コードに対する独立CIは追跡可能だが、29-caseは11`PASS_LIMITED`/18`PARTIAL`。実在の医療職EX01・事故防止EX02レビューは未実施、HU01公開GOも未実施。外部preview認証、実Android、native zoom、読み上げ、印刷実物は未確認。C #451はdraft・未マージで、公開flag/nav/registry/sitemap/Analyticsに試作は追加しない。
+
+最新Vercel production `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` READY、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `https://ops-site-pi.vercel.app/`。E再取得の公開HTTPは既存11ページ200、服薬試作route404、robots/sitemap200。**今回の新規本番release・本番browser操作テストなし**。前WaveのAnalytics受信情報とSearch Console `UNKNOWN`は継承であり、新たな実測ではない。次の担当と版固定はE decision参照。

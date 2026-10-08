@@ -262,3 +262,9 @@ pageviewとfeedbackの継続観測は `docs/kaigo-ops/usage-observation.md` に�
 公開前の順序は **Aが最終B本文・サービス資料のclaim traceを再固定 → B/Cが選択肢・結果・印刷文の対応を確定 → Dが最新版Cに対して独立した29ケースと不足した実機・プライバシー試験を再評価 → 実在のEX01/EX02審査 → HU01の明示承認 → EがGOを再判定**。レビュー・承認がない状態でC draft #451をmainに統合したり、公開flagを有効化したりしない。
 
 既存5 Issue/5 toolは維持。本番の既存11ルートは2026-10-09 JSTにHTTP 200、試作routeは404。端末実操作や試作の一般公開適合を確認したという意味ではない。
+
+## 2026-10-09 服薬業務安全点検シート：公開HOLD後の条件
+
+[最新E版固定判定](./safety/2026-10-09-medication-safety-version-lock-and-review-gates-decision.md)に従い、追加の公開Issue/action toolとして採番・実装配信しない。A #458のB最終版へのtrace、B #459の文言仕様、C #451の非公開試作3 code blobs、D #457の最新版Cに対する独立15 browserテストは同一版で参照可能。Dの29-case判定は`PASS_LIMITED`11 / `PARTIAL`18で、実在EX01・EX02と公開責任者HU01の承認は未完了。
+
+次の順序は、(1)必要ならA/B文面・各サービスの工程/職種/自治体運用の精査、(2)C/D変更時の同一版再試験とAndroid/支援技術/印刷/preview access gapの解消、(3)権限を確認した実在EX01/EX02レビュー、(4)HU01対象版明示GO/HOLD、(5)E再判定。審査送付は事前の明示許可まで行わない。**`PREVIEW_ONLY / NOT_PUBLIC`を維持**。既存5 Issue/5 toolとIssue 6「収支・コスト構造」のロードマップは変更しない。
