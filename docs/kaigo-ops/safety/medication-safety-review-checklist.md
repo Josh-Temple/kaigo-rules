@@ -149,3 +149,18 @@ https://www.mhlw.go.jp/content/001591418.pdf
 5. EX01/EX02完了後に初めてHU01の明示的公開承認を求める。全て揃うまで、**一般公開・公開registry・sitemap・production flagを変更しない**。
 
 **新Wave D判定:** `SAFETY_PARTIAL_WITH_GAPS`。重大な医療助言・情報漏えいの発生を観測したとの判断ではない。一方、実ブラウザのprivacy・誤安心検証と適任専門職の確認が欠け、`SAFETY_PASS`や公開承認に昇格する根拠もない。Eには `PREVIEW_ONLY / NOT_PUBLIC` を推奨する。
+
+
+---
+
+## 9. 2026-10-08 D-only independent dynamic checklist — newer evidence
+
+**Target ledger:** main 233f11f60bd53cee4684fd66eb5c0490b2fee926; A trace blob 2cb32c3b4de093d51d410d23c04511e020a43571 (OLD B trace); B draft blob 083ffd0a17419e1533e65205e9230d725f3232ab; B service blob 8138d89832ddd4b706ff1da4751ffd2626e251bb; C draft #451 pinned a1357ad7ebd723c5a8c8fcf754c04b384f7db95d. **Independent run** [37782952341](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37782952341) in D [draft PR #457](https://github.com/Josh-Temple/kaigo-rules/pull/457). No C implementation was edited by D.
+
+- R01–R16: all 16 recorded individually in test-results §9.2. Automated visibility/state assertions completed for selected cases; others retain PARTIAL where human or external environment remains outstanding. Do not represent these as 16 clinical PASS cases.
+- P01–P07: all seven recorded in test-results §9.3. Synthetic selections absent from observed request headers, URL and body, history, local/session storage, IndexedDB and cookie; tested conditions **PASS_LIMITED**, Analytics cross-environment and feedback handoff remain partial.
+- U01–U06: all six recorded in test-results §9.4. Local 390px, CSS 200% zoom, labeled controls, live-result, print-media and PDF-in-memory, invalid-state and route tests executed. Native zoom, real Android, screenreader, native print preview and remote production journey are not complete.
+- Local flag absent and invalid: **HTTP 404 each**, existing 5 Issue / 5 tool local routes passed. Public Vercel HTTP could not be independently retrieved with the current web client; prior successful external check remains historical. Vercel API confirmed same READY deployment and runtime, **not the current direct HTTP**. PREVIEW_ACCESS_NOT_ESTABLISHED.
+- No answer is transmitted in observed network traffic, but ordinary pageview requests can occur. No claim of zero communication or permanent no-leak guarantee.
+- Version mismatch remains **P0**: old A B paragraph mapping and C labels vs current B proposed labels. **EX01/EX02 NOT_DONE; HU01 NOT_DONE.**
+- Disposition **SAFETY_PARTIAL_WITH_GAPS; PREVIEW_ONLY; NOT_PUBLIC**. Reviewed once only for pinned C SHA. New C SHA requires changed-case retest and new expert pack snapshot. This section supersedes only the older NOT_RUN statements for the test dimensions actually exercised.
