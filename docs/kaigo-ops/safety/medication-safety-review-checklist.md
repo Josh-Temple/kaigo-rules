@@ -6,6 +6,8 @@
 公開承認: **未実施**（本書は承認書ではない）  
 関連指示: `/Kaigo Ops/Work Instructions/2026-10-08_accident_prevention_and_medication_safety_foundation_wave_instructions.md`
 
+> **新Wave追補（2026-10-08）**: 下記の「現在の判定」と各表の「未実施」は、前Wave開始時の記録として保持する。今回の独立確認は `medication-safety-test-results.md` 第7節、専門職へのレビュー依頼内容・記録欄は `medication-safety-expert-review-pack.md` を参照。今回の結果は **`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。A/B文書とC draft #451のコードは取得・静的検査済みだが、独立の動的ブラウザ検証・実専門職レビューはまだ完了していない。
+
 ## 現在の判定と使い方
 
 - 2026-10-08の本レビュー時点でAのsource/risk register、BのIssue draft、Cのtool spec/previewは `main` 上に存在しない。これらの内容を審査済みと扱わない。
@@ -104,3 +106,46 @@ https://www.mhlw.go.jp/content/001591418.pdf
 - feedback副分類として「安全上の懸念／誤情報の可能性」の**内部トリアージ上の注意フラグ**をEへ提案。既存7分類や利用者フォームは、実証前に勝手に変更しない。
 
 次の担当: Aはsource claim traceを提示、Bはサービス適用範囲とIssue草案、Cは認証付きPreviewとツール・テスト、Dは上記を再実査し証跡更新、Eは独立判定・公開可否を記録する。
+
+
+---
+
+## 8. 2026-10-08 新Waveの検証更新と未実施ゲート（上の旧台帳を消さずに追補）
+
+**対象固定:** 最新確認時main `d5e5b5f1c3a019c801c81c1af737964183bf7ce4`。C draft PR #451 head `dd7ccdc535aa34acd76d8d54943a72b856345832`。A/Bの前Wave成果物はmainで確認。D検査はソース静的18件、厚労省ガイドライン冊子p38〜39直接確認、productionの11+1ルートHTTP検査。C CIのsuccessは独立動的検査ではない。
+
+| Gate | 新Wave結果 | 精確な残課題 |
+| --- | --- | --- |
+| S01〜S04（出典・範囲・効果） | **PARTIAL_WITH_GAPS** | 一次資料の誤薬・与薬漏れp38〜39を独立確認。B草案・A claimの一致を限定確認。段落単位traceはmainで未取得、全claim完全照合は未了 |
+| S05（職種権限） | **REVIEW_REQUIRED** | 配薬・服薬確認を扱う職種・事業所の正式な権限は未確立 |
+| S06（事故報告） | **REVIEW_REQUIRED** | 個別報告要否・自治体運用未審査。サイトは判断していない |
+| C01〜C02（事故・再投与） | **STATIC_CONSISTENT / DYNAMIC_NOT_RUN** | 選択式UI・事故時案内を確認、独立の誤解検査とEX01待ち |
+| C03〜C04（全確認・未回答・対象外） | **SOURCE_CHECKED / DYNAMIC_NOT_RUN** | 固定の非保証文、対象外の再確認を確認。実ブラウザ・印刷・改ざん値の独立試験待ち |
+| C05〜C07（職員責任・本人意思・負荷） | **SOURCE_CHECKED / HUMAN_REVIEW_NOT_DONE** | 個人非難を避けた業務条件の文言あり。EX01/EX02の現場妥当性確認待ち |
+| C08（feedback） | **NOT_APPLICABLE（C試作にはfeedback CTAなし）** | Bの公開案を作る前に、公開投稿・機微情報禁止の導線を別途レビュー |
+| P01 | **STATIC_CONSISTENT** | 実ブラウザ入力DOM／印刷実測待ち |
+| P02 | **NETWORK_NOT_RUN** | answer値が通信body/query/header・Analyticsに含まれないことの実測 |
+| P03 | **BROWSER_NOT_RUN** | history / query / hash / clipboard / feedback prefill検査 |
+| P04 | **STORAGE_RUNTIME_NOT_RUN** | local/session/IndexedDB/cookieを動的検査 |
+| P05 | **PRINT_RELOAD_OFFLINE_NOT_RUN** | 印刷、消去、reload、戻る、offline動作 |
+| P06 | **ANALYTICS_PAYLOAD_NOT_RUN** | 通常pageviewと回答送信を分けて検証 |
+| P07 | **C試作のfeedback導線なし** | 公開時のGitHub Issues注意書きが必須 |
+| U01 | **D_BROWSER_NOT_RUN** | 390px・200% zoom。Cの390px CI成功はD独立ではない |
+| U02 | **KEYBOARD_SCREENREADER_NOT_RUN** | label/ARIAのコードはあるがfocus・結果通知は動的検査が必要 |
+| U03 | **SOURCE_CHECKED / DYNAMIC_NOT_RUN** | 状態変化・型不正をDが実行して再照合 |
+| U04 | **PRINT_PREVIEW_NOT_RUN** | 印刷結果・保護文言を実印刷で確認 |
+| U05 | **PASS（production新routeがHTTP 404、public registry/sitemap非登録の限定範囲）** | flag-enabled preview URLのアクセス制限は**NOT_ESTABLISHED** |
+| U06 | **PASS（既存11公開routeがHTTP 200の範囲）** | 既存5 toolの入出力、390px、keyboardの独立回帰は未実施 |
+| EX01 | **`EXPERT_REVIEW_NOT_DONE`** | 医療専門職が版・具体表現・事故時案内を審査 |
+| EX02 | **`EXPERT_REVIEW_NOT_DONE`** | 実務責任者がサービス適用・実施可能性・利用者の意思を審査 |
+| HU01 | **`HUMAN_APPROVAL_NOT_DONE`** | 内容責任者が対象版・未解決・公開範囲を明示承認 |
+
+### 専門職へ渡す手順と記録の単位
+
+1. 専門職へ送る前に `medication-safety-expert-review-pack.md` の対象main / C head / A/B文書版を再確認し、変更があれば対象版と差分を更新する。
+2. EX01とEX02は**別の適任者の実審査**が必要。配薬・服薬確認・事故時対応・職種権限に関する質問を優先する。実在個人の記録を提出しない。
+3. レビューが実施された場合のみ、非識別review ID、役割、対象SHA、原典版、実施日、指摘ID、修正commit、再確認、PASS/FAILを記録。氏名・署名・内部資料は公開repoに書かない。
+4. 問題が残る場合は対応するR/P/Uを再実行し、旧版のPASSを新しいSHAへ自動的に移さない。
+5. EX01/EX02完了後に初めてHU01の明示的公開承認を求める。全て揃うまで、**一般公開・公開registry・sitemap・production flagを変更しない**。
+
+**新Wave D判定:** `SAFETY_PARTIAL_WITH_GAPS`。重大な医療助言・情報漏えいの発生を観測したとの判断ではない。一方、実ブラウザのprivacy・誤安心検証と適任専門職の確認が欠け、`SAFETY_PASS`や公開承認に昇格する根拠もない。Eには `PREVIEW_ONLY / NOT_PUBLIC` を推奨する。
