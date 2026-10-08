@@ -272,3 +272,11 @@ All previous blank review-ID/date/decision fields remain blank. The test-results
 Dで追加した2件を含む現行spec blob `28161729ba8b602a45920c292da6b2db476646bc` は、[独立run #37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) のenabled/disabled両jobが成功し、**Chromium 17/17 pass**、flag無効/不正時のlocalhost 404および既存11公開routeの隔離検査が成功。最初の追加test run #37857899198の1件失敗はdemoの確認ダイアログをテストが処理していなかったためで、D test harnessを修正して再試験した。詳細・失敗履歴は [D台帳§11.4](./medication-safety-test-results.md)。
 
 **29ケースの判定は11 `PASS_LIMITED` / 18 `PARTIAL`のまま。** ネイティブズーム・Android・読み上げ・実印刷・privacy別環境・preview access実証は未完了。専門職レビューの送付許可／実査・公開責任者承認は未取得で、`REVIEW_REQUESTED=false / EXPERT_REVIEW_NOT_DONE / HUMAN_APPROVAL_NOT_DONE`。このpackは審査準備完了のみを意味し、`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`を維持する。
+
+
+### 9.6 並行A/B/C更新後の審査資料再固定（旧§9.1のheadを更新）
+
+- **A最新** #458 head `87b9d67a08b3c9503a47e9914a1abe5af16ca21c`、trace blob **`3264cb93cc2c7f867abe7fb42def68be03bf98e6`**。追加§9には原典PDFページ→B-00〜13逐語箇所→C画面・結果・印刷→EX01/EX02の具体質問、8サービス群、公開前の削除/留保/役割確認待ち/審査待ちが整理された。既存Bの最終2 blobへの追跡は保持。医学的権限やサービス別の正当性は未確立。
+- **B最新** #459 head `9c7b8639380802224bd9b5518f52800ff0b56af8`。B issue/service 2 blobsは§9.1から**不変**。新しい [Worker B専門職審査用補足](./medication-safety-b-expert-review-supplement.md) blob `64feae5962df5614d0d86a6fc36ed24687bae16b` を正式な**審査資料の補助文書**として追加参照する。とくに合成状態S01〜S08、EX01-01〜06、EX02-01〜06、非識別の指摘ID/是正/再審査記録を、本packの§9.2〜9.4と併読。B補足にある「静的確認」はDの独立ブラウザ合格でも専門職承認でもない。重複するレビュー記録は**D§9.4の同一の空欄**に集約し、架空の審査履歴を生成しない。
+- **C最新** #451 head `2dd0e260d0922e18d003905f4a7edf42560f640c`。Cは検証docsに加えて**自分のbrowser試験コード**が増えたので「docs-only head更新」とは記さない。アプリpage/worksheet/modelの**3 blobsは§9.1と完全一致**。C側の追加ブラウザ試験の成功run [#37858189100](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858189100) と、D専用[17/17 run #37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) は別証拠である。
+- **Review statusは変わらない**：`REVIEW_PACK_READY`、`REVIEW_REQUESTED=false`、EX01/EX02 `EXPERT_REVIEW_NOT_DONE`、HU01 `HUMAN_APPROVAL_NOT_DONE`。実在する依頼先・資格・依頼権限・明示許可が確認できるまでは審査packも下書きも送付しない。全29-caseは11 `PASS_LIMITED` / 18 `PARTIAL`で、実Android、native 200%、実読み上げ、印刷現物、previewアクセス検証は未完。Eへの公開判定推奨は**`PREVIEW_ONLY / NOT_PUBLIC`**。
