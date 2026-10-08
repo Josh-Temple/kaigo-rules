@@ -43,7 +43,6 @@ jobs:
         env:
           RULES_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_RULES }}
           OPS_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_KAIGO_OPS }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           set -euo pipefail
           missing=0
@@ -53,10 +52,6 @@ jobs:
           fi
           if [ -z "$OPS_HOOK" ]; then
             echo "::error::Missing repository secret VERCEL_DEPLOY_HOOK_KAIGO_OPS"
-            missing=1
-          fi
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo "::error::Missing repository secret VERCEL_TOKEN for verified Kaigo Ops deployments"
             missing=1
           fi
           exit "$missing"
