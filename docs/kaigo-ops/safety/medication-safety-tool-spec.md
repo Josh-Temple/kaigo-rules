@@ -11,7 +11,7 @@ Base for C: `main` at `a90119e9d9e9de3050a563178daa0bf6d7c47bb8`
 
 事故・疑義が発生している場合、使用者は事業所の正式な事故対応手順、管理者・関係医療専門職への連絡、必要な緊急対応、関係する法令・自治体のルールに従う。本ツールが処方・投薬・再投与・医療対応・事故報告要否を判定することはない。
 
-初期ソース: Library の `2026-10-08_accident_prevention_and_medication_safety_foundation_wave_instructions.md`。この試作の選択肢・相談文章は **DESIGN_PROPOSAL** であって、一次資料による特定サービス向けの安全手順・法令義務ではない。Worker A の claim-level source register と Worker B のサービス別Issue草案との結合は、まだ承認していない。サービス別適用性は `NOT_ESTABLISHED`。
+初期ソース: Library の `2026-10-08_accident_prevention_and_medication_safety_foundation_wave_instructions.md`。この試作の選択肢・相談文章は **DESIGN_PROPOSAL** であって、一次資料による特定サービス向けの安全手順・法令義務ではない。Worker Aのsource registerとWorker BのIssue草案はmainに資料として統合済み。ただし試作UIの各文章・選択肢との段落単位の照合と専門職承認は未了である。サービス別適用性は `NOT_ESTABLISHED`。
 
 ## 2. 入力契約・出力
 
@@ -74,7 +74,7 @@ Tests cover: initial/unanswered/not-applicable; deterministic consultation list;
 | No medical decision / no risk score | Source design; machine tests added |
 | Choice-only / no worksheet persistence or transmission | Source design; machine tests added |
 | Patient autonomy / service applicability | REVIEW_REQUIRED / NOT_ESTABLISHED |
-| Worker A source register & B issue-scope review | Not yet integrated into C |
+| Worker A source register & B issue-scope review | main資料は存在。Cへの最終内容照合はREVIEW_REQUIRED |
 | Expert / safety-owner review | EXPERT_REVIEW_NOT_DONE |
 | Existing 5 Issue/5 tools | Code untouched; regression must pass |
 | Mobile/200% zoom/a11y | 390px browser test added; 200% manual pending |
@@ -89,3 +89,15 @@ Tests cover: initial/unanswered/not-applicable; deterministic consultation list;
 5. 内容責任者による公開承認がない。Eによるpublic registry付加、公開判定とproduction exact SHA/alias確認も未実施。
 
 判定の提案: **PREVIEW_ONLY**。Cの実装は安全点検の設計・検証対象であり、安全効果の実証でも正式な投薬業務マニュアルでもない。公開を急がず、A→B→Cの内容整合とD/Eのrelease gateを満たしてから再判定する。
+
+
+## 7. 2026-10-08 第2回C検証追補（初版の未実施記述を更新）
+
+- 検証対象アプリコードコミット：`54b84cd85981c785110b1a9459a5f8852fddd64f`（その後のドキュメントコミットは動作変更ではない）。
+- 最新main比較時点：`d5e5b5f1c3a019c801c81c1af737964183bf7ce4`。PR #451はdraftのまま、mainへ統合しない。
+- GitHub Actions run [37761326870](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37761326870)：flag enabled jobは13 PASS / 1 conditional skip、flag absent jobは8 PASS / 6 conditional skip。両jobで`npm ci`、`npm test`、`npm run build`、`npm run test:browser`、`npm run verify:routes`が成功。flag不正値のroute 404はHTTP smokeで確認。
+- 回答の選択値について、Chromiumのrequest URL・headers・postData、URL/history、localStorage/sessionStorage、IndexedDBのデータベース名を動的に点検し、検査対象の選択値の露出を検出しなかった。ただしこれは限定された合成値・環境での試験であり、全環境での送信不存在を保証しない。
+- 390px幅の操作と、1280px環境でのCSS zoom 200%模擬、label/focus/aria-live、印刷media/PDF生成、連続reset・cancel/reloadをChromiumで確認。**実Android端末、ブラウザUIのネイティブ200%ズーム、利用者の人手操作、スクリーンリーダーの実聴取は未実施**。
+- 最初のCI run [37760983338](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37760983338) はbrowser history遷移先を固定値としたテストの誤前提で1 FAIL。修正コミット`54b84cd`で戻り先に依存しないURL漏えいと再訪問時初期化の検査へ変更し、上記runで再PASS。
+- Cの詳細な実行台帳：`docs/kaigo-ops/safety/medication-safety-prototype-verification.md`。
+- 公開可否は依然として`PREVIEW_ONLY / NOT_PUBLIC`。Dの独立検証、EX01/EX02とHU01の実承認、公開環境アクセス制限検証、正式な適用範囲判定は別ゲートとして未完了である。
