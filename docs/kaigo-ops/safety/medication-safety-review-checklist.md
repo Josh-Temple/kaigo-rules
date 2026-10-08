@@ -164,3 +164,27 @@ https://www.mhlw.go.jp/content/001591418.pdf
 - No answer is transmitted in observed network traffic, but ordinary pageview requests can occur. No claim of zero communication or permanent no-leak guarantee.
 - Version mismatch remains **P0**: old A B paragraph mapping and C labels vs current B proposed labels. **EX01/EX02 NOT_DONE; HU01 NOT_DONE.**
 - Disposition **SAFETY_PARTIAL_WITH_GAPS; PREVIEW_ONLY; NOT_PUBLIC**. Reviewed once only for pinned C SHA. New C SHA requires changed-case retest and new expert pack snapshot. This section supersedes only the older NOT_RUN statements for the test dimensions actually exercised.
+
+
+---
+
+## 10. 2026-10-09 独立再試験版・審査ゲートチェック（旧版の判定履歴は保持）
+
+**現対象版**：C draft #451 `7ec2fe8c644d0526af1650e857a7da397488a0ad`、page blob `cfa6f30633c5c8536b570c4c82b2794cd4353320`、worksheet blob `2ecd0475681f5a822da0f3dbe32c4610a041d47c`、model blob `9580e9202209f5e3fdf3b544b628d68885062295`。B #459 Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25`、service blob `e3889c26c5b46d4644b29d94c657e628c96206d3`。A #458 trace blob `0b042421f49ae5213f80b71e4cf04c502d32c1f9` は**旧Bへの照合**。現Bを独立照合したことにはならない。
+
+D独立検証：[#457](https://github.com/Josh-Temple/kaigo-rules/pull/457)、[workflow run #37844281038](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038)。flag enabled（localhostのみ）と absent/invalid（localhost route 404）を別ジョブとした。29行の詳細と検査済み／未実施区別は [medication-safety-test-results.md §10](./medication-safety-test-results.md) を正本とする。runが進行中・失敗なら`PASS_LIMITED`は成立しない。
+
+| 審査観点 | D機械検査と残る人の確認 | 2026-10-09の判定 |
+| --- | --- | --- |
+| **R01〜R16 誤安心・医療判断・サービス・組織責任** | 全確認/全担当外/混合、事故・疑義時停止と専門職への案内、再投与・自治体報告の非判断、本人意思・職員負荷、型改ざん。実務上の妥当性はEX01/EX02待ち | **PARTIAL**、対象コード/CIの有限なassertionのみ |
+| **P01〜P07 選択値・privacy** | 合成enumのrequest URL/header/body、URL/history、local/session/IndexedDB/Cookie、印刷、resetとfeedback無し。通常Analytics pageviewと回答送信を分ける | **PASS_LIMITEDを含むPARTIAL**。送信全件・本番・clipboard・offlineは未保証 |
+| **U01〜U06 mobile/accessibility/exposure** | Chromium 390px、CSS 200%模擬、keyboard/label/aria-live、印刷DOM/PDF header、localhostの無効flagと既存11路線 | **PARTIAL**。native 200%、実Android、screen-reader、native印刷、実本番操作はNOT_RUN |
+| **U05 非公開維持** | mainのpublic registry・sitemap非登録、Cがdraft・未マージ。Vercel C branch deployment一覧0、既存production `READY` | **PREVIEW_ACCESS_NOT_ESTABLISHED**：SSO設定だけで全previewへの匿名到達不可を証明できない |
+| **根拠と版の同一性** | 厚労省G25冊子38/39/46頁、N24通知PDF p2、サービスの推奨/事例/報告様式を区別。B現blobとA traceにズレ | **A_FINAL_B_TRACE_NOT_DONE / REVIEW_REQUIRED** |
+| **EX01 実在薬剤師/看護職等** | MS-07の服薬後確認、再投与・指示変更の境界、服薬拒否と意思尊重、結果と印刷の文言、職種別権限 | **EXPERT_REVIEW_NOT_DONE** |
+| **EX02 介護事故防止・リスク管理実務責任者** | 中断、兼務、連絡、本人意思、負荷、責任分担、施設事例の他サービス転用、全確認/対象外 | **EXPERT_REVIEW_NOT_DONE** |
+| **HU01 内容・公開責任者** | 最終B/A/C/D固定版と差分、修正済み指摘、対象サービスと公開範囲、訂正・問い合わせの責任者、明示GO/HOLD | **HUMAN_APPROVAL_NOT_DONE** |
+
+**Review packへの引き継ぎ**： [medication-safety-expert-review-pack.md §8](./medication-safety-expert-review-pack.md) へ、版・質問・未解決課題・非識別の記録空欄を追加。実在の専門職へ連絡、招待、資料送付、承認の代行は行っていない（`REVIEW_REQUESTED=false`）。架空の事例だけを審査に用い、氏名・所属・署名・事故・処方・内部資料はpublic repositoryへ置かない。
+
+**D safety**：`SAFETY_PARTIAL_WITH_GAPS`。Eへの公開推奨：`PREVIEW_ONLY / NOT_PUBLIC`。医学的安全性・法令適合・事故予防効果の承認ではない。DはC本体/公開設定/main/本番を変更しない。
