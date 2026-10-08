@@ -222,3 +222,8 @@ D独立検証：[#457](https://github.com/Josh-Temple/kaigo-rules/pull/457)、[w
 **差戻し条件:** B文面またはservice表の意味変更→A出典trace→C選択/結果/印刷→Dの関連29-case＋privacy/accessibility再試験→EX01/EX02対象版の再審査。C 3 code blobs変更時もCIを更新して再試験。documentだけのhead変化なら実差分・3blob一致を検査し、無条件にPASSを転記しない。
 
 **Dの現判定:** `SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。重大な事故誘導・個人情報漏洩・公衆preview露出の実証は現時点でないが、未実施を安全PASSに昇格できない。**公開判定はE、医療上の判断は適任の実在専門職、公開許可はHU01本人に残す**。
+
+
+### 11.1 新Dテストの完走確認と実査HOLD
+
+2026-10-09 JST時点の最終コード固定D追加spec `28161729ba8b602a45920c292da6b2db476646bc`。前回の確認ダイアログ未承認による新test失敗（run #37857899198、16/17 pass）はtest harnessで修復。[run #37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) = `completed/success`、enabled **17/17 pass**、disabled/invalid local flag HTTP 404・既存11 route検証成功。**前回の失敗を無かったことにせず履歴として保持**。[29ケース台帳§11.4](./medication-safety-test-results.md)参照。追加観測は選択→架空例→印刷media→reset時の合成値のrequest混入と、DOM live-region更新。実Android・native 200%・実音声読み上げ・紙/PDF目視・本番privacy・preview認証は継続して`NOT_RUN/NOT_ESTABLISHED`、EX01/EX02・HU01は`NOT_DONE`。**公開HOLD**。
