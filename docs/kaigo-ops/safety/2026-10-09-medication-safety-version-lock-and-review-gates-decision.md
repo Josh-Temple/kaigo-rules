@@ -28,7 +28,7 @@
 | A [#458](https://github.com/Josh-Temple/kaigo-rules/pull/458) | open, non-draft, unmerged; head `37fc213301e93442f71efc4509af5cfa49567c88`; trace blob **`271560deb7ea848690e12d97fd23661583511198`** | 第8節は上の**正確なB 2 blob**を対象。B-00〜13の14逐語anchor、MS 20 claim、8サービス群を追跡。結論PARTIAL_WITH_GAPS |
 | C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) | open, **draft / unmerged**; latest head `a61797393f20e897247d985ab0861f6443a0a74e`; tested code commit `9814dc541880c16cf311f0c700dc458c33ee2a83`; code含有のD pin `7ec2fe8c644d0526af1650e857a7da397488a0ad` | latest headへの差は検証Markdownのみ。code固定は次の3 blobs |
 | C 3 code blobs | page **`cfa6f30633c5c8536b570c4c82b2794cd4353320`**; worksheet **`2ecd0475681f5a822da0f3dbe32c4610a041d47c`**; model **`9580e9202209f5e3fdf3b544b628d68885062295`** | Bの共通警告と選択肢を反映。結果・印刷の限定自動検査のみ |
-| D [#457](https://github.com/Josh-Temple/kaigo-rules/pull/457) | open, **draft / unmerged**; head `3f3527bacbe8f34029064a0092cae35c78023e00`; case results blob `56e3ad3bb75f2673eb0e6d5e4c6bba6de235eabb` | D §10.2/§10.4/§10.5とexpert pack §8.6を最新版として優先。旧target a1357ad…は履歴 |
+| D [#457](https://github.com/Josh-Temple/kaigo-rules/pull/457) | open, **draft / unmerged**; head `3f3527bacbe8f34029064a0092cae35c78023e00`; case results blob `56e3ad3bb75f2673eb0e6d5e4c6bba6de235eabb` | D #457上の§10.2/§10.4/§10.5とexpert pack §8.6を最新版として優先（mainには未統合）。旧target a1357ad…は履歴 |
 
 **同一版検査:** B本文/service最新2 blobs → A第8節のexact anchor/source crosswalk → C最新版の同一3 code blobs → Cのflag別CI → D workflowがcheckoutするC commit `7ec2fe8c...` → D独立run → D review packの最新版§8.6。**今回の固定blob間の旧不一致は解消**。ただし「同じ版を調べた」ことと「公開上の医学・サービス・UI妥当性がPASS」は異なる。D workflowとcase台帳は現在もD draft PR内にあり、mainにまだ統合していない。
 
@@ -40,7 +40,7 @@
 
 ### D全29ケースの読み方
 
-正本は[D case ledger §10.2, §10.4–10.5](./medication-safety-test-results.md)（現時点ではD #457上）。`R01–R16`16件＋`P01–P07`7件＋`U01–U06`6件、**計29 case記録**。内訳は **`PASS_LIMITED` 11件、`PARTIAL` 18件**。15件のD独立Chromiumテスト成功は、29件の医学的安全審査PASSを意味しない。各caseの`expected/actual/method/C_SHA/run/limitation/retest`とコード的根拠はD §10に残す。
+正本は[D case ledger §10.2, §10.4–10.5](https://github.com/Josh-Temple/kaigo-rules/blob/3f3527bacbe8f34029064a0092cae35c78023e00/docs/kaigo-ops/safety/medication-safety-test-results.md)（現時点ではD #457上）。`R01–R16`16件＋`P01–P07`7件＋`U01–U06`6件、**計29 case記録**。内訳は **`PASS_LIMITED` 11件、`PARTIAL` 18件**。15件のD独立Chromiumテスト成功は、29件の医学的安全審査PASSを意味しない。各caseの`expected/actual/method/C_SHA/run/limitation/retest`とコード的根拠はD §10に残す。
 
 - **限定実行:** 合成enumの初期・全confirmed・全not-applicable・mixed・架空例・不正型、reset、結果／print DOMとPDF in memory、URL/header/bodyの合成マーカー、history/storage/cookie、390px、CSS zoom模擬、label/focus/aria-live、flag遮断。
 - **残る部分・NOT_RUN:** 実Android Chrome、nativeブラウザ200%拡大、スクリーンリーダー実聴取、ネイティブ印刷プレビュー/現物、offline/clipboardの一部、外部アクセス制限が実証されたpreview、全環境のNetwork/Analytics、productionのユーザー操作と390px実機回帰。ページ閲覧・通常Analytics pageviewはゼロ通信の証拠ではない。
@@ -56,7 +56,7 @@ A traceはBの14アンカーとMS-01〜20、資料版・証拠種別・サービ
 
 ## 4. Human gates and handoff (no surrogate approval)
 
-審査用の質問・版付きpackは[D expert review pack §8.2–8.6](./medication-safety-expert-review-pack.md) に準備され、**REVIEW_PACK_READY**。`REVIEW_REQUESTED=false`。`EX01/EX02=EXPERT_REVIEW_NOT_DONE`、`HU01=HUMAN_APPROVAL_NOT_DONE`。匿名review ID、実査日、指摘、是正、新C blob、再審査結果、本人の承認GOは空欄のまま。実名/所属/署名/連絡先や実事故記録を公開GitHubに記録しない。
+審査用の質問・版付きpackは[D expert review pack §8.2–8.6](https://github.com/Josh-Temple/kaigo-rules/blob/3f3527bacbe8f34029064a0092cae35c78023e00/docs/kaigo-ops/safety/medication-safety-expert-review-pack.md) に準備され、**REVIEW_PACK_READY**。`REVIEW_REQUESTED=false`。`EX01/EX02=EXPERT_REVIEW_NOT_DONE`、`HU01=HUMAN_APPROVAL_NOT_DONE`。匿名review ID、実査日、指摘、是正、新C blob、再審査結果、本人の承認GOは空欄のまま。実名/所属/署名/連絡先や実事故記録を公開GitHubに記録しない。
 
 - **EX01 owner:** 実在の薬剤師・看護職等。MS-07、再投与/服薬拒否、事故発生時、本人意思、印刷警告、医療判断に見える文言を対象版でレビュー。未依頼。
 - **EX02 owner:** 介護事故防止・リスク管理実務責任者。施設・短期入所・居住/通所/訪問・居宅支援等の工程と役割、現場負荷、全確認/全担当外の誤安心、事故時経路を確認。未依頼。
