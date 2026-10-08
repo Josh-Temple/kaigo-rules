@@ -21,3 +21,11 @@ test('normalizes unequal workloads and accepts explicitly measured zero effort',
   assert.equal(phaseSummary({ ...phase, count: '40' })?.perRecord, 3.75);
   assert.equal(phaseSummary({ ...phase, times: { record: '0', copy: '0', search: '0', later: '0', review: '0' } })?.total, 0);
 });
+
+test('documentation worksheet sends all service types to neutral Rules search without certifying compliance', () => {
+  const worksheet = readFileSync(new URL('../app/tools/documentation-review/worksheet.tsx', import.meta.url), 'utf8');
+  assert.match(worksheet, /href="https:\/\/kaigo-rules\.vercel\.app\/databases\/search"/);
+  assert.doesNotMatch(worksheet, /\/questions\/care-plan-content/);
+  assert.match(worksheet, /サービス種別に合う資料を探し/);
+  assert.match(worksheet, /このシートでは制度適合を判定しません/);
+});
