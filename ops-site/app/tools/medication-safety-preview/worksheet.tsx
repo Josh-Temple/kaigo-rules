@@ -5,6 +5,7 @@ import {
   CHECK_FIELDS,
   CHECK_STATES,
   PROCESS_STAGES,
+  WORKFLOW_BOUNDARY,
   deriveReview,
   emptyReview,
   fictionalReview,
@@ -101,6 +102,7 @@ export default function MedicationSafetyWorksheet() {
           </ul>
         ) : null}
         <p className="medicationBoundary">{review.note}</p>
+        <p className="medicationBoundary">{WORKFLOW_BOUNDARY}</p>
         <p>
           実際の事故や服薬上の疑義がある場合、この結果で次の服薬・医療対応・報告要否を判断しないでください。
           本人の安全確保、正式な事故対応手順、管理者・関係する医療専門職への連絡を優先してください。
@@ -119,6 +121,7 @@ export default function MedicationSafetyWorksheet() {
         <h3>確認・相談する事項</h3>
         <ul>{review.lines.map(line => <li key={line}>{line}</li>)}</ul>
         <p>{review.note}</p>
+        <p>{WORKFLOW_BOUNDARY}</p>
         <p>この書式は未検証の試作です。事故防止、安全性、制度適合、実施権限、医療上の判断を保証しません。</p>
         <p>事故・疑義時には本人の安全確保、事業所の正式手順、管理者・関係医療職への連絡を優先してください。個別の再投与・事故報告要否は判定しません。</p>
         <p>利用者情報・薬剤情報・事故の詳細を記録する欄は設けていません。</p>
