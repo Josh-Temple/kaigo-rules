@@ -95,7 +95,6 @@ test('communication review: guarded synthetic example, escalation check, print a
   await confirmNext(page, true);
   await page.getByRole('button', { name: '架空例を読み込む' }).click();
   await expect(page.getByRole('status')).toContainText('架空の記入例');
-  await expect(scope).toContainText(''); // input is populated; check explicitly below
   await expect(scope).toHaveValue(/架空例/);
   const first = page.locator('.worksheetPhases fieldset').first();
   await first.getByRole('textbox', { name: '問い合わせの種類' }).fill('架空の受付区分');
