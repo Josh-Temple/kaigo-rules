@@ -96,7 +96,7 @@ BはCの実装・テスト・仕様を変更していない。Cが改訂する�
 
 ### C・D・審査者への固定handoff
 
-- **B本文対応:** [Issue草案8.1（B-00〜13、MS claim、C対応）](./medication-safety-issue-draft.md)。前版B blob `083ffd0a17419e1533e65205e9230d725f3232ab` をベースに改稿。今回のIssue確定blobは **1a5639c5da2fb0ed502cb32731994a0ad67d8738**（PRの提出・readbackで固定）とし、旧Aが検証済みと扱わない。
+- **B本文対応:** [Issue草案8.1（B-00〜13、MS claim、C対応）](./medication-safety-issue-draft.md)。前版B blob `083ffd0a17419e1533e65205e9230d725f3232ab` をベースに改稿。今回のIssue確定blobは **315e71f959d8d4b18e7634dd9f8c56ab184f89ae**（PRの提出・readbackで固定）とし、旧Aが検証済みと扱わない。
 - **C画面・結果・印刷:** [Issue草案8.2](./medication-safety-issue-draft.md)の5状態ラベル・6項目・4工程・未選択・共通固定文を参照。旧head `a1357ad7ebd723c5a8c8fcf754c04b384f7db95d` には未反映だったが、確認時の新head `ad366cc13b31f806e75c7415f706e78a83fba7d6` には5状態と結果・印刷の安全上の文面が**ソース上は反映**。新C版の実行・逐語対応、Aとの最終版照合は未了。試作本体とテストはBでは編集しない。
 - **業務条件と専門職判断の分離:** 変更情報の受領先・共有先や中断・引き継ぎの整理は**DESIGN_PROPOSAL**。変更された医療上の指示の正誤・有効性、具体的な本人・薬剤の服薬確認、職種の権限、本人の意思への個別対応、事故報告の要否・期限は**REVIEW_REQUIRED / NOT_ESTABLISHED**で保留。
 - **EX01:** MS-07の原典記述とUI禁止事項の両立、職種境界、本人意思、事故時の非助言性を確認する。**EXPERT_REVIEW_NOT_DONE**。
