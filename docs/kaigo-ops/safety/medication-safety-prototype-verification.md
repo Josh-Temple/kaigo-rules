@@ -96,3 +96,42 @@ flag有効jobで404ケース1件がスキップされ、無効jobでpreview専�
 - **公開判断**：`PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。PR #451をdraft・未マージで維持し、公開registry、production環境変数、deploymentは変更しない。
 
 **Dへの固定版handoff**：B blob `083ffd0a17419e1533e65205e9230d725f3232ab`、service blob `8138d89832ddd4b706ff1da4751ffd2626e251bb`、A trace blob `2cb32c3b4de093d51d410d23c04511e020a43571`（旧B対応であることを明示）、C tested head `6e5d150f71d6df87cac2b9bac3ba10e0ddbe7f0f`。再審査時はこの版とのdiffを照合し、変わったケースだけでなく安全・プライバシー・印刷の影響範囲を再試験する。
+
+## 7. 2026-10-09 Worker C — 版固定とB第9節への追従（検証待ちの事実を区別）
+
+**判定（この記録時点）: PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC。** この節は前節までの2026-10-08実測を上書きしない。最終公開candidateとしてのB→A→C→D同一版は未成立である。
+
+### 7.1 対象と正本の固定
+
+| 項目 | 2026-10-09 JSTに取得した識別子と意味 |
+| --- | --- |
+| baseline main | `1360bd78d971266c5e635c7a3416d5b4629e1c0e`（試作のproduction SHAではない） |
+| B #459 本文 | `e0cc354e2b78a28912c80c0611ccf3c165d00b25` — B-00〜13及び第9節の固定文言。Bが並行更新中のため後続変更を必ず再確認 |
+| B #459 サービス適用表 | `e3889c26c5b46d4644b29d94c657e628c96206d3` — 施設・居住・通所・訪問・短期入所・居宅支援等。実際の担当権限は未確立 |
+| A #458 trace | `0b042421f49ae5213f80b71e4cf04c502d32c1f9`。**旧B `083ffd0a17419e1533e65205e9230d725f3232ab`対象**であり上記B最新版への独立traceは未完。最新A確定待ち |
+| C実装／テストcommit | `9814dc541880c16cf311f0c700dc458c33ee2a83`（既存draft #451内、未マージ） |
+| C code blob | page `cfa6f30633c5c8536b570c4c82b2794cd4353320` / worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c` / model `9580e9202209f5e3fdf3b544b628d68885062295` |
+| C tests blob | unit `4615d25a3f2a0d809f0997840acec5a8ce2ebe83` / Chromium `f4187363f03abda0fc02ed30e950957afb9f575f` |
+| 公式原典 | 厚労省 Vol.1436（2025-11-07周知）冊子p38〜39=PDF 0起算p40〜41、冊子p46=PDF p48を2026-10-09 JST確認。Vol.1332（2024-11-29）PDF p2を同日確認。原典は施設向けの推奨・特養一事例と通所/訪問の情報共有・連携上の注意であり、Cの5値を定義した公的尺度ではない |
+
+B第9.4節のソース差分を確認し、結果と印刷に**同一の共通警告文**を `WORKFLOW_BOUNDARY` として適用。印刷物へ事故時の必要な緊急対応・法令自治体手続・本人の意思と尊厳への留保を追記。変更情報の共有項目について、処方指示の正しさ・真正性・有効性を本シートで判定しないことを結果近くに追記した。事故率、服薬判断、再投与、報告期限、職種権限の自動判定は追加していない。全5状態の内部valueと既存公開registryは維持した。
+
+B確定5ラベルとmodel `CHECK_STATES` はソース照合上は一致する。全確認／全担当外／未選択／混合／架空例／異常値については、unit・Chromiumの既存テストと追加の結果・印刷警告回帰テストを使用する。文言の逐語一致は**B第9節の共通警告部分に限定**。他の警告文は意味の同等性と差異をBに明示しており、専門職による安全性承認ではない。
+
+### 7.2 CI（同一コードcommitのflag別検証）
+
+| 環境 | 新たな実行証拠 | 状態 |
+| --- | --- | --- |
+| flag enabled（GitHub-hosted Ubuntu / Node22 / Chromium / localhostのみ） | [GitHub Actions 37844003519](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844003519) | **PENDING**（作成後の時点。成功・失敗未確定） |
+| flag未設定 / 不正値 `not-enabled` | 同上runのdisabled job（4種の基本コマンドとローカル404・既存route確認） | **PENDING** |
+| 関連の公開route等のCI | [Validate ops site 37844003647](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844003647)、[Validate build 37844003649](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844003649) | **PENDING** |
+| 回答を変えた時のURL/header/body、history/storage/Cookie/IndexedDB、390px、CSS zoom 200%、PDF、reset、ARIA | C Playwright内の合成選択値を対象に自動検証を設定 | **今回SHAのrun結果待ち**。既存の2026-10-08成功結果は最新版のPASSではない |
+| 実Android／ネイティブ200%／スクリーンリーダー／人手の印刷画面 | 実行できる端末・人手審査を確保していない | **NOT_RUN** |
+| D独立29ケース、EX01/EX02/HU01 | Cの担当外。実査や承認をこの節で行っていない | **NOT_RUN_BY_C / EXPERT_REVIEW_NOT_DONE / HUMAN_APPROVAL_NOT_DONE** |
+
+### 7.3 非公開と残る依存関係
+
+- `#451`はopen / draft / unmerged。公開Issue/ツールの既存5件ずつを変更せず、旗を公開・本番で有効化しない。flag・noindex・URL非掲載は認証ではない。
+- Vercel `kaigo-ops` projectの2026-10-09時点latest productionは `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` READY、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `ops-site-pi.vercel.app`。C branchを指定したVercel deployment一覧は0件。公開HTTP実測は今回**NOT_RUN / ACCESSIBLE_RESPONSE_NOT_ESTABLISHED**（Web取得失敗）で、previous Waveのpreview 404を今回の直接HTTP PASSに読み替えない。
+- Preview access restrictionを実際のflag-enabled URLで実証していないので `PREVIEW_ACCESS_NOT_ESTABLISHED`。匿名で到達可能なVercel Previewは作らない。
+- B最終2 blobが再更新された場合は本表を再固定する。**Aが同じB2 blobでsource-to-claimを検証するまで、このC版は最終candidateではない。** Dは同じC code SHAでR01〜R16/P01〜P07/U01〜U06を独立再実行しなければならない。Eのみが公開判定する。
