@@ -413,3 +413,14 @@ D§10.1/§10.3にある「A traceは旧Bのみ」という文言は、**当初D�
 - 追加された動的確認：**P02/P05/P06**について合成選択値がdemo/print media/resetまでに観測したrequest URL/header/bodyに含まれないこと、**U02/U03**について`aria-live`領域のDOM内容が選択後に更新されること。これにより旧runでの観測窓を拡張したが、**全通信/全端末の漏えい不存在、実際の音声読み上げ、ネイティブ印刷、医療安全の保証にはならない**。
 - §10.2の**29ケース = 11 `PASS_LIMITED` + 18 `PARTIAL`** は変更しない。新runにより前節の「新spec pending」部分のみ成功と確定し、実機/専門職/preview-access `NOT_RUN/NOT_ESTABLISHED` は維持。
 - **最終D判定：`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。EX01/EX02 `EXPERT_REVIEW_NOT_DONE`、HU01 `HUMAN_APPROVAL_NOT_DONE`、`REVIEW_REQUESTED=false`。Eへhandoff。公開GOを出さずC #451 draftを維持する。
+
+
+---
+
+## 12. 2026-10-09 並行A/B/C更新後の版再固定（§11より新しい情報）
+
+前節のheadは確認時の履歴。**同一性を再確認した最新版**：main `8d824ce35be176dd05de976709ee1f81944b65d1`（文書main）。A #458 head `87b9d67a08b3c9503a47e9914a1abe5af16ca21c`、trace blob **`3264cb93cc2c7f867abe7fb42def68be03bf98e6`**（旧traceからA§9の原典→B→C→EX質問/8サービス群の詳細を79行追加）。B #459 head `9c7b8639380802224bd9b5518f52800ff0b56af8`、Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25`とservice blob `e3889c26c5b46d4644b29d94c657e628c96206d3` **不変**、審査用補足文書blob `64feae5962df5614d0d86a6fc36ed24687bae16b`を追加。EX01/EX02質問ID、S01–S08合成状態、8サービス群、非識別レビュー記録、未送付の依頼下書きを含む。**旧A trace blobのまま最新版Aと表示してはならない**。
+
+C #451 head `2dd0e260d0922e18d003905f4a7edf42560f640c` は引き続き**draft/open/unmerged**。DがテストしたC checkout commit `7ec2fe8c644d0526af1650e857a7da397488a0ad` からの後続変更は**検証MarkdownとC自体のbrowser test spec（+68行）**であり、**docs-onlyではない**。ただしCの**アプリケーション3 blobsは新headから直接readbackして全て一致**：page `cfa6f30633c5c8536b570c4c82b2794cd4353320`、worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c`、model `9580e9202209f5e3fdf3b544b628d68885062295`。C browser spec新blob `391653ffcc9b75b8de9e205adafff1478ace61c0` はDの旧C checkout上では実行されていないため**その新テストがD runで実行済みとは記さない**。独立D run [#37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) = 17/17 Chromium success、対象**アプリケーションコード**は現行Cと同じ；29-caseの有限な機械観測の有効性を引き続き認める。一方、C browser変更後の**C側**CI [#37858189100](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858189100) はSUCCESSで別の実行であり、D runとは混同しない。
+
+D現head（本追補前）`5388457bc9af187eae95f53170229bb9de199bb0`、D CI [#37858370661](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858370661) はSUCCESS（同じ17 test spec）。最新版Aの問答とB追加審査資料をD expert packへ区別して引き継ぐ。**実在レビューと公開承認は引き続き未実施**、`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。C browser testと文書改訂をアプリコード変更と混同せず、医学的安全PASSにも転記しない。
