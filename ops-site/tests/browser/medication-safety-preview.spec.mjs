@@ -32,7 +32,7 @@ test.describe("explicitly enabled medication safety preview", () => {
     await stage.selectOption("record-handover");
     const procedure = page.getByRole("combobox", { name: /業務手順が文書化され/ });
     await procedure.selectOption("not-applicable");
-    await expect(result).toContainText("対象外にできる範囲");
+    await expect(result).toContainText("担当権限を責任者・関係職種に確認");
     await expect(result).not.toContainText("安全が確認できました");
 
     page.once("dialog", async dialog => {
@@ -73,7 +73,7 @@ test.describe("explicitly enabled medication safety preview", () => {
     await select.focus();
     await expect(select).toBeFocused();
     await select.selectOption("instruction-update");
-    await expect(page.locator(".medicationResult")).toContainText("指示変更");
+    await expect(page.locator(".medicationResult")).toContainText("変更情報");
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
     expect(overflow).toBe(false);
   });
@@ -87,12 +87,12 @@ test("all-confirmed and all-not-applicable never produce a safety approval", asy
   const fields = page.locator(".medicationQuestions select");
   expect(await fields.count()).toBe(6);
   for (let i = 0; i < 6; i += 1) await fields.nth(i).selectOption("confirmed");
-  await expect(page.locator(".medicationResult")).toContainText("安全性・事故防止・制度適合を保証しません");
+  await expect(page.locator(".medicationResult")).toContainText("安全性、事故防止、実施権限、制度適合を保証しません");
   await expect(page.locator(".medicationResult")).not.toContainText("安全が確認");
   for (let i = 0; i < 6; i += 1) await fields.nth(i).selectOption("not-applicable");
   await expect(page.locator(".medicationResult li")).toHaveCount(6);
-  await expect(page.locator(".medicationResult")).toContainText("対象外にできる範囲と理由");
-  await expect(page.locator(".medicationResult")).toContainText("安全性を評価するものではありません");
+  await expect(page.locator(".medicationResult")).toContainText("工程の有無と担当権限を責任者・関係職種に確認");
+  await expect(page.locator(".medicationResult")).toContainText("安全性、医療判断、制度適合、実施権限を評価・認証するものではありません");
 });
 
 test("selections never enter network URLs, headers, request bodies, browser URL or storage", async ({ page }) => {
@@ -108,7 +108,7 @@ test("selections never enter network URLs, headers, request bodies, browser URL 
   await page.getByRole("combobox", { name: /業務手順が文書化され/ }).selectOption("not-applicable");
   await page.getByRole("combobox", { name: /担当と引き継ぎ先/ }).selectOption("needs-review");
   await page.getByRole("combobox", { name: /作業中断や兼務/ }).selectOption("not-prepared");
-  await expect(page.locator(".medicationResult")).toContainText("対象外にできる範囲");
+  await expect(page.locator(".medicationResult")).toContainText("担当範囲では扱わないという自己申告");
   const clientState = await page.evaluate(async () => ({
     url: location.href,
     history: JSON.stringify(history.state),
@@ -128,9 +128,11 @@ test("selections never enter network URLs, headers, request bodies, browser URL 
   const markers = ["record-handover", "not-applicable", "needs-review", "not-prepared"];
   const transmitted = JSON.stringify(requests);
   const persisted = JSON.stringify(clientState);
+  const cookies = JSON.stringify(await page.context().cookies());
   for (const marker of markers) {
     expect(transmitted, "request URL/header/body exposed a selected state: " + marker).not.toContain(marker);
     expect(persisted, "URL/history/storage exposed a selected state: " + marker).not.toContain(marker);
+    expect(cookies, "Cookie exposed a selected state: " + marker).not.toContain(marker);
   }
   expect(new URL(clientState.url).search).toBe("");
   expect(new URL(clientState.url).hash).toBe("");
@@ -169,7 +171,7 @@ test("cancelled reset preserves choices, repeated reset clears them, print layou
   await page.emulateMedia({ media: "print" });
   await expect(page.locator(".medicationPrint")).toBeVisible();
   await expect(page.locator(".medicationWorksheet > .section").first()).toBeHidden();
-  await expect(page.locator(".medicationPrint")).toContainText("安全性、制度適合、医療上の判断を保証しません");
+  await expect(page.locator(".medicationPrint")).toContainText("安全性、制度適合、実施権限、医療上の判断を保証しません");
   const pdf = await page.pdf();
   expect(pdf.subarray(0, 4).toString()).toBe("%PDF");
 });
