@@ -50,6 +50,10 @@ const worksheet = await fetch(`${base}/tools/documentation-review`);
 assert.equal(worksheet.status, 200, 'worksheet route');
 const worksheetText = await worksheet.text();
 for (const text of ['記録業務の', '確認・修正', '架空例を読み込む', '印刷・PDF保存', '送信・自動保存されません']) assert.ok(worksheetText.includes(text), `worksheet: ${text}`);
+assert.ok(worksheetText.includes('href="https://kaigo-rules.vercel.app/databases/search"'), 'worksheet: generic Kaigo Rules search link');
+assert.ok(!worksheetText.includes('/questions/care-plan-content'), 'worksheet: no day-service-only fixed Rules link');
+assert.ok(worksheetText.includes('サービス種別に合う資料を探し'), 'worksheet: user selects the applicable service and sources');
+assert.ok(worksheetText.includes('このシートでは制度適合を判定しません'), 'worksheet: no automated regulation verdict');
 console.log('PASS /tools/documentation-review');
 const actionTools = [
   {

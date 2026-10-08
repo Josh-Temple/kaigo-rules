@@ -82,8 +82,8 @@ export default function DocumentationWorksheet() {
       <label className="worksheetCheck"><input type="checkbox" checked={comparable} onChange={event => setComparable(event.target.checked)} />サービス・業務・1件の単位・難しさ・担当条件を比較できることを確認した</label>
       <label className="worksheetCheck"><input type="checkbox" checked={qualityChecked} onChange={event => setQualityChecked(event.target.checked)} />記録漏れや品質、職員の負担の悪化がないことを確認した</label>
       <p className="worksheetNotice">{before && after && comparable && qualityChecked ? '条件と品質を確認した記録として扱えます。ただし、一つの前後比較から改善策の因果効果や一般的な効果率は確定できません。' : '時間差だけでは改善成功と判断しません。比較条件と品質の確認が必要です。'}</p>
-      <p>制度上必要な記録の確認は、サービス種別に合った原典へ戻って行います。</p>
-      <a className="textLink" href="https://kaigo-rules.vercel.app/questions/care-plan-content" target="_blank" rel="noreferrer">通所介護計画の記載内容を確認 →</a>
+      <p>制度上必要な記録の要件は、Kaigo Rulesでサービス種別に合う資料を探し、適用範囲・検証状態・原典を確認してください。このシートでは制度適合を判定しません。</p>
+      <a className="textLink" href="https://kaigo-rules.vercel.app/databases/search" target="_blank" rel="noreferrer">介護ルールの制度DBを検索する →</a>
     </section>
     <section className="printOnly">
       <h2>記入内容</h2>
