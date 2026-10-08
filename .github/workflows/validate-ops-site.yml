@@ -33,7 +33,15 @@ jobs:
           node-version: "22"
       - run: npm ci --no-audit --no-fund
       - run: npm test
+      - name: Install pinned browser test tooling
+        run: |
+          # Install before building: npm install can invalidate generated Next.js output.
+          # Browser-only dependency; do not change the production dependency lockfile.
+          npm install --no-save --package-lock=false @playwright/test@1.56.1
+          npx playwright install --with-deps chromium
       - run: npm run build
+      - name: Exercise all five tools in Chromium
+        run: npm run test:browser
       - name: Smoke test key ops routes
         shell: bash
         run: |
