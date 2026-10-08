@@ -337,3 +337,14 @@ Legend: **PASS_LIMITED** = a specified executable assertion passed under the D C
 - **D判定**：`SAFETY_PARTIAL_WITH_GAPS`。Eへの提案：`PREVIEW_ONLY / NOT_PUBLIC`、C #451はdraft・未マージのまま、公開registry/feature flag/production releaseは変更しない。専門職レビューとHU01のGOがそろうまで解除不可。
 
 **更新・再試験トリガー:** Bの2 blobs→A trace blob→C 3 code blobsの固定一致、C意味変更、D runのfailure、レビュー指摘、Vercel accessの新事実。変更によって過去の動的PASSを新SHAへ転記しない。
+
+
+### 10.4 独立CIの実行完了証拠（2026-10-09 JST追加）
+
+**Confirmed PASS（限定的な機械実行）**：[Independent medication safety dynamic audit run #37844583974](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844583974)。D draft PR #457 / source checkout C `7ec2fe8c644d0526af1650e857a7da397488a0ad` に固定して実行し、**independent-enabled=SUCCESS、independent-disabled=SUCCESS**をGitHub Jobs APIで直接確認した。
+
+- Enabled：GitHub Actions Ubuntu / Node 22 / Playwright Chromium（localhost、`MEDICATION_SAFETY_PREVIEW=enabled`）でD専用の**15/15 browser tests PASS / 0 FAIL**。詳細なテスト名は `docs/kaigo-ops/safety/medication-safety-independent.spec.mjs`、同runのenabled job logで照合した。初期未回答・全confirmed・全not-applicable・混在・架空例・型改ざん・印刷/確認リセット・390px/CSS 200%模擬・フォーカス/ラベル/aria-live・選択マーカーの限定Network/Storageを含む。
+- Disabled：`MEDICATION_SAFETY_PREVIEW`の**未設定・不正値**を独立起動し、preview routeが両方とも**HTTP 404**、既存5 Issue・5 action toolのローカルroute検証が各条件でPASS。これはproductionや第三者に到達できるVercel previewの保護を検証した結果ではない。
+- このrunはDの改修後テスト15件を**同じ新C SHA**に実行した。C自身のCI、旧D run `37782952341`、途中のD run `37843977265`とは区別。§10.2の`PASS_LIMITED*`はそのassertionの範囲で確定、`PARTIAL`と全NOT_RUNは引き続き保持する。
+- **残るNOT_RUN / NOT_ESTABLISHED**：ネイティブブラウザ200% zoom、実Android Chrome、スクリーンリーダー、native print preview、offline、全環境のAnalytics/Network、外部previewアクセス制御、本番直接HTTP・ブラウザUI、B最新版に対するA独立根拠追跡、EX01/EX02実在審査、HU01の明示的公開承認。
+- **結論**：独立動的検証は指定localhostの有限なブラウザassertionについて成立。総合は依然 **`SAFETY_PARTIAL_WITH_GAPS`**、Eへの公開推奨 **`PREVIEW_ONLY / NOT_PUBLIC`**。医学的安全性、事故防止効果、サービス・職種の業務権限を認証しない。D自身はC試作、public registry、main、本番deploymentを変更していない。
