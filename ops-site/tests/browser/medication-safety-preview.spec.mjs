@@ -197,3 +197,71 @@ test("200 percent CSS zoom emulation keeps controls and safety boundaries operab
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
   expect(overflow, "Horizontal overflow at CSS zoom 200%").toBe(false);
 });
+
+
+test("five check states keep warning text in screen and print media", async ({ page }) => {
+  test.skip(!enabled, "Isolated local preview only.");
+  await page.goto(route);
+  await page.getByRole("combobox", { name: "点検する工程" }).selectOption("preparation");
+  const fields = page.locator(".medicationQuestions select");
+  expect(await fields.count()).toBe(6);
+
+  const cases = [
+    { value: "unknown", screen: "まだ確認していません", printed: "まだ確認していない" },
+    { value: "confirmed", screen: "すべて「取扱いを把握している", printed: "取扱いを把握している（自己申告・未検証）" },
+    { value: "needs-review", screen: "相談したい点として", printed: "相談したい点がある" },
+    { value: "not-prepared", screen: "取り決めが見つからないため", printed: "取り決めが見つからない" },
+    { value: "not-applicable", screen: "担当範囲では扱わないという自己申告", printed: "自分の担当範囲では扱わない（責任者確認前）" },
+  ];
+  for (const scenario of cases) {
+    for (let i = 0; i < 6; i += 1) await fields.nth(i).selectOption(scenario.value);
+    const result = page.locator(".medicationResult");
+    await expect(result).toContainText(scenario.screen);
+    await expect(result).toContainText("事故報告の要否を判定しません");
+    await expect(result).not.toContainText("安全が確認できました");
+
+    await page.emulateMedia({ media: "print" });
+    const printed = page.locator(".medicationPrint");
+    await expect(printed).toBeVisible();
+    await expect(printed).toContainText(scenario.printed);
+    await expect(printed).toContainText("自己申告・未検証");
+    await expect(printed).toContainText("本人の意思・尊厳を尊重してください");
+    await expect(printed).toContainText("事故報告の要否を判定しません");
+    await expect(printed).toContainText("正式手順");
+    await page.emulateMedia({ media: "screen" });
+  }
+});
+
+test("keyboard focus order and accessible select labels remain usable", async ({ page }) => {
+  test.skip(!enabled, "Isolated local preview only.");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(route);
+
+  const stage = page.getByRole("combobox", { name: "点検する工程" });
+  const demo = page.getByRole("button", { name: "架空例を読み込む" });
+  const print = page.getByRole("button", { name: "画面を印刷" });
+  const reset = page.getByRole("button", { name: "選択内容を消去" });
+  const firstQuestion = page.getByRole("combobox", { name: /業務手順が文書化され/ });
+
+  await stage.focus();
+  await expect(stage).toBeFocused();
+  await stage.press("Tab");
+  await expect(demo).toBeFocused();
+  await demo.press("Tab");
+  await expect(print).toBeFocused();
+  await print.press("Tab");
+  await expect(reset).toBeFocused();
+  await reset.press("Tab");
+  await expect(firstQuestion).toBeFocused();
+
+  await firstQuestion.selectOption("needs-review");
+  const result = page.locator(".medicationResult");
+  await expect(result).toHaveAttribute("aria-live", "polite");
+  await expect(result.getByRole("heading", { name: "3. 確認・相談する事項" })).toBeVisible();
+  await expect(result).toContainText("相談したい点として");
+  const layout = await page.evaluate(() => ({
+    documentWidth: document.documentElement.scrollWidth,
+    viewportWidth: window.innerWidth,
+  }));
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth + 1);
+});
