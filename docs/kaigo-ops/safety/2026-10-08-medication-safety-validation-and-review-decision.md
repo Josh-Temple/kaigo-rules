@@ -4,7 +4,7 @@
 - Wave: Medication-Safety Validation & Expert Review Readiness
 - 統合開始時main: `d5e5b5f1c3a019c801c81c1af737964183bf7ce4`
 - A/B/D資料統合後のmain: `bab39f09d85a00dbca6d6e78d7b956889c22575d`
-- Worker E integration: `worker-e/medication-validation-gates-20261008`。PR番号・merge commitはGitHubの当該PR metadataと最終実行報告で照合する。
+- Worker E integration: [PR #456](https://github.com/Josh-Temple/kaigo-rules/pull/456) / `worker-e/medication-validation-gates-20261008`。merge commitはGitHubのPR metadataと最終実行報告で照合する（記録作成時は未マージ）。
 - **Wave判定: `PARTIAL_WITH_GAPS`**
 - **独立安全判定: `SAFETY_PARTIAL_WITH_GAPS`**
 - **公開判定: `PREVIEW_ONLY / NOT_PUBLIC`。新Issue/toolを一般公開しない。**
