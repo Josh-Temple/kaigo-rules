@@ -182,3 +182,13 @@ The production state in the preceding subsection is the historical Public Discov
 - docs/testのmain最新SHAをproduction runtime SHAに読み替えない。今Waveで新Issue/toolをreleaseしたとは報告しない。新しいVercel production deploymentは不要。
 - Search Consoleは`UNKNOWN`、Analyticsは従来の`RECEIVE_CONFIRMED`、first observation 2026-10-07。観測schema・custom eventsを変えず、2026-10-21前後〜11-04前後に既存5 Issue/5 toolの観測レビューを行う。
 - 日次GitHub Actionsでのproduction deploy verifier実運用成功と`VERCEL_TOKEN`配置確認は未完。安全領域の新機能公開の保留とは独立に追跡する。
+
+## 2026-10-08 Medication-Safety Validation & Expert Review Readiness（最新の公開判断）
+
+- Worker A [#453](https://github.com/Josh-Temple/kaigo-rules/pull/453)／B [#454](https://github.com/Josh-Temple/kaigo-rules/pull/454)／D [#455](https://github.com/Josh-Temple/kaigo-rules/pull/455)の安全資料をdocs-onlyでmainに統合（main baseline `bab39f09d85a00dbca6d6e78d7b956889c22575d`）。C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451)はdraft・未マージ。
+- 新しい統合判定の正本: [2026-10-08-medication-safety-validation-and-review-decision.md](./safety/2026-10-08-medication-safety-validation-and-review-decision.md)。
+- **Wave `PARTIAL_WITH_GAPS`、公開 `PREVIEW_ONLY / NOT_PUBLIC`**。Aの段落追跡は改訂前B本文に紐付き、最新版Bとの文単位の再照合が必要。施設資料を訪問・通所・居住系の服薬手順に一律転用しない。
+- CはGitHub Actions localhostのflag別Chromium等の限定機械テストを実行・記録（最新head `a1357ad7ebd723c5a8c8fcf754c04b384f7db95d`、checks success）。Dの独立flag有効ブラウザ、ネットワーク全体・印刷/200%等の実査は未達。CとDのPASSを混同しない。
+- EX01/EX02は`EXPERT_REVIEW_NOT_DONE`、HU01は`HUMAN_APPROVAL_NOT_DONE`。Dの専門職レビューpackは準備済みであり、人の審査を行ったことにはならない。
+- 今回fresh照合の本番は`dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READY / runtime `e49e770a970e541d2ad95204ad277eca89a485d3` / `https://ops-site-pi.vercel.app/`。公開home + 5 Issue + 5 toolsはHTTP 200、試作routeは404、sitemap 200。new deployなし。今回はproduction 390pxなどの独立実操作はしていない。
+- Analytics受信とSearch Console `UNKNOWN`、初回レビュー窓2026-10-21前後〜11-04前後、Issue 6「収支・コスト構造」の扱いを維持。PVは事故予防効果ではない。
