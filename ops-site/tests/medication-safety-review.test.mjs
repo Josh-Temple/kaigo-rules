@@ -127,4 +127,7 @@ test("printed and interactive content retain the accident and self-report bounda
   assert.match(worksheet, /独自の設計案/);
   assert.match(worksheet, /未検証/);
   assert.match(worksheet, /医療上の判断を保証しません/);
+  assert.match(worksheet, /必要な緊急対応、適用される法令・自治体の手続/);
+  assert.match(worksheet, /本人の意思・尊厳を尊重してください/);
+  assert.match(worksheet, /処方指示の正しさ・真正性/);
 });
