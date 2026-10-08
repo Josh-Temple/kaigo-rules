@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import {
-  CHECK_FIELDS, CHECK_STATES, PROCESS_STAGES,
+  CHECK_FIELDS, CHECK_STATES, PROCESS_STAGES, WORKFLOW_BOUNDARY,
   deriveReview, emptyReview, fictionalReview,
 } from "../lib/medication-safety-review.ts";
 import { actionToolRoutes } from "../lib/action-tools.ts";
@@ -110,6 +110,13 @@ test("B-05 vocabulary is consistent, descriptive and not a validated safety scal
   assert.equal(mixed.valid, true);
   assert.match(mixed.lines[0], /担当権限を責任者・関係職種に確認/);
   assert.doesNotMatch(mixed.note + mixed.lines.join(""), /安全が確認されました|法令適合を認定|次の服薬を指示/);
+});
+
+test("shared B-08.2 result-and-print warning is fixed and never gives medical or legal clearance", () => {
+  assert.equal(WORKFLOW_BOUNDARY, "この結果は平時の業務工程に関する自己申告を整理したものです。安全性・医療上の正しさ・職種権限・制度適合・事故報告の要否を判定しません。事故や服薬上の疑義が現にある場合は、このシートを使わず、所属先の正式手順に従い、管理者・関係する医療専門職に連絡してください。");
+  assert.match(WORKFLOW_BOUNDARY, /事故報告の要否を判定しません/);
+  const worksheet = readFileSync(new URL("../app/tools/medication-safety-preview/worksheet.tsx", import.meta.url), "utf8");
+  assert.equal((worksheet.match(/\{WORKFLOW_BOUNDARY\}/g) ?? []).length, 2);
 });
 
 test("printed and interactive content retain the accident and self-report boundary", () => {
