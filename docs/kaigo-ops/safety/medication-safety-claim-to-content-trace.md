@@ -265,3 +265,32 @@
 | P1 | E / HU01 | B/C/Dの確定した別版を再突合し、対象サービス・公開文言・責任と実承認を判断。 | **HUMAN_APPROVAL_NOT_DONE**。新規Issue/公開toolは追加せず、PR #451をdraft/未マージに保つ。 |
 
 **今回のAの完了範囲:** 原典の限定主張と現行B文章の独立対応、Cの固定文字列との差分抽出、20 claimの採否確認、サービス別の未確立事項と引継ぎ作成。**テスト未実行、専門職レビュー未実行、公開承認なし。** 結果は **PARTIAL_WITH_GAPS / NOT_PUBLIC**。Bの新blob/Cの修正headができたら**本節の対応先の版も更新が必要**。
+
+
+### 7.7 並行したWorker C改修の再取得と版差分（A追補）
+
+**再取得：2026-10-08 JST。** 上記7.1〜7.6のC照合は**C head `a1357ad7ebd723c5a8c8fcf754c04b384f7db95d`に固定した歴史的スナップショット**である。作業中にPR #451のheadが `6e5d150f71d6df87cac2b9bac3ba10e0ddbe7f0f` へ更新されたため、Cソースの差分を独立して再取得した（**B本文blobは引き続き`083ffd0a17419e1533e65205e9230d725f3232ab`、mainは`233f11f60bd53cee4684fd66eb5c0490b2fee926`**）。これにより下記の最新Cソース確認が前節の「語彙未一致」に優先する。
+
+| 新C版 | SHA（最新のこの再取得時点） |
+| --- | --- |
+| C PR #451（引き続きopen / draft / unmerged） | `6e5d150f71d6df87cac2b9bac3ba10e0ddbe7f0f` |
+| `ops-site/lib/medication-safety-review.ts` | `8853e5c5dae84293e5c283bc779fd08a3c2c79db` |
+| `ops-site/app/tools/medication-safety-preview/page.tsx` | `cfa6f30633c5c8536b570c4c82b2794cd4353320` |
+| `ops-site/app/tools/medication-safety-preview/worksheet.tsx` | `bc54ab9d8c13a1713f9e68d41b433f2c3130dc95` |
+
+| B1現行文（exact anchor） | 新Cソース照合 | Aの現在判断 |
+| --- | --- | --- |
+| B-05「まだ確認していない」 | `C.M.state.unknown` のlabelと`deriveReview`の未回答文に反映 | **SOURCE_TEXT_ALIGNED**。選択肢は依然としてサイト独自提案。ブラウザ実測はC/D担当。 |
+| B-05「取扱いを把握している（自己申告・未検証）」 | `C.M.state.confirmed`、全確認の`deriveReview.note`に反映 | **SOURCE_TEXT_ALIGNED**。全確認を安全・制度適合と認証しない固定文を確認。印刷は`CHECK_STATES`参照で同じ語彙を利用。 |
+| B-05「相談したい点がある」／「取り決めが見つからない」 | `C.M.state.needs-review/not-prepared`、`deriveReview`の相談文に反映 | **SOURCE_TEXT_ALIGNED**。制度上の欠陥をサイトが確定したことではない。 |
+| B-05「自分の担当範囲では扱わない（責任者確認前）」 | `C.M.state.not-applicable`、`deriveReview`で担当範囲を自己申告として説明 | **SOURCE_TEXT_ALIGNED**。対象外の正しさ・権限は引き続きREVIEW_REQUIRED。 |
+| B-00事故・疑義時、B-06/B-12サービスの留保、B-09の医療・制度判断禁止 | `C.P.hero`、`C.W.intro`、`C.W.result`、`C.W.print`に平時限定・自己申告・正式手順優先・適用範囲未検証をより近接表示 | **ソース文字列の境界は改善**。実ブラウザ・印刷の完全な視認性・通信境界・安全性の独立PASSを意味しない。 |
+
+**未解消（次の担当）:**
+
+1. **B（P0）：** B-07の「服薬後の具体的な確認方法は示しません」は、**サイトが具体的な方法を指示しない**という意味を明示する必要がある（G25冊子p38は服薬後の確認に関する記述を含む）。Bの修正blobはまだ確認していない。
+2. **B / EX01 / EX02（P0）：** サービス別の工程実在・業務権限、GHと短期入所の区分差、MS-07/13/15を審査。未確立の結論をPASSへ昇格しない。
+3. **C / D（P0）：** 新C head `6e5d150f…` の**実行したテスト**、各flag/Network/印刷/UIの独立検証を確認。**このAはソース差分を閲覧したのみ**であり、CI/test PASS・Dの実施を宣言しない。
+4. **E：** 後続のB/C/D確定版とEX01/EX02/HU01を固定し直し、公開判断を行う。ここでの結果は依然として **PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC**。試作をmainへ統合・production公開しない。
+
+**重要:** 第7.3節の「旧Cでの語彙未一致」という行は**旧C headにのみ適用**し、新C headでは上記の「ソース文字列の一致」を優先する。B/C/Dいずれかがさらに変わった場合、Aの同一版検証をやり直す。
