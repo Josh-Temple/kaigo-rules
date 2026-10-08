@@ -171,3 +171,43 @@ preview/disabled各jobの実行ログで単体件数とChromiumのPASS/SKIP数�
 - **次担当：** Dの独立監査とexpert pack更新 → Eが4版と実在EX/HU証拠を突合し公開HOLD/GOを決定。安全性・医療的妥当性・実務適用性は本CのCIからは保証できない。
 
 **Worker Cの閉鎖判断：PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC。** C仕様の非公開テストは成功したが、D独立29ケース・現場端末・実在の専門職・人間公開責任者の確認が未完了。未承認のPR merge、本番deployment、匿名preview有効化は行わない。
+
+## 9. 2026-10-09 — Worker C accessibility, print, privacy follow-up (current Wave)
+
+**Scope / judgment:** 2026-10-09 JST. C only. Automated checks PASS_LIMITED; overall **PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC**. This new section supersedes older *test result* snapshots, not earlier historical records. No clinical review, public approval, deployment, or external reviewer contact.
+
+### 9.1 Pinned identity
+
+- main (read before edit): 8d824ce35be176dd05de976709ee1f81944b65d1 (not production runtime).
+- B #459: open, head 364519815a41143560b068cfa459e7a04962f18f; issue blob e0cc354e2b78a28912c80c0611ccf3c165d00b25; service blob e3889c26c5b46d4644b29d94c657e628c96206d3.
+- A #458: open, head 37fc213301e93442f71efc4509af5cfa49567c88; trace blob 271560deb7ea848690e12d97fd23661583511198. A §8 anchors match those two B blobs. Service and professional permissions remain REVIEW_REQUIRED / NOT_ESTABLISHED.
+- C #451: originally a61797393f20e897247d985ab0861f6443a0a74e; new test commit **2a259fda15eba0f7d07abd7771bd712ef2d32338**. Still draft and unmerged.
+- C code blobs **unchanged**: page cfa6f30633c5c8536b570c4c82b2794cd4353320; worksheet 2ecd0475681f5a822da0f3dbe32c4610a041d47c; model 9580e9202209f5e3fdf3b544b628d68885062295. New browser test blob 391653ffcc9b75b8de9e205adafff1478ace61c0.
+- GitHub compare between D-pinned C commit 7ec2fe8c644d0526af1650e857a7da397488a0ad and this test commit shows only this verification document and the browser test modified. UI meaning / result / print logic unchanged.
+- D #457: draft, head 3f3527bacbe8f34029064a0092cae35c78023e00. Prior 29-case ledger: 11 PASS_LIMITED and 18 PARTIAL. The new two C tests have **not** been independently revalidated by D.
+- Primary source read 2026-10-09 JST: MHLW Vol.1436 (2025-11-07) booklet p38/39/46 = PDF zero-based 40/41/48 (facility recommendations, single nursing-home example, day/visit general coordination); Vol.1332 (2024-11-29) PDF zero-based p2 (accident reporting notice and municipal handling). Neither establishes universal medication-work duties, authority, five-state clinical validity, or accident reduction effects.
+
+### 9.2 Per-environment execution evidence
+
+GitHub-hosted Ubuntu, Node 22, headless Playwright Chromium, localhost 127.0.0.1, synthetic enum selections only, without a publicly accessible flag-enabled preview. [C run 37857831140](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857831140) at commit 2a259fda15eba0f7d07abd7771bd712ef2d32338: **completed SUCCESS**.
+
+| Case | Actual | Boundaries |
+| --- | --- | --- |
+| enabled: npm ci; npm test; npm run build; npm run test:browser; npm run verify:routes | job SUCCESS; 29 unit PASS / 0 fail; **15 Chromium PASS / 1 conditional SKIP** | localhost only |
+| flag unset and invalid value | job SUCCESS; 29 unit PASS / 0 fail; **8 Chromium PASS / 8 conditional SKIP**; invalid flag 404 locally | preview-only cases skipped by design |
+| NEW: 5-state screen/print matrix | PASS in enabled Chromium for unknown, confirmed, needs-review, not-prepared, not-applicable. Six choices each, screen and print-media warnings, incident boundary, self-report caveat, dignity, responsible-professional follow-up | not native print preview, printed paper or PDF reviewed by a person |
+| NEW: 390px keyboard/focus | PASS in enabled Chromium; stage → demo → print → reset → first question Tab order; accessible names, aria-live, advisory result and document horizontal overflow | not native 200% zoom, Android or human screen-reader hearing |
+| Previous C cases | PASS_LIMITED within same CI: initial/unanswered, all confirmed, all not-applicable, mixed, fictional, malformed source inputs in unit, reset, synthetic network/URL/storage/cookie/IndexedDB checks, CSS zoom emulation and PDF-in-memory | no blanket claim of no Analytics/pageview traffic or privacy proof across environments |
+| [ops regression 37857831206](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857831206) | SUCCESS at same commit | existing 5 Issue / 5 tool checks, not real production interaction |
+| [publication-readiness 37857831154](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857831154) | SUCCESS at same commit | not publication authorization |
+| [generic build 37857831116](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857831116) | IN_PROGRESS at writing; recheck final conclusion | not counted as PASS |
+
+### 9.3 Explicit NOT_RUN and handoff
+
+- **NOT_RUN / C+D:** native 200% browser zoom, real Android Chrome + OS text enlargement, screen-reader live hearing and warning order, native print preview and printed paper/PDF visual review. Chromium CSS-zoom simulation, print DOM, PDF memory and automated ARIA checks do not replace these.
+- **PREVIEW_ACCESS_NOT_ESTABLISHED / D+E:** externally hosted flag-enabled preview was not created; third-party access denial has not been tested. The environment flag and noindex are not authentication. Production HTTP/UI and Analytics network verification were not freshly performed by this Worker.
+- **EXPERT_REVIEW_NOT_DONE / HUMAN_APPROVAL_NOT_DONE:** actual EX01, EX02 and HU01 approvals are absent. No actual outreach or sign-off occurred.
+- **D handoff:** B two blobs + A trace + unchanged C three code blobs; latest test commit, run 37857831140, five-state print cases and keyboard case; retest and classify 29 cases against the same source, keeping native, accessibility, privacy and approval gaps explicit.
+- **Non-interference:** unchanged public registry, navigation, sitemap, Analytics and five existing Issue/tool pairs; no feature flag enabled in production; no main merge/deploy; PR #451 remains draft.
+
+**C final:** PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC. Machine tests are not clinical or legal approval; E alone decides publication after real expert and accountable human review.
