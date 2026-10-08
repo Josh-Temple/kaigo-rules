@@ -14,7 +14,7 @@ test("empty review remains explicitly unverified", () => {
   assert.equal(result.valid, true);
   assert.match(result.lines[0], /未選択/);
   assert.equal(result.lines.length, CHECK_FIELDS.length + 1);
-  assert.match(result.note, /評価するものではありません/);
+  assert.match(result.note, /評価・認証するものではありません/);
 });
 
 test("fictional selections lead to fixed workflow questions, not medicine advice", () => {
@@ -32,12 +32,12 @@ test("not-applicable and fully confirmed selections never provide reassurance", 
   for (const field of CHECK_FIELDS) state.checks[field.key] = "not-applicable";
   const notApplicable = deriveReview(state);
   assert.equal(notApplicable.lines.length, CHECK_FIELDS.length);
-  assert.ok(notApplicable.lines.every(line => line.includes("範囲と理由")));
+  assert.ok(notApplicable.lines.every(line => line.includes("責任者・関係職種")));
   for (const field of CHECK_FIELDS) state.checks[field.key] = "confirmed";
   const confirmed = deriveReview(state);
   assert.deepEqual(confirmed.lines, []);
-  assert.match(confirmed.note, /自己申告/);
-  assert.match(confirmed.note, /保証しません/);
+  assert.match(confirmed.note, /自己申告・未検証/);
+  assert.match(confirmed.note, /実施権限、制度適合を保証しません/);
 });
 
 test("unknown stages, unknown fields and unexpected structures fail closed", () => {
@@ -81,4 +81,43 @@ test("public registries remain at five entries without the preview route", () =>
   assert.equal(actionToolRoutes.length, 5);
   const published = [...issueRegistry.map(issue => issue.href), ...actionToolRoutes.map(tool => tool.href)];
   assert.ok(!published.some(href => href.includes("medication-safety")));
+});
+
+test("B-05 vocabulary is consistent, descriptive and not a validated safety scale", () => {
+  assert.deepEqual(CHECK_STATES.map(choice => choice.label), [
+    "まだ確認していない",
+    "取扱いを把握している（自己申告・未検証）",
+    "相談したい点がある",
+    "取り決めが見つからない",
+    "自分の担当範囲では扱わない（責任者確認前）",
+  ]);
+  assert.deepEqual(PROCESS_STAGES.slice(1).map(stage => stage.label), [
+    "変更情報の受領・共有",
+    "配薬準備の運用",
+    "配薬・服薬確認に関する運用",
+    "記録・引き継ぎ",
+  ]);
+  const state = emptyReview();
+  state.stage = "instruction-update";
+  for (const field of CHECK_FIELDS) state.checks[field.key] = "confirmed";
+  const allReported = deriveReview(state);
+  assert.equal(allReported.valid, true);
+  assert.equal(allReported.lines.length, 0);
+  assert.match(allReported.note, /未検証/);
+  assert.match(allReported.note, /安全性、事故防止、実施権限、制度適合を保証しません/);
+  state.checks.procedure = "not-applicable";
+  const mixed = deriveReview(state);
+  assert.equal(mixed.valid, true);
+  assert.match(mixed.lines[0], /担当権限を責任者・関係職種に確認/);
+  assert.doesNotMatch(mixed.note + mixed.lines.join(""), /安全が確認されました|法令適合を認定|次の服薬を指示/);
+});
+
+test("printed and interactive content retain the accident and self-report boundary", () => {
+  const worksheet = readFileSync(new URL("../app/tools/medication-safety-preview/worksheet.tsx", import.meta.url), "utf8");
+  const page = readFileSync(new URL("../app/tools/medication-safety-preview/page.tsx", import.meta.url), "utf8");
+  assert.match(page, /事故や服薬上の疑義が発生している場合、このシートは使わないでください/);
+  assert.match(worksheet, /事故・服薬上の疑義が現にある場合は使用しないでください/);
+  assert.match(worksheet, /独自の設計案/);
+  assert.match(worksheet, /未検証/);
+  assert.match(worksheet, /医療上の判断を保証しません/);
 });
