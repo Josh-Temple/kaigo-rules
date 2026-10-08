@@ -192,3 +192,12 @@ The production state in the preceding subsection is the historical Public Discov
 - EX01/EX02は`EXPERT_REVIEW_NOT_DONE`、HU01は`HUMAN_APPROVAL_NOT_DONE`。Dの専門職レビューpackは準備済みであり、人の審査を行ったことにはならない。
 - 今回fresh照合の本番は`dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READY / runtime `e49e770a970e541d2ad95204ad277eca89a485d3` / `https://ops-site-pi.vercel.app/`。公開home + 5 Issue + 5 toolsはHTTP 200、試作routeは404、sitemap 200。new deployなし。今回はproduction 390pxなどの独立実操作はしていない。
 - Analytics受信とSearch Console `UNKNOWN`、初回レビュー窓2026-10-21前後〜11-04前後、Issue 6「収支・コスト構造」の扱いを維持。PVは事故予防効果ではない。
+
+## 2026-10-09 Medication-Safety Content Alignment & Independent Validation — E判断
+
+2026-10-09 JST、[E統合判定](./safety/2026-10-08-medication-safety-content-alignment-and-independent-validation-decision.md) を実施。**Wave `PARTIAL_WITH_GAPS`、安全 `SAFETY_PARTIAL_WITH_GAPS`、公開 `PREVIEW_ONLY / NOT_PUBLIC`** を維持する。試作は一般公開していない。
+
+- A [#458](https://github.com/Josh-Temple/kaigo-rules/pull/458) のclaim traceは、B [#459](https://github.com/Josh-Temple/kaigo-rules/pull/459) の最終本文blobへの再照合が必要。C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) は語彙を更新しflag別CI成功（run 37783554826）、ただしD [#457](https://github.com/Josh-Temple/kaigo-rules/pull/457) の独立ブラウザ検査成功（run 37783550622）は**Cの旧SHA**に対するもの。最新版への再試験が必要。
+- 実在専門職の審査 **EX01/EX02 = `EXPERT_REVIEW_NOT_DONE`**、公開承認 **HU01 = `HUMAN_APPROVAL_NOT_DONE`**。C #451はdraft・未マージ。新たな公開Issue、action tool、公開preview、production releaseは行わない。
+- 本番Vercel `kaigo-ops` は `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / `READY`、runtime SHA `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `https://ops-site-pi.vercel.app/`。今回Eの直接HTTP再検査では既存11ルートが各200、試作route 404、robots/sitemap各200。**HTTP確認とブラウザ実操作は別**。
+- Analytics `RECEIVE_CONFIRMED`、Search Console `UNKNOWN`は既存canonicalからの継承であり、Eによる新規集計結果ではない。観測定義・レビュー期間は変更しない。
