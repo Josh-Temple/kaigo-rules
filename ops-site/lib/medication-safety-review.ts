@@ -28,6 +28,9 @@ export const CHECK_STATES = [
   { value: "not-applicable", label: "自分の担当範囲では扱わない（責任者確認前）" },
 ] as const;
 
+/** B #459 section 8.2: shared, non-clinical result and print boundary. */
+export const WORKFLOW_BOUNDARY = "この結果は平時の業務工程に関する自己申告を整理したものです。安全性・医療上の正しさ・職種権限・制度適合・事故報告の要否を判定しません。事故や服薬上の疑義が現にある場合は、このシートを使わず、所属先の正式手順に従い、管理者・関係する医療専門職に連絡してください。";
+
 export type ProcessStage = (typeof PROCESS_STAGES)[number]["value"];
 export type CheckKey = (typeof CHECK_FIELDS)[number]["key"];
 export type CheckState = (typeof CHECK_STATES)[number]["value"];
