@@ -258,3 +258,19 @@ current canonicalではfirst confirmed observation dateは **2026-10-07** のま
 観測値を追加するときは、対象期間と確認時刻を明記し、既存記録を上書きして履歴を消さない。
 
 新しい判断を追加する場合は、先に「どの観測値から何が判断できず困ったか」を記録する。測定項目を増やすこと自体を目的にしない。
+
+### 2026-10-08 Action Tool Reliability & Release Assurance snapshot
+
+- observation date: 2026-10-08 JST（runtime release後の同日取得）
+- observation window requested: 2026-10-07 00:00〜2026-10-08 23:59 JST（APIは日境界に丸め、取得時点の集計値を返す）
+- Analytics receive state: **RECEIVE_CONFIRMED**
+- aggregate: **7 visitors / 8 pageviews**（production）
+- requestPath: `/` = **8 pageviews / 7 visitors**
+- 5 Issue: requestPath集計行なし / 母数不足
+- 5 action tool: requestPath集計行なし / 母数不足
+- feedback: **0件**（GitHub Issuesの`[Kaigo Opsフィードバック]` prefixをfresh検索）
+- controlled traffic: CIのsynthetic Chromiumテストはlocalhostで実行。production public pageの検証取得は実利用とみなさない。
+- current production: `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READY / SHA `e49e770a970e541d2ad95204ad277eca89a485d3`。production aliasがこのdeploymentを指すことを確認。
+- Google index state / sitemap submission / URL Inspection: **UNKNOWN / unavailable**。exact blocker: `authenticated Search Console access unavailable`
+- interpretation: productionへの変更反映とAnalytics受信は確認済み。ただしpageviewの個別由来は確定できず、改善効果、需要順位、tool完了率、満足度は判断できない。
+- next review: 2026-10-21前後、broader 2026-10-21〜2026-11-04前後。Issue 6、追加tool、custom eventは導入しない。

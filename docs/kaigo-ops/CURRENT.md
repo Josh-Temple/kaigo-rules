@@ -111,7 +111,7 @@ Issue 6「収支・コスト構造」は開始していない。Analyticsの実�
 - custom event: not added
 - Issue 6 / new feature: not added
 
-The current production runtime for both public surfaces is the integrated SHA above. Documentation-only finalization after this release does not require a runtime redeploy.
+The production state in the preceding subsection is the historical Public Discovery & Observation release, superseded for Kaigo Ops by the newer runtime section below.
 
 ## Current non-claims
 
@@ -150,3 +150,22 @@ The current production runtime for both public surfaces is the integrated SHA ab
 - 公開siteで再利用するcurrent knowledge boundary
 
 記事追加やhistorical checkpoint追加だけでは更新しない。
+
+## 2026-10-08 Action Tool Reliability & Release Assurance（今回のcurrent release）
+
+- integration: PR #442 (A), #443 (D), #444 (C), #445 (B), #446 (E)
+- Kaigo Ops production: `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / `READY`
+- exact runtime SHA: `e49e770a970e541d2ad95204ad277eca89a485d3`
+- public alias: `https://ops-site-pi.vercel.app/` → 上記deployment ID（Vercel APIで照合済み）
+- `deploy-state/kaigo-ops`: 上記SHAへ通常のfast-forward更新済み。更新前markerは`5ed01a64a1d5ca07d1853d973cac00a74c932934`
+- Kaigo Rules production: このWaveでは再デプロイせず。Rulesの前Wave production stateと混同しない。
+- documentation-reviewは通所介護固定の制度確認リンクを削除し、Kaigo Rules汎用DB検索と原典・適用範囲の確認へ変更。Opsは制度適合を判定しない。
+- information-search / documentationの2 Issueはhero付近に小さな実行入口を追加。従来のEvidence、limitations、後半CTAを維持。
+- `Validate ops site` PR #446: unit/source tests、Next build、Playwright Chromiumでの5 tool・390px操作、route verifierがPASS（run `37728218607`）。publication readinessもPASS（run `37728218610`）。
+- release後: public home + 5 Issue + 5 toolの表示内容を外部取得して確認。Vercel APIではREADY・expected SHA・aliasを確認。production上で390pxの独立ブラウザ再実行およびHTTP statusの全件直接測定はこの実行では未実施。
+- 新しい日次deploy verifierとfail-closed合成テストは統合済み。ただし今回のreleaseはVercel APIから実行し、markerは別途照合した結果を受けて更新した。**日次GitHub Actions自身の本番実行成功は未確認**。GitHub Actions secret `VERCEL_TOKEN` の有無も未確認。手順は `docs/kaigo-ops/deployment-assurance.md`。
+- Analytics snapshot (2026-10-07〜10-08の指定期間、取得時点): 7 visitors / 8 pageviews、requestPath `/`のみ。feedback 0件（専用title prefixでfresh検索）。需要・改善効果は判定しない。
+- Search Console: `authenticated Search Console access unavailable` / index `UNKNOWN` を維持。
+- next review: 2026-10-21前後、broader window 2026-10-21〜2026-11-04前後。Issue 6 / 新toolは開始しない。
+
+**Release assessment:** アプリの統合テストと本番SHA/aliasは確認済み。日次workflowの実動・production 390px再検証などは未確認なので、Waveの全項目を完全達成とは扱わない。

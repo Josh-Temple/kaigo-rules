@@ -196,3 +196,19 @@ pageviewだけでは次の改善判断ができないことが確認できた場
 productionでVercel側のpageview受信を初めて確認できた日を初回観測日とする。
 
 この日付は「需要が確認できた日」「業務改善効果が確認できた日」ではない。初回受信の1 pageviewについても、利用価値や需要を推定する根拠には使わない。
+
+## Action Tool Reliability Wave observation（2026-10-08）
+
+Vercel Web Analyticsをrelease時にfresh照会した。queryの意図は2026-10-07 00:00〜2026-10-08 23:59 JST、集計は取得時点までの値で、未来のアクセスを含む意味ではない。Vercelのaggregate APIはwindowを日境界へ丸めて返す。
+
+- Kaigo Ops project: `prj_7kKmZkto1j9r9Z3otwccx05LAjTp`
+- visitors: **7**
+- pageviews: **8**
+- requestPath: `/` = 8 pageviews / 7 visitors
+- 5 Issue / 5 action tool: requestPath集計行なし（未観測・母数不足であって不要の証拠ではない）
+- first confirmed observation date: **2026-10-07** を維持
+- release production: `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READY / SHA `e49e770a970e541d2ad95204ad277eca89a485d3`
+- browser regression: CIのlocal production-modeのみで実行。production Analyticsへsynthetic test trafficを送信しない。
+- review window: 2026-10-21前後〜2026-11-04前後を維持。
+
+VercelのWeb Analytics受信とGoogle Search Console indexingは別の観測軸。Search ConsoleのstateはUNKNOWN。少数pageviewでCTA変更の効果、tool完了率、需要を推定しない。

@@ -148,3 +148,9 @@ URL:
 - 制度上の判断はKaigo Opsで確定せず、Kaigo Rulesと一次資料へ戻す。
 - 紹介文のクリック数、pageview、feedback件数だけから需要や効果を断定しない。
 - 外部投稿はユーザーが明示的に許可した場合だけ実行する。
+
+## 2026-10-08 early-entry update
+
+情報探索と記録・文書の2 Issueは、共有URLから開いた利用者がhero付近の一つの「まず試す」導線から既存action toolへ進める。情報探索は正本・保管場所・更新責任・探索経路、記録・文書は記録・転記・探索・後追い・確認修正を分けた前後比較に対応する。所要時間の根拠のない数値や改善効果の断定は追加しない。
+
+production: `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / `e49e770a970e541d2ad95204ad277eca89a485d3` / READY。両Issueの更新された冒頭本文をrelease後に外部取得して確認した。後半CTA・Evidence・limitations・feedbackの保持は統合PR #446のsource/route/Chromium検証で確認。第三者への外部投稿は引き続き別途承認が必要。
