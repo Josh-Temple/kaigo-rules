@@ -14,6 +14,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import sys
+from time import monotonic
 from urllib.error import HTTPError
 from urllib.parse import quote, urlencode, urlparse
 from urllib.request import Request, urlopen
@@ -149,7 +150,10 @@ def published_unit_price_service_ids() -> list[str]:
     })
     if not ids:
         raise AssertionError("no allowed unit-price services in this revision")
-    return ids
+    # Run the slowest historically observed service first to surface failures
+    # early; every allowed service is still checked in this invocation.
+    slow_first = "preventive-shortstay-life"
+    return sorted(ids, key=lambda sid: (sid != slow_first, sid))
 
 
 class PublicReliabilityProbe:
@@ -168,16 +172,21 @@ class PublicReliabilityProbe:
         # SSR can be slow for a cold service-specific route. Retry only
         # transient transport timeouts, never a non-200 HTTP response.
         for attempt in range(1, 4):
+            start = monotonic()
+            print(f"GET {path} (attempt {attempt}/3)", file=sys.stderr, flush=True)
             try:
                 with urlopen(request, timeout=45) as response:
-                    return response.status, response.read().decode("utf-8")
+                    data = response.read().decode("utf-8")
+                    print(f"HTTP {response.status} {path} in {monotonic()-start:.1f}s",
+                          file=sys.stderr, flush=True)
+                    return response.status, data
             except HTTPError as exc:
                 return exc.code, exc.read().decode("utf-8", errors="replace")
             except TimeoutError:
+                print(f"TIMEOUT {path} in {monotonic()-start:.1f}s",
+                      file=sys.stderr, flush=True)
                 if attempt == 3:
                     raise
-                print(f"Retrying timed-out HTTP request {path} (attempt {attempt}/3)",
-                      file=sys.stderr)
         raise AssertionError("unreachable HTTP retry state")
 
     def require(self, path: str, status: int = 200) -> str:
