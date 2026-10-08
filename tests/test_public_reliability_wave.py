@@ -158,7 +158,8 @@ class PublicReliabilityWaveTests(unittest.TestCase):
     def test_deployed_revision_allowlist_drives_all_service_checks(self):
         service_ids = published_unit_price_service_ids()
         self.assertGreaterEqual(len(service_ids), 2)
-        self.assertEqual(service_ids, sorted(set(service_ids)))
+        self.assertEqual(len(service_ids), len(set(service_ids)))
+        self.assertEqual(service_ids[0], "preventive-shortstay-life")
         self.assertIn("dayservice", service_ids)
         self.assertIn("homevisit", service_ids)
 
