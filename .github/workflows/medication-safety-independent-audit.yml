@@ -26,7 +26,7 @@ jobs:
           persist-credentials: false
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: a1357ad7ebd723c5a8c8fcf754c04b384f7db95d
+          ref: 3026b965ad8ef78acde36e530655426055cd716d
           path: source
           persist-credentials: false
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: a1357ad7ebd723c5a8c8fcf754c04b384f7db95d
+          ref: 3026b965ad8ef78acde36e530655426055cd716d
           persist-credentials: false
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
