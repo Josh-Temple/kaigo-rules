@@ -254,3 +254,11 @@ pageviewとfeedbackの継続観測は `docs/kaigo-ops/usage-observation.md` に�
 - Waveは`PARTIAL_WITH_GAPS`、公開判断は`PREVIEW_ONLY / NOT_PUBLIC`。新しいIssue番号を採番せず、Issue 6「収支・コスト構造」を従来の候補として保持する。
 - 次回公開再判定前の順序：(1) A/Bが最新版段落と原典traceを確定、(2) CがUI文言と結果・印刷を調整し制限環境で再検証、(3) Dが固定版の独立red-team/privacy/アクセシビリティ/公開遮断を実測、(4) EX01医療職とEX02介護事故防止責任者が実レビュー、(5) HU01内容責任者が対象版に明示GO/HOLDを付与、(6) Eが公開可否を再判定。
 - 実在の利用者・薬剤・事故記録は収集しない。一般公開・Vercel production flag有効化・releaseはGOまで禁止。既存5 Issue/5 tool、Analytics計測定義、観測窓を維持する。
+
+## 2026-10-09 服薬業務の安全点検シート：未公開のまま再審査へ
+
+[Eの判定正本](./safety/2026-10-08-medication-safety-content-alignment-and-independent-validation-decision.md)：**`PARTIAL_WITH_GAPS / SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。新規公開Issue・toolは増やさず、Issue 6「収支・コスト構造」の既存候補を維持。
+
+公開前の順序は **Aが最終B本文・サービス資料のclaim traceを再固定 → B/Cが選択肢・結果・印刷文の対応を確定 → Dが最新版Cに対して独立した29ケースと不足した実機・プライバシー試験を再評価 → 実在のEX01/EX02審査 → HU01の明示承認 → EがGOを再判定**。レビュー・承認がない状態でC draft #451をmainに統合したり、公開flagを有効化したりしない。
+
+既存5 Issue/5 toolは維持。本番の既存11ルートは2026-10-09 JSTにHTTP 200、試作routeは404。端末実操作や試作の一般公開適合を確認したという意味ではない。
