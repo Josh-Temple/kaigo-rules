@@ -194,6 +194,7 @@ test("D-R09/R15/U03: all unknown and mixed statuses remain consultations, not a 
   await expect(result(page)).toContainText(/正式な手順の所在/);
   const output=await result(page).innerText();
   expect(output).not.toMatch(/事故ゼロ|合格|安全が確認できました|法令適合済/);
+  page.once("dialog", d=>d.accept());
   await page.getByRole("button",{name:"架空例を読み込む"}).click();
   await expect(page.getByRole("status")).toContainText(/架空の業務例/);
   await expect(result(page)).toContainText(/自己申告/);
