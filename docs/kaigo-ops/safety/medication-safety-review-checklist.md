@@ -200,3 +200,25 @@ D独立検証：[#457](https://github.com/Josh-Temple/kaigo-rules/pull/457)、[w
 - **残る主ゲート**：EX01/EX02実専門職確認 `NOT_DONE`、HU01 `NOT_DONE`、実機/accessibility/ネイティブ印刷・本番外部アクセスとpreview認証の証明不足。よって **`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`** を維持。E以外が公開可否を決定しない。
 
 確認詳細は [test-results §10.4–10.5](./medication-safety-test-results.md)。古いNOT_RUN/P0の行は当該時点の履歴として保持し、最新版を無断で過去へ遡ってPASS扱いしない。
+
+
+---
+
+## 11. 2026-10-09 D独立監査・実在審査開始前チェック（最新版）
+
+**Version lock（JST 2026-10-09確認）:** main `8d824ce35be176dd05de976709ee1f81944b65d1`、B issue/service blobs `e0cc354e2b78a28912c80c0611ccf3c165d00b25` / `e3889c26c5b46d4644b29d94c657e628c96206d3`、A trace `271560deb7ea848690e12d97fd23661583511198`。C candidate head `a61797393f20e897247d985ab0861f6443a0a74e` はD tested code SHA `7ec2fe8c644d0526af1650e857a7da397488a0ad` から文書のみ追加。C page / worksheet / model blobs `cfa6f30633c5c8536b570c4c82b2794cd4353320` / `2ecd0475681f5a822da0f3dbe32c4610a041d47c` / `9580e9202209f5e3fdf3b544b628d68885062295` は一致。
+
+**主要証拠:** [全29-case個別台帳§10.2/§11](./medication-safety-test-results.md)、[最新EX/HU審査pack§9](./medication-safety-expert-review-pack.md)、[D旧15 test成功run 37844583974](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844583974)、[追加2件を含む新run 37857899198](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857899198)（完了とログは実測した場合のみ確定）。旧29-case台帳：**R16 + P7 + U6 = 29、11 PASS_LIMITED / 18 PARTIAL**。Dのtest数とは一致しない。
+
+| 対象 | 実際に確認済みのこと | 未確認・次に必要なこと |
+| --- | --- | --- |
+| CI workflow/PR権限 | `contents: read`、Action full commit pin、C checkout exact SHA、`persist-credentials: false`、secret受領指定なし、artifacts uploadなし、enabled試験はlocalhostのみ | Dはworkflow/code含有PRでdocs-onlyではない。commit更新ごとのrun/jobs/logsと権限diffを再確認 |
+| Privacy P01–P07 | 合成enumとChromium request/URL/history/Storage/Cookie/IndexedDB、feedbackリンク非存在、print/reload/reset。新D追加testはdemo→print→reset後のrequest混入も対象 | 本番/別端末/全Analytics宛先/clipboard/offline、HAR非保存条件での独立確認。一般pageview通信はあり得る |
+| Safety R01–R16 | 確定出力は自己申告・非保証。医療、再投与、個別事故報告判定を行わないソースと一部DOM assertion。原典はG25施設推奨・特養一事例、N24は報告通知 | EX01/EX02による事故時導線、本人意思・職種権限・8サービス群・正式手順・全confirmed/NAの誤安心実査 |
+| UI/accessibility U01–U04 | headless Chromium 390px、CSS zoom 200%模擬、ラベル・keyboard・aria-live・印刷media/PDF in memory。新D追加testはDOM live更新 | **ネイティブ200% zoom、実Android Chrome、読み上げ実聴取、実印刷プレビューとPDF/紙の目視はNOT_RUN** |
+| U05/U06 非公開と既存機能 | C draft/unmerged。無効flag localhost 404、既存11 routes。Vercel projectのproduction READY・runtime SHA `e49e770a970e541d2ad95204ad277eca89a485d3`・alias確認 | 本番direct HTTPは今回web clientで取得エラー、実公開11route/操作は未実行。**全previewの第三者アクセス制限はPREVIEW_ACCESS_NOT_ESTABLISHED** |
+| 実在レビュー/公開 | packと質問表・非識別欄が存在 | **REVIEW_REQUESTED=false / EX01, EX02 EXPERT_REVIEW_NOT_DONE / HU01 HUMAN_APPROVAL_NOT_DONE**。送付明示許可なし。専門職・責任者の代行はできない |
+
+**差戻し条件:** B文面またはservice表の意味変更→A出典trace→C選択/結果/印刷→Dの関連29-case＋privacy/accessibility再試験→EX01/EX02対象版の再審査。C 3 code blobs変更時もCIを更新して再試験。documentだけのhead変化なら実差分・3blob一致を検査し、無条件にPASSを転記しない。
+
+**Dの現判定:** `SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。重大な事故誘導・個人情報漏洩・公衆preview露出の実証は現時点でないが、未実施を安全PASSに昇格できない。**公開判定はE、医療上の判断は適任の実在専門職、公開許可はHU01本人に残す**。
