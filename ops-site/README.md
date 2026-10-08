@@ -166,3 +166,9 @@ A #453（出典と主張）、B #454（Issue草案とサービス適用性）、
 Cのlocalhost GitHub Actionsテストには成果があるものの、Dの独立動的検証、サービス別適用範囲の最終確認、医療職EX01・事故防止責任者EX02の実レビュー、内容責任者HU01の明示的公開承認は未完了です。**Wave `PARTIAL_WITH_GAPS`／公開 `PREVIEW_ONLY / NOT_PUBLIC`**。次の条件と版は[統合判定記録](../docs/kaigo-ops/safety/2026-10-08-medication-safety-validation-and-review-decision.md)を参照してください。
 
 本番に新機能は配信していません。2026-10-08の照合では、従来11ルートがHTTP 200、試作routeが404、Kaigo Ops専用Vercel productionは`dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READY / runtime `e49e770a970e541d2ad95204ad277eca89a485d3`です。mainの文書commitとproduction runtime SHAを混同しないでください。
+
+## Medication-safety preview publication gate (2026-10-09 JST)
+
+非公開「服薬業務の安全点検シート」の最新の統合判定は [E decision](../docs/kaigo-ops/safety/2026-10-08-medication-safety-content-alignment-and-independent-validation-decision.md)。**`PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。試作 [draft PR #451](https://github.com/Josh-Temple/kaigo-rules/pull/451) を未マージで維持する。Aのclaim追跡とB最終本文の版差、Dの独立試験とC最新版のSHA差、実在のEX01/EX02/HU01未実施が公開阻害条件。表示flagは認証機能ではない。公開registry・ナビ・sitemapへ試作を追加しない。
+
+Eでのproduction HTTP確認：既存のhome+5 Issue+5 toolは各200、`/tools/medication-safety-preview`は404。production runtime SHA `e49e770a970e541d2ad95204ad277eca89a485d3`、deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` はREADY。本Waveで服薬安全機能のproduction releaseを実施しない。
