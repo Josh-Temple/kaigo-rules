@@ -142,9 +142,14 @@ test("selections never enter network URLs, headers, request bodies, browser URL 
   await expect(page.getByRole("combobox", { name: /業務手順が文書化され/ })).toHaveValue("unknown");
   await page.goto("/");
   await page.goBack();
-  expect(new URL(page.url()).pathname).toBe(route);
-  expect(new URL(page.url()).search).toBe("");
-  expect(new URL(page.url()).hash).toBe("");
+  // Next.js browser history may restore / or the preview route; neither may contain answers.
+  const afterBack = new URL(page.url());
+  expect(["/", route]).toContain(afterBack.pathname);
+  expect(afterBack.search).toBe("");
+  expect(afterBack.hash).toBe("");
+  await page.goto(route);
+  await expect(page.getByRole("combobox", { name: "点検する工程" })).toHaveValue("unselected");
+  await expect(page.getByRole("combobox", { name: /業務手順が文書化され/ })).toHaveValue("unknown");
 });
 
 test("cancelled reset preserves choices, repeated reset clears them, print layout has explicit boundaries", async ({ page }) => {
