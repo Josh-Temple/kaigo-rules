@@ -119,6 +119,16 @@ footer {
 
 .issueHero { padding: 82px 0 86px; border-bottom: 1px solid var(--line); }
 .issueHero h1 { max-width: 980px; font-size: clamp(46px, 7vw, 82px); }
+/* A compact first-action entry within priority issue heroes. */
+.issueEarlyAction {
+  max-width: 760px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.issueEarlyAction p { margin: 0 0 16px; font-size: 15px; line-height: 1.75; }
+.issueEarlyAction .primaryLink { max-width: 100%; }
+
 .issueMeta {
   display: flex;
   flex-wrap: wrap;
