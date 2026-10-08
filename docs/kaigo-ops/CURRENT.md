@@ -169,3 +169,16 @@ The production state in the preceding subsection is the historical Public Discov
 - next review: 2026-10-21前後、broader window 2026-10-21〜2026-11-04前後。Issue 6 / 新toolは開始しない。
 
 **Release assessment:** アプリの統合テストと本番SHA/aliasは確認済み。日次workflowの実動・production 390px再検証などは未確認なので、Waveの全項目を完全達成とは扱わない。
+
+
+## 2026-10-08 Accident Prevention & Medication-Safety Foundation（Worker E判定）
+
+**安全領域候補：`PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。** 誤薬・与薬漏れに関する根拠・リスク台帳（PR #449）、Issue草案（#448）、独立安全レビュー・公開遮断テスト（#450）をmainに統合した。Cの選択式業務点検シート（PR #451）はdraft branchに留保し、一般公開・production登録・feature flag有効化は認めない。
+
+- E判定の正本: [safety/2026-10-08-medication-safety-publication-decision.md](./safety/2026-10-08-medication-safety-publication-decision.md)
+- 厚労省Vol.1436の誤薬・与薬漏れ（冊子38〜39頁）に限定した出典の照合はあるが、全サービスへの転用は未確立。BのMHLW-01〜07とAのMS-01〜20はE判定記録にcrosswalkを置いた。
+- C PRのpreview CIはPASS。ただしDの16ケースの独立実行、200%・network/storage等の実査、適切な医療職と事故防止責任者のレビューは**未完**。EX01/EX02=`EXPERT_REVIEW_NOT_DONE`、HU01=`HUMAN_APPROVAL_NOT_DONE`。
+- productionは既存5 Issue / 5 toolを維持。Vercel deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` はREADY、runtime SHA `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `https://ops-site-pi.vercel.app/`。Vercel HTML取得では公開11ルートは各200、`/tools/medication-safety-preview` は404。390px・200%の今回の独立本番ブラウザ実査ではない。
+- docs/testのmain最新SHAをproduction runtime SHAに読み替えない。今Waveで新Issue/toolをreleaseしたとは報告しない。新しいVercel production deploymentは不要。
+- Search Consoleは`UNKNOWN`、Analyticsは従来の`RECEIVE_CONFIRMED`、first observation 2026-10-07。観測schema・custom eventsを変えず、2026-10-21前後〜11-04前後に既存5 Issue/5 toolの観測レビューを行う。
+- 日次GitHub Actionsでのproduction deploy verifier実運用成功と`VERCEL_TOKEN`配置確認は未完。安全領域の新機能公開の保留とは独立に追跡する。

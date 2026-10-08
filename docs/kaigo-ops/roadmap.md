@@ -236,3 +236,14 @@ pageviewとfeedbackの継続観測は `docs/kaigo-ops/usage-observation.md` に�
 - analytics: 同じreview windowを継続。直近7 visitors / 8 pageviews（homeのみ）、feedback 0件。小標本から改善効果や人気順位を断定しない。
 - immediate follow-up: trusted daily deployment workflowでVercel tokenとexpected SHA / READY / alias / routesの実動を確認し、運用上の不足があれば修復。Search Consoleは認証接続までUNKNOWNのまま非blocker。
 - 2026-10-21前後の観測レビューまではIssue 6と新action toolを増やさない。
+
+
+## 2026-10-08 誤薬・与薬漏れ／事故予防：次の公開判定
+
+**現在：`PARTIAL_WITH_GAPS / PREVIEW_ONLY`。公開Issue・公開toolは追加しない。**
+
+- A（#449）：出典20 claimと12 risk、B（#448）：利用者向けIssue草案・サービス別留保、D（#450）：独立安全レビューと公開遮断テストはmainへ統合。
+- C（#451）：選択式の服薬業務安全点検シートはdraft PRで保持。CIで`preview`はPASSだが、本番公開しない。専門職レビュー・独立red-team・権限管理・適用範囲・200%の画面検証などは未完。
+- Eのpublication decision: [safety/2026-10-08-medication-safety-publication-decision.md](./safety/2026-10-08-medication-safety-publication-decision.md)。`EXPERT_REVIEW_NOT_DONE`、`HUMAN_APPROVAL_NOT_DONE`のままGOにしない。
+- 次の作業：claim / service scopeの未確定点を限定、アクセス制御下でR01〜R16 / privacy / UIテスト、適切な医療職と介護事故防止責任者のレビュー、内容責任者承認。その後にEが公開可否を再判定する。
+- 既存5 Issue/5 toolの観測期間、Analytics計測定義、Search Consoleの`UNKNOWN`、Issue 6「収支・コスト構造」の扱いは維持する。日次deployment workflowの実行検証は別途継続。
