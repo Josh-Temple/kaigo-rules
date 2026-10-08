@@ -348,3 +348,15 @@ Legend: **PASS_LIMITED** = a specified executable assertion passed under the D C
 - このrunはDの改修後テスト15件を**同じ新C SHA**に実行した。C自身のCI、旧D run `37782952341`、途中のD run `37843977265`とは区別。§10.2の`PASS_LIMITED*`はそのassertionの範囲で確定、`PARTIAL`と全NOT_RUNは引き続き保持する。
 - **残るNOT_RUN / NOT_ESTABLISHED**：ネイティブブラウザ200% zoom、実Android Chrome、スクリーンリーダー、native print preview、offline、全環境のAnalytics/Network、外部previewアクセス制御、本番直接HTTP・ブラウザUI、B最新版に対するA独立根拠追跡、EX01/EX02実在審査、HU01の明示的公開承認。
 - **結論**：独立動的検証は指定localhostの有限なブラウザassertionについて成立。総合は依然 **`SAFETY_PARTIAL_WITH_GAPS`**、Eへの公開推奨 **`PREVIEW_ONLY / NOT_PUBLIC`**。医学的安全性、事故防止効果、サービス・職種の業務権限を認証しない。D自身はC試作、public registry、main、本番deploymentを変更していない。
+
+
+### 10.5 Aの後続独立trace完了とC docs-only更新の再照合（10.3の一部を更新）
+
+D§10.1/§10.3にある「A traceは旧Bのみ」という文言は、**当初Dが確認した版に限る履歴**。その後にA PR #458が更新され、現行のB最新版への独立照合が成立したことをDがGitHub上でreadbackした。
+
+- **新A authoritative section 8**: PR #458 head `37fc213301e93442f71efc4509af5cfa49567c88`、`medication-safety-claim-to-content-trace.md` blob `271560deb7ea848690e12d97fd23661583511198`。AがB最終候補 Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25` とservice blob `e3889c26c5b46d4644b29d94c657e628c96206d3` を対象に、B-00〜B-13の**14個の逐語アンカー**、MHLW-01〜07、8サービス群、5状態とCコード対応を個別追跡。Dは当該文書を直接取得して確認したが、Aの独立資料確認とDのlocalhostブラウザ検証は別証拠。
+- Aの最新版は `PARTIAL_WITH_GAPS`。MS-07の実際の確認方法・職種範囲、MS-13/14の自治体別報告運用と様式、MS-15の通所/訪問への具体的服薬方法転用、MS-17〜20禁止事項、実際の工程・権限は未解決。専門職によるPASSに昇格しない。
+- C PR #451の後続head `a61797393f20e897247d985ab0861f6443a0a74e` は、D検証コミット `7ec2fe8c644d0526af1650e857a7da397488a0ad` から **`medication-safety-prototype-verification.md` のみ変更**（GitHub compareで確認）。3コードblob（page `cfa6f30633c5c8536b570c4c82b2794cd4353320`、worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c`、model `9580e9202209f5e3fdf3b544b628d68885062295`）は同一。D run #37844583974 のテスト対象コードに差異はない。**後続C docsの説明内容をDの動的テストに代えることはしない**。
+- 従って前節の `A_FINAL_B_TRACE_NOT_DONE` は**更新後 `A_FINAL_B_TRACE_AVAILABLE / PARTIAL_WITH_GAPS`**。版不一致という項目自体はこのB/A固定blobについて解消した一方、サービス別適用・人のレビュー・外部previewアクセス・実Android/スクリーンリーダー/印刷プレビュー・公開GOには引き続き欠落あり。
+
+**D最終の範囲**：指定Cの3コードblobに対する独立15/15 Playwright成功、無効/不正flag 404+既存ルート成功、R/P/U各29ケースの証拠と残る限界を記録。**`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。Cが以後意味上のコード変更をした場合は新しい版への再実行が必要。
