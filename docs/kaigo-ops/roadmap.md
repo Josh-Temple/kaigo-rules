@@ -224,3 +224,15 @@ pageviewとfeedbackの継続観測は `docs/kaigo-ops/usage-observation.md` に�
 6. pageviewだけでは答えられない具体的な意思決定が確認され、privacy boundaryを満たす場合に限り、必要最小限のcustom eventを再検討する
 7. Issue 6「収支・コスト構造」は、令和8年度介護事業経営実態調査の集計結果と既存5 Issueの利用・feedbackの双方が揃ってから再評価する
 
+## 2026-10-08 Action Tool Reliability & Release Assurance Wave
+
+- A〜D: PR #442〜#445をmainへ統合、E: PR #446で結合後の`Validate ops site`（単体・build・5 toolの実ブラウザ操作・390px・route）をPASS。
+- production: Kaigo Opsの統合SHA `e49e770a970e541d2ad95204ad277eca89a485d3` をVercelへrelease。deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` はREADY、public aliasは同deploymentを指す。
+- `deploy-state/kaigo-ops`: 独立照合後に通常push相当でexpected SHAへ更新。日次workflow自身の本番成功は別途検証が必要。
+- サービス固有の固定Rulesリンクを汎用DB検索に差替え。サービス適用と制度適合はOpsで判定しない。
+- 情報探索・記録文書の2 Issueだけに早期action entryを追加。既存Evidence、限界、後半CTAは維持。
+- 5 / 5 toolにChromium browser regressionを導入。synthetic fixtureで入力、更新、架空例、確認付き消去、印刷等を継続検証。
+- release後public 11ページの本文取得とVercel SHA/alias照合を確認。production 390pxの独立再検証は今回未実施であり、CI側の390px PASSと区別する。
+- analytics: 同じreview windowを継続。直近7 visitors / 8 pageviews（homeのみ）、feedback 0件。小標本から改善効果や人気順位を断定しない。
+- immediate follow-up: trusted daily deployment workflowでVercel tokenとexpected SHA / READY / alias / routesの実動を確認し、運用上の不足があれば修復。Search Consoleは認証接続までUNKNOWNのまま非blocker。
+- 2026-10-21前後の観測レビューまではIssue 6と新action toolを増やさない。
