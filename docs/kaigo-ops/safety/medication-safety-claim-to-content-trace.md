@@ -130,20 +130,20 @@
 
 | 対象 | 固定した版・出典 |
 | --- | --- |
-| Fresh main | \`233f11f60bd53cee4684fd66eb5c0490b2fee926\`（A着手時、2026-10-08 JST） |
-| 旧A trace | 更新前blob \`2cb32c3b4de093d51d410d23c04511e020a43571\`（旧B blob \`4418af5405044be3a74268c7fa9ff85e6759126f\`を対象） |
-| **現行B本文** | \`medication-safety-issue-draft.md\` blob **\`083ffd0a17419e1533e65205e9230d725f3232ab\`**。本節で \`B1\` と省略する場合、この**一意のblob**のみを指す。B-00〜13及び第2〜5節を対象とした。 |
-| Bサービス適用表 | \`medication-safety-service-applicability.md\` blob \`8138d89832ddd4b706ff1da4751ffd2626e251bb\` |
-| A claim register | \`medication-safety-source-register.md\` blob \`41bd50ee7cafad891f9d28838cde78e6eb9875e8\`（MS-01〜20） |
-| C draft PR | [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) open/draft/unmerged、head \`a1357ad7ebd723c5a8c8fcf754c04b384f7db95d\` |
-| Cファイル | \`page.tsx\` blob \`f95b131877d7718722f79a40a7885abd709cd953\`; \`worksheet.tsx\` blob \`22d2ec836887f112af97676db5b009e5b0278775\`; \`lib/medication-safety-review.ts\` blob \`29d17715b9e738443affe12e77efffe8f3bbe703\`; C仕様 blob \`5419798fa2cfd5e3eb4f6ef823d8b5662772fa63\` |
+| Fresh main | `233f11f60bd53cee4684fd66eb5c0490b2fee926`（A着手時、2026-10-08 JST） |
+| 旧A trace | 更新前blob `2cb32c3b4de093d51d410d23c04511e020a43571`（旧B blob `4418af5405044be3a74268c7fa9ff85e6759126f`を対象） |
+| **現行B本文** | `medication-safety-issue-draft.md` blob **`083ffd0a17419e1533e65205e9230d725f3232ab`**。本節で `B1` と省略する場合、この**一意のblob**のみを指す。B-00〜13及び第2〜5節を対象とした。 |
+| Bサービス適用表 | `medication-safety-service-applicability.md` blob `8138d89832ddd4b706ff1da4751ffd2626e251bb` |
+| A claim register | `medication-safety-source-register.md` blob `41bd50ee7cafad891f9d28838cde78e6eb9875e8`（MS-01〜20） |
+| C draft PR | [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) open/draft/unmerged、head `a1357ad7ebd723c5a8c8fcf754c04b384f7db95d` |
+| Cファイル | `page.tsx` blob `f95b131877d7718722f79a40a7885abd709cd953`; `worksheet.tsx` blob `22d2ec836887f112af97676db5b009e5b0278775`; `lib/medication-safety-review.ts` blob `29d17715b9e738443affe12e77efffe8f3bbe703`; C仕様 blob `5419798fa2cfd5e3eb4f6ef823d8b5662772fa63` |
 | 一次資料G25 | 厚労省 [Vol.1436 / 2025年11月7日周知](https://www.mhlw.go.jp/content/001591418.pdf)（64 PDFページ）。2026-10-08 JST再取得・画面再確認：周知PDF **0起算p1**、冊子p1/6/10/26/27/28/38/39/46（PDF 0起算p3/8/12/28/29/30/40/41/48）。G25はガイドラインの**説明・推奨・一事例**。 |
 | 一次資料N24 | 厚労省 [Vol.1332 / 2024年11月29日付通知](https://www.mhlw.go.jp/content/001574219.pdf)。2026-10-08 JST再取得・画面再確認：PDF **0起算p1（旧通知廃止）、p2（報告対象・期限の目安）、p3（標準様式の対象）**。通知文言を各自治体の最新運用や本シートの事故要否判定には転用しない。 |
 | 判定 | **PARTIAL_WITH_GAPS / REVIEW_REQUIRED / NOT_PUBLIC**。原典URLの現時点の取得は確認したが、自治体別運用・職種権限・個別現場の最新制度・専門職レビューは未完了。 |
 
 **座標規則:** 表中「G38」はG25**冊子38頁／PDF 0起算40頁**、「G39」は冊子39／PDF 41、「G46」は冊子46／PDF 48、「G27」は冊子27／PDF 29、「G10」は冊子10／PDF 12、「G26」は冊子26／PDF 28、「G1」は冊子1／PDF 3、「G6」は冊子6／PDF 8。「N1/2/3」はN24の**PDF 0起算1/2/3頁**。**書誌の対象と実務行為の法的権限は別**である。
 
-**UIの識別子:** \`C.P.hero\`＝page.tsxの \`lead\` / \`medicationBoundary\`、\`C.P.scope\`＝「利用できる範囲」、\`C.W.intro\`＝worksheet.tsx冒頭、\`C.W.help\`＝選択肢前の説明、\`C.W.result\`＝表示結果、\`C.W.print\`＝印刷出力、\`C.M.stage\`＝\`PROCESS_STAGES\`、\`C.M.field\`＝\`CHECK_FIELDS\`、\`C.M.state\`＝\`CHECK_STATES\`、\`C.M.output\`＝\`deriveReview\`。全て上記C固定headでの**コード文字列への参照**。実ブラウザでの表示・privacyのPASSを意味しない。
+**UIの識別子:** `C.P.hero`＝page.tsxの `lead` / `medicationBoundary`、`C.P.scope`＝「利用できる範囲」、`C.W.intro`＝worksheet.tsx冒頭、`C.W.help`＝選択肢前の説明、`C.W.result`＝表示結果、`C.W.print`＝印刷出力、`C.M.stage`＝`PROCESS_STAGES`、`C.M.field`＝`CHECK_FIELDS`、`C.M.state`＝`CHECK_STATES`、`C.M.output`＝`deriveReview`。全て上記C固定headでの**コード文字列への参照**。実ブラウザでの表示・privacyのPASSを意味しない。
 
 ### 7.2 旧段落から現行段落への「意味による」対応
 
@@ -164,7 +164,7 @@
 
 ### 7.3 現行B1の文・表行単位crosswalk
 
-下表の \`B blob\` は全行とも \`B1=083ffd0a17419e1533e65205e9230d725f3232ab\`。**exact anchorは現行blob内の連続文字列**。複数文・複数根拠・判断が混在する段落は独立行に分けた。Cが未反映なら \`C:差分\` と明示する。状態 \`SOURCE_SUPPORTED\` は**書かれた限定的な主張への対応**であり、専門職確認・法令適合・一般公開の認定ではない。
+下表の `B blob` は全行とも `B1=083ffd0a17419e1533e65205e9230d725f3232ab`。**exact anchorは現行blob内の連続文字列**。複数文・複数根拠・判断が混在する段落は独立行に分けた。Cが未反映なら `C:差分` と明示する。状態 `SOURCE_SUPPORTED` は**書かれた限定的な主張への対応**であり、専門職確認・法令適合・一般公開の認定ではない。
 
 | 現行ID・exact text anchor（B1） | B blob | MS claim / 原典座標 | 証拠種別・サービス範囲 | disposition / gap | CのUI／出力対応 |
 | --- | --- | --- | --- | --- | --- |
@@ -172,7 +172,7 @@
 | B-00「この草案は、事故の発生していない平時に」 | B1 | MS-12,17〜19 / G26、範囲外 | DESIGN_PROPOSAL / SAFETY_BOUNDARY；サービス共通の権限を付与しない | **維持**。当サイト独自の限定用途。 | C.P.hero、C.W.intro |
 | B-01「配薬準備や配薬などの複数の工程で起こり得る」 | B1 | MS-02〜04 / G38 | SOURCE_SUPPORTED；主として施設 | **限定して維持**。複数の工程という論点のみ、具体的な実施工程を全サービスに仮定しない。 | C.P.hero、C.M.stage（REVIEW_REQUIRED） |
 | B-01「担当者や引き継ぎの方法が曖昧だったり」 | B1 | MS-03,09 / G38〜39 | 要因列挙＋**特養一事例**；施設限定 | **弱めて維持**。一事例から事故原因の一般的因果を確定しない。 | C.M.field.roles、C.M.field.interruptions |
-| B-02「『もっと注意する』で終わらせず」 | B1 | MS-03,10 / G38,G27 | **DESIGN_PROPOSAL**；組織内検討 | **維持**。G25認定の点検法と表記しない。 | C.M.field、C.W.result |
+| B-02「「もっと注意する」で終わらせず」 | B1 | MS-03,10 / G38,G27 | **DESIGN_PROPOSAL**；組織内検討 | **維持**。G25認定の点検法と表記しない。 | C.M.field、C.W.result |
 | B-03「確認不足に加え、他業務との重複」 | B1 | MS-03,09 / G38〜39 | SOURCE_SUPPORTED（要因例＋**特養一事例**）／施設 | **限定して維持**。特定の原因診断・全業種への拡張不可。 | C.M.field.interruptions、C.M.field.roles |
 | B-03「事故の分析は当事者だけに任せず」 | B1 | MS-10 / G27 | SOURCE_SUPPORTED（推奨）／主に施設 | **維持**。簡易点検による事故調査代替・個人責任の法的免除ではない。 | C.M.field.review、C.W.result |
 | B-04「実際に存在し、その職種が担う工程」 | B1 | MS-04,07,15,19 / G38,G46 | **DESIGN_PROPOSAL + REVIEW_REQUIRED**／施設外はNOT_ESTABLISHED | **条件付き維持**。実在する工程・職種権限はサイトで確認できない。 | C.M.stageは業務権限を聞かない（C:差分） |
@@ -187,7 +187,7 @@
 | B-05「自分の担当範囲では扱わない（責任者確認前）」 | B1 | MS-07,19 / **原典にはない選択肢** | **DESIGN_PROPOSAL + REVIEW_REQUIRED** | **維持（提案として）**。「対象外」をサイトが認定しない。Cは「対象外（要確認）」（**語彙未一致**）。 | C.M.state.not-applicable、C.M.output、C.W.print（C:差分） |
 | B-06「サービスによって担当できる業務や実際の工程が異なる」 | B1 | MS-01,07,15,19 / G1,G38,G46 | **REVIEW_REQUIRED**／非施設サービス | **維持**。個別サービスの工程・職種別権限はNOT_ESTABLISHED。 | C.P.scope、C.M.stage（先行説明は要改善） |
 | B-07「配薬準備と配薬時の対策、作業中断を減らす環境づくり」 | B1 | MS-04〜06 / G38 | SOURCE_SUPPORTED（施設向け**推奨**） | **維持**。多段階確認の人数を法定義務化せず、例外なしの中断禁止としない。 | C.M.field.procedure/interruptions |
-| B-07「服薬後の具体的な確認方法は示しません」 | B1 | **MS-07 / G38** | **SOURCE_MISMATCH / REVIEW_REQUIRED**：G38には「飲み込んだかどうかまで確認することをマニュアルに定める」との記述が**存在する**。 | **要修正**。ガイドラインが示さないと読める現行文は採用不可。提案：「**本草案では、服薬後の具体的な確認方法を指示しません**」。原典の記述有無とサイトでの指示禁止を分け、個々の方法・権限・意思は専門職確認まで保留。 | C.M.stage.administration-check / C.P.scope、C.W.result（要レビュー） |
+| B-07「服薬後の具体的な確認方法は示しません」 | B1 | **MS-07 / G38** | **REVIEW_REQUIRED**：G38には「飲み込んだかどうかまで確認することをマニュアルに定める」との記述が**存在する**。 | **要修正**。ガイドラインが示さないと読める現行文は採用不可。提案：「**本草案では、服薬後の具体的な確認方法を指示しません**」。原典の記述有無とサイトでの指示禁止を分け、個々の方法・権限・意思は専門職確認まで保留。 | C.M.stage.administration-check / C.P.scope、C.W.result（要レビュー） |
 | B-07「全事業所・全サービスで同じ方法を実施する義務」 | B1 | MS-08,09,19 / G38〜39 | **特養事例＋境界**／施設の例示 | **維持**。一事例の効果の一般化不可。ICT/薬局連携も特養の例。 | C.P.scope |
 | B-08「作業の中断・再開」 | B1 | MS-05,09 / G38〜39 | DESIGN_PROPOSAL／施設の改善検討 | **維持**。緊急時に中断一律禁止としない。 | C.M.field.interruptions |
 | B-08「担当・役割」 | B1 | MS-06,09 / G38〜39 | DESIGN_PROPOSAL／施設の改善検討 | **維持**。業務実施権限の判断不可。 | C.M.field.roles |
@@ -203,7 +203,7 @@
 | B-12「介護保険施設サービスが主な対象」 | B1 | MS-01,15,19 / G1,G46 | SOURCE_SUPPORTED（文書の対象説明） | **維持**。通所・訪問・居住系で服薬工程の同一適用はNOT_ESTABLISHED。 | C.P.scope |
 | B-13「各サービスの具体的な職種権限」 | B1 | MS-07,13〜15,17〜20 / G38,G46,N2〜3 | **NOT_ESTABLISHED**（未確立を正確に示す） | **維持**。自治体運用、人数・工程、効果、職種権限を確定しない。 | C.P.scope / C.M.stage（未確定は要近接表示） |
 
-**文面の重大差分:** B-05には新しい5状態案が明記されたが、Cの\`CHECK_STATES\`と\`deriveReview\`、\`worksheet\`の画面説明・印刷には旧状態ラベルが残る。Cのコード文字列への参照は実装後の確認ではない。またB-07の「示しません」は、**本草案の設計上の不提供**という意味なら維持できるが、**G25の記載の不存在**という意味なら事実に反する。原典p38は服薬後の確認への実務提案を記載している。Bの修正文とCの出力は、再度同一版で確認する。
+**文面の重大差分:** B-05には新しい5状態案が明記されたが、Cの`CHECK_STATES`と`deriveReview`、`worksheet`の画面説明・印刷には旧状態ラベルが残る。Cのコード文字列への参照は実装後の確認ではない。またB-07の「示しません」は、**本草案の設計上の不提供**という意味なら維持できるが、**G25の記載の不存在**という意味なら事実に反する。原典p38は服薬後の確認への実務提案を記載している。Bの修正文とCの出力は、再度同一版で確認する。
 
 ### 7.4 現行B第2〜5節・サービス表への追跡（本文番号と混同しない）
 
@@ -216,13 +216,13 @@
 | B第2節「MHLW-05」 | B1 | MS-15 / G46 | 通所・訪問**一般の事故予防** | **REVIEW_REQUIRED**。施設の服薬方法へ転用不可。 | C.M.field.updates / C.P.scope |
 | B第2節「MHLW-06」 | B1 | MS-12 / G26 | 施設内の事故時対応準備の推奨 | **限定して維持**。別資料N24のMS-13/14（報告・様式範囲）と混同不可。 | C.P.hero |
 | B第2節「MHLW-07」 | B1 | MS-16 / G1,G6 | 尊厳・自立支援・意思尊重の理念 | **維持**。個別の服薬拒否対応には用いない。 | C.W.result |
-| B第3節「applicable（問題構造の検討に限定）」 | B1 | MS-01〜11 / G38〜39 | 施設の論点を参照可能 | **REVIEW_REQUIRED**：実施権限・手順の認定ではない。 | C.P.scope |
-| B第3節「高齢者住まい・居住系」 | B1 | MS-01,14,19 / G1,N3 | 安全管理の記述＋**N24は標準様式の対象** | **NOT_ESTABLISHED**：服薬工程・職種権限は未確立。サービス表blob \`8138d898…\` と一致。 | C.P.scope |
+| B第3節「問題構造の検討に限定」 | B1 | MS-01〜11 / G38〜39 | 施設の論点を参照可能 | **REVIEW_REQUIRED**：実施権限・手順の認定ではない。 | C.P.scope |
+| B第3節「高齢者住まい・居住系」 | B1 | MS-01,14,19 / G1,N3 | 安全管理の記述＋**N24は標準様式の対象** | **NOT_ESTABLISHED**：服薬工程・職種権限は未確立。サービス表blob `8138d898…` と一致。 | C.P.scope |
 | B第3節「通所系（通所介護等）」 | B1 | MS-15 / G46 | 家族等との情報共有の論点 | **PARTIAL_WITH_GAPS**。服薬工程・職種権限は未立証。 | C.M.stage / C.P.scope |
 | B第3節「訪問系（訪問介護・訪問看護等）」 | B1 | MS-15 / G46 | 単独提供、他事業者連携の論点 | **PARTIAL_WITH_GAPS**。訪問介護と訪問看護の業務権限を同一視しない。 | C.M.stage / C.P.scope |
 | B第3節「短期入所系、認知症対応型共同生活介護など」 | B1 | MS-14,19 / N3（様式のみ） | 業務工程は**設計提案**／原典からは未確立 | **NOT_ESTABLISHED**：個別の配薬・服薬工程、職種権限。サービス表にあるGHの別区分も要照合。 | C.P.scope |
 | B第3節「居宅介護支援等」 | B1 | MS-19 / 原典に配薬業務の記述なし | **NOT_ESTABLISHED**（自ら配薬する前提） | **維持**。連携の役割は個別確認。 | C.P.scope |
-| B第4節「番号: 未割当」 | B1 | MS-17〜19 / 該当なし | **DESIGN_PROPOSAL**（未公開情報設計） | **維持**。roadmap Issue 6を使わずpublic registryに追加しない。 | Cの公開登録なし |
+| B第4節「未割当」 | B1 | MS-17〜19 / 該当なし | **DESIGN_PROPOSAL**（未公開情報設計） | **維持**。roadmap Issue 6を使わずpublic registryに追加しない。 | Cの公開登録なし |
 | B第5節「事故件数や事故防止効果率」 | B1 | MS-17〜20 / 根拠なし、N1 | **NOT_ESTABLISHED / DO_NOT_PUBLISH** | **除外継続**。旧2021年通知Vol.943を優先しない。 | C.M.output、C.W.print |
 
 ### 7.5 全20 claimの新版対応・未確立保持
@@ -255,11 +255,11 @@
 | 優先 | 宛先 | 修正・確認を依頼する対象 | 根拠 / 完了確認 |
 | --- | --- | --- | --- |
 | **P0** | B | **B-07**「服薬後の具体的な確認方法は示しません」を、本草案で方法を**指示しない**という趣旨が分かる文章に修正。原典G38の服薬後確認提案の存在を否定しない。 | MS-07 / G38。Bの新blobを返す。 |
-| **P0** | B → C | B-05新自己申告語彙とC旧\`CHECK_STATES\`／説明／結果／印刷／架空例を**1対1**で合わせる。選択結果は**安全・制度適合・権限の認証ではない**。 | B1 / C model・worksheet固定blob。C新headとブラウザでの確認はC/Dが担当。 |
+| **P0** | B → C | B-05新自己申告語彙とC旧`CHECK_STATES`／説明／結果／印刷／架空例を**1対1**で合わせる。選択結果は**安全・制度適合・権限の認証ではない**。 | B1 / C model・worksheet固定blob。C新headとブラウザでの確認はC/Dが担当。 |
 | **P0** | B → C | B-04/05の工程が事業所で実在するか・誰に権限があるか、本人意思・緊急時の判断は別途確認であると説明。特養一事例と一般推奨を混同しない。 | MS-04,07,09,15,16,19。EX01/EX02へ引き継ぐ。 |
 | **P0** | B / D | B第3節で**短期入所**と**認知症GH**を同一の「review required」行に置く一方、サービス資料ではGHを居住系に区分。**標準報告様式の適用と服薬工程の未確立は両表で別軸**に統一する。 | N3 / G1,G46。サービス別原典、業務工程、各職種と現場手順は未確立。 |
 | **P0** | B / D | N24のMS-13（報告対象・第一報の目安）とMS-14（様式の対象）を**独立して**レビューし、自治体個別の報告要否・期限の自動判定を排除。 | N1〜3。正式な自治体運用はNOT_ESTABLISHED。 |
-| P1 | C / D | 改訂後の\`C.P.hero\` / \`C.W.result\` / \`C.W.print\`で、全確認・全対象外・未回答が安全合格と見えないか、事実上の医療助言にならないか動的確認。 | Aは**ソース文字列の比較のみ**。UI・Network・印刷・実ブラウザはNOT_RUN（C/Dの仕事）。 |
+| P1 | C / D | 改訂後の`C.P.hero` / `C.W.result` / `C.W.print`で、全確認・全対象外・未回答が安全合格と見えないか、事実上の医療助言にならないか動的確認。 | Aは**ソース文字列の比較のみ**。UI・Network・印刷・実ブラウザはNOT_RUN（C/Dの仕事）。 |
 | P1 | EX01（実在の医療職） | 配薬・服薬確認・本人意思・職種別権限・変更指示の扱い、事故・疑義時の一般案内が不適切な医療指示にならないか。 | **EXPERT_REVIEW_NOT_DONE**。このAによる依頼・審査・承認はなし。 |
 | P1 | EX02（実在の安全管理責任者） | 中断時の運用と役割、特養一事例の一般化、自己申告の意味、住宅/通所/訪問/短期/居宅支援への適用差。 | **EXPERT_REVIEW_NOT_DONE**。このAによる依頼・審査・承認はなし。 |
 | P1 | E / HU01 | B/C/Dの確定した別版を再突合し、対象サービス・公開文言・責任と実承認を判断。 | **HUMAN_APPROVAL_NOT_DONE**。新規Issue/公開toolは追加せず、PR #451をdraft/未マージに保つ。 |
