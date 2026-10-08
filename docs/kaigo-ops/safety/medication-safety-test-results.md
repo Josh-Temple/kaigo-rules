@@ -360,3 +360,46 @@ D§10.1/§10.3にある「A traceは旧Bのみ」という文言は、**当初D�
 - 従って前節の `A_FINAL_B_TRACE_NOT_DONE` は**更新後 `A_FINAL_B_TRACE_AVAILABLE / PARTIAL_WITH_GAPS`**。版不一致という項目自体はこのB/A固定blobについて解消した一方、サービス別適用・人のレビュー・外部previewアクセス・実Android/スクリーンリーダー/印刷プレビュー・公開GOには引き続き欠落あり。
 
 **D最終の範囲**：指定Cの3コードblobに対する独立15/15 Playwright成功、無効/不正flag 404+既存ルート成功、R/P/U各29ケースの証拠と残る限界を記録。**`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。Cが以後意味上のコード変更をした場合は新しい版への再実行が必要。
+
+
+---
+
+## 11. 2026-10-09 専門職審査・privacy/accessibility closure Wave — D独立監査追補
+
+### 11.1 Fresh identity and validity of prior D run
+
+- Checked: **2026-10-09 JST**。GitHub `main` = `8d824ce35be176dd05de976709ee1f81944b65d1`。これはdocument mainであり、production runtimeではない。
+- B [#459](https://github.com/Josh-Temple/kaigo-rules/pull/459) = open, non-draft, unmerged, head `364519815a41143560b068cfa459e7a04962f18f`; Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25` / service blob `e3889c26c5b46d4644b29d94c657e628c96206d3`。
+- A [#458](https://github.com/Josh-Temple/kaigo-rules/pull/458) = open, non-draft, unmerged, head `37fc213301e93442f71efc4509af5cfa49567c88`, trace blob `271560deb7ea848690e12d97fd23661583511198`。A§8の最新14段落アンカーと8サービス群は上記B 2 blobを指す。Aの医学・サービス別権限の未確立点は解消済みではない。
+- C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) = **draft, open, unmerged**, head `a61797393f20e897247d985ab0861f6443a0a74e`。独立試験checkout pin = `7ec2fe8c644d0526af1650e857a7da397488a0ad`。GitHub compareでhead差分は**prototype-verification文書1ファイル・36行追加だけ**。C code blobs = page `cfa6f30633c5c8536b570c4c82b2794cd4353320`, worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c`, model `9580e9202209f5e3fdf3b544b628d68885062295`。各blobをC headから再取得し一致確認。よって**コードの同一性**に関して既存D runは現在のC headへ適用できる。ただし最新C文書の説明そのものをDが動的に検証したという意味ではない。
+- D [#457](https://github.com/Josh-Temple/kaigo-rules/pull/457) = draft/open/unmerged。既存証拠 [D run #37844583974](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844583974) はcompleted/success、enabled 15/15 Chromium tests、disabled/invalid localhost 404 と既存11 routes。**当該runは過去の固定D specに対する限定的な実測**。本追補でD独立specへ2 tests追加したため、[新run #37857899198](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857899198) を別runとして照合する。**完了・ジョブログ照合前に17/17成功と記載しない**。
+- D workflow blob `241415cc2f8536bca185c27a6ecba85a8e4e57f3` は source commitをexact SHAでcheckout、`actions/checkout`・`actions/setup-node`をfull SHA pin、`permissions: contents: read`、`persist-credentials: false`、secretの明示受領もartifacts uploadもなし。enabled/disabled双方とも**isolated localhost**。ただし**workflowコードを含むPR**であり、docs-onlyとして扱わず、その都度diff・権限・依存更新とCIを再確認する。
+- Official source reread: 厚生労働省 Vol.1436（2025-11-07）冊子p38 / PDF zero-index 40 = 施設中心の誤薬・与薬漏れへの推奨、冊子p39 / PDF 41 = 特養の**単一事例**、冊子p46 / PDF 48 = 通所・訪問の一般的連携。Vol.1332（2024-11-29）PDF zero-index p2 = 事故報告様式・報告対象等の通知。これらは**本試作の5状態、職種別の医療実施権限、全サービスへの工程適用、事故削減効果の認証ではない**。個別事故報告の要否・期限を自動判定しない。
+- Vercel project `prj_7kKmZkto1j9r9Z3otwccx05LAjTp` fresh API: production `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` READY、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `ops-site-pi.vercel.app`、`kaigo-ops-josh-temples-projects.vercel.app` 等。公開URLの直接HTTPは今回のweb clientで取得エラーのため**NOT_RUN / NOT_ESTABLISHED**（過去のHTTP成功を今回の成功と混同しない）。preview認証遮断の第三者実証も**PREVIEW_ACCESS_NOT_ESTABLISHED**。
+
+### 11.2 全29ケースの現行statusと追加独立検査
+
+詳細29行の `expected / actual / method / environment / C_SHA / evidence / status / limitations / owner` は**§10.2が正本**。本追補ではその29行を独立に照合し、**R01–R16 = 16行、P01–P07 = 7行、U01–U06 = 6行、計29行、既存run時点の判定は11 `PASS_LIMITED*` / 18 `PARTIAL*`** と確認した。各行の `*` は §10.1–10.4 の既存成功runと対象Cコードの一致が条件であり、臨床上の29件PASSではない。新run未完了時は次の追加試験部分のみ `PENDING_INDEPENDENT_RUN`。
+
+| Case / scope | Evidence, actual and environment | Current limited result / remaining gap | Next owner |
+| --- | --- | --- | --- |
+| R01–R02, R07–R08 | 選択式6問/工程、医療・再投与・事故報告の判定非実装、実事故時の正式経路。D旧15 tests + source / localhost Chromium | `PASS_LIMITED/PARTIAL`。実務者の誤認・医療安全審査は未完 | EX01, EX02 |
+| R03, R09–R10, U03 | 全confirmed/NA/unknown/混合/架空例/不正値。D旧15 tests / localhost Chromium | `PASS_LIMITED`対象の範囲のみ。利用者理解、独立JS型fuzzは未完 | C, D, EX02 |
+| R04–R06, R15 | サービスの一律転用禁止、本人意思、職員負荷、個人責任への還元回避 | `PARTIAL`。8サービス群の工程・役割・権限、原典・事例の境界を人が評価 | A, B, EX01/EX02 |
+| R11–R12, P01–P04, P06–P07 | 合成enumのrequest URL/header/body、URL/history、storage、Cookie/IndexedDB、feedback導線。D旧15 tests | 有限のChromium観測は`PASS_LIMITED`を含む。その他ブラウザ、Analytics全宛先、公開環境・clipboardは未確認。新specのdemo/print/reset後の通信追加観測は新run待ち | D, E |
+| R13–R14, P05, U01–U02, U04 | reset、印刷media/PDF in memory、390px、CSS zoom模擬、keyboard/label/aria-live。旧15 tests + 新specのlive-region動的変化確認 | `PARTIAL`。ネイティブ200%ズーム、実Android、実読み上げ、実印刷プレビュー・PDF目視、offlineは**NOT_RUN**。新spec部分はrun待ち | C, D, 人手QA |
+| R16, U05–U06 | C draft非公開、無効flagのlocalhost 404、既存11 routes、Vercel READY/alias | `PARTIAL`。本番直接HTTP、全preview URLの匿名遮断、実公開5+5操作は本Waveの実測未完。**flagとnoindexは認証ではない** | E / Vercel権限者 |
+
+**新D専用テスト（旧15から追加した2件）**：
+
+- `D-P02/P05/P06 follow-up`：**合成enumのみ**で選択→架空例→print media→resetを行い、当該ブラウザ窓で観測した全request URL/header/bodyに選択マーカーがないことをassertする。通常pageviewや別環境のAnalyticsは無条件に安全認定しない。
+- `D-U02/U03 follow-up`：`aria-live=polite` に加え、選択による結果本文更新をDOMで検証。これは**スクリーンリーダーによる実際の読み上げではない**。
+
+### 11.3 明確な未実施と公開ゲート
+
+- `NOT_RUN`：ネイティブ200%ズーム、実Android Chrome、screen reader実聴取、ネイティブ印刷/PDF visual QA、offline、実機clipboard、一般公開環境の回答通信・操作、Vercel本番直接HTTP（今回の取得失敗）。CSS模擬は実機の代用にしない。
+- `NOT_ESTABLISHED`：全previewへの第三者アクセス遮断、各サービスの服薬工程・職種権限、具体的な自治体運用、Analytics全宛先に回答が流れないという網羅保証。無認証のflag-enabled Vercel previewは作らない。
+- `EX01=EXPERT_REVIEW_NOT_DONE`、`EX02=EXPERT_REVIEW_NOT_DONE`、`HU01=HUMAN_APPROVAL_NOT_DONE`。依頼の明示許可と送付先がないため `REVIEW_REQUESTED=false`。審査者個人情報や現場資料はpublic PRに書かない。
+- **現在の独立安全判定：`SAFETY_PARTIAL_WITH_GAPS`、Eへの提案：`PREVIEW_ONLY / NOT_PUBLIC`**。実証された高危険誘導・回答漏えい・匿名preview露出は今回認定していないため、憶測で`SAFETY_BLOCKED`にはしない。一方、公開GOは出せない。Cを未マージ・production flag無効・既存5 Issue/5 toolを維持する。
+
+**Next:** D新runの双方のjob logsを確認し、追加assertionsの結果だけを明確に追記する。Cの3 code blobsが変われば該当R/P/U全件の再試験とexpert packの版更新が必要。EX01/EX02実査・是正・再検査とHU01明示承認後にEが公開可否を別途決定する。
