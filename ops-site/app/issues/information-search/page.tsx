@@ -87,6 +87,10 @@ export default function InformationSearchIssuePage() {
             「どこを見ればよいか」を判断する負担も増えます。
             このページでは、検索ツールを増やす前に確認したい構造と、小さく改善する順序を整理します。
           </p>
+          <div className="issueEarlyAction">
+            <p><strong>まず試す：</strong>よく探す情報を一つ選び、正本・保管場所・更新責任・探す経路を並べます。正本が不明でも、空欄から整理できます。</p>
+            <a className="primaryLink" href="/tools/information-inventory">情報探索の棚卸しシートへ →</a>
+          </div>
           <div className="issueMeta">
             <span>最終更新: 2026-10-07</span>
             <span>主要な機械評価: 2026-09-26</span>
