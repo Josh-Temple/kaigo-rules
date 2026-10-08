@@ -403,3 +403,13 @@ D§10.1/§10.3にある「A traceは旧Bのみ」という文言は、**当初D�
 - **現在の独立安全判定：`SAFETY_PARTIAL_WITH_GAPS`、Eへの提案：`PREVIEW_ONLY / NOT_PUBLIC`**。実証された高危険誘導・回答漏えい・匿名preview露出は今回認定していないため、憶測で`SAFETY_BLOCKED`にはしない。一方、公開GOは出せない。Cを未マージ・production flag無効・既存5 Issue/5 toolを維持する。
 
 **Next:** D新runの双方のjob logsを確認し、追加assertionsの結果だけを明確に追記する。Cの3 code blobsが変われば該当R/P/U全件の再試験とexpert packの版更新が必要。EX01/EX02実査・是正・再検査とHU01明示承認後にEが公開可否を別途決定する。
+
+
+### 11.4 追加2件の独立run完走・前回失敗の扱い（2026-10-09 JST）
+
+- 追加spec最初のrun [#37857899198](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857899198) は **16/17 pass・1 fail**。失敗したのは新しいdemo→print→reset試験で、架空例ボタンの確認ダイアログをテストコードが承認していなかったため `getByRole('status')` を待ち続けた操作契約の不足。**情報流出を観測した失敗ではない**。旧版からPASSに転記せず、失敗履歴を保存。
+- D専用specに確認ダイアログ `page.once("dialog", d => d.accept())` を追加（D commit `619c9d548c0b64e2b4d9efdee2775057c6f70f34` の改訂、spec blob `28161729ba8b602a45920c292da6b2db476646bc`）。**Cコード・公開registry・productionは変更していない**。
+- **確定後続run:** [#37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) は `completed/success`、`independent-enabled=success`、D専用Chromium **17/17 passed**（job `113587323635` のログで `17 passed (7.5s)`）、`independent-disabled=success`（job `113587323809`）。後者のflag absentとinvalidではともにlocalhost route HTTP 404、同じ隔離ホストの既存11 route検証成功。対象C checkoutはworkflowで固定した `7ec2fe8c644d0526af1650e857a7da397488a0ad`、C headとの差はdocsのみ、主要3 blobs一致。
+- 追加された動的確認：**P02/P05/P06**について合成選択値がdemo/print media/resetまでに観測したrequest URL/header/bodyに含まれないこと、**U02/U03**について`aria-live`領域のDOM内容が選択後に更新されること。これにより旧runでの観測窓を拡張したが、**全通信/全端末の漏えい不存在、実際の音声読み上げ、ネイティブ印刷、医療安全の保証にはならない**。
+- §10.2の**29ケース = 11 `PASS_LIMITED` + 18 `PARTIAL`** は変更しない。新runにより前節の「新spec pending」部分のみ成功と確定し、実機/専門職/preview-access `NOT_RUN/NOT_ESTABLISHED` は維持。
+- **最終D判定：`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。EX01/EX02 `EXPERT_REVIEW_NOT_DONE`、HU01 `HUMAN_APPROVAL_NOT_DONE`、`REVIEW_REQUESTED=false`。Eへhandoff。公開GOを出さずC #451 draftを維持する。
