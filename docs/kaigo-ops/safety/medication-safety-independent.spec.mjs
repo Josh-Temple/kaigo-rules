@@ -226,6 +226,8 @@ test("D-P02/P05/P06 follow-up: synthetic choices remain absent from requests aft
   await stage(page).selectOption("record-handover");
   await questions(page).nth(0).selectOption("needs-review");
   await questions(page).nth(1).selectOption("not-applicable");
+  // The synthetic-demo button requires explicit browser confirmation.
+  page.once("dialog", d => d.accept());
   await page.getByRole("button", {name:"架空例を読み込む"}).click();
   await expect(page.getByRole("status")).toContainText(/架空の業務例/);
   await page.emulateMedia({media:"print"});
