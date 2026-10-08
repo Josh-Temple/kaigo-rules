@@ -135,3 +135,39 @@ B確定5ラベルとmodel `CHECK_STATES` はソース照合上は一致する。
 - Vercel `kaigo-ops` projectの2026-10-09時点latest productionは `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` READY、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `ops-site-pi.vercel.app`。C branchを指定したVercel deployment一覧は0件。公開HTTP実測は今回**NOT_RUN / ACCESSIBLE_RESPONSE_NOT_ESTABLISHED**（Web取得失敗）で、previous Waveのpreview 404を今回の直接HTTP PASSに読み替えない。
 - Preview access restrictionを実際のflag-enabled URLで実証していないので `PREVIEW_ACCESS_NOT_ESTABLISHED`。匿名で到達可能なVercel Previewは作らない。
 - B最終2 blobが再更新された場合は本表を再固定する。**Aが同じB2 blobでsource-to-claimを検証するまで、このC版は最終candidateではない。** Dは同じC code SHAでR01〜R16/P01〜P07/U01〜U06を独立再実行しなければならない。Eのみが公開判定する。
+
+## 8. 2026-10-09 Worker C 同一版CI完了証拠とA最終追跡の受領
+
+この節は第7節の作業途中PENDINGを**最新の確定実行結果**で更新する。第6節以前の旧コードへの成功を流用しない。**C検証結果: 機械試験 PASS_LIMITED / Worker C総合 PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC。**
+
+### 8.1 A/B/Cの新しい読み戻し識別子
+
+- **B #459（head `364519815a41143560b068cfa459e7a04962f18f`）:** 2026-10-09版本文 `e0cc354e2b78a28912c80c0611ccf3c165d00b25`、service `e3889c26c5b46d4644b29d94c657e628c96206d3`。上記第7節で扱ったBの2 blobと同一。
+- **A #458（head `37fc213301e93442f71efc4509af5cfa49567c88`）:** 追跡表 `271560deb7ea848690e12d97fd23661583511198`。A第8節は**上記Bの正確な2 blob**を参照しB-00〜13、MS-01〜20、一次資料edition/頁、各サービス群の未確立とCの固定コードblobを照合した。Aの限定判定は `PARTIAL_WITH_GAPS`、MS-07/08/13/15・17〜20等はレビュー・未確立。**旧A blob `0b0424...`は履歴扱い**に訂正する。
+- **C試験対象:** code commit `9814dc541880c16cf311f0c700dc458c33ee2a83`。CI checkoutはこのコードを全て含むdocs-only最新head `7ec2fe8c644d0526af1650e857a7da397488a0ad`。page blob `cfa6f30633c5c8536b570c4c82b2794cd4353320`、model `9580e9202209f5e3fdf3b544b628d68885062295`、worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c`。unit blob `4615d25a3f2a0d809f0997840acec5a8ce2ebe83`、browser blob `f4187363f03abda0fc02ed30e950957afb9f575f`。
+- 原典の限定: G25＝厚労省Vol.1436（2025-11-07）、冊子38〜39（PDF0:40〜41）、46（PDF0:48）、10/27/26等。N24＝Vol.1332（2024-11-29）PDF0:1〜3。**施設中心の推奨・一事例・通所訪問一般連携・事故報告通知は実施権限や全サービス必須工程の根拠ではない。** 出典・主張単位の審査結果はA trace第8節を正本とする。
+
+### 8.2 flag別CI実測 — C本人の自動テストに限定
+
+**GitHub Actions [run 37844184628](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844184628)、head `7ec2fe8c644d0526af1650e857a7da397488a0ad`、overall `SUCCESS`。** 権限 `contents: read`、GitHub-hosted Ubuntu / Node22、Chromium、localhost `127.0.0.1`。シークレット・患者情報・実症例を渡さず、列挙型の合成選択値のみ。
+
+| 条件／job | コマンドと実行範囲 | 実測結果 |
+| --- | --- | --- |
+| flag `enabled`／preview job | `npm ci --no-audit --no-fund`, `npm test`, `npm run build`, `npm run test:browser`, `npm run verify:routes`（localhost） | **job SUCCESS**。単体 `29 pass / 0 fail / 0 skip`、Chromium `13 pass / 1 conditional skip`。既存5 Issue/5 action toolルートsmoke成功 |
+| flag未設定／disabled job | 同じnpm install/test/build/Chromiumと既存公開ルート確認 | **job SUCCESS**。単体 `29 pass / 0 fail / 0 skip`、Chromium `8 pass / 6 conditional skip`。試作route 404 |
+| 不正flag `not-enabled`／disabled job | local HTTP smoke + `verify:routes` | **PASS**。試作route HTTP 404、既存ルート確認成功 |
+| 公開site regression | [run 37844184648](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844184648) | **SUCCESS**。既存5 action toolのChromium実行を含む |
+| Publication readiness integration | [run 37844184757](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844184757) | **SUCCESS**。これは公開承認を意味しない |
+| Generic validate build | [run 37844184705](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844184705) | 本追補作成時 **IN_PROGRESS / RESULT_NOT_ESTABLISHED**。後で結論を独立確認する |
+
+preview/disabled各jobの実行ログで単体件数とChromiumのPASS/SKIP数を確認した。前run `37844003519` は同期commit更新でキャンセルされたため成功証拠には含めない。今回のC最新テストはflag enabledでの画面・結果・印刷・PDF生成・reset・390px・CSS zoom模擬、合成値のURL/header/body/history/storage/cookie/IndexedDBの漏えい検査を含む。**実測対象の合成値に漏えいを検出しなかった**という限定結果であり、全通信・全環境の不存在を立証しない。通常Analytics pageviewの通信は無送信保証とは別。
+
+### 8.3 D/Eおよび人間ゲートへの確定handoff
+
+- **D**：上記Cのコード commitと3 code blob、A最新trace `271560deb7ea848690e12d97fd23661583511198`、Bの2 blobを対象に**独立した**R01〜16/P01〜07/U01〜06全29ケースを再実施して固定。C CI成功をD独立安全PASSへ転記しない。D変更やB/A/C意味変更があれば該当case・privacy・印刷を再実施。
+- **EX01/EX02**：実在の医療職・事故防止実務責任者のレビューは **EXPERT_REVIEW_NOT_DONE**。**HU01**：対象サービス、同一版、訂正責任者、公開範囲への明示GOは **HUMAN_APPROVAL_NOT_DONE**。外部のレビュー依頼は実施しない。
+- **NOT_RUN**：実Android Chrome、ブラウザネイティブ200%ズーム、スクリーンリーダー実聴取、現場利用者の印刷画面の人手評価。CSS zoom 200%模擬と区別する。
+- **公開隔離**：PR #451 open/draft/unmerged、registry・navigation・sitemap・production flagに変更なし。Vercel project `kaigo-ops` latest production `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` READY、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `ops-site-pi.vercel.app`（このC試作を含まない）。C branch filterでVercel deployment 0件。今回のproduction直接HTTPとflag有効external preview accessの実測は **NOT_RUN / PREVIEW_ACCESS_NOT_ESTABLISHED**。flag/noindexが認証の代用ではない。
+- **次担当：** Dの独立監査とexpert pack更新 → Eが4版と実在EX/HU証拠を突合し公開HOLD/GOを決定。安全性・医療的妥当性・実務適用性は本CのCIからは保証できない。
+
+**Worker Cの閉鎖判断：PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC。** C仕様の非公開テストは成功したが、D独立29ケース・現場端末・実在の専門職・人間公開責任者の確認が未完了。未承認のPR merge、本番deployment、匿名preview有効化は行わない。
