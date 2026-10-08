@@ -146,3 +146,13 @@ Kaigo Rulesとは公開面を分離します。
 - custom eventはまだ追加しない。pageviewだけでは答えられない具体的な意思決定が出た場合だけ再検討する
 - Issue 6「収支・コスト構造」と新しいaction toolは、既存5 Issueの利用・feedbackと必要な公的データが揃うまで開始しない
 
+## Latest Kaigo Ops production（2026-10-08 reliability wave）
+
+- release: PR #442〜#446を統合したcommit `e49e770a970e541d2ad95204ad277eca89a485d3`
+- production: `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READY / `https://ops-site-pi.vercel.app/`（Vercel APIでalias対応を確認）
+- browser CI: `Validate ops site` run `37728218607` PASS（unit / build / 5 tool Chromium interaction / 390px / route）
+- public home + 5 Issue + 5 tools: release後の本文取得を確認。production 390pxの別ブラウザ再実行は未実施。
+- `deploy-state/kaigo-ops`: release SHAへforceなしで更新済み。ただしこの更新はVercel直接releaseと独立照合によるもので、日次GitHub Actionsの本番実行成功を証明しない。日次実行にはGitHub Actions secret `VERCEL_TOKEN` が必要で、現時点の配置有無は未確認。
+- Analytics: 2026-10-07〜08指定期間で7 visitors / 8 pageviews（homeのみ）。Search Consoleは`UNKNOWN`、Issue 6 / 新tool追加は保留。
+
+上の状態がcurrentであり、本文に残るPR #434 / 旧deploymentの記述は以前のWaveの履歴である。
