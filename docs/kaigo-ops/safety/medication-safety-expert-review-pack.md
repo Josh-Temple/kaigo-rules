@@ -90,3 +90,49 @@
 - **確認済み限定事項**：2026-10-08の独立した静的監査と本番HTTPでは、公開登録に誤薬試作の追加はなく、本番試作routeは404、既存11ページは200。これは本番公開を承認する証拠ではない。
 
 Dの安全判定: **`SAFETY_PARTIAL_WITH_GAPS`**。公開判定はEの権限であり、現時点の推奨は **`PREVIEW_ONLY / NOT_PUBLIC`**。次はA/Bのtrace・Cの固定SHAとアクセス制限付き実行証拠を受けてDが再検証し、人間のレビュー後にEが公開可否を再判定する。
+
+
+---
+
+## 7. 2026-10-08 independent validation handoff — authoritative review snapshot
+
+This section updates the older §1/§6 snapshots; those remain historical. **REVIEW_PACK_READY is not expert approval.** Reviewed code is still an **unmerged draft**, and materials remain **NOT_PUBLIC**.
+
+| Item | Fixed review version / evidence |
+| --- | --- |
+| Main at D audit | 233f11f60bd53cee4684fd66eb5c0490b2fee926 |
+| A trace | 2cb32c3b4de093d51d410d23c04511e020a43571 (maps old B paragraphs; current mapping P0 incomplete) |
+| B Issue B-00..B-13 | 083ffd0a17419e1533e65205e9230d725f3232ab |
+| B service matrix | 8138d89832ddd4b706ff1da4751ffd2626e251bb |
+| C preview UI/model/print | [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) pinned a1357ad7ebd723c5a8c8fcf754c04b384f7db95d |
+| D independent browser report | [#457](https://github.com/Josh-Temple/kaigo-rules/pull/457), [CI run 37782952341](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37782952341), 13 D-only browser tests PASS; absent/invalid flag 404 and existing routes PASS in localhost |
+| Official source | MHLW Vol.1436 guideline printed p38, p39 and p46 (PDF zero-index 40/41/48), 2025-11-07; Vol.1332 notice PDF zero-index p2, 2024-11-29; reopened 2026-10-08 JST |
+| Current D decision | SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC |
+| Actual medical/safety reviewer | EX01 / EX02 = EXPERT_REVIEW_NOT_DONE |
+| Content owner public approval | HU01 = HUMAN_APPROVAL_NOT_DONE |
+
+### High-priority human review questions before any external invitation
+
+**EX01 (appropriate pharmacist / nurse, and doctor if needed)**:
+1. Compare B-00..B-13 and the pinned C initial/result/print copy. Does any phrase sound like a decision to re-administer, withhold, independently verify medication correctness or grant a worker a clinical scope of practice?
+2. Do C old labels, especially 「確認できる（自己申告）」「対象外（要確認）」, convey false assurance? Is the proposed B replacement more appropriate for facility vs day/visit/residential services?
+3. Are p38 recommendations or p39 one-facility example overstated as a universal method? Is the real accident/doubt warning unambiguous, while respecting the person's wishes?
+
+**EX02 (care safety / operational risk owner)**:
+1. Can the six fields be used without adding unsafe workload, unworkable staffing, interruptions or blame? Distinguish facility workflow from visit/day/residential and care-management settings.
+2. Is treating all six checks as self-report rather than a safety/compliance score clear in result and printed output? Should any stage or choice be withdrawn pending service-specific evidence?
+3. Are incident-report responsibilities and communication boundaries clear without deciding reportability/deadlines for individual cases?
+
+**HU01 (authorized owner, only after actual EX01/EX02)**:
+1. Approve a **named new C SHA and exact B/A blobs**, target service scope, page copy, technical environment and remaining documented risks, or explicitly HOLD.
+2. Require native browser zoom, Android, actual screen reader, print preview, production URL/preview access verification and D re-run against changed C SHA.
+3. Record owner for corrections/updates and do not make publication/feature-flag changes without a separate explicit GO.
+
+### Outstanding blockers and safe handoff order
+
+1. **A + B + C:** produce exact current text/claim/choice crosswalk, update C language and print output on C's own branch, fix source/service scope gaps without inventing a universal protocol.
+2. **D:** pin revised SHA and repeat dynamic tests. Existing successful run is valid **only for a1357ad...** and measured local conditions.
+3. **Human EX01 / EX02:** external contact and review are **NOT_REQUESTED / NOT_DONE**; no mails, invites or approvals were sent. Use anonymous review IDs in public records and keep identities outside the public repository.
+4. **HU01:** human public-approval decision **NOT_DONE**. E must retain **NOT_PUBLIC** until all technical and human gates are satisfied.
+
+All previous blank review-ID/date/decision fields remain blank. The test-results §9 tables provide R01–R16/P01–P07/U01–U06 case evidence, scope, limitations and retest conditions. No individual patient, actual accident, medicine or prescription details are included.
