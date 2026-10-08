@@ -89,6 +89,7 @@ test("all-confirmed and all-not-applicable never produce a safety approval", asy
   for (let i = 0; i < 6; i += 1) await fields.nth(i).selectOption("confirmed");
   await expect(page.locator(".medicationResult")).toContainText("安全性、事故防止、実施権限、制度適合を保証しません");
   await expect(page.locator(".medicationResult")).toContainText("事故報告の要否を判定しません");
+  await expect(page.locator(".medicationResult")).toContainText("処方指示の正しさ・真正性");
   await expect(page.locator(".medicationResult")).not.toContainText("安全が確認");
   for (let i = 0; i < 6; i += 1) await fields.nth(i).selectOption("not-applicable");
   await expect(page.locator(".medicationResult li")).toHaveCount(6);
@@ -174,6 +175,9 @@ test("cancelled reset preserves choices, repeated reset clears them, print layou
   await expect(page.locator(".medicationWorksheet > .section").first()).toBeHidden();
   await expect(page.locator(".medicationPrint")).toContainText("安全性、制度適合、実施権限、医療上の判断を保証しません");
   await expect(page.locator(".medicationPrint")).toContainText("事故報告の要否を判定しません");
+  await expect(page.locator(".medicationPrint")).toContainText("必要な緊急対応、適用される法令・自治体の手続");
+  await expect(page.locator(".medicationPrint")).toContainText("本人の意思・尊厳を尊重してください");
+  await expect(page.locator(".medicationPrint")).toContainText("指示変更の正しさ・有効性");
   const pdf = await page.pdf();
   expect(pdf.subarray(0, 4).toString()).toBe("%PDF");
 });
