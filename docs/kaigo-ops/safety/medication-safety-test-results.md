@@ -118,3 +118,87 @@ https://www.mhlw.go.jp/content/001591418.pdf
 - 工程選択・「確認できる」は医療的な本人確認や実際の正確さを認証しない。点検シートの自己申告と事故防止効果を結び付けない。
 
 **追補後のD判定は引き続き`SAFETY_PARTIAL_WITH_GAPS`、専門職`EXPERT_REVIEW_NOT_DONE`、公開`HOLD`。** 重大な医療助言や漏えいを現時点で確認したという意味で`SAFETY_BLOCKED`とはしない。一方、公開条件が足りないためproductionへの事故安全コンテンツ追加は承認しない。
+
+
+---
+
+## 7. 2026-10-08 新Wave：独立red-team・privacy・UI再調査（追記、旧記録を保持）
+
+### 7.1 対象・実行方法・結論
+
+- Checked at: **2026-10-08 JST**。
+- Fresh `main`: `d5e5b5f1c3a019c801c81c1af737964183bf7ce4`。
+- C draft: [PR #451](https://github.com/Josh-Temple/kaigo-rules/pull/451) / head `dd7ccdc535aa34acd76d8d54943a72b856345832`（**open / draft / 未マージ**）。
+- A/Bは前Waveでmainに統合済み。新Wave指定の段落trace `medication-safety-claim-to-content-trace.md`、別ファイルの `medication-safety-service-applicability.md`、C `medication-safety-prototype-verification.md` は**今回のmain取得では404**。別ブランチで進行中の可能性は残る。未存在は未着手の証明ではない。
+- Dの方法: GitHub connectorでC headの `page.tsx` / `worksheet.tsx` / `lib/medication-safety-review.ts` / Playwright試験定義とpublic registry・sitemapを実取得し、**18個の独立した静的検査式をその場で実行（18/18が想定と一致）**。厚労省Vol.1436 PDF冊子38〜39頁（PDFゼロ起算p40〜41）を今回直接表示して要点を照合した。Vercel認証済みfetchで本番のHTTP応答を取得。
+- 動的制約: Dの実行環境からGitHubをcloneできず（`Could not resolve host: github.com`）、Cの隔離済みUIを新たに立ち上げられなかった。CのCI `preview` jobは**success**（2026-10-08 09:10 UTC、head `dd7ccdc...`）。これは**CのCI実行であってD独立ブラウザ実測ではない**。Networkの要求body/header、Storage、実際の印刷プレビュー、200% zoom、実Android、アクセシビリティ補助技術、preview認証はD未実行。
+- Dの確定判定: **`SAFETY_PARTIAL_WITH_GAPS` / `PREVIEW_ONLY` 推奨 / NOT_PUBLIC**。`SAFETY_PASS`ではない。下表の「静的適合」は「実動作でPASS」を意味しない。
+
+### 7.2 R01〜R16：各ケースの個別記録
+
+| ID | 対象SHAの独立検査で見えた実装・本文 | 今回のR結果 | 残る実操作・審査 |
+| --- | --- | --- | --- |
+| R01 | UIは選択式。事故・疑義の発生時はサイトで判断せず正式手順・管理者・医療職へ案内する固定文がある | **SOURCE_CHECKED / DYNAMIC_NOT_RUN**。質問入力攻撃は選択式UIのため`NOT_APPLICABLE` | 画面全体・印刷の文脈で医療助言に見えないかEX01 |
+| R02 | 薬の再投与の可否を入力・算出するfieldはない。固定案内は医療判断をしない | **SOURCE_CHECKED / DYNAMIC_NOT_RUN**（自由記述による誘導は`NOT_APPLICABLE`） | 不意の条件分岐・画面全体の理解を確認 |
+| R03 | `deriveReview`の全`confirmed`出力は「自己申告」「保証しません」 | **SOURCE_CHECKED / DYNAMIC_NOT_RUN** | 全確認時の実描画・印刷と誤安心の利用者評価 |
+| R04 | `page.tsx`に訪問・通所・居住系への直接転用禁止がある | **SOURCE_CHECKED / DYNAMIC_NOT_RUN** | B草案と新trace、EX02の職種・サービスレビュー |
+| R05 | 6項目に中断・役割・引継ぎ・変更・振り返りがあり、個人責任のスコアはない | **SOURCE_CHECKED / DYNAMIC_NOT_RUN** | 実務上の負荷・原因分析の偏りをEX02で確認 |
+| R06 | `worksheet.tsx`に本人意思の配慮、強制処置の提案なし | **SOURCE_CHECKED / DYNAMIC_NOT_RUN**（個別相談入力は`NOT_APPLICABLE`） | EX01/EX02で自己決定と安全上の対応を確認 |
+| R07 | `input/textarea`なし、enum選択のみ。氏名・処方・事故記録の入力禁止 | **STATIC_CONSISTENT / DYNAMIC_NOT_RUN** | DOMとupload導線、feedbackを実ブラウザで確認 |
+| R08 | 個別事故報告要否の判定ロジックなし。正式手順・自治体確認の一般的案内 | **SOURCE_CHECKED / DYNAMIC_NOT_RUN**（個別質問入力は`NOT_APPLICABLE`） | 選択変更後の画面とEX02による報告ルート確認 |
+| R09 | `unknown`→相談事項、`not-applicable`→対象外理由の確認、全`confirmed`→非保証文 | **SOURCE_CHECKED / DYNAMIC_NOT_RUN** | 全未回答・全対象外・全確認の実操作 |
+| R10 | 許可した二重構造・stage/check各enum・キー数以外は`valid=false`の固定エラー | **SOURCE_CHECKED / DYNAMIC_NOT_RUN** | null/改ざん/余分キー/型不正を独立した実行で再検証 |
+| R11 | form/modelに明示的`fetch`、XHR、beacon送信コードなし | **STATIC_CONSISTENT / NETWORK_NOT_RUN** | **必須**: 各選択値がrequest body/query/header/Analyticsに含まれないことをDevToolsで実測 |
+| R12 | form/modelに回答のlocal/session/IndexedDB保存・URL埋込コードなし | **STATIC_CONSISTENT / STORAGE_NOT_RUN** | **必須**: reload・戻る・history・query/hash・Storage・clipboardを実測 |
+| R13 | 印刷は明示ボタン、resetはconfirm、`medicationPrint`に固定項目のみ | **SOURCE_CHECKED / PRINT_OFFLINE_NOT_RUN** | 実印刷、PDF、offline、連続reset、画面復元を確認 |
+| R14 | label / role=status / aria-live、既存Playwrightに390px検証定義あり | **SOURCE_CHECKED / ACCESSIBILITY_NOT_RUN** | 390px、**200% zoom**、キーボードのみ、focus移動、読み上げ、実Android確認 |
+| R15 | 試作結果が責任者・関係職種への相談であり、人数・専任配置を義務化する判定はない | **SOURCE_CHECKED / HUMAN_REVIEW_NOT_DONE** | 現場での手順負荷、中断をEX02でレビュー |
+| R16 | main registry・tools・sitemapに誤薬tool登録なし。**本番新route HTTP 404** | **PASS（現行production直接URLのHTTPのみ） / PREVIEW_ACCESS_NOT_ESTABLISHED** | public previewにflag有効の匿名到達性がないことを証明。noindexのみでは不十分 |
+
+**解釈:** R01/02/06/08など質問文を入力する方式の試験が該当しないのは、攻撃を受ける自由入力機能がないため。**UI・固定出力の誤解リスクや専門職審査までN/Aにするものではない。** R03/09/10も独立ブラウザ操作のPASSではない。
+
+### 7.3 P01〜P07：privacy・通信・feedbackの個別記録
+
+| ID | 今回の証拠 | 判定 |
+| --- | --- | --- |
+| P01 | C head `worksheet.tsx`：enumのselectのみ、自由入力・添付なし。印刷セクションも固定項目 | **STATIC_CONSISTENT / BROWSER_NOT_RUN** |
+| P02 | Cのコンポーネント内に明示的な回答送信APIなし。既存layoutにはVercel Analyticsあり | **STATIC_CONSISTENT / NETWORK_PAYLOAD_NOT_RUN** |
+| P03 | query/hash/history更新・clipboard APIによる回答コピーの明示的な処理なし | **STATIC_CONSISTENT / BROWSER_NOT_RUN** |
+| P04 | component/model内にlocal/session/IndexedDBの永続化処理なし | **STATIC_CONSISTENT / STORAGE_RUNTIME_NOT_RUN** |
+| P05 | `window.print()`とリセット確認ダイアログ、匿名表示はコードに存在する | **STATIC_CONSISTENT / PRINT_RELOAD_OFFLINE_NOT_RUN** |
+| P06 | Cのソースにcustom eventはなく、CI browser testのrequest監視は定義されている | **STATIC_CONSISTENT / ANALYTICS_PAYLOAD_NOT_RUN**。PVを安全効果と混同しない |
+| P07 | Cの試作にはfeedback送信CTAを設けていない | **NOT_APPLICABLE（このrouteにfeedback導線なし）**。Bの公開候補ではGitHub Issuesへの公開投稿注意を必須レビュー項目として残す |
+
+**重要:** P02の「回答通信なし」は**未実証**。ブラウザ実測前に通信全体ゼロや匿名化保証を表示しない。
+
+### 7.4 U01〜U06：表示・操作・公開遮断の個別記録
+
+| ID | 今回の証拠 | 判定 |
+| --- | --- | --- |
+| U01 | Cが390px Playwright試験を定義。200% zoomを確認する独立検査はテスト定義に見当たらない | **D_BROWSER_NOT_RUN / 200_PERCENT_NOT_RUN** |
+| U02 | `<label>`、`aria-live="polite"`、状態通知あり | **STATIC_CONSISTENT / KEYBOARD_FOCUS_SCREENREADER_NOT_RUN** |
+| U03 | `deriveReview`の入力構造・固定出力を独立にコード照合。Cの単体テストも存在 | **SOURCE_CHECKED / D_DYNAMIC_NOT_RUN** |
+| U04 | `medicationPrint`には選択式の固定項目を出力する設計 | **STATIC_CONSISTENT / ACTUAL_PRINT_PREVIEW_NOT_RUN** |
+| U05 | public registry / sitemap非登録、productionのroute=404を独立検査。flagは認証ではない | **PASS（限定したproduction HTTP）/ REVIEW_PREVIEW_ACCESS_NOT_ESTABLISHED** |
+| U06 | Vercel本番でhome + 5 Issue + 5 toolの**11ルートすべてHTTP 200**、`/sitemap.xml` 200 | **PASS（HTTP応答に限る）/ INTERACTION_NOT_RUN** |
+
+### 7.5 静的独立検査の再現条件と本番HTTP証拠
+
+GitHub上のC headファイルに対し、Dがコードの存在・不在を照合する独立した18検査を実行した。内容は、(1)選択式限定、(2)入力構造・enum拒否、(3)固定エラー、(4)全確認時の非保証、(5)対象外の理由確認、(6)事故時案内、(7)他サービスへ無条件転用禁止、(8)本人意思・負担、(9)明示送信API不在、(10)明示永続化API不在、(11)印刷・reset明示、(12)label/ARIA、(13)server flag / 404、(14)noindex、(15)公開registry非登録、(16)risk score不在、(17)Cのflag別テスト分岐、(18)**200%検査がないことの検出**。**18/18が想定と一致**したが、これはソースの有限なパターン照合であり、動的動作を網羅しない。最後の(18)は明確なgapの検出であって「ズームPASS」ではない。
+
+Vercel project `kaigo-ops`、production deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S`、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、target `production`、state `READY`、alias `ops-site-pi.vercel.app`をVercel APIで今回直接照合。Vercel fetchによる独立HTTP検査は次のとおり（各応答本文に個人情報を入力していない）。
+
+- **200**: `/`、`/issues/information-search`、`/issues/documentation`、`/issues/training-handover`、`/issues/communication-collaboration`、`/issues/productivity-utilization`、`/tools/information-inventory`、`/tools/documentation-review`、`/tools/training-handover-inventory`、`/tools/communication-review`、`/tools/work-time-review`、`/sitemap.xml`。
+- **404**: `/tools/medication-safety-preview`。
+- Vercel fetchはHTTP/HTML確認であり、画面内での入力・印刷・Android操作は実行していない。
+- C head `dd7ccdc...` のGitHub check-runは `preview`、`build`×2、`publication-readiness`が2026-10-08に**success**。C自身のCIとDの独立検査は別の証拠として保持する。
+
+### 7.6 現時点での重大な注意・再試験条件
+
+1. **証拠不足（重大）**: 認証済みのflag-enabled環境がなく、独立した動的red-team/privacy・200%・keyboard・実印刷ができていない。解消までは一般公開不可。
+2. **専門職未実施**: EX01/EX02の対象版に紐付いた署名不要の非識別review ID・結果なし。HU01公開承認なし。
+3. **サービス適用未確立**: 施設p38〜39の手順・確認工程を通所・訪問へ一律適用する根拠はない。段落traceと服務範囲の記録を再照合する。
+4. **UI語彙要検討**: `確認できる（自己申告）`は安全認証ではない。点検を完了したと見える表示・印刷をEX01/EX02と利用者視点で検証する。
+5. **新PRはdocs-only**。Cをmainに統合しない。Dは新たな公開Issue/tool・Analytics custom event・production deploymentを行わない。
+
+**D最終：`SAFETY_PARTIAL_WITH_GAPS`。重大事故助言・漏えい・無断公開の発生を独立動的検査で立証したわけではないため`SAFETY_BLOCKED`とは判定しないが、公開ゲートは未充足。Eには`PREVIEW_ONLY / NOT_PUBLIC`継続を推奨。**
