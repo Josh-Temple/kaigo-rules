@@ -136,3 +136,64 @@ This section updates the older §1/§6 snapshots; those remain historical. **REV
 4. **HU01:** human public-approval decision **NOT_DONE**. E must retain **NOT_PUBLIC** until all technical and human gates are satisfied.
 
 All previous blank review-ID/date/decision fields remain blank. The test-results §9 tables provide R01–R16/P01–P07/U01–U06 case evidence, scope, limitations and retest conditions. No individual patient, actual accident, medicine or prescription details are included.
+
+
+---
+
+## 8. 2026-10-09 最終版の専門職審査に向けた非公開pack（履歴を保持）
+
+**状態**：`REVIEW_PACK_READY`（版付き質問票を準備したことのみ）/ `REVIEW_REQUESTED=false` / `EX01=EXPERT_REVIEW_NOT_DONE` / `EX02=EXPERT_REVIEW_NOT_DONE` / `HU01=HUMAN_APPROVAL_NOT_DONE` / `NOT_PUBLIC`。レビュー実施者・署名・承認結果は存在しないため記録しない。
+
+### 8.1 審査対象の版台帳と資料
+
+| 対象 | 固定参照・再確認方法 | 現状態 |
+| --- | --- | --- |
+| 公式資料 | 厚労省介護保険最新情報Vol.1436（2025-11-07）冊子38/39/46頁・PDFゼロ起算40/41/48頁、Vol.1332（2024-11-29）PDFゼロ起算p2。一次資料と通知/推奨/一事例/法令義務を分離 | D限定再閲覧。全サービス実施権限はNOT_ESTABLISHED |
+| main / E前回 | `1360bd78d971266c5e635c7a3416d5b4629e1c0e`、2026-10-08 content alignment decision | 前回HOLD、docsのみ |
+| B Issue / service | PR #459 head `364519815a41143560b068cfa459e7a04962f18f`; Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25`、service blob `e3889c26c5b46d4644b29d94c657e628c96206d3` | B案固定。サービス・専門職権限はREVIEW_REQUIRED |
+| A trace | PR #458 head `cbdaddd843db2d1b193b34738272c538086039d1`、blob `0b042421f49ae5213f80b71e4cf04c502d32c1f9` | **旧Bへの独立trace**。最終B blobの認証ではない |
+| C candidate | draft PR #451 `7ec2fe8c644d0526af1650e857a7da397488a0ad`; page blob `cfa6f30633c5c8536b570c4c82b2794cd4353320`; worksheet blob `2ecd0475681f5a822da0f3dbe32c4610a041d47c`; model blob `9580e9202209f5e3fdf3b544b628d68885062295` | Draft / unmerged、localhost以外のflag-enabledを使わない |
+| D独立CI | [PR #457](https://github.com/Josh-Temple/kaigo-rules/pull/457) / [CI #37844281038](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038)（新C target）。旧CI #37782952341は旧C版のみ | [29ケース台帳 §10](./medication-safety-test-results.md)、限定測定結果とNOT_RUNを区別 |
+| production / exposure | Vercel `kaigo-ops` `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` READY、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `ops-site-pi.vercel.app` | C branch deployment 0件観測、preview access restriction = NOT_ESTABLISHED |
+
+このpackは安全性・事故防止効果・服薬行為の適法性を示すものではない。レビュー対象のCまたはBの意味・版に変更があった場合、変更後のSHA/blob、対応するA独立追跡とD再試験の実測を差し替え、版が揃うまで審査の最終PASSを保留する。
+
+### 8.2 EX01：実在する薬剤師・看護職等への確認質問（未依頼）
+
+1. Vol.1436冊子p38（MS-07）に服薬後確認工程についての推奨があることを正しく説明できているか。掲載の方法を本ツールが全サービス・全職種に指示したように読めないか。
+2. 画面開始時、全6項目confirmed、全6項目not-applicable、混合、架空例、結果・印刷の各状態で、医療判断・再投与・投薬可否・事故報告の要否が決まったかのように見えないか。
+3. 「配薬準備」「服薬確認」「指示変更」の語が、介護職・看護職・医師・薬剤師の権限や、指示の正しさ／変更の有効性を暗黙に認定しないか。
+4. 本人が服薬を拒否する場合、個別医学的対応を決めずに本人意思と尊厳を尊重できる文言か。事故・服薬疑義が現にある場合の正式手順への案内は適切か。
+5. 結果・印刷の固定文 `WORKFLOW_BOUNDARY` と他の表示警告の意味の差、情報の視認順序、印刷後の独り歩きに問題はないか。必要な修正文を文面/画面位置ごとに示してほしい。
+
+### 8.3 EX02：実在する介護事故防止・リスク管理責任者への確認質問（未依頼）
+
+1. 中断・兼務・変更情報受領・連携・役割・振り返りの6項目が、職員個人の「不注意」に原因を還元せず実務として使えるか。新たな負担や不合理な二人確認義務に見えないか。
+2. 介護保険施設、短期入所、認知症GH・特定施設、住宅型・サ高住、通所、訪問、居宅介護支援・介護予防支援について、実在する業務と職種の権限・正式手順をそれぞれ確認できるか。施設の一事例が全サービスへ転用されていないか。
+3. 全confirmed／全担当範囲外の結果が誤安心につながらず、管理者・関係職種との確認が必要だと伝わるか。
+4. 実際の事故や疑義がある場合に点検シートから離れて正式な組織内対応に移れるか。自治体報告の要否・期限はサイトが自動決定しないか。
+5. このシートが正式な事故記録や法令遵守チェック・職員評価・事故件数減少の証拠に転用されないよう、追加すべき注意書きはあるか。
+
+### 8.4 HU01：実在の内容・公開責任者への承認項目（EX01/EX02実査後のみ）
+
+1. BのIssue/service最終blob、Aによるその**正確なB版**へのsource trace、C候補3 blob、D最終run、EX01/EX02の具体的修正・再審査結果が同一の公開版を指すか。
+2. 対象サービス・職種・掲載場所・訂正窓口・改訂責任者・問い合わせ責任者・誤情報に対する緊急HOLD手順を明示できるか。
+3. Android、ブラウザネイティブ拡大、スクリーンリーダー、印刷実物、privacy network、公開route・preview access制御の未実施項目を解決しているか。
+4. 上記の全ゲートの証拠があって初めて `GO_FOR_PUBLICATION` か `HOLD` を、指定したcommit/blobsとサービス/公開範囲に対して**本人が明示**したか。
+
+### 8.5 非識別・未記入の実レビュー記録様式（**未実施**）
+
+| 必須記録 | EX01 | EX02 | HU01 |
+| --- | --- | --- | --- |
+| 実際の担当者（公開しない）への資格・権限確認 | 未実施 | 未実施 | 未実施 |
+| 匿名review ID | 未付与 | 未付与 | 未付与 |
+| 審査対象C commit / B issue+service blobs / A trace blob | 未確認 | 未確認 | 未確認 |
+| source edition・冊子/PDF pages | 未確認 | 未確認 | 未確認 |
+| 実施日時（JST）・実施形態 | 未実施 | 未実施 | 未実施 |
+| 指摘ID・対象文/画面・重大度 | 未記入 | 未記入 | 未記入 |
+| 修正commit/blob・再試験run・再審査結果 | 未記入 | 未記入 | 未記入 |
+| 明示結果 | `EXPERT_REVIEW_NOT_DONE` | `EXPERT_REVIEW_NOT_DONE` | `HUMAN_APPROVAL_NOT_DONE` |
+
+**安全な実施手順**：正当な権限と明示の送付許可を得た後、対象版を再取得し非識別の情報だけで専門職へレビューを依頼する。実際に完了した時だけ匿名ID・役割・版・指摘・対応・再検査・結果・日時を記録する。実名・所属・署名・連絡先、本人・薬剤・処方・事故記録はpublic repositoryへ保存しない。EはEX01/EX02の実記録とHU01本人の明示承認がなければ公開HOLDを維持する。
+
+**引き渡し判定**：`REVIEW_PACK_READY`（質問と固定対象資料まで）/ `EXPERT_REVIEW_NOT_DONE` / `HUMAN_APPROVAL_NOT_DONE` / `SAFETY_PARTIAL_WITH_GAPS` / `PREVIEW_ONLY / NOT_PUBLIC`。試作は未承認・非公開を維持する。
