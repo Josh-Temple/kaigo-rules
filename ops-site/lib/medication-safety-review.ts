@@ -5,9 +5,9 @@
  */
 export const PROCESS_STAGES = [
   { value: "unselected", label: "工程を選択してください" },
-  { value: "instruction-update", label: "指示変更の受領・共有" },
-  { value: "preparation", label: "準備・確認" },
-  { value: "administration-check", label: "配薬・服薬確認の運用" },
+  { value: "instruction-update", label: "変更情報の受領・共有" },
+  { value: "preparation", label: "配薬準備の運用" },
+  { value: "administration-check", label: "配薬・服薬確認に関する運用" },
   { value: "record-handover", label: "記録・引き継ぎ" },
 ] as const;
 
@@ -21,11 +21,11 @@ export const CHECK_FIELDS = [
 ] as const;
 
 export const CHECK_STATES = [
-  { value: "unknown", label: "未確認" },
-  { value: "confirmed", label: "確認できる（自己申告）" },
-  { value: "needs-review", label: "見直しが必要" },
-  { value: "not-prepared", label: "未整備" },
-  { value: "not-applicable", label: "対象外（要確認）" },
+  { value: "unknown", label: "まだ確認していない" },
+  { value: "confirmed", label: "取扱いを把握している（自己申告・未検証）" },
+  { value: "needs-review", label: "相談したい点がある" },
+  { value: "not-prepared", label: "取り決めが見つからない" },
+  { value: "not-applicable", label: "自分の担当範囲では扱わない（責任者確認前）" },
 ] as const;
 
 export type ProcessStage = (typeof PROCESS_STAGES)[number]["value"];
@@ -96,21 +96,21 @@ export function deriveReview(input: unknown): ReviewResult {
   for (const field of CHECK_FIELDS) {
     const status = checks[field.key];
     if (status === "unknown") {
-      lines.push(`「${field.label}」：運用状況を正式な手順と照合して確認してください。`);
+      lines.push(`「${field.label}」：まだ確認していません。正式な手順の所在と実際の取扱いを責任者・関係職種に確認してください。`);
     } else if (status === "needs-review") {
-      lines.push(`「${field.label}」：責任者・関係職種と見直す論点として整理してください。`);
+      lines.push(`「${field.label}」：相談したい点として、責任者・関係職種と確認してください。`);
     } else if (status === "not-prepared") {
-      lines.push(`「${field.label}」：整備の必要性と担当を責任者に相談してください。`);
+      lines.push(`「${field.label}」：取り決めが見つからないため、正式手順の所在と整備の要否を責任者に確認してください。`);
     } else if (status === "not-applicable") {
-      lines.push(`「${field.label}」：対象外にできる範囲と理由を正式な手順に照らして確認してください。`);
+      lines.push(`「${field.label}」：担当範囲では扱わないという自己申告です。工程の有無と担当権限を責任者・関係職種に確認してください。`);
     }
   }
   return {
     valid: true,
     lines,
     note: lines.length
-      ? "これは相談・確認事項の整理です。事故確率、医療判断、基準適合、安全性を評価するものではありません。"
-      : "すべて「確認できる」と回答されました。自己申告であり、安全性・事故防止・制度適合を保証しません。正式手順や関係専門職による確認が別途必要です。",
+      ? "これは平時の業務上の相談事項を自己申告で整理する独自の試作です。事故確率、安全性、医療判断、制度適合、実施権限を評価・認証するものではありません。"
+      : "すべて「取扱いを把握している（自己申告・未検証）」を選択しました。手順の正しさ、安全性、事故防止、実施権限、制度適合を保証しません。責任者・関係専門職による確認が別途必要です。",
   };
 }
 
