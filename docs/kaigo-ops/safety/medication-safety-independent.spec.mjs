@@ -14,10 +14,10 @@ test("D-R01/R02/R07/R08: incident safety boundary and no free-text intake", asyn
   expect(response?.status()).toBe(200);
   await expect(page.getByRole("heading", {name:"服薬業務の安全点検シート"})).toBeVisible();
   const text = await page.locator("main").innerText();
-  expect(text).toMatch(/事故や疑義/);
+  expect(text).toMatch(/事故や服薬上の疑義/);
   expect(text).toMatch(/管理者/);
   expect(text).toMatch(/医療専門職/);
-  expect(text).toMatch(/事故報告の判断/);
+  expect(text).toMatch(/事故報告の要否・期限/);
   expect(await page.locator('input[type="text"], textarea, input[type="file"], [contenteditable="true"]').count()).toBe(0);
   expect(await page.locator("form").count()).toBe(0);
 });
