@@ -78,3 +78,109 @@ test.describe("explicitly enabled medication safety preview", () => {
     expect(overflow).toBe(false);
   });
 });
+
+
+test("all-confirmed and all-not-applicable never produce a safety approval", async ({ page }) => {
+  test.skip(!enabled, "Restricted local preview only.");
+  await page.goto(route);
+  await page.getByRole("combobox", { name: "点検する工程" }).selectOption("preparation");
+  const fields = page.locator(".medicationQuestions select");
+  expect(await fields.count()).toBe(6);
+  for (let i = 0; i < 6; i += 1) await fields.nth(i).selectOption("confirmed");
+  await expect(page.locator(".medicationResult")).toContainText("安全性・事故防止・制度適合を保証しません");
+  await expect(page.locator(".medicationResult")).not.toContainText("安全が確認");
+  for (let i = 0; i < 6; i += 1) await fields.nth(i).selectOption("not-applicable");
+  await expect(page.locator(".medicationResult li")).toHaveCount(6);
+  await expect(page.locator(".medicationResult")).toContainText("対象外にできる範囲と理由");
+  await expect(page.locator(".medicationResult")).toContainText("安全性を評価するものではありません");
+});
+
+test("selections never enter network URLs, headers, request bodies, browser URL or storage", async ({ page }) => {
+  test.skip(!enabled, "Restricted local preview only.");
+  const requests = [];
+  page.on("request", request => requests.push({
+    url: request.url(),
+    headers: request.headers(),
+    postData: request.postData(),
+  }));
+  await page.goto(route);
+  await page.getByRole("combobox", { name: "点検する工程" }).selectOption("record-handover");
+  await page.getByRole("combobox", { name: /業務手順が文書化され/ }).selectOption("not-applicable");
+  await page.getByRole("combobox", { name: /担当と引き継ぎ先/ }).selectOption("needs-review");
+  await page.getByRole("combobox", { name: /作業中断や兼務/ }).selectOption("not-prepared");
+  await expect(page.locator(".medicationResult")).toContainText("対象外にできる範囲");
+  const clientState = await page.evaluate(async () => ({
+    url: location.href,
+    history: JSON.stringify(history.state),
+    local: [...Array(localStorage.length)].map((_, i) => {
+      const key = localStorage.key(i);
+      return [key, localStorage.getItem(key)];
+    }),
+    session: [...Array(sessionStorage.length)].map((_, i) => {
+      const key = sessionStorage.key(i);
+      return [key, sessionStorage.getItem(key)];
+    }),
+    indexedDbNames: typeof indexedDB.databases === "function"
+      ? (await indexedDB.databases()).map(db => db.name)
+      : "NOT_SUPPORTED",
+  }));
+  await page.waitForTimeout(350); // Allow pageview requests to be observed; they are not answer transmissions.
+  const markers = ["record-handover", "not-applicable", "needs-review", "not-prepared"];
+  const transmitted = JSON.stringify(requests);
+  const persisted = JSON.stringify(clientState);
+  for (const marker of markers) {
+    expect(transmitted, "request URL/header/body exposed a selected state: " + marker).not.toContain(marker);
+    expect(persisted, "URL/history/storage exposed a selected state: " + marker).not.toContain(marker);
+  }
+  expect(new URL(clientState.url).search).toBe("");
+  expect(new URL(clientState.url).hash).toBe("");
+  expect(clientState.indexedDbNames).not.toBe("NOT_SUPPORTED");
+  expect(clientState.indexedDbNames).toEqual([]);
+  // Ordinary Next.js and Vercel pageview requests are allowed; only answer-bearing requests fail.
+  await page.reload();
+  await expect(page.getByRole("combobox", { name: "点検する工程" })).toHaveValue("unselected");
+  await expect(page.getByRole("combobox", { name: /業務手順が文書化され/ })).toHaveValue("unknown");
+  await page.goto("/");
+  await page.goBack();
+  expect(new URL(page.url()).pathname).toBe(route);
+  expect(new URL(page.url()).search).toBe("");
+  expect(new URL(page.url()).hash).toBe("");
+});
+
+test("cancelled reset preserves choices, repeated reset clears them, print layout has explicit boundaries", async ({ page }) => {
+  test.skip(!enabled, "Restricted local preview only.");
+  await page.goto(route);
+  const stage = page.getByRole("combobox", { name: "点検する工程" });
+  await stage.selectOption("instruction-update");
+  page.once("dialog", dialog => dialog.dismiss());
+  await page.getByRole("button", { name: "選択内容を消去" }).click();
+  await expect(stage).toHaveValue("instruction-update");
+  page.once("dialog", dialog => dialog.accept());
+  await page.getByRole("button", { name: "選択内容を消去" }).click();
+  await expect(stage).toHaveValue("unselected");
+  page.once("dialog", dialog => dialog.accept());
+  await page.getByRole("button", { name: "選択内容を消去" }).click();
+  await expect(stage).toHaveValue("unselected");
+  await page.emulateMedia({ media: "print" });
+  await expect(page.locator(".medicationPrint")).toBeVisible();
+  await expect(page.locator(".medicationWorksheet > .section").first()).toBeHidden();
+  await expect(page.locator(".medicationPrint")).toContainText("安全性、制度適合、医療上の判断を保証しません");
+  const pdf = await page.pdf();
+  expect(pdf.subarray(0, 4).toString()).toBe("%PDF");
+});
+
+test("200 percent CSS zoom emulation keeps controls and safety boundaries operable", async ({ page }) => {
+  test.skip(!enabled, "Restricted local preview only.");
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto(route);
+  await page.evaluate(() => { document.documentElement.style.zoom = "200%"; });
+  const stage = page.getByRole("combobox", { name: "点検する工程" });
+  await stage.focus();
+  await expect(stage).toBeFocused();
+  await stage.selectOption("record-handover");
+  await expect(page.locator(".medicationResult")).toContainText("記録・引き継ぎ");
+  await expect(page.locator(".medicationBoundary").first()).toBeVisible();
+  await expect(page.locator(".medicationResult")).toHaveAttribute("aria-live", "polite");
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
+  expect(overflow, "Horizontal overflow at CSS zoom 200%").toBe(false);
+});
