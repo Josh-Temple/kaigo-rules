@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 // These tests cover public information navigation only, not clinical accuracy.
 // No care records, drug names, incident descriptions, or patient data are entered.
 const guidePath = '/guides/medication-incident-sources';
+const fallPath = '/guides/fall-prevention-sources';
 const publicUrl = 'https://ops-site-pi.vercel.app';
 
 test('home links to the source-only guide; headings, metadata and sources are accessible', async ({ page }) => {
@@ -36,7 +37,9 @@ test('home links to the source-only guide; headings, metadata and sources are ac
     // as the source list; no second-step navigation is required.
     const originalHref = await source.getAttribute('href');
     const directLink = citation.getByRole('link', { name: /原文を新しいタブで開く/ });
-    await expect(directLink).toHaveAttribute('href', originalHref);
+    // Direct links may point into the PDF via #page, while the list retains the document URL.
+    const directHref = await directLink.getAttribute('href');
+    expect(directHref === originalHref || directHref.startsWith(`${originalHref}#page=`)).toBe(true);
     await expect(directLink).toHaveAttribute('target', '_blank');
     await expect(directLink).toHaveAttribute('rel', /noreferrer/);
   }
@@ -98,6 +101,7 @@ test('sitemap, robots and the held interactive preview remain separate', async (
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
   expect(xml).toContain(`${publicUrl}${guidePath}`);
+  expect(xml).toContain(`${publicUrl}${fallPath}`);
   expect(xml).not.toContain('/tools/medication-safety-preview');
 
   const robots = await request.get('/robots.txt');
@@ -106,4 +110,66 @@ test('sitemap, robots and the held interactive preview remain separate', async (
 
   const hidden = await request.get('/tools/medication-safety-preview');
   expect(hidden.status()).toBe(404);
+});
+
+test('B-reviewed medication changes put immediate safety before contents and limit legal/reporting claims', async ({ page }) => {
+  await page.goto(guidePath);
+  const lead = page.locator('.issueHero .lead');
+  const priority = page.locator('.issueHero .sourceGuidePriority');
+  await expect(priority).toContainText('実際に事故が起きている場合');
+  expect(await lead.evaluate(el => el.compareDocumentPosition(document.querySelector('.sourceGuidePriority')) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy();
+  await expect(page.getByRole('heading', { name: '服薬の間違いだけで、刑事責任が決まるわけではありません。' })).toBeVisible();
+  await expect(page.locator('#report')).toContainText('対象サービスには違いがあります');
+  await expect(page.locator('#report')).toContainText('様式の活用');
+  await expect(page.locator('#report')).toContainText('目安');
+  await expect(page.locator('#minor')).toContainText('高齢者向け住まいに関する研究報告書');
+  await expect(page.locator('#report a[href$="#page=4"]')).toHaveCount(1);
+  await expect(page.locator('#minor a[href$="#page=57"]')).toHaveCount(1);
+});
+
+test('fall source guide is static, directly cited, and separate from unpublished prototype', async ({ page }) => {
+  const home = await page.goto('/');
+  expect(home?.status()).toBe(200);
+  await expect(page.locator(`a[href="${fallPath}"]`)).toBeVisible();
+  const response = await page.goto(fallPath);
+  expect(response?.status()).toBe(200);
+  await expect(page.locator('article h1')).toHaveCount(1);
+  await expect(page.locator('.issueHero .sourceGuidePriority')).toContainText('事故が現に起きている場合');
+  await expect(page.getByRole('heading', { name: '原文を読む' })).toHaveCount(1);
+  await expect(page.locator('#sources .sourceRow')).toHaveCount(2);
+  await expect(page.locator('#factors a[href$="#page=33"]')).toHaveCount(1);
+  await expect(page.locator('#dignity a[href$="#page=33"]')).toHaveCount(1);
+  await expect(page.locator('#bed a[href$="#page=35"]')).toHaveCount(1);
+  await expect(page.locator('#report a[href$="#page=3"]')).toHaveCount(1);
+  await expect(page.locator('#report a[href$="#page=4"]')).toHaveCount(1);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${publicUrl}${fallPath}`);
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', `${publicUrl}${fallPath}`);
+  await expect(page.locator('article input, article textarea, article select, article button')).toHaveCount(0);
+  await expect(page.locator('a[href="/tools/medication-safety-preview"]')).toHaveCount(0);
+  for (const citation of await page.locator('article .sourceGuideCitation').all()) {
+    const original = citation.locator('a[target="_blank"]');
+    await expect(original).toHaveAttribute('rel', /noreferrer/);
+    const direct = await original.getAttribute('href');
+    expect(direct).toMatch(/^https:\/\/www\.mhlw\.go\.jp\/content\/[0-9]+\.pdf#page=[0-9]+$/);
+  }
+});
+
+test('fall page 390px, keyboard, CSS 200% proxy, reduced motion and print URLs', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(fallPath);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)).toBe(false);
+  const first = page.getByRole('navigation', { name: 'この記事の目次' }).getByRole('link').first();
+  await first.focus();
+  await expect(first).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/#factors$/);
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.evaluate(() => { document.documentElement.style.zoom = '2'; });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)).toBe(false);
+  await page.evaluate(() => { document.documentElement.style.zoom = '1'; });
+  await page.emulateMedia({ media: 'print' });
+  expect(await page.locator('.sourceGuideContents').evaluate(el => getComputedStyle(el).display)).toBe('none');
+  const source = page.locator('#sources .sourceRow').first();
+  expect((await source.evaluate(el => getComputedStyle(el, '::after').content))).toContain('attr(href)');
 });
