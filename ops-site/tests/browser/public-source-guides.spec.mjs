@@ -124,6 +124,7 @@ test('B-reviewed medication changes put immediate safety before contents and lim
   await expect(page.locator('#report')).toContainText('目安');
   await expect(page.locator('#minor')).toContainText('高齢者向け住まいに関する研究報告書');
   await expect(page.locator('#report a[href$="#page=4"]')).toHaveCount(1);
+  await expect(page.locator('#report a[href$="#page=2"]')).toHaveCount(1);
   await expect(page.locator('#minor a[href$="#page=57"]')).toHaveCount(1);
 });
 

@@ -147,7 +147,8 @@ export default function MedicationIncidentSourcesPage() {
             同通知では、第1報の提出を事故発生後速やかに、遅くとも5日以内を<strong>目安</strong>としています。
             一律の法定期限と読み替えず、事業所の正式手順と自治体の現行の取扱いを確認してください。
             なお、この通知は2021年の旧通知を廃止しています。
-            （<Citation id="mhlw2024" label="2024年通知・本文1〜2頁／PDF2〜3頁・報告期限と旧通知" page={3} />）
+            （<Citation id="mhlw2024" label="2024年通知・本文2頁／PDF3頁・報告期限" page={3} />／
+            <Citation id="mhlw2024" label="同通知・本文1頁／PDF2頁・旧通知の廃止" page={2} />）
           </p>
           {/* MED-A04/05, X-02: 様式の主対象と各サービスの法的報告義務は別。 */}
           <p>

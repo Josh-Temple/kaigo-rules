@@ -2,7 +2,7 @@
 
 - 対象PR: #465（未マージ・E判定待ち）
 - 対象基点: C head `77eb4b391ac722adc1a34024e6c7a33b35179949`、base tree `bba9b7d274355df07535a38ec4c132b9dccebb14`
-- 文章正本: B PR #466 commit `5df748a60b0d3699c751643b47fe77e90aa9a8d2`、編集稿blob `16915a0d6573e534c2661ed24d2cf758ad4c9164`（§2, §3）
+- 文章正本: B PR #466 commit `97389ce1538978abadcf4e2618493b7258995f27`、編集稿blob `1394df30751e408e997524e431a99bf696e52fe9`（§2, §3, §7固定表）。§7で旧通知の廃止はPDF2頁への独立直接リンクを要求するため反映。
 - 出典正本: A統合済み#470、`docs/kaigo-ops/safety/2026-10-09-accident-prevention-public-source-claim-audit.md` blob `7f373c396f9358e0179021f09d95cb2698ce9b1f`（§6）
 - 新記事route: `/guides/fall-prevention-sources`。
 - Cは独立した出典採否・医学／法的判断・専門職審査を行わない。A/B変更が生じた場合は差分を再照合してDを再実施する。

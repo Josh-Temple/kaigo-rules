@@ -29,6 +29,7 @@ for (const sourceUrl of [
 ]) {
   assert.ok(medicationGuideHtml.includes(sourceUrl), `medication guide source: ${sourceUrl}`);
 }
+assert.ok(medicationGuideHtml.includes('001574219.pdf#page=2'), '2024 notice legacy repeal paragraph must link PDF p2');
 assert.ok(!medicationGuideHtml.includes('服薬業務の安全点検シートを開く'), 'unapproved interactive preview remains isolated');
 console.log('PASS /guides/medication-incident-sources');
 
