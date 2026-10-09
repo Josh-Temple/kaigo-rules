@@ -78,6 +78,19 @@ export default function Home() {
         </ol>
       </section>
 
+      <section className="section" aria-labelledby="medication-incident-guidance">
+        <p className="eyebrow">公的資料に基づく安全上の注意</p>
+        <h2 id="medication-incident-guidance">服薬事故の注意点を、元資料から確認する。</h2>
+        <p>
+          誤薬や与薬漏れが疑われる際の初動、医療職との連携、事故報告の対象を、
+          厚生労働省等の一次資料に沿って整理しました。
+          個別の医療判断や事故報告の要否は判定しません。
+        </p>
+        <a className="textLink" href="/guides/medication-incident-sources">
+          服薬事故の注意点と出典を見る →
+        </a>
+      </section>
+
       <section className="section boundary">
         <p className="eyebrow">Rules & operations</p>
         <h2>制度の確認と、経営・運営・業務改善の検討は分けて扱います。</h2>
