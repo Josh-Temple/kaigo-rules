@@ -217,3 +217,12 @@ The production state in the preceding subsection is the historical Public Discov
 - 実Android、native 200% zoom、screen readerの人間聴取、印刷プレビュー／紙の人手評価、外部preview access制御は未確立。EX01/EX02実在審査未依頼・未実施、HU01本人の公開承認なし。
 - Vercel APIで再取得したproductionは既存`dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S`／READY／runtime `e49e770a970e541d2ad95204ad277eca89a485d3`／alias `https://ops-site-pi.vercel.app/`。本Eの直接HTTP取得は環境エラーで**NOT_RUN**（旧11 route 200／preview route 404は履歴）。productionの新release・実ブラウザ確認なし。Analytics `RECEIVE_CONFIRMED`とSearch Console `UNKNOWN`は継承。
 - `REVIEW_PACK_READY`と`REVIEW_REQUESTED`は別。送付先と権限・明示許可が整うまで外部連絡なし。Issue 6の「収支・コスト構造」候補は変更しない。既存の観測レビュー時期2026-10-21前後〜11-04前後を維持。
+
+
+## 2026-10-09 公的資料に基づく服薬事故の注意情報（試作ツールと別）
+
+[公的資料に基づく出典・公開境界記録](./safety/2026-10-09-medication-incident-public-source-guide-evidence.md)。厚生労働省2025年ガイドライン、2017年の高齢者向け住まい研究報告、2024年事故報告通知、PMDA、刑法211条に基づく**静的な注意情報ページ** `/guides/medication-incident-sources` を[PR #463](https://github.com/Josh-Temple/kaigo-rules/pull/463)でmainへ統合。2017資料の「別の薬を飲ませた場合は自己判断で軽視せず受診」の推奨を全サービス共通の法的義務へ一般化しない。事故報告の対象と自治体運用、刑事責任の成立要件は分離。全文転載ではなく要約と元資料リンクを掲載し、個別医療判断・入力・診断機能なし。
+
+**Vercelによるproduction反映：** deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`、READY、exact runtime SHA `ffd70abb5723e950a0a1036795f28da31614a1f3`、alias `https://ops-site-pi.vercel.app/` をAPI readback。今回の環境では外部DNSが解決できず、新ルート・既存11ルート・試作404等の直接HTTP/実ブラウザ確認は**NOT_ESTABLISHED**。日次deploy verifierによる本番成功を確認したとは扱わず、`deploy-state/kaigo-ops`を更新しない。外部取得可能な環境でURL/表示/404/sitemap/canonicalと390px操作を確認し再記録する。
+
+**独立の公開HOLD：** 回答選択型の服薬安全点検ツール [C #451](https://github.com/Josh-Temple/kaigo-rules/pull/451) は依然draft/未マージ/非公開。EX01/EX02専門職レビューとHU01公開承認は未実施のまま保留。5 Issue・5 action toolのregistryは変更なし。
