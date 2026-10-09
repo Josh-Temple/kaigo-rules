@@ -24,12 +24,21 @@ test('home links to the source-only guide; headings, metadata and sources are ac
   await expect(page).toHaveURL(/#sources$/);
   await expect(page.getByRole('heading', { name: '原文を読む' })).toBeVisible();
 
-  const citations = page.locator('article a[href^="#source-"]');
+  const citations = page.locator('article .sourceGuideCitation');
   expect(await citations.count()).toBeGreaterThan(0);
   for (const citation of await citations.all()) {
-    const href = await citation.getAttribute('href');
+    const indexLink = citation.locator('a[href^="#source-"]');
+    const href = await indexLink.getAttribute('href');
     expect(href).toMatch(/^#source-[a-z0-9]+$/);
-    await expect(page.locator(href)).toHaveCount(1);
+    const source = page.locator(href);
+    await expect(source).toHaveCount(1);
+    // The citation must have a direct link to exactly the same official source
+    // as the source list; no second-step navigation is required.
+    const originalHref = await source.getAttribute('href');
+    const directLink = citation.getByRole('link', { name: /原文を新しいタブで開く/ });
+    await expect(directLink).toHaveAttribute('href', originalHref);
+    await expect(directLink).toHaveAttribute('target', '_blank');
+    await expect(directLink).toHaveAttribute('rel', /noreferrer/);
   }
 
   const sources = page.locator('#sources .sourceRow');
@@ -76,6 +85,12 @@ test('print layout retains source metadata and hides navigation without printing
   expect(headerDisplay).toBe('none');
   expect(navDisplay).toBe('none');
   await expect(page.getByRole('heading', { name: '原文を読む' })).toHaveCount(1);
+  // Printing must retain the document URL, not just an unlabeled outgoing icon.
+  const printedSource = page.locator('#sources .sourceRow').first();
+  const printedHref = await printedSource.getAttribute('href');
+  expect(printedHref).toMatch(/^https:\\/\\//);
+  const generatedContent = await printedSource.evaluate((el) => getComputedStyle(el, '::after').content);
+  expect(generatedContent).toMatch(/attr\\(href\\)|https:\\/\\//);
 });
 
 test('sitemap, robots and the held interactive preview remain separate', async ({ request }) => {
