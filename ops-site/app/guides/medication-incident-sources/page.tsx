@@ -48,7 +48,7 @@ function Citation({ id, label }: { id: (typeof sourceLinks)[number]["id"]; label
 
 export default function MedicationIncidentSourcesPage() {
   return (
-    <main>
+    <main className="sourceGuidePage">
       <header className="siteHeader">
         <a className="brand" href="/">介護業務改善</a>
         <nav aria-label="主要ナビゲーション">
@@ -72,6 +72,16 @@ export default function MedicationIncidentSourcesPage() {
             <span>個別医療判断・事故報告判定なし</span>
           </div>
         </section>
+
+        <nav className="sourceGuideContents" aria-label="この記事の目次">
+          <strong>このページの内容</strong>
+          <a href="#first-step">事故の疑いがあるとき</a>
+          <a href="#minor">自己判断を避ける</a>
+          <a href="#report">事故報告の範囲</a>
+          <a href="#prevent">再発防止</a>
+          <a href="#law">法的責任の限界</a>
+          <a href="#sources">出典を確認する</a>
+        </nav>
 
         <section className="section issueSummary" aria-labelledby="first-step">
           <p className="eyebrow">最初に確認すること</p>
