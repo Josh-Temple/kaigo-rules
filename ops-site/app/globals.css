@@ -468,3 +468,41 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     flex-direction: column;
   }
 }
+
+
+/* Static public-source guides: navigation and print are not clinical workflows. */
+.sourceGuideContents {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 22px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.sourceGuideContents strong { flex-basis: 100%; }
+.sourceGuideContents a { overflow-wrap: anywhere; }
+.sourceGuidePage .sourceRow { min-width: 0; overflow-wrap: anywhere; }
+.sourceGuidePage .sourceRow > div { min-width: 0; }
+.sourceGuidePage [id^="source-"], .sourceGuidePage h2[id] { scroll-margin-top: 20px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+@media print {
+  .sourceGuidePage .siteHeader,
+  .sourceGuidePage .sourceGuideContents,
+  .sourceGuidePage footer { display: none; }
+  .sourceGuidePage .issueHero { padding: 0 0 14px; }
+  .sourceGuidePage .issueHero h1 { font-size: 25pt; line-height: 1.2; }
+  .sourceGuidePage .issueHero .lead { margin-top: 12px; font-size: 11pt; }
+  .sourceGuidePage .section { padding: 18px 0; }
+  .sourceGuidePage h2 { font-size: 17pt; }
+  .sourceGuidePage .sourceRow { break-inside: avoid; }
+  .sourceGuidePage .sourceRow::after {
+    content: attr(href);
+    grid-column: 2 / -1;
+    font-size: 9pt;
+    overflow-wrap: anywhere;
+  }
+}
