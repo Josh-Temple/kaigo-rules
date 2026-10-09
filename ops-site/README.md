@@ -199,3 +199,10 @@ EX01/EX02は未依頼・未実施、HU01未承認。native zoom 200%、Android�
 最新の[判定記録](../docs/kaigo-ops/safety/2026-10-09-public-source-guides-release-verification-and-expansion-e-decision.md)は `PARTIAL_WITH_GAPS`。出典監査A #467と独立監査D #468は文書だけmainに統合。記事草案B #466（draft）と静的ガイドのナビ・印刷改善C #465（CI success）は未統合。新しい転倒・転落／誤嚥・窒息／異食の公開は全て `PUBLIC_SOURCE_GUIDE_HOLD`（C実装＋同一版D監査不足）。
 
 服薬出典ガイドの既存productionは `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` READY、runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`。alias は `ops-site-pi.vercel.app` に割当。ただしEの実環境からDNS解決できず、HTTP/DOMの新規成功・実機ブラウザ表示は **未確立**。390px/200%/読み上げ/印刷は今回 `NOT_RUN`。`deploy-state/kaigo-ops` は旧検証SHA `e49e770a970e541d2ad95204ad277eca89a485d3` に据え置き。**本Eから新production releaseなし**。基礎11ルート、事故入力なし、旧試作 #451 非公開、EX01/EX02/HU01保留を維持。古い章のHTTP PASSは過去Waveの検証結果で、今回の直接HTTP結果ではない。
+
+
+## 2026-10-10 公的出典ガイドの外部HTTP再検証と公開保留
+
+[Kaigo Ops E判定](../docs/kaigo-ops/safety/2026-10-10-public-source-guide-http-closure-and-claim-aligned-e-decision.md)は`PARTIAL_WITH_GAPS`。専用Vercel production deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`／runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`／aliasの一致を再取得。今回GitHub Actions [read-only public HTTP probe #37993334787](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37993334787)で、既存11 routeと服薬ガイド、試作404、robots/sitemapの**15/15件が期待応答**を返すことを検証。服薬ガイドのHTML canonical/OG・出典アンカーも確認。これは**外部HTTPの証拠**であり、Android Chrome実機・native 200%・読み上げ・印刷／人間の閲覧評価を実施したものではない。
+
+A #470とD #471の出典・監査文書はmain統合済み。B #466／C #465は最終同一版の文章・実装・独立監査条件が未完で、既存記事の法的・報告対象表現の修正と新しい転倒・転落記事は**RELEASE_HOLD／PUBLIC_SOURCE_GUIDE_HOLD**。異食と誤嚥・窒息も今回掲載なし。回答選択式試作#451はdraft・非公開を維持し、EX01/EX02/HU01未依頼・未実施・未承認。新しいdeployment、flag変更、`deploy-state/kaigo-ops`更新は行わない。
