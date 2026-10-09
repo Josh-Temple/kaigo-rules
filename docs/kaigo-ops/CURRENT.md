@@ -226,3 +226,12 @@ The production state in the preceding subsection is the historical Public Discov
 **Vercelによるproduction反映：** deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`、READY、exact runtime SHA `ffd70abb5723e950a0a1036795f28da31614a1f3`、alias `https://ops-site-pi.vercel.app/` をAPI readback。今回の環境では外部DNSが解決できず、新ルート・既存11ルート・試作404等の直接HTTP/実ブラウザ確認は**NOT_ESTABLISHED**。日次deploy verifierによる本番成功を確認したとは扱わず、`deploy-state/kaigo-ops`を更新しない。外部取得可能な環境でURL/表示/404/sitemap/canonicalと390px操作を確認し再記録する。
 
 **独立の公開HOLD：** 回答選択型の服薬安全点検ツール [C #451](https://github.com/Josh-Temple/kaigo-rules/pull/451) は依然draft/未マージ/非公開。EX01/EX02専門職レビューとHU01公開承認は未実施のまま保留。5 Issue・5 action toolのregistryは変更なし。
+
+
+## 2026-10-09 公的事故防止出典ガイド拡充 — E統合判定（最新）
+
+[Worker Eの統合判定](./safety/2026-10-09-public-source-guides-release-verification-and-expansion-e-decision.md)は **`PARTIAL_WITH_GAPS`**。出典台帳 A [#467](https://github.com/Josh-Temple/kaigo-rules/pull/467) と独立監査 D [#468](https://github.com/Josh-Temple/kaigo-rules/pull/468) はdocs-onlyでmainに統合。編集B [#466](https://github.com/Josh-Temple/kaigo-rules/pull/466) はdraft／未merge、情報ページUI C [#465](https://github.com/Josh-Temple/kaigo-rules/pull/465) はCI成功だがDによる最新C headの独立検証を欠き未merge。
+
+**新記事：転倒・転落／誤嚥・窒息／異食の全て `PUBLIC_SOURCE_GUIDE_HOLD`。** Aの `SOURCE_SUPPORTED` はB/C/D同一版審査・公開承認ではない。既存服薬事故情報ページはVercel `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`／READY／runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`、alias `https://ops-site-pi.vercel.app/` はAPI照合済み。しかし本Eの直接HTTPはDNS解決失敗、公開11ルート／服薬ガイド／旧試作404／robots／sitemapの実測は `FRESH_HTTP_NOT_ESTABLISHED`、実Android/200%/読み上げ/印刷は `NOT_RUN`。**`PRODUCTION_NOT_VERIFIED`、新production releaseなし、deploy-state marker据え置き `e49e770a970e541d2ad95204ad277eca89a485d3`。**
+
+既存服薬本文は刑法211条の見出しと2024年事故報告通知の対象サービスにP1修正候補。医療・自治体報告の個別判断は載せない。非公開選択式試作C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) はdraft・未mergeで `PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED`。EX01/EX02は依頼せず審査未実施、HU01未承認。既存5 Issue/5 action tool、Issue 6候補、Analytics schema、観測レビュー期間は不変。
