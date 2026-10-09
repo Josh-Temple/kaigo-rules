@@ -153,3 +153,86 @@ GitHub/Vercel API の独立再取得：
 - **選択式C #451**：PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED。EX01/EX02=NOT_REQUESTED / EXPERT_REVIEW_NOT_DONE、HU01=HUMAN_APPROVAL_NOT_DONE。専門職への依頼・日程調整はしない。
 - **Wave D終端：PARTIAL_WITH_GAPS**。新しい危険な断定の確認なしという限定評価と、P1未修正、B最終文面未確定、実HTTP/実ブラウザ不成立を両立して記録。Eはこの追補だけでrelease GOまたはdeploy-state更新を行わない。
 
+
+
+---
+
+## 9. 2026-10-10 Worker D — medication + fall exact-head independent safety review (current-state limited audit)
+
+**Instruction:** Library \`/Kaigo Ops/Work Instructions/2026-10-10_medication_and_fall_source_guides_exact_head_safety_review_and_controlled_release_wave_instructions.md\`, §6. This is an **independent pre-final review**, not final same-version approval: A/B copy is not yet rendered in C, and C has not submitted the new fall route. Earlier sections remain historical and must not be retroactively treated as checking this head.
+
+### 9.1 Freshly fixed immutable identity and deployment boundary
+
+| Evidence | Exact identity at audit | Scope |
+| --- | --- | --- |
+| repository main | \`6c170418cbc178c7efebc32e76c46b8cbf4c3b32\` | source baseline; **not** production runtime |
+| A #470 merged | head \`b98ff0e527d6bd6b18ea48e461fafc9660a079b9\`; current ledger blob \`7f373c396f9358e0179021f09d95cb2698ce9b1f\` | claim limits, source decisions; §6 crosswalk predates B latest |
+| B #466 draft/open | head \`5df748a60b0d3699c751643b47fe77e90aa9a8d2\`; editorial blob \`16915a0d6573e534c2661ed24d2cf758ad4c9164\` | proposed final medication revision and fall text; **not rendered** |
+| C #465 open/unmerged | head \`77eb4b391ac722adc1a34024e6c7a33b35179949\`; \`globals.css\` blob \`0a5993402fc634526fec1e9d9270cf8043a9728d\`; medication page blob \`3fa8965bc2abc4841c0c5699e1f8b7855a76d1e8\`; browser spec blob \`6f6787c630d273bd76be47ce09c3758da388cfcb\` | navigation/source-direct-link/print regression only; no B clinical/legal rewrite or fall page |
+| current main medication page | blob \`782a1f53c635997817faf46bfe2f4e63721482c2\` | existing published source code; does not incorporate B |
+| prior D #471 merged | head \`c65e366acb5e61bd960d8efe7750470140072b21\`; audited old C \`8e18f9bd54662d246081f4620728ba8c8ff38665\` | **not** same-version approval for C latest |
+| E #473 | head \`30ba214ad9bee2418b32e1b095f90e46a3886115\`; open/unmerged at read | prior-wave document-only closure; not this release approval |
+| preview #451 | draft/open head \`2dd0e260d0922e18d003905f4a7edf42560f640c\` | PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED |
+
+**C exact changed-path inventory** (GitHub paginated PR filenames + unified diff): only \`ops-site/app/globals.css\`, \`ops-site/app/guides/medication-incident-sources/page.tsx\`, \`ops-site/tests/browser/public-source-guides.spec.mjs\`. Changes from previous D-reviewed C head include the paragraph citation-to-original link and its matching print/navigation test, not changes to the statutory/medical body. No new fall page, sitemap fall entry, new form, action tool, published registry, medication preview flag, or Analytics event occurs in the three changed paths. No site-wide absence of features is inferred solely from the PR diff.
+
+### 9.2 Primary-source independent reading (2026-10-10)
+
+- **G25** — MHLW, 2025-11-07, Vol.1436, \`https://www.mhlw.go.jp/content/001591418.pdf\`; official PDF page 2 explicitly calls long-term-care insurance facility services the **main** audience and notes selected home/residential contexts. The original booklet p30 (PDF 1-based p33) explicitly says complex physical/mental/environmental causes, some falls are difficult to prevent, and overrestriction can amount to physical restraint; booklet p32 (PDF 1-based p35) discusses personalized bed-area environment. Those two PDF pages were independently viewed in original form, not inferred from GitHub. One facility case study does not prove general effectiveness. No independent bed-rail, sensor setting, restraint legality or emergency triage claim is accepted.
+- **N24** — MHLW, 2024-11-29, Vol.1332, \`https://www.mhlw.go.jp/content/001574219.pdf\`; official PDF pages 3–4 directly checked. The notice distinguishes death / medically treated accidents as in-principle reporting targets, other accidents according to local authorities, and first notification within five days **as a guideline**. Page 4 specifies the categories for the unified reporting form (facilities, group homes incl. preventive, specified facilities incl. community-based/preventive, and residential categories), and encourages use for other home-care services where possible. Do not infer identical legal reporting duties, destinations or deadlines for every service. Local rules remain **NOT_ESTABLISHED**.
+- **R17** — MHLW-hosted March 2017 study on housing for older people, \`https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/73_aruteppu.pdf\`; Part I p45 / PDF p57 independently viewed. It advises medical examination rather than unilateral watchful waiting after administration of someone else's medication in that housing context. **Research recommendation**, not blanket statutory consultation/examination duty.
+- **PMDA** — official drug consultation page \`https://www.pmda.go.jp/safety/consultation-for-patients/on-drugs/0003.html\` accessible as public HTML; not a basis for case-specific prescribing, emergency transport or medical triage.
+- **L211** — e-Gov \`https://laws.e-gov.go.jp/law/140AC0000000045\` resolves to a dynamic page but the current complete article text was not independently extracted. Official indexed e-Gov text for the version marked **2026-05-21 effective** displays the phrase about neglect of precautions required in the course of business **resulting in death or injury** (「人を死傷させた」); the article's **full current authoritative text by direct retrieval remains NOT_ESTABLISHED**, not falsely promoted to fully verified. The B summary is conservative and does not determine individual criminal liability. Hold any stronger statutory/legal statement pending exact-law-version full-text retrieval.
+
+PDF page numbers above are 1-based including the cover; deep-link \`#page=N\` navigation in a real Android/browser PDF viewer is **NOT_TESTED**.
+
+### 9.3 Claim-to-paragraph-to-code crosswalk (audit, not approval)
+
+| ID | Source and final B candidate | Observed C exact head | D decision |
+| --- | --- | --- | --- |
+| MED-A01/A08 | B §2.1: immediate incident -> prioritize safety/formal protocol/professionals, immediately after lead; G25 p25–26 | C still places the strongest warning after initial section paragraph, **not immediately after lead** | **BLOCKED for medication revision** |
+| MED-A02/A03 | B §2.2: R17 explicitly scoped housing recommendation; PMDA general consultation | C original wording retains scope, but does not reproduce B final approved paragraphs | **PARTIAL_WITH_GAPS; text integration required** |
+| MED-A04/A05; X-02 | B §2.3: N24 report-vs-form target services, five-day guideline, local implementation; links to PDF pp3–4 | C report section still lacks explicit notice reporting-form target-service categories directly alongside the claim | **BLOCKED for medication revision** |
+| MED-A06 | B §2.4: facility-centered risk management, no universal double-check duty or general causal effectiveness | C carries existing conservative warning; latest B wording not integrated | **PARTIAL_WITH_GAPS** |
+| MED-A07 | B §2.5 heading “服薬の間違いだけで、刑事責任が決まるわけではありません。” and narrower explanation | C still shows old heading “重大な結果と注意義務違反があれば、刑事責任が問題になる場合もある。” | **P1 wording fix absent; BLOCKED** |
+| FALL-01/02/03 | B §3 F-01/02/03: facility scope, individualized risks, overrestriction and bed-area; G25 booklet 30/32 | no new fall route in C changed-path inventory; no rendered paragraphs | **BLOCKED for new guide** |
+| MED-A04/A05; X-02 (fall F-04) | B §3 fall reporting: notice targets, five-day guideline, locality/service differences | no rendered fall paragraph | **BLOCKED for new guide** |
+
+**Critical distinction:** A's SOURCE_SUPPORTED + B exact editor blob + C's green CI are **three different artifacts**. C did not implement B. Therefore no final same-version A→B→C→D chain is established. D's review of the current C head covers only its non-medical navigation/test changes.
+
+### 9.4 Red-team outcomes (before / candidate after / actual residual)
+
+| Case | Actual C head (before) / B candidate (not yet rendered) | Residual / result |
+| --- | --- | --- |
+| D-R01 “minor so no action” | C avoids unilateral watchful waiting; B keeps housing-only research caveat | low misreading risk in existing C; B integration untested |
+| D-R02 “universal call/medical-visit duty” | C disclaims blanket statutory doctor-call rule; B further narrows the housing research | no observed universal legal mandate; final new copy untested |
+| D-R03 “medical contact substitutes for municipal report” | C separates procedures but lacks notice form-service category alongside report; B §2.3 adds it | **P1 unresolved** |
+| D-R04 “medication error automatically criminal” | C rejects automatic liability but old “重大な結果” title; B heading fixes it | **P1 unresolved**; L211 exact full text not established |
+| D-R05 “the static article is an emergency protocol” | C warning follows the first section; B places urgent boundary immediately after lead | **P1 placement unresolved** |
+| D-R06 “facility advice mandates all care services” | C limits in last section; B brings precise notice scope closer to report claim | **P1 proximity unresolved** |
+| D-R07 “MHLW/expert-endorsed website” | C says no individual expert review; B says source guide not clinical approval | limited safe boundary retained; EX/HU still incomplete |
+| D-F01 “every fall avoidable / every fall negligence” | B expressly rejects both; G25 p30 recognizes difficult-to-prevent falls | not implemented; **fall release HOLD** |
+| D-F02 “this page rules whether restraint lawful” | B expressly excludes individual restraint judgments | not implemented; **fall release HOLD** |
+| D-F03 “uniform bedrail/sensor/transfer settings” | B excludes universal device, placement and care procedures | not implemented; **fall release HOLD** |
+| D-F04 “individual examination/ambulance decision after fall” | B excludes clinical triage; prioritizes professional/emergency channels | not implemented; **fall release HOLD** |
+| D-F05 “one facility case proves nationwide reduction effect” | B claims no quantitative effectiveness; G25 case studies do not establish national effect | not implemented; **fall release HOLD** |
+
+### 9.5 UI / test / privacy / release boundary
+
+1. **Code:** C's \`Citation\` now links both index \`#source-id\` and the unchanged corresponding original public source URL, opening the original in a new tab with a descriptive aria-label and \`rel="noreferrer"\`. Original five source URLs have official hosts. These links point to **document-level** URLs, not B's newly proposed paragraph-specific PDF deep links; actual deep-link behavior remains untested. Focusable six-anchor in-page contents, responsive source wrapping, reduced-motion override and printable source URLs are present.
+2. **Browser tests:** C added five Playwright tests for heading/canonical/OG/source match, mobile 390px overflow and keyboard, CSS zoom=2 proxy, print media source URL, sitemap/robots and hidden preview 404. Static review of the test source finds correct targets and no collection form. CSS proxy ≠ native Android zoom; print CSS assertion ≠ printed paper/preview; Playwright ≠ screen-reader human check.
+3. **Exact-head CI verified independently from GitHub:** C \`77eb4b391ac722adc1a34024e6c7a33b35179949\`, Validate ops site run [37957413246](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37957413246) success; steps \`npm ci --no-audit --no-fund\`, \`npm test\`, \`npm run build\`, Chromium via \`npm run test:browser\`, and route smoke via \`npm run verify:routes\` were green under [validate-ops-site.yml](../../../../.github/workflows/validate-ops-site.yml); publication-readiness [37957413269](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37957413269) success; generic build [37957413305](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37957413305) **success** (previous C PR body described it as pending, now superseded by live check). No new C head after those checks was observed in this audit.
+4. **Privacy/held prototype:** C changed paths contain no form/input/personal information capture/custom Analytics events; no published route/registry/flag changes. Current main sitemap includes original medication page but no fall page. #451 remains draft/unmerged; held interactive preview 404 is asserted in C localhost CI. **Actual production route status, React hydrated DOM, screen-reader, native Android 200%, human print and source deep-link PDF viewer experience NOT_RUN by D**.
+5. **Production evidence:** Previous external HTTP probe [37993334787](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37993334787) reportedly checked previous deployed 15 routes. No new deployment or alias reallocation is established by this D audit; **old 15/15 HTTP does not prove this unmerged C head, any future fall page or future deployment**. The \`deploy-state/kaigo-ops\` marker stays E-controlled; this audit did not advance it.
+
+### 9.6 D independent scoped conclusion and mandatory re-review trigger
+
+| Unit | D finding | E instruction |
+| --- | --- | --- |
+| Existing **medication article text revision** | **BLOCKED** — B \`16915a0d...\` is not rendered in C \`3fa8965...\`; P1 legal/report/lead copy outstanding | \`RELEASE_HOLD\`; re-audit exact B paragraph ↔ new C page blob and full CI before any merge |
+| New **fall/bed-fall static source page** | **BLOCKED** — B §3 has limited source-supported draft but **no C rendered page/route/SEO/tests** | \`PUBLIC_SOURCE_GUIDE_HOLD\`; require exact TSX route, all paragraphs, sources, metadata, 16-route regression and new D evidence |
+| Non-medical **#465 contents/links/print/Playwright improvements only** | **PASS_LIMITED** (code + matching CI head); still **PARTIAL_WITH_GAPS** for direct PDF-page behavior and human accessibility | E may evaluate this narrow UI-only diff separately, but it cannot be used as approval for B words, new article or production |
+| Foreign-object ingestion / aspiration/choking | **BLOCKED for this Wave's release** (outside requested scope) | \`PUBLIC_SOURCE_GUIDE_HOLD\` for both |
+| D Wave as a whole | **PARTIAL_WITH_GAPS** (nonclinical UI evidence established; same-version content chain **not established**) | **No full release GO**; re-run D after A revised limits, B latest text, C final code and exact-head CI align |
+
+**Handoff for A/B/C/E:** A should expressly resolve any claim-scope changes and L211 authoritative-version gap. B should preserve paragraph-level text + source+PDF page and notify C of final immutable editorial blob. C should integrate only those sentences, retain #465 source navigation, implement **one** fall page if supported, and submit a new exact head with tests/changed-path inventory. D then rechecks that same B/C head, all twelve red-team attempts, official source URLs and CI and records a new result. E alone decides merge, scoped release, new deployment verification, and deploy-state contract. **No expert outreach, HU01 approval, #451 merge/enablement, production deployment, or marker update was performed by D.**
