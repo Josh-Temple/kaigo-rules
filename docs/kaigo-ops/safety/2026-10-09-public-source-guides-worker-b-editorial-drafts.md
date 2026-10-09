@@ -4,7 +4,7 @@
 - 対象指示書：Library `/Kaigo Ops/Work Instructions/2026-10-10_public_source_guide_http_closure_and_claim_aligned_release_wave_instructions.md` §4
 - 作業先：既存PR #466（本ファイルを改訂）。前版（2026-10-09）の草稿とその変更履歴はGit履歴で追跡する。
 - 確認したmain：`1c7771add72d91b58673d758dcb13ec65a14998a`（取得時点）。既存服薬記事の確認blob：`782a1f53c635997817faf46bfe2f4e63721482c2`。
-- A採否の根拠：既存A台帳 `2026-10-09-accident-prevention-public-source-claim-audit.md`（blob `1ee8dc07a2d7e01d34e1d83ee666bcadb1d778e3`、PR #467／main統合済み）。**2026-10-10のA追補が提出された場合は、C実装前に新しい判定との差分を確認する。**
+- A採否の根拠：既存A台帳 `2026-10-09-accident-prevention-public-source-claim-audit.md`（main時点blob `1ee8dc07a2d7e01d34e1d83ee666bcadb1d778e3`、PR #467統合済み）と、**2026-10-10追補PR #470**（A head `b98ff0e527d6bd6b18ea48e461fafc9660a079b9`／同台帳第6節、取得時点open・未統合）。後者の `MAINTAIN / WORDING_FIX / REMOVE / NOT_ESTABLISHED` とF/S/ING crosswalkを反映。公開判断前にAの最新headを再照合する。
 - ステータス：**B編集確定稿（既存服薬の限定修正＋転倒・転落）／C実装・D独立審査・E公開承認は未完了**。B原稿の確定は公開GOではない。
 - 第2テーマ：**今回採用なし**。異食と誤嚥・窒息は出典候補として残すが、掲載本文・C実装の依頼対象としない。
 - 旧選択式試作PR #451：`PREVIEW_ONLY / NOT_PUBLIC`、EX01/EX02=`NOT_REQUESTED / EXPERT_REVIEW_NOT_DONE`、HU01=`HUMAN_APPROVAL_NOT_DONE`。今回の静的案内でこれらの判定を変更しない。
@@ -147,7 +147,7 @@ N24本文p3が標準様式の中心対象として挙げるのは、**介護保�
 | `S-01` → `ASP-01` | 旧草案の専門職評価／G25冊子34/PDF37・施設 | `SOURCE_SUPPORTED`（専門職連携のみ）。**今回は掲載保留** | 嚥下状態の診断、職種権限は除外 |
 | `S-02` → `ASP-01/02` | 旧草案の情報共有と食事／G25冊子34–35/PDF37–38・施設 | 一般論`SOURCE_SUPPORTED`、具体策`REVIEW_REQUIRED`。**掲載保留** | 食事形態・とろみ・姿勢の個別指示は禁止 |
 | `S-03` → `ASP-02`の施設事例 | 旧草案の単一施設・G25冊子35/PDF38 | 効果の一般化は支持なし。**本文不採用** | 再現性・効果数値`REVIEW_REQUIRED` |
-| `S-04` → **A対応IDなし** | 旧草案の消費者庁啓発 | Aの採否未成立。**不採用** | 出典を別に確認できてもA採否を捏造しない |
+| `S-04` → **G25とは別のCAA25（A #470§6.3）** | 旧草案の消費者庁一般向け啓発 | Aは啓発の存在・趣旨に限って`SOURCE_SUPPORTED`、施設での医学的介助の根拠は`NOT_ESTABLISHED`。**記事本文には不採用** | 必要なら参考資料欄のみ。専門職手順・窒息対応の裏付けにしない |
 | 旧B記事なし → `ING-01/02` | G25冊子36/PDF39・施設中心 | Aは環境管理・尊厳の一般論を`SOURCE_SUPPORTED`。**今回の記事未作成／掲載保留** | 異食と一般の誤飲を混同しない。毒性・誤飲時の処置は除外 |
 | `FALL-04` | G25冊子31・33／単一施設事例 | A=`DESIGN_PROPOSAL`。**本文不採用** | 効果実証・一般的有効性の断定なし |
 | `X-01` | 具体的事故対応・救命操作 | A=`EXCLUDE`、個別運用`REVIEW_REQUIRED`。**本文不採用** | 救命処置・診断・処方・食形態・物品別対処を案内しない |
@@ -172,9 +172,9 @@ N24本文p3が標準様式の中心対象として挙げるのは、**介護保�
 ## 6. C・A・D・Eへの引渡し／公開ゲート
 
 - **C**：§2の既存服薬記事限定差替えと、§3の転倒・転落1記事の静的案内のみ実装候補。段落から直接原典へリンクし、末尾一覧、発行者・日付・文書類型・対象・冊子／PDF頁を表示。390px/200% proxy、見出し・アンカー・印刷・読み上げ順、metadata/canonical/OG/robots/sitemap、旧11ルート、試作404を回帰。実ブラウザとnative Android検証を混同しない。
-- **A**：本稿の§4 crosswalkと文章確定後の変更を通知する。Aが2026-10-10追補で採否／サービス対象／頁を変更した場合は、Bの最新版を再修正してからCへ採用させる。
+- **A**：PR #470の第6節に記載された採否・対象・頁との整合を反映済み。本稿の§4 crosswalkと確定文章の変更をAへ通知する。A #470が更新・統合される際に採否が変わればBを再確認してからCへ引き渡す。
 - **D**：この改訂版の**exact blob**と、Cが表示するコードのexact headを合わせて再監査。条文の現在版、通知の対象差、個別医療・法的越境、原典への段落直リンク、旧11ルート・試作非公開・プライバシーを確認。旧#468の部分監査を最終稿の承認としない。
 - **E**：A→B→C→Dの同一版が揃う場合のみ個別公開判定。**#466はドラフトのまま**。Bはアプリ、5 Issue/5 tools、Issue 6候補、#451、Analytics、feature flag、Vercel、deploy-stateを変更しない。Vercel READYと本番HTTP 200・実ブラウザは別ゲート。今回はこれらの実測なし。
-- **検証区分**：本Bで実施したのは原典の限定再照合と文章・表の監査、GitHub上のファイル更新・readback。npm/Playwright/PR CI、production HTTP、Android Chrome、native 200%、読み上げ実聴、紙の印刷、実在専門職レビューはBによるPASSではない。
+- **検証区分**：本Bで実施したのは原典の限定再照合とA #470の変更差分を含む文章・表の監査、GitHub上のファイル更新・readback。npm/Playwright/PR CI、production HTTP、Android Chrome、native 200%、読み上げ実聴、紙の印刷、実在専門職レビューはBによるPASSではない。
 
-**B終了判定：編集範囲 `PASS_LIMITED`、公開 `RELEASE_HOLD / PUBLIC_SOURCE_GUIDE_HOLD`。残条件：A追補との差分、Cの表示コードと検証、D独立審査、E最終判断。**
+**B終了判定：編集範囲 `PASS_LIMITED`、公開 `RELEASE_HOLD / PUBLIC_SOURCE_GUIDE_HOLD`。A #470の現時点の追補は反映したが、A最終head/merge状態の固定、Cの表示コードと検証、D独立審査、E最終判断が残る。**
