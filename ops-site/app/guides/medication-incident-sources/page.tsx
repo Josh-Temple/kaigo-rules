@@ -43,7 +43,18 @@ const sourceLinks = [
 ] as const;
 
 function Citation({ id, label }: { id: (typeof sourceLinks)[number]["id"]; label: string }) {
-  return <a href={`#source-${id}`} aria-label={`${label}の出典へ`}>{label}</a>;
+  // The in-page source index remains available, but the cited paragraph also
+  // links directly to the same published original without adding any new claims.
+  const source = sourceLinks.find((entry) => entry.id === id);
+  if (!source) return null;
+  return (
+    <span className="sourceGuideCitation">
+      <a href={`#source-${id}`} aria-label={`${label}の出典へ`}>{label}</a>
+      {" / "}
+      <a href={source.href} target="_blank" rel="noreferrer"
+        aria-label={`${label}の原文を新しいタブで開く`}>原文 ↗</a>
+    </span>
+  );
 }
 
 export default function MedicationIncidentSourcesPage() {
