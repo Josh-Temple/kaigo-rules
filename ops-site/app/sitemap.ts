@@ -14,5 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    {
+      url: `${OPS_SITE_URL}/guides/medication-incident-sources`,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
   ];
 }
