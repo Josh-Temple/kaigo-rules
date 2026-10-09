@@ -235,3 +235,10 @@ The production state in the preceding subsection is the historical Public Discov
 **新記事：転倒・転落／誤嚥・窒息／異食の全て `PUBLIC_SOURCE_GUIDE_HOLD`。** Aの `SOURCE_SUPPORTED` はB/C/D同一版審査・公開承認ではない。既存服薬事故情報ページはVercel `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`／READY／runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`、alias `https://ops-site-pi.vercel.app/` はAPI照合済み。しかし本Eの直接HTTPはDNS解決失敗、公開11ルート／服薬ガイド／旧試作404／robots／sitemapの実測は `FRESH_HTTP_NOT_ESTABLISHED`、実Android/200%/読み上げ/印刷は `NOT_RUN`。**`PRODUCTION_NOT_VERIFIED`、新production releaseなし、deploy-state marker据え置き `e49e770a970e541d2ad95204ad277eca89a485d3`。**
 
 既存服薬本文は刑法211条の見出しと2024年事故報告通知の対象サービスにP1修正候補。医療・自治体報告の個別判断は載せない。非公開選択式試作C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) はdraft・未mergeで `PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED`。EX01/EX02は依頼せず審査未実施、HU01未承認。既存5 Issue/5 action tool、Issue 6候補、Analytics schema、観測レビュー期間は不変。
+
+
+## 2026-10-10 — 公的出典ガイドHTTP到達のE統合判定
+
+[今回のE統合判定](safety/2026-10-10-public-source-guide-http-closure-and-claim-aligned-e-decision.md)：**PARTIAL_WITH_GAPS**。Kaigo Ops専用Vercel `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` はproduction READY（runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`）、alias `ops-site-pi.vercel.app` の割当確認済み。従来のDNS障害を回避し、GitHub Actions外部runner [run #37993334787](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37993334787) が**公開15 URL中15件の期待HTTP応答**を確認。旧11 routeは各200、静的服薬ガイド200、非公開試作route404、robots/sitemap各200。ガイドcanonical/OG/出典アンカーも機械HTMLで確認。**PRODUCTION_HTTP_CONFIRMEDはこの外部HTTP測定の範囲だけ**であり、Android実機・native 200%・読み上げ・印刷は未実施。
+
+出典A [#470](https://github.com/Josh-Temple/kaigo-rules/pull/470)と独立監査D [#471](https://github.com/Josh-Temple/kaigo-rules/pull/471)の文書追補はmain統合済み。B [#466](https://github.com/Josh-Temple/kaigo-rules/pull/466)はdraft、C [#465](https://github.com/Josh-Temple/kaigo-rules/pull/465)は未マージ。C最新版headはDが審査したheadより進んでおり、既存服薬記事の法的見出し・事故報告サービス範囲の修正、転倒・転落の新記事実装とD同一版再審査が残る。既存記事改訂は`RELEASE_HOLD`、転倒・転落／異食／誤嚥・窒息は各`PUBLIC_SOURCE_GUIDE_HOLD`。旧試作#451はdraft/NOT_PUBLIC、EX01/EX02/HU01は未依頼・未実施・未承認。**新しいproduction deployと`deploy-state/kaigo-ops`更新は行わず、markerは`e49e770a970e541d2ad95204ad277eca89a485d3`に据置き。**
