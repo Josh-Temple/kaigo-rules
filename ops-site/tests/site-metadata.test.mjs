@@ -37,6 +37,6 @@ test("sitemap route stays Issue-first and uses the shared registry", () => {
   assert.match(source, /issueRegistry\.map/);
   assert.match(source, /\$\{OPS_SITE_URL\}\$\{issue\.href\}/);
   assert.ok(!source.includes("/tools/"));
-  assert.match(source, /guides\\/medication-incident-sources/);
+  assert.ok(source.includes("/guides/medication-incident-sources"));
   assert.equal(OPS_SITE_URL, "https://ops-site-pi.vercel.app");
 });
