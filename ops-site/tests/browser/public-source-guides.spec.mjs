@@ -119,12 +119,12 @@ test('B-reviewed medication changes put immediate safety before contents and lim
   await expect(priority).toContainText('実際に事故が起きている場合');
   expect(await lead.evaluate(el => el.compareDocumentPosition(document.querySelector('.sourceGuidePriority')) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy();
   await expect(page.getByRole('heading', { name: '服薬の間違いだけで、刑事責任が決まるわけではありません。' })).toBeVisible();
-  await expect(page.locator('#report')).toContainText('対象サービスには違いがあります');
-  await expect(page.locator('#report')).toContainText('様式の活用');
-  await expect(page.locator('#report')).toContainText('目安');
-  await expect(page.locator('#minor')).toContainText('高齢者向け住まいに関する研究報告書');
-  await expect(page.locator('#report a[href$="#page=4"]')).toHaveCount(1);
-  await expect(page.locator('#report a[href$="#page=2"]')).toHaveCount(1);
+  await expect(page.locator('section[aria-labelledby="report"]')).toContainText('対象サービスには違いがあります');
+  await expect(page.locator('section[aria-labelledby="report"]')).toContainText('様式の活用');
+  await expect(page.locator('section[aria-labelledby="report"]')).toContainText('目安');
+  await expect(page.locator('section[aria-labelledby="minor"]')).toContainText('高齢者向け住まいに関する研究報告書');
+  await expect(page.locator('section[aria-labelledby="report"] a[href$="#page=4"]')).toHaveCount(1);
+  await expect(page.locator('section[aria-labelledby="report"] a[href$="#page=2"]')).toHaveCount(1);
   await expect(page.locator('#minor a[href$="#page=57"]')).toHaveCount(1);
 });
 
@@ -138,11 +138,11 @@ test('fall source guide is static, directly cited, and separate from unpublished
   await expect(page.locator('.issueHero .sourceGuidePriority')).toContainText('事故が現に起きている場合');
   await expect(page.getByRole('heading', { name: '原文を読む' })).toHaveCount(1);
   await expect(page.locator('#sources .sourceRow')).toHaveCount(2);
-  await expect(page.locator('#factors a[href$="#page=33"]')).toHaveCount(1);
-  await expect(page.locator('#dignity a[href$="#page=33"]')).toHaveCount(1);
-  await expect(page.locator('#bed a[href$="#page=35"]')).toHaveCount(1);
-  await expect(page.locator('#report a[href$="#page=3"]')).toHaveCount(1);
-  await expect(page.locator('#report a[href$="#page=4"]')).toHaveCount(1);
+  await expect(page.locator('section[aria-labelledby="factors"] a[href$="#page=33"]')).toHaveCount(1);
+  await expect(page.locator('section[aria-labelledby="dignity"] a[href$="#page=33"]')).toHaveCount(1);
+  await expect(page.locator('section[aria-labelledby="bed"] a[href$="#page=35"]')).toHaveCount(1);
+  await expect(page.locator('section[aria-labelledby="report"] a[href$="#page=3"]')).toHaveCount(1);
+  await expect(page.locator('section[aria-labelledby="report"] a[href$="#page=4"]')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${publicUrl}${fallPath}`);
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', `${publicUrl}${fallPath}`);
   await expect(page.locator('article input, article textarea, article select, article button')).toHaveCount(0);
@@ -172,5 +172,7 @@ test('fall page 390px, keyboard, CSS 200% proxy, reduced motion and print URLs',
   await page.emulateMedia({ media: 'print' });
   expect(await page.locator('.sourceGuideContents').evaluate(el => getComputedStyle(el).display)).toBe('none');
   const source = page.locator('#sources .sourceRow').first();
-  expect((await source.evaluate(el => getComputedStyle(el, '::after').content))).toContain('attr(href)');
+  const printContent = await source.evaluate(el => getComputedStyle(el, '::after').content);
+  const href = await source.getAttribute('href');
+  expect(printContent.includes('attr(href)') || printContent.includes(href)).toBe(true);
 });
