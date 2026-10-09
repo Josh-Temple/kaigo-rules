@@ -88,9 +88,9 @@ test('print layout retains source metadata and hides navigation without printing
   // Printing must retain the document URL, not just an unlabeled outgoing icon.
   const printedSource = page.locator('#sources .sourceRow').first();
   const printedHref = await printedSource.getAttribute('href');
-  expect(printedHref).toMatch(/^https:\\/\\//);
+  expect(printedHref.startsWith('https://')).toBe(true);
   const generatedContent = await printedSource.evaluate((el) => getComputedStyle(el, '::after').content);
-  expect(generatedContent).toMatch(/attr\\(href\\)|https:\\/\\//);
+  expect(generatedContent.includes('attr(href)') || generatedContent.includes('https://')).toBe(true);
 });
 
 test('sitemap, robots and the held interactive preview remain separate', async ({ request }) => {
