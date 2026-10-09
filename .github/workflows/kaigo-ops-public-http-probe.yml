@@ -1,0 +1,31 @@
+name: Kaigo Ops public HTTP read-only probe
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/kaigo-ops-public-http-probe.yml"
+      - "scripts/probe_kaigo_ops_public_http.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    name: Probe production public HTTP without deployment
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: GET public alias routes (read-only, no credentials)
+        run: |
+          python3 scripts/probe_kaigo_ops_public_http.py \
+            --output artifacts/kaigo-ops-public-http-probe.json
+      - name: Preserve bounded machine-readable evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: kaigo-ops-public-http-probe-${{ github.run_id }}
+          path: artifacts/kaigo-ops-public-http-probe.json
+          if-no-files-found: warn
+          retention-days: 30
