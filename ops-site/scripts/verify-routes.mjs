@@ -6,6 +6,32 @@ const base = process.argv[2] || 'http://localhost:3000';
 const home = await fetch(`${base}/`);
 assert.equal(home.status, 200, 'home route');
 const homeText = await home.text();
+assert.ok(homeText.includes('href="/guides/medication-incident-sources"'), 'medication source page reachable from homepage');
+const medicationGuide = await fetch(`${base}/guides/medication-incident-sources`);
+assert.equal(medicationGuide.status, 200, 'source-only medication guide route');
+const medicationGuideHtml = await medicationGuide.text();
+for (const text of [
+  '事故の疑いがあるときは',
+  '自己判断で済ませない',
+  '自治体の取扱い',
+  '刑事罰',
+  '個別の医療判断',
+  'このページを読み進めるために',
+]) {
+  assert.ok(medicationGuideHtml.includes(text), `medication guide: ${text}`);
+}
+for (const sourceUrl of [
+  'https://www.mhlw.go.jp/content/001591418.pdf',
+  'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/73_aruteppu.pdf',
+  'https://www.mhlw.go.jp/content/001574219.pdf',
+  'https://www.pmda.go.jp/safety/consultation-for-patients/on-drugs/0003.html',
+  'https://laws.e-gov.go.jp/law/140AC0000000045',
+]) {
+  assert.ok(medicationGuideHtml.includes(sourceUrl), `medication guide source: ${sourceUrl}`);
+}
+assert.ok(!medicationGuideHtml.includes('服薬業務の安全点検シートを開く'), 'unapproved interactive preview remains isolated');
+console.log('PASS /guides/medication-incident-sources');
+
 for (const issue of issueRegistry) {
   assert.ok(homeText.includes(`href="${issue.href}"`), `${issue.href}: homepage link`);
   const response = await fetch(`${base}${issue.href}`);
