@@ -192,3 +192,10 @@ EX01/EX02は未依頼・未実施、HU01未承認。native zoom 200%、Android�
 [公的資料に基づく注意事項](https://ops-site-pi.vercel.app/guides/medication-incident-sources)を、回答選択式の服薬安全試作とは**別の静的な公開資料**として追加。元資料、発行年・ページ、推奨と通知・法律の区別を示す。特に高齢者向け住まい2017年報告の受診推奨は、全サービス一律の法的義務や全事故の「必ずかかりつけ医連絡」へ拡張しない。事故時の個別医療判断、服薬可否、報告要否、刑事責任の断定をしない。
 
 [根拠と範囲の台帳](../docs/kaigo-ops/safety/2026-10-09-medication-incident-public-source-guide-evidence.md)を参照。PR #463のunit・ops/browser regression・build・publication readinessが成功し、Vercel deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` READY、runtime SHA `ffd70abb5723e950a0a1036795f28da31614a1f3`、alias `ops-site-pi.vercel.app` をVercel APIで確認。**外部DNS・直接HTTP・実ブラウザの本番確認はこの実行環境では不可**のため、実URLごとのPASSは未確立。既存5 Issue／5 tool registryは不変。C #451の非公開試作は引き続き専門職／責任者の審査待ち（EX01/EX02/HU01 NOT_DONE）。
+
+
+## 2026-10-09 公的出典ガイドのE統合・本番確認（最新）
+
+最新の[判定記録](../docs/kaigo-ops/safety/2026-10-09-public-source-guides-release-verification-and-expansion-e-decision.md)は `PARTIAL_WITH_GAPS`。出典監査A #467と独立監査D #468は文書だけmainに統合。記事草案B #466（draft）と静的ガイドのナビ・印刷改善C #465（CI success）は未統合。新しい転倒・転落／誤嚥・窒息／異食の公開は全て `PUBLIC_SOURCE_GUIDE_HOLD`（C実装＋同一版D監査不足）。
+
+服薬出典ガイドの既存productionは `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` READY、runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`。alias は `ops-site-pi.vercel.app` に割当。ただしEの実環境からDNS解決できず、HTTP/DOMの新規成功・実機ブラウザ表示は **未確立**。390px/200%/読み上げ/印刷は今回 `NOT_RUN`。`deploy-state/kaigo-ops` は旧検証SHA `e49e770a970e541d2ad95204ad277eca89a485d3` に据え置き。**本Eから新production releaseなし**。基礎11ルート、事故入力なし、旧試作 #451 非公開、EX01/EX02/HU01保留を維持。古い章のHTTP PASSは過去Waveの検証結果で、今回の直接HTTP結果ではない。
