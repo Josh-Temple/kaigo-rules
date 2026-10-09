@@ -185,3 +185,10 @@ Eでのproduction HTTP確認：既存のhome+5 Issue+5 toolは各200、`/tools/m
 服薬業務の安全点検シートは引き続き**非公開のdraft [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451)**。最新の[専門職審査・アクセシビリティ／privacy E判定](../docs/kaigo-ops/safety/2026-10-09-medication-safety-expert-review-and-accessibility-privacy-gates-decision.md)は`PARTIAL_WITH_GAPS / SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。A/B出典・サービス・文面とCコード3 blobは一致、D独立17 Chromium testsは成功したが、29-caseは11 `PASS_LIMITED`・18 `PARTIAL`。
 
 EX01/EX02は未依頼・未実施、HU01未承認。native zoom 200%、Android、実読み上げ・印刷、外部preview access control、実production browser journeyは未実施または未確立。flagは認証機構ではないため公開環境で有効化しない。本番は従来5 Issue＋5 tool／Vercel deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` READY、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `https://ops-site-pi.vercel.app/`。今回の本番HTTP直接取得は環境エラー、11 route HTTP 200と試作404は**前回の確認値**であって新規実測ではない。新しいproduction releaseなし。
+
+
+## 2026-10-09 服薬事故の出典付き注意情報（静的ページ）
+
+[公的資料に基づく注意事項](/guides/medication-incident-sources)を、回答選択式の服薬安全試作とは**別の静的な公開資料**として追加。元資料、発行年・ページ、推奨と通知・法律の区別を示す。特に高齢者向け住まい2017年報告の受診推奨は、全サービス一律の法的義務や全事故の「必ずかかりつけ医連絡」へ拡張しない。事故時の個別医療判断、服薬可否、報告要否、刑事責任の断定をしない。
+
+[根拠と範囲の台帳](../docs/kaigo-ops/safety/2026-10-09-medication-incident-public-source-guide-evidence.md)を参照。PR #463のunit・ops/browser regression・build・publication readinessが成功し、Vercel deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` READY、runtime SHA `ffd70abb5723e950a0a1036795f28da31614a1f3`、alias `ops-site-pi.vercel.app` をVercel APIで確認。**外部DNS・直接HTTP・実ブラウザの本番確認はこの実行環境では不可**のため、実URLごとのPASSは未確立。既存5 Issue／5 tool registryは不変。C #451の非公開試作は引き続き専門職／責任者の審査待ち（EX01/EX02/HU01 NOT_DONE）。
