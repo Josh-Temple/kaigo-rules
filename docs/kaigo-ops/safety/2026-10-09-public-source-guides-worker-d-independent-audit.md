@@ -329,3 +329,89 @@ PDFの冊子印刷頁と通し頁は区別。リンク `#page=2/3/4/28/33/35/41/
 **修復順序**：A #474§7でMED-A01〜08、X-02、FALL-01〜03を**最新版B 1394df...の逐語段落へ再突合した新blob**を確定→Bの編集稿とA採否を再固定→C #465の現行headと全blobs・引継ぎの旧head訂正・必要なCIを最終化→**Dが変化した最終同一版を再独立評価**。head/blob変更後に今回の限定判定を無条件継承しない。Eが範囲別GO/HOLDと実際のmerge/productionを判断する。
 
 **変更の境界**：D監査台帳の追補のみ。既存監査の旧節を削除せず、A/B/C、アプリ、#451、専門職接触、Analytics、Vercel、deploy-state、予定済タスク、公開機能を変更していない。
+
+---
+
+## 11. 2026-10-10 D_FINAL_TUPLE_INDEPENDENT_REACCEPTANCE — 最終A/B/C独立差分再監査（E判定用）
+
+**checked_at:** 2026-10-10T13:29:48.123Z UTC（JST +09:00）。**Instruction:** Library `/Kaigo Ops/Work Instructions/2026-10-10_medication_fall_exact_tuple_independent_reacceptance_scoped_release_and_verified_production_wave_instructions.md` §6。**実施区分:** GitHubの不変ファイル・PR・比較・Actionsジョブ/生ログと、公的原典の直接表示に対するD独立監査。旧§9/§10は当時の観察として保持し、本§11を最終版の評価として優先する。**Dはアプリ修正・merge・deployを行わない。**
+
+### 11.1 監査したexact tuple（mainとruntimeは別）
+
+| 領域 | 直接取得した固定値 | 観察と境界 |
+| --- | --- | --- |
+| main | `6f659c51459d82d3d70f48e05f9b341f76ae266f`（GitHub main branch API） | A #474 docs-only統合済み。production runtimeではない |
+| A main §8 | `docs/kaigo-ops/safety/2026-10-09-accident-prevention-public-source-claim-audit.md` blob `b603592b3b91f303cf021af283b953bd8b9e05d1` | MED-A01〜08/X-02/FALL-01〜03を**B最終版**の段落へ採否済み。旧A §7の旧B参照は履歴、未修復ではない |
+| B #466 | draft/open、head `0b192a57674681952afcc4766d4cd03ce523e331`、`docs/kaigo-ops/safety/2026-10-09-public-source-guides-worker-b-editorial-drafts.md` blob `4549faac7651b6c3f88291740548e179e74e037a` | §2/§3読者用文章・§7/§8照合記録を取得。draftは公開承認ではない |
+| C #465 | open/unmerged、head `b33f8b166628f7c06fb96cc7ccac95a579e24434`、changed paths **8** | 転倒ページは既に存在。旧D §9の「転倒ページなし」は旧版の事実 |
+| C medication | `ops-site/app/guides/medication-incident-sources/page.tsx` blob `f3415366187b47c8a6a93a378f3f223e0971d181` | 新文面実装済み。ただしproduction反映とは別 |
+| C fall | `ops-site/app/guides/fall-prevention-sources/page.tsx` blob `de66e2dfcb0985864be230049ecea44612fd3b05` | 静的出典案内として実装済み |
+| C home / sitemap / CSS | `ca0113d6de512236acb87c5346bc6d69bcd8b26e` / `a85ad4d8069e0d0f4bde400fbda7dfaba2f44175` / `f2a43acf8f062560db9fbf3aa2fffc31e684ed58` | home導線、相互リンク、掲載範囲、印刷・reduced-motionを確認 |
+| C route/browser tests | `ops-site/scripts/verify-routes.mjs` blob `1f8e9c1e321c4961fa2844bbc3621e934fd1b267` / `ops-site/tests/browser/public-source-guides.spec.mjs` blob `b7f07446c80e5aaf14b4a872a90c68a9e16b1ccc` | 11旧route＋2記事＋#451 404＋robots/sitemap等をテスト |
+| C handoff | `docs/kaigo-ops/safety/2026-10-10-worker-c-medication-fall-implementation-handoff.md` blob `2f9c3003e4839505e22195ce685e8d7f5587bebb` | 末尾の最新追補に新headを反映。冒頭の旧snapshotを最新として読まない |
+| D §10（旧） | #475 head `4694ca9ee6ce383be03c0f661baeacb067c5a20d` / ledger blob `a72a7fbf6af813d7c7de38f3a033014c1c9584c3`（本追補前） | 旧A/B、旧C headを監査した履歴。本§11と区別 |
+| #451 | 既存draft/unmergedの試作。Cのroute検査では `/tools/medication-safety-preview` が404 | `PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED`。EX01/EX02未依頼、HU01承認なし |
+
+**GitHub compareによる差分再検査：** B旧監査head `97389ce1...`→現 `0b192a57...` はB編集文書のみ **+56/-0**（§8等の追補と出典リンク照合）。C旧監査head `ef12b659...`→現 `b33f8b16...` は **C引継ぎ文書だけ +51/-0**。Cの服薬TSX・転倒TSX・CSS・home・sitemap・route/browser testsのblobは§10と全て一致。この7コード/テストblobのリスクテストは**不変証拠として差分再利用**できる。Aの旧 `2849cdc...`→main `b603592...` は§8のB最終版への新採否を含み、**実体を直接読み直した**。A旧B参照が現在も未解決、C転倒未実装、C最新head不明という旧blockerは今回の現状に転記しない。**A/B/C final tupleとしてのソース・編集・コードidentityは確立**、安全上の未確立は別判定。
+
+### 11.2 原典・claim→編集稿→コードの独立照合
+
+**N24（厚労省 2024-11-29 Vol.1332、通知）** `https://www.mhlw.go.jp/content/001574219.pdf`：公式PDFの本文1頁/PDF2頁で2021-03-19旧通知の廃止、本文2頁/PDF3頁で**原則報告対象**（死亡、医師診断後に投薬・処置等の治療が必要な事故）とその他の自治体判断、および第1報の「遅くとも5日以内」**目安**、本文3頁/PDF4頁で**別紙様式の対象サービス**を別々に直接確認。B §2.3の3引用ブロックとC medication `#report` の3表示段落は対象・目安・PDF **#page=3 / #page=2 / #page=4** の近接リンクを保持。B §3転倒報告2段落とC fall `#report` もPDF3/4を保持。**「報告対象≠様式の対象≠各自治体の報告義務・期限」**を維持。後者は `NOT_ESTABLISHED`。
+
+**G25（厚労省 2025年11月 Vol.1436、ガイドライン）** `https://www.mhlw.go.jp/content/001591418.pdf`：公式PDF冊子30頁/PDF33頁を直接視認し、多要因・防ぎ難い転倒・過度制限と身体拘束懸念を確認。冊子32頁/PDF35頁で個別評価とベッド周辺を確認。B §3 F-01/02/03とC fall `#factors / #dignity / #bed` は**一般論・主に介護保険施設向け**に制限され、具体的ベッド柵・機器設定、身体拘束の適法性や保証された予防効果は追加していない。服薬B §2.1/§2.4とC `.sourceGuidePriority / #prevent` は安全優先・施設向け**推奨／事例**として対応し、別施設の効果率や二人確認の全国的法定義務を断定しない。冊子25–26・38–39頁は既存A/D§10の参照と現C表示を照合したが、**本§11で当該全頁を新たに独立実視認したとは主張しない**。
+
+**R17（厚労省掲載2017年高齢者向け住まい研究）** `https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/73_aruteppu.pdf`：Ⅰ編45頁/PDF57頁を直接視認。事業者が別人の薬を服薬させた事例について自己判断の経過観察を避け受診につなげる研究上の推奨。B §2.2第1引用→C medication `#minor` は研究・対象限定と法律上の一律義務**不成立**を近接表示。一般の全サービスへの拡大はなし。
+
+**PMDA** `https://www.pmda.go.jp/safety/consultation-for-patients/on-drugs/0003.html`：公的一般くすり相談ページを確認。B §2.2第2引用→C medication `#minor` は一般相談と医療診断・受診搬送の個別判断を分けている。サイト自身が緊急医療判断を代行する説明はない。
+
+**L211（刑法第211条）** `https://laws.e-gov.go.jp/law/140AC0000000045`、候補revision `140AC0000000045_20260521_507AC0000000039`、API `https://laws.e-gov.go.jp/api/2/law_data/140AC0000000045_20260521_507AC0000000039`：対象revisionのJSON endpointは存在するが、このD監査で**該当施行版の第211条正文全文を読み出して逐条検証できた証拠はない**。検索表示やAの要旨を正文の独立確定に昇格させない。B §2.5の非断定見出し・限定本文がC medication `#law` に再現されていることは**CODE一致のみ**。現行法令の内容・施行版を直接保証する法的審査では **`NOT_ESTABLISHED`**。e-Gov正式正文を同一revisionで直接取得・確認するか、A/Bが法律節の削除を判断し、Cがその範囲を削除してCI・D再監査する必要がある。
+
+**読者向け引用16ブロック**：B §2/§3の候補引用をCの該当実TSX表示と独立に対応づけ、施設中心／住まい研究／国通知／一般相談／非断定の境界、緊急時注意のlead直後配置、出典原文リンク・本文/冊子/PDF通し頁を確認。Markdownのリンク説明・強調・JSXの分割を除いた本文意味差は確認しなかった。**DOMの直接独立実測は行っておらず、逐語表示の保証はコード+Actions browser testsに限定**する。
+
+### 11.3 危険な誤読12ケース：最終版に対する独立差分審査
+
+判定 `PASS_LIMITED` は **B最終本文＋C TSX＋確認済み原典＋該当CIテストの範囲のみ**。実際の人間の誤読率・医療適切性・自治体別法解釈の保証ではない。
+
+| Case / 旧リスク | 最終B / 最終C・直接観察 | 原典・実施方法 | observed / 判定 | 残リスク・修復owner |
+| --- | --- | --- | --- | --- |
+| **R01** 軽微だから無対応 | B §2.2 R17研究限定、C `#minor` は現場のみの様子見判断を退ける | R17Ⅰ45/PDF57を直接視認、B/C逐語意味比較 | 限定的推奨と正式判断を明記／`PASS_LIMITED` | 現場症例別判断なし、人の理解未確認。E/HUMAN |
+| **R02** 全国一律受診義務 | B §2.2は住まい研究を法定義務にしない、C `#minor` も同じ | R17/PDF57・C文面独立確認 | 研究と法律を分離／`PASS_LIMITED` | 他サービス義務は`NOT_ESTABLISHED`。A/B |
+| **R03** 医療相談すれば行政報告不要 | B §2.3、C `#report` は手続を分離 | N24本文2/PDF3＋本文3/PDF4直接視認 | 報告対象・第1報5日**目安**・様式対象を区別／`PASS_LIMITED` | 自治体固有の報告要否・期限`NOT_ESTABLISHED`。E/事業所 |
+| **R04** 誤薬だけで犯罪成立 | B §2.5非断定見出し＋要旨、C `#law` に同文 | B/Cコード直接比較、e-Gov現行正文の逐条読取未成立 | 誤薬のみの自動犯罪認定は否定。ただし法令正文照合未完／**`BLOCKED`** | **公開前に法律節の削除または正式同版正文の独立確認**。A/B→C→D |
+| **R05** 静的案内を緊急手順と誤認 | B §2.1/§3冒頭、C 2記事lead直後 `.sourceGuidePriority` | C TSXのDOM構造・browser source/成功ログを直接確認 | 記事閲覧より安全確保・正式手順等を優先／`PASS_LIMITED` | 実際の事故時の利用・専門職レビューは未実施。E/HUMAN |
+| **R06** 施設事例を全サービス義務へ拡大 | B §2.4/§3、C `#prevent/#factors/#bed` 等で主対象を明記 | G25冊子30/32視認、A出典台帳とN24対象差を再照合 | 施設向けと住まい研究を別の出典と表示／`PASS_LIMITED` | 通所・訪問等の独自制度・運用の確認は本件外。A/E |
+| **R07** 厚労省監修／専門職承認済み | B用途境界、C両記事scopeで未監修・未審査 | C TSXで表示確認、監査IDはコメント内のみ | 監修済みの誤表示なし／`PASS_LIMITED` | 実在専門職のレビュー`NOT_RUN`。E/HUMAN |
+| **F01** 全転倒を防げる／全件過失 | B §3 F-01、C fall `#factors` に反対の説明 | G25冊子30/PDF33直接視認 | 多要因と防ぎ難い事例を確認／`PASS_LIMITED` | 個別事故の過失判定なし。E |
+| **F02** 身体拘束の適法性を一律判定 | B §3 F-02、C fall `#dignity` とpriorityが非判定 | G25冊子30/PDF33直接視認 | 過度な制限の懸念だけを提示／`PASS_LIMITED` | 個別の適法性は`NOT_ESTABLISHED`。E/専門職 |
+| **F03** ベッド柵・機器・介助の一律指示 | B §3 F-03、C fall `#bed` が一律設定を否定 | G25冊子32/PDF35直接視認 | 本人の状態と周辺環境に限定／`PASS_LIMITED` | 個別機器使用法は本文で扱わない。E |
+| **F04** 転倒後の受診・搬送を記事が判定 | B §3冒頭とF-04、C fall priority/報告/scope | N24/PDF3-4とC TSXを独立確認 | 医療・緊急時判断を除外／`PASS_LIMITED` | 実際の救急運用・Android利用未検証。E/HUMAN |
+| **F05** 一施設事例で全国的効果保証 | B §3に効果率なし、C fallに事故ゼロ率・効果数値なし | G25施設ガイドの性質、C表示コードとbrowserテストを確認 | 全国的保証を表示しない／`PASS_LIMITED` | 各施設での実効性は実証していない。E |
+
+**要修復ケース=R04（法令正文未確立）。** 11ケースは限定した静的表現レベルで新たな重大な危険断定を認めなかったが、`PASS_LIMITED`を実事故利用・専門職監修・公開承認へ拡張しない。R04の本文は非断定であっても公的法令と接続して法的説明を行うため、直接確認ができない限り安全審査として許可しない。
+
+### 11.4 CI、技術安全、privacy、実測と未実施
+
+**C最新head `b33f8b166628f7c06fb96cc7ccac95a579e24434` のGitHub Actionsを再取得**：全3件 completed/success、各ジョブ・手順もsuccess（旧 `ef12b...` のrunを流用しない）。
+
+| workflow / run | job / step（実測） | 証拠境界 |
+| --- | --- | --- |
+| [Validate ops site #38046418244](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418244) | job `114196759226` success。npm ci、npm test、Next build、Chromium `npm run test:browser` **15/15 passed**、`npm run verify:routes`、5 tool smokeの各step success。生ログで2記事PASS、5 Issue+5 toolのPASS、#451 404/sitemap/robotsを確認 | PR候補headのCIローカルサーバー。**新本番HTTPではない** |
+| [Validate build #38046418248](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418248) | job `114196759098` success。build、metadata/sitemap、production gate verifier compile、key route smokeなどsuccess | 別workflowのbuild検証 |
+| [Verify publication readiness integration #38046418246](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418246) | job `114196759065` success。canonical regenerationとbounded publication readinessのsteps success | 既存publication readiness、**記事公開の承認ではない** |
+
+**技術確認の独立範囲：** Cの8 changed pathsを取得し、`verify-routes.mjs`、browser specの期待条件と上記の成功ログを照合。旧11公開route（home＋5 Issue＋5 action tool）、服薬/転倒候補route、#451試作404、robots/sitemap、原典PDF `#page`直リンク、home導線、2記事相互リンク、canonical/OG、390px、キーボードfocus/アンカー、reduced-motion、CSS zoom=2 **proxy**、print mediaとURL表示をコード上とheadless CI上で確認。コード差分の2記事は閲覧専用で、事故状況・患者・薬剤・職員情報の入力欄、新Analytics event、#451 flag有効化、公開registry追加を確認しない。**差分外のサイト全体における不存在まで断定しない**。静的案内の内部claim IDはTSXコメントにあり、画面本文への露出なし。CIログ中の初回localhost接続失敗はサーバー起動待ちのリトライで、後続のrouteチェックはPASS。
+
+**未実施・境界を混同しない：** 手元の `npm ci/npm test/npm run build/npm run test:browser/npm run verify:routes` は `NOT_RUN`（Actionsのみ実測）。独立のページDOMブラウザ手動実測、Android Chrome **native 200%**、スクリーンリーダー実聴、紙印刷、人間の理解テスト、PDF `#page=N` の実ビューア遷移は **`NOT_RUN`**。自治体別義務・施行版L211正式全文照合は **`NOT_ESTABLISHED`**。このD作業ではVercel新deployment、runtime exact SHA・alias、新15/16 URL production HTTP/HTML/DOM、正式post-deploy verifier、deploy-state markerを実行・更新していない（各`NOT_RUN`、marker`UNCHANGED`）。main commitをproduction SHAに読み替えない。
+
+### 11.5 3公開範囲の独立判定／Eへの決定条件
+
+| 公開候補 | Dの独立結論（このexact tuple限定） | Eへの判断条件 |
+| --- | --- | --- |
+| **①既存服薬本文の改訂** | **`BLOCKED`**：A/B/C最終版の照合とTSX/headless CIは成立。ただしL211正文同一施行版の独立逐条検査は未確立のまま `#law` が公開候補にある。R04未解決。 | **`RELEASE_HOLD`要求**。A/Bが法律節の安全な削除・編集採否を確定しCが最小修正→新head CI→D該当ケース再監査するか、正式同版正文直接確認と危険誤読の再評価を行う。 |
+| **②転倒・転落の静的出典記事1件** | **`PASS_LIMITED`**（G25/N24の直接確認済み範囲、B§3→C fall TSX、C exact-head CIのみ）。L211法律節を含まず、12ケース中F01–F05は限定PASS。自治体別運用、実機、原典ビューアは未検証。 | **暫定 `PUBLIC_SOURCE_GUIDE_HOLD`**。Dの条件付き限定審査は完了。Eが人手ゲート、実装の混在、差分の安全な分離、required CI、最終main/本番検証の条件を決めるまで公開不可。 |
+| **③非医学的UI（リンク・導線・印刷・回帰）** | **`PASS_LIMITED`**（CコードとActions headless検査のみ）。相互リンク/ホーム/sitemapは①②と混在する。 | **暫定 `RELEASE_HOLD`**。UIだけを公開するならHOLD記事/route/導線/sitemap/医学・法律本文を排除した**新規の安全な実体PR**、そのheadのCIとD独立再審査を要する。C #465の8ファイルを一括mergeしてはならない。 |
+
+**総合：`PARTIAL_WITH_GAPS`（D監査の実行・記録は完了、公開承認ではない）。** 最終A/B/C identityの旧版問題は解消した。一方、①服薬のR04は`BLOCKED`。②転倒/③UIの`PASS_LIMITED`は**新productionのPASSではない**。Eは**3範囲を独立にGO/HOLD判断**し、HOLDを含む8ファイルを一括統合しないこと。実現可能な公開範囲がなければ全HOLDを選ぶ。
+
+**次owner:** A/B（L211正文の同版確認または法律節削除の採否・文面）→C（その修正・必要な分離と新head CI）→D（変更後の該当ケースを再受入）→E（範囲別GO/HOLD、必要時のみmerge・Kaigo Ops専用新deployment・exact runtime/alias・15/16 URL HTTP/DOM・正式deploy-state）。#451、異食、誤嚥・窒息は公開せず、実在専門職への依頼もしていない。既存5 Issue/5 tool・no new analytics・no incident inputを保持する。
+
