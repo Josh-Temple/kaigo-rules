@@ -257,3 +257,6 @@ The production state in the preceding subsection is the historical Public Discov
 既存服薬改訂 **`RELEASE_HOLD`**、転倒記事 **`PUBLIC_SOURCE_GUIDE_HOLD`**、非医学的UI **`RELEASE_HOLD`**。異食と誤嚥・窒息は今回対象外としてHOLD。#451は `PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED`。刑法211条の該当施行版公式全文直読と自治体個別事故報告ルールは `NOT_ESTABLISHED`。実Android・native 200%、スクリーンリーダー人間聴取、紙印刷、PDF deep link実ビューアは `NOT_RUN`。EX01/EX02の審査とHU01の承認は未実施。
 
 **今回アプリのmain統合・新production releaseなし。** 現行Kaigo Ops専用Vercel aliasは既存deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`／runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`／`READY`。以前の15/15外部HTTPは旧runtimeの結果であり、新releaseのHTTP/DOM実測ではない。正式`deploy-state/kaigo-ops`は `e49e770a970e541d2ad95204ad277eca89a485d3` のまま。次は最終A/B/C固定版に対するD独立差分再審査と、範囲別E再判定。公開数を優先して未承認の2記事やリンクを混入させない。
+
+
+追記：Aの出典台帳のみ、最新CI 2件成功後にPR #474をdocs-onlyでmainへ統合（merge SHA `6f659c51459d82d3d70f48e05f9b341f76ae266f`、main readback blob `b603592b3b91f303cf021af283b953bd8b9e05d1`）。B #466はdraft、C #465とD #475は未統合。Aの文書統合は公開GOや新deploymentを意味しない。
