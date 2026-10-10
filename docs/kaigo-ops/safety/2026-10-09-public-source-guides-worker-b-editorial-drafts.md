@@ -272,3 +272,10 @@ N24本文p3が標準様式の中心対象として挙げるのは、**介護保�
 - #451は引き続き PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED。EX01/EX02未依頼・専門職レビュー未実施、HU01承認なし。Bは本稿以外のapp、main、production、公開Issue/tool、flag、Analytics、deploy-stateを変更しない。
 
 **B最終編集稿の保存後blobは、この本文に自己参照の推測値を書かず、GitHub readbackの値で引き渡す。**
+
+
+### 8.4 Cの後続head確認（本追補作成後の並行更新）
+
+- C #465は後続commit **b33f8b166628f7c06fb96cc7ccac95a579e24434** へ進んだ。GitHub compareで ef12b659bc9fca43df4c7ebd15b9cf5471dbcecd → b33f8b166628f7c06fb96cc7ccac95a579e24434 の**変更パスはC引継ぎ文書1件のみ**（51行追加、削除なし）。
+- 最新C headから服薬TSX blob **f3415366187b47c8a6a93a378f3f223e0971d181**、転倒TSX blob **de66e2dfcb0985864be230049ecea44612fd3b05** を再取得。本文コードは§8.2で照合したものと**同一blob**。したがって§8.2の文字列比較は新headでも引き続き有効。ただし **C後続headでのCI／D独立監査の成功は本B記録から推認しない**。
+- 前記§8.1のC headは比較開始時のsnapshot。D/Eは**最新C head** とこの固定TSX blobの両方を照合し、Cがさらに変更された場合は再検査する。
