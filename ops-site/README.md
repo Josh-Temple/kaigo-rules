@@ -206,3 +206,9 @@ EX01/EX02は未依頼・未実施、HU01未承認。native zoom 200%、Android�
 [Kaigo Ops E判定](../docs/kaigo-ops/safety/2026-10-10-public-source-guide-http-closure-and-claim-aligned-e-decision.md)は`PARTIAL_WITH_GAPS`。専用Vercel production deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`／runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`／aliasの一致を再取得。今回GitHub Actions [read-only public HTTP probe #37993334787](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37993334787)で、既存11 routeと服薬ガイド、試作404、robots/sitemapの**15/15件が期待応答**を返すことを検証。服薬ガイドのHTML canonical/OG・出典アンカーも確認。これは**外部HTTPの証拠**であり、Android Chrome実機・native 200%・読み上げ・印刷／人間の閲覧評価を実施したものではない。
 
 A #470とD #471の出典・監査文書はmain統合済み。B #466／C #465は最終同一版の文章・実装・独立監査条件が未完で、既存記事の法的・報告対象表現の修正と新しい転倒・転落記事は**RELEASE_HOLD／PUBLIC_SOURCE_GUIDE_HOLD**。異食と誤嚥・窒息も今回掲載なし。回答選択式試作#451はdraft・非公開を維持し、EX01/EX02/HU01未依頼・未実施・未承認。新しいdeployment、flag変更、`deploy-state/kaigo-ops`更新は行わない。
+
+## 2026-10-10 服薬・転倒ガイド — Eの同一版安全・公開ゲート
+
+[判定正本](../docs/kaigo-ops/safety/2026-10-10-medication-fall-exact-head-controlled-release-e-decision.md)：**PARTIAL_WITH_GAPS**。前WaveのE記録 #473 は文書のみmainに統合しreadback済（`582792f64879477f8773dce450fff925d872fcb2`）。服薬の文言修正と転倒記事を含むC #465はhead `ef12b659...`、exact-head GitHub Actions 3件success、ただしD #475の独立監査対象は**旧head `77eb4b...`**で新しい文章・新記事を対象にしていない。A #474が参照したBも旧版であり、最終A/B/C/D chainが未成立。
+
+服薬改訂・UI修正は`RELEASE_HOLD`、転倒記事・異食・誤嚥窒息は`PUBLIC_SOURCE_GUIDE_HOLD`。**新記事の公開なし**。現行productionは`dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` READY、runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`、alias `ops-site-pi.vercel.app`。過去15/15 HTTPは旧deploymentの観測で新releaseの確認ではない。正式deploy-state markerは`e49e770a970e541d2ad95204ad277eca89a485d3`を維持。実Android・native 200%・読み上げ・紙印刷`NOT_RUN`。#451非公開、EX01/EX02未依頼、HU01未承認。最新版Dによる同一版独立監査後にEが改めてreleaseを判定する。
