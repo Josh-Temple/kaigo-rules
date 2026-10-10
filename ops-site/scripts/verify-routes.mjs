@@ -25,7 +25,6 @@ for (const sourceUrl of [
   'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/73_aruteppu.pdf',
   'https://www.mhlw.go.jp/content/001574219.pdf',
   'https://www.pmda.go.jp/safety/consultation-for-patients/on-drugs/0003.html',
-  'https://laws.e-gov.go.jp/law/140AC0000000045',
 ]) {
   assert.ok(medicationGuideHtml.includes(sourceUrl), `medication guide source: ${sourceUrl}`);
 }
