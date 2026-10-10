@@ -255,3 +255,42 @@ PDFの `#page=N` の実ブラウザ遷移、自治体別現行運用、Android�
 - **他の境界：** 既存5 Issue／5 tool、新Analytics event、個人事故記録、#451試作、EX01/EX02/HU01、実在専門職の探索・依頼を変更しない。#451は`PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED`、EX01/EX02は`NOT_REQUESTED / EXPERT_REVIEW_NOT_DONE`、HU01は`HUMAN_APPROVAL_NOT_DONE`。npm／Playwright・production HTTP/DOM・Android・印刷・人間レビューもAでは`NOT_RUN`。
 
 **本§8自身の新blob/headは書込後のGitHub readbackで記録する。本文中で将来のblob値を推測しない。**
+
+
+---
+
+## 9. 2026-10-11 A：刑法211条正文の同一版確認とB法令節削除の正式採否
+
+**checked_at:** 2026-10-11 JST（今回、e-Gov公式掲載とGitHub正本を再取得）。**対象はMED-A07／R04だけ**。既存§8のG25/N24/R17/PMDA・MED-A01〜06/A08・X-02・FALL-01〜03の根拠／採否は変更しない。旧§8の法令正文`NOT_ESTABLISHED`は当時の履歴であり、この追補によって検証範囲を更新する。
+
+### 9.1 原典・版・条文の直接確認
+
+- **法令**：刑法（明治40年法律第45号）第211条「業務上過失致死傷等」。e-Gov公式 [2026年9月1日時点の表示](https://laws.e-gov.go.jp/law/140AC0000000045?occasion_date=20260901) は**2026年5月21日施行版**、Law RevisionID **`140AC0000000045_20260521_507AC0000000039`**を表示。2026年10月11日現在の一般的条文説明の照合先として扱う。個別事故の発生日・過去版・将来施行版の判定はしていない。
+- **位置と公式正文**：第二十八章「過失傷害の罪」、第211条。e-Gov公式掲載テキストで、注意義務違反により人を死傷させる場合と、重大な過失で人を死傷させる場合に関する**第211条の2文全体**を確認。原文の確認できた部分は「**業務上必要な注意を怠り、よって人を死傷させた者**」「**重大な過失により人を死傷させた者も、同様とする**」。第1文は拘禁刑又は罰金、第2文は同様と定める。**当該revisionにおける公式掲載条文本文：`ESTABLISHED_FOR_REVISION`**。
+- **取得経路の境界**：公式 [API v2同revision URL](https://laws.e-gov.go.jp/api/2/law_data/140AC0000000045_20260521_507AC0000000039) のJSON応答が存在することは確認したが、**API内部のArticle 211オブジェクトの独立抽出・保存・hash照合は`NOT_RUN`**。公式ページ掲載文の照合は実施したが、Dが同じ版を独立に取り直す必要がある。
+- **条文の射程**：この2文だけで、すべての誤薬、個別事故の犯罪成立、刑罰、責任主体、注意義務違反・因果関係の存否、他の法的責任は確定しない。それらは`NOT_ESTABLISHED`。自治体別事故報告要否・期限も引き続き`NOT_ESTABLISHED`。
+
+### 9.2 実際のB/C版、法律依存箇所と削除判断
+
+| 取得した正本 | 今回のexact ID・状態 |
+| --- | --- |
+| main | **`6346300ce6300714646b588c08159f075987b32f`**（本番runtimeではない） |
+| main A §8 | 本追補前blob **`b603592b3b91f303cf021af283b953bd8b9e05d1`** |
+| main D §11 | blob **`ebc71f6ebd8424d682856fd2bc37c6c376318f09`**。R04 `BLOCKED`、他11ケースは`PASS_LIMITED`（いずれも旧候補の限定審査） |
+| B [draft #466](https://github.com/Josh-Temple/kaigo-rules/pull/466) | **head `88721568ea0266862986a1587e149f1ff57ef19b`、原稿blob `ab07897b9dce2795b602b50ab49b0132f60bc1fa`**。更新版§2.5・§9では刑法節を表示候補から除外（`REMOVE`）、残存文言・引用数14件を明示。旧§7/§8に残る16件・採用は歴史的比較 |
+| C [#465](https://github.com/Josh-Temple/kaigo-rules/pull/465) | 取得時**head `b33f8b166628f7c06fb96cc7ccac95a579e24434`**、服薬TSX **`f3415366187b47c8a6a93a378f3f223e0971d181`**。未マージの旧法令節が残る |
+
+**MED-A07正式再採否＝`REMOVE_FROM_NEW_PUBLICATION_CANDIDATE`。** 同一施行版の条文要旨そのものは限定的に原典と整合するが、**服薬事故の安全な公的資料案内にこの法的説明を追加する必要はない**。条文本文が確認できたことと、個別刑事責任の解釈を読者向けに載せる妥当性は別。AはBの**更新後の§2.5・§9の安全な削除案を正式採用**する。原典未確認を理由とするBの作成時点の記載はその時点の履歴として扱い、今後は「Aが同一版原文を確認したうえで、より狭い公開範囲を選んだ」と説明する。第211条の新しい別解釈・代替法令説明は追加しない。
+
+**B最終公開文面**：§2.1、§2.2、§2.3、§2.4および転倒§3の**非法令14引用ブロック**。B新§9の「14」は、服薬既存7＋転倒7と定義されている。元の16は旧候補の履歴であり再利用しない。G25施設中心、R17高齢者向け住まい研究、PMDA一般相談、N24の事故報告対象／5日目安／様式対象・自治体差は維持する。
+
+**C削除対象（単語を消すだけでは不十分）**：未マージ服薬TSXの`<h2 id="law">`を含むsectionと本文／`#law`目次リンク／`penalcode` Citation・sourceLinks・e-Gov出典行／metadata.descriptionの「法的責任」／scopeの「法令への入口」／出典説明の「法令・」／関連browser/routeテスト・服薬出典件数5→4。残る刑事責任の類似断定も負例テストで検出する。**main現行服薬ページを変えない転倒単独候補を優先**し、#465の8ファイルを一括統合しない。C変更前の`#law`は未承認実装であり、Aの削除判断を反映した状態ではない。
+
+### 9.3 独立ゲート・引継ぎ
+
+- **B**：B現在の削除案`REMOVE`をAが上記blobに対して正式再採否済み。Bの後続更新時は**保存後head/blob**を再取得して変更箇所を再照合。Bはdraftのまま。
+- **C**：削除を反映するなら、**服薬改訂のみ**の独立候補PR/head、本文・sourceLinks・meta・testsすべてのblob、変更パス、最新3 CI/run/job/stepをDへ渡す。転倒単独候補とは分離し、main既存服薬を不用意に触らない。
+- **D**：新しいC実装候補の正確なheadに対し、R04の削除実体と残留法的含意、原典・安全・privacy・URLを**独立再受入**する。旧§11のR04 BLOCKEDがAの削除決定だけでPASSになるわけではない。
+- **E**：服薬改訂・転倒静的記事・非医学UIを別々にGO/HOLD判断。**Aは公開許可を出していない（`RELEASE_HOLD`）**。production HTTP/DOM、Android実機native 200%、実読み上げ・紙印刷・PDF viewer・専門職レビューは本Aで`NOT_RUN`。#451非公開、Analytics/個人事故入力/Vercel/deploy-stateを変更しない。
+
+**A終了：`PASS_LIMITED / L211_SOURCE_CONFIRMED / MED-A07_REMOVE_ADOPTED / RELEASE_HOLD`。** 法令以外の11限定PASSを再審査したという意味ではない。保存後A blobとPR headはGitHub readbackで確定する。
