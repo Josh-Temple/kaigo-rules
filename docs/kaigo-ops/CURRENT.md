@@ -248,3 +248,15 @@ The production state in the preceding subsection is the historical Public Discov
 [最新版のE統合判定](safety/2026-10-10-medication-fall-exact-head-controlled-release-e-decision.md)：**PARTIAL_WITH_GAPS**。前Wave判定PR #473を文書3ファイルの3CI成功後にmainへ統合（`582792f64879477f8773dce450fff925d872fcb2`、readback済）。A #474は未統合でBの旧稿を参照、B #466最終稿head `97389ce...`／blob `1394df...`、C #465新記事込みhead `ef12b659...`（8ファイル、exact-head CI 3件success）、D #475は**旧C head `77eb4b...`を独立監査**。したがって最新版のA/B/C/D同一版安全ゲートは未成立。既存服薬改訂`RELEASE_HOLD`、新転倒・転落`PUBLIC_SOURCE_GUIDE_HOLD`、UI改善`RELEASE_HOLD`。異食・誤嚥窒息も公開しない。
 
 今回、新しいアプリ・記事をmainにマージせず、productionにも配信しない。専用Vercel alias `ops-site-pi.vercel.app`は旧deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`／READY／runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`のまま。過去probe 15/15は旧deploymentの証拠。**新productionは`PRODUCTION_NOT_VERIFIED`**、実Android/native 200%/読み上げ/印刷は`NOT_RUN`、deploy-state `e49e770a970e541d2ad95204ad277eca89a485d3`据置き。#451はdraft/NOT_PUBLIC、EX01/EX02未依頼・HU01未承認。次はA/B最新版の整合→C固定CI→Dの最新head独立再監査→Eの範囲別release判定。
+
+
+## 2026-10-10 服薬・転倒最終照合Wave — Eの範囲別公開HOLD
+
+最新の[最終統合判定](safety/2026-10-10-medication-fall-final-alignment-staged-release-e-decision.md)は **`PARTIAL_WITH_GAPS`**。A #474の最新版§8はB #466最終blob `4549faac...`との主張・段落照合を完了したが、D #475の§10独立監査はA/Bのそれ以前のblobを対象にしており、**A/B/C/Dの最終同一版は未成立**。C #465最新head `b33f8b16...`で機械CI 3件がsuccessしても、Dの最終版独立承認や公開GOではない。
+
+既存服薬改訂 **`RELEASE_HOLD`**、転倒記事 **`PUBLIC_SOURCE_GUIDE_HOLD`**、非医学的UI **`RELEASE_HOLD`**。異食と誤嚥・窒息は今回対象外としてHOLD。#451は `PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED`。刑法211条の該当施行版公式全文直読と自治体個別事故報告ルールは `NOT_ESTABLISHED`。実Android・native 200%、スクリーンリーダー人間聴取、紙印刷、PDF deep link実ビューアは `NOT_RUN`。EX01/EX02の審査とHU01の承認は未実施。
+
+**今回アプリのmain統合・新production releaseなし。** 現行Kaigo Ops専用Vercel aliasは既存deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`／runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`／`READY`。以前の15/15外部HTTPは旧runtimeの結果であり、新releaseのHTTP/DOM実測ではない。正式`deploy-state/kaigo-ops`は `e49e770a970e541d2ad95204ad277eca89a485d3` のまま。次は最終A/B/C固定版に対するD独立差分再審査と、範囲別E再判定。公開数を優先して未承認の2記事やリンクを混入させない。
+
+
+追記：Aの出典台帳のみ、最新CI 2件成功後にPR #474をdocs-onlyでmainへ統合（merge SHA `6f659c51459d82d3d70f48e05f9b341f76ae266f`、main readback blob `b603592b3b91f303cf021af283b953bd8b9e05d1`）。B #466はdraft、C #465とD #475は未統合。Aの文書統合は公開GOや新deploymentを意味しない。

@@ -212,3 +212,13 @@ A #470とD #471の出典・監査文書はmain統合済み。B #466／C #465は�
 [判定正本](../docs/kaigo-ops/safety/2026-10-10-medication-fall-exact-head-controlled-release-e-decision.md)：**PARTIAL_WITH_GAPS**。前WaveのE記録 #473 は文書のみmainに統合しreadback済（`582792f64879477f8773dce450fff925d872fcb2`）。服薬の文言修正と転倒記事を含むC #465はhead `ef12b659...`、exact-head GitHub Actions 3件success、ただしD #475の独立監査対象は**旧head `77eb4b...`**で新しい文章・新記事を対象にしていない。A #474が参照したBも旧版であり、最終A/B/C/D chainが未成立。
 
 服薬改訂・UI修正は`RELEASE_HOLD`、転倒記事・異食・誤嚥窒息は`PUBLIC_SOURCE_GUIDE_HOLD`。**新記事の公開なし**。現行productionは`dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` READY、runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`、alias `ops-site-pi.vercel.app`。過去15/15 HTTPは旧deploymentの観測で新releaseの確認ではない。正式deploy-state markerは`e49e770a970e541d2ad95204ad277eca89a485d3`を維持。実Android・native 200%・読み上げ・紙印刷`NOT_RUN`。#451非公開、EX01/EX02未依頼、HU01未承認。最新版Dによる同一版独立監査後にEが改めてreleaseを判定する。
+
+
+## 2026-10-10 Final medication/fall alignment — release gated
+
+[最新のE範囲別判定](../docs/kaigo-ops/safety/2026-10-10-medication-fall-final-alignment-staged-release-e-decision.md)は **`PARTIAL_WITH_GAPS`**。A #474はB #466最新版の出典・段落採否を再固定。C #465は服薬文章の限定修正と転倒・転落出典案内1ページを実装済みで、最新head `b33f8b16...`のCIはsuccess。ただしD #475の独立安全監査はそれ以前のA/B版を対象にした限定判定であり、最終同一版D GOは未成立。既存服薬 **`RELEASE_HOLD`**、転倒新記事 **`PUBLIC_SOURCE_GUIDE_HOLD`**、非医学的UI **`RELEASE_HOLD`**。異食・誤嚥窒息も対象外HOLD。新しい公開コードのmerge・production releaseなし。
+
+本番は既存Kaigo Ops専用deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`／runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`／alias `ops-site-pi.vercel.app`、`READY`。過去の外部HTTP 15/15は旧runtimeの結果で、新規公開の実測ではない。正式`deploy-state/kaigo-ops`=`e49e770a970e541d2ad95204ad277eca89a485d3` を据置く。#451はdraft/非公開、EX01/EX02未依頼、HU01未承認。Android native 200%、人による読み上げ・紙印刷、PDF実ビューアは未実施。次はA/B/C確定blobsへのD再監査、必要なら公開対象の独立差分化・新head CIとD再審査、その後Eが範囲別releaseを決める。
+
+
+追記：Aの出典台帳のみ、最新CI 2件成功後にPR #474をdocs-onlyでmainへ統合（merge SHA `6f659c51459d82d3d70f48e05f9b341f76ae266f`、main readback blob `b603592b3b91f303cf021af283b953bd8b9e05d1`）。B #466はdraft、C #465とD #475は未統合。Aの文書統合は公開GOや新deploymentを意味しない。
