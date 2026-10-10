@@ -1,0 +1,43 @@
+# Kaigo Ops — Medication/Fall Final Tuple: E Scoped Release Decision
+
+**Checked:** 2026-10-11 JST.  
+**Wave:** `/Kaigo Ops/Work Instructions/2026-10-10_medication_fall_exact_tuple_independent_reacceptance_scoped_release_and_verified_production_wave_instructions.md`.  
+**Decision:** **`PARTIAL_WITH_GAPS` — no application merge, no new production release, and no deploy-state advancement.** This is an evidence-based release decision, not medical, legal, or external expert authorization.
+
+## 1. Completed document merges and fixed evidence
+
+- Previous E documentation-only [PR #477](https://github.com/Josh-Temple/kaigo-rules/pull/477) merged to main as `a21958107a88e15703828b1d818dd28a08fbcac1`. Its three changed paths were the prior decision, `docs/kaigo-ops/CURRENT.md`, and `ops-site/README.md`. Exact-head [runs 38047093346](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38047093346), [38047093260](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38047093260), [38047093227](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38047093227) completed successfully. Prior E decision was read back from main (blob `e5927194e1efd39e93ae5250ec163da8c4073cad`). This historical document refers to the older D §10 and must not be read as the present outcome.
+- Final independent D audit [PR #475](https://github.com/Josh-Temple/kaigo-rules/pull/475) §11 was merged **docs-only** to main as `97ac3ef85578e24d53ac0da09ad3d8780f323c8f`, after latest head `3f34d08371f3cf79922fa85ff774eea923486fbc`, single changed document, and exact-head [run 38055933961](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38055933961) / [run 38055934014](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38055934014) successful. Main D ledger `docs/kaigo-ops/safety/2026-10-09-public-source-guides-worker-d-independent-audit.md` was read back with blob `ebc71f6ebd8424d682856fd2bc37c6c376318f09` and §11. Earlier §§9/10 are historical.
+- A source audit §8 (main) blob: `b603592b3b91f303cf021af283b953bd8b9e05d1`. A #474 already merged; do not redo.
+- B [#466](https://github.com/Josh-Temple/kaigo-rules/pull/466): **draft/open**, head `0b192a57674681952afcc4766d4cd03ce523e331`, editorial blob `4549faac7651b6c3f88291740548e179e74e037a`. B's final 16 blocks correspond to the scoped C code candidate. The draft is not a release authorization.
+- C [#465](https://github.com/Josh-Temple/kaigo-rules/pull/465): **open/unmerged**, head `b33f8b166628f7c06fb96cc7ccac95a579e24434`; 8 changed paths. Blobs: medication TSX `f3415366187b47c8a6a93a378f3f223e0971d181`, fall TSX `de66e2dfcb0985864be230049ecea44612fd3b05`, home `ca0113d6de512236acb87c5346bc6d69bcd8b26e`, sitemap `a85ad4d8069e0d0f4bde400fbda7dfaba2f44175`, CSS `f2a43acf8f062560db9fbf3aa2fffc31e684ed58`, routes `1f8e9c1e321c4961fa2844bbc3621e934fd1b267`, browser spec `b7f07446c80e5aaf14b4a872a90c68a9e16b1ccc`, C handoff `2f9c3003e4839505e22195ce685e8d7f5587bebb`. C exact-head Actions [ops 38046418244](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418244), [build 38046418248](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418248), [publication readiness 38046418246](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418246) are completed/success. D reports 15/15 Chromium tests passing **in CI**, not in production.
+- A final → B final → C final exact tuple is established for review. D §11 independently reaccepted this tuple with 11/12 red-team risk cases `PASS_LIMITED` at source/code/CI level and **R04 `BLOCKED`**. D overall `PARTIAL_WITH_GAPS`. No retroactive application of historical D §10 conclusions.
+
+## 2. Independent E publication decisions
+
+| Release unit | D final scope | E release verdict | Reason / reopening condition |
+| --- | --- | --- | --- |
+| Existing medication-source guide revision | `BLOCKED` | **`RELEASE_HOLD`** | R04: the relevant effective edition of Penal Code Article 211 has no verified authoritative full-text article readback. The unverified legal subsection is present in the code candidate. A/B must either verify the official same-version text or adopt a safe removal; C must update code + CI; D must independently reaccept changed cases. |
+| New static fall/fall-from-bed source guide | `PASS_LIMITED` | **`PUBLIC_SOURCE_GUIDE_HOLD`** | G25/N24 and fall-risk cases had limited independent pass, but #465 couples fall page, navigation, sitemap, styles/tests and **held medication modifications**. No isolated audited release candidate with its own new-head CI/D exists. Limited pass is not GO or production acceptance. |
+| Nonmedical navigation/source-link/print/accessibility UI | `PASS_LIMITED` | **`RELEASE_HOLD`** | No independently isolated UI-only change set free of held medication and fall content/links/sitemap. New branch/PR, exact-head CI, and D reacceptance are required before reconsideration. |
+| Foreign-object ingestion, aspiration/choking | outside scope | **`PUBLIC_SOURCE_GUIDE_HOLD`** | No new article permitted this Wave. |
+| Selection-only medication prototype [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) | draft/unmerged | **`PREVIEW_ONLY / NOT_PUBLIC / HUMAN_REVIEW_DEFERRED`** | No public flags/routes. EX01/EX02 `NOT_REQUESTED / EXPERT_REVIEW_NOT_DONE`; HU01 `HUMAN_APPROVAL_NOT_DONE`. |
+
+**No release unit has received E GO.** C's eight files must not be merged together; no partial merge without a separately audited and CI-validated safe release unit. B remains draft; C remains unmerged; #451 remains unavailable. Existing 5 Issue + 5 tool registry, no new individual-incident or medication data input, no new Analytics events, and no medical/legal individualized decision tools are maintained within the reviewed change scope.
+
+**Source boundaries:** G25 is mainly a care-facility guideline, R17 concerns an older-person housing study, PMDA is general medicine consultation, and N24 distinguishes reportable incidents, 5-day **guideline**, and standard-form target services. Municipality-specific operational duties/deadlines remain `NOT_ESTABLISHED`. L211 full authoritative current-edition verification remains `NOT_ESTABLISHED`. D's PDF page/claim inspection and CI cannot replace expert or legal approval. Android native 200% zoom, human screen-reader listening, physical print, actual PDF `#page=N` viewer behavior, and human comprehension evaluation are **`NOT_RUN`**.
+
+## 3. Production and deployment boundary
+
+As of this E check, Vercel project `prj_7kKmZkto1j9r9Z3otwccx05LAjTp` (`kaigo-ops`) reports latest production **`dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`**, `READY`, repository `Josh-Temple/kaigo-rules`, runtime **`ffd70abb5723e950a0a1036795f28da31614a1f3`**; fresh alias lookup shows `ops-site-pi.vercel.app` still assigned to this deployment. The above two docs-only merges are **not** runtime deployments. Historic read-only public HTTP probe [run 37993334787](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37993334787) returned expected **15/15** for the earlier runtime. Because there is no new application release, **new production 15/16 URL HTTP/HTML/DOM = `NOT_RUN`**; do not label a new publication verified.
+
+`deploy-state/kaigo-ops` branch tip was read as **`e49e770a970e541d2ad95204ad277eca89a485d3`**. **`UNCHANGED`**: no deploy hook followed by the same formal post-deploy verifier's exact deployment/SHA/alias/HTML contract, so no marker fast-forward. No deployment, production alias switch, preview enablement, Analytics expansion, or external clinical review was performed.
+
+## 4. Reopening and verification sequence
+
+1. **A/B:** Decide whether to omit the L211 subsection entirely or directly verify the authoritative Article 211 wording of the same effective revision. Keep unconfirmed municipality duties out of copy.
+2. **C:** Implement only an approved edit or an entirely independent fall/UI release candidate, explicitly excluding held code/routes/links/sitemap; lock new code/test blobs, head, and all required CI.
+3. **D:** Independently reaccept the changed exact A/B/C tuple, red-team risk cases, source limits, privacy/UI/accessibility, and scoped release candidate. Do not reuse an earlier C head's or coupled PR's success.
+4. **E:** Only then reconsider scopes individually; before any app merge check head/paths/checks/D against that exact identity. If GO and merged, use the **Kaigo Ops project only** for new deployment, actual alias/runtime checks, fresh external HTTP/HTML/DOM, and formal deploy-state verifier. Document any remaining human-device `NOT_RUN` separately.
+
+**Final E disposition:** `PARTIAL_WITH_GAPS / ALL SCOPES HOLD`. **This Wave's independent review and hold decision are complete; a public release is not.**

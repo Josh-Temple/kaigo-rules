@@ -260,3 +260,8 @@ The production state in the preceding subsection is the historical Public Discov
 
 
 追記：Aの出典台帳のみ、最新CI 2件成功後にPR #474をdocs-onlyでmainへ統合（merge SHA `6f659c51459d82d3d70f48e05f9b341f76ae266f`、main readback blob `b603592b3b91f303cf021af283b953bd8b9e05d1`）。B #466はdraft、C #465とD #475は未統合。Aの文書統合は公開GOや新deploymentを意味しない。
+
+
+## 2026-10-11 — 服薬・転倒最終tupleのE公開判定
+
+[今回のE判定](safety/2026-10-11-medication-fall-final-tuple-scoped-release-e-decision.md)：**PARTIAL_WITH_GAPS / 全3範囲HOLD**。旧E判定#477（docs-only merge `a21958107a88e15703828b1d818dd28a08fbcac1`）とD #475の最終§11（docs-only merge `97ac3ef85578e24d53ac0da09ad3d8780f323c8f`）をmainでreadback。A/B/C最終同一版はDで独立再審査済みだが、刑法211条の同一施行版公式正文の直接照合未成立（R04 BLOCKED）。服薬改訂は`RELEASE_HOLD`。転倒記事と非医学UIはD`PASS_LIMITED`でも、服薬のHOLD改訂を含むC #465の8ファイルから安全な独立release実体・新CI・D再受入がないため、それぞれ`PUBLIC_SOURCE_GUIDE_HOLD`／`RELEASE_HOLD`。B #466 draft、C #465未マージ、#451非公開。新しいアプリmain統合／production配信なし。既存Vercel aliasは旧deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` READY、runtime `ffd70abb5723e950a0a1036795f28da31614a1f3` のまま。新HTTP/DOM`NOT_RUN`、Android/native 200%・読み上げ・紙印刷・PDF viewer`NOT_RUN`、正式deploy-state `e49e770a970e541d2ad95204ad277eca89a485d3` `UNCHANGED`。再開はA/B法令節判断→C独立実体/新CI→D再監査→E範囲別公開判定。

@@ -222,3 +222,8 @@ A #470とD #471の出典・監査文書はmain統合済み。B #466／C #465は�
 
 
 追記：Aの出典台帳のみ、最新CI 2件成功後にPR #474をdocs-onlyでmainへ統合（merge SHA `6f659c51459d82d3d70f48e05f9b341f76ae266f`、main readback blob `b603592b3b91f303cf021af283b953bd8b9e05d1`）。B #466はdraft、C #465とD #475は未統合。Aの文書統合は公開GOや新deploymentを意味しない。
+
+
+## 2026-10-11 — 服薬・転倒ガイドの最終版E公開判定
+
+[判定正本](../docs/kaigo-ops/safety/2026-10-11-medication-fall-final-tuple-scoped-release-e-decision.md)は`PARTIAL_WITH_GAPS / ALL SCOPES HOLD`。#477のE旧判定文書と#475のD最終§11は文書のみmainへ統合・readback済み。A/B/Cの最終同一版に対しDは12誤読ケース中11件を限定PASS、刑法211条の公式同版正文未確認（R04）をBLOCKEDと判定。服薬改訂`RELEASE_HOLD`、転倒記事`PUBLIC_SOURCE_GUIDE_HOLD`、非医学UI`RELEASE_HOLD`。#465の8ファイル一括merge不可。B #466 draft、C #465未マージ、#451試作非公開。新アプリdeployment・新production HTTP/DOM・正式marker更新なし（Vercel旧runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`、marker `e49e770a970e541d2ad95204ad277eca89a485d3`据置き）。実Android/native 200%・スクリーンリーダー・紙印刷・PDF viewerは未実施。次は法令節の処置または安全な独立PR化→新head CI/D監査→E再判定。
