@@ -458,7 +458,7 @@ PDFの冊子印刷頁と通し頁は区別。リンク `#page=2/3/4/28/33/35/41/
 | ②転倒・転落の静的記事 | **`PARTIAL_WITH_GAPS / PUBLIC_SOURCE_GUIDE_HOLD`**。旧#465のF01–F05は`PASS_LIMITED`だが、**分離PRの新head受入は未実施**。 | main起点のfall専用PR、main服薬blob同一、必要CSS/home/sitemap/routes/browser testsだけのdiff、G25/N24原典とF01–05、旧11route/服薬・#451回帰、新head 3 CI、Dのexact-head受入。 |
 | ③非医学的UI | **`PARTIAL_WITH_GAPS / RELEASE_HOLD`**。独立UI差分・headなし。 | 本文/route/HOLD導線を含まない有意義なUI専用PR（成立する場合のみ）、旧11route/服薬不変、SEO/keyboard/print/privacy回帰、3新head CIとDの独立受入。 |
 
-**全体：`PARTIAL_WITH_GAPS`、Dの開始時点の独立prefight記録のみ完了、**新候補の最終`D_ACCEPTED`は **`NOT_ESTABLISHED`**。この記録自体は公開許可ではなく、#465の8 changed paths一括merge・production・deploy-state更新は認めない。D§11の旧合格を別PRへ貼り替えることも禁止。
+**全体：`PARTIAL_WITH_GAPS`、Dの開始時点の独立preflight記録のみ完了、**新候補の最終`D_ACCEPTED`は **`NOT_ESTABLISHED`**。この記録自体は公開許可ではなく、#465の8 changed paths一括merge・production・deploy-state更新は認めない。D§11の旧合格を別PRへ貼り替えることも禁止。
 
 **Eへの引継ぎ:** 新A/B/C head・blobs/候補差分・CIが現れた後にこの§12を最終合格へ読み替えず、**実体ごとにDが追加再審査**する。新候補のD受入がない範囲はEでHOLD。A/BがR04削除・法律根拠を決める、Cがfall/服薬/UIを安全に分離する、Dが該当部分を独立再評価する、EがGOした対象のみmerge/本番検証する。新production HTTP/DOM・Vercel/deploy-stateの値について本D作業は`NOT_RUN`、marker操作なし。
 
