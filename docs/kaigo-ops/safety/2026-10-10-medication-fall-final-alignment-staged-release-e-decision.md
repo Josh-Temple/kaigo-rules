@@ -37,7 +37,7 @@ The document-only late A/B/C head updates are not treated as proof of a **new D 
 
 Current C head GitHub Actions: [Validate ops site #38046418244](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418244), [Verify publication readiness #38046418246](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418246), [Validate build #38046418248](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418248) **completed/success**. This is machine/CI evidence at C head, not production or native mobile verification.
 
-B head build and publication-readiness were success (runs #38046502595 / #38046502583); D head build and publication-readiness were success (runs #38046664797 / #38046664783). A head publication-readiness was success (run #38046714637); its build **was in progress at the E pre-decision query** (run #38046714695). Do not represent that in-progress result as PASS; refresh before any A documentation-only merge. CI checks do not supersede the D publication gate.
+B head build and publication-readiness were success (runs #38046502595 / #38046502583); D head build and publication-readiness were success (runs #38046664797 / #38046664783). A head publication-readiness was success (run #38046714637); its build was initially **in progress** at E pre-decision query (run #38046714695), and was **later refreshed as completed/success** before the documentation-only A merge. The intermediate state is retained as history. CI checks do not supersede the D publication gate.
 
 ## 3. Source boundaries and 12-risk-case safety disposition
 
@@ -59,7 +59,7 @@ Historical external read-only public HTTP probe [#37993334787](https://github.co
 
 ## 5. Integration actions and explicit next owners
 
-This E decision is **documentation-only**. It does not merge #465, #466, #474 or #475, change #451, modify the public app, enable flags, trigger a new production deploy, touch analytics or run external expert outreach. A/D documentation-only PRs can be merged separately **only** after their latest content, CI, mergeability and version applicability are rechecked; D §10 is not the final aligned D audit. In particular, A's pending build is not a green check.
+This E decision is **documentation-only**. It does not merge **#465, #466 or #475**, change #451, modify the public app, enable flags, trigger a new production deploy, touch analytics or run external expert outreach. **A documentation-only PR #474 was merged after its latest checks completed successfully, with no public app release.** D §10 is still not the final aligned D audit. Any D documentation merge requires independently refreshed version applicability and checks.
 
 1. **D owner:** independently compare final **A blob `b603592...` → B blob `4549faa...` → C head `b33f8b...`** and final code/test blobs, and record explicit 12-case scope decisions in #475 §11 or a clearly versioned addendum. Resolve or hold L211 legally sensitive text; do not assume final PASS from unchanged TSX.
 2. **B/C owners:** if D identifies any source/wording/rendered-text mismatch, fix only that scope, refreeze immutable blobs, rerun exact-head CI and D. For an independent UI-only release, split the actually safe files so no held guide route/link/sitemap/medical/legal statement leaks, then retest and re-audit the **new** head.
@@ -67,3 +67,10 @@ This E decision is **documentation-only**. It does not merge #465, #466, #474 or
 4. **Human gates:** no expert or public-release approval is inferred; no independent reviewer is contacted during this Wave.
 
 **Fail-closed endpoint:** `PARTIAL_WITH_GAPS` and each scoped HOLD are a completed E decision, not a blocked request to publish at any cost. Preserve older ledger sections as history and revisit only when new relevant evidence exists.
+
+
+## 6. E post-decision documentation integration evidence
+
+After the initial HOLD decision, E re-fetched [A PR #474](https://github.com/Josh-Temple/kaigo-rules/pull/474) at expected head `55e7dbee9838d7055ffc3115b3bcc870eb5844f3`. PR remained mergeable and changed **only** `docs/kaigo-ops/safety/2026-10-09-accident-prevention-public-source-claim-audit.md`. Both latest-head GitHub Actions runs **`Verify publication readiness integration #38046714637` and `Validate build #38046714695`** were completed/success. E performed a docs-only squash merge of **#474**, yielding `main` merge commit **`6f659c51459d82d3d70f48e05f9b341f76ae266f`**. Fresh GitHub main readback confirms A ledger blob **`b603592b3b91f303cf021af283b953bd8b9e05d1`**; PR is closed/merged. The A source ledger's `PASS_LIMITED` does **not** discharge D's final safety gate. B draft #466, C application PR #465 and D PR #475 remain outside this integration. No application release or deploy-state change resulted from the A documentation merge.
+
+This E decision plus CURRENT and README is proposed separately as an **E documentation-only PR**; its own required CI and GitHub main readback must be checked after merge. Until then, the E files exist on the review branch, not main.
