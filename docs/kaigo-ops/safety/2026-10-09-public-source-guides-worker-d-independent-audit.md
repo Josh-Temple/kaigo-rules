@@ -415,3 +415,50 @@ PDFの冊子印刷頁と通し頁は区別。リンク `#page=2/3/4/28/33/35/41/
 
 **次owner:** A/B（L211正文の同版確認または法律節削除の採否・文面）→C（その修正・必要な分離と新head CI）→D（変更後の該当ケースを再受入）→E（範囲別GO/HOLD、必要時のみmerge・Kaigo Ops専用新deployment・exact runtime/alias・15/16 URL HTTP/DOM・正式deploy-state）。#451、異食、誤嚥・窒息は公開せず、実在専門職への依頼もしていない。既存5 Issue/5 tool・no new analytics・no incident inputを保持する。
 
+
+
+---
+
+## 12. 2026-10-11 D_ISOLATION_REACCEPTANCE_PREFLIGHT — 新候補未成立時点の独立差分監査と再受入保留
+
+**checked_at:** 2026-10-11 06:28 JST（GitHubおよび公式e-Govの読取。時刻は監査時点の目安）。**Wave:** Library `/Kaigo Ops/Work Instructions/2026-10-11_medication_legal_section_resolution_fall_guide_isolation_independent_reacceptance_and_conditional_release_wave_instructions.md` §6。**性質:** 新しい実装候補の最終受入証明**ではない**。A/B/Cの新しい保存後の実体、独立分離PR、およびそのheadでの3 CIがまだ存在しない時点の差分確認とfail-closedのゲート記録。§11の確定済み審査をやり直さず、不変証拠のみ限定的に継承する。DはA/B/Cの文書・コードを修正せず、merge/production/deploy-stateを操作しない。
+
+### 12.1 fresh-read identity・新候補の有無
+
+| 対象 | GitHubで再取得した正確な版／状態 | このWaveに必要な差分・不足 |
+| --- | --- | --- |
+| main | `6346300ce6300714646b588c08159f075987b32f` | 前E #478までdocs-only統合済み。runtime SHAではない。 |
+| A本体 | mainの出典台帳 blob `b603592b3b91f303cf021af283b953bd8b9e05d1`、§8 | 新たな法令採否追補なし。MED-A07の同版正文直接照合は未確立、候補掲載にとどまる。 |
+| B #466 | `open/draft`、head `0b192a57674681952afcc4766d4cd03ce523e331`、編集稿 blob `4549faac7651b6c3f88291740548e179e74e037a` | 前D§11と同じ。§2.5に刑法第211条の要旨・直接リンクが**残る**。削除・限定維持の**新確定稿は未取得**。 |
+| C #465 | `open/unmerged`、head `b33f8b166628f7c06fb96cc7ccac95a579e24434`、8 changed paths | 旧同一版の混在PR。転倒単独／服薬単独／UI単独の新独立PRは、2026-10-11 06:28 JST時点のopen PR一覧には見つからない。**この8ファイル一括merge不可**。 |
+| C旧候補の主要blob | medication `f3415366187b47c8a6a93a378f3f223e0971d181`、fall `de66e2dfcb0985864be230049ecea44612fd3b05`、home `ca0113d6de512236acb87c5346bc6d69bcd8b26e`、sitemap `a85ad4d8069e0d0f4bde400fbda7dfaba2f44175`、browser `b7f07446c80e5aaf14b4a872a90c68a9e16b1ccc` | いずれも前D§11のblobと一致。新候補の変更blobとして誤表示しない。CSS `f2a43acf8f062560db9fbf3aa2fffc31e684ed58`、route script `1f8e9c1e321c4961fa2844bbc3621e934fd1b267`も前§11の記録値であり、分離新版の回帰証拠ではない。 |
+| 現行main服薬 | `ops-site/app/guides/medication-incident-sources/page.tsx` blob `782a1f53c635997817faf46bfe2f4e63721482c2` | #465の服薬改訂blobとは**異なる**。転倒単独分離時には必ずこのmain blobを保持する。なお現行main記事にも旧 `#law` と刑法211条の記載があるため、分離のみでサイト全体の法令節が消えるとは言えない。 |
+| D正本 | main同台帳 blob `ebc71f6ebd8424d682856fd2bc37c6c376318f09`、§11 | 前D 12リスク中11 `PASS_LIMITED`・R04 `BLOCKED`。この§12は候補未成立の状態確認と次の再監査条件。 |
+| #451 | `open/draft/unmerged`、head `2dd0e260d0922e18d003905f4a7edf42560f640c` | `PREVIEW_ONLY / NOT_PUBLIC`。旧C検証はローカル404だが、本Waveの本番HTTP実測ではない。 |
+
+**旧C CIの再取得:** #465 head `b33f8b...` のActionsは `Validate ops site` run [38046418244](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418244) / job `114196759226`、`Validate build` run [38046418248](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418248) / job `114196759098`、`Verify publication readiness integration` run [38046418246](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38046418246) / job `114196759065`、全て`completed/success`。各jobの関連stepsもsuccessを取得した。**いずれも新しい独立PR/headのCIではない**。新候補のrun/job/stepは`NOT_RUN`（候補未成立）。
+
+### 12.2 危険な誤読と修正影響の独立切り分け
+
+| 検査範囲 | 今回見た差分・コードの観察 | Rケース／判断 |
+| --- | --- | --- |
+| 法令節（服薬改訂） | B §2.5は「服薬の間違いだけで、刑事責任が決まるわけではありません」と刑法211条の要旨およびe-Gov URLを保持。C #465の服薬TSX `id="law"`、目次 `href="#law"`、`penalcode` source、刑事責任文、metadata内「法的責任」が残存。削除が実装された版は**存在しない**。 | **R04 `BLOCKED`継続**。公式e-Gov画面と候補API URL（`140AC0000000045_20260521_507AC0000000039`）へ再アクセスしたが、施行時点を確定した**同一版第211条正文全文を抽出・逐条検証する証拠は得られず**、`NOT_ESTABLISHED`。A/B/Cが改訂を固め、法律節を維持するならD自身の全文直接照合、削除するなら見出し・目次・本文・citation/source・相互リンク・metadata・testsの削除差分とrendered HTMLを独立再検査する。 |
+| 旧11ケース | A/B・C既存候補のblobに§11以降の変更なし。出典→B→Cの限定一致の評価範囲は同じ。 | R01–03、R05–07、F01–05は**旧§11 `PASS_LIMITED`を当該旧tupleにのみ維持**。新しい公開候補へ受入を継承しない。対象・断定の強さに変更があれば該当ケースを差分再監査する。 |
+| 転倒単独候補 | #465の転倒TSXはG25の施設中心・多因子、過剰制限、ベッド周辺、N24の報告対象・様式対象・第1報5日目安を分記し、医療・身体拘束・刑事責任の個別判定をしないコード。ただし`/guides/medication-incident-sources`へリンクする。専用の新しいmain起点PRとそのdiffは未取得。 | F01–F05の旧限定監査は参照可。ただし`fall page / source / home / sitemap / CSS / browser tests / legacy medication unchanged`の**新候補identityは`NOT_ESTABLISHED`**。main服薬をblob同一に保ち、相互リンクが**既存のmain服薬**だけを指すこと、CSSの共有影響、旧11ルートを再検査するまで独立受入不可。 |
+| 非医学的UI | #465ではCSS/home/sitemap/routes/browser testsが服薬改訂と転倒新記事の両方に結合。browser specには#465服薬版の目次6リンク、リード直後のpriority、直接PDFリンク、転倒への相互導線等を期待するテストがあり、main旧服薬に無修正で移植できるとは限らない。 | UI単独の実体と新headは`NOT_ESTABLISHED`。HOLD記事・法令節・未公開routeを含まない差分、既存11ルート、legacy服薬、keyboard/focus、print、390px、reduced motion、CSS 200% proxy、canonical/OG、sitemap、privacyを新headで検証した場合だけ再受入候補となる。 |
+| プライバシー・#451 | #465既存差分にincident/患者/薬剤の入力フォームや新Analyticsイベント・秘密情報・公開flagを追加する証拠は前§11で見出されていない。#451はGitHub上draftで未統合。 | 新しい候補が未成立のため**新候補に対するPASSは出さない**。現行本番の#451 404・外部HTTPを今回再実測できなかったため`NOT_RUN`、テストの旧CI成功と区別。 |
+
+**独立観察手段:** GitHub main/PR API、A/B/C/D各固定blobとC旧PRの差分、CI run/job/step、e-Gov公式URLのアクセス可能範囲。**今回独立実測していないもの:** 新候補のブラウザDOM・ローカルnpm/Playwright、Android Chrome native 200%、実スクリーンリーダー、紙印刷、実PDF viewer `#page=N`、人間の理解テスト、専門職レビュー、自治体別の報告義務／期限、Kaigo Ops新Vercel runtime/alias、正式post-deploy verifier、deploy-state進行。各`NOT_RUN`または`NOT_ESTABLISHED`とし、旧Cのheadless結果を実機やproductionに転用しない。
+
+### 12.3 公開対象別のD判定（新候補未成立、Eへ）
+
+| 範囲 | **このWaveの新候補に対するD判定** | 受入再開の必要条件 |
+| --- | --- | --- |
+| ①既存服薬本文の改訂 | **`BLOCKED / RELEASE_HOLD`**。R04が残り、削除または正文同版直接確認の新A/B/C版は未成立。 | A採否→B保存後head/blob→C服薬のみの変更blob/PR→そのheadで3 CI（run/job/step）→R04の本文・原典・表示のD独立再評価。既存mainの法律節を変更する場合、その影響も審査。 |
+| ②転倒・転落の静的記事 | **`PARTIAL_WITH_GAPS / PUBLIC_SOURCE_GUIDE_HOLD`**。旧#465のF01–F05は`PASS_LIMITED`だが、**分離PRの新head受入は未実施**。 | main起点のfall専用PR、main服薬blob同一、必要CSS/home/sitemap/routes/browser testsだけのdiff、G25/N24原典とF01–05、旧11route/服薬・#451回帰、新head 3 CI、Dのexact-head受入。 |
+| ③非医学的UI | **`PARTIAL_WITH_GAPS / RELEASE_HOLD`**。独立UI差分・headなし。 | 本文/route/HOLD導線を含まない有意義なUI専用PR（成立する場合のみ）、旧11route/服薬不変、SEO/keyboard/print/privacy回帰、3新head CIとDの独立受入。 |
+
+**全体：`PARTIAL_WITH_GAPS`、Dの開始時点の独立prefight記録のみ完了、**新候補の最終`D_ACCEPTED`は **`NOT_ESTABLISHED`**。この記録自体は公開許可ではなく、#465の8 changed paths一括merge・production・deploy-state更新は認めない。D§11の旧合格を別PRへ貼り替えることも禁止。
+
+**Eへの引継ぎ:** 新A/B/C head・blobs/候補差分・CIが現れた後にこの§12を最終合格へ読み替えず、**実体ごとにDが追加再審査**する。新候補のD受入がない範囲はEでHOLD。A/BがR04削除・法律根拠を決める、Cがfall/服薬/UIを安全に分離する、Dが該当部分を独立再評価する、EがGOした対象のみmerge/本番検証する。新production HTTP/DOM・Vercel/deploy-stateの値について本D作業は`NOT_RUN`、marker操作なし。
+
