@@ -462,3 +462,70 @@ PDFの冊子印刷頁と通し頁は区別。リンク `#page=2/3/4/28/33/35/41/
 
 **Eへの引継ぎ:** 新A/B/C head・blobs/候補差分・CIが現れた後にこの§12を最終合格へ読み替えず、**実体ごとにDが追加再審査**する。新候補のD受入がない範囲はEでHOLD。A/BがR04削除・法律根拠を決める、Cがfall/服薬/UIを安全に分離する、Dが該当部分を独立再評価する、EがGOした対象のみmerge/本番検証する。新production HTTP/DOM・Vercel/deploy-stateの値について本D作業は`NOT_RUN`、marker操作なし。
 
+
+---
+
+## 13. 2026-10-11 D_ISOLATED_EXACT_HEAD — #480・#482の現行head別独立安全再受入（公開許可とは別）
+
+**checked_at:** 2026-10-11 JST。**指示書:** Library `/Kaigo Ops/Work Instructions/2026-10-11_medication_fall_isolated_exact_head_independent_acceptance_scoped_release_and_production_verification_wave_instructions.md` §6。**独立観察:** GitHub PR/compare/ファイル・blob、Actions commit→run→job→step、公的原典の指定頁画像、B確定稿、コード上の静的負例照合。**未実施:** D自身のnpm・独立ブラウザDOM・本番HTTP・人手審査・Vercel操作。前§11は結合#465の監査、§12は新PR作成前のpreflightであり、本節の受入と同一視しない。DはB/C本文とアプリコードを変更せず、merge・deploy・deploy-state更新をしない。
+
+### 13.1 exact identityと独立diff
+
+| 対象 | 実取得した版・変更実体 | 境界 |
+| --- | --- | --- |
+| GitHub main | `254b0aecdc8708f1de6c5359615295b82bf3f4be`。前E #483 merged、判定blob `a0c3dbfd44507457b89f0dd8b49e63c78aee960a`。 | mainのdocs-only commitはproduction runtimeとは別。前Eは3範囲すべてHOLD。 |
+| A台帳§9 | `docs/kaigo-ops/safety/2026-10-09-accident-prevention-public-source-claim-audit.md`、main blob `576e52f0be9266884c62eccd215afac8d669f29f`。 | MED-A07は候補から`REMOVE`を正式採用。Aの出典限定判定は公開GOではない。 |
+| B #466 | `open/draft`、head `88721568ea0266862986a1587e149f1ff57ef19b`、編集稿 blob `ab07897b9dce2795b602b50ab49b0132f60bc1fa`、§2/§3/§9。 | 法令節の表示候補削除、非法令14「引用ブロック」編集管理。Aの削除採否と整合。 |
+| C #480 転倒単独 | `open/draft`、head `b5b73e46e0217ff8ec689c9984d6b837cd7d92cc`、PR metadata base=main、旧merge-base `6346300ce6300714646b588c08159f075987b32f`。main比較`ahead 1 / behind 9`、6 changed paths。 | 現行main服薬blob `782a1f53c635997817faf46bfe2f4e63721482c2` と#480内服薬blobは**完全一致**。よって旧刑法節は#480単独統合後も残る。 |
+| #480 changed paths / blobs | `ops-site/app/guides/fall-prevention-sources/page.tsx` = `de66e2dfcb0985864be230049ecea44612fd3b05`。`ops-site/app/page.tsx` = `ca0113d6de512236acb87c5346bc6d69bcd8b26e`。`ops-site/app/sitemap.ts` = `a85ad4d8069e0d0f4bde400fbda7dfaba2f44175`。`ops-site/app/globals.css` = `f2a43acf8f062560db9fbf3aa2fffc31e684ed58`。`ops-site/scripts/verify-routes.mjs` = `5313a6ddf4f38ed12145d683f0cae583f6a587d3`。`ops-site/tests/browser/public-source-guides.spec.mjs` = `5e11783a182e52110d21acde19f59bbe379c29e3`。 | 新規fall記事、home/sitemapのfall追加、共有CSS、route/browser testsだけ。medication TSX・#451・新analyticsに直接変更なし。 |
+| C #482 服薬単独 | `open/draft`、head `6c64af5924da24ea89a147ad9d42c7f1155c3f45`、PR metadata base=main、旧merge-base `6346300ce6300714646b588c08159f075987b32f`。main比較`ahead 2 / behind 9`、4 changed paths。 | fall記事・home・sitemapは差分に含まれない。 |
+| #482 changed paths / blobs | `ops-site/app/guides/medication-incident-sources/page.tsx` = `8f9876db7dfc81d232e04d3f250b5e115232b540`。`ops-site/app/globals.css` = `f2a43acf8f062560db9fbf3aa2fffc31e684ed58`。`ops-site/scripts/verify-routes.mjs` = `d99840cf0abf4f3645ab9c70e3581be531984886`。`ops-site/tests/browser/public-source-guides.spec.mjs` = `d438c28b1aebb74ef2882ce62c4e208f69f4c76e`。 | メタデータ含む法令節削除、PDF直リンク・注意の配置・負例テスト。転倒は404を期待。 |
+| #451 / 旧#465 | #451 `open/draft` head `2dd0e260d0922e18d003905f4a7edf42560f640c`、#465 `open/unmerged` head `b33f8b166628f7c06fb96cc7ccac95a579e24434`。 | #451=`PREVIEW_ONLY/NOT_PUBLIC/HUMAN_REVIEW_DEFERRED`。#465の8ファイル一括merge不可。 |
+
+### 13.2 原典→B最新版→C表示候補：危険な誤読の独立差分検査
+
+**原典の今回の直接観察:** G25厚労省Vol.1436 ([公式PDF](https://www.mhlw.go.jp/content/001591418.pdf)) 冊子30/PDF33で転倒の多要因・防ぎ切れない転倒・身体拘束の懸念、冊子32/PDF35で利用者別のベッド周辺、冊子25/PDF28で初動・看護職連携、冊子38/PDF41で誤薬予防と事例をそれぞれ頁画像で確認。G25は施設サービスを主な対象とする。N24厚労省Vol.1332 ([公式PDF](https://www.mhlw.go.jp/content/001574219.pdf)) PDF2で2021年通知廃止、PDF3で死亡・医師診断後に治療を要する事故の原則報告と第1報5日以内**目安**、PDF4で別紙様式の主対象と他の居宅サービスでの活用を頁画像で確認。R17厚労省掲載研究 ([公式PDF](https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/73_aruteppu.pdf)) Ⅰ編45/PDF57で高齢者向け住まいに関する誤薬時の受診推奨を頁画像で確認。PMDAの[公式くすり相談ページ](https://www.pmda.go.jp/safety/consultation-for-patients/on-drugs/0003.html)はページ到達と窓口の識別を確認、詳細な医学文言の独立全文確認には使わない。自治体別期限・サービス別報告義務とPDFの実ビューア挙動は`NOT_ESTABLISHED/NOT_RUN`。
+
+| 危険ケース | 独立に見た候補差分と判定（新headのみ） | 残リスク・E条件 |
+| --- | --- | --- |
+| **R04** 刑法・犯罪成立 | **#482 `PASS_LIMITED`**。B§9 `REMOVE`→TSX metadata.description、見出し、本文、目次、`#law`/`source-penalcode`/`penalcode`、e-Gov URL、出典一覧、対応するroute/browser負例から法令節を除外。実コード文字列でも`刑法`/`刑事責任`/`法的責任`・旧法律アンカーの残存なし。旧mainには逆に旧`id="law"`とe-Govの5番目の出典が残ることを別途再確認。**法律条文が正しいからPASSとしたのではなく、候補の当該説明が消えた範囲のみ限定評価**。 | #482未merge。DOM自身の独立表示検査と人による読み違い検査は`NOT_RUN`。#480だけを公開しても旧main刑法節は残り、fall記事の服薬cross-linkから到達する。 |
+| **R01** 自己判断で様子見／**R02** 全国一律受診義務 | **#482 各`PASS_LIMITED`**。B§2.2とTSX `#minor` はR17の「高齢者向け住まいに関する研究推奨」と明示し、職員の自己判断だけでの経過観察を退け、全サービスの法的義務にはしない。原典PDF57と意味・対象が一致。 | 個別受診要否は判定しない。専門職による実際の読者理解確認`NOT_RUN`。 |
+| **R03** 医療連絡と自治体報告混同 | **#482 `PASS_LIMITED`**。B§2.3→TSX `#report` で手続、原則報告対象、5日**目安**、2021旧通知廃止、別紙様式の主対象をそれぞれ分記。PDF`#page=3/2/4`を区別。 | 自治体固有の扱いと期限は`NOT_ESTABLISHED`。 |
+| **R05** 緊急時に記事を読み続ける | **#482 `PASS_LIMITED`**。B§2.1の注意をCリード直後の`sourceGuidePriority`へ。所属先の正式手順、医療職・緊急対応優先、サイトでは再投与・受診搬送を判定しない。 | 実事故時の行動はテストしていない。 |
+| **R06** 施設事例の全国一律義務化 | **#482 `PASS_LIMITED`**。B§2.4→`#prevent` は施設向け推奨・事例、再発防止手順、効果保証なしと明示。 | G25の全サービスへの一律適用や事例効果は未確立。 |
+| **R07** 厚労省監修・専門職承認済み誤表示 | **#482 `PASS_LIMITED`**。用途注意と末尾の「実在の医療専門職による個別審査を受けたものではありません」をコードで確認。 | 人手・専門職承認なし。 |
+| **F01** 全転倒予防／全件過失 | **#480 `PASS_LIMITED`**。B§3→fall `#factors` は身体・認知・環境の多要因、防ぎ切れない転倒を明記。G25 PDF33と射程一致。 | 各事故の過失や事故発生確率は判断しない。 |
+| **F02** 身体拘束の一律適法性判定 | **#480 `PASS_LIMITED`**。fall `#dignity` が過度な行動制限の懸念と尊厳を示し、身体拘束の法的該当性を判定しない。G25 PDF33で対照。 | 身体拘束の合法・違法や具体策はサイト外の正式な判断。 |
+| **F03** ベッド柵・機器等の一律設定 | **#480 `PASS_LIMITED`**。fall `#bed` は個別状態とベッド周囲環境に限定。G25 PDF35で対照。 | ベッド柵・センサー設定は掲載なし。 |
+| **F04** 事故後受診・搬送を自動判定 | **#480 `PASS_LIMITED`**。lead直後の安全優先と`#report`、`#scope`で緊急判断と市町村報告の個別判定を除外。N24 PDF3/4は報告対象・目安・様式対象を別に扱う。 | 自治体運用未確立、読者による誤読確認なし。 |
+| **F05** 一施設事例の普遍的効果保証 | **#480 `PASS_LIMITED`**。施設事例の数値的な事故削減効果・予防保証を記事に掲載していない。 | 人手による効果解釈は未確認。 |
+
+**直接照合の付記:** #482の`Citation` JSXコンポーネントは**9箇所**、原典一覧は**4資料**、B§9の「服薬7引用ブロック」とは計数単位が違う。2024年通知の同一段落から複数の指定頁リンクを出す箇所、および従来本文を維持した再発防止段落の引用を含む。これをB§9の原稿7ブロックの漏れ／9件の新しい医学的主張と読み替えない。すべての参照先と近接した主張を対象別に照合し、原典リンク4種類以外への新規案内は確認しなかった。
+
+### 13.3 技術・経路・privacyとCIの観察境界
+
+**静的検査（D自身）:** Cコード・テストのblobを直接取得し、#480服薬blobとmain一致、#482法令アンカー/metadata/出典の不在、服薬のfallリンク不在、#480 fall本文・PDF頁・home/sitemap追加、両者の`sourceGuidePriority`配置を文字列と構造で再確認。#480/#482の共通CSS blobは**同一**だが、`verify-routes.mjs`と`public-source-guides.spec.mjs`のblobは**異なる**。CSSには390px向け折返し、reduced-motion、print時のURL表示・priority維持の規則あり。各候補のテストは旧home+5 Issue+5 tool=**11 route**、服薬200、#480転倒200／#482転倒404、#451 404、robots/sitemap、canonical/OG、原典直リンク、目次とkeyboard focus、390px、CSS zoom=2 **proxy**、print mediaを検査対象としている。#480側の旧服薬のe-Gov出典を保持するテストは、既存法律節が**残ること**の証拠であり、削除完了の証拠ではない。候補changed pathsに患者・薬剤・事故情報入力欄、新Analytics eventや#451 flagの変更は確認されない（リポジトリ全体の不存在までは主張しない）。
+
+**外部CI**：各headに関連付けられたActionsをGitHub commit→workflow runsで確認し、run/job/stepが全て`completed/success`。以下のjob IDは新候補のもの。D自身がブラウザを回したのではない。successは人手・production承認と異なる。
+
+| head / workflow | run / job / 確認した成功step |
+| --- | --- |
+| **#480** Validate ops site | [38087881729](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38087881729) / job `114318106632`。npm ci/test、browser tooling、build、Chromium5 tools、route smoke（steps 4–9）がsuccess。 |
+| **#480** Validate build | [38087881820](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38087881820) / job `114318107552`。source inventories、metadata/sitemap、validate/build、production verifier compile、route smoke（steps 6–12）がsuccess。 |
+| **#480** Verify publication readiness integration | [38087881829](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38087881829) / job `114318106839`。canonical regenerationとbounded publication（steps 4–5）success。 |
+| **#482** Validate ops site | [38088336714](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38088336714) / job `114319441078`。npm ci/test、browser tooling、build、Chromium5 tools、route smoke（steps 4–9）がsuccess。 |
+| **#482** Validate build | [38088336703](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38088336703) / job `114319453112`。source inventories、metadata/sitemap、validate/build、production verifier compile、route smoke（steps 6–12）success。 |
+| **#482** Verify publication readiness integration | [38088336705](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38088336705) / job `114319441087`。canonical regenerationとbounded publication（steps 4–5）success。 |
+
+**明確な`NOT_RUN`:** D自身の`npm ci/npm test/npm run build/npm run test:browser/npm run verify:routes`と別立てのrendered DOM、Android Chrome native 200%、人によるscreen reader、紙印刷、PDF viewerの`#page=N`遷移、実ユーザーの安全理解、専門職レビュー、新本番HTTP/HTML・DOM、Vercel production/alias/runtime exact SHA、正式post-deploy verifier。旧productionの15/15を今回の新候補の実測に転用しない。deploy-stateは**操作していない**（値の新規実測も本Dでは`NOT_RUN`）。機械CIのheadless検証と実機・本番は別である。
+
+### 13.4 同一head別・3範囲の受入票（Eへの条件）
+
+| scope | PR / base-head / checked code-test-CI | 独立判定 | 人手・本番 | Eに渡す条件 |
+| --- | --- | --- | --- | --- |
+| **①服薬改訂** | #482 / current main `254b0aecdc8708f1de6c5359615295b82bf3f4be`、PR merge-base `6346300ce6300714646b588c08159f075987b32f`、head `6c64af5924da24ea89a147ad9d42c7f1155c3f45` / A`576e52f`・B`ab07897` / med TSX `8f9876d`、CSS `f2a43acf`、route `d99840cf`、browser `d438c28b` / runs `38088336714/38088336703/38088336705` / R01–R07（R04削除版） | **`PASS_LIMITED`**。R04を含む法令節の候補からの除外、非医学的説明・引用の範囲に限る。 | native/人間/専門職/production `NOT_RUN` | D限定受入はこのheadのみ。Eが人手リスク・必須確認を決定するまで`RELEASE_HOLD`。GO時は直前のmain/head・CI・競合再確認、新productionの実測を別に要求。 |
+| **②転倒記事** | #480 / current main `254b0aecdc8708f1de6c5359615295b82bf3f4be`、PR merge-base `6346300ce6300714646b588c08159f075987b32f`、head `b5b73e46e0217ff8ec689c9984d6b837cd7d92cc` / A`576e52f`・B`ab07897` / fall `de66e2df`、home `ca0113d6`、sitemap `a85ad4d`、CSS `f2a43acf`、route `5313a6dd`、browser `5e11783a` / runs `38087881729/38087881820/38087881829` / F01–F05 | **`PASS_LIMITED`**。静的転倒本文・対象限定、現行main服薬不変の範囲。 | native/人間/専門職/production `NOT_RUN` | `PUBLIC_SOURCE_GUIDE_HOLD`。#480単独GOでは**既存服薬の刑法節が残り、転倒→服薬リンクで到達**する。Eはこの残留法令リスクを容認するか別途除去するかを明記し、人手ゲートの可否を決定。 |
+| **③非医学UI単独** | 独立UI専用PR/head **なし**。#480/#482のCSSは共通blobだがhome/sitemap/route/browser期待値は候補別、2つのPRとも旧base。 | **`PARTIAL_WITH_GAPS`**。各記事に従属するUI変更は候補別に限定確認したが、**単独releaseとしてのD受入は不成立**。 | `NOT_RUN` | `RELEASE_HOLD`。単独で有意義なUI-only差分がなければPR増設不要。2候補ともGOでも1件目merge後に共有ファイルを合成し、**新base/head + CI + D変更差分再受入**が必要。 |
+
+**監査総合：`PARTIAL_WITH_GAPS`（独立新headのD判定作業は完了。公開は未承認）。** #480/#482に対するコード・出典・外部CIの限定受入は成立したが、これをEの`GO`、人間の安全理解、現行main旧法律節の除去、両変更を合成したheadのCI、Kaigo Ops専用新production実証に転用しない。次ownerは**E**（範囲別GO/HOLDと人手必須性の判断）。Dが具体的な新しい不整合を発見した場合のみA/B/Cへ最小修正を依頼し、更新headで再審査する。#465一括統合は禁止、#451は非公開維持。
+
