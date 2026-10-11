@@ -227,3 +227,10 @@ A #470とD #471の出典・監査文書はmain統合済み。B #466／C #465は�
 ## 2026-10-11 — 服薬・転倒ガイドの最終版E公開判定
 
 [判定正本](../docs/kaigo-ops/safety/2026-10-11-medication-fall-final-tuple-scoped-release-e-decision.md)は`PARTIAL_WITH_GAPS / ALL SCOPES HOLD`。#477のE旧判定文書と#475のD最終§11は文書のみmainへ統合・readback済み。A/B/Cの最終同一版に対しDは12誤読ケース中11件を限定PASS、刑法211条の公式同版正文未確認（R04）をBLOCKEDと判定。服薬改訂`RELEASE_HOLD`、転倒記事`PUBLIC_SOURCE_GUIDE_HOLD`、非医学UI`RELEASE_HOLD`。#465の8ファイル一括merge不可。B #466 draft、C #465未マージ、#451試作非公開。新アプリdeployment・新production HTTP/DOM・正式marker更新なし（Vercel旧runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`、marker `e49e770a970e541d2ad95204ad277eca89a485d3`据置き）。実Android/native 200%・スクリーンリーダー・紙印刷・PDF viewerは未実施。次は法令節の処置または安全な独立PR化→新head CI/D監査→E再判定。
+
+
+## 2026-10-11 服薬の法律節除外／転倒独立候補 — E公開保留
+
+[最新のE統合判定](../docs/kaigo-ops/safety/2026-10-11-medication-legal-removal-fall-isolation-e-decision.md)：**PARTIAL_WITH_GAPS / 全3範囲HOLD**。Aの法律節削除方針 #481と、Dの旧状態preflight #479をdocs-only統合。B #466はdraft。Cは転倒のみの [draft #480](https://github.com/Josh-Temple/kaigo-rules/pull/480) と、刑法211条節を削除した服薬改訂の [draft #482](https://github.com/Josh-Temple/kaigo-rules/pull/482) に分離した。それぞれ現行headのops/build/publication readiness CIは成功。ただし**Dによるこれら2つのexact-head独立再受入は未実施**。服薬改訂 RELEASE_HOLD、転倒・転落 PUBLIC_SOURCE_GUIDE_HOLD、非医学UI RELEASE_HOLD。旧C #465の8ファイルは一括mergeしない。既存公開服薬ページには旧法令節が残る点も区別する。#451はpreview-onlyのdraft・非公開。
+
+新しいアプリmerge・production配信は実施せず、Vercel alias ops-site-pi.vercel.app は従来deployment dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu / READY / runtime ffd70abb5723e950a0a1036795f28da31614a1f3、正式marker deploy-state/kaigo-ops は e49e770a970e541d2ad95204ad277eca89a485d3 のまま。新production HTTP/DOM、Android実機native 200%、実読み上げ・紙印刷・PDF viewerは NOT_RUN。次の解消条件はDの新head別再受入、その後のE公開判定。
