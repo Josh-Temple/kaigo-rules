@@ -234,3 +234,10 @@ A #470とD #471の出典・監査文書はmain統合済み。B #466／C #465は�
 [最新のE統合判定](../docs/kaigo-ops/safety/2026-10-11-medication-legal-removal-fall-isolation-e-decision.md)：**PARTIAL_WITH_GAPS / 全3範囲HOLD**。Aの法律節削除方針 #481と、Dの旧状態preflight #479をdocs-only統合。B #466はdraft。Cは転倒のみの [draft #480](https://github.com/Josh-Temple/kaigo-rules/pull/480) と、刑法211条節を削除した服薬改訂の [draft #482](https://github.com/Josh-Temple/kaigo-rules/pull/482) に分離した。それぞれ現行headのops/build/publication readiness CIは成功。ただし**Dによるこれら2つのexact-head独立再受入は未実施**。服薬改訂 RELEASE_HOLD、転倒・転落 PUBLIC_SOURCE_GUIDE_HOLD、非医学UI RELEASE_HOLD。旧C #465の8ファイルは一括mergeしない。既存公開服薬ページには旧法令節が残る点も区別する。#451はpreview-onlyのdraft・非公開。
 
 新しいアプリmerge・production配信は実施せず、Vercel alias ops-site-pi.vercel.app は従来deployment dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu / READY / runtime ffd70abb5723e950a0a1036795f28da31614a1f3、正式marker deploy-state/kaigo-ops は e49e770a970e541d2ad95204ad277eca89a485d3 のまま。新production HTTP/DOM、Android実機native 200%、実読み上げ・紙印刷・PDF viewerは NOT_RUN。次の解消条件はDの新head別再受入、その後のE公開判定。
+
+
+## 2026-10-11 Isolated medication/fall guides — E human-gated release HOLD
+
+[最新E判定](../docs/kaigo-ops/safety/2026-10-11-medication-fall-isolated-exact-head-e-decision.md) は **PARTIAL_WITH_GAPS / 全3範囲HOLD**。独立D監査§13は [#484](https://github.com/Josh-Temple/kaigo-rules/pull/484) でdocs-only統合済（`10e26cb3b7cdc016a6dce7eb30d9e8689a9bd99c`）。Cの服薬法令節削除[#482](https://github.com/Josh-Temple/kaigo-rules/pull/482)／転倒単独[#480](https://github.com/Josh-Temple/kaigo-rules/pull/480)はいずれもhead別のD `PASS_LIMITED` と3 CI成功。ただし人間による安全な読み取り・リスク責任者確認、Android native 200%・実スクリーンリーダー、PDF viewer・実紙印刷の公開前受入は未実施のため、Eは双方をHOLD。非医学UIは独立候補がなく `RELEASE_HOLD`。
+
+**現行mainの既存服薬記事は旧刑法節あり**。#482候補の削除は本番未反映。#480単独では旧節が残り、転倒記事から服薬へのリンクが新たな導線になる。両候補のCSS・route/browser tests合成版のCI/D受入も未成立。旧#465一括merge禁止。#451は `PREVIEW_ONLY / NOT_PUBLIC` を維持。アプリmerge・新production deployment・新HTTP/DOM検査は今回なし。Kaigo Ops alias `ops-site-pi.vercel.app` は旧deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`、READY、runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`。正式deploy-state `e49e770a970e541d2ad95204ad277eca89a485d3` 据置き。人手受入と必要なコード修正→新head CI/D→範囲別E判断までは公開しない。
