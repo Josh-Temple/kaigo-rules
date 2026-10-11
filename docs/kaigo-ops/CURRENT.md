@@ -265,3 +265,12 @@ The production state in the preceding subsection is the historical Public Discov
 ## 2026-10-11 — 服薬・転倒最終tupleのE公開判定
 
 [今回のE判定](safety/2026-10-11-medication-fall-final-tuple-scoped-release-e-decision.md)：**PARTIAL_WITH_GAPS / 全3範囲HOLD**。旧E判定#477（docs-only merge `a21958107a88e15703828b1d818dd28a08fbcac1`）とD #475の最終§11（docs-only merge `97ac3ef85578e24d53ac0da09ad3d8780f323c8f`）をmainでreadback。A/B/C最終同一版はDで独立再審査済みだが、刑法211条の同一施行版公式正文の直接照合未成立（R04 BLOCKED）。服薬改訂は`RELEASE_HOLD`。転倒記事と非医学UIはD`PASS_LIMITED`でも、服薬のHOLD改訂を含むC #465の8ファイルから安全な独立release実体・新CI・D再受入がないため、それぞれ`PUBLIC_SOURCE_GUIDE_HOLD`／`RELEASE_HOLD`。B #466 draft、C #465未マージ、#451非公開。新しいアプリmain統合／production配信なし。既存Vercel aliasは旧deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu` READY、runtime `ffd70abb5723e950a0a1036795f28da31614a1f3` のまま。新HTTP/DOM`NOT_RUN`、Android/native 200%・読み上げ・紙印刷・PDF viewer`NOT_RUN`、正式deploy-state `e49e770a970e541d2ad95204ad277eca89a485d3` `UNCHANGED`。再開はA/B法令節判断→C独立実体/新CI→D再監査→E範囲別公開判定。
+
+
+## 2026-10-11 — 法令節除外・転倒記事分離のE判定（最新）
+
+[最新E判定](safety/2026-10-11-medication-legal-removal-fall-isolation-e-decision.md)は **PARTIAL_WITH_GAPS / ALL THREE SCOPES HOLD**。A #481の刑法211条節削除採否（台帳§9）と、D #479の独立preflight記録（台帳§12）はdocs-onlyでmain統合済み。ただしD §12は新C候補作成前の監査であり、**新候補headの独立受入ではない**。
+
+Cは転倒のみ [draft #480](https://github.com/Josh-Temple/kaigo-rules/pull/480)（服薬TSXをmainとblob同一に保持）と、法律節を除外した服薬改訂 [draft #482](https://github.com/Josh-Temple/kaigo-rules/pull/482) に分離。各最新headのops/build/readiness CIは3件とも成功。しかし、その正確なheadへのD再審査が未成立なので、服薬 **RELEASE_HOLD**、転倒 **PUBLIC_SOURCE_GUIDE_HOLD**、非医学UI **RELEASE_HOLD**。B #466 draft、旧C #465未統合・一括merge禁止、#451試作はdraft/NOT_PUBLIC。既存公開服薬TSXには旧法令節が残り、転倒単独PRはそれを変更しない。
+
+新しいアプリmain統合・本番deployはなし。Vercel専用projectのaliasは既存deployment dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu、READY、runtime ffd70abb5723e950a0a1036795f28da31614a1f3、正式deploy-stateは e49e770a970e541d2ad95204ad277eca89a485d3 のまま。**新runtimeのHTTP/DOM、Android native 200%、人の読み上げ・紙印刷・PDF viewerはNOT_RUN**。次はDによる#480/#482の別々のexact-head再受入→Eの範囲別再判定。
