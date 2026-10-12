@@ -78,7 +78,7 @@ class OfficialCollectorTests(unittest.TestCase):
         with mock.patch.object(sys, "argv", [
             "collect_official_source_raw.py",
             "--url", self.url, "--name", "sample",
-            "--output-dir", str(self.path),
+            "--output-dir", str(self.path), "--expect-media-type", "application/pdf",
         ]), unittest.mock.patch.object(collector, "download") as dl:
             from contextlib import redirect_stdout
             with redirect_stdout(io.StringIO()) as output:
@@ -144,6 +144,21 @@ class OfficialCollectorTests(unittest.TestCase):
         opener = FakeOpener(FakeResponse(b"%PDF-ok", status=203, content_type="application/pdf"))
         with self.assertRaises(collector.ReceiptError):
             collector.download(self.url, "sample", self.path, opener=opener)
+
+    def test_reject_wrong_explicit_expected_media_type(self):
+        opener = FakeOpener(FakeResponse(b"%PDF-ok", content_type="application/pdf"))
+        with self.assertRaises(collector.ReceiptError):
+            collector.download(
+                self.url, "sample", self.path, opener=opener,
+                expected_media_type="application/json",
+            )
+
+    def test_reject_unsupported_expected_media_type(self):
+        with self.assertRaises(collector.ReceiptError):
+            collector.download(
+                self.url, "sample", self.path, opener=FakeOpener(),
+                expected_media_type="image/svg+xml",
+            )
 
     def test_reject_html_with_pdf_mime(self):
         opener = FakeOpener(FakeResponse(b"<html>error</html>", content_type="application/pdf"))
