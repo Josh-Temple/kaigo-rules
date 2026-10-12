@@ -28,6 +28,12 @@ from check_source_transport_receipt import ReceiptError, _official_host, check_r
 
 MAX_BYTES = 32 * 1024 * 1024
 MAX_REDIRECTS = 5
+SUPPORTED_MEDIA_TYPES = {
+    "application/json", "application/xml", "text/xml", "text/html",
+    "application/pdf", "application/vnd.ms-excel",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+}
+
 MAX_SECONDS = 30
 SAFE_NAME = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
 REDIRECTS = {301, 302, 303, 307, 308}
@@ -43,7 +49,7 @@ def _validate_url(url: str, first_host: str) -> None:
         raise ReceiptError("redirect must stay on the exact official host")
 
 
-def download(url: str, name: str, directory: Path, *, opener=None, max_bytes=MAX_BYTES) -> dict:
+def download(url: str, name: str, directory: Path, *, opener=None, max_bytes=MAX_BYTES, expected_media_type=None) -> dict:
     """Download once, inspect byte integrity, and write only local raw/receipt.
 
     Caller must authorize outbound traffic and first independently select
@@ -56,6 +62,11 @@ def download(url: str, name: str, directory: Path, *, opener=None, max_bytes=MAX
         raise ReceiptError("invalid maximum bytes")
     if not directory.is_dir():
         raise ReceiptError("output directory must already exist")
+    repository_root = Path(__file__).resolve().parents[1]
+    if directory.resolve().is_relative_to(repository_root):
+        raise ReceiptError("raw evidence must be stored outside the repository")
+    if expected_media_type is not None and expected_media_type not in SUPPORTED_MEDIA_TYPES:
+        raise ReceiptError("unexpected expected media type")
     if (directory / f"{name}.raw").exists() or (directory / f"{name}.receipt.json").exists():
         raise ReceiptError("outputs already exist; overwrite is prohibited")
     if opener is None:
@@ -112,6 +123,9 @@ def download(url: str, name: str, directory: Path, *, opener=None, max_bytes=MAX
             content_type = headers.get("Content-Type")
             if not isinstance(content_type, str) or not content_type.strip():
                 raise ReceiptError("Content-Type missing")
+            actual_media_type = content_type.split(";", 1)[0].strip().lower()
+            if expected_media_type is not None and actual_media_type != expected_media_type:
+                raise ReceiptError("Content-Type differs from explicitly expected source type")
             content_encoding = headers.get("Content-Encoding")
             if content_encoding and content_encoding.lower() != "identity":
                 raise ReceiptError("compressed response is not supported")
@@ -183,6 +197,8 @@ def main() -> int:
     parser.add_argument("--url", required=True, help="independently checked current official URL")
     parser.add_argument("--name", required=True, help="lowercase local artifact ID")
     parser.add_argument("--output-dir", required=True, type=Path, help="existing non-repository evidence folder")
+    parser.add_argument("--expect-media-type", choices=sorted(SUPPORTED_MEDIA_TYPES), required=True,
+                        help="must match observed Content-Type; never infer official source version")
     parser.add_argument("--execute", action="store_true", help="explicitly permit one external HTTP GET sequence")
     args = parser.parse_args()
     try:
@@ -198,7 +214,7 @@ def main() -> int:
                 "publication_decision": "NOT_AUTHORIZED",
             }, ensure_ascii=False))
             return 0
-        receipt = download(args.url, args.name, args.output_dir)
+        receipt = download(args.url, args.name, args.output_dir, expected_media_type=args.expect_media_type)
         print(json.dumps({
             "state": "RAW_RECEIPT_INTEGRITY_ONLY",
             "sha256": receipt["sha256"],
