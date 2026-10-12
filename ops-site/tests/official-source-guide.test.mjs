@@ -35,7 +35,7 @@ test("human clinical and statutory decisions are not implemented", () => {
   assert.match(source, /正式な事故対応手順/);
   assert.match(source, /第1報の5日以内は国通知の目安/);
   assert.match(source, /法定受診義務/);
-  assert.match(source, /医師の診断/);
+  assert.match(source, /診断、治療、再投与/);
   for (const forbidden of ["<input", "<textarea", "<form", "fetch(", "localStorage", "sessionStorage", "analytics.track", "penalcode", 'href="/guides/medication-incident-sources"', 'href="/guides/fall-prevention-sources"', "#law", "medication-safety-preview"]) {
     assert.ok(!source.includes(forbidden), forbidden);
   }
