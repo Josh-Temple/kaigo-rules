@@ -7,6 +7,11 @@ test("local-only review route has warning before navigational links and four dis
   await expect(page.getByRole("heading", { level: 1 })).toContainText("公的資料を探す");
   const warning = page.getByRole("heading", { name: "事故が現に起きている場合" });
   await expect(warning).toBeVisible();
+  expect(await page.evaluate(() => {
+    const notice = document.getElementById("source-safety");
+    const navigation = document.querySelector('nav[aria-label="このページのナビゲーション"]');
+    return Boolean(notice && navigation && (notice.compareDocumentPosition(navigation) & Node.DOCUMENT_POSITION_FOLLOWING));
+  })).toBe(true);
   const headings = await page.locator("h1, h2").allTextContents();
   expect(headings.indexOf("事故が現に起きている場合")).toBeLessThan(headings.indexOf("何を調べたいですか"));
   await expect(page.locator("a[href^='https://www.mhlw.go.jp/content/']")).toHaveCount(2);
