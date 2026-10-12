@@ -116,4 +116,10 @@ assert.ok(!homeText.includes('href="/guides/accident-medication-sources"'), 'no 
 const siteMapResponse = await fetch(`${base}/sitemap.xml`);
 assert.equal(siteMapResponse.status, 200, 'sitemap remains reachable');
 assert.ok(!(await siteMapResponse.text()).includes('/guides/accident-medication-sources'), 'no unreleased sitemap entry');
+for (const heldPath of ['/guides/fall-prevention-sources', '/tools/medication-safety-preview']) {
+  const response = await fetch(`${base}${heldPath}`);
+  assert.equal(response.status, 404, `unreleased path must remain 404: ${heldPath}`);
+  assert.ok(!homeText.includes(`href="${heldPath}"`), `no unpublished homepage link: ${heldPath}`);
+  console.log(`PASS unpublished ${heldPath} 404`);
+}
 console.log('PASS /guides/accident-medication-sources release HOLD');
