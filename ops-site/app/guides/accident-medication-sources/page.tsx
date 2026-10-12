@@ -104,10 +104,6 @@ export default function OfficialAccidentMedicationSourcesPage() {
     <main className={styles.page}>
       <header className="siteHeader">
         <a className="brand" href="/">介護業務改善</a>
-        <nav aria-label="このページのナビゲーション">
-          <a href="#topics">探したい資料</a>
-          <a href="#originals">公的資料一覧</a>
-        </nav>
       </header>
 
       <article>
@@ -122,6 +118,11 @@ export default function OfficialAccidentMedicationSourcesPage() {
           <p><strong>実際に事故が起きている場合は、資料を探すよりも本人の安全確保、所属先の正式な事故対応手順、必要な医療職・緊急対応を優先してください。</strong></p>
           <p>このページは、薬の再投与・中止、受診・搬送、事故報告の要否、身体拘束の適法性、個別の法的責任を判定するものではありません。原典の対象と所属先・自治体の現行手順を確認してください。</p>
         </section>
+
+        <nav aria-label="このページのナビゲーション" className={styles.pageNavigation}>
+          <a href="#topics">探したい資料</a>
+          <a href="#originals">公的資料一覧</a>
+        </nav>
 
         <section id="topics" className={styles.section} aria-labelledby="topics-title">
           <h2 id="topics-title">何を調べたいですか</h2>
