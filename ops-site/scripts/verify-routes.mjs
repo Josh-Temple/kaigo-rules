@@ -108,3 +108,12 @@ for (const tool of actionTools) {
   assert.ok(html.includes('https://kaigo-rules.vercel.app/'), `${tool.route}: rules link`);
   console.log(`PASS ${tool.route}`);
 }
+
+// New official-source-guide candidate is NOT a public route before D/E signoff.
+const sourceGuide = await fetch(`${base}/guides/accident-medication-sources`);
+assert.equal(sourceGuide.status, 404, 'unreleased source guide is 404 in default runtime');
+assert.ok(!homeText.includes('href="/guides/accident-medication-sources"'), 'no unreleased home link');
+const siteMapResponse = await fetch(`${base}/sitemap.xml`);
+assert.equal(siteMapResponse.status, 200, 'sitemap remains reachable');
+assert.ok(!(await siteMapResponse.text()).includes('/guides/accident-medication-sources'), 'no unreleased sitemap entry');
+console.log('PASS /guides/accident-medication-sources release HOLD');
