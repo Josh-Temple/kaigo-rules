@@ -58,8 +58,8 @@ const sources: readonly OfficialSource[] = [
     kind: "調査研究報告書",
     date: "2017年3月",
     audience: "高齢者向け住まいに関する研究",
-    purpose: "高齢者向け住まいにおける服薬事故に関する研究上の推奨を確認するための資料。",
-    limitation: "研究上の推奨は、全介護サービスに共通する法的受診義務を示すものではありません。",
+    purpose: "高齢者向け住まいの事故予防に関する研究上の推奨を調べたいとき。",
+    limitation: "全ての誤薬・介護サービスに共通する法定受診義務、個別の薬の影響や受診要否を判断できません。研究上の推奨を全サービス共通の義務として扱わないでください。",
     pages: "Ⅰ編45頁（PDF通し57頁）。",
     url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/73_aruteppu.pdf",
   },
@@ -70,8 +70,8 @@ const sources: readonly OfficialSource[] = [
     kind: "一般向け相談案内（Webページ）",
     date: "発行・改訂日：未確認（更新型Webページ）",
     audience: "一般向けの薬に関する相談・情報案内",
-    purpose: "薬の一般的な相談先を確認するための案内。",
-    limitation: "医師の診断、再投与・服薬中止の判断、事故時の救急対応や緊急連絡の代わりにはなりません。",
+    purpose: "一般的な薬の相談窓口を確認したいとき。",
+    limitation: "事故時の救急対応、診断、治療、再投与、受診・搬送の判断はできません。緊急対応窓口の案内ではありません。",
     pages: "Webページのため該当頁番号なし。",
     url: "https://www.pmda.go.jp/safety/consultation-for-patients/on-drugs/0003.html",
   },
@@ -82,8 +82,8 @@ const sources: readonly OfficialSource[] = [
     kind: "2024年の通知",
     date: "2024年11月29日",
     audience: "介護保険施設等。報告対象と別紙報告様式の主な対象サービスは区別が必要",
-    purpose: "国通知における事故報告対象、第1報の提出の目安、別紙様式の対象をそれぞれ確認するための資料。",
-    limitation: "第1報の5日以内は国通知の目安です。すべての自治体・サービスの法定期限や個別事故の報告要否は、このページでは判断できません。",
+    purpose: "国の通知に示された事故報告の対象、第1報の「5日以内の目安」、別紙様式の主な対象サービスを調べたいとき。",
+    limitation: "第1報の5日以内は国通知の目安です。各自治体・事業所・サービスの現行の具体的な報告要否、報告先、期限は判断できません。5日を全国一律の法定期限とはしません。",
     pages: "旧通知廃止：本文1頁／PDF通し2頁。報告対象・第1報の目安：本文2頁／PDF通し3頁。別紙様式：本文3頁／PDF通し4頁。",
     url: "https://www.mhlw.go.jp/content/001574219.pdf",
   },
@@ -114,13 +114,13 @@ export default function OfficialAccidentMedicationSourcesPage() {
         <section className={styles.intro} aria-labelledby="source-guide-title">
           <p className="eyebrow">公的資料を探す</p>
           <h1 id="source-guide-title">事故防止・服薬安全の公的資料を探す</h1>
-          <p className={styles.lead}>転倒・転落、服薬、事故報告について、発行者や資料の対象を確かめながら原典に進める案内です。既存記事を複製するものではありません。</p>
+          <p className={styles.lead}>公的資料を探すための案内です。転倒・転落、服薬・薬に関する情報、事故報告について、厚生労働省などの原典に進めます。資料の対象や性質はそれぞれ異なります。Kaigo Opsは資料の発行機関ではなく、個別の判断や手順の決定を行いません。</p>
         </section>
 
         <section className={styles.warning} aria-labelledby="source-safety">
           <h2 id="source-safety">事故が現に起きている場合</h2>
-          <p><strong>このページの閲覧よりも、本人の安全確保と所属先の正式な事故対応手順、必要な医療職・緊急対応を優先してください。</strong></p>
-          <p>このページは医療行為、薬の選択・中止・再投与、救急受診・搬送、個別の事故報告要否・期限、法的責任を判断しません。原典の対象と所属先・自治体の現行手順を確認してください。</p>
+          <p><strong>実際に事故が起きている場合は、資料を探すよりも本人の安全確保、所属先の正式な事故対応手順、必要な医療職・緊急対応を優先してください。</strong></p>
+          <p>このページは、薬の再投与・中止、受診・搬送、事故報告の要否、身体拘束の適法性、個別の法的責任を判定するものではありません。原典の対象と所属先・自治体の現行手順を確認してください。</p>
         </section>
 
         <section id="topics" className={styles.section} aria-labelledby="topics-title">
@@ -187,7 +187,7 @@ export default function OfficialAccidentMedicationSourcesPage() {
           <h2 id="limitations-title">掲載範囲について</h2>
           <p>各資料は発行機関が公開した原典です。このページが厚生労働省・PMDAの監修を受けたことを意味しません。施設向けの推奨をすべての介護サービスの義務に読み替えたり、国通知だけで自治体ごとの報告要否を決めたりしないでください。</p>
           <p>新たな医薬品適正使用の指針・普及啓発資料は、原典の版・対象と掲載文の採否が確定するまで、この候補には含めていません。利用者・職員の個人情報や処方・事故記録を入力する機能はありません。</p>
-          <p className={styles.snapshot}>出典の説明は既存A出典台帳・B編集稿の採用済み範囲を基礎とする下書きです。公開用の人手受入と、各原典の実ブラウザ閲覧確認は未実施です。</p>
+          <p className={styles.snapshot}>出典の説明は既存A出典台帳§8・§9とB編集稿#466§10.2の採用済み範囲を基礎とする下書きです。2026-10-12のA追加資料採否§10とは区別しています。原典の最新改訂の網羅確認、公開用の人手受入と各原典の実ブラウザ閲覧・PDFビューア確認は未実施です。</p>
         </section>
       </article>
 
