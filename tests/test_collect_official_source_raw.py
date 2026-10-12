@@ -79,7 +79,7 @@ class OfficialCollectorTests(unittest.TestCase):
             "collect_official_source_raw.py",
             "--url", self.url, "--name", "sample",
             "--output-dir", str(self.path), "--expect-media-type", "application/pdf",
-        ]), unittest.mock.patch.object(collector, "download") as dl:
+        ]), mock.patch.object(collector, "download") as dl:
             from contextlib import redirect_stdout
             with redirect_stdout(io.StringIO()) as output:
                 self.assertEqual(collector.main(), 0)
