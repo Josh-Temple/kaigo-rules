@@ -529,3 +529,70 @@ PDFの冊子印刷頁と通し頁は区別。リンク `#page=2/3/4/28/33/35/41/
 
 **監査総合：`PARTIAL_WITH_GAPS`（独立新headのD判定作業は完了。公開は未承認）。** #480/#482に対するコード・出典・外部CIの限定受入は成立したが、これをEの`GO`、人間の安全理解、現行main旧法律節の除去、両変更を合成したheadのCI、Kaigo Ops専用新production実証に転用しない。次ownerは**E**（範囲別GO/HOLDと人手必須性の判断）。Dが具体的な新しい不整合を発見した場合のみA/B/Cへ最小修正を依頼し、更新headで再審査する。#465一括統合は禁止、#451は非公開維持。
 
+
+
+---
+
+## 14. 2026-10-12 D：人手受入・追加公的資料案内 Wave の独立差分監査（未成立候補を合格にしない）
+
+**対象指示書：** Library \`/Kaigo Ops/Work Instructions/2026-10-12_medication_fall_human_acceptance_official_source_guides_and_scoped_release_wave_instructions.md\` §8。  
+**checked_at：** 2026-10-12 JST（GitHub APIと厚労省公式原典を独立再取得）。  
+**開始時 main full SHA：** \`7a06ddeaac82dc387a82006c442c856aff20647d\`（前E #485 docs-only merge後。production runtime SHAではない）。  
+**A台帳§9 blob：** \`576e52f0be9266884c62eccd215afac8d669f29f\`。**B #466 draft head/blob：** \`88721568ea0266862986a1587e149f1ff57ef19b\` / \`ab07897b9dce2795b602b50ab49b0132f60bc1fa\`。**旧D §13 blob：** 本追補前 \`0f00f2c344f34c36af52e20ea54b4ae733770c6c\`。**前E blob：** \`fd628a8a545ed7794314b8701f07380036e51032\`。  
+**監査境界：** A/B/C担当の新しい文章やコードを代理実装せず、Dによる資料の存在・表題・位置付けの原典確認と、既存候補の同一版維持・CI・誤読負例・未了ゲートを検査。**本節はDのpreflight／差分監査であり、新案内の同一版最終受入ではない。**
+
+### 14.1 今回のA/B/C候補の成立状況
+
+- **A新規資料の正式採否：\`NOT_AVAILABLE / PENDING\`。** GitHub mainのA台帳は依然§9で終了。総論編／各論編／2026年普及啓発資材の採否、原典URL・対象・頁を固定した**今回のA追加節はまだ取得できない**。従来のG25/N24/R17/PMDA・MED-A07削除判断に更新は見当たらない。Dの直接調査結果（下記）はAの正式採否を代行しない。
+- **B新しい案内文・人手票：\`NOT_AVAILABLE\`。** #466はopen/draft、headとB本文blobは前§13と同一で、末尾は§9。新案内の確定文面・blob、人手用の記入可能な受入票・署名済み票は今回のGitHub取得範囲で未確認。人手の実施が外部で行われたかは断定しない。
+- **C新案内のPR/head/CI：\`NOT_AVAILABLE\`。** GitHubで今回の新規案内候補PRを同定できず、mainの想定パス \`ops-site/app/guides/accident-medication-sources/page.tsx\` は404。新案内のchanged paths、base/head、page/test blobs、実HTML、3 CIは**対象そのものが未確定**。したがってDの新案内コード・ブラウザ・SEO/robots/sitemap・HOLD導線・privacyの合格は \`NOT_RUN / NOT_ESTABLISHED\`。mainでの不存在だけから全ブランチの不存在までは主張しない。
+- **#480/#482：** PR APIでいずれもopen/draft/unmerged、旧§13のexact head不変。旧§13の限定受入は**下記固定blobの無変更部分だけ**継承。新しい合成候補または新しい案内候補への自動継承は禁止。
+
+### 14.2 追加一次資料の独立負例確認 — 指示書内の誤リンクを検出
+
+厚労省公式PDFのテキスト情報と表紙画像を直接確認（閲覧日：2026-10-12 JST）。**指示書§2の下記2 URLは内容が指定資料と一致しない。** 新しい案内ページへそのままコピーした場合は重大な出典誤表示となるため、掲載根拠としては **\`EXCLUDE / URL_REPLACE_REQUIRED\`**。
+
+| 指示書の原典候補URL | Dが直接観察した内容 | Dの独立判定 |
+| --- | --- | --- |
+| \`https://www.mhlw.go.jp/content/11121000/001094895.pdf\`（総論編候補） | 30頁の異なる資料。冒頭は「医薬品副作用・感染症報告件数の推移」。指針の総論編ではない。 | **\`EXCLUDE\`**。リンクが200/PDFであっても採用不可。 |
+| \`https://www.mhlw.go.jp/content/11121000/001094896.pdf\`（各論編候補） | 44頁の「令和4年度全国薬務関係主管課長会議 説明資料」。療養環境別の指針ではない。 | **\`EXCLUDE\`**。発信元が厚労省でも文書IDと内容が不一致。 |
+| \`https://www.mhlw.go.jp/content/11120000/kourei-tekisei_web.pdf\` | 表紙「高齢者の医薬品適正使用の指針 総論編」、**2018年5月**。 | **原典識別 \`SOURCE_IDENTITY_CONFIRMED\`**。B掲載許容主張・頁・版のA正式採否は別。 |
+| \`https://www.mhlw.go.jp/content/11120000/000568037.pdf\` | 2019年6月「高齢者の医薬品適正使用の指針 各論編（療養環境別）」の表紙。公式2019年通知ページから到達。 | **原典識別 \`SOURCE_IDENTITY_CONFIRMED\`**。施設・在宅など療養環境の扱いはA精査待ち。 |
+| \`https://www.mhlw.go.jp/stf/newpage_74909.html\` | 厚労省の**2026-07-31普及啓発資材**通知ページ。指針そのものとは別の「概要」資料を掲示。 | **\`SOURCE_SUPPORTED\`（入口の存在と文書種別のみ）**。旧指針の発行・改訂年を2026年に置き換えない。 |
+| \`https://www.mhlw.go.jp/content/11120000/001728351.pdf\`、\`https://www.mhlw.go.jp/content/11120000/001728354.pdf\` | 2026年普及啓発資料の「総論編の概要」「各論編の概要」。両PDFの冒頭は主な対象を**医師・歯科医師・薬剤師**、看護師等の多職種も対象と記載。 | **\`SOURCE_SUPPORTED\`（別資料としての識別と対象のみ）**。処方中止・選択・再投与の実行権限を介護職へ拡張しない。 |
+
+一次出典：厚労省 [2019年各論編通知](https://www.mhlw.go.jp/stf/newpage_05217.html)、[2026年普及啓発通知](https://www.mhlw.go.jp/stf/newpage_74909.html)、各公式PDF。**原典全ページの人間による内容受入、全PDFへの実機遷移、\`#page=\`確認はしていない。** 既存G25/N24/R17/PMDAの原典・適用はD§13の範囲を維持し、今回全文を再検証したとはしない。
+
+### 14.3 独立負例・新案内の未実行範囲
+
+| Case | 誤読・安全上の負例 | Dの現時点の結果／公開条件 |
+| --- | --- | --- |
+| N01 | 厚労省資料がKaigo Opsを監修・専門職承認したかのように読める | 新C表示実体がないため **\`NOT_RUN\`**。文言・metadata/OGから「国の監修」などの誤認を排除する必要。 |
+| N02 | 医師・薬剤師向け薬剤見直しを介護職の独断手順と読める | 2026概要PDFの利用対象を直接確認。介護職が処方調整できるという導出は**原典から不可**。新B/C \`NOT_RUN\`。 |
+| N03 | N24第1報5日以内「目安」を全国一律の法定期限と誤認 | 前D§13で限定確認済み。新案内での近接注記・本文表示・自治体差は **\`NOT_RUN\`**。 |
+| N04 | G25施設中心の事例を全介護サービスに義務付け | 前D§13で限定確認済み。新案内のサービス別表示・対象欄 **\`NOT_RUN\`**。 |
+| N05 | PMDA一般相談を事故時の救急・医師診断の代用と読む | 前D§13を限定継承。新案内冒頭の正式手順優先・緊急時非代替表示 **\`NOT_RUN\`**。 |
+| N06 | HOLDの旧服薬法律節／転倒／#451へ新たな公開導線 | 新案内PRなしで経路追加を確認不可 **\`NOT_RUN\`**。ただし旧main服薬には刑法節が実在。#480 fall→服薬linkは残る。 |
+| N07 | 2026普及啓発の公開年月と2018/2019指針の作成年を混同 | **明確なリスクを実証**。原指針と2026概要を別の資料行・発行年で示すことを必須とする。 |
+| N08 | 出典URLが公式ドメインというだけで資料名を正しいとみなす | **\`FAIL\`（指示書候補URL 2件）**。PDF表紙・内容を確認した結果、総論/各論の指定と不一致。新B/Cで採用していなければC欠陥の存在は未確定。 |
+
+### 14.4 旧C候補のexact head・blobs・3 CI（現行維持だけ検査）
+
+| Scope | base/head、主要blobs、差分 | 新たに独立確認したCI run / job / key steps | D status と人手 |
+| --- | --- | --- | --- |
+| **①服薬改訂 #482** | old merge-base \`6346300ce6300714646b588c08159f075987b32f\` → \`6c64af5924da24ea89a147ad9d42c7f1155c3f45\`。4 paths。med TSX \`8f9876db7dfc81d232e04d3f250b5e115232b540\`、CSS \`f2a43acf8f062560db9fbf3aa2fffc31e684ed58\`、route test \`d99840cf0abf4f3645ab9c70e3581be531984886\`、browser spec \`d438c28b1aebb74ef2882ce62c4e208f69f4c76e\`。現在main服薬TSX \`782a1f53c635997817faf46bfe2f4e63721482c2\` は別。 | [Validate ops site 38088336714](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38088336714) / job \`114319441078\` steps 4–9 success；[Validate build 38088336703](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38088336703) / \`114319453112\` steps 6–12 success；[Publication readiness 38088336705](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38088336705) / \`114319441087\` steps 4–5 success。commit関連付け再確認済み。 | **\`PASS_LIMITED\`（旧§13と同一の範囲のみ）**。現headのTSXに刑法/刑事責任/\`#law\`なし、main旧TSXには残る。Human \`NOT_RUN/NO_SIGNOFF\`、release \`HOLD\`。 |
+| **②転倒 #480** | 同old merge-base → \`b5b73e46e0217ff8ec689c9984d6b837cd7d92cc\`。6 paths。fall TSX \`de66e2dfcb0985864be230049ecea44612fd3b05\`、home \`ca0113d6de512236acb87c5346bc6d69bcd8b26e\`、sitemap \`a85ad4d8069e0d0f4bde400fbda7dfaba2f44175\`、CSS \`f2a43acf8f062560db9fbf3aa2fffc31e684ed58\`、route \`5313a6ddf4f38ed12145d683f0cae583f6a587d3\`、browser \`5e11783a182e52110d21acde19f59bbe379c29e3\`。mainのmed TSXはcandidateと同一blob（前§13）。 | [Validate ops site 38087881729](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38087881729) / job \`114318106632\` steps 4–9 success；[Validate build 38087881820](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38087881820) / \`114318107552\` steps 6–12 success；[Publication readiness 38087881829](https://github.com/Josh-Temple/kaigo-rules/actions/runs/38087881829) / \`114318106839\` steps 4–5 success。commit関連付け再確認済み。 | **\`PASS_LIMITED\`（旧§13と同一の範囲のみ）**。転倒→現行服薬cross-linkから旧刑法節に到達可能。Human \`NOT_RUN/NO_SIGNOFF\`、release \`HOLD\`。 |
+| **③新しい公的資料案内** | A追加採否/B新案内稿＋人手票/C exact head・changed paths・blobsが未取得。原典URL候補2件に重大な誤対応あり。 | **新案内の3 CI＝\`NOT_RUN\`**（対象head未確定）。既存2候補の6 runを流用しない。 | **\`BLOCKED\`**。人手 \`NOT_RUN/NO_SIGNOFF\`、release \`HOLD\`。 |
+| **④非医学的UI単独** | 独立UI PR/headなし。共有CSSは2候補で同blobだがroute/browser testsは異なる。 | UI単独新head CIなし。 | **\`PARTIAL_WITH_GAPS\` / HOLD**。 |
+
+**CIについて：** 上記6 workflowの各jobは \`completed/success\`、列挙した実行stepも \`completed/success\` をGitHub APIで再確認した。**これは今回の新案内CIではない。** 独立したnpm・DOMテスト・Android native 200%/390px・キーボード実操作・実スクリーンリーダー・PDF viewer \`#page=2/3/4/28/33/35/41/57\`・実紙印刷・正式な専門職/介護現場レビュー・新production HTTP/DOMはD自身では \`NOT_RUN\`。署名者・役割・対象head/blob・日時・判定のあるレビュー結果も今回取得できていないため \`NO_SIGNOFF\` と扱う（外部で実施された事実の不存在まで断定しない）。
+
+### 14.5 E release blockers と次owner
+
+1. **P0 — A：出典IDの訂正。** \`001094895.pdf\`／\`001094896.pdf\`を総論・各論として採用禁止。真正の2018/2019指針と2026概要を別行・別原典URLでclaim-to-page照合、療養環境と医学的判断権限を限定し、A既存台帳へ**追加差分節**として正式採否・blobを保存する。
+2. **P0 — B：正式A採否後、必要最小の表示文言と版付き人手受入票を既存#466へ追補。** 施設・訪問等の適用、初報5日目安、旧通知廃止、緊急対応、PMDAの位置付け、原指針の年、2026概要との区別を近接表示。実在人手の署名を埋めない。
+3. **P0 — C：A/Bの正式fixed版が揃ってから独立draft新案内headを提示。** 変更パス、page/test/CSS/metadata blobs、3 CI run/job/step、旧main記事・#451・sitemap/robots・privacyの負例をDへ引き渡す。旧刑法節やHOLDの転倒routeへの新導線を作らない。外部公開可能なpreviewを勝手に出さない。
+4. **P0 — Human/E：** 服薬、転倒、新案内の対象exact版に対する**実在の安全内容・実機アクセシビリティ・PDF viewer/印刷**受入を確認し、氏名/役割/日時/対象SHA・blob/合否と欠陥を保存。未実施なら範囲ごとにHOLD。一般の作業指示・CI成功は承認に転換しない。
+5. **P1 — D再審査：** A/B/Cが保存されれば、今節のpreflightを \`PASS\` に読み替えず、**その新headを独立取得**してN01–N08、出典頁・本文、CSS影響、existing 11route＋服薬・転倒HOLD・#451 404、metadata/canonical/print/privacy、3 CIを再実査。2記事の合成headが生じた場合も別の変更差分受入が必要。
+
+**総合判定：\`PARTIAL_WITH_GAPS / 新案内 BLOCKED / ALL RELEASE SCOPES HOLD\`。** Dの実施済み作業は出典の負例検出、旧候補のexact head・CI再確認、未成立ゲートの可視化のみ。新案内のD最終受入、人手安全承認、公開GO、production/alias・外部HTTP/DOM・正式deploy-state verifierの実施証明ではない。Dはコード・A/B原稿を変更せず、PR merge・deployment・deploy-state操作を行わない。本節保存後のGitHub blobはreadbackで別途固定する。
