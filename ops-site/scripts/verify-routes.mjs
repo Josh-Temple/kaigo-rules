@@ -14,7 +14,7 @@ for (const text of [
   '事故の疑いがあるときは',
   '自己判断で済ませない',
   '自治体の取扱い',
-  '刑事罰',
+  '実際に事故が起きている場合',
   '個別の医療判断',
   'このページを読み進めるために',
 ]) {
@@ -25,13 +25,27 @@ for (const sourceUrl of [
   'https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/73_aruteppu.pdf',
   'https://www.mhlw.go.jp/content/001574219.pdf',
   'https://www.pmda.go.jp/safety/consultation-for-patients/on-drugs/0003.html',
-  'https://laws.e-gov.go.jp/law/140AC0000000045',
 ]) {
   assert.ok(medicationGuideHtml.includes(sourceUrl), `medication guide source: ${sourceUrl}`);
 }
 assert.ok(!medicationGuideHtml.includes('服薬業務の安全点検シートを開く'), 'unapproved interactive preview remains isolated');
 console.log('PASS /guides/medication-incident-sources');
 
+assert.ok(medicationGuideHtml.includes('001574219.pdf#page=3'), 'notice source PDF p3');
+assert.ok(medicationGuideHtml.includes('001574219.pdf#page=2'), 'notice source PDF p2');
+assert.ok(medicationGuideHtml.includes('001574219.pdf#page=4'), 'notice source PDF p4');
+for (const banned of ['id="law"', '#law', 'source-penalcode', 'laws.e-gov.go.jp', '刑事責任が決まる', 'href="/guides/fall-prevention-sources"']) {
+  assert.ok(!medicationGuideHtml.includes(banned), 'medication candidate excludes '+banned);
+}
+assert.equal((await fetch(base + '/guides/fall-prevention-sources')).status, 404, 'held fall route');
+assert.equal((await fetch(base + '/tools/medication-safety-preview')).status, 404, 'held preview');
+const mapResponse = await fetch(base + '/sitemap.xml');
+assert.equal(mapResponse.status, 200, 'sitemap');
+const mapXml = await mapResponse.text();
+assert.ok(mapXml.includes('/guides/medication-incident-sources'), 'medication sitemap');
+assert.ok(!mapXml.includes('/guides/fall-prevention-sources'), 'held fall excluded');
+assert.ok(!mapXml.includes('/tools/medication-safety-preview'), 'held preview excluded');
+assert.equal((await fetch(base + '/robots.txt')).status, 200, 'robots');
 for (const issue of issueRegistry) {
   assert.ok(homeText.includes(`href="${issue.href}"`), `${issue.href}: homepage link`);
   const response = await fetch(`${base}${issue.href}`);
