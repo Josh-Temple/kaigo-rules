@@ -470,3 +470,10 @@ Aが新規資料の原典確認を後続PRで更新する場合は、**Aの保�
 - **D**：A新資料採否・B本節保存後blob・C新候補のhead/code/test blobs/CIを**独立取得**して、R/F/Gの負例を監査する。既存#480/#482の旧D§13受入は同一blob範囲のみ。人手票の空欄を合格と扱わない。
 - **E**：服薬改訂・転倒記事・新資料案内・UI-onlyの4範囲を別々にGO/HOLD判断する。必須人手の安全理解、Android実機／読み上げ、PDF・実印刷がNOT_RUNならHOLDを維持する。専門職の探索・レビュー送信や外部匿名previewは別承認までしない。
 - **B現在判定：EDITORIAL_DRAFT_READY（既存採用資料4種類の案内・人手確認票のみ）／NEW_SOURCES_A_PENDING／HUMAN_NOT_RUN／NO_SIGNOFF／RELEASE_HOLD**。§2・§3・§9の14引用ブロック改稿なし。本稿で新しい医学・法的判定、ユーザー入力、UI実装、merge、公開、Vercel、deploy-state、外部プレビュー開放を行っていない。保存後にBのfull head/blobをGitHubから読戻しする。
+
+
+### 10.9 並行D監査の暫定ブロッカー（2026-10-12 差分受領）
+
+並行する[独立D draft PR #487](https://github.com/Josh-Temple/kaigo-rules/pull/487)（確認時head 014f2b676d9bda0337b3744bbaac60a9871730ea）は、Wave指示書の新規資料候補URL 001094895.pdf・001094896.pdf が、2018/2019年の『高齢者の医薬品適正使用の指針』原典本文と一致しないと報告している。**これはDの未統合監査報告に基づく受領事項であり、B自身による原典PDF独立確認済みとは主張しない。**
+
+**Bの編集ブロッカー：** 新規総論編・各論編のURL、資料名、年、頁、要約カードをAの原典同定・採否・保存後blobが確認できるまで確定しない。Wave指示書のURLを仮置きのままC実装に転記しない。2026年普及啓発資材と原指針・概要資料の文書種別／発行年も独立に分離する。Cは§10.2の既存確定資料4種のみ候補表示し、追加カードはA→Bの再確定に合わせて後続差分として取り込む。D新PRの存在自体をBの正式採否や公開GOとしない。`A_PENDING / NEW_GUIDELINE_URL_BLOCKED / NOT_FOR_PUBLICATION` を維持する。
