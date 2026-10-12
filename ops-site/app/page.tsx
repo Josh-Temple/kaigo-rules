@@ -89,6 +89,10 @@ export default function Home() {
         <a className="textLink" href="/guides/medication-incident-sources">
           服薬事故の注意点と出典を見る →
         </a>
+        <p>転倒・転落の予防についても、施設中心の公的資料とその適用範囲を紹介しています。</p>
+        <a className="textLink" href="/guides/fall-prevention-sources">
+          転倒・転落の公的資料を見る →
+        </a>
       </section>
 
       <section className="section boundary">
