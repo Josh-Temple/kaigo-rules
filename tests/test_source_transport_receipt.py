@@ -82,6 +82,26 @@ class ReceiptIntegrityTests(unittest.TestCase):
         self.receipt["byte_count"] = self.raw.stat().st_size
         self.reject(lambda x: None)
 
+    def test_reject_legacy_xls_html_payload_even_with_matching_hash(self):
+        self.receipt["request_url"] = "https://www.mhlw.go.jp/content/example.xls"
+        self.receipt["final_url"] = self.receipt["request_url"]
+        self.receipt["response_headers"]["Content-Type"] = "application/vnd.ms-excel"
+        self.raw.write_bytes(b"<html>not excel</html>")
+        self.receipt["sha256"] = hashlib.sha256(self.raw.read_bytes()).hexdigest()
+        self.receipt["byte_count"] = self.raw.stat().st_size
+        with self.assertRaises(module.ReceiptError):
+            module.check_receipt(self.receipt, self.raw)
+
+    def test_accept_legacy_xls_cfb_signature_integrity_only(self):
+        self.receipt["request_url"] = "https://www.mhlw.go.jp/content/example.xls"
+        self.receipt["final_url"] = self.receipt["request_url"]
+        self.receipt["response_headers"]["Content-Type"] = "application/vnd.ms-excel"
+        self.raw.write_bytes(bytes.fromhex("D0CF11E0A1B11AE1") + b"test-fixture")
+        self.receipt["sha256"] = hashlib.sha256(self.raw.read_bytes()).hexdigest()
+        self.receipt["byte_count"] = self.raw.stat().st_size
+        outcome = module.check_receipt(self.receipt, self.raw)
+        self.assertEqual(outcome["legal_currentness"], "NOT_ASSESSED")
+
     def test_allow_verified_integrity_redirect_chain_without_origin_claim(self):
         original = self.receipt["request_url"]
         self.receipt["request_url"] = "https://www.mhlw.go.jp/old.xlsx"
