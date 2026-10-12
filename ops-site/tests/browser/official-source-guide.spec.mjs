@@ -21,6 +21,10 @@ test("local-only review route has warning before navigational links and four dis
   await expect(page.locator("input, textarea, form")).toHaveCount(0);
   await expect(page.locator("a[href='/guides/medication-incident-sources'], a[href='/guides/fall-prevention-sources']")).toHaveCount(0);
   await expect(page.locator("a[href*='medication-safety']")).toHaveCount(0);
+  for (const heldRoute of ["/guides/fall-prevention-sources", "/tools/medication-safety-preview"]) {
+    const held = await page.request.get(heldRoute);
+    expect(held.status(), `unreleased route ${heldRoute}`).toBe(404);
+  }
 });
 
 test("review page mobile width, keyboard focus and 200%-CSS proxy without horizontal overflow", async ({ page }) => {
