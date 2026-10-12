@@ -241,3 +241,8 @@ A #470とD #471の出典・監査文書はmain統合済み。B #466／C #465は�
 [最新E判定](../docs/kaigo-ops/safety/2026-10-11-medication-fall-isolated-exact-head-e-decision.md) は **PARTIAL_WITH_GAPS / 全3範囲HOLD**。独立D監査§13は [#484](https://github.com/Josh-Temple/kaigo-rules/pull/484) でdocs-only統合済（`10e26cb3b7cdc016a6dce7eb30d9e8689a9bd99c`）。Cの服薬法令節削除[#482](https://github.com/Josh-Temple/kaigo-rules/pull/482)／転倒単独[#480](https://github.com/Josh-Temple/kaigo-rules/pull/480)はいずれもhead別のD `PASS_LIMITED` と3 CI成功。ただし人間による安全な読み取り・リスク責任者確認、Android native 200%・実スクリーンリーダー、PDF viewer・実紙印刷の公開前受入は未実施のため、Eは双方をHOLD。非医学UIは独立候補がなく `RELEASE_HOLD`。
 
 **現行mainの既存服薬記事は旧刑法節あり**。#482候補の削除は本番未反映。#480単独では旧節が残り、転倒記事から服薬へのリンクが新たな導線になる。両候補のCSS・route/browser tests合成版のCI/D受入も未成立。旧#465一括merge禁止。#451は `PREVIEW_ONLY / NOT_PUBLIC` を維持。アプリmerge・新production deployment・新HTTP/DOM検査は今回なし。Kaigo Ops alias `ops-site-pi.vercel.app` は旧deployment `dpl_9r41Hq62ViHcU2YAtMyuoMGmqUbu`、READY、runtime `ffd70abb5723e950a0a1036795f28da31614a1f3`。正式deploy-state `e49e770a970e541d2ad95204ad277eca89a485d3` 据置き。人手受入と必要なコード修正→新head CI/D→範囲別E判断までは公開しない。
+
+
+## 2026-10-12 事故防止・服薬安全の公的資料案内（公開前審査）
+
+服薬改訂 [#482](https://github.com/Josh-Temple/kaigo-rules/pull/482)、転倒 [#480](https://github.com/Josh-Temple/kaigo-rules/pull/480)、追加資料案内 [#491](https://github.com/Josh-Temple/kaigo-rules/pull/491) は**すべてDraft・公開HOLD**。#491はローカル審査のみ・通常のVercel環境では404で、ホーム／サイトマップに追加していない。正式な4範囲判定、人手受入と新出典の未了条件は[2026-10-12 E判定](../docs/kaigo-ops/safety/2026-10-12-medication-fall-human-official-sources-scoped-e-decision.md)参照。公開コード・production・deploy-stateは本Waveでは変更しない。
