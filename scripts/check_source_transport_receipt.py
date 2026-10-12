@@ -116,6 +116,9 @@ def check_receipt(receipt: dict, raw_file: Path) -> dict:
             "application/octet-stream",
         ) or not first_chunk.startswith(b"PK\x03\x04"):
             raise ReceiptError("XLSX MIME/magic mismatch")
+    if final.lower().split("?", 1)[0].endswith(".xls"):
+        if media_type not in ("application/vnd.ms-excel", "application/octet-stream") or not first_chunk.startswith(b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1"):
+            raise ReceiptError("XLS MIME/magic mismatch")
     if final.lower().split("?", 1)[0].endswith(".pdf"):
         if media_type not in ("application/pdf", "application/octet-stream") or not first_chunk.startswith(b"%PDF-"):
             raise ReceiptError("PDF MIME/magic mismatch")
