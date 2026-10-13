@@ -274,5 +274,79 @@ class IndependentCollectorSafetyTests(unittest.TestCase):
         self.assertEqual(list((real/'child').iterdir()),[])
 
 
+class PostCommitRaceRegressionTests(unittest.TestCase):
+    """Same-UID synthetic interference; does not claim hostile-user isolation."""
+
+    def setUp(self):
+        self.folder = tempfile.TemporaryDirectory()
+        self.addCleanup(self.folder.cleanup)
+        self.path = Path(self.folder.name)
+        self.url = 'https://www.mhlw.go.jp/content/test.pdf'
+
+    def run_pdf(self):
+        return collector.download(self.url, 'sample', self.path,
+            opener=FakeOpener(FakeResponse(valid_pdf(), content_type='application/pdf')))
+
+    def test_reject_directory_renamed_during_first_publish_link(self):
+        original = self.path / 'published'; original.mkdir(mode=0o700)
+        moved = self.path / 'moved'
+        real_link = collector.os.link
+        seen = {'done': False}
+        def racing_link(*a, **kw):
+            if not seen['done']:
+                original.rename(moved)
+                original.mkdir(mode=0o700)
+                seen['done'] = True
+            return real_link(*a, **kw)
+        with mock.patch.object(collector.os, 'link', side_effect=racing_link):
+            with self.assertRaisesRegex(collector.ReceiptError, 'directory changed'):
+                collector.download(self.url, 'sample', original,
+                                   opener=FakeOpener(FakeResponse(valid_pdf(), content_type='application/pdf')))
+        self.assertEqual(list(original.iterdir()), [])
+        self.assertFalse((moved / 'sample.raw').exists())
+        self.assertFalse((moved / 'sample.receipt.json').exists())
+
+    def test_reject_raw_substitution_between_pair_links(self):
+        real_link = collector.os.link
+        def racing_link(*a, **kw):
+            result = real_link(*a, **kw)
+            if a[1] == 'sample.raw':
+                name = self.path / a[1]
+                name.unlink()
+                name.write_bytes(b'COMPETING RAW')
+            return result
+        with mock.patch.object(collector.os, 'link', side_effect=racing_link):
+            with self.assertRaisesRegex(collector.ReceiptError, 'raw identity/size changed'):
+                self.run_pdf()
+        self.assertEqual((self.path / 'sample.raw').read_bytes(), b'COMPETING RAW')
+        self.assertFalse((self.path / 'sample.receipt.json').exists())
+
+    def test_reject_receipt_substitution_after_second_link(self):
+        real_link = collector.os.link
+        def racing_link(*a, **kw):
+            result = real_link(*a, **kw)
+            if a[1] == 'sample.receipt.json':
+                name = self.path / a[1]
+                name.unlink()
+                name.write_bytes(b'COMPETING RECEIPT')
+            return result
+        with mock.patch.object(collector.os, 'link', side_effect=racing_link):
+            with self.assertRaisesRegex(collector.ReceiptError, 'receipt identity/size changed'):
+                self.run_pdf()
+        self.assertEqual((self.path / 'sample.receipt.json').read_bytes(), b'COMPETING RECEIPT')
+        self.assertFalse((self.path / 'sample.raw').exists())
+
+    def test_competing_lock_replacement_is_not_deleted(self):
+        real_link = collector.os.link
+        lock = self.path / '.sample.collect.lock'
+        def racing_link(*a, **kw):
+            if a[1] == 'sample.raw':
+                lock.unlink()
+                lock.write_bytes(b'COMPETING LOCK')
+            return real_link(*a, **kw)
+        with mock.patch.object(collector.os, 'link', side_effect=racing_link):
+            self.run_pdf()
+        self.assertEqual(lock.read_bytes(), b'COMPETING LOCK')
+
 if __name__ == "__main__":
     unittest.main()
