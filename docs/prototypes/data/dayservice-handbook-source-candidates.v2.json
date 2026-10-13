@@ -47,7 +47,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "通所介護の指定・申請の検討対象として介護保険法の収載範囲を示す。",
-          "notes": "範囲JSON内のfocus_paragraphs.70を指す。現行法条文の原文取得済みという意味ではない。"
+          "notes": "範囲JSON内のfocus_paragraphs.70を指す。現行法条文の原文取得済みという意味ではない。",
+          "kind": "law_scope"
         },
         {
           "section_id": "designation",
@@ -55,7 +56,7 @@
           "record_id": null,
           "source_id": "egov-care-insurance-act",
           "source_version": null,
-          "title": "介護保険法 第70条の2条（収載範囲の確認）",
+          "title": "介護保険法 第70条の2（収載範囲の確認）",
           "source_locator": "focus_paragraphs.70-2",
           "locator_kind": "REPOSITORY_SCOPE_ONLY",
           "source_url": "https://laws.e-gov.go.jp/law/409AC0000000123",
@@ -67,7 +68,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "指定の更新に関する検討対象として収載範囲を示す。",
-          "notes": "範囲JSON内のfocus_paragraphs.70-2を指す。現行法条文の原文取得済みという意味ではない。"
+          "notes": "範囲JSON内のfocus_paragraphs.70-2を指す。現行法条文の原文取得済みという意味ではない。",
+          "kind": "law_scope"
         },
         {
           "section_id": "designation",
@@ -87,7 +89,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "厚生労働省の電子申請案内への入口。",
-          "notes": "指定権者ごとの様式・添付書類・提出日を全国共通の義務として記載しない。"
+          "notes": "指定権者ごとの様式・添付書類・提出日を全国共通の義務として記載しない。",
+          "kind": "source_registry"
         }
       ],
       "gaps": [
@@ -117,7 +120,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "届出に関連する介護保険法の収載範囲を指す。",
-          "notes": "範囲JSON内のfocus_paragraphs.75を指す。現行法条文の原文取得済みという意味ではない。"
+          "notes": "範囲JSON内のfocus_paragraphs.75を指す。現行法条文の原文取得済みという意味ではない。",
+          "kind": "law_scope"
         },
         {
           "section_id": "notifications",
@@ -137,7 +141,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "指定申請・届出の電子申請に関する国の案内ページ。",
-          "notes": "自治体固有の申請期限・届出種別・手順の代わりにはならない。"
+          "notes": "自治体固有の申請期限・届出種別・手順の代わりにはならない。",
+          "kind": "source_registry"
         },
         {
           "section_id": "notifications",
@@ -157,7 +162,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "国の電子申請システム操作案内の収載確認。",
-          "notes": "ソフトウェア操作マニュアルであり、法律上の届出期限や適用基準の証明ではない。"
+          "notes": "ソフトウェア操作マニュアルであり、法律上の届出期限や適用基準の証明ではない。",
+          "kind": "source_registry"
         }
       ],
       "gaps": [
@@ -187,7 +193,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 2015年問50の後続改正・問59との関係・現行適用を未確認。HISTORICALは発出年代の識別であり失効認定ではない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "看護職員の外部連携に関する旧Q&A。問59とは別資料として扱う。",
-          "notes": "収載済み問50の構造化要約への参照であり、最新Q&A原文や問59による後続修正・削除は確認していない。"
+          "notes": "収載済み問50の構造化要約への参照であり、最新Q&A原文や問59による後続修正・削除は確認していない。",
+          "kind": "qa_item"
         }
       ],
       "gaps": [
@@ -217,7 +224,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 新旧対照表の見出し情報のみ。後続改正と現行統合条文は未確認。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "解釈通知の改正対照表の章見出しを参照する。",
-          "notes": "出典位置は2024年新旧対照表の当該箇所であり、統合された最新本文そのものではない。"
+          "notes": "出典位置は2024年新旧対照表の当該箇所であり、統合された最新本文そのものではない。",
+          "kind": "notice_item"
         },
         {
           "section_id": "sources_and_history",
@@ -237,7 +245,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "令和8年度報酬告示改正の出典索引。",
-          "notes": "改正前後対照表のみで、略部分の現行全文や算定適用日を推定しない。"
+          "notes": "改正前後対照表のみで、略部分の現行全文や算定適用日を推定しない。",
+          "kind": "source_registry"
         },
         {
           "section_id": "sources_and_history",
@@ -257,7 +266,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "令和8年5月の留意事項通知改正の索引。",
-          "notes": "発出名・URLはリポジトリのsource registryに収載。改正対象箇所・適用日は別途確定が必要。"
+          "notes": "発出名・URLはリポジトリのsource registryに収載。改正対象箇所・適用日は別途確定が必要。",
+          "kind": "source_registry"
         },
         {
           "section_id": "sources_and_history",
@@ -277,7 +287,8 @@
           "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
           "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
           "reason": "基準省令の厚生労働省掲載ページへの参照。",
-          "notes": "source registryのverified_sourceは既存ラベルであり、この手引の現行性や人手レビューを立証しない。"
+          "notes": "source registryのverified_sourceは既存ラベルであり、この手引の現行性や人手レビューを立証しない。",
+          "kind": "source_registry"
         }
       ],
       "gaps": [
