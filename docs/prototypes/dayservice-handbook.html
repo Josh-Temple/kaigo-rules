@@ -12,13 +12,27 @@
 header,footer{padding:27px max(20px,calc((100vw - 1120px)/2));border-bottom:1px solid var(--line)}header small{font-weight:700;color:var(--accent);letter-spacing:.12em}h1{font-size:36px;line-height:1.25;margin:10px 0}header p{max-width:770px;color:var(--muted)}.alert{background:#f3ebdb;border-left:3px solid #aa8347;padding:13px 17px;font-size:14px;color:#513f28}.page{max-width:1120px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr);gap:45px;padding:24px 20px 70px}
 nav{align-self:start;position:sticky;top:16px}nav h2{font-size:15px}nav button{font:inherit;font-size:13px;width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);text-align:left;padding:8px 6px;cursor:pointer}nav button[aria-current=true]{background:#edf2ef;font-weight:700}nav button:hover{background:#edf2ef}
 input{width:100%;padding:10px;background:white;border:1px solid var(--line);font:inherit}main h2{font-size:25px;margin-bottom:6px}.meta{font-size:13px;color:var(--muted)}.status{color:#6b5a3d;background:#f7f0e3;display:inline-block;padding:3px 9px;font-size:12px;margin:9px 0}hr{border:0;border-top:1px solid var(--line);margin:30px 0}ul{padding-left:22px}li{margin:7px 0}textarea{width:100%;min-height:125px;resize:vertical;padding:12px;border:1px solid var(--line);font:inherit;background:white}button.action{font:inherit;padding:9px 15px;border:0;color:white;background:var(--ink);cursor:pointer}button.action.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}.candidate{border-top:1px solid var(--line);padding:15px 0}.candidate h4{font-size:15px;margin:0 0 3px}.candidate .excerpt{white-space:pre-line;background:#f2f5f1;border-left:2px solid var(--accent);padding:12px;font-size:14px;margin:10px 0}.candidate .metadata{font-size:12px;color:var(--muted);overflow-wrap:anywhere}.candidate select{font:inherit;margin:6px 0 12px;width:auto;max-width:100%;padding:4px 8px;border:1px solid var(--line);background:white;color:var(--ink)}.candidate label{display:block}.candidate a{margin-right:14px;font-size:13px}.empty{padding:16px 0;color:var(--muted);font-size:14px}.links{list-style:none;padding:0;border-top:1px solid var(--line)}.links li{border-bottom:1px solid var(--line);padding:8px 0}#msg{font-size:12px;color:var(--muted)}footer{border-top:1px solid var(--line);border-bottom:0;font-size:12px;color:var(--muted)}
+.skip-link{position:absolute;left:12px;top:-80px;background:white;padding:7px;z-index:2}.skip-link:focus{top:8px}
+:focus-visible{outline:3px solid #a56e25;outline-offset:3px}button,select{min-height:44px}
+.candidate-controls{display:grid;grid-template-columns:minmax(0,2fr) 1fr 1fr;gap:12px;margin:12px 0}
+.candidate-controls label{display:block;font-size:13px}.candidate-controls select{width:100%;font:inherit;background:white;color:var(--ink);border:1px solid var(--line);padding:8px}
+.candidate details{border-left:2px solid var(--accent);padding-left:9px;margin:8px 0}
+.candidate summary{cursor:pointer;padding:8px 0;text-decoration:underline}
+#source-preview .candidate,#draft-preview .candidate{padding:12px 0}.candidate{overflow-wrap:anywhere}
+@media(max-width:760px){.candidate-controls{grid-template-columns:1fr 1fr}.candidate-controls>div:first-child{grid-column:1/-1}.candidate a{display:inline-block;padding:8px 0}nav button{min-height:44px}}
+@media(max-width:430px){.page{padding:16px 14px 56px}header,footer{padding:22px 14px}#menu{grid-template-columns:1fr 1fr;max-height:240px}h1{font-size:26px}main h2{font-size:22px}}
+@media(max-width:360px){#menu{grid-template-columns:1fr}.candidate-controls{grid-template-columns:1fr}.candidate-controls>div:first-child{grid-column:auto}}
 @media(max-width:760px){.page{display:block}nav{position:static}#menu{display:grid;grid-template-columns:1fr 1fr;max-height:215px;overflow:auto;gap:0 8px}main{margin-top:25px}h1{font-size:28px}}@media(max-width:380px){#menu{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#chapter-start">本文へ移動</a>
 <header><small>KAIGO RULES / LOCAL TRIAL</small><h1>通所介護の実務手引</h1><p>サービス固有の15章をたどり、公開済みデータベースから原典を探すための非公開サイト試作です。制度解説の確定本文はまだありません。</p><div class="alert"><strong>注意：未レビューの試用版です。</strong>　章の案内文は確認観点であり、法的な適用・算定可否・公式解釈を断定しません。実務上の判断には各公式原典・指定権者の情報を確認してください。</div></header>
-<div class="page"><nav aria-label="章選択"><h2>目次（15章）</h2><label for="filter" class="meta">章を探す</label><input id="filter" type="search" placeholder="人員・加算など"><div id="menu"></div></nav><main><p class="meta" id="chapter-no"></p><h2 id="title"></h2><span class="status">手引本文：未確認 / 人手レビュー：未実施</span><p id="summary"></p><h3>原典に結び付けた確認候補</h3><p class="meta">既存Repositoryの項目IDと資料に基づく、確認作業用の一覧です。手引本文の確定・法的適用の認定・新しい現行性確認を意味しません。原典側の状態は収載時点の記録です。</p><p id="candidate-count" class="meta"></p><div id="candidates" aria-live="polite"></div><h3>公開DB・原典を探す入口</h3><p class="meta">リンク先は、この章に適用できる根拠として個別検証済みとは限りません。</p><ul class="links" id="links"></ul><hr><h3>使いながら残すメモ</h3><p class="meta">ここでの記録は個人的な検討メモです。「法的確認済み」には変換されません。利用者情報・秘密情報は入力しないでください。</p><label for="memo" class="meta">不足している説明・確認した原典・改善案</label><textarea id="memo" placeholder="確認したい条文、疑問点、説明の改善案"></textarea><p><button class="action" id="export" type="button">メモを書き出す</button> <button class="action alt" id="clear" type="button">この章を消去</button></p><p id="msg" role="status"></p><p class="meta">メモはブラウザ内に保存を試みますが、環境によって保持されない場合があります。必要な記録はJSONで書き出してください。外部送信はしません。</p></main></div>
+<div class="page"><nav aria-label="章選択"><h2>目次（15章）</h2><label for="filter" class="meta">章を探す</label><input id="filter" type="search" placeholder="人員・加算など"><div id="menu"></div></nav><main id="chapter-start"><p class="meta" id="chapter-no"></p><h2 id="title" tabindex="-1"></h2><span class="status">手引本文：未確認 / 人手レビュー：未実施</span><p id="summary"></p><section aria-labelledby="draft-preview-heading" id="draft-preview-section"><h3 id="draft-preview-heading">章別の未レビュー草稿</h3><p class="meta">別担当が作成したJSONのうち、統合工程で安全な形式に埋め込まれたものだけ表示します。法令の確認済み解説ではありません。</p><div id="draft-preview" aria-live="polite"></div></section><h3>原典に結び付けた確認候補</h3><p class="meta">既存Repositoryの項目IDと資料に基づく、確認作業用の一覧です。手引本文の確定・法的適用の認定・新しい現行性確認を意味しません。原典側の状態は収載時点の記録です。</p><div class="candidate-controls"><div><label for="candidate-filter">候補を絞り込む</label><input id="candidate-filter" type="search" placeholder="資料名・項目IDなど"></div><div><label for="kind-filter">資料種別</label><select id="kind-filter"><option value="all">すべて</option><option value="rule">基準省令</option><option value="notice">解釈通知</option><option value="fee">報酬告示</option></select></div><div><label for="progress-filter">閲覧記録</label><select id="progress-filter"><option value="all">すべて</option><option value="未着手">未着手</option><option value="原典を開いた">原典を開いた</option><option value="要再確認">要再確認</option></select></div></div><p id="candidate-count" class="meta"></p><div id="candidates" aria-live="polite"></div><h3>追加の原典候補（統合データ）</h3><p class="meta">ここに示す資料は章との暫定的な関連候補です。掲載は真正性・現行性・適用の証明ではありません。</p><div id="source-preview" aria-live="polite"></div><h3>公開DB・原典を探す入口</h3><p class="meta">リンク先は、この章に適用できる根拠として個別検証済みとは限りません。</p><ul class="links" id="links"></ul><hr><h3>使いながら残すメモ</h3><p class="meta">ここでの記録は個人的な検討メモです。「法的確認済み」には変換されません。利用者情報・秘密情報は入力しないでください。</p><label for="memo" class="meta">不足している説明・確認した原典・改善案</label><textarea id="memo" placeholder="確認したい条文、疑問点、説明の改善案"></textarea><p><button class="action" id="export" type="button">メモを書き出す</button> <button class="action alt" id="clear" type="button">この章を消去</button></p><p id="msg" role="status"></p><p class="meta">メモはブラウザ内に保存を試みますが、環境によって保持されない場合があります。必要な記録はJSONで書き出してください。外部送信はしません。書き出したJSONにはメモ本文が含まれます。共有前に内容を点検してください。</p></main></div>
 <footer>本ファイルは Next.js の app / public に配置していません。本番サイトへのルート・検索API・sitemap・公開判定は未変更です。外部参照は利用者がリンクを開いた場合のみ発生します。</footer>
+<!-- Worker E may inject escaped JSON text only; never raw HTML or executable scripts. -->
+<script id="handbook-sources-json" type="application/json"></script>
+<script id="handbook-drafts-json" type="application/json"></script>
 <script>
 "use strict";
 const CHAPTERS=[["applicability","適用対象・基本事項","制度上の定義、対象となるサービスと関連する原典を調べる。",["databases/search?service=dayservice","rules","sources"]],["designation","指定・開設","全国共通の指定基準と指定権者が定める事項を分けて確認する。",["rules","databases/search?service=dayservice","sources"]],["staffing","人員基準","職種・員数・勤務体制に関する条文と解釈通知を調べる。",["rules","notices","databases/search?service=dayservice"]],["equipment","設備基準","設備関係の基準本文と解釈通知を調べる。",["rules","notices"]],["operations","運営基準","運営上の各事項と準用される規定の所在を調べる。",["rules","notices","qa"]],["records","記録・情報管理","記録の作成や保存等について根拠を確かめる。",["rules","notices"]],["safeguarding","利用者保護","利用者保護に関係する制度資料を確認する。",["rules","notices","qa"]],["incident_and_infection","事故・感染症・虐待防止","事故対応等に関する制度資料を探す。",["rules","notices","sources"]],["business_continuity","業務継続計画","制度資料と改正・経過措置の時点を調べる。",["rules","notices","sources"]],["remuneration","基本報酬","報酬単位数と一単位単価を区別して原典を調べる。",["fees","fees/criteria","databases/search?service=dayservice"]],["deductions","減算","減算の根拠と別告示・留意事項との関係を探す。",["fees","fees/criteria","fees/guidance"]],["additions","加算","加算の算定基準と関連資料の所在を調べる。",["fees","fees/criteria","qa"]],["notifications","届出・手続","全国共通の規定と自治体の手続きを分けて調べる。",["sources","databases/search?service=dayservice"]],["national_qa","国Q&A","関連Q&Aの問番号・発出日・後続改正を確認する。",["qa","sources"]],["sources_and_history","原典・改正履歴","公式原典の版、施行日、改正履歴を確認する。",["sources","rules","databases/search?service=dayservice"]]];
@@ -37,7 +51,7 @@ function persist(){try{localStorage.setItem(key,JSON.stringify(notes));$("msg").
 function renderMenu(){
  const term=$("filter").value.trim();
  $("menu").replaceChildren(...CHAPTERS.filter(r=>r[1].includes(term)).map((r)=>{
-  const b=document.createElement("button");b.type="button";b.textContent=r[1];b.setAttribute("aria-current",String(r[0]===current));b.addEventListener("click",()=>show(r[0]));return b;
+  const b=document.createElement("button");b.type="button";b.textContent=r[1];b.setAttribute("aria-current",String(r[0]===current));b.addEventListener("click",()=>{show(r[0]);$("title").focus();});return b;
  }));
 }
 function show(id){
@@ -48,13 +62,18 @@ function show(id){
   const li=document.createElement("li"),a=document.createElement("a");
   a.href=BASE+path;a.target="_blank";a.rel="noopener noreferrer";a.textContent="公開DB："+path+" ↗";li.append(a);return li;
  }));
- const entries=CANDIDATES.filter(x=>x.chapter_id===id);
- $("candidate-count").textContent=entries.length+"件の原典候補（手引としての確認済み解説：0件）";
+ const allEntries=CANDIDATES.filter(x=>x.chapter_id===id);
+ const term=$("candidate-filter").value.trim().toLowerCase();
+ const kind=$("kind-filter").value,reading=$("progress-filter").value;
+ const entries=allEntries.filter(x=>(kind==="all"||x.kind===kind)
+   &&(reading==="all"||(progressOptions.includes(progress[x.chapter_id+"::"+x.record_id])?progress[x.chapter_id+"::"+x.record_id]:"未着手")===reading)
+   &&(!term||[x.label,x.record_id,x.source_id,x.locator,x.source_title].some(s=>String(s||"").toLowerCase().includes(term))));
+ $("candidate-count").textContent=entries.length+" / "+allEntries.length+"件の原典候補（手引としての確認済み解説：0件）";
  $("candidates").replaceChildren(...(entries.length?entries.map((entry)=>{
   const box=document.createElement("section");box.className="candidate";
   const title=document.createElement("h4");title.textContent=entry.label;box.append(title);
   for(const line of ["資料ID: "+entry.source_id,"項目ID: "+entry.record_id,"原典位置: "+entry.locator,"収載元の状態: "+entry.source_status,"この手引の人手確認: 未実施"]){const p=document.createElement("p");p.className="metadata";p.textContent=line;box.append(p);}
-  if(entry.excerpt){const quote=document.createElement("p");quote.className="excerpt";quote.textContent=entry.excerpt;quote.setAttribute("aria-label","Repository収載本文。最新版・適用条件の再確認前");box.append(quote);}
+  if(entry.excerpt){const details=document.createElement("details");const summary=document.createElement("summary");summary.textContent="Repository収載本文を展開（適用・現行性は未確認）";details.append(summary);const quote=document.createElement("p");quote.className="excerpt";quote.textContent=entry.excerpt;details.append(quote);box.append(details);}
   const rowKey=entry.chapter_id+"::"+entry.record_id;
   const statusLabel=document.createElement("label");statusLabel.textContent="個人用の閲覧記録（法的確認・承認ではありません） ";statusLabel.className="metadata";
   const select=document.createElement("select");select.setAttribute("aria-label",entry.label+" の個人用閲覧記録");
@@ -64,10 +83,11 @@ function show(id){
   statusLabel.append(select);box.append(statusLabel);
   for(const [label,url] of [["DBで確認",entry.db_href],["原典資料を開く",entry.official_url]]){const a=document.createElement("a");a.href=url;a.textContent=label+" ↗";a.target="_blank";a.rel="noopener noreferrer";box.append(a);}
   return box;
- }):[(()=>{const p=document.createElement("p");p.className="empty";p.textContent="この章で個別に紐付けた項目はまだありません。下の共通検索から探し、確認候補をメモしてください。";return p;})()]));
- $("memo").value=typeof notes[id]==="string"?notes[id]:"";$("msg").textContent="";renderMenu();
+ }):[(()=>{const p=document.createElement("p");p.className="empty";p.textContent="表示条件に合う原典候補がありません。絞り込みを解除するか、下の共通検索から確認してください。";return p;})()]));
+ $("memo").value=typeof notes[id]==="string"?notes[id]:"";$("msg").textContent="";renderMenu();renderSupplement(id);
 }
 $("filter").addEventListener("input",renderMenu);
+for(const id of ["candidate-filter","kind-filter","progress-filter"])$(id).addEventListener(id==="candidate-filter"?"input":"change",()=>show(current));
 $("memo").addEventListener("input",()=>{notes[current]=$("memo").value;persist();});
 $("clear").addEventListener("click",()=>{delete notes[current];$("memo").value="";persist();});
 $("export").addEventListener("click",()=>{
@@ -75,5 +95,83 @@ $("export").addEventListener("click",()=>{
  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="kaigo-handbook-dayservice-notes.json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$("msg").textContent="メモを書き出しました";
 });
+
+// Optional local JSON contracts. E may embed the A/B artifacts below only after
+// escaping every "<" character to "\u003c" in the serialized JSON. No fetch.
+const SECTION_IDS=new Set(CHAPTERS.map(x=>x[0]));
+const KNOWN_RECORD_IDS=new Set(CANDIDATES.map(x=>x.record_id));
+function embeddedData(elementId, collection){
+ const element=$(elementId),raw=element?element.textContent.trim():"";
+ if(!raw)return [];
+ if(raw.length>500000)return [];
+ try{
+  const value=JSON.parse(raw);
+  if(!value||typeof value!=="object"||Array.isArray(value)||value.service_id!=="dayservice")return [];
+  if(value.base_pr_head&&value.base_pr_head!=="c6e61a44a8287f020d56e1c22d63ad2b74a08b89")return [];
+  const rows=value[collection];
+  return Array.isArray(rows)&&rows.length<=500?rows:[];
+ }catch(_){return [];}
+}
+const EXTRA_SOURCES=embeddedData("handbook-sources-json","candidates");
+const EXTRA_DRAFTS=embeddedData("handbook-drafts-json","sections");
+function smallText(value,limit=500){return typeof value==="string"?value.slice(0,limit):"";}
+function safeOfficialUrl(value){
+ if(typeof value!=="string"||value.length>2000)return null;
+ try{
+  const u=new URL(value);
+  const host=u.hostname.toLowerCase();
+  if(u.protocol!=="https:"||u.username||u.password)return null;
+  return (host==="mhlw.go.jp"||host.endsWith(".mhlw.go.jp")||host==="elaws.e-gov.go.jp")?u.href:null;
+ }catch(_){return null;}
+}
+function plain(tag,value,className){
+ const n=document.createElement(tag);n.textContent=value;
+ if(className)n.className=className;return n;
+}
+function renderSupplement(sectionId){
+ const sources=$("source-preview"),drafts=$("draft-preview");
+ const seen=new Set(),refs=new Set(KNOWN_RECORD_IDS);
+ const additions=[];
+ for(const entry of EXTRA_SOURCES){
+  if(!entry||typeof entry!=="object"||entry.section_id!==sectionId||entry.service_id&&entry.service_id!=="dayservice")continue;
+  const sourceId=smallText(entry.source_id,160),candidateId=smallText(entry.candidate_id,160);
+  if(!sourceId||!candidateId||seen.has(candidateId))continue;
+  seen.add(candidateId);
+  const container=plain("section","","candidate");
+  container.append(plain("h4",smallText(entry.title,200)||"追加の原典候補"));
+  container.append(plain("p","候補ID: "+candidateId+" / 資料ID: "+sourceId,"metadata"));
+  container.append(plain("p","原典位置: "+(smallText(entry.source_locator,300)||"確認待ち"),"metadata"));
+  container.append(plain("p","章との対応: CHAPTER_CANDIDATE / 現行適用: 未確認 / 人手レビュー: 未実施","metadata"));
+  const limitation=smallText(entry.currentness_limit,300);
+  if(limitation)container.append(plain("p","現行性の制約: "+limitation,"metadata"));
+  const url=safeOfficialUrl(entry.source_url);
+  if(url){const a=plain("a","公式掲載元を開く ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";container.append(a);}
+  const rid=smallText(entry.record_id,160);if(rid)refs.add(rid);
+  additions.push(container);
+ }
+ sources.replaceChildren(...(additions.length?additions:[plain("p","この章の追加候補はまだ統合されていません。","empty")]));
+ const draftNodes=[],seenStatements=new Set();
+ for(const section of EXTRA_DRAFTS){
+  if(!section||typeof section!=="object"||section.section_id!==sectionId||!Array.isArray(section.draft_statements))continue;
+  for(const statement of section.draft_statements.slice(0,100)){
+   if(!statement||typeof statement!=="object"||!["PROVISIONAL_EXPLANATION","CHECKPOINT"].includes(statement.kind))continue;
+   const sid=smallText(statement.statement_id,150),body=smallText(statement.text,1500);
+   if(!sid||!body||seenStatements.has(sid))continue;
+   const recordIds=statement.candidate_record_ids;
+   if(!Array.isArray(recordIds)||recordIds.some(x=>typeof x!=="string"||!refs.has(x)))continue;
+   if(statement.kind==="PROVISIONAL_EXPLANATION"&&!recordIds.length)continue;
+   seenStatements.add(sid);
+   const node=plain("section","","candidate");
+   node.append(plain("h4",statement.kind==="CHECKPOINT"?"確認ポイント":"暫定説明（未レビュー）"));
+   node.append(plain("p",body));
+   node.append(plain("p","根拠候補ID: "+(recordIds.join(", ")||"未設定")+" / DRAFT_UNREVIEWED / HUMAN_REVIEW_NOT_DONE","metadata"));
+   draftNodes.push(node);
+  }
+ }
+ drafts.replaceChildren(...(draftNodes.length?draftNodes:[plain("p","この章の説明文は未レビューです。統合済み草稿はありません。","empty")]));
+}
+// Browser storage is untrusted and may be denied by the user agent.
+notes=Object.fromEntries(CHAPTERS.map(r=>[r[0],typeof notes[r[0]]==="string"?notes[r[0]].slice(0,8000):""]));
+progress=Object.fromEntries(CANDIDATES.map(r=>{const k=r.chapter_id+"::"+r.record_id;return [k,progressOptions.includes(progress[k])?progress[k]:"未着手"];}));
 show(current);
 </script></body></html>
