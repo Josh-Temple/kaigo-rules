@@ -49,7 +49,18 @@ def _open_directory(directory: Path):
     repository_root = Path(__file__).resolve().parents[1]
     if absolute.is_relative_to(repository_root):
         raise ReceiptError("raw evidence must be stored outside the repository")
-    fd = os.open(absolute, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+    # Walk every component with O_NOFOLLOW. A parent symlink swapped after the
+    # resolve check must not redirect writes into a different directory.
+    flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
+    fd = os.open(absolute.anchor, flags)
+    try:
+        for part in absolute.parts[1:]:
+            child = os.open(part, flags, dir_fd=fd)
+            os.close(fd)
+            fd = child
+    except Exception:
+        os.close(fd)
+        raise
     s = os.fstat(fd)
     if s.st_uid != os.geteuid() or s.st_mode & 0o022:
         os.close(fd)

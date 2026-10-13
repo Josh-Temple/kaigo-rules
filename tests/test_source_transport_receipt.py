@@ -22,10 +22,10 @@ def valid_xlsx():
     out = io.BytesIO()
     ns = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
     with zipfile.ZipFile(out, "w") as z:
-        z.writestr("[Content_Types].xml", '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"/>')
+        z.writestr("[Content_Types].xml", '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/></Types>')
         z.writestr("_rels/.rels", '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"/>')
-        z.writestr("xl/_rels/workbook.xml.rels", '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"/>')
-        z.writestr("xl/workbook.xml", f'<workbook xmlns="{ns}"><sheets><sheet name="Test" sheetId="1"/></sheets></workbook>')
+        z.writestr("xl/_rels/workbook.xml.rels", '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/></Relationships>')
+        z.writestr("xl/workbook.xml", f'<workbook xmlns="{ns}" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Test" sheetId="1" r:id="rId1"/></sheets></workbook>')
         z.writestr("xl/worksheets/sheet1.xml", f'<worksheet xmlns="{ns}"><sheetData/></worksheet>')
     return out.getvalue()
 
@@ -183,6 +183,22 @@ class IndependentReceiptSafetyTests(unittest.TestCase):
     def test_real_legacy_biff_fixture_parsed(self):
         data=bytes.fromhex('090004000200100003000f000000000000000000000000000045400a000000')
         self.assertEqual(module._format_check(data,'application/vnd.ms-excel'),'XLS_WORKBOOK_PARSED')
+    def test_xlsx_missing_sheet_relationship_rejected(self):
+        original=zipfile.ZipFile(io.BytesIO(valid_xlsx()));data=io.BytesIO()
+        with zipfile.ZipFile(data,'w') as z:
+            for name in original.namelist():
+                value=original.read(name)
+                if name=='xl/workbook.xml':value=value.replace(b'rId1',b'absent')
+                z.writestr(name,value)
+        with self.assertRaises(module.ReceiptError):module._format_check(data.getvalue(),module.XLSX_MIME)
+    def test_xlsx_wrong_workbook_type_rejected(self):
+        original=zipfile.ZipFile(io.BytesIO(valid_xlsx()));data=io.BytesIO()
+        with zipfile.ZipFile(data,'w') as z:
+            for name in original.namelist():
+                value=original.read(name)
+                if name=='[Content_Types].xml':value=value.replace(b'sheet.main+xml',b'evil.main+xml')
+                z.writestr(name,value)
+        with self.assertRaises(module.ReceiptError):module._format_check(data.getvalue(),module.XLSX_MIME)
 
 
 if __name__ == "__main__":

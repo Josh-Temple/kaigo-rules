@@ -93,7 +93,8 @@ def _format_check(data: bytes, media_type: str) -> str:
                     raise ReceiptError("XLSX workbook container is incomplete")
                 ns = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
                 workbook = _xml(z.read("xl/workbook.xml"))
-                if workbook.tag != ns + "workbook" or not workbook.findall(ns + "sheets/" + ns + "sheet"):
+                sheets = workbook.findall(ns + "sheets/" + ns + "sheet")
+                if workbook.tag != ns + "workbook" or not sheets:
                     raise ReceiptError("XLSX workbook/sheet structure missing")
                 worksheets = [n for n in names if n.startswith("xl/worksheets/") and n.endswith(".xml")]
                 if not worksheets:
@@ -103,6 +104,30 @@ def _format_check(data: bytes, media_type: str) -> str:
                         root = _xml(z.read(name))
                         if name in worksheets and root.tag != ns + "worksheet":
                             raise ReceiptError("XLSX worksheet root mismatch")
+                ct_ns = "{http://schemas.openxmlformats.org/package/2006/content-types}"
+                types = _xml(z.read("[Content_Types].xml"))
+                if types.tag != ct_ns + "Types" or not any(
+                    e.get("PartName") == "/xl/workbook.xml" and e.get("ContentType") ==
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"
+                    for e in types.findall(ct_ns + "Override")
+                ):
+                    raise ReceiptError("XLSX workbook content type missing")
+                rel_ns = "{http://schemas.openxmlformats.org/package/2006/relationships}"
+                rels = _xml(z.read("xl/_rels/workbook.xml.rels"))
+                relations = {e.get("Id"): e for e in rels.findall(rel_ns + "Relationship")}
+                if rels.tag != rel_ns + "Relationships" or len(relations) != len(rels):
+                    raise ReceiptError("invalid/duplicate workbook relationships")
+                for sheet in sheets:
+                    rid = sheet.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id")
+                    rel = relations.get(rid)
+                    if rel is None or rel.get("TargetMode") == "External" or not rel.get("Type", "").endswith("/worksheet"):
+                        raise ReceiptError("XLSX sheet relationship missing/invalid")
+                    target = rel.get("Target", "")
+                    if "\\" in target or ".." in PurePosixPath(target).parts:
+                        raise ReceiptError("XLSX worksheet target traversal")
+                    target = target.lstrip("/") if target.startswith("/") else "xl/" + target
+                    if target not in worksheets:
+                        raise ReceiptError("XLSX sheet target absent")
             return "XLSX_CONTAINER_AND_XML_PARSED"
         if media_type == "application/pdf":
             if not data.startswith(b"%PDF-") or not data.rstrip().endswith(b"%%EOF"):

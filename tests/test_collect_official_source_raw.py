@@ -266,6 +266,12 @@ class IndependentCollectorSafetyTests(unittest.TestCase):
         with mock.patch.object(sys,'argv',['collector','--url',self.url,'--name','sample','--output-dir',str(self.path),'--expect-media-type','application/pdf']),mock.patch.object(socket,'socket',side_effect=AssertionError('network forbidden')),mock.patch.object(collector,'build_opener',side_effect=AssertionError('network forbidden')),redirect_stdout(io.StringIO()):
             self.assertEqual(collector.main(),0)
         self.assertEqual(list(self.path.iterdir()),[])
+    def test_parent_symlink_even_if_resolve_check_is_raced(self):
+        real=self.path/'real';real.mkdir();(real/'child').mkdir()
+        alias=self.path/'alias';alias.symlink_to(real,target_is_directory=True)
+        with mock.patch.object(Path,'resolve',lambda p:p.absolute()),self.assertRaises(OSError):
+            collector.download(self.url,'sample',alias/'child',opener=FakeOpener())
+        self.assertEqual(list((real/'child').iterdir()),[])
 
 
 if __name__ == "__main__":
