@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src data:; object-src 'none'; form-action 'none'">
+<title>通所介護の実務手引（非公開サイト試作）</title>
+<style>
+:root{--ink:#213349;--muted:#586773;--line:#d2dcd8;--paper:#faf9f5;--accent:#3c686a}
+*{box-sizing:border-box}body{background:var(--paper);color:var(--ink);margin:0;font-family:system-ui,"Noto Sans JP",sans-serif;line-height:1.75}a{color:#285b6b}
+header,footer{padding:27px max(20px,calc((100vw - 1120px)/2));border-bottom:1px solid var(--line)}header small{font-weight:700;color:var(--accent);letter-spacing:.12em}h1{font-size:36px;line-height:1.25;margin:10px 0}header p{max-width:770px;color:var(--muted)}.alert{background:#f3ebdb;border-left:3px solid #aa8347;padding:13px 17px;font-size:14px;color:#513f28}.page{max-width:1120px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr);gap:45px;padding:24px 20px 70px}
+nav{align-self:start;position:sticky;top:16px}nav h2{font-size:15px}nav button{font:inherit;font-size:13px;width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);text-align:left;padding:8px 6px;cursor:pointer}nav button[aria-current=true]{background:#edf2ef;font-weight:700}nav button:hover{background:#edf2ef}
+input{width:100%;padding:10px;background:white;border:1px solid var(--line);font:inherit}main h2{font-size:25px;margin-bottom:6px}.meta{font-size:13px;color:var(--muted)}.status{color:#6b5a3d;background:#f7f0e3;display:inline-block;padding:3px 9px;font-size:12px;margin:9px 0}hr{border:0;border-top:1px solid var(--line);margin:30px 0}ul{padding-left:22px}li{margin:7px 0}textarea{width:100%;min-height:125px;resize:vertical;padding:12px;border:1px solid var(--line);font:inherit;background:white}button.action{font:inherit;padding:9px 15px;border:0;color:white;background:var(--ink);cursor:pointer}button.action.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}.links{list-style:none;padding:0;border-top:1px solid var(--line)}.links li{border-bottom:1px solid var(--line);padding:8px 0}#msg{font-size:12px;color:var(--muted)}footer{border-top:1px solid var(--line);border-bottom:0;font-size:12px;color:var(--muted)}
+@media(max-width:760px){.page{display:block}nav{position:static}#menu{display:grid;grid-template-columns:1fr 1fr;max-height:215px;overflow:auto;gap:0 8px}main{margin-top:25px}h1{font-size:28px}}@media(max-width:380px){#menu{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><small>KAIGO RULES / LOCAL TRIAL</small><h1>通所介護の実務手引</h1><p>サービス固有の15章をたどり、公開済みデータベースから原典を探すための非公開サイト試作です。制度解説の確定本文はまだありません。</p><div class="alert"><strong>注意：未レビューの試用版です。</strong>　章の案内文は確認観点であり、法的な適用・算定可否・公式解釈を断定しません。実務上の判断には各公式原典・指定権者の情報を確認してください。</div></header>
+<div class="page"><nav aria-label="章選択"><h2>目次（15章）</h2><label for="filter" class="meta">章を探す</label><input id="filter" type="search" placeholder="人員・加算など"><div id="menu"></div></nav><main><p class="meta" id="chapter-no"></p><h2 id="title"></h2><span class="status">手引本文：未確認 / 人手レビュー：未実施</span><p id="summary"></p><h3>公開DB・原典を探す入口</h3><p class="meta">リンク先は、この章に適用できる根拠として個別検証済みとは限りません。</p><ul class="links" id="links"></ul><hr><h3>使いながら残すメモ</h3><p class="meta">ここでの記録は個人的な検討メモです。「法的確認済み」には変換されません。利用者情報・秘密情報は入力しないでください。</p><label for="memo" class="meta">不足している説明・確認した原典・改善案</label><textarea id="memo" placeholder="確認したい条文、疑問点、説明の改善案"></textarea><p><button class="action" id="export" type="button">メモを書き出す</button> <button class="action alt" id="clear" type="button">この章を消去</button></p><p id="msg" role="status"></p><p class="meta">メモはブラウザ内に保存を試みますが、環境によって保持されない場合があります。必要な記録はJSONで書き出してください。外部送信はしません。</p></main></div>
+<footer>本ファイルは Next.js の app / public に配置していません。本番サイトへのルート・検索API・sitemap・公開判定は未変更です。外部参照は利用者がリンクを開いた場合のみ発生します。</footer>
+<script>
+"use strict";
+const CHAPTERS=[["applicability","適用対象・基本事項","制度上の定義、対象となるサービスと関連する原典を調べる。",["databases/search?service=dayservice","rules","sources"]],["designation","指定・開設","全国共通の指定基準と指定権者が定める事項を分けて確認する。",["rules","databases/search?service=dayservice","sources"]],["staffing","人員基準","職種・員数・勤務体制に関する条文と解釈通知を調べる。",["rules","notices","databases/search?service=dayservice"]],["equipment","設備基準","設備関係の基準本文と解釈通知を調べる。",["rules","notices"]],["operations","運営基準","運営上の各事項と準用される規定の所在を調べる。",["rules","notices","qa"]],["records","記録・情報管理","記録の作成や保存等について根拠を確かめる。",["rules","notices"]],["safeguarding","利用者保護","利用者保護に関係する制度資料を確認する。",["rules","notices","qa"]],["incident_and_infection","事故・感染症・虐待防止","事故対応等に関する制度資料を探す。",["rules","notices","sources"]],["business_continuity","業務継続計画","制度資料と改正・経過措置の時点を調べる。",["rules","notices","sources"]],["remuneration","基本報酬","報酬単位数と一単位単価を区別して原典を調べる。",["fees","fees/criteria","databases/search?service=dayservice"]],["deductions","減算","減算の根拠と別告示・留意事項との関係を探す。",["fees","fees/criteria","fees/guidance"]],["additions","加算","加算の算定基準と関連資料の所在を調べる。",["fees","fees/criteria","qa"]],["notifications","届出・手続","全国共通の規定と自治体の手続きを分けて調べる。",["sources","databases/search?service=dayservice"]],["national_qa","国Q&A","関連Q&Aの問番号・発出日・後続改正を確認する。",["qa","sources"]],["sources_and_history","原典・改正履歴","公式原典の版、施行日、改正履歴を確認する。",["sources","rules","databases/search?service=dayservice"]]];
+const BASE="https://kaigo-rules.vercel.app/";
+const $=id=>document.getElementById(id);
+const key="kaigo-handbook-dayservice-local-draft-v1";
+let current=CHAPTERS[0][0],notes={};
+try{const parsed=JSON.parse(localStorage.getItem(key)||"{}");if(parsed&&typeof parsed==="object"&&!Array.isArray(parsed))notes=parsed;}catch(_){}
+function persist(){try{localStorage.setItem(key,JSON.stringify(notes));$("msg").textContent="ブラウザ内に保存しました";}catch(_){$("msg").textContent="自動保存できません。JSONを書き出してください";}}
+function renderMenu(){
+ const term=$("filter").value.trim();
+ $("menu").replaceChildren(...CHAPTERS.filter(r=>r[1].includes(term)).map((r)=>{
+  const b=document.createElement("button");b.type="button";b.textContent=r[1];b.setAttribute("aria-current",String(r[0]===current));b.addEventListener("click",()=>show(r[0]));return b;
+ }));
+}
+function show(id){
+ const row=CHAPTERS.find(r=>r[0]===id);if(!row)return;current=id;
+ $("chapter-no").textContent="第"+String(CHAPTERS.indexOf(row)+1)+"章 / 15";
+ $("title").textContent=row[1];$("summary").textContent=row[2]+"　個別の確認済み制度解説本文は未掲載です。";
+ $("links").replaceChildren(...row[3].map(path=>{
+  const li=document.createElement("li"),a=document.createElement("a");
+  a.href=BASE+path;a.target="_blank";a.rel="noopener noreferrer";a.textContent="公開DB："+path+" ↗";li.append(a);return li;
+ }));
+ $("memo").value=typeof notes[id]==="string"?notes[id]:"";$("msg").textContent="";renderMenu();
+}
+$("filter").addEventListener("input",renderMenu);
+$("memo").addEventListener("input",()=>{notes[current]=$("memo").value;persist();});
+$("clear").addEventListener("click",()=>{delete notes[current];$("memo").value="";persist();});
+$("export").addEventListener("click",()=>{
+ const data={format_version:1,service_id:"dayservice",review_completed:false,source:"local_handbook_trial",notes:Object.fromEntries(CHAPTERS.map(r=>[r[0],typeof notes[r[0]]==="string"?notes[r[0]]:""]))};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="kaigo-handbook-dayservice-notes.json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$("msg").textContent="メモを書き出しました";
+});
+show(current);
+</script></body></html>
