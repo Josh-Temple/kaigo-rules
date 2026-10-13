@@ -23,7 +23,7 @@ GitHub上のソースファイルは公開Repositoryの閲覧権限に従って�
 ## 検査
 
 ```bash
-python -m unittest tests.test_dayservice_handbook_trial -v
+python -m unittest discover -s tests -p 'test_dayservice_handbook_trial.py' -v
 ```
 
 対象テストは15章ID、固定リンク、未確認の扱い、外部スクリプト不使用、メモと人手レビューの分離を確認する。ブラウザ実機試験と法令の正確性検証を代替しない。
