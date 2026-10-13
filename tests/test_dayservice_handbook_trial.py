@@ -2,6 +2,7 @@
 import hashlib
 import json
 import re
+import subprocess
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -78,8 +79,10 @@ class DayserviceHandbookTrialTest(unittest.TestCase):
         self.assertIn('localStorage.setItem(key', self.html)
         self.assertIn('JSON.stringify(data,null,2)', self.html)
         self.assertIn('textContent=', self.html)
-        self.assertNotIn('VERIFIED_CURRENT', self.html)
-        self.assertNotIn('HUMAN_VERIFIED', self.html)
+        self.assertIn('"source_status":"VERIFIED_CURRENT"', self.html)
+        self.assertIn("この手引の人手確認: 未実施", self.html)
+        self.assertNotIn('"human_review":"VERIFIED_CURRENT"', self.html)
+        self.assertNotIn('"human_review":"HUMAN_VERIFIED"', self.html)
 
     @classmethod
     def source_candidates(cls):
@@ -163,6 +166,23 @@ class DayserviceHandbookTrialTest(unittest.TestCase):
         self.assertIn("この手引の人手確認: 未実施", self.html)
         self.assertIn("原典候補", self.html)
         self.assertNotIn("candidate_verified:true", self.html)
+
+    def test_inline_javascript_parses_without_execution(self):
+        match = re.search(r"<script>\s*(.*?)\s*</script>", self.html, re.DOTALL)
+        self.assertIsNotNone(match)
+        completed = subprocess.run(
+            ["node", "--check", "--input-type=commonjs"],
+            input=match.group(1),
+            capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+
+    def test_personal_progress_never_becomes_legal_review(self):
+        self.assertIn('const progressOptions=["未着手","原典を開いた","要再確認"]', self.html)
+        self.assertIn("candidate_progress:Object.fromEntries", self.html)
+        self.assertIn("個人用の閲覧記録（法的確認・承認ではありません）", self.html)
+        self.assertIn("review_completed:false", self.html)
+        self.assertNotIn('review_completed:true', self.html)
 
 
 if __name__ == "__main__":
