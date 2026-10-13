@@ -89,7 +89,16 @@ function show(id){
 $("filter").addEventListener("input",renderMenu);
 for(const id of ["candidate-filter","kind-filter","progress-filter"])$(id).addEventListener(id==="candidate-filter"?"input":"change",()=>show(current));
 $("memo").addEventListener("input",()=>{notes[current]=$("memo").value;persist();});
-$("clear").addEventListener("click",()=>{delete notes[current];$("memo").value="";persist();});
+$("clear").addEventListener("click",()=>{
+ delete notes[current];
+ for(const entry of CANDIDATES.filter(x=>x.chapter_id===current))delete progress[entry.chapter_id+"::"+entry.record_id];
+ $("memo").value="";show(current);
+ try{
+  localStorage.setItem(key,JSON.stringify(notes));
+  localStorage.setItem(progressKey,JSON.stringify(progress));
+  $("msg").textContent="この章のメモと閲覧記録を消去しました";
+ }catch(_){$("msg").textContent="自動保存できません。JSONを書き出してください";}
+});
 $("export").addEventListener("click",()=>{
  const data={format_version:2,service_id:"dayservice",review_completed:false,source:"local_handbook_trial",notes:Object.fromEntries(CHAPTERS.map(r=>[r[0],typeof notes[r[0]]==="string"?notes[r[0]]:""])),candidate_progress:Object.fromEntries(CANDIDATES.map(r=>{const k=r.chapter_id+"::"+r.record_id;return [k,progressOptions.includes(progress[k])?progress[k]:"未着手"];}))};
  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
@@ -146,7 +155,7 @@ function renderSupplement(sectionId){
   if(limitation)container.append(plain("p","現行性の制約: "+limitation,"metadata"));
   const url=safeOfficialUrl(entry.source_url);
   if(url){const a=plain("a","公式掲載元を開く ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";container.append(a);}
-  const rid=smallText(entry.record_id,160);if(rid)refs.add(rid);
+  // Untrusted A records must NOT extend canonical IDs accepted by B drafts.
   additions.push(container);
  }
  sources.replaceChildren(...(additions.length?additions:[plain("p","この章の追加候補はまだ統合されていません。","empty")]));
