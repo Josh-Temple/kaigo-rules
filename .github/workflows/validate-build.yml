@@ -31,6 +31,10 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Install PDF text extractor for independent source reparse
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Test manual source collector offline (no external source requests)
+        run: |
+          python -m pip install -r scripts/source-collector-requirements.txt
+          python -m unittest discover -s tests -p 'test*source*py' -v
       - name: Independently verify dayrehab remuneration and guidance source inventories
         run: python scripts/verify_dayrehab_fee_layers_independent.py --report /tmp/dayrehab-fee-layer-independent-report.json
       - name: Validate currentness evidence expansion boundaries
@@ -321,3 +325,4 @@ jobs:
           python scripts/run_practical_navigation_regression.py \
             --base-url http://127.0.0.1:3000 --expected-sha "$GITHUB_SHA" \
             --output /tmp/practical-navigation.json
+
