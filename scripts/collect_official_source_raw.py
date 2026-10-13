@@ -76,6 +76,63 @@ def _same_directory(directory: Path, original) -> bool:
         return False
 
 
+def _unlink_if_owned(fd: int, name: str, identity) -> None:
+    """Never remove a name that has been replaced by a concurrent writer."""
+    if identity is None:
+        return
+    try:
+        current = os.stat(name, dir_fd=fd, follow_symlinks=False)
+        if (current.st_dev, current.st_ino, current.st_ctime_ns) == (identity.st_dev, identity.st_ino, identity.st_ctime_ns):
+            os.unlink(name, dir_fd=fd)
+    except FileNotFoundError:
+        pass
+
+
+def _verify_published_pair(fd: int, directory: Path, original_dir,
+                           raw_name: str, receipt_name: str,
+                           raw_identity, receipt_identity, expected: dict) -> None:
+    """Best-effort final check of committed names, bytes, and directory identity.
+
+    Caller must not claim protection from an arbitrary same-UID writer after
+    this check; access control on the output directory remains mandatory.
+    """
+    if not _same_directory(directory, original_dir):
+        raise ReceiptError("output directory changed during final publication")
+    sha = hashlib.sha256()
+    try:
+        raw_fd = os.open(raw_name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=fd)
+        with os.fdopen(raw_fd, "rb") as raw:
+            identity = os.fstat(raw.fileno())
+            if (not stat.S_ISREG(identity.st_mode) or
+                    (identity.st_dev, identity.st_ino, identity.st_ctime_ns) != (raw_identity.st_dev, raw_identity.st_ino, raw_identity.st_ctime_ns) or
+                    identity.st_size != expected["byte_count"]):
+                raise ReceiptError("published raw identity/size changed")
+            while True:
+                data = raw.read(1024 * 1024)
+                if not data:
+                    break
+                sha.update(data)
+        if sha.hexdigest() != expected["sha256"]:
+            raise ReceiptError("published raw checksum changed")
+        receipt_fd = os.open(receipt_name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=fd)
+        with os.fdopen(receipt_fd, "rb") as source:
+            identity = os.fstat(source.fileno())
+            if (not stat.S_ISREG(identity.st_mode) or
+                    (identity.st_dev, identity.st_ino, identity.st_ctime_ns) != (receipt_identity.st_dev, receipt_identity.st_ino, receipt_identity.st_ctime_ns) or
+                    identity.st_size > 65536):
+                raise ReceiptError("published receipt identity/size changed")
+            try:
+                observed = json.loads(source.read().decode("utf-8"))
+            except (UnicodeError, ValueError) as exc:
+                raise ReceiptError("published receipt JSON invalid") from exc
+        if observed != expected:
+            raise ReceiptError("published receipt differs from original")
+    except (FileNotFoundError, IsADirectoryError, NotADirectoryError, PermissionError) as exc:
+        raise ReceiptError("published files cannot be read securely") from exc
+    if not _same_directory(directory, original_dir):
+        raise ReceiptError("output directory changed during final verification")
+
+
 def _new_temp(fd: int, prefix: str):
     name = prefix + secrets.token_hex(16)
     handle = os.open(name, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
@@ -128,11 +185,12 @@ def download(url: str, name: str, directory: Path, *, opener=None, max_bytes=MAX
     lock_name = "." + name + ".collect.lock"
     lock_created = False
     raw_temp = receipt_temp = None
-    raw_installed = None
+    raw_installed = receipt_installed = lock_identity = None
     try:
         # Cooperating concurrent collectors cannot publish the same pair.
         lock_fd = os.open(lock_name, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
                           0o600, dir_fd=fd)
+        lock_identity = os.fstat(lock_fd)
         os.close(lock_fd)
         lock_created = True
         for target in (raw_name, receipt_name):
@@ -226,24 +284,29 @@ def download(url: str, name: str, directory: Path, *, opener=None, max_bytes=MAX
                 stream.write("\n")
         if not _same_directory(directory, original_dir):
             raise ReceiptError("output directory changed during collection")
-        os.link(raw_temp, raw_name, src_dir_fd=fd, dst_dir_fd=fd, follow_symlinks=False)
-        raw_installed = os.stat(raw_name, dir_fd=fd, follow_symlinks=False)
         try:
+            os.link(raw_temp, raw_name, src_dir_fd=fd, dst_dir_fd=fd, follow_symlinks=False)
+            # The unique temporary inode is still owned by this call even if
+            # another actor swaps the public filename immediately afterward.
+            raw_installed = os.stat(raw_temp, dir_fd=fd, follow_symlinks=False)
             os.link(receipt_temp, receipt_name, src_dir_fd=fd, dst_dir_fd=fd, follow_symlinks=False)
+            receipt_installed = os.stat(receipt_temp, dir_fd=fd, follow_symlinks=False)
+            _verify_published_pair(fd, directory, original_dir, raw_name,
+                                   receipt_name, raw_installed, receipt_installed, receipt)
         except Exception:
-            # Do not remove a competitor's file if the path was replaced.
-            now = os.stat(raw_name, dir_fd=fd, follow_symlinks=False)
-            if (now.st_dev, now.st_ino) == (raw_installed.st_dev, raw_installed.st_ino):
-                os.unlink(raw_name, dir_fd=fd)
+            _unlink_if_owned(fd, receipt_name, receipt_installed)
+            _unlink_if_owned(fd, raw_name, raw_installed)
             raise
         return receipt
     finally:
-        for temporary in (raw_temp, receipt_temp, lock_name if lock_created else None):
+        for temporary in (raw_temp, receipt_temp):
             if temporary:
                 try:
                     os.unlink(temporary, dir_fd=fd)
                 except FileNotFoundError:
                     pass
+        if lock_created:
+            _unlink_if_owned(fd, lock_name, lock_identity)
         os.close(fd)
 
 
