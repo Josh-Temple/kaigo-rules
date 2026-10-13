@@ -86,6 +86,13 @@ class DayserviceHandbookUITest(unittest.TestCase):
     def test_original_candidate_ids_persist(self):
         self.assertIn('entry.chapter_id+"::"+entry.record_id',self.js)
         self.assertIn('progress[rowKey]=select.value',self.js)
+    def test_clear_resets_memo_and_candidate_progress(self):
+        self.assertIn('delete notes[current]',self.js)
+        self.assertIn('delete progress[entry.chapter_id+"::"+entry.record_id]',self.js)
+        self.assertIn('localStorage.setItem(progressKey,JSON.stringify(progress))',self.js)
+    def test_untrusted_supplement_does_not_extend_known_record_ids(self):
+        self.assertIn('const KNOWN_RECORD_IDS=new Set(CANDIDATES.map',self.js)
+        self.assertNotIn('refs.add(rid)',self.js)
     def test_excerpts_collapsible(self):
         self.assertIn('document.createElement("details")',self.js)
         self.assertIn('document.createElement("summary")',self.js)
