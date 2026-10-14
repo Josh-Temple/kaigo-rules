@@ -1607,11 +1607,36 @@ const $=id=>document.getElementById(id);
 const key="kaigo-handbook-dayservice-local-draft-v1";
 const progressKey="kaigo-handbook-dayservice-source-progress-v1";
 const progressOptions=["未着手","原典を開いた","要再確認"];
-let current=CHAPTERS[0][0],notes={},progress={};
-try{const parsed=JSON.parse(localStorage.getItem(key)||"{}");if(parsed&&typeof parsed==="object"&&!Array.isArray(parsed))notes=parsed;}catch(_){}
-try{const stored=JSON.parse(localStorage.getItem(progressKey)||"{}");if(stored&&typeof stored==="object"&&!Array.isArray(stored))progress=stored;}catch(_){}
-function persistProgress(){try{localStorage.setItem(progressKey,JSON.stringify(progress));$("msg").textContent="個人用の閲覧記録を保存しました";}catch(_){$("msg").textContent="自動保存できません。JSONを書き出してください";}}
-function persist(){try{localStorage.setItem(key,JSON.stringify(notes));$("msg").textContent="ブラウザ内に保存しました";}catch(_){$("msg").textContent="自動保存できません。JSONを書き出してください";}}
+// Failed reads must not cause a later write to overwrite the unreadable original.
+const storageBlocked={notes:false,progress:false};
+const storageIssues={notes:"",progress:""};
+const unreadableSaved={notes:null,progress:null};
+function loadSaved(storageKey,kind){
+ let raw=null;
+ try{
+  raw=localStorage.getItem(storageKey);
+  if(raw===null)return {};
+  const obj=JSON.parse(raw);
+  if(!obj||typeof obj!=="object"||Array.isArray(obj))throw Error("invalid local data");
+  return obj;
+ }catch(_){
+  storageBlocked[kind]=true;unreadableSaved[kind]=raw;
+  storageIssues[kind]="保存済みの"+(kind==="notes"?"メモ":"閲覧記録")+"を読み込めません。元データを上書きせず、新しい入力は画面に保持しています。再読込前にJSONを書き出してください";
+  return {};
+ }
+}
+let current=CHAPTERS[0][0],notes=loadSaved(key,"notes"),progress=loadSaved(progressKey,"progress");
+function status(message=""){$("msg").textContent=[message,...Object.values(storageIssues).filter(Boolean)].filter(Boolean).join(" / ");}
+function persistProgress(){
+ if(storageBlocked.progress){status();return false;}
+ try{localStorage.setItem(progressKey,JSON.stringify(progress));storageIssues.progress="";status("個人用の閲覧記録を保存しました");return true;}
+ catch(_){storageIssues.progress="閲覧記録を自動保存できません。画面上の内容を保持しています。再読込前にJSONを書き出してください";status();return false;}
+}
+function persist(){
+ if(storageBlocked.notes){status();return false;}
+ try{localStorage.setItem(key,JSON.stringify(notes));storageIssues.notes="";status("ブラウザ内に保存しました");return true;}
+ catch(_){storageIssues.notes="メモを自動保存できません。画面上の全文を保持しています。再読込前にJSONを書き出してください";status();return false;}
+}
 function renderMenu(){
  const term=$("filter").value.trim();
  $("menu").replaceChildren(...CHAPTERS.filter(r=>r[1].includes(term)).map((r)=>{
@@ -1648,7 +1673,7 @@ function show(id){
   for(const [label,url] of [["DBで確認",entry.db_href],["原典資料を開く",entry.official_url]]){const a=document.createElement("a");a.href=url;a.textContent=label+" ↗";a.target="_blank";a.rel="noopener noreferrer";box.append(a);}
   return box;
  }):[(()=>{const p=document.createElement("p");p.className="empty";p.textContent="表示条件に合う原典候補がありません。絞り込みを解除するか、下の共通検索から確認してください。";return p;})()]));
- $("memo").value=typeof notes[id]==="string"?notes[id]:"";$("msg").textContent="";renderMenu();renderSupplement(id);
+ $("memo").value=typeof notes[id]==="string"?notes[id]:"";status();renderMenu();renderSupplement(id);
 }
 $("filter").addEventListener("input",renderMenu);
 for(const id of ["candidate-filter","kind-filter","progress-filter"])$(id).addEventListener(id==="candidate-filter"?"input":"change",()=>show(current));
@@ -1657,18 +1682,16 @@ $("clear").addEventListener("click",()=>{
  delete notes[current];
  for(const entry of CANDIDATES.filter(x=>x.chapter_id===current))delete progress[entry.chapter_id+"::"+entry.record_id];
  $("memo").value="";show(current);
- try{
-  localStorage.setItem(key,JSON.stringify(notes));
-  localStorage.setItem(progressKey,JSON.stringify(progress));
-  $("msg").textContent="この章のメモと閲覧記録を消去しました";
- }catch(_){$("msg").textContent="自動保存できません。JSONを書き出してください";}
+ const notesSaved=persist(),progressSaved=persistProgress();
+ status(notesSaved&&progressSaved?"この章のメモと閲覧記録を消去・保存しました":"画面上では消去しましたが保存が完了していません。再読込前にJSONを書き出してください");
 });
 $("export").addEventListener("click",()=>{
  const data={format_version:2,service_id:"dayservice",review_completed:false,source:"local_handbook_trial",notes:Object.fromEntries(CHAPTERS.map(r=>[r[0],typeof notes[r[0]]==="string"?notes[r[0]]:""])),candidate_progress:Object.fromEntries(CANDIDATES.map(r=>{const k=r.chapter_id+"::"+r.record_id;return [k,progressOptions.includes(progress[k])?progress[k]:"未着手"];}))};
+ if(unreadableSaved.notes!==null||unreadableSaved.progress!==null)data.unparsed_saved_data={notes:unreadableSaved.notes,progress:unreadableSaved.progress};
  try{
  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="kaigo-handbook-dayservice-notes.json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$("msg").textContent="メモを書き出しました";
- }catch(_){$("msg").textContent="書き出しに失敗しました。メモは保持されています。再試行してください";}
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="kaigo-handbook-dayservice-notes.json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status("JSONダウンロード処理を開始しました。保存先のファイルを確認してください");
+ }catch(_){status("書き出しに失敗しました。画面上のメモは保持されています。再試行してください");}
 });
 
 // Independently fetched repository snapshots, bound by the C regression suite.
@@ -1767,7 +1790,7 @@ function renderSupplement(sectionId){
  drafts.replaceChildren(...(draftNodes.length?draftNodes:[plain("p","この章の説明文は未レビューです。統合済み草稿はありません。","empty")]));
 }
 // Browser storage is untrusted and may be denied by the user agent.
-notes=Object.fromEntries(CHAPTERS.map(r=>[r[0],typeof notes[r[0]]==="string"?notes[r[0]].slice(0,8000):""]));
+notes=Object.fromEntries(CHAPTERS.map(r=>[r[0],typeof notes[r[0]]==="string"?notes[r[0]]:""]));
 progress=Object.fromEntries(CANDIDATES.map(r=>{const k=r.chapter_id+"::"+r.record_id;return [k,progressOptions.includes(progress[k])?progress[k]:"未着手"];}));
 show(current);
 </script></body></html>
