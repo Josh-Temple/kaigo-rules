@@ -62,3 +62,11 @@ GitHub `main@098a349c26f35cd9e9ad8f0b7ff54f2068f6a702` を入力snapshotとし�
 - GitHubの公開Repositoryにあるファイル自体は誰でも閲覧可能であり、サイト未接続は秘密性・アクセス認証の保証ではない。
 
 このE統合は**PR #495のDraftだけ**。Dは統合後HEAD・JS取込経路を別途再受入する。Android実機と実際のPreview URLでの確認、法令の現行性・法的適用・人手確認、本番公開承認は未実施。mainへのマージ・production公開・公開allowlist変更は保留を維持。
+
+## 2026-10-14 D-POST-E-01 — 個人メモの保全（修正候補、未統合）
+
+- メモの文字数による無言の切り詰めを廃止しました。入力・localStorage保存・章切替・再読込・JSON書出しに同じ全文を用います。JavaScriptの `String.length` はUTF-16コード単位（絵文字は通常2）ですが、本版には8,000文字の上限を設けません。
+- localStorageの容量制限・無効化時は画面上の入力を保持して警告を表示します。**保存失敗後の再読込では復元を保証できません**。再読込前にJSONファイルを書き出して内容を確認してください。ダウンロード開始の表示はファイル保存完了の証明ではありません。
+- localStorageに壊れたJSONまたは不正な値が残っている場合は、自動上書きを停止して警告します。読み出せた破損原文は書出しファイルの `unparsed_saved_data` に含めます。書出したJSONは人手レビュー・法令現行性認定にはなりません。
+- 非公開の個人検討用です。実在の利用者・事業所の情報、機微情報を入力しないでください。大量の入力はブラウザのメモリとlocalStorage容量に左右されます。
+- 重点回帰：`python -m unittest discover -s tests -p 'test_dayservice_handbook*.py' -v`。今回のDOM模擬テストは実Chromium・Android実機・file://の操作確認を代替しません。
