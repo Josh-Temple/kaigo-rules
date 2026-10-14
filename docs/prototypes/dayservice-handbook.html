@@ -12,13 +12,1591 @@
 header,footer{padding:27px max(20px,calc((100vw - 1120px)/2));border-bottom:1px solid var(--line)}header small{font-weight:700;color:var(--accent);letter-spacing:.12em}h1{font-size:36px;line-height:1.25;margin:10px 0}header p{max-width:770px;color:var(--muted)}.alert{background:#f3ebdb;border-left:3px solid #aa8347;padding:13px 17px;font-size:14px;color:#513f28}.page{max-width:1120px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr);gap:45px;padding:24px 20px 70px}
 nav{align-self:start;position:sticky;top:16px}nav h2{font-size:15px}nav button{font:inherit;font-size:13px;width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);text-align:left;padding:8px 6px;cursor:pointer}nav button[aria-current=true]{background:#edf2ef;font-weight:700}nav button:hover{background:#edf2ef}
 input{width:100%;padding:10px;background:white;border:1px solid var(--line);font:inherit}main h2{font-size:25px;margin-bottom:6px}.meta{font-size:13px;color:var(--muted)}.status{color:#6b5a3d;background:#f7f0e3;display:inline-block;padding:3px 9px;font-size:12px;margin:9px 0}hr{border:0;border-top:1px solid var(--line);margin:30px 0}ul{padding-left:22px}li{margin:7px 0}textarea{width:100%;min-height:125px;resize:vertical;padding:12px;border:1px solid var(--line);font:inherit;background:white}button.action{font:inherit;padding:9px 15px;border:0;color:white;background:var(--ink);cursor:pointer}button.action.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}.candidate{border-top:1px solid var(--line);padding:15px 0}.candidate h4{font-size:15px;margin:0 0 3px}.candidate .excerpt{white-space:pre-line;background:#f2f5f1;border-left:2px solid var(--accent);padding:12px;font-size:14px;margin:10px 0}.candidate .metadata{font-size:12px;color:var(--muted);overflow-wrap:anywhere}.candidate select{font:inherit;margin:6px 0 12px;width:auto;max-width:100%;padding:4px 8px;border:1px solid var(--line);background:white;color:var(--ink)}.candidate label{display:block}.candidate a{margin-right:14px;font-size:13px}.empty{padding:16px 0;color:var(--muted);font-size:14px}.links{list-style:none;padding:0;border-top:1px solid var(--line)}.links li{border-bottom:1px solid var(--line);padding:8px 0}#msg{font-size:12px;color:var(--muted)}footer{border-top:1px solid var(--line);border-bottom:0;font-size:12px;color:var(--muted)}
+.skip-link{position:absolute;left:12px;top:-80px;background:white;padding:7px;z-index:2}.skip-link:focus{top:8px}
+:focus-visible{outline:3px solid #a56e25;outline-offset:3px}button,select{min-height:44px}
+.candidate-controls{display:grid;grid-template-columns:minmax(0,2fr) 1fr 1fr;gap:12px;margin:12px 0}
+.candidate-controls label{display:block;font-size:13px}.candidate-controls select{width:100%;font:inherit;background:white;color:var(--ink);border:1px solid var(--line);padding:8px}
+.candidate details{border-left:2px solid var(--accent);padding-left:9px;margin:8px 0}
+.candidate summary{cursor:pointer;padding:8px 0;text-decoration:underline}
+#source-preview .candidate,#draft-preview .candidate{padding:12px 0}.candidate{overflow-wrap:anywhere}
+@media(max-width:760px){.candidate-controls{grid-template-columns:1fr 1fr}.candidate-controls>div:first-child{grid-column:1/-1}.candidate a{display:inline-block;padding:8px 0}nav button{min-height:44px}}
+@media(max-width:430px){.page{padding:16px 14px 56px}header,footer{padding:22px 14px}#menu{grid-template-columns:1fr 1fr;max-height:240px}h1{font-size:26px}main h2{font-size:22px}}
+@media(max-width:360px){#menu{grid-template-columns:1fr}.candidate-controls{grid-template-columns:1fr}.candidate-controls>div:first-child{grid-column:auto}}
 @media(max-width:760px){.page{display:block}nav{position:static}#menu{display:grid;grid-template-columns:1fr 1fr;max-height:215px;overflow:auto;gap:0 8px}main{margin-top:25px}h1{font-size:28px}}@media(max-width:380px){#menu{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#chapter-start">本文へ移動</a>
 <header><small>KAIGO RULES / LOCAL TRIAL</small><h1>通所介護の実務手引</h1><p>サービス固有の15章をたどり、公開済みデータベースから原典を探すための非公開サイト試作です。制度解説の確定本文はまだありません。</p><div class="alert"><strong>注意：未レビューの試用版です。</strong>　章の案内文は確認観点であり、法的な適用・算定可否・公式解釈を断定しません。実務上の判断には各公式原典・指定権者の情報を確認してください。</div></header>
-<div class="page"><nav aria-label="章選択"><h2>目次（15章）</h2><label for="filter" class="meta">章を探す</label><input id="filter" type="search" placeholder="人員・加算など"><div id="menu"></div></nav><main><p class="meta" id="chapter-no"></p><h2 id="title"></h2><span class="status">手引本文：未確認 / 人手レビュー：未実施</span><p id="summary"></p><h3>原典に結び付けた確認候補</h3><p class="meta">既存Repositoryの項目IDと資料に基づく、確認作業用の一覧です。手引本文の確定・法的適用の認定・新しい現行性確認を意味しません。原典側の状態は収載時点の記録です。</p><p id="candidate-count" class="meta"></p><div id="candidates" aria-live="polite"></div><h3>公開DB・原典を探す入口</h3><p class="meta">リンク先は、この章に適用できる根拠として個別検証済みとは限りません。</p><ul class="links" id="links"></ul><hr><h3>使いながら残すメモ</h3><p class="meta">ここでの記録は個人的な検討メモです。「法的確認済み」には変換されません。利用者情報・秘密情報は入力しないでください。</p><label for="memo" class="meta">不足している説明・確認した原典・改善案</label><textarea id="memo" placeholder="確認したい条文、疑問点、説明の改善案"></textarea><p><button class="action" id="export" type="button">メモを書き出す</button> <button class="action alt" id="clear" type="button">この章を消去</button></p><p id="msg" role="status"></p><p class="meta">メモはブラウザ内に保存を試みますが、環境によって保持されない場合があります。必要な記録はJSONで書き出してください。外部送信はしません。</p></main></div>
+<div class="page"><nav aria-label="章選択"><h2>目次（15章）</h2><label for="filter" class="meta">章を探す</label><input id="filter" type="search" placeholder="人員・加算など"><div id="menu"></div></nav><main id="chapter-start"><p class="meta" id="chapter-no"></p><h2 id="title" tabindex="-1"></h2><span class="status">手引本文：未確認 / 人手レビュー：未実施</span><p id="summary"></p><section aria-labelledby="draft-preview-heading" id="draft-preview-section"><h3 id="draft-preview-heading">章別の未レビュー草稿</h3><p class="meta">固定Repositoryの未レビュー草稿と完全一致し、統合工程で安全に埋め込まれたJSONだけ表示します。法令の確認済み解説ではありません。</p><div id="draft-preview" aria-live="polite"></div></section><h3>原典に結び付けた確認候補</h3><p class="meta">既存Repositoryの項目IDと資料に基づく、確認作業用の一覧です。手引本文の確定・法的適用の認定・新しい現行性確認を意味しません。原典側の状態は収載時点の記録です。</p><div class="candidate-controls"><div><label for="candidate-filter">候補を絞り込む</label><input id="candidate-filter" type="search" placeholder="資料名・項目IDなど"></div><div><label for="kind-filter">資料種別</label><select id="kind-filter"><option value="all">すべて</option><option value="rule">基準省令</option><option value="notice">解釈通知</option><option value="fee">報酬告示</option></select></div><div><label for="progress-filter">閲覧記録</label><select id="progress-filter"><option value="all">すべて</option><option value="未着手">未着手</option><option value="原典を開いた">原典を開いた</option><option value="要再確認">要再確認</option></select></div></div><p id="candidate-count" class="meta"></p><div id="candidates" aria-live="polite"></div><h3>追加の原典候補（統合データ）</h3><p class="meta">ここに示す資料は章との暫定的な関連候補です。掲載は真正性・現行性・適用の証明ではありません。</p><div id="source-preview" aria-live="polite"></div><h3>公開DB・原典を探す入口</h3><p class="meta">リンク先は、この章に適用できる根拠として個別検証済みとは限りません。</p><ul class="links" id="links"></ul><hr><h3>使いながら残すメモ</h3><p class="meta">ここでの記録は個人的な検討メモです。「法的確認済み」には変換されません。利用者情報・秘密情報は入力しないでください。</p><label for="memo" class="meta">不足している説明・確認した原典・改善案</label><textarea id="memo" placeholder="確認したい条文、疑問点、説明の改善案"></textarea><p><button class="action" id="export" type="button">メモを書き出す</button> <button class="action alt" id="clear" type="button">この章を消去</button></p><p id="msg" role="status"></p><p class="meta">メモはブラウザ内に保存を試みますが、環境によって保持されない場合があります。必要な記録はJSONで書き出してください。外部送信はしません。書き出したJSONにはメモ本文が含まれます。共有前に内容を点検してください。</p></main></div>
 <footer>本ファイルは Next.js の app / public に配置していません。本番サイトへのルート・検索API・sitemap・公開判定は未変更です。外部参照は利用者がリンクを開いた場合のみ発生します。</footer>
+<!-- E must verify PINNED_BLOBS against GitHub bytes before injection. Escape < as \u003c. Empty slots remain unintegrated; no runtime fetch. -->
+<script id="handbook-sources-json" type="application/json">{
+  "schema_version": "2.0-draft",
+  "base_pr_head": "c6e61a44a8287f020d56e1c22d63ad2b74a08b89",
+  "service_id": "dayservice",
+  "artifact_status": "CHAPTER_CANDIDATE_ONLY",
+  "human_review_status": "HUMAN_REVIEW_NOT_DONE",
+  "legal_currentness_acceptance": "NOT_ESTABLISHED",
+  "publication_status": "PUBLICATION_BLOCKED",
+  "source_provenance": [
+    {
+      "repository_path": "data/sources.json",
+      "repository_blob_sha": "0f23469ce8a5e8a4c892d820be9d40565b8712f2"
+    },
+    {
+      "repository_path": "data/care-insurance-act-scope.json",
+      "repository_blob_sha": "8af02781b721c811b377ff0525f74ba64646181d"
+    },
+    {
+      "repository_path": "data/qa-items.json",
+      "repository_blob_sha": "1b07808d1afe66ed4799fce4053c5cd8412b37a0"
+    },
+    {
+      "repository_path": "data/notice-current-skeleton.json",
+      "repository_blob_sha": "77f656242eb2d5c9a5bd1d6e5d0d581813e51630"
+    }
+  ],
+  "sections": [
+    {
+      "section_id": "designation",
+      "title": "指定・開設",
+      "candidates": [
+        {
+          "section_id": "designation",
+          "candidate_id": "handbook.a.designation.law70",
+          "record_id": null,
+          "source_id": "egov-care-insurance-act",
+          "source_version": null,
+          "title": "介護保険法 第70条（収載範囲の確認）",
+          "source_locator": "focus_paragraphs.70",
+          "locator_kind": "REPOSITORY_SCOPE_ONLY",
+          "source_url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+          "repository_path": "data/care-insurance-act-scope.json",
+          "repository_blob_sha": "8af02781b721c811b377ff0525f74ba64646181d",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "registry",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "通所介護の指定・申請の検討対象として介護保険法の収載範囲を示す。",
+          "notes": "範囲JSON内のfocus_paragraphs.70を指す。現行法条文の原文取得済みという意味ではない。",
+          "kind": "law_scope"
+        },
+        {
+          "section_id": "designation",
+          "candidate_id": "handbook.a.designation.law70-2",
+          "record_id": null,
+          "source_id": "egov-care-insurance-act",
+          "source_version": null,
+          "title": "介護保険法 第70条の2（収載範囲の確認）",
+          "source_locator": "focus_paragraphs.70-2",
+          "locator_kind": "REPOSITORY_SCOPE_ONLY",
+          "source_url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+          "repository_path": "data/care-insurance-act-scope.json",
+          "repository_blob_sha": "8af02781b721c811b377ff0525f74ba64646181d",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "registry",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "指定の更新に関する検討対象として収載範囲を示す。",
+          "notes": "範囲JSON内のfocus_paragraphs.70-2を指す。現行法条文の原文取得済みという意味ではない。",
+          "kind": "law_scope"
+        },
+        {
+          "section_id": "designation",
+          "candidate_id": "handbook.a.designation.application",
+          "record_id": null,
+          "source_id": "mhlw-application-forms",
+          "source_version": null,
+          "title": "介護事業所の指定申請等のウェブ入力・電子申請導入",
+          "source_locator": "id=mhlw-application-forms",
+          "locator_kind": "REPOSITORY_SOURCE_REGISTRY",
+          "source_url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
+          "repository_path": "data/sources.json",
+          "repository_blob_sha": "0f23469ce8a5e8a4c892d820be9d40565b8712f2",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "registry",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "厚生労働省の電子申請案内への入口。",
+          "notes": "指定権者ごとの様式・添付書類・提出日を全国共通の義務として記載しない。",
+          "kind": "source_registry"
+        }
+      ],
+      "gaps": [
+        "指定申請・指定更新の条文はscopeのみで、個別条項の原文・施行版は未取得。",
+        "自治体ごとの指定権者、様式、提出期限・運用差分は未確認。"
+      ]
+    },
+    {
+      "section_id": "notifications",
+      "title": "届出・手続",
+      "candidates": [
+        {
+          "section_id": "notifications",
+          "candidate_id": "handbook.a.notifications.law75",
+          "record_id": null,
+          "source_id": "egov-care-insurance-act",
+          "source_version": null,
+          "title": "介護保険法 第75条（収載範囲の確認）",
+          "source_locator": "focus_paragraphs.75",
+          "locator_kind": "REPOSITORY_SCOPE_ONLY",
+          "source_url": "https://laws.e-gov.go.jp/law/409AC0000000123",
+          "repository_path": "data/care-insurance-act-scope.json",
+          "repository_blob_sha": "8af02781b721c811b377ff0525f74ba64646181d",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "registry",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "届出に関連する介護保険法の収載範囲を指す。",
+          "notes": "範囲JSON内のfocus_paragraphs.75を指す。現行法条文の原文取得済みという意味ではない。",
+          "kind": "law_scope"
+        },
+        {
+          "section_id": "notifications",
+          "candidate_id": "handbook.a.notifications.application",
+          "record_id": null,
+          "source_id": "mhlw-application-forms",
+          "source_version": null,
+          "title": "介護事業所の指定申請等のウェブ入力・電子申請導入",
+          "source_locator": "id=mhlw-application-forms",
+          "locator_kind": "REPOSITORY_SOURCE_REGISTRY",
+          "source_url": "https://www.mhlw.go.jp/stf/kaigo-shinsei.html",
+          "repository_path": "data/sources.json",
+          "repository_blob_sha": "0f23469ce8a5e8a4c892d820be9d40565b8712f2",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "registry",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "指定申請・届出の電子申請に関する国の案内ページ。",
+          "notes": "自治体固有の申請期限・届出種別・手順の代わりにはならない。",
+          "kind": "source_registry"
+        },
+        {
+          "section_id": "notifications",
+          "candidate_id": "handbook.a.notifications.electronic-manual",
+          "record_id": null,
+          "source_id": "mhlw-electronic-application-operator-manual-v2-50",
+          "source_version": null,
+          "title": "電子申請・届出システム 操作マニュアル（介護事業所向け）詳細版 ver2.50",
+          "source_locator": "id=mhlw-electronic-application-operator-manual-v2-50",
+          "locator_kind": "REPOSITORY_SOURCE_REGISTRY",
+          "source_url": "https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true",
+          "repository_path": "data/sources.json",
+          "repository_blob_sha": "0f23469ce8a5e8a4c892d820be9d40565b8712f2",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "registry",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "国の電子申請システム操作案内の収載確認。",
+          "notes": "ソフトウェア操作マニュアルであり、法律上の届出期限や適用基準の証明ではない。",
+          "kind": "source_registry"
+        }
+      ],
+      "gaps": [
+        "自治体指定権者別の届出期限・様式・追加添付書類の確認が必要。",
+        "電子申請の操作手順と法定義務・期限は別に検証する。"
+      ]
+    },
+    {
+      "section_id": "national_qa",
+      "title": "国Q&A",
+      "candidates": [
+        {
+          "section_id": "national_qa",
+          "candidate_id": "handbook.a.national_qa.2015-question50",
+          "record_id": "qa.dayservice.nurse.external.2015.50",
+          "source_id": "mhlw-qa",
+          "source_version": "2015-04-01",
+          "title": "平成27年度介護報酬改定に関するQ&A（平成27年4月1日） 問50",
+          "source_locator": "source_number=問50;issued_at=2015-04-01",
+          "locator_kind": "QA_ITEM_METADATA",
+          "source_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html",
+          "repository_path": "data/qa-items.json",
+          "repository_blob_sha": "1b07808d1afe66ed4799fce4053c5cd8412b37a0",
+          "candidate_status": "HISTORICAL",
+          "existing_source_status": "registry",
+          "existing_record_status": "STRUCTURED",
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 2015年問50の後続改正・問59との関係・現行適用を未確認。HISTORICALは発出年代の識別であり失効認定ではない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "看護職員の外部連携に関する旧Q&A。問59とは別資料として扱う。",
+          "notes": "収載済み問50の構造化要約への参照であり、最新Q&A原文や問59による後続修正・削除は確認していない。",
+          "kind": "qa_item"
+        }
+      ],
+      "gaps": [
+        "問59について取得可能な個別出典ID、発出日、問50との後続関係をこの固定ソースから確認できず、候補への追加を保留。",
+        "旧問50を現行の適用根拠として使用しない。Q&A本文・最新版・対象サービスを再照合する。"
+      ]
+    },
+    {
+      "section_id": "sources_and_history",
+      "title": "原典・改正履歴",
+      "candidates": [
+        {
+          "section_id": "sources_and_history",
+          "candidate_id": "handbook.a.sources_and_history.r6-interpretation",
+          "record_id": "notice.dayservice.root",
+          "source_id": "mhlw-2024-interpretation-redline",
+          "source_version": null,
+          "title": "解釈通知の通所介護見出し（通所介護）",
+          "source_locator": "PDF p.20 新欄「六 通所介護」",
+          "locator_kind": "SOURCE_EVIDENCE_LOCATOR",
+          "source_url": "https://www.mhlw.go.jp/content/12300000/001227935.pdf",
+          "repository_path": "data/notice-current-skeleton.json",
+          "repository_blob_sha": "77f656242eb2d5c9a5bd1d6e5d0d581813e51630",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "partial_source",
+          "existing_record_status": "KNOWN_AFTER_TEXT",
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 新旧対照表の見出し情報のみ。後続改正と現行統合条文は未確認。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "解釈通知の改正対照表の章見出しを参照する。",
+          "notes": "出典位置は2024年新旧対照表の当該箇所であり、統合された最新本文そのものではない。",
+          "kind": "notice_item"
+        },
+        {
+          "section_id": "sources_and_history",
+          "candidate_id": "handbook.a.sources_and_history.r8-amendment87",
+          "record_id": null,
+          "source_id": "mhlw-r8-fee-amendment87",
+          "source_version": null,
+          "title": "指定居宅サービスに要する費用の額の算定に関する基準等の一部を改正する告示（令和8年厚生労働省告示第87号）",
+          "source_locator": "id=mhlw-r8-fee-amendment87",
+          "locator_kind": "REPOSITORY_SOURCE_REGISTRY",
+          "source_url": "https://www.mhlw.go.jp/content/12404000/001675895.pdf",
+          "repository_path": "data/sources.json",
+          "repository_blob_sha": "0f23469ce8a5e8a4c892d820be9d40565b8712f2",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "partial_source",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "令和8年度報酬告示改正の出典索引。",
+          "notes": "改正前後対照表のみで、略部分の現行全文や算定適用日を推定しない。",
+          "kind": "source_registry"
+        },
+        {
+          "section_id": "sources_and_history",
+          "candidate_id": "handbook.a.sources_and_history.r8-guidance-may",
+          "record_id": null,
+          "source_id": "mhlw-r8-fee-guidance-may-amendment",
+          "source_version": null,
+          "title": "老企第36号等の一部改正について（令和8年5月8日・介護保険最新情報Vol.1502）",
+          "source_locator": "id=mhlw-r8-fee-guidance-may-amendment",
+          "locator_kind": "REPOSITORY_SOURCE_REGISTRY",
+          "source_url": "https://www.mhlw.go.jp/content/001698614.pdf",
+          "repository_path": "data/sources.json",
+          "repository_blob_sha": "0f23469ce8a5e8a4c892d820be9d40565b8712f2",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "current_amendment",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "令和8年5月の留意事項通知改正の索引。",
+          "notes": "発出名・URLはリポジトリのsource registryに収載。改正対象箇所・適用日は別途確定が必要。",
+          "kind": "source_registry"
+        },
+        {
+          "section_id": "sources_and_history",
+          "candidate_id": "handbook.a.sources_and_history.ordinance37",
+          "record_id": null,
+          "source_id": "mhlw-home-care-standards-current",
+          "source_version": null,
+          "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）",
+          "source_locator": "id=mhlw-home-care-standards-current",
+          "locator_kind": "REPOSITORY_SOURCE_REGISTRY",
+          "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2",
+          "repository_path": "data/sources.json",
+          "repository_blob_sha": "0f23469ce8a5e8a4c892d820be9d40565b8712f2",
+          "candidate_status": "CANDIDATE",
+          "existing_source_status": "verified_source",
+          "existing_record_status": null,
+          "currentness_limit": "CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。",
+          "applicability_limit": "通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。",
+          "reason": "基準省令の厚生労働省掲載ページへの参照。",
+          "notes": "source registryのverified_sourceは既存ラベルであり、この手引の現行性や人手レビューを立証しない。",
+          "kind": "source_registry"
+        }
+      ],
+      "gaps": [
+        "ソースURL収載、元の検証日時、法令の施行版・経過措置・後続改正を別々に確認する。",
+        "2024年の新旧対照表や2026年の一部改正資料を単独で統合現行本文とみなさない。"
+      ]
+    }
+  ]
+}
+</script>
+<script id="handbook-drafts-json" type="application/json">{
+  "schema_version": "1.0.0-draft",
+  "base_pr_head": "c6e61a44a8287f020d56e1c22d63ad2b74a08b89",
+  "service_id": "dayservice",
+  "source_snapshot": "main@098a349c26f35cd9e9ad8f0b7ff54f2068f6a702",
+  "source_contract": "CANDIDATES in docs/prototypes/dayservice-handbook.html at base_pr_head",
+  "publication_state": "PUBLICATION_BLOCKED",
+  "human_review_state": "HUMAN_REVIEW_NOT_DONE",
+  "legal_explanations_accepted": 0,
+  "scope_note": "既存27件の章×候補IDに基づく未レビューの作業用草稿。原典の収載状況は、手引の法的受入・現行適用・公開判定ではない。",
+  "sections": [
+    {
+      "section_id": "applicability",
+      "title": "適用対象・基本事項",
+      "intended_user_questions": [
+        "通所介護の対象サービスと準用条項は何か。",
+        "他の通所系サービスと根拠をどう区別するか。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.applicability.1",
+          "section_id": "applicability",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「第7章 通所介護 / 第4節 運営に関する基準 / 第105条」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "ordinance37.article105"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.applicability.2",
+          "section_id": "applicability",
+          "kind": "CHECKPOINT",
+          "text": "指定されたサービス種別・提供形態・事業所番号の対応を照合する。",
+          "candidate_record_ids": [
+            "ordinance37.article105"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.applicability.3",
+          "section_id": "applicability",
+          "kind": "CHECKPOINT",
+          "text": "第105条の準用先条項を一つずつ開き、対象者・行為・例外を確認する。",
+          "candidate_record_ids": [
+            "ordinance37.article105"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.applicability.4",
+          "section_id": "applicability",
+          "kind": "CHECKPOINT",
+          "text": "元の条項に別サービス名があっても、そのまま適用可否を判断しない。",
+          "candidate_record_ids": [
+            "ordinance37.article105"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.applicability.gap.1",
+          "issue": "準用先の現行全文と各条の適用条件",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "designation",
+      "title": "指定・開設",
+      "intended_user_questions": [
+        "指定権者と指定種別を何で確認するか。",
+        "申請・更新の提出先や期限はどの案内にあるか。"
+      ],
+      "draft_status": "NEEDS_SOURCE",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.designation.1",
+          "section_id": "designation",
+          "kind": "CHECKPOINT",
+          "text": "国の指定基準と指定権者が定める事項を分けて資料化する。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.designation.2",
+          "section_id": "designation",
+          "kind": "CHECKPOINT",
+          "text": "指定権者の最新案内で新規・更新・変更手続の書類と期限を照合する。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.designation.3",
+          "section_id": "designation",
+          "kind": "CHECKPOINT",
+          "text": "自治体独自の手続を全国共通の法令要件として転記しない。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.designation.gap.1",
+          "issue": "指定・開設の根拠IDと指定権者の最新案内",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "staffing",
+      "title": "人員基準",
+      "intended_user_questions": [
+        "提供日・時間帯ごとの職種別配置は足りるか。",
+        "兼務・資格・利用者数の条件をどこで確認するか。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.staffing.1",
+          "section_id": "staffing",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「第93条 / 第1項 / 第1号」「第93条 / 第1項 / 第2号」「第7章 通所介護 / 第2節 人員に関する基準 / 第94条」「従業者の員数」「生活相談員」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "ordinance37.article93.1.1",
+            "ordinance37.article93.1.2",
+            "ordinance37.article94",
+            "notice.dayservice.personnel.staffing",
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.staffing.2",
+          "section_id": "staffing",
+          "kind": "CHECKPOINT",
+          "text": "生活相談員等の職種別に勤務時間を提供日・提供単位ごとに集計して第93条と照合する。",
+          "candidate_record_ids": [
+            "ordinance37.article93.1.1",
+            "ordinance37.article93.1.2",
+            "ordinance37.article94",
+            "notice.dayservice.personnel.staffing",
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.staffing.3",
+          "section_id": "staffing",
+          "kind": "CHECKPOINT",
+          "text": "配置数だけでなく資格、兼務、サービス提供時間帯の要件を第94条等で確認する。",
+          "candidate_record_ids": [
+            "ordinance37.article93.1.1",
+            "ordinance37.article93.1.2",
+            "ordinance37.article94",
+            "notice.dayservice.personnel.staffing",
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.staffing.4",
+          "section_id": "staffing",
+          "kind": "CHECKPOINT",
+          "text": "通知の「略」の部分は現行原文を探し、職員配置の算定方法を見出しだけで決めない。",
+          "candidate_record_ids": [
+            "ordinance37.article93.1.1",
+            "ordinance37.article93.1.2",
+            "ordinance37.article94",
+            "notice.dayservice.personnel.staffing",
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.staffing.5",
+          "section_id": "staffing",
+          "kind": "CHECKPOINT",
+          "text": "人数・提供単位・勤務実績の根拠を保存し、例外に当たるか個別確認する。",
+          "candidate_record_ids": [
+            "ordinance37.article93.1.1",
+            "ordinance37.article93.1.2",
+            "ordinance37.article94",
+            "notice.dayservice.personnel.staffing",
+            "notice.dayservice.personnel.life-counselor"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.staffing.gap.1",
+          "issue": "通知全文と配置・兼務の最新適用条件",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "equipment",
+      "title": "設備基準",
+      "intended_user_questions": [
+        "食堂・機能訓練室の設備基準をどう検証するか。",
+        "定員・共用・面積をどう確認するか。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.equipment.1",
+          "section_id": "equipment",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「第3節 設備に関する基準 / 第95条 / 第1項・第2項」「食堂及び機能訓練室」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "ordinance37.article95.1-2",
+            "notice.dayservice.equipment.dining-training-room"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.equipment.2",
+          "section_id": "equipment",
+          "kind": "CHECKPOINT",
+          "text": "室名・面積・用途・利用定員を図面と現況の双方で確かめる。",
+          "candidate_record_ids": [
+            "ordinance37.article95.1-2",
+            "notice.dayservice.equipment.dining-training-room"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.equipment.3",
+          "section_id": "equipment",
+          "kind": "CHECKPOINT",
+          "text": "食堂・機能訓練室の共用条件を第95条と現行通知の原文で確認する。",
+          "candidate_record_ids": [
+            "ordinance37.article95.1-2",
+            "notice.dayservice.equipment.dining-training-room"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.equipment.4",
+          "section_id": "equipment",
+          "kind": "CHECKPOINT",
+          "text": "設備改修・転用の際は指定権者への手続と基準適合を分けて確認する。",
+          "candidate_record_ids": [
+            "ordinance37.article95.1-2",
+            "notice.dayservice.equipment.dining-training-room"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.equipment.5",
+          "section_id": "equipment",
+          "kind": "CHECKPOINT",
+          "text": "面積算入方法や例外を通知見出しだけで決めない。",
+          "candidate_record_ids": [
+            "ordinance37.article95.1-2",
+            "notice.dayservice.equipment.dining-training-room"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.equipment.gap.1",
+          "issue": "共用条件・面積基準の現行通知原文",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "operations",
+      "title": "運営基準",
+      "intended_user_questions": [
+        "通所介護計画や説明・同意を誰がいつ行うか。",
+        "運営の固有条項と準用条項の関係は何か。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.operations.1",
+          "section_id": "operations",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「第4節 運営に関する基準 / 第99条 / 第3項」「第4節 運営に関する基準 / 第99条 / 第4項」「指定通所介護の基本取扱方針及び具体的取扱方針」「通所介護計画の作成」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "ordinance37.article99.3",
+            "ordinance37.article99.4",
+            "notice.dayservice.operation.policy",
+            "notice.dayservice.operation.plan"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.operations.2",
+          "section_id": "operations",
+          "kind": "CHECKPOINT",
+          "text": "説明・同意・計画作成・交付・見直しの時点と担当者を個別に洗い出す。",
+          "candidate_record_ids": [
+            "ordinance37.article99.3",
+            "ordinance37.article99.4",
+            "notice.dayservice.operation.policy",
+            "notice.dayservice.operation.plan"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.operations.3",
+          "section_id": "operations",
+          "kind": "CHECKPOINT",
+          "text": "第99条と基本・具体的取扱方針の資料で対象となる行為を照合する。",
+          "candidate_record_ids": [
+            "ordinance37.article99.3",
+            "ordinance37.article99.4",
+            "notice.dayservice.operation.policy",
+            "notice.dayservice.operation.plan"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.operations.4",
+          "section_id": "operations",
+          "kind": "CHECKPOINT",
+          "text": "通所介護計画の通知にある「略」の箇所は別の現行原文で確認する。",
+          "candidate_record_ids": [
+            "ordinance37.article99.3",
+            "ordinance37.article99.4",
+            "notice.dayservice.operation.policy",
+            "notice.dayservice.operation.plan"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.operations.5",
+          "section_id": "operations",
+          "kind": "CHECKPOINT",
+          "text": "運営上の共通要件は準用元を特定し、他サービスの規定を直輸入しない。",
+          "candidate_record_ids": [
+            "ordinance37.article99.3",
+            "ordinance37.article99.4",
+            "notice.dayservice.operation.policy",
+            "notice.dayservice.operation.plan"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.operations.gap.1",
+          "issue": "計画・説明・同意の現行通知全文と準用元",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "records",
+      "title": "記録・情報管理",
+      "intended_user_questions": [
+        "どの記録を作成・保管するか。",
+        "記録の保存期間や起算日はどこで確認するか。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.records.1",
+          "section_id": "records",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「記録の整備」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.records"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.records.2",
+          "section_id": "records",
+          "kind": "CHECKPOINT",
+          "text": "計画・同意・提供実績・事故・研修などを記録類型別に棚卸しする。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.records"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.records.3",
+          "section_id": "records",
+          "kind": "CHECKPOINT",
+          "text": "保存年限を見出しから推測せず、原典と指定権者の現行案内を確認する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.records"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.records.4",
+          "section_id": "records",
+          "kind": "CHECKPOINT",
+          "text": "機密性・権限管理・廃棄の手順を、制度上の記録義務と区別して点検する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.records"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.records.5",
+          "section_id": "records",
+          "kind": "CHECKPOINT",
+          "text": "事業所の様式と法令上必要な内容を混同しない。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.records"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.records.gap.1",
+          "issue": "記録の整備に関する省略本文、保存年限の根拠",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "safeguarding",
+      "title": "利用者保護",
+      "intended_user_questions": [
+        "虐待防止の体制・研修等の根拠は何か。",
+        "権利擁護の関連制度をどう分けるか。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.safeguarding.1",
+          "section_id": "safeguarding",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「虐待の防止」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.abuse"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.safeguarding.2",
+          "section_id": "safeguarding",
+          "kind": "CHECKPOINT",
+          "text": "委員会・研修・相談体制・担当者等の確認対象を一覧化する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.abuse"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.safeguarding.3",
+          "section_id": "safeguarding",
+          "kind": "CHECKPOINT",
+          "text": "実施頻度や責任主体は省略された通知の現行本文から確認する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.abuse"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.safeguarding.4",
+          "section_id": "safeguarding",
+          "kind": "CHECKPOINT",
+          "text": "苦情対応や身体拘束等は、それぞれの別の直接根拠を探す。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.abuse"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.safeguarding.gap.1",
+          "issue": "虐待防止・権利保護の現行本文と準用条項",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "incident_and_infection",
+      "title": "事故・感染症・虐待防止",
+      "intended_user_questions": [
+        "事故と感染症の対応責任・連絡先は誰か。",
+        "発生時の記録と自治体報告の条件は何か。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.incident_and_infection.1",
+          "section_id": "incident_and_infection",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「事故発生時の対応」「衛生管理等」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.accident",
+            "notice.dayservice.operation.hygiene"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.incident_and_infection.2",
+          "section_id": "incident_and_infection",
+          "kind": "CHECKPOINT",
+          "text": "事故の初動・連絡・記録・再発防止を段階別に整理する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.accident",
+            "notice.dayservice.operation.hygiene"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.incident_and_infection.3",
+          "section_id": "incident_and_infection",
+          "kind": "CHECKPOINT",
+          "text": "事故の報告対象・報告先・期限は指定権者の最新資料で確かめる。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.accident",
+            "notice.dayservice.operation.hygiene"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.incident_and_infection.4",
+          "section_id": "incident_and_infection",
+          "kind": "CHECKPOINT",
+          "text": "感染症の予防・発生時対応・研修を現行公式資料に照らす。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.accident",
+            "notice.dayservice.operation.hygiene"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.incident_and_infection.5",
+          "section_id": "incident_and_infection",
+          "kind": "CHECKPOINT",
+          "text": "事故・虐待・感染症を同一様式や一律期限で扱わない。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.accident",
+            "notice.dayservice.operation.hygiene"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.incident_and_infection.gap.1",
+          "issue": "事故通知の省略本文・感染症対応の現行通知",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "business_continuity",
+      "title": "業務継続計画",
+      "intended_user_questions": [
+        "感染症・災害に関するBCPで何を確認するか。",
+        "BCP未策定減算の対象月や経過措置は何か。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.business_continuity.1",
+          "section_id": "business_continuity",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「業務継続計画の策定等」「業務継続計画未策定減算」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.bcp",
+            "fee.dayservice.note.3"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.business_continuity.2",
+          "section_id": "business_continuity",
+          "kind": "CHECKPOINT",
+          "text": "計画、連絡体制、優先業務、訓練、見直しの記録を別々に点検する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.bcp",
+            "fee.dayservice.note.3"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.business_continuity.3",
+          "section_id": "business_continuity",
+          "kind": "CHECKPOINT",
+          "text": "感染症と災害の両方について原典の対象範囲と要件を確認する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.bcp",
+            "fee.dayservice.note.3"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.business_continuity.4",
+          "section_id": "business_continuity",
+          "kind": "CHECKPOINT",
+          "text": "BCP未策定減算は告示本文・留意事項・対象月・経過措置を確認してから判断する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.bcp",
+            "fee.dayservice.note.3"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.business_continuity.5",
+          "section_id": "business_continuity",
+          "kind": "CHECKPOINT",
+          "text": "計画未策定の判断と計画の実効性に関する改善メモを区別する。",
+          "candidate_record_ids": [
+            "notice.dayservice.operation.bcp",
+            "fee.dayservice.note.3"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.business_continuity.gap.1",
+          "issue": "減算の最新施行日・経過措置・BCP要件全文",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "remuneration",
+      "title": "基本報酬",
+      "intended_user_questions": [
+        "基本報酬の区分・単位数はどの原典を見るか。",
+        "地域区分の一単位単価といつの改定を使うか。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.remuneration.1",
+          "section_id": "remuneration",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「通所介護費」「通常規模型通所介護費」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "fee.dayservice.root",
+            "fee.dayservice.standard"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.remuneration.2",
+          "section_id": "remuneration",
+          "kind": "CHECKPOINT",
+          "text": "算定月・提供時間・事業所規模・利用区分を確定する。",
+          "candidate_record_ids": [
+            "fee.dayservice.root",
+            "fee.dayservice.standard"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.remuneration.3",
+          "section_id": "remuneration",
+          "kind": "CHECKPOINT",
+          "text": "通常規模型等の区分と単位数を当該月の原告示・改正告示で照合する。",
+          "candidate_record_ids": [
+            "fee.dayservice.root",
+            "fee.dayservice.standard"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.remuneration.4",
+          "section_id": "remuneration",
+          "kind": "CHECKPOINT",
+          "text": "基本単位数と地域単価は別に確認し、端数処理の根拠も控える。",
+          "candidate_record_ids": [
+            "fee.dayservice.root",
+            "fee.dayservice.standard"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.remuneration.5",
+          "section_id": "remuneration",
+          "kind": "CHECKPOINT",
+          "text": "改定前後の経過措置を確認するまで令和8年の算定額を断定しない。",
+          "candidate_record_ids": [
+            "fee.dayservice.root",
+            "fee.dayservice.standard"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.remuneration.gap.1",
+          "issue": "現行単位表・地域単価・経過措置の確認",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "deductions",
+      "title": "減算",
+      "intended_user_questions": [
+        "虐待・BCP・同一建物・送迎の減算条件は何か。",
+        "複数減算や開始・終了月はどう扱うか。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.deductions.1",
+          "section_id": "deductions",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「高齢者虐待防止措置未実施減算」「業務継続計画未策定減算」「同一建物減算」「送迎減算」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.2",
+            "fee.dayservice.note.3",
+            "fee.dayservice.note.23",
+            "fee.dayservice.note.24"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.deductions.2",
+          "section_id": "deductions",
+          "kind": "CHECKPOINT",
+          "text": "各減算の発生条件・対象月・解除条件・記録を別々に記載する。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.2",
+            "fee.dayservice.note.3",
+            "fee.dayservice.note.23",
+            "fee.dayservice.note.24"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.deductions.3",
+          "section_id": "deductions",
+          "kind": "CHECKPOINT",
+          "text": "虐待防止措置とBCP未策定の制度上の不足を混同しない。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.2",
+            "fee.dayservice.note.3",
+            "fee.dayservice.note.23",
+            "fee.dayservice.note.24"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.deductions.4",
+          "section_id": "deductions",
+          "kind": "CHECKPOINT",
+          "text": "同一建物・送迎の実態を確認し、個別の適用除外があるか原典で探す。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.2",
+            "fee.dayservice.note.3",
+            "fee.dayservice.note.23",
+            "fee.dayservice.note.24"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.deductions.5",
+          "section_id": "deductions",
+          "kind": "CHECKPOINT",
+          "text": "複数減算の併用や改定時点は留意事項・Q&Aの直接根拠を探す。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.2",
+            "fee.dayservice.note.3",
+            "fee.dayservice.note.23",
+            "fee.dayservice.note.24"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.deductions.gap.1",
+          "issue": "各減算の実施要件・率・適用日・例外",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "additions",
+      "title": "加算",
+      "intended_user_questions": [
+        "入浴・個別機能訓練・提供体制強化の加算要件は何か。",
+        "届出・記録・区分変更をいつ確認するか。"
+      ],
+      "draft_status": "DRAFT_UNREVIEWED",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.additions.1",
+          "section_id": "additions",
+          "kind": "PROVISIONAL_EXPLANATION",
+          "text": "この章にはRepository内の「入浴介助加算」「個別機能訓練加算」「サービス提供体制強化加算」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.10",
+            "fee.dayservice.note.13",
+            "fee.dayservice.service-provision"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "候補の原文・後続改正・対象サービスへの法的適用"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.additions.2",
+          "section_id": "additions",
+          "kind": "CHECKPOINT",
+          "text": "加算ごとに配置・計画・同意・実施記録・届出を照合する。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.10",
+            "fee.dayservice.note.13",
+            "fee.dayservice.service-provision"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.additions.3",
+          "section_id": "additions",
+          "kind": "CHECKPOINT",
+          "text": "個別機能訓練の実施・評価・計画に関する原典を確認する。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.10",
+            "fee.dayservice.note.13",
+            "fee.dayservice.service-provision"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.additions.4",
+          "section_id": "additions",
+          "kind": "CHECKPOINT",
+          "text": "入浴介助や提供体制強化の区分・必要資料を別々に調べる。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.10",
+            "fee.dayservice.note.13",
+            "fee.dayservice.service-provision"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.additions.5",
+          "section_id": "additions",
+          "kind": "CHECKPOINT",
+          "text": "併算・区分変更・届出の効力発生日は告示・留意事項で確認する。",
+          "candidate_record_ids": [
+            "fee.dayservice.note.10",
+            "fee.dayservice.note.13",
+            "fee.dayservice.service-provision"
+          ],
+          "basis_scope": "EXISTING_CANDIDATE_POINTER_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.additions.gap.1",
+          "issue": "加算別の現行本文・届出時点・経過措置",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "notifications",
+      "title": "届出・手続",
+      "intended_user_questions": [
+        "指定変更・加算届・事故報告をどう区別するか。",
+        "提出先・様式・期限はどこで確かめるか。"
+      ],
+      "draft_status": "NEEDS_SOURCE",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.notifications.1",
+          "section_id": "notifications",
+          "kind": "CHECKPOINT",
+          "text": "申請、変更、加算、事故報告を別の手続として分類する。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.notifications.2",
+          "section_id": "notifications",
+          "kind": "CHECKPOINT",
+          "text": "指定権者の現行案内で提出先・添付書類・期限・届出日を照合する。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.notifications.3",
+          "section_id": "notifications",
+          "kind": "CHECKPOINT",
+          "text": "電子申請の案内を全国一律の手続・期限とみなさない。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.notifications.gap.1",
+          "issue": "届出の個別公式資料IDと指定権者の案内",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "national_qa",
+      "title": "国Q&A",
+      "intended_user_questions": [
+        "国Q&Aの問番号・日付・サービス対象は何か。",
+        "旧問50と問59の後続関係をどう確認するか。"
+      ],
+      "draft_status": "NEEDS_SOURCE",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.national_qa.1",
+          "section_id": "national_qa",
+          "kind": "CHECKPOINT",
+          "text": "Q&A原本の名称・問番号・発出日・対象サービスを個別記録する。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.national_qa.2",
+          "section_id": "national_qa",
+          "kind": "CHECKPOINT",
+          "text": "問50と問59を番号だけで置き換えず、改正・削除・後続通知を別に確認する。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.national_qa.3",
+          "section_id": "national_qa",
+          "kind": "CHECKPOINT",
+          "text": "他サービスのQ&Aを通所介護に自動適用しない。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.national_qa.gap.1",
+          "issue": "国Q&Aの資料別ID・原本・後続関係",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "section_id": "sources_and_history",
+      "title": "原典・改正履歴",
+      "intended_user_questions": [
+        "法令・通知の版と施行日をどこで照合するか。",
+        "改正対照表の省略箇所と経過措置はどう扱うか。"
+      ],
+      "draft_status": "NEEDS_SOURCE",
+      "draft_statements": [
+        {
+          "statement_id": "dayservice.sources_and_history.1",
+          "section_id": "sources_and_history",
+          "kind": "CHECKPOINT",
+          "text": "資料ID・発出主体・発出日・施行日・版・条項位置を別属性で控える。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.sources_and_history.2",
+          "section_id": "sources_and_history",
+          "kind": "CHECKPOINT",
+          "text": "Repositoryの収載日・検証ラベルを最新施行版の保証と混同しない。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        },
+        {
+          "statement_id": "dayservice.sources_and_history.3",
+          "section_id": "sources_and_history",
+          "kind": "CHECKPOINT",
+          "text": "「略」の改正対照表は現行全文を別に取得し、経過措置を追跡する。",
+          "candidate_record_ids": [],
+          "basis_scope": "UNSOURCED_RESEARCH_PROMPT_ONLY",
+          "unknowns": [
+            "必要な現行原典と適用時点が未確認"
+          ],
+          "review_state": "DRAFT_UNREVIEWED"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "dayservice.sources_and_history.gap.1",
+          "issue": "原典と改正履歴の個別候補ID・最新施行版",
+          "next_check": "公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する",
+          "status": "UNRESOLVED"
+        }
+      ]
+    }
+  ]
+}
+</script>
 <script>
 "use strict";
 const CHAPTERS=[["applicability","適用対象・基本事項","制度上の定義、対象となるサービスと関連する原典を調べる。",["databases/search?service=dayservice","rules","sources"]],["designation","指定・開設","全国共通の指定基準と指定権者が定める事項を分けて確認する。",["rules","databases/search?service=dayservice","sources"]],["staffing","人員基準","職種・員数・勤務体制に関する条文と解釈通知を調べる。",["rules","notices","databases/search?service=dayservice"]],["equipment","設備基準","設備関係の基準本文と解釈通知を調べる。",["rules","notices"]],["operations","運営基準","運営上の各事項と準用される規定の所在を調べる。",["rules","notices","qa"]],["records","記録・情報管理","記録の作成や保存等について根拠を確かめる。",["rules","notices"]],["safeguarding","利用者保護","利用者保護に関係する制度資料を確認する。",["rules","notices","qa"]],["incident_and_infection","事故・感染症・虐待防止","事故対応等に関する制度資料を探す。",["rules","notices","sources"]],["business_continuity","業務継続計画","制度資料と改正・経過措置の時点を調べる。",["rules","notices","sources"]],["remuneration","基本報酬","報酬単位数と一単位単価を区別して原典を調べる。",["fees","fees/criteria","databases/search?service=dayservice"]],["deductions","減算","減算の根拠と別告示・留意事項との関係を探す。",["fees","fees/criteria","fees/guidance"]],["additions","加算","加算の算定基準と関連資料の所在を調べる。",["fees","fees/criteria","qa"]],["notifications","届出・手続","全国共通の規定と自治体の手続きを分けて調べる。",["sources","databases/search?service=dayservice"]],["national_qa","国Q&A","関連Q&Aの問番号・発出日・後続改正を確認する。",["qa","sources"]],["sources_and_history","原典・改正履歴","公式原典の版、施行日、改正履歴を確認する。",["sources","rules","databases/search?service=dayservice"]]];
@@ -37,7 +1615,7 @@ function persist(){try{localStorage.setItem(key,JSON.stringify(notes));$("msg").
 function renderMenu(){
  const term=$("filter").value.trim();
  $("menu").replaceChildren(...CHAPTERS.filter(r=>r[1].includes(term)).map((r)=>{
-  const b=document.createElement("button");b.type="button";b.textContent=r[1];b.setAttribute("aria-current",String(r[0]===current));b.addEventListener("click",()=>show(r[0]));return b;
+  const b=document.createElement("button");b.type="button";b.textContent=r[1];b.setAttribute("aria-current",String(r[0]===current));b.addEventListener("click",()=>{show(r[0]);$("title").focus();});return b;
  }));
 }
 function show(id){
@@ -48,13 +1626,18 @@ function show(id){
   const li=document.createElement("li"),a=document.createElement("a");
   a.href=BASE+path;a.target="_blank";a.rel="noopener noreferrer";a.textContent="公開DB："+path+" ↗";li.append(a);return li;
  }));
- const entries=CANDIDATES.filter(x=>x.chapter_id===id);
- $("candidate-count").textContent=entries.length+"件の原典候補（手引としての確認済み解説：0件）";
+ const allEntries=CANDIDATES.filter(x=>x.chapter_id===id);
+ const term=$("candidate-filter").value.trim().toLowerCase();
+ const kind=$("kind-filter").value,reading=$("progress-filter").value;
+ const entries=allEntries.filter(x=>(kind==="all"||x.kind===kind)
+   &&(reading==="all"||(progressOptions.includes(progress[x.chapter_id+"::"+x.record_id])?progress[x.chapter_id+"::"+x.record_id]:"未着手")===reading)
+   &&(!term||[x.label,x.record_id,x.source_id,x.locator,x.source_title].some(s=>String(s||"").toLowerCase().includes(term))));
+ $("candidate-count").textContent=entries.length+" / "+allEntries.length+"件の原典候補（手引としての確認済み解説：0件）";
  $("candidates").replaceChildren(...(entries.length?entries.map((entry)=>{
   const box=document.createElement("section");box.className="candidate";
   const title=document.createElement("h4");title.textContent=entry.label;box.append(title);
   for(const line of ["資料ID: "+entry.source_id,"項目ID: "+entry.record_id,"原典位置: "+entry.locator,"収載元の状態: "+entry.source_status,"この手引の人手確認: 未実施"]){const p=document.createElement("p");p.className="metadata";p.textContent=line;box.append(p);}
-  if(entry.excerpt){const quote=document.createElement("p");quote.className="excerpt";quote.textContent=entry.excerpt;quote.setAttribute("aria-label","Repository収載本文。最新版・適用条件の再確認前");box.append(quote);}
+  if(entry.excerpt){const details=document.createElement("details");const summary=document.createElement("summary");summary.textContent="Repository収載本文を展開（適用・現行性は未確認）";details.append(summary);const quote=document.createElement("p");quote.className="excerpt";quote.textContent=entry.excerpt;details.append(quote);box.append(details);}
   const rowKey=entry.chapter_id+"::"+entry.record_id;
   const statusLabel=document.createElement("label");statusLabel.textContent="個人用の閲覧記録（法的確認・承認ではありません） ";statusLabel.className="metadata";
   const select=document.createElement("select");select.setAttribute("aria-label",entry.label+" の個人用閲覧記録");
@@ -64,16 +1647,128 @@ function show(id){
   statusLabel.append(select);box.append(statusLabel);
   for(const [label,url] of [["DBで確認",entry.db_href],["原典資料を開く",entry.official_url]]){const a=document.createElement("a");a.href=url;a.textContent=label+" ↗";a.target="_blank";a.rel="noopener noreferrer";box.append(a);}
   return box;
- }):[(()=>{const p=document.createElement("p");p.className="empty";p.textContent="この章で個別に紐付けた項目はまだありません。下の共通検索から探し、確認候補をメモしてください。";return p;})()]));
- $("memo").value=typeof notes[id]==="string"?notes[id]:"";$("msg").textContent="";renderMenu();
+ }):[(()=>{const p=document.createElement("p");p.className="empty";p.textContent="表示条件に合う原典候補がありません。絞り込みを解除するか、下の共通検索から確認してください。";return p;})()]));
+ $("memo").value=typeof notes[id]==="string"?notes[id]:"";$("msg").textContent="";renderMenu();renderSupplement(id);
 }
 $("filter").addEventListener("input",renderMenu);
+for(const id of ["candidate-filter","kind-filter","progress-filter"])$(id).addEventListener(id==="candidate-filter"?"input":"change",()=>show(current));
 $("memo").addEventListener("input",()=>{notes[current]=$("memo").value;persist();});
-$("clear").addEventListener("click",()=>{delete notes[current];$("memo").value="";persist();});
+$("clear").addEventListener("click",()=>{
+ delete notes[current];
+ for(const entry of CANDIDATES.filter(x=>x.chapter_id===current))delete progress[entry.chapter_id+"::"+entry.record_id];
+ $("memo").value="";show(current);
+ try{
+  localStorage.setItem(key,JSON.stringify(notes));
+  localStorage.setItem(progressKey,JSON.stringify(progress));
+  $("msg").textContent="この章のメモと閲覧記録を消去しました";
+ }catch(_){$("msg").textContent="自動保存できません。JSONを書き出してください";}
+});
 $("export").addEventListener("click",()=>{
  const data={format_version:2,service_id:"dayservice",review_completed:false,source:"local_handbook_trial",notes:Object.fromEntries(CHAPTERS.map(r=>[r[0],typeof notes[r[0]]==="string"?notes[r[0]]:""])),candidate_progress:Object.fromEntries(CANDIDATES.map(r=>{const k=r.chapter_id+"::"+r.record_id;return [k,progressOptions.includes(progress[k])?progress[k]:"未着手"];}))};
+ try{
  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="kaigo-handbook-dayservice-notes.json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$("msg").textContent="メモを書き出しました";
+ }catch(_){$("msg").textContent="書き出しに失敗しました。メモは保持されています。再試行してください";}
 });
+
+// Independently fetched repository snapshots, bound by the C regression suite.
+// These are UNREVIEWED reference bytes, never legal or publication approval.
+// E must verify the pinned Git blobs before injecting either empty JSON slot.
+// An absent, changed or unrecognized document is left unintegrated. No fetch.
+const SECTION_IDS=new Set(CHAPTERS.map(x=>x[0]));
+const KNOWN_RECORD_IDS=new Set(CANDIDATES.map(x=>x.record_id));
+const PINNED_BLOBS={"data/sources.json":"0f23469ce8a5e8a4c892d820be9d40565b8712f2","data/care-insurance-act-scope.json":"8af02781b721c811b377ff0525f74ba64646181d","data/qa-items.json":"1b07808d1afe66ed4799fce4053c5cd8412b37a0","data/notice-current-skeleton.json":"77f656242eb2d5c9a5bd1d6e5d0d581813e51630","data/rule-nodes.json":"c713520e3ec0f6234d92be26c969a575863d4549","data/remuneration-current-skeleton.json":"4caef5d7c34c1658e442db137fed20944ebfeb06","docs/prototypes/data/dayservice-handbook-source-candidates.v2.json":"9cb420b80dfeb5407ceb1fea49aae06a065d978d","docs/prototypes/data/dayservice-handbook-drafts.v1.json":"0383262867e38e9a0bf20ad07463b575ab8531a8"};
+const PINNED_A={"schema_version":"2.0-draft","base_pr_head":"c6e61a44a8287f020d56e1c22d63ad2b74a08b89","service_id":"dayservice","artifact_status":"CHAPTER_CANDIDATE_ONLY","human_review_status":"HUMAN_REVIEW_NOT_DONE","legal_currentness_acceptance":"NOT_ESTABLISHED","publication_status":"PUBLICATION_BLOCKED","source_provenance":[{"repository_path":"data/sources.json","repository_blob_sha":"0f23469ce8a5e8a4c892d820be9d40565b8712f2"},{"repository_path":"data/care-insurance-act-scope.json","repository_blob_sha":"8af02781b721c811b377ff0525f74ba64646181d"},{"repository_path":"data/qa-items.json","repository_blob_sha":"1b07808d1afe66ed4799fce4053c5cd8412b37a0"},{"repository_path":"data/notice-current-skeleton.json","repository_blob_sha":"77f656242eb2d5c9a5bd1d6e5d0d581813e51630"}],"sections":[{"section_id":"designation","title":"指定・開設","candidates":[{"section_id":"designation","candidate_id":"handbook.a.designation.law70","record_id":null,"source_id":"egov-care-insurance-act","source_version":null,"title":"介護保険法 第70条（収載範囲の確認）","source_locator":"focus_paragraphs.70","locator_kind":"REPOSITORY_SCOPE_ONLY","source_url":"https://laws.e-gov.go.jp/law/409AC0000000123","repository_path":"data/care-insurance-act-scope.json","repository_blob_sha":"8af02781b721c811b377ff0525f74ba64646181d","candidate_status":"CANDIDATE","existing_source_status":"registry","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"通所介護の指定・申請の検討対象として介護保険法の収載範囲を示す。","notes":"範囲JSON内のfocus_paragraphs.70を指す。現行法条文の原文取得済みという意味ではない。","kind":"law_scope"},{"section_id":"designation","candidate_id":"handbook.a.designation.law70-2","record_id":null,"source_id":"egov-care-insurance-act","source_version":null,"title":"介護保険法 第70条の2（収載範囲の確認）","source_locator":"focus_paragraphs.70-2","locator_kind":"REPOSITORY_SCOPE_ONLY","source_url":"https://laws.e-gov.go.jp/law/409AC0000000123","repository_path":"data/care-insurance-act-scope.json","repository_blob_sha":"8af02781b721c811b377ff0525f74ba64646181d","candidate_status":"CANDIDATE","existing_source_status":"registry","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"指定の更新に関する検討対象として収載範囲を示す。","notes":"範囲JSON内のfocus_paragraphs.70-2を指す。現行法条文の原文取得済みという意味ではない。","kind":"law_scope"},{"section_id":"designation","candidate_id":"handbook.a.designation.application","record_id":null,"source_id":"mhlw-application-forms","source_version":null,"title":"介護事業所の指定申請等のウェブ入力・電子申請導入","source_locator":"id=mhlw-application-forms","locator_kind":"REPOSITORY_SOURCE_REGISTRY","source_url":"https://www.mhlw.go.jp/stf/kaigo-shinsei.html","repository_path":"data/sources.json","repository_blob_sha":"0f23469ce8a5e8a4c892d820be9d40565b8712f2","candidate_status":"CANDIDATE","existing_source_status":"registry","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"厚生労働省の電子申請案内への入口。","notes":"指定権者ごとの様式・添付書類・提出日を全国共通の義務として記載しない。","kind":"source_registry"}],"gaps":["指定申請・指定更新の条文はscopeのみで、個別条項の原文・施行版は未取得。","自治体ごとの指定権者、様式、提出期限・運用差分は未確認。"]},{"section_id":"notifications","title":"届出・手続","candidates":[{"section_id":"notifications","candidate_id":"handbook.a.notifications.law75","record_id":null,"source_id":"egov-care-insurance-act","source_version":null,"title":"介護保険法 第75条（収載範囲の確認）","source_locator":"focus_paragraphs.75","locator_kind":"REPOSITORY_SCOPE_ONLY","source_url":"https://laws.e-gov.go.jp/law/409AC0000000123","repository_path":"data/care-insurance-act-scope.json","repository_blob_sha":"8af02781b721c811b377ff0525f74ba64646181d","candidate_status":"CANDIDATE","existing_source_status":"registry","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"届出に関連する介護保険法の収載範囲を指す。","notes":"範囲JSON内のfocus_paragraphs.75を指す。現行法条文の原文取得済みという意味ではない。","kind":"law_scope"},{"section_id":"notifications","candidate_id":"handbook.a.notifications.application","record_id":null,"source_id":"mhlw-application-forms","source_version":null,"title":"介護事業所の指定申請等のウェブ入力・電子申請導入","source_locator":"id=mhlw-application-forms","locator_kind":"REPOSITORY_SOURCE_REGISTRY","source_url":"https://www.mhlw.go.jp/stf/kaigo-shinsei.html","repository_path":"data/sources.json","repository_blob_sha":"0f23469ce8a5e8a4c892d820be9d40565b8712f2","candidate_status":"CANDIDATE","existing_source_status":"registry","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"指定申請・届出の電子申請に関する国の案内ページ。","notes":"自治体固有の申請期限・届出種別・手順の代わりにはならない。","kind":"source_registry"},{"section_id":"notifications","candidate_id":"handbook.a.notifications.electronic-manual","record_id":null,"source_id":"mhlw-electronic-application-operator-manual-v2-50","source_version":null,"title":"電子申請・届出システム 操作マニュアル（介護事業所向け）詳細版 ver2.50","source_locator":"id=mhlw-electronic-application-operator-manual-v2-50","locator_kind":"REPOSITORY_SOURCE_REGISTRY","source_url":"https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true","repository_path":"data/sources.json","repository_blob_sha":"0f23469ce8a5e8a4c892d820be9d40565b8712f2","candidate_status":"CANDIDATE","existing_source_status":"registry","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"国の電子申請システム操作案内の収載確認。","notes":"ソフトウェア操作マニュアルであり、法律上の届出期限や適用基準の証明ではない。","kind":"source_registry"}],"gaps":["自治体指定権者別の届出期限・様式・追加添付書類の確認が必要。","電子申請の操作手順と法定義務・期限は別に検証する。"]},{"section_id":"national_qa","title":"国Q&A","candidates":[{"section_id":"national_qa","candidate_id":"handbook.a.national_qa.2015-question50","record_id":"qa.dayservice.nurse.external.2015.50","source_id":"mhlw-qa","source_version":"2015-04-01","title":"平成27年度介護報酬改定に関するQ&A（平成27年4月1日） 問50","source_locator":"source_number=問50;issued_at=2015-04-01","locator_kind":"QA_ITEM_METADATA","source_url":"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html","repository_path":"data/qa-items.json","repository_blob_sha":"1b07808d1afe66ed4799fce4053c5cd8412b37a0","candidate_status":"HISTORICAL","existing_source_status":"registry","existing_record_status":"STRUCTURED","currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 2015年問50の後続改正・問59との関係・現行適用を未確認。HISTORICALは発出年代の識別であり失効認定ではない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"看護職員の外部連携に関する旧Q&A。問59とは別資料として扱う。","notes":"収載済み問50の構造化要約への参照であり、最新Q&A原文や問59による後続修正・削除は確認していない。","kind":"qa_item"}],"gaps":["問59について取得可能な個別出典ID、発出日、問50との後続関係をこの固定ソースから確認できず、候補への追加を保留。","旧問50を現行の適用根拠として使用しない。Q&A本文・最新版・対象サービスを再照合する。"]},{"section_id":"sources_and_history","title":"原典・改正履歴","candidates":[{"section_id":"sources_and_history","candidate_id":"handbook.a.sources_and_history.r6-interpretation","record_id":"notice.dayservice.root","source_id":"mhlw-2024-interpretation-redline","source_version":null,"title":"解釈通知の通所介護見出し（通所介護）","source_locator":"PDF p.20 新欄「六 通所介護」","locator_kind":"SOURCE_EVIDENCE_LOCATOR","source_url":"https://www.mhlw.go.jp/content/12300000/001227935.pdf","repository_path":"data/notice-current-skeleton.json","repository_blob_sha":"77f656242eb2d5c9a5bd1d6e5d0d581813e51630","candidate_status":"CANDIDATE","existing_source_status":"partial_source","existing_record_status":"KNOWN_AFTER_TEXT","currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 新旧対照表の見出し情報のみ。後続改正と現行統合条文は未確認。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"解釈通知の改正対照表の章見出しを参照する。","notes":"出典位置は2024年新旧対照表の当該箇所であり、統合された最新本文そのものではない。","kind":"notice_item"},{"section_id":"sources_and_history","candidate_id":"handbook.a.sources_and_history.r8-amendment87","record_id":null,"source_id":"mhlw-r8-fee-amendment87","source_version":null,"title":"指定居宅サービスに要する費用の額の算定に関する基準等の一部を改正する告示（令和8年厚生労働省告示第87号）","source_locator":"id=mhlw-r8-fee-amendment87","locator_kind":"REPOSITORY_SOURCE_REGISTRY","source_url":"https://www.mhlw.go.jp/content/12404000/001675895.pdf","repository_path":"data/sources.json","repository_blob_sha":"0f23469ce8a5e8a4c892d820be9d40565b8712f2","candidate_status":"CANDIDATE","existing_source_status":"partial_source","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"令和8年度報酬告示改正の出典索引。","notes":"改正前後対照表のみで、略部分の現行全文や算定適用日を推定しない。","kind":"source_registry"},{"section_id":"sources_and_history","candidate_id":"handbook.a.sources_and_history.r8-guidance-may","record_id":null,"source_id":"mhlw-r8-fee-guidance-may-amendment","source_version":null,"title":"老企第36号等の一部改正について（令和8年5月8日・介護保険最新情報Vol.1502）","source_locator":"id=mhlw-r8-fee-guidance-may-amendment","locator_kind":"REPOSITORY_SOURCE_REGISTRY","source_url":"https://www.mhlw.go.jp/content/001698614.pdf","repository_path":"data/sources.json","repository_blob_sha":"0f23469ce8a5e8a4c892d820be9d40565b8712f2","candidate_status":"CANDIDATE","existing_source_status":"current_amendment","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"令和8年5月の留意事項通知改正の索引。","notes":"発出名・URLはリポジトリのsource registryに収載。改正対象箇所・適用日は別途確定が必要。","kind":"source_registry"},{"section_id":"sources_and_history","candidate_id":"handbook.a.sources_and_history.ordinance37","record_id":null,"source_id":"mhlw-home-care-standards-current","source_version":null,"title":"指定居宅サービス等の事業の人員、設備及び運営に関する基準（通所介護部分）","source_locator":"id=mhlw-home-care-standards-current","locator_kind":"REPOSITORY_SOURCE_REGISTRY","source_url":"https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2","repository_path":"data/sources.json","repository_blob_sha":"0f23469ce8a5e8a4c892d820be9d40565b8712f2","candidate_status":"CANDIDATE","existing_source_status":"verified_source","existing_record_status":null,"currentness_limit":"CURRENTNESS_NOT_ESTABLISHED: 原典の最新施行版・適用日・後続改正はこの候補から確定できない。","applicability_limit":"通所介護の対象資料候補であり、個別事業所・指定権者の運用への適用判定ではない。","reason":"基準省令の厚生労働省掲載ページへの参照。","notes":"source registryのverified_sourceは既存ラベルであり、この手引の現行性や人手レビューを立証しない。","kind":"source_registry"}],"gaps":["ソースURL収載、元の検証日時、法令の施行版・経過措置・後続改正を別々に確認する。","2024年の新旧対照表や2026年の一部改正資料を単独で統合現行本文とみなさない。"]}]};
+const PINNED_B={"schema_version":"1.0.0-draft","base_pr_head":"c6e61a44a8287f020d56e1c22d63ad2b74a08b89","service_id":"dayservice","source_snapshot":"main@098a349c26f35cd9e9ad8f0b7ff54f2068f6a702","source_contract":"CANDIDATES in docs/prototypes/dayservice-handbook.html at base_pr_head","publication_state":"PUBLICATION_BLOCKED","human_review_state":"HUMAN_REVIEW_NOT_DONE","legal_explanations_accepted":0,"scope_note":"既存27件の章×候補IDに基づく未レビューの作業用草稿。原典の収載状況は、手引の法的受入・現行適用・公開判定ではない。","sections":[{"section_id":"applicability","title":"適用対象・基本事項","intended_user_questions":["通所介護の対象サービスと準用条項は何か。","他の通所系サービスと根拠をどう区別するか。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.applicability.1","section_id":"applicability","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「第7章 通所介護 / 第4節 運営に関する基準 / 第105条」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["ordinance37.article105"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.applicability.2","section_id":"applicability","kind":"CHECKPOINT","text":"指定されたサービス種別・提供形態・事業所番号の対応を照合する。","candidate_record_ids":["ordinance37.article105"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.applicability.3","section_id":"applicability","kind":"CHECKPOINT","text":"第105条の準用先条項を一つずつ開き、対象者・行為・例外を確認する。","candidate_record_ids":["ordinance37.article105"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.applicability.4","section_id":"applicability","kind":"CHECKPOINT","text":"元の条項に別サービス名があっても、そのまま適用可否を判断しない。","candidate_record_ids":["ordinance37.article105"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.applicability.gap.1","issue":"準用先の現行全文と各条の適用条件","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"designation","title":"指定・開設","intended_user_questions":["指定権者と指定種別を何で確認するか。","申請・更新の提出先や期限はどの案内にあるか。"],"draft_status":"NEEDS_SOURCE","draft_statements":[{"statement_id":"dayservice.designation.1","section_id":"designation","kind":"CHECKPOINT","text":"国の指定基準と指定権者が定める事項を分けて資料化する。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.designation.2","section_id":"designation","kind":"CHECKPOINT","text":"指定権者の最新案内で新規・更新・変更手続の書類と期限を照合する。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.designation.3","section_id":"designation","kind":"CHECKPOINT","text":"自治体独自の手続を全国共通の法令要件として転記しない。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.designation.gap.1","issue":"指定・開設の根拠IDと指定権者の最新案内","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"staffing","title":"人員基準","intended_user_questions":["提供日・時間帯ごとの職種別配置は足りるか。","兼務・資格・利用者数の条件をどこで確認するか。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.staffing.1","section_id":"staffing","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「第93条 / 第1項 / 第1号」「第93条 / 第1項 / 第2号」「第7章 通所介護 / 第2節 人員に関する基準 / 第94条」「従業者の員数」「生活相談員」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["ordinance37.article93.1.1","ordinance37.article93.1.2","ordinance37.article94","notice.dayservice.personnel.staffing","notice.dayservice.personnel.life-counselor"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.staffing.2","section_id":"staffing","kind":"CHECKPOINT","text":"生活相談員等の職種別に勤務時間を提供日・提供単位ごとに集計して第93条と照合する。","candidate_record_ids":["ordinance37.article93.1.1","ordinance37.article93.1.2","ordinance37.article94","notice.dayservice.personnel.staffing","notice.dayservice.personnel.life-counselor"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.staffing.3","section_id":"staffing","kind":"CHECKPOINT","text":"配置数だけでなく資格、兼務、サービス提供時間帯の要件を第94条等で確認する。","candidate_record_ids":["ordinance37.article93.1.1","ordinance37.article93.1.2","ordinance37.article94","notice.dayservice.personnel.staffing","notice.dayservice.personnel.life-counselor"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.staffing.4","section_id":"staffing","kind":"CHECKPOINT","text":"通知の「略」の部分は現行原文を探し、職員配置の算定方法を見出しだけで決めない。","candidate_record_ids":["ordinance37.article93.1.1","ordinance37.article93.1.2","ordinance37.article94","notice.dayservice.personnel.staffing","notice.dayservice.personnel.life-counselor"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.staffing.5","section_id":"staffing","kind":"CHECKPOINT","text":"人数・提供単位・勤務実績の根拠を保存し、例外に当たるか個別確認する。","candidate_record_ids":["ordinance37.article93.1.1","ordinance37.article93.1.2","ordinance37.article94","notice.dayservice.personnel.staffing","notice.dayservice.personnel.life-counselor"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.staffing.gap.1","issue":"通知全文と配置・兼務の最新適用条件","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"equipment","title":"設備基準","intended_user_questions":["食堂・機能訓練室の設備基準をどう検証するか。","定員・共用・面積をどう確認するか。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.equipment.1","section_id":"equipment","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「第3節 設備に関する基準 / 第95条 / 第1項・第2項」「食堂及び機能訓練室」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["ordinance37.article95.1-2","notice.dayservice.equipment.dining-training-room"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.equipment.2","section_id":"equipment","kind":"CHECKPOINT","text":"室名・面積・用途・利用定員を図面と現況の双方で確かめる。","candidate_record_ids":["ordinance37.article95.1-2","notice.dayservice.equipment.dining-training-room"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.equipment.3","section_id":"equipment","kind":"CHECKPOINT","text":"食堂・機能訓練室の共用条件を第95条と現行通知の原文で確認する。","candidate_record_ids":["ordinance37.article95.1-2","notice.dayservice.equipment.dining-training-room"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.equipment.4","section_id":"equipment","kind":"CHECKPOINT","text":"設備改修・転用の際は指定権者への手続と基準適合を分けて確認する。","candidate_record_ids":["ordinance37.article95.1-2","notice.dayservice.equipment.dining-training-room"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.equipment.5","section_id":"equipment","kind":"CHECKPOINT","text":"面積算入方法や例外を通知見出しだけで決めない。","candidate_record_ids":["ordinance37.article95.1-2","notice.dayservice.equipment.dining-training-room"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.equipment.gap.1","issue":"共用条件・面積基準の現行通知原文","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"operations","title":"運営基準","intended_user_questions":["通所介護計画や説明・同意を誰がいつ行うか。","運営の固有条項と準用条項の関係は何か。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.operations.1","section_id":"operations","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「第4節 運営に関する基準 / 第99条 / 第3項」「第4節 運営に関する基準 / 第99条 / 第4項」「指定通所介護の基本取扱方針及び具体的取扱方針」「通所介護計画の作成」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["ordinance37.article99.3","ordinance37.article99.4","notice.dayservice.operation.policy","notice.dayservice.operation.plan"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.operations.2","section_id":"operations","kind":"CHECKPOINT","text":"説明・同意・計画作成・交付・見直しの時点と担当者を個別に洗い出す。","candidate_record_ids":["ordinance37.article99.3","ordinance37.article99.4","notice.dayservice.operation.policy","notice.dayservice.operation.plan"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.operations.3","section_id":"operations","kind":"CHECKPOINT","text":"第99条と基本・具体的取扱方針の資料で対象となる行為を照合する。","candidate_record_ids":["ordinance37.article99.3","ordinance37.article99.4","notice.dayservice.operation.policy","notice.dayservice.operation.plan"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.operations.4","section_id":"operations","kind":"CHECKPOINT","text":"通所介護計画の通知にある「略」の箇所は別の現行原文で確認する。","candidate_record_ids":["ordinance37.article99.3","ordinance37.article99.4","notice.dayservice.operation.policy","notice.dayservice.operation.plan"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.operations.5","section_id":"operations","kind":"CHECKPOINT","text":"運営上の共通要件は準用元を特定し、他サービスの規定を直輸入しない。","candidate_record_ids":["ordinance37.article99.3","ordinance37.article99.4","notice.dayservice.operation.policy","notice.dayservice.operation.plan"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.operations.gap.1","issue":"計画・説明・同意の現行通知全文と準用元","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"records","title":"記録・情報管理","intended_user_questions":["どの記録を作成・保管するか。","記録の保存期間や起算日はどこで確認するか。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.records.1","section_id":"records","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「記録の整備」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["notice.dayservice.operation.records"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.records.2","section_id":"records","kind":"CHECKPOINT","text":"計画・同意・提供実績・事故・研修などを記録類型別に棚卸しする。","candidate_record_ids":["notice.dayservice.operation.records"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.records.3","section_id":"records","kind":"CHECKPOINT","text":"保存年限を見出しから推測せず、原典と指定権者の現行案内を確認する。","candidate_record_ids":["notice.dayservice.operation.records"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.records.4","section_id":"records","kind":"CHECKPOINT","text":"機密性・権限管理・廃棄の手順を、制度上の記録義務と区別して点検する。","candidate_record_ids":["notice.dayservice.operation.records"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.records.5","section_id":"records","kind":"CHECKPOINT","text":"事業所の様式と法令上必要な内容を混同しない。","candidate_record_ids":["notice.dayservice.operation.records"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.records.gap.1","issue":"記録の整備に関する省略本文、保存年限の根拠","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"safeguarding","title":"利用者保護","intended_user_questions":["虐待防止の体制・研修等の根拠は何か。","権利擁護の関連制度をどう分けるか。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.safeguarding.1","section_id":"safeguarding","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「虐待の防止」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["notice.dayservice.operation.abuse"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.safeguarding.2","section_id":"safeguarding","kind":"CHECKPOINT","text":"委員会・研修・相談体制・担当者等の確認対象を一覧化する。","candidate_record_ids":["notice.dayservice.operation.abuse"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.safeguarding.3","section_id":"safeguarding","kind":"CHECKPOINT","text":"実施頻度や責任主体は省略された通知の現行本文から確認する。","candidate_record_ids":["notice.dayservice.operation.abuse"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.safeguarding.4","section_id":"safeguarding","kind":"CHECKPOINT","text":"苦情対応や身体拘束等は、それぞれの別の直接根拠を探す。","candidate_record_ids":["notice.dayservice.operation.abuse"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.safeguarding.gap.1","issue":"虐待防止・権利保護の現行本文と準用条項","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"incident_and_infection","title":"事故・感染症・虐待防止","intended_user_questions":["事故と感染症の対応責任・連絡先は誰か。","発生時の記録と自治体報告の条件は何か。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.incident_and_infection.1","section_id":"incident_and_infection","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「事故発生時の対応」「衛生管理等」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["notice.dayservice.operation.accident","notice.dayservice.operation.hygiene"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.incident_and_infection.2","section_id":"incident_and_infection","kind":"CHECKPOINT","text":"事故の初動・連絡・記録・再発防止を段階別に整理する。","candidate_record_ids":["notice.dayservice.operation.accident","notice.dayservice.operation.hygiene"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.incident_and_infection.3","section_id":"incident_and_infection","kind":"CHECKPOINT","text":"事故の報告対象・報告先・期限は指定権者の最新資料で確かめる。","candidate_record_ids":["notice.dayservice.operation.accident","notice.dayservice.operation.hygiene"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.incident_and_infection.4","section_id":"incident_and_infection","kind":"CHECKPOINT","text":"感染症の予防・発生時対応・研修を現行公式資料に照らす。","candidate_record_ids":["notice.dayservice.operation.accident","notice.dayservice.operation.hygiene"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.incident_and_infection.5","section_id":"incident_and_infection","kind":"CHECKPOINT","text":"事故・虐待・感染症を同一様式や一律期限で扱わない。","candidate_record_ids":["notice.dayservice.operation.accident","notice.dayservice.operation.hygiene"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.incident_and_infection.gap.1","issue":"事故通知の省略本文・感染症対応の現行通知","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"business_continuity","title":"業務継続計画","intended_user_questions":["感染症・災害に関するBCPで何を確認するか。","BCP未策定減算の対象月や経過措置は何か。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.business_continuity.1","section_id":"business_continuity","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「業務継続計画の策定等」「業務継続計画未策定減算」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["notice.dayservice.operation.bcp","fee.dayservice.note.3"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.business_continuity.2","section_id":"business_continuity","kind":"CHECKPOINT","text":"計画、連絡体制、優先業務、訓練、見直しの記録を別々に点検する。","candidate_record_ids":["notice.dayservice.operation.bcp","fee.dayservice.note.3"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.business_continuity.3","section_id":"business_continuity","kind":"CHECKPOINT","text":"感染症と災害の両方について原典の対象範囲と要件を確認する。","candidate_record_ids":["notice.dayservice.operation.bcp","fee.dayservice.note.3"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.business_continuity.4","section_id":"business_continuity","kind":"CHECKPOINT","text":"BCP未策定減算は告示本文・留意事項・対象月・経過措置を確認してから判断する。","candidate_record_ids":["notice.dayservice.operation.bcp","fee.dayservice.note.3"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.business_continuity.5","section_id":"business_continuity","kind":"CHECKPOINT","text":"計画未策定の判断と計画の実効性に関する改善メモを区別する。","candidate_record_ids":["notice.dayservice.operation.bcp","fee.dayservice.note.3"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.business_continuity.gap.1","issue":"減算の最新施行日・経過措置・BCP要件全文","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"remuneration","title":"基本報酬","intended_user_questions":["基本報酬の区分・単位数はどの原典を見るか。","地域区分の一単位単価といつの改定を使うか。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.remuneration.1","section_id":"remuneration","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「通所介護費」「通常規模型通所介護費」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["fee.dayservice.root","fee.dayservice.standard"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.remuneration.2","section_id":"remuneration","kind":"CHECKPOINT","text":"算定月・提供時間・事業所規模・利用区分を確定する。","candidate_record_ids":["fee.dayservice.root","fee.dayservice.standard"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.remuneration.3","section_id":"remuneration","kind":"CHECKPOINT","text":"通常規模型等の区分と単位数を当該月の原告示・改正告示で照合する。","candidate_record_ids":["fee.dayservice.root","fee.dayservice.standard"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.remuneration.4","section_id":"remuneration","kind":"CHECKPOINT","text":"基本単位数と地域単価は別に確認し、端数処理の根拠も控える。","candidate_record_ids":["fee.dayservice.root","fee.dayservice.standard"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.remuneration.5","section_id":"remuneration","kind":"CHECKPOINT","text":"改定前後の経過措置を確認するまで令和8年の算定額を断定しない。","candidate_record_ids":["fee.dayservice.root","fee.dayservice.standard"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.remuneration.gap.1","issue":"現行単位表・地域単価・経過措置の確認","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"deductions","title":"減算","intended_user_questions":["虐待・BCP・同一建物・送迎の減算条件は何か。","複数減算や開始・終了月はどう扱うか。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.deductions.1","section_id":"deductions","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「高齢者虐待防止措置未実施減算」「業務継続計画未策定減算」「同一建物減算」「送迎減算」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["fee.dayservice.note.2","fee.dayservice.note.3","fee.dayservice.note.23","fee.dayservice.note.24"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.deductions.2","section_id":"deductions","kind":"CHECKPOINT","text":"各減算の発生条件・対象月・解除条件・記録を別々に記載する。","candidate_record_ids":["fee.dayservice.note.2","fee.dayservice.note.3","fee.dayservice.note.23","fee.dayservice.note.24"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.deductions.3","section_id":"deductions","kind":"CHECKPOINT","text":"虐待防止措置とBCP未策定の制度上の不足を混同しない。","candidate_record_ids":["fee.dayservice.note.2","fee.dayservice.note.3","fee.dayservice.note.23","fee.dayservice.note.24"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.deductions.4","section_id":"deductions","kind":"CHECKPOINT","text":"同一建物・送迎の実態を確認し、個別の適用除外があるか原典で探す。","candidate_record_ids":["fee.dayservice.note.2","fee.dayservice.note.3","fee.dayservice.note.23","fee.dayservice.note.24"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.deductions.5","section_id":"deductions","kind":"CHECKPOINT","text":"複数減算の併用や改定時点は留意事項・Q&Aの直接根拠を探す。","candidate_record_ids":["fee.dayservice.note.2","fee.dayservice.note.3","fee.dayservice.note.23","fee.dayservice.note.24"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.deductions.gap.1","issue":"各減算の実施要件・率・適用日・例外","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"additions","title":"加算","intended_user_questions":["入浴・個別機能訓練・提供体制強化の加算要件は何か。","届出・記録・区分変更をいつ確認するか。"],"draft_status":"DRAFT_UNREVIEWED","draft_statements":[{"statement_id":"dayservice.additions.1","section_id":"additions","kind":"PROVISIONAL_EXPLANATION","text":"この章にはRepository内の「入浴介助加算」「個別機能訓練加算」「サービス提供体制強化加算」を確認候補として対応付けている。資料の収載・見出しだけでは最新施行版の内容、具体的な法的適用、算定可否は判断できない。","candidate_record_ids":["fee.dayservice.note.10","fee.dayservice.note.13","fee.dayservice.service-provision"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["候補の原文・後続改正・対象サービスへの法的適用"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.additions.2","section_id":"additions","kind":"CHECKPOINT","text":"加算ごとに配置・計画・同意・実施記録・届出を照合する。","candidate_record_ids":["fee.dayservice.note.10","fee.dayservice.note.13","fee.dayservice.service-provision"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.additions.3","section_id":"additions","kind":"CHECKPOINT","text":"個別機能訓練の実施・評価・計画に関する原典を確認する。","candidate_record_ids":["fee.dayservice.note.10","fee.dayservice.note.13","fee.dayservice.service-provision"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.additions.4","section_id":"additions","kind":"CHECKPOINT","text":"入浴介助や提供体制強化の区分・必要資料を別々に調べる。","candidate_record_ids":["fee.dayservice.note.10","fee.dayservice.note.13","fee.dayservice.service-provision"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.additions.5","section_id":"additions","kind":"CHECKPOINT","text":"併算・区分変更・届出の効力発生日は告示・留意事項で確認する。","candidate_record_ids":["fee.dayservice.note.10","fee.dayservice.note.13","fee.dayservice.service-provision"],"basis_scope":"EXISTING_CANDIDATE_POINTER_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.additions.gap.1","issue":"加算別の現行本文・届出時点・経過措置","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"notifications","title":"届出・手続","intended_user_questions":["指定変更・加算届・事故報告をどう区別するか。","提出先・様式・期限はどこで確かめるか。"],"draft_status":"NEEDS_SOURCE","draft_statements":[{"statement_id":"dayservice.notifications.1","section_id":"notifications","kind":"CHECKPOINT","text":"申請、変更、加算、事故報告を別の手続として分類する。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.notifications.2","section_id":"notifications","kind":"CHECKPOINT","text":"指定権者の現行案内で提出先・添付書類・期限・届出日を照合する。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.notifications.3","section_id":"notifications","kind":"CHECKPOINT","text":"電子申請の案内を全国一律の手続・期限とみなさない。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.notifications.gap.1","issue":"届出の個別公式資料IDと指定権者の案内","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"national_qa","title":"国Q&A","intended_user_questions":["国Q&Aの問番号・日付・サービス対象は何か。","旧問50と問59の後続関係をどう確認するか。"],"draft_status":"NEEDS_SOURCE","draft_statements":[{"statement_id":"dayservice.national_qa.1","section_id":"national_qa","kind":"CHECKPOINT","text":"Q&A原本の名称・問番号・発出日・対象サービスを個別記録する。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.national_qa.2","section_id":"national_qa","kind":"CHECKPOINT","text":"問50と問59を番号だけで置き換えず、改正・削除・後続通知を別に確認する。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.national_qa.3","section_id":"national_qa","kind":"CHECKPOINT","text":"他サービスのQ&Aを通所介護に自動適用しない。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.national_qa.gap.1","issue":"国Q&Aの資料別ID・原本・後続関係","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]},{"section_id":"sources_and_history","title":"原典・改正履歴","intended_user_questions":["法令・通知の版と施行日をどこで照合するか。","改正対照表の省略箇所と経過措置はどう扱うか。"],"draft_status":"NEEDS_SOURCE","draft_statements":[{"statement_id":"dayservice.sources_and_history.1","section_id":"sources_and_history","kind":"CHECKPOINT","text":"資料ID・発出主体・発出日・施行日・版・条項位置を別属性で控える。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.sources_and_history.2","section_id":"sources_and_history","kind":"CHECKPOINT","text":"Repositoryの収載日・検証ラベルを最新施行版の保証と混同しない。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"},{"statement_id":"dayservice.sources_and_history.3","section_id":"sources_and_history","kind":"CHECKPOINT","text":"「略」の改正対照表は現行全文を別に取得し、経過措置を追跡する。","candidate_record_ids":[],"basis_scope":"UNSOURCED_RESEARCH_PROMPT_ONLY","unknowns":["必要な現行原典と適用時点が未確認"],"review_state":"DRAFT_UNREVIEWED"}],"gaps":[{"gap_id":"dayservice.sources_and_history.gap.1","issue":"原典と改正履歴の個別候補ID・最新施行版","next_check":"公式一次資料とサービス・条項・時点を個別に照合し、未確認は保留する","status":"UNRESOLVED"}]}]};
+const SOURCE_URLS={"egov-care-insurance-act":"https://laws.e-gov.go.jp/law/409AC0000000123","mhlw-home-care-standards-current":"https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=2","mhlw-2024-interpretation-redline":"https://www.mhlw.go.jp/content/12300000/001227935.pdf","mhlw-qa":"https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html","mhlw-application-forms":"https://www.mhlw.go.jp/stf/kaigo-shinsei.html","mhlw-interpretation-html":"https://www.mhlw.go.jp/web/t_doc?dataId=00ta4369&dataType=1","mhlw-2021-interpretation-redline":"https://www.mhlw.go.jp/content/12300000/000869798.pdf","mhlw-fee-notice19-base":"https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1","mhlw-r8-fee-amendment87":"https://www.mhlw.go.jp/content/12404000/001675895.pdf","mhlw-r8-fee-guidance-may-amendment":"https://www.mhlw.go.jp/content/001698614.pdf","mhlw-electronic-application-operator-manual-v2-50":"https://www.kaigokensaku.mhlw.go.jp/shinsei/index.php?action_shinsei_static_help=true"};
+function equalSnapshot(value, fixed){
+ if(value===fixed)return true;
+ if(value===null||fixed===null||typeof value!==typeof fixed)return false;
+ if(typeof value!=="object")return false;
+ if(Array.isArray(value)!==Array.isArray(fixed))return false;
+ const keys=Object.keys(value),expected=Object.keys(fixed);
+ return keys.length===expected.length&&expected.every(k=>Object.hasOwn(value,k)&&equalSnapshot(value[k],fixed[k]));
+}
+function embeddedData(elementId, collection){
+ const element=$(elementId),raw=element?element.textContent.trim():"";
+ if(!raw||raw.length>500000)return [];
+ try{
+  const value=JSON.parse(raw),fixed=elementId==="handbook-sources-json"?PINNED_A:PINNED_B;
+  if(!value||typeof value!=="object"||Array.isArray(value)||value.service_id!=="dayservice")return [];
+  if(value.base_pr_head!=="c6e61a44a8287f020d56e1c22d63ad2b74a08b89")return [];
+  if(!equalSnapshot(value,fixed))return [];
+  const rows=value.sections;
+  if(!Array.isArray(rows)||rows.length>500)return [];
+  // A is sections[].candidates. Never infer a legal record for record_id:null.
+  return collection==="candidates"?rows.flatMap(s=>s.candidates):rows;
+ }catch(_){return [];}
+}
+const EXTRA_SOURCES=embeddedData("handbook-sources-json","candidates");
+const EXTRA_DRAFTS=embeddedData("handbook-drafts-json","sections");
+function smallText(value,limit=500){return typeof value==="string"?value.slice(0,limit):"";}
+function safeOfficialUrl(value,sourceId){
+ if(typeof value!=="string"||value.length>2000)return null;
+ try{
+  const u=new URL(value),host=u.hostname.toLowerCase();
+  if(u.protocol!=="https:"||u.username||u.password||u.port||u.hash)return null;
+  if(!(host==="mhlw.go.jp"||host.endsWith(".mhlw.go.jp")||host==="laws.e-gov.go.jp"||host==="elaws.e-gov.go.jp"))return null;
+  // Host alone is insufficient: require the literal registered URL.
+  if(sourceId!==undefined)return Object.hasOwn(SOURCE_URLS,sourceId)&&SOURCE_URLS[sourceId]===value?value:null;
+  return Object.values(SOURCE_URLS).includes(value)?value:null;
+ }catch(_){return null;}
+}
+function plain(tag,value,className){
+ const n=document.createElement(tag);n.textContent=value;
+ if(className)n.className=className;return n;
+}
+function renderSupplement(sectionId){
+ const sources=$("source-preview"),drafts=$("draft-preview");
+ const seen=new Set(),refs=new Set(CANDIDATES.filter(x=>x.chapter_id===sectionId).map(x=>x.record_id));
+ const additions=[];
+ for(const entry of EXTRA_SOURCES){
+  if(!entry||typeof entry!=="object"||entry.section_id!==sectionId||entry.service_id&&entry.service_id!=="dayservice")continue;
+  const sourceId=smallText(entry.source_id,160),candidateId=smallText(entry.candidate_id,160);
+  if(!sourceId||!candidateId||seen.has(candidateId))continue;
+  seen.add(candidateId);
+  const container=plain("section","","candidate");
+  container.append(plain("h4",smallText(entry.title,200)||"追加の原典候補"));
+  container.append(plain("p","候補ID: "+candidateId+" / 資料ID: "+sourceId,"metadata"));
+  container.append(plain("p","Repository内の参照位置: "+(smallText(entry.source_locator,300)||"確認待ち"),"metadata"));
+  container.append(plain("p","章との対応: CHAPTER_CANDIDATE / 現行適用: 未確認 / 人手レビュー: 未実施","metadata"));
+  const limitation=smallText(entry.currentness_limit,300);
+  if(limitation)container.append(plain("p","現行性の制約: "+limitation,"metadata"));
+  container.append(plain("p",entry.record_id===null?"資料台帳・収載範囲の候補：条項単位の根拠ではありません。":"収載項目ID: "+entry.record_id,"metadata"));
+  container.append(plain("p","候補の区分: "+entry.candidate_status+" / 版: "+(entry.source_version||"未確定"),"metadata"));
+  if(entry.notes)container.append(plain("p",entry.notes,"metadata"));
+  const url=safeOfficialUrl(entry.source_url,sourceId);
+  if(url){const a=plain("a","出典台帳の登録URLを開く（現行性未確認） ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";container.append(a);}
+  // Untrusted A records must NOT extend canonical IDs accepted by B drafts.
+  additions.push(container);
+ }
+ sources.replaceChildren(...(additions.length?additions:[plain("p","この章の追加候補はまだ統合されていません。","empty")]));
+ const draftNodes=[],seenStatements=new Set();
+ for(const section of EXTRA_DRAFTS){
+  if(!section||typeof section!=="object"||section.section_id!==sectionId||!Array.isArray(section.draft_statements))continue;
+  for(const statement of section.draft_statements.slice(0,100)){
+   if(!statement||typeof statement!=="object"||statement.section_id!==sectionId||statement.review_state!=="DRAFT_UNREVIEWED"||!["PROVISIONAL_EXPLANATION","CHECKPOINT"].includes(statement.kind))continue;
+   const sid=smallText(statement.statement_id,150),body=smallText(statement.text,1500);
+   if(!sid||!body||seenStatements.has(sid))continue;
+   const recordIds=statement.candidate_record_ids;
+   if(!Array.isArray(recordIds)||new Set(recordIds).size!==recordIds.length||recordIds.some(x=>typeof x!=="string"||!refs.has(x)))continue;
+   if(statement.kind==="PROVISIONAL_EXPLANATION"&&!recordIds.length)continue;
+   seenStatements.add(sid);
+   const node=plain("section","","candidate");
+   node.append(plain("h4",statement.kind==="CHECKPOINT"?"確認ポイント":"暫定説明（未レビュー）"));
+   node.append(plain("p",body));
+   node.append(plain("p","根拠候補ID: "+(recordIds.join(", ")||"未設定")+" / DRAFT_UNREVIEWED / HUMAN_REVIEW_NOT_DONE","metadata"));
+   draftNodes.push(node);
+  }
+ }
+ drafts.replaceChildren(...(draftNodes.length?draftNodes:[plain("p","この章の説明文は未レビューです。統合済み草稿はありません。","empty")]));
+}
+// Browser storage is untrusted and may be denied by the user agent.
+notes=Object.fromEntries(CHAPTERS.map(r=>[r[0],typeof notes[r[0]]==="string"?notes[r[0]].slice(0,8000):""]));
+progress=Object.fromEntries(CANDIDATES.map(r=>{const k=r.chapter_id+"::"+r.record_id;return [k,progressOptions.includes(progress[k])?progress[k]:"未着手"];}));
 show(current);
 </script></body></html>
+

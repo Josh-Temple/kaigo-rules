@@ -48,3 +48,17 @@ GitHub `main@098a349c26f35cd9e9ad8f0b7ff54f2068f6a702` を入力snapshotとし�
 閲覧者は各候補を「未着手」「原典を開いた」「要再確認」の**個人用閲覧記録**としてマークでき、章ごとの自由メモとともにJSONで書き出せます。これらはすべて利用者のローカル作業メモであり、法令の検証台帳・human review・publication statusへ書き戻しません。機微情報を入力しないこと。
 
 `tests/test_dayservice_handbook_trial.py` は各候補のID・原文・収載ラベル・原典URLを、Git Blob SHAを含めて固定source dataと突合します。source dataが変わったら自動的に検証が失敗し、候補一覧の再作成が必要になります。8つのテストメソッドを追加しており、UIの実機操作・個別法令の現在性や内容確認を検証するものではありません。
+
+## 2026-10-14 E統合：ローカル試用版（Draft、未公開）
+
+独立Dが限定受入したC #496 (`46313c55ed8dbfcfca78cfa5481e4ad7bf9bbf49`) の試用UIへ、A #497とB #498の固定成果をそのまま組み込みました。
+
+- 15章／既存の章×原典候補27件（11章）に加え、追加の暫定原典候補11件（4章）。
+- 未レビュー草稿65文（暫定説明・実務上の確認ポイント）、人手確認済みの法令解説は**0件**。
+- 2つの `application/json` スロットにローカル成果物の全体を静的に埋め込み。入力資料について固定Git blobとC内部の既知スナップショットをE側で照合し、HTML終了文字 `<` を `\\u003c` としてエスケープ。ブラウザ実行時のfetchなし。
+- `tests/test_dayservice_handbook_integration.py` は元データのGit blob、埋込同一性、非公開境界を確認。 `python -m unittest discover -s tests -p 'test_dayservice_handbook*.py' -v` で検証する。
+- 使用者のメモ・閲覧進捗は個人的記録であり、`review_completed:false`。保存できないときはJSON書出し。機微情報を入力しない。
+- 旧問50は過去資料、問59との後続関係・現在性は未確定。資料台帳の候補を条項単位の証明へ昇格しない。
+- GitHubの公開Repositoryにあるファイル自体は誰でも閲覧可能であり、サイト未接続は秘密性・アクセス認証の保証ではない。
+
+このE統合は**PR #495のDraftだけ**。Dは統合後HEAD・JS取込経路を別途再受入する。Android実機と実際のPreview URLでの確認、法令の現行性・法的適用・人手確認、本番公開承認は未実施。mainへのマージ・production公開・公開allowlist変更は保留を維持。
