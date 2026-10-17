@@ -45,6 +45,11 @@ export default function DayservicePage() {
         </div>
       </section>
 
+      <section className="section" aria-label="出典案内の試験公開">
+        <h2>15章から原典候補を探す（試用版）</h2>
+        <p>未レビューの資料所在案内です。法令の現行性・具体的な適用や報酬算定についての確定解説ではありません。</p>
+        <p><Link href="/handbook-sources#dayservice">15章の出典案内を開く →</Link></p>
+      </section>
       <p><Link href="/services">サービス一覧へ戻る</Link></p>
     </article>
   );
