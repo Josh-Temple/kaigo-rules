@@ -1,0 +1,448 @@
+{
+  "schema": "KAIGO_EVIDENCE_CHAPTER_BRIDGE_DRAFT_V1",
+  "created_date_jst": "2026-10-18",
+  "scope": "LIBRARY_ONLY_DRAFT_BRIDGE_NOT_CANONICAL",
+  "github_repo": "Josh-Temple/kaigo-rules",
+  "github_main_verified_sha": "098a349c26f35cd9e9ad8f0b7ff54f2068f6a702",
+  "related_draft_prs": {
+    "495": {
+      "status": "OPEN_DRAFT",
+      "head_sha": "e8b2cd0b1e3521c16f144f20f3c5c66073916e9e"
+    },
+    "499": {
+      "status": "OPEN_DRAFT",
+      "head_sha": "0560a808b6771e94b34ae2b65df6bc1b584b0762"
+    }
+  },
+  "publication": "BLOCKED",
+  "release_gate": "HOLD_NO_GO",
+  "currentness": "NOT_ESTABLISHED",
+  "applicability": "NOT_ESTABLISHED",
+  "human_review": "NOT_REVIEWED",
+  "legal_explanations_accepted": 0,
+  "real_project_work_enabled": false,
+  "github_changes": "NONE",
+  "research_mesh_changes": "NONE",
+  "chapter_reference": "PR #499 observed CHAPTERS 15 titles/IDs; dayrehab is only a proposed reuse, not an existing accepted layout",
+  "service_id": "dayservice",
+  "chapter_count": 15,
+  "chapters": [
+    {
+      "section_id": "applicability",
+      "title": "適用対象・基本事項",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-001-01",
+          "evidence_task_id": "KR-EVIDENCE-001",
+          "evidence_library_file_id": "libfile_9477589127308191af042fe28d113ffd",
+          "source_identifiers": [
+            "411M50000100037#92"
+          ],
+          "source_url_from_evidence": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "通所介護の基本方針については、厚生省令第37号の第七章「通所介護」第一節、第92条に記載があります。掲載本文には、利用者の生活機能の維持・向上や日常生活上の支援などに関する基本的な考え方が示されています。具体的な基準の適用や最新の施行内容は、原典と所管自治体の基準を別途確認してください。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "designation",
+      "title": "指定・開設",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-005-01",
+          "evidence_task_id": "KR-EVIDENCE-005",
+          "evidence_library_file_id": "libfile_36a6d154e6b481919bd204fe7c0419ec",
+          "source_identifiers": [
+            "egov-care-insurance-act",
+            "mhlw-application-forms"
+          ],
+          "source_url_from_evidence": "https://github.com/Josh-Temple/kaigo-rules/pull/495",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "指定・開設については、介護保険法第70条・第70条の2の収載範囲と、厚生労働省の指定申請等の案内を確認する入口を設けています。ここでの条文番号は原典照合候補であり、最新施行版の規定、指定権者ごとの提出書類・期限、個別事業所への適用は確認できていません。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "staffing",
+      "title": "人員基準",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-002-01",
+          "evidence_task_id": "KR-EVIDENCE-002",
+          "evidence_library_file_id": "libfile_8aaafa1003c4819182cf63ac8835dcdc",
+          "source_identifiers": [
+            "411M50000100037#93",
+            "411M50000100037#94"
+          ],
+          "source_url_from_evidence": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "通所介護の人員に関する基準は、厚生省令第37号の第七章第二節、第93条（従業者の員数）と第94条（管理者）に掲載されています。第93条には職種別の員数に加えて、勤務・兼務や第一号通所事業との一体運営に関する条件が記載されています。第94条には管理者の規定と、一定の場合の兼務に関するただし書があります。具体的な配置の判断に当たっては、条文の各項・各号、例外、施行時点及び指定権者の条例等を確認してください。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "equipment",
+      "title": "設備基準",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-003-01",
+          "evidence_task_id": "KR-EVIDENCE-003",
+          "evidence_library_file_id": "libfile_c0aa3665440c8191b750bda13ef6f441",
+          "source_identifiers": [
+            "411M50000100037#95"
+          ],
+          "source_url_from_evidence": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "厚生労働省が掲載する省令第37号の第七章第三節には、通所介護の設備・備品等に関する第95条があります。掲載本文では、第1項に設備等の種類、第2項に食堂・機能訓練室と相談室、第3項に設備の利用、第4項に夜間・深夜の別サービスに関する届出、第5項に第一号通所事業との一体運営に関する規定が置かれています。具体的な面積、兼用、届出、みなしの適用は、各項・号の原文、改正・施行時点、指定権者の条例等を確認してください。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "operations",
+      "title": "運営基準",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-004-01",
+          "evidence_task_id": "KR-EVIDENCE-004",
+          "evidence_library_file_id": "libfile_2d720e07ecb08191a1dd790d1639cc8a",
+          "source_identifiers": [
+            "411M50000100037#105"
+          ],
+          "source_url_from_evidence": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "通所介護の運営基準を確認する際は、厚生労働省掲載の平成11年厚生省令第37号・第7章第4節「運営に関する基準」を参照してください。第105条「準用」には、第8条から第17条までを含む他章の条文の参照先と、第8条第1項の条番号や「訪問介護員等」の用語を読み替える箇所が示されています。第105条の列挙だけで判断せず、参照先の各条項本文、改正・施行時点、指定権者の条例等を個別に確認してください。ここでは適用や現行性を確定していません。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "records",
+      "title": "記録・情報管理",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "safeguarding",
+      "title": "利用者保護",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "incident_and_infection",
+      "title": "事故・感染症・虐待防止",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "business_continuity",
+      "title": "業務継続計画",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "remuneration",
+      "title": "基本報酬",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-006-01",
+          "evidence_task_id": "KR-EVIDENCE-006",
+          "evidence_library_file_id": "libfile_cdba32e3d2908191b81c874e2dc59644",
+          "source_identifiers": [
+            "mhlw-fee-notice19-base",
+            "mhlw-r8-fee-amendment87"
+          ],
+          "source_url_from_evidence": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "通所介護費の基本報酬の確認入口は、厚生省告示第19号の別表「6 通所介護費」です。令和8年告示第87号の新旧対照表では「イ～ニ」が省略されているため、この対照表だけから基本報酬の全文や現行の算定条件を復元しません。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "deductions",
+      "title": "減算",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "additions",
+      "title": "加算",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-006-02",
+          "evidence_task_id": "KR-EVIDENCE-006",
+          "evidence_library_file_id": "libfile_cdba32e3d2908191b81c874e2dc59644",
+          "source_identifiers": [
+            "mhlw-fee-notice19-base",
+            "mhlw-r8-fee-amendment87"
+          ],
+          "source_url_from_evidence": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "介護職員等処遇改善加算については、告示第19号の別表「6 通所介護費」ホと、令和8年告示第87号の改正前・改正後対照表を照合します。対照表上の区分や率は改正資料の表示内容であり、個別事業所の届出状況、算定要件、算定可能性をこの手引候補では判断しません。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "notifications",
+      "title": "届出・手続",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-005-02",
+          "evidence_task_id": "KR-EVIDENCE-005",
+          "evidence_library_file_id": "libfile_36a6d154e6b481919bd204fe7c0419ec",
+          "source_identifiers": [
+            "egov-care-insurance-act",
+            "mhlw-application-forms",
+            "mhlw-electronic-application-operator-manual-v2-50"
+          ],
+          "source_url_from_evidence": "https://github.com/Josh-Temple/kaigo-rules/pull/495",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "届出・手続では、介護保険法第75条の収載範囲、国の電子申請案内、操作マニュアルを資料候補として区別します。操作説明と法令上の届出義務・期限は別々に確認し、自治体の様式・運用については指定権者の最新案内との照合が必要です。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "national_qa",
+      "title": "国Q&A",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-005-03",
+          "evidence_task_id": "KR-EVIDENCE-005",
+          "evidence_library_file_id": "libfile_36a6d154e6b481919bd204fe7c0419ec",
+          "source_identifiers": [
+            "mhlw-qa"
+          ],
+          "source_url_from_evidence": "https://github.com/Josh-Temple/kaigo-rules/pull/495",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "国Q&Aの候補には、2015年4月1日付の問50に関する過去資料の参照先があります。これは後続Q&Aとの関係や現在の取扱いを示すものではありません。原本・発出日・改廃・後続資料を個別に確認するまで、現行の判断根拠として扱いません。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    },
+    {
+      "section_id": "sources_and_history",
+      "title": "原典・改正履歴",
+      "existing_accepted_explanations": 0,
+      "candidate_paragraphs": [
+        {
+          "bridge_id": "KR-BRIDGE-005-04",
+          "evidence_task_id": "KR-EVIDENCE-005",
+          "evidence_library_file_id": "libfile_36a6d154e6b481919bd204fe7c0419ec",
+          "source_identifiers": [
+            "mhlw-2024-interpretation-redline",
+            "mhlw-r8-fee-amendment87",
+            "mhlw-r8-fee-guidance-may-amendment",
+            "mhlw-home-care-standards-current"
+          ],
+          "source_url_from_evidence": "https://github.com/Josh-Temple/kaigo-rules/pull/495",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "原典・改正履歴では、省令第37号、令和6年度の解釈通知新旧対照表、令和8年の報酬関係改正資料を資料候補として並べています。各資料の改正箇所、施行日、後続改正、通所介護への適用関係は個別の原典本文で照合する必要があり、対照表の「（略）」を補って現行本文とみなすことはしません。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        },
+        {
+          "bridge_id": "KR-BRIDGE-006-03",
+          "evidence_task_id": "KR-EVIDENCE-006",
+          "evidence_library_file_id": "libfile_cdba32e3d2908191b81c874e2dc59644",
+          "source_identifiers": [
+            "mhlw-fee-notice19-base",
+            "mhlw-r8-fee-amendment87"
+          ],
+          "source_url_from_evidence": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+          "source_locator_provenance": "EVIDENCE_RECORD_NOT_NEWLY_LEGAL_VALIDATED",
+          "text": "原典は厚生省告示第19号、改正証拠は令和8年厚生労働省告示第87号として分けて参照します。告示87号の附則と通所介護費の改正箇所を確認したものの、後続改正、経過措置、自治体の届出実務まで一括して現行と認定したものではありません。",
+          "draft_review_state": "DRAFT_UNREVIEWED",
+          "mapping_state": "CHAPTER_ID_OBSERVED_IN_PR_499_ONLY",
+          "collision_policy": "APPEND_NEW_DISTINCT_BRIDGE_ID; DO_NOT_REPLACE_65_EXISTING_DRAFTS_OR_CHANGE_VALIDATION_FLAGS"
+        }
+      ],
+      "mapping_state": "OBSERVED_IN_DRAFT_PR_499"
+    }
+  ],
+  "source_evidence": [
+    {
+      "task_id": "KR-EVIDENCE-001",
+      "service_id": "dayservice",
+      "library_file_id": "libfile_9477589127308191af042fe28d113ffd",
+      "file_id": "file_00000000772481f5903c79f42d692d68",
+      "basename": "KR-EVIDENCE-001_dayservice_source_evidence_candidate.json",
+      "byte_sha256": "93aca86bf9d0452a647e7b1b8345761a99b8f6cec5b473eb3e38fb82b6e3a0cd",
+      "size_bytes": 4530,
+      "github_file": "data/ordinance37-scope.json",
+      "github_blob_sha": "f05ec80b8473ec89b5e2ed48f88fd30abb8d1cd5",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404",
+      "source_family": "governing_standards_ordinance",
+      "unresolved": [
+        "厚生労働省HTML掲載本文の更新時点・施行時点の確認",
+        "現行のe-Gov法令本文・改正履歴との独立比較",
+        "指定権者の条例等との適用関係",
+        "共生型通所介護・基準該当通所介護・地域密着型通所介護との適用範囲の切分け",
+        "手引の15章への最終配置及び人手レビュー"
+      ]
+    },
+    {
+      "task_id": "KR-EVIDENCE-002",
+      "service_id": "dayservice",
+      "library_file_id": "libfile_8aaafa1003c4819182cf63ac8835dcdc",
+      "file_id": "file_0000000024d082309ff5e0db41d8a8fb",
+      "basename": "KR-EVIDENCE-002_dayservice_source_evidence_candidate.json",
+      "byte_sha256": "f0e055f157ca082b898c803855a4ac3a8d4a43029fe76e603767eacafd5aab53",
+      "size_bytes": 7218,
+      "github_file": "data/ordinance37-scope.json",
+      "github_blob_sha": "f05ec80b8473ec89b5e2ed48f88fd30abb8d1cd5",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404",
+      "source_family": "governing_standards_ordinance",
+      "unresolved": [
+        "省令37号の現行統合本文・改正履歴・施行日と厚労省掲載HTMLの独立照合",
+        "第93条の各職種配置数の算定例と時間帯・単位・利用者数の条件を現行の原典で再検証",
+        "第93条第7項のみなし規定と市町村第一号通所事業基準との関係",
+        "第94条ただし書の管理上支障がない条件と自治体運用",
+        "共生型・基準該当・地域密着型との適用範囲の切分け",
+        "正式な人手レビューと15章手引への反映"
+      ]
+    },
+    {
+      "task_id": "KR-EVIDENCE-003",
+      "service_id": "dayservice",
+      "library_file_id": "libfile_c0aa3665440c8191b750bda13ef6f441",
+      "file_id": "file_00000000821081f48c5001dba2f480d2",
+      "basename": "KR-EVIDENCE-003_dayservice_source_evidence_candidate.json",
+      "byte_sha256": "1e965344f1c74906133fd93b144f23ab9472cc588a6b3f797f146996c5a1ca93",
+      "size_bytes": 8972,
+      "github_file": "data/ordinance37-scope.json",
+      "github_blob_sha": "f05ec80b8473ec89b5e2ed48f88fd30abb8d1cd5",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404",
+      "source_family": "governing_standards_ordinance",
+      "unresolved": [
+        "厚労省HTMLの更新時点・令和8年10月17日時点の現行統合本文・施行日を独立照合していない。",
+        "第95条第2項第1号イの面積算定と第1号ロの共用条件について、個別事業所への適用判断は未実施。",
+        "第95条第3項ただし書・第4項の夜間等の別サービスに関する指定権者届出条件を未審査。",
+        "第95条第5項のみなし規定と市町村の第一号通所事業基準の具体的適用関係は未確認。",
+        "共生型、基準該当、地域密着型のサービス類型別適用と自治体条例を未確認。",
+        "原典HTML全体の原バイトハッシュ・e-Gov統合法令の独立突合、人手レビューは未実施。"
+      ]
+    },
+    {
+      "task_id": "KR-EVIDENCE-004",
+      "service_id": "dayservice",
+      "library_file_id": "libfile_2d720e07ecb08191a1dd790d1639cc8a",
+      "file_id": "file_0000000065c881f5acc1134993517c9e",
+      "basename": "KR-EVIDENCE-004_dayservice_source_evidence_candidate.json",
+      "byte_sha256": "028bffe631a34187800a9a93098e04f0d3feacc7f8ba7465e261fc27efd3dbaf",
+      "size_bytes": 9934,
+      "github_file": "data/ordinance37-scope.json",
+      "github_blob_sha": "f05ec80b8473ec89b5e2ed48f88fd30abb8d1cd5",
+      "source_url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404",
+      "source_family": "governing_standards_ordinance",
+      "unresolved": [
+        "厚労省HTML掲載本文が2026-10-17時点で適用される統合施行版か、後続改正と経過措置を含めて未確認。",
+        "準用対象23条項の各原文・版・施行と条項単位の適用関係は独立照合していない。",
+        "第105条の読替え先各条項における実際の文脈、自治体条例・指定権者運用は未確認。",
+        "第105条の規定は第105条の2・第105条の3や第109条の異なる準用規定と混同しない。",
+        "報酬算定・Q&A・人手レビュー・公開承認は未実施。"
+      ]
+    },
+    {
+      "task_id": "KR-EVIDENCE-005",
+      "service_id": "dayservice",
+      "library_file_id": "libfile_36a6d154e6b481919bd204fe7c0419ec",
+      "file_id": "file_00000000ab8881f6b2e2cd9fe51cbaae",
+      "basename": "KR-EVIDENCE-005_dayservice_source_evidence_candidate.json",
+      "byte_sha256": "aa83ccc85aa5ed71bb8327f802ec5732c200ba7248749cb32938569ef784cd82",
+      "size_bytes": 20536,
+      "github_file": "docs/prototypes/README.md",
+      "github_blob_sha": "7e09c3217a78e8eb44cf6a06ba7e1ea085ebc5bf",
+      "source_url": "https://github.com/Josh-Temple/kaigo-rules/pull/495",
+      "source_family": null,
+      "unresolved": [
+        "11追加候補の公式原典本文・施行版・後続改正の独立照合",
+        "4章の草稿12文に対応する候補source ID/locatorの根拠連結",
+        "15章のgap各1件の解消",
+        "Q&A問50と後続問59の関係及び現行性",
+        "準用先条項・自治体手続・報酬算定条件の個別確認",
+        "PR #499修正候補のPR #495への統合・独立受入",
+        "人手法令レビュー、公開判断は未実施"
+      ]
+    },
+    {
+      "task_id": "KR-EVIDENCE-006",
+      "service_id": "dayservice",
+      "library_file_id": "libfile_cdba32e3d2908191b81c874e2dc59644",
+      "file_id": "file_00000000a55081f498412b3e866ee266",
+      "basename": "KR-EVIDENCE-006_dayservice_source_evidence_candidate.json",
+      "byte_sha256": "c808b2edf7b7d156fe02c3527f14a7362023bfdd3a9e3ce1ca36a6495f69d5a4",
+      "size_bytes": 11963,
+      "github_file": "data/remuneration-current-skeleton.json",
+      "github_blob_sha": "4caef5d7c34c1658e442db137fed20944ebfeb06",
+      "source_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+      "source_family": null,
+      "unresolved": [
+        "告示19号の最新統合版の網羅性と告示87号以後の改正・訂正・経過措置の全量照合は未実施。",
+        "基本報酬（イ～ハ）・サービス提供体制強化加算（ニ）等は告示87号PDFで省略されており、略記から本文を補完していない。",
+        "加算の算定要件、届出、個別適用、Q&A、自治体条例・運用、単位数の適用判断は未確定。",
+        "15章草稿と各出典の人手レビュー、法令現行性の承認、公開ゲートは未実施。",
+        "公式HTML/PDFの原バイトSHA-256と全改正履歴の独立突合は未実施（原典表示とPDFページ目視は実施）。"
+      ]
+    }
+  ],
+  "candidate_paragraph_count": 11,
+  "chapters_with_new_candidate_count": 10,
+  "existing_pr_reference": {
+    "chapter_count": 15,
+    "legacy_candidate_records": 27,
+    "supplementary_source_candidates": 11,
+    "unreviewed_draft_statements": 65,
+    "accepted_legal_statements": 0,
+    "pr495_maintained_as_draft": true,
+    "pr499_memo_fix_not_merged": true
+  },
+  "integration_instruction": "Append separate evidence-pointer bridge in a nonpublic test fixture. Keep 65 existing draft statements and 38 source candidates unchanged. Do not mark any legal statement validated."
+}
