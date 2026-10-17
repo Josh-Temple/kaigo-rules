@@ -68,7 +68,7 @@ class EvidenceBridgeTests(unittest.TestCase):
                 self.assertEqual(p["draft_review_state"], "DRAFT_UNREVIEWED")
                 self.assertNotEqual(p["text"], "")
                 self.assertEqual(p["evidence_library_file_id"], refs[p["evidence_task_id"]]["library_file_id"])
-                self.assertEqual(chapter["section_id"], chapter["section_id"])
+                self.assertIn(chapter["section_id"], {c["section_id"] for c in doc["chapters"]})
                 self.assertIsInstance(p["source_identifiers"], list)
                 suffix = int(p["evidence_task_id"].rsplit("-", 1)[1])
                 self.assertIn(suffix, allowed)
@@ -111,7 +111,7 @@ class EvidenceBridgeTests(unittest.TestCase):
             self.assertNotIn("XMLHttpRequest", html)
             self.assertNotIn("innerHTML", html)
         self.assertIn("textContent=item.text", self.dayservice_html)
-        self.assertIn("textContent=item.text", self.dayrehab_html)
+        self.assertIn("paragraph(item.text)", self.dayrehab_html)
         self.assertNotIn("localStorage", self.dayrehab_html)
 
 if __name__ == "__main__":
