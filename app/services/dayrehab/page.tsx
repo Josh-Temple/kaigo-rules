@@ -66,6 +66,11 @@ export default function DayrehabPage() {
           各資料群は出典・版・確認状況を分けています。報酬基準の掲載表示と令和8年差分、留意事項の令和6年対照表と令和8年対照表を結合した「現行全文」は作成していません。
         </p>
       </section>
+      <section className="section" aria-label="出典案内の試験公開">
+        <h2>15章から原典候補を探す（試用版）</h2>
+        <p>未レビューの資料所在案内です。法令の現行性・具体的な適用や報酬算定についての確定解説ではありません。</p>
+        <p><Link href="/handbook-sources#dayrehab">15章の出典案内を開く →</Link></p>
+      </section>
       <p><Link href="/services">サービス一覧へ戻る</Link></p>
     </article>
   );
