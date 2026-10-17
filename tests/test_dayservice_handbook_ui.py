@@ -54,8 +54,11 @@ class DayserviceHandbookUITest(unittest.TestCase):
         self.assertNotIn("innerHTML",HTML)
         self.assertIn("textContent=value",self.js)
         self.assertIn("replaceChildren",self.js)
-        self.assertEqual(len(self.p.scripts),3)
-        self.assertEqual([x.get("type") for x in self.p.scripts[:2]],["application/json"]*2)
+        # Two prior pinned JSON slots plus one new evidence bridge JSON, then one runnable script.
+        self.assertEqual(len(self.p.scripts),4)
+        self.assertEqual([x.get("type") for x in self.p.scripts[:3]],["application/json"]*3)
+        self.assertEqual(self.p.scripts[2].get("id"),"handbook-evidence-bridge-json")
+        self.assertIsNone(self.p.scripts[3].get("src"))
     def test_mobile_and_a11y(self):
         for text in ["max-width:760px","max-width:430px","max-width:360px",
                      ":focus-visible","skip-link","chapter-start","candidate-filter","kind-filter","progress-filter"]:
