@@ -1,0 +1,42 @@
+name: Handbook preview regressions (nonpublication)
+on:
+  pull_request:
+    paths:
+      - 'docs/prototypes/**'
+      - 'tests/test_handbook_evidence_bridges.py'
+      - 'tests/test_dayservice_handbook*.py'
+      - '.github/workflows/handbook-preview-regressions.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  handbook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify dayservice legacy regressions
+        run: python -m unittest discover -s tests -p 'test_dayservice_handbook*.py' -v
+      - name: Verify chapter evidence bridges
+        run: python -m unittest discover -s tests -p 'test_handbook_evidence_bridges.py' -v
+      - name: Check both HTML inline scripts parse with Node
+        run: |
+          python - <<'PY'
+          import pathlib,re,subprocess
+          for basename in ('dayservice-handbook.html','dayrehab-evidence-handbook.html'):
+              path=pathlib.Path('docs/prototypes')/basename
+              html=path.read_text(encoding='utf-8')
+              matches=re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',html)
+              if len(matches)!=1: raise SystemExit(f'{path}: expected one runnable inline JS, got {len(matches)}')
+              checked=subprocess.run(['node','--check','--input-type=commonjs'],input=matches[0],text=True,capture_output=True)
+              if checked.returncode: raise SystemExit(f'{path}: {checked.stderr}')
+              print(f'{path}: JavaScript syntax PASS')
+          PY
