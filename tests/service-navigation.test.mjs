@@ -30,21 +30,23 @@ test("database hub exposes shared databases and service-specific remuneration ro
   assert.match(source, /DBごとに公開範囲が異なります/);
 });
 
-test("published services have dedicated service landing pages", () => {
+test("all services have handbook entries, including the two existing service routes", () => {
   const index = readText("app/services/page.tsx");
   const dayservice = readText("app/services/dayservice/page.tsx");
   const dayrehab = readText("app/services/dayrehab/page.tsx");
 
   assert.match(index, /"\/services\/" \+ serviceId/);
-  assert.match(dayservice, /<h1>通所介護<\/h1>/);
-  assert.match(dayrehab, /<h1>通所リハビリテーション<\/h1>/);
+  assert.match(dayservice, /ServiceHandbook/);
+  assert.match(dayservice, /serviceHandbook\("dayservice"\)/);
+  assert.match(dayrehab, /ServiceHandbook/);
+  assert.match(dayrehab, /serviceHandbook\("dayrehab"\)/);
 });
 
 test("home exposes the database-wide entry before service-specific content", () => {
   const source = readText("app/page.tsx");
 
   assert.match(source, /キーワードから制度資料を探す/);
-  assert.match(source, /特定のサービスから見る/);
+  assert.match(source, /サービス別の手引を読む/);
   assert.match(source, /href="\/databases\/search"/);
   assert.match(source, /サービスを先に決めなくても/);
   assert.ok(
@@ -78,24 +80,25 @@ test("public service navigation covers every canonical service once and keeps pr
   }
 });
 
-test("services page uses user-facing groups and a database fallback instead of manifest order", () => {
+test("services page uses user-facing groups and opens complete handbooks", () => {
   const source = readText("app/services/page.tsx");
 
   assert.match(source, /publicServiceNavigationGroups/);
   assert.match(source, /案内上の分類/);
   assert.match(source, /介護予防支援は独立/);
-  assert.match(source, /DB全体から名称検索/);
-  assert.match(source, /検索結果が少ない場合も、制度資料そのものが存在しないとは限りません/);
+  assert.match(source, /全15章の手引を読む/);
+  assert.match(source, /確認前の内容も掲載/);
+  assert.match(source, /\/legislation/);
 });
 
 
-test("service and guide navigation are publication-gated across source families", () => {
+test("working handbooks coexist with the existing publication-gated guide navigation", () => {
   const services = readText("app/services/page.tsx");
   const contextLinks = readText("components/service-context-links.tsx");
   const guide = readText("app/guide/page.tsx");
 
-  assert.match(services, /publicSourceFamiliesForService/);
-  assert.match(services, /公開中の一次資料を横断/);
+  assert.match(services, /"\/services\/" \+ serviceId/);
+  assert.match(services, /39サービスすべて/);
   assert.match(contextLinks, /publicSourceFamiliesForService/);
   assert.match(contextLinks, /UNIT_PRICE_SOURCE_FAMILY/);
   assert.match(contextLinks, /\/fees\/unit-price/);

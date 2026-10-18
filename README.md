@@ -14,6 +14,10 @@
 
 ## Current public structure
 
+- 全39サービスの手引: `/services` → `/services/<service_id>`（各15章。確認前の内容も作成中として掲載）
+- 各章の詳細: `/handbook/<service_id>/<chapter>`（585章）
+- 法令・通知・報酬の共通閲覧: `/legislation`（条文・原典掲載順、39サービス別・資料別・キーワード絞り込み）
+- 手引の説明・確認項目を追記する手順: [docs/handbook-editing.md](docs/handbook-editing.md)
 - 全体DB入口: `/databases`
 - 共有DBの全体横断検索: `/databases/search`（介護保険法・基準省令・公開済み基準解釈通知・全サービス分類の国Q&A）
 - 共有コーパスを全体表示: 介護保険法 `/law`、基準省令 `/rules`

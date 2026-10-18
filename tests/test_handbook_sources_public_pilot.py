@@ -88,11 +88,13 @@ class BoundedPublicSourcePilot(unittest.TestCase):
         self.assertTrue(any(urlsplit(u).hostname == "github.com" for u in urls))
         self.assertTrue(all(urlsplit(u).scheme == "https" for u in urls))
 
-    def test_service_entries_are_scoped_to_bounded_trial(self):
+    def test_service_entries_open_working_handbooks_and_keep_legacy_trial_separate(self):
         for src, service in [(self.day, "dayservice"), (self.rehab, "dayrehab")]:
-            self.assertIn('href="/handbook-sources#%s"' % service, src)
-            self.assertIn("未レビュー", src)
+            self.assertIn('serviceHandbook("%s")' % service, src)
+            self.assertIn("ServiceHandbook", src)
             self.assertNotIn('href="/handbook-preview"', src)
+        component = (ROOT / "components/service-handbook.tsx").read_text(encoding="utf-8")
+        self.assertIn("確認前の解説・条文対応も掲載", component)
         self.assertIn('href={`/databases/search?service=${id}`}', self.source)
 
     def test_existing_unreviewed_preview_still_production_404(self):
