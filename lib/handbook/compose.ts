@@ -208,8 +208,8 @@ export function composeHandbookProjection(input: ComposeInput): HandbookProjecti
     const unresolved: string[] = [];
     for (const candidate of chapter.candidate_paragraphs) {
       const evidence = evidenceById.get(candidate.evidence_task_id);
+      requireValid(evidence !== undefined, "missing evidence reference");
       requireValid(candidate.draft_review_state === "DRAFT_UNREVIEWED" &&
-        Boolean(evidence) &&
         evidence.library_file_id === candidate.evidence_library_file_id &&
         evidence.source_url === candidate.source_url_from_evidence &&
         /^KR-BRIDGE-[0-9]{3}-[0-9]{2}$/.test(candidate.bridge_id) &&
@@ -236,10 +236,11 @@ export function composeHandbookProjection(input: ComposeInput): HandbookProjecti
     if (old) {
       for (const candidate of old.candidates) {
         const record = registry.get(candidate.source_id);
+        requireValid(record !== undefined, "missing registry source");
         requireValid(candidate.section_id === chapter.section_id &&
           candidate.candidate_status === "CANDIDATE" &&
           !!candidate.candidate_id && !seenCandidateIds.has(candidate.candidate_id) &&
-          !!record && record.url === candidate.source_url, "legacy source reference/mismatch");
+          record.url === candidate.source_url, "legacy source reference/mismatch");
         seenCandidateIds.add(candidate.candidate_id);
         legacyCandidateCount++;
         sources.push({
