@@ -60,6 +60,16 @@ test("all candidates are withheld even when the registry describes a verified so
   }
 });
 
+test("historical source candidate remains historical, never current or approved", () => {
+  const historical = composeHandbookProjection(input()).chapters
+    .flatMap(c => c.source_candidates)
+    .find(c => c.candidate_id === "handbook.a.national_qa.2015-question50");
+  assert.ok(historical);
+  assert.equal(historical.source_record_status, "HISTORICAL");
+  assert.equal(historical.currentness, "NOT_ESTABLISHED");
+  assert.equal(historical.publication, "NOT_GRANTED");
+});
+
 test("no preview paragraph text is present in the projection", () => {
   for (const serviceId of ["dayservice", "dayrehab"]) {
     const projection = JSON.stringify(composeHandbookProjection(input(serviceId)));
