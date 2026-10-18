@@ -247,7 +247,7 @@ export function composeHandbookProjection(input: ComposeInput): HandbookProjecti
         legacyCandidateCount++;
         sources.push({
           candidate_id: candidate.candidate_id, candidate_type: "OLD_SOURCE_CANDIDATE",
-          source_record_status: candidate.candidate_status as "CANDIDATE" | "HISTORICAL",
+          source_record_status: candidate.candidate_status === "HISTORICAL" ? "HISTORICAL" : "CANDIDATE",
           evidence_task_id: null, library_file_id: null,
           source_identifiers: [candidate.source_id], source_registry_id: candidate.source_id,
           source_version: candidate.source_version,
