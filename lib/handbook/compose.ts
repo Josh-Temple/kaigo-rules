@@ -82,6 +82,7 @@ export type PublicFamilyRoute = {
 export type ChapterSourceCandidate = {
   candidate_id: string;
   candidate_type: "EVIDENCE_BRIDGE" | "OLD_SOURCE_CANDIDATE";
+  source_record_status: "DRAFT_UNREVIEWED" | "CANDIDATE" | "HISTORICAL";
   evidence_task_id: string | null;
   library_file_id: string | null;
   source_identifiers: string[];
@@ -223,6 +224,7 @@ export function composeHandbookProjection(input: ComposeInput): HandbookProjecti
       // official legal source, and is never relabeled as one.
       sources.push({
         candidate_id: candidate.bridge_id, candidate_type: "EVIDENCE_BRIDGE",
+        source_record_status: "DRAFT_UNREVIEWED",
         evidence_task_id: evidence.task_id, library_file_id: evidence.library_file_id,
         source_identifiers: distinct(candidate.source_identifiers),
         source_registry_id: null, source_version: null, source_locator: null,
@@ -238,13 +240,14 @@ export function composeHandbookProjection(input: ComposeInput): HandbookProjecti
         const record = registry.get(candidate.source_id);
         requireValid(record !== undefined, "missing registry source");
         requireValid(candidate.section_id === chapter.section_id &&
-          candidate.candidate_status === "CANDIDATE" &&
+          ["CANDIDATE", "HISTORICAL"].includes(candidate.candidate_status) &&
           !!candidate.candidate_id && !seenCandidateIds.has(candidate.candidate_id) &&
           record.url === candidate.source_url, "legacy source reference/mismatch");
         seenCandidateIds.add(candidate.candidate_id);
         legacyCandidateCount++;
         sources.push({
           candidate_id: candidate.candidate_id, candidate_type: "OLD_SOURCE_CANDIDATE",
+          source_record_status: candidate.candidate_status as "CANDIDATE" | "HISTORICAL",
           evidence_task_id: null, library_file_id: null,
           source_identifiers: [candidate.source_id], source_registry_id: candidate.source_id,
           source_version: candidate.source_version,
