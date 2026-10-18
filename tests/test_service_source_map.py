@@ -35,6 +35,7 @@ class ServiceSourceMapTests(unittest.TestCase):
             for unit in group["units"]
             for sid in unit["service_ids"]
         ]
+        self.assertEqual(len(self.navigation["groups"]), 7)
         self.assertEqual(len(ids), 39)
         self.assertEqual(len(set(ids)), 39)
         self.assertEqual(len(nav_ids), 39)
@@ -82,7 +83,7 @@ class ServiceSourceMapTests(unittest.TestCase):
             "onChange={(event) => setQuery(event.target.value)}",
             "onChange={(event) => setFamily(event.target.value)}",
             "setQuery(\"\")", "setFamily(\"all\")",
-            "source.public_sources.length === 0",
+            "service.public_sources.length === 0",
             "資料が存在しないという意味ではありません",
             "encodeURIComponent(service.service_id)",
             "role=\"status\"",
