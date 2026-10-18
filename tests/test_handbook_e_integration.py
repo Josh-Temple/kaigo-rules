@@ -23,7 +23,7 @@ class HandbookEIntegrationTests(unittest.TestCase):
         self.assertIn("questionsToCheck: info.questions_to_check", self.page)
         self.assertIn("unresolved: info.unresolved", self.page)
         self.assertNotIn("handbookSourceProjectionForService", self.public)
-        self.assertNotIn("candidate_paragraphs.map", self.public)
+        self.assertNotIn("{item.text}", self.public)
 
     def test_historical_status_is_never_assumed_current(self):
         self.assertIn('"UNVERIFIED"', self.compose)
