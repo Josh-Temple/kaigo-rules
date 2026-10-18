@@ -59,6 +59,7 @@ export default async function LawPage({
   return <article className="answer-page rules-page">
     <p className="eyebrow">CARE INSURANCE ACT DATABASE</p>
     <h1>介護保険法DB</h1>
+    <p><Link href="/legislation?category=law">全39サービスで絞り込める条文順の表示を開く →</Link></p>
     <p className="lead">
       e-Govの現行法令XMLから取り込んだ共有コーパスを全体表示します。
       サービスを選んだ場合だけ、そのサービスに適用scopeが登録された条文・項へ絞り込みます。

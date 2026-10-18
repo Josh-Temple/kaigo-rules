@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "description": "サービス別手引の追記用。services.<service_id>.chapters.<section_id> に summary、paragraphs、checkpoints を指定し、scripts/build_handbook_site.py で反映します。確認状態の正本は変更しません。",
+  "services": {}
+}

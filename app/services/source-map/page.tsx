@@ -58,6 +58,7 @@ export default function ServiceSourceMapPage() {
     <article className="answer-page foundation-page">
       <p className="eyebrow">SERVICE SOURCE FINDER</p>
       <h1>39サービスの公開資料を探す</h1>
+      <p><Link href="/services">全39サービスの手引（各15章）を読む →</Link></p>
       <p className="lead">
         既存のサービス一覧と、公開が許可された資料ページを組み合わせた検索画面です。
         サービス名・資料名で絞り込み、公開済みの資料や横断検索へ直接移動できます。

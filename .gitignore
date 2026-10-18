@@ -3,3 +3,7 @@ node_modules
 .vercel
 .env
 .env.local
+
+# Rebuilt from canonical corpora before dev/build
+/data/handbook.generated.json
+/data/legal-browser.generated.json

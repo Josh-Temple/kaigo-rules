@@ -8,6 +8,7 @@ export const INDEXABLE_ROUTES = [
   "/", "/about", "/databases", "/services", "/law", "/rules",
   "/notices", "/qa", "/fees", "/fees/criteria", "/fees/unit-price",
   "/guide", "/start", "/sources", "/overview", "/services/dayservice",
+  "/legislation",
 ] as const;
 
 export function pageMetadata(

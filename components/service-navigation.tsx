@@ -3,7 +3,8 @@ import SiteFeedbackLink from "./site-feedback-link";
 
 const links = [
   { href: "/databases", label: "DB一覧" },
-  { href: "/services", label: "サービス別" },
+  { href: "/services", label: "サービス別手引" },
+  { href: "/legislation", label: "法令等" },
   { href: "/overview", label: "制度の見取り図" },
   { href: "/sources", label: "根拠資料" },
 ];

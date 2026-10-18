@@ -33,8 +33,12 @@ export default function HomePage() {
             <small>介護制度DB →</small>
           </Link>
           <Link className="entry-row" href="/services">
-            <span>特定のサービスから見る</span>
-            <small>サービス別 →</small>
+            <span>サービス別の手引を読む</span>
+            <small>39サービス・各15章 →</small>
+          </Link>
+          <Link className="entry-row" href="/legislation">
+            <span>法令・通知・報酬を条文順で読む</span>
+            <small>サービス別に絞り込み →</small>
           </Link>
           <Link className="entry-row" href="/start">
             <span>実務の流れから確認する</span>

@@ -61,6 +61,7 @@ export default function DatabasesPage() {
       </p>
 
       <div className="notice">
+        <p><Link href="/legislation">全39サービスで絞り込み、法令等を条文順で読む →</Link></p>
         <strong>DBごとに公開範囲が異なります。</strong><br />
         各ページで出典・対象範囲・確認情報を確認できます。未確認の範囲を確認済みとして表示しません。
       </div>

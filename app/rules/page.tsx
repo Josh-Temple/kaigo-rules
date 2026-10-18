@@ -192,6 +192,7 @@ export default async function RulesPage({
     <article className="answer-page rules-page">
       <p className="eyebrow">ORDINANCE DATABASE</p>
       <h1>基準省令DB</h1>
+      <p><Link href="/legislation?category=standards">9種類の基準省令を条文順で読み、39サービス別に絞り込む →</Link></p>
       <p className="lead">
         基準省令の共有コーパスを表示し、サービスを選ぶと、そのサービスについて公開条件を満たした法令本文へ絞り込みます。
         介護予防サービスを選んだ場合は、対応する介護予防サービス基準のコーパスへ切り替えます。
