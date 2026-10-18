@@ -60,6 +60,7 @@ export default function ServicesPage() {
       </div>
 
       <p><Link href="/databases/search">サービスを選ばずDB全体から検索する →</Link></p>
+      <p><Link href="/services/source-map">39サービスの公開資料を種類別に探す →</Link></p>
 
       {groups.map((group) => (
         <section className="section" key={group.id}>
