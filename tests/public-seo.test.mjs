@@ -42,7 +42,8 @@ test("robots exposes sitemap without blocking pages that use noindex", () => {
   assert.match(robots, /sitemap:/);
   assert.match(robots, /disallow:\s*"\/api\/"/);
   assert.doesNotMatch(robots, /disallow:\s*"\/(search|databases)"/);
-  assert.match(sitemap, /INDEXABLE_ROUTES\.map/);
+  assert.match(sitemap, /new Set<string>\(\[\.\.\.INDEXABLE_ROUTES,\s*\.\.\.serviceHandbooks\.map/);
+  assert.match(sitemap, /return \[\.\.\.paths\]\.map/);
   assert.match(sitemap, /new URL\(path, SITE_ORIGIN\)/);
   assert.doesNotMatch(sitemap, /lastModified/);
   assert.match(source("app/layout.tsx"), /metadataBase:\s*new URL\(SITE_ORIGIN\)/);
