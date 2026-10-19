@@ -90,7 +90,16 @@ test("old draft paragraphs survive and status remains a working draft", () => {
   const actual = serviceHandbook("dayrehab");
   for (const chapter of original.chapters) {
     const row = actual.chapters.find(c => c.section_id === chapter.section_id);
-    assert.deepEqual(row.paragraphs, chapter.candidate_paragraphs.map(p => p.text));
+    const previous = chapter.candidate_paragraphs.map(p => p.text);
+    assert.deepEqual(row.paragraphs.slice(0, previous.length), previous,
+      `original paragraphs changed: ${chapter.section_id}`);
+    if (["applicability", "operations"].includes(chapter.section_id)) {
+      assert.equal(row.paragraphs.length, previous.length + 2,
+        `expected two additional paragraphs: ${chapter.section_id}`);
+    } else {
+      assert.deepEqual(row.paragraphs, previous,
+        `unexpected edits to preserved chapter: ${chapter.section_id}`);
+    }
     assert.equal(row.editorial_state, "作成中・未確認");
   }
   assert.equal(original.human_review, "NOT_REVIEWED");
