@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import styles from "./preview-workspace.module.css";
+import { sourceCandidateMatchesQuery } from "../../lib/handbook/preview-source-search";
 
 export type PreviewCandidate = {
   bridgeId: string;
@@ -15,6 +16,7 @@ export type PreviewProjectedSource = {
   kind: "EVIDENCE_BRIDGE" | "OLD_SOURCE_CANDIDATE";
   sourceName: string | null;
   sourceVersion: string | null;
+  sourceLocator: string | null;
   officialUrl: string | null;
   historical: boolean;
 };
@@ -118,7 +120,8 @@ export default function PreviewWorkspace({ services }: { services: PreviewServic
       chapter.candidates.some((candidate) =>
         [candidate.bridgeId, candidate.evidenceTaskId, candidate.text, ...candidate.sourceIdentifiers]
           .some((value) => value.toLocaleLowerCase("ja-JP").includes(normalized))
-      )
+      ) ||
+      chapter.sourceCandidates.some((candidate) => sourceCandidateMatchesQuery(candidate, normalized))
     );
   }), [service, sectionId, normalized]);
 
@@ -199,7 +202,7 @@ export default function PreviewWorkspace({ services }: { services: PreviewServic
               ))}
             </select>
           </label>
-          <label>章名・候補ID・本文・照合記録を検索
+          <label>章名・候補ID・本文・照合記録・原典内の位置を検索
             <input
               type="search"
               value={query}
@@ -294,6 +297,9 @@ export default function PreviewWorkspace({ services }: { services: PreviewServic
                           </span>
                           {candidate.sourceVersion && (
                             <span className={styles.meta}> ／記録上の版：{candidate.sourceVersion}</span>
+                          )}
+                          {candidate.sourceLocator && (
+                            <span className={styles.meta}> ／原典内の位置（記録値・未照合）：{candidate.sourceLocator}</span>
                           )}
                           {candidate.officialUrl && (
                             <span> ／<a href={candidate.officialUrl} target="_blank" rel="noopener noreferrer">公式サイトの所在候補 ↗</a></span>
