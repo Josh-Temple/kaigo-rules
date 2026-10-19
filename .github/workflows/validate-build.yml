@@ -235,9 +235,34 @@ jobs:
             }
           done
 
-          shortstay_status="$(curl --silent --output /dev/null --write-out "%{http_code}" http://127.0.0.1:3000/services/shortstay-life)"
-          if [ "$shortstay_status" != "404" ]; then
-            echo "shortstay-life unexpectedly became public: HTTP $shortstay_status"
+          # 39-service handbook launch (#506) intentionally publishes these draft-labeled service pages.
+          # Keep the draft warning visible; the old 404 assertion predates the launch.
+          shortstay_page="$(curl --fail --silent --show-error http://127.0.0.1:3000/services/shortstay-life)" || {
+            echo "shortstay-life handbook is not accessible"
+            exit 1
+          }
+          if [[ "$shortstay_page" != *"短期入所生活介護の手引"* || "$shortstay_page" != *"作成中の手引です"* ]]; then
+            echo "shortstay-life handbook is missing its title or draft warning"
+            exit 1
+          fi
+
+          # E integration regression: both newly edited chapters must remain explicitly unreviewed.
+          for chapter_route in "/handbook/homebath/equipment" "/handbook/homevisit/equipment"; do
+            chapter_page="$(curl --fail --silent --show-error "http://127.0.0.1:3000$chapter_route")" || {
+              echo "integrated handbook chapter not accessible: $chapter_route"
+              exit 1
+            }
+            if [[ "$chapter_page" != *"DRAFT_UNREVIEWED"* ]]; then
+              echo "integrated handbook chapter lost draft warning: $chapter_route"
+              exit 1
+            fi
+          done
+          legal_page="$(curl --fail --silent --show-error "http://127.0.0.1:3000/legislation?service=homebath")" || {
+            echo "service-filtered source-order legislation page unavailable"
+            exit 1
+          }
+          if [[ "$legal_page" != *"条文・原典掲載順"* || "$legal_page" != *"訪問入浴介護"* ]]; then
+            echo "service-filtered legislation page lost source order or service context"
             exit 1
           fi
 
