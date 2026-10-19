@@ -55,6 +55,16 @@ export default function ServiceHandbook({ service }: { service: ServiceHandbookD
         <Link href={legalHref({ service: service.service_id })}>法令等を条文順で読む →</Link>
         <Link href="/services">別のサービスを選ぶ →</Link>
       </div>
+      {service.service_id === "dayrehab" ? <section className="handbook-working-note" aria-label="通所リハビリテーションの報酬関連資料">
+        <p>報酬関連資料は現行性確認中です。現行統合本文とは区別してご確認ください。</p>
+        <div className="handbook-inline-links">
+          <Link href="/databases/search?service=dayrehab">このサービスのデータベースを検索 →</Link>
+          <Link href="/rules?service=dayrehab">このサービスの基準省令を確認 →</Link>
+          <Link href="/notices?service=dayrehab">このサービスの解釈通知を確認 →</Link>
+          <Link href="/services/dayrehab/remuneration">報酬基準を見る →</Link>
+          <Link href="/services/dayrehab/remuneration/guidance">算定上の留意事項を見る →</Link>
+        </div>
+      </section> : null}
       <nav className="handbook-toc" aria-label="手引の目次">
         {service.chapters.map(chapter => <a key={chapter.section_id} href={`#${chapter.section_id}`}>
           <span>{String(chapter.number).padStart(2, "0")}</span>{chapter.title}
