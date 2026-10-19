@@ -186,9 +186,17 @@
     {
       "id": "IR-10",
       "coverage": "service_isolation",
-      "title": "shortstay-life remains unpublished while its canonical integration is incomplete",
+      "title": "shortstay-life working handbook is available but explicitly labeled as unreviewed",
       "path": "/services/shortstay-life",
-      "expect_status": 404
+      "expect_status": 200,
+      "contains_text": [
+        "短期入所生活介護の手引",
+        "作成中の手引です"
+      ],
+      "not_contains_text": [
+        "独立確認を完了しました",
+        "適用を確認済みです"
+      ]
     },
     {
       "id": "IR-11",
