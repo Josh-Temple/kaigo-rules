@@ -74,5 +74,5 @@ test("unreviewed QA is not promoted or exposed on public handbook page", () => {
   const server = read("app/handbook-preview/page.tsx");
   assert.doesNotMatch(publicPage, /PreviewWorkspace|sourceLocator/);
   assert.match(server, /projection\.human_review !== "NOT_REVIEWED"/);
-  assert.match(server, /candidate\.source_record_status === "HISTORICAL"/);
+  assert.match(server, /source\.source_record_status === "HISTORICAL"/);
 });
