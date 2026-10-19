@@ -15,6 +15,9 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       <p className="eyebrow">第{String(chapter.number).padStart(2, "0")}章</p>
       <h2>{full ? chapter.title : <Link href={detailHref}>{chapter.title}</Link>}</h2>
       <p>{chapter.summary}</p>
+      {chapter.section_id !== "national_qa" && records.length > 0
+        ? <p className="handbook-quick-link"><a href={`#handbook-sources-${chapter.section_id}`}>この章の関連資料へ移動 ↓</a></p>
+        : null}
       {chapter.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
       <h3>確認すること</h3>
       <ul className="handbook-checkpoints">{chapter.checkpoints.map((point, index) => <li key={index}>{point}</li>)}</ul>
@@ -26,7 +29,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
           <Link href="/qa">国Q&A全体を見る →</Link>
         </div>
       </> : <>
-        <h3>関連する条文・資料 <small>（{records.length}件）</small></h3>
+        <h3 id={`handbook-sources-${chapter.section_id}`}>関連する条文・資料 <small>（{records.length}件）</small></h3>
         {full ? <p className="meta">登録済みのサービス対応と見出しを使って配置した確認候補です。準用先の本文は、読替え前の原文を表示します。</p> : null}
         {shown.length ? shown.map(record => <LegalRecordView key={record.id} record={record} serviceId={service.service_id} />)
           : <p className="handbook-empty">この章への個別資料の対応付けは追記できます。収載済みの資料全体からも探せます。</p>}

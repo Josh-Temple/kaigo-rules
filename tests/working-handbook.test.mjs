@@ -106,3 +106,43 @@ test("all legal reference URLs are official HTTPS sources and record IDs stay un
     assert.ok(["laws.e-gov.go.jp", "www.mhlw.go.jp"].includes(url.hostname));
   }
 });
+
+test("C equipment and care-management handbook additions stay separated and unreviewed", () => {
+  const content = readJson("data/handbook-content.json");
+  const expected = [
+    ["welfare-equipment-rental", "第205条", "貸与"],
+    ["preventive-welfare-equipment-rental", "第276条", "介護予防"],
+    ["specific-welfare-equipment-sale", "第216条", "購入費"],
+    ["specific-preventive-welfare-equipment-sale", "第289条", "介護予防"],
+    ["care-management", "第30条", "居宅サービス計画"],
+    ["preventive-support", "第32条", "介護予防サービス計画"],
+  ];
+  const allParagraphs = [];
+  for (const [serviceId, source, term] of expected) {
+    const chapters = content.services[serviceId]?.chapters;
+    assert.deepEqual(Object.keys(chapters || {}).sort(), ["applicability", "operations"]);
+    const projected = serviceHandbook(serviceId);
+    for (const sectionId of ["applicability", "operations"]) {
+      const added = chapters[sectionId];
+      const chapter = projected.chapters.find(ch => ch.section_id === sectionId);
+      assert.ok(chapter, serviceId + ":" + sectionId);
+      assert.ok(added.paragraphs.length >= 2 && added.checkpoints.length >= 3);
+      assert.deepEqual(chapter.paragraphs, added.paragraphs, serviceId + ":" + sectionId);
+      assert.deepEqual(chapter.checkpoints, added.checkpoints, serviceId + ":" + sectionId);
+      assert.equal(chapter.editorial_state, "作成中・未確認");
+      allParagraphs.push(...added.paragraphs);
+    }
+    const prose = Object.values(chapters).flatMap(ch => ch.paragraphs).join(" ");
+    assert.ok(prose.includes(source), serviceId + " missing source " + source);
+    assert.ok(prose.includes(term), serviceId + " missing distinction " + term);
+  }
+  assert.equal(new Set(allParagraphs).size, allParagraphs.length, "duplicated boilerplate paragraphs");
+});
+
+test("chapter evidence anchor is linked and long drafting text wraps", () => {
+  const tsx = fs.readFileSync("components/service-handbook.tsx", "utf8");
+  const css = fs.readFileSync("app/globals.css", "utf8");
+  assert.match(tsx, /href=\{\x60#handbook-sources-/);
+  assert.match(tsx, /id=\{\x60handbook-sources-/);
+  assert.match(css, /\.handbook-checkpoints li\{overflow-wrap:anywhere\}/);
+});
