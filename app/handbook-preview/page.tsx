@@ -114,6 +114,7 @@ export default function HandbookEvidencePreviewPage() {
             kind: source.candidate_type,
             sourceName: source.source_title,
             sourceVersion: source.source_version,
+            sourceLocator: source.source_locator,
             officialUrl: source.official_url_candidate,
             historical: source.source_record_status === "HISTORICAL",
           })),
