@@ -166,7 +166,7 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
       total++;
     }
   }
-  assert.ok(total >= 51 && total <= 131, `A chapter total out of range: ${total}`);
+  assert.equal(total, 131, `A chapter total must match the complete manifest: ${total}`);
   assert.equal(new Set(addedParagraphs).size, addedParagraphs.length, "A authored paragraphs must be distinct");
 });
 
