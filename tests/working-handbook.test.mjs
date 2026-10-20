@@ -116,8 +116,18 @@ test("all legal reference URLs are official HTTPS sources and record IDs stay un
   }
 });
 
-test("C equipment and care-management handbook additions stay separated and unreviewed", () => {
+test("C equipment and care-management old text remains exact and 30 new chapters project", () => {
   const content = readJson("data/handbook-content.json");
+  const legacy = readJson("tests/fixtures/handbook-c-legacy.json");
+  assert.equal(legacy.source_commit, "5688a8691e974728062fc9dc6e9d06264fab62cb");
+  const addedSections = {
+    "welfare-equipment-rental": ["designation", "staffing", "equipment", "records", "incident_and_infection"],
+    "preventive-welfare-equipment-rental": ["designation", "staffing", "equipment", "records", "safeguarding"],
+    "specific-welfare-equipment-sale": ["designation", "staffing", "equipment", "records", "safeguarding"],
+    "specific-preventive-welfare-equipment-sale": ["designation", "staffing", "equipment", "records", "safeguarding"],
+    "care-management": ["designation", "staffing", "records", "safeguarding", "notifications"],
+    "preventive-support": ["designation", "staffing", "records", "safeguarding", "notifications"],
+  };
   const expected = [
     ["welfare-equipment-rental", "第205条", "貸与"],
     ["preventive-welfare-equipment-rental", "第276条", "介護予防"],
@@ -129,10 +139,11 @@ test("C equipment and care-management handbook additions stay separated and unre
   const allParagraphs = [];
   for (const [serviceId, source, term] of expected) {
     const chapters = content.services[serviceId]?.chapters;
-    assert.deepEqual(Object.keys(chapters || {}).sort(), ["applicability", "operations"]);
+    assert.deepEqual(Object.keys(chapters || {}).sort(), ["applicability", "operations", ...addedSections[serviceId]].sort());
     const projected = serviceHandbook(serviceId);
     for (const sectionId of ["applicability", "operations"]) {
       const added = chapters[sectionId];
+      assert.deepEqual(added, legacy.services[serviceId][sectionId], `legacy changed: ${serviceId}:${sectionId}`);
       const chapter = projected.chapters.find(ch => ch.section_id === sectionId);
       assert.ok(chapter, serviceId + ":" + sectionId);
       assert.ok(added.paragraphs.length >= 2 && added.checkpoints.length >= 3);
@@ -140,6 +151,18 @@ test("C equipment and care-management handbook additions stay separated and unre
       assert.deepEqual(chapter.checkpoints, added.checkpoints, serviceId + ":" + sectionId);
       assert.equal(chapter.editorial_state, "作成中・未確認");
       allParagraphs.push(...added.paragraphs);
+    }
+    for (const sectionId of addedSections[serviceId]) {
+      const authored = chapters[sectionId];
+      const chapter = projected.chapters.find(ch => ch.section_id === sectionId);
+      assert.ok(chapter, `${serviceId}:${sectionId} projection missing`);
+      assert.ok(authored.paragraphs.length >= 2 && authored.checkpoints.length >= 3, `${serviceId}:${sectionId} insufficient content`);
+      assert.ok(authored.paragraphs.every(p => p.length >= 80), `${serviceId}:${sectionId} too short`);
+      assert.ok(authored.paragraphs.some(p => p.includes("参照候補")), `${serviceId}:${sectionId} missing source candidate`);
+      assert.deepEqual(chapter.paragraphs, authored.paragraphs, `${serviceId}:${sectionId} paragraphs`);
+      assert.deepEqual(chapter.checkpoints, authored.checkpoints, `${serviceId}:${sectionId} checkpoints`);
+      assert.equal(chapter.editorial_state, "作成中・未確認");
+      allParagraphs.push(...authored.paragraphs);
     }
     const prose = Object.values(chapters).flatMap(ch => ch.paragraphs).join(" ");
     assert.ok(prose.includes(source), serviceId + " missing source " + source);
