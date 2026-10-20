@@ -115,6 +115,9 @@ test("old draft paragraphs survive and status remains a working draft", () => {
 test("A remaining chapters preserve the fixed #522 baseline and add only manifest IDs", () => {
   const content = readJson("data/handbook-content.json");
   const legacy = readJson("tests/fixtures/handbook-a-legacy.json");
+  const quality = readJson("docs/handbook-quality/2026-10-20-worker-a-quality-inventory.json");
+  const revisedChapters = new Set(quality.changed_chapter_ids);
+  assert.equal(revisedChapters.size, 51, "only scoped Worker A chapter edits are allowed");
   assert.equal(legacy.source_commit, "0d26dc8e29fd0567e723872290785a2cc979c30b");
   const manifest = {
     homevisit: ["business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
@@ -143,7 +146,24 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
     const chapters = content.services[serviceId]?.chapters || {};
     const previous = legacy.services[serviceId];
     for (const [sectionId, authored] of Object.entries(previous)) {
-      assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+      if (revisedChapters.has(`${serviceId}/${sectionId}`)) {
+        const current = chapters[sectionId];
+        assert.deepEqual(current.checkpoints.slice(0, authored.checkpoints.length), authored.checkpoints,
+          `#522 baseline checkpoints changed: ${serviceId}:${sectionId}`);
+        assert.equal(current.checkpoints.length, authored.checkpoints.length + 2,
+          `expected two scoped checkpoints: ${serviceId}:${sectionId}`);
+        if (sectionId === "national_qa") {
+          assert.equal(current.paragraphs.length, authored.paragraphs.length);
+          assert.deepEqual(current.paragraphs.slice(1), authored.paragraphs.slice(1),
+            `#522 QA source/limitations paragraphs changed: ${serviceId}`);
+        } else {
+          assert.deepEqual(current.paragraphs.slice(0, authored.paragraphs.length), authored.paragraphs,
+            `#522 baseline prose changed: ${serviceId}:${sectionId}`);
+          assert.equal(current.paragraphs.length, authored.paragraphs.length + 1);
+        }
+      } else {
+        assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+      }
     }
     const added = Object.keys(chapters).filter(sectionId => !Object.hasOwn(previous, sectionId));
     assert.ok(added.length >= 3, `${serviceId} needs an intermediate three-chapter minimum`);
@@ -168,6 +188,33 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
   }
   assert.equal(total, 131, `A chapter total must match the complete manifest: ${total}`);
   assert.equal(new Set(addedParagraphs).size, addedParagraphs.length, "A authored paragraphs must be distinct");
+});
+
+test("Worker A quality ledger matches authored changes without source-status promotion", () => {
+  const content = readJson("data/handbook-content.json");
+  const quality = readJson("docs/handbook-quality/2026-10-20-worker-a-quality-inventory.json");
+  assert.equal(quality.inventory.length, 51);
+  assert.equal(quality.primary_text_checks, 0);
+  assert.equal(new Set(quality.changed_service_ids).size, 17);
+  const actual = new Set();
+  for (const item of quality.inventory) {
+    const id = `${item.service_id}/${item.chapter_id}`;
+    assert.ok(!actual.has(id), `duplicated quality ledger entry: ${id}`);
+    actual.add(id);
+    const authored = content.services[item.service_id]?.chapters[item.chapter_id];
+    assert.ok(authored, `missing chapter: ${id}`);
+    assert.equal(
+      item.chapter_id === "national_qa" ? authored.paragraphs[0] : authored.paragraphs.at(-1),
+      item.after_substantive_change.replace(" は検索候補であり", " は参照候補であり"),
+      `quality ledger prose mismatch: ${id}`);
+    assert.equal(item.checkpoints_changed, 2);
+    assert.ok(authored.checkpoints.slice(-2).some(p => p.includes(item.document_or_record_to_check)),
+      `missing verifiable documents: ${id}`);
+    assert.ok(["SOURCE_CANDIDATE_ONLY", "EVIDENCE_GAP"].includes(item.source_status));
+    assert.equal(item.currentness_status, "NOT_ESTABLISHED");
+    assert.equal(item.provider_applicability_status, "NOT_ESTABLISHED");
+  }
+  assert.deepEqual(actual, new Set(quality.changed_chapter_ids));
 });
 
 test("all legal reference URLs are official HTTPS sources and record IDs stay unique", () => {
