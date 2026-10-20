@@ -45,8 +45,9 @@ test("C manifest chapters remain present with substantive paragraphs and checkpo
     for (const chapterId of chapterIds) {
       const chapter = chapters[chapterId];
       assert.ok(chapter, `missing ${serviceId}/${chapterId}`);
-      assert.equal(chapter.paragraphs.length, 3, `${serviceId}/${chapterId} paragraphs`);
-      assert.equal(chapter.checkpoints.length, 3, `${serviceId}/${chapterId} checkpoints`);
+      const editorialExpansion = ["remuneration", "national_qa"].includes(chapterId);
+      assert.equal(chapter.paragraphs.length, editorialExpansion ? 4 : 3, `${serviceId}/${chapterId} paragraphs`);
+      assert.equal(chapter.checkpoints.length, editorialExpansion ? 5 : 3, `${serviceId}/${chapterId} checkpoints`);
       assert.ok(chapter.paragraphs.every(value => typeof value === "string" && value.trim().length > 0));
       assert.ok(chapter.checkpoints.every(value => typeof value === "string" && value.trim().length > 0));
       chapterCount += 1;
