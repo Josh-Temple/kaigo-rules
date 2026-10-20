@@ -217,7 +217,15 @@ test("C equipment and care-management old text remains exact and 30 new chapters
     const projected = serviceHandbook(serviceId);
     for (const sectionId of ["applicability", "operations"]) {
       const added = chapters[sectionId];
-      assert.deepEqual(added, legacy.services[serviceId][sectionId], `legacy changed: ${serviceId}:${sectionId}`);
+      const preserved = legacy.services[serviceId][sectionId];
+      if (sectionId === "operations") {
+        assert.deepEqual(added.paragraphs.slice(0, preserved.paragraphs.length), preserved.paragraphs, `legacy prose changed: ${serviceId}:${sectionId}`);
+        assert.deepEqual(added.checkpoints.slice(0, preserved.checkpoints.length), preserved.checkpoints, `legacy checkpoints changed: ${serviceId}:${sectionId}`);
+        assert.equal(added.paragraphs.length, preserved.paragraphs.length + 1, `operations editorial paragraph: ${serviceId}`);
+        assert.equal(added.checkpoints.length, preserved.checkpoints.length + 2, `operations editorial checkpoints: ${serviceId}`);
+      } else {
+        assert.deepEqual(added, preserved, `legacy changed: ${serviceId}:${sectionId}`);
+      }
       const chapter = projected.chapters.find(ch => ch.section_id === sectionId);
       assert.ok(chapter, serviceId + ":" + sectionId);
       assert.ok(added.paragraphs.length >= 2 && added.checkpoints.length >= 3);
