@@ -75,26 +75,26 @@
     "algorithm": "strip whitespace; replace data/...json with {PATH}; replace 指定,介護予防,地域密着型 with {CATEGORY}; full 585 chapters",
     "before": {
       "paragraphs": {
-        "excess": 24,
+        "count": 1324,
         "groups": 3,
-        "count": 1324
+        "excess": 24
       },
       "checkpoints": {
-        "excess": 247,
+        "count": 1978,
         "groups": 20,
-        "count": 1978
+        "excess": 247
       }
     },
     "after": {
       "paragraphs": {
-        "excess": 24,
+        "count": 1344,
         "groups": 3,
-        "count": 1344
+        "excess": 24
       },
       "checkpoints": {
-        "excess": 248,
-        "groups": 21,
-        "count": 1978
+        "count": 1978,
+        "groups": 20,
+        "excess": 247
       }
     }
   },
@@ -112,7 +112,8 @@
       "553 other chapters exact unchanged",
       "old B chapters not blindly copied",
       "data schema version 1 retained",
-      "accepted B operations and remuneration unchanged"
+      "accepted B operations and remuneration unchanged",
+      "Normalized checkpoint duplicate excess did not increase over full 585 chapters"
     ],
     "local_python_node": "NOT_RUN: no local source checkout; github.com hostname not resolvable"
   },
@@ -789,5 +790,6 @@
       "remaining_gap": "2026年現行版・自治体条例・問全文適用・加算可否未確定",
       "duplicate_group": "旧B定型届出・請求／Q&A汎用照合群を個別分岐へ置換"
     }
-  ]
+  ],
+  "final_data_commit_sha": "055676ed3fa0bb60cade35d0f988d7549b60ec3b"
 }
