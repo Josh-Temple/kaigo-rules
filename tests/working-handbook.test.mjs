@@ -135,6 +135,14 @@ test("C equipment and care-management old text remains exact and 30 new chapters
     "care-management": ["designation", "staffing", "records", "safeguarding", "notifications"],
     "preventive-support": ["designation", "staffing", "records", "safeguarding", "notifications"],
   };
+  const completionSections = {
+    "welfare-equipment-rental": ["safeguarding", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "preventive-welfare-equipment-rental": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "specific-welfare-equipment-sale": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "specific-preventive-welfare-equipment-sale": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "care-management": ["equipment", "incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "national_qa", "sources_and_history"],
+    "preventive-support": ["equipment", "incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "national_qa", "sources_and_history"],
+  };
   const expected = [
     ["welfare-equipment-rental", "第205条", "貸与"],
     ["preventive-welfare-equipment-rental", "第276条", "介護予防"],
@@ -146,7 +154,9 @@ test("C equipment and care-management old text remains exact and 30 new chapters
   const allParagraphs = [];
   for (const [serviceId, source, term] of expected) {
     const chapters = content.services[serviceId]?.chapters;
-    assert.deepEqual(Object.keys(chapters || {}).sort(), ["applicability", "operations", ...addedSections[serviceId]].sort());
+    assert.deepEqual(Object.keys(chapters || {}).sort(), [
+      "applicability", "operations", ...addedSections[serviceId], ...completionSections[serviceId],
+    ].sort());
     const projected = serviceHandbook(serviceId);
     for (const sectionId of ["applicability", "operations"]) {
       const added = chapters[sectionId];
