@@ -96,6 +96,13 @@ test("old draft paragraphs survive and status remains a working draft", () => {
     if (["applicability", "operations"].includes(chapter.section_id)) {
       assert.equal(row.paragraphs.length, previous.length + 2,
         `expected two additional paragraphs: ${chapter.section_id}`);
+    } else if (["designation", "staffing", "equipment", "records", "remuneration"].includes(chapter.section_id)) {
+      const override = readJson("data/handbook-content.json").services.dayrehab.chapters[chapter.section_id];
+      assert.ok(override, `missing authored chapter ${chapter.section_id}`);
+      assert.deepEqual(row.paragraphs, override.paragraphs,
+        `projected prose differs from authored prose: ${chapter.section_id}`);
+      assert.equal(row.paragraphs.length, previous.length + 2,
+        `expected two added paragraphs after intact prototype: ${chapter.section_id}`);
     } else {
       assert.deepEqual(row.paragraphs, previous,
         `unexpected edits to preserved chapter: ${chapter.section_id}`);
