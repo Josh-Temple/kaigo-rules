@@ -36,7 +36,8 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       </>}
       <div className="handbook-inline-links">
         {!full ? <Link href={detailHref}>この章を詳しく読む{records.length > shown.length ? `（関連資料${records.length}件）` : ""} →</Link> : null}
-        <Link href={legalHref({ service: service.service_id })}>このサービスの法令等を見る →</Link>
+        {full ? <Link href={`/services/${service.service_id}#${chapter.section_id}`}>手引のこの章へ戻る ↑</Link> : null}
+        <Link href={legalHref({ service: service.service_id })}>{records.length ? "このサービスの法令等を見る →" : "個別資料が未登録のため、法令等の全候補から探す →"}</Link>
       </div>
     </section>
   );
