@@ -96,13 +96,12 @@ test("old draft paragraphs survive and status remains a working draft", () => {
     if (["applicability", "operations"].includes(chapter.section_id)) {
       assert.equal(row.paragraphs.length, previous.length + 2,
         `expected two additional paragraphs: ${chapter.section_id}`);
-    } else if (["designation", "staffing", "equipment", "records", "remuneration"].includes(chapter.section_id)) {
+    } else if (["designation", "staffing", "equipment", "records", "remuneration", "safeguarding", "incident_and_infection", "business_continuity", "deductions", "additions", "notifications", "national_qa", "sources_and_history"].includes(chapter.section_id) && readJson("data/handbook-content.json").services.dayrehab.chapters[chapter.section_id]) {
       const override = readJson("data/handbook-content.json").services.dayrehab.chapters[chapter.section_id];
-      assert.ok(override, `missing authored chapter ${chapter.section_id}`);
       assert.deepEqual(row.paragraphs, override.paragraphs,
         `projected prose differs from authored prose: ${chapter.section_id}`);
-      assert.equal(row.paragraphs.length, previous.length + 2,
-        `expected two added paragraphs after intact prototype: ${chapter.section_id}`);
+      assert.equal(row.paragraphs.length, override.paragraphs.length,
+        `override projection length differs: ${chapter.section_id}`);
     } else {
       assert.deepEqual(row.paragraphs, previous,
         `unexpected edits to preserved chapter: ${chapter.section_id}`);
@@ -111,6 +110,64 @@ test("old draft paragraphs survive and status remains a working draft", () => {
   }
   assert.equal(original.human_review, "NOT_REVIEWED");
   assert.equal(original.publication, "BLOCKED");
+});
+
+test("A remaining chapters preserve the fixed #522 baseline and add only manifest IDs", () => {
+  const content = readJson("data/handbook-content.json");
+  const legacy = readJson("tests/fixtures/handbook-a-legacy.json");
+  assert.equal(legacy.source_commit, "0d26dc8e29fd0567e723872290785a2cc979c30b");
+  const manifest = {
+    homevisit: ["business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    homebath: ["deductions", "additions", "national_qa", "sources_and_history"],
+    "preventive-homebath": ["safeguarding", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    homenursing: ["safeguarding", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "preventive-homenursing": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    homerehab: ["safeguarding", "incident_and_infection", "business_continuity", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "preventive-homerehab": ["safeguarding", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    homecaremanagement: ["equipment", "safeguarding", "incident_and_infection", "business_continuity", "deductions", "additions", "notifications", "national_qa"],
+    "preventive-homecaremanagement": ["equipment", "incident_and_infection", "business_continuity", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "regular-round": ["equipment", "safeguarding", "business_continuity", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "night-homevisit": ["equipment", "safeguarding", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    dayservice: ["safeguarding", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    dayrehab: ["safeguarding", "incident_and_infection", "business_continuity", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "preventive-dayrehab": ["safeguarding", "incident_and_infection", "business_continuity", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "community-dayservice": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "dementia-dayservice": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "preventive-dementia-dayservice": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+  };
+  const addedParagraphs = [];
+  const bridge = readJson("docs/prototypes/evidence-bridges/dayrehab.json");
+  const proto = Object.fromEntries(bridge.chapters.map(c => [c.section_id, c.candidate_paragraphs.map(p => p.text)]));
+  let total = 0;
+  for (const [serviceId, allowed] of Object.entries(manifest)) {
+    const chapters = content.services[serviceId]?.chapters || {};
+    const previous = legacy.services[serviceId];
+    for (const [sectionId, authored] of Object.entries(previous)) {
+      assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+    }
+    const added = Object.keys(chapters).filter(sectionId => !Object.hasOwn(previous, sectionId));
+    assert.ok(added.length >= 3, `${serviceId} needs an intermediate three-chapter minimum`);
+    assert.ok(added.length <= allowed.length, `${serviceId} exceeds manifest`);
+    assert.ok(added.every(sectionId => allowed.includes(sectionId)), `${serviceId} contains a non-manifest chapter`);
+    const projected = serviceHandbook(serviceId);
+    for (const sectionId of added) {
+      const authored = chapters[sectionId];
+      const chapter = projected.chapters.find(c => c.section_id === sectionId);
+      assert.ok(authored.paragraphs.length >= 2 && authored.checkpoints.length >= 3, `${serviceId}:${sectionId} is too thin`);
+      assert.ok(authored.paragraphs.every(p => p.length >= 80 || (serviceId === "dayrehab" && (proto[sectionId] || []).includes(p))), `${serviceId}:${sectionId} has short prose`);
+      assert.ok(authored.paragraphs.some(p => p.includes("参照候補") || p.includes("原典候補")), `${serviceId}:${sectionId} lacks a source candidate`);
+      assert.deepEqual(chapter.paragraphs, authored.paragraphs, `${serviceId}:${sectionId} paragraph projection`);
+      assert.deepEqual(chapter.checkpoints, authored.checkpoints, `${serviceId}:${sectionId} checkpoint projection`);
+      assert.equal(chapter.editorial_state, "作成中・未確認");
+      if (serviceId === "dayrehab") {
+        assert.deepEqual(authored.paragraphs.slice(0, (proto[sectionId] || []).length), proto[sectionId] || [], `dayrehab prototype prefix changed: ${sectionId}`);
+      }
+      addedParagraphs.push(...authored.paragraphs);
+      total++;
+    }
+  }
+  assert.equal(total, 131, `A chapter total must match the complete manifest: ${total}`);
+  assert.equal(new Set(addedParagraphs).size, addedParagraphs.length, "A authored paragraphs must be distinct");
 });
 
 test("all legal reference URLs are official HTTPS sources and record IDs stay unique", () => {
@@ -135,6 +192,14 @@ test("C equipment and care-management old text remains exact and 30 new chapters
     "care-management": ["designation", "staffing", "records", "safeguarding", "notifications"],
     "preventive-support": ["designation", "staffing", "records", "safeguarding", "notifications"],
   };
+  const completionSections = {
+    "welfare-equipment-rental": ["safeguarding", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "preventive-welfare-equipment-rental": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "specific-welfare-equipment-sale": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "specific-preventive-welfare-equipment-sale": ["incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "notifications", "national_qa", "sources_and_history"],
+    "care-management": ["equipment", "incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "national_qa", "sources_and_history"],
+    "preventive-support": ["equipment", "incident_and_infection", "business_continuity", "remuneration", "deductions", "additions", "national_qa", "sources_and_history"],
+  };
   const expected = [
     ["welfare-equipment-rental", "第205条", "貸与"],
     ["preventive-welfare-equipment-rental", "第276条", "介護予防"],
@@ -146,7 +211,9 @@ test("C equipment and care-management old text remains exact and 30 new chapters
   const allParagraphs = [];
   for (const [serviceId, source, term] of expected) {
     const chapters = content.services[serviceId]?.chapters;
-    assert.deepEqual(Object.keys(chapters || {}).sort(), ["applicability", "operations", ...addedSections[serviceId]].sort());
+    assert.deepEqual(Object.keys(chapters || {}).sort(), [
+      "applicability", "operations", ...addedSections[serviceId], ...completionSections[serviceId],
+    ].sort());
     const projected = serviceHandbook(serviceId);
     for (const sectionId of ["applicability", "operations"]) {
       const added = chapters[sectionId];

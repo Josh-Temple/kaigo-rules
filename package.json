@@ -158,7 +158,7 @@
     "verify:unit-price-currentness": "python scripts/verify_unit_price_currentness.py",
     "build:handbook": "python scripts/build_handbook_site.py",
     "check:handbook": "python scripts/build_handbook_site.py --check",
-    "test:handbook": "node --experimental-strip-types --test tests/working-handbook.test.mjs tests/handbook-qa-locator.test.mjs",
+    "test:handbook": "node --experimental-strip-types --test tests/working-handbook.test.mjs tests/handbook-qa-locator.test.mjs tests/handbook-c-completion.test.mjs",
     "predev": "npm run build:handbook"
   },
   "dependencies": {
