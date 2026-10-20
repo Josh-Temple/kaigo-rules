@@ -13,8 +13,8 @@ const expected = [
   "specific-welfare-equipment-sale/designation", "specific-welfare-equipment-sale/records",
   "care-management/designation", "care-management/records",
 ];
-const norm = value => value.replace(/data\\/[^ \\u3000、。]+?\\.json/g, "{PATH}")
-  .replace(/指定|介護予防|地域密着型/g, "{CATEGORY}").replace(/[\\s\\u3000]/g, "");
+const norm = value => value.replace(/data\/[^ \u3000、。]+?\.json/g, "{PATH}")
+  .replace(/指定|介護予防|地域密着型/g, "{CATEGORY}").replace(/[\s\u3000]/g, "");
 const metrics = field => {
   const freq = new Map();
   for (const service of Object.values(content.services))
@@ -54,7 +54,7 @@ test("primary-text checks are explicit and do not certify remuneration entitleme
   assert.equal(new Set(confirmed.map(i => i.service_id)).size, 5);
   for (const item of confirmed) {
     const src = item.primary_text_check;
-    assert.match(src.url, /^https:\/\/www\\.mhlw\\.go\\.jp\/web\/t_doc\\?/);
+    assert.match(src.url, /^https:\/\/www\.mhlw\.go\.jp\/web\/t_doc\?/);
     assert.match(src.article, /第.+条/);
     assert.match(src.verified_claim_limit, /未照合|未検証|未確認|未確立/);
   }
@@ -81,7 +81,7 @@ test("dedup audit retains the exact E normalization and all-service baseline", (
 test("no revised chapter treats an internal index as direct legal approval", () => {
   for (const item of quality.inventory) {
     const chapter = content.services[item.service_id].chapters[item.chapter_id];
-    const str = chapter.paragraphs.join("\\n") + chapter.checkpoints.join("\\n");
+    const str = chapter.paragraphs.join("\n") + chapter.checkpoints.join("\n");
     assert.doesNotMatch(str, /全ての事業所で算定できる|加算が必ず適用される/);
     assert.ok(chapter.checkpoints.some(c => /照合|比較|確認/.test(c)));
   }
