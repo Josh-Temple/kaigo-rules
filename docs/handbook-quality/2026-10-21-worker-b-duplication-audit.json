@@ -1,0 +1,913 @@
+{
+  "role": "B",
+  "phase": "DRAFT_AUTHOR_MEASUREMENTS",
+  "base_sha": "1ed47906165f1ec0d9c10bdcad44605d2b2c6801",
+  "algorithm": "E independent remove ASCII/fullwidth whitespace, data/...json -> {PATH}, 指定/介護予防/地域密着型 -> {CATEGORY}, entire string grouped globally; population all 585",
+  "chapter_count": 585,
+  "baseline": {
+    "paragraphs": {
+      "total": 1324,
+      "excess": 24,
+      "groups": 3,
+      "top": [
+        {
+          "occurrences": 16,
+          "text": "参照入口は data/services/shortstay-life/remuneration-index.json と data/services/shortstay-life/fee-guidance-scope.json です。索引に候補があることだけでは要件の充足や算定可否を示しません。利用月の告示・通知等の原典、事業所の記録、指定権者の案内を照合し、確認できた事項と未確認条件を分けてください。",
+          "chapter_ids": [
+            "shortstay-life/additions",
+            "preventive-shortstay-life/additions",
+            "shortstay-medical/additions",
+            "preventive-shortstay-medical/additions",
+            "specific-facility/additions",
+            "preventive-specific-facility/additions",
+            "dementia-group-home/additions",
+            "preventive-dementia-group-home/additions",
+            "community-specific-facility/additions",
+            "community-elderly-facility/additions",
+            "elderly-welfare-facility/additions",
+            "elderly-health-facility/additions",
+            "care-medical-institution/additions",
+            "small-scale-multifunctional/additions",
+            "preventive-small-scale-multifunctional/additions",
+            "nursing-small-scale-multifunctional/additions"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "参照候補はdata/services/preventive-homebath/standards-scope.jsonです。scopeに当該事項が含まれるか、準用・除外や自治体条例がどう関係するかは原典で未照合です。本人の訴え・観察事実・行った説明や連絡を分けて記録し、共有先を業務上必要な範囲に限定します。",
+          "chapter_ids": [
+            "preventive-homebath/safeguarding",
+            "homenursing/safeguarding",
+            "homerehab/safeguarding",
+            "preventive-homerehab/safeguarding",
+            "homecaremanagement/safeguarding",
+            "regular-round/safeguarding",
+            "night-homevisit/safeguarding",
+            "dayrehab/safeguarding",
+            "preventive-dayrehab/safeguarding"
+          ]
+        },
+        {
+          "occurrences": 2,
+          "text": "介護予防特定施設入居者生活介護の根拠候補は data/services/preventive-specific-facility/remuneration-index.json と data/services/preventive-specific-facility/fee-guidance-scope.json。厚労省の令和6年度改定資料 https://www.mhlw.go.jp/stf/newpage_38790.html は告示・通知への入口にすぎず、利用月の適用版や除外条件、単位数は未照合です。",
+          "chapter_ids": [
+            "preventive-specific-facility/remuneration",
+            "community-specific-facility/remuneration"
+          ]
+        }
+      ]
+    },
+    "checkpoints": {
+      "total": 1978,
+      "excess": 247,
+      "groups": 20,
+      "top": [
+        {
+          "occurrences": 17,
+          "text": "確認した体制・記録上の事実と、解釈が必要な点を別欄に整理する",
+          "chapter_ids": [
+            "homebath/deductions",
+            "homevisit/deductions",
+            "preventive-homebath/deductions",
+            "homenursing/deductions",
+            "preventive-homenursing/deductions",
+            "homerehab/deductions",
+            "preventive-homerehab/deductions",
+            "homecaremanagement/deductions",
+            "preventive-homecaremanagement/deductions",
+            "regular-round/deductions",
+            "night-homevisit/deductions",
+            "dayservice/deductions",
+            "dayrehab/deductions",
+            "preventive-dayrehab/deductions",
+            "community-dayservice/deductions",
+            "dementia-dayservice/deductions",
+            "preventive-dementia-dayservice/deductions"
+          ]
+        },
+        {
+          "occurrences": 17,
+          "text": "加算候補ごとに根拠書類、対象期間、確認者を記録し、基本報酬と重ねて扱わない",
+          "chapter_ids": [
+            "homebath/additions",
+            "homevisit/additions",
+            "preventive-homebath/additions",
+            "homenursing/additions",
+            "preventive-homenursing/additions",
+            "homerehab/additions",
+            "preventive-homerehab/additions",
+            "homecaremanagement/additions",
+            "preventive-homecaremanagement/additions",
+            "regular-round/additions",
+            "night-homevisit/additions",
+            "dayservice/additions",
+            "dayrehab/additions",
+            "preventive-dayrehab/additions",
+            "community-dayservice/additions",
+            "dementia-dayservice/additions",
+            "preventive-dementia-dayservice/additions"
+          ]
+        },
+        {
+          "occurrences": 17,
+          "text": "data/qa-corpus.json、data/qa-corpus-meta.json、data/qa-service-mapping.jsonで質問本文・回答本文・対象条件を確認し、サービス対応表だけで適用を決めない",
+          "chapter_ids": [
+            "homebath/national_qa",
+            "homevisit/national_qa",
+            "preventive-homebath/national_qa",
+            "homenursing/national_qa",
+            "preventive-homenursing/national_qa",
+            "homerehab/national_qa",
+            "preventive-homerehab/national_qa",
+            "homecaremanagement/national_qa",
+            "preventive-homecaremanagement/national_qa",
+            "regular-round/national_qa",
+            "night-homevisit/national_qa",
+            "dayservice/national_qa",
+            "dayrehab/national_qa",
+            "preventive-dayrehab/national_qa",
+            "community-dayservice/national_qa",
+            "dementia-dayservice/national_qa",
+            "preventive-dementia-dayservice/national_qa"
+          ]
+        },
+        {
+          "occurrences": 17,
+          "text": "一致する質問を確認できない場合は「収載資料では未特定」とし、問番号を付けない",
+          "chapter_ids": [
+            "homebath/national_qa",
+            "homevisit/national_qa",
+            "preventive-homebath/national_qa",
+            "homenursing/national_qa",
+            "preventive-homenursing/national_qa",
+            "homerehab/national_qa",
+            "preventive-homerehab/national_qa",
+            "homecaremanagement/national_qa",
+            "preventive-homecaremanagement/national_qa",
+            "regular-round/national_qa",
+            "night-homevisit/national_qa",
+            "dayservice/national_qa",
+            "dayrehab/national_qa",
+            "preventive-dayrehab/national_qa",
+            "community-dayservice/national_qa",
+            "dementia-dayservice/national_qa",
+            "preventive-dementia-dayservice/national_qa"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "改正履歴・準用・除外・自治体条例の確認先と確認日を記録し、未照合は未確立として残す",
+          "chapter_ids": [
+            "homebath/sources_and_history",
+            "homevisit/sources_and_history",
+            "preventive-homebath/sources_and_history",
+            "homenursing/sources_and_history",
+            "preventive-homenursing/sources_and_history",
+            "homerehab/sources_and_history",
+            "preventive-homerehab/sources_and_history",
+            "preventive-homecaremanagement/sources_and_history",
+            "regular-round/sources_and_history",
+            "night-homevisit/sources_and_history",
+            "dayservice/sources_and_history",
+            "dayrehab/sources_and_history",
+            "preventive-dayrehab/sources_and_history",
+            "community-dayservice/sources_and_history",
+            "dementia-dayservice/sources_and_history",
+            "preventive-dementia-dayservice/sources_and_history"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "提出先・様式・必要資料・効力発生日・期限を原典で照合し、確認できない項目を未確認とする",
+          "chapter_ids": [
+            "homevisit/notifications",
+            "preventive-homebath/notifications",
+            "homenursing/notifications",
+            "preventive-homenursing/notifications",
+            "homerehab/notifications",
+            "preventive-homerehab/notifications",
+            "homecaremanagement/notifications",
+            "preventive-homecaremanagement/notifications",
+            "regular-round/notifications",
+            "night-homevisit/notifications",
+            "dayservice/notifications",
+            "dayrehab/notifications",
+            "preventive-dayrehab/notifications",
+            "community-dayservice/notifications",
+            "dementia-dayservice/notifications",
+            "preventive-dementia-dayservice/notifications"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "提出控え・受領確認・内部周知と請求・運営情報の更新が対応しているか確認する",
+          "chapter_ids": [
+            "homevisit/notifications",
+            "preventive-homebath/notifications",
+            "homenursing/notifications",
+            "preventive-homenursing/notifications",
+            "homerehab/notifications",
+            "preventive-homerehab/notifications",
+            "homecaremanagement/notifications",
+            "preventive-homecaremanagement/notifications",
+            "regular-round/notifications",
+            "night-homevisit/notifications",
+            "dayservice/notifications",
+            "dayrehab/notifications",
+            "preventive-dayrehab/notifications",
+            "community-dayservice/notifications",
+            "dementia-dayservice/notifications",
+            "preventive-dementia-dayservice/notifications"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "索引から該当する告示と留意事項通知を特定し、利用月の版・適用除外を未確認欄に記録する。",
+          "chapter_ids": [
+            "shortstay-life/remuneration",
+            "preventive-shortstay-life/remuneration",
+            "shortstay-medical/remuneration",
+            "preventive-shortstay-medical/remuneration",
+            "specific-facility/remuneration",
+            "preventive-specific-facility/remuneration",
+            "dementia-group-home/remuneration",
+            "preventive-dementia-group-home/remuneration",
+            "community-specific-facility/remuneration",
+            "community-elderly-facility/remuneration",
+            "elderly-welfare-facility/remuneration",
+            "elderly-health-facility/remuneration",
+            "care-medical-institution/remuneration",
+            "small-scale-multifunctional/remuneration",
+            "preventive-small-scale-multifunctional/remuneration",
+            "nursing-small-scale-multifunctional/remuneration"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "請求差異について修正根拠・照合担当・保留理由を残す。",
+          "chapter_ids": [
+            "shortstay-life/remuneration",
+            "preventive-shortstay-life/remuneration",
+            "shortstay-medical/remuneration",
+            "preventive-shortstay-medical/remuneration",
+            "specific-facility/remuneration",
+            "preventive-specific-facility/remuneration",
+            "dementia-group-home/remuneration",
+            "preventive-dementia-group-home/remuneration",
+            "community-specific-facility/remuneration",
+            "community-elderly-facility/remuneration",
+            "elderly-welfare-facility/remuneration",
+            "elderly-health-facility/remuneration",
+            "care-medical-institution/remuneration",
+            "small-scale-multifunctional/remuneration",
+            "preventive-small-scale-multifunctional/remuneration",
+            "nursing-small-scale-multifunctional/remuneration"
+          ]
+        },
+        {
+          "occurrences": 15,
+          "text": "請求担当がdata/services/homebath/remuneration-scope.jsonの原文・参照版を確認し、判断根拠と未確認点を記録する",
+          "chapter_ids": [
+            "homebath/deductions",
+            "homevisit/deductions",
+            "preventive-homebath/deductions",
+            "homenursing/deductions",
+            "preventive-homenursing/deductions",
+            "homerehab/deductions",
+            "preventive-homerehab/deductions",
+            "homecaremanagement/deductions",
+            "preventive-homecaremanagement/deductions",
+            "regular-round/deductions",
+            "night-homevisit/deductions",
+            "preventive-dayrehab/deductions",
+            "community-dayservice/deductions",
+            "dementia-dayservice/deductions",
+            "preventive-dementia-dayservice/deductions"
+          ]
+        },
+        {
+          "occurrences": 15,
+          "text": "data/services/homebath/remuneration-scope.jsonから正式な要件本文と参照版を確かめ、未照合の条件を明示する",
+          "chapter_ids": [
+            "homebath/additions",
+            "homevisit/additions",
+            "preventive-homebath/additions",
+            "homenursing/additions",
+            "preventive-homenursing/additions",
+            "homerehab/additions",
+            "preventive-homerehab/additions",
+            "homecaremanagement/additions",
+            "preventive-homecaremanagement/additions",
+            "regular-round/additions",
+            "night-homevisit/additions",
+            "preventive-dayrehab/additions",
+            "community-dayservice/additions",
+            "dementia-dayservice/additions",
+            "preventive-dementia-dayservice/additions"
+          ]
+        },
+        {
+          "occurrences": 15,
+          "text": "中断時の判断・連絡・代替支援・再開確認を記録し、計画や利用者情報へ反映する",
+          "chapter_ids": [
+            "homevisit/business_continuity",
+            "preventive-homebath/business_continuity",
+            "homenursing/business_continuity",
+            "preventive-homenursing/business_continuity",
+            "homerehab/business_continuity",
+            "preventive-homerehab/business_continuity",
+            "homecaremanagement/business_continuity",
+            "preventive-homecaremanagement/business_continuity",
+            "regular-round/business_continuity",
+            "dayservice/business_continuity",
+            "dayrehab/business_continuity",
+            "preventive-dayrehab/business_continuity",
+            "community-dayservice/business_continuity",
+            "dementia-dayservice/business_continuity",
+            "preventive-dementia-dayservice/business_continuity"
+          ]
+        },
+        {
+          "occurrences": 14,
+          "text": "data/services/homebath/remuneration-scope.jsonとdata/qa-corpus.json、data/qa-corpus-meta.json、data/qa-service-mapping.jsonの版・出典・対象条件を別々に確認し、候補段階の資料を明示する",
+          "chapter_ids": [
+            "homebath/sources_and_history",
+            "homevisit/sources_and_history",
+            "preventive-homebath/sources_and_history",
+            "homenursing/sources_and_history",
+            "preventive-homenursing/sources_and_history",
+            "homerehab/sources_and_history",
+            "preventive-homerehab/sources_and_history",
+            "preventive-homecaremanagement/sources_and_history",
+            "regular-round/sources_and_history",
+            "night-homevisit/sources_and_history",
+            "preventive-dayrehab/sources_and_history",
+            "community-dayservice/sources_and_history",
+            "dementia-dayservice/sources_and_history",
+            "preventive-dementia-dayservice/sources_and_history"
+          ]
+        },
+        {
+          "occurrences": 10,
+          "text": "基本報酬、加算、減算、保険給付外の費用を分け、同一実績の二重計上がないか確認する",
+          "chapter_ids": [
+            "homevisit/remuneration",
+            "preventive-homebath/remuneration",
+            "homenursing/remuneration",
+            "preventive-homenursing/remuneration",
+            "preventive-homerehab/remuneration",
+            "night-homevisit/remuneration",
+            "dayservice/remuneration",
+            "community-dayservice/remuneration",
+            "dementia-dayservice/remuneration",
+            "preventive-dementia-dayservice/remuneration"
+          ]
+        },
+        {
+          "occurrences": 10,
+          "text": "安全確保、内部報告、相談・連絡先の役割分担と不在時の代替経路を確認する",
+          "chapter_ids": [
+            "preventive-homebath/safeguarding",
+            "homenursing/safeguarding",
+            "homerehab/safeguarding",
+            "preventive-homerehab/safeguarding",
+            "homecaremanagement/safeguarding",
+            "regular-round/safeguarding",
+            "night-homevisit/safeguarding",
+            "dayservice/safeguarding",
+            "dayrehab/safeguarding",
+            "preventive-dayrehab/safeguarding"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "data/services/homevisit/remuneration-scope.jsonの該当箇所と請求データを照合し、参照版・確認日・未解決の要件を記録する",
+          "chapter_ids": [
+            "homevisit/remuneration",
+            "preventive-homebath/remuneration",
+            "homenursing/remuneration",
+            "preventive-homenursing/remuneration",
+            "preventive-homerehab/remuneration",
+            "night-homevisit/remuneration",
+            "community-dayservice/remuneration",
+            "dementia-dayservice/remuneration",
+            "preventive-dementia-dayservice/remuneration"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "data/services/preventive-homebath/standards-scope.jsonの原文・準用関係と指定権者の手順を照合し、確認済みと未確認を分ける",
+          "chapter_ids": [
+            "preventive-homebath/safeguarding",
+            "homenursing/safeguarding",
+            "homerehab/safeguarding",
+            "preventive-homerehab/safeguarding",
+            "homecaremanagement/safeguarding",
+            "regular-round/safeguarding",
+            "night-homevisit/safeguarding",
+            "dayrehab/safeguarding",
+            "preventive-dayrehab/safeguarding"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "発生記録に観察事実・判断・対応・連絡・再発防止の項目が区別されているか確認する",
+          "chapter_ids": [
+            "preventive-homenursing/incident_and_infection",
+            "homerehab/incident_and_infection",
+            "homecaremanagement/incident_and_infection",
+            "preventive-homecaremanagement/incident_and_infection",
+            "dayrehab/incident_and_infection",
+            "preventive-dayrehab/incident_and_infection",
+            "community-dayservice/incident_and_infection",
+            "dementia-dayservice/incident_and_infection",
+            "preventive-dementia-dayservice/incident_and_infection"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "data/services/preventive-homenursing/standards-scope.jsonと自治体・保健所等の現行手順を照合し、報告要否や期限の未確認点を残す",
+          "chapter_ids": [
+            "preventive-homenursing/incident_and_infection",
+            "homerehab/incident_and_infection",
+            "homecaremanagement/incident_and_infection",
+            "preventive-homecaremanagement/incident_and_infection",
+            "dayrehab/incident_and_infection",
+            "preventive-dayrehab/incident_and_infection",
+            "community-dayservice/incident_and_infection",
+            "dementia-dayservice/incident_and_infection",
+            "preventive-dementia-dayservice/incident_and_infection"
+          ]
+        },
+        {
+          "occurrences": 4,
+          "text": "data/services/homecaremanagement/ordinance37-scope.jsonの設備条項候補と実物・平面図・管理記録を照合し、適用未確認を記録する",
+          "chapter_ids": [
+            "homecaremanagement/equipment",
+            "preventive-homecaremanagement/equipment",
+            "regular-round/equipment",
+            "night-homevisit/equipment"
+          ]
+        }
+      ]
+    }
+  },
+  "final": {
+    "paragraphs": {
+      "total": 1336,
+      "excess": 24,
+      "groups": 3,
+      "top": [
+        {
+          "occurrences": 16,
+          "text": "参照入口は data/services/shortstay-life/remuneration-index.json と data/services/shortstay-life/fee-guidance-scope.json です。索引に候補があることだけでは要件の充足や算定可否を示しません。利用月の告示・通知等の原典、事業所の記録、指定権者の案内を照合し、確認できた事項と未確認条件を分けてください。",
+          "chapter_ids": [
+            "shortstay-life/additions",
+            "preventive-shortstay-life/additions",
+            "shortstay-medical/additions",
+            "preventive-shortstay-medical/additions",
+            "specific-facility/additions",
+            "preventive-specific-facility/additions",
+            "dementia-group-home/additions",
+            "preventive-dementia-group-home/additions",
+            "community-specific-facility/additions",
+            "community-elderly-facility/additions",
+            "elderly-welfare-facility/additions",
+            "elderly-health-facility/additions",
+            "care-medical-institution/additions",
+            "small-scale-multifunctional/additions",
+            "preventive-small-scale-multifunctional/additions",
+            "nursing-small-scale-multifunctional/additions"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "参照候補はdata/services/preventive-homebath/standards-scope.jsonです。scopeに当該事項が含まれるか、準用・除外や自治体条例がどう関係するかは原典で未照合です。本人の訴え・観察事実・行った説明や連絡を分けて記録し、共有先を業務上必要な範囲に限定します。",
+          "chapter_ids": [
+            "preventive-homebath/safeguarding",
+            "homenursing/safeguarding",
+            "homerehab/safeguarding",
+            "preventive-homerehab/safeguarding",
+            "homecaremanagement/safeguarding",
+            "regular-round/safeguarding",
+            "night-homevisit/safeguarding",
+            "dayrehab/safeguarding",
+            "preventive-dayrehab/safeguarding"
+          ]
+        },
+        {
+          "occurrences": 2,
+          "text": "介護予防特定施設入居者生活介護の根拠候補は data/services/preventive-specific-facility/remuneration-index.json と data/services/preventive-specific-facility/fee-guidance-scope.json。厚労省の令和6年度改定資料 https://www.mhlw.go.jp/stf/newpage_38790.html は告示・通知への入口にすぎず、利用月の適用版や除外条件、単位数は未照合です。",
+          "chapter_ids": [
+            "preventive-specific-facility/remuneration",
+            "community-specific-facility/remuneration"
+          ]
+        }
+      ]
+    },
+    "checkpoints": {
+      "total": 1984,
+      "excess": 241,
+      "groups": 20,
+      "top": [
+        {
+          "occurrences": 17,
+          "text": "data/qa-corpus.json、data/qa-corpus-meta.json、data/qa-service-mapping.jsonで質問本文・回答本文・対象条件を確認し、サービス対応表だけで適用を決めない",
+          "chapter_ids": [
+            "homebath/national_qa",
+            "homevisit/national_qa",
+            "preventive-homebath/national_qa",
+            "homenursing/national_qa",
+            "preventive-homenursing/national_qa",
+            "homerehab/national_qa",
+            "preventive-homerehab/national_qa",
+            "homecaremanagement/national_qa",
+            "preventive-homecaremanagement/national_qa",
+            "regular-round/national_qa",
+            "night-homevisit/national_qa",
+            "dayservice/national_qa",
+            "dayrehab/national_qa",
+            "preventive-dayrehab/national_qa",
+            "community-dayservice/national_qa",
+            "dementia-dayservice/national_qa",
+            "preventive-dementia-dayservice/national_qa"
+          ]
+        },
+        {
+          "occurrences": 17,
+          "text": "一致する質問を確認できない場合は「収載資料では未特定」とし、問番号を付けない",
+          "chapter_ids": [
+            "homebath/national_qa",
+            "homevisit/national_qa",
+            "preventive-homebath/national_qa",
+            "homenursing/national_qa",
+            "preventive-homenursing/national_qa",
+            "homerehab/national_qa",
+            "preventive-homerehab/national_qa",
+            "homecaremanagement/national_qa",
+            "preventive-homecaremanagement/national_qa",
+            "regular-round/national_qa",
+            "night-homevisit/national_qa",
+            "dayservice/national_qa",
+            "dayrehab/national_qa",
+            "preventive-dayrehab/national_qa",
+            "community-dayservice/national_qa",
+            "dementia-dayservice/national_qa",
+            "preventive-dementia-dayservice/national_qa"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "改正履歴・準用・除外・自治体条例の確認先と確認日を記録し、未照合は未確立として残す",
+          "chapter_ids": [
+            "homebath/sources_and_history",
+            "homevisit/sources_and_history",
+            "preventive-homebath/sources_and_history",
+            "homenursing/sources_and_history",
+            "preventive-homenursing/sources_and_history",
+            "homerehab/sources_and_history",
+            "preventive-homerehab/sources_and_history",
+            "preventive-homecaremanagement/sources_and_history",
+            "regular-round/sources_and_history",
+            "night-homevisit/sources_and_history",
+            "dayservice/sources_and_history",
+            "dayrehab/sources_and_history",
+            "preventive-dayrehab/sources_and_history",
+            "community-dayservice/sources_and_history",
+            "dementia-dayservice/sources_and_history",
+            "preventive-dementia-dayservice/sources_and_history"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "提出先・様式・必要資料・効力発生日・期限を原典で照合し、確認できない項目を未確認とする",
+          "chapter_ids": [
+            "homevisit/notifications",
+            "preventive-homebath/notifications",
+            "homenursing/notifications",
+            "preventive-homenursing/notifications",
+            "homerehab/notifications",
+            "preventive-homerehab/notifications",
+            "homecaremanagement/notifications",
+            "preventive-homecaremanagement/notifications",
+            "regular-round/notifications",
+            "night-homevisit/notifications",
+            "dayservice/notifications",
+            "dayrehab/notifications",
+            "preventive-dayrehab/notifications",
+            "community-dayservice/notifications",
+            "dementia-dayservice/notifications",
+            "preventive-dementia-dayservice/notifications"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "提出控え・受領確認・内部周知と請求・運営情報の更新が対応しているか確認する",
+          "chapter_ids": [
+            "homevisit/notifications",
+            "preventive-homebath/notifications",
+            "homenursing/notifications",
+            "preventive-homenursing/notifications",
+            "homerehab/notifications",
+            "preventive-homerehab/notifications",
+            "homecaremanagement/notifications",
+            "preventive-homecaremanagement/notifications",
+            "regular-round/notifications",
+            "night-homevisit/notifications",
+            "dayservice/notifications",
+            "dayrehab/notifications",
+            "preventive-dayrehab/notifications",
+            "community-dayservice/notifications",
+            "dementia-dayservice/notifications",
+            "preventive-dementia-dayservice/notifications"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "索引から該当する告示と留意事項通知を特定し、利用月の版・適用除外を未確認欄に記録する。",
+          "chapter_ids": [
+            "shortstay-life/remuneration",
+            "preventive-shortstay-life/remuneration",
+            "shortstay-medical/remuneration",
+            "preventive-shortstay-medical/remuneration",
+            "specific-facility/remuneration",
+            "preventive-specific-facility/remuneration",
+            "dementia-group-home/remuneration",
+            "preventive-dementia-group-home/remuneration",
+            "community-specific-facility/remuneration",
+            "community-elderly-facility/remuneration",
+            "elderly-welfare-facility/remuneration",
+            "elderly-health-facility/remuneration",
+            "care-medical-institution/remuneration",
+            "small-scale-multifunctional/remuneration",
+            "preventive-small-scale-multifunctional/remuneration",
+            "nursing-small-scale-multifunctional/remuneration"
+          ]
+        },
+        {
+          "occurrences": 16,
+          "text": "請求差異について修正根拠・照合担当・保留理由を残す。",
+          "chapter_ids": [
+            "shortstay-life/remuneration",
+            "preventive-shortstay-life/remuneration",
+            "shortstay-medical/remuneration",
+            "preventive-shortstay-medical/remuneration",
+            "specific-facility/remuneration",
+            "preventive-specific-facility/remuneration",
+            "dementia-group-home/remuneration",
+            "preventive-dementia-group-home/remuneration",
+            "community-specific-facility/remuneration",
+            "community-elderly-facility/remuneration",
+            "elderly-welfare-facility/remuneration",
+            "elderly-health-facility/remuneration",
+            "care-medical-institution/remuneration",
+            "small-scale-multifunctional/remuneration",
+            "preventive-small-scale-multifunctional/remuneration",
+            "nursing-small-scale-multifunctional/remuneration"
+          ]
+        },
+        {
+          "occurrences": 15,
+          "text": "請求担当がdata/services/homebath/remuneration-scope.jsonの原文・参照版を確認し、判断根拠と未確認点を記録する",
+          "chapter_ids": [
+            "homebath/deductions",
+            "homevisit/deductions",
+            "preventive-homebath/deductions",
+            "homenursing/deductions",
+            "preventive-homenursing/deductions",
+            "homerehab/deductions",
+            "preventive-homerehab/deductions",
+            "homecaremanagement/deductions",
+            "preventive-homecaremanagement/deductions",
+            "regular-round/deductions",
+            "night-homevisit/deductions",
+            "preventive-dayrehab/deductions",
+            "community-dayservice/deductions",
+            "dementia-dayservice/deductions",
+            "preventive-dementia-dayservice/deductions"
+          ]
+        },
+        {
+          "occurrences": 15,
+          "text": "data/services/homebath/remuneration-scope.jsonから正式な要件本文と参照版を確かめ、未照合の条件を明示する",
+          "chapter_ids": [
+            "homebath/additions",
+            "homevisit/additions",
+            "preventive-homebath/additions",
+            "homenursing/additions",
+            "preventive-homenursing/additions",
+            "homerehab/additions",
+            "preventive-homerehab/additions",
+            "homecaremanagement/additions",
+            "preventive-homecaremanagement/additions",
+            "regular-round/additions",
+            "night-homevisit/additions",
+            "preventive-dayrehab/additions",
+            "community-dayservice/additions",
+            "dementia-dayservice/additions",
+            "preventive-dementia-dayservice/additions"
+          ]
+        },
+        {
+          "occurrences": 15,
+          "text": "中断時の判断・連絡・代替支援・再開確認を記録し、計画や利用者情報へ反映する",
+          "chapter_ids": [
+            "homevisit/business_continuity",
+            "preventive-homebath/business_continuity",
+            "homenursing/business_continuity",
+            "preventive-homenursing/business_continuity",
+            "homerehab/business_continuity",
+            "preventive-homerehab/business_continuity",
+            "homecaremanagement/business_continuity",
+            "preventive-homecaremanagement/business_continuity",
+            "regular-round/business_continuity",
+            "dayservice/business_continuity",
+            "dayrehab/business_continuity",
+            "preventive-dayrehab/business_continuity",
+            "community-dayservice/business_continuity",
+            "dementia-dayservice/business_continuity",
+            "preventive-dementia-dayservice/business_continuity"
+          ]
+        },
+        {
+          "occurrences": 14,
+          "text": "確認した体制・記録上の事実と、解釈が必要な点を別欄に整理する",
+          "chapter_ids": [
+            "homebath/deductions",
+            "preventive-homebath/deductions",
+            "homenursing/deductions",
+            "preventive-homenursing/deductions",
+            "homerehab/deductions",
+            "preventive-homerehab/deductions",
+            "homecaremanagement/deductions",
+            "preventive-homecaremanagement/deductions",
+            "regular-round/deductions",
+            "night-homevisit/deductions",
+            "dayrehab/deductions",
+            "preventive-dayrehab/deductions",
+            "dementia-dayservice/deductions",
+            "preventive-dementia-dayservice/deductions"
+          ]
+        },
+        {
+          "occurrences": 14,
+          "text": "加算候補ごとに根拠書類、対象期間、確認者を記録し、基本報酬と重ねて扱わない",
+          "chapter_ids": [
+            "homebath/additions",
+            "preventive-homebath/additions",
+            "homenursing/additions",
+            "preventive-homenursing/additions",
+            "homerehab/additions",
+            "preventive-homerehab/additions",
+            "homecaremanagement/additions",
+            "preventive-homecaremanagement/additions",
+            "regular-round/additions",
+            "night-homevisit/additions",
+            "dayrehab/additions",
+            "preventive-dayrehab/additions",
+            "dementia-dayservice/additions",
+            "preventive-dementia-dayservice/additions"
+          ]
+        },
+        {
+          "occurrences": 14,
+          "text": "data/services/homebath/remuneration-scope.jsonとdata/qa-corpus.json、data/qa-corpus-meta.json、data/qa-service-mapping.jsonの版・出典・対象条件を別々に確認し、候補段階の資料を明示する",
+          "chapter_ids": [
+            "homebath/sources_and_history",
+            "homevisit/sources_and_history",
+            "preventive-homebath/sources_and_history",
+            "homenursing/sources_and_history",
+            "preventive-homenursing/sources_and_history",
+            "homerehab/sources_and_history",
+            "preventive-homerehab/sources_and_history",
+            "preventive-homecaremanagement/sources_and_history",
+            "regular-round/sources_and_history",
+            "night-homevisit/sources_and_history",
+            "preventive-dayrehab/sources_and_history",
+            "community-dayservice/sources_and_history",
+            "dementia-dayservice/sources_and_history",
+            "preventive-dementia-dayservice/sources_and_history"
+          ]
+        },
+        {
+          "occurrences": 10,
+          "text": "基本報酬、加算、減算、保険給付外の費用を分け、同一実績の二重計上がないか確認する",
+          "chapter_ids": [
+            "homevisit/remuneration",
+            "preventive-homebath/remuneration",
+            "homenursing/remuneration",
+            "preventive-homenursing/remuneration",
+            "preventive-homerehab/remuneration",
+            "night-homevisit/remuneration",
+            "dayservice/remuneration",
+            "community-dayservice/remuneration",
+            "dementia-dayservice/remuneration",
+            "preventive-dementia-dayservice/remuneration"
+          ]
+        },
+        {
+          "occurrences": 10,
+          "text": "安全確保、内部報告、相談・連絡先の役割分担と不在時の代替経路を確認する",
+          "chapter_ids": [
+            "preventive-homebath/safeguarding",
+            "homenursing/safeguarding",
+            "homerehab/safeguarding",
+            "preventive-homerehab/safeguarding",
+            "homecaremanagement/safeguarding",
+            "regular-round/safeguarding",
+            "night-homevisit/safeguarding",
+            "dayservice/safeguarding",
+            "dayrehab/safeguarding",
+            "preventive-dayrehab/safeguarding"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "data/services/homevisit/remuneration-scope.jsonの該当箇所と請求データを照合し、参照版・確認日・未解決の要件を記録する",
+          "chapter_ids": [
+            "homevisit/remuneration",
+            "preventive-homebath/remuneration",
+            "homenursing/remuneration",
+            "preventive-homenursing/remuneration",
+            "preventive-homerehab/remuneration",
+            "night-homevisit/remuneration",
+            "community-dayservice/remuneration",
+            "dementia-dayservice/remuneration",
+            "preventive-dementia-dayservice/remuneration"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "data/services/preventive-homebath/standards-scope.jsonの原文・準用関係と指定権者の手順を照合し、確認済みと未確認を分ける",
+          "chapter_ids": [
+            "preventive-homebath/safeguarding",
+            "homenursing/safeguarding",
+            "homerehab/safeguarding",
+            "preventive-homerehab/safeguarding",
+            "homecaremanagement/safeguarding",
+            "regular-round/safeguarding",
+            "night-homevisit/safeguarding",
+            "dayrehab/safeguarding",
+            "preventive-dayrehab/safeguarding"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "発生記録に観察事実・判断・対応・連絡・再発防止の項目が区別されているか確認する",
+          "chapter_ids": [
+            "preventive-homenursing/incident_and_infection",
+            "homerehab/incident_and_infection",
+            "homecaremanagement/incident_and_infection",
+            "preventive-homecaremanagement/incident_and_infection",
+            "dayrehab/incident_and_infection",
+            "preventive-dayrehab/incident_and_infection",
+            "community-dayservice/incident_and_infection",
+            "dementia-dayservice/incident_and_infection",
+            "preventive-dementia-dayservice/incident_and_infection"
+          ]
+        },
+        {
+          "occurrences": 9,
+          "text": "data/services/preventive-homenursing/standards-scope.jsonと自治体・保健所等の現行手順を照合し、報告要否や期限の未確認点を残す",
+          "chapter_ids": [
+            "preventive-homenursing/incident_and_infection",
+            "homerehab/incident_and_infection",
+            "homecaremanagement/incident_and_infection",
+            "preventive-homecaremanagement/incident_and_infection",
+            "dayrehab/incident_and_infection",
+            "preventive-dayrehab/incident_and_infection",
+            "community-dayservice/incident_and_infection",
+            "dementia-dayservice/incident_and_infection",
+            "preventive-dementia-dayservice/incident_and_infection"
+          ]
+        },
+        {
+          "occurrences": 4,
+          "text": "data/services/homecaremanagement/ordinance37-scope.jsonの設備条項候補と実物・平面図・管理記録を照合し、適用未確認を記録する",
+          "chapter_ids": [
+            "homecaremanagement/equipment",
+            "preventive-homecaremanagement/equipment",
+            "regular-round/equipment",
+            "night-homevisit/equipment"
+          ]
+        }
+      ]
+    }
+  },
+  "scope_exact": [
+    "homevisit/deductions",
+    "homevisit/additions",
+    "welfare-equipment-rental/designation",
+    "welfare-equipment-rental/records",
+    "specific-welfare-equipment-sale/designation",
+    "specific-welfare-equipment-sale/records",
+    "care-management/designation",
+    "care-management/records",
+    "dayservice/deductions",
+    "dayservice/additions",
+    "community-dayservice/deductions",
+    "community-dayservice/additions"
+  ],
+  "unauthorized_chapter_changes": 0,
+  "notes": "Frequency excess is an editorial repetition proxy, not correctness. Retained generic notes in other chapters; reductions due to service-specific checkpoint replacement."
+}
