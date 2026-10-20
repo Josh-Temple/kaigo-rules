@@ -176,5 +176,7 @@ test("chapter evidence anchor is linked and long drafting text wraps", () => {
   const css = fs.readFileSync("app/globals.css", "utf8");
   assert.match(tsx, /href=\{\x60#handbook-sources-/);
   assert.match(tsx, /id=\{\x60handbook-sources-/);
+  assert.match(tsx, /手引のこの章へ戻る/);
+  assert.match(tsx, /個別資料が未登録のため、法令等の全候補から探す/);
   assert.match(css, /\.handbook-checkpoints li\{overflow-wrap:anywhere\}/);
 });
