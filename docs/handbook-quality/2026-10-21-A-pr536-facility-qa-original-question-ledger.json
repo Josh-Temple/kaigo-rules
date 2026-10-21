@@ -23,7 +23,7 @@
         "official_url": "https://www.mhlw.go.jp/content/001239248.pdf",
         "issued_date": "2024-03-29",
         "original_question": "問4",
-        "pdf_page_number": 4,
+        "pdf_page_number": 5,
         "document_printed_page": 3,
         "verified_condition": "研修受講要件の経過措置に関する問答。短期入所生活介護は問4の対象列挙に含む"
       },
@@ -65,7 +65,7 @@
         "official_url": "https://www.mhlw.go.jp/content/001239248.pdf",
         "issued_date": "2024-03-29",
         "original_question": "問4",
-        "pdf_page_number": 4,
+        "pdf_page_number": 5,
         "document_printed_page": 3,
         "verified_condition": "問4の「（介護予防）短期入所生活介護」という明示列挙の範囲。予防への報酬条件一般の転用ではない"
       },
@@ -275,8 +275,14 @@
         "official_url": "https://www.mhlw.go.jp/content/12300000/001239535.pdf",
         "issued_date": "2024-03-19",
         "original_question": "問7・問10",
-        "pdf_page_number": 4,
-        "document_printed_page": 3,
+        "pdf_page_number": [
+          3,
+          4
+        ],
+        "document_printed_page": [
+          2,
+          3
+        ],
         "verified_condition": "介護医療院を含む認知症チームケア推進加算に係る2024年の母数判定と記録の問答"
       },
       "record_comparison": [
@@ -392,5 +398,8 @@
     "note": "duplicate statistics use NFKC + whitespace folding and are not equivalent to preceding E's broader normalization; do not compare excess 0/173 to reported 24/241 without aligning normalization"
   },
   "content_commit_sha": "0bad6f5cc5f8babb501b309e46928a9a29c03a5c",
-  "content_blob_sha": "a5eb9863a0c52209e0d8776ae8690c23edf5ddcb"
+  "content_blob_sha": "a5eb9863a0c52209e0d8776ae8690c23edf5ddcb",
+  "pdf_page_number_definition": "1-based physical PDF page; printed page is the page number of the Q&A body, not its cover",
+  "qa_original_source_text_checked_at_utc": "2026-10-21T09:40:34.095Z",
+  "source_quality_limit": "Primary PDFs Vol2, Vol3 and Vol12 checked for named questions. Later Q&A and all amendment notices and designated authority ordinances have not been comprehensively audited."
 }
