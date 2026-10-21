@@ -357,7 +357,7 @@ test("staffing roles are an optional backward-compatible projection", () => {
 
 test("role data rejects out-of-scope fields, unsafe links and false verification", async () => {
   const { spawnSync } = await import("node:child_process");
-  const script = String.raw\`import importlib.util,json,sys
+  const script = String.raw`import importlib.util,json,sys
 spec=importlib.util.spec_from_file_location("handbook_builder","scripts/build_handbook_site.py")
 module=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
@@ -367,7 +367,7 @@ try:
 except ValueError as exc:
     print(exc)
     sys.exit(2)
-\`;
+`;
   const valid = [{
     id: "manager", title: "管理者", requirements: [{
       id: "placement", title: "配置", aspect: "placement",
