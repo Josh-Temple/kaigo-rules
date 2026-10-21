@@ -221,6 +221,524 @@
             "職員名簿・資格証・雇用契約と訪問介護員等の業務分担を突き合わせる",
             "サービス提供責任者の担当範囲と訪問シフト・勤務表を照合する",
             "管理者の勤務・兼務状況を第6条と自治体基準で別に確認する"
+          ],
+          "role_sections": [
+            {
+              "id": "manager",
+              "title": "管理者",
+              "requirements": [
+                {
+                  "id": "fulltime",
+                  "title": "常勤・原則専従の管理者",
+                  "aspect": "placement",
+                  "description": "事業所ごとに、専ら管理者の職務に従事する常勤の管理者を置くのが原則です。単に名簿に名前があるだけでなく、所定労働時間と管理職務の実施を分けて確認します。",
+                  "applicability": "指定訪問介護の事業所ごと。全国の省令第6条、横浜市内の事業所は市条例第7条。改正・附則の全照合は未了。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第6条本文",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "管理者の常勤・専従の原則"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービスの事業の人員、設備、運営等の基準に関する条例（平成24年12月28日条例第76号）",
+                      "issuer": "横浜市",
+                      "locator": "第7条本文",
+                      "version": "横浜市例規の参照時点表示。施行附則・全改正履歴未網羅",
+                      "scope": "横浜市指定訪問介護のみ。全国一般化不可",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html",
+                      "note": "横浜市条例の管理者規定"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF8頁／紙面8頁「管理者」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=8",
+                      "note": "国の条文と区別して読む自治体説明"
+                    }
+                  ],
+                  "practical_checks": [
+                    "勤務形態一覧表の管理者の所定・実勤務時間を雇用契約、出勤簿と同じ期間で突合する。",
+                    "管理上の連絡・指揮命令の実施を管理記録で確認する（実務確認例）。"
+                  ]
+                },
+                {
+                  "id": "concurrency",
+                  "title": "管理に支障がない場合だけ兼務可能",
+                  "aspect": "concurrency",
+                  "description": "例外として、その事業所の他の職務や、他の事業所・施設等の職務に従事できますが、管理に支障がないことが条件です。法人が同じという理由だけで無条件の兼務を認めるものではありません。",
+                  "applicability": "全国は省令第6条ただし書、横浜市は条例第7条ただし書。個別の管理支障の有無を要確認。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第6条ただし書（令和6年厚労令16号の改正表示）",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "他の事業所・施設等での職務は条件付き"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービスの事業の人員、設備、運営等の基準に関する条例（平成24年12月28日条例第76号）",
+                      "issuer": "横浜市",
+                      "locator": "第7条ただし書（令和6年条例23号の改正表示）",
+                      "version": "横浜市例規の参照時点表示。施行附則・全改正履歴未網羅",
+                      "scope": "横浜市指定訪問介護のみ。全国一般化不可",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html",
+                      "note": "市条例でも管理上の支障のないことが必要"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF8頁／紙面8頁「管理者の兼務」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=8",
+                      "note": "市手引の具体例は全国の一律条件と扱わない"
+                    }
+                  ],
+                  "practical_checks": [
+                    "兼務先別の勤務時間・場所・移動時間を管理者の出勤実績と突合する。",
+                    "緊急連絡・決裁・職員指揮の不在時体制を確認する（実務確認例）。"
+                  ]
+                },
+                {
+                  "id": "qualification",
+                  "title": "管理者固有の資格・経験の未確認",
+                  "aspect": "qualification",
+                  "description": "省令第6条と市条例第7条から確認できたのは常勤・専従・兼務条件です。他の適用資料を網羅していないため、この資料だけで『資格不要』『経験不問』と断定しません。",
+                  "applicability": "適用範囲未確認。関連指定要件と兼務先制度の確認を要する。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [],
+                  "practical_checks": [
+                    "管理者の任命文書・職務分掌を確認し、資格が争点なら指定権者の当該時点の要件を照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "service-provision-responsible",
+              "title": "サービス提供責任者",
+              "requirements": [
+                {
+                  "id": "forty-users",
+                  "title": "利用者40人またはその端数につき1人以上",
+                  "aspect": "placement",
+                  "description": "常勤の訪問介護員等の中から、事業所の利用者が40人またはその端数を増すごとに1人以上のサービス提供責任者を配置するのが原則です。利用者数は前3か月の平均値、新規指定では推定数を用います。第1号訪問事業の利用者を算入できるのは、対象指定と同一事業所での一体的運営などの条件がある場合です。",
+                  "applicability": "省令第5条第2・3項。横浜市は条例第6条第2・3項で対象第1号訪問事業等の範囲を規定。他自治体の取扱いと混同しない。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第5条第2項・第3項",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "40人単位、前3月平均、新規推定数、特定第1号訪問事業の条件"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービスの事業の人員、設備、運営等の基準に関する条例（平成24年12月28日条例第76号）",
+                      "issuer": "横浜市",
+                      "locator": "第6条第2項・第3項",
+                      "version": "横浜市例規の参照時点表示。施行附則・全改正履歴未網羅",
+                      "scope": "横浜市指定訪問介護のみ。全国一般化不可",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html",
+                      "note": "横浜市の対象事業と利用者数の範囲"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF9頁／紙面9頁「サービス提供責任者」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=9",
+                      "note": "資格と配置数を同一箇所で確認"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF10頁／紙面10頁「利用者の数の計算方法」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=10",
+                      "note": "通院等乗降介助のみの利用者0.1人の説明は市手引による"
+                    }
+                  ],
+                  "practical_checks": [
+                    "直前3か月の月別実利用者名簿と利用者数集計表を突合し計算過程を保存する。",
+                    "訪問介護と第1号訪問事業の指定・一体運営を確認して、合算人数を区分して記録する。",
+                    "必要員数と責任者の勤務予定・実績を月ごとに突合する。"
+                  ]
+                },
+                {
+                  "id": "fte-conditions",
+                  "title": "常勤換算による配置は条件付き",
+                  "aspect": "exception",
+                  "description": "40人を超える事業所では、一定の条件下でサービス提供責任者の配置に常勤換算を使えます。横浜市の手引は、非常勤責任者に必要な個人別最低勤務時間、必要な常勤責任者数、利用者数ごとの表を示しています。端数を任意人数で分割できるという意味ではありません。",
+                  "applicability": "省令第5条第2項後段で常勤換算を認める範囲を確認。具体的な常勤人数等は横浜市手引に載る解釈の説明。国の統合現行通知は未確認。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第5条第2項後段",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "常勤換算を利用者数に応じて認める条文"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF10頁／紙面10頁「勤務形態」「利用者数」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=10",
+                      "note": "常勤者・非常勤者の区分"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF11頁／紙面11頁「老企25第3Ⅰ（2）」・別表1",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=11",
+                      "note": "非常勤0.5以上等の説明は市手引経由で確認"
+                    },
+                    {
+                      "kind": "national_interpretation",
+                      "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（老企第25号）",
+                      "issuer": "厚生省老人保健福祉局企画課長（当初発出）",
+                      "locator": "老企第25号 第3の一(2) に相当する項目（最新版の正式位置未検証）",
+                      "version": "2026年10月時点の改正反映済み統合版は未取得（旧掲載版には現在と違う員数・資格記述が存在）",
+                      "scope": "訪問介護の該当項目。現行通知本文への対応付け未確定",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "候補のみ。URLを掲示せず、現行根拠にしない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "各責任者の週・月の勤務時間と所定時間から常勤換算数を計算し、常勤者を別に数える。",
+                    "非常勤者1人ずつの勤務時間と横浜市手引の別表1を照合する。"
+                  ]
+                },
+                {
+                  "id": "fifty-users",
+                  "title": "50人基準の特例は3条件を満たす場合",
+                  "aspect": "exception",
+                  "description": "常勤のサービス提供責任者が3人以上、その業務に主として従事する者が1人以上、責任者業務が効率的に行われているという条件をすべて満たす場合には、利用者50人またはその端数ごとに1人以上とする特例があります。単に『利用者50人に1人』へ読み替えてはいけません。",
+                  "applicability": "省令第5条第5項／横浜市条例第6条第5項。横浜市の手引にある効率化の具体例を法令の独立した追加義務と断定しない。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第5条第5項",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "常勤3人以上・主従事者1人以上・効率的運営の3条件"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービスの事業の人員、設備、運営等の基準に関する条例（平成24年12月28日条例第76号）",
+                      "issuer": "横浜市",
+                      "locator": "第6条第5項",
+                      "version": "横浜市例規の参照時点表示。施行附則・全改正履歴未網羅",
+                      "scope": "横浜市指定訪問介護のみ。全国一般化不可",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html",
+                      "note": "市条例も特例に3条件を設ける"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF12頁／紙面12頁「50人特例の要件」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=12",
+                      "note": "主担当や業務効率化の具体的説明"
+                    }
+                  ],
+                  "practical_checks": [
+                    "常勤責任者3人以上と主従事者1人の職務分掌・勤務記録を確認する。",
+                    "効率化の仕組み、サービス提供責任者の共同対応・代行体制が実際に機能するか記録で点検する。"
+                  ]
+                },
+                {
+                  "id": "qualification",
+                  "title": "介護福祉士または大臣が定める有資格者",
+                  "aspect": "qualification",
+                  "description": "省令はサービス提供責任者を介護福祉士又は厚生労働大臣の定める者とします。横浜市手引は実務者研修修了者、旧1級相当者などを区分し、初任者研修修了だけでは責任者になれないと説明しています。大臣指定と旧課程・経過措置の全文照合が完了するまで、旧資格の対応は個人ごとに確認します。",
+                  "applicability": "省令第5条第4項、市条例第6条第4項、横浜市手引PDF9頁で確認した範囲。大臣告示・個別の旧研修の施行条件は別途確認。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第5条第4項（資格指定は厚生労働大臣に委任）",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "介護福祉士または大臣指定者に限る"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービスの事業の人員、設備、運営等の基準に関する条例（平成24年12月28日条例第76号）",
+                      "issuer": "横浜市",
+                      "locator": "第6条第4項",
+                      "version": "横浜市例規の参照時点表示。施行附則・全改正履歴未網羅",
+                      "scope": "横浜市指定訪問介護のみ。全国一般化不可",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html",
+                      "note": "横浜市でも大臣指定者を参照"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF9頁／紙面9頁「サービス提供責任者の資格」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=9",
+                      "note": "実務者研修、旧研修の同等資格の説明"
+                    }
+                  ],
+                  "practical_checks": [
+                    "責任者名簿、介護福祉士登録証または実務者研修修了証、雇用契約と配置日を突合する。",
+                    "旧課程資格・経過措置について取得時期と指定権者の適用案内を確認する。"
+                  ]
+                },
+                {
+                  "id": "exclusive-duty",
+                  "title": "原則専従と同一敷地内の限定例外",
+                  "aspect": "concurrency",
+                  "description": "サービス提供責任者は原則として指定訪問介護に専ら従事します。ただし利用者への訪問介護の提供に支障がない場合に限り、同一敷地内の定期巡回・随時対応型訪問介護看護又は夜間対応型訪問介護の事業所で職務に従事できます。障害福祉との兼務等は別の具体的条件があるため、この条文だけで一般化できません。",
+                  "applicability": "省令第5条第4項ただし書／横浜市条例第6条第4項ただし書。障害福祉兼務の国Q&A原問番号・後続訂正の照合は未完了。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第5条第4項ただし書",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "同一敷地内・特定事業・サービス提供に支障がない条件"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービスの事業の人員、設備、運営等の基準に関する条例（平成24年12月28日条例第76号）",
+                      "issuer": "横浜市",
+                      "locator": "第6条第4項ただし書",
+                      "version": "横浜市例規の参照時点表示。施行附則・全改正履歴未網羅",
+                      "scope": "横浜市指定訪問介護のみ。全国一般化不可",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html",
+                      "note": "横浜市条例上の限定的な兼務"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF9頁／紙面9頁「責任者の兼務」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=9",
+                      "note": "市手引の障害福祉との兼務案内は別の根拠を要する"
+                    }
+                  ],
+                  "practical_checks": [
+                    "責任者と兼務先の指定事業種別・敷地・勤務予定と実績を同じ期間で突合する。",
+                    "障害福祉兼務は2007年の国Q&A（厚労省Q&A集2012年版99頁・収載行747）の番号未確定として個別受理を保留する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "home-care-workers",
+              "title": "訪問介護員等",
+              "requirements": [
+                {
+                  "id": "two-point-five",
+                  "title": "常勤換算2.5以上の訪問介護員等",
+                  "aspect": "placement",
+                  "description": "事業所ごとに、訪問介護員等を常勤換算方法で2.5以上配置します。単なる人数ではなく、常勤従業者の所定労働時間に対する対象従業者の勤務延べ時間から算定するため、管理者などの他職務時間を無条件に合算しません。",
+                  "applicability": "全国：省令第5条第1項と第2条第8号（常勤換算の定義）。横浜市内：市条例第6条第1項・第2条第6号。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第2条第8号・第5条第1項",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "常勤換算の定義と2.5人以上"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービスの事業の人員、設備、運営等の基準に関する条例（平成24年12月28日条例第76号）",
+                      "issuer": "横浜市",
+                      "locator": "第2条第6号・第6条第1項",
+                      "version": "横浜市例規の参照時点表示。施行附則・全改正履歴未網羅",
+                      "scope": "横浜市指定訪問介護のみ。全国一般化不可",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html",
+                      "note": "横浜市条例でも常勤換算2.5以上"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF14頁／紙面14頁「訪問介護員等」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=14",
+                      "note": "配置と勤務時間の説明"
+                    }
+                  ],
+                  "practical_checks": [
+                    "勤務形態一覧表に記載の訪問介護員別時間を出勤簿・実施記録と突合し、月の常勤換算を計算する。",
+                    "兼務者の職務別時間と訪問介護員等として算入した時間を区分して記録する。"
+                  ]
+                },
+                {
+                  "id": "worker-qualifications",
+                  "title": "資格証・修了証と従事日を照合",
+                  "aspect": "qualification",
+                  "description": "訪問介護員等は介護福祉士または介護保険法施行令により定められる対象者です。横浜市の手引は研修修了課程や旧制度の資格を具体的に区分していますが、旧研修名をすべて現行資格へ自動置換しません。",
+                  "applicability": "省令第5条第1項、横浜市条例第6条第1項、横浜市手引PDF14～15頁。政令第3条第1項と経過措置全体の照合は未完了。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第5条第1項（介護福祉士または政令で定める者）",
+                      "version": "国省令の参照本文。令和8年までの全改正・施行附則未網羅",
+                      "scope": "全国の指定訪問介護。個別事業所への現行適用未判定",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0&pageNo=1",
+                      "note": "資格の委任元を確認"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービスの事業の人員、設備、運営等の基準に関する条例（平成24年12月28日条例第76号）",
+                      "issuer": "横浜市",
+                      "locator": "第6条第1項（介護保険法施行令第3条第1項）",
+                      "version": "横浜市例規の参照時点表示。施行附則・全改正履歴未網羅",
+                      "scope": "横浜市指定訪問介護のみ。全国一般化不可",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html",
+                      "note": "横浜市条例の従業者範囲"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF14頁／紙面14頁「訪問介護員等」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=14",
+                      "note": "必要資格の説明"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年度 運営の手引き 訪問介護・訪問介護相当サービス",
+                      "issuer": "横浜市",
+                      "locator": "PDF15頁／紙面15頁「訪問介護員の具体的範囲」",
+                      "version": "令和8年度版（PDF表紙2026.06.01・公開一覧2026-10-02更新）。後続改訂未確認",
+                      "scope": "横浜市の指定訪問介護・訪問介護相当サービス。行政の解説であり国基準そのものではない",
+                      "checked_at_jst": "2026-10-21 21:24 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/0097_20261002.pdf#page=15",
+                      "note": "旧課程区分や同等資格は記載条件の範囲のみ確認"
+                    }
+                  ],
+                  "practical_checks": [
+                    "職員名簿、資格・修了証、従事した日を同一人で照合し、有資格者以外の時間を混入させない。",
+                    "旧資格・研修の適用時期と根拠を指定権者に確認する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "designation": {
@@ -6627,6 +7145,799 @@
             "通い・訪問・宿泊別の提供実績と時間帯別勤務表を照合する",
             "訪問への出動中に残る職員の体制を確認する",
             "夜間の宿泊対応・緊急訪問と職員の役割を点検する"
+          ],
+          "role_sections": [
+            {
+              "id": "representative",
+              "title": "事業者の代表者",
+              "requirements": [
+                {
+                  "id": "experience-training",
+                  "title": "経験と研修",
+                  "aspect": "qualification",
+                  "description": "認知症の人の介護に従事した経験、または保健医療・福祉サービスの経営に携わった経験があり、厚生労働大臣が定める研修を修了した代表者を置く。横浜市の手引は『認知症対応型サービス事業開設者研修』を示す。管理者の3年以上の経験要件を代表者に転用しない。",
+                  "applicability": "指定小規模多機能型居宅介護の事業者の代表者。個別経験や研修みなし措置は別途判断。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第65条",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第85条",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.9／PDF p.9",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=9"
+                    }
+                  ],
+                  "practical_checks": [
+                    "代表者の履歴書・職務経歴・研修修了証を照合し、どちらの経験類型を満たすか記録する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "manager",
+              "title": "管理者",
+              "requirements": [
+                {
+                  "id": "full-time-and-duty",
+                  "title": "常勤配置・兼務できる条件",
+                  "aspect": "concurrency",
+                  "description": "事業所ごとに専ら管理に従事する常勤の管理者を置くのが原則。管理上支障がないときは同一事業所内の別職務や他の事業所・施設等の職務と兼務できる。兼務先があるだけで可否を即断せず、利用者の状況把握、従業者への指揮命令、緊急対応を実施できるか確認する。横浜市手引の管理時間に関する目安は市の説明であり、全国共通の法定数値と混同しない。",
+                  "applicability": "指定小規模多機能型居宅介護。兼務は管理上支障がない場合に限る。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第64条第1項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第84条第1項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.10／PDF p.10",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=10"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.11／PDF p.11",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=11"
+                    },
+                    {
+                      "kind": "national_interpretation",
+                      "title": "指定地域密着型サービス及び指定地域密着型介護予防サービスに関する基準について",
+                      "issuer": "厚生労働省",
+                      "locator": "小規模多機能型居宅介護の管理者兼務",
+                      "version": "令和6年度介護報酬改定ページに掲載あり。該当通知本文・現行差分は未照合",
+                      "scope": "対象の小規模多機能型居宅介護部分を今後照合",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補のみ。公式の該当PDFページ・通知本文は未確認"
+                    }
+                  ],
+                  "practical_checks": [
+                    "管理者の所定労働時間・勤務実績と、全兼務先の勤務表・所在・職務を突合する。",
+                    "管理者不在時間の判断・指揮命令・緊急連絡・現場対応記録を確認する。"
+                  ]
+                },
+                {
+                  "id": "three-years-and-training",
+                  "title": "認知症介護経験3年以上・研修",
+                  "aspect": "qualification",
+                  "description": "所定の施設・事業所等で認知症の人の介護に従事した経験が3年以上あり、別に厚生労働大臣が定める研修を修了した者でなければならない。横浜市手引は認知症対応型サービス事業管理者研修を示す。",
+                  "applicability": "管理者の経験要件。対象施設・経験の内容・研修のみなし適用は個別に確認。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第64条第3項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第84条第3項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.11／PDF p.11",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=11"
+                    }
+                  ],
+                  "practical_checks": [
+                    "認知症介護に直接携わった職務内容と期間を職歴証明書・勤務実績で照合する。",
+                    "管理者研修の修了証と就任日・研修名を突合する。"
+                  ]
+                },
+                {
+                  "id": "satellite-manager",
+                  "title": "サテライト管理者の本体との兼任",
+                  "aspect": "exception",
+                  "description": "管理上支障がない場合、サテライト型事業所では本体事業所の管理者を管理者として充てることができる。サテライトという名称だけで無条件に兼務可能とはならない。",
+                  "applicability": "要件を満たす本体・サテライト関係に限定。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第64条第2項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第84条第2項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.10／PDF p.10",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=10"
+                    }
+                  ],
+                  "practical_checks": [
+                    "両事業所の管理者勤務表と緊急時対応体制・移動距離を突合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "care-staff",
+              "title": "小規模多機能型居宅介護従業者（通い・訪問・宿泊）",
+              "requirements": [
+                {
+                  "id": "day-service-fte",
+                  "title": "通いの人員は利用者3人ごとに常勤換算1以上",
+                  "aspect": "placement",
+                  "description": "夜間・深夜以外の通いサービス担当は、利用者数が3または端数を増すごとに常勤換算1以上。計算上の利用者数は原則前年度の平均値で、新規指定の場合は推定数を使う。介護予防と一体運営の場合は条文の合算規定に従う。",
+                  "applicability": "指定小規模多機能型居宅介護の通い担当。要介護と介護予防の指定・一体運営の有無を明確にする。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第1項・第2項・第13項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第1項・第2項・第13項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.13／PDF p.13",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=13"
+                    }
+                  ],
+                  "practical_checks": [
+                    "前年度の通い利用者集計・営業日数・一体運営の介護予防実績と算定表を突合する。",
+                    "通い勤務時間と訪問・兼務による不在時間を照合し、二重の常勤換算を除外する。"
+                  ]
+                },
+                {
+                  "id": "visit-service-fte",
+                  "title": "訪問の人員は原則常勤換算1以上",
+                  "aspect": "placement",
+                  "description": "夜間・深夜以外の訪問サービス担当は、通常型では常勤換算1以上を配置する。職員が1名在籍するだけでは常勤換算の条件を満たすとは限らない。サテライト型の例外は別項に整理する。",
+                  "applicability": "通常型の訪問担当。サテライト型の第7項特例にはそのまま当てはめない。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第1項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第1項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.13／PDF p.13",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=13"
+                    }
+                  ],
+                  "practical_checks": [
+                    "訪問出動実績・移動時間・勤務形態一覧表を対応付け、担当時間と常勤換算を計算する。"
+                  ]
+                },
+                {
+                  "id": "night-shift",
+                  "title": "夜勤1以上と必要数の宿直",
+                  "aspect": "shifts",
+                  "description": "夜間・深夜を通じた勤務者（宿直は含めない）を1以上、宿直勤務者を宿直に必要な数以上配置する。省令は宿直を一律1人と規定していない。宿泊者がいない場合等の例外は別項で評価する。",
+                  "applicability": "夜間・深夜の勤務。通いの昼間の基準と混同しない。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第1項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第1項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.14／PDF p.14",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=14"
+                    }
+                  ],
+                  "practical_checks": [
+                    "日別宿泊利用実績と夜勤・宿直表および夜間訪問記録を時間帯で突合する。"
+                  ]
+                },
+                {
+                  "id": "full-time-worker",
+                  "title": "従業者に常勤者を1人以上",
+                  "aspect": "placement",
+                  "description": "小規模多機能型居宅介護従業者のうち少なくとも1人は常勤でなければならない。管理者の常勤だけをもって従業者の常勤要件を満たしたとしない。",
+                  "applicability": "小規模多機能型居宅介護従業者についての第3項。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第3項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第3項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.14／PDF p.14",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=14"
+                    }
+                  ],
+                  "practical_checks": [
+                    "雇用契約・所定時間・従業者名簿・勤務表を照合する。"
+                  ]
+                },
+                {
+                  "id": "no-guest-night",
+                  "title": "宿泊者がいない夜の例外",
+                  "aspect": "exception",
+                  "description": "宿泊サービスの利用者がいない場合で、夜間・深夜を通じた訪問サービスに必要な連絡体制が整っているときは、夜勤・宿直の配置を省略できる。宿泊者ゼロだけを理由に省略することはできない。",
+                  "applicability": "特定日の宿泊者不在と夜間訪問連絡体制の両条件を満たす場合。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第5項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第5項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.14／PDF p.14",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=14"
+                    }
+                  ],
+                  "practical_checks": [
+                    "宿泊日誌の宿泊者ゼロを確認し、同日の夜間対応者・緊急出動経路と実績を照合する。"
+                  ]
+                },
+                {
+                  "id": "satellite-visit-overnight",
+                  "title": "サテライトの訪問・宿直特例",
+                  "aspect": "exception",
+                  "description": "サテライトでは、本体事業所職員が登録者に適切に対応できると認められる場合、訪問担当を常勤換算1に代えて1人以上とできる。また本体の宿直従業者がサテライト登録者に適切に対応する場合、サテライトの宿直配置を省略できる。夜勤者まで一律免除となるわけではない。",
+                  "applicability": "適格な本体との密接な連携および登録者への適切な処遇が前提。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第7項・第8項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第7項・第8項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.15／PDF p.15",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=15"
+                    }
+                  ],
+                  "practical_checks": [
+                    "本体・サテライト双方の訪問勤務表、夜間宿直者の配置、対応可能時間と実際の支援記録を突合する。"
+                  ]
+                },
+                {
+                  "id": "concurrent-facilities",
+                  "title": "併設先・同一敷地内職務の兼務",
+                  "aspect": "concurrency",
+                  "description": "基準人員を各事業所で満たすことを前提に、併設施設等の所定の介護職員、同一敷地内の所定施設等の看護師・准看護師の兼務を認める。職種と施設の区分ごとに対象が異なり、どんな事業所との兼務も許されるわけではない。",
+                  "applicability": "省令第63条第6項の表と横浜市条例第83条第6項の表に掲げる組合せ。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第6項および表",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第6項および表",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.15／PDF p.15",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=15"
+                    }
+                  ],
+                  "practical_checks": [
+                    "両事業所の種別・同一敷地内か否か・職種・必要人員・兼務勤務時間を突合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "nursing-staff",
+              "title": "看護師・准看護師",
+              "requirements": [
+                {
+                  "id": "nurse-at-least-one",
+                  "title": "看護師または准看護師が1人以上",
+                  "aspect": "qualification",
+                  "description": "小規模多機能型居宅介護従業者のうち1人以上は看護師または准看護師でなければならない。この条文だけから看護職員の常勤専従義務があると結論しない。",
+                  "applicability": "原則の看護配置。サテライト型の省略例外は次項。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第4項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第4項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.14／PDF p.14",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=14"
+                    }
+                  ],
+                  "practical_checks": [
+                    "看護師・准看護師免許証と名簿・シフトの職員を突合する。"
+                  ]
+                },
+                {
+                  "id": "satellite-nurse",
+                  "title": "サテライトの看護職員省略",
+                  "aspect": "exception",
+                  "description": "本体事業所の看護師または准看護師によってサテライト登録者の処遇が適切に行われる場合、サテライトに看護職員を配置しないことができる。本体に資格者が存在するだけで自動的に適用されるものではない。",
+                  "applicability": "サテライト型、登録者への適切な処遇の条件付き。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第9項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第9項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.15／PDF p.15",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=15"
+                    }
+                  ],
+                  "practical_checks": [
+                    "本体看護職員の勤務実績とサテライト利用者への訪問・連絡・急変時対応を突合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "care-manager",
+              "title": "介護支援専門員・計画作成担当",
+              "requirements": [
+                {
+                  "id": "planning-and-concurrency",
+                  "title": "計画作成と兼務の条件",
+                  "aspect": "concurrency",
+                  "description": "介護支援専門員を置き、登録者の居宅サービス計画と小規模多機能型居宅介護計画の作成に専ら従事させる。ただし利用者の処遇に支障がない場合、自事業所の別職務または指定された併設施設等の職務を兼務できる。",
+                  "applicability": "通常型。兼務先の範囲と処遇への影響を個別評価。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第10項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第10項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.16／PDF p.16",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=16"
+                    }
+                  ],
+                  "practical_checks": [
+                    "登録者の計画の担当者・作成日・更新履歴とケアマネ勤務表、他職務の時間を照合する。"
+                  ]
+                },
+                {
+                  "id": "planner-training",
+                  "title": "計画作成担当者の研修要件",
+                  "aspect": "qualification",
+                  "description": "通常型の介護支援専門員には、厚生労働大臣が別に定める研修の修了も必要。横浜市手引は小規模多機能型サービス等計画作成担当者研修を示す。管理者研修との混同を避ける。",
+                  "applicability": "通常型の介護支援専門員。みなし研修・経過的取扱いは未網羅。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第11項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第11項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.16／PDF p.16",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=16"
+                    }
+                  ],
+                  "practical_checks": [
+                    "介護支援専門員証の有効期間と計画作成担当者研修の修了証・就任日を突合する。"
+                  ]
+                },
+                {
+                  "id": "satellite-plan-staff",
+                  "title": "サテライトの計画作成者代替",
+                  "aspect": "exception",
+                  "description": "本体事業所の介護支援専門員がサテライト登録者の居宅サービス計画を適切に作成するときは、サテライトで介護支援専門員に代えて、所定研修を修了し小規模多機能型居宅介護計画の作成に専ら従事する者を配置できる。代替者が無研修でよいという規定ではない。",
+                  "applicability": "サテライト型、適切な居宅計画作成・研修などの条件付き。",
+                  "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準",
+                      "issuer": "厚生労働省",
+                      "locator": "平成18年厚生労働省令第34号 第63条第12項",
+                      "version": "表示本文の該当条項。2026年10月までの改正・附則は全面未照合",
+                      "scope": "指定小規模多機能型居宅介護（全国基準）",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0&pageNo=2"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定地域密着型サービスの事業の人員、設備、運営等の基準等に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "平成24年横浜市条例第77号 第83条第12項",
+                      "version": "横浜市例規の閲覧本文。改正履歴・附則の全面確認は未了",
+                      "scope": "横浜市指定小規模多機能型居宅介護",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001748.html"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "小規模多機能型居宅介護・介護予防小規模多機能型居宅介護 運営の手引",
+                      "issuer": "横浜市",
+                      "locator": "人員基準・印刷p.16／PDF p.16",
+                      "version": "令和8年6月版",
+                      "scope": "横浜市の説明。全国共通法令の原文・全国運用とは別",
+                      "checked_at_jst": "2026-10-21 21:26 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/syoukibo.files/0152_20260407.pdf#page=16"
+                    }
+                  ],
+                  "practical_checks": [
+                    "本体のケアマネ作成の居宅計画とサテライトの計画作成者・研修証明・実績を突合する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "equipment": {
