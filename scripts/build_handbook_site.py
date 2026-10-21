@@ -38,6 +38,108 @@ def official_url(value):
         return ""
 
 
+
+ROLE_TARGETS = {"homevisit", "small-scale-multifunctional"}
+ROLE_ASPECTS = {"placement", "qualification", "concurrency", "shifts", "exception", "other"}
+ROLE_EVIDENCE_KINDS = {"national_standard", "national_interpretation", "national_qa",
+                       "yokohama_ordinance", "yokohama_handbook"}
+ROLE_EVIDENCE_STATES = {"PRIMARY_TEXT_CHECKED_SCOPED", "SOURCE_CANDIDATE_UNVERIFIED", "EVIDENCE_GAP"}
+ROLE_OFFICIAL_HOSTS = {"laws.e-gov.go.jp", "www.mhlw.go.jp",
+                       "www.city.yokohama.lg.jp", "cgi.city.yokohama.lg.jp"}
+
+
+def role_text(value, name, allow_empty=False):
+    if not isinstance(value, str) or len(value) > 5000 or (not value.strip() and not allow_empty):
+        raise ValueError("Invalid role text: " + name)
+    if any(ch in value for ch in "<>\x00\x7f") or any(ord(ch) < 32 and ch not in "\n\t" for ch in value):
+        raise ValueError("HTML/control characters not allowed: " + name)
+    return value
+
+
+def role_url(value):
+    from urllib.parse import urlsplit
+    if not isinstance(value, str) or re.search(r"[\x00-\x20\x7f<>\"'\\]", value):
+        raise ValueError("Invalid role evidence URL")
+    try:
+        url = urlsplit(value)
+    except ValueError as exc:
+        raise ValueError("Invalid role evidence URL") from exc
+    if (url.scheme != "https" or url.hostname not in ROLE_OFFICIAL_HOSTS
+            or url.netloc != url.hostname or not url.path.startswith("/")
+            or re.search(r"%0[ad]", value, re.IGNORECASE)
+            or (url.fragment and not re.fullmatch(r"page=[1-9][0-9]*", url.fragment))):
+        raise ValueError("Non-official or unsafe role evidence URL")
+    return value
+
+
+def validate_role_sections(sid, section, roles):
+    """Fail closed for the two staffing pilots; does not confer legal verification."""
+    if sid not in ROLE_TARGETS or section != "staffing":
+        raise ValueError("role_sections is restricted to the two staffing chapters")
+    if not isinstance(roles, list) or not (1 <= len(roles) <= 20):
+        raise ValueError("role_sections must contain 1..20 roles")
+    role_ids = set()
+    for role in roles:
+        if not isinstance(role, dict) or set(role) != {"id", "title", "requirements"}:
+            raise ValueError("Invalid role keys")
+        ident = role["id"]
+        if not isinstance(ident, str) or not re.fullmatch(r"[a-z][a-z0-9-]{0,63}", ident) or ident in role_ids:
+            raise ValueError("Invalid or duplicate role ID")
+        role_ids.add(ident)
+        role_text(role["title"], "role.title")
+        requirements = role["requirements"]
+        if not isinstance(requirements, list) or not (1 <= len(requirements) <= 30):
+            raise ValueError("Invalid role requirements")
+        req_ids = set()
+        for req in requirements:
+            keys = {"id", "title", "aspect", "description", "applicability",
+                    "verification_state", "evidence", "practical_checks"}
+            if not isinstance(req, dict) or set(req) != keys:
+                raise ValueError("Invalid requirement keys")
+            rid = req["id"]
+            if not isinstance(rid, str) or not re.fullmatch(r"[a-z][a-z0-9-]{0,63}", rid) or rid in req_ids:
+                raise ValueError("Invalid or duplicate requirement ID")
+            req_ids.add(rid)
+            for field in ("title", "description", "applicability"):
+                role_text(req[field], "requirement." + field)
+            if req["aspect"] not in ROLE_ASPECTS:
+                raise ValueError("Unknown requirement aspect")
+            if req["verification_state"] not in {"PRIMARY_TEXT_CHECKED_SCOPED", "EVIDENCE_GAP"}:
+                raise ValueError("Unknown requirement verification state")
+            checks = req["practical_checks"]
+            if not isinstance(checks, list) or len(checks) > 10:
+                raise ValueError("Invalid practical checks")
+            for check in checks:
+                role_text(check, "practical_check")
+            evs = req["evidence"]
+            if not isinstance(evs, list) or len(evs) > 12:
+                raise ValueError("Invalid evidence list")
+            checked = 0
+            for ev in evs:
+                required = {"kind", "title", "issuer", "locator", "version", "scope",
+                            "checked_at_jst", "verification_state"}
+                allowed = required | {"url", "note", "effective_date"}
+                if not isinstance(ev, dict) or not required.issubset(ev) or set(ev) - allowed:
+                    raise ValueError("Invalid evidence keys")
+                if ev["kind"] not in ROLE_EVIDENCE_KINDS or ev["verification_state"] not in ROLE_EVIDENCE_STATES:
+                    raise ValueError("Unknown evidence type or state")
+                for field in required - {"kind", "verification_state"}:
+                    role_text(ev[field], "evidence." + field, allow_empty=(field == "checked_at_jst"))
+                for field in ("note", "effective_date"):
+                    if field in ev:
+                        role_text(ev[field], "evidence." + field)
+                if "url" in ev:
+                    role_url(ev["url"])
+                if ev["verification_state"] == "PRIMARY_TEXT_CHECKED_SCOPED":
+                    checked += 1
+                    if "url" not in ev or not re.fullmatch(r"\d{4}-\d\d-\d\d \d\d:\d\d JST", ev["checked_at_jst"]):
+                        raise ValueError("Checked evidence requires official URL and dated original-text review")
+                elif "url" in ev or ev["checked_at_jst"]:
+                    raise ValueError("Unverified evidence cannot publish a link or checked date")
+            if req["verification_state"] == "PRIMARY_TEXT_CHECKED_SCOPED" and not checked:
+                raise ValueError("Verified requirement has no checked primary text")
+
+
 CHAPTERS = [
     ("applicability", "適用対象・基本事項", "サービスの対象、目的、提供形態を整理します。通常の指定、基準該当、共生型などの範囲は、資料に記された区分ごとに確認します。", ["対象者・サービス種別・提供形態を確認する", "定義と基本方針を原典で確認する"], r"基本方針|目的|定義|趣旨|適用|総則"),
     ("designation", "指定・開設", "開設から指定までの準備を整理します。申請先、事前相談、指定の要件、事業開始日をまとめ、自治体の案内を追記できる章です。", ["指定権者と申請・事前相談の窓口を確認する", "法人・事業所・提供形態と開設予定日を整理する"], r"指定|開設|許可|申請|更新"),
@@ -387,9 +489,15 @@ def build():
         for section, values in content.get("chapters", {}).items():
             if section not in {c[0] for c in CHAPTERS}:
                 raise ValueError("Unknown chapter: " + section)
-            if set(values) - {"summary", "paragraphs", "checkpoints"}:
-                raise ValueError("Only summary, paragraphs and checkpoints may be edited")
+            allowed = {"summary", "paragraphs", "checkpoints"}
+            if sid in ROLE_TARGETS and section == "staffing":
+                allowed.add("role_sections")
+            if set(values) - allowed:
+                raise ValueError("Unsupported handbook fields for " + sid + "/" + section)
             for key, value in values.items():
+                if key == "role_sections":
+                    validate_role_sections(sid, section, value)
+                    continue
                 valid = isinstance(value, str) if key == "summary" else isinstance(value, list) and all(isinstance(v, str) for v in value)
                 if not valid:
                     raise ValueError("Invalid handbook content: " + key)

@@ -1,3 +1,20 @@
+export type HandbookEvidence = {
+  kind: "national_standard" | "national_interpretation" | "national_qa" | "yokohama_ordinance" | "yokohama_handbook";
+  title: string; issuer: string; locator: string; version: string; scope: string;
+  checked_at_jst: string;
+  verification_state: "PRIMARY_TEXT_CHECKED_SCOPED" | "SOURCE_CANDIDATE_UNVERIFIED" | "EVIDENCE_GAP";
+  url?: string; note?: string; effective_date?: string;
+};
+export type HandbookRoleRequirement = {
+  id: string; title: string;
+  aspect: "placement" | "qualification" | "concurrency" | "shifts" | "exception" | "other";
+  description: string; applicability: string;
+  verification_state: "PRIMARY_TEXT_CHECKED_SCOPED" | "EVIDENCE_GAP";
+  evidence: HandbookEvidence[];
+  practical_checks: string[];
+};
+export type HandbookRoleSection = { id: string; title: string; requirements: HandbookRoleRequirement[] };
+
 import handbookData from "../data/handbook.generated.json" with { type: "json" };
 import legalData from "../data/legal-browser.generated.json" with { type: "json" };
 
@@ -9,6 +26,7 @@ export type HandbookChapter = {
   paragraphs: string[];
   checkpoints: string[];
   reference_ids: string[];
+  role_sections?: HandbookRoleSection[];
   editorial_state: string;
 };
 export type ServiceHandbookData = {
