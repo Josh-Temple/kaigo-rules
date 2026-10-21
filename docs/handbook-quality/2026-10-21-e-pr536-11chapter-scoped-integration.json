@@ -1,0 +1,80 @@
+{
+  "role": "E",
+  "wave": "2026-10-21_kaigo_pr536_live_http_browser_qa_currentness_limited_correction",
+  "base_main_sha": "c67504e88bbf2632b781fdc64841d490aeb3f4c5",
+  "source_A": {
+    "pr": 538,
+    "head": "27676d7e11b1858143f7420f3fa435f468717672",
+    "accepted_chapters": [
+      "shortstay-life/national_qa",
+      "preventive-shortstay-life/national_qa",
+      "community-specific-facility/national_qa",
+      "community-elderly-facility/national_qa",
+      "care-medical-institution/national_qa",
+      "small-scale-multifunctional/national_qa",
+      "nursing-small-scale-multifunctional/national_qa"
+    ],
+    "comment": "https://github.com/Josh-Temple/kaigo-rules/pull/538#issuecomment-6313010845"
+  },
+  "source_B": {
+    "pr": 537,
+    "head": "7d3a7bb1c92bc07d78b7c9cdad7723a45d28195a",
+    "accepted_chapters": [
+      "welfare-equipment-rental/records",
+      "care-management/records",
+      "dayservice/records",
+      "community-dayservice/staffing"
+    ],
+    "comment": "https://github.com/Josh-Temple/kaigo-rules/pull/537#issuecomment-6313011616"
+  },
+  "merged_chapter_ids": [
+    "shortstay-life/national_qa",
+    "preventive-shortstay-life/national_qa",
+    "community-specific-facility/national_qa",
+    "community-elderly-facility/national_qa",
+    "care-medical-institution/national_qa",
+    "small-scale-multifunctional/national_qa",
+    "nursing-small-scale-multifunctional/national_qa",
+    "welfare-equipment-rental/records",
+    "care-management/records",
+    "dayservice/records",
+    "community-dayservice/staffing"
+  ],
+  "total_changed": 11,
+  "all_other_574_chapters_unchanged": true,
+  "ids_and_order_preserved": true,
+  "original_prose_checkpoints_exact_prefix": true,
+  "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+  "comprehensive_2026_currentness": "NOT_ESTABLISHED",
+  "municipal_ordinance": "NOT_VERIFIED",
+  "individual_applicability": "NOT_ESTABLISHED",
+  "human_legal_review": "NOT_REVIEWED",
+  "content_status": "DRAFT_UNREVIEWED",
+  "metrics_before": {
+    "schema_version": 1,
+    "services": 39,
+    "chapters": 585,
+    "paragraphs": 1373,
+    "checkpoints": 2001,
+    "normalized_paragraph_duplicate_excess": 24,
+    "normalized_checkpoint_duplicate_excess": 241
+  },
+  "metrics_in_memory_union": {
+    "schema_version": 1,
+    "services": 39,
+    "chapters": 585,
+    "paragraphs": 1384,
+    "checkpoints": 2012,
+    "normalized_paragraph_duplicate_excess": 24,
+    "normalized_checkpoint_duplicate_excess": 241
+  },
+  "ci_combined_head": "PENDING_REQUIRES_NEW_EXACT_HEAD",
+  "http_production": "NOT_VERIFIED",
+  "browser_dom": "NOT_RUN",
+  "android": "NOT_RUN",
+  "merge_status": "HOLD_UNTIL_COMBINED_CI_SUCCESS",
+  "evidence_paths": [
+    "docs/handbook-quality/2026-10-21-A-pr536-facility-qa-original-question-ledger.json",
+    "docs/handbook-quality/2026-10-21-b-pr536-nonfacility-primary-evidence.json"
+  ]
+}
