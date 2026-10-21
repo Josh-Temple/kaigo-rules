@@ -1,0 +1,68 @@
+{
+  "role": "E",
+  "wave": "2026-10-21_kaigo_pr533_postrelease_http_browser_primary_source_qa_accuracy",
+  "state": "SCOPED_DRAFT_PENDING_COMBINED_HEAD_CI",
+  "main_base_sha": "6f780942bc2674e51b0550a61b81eb99a5231b00",
+  "source_fixed_heads": {
+    "A": "0a977766db37b7eee585ed87eca253d208c4a954",
+    "B": "f2e5522c53110c1ddc1f36046bdc7d69527b5718",
+    "C": null
+  },
+  "D_verdicts": {
+    "A": "D_ACCEPT_SCOPED",
+    "B": "D_ACCEPT_SCOPED",
+    "C": "NO_CHANGE"
+  },
+  "accepted_A": [
+    "shortstay-medical/national_qa",
+    "specific-facility/national_qa",
+    "dementia-group-home/national_qa",
+    "elderly-welfare-facility/national_qa",
+    "elderly-health-facility/national_qa"
+  ],
+  "accepted_B": [
+    "homevisit/deductions",
+    "welfare-equipment-rental/designation",
+    "specific-welfare-equipment-sale/designation",
+    "care-management/designation",
+    "dayservice/deductions",
+    "community-dayservice/deductions",
+    "community-dayservice/additions"
+  ],
+  "held_nonaccepted": [],
+  "chapter_change_count": 12,
+  "chapter_unchanged_count": 573,
+  "services": 39,
+  "chapters": 585,
+  "schema_version": 1,
+  "baseline_blob_sha": "7264e5239ae84a8627e64f59b012f1f0dd7a2301",
+  "source_blobs": {
+    "A": "c71bd8394a2f98e749b5496af84aca59f9b492b0",
+    "B": "a98a25c4ba69a61f5bed7879dabe1fb7b3963f88"
+  },
+  "metrics_before": {
+    "paragraphs": 1356,
+    "checkpoints": 1984,
+    "normalized_paragraph_duplicate_excess": 24,
+    "normalized_checkpoint_duplicate_excess": 241
+  },
+  "metrics_after": {
+    "paragraphs": 1373,
+    "checkpoints": 2001,
+    "normalized_paragraph_duplicate_excess": 24,
+    "normalized_checkpoint_duplicate_excess": 241
+  },
+  "source_scope": "PRIMARY_TEXT_CHECKED_SCOPED for listed 12 chapters only; neither legal currentness nor individual applicability established",
+  "QA": {
+    "HTTP": "NOT_VERIFIED",
+    "browser_DOM": "NOT_RUN",
+    "Android": "NOT_RUN",
+    "preview_real_404": "NOT_VERIFIED",
+    "drain": "NOT_VERIFIED"
+  },
+  "source_evidence_files": [
+    "docs/handbook-quality/2026-10-21-A-pr533-facility-qa-original-question-ledger.json",
+    "docs/handbook-quality/2026-10-21-b-pr533-currentness-evidence.json"
+  ],
+  "merge_gate": "HOLD until integration-head CI success"
+}
