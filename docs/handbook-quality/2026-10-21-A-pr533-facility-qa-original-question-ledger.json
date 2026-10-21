@@ -1,0 +1,178 @@
+{
+  "role": "A",
+  "wave": "2026-10-21_kaigo_pr533_postrelease_http_browser_primary_source_qa_accuracy",
+  "repo": "Josh-Temple/kaigo-rules",
+  "base_main_sha": "6f780942bc2674e51b0550a61b81eb99a5231b00",
+  "base_data_blob_sha": "7264e5239ae84a8627e64f59b012f1f0dd7a2301",
+  "branch": "work/a-pr533-facility-qa-source-20261021",
+  "first_content_commit": "1a41fd1c830f1a7ecfecf8dbe0c422c3910bf58f",
+  "source_checked_date": "2026-10-21",
+  "source_coverage": "2024年Q&A原問／問答本文のみ。2026年改正の内容・撤回／訂正履歴全件・算定告示の全文は未突合",
+  "latest_revision_entry": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html",
+  "chapter_count_before": 585,
+  "chapter_count_after": 585,
+  "service_count_before": 39,
+  "service_count_after": 39,
+  "changed_chapter_ids": [
+    "shortstay-medical/national_qa",
+    "dementia-group-home/national_qa",
+    "elderly-health-facility/national_qa",
+    "specific-facility/national_qa",
+    "elderly-welfare-facility/national_qa"
+  ],
+  "untouched_chapter_count": 580,
+  "all_previous_paragraphs_and_checkpoints_preserved": true,
+  "out_of_scope_service_changes": 0,
+  "scope_status": "DRAFT_UNREVIEWED",
+  "currentness": "NOT_ESTABLISHED",
+  "local_ordinances": "NOT_ESTABLISHED",
+  "individual_provider_applicability": "NOT_ESTABLISHED",
+  "human_review": "NOT_REVIEWED",
+  "release_gate": "HOLD_NO_MERGE_UNTIL_D_INDEPENDENT_ACCEPTANCE_AND_E_CI",
+  "entries": [
+    {
+      "service_id": "shortstay-medical",
+      "chapter_id": "national_qa",
+      "status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "questions": [
+        "問17"
+      ],
+      "pdf_printed_pages": [
+        6
+      ],
+      "source": {
+        "title": "令和６年度介護報酬改定に関するＱ＆Ａ（Vol.２）",
+        "issued_date": "2024-03-19",
+        "issuer": "厚生労働省老健局",
+        "url": "https://www.mhlw.go.jp/content/12300000/001239535.pdf",
+        "document_kind": "事務連絡・国Q&A",
+        "scope": "当該2024年版の問答原文（2026年の法令・報酬条件を確定するものではない）"
+      },
+      "question_condition": "介護老人保健施設における短期入所療養介護の利用中、治療管理が必要になり、実施した場合",
+      "answer_scope": "問17の対象条件では算定可能と回答。他施設類型の適用に拡張しない",
+      "evidence_method": "MHLW PDF本文とPDF表示6頁を直接閲覧",
+      "record_comparison": [
+        "短期入所の施設類型と入所記録",
+        "治療管理の開始日・医師指示・診療録",
+        "加算対象月と請求・届出"
+      ],
+      "currentness": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "dementia-group-home",
+      "chapter_id": "national_qa",
+      "status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "questions": [
+        "問２",
+        "問10"
+      ],
+      "pdf_printed_pages": [
+        1,
+        3
+      ],
+      "source": {
+        "title": "令和６年度介護報酬改定に関するＱ＆Ａ（Vol.２）",
+        "issued_date": "2024-03-19",
+        "issuer": "厚生労働省老健局",
+        "url": "https://www.mhlw.go.jp/content/12300000/001239535.pdf",
+        "document_kind": "事務連絡・国Q&A",
+        "scope": "当該2024年版の問答原文（2026年の法令・報酬条件を確定するものではない）"
+      },
+      "question_condition": "認知症チームケア推進加算の研修要件と必要なワークシート・介護記録",
+      "answer_scope": "問２では既存研修だけでは不足し認知症チームケア推進研修も必要、問10ではワークシートと評価・ケア方針・振り返りの記録を説明。事業所の現行算定要件は未判定",
+      "evidence_method": "MHLW PDF本文とPDF表示1頁・3頁を直接閲覧",
+      "record_comparison": [
+        "研修修了証と職員配置表",
+        "利用者別ワークシートと計画・日誌",
+        "対象月の請求明細"
+      ],
+      "currentness": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "chapter_id": "national_qa",
+      "status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "questions": [
+        "問14",
+        "問15"
+      ],
+      "pdf_printed_pages": [
+        5
+      ],
+      "source": {
+        "title": "令和６年度介護報酬改定に関するＱ＆Ａ（Vol.２）",
+        "issued_date": "2024-03-19",
+        "issuer": "厚生労働省老健局",
+        "url": "https://www.mhlw.go.jp/content/12300000/001239535.pdf",
+        "document_kind": "事務連絡・国Q&A",
+        "scope": "当該2024年版の問答原文（2026年の法令・報酬条件を確定するものではない）"
+      },
+      "question_condition": "認知症短期集中リハビリテーション実施加算（Ⅰ）に係る退所後の居宅等への訪問者、訪問先",
+      "answer_scope": "問14は訪問者の専門職限定なし、ただし計画作成者に適切な情報共有ができる者。問15は訪問が適切な場合の入所前居宅訪問を否定しない",
+      "evidence_method": "MHLW PDF本文とPDF表示5頁を直接閲覧",
+      "record_comparison": [
+        "退所先の希望・居宅との関係",
+        "訪問の選定理由と訪問日・記録",
+        "リハ計画作成者への情報共有記録"
+      ],
+      "currentness": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "specific-facility",
+      "chapter_id": "national_qa",
+      "status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "questions": [
+        "問18"
+      ],
+      "pdf_printed_pages": [
+        6
+      ],
+      "source": {
+        "title": "令和６年度介護報酬改定に関するＱ＆Ａ（Vol.２）",
+        "issued_date": "2024-03-19",
+        "issuer": "厚生労働省老健局",
+        "url": "https://www.mhlw.go.jp/content/12300000/001239535.pdf",
+        "document_kind": "事務連絡・国Q&A",
+        "scope": "当該2024年版の問答原文（2026年の法令・報酬条件を確定するものではない）"
+      },
+      "question_condition": "特定施設の退居時情報提供加算、同じ医療機関への入退院を繰り返す場合",
+      "answer_scope": "同月再入院は不可。翌月の入院でも利用者状況・情報提供内容が前回と同じなら不可。介護予防区分は自動適用しない",
+      "evidence_method": "MHLW PDF本文とPDF表示6頁を直接閲覧",
+      "record_comparison": [
+        "医療機関同一性と入院月",
+        "前回と今回の情報提供文書・状態変化",
+        "算定月と請求明細"
+      ],
+      "currentness": "NOT_ESTABLISHED"
+    },
+    {
+      "service_id": "elderly-welfare-facility",
+      "chapter_id": "national_qa",
+      "status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "questions": [
+        "Vol.１問97をVol.２が修正"
+      ],
+      "pdf_printed_pages": [
+        7,
+        8
+      ],
+      "source": {
+        "title": "令和６年度介護報酬改定に関するＱ＆Ａ（Vol.２）",
+        "issued_date": "2024-03-19",
+        "issuer": "厚生労働省老健局",
+        "url": "https://www.mhlw.go.jp/content/12300000/001239535.pdf",
+        "document_kind": "事務連絡・国Q&A",
+        "scope": "当該2024年版の問答原文（2026年の法令・報酬条件を確定するものではない）"
+      },
+      "question_condition": "ユニット型個室の特別養護老人ホームで隣接２ユニットの共同生活室の間に可動式壁を設置",
+      "answer_scope": "ユニットケアを損なわない一時開放の説明。常時開放・３以上のユニットでの運用は認める趣旨ではない",
+      "evidence_method": "MHLW PDF本文の修正回答（本文7～8頁）を直接閲覧。後半頁の画像スクリーンショットは取得エラー、本文テキストで検証",
+      "record_comparison": [
+        "平面図・可動式壁とユニット数",
+        "開放日・時間の運用記録",
+        "ユニット別職員配置と入居者処遇"
+      ],
+      "currentness": "NOT_ESTABLISHED"
+    }
+  ]
+}
