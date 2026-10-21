@@ -1,0 +1,332 @@
+{
+  "role": "B",
+  "phase": "DRAFT_PENDING_INDEPENDENT_D",
+  "start_main_sha": "1ed47906165f1ec0d9c10bdcad44605d2b2c6801",
+  "base_sha": "1ed47906165f1ec0d9c10bdcad44605d2b2c6801",
+  "changed_service_ids": [
+    "homevisit",
+    "dayservice",
+    "community-dayservice",
+    "welfare-equipment-rental",
+    "specific-welfare-equipment-sale",
+    "care-management"
+  ],
+  "changed_chapter_ids": [
+    "homevisit/deductions",
+    "homevisit/additions",
+    "welfare-equipment-rental/designation",
+    "welfare-equipment-rental/records",
+    "specific-welfare-equipment-sale/designation",
+    "specific-welfare-equipment-sale/records",
+    "care-management/designation",
+    "care-management/records",
+    "dayservice/deductions",
+    "dayservice/additions",
+    "community-dayservice/deductions",
+    "community-dayservice/additions"
+  ],
+  "substantive_edit_count": 12,
+  "source_status_by_chapter": {
+    "homevisit/additions": "PRIMARY_TEXT_CHECKED",
+    "homevisit/deductions": "SOURCE_CANDIDATE_ONLY",
+    "dayservice/additions": "PRIMARY_TEXT_CHECKED",
+    "dayservice/deductions": "SOURCE_CANDIDATE_ONLY",
+    "community-dayservice/additions": "SOURCE_CANDIDATE_ONLY",
+    "community-dayservice/deductions": "SOURCE_CANDIDATE_ONLY",
+    "welfare-equipment-rental/designation": "SOURCE_CANDIDATE_ONLY",
+    "welfare-equipment-rental/records": "PRIMARY_TEXT_CHECKED",
+    "specific-welfare-equipment-sale/designation": "SOURCE_CANDIDATE_ONLY",
+    "specific-welfare-equipment-sale/records": "PRIMARY_TEXT_CHECKED",
+    "care-management/designation": "SOURCE_CANDIDATE_ONLY",
+    "care-management/records": "PRIMARY_TEXT_CHECKED"
+  },
+  "primary_text_checks": 5,
+  "primary_service_count": 5,
+  "primary_text_check_scope": "4-5 service plan/records provisions directly read; fee/add-on entitlement specifically not verified",
+  "legal_currentness": "NOT_ESTABLISHED",
+  "provider_applicability": "NOT_ESTABLISHED",
+  "human_legal_review": "NOT_REVIEWED",
+  "source_access_time": "2026-10-21 JST",
+  "normalized_duplication_before_after": {
+    "before": {
+      "paragraphs": 24,
+      "checkpoints": 247
+    },
+    "after": {
+      "paragraphs": 24,
+      "checkpoints": 241
+    }
+  },
+  "inventory": [
+    {
+      "service_id": "homevisit",
+      "chapter_id": "additions",
+      "chapter_key": "homevisit/additions",
+      "prior_problem": "17サービスで共通する抽象チェックと別サービス由来のscope参照",
+      "actual_change": "replaced duplicate checkpoint; corrected scope path where present; appended scenario-specific document comparison",
+      "scenario": "同じ日に身体介護と生活援助を実施した場合でも、計画・実績の整合と個々の加算の成立条件を別々に審査する",
+      "records_to_compare": "訪問介護計画・訪問実績（訪問日・援助内容・所要時間）・加算届出控え・対象月請求明細",
+      "source_status": "PRIMARY_TEXT_CHECKED",
+      "primary_text_check": {
+        "document_name": "平成11年厚生省令第37号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0",
+        "article": "第24条第1〜5項",
+        "edition": "MHLW web/t_doc online text viewed 2026-10-21 JST; full effective edition/currentness unverified",
+        "verified_claim_limit": "訪問介護計画の作成・説明・同意・交付・実施状況把握のみ照合。加算の算定要件は未照合。"
+      },
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 3
+      }
+    },
+    {
+      "service_id": "homevisit",
+      "chapter_id": "deductions",
+      "chapter_key": "homevisit/deductions",
+      "prior_problem": "抽象的な判断/事実分離チェック",
+      "actual_change": "replaced duplicate checkpoint; corrected scope path where present; appended scenario-specific document comparison",
+      "scenario": "訪問中止・時間変更・担当者差替えを利用者と日付ごとに突合し、減算候補の条件を原典で確認するまで請求変更を保留する",
+      "records_to_compare": "訪問介護計画の改訂履歴・訪問介護員別勤務表・提供日時付き実績・同月請求明細",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "primary_text_check": null,
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 3
+      }
+    },
+    {
+      "service_id": "dayservice",
+      "chapter_id": "additions",
+      "chapter_key": "dayservice/additions",
+      "prior_problem": "抽象的加算チェックと不正確な他サービスscope参照",
+      "actual_change": "replaced duplicate checkpoint; corrected scope path where present; appended scenario-specific document comparison",
+      "scenario": "利用者が早退した日の出欠・実施内容・計画上の目標を照合し、加算のサービス実施要件と体制・届出要件を切り離す",
+      "records_to_compare": "通所介護計画（目標）・日別出欠表・機能訓練等の実施記録・職種別勤務表・届出控え・月次請求",
+      "source_status": "PRIMARY_TEXT_CHECKED",
+      "primary_text_check": {
+        "document_name": "平成11年厚生省令第37号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0",
+        "article": "第99条第1〜5項",
+        "edition": "MHLW web/t_doc online text viewed 2026-10-21 JST; full effective edition/currentness unverified",
+        "verified_claim_limit": "通所介護計画と実施状況・目標達成状況の記録義務のみ本文照合。加算の個別要件は未照合。"
+      },
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 3
+      }
+    },
+    {
+      "service_id": "dayservice",
+      "chapter_id": "deductions",
+      "chapter_key": "dayservice/deductions",
+      "prior_problem": "16章で反復する確認事実/法的解釈の定型文",
+      "actual_change": "replaced duplicate checkpoint; corrected scope path where present; appended scenario-specific document comparison",
+      "scenario": "当日の欠席・早退・単位変更・職員配置変更を分けて記録し、減算判断の対象日／月と適用版を確定するまでは結論を留保する",
+      "records_to_compare": "定員・提供単位別の出欠台帳・勤務実績・送迎記録・サービス提供票・請求明細",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "primary_text_check": null,
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 3
+      }
+    },
+    {
+      "service_id": "community-dayservice",
+      "chapter_id": "additions",
+      "chapter_key": "community-dayservice/additions",
+      "prior_problem": "17サービスに共通する抽象チェックと他サービスscope誤参照",
+      "actual_change": "replaced duplicate checkpoint; corrected scope path where present; appended scenario-specific document comparison",
+      "scenario": "市町村指定の地域密着型通所介護と通常規模の通所介護の請求区分を分け、加算候補を当該指定区分と利用月の資料で照合する",
+      "records_to_compare": "地域密着型通所介護計画・単位別出欠表・個別実施記録・勤務実績・市町村への届出控え・月次請求",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "primary_text_check": null,
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 3
+      }
+    },
+    {
+      "service_id": "community-dayservice",
+      "chapter_id": "deductions",
+      "chapter_key": "community-dayservice/deductions",
+      "prior_problem": "実施記録と解釈を分けるだけの共通チェック",
+      "actual_change": "replaced duplicate checkpoint; corrected scope path where present; appended scenario-specific document comparison",
+      "scenario": "利用予定と出席実績に食い違いがある日を起点に、地域密着型サービス側の原典・市町村資料に減算条件があるか照合する",
+      "records_to_compare": "地域密着型通所介護の定員・受入実績・職種別勤務表・利用者別実施記録・対象月請求",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "primary_text_check": null,
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 3
+      }
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "chapter_id": "designation",
+      "chapter_key": "welfare-equipment-rental/designation",
+      "prior_problem": "自社/委託先の衛生管理と販売区分の資料突合が抽象的",
+      "actual_change": "appended service-specific scenario and record comparison; preserved existing prose/checkpoint prefix",
+      "scenario": "貸与と販売が同一所在地でも指定通知・設備利用・在庫区分・専門相談員兼務の資料をそれぞれ突合する",
+      "records_to_compare": "貸与指定申請付表・消毒委託契約・保管場所台帳・福祉用具専門相談員勤務表・販売指定通知",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "primary_text_check": null,
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 4
+      }
+    },
+    {
+      "service_id": "welfare-equipment-rental",
+      "chapter_id": "records",
+      "chapter_key": "welfare-equipment-rental/records",
+      "prior_problem": "モニタリングの時期・報告先の原典と記録との対応が薄い",
+      "actual_change": "appended service-specific scenario and record comparison; preserved existing prose/checkpoint prefix",
+      "scenario": "対象福祉用具か否かを品目で特定してから、対象である場合の開始後6月以内のモニタリングと継続必要性を記録上確認する",
+      "records_to_compare": "福祉用具貸与計画・貸与開始日/機種・モニタリング実施日と結果・居宅介護支援事業者への報告控え",
+      "source_status": "PRIMARY_TEXT_CHECKED",
+      "primary_text_check": {
+        "document_name": "平成11年厚生省令第37号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0",
+        "article": "第199条の2第1〜7項",
+        "edition": "MHLW web/t_doc online text viewed 2026-10-21 JST; full effective edition/currentness unverified",
+        "verified_claim_limit": "貸与計画・同意・交付・対象福祉用具の6月以内モニタリング・結果報告の本文。現行性・自治体適用は未確立。"
+      },
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 4
+      }
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "chapter_id": "designation",
+      "chapter_key": "specific-welfare-equipment-sale/designation",
+      "prior_problem": "貸与と販売の指定台帳・品目区分が抽象的",
+      "actual_change": "appended service-specific scenario and record comparison; preserved existing prose/checkpoint prefix",
+      "scenario": "選択制の対象用具を売る場合、同じ型式の貸与契約と販売契約を区別し、保険者申請と事業所指定手続を別に管理する",
+      "records_to_compare": "特定福祉用具販売指定通知・販売品目台帳・取引区分別契約雛形・専門相談員勤務表・購入費申請案内",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "primary_text_check": null,
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 4
+      }
+    },
+    {
+      "service_id": "specific-welfare-equipment-sale",
+      "chapter_id": "records",
+      "chapter_key": "specific-welfare-equipment-sale/records",
+      "prior_problem": "販売計画・交付・購入支給の証憑が断片的",
+      "actual_change": "appended service-specific scenario and record comparison; preserved existing prose/checkpoint prefix",
+      "scenario": "販売時の選定理由と説明・同意・交付・購入費支給申請用の証憑を一利用者一品目で突合する",
+      "records_to_compare": "特定福祉用具販売計画・利用者説明同意・交付控え・領収書・品目/型式・提供記録・保険者の購入費案内",
+      "source_status": "PRIMARY_TEXT_CHECKED",
+      "primary_text_check": {
+        "document_name": "平成11年厚生省令第37号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0",
+        "article": "第211条・第214条の2第1〜5項・第215条",
+        "edition": "MHLW web/t_doc online text viewed 2026-10-21 JST; full effective edition/currentness unverified",
+        "verified_claim_limit": "販売の具体的提供記録、販売計画作成/同意/交付・記録整備の条文のみ。購入費支給の個別可否は未検証。"
+      },
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 4
+      }
+    },
+    {
+      "service_id": "care-management",
+      "chapter_id": "designation",
+      "chapter_key": "care-management/designation",
+      "prior_problem": "指定主体と兼務・予防支援との差異の具体証拠が不足",
+      "actual_change": "appended service-specific scenario and record comparison; preserved existing prose/checkpoint prefix",
+      "scenario": "同じ法人が居宅介護支援と介護予防支援を担う場合、管理者・従事者の役割とそれぞれの指定/委託関係を区分して確認する",
+      "records_to_compare": "市町村の居宅介護支援指定通知・管理者任命書・介護支援専門員勤務表・介護予防支援の別指定/委託契約",
+      "source_status": "SOURCE_CANDIDATE_ONLY",
+      "primary_text_check": null,
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 4
+      }
+    },
+    {
+      "service_id": "care-management",
+      "chapter_id": "records",
+      "chapter_key": "care-management/records",
+      "prior_problem": "サービス担当者会議後の計画交付・モニタリングの記録追跡を具体化する余地",
+      "actual_change": "appended service-specific scenario and record comparison; preserved existing prose/checkpoint prefix",
+      "scenario": "状態変化でケアプランを変更したケースの課題分析日、会議、本人への交付、担当者連絡、モニタリング日を時系列に照合する",
+      "records_to_compare": "課題分析・居宅サービス計画版履歴・担当者会議録・説明同意/交付控え・モニタリング記録・事業者連絡記録",
+      "source_status": "PRIMARY_TEXT_CHECKED",
+      "primary_text_check": {
+        "document_name": "平成11年厚生省令第38号",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999405&dataType=0&pageNo=1",
+        "article": "第13条（計画作成・実施状況把握・連絡調整）",
+        "edition": "MHLW web/t_doc online text viewed 2026-10-21 JST; full effective edition/currentness unverified",
+        "verified_claim_limit": "第13条の計画作成・実施状況把握・連絡調整の条文を閲覧。自治体条例・2026版改正全件及び個別事業所への適用は未確認。"
+      },
+      "evidence_gap": "Exact add-on/deduction eligibility, fee, local ordinance and provider-specific applicability not established",
+      "before": {
+        "paragraphs": 2,
+        "checkpoints": 3
+      },
+      "after": {
+        "paragraphs": 3,
+        "checkpoints": 4
+      }
+    }
+  ]
+}
