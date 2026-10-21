@@ -17,7 +17,7 @@ async function chapterData(params: Promise<{ serviceId: string; chapter: string 
 }
 export async function generateMetadata({ params }: { params: Promise<{ serviceId: string; chapter: string }> }) {
   const { service, chapter } = await chapterData(params);
-  return pageMetadata(`${chapter.title}｜${service.label}の手引`, chapter.summary, handbookChapterHref(service.service_id, chapter.section_id));
+  return pageMetadata(`${chapter.title}｜${service.label}の手引`, chapter.summary, handbookChapterHref(service.service_id, chapter.section_id), false);
 }
 export default async function ChapterPage({ params }: { params: Promise<{ serviceId: string; chapter: string }> }) {
   const { service, chapter } = await chapterData(params);

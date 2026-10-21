@@ -28,11 +28,14 @@ test("sitemap lists only unique existing public entry URLs with canonicals", () 
   }
 });
 
-test("search result, feedback and review pages are noindex", () => {
+test("search result, review, feedback and unreviewed handbook chapter pages are noindex", () => {
   for (const route of ["/search", "/databases/search", "/notices/review", "/services/dayrehab/search"]) {
     const body = source("app" + route + "/page.tsx");
     assert.match(body, /pageMetadata\([\s\S]*?false\);/, "noindex missing: " + route);
   }
+  const handbookChapter = source("app/handbook/[serviceId]/[chapter]/page.tsx");
+  assert.match(handbookChapter, /handbookChapterHref\(service\.service_id,\s*chapter\.section_id\),\s*false\s*\)/, "unreviewed handbook chapters must remain noindex");
+  assert.match(handbookChapter, /作成中・未確認の内容を含みます/, "unreviewed status warning must remain visible");
   assert.match(source("app/feedback/layout.tsx"), /false,\s*\)/);
 });
 
