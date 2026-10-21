@@ -4,7 +4,8 @@
 - 対象プロパティ: `https://kaigo-rules.vercel.app/`（URL プレフィックス）
 - 対象サイト: https://kaigo-rules.vercel.app/
 - 監査時点の main SHA: `0e9cf34e880a3209515264a06e8b29ab54d48f01`
-- PR番号・報告導入コミットSHA: PR作成後に追記
+- PR: [#546](https://github.com/Josh-Temple/kaigo-rules/pull/546)（open）
+- 報告導入コミットSHA: `8ea6674163890533b03149f4d353f800a8226376`
 
 ## 結果の要約
 
@@ -93,9 +94,10 @@ Sitemap: https://kaigo-rules.vercel.app/sitemap.xml
 ## GitHub・CI・Vercel
 
 - 監査記録の専用ブランチ: `docs/seo-gsc-audit-2026-10-21`
-- PR番号・報告導入コミットSHA: PR作成後に追記
+- PR: [#546](https://github.com/Josh-Temple/kaigo-rules/pull/546)（open）
+- 報告導入コミットSHA: `8ea6674163890533b03149f4d353f800a8226376`
 - GitHubの設定画面ではclassic branch protection rulesもrepository rulesetsも設定されていませんでした。PRの承認要件は表示されません。
-- `.github/workflows/validate-build.yml` はmain宛ての全PRで実行されます。変更はドキュメントだけですが、既存のCIをPR上で実行し、その結果を確認します。手動でActionsを再実行しません。
+- `.github/workflows/validate-build.yml` はmain宛ての全PRで実行されます。このPRで既存のCIを実行し、PRのチェック画面に記録された最終結果を確認します。手動でActionsを再実行しません。
 - 本番Vercelデプロイ: `dpl_Btmz5inYNK72g6V44cdLrjmMWgQw`、状態 `READY`、production。デプロイSHA `0e9cf34e880a3209515264a06e8b29ab54d48f01`。2026-10-21 20:23 JSTごろREADY。
 - SEOコード変更がないため、監査記録のPRから本番デプロイは作成していません。本番URLは上記HTTP検証で再確認済みです。
 
