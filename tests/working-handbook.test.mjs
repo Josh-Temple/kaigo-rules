@@ -117,6 +117,25 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
   const legacy = readJson("tests/fixtures/handbook-a-legacy.json");
   const quality = readJson("docs/handbook-quality/2026-10-20-worker-a-quality-inventory.json");
   const revisedChapters = new Set(quality.changed_chapter_ids);
+  // Current scoped source corrections may extend, never replace, the fixed #522 baseline.
+  const scopedB = readJson("docs/handbook-quality/2026-10-21-b-pr536-nonfacility-primary-evidence.json");
+  const BAllowed = ["dayservice/records", "welfare-equipment-rental/records", "care-management/records", "community-dayservice/staffing"];
+  assert.deepEqual(scopedB.changed_chapters.toSorted(), BAllowed.toSorted(), "unreviewed Worker B chapter scope");
+  const bEdits = new Map(scopedB.edits.map(e => [`${e.service}/${e.chapter}`, e]));
+  assert.equal(bEdits.size, BAllowed.length, "Worker B evidence must be unique");
+  for (const key of BAllowed) {
+    const evidence = bEdits.get(key);
+    assert.ok(evidence, `missing Worker B evidence: ${key}`);
+    assert.equal(evidence.source_status, "PRIMARY_TEXT_CHECKED_SCOPED");
+    assert.equal(evidence.currentness_as_of_2026_10_21, "NOT_ESTABLISHED");
+    const [service, chapter] = key.split("/");
+    const value = content.services[service].chapters[chapter];
+    assert.deepEqual(value, evidence.after, `Worker B chapter does not match source ledger: ${key}`);
+    assert.deepEqual(value.paragraphs.slice(0, evidence.before.paragraphs.length), evidence.before.paragraphs);
+    assert.deepEqual(value.checkpoints.slice(0, evidence.before.checkpoints.length), evidence.before.checkpoints);
+    assert.equal(value.paragraphs.length, evidence.before.paragraphs.length + 1);
+    assert.equal(value.checkpoints.length, evidence.before.checkpoints.length + 1);
+  }
   assert.equal(revisedChapters.size, 51, "only scoped Worker A chapter edits are allowed");
   assert.equal(legacy.source_commit, "0d26dc8e29fd0567e723872290785a2cc979c30b");
   const manifest = {
@@ -161,6 +180,14 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
             `#522 baseline prose changed: ${serviceId}:${sectionId}`);
           assert.equal(current.paragraphs.length, authored.paragraphs.length + 1);
         }
+      } else if (bEdits.has(`${serviceId}/${sectionId}`)) {
+        const current = chapters[sectionId];
+        assert.deepEqual(current.paragraphs.slice(0, authored.paragraphs.length), authored.paragraphs,
+          `#522 baseline prose changed: ${serviceId}:${sectionId}`);
+        assert.deepEqual(current.checkpoints.slice(0, authored.checkpoints.length), authored.checkpoints,
+          `#522 baseline checkpoints changed: ${serviceId}:${sectionId}`);
+        assert.deepEqual(current, bEdits.get(`${serviceId}/${sectionId}`).after,
+          `Worker B evidence mismatch: ${serviceId}:${sectionId}`);
       } else {
         assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
       }
