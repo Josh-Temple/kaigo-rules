@@ -1,0 +1,67 @@
+{
+  "role": "E",
+  "wave": "2026-10-21_kaigo_pr539_postrelease_live_http_browser_recovery_currentness_scoped_accuracy",
+  "base_main_sha": "74a9ef67b2c7edcfe54e847ceb2ff4e6d36ed2ea",
+  "d_decision": "D_PARTIAL_SCOPED",
+  "d_report": "/Kaigo Rules/Wave Outputs/2026-10-21_kaigo_pr539_postrelease_live_http_browser_recovery_currentness_scoped_accuracy/D_fixed_head_independent_acceptance.md",
+  "d_allowlist": [
+    "elderly-health-facility/national_qa"
+  ],
+  "d_A_comment": "https://github.com/Josh-Temple/kaigo-rules/pull/541#issuecomment-6314854872",
+  "d_B_hold_comment": "https://github.com/Josh-Temple/kaigo-rules/pull/540#issuecomment-6314855725",
+  "accepted_source": {
+    "pr": 541,
+    "head": "da85e9a3b77fc1352cc64165350ebd960d75b687",
+    "original_blob": "40a0d4dbe06e8f0b82ace59bc8be0530d761203c",
+    "evidence": "docs/handbook-quality/2026-10-21-A-pr539-facility-vol18-question2-ledger.json",
+    "original_pdf": "https://www.mhlw.go.jp/content/001722883.pdf#page=4",
+    "source_status": "PRIMARY_TEXT_CHECKED_SCOPED"
+  },
+  "excluded_source": {
+    "pr": 540,
+    "head": "f4e2a6c5380822a764f1ed98420cd06c015cf122",
+    "chapter": "homebath/deductions",
+    "reason": "D_NEEDS_REVISION: reference URL document identity mismatch"
+  },
+  "data_preservation": {
+    "schema_version": 1,
+    "services": 39,
+    "chapters_each": 15,
+    "chapters_total": 585,
+    "order_unchanged": true,
+    "nonaccepted_584_json_equal": true,
+    "accepted_chapter_original_arrays_prefix": true,
+    "prior_11_merged_chapters_preserved": true
+  },
+  "metrics_before": {
+    "paragraphs": 1384,
+    "checkpoints": 2012
+  },
+  "metrics_integrated": {
+    "paragraphs": 1385,
+    "checkpoints": 2013
+  },
+  "duplicate_assessment": {
+    "normalizer_description": "Whitespace removal, data/*.json path normalization, service-prefix removal (指定/介護予防/地域密着型). Locally recalculated; see prior wave alternative implementation for possible method differences.",
+    "before": {
+      "paragraphs": 7,
+      "checkpoints": 178
+    },
+    "after": {
+      "paragraphs": 7,
+      "checkpoints": 178
+    }
+  },
+  "legal_scope": "MHLW July 14 2026 Vol.18 Q2: acute hospital general inpatient fee ward included for initial addition (I) scope only",
+  "comprehensive_2026_currentness": "NOT_ESTABLISHED",
+  "municipal_ordinance": "NOT_VERIFIED",
+  "individual_provider_billing": "NOT_ESTABLISHED",
+  "human_legal_review": "NOT_REVIEWED",
+  "content": "DRAFT_UNREVIEWED",
+  "ci_final_e_head": "PENDING",
+  "merge": "HOLD_UNTIL_EXACT_E_HEAD_CI_ALL_STEPS_SUCCESS",
+  "production_change": "NOT_YET",
+  "http_17_url": "NOT_VERIFIED",
+  "browser_app_dom": "NOT_RUN",
+  "android": "NOT_RUN"
+}
