@@ -188,6 +188,12 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
           `#522 baseline checkpoints changed: ${serviceId}:${sectionId}`);
         assert.deepEqual(current, bEdits.get(`${serviceId}/${sectionId}`).after,
           `Worker B evidence mismatch: ${serviceId}:${sectionId}`);
+      } else if (serviceId === "homevisit" && sectionId === "staffing") {
+        // The pilot adds optional role_sections without changing the #522 baseline fields.
+        const { role_sections, ...baselineFields } = chapters[sectionId];
+        assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+        assert.equal(role_sections?.length, 3, "homevisit staffing roles were not integrated");
+        assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), 10);
       } else {
         assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
       }
