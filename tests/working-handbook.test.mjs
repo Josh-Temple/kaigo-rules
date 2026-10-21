@@ -394,9 +394,17 @@ except ValueError as exc:
     locator: "第1条", version: "未確認", scope: "未確認", checked_at_jst: "",
     verification_state: "SOURCE_CANDIDATE_UNVERIFIED",
   };
-  for (const url of ["javascript:alert(1)", "https://www.mhlw.go.jp.evil.example/a",
-      "https://www.mhlw.go.jp@evil.example/a", "https://www.mhlw.go.jp:444/a",
-      "https://www.mhlw.go.jp/a#page=bad", "data:text/html,abc"]) {
+  // Independent B adversarial extension: syntactic URL rejection only; redirect targets require live HTTP checks.
+  for (const url of [
+      "javascript:alert(1)", "data:text/html,abc",
+      "https://evil.example/a", "https://www.mhlw.go.jp.evil.example/a",
+      "http://www.mhlw.go.jp/a", "https://www.mhlw.go.jp@evil.example/a",
+      "https://www.mhlw.go.jp:444/a", "https://www.mhlw.go.jp/a#page=bad",
+      "https://www.mhlw.go.jp/a#page=0", "https://www.mhlw.go.jp/a%0dheader",
+      "https://www.mhlw.go.jp/a%0Aheader", "https://www.mhlw.go.jp/a?q=<img>",
+      "https://www.mhlw.go.jp/a\"onmouseover=alert(1)", "https://www.mhlw.go.jp\\@evil.example/a",
+      "https://www.mhlw.go.jp%2Eevil.example/a", "https://www.mhlw.go.jp"
+  ]) {
     const item = [{ ...valid[0], requirements: [{ ...valid[0].requirements[0],
       evidence: [{ ...example, url }] }] }];
     assert.equal(check(item).status, 2, url);
@@ -407,4 +415,63 @@ except ValueError as exc:
       evidence: [{ ...example, kind: "invalid" }] }] }]).status, 2);
   assert.equal(check([{ ...valid[0], requirements: [{ ...valid[0].requirements[0],
       evidence: [{ ...example, verification_state: "PRIMARY_TEXT_CHECKED_SCOPED", url: "https://laws.e-gov.go.jp/law/abc" }] }] }]).status, 2);
+});
+
+
+test("small-scale multifunctional staffing retains its legacy content and exact scoped pilot roles", () => {
+  // Fixed pre-PR #548 main 4504cd0de9e5a46f9338691a09e6a7b9bd1b53a1; role_sections is additive.
+  const legacy = {
+    "paragraphs": [
+      "小規模多機能型居宅介護では通いの利用状況、訪問の出動、宿泊の夜間対応を一体として勤務管理します。通いの時間帯だけの人員表で足りると判断せず、訪問中の不在と宿泊対応を含めて点検します",
+      "原典候補は平成18年厚生労働省令第34号の小規模多機能型居宅介護関係章（data/services/small-scale-multifunctional/shared-corpus-scope.json）。看護職員・介護従業者・介護支援専門員等の職種、役割、兼務について地域密着型基準と市町村条例を確認します。収載scopeは個別適用や準用・読替えの確定ではありません。現行施行版・指定権者条例・個別事業所への適用は未確認です（作成中・未レビュー）。"
+    ],
+    "checkpoints": [
+      "通い・訪問・宿泊別の提供実績と時間帯別勤務表を照合する",
+      "訪問への出動中に残る職員の体制を確認する",
+      "夜間の宿泊対応・緊急訪問と職員の役割を点検する"
+    ]
+  };
+  const source = readJson("data/handbook-content.json");
+  const allowed = new Set(["homevisit/staffing", "small-scale-multifunctional/staffing"]);
+  const inspect = (data) => {
+    assert.equal(data.schema_version, 1);
+    let chapters = 0;
+    for (const [serviceId, service] of Object.entries(data.services)) {
+      assert.equal(Object.keys(service.chapters).length, 15, serviceId);
+      for (const [chapterId, value] of Object.entries(service.chapters)) {
+        chapters++;
+        if (value.role_sections) assert.ok(allowed.has(serviceId + "/" + chapterId), serviceId + "/" + chapterId);
+      }
+    }
+    assert.equal(Object.keys(data.services).length, 39);
+    assert.equal(chapters, 585);
+    const current = data.services["small-scale-multifunctional"].chapters.staffing;
+    const { role_sections, ...retained } = current;
+    assert.deepEqual(retained, legacy, "small-scale staffing old paragraphs/checkpoints changed");
+    assert.deepEqual(role_sections.map(r => [r.id, r.requirements.length]), [
+      ["representative", 1], ["manager", 3], ["care-staff", 7],
+      ["nursing-staff", 2], ["care-manager", 3],
+    ]);
+    for (const role of role_sections) {
+      assert.equal(new Set(role.requirements.map(r => r.id)).size, role.requirements.length);
+    }
+  };
+  inspect(source);
+  const changedProse = structuredClone(source);
+  changedProse.services["small-scale-multifunctional"].chapters.staffing.paragraphs.push("unexpected rewrite");
+  assert.throws(() => inspect(changedProse), /old paragraphs\/checkpoints/);
+  const changedCheckpoint = structuredClone(source);
+  changedCheckpoint.services["small-scale-multifunctional"].chapters.staffing.checkpoints[0] = "unexpected rewrite";
+  assert.throws(() => inspect(changedCheckpoint), /old paragraphs\/checkpoints/);
+  const leakedScope = structuredClone(source);
+  leakedScope.services["small-scale-multifunctional"].chapters.equipment.role_sections =
+    structuredClone(source.services["small-scale-multifunctional"].chapters.staffing.role_sections);
+  assert.throws(() => inspect(leakedScope), /small-scale-multifunctional\/equipment/);
+  const droppedRequirement = structuredClone(source);
+  droppedRequirement.services["small-scale-multifunctional"].chapters.staffing.role_sections[2].requirements.pop();
+  assert.throws(() => inspect(droppedRequirement));
+  const duplicatedRequirement = structuredClone(source);
+  const reqs = duplicatedRequirement.services["small-scale-multifunctional"].chapters.staffing.role_sections[2].requirements;
+  reqs[1].id = reqs[0].id;
+  assert.throws(() => inspect(duplicatedRequirement));
 });
