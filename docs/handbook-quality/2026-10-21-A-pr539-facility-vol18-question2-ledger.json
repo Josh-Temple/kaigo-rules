@@ -1,0 +1,206 @@
+{
+  "role": "A",
+  "wave": "2026-10-21_kaigo_pr539_postrelease_live_http_browser_recovery_currentness_scoped_accuracy",
+  "repository": "Josh-Temple/kaigo-rules",
+  "base_main_sha": "74a9ef67b2c7edcfe54e847ceb2ff4e6d36ed2ea",
+  "base_handbook_blob_sha": "d782ae8f447ca24a7d226741eec381e38ebdc59c",
+  "first_change_commit_sha": "5baac02fb7a8503ea291d242d8579232a5ea9f45",
+  "updated_handbook_blob_sha": "40a0d4dbe06e8f0b82ace59bc8be0530d761203c",
+  "scope": "16 facility, short-stay and multifunctional services; 9 national_qa chapters specifically investigated",
+  "changed_chapter_ids": [
+    "elderly-health-facility/national_qa"
+  ],
+  "unchanged_chapters": 584,
+  "previous_A_chapters_changed_this_wave": 0,
+  "other_23_services_changed": 0,
+  "original_chapter": {
+    "paragraphs": [
+      "介護老人保健施設の国Q&A探索例：退所先や入所期間が設問の前提に合うか、介護医療院向けQ&Aではないか。検索語に「在宅復帰支援の対象入所期間と退所先、単なる病院転院の違い」を含めて資料の発出日・設問対象を記録し、退所支援経過、居宅への連絡票、リハ計画にある利用者と対象日が設問の前提に当たるか検査します。原問の本文・追補・取下げの確認が終わらない場合は問番号・回答趣旨や具体的適用を推定しません。",
+      "候補資料は厚生労働省Q&A公開ページ（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html）、data/qa-corpus.json、data/qa-service-mapping.json、data/qa-group-relations.jsonです。対応表には「介護老人保健施設」の個別サービス区分がありますが、検索範囲の候補にすぎず、問ごとの対象・条件・適用を確定しません。在宅復帰支援と療養管理を一体で扱い、介護老人福祉施設の長期生活支援と区分する。本文で対象や条件を確認できないときは「収載資料では未特定」と記録し、問番号・回答・適用関係を作りません。",
+      "【国Q&A原問照合（2024年資料）】厚生労働省「令和６年度介護報酬改定に関するQ&A（Vol.２）」（2024年３月19日）問14（PDF本文５頁）は、老健の認知症短期集中リハビリテーション実施加算（Ⅰ）に関する退所後の居宅等の訪問者を専門職に限定しない一方、訪問で得た居宅等の情報をリハビリテーション計画の作成担当者へ適切に共有できる者であることを前提としています。出典：https://www.mhlw.go.jp/content/12300000/001239535.pdf#page=6。",
+      "【退所先の条件と記録】同文書問15は、社会福祉施設等への退所希望がある場合でも、従前の居宅に訪問する方が有益な情報を得られる等、訪問が適切と考えられる場合の居宅訪問を認める回答です。退所先の希望・経過記録と訪問先選定理由・訪問記録を照合し、入手情報がリハビリテーション計画作成者へ共有された日時を確認します。現行の加算要件、算定月、2026年改正・訂正、事業所ごとの適用は問14・15だけでは未確認（DRAFT_UNREVIEWED）。出典：https://www.mhlw.go.jp/content/12300000/001239535.pdf#page=6。"
+    ],
+    "checkpoints": [
+      "介護老人保健施設：退所先や入所期間が設問の前提に合うか、介護医療院向けQ&Aではないか。設問原文のサービス名・施設区分と退所支援経過、居宅への連絡票、リハ計画のサービス記録を照合する",
+      "介護老人保健施設：在宅復帰支援の対象入所期間と退所先、単なる病院転院の違いについて利用者ごとの対象日・計画・実績の違いを抽出し、Q&Aが前提とする範囲外なら結論を保留する",
+      "介護老人保健施設：参照Q&Aの発出日・版・設問条件・修正履歴を記録し、退所支援経過、居宅への連絡票、リハ計画と合わない点を確認待ちとして残す",
+      "退所希望先・入所前居宅と訪問先を退所支援経過記録に照合し、問15に沿う訪問先の選定理由を残す",
+      "訪問者・訪問日・取得情報の記録とリハビリテーション計画作成担当者への共有履歴を突合し、算定月の請求と現行告示を独立確認する"
+    ]
+  },
+  "updated_chapter": {
+    "paragraphs": [
+      "介護老人保健施設の国Q&A探索例：退所先や入所期間が設問の前提に合うか、介護医療院向けQ&Aではないか。検索語に「在宅復帰支援の対象入所期間と退所先、単なる病院転院の違い」を含めて資料の発出日・設問対象を記録し、退所支援経過、居宅への連絡票、リハ計画にある利用者と対象日が設問の前提に当たるか検査します。原問の本文・追補・取下げの確認が終わらない場合は問番号・回答趣旨や具体的適用を推定しません。",
+      "候補資料は厚生労働省Q&A公開ページ（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/qa/index.html）、data/qa-corpus.json、data/qa-service-mapping.json、data/qa-group-relations.jsonです。対応表には「介護老人保健施設」の個別サービス区分がありますが、検索範囲の候補にすぎず、問ごとの対象・条件・適用を確定しません。在宅復帰支援と療養管理を一体で扱い、介護老人福祉施設の長期生活支援と区分する。本文で対象や条件を確認できないときは「収載資料では未特定」と記録し、問番号・回答・適用関係を作りません。",
+      "【国Q&A原問照合（2024年資料）】厚生労働省「令和６年度介護報酬改定に関するQ&A（Vol.２）」（2024年３月19日）問14（PDF本文５頁）は、老健の認知症短期集中リハビリテーション実施加算（Ⅰ）に関する退所後の居宅等の訪問者を専門職に限定しない一方、訪問で得た居宅等の情報をリハビリテーション計画の作成担当者へ適切に共有できる者であることを前提としています。出典：https://www.mhlw.go.jp/content/12300000/001239535.pdf#page=6。",
+      "【退所先の条件と記録】同文書問15は、社会福祉施設等への退所希望がある場合でも、従前の居宅に訪問する方が有益な情報を得られる等、訪問が適切と考えられる場合の居宅訪問を認める回答です。退所先の希望・経過記録と訪問先選定理由・訪問記録を照合し、入手情報がリハビリテーション計画作成者へ共有された日時を確認します。現行の加算要件、算定月、2026年改正・訂正、事業所ごとの適用は問14・15だけでは未確認（DRAFT_UNREVIEWED）。出典：https://www.mhlw.go.jp/content/12300000/001239535.pdf#page=6。",
+      "【2026年7月14日Q&A追補・介護老人保健施設／Vol.18問2・本文3頁】初期加算（Ⅰ）でいう「急性期医療を担う医療機関の一般病棟」に、令和8年度診療報酬改定で新設された「急性期病院一般入院基本料」を算定する病棟が含まれると回答されています。入所者ごとに入所前の医療機関・病棟区分・実際の入院基本料（退院時情報提供書や医療機関への確認記録）と老健入所日を突合し、初期加算（Ⅰ）の別の算定要件・体制届・請求対象月は該当する告示・留意事項・施行版で別途確認してください。問2は病棟の範囲に関する回答であり、この問答だけで全要件の充足、施行日、個別事業所の算定可否を確定しません（DRAFT_UNREVIEWED）。原典：https://www.mhlw.go.jp/content/001722883.pdf#page=4"
+    ],
+    "checkpoints": [
+      "介護老人保健施設：退所先や入所期間が設問の前提に合うか、介護医療院向けQ&Aではないか。設問原文のサービス名・施設区分と退所支援経過、居宅への連絡票、リハ計画のサービス記録を照合する",
+      "介護老人保健施設：在宅復帰支援の対象入所期間と退所先、単なる病院転院の違いについて利用者ごとの対象日・計画・実績の違いを抽出し、Q&Aが前提とする範囲外なら結論を保留する",
+      "介護老人保健施設：参照Q&Aの発出日・版・設問条件・修正履歴を記録し、退所支援経過、居宅への連絡票、リハ計画と合わない点を確認待ちとして残す",
+      "退所希望先・入所前居宅と訪問先を退所支援経過記録に照合し、問15に沿う訪問先の選定理由を残す",
+      "訪問者・訪問日・取得情報の記録とリハビリテーション計画作成担当者への共有履歴を突合し、算定月の請求と現行告示を独立確認する",
+      "老健の初期加算（Ⅰ）について、Vol.18問2の病棟範囲と入所前の医療機関・病棟種別・算定された入院基本料を照合し、入所日、必要な届出、報酬告示の他要件、適用時点および請求月を別々に確認する"
+    ]
+  },
+  "original_arrays_preserved_as_exact_prefix": true,
+  "structurally_identical_service_and_chapter_order": true,
+  "metrics_before": {
+    "schema_version": 1,
+    "services": 39,
+    "chapters": 585,
+    "paragraphs": 1384,
+    "checkpoints": 2012,
+    "normalization_exact_nfkc_space_lc_paragraph_duplicate_excess": 0,
+    "normalization_exact_nfkc_space_lc_checkpoint_duplicate_excess": 173
+  },
+  "metrics_after": {
+    "schema_version": 1,
+    "services": 39,
+    "chapters": 585,
+    "paragraphs": 1385,
+    "checkpoints": 2013,
+    "normalization_exact_nfkc_space_lc_paragraph_duplicate_excess": 0,
+    "normalization_exact_nfkc_space_lc_checkpoint_duplicate_excess": 173
+  },
+  "note_duplicate_metrics": "NFKC + whitespace deletion + lowercasing exact equality across whole dataset. E previous wave 24/241 used distinct normalization and is not directly comparable.",
+  "source_ledger": {
+    "Vol.2": {
+      "issued": "2024-03-19",
+      "url": "https://www.mhlw.go.jp/content/12300000/001239535.pdf",
+      "questions": "問7,10,14,15 for listed services",
+      "verification": "PRIMARY_TEXT_CHECKED_SCOPED"
+    },
+    "Vol.3": {
+      "issued": "2024-03-29",
+      "url": "https://www.mhlw.go.jp/content/001239248.pdf",
+      "questions": "問1,2,4; including negative scope for preventive-small-scale-multifunctional",
+      "verification": "PRIMARY_TEXT_CHECKED_SCOPED"
+    },
+    "Vol.12": {
+      "issued": "2025-01-22",
+      "url": "https://www.mhlw.go.jp/content/001381985.pdf",
+      "questions": "問2",
+      "verification": "PRIMARY_TEXT_CHECKED_SCOPED"
+    },
+    "Vol.17": {
+      "issued": "2025-10-01",
+      "url": "https://www.mhlw.go.jp/content/001572626.pdf",
+      "questions": "scoped inspection; not an exhaustive withdrawal review",
+      "verification": "PRIMARY_TEXT_CHECKED_SCOPED"
+    },
+    "Vol.18": {
+      "issued": "2026-07-14",
+      "url": "https://www.mhlw.go.jp/content/001722883.pdf",
+      "printed_page": 3,
+      "physical_pdf_page": 4,
+      "question": "問2",
+      "section": "【介護老人保健施設】○初期加算について",
+      "topic": "初期加算（Ⅰ）に関する急性期病院一般入院基本料を算定する病棟が含まれるか",
+      "answer": "含まれる。",
+      "verification": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "impact": "one narrow answer newly added to elderly-health-facility/national_qa"
+    }
+  },
+  "investigated_chapters": [
+    {
+      "service_id": "shortstay-life",
+      "chapter_id": "national_qa",
+      "volume": "Vol.3",
+      "question_id": "問4",
+      "observation": "原問は（介護予防）短期入所生活介護を列挙",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "action": "NO_CHANGE"
+    },
+    {
+      "service_id": "preventive-shortstay-life",
+      "chapter_id": "national_qa",
+      "volume": "Vol.3",
+      "question_id": "問4",
+      "observation": "原問で（介護予防）短期入所生活介護を明示",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "action": "NO_CHANGE"
+    },
+    {
+      "service_id": "small-scale-multifunctional",
+      "chapter_id": "national_qa",
+      "volume": "Vol.3",
+      "question_id": "問1",
+      "observation": "地域密着型サービスの進達書・届出書の区別",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "action": "NO_CHANGE"
+    },
+    {
+      "service_id": "nursing-small-scale-multifunctional",
+      "chapter_id": "national_qa",
+      "volume": "Vol.12",
+      "question_id": "問2",
+      "observation": "看護小規模多機能の減算は該当利用者のみ",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "action": "NO_CHANGE"
+    },
+    {
+      "service_id": "community-elderly-facility",
+      "chapter_id": "national_qa",
+      "volume": "Vol.3",
+      "question_id": "問2",
+      "observation": "地域密着型を含む退所時情報提供",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "action": "NO_CHANGE"
+    },
+    {
+      "service_id": "community-specific-facility",
+      "chapter_id": "national_qa",
+      "volume": "Vol.3",
+      "question_id": "問2",
+      "observation": "地域密着型を含む退居時情報提供",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "action": "NO_CHANGE"
+    },
+    {
+      "service_id": "care-medical-institution",
+      "chapter_id": "national_qa",
+      "volume": "Vol.2",
+      "question_id": "問7・問10",
+      "observation": "介護医療院を含む認知症チームケア",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "action": "NO_CHANGE"
+    },
+    {
+      "service_id": "elderly-health-facility",
+      "chapter_id": "national_qa",
+      "volume": "Vol.2 問14・問15／Vol.18",
+      "question_id": "問2",
+      "observation": "Vol.18 2026-07-14問2で急性期病院一般入院基本料の病棟を老健初期加算（Ⅰ）の対象病棟範囲に含むと明示",
+      "source_status": "PRIMARY_TEXT_CHECKED_SCOPED",
+      "action": "ONE_PARAGRAPH_ONE_CHECKPOINT_ADDED"
+    },
+    {
+      "service_id": "preventive-small-scale-multifunctional",
+      "chapter_id": "national_qa",
+      "volume": "Vol.3",
+      "question_id": "問4",
+      "observation": "Vol.3問4が介護予防小規模多機能を対象サービスに明示していない。小規模多機能からの類推は不可",
+      "source_status": "EVIDENCE_GAP",
+      "action": "NO_CHANGE"
+    }
+  ],
+  "gaps": {
+    "remaining_versions": "Vol.4–11 and Vol.13–16 and other Q&As not comprehensively cross-checked for later withdrawals/corrections; Vol.17/18 inspected only in the available relevant scope",
+    "statutory_remuneration_effective_version": "NOT_VERIFIED",
+    "full_2026_currentness": "NOT_ESTABLISHED",
+    "municipal_ordinances": "NOT_VERIFIED",
+    "facility_specific_billing_eligibility": "NOT_ESTABLISHED",
+    "human_legal_review": "NOT_REVIEWED",
+    "content_review": "DRAFT_UNREVIEWED",
+    "live_http_17_routes": "NOT_VERIFIED_BY_A",
+    "browser_dom": "NOT_RUN_BY_A",
+    "android_real_device": "NOT_RUN"
+  },
+  "qa_status": "Only recorded source-backed addition; not approval of billing or the entire 2026 rules",
+  "D_independent_acceptance": "PENDING",
+  "E_release": "NOT_DONE",
+  "merge": "HOLD_NO_MERGE"
+}
