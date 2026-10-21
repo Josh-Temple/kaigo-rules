@@ -188,6 +188,12 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
           `#522 baseline checkpoints changed: ${serviceId}:${sectionId}`);
         assert.deepEqual(current, bEdits.get(`${serviceId}/${sectionId}`).after,
           `Worker B evidence mismatch: ${serviceId}:${sectionId}`);
+      } else if (serviceId === "homevisit" && sectionId === "staffing") {
+        // The pilot adds optional role_sections without changing the #522 baseline fields.
+        const { role_sections, ...baselineFields } = chapters[sectionId];
+        assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+        assert.equal(role_sections?.length, 3, "homevisit staffing roles were not integrated");
+        assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), 10);
       } else {
         assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
       }
@@ -335,4 +341,70 @@ test("chapter evidence anchor is linked and long drafting text wraps", () => {
   assert.match(tsx, /手引のこの章へ戻る/);
   assert.match(tsx, /個別資料が未登録のため、法令等の全候補から探す/);
   assert.match(css, /\.handbook-checkpoints li\{overflow-wrap:anywhere\}/);
+});
+
+
+// Staffing role display is strictly opt-in; old chapters and scope databases are unmodified.
+test("staffing roles are an optional backward-compatible projection", () => {
+  const authored = readJson("data/handbook-content.json").services;
+  for (const service of serviceHandbooks) {
+    for (const chapter of service.chapters) {
+      const value = authored[service.service_id]?.chapters?.[chapter.section_id];
+      assert.deepEqual(chapter.role_sections, value?.role_sections, service.service_id + "/" + chapter.section_id);
+      if (chapter.role_sections) {
+        assert.ok(["homevisit", "small-scale-multifunctional"].includes(service.service_id));
+        assert.equal(chapter.section_id, "staffing");
+      }
+    }
+  }
+  assert.equal(serviceHandbooks.length, 39);
+  assert.equal(serviceHandbooks.reduce((total, service) => total + service.chapters.length, 0), 585);
+});
+
+test("role data rejects out-of-scope fields, unsafe links and false verification", async () => {
+  const { spawnSync } = await import("node:child_process");
+  const script = String.raw`import importlib.util,json,sys
+spec=importlib.util.spec_from_file_location("handbook_builder","scripts/build_handbook_site.py")
+module=importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+sid,chapter,roles=json.load(sys.stdin)
+try:
+    module.validate_role_sections(sid,chapter,roles)
+except ValueError as exc:
+    print(exc)
+    sys.exit(2)
+`;
+  const valid = [{
+    id: "manager", title: "管理者", requirements: [{
+      id: "placement", title: "配置", aspect: "placement",
+      description: "原典確認待ちです。", applicability: "適用範囲未確認",
+      verification_state: "EVIDENCE_GAP", evidence: [], practical_checks: [],
+    }],
+  }];
+  const check = (roles, sid = "homevisit", chapter = "staffing") =>
+    spawnSync("python", ["-c", script], { input: JSON.stringify([sid, chapter, roles]), encoding: "utf8" });
+  assert.equal(check(valid).status, 0);
+  assert.equal(check(valid, "dayservice").status, 2);
+  assert.equal(check(valid, "homevisit", "equipment").status, 2);
+  assert.equal(check([...valid, valid]).status, 2);
+  assert.equal(check([{ ...valid[0], evil: "unknown" }]).status, 2);
+  assert.equal(check([{ ...valid[0], requirements: [{ ...valid[0].requirements[0], verification_state: "PRIMARY_TEXT_CHECKED_SCOPED" }] }]).status, 2);
+  const example = {
+    kind: "national_standard", title: "条文", issuer: "e-Gov",
+    locator: "第1条", version: "未確認", scope: "未確認", checked_at_jst: "",
+    verification_state: "SOURCE_CANDIDATE_UNVERIFIED",
+  };
+  for (const url of ["javascript:alert(1)", "https://www.mhlw.go.jp.evil.example/a",
+      "https://www.mhlw.go.jp@evil.example/a", "https://www.mhlw.go.jp:444/a",
+      "https://www.mhlw.go.jp/a#page=bad", "data:text/html,abc"]) {
+    const item = [{ ...valid[0], requirements: [{ ...valid[0].requirements[0],
+      evidence: [{ ...example, url }] }] }];
+    assert.equal(check(item).status, 2, url);
+  }
+  assert.equal(check([{ ...valid[0], requirements: [{ ...valid[0].requirements[0],
+      description: "<img src=x onerror=alert(1)>" }] }]).status, 2);
+  assert.equal(check([{ ...valid[0], requirements: [{ ...valid[0].requirements[0],
+      evidence: [{ ...example, kind: "invalid" }] }] }]).status, 2);
+  assert.equal(check([{ ...valid[0], requirements: [{ ...valid[0].requirements[0],
+      evidence: [{ ...example, verification_state: "PRIMARY_TEXT_CHECKED_SCOPED", url: "https://laws.e-gov.go.jp/law/abc" }] }] }]).status, 2);
 });
