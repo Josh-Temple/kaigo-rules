@@ -157,7 +157,7 @@ def validate_role_sections(sid, section, roles):
                     role_url(ev["url"])
                 if (ev["kind"] == "national_qa"
                         and ev["verification_state"] == "PRIMARY_TEXT_CHECKED_SCOPED"
-                        and not re.search(r"(?:問|Q)\\s*[0-9０-９]+", ev["locator"], re.IGNORECASE)):
+                        and not re.search(r"(?:問|Q)\s*[0-9０-９]+", ev["locator"], re.IGNORECASE)):
                     raise ValueError("Verified national Q&A needs an exact question number")
                 if ev["verification_state"] == "PRIMARY_TEXT_CHECKED_SCOPED":
                     checked += 1
