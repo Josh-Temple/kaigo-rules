@@ -352,7 +352,7 @@ test("staffing roles are an optional backward-compatible projection", () => {
       const value = authored[service.service_id]?.chapters?.[chapter.section_id];
       assert.deepEqual(chapter.role_sections, value?.role_sections, service.service_id + "/" + chapter.section_id);
       if (chapter.role_sections) {
-        assert.ok(["homevisit", "small-scale-multifunctional"].includes(service.service_id));
+        assert.ok(["homevisit", "small-scale-multifunctional", "dayservice", "dayrehab", "care-management", "dementia-group-home"].includes(service.service_id));
         assert.equal(chapter.section_id, "staffing");
       }
     }
@@ -384,7 +384,8 @@ except ValueError as exc:
   const check = (roles, sid = "homevisit", chapter = "staffing") =>
     spawnSync("python", ["-c", script], { input: JSON.stringify([sid, chapter, roles]), encoding: "utf8" });
   assert.equal(check(valid).status, 0);
-  assert.equal(check(valid, "dayservice").status, 2);
+  assert.equal(check(valid, "dayservice").status, 0);
+  assert.equal(check(valid, "preventive-dayrehab").status, 2);
   assert.equal(check(valid, "homevisit", "equipment").status, 2);
   assert.equal(check([...valid, valid]).status, 2);
   assert.equal(check([{ ...valid[0], evil: "unknown" }]).status, 2);
