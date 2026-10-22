@@ -194,6 +194,22 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
         assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
         assert.equal(role_sections?.length, 3, "homevisit staffing roles were not integrated");
         assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), 10);
+      } else if (sectionId === "staffing" && Object.hasOwn({
+        dayservice: [5, 10],
+        dayrehab: [3, 5],
+        "care-management": [2, 7],
+        "dementia-group-home": [4, 10],
+      }, serviceId)) {
+        // Four newly scoped role-sections may be added, but every #522 baseline field remains identical.
+        const { role_sections, ...baselineFields } = chapters[sectionId];
+        assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+        const [expectedRoles, expectedRequirements] = {
+          dayservice: [5, 10], dayrehab: [3, 5],
+          "care-management": [2, 7], "dementia-group-home": [4, 10],
+        }[serviceId];
+        assert.equal(role_sections?.length, expectedRoles, `staffing role count: ${serviceId}`);
+        assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), expectedRequirements,
+          `staffing requirement count: ${serviceId}`);
       } else {
         assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
       }
