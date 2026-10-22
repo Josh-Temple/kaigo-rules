@@ -194,6 +194,22 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
         assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
         assert.equal(role_sections?.length, 3, "homevisit staffing roles were not integrated");
         assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), 10);
+      } else if (sectionId === "staffing" && Object.hasOwn({
+        dayservice: [5, 10],
+        dayrehab: [3, 5],
+        "care-management": [2, 7],
+        "dementia-group-home": [4, 10],
+      }, serviceId)) {
+        // Four newly scoped role-sections may be added, but every #522 baseline field remains identical.
+        const { role_sections, ...baselineFields } = chapters[sectionId];
+        assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+        const [expectedRoles, expectedRequirements] = {
+          dayservice: [5, 10], dayrehab: [3, 5],
+          "care-management": [2, 7], "dementia-group-home": [4, 10],
+        }[serviceId];
+        assert.equal(role_sections?.length, expectedRoles, `staffing role count: ${serviceId}`);
+        assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), expectedRequirements,
+          `staffing requirement count: ${serviceId}`);
       } else {
         assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
       }
@@ -352,7 +368,7 @@ test("staffing roles are an optional backward-compatible projection", () => {
       const value = authored[service.service_id]?.chapters?.[chapter.section_id];
       assert.deepEqual(chapter.role_sections, value?.role_sections, service.service_id + "/" + chapter.section_id);
       if (chapter.role_sections) {
-        assert.ok(["homevisit", "small-scale-multifunctional"].includes(service.service_id));
+        assert.ok(["homevisit", "small-scale-multifunctional", "dayservice", "dayrehab", "care-management", "dementia-group-home"].includes(service.service_id));
         assert.equal(chapter.section_id, "staffing");
       }
     }
@@ -384,7 +400,8 @@ except ValueError as exc:
   const check = (roles, sid = "homevisit", chapter = "staffing") =>
     spawnSync("python", ["-c", script], { input: JSON.stringify([sid, chapter, roles]), encoding: "utf8" });
   assert.equal(check(valid).status, 0);
-  assert.equal(check(valid, "dayservice").status, 2);
+  assert.equal(check(valid, "dayservice").status, 0);
+  assert.equal(check(valid, "preventive-dayrehab").status, 2);
   assert.equal(check(valid, "homevisit", "equipment").status, 2);
   assert.equal(check([...valid, valid]).status, 2);
   assert.equal(check([{ ...valid[0], evil: "unknown" }]).status, 2);
