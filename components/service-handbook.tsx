@@ -14,7 +14,7 @@ function StaffingRoles({ service, chapter, full }: {
   service: ServiceHandbookData; chapter: HandbookChapter; full: boolean;
 }) {
   const roles = chapter.role_sections;
-  if (chapter.section_id !== "staffing" || !["homevisit", "small-scale-multifunctional"].includes(service.service_id) || !roles?.length) return null;
+  if (chapter.section_id !== "staffing" || !["homevisit", "small-scale-multifunctional", "dayservice", "dayrehab", "care-management", "dementia-group-home"].includes(service.service_id) || !roles?.length) return null;
   const detailHref = handbookChapterHref(service.service_id, "staffing");
   if (!full) return <nav className="handbook-role-navigation" aria-label="人員基準の職種・役割">
     <h3>職種・役割別の要件</h3>
@@ -30,7 +30,9 @@ function StaffingRoles({ service, chapter, full }: {
       <h4>{role.title}</h4>
       {role.requirements.map(requirement => <section key={requirement.id} className="handbook-role-requirement" id={`staffing-role-${role.id}-requirement-${requirement.id}`}>
         <h5>{requirement.title}</h5>
-        {requirement.verification_state === "EVIDENCE_GAP" ? <p className="handbook-role-warning">根拠未確認：要件の適用条件と原典の照合が必要です。</p> : null}
+        {requirement.verification_state === "EVIDENCE_GAP"
+          ? <p className="handbook-role-warning">根拠未確認：この要件は未確認原稿です。配置人数・資格・兼務・例外は原典と適用時点の照合が必要です。</p>
+          : <p className="meta">確認状況：出典原文を限定範囲で照合済み。現行性・人手審査・事業所への適用は別途確認してください。</p>}
         <p>{requirement.description}</p>
         <p><strong>適用範囲：</strong>{requirement.applicability}</p>
         <h6>要件と関連する原典</h6>
@@ -46,7 +48,11 @@ function StaffingRoles({ service, chapter, full }: {
             {evidence.url ? <> ／ <a href={evidence.url} target="_blank" rel="noopener noreferrer">公式原典を開く ↗</a></> : null}
           </div> : null}
         </li>)}</ul> : <p className="handbook-role-warning">この要件の個別原典は未特定です。</p>}
-        {!requirement.evidence.some(e => e.kind === "national_qa" && e.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED") ? <p className="handbook-role-warning">関連する確認済み国Q&Aは未特定です。</p> : null}
+        {(Object.keys(evidenceNames) as Array<keyof typeof evidenceNames>).filter(kind =>
+          !requirement.evidence.some(e => e.kind === kind && e.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED")).length > 0
+          ? <p className="handbook-role-warning">該当する確認済み資料未特定：{(Object.keys(evidenceNames) as Array<keyof typeof evidenceNames>)
+            .filter(kind => !requirement.evidence.some(e => e.kind === kind && e.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED"))
+            .map(kind => evidenceNames[kind]).join("／")}</p> : null}
         {requirement.practical_checks.length ? <>
           <h6>実務上の確認例（法令上の義務とは別）</h6>
           <ul className="handbook-checkpoints">{requirement.practical_checks.map((point, index) => <li key={index}>{point}</li>)}</ul>
