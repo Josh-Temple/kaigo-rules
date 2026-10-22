@@ -6201,10 +6201,21 @@
                   "id": "manager-qualifications",
                   "title": "認知症介護経験と管理者研修",
                   "aspect": "qualification",
-                  "description": "管理者の認知症介護経験・知識、認知症介護への従事経験年数や所定研修は、横浜市の令和8年6月版手引が具体的に説明しています。経験期間の起算、対象となる事業・研修のみなし条件は本人ごとに照合し、他職種の研修だけで自動充足とはしません。",
+                  "description": "共同生活住居の管理者は必要な知識・経験を持ち、指定された施設等の従業者・訪問介護員等として、3年以上認知症である者の介護に従事した経験を有し、別に厚生労働大臣が定める研修を修了する必要があります。横浜市手引は「認知症対応型サービス事業管理者研修」を案内しています。古い研修の扱いやみなし条件は個人ごとに確認してください。",
                   "applicability": "横浜市手引PDF7頁の管理者欄を確認。厚生労働大臣が定める研修の告示・みなし措置は未総合照合。",
                   "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
                   "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定地域密着型サービスの事業の人員、設備及び運営に関する基準（平成18年厚生労働省令第34号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第91条第3項",
+                      "version": "厚生労働省公開本文。令和8年10月時点の全改正・附則を横断照合していない",
+                      "scope": "指定認知症対応型共同生活介護の共同生活住居の管理者。個人の経歴・みなし措置の適用は別途確認",
+                      "checked_at_jst": "2026-10-22 17:20 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+                    },
                     {
                       "kind": "yokohama_handbook",
                       "title": "認知症対応型共同生活介護・介護予防認知症対応型共同生活介護 運営の手引（令和8年6月版）",
@@ -6285,12 +6296,12 @@
                       "kind": "yokohama_handbook",
                       "title": "認知症対応型共同生活介護・介護予防認知症対応型共同生活介護 運営の手引（令和8年6月版）",
                       "issuer": "横浜市",
-                      "locator": "PDF8頁／紙面5頁「介護従業者」の住居ごと員数",
+                      "locator": "PDF9頁／紙面6頁「介護従業者」の住居ごと員数",
                       "version": "令和8年6月版。後続差替えの有無は未照合",
                       "scope": "横浜市手引のうち指定認知症対応型共同生活介護の該当欄。介護予防側の条項とは混同しない",
                       "checked_at_jst": "2026-10-22 17:20 JST",
                       "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
-                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/gh.files/0214_20260528.pdf#page=8"
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/service/henkou_unei/gh.files/0214_20260528.pdf#page=9"
                     }
                   ],
                   "practical_checks": [
