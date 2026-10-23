@@ -39,7 +39,9 @@ def official_url(value):
 
 
 
-ROLE_TARGETS = {"homevisit", "small-scale-multifunctional"}
+ROLE_TARGETS = {"homevisit", "small-scale-multifunctional",
+                "specific-welfare-equipment-sale", "welfare-equipment-rental",
+                "preventive-welfare-equipment-rental", "preventive-support"}
 ROLE_ASPECTS = {"placement", "qualification", "concurrency", "shifts", "exception", "other"}
 ROLE_EVIDENCE_KINDS = {"national_standard", "national_interpretation", "national_qa",
                        "yokohama_ordinance", "yokohama_handbook"}
@@ -73,9 +75,9 @@ def role_url(value):
 
 
 def validate_role_sections(sid, section, roles):
-    """Fail closed for the two staffing pilots; does not confer legal verification."""
+    """Fail closed for approved staffing pilots; does not confer legal verification."""
     if sid not in ROLE_TARGETS or section != "staffing":
-        raise ValueError("role_sections is restricted to the two staffing chapters")
+        raise ValueError("role_sections is restricted to allowlisted staffing chapters")
     if not isinstance(roles, list) or not (1 <= len(roles) <= 20):
         raise ValueError("role_sections must contain 1..20 roles")
     role_ids = set()
