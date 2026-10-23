@@ -8,6 +8,53 @@ import {
 
 const readJson = path => JSON.parse(fs.readFileSync(path, "utf8"));
 
+const muse36 = readJson("tests/fixtures/muse-36-preintegration-manifest.json").chapters;
+
+// Muse's AI-authored explanations are additive drafts. Older handbook text must be exact.
+function assertMuseExtension(current, legacy, id) {
+  const entry = muse36[id];
+  assert.ok(entry, "unlisted Muse chapter: " + id);
+  assert.equal(current.summary, entry.summary, "Muse summary differs: " + id);
+  assert.deepEqual(current.paragraphs.slice(0, entry.old_paragraphs.length), entry.old_paragraphs,
+    "pre-Muse paragraphs changed: " + id);
+  assert.deepEqual(current.checkpoints.slice(0, entry.old_checkpoints.length), entry.old_checkpoints,
+    "pre-Muse checkpoints changed: " + id);
+  assert.equal(current.paragraphs.length, entry.old_paragraphs.length + entry.append_paragraphs,
+    "unexpected paragraph count: " + id);
+  assert.equal(current.checkpoints.length, entry.old_checkpoints.length + entry.append_checkpoints,
+    "unexpected checkpoint count: " + id);
+  if (legacy) {
+    assert.deepEqual(entry.old_paragraphs, legacy.paragraphs, "legacy paragraph fixture mismatch: " + id);
+    assert.deepEqual(entry.old_checkpoints, legacy.checkpoints, "legacy checkpoint fixture mismatch: " + id);
+    const { summary, paragraphs, checkpoints, ...currentOther } = current;
+    const { paragraphs: olderParagraphs, checkpoints: olderCheckpoints, ...legacyOther } = legacy;
+    assert.deepEqual(currentOther, legacyOther, "unrelated fields changed: " + id);
+  }
+}
+
+test("Muse extensions are confined to 36 recorded sparse chapters and retain their original content", () => {
+  const services = readJson("data/handbook-content.json").services;
+  assert.equal(Object.keys(muse36).length, 36);
+  let paragraphs = 0;
+  let checkpoints = 0;
+  for (const [key, entry] of Object.entries(muse36)) {
+    const [service, chapter] = key.split("/");
+    const current = services[service]?.chapters?.[chapter];
+    assert.ok(current, "unknown Muse target: " + key);
+    assertMuseExtension(current, null, key);
+    const expectedKeys = ["checkpoints", "paragraphs", "summary"];
+    if (key === "homevisit/staffing") expectedKeys.push("role_sections");
+    assert.deepEqual(Object.keys(current).toSorted(), expectedKeys.toSorted(),
+      "unexpected Muse target properties: " + key);
+    paragraphs += entry.append_paragraphs;
+    checkpoints += entry.append_checkpoints;
+  }
+  assert.equal(paragraphs, 140);
+  assert.equal(checkpoints, 169);
+  assert.equal(Object.values(services).reduce((n, s) => n + Object.keys(s.chapters).length, 0), 585);
+});
+
+
 test("every canonical current service has 15 complete chapter entries", () => {
   const expected = readJson("data/services/catalog.generated.json").services.map(s => s.service_id);
   assert.equal(serviceHandbooks.length, 39);
@@ -191,9 +238,11 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
       } else if (serviceId === "homevisit" && sectionId === "staffing") {
         // The pilot adds optional role_sections without changing the #522 baseline fields.
         const { role_sections, ...baselineFields } = chapters[sectionId];
-        assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+        assertMuseExtension(baselineFields, authored, `${serviceId}/${sectionId}`);
         assert.equal(role_sections?.length, 3, "homevisit staffing roles were not integrated");
         assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), 10);
+      } else if (muse36[`${serviceId}/${sectionId}`]) {
+        assertMuseExtension(chapters[sectionId], authored, `${serviceId}/${sectionId}`);
       } else {
         assert.deepEqual(chapters[sectionId], authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
       }
@@ -304,7 +353,11 @@ test("C equipment and care-management old text remains exact and 30 new chapters
         assert.equal(added.paragraphs.length, preserved.paragraphs.length + 1, `operations editorial paragraph: ${serviceId}`);
         assert.equal(added.checkpoints.length, preserved.checkpoints.length + 2, `operations editorial checkpoints: ${serviceId}`);
       } else {
-        assert.deepEqual(added, preserved, `legacy changed: ${serviceId}:${sectionId}`);
+        if (muse36[`${serviceId}/${sectionId}`]) {
+          assertMuseExtension(added, preserved, `${serviceId}/${sectionId}`);
+        } else {
+          assert.deepEqual(added, preserved, `legacy changed: ${serviceId}:${sectionId}`);
+        }
       }
       const chapter = projected.chapters.find(ch => ch.section_id === sectionId);
       assert.ok(chapter, serviceId + ":" + sectionId);
