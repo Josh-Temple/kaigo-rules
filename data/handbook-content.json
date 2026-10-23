@@ -977,6 +977,259 @@
             "福祉用具専門相談員の名簿・資格証・勤務実績と相談記録を照合する",
             "貸与・販売の兼務や複数事業所での勤務を勤務表上で区別する",
             "管理者不在時の利用者からの故障・交換相談の連絡経路を確認する"
+          ],
+          "role_sections": [
+            {
+              "id": "mesh-consultant",
+              "title": "福祉用具専門相談員（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-consultant-1",
+                  "title": "指定型：相談員の員数（常勤換算2以上）",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 指定福祉用具貸与事業所ごとに福祉用具専門相談員を常勤換算2以上とする候補。",
+                  "applicability": "指定型。常勤2人という意味ではない。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第194条第1項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。常勤2人という意味ではない。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第194条第1項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-2",
+                  "title": "指定型：一体運営による員数みなし",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 介護予防貸与、特定介護予防福祉用具販売又は特定福祉用具販売の指定を併有し、同一事業所で一体的に運営し、各参照先（予防第266条、第282条、居宅第208条）の基準を満たす場合の候補。",
+                  "applicability": "指定型。併有と一体運営を要確認。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第194条第2項第1～3号",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。併有と一体運営を要確認。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第194条第2項第1～3号」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-3",
+                  "title": "基準該当型：相談員の員数（常勤換算2以上）",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 基準該当福祉用具貸与は指定型と異なる条項によって相談員の員数を確認する候補。",
+                  "applicability": "基準該当型。指定型第194条を直接根拠にしない。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第205条の2第1項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "基準該当型。指定型第194条を直接根拠にしない。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第205条の2第1項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-4",
+                  "title": "基準該当型：予防貸与との一体運営のみなし",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 同一事業者が基準該当介護予防福祉用具貸与を同一事業所で一体運営し、参照先第279条第1項の人員基準を満たすことが条件の候補。",
+                  "applicability": "基準該当型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第205条の2第2項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "基準該当型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第205条の2第2項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-5",
+                  "title": "福祉用具専門相談員の資格",
+                  "aspect": "qualification",
+                  "description": "Research Meshの隔離候補： 資格証や指定講習修了証を確認し、施行令と経過措置の現行性を別途照合します。管理者の資格と無条件に同一視しません。",
+                  "applicability": "指定・基準該当それぞれに要確認。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "介護保険法施行令（資格の参照候補）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "介護保険法施行令第4条第1項（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定・基準該当それぞれに要確認。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「介護保険法施行令第4条第1項（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-manager",
+              "title": "管理者（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-manager-1",
+                  "title": "指定型：管理者の常勤・専従原則",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 常勤の管理者を原則専従で置き、管理に支障がない場合のみ兼務する候補。",
+                  "applicability": "指定型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第195条",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第195条」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-2",
+                  "title": "基準該当型：管理者の準用",
+                  "aspect": "exception",
+                  "description": "Research Meshの隔離候補： 第206条による第195条の管理者規定の準用を確認し、兼務は管理上支障がない場合に限る候補。",
+                  "applicability": "基準該当型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第206条・第195条",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "基準該当型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第206条・第195条」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-scope",
+              "title": "準用・給付・サービス区分（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-scope-1",
+                  "title": "指定型と基準該当型の準用関係を区別",
+                  "aspect": "other",
+                  "description": "Research Meshの隔離候補： 第205条と第206条の準用・除外・読替えは同じものではなく、全展開未確認です。",
+                  "applicability": "準用・読替えの候補。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第205条／第206条",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "準用・読替えの候補。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第205条／第206条」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-scope-2",
+                  "title": "販売サービスの配置基準と混同しない",
+                  "aspect": "other",
+                  "description": "Research Meshの隔離候補： 福祉用具販売の専門相談員・管理者の規定は別サービスに属します。貸与に無条件で適用しません。",
+                  "applicability": "比較のみ。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第208条・第209条（比較）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "比較のみ。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第208条・第209条（比較）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "equipment": {
@@ -1186,7 +1439,234 @@
             "準用規定（第276条）の読み替え（「介護予防訪問入浴介護従業者」→「福祉用具専門相談員」等）が運営規程・記録様式に反映されているか",
             "介護予防福祉用具貸与計画が福祉用具専門相談員により作成され、利用者及び担当の介護支援専門員に交付されているか（第278条の二第1項・第4項）"
           ],
-          "summary": "専門相談員2人以上と常勤管理者の配置を確認する。"
+          "summary": "専門相談員2人以上と常勤管理者の配置を確認する。",
+          "role_sections": [
+            {
+              "id": "mesh-consultant",
+              "title": "福祉用具専門相談員（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-consultant-1",
+                  "title": "指定型：相談員の員数（常勤換算2以上）",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 指定介護予防福祉用具貸与事業所ごとに、福祉用具専門相談員の常勤換算2以上とする候補。",
+                  "applicability": "指定型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防サービス等の事業の人員、設備及び運営等に関する基準（平成18年厚生労働省令第35号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第266条第1項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100035"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第266条第1項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-2",
+                  "title": "指定型：一体運営による条件付き員数みなし",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 福祉用具貸与、特定福祉用具販売又は特定介護予防福祉用具販売の指定を併有し、同一事業所で一体運営し、参照先（居宅第194・208条、予防第282条）の基準を満たす場合に限る候補。",
+                  "applicability": "指定型。事業所と指定の条件を区別。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防サービス等の事業の人員、設備及び運営等に関する基準（平成18年厚生労働省令第35号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第266条第2項第1～3号",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。事業所と指定の条件を区別。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100035"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第266条第2項第1～3号」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-3",
+                  "title": "基準該当型：相談員の員数（常勤換算2以上）",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 基準該当介護予防福祉用具貸与事業所ごとに常勤換算2以上とする候補。指定型の第266条を直接適用しません。",
+                  "applicability": "基準該当型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防サービス等の事業の人員、設備及び運営等に関する基準（平成18年厚生労働省令第35号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第279条第1項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "基準該当型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100035"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第279条第1項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-4",
+                  "title": "基準該当型：通常貸与との一体運営のみなし",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 同一事業者による基準該当福祉用具貸与と同一事業所で一体運営し、参照先の基準を満たす場合に限る候補。",
+                  "applicability": "基準該当型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防サービス等の事業の人員、設備及び運営等に関する基準（平成18年厚生労働省令第35号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第279条第2項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "基準該当型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100035"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第279条第2項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-5",
+                  "title": "福祉用具専門相談員の資格",
+                  "aspect": "qualification",
+                  "description": "Research Meshの隔離候補： 厚労省資格案内と資格証・講習修了証、施行令の現行版・経過措置を別途照合します。",
+                  "applicability": "指定／基準該当型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "介護保険法施行令（資格の参照候補）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "介護保険法施行令第4条第1項（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定／基準該当型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「介護保険法施行令第4条第1項（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-manager",
+              "title": "管理者（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-manager-1",
+                  "title": "指定型：管理者の常勤・原則専従",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 事業所ごとに常勤の管理者を置き、管理に支障がない場合のみ兼務を認める候補。",
+                  "applicability": "指定型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防サービス等の事業の人員、設備及び運営等に関する基準（平成18年厚生労働省令第35号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第267条",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100035"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第267条」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-2",
+                  "title": "基準該当型：管理者の準用と除外",
+                  "aspect": "exception",
+                  "description": "Research Meshの隔離候補： 第280条による管理者規定の準用を区別し、第266条の指定型配置基準と第276条の運営準用を無条件に転用しません。",
+                  "applicability": "基準該当型。準用・読替え全体は未確認。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防サービス等の事業の人員、設備及び運営等に関する基準（平成18年厚生労働省令第35号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第280条（第267条準用候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "基準該当型。準用・読替え全体は未確認。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100035"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第280条（第267条準用候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-scope",
+              "title": "準用・給付・サービス区分（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-scope-1",
+                  "title": "運営基準の準用と人員基準の区別",
+                  "aspect": "other",
+                  "description": "Research Meshの隔離候補： 第276条の準用・読替えは未展開であり、第266・267条の員数・管理者要件を自動的に置き換えるものではありません。",
+                  "applicability": "運営準用候補。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防サービス等の事業の人員、設備及び運営等に関する基準（平成18年厚生労働省令第35号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第276条（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "運営準用候補。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100035"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第276条（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "equipment": {
           "paragraphs": [
@@ -1384,6 +1864,259 @@
             "販売の相談担当者・福祉用具専門相談員の資格・勤務表を突き合わせる",
             "購入品目の選定理由と利用者への使い方説明の担当者を確認する",
             "貸与部門との兼務の状況と管理者・苦情窓口の役割を整理する"
+          ],
+          "role_sections": [
+            {
+              "id": "mesh-consultant",
+              "title": "福祉用具専門相談員（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-consultant-1",
+                  "title": "福祉用具専門相談員の員数（常勤換算2以上）",
+                  "aspect": "specialist",
+                  "description": "Research Meshの隔離候補： 指定特定福祉用具販売事業所ごとに常勤換算方法で2以上とする候補。常勤職員2人という意味ではありません。",
+                  "applicability": "指定型・事業所単位。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第208条第1項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型・事業所単位。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第208条第1項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-2",
+                  "title": "予防貸与との一体運営による員数みなし",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 介護予防福祉用具貸与の指定を併有し、同一事業所で一体的に運営し、参照先第266条第1項の人員基準を満たす場合に限る候補。",
+                  "applicability": "指定型。指定併有・同一事業所・人員基準充足を全て確認。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第208条第2項第1号",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。指定併有・同一事業所・人員基準充足を全て確認。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第208条第2項第1号」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-3",
+                  "title": "介護予防販売との一体運営による員数みなし",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 特定介護予防福祉用具販売の指定を併有し、同一事業所で一体的に運営し、参照先第282条第1項の基準を満たす場合の候補。",
+                  "applicability": "指定型。通常販売と予防販売の直接適用を混同しない。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第208条第2項第2号",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。通常販売と予防販売の直接適用を混同しない。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第208条第2項第2号」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-4",
+                  "title": "福祉用具貸与との一体運営による員数みなし",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 福祉用具貸与の指定併有・同一事業所の一体運営・参照先第194条第1項の充足が条件となる候補。兼務だけでは員数を免除しません。",
+                  "applicability": "指定型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第208条第2項第3号",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第208条第2項第3号」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-5",
+                  "title": "福祉用具専門相談員の資格",
+                  "aspect": "qualification",
+                  "description": "Research Meshの隔離候補： 保健師、看護師、准看護師、理学療法士、作業療法士、社会福祉士、介護福祉士、義肢装具士、指定講習修了者等の案内を候補として確認。個別資格・講習・経過措置の現行性は未照合。",
+                  "applicability": "施行令と厚労省の資格案内を別途照合。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "介護保険法施行令（資格の参照候補）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "介護保険法施行令第4条第1項（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "施行令と厚労省の資格案内を別途照合。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「介護保険法施行令第4条第1項（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-manager",
+              "title": "管理者（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-manager-1",
+                  "title": "管理者の常勤・原則専従と兼務例外",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 事業所ごとに常勤の管理者を置き、原則専ら管理業務に従事。管理上支障がない場合のみ他の業務との兼務を検討する候補。",
+                  "applicability": "指定型。管理上支障の有無を個別確認。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第209条",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。管理上支障の有無を個別確認。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第209条」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-scope",
+              "title": "準用・給付・サービス区分（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-scope-1",
+                  "title": "運営規定の準用・読替えと員数みなしの区別",
+                  "aspect": "other",
+                  "description": "Research Meshの隔離候補： 運営規定の準用・読替えの範囲は未展開。第208条の員数みなしや第209条の管理者配置を第216条だけで免除しない。",
+                  "applicability": "準用関係は未確認。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第216条（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "準用関係は未確認。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第216条（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-scope-2",
+                  "title": "購入費と通常のサービス費を区別",
+                  "aspect": "other",
+                  "description": "Research Meshの隔離候補： 居宅介護福祉用具購入費は通常の居宅介護サービス費と別の給付区分です。購入費額や支給可否はこの資料では確定しません。",
+                  "applicability": "人員基準の直接根拠ではない。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "介護保険法（購入費の参照候補）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "介護保険法第44条（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "人員基準の直接根拠ではない。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/409AC0000000123"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「介護保険法第44条（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-scope-3",
+                  "title": "予防販売・通常貸与を直接適用しない",
+                  "aspect": "other",
+                  "description": "Research Meshの隔離候補： 介護予防販売と通常貸与の根拠はそれぞれ別に確認し、特定福祉用具販売へ無条件に適用しません。",
+                  "applicability": "比較のみ。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "省令第35号第282・283条／省令第37号第194・195条（比較）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "比較のみ。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/411M50000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「省令第35号第282・283条／省令第37号第194・195条（比較）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "equipment": {
@@ -1995,6 +2728,234 @@
             "計画担当者の職種・勤務・利用者別担当と指定主体を照合する",
             "委託している業務の担当者と地域包括支援センターとの連絡記録を確認する",
             "管理者・担当者不在時の代替体制と現行の配置規定を点検する"
+          ],
+          "role_sections": [
+            {
+              "id": "mesh-consultant",
+              "title": "担当職員・介護支援専門員（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-consultant-1",
+                  "title": "包括センター設置者：担当職員の配置",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 保健師その他介護予防支援に関する知識を有する担当職員を1人以上の必要数配置する候補。固定の利用者比率や全員常勤専従を断定しません。",
+                  "applicability": "地域包括支援センター設置者が指定を受ける場合。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防支援等の事業の人員及び運営等に関する基準（平成18年厚生労働省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第2条第1項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "地域包括支援センター設置者が指定を受ける場合。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第2条第1項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-consultant-2",
+                  "title": "居宅介護支援事業者：介護支援専門員の配置",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 介護支援専門員を1人以上の必要数配置する候補。包括センター型の担当職員区分や居宅介護支援の員数を無条件に転用しません。",
+                  "applicability": "指定居宅介護支援事業者が指定を受ける場合。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防支援等の事業の人員及び運営等に関する基準（平成18年厚生労働省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第2条第2項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定居宅介護支援事業者が指定を受ける場合。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第2条第2項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-manager",
+              "title": "管理者（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-manager-1",
+                  "title": "指定介護予防支援の管理者は常勤",
+                  "aspect": "placement",
+                  "description": "Research Meshの隔離候補： 指定介護予防支援事業所に常勤の管理者を置く候補。担当職員の常勤要件と区別します。",
+                  "applicability": "指定型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防支援等の事業の人員及び運営等に関する基準（平成18年厚生労働省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第3条第1項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第3条第1項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-2",
+                  "title": "包括センター設置者の管理者兼務",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 管理者は原則専従で、管理に支障がない場合に限り事業所の他職務や包括センターの職務との兼務を検討する候補。",
+                  "applicability": "包括センター型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防支援等の事業の人員及び運営等に関する基準（平成18年厚生労働省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第3条第2項",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "包括センター型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第3条第2項」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-3",
+                  "title": "居宅介護支援事業者の管理者資格",
+                  "aspect": "qualification",
+                  "description": "Research Meshの隔離候補： 原則として主任介護支援専門員。確保が著しく困難等やむを得ない理由による例外は現行通知・指定権者の確認が必要です。",
+                  "applicability": "指定居宅介護支援事業者型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防支援等の事業の人員及び運営等に関する基準（平成18年厚生労働省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第3条第3項・ただし書（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定居宅介護支援事業者型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第3条第3項・ただし書（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-4",
+                  "title": "居宅介護支援事業者の管理者兼務",
+                  "aspect": "concurrency",
+                  "description": "Research Meshの隔離候補： 自事業所の介護支援専門員や管理に支障のない他事業所業務との兼務は条件付きで確認する候補。",
+                  "applicability": "指定居宅介護支援事業者型。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防支援等の事業の人員及び運営等に関する基準（平成18年厚生労働省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第3条第4項（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "指定居宅介護支援事業者型。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第3条第4項（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-scope",
+              "title": "準用・給付・サービス区分（未審査の要件候補）",
+              "requirements": [
+                {
+                  "id": "mesh-scope-1",
+                  "title": "包括センター型の一部委託",
+                  "aspect": "other",
+                  "description": "Research Meshの隔離候補： 運営協議会の議、委託の範囲・量、受託職員の知識能力、遵守措置などを区別して確認する候補。受託者と指定主体を同一視しません。",
+                  "applicability": "包括センター型の委託関係。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防支援等の事業の人員及び運営等に関する基準（平成18年厚生労働省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第12条第1～4項（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "包括センター型の委託関係。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第12条第1～4項（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                },
+                {
+                  "id": "mesh-scope-2",
+                  "title": "基準該当型の準用・除外・読替え",
+                  "aspect": "other",
+                  "description": "Research Meshの隔離候補： 第2・3条等の準用、第25条第6・7項除外、文言読替えについては取込データ由来の候補であり、公式XMLの独立照合が未了です。",
+                  "applicability": "基準該当型。現行適用を確定しない。 原典の現行性・人手審査は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定介護予防支援等の事業の人員及び運営等に関する基準（平成18年厚生労働省令第37号）",
+                      "issuer": "厚生労働省／e-Gov法令検索",
+                      "locator": "第32条（候補）",
+                      "version": "Research Meshの2026年10月候補。現行施行版と改正附則は独立未照合",
+                      "scope": "基準該当型。現行適用を確定しない。 指定権者条例や適用条件は未確認",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原典候補。解釈通知、国Q&A、地方条例、個別適用について追加検証が必要。",
+                      "url": "https://laws.e-gov.go.jp/law/418M60000100037"
+                    }
+                  ],
+                  "practical_checks": [
+                    "指定類型、勤務形態一覧表、資格証明、兼務実態などに照らして候補の条件を確認する。",
+                    "法令「第32条（候補）」の現行統合本文・適用する自治体条例・解釈通知を別々に照合する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "records": {
