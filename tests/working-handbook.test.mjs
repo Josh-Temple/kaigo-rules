@@ -44,7 +44,7 @@ test("Muse extensions are confined to 36 recorded sparse chapters and retain the
     assert.ok(current, "unknown Muse target: " + key);
     assertMuseExtension(current, null, key);
     const expectedKeys = ["checkpoints", "paragraphs", "summary"];
-    if (key === "homevisit/staffing") expectedKeys.push("role_sections");
+    if (key === "homevisit/staffing" || key === "preventive-welfare-equipment-rental/staffing") expectedKeys.push("role_sections");
     assert.deepEqual(Object.keys(current).toSorted(), expectedKeys.toSorted(),
       "unexpected Muse target properties: " + key);
     paragraphs += entry.append_paragraphs;
