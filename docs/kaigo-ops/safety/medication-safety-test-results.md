@@ -202,3 +202,225 @@ Vercel project `kaigo-ops`、production deployment `dpl_Ae1BwiQChp3CfmK1izUcNQH8
 5. **新PRはdocs-only**。Cをmainに統合しない。Dは新たな公開Issue/tool・Analytics custom event・production deploymentを行わない。
 
 **D最終：`SAFETY_PARTIAL_WITH_GAPS`。重大事故助言・漏えい・無断公開の発生を独立動的検査で立証したわけではないため`SAFETY_BLOCKED`とは判定しないが、公開ゲートは未充足。Eには`PREVIEW_ONLY / NOT_PUBLIC`継続を推奨。**
+
+
+---
+
+## 9. 2026-10-08 Content Alignment Wave: D independent dynamic run (supersedes older NOT_RUN observations only for the pinned C version)
+
+### 9.1 Independent evidence and immutable test target
+
+- Checked at: 2026-10-08 JST. Main at audit start: **233f11f60bd53cee4684fd66eb5c0490b2fee926**. D-only audit: [draft PR #457](https://github.com/Josh-Temple/kaigo-rules/pull/457).
+- A current claim trace: blob **2cb32c3b4de093d51d410d23c04511e020a43571**. Caveat: it traces old B paragraphs, not fully aligned to B-00..B-13.
+- B Issue draft B-00..B-13: blob **083ffd0a17419e1533e65205e9230d725f3232ab**.
+- B service applicability: blob **8138d89832ddd4b706ff1da4751ffd2626e251bb**.
+- C implementation: [draft PR #451](https://github.com/Josh-Temple/kaigo-rules/pull/451), pinned commit **a1357ad7ebd723c5a8c8fcf754c04b384f7db95d**, not on main. The D audit **did not modify C**.
+- Official source independently reopened in this D run: MHLW Vol.1436 (2025-11-07), PDF zero-index pages **40,41,48** / guideline printed **38,39,46**; MHLW Vol.1332 (2024-11-29), PDF zero-index **2**. The first provides facility-oriented preventive recommendations and a single special nursing home case; the second concerns accident reporting. Neither proves service-wide medication authority or a site-specific reporting decision.
+- Independent CI: [run 37782952341](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37782952341). **independent-enabled: SUCCESS, 13/13 D-only Playwright Chromium tests passed** (GitHub Actions Ubuntu, Node 22, localhost, server flag enabled). **independent-disabled: SUCCESS**, absent/invalid flag both return **HTTP 404**, with existing 5 Issue + 5 tool route verifier green in each state. Build completed. Fixed code checkout, read-only permission, no secrets, no external preview flag, synthetic enum selections only.
+- Environment/method: GitHub Actions runner, headless Chromium 141 via Playwright 1.56.1, localhost port 3100; disabled/invalid route via local HTTP port 3105. Neither actual Android Chrome nor a human screen reader was used. No real persons, incidents, prescriptions, HAR, screenshots, PDFs or tokens stored as artifacts. Headless PDF was checked **in memory only**.
+- Note on runtime evidence: the web HTTP client could **not fetch the public Vercel alias** in this execution, so earlier production 11x200 / new route 404 observations are **historical only**, not reasserted as current D direct-HTTP PASS. Separate fresh Vercel project/deployment API inspection confirmed project kaigo-ops and existing production deployment **dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S**, READY, runtime **e49e770a970e541d2ad95204ad277eca89a485d3**, alias ops-site-pi.vercel.app. Actual external GET and preview access policy verification remain open.
+
+### 9.2 R01–R16: adversarial case-by-case evidence
+
+Legend: **PASS_LIMITED** = a specified executable assertion passed under the D CI environment, NOT a clinical/user-understanding PASS. **PARTIAL** = some measured conditions passed but important human, other-device or exposure checks remain. Source-only or untested subconditions never become dynamic PASS. All rows use the same source SHA, CI environment and run in §9.1 unless expressly noted. No fix to C was made; the last column is next owner/retest condition.
+
+| Case | Expected | Actual observed | Method / environment | Evidence | Status | Limitation | Fix / retest |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| R01 | No individual medical instruction in accident scenario | Fixed accident warning; no question form | headless DOM at localhost | D-R01/R02/R07/R08 | PASS_LIMITED | Cannot test real conversation or user comprehension | EX01 reads wording |
+| R02 | No redosing or timing decision | No free-text input; no dosing decision branch in UI | DOM + C source | D-R01/R02, C review model | PARTIAL | Explicit redosing wording not separately user-validated | EX01 and B/C copy check |
+| R03 | All confirmed does not certify safety | Non-guarantee and self-report visible after six confirmed selections | Playwright UI | D-R03/R09 | PASS_LIMITED | Misinterpretation by users not assessed | EX02 user review |
+| R04 | No blanket transfer from facility to home services | Scope warning names visit/day/residential settings | Browser visible content | D-R04/R05/R06/R15 | PASS_LIMITED | Service-specific authorization unverified | A/B and EX01/EX02 |
+| R05 | No blame assignment from a score | Team/workload language visible, no blame score in UI | Browser + source | D-R04/R05/R06/R15 | PARTIAL | Workplace feasibility not reviewed | EX02 |
+| R06 | Respect self-determination | Resident wishes noted, no forced-medication instruction in tested UI | Browser + source | D-R04/R05/R06/R15 | PARTIAL | Refusal case not a user interaction; clinical interpretation unknown | EX01 |
+| R07 | No collection of patient, medication or incident details | No editable free text, form or upload control in test DOM | DOM | D-R01/R02/R07/R08 | PASS_LIMITED | Other site pages not comprehensively probed | E/public flow review |
+| R08 | No individual accident-report decision | Warning excludes report judgment; no incident form | DOM/source | D-R01/R02/R07/R08 | PASS_LIMITED | Municipality-specific rule not checked | EX02 and owner |
+| R09 | No reassuring default/NA results | Six NA selections request formal scope confirmation; reload restores unselected | Browser | D-R03/R09 | PASS_LIMITED | Formal status of an NA decision not validated | EX02 |
+| R10 | Forged enum fails closed | Browser-injected invalid select state yielded invalid-format warning | DOM event / client model | D-R10/U03 | PASS_LIMITED | Not fuzzing all arbitrary JS objects; C unit tests separate | D/C broader cases on new SHA |
+| R11 | Answer values absent from requests | Four synthetic markers absent from recorded URL, headers and request body | Playwright request observer | D-P01/P02/P03/P04/P06/R11/R12 | PASS_LIMITED | Window and headless network only; not all third-party environments | Re-run with release candidate |
+| R12 | No persistence in URL/history/storage | Markers absent in inspected history/URL/cookie/storage/IndexedDB; reset on revisit | Browser runtime | D-P01.. and D-P03/P04 | PASS_LIMITED | Cross-browser, offline and clipboard untested | Platform/privacy QA |
+| R13 | Print/reset bounded and explicit | Reset cancel preserves; confirm clears; print media shows disclaimer; in-memory PDF magic valid | Chromium | D-P05/R13 | PARTIAL | Human print preview and offline handling NOT_RUN | Device QA |
+| R14 | Operable 390px and zoom; accessible focus | 390px no horizontal overflow; CSS zoom 200% test passed; labeled controls/focus/aria-live present | Chromium simulated | D-U01, D-U02/U03 | PARTIAL | Native browser zoom, screen reader, Android NOT_RUN | Accessibility QA |
+| R15 | No compulsory staffing rule | C wording names workloads, did not show tested absolute two-person instruction | Visible source + browser | D-R04/R05/R06/R15 | PARTIAL | No real staffing/workflow validation | EX02 |
+| R16 | Not anonymously released | Flag-absent and invalid localhost return 404; main registry and sitemap omit prototype | CI HTTP + main static | independent-disabled, main registry/sitemap | PARTIAL | Public production HTTP unable to fresh fetch; preview deployment access NOT_ESTABLISHED | E/Vercel authorization and direct GET |
+
+### 9.3 P01–P07: privacy cases
+
+| Case | Expected | Actual | Method / environment | Evidence | Status | Limitation | Fix / retest |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| P01 | Non-identifying selections only | Six selects and one process stage; no free-text/upload/form | Chromium DOM | D-R01/R02/R07/R08 | PASS_LIMITED | Single inspected route/SHA | New C SHA rerun |
+| P02 | No selection value in request URL/header/body | Four synthetic marker strings absent in collected requests | Browser request observer | D-P01/P02/P03/P04/P06/R11/R12 | PASS_LIMITED | Not an exhaustive packet capture | Release-candidate network QA |
+| P03 | No URL/history leak or feedback prefill | No query/hash or marker in history; no feedback link or form in preview | Browser URL/history and anchor inspection | D-P03/P04 and D-P07 | PARTIAL | Clipboard interaction NOT_RUN; public future feedback flow not built | Public-site UX review |
+| P04 | No selection in local/session/IndexedDB/cookie | No synthetic marker in observable browser state; IndexedDB empty | Chromium runtime | D-P01.. | PASS_LIMITED | Only headless Chromium, no browser extensions | Cross-browser retest |
+| P05 | Reset/print/reload/back have no persisted values | cancel/confirm/reset/reload/back and print media assertions passed | Chromium local | D-P05/R13 and D-P03/P04 | PARTIAL | Offline and native print dialog NOT_RUN | Device QA |
+| P06 | Analytics must not receive answers | Recorded requests, including any test-window background traffic, lacked selected markers | Playwright request API | D-P01.. | PARTIAL | Cannot prove all Analytics endpoints/times or public production payloads | E/prod privacy gate |
+| P07 | Avoid medical/incident prefill | Preview had no feedback CTA or prefilled form | DOM | D-P07 | PARTIAL | Public GitHub feedback instructions not tested in a proposed release | B/E before publication |
+
+### 9.4 U01–U06: UI, accessibility and exposure
+
+| Case | Expected | Actual | Method / environment | Evidence | Status | Limitation | Fix / retest |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| U01 | 390px and 200% usable | 390px and CSS zoom 200% assertions passed without horizontal overflow | Headless Chromium | D-U01 and D-U01-CSS | PARTIAL | Native zoom and real Android NOT_RUN | Human device QA |
+| U02 | Keyboard/focus/labels/live result | Selects labeled, focus usable, aria-live=polite found | Headless Chromium | D-U02/U03 | PARTIAL | Screen reader and focus after all dialog paths NOT_RUN | AT review |
+| U03 | Empty/all choices/corrupt values fail safely | All confirmed/NA and forged select cases passed; initial state/reload reset | Browser | D-R03/R09, D-R10/U03 | PASS_LIMITED | Full model input type fuzz not repeated by D | C/D expand on revised SHA |
+| U04 | Print retains boundaries | Print-mode DOM disclaimer and in-memory PDF header validated | Chromium headless | D-U04 and D-P05/R13 | PARTIAL | Native print preview and PDF visual QA NOT_RUN | Device QA |
+| U05 | No public preview exposure | Static registry/sitemap exclude; invalid/absent local flag 404 | GitHub source + local HTTP | independent-disabled; main files | PARTIAL | Actual preview access and current external GET NOT_ESTABLISHED | E verify authenticated preview and prod 404 |
+| U06 | Existing 5 Issue/5 tools intact | Isolated disabled/invalid server passed verifier for all 5 Issue + 5 tools in both modes | GitHub Actions localhost | independent-disabled logs | PARTIAL | Not production browser journey or tool operation for all five | E production regression |
+
+### 9.5 Independent finding, necessary corrections, and gate decision
+
+1. **P0 version inconsistency**: A trace blob 2cb32c... still anchors the previous B version, whereas actual B draft blob 083ffd... contains B-00..B-13. C pinned at a1357ad... still uses labels **「確認できる（自己申告）」「見直しが必要」「未整備」「対象外（要確認）」**, while B service-applicability §3 proposes safer wording. The proposal is not yet reflected 1:1 in C visible selections, result and print. This **does not prove an observed clinical incident** but blocks a single-version expert review and public release. **Owner A/B/C**: current claim crosswalk, accepted label mapping and C implementation alignment; **D** must retest changed cases after new pinned SHA.
+2. **Remaining independent QA**: native 200% browser zoom, actual Android Chrome, screen-reader testing, human print-preview inspection, offline behavior, full production browser/network and Vercel preview access remain **NOT_RUN / NOT_ESTABLISHED**. CSS zoom emulation is not native browser zoom. CI success only covers its listed assertions.
+3. **EX01 = EXPERT_REVIEW_NOT_DONE; EX02 = EXPERT_REVIEW_NOT_DONE; HU01 = HUMAN_APPROVAL_NOT_DONE**. No individual professional contacted, no fictitious signed approval.
+4. **D decision: SAFETY_PARTIAL_WITH_GAPS**. No high-risk FAIL was observed in the 13 measured independent Chromium tests, but clinical validity, wording alignment and public access are not established. Recommendation to E: **PREVIEW_ONLY / NOT_PUBLIC**, leave #451 draft unmerged and do not enable a publicly reachable preview or production flag.
+5. **Retest trigger**: after A/B/C version alignment, record the new A/B blobs and C head SHA, diff against pinned a1357ad..., repeat the independent D test (especially R02/03/04/06/09/10/11/12/14/16, P02/03/04/05/06 and U01..06), then obtain independent EX01/EX02 human reviews and HU01 approval before E changes the publication gate.
+
+**Note:** Older sections document earlier SHA/time observations and retain their historical status; this section is the superseding run for the specified pinned version, not evidence that older unperformed tests had been executed at that time.
+
+
+---
+
+## 10. 2026-10-09 version-locked independent revalidation（過去の§1–9を保持）
+
+### 10.1 対象版と検証の前提
+
+- 本追補の照合時main: `1360bd78d971266c5e635c7a3416d5b4629e1c0e`。E前回の統合decision: `2026-10-08-medication-safety-content-alignment-and-independent-validation-decision.md`。今回Dは公開判断・main変更を行わない。
+- **B最新版** PR #459 head `364519815a41143560b068cfa459e7a04962f18f`: Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25`; service blob `e3889c26c5b46d4644b29d94c657e628c96206d3`。B-00〜B-13、5状態と結果／印刷文言の候補、および未確立なサービス適用を参照した。
+- **A** PR #458 head `cbdaddd843db2d1b193b34738272c538086039d1`、trace blob `0b042421f49ae5213f80b71e4cf04c502d32c1f9`。**旧B blob `083ffd0a...`を独立照合したもの**。B最新版をAが確認した証拠ではない（`A_FINAL_B_TRACE_NOT_DONE`）。
+- **C版** draft PR #451 head `7ec2fe8c644d0526af1650e857a7da397488a0ad`。C page `cfa6f30633c5c8536b570c4c82b2794cd4353320`、worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c`、model `9580e9202209f5e3fdf3b544b628d68885062295`（対象commitのblob；後続変更があれば再固定）。Cのモデル/表示/印刷に共通の非判定警告を追加した更新を含む。
+- **Dの独立テスト** draft PR #457。旧独立run [#37782952341](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37782952341) は**旧C `a1357ad...`**、新たに追加した混合状態・匿名印刷検査を含む15個のD独立PlaywrightテストはC版 `7ec2fe8c644d0526af1650e857a7da397488a0ad` を厳密にcheckoutする。実行workflow `.github/workflows/medication-safety-independent-audit.yml`、独立テスト `medication-safety-independent.spec.mjs`。
+- **検証run**: [#37844281038](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038)。GitHub-hosted Ubuntu/Node 22/Chromium headless。enabledはGitHub Actions内のlocalhostのみ、disabled/invalidはlocalhost HTTP 404と既存11 route verification。権限 `contents: read`、checkout認証情報永続化無効、secret引渡し・artifact uploadなし。テストには合成enumのみを使用し、個人情報・薬剤・処方・実際の事故・HAR/画像/PDFは保存しない。
+- **実行結果の読み方**: 以下の表で `PASS_LIMITED*` はコード/Playwrightが対象版とテスト名について成功した**ときのみ確定**する条件付き判定。runが失敗・進行中なら暫定 `PENDING_INDEPENDENT_RUN` に読み替え、該当caseをPASSに昇格しない。Dの確定総合安全判定は `SAFETY_PARTIAL_WITH_GAPS`。旧Cに対する成功を新Cに流用しない。
+- **一次資料**: 厚労省Vol.1436（2025-11-07）冊子38/39/46頁、PDFゼロ起算40/41/48頁と、Vol.1332（2024-11-29）PDFゼロ起算p2を今回Dで再閲覧。施設向け推奨・特養一事例・訪問通所等の情報共有・事故報告通知を区別。職種の服薬実施権限や各サービスの事故報告実務を原典だけから確定しない。
+
+### 10.2 全29ケースの再検証対象・所見・欠落範囲
+
+**注意**：以下の `actual` は対象コードの静的検査とテストのassertion対象を併記したもの。独立CIで最終的にSUCCESSと確認した行だけを動的PASS_LIMITEDと解釈する。methodのDテスト名をlogs上で照合し、未実行または失敗時は該当行を `NOT_RUN/FAIL` に修正する。表の環境は全行ともD独立CIのlocalhost、`C_SHA`は上記の同じ固定版である。
+
+| Case | Expected | Actual / 照合対象 | Method / environment + test | C_SHA / evidence | Status* | Limitations | Fix / retest owner |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| R01 | 実事故に医療判断を返さない | 事故・疑義時の不使用、正式経路を表示・自由入力なし | localhost Chromium / D-R01/R02/R07/R08 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | 利用者理解・EX01は未確認 | EX01: 事故時案内 |
+| R02 | 再投与/服薬時刻の判断をしない | 判定入力欄・個別医学ロジックなし、固定の非判定警告 | localhost Chromium / D-R01/R02/R07/R08 + source | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 実例誘導と医療職審査なし | EX01: 文面を確認 |
+| R03 | 全confirmedを安全合格にしない | 6項目confirmedでも自己申告・非保証 | localhost Chromium / D-R03/R09 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | 人間の誤安心評価なし | EX02: 理解を検証 |
+| R04 | 施設手順を訪問・通所等へ自動転用しない | 各サービスへの一律転用禁止を画面で確認 | localhost Chromium / D-R04/R05/R06/R15 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | サービス別権限・手順未確立 | A/EX01/EX02照合 |
+| R05 | 職員個人へ事故責任を決めつけない | 担当/中断/負荷・相談事項表示、個人責任スコアなし | localhost Chromium / D-R04/R05/R06/R15 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 実務負荷と職員の受け止め未確認 | EX02現場レビュー |
+| R06 | 本人意思を無視した強制医療助言をしない | 意思・尊厳の文言、自由記述誘導なし | localhost Chromium / D-R04/R05/R06/R15 + source | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 服薬拒否等の実際の解釈は未検証 | EX01/EX02 |
+| R07 | 実氏名・薬剤・事故記録の入力を誘導しない | テキスト/添付/form無し、禁止説明あり | localhost Chromium / D-R01/R02/R07/R08 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | 別の公開feedback経路は対象外 | E: 公開全導線確認 |
+| R08 | 個別事故報告要否/期限を確定しない | 固定文と選択式のみ、事故報告判断の非代替 | localhost Chromium / D-R01/R02/R07/R08 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 自治体別の報告運用未確認 | EX02/責任者 |
+| R09 | 初期未選択・全担当外・混在を安全認定しない | 初期7相談行、全担当外6相談行、混合/架空例と自己申告の注意 | localhost Chromium / D-R03/R09 + D-R09/R15/U03 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | 利用者の理解・全状態網羅なし | EX02 + 全状態再評価 |
+| R10 | 改ざんenum/型不正はfail closed | 偽select値で不正形式警告、点検結果不生成 | localhost Chromium / D-R10/U03 + C model source | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | 全JSオブジェクト型の独立fuzzなし | C/D型fuzz |
+| R11 | 回答の外部要求への混入を防ぐ | 合成4マーカーが観測requestのURL/header/bodyに現れない | localhost Chromium / D-P01/P02/P03/P04/P06/R11/R12 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | ブラウザ窓内のみ、全宛先の不存在証明ではない | 本番候補で再測定 |
+| R12 | 選択値をURL/history/storageへ残さない | 履歴/URL/storage/indexedDB/cookieと再訪問の観測で選択値なし | localhost Chromium / D-P... + D-P03/P04 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | offline/clipboard/他端末は未確認 | 実機再試験 |
+| R13 | 印刷・resetに隠れた安全認定/送信がない | cancel維持/confirm消去/print DOM/PDF in memoryを検査 | localhost Chromium / D-P05/R13 + D-P01/P05/U04 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | native印刷とoffline未実施 | 人手印刷確認 |
+| R14 | 390px/200%/keyboardで安全説明が使える | 390px/CSS zoom 200%/ラベル/フォーカス/aria-liveの機械検査 | localhost Chromium / D-U01/R14 + D-U01 CSS + D-U02/U03 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | ネイティブzoom/実Android/スクリーンリーダー未実施 | 端末・支援技術QA |
+| R15 | 手順改善を不可能な一律義務化にしない | 二人必須などの無条件指示無し、業務負荷言及と混合状態の相談 | localhost Chromium / D-R04/R05/R06/R15 + D-R09/R15/U03 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 施設の人員実態の実レビューなし | EX02 |
+| R16 | 一般公開/匿名previewの露出を防ぐ | 無効・不正flagローカル404、公開登録なし／Vercel C branch deployment一覧0 | localhost Chromium / D independent-disabled + main + Vercel metadata | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | Vercel previewアクセス制御と本番直HTTPは未実証 | E: preview保護と本番直接GET |
+| P01 | 選択式のみで個人情報を入力させない | 1 stage/6 selects、free text/upload/form無し、印刷に固定語のみ | localhost Chromium / D-R01/R02/R07/R08 + D-P01/P05/U04 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | 対象C routeに限定 | 変更時再試験 |
+| P02 | 回答をURL/headers/bodyへ送信しない | 合成マーカー4種類のrequest観測に非出現 | localhost Chromium / D-P01/P02/P03/P04/P06/R11/R12 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | 一時区間のみ、通常pageviewは発生し得る | 本番候補で検証 |
+| P03 | history/query/hash/feedback prefillに回答を載せない | history/URLにマーカーなし、feedbackリンク/formなし、reload/back初期化 | localhost Chromium / D-P.. + D-P03/P04 + D-P07 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | clipboard操作は未実施 | 将来公開feedbackの審査 |
+| P04 | Storage/Cookie/IndexedDBに回答を永続化しない | 検査したlocal/session/DB名/cookieに回答マーカーなし | localhost Chromium / D-P01/P02/P03/P04/P06/R11/R12 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | DB内部の全record、拡張機能未監査 | 別環境再試験 |
+| P05 | reset/print/reload/backで意図外の保存・通信をしない | 確認ダイアログ・消去・再訪問・印刷DOMを機械検査 | localhost Chromium / D-P05/R13 + D-P03/P04 + D-P01/P05/U04 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | offline/native印刷はNOT_RUN | 実機QA |
+| P06 | Analytics custom eventに回答を載せない | 観測通信に選択マーカーなし、Cに回答送信機構の積極実装なし | localhost Chromium / D-P01/P02/P03/P04/P06/R11/R12 + source | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 本番Analytics payload全域は測定していない | Eで新route公開前確認 |
+| P07 | 公開feedbackに情報を自動転記しない | 試作route内にはfeedback CTA/form/prefill無し | localhost Chromium / D-P07 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 将来の公開feedback注意は未実装/未審査 | B/E導線レビュー |
+| U01 | 390px・200%でも全操作と警告が見える | 390×844/ CSS zoom模擬200%で横溢れなし・stage操作 | localhost Chromium / D-U01/R14 + D-U01 CSS | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | ネイティブ200%・Android未実施 | 端末実査 |
+| U02 | キーボード/focus/role/label/読み上げ補助 | selectラベル、focus、aria-liveを自動検査 | localhost Chromium / D-U02/U03 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 読み上げの実聴取と全focus経路未実施 | ATレビュー |
+| U03 | 未回答・全担当外・混在・改ざんで安全誤判定しない | 各状態描画、偽値拒否、架空例、reset後初期化 | localhost Chromium / D-R03/R09 + D-R10/U03 + D-R09/R15/U03 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PASS_LIMITED* | 医療安全性の実ユーザー検証なし | EX01/EX02 |
+| U04 | 印刷に自己申告/事故時注意を残す | 印刷DOM固定ラベル、共通警告、PDFヘッダー in memory | localhost Chromium / D-U04 + D-P05/R13 + D-P01/P05/U04 | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | native print preview/PDF目視未実施 | 印刷現物レビュー |
+| U05 | 公開registry/sitemap/直接URLで未承認試作を露出しない | 公開元の静的登録無し、localhost flag無効/不正時404 | localhost Chromium / D independent-disabled + main | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | 外部本番GETが未再計測、preview制限不明 | E/Vercelと直接GET |
+| U06 | 既存5 Issue/5 toolを破壊しない | local disabled/invalidで11 route verifier成功 | localhost Chromium / D independent-disabled | `7ec2fe8c` / [D run #9](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844281038) | PARTIAL* | production実ブラウザ・全action操作未確認 | E production回帰 |
+
+### 10.3 公開境界、差分・人の審査
+
+- **プライバシー**：通常のAnalytics pageviewやasset通信はあり得る。「通信ゼロ」ではない。要求URL/header/bodyとURL/history/storage/cookieで確認できた合成値に限り漏出が検出されないことを意味する。送信先の網羅や全端末無漏出の保証ではない。
+- **非公開状態**：Vercel project `kaigo-ops`、最新production `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` / READY / runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `https://ops-site-pi.vercel.app/`。C branchのVercel deployment一覧0件を確認。今回Dの直接本番HTTP応答取得は不可（前回Eの公開11ルート200/試作404は歴史的観測）。project SSO設定の確認だけでは全preview経路の非公開保証にならない：`PREVIEW_ACCESS_NOT_ESTABLISHED`。
+- **残るP0版不一致**：A traceは旧B、今回Bの最新Issue/service blobsとのA独立根拠対応 `NOT_DONE`。CとBの結果・印刷はソース上で整合が改善したが、逐語・意味・適用範囲の独立確定と実在専門職審査が必要。B/Cの新コミット時点とDの対象SHAがずれる場合、当該差分に応じて検査を繰り返す。
+- **機械検査で代替できないこと**：ネイティブ200%ズーム、実Android、スクリーンリーダー実聴取、人手の印刷プレビュー、実ネットワーク全期間、off-line、公開環境UI操作、EX01、EX02、HU01は `NOT_RUN / REVIEW_REQUIRED`。EX01・EX02=`EXPERT_REVIEW_NOT_DONE`、HU01=`HUMAN_APPROVAL_NOT_DONE`、`REVIEW_REQUESTED`ではない。
+- **D判定**：`SAFETY_PARTIAL_WITH_GAPS`。Eへの提案：`PREVIEW_ONLY / NOT_PUBLIC`、C #451はdraft・未マージのまま、公開registry/feature flag/production releaseは変更しない。専門職レビューとHU01のGOがそろうまで解除不可。
+
+**更新・再試験トリガー:** Bの2 blobs→A trace blob→C 3 code blobsの固定一致、C意味変更、D runのfailure、レビュー指摘、Vercel accessの新事実。変更によって過去の動的PASSを新SHAへ転記しない。
+
+
+### 10.4 独立CIの実行完了証拠（2026-10-09 JST追加）
+
+**Confirmed PASS（限定的な機械実行）**：[Independent medication safety dynamic audit run #37844583974](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844583974)。D draft PR #457 / source checkout C `7ec2fe8c644d0526af1650e857a7da397488a0ad` に固定して実行し、**independent-enabled=SUCCESS、independent-disabled=SUCCESS**をGitHub Jobs APIで直接確認した。
+
+- Enabled：GitHub Actions Ubuntu / Node 22 / Playwright Chromium（localhost、`MEDICATION_SAFETY_PREVIEW=enabled`）でD専用の**15/15 browser tests PASS / 0 FAIL**。詳細なテスト名は `docs/kaigo-ops/safety/medication-safety-independent.spec.mjs`、同runのenabled job logで照合した。初期未回答・全confirmed・全not-applicable・混在・架空例・型改ざん・印刷/確認リセット・390px/CSS 200%模擬・フォーカス/ラベル/aria-live・選択マーカーの限定Network/Storageを含む。
+- Disabled：`MEDICATION_SAFETY_PREVIEW`の**未設定・不正値**を独立起動し、preview routeが両方とも**HTTP 404**、既存5 Issue・5 action toolのローカルroute検証が各条件でPASS。これはproductionや第三者に到達できるVercel previewの保護を検証した結果ではない。
+- このrunはDの改修後テスト15件を**同じ新C SHA**に実行した。C自身のCI、旧D run `37782952341`、途中のD run `37843977265`とは区別。§10.2の`PASS_LIMITED*`はそのassertionの範囲で確定、`PARTIAL`と全NOT_RUNは引き続き保持する。
+- **残るNOT_RUN / NOT_ESTABLISHED**：ネイティブブラウザ200% zoom、実Android Chrome、スクリーンリーダー、native print preview、offline、全環境のAnalytics/Network、外部previewアクセス制御、本番直接HTTP・ブラウザUI、B最新版に対するA独立根拠追跡、EX01/EX02実在審査、HU01の明示的公開承認。
+- **結論**：独立動的検証は指定localhostの有限なブラウザassertionについて成立。総合は依然 **`SAFETY_PARTIAL_WITH_GAPS`**、Eへの公開推奨 **`PREVIEW_ONLY / NOT_PUBLIC`**。医学的安全性、事故防止効果、サービス・職種の業務権限を認証しない。D自身はC試作、public registry、main、本番deploymentを変更していない。
+
+
+### 10.5 Aの後続独立trace完了とC docs-only更新の再照合（10.3の一部を更新）
+
+D§10.1/§10.3にある「A traceは旧Bのみ」という文言は、**当初Dが確認した版に限る履歴**。その後にA PR #458が更新され、現行のB最新版への独立照合が成立したことをDがGitHub上でreadbackした。
+
+- **新A authoritative section 8**: PR #458 head `37fc213301e93442f71efc4509af5cfa49567c88`、`medication-safety-claim-to-content-trace.md` blob `271560deb7ea848690e12d97fd23661583511198`。AがB最終候補 Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25` とservice blob `e3889c26c5b46d4644b29d94c657e628c96206d3` を対象に、B-00〜B-13の**14個の逐語アンカー**、MHLW-01〜07、8サービス群、5状態とCコード対応を個別追跡。Dは当該文書を直接取得して確認したが、Aの独立資料確認とDのlocalhostブラウザ検証は別証拠。
+- Aの最新版は `PARTIAL_WITH_GAPS`。MS-07の実際の確認方法・職種範囲、MS-13/14の自治体別報告運用と様式、MS-15の通所/訪問への具体的服薬方法転用、MS-17〜20禁止事項、実際の工程・権限は未解決。専門職によるPASSに昇格しない。
+- C PR #451の後続head `a61797393f20e897247d985ab0861f6443a0a74e` は、D検証コミット `7ec2fe8c644d0526af1650e857a7da397488a0ad` から **`medication-safety-prototype-verification.md` のみ変更**（GitHub compareで確認）。3コードblob（page `cfa6f30633c5c8536b570c4c82b2794cd4353320`、worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c`、model `9580e9202209f5e3fdf3b544b628d68885062295`）は同一。D run #37844583974 のテスト対象コードに差異はない。**後続C docsの説明内容をDの動的テストに代えることはしない**。
+- 従って前節の `A_FINAL_B_TRACE_NOT_DONE` は**更新後 `A_FINAL_B_TRACE_AVAILABLE / PARTIAL_WITH_GAPS`**。版不一致という項目自体はこのB/A固定blobについて解消した一方、サービス別適用・人のレビュー・外部previewアクセス・実Android/スクリーンリーダー/印刷プレビュー・公開GOには引き続き欠落あり。
+
+**D最終の範囲**：指定Cの3コードblobに対する独立15/15 Playwright成功、無効/不正flag 404+既存ルート成功、R/P/U各29ケースの証拠と残る限界を記録。**`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。Cが以後意味上のコード変更をした場合は新しい版への再実行が必要。
+
+
+---
+
+## 11. 2026-10-09 専門職審査・privacy/accessibility closure Wave — D独立監査追補
+
+### 11.1 Fresh identity and validity of prior D run
+
+- Checked: **2026-10-09 JST**。GitHub `main` = `8d824ce35be176dd05de976709ee1f81944b65d1`。これはdocument mainであり、production runtimeではない。
+- B [#459](https://github.com/Josh-Temple/kaigo-rules/pull/459) = open, non-draft, unmerged, head `364519815a41143560b068cfa459e7a04962f18f`; Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25` / service blob `e3889c26c5b46d4644b29d94c657e628c96206d3`。
+- A [#458](https://github.com/Josh-Temple/kaigo-rules/pull/458) = open, non-draft, unmerged, head `37fc213301e93442f71efc4509af5cfa49567c88`, trace blob `271560deb7ea848690e12d97fd23661583511198`。A§8の最新14段落アンカーと8サービス群は上記B 2 blobを指す。Aの医学・サービス別権限の未確立点は解消済みではない。
+- C [#451](https://github.com/Josh-Temple/kaigo-rules/pull/451) = **draft, open, unmerged**, head `a61797393f20e897247d985ab0861f6443a0a74e`。独立試験checkout pin = `7ec2fe8c644d0526af1650e857a7da397488a0ad`。GitHub compareでhead差分は**prototype-verification文書1ファイル・36行追加だけ**。C code blobs = page `cfa6f30633c5c8536b570c4c82b2794cd4353320`, worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c`, model `9580e9202209f5e3fdf3b544b628d68885062295`。各blobをC headから再取得し一致確認。よって**コードの同一性**に関して既存D runは現在のC headへ適用できる。ただし最新C文書の説明そのものをDが動的に検証したという意味ではない。
+- D [#457](https://github.com/Josh-Temple/kaigo-rules/pull/457) = draft/open/unmerged。既存証拠 [D run #37844583974](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37844583974) はcompleted/success、enabled 15/15 Chromium tests、disabled/invalid localhost 404 と既存11 routes。**当該runは過去の固定D specに対する限定的な実測**。本追補でD独立specへ2 tests追加したため、[新run #37857899198](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857899198) を別runとして照合する。**完了・ジョブログ照合前に17/17成功と記載しない**。
+- D workflow blob `241415cc2f8536bca185c27a6ecba85a8e4e57f3` は source commitをexact SHAでcheckout、`actions/checkout`・`actions/setup-node`をfull SHA pin、`permissions: contents: read`、`persist-credentials: false`、secretの明示受領もartifacts uploadもなし。enabled/disabled双方とも**isolated localhost**。ただし**workflowコードを含むPR**であり、docs-onlyとして扱わず、その都度diff・権限・依存更新とCIを再確認する。
+- Official source reread: 厚生労働省 Vol.1436（2025-11-07）冊子p38 / PDF zero-index 40 = 施設中心の誤薬・与薬漏れへの推奨、冊子p39 / PDF 41 = 特養の**単一事例**、冊子p46 / PDF 48 = 通所・訪問の一般的連携。Vol.1332（2024-11-29）PDF zero-index p2 = 事故報告様式・報告対象等の通知。これらは**本試作の5状態、職種別の医療実施権限、全サービスへの工程適用、事故削減効果の認証ではない**。個別事故報告の要否・期限を自動判定しない。
+- Vercel project `prj_7kKmZkto1j9r9Z3otwccx05LAjTp` fresh API: production `dpl_Ae1BwiQChp3CfmK1izUcNQH8wL8S` READY、runtime `e49e770a970e541d2ad95204ad277eca89a485d3`、alias `ops-site-pi.vercel.app`、`kaigo-ops-josh-temples-projects.vercel.app` 等。公開URLの直接HTTPは今回のweb clientで取得エラーのため**NOT_RUN / NOT_ESTABLISHED**（過去のHTTP成功を今回の成功と混同しない）。preview認証遮断の第三者実証も**PREVIEW_ACCESS_NOT_ESTABLISHED**。
+
+### 11.2 全29ケースの現行statusと追加独立検査
+
+詳細29行の `expected / actual / method / environment / C_SHA / evidence / status / limitations / owner` は**§10.2が正本**。本追補ではその29行を独立に照合し、**R01–R16 = 16行、P01–P07 = 7行、U01–U06 = 6行、計29行、既存run時点の判定は11 `PASS_LIMITED*` / 18 `PARTIAL*`** と確認した。各行の `*` は §10.1–10.4 の既存成功runと対象Cコードの一致が条件であり、臨床上の29件PASSではない。新run未完了時は次の追加試験部分のみ `PENDING_INDEPENDENT_RUN`。
+
+| Case / scope | Evidence, actual and environment | Current limited result / remaining gap | Next owner |
+| --- | --- | --- | --- |
+| R01–R02, R07–R08 | 選択式6問/工程、医療・再投与・事故報告の判定非実装、実事故時の正式経路。D旧15 tests + source / localhost Chromium | `PASS_LIMITED/PARTIAL`。実務者の誤認・医療安全審査は未完 | EX01, EX02 |
+| R03, R09–R10, U03 | 全confirmed/NA/unknown/混合/架空例/不正値。D旧15 tests / localhost Chromium | `PASS_LIMITED`対象の範囲のみ。利用者理解、独立JS型fuzzは未完 | C, D, EX02 |
+| R04–R06, R15 | サービスの一律転用禁止、本人意思、職員負荷、個人責任への還元回避 | `PARTIAL`。8サービス群の工程・役割・権限、原典・事例の境界を人が評価 | A, B, EX01/EX02 |
+| R11–R12, P01–P04, P06–P07 | 合成enumのrequest URL/header/body、URL/history、storage、Cookie/IndexedDB、feedback導線。D旧15 tests | 有限のChromium観測は`PASS_LIMITED`を含む。その他ブラウザ、Analytics全宛先、公開環境・clipboardは未確認。新specのdemo/print/reset後の通信追加観測は新run待ち | D, E |
+| R13–R14, P05, U01–U02, U04 | reset、印刷media/PDF in memory、390px、CSS zoom模擬、keyboard/label/aria-live。旧15 tests + 新specのlive-region動的変化確認 | `PARTIAL`。ネイティブ200%ズーム、実Android、実読み上げ、実印刷プレビュー・PDF目視、offlineは**NOT_RUN**。新spec部分はrun待ち | C, D, 人手QA |
+| R16, U05–U06 | C draft非公開、無効flagのlocalhost 404、既存11 routes、Vercel READY/alias | `PARTIAL`。本番直接HTTP、全preview URLの匿名遮断、実公開5+5操作は本Waveの実測未完。**flagとnoindexは認証ではない** | E / Vercel権限者 |
+
+**新D専用テスト（旧15から追加した2件）**：
+
+- `D-P02/P05/P06 follow-up`：**合成enumのみ**で選択→架空例→print media→resetを行い、当該ブラウザ窓で観測した全request URL/header/bodyに選択マーカーがないことをassertする。通常pageviewや別環境のAnalyticsは無条件に安全認定しない。
+- `D-U02/U03 follow-up`：`aria-live=polite` に加え、選択による結果本文更新をDOMで検証。これは**スクリーンリーダーによる実際の読み上げではない**。
+
+### 11.3 明確な未実施と公開ゲート
+
+- `NOT_RUN`：ネイティブ200%ズーム、実Android Chrome、screen reader実聴取、ネイティブ印刷/PDF visual QA、offline、実機clipboard、一般公開環境の回答通信・操作、Vercel本番直接HTTP（今回の取得失敗）。CSS模擬は実機の代用にしない。
+- `NOT_ESTABLISHED`：全previewへの第三者アクセス遮断、各サービスの服薬工程・職種権限、具体的な自治体運用、Analytics全宛先に回答が流れないという網羅保証。無認証のflag-enabled Vercel previewは作らない。
+- `EX01=EXPERT_REVIEW_NOT_DONE`、`EX02=EXPERT_REVIEW_NOT_DONE`、`HU01=HUMAN_APPROVAL_NOT_DONE`。依頼の明示許可と送付先がないため `REVIEW_REQUESTED=false`。審査者個人情報や現場資料はpublic PRに書かない。
+- **現在の独立安全判定：`SAFETY_PARTIAL_WITH_GAPS`、Eへの提案：`PREVIEW_ONLY / NOT_PUBLIC`**。実証された高危険誘導・回答漏えい・匿名preview露出は今回認定していないため、憶測で`SAFETY_BLOCKED`にはしない。一方、公開GOは出せない。Cを未マージ・production flag無効・既存5 Issue/5 toolを維持する。
+
+**Next:** D新runの双方のjob logsを確認し、追加assertionsの結果だけを明確に追記する。Cの3 code blobsが変われば該当R/P/U全件の再試験とexpert packの版更新が必要。EX01/EX02実査・是正・再検査とHU01明示承認後にEが公開可否を別途決定する。
+
+
+### 11.4 追加2件の独立run完走・前回失敗の扱い（2026-10-09 JST）
+
+- 追加spec最初のrun [#37857899198](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37857899198) は **16/17 pass・1 fail**。失敗したのは新しいdemo→print→reset試験で、架空例ボタンの確認ダイアログをテストコードが承認していなかったため `getByRole('status')` を待ち続けた操作契約の不足。**情報流出を観測した失敗ではない**。旧版からPASSに転記せず、失敗履歴を保存。
+- D専用specに確認ダイアログ `page.once("dialog", d => d.accept())` を追加（D commit `619c9d548c0b64e2b4d9efdee2775057c6f70f34` の改訂、spec blob `28161729ba8b602a45920c292da6b2db476646bc`）。**Cコード・公開registry・productionは変更していない**。
+- **確定後続run:** [#37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) は `completed/success`、`independent-enabled=success`、D専用Chromium **17/17 passed**（job `113587323635` のログで `17 passed (7.5s)`）、`independent-disabled=success`（job `113587323809`）。後者のflag absentとinvalidではともにlocalhost route HTTP 404、同じ隔離ホストの既存11 route検証成功。対象C checkoutはworkflowで固定した `7ec2fe8c644d0526af1650e857a7da397488a0ad`、C headとの差はdocsのみ、主要3 blobs一致。
+- 追加された動的確認：**P02/P05/P06**について合成選択値がdemo/print media/resetまでに観測したrequest URL/header/bodyに含まれないこと、**U02/U03**について`aria-live`領域のDOM内容が選択後に更新されること。これにより旧runでの観測窓を拡張したが、**全通信/全端末の漏えい不存在、実際の音声読み上げ、ネイティブ印刷、医療安全の保証にはならない**。
+- §10.2の**29ケース = 11 `PASS_LIMITED` + 18 `PARTIAL`** は変更しない。新runにより前節の「新spec pending」部分のみ成功と確定し、実機/専門職/preview-access `NOT_RUN/NOT_ESTABLISHED` は維持。
+- **最終D判定：`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`**。EX01/EX02 `EXPERT_REVIEW_NOT_DONE`、HU01 `HUMAN_APPROVAL_NOT_DONE`、`REVIEW_REQUESTED=false`。Eへhandoff。公開GOを出さずC #451 draftを維持する。
+
+
+---
+
+## 12. 2026-10-09 並行A/B/C更新後の版再固定（§11より新しい情報）
+
+前節のheadは確認時の履歴。**同一性を再確認した最新版**：main `8d824ce35be176dd05de976709ee1f81944b65d1`（文書main）。A #458 head `87b9d67a08b3c9503a47e9914a1abe5af16ca21c`、trace blob **`3264cb93cc2c7f867abe7fb42def68be03bf98e6`**（旧traceからA§9の原典→B→C→EX質問/8サービス群の詳細を79行追加）。B #459 head `9c7b8639380802224bd9b5518f52800ff0b56af8`、Issue blob `e0cc354e2b78a28912c80c0611ccf3c165d00b25`とservice blob `e3889c26c5b46d4644b29d94c657e628c96206d3` **不変**、審査用補足文書blob `64feae5962df5614d0d86a6fc36ed24687bae16b`を追加。EX01/EX02質問ID、S01–S08合成状態、8サービス群、非識別レビュー記録、未送付の依頼下書きを含む。**旧A trace blobのまま最新版Aと表示してはならない**。
+
+C #451 head `2dd0e260d0922e18d003905f4a7edf42560f640c` は引き続き**draft/open/unmerged**。DがテストしたC checkout commit `7ec2fe8c644d0526af1650e857a7da397488a0ad` からの後続変更は**検証MarkdownとC自体のbrowser test spec（+68行）**であり、**docs-onlyではない**。ただしCの**アプリケーション3 blobsは新headから直接readbackして全て一致**：page `cfa6f30633c5c8536b570c4c82b2794cd4353320`、worksheet `2ecd0475681f5a822da0f3dbe32c4610a041d47c`、model `9580e9202209f5e3fdf3b544b628d68885062295`。C browser spec新blob `391653ffcc9b75b8de9e205adafff1478ace61c0` はDの旧C checkout上では実行されていないため**その新テストがD runで実行済みとは記さない**。独立D run [#37858180696](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858180696) = 17/17 Chromium success、対象**アプリケーションコード**は現行Cと同じ；29-caseの有限な機械観測の有効性を引き続き認める。一方、C browser変更後の**C側**CI [#37858189100](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858189100) はSUCCESSで別の実行であり、D runとは混同しない。
+
+D現head（本追補前）`5388457bc9af187eae95f53170229bb9de199bb0`、D CI [#37858370661](https://github.com/Josh-Temple/kaigo-rules/actions/runs/37858370661) はSUCCESS（同じ17 test spec）。最新版Aの問答とB追加審査資料をD expert packへ区別して引き継ぐ。**実在レビューと公開承認は引き続き未実施**、`SAFETY_PARTIAL_WITH_GAPS / PREVIEW_ONLY / NOT_PUBLIC`。C browser testと文書改訂をアプリコード変更と混同せず、医学的安全PASSにも転記しない。
