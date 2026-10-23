@@ -19,5 +19,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${OPS_SITE_URL}/guides/fall-prevention-sources`,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
   ];
 }
