@@ -39,7 +39,23 @@ def official_url(value):
 
 
 
-ROLE_TARGETS = {"homevisit", "small-scale-multifunctional"}
+ROLE_TARGETS = {
+    "homevisit", "small-scale-multifunctional",
+    "dayservice", "dayrehab", "care-management", "dementia-group-home",
+}
+# ID allowlists are input constraints, not an assertion that every listed role is
+# required by law. A/B must still ground each actual role in the applicable source.
+NEW_ROLE_IDS = {
+    "dayservice": {"manager", "life-counselor", "care-worker", "nurse",
+                   "functional-training-instructor"},
+    "dayrehab": {"manager", "physician", "physical-therapist",
+                 "occupational-therapist", "speech-language-hearing-therapist",
+                 "rehabilitation-professional", "nurse", "care-worker",
+                 "nursing-and-care-staff"},
+    "care-management": {"manager", "care-manager", "chief-care-manager"},
+    "dementia-group-home": {"manager", "care-worker", "care-plan-coordinator",
+                            "representative"},
+}
 ROLE_ASPECTS = {"placement", "qualification", "concurrency", "shifts", "exception", "other"}
 ROLE_EVIDENCE_KINDS = {"national_standard", "national_interpretation", "national_qa",
                        "yokohama_ordinance", "yokohama_handbook"}
@@ -57,7 +73,7 @@ def role_text(value, name, allow_empty=False):
 
 
 def role_url(value):
-    from urllib.parse import urlsplit
+    from urllib.parse import urlsplit, parse_qsl
     if not isinstance(value, str) or re.search(r"[\x00-\x20\x7f<>\"'\\]", value):
         raise ValueError("Invalid role evidence URL")
     try:
@@ -66,16 +82,23 @@ def role_url(value):
         raise ValueError("Invalid role evidence URL") from exc
     if (url.scheme != "https" or url.hostname not in ROLE_OFFICIAL_HOSTS
             or url.netloc != url.hostname or not url.path.startswith("/")
+            or re.search(r"%(?:0[ad]|2e|2f|5c|40|25)", url.path, re.IGNORECASE)
+            or any(segment in {".", ".."} for segment in url.path.split("/"))
             or re.search(r"%0[ad]", value, re.IGNORECASE)
+            or any(key.lower().replace("-", "_") in {
+                "redirect", "redirect_uri", "returnurl", "return_url", "next",
+                "callbackurl", "callback_url", "continue", "target",
+                "destination", "dest", "url"
+            } for key, _ in parse_qsl(url.query, keep_blank_values=True))
             or (url.fragment and not re.fullmatch(r"page=[1-9][0-9]*", url.fragment))):
         raise ValueError("Non-official or unsafe role evidence URL")
     return value
 
 
 def validate_role_sections(sid, section, roles):
-    """Fail closed for the two staffing pilots; does not confer legal verification."""
+    """Only six staffing chapters; validation does not confer legal verification."""
     if sid not in ROLE_TARGETS or section != "staffing":
-        raise ValueError("role_sections is restricted to the two staffing chapters")
+        raise ValueError("role_sections is restricted to six staffing chapters")
     if not isinstance(roles, list) or not (1 <= len(roles) <= 20):
         raise ValueError("role_sections must contain 1..20 roles")
     role_ids = set()
@@ -85,6 +108,8 @@ def validate_role_sections(sid, section, roles):
         ident = role["id"]
         if not isinstance(ident, str) or not re.fullmatch(r"[a-z][a-z0-9-]{0,63}", ident) or ident in role_ids:
             raise ValueError("Invalid or duplicate role ID")
+        if sid in NEW_ROLE_IDS and ident not in NEW_ROLE_IDS[sid]:
+            raise ValueError("Unknown role ID for service: " + sid + "/" + ident)
         role_ids.add(ident)
         role_text(role["title"], "role.title")
         requirements = role["requirements"]
@@ -130,6 +155,10 @@ def validate_role_sections(sid, section, roles):
                         role_text(ev[field], "evidence." + field)
                 if "url" in ev:
                     role_url(ev["url"])
+                if (ev["kind"] == "national_qa"
+                        and ev["verification_state"] == "PRIMARY_TEXT_CHECKED_SCOPED"
+                        and not re.search(r"(?:問|Q)\s*[0-9０-９]+", ev["locator"], re.IGNORECASE)):
+                    raise ValueError("Verified national Q&A needs an exact question number")
                 if ev["verification_state"] == "PRIMARY_TEXT_CHECKED_SCOPED":
                     checked += 1
                     if "url" not in ev or not re.fullmatch(r"\d{4}-\d\d-\d\d \d\d:\d\d JST", ev["checked_at_jst"]):
