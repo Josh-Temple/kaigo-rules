@@ -16,7 +16,8 @@ function readerLabel(value: string) {
 }
 
 function requirementCopy(value: string) {
-  return value.replace(/^【Research Mesh隔離候補・法令適合未審査】/u, "");
+  return value.replace(/^【Research Mesh隔離候補・法令適合未審査】/u, "")
+    .replace(/。施行版・改正附則・条例・準用先との最終照合は未完了です。$/u, "。");
 }
 
 function DayserviceStaffingReader({ full, detailHref }: { full: boolean; detailHref: string }) {
