@@ -77,9 +77,9 @@ export const DAY_SERVICE_STAFFING_SHARED = [
  * suppress text: the original note is returned verbatim for a details panel.
  * Mixed practical explanations are split at the specific internal-file marker.
  */
-export function separateHandbookParagraphs(paragraphs) {
-  const reader = [];
-  const editorial = [];
+export function separateHandbookParagraphs(paragraphs: string[]): { reader: string[]; editorial: string[] } {
+  const reader: string[] = [];
+  const editorial: string[] = [];
   for (const paragraph of paragraphs) {
     if (!/data\/(?:services\/|qa-|notice-|care-|handbook-|remuneration-)/u.test(paragraph) &&
         !paragraph.includes("出典候補：")) {
