@@ -5642,6 +5642,336 @@
             "提供形態と現況の点検：「医師・理学療法士・作業療法士・言語聴覚士と看護・介護職」について職種・資格・雇用契約・兼務と勤務時間を調べる",
             "書類・記録の突合：「医師の関与を伴う通所による機能訓練とリハ支援」を提供する曜日や時間帯の実績と勤務形態一覧を対応付ける",
             "原典・区分と未確認事項：「通所介護・介護予防通所リハ・みなし指定との違い」による別の人員条件・読替えがないか条文と指定通知を確認する"
+          ],
+          "role_sections": [
+            {
+              "id": "physician",
+              "title": "医師",
+              "requirements": [
+                {
+                  "id": "one-or-more",
+                  "title": "提供に必要な医師を1人以上",
+                  "aspect": "placement",
+                  "description": "指定通所リハビリテーションの提供に当たる医師を、事業所ごとに必要な1人以上確保します。事業所の形態によって配置の扱いが異なるため、診療所・病院・介護老人保健施設・介護医療院を区別してください。",
+                  "applicability": "指定通所リハビリテーションの原則。診療所の緩和基準や施設の人員基準の扱いは別途確認。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第111条第1項第1号",
+                      "version": "厚生労働省公開本文・適用時点の附則全件照合は未完了",
+                      "scope": "指定通所リハビリテーション",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年6月版 運営の手引き 通所リハビリテーション／介護予防通所リハビリテーション",
+                      "issuer": "横浜市健康福祉局介護事業指導課",
+                      "locator": "紙面11・13～14頁／PDF 11・13～14ページ目",
+                      "version": "表紙2026.06.01／令和8年6月版（本文一部頁に旧年度の柱あり）",
+                      "scope": "横浜市の指定通所リハビリテーション",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/tebiki_16.pdf"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービス等の事業の人員、設備、運営等の基準に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "第124条（条例統合本文・適用時点の照合は未完了）",
+                      "version": "適用時点の統合現行版未照合",
+                      "scope": "横浜市内の指定通所リハビリテーション",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED"
+                    }
+                  ],
+                  "practical_checks": [
+                    "事業所の施設種別、提供日、勤務表、医師の配置状況を照合する"
+                  ]
+                },
+                {
+                  "id": "fulltime-and-deeming",
+                  "title": "常勤の原則・みなしの条件",
+                  "aspect": "exception",
+                  "description": "医師は常勤が原則です。法令には、一定の介護老人保健施設・介護医療院で、施設の人員基準を満たすことによるみなし規定があります。診療所に関する手引の説明も、事業所の種別・利用者数などの条件を確認して適用します。",
+                  "applicability": "国の省令第111条第3・4項。横浜市手引の診療所特例は対象条件を別途確認。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第111条第3・4項",
+                      "version": "厚生労働省公開本文・適用時点の附則全件照合は未完了",
+                      "scope": "常勤医師および特定のみなし指定施設",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年6月版 運営の手引き 通所リハビリテーション／介護予防通所リハビリテーション",
+                      "issuer": "横浜市健康福祉局介護事業指導課",
+                      "locator": "紙面11・13～14頁／PDF 11・13～14ページ目",
+                      "version": "表紙2026.06.01／令和8年6月版（本文一部頁に旧年度の柱あり）",
+                      "scope": "横浜市の施設区分別説明",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/tebiki_16.pdf"
+                    },
+                    {
+                      "kind": "national_interpretation",
+                      "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（老企第25号）",
+                      "issuer": "厚生省・厚生労働省",
+                      "locator": "第3の七の1（後続改正と現行版は未確認）",
+                      "version": "適用時点の統合現行版未照合",
+                      "scope": "通所リハビリテーション",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED"
+                    }
+                  ],
+                  "practical_checks": [
+                    "事業所がみなし指定施設に該当するか、当該施設の人員基準を満たしているかを確認する"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rehabilitation-professionals",
+              "title": "理学療法士・作業療法士・言語聴覚士",
+              "requirements": [
+                {
+                  "id": "specialist-one-per-hundred",
+                  "title": "リハ専門職の配置と提供単位",
+                  "aspect": "placement",
+                  "description": "原則として、提供単位ごとにリハビリテーションを専ら担当する理学療法士・作業療法士・言語聴覚士を、利用者100人またはその端数ごとに1人以上確保します。これは次の看護・介護職員を含む全体の配置基準とは別に確認します。",
+                  "applicability": "通常の指定通所リハビリテーションの基準。診療所の緩和基準では専門職等の範囲・常勤換算の扱いが異なります。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第111条第1項第2号ロ・第2項第2号",
+                      "version": "厚生労働省公開本文・適用時点の附則全件照合は未完了",
+                      "scope": "提供単位別・診療所特例",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年6月版 運営の手引き 通所リハビリテーション／介護予防通所リハビリテーション",
+                      "issuer": "横浜市健康福祉局介護事業指導課",
+                      "locator": "紙面11～14頁／PDF 11～14ページ目",
+                      "version": "表紙2026.06.01／令和8年6月版（本文一部頁に旧年度の柱あり）",
+                      "scope": "通常基準と診療所の緩和基準",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/tebiki_16.pdf"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービス等の事業の人員、設備、運営等の基準に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "第124条（条例統合本文・適用時点の照合は未完了）",
+                      "version": "適用時点の統合現行版未照合",
+                      "scope": "横浜市内の指定通所リハビリテーション",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED"
+                    }
+                  ],
+                  "practical_checks": [
+                    "提供単位ごとの利用者数、専門職の従事時間、施設形態を突合する"
+                  ]
+                },
+                {
+                  "id": "clinic-exception",
+                  "title": "診療所の緩和基準は別扱い",
+                  "aspect": "exception",
+                  "description": "診療所では、一定の経験がある看護師を含む専門職等について、常勤換算0.1以上などの別の配置基準が定められています。通常基準の『100人ごとに1人以上』をすべての診療所にそのまま当てはめず、診療所の条件を確認します。",
+                  "applicability": "指定通所リハビリテーション事業所が診療所の場合に限る。看護師の経験など、条文の限定条件を保持。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第111条第2項第2号",
+                      "version": "厚生労働省公開本文・適用時点の附則全件照合は未完了",
+                      "scope": "診療所のみ・経験を有する看護師の条件を含む",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年6月版 運営の手引き 通所リハビリテーション／介護予防通所リハビリテーション",
+                      "issuer": "横浜市健康福祉局介護事業指導課",
+                      "locator": "紙面13～14頁／PDF 13～14ページ目",
+                      "version": "表紙2026.06.01／令和8年6月版（本文一部頁に旧年度の柱あり）",
+                      "scope": "横浜市の診療所に関する説明",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/tebiki_16.pdf"
+                    },
+                    {
+                      "kind": "national_interpretation",
+                      "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（老企第25号）",
+                      "issuer": "厚生省・厚生労働省",
+                      "locator": "第3の七の1（後続改正と現行版は未確認）",
+                      "version": "適用時点の統合現行版未照合",
+                      "scope": "通所リハビリテーション",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED"
+                    }
+                  ],
+                  "practical_checks": [
+                    "診療所の届出・施設種別と看護師の経験・常勤換算を証拠書類で照合する"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "nursing-and-care",
+              "title": "看護職員・介護職員",
+              "requirements": [
+                {
+                  "id": "unit-shift",
+                  "title": "全職種を合わせた提供単位別の配置",
+                  "aspect": "placement",
+                  "description": "提供単位ごとに、理学療法士・作業療法士・言語聴覚士・看護職員・介護職員のうち、専らサービスを提供する職員を確保します。利用者10人以下は提供時間を通じて1人以上、10人を超える場合は利用者数を10で除した数以上が原則です。看護職員と介護職員の各職種に、それぞれ別途1人ずつ必置とする意味ではありません。",
+                  "applicability": "省令第111条第1項第2号イ・第2項第1号。通常と介護予防が同一事業所で一体運営される場合の利用者数の扱いに注意。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第111条第1項第2号イ・第2項第1号",
+                      "version": "厚生労働省公開本文・適用時点の附則全件照合は未完了",
+                      "scope": "提供単位と提供時間帯による配置",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年6月版 運営の手引き 通所リハビリテーション／介護予防通所リハビリテーション",
+                      "issuer": "横浜市健康福祉局介護事業指導課",
+                      "locator": "紙面11～14頁／PDF 11～14ページ目",
+                      "version": "表紙2026.06.01／令和8年6月版（本文一部頁に旧年度の柱あり）",
+                      "scope": "提供単位・通常／予防／診療所の条件",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/tebiki_16.pdf"
+                    },
+                    {
+                      "kind": "yokohama_ordinance",
+                      "title": "横浜市指定居宅サービス等の事業の人員、設備、運営等の基準に関する条例",
+                      "issuer": "横浜市",
+                      "locator": "第124条（条例統合本文・適用時点の照合は未完了）",
+                      "version": "適用時点の統合現行版未照合",
+                      "scope": "横浜市内の指定通所リハビリテーション",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED"
+                    }
+                  ],
+                  "practical_checks": [
+                    "単位ごとの利用者数、全対象職種の配置数、提供時間を日別の勤務表で照合する"
+                  ]
+                },
+                {
+                  "id": "integrated-preventive",
+                  "title": "介護予防と一体運営する場合",
+                  "aspect": "exception",
+                  "description": "指定介護予防通所リハビリテーションを併せて指定され、同じ事業所で一体的に運営する場合は、介護予防側の人員基準を満たすことで、指定通所リハビリテーションの基準を満たしたとみなせる条件があります。通常型のみの事業所へ無条件に適用しないでください。",
+                  "applicability": "両方の指定・同一事業所での一体的運営が前提。人員算定の対象利用者の範囲を確認。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第111条第1項第2号イ・第5項",
+                      "version": "厚生労働省公開本文・適用時点の附則全件照合は未完了",
+                      "scope": "指定と一体運営の条件",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0"
+                    },
+                    {
+                      "kind": "yokohama_handbook",
+                      "title": "令和8年6月版 運営の手引き 通所リハビリテーション／介護予防通所リハビリテーション",
+                      "issuer": "横浜市健康福祉局介護事業指導課",
+                      "locator": "紙面9・11頁／PDF 9・11ページ目",
+                      "version": "表紙2026.06.01／令和8年6月版（本文一部頁に旧年度の柱あり）",
+                      "scope": "通所リハと介護予防の一体運営",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.city.yokohama.lg.jp/business/bunyabetsu/fukushi-kaigo/kaigo/shinsei/kyotaku/5tebiki/tebiki.files/tebiki_16.pdf"
+                    },
+                    {
+                      "kind": "national_interpretation",
+                      "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（老企第25号）",
+                      "issuer": "厚生省・厚生労働省",
+                      "locator": "第3の七の1（後続改正と現行版は未確認）",
+                      "version": "適用時点の統合現行版未照合",
+                      "scope": "通所リハビリテーション",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED"
+                    }
+                  ],
+                  "practical_checks": [
+                    "両指定の有無、一体運営の記録、通常と予防の利用者数を突合する"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "management",
+              "title": "管理者",
+              "requirements": [
+                {
+                  "id": "management-scope",
+                  "title": "管理者の職務・代行と配置条件を区別",
+                  "aspect": "other",
+                  "description": "管理者は、医師や理学療法士等、条文で定める者に必要な管理の代行をさせることができます。一方、管理者本人の常勤・兼務の可否を、この代行規定だけから判断することはできません。施設区分ごとの管理体制を確認してください。",
+                  "applicability": "国の省令第116条は管理の代行と指揮命令の規定。管理者の員数・資格・兼務の独立した確認は未了。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "指定居宅サービス等の事業の人員、設備及び運営に関する基準（平成11年厚生省令第37号）",
+                      "issuer": "厚生労働省",
+                      "locator": "第116条第1・2項",
+                      "version": "厚生労働省公開本文・適用時点の附則全件照合は未完了",
+                      "scope": "管理者等の責務に限る",
+                      "checked_at_jst": "2026-10-24 23:49 JST",
+                      "verification_state": "PRIMARY_TEXT_CHECKED_SCOPED",
+                      "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0"
+                    },
+                    {
+                      "kind": "national_interpretation",
+                      "title": "指定居宅サービス等及び指定介護予防サービス等に関する基準について（老企第25号）",
+                      "issuer": "厚生省・厚生労働省",
+                      "locator": "第3の七の1（後続改正と現行版は未確認）",
+                      "version": "適用時点の統合現行版未照合",
+                      "scope": "通所リハビリテーション",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED"
+                    }
+                  ],
+                  "practical_checks": [
+                    "管理者の管理業務、代行者の職種・任務、該当施設の管理要件を確認する"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "equipment": {

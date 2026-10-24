@@ -14,14 +14,14 @@ function StaffingRoles({ service, chapter, full }: {
   service: ServiceHandbookData; chapter: HandbookChapter; full: boolean;
 }) {
   const roles = chapter.role_sections;
-  if (chapter.section_id !== "staffing" || !["homevisit", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support", "homerehab", "preventive-homerehab", "preventive-dayrehab", "preventive-homenursing"].includes(service.service_id) || !roles?.length) return null;
+  if (chapter.section_id !== "staffing" || !["homevisit", "dayrehab", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support", "homerehab", "preventive-homerehab", "preventive-dayrehab", "preventive-homenursing"].includes(service.service_id) || !roles?.length) return null;
   const detailHref = handbookChapterHref(service.service_id, "staffing");
-  if (!full) return <nav className="handbook-role-navigation" aria-label="人員基準の職種・役割">
-    <h3>職種・役割別の要件</h3>
+  if (!full) return <nav className="handbook-role-navigation" aria-label="人員基準の職種">
+    <h3>職種ごとの人員基準</h3>
     <ul>{roles.map(role => <li key={role.id}><Link href={`${detailHref}#staffing-role-${role.id}`}>{role.title}の要件を見る →</Link></li>)}</ul>
   </nav>;
-  return <section className="handbook-roles" aria-label="職種・役割別の要件">
-    <h3>職種・役割別の要件</h3>
+  return <section className="handbook-roles" aria-label="職種ごとの人員基準">
+    <h3>職種ごとの人員基準</h3>
     <p className="meta">次の解説は、記載された対象範囲と出典確認状況に限ります。原典の現行性・人手受入は別途確認してください。</p>
     <nav className="handbook-role-navigation" aria-label="職種・役割に移動">
       <ul>{roles.map(role => <li key={role.id}><a href={`#staffing-role-${role.id}`}>{role.title}</a></li>)}</ul>
@@ -72,10 +72,13 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       {chapter.section_id !== "national_qa" && records.length > 0
         ? <p className="handbook-quick-link"><a href={`#handbook-sources-${chapter.section_id}`}>この章の関連資料へ移動 ↓</a></p>
         : null}
+      {chapter.section_id === "staffing" && ["homevisit", "dayrehab"].includes(service.service_id)
+        ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
       {chapter.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
       <h3>確認すること</h3>
       <ul className="handbook-checkpoints">{chapter.checkpoints.map((point, index) => <li key={index}>{point}</li>)}</ul>
-      <StaffingRoles service={service} chapter={chapter} full={full} />
+      {chapter.section_id !== "staffing" || !["homevisit", "dayrehab"].includes(service.service_id)
+        ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
       {chapter.section_id === "national_qa" ? <>
         <h3>関連する国Q&A</h3>
         <p>サービス個別・共通分類の候補を合わせて{service.qa_count.toLocaleString("ja-JP")}件収載しています。共通分類は各問の条件を確認してください。</p>

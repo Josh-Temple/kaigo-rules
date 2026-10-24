@@ -39,7 +39,7 @@ def official_url(value):
 
 
 
-ROLE_TARGETS = {"homevisit", "small-scale-multifunctional",
+ROLE_TARGETS = {"homevisit", "dayrehab", "small-scale-multifunctional",
                 "specific-welfare-equipment-sale", "welfare-equipment-rental",
                 "preventive-welfare-equipment-rental", "preventive-support",
                 "homerehab", "preventive-homerehab", "preventive-dayrehab",
