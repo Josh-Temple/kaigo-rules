@@ -41,7 +41,9 @@ def official_url(value):
 
 ROLE_TARGETS = {"homevisit", "small-scale-multifunctional",
                 "specific-welfare-equipment-sale", "welfare-equipment-rental",
-                "preventive-welfare-equipment-rental", "preventive-support"}
+                "preventive-welfare-equipment-rental", "preventive-support",
+                "homerehab", "preventive-homerehab", "preventive-dayrehab",
+                "preventive-homenursing"}
 ROLE_ASPECTS = {"placement", "qualification", "concurrency", "shifts", "exception", "other"}
 ROLE_EVIDENCE_KINDS = {"national_standard", "national_interpretation", "national_qa",
                        "yokohama_ordinance", "yokohama_handbook"}
