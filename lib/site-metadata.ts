@@ -7,7 +7,7 @@ export const SITE_ORIGIN = "https://kaigo-rules.vercel.app";
 export const INDEXABLE_ROUTES = [
   "/", "/about", "/databases", "/services", "/law", "/rules",
   "/notices", "/qa", "/fees", "/fees/criteria", "/fees/unit-price",
-  "/guide", "/start", "/sources", "/overview", "/services/dayservice",
+  "/guide", "/start", "/sources", "/overview",
   "/legislation",
 ] as const;
 
