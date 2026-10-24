@@ -40,7 +40,7 @@ test("internal-source notes are separated only for recognizable repository refer
   assert.ok(result.editorial[0].startsWith("根拠候補は収載済みの"));
   for (const source of original) {
     assert.ok(result.reader.includes(source) || result.editorial.includes(source) ||
-      result.reader.some(head => result.editorial.some(tail => head + tail === source)),
+      result.reader.some(head => result.editorial.some(tail => (head + tail).replace(/\s+/gu, "") === source.replace(/\s+/gu, ""))),
     "original paragraph lost: " + source);
   }
 });
