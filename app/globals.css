@@ -129,7 +129,7 @@
 .handbook-chapter h3[id^="handbook-sources-"]{scroll-margin-top:20px}
 .handbook-chapter p,.handbook-checkpoints li{overflow-wrap:anywhere}
 
-/* Optional source-scoped staffing roles: present only in the two pilot chapters. */
+/* Role-based staffing requirements: source state is progressive, not publication approval. */
 .handbook-roles{min-width:0;margin:30px 0;padding-top:16px;border-top:2px solid var(--line)}
 .handbook-roles>h3{font-size:1.2rem}
 .handbook-role-navigation{margin:16px 0 24px}
@@ -148,3 +148,35 @@
 .handbook-role-evidence-state{font-size:.82rem;color:var(--muted);margin-left:10px}
 .handbook-role-evidence a{overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){.handbook-role-navigation ul{display:block}.handbook-role-evidence-state{display:block;margin-left:0}.handbook-role-requirement{padding:15px 0}}
+
+/* Reader-first handbooks: make role requirements readable before showing review metadata. */
+.handbook-reader-staffing{margin:24px 0 28px;min-width:0}
+.handbook-chapter .handbook-reader-staffing>h3{font-size:1.2rem;margin:14px 0 8px}
+.handbook-reader-notice{font-size:.92rem;color:#525b67;line-height:1.75;max-width:70ch}
+.handbook-reader-index{display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0 20px;text-align:left;font-size:.94rem}
+.handbook-reader-index a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;text-decoration:underline}
+.handbook-reader-brief{border-top:1px solid var(--line);margin-top:14px}
+.handbook-reader-brief>div{display:grid;grid-template-columns:minmax(7em,11em) minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.handbook-reader-brief strong{font-size:1rem}
+.handbook-reader-brief span{overflow-wrap:anywhere}
+.handbook-reader-detail-link{margin:16px 0}
+.handbook-reader-profession{scroll-margin-top:24px;padding:20px 0;border-top:1px solid var(--line);max-width:72ch}
+.handbook-chapter .handbook-reader-profession h4{font-size:1.22rem;margin:0 0 12px;letter-spacing:0}
+.handbook-reader-profession p{margin:10px 0;line-height:1.85}
+.handbook-reader-shared{border-top:2px solid var(--line);padding-top:12px}
+.handbook-reader-shared h4{font-size:1.15rem}
+.handbook-reader-shared h5{font-size:1rem;margin:20px 0 7px}
+.handbook-reader-reference{font-size:.84rem;color:var(--muted);line-height:1.7}
+.handbook-editorial-details{border-block:1px solid var(--line);padding:10px 0;margin:22px 0;color:#525b67;font-size:.9rem;max-width:76ch}
+.handbook-editorial-details summary{cursor:pointer;padding:9px 0;min-height:44px;display:list-item}
+.handbook-editorial-details[open]{padding-bottom:14px}
+.handbook-editorial-details p{overflow-wrap:anywhere;line-height:1.75}
+.handbook-reader-checks h6{font-size:.95rem;margin:14px 0 5px}
+.handbook-reader-checks ul{padding-left:1.4rem;margin:6px 0}
+.handbook-reader-checks li{margin:6px 0}
+.handbook-role-applicability{font-size:.93rem}
+@media(max-width:600px){
+  .handbook-reader-brief>div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .handbook-reader-index{gap:6px 14px}
+  .handbook-reader-profession{padding:18px 0}
+}
