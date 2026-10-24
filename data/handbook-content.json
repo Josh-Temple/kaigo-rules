@@ -3527,6 +3527,276 @@
             "提供形態と現況の点検：「看護職・リハ専門職・管理者の指示系統」について職種・資格・雇用契約・兼務と勤務時間を調べる",
             "書類・記録の突合：「要支援者の療養生活・自立維持のための訪問看護」を提供する曜日や時間帯の実績と勤務形態一覧を対応付ける",
             "原典・区分と未確認事項：「通常訪問看護と予防区分の計画・算定差」による別の人員条件・読替えがないか条文と指定通知を確認する"
+          ],
+          "role_sections": [
+            {
+              "id": "mesh-placement",
+              "title": "職種・員数（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-station-nurse-fte",
+                  "title": "介護予防訪問看護ステーションの保健師・看護師・准看護師は常勤換算方法で2.5以上",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】介護予防訪問看護ステーションの保健師・看護師・准看護師は常勤換算方法で2.5以上。条件候補：病院・診療所以外のステーション型、看護職員に限る。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第63条第1項第1号イ",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-station-rehab",
+                  "title": "理学療法士・作業療法士・言語聴覚士は事業所の実情に応じた適当数",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】理学療法士・作業療法士・言語聴覚士は事業所の実情に応じた適当数。条件候補：ステーション型のみ。一律の固定人数・常勤義務は推定しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第63条第1項第1号ロ",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-medical-nurse",
+                  "title": "病院・診療所型は指定介護予防訪問看護の提供に当たる看護職員を適当数",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】病院・診療所型は指定介護予防訪問看護の提供に当たる看護職員を適当数。条件候補：医療機関型のみ。ステーション2.5常勤換算を転用しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第63条第1項第2号",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-station-fulltime-nurse",
+                  "title": "第63条第1項第1号イの看護職員のうち1名は常勤",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】第63条第1項第1号イの看護職員のうち1名は常勤。条件候補：ステーション型の看護職員に限定。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第63条第2項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-exception",
+              "title": "条件・例外（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-integrated-equivalence",
+                  "title": "省令37号第60条第1・2項の人員基準を満たす場合、予防側第63条第1・2項を満たすとみなせる",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】省令37号第60条第1・2項の人員基準を満たす場合、予防側第63条第1・2項を満たすとみなせる。条件候補：通常・予防の両指定、同一事業所、一体運営、通常側基準充足を要する。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第63条第3項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-management",
+              "title": "管理者（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-station-manager",
+                  "title": "ステーションごとに専ら職務に従事する常勤管理者を置く",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】ステーションごとに専ら職務に従事する常勤管理者を置く。条件候補：介護予防訪問看護ステーションのみ。兼務例外は別要件。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第64条第1項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-concurrent",
+                  "title": "管理上支障がない場合に当該ステーションの他職務又は他の事業所・施設等の職務に従事できる",
+                  "aspect": "concurrency",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】管理上支障がない場合に当該ステーションの他職務又は他の事業所・施設等の職務に従事できる。条件候補：管理に支障がない場合のみ。常勤を無条件に免除しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第64条第1項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-qualification",
+                  "title": "管理者は原則として保健師又は看護師",
+                  "aspect": "qualification",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】管理者は原則として保健師又は看護師。条件候補：原則資格に准看護師は含めない。やむを得ない理由の例外は別。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第64条第2項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-exception",
+                  "title": "管理者資格についてやむを得ない理由がある場合の例外を規定",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】管理者資格についてやむを得ない理由がある場合の例外を規定。条件候補：無条件の准看護師資格承認ではない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第64条第2項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-manager-skill",
+                  "title": "適切な介護予防訪問看護を行うために必要な知識・技能を有すること",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】適切な介護予防訪問看護を行うために必要な知識・技能を有すること。条件候補：資格とは別の能力要件。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homenursing。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第64条第3項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homenursingの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "equipment": {
@@ -3724,6 +3994,145 @@
             "提供形態と現況の点検：「医師・理学療法士・作業療法士・言語聴覚士の連携」について職種・資格・雇用契約・兼務と勤務時間を調べる",
             "書類・記録の突合：「医師の関与の下で行う居宅の生活動作訓練」を提供する曜日や時間帯の実績と勤務形態一覧を対応付ける",
             "原典・区分と未確認事項：「病院・診療所等の提供形態と通所リハの区別」による別の人員条件・読替えがないか条文と指定通知を確認する"
+          ],
+          "role_sections": [
+            {
+              "id": "mesh-placement",
+              "title": "職種・員数（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-physician-minimum",
+                  "title": "指定訪問リハビリテーションの提供に必要な医師を事業所ごとに1以上置く",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】指定訪問リハビリテーションの提供に必要な医師を事業所ごとに1以上置く。条件候補：指定訪問リハビリテーション事業所ごと。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "411M50000100037#第76条第1項第1号",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-rehab-combined-minimum",
+                  "title": "理学療法士、作業療法士又は言語聴覚士を1以上置く",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】理学療法士、作業療法士又は言語聴覚士を1以上置く。条件候補：3職種それぞれ1以上ではない。常勤換算1.0とは読み替えない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "411M50000100037#第76条第1項第2号",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-physician-full-time",
+                  "title": "第1項第1号の医師は常勤でなければならない",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】第1項第1号の医師は常勤でなければならない。条件候補：PT・OT・ST全員の常勤義務へ拡張しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "411M50000100037#第76条第2項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-exception",
+              "title": "条件・例外（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-deemed-facility-physician",
+                  "title": "法第72条第1項の指定みなしを受けた老健又は介護医療院は、該当施設の人員基準を満たす場合に前項の医師常勤要件を満たしたとみなせる",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】法第72条第1項の指定みなしを受けた老健又は介護医療院は、該当施設の人員基準を満たす場合に前項の医師常勤要件を満たしたとみなせる。条件候補：指定みなし成立・老健第2条又は介護医療院第4条の人員基準充足。医師常勤のみなしに限定。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "411M50000100037#第76条第3項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-deemed-integrated-preventive",
+                  "title": "双方の指定と同一事業所での一体運営があり、省令第35号第79条第1項から第3項を満たす場合に前三項を満たすとみなせる",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】双方の指定と同一事業所での一体運営があり、省令第35号第79条第1項から第3項を満たす場合に前三項を満たすとみなせる。条件候補：双方指定・同一事業所・一体運営・予防側の基準充足を要する。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "411M50000100037#第76条第4項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "equipment": {
@@ -3917,6 +4326,145 @@
             "提供形態と現況の点検：「医師とリハ専門職の目標設定・勤務記録」について職種・資格・雇用契約・兼務と勤務時間を調べる",
             "書類・記録の突合：「要支援者の生活機能維持を目指す居宅での動作練習」を提供する曜日や時間帯の実績と勤務形態一覧を対応付ける",
             "原典・区分と未確認事項：「通常訪問リハと対象者・算定・評価方法を区分」による別の人員条件・読替えがないか条文と指定通知を確認する"
+          ],
+          "role_sections": [
+            {
+              "id": "mesh-placement",
+              "title": "職種・員数（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-physician-minimum",
+                  "title": "指定介護予防訪問リハビリテーション事業所ごとに、サービス提供に必要な医師を1以上置く",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】指定介護予防訪問リハビリテーション事業所ごとに、サービス提供に必要な医師を1以上置く。条件候補：本号だけから専従義務を推定しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第79条第1項第1号",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-rehab-combined-minimum",
+                  "title": "理学療法士、作業療法士又は言語聴覚士を1以上置く",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】理学療法士、作業療法士又は言語聴覚士を1以上置く。条件候補：3職種それぞれ1以上ではない。常勤換算2.5を加えない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第79条第1項第2号",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-physician-full-time",
+                  "title": "第79条第1項第1号の医師は常勤でなければならない",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】第79条第1項第1号の医師は常勤でなければならない。条件候補：PT・OT・STに同じ常勤義務を拡張しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第79条第2項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-exception",
+              "title": "条件・例外（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-deemed-facility-physician",
+                  "title": "指定みなしの介護老人保健施設又は介護医療院が施設基準を満たす場合、第79条第2項の医師常勤要件を満たすとみなせる",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】指定みなしの介護老人保健施設又は介護医療院が施設基準を満たす場合、第79条第2項の医師常勤要件を満たすとみなせる。条件候補：指定みなし成立・老健基準第2条又は介護医療院基準第4条の充足が必要。全員数免除ではない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第79条第3項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-deemed-integrated-regular",
+                  "title": "通常の指定訪問リハビリテーションとの双方の指定、同一事業所の一体運営、通常側基準充足を条件として第79条第1項から第3項を満たすとみ…",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】通常の指定訪問リハビリテーションとの双方の指定、同一事業所の一体運営、通常側基準充足を条件として第79条第1項から第3項を満たすとみなせる。条件候補：双方指定・同一事業所・一体運営・省令第37号第76条第1〜3項の充足を要する。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-homerehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第79条第4項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-homerehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "equipment": {
@@ -5302,6 +5850,245 @@
             "提供形態と現況の点検：「医師とリハ専門職・介護職の目標設定と勤務」について職種・資格・雇用契約・兼務と勤務時間を調べる",
             "書類・記録の突合：「要支援者の活動・参加と生活機能改善のための通所リハ」を提供する曜日や時間帯の実績と勤務形態一覧を対応付ける",
             "原典・区分と未確認事項：「要介護向け通所リハと報酬・計画を区別」による別の人員条件・読替えがないか条文と指定通知を確認する"
+          ],
+          "role_sections": [
+            {
+              "id": "mesh-placement",
+              "title": "職種・員数（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-physician-minimum",
+                  "title": "事業所ごとにサービス提供に必要な医師1以上を置く",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】事業所ごとにサービス提供に必要な医師1以上を置く。条件候補：常勤要件は第117条第3項で別に確認。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第1項第1号",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-unit-staff-up-to-10",
+                  "title": "単位ごとの利用者10人以下ではPT・OT・ST、看護職員または介護職員のうち提供時間を通じ専ら従事する者1以上を確保する",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】単位ごとの利用者10人以下ではPT・OT・ST、看護職員または介護職員のうち提供時間を通じ専ら従事する者1以上を確保する。条件候補：サービス単位ごと・提供時間中専従。一体運営時の合算利用者数に注意。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第1項第2号イ",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-unit-staff-over-10",
+                  "title": "単位ごとの利用者10人超では、利用者数を10で除した数以上の従事者を提供時間を通じ専従で確保する",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】単位ごとの利用者10人超では、利用者数を10で除した数以上の従事者を提供時間を通じ専従で確保する。条件候補：10人超・サービス単位ごと。人数を任意に切り捨てない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第1項第2号イ",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-rehab-per-100",
+                  "title": "専らリハビリテーション提供に当たるPT・OT・STを利用者100人又はその端数ごとに1以上確保する",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】専らリハビリテーション提供に当たるPT・OT・STを利用者100人又はその端数ごとに1以上確保する。条件候補：イの人員のうちのリハ専門職。看護・介護職だけで代替しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第1項第2号ロ",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-physician-full-time",
+                  "title": "第117条第1項第1号の医師は常勤でなければならない",
+                  "aspect": "placement",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】第117条第1項第1号の医師は常勤でなければならない。条件候補：医師の要件のみ。PT・OT・STへ一律に拡張しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第3項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mesh-exception",
+              "title": "条件・例外（Research Mesh未審査）",
+              "requirements": [
+                {
+                  "id": "mesh-clinic-unit-alternative",
+                  "title": "診療所である事業所は第1項第2号に代え、10人以下1以上・10人超利用者数÷10以上の提供時間中専従人員を確保する特則を適用できる",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】診療所である事業所は第1項第2号に代え、10人以下1以上・10人超利用者数÷10以上の提供時間中専従人員を確保する特則を適用できる。条件候補：診療所に限定。サービス単位ごと。医師配置要件は残る。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第2項第1号",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-clinic-rehab-or-nurse",
+                  "title": "診療所特則の第1号人員のうち、専ら当該サービスに当たるPT・OT・STまたは類似サービスに1年以上従事した看護師を常勤換算0.1以上…",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】診療所特則の第1号人員のうち、専ら当該サービスに当たるPT・OT・STまたは類似サービスに1年以上従事した看護師を常勤換算0.1以上確保する。条件候補：診療所特則に限定。経験看護師の要件を准看護師・全事業所へ拡張しない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第2項第2号",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-deemed-facility-physician",
+                  "title": "指定みなしの老健・介護医療院が所定の施設人員基準を満たす場合、第3項の医師常勤要件を満たすとみなせる",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】指定みなしの老健・介護医療院が所定の施設人員基準を満たす場合、第3項の医師常勤要件を満たすとみなせる。条件候補：指定みなし成立・施設基準充足。第1・2項全体の免除ではない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第4項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                },
+                {
+                  "id": "mesh-deemed-integrated-regular",
+                  "title": "通常通所リハの指定を併せて受け同一事業所で一体運営し、省令第37号第111条第1〜4項の人員基準を満たす場合、第117条第1〜4項を…",
+                  "aspect": "exception",
+                  "description": "【Research Mesh隔離候補・法令適合未審査】通常通所リハの指定を併せて受け同一事業所で一体運営し、省令第37号第111条第1〜4項の人員基準を満たす場合、第117条第1〜4項を満たすとみなせる。条件候補：両指定・同一事業所・一体運営・通常側基準充足。単なる併設ではない。施行版・改正附則・条例・準用先との最終照合は未完了です。",
+                  "applicability": "対象：preventive-dayrehab。国基準の現行版、指定権者条例、事業所への具体的適用確認は未完了です。",
+                  "verification_state": "EVIDENCE_GAP",
+                  "evidence": [
+                    {
+                      "kind": "national_standard",
+                      "title": "Research Mesh固定資料における基準省令の参考条項",
+                      "issuer": "厚生労働省（原典候補）",
+                      "locator": "418M60000100035#第117条第5項",
+                      "version": "2026-10-24候補：当日施行版・改正附則・適用自治体条例未照合",
+                      "scope": "preventive-dayrehabの参考候補。人手での法令適合認定なし",
+                      "checked_at_jst": "",
+                      "verification_state": "SOURCE_CANDIDATE_UNVERIFIED",
+                      "note": "原文の限定参照と現行法適合性を混同しない。"
+                    }
+                  ],
+                  "practical_checks": [
+                    "配置状況・資格証・勤務形態一覧表と条項候補の適用条件を別に確認する（実務上の確認例）。",
+                    "施行版・経過措置・準用・指定権者条例との照合結果を記録する。"
+                  ]
+                }
+              ]
+            }
           ]
         },
         "equipment": {
