@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ serviceId
   const { serviceId } = await params;
   const service = serviceHandbook(serviceId);
   if (!service) notFound();
-  return pageMetadata(service.label + "の手引", "開設・人員・設備・運営・報酬など15章の手引と関連する法令・通知・Q&A。", `/services/${serviceId}`);
+  return pageMetadata(service.label + "の手引", "開設・人員・設備・運営・報酬など15章の手引と関連する法令・通知・Q&A。", `/services/${serviceId}`, false);
 }
 export default async function ServicePage({ params }: { params: Promise<{ serviceId: string }> }) {
   const service = serviceHandbook((await params).serviceId);
