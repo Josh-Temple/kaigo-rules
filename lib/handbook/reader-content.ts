@@ -82,7 +82,7 @@ export function separateHandbookParagraphs(paragraphs) {
   const editorial = [];
   for (const paragraph of paragraphs) {
     if (!/data\/(?:services\/|qa-|notice-|care-|handbook-|remuneration-)/u.test(paragraph) &&
-        !/^出典候補：/u.test(paragraph)) {
+        !paragraph.includes("出典候補：")) {
       reader.push(paragraph);
       continue;
     }
