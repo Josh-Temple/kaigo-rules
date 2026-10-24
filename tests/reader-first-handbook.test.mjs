@@ -58,3 +58,25 @@ test("reader rendering is guarded, internal-source details are optional, and all
   assert.equal(Object.values(handbook.services).reduce((n, s) => n + Object.keys(s.chapters).length, 0), 585);
   assert.ok(!handbook.services.dayservice.chapters.staffing.role_sections, "unreviewed #553 roles must not be silently imported");
 });
+
+test("dayservice Yokohama 2026 staffing corrections preserve scope and exceptions", () => {
+  const byId = Object.fromEntries(DAY_SERVICE_STAFFING.map(role => [role.id, role]));
+  const counselor = byId["life-counselor"].points.join(" ");
+  assert.match(counselor, /提供日ごと/);
+  assert.match(counselor, /二重に数えません/);
+  assert.match(counselor, /9時間/);
+  const nurse = byId.nurse.points.join(" ");
+  assert.match(nurse, /提供時間を通じて専従する必要はない/);
+  assert.match(nurse, /密接かつ適切な連携/);
+  assert.match(nurse, /健康状態の確認/);
+  const care = byId["care-worker"].points.join(" ");
+  assert.match(care, /常時1人以上/);
+  assert.match(care, /平均提供時間数/);
+  const training = byId["functional-training"].points.join(" ");
+  assert.match(training, /事業所のほかの職務/);
+  assert.match(training, /横浜市条例第91条第8項/);
+  const manager = byId.manager.points.join(" ");
+  assert.match(manager, /45分（0\.75時間）/);
+  assert.match(manager, /全国一律の法定勤務時間ではありません/);
+  assert.match(DAY_SERVICE_STAFFING_SHARED[0].text, /事業所として少なくとも1人/);
+});
