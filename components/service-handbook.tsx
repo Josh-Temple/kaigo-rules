@@ -14,7 +14,7 @@ function StaffingRoles({ service, chapter, full }: {
   service: ServiceHandbookData; chapter: HandbookChapter; full: boolean;
 }) {
   const roles = chapter.role_sections;
-  if (chapter.section_id !== "staffing" || !["homevisit", "small-scale-multifunctional"].includes(service.service_id) || !roles?.length) return null;
+  if (chapter.section_id !== "staffing" || !["homevisit", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support"].includes(service.service_id) || !roles?.length) return null;
   const detailHref = handbookChapterHref(service.service_id, "staffing");
   if (!full) return <nav className="handbook-role-navigation" aria-label="人員基準の職種・役割">
     <h3>職種・役割別の要件</h3>
