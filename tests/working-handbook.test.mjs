@@ -10,6 +10,7 @@ const readJson = path => JSON.parse(fs.readFileSync(path, "utf8"));
 
 const muse36 = readJson("tests/fixtures/muse-36-preintegration-manifest.json").chapters;
 const meshFour = readJson("tests/fixtures/research-mesh-four-staffing-original.json").service_chapters;
+const meshNextFour = readJson("tests/fixtures/research-mesh-next-four-staffing-original.json").service_chapters;
 
 // Muse's AI-authored explanations are additive drafts. Older handbook text must be exact.
 function assertMuseExtension(current, legacy, id) {
@@ -252,6 +253,15 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
         }
         assert.equal(role_sections?.length, meshFour[serviceId].role_groups);
         assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), meshFour[serviceId].requirements);
+      } else if (meshNextFour[serviceId] && sectionId === "staffing") {
+        const { role_sections, ...unchanged } = chapters[sectionId];
+        if (muse36[`${serviceId}/${sectionId}`]) {
+          assertMuseExtension(unchanged, authored, `${serviceId}/${sectionId}`);
+        } else {
+          assert.deepEqual(unchanged, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+        }
+        assert.ok(role_sections?.length >= 1 && role_sections?.length <= 3);
+        assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), meshNextFour[serviceId].selected_rules);
       } else if (muse36[`${serviceId}/${sectionId}`]) {
         assertMuseExtension(chapters[sectionId], authored, `${serviceId}/${sectionId}`);
       } else {
@@ -416,7 +426,7 @@ test("staffing roles are an optional backward-compatible projection", () => {
       const value = authored[service.service_id]?.chapters?.[chapter.section_id];
       assert.deepEqual(chapter.role_sections, value?.role_sections, service.service_id + "/" + chapter.section_id);
       if (chapter.role_sections) {
-        assert.ok(["homevisit", "small-scale-multifunctional", ...Object.keys(meshFour)].includes(service.service_id));
+        assert.ok(["homevisit", "small-scale-multifunctional", ...Object.keys(meshFour), ...Object.keys(meshNextFour)].includes(service.service_id));
         assert.equal(chapter.section_id, "staffing");
       }
     }
