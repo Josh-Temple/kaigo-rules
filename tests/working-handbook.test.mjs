@@ -237,6 +237,17 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
           `#522 baseline checkpoints changed: ${serviceId}:${sectionId}`);
         assert.deepEqual(current, bEdits.get(`${serviceId}/${sectionId}`).after,
           `Worker B evidence mismatch: ${serviceId}:${sectionId}`);
+      } else if (serviceId === "dayrehab" && sectionId === "staffing") {
+        // B adds optional role_sections without rewriting the canonical #522 chapter fields.
+        const { role_sections, ...baselineFields } = chapters[sectionId];
+        if (muse36[`${serviceId}/${sectionId}`]) {
+          assertMuseExtension(baselineFields, authored, `${serviceId}/${sectionId}`);
+        } else {
+          assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+        }
+        assert.equal(role_sections?.length, 4, "dayrehab staffing roles must remain scoped");
+        assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), 7);
+        assert.ok(role_sections.every(role => role.requirements.every(req => req.verification_state === "EVIDENCE_GAP")));
       } else if (serviceId === "homevisit" && sectionId === "staffing") {
         // The pilot adds optional role_sections without changing the #522 baseline fields.
         const { role_sections, ...baselineFields } = chapters[sectionId];
@@ -426,7 +437,7 @@ test("staffing roles are an optional backward-compatible projection", () => {
       const value = authored[service.service_id]?.chapters?.[chapter.section_id];
       assert.deepEqual(chapter.role_sections, value?.role_sections, service.service_id + "/" + chapter.section_id);
       if (chapter.role_sections) {
-        assert.ok(["homevisit", "small-scale-multifunctional", ...Object.keys(meshFour), ...Object.keys(meshNextFour)].includes(service.service_id));
+        assert.ok(["homevisit", "dayrehab", "small-scale-multifunctional", ...Object.keys(meshFour), ...Object.keys(meshNextFour)].includes(service.service_id));
         assert.equal(chapter.section_id, "staffing");
       }
     }
