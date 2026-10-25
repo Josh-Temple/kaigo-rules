@@ -11,7 +11,7 @@ test("only eligible two-service staffing is rendered ahead of legacy paragraphs"
   assert.match(component, /\["homevisit", "dayrehab", "dayservice"\]\.includes\(service\.service_id\)/);
   assert.match(component, /<StaffingRoles service=\{service\} chapter=\{chapter\} full=\{full\} \/>/);
   assert.match(component, /<h4>\{readerLabel\(role\.title\)\}<\/h4>/);
-  assert.match(component, /<h5>\{requirement\.title\}<\/h5>/);
+  assert.ok(component.includes("<h5>{readerRequirementTitle("));
   assert.match(component, /requirement\.verification_state === "EVIDENCE_GAP"/);
   assert.match(component, /evidence\.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED"/);
   assert.ok(generator.includes('ROLE_TARGETS = {"homevisit", "dayrehab",'));
