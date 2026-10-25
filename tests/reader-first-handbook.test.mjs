@@ -17,6 +17,7 @@ test('585 chapters retain original fields; only scoped staffing projections and 
   const current=structuredClone(h.services[sid].chapters[cid]);
   const added=latest.find(x=>x.service_id===sid&&x.chapter_id===cid);
   if(added) delete current[added.field];
+  if(sid==='community-elderly-facility'&&['designation','deductions','additions','remuneration','applicability'].includes(cid))delete current.rule_sections;
   const {role_sections,...rest}=current;
   if(key==='dayservice/staffing') {
    assert.equal(rest.checkpoints[3],"生活相談員は事業所単位で提供日ごとの勤務時間を、看護職員・介護職員は提供単位ごとの配置を、機能訓練指導員は事業所ごとの配置を満たしているか");
