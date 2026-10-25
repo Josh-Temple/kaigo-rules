@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { readerLabel, requirementCopy, separateHandbookParagraphs } from '../lib/handbook/reader-content.ts';
 const h=JSON.parse(fs.readFileSync('data/handbook-content.json','utf8'));
 const baseline=JSON.parse(fs.readFileSync('tests/fixtures/reader-first-baseline-sha256.json','utf8'));
+const latest=JSON.parse(fs.readFileSync("docs/handbook-quality/2026-10-25-research-mesh-integration.json","utf8")).inputs;
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const chapter=sid=>h.services[sid].chapters.staffing;
 
@@ -13,7 +14,9 @@ test('585 chapters retain original fields; only scoped staffing projections and 
  let count=0;
  for(const [key,expected] of Object.entries(baseline.chapters)) {
   const [sid,cid]=key.split('/');count++;
-  const current=h.services[sid].chapters[cid];
+  const current=structuredClone(h.services[sid].chapters[cid]);
+  const added=latest.find(x=>x.service_id===sid&&x.chapter_id===cid);
+  if(added) delete current[added.field];
   const {role_sections,...rest}=current;
   if(key==='dayservice/staffing') {
    assert.equal(rest.checkpoints[3],"生活相談員は事業所単位で提供日ごとの勤務時間を、看護職員・介護職員は提供単位ごとの配置を、機能訓練指導員は事業所ごとの配置を満たしているか");
