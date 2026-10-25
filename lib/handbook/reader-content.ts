@@ -25,7 +25,7 @@ export function readerRequirementTitle(
 
 /** Never promote a machine identifier into a visible source title. */
 export function readerEvidenceTitle(title: string): { label: string; technical: boolean } {
-  const technical = /^(?:data|docs|scripts|tests)\\/[A-Za-z0-9_./-]+(?:\\.(?:json|md|pdf|txt))?$/u.test(title)
+  const technical = /^(?:data|docs|scripts|tests)\/[A-Za-z0-9_./-]+(?:\.(?:json|md|pdf|txt))?$/u.test(title)
     || /^(?:[a-f0-9]{40}|[a-f0-9]{64})$/iu.test(title);
   return { label: technical ? "資料識別情報（名称未確認）" : readerLabel(title), technical };
 }
