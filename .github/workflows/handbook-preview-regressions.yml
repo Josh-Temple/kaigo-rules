@@ -35,6 +35,7 @@ jobs:
           node-version: '22'
       - name: Independently check reader conditions and original chapter preservation
         run: |
+          python scripts/build_handbook_site.py
           python scripts/build_handbook_site.py --check
           node --experimental-strip-types --test tests/reader-first-handbook.test.mjs
       - name: Verify dayservice legacy regressions
