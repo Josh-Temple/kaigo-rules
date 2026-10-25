@@ -76,7 +76,7 @@ def role_url(value):
     return value
 
 
-RULE_TARGETS = {('community-elderly-facility', 'equipment'), ('community-elderly-facility', 'business_continuity'), ('community-elderly-facility', 'incident_and_infection'), ('community-elderly-facility', 'safeguarding'), ('community-elderly-facility', 'notifications'), ('community-elderly-facility', 'records'), ('community-elderly-facility', 'operations')}
+RULE_TARGETS = {('community-elderly-facility', 'designation'), ('community-elderly-facility', 'deductions'), ('community-elderly-facility', 'additions'), ('community-elderly-facility', 'remuneration'), ('community-elderly-facility', 'applicability'), ('community-elderly-facility', 'equipment'), ('community-elderly-facility', 'business_continuity'), ('community-elderly-facility', 'incident_and_infection'), ('community-elderly-facility', 'safeguarding'), ('community-elderly-facility', 'notifications'), ('community-elderly-facility', 'records'), ('community-elderly-facility', 'operations')}
 
 
 def validate_role_sections(sid, section, roles, field="role_sections"):
