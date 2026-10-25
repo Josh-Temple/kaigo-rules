@@ -10,10 +10,20 @@ const readJson = path => JSON.parse(fs.readFileSync(path, "utf8"));
 
 const muse36 = readJson("tests/fixtures/muse-36-preintegration-manifest.json").chapters;
 const meshFour = readJson("tests/fixtures/research-mesh-four-staffing-original.json").service_chapters;
+const meshLatest = readJson("docs/handbook-quality/2026-10-25-research-mesh-integration.json").inputs;
+const meshLatestTarget = (sid, cid) => meshLatest.find(x => x.service_id === sid && x.chapter_id === cid);
+const previousMeshFields = (value, sid, cid) => {
+  const field = meshLatestTarget(sid, cid)?.field;
+  if (!field) return value;
+  const copy = { ...value }; delete copy[field]; return copy;
+};
+
 const meshNextFour = readJson("tests/fixtures/research-mesh-next-four-staffing-original.json").service_chapters;
 
 // Muse's AI-authored explanations are additive drafts. Older handbook text must be exact.
 function assertMuseExtension(current, legacy, id) {
+  const [sid, cid] = id.split("/");
+  current = previousMeshFields(current, sid, cid);
   const entry = muse36[id];
   assert.ok(entry, "unlisted Muse chapter: " + id);
   assert.equal(current.summary, entry.summary, "Muse summary differs: " + id);
@@ -46,6 +56,8 @@ test("Muse extensions are confined to 36 recorded sparse chapters and retain the
     assertMuseExtension(current, null, key);
     const expectedKeys = ["checkpoints", "paragraphs", "summary"];
     if (key === "dayservice/staffing" || key === "homevisit/staffing" || key === "preventive-welfare-equipment-rental/staffing") expectedKeys.push("role_sections");
+    const latestField = meshLatestTarget(service, chapter)?.field;
+    if (latestField) expectedKeys.push(latestField);
     assert.deepEqual(Object.keys(current).toSorted(), expectedKeys.toSorted(),
       "unexpected Muse target properties: " + key);
     paragraphs += entry.append_paragraphs;
@@ -211,7 +223,7 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
   const proto = Object.fromEntries(bridge.chapters.map(c => [c.section_id, c.candidate_paragraphs.map(p => p.text)]));
   let total = 0;
   for (const [serviceId, allowed] of Object.entries(manifest)) {
-    const chapters = content.services[serviceId]?.chapters || {};
+    const chapters = Object.fromEntries(Object.entries(content.services[serviceId]?.chapters || {}).map(([cid,value]) => [cid,previousMeshFields(value,serviceId,cid)]));
     const previous = legacy.services[serviceId];
     for (const [sectionId, authored] of Object.entries(previous)) {
       if (revisedChapters.has(`${serviceId}/${sectionId}`)) {
@@ -442,7 +454,7 @@ test("staffing roles are an optional backward-compatible projection", () => {
       const value = authored[service.service_id]?.chapters?.[chapter.section_id];
       assert.deepEqual(chapter.role_sections, value?.role_sections, service.service_id + "/" + chapter.section_id);
       if (chapter.role_sections) {
-        assert.ok(["homevisit", "dayrehab", "dayservice", "small-scale-multifunctional", ...Object.keys(meshFour), ...Object.keys(meshNextFour)].includes(service.service_id));
+        assert.ok(["homevisit", "dayrehab", "dayservice", "small-scale-multifunctional", ...Object.keys(meshFour), ...Object.keys(meshNextFour), ...meshLatest.filter(x => x.field === "role_sections").map(x => x.service_id)].includes(service.service_id));
         assert.equal(chapter.section_id, "staffing");
       }
     }
@@ -474,7 +486,7 @@ except ValueError as exc:
   const check = (roles, sid = "homevisit", chapter = "staffing") =>
     spawnSync("python", ["-c", script], { input: JSON.stringify([sid, chapter, roles]), encoding: "utf8" });
   assert.equal(check(valid).status, 0);
-  assert.equal(check(valid, "homebath").status, 2);
+  assert.equal(check(valid, "night-homevisit").status, 2);
   assert.equal(check(valid, "homevisit", "equipment").status, 2);
   assert.equal(check([...valid, valid]).status, 2);
   assert.equal(check([{ ...valid[0], evil: "unknown" }]).status, 2);

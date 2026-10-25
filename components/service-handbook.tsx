@@ -14,22 +14,29 @@ const evidenceNames = {
 function StaffingRoles({ service, chapter, full }: {
   service: ServiceHandbookData; chapter: HandbookChapter; full: boolean;
 }) {
-  const roles = chapter.role_sections;
-  if (chapter.section_id !== "staffing" || !["homevisit", "dayrehab", "dayservice", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support", "homerehab", "preventive-homerehab", "preventive-dayrehab", "preventive-homenursing"].includes(service.service_id) || !roles?.length) return null;
-  const detailHref = handbookChapterHref(service.service_id, "staffing");
-  if (!full) return <nav className="handbook-role-navigation" aria-label="人員基準の職種">
-    <h3>職種ごとの人員基準</h3>
-    <ul>{roles.map(role => <li key={role.id}><Link href={`${detailHref}#staffing-role-${role.id}`}>{readerLabel(role.title)}の要件を見る →</Link></li>)}</ul>
+  const staffing = chapter.section_id === "staffing";
+  const roles = staffing ? chapter.role_sections : chapter.rule_sections;
+  const groupHeading = staffing ? "職種ごとの人員基準" : "項目ごとの要件と条件";
+  const anchor = staffing ? "staffing-role" : `chapter-${chapter.section_id}-rule`;
+  const staffingServices = ["homevisit", "dayrehab", "dayservice", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support", "homerehab", "preventive-homerehab", "preventive-dayrehab", "preventive-homenursing", "homebath", "homenursing", "regular-round", "shortstay-life", "shortstay-medical", "preventive-homebath", "preventive-shortstay-life", "preventive-shortstay-medical", "specific-facility", "preventive-specific-facility", "community-specific-facility", "community-elderly-facility", "specific-preventive-welfare-equipment-sale"];
+  const ruleChapters = ["equipment", "operations", "records", "safeguarding", "incident_and_infection", "business_continuity", "notifications"];
+  const allowed = staffing ? staffingServices.includes(service.service_id)
+    : service.service_id === "community-elderly-facility" && ruleChapters.includes(chapter.section_id);
+  if (!allowed || !roles?.length) return null;
+  const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
+  if (!full) return <nav className="handbook-role-navigation" aria-label={groupHeading}>
+    <h3>{groupHeading}</h3>
+    <ul>{roles.map(role => <li key={role.id}><Link href={`${detailHref}#${anchor}-${role.id}`}>{readerLabel(role.title)}の要件を見る →</Link></li>)}</ul>
   </nav>;
-  return <section className="handbook-roles" aria-label="職種ごとの人員基準">
-    <h3>職種ごとの人員基準</h3>
+  return <section className="handbook-roles" aria-label={groupHeading}>
+    <h3>{groupHeading}</h3>
     <p className="meta">次の解説は、記載された対象範囲と出典確認状況に限ります。原典の現行性・人手受入は別途確認してください。</p>
-    <nav className="handbook-role-navigation" aria-label="職種・役割に移動">
-      <ul>{roles.map(role => <li key={role.id}><a href={`#staffing-role-${role.id}`}>{readerLabel(role.title)}</a></li>)}</ul>
+    <nav className="handbook-role-navigation" aria-label={staffing ? "職種・役割に移動" : "要件の項目に移動"}>
+      <ul>{roles.map(role => <li key={role.id}><a href={`#${anchor}-${role.id}`}>{readerLabel(role.title)}</a></li>)}</ul>
     </nav>
-    {roles.map(role => <section key={role.id} id={`staffing-role-${role.id}`} className="handbook-role">
+    {roles.map(role => <section key={role.id} id={`${anchor}-${role.id}`} className="handbook-role">
       <h4>{readerLabel(role.title)}</h4>
-      {role.requirements.map(requirement => <section key={requirement.id} className="handbook-role-requirement" id={`staffing-role-${role.id}-requirement-${requirement.id}`}>
+      {role.requirements.map(requirement => <section key={requirement.id} className="handbook-role-requirement" id={`${anchor}-${role.id}-requirement-${requirement.id}`}>
         <h5>{requirement.title}</h5>
         {requirement.verification_state === "EVIDENCE_GAP" ? <p className="handbook-role-warning">根拠未確認：要件の適用条件と原典の照合が必要です。</p> : null}
         {requirementCopy(requirement.description).split("\n").map((paragraph, index) => <p key={index}>{paragraph}</p>)}

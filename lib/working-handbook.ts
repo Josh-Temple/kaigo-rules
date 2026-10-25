@@ -27,6 +27,7 @@ export type HandbookChapter = {
   checkpoints: string[];
   reference_ids: string[];
   role_sections?: HandbookRoleSection[];
+  rule_sections?: HandbookRoleSection[];
   editorial_state: string;
 };
 export type ServiceHandbookData = {

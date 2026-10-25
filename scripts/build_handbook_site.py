@@ -43,7 +43,7 @@ ROLE_TARGETS = {"homevisit", "dayrehab", "dayservice", "small-scale-multifunctio
                 "specific-welfare-equipment-sale", "welfare-equipment-rental",
                 "preventive-welfare-equipment-rental", "preventive-support",
                 "homerehab", "preventive-homerehab", "preventive-dayrehab",
-                "preventive-homenursing"}
+                "preventive-homenursing", "homebath", "homenursing", "regular-round", "shortstay-life", "shortstay-medical", "preventive-homebath", "preventive-shortstay-life", "preventive-shortstay-medical", "specific-facility", "preventive-specific-facility", "community-specific-facility", "community-elderly-facility", "specific-preventive-welfare-equipment-sale"}
 ROLE_ASPECTS = {"placement", "qualification", "concurrency", "shifts", "exception", "other"}
 ROLE_EVIDENCE_KINDS = {"national_standard", "national_interpretation", "national_qa",
                        "yokohama_ordinance", "yokohama_handbook"}
@@ -76,9 +76,13 @@ def role_url(value):
     return value
 
 
-def validate_role_sections(sid, section, roles):
+RULE_TARGETS = {('community-elderly-facility', 'equipment'), ('community-elderly-facility', 'business_continuity'), ('community-elderly-facility', 'incident_and_infection'), ('community-elderly-facility', 'safeguarding'), ('community-elderly-facility', 'notifications'), ('community-elderly-facility', 'records'), ('community-elderly-facility', 'operations')}
+
+
+def validate_role_sections(sid, section, roles, field="role_sections"):
     """Fail closed for approved staffing pilots; does not confer legal verification."""
-    if sid not in ROLE_TARGETS or section != "staffing":
+    if not ((field == "role_sections" and sid in ROLE_TARGETS and section == "staffing")
+            or (field == "rule_sections" and (sid, section) in RULE_TARGETS)):
         raise ValueError("role_sections is restricted to allowlisted staffing chapters")
     if not isinstance(roles, list) or not (1 <= len(roles) <= 20):
         raise ValueError("role_sections must contain 1..20 roles")
@@ -496,11 +500,13 @@ def build():
             allowed = {"summary", "paragraphs", "checkpoints"}
             if sid in ROLE_TARGETS and section == "staffing":
                 allowed.add("role_sections")
+            if (sid, section) in RULE_TARGETS:
+                allowed.add("rule_sections")
             if set(values) - allowed:
                 raise ValueError("Unsupported handbook fields for " + sid + "/" + section)
             for key, value in values.items():
-                if key == "role_sections":
-                    validate_role_sections(sid, section, value)
+                if key in {"role_sections", "rule_sections"}:
+                    validate_role_sections(sid, section, value, field=key)
                     continue
                 valid = isinstance(value, str) if key == "summary" else isinstance(value, list) and all(isinstance(v, str) for v in value)
                 if not valid:
