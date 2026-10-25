@@ -46,7 +46,8 @@ ROLE_TARGETS = {"homevisit", "dayrehab", "dayservice", "small-scale-multifunctio
                 "preventive-homenursing", "homebath", "homenursing", "regular-round", "shortstay-life", "shortstay-medical", "preventive-homebath", "preventive-shortstay-life", "preventive-shortstay-medical", "specific-facility", "preventive-specific-facility", "community-specific-facility", "community-elderly-facility", "specific-preventive-welfare-equipment-sale"}
 ROLE_ASPECTS = {"placement", "qualification", "concurrency", "shifts", "exception", "other"}
 ROLE_EVIDENCE_KINDS = {"national_standard", "national_interpretation", "national_qa",
-                       "yokohama_ordinance", "yokohama_handbook"}
+                       "national_law", "national_form", "national_fee_notice",
+                       "yokohama_ordinance", "yokohama_regulation", "yokohama_handbook"}
 ROLE_EVIDENCE_STATES = {"PRIMARY_TEXT_CHECKED_SCOPED", "SOURCE_CANDIDATE_UNVERIFIED", "EVIDENCE_GAP"}
 ROLE_OFFICIAL_HOSTS = {"laws.e-gov.go.jp", "www.mhlw.go.jp",
                        "www.city.yokohama.lg.jp", "cgi.city.yokohama.lg.jp"}
