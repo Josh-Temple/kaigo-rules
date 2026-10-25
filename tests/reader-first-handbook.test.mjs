@@ -8,13 +8,17 @@ const baseline=JSON.parse(fs.readFileSync('tests/fixtures/reader-first-baseline-
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const chapter=sid=>h.services[sid].chapters.staffing;
 
-test('585 chapters retain original fields; only two staffing role projections change',()=>{
+test('585 chapters retain original fields; only scoped staffing projections and one inaccurate checkpoint change',()=>{
  assert.equal(Object.keys(h.services).length,39);
  let count=0;
  for(const [key,expected] of Object.entries(baseline.chapters)) {
   const [sid,cid]=key.split('/');count++;
   const current=h.services[sid].chapters[cid];
   const {role_sections,...rest}=current;
+  if(key==='dayservice/staffing') {
+   assert.equal(rest.checkpoints[3],"生活相談員は事業所単位で提供日ごとの勤務時間を、看護職員・介護職員は提供単位ごとの配置を、機能訓練指導員は事業所ごとの配置を満たしているか");
+   rest.checkpoints=[...rest.checkpoints];rest.checkpoints[3]="生活相談員・看護職員・介護職員・機能訓練指導員の員数基準（第93条第1項）を単位ごとに満たしているか（生活相談員・介護職員は時間数ベースの算定）";
+  }
   assert.equal(hash(['dayservice','dayrehab'].includes(sid)&&cid==='staffing'?rest:current),expected,key);
  }
  assert.equal(Object.values(h.services).reduce((n,s)=>n+Object.keys(s.chapters).length,0),585);
