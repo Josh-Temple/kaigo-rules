@@ -148,3 +148,11 @@
 .handbook-role-evidence-state{font-size:.82rem;color:var(--muted);margin-left:10px}
 .handbook-role-evidence a{overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){.handbook-role-navigation ul{display:block}.handbook-role-evidence-state{display:block;margin-left:0}.handbook-role-requirement{padding:15px 0}}
+
+/* Shared role navigation: conditions and source limitations stay in normal flow. */
+.handbook-role{scroll-margin-top:24px;min-width:0}
+.handbook-role p,.handbook-role li{overflow-wrap:anywhere}
+.handbook-role-navigation a{display:inline-flex;align-items:center;min-height:44px}
+.handbook-role a:focus-visible,.handbook-editorial-details summary:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.handbook-editorial-details summary{cursor:pointer;min-height:44px;padding-block:10px}
+.handbook-editorial-details{font-size:.9rem;color:var(--muted);margin-block:12px}

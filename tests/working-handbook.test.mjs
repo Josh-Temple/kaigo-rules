@@ -45,7 +45,7 @@ test("Muse extensions are confined to 36 recorded sparse chapters and retain the
     assert.ok(current, "unknown Muse target: " + key);
     assertMuseExtension(current, null, key);
     const expectedKeys = ["checkpoints", "paragraphs", "summary"];
-    if (key === "homevisit/staffing" || key === "preventive-welfare-equipment-rental/staffing") expectedKeys.push("role_sections");
+    if (key === "dayservice/staffing" || key === "homevisit/staffing" || key === "preventive-welfare-equipment-rental/staffing") expectedKeys.push("role_sections");
     assert.deepEqual(Object.keys(current).toSorted(), expectedKeys.toSorted(),
       "unexpected Muse target properties: " + key);
     paragraphs += entry.append_paragraphs;
@@ -237,6 +237,22 @@ test("A remaining chapters preserve the fixed #522 baseline and add only manifes
           `#522 baseline checkpoints changed: ${serviceId}:${sectionId}`);
         assert.deepEqual(current, bEdits.get(`${serviceId}/${sectionId}`).after,
           `Worker B evidence mismatch: ${serviceId}:${sectionId}`);
+      } else if (serviceId === "dayservice" && sectionId === "staffing") {
+        const { role_sections, ...baselineFields } = chapters[sectionId];
+        assertMuseExtension(baselineFields, authored, `${serviceId}/${sectionId}`);
+        assert.equal(role_sections?.length, 5);
+        assert.ok(role_sections.every(role => role.requirements.every(req => req.verification_state === "EVIDENCE_GAP")));
+      } else if (serviceId === "dayrehab" && sectionId === "staffing") {
+        // B adds optional role_sections without rewriting the canonical #522 chapter fields.
+        const { role_sections, ...baselineFields } = chapters[sectionId];
+        if (muse36[`${serviceId}/${sectionId}`]) {
+          assertMuseExtension(baselineFields, authored, `${serviceId}/${sectionId}`);
+        } else {
+          assert.deepEqual(baselineFields, authored, `#522 baseline changed: ${serviceId}:${sectionId}`);
+        }
+        assert.equal(role_sections?.length, 4, "dayrehab staffing roles must remain scoped");
+        assert.equal(role_sections.reduce((n, role) => n + role.requirements.length, 0), 7);
+        assert.ok(role_sections.every(role => role.requirements.every(req => req.verification_state === "EVIDENCE_GAP")));
       } else if (serviceId === "homevisit" && sectionId === "staffing") {
         // The pilot adds optional role_sections without changing the #522 baseline fields.
         const { role_sections, ...baselineFields } = chapters[sectionId];
@@ -426,7 +442,7 @@ test("staffing roles are an optional backward-compatible projection", () => {
       const value = authored[service.service_id]?.chapters?.[chapter.section_id];
       assert.deepEqual(chapter.role_sections, value?.role_sections, service.service_id + "/" + chapter.section_id);
       if (chapter.role_sections) {
-        assert.ok(["homevisit", "small-scale-multifunctional", ...Object.keys(meshFour), ...Object.keys(meshNextFour)].includes(service.service_id));
+        assert.ok(["homevisit", "dayrehab", "dayservice", "small-scale-multifunctional", ...Object.keys(meshFour), ...Object.keys(meshNextFour)].includes(service.service_id));
         assert.equal(chapter.section_id, "staffing");
       }
     }
@@ -458,7 +474,7 @@ except ValueError as exc:
   const check = (roles, sid = "homevisit", chapter = "staffing") =>
     spawnSync("python", ["-c", script], { input: JSON.stringify([sid, chapter, roles]), encoding: "utf8" });
   assert.equal(check(valid).status, 0);
-  assert.equal(check(valid, "dayservice").status, 2);
+  assert.equal(check(valid, "homebath").status, 2);
   assert.equal(check(valid, "homevisit", "equipment").status, 2);
   assert.equal(check([...valid, valid]).status, 2);
   assert.equal(check([{ ...valid[0], evil: "unknown" }]).status, 2);
