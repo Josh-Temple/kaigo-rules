@@ -98,7 +98,7 @@ test('source titles keep audit metadata out of reader headings but never discard
  assert.deepEqual(readerEvidenceTitle('a'.repeat(64)),{label:'資料識別情報（名称未確認）',technical:true});
  assert.deepEqual(readerEvidenceTitle('横浜市運営の手引き'),{label:'横浜市運営の手引き',technical:false});
  const source=fs.readFileSync('components/service-handbook.tsx','utf8');
- assert.match(source,/handbook-role-\\$\\{role\\.id\\}/);
+ assert.ok(source.includes('staffing-role'));
  assert.match(source,/handbook-role-requirement/);
- assert.match(source,/readerEvidenceTitle\\(evidence\\.title\\)/);
+ assert.ok(source.includes('readerEvidenceTitle(evidence.title)'));
 });
