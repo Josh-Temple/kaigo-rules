@@ -2,6 +2,11 @@ name: Handbook source and preview safety regressions
 on:
   pull_request:
     paths:
+      - 'components/service-handbook.tsx'
+      - 'lib/handbook/reader-content.ts'
+      - 'data/handbook-content.json'
+      - 'tests/reader-first-handbook.test.mjs'
+      - 'tests/fixtures/reader-first-baseline-sha256.json'
       - 'docs/prototypes/**'
       - 'app/handbook-preview/**'
       - 'app/handbook-sources/**'
@@ -28,6 +33,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Independently check reader conditions and original chapter preservation
+        run: |
+          python scripts/build_handbook_site.py --check
+          node --experimental-strip-types --test tests/reader-first-handbook.test.mjs
       - name: Verify dayservice legacy regressions
         run: python -m unittest discover -s tests -p 'test_dayservice_handbook*.py' -v
       - name: Verify chapter evidence bridges

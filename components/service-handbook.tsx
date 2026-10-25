@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { chapterRecords, handbookChapterHref, legalHref, type HandbookChapter, type ServiceHandbookData } from "../lib/working-handbook";
 import LegalRecordView from "./legal-record";
+import { readerLabel, requirementCopy, separateHandbookParagraphs } from "../lib/handbook/reader-content";
 
 const evidenceNames = {
   national_standard: "国の基準省令",
@@ -14,26 +15,31 @@ function StaffingRoles({ service, chapter, full }: {
   service: ServiceHandbookData; chapter: HandbookChapter; full: boolean;
 }) {
   const roles = chapter.role_sections;
-  if (chapter.section_id !== "staffing" || !["homevisit", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support", "homerehab", "preventive-homerehab", "preventive-dayrehab", "preventive-homenursing"].includes(service.service_id) || !roles?.length) return null;
+  if (chapter.section_id !== "staffing" || !["homevisit", "dayrehab", "dayservice", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support", "homerehab", "preventive-homerehab", "preventive-dayrehab", "preventive-homenursing"].includes(service.service_id) || !roles?.length) return null;
   const detailHref = handbookChapterHref(service.service_id, "staffing");
-  if (!full) return <nav className="handbook-role-navigation" aria-label="人員基準の職種・役割">
-    <h3>職種・役割別の要件</h3>
-    <ul>{roles.map(role => <li key={role.id}><Link href={`${detailHref}#staffing-role-${role.id}`}>{role.title}の要件を見る →</Link></li>)}</ul>
+  if (!full) return <nav className="handbook-role-navigation" aria-label="人員基準の職種">
+    <h3>職種ごとの人員基準</h3>
+    <ul>{roles.map(role => <li key={role.id}><Link href={`${detailHref}#staffing-role-${role.id}`}>{readerLabel(role.title)}の要件を見る →</Link></li>)}</ul>
   </nav>;
-  return <section className="handbook-roles" aria-label="職種・役割別の要件">
-    <h3>職種・役割別の要件</h3>
+  return <section className="handbook-roles" aria-label="職種ごとの人員基準">
+    <h3>職種ごとの人員基準</h3>
     <p className="meta">次の解説は、記載された対象範囲と出典確認状況に限ります。原典の現行性・人手受入は別途確認してください。</p>
     <nav className="handbook-role-navigation" aria-label="職種・役割に移動">
-      <ul>{roles.map(role => <li key={role.id}><a href={`#staffing-role-${role.id}`}>{role.title}</a></li>)}</ul>
+      <ul>{roles.map(role => <li key={role.id}><a href={`#staffing-role-${role.id}`}>{readerLabel(role.title)}</a></li>)}</ul>
     </nav>
     {roles.map(role => <section key={role.id} id={`staffing-role-${role.id}`} className="handbook-role">
-      <h4>{role.title}</h4>
+      <h4>{readerLabel(role.title)}</h4>
       {role.requirements.map(requirement => <section key={requirement.id} className="handbook-role-requirement" id={`staffing-role-${role.id}-requirement-${requirement.id}`}>
         <h5>{requirement.title}</h5>
         {requirement.verification_state === "EVIDENCE_GAP" ? <p className="handbook-role-warning">根拠未確認：要件の適用条件と原典の照合が必要です。</p> : null}
-        <p>{requirement.description}</p>
+        {requirementCopy(requirement.description).split("\n").map((paragraph, index) => <p key={index}>{paragraph}</p>)}
         <p><strong>適用範囲：</strong>{requirement.applicability}</p>
-        <h6>要件と関連する原典</h6>
+        {requirement.description.startsWith("【Research Mesh隔離候補・法令適合未審査】") && requirement.verification_state !== "EVIDENCE_GAP" ? <p className="handbook-role-warning">この要件の法令適合性は未審査です。</p> : null}
+        {requirement.practical_checks.length ? <>
+          <h6>実務上の確認ポイント（法令上の義務とは別）</h6>
+          <ul className="handbook-checkpoints">{requirement.practical_checks.map((point, index) => <li key={index}>{point}</li>)}</ul>
+        </> : null}
+        <h6>関連する原典と適用上の注意</h6>
         {requirement.evidence.length ? <ul className="handbook-role-evidence">{requirement.evidence.map((evidence, index) => <li key={index}>
           <strong>{evidenceNames[evidence.kind]}</strong>
           <span className="handbook-role-evidence-state">{evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" ? "原文確認済み（限定範囲）" : "未確認・根拠候補"}</span>
@@ -41,16 +47,10 @@ function StaffingRoles({ service, chapter, full }: {
           <div>該当箇所：{evidence.locator} ／ 版：{evidence.version}</div>
           <div>対象：{evidence.scope}{evidence.effective_date ? ` ／ 適用日：${evidence.effective_date}` : ""}</div>
           {evidence.note ? <p>{evidence.note}</p> : null}
-          {evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" ? <div>
-            原文照合：{evidence.checked_at_jst}
-            {evidence.url ? <> ／ <a href={evidence.url} target="_blank" rel="noopener noreferrer">公式原典を開く ↗</a></> : null}
-          </div> : null}
+          {evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" && evidence.url ? <div><a href={evidence.url} target="_blank" rel="noopener noreferrer">公式原典を開く ↗</a></div> : null}
+          {evidence.checked_at_jst ? <details className="handbook-editorial-details"><summary>原文の確認記録</summary><p>{evidence.checked_at_jst}</p></details> : null}
         </li>)}</ul> : <p className="handbook-role-warning">この要件の個別原典は未特定です。</p>}
         {!requirement.evidence.some(e => e.kind === "national_qa" && e.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED") ? <p className="handbook-role-warning">関連する確認済み国Q&Aは未特定です。</p> : null}
-        {requirement.practical_checks.length ? <>
-          <h6>実務上の確認例（法令上の義務とは別）</h6>
-          <ul className="handbook-checkpoints">{requirement.practical_checks.map((point, index) => <li key={index}>{point}</li>)}</ul>
-        </> : null}
       </section>)}
     </section>)}
   </section>;
@@ -61,6 +61,8 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
   chapter: HandbookChapter;
   full?: boolean;
 }) {
+  const paragraphs = chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
+    ? separateHandbookParagraphs(chapter.paragraphs) : { reader: chapter.paragraphs, editorial: [] };
   const records = chapterRecords(chapter);
   const shown = full ? records : records.slice(0, 3);
   const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
@@ -72,10 +74,15 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       {chapter.section_id !== "national_qa" && records.length > 0
         ? <p className="handbook-quick-link"><a href={`#handbook-sources-${chapter.section_id}`}>この章の関連資料へ移動 ↓</a></p>
         : null}
-      {chapter.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+      {chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
+        ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
+      {chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id) ? <h3>章の原稿と補足</h3> : null}
+      {paragraphs.reader.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+      {paragraphs.editorial.length ? <details className="handbook-editorial-details"><summary>資料の作成時の補足</summary>{paragraphs.editorial.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</details> : null}
       <h3>確認すること</h3>
       <ul className="handbook-checkpoints">{chapter.checkpoints.map((point, index) => <li key={index}>{point}</li>)}</ul>
-      <StaffingRoles service={service} chapter={chapter} full={full} />
+      {chapter.section_id !== "staffing" || !["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
+        ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
       {chapter.section_id === "national_qa" ? <>
         <h3>関連する国Q&A</h3>
         <p>サービス個別・共通分類の候補を合わせて{service.qa_count.toLocaleString("ja-JP")}件収載しています。共通分類は各問の条件を確認してください。</p>
