@@ -1,5 +1,5 @@
 export type HandbookEvidence = {
-  kind: "national_standard" | "national_interpretation" | "national_qa" | "yokohama_ordinance" | "yokohama_handbook";
+  kind: "national_standard" | "national_interpretation" | "national_qa" | "national_law" | "national_form" | "national_fee_notice" | "yokohama_ordinance" | "yokohama_regulation" | "yokohama_handbook";
   title: string; issuer: string; locator: string; version: string; scope: string;
   checked_at_jst: string;
   verification_state: "PRIMARY_TEXT_CHECKED_SCOPED" | "SOURCE_CANDIDATE_UNVERIFIED" | "EVIDENCE_GAP";

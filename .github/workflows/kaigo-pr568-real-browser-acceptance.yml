@@ -1,0 +1,135 @@
+name: PR568 scoped real-browser independent acceptance
+
+on:
+  push:
+    branches:
+      - work/20261026-e-scoped-a-c-integration
+    paths:
+      - .github/workflows/kaigo-pr568-real-browser-acceptance.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install and build exact commit
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build
+      - name: Install Playwright driver only, use runner Chrome
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Run actual browser matrix
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/pr568-browser
+          npm run start -- --hostname 127.0.0.1 --port 3100 > artifacts/pr568-browser/server.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in $(seq 1 90); do
+            if curl -fsS -o /dev/null http://127.0.0.1:3100/handbook/homebath/staffing; then ready=1; break; fi
+            if ! kill -0 "$pid" 2>/dev/null; then cat artifacts/pr568-browser/server.log; exit 1; fi
+            sleep 2
+          done
+          if [ "$ready" -ne 1 ]; then cat artifacts/pr568-browser/server.log; exit 1; fi
+          node --input-type=module <<'JS'
+          import {chromium} from "playwright-core";
+          import fs from "node:fs";
+          const pages = ["homebath","homenursing","shortstay-life","community-specific-facility","dayservice","dayrehab","homevisit"];
+          const widths = [360,390,1280];
+          const exe = ["/usr/bin/google-chrome","/usr/bin/chromium","/usr/bin/chromium-browser"].find(fs.existsSync);
+          if(!exe)throw Error("No system Chrome/Chromium found");
+          const browser=await chromium.launch({headless:true,executablePath:exe,args:["--no-sandbox"]});
+          const report={commit:process.env.GITHUB_SHA,browser:exe,results:[]};
+          try{
+            for(const service of pages)for(const width of widths){
+              const context=await browser.newContext({viewport:{width,height:844}});
+              const page=await context.newPage();
+              const record={service,width,errors:[],status:"NOT_VERIFIED"};
+              try{
+                const url="http://127.0.0.1:3100/handbook/"+service+"/staffing";
+                const response=await page.goto(url,{waitUntil:"domcontentloaded",timeout:30000});
+                await page.waitForTimeout(350);
+                record.httpStatus=response?.status();
+                const details=await page.evaluate(()=>{
+                  const ids=[...document.querySelectorAll("[id]")].map(e=>e.id);
+                  const hashRefs=[...document.querySelectorAll('a[href^="#"]')].map(e=>e.getAttribute("href").slice(1)).filter(Boolean);
+                  return {
+                    title:document.title,h1:document.querySelectorAll("h1").length,
+                    robots:document.querySelector('meta[name="robots"]')?.content||"",
+                    canonical:document.querySelector('link[rel="canonical"]')?.href||"",
+                    scrollWidth:document.documentElement.scrollWidth,innerWidth:window.innerWidth,
+                    duplicateIds:ids.filter((id,i)=>ids.indexOf(id)!==i),
+                    brokenHashes:hashRefs.filter(id=>!document.getElementById(decodeURIComponent(id))).slice(0,20),
+                    bodyLength:document.body.innerText.length,
+                    hasVisibleUncertainty:/未確認|確認が必要|出典候補/.test(document.body.innerText),
+                    disclosures:document.querySelectorAll("button[aria-expanded]").length
+                  };
+                });
+                Object.assign(record,details);
+                if(record.httpStatus!==200)record.errors.push("HTTP_NOT_200");
+                if(details.h1!==1)record.errors.push("INVALID_H1_COUNT");
+                if(details.bodyLength<300)record.errors.push("BODY_TOO_SHORT");
+                if(!details.robots.toLowerCase().includes("noindex"))record.errors.push("NOINDEX_MISSING");
+                if(!details.canonical.includes("/handbook/"+service+"/staffing"))record.errors.push("CANONICAL_MISMATCH");
+                if(details.scrollWidth>width+3)record.errors.push("HORIZONTAL_OVERFLOW");
+                if(details.duplicateIds.length)record.errors.push("DUPLICATE_IDS");
+                if(details.brokenHashes.length)record.errors.push("BROKEN_PAGE_ANCHORS");
+                if(!details.hasVisibleUncertainty)record.errors.push("UNKNOWN_EVIDENCE_NOT_VISIBLE");
+                await page.keyboard.press("Tab");
+                record.focusTag=await page.evaluate(()=>document.activeElement!==document.body?document.activeElement?.tagName:null);
+                if(!record.focusTag)record.errors.push("TAB_CANNOT_FOCUS");
+                const toggle=page.locator("button[aria-expanded]").first();
+                if(await toggle.count()){
+                  const before=await toggle.getAttribute("aria-expanded");
+                  await toggle.click();
+                  const after=await toggle.getAttribute("aria-expanded");
+                  record.disclosure={before,after};
+                  if(before===after)record.errors.push("DISCLOSURE_ARIA_NOT_UPDATED");
+                }
+                await page.screenshot({path:"artifacts/pr568-browser/"+service+"-"+width+".png",animations:"disabled"});
+                record.status=record.errors.length?"FAIL":"PASS";
+              }catch(e){record.status="FAIL";record.errors.push(String(e).slice(0,300));}
+              report.results.push(record);
+              console.log(service,width,record.status,record.errors.join(","));
+              await context.close();
+            }
+          }finally{
+            await browser.close();
+            report.cases=report.results.length;
+            report.pass=report.results.filter(x=>x.status==="PASS").length;
+            report.fail=report.cases-report.pass;
+            fs.writeFileSync("artifacts/pr568-browser/report.json",JSON.stringify(report,null,2));
+          }
+          if(report.fail)process.exitCode=1;
+          JS
+      - name: Probe anonymously without redirect or auth bypass
+        if: always()
+        run: |
+          for host in kaigo-rules.vercel.app kaigo-rules-josh-temples-projects.vercel.app kaigo-rules-59y11fvvl-josh-temples-projects.vercel.app; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 12 "https://$host/handbook/homebath/staffing" || true)
+            printf '%s %s\n' "$host" "$code" | tee -a artifacts/pr568-browser/anonymous-http.txt
+          done
+      - name: Preserve browser and HTTP evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr568-browser-acceptance
+          path: artifacts/pr568-browser
+          retention-days: 14
+          if-no-files-found: warn

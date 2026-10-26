@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
-import { readerLabel, requirementCopy, separateHandbookParagraphs } from '../lib/handbook/reader-content.ts';
+import { isStaffingScopeOrException, readerEvidenceTitle, readerLabel, readerRequirementTitle, requirementCopy, separateHandbookParagraphs } from '../lib/handbook/reader-content.ts';
 const h=JSON.parse(fs.readFileSync('data/handbook-content.json','utf8'));
 const baseline=JSON.parse(fs.readFileSync('tests/fixtures/reader-first-baseline-sha256.json','utf8'));
 const latest=JSON.parse(fs.readFileSync("docs/handbook-quality/2026-10-25-research-mesh-integration.json","utf8")).inputs;
@@ -79,4 +79,26 @@ test('dayrehab remains seven unverified requirements; clinic nurse experience is
  assert.match(q.find(x=>x.id==='clinic-exception').description,/常勤換算0.1以上/);
  assert.match(q.find(x=>x.id==='specialist-one-per-hundred').description,/内数/);
  assert.equal(hash(chapter('homevisit')),baseline.chapters['homevisit/staffing']);
+});
+
+
+test('role navigation distinguishes staff from arithmetic and exceptions without changing anchors',()=>{
+ assert.equal(isStaffingScopeOrException('看護職員'),false);
+ assert.equal(isStaffingScopeOrException('介護職員'),false);
+ assert.equal(isStaffingScopeOrException('利用者数の算定'),true);
+ assert.equal(isStaffingScopeOrException('サテライトの特例'),true);
+ assert.equal(readerRequirementTitle('確認事項','placement',0,1),'配置・員数');
+ assert.equal(readerRequirementTitle('確認事項','concurrency',0,2),'兼務（1）');
+ assert.equal(readerRequirementTitle('確認事項','concurrency',1,2),'兼務（2）');
+ assert.equal(readerRequirementTitle('常勤の取扱い','other',0,1),'常勤の取扱い');
+});
+
+test('source titles keep audit metadata out of reader headings but never discard identifiers',()=>{
+ assert.deepEqual(readerEvidenceTitle('data/shared/example.json'),{label:'資料識別情報（名称未確認）',technical:true});
+ assert.deepEqual(readerEvidenceTitle('a'.repeat(64)),{label:'資料識別情報（名称未確認）',technical:true});
+ assert.deepEqual(readerEvidenceTitle('横浜市運営の手引き'),{label:'横浜市運営の手引き',technical:false});
+ const source=fs.readFileSync('components/service-handbook.tsx','utf8');
+ assert.ok(source.includes('staffing-role'));
+ assert.match(source,/handbook-role-requirement/);
+ assert.ok(source.includes('readerEvidenceTitle(evidence.title)'));
 });
