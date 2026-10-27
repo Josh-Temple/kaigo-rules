@@ -11,7 +11,7 @@ permissions:
 jobs:
   chrome:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,7 +34,9 @@ jobs:
           npm run build:handbook
           npm run check:handbook
           npm run test:handbook
-          npm run build
+          # Run Next directly: npm run build invokes the lengthy repository-wide
+          # prebuild validation again. All six PR workflows already validate it.
+          ./node_modules/.bin/next build
       - name: Install Playwright driver for system Chrome
         run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
       - name: Exercise handbook navigation, checklist and print in real Chrome
