@@ -36,12 +36,46 @@ export function requirementCopy(value: string): string {
   return value.replace(/^【Research Mesh隔離候補・法令適合未審査】/u, "");
 }
 
-/** Display-only split for the authored dayservice staffing text; no text is discarded. */
-export function splitDayserviceRegionalText(value: string): { national: string; regional: string } {
-  const marker = value.indexOf("横浜市");
-  if (marker < 0) return { national: value, regional: "" };
-  const sentenceStart = Math.max(value.lastIndexOf("。", marker - 1), value.lastIndexOf("\n", marker - 1)) + 1;
-  return { national: value.slice(0, sentenceStart).trim(), regional: value.slice(sentenceStart).trim() };
+/**
+ * An authority category applies only to the exact authored text fragment, not
+ * to the rest of a paragraph or to all text citing a source. The source
+ * reference must be present before an editor can mark a fragment classified.
+ */
+export type HandbookAuthoritySegment = {
+  text: string;
+  authority: "national_law" | "national_standard" | "national_interpretation"
+    | "national_qa" | "national_fee_notice" | "municipal_ordinance"
+    | "municipal_regulation" | "municipal_handbook";
+  source_ref: string;
+  jurisdiction?: string;
+};
+export type HandbookDisplaySegment =
+  | HandbookAuthoritySegment
+  | { text: string; authority: "unclassified" };
+
+export function splitDayserviceRegionalText(
+  value: string, authored?: readonly HandbookAuthoritySegment[],
+): { segments: HandbookDisplaySegment[]; classified: boolean } {
+  const unresolved = (): { segments: HandbookDisplaySegment[]; classified: false } =>
+    ({ segments: [{ text: value, authority: "unclassified" }], classified: false });
+  if (!authored?.length) return unresolved();
+  const national = new Set([
+    "national_law", "national_standard", "national_interpretation", "national_qa", "national_fee_notice",
+  ]);
+  const local = new Set(["municipal_ordinance", "municipal_regulation", "municipal_handbook"]);
+  for (const segment of authored) {
+    if (!segment || typeof segment.text !== "string" || !segment.text ||
+        typeof segment.source_ref !== "string" || !segment.source_ref.trim()) return unresolved();
+    if (national.has(segment.authority)) {
+      if (segment.jurisdiction) return unresolved();
+    } else if (local.has(segment.authority)) {
+      if (!segment.jurisdiction?.trim()) return unresolved();
+    } else return unresolved();
+  }
+  // Exact equality catches missing clauses, punctuation changes and reordering.
+  // Never guess the boundary from a municipality name in free text.
+  if (authored.map(segment => segment.text).join("") !== value) return unresolved();
+  return { segments: [...authored], classified: true };
 }
 
 /**
