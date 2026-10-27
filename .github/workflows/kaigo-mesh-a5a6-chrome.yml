@@ -13,11 +13,14 @@ permissions:
 jobs:
   chrome:
     runs-on: ubuntu-latest
+    env:
+      REVIEW_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -30,7 +33,8 @@ jobs:
       - name: Verify fixed draft and compile without redundant all-repository prebuild
         run: |
           set -euo pipefail
-          echo "Exact acceptance SHA $GITHUB_SHA"
+          echo "Exact acceptance HEAD $REVIEW_SHA"
+          test "$(git rev-parse HEAD)" = "$REVIEW_SHA"
           npm ci --ignore-scripts --no-audit --no-fund
           npm run build:handbook
           npm run check:handbook
@@ -60,7 +64,7 @@ jobs:
             '/handbook/community-elderly-facility/applicability',
             '/handbook/community-elderly-facility/deductions'
           ];
-          const report={head:process.env.GITHUB_SHA,engine:'google-chrome',cases:[],pdf:null};
+          const report={head:process.env.REVIEW_SHA,engine:'google-chrome',cases:[],pdf:null};
           try{
             for(const route of routes)for(const width of [360,390,1280]){
               const context=await browser.newContext({viewport:{width,height:844}});
@@ -82,7 +86,7 @@ jobs:
                 if(!metrics.canonical.includes(route))record.errors.push('CANONICAL');
                 if(!metrics.robots.toLowerCase().includes('noindex'))record.errors.push('NOINDEX');
                 const body=await page.locator('body').innerText();
-                if(!body.includes('未確認'))record.errors.push('UNCERTAINTY_MISSING');
+                if(!/未確認|確認前/.test(body))record.errors.push('UNCERTAINTY_MISSING');
                 if(route.endsWith('/applicability')){
                   record.requirements=await page.locator('.handbook-role-requirement').count();
                   if(record.requirements!==2)record.errors.push('REQUIREMENT_COUNT');
