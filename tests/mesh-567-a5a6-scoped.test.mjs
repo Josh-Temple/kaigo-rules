@@ -52,3 +52,11 @@ test('the all-service chapter baselines still include prior 459 Research Mesh ca
   assert.equal(ledger.inputs.length,20);
   assert.equal(total,459);
 });
+
+test('new applicability rule section is accessible in the reader renderer for chapter and overview', () => {
+  const source=fs.readFileSync('components/service-handbook.tsx','utf8');
+  assert.match(source,/const ruleChapters = \["applicability"/);
+  assert.match(source,/const roles = staffing \? chapter\.role_sections : chapter\.rule_sections/);
+  assert.match(source,/\!full\) return <section className="handbook-role-preview"/);
+  assert.match(source,/className="handbook-role-warning"/);
+});
