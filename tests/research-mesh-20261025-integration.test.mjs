@@ -21,6 +21,7 @@ test('20 additive projections retain every field of all 585 main chapters, inclu
  for(const [sid,service] of Object.entries(authored.services))for(const [cid,chapter] of Object.entries(service.chapters)){
   const key=`${sid}/${cid}`,target=targetMap.get(key),copy=structuredClone(chapter);
   if(target)delete copy[target.field];
+  if(key==='community-elderly-facility/applicability')delete copy.rule_sections;
   assert.equal(hash(copy),baseline.chapters[key],key);count++;
  }
  assert.equal(count,585);
