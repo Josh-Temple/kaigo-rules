@@ -79,9 +79,48 @@ test("all five current dayservice staffing roles preserve original prose and ver
 
 test("reader never labels an unreviewed mixed fragment as confirmed national or local law", () => {
   const source = fs.readFileSync("components/service-handbook.tsx", "utf8");
-  assert.match(source, /splitDayserviceRegionalText\(copy, requirement\.authority_segments\)/);
+  assert.match(source, /splitDayserviceRegionalText\(copy, requirement\.authority_segments, requirement\.evidence\)/);
   assert.match(source, /根拠区分を確認中/);
   assert.doesNotMatch(source, /parts\.national|parts\.regional/);
   const helper = fs.readFileSync("lib/handbook/reader-content.ts", "utf8");
   assert.doesNotMatch(helper, /indexOf\("横浜市"\)/);
+});
+
+test("reader classification requires the exact checked evidence URL and matching authority category", () => {
+  const phrase = "第93条の必要数を確認する。";
+  const url = "https://www.mhlw.go.jp/web/t_doc?dataId=82999404";
+  const fragments = [{ text: phrase, authority: "national_standard", source_ref: url }];
+  const evidence = (kind, verification_state, evidenceUrl = url) =>
+    [{ kind, verification_state, url: evidenceUrl }];
+  const verify = candidates => splitDayserviceRegionalText(phrase, fragments, candidates);
+  assert.equal(verify(evidence("national_standard", "PRIMARY_TEXT_CHECKED_SCOPED")).classified, true);
+  for (const candidates of [
+    [], evidence("national_standard", "SOURCE_CANDIDATE_UNVERIFIED"),
+    evidence("national_standard", "EVIDENCE_GAP"),
+    evidence("national_qa", "PRIMARY_TEXT_CHECKED_SCOPED"),
+    evidence("national_standard", "PRIMARY_TEXT_CHECKED_SCOPED", "https://unrelated.example/"),
+    [{kind:"national_standard", verification_state:"PRIMARY_TEXT_CHECKED_SCOPED"}],
+  ]) {
+    assert.equal(verify(candidates).classified, false);
+    assert.deepEqual(verify(candidates).segments, [{text:phrase, authority:"unclassified"}]);
+  }
+});
+
+test("checked Yokohama ordinance cannot support other jurisdictions or be called a municipal handbook", () => {
+  const phrase = "横浜市条例の特例。";
+  const source = "https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00001746.html";
+  const checked = [{kind:"yokohama_ordinance", url:source, verification_state:"PRIMARY_TEXT_CHECKED_SCOPED"}];
+  const segment = {text:phrase, authority:"municipal_ordinance", source_ref:source, jurisdiction:"横浜市"};
+  assert.equal(splitDayserviceRegionalText(phrase,[segment],checked).classified,true);
+  assert.equal(splitDayserviceRegionalText(phrase,[{...segment,jurisdiction:"名古屋市"}],checked).classified,false);
+  assert.equal(splitDayserviceRegionalText(phrase,[{...segment,authority:"municipal_handbook"}],checked).classified,false);
+  assert.equal(splitDayserviceRegionalText(phrase,[segment],[{...checked[0],verification_state:"SOURCE_CANDIDATE_UNVERIFIED"}]).classified,false);
+});
+
+test("production renderer passes actual requirement evidence, never only authored source text", () => {
+  const source = fs.readFileSync("components/service-handbook.tsx", "utf8");
+  assert.match(source, /splitDayserviceRegionalText\(copy, requirement\.authority_segments, requirement\.evidence\)/);
+  const code = fs.readFileSync("lib/handbook/reader-content.ts", "utf8");
+  assert.match(code, /PRIMARY_TEXT_CHECKED_SCOPED/);
+  assert.match(code, /evidence\.url\.trim\(\) === segment\.source_ref\.trim\(\)/);
 });

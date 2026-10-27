@@ -53,8 +53,31 @@ export type HandbookDisplaySegment =
   | HandbookAuthoritySegment
   | { text: string; authority: "unclassified" };
 
+/**
+ * A verified source is a checked evidence row for the requirement itself, not
+ * a URL or keyword found elsewhere in the repository. Source references are
+ * exact URLs because HandbookEvidence has no stable source ID today.
+ */
+export type HandbookAuthorityEvidence = {
+  kind: string;
+  url?: string;
+  verification_state: string;
+};
+
+const categoryEvidenceKinds: Record<HandbookAuthoritySegment["authority"], string> = {
+  national_law: "national_law",
+  national_standard: "national_standard",
+  national_interpretation: "national_interpretation",
+  national_qa: "national_qa",
+  national_fee_notice: "national_fee_notice",
+  municipal_ordinance: "yokohama_ordinance",
+  municipal_regulation: "yokohama_regulation",
+  municipal_handbook: "yokohama_handbook",
+};
+
 export function splitDayserviceRegionalText(
   value: string, authored?: readonly HandbookAuthoritySegment[],
+  verifiedEvidence?: readonly HandbookAuthorityEvidence[],
 ): { segments: HandbookDisplaySegment[]; classified: boolean } {
   const unresolved = (): { segments: HandbookDisplaySegment[]; classified: false } =>
     ({ segments: [{ text: value, authority: "unclassified" }], classified: false });
@@ -72,6 +95,20 @@ export function splitDayserviceRegionalText(
       if (!segment.jurisdiction?.trim()) return unresolved();
     } else return unresolved();
   }
+  // The public UI always supplies the requirement's actual evidence rows. A
+  // self-authored source_ref alone must never turn unreviewed material into an
+  // apparently authoritative national or local rule.
+  if (verifiedEvidence !== undefined && !authored.every(segment => {
+    // The current evidence schema only models Yokohama municipal sources.
+    // Other municipalities stay unclassified until their own evidence exists.
+    if (segment.authority.startsWith("municipal_") && !segment.jurisdiction?.includes("横浜市")) return false;
+    return verifiedEvidence.some(evidence =>
+      evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" &&
+      typeof evidence.url === "string" &&
+      evidence.url.trim() === segment.source_ref.trim() &&
+      evidence.kind === categoryEvidenceKinds[segment.authority]
+    );
+  })) return unresolved();
   // Exact equality catches missing clauses, punctuation changes and reordering.
   // Never guess the boundary from a municipality name in free text.
   if (authored.map(segment => segment.text).join("") !== value) return unresolved();

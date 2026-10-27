@@ -75,7 +75,7 @@ function StaffingRoles({ service, chapter, full }: {
       {role.requirements.map(requirement => {
         const copy = requirementCopy(requirement.description);
         const parts = service.service_id === "dayservice" && staffing
-          ? splitDayserviceRegionalText(copy, requirement.authority_segments) : null;
+          ? splitDayserviceRegionalText(copy, requirement.authority_segments, requirement.evidence) : null;
         return <section key={requirement.id} className="handbook-role-requirement" id={`${anchor}-${role.id}-requirement-${requirement.id}`}>
         <h5>{readerRequirementTitle(
           requirement.title, requirement.aspect,
