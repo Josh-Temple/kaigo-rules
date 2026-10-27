@@ -47,8 +47,12 @@ function StaffingRoles({ service, chapter, full }: {
     : service.service_id === "community-elderly-facility" && ruleChapters.includes(chapter.section_id);
   if (!allowed || !roles?.length) return null;
   const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
-  if (!full) return <section className="handbook-role-preview" aria-label={groupHeading}>
+  // The three pilot services show the actual requirements inside their service handbook.
+  // Other supported services keep a one-click route to the full, anchored chapter.
+  const inlineStaffing = staffing && !full && ["dayservice", "dayrehab", "homevisit"].includes(service.service_id);
+  if (!full && !inlineStaffing) return <section className="handbook-role-preview" aria-label={groupHeading}>
     <h3>{groupHeading}</h3>
+    <p className="handbook-primary-action"><Link href={detailHref}>職種別の配置・勤務・資格を確認する</Link></p>
     <RoleNavigation roles={roles} staffing={staffing} anchor={anchor} detailHref={detailHref} full={false} />
   </section>;
   return <section className="handbook-roles" aria-label={groupHeading}>
@@ -105,11 +109,17 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
   const records = chapterRecords(chapter);
   const shown = full ? records : records.slice(0, 3);
   const detailHref = handbookChapterHref(service.service_id, chapter.section_id);
+  const chapterIndex = service.chapters.findIndex(item => item.section_id === chapter.section_id);
+  const precedingChapter = chapterIndex > 0 ? service.chapters[chapterIndex - 1] : null;
+  const followingChapter = chapterIndex >= 0 ? service.chapters[chapterIndex + 1] : null;
   return (
     <section className="section handbook-chapter" id={chapter.section_id}>
       <p className="eyebrow">第{String(chapter.number).padStart(2, "0")}章</p>
       <h2>{full ? chapter.title : <Link href={detailHref}>{chapter.title}</Link>}</h2>
       <p>{chapter.summary}</p>
+      {full ? <p className="handbook-return-link"><Link href={`/services/${service.service_id}#${chapter.section_id}`}>{service.label}の手引に戻る</Link></p> : null}
+      {!full && chapter.section_id === "staffing" && !["dayservice", "dayrehab", "homevisit"].includes(service.service_id)
+        ? <p className="handbook-primary-action"><Link href={detailHref}>人員基準を確認する（配置・資格・勤務の条件）</Link></p> : null}
       {chapter.section_id !== "national_qa" && records.length > 0
         ? <p className="handbook-quick-link"><a href={`#handbook-sources-${chapter.section_id}`}>この章の関連資料へ移動 ↓</a></p>
         : null}
@@ -135,6 +145,10 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
         {shown.length ? shown.map(record => <LegalRecordView key={record.id} record={record} serviceId={service.service_id} />)
           : <p className="handbook-empty">この章への個別資料の対応付けは追記できます。収載済みの資料全体からも探せます。</p>}
       </>}
+      {full ? <nav className="handbook-chapter-sequence" aria-label="前後の章">
+        {precedingChapter ? <Link href={handbookChapterHref(service.service_id, precedingChapter.section_id)}>前の章：{precedingChapter.title}</Link> : null}
+        {followingChapter ? <Link href={handbookChapterHref(service.service_id, followingChapter.section_id)}>次の章：{followingChapter.title}</Link> : null}
+      </nav> : null}
       <div className="handbook-inline-links">
         {!full ? <Link href={detailHref}>この章を詳しく読む{records.length > shown.length ? `（関連資料${records.length}件）` : ""} →</Link> : null}
         {full ? <Link href={`/services/${service.service_id}#${chapter.section_id}`}>手引のこの章へ戻る ↑</Link> : null}
@@ -150,6 +164,7 @@ export default function ServiceHandbook({ service }: { service: ServiceHandbookD
       <p className="eyebrow"><Link href="/services">サービス別手引</Link> ／ 全15章</p>
       <h1>{service.label}の手引</h1>
       <p className="lead">開設、人員・設備、日常運営、報酬までを章ごとにまとめています。概要と確認項目から、関連する条文・通知・Q&Aへ進めます。</p>
+      <p className="handbook-primary-action handbook-staffing-entry"><a href="#staffing">人員基準を確認する（職種別の配置・資格・勤務時間）</a></p>
       <p className="handbook-working-note">作成中の手引です。確認前の解説・条文対応も掲載し、内容を随時追加・調整しています。資料ごとの版と確認状況は、本文を開くと確認できます。</p>
       <div className="handbook-summary" aria-label="収載状況">
         <span><strong>15</strong>章</span>
