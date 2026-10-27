@@ -9,6 +9,8 @@ export type HandbookRoleRequirement = {
   id: string; title: string;
   aspect: "placement" | "qualification" | "concurrency" | "shifts" | "exception" | "other";
   description: string; applicability: string;
+  /** Optional authored, exactly reconstructable authority/source fragments. */
+  authority_segments?: import("./handbook/reader-content").HandbookAuthoritySegment[];
   verification_state: "PRIMARY_TEXT_CHECKED_SCOPED" | "EVIDENCE_GAP";
   evidence: HandbookEvidence[];
   practical_checks: string[];
