@@ -1,0 +1,22 @@
+.checklist{min-width:0}
+.notice{color:#525b67;font-size:.92rem;line-height:1.75;margin:.55rem 0}
+.items{list-style:none;padding:0;margin:1rem 0}
+.item{border-bottom:1px solid #d8d9d3;min-width:0}
+.item label{display:flex;align-items:flex-start;gap:.75rem;min-height:48px;padding:12px 4px;cursor:pointer;line-height:1.7;overflow-wrap:anywhere}
+.item input{flex:0 0 auto;inline-size:22px;block-size:22px;margin:2px 0 0;accent-color:#285c52}
+.item input:focus-visible{outline:3px solid #1f5c8f;outline-offset:3px}
+.printMark{display:none}
+.actions{margin:20px 0 12px}
+.actions button{min-height:44px;padding:10px 15px;border:1px solid #1f5c8f;border-radius:3px;background:#fff;color:#142033;font:inherit;font-weight:650;cursor:pointer}
+.actions button:focus-visible{outline:3px solid #1f5c8f;outline-offset:3px}
+.actions p{font-size:.86rem;color:#525b67}
+@media print{
+  .actions{display:none}
+  .item{break-inside:avoid}
+  .item label{padding:7px 0;min-height:0;gap:.65rem;cursor:default}
+  .item input{display:none}
+  .printMark{display:inline-block;flex:0 0 auto;font-size:1.2rem;line-height:1.1}
+  .printMark::before{content:"☐"}
+  .item input:checked + .printMark::before{content:"☑"}
+  .notice{color:#222}
+}
