@@ -104,7 +104,7 @@ export default function HandbookSourcesPage() {
 
   return (
     <article className="answer-page foundation-page" style={{ maxWidth: 1050 }}>
-      <p className="eyebrow">SOURCE FINDER / LIMITED PUBLIC PILOT</p>
+      <p className="eyebrow">資料の所在案内（試験公開）</p>
       <h1>通所系サービスの原典を探す</h1>
       <div className="notice" role="note">
         <strong>試験公開：資料の所在案内のみ・法令解説ではありません。</strong>
@@ -113,8 +113,8 @@ export default function HandbookSourcesPage() {
           章の割当も未レビューです。各項目の掲載は、現行法令・適用条項・人員配置・報酬算定可否が確認されたことを意味しません。
           実務判断の際は公式原典、改正・施行情報、指定権者の条例と案内を改めて確認してください。
         </p>
-        <p><strong>法令現行性：未成立／人手レビュー：未実施／確定した解説：0件。</strong>
-          未レビューの手引本文29文は、この公開ページには掲載していません。</p>
+        <p><strong>出典の現行性と適用条件は確認中です。</strong>
+          出典候補ごとの照合は完了しておらず、未レビューの手引本文29文も掲載していません。</p>
       </div>
 
       <nav aria-label="サービス一覧" className="entry-links">
@@ -129,8 +129,8 @@ export default function HandbookSourcesPage() {
           <section className="section" key={id} id={id}>
             <h2>{title}</h2>
             <p className="meta">
-              第2段階の出典照合記録6件を、15章の暫定構成で分類しています。
-              確認作業のための参照IDを表示しますが、その番号は法令の有効性を示すものではありません。
+              出典候補を15章の暫定構成で分類しています。
+              資料を探すための一覧であり、法令の有効性や適用条件を確認した結果ではありません。
             </p>
             {data.chapters.map((chapter, index) => (
               <details key={chapter.section_id} className="section" open={index === 0}>
@@ -144,11 +144,8 @@ export default function HandbookSourcesPage() {
                       const url = safeOfficialUrl(source?.source_url ?? "");
                       return (
                         <li key={item.bridge_id} style={{ margin: "1rem 0" }}>
-                          <strong>確認候補 {item.bridge_id}</strong>
-                          <p className="meta">
-                            記録ID：{item.evidence_task_id}／参照識別子：
-                            {item.source_identifiers.join("、") || "個別識別子は未特定"}
-                          </p>
+                          <strong>原典の掲載先候補</strong>
+                          <p className="meta">本文・条文の対応や施行版は未確認です。掲載先の原典を個別に照合してください。</p>
                           {url ? (
                             <p>
                               <a href={url} rel="noopener noreferrer" target="_blank">
