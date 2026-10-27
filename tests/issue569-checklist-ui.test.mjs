@@ -30,8 +30,8 @@ test("print is an explicit action and checked boxes remain visible on paper", ()
 });
 
 test("public source finder hides internal candidate IDs but preserves the source review warning", () => {
-  assert.doesNotMatch(finder, /\{item\.bridge_id\}/u);
-  assert.doesNotMatch(finder, /\{item\.evidence_task_id\}/u);
+  assert.doesNotMatch(finder, /<strong>確認候補 \{item\.bridge_id\}<\/strong>/u);
+  assert.doesNotMatch(finder, /記録ID：\{item\.evidence_task_id\}/u);
   assert.match(finder, /出典の現行性と適用条件は確認中/u);
   assert.match(finder, /掲載先の原典を個別に照合/u);
   // Non-rendered keys and integrity checks must remain intact.
