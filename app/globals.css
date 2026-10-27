@@ -170,3 +170,14 @@
 .handbook-role-preview>h3{font-size:1.1rem}
 .handbook-role-nav-group a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 @media(max-width:760px){.handbook-role-nav-group ul{display:flex;flex-direction:column;align-items:stretch;gap:2px}.handbook-role-nav-group a{display:block;max-width:100%}}
+
+/* Issue #569 / B: one visible path from each service handbook to staffing. */
+.handbook-primary-action{margin:16px 0 22px;max-width:100%}
+.handbook-primary-action a{display:inline-flex;align-items:center;min-height:48px;max-width:100%;padding:11px 18px;background:#e7f0eb;color:#18473b;border:2px solid #366858;border-radius:6px;font-weight:700;text-decoration:none;overflow-wrap:anywhere}
+.handbook-primary-action a:hover{text-decoration:underline}
+.handbook-primary-action a:focus-visible,.handbook-return-link a:focus-visible,.handbook-chapter-sequence a:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+.handbook-return-link a{display:inline-flex;align-items:center;min-height:44px}
+.handbook-chapter-sequence{display:flex;flex-wrap:wrap;gap:12px 24px;margin:28px 0 8px;border-top:1px solid var(--line);padding-top:14px}
+.handbook-chapter-sequence a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:760px){.handbook-primary-action a{display:flex;width:100%}.handbook-chapter-sequence{flex-direction:column;gap:4px}}
+@media print{.handbook-primary-action,.handbook-return-link,.handbook-chapter-sequence{display:none}}
