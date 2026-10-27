@@ -36,6 +36,14 @@ export function requirementCopy(value: string): string {
   return value.replace(/^【Research Mesh隔離候補・法令適合未審査】/u, "");
 }
 
+/** Display-only split for the authored dayservice staffing text; no text is discarded. */
+export function splitDayserviceRegionalText(value: string): { national: string; regional: string } {
+  const marker = value.indexOf("横浜市");
+  if (marker < 0) return { national: value, regional: "" };
+  const sentenceStart = Math.max(value.lastIndexOf("。", marker - 1), value.lastIndexOf("\n", marker - 1)) + 1;
+  return { national: value.slice(0, sentenceStart).trim(), regional: value.slice(sentenceStart).trim() };
+}
+
 /**
  * Only a complete, standalone technical reference can leave the reader body.
  * Mixed paragraphs are never split: everything after a path may be a condition.

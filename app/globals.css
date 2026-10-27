@@ -98,6 +98,12 @@
 .handbook-chapter h3 small{font-size:.83rem;color:var(--muted);font-weight:400}
 .handbook-checkpoints{padding-left:1.4rem}
 .handbook-checkpoints li{margin:8px 0}
+.handbook-checklist{list-style:none;padding-left:0}
+.handbook-checklist label{display:flex;align-items:flex-start;gap:.65rem;min-height:44px;padding:8px 0;cursor:pointer}
+.handbook-checklist input{flex:none;width:1.25rem;height:1.25rem;margin:.2rem 0 0;accent-color:#285c52}
+.handbook-checklist input:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.handbook-regional-note{border-left:4px solid #879a90;padding:1px 1rem;margin:1rem 0;background:#f4f7f5}
+@media print{.handbook-checklist label{break-inside:avoid}.handbook-regional-note{background:transparent;border-color:#333}}
 .handbook-source{border-top:1px solid var(--line);background:var(--surface);min-width:0}
 .handbook-source:last-of-type{border-bottom:1px solid var(--line)}
 .handbook-source>summary{padding:16px;cursor:pointer;line-height:1.65;font-weight:600;overflow-wrap:anywhere}
