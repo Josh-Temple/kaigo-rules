@@ -1,0 +1,141 @@
+name: Mesh A5A6 real Chrome acceptance
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/kaigo-mesh-a5a6-chrome.yml
+      - data/handbook-content.json
+      - components/service-handbook.tsx
+      - tests/mesh-567-a5a6-scoped.test.mjs
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Japanese font and PDF inspector
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk poppler-utils
+          fc-cache -f
+          fc-match 'Noto Sans CJK JP'
+      - name: Verify fixed draft and compile without redundant all-repository prebuild
+        run: |
+          set -euo pipefail
+          echo "Exact acceptance SHA $GITHUB_SHA"
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build:handbook
+          npm run check:handbook
+          node --test tests/mesh-567-a5a6-scoped.test.mjs
+          ./node_modules/.bin/next build
+          npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Check reader overview, both read-across requirements, noindex and print PDF
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/mesh-a5a6
+          npm run start -- --hostname 127.0.0.1 --port 3107 > artifacts/mesh-a5a6/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in $(seq 1 90); do
+            if curl -fsS -o /dev/null http://127.0.0.1:3107/services/community-elderly-facility; then ready=1; break; fi
+            if ! kill -0 "$server_pid" 2>/dev/null; then cat artifacts/mesh-a5a6/server.log; exit 1; fi
+            sleep 2
+          done
+          if [ "$ready" != 1 ]; then cat artifacts/mesh-a5a6/server.log; exit 1; fi
+          node --input-type=module <<'JS'
+          import { chromium } from 'playwright-core';
+          import fs from 'node:fs';
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+          const routes=[
+            '/services/community-elderly-facility',
+            '/handbook/community-elderly-facility/applicability',
+            '/handbook/community-elderly-facility/deductions'
+          ];
+          const report={head:process.env.GITHUB_SHA,engine:'google-chrome',cases:[],pdf:null};
+          try{
+            for(const route of routes)for(const width of [360,390,1280]){
+              const context=await browser.newContext({viewport:{width,height:844}});
+              const page=await context.newPage();
+              const record={route,width,errors:[],status:'NOT_VERIFIED'};
+              try{
+                const response=await page.goto('http://127.0.0.1:3107'+route,{waitUntil:'domcontentloaded',timeout:30000});
+                record.http=response?.status();
+                if(record.http!==200)record.errors.push('HTTP');
+                const metrics=await page.evaluate(()=>({
+                  width:document.documentElement.scrollWidth,
+                  h1:document.querySelectorAll('h1').length,
+                  canonical:document.querySelector('link[rel="canonical"]')?.href??'',
+                  robots:document.querySelector('meta[name="robots"]')?.content??''
+                }));
+                Object.assign(record,metrics);
+                if(metrics.width>width+3)record.errors.push('HORIZONTAL_OVERFLOW');
+                if(metrics.h1!==1)record.errors.push('H1_NOT_ONE');
+                if(!metrics.canonical.includes(route))record.errors.push('CANONICAL');
+                if(!metrics.robots.toLowerCase().includes('noindex'))record.errors.push('NOINDEX');
+                const body=await page.locator('body').innerText();
+                if(!body.includes('未確認'))record.errors.push('UNCERTAINTY_MISSING');
+                if(route.endsWith('/applicability')){
+                  record.requirements=await page.locator('.handbook-role-requirement').count();
+                  if(record.requirements!==2)record.errors.push('REQUIREMENT_COUNT');
+                  for(const s of ['通常型：入所時の申請確認','ユニット型：入居時の申請確認','第157条','第169条','入所の際に','入居の際に'])
+                    if(!body.includes(s))record.errors.push('MISSING:'+s);
+                  record.warnings=await page.locator('.handbook-role-warning').count();
+                  if(record.warnings<2)record.errors.push('WARNING_COUNT');
+                  if(width===390){
+                    const pdf=await page.pdf({format:'A4',printBackground:true});
+                    fs.writeFileSync('artifacts/mesh-a5a6/applicability.pdf',pdf);
+                    report.pdf={sizeBytes:pdf.length};
+                    if(pdf.length<2500)record.errors.push('PDF_SIZE');
+                  }
+                }else if(route.endsWith('/deductions')){
+                  if(body.includes('mesh-b-a5')||body.includes('通常型：入所時の申請確認'))record.errors.push('CROSS_CHAPTER_LEAK');
+                }else{
+                  if(!body.includes('適用対象・基本事項'))record.errors.push('OVERVIEW_CHAPTER_MISSING');
+                  if(await page.locator('a[href="/handbook/community-elderly-facility/applicability"]').count()===0)record.errors.push('DETAIL_LINK');
+                }
+                await page.keyboard.press('Tab');
+                if(await page.evaluate(()=>document.activeElement?.tagName)==='BODY')record.errors.push('KEYBOARD_FOCUS');
+                if(width===390)await page.screenshot({path:'artifacts/mesh-a5a6/'+route.replaceAll('/','_')+'.png'});
+                record.status=record.errors.length?'FAIL':'PASS';
+              }catch(e){record.status='FAIL';record.errors.push(String(e).slice(0,300))}
+              report.cases.push(record);
+              console.log(route,width,record.status,record.errors.join(','));
+              await context.close();
+            }
+          }finally{
+            await browser.close();
+            report.passed=report.cases.filter(c=>c.status==='PASS').length;
+            report.failed=report.cases.length-report.passed;
+            fs.writeFileSync('artifacts/mesh-a5a6/report.json',JSON.stringify(report,null,2));
+          }
+          if(report.failed)process.exitCode=1;
+          JS
+      - name: Verify Japanese text in actual PDF
+        run: |
+          set -euo pipefail
+          pdftotext -layout artifacts/mesh-a5a6/applicability.pdf artifacts/mesh-a5a6/pdf-text.txt
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('artifacts/mesh-a5a6/pdf-text.txt').read_text(encoding='utf-8')
+          terms=['通常型','ユニット型','入所の際に','入居の際に','未確認']
+          missing=[s for s in terms if s not in text]
+          print('PDF text markers:',{s:s in text for s in terms})
+          if missing:raise SystemExit('PDF_CJK_LOSS: '+','.join(missing))
+          PY
+      - name: Preserve exact-head browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-a5a6-scoped-browser
+          path: artifacts/mesh-a5a6
+          retention-days: 14
+          if-no-files-found: warn
