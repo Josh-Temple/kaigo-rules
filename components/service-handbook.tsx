@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { chapterRecords, handbookChapterHref, legalHref, type HandbookChapter, type HandbookEvidence, type HandbookRoleSection, type ServiceHandbookData } from "../lib/working-handbook";
 import LegalRecordView from "./legal-record";
+import HandbookChecklist from "./handbook-checklist";
 import { isStaffingScopeOrException, readerEvidenceTitle, readerLabel, readerRequirementTitle, requirementCopy, separateHandbookParagraphs, splitDayserviceRegionalText } from "../lib/handbook/reader-content";
 
 const evidenceNames: Record<HandbookEvidence["kind"], string> = {
@@ -118,8 +119,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       {chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id) ? <h3>人員基準の全体像</h3> : null}
       {paragraphs.reader.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
       <h3>確認すること</h3>
-      <p className="meta">確認した項目にチェックできます。チェックは保存されず、適合の証明にはなりません。印刷する場合はブラウザの印刷機能をご利用ください。</p>
-      <ul className="handbook-checkpoints handbook-checklist">{chapter.checkpoints.map((point, index) => <li key={index}><label><input type="checkbox" /> <span>{point}</span></label></li>)}</ul>
+      <HandbookChecklist items={chapter.checkpoints} chapterTitle={chapter.title} printable={full} />
       {chapter.section_id !== "staffing" || !["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
         ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
       {chapter.section_id === "national_qa" ? <>
