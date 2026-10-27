@@ -57,8 +57,12 @@ class BoundedPublicSourcePilot(unittest.TestCase):
         self.assertNotIn("localStorage", self.source)
         self.assertNotIn("fetch(", self.source)
         self.assertNotIn("process.env.VERCEL_ENV", self.source)
-        self.assertIn("item.source_identifiers.join", self.source)
+        # Preserve the source metadata in validation logic without printing
+        # internal identifiers in the ordinary source-finder interface.
+        self.assertIn("p.source_identifiers.some", self.source)
         self.assertIn("item.evidence_task_id", self.source)
+        self.assertNotIn("記録ID：{item.evidence_task_id}", self.source)
+        self.assertNotIn("<strong>確認候補 {item.bridge_id}</strong>", self.source)
         self.assertIn("未レビューの手引本文29文は、この公開ページには掲載していません", self.source)
 
     def test_noindex_and_user_facing_holds(self):
