@@ -63,7 +63,7 @@ class BoundedPublicSourcePilot(unittest.TestCase):
         self.assertIn("item.evidence_task_id", self.source)
         self.assertNotIn("記録ID：{item.evidence_task_id}", self.source)
         self.assertNotIn("<strong>確認候補 {item.bridge_id}</strong>", self.source)
-        self.assertIn("未レビューの手引本文29文は、この公開ページには掲載していません", self.source)
+        self.assertIn("未レビューの手引本文29文も掲載していません", self.source)
 
     def test_noindex_and_user_facing_holds(self):
         self.assertIn("robots: { index: false, follow: false, nocache: true }", self.source)
