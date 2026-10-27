@@ -2,7 +2,7 @@ import Link from "next/link";
 import { chapterRecords, handbookChapterHref, legalHref, type HandbookChapter, type HandbookEvidence, type HandbookRoleSection, type ServiceHandbookData } from "../lib/working-handbook";
 import LegalRecordView from "./legal-record";
 import HandbookChecklist from "./handbook-checklist";
-import { isStaffingScopeOrException, readerEvidenceTitle, readerLabel, readerRequirementTitle, requirementCopy, separateHandbookParagraphs, splitDayserviceRegionalText } from "../lib/handbook/reader-content";
+import { isStaffingScopeOrException, readerEvidenceTitle, readerLabel, readerRequirementTitle, requirementCopy, separateHandbookParagraphs, splitDayserviceRegionalText, type HandbookAuthoritySegment } from "../lib/handbook/reader-content";
 
 const evidenceNames: Record<HandbookEvidence["kind"], string> = {
   national_standard: "国の基準省令",
@@ -14,6 +14,16 @@ const evidenceNames: Record<HandbookEvidence["kind"], string> = {
   yokohama_ordinance: "横浜市条例",
   yokohama_regulation: "横浜市規則",
   yokohama_handbook: "参考資料：横浜市の運営の手引き",
+};
+
+const authorityDisplayLabels: Record<HandbookAuthoritySegment["authority"], string> = {
+  national_law: "国の法律", national_standard: "国の基準省令",
+  national_interpretation: "国の解釈通知（省令とは法的性格が異なります）",
+  national_qa: "国のQ&A（省令とは法的性格が異なります）",
+  national_fee_notice: "国の介護報酬告示（人員基準と算定要件は区別）",
+  municipal_ordinance: "地域の条例（適用地域に法的効力がある場合があります）",
+  municipal_regulation: "地域の規則（適用地域の規定を確認）",
+  municipal_handbook: "自治体の運営手引（参考資料）",
 };
 
 /** Preserve original anchor targets while placing staff roles before scope and exception items. */
@@ -60,7 +70,8 @@ function StaffingRoles({ service, chapter, full }: {
       <h4>{readerLabel(role.title)}</h4>
       {role.requirements.map(requirement => {
         const copy = requirementCopy(requirement.description);
-        const parts = service.service_id === "dayservice" && staffing ? splitDayserviceRegionalText(copy) : { national: copy, regional: "" };
+        const parts = service.service_id === "dayservice" && staffing
+          ? splitDayserviceRegionalText(copy, requirement.authority_segments) : null;
         return <section key={requirement.id} className="handbook-role-requirement" id={`${anchor}-${role.id}-requirement-${requirement.id}`}>
         <h5>{readerRequirementTitle(
           requirement.title, requirement.aspect,
@@ -68,7 +79,12 @@ function StaffingRoles({ service, chapter, full }: {
           role.requirements.filter(item => item.aspect === requirement.aspect && /^(確認事項|要件|確認すること)$/u.test(readerLabel(item.title))).length,
         )}</h5>
         {requirement.verification_state === "EVIDENCE_GAP" ? <p className="handbook-role-warning">未確認：この要件の根拠と適用条件は、原典との照合が必要です。</p> : null}
-        {parts.national.split("\n").filter(Boolean).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+        {parts ? parts.segments.map((segment, index) => <section key={index} className={segment.authority === "unclassified" ? "handbook-role-warning" : segment.authority.startsWith("municipal_") ? "handbook-regional-note" : "handbook-authority-note"}>
+          <h6>{segment.authority === "unclassified"
+            ? "国・自治体の根拠区分を確認中（全国共通の基準として扱わないでください）"
+            : `${segment.authority.startsWith("municipal_") ? `${segment.jurisdiction}：` : ""}${authorityDisplayLabels[segment.authority]}`}</h6>
+          {segment.text.split("\n").filter(Boolean).map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}
+        </section>) : copy.split("\n").filter(Boolean).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
         <p><strong>適用範囲：</strong>{requirement.applicability}</p>
         {requirement.description.startsWith("【Research Mesh隔離候補・法令適合未審査】") && requirement.verification_state !== "EVIDENCE_GAP" ? <p className="handbook-role-warning">この要件の法令適合性は未審査です。</p> : null}
         {requirement.practical_checks.length ? <>
@@ -86,11 +102,7 @@ function StaffingRoles({ service, chapter, full }: {
           {evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" && evidence.url ? <div><a href={evidence.url} target="_blank" rel="noopener noreferrer">{evidence.kind === "yokohama_handbook" ? "横浜市の手引を開く ↗" : "公式資料を開く ↗"}</a></div> : null}
         </li>)}</ul> : <p className="handbook-role-warning">個別の出典候補はまだ登録されていません。原典の特定・照合が必要です。</p>}
         {requirement.evidence.some(e => e.kind === "national_qa" && e.verification_state !== "PRIMARY_TEXT_CHECKED_SCOPED") ? <p className="meta">関連する国Q&Aは候補の段階です。原問との照合が必要です。</p> : null}
-        {parts.regional ? <section className="handbook-regional-note" aria-label="横浜市の基準と参考情報">
-          <h6>地域によって異なる基準・参考情報（横浜市）</h6>
-          <p>横浜市の条例と手引を区別して掲載しています。事業所の所在地を管轄する指定権者の基準も確認してください。</p>
-          {parts.regional.split("\n").filter(Boolean).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-        </section> : null}
+        {parts ? <p className="meta">国の基準と地域の条例・規則は別の根拠です。自治体の運営手引は参考資料です。適用地域の規定、原典の施行版、未確認の条件を別途確認してください。</p> : null}
       </section>})}
     </section>)}
   </section>;
