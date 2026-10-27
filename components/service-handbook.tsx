@@ -53,7 +53,7 @@ function StaffingRoles({ service, chapter, full }: {
   </section>;
   return <section className="handbook-roles" aria-label={groupHeading}>
     <h3>{groupHeading}</h3>
-    <p className="meta">次の解説は、記載された対象範囲と出典確認状況に限ります。原典の現行性・人手受入は別途確認してください。</p>
+    <p className="meta">未確認の内容を含みます。適用前に最新の原典と指定権者の基準を確認してください。</p>
     <RoleNavigation roles={roles} staffing={staffing} anchor={anchor} detailHref={detailHref} full={true} />
     {roles.map(role => <section key={role.id} id={`${anchor}-${role.id}`} className="handbook-role">
       <h4>{readerLabel(role.title)}</h4>
@@ -76,12 +76,10 @@ function StaffingRoles({ service, chapter, full }: {
           <strong>{evidenceNames[evidence.kind]}</strong>
           <span className="handbook-role-evidence-state">{evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" ? "原文確認済み（限定範囲）" : "出典候補・原文未照合"}</span>
           <div>{readerEvidenceTitle(evidence.title).label}（{evidence.issuer}）</div>
-          {readerEvidenceTitle(evidence.title).technical ? <details className="handbook-editorial-details"><summary>登録した資料の識別情報</summary><p>{evidence.title}</p></details> : null}
           <div>該当箇所：{evidence.locator} ／ 版：{evidence.version}</div>
           <div>対象：{evidence.scope}{evidence.effective_date ? ` ／ 適用日：${evidence.effective_date}` : ""}</div>
           {evidence.note ? <p>{evidence.note}</p> : null}
           {evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" && evidence.url ? <div><a href={evidence.url} target="_blank" rel="noopener noreferrer">公式原典を開く ↗</a></div> : null}
-          {evidence.checked_at_jst ? <details className="handbook-editorial-details"><summary>原文の確認記録</summary><p>{evidence.checked_at_jst}</p></details> : null}
         </li>)}</ul> : <p className="handbook-role-warning">個別の出典候補はまだ登録されていません。原典の特定・照合が必要です。</p>}
         {requirement.evidence.some(e => e.kind === "national_qa" && e.verification_state !== "PRIMARY_TEXT_CHECKED_SCOPED") ? <p className="meta">関連する国Q&Aは候補の段階です。原問との照合が必要です。</p> : null}
       </section>)}
@@ -109,9 +107,8 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
         : null}
       {chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
         ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
-      {chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id) ? <h3>章の原稿と補足</h3> : null}
+      {chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id) ? <h3>人員基準の全体像</h3> : null}
       {paragraphs.reader.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-      {paragraphs.editorial.length ? <details className="handbook-editorial-details"><summary>資料の作成時の補足</summary>{paragraphs.editorial.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</details> : null}
       <h3>確認すること</h3>
       <ul className="handbook-checkpoints">{chapter.checkpoints.map((point, index) => <li key={index}>{point}</li>)}</ul>
       {chapter.section_id !== "staffing" || !["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
