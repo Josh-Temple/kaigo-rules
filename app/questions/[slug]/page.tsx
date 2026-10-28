@@ -45,6 +45,7 @@ export default async function QuestionPage({ params }: { params: Promise<{ slug:
     <article className="answer-page">
       <p className="eyebrow">通所介護 / {question.category}</p>
       <h1>{question.title}</h1>
+      {slug === "nurse-staffing" ? <p><Link href="/services/dayservice#staffing">通所介護の手引「人員基準」に戻る</Link></p> : null}
       <p className="meta">全国共通事項を対象 / 状態：<span className={isVerified ? "verified" : ""}>{isVerified ? "FAQ根拠対応を確認済み" : "根拠対応確認中"}</span>{isVerified && question.last_verified ? ` / 最終確認 ${question.last_verified}` : ""}</p>
       {isVerified && question.verification_note ? <p className="scope-note">{question.verification_note}</p> : null}
       {isVerified ? (

@@ -1,0 +1,48 @@
+name: Issue569 Muse scoped handbook acceptance
+
+on:
+  pull_request:
+    branches:
+      - work/issue569-reader-first
+    paths:
+      - .github/workflows/kaigo-issue569-muse-scoped-acceptance.yml
+      - components/service-handbook.tsx
+      - app/questions/**
+      - data/handbook-content.json
+      - tests/issue569-b-reader-journey.test.mjs
+      - tests/issue569-regional-split.test.mjs
+      - tests/issue569-checklist-ui.test.mjs
+
+permissions:
+  contents: read
+
+jobs:
+  scoped-handbook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Pin exact PR head and verify narrowly scoped handbook behavior
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          node --experimental-strip-types --test \
+            tests/issue569-b-reader-journey.test.mjs \
+            tests/issue569-regional-split.test.mjs \
+            tests/issue569-checklist-ui.test.mjs
+
+      - name: Install, regenerate, check, run handbook tests and compile the exact PR HEAD
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build:handbook
+          npm run check:handbook
+          ./node_modules/.bin/next build
+          npm run test:handbook

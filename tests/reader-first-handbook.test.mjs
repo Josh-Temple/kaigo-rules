@@ -9,6 +9,25 @@ const latest=JSON.parse(fs.readFileSync("docs/handbook-quality/2026-10-25-resear
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const chapter=sid=>h.services[sid].chapters.staffing;
 
+// Article 5(5), verified against the MHLW-published ordinance 37 text.
+// Restore exactly the former inaccurate sentence ONLY for SHA comparison;
+// every other byte of the chapter must still agree with the historic baseline.
+const correctedHomevisitSentence='利用者50人又はその端数を増すごとに1人以上とすることができます（第5条第5項）';
+const oldHomevisitSentence='利用者50人ごとに1人以上とできます（第5条第5項）';
+function homevisitWithOnlyApprovedEditReverted(current) {
+ const matches=current.paragraphs.map((p,i)=>p.includes(correctedHomevisitSentence)?i:-1).filter(i=>i>=0);
+ assert.deepEqual(matches,[4], 'only homevisit staffing paragraph 5 may contain the approved correction');
+ const text=current.paragraphs[4];
+ for(const condition of [
+   '常勤のサービス提供責任者を3人以上配置し',
+   'サービス提供責任者の業務に主として従事する者を1人以上配置している',
+   '業務が効率的に行われている場合',
+ ]) assert.ok(text.includes(condition), 'three 50-user exception conditions remain intact');
+ current.paragraphs=[...current.paragraphs];
+ current.paragraphs[4]=text.replace(correctedHomevisitSentence,oldHomevisitSentence);
+ return current;
+}
+
 test('585 chapters retain original fields; only scoped staffing projections and one inaccurate checkpoint change',()=>{
  assert.equal(Object.keys(h.services).length,39);
  let count=0;
@@ -17,6 +36,7 @@ test('585 chapters retain original fields; only scoped staffing projections and 
   const current=structuredClone(h.services[sid].chapters[cid]);
   const added=latest.find(x=>x.service_id===sid&&x.chapter_id===cid);
   if(added) delete current[added.field];
+  if(key==='homevisit/staffing') homevisitWithOnlyApprovedEditReverted(current);
   const {role_sections,...rest}=current;
   if(key==='dayservice/staffing') {
    assert.equal(rest.checkpoints[3],"生活相談員は事業所単位で提供日ごとの勤務時間を、看護職員・介護職員は提供単位ごとの配置を、機能訓練指導員は事業所ごとの配置を満たしているか");
@@ -78,7 +98,7 @@ test('dayrehab remains seven unverified requirements; clinic nurse experience is
  assert.match(q.find(x=>x.id==='clinic-exception').description,/1年以上/);
  assert.match(q.find(x=>x.id==='clinic-exception').description,/常勤換算0.1以上/);
  assert.match(q.find(x=>x.id==='specialist-one-per-hundred').description,/内数/);
- assert.equal(hash(chapter('homevisit')),baseline.chapters['homevisit/staffing']);
+ assert.equal(hash(homevisitWithOnlyApprovedEditReverted(structuredClone(chapter('homevisit')))),baseline.chapters['homevisit/staffing']);
 });
 
 

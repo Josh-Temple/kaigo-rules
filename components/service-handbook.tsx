@@ -68,10 +68,26 @@ function StaffingRoles({ service, chapter, full }: {
   </section>;
   return <section className="handbook-roles" aria-label={groupHeading}>
     <h3>{groupHeading}</h3>
+    {service.service_id === "dayrehab" && staffing ? <section className="handbook-working-note" aria-label="通所リハビリテーションの施設類型別の確認先">
+      <h4>施設の種類ごとに確認する条項</h4>
+      <p>これは適用条項を探すための案内です。施設類型の判断や必要人数を、この案内だけで確定するものではありません。</p>
+      <ul>
+        <li>病院など：省令第37号第111条第1項・第3項の原則を確認してください。</li>
+        <li>診療所：第111条第2項の特例を選べるか、適用条件を確認してください。</li>
+        <li>介護老人保健施設・介護医療院：第111条第4項と各施設の人員基準を併せて確認してください。各施設基準の具体的な員数は確認中です。</li>
+        <li>介護予防通所リハビリテーションと一体運営：第111条第5項の条件と、介護予防側の人員基準を併せて確認してください。</li>
+      </ul>
+      <p>管理者の選任要件は、第116条の管理代行の規定だけでは判断できません。施設ごとの根拠は確認中です。</p>
+      <p><a href="https://laws.e-gov.go.jp/law/411M50000100037" target="_blank" rel="noopener noreferrer">国の基準省令第111条を原典で確認する ↗</a></p>
+    </section> : null}
     <p className="meta">未確認の内容を含みます。適用前に最新の原典と指定権者の基準を確認してください。</p>
     <RoleNavigation roles={roles} staffing={staffing} anchor={anchor} detailHref={detailHref} full={true} />
     {roles.map(role => <section key={role.id} id={`${anchor}-${role.id}`} className="handbook-role">
       <h4>{readerLabel(role.title)}</h4>
+      {service.service_id === "dayservice" && staffing && role.title.includes("看護職員") ? <>
+        <p><Link href="/questions/nurse-staffing">看護職員の配置と連携について実務Q&Aを読む</Link></p>
+        <p className="meta">このQ&Aは手引の補足です。連携・兼務の適用条件は、国の解釈通知・Q&Aの現行内容を別途確認してください。</p>
+      </> : null}
       {role.requirements.map(requirement => {
         const copy = requirementCopy(requirement.description);
         const parts = service.service_id === "dayservice" && staffing
@@ -130,6 +146,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       <p className="eyebrow">第{String(chapter.number).padStart(2, "0")}章</p>
       <h2>{full ? chapter.title : <Link href={detailHref}>{chapter.title}</Link>}</h2>
       <p>{chapter.summary}</p>
+      {service.service_id === "homevisit" && chapter.section_id === "staffing" ? <p className="meta">「サ責」は「サービス提供責任者」の略称です。資格や配置の条件は、以下の職種別の説明と原典で確認してください。</p> : null}
       {full ? <p className="handbook-return-link"><Link href={`/services/${service.service_id}#${chapter.section_id}`}>{service.label}の手引に戻る</Link></p> : null}
       {!full && chapter.section_id === "staffing" && !["dayservice", "dayrehab", "homevisit"].includes(service.service_id)
         ? <p className="handbook-primary-action"><Link href={detailHref}>人員基準を確認する（配置・資格・勤務の条件）</Link></p> : null}
