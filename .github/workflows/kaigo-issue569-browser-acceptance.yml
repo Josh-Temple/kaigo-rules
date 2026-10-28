@@ -1,15 +1,22 @@
 name: Issue569 actual Chrome and print acceptance
 on:
   pull_request:
-    branches: [main]
+    branches: [main, work/issue569-reader-first]
     paths:
       - .github/workflows/kaigo-issue569-browser-acceptance.yml
       - components/service-handbook.tsx
       - lib/handbook/reader-content.ts
       - tests/issue569-regional-split.test.mjs
+      - tests/issue569-c-reader-ui-safety.test.mjs
+      - tests/issue569-b-dayservice-editorial.test.mjs
+      - app/questions/**
+      - app/globals.css
+      - package.json
   workflow_dispatch:
 permissions:
   contents: read
+env:
+  REVIEW_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
 jobs:
   chrome:
     runs-on: ubuntu-latest
@@ -17,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
@@ -31,7 +39,8 @@ jobs:
       - name: Install and build current commit
         run: |
           set -euo pipefail
-          echo "Review SHA: $GITHUB_SHA"
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          echo "Review SHA: $(git rev-parse HEAD)"
           npm ci --ignore-scripts --no-audit --no-fund
           npm run build:handbook
           npm run check:handbook
@@ -66,7 +75,7 @@ jobs:
           const executablePath=['/usr/bin/google-chrome','/usr/bin/chromium','/usr/bin/chromium-browser'].find(fs.existsSync);
           if(!executablePath)throw Error('SYSTEM_CHROME_NOT_FOUND');
           const browser=await chromium.launch({headless:true,executablePath,args:['--no-sandbox']});
-          const report={head:process.env.GITHUB_SHA,engine:executablePath,cases:[],pdf:null};
+          const report={head:process.env.REVIEW_SOURCE_SHA,engine:executablePath,cases:[],pdf:null};
           try {
             for(const route of routes)for(const width of widths){
               const context=await browser.newContext({viewport:{width,height:844}});
