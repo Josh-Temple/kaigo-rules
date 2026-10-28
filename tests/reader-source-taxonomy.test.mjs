@@ -54,5 +54,5 @@ test('schema and UI retain exact matching source-kind names',()=>{
   assert.ok(ui.includes(kind+':'));
   assert.ok(validator.includes('"'+kind+'"'));
  }
- assert.ok(ui.includes('evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" && evidence.url'));
+ assert.ok(ui.includes('evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" && safeHandbookEvidenceUrl(evidence.url)'));
 });
