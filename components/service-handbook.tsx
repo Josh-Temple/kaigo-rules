@@ -42,7 +42,7 @@ function StaffingRoles({ service, chapter, full }: {
   const groupHeading = staffing ? "職種ごとの人員基準" : "項目ごとの要件と条件";
   const anchor = staffing ? "staffing-role" : `chapter-${chapter.section_id}-rule`;
   const staffingServices = ["homevisit", "dayrehab", "dayservice", "small-scale-multifunctional", "specific-welfare-equipment-sale", "welfare-equipment-rental", "preventive-welfare-equipment-rental", "preventive-support", "homerehab", "preventive-homerehab", "preventive-dayrehab", "preventive-homenursing", "homebath", "homenursing", "regular-round", "shortstay-life", "shortstay-medical", "preventive-homebath", "preventive-shortstay-life", "preventive-shortstay-medical", "specific-facility", "preventive-specific-facility", "community-specific-facility", "community-elderly-facility", "specific-preventive-welfare-equipment-sale"];
-  const ruleChapters = ["equipment", "operations", "records", "safeguarding", "incident_and_infection", "business_continuity", "notifications"];
+  const ruleChapters = ["applicability", "equipment", "operations", "records", "safeguarding", "incident_and_infection", "business_continuity", "notifications"];
   const allowed = staffing ? staffingServices.includes(service.service_id)
     : service.service_id === "community-elderly-facility" && ruleChapters.includes(chapter.section_id);
   if (!allowed || !roles?.length) return null;
