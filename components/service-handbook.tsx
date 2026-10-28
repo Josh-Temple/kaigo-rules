@@ -73,6 +73,10 @@ function StaffingRoles({ service, chapter, full }: {
     <RoleNavigation roles={roles} staffing={staffing} anchor={anchor} detailHref={detailHref} full={true} />
     {roles.map(role => <section key={role.id} id={`${anchor}-${role.id}`} className="handbook-role">
       <h4>{readerLabel(role.title)}</h4>
+      {service.service_id === "dayservice" && staffing && role.title.includes("看護職員") ? <>
+        <p><Link href="/questions/nurse-staffing">看護職員の配置と連携について実務Q&Aを読む</Link></p>
+        <p className="meta">このQ&Aは手引の補足です。連携・兼務の適用条件は、国の解釈通知・Q&Aの現行内容を別途確認してください。</p>
+      </> : null}
       {role.requirements.map(requirement => {
         const copy = requirementCopy(requirement.description);
         const parts = service.service_id === "dayservice" && staffing
@@ -136,6 +140,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       <p className="eyebrow">第{String(chapter.number).padStart(2, "0")}章</p>
       <h2>{full ? chapter.title : <Link href={detailHref}>{chapter.title}</Link>}</h2>
       <p>{chapter.summary}</p>
+      {service.service_id === "homevisit" && chapter.section_id === "staffing" ? <p className="meta">「サ責」は「サービス提供責任者」の略称です。資格や配置の条件は、以下の職種別の説明と原典で確認してください。</p> : null}
       {full ? <p className="handbook-return-link"><Link href={`/services/${service.service_id}#${chapter.section_id}`}>{service.label}の手引に戻る</Link></p> : null}
       {!full && chapter.section_id === "staffing" && !["dayservice", "dayrehab", "homevisit"].includes(service.service_id)
         ? <p className="handbook-primary-action"><Link href={detailHref}>人員基準を確認する（配置・資格・勤務の条件）</Link></p> : null}

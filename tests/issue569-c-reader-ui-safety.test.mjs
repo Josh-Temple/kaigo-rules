@@ -67,3 +67,15 @@ test("five staffing roles and 39 services / 585 chapters are unchanged", () => {
   assert.deepEqual(data.services.dayservice.chapters.staffing.role_sections.map(r => r.title),
     ["生活相談員", "看護職員", "介護職員", "機能訓練指導員", "管理者"]);
 });
+
+test("Muse reader-only links keep nursing legal uncertainty and an exact handbook return", () => {
+  const qpage = fs.readFileSync("app/questions/[slug]/page.tsx", "utf8");
+  assert.match(renderer, /href="\/questions\/nurse-staffing"/u);
+  assert.match(renderer, /連携・兼務の適用条件は、国の解釈通知・Q&Aの現行内容を別途確認してください/u);
+  assert.match(qpage, /slug === "nurse-staffing"/u);
+  assert.match(qpage, /href="\/services\/dayservice#staffing"/u);
+  assert.match(renderer, /「サ責」は「サービス提供責任者」の略称です/u);
+  const homevisit = data.services.homevisit.chapters.staffing.paragraphs.join("\n");
+  assert.match(homevisit, /利用者50人ごとに1人以上とできます/u);
+  assert.doesNotMatch(homevisit, /利用者50人又はその端数を増すごとに1人以上とすることができます/u);
+});
