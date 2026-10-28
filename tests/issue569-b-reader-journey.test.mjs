@@ -41,3 +41,13 @@ test('readability changes do not hide original legal uncertainty or switch servi
   assert.ok(data.services.dayrehab.chapters.staffing.role_sections.some(x => x.title === '医師'));
   assert.ok(data.services.homevisit.chapters.staffing.role_sections.some(x => x.title.includes('訪問介護')));
 });
+
+test('dayservice nursing role links to the existing Q&A without implying legal verification', () => {
+  const questions = JSON.parse(fs.readFileSync('data/questions.json', 'utf8'));
+  assert.ok(questions.some(question => question.slug === 'nurse-staffing'));
+  assert.ok(component.includes('service.service_id === "dayservice" && staffing && role.title.includes("看護職員")'));
+  assert.ok(component.includes('href="/questions/nurse-staffing"'));
+  assert.ok(component.includes('連携・兼務の適用条件は、国の解釈通知・Q&Aの現行内容を別途確認してください'));
+  assert.match(component, /requirement\.verification_state === "EVIDENCE_GAP"/);
+  assert.match(component, /requirement\.evidence\.map/);
+});
