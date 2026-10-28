@@ -44,5 +44,5 @@ jobs:
           npm ci --ignore-scripts --no-audit --no-fund
           npm run build:handbook
           npm run check:handbook
-          npm run test:handbook
           ./node_modules/.bin/next build
+          npm run test:handbook
