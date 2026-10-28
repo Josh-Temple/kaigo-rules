@@ -72,6 +72,10 @@ function StaffingRoles({ service, chapter, full }: {
     <RoleNavigation roles={roles} staffing={staffing} anchor={anchor} detailHref={detailHref} full={true} />
     {roles.map(role => <section key={role.id} id={`${anchor}-${role.id}`} className="handbook-role">
       <h4>{readerLabel(role.title)}</h4>
+      {service.service_id === "dayservice" && staffing && role.title.includes("看護職員") ? <>
+        <p><Link href="/questions/nurse-staffing">看護職員の配置と連携について実務Q&Aを読む</Link></p>
+        <p className="meta">このQ&Aは手引の補足です。連携・兼務の適用条件は、国の解釈通知・Q&Aの現行内容を別途確認してください。</p>
+      </> : null}
       {role.requirements.map(requirement => {
         const copy = requirementCopy(requirement.description);
         const parts = service.service_id === "dayservice" && staffing
