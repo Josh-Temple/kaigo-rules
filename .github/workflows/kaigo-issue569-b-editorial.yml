@@ -33,5 +33,6 @@ jobs:
       - name: Run scoped B editorial tests and standard handbook suite
         run: |
           node --experimental-strip-types --test tests/issue569-b-dayservice-editorial.test.mjs
-          npm run test:handbook
+          npm run build:handbook
           npm run check:handbook
+          npm run test:handbook
