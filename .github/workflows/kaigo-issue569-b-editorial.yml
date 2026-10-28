@@ -1,0 +1,38 @@
+name: Issue569 B dayservice reader editorial exact-head regression
+on:
+  pull_request:
+    branches: [work/issue569-reader-first]
+    paths:
+      - .github/workflows/kaigo-issue569-b-editorial.yml
+      - components/service-handbook.tsx
+      - lib/handbook/dayservice-reader-editorial.ts
+      - tests/issue569-b-dayservice-editorial.test.mjs
+      - package.json
+permissions:
+  contents: read
+jobs:
+  reader-editorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify the actual PR HEAD
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          echo "B reviewer source HEAD: $(git rev-parse HEAD)"
+      - name: Run scoped B editorial tests and standard handbook suite
+        run: |
+          node --experimental-strip-types --test tests/issue569-b-dayservice-editorial.test.mjs
+          npm run build:handbook
+          npm run check:handbook
+          npm run test:handbook
