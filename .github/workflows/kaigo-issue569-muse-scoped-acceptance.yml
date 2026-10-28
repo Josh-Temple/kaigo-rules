@@ -36,3 +36,13 @@ jobs:
             tests/issue569-b-reader-journey.test.mjs \
             tests/issue569-regional-split.test.mjs \
             tests/issue569-checklist-ui.test.mjs
+
+      - name: Install, regenerate, check, run handbook tests and compile the exact PR HEAD
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build:handbook
+          npm run check:handbook
+          npm run test:handbook
+          ./node_modules/.bin/next build
