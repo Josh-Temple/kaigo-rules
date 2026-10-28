@@ -1,12 +1,16 @@
 name: Issue569 actual Chrome and print acceptance
 on:
   pull_request:
-    branches: [main]
+    branches: [main, work/issue569-reader-first]
     paths:
       - .github/workflows/kaigo-issue569-browser-acceptance.yml
       - components/service-handbook.tsx
       - lib/handbook/reader-content.ts
       - tests/issue569-regional-split.test.mjs
+      - tests/issue569-b-dayservice-editorial.test.mjs
+      - tests/issue569-c-reader-ui-safety.test.mjs
+      - lib/handbook/dayservice-reader-editorial.ts
+      - package.json
   workflow_dispatch:
 permissions:
   contents: read
