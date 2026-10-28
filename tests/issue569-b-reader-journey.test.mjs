@@ -51,3 +51,17 @@ test('dayservice nursing role links to the existing Q&A without implying legal v
   assert.match(component, /requirement\.verification_state === "EVIDENCE_GAP"/);
   assert.match(component, /requirement\.evidence\.map/);
 });
+
+test('nursing Q&A links back to the exact handbook staffing section', () => {
+  const page = fs.readFileSync('app/questions/[slug]/page.tsx', 'utf8');
+  assert.match(page, /slug === "nurse-staffing"/);
+  assert.match(page, /href="\/services\/dayservice#staffing"/);
+  assert.match(page, /通所介護の手引「人員基準」に戻る/);
+  assert.match(component, /id=\{chapter.section_id\}/);
+});
+
+test('homevisit staffing explains the abbreviated service manager term', () => {
+  assert.match(component, /service.service_id === "homevisit" && chapter.section_id === "staffing"/);
+  assert.ok(component.includes('「サ責」は「サービス提供責任者」の略称です'));
+  assert.match(component, /requirement\.verification_state === "EVIDENCE_GAP"/);
+});
