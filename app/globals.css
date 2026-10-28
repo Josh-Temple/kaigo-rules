@@ -181,3 +181,11 @@
 .handbook-chapter-sequence a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;overflow-wrap:anywhere}
 @media(max-width:760px){.handbook-primary-action a{display:flex;width:100%}.handbook-chapter-sequence{flex-direction:column;gap:4px}}
 @media print{.handbook-primary-action,.handbook-return-link,.handbook-chapter-sequence{display:none}}
+
+/* C: staffing return navigation keeps the long role list usable by touch and keyboard. */
+.handbook-role-navigation{scroll-margin-top:18px}
+.handbook-role-return{margin-top:18px}
+.handbook-role-return a{display:inline-flex;align-items:center;min-height:48px;padding:8px 12px;border:1px solid var(--line);border-radius:4px;overflow-wrap:anywhere}
+.handbook-role-return a:focus-visible,.handbook-role-navigation a:focus-visible,.handbook-toc a:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+@media(max-width:390px){.handbook-role-nav-group li,.handbook-role-nav-group a{width:100%}.handbook-role-return a{max-width:100%}}
+@media print{.handbook-role-return{display:none}}

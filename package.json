@@ -158,7 +158,7 @@
     "verify:unit-price-currentness": "python scripts/verify_unit_price_currentness.py",
     "build:handbook": "python scripts/build_handbook_site.py",
     "check:handbook": "python scripts/build_handbook_site.py --check",
-    "test:handbook": "node --experimental-strip-types --test tests/working-handbook.test.mjs tests/handbook-qa-locator.test.mjs tests/handbook-c-completion.test.mjs tests/handbook-b-scoped-quality.test.mjs tests/b-reader-first-two-service-staffing.test.mjs tests/reader-first-handbook.test.mjs tests/reader-source-taxonomy.test.mjs tests/research-mesh-20261025-integration.test.mjs tests/a-staffing-20261026-primary-evidence.test.mjs tests/issue569-regional-split.test.mjs tests/issue569-checklist-ui.test.mjs",
+    "test:handbook": "node --experimental-strip-types --test tests/working-handbook.test.mjs tests/handbook-qa-locator.test.mjs tests/handbook-c-completion.test.mjs tests/handbook-b-scoped-quality.test.mjs tests/b-reader-first-two-service-staffing.test.mjs tests/reader-first-handbook.test.mjs tests/reader-source-taxonomy.test.mjs tests/research-mesh-20261025-integration.test.mjs tests/a-staffing-20261026-primary-evidence.test.mjs tests/issue569-regional-split.test.mjs tests/issue569-checklist-ui.test.mjs tests/issue569-c-reader-ui-safety.test.mjs tests/issue569-b-dayservice-editorial.test.mjs",
     "predev": "npm run build:handbook"
   },
   "dependencies": {
