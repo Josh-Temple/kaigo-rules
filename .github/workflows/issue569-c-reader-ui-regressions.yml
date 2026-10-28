@@ -1,0 +1,23 @@
+name: Issue569 C reader UI regressions
+on:
+  push:
+    branches:
+      - work/20261029-issue569-c-reader-ui-safety
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reader-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build source-bound handbook
+        run: npm run build:handbook
+      - name: Run handbook regressions including Issue569 C
+        run: npm run test:handbook

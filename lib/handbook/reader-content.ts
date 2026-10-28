@@ -30,6 +30,24 @@ export function readerEvidenceTitle(title: string): { label: string; technical: 
   return { label: technical ? "資料識別情報（名称未確認）" : readerLabel(title), technical };
 }
 
+/** Only navigable HTTP(S) URLs can be rendered as evidence links. */
+export function safeHandbookEvidenceUrl(value?: string): string | null {
+  if (!value || value !== value.trim() || /[\u0000-\u001f\u007f]/u.test(value)) return null;
+  try {
+    const url = new URL(value);
+    if (!["http:", "https:"].includes(url.protocol) || !url.hostname || url.username || url.password) return null;
+    return url.href;
+  } catch {
+    return null;
+  }
+}
+
+/** Hide only an isolated repository file path, never surrounding legal conditions. */
+export function readerEvidenceLocator(value: string): string {
+  const standalonePath = /^(?:data|docs|scripts|tests)\/[A-Za-z0-9_.\/-]+\.(?:json|md|txt)$/u.test(value.trim());
+  return standalonePath ? "原典の該当箇所を確認中" : value;
+}
+
 export function requirementCopy(value: string): string {
   // Only an exact internal prefix is removed; the reader warning is rendered
   // separately. Never remove a sentence about versions, conditions or exceptions.
