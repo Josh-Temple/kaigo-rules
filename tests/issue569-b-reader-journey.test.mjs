@@ -65,3 +65,15 @@ test('homevisit staffing explains the abbreviated service manager term', () => {
   assert.ok(component.includes('「サ責」は「サービス提供責任者」の略称です'));
   assert.match(component, /requirement\.verification_state === "EVIDENCE_GAP"/);
 });
+
+test('homevisit 50-user exception includes rounded-up remainder without relaxing its three conditions', () => {
+  const staffing = data.services.homevisit.chapters.staffing;
+  const text = staffing.paragraphs.join('\n');
+  assert.ok(text.includes('利用者50人又はその端数を増すごとに1人以上とすることができます（第5条第5項）'));
+  assert.ok(!text.includes('利用者50人ごとに1人以上とできます（第5条第5項）'));
+  assert.ok(text.includes('常勤のサービス提供責任者を3人以上配置し'));
+  assert.ok(text.includes('サービス提供責任者の業務に主として従事する者を1人以上配置している'));
+  assert.ok(text.includes('業務が効率的に行われている場合'));
+  assert.equal(Object.keys(data.services).length, 39);
+  assert.equal(Object.values(data.services).reduce((total, service) => total + Object.keys(service.chapters).length, 0), 585);
+});
