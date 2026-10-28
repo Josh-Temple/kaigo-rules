@@ -147,7 +147,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       <h2>{full ? chapter.title : <Link href={detailHref}>{chapter.title}</Link>}</h2>
       <p>{chapter.summary}</p>
       {service.service_id === "homevisit" && chapter.section_id === "staffing" ? <p className="meta">「サ責」は「サービス提供責任者」の略称です。資格や配置の条件は、以下の職種別の説明と原典で確認してください。</p> : null}
-      {full ? <p className="handbook-return-link"<Link href={`/services/${service.service_id}#${chapter.section_id}`}>{service.label}の手引に戻る</Link></p> : null}
+      {full ? <p className="handbook-return-link"><Link href={`/services/${service.service_id}#${chapter.section_id}`}>{service.label}の手引に戻る</Link></p> : null}
       {!full && chapter.section_id === "staffing" && !["dayservice", "dayrehab", "homevisit"].includes(service.service_id)
         ? <p className="handbook-primary-action"><Link href={detailHref}>人員基準を確認する（配置・資格・勤務の条件）</Link></p> : null}
       {chapter.section_id !== "national_qa" && records.length > 0
