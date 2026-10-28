@@ -77,3 +77,15 @@ test('homevisit 50-user exception includes rounded-up remainder without relaxing
   assert.equal(Object.keys(data.services).length, 39);
   assert.equal(Object.values(data.services).reduce((total, service) => total + Object.keys(service.chapters).length, 0), 585);
 });
+
+test('dayrehab distinguishes facility-type entry points without asserting unverified staffing figures', () => {
+  assert.ok(component.includes('service.service_id === "dayrehab" && staffing'));
+  assert.ok(component.includes('施設の種類ごとに確認する条項'));
+  for(const article of ['第111条第1項・第3項','第111条第2項','第111条第4項','第111条第5項']) {
+    assert.ok(component.includes(article), article);
+  }
+  assert.ok(component.includes('各施設基準の具体的な員数は確認中です'));
+  assert.ok(component.includes('第116条の管理代行の規定だけでは判断できません'));
+  assert.ok(component.includes('https://laws.e-gov.go.jp/law/411M50000100037'));
+  assert.ok(data.services.dayrehab.chapters.staffing.role_sections.every(role => role.requirements.every(req => req.verification_state === 'EVIDENCE_GAP')));
+});
