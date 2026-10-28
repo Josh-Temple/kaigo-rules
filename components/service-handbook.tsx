@@ -68,6 +68,18 @@ function StaffingRoles({ service, chapter, full }: {
   </section>;
   return <section className="handbook-roles" aria-label={groupHeading}>
     <h3>{groupHeading}</h3>
+    {service.service_id === "dayrehab" && staffing ? <section className="handbook-working-note" aria-label="通所リハビリテーションの施設類型別の確認先">
+      <h4>施設の種類ごとに確認する条項</h4>
+      <p>これは適用条項を探すための案内です。施設類型の判断や必要人数を、この案内だけで確定するものではありません。</p>
+      <ul>
+        <li>病院など：省令第37号第111条第1項・第3項の原則を確認してください。</li>
+        <li>診療所：第111条第2項の特例を選べるか、適用条件を確認してください。</li>
+        <li>介護老人保健施設・介護医療院：第111条第4項と各施設の人員基準を併せて確認してください。各施設基準の具体的な員数は確認中です。</li>
+        <li>介護予防通所リハビリテーションと一体運営：第111条第5項の条件と、介護予防側の人員基準を併せて確認してください。</li>
+      </ul>
+      <p>管理者の選任要件は、第116条の管理代行の規定だけでは判断できません。施設ごとの根拠は確認中です。</p>
+      <p><a href="https://laws.e-gov.go.jp/law/411M50000100037" target="_blank" rel="noopener noreferrer">国の基準省令第111条を原典で確認する ↗</a></p>
+    </section> : null}
     <p className="meta">未確認の内容を含みます。適用前に最新の原典と指定権者の基準を確認してください。</p>
     <RoleNavigation roles={roles} staffing={staffing} anchor={anchor} detailHref={detailHref} full={true} />
     {roles.map(role => <section key={role.id} id={`${anchor}-${role.id}`} className="handbook-role">
