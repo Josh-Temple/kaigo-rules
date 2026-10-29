@@ -43,7 +43,7 @@ try {
     for (const width of [360, 390, 1280]) jobs.set('/services/' + service.service_id + ':' + width, { route: '/services/' + service.service_id, width, service: true });
     for (const chapter of service.chapters) {
       const route = '/handbook/' + service.service_id + '/' + chapter.section_id.replaceAll('_', '-');
-      jobs.set(route + ':390', { route, width: 390, chapter: true });
+      jobs.set(route + ':390', { ...jobs.get(route + ':390'), route, width: 390, chapter: true });
     }
   }
   const queue = [...jobs.values()];
@@ -74,6 +74,7 @@ try {
             warnings: (text.match(/未確認|確認中|未照合|未確定|未審査|確認前/gu) || []).length,
             roles: [...document.querySelectorAll('.handbook-role>h4')].map(el => el.textContent),
             chapterCount: document.querySelectorAll('.handbook-chapter').length,
+            readingGuides: document.querySelectorAll('.staffing-reading-guide').length,
             textLength: text.length,
             unsafeLinks: [...document.querySelectorAll('main a[href]')].filter(a => /^\s*(?:javascript|data|file):/iu.test(a.getAttribute('href'))).length };
         }));
@@ -86,10 +87,14 @@ try {
         if (record.unsafeLinks) record.errors.push('UNSAFE_LINK');
         if ((job.route.startsWith('/handbook/') || /^\/services\/[^/?]+$/.test(job.route)) && !record.robots?.includes('noindex')) record.errors.push('NOINDEX_MISSING');
         if (!baseline && record.noise.length) record.errors.push('INTERNAL_TEXT_VISIBLE');
+        if (!baseline) {
+          const pilotService = pilots.some(s => job.route === '/services/' + s || job.route === '/handbook/' + s + '/staffing');
+          if (record.readingGuides !== (pilotService ? 1 : 0)) record.errors.push('READING_GUIDE_OUTSIDE_STAFFING');
+        }
         if (/^\/services\/[^/?]+$/.test(job.route) && record.chapterCount !== 15) record.errors.push('CHAPTER_COUNT_CHANGED');
-        if (job.width === 390 && (job.key || job.service)) {
+        if ((job.width === 390 && (job.key || job.service)) || (job.width === 1280 && job.key)) {
           const filename = job.route.split('?')[0].replaceAll('/', '_') || '_home';
-          const shot = filename + '-390.png';
+          const shot = filename + '-' + job.width + '.png';
           await page.screenshot({ path: path.join(output, shot), animations: 'disabled' });
           report.screenshots.push(shot);
         }
@@ -107,6 +112,7 @@ try {
     await page.screenshot({ path: path.join(output, 'dayservice-nurse-390.png') });
     await page.locator('#staffing-role-nurse a[href="/questions/nurse-staffing"]').click();
     await page.locator('a[href="/services/dayservice#staffing-role-nurse"]').click();
+    await page.waitForURL('**/services/dayservice#staffing-role-nurse', { timeout: 15000 });
     report.interactions.push({ flow: 'service → nurse → Q&A → same role', status: page.url().endsWith('#staffing-role-nurse') ? 'PASS' : 'FAIL' });
     await page.goto(origin + '/handbook/dayservice/staffing');
     const checkbox = page.locator('input[type="checkbox"]').first();

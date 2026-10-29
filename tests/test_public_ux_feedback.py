@@ -9,11 +9,12 @@ class PublicUxFeedbackTest(unittest.TestCase):
     def read(self, path: str) -> str:
         return (ROOT / path).read_text(encoding="utf-8")
 
-    def test_homepage_is_database_first(self):
+    def test_homepage_is_handbook_first_and_keeps_keyword_search(self):
         home = self.read("app/page.tsx")
         self.assertIn('href="/databases/search"', home)
-        self.assertIn("サービスを先に決めなくても", home)
-        self.assertLess(home.index('href="/databases/search"'), home.index('href="/services"'))
+        self.assertIn("サービスを選んで手引を読む", home)
+        self.assertIn("キーワードから制度資料を探す", home)
+        self.assertLess(home.index('href="/services"'), home.index('href="/databases/search"'))
         self.assertNotIn("INITIAL SCOPE", home)
         self.assertNotIn("CURATED PRACTICAL QUESTIONS / DAY SERVICE", home)
 

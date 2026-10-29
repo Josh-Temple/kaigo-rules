@@ -27,6 +27,8 @@ test('display substitutions retain numbers, legal qualifications and explicit un
   assert.equal(handbookReaderText(unknown), unknown);
   assert.equal(handbookReaderText('【Research Mesh隔離候補・法令適合未審査】施行版は未確認。'), '【法令との適合性は未確認】施行版は未確認。');
   assert.equal(handbookReaderText('EVIDENCE_GAP'), '根拠・適用条件を確認中');
+  assert.equal(handbookReaderText('Research Meshの隔離候補： 常勤換算2以上とする候補。'), '未審査の説明候補： 常勤換算2以上とする候補。');
+  assert.equal(handbookReaderText('Research Mesh固定資料における基準省令の参考条項'), '作成時に参照した基準省令の条項（適用関係は確認中）');
   // Every numeric clause outside a repository token remains available to readers.
   for (const value of walkStrings(handbook.services)) {
     let withoutPaths = value;

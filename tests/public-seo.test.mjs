@@ -35,7 +35,8 @@ test("search result, review, feedback and unreviewed handbook chapter pages are 
   }
   const handbookChapter = source("app/handbook/[serviceId]/[chapter]/page.tsx");
   assert.match(handbookChapter, /handbookChapterHref\(service\.service_id,\s*chapter\.section_id\),\s*false\s*\)/, "unreviewed handbook chapters must remain noindex");
-  assert.match(handbookChapter, /作成中・未確認の内容を含みます/, "unreviewed status warning must remain visible");
+  assert.match(handbookChapter, /未確認の説明を含みます/, "unreviewed status warning must remain visible");
+  assert.match(handbookChapter, /条件・例外と確認状況を読み/, "conditions and exceptions must remain visible");
   for (const route of ["app/services/[serviceId]/page.tsx", "app/services/dayservice/page.tsx", "app/services/dayrehab/page.tsx"]) {
     assert.match(source(route), /pageMetadata\([\s\S]*?false\)/, "unreviewed service handbook overview must remain noindex: " + route);
   }

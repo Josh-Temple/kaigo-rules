@@ -4,12 +4,13 @@ import fs from "node:fs";
 
 const readText = (relativePath) => fs.readFileSync(relativePath, "utf8");
 
-test("global navigation is service-neutral and exposes one database entry", () => {
+test("global navigation is service-neutral and keeps source search alongside handbooks", () => {
   const source = readText("components/service-navigation.tsx");
 
   assert.match(source, /サイト共通ナビゲーション/);
   assert.match(source, /サービス別/);
-  assert.match(source, /DB一覧/);
+  assert.match(source, /資料を探す/);
+  assert.match(source, /href: "\/databases"/);
   assert.match(source, /制度の見取り図/);
   assert.match(source, /根拠資料/);
   assert.match(source, /フィードバック/);
@@ -42,16 +43,15 @@ test("all services have handbook entries, including the two existing service rou
   assert.match(dayrehab, /serviceHandbook\("dayrehab"\)/);
 });
 
-test("home exposes the database-wide entry before service-specific content", () => {
+test("home puts the service handbook first and retains keyword search", () => {
   const source = readText("app/page.tsx");
 
   assert.match(source, /キーワードから制度資料を探す/);
-  assert.match(source, /サービス別の手引を読む/);
+  assert.match(source, /サービスを選んで手引を読む/);
   assert.match(source, /href="\/databases\/search"/);
-  assert.match(source, /サービスを先に決めなくても/);
   assert.ok(
-    source.indexOf('href="/databases/search"') < source.indexOf('href="/services"'),
-    "database-wide search must remain before service-specific entry",
+    source.indexOf('href="/services"') < source.indexOf('href="/databases/search"'),
+    "service handbooks must be the first entry for readers",
   );
 });
 

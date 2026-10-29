@@ -92,11 +92,13 @@ function StaffingRoles({ service, chapter, full }: {
           role.requirements.slice(0, role.requirements.indexOf(requirement)).filter(item => item.aspect === requirement.aspect && /^(確認事項|要件|確認すること)$/u.test(readerLabel(item.title))).length,
           role.requirements.filter(item => item.aspect === requirement.aspect && /^(確認事項|要件|確認すること)$/u.test(readerLabel(item.title))).length,
         )}</h5>
-        {requirement.verification_state === "EVIDENCE_GAP" ? <p className="handbook-role-warning">未確認：この要件の根拠と適用条件は、原典との照合が必要です。</p> : null}
-        {parts ? parts.segments.map((segment, index) => <section key={index} className={segment.authority === "unclassified" ? "handbook-role-warning" : segment.authority.startsWith("municipal_") ? "handbook-regional-note" : "handbook-authority-note"}>
-          <h6>{segment.authority === "unclassified"
+        {requirement.verification_state === "EVIDENCE_GAP" ? <p className="handbook-role-warning">{parts?.classified === false
+          ? "未確認：原典との照合が必要です。国・自治体の根拠区分も確認中のため、全国共通の基準として扱わないでください。"
+          : "未確認：この要件の根拠と適用条件は、原典との照合が必要です。"}</p> : null}
+        {parts ? parts.segments.map((segment, index) => <section key={index} className={segment.authority === "unclassified" ? "handbook-unclassified-content" : segment.authority.startsWith("municipal_") ? "handbook-regional-note" : "handbook-authority-note"}>
+          {segment.authority === "unclassified" && requirement.verification_state === "EVIDENCE_GAP" ? null : <h6>{segment.authority === "unclassified"
             ? "国・自治体の根拠区分を確認中（全国共通の基準として扱わないでください）"
-            : `${segment.authority.startsWith("municipal_") ? `${segment.jurisdiction}：` : ""}${authorityDisplayLabels[segment.authority]}`}</h6>
+            : `${segment.authority.startsWith("municipal_") ? `${segment.jurisdiction}：` : ""}${authorityDisplayLabels[segment.authority]}`}</h6>}
           {segment.text.split("\n").filter(Boolean).map((paragraph, paragraphIndex) => <div key={paragraphIndex} className="handbook-reader-paragraph">
             {service.service_id === "dayservice" && staffing && segment.authority === "unclassified" && parts.segments.length === 1 && dayserviceRoleParagraphHeading(role.id, paragraphIndex)
               ? <h6>{dayserviceRoleParagraphHeading(role.id, paragraphIndex)}</h6> : null}
@@ -150,7 +152,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
   return (
     <section className="section handbook-chapter" id={chapter.section_id}>
       <p className="eyebrow">第{String(chapter.number).padStart(2, "0")}章</p>
-      <h2>{full ? chapter.title : <Link href={detailHref}>{chapter.title}</Link>}</h2>
+      <h2>{full ? `${chapter.title}の確認ポイント` : <Link href={detailHref}>{chapter.title}</Link>}</h2>
       <p>{handbookReaderText(chapter.summary)}</p>
       {service.service_id === "homevisit" && chapter.section_id === "staffing" ? <p className="meta">「サ責」は「サービス提供責任者」の略称です。資格や配置の条件は、以下の職種別の説明と原典で確認してください。</p> : null}
       {full ? <p className="handbook-return-link"><Link href={`/services/${service.service_id}#${chapter.section_id}`}>{service.label}の手引に戻る</Link></p> : null}
@@ -170,7 +172,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
       <h3>確認すること</h3>
       <HandbookChecklist items={chapter.checkpoints.map(item => handbookReaderText(service.service_id === "dayservice" ? dayserviceReadableText(chapter.section_id, item) : item))} chapterTitle={chapter.title} printable={full} />
       {chapter.section_id !== "staffing" || !["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
-        ? <><StaffingReadingGuide serviceId={service.service_id} /><StaffingRoles service={service} chapter={chapter} full={full} /></> : null}
+        ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
       {chapter.section_id === "national_qa" ? <>
         <h3>関連する国Q&A</h3>
         <p>サービス個別・共通分類の候補を合わせて{service.qa_count.toLocaleString("ja-JP")}件収載しています。共通分類は各問の条件を確認してください。</p>

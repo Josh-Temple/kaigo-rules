@@ -98,7 +98,8 @@ class BoundedPublicSourcePilot(unittest.TestCase):
             self.assertIn("ServiceHandbook", src)
             self.assertNotIn('href="/handbook-preview"', src)
         component = (ROOT / "components/service-handbook.tsx").read_text(encoding="utf-8")
-        self.assertIn("確認前の解説・条文対応も掲載", component)
+        self.assertIn("確認中の説明を含む手引です", component)
+        self.assertIn("適用条件や未確認の注意を読み", component)
         self.assertIn('href={`/databases/search?service=${id}`}', self.source)
 
     def test_existing_unreviewed_preview_still_production_404(self):
