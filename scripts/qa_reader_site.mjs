@@ -76,6 +76,7 @@ try {
             municipalHandbookLinks: [...document.querySelectorAll('main a[href]')].filter(a => /city\.yokohama|yokohama.*tebiki/i.test(a.href)).length,
             municipalText: /横浜市/.test(text),
             inlineNationalQa: document.querySelectorAll('.dayservice-qa').length,
+            nationalQaTopics: [...document.querySelectorAll('.dayservice-qa-topic')].map(el => el.textContent),
             chapterCount: document.querySelectorAll('.handbook-chapter').length,
             readingGuides: document.querySelectorAll('.staffing-reading-guide').length,
             textLength: text.length,
@@ -93,6 +94,7 @@ try {
         if (!baseline && (job.route === '/services/dayservice' || job.route.startsWith('/handbook/dayservice/'))) {
           if (record.municipalHandbookLinks || record.municipalText) record.errors.push('MUNICIPAL_HANDBOOK_REFERENCE_VISIBLE');
           if ((job.route === '/services/dayservice' || job.route === '/handbook/dayservice/staffing') && record.inlineNationalQa < 5) record.errors.push('ROLE_QA_NOT_INLINE');
+          if (job.route === '/handbook/dayservice/additions' && record.nationalQaTopics.filter(topic => topic === '入浴介助加算（Ⅱ）').length !== 2) record.errors.push('BATHING_QA_APPLICABILITY_LOST');
         }
         if (!baseline) {
           const pilotService = pilots.some(s => job.route === '/services/' + s || job.route === '/handbook/' + s + '/staffing');

@@ -30,7 +30,7 @@ function Excerpt({ reference, showCaution = true }: { reference: ReaderReference
 function NationalQa({ id }: { id: string }) {
   const qa = dayserviceQa(id);
   return <article className="dayservice-qa" data-qa-id={id}>
-    <p className="dayservice-qa-citation"><strong>問{qa.number}</strong><span>{qa.issuedLabel}</span></p>
+    <p className="dayservice-qa-citation"><strong>問{qa.number}</strong><span className="dayservice-qa-topic">{qa.topic}</span><span>{qa.issuedLabel}</span></p>
     <div className="dayservice-qa-question"><strong>質問</strong><OriginalText text={qa.question} /></div>
     <div className="dayservice-qa-answer"><strong>回答</strong><OriginalText text={qa.answer} /></div>
     <p className="dayservice-source-citation"><OfficialLink url={qa.originalUrl}>この問の発出資料</OfficialLink><span>公式Q&A集の収載本文を表示。発出後の改正との適用関係は未確認です。</span></p>
@@ -59,7 +59,7 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
 function QaIndex() {
   return <ul className="dayservice-qa-index">{dayserviceQaIndex().map(item => <li key={item.qa.id}>
     <Link href={`${handbookChapterHref("dayservice", item.chapterId)}#${item.topicId}-qa`}><strong>{item.topicTitle}：問{item.qa.number}</strong><span>{item.qa.question}</span></Link>
-    <p className="meta">{item.qa.issuedLabel}</p>
+    <p className="meta">{item.qa.topic} ／ {item.qa.issuedLabel}</p>
   </li>)}</ul>;
 }
 

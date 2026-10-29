@@ -35,6 +35,7 @@ test("national Q&A keeps every question, answer and unreviewed state, with seven
     const original = corpus.find(row => row.id === item.qa.id);
     assert.equal(item.qa.question, original.question);
     assert.equal(item.qa.answer, original.answer);
+    assert.equal(item.qa.topic, original.topic);
     assert.equal(item.qa.issued_source, original.issued_source);
     assert.equal(item.qa.ingestion_status, "INGESTED_UNREVIEWED");
     assert.ok(nationalSourceUrl(item.qa.originalUrl));
@@ -42,6 +43,7 @@ test("national Q&A keeps every question, answer and unreviewed state, with seven
     assert.ok(dayserviceChapterGroups[item.chapterId].some(group => group.topics.some(topic => topic.id === item.topicId && topic.qa.includes(item.qa.id))));
   }
   assert.match(dayserviceQa("qa.mhlw.d9a7f5b49c1ba8a9326e").answer, /問 50 の修正/);
+  assert.equal(dayserviceQa("qa.mhlw.98d49d29f427379ec4b3").topic, "入浴介助加算（Ⅱ）");
   assert.throws(() => dayserviceQa("qa.mhlw.749ca43b6096d305a35e"), /no scoped original locator/);
   assert.throws(() => dayserviceQa("qa.mhlw.19ff5348270062de7154"), /no scoped original locator/);
 });
