@@ -18,12 +18,20 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  REVIEW_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Verify immutable source checkout
+        run: test "$(git rev-parse HEAD)" = "$REVIEW_SOURCE_SHA"
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: "22"
@@ -49,7 +57,7 @@ jobs:
       - name: Smoke test key routes
         shell: bash
         run: |
-          VERCEL_GIT_COMMIT_SHA="$GITHUB_SHA" VERCEL_GIT_COMMIT_REF="$GITHUB_REF_NAME" npm start > /tmp/kaigo-rules-next.log 2>&1 &
+          VERCEL_GIT_COMMIT_SHA="$REVIEW_SOURCE_SHA" VERCEL_GIT_COMMIT_REF="$GITHUB_REF_NAME" npm start > /tmp/kaigo-rules-next.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
 
@@ -327,7 +335,7 @@ jobs:
           set +e
           python scripts/run_integration_sprint_release_regression.py \
             --base-url http://127.0.0.1:3000 \
-            --expected-sha "$GITHUB_SHA" \
+            --expected-sha "$REVIEW_SOURCE_SHA" \
             --output /tmp/integration-sprint-release-regression.json
           d4_rc=$?
           set -e
@@ -339,10 +347,10 @@ jobs:
           echo "Run machine retrieval benchmark against local exact SHA"
           python scripts/run_machine_retrieval_benchmark.py \
             --base-url http://127.0.0.1:3000 \
-            --expected-sha "$GITHUB_SHA" \
+            --expected-sha "$REVIEW_SOURCE_SHA" \
             --output /tmp/machine-retrieval-benchmark.json
           cat /tmp/machine-retrieval-benchmark.json
 
           python scripts/run_practical_navigation_regression.py \
-            --base-url http://127.0.0.1:3000 --expected-sha "$GITHUB_SHA" \
+            --base-url http://127.0.0.1:3000 --expected-sha "$REVIEW_SOURCE_SHA" \
             --output /tmp/practical-navigation.json

@@ -4,6 +4,7 @@ on:
     branches: [main, work/issue569-reader-first]
     paths:
       - .github/workflows/kaigo-issue569-browser-acceptance.yml
+      - .github/workflows/validate-build.yml
       - components/service-handbook.tsx
       - lib/handbook/reader-content.ts
       - tests/issue569-regional-split.test.mjs
