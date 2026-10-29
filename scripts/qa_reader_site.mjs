@@ -72,7 +72,10 @@ try {
             brokenAnchors: anchors.filter(x => !document.getElementById(decodeURIComponent(x))),
             noise: (text.match(/\bJSON\b|EVIDENCE_GAP|Research Mesh|\bscope\b|(?:data|docs|scripts|tests)\/[A-Za-z0-9_./-]+\.(?:json|md|ts|txt)|canonical ID:|corpus ID:/gu) || []),
             warnings: (text.match(/未確認|確認中|未照合|未確定|未審査|確認前/gu) || []).length,
-            roles: [...document.querySelectorAll('.handbook-role>h4')].map(el => el.textContent),
+            roles: [...document.querySelectorAll('.handbook-role>h2,.handbook-role>h3,.handbook-role>h4')].map(el => el.textContent),
+            municipalHandbookLinks: [...document.querySelectorAll('main a[href]')].filter(a => /city\.yokohama|yokohama.*tebiki/i.test(a.href)).length,
+            municipalText: /横浜市/.test(text),
+            inlineNationalQa: document.querySelectorAll('.dayservice-qa').length,
             chapterCount: document.querySelectorAll('.handbook-chapter').length,
             readingGuides: document.querySelectorAll('.staffing-reading-guide').length,
             textLength: text.length,
@@ -87,6 +90,10 @@ try {
         if (record.unsafeLinks) record.errors.push('UNSAFE_LINK');
         if ((job.route.startsWith('/handbook/') || /^\/services\/[^/?]+$/.test(job.route)) && !record.robots?.includes('noindex')) record.errors.push('NOINDEX_MISSING');
         if (!baseline && record.noise.length) record.errors.push('INTERNAL_TEXT_VISIBLE');
+        if (!baseline && (job.route === '/services/dayservice' || job.route.startsWith('/handbook/dayservice/'))) {
+          if (record.municipalHandbookLinks || record.municipalText) record.errors.push('MUNICIPAL_HANDBOOK_REFERENCE_VISIBLE');
+          if ((job.route === '/services/dayservice' || job.route === '/handbook/dayservice/staffing') && record.inlineNationalQa < 5) record.errors.push('ROLE_QA_NOT_INLINE');
+        }
         if (!baseline) {
           const pilotService = pilots.some(s => job.route === '/services/' + s || job.route === '/handbook/' + s + '/staffing');
           if (record.readingGuides !== (pilotService ? 1 : 0)) record.errors.push('READING_GUIDE_OUTSIDE_STAFFING');
@@ -110,10 +117,15 @@ try {
     await page.locator('.handbook-staffing-entry a').click();
     await page.locator('#staffing .handbook-role-navigation a[href="#staffing-role-nurse"]').click();
     await page.screenshot({ path: path.join(output, 'dayservice-nurse-390.png') });
-    await page.locator('#staffing-role-nurse a[href="/questions/nurse-staffing"]').click();
-    await page.locator('a[href="/services/dayservice#staffing-role-nurse"]').click();
-    await page.waitForURL('**/services/dayservice#staffing-role-nurse', { timeout: 15000 });
-    report.interactions.push({ flow: 'service → nurse → Q&A → same role', status: page.url().endsWith('#staffing-role-nurse') ? 'PASS' : 'FAIL' });
+    const nurseQa = page.locator('#staffing-role-nurse-qa');
+    const question = await nurseQa.locator('.dayservice-qa-question').innerText();
+    const answer = await nurseQa.locator('.dayservice-qa-answer').innerText();
+    report.interactions.push({ flow: 'service → nurse → inline national question and answer', status: question.includes('どの程度の従事時間') && answer.includes('利用者全員') ? 'PASS' : 'FAIL' });
+    await page.locator('#staffing-role-nurse .handbook-role-return a').click();
+    await page.goto(origin + '/handbook/dayservice/national-qa');
+    await page.locator('a[href="/handbook/dayservice/staffing#staffing-role-nurse-qa"]').click();
+    await page.waitForURL('**/handbook/dayservice/staffing#staffing-role-nurse-qa', { timeout: 15000 });
+    report.interactions.push({ flow: 'national Q&A index → question under its staffing topic', status: (await page.locator('#staffing-role-nurse-qa .dayservice-qa-answer').innerText()).includes('契約') ? 'PASS' : 'FAIL' });
     await page.goto(origin + '/handbook/dayservice/staffing');
     const checkbox = page.locator('input[type="checkbox"]').first();
     await checkbox.check();
