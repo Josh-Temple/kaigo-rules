@@ -45,8 +45,48 @@
 .handbook-checklist-instructions{font-size:.9rem;line-height:1.85;border-left:3px solid var(--line);padding-left:16px;margin:0 0 32px}
 .handbook-dayservice .handbook-role-evidence{margin-top:12px}
 .handbook-dayservice .handbook-role-evidence>li{margin-bottom:16px;border-top:1px solid var(--line)}
+/* National source text sits with the topic; author explanations stay short. */
+.dayservice-national-reader{max-width:52rem}
+.dayservice-topic-navigation{display:block;max-width:none;text-align:left;margin:24px 0 36px;padding:16px 20px;background:#f3f6f3;border:1px solid var(--line)}
+.dayservice-topic-navigation p{margin:0 0 8px}
+.dayservice-topic-navigation>div+div{margin-top:20px}
+.dayservice-topic-navigation ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 22px;margin:0;padding-left:1.3em}
+.dayservice-topic-navigation a{display:inline-flex;align-items:center;min-height:44px;padding-block:4px;line-height:1.6}
+.dayservice-national-reader .dayservice-reading-topic{margin:42px 0 56px;scroll-margin-top:24px}
+.dayservice-national-reader .dayservice-reading-topic>h2,.dayservice-national-reader .dayservice-reading-topic>h3{font-size:1.5rem;border-bottom:2px solid #c7d3ca;padding:0 0 12px;margin:0 0 26px}
+.dayservice-national-reader .dayservice-source-block>h3,.dayservice-national-reader .dayservice-source-block>h4{font-size:1.05rem;margin:26px 0 14px;color:#234c41}
+.dayservice-excerpt{margin:0 0 26px}
+.dayservice-excerpt-label{display:grid;gap:3px;margin:0 0 12px}
+.dayservice-excerpt-label span{font-size:.88rem;color:var(--muted)}
+.dayservice-national-reader blockquote{border:0;padding:0;margin:0 0 14px;max-width:43rem;color:inherit;font-style:normal}
+.dayservice-original p{margin:0 0 1em;line-height:1.95;overflow-wrap:anywhere;white-space:normal}
+.dayservice-source-citation{display:grid;gap:6px;font-size:.85rem;line-height:1.7;color:var(--muted);overflow-wrap:anywhere}
+.dayservice-source-citation ul{padding-left:1.2em;margin:0}
+.dayservice-source-citation li{margin:4px 0}
+.dayservice-source-caution,.dayservice-read-across{font-size:.88rem;line-height:1.8;padding:12px 16px;margin:12px 0;background:#faf7ec;border-left:3px solid #a3843d}
+.dayservice-qa{padding:18px 20px;margin:0 0 20px;background:#f1f6f5;border:1px solid #c7d8d1}
+.dayservice-qa-citation{display:grid;gap:6px;font-size:.88rem;line-height:1.65;margin:0 0 18px}
+.dayservice-qa-citation strong{font-size:1rem}
+.dayservice-qa-question>strong,.dayservice-qa-answer>strong{display:block;font-size:.88rem;color:#234c41;margin-bottom:8px}
+.dayservice-qa-question{border-bottom:1px solid #c7d8d1;margin:0 0 18px}
+.dayservice-local{margin:24px 0;padding:12px 18px;border-left:3px solid #597b6e;background:#f6f7f4;font-size:.95rem}
+.dayservice-local p{margin:0 0 8px}.dayservice-local p:last-child{margin-bottom:0}
+.dayservice-legacy-anchor{display:block;scroll-margin-top:24px}
+.dayservice-qa-index{padding-left:1.3em}
+.dayservice-qa-index li{padding:14px 0;border-bottom:1px solid var(--line)}
+.dayservice-qa-index a{display:grid;gap:8px;line-height:1.85}
+.dayservice-qa-index p{margin:8px 0 0}
+.dayservice-checks{margin:36px 0;border-top:1px solid var(--line)}
+.dayservice-checks>summary{min-height:48px;padding:14px 0;cursor:pointer;color:var(--link)}
+.handbook-print-action{margin:24px 0}
+.handbook-print-action button{min-height:44px;border:1px solid #9baca2;background:var(--surface);color:var(--link);padding:10px 16px;border-radius:4px;cursor:pointer;font:inherit}
+.dayservice-topic-navigation a:focus-visible,.dayservice-checks>summary:focus-visible,.handbook-print-action button:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
 @media(max-width:760px){.reader-featured-services{grid-template-columns:1fr;gap:8px}.staffing-reading-guide{padding:12px 14px}.handbook-topic-navigation,.service-group-navigation{gap:6px}.handbook-topic-navigation a,.service-group-navigation a{font-size:.9rem;padding:8px 11px}.handbook-role h4{font-size:1.25rem}}
 @media(max-width:760px){
+  .dayservice-topic-navigation{padding:12px 14px}
+  .dayservice-national-reader .dayservice-topic-navigation ul{grid-template-columns:1fr;gap:3px}
+  .dayservice-qa{padding:16px 14px}
+  .dayservice-national-reader .dayservice-reading-topic>h2,.dayservice-national-reader .dayservice-reading-topic>h3{font-size:1.3rem}
   .handbook-dayservice h2{font-size:1.5rem}
   .handbook-dayservice h3{font-size:1.2rem}
   .handbook-dayservice h4{font-size:1.12rem}
@@ -71,4 +111,16 @@
   .handbook-dayservice .handbook-calculation-example{background:transparent;border-color:#333}
   .handbook-dayservice .handbook-quick-link,.handbook-dayservice details:not([open]){display:none}
   .handbook-collection-details{display:none}
+  .dayservice-topic-navigation,.handbook-print-action,.dayservice-legacy-anchor{display:none}
+  .dayservice-national-reader{max-width:none}
+  .dayservice-national-reader .dayservice-reading-topic{margin:24pt 0}
+  .dayservice-national-reader .dayservice-reading-topic>h2,.dayservice-national-reader .dayservice-reading-topic>h3{font-size:14pt}
+  .dayservice-national-reader .dayservice-source-block>h3,.dayservice-national-reader .dayservice-source-block>h4{font-size:11pt}
+  .dayservice-original p{line-height:1.7}
+  .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:avoid-page}
+  .dayservice-excerpt-label,.dayservice-source-caution,.dayservice-read-across,.dayservice-qa-citation,.dayservice-qa-question>strong,.dayservice-qa-answer>strong{break-after:avoid-page}
+  .dayservice-source-citation{break-before:avoid-page;break-inside:avoid-page}
+  .dayservice-original p{orphans:3;widows:3}
+  .dayservice-checks{break-inside:avoid-page}
+  .dayservice-source-caution,.dayservice-read-across,.dayservice-local{background:transparent;border-color:#555}
 }

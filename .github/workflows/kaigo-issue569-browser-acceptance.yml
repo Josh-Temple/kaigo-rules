@@ -184,11 +184,18 @@ jobs:
           pdftotext -layout artifacts/issue569-browser/dayservice-checklist.pdf artifacts/issue569-browser/dayservice-pdf-text.txt
           python - <<'PY'
           from pathlib import Path
+          import json,re,unicodedata
           text=Path('artifacts/issue569-browser/dayservice-pdf-text.txt').read_text(encoding='utf-8')
           terms=['人員基準','生活相談員','看護職員','介護職員','機能訓練指導員','管理者']
           missing=[term for term in terms if term not in text]
           print('PDF Japanese text terms:', {term:term in text for term in terms})
           if missing: raise SystemExit('PDF_JAPANESE_FONT_OR_TEXT_LOSS: '+','.join(missing))
+          normalize=lambda value: re.sub(r'\s+', '', unicodedata.normalize('NFKC',value))
+          checkpoints=json.loads(Path('data/handbook-content.json').read_text(encoding='utf-8'))['services']['dayservice']['chapters']['staffing']['checkpoints']
+          pages=[normalize(page) for page in text.split('\f')]
+          if not any(all(normalize(item) in page for item in checkpoints) for page in pages):
+              raise SystemExit('PDF_STAFFING_CHECKLIST_SPLIT_ACROSS_PAGES')
+          print('PDF staffing checklist: all eight items on one page')
           PY
       - name: Audit every service and chapter in real Chrome
         env:

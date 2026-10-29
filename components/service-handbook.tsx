@@ -10,6 +10,7 @@ import { staffingParagraphHeading } from "../lib/handbook/staffing-reading-guide
 import qaMeta from "../data/qa-corpus-meta.json";
 import { isStaffingScopeOrException, readerEvidenceTitle, readerEvidenceLocator, safeHandbookEvidenceUrl, readerLabel, readerRequirementTitle, requirementCopy, separateHandbookParagraphs, splitDayserviceRegionalText, type HandbookAuthoritySegment } from "../lib/handbook/reader-content";
 import { dayserviceChapterParagraphHeading, dayserviceChecklistText, dayserviceReadableText, dayserviceRoleParagraphHeading } from "../lib/handbook/dayservice-reader-editorial";
+import DayserviceHandbookChapter from "./dayservice-handbook";
 
 const evidenceNames: Record<HandbookEvidence["kind"], string> = {
   national_standard: "国の基準省令",
@@ -148,6 +149,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
   chapter: HandbookChapter;
   full?: boolean;
 }) {
+  if (service.service_id === "dayservice") return <DayserviceHandbookChapter service={service} chapter={chapter} full={full} />;
   const paragraphs = chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
     ? separateHandbookParagraphs(chapter.paragraphs) : { reader: chapter.paragraphs, editorial: [] };
   const records = chapterRecords(chapter);
@@ -231,14 +233,11 @@ export default function ServiceHandbook({ service }: { service: ServiceHandbookD
     <article className="answer-page wide-page handbook-page">
       <p className="eyebrow"><Link href="/services">サービス別手引</Link> ／ 全15章</p>
       <h1>{service.label}の手引</h1>
-      <p className="lead">開設、人員・設備、日常運営、報酬までを章ごとにまとめています。概要と確認項目から、関連する条文・通知・Q&Aへ進めます。</p>
+      <p className="lead">{service.service_id === "dayservice" ? "事業所職員が、職種・業務・加算名から国の基準、解釈通知、関連する国Q&Aを確認するための手引です。" : "開設、人員・設備、日常運営、報酬までを章ごとにまとめています。概要と確認項目から、関連する条文・通知・Q&Aへ進めます。"}</p>
       <p className="handbook-primary-action handbook-staffing-entry"><a href="#staffing">人員基準を確認する（職種別の配置・資格・勤務時間）</a></p>
       <p className="handbook-working-note">確認中の説明を含む手引です。適用条件や未確認の注意を読み、判断前に最新の国の原典と指定権者の基準を確認してください。</p>
       <HandbookNavigation service={service} inline />
-      {service.service_id === "dayservice" ? <details className="handbook-collection-details">
-        <summary>掲載資料の件数を確認する</summary>
-        <p>全15章。条文・資料は{service.source_record_count.toLocaleString("ja-JP")}件、関連Q&A候補は{service.qa_count.toLocaleString("ja-JP")}件です。件数は適用の確認済み件数を示すものではありません。</p>
-      </details> : <div className="handbook-summary" aria-label="収載状況">
+      {service.service_id === "dayservice" ? null : <div className="handbook-summary" aria-label="収載状況">
         <span><strong>15</strong>章</span>
         <span><strong>{service.source_record_count.toLocaleString("ja-JP")}</strong>条文・資料</span>
         <span><strong>{service.qa_count.toLocaleString("ja-JP")}</strong>関連Q&A候補</span>
@@ -263,7 +262,6 @@ export default function ServiceHandbook({ service }: { service: ServiceHandbookD
           <span>{String(chapter.number).padStart(2, "0")}</span>{chapter.title}
         </a>)}
       </nav>
-      {service.service_id === "dayservice" ? <p className="handbook-checklist-instructions">各章の確認欄は、条件・書類・記録と原典を照らし合わせるための点検用です。書類の種類と確認時点は項目ごとに異なります。チェック済みでも法令への適合を証明するものではありません。チェック状態は保存されず、再読み込みすると解除されます。</p> : null}
       {service.chapters.map(chapter => <HandbookChapterContent key={chapter.section_id} service={service} chapter={chapter} />)}
       <p><Link href="/services">サービス一覧へ戻る →</Link></p>
     </article>
