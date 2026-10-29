@@ -20,3 +20,4 @@
   .item input:checked + .printMark::before{content:"☑"}
   .notice{color:#222}
 }
+.copy{white-space:pre-line}

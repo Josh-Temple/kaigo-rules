@@ -9,8 +9,8 @@ const data = JSON.parse(fs.readFileSync('data/handbook-content.json', 'utf8'));
 test('three pilot services read staffing requirements in the same handbook', () => {
   assert.match(component, /inlineStaffing = staffing && !full && \["dayservice", "dayrehab", "homevisit"\]\.includes\(service\.service_id\)/);
   assert.match(component, /if \(!full && !inlineStaffing\) return/);
-  assert.match(component, /<RoleNavigation roles=\{roles\} staffing=\{staffing\} anchor=\{anchor\} detailHref=\{detailHref\} full=\{true\} \/>/);
-  assert.match(component, /<h4>\{readerLabel\(role\.title\)\}<\/h4>/);
+  assert.match(component, /<RoleNavigation roles=\{roles\} staffing=\{staffing\} anchor=\{anchor\} detailHref=\{detailHref\} full=\{true\}/);
+  assert.match(component, /<RoleHeading>\{readerLabel\(role\.title\)\}<\/RoleHeading>/);
   assert.match(component, /requirement\.applicability/);
   assert.match(component, /requirement\.practical_checks/);
   assert.match(component, /requirement\.evidence/);

@@ -6,16 +6,17 @@ type HandbookChecklistProps = {
   items: string[];
   chapterTitle: string;
   printable?: boolean;
+  showInstructions?: boolean;
 };
 
 /**
  * An optional, non-persistent reading aid. It never changes the legal data or
  * infers compliance from checked items. Printing is explicitly user initiated.
  */
-export default function HandbookChecklist({ items, chapterTitle, printable = false }: HandbookChecklistProps) {
+export default function HandbookChecklist({ items, chapterTitle, printable = false, showInstructions = true }: HandbookChecklistProps) {
   return (
     <div className={styles.checklist}>
-      <p className={styles.notice}>
+      {showInstructions ? <><p className={styles.notice}>
         この確認欄は、事業所で確認する事項を整理するためのものです。
         項目ごとに該当する条件を確かめ、必要な書類・記録と原典を照合してください。
         書類の種類や確認する時点は、項目によって異なります。
@@ -23,7 +24,7 @@ export default function HandbookChecklist({ items, chapterTitle, printable = fal
       <p className={styles.notice}>
         チェック済みでも法令への適合を証明するものではありません。
         チェック状態は保存されず、ページを再読み込みすると解除されます。
-      </p>
+      </p></> : null}
       {items.length > 0 ? (
         <ul className={styles.items} aria-label={`${chapterTitle}の確認用チェック欄`}>
           {items.map((point, index) => (
@@ -31,7 +32,7 @@ export default function HandbookChecklist({ items, chapterTitle, printable = fal
               <label>
                 <input type="checkbox" />
                 <span className={styles.printMark} aria-hidden="true" />
-                <span>{point}</span>
+                <span className={styles.copy}>{point}</span>
               </label>
             </li>
           ))}
