@@ -59,7 +59,7 @@
 .dayservice-excerpt-label{display:grid;gap:3px;margin:0 0 12px}
 .dayservice-excerpt-label span{font-size:.88rem;color:var(--muted)}
 .dayservice-national-reader blockquote{border:0;padding:0;margin:0 0 14px;max-width:43rem;color:inherit;font-style:normal}
-.dayservice-original p{margin:0 0 1em;line-height:1.95;overflow-wrap:anywhere;white-space:pre-wrap}
+.dayservice-original p{margin:0 0 1em;line-height:1.95;overflow-wrap:anywhere;white-space:normal}
 .dayservice-source-citation{display:grid;gap:6px;font-size:.85rem;line-height:1.7;color:var(--muted);overflow-wrap:anywhere}
 .dayservice-source-citation ul{padding-left:1.2em;margin:0}
 .dayservice-source-citation li{margin:4px 0}

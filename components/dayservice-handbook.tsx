@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { handbookChapterHref, type HandbookChapter, type ServiceHandbookData } from "../lib/working-handbook";
 import { dayserviceChapterGroups, dayserviceChapterIntros, dayserviceQa, dayserviceQaIndex, nationalSourceUrl, readerExcerpt, type ReaderReference, type ReaderTopic } from "../lib/handbook/dayservice-national-reader";
-import { readerTextParagraphs } from "../lib/handbook/dayservice-reader-editorial";
+import { sourceTextParagraphs } from "../lib/handbook/dayservice-reader-editorial";
 import HandbookChecklist from "./handbook-checklist";
 import HandbookPrint from "./handbook-print";
 
 function OriginalText({ text }: { text: string }) {
-  return <div className="dayservice-original">{text.split("\n").flatMap(line => readerTextParagraphs(line, 110)).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>;
+  return <div className="dayservice-original">{sourceTextParagraphs(text).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>;
 }
 
 function OfficialLink({ url, children }: { url: string; children: React.ReactNode }) {

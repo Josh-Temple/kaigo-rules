@@ -163,3 +163,9 @@ export function readerTextParagraphs(value: string, targetLength = 110): string[
 export function dayserviceChecklistText(value: string): string {
   return readerTextParagraphs(value, 65).join("\n");
 }
+
+/** Keep source line wraps inside a paragraph and make actual list entries separate. */
+export function sourceTextParagraphs(value: string): string[] {
+  return value.split(/(?<=\n)(?=[・※①-⑳]|[0-9０-９]+[.．、]|第[0-9０-９一二三四五六七八九十])/u)
+    .flatMap(part => readerTextParagraphs(part, 110));
+}

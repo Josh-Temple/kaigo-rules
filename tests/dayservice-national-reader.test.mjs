@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { dayserviceChapterGroups, dayserviceChapterIntros, dayserviceStaffingTopics, dayserviceQa, dayserviceQaIndex, nationalSourceUrl, numberedNoticePart, readerExcerpt } from "../lib/handbook/dayservice-national-reader.ts";
-import { readerTextParagraphs } from "../lib/handbook/dayservice-reader-editorial.ts";
+import { readerTextParagraphs, sourceTextParagraphs } from "../lib/handbook/dayservice-reader-editorial.ts";
 
 const read = path => JSON.parse(readFileSync(path, "utf8"));
 const standards = read("data/ordinance37-nodes.json");
@@ -20,6 +20,7 @@ test("all displayed national references resolve and retain the complete register
     if (ref.family === "standard") assert.equal(excerpt.text, standards.find(row => row.id === ref.id).official_text);
     if (ref.family === "fee") assert.equal(excerpt.text, read("data/remuneration-current-text.json").find(row => row.fee_id === ref.id).official_text);
     assert.equal(readerTextParagraphs(excerpt.text).join(""), excerpt.text);
+    assert.equal(sourceTextParagraphs(excerpt.text).join(""), excerpt.text);
   }
   assert.throws(() => readerExcerpt({ family: "standard", id: "fictional" }), /Missing standard text/);
   assert.throws(() => readerExcerpt({ family: "notice", id: "fictional" }), /Missing notice text/);
@@ -35,6 +36,7 @@ test("national Q&A keeps every question, answer and unreviewed state, with seven
     const original = corpus.find(row => row.id === item.qa.id);
     assert.equal(item.qa.question, original.question);
     assert.equal(item.qa.answer, original.answer);
+    assert.equal(sourceTextParagraphs(item.qa.answer).join(""), original.answer);
     assert.equal(item.qa.topic, original.topic);
     assert.equal(item.qa.issued_source, original.issued_source);
     assert.equal(item.qa.ingestion_status, "INGESTED_UNREVIEWED");
@@ -46,6 +48,16 @@ test("national Q&A keeps every question, answer and unreviewed state, with seven
   assert.equal(dayserviceQa("qa.mhlw.98d49d29f427379ec4b3").topic, "入浴介助加算（Ⅱ）");
   assert.throws(() => dayserviceQa("qa.mhlw.749ca43b6096d305a35e"), /no scoped original locator/);
   assert.throws(() => dayserviceQa("qa.mhlw.19ff5348270062de7154"), /no scoped original locator/);
+});
+
+test("a source line wrap inside a Japanese word does not become a separate paragraph", () => {
+  const source = "機能訓練指導員は事業所ご\nとに１以上とされている。\n①配置の条件。\n②兼務の条件。\n※参照先の注意。";
+  const paragraphs = sourceTextParagraphs(source);
+  assert.equal(paragraphs.join(""), source);
+  assert.ok(paragraphs[0].includes("事業所ご\nとに"));
+  assert.ok(paragraphs.some(paragraph => paragraph.startsWith("①")));
+  assert.ok(paragraphs.some(paragraph => paragraph.startsWith("②")));
+  assert.ok(paragraphs.some(paragraph => paragraph.startsWith("※")));
 });
 
 test("care-worker and qualification passages retain exceptions and are not cut at self-references", () => {
