@@ -117,6 +117,10 @@
   .dayservice-national-reader .dayservice-reading-topic>h2,.dayservice-national-reader .dayservice-reading-topic>h3{font-size:14pt}
   .dayservice-national-reader .dayservice-source-block>h3,.dayservice-national-reader .dayservice-source-block>h4{font-size:11pt}
   .dayservice-original p{line-height:1.7}
-  .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:auto}
+  .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:avoid-page}
+  .dayservice-excerpt-label,.dayservice-source-caution,.dayservice-read-across,.dayservice-qa-citation,.dayservice-qa-question>strong,.dayservice-qa-answer>strong{break-after:avoid-page}
+  .dayservice-source-citation{break-before:avoid-page;break-inside:avoid-page}
+  .dayservice-original p{orphans:3;widows:3}
+  .dayservice-checks{break-inside:avoid-page}
   .dayservice-source-caution,.dayservice-read-across,.dayservice-local{background:transparent;border-color:#555}
 }
