@@ -1,0 +1,74 @@
+/* Shared reader navigation and restrained, document-like hierarchy. */
+.reader-main-entry{background:#e7f0eb;padding-inline:16px;border-left:4px solid #366858}
+.reader-featured-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:24px 0}
+.reader-featured-services a{display:grid;gap:6px;padding:16px 0;border-block:1px solid var(--line);text-decoration:none}
+.reader-featured-services a:hover strong{text-decoration:underline}
+.reader-featured-services span{font-size:.88rem;color:var(--muted)}
+.handbook-topic-navigation,.service-group-navigation{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:8px 12px;max-width:none;text-align:left;margin:24px 0}
+.handbook-topic-navigation a,.service-group-navigation a{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--line);background:var(--surface);border-radius:4px;text-decoration:none}
+.handbook-topic-navigation a[aria-current="page"]{border-color:#366858;background:#e7f0eb;color:#18473b;font-weight:700}
+.handbook-breadcrumb{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:6px;font-size:.88rem;max-width:none;text-align:left}
+.handbook-breadcrumb a{min-height:32px;padding:4px 0}
+.staffing-reading-guide{border-left:4px solid #366858;background:#edf2ee;padding:16px 20px;margin:22px 0}
+.staffing-guide-lead{margin:0;line-height:1.9}
+.staffing-reading-guide summary,.handbook-evidence-details summary{cursor:pointer;min-height:44px;padding:10px 0;color:var(--link)}
+.staffing-reading-guide li{padding:7px 0}.staffing-reading-guide li p{margin:5px 0 8px}
+.handbook-evidence-details{font-size:.88rem;color:var(--muted)}
+.handbook-evidence-details p{margin:6px 0}
+.reader-source-types>div{padding:14px 0;border-bottom:1px solid var(--line)}
+.reader-source-types dt{font-weight:700}.reader-source-types dd{margin:6px 0 0}
+.handbook-page .handbook-role{border-top:2px solid #c7d3ca;padding-top:18px}
+.handbook-role h4{font-size:1.4rem}.handbook-role-requirement p{line-height:1.95}
+.handbook-topic-navigation a:focus-visible,.service-group-navigation a:focus-visible,.staffing-reading-guide summary:focus-visible,.handbook-evidence-details summary:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+
+/* Dayservice: distinct heading levels, short reading blocks and optional sources. */
+.handbook-dayservice{line-height:1.9}
+.handbook-dayservice h2{font-size:1.7rem;line-height:1.5;padding-bottom:12px;border-bottom:2px solid #c7d3ca}
+.handbook-dayservice h3{font-size:1.3rem;line-height:1.6;margin:34px 0 14px}
+.handbook-dayservice h4{font-size:1.2rem;line-height:1.6;margin:24px 0 12px}
+.handbook-dayservice h5{font-size:1.12rem;line-height:1.65;margin-bottom:16px}
+.handbook-dayservice h6{font-size:1rem;line-height:1.7;margin:24px 0 10px;color:#234c41}
+.handbook-dayservice .handbook-role-navigation h4{font-size:1rem;margin:12px 0}
+.handbook-dayservice .handbook-role-navigation h3{font-size:1rem;margin:12px 0}
+.handbook-dayservice .handbook-roles>h2,.handbook-dayservice .handbook-reader-paragraph>h2{font-size:1.3rem;border-bottom:0;padding-bottom:0;margin:34px 0 14px}
+.handbook-dayservice .handbook-reader-paragraph{margin:24px 0}
+.handbook-dayservice .handbook-prose{max-width:42rem}
+.handbook-dayservice .handbook-prose p{margin:0 0 1em;line-height:1.95}
+.handbook-dayservice .handbook-applicability{border-left:3px solid #c7d3ca;padding:2px 0 2px 16px;margin:24px 0}
+.handbook-dayservice .handbook-applicability h6{margin-top:0}
+.handbook-dayservice .handbook-calculation-example{background:#edf2ee;border-left:4px solid #366858;padding:16px 20px;margin:16px 0}
+.handbook-dayservice .handbook-calculation-example p:last-child{margin-bottom:0}
+.handbook-dayservice .handbook-supplement,.handbook-dayservice .handbook-source-list{border-block:1px solid var(--line);margin:24px 0;padding:0 16px}
+.handbook-dayservice .handbook-supplement>summary,.handbook-dayservice .handbook-source-list>summary,.handbook-collection-details>summary{cursor:pointer;min-height:48px;padding:12px 0;line-height:1.7;color:var(--link)}
+.handbook-dayservice .handbook-supplement>summary:focus-visible,.handbook-dayservice .handbook-source-list>summary:focus-visible,.handbook-collection-details>summary:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+.handbook-collection-details{margin:14px 0;font-size:.9rem;color:var(--muted)}
+.handbook-checklist-instructions{font-size:.9rem;line-height:1.85;border-left:3px solid var(--line);padding-left:16px;margin:0 0 32px}
+.handbook-dayservice .handbook-role-evidence{margin-top:12px}
+.handbook-dayservice .handbook-role-evidence>li{margin-bottom:16px;border-top:1px solid var(--line)}
+@media(max-width:760px){.reader-featured-services{grid-template-columns:1fr;gap:8px}.staffing-reading-guide{padding:12px 14px}.handbook-topic-navigation,.service-group-navigation{gap:6px}.handbook-topic-navigation a,.service-group-navigation a{font-size:.9rem;padding:8px 11px}.handbook-role h4{font-size:1.25rem}}
+@media(max-width:760px){
+  .handbook-dayservice h2{font-size:1.5rem}
+  .handbook-dayservice h3{font-size:1.2rem}
+  .handbook-dayservice h4{font-size:1.12rem}
+  .handbook-dayservice h5{font-size:1.05rem}
+  .handbook-dayservice .handbook-role-navigation ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px}
+  .handbook-dayservice .handbook-role-navigation a{min-height:48px}
+  .handbook-dayservice .handbook-calculation-example{padding:14px}
+  .handbook-dayservice .handbook-supplement,.handbook-dayservice .handbook-source-list{padding-inline:10px}
+}
+@media print{
+  @page{size:A4;margin:16mm 14mm}
+  .handbook-topic-navigation,.handbook-breadcrumb,.service-group-navigation,.handbook-role-navigation,.handbook-inline-links,.handbook-toc{display:none}
+  .handbook-page{font-size:10.5pt;line-height:1.65}
+  .handbook-chapter,.handbook-role{content-visibility:visible;contain-intrinsic-size:none}
+  .handbook-page h2,.handbook-page h3,.handbook-page h4,.handbook-page h5,.handbook-page h6{break-after:avoid-page}
+  .handbook-role-warning,.staffing-reading-guide{background:transparent;border-color:#333}
+  .handbook-role-requirement,.handbook-role-evidence li{break-inside:auto}
+  .handbook-dayservice .handbook-prose{max-width:none}
+  .handbook-dayservice h2{font-size:16pt}.handbook-dayservice h3{font-size:13pt}
+  .handbook-dayservice h4{font-size:12pt}.handbook-dayservice h5,.handbook-dayservice h6{font-size:10.5pt}
+  .handbook-dayservice .handbook-prose p{line-height:1.7;margin-bottom:.8em}
+  .handbook-dayservice .handbook-calculation-example{background:transparent;border-color:#333}
+  .handbook-dayservice .handbook-quick-link,.handbook-dayservice details:not([open]){display:none}
+  .handbook-collection-details{display:none}
+}

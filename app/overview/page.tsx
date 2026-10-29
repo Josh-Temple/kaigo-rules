@@ -20,7 +20,7 @@ const sourceRows = [
 export default function OverviewPage() {
   return (
     <article className="answer-page wide-page foundation-page">
-      <p className="eyebrow">INFORMATION FOUNDATION</p>
+      <p className="eyebrow">制度の概要</p>
       <h1>制度の見取り図</h1>
       <p className="lead">
         介護サービスの制度は、一つの資料だけでは完結しません。
@@ -33,7 +33,7 @@ export default function OverviewPage() {
       </p>
 
       <section className="section">
-        <p className="eyebrow">SOURCE LAYERS</p>
+        <p className="eyebrow">根拠資料の種類</p>
         <h2>制度からたどる</h2>
         <div className="foundation-list">
           {sourceRows.map((row) => (
@@ -43,7 +43,7 @@ export default function OverviewPage() {
                 <strong>{row.title}</strong>
                 <small>{row.role}</small>
               </span>
-              <span className="foundation-state"><small>資料レイヤー</small></span>
+              <span className="foundation-state"><small>根拠資料</small></span>
             </div>
           ))}
         </div>
@@ -51,7 +51,7 @@ export default function OverviewPage() {
       </section>
 
       <section className="section">
-        <p className="eyebrow">RELATION GRAPH</p>
+        <p className="eyebrow">資料同士の関係</p>
         <h2>資料同士をつなぐ</h2>
         <p>
           基準の準用、上位法から基準への委任、報酬の委任・参照、FAQから根拠への接続など
@@ -61,11 +61,11 @@ export default function OverviewPage() {
       </section>
 
       <section className="section">
-        <p className="eyebrow">SERVICE CONTEXT</p>
+        <p className="eyebrow">サービス別の確認状況</p>
         <h2>確認状態はサービスごとに分ける</h2>
         <p>
           同じ法令や通知を参照していても、適用範囲、準用関係、報酬体系、現行性の確認状態はサービスによって異なります。
-          そのため、確認済み・確認待ち・GAPなどの状態はサービス単位で扱い、別サービスへ自動的に流用しません。
+          そのため、確認済み・確認待ち・根拠不足などの状態はサービス単位で扱い、別サービスへ自動的に流用しません。
         </p>
         <p>
           各サービスでは、本文の照合、現行性、人手確認を別々に表示します。

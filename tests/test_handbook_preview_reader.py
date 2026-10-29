@@ -94,7 +94,7 @@ class HandbookPreviewReaderContractTest(unittest.TestCase):
         self.assertNotIn("item.text", self.public)
         self.assertNotIn("candidate.text", self.public)
         self.assertNotIn("PreviewWorkspace", self.public)
-        self.assertIn("未レビューの手引本文29文は、この公開ページには掲載していません", self.public)
+        self.assertIn("未レビューの手引本文29文も掲載していません", self.public)
 
     def test_official_url_is_restricted_to_expected_hosts(self):
         for literal in (

@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <p className="eyebrow">サービス別</p>
       <h1>サービス別の手引</h1>
       <p className="lead">
-        行政内部のID順ではなく、利用場面が近いサービスをまとめています。
+        調べたいサービスを選んでください。
         39サービスすべてに、開設・人員・設備・運営・報酬など15章の手引があります。対応する介護予防サービスは通常サービスと同じ行からたどれます。
         介護予防支援は独立したサービスとして表示します。
       </p>
@@ -29,11 +29,15 @@ export default function ServicesPage() {
         各手引には概要・確認項目・関連資料を用意しています。確認前の内容も掲載し、順次追記・調整しています。
       </div>
 
+      <nav className="service-group-navigation" aria-label="サービスの種類から探す">
+        {groups.map(group => <a key={group.id} href={`#service-group-${group.id}`}>{group.label}</a>)}
+      </nav>
+
       <p><Link href="/legislation">法令等を条文順で読み、サービス別に絞り込む →</Link></p>
       <p><Link href="/services/source-map">39サービスの公開資料を種類別に探す →</Link></p>
 
       {groups.map((group) => (
-        <section className="section" key={group.id}>
+        <section className="section" id={`service-group-${group.id}`} key={group.id}>
           <h2>{group.label}</h2>
           <p className="meta">{group.description}</p>
           <div className="foundation-list">
@@ -54,7 +58,7 @@ export default function ServicesPage() {
                         <strong>
                           <Link href={access.href}>{service.label}</Link>
                         </strong>
-                        <small>{access.label}</small>
+                        <small><Link href={access.href}>{access.label}</Link> ／ <Link href={`${access.href}#staffing`}>人員基準へ</Link></small>
                       </span>
                     );
                   })}

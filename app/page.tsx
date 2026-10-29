@@ -17,24 +17,20 @@ export default function HomePage() {
   return (
     <>
       <section className="hero foundation-hero">
-        <p className="eyebrow">介護制度 / 検索・根拠</p>
-        <h1>介護制度を、<br />根拠からたどれるように。</h1>
+        <p className="eyebrow">介護事業所のための制度の手引</p>
+        <h1>必要な基準を見つけ、<br />条件と根拠を確かめる。</h1>
         <p className="lead">
-          厚生労働省・e-Gov等の一次資料をもとに、介護保険法、基準省令、解釈通知、
-          報酬、国Q&Aを検索・確認できます。サービスを先に決めなくても、キーワードから探せます。
+          サービスを選ぶと、人員配置、設備、日々の運営、報酬の手引を読めます。
+          説明と確認項目から、国の法令・通知・Q&Aへ進めます。確認中の内容は各項目に表示しています。
         </p>
         <div className="entry-links foundation-entry-links">
+          <Link className="entry-row reader-main-entry" href="/services">
+            <span>サービスを選んで手引を読む</span>
+            <small>人員・設備・運営・報酬 →</small>
+          </Link>
           <Link className="entry-row" href="/databases/search">
             <span>キーワードから制度資料を探す</span>
-            <small>DB横断検索 →</small>
-          </Link>
-          <Link className="entry-row" href="/databases">
-            <span>DBを選んで見る</span>
-            <small>介護制度DB →</small>
-          </Link>
-          <Link className="entry-row" href="/services">
-            <span>サービス別の手引を読む</span>
-            <small>39サービス・各15章 →</small>
+            <small>法令・通知・Q&Aをまとめて検索 →</small>
           </Link>
           <Link className="entry-row" href="/legislation">
             <span>法令・通知・報酬を条文順で読む</span>
@@ -48,8 +44,18 @@ export default function HomePage() {
       </section>
 
       <section className="home-section">
+        <h2>よく使う手引</h2>
+        <div className="reader-featured-services">
+          <Link href="/services/dayservice"><strong>通所介護</strong><span>生活相談員・看護職員・介護職員など</span></Link>
+          <Link href="/services/dayrehab"><strong>通所リハビリテーション</strong><span>施設の種類と職種ごとの条件</span></Link>
+          <Link href="/services/homevisit"><strong>訪問介護</strong><span>管理者・サービス提供責任者・訪問介護員等</span></Link>
+        </div>
+        <p><Link href="/services">39サービスから選ぶ →</Link></p>
+      </section>
+
+      <section className="home-section">
         <p className="eyebrow">制度資料</p>
-        <h2>資料を分断せず、同じ入口からたどる</h2>
+        <h2>説明の根拠を確かめる</h2>
         <p className="lead">
           一つの資料だけで判断せず、法令から通知・報酬・Q&Aまで、出典へ戻れる形で整理します。
         </p>
@@ -61,11 +67,11 @@ export default function HomePage() {
                 <strong>{item.label}</strong>
                 <small>{item.detail}</small>
               </span>
-              <span className="foundation-state"><small>DBから確認</small></span>
+              <span className="foundation-state"><small>原典と確認状況を確認</small></span>
             </div>
           ))}
         </div>
-        <p className="home-more-link"><Link href="/databases">制度DBをまとめて見る →</Link></p>
+        <p className="home-more-link"><Link href="/databases">資料の種類を選んで探す →</Link></p>
       </section>
 
       <section className="home-section practical-entry">

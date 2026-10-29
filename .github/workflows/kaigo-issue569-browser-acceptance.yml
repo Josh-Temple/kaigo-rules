@@ -1,0 +1,228 @@
+name: Issue569 actual Chrome and print acceptance
+on:
+  pull_request:
+    branches: [main, work/issue569-reader-first]
+    paths:
+      - .github/workflows/kaigo-issue569-browser-acceptance.yml
+      - .github/workflows/validate-build.yml
+      - components/service-handbook.tsx
+      - lib/handbook/reader-content.ts
+      - tests/issue569-regional-split.test.mjs
+      - tests/issue569-c-reader-ui-safety.test.mjs
+      - tests/issue569-b-dayservice-editorial.test.mjs
+      - app/questions/**
+      - app/globals.css
+      - package.json
+      - app/**
+      - components/**
+      - lib/handbook/**
+      - scripts/qa_reader_site.mjs
+      - tests/issue569-work-reader.test.mjs
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  REVIEW_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Japanese fonts and PDF text inspector
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk poppler-utils
+          fc-cache -f
+          fc-match 'Noto Sans CJK JP'
+          fc-list :lang=ja | grep -i 'Noto Sans CJK' | head -n 1
+      - name: Install and build current commit
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          echo "Review SHA: $(git rev-parse HEAD)"
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build:handbook
+          npm run check:handbook
+          npm run test:handbook
+          # Run Next directly: npm run build invokes the lengthy repository-wide
+          # prebuild validation again. All six PR workflows already validate it.
+          ./node_modules/.bin/next build
+      - name: Install Playwright driver for system Chrome
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Exercise handbook navigation, checklist and print in real Chrome
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/issue569-browser
+          npm run start -- --hostname 127.0.0.1 --port 3100 > artifacts/issue569-browser/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in $(seq 1 90); do
+            if curl -fsS -o /dev/null http://127.0.0.1:3100/services/dayservice; then ready=1; break; fi
+            if ! kill -0 "$server_pid" 2>/dev/null; then cat artifacts/issue569-browser/server.log; exit 1; fi
+            sleep 2
+          done
+          if [ "$ready" != "1" ]; then cat artifacts/issue569-browser/server.log; exit 1; fi
+          node --input-type=module <<'JS'
+          import { chromium } from 'playwright-core';
+          import fs from 'node:fs';
+          const widths=[360,390,1280];
+          const pilots=['dayservice','dayrehab','homevisit'];
+          const routes=[...pilots.map(service=>'/services/'+service),
+            ...pilots.map(service=>'/handbook/'+service+'/staffing'),
+            '/services/homebath'];
+          const executablePath=['/usr/bin/google-chrome','/usr/bin/chromium','/usr/bin/chromium-browser'].find(fs.existsSync);
+          if(!executablePath)throw Error('SYSTEM_CHROME_NOT_FOUND');
+          const browser=await chromium.launch({headless:true,executablePath,args:['--no-sandbox']});
+          const report={head:process.env.REVIEW_SOURCE_SHA,engine:executablePath,cases:[],pdf:null};
+          try {
+            for(const route of routes)for(const width of widths){
+              const context=await browser.newContext({viewport:{width,height:844}});
+              const page=await context.newPage();
+              const record={route,width,status:'NOT_VERIFIED',errors:[]};
+              try {
+                const response=await page.goto('http://127.0.0.1:3100'+route,{waitUntil:'domcontentloaded',timeout:30000});
+                await page.waitForTimeout(300);
+                record.http=response?.status();
+                const d=await page.evaluate(()=>{
+                  const ids=[...document.querySelectorAll('[id]')].map(el=>el.id);
+                  const refs=[...document.querySelectorAll('a[href^="#"]')].map(el=>el.getAttribute('href').slice(1)).filter(Boolean);
+                  return {h1:document.querySelectorAll('h1').length,
+                    width:document.documentElement.scrollWidth,
+                    canonical:document.querySelector('link[rel="canonical"]')?.href||'',
+                    robots:document.querySelector('meta[name="robots"]')?.content||'',
+                    duplicateIds:ids.filter((id,i)=>ids.indexOf(id)!==i).slice(0,12),
+                    brokenHashes:refs.filter(id=>!document.getElementById(decodeURIComponent(id))).slice(0,12),
+                    bodyLength:document.body.innerText.length,
+                    uncertainty:/未確認|確認中|確認が必要|原典/.test(document.body.innerText)};
+                });
+                Object.assign(record,d);
+                if(record.http!==200)record.errors.push('HTTP_NOT_200');
+                if(d.h1!==1)record.errors.push('H1_NOT_ONE');
+                if(d.width>width+3)record.errors.push('HORIZONTAL_OVERFLOW');
+                if(!d.canonical.includes(route))record.errors.push('CANONICAL_MISSING');
+                if(!d.robots.toLowerCase().includes('noindex'))record.errors.push('NOINDEX_MISSING');
+                if(d.duplicateIds.length)record.errors.push('DUPLICATE_IDS');
+                if(d.brokenHashes.length)record.errors.push('BROKEN_ANCHORS');
+                if(d.bodyLength<300)record.errors.push('BODY_TOO_SHORT');
+                if(!d.uncertainty)record.errors.push('UNCERTAINTY_WARNING_MISSING');
+                if(route.startsWith('/services/')){
+                  const jump=page.locator('.handbook-staffing-entry a[href="#staffing"]');
+                  if(await jump.count()!==1)record.errors.push('STAFFING_PRIMARY_LINK_MISSING');
+                  else {
+                    await jump.click();
+                    record.anchor=await page.evaluate(()=>location.hash);
+                    if(record.anchor!=='#staffing')record.errors.push('STAFFING_ANCHOR_BROKEN');
+                  }
+                  if(pilots.some(s=>route==='/services/'+s)){
+                    const roles=page.locator('#staffing .handbook-role');
+                    record.roleCount=await roles.count();
+                    if(record.roleCount===0)record.errors.push('INLINE_ROLE_CONTENT_MISSING');
+                    const links=page.locator('#staffing .handbook-role-navigation a[href^="#staffing-role-"]');
+                    if(await links.count()===0)record.errors.push('ROLE_ANCHOR_LINK_MISSING');
+                    const warning=page.locator('#staffing .handbook-role-warning');
+                    if(await warning.count()===0)record.errors.push('ROLE_UNVERIFIED_WARNING_MISSING');
+                  } else {
+                    const detail=page.locator('#staffing .handbook-primary-action a');
+                    if(await detail.count()===0)record.errors.push('OTHER_SERVICE_DETAIL_LINK_MISSING');
+                  }
+                }else{
+                  const back=page.locator('.handbook-return-link a');
+                  if(await back.count()!==1)record.errors.push('RETURN_LINK_MISSING');
+                  if(await page.locator('.handbook-chapter-sequence a').count()===0)record.errors.push('CHAPTER_SEQUENCE_MISSING');
+                  const checkbox=page.locator('input[type="checkbox"]').first();
+                  if(await checkbox.count()===0)record.errors.push('CHECKBOX_MISSING');
+                  else{
+                    record.labelled=await checkbox.evaluate(el=>!!el.closest('label'));
+                    if(!record.labelled)record.errors.push('CHECKBOX_LABEL_MISSING');
+                    await checkbox.check();
+                    if(!(await checkbox.isChecked()))record.errors.push('CHECKBOX_CANNOT_CHECK');
+                    if(route==='/handbook/dayservice/staffing'&&width===390){
+                      await page.emulateMedia({media:'print'});
+                      await page.screenshot({path:'artifacts/issue569-browser/dayservice-print.png',fullPage:true,animations:'disabled'});
+                      const pdf=await page.pdf({format:'A4',printBackground:true});
+                      const path='artifacts/issue569-browser/dayservice-checklist.pdf';
+                      fs.writeFileSync(path,pdf);
+                      report.pdf={path,sizeBytes:pdf.length,status:pdf.length>2000?'GENERATED':'FAIL'};
+                      if(pdf.length<=2000)record.errors.push('PDF_TOO_SMALL');
+                    }
+                    await page.reload({waitUntil:'domcontentloaded'});
+                    if(await checkbox.isChecked())record.errors.push('CHECKBOX_NOT_RESET_AFTER_RELOAD');
+                  }
+                }
+                await page.keyboard.press('Tab');
+                record.activeTag=await page.evaluate(()=>document.activeElement?.tagName||'');
+                if(record.activeTag==='BODY')record.errors.push('TAB_NO_FOCUS');
+                if(width===390){
+                  await page.emulateMedia({media:'screen'});
+                  await page.screenshot({path:'artifacts/issue569-browser/'+route.replaceAll('/','_')+'-'+width+'.png',animations:'disabled'});
+                }
+                record.status=record.errors.length?'FAIL':'PASS';
+              }catch(err){record.status='FAIL';record.errors.push(String(err).slice(0,250));}
+              report.cases.push(record);
+              console.log(route,width,record.status,record.errors.join(','));
+              await context.close();
+            }
+          }finally{
+            await browser.close();
+            report.pass=report.cases.filter(x=>x.status==='PASS').length;
+            report.fail=report.cases.length-report.pass;
+            fs.writeFileSync('artifacts/issue569-browser/report.json',JSON.stringify(report,null,2));
+          }
+          if(report.fail)process.exitCode=1;
+          JS
+      - name: Check Japanese text really survives printed PDF
+        run: |
+          set -euo pipefail
+          pdftotext -layout artifacts/issue569-browser/dayservice-checklist.pdf artifacts/issue569-browser/dayservice-pdf-text.txt
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('artifacts/issue569-browser/dayservice-pdf-text.txt').read_text(encoding='utf-8')
+          terms=['人員基準','生活相談員','看護職員','介護職員','機能訓練指導員','管理者']
+          missing=[term for term in terms if term not in text]
+          print('PDF Japanese text terms:', {term:term in text for term in terms})
+          if missing: raise SystemExit('PDF_JAPANESE_FONT_OR_TEXT_LOSS: '+','.join(missing))
+          PY
+      - name: Audit every service and chapter in real Chrome
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          READER_QA_OUTPUT: artifacts/issue569-browser/full-reader
+        run: node scripts/qa_reader_site.mjs --full --serve
+      - name: Capture fixed starting version for before and after comparison
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          READER_QA_OUTPUT: ${{ github.workspace }}/artifacts/issue569-browser/before-reader
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin 3d34ef51f72e3999e52aaf4c75869d97ddccedc4
+          git worktree add --detach "$RUNNER_TEMP/kaigo-reader-before" 3d34ef51f72e3999e52aaf4c75869d97ddccedc4
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$RUNNER_TEMP/kaigo-reader-before/node_modules"
+          cd "$RUNNER_TEMP/kaigo-reader-before"
+          npm run build:handbook
+          # The historical worktree shares dependencies outside its root.
+          # Webpack supports this read-only layout; Turbopack rejects that symlink.
+          node "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" build --webpack
+          node "$GITHUB_WORKSPACE/scripts/qa_reader_site.mjs" --baseline --serve
+      - name: Anonymous host protection observations (not equivalent to authenticated QA)
+        if: always()
+        run: |
+          mkdir -p artifacts/issue569-browser
+          for host in kaigo-rules.vercel.app kaigo-rules-josh-temples-projects.vercel.app kaigo-rules-2m3c2ix5l-josh-temples-projects.vercel.app; do
+            code=$(curl -sS --max-time 12 -o /dev/null -w '%{http_code}' "https://$host/services/dayservice" || true)
+            printf '%s %s\n' "$host" "$code" | tee -a artifacts/issue569-browser/anonymous-http.txt
+          done
+      - name: Preserve exact-head Chrome, print PDF, screenshot and host evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue569-reader-browser-acceptance
+          path: artifacts/issue569-browser
+          retention-days: 14
+          if-no-files-found: warn

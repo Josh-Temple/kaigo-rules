@@ -57,9 +57,13 @@ class BoundedPublicSourcePilot(unittest.TestCase):
         self.assertNotIn("localStorage", self.source)
         self.assertNotIn("fetch(", self.source)
         self.assertNotIn("process.env.VERCEL_ENV", self.source)
-        self.assertIn("item.source_identifiers.join", self.source)
+        # Preserve the source metadata in validation logic without printing
+        # internal identifiers in the ordinary source-finder interface.
+        self.assertIn("p.source_identifiers.some", self.source)
         self.assertIn("item.evidence_task_id", self.source)
-        self.assertIn("未レビューの手引本文29文は、この公開ページには掲載していません", self.source)
+        self.assertNotIn("記録ID：{item.evidence_task_id}", self.source)
+        self.assertNotIn("<strong>確認候補 {item.bridge_id}</strong>", self.source)
+        self.assertIn("未レビューの手引本文29文も掲載していません", self.source)
 
     def test_noindex_and_user_facing_holds(self):
         self.assertIn("robots: { index: false, follow: false, nocache: true }", self.source)
@@ -94,7 +98,8 @@ class BoundedPublicSourcePilot(unittest.TestCase):
             self.assertIn("ServiceHandbook", src)
             self.assertNotIn('href="/handbook-preview"', src)
         component = (ROOT / "components/service-handbook.tsx").read_text(encoding="utf-8")
-        self.assertIn("確認前の解説・条文対応も掲載", component)
+        self.assertIn("確認中の説明を含む手引です", component)
+        self.assertIn("適用条件や未確認の注意を読み", component)
         self.assertIn('href={`/databases/search?service=${id}`}', self.source)
 
     def test_existing_unreviewed_preview_still_production_404(self):

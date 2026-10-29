@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Link from "next/link";
 import SiteFeedbackLink from "../components/site-feedback-link";
 import "./globals.css";
+import "./reader.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),

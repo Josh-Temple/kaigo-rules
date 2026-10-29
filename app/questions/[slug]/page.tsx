@@ -40,11 +40,17 @@ export default async function QuestionPage({ params }: { params: Promise<{ slug:
   const linkedRules = isVerified ? ruleNodes.filter((node) => question.rule_node_ids?.includes(node.id)) : [];
   const linkedNotices = isVerified ? noticeNodes.filter((node) => question.notice_node_ids?.includes(node.id)) : [];
   const linkedQa = isVerified ? qaItems.filter((item) => question.qa_item_ids?.includes(item.id)) : [];
+  const handbookSection = question.category === "人員・勤務" ? "staffing" : question.category === "設備" ? "equipment" : "operations";
+  const staffingRole: Record<string, string> = {
+    "nurse-staffing": "nurse", "life-counselor-staffing": "life-counselor", "manager-concurrent-role": "manager",
+  };
+  const handbookAnchor = staffingRole[slug] ? `staffing-role-${staffingRole[slug]}` : handbookSection;
 
   return (
     <article className="answer-page">
       <p className="eyebrow">通所介護 / {question.category}</p>
       <h1>{question.title}</h1>
+      <p className="handbook-return-link"><Link href={`/services/dayservice#${handbookAnchor}`}>通所介護の手引の関連箇所に戻る</Link></p>
       <p className="meta">全国共通事項を対象 / 状態：<span className={isVerified ? "verified" : ""}>{isVerified ? "FAQ根拠対応を確認済み" : "根拠対応確認中"}</span>{isVerified && question.last_verified ? ` / 最終確認 ${question.last_verified}` : ""}</p>
       {isVerified && question.verification_note ? <p className="scope-note">{question.verification_note}</p> : null}
       {isVerified ? (
