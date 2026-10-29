@@ -127,7 +127,17 @@ try {
     await page.goto(origin + '/handbook/dayservice/national-qa');
     await page.locator('a[href="/handbook/dayservice/staffing#staffing-role-nurse-qa"]').click();
     await page.waitForURL('**/handbook/dayservice/staffing#staffing-role-nurse-qa', { timeout: 15000 });
+    // The target must be on screen, not merely present in the DOM with a changed URL.
+    const qaTargetVisible = () => {
+      const target = document.getElementById('staffing-role-nurse-qa');
+      const top = target?.getBoundingClientRect().top;
+      return top !== undefined && top >= -2 && top < innerHeight / 2;
+    };
+    await page.waitForFunction(qaTargetVisible, null, { timeout: 5000 });
     report.interactions.push({ flow: 'national Q&A index → question under its staffing topic', status: (await page.locator('#staffing-role-nurse-qa .dayservice-qa-answer').innerText()).includes('契約') ? 'PASS' : 'FAIL' });
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForFunction(qaTargetVisible, null, { timeout: 5000 });
+    report.interactions.push({ flow: 'reloading a Q&A fragment keeps its question on screen', status: 'PASS' });
     await page.goto(origin + '/handbook/dayservice/staffing');
     const checkbox = page.locator('input[type="checkbox"]').first();
     await checkbox.check();

@@ -46,7 +46,7 @@
 .handbook-dayservice .handbook-role-evidence{margin-top:12px}
 .handbook-dayservice .handbook-role-evidence>li{margin-bottom:16px;border-top:1px solid var(--line)}
 /* National source text sits with the topic; author explanations stay short. */
-.dayservice-national-reader{max-width:52rem}
+.dayservice-national-reader{max-width:52rem;content-visibility:visible;contain-intrinsic-size:none}
 .dayservice-topic-navigation{display:block;max-width:none;text-align:left;margin:24px 0 36px;padding:16px 20px;background:#f3f6f3;border:1px solid var(--line)}
 .dayservice-topic-navigation p{margin:0 0 8px}
 .dayservice-topic-navigation>div+div{margin-top:20px}
