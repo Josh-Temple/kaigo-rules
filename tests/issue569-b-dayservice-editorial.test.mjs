@@ -49,7 +49,7 @@ test("new heading structure is wired into actual reader and paper checklist", ()
   assert.match(renderer, /dayserviceRoleParagraphHeading\(role\.id, paragraphIndex\)/);
   assert.match(renderer, /dayserviceChapterParagraphHeading\(chapter\.section_id, index\)/);
   assert.match(renderer, /dayserviceReadableText\(chapter\.section_id, paragraph\)/);
-  assert.match(renderer, /chapter\.checkpoints\.map\(item => dayserviceReadableText\(chapter\.section_id, item\)\)/);
+  assert.match(renderer, /chapter\.checkpoints\.map\(item => handbookReaderText\(service\.service_id === "dayservice" \? dayserviceReadableText\(chapter\.section_id, item\) : item\)\)/);
   assert.match(renderer, /requirement\.verification_state === "EVIDENCE_GAP"/);
   assert.match(renderer, /splitDayserviceRegionalText\(copy, requirement\.authority_segments, requirement\.evidence\)/);
   assert.equal(Object.keys(data.services).length, 39);

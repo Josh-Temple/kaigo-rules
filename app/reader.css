@@ -1,0 +1,32 @@
+/* Shared reader navigation and restrained, document-like hierarchy. */
+.reader-main-entry{background:#e7f0eb;padding-inline:16px;border-left:4px solid #366858}
+.reader-featured-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:24px 0}
+.reader-featured-services a{display:grid;gap:6px;padding:16px 0;border-block:1px solid var(--line);text-decoration:none}
+.reader-featured-services a:hover strong{text-decoration:underline}
+.reader-featured-services span{font-size:.88rem;color:var(--muted)}
+.handbook-topic-navigation,.service-group-navigation{display:flex;flex-wrap:wrap;gap:8px 12px;max-width:none;text-align:left;margin:24px 0}
+.handbook-topic-navigation a,.service-group-navigation a{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--line);background:var(--surface);border-radius:4px;text-decoration:none}
+.handbook-topic-navigation a[aria-current="page"]{border-color:#366858;background:#e7f0eb;color:#18473b;font-weight:700}
+.handbook-breadcrumb{display:flex;flex-wrap:wrap;gap:6px;font-size:.88rem;max-width:none;text-align:left}
+.handbook-breadcrumb a{min-height:32px;padding:4px 0}
+.staffing-reading-guide{border-left:4px solid #366858;background:#edf2ee;padding:16px 20px;margin:22px 0}
+.staffing-guide-lead{margin:0;line-height:1.9}
+.staffing-reading-guide summary,.handbook-evidence-details summary{cursor:pointer;min-height:44px;padding:10px 0;color:var(--link)}
+.staffing-reading-guide li{padding:7px 0}.staffing-reading-guide li p{margin:5px 0 8px}
+.handbook-evidence-details{font-size:.88rem;color:var(--muted)}
+.handbook-evidence-details p{margin:6px 0}
+.reader-source-types>div{padding:14px 0;border-bottom:1px solid var(--line)}
+.reader-source-types dt{font-weight:700}.reader-source-types dd{margin:6px 0 0}
+.handbook-page .handbook-role{border-top:2px solid #c7d3ca;padding-top:18px}
+.handbook-role h4{font-size:1.4rem}.handbook-role-requirement p{line-height:1.95}
+.handbook-topic-navigation a:focus-visible,.service-group-navigation a:focus-visible,.staffing-reading-guide summary:focus-visible,.handbook-evidence-details summary:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+@media(max-width:760px){.reader-featured-services{grid-template-columns:1fr;gap:8px}.staffing-reading-guide{padding:12px 14px}.handbook-topic-navigation,.service-group-navigation{gap:6px}.handbook-topic-navigation a,.service-group-navigation a{font-size:.9rem;padding:8px 11px}.handbook-role h4{font-size:1.25rem}}
+@media print{
+  @page{size:A4;margin:16mm 14mm}
+  .handbook-topic-navigation,.handbook-breadcrumb,.service-group-navigation,.handbook-role-navigation,.handbook-inline-links,.handbook-toc{display:none}
+  .handbook-page{font-size:10.5pt;line-height:1.65}
+  .handbook-chapter,.handbook-role{content-visibility:visible;contain-intrinsic-size:none}
+  .handbook-page h2,.handbook-page h3,.handbook-page h4,.handbook-page h5,.handbook-page h6{break-after:avoid-page}
+  .handbook-role-warning,.staffing-reading-guide{background:transparent;border-color:#333}
+  .handbook-role-requirement,.handbook-role-evidence li{break-inside:auto}
+}

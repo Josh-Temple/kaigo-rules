@@ -9,7 +9,7 @@ const finder = fs.readFileSync("app/handbook-sources/page.tsx", "utf8");
 const preview = fs.readFileSync("app/handbook-preview/page.tsx", "utf8");
 
 test("all service chapters use the same optional web checklist, without JSON as a reader requirement", () => {
-  assert.match(handbook, /<HandbookChecklist items=\{service\.service_id === "dayservice" \? chapter\.checkpoints\.map\(item => dayserviceReadableText\(chapter\.section_id, item\)\) : chapter\.checkpoints\} chapterTitle=\{chapter\.title\} printable=\{full\} \/>/u);
+  assert.match(handbook, /<HandbookChecklist items=\{chapter\.checkpoints\.map\(item => handbookReaderText\(service\.service_id === "dayservice" \? dayserviceReadableText\(chapter\.section_id, item\) : item\)\)\} chapterTitle=\{chapter\.title\} printable=\{full\} \/>/u);
   assert.match(checklist, /type="checkbox"/u);
   assert.match(checklist, /<label>/u);
   assert.match(checklist, /チェック状態は保存されず/u);

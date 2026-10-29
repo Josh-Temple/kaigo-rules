@@ -72,8 +72,9 @@ test("Muse reader-only links keep nursing legal uncertainty and an exact handboo
   const qpage = fs.readFileSync("app/questions/[slug]/page.tsx", "utf8");
   assert.match(renderer, /href="\/questions\/nurse-staffing"/u);
   assert.match(renderer, /連携・兼務の適用条件は、国の解釈通知・Q&Aの現行内容を別途確認してください/u);
-  assert.match(qpage, /slug === "nurse-staffing"/u);
-  assert.match(qpage, /href="\/services\/dayservice#staffing"/u);
+  assert.match(qpage, /"nurse-staffing": "nurse"/u);
+  assert.match(qpage, /href=\{`\/services\/dayservice#\$\{handbookAnchor\}`\}/u);
+  assert.match(qpage, /`staffing-role-\$\{staffingRole\[slug\]\}`/u);
   assert.match(renderer, /「サ責」は「サービス提供責任者」の略称です/u);
   const homevisit = data.services.homevisit.chapters.staffing.paragraphs.join("\n");
   assert.match(homevisit, /利用者50人ごとに1人以上とできます/u);

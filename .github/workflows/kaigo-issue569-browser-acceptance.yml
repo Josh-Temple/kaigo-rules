@@ -12,6 +12,11 @@ on:
       - app/questions/**
       - app/globals.css
       - package.json
+      - app/**
+      - components/**
+      - lib/handbook/**
+      - scripts/qa_reader_site.mjs
+      - tests/issue569-work-reader.test.mjs
   workflow_dispatch:
 permissions:
   contents: read
@@ -184,6 +189,23 @@ jobs:
           print('PDF Japanese text terms:', {term:term in text for term in terms})
           if missing: raise SystemExit('PDF_JAPANESE_FONT_OR_TEXT_LOSS: '+','.join(missing))
           PY
+      - name: Audit every service and chapter in real Chrome
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          READER_QA_OUTPUT: artifacts/issue569-browser/full-reader
+        run: node scripts/qa_reader_site.mjs --full --serve
+      - name: Capture fixed starting version for before and after comparison
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          READER_QA_OUTPUT: ${{ github.workspace }}/artifacts/issue569-browser/before-reader
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin 3d34ef51f72e3999e52aaf4c75869d97ddccedc4
+          git worktree add --detach "$RUNNER_TEMP/kaigo-reader-before" 3d34ef51f72e3999e52aaf4c75869d97ddccedc4
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$RUNNER_TEMP/kaigo-reader-before/node_modules"
+          cd "$RUNNER_TEMP/kaigo-reader-before"
+          node "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" build
+          node "$GITHUB_WORKSPACE/scripts/qa_reader_site.mjs" --baseline --serve
       - name: Anonymous host protection observations (not equivalent to authenticated QA)
         if: always()
         run: |

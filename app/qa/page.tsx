@@ -7,6 +7,7 @@ import Link from "next/link";
 import qaCorpusData from "../../data/qa-corpus.json";
 import qaMetaData from "../../data/qa-corpus-meta.json";
 import sourcesData from "../../data/sources.json";
+import { serviceHandbooks } from "../../lib/working-handbook";
 
 type QaItem = {
   id: string;
@@ -119,6 +120,7 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
   const start = (page - 1) * PAGE_SIZE;
   const visible = filtered.slice(start, start + PAGE_SIZE);
   const officialSource = sources.find((source) => source.id === "mhlw-qa");
+  const relatedServices = serviceHandbooks.filter(item => item.qa_direct_codes.includes(service));
 
   const pageHref = (nextPage: number) => {
     const sp = new URLSearchParams();
@@ -131,19 +133,23 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
 
   return (
     <article className="answer-page wide-page qa-corpus-page">
-      <p className="eyebrow">MHLW Q&A CORPUS</p>
-      <h1>国Q&A DB</h1>
+      <p className="eyebrow">厚生労働省のQ&A</p>
+      <h1>国Q&Aを探す</h1>
       <p className="lead">
-        厚生労働省の介護サービス関係Q&Aを、公式XLSXのサービス分類を保ったまま横断検索します。
-        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を収載しています。
+        サービスやキーワードから、厚生労働省の介護サービス関係Q&Aを探せます。
+        現在 {qaMeta.rows_included?.toLocaleString("ja-JP")} 件を掲載しています。古い取扱いが含まれるため、発出日と修正資料も確認してください。
       </p>
 
       <div className="notice">
-        <strong>公式Q&A集でサービス種別コードが付いたQ&Aを、サービス横断で収載します。</strong>
+        <strong>掲載されているQ&Aが、現在も有効とは限りません。</strong>
         <br />
         「収載」と「現行性確認」は別です。個々のQ&Aが現在の法令・通知でも有効かは
         未確認のものを含み、回答ページの根拠として使うものは別途確認します。
       </div>
+
+      {relatedServices.length ? <nav className="handbook-topic-navigation" aria-label="関連する手引">
+        {relatedServices.map(item => <Link key={item.service_id} href={`/services/${item.service_id}#national_qa`}>{item.label}の手引に戻る</Link>)}
+      </nav> : <p><Link href="/services">サービス別の手引を読む →</Link></p>}
 
       <VerificationSummary layerId="qa-corpus" />
 
@@ -215,10 +221,8 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
       <section className="section qa-corpus-meta">
         <h2>現在の収載範囲</h2>
         <p>
-          公式XLSXの {qaMeta.rows_scanned?.toLocaleString("ja-JP")} 行を走査し、
-          サービス種別コードを持つQ&Aを全分類で収載しています。
-          主分類に加えて、公式XLSXに記載された2019年以降のサービス範囲も各Q&Aに保持します。
-          対象範囲フィルターは主分類を使います。
+          厚生労働省の公式Q&A集でサービスに分類されている質問・回答を掲載しています。
+          対象範囲の絞り込みには、原資料の主な分類を使います。2019年以降の分類が別に記載されている場合は、各Q&Aにも表示します。
         </p>
         <dl>
           {serviceOptions.filter(([code]) => code).map(([code, label]) => (
@@ -228,7 +232,6 @@ export default async function QaPage({ searchParams }: { searchParams: SearchPar
         {officialSource ? (
           <p><a href={officialSource.url} target="_blank" rel="noreferrer">厚生労働省の介護サービス関係Q&Aを確認</a></p>
         ) : null}
-        <p className="meta">取得元ファイルのSHA-256も保存し、更新時に同じファイルか確認できるようにしています。</p>
       </section>
     </article>
   );

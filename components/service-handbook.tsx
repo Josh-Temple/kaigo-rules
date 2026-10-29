@@ -2,6 +2,11 @@ import Link from "next/link";
 import { chapterRecords, handbookChapterHref, legalHref, type HandbookChapter, type HandbookEvidence, type HandbookRoleSection, type ServiceHandbookData } from "../lib/working-handbook";
 import LegalRecordView from "./legal-record";
 import HandbookChecklist from "./handbook-checklist";
+import HandbookNavigation from "./handbook-navigation";
+import StaffingReadingGuide from "./staffing-reading-guide";
+import { handbookReaderText } from "../lib/handbook/public-copy";
+import { staffingParagraphHeading } from "../lib/handbook/staffing-reading-guide";
+import qaMeta from "../data/qa-corpus-meta.json";
 import { isStaffingScopeOrException, readerEvidenceTitle, readerEvidenceLocator, safeHandbookEvidenceUrl, readerLabel, readerRequirementTitle, requirementCopy, separateHandbookParagraphs, splitDayserviceRegionalText, type HandbookAuthoritySegment } from "../lib/handbook/reader-content";
 import { dayserviceChapterParagraphHeading, dayserviceReadableText, dayserviceRoleParagraphHeading } from "../lib/handbook/dayservice-reader-editorial";
 
@@ -95,23 +100,30 @@ function StaffingRoles({ service, chapter, full }: {
           {segment.text.split("\n").filter(Boolean).map((paragraph, paragraphIndex) => <div key={paragraphIndex} className="handbook-reader-paragraph">
             {service.service_id === "dayservice" && staffing && segment.authority === "unclassified" && parts.segments.length === 1 && dayserviceRoleParagraphHeading(role.id, paragraphIndex)
               ? <h6>{dayserviceRoleParagraphHeading(role.id, paragraphIndex)}</h6> : null}
-            <p>{paragraph}</p>
+            <p>{handbookReaderText(paragraph)}</p>
           </div>)}
-        </section>) : copy.split("\n").filter(Boolean).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-        <p><strong>適用範囲：</strong>{requirement.applicability}</p>
+        </section>) : copy.split("\n").filter(Boolean).map((paragraph, index) => <div key={index} className="handbook-reader-paragraph">
+          {staffingParagraphHeading(service.service_id, role.id, requirement.id, index)
+            ? <h6>{staffingParagraphHeading(service.service_id, role.id, requirement.id, index)}</h6> : null}
+          <p>{handbookReaderText(paragraph)}</p>
+        </div>)}
+        <p><strong>適用範囲：</strong>{handbookReaderText(requirement.applicability)}</p>
         {requirement.description.startsWith("【Research Mesh隔離候補・法令適合未審査】") && requirement.verification_state !== "EVIDENCE_GAP" ? <p className="handbook-role-warning">この要件の法令適合性は未審査です。</p> : null}
         {requirement.practical_checks.length ? <>
           <h6>実務上の確認ポイント（法令上の義務とは別）</h6>
-          <ul className="handbook-checkpoints">{requirement.practical_checks.map((point, index) => <li key={index}>{point}</li>)}</ul>
+          <ul className="handbook-checkpoints">{requirement.practical_checks.map((point, index) => <li key={index}>{handbookReaderText(point)}</li>)}</ul>
         </> : null}
         <h6>関連する原典と適用上の注意</h6>
         {requirement.evidence.length ? <ul className="handbook-role-evidence">{requirement.evidence.map((evidence, index) => <li key={index}>
           <strong>{evidenceNames[evidence.kind]}</strong>
           <span className="handbook-role-evidence-state">{evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" ? "原文確認済み（限定範囲）" : "出典候補・原文未照合"}</span>
-          <div>{readerEvidenceTitle(evidence.title).label}（{evidence.issuer}）</div>
-          <div>該当箇所：{readerEvidenceLocator(evidence.locator)} ／ 版：{evidence.version}</div>
-          <div>対象：{evidence.scope}{evidence.effective_date ? ` ／ 適用日：${evidence.effective_date}` : ""}</div>
-          {evidence.note ? <p>{evidence.note}</p> : null}
+          <div>{handbookReaderText(readerEvidenceTitle(evidence.title).label)}（{evidence.issuer}）</div>
+          <details className="handbook-evidence-details"><summary>条文・適用版の情報</summary>
+            <p>該当箇所：{handbookReaderText(readerEvidenceLocator(evidence.locator))}</p>
+            <p>版：{handbookReaderText(evidence.version)}</p>
+          </details>
+          <div>対象：{handbookReaderText(evidence.scope)}{evidence.effective_date ? ` ／ 適用日：${evidence.effective_date}` : ""}</div>
+          {evidence.note ? <p>{handbookReaderText(evidence.note)}</p> : null}
           {evidence.verification_state === "PRIMARY_TEXT_CHECKED_SCOPED" && safeHandbookEvidenceUrl(evidence.url) ? <div><a href={safeHandbookEvidenceUrl(evidence.url)!} target="_blank" rel="noopener noreferrer">{evidence.kind === "yokohama_handbook" ? "横浜市の手引を開く ↗" : "公式資料を開く ↗"}</a></div> : null}
         </li>)}</ul> : <p className="handbook-role-warning">個別の出典候補はまだ登録されていません。原典の特定・照合が必要です。</p>}
         {requirement.evidence.some(e => e.kind === "national_qa" && e.verification_state !== "PRIMARY_TEXT_CHECKED_SCOPED") ? <p className="meta">関連する国Q&Aは候補の段階です。原問との照合が必要です。</p> : null}
@@ -139,7 +151,7 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
     <section className="section handbook-chapter" id={chapter.section_id}>
       <p className="eyebrow">第{String(chapter.number).padStart(2, "0")}章</p>
       <h2>{full ? chapter.title : <Link href={detailHref}>{chapter.title}</Link>}</h2>
-      <p>{chapter.summary}</p>
+      <p>{handbookReaderText(chapter.summary)}</p>
       {service.service_id === "homevisit" && chapter.section_id === "staffing" ? <p className="meta">「サ責」は「サービス提供責任者」の略称です。資格や配置の条件は、以下の職種別の説明と原典で確認してください。</p> : null}
       {full ? <p className="handbook-return-link"><Link href={`/services/${service.service_id}#${chapter.section_id}`}>{service.label}の手引に戻る</Link></p> : null}
       {!full && chapter.section_id === "staffing" && !["dayservice", "dayrehab", "homevisit"].includes(service.service_id)
@@ -148,27 +160,27 @@ export function HandbookChapterContent({ service, chapter, full = false }: {
         ? <p className="handbook-quick-link"><a href={`#handbook-sources-${chapter.section_id}`}>この章の関連資料へ移動 ↓</a></p>
         : null}
       {chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
-        ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
+        ? <><StaffingReadingGuide serviceId={service.service_id} /><StaffingRoles service={service} chapter={chapter} full={full} /></> : null}
       {chapter.section_id === "staffing" && ["homevisit", "dayrehab", "dayservice"].includes(service.service_id) ? <h3>人員基準の全体像</h3> : null}
       {paragraphs.reader.map((paragraph, index) => <div key={index} className="handbook-reader-paragraph">
         {service.service_id === "dayservice" && dayserviceChapterParagraphHeading(chapter.section_id, index)
           ? <h3>{dayserviceChapterParagraphHeading(chapter.section_id, index)}</h3> : null}
-        <p>{service.service_id === "dayservice" ? dayserviceReadableText(chapter.section_id, paragraph) : paragraph}</p>
+        <p>{handbookReaderText(service.service_id === "dayservice" ? dayserviceReadableText(chapter.section_id, paragraph) : paragraph)}</p>
       </div>)}
       <h3>確認すること</h3>
-      <HandbookChecklist items={service.service_id === "dayservice" ? chapter.checkpoints.map(item => dayserviceReadableText(chapter.section_id, item)) : chapter.checkpoints} chapterTitle={chapter.title} printable={full} />
+      <HandbookChecklist items={chapter.checkpoints.map(item => handbookReaderText(service.service_id === "dayservice" ? dayserviceReadableText(chapter.section_id, item) : item))} chapterTitle={chapter.title} printable={full} />
       {chapter.section_id !== "staffing" || !["homevisit", "dayrehab", "dayservice"].includes(service.service_id)
-        ? <StaffingRoles service={service} chapter={chapter} full={full} /> : null}
+        ? <><StaffingReadingGuide serviceId={service.service_id} /><StaffingRoles service={service} chapter={chapter} full={full} /></> : null}
       {chapter.section_id === "national_qa" ? <>
         <h3>関連する国Q&A</h3>
         <p>サービス個別・共通分類の候補を合わせて{service.qa_count.toLocaleString("ja-JP")}件収載しています。共通分類は各問の条件を確認してください。</p>
         <div className="handbook-inline-links">
-          {service.qa_codes.map(code => <Link key={code} href={`/qa?service=${code}`}>{service.qa_direct_codes.includes(code) ? "サービス個別" : "共通分類"}（{code}）→</Link>)}
+          {service.qa_codes.map(code => <Link key={code} href={`/qa?service=${code}`}>{(qaMeta.scope_by_code as Record<string, string>)[code] || "関連する国Q&A"} →</Link>)}
           <Link href="/qa">国Q&A全体を見る →</Link>
         </div>
       </> : <>
         <h3 id={`handbook-sources-${chapter.section_id}`}>関連する条文・資料 <small>（{records.length}件）</small></h3>
-        {full ? <p className="meta">登録済みのサービス対応と見出しを使って配置した確認候補です。準用先の本文は、読替え前の原文を表示します。</p> : null}
+        {full ? <p className="meta">この章に関連する資料の候補です。適用関係は原典で確認してください。準用する条文は、読替え前の原文を表示します。</p> : null}
         {shown.length ? shown.map(record => <LegalRecordView key={record.id} record={record} serviceId={service.service_id} />)
           : <p className="handbook-empty">この章への個別資料の対応付けは追記できます。収載済みの資料全体からも探せます。</p>}
       </>}
@@ -192,7 +204,8 @@ export default function ServiceHandbook({ service }: { service: ServiceHandbookD
       <h1>{service.label}の手引</h1>
       <p className="lead">開設、人員・設備、日常運営、報酬までを章ごとにまとめています。概要と確認項目から、関連する条文・通知・Q&Aへ進めます。</p>
       <p className="handbook-primary-action handbook-staffing-entry"><a href="#staffing">人員基準を確認する（職種別の配置・資格・勤務時間）</a></p>
-      <p className="handbook-working-note">作成中の手引です。確認前の解説・条文対応も掲載し、内容を随時追加・調整しています。資料ごとの版と確認状況は、本文を開くと確認できます。</p>
+      <p className="handbook-working-note">確認中の説明を含む手引です。適用条件や未確認の注意を読み、判断前に最新の国の原典と指定権者の基準を確認してください。</p>
+      <HandbookNavigation service={service} inline />
       <div className="handbook-summary" aria-label="収載状況">
         <span><strong>15</strong>章</span>
         <span><strong>{service.source_record_count.toLocaleString("ja-JP")}</strong>条文・資料</span>
@@ -212,6 +225,7 @@ export default function ServiceHandbook({ service }: { service: ServiceHandbookD
           <Link href="/services/dayrehab/remuneration/guidance">算定上の留意事項を見る →</Link>
         </div>
       </section> : null}
+      <h2 id="handbook-toc">全15章の目次</h2>
       <nav className="handbook-toc" aria-label="手引の目次">
         {service.chapters.map(chapter => <a key={chapter.section_id} href={`#${chapter.section_id}`}>
           <span>{String(chapter.number).padStart(2, "0")}</span>{chapter.title}

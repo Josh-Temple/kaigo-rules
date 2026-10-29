@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { HandbookChapterContent } from "../../../../components/service-handbook";
 import { handbookChapterHref, serviceHandbook, serviceHandbooks } from "../../../../lib/working-handbook";
 import { pageMetadata } from "../../../../lib/site-metadata";
+import HandbookNavigation from "../../../../components/handbook-navigation";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -24,9 +25,10 @@ export default async function ChapterPage({ params }: { params: Promise<{ servic
   const previous = service.chapters[chapter.number - 2];
   const next = service.chapters[chapter.number];
   return <article className="answer-page wide-page handbook-page">
-    <p className="eyebrow"><Link href={`/services/${service.service_id}`}>{service.label}の手引</Link></p>
+    <nav className="handbook-breadcrumb" aria-label="現在位置"><Link href="/services">サービス別手引</Link><span aria-hidden="true"> / </span><Link href={`/services/${service.service_id}`}>{service.label}</Link><span aria-hidden="true"> / </span><span aria-current="page">{chapter.title}</span></nav>
     <h1>{chapter.title}</h1>
-    <p className="handbook-working-note">作成中・未確認の内容を含みます。関連箇所は登録済みの参照候補です。</p>
+    <p className="handbook-working-note">未確認の説明を含みます。条件・例外と確認状況を読み、判断前に原典を確認してください。</p>
+    <HandbookNavigation service={service} current={chapter.section_id} />
     <HandbookChapterContent service={service} chapter={chapter} full />
     <nav className="handbook-inline-links" aria-label="前後の章">
       {previous ? <Link href={handbookChapterHref(service.service_id, previous.section_id)}>← {previous.title}</Link> : null}
