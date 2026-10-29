@@ -220,7 +220,7 @@ jobs:
           done
       - name: Preserve exact-head Chrome, print PDF, screenshot and host evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: issue569-reader-browser-acceptance
           path: artifacts/issue569-browser
