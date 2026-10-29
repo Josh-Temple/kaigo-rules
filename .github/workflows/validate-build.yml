@@ -241,7 +241,7 @@ jobs:
             echo "shortstay-life handbook is not accessible"
             exit 1
           }
-          if [[ "$shortstay_page" != *"短期入所生活介護の手引"* || "$shortstay_page" != *"作成中の手引です"* ]]; then
+          if [[ "$shortstay_page" != *"短期入所生活介護の手引"* || "$shortstay_page" != *"確認中の説明を含む手引です"* ]]; then
             echo "shortstay-life handbook is missing its title or draft warning"
             exit 1
           fi
@@ -252,7 +252,7 @@ jobs:
               echo "integrated handbook chapter not accessible: $chapter_route"
               exit 1
             }
-            if [[ "$chapter_page" != *"DRAFT_UNREVIEWED"* ]]; then
+            if [[ "$chapter_page" != *"未確認の説明を含みます"* || "$chapter_page" != *'name="robots" content="noindex'* ]]; then
               echo "integrated handbook chapter lost draft warning: $chapter_route"
               exit 1
             fi

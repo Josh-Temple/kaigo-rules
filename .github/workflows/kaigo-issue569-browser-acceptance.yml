@@ -204,7 +204,9 @@ jobs:
           git worktree add --detach "$RUNNER_TEMP/kaigo-reader-before" 3d34ef51f72e3999e52aaf4c75869d97ddccedc4
           ln -s "$GITHUB_WORKSPACE/node_modules" "$RUNNER_TEMP/kaigo-reader-before/node_modules"
           cd "$RUNNER_TEMP/kaigo-reader-before"
-          node "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" build
+          # The historical worktree shares dependencies outside its root.
+          # Webpack supports this read-only layout; Turbopack rejects that symlink.
+          node "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" build --webpack
           node "$GITHUB_WORKSPACE/scripts/qa_reader_site.mjs" --baseline --serve
       - name: Anonymous host protection observations (not equivalent to authenticated QA)
         if: always()
