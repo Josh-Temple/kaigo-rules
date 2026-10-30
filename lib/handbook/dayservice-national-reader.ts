@@ -20,7 +20,7 @@ export type ReaderTopic = {
   qa?: string[]; local?: string; note?: string; criteria?: ReaderReference[];
   readerQuestions?: readonly string[]; qaSearchQuery?: string;
   readerSummary?: string; readerConditions?: readonly string[]; readerExceptions?: readonly string[];
-  officialQaFurther?: { number: string; label: string; url: string; explanation?: string }[];
+  officialQaFurther?: { number: string; label: string; url: string; explanation?: string; issuedLabel?: string }[];
 };
 export type ReaderGroup = { title: string; topics: ReaderTopic[] };
 export type ReaderExcerpt = {
@@ -257,12 +257,13 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
     qaSearchQuery: "延長加算",
     readerSummary: "8時間以上9時間未満の通所介護と、その前後に連続して行う日常生活上の世話を合わせて9時間以上となる場合に、届出などの条件を確認する加算です。",
     readerConditions: ["通所介護の所要時間と、その前後に引き続き行った世話の時間を合計する。9時間以上10時間未満から13時間以上14時間未満まで区分がある。", "届出と、実際に提供したサービス・世話の内容を確認する。"],
-    readerExceptions: ["平成27年度国Q&A問59では、同一日に宿泊サービスを受けた場合の延長加算は適当ではないと説明されています。", "同Q&A問58では、自宅に戻らず別の宿泊場所へ行くまでの間に延長して介護を行った場合の算定を認めています。", "これらの過去Q&Aについて、後続改正と現在の算定要件との適用関係は確認中です。"],
+    readerExceptions: ["平成27年度国Q&A問59では、同一日に宿泊サービスを受けた場合の延長加算は適当ではないと説明されています。", "同Q&A問58では、自宅に戻らず別の宿泊場所へ行くまでの間に延長して介護を行った場合の算定を認めています。", "ただし平成27年度Q&A Vol.4問5には、計画に位置付けた口腔機能向上サービスを延長時間帯に行う必要がある場合の例外も示されています。", "これらの過去Q&Aについて、後続改正と現在の算定要件との適用関係は確認中です。"],
     officialQaFurther: [
       { number: "56", label: "送迎と居宅内介助", explanation: "9時間の通所介護等の前後に送迎・居宅内介助を行う場合の取扱いを示しています。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
       { number: "57", label: "宿泊と延長に係る利用料", explanation: "宿泊サービスを提供する場合、延長に係る利用料の徴収は適当ではないとする回答です。延長加算そのものと混同しないでください。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
       { number: "58", label: "別の宿泊場所へ行くまで", explanation: "自宅に帰らず別の宿泊場所へ行くまで延長して介護を実施する事例です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
       { number: "59", label: "同じ日に宿泊サービスを利用", explanation: "通所介護と同じ日に宿泊サービスを受ける場合は、延長加算の算定は適当ではないとする回答です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+      { number: "5", issuedLabel: "平成27年度Q&A Vol.4", label: "宿泊時でも必要な訓練を行う例外", explanation: "あらかじめ通所介護計画に位置付けた口腔機能向上サービスが、通常の提供時間だけでは完了できず、延長時間帯で不可欠な場合について、実際に延長して提供した範囲での算定を示した例外です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/0000093219.pdf#page=4" },
     ],
   } : {}),
 });
