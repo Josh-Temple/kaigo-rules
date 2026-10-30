@@ -174,7 +174,7 @@ try {
         report.interactions.push({
           flow: `${width}px ${role} → three practical questions and related national Q&A search`,
           status: await checks.count() === 3 && Boolean(href?.startsWith('/qa?reader=1&service=16&q=')) &&
-            (await item.locator('.dayservice-reader-question-note').innerText()).includes('国の基準') ? 'PASS' : 'FAIL',
+            (await item.locator('.dayservice-reader-questions > .dayservice-reader-question-note').innerText()).includes('国の基準') ? 'PASS' : 'FAIL',
         });
       }
       await page.goto(origin + '/handbook/dayservice/additions');
