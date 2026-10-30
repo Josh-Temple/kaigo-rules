@@ -135,6 +135,35 @@ try {
     const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
     for (const width of [360, 390]) {
       await page.setViewportSize({ width, height: 844 });
+      await page.goto(origin + '/handbook/dayservice/staffing');
+      const firstStaffingTopic = await page.locator('.dayservice-reading-topic').first().getAttribute('id');
+      for (const role of ['life-counselor', 'care-worker']) {
+        const targetId = `staffing-role-${role}-example`;
+        await page.locator(`#staffing-role-navigation a[href="#${targetId}"]`).click();
+        await page.waitForFunction(id => {
+          const top = document.getElementById(id)?.getBoundingClientRect().top;
+          return top !== undefined && top >= -2 && top < innerHeight / 2;
+        }, targetId, { timeout: 5000 });
+        const example = page.locator(`#${targetId}`);
+        const text = await example.innerText();
+        const fits = await example.evaluate(element => [...element.querySelectorAll('figure,table,[role="img"],.dayservice-service-period')].every(child => {
+          const rect = child.getBoundingClientRect();
+          return rect.left >= 0 && rect.right <= innerWidth && child.scrollWidth <= child.clientWidth + 1;
+        }));
+        const numbers = role === 'life-counselor' ? text.includes('3時間＋5時間＝8時間') && text.includes('合計8時間') && text.includes('12時〜13時はサービス提供なし')
+          : text.includes('20人全員が5時間利用') && text.includes('10時間') && text.includes('常時1人以上');
+        report.interactions.push({ flow: `${width}px staffing → ${role} calculation on screen`, status: firstStaffingTopic === 'staffing-unit' && fits && numbers ? 'PASS' : 'FAIL' });
+        if (role === 'life-counselor') {
+          await page.screenshot({ path: path.join(output, `dayservice-counselor-example-${width}.png`) });
+          await example.locator('a[href="#staffing-role-life-counselor-interpretation"]').click();
+          await page.waitForFunction(() => {
+            const caution = document.querySelector('#staffing-role-life-counselor-interpretation .dayservice-source-caution');
+            const rect = caution?.getBoundingClientRect();
+            return rect && rect.top >= 0 && rect.bottom <= innerHeight;
+          }, undefined, { timeout: 5000 });
+          report.interactions.push({ flow: `${width}px counselor calculation → source caution on screen`, status: 'PASS' });
+        }
+      }
       await page.goto(origin + '/handbook/dayservice/additions');
       const training = page.locator('#fee-note-13');
       await page.locator('#additions-topic-navigation a[href="#fee-note-13"]').click();

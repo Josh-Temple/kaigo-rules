@@ -105,7 +105,12 @@ export function readerExcerpt(ref: ReaderReference): ReaderExcerpt {
   const links = evidence.map(evidence => {
     const source = sourceById.get(evidence.source_id);
     if (!source?.url) throw new Error(`Missing source: ${evidence.source_id}`);
-    return { label: source.title, url: `${source.url}#page=${evidence.page_start}` };
+    // Physical pages checked in the H27 source: the broad staffing range starts
+    // on p45, but the counselor passage starts on p46 and the care passage on p47.
+    const page = ref.id === "notice.dayservice.personnel.staffing" && evidence.source_id === "mhlw-h27-interpretation-redline"
+      ? ref.part === "④" ? 46 : ref.part === "⑤" ? 47 : evidence.page_start
+      : evidence.page_start;
+    return { label: source.title, url: `${source.url}#page=${page}` };
   }).filter((link, index, all) => all.findIndex(other => other.url === link.url) === index);
   return { id: ref.id, label: ref.label || row.title, text: numberedNoticePart(row.candidate_text, ref.part),
     sourceTitle: ref.family === "notice" ? "基準の解釈通知・改正資料（老企第25号）" : "報酬の算定上の留意事項・改正資料",
@@ -209,8 +214,9 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
 });
 
 export const dayserviceChapterGroups: Record<string, ReaderGroup[]> = {
-  staffing: [{ title: "職種ごとの人員基準", topics: dayserviceStaffingTopics }, { title: "単位・一体的運営", topics: [
+  staffing: [{ title: "はじめに確認する用語", topics: [
     topic("staffing-unit", "単位の定義", [s("93.p.4")], [n("personnel.staffing", "①")]),
+  ] }, { title: "職種ごとの人員基準", topics: dayserviceStaffingTopics }, { title: "一体的に運営する場合", topics: [
     topic("staffing-integrated", "第一号通所事業との一体的運営", [s("93.p.7"), s("93.p.1.i.3")], undefined, undefined,
       "第一号通所事業の基準と一体的運営の取扱いは、事業所所在地の市町村・指定権者に確認してください。"),
   ] }],

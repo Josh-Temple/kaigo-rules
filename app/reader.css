@@ -88,6 +88,15 @@
 .dayservice-staffing-example table{width:100%;border-collapse:collapse;font-size:.9rem}
 .dayservice-staffing-example th,.dayservice-staffing-example td{padding:8px 6px;text-align:left;border-bottom:1px solid #c7d3ca}
 .dayservice-time-bar{display:block;background:#c7ded1;border:1px solid #597b6e;padding:4px 8px;text-align:center;white-space:nowrap}
+.dayservice-service-timeline{display:grid;grid-template-columns:3fr 1fr 5fr;font-size:.9rem;line-height:1.6;margin-top:14px}
+.dayservice-service-period{display:grid;align-content:center;gap:4px;text-align:center;padding:10px 4px;background:#c7ded1;border:1px solid #597b6e}
+.dayservice-service-gap{border-block:1px dashed #8a978f;background:repeating-linear-gradient(135deg,transparent,transparent 5px,#dce4de 5px,#dce4de 7px)}
+.handbook-dayservice .dayservice-example-note{font-size:.88rem;line-height:1.8;margin:12px 0 0}
+.dayservice-example-result{display:grid;gap:18px;margin:22px 0}
+.dayservice-example-result>div{break-inside:avoid-page}
+.dayservice-example-result dt{font-size:.88rem;font-weight:400}
+.dayservice-example-result dd{margin:4px 0 0}
+.dayservice-example-result strong{white-space:nowrap}
 .dayservice-source-caution,.dayservice-read-across{font-size:.88rem;line-height:1.8;padding:12px 16px;margin:12px 0;background:#faf7ec;border-left:3px solid #a3843d}
 .dayservice-qa{padding:18px 20px;margin:0 0 20px;background:#f1f6f5;border:1px solid #c7d8d1;scroll-margin-top:24px}
 .dayservice-qa-citation{display:grid;gap:6px;font-size:.88rem;line-height:1.65;margin:0 0 18px}

@@ -20,6 +20,26 @@ function FeeTable({ title, rows }: { title: string; rows: FeeTableRow[] }) {
     </div></>;
 }
 
+function LifeCounselorExample() {
+  return <aside className="handbook-calculation-example" aria-label="生活相談員の勤務時間の計算例">
+    <p><strong>通知の計算例：午前・午後の2単位</strong></p>
+    <figure className="dayservice-staffing-example">
+      <figcaption>事業所のサービス提供時間</figcaption>
+      <div className="dayservice-service-timeline" role="img" aria-label="午前の単位は9時から12時の3時間。12時から13時はサービス提供なし。午後の単位は13時から18時の5時間。">
+        <span className="dayservice-service-period" aria-hidden="true">9〜12時<strong>3時間</strong></span>
+        <span className="dayservice-service-gap" aria-hidden="true" />
+        <span className="dayservice-service-period" aria-hidden="true">13〜18時<strong>5時間</strong></span>
+      </div>
+      <p className="dayservice-example-note">12時〜13時はサービス提供なし。計算から除きます。</p>
+    </figure>
+    <dl className="dayservice-example-result">
+      <div><dt>事業所の提供時間数</dt><dd>3時間＋5時間＝<strong>8時間</strong></dd></div>
+      <div><dt>必要な生活相談員の勤務延時間数</dt><dd><strong>合計8時間</strong></dd></div>
+    </dl>
+    <p className="dayservice-example-note">掲載する解釈通知の例を図示しています。<a href="#staffing-role-life-counselor-interpretation">本文・確認上の注意を読む</a></p>
+  </aside>;
+}
+
 function CareWorkerExample() {
   return <aside className="handbook-calculation-example" aria-label="介護職員の勤務時間の計算例">
     <p><strong>計算例（補足）：1単位・20人全員が5時間利用</strong></p>
@@ -76,10 +96,12 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
   const TopicHeading = full ? "h2" : "h3";
   const BlockHeading = full ? "h3" : "h4";
   const isFee = topic.basis.some(reference => reference.family === "fee");
+  const hasExample = ["staffing-role-life-counselor", "staffing-role-care-worker"].includes(topic.id);
   const sections = [
     ...(topic.basis.length ? [{ id: `${topic.id}-basis`, title: isFee ? "報酬告示" : "基準" }] : []),
     ...(topic.criteria?.length ? [{ id: `${topic.id}-criteria`, title: "大臣基準" }] : []),
     ...(topic.interpretation?.length ? [{ id: `${topic.id}-interpretation`, title: "解釈通知・留意事項" }] : []),
+    ...(hasExample ? [{ id: `${topic.id}-example`, title: "勤務時間の計算例" }] : []),
     ...(topic.qa?.length ? [{ id: `${topic.id}-qa`, title: "国Q&A" }] : []),
   ];
   return <section id={topic.id} className={`dayservice-reading-topic${topic.id.startsWith("staffing-role-") ? " handbook-role" : ""}`}>
@@ -89,8 +111,8 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
     {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
     {topic.criteria?.length ? <section className="dayservice-source-block" id={`${topic.id}-criteria`}><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={false} showCaution={index === 0} />)}</section> : null}
     {topic.interpretation?.length ? <section className="dayservice-source-block" id={`${topic.id}-interpretation`}><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
+    {hasExample ? <section className="dayservice-source-block" id={`${topic.id}-example`}><BlockHeading>勤務時間の計算例</BlockHeading>{topic.id === "staffing-role-life-counselor" ? <LifeCounselorExample /> : <CareWorkerExample />}</section> : null}
     {topic.qa?.length ? <section className="dayservice-source-block" id={`${topic.id}-qa`}><BlockHeading>国Q&A</BlockHeading>{topic.qa.map(id => <NationalQa key={id} id={id} anchorId={`${topic.id}-qa-${id}`} />)}</section> : null}
-    {topic.id === "staffing-role-care-worker" ? <CareWorkerExample /> : null}
     {topic.local ? <aside className="dayservice-local"><p><strong>所在地の指定権者に確認すること</strong></p><p>{topic.local}</p></aside> : null}
     {topic.note ? <p>{topic.note}</p> : null}
     <p className="handbook-role-return"><a href={`#${navigationId}`}>{topic.id.startsWith("staffing-role-") ? "職種一覧に戻る ↑" : "項目一覧に戻る ↑"}</a></p>
@@ -128,6 +150,7 @@ export default function DayserviceHandbookChapter({ chapter, full }: { service: 
     {full && ["remuneration", "additions", "deductions"].includes(chapter.section_id) ? <p className="handbook-role-warning">掲載する報酬本文の適用版・改正附則と、参照される大臣基準・留意事項の照合は未完了です。この章だけでは算定可否を確定できません。</p> : null}
     {groups.length ? <nav className={isStaffing ? "handbook-role-navigation dayservice-topic-navigation" : "dayservice-topic-navigation"} id={navigationId} aria-label={isStaffing ? "職種・適用区分から探す" : "この章の項目"}>
       {groups.map(group => <div key={group.title}><p><strong>{group.title}</strong></p><ul>{group.topics.map(topic => <li key={topic.id}>{expanded ? <a href={`#${topic.id}`}>{topic.title}</a> : <Link href={`${href}#${topic.id}`}>{topic.title}</Link>}</li>)}</ul></div>)}
+      {isStaffing ? <div><p><strong>勤務時間の計算例から読む</strong></p><ul><li><a href="#staffing-role-life-counselor-example">生活相談員の計算例</a></li><li><a href="#staffing-role-care-worker-example">介護職員の計算例</a></li></ul></div> : null}
     </nav> : null}
     {expanded ? groups.flatMap(group => group.topics).map(topic => <ReadingTopic key={topic.id} topic={topic} full={full} navigationId={navigationId} requirementIds={chapter.role_sections?.find(role => topic.id === `staffing-role-${role.id}`)?.requirements.map(item => item.id)} />) : null}
     {chapter.section_id === "national_qa" ? <><QaIndex /><p><Link href="/qa?service=16">通所介護の国Q&Aを検索する →</Link></p><p><Link href="/qa">共通事項を含む国Q&A全体を検索する →</Link></p></> : null}

@@ -109,6 +109,20 @@ test("five role anchors and national first-category, continuous duty and managem
   assert.ok(readAcross.every(ref => readerExcerpt(ref).readAcross));
 });
 
+test("readers meet the unit definition before role-specific rules, with precise staffing source pages", () => {
+  const ordered = dayserviceChapterGroups.staffing.flatMap(group => group.topics);
+  assert.equal(ordered[0].id, "staffing-unit");
+  assert.ok(ordered.findIndex(topic => topic.id === "staffing-integrated") > ordered.findIndex(topic => topic.id === "staffing-role-manager"));
+  const counselor = readerExcerpt({ family: "notice", id: "notice.dayservice.personnel.staffing", part: "④" });
+  const care = readerExcerpt({ family: "notice", id: "notice.dayservice.personnel.staffing", part: "⑤" });
+  assert.match(counselor.links[0].url, /0000080875\.pdf#page=46$/);
+  assert.match(care.links[0].url, /0000080875\.pdf#page=47$/);
+  assert.match(counselor.text, /午前９時から正午、午後１時から午後６時/u);
+  assert.match(counselor.text, /正午から午後１時までを除く/u);
+  assert.match(counselor.text, /８時間の勤務延時間数分/u);
+  assert.match(counselor.caution, /後続改正との照合は未完了/u);
+});
+
 test("workflow groups, named fee topics and question index contain no municipal handbook references or generic draft instructions", () => {
   assert.deepEqual(dayserviceChapterGroups.operations.map(group => group.title), ["サービス開始前", "利用開始と計画の作成", "サービス提供時", "事業所の運営"]);
   assert.equal(Object.keys(dayserviceChapterIntros).length, 15);
