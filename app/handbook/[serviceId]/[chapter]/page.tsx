@@ -30,7 +30,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ servic
     <p className="handbook-working-note">未確認の説明を含みます。条件・例外と確認状況を読み、判断前に原典を確認してください。</p>
     <HandbookNavigation service={service} current={chapter.section_id} />
     <HandbookChapterContent service={service} chapter={chapter} full />
-    <nav className="handbook-inline-links" aria-label="前後の章">
+    <nav className={service.service_id === "dayservice" ? "handbook-inline-links handbook-chapter-sequence" : "handbook-inline-links"} aria-label="前後の章">
       {previous ? <Link href={handbookChapterHref(service.service_id, previous.section_id)}>← {previous.title}</Link> : null}
       <Link href={`/services/${service.service_id}`}>目次へ</Link>
       {next ? <Link href={handbookChapterHref(service.service_id, next.section_id)}>{next.title} →</Link> : null}
