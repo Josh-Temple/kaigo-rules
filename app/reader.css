@@ -105,6 +105,10 @@
 .dayservice-reader-question-note{color:var(--muted);font-size:.85rem;margin:10px 0 0}
 .dayservice-example-contrast{border-top:1px solid #9baca2;padding-top:12px;margin-top:16px}
 .dayservice-example-contrast p{margin:0 0 8px}
+.dayservice-official-qa-links{padding:0 0 8px}
+.dayservice-official-qa-links ul{padding-left:1.3em;margin:0 0 8px}
+.dayservice-official-qa-links li{padding:5px 0;line-height:1.7}
+.dayservice-official-qa-links p{font-size:.85rem;color:var(--muted);line-height:1.7}
 .dayservice-qa-search-link{display:grid;gap:6px;margin:20px 0 24px;font-size:.9rem}
 .dayservice-qa-search-link a{display:inline-flex;align-items:center;min-height:44px}
 .dayservice-qa-search-link span{color:var(--muted);font-size:.85rem;line-height:1.7}
