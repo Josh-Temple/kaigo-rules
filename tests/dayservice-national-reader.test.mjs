@@ -4,12 +4,13 @@ import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { dayserviceChapterGroups, dayserviceChapterIntros, dayserviceStaffingTopics, dayserviceQa, dayserviceQaIndex, nationalSourceUrl, numberedNoticePart, readerExcerpt } from "../lib/handbook/dayservice-national-reader.ts";
 import { readerTextParagraphs, sourceTextParagraphs } from "../lib/handbook/dayservice-reader-editorial.ts";
+import { basicFeeTable, conciseFeeLocator, dayserviceAppliedText } from "../lib/handbook/dayservice-source-layout.ts";
 
 const read = path => JSON.parse(readFileSync(path, "utf8"));
 const standards = read("data/ordinance37-nodes.json");
 const corpus = read("data/qa-corpus.json");
 const topics = Object.values(dayserviceChapterGroups).flatMap(groups => groups.flatMap(group => group.topics));
-const references = topics.flatMap(topic => [...topic.basis, ...topic.interpretation || []]);
+const references = topics.flatMap(topic => [...topic.basis, ...topic.interpretation || [], ...topic.criteria || []]);
 
 test("all displayed national references resolve and retain the complete registered source text", () => {
   for (const ref of references) {
@@ -26,11 +27,11 @@ test("all displayed national references resolve and retain the complete register
   assert.throws(() => readerExcerpt({ family: "notice", id: "fictional" }), /Missing notice text/);
 });
 
-test("national Q&A keeps every question, answer and unreviewed state, with seven checked original locators", () => {
+test("national Q&A keeps every question, answer and unreviewed state, with checked original locators", () => {
   const index = dayserviceQaIndex();
-  assert.equal(index.length, 7);
-  assert.equal(new Set(index.map(item => item.qa.id)).size, 7);
-  const expected = ["44", "58", "59", "62", "63", "64", "184"];
+  assert.equal(index.length, 10);
+  assert.equal(new Set(index.map(item => item.qa.id)).size, 10);
+  const expected = ["11", "12", "44", "45", "58", "59", "62", "63", "64", "184"];
   assert.deepEqual(index.map(item => item.qa.number).sort((a,b) => +a-+b), expected);
   for (const item of index) {
     const original = corpus.find(row => row.id === item.qa.id);
@@ -41,13 +42,16 @@ test("national Q&A keeps every question, answer and unreviewed state, with seven
     assert.equal(item.qa.issued_source, original.issued_source);
     assert.equal(item.qa.ingestion_status, "INGESTED_UNREVIEWED");
     assert.ok(nationalSourceUrl(item.qa.originalUrl));
-    assert.match(item.qa.originalUrl, /\.pdf#page=\d+$/);
+    if (["11", "12"].includes(item.qa.number)) {
+      assert.match(item.qa.originalUrl, /\.xlsx$/);
+      assert.match(item.qa.citationLabel, /Q&A集/);
+    } else assert.match(item.qa.originalUrl, /\.pdf#page=\d+$/);
     assert.ok(dayserviceChapterGroups[item.chapterId].some(group => group.topics.some(topic => topic.id === item.topicId && topic.qa.includes(item.qa.id))));
   }
   assert.match(dayserviceQa("qa.mhlw.d9a7f5b49c1ba8a9326e").answer, /問 50 の修正/);
   assert.equal(dayserviceQa("qa.mhlw.98d49d29f427379ec4b3").topic, "入浴介助加算（Ⅱ）");
   assert.throws(() => dayserviceQa("qa.mhlw.749ca43b6096d305a35e"), /no scoped original locator/);
-  assert.throws(() => dayserviceQa("qa.mhlw.19ff5348270062de7154"), /no scoped original locator/);
+  assert.equal(dayserviceQa("qa.mhlw.19ff5348270062de7154").number, "45");
 });
 
 test("a source line wrap inside a Japanese word does not become a separate paragraph", () => {
@@ -110,4 +114,43 @@ test("canonical handbook bytes and all 39 services remain unchanged", () => {
   const raw = readFileSync("data/handbook-content.json");
   assert.equal(createHash("sha256").update(raw).digest("hex"), "47a0ed8e1837e6f76ee0a6230f7bc0dcb0d5f5a62529bdb346ac3f4dc592a2f4");
   assert.equal(Object.keys(JSON.parse(raw).services).length, 39);
+});
+
+test("all ninety fee cells keep the exact source values; incomplete or changed tables fall back to prose", () => {
+  const fees = read("data/remuneration-current-text.json");
+  for (const id of ["standard", "large1", "large2"]) {
+    const source = fees.find(row => row.fee_id === `fee.dayservice.${id}`).official_text;
+    const rows = basicFeeTable(source);
+    assert.equal(rows.length, 6);
+    assert.deepEqual(rows.flatMap(row => row.units), [...source.matchAll(/要介護[1-5] ([0-9,]+)単位/gu)].map(match => match[1]));
+    assert.equal(basicFeeTable(source.replace(/要介護3 /u, "要介護6 ")), null);
+    assert.equal(basicFeeTable(source + "\nただし、追加条件がある。"), null);
+  }
+  assert.equal(basicFeeTable("不完全な表"), null);
+  assert.equal(conciseFeeLocator("6 通所介護費 / 13 別に厚生労働大臣が定める基準に適合する場合"), "6 通所介護費 / 注13");
+});
+
+test("a read-across view preserves conditions and original text while replacing the article 105 references", () => {
+  for (const ref of references.filter(row => row.readAcross)) {
+    const original = readerExcerpt(ref).text;
+    const applied = dayserviceAppliedText(ref.id, original);
+    assert.ok(applied, ref.id);
+    assert.doesNotMatch(applied, /指定訪問(?:入浴)?介護|訪問介護員等/u);
+    assert.equal(readerExcerpt(ref).text, original);
+    assert.deepEqual([...applied.matchAll(/[0-9０-９]+/gu)].map(m => m[0]), [...original.matchAll(/[0-9０-９]+/gu)].map(m => m[0]));
+  }
+  const article8 = standards.find(row => row.id === "ordinance37.article.8").official_text;
+  assert.match(dayserviceAppliedText("ordinance37.article.8", article8), /第百条に規定する運営規程/u);
+  assert.equal(dayserviceAppliedText("ordinance37.article.119", "未知の準用"), null);
+});
+
+test("criteria are complete references to already published national bodies, without changing their review status", () => {
+  const nodes = read("data/remuneration-delegated-nodes.json");
+  const criteria = references.filter(ref => ref.family === "delegated");
+  assert.ok(criteria.some(ref => ref.id === "criteria95.dayservice.16"));
+  assert.ok(criteria.some(ref => ref.id === "criteria95.dayservice.14-6"));
+  for (const ref of criteria) {
+    assert.equal(readerExcerpt(ref).text, nodes.find(row => row.id === ref.id).official_text);
+    assert.match(readerExcerpt(ref).caution, /照合は未完了/u);
+  }
 });

@@ -166,6 +166,24 @@ export function dayserviceChecklistText(value: string): string {
 
 /** Keep source line wraps inside a paragraph and make actual list entries separate. */
 export function sourceTextParagraphs(value: string): string[] {
-  return value.split(/(?<=\n)(?=[・※①-⑳]|[0-9０-９]+[.．、]|第[0-9０-９一二三四五六七八九十])/u)
-    .flatMap(part => readerTextParagraphs(part, 110));
+  const cuts = new Set<number>([0, value.length]);
+  const closing = new Map([["（", "）"], ["(", ")"], ["「", "」"], ["『", "』"], ["【", "】"]]);
+  const stack: string[] = [];
+  for (let index = 0; index < value.length; index++) {
+    const character = value[index];
+    if (!stack.length && index > 0) {
+      const tail = value.slice(index);
+      const previous = value[index - 1];
+      const lineStart = previous === "\n";
+      if ((lineStart && /^(?:[・※①-⑳]|[0-9０-９]+[.．、]|[一二三四五六七八九十]+[ 　]|[イロハニホヘト][ 　]|[（(][0-9０-９一二三四五六七八九十]+[）)]|第[0-9０-９一二三四五六七八九十])/u.test(tail)) ||
+          (/[\s。]/u.test(previous) && /^(?:[一二三四五六七八九十]+[ 　]|[①-⑳]|[ア-オイロハニホヘト](?:指定|病院|利用者|食事|おむつ))/u.test(tail)) ||
+          (character === "・" && /^(?:・利用者数)/u.test(tail)) ||
+          /^(?:※平均提供時間数|例えば、|（確保すべき)/u.test(tail)) cuts.add(index);
+    }
+    const close = closing.get(character);
+    if (close) stack.push(close);
+    else if (stack.at(-1) === character) stack.pop();
+  }
+  const points = [...cuts].sort((a, b) => a - b);
+  return points.slice(0, -1).flatMap((start, index) => readerTextParagraphs(value.slice(start, points[index + 1]), 110));
 }
