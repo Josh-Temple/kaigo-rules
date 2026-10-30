@@ -150,7 +150,7 @@ try {
           const rect = child.getBoundingClientRect();
           return rect.left >= 0 && rect.right <= innerWidth && child.scrollWidth <= child.clientWidth + 1;
         }));
-        const numbers = role === 'life-counselor' ? text.includes('3時間＋5時間＝8時間') && text.includes('合計8時間') && text.includes('12時〜13時はサービス提供なし')
+        const numbers = role === 'life-counselor' ? text.includes('3時間＋5時間＝8時間') && text.includes('合計8時間') && text.includes('12時〜13時はサービス提供なし') && text.includes('3時間＋4時間＝7時間') && text.includes('1時間足りません')
           : text.includes('20人全員が5時間利用') && text.includes('10時間') && text.includes('常時1人以上');
         report.interactions.push({ flow: `${width}px staffing → ${role} calculation on screen`, status: firstStaffingTopic === 'staffing-unit' && fits && numbers ? 'PASS' : 'FAIL' });
         if (role === 'life-counselor') {
@@ -164,8 +164,39 @@ try {
           report.interactions.push({ flow: `${width}px counselor calculation → source caution on screen`, status: 'PASS' });
         }
       }
+      // Reader-first content added in PR #583: check the actual rendered chapter, not only the data table.
+      await page.goto(origin + '/handbook/dayservice/staffing');
+      for (const role of ['nurse', 'care-worker']) {
+        const item = page.locator(`#staffing-role-${role}`);
+        const checks = item.locator('.dayservice-reader-questions li');
+        const qaSearch = item.locator('.dayservice-qa-search-link a');
+        const href = await qaSearch.getAttribute('href');
+        report.interactions.push({
+          flow: `${width}px ${role} → three practical questions and related national Q&A search`,
+          status: await checks.count() === 3 && Boolean(href?.startsWith('/qa?service=16&q=')) &&
+            (await item.locator('.dayservice-reader-question-note').innerText()).includes('国の基準') ? 'PASS' : 'FAIL',
+        });
+      }
       await page.goto(origin + '/handbook/dayservice/additions');
       const training = page.locator('#fee-note-13');
+      const trainingQa = training.locator('.dayservice-official-qa-links li a');
+      const trainingLinks = await trainingQa.evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
+      const qaPages = [34, 34, 35];
+      report.interactions.push({
+        flow: `${width}px training addition → Q&A 55–57 official original pages`,
+        status: await training.locator('.dayservice-reader-questions li').count() === 3 &&
+          trainingLinks.length === 3 &&
+          trainingLinks.every((href, i) => href?.startsWith('https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=') &&
+            href.endsWith(`#page=${qaPages[i]}`)) &&
+          (await training.locator('.dayservice-official-qa-links p').innerText()).includes('未確認') ? 'PASS' : 'FAIL',
+      });
+      const extension = page.locator('#fee-note-6');
+      report.interactions.push({
+        flow: `${width}px extension addition → original fee and Q&A search`,
+        status: await extension.locator('.dayservice-reader-questions li').count() === 3 &&
+          (await extension.locator('.dayservice-reader-questions').innerText()).includes('8時間以上9時間未満') &&
+          (await extension.locator('.dayservice-qa-search-link a').getAttribute('href'))?.startsWith('/qa?service=16&q=') ? 'PASS' : 'FAIL',
+      });
       await page.locator('#additions-topic-navigation a[href="#fee-note-13"]').click();
       await page.screenshot({ path: path.join(output, `dayservice-training-${width}.png`) });
       for (const suffix of ['criteria', 'qa']) {
