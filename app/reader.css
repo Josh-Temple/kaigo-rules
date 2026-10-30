@@ -98,6 +98,16 @@
 .dayservice-example-result dd{margin:4px 0 0}
 .dayservice-example-result strong{white-space:nowrap}
 .dayservice-source-caution,.dayservice-read-across{font-size:.88rem;line-height:1.8;padding:12px 16px;margin:12px 0;background:#faf7ec;border-left:3px solid #a3843d}
+.dayservice-reader-questions{border-left:3px solid #597b6e;background:#f6f7f4;padding:14px 18px;margin:0 0 24px}
+.dayservice-reader-questions>p:first-child{margin:0 0 8px}
+.dayservice-reader-questions ul{margin:0;padding-left:1.4em}
+.dayservice-reader-questions li{margin:4px 0;line-height:1.8}
+.dayservice-reader-question-note{color:var(--muted);font-size:.85rem;margin:10px 0 0}
+.dayservice-example-contrast{border-top:1px solid #9baca2;padding-top:12px;margin-top:16px}
+.dayservice-example-contrast p{margin:0 0 8px}
+.dayservice-qa-search-link{display:grid;gap:6px;margin:20px 0 24px;font-size:.9rem}
+.dayservice-qa-search-link a{display:inline-flex;align-items:center;min-height:44px}
+.dayservice-qa-search-link span{color:var(--muted);font-size:.85rem;line-height:1.7}
 .dayservice-qa{padding:18px 20px;margin:0 0 20px;background:#f1f6f5;border:1px solid #c7d8d1;scroll-margin-top:24px}
 .dayservice-qa-citation{display:grid;gap:6px;font-size:.88rem;line-height:1.65;margin:0 0 18px}
 .dayservice-qa-citation strong{font-size:1rem}
@@ -120,6 +130,7 @@
   .dayservice-topic-navigation{padding:12px 14px}
   .dayservice-national-reader .dayservice-topic-navigation ul{grid-template-columns:1fr;gap:3px}
   .dayservice-qa{padding:16px 14px}
+  .dayservice-reader-questions{padding:12px 14px}
   .dayservice-fee-table{min-width:32rem}
   .dayservice-fee-table th,.dayservice-fee-table td{padding-inline:8px}
   .dayservice-national-reader .dayservice-reading-topic>h2,.dayservice-national-reader .dayservice-reading-topic>h3{font-size:1.3rem}
@@ -158,6 +169,8 @@
   .dayservice-fee-table th:first-child{position:static;box-shadow:none}
   .dayservice-fee-table caption span{position:static;max-width:none}
   .dayservice-original-details:not([open]){display:none}.dayservice-staffing-example{break-inside:avoid-page}
+  .dayservice-reader-questions{background:transparent}
+  .dayservice-qa-search-link{display:none}
   .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:avoid-page}
   .dayservice-excerpt-label,.dayservice-source-caution,.dayservice-read-across,.dayservice-qa-citation,.dayservice-qa-question>strong,.dayservice-qa-answer>strong{break-after:avoid-page}
   .dayservice-source-citation{break-before:avoid-page;break-inside:avoid-page}
