@@ -19,7 +19,8 @@ export type ReaderTopic = {
   id: string; title: string; basis: ReaderReference[]; interpretation?: ReaderReference[];
   qa?: string[]; local?: string; note?: string; criteria?: ReaderReference[];
   readerQuestions?: readonly string[]; qaSearchQuery?: string;
-  officialQaFurther?: { number: string; label: string; url: string }[];
+  readerSummary?: string; readerConditions?: readonly string[]; readerExceptions?: readonly string[];
+  officialQaFurther?: { number: string; label: string; url: string; explanation?: string }[];
 };
 export type ReaderGroup = { title: string; topics: ReaderTopic[] };
 export type ReaderExcerpt = {
@@ -167,6 +168,9 @@ export const dayserviceStaffingTopics: ReaderTopic[] = [
       "機能訓練指導員との兼務について、国Q&Aと配置条件を確認したか？",
     ],
     qaSearchQuery: "看護職員",
+    readerSummary: "看護職員は単位ごとに必要です。外部の病院・診療所・訪問看護ステーションと連携して確保する場合は、健康状態の確認などの体制が条件となります。",
+    readerConditions: ["各単位に看護師又は准看護師を確保する。", "外部連携の場合は、提供時間帯を通じた健康状態の確認や緊急時の連絡体制などを、国の省令とQ&A問59で確認する。"],
+    readerExceptions: ["個別機能訓練加算の専従機能訓練指導員を、看護職員の外部連携と同じ方法で代替できるわけではありません（令和6年度Q&A問56）。"],
     local: "外部連携を行う場合の契約・連絡体制や提出書類は、所在地の指定権者に確認してください。" },
   { id: "staffing-role-care-worker", title: "介護職員", basis: [s("93.p.1.i.3", "必要な勤務時間と利用者数"), s("93.p.2", "単位ごとの常時配置"), s("93.p.3", "他の単位との兼務"), s("93.p.6", "常勤者の確保")],
     interpretation: [n("personnel.staffing", "⑤")], qa: [fullTimeQa, "qa.mhlw.98bc1e237f7981f16869"],
@@ -175,7 +179,11 @@ export const dayserviceStaffingTopics: ReaderTopic[] = [
       "各単位のサービス提供中、介護職員の常時配置を確認したか？",
       "他の単位と兼務する場合、利用者の処遇に支障がないか確認したか？",
     ],
-    qaSearchQuery: "介護職員" },
+    qaSearchQuery: "介護職員",
+    readerSummary: "介護職員は利用者数と平均提供時間数に応じた勤務延時間数を確保し、サービス提供中は単位ごとに常時1人以上必要です。",
+    readerConditions: ["利用者15人までの部分を基礎に、15人を超える場合は5人ごとの割合を加え、平均提供時間数を用いて必要な勤務延時間数を計算する。", "生活相談員又は介護職員のうち1人以上の常勤者の確保も確認する。"],
+    readerExceptions: ["他の単位との兼務は、利用者の処遇に支障がない場合の取扱いです。時間数を満たすだけで常時配置・兼務条件を満たしたとは判断できません。"],
+  },
   { id: "staffing-role-functional-training", title: "機能訓練指導員", basis: [s("93.p.1.i.4", "配置人数"), s("93.p.5", "能力と兼務")],
     interpretation: [n("personnel.function-training")], qa: ["qa.mhlw.012fdfa8b64a3b333d4e", "qa.mhlw.19ff5348270062de7154"],
     local: "資格・経験の確認書類や、併設施設との取扱いは、所在地の指定権者に確認してください。" },
@@ -232,10 +240,13 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
       "人員基準としての配置と、加算の算定要件を区別して確認したか？",
     ],
     qaSearchQuery: "個別機能訓練加算",
+    readerSummary: "加算（Ⅰ）イ・（Ⅰ）ロは、機能訓練指導員の配置と利用者が訓練を受けた時間帯により、算定できる区分が異なります。加算（Ⅱ）も別に要件があります。",
+    readerConditions: ["届出、機能訓練計画、実施方法と配置人数を、国の報酬告示・別告示・留意事項ごとに確認する。", "看護職員の人員基準と、加算で求められる専従の機能訓練指導員の確保は区別する。"],
+    readerExceptions: ["外部機関との連携だけで加算の専従機能訓練指導員を確保することは認められないと、令和6年度Q&A問56は説明しています。"],
     officialQaFurther: [
-      { number: "55", label: "配置人数が日によって異なる場合の取扱い", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=34" },
-      { number: "56", label: "外部機関との連携による職員確保の可否", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=34" },
-      { number: "57", label: "2名の配置が必要な時間帯と加算区分", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=35" },
+      { number: "55", label: "配置が日によって異なる場合", explanation: "ロの配置が整わない日にイを算定する取扱いは認められます。ただし、営業日ごとの配置体制を利用者へ事前に説明しておく必要があります。", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=34" },
+      { number: "56", label: "外部連携では代替不可", explanation: "個別機能訓練加算（Ⅰ）イ・ロの専従機能訓練指導員は事業所内での配置が必要で、外部機関との連携だけでは確保できません。", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=34" },
+      { number: "57", label: "2人が重なる時間帯", explanation: "専従の機能訓練指導員2人が重なっている時間帯に訓練を受けた利用者が、ロの対象となる例です。重ならない時間帯はイの取扱いを確認します。", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=35" },
     ],
   } : id === "note.6" ? {
     readerQuestions: [
@@ -244,6 +255,15 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
       "通所介護と前後の世話の時間の合計・届出・該当区分を確認したか？",
     ],
     qaSearchQuery: "延長加算",
+    readerSummary: "8時間以上9時間未満の通所介護と、その前後に連続して行う日常生活上の世話を合わせて9時間以上となる場合に、届出などの条件を確認する加算です。",
+    readerConditions: ["通所介護の所要時間と、その前後に引き続き行った世話の時間を合計する。9時間以上10時間未満から13時間以上14時間未満まで区分がある。", "届出と、実際に提供したサービス・世話の内容を確認する。"],
+    readerExceptions: ["平成27年度国Q&A問59では、同一日に宿泊サービスを受けた場合の延長加算は適当ではないと説明されています。", "同Q&A問58では、自宅に戻らず別の宿泊場所へ行くまでの間に延長して介護を行った場合の算定を認めています。", "これらの過去Q&Aについて、後続改正と現在の算定要件との適用関係は確認中です。"],
+    officialQaFurther: [
+      { number: "56", label: "送迎と居宅内介助", explanation: "9時間の通所介護等の前後に送迎・居宅内介助を行う場合の取扱いを示しています。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+      { number: "57", label: "宿泊と延長に係る利用料", explanation: "宿泊サービスを提供する場合、延長に係る利用料の徴収は適当ではないとする回答です。延長加算そのものと混同しないでください。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+      { number: "58", label: "別の宿泊場所へ行くまで", explanation: "自宅に帰らず別の宿泊場所へ行くまで延長して介護を実施する事例です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+      { number: "59", label: "同じ日に宿泊サービスを利用", explanation: "通所介護と同じ日に宿泊サービスを受ける場合は、延長加算の算定は適当ではないとする回答です。", url: "https://www.mhlw.go.jp/file/06-Seisakujouhou-12300000-Roukenkyoku/QA.pdf#page=22" },
+    ],
   } : {}),
 });
 
