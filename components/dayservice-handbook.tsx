@@ -124,6 +124,13 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
     {topic.interpretation?.length ? <section className="dayservice-source-block" id={`${topic.id}-interpretation`}><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
     {hasExample ? <section className="dayservice-source-block" id={`${topic.id}-example`}><BlockHeading>勤務時間の計算例</BlockHeading>{topic.id === "staffing-role-life-counselor" ? <LifeCounselorExample /> : <CareWorkerExample />}</section> : null}
     {topic.qa?.length ? <section className="dayservice-source-block" id={`${topic.id}-qa`}><BlockHeading>国Q&A</BlockHeading>{topic.qa.map(id => <NationalQa key={id} id={id} anchorId={`${topic.id}-qa-${id}`} />)}</section> : null}
+    {topic.officialQaFurther?.length ? <section className="dayservice-source-block dayservice-official-qa-links" aria-label="あわせて確認する国Q&A">
+      <BlockHeading>あわせて確認する国Q&A（発出資料）</BlockHeading>
+      <ul>{topic.officialQaFurther.map(item => <li key={item.number}>
+        <OfficialLink url={item.url}>令和6年度Q&A Vol.1・問{item.number}：{item.label}</OfficialLink>
+      </li>)}</ul>
+      <p>問番号と該当ページを国の発出資料で確認しています。発出後の改正との適用関係は未確認です。</p>
+    </section> : null}
     {topic.qaSearchQuery ? <p className="dayservice-qa-search-link">
       <Link href={`/qa?service=16&q=${encodeURIComponent(topic.qaSearchQuery)}`}>「{topic.qaSearchQuery}」に関する国Q&Aをさらに探す</Link>
       <span>検索結果には過去の取扱いも含まれます。発出日と後続改正を確認してください。</span>
