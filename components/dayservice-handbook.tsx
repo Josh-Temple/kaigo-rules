@@ -36,6 +36,12 @@ function LifeCounselorExample() {
       <div><dt>事業所の提供時間数</dt><dd>3時間＋5時間＝<strong>8時間</strong></dd></div>
       <div><dt>必要な生活相談員の勤務延時間数</dt><dd><strong>合計8時間</strong></dd></div>
     </dl>
+    <div className="dayservice-example-contrast">
+      <p><strong>比較例：勤務時間数が不足する場合</strong></p>
+      <p>上記と同じ提供時間（9〜12時・13〜18時）で、生活相談員Aが9〜12時の3時間、Bが13〜17時の4時間だけ勤務した場合：</p>
+      <p><strong>3時間＋4時間＝7時間</strong>。必要な8時間に1時間足りません。</p>
+      <p className="dayservice-example-note">これは勤務延時間数だけの比較です。資格・専従、勤務の実態など、他の条件も別に確認してください。</p>
+    </div>
     <p className="dayservice-example-note">掲載する解釈通知の例を図示しています。<a href="#staffing-role-life-counselor-interpretation">本文・確認上の注意を読む</a></p>
   </aside>;
 }
@@ -107,12 +113,21 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
   return <section id={topic.id} className={`dayservice-reading-topic${topic.id.startsWith("staffing-role-") ? " handbook-role" : ""}`}>
     {requirementIds?.map(id => <span key={id} id={`${topic.id}-requirement-${id}`} className="dayservice-legacy-anchor" />)}
     <TopicHeading>{topic.title}</TopicHeading>
+    {topic.readerQuestions?.length ? <aside className="dayservice-reader-questions" aria-label="この項目で確認すること">
+      <p><strong>この項目で確認すること</strong></p>
+      <ul>{topic.readerQuestions.map(question => <li key={question}>{question}</li>)}</ul>
+      <p className="dayservice-reader-question-note">確認の入口です。該当する国の基準・通知・Q&Aに続けて目を通してください。</p>
+    </aside> : null}
     {sections.length > 1 && (topic.criteria?.length || topic.qa?.length) ? <nav className="dayservice-source-navigation" aria-label={`${topic.title}の資料へ移動`}><ul>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav> : null}
     {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
     {topic.criteria?.length ? <section className="dayservice-source-block" id={`${topic.id}-criteria`}><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={false} showCaution={index === 0} />)}</section> : null}
     {topic.interpretation?.length ? <section className="dayservice-source-block" id={`${topic.id}-interpretation`}><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
     {hasExample ? <section className="dayservice-source-block" id={`${topic.id}-example`}><BlockHeading>勤務時間の計算例</BlockHeading>{topic.id === "staffing-role-life-counselor" ? <LifeCounselorExample /> : <CareWorkerExample />}</section> : null}
     {topic.qa?.length ? <section className="dayservice-source-block" id={`${topic.id}-qa`}><BlockHeading>国Q&A</BlockHeading>{topic.qa.map(id => <NationalQa key={id} id={id} anchorId={`${topic.id}-qa-${id}`} />)}</section> : null}
+    {topic.qaSearchQuery ? <p className="dayservice-qa-search-link">
+      <Link href={`/qa?service=16&q=${encodeURIComponent(topic.qaSearchQuery)}`}>「{topic.qaSearchQuery}」に関する国Q&Aをさらに探す</Link>
+      <span>検索結果には過去の取扱いも含まれます。発出日と後続改正を確認してください。</span>
+    </p> : null}
     {topic.local ? <aside className="dayservice-local"><p><strong>所在地の指定権者に確認すること</strong></p><p>{topic.local}</p></aside> : null}
     {topic.note ? <p>{topic.note}</p> : null}
     <p className="handbook-role-return"><a href={`#${navigationId}`}>{topic.id.startsWith("staffing-role-") ? "職種一覧に戻る ↑" : "項目一覧に戻る ↑"}</a></p>
