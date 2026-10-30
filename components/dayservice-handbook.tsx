@@ -169,7 +169,7 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
     {topic.officialQaFurther?.length ? <section className="dayservice-source-block dayservice-official-qa-links" aria-label="あわせて確認する国Q&A">
       <BlockHeading>国Q&Aと回答の要点（発出資料）</BlockHeading>
       <ul>{topic.officialQaFurther.map(item => <li key={item.number}>
-        <strong>{topic.id === "fee-note-6" ? "平成27年度" : "令和6年度"}Q&A Vol.1・問{item.number}：{item.label}</strong>
+        <strong>{item.issuedLabel || (topic.id === "fee-note-6" ? "平成27年度Q&A Vol.1" : "令和6年度Q&A Vol.1")}・問{item.number}：{item.label}</strong>
         {item.explanation ? <p>{item.explanation}</p> : null}
         <OfficialLink url={item.url}>厚生労働省の問{item.number}を開く</OfficialLink>
       </li>)}</ul>
