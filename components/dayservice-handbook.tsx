@@ -7,7 +7,7 @@ import HandbookChecklist from "./handbook-checklist";
 import HandbookPrint from "./handbook-print";
 
 function OriginalText({ text }: { text: string }) {
-  return <div className="dayservice-original">{sourceTextParagraphs(text).map((paragraph, index) => <p key={index} className={/^[\s]*[・※①-⑳一二三四五六七八九十イロハニホヘトア-オ（(]/u.test(paragraph) ? "dayservice-source-item" : undefined}>{paragraph}</p>)}</div>;
+  return <div className="dayservice-original">{sourceTextParagraphs(text).map((paragraph, index) => paragraph.trim() ? <p key={index} className={/^[\s]*[・※①-⑳一二三四五六七八九十イロハニホヘトア-オ（(]/u.test(paragraph) ? "dayservice-source-item" : undefined}>{paragraph}</p> : null)}</div>;
 }
 
 function FeeTable({ title, rows }: { title: string; rows: FeeTableRow[] }) {
@@ -40,12 +40,12 @@ function OfficialLink({ url, children }: { url: string; children: React.ReactNod
   return href ? <a href={href} target="_blank" rel="noopener noreferrer">{children} ↗</a> : <span>出典リンクを確認中</span>;
 }
 
-function Excerpt({ reference, showCaution = true, showSourceTitle = true }: { reference: ReaderReference; showCaution?: boolean; showSourceTitle?: boolean }) {
+function Excerpt({ reference, showCaution = true, showSourceTitle = true, showLabel = true }: { reference: ReaderReference; showCaution?: boolean; showSourceTitle?: boolean; showLabel?: boolean }) {
   const excerpt = readerExcerpt(reference);
   const table = reference.family === "fee" ? basicFeeTable(excerpt.text) : null;
   const applied = excerpt.readAcross ? dayserviceAppliedText(excerpt.id, excerpt.text) : null;
   return <div className="dayservice-excerpt" data-source-id={excerpt.id}>
-    <p className="dayservice-excerpt-label"><strong>{excerpt.label}</strong><span>{excerpt.locator}</span></p>
+    <p className="dayservice-excerpt-label">{showLabel && !table ? <strong>{excerpt.label}</strong> : null}<span>{excerpt.locator}</span></p>
     {showCaution && excerpt.caution ? <p className="handbook-role-warning dayservice-source-caution">{excerpt.caution}</p> : null}
     {applied ? <>
       <p className="dayservice-read-across">第105条の準用・読替えに沿い、サービス名等を通所介護に置き換えた表示です。<Link href="/rules/105?service=dayservice">準用の規定を確認</Link></p>
@@ -75,12 +75,20 @@ function NationalQa({ id, anchorId }: { id: string; anchorId: string }) {
 function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: ReaderTopic; full: boolean; navigationId: string; requirementIds?: string[] }) {
   const TopicHeading = full ? "h2" : "h3";
   const BlockHeading = full ? "h3" : "h4";
+  const isFee = topic.basis.some(reference => reference.family === "fee");
+  const sections = [
+    ...(topic.basis.length ? [{ id: `${topic.id}-basis`, title: isFee ? "報酬告示" : "基準" }] : []),
+    ...(topic.criteria?.length ? [{ id: `${topic.id}-criteria`, title: "大臣基準" }] : []),
+    ...(topic.interpretation?.length ? [{ id: `${topic.id}-interpretation`, title: "解釈通知・留意事項" }] : []),
+    ...(topic.qa?.length ? [{ id: `${topic.id}-qa`, title: "国Q&A" }] : []),
+  ];
   return <section id={topic.id} className={`dayservice-reading-topic${topic.id.startsWith("staffing-role-") ? " handbook-role" : ""}`}>
     {requirementIds?.map(id => <span key={id} id={`${topic.id}-requirement-${id}`} className="dayservice-legacy-anchor" />)}
     <TopicHeading>{topic.title}</TopicHeading>
-    {topic.basis.length ? <section className="dayservice-source-block"><BlockHeading>基準</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
-    {topic.criteria?.length ? <section className="dayservice-source-block"><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showCaution={index === 0} />)}</section> : null}
-    {topic.interpretation?.length ? <section className="dayservice-source-block"><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
+    {sections.length > 1 && (topic.criteria?.length || topic.qa?.length) ? <nav className="dayservice-source-navigation" aria-label={`${topic.title}の資料へ移動`}><ul>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav> : null}
+    {topic.basis.length ? <section className="dayservice-source-block" id={`${topic.id}-basis`}><BlockHeading>{isFee ? "報酬告示" : "基準"}</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={reference.family !== "fee" || topic.basis.length > 1} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
+    {topic.criteria?.length ? <section className="dayservice-source-block" id={`${topic.id}-criteria`}><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showLabel={false} showCaution={index === 0} />)}</section> : null}
+    {topic.interpretation?.length ? <section className="dayservice-source-block" id={`${topic.id}-interpretation`}><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
     {topic.qa?.length ? <section className="dayservice-source-block" id={`${topic.id}-qa`}><BlockHeading>国Q&A</BlockHeading>{topic.qa.map(id => <NationalQa key={id} id={id} anchorId={`${topic.id}-qa-${id}`} />)}</section> : null}
     {topic.id === "staffing-role-care-worker" ? <CareWorkerExample /> : null}
     {topic.local ? <aside className="dayservice-local"><p><strong>所在地の指定権者に確認すること</strong></p><p>{topic.local}</p></aside> : null}
@@ -101,17 +109,16 @@ function SourceGuide() {
     <div><dt>基準省令</dt><dd><OfficialLink url="https://www.mhlw.go.jp/web/t_doc?dataId=82999404&dataType=0">指定居宅サービス等の人員・設備・運営基準（第92条〜第107条）</OfficialLink><p>国の基準を掲載しています。所在地の条例・規則に独自の規定がある場合は、指定権者に確認してください。</p></dd></div>
     <div><dt>解釈通知・算定上の留意事項</dt><dd><Link href="/notices?service=dayservice">通所介護に関連する解釈通知</Link> ／ <Link href="/services/dayservice/remuneration/guidance">算定上の留意事項</Link><p>改正資料から整理した本文を含みます。各掲載箇所の資料・版と、確認が済んでいない事項を併記しています。</p></dd></div>
     <div><dt>報酬告示</dt><dd><Link href="/services/dayservice/remuneration">通所介護の報酬基準</Link><p>加算・減算は、告示だけでなく、参照先の大臣基準・留意事項・届出の条件も確認してください。</p></dd></div>
-    <div><dt>国Q&A</dt><dd><OfficialLink url={dayserviceQaIndex()[0].qa.workbookUrl}>厚生労働省の介護サービス関係Q&A集</OfficialLink><p>各項目には関連する質問と回答、発出資料へのリンクを掲載しています。</p></dd></div>
+    <div><dt>国Q&A</dt><dd><OfficialLink url={dayserviceQaIndex()[0].qa.workbookUrl}>厚生労働省の介護サービス関係Q&A集</OfficialLink><p>各項目には関連する質問と回答、出典へのリンクを掲載しています。</p></dd></div>
   </dl>;
 }
 
-export default function DayserviceHandbookChapter({ service, chapter, full }: { service: ServiceHandbookData; chapter: HandbookChapter; full: boolean }) {
+export default function DayserviceHandbookChapter({ chapter, full }: { service: ServiceHandbookData; chapter: HandbookChapter; full: boolean }) {
   const groups = dayserviceChapterGroups[chapter.section_id] || [];
   const isStaffing = chapter.section_id === "staffing";
   const expanded = full || isStaffing;
   const navigationId = isStaffing ? "staffing-role-navigation" : `${chapter.section_id}-topic-navigation`;
   const href = handbookChapterHref("dayservice", chapter.section_id);
-  const index = service.chapters.findIndex(item => item.section_id === chapter.section_id);
   return <section className="section handbook-chapter handbook-dayservice dayservice-national-reader" id={chapter.section_id}>
     <p className="eyebrow">第{String(chapter.number).padStart(2, "0")}章</p>
     {!full ? <h2><Link href={href}>{chapter.title}</Link></h2> : null}
@@ -133,9 +140,5 @@ export default function DayserviceHandbookChapter({ service, chapter, full }: { 
     <div id={`handbook-sources-${chapter.section_id}`} className="handbook-inline-links">
       {!full ? <Link href={href}>この章を詳しく読む →</Link> : <Link href="/handbook/dayservice/sources-and-history">資料の種類・出典を確認する →</Link>}
     </div>
-    {full ? <nav className="handbook-chapter-sequence" aria-label="前後の章">
-      {index > 0 ? <Link href={handbookChapterHref("dayservice", service.chapters[index - 1].section_id)}>前の章：{service.chapters[index - 1].title}</Link> : null}
-      {index < service.chapters.length - 1 ? <Link href={handbookChapterHref("dayservice", service.chapters[index + 1].section_id)}>次の章：{service.chapters[index + 1].title}</Link> : null}
-    </nav> : null}
   </section>;
 }

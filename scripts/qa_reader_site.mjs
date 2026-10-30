@@ -84,6 +84,9 @@ try {
             appliedViews: document.querySelectorAll('.dayservice-applied-text').length,
             untranslatedAppliedViews: [...document.querySelectorAll('.dayservice-applied-text')].filter(el => /指定訪問(?:入浴)?介護|訪問介護員等/u.test(el.innerText)).length,
             longSourceLocators: [...document.querySelectorAll('.dayservice-excerpt-label span')].filter(el => el.textContent.length > 100).length,
+            emptySourceParagraphs: [...document.querySelectorAll('.dayservice-original p')].filter(el => !el.textContent.trim()).length,
+            repeatedCriteriaLabels: document.querySelectorAll('[data-source-id^="criteria95."] .dayservice-excerpt-label strong').length,
+            chapterSequenceCount: document.querySelectorAll('nav[aria-label="前後の章"]').length,
             chapterCount: document.querySelectorAll('.handbook-chapter').length,
             readingGuides: document.querySelectorAll('.staffing-reading-guide').length,
             textLength: text.length,
@@ -103,6 +106,9 @@ try {
           if ((job.route === '/services/dayservice' || job.route === '/handbook/dayservice/staffing') && record.inlineNationalQa < 5) record.errors.push('ROLE_QA_NOT_INLINE');
           if (job.route === '/handbook/dayservice/additions' && record.nationalQaTopics.filter(topic => topic === '入浴介助加算（Ⅱ）').length !== 2) record.errors.push('BATHING_QA_APPLICABILITY_LOST');
           if (record.longSourceLocators) record.errors.push('SOURCE_LOCATOR_REPEATS_BODY');
+          if (record.emptySourceParagraphs) record.errors.push('EMPTY_SOURCE_PARAGRAPH');
+          if (record.repeatedCriteriaLabels) record.errors.push('CRITERIA_HEADING_REPEATED');
+          if (job.route.startsWith('/handbook/dayservice/') && record.chapterSequenceCount !== 1) record.errors.push('CHAPTER_NAVIGATION_DUPLICATED_OR_MISSING');
           if (record.untranslatedAppliedViews) record.errors.push('READ_ACROSS_SERVICE_NAME_UNCHANGED');
           if (job.route === '/handbook/dayservice/remuneration' && (record.feeTables !== 3 || record.feeTableRows !== 18 || record.feeTableCells !== 90)) record.errors.push('BASIC_FEE_TABLE_INCOMPLETE');
           if (job.route === '/handbook/dayservice/additions' && record.inlineCriteria !== 11) record.errors.push('INLINE_MINISTERIAL_CRITERIA_MISSING');
@@ -127,6 +133,38 @@ try {
   }));
   if (!baseline) {
     const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    for (const width of [360, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto(origin + '/handbook/dayservice/additions');
+      const training = page.locator('#fee-note-13');
+      await page.locator('#additions-topic-navigation a[href="#fee-note-13"]').click();
+      await page.screenshot({ path: path.join(output, `dayservice-training-${width}.png`) });
+      for (const suffix of ['criteria', 'qa']) {
+        const targetId = `fee-note-13-${suffix}`;
+        await training.locator(`.dayservice-source-navigation a[href="#${targetId}"]`).click();
+        await page.waitForFunction(id => {
+          const target = document.getElementById(id);
+          const top = target?.getBoundingClientRect().top;
+          return top !== undefined && top >= -2 && top < innerHeight / 2;
+        }, targetId, { timeout: 5000 });
+        report.interactions.push({ flow: `${width}px addition → ${suffix} on screen`, status: 'PASS' });
+        if (suffix === 'criteria' && width === 390) await page.screenshot({ path: path.join(output, 'dayservice-training-criteria-390.png') });
+      }
+      await page.goto(origin + '/handbook/dayservice/remuneration#basic-fee');
+      const tableRegion = page.locator('.dayservice-table-scroll').first();
+      await tableRegion.evaluate(element => { element.scrollLeft = element.scrollWidth - element.clientWidth; });
+      const geometry = await tableRegion.evaluate(element => {
+        const region = element.getBoundingClientRect();
+        const row = element.querySelector('tbody tr');
+        const label = row.querySelector('th').getBoundingClientRect();
+        const last = row.querySelector('td:last-child').getBoundingClientRect();
+        return { moved: element.scrollLeft > 0, labelVisible: label.left >= region.left - 2 && label.right < region.right,
+          lastValueVisible: last.left >= label.right && last.right <= region.right + 2 };
+      });
+      report.interactions.push({ flow: `${width}px fee table → horizontal scroll keeps time and last care level visible`, status: Object.values(geometry).every(Boolean) ? 'PASS' : 'FAIL', geometry });
+      await page.screenshot({ path: path.join(output, `dayservice-fee-scroll-${width}.png`) });
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(origin + '/services/dayservice');
     await page.locator('.handbook-staffing-entry a').click();
     await page.locator('#staffing .handbook-role-navigation a[href="#staffing-role-nurse"]').click();
