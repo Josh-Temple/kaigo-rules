@@ -211,7 +211,7 @@ test("individual training has government source page links for Q&A 55-57, distin
     assert.match(row.url, /001230308\.pdf#page=3[45]$/);
     assert.ok(row.label);
   }
-  assert.deepEqual(topics.find(topic => topic.id === "fee-note-6")?.officialQaFurther?.map(row => row.number), ["56", "57", "58", "59"]);
+  assert.deepEqual(topics.find(topic => topic.id === "fee-note-6")?.officialQaFurther?.map(row => row.number), ["56", "57", "58", "59", "5"]);
 });
 
 test("reader summaries preserve staffing thresholds and extension non-claim scenarios", () => {
@@ -225,7 +225,8 @@ test("reader summaries preserve staffing thresholds and extension non-claim scen
   assert.match(byId("staffing-role-care-worker").readerConditions.join(""), /15人/);
   assert.match(byId("fee-note-6").readerExceptions.join(""), /宿泊サービス/);
   assert.deepEqual(byId("fee-note-6").officialQaFurther.map(row => row.number), ["56","57","58","59"]);
-  assert.ok(byId("fee-note-6").officialQaFurther.every(row => nationalSourceUrl(row.url) && /QA\.pdf#page=22$/.test(row.url) && row.explanation));
+  assert.ok(byId("fee-note-6").officialQaFurther.every(row => nationalSourceUrl(row.url) && row.explanation));
+  assert.match(byId("fee-note-6").officialQaFurther.find(row => row.number === "5").url, /0000093219\.pdf#page=4$/);
   assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="55").explanation, /事前/);
   assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="56").explanation, /外部/);
 });
