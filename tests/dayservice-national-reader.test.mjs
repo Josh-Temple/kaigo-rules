@@ -213,3 +213,19 @@ test("individual training has government source page links for Q&A 55-57, distin
   }
   assert.ok(!topics.find(topic => topic.id === "fee-note-6")?.officialQaFurther);
 });
+
+test("reader summaries preserve staffing thresholds and extension non-claim scenarios", () => {
+  const byId = id => topics.find(item => item.id === id);
+  for (const id of ["staffing-role-nurse", "staffing-role-care-worker", "fee-note-13", "fee-note-6"]) {
+    const item = byId(id);
+    assert.ok(item.readerSummary, id);
+    assert.ok(item.readerConditions?.length >= 2, id);
+    assert.ok(item.readerExceptions?.length, id);
+  }
+  assert.match(byId("staffing-role-care-worker").readerConditions.join(""), /15人/);
+  assert.match(byId("fee-note-6").readerExceptions.join(""), /宿泊サービス/);
+  assert.deepEqual(byId("fee-note-6").officialQaFurther.map(row => row.number), ["56","57","58","59"]);
+  assert.ok(byId("fee-note-6").officialQaFurther.every(row => nationalSourceUrl(row.url) && /QA\.pdf#page=22$/.test(row.url) && row.explanation));
+  assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="55").explanation, /事前/);
+  assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="56").explanation, /外部/);
+});
