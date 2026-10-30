@@ -18,6 +18,7 @@ export type ReaderReference = { family: "law" | "standard" | "notice" | "fee" | 
 export type ReaderTopic = {
   id: string; title: string; basis: ReaderReference[]; interpretation?: ReaderReference[];
   qa?: string[]; local?: string; note?: string; criteria?: ReaderReference[];
+  readerQuestions?: readonly string[]; qaSearchQuery?: string;
 };
 export type ReaderGroup = { title: string; topics: ReaderTopic[] };
 export type ReaderExcerpt = {
@@ -159,9 +160,21 @@ export const dayserviceStaffingTopics: ReaderTopic[] = [
     local: "資格の認定範囲や実務経験の取扱い、必要書類は、事業所所在地を所管する指定権者の介護保険担当窓口に確認してください。" },
   { id: "staffing-role-nurse", title: "看護職員", basis: [s("93.p.1.i.2", "単位ごとの確保")],
     interpretation: [n("personnel.staffing", "⑥")], qa: ["qa.mhlw.d9a7f5b49c1ba8a9326e", "qa.mhlw.19ff5348270062de7154"],
+    readerQuestions: [
+      "単位ごとの看護職員をどのように確保するか？",
+      "外部の病院・診療所・訪問看護ステーションと連携する場合、健康状態の確認・連絡体制はどうするか？",
+      "機能訓練指導員との兼務について、国Q&Aと配置条件を確認したか？",
+    ],
+    qaSearchQuery: "看護職員",
     local: "外部連携を行う場合の契約・連絡体制や提出書類は、所在地の指定権者に確認してください。" },
   { id: "staffing-role-care-worker", title: "介護職員", basis: [s("93.p.1.i.3", "必要な勤務時間と利用者数"), s("93.p.2", "単位ごとの常時配置"), s("93.p.3", "他の単位との兼務"), s("93.p.6", "常勤者の確保")],
-    interpretation: [n("personnel.staffing", "⑤")], qa: [fullTimeQa, "qa.mhlw.98bc1e237f7981f16869"] },
+    interpretation: [n("personnel.staffing", "⑤")], qa: [fullTimeQa, "qa.mhlw.98bc1e237f7981f16869"],
+    readerQuestions: [
+      "利用者数と平均提供時間数から必要な勤務延時間数を確認したか？",
+      "各単位のサービス提供中、介護職員の常時配置を確認したか？",
+      "他の単位と兼務する場合、利用者の処遇に支障がないか確認したか？",
+    ],
+    qaSearchQuery: "介護職員" },
   { id: "staffing-role-functional-training", title: "機能訓練指導員", basis: [s("93.p.1.i.4", "配置人数"), s("93.p.5", "能力と兼務")],
     interpretation: [n("personnel.function-training")], qa: ["qa.mhlw.012fdfa8b64a3b333d4e", "qa.mhlw.19ff5348270062de7154"],
     local: "資格・経験の確認書類や、併設施設との取扱いは、所在地の指定権者に確認してください。" },
@@ -211,6 +224,21 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
   id === "note.10" ? ["qa.mhlw.98d49d29f427379ec4b3", "qa.mhlw.5dcdd91060267fa2466d"] : id === "note.13" ? ["qa.mhlw.012fdfa8b64a3b333d4e"] : undefined),
   criteria: delegated.filter(row => (row.related_fee_ids.includes(`fee.dayservice.${id}`) ||
     ({ "note.8": "criteria95.dayservice.14-5", "note.19": "criteria95.dayservice.19-2", "note.20": "criteria95.dayservice.20" } as Record<string, string>)[id] === row.id) && row.id.startsWith("criteria95.dayservice.")).map(row => ({ family: "delegated" as const, id: row.id })),
+  ...(id === "note.13" ? {
+    readerQuestions: [
+      "算定を検討するのは個別機能訓練加算（Ⅰ）イ・（Ⅰ）ロ・（Ⅱ）のどれか？",
+      "配置・計画・届出など、該当する区分の条件を別告示と留意事項で確認したか？",
+      "人員基準としての配置と、加算の算定要件を区別して確認したか？",
+    ],
+    qaSearchQuery: "個別機能訓練加算",
+  } : id === "note.6" ? {
+    readerQuestions: [
+      "指定通所介護の所要時間は8時間以上9時間未満か？",
+      "通所介護の前後に引き続き日常生活上の世話を行ったか？",
+      "通所介護と前後の世話の時間の合計・届出・該当区分を確認したか？",
+    ],
+    qaSearchQuery: "延長加算",
+  } : {}),
 });
 
 export const dayserviceChapterGroups: Record<string, ReaderGroup[]> = {
