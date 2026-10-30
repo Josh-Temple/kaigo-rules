@@ -13,7 +13,7 @@ function OriginalText({ text }: { text: string }) {
 function FeeTable({ title, rows }: { title: string; rows: FeeTableRow[] }) {
   return <><p className="dayservice-table-help">表は横にスクロールできます。</p>
     <div className="dayservice-table-scroll" role="region" aria-label={`${title}の単位数表`} tabIndex={0}>
-      <table className="dayservice-fee-table"><caption>{title}（単位）</caption>
+      <table className="dayservice-fee-table"><caption><span>{title}（単位）</span></caption>
         <thead><tr><th scope="col">所要時間</th>{[1, 2, 3, 4, 5].map(care => <th scope="col" key={care}>要介護{care}</th>)}</tr></thead>
         <tbody>{rows.map(row => <tr key={row.duration}><th scope="row">{row.duration}</th>{row.units.map((unit, index) => <td key={index}>{unit}</td>)}</tr>)}</tbody>
       </table>

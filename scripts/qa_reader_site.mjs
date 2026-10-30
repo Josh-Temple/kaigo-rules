@@ -158,8 +158,12 @@ try {
         const row = element.querySelector('tbody tr');
         const label = row.querySelector('th').getBoundingClientRect();
         const last = row.querySelector('td:last-child').getBoundingClientRect();
+        const caption = element.querySelector('caption span').getBoundingClientRect();
+        const previousHeading = element.querySelector('thead th:nth-last-child(2)').getBoundingClientRect();
         return { moved: element.scrollLeft > 0, labelVisible: label.left >= region.left - 2 && label.right < region.right,
-          lastValueVisible: last.left >= label.right && last.right <= region.right + 2 };
+          lastValueVisible: last.left >= label.right && last.right <= region.right + 2,
+          modelTitleVisible: caption.left >= region.left - 2 && caption.right <= region.right + 2,
+          careLevelHeadingsVisible: previousHeading.left >= label.right - 2 && previousHeading.right <= region.right + 2 };
       });
       report.interactions.push({ flow: `${width}px fee table → horizontal scroll keeps time and last care level visible`, status: Object.values(geometry).every(Boolean) ? 'PASS' : 'FAIL', geometry });
       await page.screenshot({ path: path.join(output, `dayservice-fee-scroll-${width}.png`) });
