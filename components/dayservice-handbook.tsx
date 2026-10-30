@@ -22,7 +22,7 @@ function FeeTable({ title, rows }: { title: string; rows: FeeTableRow[] }) {
 
 function LifeCounselorExample() {
   return <aside className="handbook-calculation-example" aria-label="生活相談員の勤務時間の計算例">
-    <p><strong>国の解釈通知の計算例：午前・午後の2単位</strong></p>
+    <p><strong>通知の計算例：午前・午後の2単位</strong></p>
     <figure className="dayservice-staffing-example">
       <figcaption>事業所のサービス提供時間</figcaption>
       <div className="dayservice-service-timeline" role="img" aria-label="午前の単位は9時から12時の3時間。12時から13時はサービス提供なし。午後の単位は13時から18時の5時間。">
@@ -32,8 +32,10 @@ function LifeCounselorExample() {
       </div>
       <p className="dayservice-example-note">12時〜13時はサービス提供なし。計算から除きます。</p>
     </figure>
-    <p>事業所の提供時間数：3時間＋5時間＝<strong>8時間</strong></p>
-    <p>必要な生活相談員の勤務延時間数：<strong>合計8時間</strong></p>
+    <dl className="dayservice-example-result">
+      <div><dt>事業所の提供時間数</dt><dd>3時間＋5時間＝<strong>8時間</strong></dd></div>
+      <div><dt>必要な生活相談員の勤務延時間数</dt><dd><strong>合計8時間</strong></dd></div>
+    </dl>
     <p className="dayservice-example-note">掲載する解釈通知の例を図示しています。<a href="#staffing-role-life-counselor-interpretation">本文・確認上の注意を読む</a></p>
   </aside>;
 }
