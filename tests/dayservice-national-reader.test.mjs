@@ -202,3 +202,14 @@ test("reader prompts and Q&A searches cover four priority decisions without alte
   assert.ok(topics.find(topic => topic.id === "fee-note-6")?.basis?.length);
   assert.ok(topics.find(topic => topic.id === "staffing-role-nurse")?.qa?.length);
 });
+
+test("individual training has government source page links for Q&A 55-57, distinct from unreviewed corpus", () => {
+  const item = topics.find(topic => topic.id === "fee-note-13");
+  assert.deepEqual(item.officialQaFurther.map(row => row.number), ["55", "56", "57"]);
+  for (const row of item.officialQaFurther) {
+    assert.ok(nationalSourceUrl(row.url));
+    assert.match(row.url, /001230308\.pdf#page=3[45]$/);
+    assert.ok(row.label);
+  }
+  assert.ok(!topics.find(topic => topic.id === "fee-note-6")?.officialQaFurther);
+});
