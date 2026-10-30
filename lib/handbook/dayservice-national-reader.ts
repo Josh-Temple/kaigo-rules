@@ -19,6 +19,7 @@ export type ReaderTopic = {
   id: string; title: string; basis: ReaderReference[]; interpretation?: ReaderReference[];
   qa?: string[]; local?: string; note?: string; criteria?: ReaderReference[];
   readerQuestions?: readonly string[]; qaSearchQuery?: string;
+  officialQaFurther?: { number: string; label: string; url: string }[];
 };
 export type ReaderGroup = { title: string; topics: ReaderTopic[] };
 export type ReaderExcerpt = {
@@ -231,6 +232,11 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
       "人員基準としての配置と、加算の算定要件を区別して確認したか？",
     ],
     qaSearchQuery: "個別機能訓練加算",
+    officialQaFurther: [
+      { number: "55", label: "配置人数が日によって異なる場合の取扱い", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=34" },
+      { number: "56", label: "外部機関との連携による職員確保の可否", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=34" },
+      { number: "57", label: "2名の配置が必要な時間帯と加算区分", url: "https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=35" },
+    ],
   } : id === "note.6" ? {
     readerQuestions: [
       "指定通所介護の所要時間は8時間以上9時間未満か？",
