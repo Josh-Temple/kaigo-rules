@@ -205,7 +205,8 @@ try {
         status: extensionText.includes('宿泊サービス') &&
           extensionText.includes('問59') && extensionText.includes('問56') &&
           extensionText.includes('9時間30分') &&
-          await extension.locator('.dayservice-official-qa-links li').count() === 4 ? 'PASS' : 'FAIL',
+          await extension.locator('.dayservice-official-qa-links li').count() === 5 &&
+          extensionText.includes('Q&A Vol.4・問5') ? 'PASS' : 'FAIL',
       });
       report.interactions.push({
         flow: `${width}px extension addition → original fee and Q&A search`,
