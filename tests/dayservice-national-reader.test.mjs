@@ -224,7 +224,7 @@ test("reader summaries preserve staffing thresholds and extension non-claim scen
   }
   assert.match(byId("staffing-role-care-worker").readerConditions.join(""), /15人/);
   assert.match(byId("fee-note-6").readerExceptions.join(""), /宿泊サービス/);
-  assert.deepEqual(byId("fee-note-6").officialQaFurther.map(row => row.number), ["56","57","58","59"]);
+  assert.deepEqual(byId("fee-note-6").officialQaFurther.map(row => row.number), ["56", "57", "58", "59", "5"]);
   assert.ok(byId("fee-note-6").officialQaFurther.every(row => nationalSourceUrl(row.url) && row.explanation));
   assert.match(byId("fee-note-6").officialQaFurther.find(row => row.number === "5").url, /0000093219\.pdf#page=4$/);
   assert.match(byId("fee-note-13").officialQaFurther.find(row=>row.number==="55").explanation, /事前/);
