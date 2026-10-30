@@ -211,7 +211,7 @@ test("individual training has government source page links for Q&A 55-57, distin
     assert.match(row.url, /001230308\.pdf#page=3[45]$/);
     assert.ok(row.label);
   }
-  assert.ok(!topics.find(topic => topic.id === "fee-note-6")?.officialQaFurther);
+  assert.deepEqual(topics.find(topic => topic.id === "fee-note-6")?.officialQaFurther?.map(row => row.number), ["56", "57", "58", "59"]);
 });
 
 test("reader summaries preserve staffing thresholds and extension non-claim scenarios", () => {
