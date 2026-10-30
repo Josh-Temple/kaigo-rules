@@ -186,3 +186,19 @@ test("criteria are complete references to already published national bodies, wit
     assert.match(readerExcerpt(ref).caution, /照合は未完了/u);
   }
 });
+
+test("reader prompts and Q&A searches cover four priority decisions without altering national source data", () => {
+  const roleIds = ["staffing-role-nurse", "staffing-role-care-worker"];
+  const feeIds = ["fee-note-13", "fee-note-6"];
+  for (const id of [...roleIds, ...feeIds]) {
+    const topic = topics.find(item => item.id === id);
+    assert.ok(topic, id);
+    assert.ok(topic.readerQuestions?.length >= 3, id);
+    assert.ok(topic.readerQuestions.every(question => question.endsWith("？")), id);
+    assert.ok(topic.qaSearchQuery, id);
+    assert.ok(!/横浜|scope|JSON|Research Mesh/u.test(JSON.stringify(topic.readerQuestions)), id);
+  }
+  assert.ok(topics.find(topic => topic.id === "fee-note-13")?.criteria?.length);
+  assert.ok(topics.find(topic => topic.id === "fee-note-6")?.basis?.length);
+  assert.ok(topics.find(topic => topic.id === "staffing-role-nurse")?.qa?.length);
+});
