@@ -63,8 +63,24 @@
 .dayservice-source-citation{display:grid;gap:6px;font-size:.85rem;line-height:1.7;color:var(--muted);overflow-wrap:anywhere}
 .dayservice-source-citation ul{padding-left:1.2em;margin:0}
 .dayservice-source-citation li{margin:4px 0}
+.dayservice-source-item{padding-left:.8em;border-left:2px solid #dce4de}
+.dayservice-original-details{margin:14px 0;border-block:1px solid var(--line);font-size:.92rem}
+.dayservice-original-details>summary{cursor:pointer;min-height:44px;padding:10px 0;color:var(--link)}
+.dayservice-original-details[open]>blockquote{margin-top:16px}
+.dayservice-table-scroll{max-width:100%;overflow-x:auto;margin:12px 0 20px;border:1px solid var(--line)}
+.dayservice-table-scroll:focus-visible,.dayservice-original-details>summary:focus-visible{outline:3px solid #244f9b;outline-offset:3px}
+.dayservice-fee-table{border-collapse:collapse;min-width:38rem;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+.dayservice-fee-table caption{font-weight:700;text-align:left;padding:12px;background:#edf2ee}
+.dayservice-fee-table th,.dayservice-fee-table td{padding:10px 12px;border:1px solid var(--line);white-space:nowrap;text-align:right}
+.dayservice-fee-table th:first-child{text-align:left}
+.dayservice-fee-table thead{background:#edf2ee}.dayservice-fee-table tbody tr:nth-child(even){background:#f6f7f4}
+.dayservice-table-help{font-size:.85rem;color:var(--muted);margin:0}
+.dayservice-staffing-example{margin:18px 0}.dayservice-staffing-example figcaption{font-weight:700;margin-bottom:10px}
+.dayservice-staffing-example table{width:100%;border-collapse:collapse;font-size:.9rem}
+.dayservice-staffing-example th,.dayservice-staffing-example td{padding:8px 6px;text-align:left;border-bottom:1px solid #c7d3ca}
+.dayservice-time-bar{display:block;background:#c7ded1;border:1px solid #597b6e;padding:4px 8px;text-align:center;white-space:nowrap}
 .dayservice-source-caution,.dayservice-read-across{font-size:.88rem;line-height:1.8;padding:12px 16px;margin:12px 0;background:#faf7ec;border-left:3px solid #a3843d}
-.dayservice-qa{padding:18px 20px;margin:0 0 20px;background:#f1f6f5;border:1px solid #c7d8d1}
+.dayservice-qa{padding:18px 20px;margin:0 0 20px;background:#f1f6f5;border:1px solid #c7d8d1;scroll-margin-top:24px}
 .dayservice-qa-citation{display:grid;gap:6px;font-size:.88rem;line-height:1.65;margin:0 0 18px}
 .dayservice-qa-citation strong{font-size:1rem}
 .dayservice-qa-question>strong,.dayservice-qa-answer>strong{display:block;font-size:.88rem;color:#234c41;margin-bottom:8px}
@@ -117,6 +133,9 @@
   .dayservice-national-reader .dayservice-reading-topic>h2,.dayservice-national-reader .dayservice-reading-topic>h3{font-size:14pt}
   .dayservice-national-reader .dayservice-source-block>h3,.dayservice-national-reader .dayservice-source-block>h4{font-size:11pt}
   .dayservice-original p{line-height:1.7}
+  .dayservice-table-scroll{overflow:visible;break-inside:avoid-page}.dayservice-fee-table{min-width:0;font-size:9pt}
+  .dayservice-fee-table th,.dayservice-fee-table td{padding:5pt 4pt}.dayservice-table-help{display:none}
+  .dayservice-original-details:not([open]){display:none}.dayservice-staffing-example{break-inside:avoid-page}
   .dayservice-qa{background:transparent;padding:10pt;border-color:#777;break-inside:avoid-page}
   .dayservice-excerpt-label,.dayservice-source-caution,.dayservice-read-across,.dayservice-qa-citation,.dayservice-qa-question>strong,.dayservice-qa-answer>strong{break-after:avoid-page}
   .dayservice-source-citation{break-before:avoid-page;break-inside:avoid-page}

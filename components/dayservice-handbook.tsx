@@ -2,11 +2,37 @@ import Link from "next/link";
 import { handbookChapterHref, type HandbookChapter, type ServiceHandbookData } from "../lib/working-handbook";
 import { dayserviceChapterGroups, dayserviceChapterIntros, dayserviceQa, dayserviceQaIndex, nationalSourceUrl, readerExcerpt, type ReaderReference, type ReaderTopic } from "../lib/handbook/dayservice-national-reader";
 import { sourceTextParagraphs } from "../lib/handbook/dayservice-reader-editorial";
+import { basicFeeTable, dayserviceAppliedText, type FeeTableRow } from "../lib/handbook/dayservice-source-layout";
 import HandbookChecklist from "./handbook-checklist";
 import HandbookPrint from "./handbook-print";
 
 function OriginalText({ text }: { text: string }) {
-  return <div className="dayservice-original">{sourceTextParagraphs(text).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>;
+  return <div className="dayservice-original">{sourceTextParagraphs(text).map((paragraph, index) => <p key={index} className={/^[\s]*[・※①-⑳一二三四五六七八九十イロハニホヘトア-オ（(]/u.test(paragraph) ? "dayservice-source-item" : undefined}>{paragraph}</p>)}</div>;
+}
+
+function FeeTable({ title, rows }: { title: string; rows: FeeTableRow[] }) {
+  return <><p className="dayservice-table-help">表は横にスクロールできます。</p>
+    <div className="dayservice-table-scroll" role="region" aria-label={`${title}の単位数表`} tabIndex={0}>
+      <table className="dayservice-fee-table"><caption>{title}（単位）</caption>
+        <thead><tr><th scope="col">所要時間</th>{[1, 2, 3, 4, 5].map(care => <th scope="col" key={care}>要介護{care}</th>)}</tr></thead>
+        <tbody>{rows.map(row => <tr key={row.duration}><th scope="row">{row.duration}</th>{row.units.map((unit, index) => <td key={index}>{unit}</td>)}</tr>)}</tbody>
+      </table>
+    </div></>;
+}
+
+function CareWorkerExample() {
+  return <aside className="handbook-calculation-example" aria-label="介護職員の勤務時間の計算例">
+    <p><strong>計算例（補足）：1単位・20人全員が5時間利用</strong></p>
+    <p>平均提供時間数：（20人×5時間）÷20人＝5時間</p>
+    <p>必要な勤務延時間数：｛1＋（20－15）÷5｝×5時間＝10時間</p>
+    <figure className="dayservice-staffing-example"><figcaption>9時から14時まで提供する場合の配置例</figcaption>
+      <table><thead><tr><th scope="col">職員</th><th scope="col">勤務時間帯</th><th scope="col">時間数</th></tr></thead>
+        <tbody>{["介護職員A", "介護職員B"].map(name => <tr key={name}><th scope="row">{name}</th><td><span className="dayservice-time-bar">9時〜14時</span></td><td>5時間</td></tr>)}</tbody>
+        <tfoot><tr><th scope="row" colSpan={2}>勤務延時間数の合計</th><td>10時間</td></tr></tfoot>
+      </table>
+    </figure>
+    <p>時間数の合計に加え、提供単位ごとに介護職員を常時1人以上従事させます。他の単位との兼務は、利用者の処遇に支障がない場合の取扱いです。</p>
+  </aside>;
 }
 
 function OfficialLink({ url, children }: { url: string; children: React.ReactNode }) {
@@ -14,26 +40,35 @@ function OfficialLink({ url, children }: { url: string; children: React.ReactNod
   return href ? <a href={href} target="_blank" rel="noopener noreferrer">{children} ↗</a> : <span>出典リンクを確認中</span>;
 }
 
-function Excerpt({ reference, showCaution = true }: { reference: ReaderReference; showCaution?: boolean }) {
+function Excerpt({ reference, showCaution = true, showSourceTitle = true }: { reference: ReaderReference; showCaution?: boolean; showSourceTitle?: boolean }) {
   const excerpt = readerExcerpt(reference);
+  const table = reference.family === "fee" ? basicFeeTable(excerpt.text) : null;
+  const applied = excerpt.readAcross ? dayserviceAppliedText(excerpt.id, excerpt.text) : null;
   return <div className="dayservice-excerpt" data-source-id={excerpt.id}>
     <p className="dayservice-excerpt-label"><strong>{excerpt.label}</strong><span>{excerpt.locator}</span></p>
     {showCaution && excerpt.caution ? <p className="handbook-role-warning dayservice-source-caution">{excerpt.caution}</p> : null}
-    {excerpt.readAcross ? <p className="dayservice-read-across">第105条による準用条文です。以下は読替え前の原文のため、「訪問介護」等の表記を含みます。<Link href="/rules/105?service=dayservice">第105条の読替えを確認</Link></p> : null}
-    <blockquote><OriginalText text={excerpt.text} /></blockquote>
-    <div className="dayservice-source-citation"><span>{excerpt.sourceTitle}</span>
+    {applied ? <>
+      <p className="dayservice-read-across">第105条の準用・読替えに沿い、サービス名等を通所介護に置き換えた表示です。<Link href="/rules/105?service=dayservice">準用の規定を確認</Link></p>
+      <div className="dayservice-applied-text"><OriginalText text={applied} /></div>
+      <details className="dayservice-original-details"><summary>読替え前の原文を確認する</summary><blockquote><OriginalText text={excerpt.text} /></blockquote></details>
+    </> : table ? <>
+      <FeeTable title={excerpt.label} rows={table} />
+      <details className="dayservice-original-details"><summary>表の元となる告示の原文を確認する</summary><blockquote><OriginalText text={excerpt.text} /></blockquote></details>
+    </> : <blockquote><OriginalText text={excerpt.text} /></blockquote>}
+    <div className="dayservice-source-citation">{showSourceTitle ? <span>{excerpt.sourceTitle}</span> : null}
       <ul>{excerpt.links.map(link => <li key={link.url}><OfficialLink url={link.url}>{link.label}</OfficialLink></li>)}</ul>
     </div>
   </div>;
 }
 
-function NationalQa({ id }: { id: string }) {
+function NationalQa({ id, anchorId }: { id: string; anchorId: string }) {
   const qa = dayserviceQa(id);
-  return <article className="dayservice-qa" data-qa-id={id}>
+  return <article id={anchorId} className="dayservice-qa" data-qa-id={id}>
     <p className="dayservice-qa-citation"><strong>問{qa.number}</strong><span className="dayservice-qa-topic">{qa.topic}</span><span>{qa.issuedLabel}</span></p>
+    {qa.scopeNote ? <p className="dayservice-source-caution">{qa.scopeNote}</p> : null}
     <div className="dayservice-qa-question"><strong>質問</strong><OriginalText text={qa.question} /></div>
     <div className="dayservice-qa-answer"><strong>回答</strong><OriginalText text={qa.answer} /></div>
-    <p className="dayservice-source-citation"><OfficialLink url={qa.originalUrl}>この問の発出資料</OfficialLink><span>公式Q&A集の収載本文を表示。発出後の改正との適用関係は未確認です。</span></p>
+    <p className="dayservice-source-citation"><OfficialLink url={qa.originalUrl}>{qa.citationLabel}</OfficialLink><span>公式Q&A集の収載本文を表示。発出後の改正との適用関係は未確認です。</span></p>
   </article>;
 }
 
@@ -43,13 +78,11 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
   return <section id={topic.id} className={`dayservice-reading-topic${topic.id.startsWith("staffing-role-") ? " handbook-role" : ""}`}>
     {requirementIds?.map(id => <span key={id} id={`${topic.id}-requirement-${id}`} className="dayservice-legacy-anchor" />)}
     <TopicHeading>{topic.title}</TopicHeading>
-    {topic.basis.length ? <section className="dayservice-source-block"><BlockHeading>基準</BlockHeading>{topic.basis.map(reference => <Excerpt key={reference.id} reference={reference} showCaution={reference.family !== "fee"} />)}</section> : null}
+    {topic.basis.length ? <section className="dayservice-source-block"><BlockHeading>基準</BlockHeading>{topic.basis.map((reference, index) => <Excerpt key={reference.id} reference={reference} showCaution={reference.family !== "fee"} showSourceTitle={index === 0 || reference.family !== topic.basis[index - 1].family} />)}</section> : null}
+    {topic.criteria?.length ? <section className="dayservice-source-block"><BlockHeading>厚生労働大臣が定める基準・算定方法</BlockHeading>{topic.criteria.map((reference, index) => <Excerpt key={reference.id} reference={reference} showCaution={index === 0} />)}</section> : null}
     {topic.interpretation?.length ? <section className="dayservice-source-block"><BlockHeading>国の解釈通知・留意事項</BlockHeading>{topic.interpretation.map((reference, index) => <Excerpt key={`${reference.id}-${reference.part || ""}`} reference={reference} showCaution={index === 0} />)}</section> : null}
-    {topic.qa?.length ? <section className="dayservice-source-block" id={`${topic.id}-qa`}><BlockHeading>国Q&A</BlockHeading>{topic.qa.map(id => <NationalQa key={id} id={id} />)}</section> : null}
-    {topic.id === "staffing-role-care-worker" ? <aside className="handbook-calculation-example" aria-label="介護職員の勤務時間の計算例">
-      <p><strong>計算例（補足）</strong></p><p>1単位20人全員が5時間利用する場合、平均提供時間数は（20人×5時間）÷20人＝5時間。必要な勤務延時間数は｛1＋（20－15）÷5｝×5時間＝10時間です。</p>
-      <p>時間数の合計に加え、提供単位ごとに介護職員を常時1人以上従事させます。他の単位との兼務は、利用者の処遇に支障がない場合の取扱いです。</p>
-    </aside> : null}
+    {topic.qa?.length ? <section className="dayservice-source-block" id={`${topic.id}-qa`}><BlockHeading>国Q&A</BlockHeading>{topic.qa.map(id => <NationalQa key={id} id={id} anchorId={`${topic.id}-qa-${id}`} />)}</section> : null}
+    {topic.id === "staffing-role-care-worker" ? <CareWorkerExample /> : null}
     {topic.local ? <aside className="dayservice-local"><p><strong>所在地の指定権者に確認すること</strong></p><p>{topic.local}</p></aside> : null}
     {topic.note ? <p>{topic.note}</p> : null}
     <p className="handbook-role-return"><a href={`#${navigationId}`}>{topic.id.startsWith("staffing-role-") ? "職種一覧に戻る ↑" : "項目一覧に戻る ↑"}</a></p>
@@ -58,7 +91,7 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
 
 function QaIndex() {
   return <ul className="dayservice-qa-index">{dayserviceQaIndex().map(item => <li key={item.qa.id}>
-    <Link href={`${handbookChapterHref("dayservice", item.chapterId)}#${item.topicId}-qa`}><strong>{item.topicTitle}：問{item.qa.number}</strong><span>{item.qa.question}</span></Link>
+    <Link href={`${handbookChapterHref("dayservice", item.chapterId)}#${item.topicId}-qa-${item.qa.id}`}><strong>{item.topicTitle}：問{item.qa.number}</strong><span>{item.qa.question}</span></Link>
     <p className="meta">{item.qa.topic} ／ {item.qa.issuedLabel}</p>
   </li>)}</ul>;
 }
@@ -93,7 +126,9 @@ export default function DayserviceHandbookChapter({ service, chapter, full }: { 
     {chapter.section_id === "national_qa" ? <><QaIndex /><p><Link href="/qa?service=16">通所介護の国Q&Aを検索する →</Link></p><p><Link href="/qa">共通事項を含む国Q&A全体を検索する →</Link></p></> : null}
     {chapter.section_id === "sources_and_history" ? <SourceGuide /> : null}
     {chapter.section_id === "notifications" ? <aside className="dayservice-local"><p><strong>問い合わせ時に伝えること</strong></p><p>変更する事項、変更予定日、事業所の指定区分を伝え、変更届・体制届の要否、提出期限、必要書類を確認してください。</p><p><Link href="/handbook/dayservice/additions">加算の規定を確認する</Link> ／ <Link href="/handbook/dayservice/deductions">減算の規定を確認する</Link></p></aside> : null}
-    {isStaffing ? <details className="dayservice-checks" open={full}><summary>人員基準の確認用チェック欄</summary><HandbookChecklist items={chapter.checkpoints} chapterTitle={chapter.title} /></details> : null}
+    {isStaffing ? <details className="dayservice-checks" open={full}><summary>人員基準の確認用チェック欄</summary>
+      <p>提供時間数を確認するときは、計画と実績を区別してください。<a href="#staffing-role-life-counselor-qa">提供時間数についての国Q&A（平成24年度・問11）</a></p>
+      <HandbookChecklist items={chapter.checkpoints} chapterTitle={chapter.title} /></details> : null}
     {full ? <HandbookPrint /> : null}
     <div id={`handbook-sources-${chapter.section_id}`} className="handbook-inline-links">
       {!full ? <Link href={href}>この章を詳しく読む →</Link> : <Link href="/handbook/dayservice/sources-and-history">資料の種類・出典を確認する →</Link>}

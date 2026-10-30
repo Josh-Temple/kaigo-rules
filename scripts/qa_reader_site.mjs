@@ -27,7 +27,7 @@ if (process.argv.includes('--serve')) {
 const data = JSON.parse(fs.readFileSync('data/handbook.generated.json', 'utf8'));
 const pilots = ['dayservice', 'dayrehab', 'homevisit'];
 const keyRoutes = ['/', '/services', ...pilots.flatMap(s => ['/services/' + s, '/handbook/' + s + '/staffing']),
-  '/handbook/dayservice/equipment', '/handbook/dayservice/operations', '/handbook/dayservice/remuneration',
+  '/handbook/dayservice/equipment', '/handbook/dayservice/operations', '/handbook/dayservice/remuneration', '/handbook/dayservice/additions',
   '/questions/nurse-staffing', '/qa?service=16&q=看護職員', '/sources', '/handbook-sources'];
 const report = { head: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   tree: execFileSync('git', ['write-tree'], { encoding: 'utf8' }).trim(),
@@ -77,6 +77,13 @@ try {
             municipalText: /横浜市/.test(text),
             inlineNationalQa: document.querySelectorAll('.dayservice-qa').length,
             nationalQaTopics: [...document.querySelectorAll('.dayservice-qa-topic')].map(el => el.textContent),
+            feeTables: document.querySelectorAll('.dayservice-fee-table').length,
+            feeTableRows: document.querySelectorAll('.dayservice-fee-table tbody tr').length,
+            feeTableCells: document.querySelectorAll('.dayservice-fee-table tbody td').length,
+            inlineCriteria: document.querySelectorAll('[data-source-id^="criteria95."]').length,
+            appliedViews: document.querySelectorAll('.dayservice-applied-text').length,
+            untranslatedAppliedViews: [...document.querySelectorAll('.dayservice-applied-text')].filter(el => /指定訪問(?:入浴)?介護|訪問介護員等/u.test(el.innerText)).length,
+            longSourceLocators: [...document.querySelectorAll('.dayservice-excerpt-label span')].filter(el => el.textContent.length > 100).length,
             chapterCount: document.querySelectorAll('.handbook-chapter').length,
             readingGuides: document.querySelectorAll('.staffing-reading-guide').length,
             textLength: text.length,
@@ -95,6 +102,11 @@ try {
           if (record.municipalHandbookLinks || record.municipalText) record.errors.push('MUNICIPAL_HANDBOOK_REFERENCE_VISIBLE');
           if ((job.route === '/services/dayservice' || job.route === '/handbook/dayservice/staffing') && record.inlineNationalQa < 5) record.errors.push('ROLE_QA_NOT_INLINE');
           if (job.route === '/handbook/dayservice/additions' && record.nationalQaTopics.filter(topic => topic === '入浴介助加算（Ⅱ）').length !== 2) record.errors.push('BATHING_QA_APPLICABILITY_LOST');
+          if (record.longSourceLocators) record.errors.push('SOURCE_LOCATOR_REPEATS_BODY');
+          if (record.untranslatedAppliedViews) record.errors.push('READ_ACROSS_SERVICE_NAME_UNCHANGED');
+          if (job.route === '/handbook/dayservice/remuneration' && (record.feeTables !== 3 || record.feeTableRows !== 18 || record.feeTableCells !== 90)) record.errors.push('BASIC_FEE_TABLE_INCOMPLETE');
+          if (job.route === '/handbook/dayservice/additions' && record.inlineCriteria !== 11) record.errors.push('INLINE_MINISTERIAL_CRITERIA_MISSING');
+          if (job.route === '/handbook/dayservice/operations' && record.appliedViews < 15) record.errors.push('READ_ACROSS_VIEW_MISSING');
         }
         if (!baseline) {
           const pilotService = pilots.some(s => job.route === '/services/' + s || job.route === '/handbook/' + s + '/staffing');
@@ -120,21 +132,22 @@ try {
     await page.locator('#staffing .handbook-role-navigation a[href="#staffing-role-nurse"]').click();
     await page.screenshot({ path: path.join(output, 'dayservice-nurse-390.png') });
     const nurseQa = page.locator('#staffing-role-nurse-qa');
-    const question = await nurseQa.locator('.dayservice-qa-question').innerText();
-    const answer = await nurseQa.locator('.dayservice-qa-answer').innerText();
+    const nurseContractQa = nurseQa.locator('[data-qa-id="qa.mhlw.d9a7f5b49c1ba8a9326e"]');
+    const question = await nurseContractQa.locator('.dayservice-qa-question').innerText();
+    const answer = await nurseContractQa.locator('.dayservice-qa-answer').innerText();
     report.interactions.push({ flow: 'service → nurse → inline national question and answer', status: question.includes('どの程度の従事時間') && answer.includes('利用者全員') ? 'PASS' : 'FAIL' });
     await page.locator('#staffing-role-nurse .handbook-role-return a').click();
     await page.goto(origin + '/handbook/dayservice/national-qa');
-    await page.locator('a[href="/handbook/dayservice/staffing#staffing-role-nurse-qa"]').click();
-    await page.waitForURL('**/handbook/dayservice/staffing#staffing-role-nurse-qa', { timeout: 15000 });
+    await page.locator('a[href="/handbook/dayservice/staffing#staffing-role-nurse-qa-qa.mhlw.d9a7f5b49c1ba8a9326e"]').click();
+    await page.waitForURL('**/handbook/dayservice/staffing#staffing-role-nurse-qa-qa.mhlw.d9a7f5b49c1ba8a9326e', { timeout: 15000 });
     // The target must be on screen, not merely present in the DOM with a changed URL.
     const qaTargetVisible = () => {
-      const target = document.getElementById('staffing-role-nurse-qa');
+      const target = document.getElementById('staffing-role-nurse-qa-qa.mhlw.d9a7f5b49c1ba8a9326e');
       const top = target?.getBoundingClientRect().top;
       return top !== undefined && top >= -2 && top < innerHeight / 2;
     };
     await page.waitForFunction(qaTargetVisible, null, { timeout: 5000 });
-    report.interactions.push({ flow: 'national Q&A index → question under its staffing topic', status: (await page.locator('#staffing-role-nurse-qa .dayservice-qa-answer').innerText()).includes('契約') ? 'PASS' : 'FAIL' });
+    report.interactions.push({ flow: 'national Q&A index → question under its staffing topic', status: (await page.locator('[data-qa-id="qa.mhlw.d9a7f5b49c1ba8a9326e"] .dayservice-qa-answer').innerText()).includes('契約') ? 'PASS' : 'FAIL' });
     await page.reload({ waitUntil: 'domcontentloaded' });
     await page.waitForFunction(qaTargetVisible, null, { timeout: 5000 });
     report.interactions.push({ flow: 'reloading a Q&A fragment keeps its question on screen', status: 'PASS' });
