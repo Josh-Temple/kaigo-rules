@@ -196,7 +196,7 @@ try {
           trainingLinks.length === 3 &&
           trainingLinks.every((href, i) => href?.startsWith('https://www.mhlw.go.jp/content/12300000/001230308.pdf#page=') &&
             href.endsWith(`#page=${qaPages[i]}`)) &&
-          (await training.locator('.dayservice-official-qa-links p').innerText()).includes('未確認') ? 'PASS' : 'FAIL',
+          (await training.locator('.dayservice-official-qa-links > p').innerText()).includes('未確認') ? 'PASS' : 'FAIL',
       });
       const extension = page.locator('#fee-note-6');
       const extensionText = await extension.innerText();
