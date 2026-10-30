@@ -64,6 +64,24 @@ test("a source line wrap inside a Japanese word does not become a separate parag
   assert.ok(paragraphs.some(paragraph => paragraph.startsWith("※")));
 });
 
+test("source line wraps keep compound names and circled references together", () => {
+  const source = "口 腔\n・栄養スクリーニング加算は、以下\n①\n⑤ をすべて満たす。\n①配置の条件。\n②実施の条件。\n・なお、記録も行う。";
+  const paragraphs = sourceTextParagraphs(source);
+  assert.equal(paragraphs.join(""), source);
+  assert.ok(paragraphs[0].includes("口 腔\n・栄養"));
+  assert.ok(paragraphs[0].includes("以下\n①\n⑤ をすべて満たす。"));
+  assert.ok(paragraphs.some(paragraph => paragraph.startsWith("①配置")));
+  assert.ok(paragraphs.some(paragraph => paragraph.startsWith("②実施")));
+  assert.ok(paragraphs.some(paragraph => paragraph.startsWith("・なお")));
+  const range = "次の\n①〜⑤を満たす。";
+  assert.deepEqual(sourceTextParagraphs(range), [range]);
+  const fee = read("data/remuneration-current-text.json").find(row => row.fee_id === "fee.dayservice.note.19");
+  assert.ok(fee);
+  assert.ok(!sourceTextParagraphs(fee.official_text).some(paragraph => paragraph.startsWith("・栄養")));
+  const answer = dayserviceQa("qa.mhlw.98d49d29f427379ec4b3").answer;
+  assert.ok(sourceTextParagraphs(answer).some(paragraph => paragraph.includes("以下 ① ⑤ をすべて満たす")));
+});
+
 test("care-worker and qualification passages retain exceptions and are not cut at self-references", () => {
   const staffing = read("data/notice-personnel-current-text-candidates.json").items.find(row => row.notice_id.endsWith("staffing")).candidate_text;
   const part = numberedNoticePart(staffing, "⑤");

@@ -175,8 +175,13 @@ export function sourceTextParagraphs(value: string): string[] {
       const tail = value.slice(index);
       const previous = value[index - 1];
       const lineStart = previous === "\n";
-      if ((lineStart && /^(?:[・※①-⑳]|[0-9０-９]+[.．、]|[一二三四五六七八九十]+[ 　]|[イロハニホヘト][ 　]|[（(][0-9０-９一二三四五六七八九十]+[）)]|第[0-9０-９一二三四五六七八九十])/u.test(tail)) ||
-          (/[\s。]/u.test(previous) && /^(?:[一二三四五六七八九十]+[ 　]|[①-⑳]|[ア-オイロハニホヘト](?:指定|病院|利用者|食事|おむつ))/u.test(tail)) ||
+      const prefix = value.slice(0, index);
+      // A source line wrap can occur inside 口腔・栄養 or a reference such as ①〜⑤.
+      // Only treat the punctuation as a list marker when it is not a continuation.
+      const bulletItem = character === "・" && !/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}][ \t\r]*\n$/u.test(prefix);
+      const circledItem = /^[①-⑳](?![\s〜～~]*[①-⑳])/u.test(tail) && !/[①-⑳][\s〜～~]*$/u.test(prefix);
+      if ((lineStart && (bulletItem || circledItem || /^(?:※|[0-9０-９]+[.．、]|[一二三四五六七八九十]+[ 　]|[イロハニホヘト][ 　]|[（(][0-9０-９一二三四五六七八九十]+[）)]|第[0-9０-９一二三四五六七八九十])/u.test(tail))) ||
+          (/[\s。]/u.test(previous) && (circledItem || /^(?:[一二三四五六七八九十]+[ 　]|[ア-オイロハニホヘト](?:指定|病院|利用者|食事|おむつ))/u.test(tail))) ||
           (character === "・" && /^(?:・利用者数)/u.test(tail)) ||
           /^(?:※平均提供時間数|例えば、|（確保すべき)/u.test(tail)) cuts.add(index);
     }
