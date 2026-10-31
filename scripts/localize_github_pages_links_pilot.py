@@ -18,7 +18,7 @@ import build_github_pages_legal_details_pilot as legal
 import build_github_pages_qa_details_pilot as qa
 
 ORIGIN = "kaigo-rules.vercel.app"
-ATTR = re.compile(r'(\\bhref=")([^"]+)(")')
+ATTR = re.compile(r'(\bhref=")([^"]+)(")')
 SAFE_SERVICE = re.compile(r"^[a-z0-9-]+$")
 SAFE_CHAPTER = SAFE_SERVICE
 SAFE_FRAGMENT = re.compile(r"^[A-Za-z0-9_.:-]+$")
@@ -71,7 +71,7 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
         if not SAFE_FRAGMENT.fullmatch(fragment):
             return None
         target_text = target.read_text(encoding="utf-8")
-        if not re.search(r'\\bid="' + re.escape(html.escape(fragment, quote=True)) + r'"', target_text):
+        if not re.search(r'\bid="' + re.escape(html.escape(fragment, quote=True)) + r'"', target_text):
             return None
     else:
         fragment = ""
