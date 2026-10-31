@@ -106,9 +106,10 @@ def add_details(search_dir, base_url, max_seconds=480):
         kind, number, service = key
         if time.monotonic() - start > max_seconds:
             raise TimeoutError("Legal detail generation exceeded its time budget")
-        # ':' is a valid path character and is used verbatim by the current
-        # search. Preserve it here instead of changing the baseline URL.
-        href = "/" + kind + "/" + quote(number, safe=":")
+        # Preserve the original search key, but render deleted ordinance
+        # ranges through the explicit Next.js-safe alias.
+        render_number = number.replace(":", "__range__") if kind == "rules" else number
+        href = "/" + kind + "/" + quote(render_number, safe="")
         if service:
             href += "?service=" + quote(service, safe="")
         try:

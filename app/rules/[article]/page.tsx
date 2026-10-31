@@ -90,7 +90,13 @@ export function generateStaticParams() {
       .filter((node) => node.node_type === "article")
       .map((node) => node.article_num),
   );
-  return [...publicArticleNumbers].map((article) => ({ article }));
+  return [...publicArticleNumbers].flatMap((article) => {
+    // Deleted ordinance article ranges may be inaccessible as literal-colon
+    // dynamic paths. Retain the original and offer a safe static alias.
+    const params = [{ article }];
+    if (article.includes(":")) params.push({ article: article.replace(":", "__range__") });
+    return params;
+  });
 }
 
 const levelRank: Record<string, number> = {
@@ -143,7 +149,10 @@ export default async function RuleArticlePage({
   params: Promise<{ article: string }>;
   searchParams: Promise<{ service?: string }>;
 }) {
-  const { article } = await params;
+  const { article: requestedArticle } = await params;
+  const article = /^[0-9]+(?:-[0-9]+)*__range__[0-9]+(?:-[0-9]+)*$/.test(requestedArticle)
+    ? requestedArticle.replace("__range__", ":")
+    : requestedArticle;
   const { service = "" } = await searchParams;
 
   const selectedService = publicFilterServices.find(

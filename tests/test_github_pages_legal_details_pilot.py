@@ -60,7 +60,7 @@ class LegalDetailPilotTest(unittest.TestCase):
                 }), encoding="utf-8")
                 result = pilot.add_details(out, "http://127.0.0.1:" + str(server.server_port))
                 self.assertEqual((result["detail_pages"], result["scoped_pages"]), (3, 1))
-                self.assertIn("/rules/156:173", requested)
+                self.assertIn("/rules/156__range__173", requested)
                 page = (out / "legal/rules/dayservice/93.html").read_text(encoding="utf-8")
                 self.assertIn("原則・条件・例外", page)
                 self.assertIn("../../law/all/8.html", page)

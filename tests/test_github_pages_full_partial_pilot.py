@@ -65,7 +65,7 @@ class FullPartialPilotTest(unittest.TestCase):
         if not (ROOT / ".next/BUILD_ID").is_file() or not (ROOT / "node_modules/next/dist/bin/next").is_file():
             self.fail("Validated Next.js application missing")
         routes = ["/rules/1", "/rules/93", "/rules/100?service=dayservice",
-                  "/rules/18?service=homevisit", "/rules/140-16:140-25", "/rules/156:173"]
+                  "/rules/18?service=homevisit", "/rules/140-16__range__140-25", "/rules/156__range__173"]
         original = self.capture_rules(False, routes)
         optimized = self.capture_rules(True, routes)
         self.assertEqual(optimized, original, "Private index changed the rendered legal text or links")
