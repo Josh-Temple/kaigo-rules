@@ -296,8 +296,10 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
       officialLabel: "厚生労働省・令和8年告示第87号（通所介護費の改正）",
       officialUrl: "https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7",
       relatedDocuments: [
-        { label: "令和8年度処遇改善加算の通知（4・5月と6月以降の率表・届出手順）", url: "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3" },
+        { label: "令和8年度処遇改善加算の通知（算定月ごとの扱い・届出手順）", url: "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3" },
+        { label: "通所介護の加算率表（4・5月と6月以降を比較）", url: "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=18" },
         { label: "令和8年度処遇改善加算Q&A（第1版）", url: "https://www.mhlw.go.jp/content/12404000/001675711.pdf" },
+        { label: "厚生労働省の令和8年度介護報酬改定資料一覧（差替え・追加の確認）", url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00073.html" },
       ],
     },
   } : {}),
