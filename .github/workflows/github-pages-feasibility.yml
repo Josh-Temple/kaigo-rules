@@ -6,6 +6,15 @@ on:
     paths:
       - ".github/workflows/github-pages-feasibility.yml"
       - "experiments/github-pages-qa/**"
+      - "experiments/github-pages-db/**"
+      - "scripts/build_github_pages_handbook_all_pilot.py"
+      - "scripts/build_github_pages_integrated_pilot.py"
+      - "scripts/test_github_pages_integrated_browser.mjs"
+      - "scripts/extract_database_search_snapshot.py"
+      - "scripts/extract_qa_search_snapshot.py"
+      - "tests/github-pages-db-pilot.test.mjs"
+      - "tests/test_database_search_snapshot.py"
+      - "tests/test_qa_search_snapshot.py"
       - "scripts/build_github_pages_qa_pilot.mjs"
       - "tests/github-pages-qa-pilot.test.mjs"
       - "scripts/build_github_pages_handbook_pilot.py"
@@ -19,6 +28,9 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  REVIEW_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
 jobs:
   measure:
     name: Build and measure; never publish
@@ -26,6 +38,11 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.REVIEW_SOURCE_SHA }}
+          persist-credentials: false
+      - name: Verify the reviewed source commit
+        run: test "$(git rev-parse HEAD)" = "$REVIEW_SOURCE_SHA"
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
@@ -33,6 +50,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Test search snapshot parsers before the full build
+        run: python -m unittest tests/test_database_search_snapshot.py tests/test_qa_search_snapshot.py
       - name: Install dependencies
         run: npm ci
       - name: Build existing application with full validation
@@ -80,7 +99,7 @@ jobs:
               "next_static_assets", "next_prerendered_html", "source_public", "source_data_all"))
           budget = 1_000_000_000
           report = {
-              "source_commit": os.environ.get("GITHUB_SHA", ""),
+              "source_commit": os.environ.get("REVIEW_SOURCE_SHA", ""),
               "budget_bytes": budget,
               "measured_categories": paths,
               "prerender_manifest": prerender,
@@ -88,7 +107,7 @@ jobs:
               "illustrative_selected_sum_share_of_budget": round(illustrative / budget, 4),
               "actual_github_pages_output_measured": paths["static_export_out"]["files"] > 0,
               "result": "HOLD_NO_DEPLOY",
-              "caveat": "This is NOT a static export or certified Pages size. Do not publish raw data, unreviewed materials, generated previews, or any app output. Search parity and Android performance not yet tested.",
+              "caveat": "This is NOT a static export or certified Pages size. Do not publish raw data, unreviewed materials, generated previews, or any app output. The subsequent job steps test selected search cases and simulated browser widths; Android device testing remains outstanding.",
           }
           def fmt(n):
               return f"{n / 1_000_000:,.2f} MB"
@@ -107,7 +126,7 @@ jobs:
               "",
               f"- Illustrative sum of selected categories (NOT actual published-site size): **{fmt(illustrative)}** / 1,000.00 MB.",
               f"- Pre-render manifest: {prerender.get('route_count', 'unknown')} routes, {prerender.get('dynamic_route_count', 'unknown')} dynamic route patterns.",
-              "- Search regression coverage: included in original npm run build prebuild tests; actual browser-side search parity NOT tested.",
+              "- The following steps run selected browser-side search comparisons and Chrome smoke checks; check the job outcome and logs.",
               "- Security: source data may contain unreviewed/nonpublic records; exclude through publication policies before any static deployment.",
               "- Verdict: **HOLD_NO_DEPLOY**. A successful static exporter, true output-size measurement, exact search-result comparison, and Android testing remain mandatory.",
           ]

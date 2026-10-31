@@ -127,10 +127,17 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
     assert.ok(result.qa, "Q&A destination is absent");
 
     // Confirm actual keyboard focus progression and a touch-generated submit.
-    await client.send("Input.dispatchKeyEvent", { type: "keyDown", key: "Tab", code: "Tab", windowsVirtualKeyCode: 9 });
-    await client.send("Input.dispatchKeyEvent", { type: "keyUp", key: "Tab", code: "Tab", windowsVirtualKeyCode: 9 });
-    const focused = await value(client, "document.activeElement && document.activeElement.id");
-    assert.equal(focused, "query", "Keyboard focus did not reach the search input");
+    // The integrated page has navigation links before the form. Verify that
+    // Tab actually reaches the input rather than assuming it is the first stop.
+    let focused = "";
+    let keyboardSteps = 0;
+    while (focused !== "query" && keyboardSteps < 12) {
+      await client.send("Input.dispatchKeyEvent", { type: "keyDown", key: "Tab", code: "Tab", windowsVirtualKeyCode: 9 });
+      await client.send("Input.dispatchKeyEvent", { type: "keyUp", key: "Tab", code: "Tab", windowsVirtualKeyCode: 9 });
+      focused = await value(client, "document.activeElement && document.activeElement.id");
+      keyboardSteps += 1;
+    }
+    assert.equal(focused, "query", "Keyboard focus did not reach the search input within 12 Tab presses");
     const point = await value(client, "(() => { window.__smokeSubmits=0; document.querySelector('#search').addEventListener('submit',()=>window.__smokeSubmits++); const r=document.querySelector('button').getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2}; })()");
     await client.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [point] });
     await client.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
@@ -199,7 +206,7 @@ export async function chromeSmoke(dir, requestedWidth, options = {}) {
     }
     return { requestedWidth, actualWidth: result.width, scrollWidth: result.scrollWidth,
       searchMs: result.searchMs, readyMs: result.readyMs, heapBytes: result.heapBytes,
-      keyboard: true, touch: true, unitGroups, pinchScale, printed: true, qaRows: qaResult.rows, qaPage: qaResult.page,
+      keyboard: true, keyboardSteps, touch: true, unitGroups, pinchScale, printed: true, qaRows: qaResult.rows, qaPage: qaResult.page,
       handbook: handbook ? { checkbox: true, printButton: true, printed: true } : null };
   } finally {
     if (client) client.close();
