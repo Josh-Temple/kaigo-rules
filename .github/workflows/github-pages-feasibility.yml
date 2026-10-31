@@ -8,7 +8,13 @@ on:
       - "experiments/github-pages-qa/**"
       - "scripts/build_github_pages_qa_pilot.mjs"
       - "tests/github-pages-qa-pilot.test.mjs"
+      - "scripts/build_github_pages_handbook_pilot.py"
+      - "tests/test_github_pages_handbook_pilot.py"
   workflow_dispatch:
+
+concurrency:
+  group: github-pages-feasibility-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -17,7 +23,7 @@ jobs:
   measure:
     name: Build and measure; never publish
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -118,6 +124,11 @@ jobs:
           node scripts/build_github_pages_qa_pilot.mjs
           node --test tests/github-pages-qa-pilot.test.mjs
           cat .github-pages-qa-pilot/measurement.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Build sanitized public dayservice handbook pilot; audit content
+        run: |
+          python scripts/build_github_pages_handbook_pilot.py
+          python -m unittest tests/test_github_pages_handbook_pilot.py
+          cat .github-pages-handbook-pilot/measurement.md >> "$GITHUB_STEP_SUMMARY"
       - name: Archive numerical summary only (no content release)
         uses: actions/upload-artifact@v4
         with:
@@ -127,4 +138,6 @@ jobs:
             github-pages-feasibility.md
             .github-pages-qa-pilot/measurement.json
             .github-pages-qa-pilot/measurement.md
+            .github-pages-handbook-pilot/measurement.md
+            .github-pages-handbook-pilot/measurement.json
           retention-days: 7
