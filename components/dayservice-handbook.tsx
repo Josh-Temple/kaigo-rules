@@ -147,6 +147,11 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
   return <section id={topic.id} className={`dayservice-reading-topic${topic.id.startsWith("staffing-role-") ? " handbook-role" : ""}`}>
     {requirementIds?.map(id => <span key={id} id={`${topic.id}-requirement-${id}`} className="dayservice-legacy-anchor" />)}
     <TopicHeading>{topic.title}</TopicHeading>
+    {topic.regulatoryUpdate ? <aside className="dayservice-source-caution dayservice-regulatory-update" role="note" aria-label="改正資料の確認が必要です">
+      <p><strong>改正資料の確認が必要です</strong></p>
+      <p>{topic.regulatoryUpdate.message}</p>
+      <p><OfficialLink url={topic.regulatoryUpdate.officialUrl}>{topic.regulatoryUpdate.officialLabel}</OfficialLink></p>
+    </aside> : null}
     {topic.readerSummary ? <div className="dayservice-reader-overview">
       <p><strong>必要な基準の要点</strong></p><p>{topic.readerSummary}</p>
       {topic.readerConditions?.length ? <section aria-label="主な条件"><p><strong>主な条件</strong></p><ul>{topic.readerConditions.map(value => <li key={value}>{value}</li>)}</ul></section> : null}
@@ -178,7 +183,7 @@ function ReadingTopic({ topic, full, navigationId, requirementIds }: { topic: Re
     {topic.qaSearchQuery ? <p className="dayservice-qa-search-link">
       <Link href={`/qa?reader=1&service=16&q=${encodeURIComponent(topic.qaSearchQuery)}`}>「{topic.qaSearchQuery}」に関する国Q&Aをさらに探す</Link>
       <span>検索結果には過去の取扱いも含まれます。発出日と後続改正を確認してください。</span>
-      <span className="dayservice-qa-print-url">印刷版から探す場合：kaigo-rules.vercel.app/qa?reader=1 で「{topic.qaSearchQuery}」を検索</span>
+      <span className="dayservice-qa-print-url">印刷版から探す場合：Kaigo Rulesサイト内の「国Q&Aを探す」で「{topic.qaSearchQuery}」を検索</span>
     </p> : null}
     {topic.local ? <aside className="dayservice-local"><p><strong>所在地の指定権者に確認すること</strong></p><p>{topic.local}</p></aside> : null}
     {topic.note ? <p>{topic.note}</p> : null}
