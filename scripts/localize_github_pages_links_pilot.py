@@ -47,7 +47,7 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
     elif path == "/qa":
         kind, target, suffix = "qa-search", root / "databases/search/qa.html", ("?" + query if query else "")
     elif path in {"/start", "/overview", "/guide", "/sources", "/handbook-sources",
-                  "/fees/guidance"} and not query:
+                  "/fees/guidance", "/fees"} and not query:
         kind, target = "information", root / path.lstrip("/") / "index.html"
     else:
         match = re.fullmatch(r"/services/([a-z0-9-]+)", path)
@@ -61,6 +61,10 @@ def destination(root: Path, href: str) -> tuple[str, Path, str] | None:
             kind = "qa-detail"
             target = root / "databases/search/qa-details" / match[1] / (
                 "reader.html" if query == "reader=1" else "index.html")
+        match = re.fullmatch(r"/fees/([a-z0-9]+(?:[.-][a-z0-9]+)*)", path)
+        if match and not query:
+            kind = "fee-detail"
+            target = root / "fees" / match[1] / "index.html"
         try:
             key = legal.key_from_href(path + ("?" + query if query else ""))
         except ValueError:

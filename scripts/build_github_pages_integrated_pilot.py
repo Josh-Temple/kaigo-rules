@@ -22,6 +22,7 @@ import build_github_pages_qa_details_pilot as qa_details
 import build_github_pages_legal_details_pilot as legal_details
 import localize_github_pages_links_pilot as navigation
 import build_github_pages_information_pilot as information
+import build_github_pages_fee_details_pilot as fee_details
 
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_FILES = {
@@ -180,6 +181,9 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
     information_report = information.add_pages(out) if with_information else {
         "pages": 0, "bytes": 0, "routes": [],
     }
+    fee_report = fee_details.add_pages(out) if with_information else {
+        "pages": 0, "bytes": 0, "source_links": 0, "routes": [],
+    }
     # The information pages did not exist during the first source-data scan.
     # Scan every newly generated page before reporting any private safety pass.
     if with_information:
@@ -191,6 +195,13 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
             if any(pattern.search(data) for pattern in SECRET_PATTERNS):
                 raise RuntimeError("Secret-like material in reader information page")
             scanned.append(added)
+        for row in fee_report["routes"]:
+            added = out / "fees" / row["slug"] / "index.html"
+            if not added.is_file() or added.is_symlink():
+                raise RuntimeError("Missing or symbolic-link public fee detail")
+            if any(pattern.search(added.read_bytes()) for pattern in SECRET_PATTERNS):
+                raise RuntimeError("Secret-like material in fee detail")
+            scanned.append(added)
     root_page = out / "index.html"
     text = root_page.read_text(encoding="utf-8")
     if text.count("</article>") != 1:
@@ -201,6 +212,7 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
         '<a href="./guide/index.html">使い方ガイド</a> / '
         '<a href="./sources/index.html">公式資料と出典</a> / '
         '<a href="./handbook-sources/index.html">手引の出典</a> / '
+        '<a href="./fees/index.html">報酬DB</a> / '
         '<a href="./fees/guidance/index.html">報酬案内</a></p>'
         if with_information else ""
     )
@@ -236,6 +248,7 @@ def integrate(handbook_dir: Path, search_dir: Path, *, with_information: bool = 
     )[:10]
     return {"directory": str(out), "files": len(files), "bytes": sum(p.stat().st_size for p in files),
             "navigation": navigation_report, "information_pages": information_report,
+            "fee_detail_pages": fee_report,
             "by_suffix": by_suffix, "largest": largest,
             "identical_duplicate_files": duplicate_files, "identical_duplicate_bytes": duplicate_bytes,
             "secret_scan_files": len(scanned), "search_services": len(service_files)}

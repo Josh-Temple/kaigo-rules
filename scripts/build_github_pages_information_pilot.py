@@ -20,13 +20,14 @@ PAGES = {
     "start": "利用開始",
     "overview": "介護制度の全体像",
     "guide": "介護制度の使い方ガイド",
-    # These four paths are already prerendered by the validated Next.js build.
+    # These additional paths are already prerendered by the validated Next.js build.
     # Preserve original source/currentness warnings, not raw source databases.
     "sources": "公式資料と出典",
     "handbook-sources": "手引の出典",
     # /services/source-map has interactive query and select controls.
     # It requires a fully functioning client implementation, not an HTML snapshot.
     "fees/guidance": "報酬に関する案内",
+    "fees": "通所介護の報酬DB",
 }
 
 

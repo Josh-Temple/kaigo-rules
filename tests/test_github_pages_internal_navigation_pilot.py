@@ -20,6 +20,8 @@ class PrivateNavigationTest(unittest.TestCase):
                 "services/dayservice/index.html": '<html><body><h1 id="national_qa">手引</h1></body></html>',
                 "guide/index.html": '<html><body><h1 id="guide">ガイド</h1></body></html>',
                 "fees/guidance/index.html": '<html><body><h1 id="fees">報酬</h1></body></html>',
+                "fees/index.html": '<html><body>一覧</body></html>',
+                "fees/note.1/index.html": '<html><body><h1 id="fee">報酬注</h1></body></html>',
                 "handbook/dayservice/staffing.html": '<html><body><h1 id="staff">人員</h1></body></html>',
                 "databases/search/index.html": '<html><body><h1 id="search">検索</h1></body></html>',
                 "databases/search/qa.html": '<html><body><h1>国Q&A</h1></body></html>',
@@ -39,6 +41,8 @@ class PrivateNavigationTest(unittest.TestCase):
                     "https://kaigo-rules.vercel.app/databases/search?q=%E7%9C%8B%E8%AD%B7",
                     "https://kaigo-rules.vercel.app/guide#guide",
                     "https://kaigo-rules.vercel.app/fees/guidance#fees",
+                    "https://kaigo-rules.vercel.app/fees/note.1#fee",
+                    "https://kaigo-rules.vercel.app/fees",
                     "https://kaigo-rules.vercel.app/services/dayservice#missing",
                     "https://kaigo-rules.vercel.app/notices",
                     "https://www.mhlw.go.jp/official",
@@ -47,7 +51,7 @@ class PrivateNavigationTest(unittest.TestCase):
                 ])
             source.write_text(before, encoding="utf-8")
             report = module.localize(out)
-            self.assertEqual(report["links_localized"], 6)
+            self.assertEqual(report["links_localized"], 8)
             updated = source.read_text(encoding="utf-8")
             self.assertIn('../../services/dayservice/index.html#national_qa', updated)
             self.assertIn('../../databases/search/legal/rules/dayservice/93.html#rule', updated)
@@ -55,6 +59,8 @@ class PrivateNavigationTest(unittest.TestCase):
             self.assertIn('../../databases/search/index.html?q=%E7%9C%8B%E8%AD%B7', updated)
             self.assertIn('../../guide/index.html#guide', updated)
             self.assertIn('../../fees/guidance/index.html#fees', updated)
+            self.assertIn('../../fees/note.1/index.html#fee', updated)
+            self.assertIn('../../fees/index.html', updated)
             for unchanged in ("#missing", "https://www.mhlw.go.jp/official",
                               "/notices", "?preview=1", "/staffing/missing"):
                 self.assertIn(unchanged if unchanged != "/staffing/missing" else "handbook/dayservice/missing", updated)
