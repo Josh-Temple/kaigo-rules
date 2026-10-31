@@ -21,7 +21,7 @@ export type ReaderTopic = {
   readerQuestions?: readonly string[]; qaSearchQuery?: string;
   readerSummary?: string; readerConditions?: readonly string[]; readerExceptions?: readonly string[];
   officialQaFurther?: { number: string; label: string; url: string; explanation?: string; issuedLabel?: string }[];
-  regulatoryUpdate?: { message: string; officialLabel: string; officialUrl: string };
+  regulatoryUpdate?: { message: string; officialLabel: string; officialUrl: string; relatedDocuments?: readonly { label: string; url: string }[] };
 };
 export type ReaderGroup = { title: string; topics: ReaderTopic[] };
 export type ReaderExcerpt = {
@@ -292,9 +292,13 @@ const feeTopic = (id: string): ReaderTopic => ({ ...topic(`fee-${id.replaceAll("
     ],
   } : id === "treatment-improvement" ? {
     regulatoryUpdate: {
-      message: "介護職員等処遇改善加算は、令和8年厚生労働省告示第87号で区分と加算率が改正されています。下に掲載した従来の告示本文が改正後の全文と一致するか、まだ照合できていません。掲載数値をそのまま現在の請求・届出に使用せず、改正告示と最新の届出要件を確認してください。",
+      message: "介護職員等処遇改善加算は、令和8年厚生労働省告示第87号で区分と加算率が改正されています。令和8年4月・5月と6月以降は、国の通知で参照する加算率表が異なります。下に掲載した従来の告示本文が改正後の全文と一致するか、まだ照合できていません。掲載数値をそのまま請求・届出に使用せず、算定する月に対応した改正告示・通知・Q&Aと指定権者の届出案内を確認してください。",
       officialLabel: "厚生労働省・令和8年告示第87号（通所介護費の改正）",
       officialUrl: "https://www.mhlw.go.jp/content/12404000/001675895.pdf#page=7",
+      relatedDocuments: [
+        { label: "令和8年度処遇改善加算の通知（4・5月と6月以降の率表・届出手順）", url: "https://www.mhlw.go.jp/content/12404000/001675724.pdf#page=3" },
+        { label: "令和8年度処遇改善加算Q&A（第1版）", url: "https://www.mhlw.go.jp/content/12404000/001675711.pdf" },
+      ],
     },
   } : {}),
 });
